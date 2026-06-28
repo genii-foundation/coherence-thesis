@@ -42,7 +42,7 @@ export default async function VolumePage({
 
   return (
     <div className="page-frame">
-      <header className="page-heading">
+      <header className="page-heading volume-heading">
         <p className="eyebrow">Manuscript</p>
         <h1>{volume.title}</h1>
         <p>

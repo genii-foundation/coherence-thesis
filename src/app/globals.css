@@ -635,6 +635,19 @@ input {
   line-height: 0.95;
 }
 
+.volume-heading {
+  max-width: 42rem;
+}
+
+.volume-heading h1 {
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  line-height: 1.04;
+}
+
+.volume-heading p:last-child {
+  margin-top: 0.75rem;
+}
+
 .part-list,
 .chapter-list {
   display: grid;

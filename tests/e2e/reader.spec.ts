@@ -78,6 +78,27 @@ test("overview references show local read checkmarks", async ({ page }) => {
   await expect(readReference.locator('[data-read-checkmark="true"]')).toBeVisible();
 });
 
+test("manuscript volume heading does not overlap its stats line", async ({ page }) => {
+  const volume = catalog.volumes[0];
+  expect(volume).toBeDefined();
+
+  await page.goto(volume!.href);
+
+  const heading = page.locator(".volume-heading h1");
+  const stats = page.locator(".volume-heading p").last();
+  await expect(heading).toBeVisible();
+  await expect(stats).toBeVisible();
+
+  const headingBox = await heading.boundingBox();
+  const statsBox = await stats.boundingBox();
+  expect(headingBox).not.toBeNull();
+  expect(statsBox).not.toBeNull();
+
+  if (headingBox && statsBox) {
+    expect(headingBox.y + headingBox.height).toBeLessThanOrEqual(statsBox.y - 1);
+  }
+});
+
 test("mobile toolbar and progress menu stay within the viewport", async ({ page }) => {
   await page.goto("/");
 
