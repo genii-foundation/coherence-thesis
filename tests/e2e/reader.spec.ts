@@ -33,15 +33,15 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(page.getByRole("navigation", { name: "Breadcrumb" })).toHaveCount(0);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     "content",
-    "https://www.coherence-thesis.com/share/coherence-thesis-og.jpg",
+    "https://www.coherence-thesis.com/art/coherence-thesis-hero.png",
   );
   await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute(
     "content",
-    "1200",
+    "1024",
   );
   await expect(page.locator('meta[property="og:image:height"]')).toHaveAttribute(
     "content",
-    "630",
+    "1536",
   );
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
     "content",

@@ -4,11 +4,11 @@ import "./globals.css";
 
 const siteUrl = new URL("https://www.coherence-thesis.com");
 const shareImage = {
-  url: "/share/coherence-thesis-og.jpg",
-  width: 1200,
-  height: 630,
-  alt: "The Coherence Thesis Providence Imperative share artwork with manuscript cover art.",
-  type: "image/jpeg",
+  url: "/art/coherence-thesis-hero.png",
+  width: 1024,
+  height: 1536,
+  alt: "The Coherence Thesis final hero artwork.",
+  type: "image/png",
 };
 
 export const viewport: Viewport = {
