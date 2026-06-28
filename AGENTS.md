@@ -90,13 +90,14 @@ npm start
 ## Git Workflow
 
 - Do not work directly on `main` for feature, manuscript, or process changes unless the user explicitly asks for a direct commit.
+- Use a separate git worktree for each feature, manuscript edit, bug fix, or process change. Keep the primary checkout on `main` as the clean integration workspace.
 - Create a short branch with a Conventional Commit prefix, such as `feat/`, `fix/`, `edit/`, `docs/`, `chore/`, `refactor/`, or `perf/`, followed by a kebab-case description.
 - Use `edit/` for manuscript updates, including changes to `content/manuscripts/`, `content/overview/`, import applications, and generated manuscript catalog updates caused by canonical text edits.
-- Keep each PR focused. One PR should represent one coherent change.
+- Keep each PR focused. One worktree should map to one coherent PR.
 - Commit messages should follow "Conventional Commits" when possible. Use `edit:` for manuscript updates.
 - Run `npm run validate` before opening or updating a PR for merge.
 - PR bodies must begin with `(AI Generated).`
-- Squash merge into `main`, then delete the branch.
+- Squash merge into `main`, then delete the branch and remove the worktree.
 
 ## Debugging Standard
 
