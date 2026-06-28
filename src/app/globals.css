@@ -1928,7 +1928,8 @@ input {
     white-space: nowrap;
   }
 
-  .outline-menu-button .nav-label {
+  .outline-menu-button .nav-label,
+  .progress-menu-button .nav-label {
     position: static;
     width: auto;
     height: auto;
@@ -1942,14 +1943,21 @@ input {
   .search-menu-button,
   .audio-menu-button,
   .progress-menu-button {
+    justify-content: center;
     gap: 0.35rem;
     padding-right: 0.35rem;
     padding-left: 0.35rem;
   }
 
+  .outline-menu-button svg:last-child,
+  .audio-menu-button svg:last-child,
+  .progress-menu-button svg:last-child {
+    display: none;
+  }
+
   .progress-percent {
-    min-width: 1.85rem;
-    padding: 0 0.32rem;
+    min-width: 1.7rem;
+    padding: 0 0.28rem;
   }
 
   .hero-section {

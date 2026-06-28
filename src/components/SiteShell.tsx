@@ -23,8 +23,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
         </Link>
         <ToolbarBreadcrumbs />
         <nav className="site-nav" aria-label="Primary">
-          <OutlineMenuIsland outline={outline} />
           <SearchMenuIsland />
+          <OutlineMenuIsland outline={outline} />
           <AudioPlayerIsland />
           <ToolbarProgressIsland />
         </nav>

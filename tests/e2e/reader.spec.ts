@@ -178,8 +178,52 @@ test("mobile toolbar and progress menu stay within the viewport", async ({ page 
     expect(layout.headerHeight).toBeLessThanOrEqual(128);
   }
 
+  const searchButton = page.getByRole("button", { name: "Search manuscripts" });
   const outlineButton = page.getByRole("button", { name: /Outline/ });
+  const progressButton = page.getByRole("button", { name: /Progress/ });
+  await expect(searchButton).toBeVisible();
   await expect(outlineButton).toBeVisible();
+  await expect(progressButton).toBeVisible();
+
+  const toolbarMetrics = await page.evaluate(() => {
+    const search = document
+      .querySelector(".search-menu-button")
+      ?.getBoundingClientRect();
+    const outline = document
+      .querySelector(".outline-menu-button")
+      ?.getBoundingClientRect();
+    const progress = document
+      .querySelector(".progress-menu-button")
+      ?.getBoundingClientRect();
+    const progressLabel = document.querySelector(
+      ".progress-menu-button .nav-label",
+    );
+    const progressLabelStyle = progressLabel
+      ? window.getComputedStyle(progressLabel)
+      : null;
+    return {
+      searchLeft: search?.left ?? 0,
+      outlineLeft: outline?.left ?? 0,
+      searchWidth: search?.width ?? 0,
+      outlineWidth: outline?.width ?? 0,
+      progressWidth: progress?.width ?? 0,
+      progressLabelWidth: progressLabel?.getBoundingClientRect().width ?? 0,
+      progressLabelClipped: progressLabelStyle?.clip ?? "",
+    };
+  });
+
+  expect(toolbarMetrics.searchLeft).toBeLessThan(toolbarMetrics.outlineLeft);
+  if (layout.clientWidth <= 540) {
+    expect(
+      Math.abs(toolbarMetrics.searchWidth - toolbarMetrics.outlineWidth),
+    ).toBeLessThanOrEqual(1);
+    expect(
+      Math.abs(toolbarMetrics.progressWidth - toolbarMetrics.outlineWidth),
+    ).toBeLessThanOrEqual(1);
+    expect(toolbarMetrics.progressLabelWidth).toBeGreaterThan(1);
+    expect(toolbarMetrics.progressLabelClipped).toBe("auto");
+  }
+
   await outlineButton.click();
   const outlineMenu = page.getByRole("region", { name: "Site outline" });
   await expect(outlineMenu).toBeVisible();
@@ -212,8 +256,6 @@ test("mobile toolbar and progress menu stay within the viewport", async ({ page 
   await page.keyboard.press("Escape");
   await expect(outlineMenu).toHaveCount(0);
 
-  const searchButton = page.getByRole("button", { name: "Search manuscripts" });
-  await expect(searchButton).toBeVisible();
   await searchButton.click();
   const searchMenu = page.getByRole("region", { name: "Manuscript search" });
   await expect(searchMenu).toBeVisible();
@@ -240,8 +282,6 @@ test("mobile toolbar and progress menu stay within the viewport", async ({ page 
 
   await page.goto("/");
 
-  const progressButton = page.getByRole("button", { name: /Progress/ });
-  await expect(progressButton).toBeVisible();
   await expect
     .poll(async () => {
       if ((await progressButton.getAttribute("aria-expanded")) !== "true") {
