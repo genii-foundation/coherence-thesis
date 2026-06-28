@@ -1,9 +1,3 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
-
-This version has breaking changes. APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
-
 # Agent Instructions
 
 ## Core Rules
@@ -12,11 +6,12 @@ This version has breaking changes. APIs, conventions, and file structure may all
 - Do not edit generated manuscript data by hand. Edit Markdown, then run `npm run manuscripts:compile`.
 - After implementing any feature, run the narrowest useful checks during iteration, then run `npm run validate` before commit.
 - For UI changes, use `npm run test:e2e:fast:desktop` for narrow desktop checks and `npm run test:e2e:fast` for broader local checks during iteration. Run `npm run test:e2e` before commit unless the change cannot affect browser behavior.
-- After every completed feature, commit and push to `origin/main` without waiting to be asked again.
+- After every completed feature, commit the complete change and open or update a focused PR without waiting to be asked again.
 - Update `README.md` with `npm run readme:update` when package metadata, manuscript stats, generated catalog state, or development status changes.
-- Before creating a new component, hook, script, or helper, search the repository for an existing primitive that does the same job. Duplication is a bug unless there is a clear reason.
+- Before creating a new component, hook, script, or helper, search the repository for an existing primitive that does the same job. If two surfaces need the same UI or logic, extract a shared primitive and have both import it. Duplication is a bug unless there is a clear reason.
 - Before shipping, verify every exported function, class, component, or script entry point you added is called from an appropriate consumer.
 - Preserve unrelated local changes. Never reset, checkout, or delete user work unless explicitly asked.
+- When estimating effort, describe machine time only, such as one conversation or about 10 minutes. Do not quote human hours or days.
 
 ## Manuscripts
 
@@ -52,6 +47,7 @@ npm run manuscripts:validate
 - Avoid AI filler phrases such as "delve into", "it's worth noting", "leverage" as a verb, "in today's world", "furthermore", "moreover", "additionally", "at the end of the day", "game-changer", and "seamlessly".
 - Cut throat-clearing. If a first sentence only announces the paragraph, delete it.
 - Prefer short concrete sentences. If a sentence needs heavy punctuation to stay standing, split it.
+- User-facing copy should sound like a person wrote it. Prefer concrete language over abstract phrasing.
 - Contractions are fine.
 
 ## Validation
@@ -93,16 +89,14 @@ npm start
 
 ## Git Workflow
 
-- Work on the current branch unless the user asks for a separate branch. This repository currently ships directly from `main`.
-- Commit messages should follow Conventional Commits when possible:
-  - `feat:` for user-facing features
-  - `fix:` for bug fixes
-  - `chore:` for tooling, dependencies, or config
-  - `docs:` for documentation-only changes
-  - `refactor:` for behavior-preserving restructuring
-  - `perf:` for performance improvements
-  - `style:` for CSS or formatting-only changes
-- After validation, stage the complete feature, commit it, and push to `origin/main`.
+- Do not work directly on `main` for feature, manuscript, or process changes unless the user explicitly asks for a direct commit.
+- Create a short branch with a Conventional Commit prefix, such as `feat/`, `fix/`, `edit/`, `docs/`, `chore/`, `refactor/`, or `perf/`, followed by a kebab-case description.
+- Use `edit/` for manuscript updates, including changes to `content/manuscripts/`, `content/overview/`, import applications, and generated manuscript catalog updates caused by canonical text edits.
+- Keep each PR focused. One PR should represent one coherent change.
+- Commit messages should follow "Conventional Commits" when possible. Use `edit:` for manuscript updates.
+- Run `npm run validate` before opening or updating a PR for merge.
+- PR bodies must begin with `(AI Generated).`
+- Squash merge into `main`, then delete the branch.
 
 ## Debugging Standard
 
