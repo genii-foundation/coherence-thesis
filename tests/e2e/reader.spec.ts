@@ -12,8 +12,16 @@ const firstOverviewSection = catalog.sections.find(
 const searchTargetSection = catalog.sections.find((section) =>
   section.title.includes("Federated Footprint"),
 )!;
+const wieldingVolume = catalog.volumes.find(
+  (volume) => volume.volumeId === "wielding-intelligence",
+)!;
+const wieldingSection = catalog.sections.find(
+  (section) => section.volumeId === "wielding-intelligence",
+)!;
 
-test("home page presents the overview and manuscript entry points", async ({ page }) => {
+test("home page presents the overview and manuscript entry points", async ({
+  page,
+}, testInfo) => {
   await page.goto("/");
 
   await expect(page.getByRole("heading", { name: "The Coherence Thesis" })).toBeVisible();
@@ -43,6 +51,24 @@ test("home page presents the overview and manuscript entry points", async ({ pag
     "/manuscripts/",
   );
   await expect(page.getByText("Nine volume series")).toBeVisible();
+  await expect(page.locator(".overview-map")).toHaveCount(0);
+  await expect(page.getByText("Ready for the full body")).toHaveCount(0);
+  await expect(page.locator(".manuscript-cover-card")).toHaveCount(
+    catalog.volumes.length,
+  );
+
+  const wieldingCard = page.getByRole("link", { name: "Open Wielding Intelligence" });
+  const wieldingPanel = wieldingCard.locator(".manuscript-card-panel");
+  await expect(wieldingCard.locator("img")).toBeVisible();
+  if (testInfo.project.name === "desktop") {
+    await expect(wieldingPanel).toBeHidden();
+    await wieldingCard.hover();
+  }
+  await expect(wieldingPanel).toBeVisible();
+  await expect(wieldingPanel.getByText("Wielding Intelligence")).toBeVisible();
+  await expect(
+    wieldingPanel.getByText(`${wieldingVolume.wordCount.toLocaleString()} words`),
+  ).toBeVisible();
 });
 
 test("overview links into canonical manuscript sections", async ({ page }) => {
@@ -220,11 +246,11 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await expect(breadcrumbs.locator('[aria-current="page"]')).toHaveText(
     firstSection.title,
   );
+  await expect(breadcrumbs.getByText("Manuscripts")).toHaveCount(0);
+  await expect(breadcrumbs.getByText("Humanity's Most Viable Future")).toBeVisible();
   const viewport = page.viewportSize();
   if (!viewport || viewport.width > 540) {
     await expect(breadcrumbs.getByText("Home")).toHaveCount(0);
-    await expect(breadcrumbs.getByText("Manuscripts")).toBeVisible();
-    await expect(breadcrumbs.getByText("Humanity's Most Viable Future")).toBeVisible();
   }
   const progressButton = page.getByRole("button", { name: /Progress/ });
   await expect(progressButton).toBeVisible();
@@ -243,4 +269,16 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await expect(page.getByLabel("Audiobook controls")).toBeVisible();
   await expect(page.getByRole("button", { name: "Play audiobook" })).toBeVisible();
   await expect(page.getByRole("combobox", { name: "Voice" })).toBeVisible();
+});
+
+test("breadcrumb root follows the active manuscript", async ({ page }) => {
+  await page.goto(wieldingSection.href);
+
+  const breadcrumbs = page.getByRole("navigation", { name: "Breadcrumb" });
+  await expect(breadcrumbs).toBeVisible();
+  await expect(breadcrumbs.getByText("Manuscripts")).toHaveCount(0);
+  await expect(breadcrumbs.getByText("Wielding Intelligence")).toBeVisible();
+  await expect(breadcrumbs.locator("li").first()).toContainText(
+    "Wielding Intelligence",
+  );
 });

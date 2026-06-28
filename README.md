@@ -50,10 +50,10 @@ Do not edit generated files by hand. Edit source Markdown or series metadata, th
 
 <!-- BEGIN:development-status -->
 
-Generated: 2026-06-28T02:11:00.068Z
+Generated: 2026-06-28T04:07:49.758Z
 
-- Branch: edit/publish-nine-volumes
-- Revision: 537cb22
+- Branch: feat/homepage-manuscript-cards
+- Revision: fc35863
 - Working tree: local changes present
 - Next.js: 16.2.9
 - Manuscripts: 9 volume, 47 parts, 408 chapters, 566 sections
@@ -64,11 +64,11 @@ Generated: 2026-06-28T02:11:00.068Z
 Recent commits:
 
 ```text
-537cb22 feat: move audiobook controls to toolbar
-292fb0d feat: continue audiobook across sections
-f6926b3 fix: preserve background during safari overscroll
-c4f2621 fix: deploy static export on vercel
-6873ba1 style: remove site footer copy
+fc35863 feat: add manuscript search
+b26b0f5 feat: add toolbar outline menu
+181d2e4 fix: simplify reader breadcrumbs
+4465251 edit: publish complete manuscript collection
+bec081a fix: reduce manuscript index heading scale
 ```
 
 <!-- END:development-status -->
