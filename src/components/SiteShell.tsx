@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
 import { OutlineMenuIsland } from "@/components/OutlineMenuIsland";
+import { PageFadeIsland } from "@/components/PageFadeIsland";
 import { SearchMenuIsland } from "@/components/SearchMenuIsland";
 import { ToolbarBreadcrumbs } from "@/components/ToolbarBreadcrumbs";
 import { ToolbarProgressIsland } from "@/components/ToolbarProgressIsland";
@@ -28,7 +29,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <ToolbarProgressIsland />
         </nav>
       </header>
-      <main id="main-content">{children}</main>
+      <main id="main-content">
+        <PageFadeIsland>{children}</PageFadeIsland>
+      </main>
     </div>
   );
 }
