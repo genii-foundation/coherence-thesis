@@ -43,11 +43,12 @@ export default async function VolumePage({
 
   return (
     <div className="page-frame">
-      <header className="page-heading">
+      <header className="page-heading volume-heading">
         <p className="eyebrow">Volume {volume.numberLabel}</p>
         <h1>{volume.title}</h1>
         <p>
-          {volume.subtitle} {volume.parts.length} parts,{" "}
+          {volume.subtitle ? `${volume.subtitle} ` : ""}
+          {volume.parts.length} parts,{" "}
           {volume.wordCount.toLocaleString()} words.
         </p>
       </header>

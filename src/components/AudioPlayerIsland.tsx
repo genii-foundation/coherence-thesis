@@ -185,7 +185,7 @@ export function AudioPlayerIsland() {
         onClick={() => setOpen((current) => !current)}
       >
         <Headphones aria-hidden="true" size={17} />
-        Listen
+        <span className="nav-label">Listen</span>
         <ChevronDown aria-hidden="true" size={16} />
       </button>
       {open && (

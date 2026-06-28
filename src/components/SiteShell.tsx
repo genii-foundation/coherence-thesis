@@ -20,11 +20,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <nav className="site-nav" aria-label="Primary">
           <Link href="/overview/">
             <ListTree aria-hidden="true" size={17} />
-            Overview
+            <span className="nav-label">Overview</span>
           </Link>
           <Link href="/manuscripts/">
             <BookOpen aria-hidden="true" size={17} />
-            Manuscripts
+            <span className="nav-label">Manuscripts</span>
           </Link>
           <AudioPlayerIsland />
           <ToolbarProgressIsland />
