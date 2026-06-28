@@ -131,8 +131,8 @@ export function ToolbarProgressIsland({
         aria-controls="reader-progress-menu"
         onClick={() => setOpen((current) => !current)}
       >
-        Progress
-        <span>{percent}%</span>
+        <span className="nav-label">Progress</span>
+        <span className="progress-percent">{percent}%</span>
         <ChevronDown aria-hidden="true" size={16} />
       </button>
       {open && (

@@ -39,14 +39,21 @@
 
 html {
   min-height: 100%;
+  width: 100%;
+  overflow-x: clip;
   background: var(--page-background);
   background-color: var(--paper);
   background-size: var(--page-background-size);
+  color-scheme: light;
   scroll-behavior: smooth;
 }
 
 body {
   min-height: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
   margin: 0;
   background: var(--page-background);
   background-color: var(--paper);
@@ -56,8 +63,19 @@ body {
   letter-spacing: 0;
 }
 
+@supports not (overflow-x: clip) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+
 a {
   color: inherit;
+}
+
+main {
+  min-width: 0;
 }
 
 button,
@@ -70,6 +88,8 @@ input {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 .skip-link {
@@ -108,6 +128,7 @@ input {
   border-bottom: 1px solid var(--line);
   background: rgba(244, 234, 215, 0.88);
   backdrop-filter: blur(16px);
+  box-shadow: 0 10px 28px rgba(44, 31, 18, 0.1);
   padding: 0.85rem clamp(1rem, 4vw, 3rem);
 }
 
@@ -256,7 +277,7 @@ input {
   padding: 0.65rem 0.75rem;
 }
 
-.progress-menu-button span {
+.progress-percent {
   min-width: 2.2rem;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -920,47 +941,94 @@ input {
 
 @media (max-width: 860px) {
   .site-header {
-    align-items: flex-start;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem 0.7rem;
+    padding: 0.65rem max(0.85rem, env(safe-area-inset-right)) 0.55rem
+      max(0.85rem, env(safe-area-inset-left));
   }
 
-  .brand-mark,
+  .brand-mark {
+    flex: 1 1 10rem;
+    min-width: 0;
+    width: auto;
+    padding: 0.2rem 0;
+  }
+
+  .brand-kicker {
+    overflow: hidden;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .brand-title {
+    display: none;
+  }
+
   .breadcrumb-trail {
-    width: 100%;
+    flex: 0 1 min(42vw, 15rem);
+    width: auto;
+    min-width: 0;
+    text-align: right;
   }
 
   .breadcrumb-trail ol {
-    overflow-x: auto;
+    justify-content: flex-end;
+    overflow: hidden;
     padding-bottom: 0.1rem;
-    scrollbar-width: none;
   }
 
-  .breadcrumb-trail ol::-webkit-scrollbar {
+  .breadcrumb-trail li:not(:last-child) {
     display: none;
+  }
+
+  .breadcrumb-trail li:not(:last-child)::after {
+    content: none;
   }
 
   .breadcrumb-trail a,
   .breadcrumb-trail span {
-    max-width: 14rem;
+    max-width: min(42vw, 15rem);
+    padding: 0.25rem 0;
   }
 
   .site-nav {
+    flex: 1 0 100%;
+    justify-content: space-between;
+    gap: 0.3rem;
     width: 100%;
+    min-width: 0;
   }
 
   .site-nav a,
   .audio-menu,
+  .progress-menu {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .site-nav a,
   .audio-menu-button,
-  .progress-menu,
   .progress-menu-button {
-    flex: 1;
+    min-width: 0;
+    min-height: 2.45rem;
+    width: 100%;
+    padding: 0.5rem 0.45rem;
   }
 
   .audio-popover,
   .progress-popover {
-    left: 0;
-    right: auto;
-    width: min(100%, 26rem);
+    position: fixed;
+    top: calc(env(safe-area-inset-top) + 6.35rem);
+    right: max(0.85rem, env(safe-area-inset-right));
+    left: max(0.85rem, env(safe-area-inset-left));
+    width: auto;
+    max-height: calc(100svh - env(safe-area-inset-top) - 7.25rem);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .hero-section,
@@ -1000,7 +1068,65 @@ input {
 @media (max-width: 540px) {
   .home-page,
   .page-frame {
-    width: min(100% - 1rem, 1160px);
+    width: min(100% - 2.5rem, 1160px);
+    padding: clamp(2rem, 8vw, 3rem) 0;
+  }
+
+  .site-header {
+    gap: 0.42rem 0.55rem;
+  }
+
+  .brand-mark {
+    flex-basis: min(58vw, 13rem);
+  }
+
+  .breadcrumb-trail {
+    flex-basis: min(36vw, 10rem);
+  }
+
+  .site-nav .nav-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .site-nav a,
+  .audio-menu-button,
+  .progress-menu-button {
+    gap: 0.35rem;
+    padding-right: 0.35rem;
+    padding-left: 0.35rem;
+  }
+
+  .progress-percent {
+    min-width: 1.85rem;
+    padding: 0 0.32rem;
+  }
+
+  .hero-section {
+    gap: 1.75rem;
+  }
+
+  .hero-copy h1 {
+    max-width: 100%;
+    font-size: clamp(3.1rem, 15vw, 4.8rem);
+  }
+
+  .hero-deck {
+    font-size: clamp(1rem, 4.5vw, 1.1rem);
+  }
+
+  .hero-actions {
+    align-items: stretch;
+  }
+
+  .primary-link,
+  .secondary-link {
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .stats-band,
