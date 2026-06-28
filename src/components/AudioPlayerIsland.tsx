@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Pause, Play, Square } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { ChevronDown, Headphones, Pause, Play, Square } from "lucide-react";
 import type { Section } from "@/lib/manuscript-data";
 import {
   defaultVoicePreference,
@@ -11,6 +12,10 @@ import {
 } from "@/lib/audio-queue";
 
 const voiceStorageKey = "coherence-audio-voice-v1";
+
+function normalizePath(path: string): string {
+  return path.endsWith("/") ? path : `${path}/`;
+}
 
 function loadPreference(): AudioVoicePreference {
   if (typeof window === "undefined") return defaultVoicePreference;
@@ -25,12 +30,29 @@ function loadPreference(): AudioVoicePreference {
 }
 
 export function AudioPlayerIsland({ sections }: { sections: Section[] }) {
-  const queue = useMemo<AudioQueueItem[]>(() => queueFromSections(sections), [sections]);
+  const pathname = usePathname();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const playbackSections = useMemo(() => {
+    const currentPath = normalizePath(pathname);
+    if (!currentPath.startsWith("/manuscripts/")) return [];
+
+    const exactSectionIndex = sections.findIndex(
+      (section) => normalizePath(section.href) === currentPath,
+    );
+    if (exactSectionIndex >= 0) return sections.slice(exactSectionIndex);
+
+    return sections.filter((section) => normalizePath(section.href).startsWith(currentPath));
+  }, [pathname, sections]);
+  const queue = useMemo<AudioQueueItem[]>(
+    () => queueFromSections(playbackSections),
+    [playbackSections],
+  );
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [preference, setPreference] = useState<AudioVoicePreference>(
     () => defaultVoicePreference,
   );
   const [activeIndex, setActiveIndex] = useState(0);
+  const [open, setOpen] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [supported, setSupported] = useState(true);
   const playbackTokenRef = useRef(0);
@@ -57,6 +79,37 @@ export function AudioPlayerIsland({ sections }: { sections: Section[] }) {
       }
     };
   }, []);
+
+  useEffect(() => {
+    playbackTokenRef.current += 1;
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+    const resetTimer = window.setTimeout(() => {
+      setActiveIndex(0);
+      setOpen(false);
+      setPlaying(false);
+    }, 0);
+    return () => window.clearTimeout(resetTimer);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (event: PointerEvent) => {
+      if (!containerRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -108,57 +161,76 @@ export function AudioPlayerIsland({ sections }: { sections: Section[] }) {
   const active = queue[activeIndex] ?? queue[0];
 
   return (
-    <section className="audio-player" aria-label="Audiobook controls">
-      <div className="audio-player-title">
-        <span className="eyebrow">Listen</span>
-        <strong>{active.title}</strong>
-      </div>
-      <div className="audio-controls">
-        <button
-          type="button"
-          className="round-button"
-          onClick={() => (playing ? pause() : speak())}
-          aria-label={playing ? "Pause audiobook" : "Play audiobook"}
+    <div className="audio-menu" ref={containerRef}>
+      <button
+        type="button"
+        className="audio-menu-button"
+        aria-expanded={open}
+        aria-controls="audiobook-menu"
+        onClick={() => setOpen((current) => !current)}
+      >
+        <Headphones aria-hidden="true" size={17} />
+        Listen
+        <ChevronDown aria-hidden="true" size={16} />
+      </button>
+      {open && (
+        <section
+          id="audiobook-menu"
+          className="audio-player audio-popover"
+          aria-label="Audiobook controls"
         >
-          {playing ? <Pause aria-hidden="true" size={20} /> : <Play aria-hidden="true" size={20} />}
-        </button>
-        <button type="button" className="round-button subtle" onClick={stop} aria-label="Stop audiobook">
-          <Square aria-hidden="true" size={18} />
-        </button>
-        <select
-          aria-label="Voice"
-          value={preference.voiceURI ?? ""}
-          onChange={(event) =>
-            setPreference((current) => ({
-              ...current,
-              voiceURI: event.target.value || null,
-            }))
-          }
-        >
-          <option value="">System voice</option>
-          {voices.map((voice) => (
-            <option key={voice.voiceURI} value={voice.voiceURI}>
-              {voice.name}
-            </option>
-          ))}
-        </select>
-      </div>
-      <label className="range-field">
-        Rate
-        <input
-          type="range"
-          min="0.75"
-          max="1.4"
-          step="0.05"
-          value={preference.rate}
-          onChange={(event) =>
-            setPreference((current) => ({
-              ...current,
-              rate: Number(event.target.value),
-            }))
-          }
-        />
-      </label>
-    </section>
+          <div className="audio-player-title">
+            <span className="eyebrow">Listen</span>
+            <strong>{active.title}</strong>
+          </div>
+          <div className="audio-controls">
+            <button
+              type="button"
+              className="round-button"
+              onClick={() => (playing ? pause() : speak())}
+              aria-label={playing ? "Pause audiobook" : "Play audiobook"}
+            >
+              {playing ? <Pause aria-hidden="true" size={20} /> : <Play aria-hidden="true" size={20} />}
+            </button>
+            <button type="button" className="round-button subtle" onClick={stop} aria-label="Stop audiobook">
+              <Square aria-hidden="true" size={18} />
+            </button>
+            <select
+              aria-label="Voice"
+              value={preference.voiceURI ?? ""}
+              onChange={(event) =>
+                setPreference((current) => ({
+                  ...current,
+                  voiceURI: event.target.value || null,
+                }))
+              }
+            >
+              <option value="">System voice</option>
+              {voices.map((voice) => (
+                <option key={voice.voiceURI} value={voice.voiceURI}>
+                  {voice.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <label className="range-field">
+            Rate
+            <input
+              type="range"
+              min="0.75"
+              max="1.4"
+              step="0.05"
+              value={preference.rate}
+              onChange={(event) =>
+                setPreference((current) => ({
+                  ...current,
+                  rate: Number(event.target.value),
+                }))
+              }
+            />
+          </label>
+        </section>
+      )}
+    </div>
   );
 }

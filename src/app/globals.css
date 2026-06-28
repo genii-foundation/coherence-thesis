@@ -204,6 +204,7 @@ input {
 }
 
 .site-nav a,
+.audio-menu-button,
 .progress-menu-button,
 .primary-link,
 .secondary-link,
@@ -232,6 +233,8 @@ input {
 
 .site-nav a:hover,
 .site-nav a:focus-visible,
+.audio-menu-button:hover,
+.audio-menu-button:focus-visible,
 .progress-menu-button:hover,
 .progress-menu-button:focus-visible {
   background: rgba(164, 123, 63, 0.11);
@@ -239,10 +242,12 @@ input {
   outline: none;
 }
 
+.audio-menu,
 .progress-menu {
   position: relative;
 }
 
+.audio-menu-button,
 .progress-menu-button {
   border: 0;
   background: transparent;
@@ -264,11 +269,19 @@ input {
   text-align: center;
 }
 
+.audio-popover,
 .progress-popover {
   position: absolute;
   top: calc(100% + 0.65rem);
   right: 0;
   z-index: 20;
+}
+
+.audio-popover {
+  width: min(26rem, calc(100vw - 2rem));
+}
+
+.progress-popover {
   width: min(22rem, calc(100vw - 2rem));
 }
 
@@ -751,14 +764,6 @@ input {
   text-align: right;
 }
 
-.audio-player {
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 9;
-  width: min(26rem, calc(100vw - 2rem));
-}
-
 .audio-player-title {
   display: grid;
   gap: 0.15rem;
@@ -902,15 +907,18 @@ input {
   }
 
   .site-nav a,
+  .audio-menu,
+  .audio-menu-button,
   .progress-menu,
   .progress-menu-button {
     flex: 1;
   }
 
+  .audio-popover,
   .progress-popover {
     left: 0;
     right: auto;
-    width: min(100%, 22rem);
+    width: min(100%, 26rem);
   }
 
   .hero-section,
@@ -944,13 +952,6 @@ input {
   .overview-node p,
   .reference-grid {
     padding-left: 1.1rem;
-  }
-
-  .audio-player {
-    position: sticky;
-    bottom: 0;
-    width: 100%;
-    margin-top: 1rem;
   }
 }
 

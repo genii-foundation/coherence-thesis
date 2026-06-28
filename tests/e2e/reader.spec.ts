@@ -43,6 +43,9 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
     })
     .toBe("true");
   await expect(page.getByRole("button", { name: /Mark read|Read/ })).toBeVisible();
+  const listenButton = page.getByRole("button", { name: /Listen/ });
+  await expect(listenButton).toBeVisible();
+  await listenButton.click();
   await expect(page.getByLabel("Audiobook controls")).toBeVisible();
   await expect(page.getByRole("button", { name: "Play audiobook" })).toBeVisible();
   await expect(page.getByRole("combobox", { name: "Voice" })).toBeVisible();

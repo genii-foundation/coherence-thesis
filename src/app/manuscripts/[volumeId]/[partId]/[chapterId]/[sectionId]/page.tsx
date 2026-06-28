@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import {
   routeParams,
   sectionById,
   sectionByRoute,
-  sectionsStartingAt,
 } from "@/lib/manuscript-data";
 
 export const dynamicParams = false;
@@ -49,7 +47,6 @@ export default async function SectionPage({
   if (!section) notFound();
   const previous = section.previousSectionId ? sectionById(section.previousSectionId) : null;
   const next = section.nextSectionId ? sectionById(section.nextSectionId) : null;
-  const playbackSections = sectionsStartingAt(section.sectionId);
 
   return (
     <div className="page-frame reader-layout">
@@ -67,7 +64,6 @@ export default async function SectionPage({
         <MarkdownBody markdown={section.body} />
         <ManuscriptNavigation previous={previous} next={next} />
       </article>
-      <AudioPlayerIsland sections={playbackSections} />
     </div>
   );
 }

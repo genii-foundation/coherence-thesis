@@ -1,9 +1,10 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { BookOpen, ListTree } from "lucide-react";
+import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
 import { ToolbarBreadcrumbs } from "@/components/ToolbarBreadcrumbs";
 import { ToolbarProgressIsland } from "@/components/ToolbarProgressIsland";
-import { breadcrumbRoutes, catalog, progressSections } from "@/lib/manuscript-data";
+import { allSections, breadcrumbRoutes, catalog, progressSections } from "@/lib/manuscript-data";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
@@ -26,6 +27,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <BookOpen aria-hidden="true" size={17} />
             Manuscript
           </Link>
+          <AudioPlayerIsland sections={allSections()} />
           <ToolbarProgressIsland allSections={progressSections()} />
         </nav>
       </header>
