@@ -24,8 +24,21 @@ export type BreadcrumbRoute = {
   crumbs: BreadcrumbCrumb[];
 };
 
+export type SearchIndexEntry = {
+  sectionId: string;
+  href: string;
+  title: string;
+  volumeTitle: string;
+  partTitle: string;
+  chapterTitle: string;
+  wordCount: number;
+  contentHash: string;
+  text: string;
+};
+
 let readerSectionsPromise: Promise<ReaderSectionData[]> | null = null;
 let breadcrumbRoutesPromise: Promise<BreadcrumbRoute[]> | null = null;
+let searchIndexPromise: Promise<SearchIndexEntry[]> | null = null;
 
 export function loadReaderSections(): Promise<ReaderSectionData[]> {
   readerSectionsPromise ??= fetch("/data/reader-sections.json").then((response) => {
@@ -45,4 +58,14 @@ export function loadBreadcrumbRoutes(): Promise<BreadcrumbRoute[]> {
     return response.json() as Promise<BreadcrumbRoute[]>;
   });
   return breadcrumbRoutesPromise;
+}
+
+export function loadSearchIndex(): Promise<SearchIndexEntry[]> {
+  searchIndexPromise ??= fetch("/data/search-index.json").then((response) => {
+    if (!response.ok) {
+      throw new Error(`Unable to load search index: ${response.status}`);
+    }
+    return response.json() as Promise<SearchIndexEntry[]>;
+  });
+  return searchIndexPromise;
 }

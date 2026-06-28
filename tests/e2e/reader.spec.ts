@@ -9,6 +9,9 @@ const firstOverviewReference = catalog.overview.nodes.flatMap(
 const firstOverviewSection = catalog.sections.find(
   (section) => section.sectionId === firstOverviewReference.sectionId,
 )!;
+const searchTargetSection = catalog.sections.find((section) =>
+  section.title.includes("Federated Footprint"),
+)!;
 
 test("home page presents the overview and manuscript entry points", async ({ page }) => {
   await page.goto("/");
@@ -150,6 +153,34 @@ test("mobile toolbar and progress menu stay within the viewport", async ({ page 
   ).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(outlineMenu).toHaveCount(0);
+
+  const searchButton = page.getByRole("button", { name: "Search manuscripts" });
+  await expect(searchButton).toBeVisible();
+  await searchButton.click();
+  const searchMenu = page.getByRole("region", { name: "Manuscript search" });
+  await expect(searchMenu).toBeVisible();
+  await page.getByRole("searchbox", { name: "Search all manuscripts" }).fill(
+    "federated footprint",
+  );
+  const searchResult = searchMenu.getByRole("link", {
+    name: new RegExp(searchTargetSection.title),
+  });
+  await expect(searchResult).toBeVisible();
+
+  const searchBox = await searchMenu.boundingBox();
+  const searchViewport = page.viewportSize();
+  expect(searchBox).not.toBeNull();
+  expect(searchViewport).not.toBeNull();
+
+  if (searchBox && searchViewport) {
+    expect(searchBox.x).toBeGreaterThanOrEqual(-1);
+    expect(searchBox.x + searchBox.width).toBeLessThanOrEqual(searchViewport.width + 1);
+  }
+
+  await searchResult.click();
+  await expect(page).toHaveURL(searchTargetSection.href);
+
+  await page.goto("/");
 
   const progressButton = page.getByRole("button", { name: /Progress/ });
   await expect(progressButton).toBeVisible();

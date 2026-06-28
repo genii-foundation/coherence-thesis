@@ -3,7 +3,7 @@
 ## Core Rules
 
 - This repository is the canonical source of truth for The Coherence Thesis. Source manuscripts are Markdown files in `sources/manuscripts/`. Generated canonical reader sections live in `content/manuscripts/`.
-- Do not edit generated manuscript data by hand. Edit Markdown, then run `npm run manuscripts:compile`.
+- Do not edit generated manuscript data by hand. Edit Markdown, then run `npm run manuscripts:compile`. This also rebuilds the public reader data, breadcrumb data, and manuscript search index.
 - After implementing any feature, run the narrowest useful checks during iteration, then run `npm run validate` before commit.
 - For UI changes, use `npm run test:e2e:fast:desktop` for narrow desktop checks and `npm run test:e2e:fast` for broader local checks during iteration. Run `npm run test:e2e` before commit unless the change cannot affect browser behavior.
 - After every completed feature, commit the complete change and open or update a focused PR without waiting to be asked again.
@@ -17,6 +17,7 @@
 
 - Authors edit source Markdown in `sources/manuscripts/` or series metadata in `content/series/`.
 - Do not edit generated canonical reader sections in `content/manuscripts/` by hand. Run `npm run manuscripts:import`.
+- Generated browser data lives in `public/data/`, including the reader payload, breadcrumb routes, and manuscript search index.
 - Overview nodes live in `content/overview/` and must reference real section IDs.
 - Stable section IDs support deep links, read progress, update badges, recommendations, audio queues, and future spaced repetition. Preserve historical deep links from this publishing pipeline forward with `content/series/aliases.json`.
 - New Markdown source updates must go through the publishing workflow:

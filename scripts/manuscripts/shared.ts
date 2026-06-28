@@ -15,6 +15,7 @@ export const catalogPath = path.join(generatedRoot, "catalog.json");
 export const publicDataRoot = path.join(repoRoot, "public/data");
 export const readerSectionsPath = path.join(publicDataRoot, "reader-sections.json");
 export const breadcrumbRoutesPath = path.join(publicDataRoot, "breadcrumb-routes.json");
+export const searchIndexPath = path.join(publicDataRoot, "search-index.json");
 export const artifactsRoot = path.join(repoRoot, "artifacts/imports");
 
 export type ManuscriptFrontmatter = {
@@ -168,6 +169,18 @@ export type CompiledCatalog = {
   sections: CompiledSection[];
   aliases: SectionAlias[];
   overview: OverviewDocument;
+};
+
+export type SearchIndexEntry = {
+  sectionId: string;
+  href: string;
+  title: string;
+  volumeTitle: string;
+  partTitle: string;
+  chapterTitle: string;
+  wordCount: number;
+  contentHash: string;
+  text: string;
 };
 
 export function ensureDir(dirPath: string): void {
@@ -616,4 +629,18 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
     aliases,
     overview: readOverview(),
   };
+}
+
+export function buildSearchIndex(catalog: CompiledCatalog): SearchIndexEntry[] {
+  return catalog.sections.map((section) => ({
+    sectionId: section.sectionId,
+    href: section.href,
+    title: section.title,
+    volumeTitle: section.volumeTitle,
+    partTitle: section.partTitle,
+    chapterTitle: section.chapterTitle,
+    wordCount: section.wordCount,
+    contentHash: section.contentHash,
+    text: section.text,
+  }));
 }

@@ -1,6 +1,7 @@
 import path from "node:path";
 import {
   buildCatalog,
+  buildSearchIndex,
   breadcrumbRoutesPath,
   catalogPath,
   ensureDir,
@@ -8,6 +9,7 @@ import {
   publicDataRoot,
   readerSectionsPath,
   repoRoot,
+  searchIndexPath,
   writeJson,
 } from "./shared";
 
@@ -74,17 +76,20 @@ export function compileManuscripts(): void {
     })),
   }));
   const breadcrumbRoutes = buildBreadcrumbRoutes(catalog);
+  const searchIndex = buildSearchIndex(catalog);
   ensureDir(generatedRoot);
   ensureDir(publicDataRoot);
   writeJson(catalogPath, catalog);
   writeJson(readerSectionsPath, readerSections);
   writeJson(breadcrumbRoutesPath, breadcrumbRoutes);
+  writeJson(searchIndexPath, searchIndex);
   console.log(
     `Compiled ${catalog.stats.sectionCount} sections, ${catalog.stats.wordCount.toLocaleString()} words`,
   );
   console.log(`Catalog: ${path.relative(repoRoot, catalogPath)}`);
   console.log(`Reader data: ${path.relative(repoRoot, readerSectionsPath)}`);
   console.log(`Breadcrumb data: ${path.relative(repoRoot, breadcrumbRoutesPath)}`);
+  console.log(`Search index: ${path.relative(repoRoot, searchIndexPath)}`);
 }
 
 compileManuscripts();

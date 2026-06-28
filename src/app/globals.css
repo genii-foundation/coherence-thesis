@@ -250,6 +250,7 @@ input {
 
 .site-nav a,
 .outline-menu-button,
+.search-menu-button,
 .audio-menu-button,
 .progress-menu-button,
 .primary-link,
@@ -281,6 +282,8 @@ input {
 .site-nav a:focus-visible,
 .outline-menu-button:hover,
 .outline-menu-button:focus-visible,
+.search-menu-button:hover,
+.search-menu-button:focus-visible,
 .audio-menu-button:hover,
 .audio-menu-button:focus-visible,
 .progress-menu-button:hover,
@@ -291,12 +294,14 @@ input {
 }
 
 .outline-menu,
+.search-menu,
 .audio-menu,
 .progress-menu {
   position: relative;
 }
 
 .outline-menu-button,
+.search-menu-button,
 .audio-menu-button,
 .progress-menu-button {
   border: 0;
@@ -320,12 +325,24 @@ input {
 }
 
 .outline-popover,
+.search-popover,
 .audio-popover,
 .progress-popover {
   position: absolute;
   top: calc(100% + 0.65rem);
   right: 0;
   z-index: 20;
+}
+
+.search-popover {
+  width: min(34rem, calc(100vw - 2rem));
+  max-height: min(38rem, calc(100svh - 7rem));
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(251, 246, 235, 0.96);
+  box-shadow: var(--shadow);
+  color: var(--ink);
 }
 
 .outline-popover {
@@ -352,7 +369,30 @@ input {
   padding: 0.85rem;
 }
 
+.search-field {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(251, 246, 235, 0.98);
+  color: var(--ink-muted);
+  padding: 0.85rem;
+}
+
 .outline-search input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.42);
+  color: var(--ink);
+  padding: 0.55rem 0.65rem;
+}
+
+.search-field input {
   width: 100%;
   min-width: 0;
   border: 1px solid transparent;
@@ -369,11 +409,90 @@ input {
   outline: none;
 }
 
+.search-field input:hover,
+.search-field input:focus-visible {
+  border-color: rgba(119, 84, 42, 0.34);
+  background: rgba(255, 255, 255, 0.64);
+  outline: none;
+}
+
 .outline-scroll {
   max-height: calc(min(42rem, 100svh - 7rem) - 4.45rem);
   overflow: auto;
   padding: 0.9rem;
   -webkit-overflow-scrolling: touch;
+}
+
+.search-results {
+  display: grid;
+  gap: 0.55rem;
+  max-height: calc(min(38rem, 100svh - 7rem) - 4.45rem);
+  overflow: auto;
+  padding: 0.9rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.search-result {
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+  border: 1px solid rgba(119, 84, 42, 0.2);
+  border-radius: var(--radius);
+  background: rgba(244, 234, 215, 0.52);
+  color: var(--ink-soft);
+  padding: 0.72rem;
+  text-decoration: none;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.search-result:hover,
+.search-result:focus-visible {
+  border-color: rgba(119, 84, 42, 0.38);
+  background: rgba(164, 123, 63, 0.11);
+  color: var(--ink);
+  outline: none;
+}
+
+.search-result-heading {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.search-result-heading strong,
+.search-result-heading small,
+.search-result-snippet {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-result-heading strong {
+  color: var(--ink);
+}
+
+.search-result-heading small {
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.search-result-snippet {
+  display: -webkit-box;
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.search-empty {
+  margin: 0;
+  padding: 0.25rem;
 }
 
 .outline-section + .outline-section {
@@ -1346,6 +1465,7 @@ input {
 
   .site-nav a,
   .outline-menu,
+  .search-menu,
   .audio-menu,
   .progress-menu {
     flex: 1 1 0;
@@ -1354,6 +1474,7 @@ input {
 
   .site-nav a,
   .outline-menu-button,
+  .search-menu-button,
   .audio-menu-button,
   .progress-menu-button {
     min-width: 0;
@@ -1363,6 +1484,7 @@ input {
   }
 
   .outline-popover,
+  .search-popover,
   .audio-popover,
   .progress-popover {
     position: fixed;
@@ -1379,7 +1501,15 @@ input {
     max-height: calc(100svh - env(safe-area-inset-top) - 7.25rem);
   }
 
+  .search-popover {
+    max-height: calc(100svh - env(safe-area-inset-top) - 7.25rem);
+  }
+
   .outline-scroll {
+    max-height: calc(100svh - env(safe-area-inset-top) - 11.7rem);
+  }
+
+  .search-results {
     max-height: calc(100svh - env(safe-area-inset-top) - 11.7rem);
   }
 
@@ -1457,6 +1587,7 @@ input {
 
   .site-nav a,
   .outline-menu-button,
+  .search-menu-button,
   .audio-menu-button,
   .progress-menu-button {
     gap: 0.35rem;

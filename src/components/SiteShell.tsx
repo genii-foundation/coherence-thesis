@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
 import { OutlineMenuIsland } from "@/components/OutlineMenuIsland";
+import { SearchMenuIsland } from "@/components/SearchMenuIsland";
 import { ToolbarBreadcrumbs } from "@/components/ToolbarBreadcrumbs";
 import { ToolbarProgressIsland } from "@/components/ToolbarProgressIsland";
 import { toolbarOutline } from "@/lib/manuscript-data";
@@ -22,6 +23,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <ToolbarBreadcrumbs />
         <nav className="site-nav" aria-label="Primary">
           <OutlineMenuIsland outline={outline} />
+          <SearchMenuIsland />
           <AudioPlayerIsland />
           <ToolbarProgressIsland />
         </nav>

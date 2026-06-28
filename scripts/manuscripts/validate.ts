@@ -2,9 +2,11 @@ import fs from "node:fs";
 import { pathToFileURL } from "node:url";
 import {
   buildCatalog,
+  buildSearchIndex,
   catalogPath,
   readMarkdownDocuments,
   sectionHref,
+  searchIndexPath,
 } from "./shared";
 import type { CompiledCatalog } from "./shared";
 
@@ -93,6 +95,15 @@ export function validateManuscripts(): void {
     assert(
       catalogJsonForStaleCheck(current) === next,
       "Generated manuscript catalog is stale. Run npm run manuscripts:compile.",
+    );
+  }
+
+  if (fs.existsSync(searchIndexPath)) {
+    const current = fs.readFileSync(searchIndexPath, "utf8");
+    const next = `${JSON.stringify(buildSearchIndex(catalog), null, 2)}\n`;
+    assert(
+      current === next,
+      "Generated search index is stale. Run npm run manuscripts:compile.",
     );
   }
 
