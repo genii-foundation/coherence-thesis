@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type KeyboardEvent as ReactKeyboardEvent,
+} from "react";
 import { usePathname } from "next/navigation";
 import { Search } from "lucide-react";
 import { loadSearchIndex, type SearchIndexEntry } from "@/lib/reader-data";
@@ -67,7 +73,9 @@ function scoreEntry(entry: SearchIndexEntry, terms: string[], phrase: string): S
 export function SearchMenuIsland() {
   const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const resultRefs = useRef<Array<HTMLAnchorElement | null>>([]);
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState<SearchIndexEntry[]>([]);
@@ -95,16 +103,23 @@ export function SearchMenuIsland() {
     return () => window.clearTimeout(closeTimer);
   }, [pathname]);
 
+  function closeSearch(restoreFocus = false): void {
+    setOpen(false);
+    if (restoreFocus) {
+      window.setTimeout(() => buttonRef.current?.focus(), 0);
+    }
+  }
+
   useEffect(() => {
     if (!open) return;
     const focusTimer = window.setTimeout(() => inputRef.current?.focus(), 0);
     const onPointerDown = (event: PointerEvent) => {
       if (!containerRef.current?.contains(event.target as Node)) {
-        setOpen(false);
+        closeSearch();
       }
     };
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") closeSearch(true);
     };
     document.addEventListener("pointerdown", onPointerDown);
     document.addEventListener("keydown", onKeyDown);
@@ -127,9 +142,71 @@ export function SearchMenuIsland() {
 
   const trimmedQuery = query.trim();
 
+  function focusResult(index: number): void {
+    resultRefs.current[index]?.focus();
+  }
+
+  function onInputKeyDown(event: ReactKeyboardEvent<HTMLInputElement>): void {
+    if (event.key === "ArrowDown" && results.length > 0) {
+      event.preventDefault();
+      focusResult(0);
+      return;
+    }
+
+    if (event.key === "Enter" && results.length > 0) {
+      event.preventDefault();
+      window.location.assign(results[0].href);
+      return;
+    }
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeSearch(true);
+    }
+  }
+
+  function onResultKeyDown(
+    event: ReactKeyboardEvent<HTMLAnchorElement>,
+    index: number,
+  ): void {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      focusResult(Math.min(results.length - 1, index + 1));
+      return;
+    }
+
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (index === 0) {
+        inputRef.current?.focus();
+      } else {
+        focusResult(index - 1);
+      }
+      return;
+    }
+
+    if (event.key === "Home") {
+      event.preventDefault();
+      inputRef.current?.focus();
+      return;
+    }
+
+    if (event.key === "End") {
+      event.preventDefault();
+      focusResult(results.length - 1);
+      return;
+    }
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeSearch(true);
+    }
+  }
+
   return (
     <div className="search-menu" ref={containerRef}>
       <button
+        ref={buttonRef}
         type="button"
         className="search-menu-button"
         aria-label="Search manuscripts"
@@ -153,11 +230,17 @@ export function SearchMenuIsland() {
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
+              onKeyDown={onInputKeyDown}
+              aria-controls="search-results-list"
               placeholder="Search all manuscripts"
               autoComplete="off"
             />
           </label>
-          <div className="search-results">
+          <div
+            id="search-results-list"
+            className="search-results"
+            aria-live="polite"
+          >
             {loadError && (
               <p className="quiet-copy search-empty">Search index could not load.</p>
             )}
@@ -169,14 +252,22 @@ export function SearchMenuIsland() {
             {!loadError && trimmedQuery.length > 0 && results.length === 0 && (
               <p className="quiet-copy search-empty">No manuscript matches.</p>
             )}
-            {results.map((result) => (
-              <a key={result.sectionId} href={result.href} className="search-result">
-                <span className="search-result-heading">
+            {results.map((result, resultIndex) => (
+              <a
+                key={result.sectionId}
+                ref={(element) => {
+                  resultRefs.current[resultIndex] = element;
+                }}
+                href={result.href}
+                className="search-result"
+                onKeyDown={(event) => onResultKeyDown(event, resultIndex)}
+              >
+                <span className="search-result-title">
                   <strong>{result.title}</strong>
-                  <small>
-                    {result.volumeTitle} / {result.partTitle} / {result.chapterTitle}
-                  </small>
                 </span>
+                <small className="search-result-meta">
+                  {result.volumeTitle} / {result.partTitle} / {result.chapterTitle}
+                </small>
                 <span className="search-result-snippet">{result.snippet}</span>
               </a>
             ))}

@@ -273,13 +273,55 @@ test("mobile toolbar and progress menu stay within the viewport", async ({ page 
   await searchButton.click();
   const searchMenu = page.getByRole("region", { name: "Manuscript search" });
   await expect(searchMenu).toBeVisible();
-  await page.getByRole("searchbox", { name: "Search all manuscripts" }).fill(
-    "federated footprint",
-  );
+  const searchInput = page.getByRole("searchbox", {
+    name: "Search all manuscripts",
+  });
+  await searchInput.fill("federated footprint");
   const searchResult = searchMenu.getByRole("link", {
     name: new RegExp(searchTargetSection.title),
   });
   await expect(searchResult).toBeVisible();
+  const searchResults = searchMenu.locator(".search-result");
+  const firstSearchResult = searchResults.first();
+  await expect(firstSearchResult).toBeVisible();
+
+  const searchResultLayout = await firstSearchResult.evaluate((element) => {
+    const title = element.querySelector(".search-result-title");
+    const meta = element.querySelector(".search-result-meta");
+    const snippet = element.querySelector(".search-result-snippet");
+    const cardStyle = window.getComputedStyle(element);
+    const titleStyle = title ? window.getComputedStyle(title) : null;
+    const metaStyle = meta ? window.getComputedStyle(meta) : null;
+    const snippetStyle = snippet ? window.getComputedStyle(snippet) : null;
+    const titleBox = title?.getBoundingClientRect();
+    const contentWidth =
+      element.clientWidth -
+      Number.parseFloat(cardStyle.paddingLeft) -
+      Number.parseFloat(cardStyle.paddingRight);
+
+    return {
+      contentWidth,
+      rowClasses: Array.from(element.children).map((child) => child.className),
+      titleOverflow: titleStyle?.overflow ?? "",
+      titleWhiteSpace: titleStyle?.whiteSpace ?? "",
+      titleWidth: titleBox?.width ?? 0,
+      metaWhiteSpace: metaStyle?.whiteSpace ?? "",
+      snippetWhiteSpace: snippetStyle?.whiteSpace ?? "",
+    };
+  });
+
+  expect(searchResultLayout.rowClasses).toEqual([
+    "search-result-title",
+    "search-result-meta",
+    "search-result-snippet",
+  ]);
+  expect(searchResultLayout.titleWhiteSpace).toBe("normal");
+  expect(searchResultLayout.titleOverflow).toBe("visible");
+  expect(searchResultLayout.titleWidth).toBeGreaterThanOrEqual(
+    searchResultLayout.contentWidth - 1,
+  );
+  expect(searchResultLayout.metaWhiteSpace).toBe("nowrap");
+  expect(searchResultLayout.snippetWhiteSpace).toBe("nowrap");
 
   const searchBox = await searchMenu.boundingBox();
   const searchViewport = page.viewportSize();
@@ -291,7 +333,30 @@ test("mobile toolbar and progress menu stay within the viewport", async ({ page 
     expect(searchBox.x + searchBox.width).toBeLessThanOrEqual(searchViewport.width + 1);
   }
 
-  await searchResult.click();
+  await searchInput.focus();
+  await page.keyboard.press("ArrowDown");
+  await expect(firstSearchResult).toBeFocused();
+  const searchResultCount = await searchResults.count();
+  if (searchResultCount > 1) {
+    await page.keyboard.press("ArrowDown");
+    await expect(searchResults.nth(1)).toBeFocused();
+    await page.keyboard.press("ArrowUp");
+    await expect(firstSearchResult).toBeFocused();
+  }
+  await page.keyboard.press("End");
+  await expect(searchResults.nth(searchResultCount - 1)).toBeFocused();
+  await page.keyboard.press("Home");
+  await expect(searchInput).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(searchMenu).toHaveCount(0);
+  await expect(searchButton).toBeFocused();
+
+  await searchButton.click();
+  const reopenedSearchInput = page.getByRole("searchbox", {
+    name: "Search all manuscripts",
+  });
+  await reopenedSearchInput.fill("federated footprint");
+  await reopenedSearchInput.press("Enter");
   await expect(page).toHaveURL(searchTargetSection.href);
 
   await page.goto("/");
