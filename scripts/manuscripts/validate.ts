@@ -1,10 +1,12 @@
 import fs from "node:fs";
+import { pathToFileURL } from "node:url";
 import {
   buildCatalog,
   catalogPath,
   readMarkdownDocuments,
   sectionHref,
 } from "./shared";
+import type { CompiledCatalog } from "./shared";
 
 function collectOverviewRefs(
   nodes: Array<{ references?: Array<{ sectionId: string }>; children?: unknown[] }>,
@@ -30,7 +32,18 @@ function assert(condition: unknown, message: string): void {
   }
 }
 
-function main(): void {
+export function catalogForStaleCheck(catalog: CompiledCatalog): CompiledCatalog {
+  return {
+    ...catalog,
+    gitRevision: "ignored-for-stale-check",
+  };
+}
+
+function catalogJsonForStaleCheck(value: string): string {
+  return `${JSON.stringify(catalogForStaleCheck(JSON.parse(value) as CompiledCatalog), null, 2)}\n`;
+}
+
+export function validateManuscripts(): void {
   const docs = readMarkdownDocuments();
   assert(docs.length > 0, "No manuscript Markdown files were found.");
 
@@ -54,8 +67,11 @@ function main(): void {
 
   if (fs.existsSync(catalogPath)) {
     const current = fs.readFileSync(catalogPath, "utf8");
-    const next = `${JSON.stringify(catalog, null, 2)}\n`;
-    assert(current === next, "Generated manuscript catalog is stale. Run npm run manuscripts:compile.");
+    const next = `${JSON.stringify(catalogForStaleCheck(catalog), null, 2)}\n`;
+    assert(
+      catalogJsonForStaleCheck(current) === next,
+      "Generated manuscript catalog is stale. Run npm run manuscripts:compile.",
+    );
   }
 
   console.log(
@@ -63,4 +79,6 @@ function main(): void {
   );
 }
 
-main();
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  validateManuscripts();
+}
