@@ -222,16 +222,15 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
   addBreadcrumbRoute(routes, "/manuscripts/", [manuscripts]);
 
   for (const volume of catalog.volumes) {
-    const volumeCrumb = { label: volume.title, href: volume.href };
-    addBreadcrumbRoute(routes, volume.href, [volumeCrumb]);
+    addBreadcrumbRoute(routes, volume.href, []);
 
     for (const part of volume.parts) {
       const partCrumb = { label: part.title, href: part.href };
-      addBreadcrumbRoute(routes, part.href, [volumeCrumb, partCrumb]);
+      addBreadcrumbRoute(routes, part.href, [partCrumb]);
 
       for (const chapter of part.chapters) {
         const chapterCrumb = { label: chapter.title, href: chapter.href };
-        addBreadcrumbRoute(routes, chapter.href, [volumeCrumb, partCrumb, chapterCrumb]);
+        addBreadcrumbRoute(routes, chapter.href, [partCrumb, chapterCrumb]);
       }
     }
   }
@@ -242,7 +241,6 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
     const chapter = chapterById(section.volumeId, section.partId, section.chapterId);
     if (!volume || !part || !chapter) continue;
     addBreadcrumbRoute(routes, section.href, [
-      { label: volume.title, href: volume.href },
       { label: part.title, href: part.href },
       { label: chapter.title, href: chapter.href },
       { label: section.title, href: section.href },

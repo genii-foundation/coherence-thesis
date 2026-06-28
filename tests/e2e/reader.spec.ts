@@ -15,6 +15,9 @@ const searchTargetSection = catalog.sections.find((section) =>
 const wieldingVolume = catalog.volumes.find(
   (volume) => volume.volumeId === "wielding-intelligence",
 )!;
+const wieldingFrontMatter = wieldingVolume.parts.find(
+  (part) => part.partId === "front-matter",
+)!;
 const wieldingSection = catalog.sections.find(
   (section) => section.volumeId === "wielding-intelligence",
 )!;
@@ -25,6 +28,8 @@ test("home page presents the overview and manuscript entry points", async ({
   await page.goto("/");
 
   await expect(page.getByRole("heading", { name: "The Coherence Thesis" })).toBeVisible();
+  await expect(page.locator(".brand-kicker")).toHaveText("Providence Collective");
+  await expect(page.locator(".brand-title")).toHaveText("The Coherence Thesis");
   await expect(page.getByRole("navigation", { name: "Breadcrumb" })).toHaveCount(0);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     "content",
@@ -359,7 +364,7 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
     firstSection.title,
   );
   await expect(breadcrumbs.getByText("Manuscripts")).toHaveCount(0);
-  await expect(breadcrumbs.getByText("Humanity's Most Viable Future")).toBeVisible();
+  await expect(breadcrumbs.getByText("Humanity's Most Viable Future")).toHaveCount(0);
   const viewport = page.viewportSize();
   if (!viewport || viewport.width > 540) {
     await expect(breadcrumbs.getByText("Home")).toHaveCount(0);
@@ -393,14 +398,73 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await expect(page.getByRole("combobox", { name: "Voice" })).toBeVisible();
 });
 
-test("breadcrumb root follows the active manuscript", async ({ page }) => {
-  await page.goto(wieldingSection.href);
+test("toolbar brand owns the active manuscript identity", async ({ page }) => {
+  await page.goto("/");
+  const brand = page.locator(".brand-mark");
+  await expect(brand).toHaveAttribute(
+    "aria-label",
+    "Providence Collective The Coherence Thesis home",
+  );
+  await expect(brand.locator(".brand-kicker")).toHaveText("Providence Collective");
+  await expect(brand.locator(".brand-title")).toHaveText("The Coherence Thesis");
+
+  await page.goto(wieldingVolume.href);
+  await expect(brand).toHaveAttribute(
+    "aria-label",
+    `The Coherent Thesis V${wieldingVolume.numberLabel} · ${wieldingVolume.title} home`,
+  );
+  await expect(brand.locator(".brand-kicker")).toHaveText("The Coherent Thesis");
+  await expect(brand.locator(".brand-title")).toHaveText(
+    `V${wieldingVolume.numberLabel} · ${wieldingVolume.title}`,
+  );
+  await expect(page.getByRole("navigation", { name: "Breadcrumb" })).toHaveCount(0);
+
+  const brandStyles = await brand.evaluate((element) => ({
+    background: window.getComputedStyle(element).backgroundColor,
+    titleBorder: window.getComputedStyle(
+      element.querySelector(".brand-title")!,
+    ).borderBottomColor,
+  }));
+  await brand.hover();
+  await page.waitForTimeout(200);
+  const brandHoverStyles = await brand.evaluate((element) => ({
+    background: window.getComputedStyle(element).backgroundColor,
+    titleBorder: window.getComputedStyle(
+      element.querySelector(".brand-title")!,
+    ).borderBottomColor,
+  }));
+  expect(brandHoverStyles.background).toBe(brandStyles.background);
+  expect(brandHoverStyles.titleBorder).not.toBe(brandStyles.titleBorder);
+
+  await page.goto(wieldingFrontMatter.href);
+  await expect(brand.locator(".brand-kicker")).toHaveText("The Coherent Thesis");
+  await expect(brand.locator(".brand-title")).toHaveText(
+    `V${wieldingVolume.numberLabel} · ${wieldingVolume.title}`,
+  );
 
   const breadcrumbs = page.getByRole("navigation", { name: "Breadcrumb" });
   await expect(breadcrumbs).toBeVisible();
   await expect(breadcrumbs.getByText("Manuscripts")).toHaveCount(0);
-  await expect(breadcrumbs.getByText("Wielding Intelligence")).toBeVisible();
-  await expect(breadcrumbs.locator("li").first()).toContainText(
-    "Wielding Intelligence",
-  );
+  await expect(breadcrumbs.getByText("Wielding Intelligence")).toHaveCount(0);
+  await expect(breadcrumbs.locator("li")).toHaveCount(1);
+  await expect(breadcrumbs.locator('[aria-current="page"]')).toHaveText("Front Matter");
+
+  await page.goto(wieldingSection.href);
+  const firstBreadcrumbLink = page
+    .getByRole("navigation", { name: "Breadcrumb" })
+    .locator("a")
+    .first();
+  await expect(firstBreadcrumbLink).toBeVisible();
+  const breadcrumbStyles = await firstBreadcrumbLink.evaluate((element) => ({
+    background: window.getComputedStyle(element).backgroundColor,
+    border: window.getComputedStyle(element).borderBottomColor,
+  }));
+  await firstBreadcrumbLink.hover();
+  await page.waitForTimeout(200);
+  const breadcrumbHoverStyles = await firstBreadcrumbLink.evaluate((element) => ({
+    background: window.getComputedStyle(element).backgroundColor,
+    border: window.getComputedStyle(element).borderBottomColor,
+  }));
+  expect(breadcrumbHoverStyles.background).toBe(breadcrumbStyles.background);
+  expect(breadcrumbHoverStyles.border).not.toBe(breadcrumbStyles.border);
 });

@@ -175,11 +175,12 @@ input {
   flex: 0 0 auto;
   display: grid;
   gap: 0.15rem;
+  min-width: 0;
+  max-width: clamp(13rem, 28vw, 25rem);
   border-radius: var(--radius);
   padding: 0.25rem 0.35rem;
   text-decoration: none;
   transition:
-    background 160ms ease,
     color 160ms ease;
 }
 
@@ -194,10 +195,25 @@ input {
   text-transform: uppercase;
 }
 
+.brand-kicker {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .brand-title {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  border-bottom: 1px solid transparent;
   font-family: var(--font-display);
   font-size: clamp(1.15rem, 2.4vw, 1.65rem);
   line-height: 1;
+  text-overflow: ellipsis;
+  transition:
+    border-color 160ms ease,
+    color 160ms ease;
+  white-space: nowrap;
 }
 
 .breadcrumb-trail {
@@ -250,19 +266,28 @@ input {
   display: block;
   max-width: clamp(5rem, 16vw, 13rem);
   overflow: hidden;
-  border-radius: var(--radius);
+  border-bottom: 1px solid transparent;
   color: inherit;
-  padding: 0.35rem 0.25rem;
+  padding: 0.35rem 0 0.2rem;
   text-decoration: none;
   text-overflow: ellipsis;
+  transition:
+    border-color 160ms ease,
+    color 160ms ease;
   white-space: nowrap;
 }
 
 .brand-mark:hover,
-.brand-mark:focus-visible,
+.brand-mark:focus-visible {
+  color: var(--ink);
+  outline: none;
+}
+
+.brand-mark:hover .brand-title,
+.brand-mark:focus-visible .brand-title,
 .breadcrumb-trail a:hover,
 .breadcrumb-trail a:focus-visible {
-  background: rgba(164, 123, 63, 0.11);
+  border-color: rgba(119, 84, 42, 0.62);
   color: var(--ink);
   outline: none;
 }
@@ -1830,7 +1855,7 @@ input {
   }
 
   .brand-title {
-    display: none;
+    font-size: clamp(1rem, 4.4vw, 1.28rem);
   }
 
   .breadcrumb-trail {

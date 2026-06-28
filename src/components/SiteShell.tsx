@@ -1,9 +1,9 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
 import { OutlineMenuIsland } from "@/components/OutlineMenuIsland";
 import { PageFadeIsland } from "@/components/PageFadeIsland";
 import { SearchMenuIsland } from "@/components/SearchMenuIsland";
+import { ToolbarBrandIsland } from "@/components/ToolbarBrandIsland";
 import { ToolbarBreadcrumbs } from "@/components/ToolbarBreadcrumbs";
 import { ToolbarProgressIsland } from "@/components/ToolbarProgressIsland";
 import { toolbarOutline } from "@/lib/manuscript-data";
@@ -17,10 +17,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         Skip to main content
       </a>
       <header className="site-header">
-        <Link href="/" className="brand-mark" aria-label="The Coherence Thesis home">
-          <span className="brand-kicker">The Coherence Thesis</span>
-          <span className="brand-title">The Coherence Thesis</span>
-        </Link>
+        <ToolbarBrandIsland volumes={outline.volumes} />
         <ToolbarBreadcrumbs />
         <nav className="site-nav" aria-label="Primary">
           <SearchMenuIsland />
