@@ -171,12 +171,12 @@ export function ToolbarProgressIsland() {
             <div className="reader-actions">
               <button type="button" className="icon-button" onClick={markCurrentRead}>
                 <Check aria-hidden="true" size={17} />
-                {isRead ? "Read" : "Mark read"}
+                <span>{isRead ? "Read" : "Mark read"}</span>
               </button>
               {isUpdated && (
                 <span className="updated-badge">
                   <RotateCcw aria-hidden="true" size={15} />
-                  Updated since read
+                  <span>Updated since read</span>
                 </span>
               )}
             </div>

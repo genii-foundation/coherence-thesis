@@ -1461,7 +1461,21 @@ input {
   border-radius: var(--radius);
   background: #fbf6eb;
   box-shadow: 0 10px 40px rgba(44, 31, 18, 0.08);
+  box-sizing: border-box;
   padding: 1rem;
+  text-align: left;
+}
+
+.reader-status {
+  overflow: hidden;
+}
+
+.reader-status .quiet-copy {
+  margin: 0.7rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  text-align: left;
 }
 
 .progress-row {
@@ -1469,6 +1483,10 @@ input {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 0.8rem;
+}
+
+.progress-row strong {
+  text-align: right;
 }
 
 .progress-bar {
@@ -1491,14 +1509,39 @@ input {
   display: grid;
   gap: 0.55rem;
   margin-top: 1rem;
+  min-width: 0;
+}
+
+.reader-status .icon-button {
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-align: left;
+}
+
+.reader-status .icon-button svg {
+  flex: 0 0 auto;
+}
+
+.reader-status .icon-button span,
+.reader-status .updated-badge span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .updated-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  min-width: 0;
   color: var(--bronze-deep);
   font-size: 0.9rem;
+  text-align: left;
 }
 
 .revision-notice {
@@ -1524,16 +1567,31 @@ input {
 }
 
 .recommendations a {
+  display: block;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
   color: var(--blue);
+  padding: 0.45rem 0.5rem;
+  text-align: left;
+  text-decoration: none;
   text-decoration-color: rgba(36, 73, 96, 0.25);
   text-underline-offset: 0.2em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   transition:
+    background 160ms ease,
+    border-color 160ms ease,
     color 160ms ease,
     text-decoration-color 160ms ease;
 }
 
 .recommendations a:hover,
 .recommendations a:focus-visible {
+  border-color: rgba(119, 84, 42, 0.24);
+  background: rgba(164, 123, 63, 0.1);
   color: var(--ink);
   outline: none;
   text-decoration-color: rgba(119, 84, 42, 0.72);

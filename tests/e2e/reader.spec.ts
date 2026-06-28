@@ -302,6 +302,46 @@ test("mobile toolbar and progress menu stay within the viewport", async ({ page 
     expect(popoverBox.x).toBeGreaterThanOrEqual(-1);
     expect(popoverBox.x + popoverBox.width).toBeLessThanOrEqual(viewport.width + 1);
   }
+
+  const progressCopy = popover.getByText(
+    "Stored only in this browser. No account, no server reading history.",
+  );
+  await expect(progressCopy).toBeVisible();
+  const firstRecommendation = popover.locator(".recommendations a").first();
+  await expect(firstRecommendation).toBeVisible();
+  await firstRecommendation.hover();
+
+  const progressMenuMetrics = await popover.evaluate((element) => {
+    const panel = element.getBoundingClientRect();
+    const copy = element.querySelector(".quiet-copy");
+    const copyStyle = copy ? window.getComputedStyle(copy) : null;
+    const recommendation = element.querySelector(".recommendations a");
+    const recommendationBox = recommendation?.getBoundingClientRect();
+    const recommendationStyle = recommendation
+      ? window.getComputedStyle(recommendation)
+      : null;
+    return {
+      copyFontSize: copyStyle ? Number.parseFloat(copyStyle.fontSize) : 0,
+      copyTextAlign: copyStyle?.textAlign ?? "",
+      recommendationLeft: recommendationBox?.left ?? 0,
+      recommendationRight: recommendationBox?.right ?? 0,
+      recommendationTextAlign: recommendationStyle?.textAlign ?? "",
+      recommendationWhiteSpace: recommendationStyle?.whiteSpace ?? "",
+      panelLeft: panel.left,
+      panelRight: panel.right,
+    };
+  });
+
+  expect(progressMenuMetrics.copyFontSize).toBeLessThanOrEqual(18);
+  expect(progressMenuMetrics.copyTextAlign).toBe("left");
+  expect(progressMenuMetrics.recommendationTextAlign).toBe("left");
+  expect(progressMenuMetrics.recommendationWhiteSpace).toBe("nowrap");
+  expect(progressMenuMetrics.recommendationLeft).toBeGreaterThanOrEqual(
+    progressMenuMetrics.panelLeft,
+  );
+  expect(progressMenuMetrics.recommendationRight).toBeLessThanOrEqual(
+    progressMenuMetrics.panelRight + 1,
+  );
 });
 
 test("reader route exposes progress and audio controls", async ({ page }) => {
@@ -334,7 +374,17 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
       return progressButton.getAttribute("aria-expanded");
     })
     .toBe("true");
-  await expect(page.getByRole("button", { name: /Mark read|Read/ })).toBeVisible();
+  const markReadButton = page.getByRole("button", { name: /Mark read|Read/ });
+  await expect(markReadButton).toBeVisible();
+  const markReadButtonStyle = await markReadButton.evaluate((element) => {
+    const style = window.getComputedStyle(element);
+    return {
+      justifyContent: style.justifyContent,
+      textAlign: style.textAlign,
+    };
+  });
+  expect(markReadButtonStyle.justifyContent).toBe("flex-start");
+  expect(markReadButtonStyle.textAlign).toBe("left");
   const listenButton = page.getByRole("button", { name: /Listen/ });
   await expect(listenButton).toBeVisible();
   await listenButton.click();
