@@ -179,14 +179,28 @@ export function AudioPlayerIsland() {
     <div className="audio-menu" ref={containerRef}>
       <button
         type="button"
-        className="audio-menu-button"
+        className={`audio-menu-button${playing ? " is-playing" : ""}`}
         aria-expanded={open}
         aria-controls="audiobook-menu"
+        aria-label={playing ? "Audiobook playing, open controls" : undefined}
         onClick={() => setOpen((current) => !current)}
       >
-        <Headphones aria-hidden="true" size={17} />
-        <span className="nav-label">Listen</span>
-        <ChevronDown aria-hidden="true" size={16} />
+        {playing ? (
+          <>
+            <span className="audio-waveform" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
+            <Pause aria-hidden="true" size={15} />
+          </>
+        ) : (
+          <>
+            <Headphones aria-hidden="true" size={17} />
+            <span className="nav-label">Listen</span>
+            <ChevronDown className="audio-menu-chevron" aria-hidden="true" size={16} />
+          </>
+        )}
       </button>
       {open && (
         <section

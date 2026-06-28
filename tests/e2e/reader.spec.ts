@@ -350,6 +350,35 @@ test("mobile toolbar and progress menu stay within the viewport", async ({ page 
 });
 
 test("reader route exposes progress and audio controls", async ({ page }) => {
+  await page.addInitScript(() => {
+    class TestSpeechSynthesisUtterance {
+      text: string;
+      rate = 1;
+      pitch = 1;
+      voice: SpeechSynthesisVoice | null = null;
+      onend: (() => void) | null = null;
+
+      constructor(text: string) {
+        this.text = text;
+      }
+    }
+
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: TestSpeechSynthesisUtterance,
+    });
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        addEventListener: () => undefined,
+        cancel: () => undefined,
+        getVoices: () => [],
+        pause: () => undefined,
+        removeEventListener: () => undefined,
+        speak: () => undefined,
+      },
+    });
+  });
   await page.goto(firstSection.href);
 
   await expect(page.getByRole("heading", { name: firstSection.title })).toBeVisible();
@@ -393,9 +422,24 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   const listenButton = page.getByRole("button", { name: /Listen/ });
   await expect(listenButton).toBeVisible();
   await listenButton.click();
-  await expect(page.getByLabel("Audiobook controls")).toBeVisible();
-  await expect(page.getByRole("button", { name: "Play audiobook" })).toBeVisible();
+  const audioPanel = page.getByLabel("Audiobook controls");
+  await expect(audioPanel).toBeVisible();
+  const playButton = page.getByRole("button", { name: "Play audiobook" });
+  await expect(playButton).toBeVisible();
   await expect(page.getByRole("combobox", { name: "Voice" })).toBeVisible();
+  await playButton.click();
+
+  const activeListenButton = page.getByRole("button", {
+    name: "Audiobook playing, open controls",
+  });
+  await expect(activeListenButton).toBeVisible();
+  await expect(activeListenButton.locator(".audio-waveform")).toBeVisible();
+  await expect(activeListenButton.locator(".nav-label")).toHaveCount(0);
+
+  await page.keyboard.press("Escape");
+  await expect(audioPanel).toHaveCount(0);
+  await activeListenButton.click();
+  await expect(page.getByLabel("Audiobook controls")).toBeVisible();
 });
 
 test("toolbar brand owns the active manuscript identity", async ({ page }) => {

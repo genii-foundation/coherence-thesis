@@ -366,6 +366,57 @@ input {
   padding: 0.65rem 0.75rem;
 }
 
+.audio-menu-button.is-playing {
+  gap: 0.45rem;
+  background: rgba(164, 123, 63, 0.13);
+  color: var(--ink);
+}
+
+.audio-waveform {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.16rem;
+  width: 1rem;
+  height: 1rem;
+  color: var(--bronze-deep);
+}
+
+.audio-waveform span {
+  display: block;
+  width: 0.16rem;
+  height: 0.72rem;
+  border-radius: 999px;
+  background: currentColor;
+  animation: audio-waveform-pulse 900ms ease-in-out infinite;
+}
+
+.audio-waveform span:nth-child(2) {
+  animation-delay: 140ms;
+}
+
+.audio-waveform span:nth-child(3) {
+  animation-delay: 280ms;
+}
+
+@keyframes audio-waveform-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.45);
+  }
+
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-waveform span {
+    animation: none;
+    transform: scaleY(0.72);
+  }
+}
+
 .progress-percent {
   min-width: 2.2rem;
   border: 1px solid var(--line);
@@ -2033,7 +2084,7 @@ input {
   }
 
   .outline-menu-button svg:last-child,
-  .audio-menu-button svg:last-child,
+  .audio-menu-button .audio-menu-chevron,
   .progress-menu-button svg:last-child {
     display: none;
   }
