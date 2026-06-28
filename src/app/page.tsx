@@ -16,7 +16,6 @@ const manuscriptTags: Record<string, string[]> = {
 };
 
 export default function Home() {
-  const firstVolume = catalog.volumes[0];
   return (
     <div className="home-page">
       <section className="hero-section">
@@ -41,8 +40,8 @@ export default function Home() {
         </div>
         <div className="hero-art" aria-label="Coherence Thesis cover art">
           <Image
-            src={firstVolume?.coverImage ?? "/art/coherence-thesis-vol1-cover.jpg"}
-            alt={firstVolume?.coverAlt ?? "The Coherence Thesis cover artwork."}
+            src="/art/coherence-thesis-hero.png"
+            alt="The Coherence Thesis final hero artwork."
             width={1024}
             height={1536}
             priority

@@ -6,7 +6,7 @@
     "order": 1,
     "numberLabel": "I",
     "planet": "Sun",
-    "coverImage": "/art/coherence-thesis-vol1-cover.jpg",
+    "coverImage": "/art/coherence-thesis-vol1-cover.png",
     "coverAlt": "Cover artwork for Humanity's Most Viable Future, Volume One of The Coherence Thesis.",
     "sourcePath": "sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md"
   },
@@ -17,7 +17,7 @@
     "order": 2,
     "numberLabel": "II",
     "planet": "Moon",
-    "coverImage": "/art/coherence-thesis-vol2-cover.jpg",
+    "coverImage": "/art/coherence-thesis-vol2-cover.png",
     "coverAlt": "Cover artwork for Wielding Intelligence, Volume Two of The Coherence Thesis.",
     "sourcePath": "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md"
   },
@@ -28,7 +28,7 @@
     "order": 3,
     "numberLabel": "III",
     "planet": "Jupiter",
-    "coverImage": "/art/coherence-thesis-vol3-cover.jpg",
+    "coverImage": "/art/coherence-thesis-vol3-cover.png",
     "coverAlt": "Cover artwork for The Providence Imperative, Volume Three of The Coherence Thesis.",
     "sourcePath": "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"
   },
@@ -39,7 +39,7 @@
     "order": 4,
     "numberLabel": "IV",
     "planet": "Uranus",
-    "coverImage": "/art/coherence-thesis-vol4-cover.jpg",
+    "coverImage": "/art/coherence-thesis-vol4-cover.png",
     "coverAlt": "Cover artwork for Architecting Providence, Volume Four of The Coherence Thesis.",
     "sourcePath": "sources/manuscripts/coherence-thesis-vol4-architecting-providence.md"
   },
@@ -50,7 +50,7 @@
     "order": 5,
     "numberLabel": "V",
     "planet": "Mercury",
-    "coverImage": "/art/coherence-thesis-vol5-cover.jpg",
+    "coverImage": "/art/coherence-thesis-vol5-cover.png",
     "coverAlt": "Cover artwork for Purposeful, Volume Five of The Coherence Thesis.",
     "sourcePath": "sources/manuscripts/coherence-thesis-vol5-purposeful.md"
   },
@@ -61,7 +61,7 @@
     "order": 6,
     "numberLabel": "VI",
     "planet": "Venus",
-    "coverImage": "/art/coherence-thesis-vol6-cover.jpg",
+    "coverImage": "/art/coherence-thesis-vol6-cover.png",
     "coverAlt": "Cover artwork for The Smallest Nest, Volume Six of The Coherence Thesis.",
     "sourcePath": "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
   },
@@ -72,7 +72,7 @@
     "order": 7,
     "numberLabel": "VII",
     "planet": "Neptune",
-    "coverImage": "/art/coherence-thesis-vol7-cover.jpg",
+    "coverImage": "/art/coherence-thesis-vol7-cover.png",
     "coverAlt": "Cover artwork for Presencing Genius, Volume Seven of The Coherence Thesis.",
     "sourcePath": "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md"
   },
@@ -83,7 +83,7 @@
     "order": 8,
     "numberLabel": "VIII",
     "planet": "Saturn",
-    "coverImage": "/art/coherence-thesis-vol8-cover.jpg",
+    "coverImage": "/art/coherence-thesis-vol8-cover.png",
     "coverAlt": "Cover artwork for A Misanthropic Artifice, Volume Eight of The Coherence Thesis.",
     "sourcePath": "sources/manuscripts/coherence-thesis-vol8-a-misanthropic-artifice.md"
   },
@@ -94,7 +94,7 @@
     "order": 9,
     "numberLabel": "IX",
     "planet": "Mars",
-    "coverImage": "/art/coherence-thesis-vol9-cover.jpg",
+    "coverImage": "/art/coherence-thesis-vol9-cover.png",
     "coverAlt": "Cover artwork for The Cardinal Scale, Volume Nine of The Coherence Thesis.",
     "sourcePath": "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md"
   }

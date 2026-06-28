@@ -50,10 +50,10 @@ Do not edit generated files by hand. Edit source Markdown or series metadata, th
 
 <!-- BEGIN:development-status -->
 
-Generated: 2026-06-28T04:07:49.758Z
+Generated: 2026-06-28T05:30:57.371Z
 
-- Branch: feat/homepage-manuscript-cards
-- Revision: fc35863
+- Branch: feat/final-cover-art
+- Revision: 459b0aa
 - Working tree: local changes present
 - Next.js: 16.2.9
 - Manuscripts: 9 volume, 47 parts, 408 chapters, 566 sections
@@ -64,11 +64,11 @@ Generated: 2026-06-28T04:07:49.758Z
 Recent commits:
 
 ```text
-fc35863 feat: add manuscript search
-b26b0f5 feat: add toolbar outline menu
-181d2e4 fix: simplify reader breadcrumbs
-4465251 edit: publish complete manuscript collection
-bec081a fix: reduce manuscript index heading scale
+459b0aa feat: add final cover artwork
+cac180c feat: show active audio toolbar state
+726e21a fix: refine manuscript header identity
+92bc904 fix: tighten progress popover layout
+848a2e6 fix: align mobile toolbar controls
 ```
 
 <!-- END:development-status -->

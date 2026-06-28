@@ -61,6 +61,15 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(page.locator(".manuscript-cover-card")).toHaveCount(
     catalog.volumes.length,
   );
+  expect(catalog.volumes.map((volume) => volume.coverImage)).toEqual(
+    catalog.volumes.map(
+      (volume) => `/art/coherence-thesis-vol${volume.order}-cover.png`,
+    ),
+  );
+  await expect(page.locator(".hero-art img")).toHaveAttribute(
+    "src",
+    "/art/coherence-thesis-hero.png",
+  );
 
   const homepageSpacing = await page.evaluate(() => {
     const hero = document.querySelector(".hero-section")?.getBoundingClientRect();

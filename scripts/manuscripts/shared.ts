@@ -527,7 +527,7 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
         order: section.volumeOrder,
         numberLabel: config?.numberLabel ?? String(section.volumeOrder),
         planet: config?.planet ?? "",
-        coverImage: config?.coverImage ?? "/art/coherence-thesis-purposeful-cover.jpg",
+        coverImage: config?.coverImage ?? "/art/coherence-thesis-vol5-cover.png",
         coverAlt:
           config?.coverAlt ??
           `Cover artwork for ${section.volumeTitle}, part of The Coherence Thesis.`,
