@@ -65,6 +65,10 @@ export function compileManuscripts(): void {
     href: section.href,
     text: section.text,
     contentHash: section.contentHash,
+    versionHash: section.versionHash,
+    versionDate: section.versionDate,
+    versionUrl: section.versionUrl,
+    audioVersionId: section.audioVersionId,
     paragraphs: section.paragraphs.map((paragraph) => ({
       paragraphId: paragraph.paragraphId,
       anchor: paragraph.anchor,

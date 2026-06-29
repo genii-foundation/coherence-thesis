@@ -32,7 +32,7 @@ export function SectionRevisionNotice({ section }: { section: ProgressSection })
   return (
     <aside className="revision-notice" aria-label="Updated section notice">
       <RotateCcw aria-hidden="true" size={17} />
-      <span>A newer version of this section is available.</span>
+      <span>Revised since you read this.</span>
       <a href={revisedSectionHref(progress, section)}>Jump to the first changed passage</a>
     </aside>
   );

@@ -12,6 +12,7 @@ describe("audio queue", () => {
       sectionId: section.sectionId,
       title: section.title,
       text: section.text,
+      audioVersionId: section.audioVersionId,
     });
   });
 
@@ -21,6 +22,9 @@ describe("audio queue", () => {
 
     expect(queue.map((item) => item.sectionId)).toEqual(
       sections.map((section) => section.sectionId),
+    );
+    expect(queue.map((item) => item.audioVersionId)).toEqual(
+      sections.map((section) => section.audioVersionId),
     );
   });
 });

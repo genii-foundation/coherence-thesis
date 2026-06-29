@@ -34,6 +34,10 @@ export type Section = {
   wordCount: number;
   readingMinutes: number;
   contentHash: string;
+  versionHash: string;
+  versionDate: string;
+  versionUrl: string;
+  audioVersionId: string;
   previousSectionId: string | null;
   nextSectionId: string | null;
 };
