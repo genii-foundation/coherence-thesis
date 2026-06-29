@@ -50,10 +50,10 @@ Do not edit generated files by hand. Edit source Markdown or series metadata, th
 
 <!-- BEGIN:development-status -->
 
-Generated: 2026-06-29T02:23:41.713Z
+Generated: 2026-06-29T03:01:48.343Z
 
-- Branch: feat/global-footer-license
-- Revision: 3a20241
+- Branch: feat/reader-section-navigation
+- Revision: 39b6bd9
 - Working tree: local changes present
 - Next.js: 16.2.9
 - Manuscripts: 9 volume, 47 parts, 408 chapters, 566 sections
@@ -64,11 +64,11 @@ Generated: 2026-06-29T02:23:41.713Z
 Recent commits:
 
 ```text
-3a20241 fix: remove footer top rule
-87f6020 fix: mark footer authorship links
-f050d97 fix: open footer links in new tabs
-0107ca9 feat: add footer licensing
-7bb9976 fix: improve reader section navigation
+39b6bd9 feat: add reader section footer navigation
+23d2234 fix: refine responsive reader toolbar
+27b3b4e docs: standardize PR quality workflows
+d90913a docs: update feature preview workflow
+271ea61 Add reader settings menu
 ```
 
 <!-- END:development-status -->

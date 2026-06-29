@@ -159,6 +159,15 @@ export type ToolbarOutline = {
   overview: { title: string; href: string };
   volumes: OutlineVolume[];
 };
+export type NavigationItem = {
+  title: string;
+  href: string;
+};
+export type PageNavigation = {
+  previous?: NavigationItem | null;
+  parent: NavigationItem;
+  next?: NavigationItem | null;
+};
 
 export const catalog = catalogJson as Catalog;
 
@@ -317,6 +326,78 @@ export function sectionByRouteOrAlias(
   const alias = aliasByRoute(volumeId, partId, chapterId, sectionId);
   const target = alias ? sectionById(alias.targetSectionId) : undefined;
   return target ? { section: target, alias } : undefined;
+}
+
+function navigationItem(item: NavigationItem): NavigationItem {
+  return {
+    title: item.title,
+    href: item.href,
+  };
+}
+
+function siblingNavigation<T extends NavigationItem>(
+  items: T[],
+  currentHref: string,
+  parent: NavigationItem,
+): PageNavigation | undefined {
+  const currentIndex = items.findIndex((item) => item.href === currentHref);
+  if (currentIndex < 0) return undefined;
+  return {
+    previous: items[currentIndex - 1] ? navigationItem(items[currentIndex - 1]) : null,
+    parent: navigationItem(parent),
+    next: items[currentIndex + 1] ? navigationItem(items[currentIndex + 1]) : null,
+  };
+}
+
+export function manuscriptsNavigation(): PageNavigation {
+  const firstVolume = catalog.volumes[0];
+  return {
+    previous: null,
+    parent: { title: catalog.siteTitle, href: "/" },
+    next: firstVolume ? navigationItem(firstVolume) : null,
+  };
+}
+
+export function volumeNavigation(volumeId: string): PageNavigation | undefined {
+  const volume = volumeById(volumeId);
+  if (!volume) return undefined;
+  return siblingNavigation(catalog.volumes, volume.href, {
+    title: "Manuscripts",
+    href: "/manuscripts/",
+  });
+}
+
+export function partNavigation(
+  volumeId: string,
+  partId: string,
+): PageNavigation | undefined {
+  const volume = volumeById(volumeId);
+  const part = partById(volumeId, partId);
+  if (!volume || !part) return undefined;
+  return siblingNavigation(volume.parts, part.href, volume);
+}
+
+export function chapterNavigation(
+  volumeId: string,
+  partId: string,
+  chapterId: string,
+): PageNavigation | undefined {
+  const part = partById(volumeId, partId);
+  const chapter = chapterById(volumeId, partId, chapterId);
+  if (!part || !chapter) return undefined;
+  return siblingNavigation(part.chapters, chapter.href, part);
+}
+
+export function sectionNavigation(section: Section): PageNavigation | undefined {
+  const chapter = chapterById(section.volumeId, section.partId, section.chapterId);
+  if (!chapter) return undefined;
+  return {
+    previous: section.previousSectionId
+      ? sectionById(section.previousSectionId) ?? null
+      : null,
+    parent: navigationItem(chapter),
+    next: section.nextSectionId ? sectionById(section.nextSectionId) ?? null : null,
+  };
 }
 
 export function sectionsStartingAt(sectionId: string): Section[] {

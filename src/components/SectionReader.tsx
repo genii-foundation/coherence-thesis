@@ -1,9 +1,11 @@
+import { notFound } from "next/navigation";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { SectionRevisionNotice } from "@/components/SectionRevisionNotice";
 import {
-  sectionById,
+  sectionNavigation,
   toProgressSection,
+  type PageNavigation,
   type Section,
   type SectionAlias,
 } from "@/lib/manuscript-data";
@@ -22,12 +24,15 @@ function formatVersionDate(value: string): string {
 export function SectionReader({
   section,
   alias,
+  navigation,
 }: {
   section: Section;
   alias?: SectionAlias;
+  navigation?: PageNavigation;
 }) {
-  const previous = section.previousSectionId ? sectionById(section.previousSectionId) : null;
-  const next = section.nextSectionId ? sectionById(section.nextSectionId) : null;
+  const resolvedNavigation = navigation ?? sectionNavigation(section);
+
+  if (!resolvedNavigation) notFound();
 
   return (
     <article className="reader-main">
@@ -54,7 +59,11 @@ export function SectionReader({
       )}
       <SectionRevisionNotice section={toProgressSection(section)} />
       <MarkdownBody markdown={section.body} paragraphs={section.paragraphs} />
-      <ManuscriptNavigation previous={previous} next={next} />
+      <ManuscriptNavigation
+        previous={resolvedNavigation.previous}
+        parent={resolvedNavigation.parent}
+        next={resolvedNavigation.next}
+      />
     </article>
   );
 }

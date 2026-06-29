@@ -3,12 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BookOpen } from "lucide-react";
+import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
 import { UpdatedMarkerIsland } from "@/components/UpdatedMarkerIsland";
 import {
   catalog,
   sectionsForPart,
   toProgressSection,
+  volumeNavigation,
   volumeById,
 } from "@/lib/manuscript-data";
 
@@ -41,6 +43,8 @@ export default async function VolumePage({
   const { volumeId } = await params;
   const volume = volumeById(volumeId);
   if (!volume) notFound();
+  const navigation = volumeNavigation(volumeId);
+  if (!navigation) notFound();
 
   return (
     <div className="page-frame">
@@ -92,6 +96,11 @@ export default async function VolumePage({
           );
         })}
       </section>
+      <ManuscriptNavigation
+        previous={navigation.previous}
+        parent={navigation.parent}
+        next={navigation.next}
+      />
     </div>
   );
 }
