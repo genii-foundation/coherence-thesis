@@ -2,12 +2,14 @@ export type AudioQueueItem = {
   sectionId: string;
   title: string;
   text: string;
+  audioVersionId: string;
 };
 
 type AudioSection = {
   sectionId: string;
   title: string;
   text: string;
+  audioVersionId: string;
 };
 
 export type AudioVoicePreference = {
@@ -28,6 +30,7 @@ export function queueFromSection(section: AudioSection): AudioQueueItem[] {
       sectionId: section.sectionId,
       title: section.title,
       text: section.text,
+      audioVersionId: section.audioVersionId,
     },
   ];
 }
@@ -37,5 +40,6 @@ export function queueFromSections(sections: AudioSection[]): AudioQueueItem[] {
     sectionId: section.sectionId,
     title: section.title,
     text: section.text,
+    audioVersionId: section.audioVersionId,
   }));
 }

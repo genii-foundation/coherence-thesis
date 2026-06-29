@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SectionReader } from "@/components/SectionReader";
-import {
-  routeParams,
-  sectionByRouteOrAlias,
-} from "@/lib/manuscript-data";
+import { routeParams, sectionByRouteOrAlias } from "@/lib/manuscript-data";
 
 export const dynamicParams = false;
 

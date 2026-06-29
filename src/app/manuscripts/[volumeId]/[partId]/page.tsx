@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
+import { UpdatedMarkerIsland } from "@/components/UpdatedMarkerIsland";
 import {
   catalog,
   partById,
@@ -74,7 +75,10 @@ export default async function PartPage({
               >
                 <span className="card-kicker">
                   {String(chapter.order).padStart(2, "0")}
-                  <ReadCheckmarkIsland sections={progressSections} />
+                  <span className="content-status-row">
+                    <UpdatedMarkerIsland sections={progressSections} />
+                    <ReadCheckmarkIsland sections={progressSections} />
+                  </span>
                 </span>
                 <strong>{chapter.title}</strong>
                 <small>{chapter.wordCount.toLocaleString()} words</small>

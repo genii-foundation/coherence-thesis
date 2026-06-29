@@ -50,11 +50,11 @@ Do not edit generated files by hand. Edit source Markdown or series metadata, th
 
 <!-- BEGIN:development-status -->
 
-Generated: 2026-06-28T05:30:57.371Z
+Generated: 2026-06-29T02:04:50.378Z
 
-- Branch: feat/final-cover-art
-- Revision: 459b0aa
-- Working tree: local changes present
+- Branch: feat/manuscript-versioning
+- Revision: 242a341
+- Working tree: clean
 - Next.js: 16.2.9
 - Manuscripts: 9 volume, 47 parts, 408 chapters, 566 sections
 - Canonical words: 198,717
@@ -64,11 +64,11 @@ Generated: 2026-06-28T05:30:57.371Z
 Recent commits:
 
 ```text
-459b0aa feat: add final cover artwork
-cac180c feat: show active audio toolbar state
-726e21a fix: refine manuscript header identity
-92bc904 fix: tighten progress popover layout
-848a2e6 fix: align mobile toolbar controls
+242a341 feat: add manuscript version provenance
+7bb9976 fix: improve reader section navigation
+ca0d170 feat: add nested petals favicon
+fd20c9c chore: bootstrap worktree dependencies
+d6dc2a1 fix: use hero artwork for share previews
 ```
 
 <!-- END:development-status -->

@@ -3,6 +3,12 @@ import { catalog, partById } from "../../src/lib/manuscript-data";
 import { readerProgressStorageKey } from "../../src/lib/reader-state";
 
 const firstSection = catalog.sections[0];
+const firstSectionVersionDate = new Intl.DateTimeFormat("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+}).format(new Date(firstSection.versionDate));
 const firstOverviewReference = catalog.overview.nodes.flatMap(
   (node) => node.references,
 )[0]!;
@@ -491,6 +497,10 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await page.goto(firstSection.href);
 
   await expect(page.getByRole("heading", { name: firstSection.title })).toBeVisible();
+  await expect(page.getByText(`Version ${firstSection.versionHash}`)).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: `Codified ${firstSectionVersionDate}` }),
+  ).toHaveAttribute("href", firstSection.versionUrl);
   await expect(
     page.getByText(
       `${firstSection.volumeTitle} / ${firstSection.partTitle} / ${firstSection.chapterTitle}`,
@@ -579,6 +589,55 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await expect(audioPanel).toHaveCount(0);
   await activeListenButton.click();
   await expect(page.getByLabel("Audiobook controls")).toBeVisible();
+});
+
+test("reader shows subtle revision status for previously read sections", async ({
+  page,
+}) => {
+  await page.addInitScript(
+    ({ key, section }) => {
+      window.localStorage.setItem(
+        key,
+        JSON.stringify({
+          sections: {
+            [section.sectionId]: {
+              sectionId: section.sectionId,
+              contentHash: "older-section-hash",
+              paragraphs: section.paragraphs.map(
+                (paragraph: { paragraphId: string; contentHash: string }, index: number) => ({
+                  paragraphId: paragraph.paragraphId,
+                  contentHash:
+                    index === 0 ? `older-${paragraph.contentHash}` : paragraph.contentHash,
+                }),
+              ),
+              readAt: Date.now() - 1000,
+              percent: 100,
+            },
+          },
+        }),
+      );
+    },
+    {
+      key: readerProgressStorageKey,
+      section: firstSection,
+    },
+  );
+
+  await page.goto(firstSection.href);
+
+  const revisionNotice = page.getByLabel("Updated section notice");
+  await expect(revisionNotice).toBeVisible();
+  await expect(revisionNotice).toContainText("Revised since you read this.");
+  await expect(
+    revisionNotice.getByRole("link", { name: "Jump to the first changed passage" }),
+  ).toHaveAttribute("href", `${firstSection.href}#${firstSection.paragraphs[0].anchor}`);
+
+  await page.goto(`/manuscripts/${firstSection.volumeId}/${firstSection.partId}/`);
+  const chapterCard = page.locator(".chapter-card", {
+    hasText: firstSection.chapterTitle,
+  });
+  await expect(chapterCard.locator('[data-updated-marker="true"]')).toBeVisible();
+  await expect(chapterCard.locator('[data-read-checkmark="true"]')).toHaveCount(0);
 });
 
 test("toolbar brand owns the active manuscript identity", async ({ page }) => {
