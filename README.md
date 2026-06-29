@@ -50,11 +50,11 @@ Do not edit generated files by hand. Edit source Markdown or series metadata, th
 
 <!-- BEGIN:development-status -->
 
-Generated: 2026-06-29T02:04:50.378Z
+Generated: 2026-06-29T02:23:41.713Z
 
-- Branch: feat/manuscript-versioning
-- Revision: 242a341
-- Working tree: clean
+- Branch: feat/global-footer-license
+- Revision: 3a20241
+- Working tree: local changes present
 - Next.js: 16.2.9
 - Manuscripts: 9 volume, 47 parts, 408 chapters, 566 sections
 - Canonical words: 198,717
@@ -64,11 +64,11 @@ Generated: 2026-06-29T02:04:50.378Z
 Recent commits:
 
 ```text
-242a341 feat: add manuscript version provenance
+3a20241 fix: remove footer top rule
+87f6020 fix: mark footer authorship links
+f050d97 fix: open footer links in new tabs
+0107ca9 feat: add footer licensing
 7bb9976 fix: improve reader section navigation
-ca0d170 feat: add nested petals favicon
-fd20c9c chore: bootstrap worktree dependencies
-d6dc2a1 fix: use hero artwork for share previews
 ```
 
 <!-- END:development-status -->
@@ -166,6 +166,12 @@ When a future section route should keep working after a heading or structure cha
 V1 uses local progress only. The reader stores section IDs, section hashes, paragraph hashes, read timestamps, percent read, and audio preferences in the browser.
 
 There is no account requirement and no server side reading history. Future cross device sync should be optional and encrypted.
+
+## Licensing
+
+The site software, including source code, scripts, components, tests, and build tooling, is licensed under the Apache License 2.0. See `LICENSE`.
+
+Original manuscripts, site copy, and owned artwork are licensed under Creative Commons Attribution-ShareAlike 4.0 International. Third party materials remain governed by their own licenses.
 
 ## Roadmap
 

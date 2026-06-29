@@ -40,6 +40,10 @@ const singleSectionChapter = singleSectionPart.chapters.find(
   (chapter) => chapter.chapterId === singleSectionChapterTarget.chapterId,
 )!;
 
+const currentYear = new Date().getFullYear();
+const copyrightYearLabel =
+  currentYear > 2026 ? `2026 to ${currentYear}` : "2026";
+
 test("home page presents the overview and manuscript entry points", async ({
   page,
 }, testInfo) => {
@@ -88,6 +92,34 @@ test("home page presents the overview and manuscript entry points", async ({
     "src",
     "/art/coherence-thesis-hero.png",
   );
+  const footer = page.getByRole("contentinfo", { name: "Site information" });
+  await expect(footer).toBeVisible();
+  await expect(footer).toHaveCSS("border-top-width", "0px");
+  await expect(
+    footer.getByText(`© ${copyrightYearLabel} by the Providence Collective.`),
+  ).toBeVisible();
+  await expect(footer.getByText("Licensing: CC BY-SA 4.0.")).toBeVisible();
+  const licenseLink = footer.getByRole("link", { name: "CC BY-SA 4.0" });
+  await expect(licenseLink).toHaveAttribute(
+    "href",
+    "https://creativecommons.org/licenses/by-sa/4.0/",
+  );
+  await expect(licenseLink).toHaveAttribute("target", "_blank");
+  await expect(licenseLink).toHaveAttribute("rel", "license");
+  const robertLink = footer.getByRole("link", { name: "Robert James Ryan III" });
+  await expect(robertLink).toHaveAttribute(
+    "href",
+    "https://www.instagram.com/allelseis",
+  );
+  await expect(robertLink).toHaveAttribute("target", "_blank");
+  await expect(robertLink).toHaveAttribute("rel", "author");
+  const aubreyLink = footer.getByRole("link", { name: "Aubrey Falconer" });
+  await expect(aubreyLink).toHaveAttribute(
+    "href",
+    "https://aubreyfalconer.com",
+  );
+  await expect(aubreyLink).toHaveAttribute("target", "_blank");
+  await expect(aubreyLink).toHaveAttribute("rel", "author");
 
   const homepageSpacing = await page.evaluate(() => {
     const hero = document.querySelector(".hero-section")?.getBoundingClientRect();
@@ -589,6 +621,11 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await expect(audioPanel).toHaveCount(0);
   await activeListenButton.click();
   await expect(page.getByLabel("Audiobook controls")).toBeVisible();
+  const footer = page.getByRole("contentinfo", { name: "Site information" });
+  await expect(footer).toBeVisible();
+  await expect(
+    footer.getByText(`© ${copyrightYearLabel} by the Providence Collective.`),
+  ).toBeVisible();
 });
 
 test("reader shows subtle revision status for previously read sections", async ({

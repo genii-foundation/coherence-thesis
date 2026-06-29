@@ -83,6 +83,7 @@ a {
 }
 
 main {
+  flex: 1 0 auto;
   min-width: 0;
 }
 
@@ -169,6 +170,41 @@ input {
   backdrop-filter: blur(16px);
   box-shadow: 0 10px 28px rgba(44, 31, 18, 0.1);
   padding: 0.85rem clamp(1rem, 4vw, 3rem);
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem 1.1rem;
+  width: min(1160px, calc(100% - 2rem));
+  margin: 0 auto;
+  border-top: 0;
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  padding: 1.25rem 0 1.5rem;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a {
+  border-bottom: 1px solid rgba(119, 84, 42, 0.32);
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  border-color: rgba(119, 84, 42, 0.72);
+  color: var(--ink);
+  outline: none;
 }
 
 .brand-mark {
@@ -2125,6 +2161,13 @@ input {
   .page-frame {
     width: min(100% - 2.5rem, 1160px);
     padding: clamp(2rem, 8vw, 3rem) 0;
+  }
+
+  .site-footer {
+    align-items: center;
+    flex-direction: column;
+    width: min(100% - 2.5rem, 1160px);
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
   }
 
   .site-header {
