@@ -1,43 +1,60 @@
 ---
 name: coherence-build-feature
-description: Build Coherence Thesis site features in the canonical repository, launch or refresh the static preview when useful, validate with the project gates, then commit and push to origin/main. Use for reader UI, manuscript navigation, progress, audio, overview, import tooling, generated catalog behavior, styling, tests, and project docs.
+description: Build Coherence Thesis site features in the canonical repository, use an isolated feature branch unless the user explicitly requests main, validate with the project gates, then commit, push, and open or update a focused pull request with a high-context description. Use for reader UI, manuscript navigation, progress, audio, overview, import tooling, generated catalog behavior, styling, tests, and project docs.
 disable-model-invocation: true
 ---
 
 # Build Feature
 
-Implement a complete feature or fix in the Coherence Thesis repository, validate it, then commit and push it to `origin/main`.
+Implement a complete feature or fix in the Coherence Thesis repository, validate it, then commit, push, and open or update a focused pull request. Work on `main` only when the user explicitly asks for a direct main change.
 
 ## Workflow
 
 1. Read `AGENTS.md`, `README.md`, and the files that own the requested surface.
-2. Search for an existing component, helper, script, or pattern before adding a new one.
-3. Keep manuscript source rules intact:
-   - Canonical text lives in `content/manuscripts/`.
-   - Generated catalog data lives in `src/generated/manuscripts/`.
-   - Do not edit generated catalog data by hand.
-4. Implement the smallest coherent slice that handles the request end to end.
-5. Use focused checks while iterating:
+2. Confirm the request is clear before writing code. Ask concise clarifying questions when the desired behavior, affected surface, or acceptance criteria are ambiguous.
+3. Check `git status --short --branch`. Preserve unrelated local changes. Create a dedicated worktree and branch by default. Stay on `main` only when the user explicitly requests it.
+4. Search for an existing component, hook, helper, script, fixture, or test pattern before adding a new one.
+5. Keep manuscript source rules intact:
+   - Source manuscripts live in `sources/manuscripts/`.
+   - Generated canonical reader sections live in `content/manuscripts/`.
+   - Generated browser data lives in `public/data/`.
+   - Do not edit generated manuscript or catalog data by hand.
+6. Capture implementation context while working:
+   - What user problem or publishing constraint the change addresses.
+   - Which existing patterns or primitives were reused.
+   - Why any new component, hook, helper, script, or test was created.
+   - Which alternatives were considered and why they were rejected.
+   - Any product, accessibility, manuscript, performance, or compatibility tradeoffs.
+7. Implement the smallest coherent slice that handles the request end to end.
+8. Before shipping, verify every exported function, class, component, hook, or script entry point added in the change has an appropriate consumer.
+9. Use focused checks while iterating:
    - `npm run manuscripts:compile` after manuscript or overview edits
    - `npm run manuscripts:validate` after manuscript or overview reference changes
    - `npm run test` after pure TypeScript or state helper changes
    - `npm run test:e2e:fast:desktop` for narrow desktop UI checks while iterating
    - `npm run test:e2e:fast` after reader navigation, toolbar, progress, audio, or responsive UI changes while iterating
-6. Run `npm run readme:update` when stats, package metadata, recent commits, or development status changed.
-7. Run `npm run validate` before committing.
-8. If the change affects browser behavior, run `npm run test:e2e` before committing.
-9. Stage the complete feature, commit with a Conventional Commit title, and push to `origin/main`.
+10. Run `npm run readme:update` when stats, package metadata, recent commits, generated catalog state, or development status changed.
+11. Launch a local preview from the feature worktree on a fresh random port after visible UI work is implemented, when the user asks to inspect the feature, or when browser behavior needs human review. Do this even when another preview is already running. For visible UI work, do not open or update the pull request until the preview is running, unless the user explicitly says not to launch one.
+12. Run `npm run validate` before committing.
+13. If the change affects browser behavior, run `npm run test:e2e` before committing unless the user explicitly narrows the validation target.
+14. Review the final diff before staging. Confirm the diff is focused, generated files are expected, no debug logs or temporary files remain, and unrelated local changes are left alone.
+15. Stage the complete feature, commit with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user requested a direct main change, commit directly on `main` and do not open a pull request unless asked.
 
 ## Preview
 
-Use the static preview when the user should inspect the site or when visual verification matters:
+Use a local development preview when the user should inspect the feature or iterate on revisions. Run it from the feature worktree unless the user explicitly requested direct main work, and always choose a new unused local port instead of reusing the default port.
+
+```bash
+PORT=$(node -e "const net=require('node:net');const server=net.createServer();server.listen(0,'127.0.0.1',()=>{console.log(server.address().port);server.close();});")
+npm run dev -- --hostname 127.0.0.1 --port "$PORT"
+```
+
+The preview URL is `http://127.0.0.1:$PORT`. Keep the preview process running for the user, open the URL in a browser when requested, and include the exact URL in closeout and pull request preview section. Do not ship a visible UI pull request whose preview section says the preview was not launched. Use the static preview only for final publish verification or when the user specifically asks for a production build preview:
 
 ```bash
 npm run build
-npm start
+npm exec -- serve out -l "$PORT"
 ```
-
-The default preview URL is `http://127.0.0.1:3100`.
 
 ## UI Rules
 
@@ -48,6 +65,61 @@ The default preview URL is `http://127.0.0.1:3100`.
 - Do not add hover lift, bounce, glossy controls, or one-off gradients.
 - Use `Number.toLocaleString()` or `Intl.NumberFormat` for displayed counts.
 
+## Pull Request Quality
+
+Every pull request description must explain not only what changed, but why the change exists and why this shape was chosen. The body must begin with `(AI Generated).`
+
+Start from `.agents/templates/pull-request-description.md` by default:
+
+```markdown
+(AI Generated).
+
+## Summary
+- ...
+
+## Why
+- ...
+
+## Decisions
+- ...
+
+## Implementation Notes
+- ...
+
+## Validation
+- ...
+
+## Preview
+- ...
+
+## Risks and Follow-ups
+- ...
+```
+
+Include these details whenever they apply:
+
+- The user request, bug, publishing need, or UX gap that prompted the change.
+- The affected routes, components, generated files, scripts, and data flows.
+- Why each new component, hook, helper, script, test fixture, or generated artifact was created instead of reusing an existing one.
+- Existing primitives and patterns that were reused.
+- Alternatives considered, with the concrete reason they were not chosen.
+- Accessibility, responsive layout, no-JavaScript reader behavior, manuscript link preservation, performance, cache, or browser compatibility considerations.
+- Validation commands run, their outcomes, and any useful manual preview or screenshot evidence.
+- Known limits, residual risk, and follow-up work that should not block the pull request.
+
+Keep the PR title concise and human. Do not include tool or agent identifiers in branch names, PR titles, commit titles, or PR prose beyond the required body prefix.
+
+## Commit Quality
+
+Make every commit reviewable on its own:
+
+- Keep one coherent concern per commit.
+- Use a Conventional Commit title that names the user-visible or maintainer-visible change.
+- Do not mix formatting churn, generated output, or dependency changes into an unrelated feature commit.
+- Include generated artifacts only when the repository workflow requires them.
+- Make sure validation evidence in the closeout and pull request matches the actual commands run.
+- If validation fails, either fix the cause or leave a precise blocker with the failing command and relevant output.
+
 ## Closeout
 
-Close out with the commit hash, pushed branch, validation commands, and preview URL when a preview is running.
+Close out with the commit hash, pushed branch, pull request URL when one exists, validation commands, and preview URL when a preview is running. If validation was skipped or narrowed, state exactly why.
