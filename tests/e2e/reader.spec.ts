@@ -34,6 +34,10 @@ const singleSectionChapter = singleSectionPart.chapters.find(
   (chapter) => chapter.chapterId === singleSectionChapterTarget.chapterId,
 )!;
 
+const currentYear = new Date().getFullYear();
+const copyrightYearLabel =
+  currentYear > 2026 ? `2026 to ${currentYear}` : "2026";
+
 test("home page presents the overview and manuscript entry points", async ({
   page,
 }, testInfo) => {
@@ -81,6 +85,22 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(page.locator(".hero-art img")).toHaveAttribute(
     "src",
     "/art/coherence-thesis-hero.png",
+  );
+  const footer = page.getByRole("contentinfo", { name: "Site information" });
+  await expect(footer).toBeVisible();
+  await expect(
+    footer.getByText(`© ${copyrightYearLabel} by the Providence Collective.`),
+  ).toBeVisible();
+  await expect(footer.getByRole("link", { name: "CC BY-SA 4.0" })).toHaveAttribute(
+    "href",
+    "https://creativecommons.org/licenses/by-sa/4.0/",
+  );
+  await expect(
+    footer.getByRole("link", { name: "Robert James Ryan III" }),
+  ).toHaveAttribute("href", "https://www.instagram.com/allelseis");
+  await expect(footer.getByRole("link", { name: "Aubrey Falconer" })).toHaveAttribute(
+    "href",
+    "https://aubreyfalconer.com",
   );
 
   const homepageSpacing = await page.evaluate(() => {
@@ -579,6 +599,11 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await expect(audioPanel).toHaveCount(0);
   await activeListenButton.click();
   await expect(page.getByLabel("Audiobook controls")).toBeVisible();
+  const footer = page.getByRole("contentinfo", { name: "Site information" });
+  await expect(footer).toBeVisible();
+  await expect(
+    footer.getByText(`© ${copyrightYearLabel} by the Providence Collective.`),
+  ).toBeVisible();
 });
 
 test("toolbar brand owns the active manuscript identity", async ({ page }) => {
