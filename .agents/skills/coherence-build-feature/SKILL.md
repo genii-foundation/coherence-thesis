@@ -1,6 +1,6 @@
 ---
 name: coherence-build-feature
-description: Build Coherence Thesis site features in the canonical repository, use an isolated feature branch unless the user explicitly requests main, validate with the project gates, then commit, push, and open or update a focused pull request with a high-context description. Use for reader UI, manuscript navigation, progress, audio, overview, import tooling, generated catalog behavior, styling, tests, and project docs.
+description: Build Coherence Thesis site features in the canonical repository, use an isolated feature branch unless the user explicitly requests main, launch a feature worktree preview on a fresh local port after implementation, validate with the project gates, then commit, push, and open or update a focused pull request with a high-context description. Use for reader UI, manuscript navigation, progress, audio, overview, import tooling, generated catalog behavior, styling, tests, and project docs.
 disable-model-invocation: true
 ---
 
@@ -34,7 +34,7 @@ Implement a complete feature or fix in the Coherence Thesis repository, validate
    - `npm run test:e2e:fast:desktop` for narrow desktop UI checks while iterating
    - `npm run test:e2e:fast` after reader navigation, toolbar, progress, audio, or responsive UI changes while iterating
 10. Run `npm run readme:update` when stats, package metadata, recent commits, generated catalog state, or development status changed.
-11. Launch a local preview from the feature worktree on a fresh random port after visible UI work is implemented, when the user asks to inspect the feature, or when browser behavior needs human review. Do this even when another preview is already running. For visible UI work, do not open or update the pull request until the preview is running, unless the user explicitly says not to launch one.
+11. Launch a local development preview from the feature worktree on a fresh random port after the feature is implemented. Do this even when another preview is already running. For visible UI work, do not open or update the pull request until the preview is running, unless the user explicitly says not to launch one.
 12. Run `npm run validate` before committing.
 13. If the change affects browser behavior, run `npm run test:e2e` before committing unless the user explicitly narrows the validation target.
 14. Review the final diff before staging. Confirm the diff is focused, generated files are expected, no debug logs or temporary files remain, and unrelated local changes are left alone.
