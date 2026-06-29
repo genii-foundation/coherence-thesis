@@ -179,7 +179,7 @@ input {
   gap: 0.45rem 1.1rem;
   width: min(1160px, calc(100% - 2rem));
   margin: 0 auto;
-  border-top: 1px solid rgba(119, 84, 42, 0.18);
+  border-top: 0;
   color: var(--ink-muted);
   font-size: 0.82rem;
   line-height: 1.5;

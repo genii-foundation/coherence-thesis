@@ -88,6 +88,7 @@ test("home page presents the overview and manuscript entry points", async ({
   );
   const footer = page.getByRole("contentinfo", { name: "Site information" });
   await expect(footer).toBeVisible();
+  await expect(footer).toHaveCSS("border-top-width", "0px");
   await expect(
     footer.getByText(`© ${copyrightYearLabel} by the Providence Collective.`),
   ).toBeVisible();
