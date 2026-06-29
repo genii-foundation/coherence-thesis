@@ -28,6 +28,40 @@ const wieldingFrontMatter = wieldingVolume.parts.find(
 const wieldingDiagnosis = wieldingVolume.parts.find(
   (part) => part.partId === "the-diagnosis",
 )!;
+const firstVolume = catalog.volumes[0]!;
+const volumeWithNeighborsIndex = catalog.volumes.findIndex(
+  (_volume, index) => index > 0 && index < catalog.volumes.length - 1,
+);
+const volumeWithNeighbors = catalog.volumes[volumeWithNeighborsIndex]!;
+const previousVolume = catalog.volumes[volumeWithNeighborsIndex - 1]!;
+const nextVolume = catalog.volumes[volumeWithNeighborsIndex + 1]!;
+const partNavigationVolume = catalog.volumes.find((volume) => volume.parts.length > 2)!;
+const partWithNeighborsIndex = partNavigationVolume.parts.findIndex(
+  (_part, index) => index > 0 && index < partNavigationVolume.parts.length - 1,
+);
+const partWithNeighbors = partNavigationVolume.parts[partWithNeighborsIndex]!;
+const previousPart = partNavigationVolume.parts[partWithNeighborsIndex - 1]!;
+const nextPart = partNavigationVolume.parts[partWithNeighborsIndex + 1]!;
+const chapterNavigationContext = catalog.volumes
+  .flatMap((volume) =>
+    volume.parts.map((part) => ({
+      volume,
+      part,
+      chapterIndex: part.chapters.findIndex(
+        (chapter, index) =>
+          index > 0 &&
+          index < part.chapters.length - 1 &&
+          chapter.sectionIds.length > 1,
+      ),
+    })),
+  )
+  .find((context) => context.chapterIndex > 0)!;
+const chapterWithNeighbors =
+  chapterNavigationContext.part.chapters[chapterNavigationContext.chapterIndex]!;
+const previousChapter =
+  chapterNavigationContext.part.chapters[chapterNavigationContext.chapterIndex - 1]!;
+const nextChapter =
+  chapterNavigationContext.part.chapters[chapterNavigationContext.chapterIndex + 1]!;
 const wieldingSection = catalog.sections.find(
   (section) => section.volumeId === "wielding-intelligence",
 )!;
@@ -43,6 +77,19 @@ const singleSectionPart = partById(
 const singleSectionChapter = singleSectionPart.chapters.find(
   (chapter) => chapter.chapterId === singleSectionChapterTarget.chapterId,
 )!;
+const sectionWithNeighbors = catalog.sections.find(
+  (section) => section.previousSectionId && section.nextSectionId,
+)!;
+const previousSection = catalog.sections.find(
+  (section) => section.sectionId === sectionWithNeighbors.previousSectionId,
+)!;
+const nextSection = catalog.sections.find(
+  (section) => section.sectionId === sectionWithNeighbors.nextSectionId,
+)!;
+const parentChapter = catalog.volumes
+  .find((volume) => volume.volumeId === sectionWithNeighbors.volumeId)!
+  .parts.find((part) => part.partId === sectionWithNeighbors.partId)!
+  .chapters.find((chapter) => chapter.chapterId === sectionWithNeighbors.chapterId)!;
 
 const currentYear = new Date().getFullYear();
 const copyrightYearLabel =
@@ -846,9 +893,8 @@ test("reader settings update and persist local appearance preferences", async ({
   await expect(settingsMenu).toHaveCount(0);
 
   await page
-    .getByRole("navigation", { name: "Section navigation" })
-    .getByRole("link")
-    .first()
+    .getByRole("navigation", { name: "Page navigation" })
+    .locator(".section-nav-link-next")
     .click();
   await expect(page).toHaveURL(/on-form-timing-and-why-this-book-exists/);
   await expect(page.locator("html")).toHaveAttribute("data-reader-theme", "black");
@@ -1010,7 +1056,7 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
     );
   } else {
     expect(readerLayout.readerLeft).toBeGreaterThanOrEqual(
-      readerLayout.topInset - 2,
+      readerLayout.topInset - 3,
     );
   }
   const progressButton = page.getByRole("button", { name: /Progress/ });
@@ -1112,6 +1158,174 @@ test("reader shows subtle revision status for previously read sections", async (
   });
   await expect(chapterCard.locator('[data-updated-marker="true"]')).toBeVisible();
   await expect(chapterCard.locator('[data-read-checkmark="true"]')).toHaveCount(0);
+});
+
+test("reader footer links adjacent sections and the containing chapter", async ({
+  page,
+}) => {
+  await page.goto(sectionWithNeighbors.href);
+
+  const footerNav = page.getByRole("navigation", { name: "Page navigation" });
+  await expect(footerNav).toBeVisible();
+
+  const previousLink = footerNav.locator(".section-nav-link-previous");
+  await expect(previousLink).toHaveAttribute("href", previousSection.href);
+  await expect(previousLink.locator("small")).toHaveText("Previous");
+  await expect(previousLink.locator("strong")).toHaveText(previousSection.title);
+
+  const parentLink = footerNav.locator(".section-nav-link-parent");
+  await expect(parentLink).toHaveAttribute("href", parentChapter.href);
+  await expect(parentLink.locator("small")).toHaveText("Up");
+  await expect(parentLink.locator("strong")).toHaveText(parentChapter.title);
+  const parentLinkLayout = await parentLink.evaluate((link) => {
+    const icon = link.querySelector(".section-nav-icon")?.getBoundingClientRect();
+    const label = link.querySelector("small")?.getBoundingClientRect();
+
+    return {
+      iconCenterY: icon ? icon.top + icon.height / 2 : 0,
+      iconRight: icon?.right ?? 0,
+      labelCenterY: label ? label.top + label.height / 2 : 0,
+      labelLeft: label?.left ?? 0,
+    };
+  });
+  expect(parentLinkLayout.labelLeft).toBeGreaterThanOrEqual(
+    parentLinkLayout.iconRight - 1,
+  );
+  expect(
+    Math.abs(parentLinkLayout.labelCenterY - parentLinkLayout.iconCenterY),
+  ).toBeLessThanOrEqual(2);
+
+  const nextLink = footerNav.locator(".section-nav-link-next");
+  await expect(nextLink).toHaveAttribute("href", nextSection.href);
+  await expect(nextLink.locator("small")).toHaveText("Next");
+  await expect(nextLink.locator("strong")).toHaveText(nextSection.title);
+
+  const footerLinkLayout = await footerNav.evaluate((nav) =>
+    [...nav.querySelectorAll(".section-nav-link")].map((link) => {
+      const bodyStyle = window.getComputedStyle(document.body);
+      const labelElement = link.querySelector("small");
+      const titleElement = link.querySelector("strong");
+      const label = link.querySelector("small")?.getBoundingClientRect();
+      const title = link.querySelector("strong")?.getBoundingClientRect();
+      const linkStyle = window.getComputedStyle(link);
+      const labelStyle = labelElement ? window.getComputedStyle(labelElement) : null;
+      const titleStyle = titleElement ? window.getComputedStyle(titleElement) : null;
+
+      return {
+        bodyColor: bodyStyle.color,
+        labelBottom: label?.bottom ?? 0,
+        labelColor: labelStyle?.color ?? "",
+        labelDecorationLine: labelStyle?.textDecorationLine ?? "",
+        labelDecorationStyle: labelStyle?.textDecorationStyle ?? "",
+        labelFontWeight: labelStyle ? Number.parseFloat(labelStyle.fontWeight) : 0,
+        linkColor: linkStyle.color,
+        lineHeight: titleStyle ? Number.parseFloat(titleStyle.lineHeight) : 0,
+        titleColor: titleStyle?.color ?? "",
+        titleFontWeight: titleStyle ? Number.parseFloat(titleStyle.fontWeight) : 0,
+        titleHeight: title?.height ?? 0,
+        titleFontSize: titleStyle ? Number.parseFloat(titleStyle.fontSize) : 0,
+        titleTop: title?.top ?? 0,
+      };
+    }),
+  );
+
+  for (const link of footerLinkLayout) {
+    expect(link.linkColor).toBe(link.bodyColor);
+    expect(link.labelColor).toBe(link.bodyColor);
+    expect(link.titleColor).toBe(link.bodyColor);
+    expect(link.labelDecorationLine).not.toContain("underline");
+    expect(link.labelDecorationStyle).not.toBe("dotted");
+    expect(link.labelFontWeight).toBeLessThanOrEqual(500);
+    expect(link.titleFontWeight).toBeLessThanOrEqual(500);
+    expect(link.titleFontSize).toBeLessThanOrEqual(17);
+    expect(link.titleHeight).toBeLessThanOrEqual(link.lineHeight * 2 + 1);
+    expect(link.labelBottom).toBeLessThanOrEqual(link.titleTop);
+  }
+
+  await parentLink.hover();
+  const hoverDecoration = await parentLink.evaluate((link) => {
+    const labelStyle = window.getComputedStyle(link.querySelector("small")!);
+    const titleStyle = window.getComputedStyle(link.querySelector("strong")!);
+
+    return {
+      label: labelStyle.textDecorationLine,
+      labelStyle: labelStyle.textDecorationStyle,
+      title: titleStyle.textDecorationLine,
+    };
+  });
+  expect(hoverDecoration.label).toContain("underline");
+  expect(hoverDecoration.labelStyle).toBe("solid");
+  expect(hoverDecoration.title).not.toContain("underline");
+});
+
+test("organizational manuscript pages expose page navigation", async ({ page }) => {
+  await page.goto("/manuscripts/");
+  let footerNav = page.getByRole("navigation", { name: "Page navigation" });
+  await expect(footerNav).toBeVisible();
+  await expect(footerNav.locator(".section-nav-link-previous")).toHaveCount(0);
+  await expect(footerNav.locator(".section-nav-spacer").first()).toHaveCSS(
+    "border-top-width",
+    "0px",
+  );
+  await expect(footerNav.locator(".section-nav-link-parent")).toHaveAttribute(
+    "href",
+    "/",
+  );
+  await expect(footerNav.locator(".section-nav-link-parent strong")).toHaveText(
+    catalog.siteTitle,
+  );
+  await expect(footerNav.locator(".section-nav-link-next")).toHaveAttribute(
+    "href",
+    firstVolume.href,
+  );
+  await expect(footerNav.locator(".section-nav-link-next strong")).toHaveText(
+    firstVolume.title,
+  );
+
+  await page.goto(volumeWithNeighbors.href);
+  footerNav = page.getByRole("navigation", { name: "Page navigation" });
+  await expect(footerNav.locator(".section-nav-link-previous")).toHaveAttribute(
+    "href",
+    previousVolume.href,
+  );
+  await expect(footerNav.locator(".section-nav-link-parent")).toHaveAttribute(
+    "href",
+    "/manuscripts/",
+  );
+  await expect(footerNav.locator(".section-nav-link-next")).toHaveAttribute(
+    "href",
+    nextVolume.href,
+  );
+
+  await page.goto(partWithNeighbors.href);
+  footerNav = page.getByRole("navigation", { name: "Page navigation" });
+  await expect(footerNav.locator(".section-nav-link-previous")).toHaveAttribute(
+    "href",
+    previousPart.href,
+  );
+  await expect(footerNav.locator(".section-nav-link-parent")).toHaveAttribute(
+    "href",
+    partNavigationVolume.href,
+  );
+  await expect(footerNav.locator(".section-nav-link-next")).toHaveAttribute(
+    "href",
+    nextPart.href,
+  );
+
+  await page.goto(chapterWithNeighbors.href);
+  footerNav = page.getByRole("navigation", { name: "Page navigation" });
+  await expect(footerNav.locator(".section-nav-link-previous")).toHaveAttribute(
+    "href",
+    previousChapter.href,
+  );
+  await expect(footerNav.locator(".section-nav-link-parent")).toHaveAttribute(
+    "href",
+    chapterNavigationContext.part.href,
+  );
+  await expect(footerNav.locator(".section-nav-link-next")).toHaveAttribute(
+    "href",
+    nextChapter.href,
+  );
 });
 
 test("toolbar brand owns the active manuscript identity", async ({
@@ -1241,20 +1455,32 @@ test("toolbar brand owns the active manuscript identity", async ({
     .locator("a")
     .first();
   await expect(firstBreadcrumbLink).toBeVisible();
+  const currentBreadcrumb = page
+    .getByRole("navigation", { name: "Breadcrumb" })
+    .locator('[aria-current="page"]')
+    .first();
+  await expect(currentBreadcrumb).toHaveCount(1);
   const breadcrumbStyles = await firstBreadcrumbLink.evaluate((element) => ({
     background: window.getComputedStyle(element).backgroundColor,
     border: window.getComputedStyle(element).borderBottomColor,
+    color: window.getComputedStyle(element).color,
+    currentColor: window.getComputedStyle(
+      element.closest("nav")!.querySelector('[aria-current="page"]')!,
+    ).color,
+    bodyColor: window.getComputedStyle(document.body).color,
   }));
+  expect(breadcrumbStyles.color).toBe(breadcrumbStyles.bodyColor);
+  expect(breadcrumbStyles.currentColor).toBe(breadcrumbStyles.bodyColor);
   await firstBreadcrumbLink.hover();
   await page.waitForTimeout(200);
-  const breadcrumbHoverStyles = await firstBreadcrumbLink.evaluate(
-    (element) => ({
-      background: window.getComputedStyle(element).backgroundColor,
-      border: window.getComputedStyle(element).borderBottomColor,
-    }),
-  );
+  const breadcrumbHoverStyles = await firstBreadcrumbLink.evaluate((element) => ({
+    background: window.getComputedStyle(element).backgroundColor,
+    border: window.getComputedStyle(element).borderBottomColor,
+    color: window.getComputedStyle(element).color,
+  }));
   expect(breadcrumbHoverStyles.background).toBe(breadcrumbStyles.background);
   expect(breadcrumbHoverStyles.border).not.toBe(breadcrumbStyles.border);
+  expect(breadcrumbHoverStyles.color).toBe(breadcrumbStyles.bodyColor);
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(wieldingVolume.href);

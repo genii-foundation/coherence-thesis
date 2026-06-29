@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { catalog } from "@/lib/manuscript-data";
+import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
+import { catalog, manuscriptsNavigation } from "@/lib/manuscript-data";
 
 export const metadata: Metadata = {
   title: "Manuscripts",
@@ -9,6 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function ManuscriptsPage() {
+  const navigation = manuscriptsNavigation();
+
   return (
     <div className="page-frame">
       <header className="page-heading">
@@ -38,6 +41,11 @@ export default function ManuscriptsPage() {
           </Link>
         ))}
       </section>
+      <ManuscriptNavigation
+        previous={navigation.previous}
+        parent={navigation.parent}
+        next={navigation.next}
+      />
     </div>
   );
 }

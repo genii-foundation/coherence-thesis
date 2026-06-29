@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
 import { UpdatedMarkerIsland } from "@/components/UpdatedMarkerIsland";
 import {
   catalog,
   partById,
+  partNavigation,
   sectionsForPart,
   toProgressSection,
 } from "@/lib/manuscript-data";
@@ -42,6 +44,8 @@ export default async function PartPage({
   const { volumeId, partId } = await params;
   const part = partById(volumeId, partId);
   if (!part) notFound();
+  const navigation = partNavigation(volumeId, partId);
+  if (!navigation) notFound();
   const sections = sectionsForPart(volumeId, partId);
 
   return (
@@ -87,6 +91,11 @@ export default async function PartPage({
           })}
         </div>
       </section>
+      <ManuscriptNavigation
+        previous={navigation.previous}
+        parent={navigation.parent}
+        next={navigation.next}
+      />
     </div>
   );
 }

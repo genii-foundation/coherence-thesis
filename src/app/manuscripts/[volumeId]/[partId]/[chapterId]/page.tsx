@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
 import { SectionReader } from "@/components/SectionReader";
 import { UpdatedMarkerIsland } from "@/components/UpdatedMarkerIsland";
 import {
   chapterById,
+  chapterNavigation,
   catalog,
   sectionsForChapter,
   toProgressSection,
@@ -46,12 +48,14 @@ export default async function ChapterPage({
   const { volumeId, partId, chapterId } = await params;
   const chapter = chapterById(volumeId, partId, chapterId);
   if (!chapter) notFound();
+  const navigation = chapterNavigation(volumeId, partId, chapterId);
+  if (!navigation) notFound();
   const sections = sectionsForChapter(volumeId, partId, chapterId);
   const onlySection = sections[0];
   if (sections.length === 1 && onlySection) {
     return (
       <div className="page-frame reader-layout">
-        <SectionReader section={onlySection} />
+        <SectionReader section={onlySection} navigation={navigation} />
       </div>
     );
   }
@@ -75,6 +79,11 @@ export default async function ChapterPage({
             </Link>
           ))}
         </div>
+        <ManuscriptNavigation
+          previous={navigation.previous}
+          parent={navigation.parent}
+          next={navigation.next}
+        />
       </article>
     </div>
   );

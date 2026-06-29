@@ -1,12 +1,12 @@
 ---
 name: coherence-build-feature
-description: Build Coherence Thesis site features in the canonical repository, use an isolated feature branch unless the user explicitly requests main, launch a feature worktree preview on a fresh local port after implementation, validate with the project gates, then commit, push, and open or update a focused pull request with a high-context description. Use for reader UI, manuscript navigation, progress, audio, overview, import tooling, generated catalog behavior, styling, tests, and project docs.
+description: Build Coherence Thesis site features in the canonical repository, use an isolated feature branch unless the user explicitly requests main, validate with the project gates, push a focused branch, open or update a pull request, share a clickable preview link, then wait for explicit preview approval before publishing or merging. Use for reader UI, manuscript navigation, progress, audio, overview, import tooling, generated catalog behavior, styling, tests, and project docs.
 disable-model-invocation: true
 ---
 
 # Build Feature
 
-Implement a complete feature or fix in the Coherence Thesis repository, validate it, then commit, push, and open or update a focused pull request. Work on `main` only when the user explicitly asks for a direct main change.
+Implement a complete feature or fix in the Coherence Thesis repository, validate it, then commit, push, and open or update a focused pull request. Work on `main` only when the user explicitly asks for a direct main change. Never merge or publish the pull request until the user explicitly confirms that the preview looks good.
 
 ## Workflow
 
@@ -39,6 +39,10 @@ Implement a complete feature or fix in the Coherence Thesis repository, validate
 13. If the change affects browser behavior, run `npm run test:e2e` before committing unless the user explicitly narrows the validation target.
 14. Review the final diff before staging. Confirm the diff is focused, generated files are expected, no debug logs or temporary files remain, and unrelated local changes are left alone.
 15. Stage the complete feature, commit with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user requested a direct main change, commit directly on `main` and do not open a pull request unless asked.
+16. As soon as the preview is ready, send the exact URL as a Markdown link in a user-visible update.
+17. Ask the user whether they are ready to publish or what follow-on revisions are needed. Do not merge, publish, or mark the pull request ready for merge until the user explicitly confirms that the preview looks good.
+18. If the user requests revisions after preview review, implement them on the same focused branch, validate again, push the update, and ask for preview approval again.
+19. After the user explicitly confirms the preview looks good and asks to publish or merge, complete the publish or merge workflow.
 
 ## Preview
 
@@ -55,6 +59,23 @@ The preview URL is `http://127.0.0.1:$PORT`. Keep the preview process running fo
 npm run build
 npm exec -- serve out -l "$PORT"
 ```
+
+As soon as any preview is ready, send the exact URL to the user as a Markdown
+link in a user-visible update, for example
+`[Local preview](http://127.0.0.1:$PORT)`. Include the same URL again in the
+final closeout when the preview is still running.
+
+After the initial implementation is complete, use this review checkpoint before
+publishing or merging:
+
+```text
+Preview: [Local preview](http://127.0.0.1:$PORT)
+
+Does this preview look good to publish, or are follow-on revisions needed?
+```
+
+Do not merge or publish a pull request before the user explicitly confirms that
+the preview looks good.
 
 ## UI Rules
 
@@ -122,4 +143,4 @@ Make every commit reviewable on its own:
 
 ## Closeout
 
-Close out with the commit hash, pushed branch, pull request URL when one exists, validation commands, and preview URL when a preview is running. If validation was skipped or narrowed, state exactly why.
+Close out with the commit hash, pushed branch, pull request URL when one exists, validation commands, and a Markdown link to the preview URL when a preview is running. If validation was skipped or narrowed, state exactly why. If the preview has not been approved yet, say that the pull request is waiting for user preview approval before merge or publish.
