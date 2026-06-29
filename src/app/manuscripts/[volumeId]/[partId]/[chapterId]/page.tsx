@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
 import { SectionReader } from "@/components/SectionReader";
+import { UpdatedMarkerIsland } from "@/components/UpdatedMarkerIsland";
 import {
   chapterById,
   catalog,
@@ -67,7 +68,10 @@ export default async function ChapterPage({
           {sections.map((section) => (
             <Link key={section.sectionId} href={section.href}>
               <span>{section.title}</span>
-              <ReadCheckmarkIsland sections={[toProgressSection(section)]} />
+              <span className="content-status-row">
+                <UpdatedMarkerIsland sections={[toProgressSection(section)]} />
+                <ReadCheckmarkIsland sections={[toProgressSection(section)]} />
+              </span>
             </Link>
           ))}
         </div>

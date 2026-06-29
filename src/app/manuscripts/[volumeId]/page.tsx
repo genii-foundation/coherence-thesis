@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BookOpen } from "lucide-react";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
+import { UpdatedMarkerIsland } from "@/components/UpdatedMarkerIsland";
 import {
   catalog,
   sectionsForPart,
@@ -80,7 +81,10 @@ export default async function VolumePage({
               <span className="card-kicker">
                 <BookOpen aria-hidden="true" size={21} />
                 Part {part.order || "0"}
-                <ReadCheckmarkIsland sections={partSections} />
+                <span className="content-status-row">
+                  <UpdatedMarkerIsland sections={partSections} />
+                  <ReadCheckmarkIsland sections={partSections} />
+                </span>
               </span>
               <strong>{part.title}</strong>
               <small>{part.wordCount.toLocaleString()} words</small>

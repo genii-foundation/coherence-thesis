@@ -29,6 +29,8 @@
     "manuscripts:import": "tsx scripts/manuscripts/import-markdown.ts",
     "premanuscripts:compile": "node scripts/ensure-node-modules.mjs",
     "manuscripts:compile": "tsx scripts/manuscripts/compile.ts",
+    "premanuscripts:versions": "node scripts/ensure-node-modules.mjs",
+    "manuscripts:versions": "tsx scripts/manuscripts/versions.ts",
     "premanuscripts:validate": "node scripts/ensure-node-modules.mjs",
     "manuscripts:validate": "tsx scripts/manuscripts/validate.ts",
     "prereadme:update": "node scripts/ensure-node-modules.mjs",

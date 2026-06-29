@@ -11,6 +11,10 @@ export type ReaderSectionData = {
   href: string;
   text: string;
   contentHash: string;
+  versionHash: string;
+  versionDate: string;
+  versionUrl: string;
+  audioVersionId: string;
   paragraphs: ReaderParagraph[];
 };
 

@@ -10,6 +10,7 @@ export const overviewRoot = path.join(contentRoot, "overview");
 export const seriesRoot = path.join(contentRoot, "series");
 export const volumeConfigPath = path.join(seriesRoot, "volumes.json");
 export const aliasConfigPath = path.join(seriesRoot, "aliases.json");
+export const versionProvenancePath = path.join(seriesRoot, "version-provenance.json");
 export const generatedRoot = path.join(repoRoot, "src/generated/manuscripts");
 export const catalogPath = path.join(generatedRoot, "catalog.json");
 export const publicDataRoot = path.join(repoRoot, "public/data");
@@ -54,6 +55,10 @@ export type CompiledSection = ManuscriptFrontmatter & {
   wordCount: number;
   readingMinutes: number;
   contentHash: string;
+  versionHash: string;
+  versionDate: string;
+  versionUrl: string;
+  audioVersionId: string;
   previousSectionId: string | null;
   nextSectionId: string | null;
 };
@@ -151,6 +156,21 @@ export type SectionAlias = SectionAliasInput & {
     chapterId: string;
     sectionId: string;
   };
+};
+
+export type VersionProvenanceEntry = {
+  contentHash: string;
+  versionDate: string;
+  commitSha: string;
+  commitUrl: string;
+  pullRequestUrl?: string;
+  pullRequestNumber?: number;
+};
+
+export type VersionProvenanceManifest = {
+  version: number;
+  generatedAt: string;
+  entries: VersionProvenanceEntry[];
 };
 
 export type CompiledCatalog = {
@@ -475,6 +495,17 @@ export function readAliasConfig(): SectionAliasConfig {
   return JSON.parse(readUtf8(aliasConfigPath)) as SectionAliasConfig;
 }
 
+export function readVersionProvenance(): VersionProvenanceManifest {
+  if (!fs.existsSync(versionProvenancePath)) {
+    return { version: 1, generatedAt: new Date(0).toISOString(), entries: [] };
+  }
+  return JSON.parse(readUtf8(versionProvenancePath)) as VersionProvenanceManifest;
+}
+
+export function audioVersionId(sectionId: string, contentHash: string): string {
+  return `${sectionId}-${contentHash}`;
+}
+
 function routeFromHref(href: string): SectionAlias["sourceRoute"] {
   const match = href.match(
     /^\/manuscripts\/([^/]+)\/([^/]+)\/([^/]+)\/([^/]+)\/?$/,
@@ -492,11 +523,16 @@ function routeFromHref(href: string): SectionAlias["sourceRoute"] {
 
 export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
   const docs = sortDocuments(readMarkdownDocuments(root));
+  const provenanceByHash = new Map(
+    readVersionProvenance().entries.map((entry) => [entry.contentHash, entry]),
+  );
   const volumeConfigs = new Map(
     readVolumeConfigs().map((volume) => [volume.volumeId, volume]),
   );
   const sections = docs.map((doc, index) => {
     const words = wordCount(doc.body);
+    const contentHash = sha256(normalizeNewlines(doc.body)).slice(0, 16);
+    const provenance = provenanceByHash.get(contentHash);
     return {
       ...doc.frontmatter,
       path: doc.relativePath,
@@ -506,7 +542,11 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
       paragraphs: paragraphFingerprints(doc.body),
       wordCount: words,
       readingMinutes: readingMinutes(words),
-      contentHash: sha256(normalizeNewlines(doc.body)).slice(0, 16),
+      contentHash,
+      versionHash: contentHash,
+      versionDate: provenance?.versionDate ?? "",
+      versionUrl: provenance?.pullRequestUrl ?? provenance?.commitUrl ?? "",
+      audioVersionId: audioVersionId(doc.frontmatter.sectionId, contentHash),
       previousSectionId: docs[index - 1]?.frontmatter.sectionId ?? null,
       nextSectionId: docs[index + 1]?.frontmatter.sectionId ?? null,
     } satisfies CompiledSection;

@@ -919,6 +919,23 @@ input {
   line-height: 1.7;
 }
 
+.manuscript-heading .section-version-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+  margin-top: 0.65rem;
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.section-version-meta a {
+  color: var(--bronze-deep);
+  font-weight: 700;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
 .hero-deck {
   max-width: 42rem;
   margin: 1.5rem 0 0;
@@ -1479,6 +1496,14 @@ input {
   justify-content: space-between;
 }
 
+.content-status-row {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
 .read-checkmark {
   display: inline-flex;
   flex: 0 0 auto;
@@ -1492,10 +1517,29 @@ input {
   color: var(--sage);
 }
 
+.updated-marker {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.25rem;
+  border: 1px solid rgba(164, 123, 63, 0.34);
+  border-radius: 999px;
+  background: rgba(164, 123, 63, 0.1);
+  color: var(--bronze-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.28rem 0.42rem;
+}
+
 .card-kicker {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
+}
+
+.card-kicker .content-status-row {
+  margin-left: auto;
 }
 
 @media (hover: hover) and (pointer: fine) {

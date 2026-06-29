@@ -5,8 +5,10 @@ import {
   buildSearchIndex,
   catalogPath,
   readMarkdownDocuments,
+  readVersionProvenance,
   sectionHref,
   searchIndexPath,
+  versionProvenancePath,
 } from "./shared";
 import type { CompiledCatalog } from "./shared";
 
@@ -32,6 +34,19 @@ function assert(condition: unknown, message: string): void {
   if (!condition) {
     throw new Error(message);
   }
+}
+
+function isIsoDate(value: string): boolean {
+  const timestamp = Date.parse(value);
+  return Number.isFinite(timestamp) && /^\d{4}-\d{2}-\d{2}T/.test(value);
+}
+
+function isGitHubPullRequestUrl(value: string): boolean {
+  return /^https:\/\/github\.com\/[^/]+\/[^/]+\/pull\/\d+$/.test(value);
+}
+
+function isGitHubCommitUrl(value: string): boolean {
+  return /^https:\/\/github\.com\/[^/]+\/[^/]+\/commit\/[0-9a-f]{40}$/.test(value);
 }
 
 export function catalogForStaleCheck(catalog: CompiledCatalog): CompiledCatalog {
@@ -64,6 +79,73 @@ export function validateManuscripts(): void {
   }
 
   const catalog = buildCatalog();
+  const provenance = readVersionProvenance();
+  assert(
+    fs.existsSync(versionProvenancePath),
+    "Version provenance is missing. Run npm run manuscripts:versions.",
+  );
+  assert(provenance.version === 1, "Version provenance must use version 1.");
+  assert(isIsoDate(provenance.generatedAt), "Version provenance generatedAt must be an ISO date.");
+  const provenanceByHash = new Map<string, (typeof provenance.entries)[number]>();
+  for (const entry of provenance.entries) {
+    assert(
+      /^[0-9a-f]{16}$/.test(entry.contentHash),
+      `Version provenance hash '${entry.contentHash}' must be 16 lowercase hex characters.`,
+    );
+    assert(
+      !provenanceByHash.has(entry.contentHash),
+      `Duplicate version provenance hash '${entry.contentHash}'.`,
+    );
+    provenanceByHash.set(entry.contentHash, entry);
+    assert(
+      isIsoDate(entry.versionDate),
+      `Version provenance date for '${entry.contentHash}' must be an ISO date.`,
+    );
+    assert(
+      /^[0-9a-f]{40}$/.test(entry.commitSha),
+      `Version provenance commit for '${entry.contentHash}' must be a full SHA.`,
+    );
+    assert(
+      isGitHubCommitUrl(entry.commitUrl),
+      `Version provenance commitUrl for '${entry.contentHash}' must be a GitHub commit URL.`,
+    );
+    if (entry.pullRequestUrl) {
+      assert(
+        isGitHubPullRequestUrl(entry.pullRequestUrl),
+        `Version provenance pullRequestUrl for '${entry.contentHash}' must be a GitHub PR URL.`,
+      );
+      assert(
+        typeof entry.pullRequestNumber === "number" &&
+          Number.isInteger(entry.pullRequestNumber),
+        `Version provenance pullRequestNumber for '${entry.contentHash}' must be an integer.`,
+      );
+    }
+  }
+
+  for (const section of catalog.sections) {
+    const entry = provenanceByHash.get(section.contentHash);
+    assert(
+      entry,
+      `Missing version provenance for section '${section.sectionId}' hash '${section.contentHash}'. Run npm run manuscripts:versions.`,
+    );
+    assert(
+      section.versionHash === section.contentHash,
+      `Section '${section.sectionId}' versionHash must match contentHash.`,
+    );
+    assert(
+      section.versionDate === entry?.versionDate,
+      `Section '${section.sectionId}' versionDate does not match provenance.`,
+    );
+    assert(
+      section.versionUrl === (entry?.pullRequestUrl ?? entry?.commitUrl),
+      `Section '${section.sectionId}' versionUrl does not match provenance.`,
+    );
+    assert(
+      section.audioVersionId === `${section.sectionId}-${section.contentHash}`,
+      `Section '${section.sectionId}' audioVersionId must include sectionId and contentHash.`,
+    );
+  }
+
   const overviewRefs = collectOverviewRefs(catalog.overview.nodes);
   for (const sectionId of overviewRefs) {
     assert(seenSectionIds.has(sectionId), `Overview references missing section '${sectionId}'.`);
