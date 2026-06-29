@@ -367,9 +367,27 @@ input {
 }
 
 .audio-menu-button.is-playing {
+  display: inline-grid;
   gap: 0.45rem;
   background: rgba(164, 123, 63, 0.13);
   color: var(--ink);
+}
+
+.audio-menu-button-sizer,
+.audio-playing-indicator {
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.audio-menu-button-sizer {
+  gap: 0.5rem;
+  visibility: hidden;
+}
+
+.audio-playing-indicator {
+  gap: 0.45rem;
 }
 
 .audio-waveform {

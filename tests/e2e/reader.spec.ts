@@ -560,18 +560,26 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   expect(markReadButtonStyle.textAlign).toBe("left");
   const listenButton = page.getByRole("button", { name: /Listen/ });
   await expect(listenButton).toBeVisible();
+  const idleListenButtonWidth = await listenButton.evaluate(
+    (element) => element.getBoundingClientRect().width,
+  );
   await listenButton.click();
   const audioPanel = page.getByLabel("Audiobook controls");
   await expect(audioPanel).toBeVisible();
   const playButton = page.getByRole("button", { name: "Play audiobook" });
   await expect(playButton).toBeVisible();
   await expect(page.getByRole("combobox", { name: "Voice" })).toBeVisible();
+  await expect(audioPanel.getByText("Speed", { exact: true })).toBeVisible();
   await playButton.click();
 
   const activeListenButton = page.getByRole("button", {
     name: "Audiobook playing, open controls",
   });
   await expect(activeListenButton).toBeVisible();
+  const activeListenButtonWidth = await activeListenButton.evaluate(
+    (element) => element.getBoundingClientRect().width,
+  );
+  expect(Math.abs(activeListenButtonWidth - idleListenButtonWidth)).toBeLessThanOrEqual(1);
   await expect(activeListenButton.locator(".audio-waveform")).toBeVisible();
   await expect(activeListenButton.locator(".nav-label")).toHaveCount(0);
 
