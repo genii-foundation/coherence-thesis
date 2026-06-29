@@ -81,6 +81,16 @@ npm run manuscripts:compile
 npm run dev
 ```
 
+Fresh worktrees can install dependencies with:
+
+```bash
+npm run bootstrap
+```
+
+Most npm scripts run the same dependency guard first and install with `npm ci`
+when `node_modules` is missing, the lockfile changes, or the Node major version
+changes.
+
 Static preview after a build:
 
 ```bash
