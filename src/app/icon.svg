@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="The Coherence Thesis nested petals icon">
+  <circle cx="64" cy="64" r="57" fill="#f4ead7"/>
+  <circle cx="64" cy="64" r="43" fill="none" stroke="#b89548" stroke-width="1.7" opacity="0.82"/>
+  <g transform="translate(64 64)">
+    <path d="M0 -41C-12 -28 -12 -14 0 0C12 -14 12 -28 0 -41Z" fill="#073c38"/>
+    <path d="M0 -41C-12 -28 -12 -14 0 0C12 -14 12 -28 0 -41Z" fill="#8aa297" transform="rotate(60)"/>
+    <path d="M0 -41C-12 -28 -12 -14 0 0C12 -14 12 -28 0 -41Z" fill="#2f615d" transform="rotate(120)"/>
+    <path d="M0 -41C-12 -28 -12 -14 0 0C12 -14 12 -28 0 -41Z" fill="#073c38" transform="rotate(180)"/>
+    <path d="M0 -41C-12 -28 -12 -14 0 0C12 -14 12 -28 0 -41Z" fill="#8aa297" transform="rotate(240)"/>
+    <path d="M0 -41C-12 -28 -12 -14 0 0C12 -14 12 -28 0 -41Z" fill="#2f615d" transform="rotate(300)"/>
+  </g>
+  <circle cx="64" cy="64" r="12" fill="#b89548"/>
+  <circle cx="64" cy="64" r="5" fill="#f7eedc"/>
+</svg>
