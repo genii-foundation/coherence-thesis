@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { catalog, partById } from "../../src/lib/manuscript-data";
+import { readerPreferencesStorageKey } from "../../src/lib/reader-preferences";
 import { readerProgressStorageKey } from "../../src/lib/reader-state";
 
 const firstSection = catalog.sections[0];
@@ -229,9 +230,11 @@ test("mobile toolbar and progress menu stay within the viewport", async ({ page 
 
   const searchButton = page.getByRole("button", { name: "Search manuscripts" });
   const outlineButton = page.getByRole("button", { name: /Outline/ });
+  const settingsButton = page.getByRole("button", { name: "Reader settings" });
   const progressButton = page.getByRole("button", { name: /Progress/ });
   await expect(searchButton).toBeVisible();
   await expect(outlineButton).toBeVisible();
+  await expect(settingsButton).toBeVisible();
   await expect(progressButton).toBeVisible();
 
   const toolbarMetrics = await page.evaluate(() => {
@@ -244,6 +247,9 @@ test("mobile toolbar and progress menu stay within the viewport", async ({ page 
     const progress = document
       .querySelector(".progress-menu-button")
       ?.getBoundingClientRect();
+    const settings = document
+      .querySelector(".settings-menu-button")
+      ?.getBoundingClientRect();
     const progressLabel = document.querySelector(
       ".progress-menu-button .nav-label",
     );
@@ -255,6 +261,7 @@ test("mobile toolbar and progress menu stay within the viewport", async ({ page 
       outlineLeft: outline?.left ?? 0,
       searchWidth: search?.width ?? 0,
       outlineWidth: outline?.width ?? 0,
+      settingsWidth: settings?.width ?? 0,
       progressWidth: progress?.width ?? 0,
       progressLabelWidth: progressLabel?.getBoundingClientRect().width ?? 0,
       progressLabelClipped: progressLabelStyle?.clip ?? "",
@@ -268,6 +275,9 @@ test("mobile toolbar and progress menu stay within the viewport", async ({ page 
     ).toBeLessThanOrEqual(1);
     expect(
       Math.abs(toolbarMetrics.progressWidth - toolbarMetrics.outlineWidth),
+    ).toBeLessThanOrEqual(1);
+    expect(
+      Math.abs(toolbarMetrics.settingsWidth - toolbarMetrics.outlineWidth),
     ).toBeLessThanOrEqual(1);
     expect(toolbarMetrics.progressLabelWidth).toBeGreaterThan(1);
     expect(toolbarMetrics.progressLabelClipped).toBe("auto");
@@ -458,6 +468,120 @@ test("mobile toolbar and progress menu stay within the viewport", async ({ page 
   );
 });
 
+test("reader settings update and persist local appearance preferences", async ({
+  page,
+}) => {
+  await page.goto(firstSection.href);
+
+  const settingsButton = page.getByRole("button", { name: "Reader settings" });
+  await expect(settingsButton).toBeVisible();
+  await settingsButton.click();
+
+  const settingsMenu = page.getByRole("region", { name: "Reader settings" });
+  await expect(settingsMenu).toBeVisible();
+
+  const settingsBox = await settingsMenu.boundingBox();
+  const viewport = page.viewportSize();
+  expect(settingsBox).not.toBeNull();
+  expect(viewport).not.toBeNull();
+
+  if (settingsBox && viewport) {
+    expect(settingsBox.x).toBeGreaterThanOrEqual(-1);
+    expect(settingsBox.x + settingsBox.width).toBeLessThanOrEqual(
+      viewport.width + 1,
+    );
+  }
+
+  const firstParagraph = page.locator(".manuscript-prose p").first();
+  await expect(firstParagraph).toBeVisible();
+  const initialAppearance = await page.evaluate(() => {
+    const paragraph = document.querySelector(".manuscript-prose p");
+    return {
+      fontFamily: paragraph ? getComputedStyle(paragraph).fontFamily : "",
+      fontSize: paragraph ? Number.parseFloat(getComputedStyle(paragraph).fontSize) : 0,
+      rootTheme: document.documentElement.dataset.readerTheme ?? "",
+    };
+  });
+
+  const fontSizeSlider = page.getByRole("slider", { name: "Font size" });
+  await fontSizeSlider.evaluate((element) => {
+    const input = element as HTMLInputElement;
+    const valueSetter = Object.getOwnPropertyDescriptor(
+      window.HTMLInputElement.prototype,
+      "value",
+    )?.set;
+    valueSetter?.call(input, "125");
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+  await expect(settingsMenu.getByText("125% text")).toBeVisible();
+
+  const fontSelect = page.getByRole("combobox", { name: "Reader font" });
+  await fontSelect.selectOption("georgia");
+  await expect(settingsMenu.getByText("Current font is Georgia.")).toBeVisible();
+
+  const initialBodyBackground = await page.evaluate(
+    () => getComputedStyle(document.body).backgroundColor,
+  );
+  await settingsMenu.getByRole("button", { name: "Dark" }).click();
+
+  await expect(page.locator("html")).toHaveAttribute("data-reader-theme", "dark");
+
+  const changedAppearance = await page.evaluate(() => {
+    const paragraph = document.querySelector(".manuscript-prose p");
+    const stored = window.localStorage.getItem("coherence-reader-preferences-v1");
+    return {
+      bodyBackground: getComputedStyle(document.body).backgroundColor,
+      fontFamily: paragraph ? getComputedStyle(paragraph).fontFamily : "",
+      fontSize: paragraph ? Number.parseFloat(getComputedStyle(paragraph).fontSize) : 0,
+      rootTheme: document.documentElement.dataset.readerTheme ?? "",
+      stored,
+    };
+  });
+
+  expect(changedAppearance.fontSize).toBeGreaterThan(
+    initialAppearance.fontSize,
+  );
+  expect(changedAppearance.fontFamily).toContain("Georgia");
+  expect(changedAppearance.rootTheme).toBe("dark");
+  expect(changedAppearance.bodyBackground).not.toBe(initialBodyBackground);
+  expect(changedAppearance.stored).not.toBeNull();
+  expect(JSON.parse(changedAppearance.stored ?? "{}")).toEqual({
+    fontSize: 125,
+    fontFamily: "georgia",
+    theme: "dark",
+  });
+
+  await page
+    .getByRole("navigation", { name: "Section navigation" })
+    .getByRole("link")
+    .first()
+    .click();
+  await expect(page).toHaveURL(/on-form-timing-and-why-this-book-exists/);
+  await expect(page.locator("html")).toHaveAttribute("data-reader-theme", "dark");
+
+  await page.getByRole("button", { name: "Reader settings" }).click();
+  await expect(page.getByRole("slider", { name: "Font size" })).toHaveValue("125");
+  await expect(page.getByRole("combobox", { name: "Reader font" })).toHaveValue(
+    "georgia",
+  );
+
+  const storedAfterReload = await page.evaluate((key) => {
+    const paragraph = document.querySelector(".manuscript-prose p");
+    return {
+      fontFamily: paragraph ? getComputedStyle(paragraph).fontFamily : "",
+      stored: window.localStorage.getItem(key),
+    };
+  }, readerPreferencesStorageKey);
+
+  expect(storedAfterReload.fontFamily).toContain("Georgia");
+  expect(JSON.parse(storedAfterReload.stored ?? "{}")).toEqual({
+    fontSize: 125,
+    fontFamily: "georgia",
+    theme: "dark",
+  });
+});
+
 test("reader route exposes progress and audio controls", async ({ page }) => {
   await page.addInitScript(() => {
     class TestSpeechSynthesisUtterance {
@@ -547,7 +671,10 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
       return progressButton.getAttribute("aria-expanded");
     })
     .toBe("true");
-  const markReadButton = page.getByRole("button", { name: /Mark read|Read/ });
+  const popover = page.getByRole("region", { name: "Reader progress" });
+  const markReadButton = popover.getByRole("button", {
+    name: /^(Mark read|Read)$/,
+  });
   await expect(markReadButton).toBeVisible();
   const markReadButtonStyle = await markReadButton.evaluate((element) => {
     const style = window.getComputedStyle(element);

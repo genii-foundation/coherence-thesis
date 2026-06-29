@@ -6,6 +6,7 @@ import { SearchMenuIsland } from "@/components/SearchMenuIsland";
 import { ToolbarBrandIsland } from "@/components/ToolbarBrandIsland";
 import { ToolbarBreadcrumbs } from "@/components/ToolbarBreadcrumbs";
 import { ToolbarProgressIsland } from "@/components/ToolbarProgressIsland";
+import { ToolbarSettingsIsland } from "@/components/ToolbarSettingsIsland";
 import { toolbarOutline } from "@/lib/manuscript-data";
 
 export function SiteShell({ children }: { children: ReactNode }) {
@@ -22,6 +23,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <nav className="site-nav" aria-label="Primary">
           <SearchMenuIsland />
           <OutlineMenuIsland outline={outline} />
+          <ToolbarSettingsIsland />
           <AudioPlayerIsland />
           <ToolbarProgressIsland />
         </nav>
