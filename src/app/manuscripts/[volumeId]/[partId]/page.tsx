@@ -50,32 +50,38 @@ export default async function PartPage({
         <h1>{part.title}</h1>
         <p>{part.wordCount.toLocaleString()} words across {part.chapters.length} chapters.</p>
       </header>
-      <section className="chapter-list">
-        {part.chapters.map((chapter) => {
-          const chapterSections = sections
-            .filter((section) => section.chapterId === chapter.chapterId)
-            .map(toProgressSection);
+      <section
+        className="chapter-list-section"
+        aria-labelledby="part-sections-heading"
+      >
+        <h2 id="part-sections-heading">Sections</h2>
+        <div className="chapter-list">
+          {part.chapters.map((chapter) => {
+            const chapterSections = sections
+              .filter((section) => section.chapterId === chapter.chapterId);
+            const onlySection = chapterSections[0];
+            const href =
+              chapterSections.length === 1 && onlySection
+                ? onlySection.href
+                : chapter.href;
+            const progressSections = chapterSections.map(toProgressSection);
 
-          return (
-            <Link key={chapter.chapterId} href={chapter.href} className="chapter-card">
-              <span className="card-kicker">
-                {String(chapter.order).padStart(2, "0")}
-                <ReadCheckmarkIsland sections={chapterSections} />
-              </span>
-              <strong>{chapter.title}</strong>
-              <small>{chapter.wordCount.toLocaleString()} words</small>
-            </Link>
-          );
-        })}
-      </section>
-      <section className="section-index">
-        <h2>Sections</h2>
-        {sections.map((section) => (
-          <Link key={section.sectionId} href={section.href}>
-            <span>{section.title}</span>
-            <ReadCheckmarkIsland sections={[toProgressSection(section)]} />
-          </Link>
-        ))}
+            return (
+              <Link
+                key={chapter.chapterId}
+                href={href}
+                className="chapter-card"
+              >
+                <span className="card-kicker">
+                  {String(chapter.order).padStart(2, "0")}
+                  <ReadCheckmarkIsland sections={progressSections} />
+                </span>
+                <strong>{chapter.title}</strong>
+                <small>{chapter.wordCount.toLocaleString()} words</small>
+              </Link>
+            );
+          })}
+        </div>
       </section>
     </div>
   );

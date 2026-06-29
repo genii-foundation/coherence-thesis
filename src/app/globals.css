@@ -1289,12 +1289,28 @@ input {
   margin: clamp(2rem, 6vw, 4rem) 0;
 }
 
-.two-column,
-.reader-layout {
+.two-column {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(17rem, 22rem);
   gap: clamp(1.5rem, 4vw, 3rem);
   align-items: start;
+}
+
+.reader-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+
+.page-frame.reader-layout {
+  width: 100%;
+  max-width: none;
+  padding: clamp(1.5rem, 5vw, 4.5rem);
+}
+
+.page-frame.reader-layout .reader-main {
+  width: min(100%, 48rem);
+  justify-self: center;
 }
 
 .overview-map {
@@ -1488,6 +1504,18 @@ input {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   gap: 0.85rem;
+}
+
+.chapter-list-section {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.chapter-list-section h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
 }
 
 .part-card,
