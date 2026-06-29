@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { catalog } from "../../src/lib/manuscript-data";
+import { catalog, partById } from "../../src/lib/manuscript-data";
 import { readerProgressStorageKey } from "../../src/lib/reader-state";
 
 const firstSection = catalog.sections[0];
@@ -20,6 +20,18 @@ const wieldingFrontMatter = wieldingVolume.parts.find(
 )!;
 const wieldingSection = catalog.sections.find(
   (section) => section.volumeId === "wielding-intelligence",
+)!;
+const singleSectionChapterTarget = catalog.sections.find(
+  (section) =>
+    section.href ===
+    "/manuscripts/providence-imperative/the-living-reality/the-second-link-perception-makes-new-coordination-possible/v03-the-second-link-perception-makes-new-coordination-possible/",
+)!;
+const singleSectionPart = partById(
+  singleSectionChapterTarget.volumeId,
+  singleSectionChapterTarget.partId,
+)!;
+const singleSectionChapter = singleSectionPart.chapters.find(
+  (chapter) => chapter.chapterId === singleSectionChapterTarget.chapterId,
 )!;
 
 test("home page presents the overview and manuscript entry points", async ({
@@ -168,6 +180,29 @@ test("manuscript volume heading does not overlap its stats line", async ({ page 
   if (headingBox && statsBox) {
     expect(headingBox.y + headingBox.height).toBeLessThanOrEqual(statsBox.y - 1);
   }
+});
+
+test("single-section chapter cards open reader content directly", async ({ page }) => {
+  await page.goto(singleSectionPart.href);
+
+  const chapterCard = page.getByRole("link", {
+    name: new RegExp(singleSectionChapterTarget.title),
+  });
+  await expect(chapterCard).toHaveAttribute("href", singleSectionChapterTarget.href);
+  await chapterCard.click();
+
+  await expect(page).toHaveURL(singleSectionChapterTarget.href);
+  await expect(
+    page.getByRole("heading", { name: singleSectionChapterTarget.title }),
+  ).toBeVisible();
+  await expect(page.locator(".section-index")).toHaveCount(0);
+
+  await page.goto(singleSectionChapter.href);
+  await expect(page).toHaveURL(singleSectionChapter.href);
+  await expect(
+    page.getByRole("heading", { name: singleSectionChapterTarget.title }),
+  ).toBeVisible();
+  await expect(page.locator(".section-index")).toHaveCount(0);
 });
 
 test("mobile toolbar and progress menu stay within the viewport", async ({ page }) => {

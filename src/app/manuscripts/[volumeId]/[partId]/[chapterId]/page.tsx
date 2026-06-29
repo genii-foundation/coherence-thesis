@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
+import { SectionReader } from "@/components/SectionReader";
 import {
   chapterById,
   catalog,
@@ -45,6 +46,14 @@ export default async function ChapterPage({
   const chapter = chapterById(volumeId, partId, chapterId);
   if (!chapter) notFound();
   const sections = sectionsForChapter(volumeId, partId, chapterId);
+  const onlySection = sections[0];
+  if (sections.length === 1 && onlySection) {
+    return (
+      <div className="page-frame reader-layout">
+        <SectionReader section={onlySection} />
+      </div>
+    );
+  }
 
   return (
     <div className="page-frame reader-layout">

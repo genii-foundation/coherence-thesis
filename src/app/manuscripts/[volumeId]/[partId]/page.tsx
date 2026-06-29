@@ -58,18 +58,23 @@ export default async function PartPage({
         <div className="chapter-list">
           {part.chapters.map((chapter) => {
             const chapterSections = sections
-              .filter((section) => section.chapterId === chapter.chapterId)
-              .map(toProgressSection);
+              .filter((section) => section.chapterId === chapter.chapterId);
+            const onlySection = chapterSections[0];
+            const href =
+              chapterSections.length === 1 && onlySection
+                ? onlySection.href
+                : chapter.href;
+            const progressSections = chapterSections.map(toProgressSection);
 
             return (
               <Link
                 key={chapter.chapterId}
-                href={chapter.href}
+                href={href}
                 className="chapter-card"
               >
                 <span className="card-kicker">
                   {String(chapter.order).padStart(2, "0")}
-                  <ReadCheckmarkIsland sections={chapterSections} />
+                  <ReadCheckmarkIsland sections={progressSections} />
                 </span>
                 <strong>{chapter.title}</strong>
                 <small>{chapter.wordCount.toLocaleString()} words</small>
