@@ -507,6 +507,36 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   if (!viewport || viewport.width > 540) {
     await expect(breadcrumbs.getByText("Home")).toHaveCount(0);
   }
+  const readerLayout = await page.evaluate(() => {
+    const header = document.querySelector(".site-header")?.getBoundingClientRect();
+    const frame = document
+      .querySelector(".page-frame.reader-layout")
+      ?.getBoundingClientRect();
+    const reader = document.querySelector(".reader-main")?.getBoundingClientRect();
+    const frameStyle = frame
+      ? window.getComputedStyle(document.querySelector(".page-frame.reader-layout")!)
+      : null;
+    const viewportWidth = document.documentElement.clientWidth;
+
+    return {
+      framePaddingLeft: frameStyle ? Number.parseFloat(frameStyle.paddingLeft) : 0,
+      framePaddingRight: frameStyle ? Number.parseFloat(frameStyle.paddingRight) : 0,
+      framePaddingTop: frameStyle ? Number.parseFloat(frameStyle.paddingTop) : 0,
+      readerLeft: reader?.left ?? 0,
+      readerRight: reader ? viewportWidth - reader.right : 0,
+      topInset: header && reader ? reader.top - header.bottom : 0,
+    };
+  });
+  expect(
+    Math.abs(readerLayout.framePaddingLeft - readerLayout.framePaddingRight),
+  ).toBeLessThanOrEqual(1);
+  expect(
+    Math.abs(readerLayout.framePaddingLeft - readerLayout.framePaddingTop),
+  ).toBeLessThanOrEqual(1);
+  expect(
+    Math.abs(readerLayout.readerLeft - readerLayout.readerRight),
+  ).toBeLessThanOrEqual(2);
+  expect(readerLayout.readerLeft).toBeGreaterThanOrEqual(readerLayout.topInset - 2);
   const progressButton = page.getByRole("button", { name: /Progress/ });
   await expect(progressButton).toBeVisible();
   await expect
