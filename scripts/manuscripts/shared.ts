@@ -423,17 +423,28 @@ export function sectionHref(section: Pick<
   ManuscriptFrontmatter,
   "volumeId" | "partId" | "chapterId" | "sectionId"
 >): string {
-  return `/manuscripts/${section.volumeId}/${section.partId}/${section.chapterId}/${section.sectionId}/`;
+  const route = [section.volumeId];
+  if (section.partId !== section.volumeId) route.push(section.partId);
+  if (section.chapterId !== section.partId) route.push(section.chapterId);
+  route.push(section.sectionId);
+  return `/manuscripts/${route.join("/")}/`;
 }
 
 export function chapterHref(section: Pick<
   ManuscriptFrontmatter,
   "volumeId" | "partId" | "chapterId"
 >): string {
-  return `/manuscripts/${section.volumeId}/${section.partId}/${section.chapterId}/`;
+  if (section.chapterId === section.partId) return partHref(section);
+  const route = [section.volumeId];
+  if (section.partId !== section.volumeId) route.push(section.partId);
+  route.push(section.chapterId);
+  return `/manuscripts/${route.join("/")}/`;
 }
 
 export function partHref(section: Pick<ManuscriptFrontmatter, "volumeId" | "partId">): string {
+  if (section.partId === section.volumeId) {
+    return `/manuscripts/${section.volumeId}/part-${section.partId}/`;
+  }
   return `/manuscripts/${section.volumeId}/${section.partId}/`;
 }
 
@@ -519,6 +530,13 @@ function routeFromHref(href: string): SectionAlias["sourceRoute"] {
     chapterId: match[3],
     sectionId: match[4],
   };
+}
+
+function fullDepthSectionHref(section: Pick<
+  ManuscriptFrontmatter,
+  "volumeId" | "partId" | "chapterId" | "sectionId"
+>): string {
+  return `/manuscripts/${section.volumeId}/${section.partId}/${section.chapterId}/${section.sectionId}/`;
 }
 
 export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
@@ -638,7 +656,19 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
     0,
   );
   const sectionById = new Map(sections.map((section) => [section.sectionId, section]));
-  const aliases = readAliasConfig().aliases.map((alias) => {
+  const aliasInputs = [...readAliasConfig().aliases];
+  for (const section of sections) {
+    const sourceHref = fullDepthSectionHref(section);
+    if (sourceHref === section.href) continue;
+    if (aliasInputs.some((alias) => alias.sourceHref === sourceHref)) continue;
+    aliasInputs.push({
+      sourceHref,
+      targetSectionId: section.sectionId,
+      note: "Generated alias for the former full depth route.",
+    });
+  }
+
+  const aliases = aliasInputs.map((alias) => {
     const target = sectionById.get(alias.targetSectionId);
     if (!target) {
       throw new Error(
