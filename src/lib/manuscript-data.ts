@@ -228,11 +228,9 @@ function addBreadcrumbRoute(
 export function breadcrumbRoutes(): BreadcrumbRoute[] {
   const routes = new Map<string, BreadcrumbRoute>();
   const overview = { label: "Overview", href: "/overview/" };
-  const manuscripts = { label: "Manuscripts", href: "/manuscripts/" };
 
   addBreadcrumbRoute(routes, "/", []);
   addBreadcrumbRoute(routes, "/overview/", [overview]);
-  addBreadcrumbRoute(routes, "/manuscripts/", [manuscripts]);
 
   for (const volume of catalog.volumes) {
     addBreadcrumbRoute(routes, volume.href, []);
@@ -363,21 +361,12 @@ function siblingNavigation<T extends NavigationItem>(
   };
 }
 
-export function manuscriptsNavigation(): PageNavigation {
-  const firstVolume = catalog.volumes[0];
-  return {
-    previous: null,
-    parent: { title: catalog.siteTitle, href: "/" },
-    next: firstVolume ? navigationItem(firstVolume) : null,
-  };
-}
-
 export function volumeNavigation(volumeId: string): PageNavigation | undefined {
   const volume = volumeById(volumeId);
   if (!volume) return undefined;
   return siblingNavigation(catalog.volumes, volume.href, {
-    title: "Manuscripts",
-    href: "/manuscripts/",
+    title: "Home",
+    href: "/",
   });
 }
 

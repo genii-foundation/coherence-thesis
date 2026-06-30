@@ -20,14 +20,12 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
     { href: string; crumbs: Array<{ label: string; href: string }> }
   >();
   const overview = { label: "Overview", href: "/overview/" };
-  const manuscripts = { label: "Manuscripts", href: "/manuscripts/" };
   const addRoute = (href: string, crumbs: Array<{ label: string; href: string }>) => {
     routes.set(href, { href, crumbs });
   };
 
   addRoute("/", []);
   addRoute("/overview/", [overview]);
-  addRoute("/manuscripts/", [manuscripts]);
 
   for (const volume of catalog.volumes) {
     addRoute(volume.href, []);

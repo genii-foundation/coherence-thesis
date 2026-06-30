@@ -17,11 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.95,
     },
-    {
-      url: `${siteUrl}/manuscripts/`,
-      changeFrequency: "weekly",
-      priority: 0.95,
-    },
   ];
 
   const manuscriptRoutes: MetadataRoute.Sitemap = [

@@ -4,6 +4,7 @@ import {
   emptyProgress,
   markRead,
   readPercent,
+  recentlyReadSections,
   recommendNextSections,
   updatedSinceRead,
 } from "./reader-state";
@@ -79,6 +80,26 @@ describe("reader progress", () => {
         sectionId: sections[1].sectionId,
         href: sections[1].href,
         isUpdated: false,
+      },
+    ]);
+  });
+
+  it("lists recently read sections by newest read time", () => {
+    const sections = allSections().slice(0, 3);
+    const firstProgress = markRead(emptyProgress(), sections[0], 100, 1_700);
+    const secondProgress = markRead(firstProgress, sections[2], 100, 1_900);
+    const thirdProgress = markRead(secondProgress, sections[1], 100, 1_800);
+
+    expect(recentlyReadSections(thirdProgress, sections, 2)).toMatchObject([
+      {
+        sectionId: sections[2].sectionId,
+        href: sections[2].href,
+        readAt: 1_900,
+      },
+      {
+        sectionId: sections[1].sectionId,
+        href: sections[1].href,
+        readAt: 1_800,
       },
     ]);
   });

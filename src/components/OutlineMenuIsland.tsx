@@ -2,8 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ChevronDown, ChevronRight, Home, ListTree, Search } from "lucide-react";
+import { ChevronRight, Home, ListTree, Search } from "lucide-react";
 import type { ToolbarOutline } from "@/lib/manuscript-data";
+import { formatReadingDurationForWords } from "@/lib/reading-time";
 
 function normalizePath(path: string): string {
   return path.endsWith("/") ? path : `${path}/`;
@@ -119,13 +120,12 @@ export function OutlineMenuIsland({ outline }: { outline: ToolbarOutline }) {
       <button
         type="button"
         className="outline-menu-button"
+        aria-label="Outline"
         aria-expanded={open}
         aria-controls="site-outline-menu"
         onClick={() => setOpen((current) => !current)}
       >
         <ListTree aria-hidden="true" size={17} />
-        <span className="nav-label">Outline</span>
-        <ChevronDown aria-hidden="true" size={16} />
       </button>
       {open && (
         <section
@@ -180,7 +180,7 @@ export function OutlineMenuIsland({ outline }: { outline: ToolbarOutline }) {
                         <span className="outline-volume-number">{volume.numberLabel}</span>
                         <span>
                           <strong>{volume.title}</strong>
-                          <small>{volume.wordCount.toLocaleString()} words</small>
+                          <small>{formatReadingDurationForWords(volume.wordCount)}</small>
                         </span>
                       </a>
                       {volume.parts.length > 0 && (
@@ -203,7 +203,7 @@ export function OutlineMenuIsland({ outline }: { outline: ToolbarOutline }) {
                                     />
                                     <span>{part.title}</span>
                                   </span>
-                                  <small>{part.wordCount.toLocaleString()} words</small>
+                                  <small>{formatReadingDurationForWords(part.wordCount)}</small>
                                 </summary>
                                 <div className="outline-chapters">
                                   <a
@@ -226,7 +226,9 @@ export function OutlineMenuIsland({ outline }: { outline: ToolbarOutline }) {
                                       }
                                     >
                                       <span>{chapter.title}</span>
-                                      <small>{chapter.wordCount.toLocaleString()} words</small>
+                                      <small>
+                                        {formatReadingDurationForWords(chapter.wordCount)}
+                                      </small>
                                     </a>
                                   ))}
                                 </div>

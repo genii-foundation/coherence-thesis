@@ -10,7 +10,7 @@ import { ToolbarBreadcrumbs } from "@/components/ToolbarBreadcrumbs";
 import { ToolbarProgressIsland } from "@/components/ToolbarProgressIsland";
 import { ToolbarSettingsIsland } from "@/components/ToolbarSettingsIsland";
 import { ToolbarShareIsland } from "@/components/ToolbarShareIsland";
-import { toolbarOutline } from "@/lib/manuscript-data";
+import { catalog, toolbarOutline } from "@/lib/manuscript-data";
 
 const copyrightStartYear = 2026;
 
@@ -27,6 +27,15 @@ function copyrightYearLabel() {
 export function SiteShell({ children }: { children: ReactNode }) {
   const outline = toolbarOutline();
   const yearLabel = copyrightYearLabel();
+  const overviewAudio = {
+    sectionId: "overview",
+    title: catalog.overview.title,
+    text: [
+      catalog.overview.subtitle,
+      ...catalog.overview.nodes.map((node) => `${node.title}. ${node.summary}`),
+    ].join("\n\n"),
+    audioVersionId: `overview-${catalog.gitRevision}`,
+  };
 
   return (
     <div className="site-shell">
@@ -42,7 +51,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <ToolbarShareIsland />
           <ToolbarSettingsIsland />
           <OutlineMenuIsland outline={outline} />
-          <AudioPlayerIsland />
+          <AudioPlayerIsland overviewAudio={overviewAudio} />
           <ToolbarProgressIsland />
         </nav>
       </header>

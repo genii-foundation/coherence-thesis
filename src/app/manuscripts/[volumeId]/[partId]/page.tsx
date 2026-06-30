@@ -11,6 +11,7 @@ import {
   sectionsForPart,
   toProgressSection,
 } from "@/lib/manuscript-data";
+import { formatReadingDurationForWords } from "@/lib/reading-time";
 
 export const dynamicParams = false;
 
@@ -53,7 +54,10 @@ export default async function PartPage({
       <header className="page-heading">
         <p className="eyebrow">Part {part.order || "0"}</p>
         <h1>{part.title}</h1>
-        <p>{part.wordCount.toLocaleString()} words across {part.chapters.length} chapters.</p>
+        <p>
+          {formatReadingDurationForWords(part.wordCount)} across{" "}
+          {part.chapters.length} chapters.
+        </p>
       </header>
       <section
         className="chapter-list-section"
@@ -85,7 +89,7 @@ export default async function PartPage({
                   </span>
                 </span>
                 <strong>{chapter.title}</strong>
-                <small>{chapter.wordCount.toLocaleString()} words</small>
+                <small>{formatReadingDurationForWords(chapter.wordCount)}</small>
               </Link>
             );
           })}

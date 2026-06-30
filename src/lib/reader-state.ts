@@ -22,6 +22,13 @@ export type ReaderRecommendation = {
   isUpdated: boolean;
 };
 
+export type RecentlyReadSection = {
+  sectionId: string;
+  title: string;
+  href: string;
+  readAt: number;
+};
+
 export const readerProgressStorageKey = "coherence-reader-progress-v1";
 export const readerProgressUpdatedEvent = "coherence-reader-progress-updated";
 
@@ -140,5 +147,27 @@ export function recommendNextSections(
       (section, index, list) =>
         list.findIndex((candidate) => candidate.sectionId === section.sectionId) === index,
     )
+    .slice(0, limit);
+}
+
+export function recentlyReadSections(
+  progress: ReaderProgressState,
+  sections: ProgressSection[],
+  limit = 4,
+): RecentlyReadSection[] {
+  return sections
+    .map((section) => {
+      const state = progress.sections[section.sectionId];
+      return state
+        ? {
+            sectionId: section.sectionId,
+            title: section.title,
+            href: section.href,
+            readAt: state.readAt,
+          }
+        : null;
+    })
+    .filter((section): section is RecentlyReadSection => Boolean(section))
+    .sort((left, right) => right.readAt - left.readAt)
     .slice(0, limit);
 }

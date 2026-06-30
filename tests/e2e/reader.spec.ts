@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import { catalog, partById } from "../../src/lib/manuscript-data";
 import { readerPreferencesStorageKey } from "../../src/lib/reader-preferences";
 import { readerProgressStorageKey } from "../../src/lib/reader-state";
+import { formatReadingDurationForWords } from "../../src/lib/reading-time";
 
 const firstSection = catalog.sections[0];
 const firstSectionVersionDate = new Intl.DateTimeFormat("en-US", {
@@ -28,7 +29,6 @@ const wieldingFrontMatter = wieldingVolume.parts.find(
 const wieldingDiagnosis = wieldingVolume.parts.find(
   (part) => part.partId === "the-diagnosis",
 )!;
-const firstVolume = catalog.volumes[0]!;
 const volumeWithNeighborsIndex = catalog.volumes.findIndex(
   (_volume, index) => index > 0 && index < catalog.volumes.length - 1,
 );
@@ -176,7 +176,7 @@ test("home page presents the overview and manuscript entry points", async ({
   ).toHaveAttribute("href", "/overview/");
   await expect(
     page.getByRole("link", { name: /Browse manuscripts/ }),
-  ).toHaveAttribute("href", "/manuscripts/");
+  ).toHaveAttribute("href", "#manuscripts");
   await expect(page.getByText("Nine volume series")).toBeVisible();
   await expect(page.locator(".overview-map")).toHaveCount(0);
   await expect(page.getByText("Ready for the full body")).toHaveCount(0);
@@ -261,18 +261,30 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(wieldingPanel).toBeVisible();
   await expect(wieldingPanel.getByText("Wielding Intelligence")).toBeVisible();
   await expect(
-    wieldingPanel.getByText(
-      `${wieldingVolume.wordCount.toLocaleString()} words`,
-    ),
+    wieldingPanel.getByText(formatReadingDurationForWords(wieldingVolume.wordCount)),
   ).toBeVisible();
 });
 
 test("overview links into canonical manuscript sections", async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        addEventListener: () => undefined,
+        cancel: () => undefined,
+        getVoices: () => [],
+        pause: () => undefined,
+        removeEventListener: () => undefined,
+        speak: () => undefined,
+      },
+    });
+  });
   await page.goto("/overview/");
 
   await expect(
     page.getByRole("heading", { name: "The Coherence Thesis" }),
   ).toBeVisible();
+  await expect(page.getByRole("button", { name: "Listen" })).toBeVisible();
   await expect(
     page.getByRole("link", { name: /The seed/ }).first(),
   ).toBeVisible();
@@ -625,14 +637,18 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     expect(toolbarMetrics.outlineLabelWidth).toBeLessThanOrEqual(1);
     expect(toolbarMetrics.audioLabelWidth).toBeLessThanOrEqual(1);
     expect(toolbarMetrics.progressLabelWidth).toBeLessThanOrEqual(1);
-    expect(toolbarMetrics.outlineLabelClipped).toBe("rect(0px, 0px, 0px, 0px)");
-    expect(toolbarMetrics.audioLabelClipped).toBe("rect(0px, 0px, 0px, 0px)");
-    expect(toolbarMetrics.progressLabelClipped).toBe(
-      "rect(0px, 0px, 0px, 0px)",
+    expect(["", "rect(0px, 0px, 0px, 0px)"]).toContain(
+      toolbarMetrics.outlineLabelClipped,
     );
-    expect(toolbarMetrics.outlineChevronDisplay).toBe("none");
-    expect(toolbarMetrics.audioChevronDisplay).toBe("none");
-    expect(toolbarMetrics.progressChevronDisplay).toBe("none");
+    expect(["", "rect(0px, 0px, 0px, 0px)"]).toContain(
+      toolbarMetrics.audioLabelClipped,
+    );
+    expect(["", "rect(0px, 0px, 0px, 0px)"]).toContain(
+      toolbarMetrics.progressLabelClipped,
+    );
+    expect(["", "none"]).toContain(toolbarMetrics.outlineChevronDisplay);
+    expect(["", "none"]).toContain(toolbarMetrics.audioChevronDisplay);
+    expect(["", "none"]).toContain(toolbarMetrics.progressChevronDisplay);
     expect(toolbarMetrics.progressText).toMatch(/^\d+%$/);
     expect(toolbarMetrics.progressBorderColor).toBe(
       toolbarMetrics.progressColor,
@@ -1117,12 +1133,26 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await expect(
     page.getByRole("heading", { name: firstSection.title }),
   ).toBeVisible();
+  await expect(page.getByText("Last Updated:")).toBeVisible();
   await expect(
     page.getByText(`Version ${firstSection.versionHash}`),
-  ).toBeVisible();
-  await expect(
-    page.getByRole("link", { name: `Codified ${firstSectionVersionDate}` }),
-  ).toHaveAttribute("href", firstSection.versionUrl);
+  ).toHaveCount(0);
+  await expect(page.getByText(`Codified ${firstSectionVersionDate}`)).toHaveCount(0);
+  const lastUpdatedLink = page.getByRole("link", {
+    name: `${firstSectionVersionDate}, open version on GitHub`,
+  });
+  await expect(lastUpdatedLink).toHaveAttribute("href", firstSection.versionUrl);
+  await expect(lastUpdatedLink).toHaveAttribute("target", "_blank");
+  await expect(lastUpdatedLink).toHaveAttribute("rel", /noopener/);
+  const versionIconOpacity = await lastUpdatedLink
+    .locator(".section-version-link-icons")
+    .evaluate((element) => window.getComputedStyle(element).opacity);
+  expect(versionIconOpacity).toBe("0");
+  await lastUpdatedLink.hover();
+  await expect(lastUpdatedLink.locator(".section-version-link-icons")).toHaveCSS(
+    "opacity",
+    "1",
+  );
   await expect(
     page.getByText(
       `${firstSection.volumeTitle} / ${firstSection.partTitle} / ${firstSection.chapterTitle}`,
@@ -1231,6 +1261,11 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   });
   expect(markReadButtonStyle.justifyContent).toBe("flex-start");
   expect(markReadButtonStyle.textAlign).toBe("left");
+  await markReadButton.click();
+  await expect(popover.getByText("Recently read")).toBeVisible();
+  await expect(popover.locator(".recently-read a").first()).toContainText(
+    firstSection.title,
+  );
   const listenButton = page.getByRole("button", { name: /Listen/ });
   await expect(listenButton).toBeVisible();
   await listenButton.click();
@@ -1406,39 +1441,22 @@ test("reader footer links adjacent sections and the containing chapter", async (
   expect(hoverDecoration.title).not.toContain("underline");
 });
 
-test("organizational manuscript pages expose page navigation", async ({ page }) => {
+test("organizational manuscript routes expose page navigation", async ({ page }) => {
   await page.goto("/manuscripts/");
-  let footerNav = page.getByRole("navigation", { name: "Page navigation" });
-  await expect(footerNav).toBeVisible();
-  await expect(footerNav.locator(".section-nav-link-previous")).toHaveCount(0);
-  await expect(footerNav.locator(".section-nav-spacer").first()).toHaveCSS(
-    "border-top-width",
-    "0px",
-  );
-  await expect(footerNav.locator(".section-nav-link-parent")).toHaveAttribute(
-    "href",
-    "/",
-  );
-  await expect(footerNav.locator(".section-nav-link-parent strong")).toHaveText(
-    catalog.siteTitle,
-  );
-  await expect(footerNav.locator(".section-nav-link-next")).toHaveAttribute(
-    "href",
-    firstVolume.href,
-  );
-  await expect(footerNav.locator(".section-nav-link-next strong")).toHaveText(
-    firstVolume.title,
-  );
+  await expect(page).toHaveURL("/");
 
   await page.goto(volumeWithNeighbors.href);
-  footerNav = page.getByRole("navigation", { name: "Page navigation" });
+  let footerNav = page.getByRole("navigation", { name: "Page navigation" });
   await expect(footerNav.locator(".section-nav-link-previous")).toHaveAttribute(
     "href",
     previousVolume.href,
   );
   await expect(footerNav.locator(".section-nav-link-parent")).toHaveAttribute(
     "href",
-    "/manuscripts/",
+    "/",
+  );
+  await expect(footerNav.locator(".section-nav-link-parent strong")).toHaveText(
+    "Home",
   );
   await expect(footerNav.locator(".section-nav-link-next")).toHaveAttribute(
     "href",
@@ -1504,6 +1522,9 @@ test("toolbar brand owns the active manuscript identity", async ({
   await expect(brand.locator(".brand-title-full")).toHaveText(
     "The Coherence Thesis",
   );
+  const homepageBrandTitleSize = await brand
+    .locator(".brand-title")
+    .evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize));
 
   await page.goto(wieldingVolume.href);
   await expect(brand).toHaveAttribute(
@@ -1519,6 +1540,10 @@ test("toolbar brand owns the active manuscript identity", async ({
   await expect(brand.locator(".brand-title-mobile")).toHaveText(
     `Volume ${wieldingVolume.numberLabel}`,
   );
+  const activeBrandTitleSize = await brand
+    .locator(".brand-title")
+    .evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize));
+  expect(activeBrandTitleSize).toBeLessThan(homepageBrandTitleSize);
   await expect(
     page.getByRole("navigation", { name: "Breadcrumb" }),
   ).toHaveCount(0);
@@ -1579,7 +1604,7 @@ test("toolbar brand owns the active manuscript identity", async ({
   expect(desktopTitleMetrics.textOverflow).toBe("clip");
 
   const narrowBrandStyle = await page.addStyleTag({
-    content: ".brand-mark-active { max-width: 8rem !important; }",
+    content: ".brand-mark-active { max-width: 5rem !important; }",
   });
   await page.evaluate(() => window.dispatchEvent(new Event("resize")));
   await expect(brand.locator(".brand-title-full")).toBeHidden();

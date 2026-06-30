@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Headphones, Pause, Play, Square } from "lucide-react";
+import { Headphones, Pause, Play, Square } from "lucide-react";
 import {
   defaultVoicePreference,
   queueFromSections,
@@ -29,12 +29,17 @@ function loadPreference(): AudioVoicePreference {
   }
 }
 
-export function AudioPlayerIsland() {
+export function AudioPlayerIsland({
+  overviewAudio,
+}: {
+  overviewAudio: AudioQueueItem;
+}) {
   const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
   const [sections, setSections] = useState<ReaderSectionData[]>([]);
   const playbackSections = useMemo(() => {
     const currentPath = normalizePath(pathname);
+    if (currentPath === "/overview/") return [overviewAudio];
     if (!currentPath.startsWith("/manuscripts/")) return [];
 
     const exactSectionIndex = sections.findIndex(
@@ -43,7 +48,7 @@ export function AudioPlayerIsland() {
     if (exactSectionIndex >= 0) return sections.slice(exactSectionIndex);
 
     return sections.filter((section) => normalizePath(section.href).startsWith(currentPath));
-  }, [pathname, sections]);
+  }, [overviewAudio, pathname, sections]);
   const queue = useMemo<AudioQueueItem[]>(
     () => queueFromSections(playbackSections),
     [playbackSections],
@@ -182,7 +187,7 @@ export function AudioPlayerIsland() {
         className={`audio-menu-button${playing ? " is-playing" : ""}`}
         aria-expanded={open}
         aria-controls="audiobook-menu"
-        aria-label={playing ? "Audiobook playing, open controls" : undefined}
+        aria-label={playing ? "Audiobook playing, open controls" : "Listen"}
         onClick={() => setOpen((current) => !current)}
       >
         {playing ? (
@@ -195,11 +200,7 @@ export function AudioPlayerIsland() {
             <Pause aria-hidden="true" size={15} />
           </>
         ) : (
-          <>
-            <Headphones aria-hidden="true" size={17} />
-            <span className="nav-label">Listen</span>
-            <ChevronDown className="audio-menu-chevron" aria-hidden="true" size={16} />
-          </>
+          <Headphones aria-hidden="true" size={17} />
         )}
       </button>
       {open && (

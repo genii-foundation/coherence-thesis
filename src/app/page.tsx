@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { BookOpen, ListTree } from "lucide-react";
 import { catalog } from "@/lib/manuscript-data";
+import { formatReadingDurationForWords } from "@/lib/reading-time";
 
 const manuscriptTags: Record<string, string[]> = {
   "humanitys-most-viable-future": ["Post-extractive civilization", "Social substrate"],
@@ -32,7 +33,7 @@ export default function Home() {
               <ListTree aria-hidden="true" size={18} />
               Read the overview
             </Link>
-            <Link className="secondary-link" href="/manuscripts/">
+            <Link className="secondary-link" href="#manuscripts">
               <BookOpen aria-hidden="true" size={18} />
               Browse manuscripts
             </Link>
@@ -55,20 +56,24 @@ export default function Home() {
           <span>volumes</span>
         </div>
         <div>
-          <strong>{catalog.stats.wordCount.toLocaleString()}</strong>
-          <span>words</span>
+          <strong>{catalog.stats.partCount.toLocaleString()}</strong>
+          <span>parts</span>
         </div>
         <div>
           <strong>{catalog.stats.sectionCount.toLocaleString()}</strong>
           <span>sections</span>
         </div>
         <div>
-          <strong>{catalog.stats.readingMinutes.toLocaleString()}</strong>
-          <span>minutes full read</span>
+          <strong>{formatReadingDurationForWords(catalog.stats.wordCount)}</strong>
+          <span>full read</span>
         </div>
       </section>
 
-      <section className="manuscript-showcase" aria-label="Published manuscripts">
+      <section
+        id="manuscripts"
+        className="manuscript-showcase"
+        aria-label="Published manuscripts"
+      >
         {catalog.volumes.map((volume) => {
           const chapterCount = volume.parts.reduce(
             (total, part) => total + part.chapters.length,
@@ -99,7 +104,7 @@ export default function Home() {
                   {volume.subtitle}
                 </span>
                 <span className="manuscript-card-stats">
-                  <span>{volume.wordCount.toLocaleString()} words</span>
+                  <span>{formatReadingDurationForWords(volume.wordCount)}</span>
                   <span>{volume.parts.length.toLocaleString()} parts</span>
                   <span>{chapterCount.toLocaleString()} chapters</span>
                 </span>

@@ -13,6 +13,7 @@ import {
   volumeNavigation,
   volumeById,
 } from "@/lib/manuscript-data";
+import { formatReadingDurationForWords } from "@/lib/reading-time";
 
 export const dynamicParams = false;
 
@@ -48,16 +49,10 @@ export default async function VolumePage({
 
   return (
     <div className="page-frame">
-      <header className="page-heading volume-heading">
-        <p className="eyebrow">Volume {volume.numberLabel}</p>
-        <h1>{volume.title}</h1>
-        <p>
-          {volume.subtitle ? `${volume.subtitle} ` : ""}
-          {volume.parts.length} parts,{" "}
-          {volume.wordCount.toLocaleString()} words.
-        </p>
-      </header>
-      <section className="volume-feature">
+      <section
+        className="volume-hero volume-heading"
+        aria-labelledby="volume-title"
+      >
         <Image
           src={volume.coverImage}
           alt={volume.coverAlt}
@@ -65,13 +60,16 @@ export default async function VolumePage({
           height={768}
           priority
         />
-        <div>
-          <p className="eyebrow">Independent manuscript</p>
-          <h2>{volume.title}</h2>
-          <p>
-            Governed by {volume.planet}. This volume has its own route, cover,
-            section index, reading progress, and generated catalog entries.
-          </p>
+        <div className="volume-hero-copy">
+          <p className="eyebrow">Volume {volume.numberLabel}</p>
+          <h1 id="volume-title">{volume.title}</h1>
+          <p>{volume.subtitle}</p>
+          <div className="volume-meta-tags" aria-label="Volume details">
+            <span>{volume.planet}</span>
+            <span>{volume.parts.length.toLocaleString()} parts</span>
+            <span>{volume.sectionIds.length.toLocaleString()} sections</span>
+            <span>{formatReadingDurationForWords(volume.wordCount)}</span>
+          </div>
         </div>
       </section>
       <section className="part-list">
@@ -91,7 +89,7 @@ export default async function VolumePage({
                 </span>
               </span>
               <strong>{part.title}</strong>
-              <small>{part.wordCount.toLocaleString()} words</small>
+              <small>{formatReadingDurationForWords(part.wordCount)}</small>
             </Link>
           );
         })}

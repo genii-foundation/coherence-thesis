@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { usePathname } from "next/navigation";
-import { Check, ChevronDown, RotateCcw } from "lucide-react";
+import { Check, RotateCcw } from "lucide-react";
 import { loadReaderSections } from "@/lib/reader-data";
 import type { ProgressSection } from "@/lib/manuscript-data";
 import {
@@ -12,6 +12,7 @@ import {
   readPercent,
   readerProgressStorageKey,
   readerProgressUpdatedEvent,
+  recentlyReadSections,
   recommendNextSections,
   serializeProgress,
   updatedSinceRead,
@@ -120,6 +121,10 @@ export function ToolbarProgressIsland() {
     () => recommendNextSections(progress, allSections, 4),
     [allSections, progress],
   );
+  const recentSections = useMemo(
+    () => recentlyReadSections(progress, allSections, 4),
+    [allSections, progress],
+  );
   const revisedCount = recommendations.filter((item) => item.isUpdated).length;
   const isRead = section
     ? progress.sections[section.sectionId]?.contentHash === section.contentHash
@@ -140,13 +145,17 @@ export function ToolbarProgressIsland() {
       <button
         type="button"
         className="progress-menu-button"
+        aria-label={`Progress ${percent}%`}
         aria-expanded={open}
         aria-controls="reader-progress-menu"
+        style={
+          { "--progress-value": percent } as CSSProperties & {
+            "--progress-value": number;
+          }
+        }
         onClick={() => setOpen((current) => !current)}
       >
-        <span className="nav-label">Progress</span>
         <span className="progress-percent">{percent}%</span>
-        <ChevronDown aria-hidden="true" size={16} />
       </button>
       {open && (
         <div
@@ -155,7 +164,7 @@ export function ToolbarProgressIsland() {
           role="region"
           aria-label="Reader progress"
         >
-          <div>
+          <div className="progress-section">
             <p className="eyebrow">Local progress</p>
             <div className="progress-row">
               <div className="progress-bar" aria-hidden="true">
@@ -168,7 +177,7 @@ export function ToolbarProgressIsland() {
             </p>
           </div>
           {section && (
-            <div className="reader-actions">
+            <div className="reader-actions progress-section">
               <button type="button" className="icon-button" onClick={markCurrentRead}>
                 <Check aria-hidden="true" size={17} />
                 <span>{isRead ? "Read" : "Mark read"}</span>
@@ -181,21 +190,35 @@ export function ToolbarProgressIsland() {
               )}
             </div>
           )}
+          {recentSections.length > 0 && (
+            <div className="recently-read progress-section">
+              <p className="eyebrow">Recently read</p>
+              <div className="progress-link-list">
+                {recentSections.map((item) => (
+                  <a key={item.sectionId} href={item.href}>
+                    {item.title}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
           {recommendations.length > 0 && (
-            <div className="recommendations">
+            <div className="recommendations progress-section">
               <p className="eyebrow">
                 {revisedCount > 0 ? "Revised sections first" : "Recommended next"}
               </p>
-              {recommendations.map((item) => (
-                <a
-                  key={item.sectionId}
-                  href={item.href}
-                  className={item.isUpdated ? "revised-link" : undefined}
-                >
-                  {item.isUpdated ? "Updated: " : ""}
-                  {item.title}
-                </a>
-              ))}
+              <div className="progress-link-list">
+                {recommendations.map((item) => (
+                  <a
+                    key={item.sectionId}
+                    href={item.href}
+                    className={item.isUpdated ? "revised-link" : undefined}
+                  >
+                    {item.isUpdated ? "Updated: " : ""}
+                    {item.title}
+                  </a>
+                ))}
+              </div>
             </div>
           )}
         </div>
