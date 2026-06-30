@@ -114,6 +114,15 @@ const currentYear = new Date().getFullYear();
 const copyrightYearLabel =
   currentYear > 2026 ? `2026 to ${currentYear}` : "2026";
 
+function hexToRgb(hex: string): string {
+  const value = Number.parseInt(hex.slice(1), 16);
+  const red = (value >> 16) & 255;
+  const green = (value >> 8) & 255;
+  const blue = value & 255;
+
+  return `rgb(${red}, ${green}, ${blue})`;
+}
+
 test("home page presents the overview and manuscript entry points", async ({
   page,
 }, testInfo) => {
@@ -143,6 +152,24 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
     "content",
     "summary_large_image",
+  );
+  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
+    "content",
+    "#f4ead7",
+  );
+  const toolbarColors = await page.evaluate(() => {
+    const header = document.querySelector(".site-header");
+    const themeMeta = document.querySelector<HTMLMetaElement>(
+      'meta[name="theme-color"]',
+    );
+
+    return {
+      headerBackground: header ? getComputedStyle(header).backgroundColor : "",
+      themeColor: themeMeta?.content ?? "",
+    };
+  });
+  expect(toolbarColors.headerBackground).toBe(
+    hexToRgb(toolbarColors.themeColor),
   );
   await expect(
     page.getByRole("link", { name: /Read the overview/ }),
@@ -369,6 +396,20 @@ test("singleton chapter section navigation points up to the part", async ({
 test("mobile toolbar and progress menu stay within the viewport", async ({
   page,
 }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        addEventListener: () => undefined,
+        cancel: () => undefined,
+        getVoices: () => [],
+        pause: () => undefined,
+        removeEventListener: () => undefined,
+        speak: () => undefined,
+      },
+    });
+  });
+
   await page.goto(wieldingSection.href);
 
   const layout = await page.evaluate(() => {
@@ -729,15 +770,10 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   await expect(page).toHaveURL(searchTargetSection.href);
 
   await page.goto("/");
-
-  await expect
-    .poll(async () => {
-      if ((await progressButton.getAttribute("aria-expanded")) !== "true") {
-        await progressButton.click();
-      }
-      return progressButton.getAttribute("aria-expanded");
-    })
-    .toBe("true");
+  const homeProgressButton = page.getByRole("button", { name: /Progress/ });
+  await expect(homeProgressButton).toBeVisible();
+  await homeProgressButton.click();
+  await expect(homeProgressButton).toHaveAttribute("aria-expanded", "true");
   const popover = page.getByRole("region", { name: "Reader progress" });
   await expect(popover).toBeVisible();
 
@@ -889,16 +925,26 @@ test("reader settings update and persist local appearance preferences", async ({
   await settingsMenu.getByRole("button", { name: "Dark" }).click();
 
   await expect(page.locator("html")).toHaveAttribute("data-reader-theme", "dark");
+  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
+    "content",
+    "#11100e",
+  );
   await settingsMenu.getByRole("button", { name: "Black" }).click();
   await expect(page.locator("html")).toHaveAttribute("data-reader-theme", "black");
+  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute(
+    "content",
+    "#000000",
+  );
 
   const changedAppearance = await page.evaluate(() => {
     const heading = document.querySelector(".manuscript-heading h1");
     const paragraph = document.querySelector(".manuscript-prose p");
+    const header = document.querySelector(".site-header");
     const toolbarButton = document.querySelector(".settings-menu-button");
     const stored = window.localStorage.getItem("coherence-reader-preferences-v1");
     return {
       bodyBackground: getComputedStyle(document.body).backgroundColor,
+      headerBackground: header ? getComputedStyle(header).backgroundColor : "",
       fontFamily: paragraph ? getComputedStyle(paragraph).fontFamily : "",
       headingFontFamily: heading ? getComputedStyle(heading).fontFamily : "",
       fontSize: paragraph ? Number.parseFloat(getComputedStyle(paragraph).fontSize) : 0,
@@ -922,6 +968,7 @@ test("reader settings update and persist local appearance preferences", async ({
   expect(changedAppearance.toolbarFontFamily).toContain("Georgia");
   expect(changedAppearance.rootTheme).toBe("black");
   expect(changedAppearance.bodyBackground).toBe("rgb(0, 0, 0)");
+  expect(changedAppearance.headerBackground).toBe("rgb(0, 0, 0)");
   expect(changedAppearance.bodyBackground).not.toBe(initialBodyBackground);
   expect(changedAppearance.stored).not.toBeNull();
   expect(JSON.parse(changedAppearance.stored ?? "{}")).toEqual({

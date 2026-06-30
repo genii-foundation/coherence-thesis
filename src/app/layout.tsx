@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { SiteShell } from "@/components/SiteShell";
+import { defaultReaderThemeColor } from "@/lib/reader-preferences";
 import "./globals.css";
 
 const siteUrl = new URL("https://www.coherence-thesis.com");
@@ -16,7 +17,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   colorScheme: "light",
-  themeColor: "#f4ead7",
+  themeColor: defaultReaderThemeColor,
 };
 
 export const metadata: Metadata = {

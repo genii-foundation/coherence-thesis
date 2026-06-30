@@ -3,6 +3,7 @@ import {
   defaultReaderPreferences,
   parseReaderPreferences,
   readerPreferencesStorageKey,
+  readerThemeColorByTheme,
   serializeReaderPreferences,
 } from "@/lib/reader-preferences";
 
@@ -11,6 +12,15 @@ describe("reader preferences", () => {
     expect(readerPreferencesStorageKey).toBe("coherence-reader-preferences-v1");
     expect(parseReaderPreferences(null)).toEqual(defaultReaderPreferences);
     expect(parseReaderPreferences("")).toEqual(defaultReaderPreferences);
+  });
+
+  test("maps reader themes to browser toolbar colors", () => {
+    expect(readerThemeColorByTheme).toEqual({
+      textured: "#f4ead7",
+      light: "#fffefa",
+      dark: "#11100e",
+      black: "#000000",
+    });
   });
 
   test("parses valid preferences", () => {

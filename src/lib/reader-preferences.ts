@@ -7,6 +7,13 @@ export const readerFontSizeStep = 5;
 export const readerThemeOptions = ["textured", "light", "dark", "black"] as const;
 export type ReaderTheme = (typeof readerThemeOptions)[number];
 
+export const readerThemeColorByTheme: Record<ReaderTheme, string> = {
+  textured: "#f4ead7",
+  light: "#fffefa",
+  dark: "#11100e",
+  black: "#000000",
+};
+
 export const readerFontOptions = [
   {
     id: "iowan",
@@ -48,6 +55,26 @@ export const defaultReaderPreferences: ReaderPreferences = {
   fontFamily: "iowan",
   theme: "textured",
 };
+
+export const defaultReaderThemeColor =
+  readerThemeColorByTheme[defaultReaderPreferences.theme];
+
+function updateDocumentThemeColor(theme: ReaderTheme): void {
+  if (typeof document === "undefined") return;
+
+  const themeColor = readerThemeColorByTheme[theme];
+  let themeMeta = document.querySelector<HTMLMetaElement>(
+    'meta[name="theme-color"]',
+  );
+
+  if (!themeMeta) {
+    themeMeta = document.createElement("meta");
+    themeMeta.name = "theme-color";
+    document.head.appendChild(themeMeta);
+  }
+
+  themeMeta.content = themeColor;
+}
 
 export function fontOptionById(fontFamily: ReaderFontId) {
   return (
@@ -136,4 +163,5 @@ export function applyReaderPreferences(
   root.style.setProperty("--font-body", fontStack);
   root.style.setProperty("--font-display", fontStack);
   root.style.setProperty("--font-ui", fontStack);
+  updateDocumentThemeColor(preferences.theme);
 }

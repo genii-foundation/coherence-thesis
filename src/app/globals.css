@@ -25,7 +25,7 @@
   --font-body: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
   --reader-font-scale: 1;
   --reader-font-scale-percent: 100%;
-  --header-background: rgba(244, 234, 215, 0.88);
+  --header-background: #f4ead7;
   --nav-hover-background: rgba(164, 123, 63, 0.11);
   --panel-background: #fbf6eb;
   --field-background: #fffaf0;
@@ -66,7 +66,7 @@ html[data-reader-theme="light"] {
   --blue: #1d4f73;
   --line: rgba(17, 24, 39, 0.16);
   --shadow: 0 20px 80px rgba(17, 24, 39, 0.12);
-  --header-background: rgba(255, 254, 250, 0.94);
+  --header-background: #fffefa;
   --nav-hover-background: rgba(89, 64, 24, 0.08);
   --panel-background: #fffefa;
   --field-background: #ffffff;
@@ -94,7 +94,7 @@ html[data-reader-theme="dark"] {
   --blue: #9fc8e0;
   --line: rgba(226, 189, 124, 0.24);
   --shadow: 0 20px 80px rgba(0, 0, 0, 0.42);
-  --header-background: rgba(17, 16, 14, 0.88);
+  --header-background: #11100e;
   --nav-hover-background: rgba(226, 189, 124, 0.13);
   --panel-background: #181715;
   --field-background: #22201d;
@@ -125,7 +125,7 @@ html[data-reader-theme="black"] {
   --blue: #d0d0ca;
   --line: rgba(255, 255, 255, 0.18);
   --shadow: 0 20px 80px rgba(0, 0, 0, 0.76);
-  --header-background: rgba(0, 0, 0, 0.9);
+  --header-background: #000000;
   --nav-hover-background: rgba(255, 255, 255, 0.08);
   --panel-background: #050505;
   --field-background: #000000;
@@ -297,7 +297,6 @@ input {
   gap: 1rem;
   border-bottom: 1px solid var(--line);
   background: var(--header-background);
-  backdrop-filter: blur(16px);
   box-shadow: 0 10px 28px rgba(44, 31, 18, 0.1);
   padding: 0.85rem;
 }
