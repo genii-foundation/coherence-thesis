@@ -1286,6 +1286,7 @@ test("home page presents an interactive cover flow", async ({ page }) => {
 
     return {
       activeRotate: active?.style.getPropertyValue("--cover-flow-rotate") ?? "",
+      activeScale: active?.style.getPropertyValue("--cover-flow-scale") ?? "",
       activeTransform: active ? getComputedStyle(active).transform : "",
       cardGap: window.getComputedStyle(flow.querySelector(".cover-flow-track")!).gap,
       panelVisible:
@@ -1293,13 +1294,17 @@ test("home page presents an interactive cover flow", async ({ page }) => {
         window.getComputedStyle(active.querySelector(".cover-flow-card-panel")!)
           .backdropFilter,
       sideRotate: sideCard?.style.getPropertyValue("--cover-flow-rotate") ?? "",
+      sideScale: sideCard?.style.getPropertyValue("--cover-flow-scale") ?? "",
     };
   });
   expect(Math.abs(Number.parseFloat(coverFlowTransforms.activeRotate))).toBeLessThan(1);
+  expect(Number.parseFloat(coverFlowTransforms.activeScale)).toBeGreaterThan(1.05);
   expect(coverFlowTransforms.activeTransform).not.toBe("none");
-  expect(Number.parseFloat(coverFlowTransforms.cardGap)).toBeGreaterThan(24);
+  expect(Number.parseFloat(coverFlowTransforms.cardGap)).toBeGreaterThan(16);
+  expect(Number.parseFloat(coverFlowTransforms.cardGap)).toBeLessThan(42);
   expect(coverFlowTransforms.panelVisible).not.toBe("none");
   expect(coverFlowTransforms.sideRotate).not.toBe("0deg");
+  expect(Number.parseFloat(coverFlowTransforms.sideScale)).toBeLessThan(1);
 
   await page.getByRole("button", { name: "Next manuscript" }).click();
   await expect(

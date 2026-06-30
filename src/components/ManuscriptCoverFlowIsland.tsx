@@ -72,10 +72,10 @@ export function ManuscriptCoverFlowIsland({
       const offset = (cardCenter - center) / rect.width;
       const distance = Math.abs(offset);
       const clampedOffset = Math.max(-2.6, Math.min(2.6, offset));
-      const rotate = Math.max(-58, Math.min(58, clampedOffset * -38));
-      const scale = Math.max(0.84, 1 - distance * 0.075);
-      const z = Math.max(-160, distance * -74);
-      const opacity = Math.max(0.44, 1 - distance * 0.18);
+      const rotate = Math.max(-64, Math.min(64, clampedOffset * -48));
+      const scale = Math.max(0.72, 1.1 - distance * 0.18);
+      const z = Math.max(-240, distance * -112);
+      const opacity = Math.max(0.38, 1 - distance * 0.2);
 
       card.style.setProperty("--cover-flow-rotate", `${rotate}deg`);
       card.style.setProperty("--cover-flow-scale", scale.toFixed(3));

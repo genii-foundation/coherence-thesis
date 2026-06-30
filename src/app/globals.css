@@ -1315,7 +1315,7 @@ input {
 }
 
 .cover-flow {
-  --cover-flow-card-width: clamp(18rem, 28vw, 25rem);
+  --cover-flow-card-width: clamp(18.75rem, 30vw, 27rem);
   position: relative;
   left: 50%;
   width: min(calc(100vw - 2rem), 1440px);
@@ -1345,10 +1345,10 @@ input {
 .cover-flow-track {
   display: flex;
   align-items: start;
-  gap: clamp(2.2rem, 5vw, 5.25rem);
-  min-height: clamp(39rem, 63vw, 55rem);
+  gap: clamp(1rem, 2.1vw, 2rem);
+  min-height: clamp(43rem, 70vw, 61rem);
   padding:
-    clamp(1.5rem, 4vw, 2.6rem)
+    clamp(3.2rem, 6vw, 5rem)
     calc((100% - var(--cover-flow-card-width)) / 2)
     clamp(1.5rem, 4vw, 2.8rem);
   transform-style: preserve-3d;
@@ -2937,12 +2937,13 @@ input {
   }
 
   .cover-flow {
-    --cover-flow-card-width: clamp(17rem, 48vw, 22rem);
+    --cover-flow-card-width: clamp(18rem, 52vw, 23rem);
     width: min(calc(100vw - 1.25rem), 1120px);
   }
 
   .cover-flow-track {
-    min-height: clamp(39rem, 92vw, 48rem);
+    gap: 1.35rem;
+    min-height: clamp(44rem, 104vw, 54rem);
   }
 
   .hero-copy h1 {
@@ -3100,13 +3101,13 @@ input {
   }
 
   .cover-flow {
-    --cover-flow-card-width: min(78vw, 18rem);
+    --cover-flow-card-width: min(80vw, 19rem);
     width: calc(100vw - 1rem);
   }
 
   .cover-flow-track {
-    gap: 1.7rem;
-    min-height: clamp(37rem, 126vw, 44rem);
+    gap: 1.1rem;
+    min-height: clamp(42rem, 148vw, 50rem);
   }
 
   .cover-flow-card-panel {
