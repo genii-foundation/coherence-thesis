@@ -568,6 +568,7 @@ input {
 .site-nav a,
 .outline-menu-button,
 .search-menu-button,
+.share-menu-button,
 .audio-menu-button,
 .settings-menu-button,
 .progress-menu-button,
@@ -602,6 +603,8 @@ input {
 .outline-menu-button:focus-visible,
 .search-menu-button:hover,
 .search-menu-button:focus-visible,
+.share-menu-button:hover,
+.share-menu-button:focus-visible,
 .audio-menu-button:hover,
 .audio-menu-button:focus-visible,
 .settings-menu-button:hover,
@@ -615,6 +618,7 @@ input {
 
 .outline-menu,
 .search-menu,
+.share-menu,
 .audio-menu,
 .settings-menu,
 .progress-menu {
@@ -623,6 +627,7 @@ input {
 
 .outline-menu-button,
 .search-menu-button,
+.share-menu-button,
 .audio-menu-button,
 .settings-menu-button,
 .progress-menu-button {
@@ -634,6 +639,11 @@ input {
 }
 
 .settings-menu-button {
+  width: 2.75rem;
+  padding: 0;
+}
+
+.share-menu-button {
   width: 2.75rem;
   padding: 0;
 }
@@ -704,6 +714,7 @@ input {
 
 .outline-popover,
 .search-popover,
+.share-popover,
 .audio-popover,
 .settings-popover,
 .progress-popover {
@@ -1119,6 +1130,10 @@ input {
 }
 
 .progress-popover {
+  width: min(22rem, calc(100vw - 2rem));
+}
+
+.share-popover {
   width: min(22rem, calc(100vw - 2rem));
 }
 
@@ -1906,6 +1921,7 @@ input {
 
 .reader-status,
 .audio-player,
+.reader-share,
 .reader-settings {
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -1920,6 +1936,11 @@ input {
   overflow: hidden;
 }
 
+.reader-share {
+  display: grid;
+  gap: 0.55rem;
+}
+
 .reader-settings {
   display: grid;
   gap: 1rem;
@@ -1931,6 +1952,77 @@ input {
   font-size: 0.95rem;
   line-height: 1.45;
   text-align: left;
+}
+
+.share-action {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.65rem;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.55rem 0.6rem;
+  text-align: left;
+  text-decoration: none;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.share-action span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.share-action svg {
+  flex: 0 0 auto;
+}
+
+.share-action:hover,
+.share-action:focus-visible {
+  border-color: rgba(119, 84, 42, 0.24);
+  background: rgba(164, 123, 63, 0.1);
+  color: var(--ink);
+  outline: none;
+}
+
+.share-action:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.share-action:disabled:hover,
+.share-action:disabled:focus-visible {
+  border-color: transparent;
+  background: transparent;
+}
+
+.share-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  margin: 0.3rem 0 0;
+  color: var(--bronze-deep);
+  font-size: 0.9rem;
+}
+
+.share-status span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .progress-row {
@@ -2658,6 +2750,7 @@ input {
   .mobile-home-menu,
   .outline-menu,
   .search-menu,
+  .share-menu,
   .audio-menu,
   .settings-menu,
   .progress-menu {
@@ -2668,6 +2761,7 @@ input {
   .site-nav a,
   .outline-menu-button,
   .search-menu-button,
+  .share-menu-button,
   .audio-menu-button,
   .settings-menu-button,
   .progress-menu-button {
@@ -2700,6 +2794,7 @@ input {
 
   .outline-popover,
   .search-popover,
+  .share-popover,
   .audio-popover,
   .settings-popover,
   .progress-popover {
@@ -2841,6 +2936,7 @@ input {
   .site-nav a,
   .outline-menu-button,
   .search-menu-button,
+  .share-menu-button,
   .audio-menu-button,
   .settings-menu-button,
   .progress-menu-button {

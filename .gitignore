@@ -25,6 +25,7 @@
 
 # generated manuscript imports
 /artifacts
+/public/downloads
 
 # misc
 .DS_Store

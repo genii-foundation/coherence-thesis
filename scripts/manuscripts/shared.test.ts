@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { manuscriptPdfHref, sectionPdfHref } from "./pdf";
 import { buildCatalog, slugify, wordCount } from "./shared";
 
 describe("manuscript compiler helpers", () => {
@@ -11,6 +12,15 @@ describe("manuscript compiler helpers", () => {
 
   it("counts words from markdown bodies", () => {
     expect(wordCount("*Presence* coordinates **trust**.")).toBe(3);
+  });
+
+  it("creates stable PDF download URLs", () => {
+    expect(sectionPdfHref("v01-orientation")).toBe(
+      "/downloads/sections/v01-orientation.pdf",
+    );
+    expect(manuscriptPdfHref("humanitys-most-viable-future")).toBe(
+      "/downloads/manuscripts/humanitys-most-viable-future.pdf",
+    );
   });
 
   it("builds the current catalog from canonical markdown", () => {

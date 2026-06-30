@@ -50,11 +50,11 @@ Do not edit generated files by hand. Edit source Markdown or series metadata, th
 
 <!-- BEGIN:development-status -->
 
-Generated: 2026-06-30T00:47:15.097Z
+Generated: 2026-06-30T02:23:34.844Z
 
-- Branch: fix/singleton-section-navigation
-- Revision: 5e332f4
-- Working tree: local changes present
+- Branch: feat/share-pdf-downloads
+- Revision: 6595f48
+- Working tree: clean
 - Next.js: 16.2.9
 - Manuscripts: 9 volume, 47 parts, 408 chapters, 566 sections
 - Canonical words: 198,717
@@ -64,11 +64,11 @@ Generated: 2026-06-30T00:47:15.097Z
 Recent commits:
 
 ```text
+6595f48 feat: add reader PDF sharing menu
+7449fc8 fix: match browser toolbar color
+32f59fe fix: correct singleton section navigation (#16)
 5e332f4 feat: add reader section footer navigation (#10)
 23d2234 fix: refine responsive reader toolbar
-27b3b4e docs: standardize PR quality workflows
-d90913a docs: update feature preview workflow
-271ea61 Add reader settings menu
 ```
 
 <!-- END:development-status -->

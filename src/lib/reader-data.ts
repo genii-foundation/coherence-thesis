@@ -40,9 +40,33 @@ export type SearchIndexEntry = {
   text: string;
 };
 
+export type PdfDownloadSection = {
+  sectionId: string;
+  volumeId: string;
+  volumeTitle: string;
+  title: string;
+  href: string;
+  pdfHref: string;
+  contentHash: string;
+};
+
+export type PdfDownloadManuscript = {
+  volumeId: string;
+  title: string;
+  href: string;
+  pdfHref: string;
+  contentHash: string;
+};
+
+export type PdfDownloadManifest = {
+  sections: PdfDownloadSection[];
+  manuscripts: PdfDownloadManuscript[];
+};
+
 let readerSectionsPromise: Promise<ReaderSectionData[]> | null = null;
 let breadcrumbRoutesPromise: Promise<BreadcrumbRoute[]> | null = null;
 let searchIndexPromise: Promise<SearchIndexEntry[]> | null = null;
+let pdfDownloadsPromise: Promise<PdfDownloadManifest> | null = null;
 
 export function loadReaderSections(): Promise<ReaderSectionData[]> {
   readerSectionsPromise ??= fetch("/data/reader-sections.json").then((response) => {
@@ -72,4 +96,14 @@ export function loadSearchIndex(): Promise<SearchIndexEntry[]> {
     return response.json() as Promise<SearchIndexEntry[]>;
   });
   return searchIndexPromise;
+}
+
+export function loadPdfDownloads(): Promise<PdfDownloadManifest> {
+  pdfDownloadsPromise ??= fetch("/data/pdf-downloads.json").then((response) => {
+    if (!response.ok) {
+      throw new Error(`Unable to load PDF download data: ${response.status}`);
+    }
+    return response.json() as Promise<PdfDownloadManifest>;
+  });
+  return pdfDownloadsPromise;
 }
