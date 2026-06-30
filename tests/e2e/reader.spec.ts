@@ -1258,6 +1258,52 @@ test("reader footer links adjacent sections and the containing chapter", async (
   expect(hoverDecoration.title).not.toContain("underline");
 });
 
+test("manuscripts page presents an interactive cover flow", async ({ page }) => {
+  await page.goto("/manuscripts/");
+  const coverFlow = page.locator(".cover-flow");
+  const initialActiveIndex = Math.floor(catalog.volumes.length / 2);
+  const initialActiveVolume = catalog.volumes[initialActiveIndex]!;
+
+  await expect(coverFlow).toBeVisible();
+  await expect(page.locator(".volume-grid")).toHaveCount(0);
+  await expect(coverFlow.locator(".cover-flow-card")).toHaveCount(
+    catalog.volumes.length,
+  );
+  await expect(
+    coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+  ).toHaveAttribute("href", initialActiveVolume.href);
+  await expect(coverFlow.locator(".cover-flow-caption strong")).toHaveText(
+    initialActiveVolume.title,
+  );
+
+  const coverFlowTransforms = await coverFlow.evaluate((flow) => {
+    const active = flow.querySelector<HTMLElement>(
+      '.cover-flow-card[aria-current="true"]',
+    );
+    const previous = flow.querySelector<HTMLElement>(
+      ".cover-flow-card.is-active",
+    )?.previousElementSibling as HTMLElement | null;
+
+    return {
+      activeRotate: active?.style.getPropertyValue("--cover-flow-rotate") ?? "",
+      activeTransform: active ? getComputedStyle(active).transform : "",
+      previousRotate:
+        previous?.style.getPropertyValue("--cover-flow-rotate") ?? "",
+    };
+  });
+  expect(coverFlowTransforms.activeRotate).toBe("0deg");
+  expect(coverFlowTransforms.activeTransform).not.toBe("none");
+  expect(coverFlowTransforms.previousRotate).not.toBe("0deg");
+
+  await page.getByRole("button", { name: "Next manuscript" }).click();
+  await expect(
+    coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+  ).toHaveAttribute("href", catalog.volumes[initialActiveIndex + 1]!.href);
+  await expect(coverFlow.locator(".cover-flow-caption strong")).toHaveText(
+    catalog.volumes[initialActiveIndex + 1]!.title,
+  );
+});
+
 test("organizational manuscript pages expose page navigation", async ({ page }) => {
   await page.goto("/manuscripts/");
   let footerNav = page.getByRole("navigation", { name: "Page navigation" });
