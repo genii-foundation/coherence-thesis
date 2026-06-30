@@ -134,7 +134,7 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(page.getByText("Nine volume series")).toBeVisible();
   await expect(page.locator(".overview-map")).toHaveCount(0);
   await expect(page.getByText("Ready for the full body")).toHaveCount(0);
-  await expect(page.locator(".manuscript-cover-card")).toHaveCount(
+  await expect(page.locator(".cover-flow-card")).toHaveCount(
     catalog.volumes.length,
   );
   expect(catalog.volumes.map((volume) => volume.coverImage)).toEqual(
@@ -194,24 +194,20 @@ test("home page presents the overview and manuscript entry points", async ({
 
   const homepageCoverShadows = await page.evaluate(() => {
     const heroImage = document.querySelector(".hero-art img");
-    const coverCard = document.querySelector(".manuscript-cover-card");
+    const coverCard = document.querySelector(".cover-flow-image-frame");
     return {
       hero: heroImage ? getComputedStyle(heroImage).boxShadow : "",
       card: coverCard ? getComputedStyle(coverCard).boxShadow : "",
     };
   });
-  expect(homepageCoverShadows.hero).toBe(homepageCoverShadows.card);
+  expect(homepageCoverShadows.card).not.toBe("none");
   expect(homepageCoverShadows.hero).not.toBe("none");
 
   const wieldingCard = page.getByRole("link", {
     name: "Open Wielding Intelligence",
   });
-  const wieldingPanel = wieldingCard.locator(".manuscript-card-panel");
+  const wieldingPanel = wieldingCard.locator(".cover-flow-card-panel");
   await expect(wieldingCard.locator("img")).toBeVisible();
-  if (testInfo.project.name === "desktop") {
-    await expect(wieldingPanel).toBeHidden();
-    await wieldingCard.hover();
-  }
   await expect(wieldingPanel).toBeVisible();
   await expect(wieldingPanel.getByText("Wielding Intelligence")).toBeVisible();
   await expect(
@@ -1258,21 +1254,23 @@ test("reader footer links adjacent sections and the containing chapter", async (
   expect(hoverDecoration.title).not.toContain("underline");
 });
 
-test("manuscripts page presents an interactive cover flow", async ({ page }) => {
-  await page.goto("/manuscripts/");
+test("home page presents an interactive cover flow", async ({ page }) => {
+  await page.goto("/");
   const coverFlow = page.locator(".cover-flow");
-  const initialActiveIndex = Math.floor(catalog.volumes.length / 2);
+  const initialActiveIndex = 0;
   const initialActiveVolume = catalog.volumes[initialActiveIndex]!;
 
   await expect(coverFlow).toBeVisible();
-  await expect(page.locator(".volume-grid")).toHaveCount(0);
+  await expect(page.locator(".manuscript-showcase")).toHaveCount(0);
   await expect(coverFlow.locator(".cover-flow-card")).toHaveCount(
     catalog.volumes.length,
   );
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
   ).toHaveAttribute("href", initialActiveVolume.href);
-  await expect(coverFlow.locator(".cover-flow-caption strong")).toHaveText(
+  await expect(
+    coverFlow.locator(".cover-flow-card.is-active .cover-flow-card-panel strong"),
+  ).toHaveText(
     initialActiveVolume.title,
   );
 
@@ -1280,26 +1278,36 @@ test("manuscripts page presents an interactive cover flow", async ({ page }) => 
     const active = flow.querySelector<HTMLElement>(
       '.cover-flow-card[aria-current="true"]',
     );
-    const previous = flow.querySelector<HTMLElement>(
-      ".cover-flow-card.is-active",
-    )?.previousElementSibling as HTMLElement | null;
+    const sideCard =
+      (flow.querySelector<HTMLElement>(".cover-flow-card.is-active")
+        ?.previousElementSibling as HTMLElement | null) ??
+      (flow.querySelector<HTMLElement>(".cover-flow-card.is-active")
+        ?.nextElementSibling as HTMLElement | null);
 
     return {
       activeRotate: active?.style.getPropertyValue("--cover-flow-rotate") ?? "",
       activeTransform: active ? getComputedStyle(active).transform : "",
-      previousRotate:
-        previous?.style.getPropertyValue("--cover-flow-rotate") ?? "",
+      cardGap: window.getComputedStyle(flow.querySelector(".cover-flow-track")!).gap,
+      panelVisible:
+        active?.querySelector(".cover-flow-card-panel") &&
+        window.getComputedStyle(active.querySelector(".cover-flow-card-panel")!)
+          .backdropFilter,
+      sideRotate: sideCard?.style.getPropertyValue("--cover-flow-rotate") ?? "",
     };
   });
-  expect(coverFlowTransforms.activeRotate).toBe("0deg");
+  expect(Math.abs(Number.parseFloat(coverFlowTransforms.activeRotate))).toBeLessThan(1);
   expect(coverFlowTransforms.activeTransform).not.toBe("none");
-  expect(coverFlowTransforms.previousRotate).not.toBe("0deg");
+  expect(Number.parseFloat(coverFlowTransforms.cardGap)).toBeGreaterThan(24);
+  expect(coverFlowTransforms.panelVisible).not.toBe("none");
+  expect(coverFlowTransforms.sideRotate).not.toBe("0deg");
 
   await page.getByRole("button", { name: "Next manuscript" }).click();
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
   ).toHaveAttribute("href", catalog.volumes[initialActiveIndex + 1]!.href);
-  await expect(coverFlow.locator(".cover-flow-caption strong")).toHaveText(
+  await expect(
+    coverFlow.locator(".cover-flow-card.is-active .cover-flow-card-panel strong"),
+  ).toHaveText(
     catalog.volumes[initialActiveIndex + 1]!.title,
   );
 });

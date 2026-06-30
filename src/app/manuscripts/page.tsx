@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ManuscriptCoverFlowIsland } from "@/components/ManuscriptCoverFlowIsland";
+import Image from "next/image";
+import Link from "next/link";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { catalog, manuscriptsNavigation } from "@/lib/manuscript-data";
 
@@ -21,7 +22,25 @@ export default function ManuscriptsPage() {
           through one reader.
         </p>
       </header>
-      <ManuscriptCoverFlowIsland volumes={catalog.volumes} />
+      <section className="volume-grid" aria-label="Published manuscripts">
+        {catalog.volumes.map((volume) => (
+          <Link key={volume.volumeId} href={volume.href} className="volume-card">
+            <Image
+              src={volume.coverImage}
+              alt={volume.coverAlt}
+              width={512}
+              height={768}
+              sizes="(max-width: 720px) 42vw, 180px"
+            />
+            <span>Volume {volume.numberLabel}</span>
+            <strong>{volume.title}</strong>
+            <small>{volume.subtitle}</small>
+            <em>
+              {volume.wordCount.toLocaleString()} words, {volume.parts.length} parts
+            </em>
+          </Link>
+        ))}
+      </section>
       <ManuscriptNavigation
         previous={navigation.previous}
         parent={navigation.parent}

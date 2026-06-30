@@ -1,19 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { BookOpen, ListTree } from "lucide-react";
+import { ManuscriptCoverFlowIsland } from "@/components/ManuscriptCoverFlowIsland";
 import { catalog } from "@/lib/manuscript-data";
-
-const manuscriptTags: Record<string, string[]> = {
-  "humanitys-most-viable-future": ["Post-extractive civilization", "Social substrate"],
-  "wielding-intelligence": ["Humane technology", "AI coordination"],
-  "providence-imperative": ["Coordination infrastructure", "Civilizational design"],
-  "architecting-providence": ["Systems architecture", "Coherent governance"],
-  purposeful: ["Builder discovery", "Human purpose"],
-  "smallest-nest": ["Planetary containment", "Living scale"],
-  "presencing-genius": ["Presence praxis", "Collective genius"],
-  "misanthropic-artifice": ["Academic critique", "Saturnine inquiry"],
-  "cardinal-scale": ["Iconic patterning", "Cardinal orientation"],
-};
 
 export default function Home() {
   return (
@@ -68,52 +57,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="manuscript-showcase" aria-label="Published manuscripts">
-        {catalog.volumes.map((volume) => {
-          const chapterCount = volume.parts.reduce(
-            (total, part) => total + part.chapters.length,
-            0,
-          );
-          const tags = manuscriptTags[volume.volumeId] ?? [volume.planet];
-
-          return (
-            <Link
-              key={volume.volumeId}
-              href={volume.href}
-              className={`manuscript-cover-card manuscript-cover-card-${volume.order}`}
-              aria-label={`Open ${volume.title}`}
-            >
-              <Image
-                src={volume.coverImage}
-                alt=""
-                width={512}
-                height={768}
-                sizes="(max-width: 720px) 92vw, (max-width: 1100px) 44vw, 31vw"
-              />
-              <span className="manuscript-card-panel" aria-hidden="true">
-                <span className="manuscript-card-kicker">
-                  Volume {volume.numberLabel}
-                </span>
-                <strong>{volume.title}</strong>
-                <span className="manuscript-card-description">
-                  {volume.subtitle}
-                </span>
-                <span className="manuscript-card-stats">
-                  <span>{volume.wordCount.toLocaleString()} words</span>
-                  <span>{volume.parts.length.toLocaleString()} parts</span>
-                  <span>{chapterCount.toLocaleString()} chapters</span>
-                </span>
-                <span className="manuscript-card-tags">
-                  <span>{volume.planet}</span>
-                  {tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </span>
-              </span>
-            </Link>
-          );
-        })}
-      </section>
+      <ManuscriptCoverFlowIsland volumes={catalog.volumes} />
     </div>
   );
 }

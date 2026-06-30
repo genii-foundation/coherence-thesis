@@ -50,10 +50,10 @@ Do not edit generated files by hand. Edit source Markdown or series metadata, th
 
 <!-- BEGIN:development-status -->
 
-Generated: 2026-06-30T00:42:14.571Z
+Generated: 2026-06-30T01:27:48.620Z
 
 - Branch: feat/manuscript-cover-flow
-- Revision: 5e332f4
+- Revision: c28a64e
 - Working tree: local changes present
 - Next.js: 16.2.9
 - Manuscripts: 9 volume, 47 parts, 408 chapters, 566 sections
@@ -64,11 +64,11 @@ Generated: 2026-06-30T00:42:14.571Z
 Recent commits:
 
 ```text
+c28a64e feat: add manuscript cover flow
 5e332f4 feat: add reader section footer navigation (#10)
 23d2234 fix: refine responsive reader toolbar
 27b3b4e docs: standardize PR quality workflows
 d90913a docs: update feature preview workflow
-271ea61 Add reader settings menu
 ```
 
 <!-- END:development-status -->

@@ -1315,128 +1315,71 @@ input {
 }
 
 .cover-flow {
-  display: grid;
-  gap: clamp(1rem, 2.8vw, 1.5rem);
-  margin: clamp(1.5rem, 4vw, 3.2rem) 0;
-}
-
-.cover-flow-toolbar {
-  display: grid;
-  grid-template-columns: 2.75rem minmax(0, 1fr) 2.75rem;
-  align-items: center;
-  gap: clamp(0.75rem, 2vw, 1rem);
-}
-
-.cover-flow-button {
-  display: inline-grid;
-  place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--subtle-control-background);
-  color: var(--ink);
-  cursor: pointer;
-  transition:
-    background 160ms ease,
-    border-color 160ms ease,
-    color 160ms ease,
-    opacity 160ms ease;
-}
-
-.cover-flow-button:hover,
-.cover-flow-button:focus-visible {
-  border-color: rgba(119, 84, 42, 0.42);
-  background: rgba(164, 123, 63, 0.12);
-  color: var(--ink);
-  outline: none;
-}
-
-.cover-flow-button:disabled {
-  cursor: default;
-  opacity: 0.36;
-}
-
-.cover-flow-caption {
-  display: grid;
-  justify-items: center;
-  gap: 0.22rem;
-  min-width: 0;
-  text-align: center;
-}
-
-.cover-flow-caption span,
-.cover-flow-caption small {
-  overflow: hidden;
-  max-width: 100%;
-  color: var(--ink-muted);
-  font-family: var(--font-ui);
-  font-size: 0.82rem;
-  line-height: 1.35;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.cover-flow-caption strong {
-  overflow: hidden;
-  max-width: 100%;
-  color: var(--ink);
-  font-family: var(--font-display);
-  font-size: clamp(1.45rem, 3vw, 2.2rem);
-  font-weight: 500;
-  line-height: 1.05;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.cover-flow-viewport {
+  --cover-flow-card-width: clamp(18rem, 28vw, 25rem);
   position: relative;
-  min-height: clamp(27rem, 54vw, 44rem);
-  overflow: hidden;
+  left: 50%;
+  width: min(calc(100vw - 2rem), 1440px);
+  margin: clamp(2rem, 5vw, 4rem) 0 0;
+  transform: translateX(-50%);
+}
+
+.cover-flow-scroll {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
   border-top: 1px solid rgba(119, 84, 42, 0.12);
   border-bottom: 1px solid rgba(119, 84, 42, 0.12);
-  cursor: grab;
-  perspective: clamp(55rem, 88vw, 78rem);
-  touch-action: pan-y;
+  overscroll-behavior-x: contain;
+  perspective: clamp(62rem, 86vw, 84rem);
+  scroll-behavior: smooth;
+  scroll-padding-inline: calc((100% - var(--cover-flow-card-width)) / 2);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
-.cover-flow-viewport:active {
-  cursor: grabbing;
+.cover-flow-scroll::-webkit-scrollbar {
+  display: none;
 }
 
-.cover-flow-stage {
-  position: absolute;
-  inset: clamp(1rem, 3vw, 1.8rem) 0 0;
+.cover-flow-track {
+  display: flex;
+  align-items: start;
+  gap: clamp(2.2rem, 5vw, 5.25rem);
+  min-height: clamp(39rem, 63vw, 55rem);
+  padding:
+    clamp(1.5rem, 4vw, 2.6rem)
+    calc((100% - var(--cover-flow-card-width)) / 2)
+    clamp(1.5rem, 4vw, 2.8rem);
   transform-style: preserve-3d;
 }
 
 .cover-flow-card {
   --card-accent: #77542a;
   --card-rgb: 119 84 42;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  display: block;
-  width: clamp(12.2rem, 28vw, 21rem);
+  --cover-flow-opacity: 1;
+  --cover-flow-panel-opacity: 1;
+  --cover-flow-rotate: 0deg;
+  --cover-flow-scale: 1;
+  --cover-flow-z: 0px;
+  display: grid;
+  flex: 0 0 var(--cover-flow-card-width);
+  gap: 0.95rem;
   color: var(--ink);
   text-decoration: none;
   opacity: var(--cover-flow-opacity);
   transform:
-    translateX(calc(-50% + var(--cover-flow-x)))
-    translateY(var(--cover-flow-y))
     translateZ(var(--cover-flow-z))
     rotateY(var(--cover-flow-rotate))
     scale(var(--cover-flow-scale));
   transform-origin: center center;
   transform-style: preserve-3d;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
   transition:
-    opacity 360ms ease,
-    transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 120ms linear,
+    transform 120ms linear;
   will-change: transform, opacity;
-}
-
-.cover-flow-card.is-outside-range {
-  pointer-events: none;
 }
 
 .cover-flow-card:focus-visible {
@@ -1480,7 +1423,7 @@ input {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.22), transparent 20% 78%, rgba(0, 0, 0, 0.18)),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2), transparent 20% 78%, rgba(0, 0, 0, 0.16)),
     linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent 18%);
   content: "";
   mix-blend-mode: screen;
@@ -1495,44 +1438,70 @@ input {
   object-fit: cover;
 }
 
-.cover-flow-reflection {
-  display: block;
-  width: 100%;
-  height: clamp(5.8rem, 14vw, 9.8rem);
-  margin-top: 0.55rem;
-  background-position: center bottom;
-  background-size: cover;
-  opacity: 0.26;
-  transform: scaleY(-1);
-  transform-origin: top;
-  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 78%);
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 78%);
+.cover-flow-card-panel {
+  display: grid;
+  gap: 0.55rem;
+  min-height: 15.4rem;
+  border: 1px solid rgb(var(--card-rgb) / 0.32);
+  border-radius: var(--radius);
+  background: var(--glass-background);
+  box-shadow:
+    0 18px 44px rgba(19, 32, 42, 0.18),
+    0 1px 0 rgba(255, 255, 255, 0.54) inset;
+  color: var(--ink);
+  padding: clamp(0.95rem, 1.8vw, 1.2rem);
+  opacity: var(--cover-flow-panel-opacity);
+  transition: opacity 140ms linear;
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  backdrop-filter: blur(18px) saturate(135%);
 }
 
-.cover-flow-dots {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.45rem;
+.cover-flow-card-panel strong {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.4vw, 2.15rem);
+  font-weight: 500;
+  line-height: 0.98;
 }
 
-.cover-flow-dot {
-  width: 0.55rem;
-  height: 0.55rem;
-  border: 1px solid rgba(119, 84, 42, 0.44);
-  border-radius: 999px;
-  background: rgba(119, 84, 42, 0.12);
+.cover-flow-edge-button {
+  position: absolute;
+  top: clamp(11rem, 24vw, 18rem);
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: clamp(2.8rem, 5vw, 4.2rem);
+  height: clamp(4.8rem, 12vw, 7rem);
+  border: 0;
+  background: transparent;
+  color: var(--ink);
   cursor: pointer;
   padding: 0;
+  transition:
+    color 160ms ease,
+    opacity 160ms ease,
+    transform 160ms ease;
 }
 
-.cover-flow-dot[aria-current="true"] {
-  background: var(--bronze-deep);
+.cover-flow-edge-button:hover,
+.cover-flow-edge-button:focus-visible {
+  color: var(--bronze-deep);
+  outline: none;
+  transform: translateY(-1px);
 }
 
-.cover-flow-dot:focus-visible {
-  outline: 2px solid var(--bronze-deep);
-  outline-offset: 3px;
+.cover-flow-edge-button:disabled {
+  cursor: default;
+  opacity: 0.22;
+  transform: none;
+}
+
+.cover-flow-edge-button-previous {
+  left: 0;
+}
+
+.cover-flow-edge-button-next {
+  right: 0;
 }
 
 .manuscript-showcase {
@@ -2967,8 +2936,13 @@ input {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .cover-flow-viewport {
-    min-height: clamp(24rem, 76vw, 34rem);
+  .cover-flow {
+    --cover-flow-card-width: clamp(17rem, 48vw, 22rem);
+    width: min(calc(100vw - 1.25rem), 1120px);
+  }
+
+  .cover-flow-track {
+    min-height: clamp(39rem, 92vw, 48rem);
   }
 
   .hero-copy h1 {
@@ -3125,21 +3099,24 @@ input {
     gap: 1.2rem;
   }
 
-  .cover-flow-toolbar {
-    grid-template-columns: 2.5rem minmax(0, 1fr) 2.5rem;
+  .cover-flow {
+    --cover-flow-card-width: min(78vw, 18rem);
+    width: calc(100vw - 1rem);
   }
 
-  .cover-flow-button {
-    width: 2.5rem;
-    height: 2.5rem;
+  .cover-flow-track {
+    gap: 1.7rem;
+    min-height: clamp(37rem, 126vw, 44rem);
   }
 
-  .cover-flow-card {
-    width: clamp(10.4rem, 58vw, 15rem);
+  .cover-flow-card-panel {
+    min-height: 15rem;
   }
 
-  .cover-flow-caption strong {
-    font-size: clamp(1.2rem, 7vw, 1.65rem);
+  .cover-flow-edge-button {
+    top: 9.8rem;
+    width: 2.55rem;
+    height: 5rem;
   }
 
   .manuscript-card-panel {
