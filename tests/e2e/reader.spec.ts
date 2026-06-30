@@ -77,8 +77,27 @@ const singleSectionPart = partById(
 const singleSectionChapter = singleSectionPart.chapters.find(
   (chapter) => chapter.chapterId === singleSectionChapterTarget.chapterId,
 )!;
+const centralWoundSection = catalog.sections.find(
+  (section) =>
+    section.href ===
+    "/manuscripts/providence-imperative/the-reckoning/the-central-wound/v03-the-central-wound/",
+)!;
+const centralWoundPart = partById(
+  centralWoundSection.volumeId,
+  centralWoundSection.partId,
+)!;
 const sectionWithNeighbors = catalog.sections.find(
-  (section) => section.previousSectionId && section.nextSectionId,
+  (section) => {
+    const chapter = partById(section.volumeId, section.partId)?.chapters.find(
+      (candidate) => candidate.chapterId === section.chapterId,
+    );
+    return Boolean(
+      section.previousSectionId &&
+        section.nextSectionId &&
+        chapter &&
+        chapter.sectionIds.length > 1,
+    );
+  },
 )!;
 const previousSection = catalog.sections.find(
   (section) => section.sectionId === sectionWithNeighbors.previousSectionId,
@@ -323,6 +342,28 @@ test("single-section chapter cards open reader content directly", async ({
     page.getByRole("heading", { name: singleSectionChapterTarget.title }),
   ).toBeVisible();
   await expect(page.locator(".section-index")).toHaveCount(0);
+});
+
+test("singleton chapter section navigation points up to the part", async ({
+  page,
+}) => {
+  await page.goto(centralWoundSection.href);
+
+  const breadcrumbs = page.getByRole("navigation", { name: "Breadcrumb" });
+  await expect(breadcrumbs).toBeVisible();
+  await expect(breadcrumbs.locator("li")).toHaveCount(2);
+  await expect(breadcrumbs.locator(".breadcrumb-label")).toHaveText([
+    centralWoundPart.title,
+    centralWoundSection.title,
+  ]);
+  await expect(breadcrumbs.locator('[aria-current="page"]')).toHaveText(
+    centralWoundSection.title,
+  );
+
+  const footerNav = page.getByRole("navigation", { name: "Page navigation" });
+  const parentLink = footerNav.locator(".section-nav-link-parent");
+  await expect(parentLink).toHaveAttribute("href", centralWoundPart.href);
+  await expect(parentLink.locator("strong")).toHaveText(centralWoundPart.title);
 });
 
 test("mobile toolbar and progress menu stay within the viewport", async ({

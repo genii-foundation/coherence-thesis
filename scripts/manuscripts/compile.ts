@@ -44,11 +44,14 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
             (candidate) => candidate.sectionId === sectionId,
           );
           if (!section) continue;
-          addRoute(section.href, [
+          const crumbs = [
             partCrumb,
-            chapterCrumb,
             { label: section.title, href: section.href },
-          ]);
+          ];
+          if (chapter.sectionIds.length !== 1 || chapter.sectionIds[0] !== section.sectionId) {
+            crumbs.splice(1, 0, chapterCrumb);
+          }
+          addRoute(section.href, crumbs);
         }
       }
     }
