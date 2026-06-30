@@ -36,7 +36,9 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
 
       for (const chapter of part.chapters) {
         const chapterCrumb = { label: chapter.title, href: chapter.href };
-        addRoute(chapter.href, [partCrumb, chapterCrumb]);
+        if (chapter.href !== part.href) {
+          addRoute(chapter.href, [partCrumb, chapterCrumb]);
+        }
 
         for (const sectionId of chapter.sectionIds) {
           const section = catalog.sections.find(
@@ -47,7 +49,10 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
             partCrumb,
             { label: section.title, href: section.href },
           ];
-          if (chapter.sectionIds.length !== 1 || chapter.sectionIds[0] !== section.sectionId) {
+          if (
+            chapter.href !== part.href &&
+            (chapter.sectionIds.length !== 1 || chapter.sectionIds[0] !== section.sectionId)
+          ) {
             crumbs.splice(1, 0, chapterCrumb);
           }
           addRoute(section.href, crumbs);

@@ -168,6 +168,13 @@ export type PageNavigation = {
   parent: NavigationItem;
   next?: NavigationItem | null;
 };
+export type PartRouteMatch = {
+  volume: Volume;
+  part: Part;
+};
+export type ChapterRouteMatch = PartRouteMatch & {
+  chapter: Chapter;
+};
 
 export const catalog = catalogJson as Catalog;
 
@@ -241,7 +248,9 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
 
       for (const chapter of part.chapters) {
         const chapterCrumb = { label: chapter.title, href: chapter.href };
-        addBreadcrumbRoute(routes, chapter.href, [partCrumb, chapterCrumb]);
+        if (chapter.href !== part.href) {
+          addBreadcrumbRoute(routes, chapter.href, [partCrumb, chapterCrumb]);
+        }
       }
     }
   }
@@ -255,7 +264,7 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
       { label: part.title, href: part.href },
       { label: section.title, href: section.href },
     ];
-    if (!isSingletonChapterSection(chapter, section)) {
+    if (chapter.href !== part.href && !isSingletonChapterSection(chapter, section)) {
       crumbs.splice(1, 0, { label: chapter.title, href: chapter.href });
     }
     addBreadcrumbRoute(routes, section.href, crumbs);
@@ -325,6 +334,71 @@ export function sectionByRouteOrAlias(
   const section = sectionByRoute(volumeId, partId, chapterId, sectionId);
   if (section) return { section };
   const alias = aliasByRoute(volumeId, partId, chapterId, sectionId);
+  const target = alias ? sectionById(alias.targetSectionId) : undefined;
+  return target ? { section: target, alias } : undefined;
+}
+
+function normalizeHref(href: string): string {
+  if (href === "/") return href;
+  return href.endsWith("/") ? href : `${href}/`;
+}
+
+export function manuscriptHrefFromRoute(volumeId: string, route: string[]): string {
+  return normalizeHref(`/manuscripts/${[volumeId, ...route].join("/")}`);
+}
+
+export function manuscriptRouteFromHref(href: string): { volumeId: string; route: string[] } {
+  const parts = normalizeHref(href).split("/").filter(Boolean);
+  if (parts[0] !== "manuscripts" || !parts[1] || parts.length < 3) {
+    throw new Error(`Expected manuscript href: ${href}`);
+  }
+  return {
+    volumeId: parts[1],
+    route: parts.slice(2),
+  };
+}
+
+export function partByHref(href: string): PartRouteMatch | undefined {
+  const normalized = normalizeHref(href);
+  for (const volume of catalog.volumes) {
+    const part = volume.parts.find((candidate) => normalizeHref(candidate.href) === normalized);
+    if (part) return { volume, part };
+    const legacyPart = volume.parts.find(
+      (candidate) =>
+        candidate.partId === volume.volumeId &&
+        normalizeHref(`/manuscripts/${volume.volumeId}/${candidate.partId}/`) === normalized,
+    );
+    if (legacyPart) return { volume, part: legacyPart };
+  }
+  return undefined;
+}
+
+export function chapterByHref(href: string): ChapterRouteMatch | undefined {
+  const normalized = normalizeHref(href);
+  for (const volume of catalog.volumes) {
+    for (const part of volume.parts) {
+      const chapter = part.chapters.find(
+        (candidate) =>
+          normalizeHref(candidate.href) === normalized &&
+          normalizeHref(candidate.href) !== normalizeHref(part.href),
+      );
+      if (chapter) return { volume, part, chapter };
+    }
+  }
+  return undefined;
+}
+
+export function sectionByHrefOrAlias(
+  href: string,
+): { section: Section; alias?: SectionAlias } | undefined {
+  const normalized = normalizeHref(href);
+  const section = catalog.sections.find(
+    (candidate) => normalizeHref(candidate.href) === normalized,
+  );
+  if (section) return { section };
+  const alias = catalog.aliases.find(
+    (candidate) => normalizeHref(candidate.sourceHref) === normalized,
+  );
   const target = alias ? sectionById(alias.targetSectionId) : undefined;
   return target ? { section: target, alias } : undefined;
 }
@@ -439,6 +513,31 @@ export function routeParams() {
     })),
     ...catalog.aliases.map((alias) => alias.sourceRoute),
   ];
+}
+
+export function manuscriptPathParams(): Array<{ volumeId: string; route: string[] }> {
+  const params = new Map<string, { volumeId: string; route: string[] }>();
+  const addHref = (href: string) => {
+    const route = manuscriptRouteFromHref(href);
+    params.set(`${route.volumeId}:${route.route.join("/")}`, route);
+  };
+
+  for (const volume of catalog.volumes) {
+    for (const part of volume.parts) {
+      addHref(part.href);
+      if (part.partId === volume.volumeId) {
+        addHref(`/manuscripts/${volume.volumeId}/${part.partId}/`);
+      }
+      for (const chapter of part.chapters) {
+        if (chapter.href !== part.href) addHref(chapter.href);
+      }
+    }
+  }
+
+  for (const section of catalog.sections) addHref(section.href);
+  for (const alias of catalog.aliases) addHref(alias.sourceHref);
+
+  return [...params.values()];
 }
 
 export function excerpt(text: string, maxLength = 180): string {

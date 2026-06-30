@@ -50,11 +50,11 @@ Do not edit generated files by hand. Edit source Markdown or series metadata, th
 
 <!-- BEGIN:development-status -->
 
-Generated: 2026-06-30T02:23:34.844Z
+Generated: 2026-06-30T04:14:17.103Z
 
-- Branch: feat/share-pdf-downloads
-- Revision: 6595f48
-- Working tree: clean
+- Branch: fix/redundant-manuscript-routes
+- Revision: fe6e647
+- Working tree: local changes present
 - Next.js: 16.2.9
 - Manuscripts: 9 volume, 47 parts, 408 chapters, 566 sections
 - Canonical words: 198,717
@@ -64,11 +64,11 @@ Generated: 2026-06-30T02:23:34.844Z
 Recent commits:
 
 ```text
-6595f48 feat: add reader PDF sharing menu
+fe6e647 feat: refine reader design system
+a43b6dd feat: add reader PDF sharing menu
 7449fc8 fix: match browser toolbar color
 32f59fe fix: correct singleton section navigation (#16)
 5e332f4 feat: add reader section footer navigation (#10)
-23d2234 fix: refine responsive reader toolbar
 ```
 
 <!-- END:development-status -->

@@ -2,8 +2,10 @@ import { describe, expect, it } from "vitest";
 import {
   allSections,
   breadcrumbRoutes,
+  manuscriptPathParams,
   partById,
   sectionNavigation,
+  sectionByHrefOrAlias,
   sectionsStartingAt,
 } from "./manuscript-data";
 
@@ -52,5 +54,51 @@ describe("manuscript data", () => {
       "/manuscripts/providence-imperative/the-reckoning/",
       "/manuscripts/providence-imperative/the-reckoning/the-central-wound/v03-the-central-wound/",
     ]);
+  });
+
+  it("resolves collapsed canonical section hrefs and old duplicate aliases", () => {
+    const canonical =
+      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/";
+    const oldDuplicate =
+      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/";
+
+    expect(sectionByHrefOrAlias(canonical)?.section.sectionId).toBe(
+      "v01-seed-sprout-stem-and-soil",
+    );
+    expect(sectionByHrefOrAlias(oldDuplicate)?.alias?.targetHref).toBe(canonical);
+  });
+
+  it("keeps duplicate part and chapter labels out of collapsed breadcrumbs", () => {
+    const route = breadcrumbRoutes().find(
+      (candidate) =>
+        candidate.href ===
+        "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
+    );
+
+    expect(route?.crumbs.map((crumb) => crumb.label)).toEqual([
+      "Seed, Sprout, Stem & Soil",
+      "Seed, Sprout, Stem & Soil",
+    ]);
+    expect(route?.crumbs.map((crumb) => crumb.href)).toEqual([
+      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/",
+      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
+    ]);
+  });
+
+  it("generates static params for canonical and aliased section paths", () => {
+    const keys = new Set(
+      manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
+    );
+
+    expect(
+      keys.has(
+        "humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil",
+      ),
+    ).toBe(true);
+    expect(
+      keys.has(
+        "humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil",
+      ),
+    ).toBe(true);
   });
 });
