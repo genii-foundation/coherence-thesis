@@ -12,6 +12,7 @@ import {
   searchIndexPath,
   writeJson,
 } from "./shared";
+import { buildPdfDownloads, pdfManifestPath } from "./pdf";
 
 function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
   const routes = new Map<
@@ -60,8 +61,9 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
   return [...routes.values()];
 }
 
-export function compileManuscripts(): void {
+export async function compileManuscripts(): Promise<void> {
   const catalog = buildCatalog();
+  const pdfDownloads = await buildPdfDownloads(catalog);
   const readerSections = catalog.sections.map((section) => ({
     sectionId: section.sectionId,
     title: section.title,
@@ -87,6 +89,7 @@ export function compileManuscripts(): void {
   writeJson(readerSectionsPath, readerSections);
   writeJson(breadcrumbRoutesPath, breadcrumbRoutes);
   writeJson(searchIndexPath, searchIndex);
+  writeJson(pdfManifestPath, pdfDownloads);
   console.log(
     `Compiled ${catalog.stats.sectionCount} sections, ${catalog.stats.wordCount.toLocaleString()} words`,
   );
@@ -94,6 +97,10 @@ export function compileManuscripts(): void {
   console.log(`Reader data: ${path.relative(repoRoot, readerSectionsPath)}`);
   console.log(`Breadcrumb data: ${path.relative(repoRoot, breadcrumbRoutesPath)}`);
   console.log(`Search index: ${path.relative(repoRoot, searchIndexPath)}`);
+  console.log(`PDF downloads: ${path.relative(repoRoot, pdfManifestPath)}`);
 }
 
-compileManuscripts();
+compileManuscripts().catch((error: unknown) => {
+  console.error(error);
+  process.exitCode = 1;
+});

@@ -830,6 +830,66 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   );
 });
 
+test("reader share menu exposes page sharing and PDF downloads", async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(window.navigator, "share", {
+      configurable: true,
+      value: async (data: ShareData) => {
+        (window as Window & { __lastShareData?: ShareData }).__lastShareData = data;
+      },
+    });
+  });
+  await page.goto(firstSection.href);
+
+  const shareButton = page.getByRole("button", { name: "Share and downloads" });
+  await expect(shareButton).toBeVisible();
+  await expect(shareButton).toHaveText("");
+  await shareButton.click();
+
+  const shareMenu = page.getByRole("region", { name: "Share and downloads" });
+  await expect(shareMenu).toBeVisible();
+
+  const shareBox = await shareMenu.boundingBox();
+  const viewport = page.viewportSize();
+  expect(shareBox).not.toBeNull();
+  expect(viewport).not.toBeNull();
+
+  if (shareBox && viewport) {
+    expect(shareBox.x).toBeGreaterThanOrEqual(-1);
+    expect(shareBox.x + shareBox.width).toBeLessThanOrEqual(viewport.width + 1);
+  }
+
+  const sectionPdfHref = `/downloads/sections/${firstSection.sectionId}.pdf`;
+  const manuscriptPdfHref = `/downloads/manuscripts/${firstSection.volumeId}.pdf`;
+  const sectionDownload = shareMenu.getByRole("link", {
+    name: `Download this section as PDF: ${firstSection.title}`,
+  });
+  const manuscriptDownload = shareMenu.getByRole("link", {
+    name: `Download this manuscript as PDF: ${firstSection.volumeTitle}`,
+  });
+
+  await expect(sectionDownload).toHaveAttribute("href", sectionPdfHref);
+  await expect(sectionDownload).toHaveAttribute("download", "");
+  await expect(manuscriptDownload).toHaveAttribute("href", manuscriptPdfHref);
+  await expect(manuscriptDownload).toHaveAttribute("download", "");
+
+  const sectionPdfResponse = await page.request.get(sectionPdfHref);
+  expect(sectionPdfResponse.ok()).toBe(true);
+  expect(sectionPdfResponse.headers()["content-type"]).toContain("application/pdf");
+  const manuscriptPdfResponse = await page.request.get(manuscriptPdfHref);
+  expect(manuscriptPdfResponse.ok()).toBe(true);
+  expect(manuscriptPdfResponse.headers()["content-type"]).toContain("application/pdf");
+
+  await shareMenu.getByRole("button", { name: "Share this page" }).click();
+  await expect(shareMenu.getByRole("status")).toHaveText("Shared");
+
+  const shareData = await page.evaluate(
+    () => (window as Window & { __lastShareData?: ShareData }).__lastShareData,
+  );
+  expect(shareData?.title).toContain(firstSection.title);
+  expect(shareData?.url).toContain(firstSection.href);
+});
+
 test("reader settings update and persist local appearance preferences", async ({
   page,
 }) => {
