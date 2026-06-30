@@ -10,6 +10,8 @@ import {
 import { usePathname } from "next/navigation";
 import { Search } from "lucide-react";
 import { loadSearchIndex, type SearchIndexEntry } from "@/lib/reader-data";
+import { createEngagementEvent } from "@/lib/reader-engagement";
+import { appendStoredEvent } from "@/lib/reader-progress-store";
 
 type SearchResult = SearchIndexEntry & {
   score: number;
@@ -76,6 +78,7 @@ export function SearchMenuIsland() {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const resultRefs = useRef<Array<HTMLAnchorElement | null>>([]);
+  const lastSubmittedQueryRef = useRef("");
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState<SearchIndexEntry[]>([]);
@@ -142,6 +145,24 @@ export function SearchMenuIsland() {
 
   const trimmedQuery = query.trim();
 
+  useEffect(() => {
+    if (!open || trimmedQuery.length < 2) return;
+    const timer = window.setTimeout(() => {
+      if (lastSubmittedQueryRef.current === trimmedQuery) return;
+      lastSubmittedQueryRef.current = trimmedQuery;
+      appendStoredEvent(
+        createEngagementEvent("search_submitted", {
+          route: pathname,
+          payload: {
+            query: trimmedQuery,
+            resultCount: results.length,
+          },
+        }),
+      );
+    }, 800);
+    return () => window.clearTimeout(timer);
+  }, [open, pathname, results.length, trimmedQuery]);
+
   function focusResult(index: number): void {
     resultRefs.current[index]?.focus();
   }
@@ -155,6 +176,16 @@ export function SearchMenuIsland() {
 
     if (event.key === "Enter" && results.length > 0) {
       event.preventDefault();
+      appendStoredEvent(
+        createEngagementEvent("search_result_clicked", {
+          sectionId: results[0].sectionId,
+          route: results[0].href,
+          payload: {
+            query: trimmedQuery,
+            rank: 1,
+          },
+        }),
+      );
       window.location.assign(results[0].href);
       return;
     }
@@ -261,6 +292,18 @@ export function SearchMenuIsland() {
                 href={result.href}
                 className="search-result"
                 onKeyDown={(event) => onResultKeyDown(event, resultIndex)}
+                onClick={() =>
+                  appendStoredEvent(
+                    createEngagementEvent("search_result_clicked", {
+                      sectionId: result.sectionId,
+                      route: result.href,
+                      payload: {
+                        query: trimmedQuery,
+                        rank: resultIndex + 1,
+                      },
+                    }),
+                  )
+                }
               >
                 <span className="search-result-title">
                   <strong>{result.title}</strong>

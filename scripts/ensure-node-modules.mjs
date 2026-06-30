@@ -8,6 +8,7 @@ import {
   readFileSync,
   writeFileSync,
 } from "node:fs";
+import process from "node:process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -69,10 +70,15 @@ function writeInstallState(expectedState) {
 }
 
 function runNpmCi() {
-  const npmCommand = path.join(
+  const localNpmCommand = path.join(
     path.dirname(process.execPath),
     process.platform === "win32" ? "npm.cmd" : "npm",
   );
+  const npmCommand = existsSync(localNpmCommand)
+    ? localNpmCommand
+    : process.platform === "win32"
+      ? "npm.cmd"
+      : "npm";
   const result = spawnSync(npmCommand, ["ci"], {
     cwd: repoRoot,
     env: {

@@ -3,18 +3,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { Check } from "lucide-react";
 import type { ProgressSection } from "@/lib/manuscript-data";
+import { readStoredProgress } from "@/lib/reader-progress-store";
 import {
   emptyProgress,
-  parseProgress,
-  readerProgressStorageKey,
   readerProgressUpdatedEvent,
   type ReaderProgressState,
 } from "@/lib/reader-state";
-
-function readStoredProgress(): ReaderProgressState {
-  if (typeof window === "undefined") return emptyProgress();
-  return parseProgress(window.localStorage.getItem(readerProgressStorageKey));
-}
 
 function sectionsAreRead(
   progress: ReaderProgressState,

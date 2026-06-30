@@ -3,9 +3,13 @@ import { allSections } from "./manuscript-data";
 import {
   emptyProgress,
   markRead,
+  markSectionOpened,
+  mergeProgressStates,
+  parseProgress,
   readPercent,
   recentlyReadSections,
   recommendNextSections,
+  recordReadingTime,
   updatedSinceRead,
 } from "./reader-state";
 
@@ -22,9 +26,89 @@ describe("reader progress", () => {
         contentHash: paragraph.contentHash,
       })),
       readAt: 1_700_000_000,
+      lastReadAt: 1_700_000_000,
+      percent: 100,
+      autoReadCount: 1,
+    });
+    expect(updatedSinceRead(progress, section)).toBe(false);
+  });
+
+  it("keeps legacy v1 progress readable", () => {
+    const section = allSections()[0];
+    const progress = parseProgress(
+      JSON.stringify({
+        sections: {
+          [section.sectionId]: {
+            sectionId: section.sectionId,
+            contentHash: section.contentHash,
+            readAt: 1_700,
+            percent: 100,
+          },
+        },
+      }),
+    );
+
+    expect(progress.sections[section.sectionId]).toMatchObject({
+      contentHash: section.contentHash,
+      readAt: 1_700,
       percent: 100,
     });
     expect(updatedSinceRead(progress, section)).toBe(false);
+  });
+
+  it("tracks opens, returns, and conservative reading time", () => {
+    const section = allSections()[0];
+    const opened = markSectionOpened(emptyProgress(), section, 1_000, "direct");
+    const returned = markSectionOpened(opened, section, 2_000, "search");
+    const timed = recordReadingTime(returned, section, {
+      activeSeconds: 20,
+      idleSeconds: 5,
+      totalVisibleSeconds: 25,
+    });
+
+    expect(timed.sections[section.sectionId]).toMatchObject({
+      firstOpenedAt: 1_000,
+      lastOpenedAt: 2_000,
+      openCount: 2,
+      returnCount: 1,
+      activeSeconds: 20,
+      idleSeconds: 5,
+      totalVisibleSeconds: 25,
+      lastSource: "search",
+    });
+  });
+
+  it("merges synced summaries while preserving the newest read hash", () => {
+    const section = allSections()[0];
+    const local = markRead(
+      markSectionOpened(emptyProgress(), section, 1_000),
+      section,
+      100,
+      3_000,
+      "manual",
+    );
+    const remote = {
+      sections: {
+        [section.sectionId]: {
+          sectionId: section.sectionId,
+          contentHash: "older",
+          readAt: 2_000,
+          percent: 100,
+          openCount: 2,
+          activeSeconds: 40,
+        },
+      },
+    };
+
+    const merged = mergeProgressStates(local, remote);
+
+    expect(merged.sections[section.sectionId]).toMatchObject({
+      contentHash: section.contentHash,
+      readAt: 3_000,
+      openCount: 3,
+      activeSeconds: 40,
+      manualReadCount: 1,
+    });
   });
 
   it("detects content updates after a section was read", () => {

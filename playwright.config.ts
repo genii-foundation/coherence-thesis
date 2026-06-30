@@ -16,7 +16,7 @@ export default defineConfig({
   webServer: {
     command: fastE2e
       ? "npm run dev:e2e"
-      : "npm run build && npm run preview:static",
+      : "npm run build && npm run preview:production",
     url: baseURL,
     reuseExistingServer: fastE2e,
     timeout: 120000,
