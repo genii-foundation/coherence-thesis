@@ -341,7 +341,7 @@ input {
   display: grid;
   gap: 0.15rem;
   min-width: 0;
-  max-width: clamp(10rem, 21vw, 18.75rem);
+  max-width: clamp(13.25rem, 24vw, 21rem);
   border-radius: var(--radius);
   padding: 0.25rem 0.35rem;
   text-decoration: none;
@@ -361,7 +361,7 @@ input {
 
 .brand-kicker {
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: clip;
   white-space: nowrap;
 }
 
@@ -395,6 +395,14 @@ input {
 
 .brand-title-mobile-logo {
   display: none;
+}
+
+.brand-title-mobile-logo-initials {
+  display: none;
+  font-family: var(--font-display);
+  font-size: 1.24rem;
+  letter-spacing: 0;
+  line-height: 1;
 }
 
 .brand-mark-compact .brand-title-full {
@@ -2893,7 +2901,8 @@ input {
     max-width: 100%;
     border-bottom: 0;
     font-size: clamp(0.84rem, 3.45vw, 1rem);
-    text-overflow: ellipsis;
+    overflow: visible;
+    text-overflow: clip;
   }
 
   .site-header .brand-title-mobile-logo {
@@ -2917,25 +2926,25 @@ input {
   }
 
   .mobile-page-brand-kicker {
-    overflow: hidden;
+    overflow: visible;
     color: var(--bronze-deep);
     font-family: var(--font-ui);
     font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.16em;
     line-height: 1.2;
-    text-overflow: ellipsis;
+    text-overflow: clip;
     text-transform: uppercase;
     white-space: nowrap;
   }
 
   .mobile-page-brand-title {
-    overflow: hidden;
+    overflow: visible;
     font-family: var(--font-display);
     font-size: clamp(1.05rem, 5vw, 1.55rem);
     line-height: 1.05;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow-wrap: anywhere;
+    text-overflow: clip;
   }
 
   .mobile-page-context .breadcrumb-trail {
@@ -3261,6 +3270,23 @@ input {
 
   .section-nav-link strong {
     font-size: 0.94rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header .brand-title-mobile-logo-full {
+    display: none;
+  }
+
+  .site-header .brand-title-mobile-logo-initials {
+    display: inline;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header > .brand-mark,
+  .mobile-page-brand {
+    display: none;
   }
 }
 

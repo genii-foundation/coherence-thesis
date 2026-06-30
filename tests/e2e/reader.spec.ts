@@ -595,10 +595,20 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     );
     const percent = document.querySelector(".progress-percent");
     const headerBrand = document.querySelector(".site-header > .brand-mark");
+    const headerBrandTitle = headerBrand?.querySelector(".brand-title");
+    const headerBrandLogoFull = headerBrand?.querySelector(
+      ".brand-title-mobile-logo-full",
+    );
+    const headerBrandLogoInitials = headerBrand?.querySelector(
+      ".brand-title-mobile-logo-initials",
+    );
     const headerBreadcrumb = document.querySelector(
       ".site-header > .breadcrumb-trail",
     );
     const pageContext = document.querySelector(".mobile-page-context");
+    const pageContextBrandKicker = document.querySelector(
+      ".mobile-page-brand-kicker",
+    );
     const pageContextBrandTitle = document.querySelector(
       ".mobile-page-brand-title",
     );
@@ -611,11 +621,26 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     const headerBrandStyle = headerBrand
       ? window.getComputedStyle(headerBrand)
       : null;
+    const headerBrandTitleStyle = headerBrandTitle
+      ? window.getComputedStyle(headerBrandTitle)
+      : null;
+    const headerBrandLogoFullStyle = headerBrandLogoFull
+      ? window.getComputedStyle(headerBrandLogoFull)
+      : null;
+    const headerBrandLogoInitialsStyle = headerBrandLogoInitials
+      ? window.getComputedStyle(headerBrandLogoInitials)
+      : null;
     const headerBreadcrumbStyle = headerBreadcrumb
       ? window.getComputedStyle(headerBreadcrumb)
       : null;
     const pageContextStyle = pageContext
       ? window.getComputedStyle(pageContext)
+      : null;
+    const pageContextBrandKickerStyle = pageContextBrandKicker
+      ? window.getComputedStyle(pageContextBrandKicker)
+      : null;
+    const pageContextBrandTitleStyle = pageContextBrandTitle
+      ? window.getComputedStyle(pageContextBrandTitle)
       : null;
     const progressLabelStyle = progressLabel
       ? window.getComputedStyle(progressLabel)
@@ -670,10 +695,23 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       headerBrandLeft: headerBrand?.getBoundingClientRect().left ?? 0,
       headerBrandRight: headerBrand?.getBoundingClientRect().right ?? 0,
       headerBrandMobileLogo:
-        headerBrand?.querySelector(".brand-title-mobile-logo")?.textContent ?? "",
+        [
+          headerBrandLogoFullStyle?.display !== "none"
+            ? headerBrandLogoFull?.textContent
+            : "",
+          headerBrandLogoInitialsStyle?.display !== "none"
+            ? headerBrandLogoInitials?.textContent
+            : "",
+        ].join(""),
+      headerBrandTitleOverflow: headerBrandTitleStyle?.textOverflow ?? "",
       headerBreadcrumbDisplay: headerBreadcrumbStyle?.display ?? "",
       pageContextDisplay: pageContextStyle?.display ?? "",
+      pageContextBrandKicker: pageContextBrandKicker?.textContent ?? "",
+      pageContextBrandKickerOverflow:
+        pageContextBrandKickerStyle?.textOverflow ?? "",
       pageContextBrandTitle: pageContextBrandTitle?.textContent ?? "",
+      pageContextBrandTitleOverflow:
+        pageContextBrandTitleStyle?.textOverflow ?? "",
       pageContextBreadcrumbText: pageContextBreadcrumb?.textContent ?? "",
       pageContextBrandTop: pageContextBrandBox?.top ?? 0,
       pageContextBrandBottom: pageContextBrandBox?.bottom ?? 0,
@@ -686,16 +724,22 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   if (layout.clientWidth <= 860) {
     expect(toolbarMetrics.homeLeft).toBeLessThan(toolbarMetrics.searchLeft);
     expect(["flex", "inline-flex"]).toContain(toolbarMetrics.headerBrandDisplay);
-    expect(toolbarMetrics.headerBrandMobileLogo).toBe("Coherence Thesis");
+    expect(["Coherence Thesis", "CT"]).toContain(
+      toolbarMetrics.headerBrandMobileLogo,
+    );
+    expect(toolbarMetrics.headerBrandTitleOverflow).not.toBe("ellipsis");
     expect(toolbarMetrics.headerBrandLeft).toBeLessThan(toolbarMetrics.homeLeft);
     expect(toolbarMetrics.headerBrandRight).toBeLessThanOrEqual(
       toolbarMetrics.homeLeft,
     );
     expect(toolbarMetrics.headerBreadcrumbDisplay).toBe("none");
     expect(toolbarMetrics.pageContextDisplay).toBe("grid");
+    expect(toolbarMetrics.pageContextBrandKicker).toBe("The Coherence Thesis");
+    expect(toolbarMetrics.pageContextBrandKickerOverflow).not.toBe("ellipsis");
     expect(toolbarMetrics.pageContextBrandTitle).toBe(
       `Volume ${wieldingVolume.numberLabel} · ${wieldingVolume.title}`,
     );
+    expect(toolbarMetrics.pageContextBrandTitleOverflow).not.toBe("ellipsis");
     expect(toolbarMetrics.pageContextBreadcrumbText).toContain(
       wieldingSection.title,
     );
@@ -1797,20 +1841,62 @@ test("toolbar brand owns the active manuscript identity", async ({
   const brand = page.locator(".brand-mark");
   if (testInfo.project.name === "mobile") {
     await expect(brand).toBeVisible();
-    await expect(brand.locator(".brand-title-mobile-logo")).toHaveText(
-      "Coherence Thesis",
+    await expect(brand.locator(".brand-title-mobile-logo-full")).toBeHidden();
+    await expect(brand.locator(".brand-title-mobile-logo-initials")).toBeVisible();
+    await expect(brand.locator(".brand-title-mobile-logo-initials")).toHaveText(
+      "CT",
     );
     await expect(page.locator(".mobile-page-context")).toHaveCount(0);
 
+    await page.goto("/overview");
+    await expect(brand.locator(".brand-title-mobile-logo-full")).toBeHidden();
+    await expect(brand.locator(".brand-title-mobile-logo-initials")).toBeVisible();
+    await expect(page.locator(".mobile-page-brand-kicker")).toHaveText(
+      "Providence Collective",
+    );
+    await expect(page.locator(".mobile-page-brand-title")).toHaveText(
+      "The Coherence Thesis",
+    );
+    const overviewBrandOverflow = await page
+      .locator(".mobile-page-brand")
+      .evaluate((element) => ({
+        kicker: window.getComputedStyle(
+          element.querySelector(".mobile-page-brand-kicker")!,
+        ).textOverflow,
+        title: window.getComputedStyle(
+          element.querySelector(".mobile-page-brand-title")!,
+        ).textOverflow,
+      }));
+    expect(overviewBrandOverflow.kicker).not.toBe("ellipsis");
+    expect(overviewBrandOverflow.title).not.toBe("ellipsis");
+
     await page.goto(wieldingVolume.href);
     await expect(brand).toBeVisible();
-    await expect(brand.locator(".brand-title-mobile-logo")).toHaveText(
-      "Coherence Thesis",
-    );
+    await expect(brand.locator(".brand-title-mobile-logo-full")).toBeHidden();
+    await expect(brand.locator(".brand-title-mobile-logo-initials")).toBeVisible();
     await expect(page.locator(".mobile-page-brand-title")).toHaveText(
       `Volume ${wieldingVolume.numberLabel} · ${wieldingVolume.title}`,
     );
     await expect(page.locator(".site-nav .mobile-home-link")).toBeVisible();
+
+    await page.setViewportSize({ width: 500, height: 760 });
+    await expect(brand).toBeVisible();
+    await expect(brand.locator(".brand-title-mobile-logo-full")).toBeVisible();
+    await expect(brand.locator(".brand-title-mobile-logo-full")).toHaveText(
+      "Coherence Thesis",
+    );
+
+    await page.setViewportSize({ width: 390, height: 760 });
+    await expect(brand).toBeVisible();
+    await expect(brand.locator(".brand-title-mobile-logo-full")).toBeHidden();
+    await expect(brand.locator(".brand-title-mobile-logo-initials")).toBeVisible();
+    await expect(brand.locator(".brand-title-mobile-logo-initials")).toHaveText(
+      "CT",
+    );
+
+    await page.setViewportSize({ width: 350, height: 760 });
+    await expect(brand).toBeHidden();
+    await expect(page.locator(".mobile-page-brand")).toBeHidden();
     return;
   }
 
@@ -1960,8 +2046,10 @@ test("toolbar brand owns the active manuscript identity", async ({
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(wieldingVolume.href);
   await expect(brand).toBeVisible();
-  await expect(brand.locator(".brand-title-mobile-logo")).toHaveText(
-    "Coherence Thesis",
+  await expect(brand.locator(".brand-title-mobile-logo-full")).toBeHidden();
+  await expect(brand.locator(".brand-title-mobile-logo-initials")).toBeVisible();
+  await expect(brand.locator(".brand-title-mobile-logo-initials")).toHaveText(
+    "CT",
   );
   await expect(page.locator(".mobile-page-brand-title")).toHaveText(
     `Volume ${wieldingVolume.numberLabel} · ${wieldingVolume.title}`,
