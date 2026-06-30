@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { BookOpen, ListTree } from "lucide-react";
+import { ManuscriptTileRevealIsland } from "@/components/ManuscriptTileRevealIsland";
 import { catalog } from "@/lib/manuscript-data";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 
@@ -87,6 +88,7 @@ export default function Home() {
                 alt=""
                 width={512}
                 height={768}
+                priority={volume.order === 1}
                 sizes="(max-width: 720px) 92vw, (max-width: 1100px) 44vw, 31vw"
               />
               <span className="manuscript-card-panel" aria-hidden="true">
@@ -113,6 +115,7 @@ export default function Home() {
           );
         })}
       </section>
+      <ManuscriptTileRevealIsland />
     </div>
   );
 }

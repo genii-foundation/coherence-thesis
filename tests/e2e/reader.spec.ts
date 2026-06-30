@@ -323,6 +323,40 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
   await expect(page).toHaveURL(/\/manuscripts\/humanitys-most-viable-future\//);
 });
 
+test("homepage manuscript tiles reveal and show panels at the mobile grid breakpoint", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 720, height: 820 });
+  await page.goto("/");
+
+  const firstCard = page.locator(".manuscript-cover-card").first();
+  const firstPanel = firstCard.locator(".manuscript-card-panel");
+
+  const breakpointState = await page.evaluate(() => {
+    const showcase = document.querySelector(".manuscript-showcase");
+    const panel = document.querySelector(".manuscript-card-panel");
+    const columns = showcase
+      ? getComputedStyle(showcase).gridTemplateColumns.split(" ").length
+      : 0;
+    const panelStyle = panel ? getComputedStyle(panel) : null;
+
+    return {
+      columns,
+      panelOpacity: panelStyle?.opacity ?? "",
+      panelVisibility: panelStyle?.visibility ?? "",
+    };
+  });
+
+  expect(breakpointState.columns).toBe(2);
+  expect(breakpointState.panelOpacity).toBe("1");
+  expect(breakpointState.panelVisibility).toBe("visible");
+
+  await firstCard.scrollIntoViewIfNeeded();
+  await expect(firstCard).toHaveClass(/manuscript-cover-card-revealed/);
+  await expect(firstPanel).toBeVisible();
+  await expect(firstPanel.getByText(catalog.volumes[0]!.title)).toBeVisible();
+});
+
 test("overview references show local read checkmarks", async ({ page }) => {
   await page.addInitScript(
     ({ contentHash, key, sectionId }) => {

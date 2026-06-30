@@ -1444,6 +1444,7 @@ input {
 .manuscript-cover-card {
   --card-accent: #77542a;
   --card-rgb: 119 84 42;
+  --manuscript-reveal-delay: 0ms;
   position: relative;
   display: block;
   min-width: 0;
@@ -1463,6 +1464,34 @@ input {
     box-shadow 180ms ease,
     transform 180ms ease;
   will-change: transform;
+}
+
+.manuscript-showcase-reveal-ready .manuscript-cover-card {
+  opacity: 0;
+  transform: translateY(1.2rem) scale(0.965);
+}
+
+.manuscript-showcase-reveal-ready
+  .manuscript-cover-card.manuscript-cover-card-revealed {
+  animation: manuscript-tile-reveal 620ms cubic-bezier(0.18, 0.84, 0.28, 1)
+    var(--manuscript-reveal-delay) both;
+}
+
+@keyframes manuscript-tile-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(1.2rem) scale(0.965);
+  }
+
+  64% {
+    opacity: 1;
+    transform: translateY(-0.18rem) scale(1.012);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .manuscript-cover-card:hover,
@@ -3022,6 +3051,13 @@ input {
 
   .manuscript-showcase {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .manuscript-cover-card::after,
+  .manuscript-card-panel {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
   }
 
   .hero-copy h1 {
