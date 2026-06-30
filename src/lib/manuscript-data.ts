@@ -253,11 +253,14 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
     const part = partById(section.volumeId, section.partId);
     const chapter = chapterById(section.volumeId, section.partId, section.chapterId);
     if (!volume || !part || !chapter) continue;
-    addBreadcrumbRoute(routes, section.href, [
+    const crumbs = [
       { label: part.title, href: part.href },
-      { label: chapter.title, href: chapter.href },
       { label: section.title, href: section.href },
-    ]);
+    ];
+    if (!isSingletonChapterSection(chapter, section)) {
+      crumbs.splice(1, 0, { label: chapter.title, href: chapter.href });
+    }
+    addBreadcrumbRoute(routes, section.href, crumbs);
   }
 
   return [...routes.values()];
@@ -335,6 +338,17 @@ function navigationItem(item: NavigationItem): NavigationItem {
   };
 }
 
+function isSingletonChapterSection(chapter: Chapter, section: Section): boolean {
+  return chapter.sectionIds.length === 1 && chapter.sectionIds[0] === section.sectionId;
+}
+
+function sectionParentNavigationItem(section: Section): NavigationItem | undefined {
+  const part = partById(section.volumeId, section.partId);
+  const chapter = chapterById(section.volumeId, section.partId, section.chapterId);
+  if (!part || !chapter) return undefined;
+  return navigationItem(isSingletonChapterSection(chapter, section) ? part : chapter);
+}
+
 function siblingNavigation<T extends NavigationItem>(
   items: T[],
   currentHref: string,
@@ -389,13 +403,13 @@ export function chapterNavigation(
 }
 
 export function sectionNavigation(section: Section): PageNavigation | undefined {
-  const chapter = chapterById(section.volumeId, section.partId, section.chapterId);
-  if (!chapter) return undefined;
+  const parent = sectionParentNavigationItem(section);
+  if (!parent) return undefined;
   return {
     previous: section.previousSectionId
       ? sectionById(section.previousSectionId) ?? null
       : null,
-    parent: navigationItem(chapter),
+    parent,
     next: section.nextSectionId ? sectionById(section.nextSectionId) ?? null : null,
   };
 }

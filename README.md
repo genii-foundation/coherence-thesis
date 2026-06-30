@@ -50,10 +50,10 @@ Do not edit generated files by hand. Edit source Markdown or series metadata, th
 
 <!-- BEGIN:development-status -->
 
-Generated: 2026-06-29T03:01:48.343Z
+Generated: 2026-06-30T00:47:15.097Z
 
-- Branch: feat/reader-section-navigation
-- Revision: 39b6bd9
+- Branch: fix/singleton-section-navigation
+- Revision: 5e332f4
 - Working tree: local changes present
 - Next.js: 16.2.9
 - Manuscripts: 9 volume, 47 parts, 408 chapters, 566 sections
@@ -64,7 +64,7 @@ Generated: 2026-06-29T03:01:48.343Z
 Recent commits:
 
 ```text
-39b6bd9 feat: add reader section footer navigation
+5e332f4 feat: add reader section footer navigation (#10)
 23d2234 fix: refine responsive reader toolbar
 27b3b4e docs: standardize PR quality workflows
 d90913a docs: update feature preview workflow
