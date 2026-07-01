@@ -3233,7 +3233,7 @@ input {
   }
 
   .brand-mark {
-    flex-basis: min(44vw, 11rem);
+    flex-basis: auto;
   }
 
   .breadcrumb-trail {
@@ -3310,9 +3310,38 @@ input {
 }
 
 @media (max-width: 360px) {
-  .site-header > .brand-mark,
   .mobile-page-brand {
     display: none;
+  }
+
+  .site-header {
+    gap: 0.35rem;
+  }
+
+  .site-header > .brand-mark {
+    display: inline-flex;
+    flex: 0 0 auto;
+  }
+
+  .site-nav {
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    gap: 0.25rem;
+  }
+
+  .site-nav a,
+  .outline-menu-button,
+  .search-menu-button,
+  .share-menu-button,
+  .audio-menu-button,
+  .settings-menu-button,
+  .progress-menu-button {
+    min-height: 2.25rem;
+    width: 2.25rem;
+  }
+
+  .progress-menu-button {
+    height: 2.25rem;
   }
 }
 

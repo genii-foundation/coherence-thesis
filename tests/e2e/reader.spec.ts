@@ -2032,8 +2032,40 @@ test("toolbar brand owns the active manuscript identity", async ({
       "CT",
     );
 
-    await page.setViewportSize({ width: 350, height: 760 });
-    await expect(brand).toBeHidden();
+    await page.setViewportSize({ width: 320, height: 760 });
+    await expect(brand).toBeVisible();
+    await expect(brand.locator(".brand-title-mobile-logo-full")).toBeHidden();
+    await expect(brand.locator(".brand-title-mobile-logo-initials")).toBeVisible();
+    await expect(brand.locator(".brand-title-mobile-logo-initials")).toHaveText(
+      "CT",
+    );
+    const narrowToolbarMetrics = await page.evaluate(() => {
+      const brandBox = document
+        .querySelector(".site-header > .brand-mark")
+        ?.getBoundingClientRect();
+      const progressBox = document
+        .querySelector(".progress-menu-button")
+        ?.getBoundingClientRect();
+      const headerStyle = window.getComputedStyle(
+        document.querySelector(".site-header")!,
+      );
+
+      return {
+        brandWidth: brandBox?.width ?? 0,
+        progressRight: progressBox?.right ?? 0,
+        viewportWidth: document.documentElement.clientWidth,
+        headerPaddingRight: Number.parseFloat(headerStyle.paddingRight),
+        scrollWidth: document.documentElement.scrollWidth,
+      };
+    });
+    expect(narrowToolbarMetrics.brandWidth).toBeGreaterThan(28);
+    expect(narrowToolbarMetrics.brandWidth).toBeLessThan(56);
+    expect(narrowToolbarMetrics.scrollWidth).toBeLessThanOrEqual(
+      narrowToolbarMetrics.viewportWidth + 1,
+    );
+    expect(
+      narrowToolbarMetrics.viewportWidth - narrowToolbarMetrics.progressRight,
+    ).toBeLessThanOrEqual(narrowToolbarMetrics.headerPaddingRight + 2);
     await expect(page.locator(".mobile-page-brand")).toBeHidden();
     return;
   }
