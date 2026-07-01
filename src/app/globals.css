@@ -341,7 +341,7 @@ input {
   display: grid;
   gap: 0.15rem;
   min-width: 0;
-  max-width: clamp(13.25rem, 24vw, 21rem);
+  max-width: clamp(14.5rem, 24vw, 21rem);
   border-radius: var(--radius);
   padding: 0.25rem 0.35rem;
   text-decoration: none;

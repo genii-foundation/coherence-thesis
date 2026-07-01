@@ -213,6 +213,18 @@ test("home page presents the overview and manuscript entry points", async ({
   if (testInfo.project.name === "mobile") {
     await expect(page.locator(".hero-art")).toBeHidden();
   } else {
+    await page.setViewportSize({ width: 880, height: 900 });
+    const brandKickerFit = await page
+      .locator(".site-header .brand-kicker")
+      .evaluate((element) => ({
+        clientWidth: element.clientWidth,
+        scrollWidth: element.scrollWidth,
+        textOverflow: window.getComputedStyle(element).textOverflow,
+      }));
+    expect(brandKickerFit.textOverflow).not.toBe("ellipsis");
+    expect(brandKickerFit.clientWidth).toBeGreaterThanOrEqual(
+      brandKickerFit.scrollWidth,
+    );
     await expect(page.locator(".hero-art img")).toHaveAttribute(
       "src",
       "/art/coherence-thesis-hero.png",
