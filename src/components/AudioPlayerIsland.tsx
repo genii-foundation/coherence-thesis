@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Headphones, Pause, Play, Square } from "lucide-react";
+import { ChevronDown, Headphones, Pause, Play, Square } from "lucide-react";
 import {
   defaultVoicePreference,
   queueFromSections,

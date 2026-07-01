@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import PDFDocument from "pdfkit";
+import sharp from "sharp";
 import {
   cleanDir,
   ensureDir,
@@ -17,6 +18,7 @@ export const pdfManifestPath = path.join(publicDataRoot, "pdf-downloads.json");
 
 const sectionDownloadRoot = path.join(publicDownloadsRoot, "sections");
 const manuscriptDownloadRoot = path.join(publicDownloadsRoot, "manuscripts");
+const coverImageCache = new Map<string, Promise<Buffer>>();
 
 type PdfFonts = {
   regular: string;
@@ -31,6 +33,12 @@ type PdfBlock =
   | { kind: "table"; rows: string[][] }
   | { kind: "list"; items: string[] }
   | { kind: "paragraph"; text: string };
+
+type SectionRenderOptions = {
+  includeHierarchy?: boolean;
+  includeStats?: boolean;
+  headingSize?: number;
+};
 
 export type PdfDownloadManifest = {
   sections: Array<{
@@ -110,6 +118,32 @@ function outputPathFromHref(href: string): string {
   return path.join(repoRoot, "public", href.replace(/^\//, ""));
 }
 
+function publicPathFromHref(href: string): string {
+  return path.join(repoRoot, "public", href.replace(/^\//, ""));
+}
+
+async function pdfCoverImage(coverPath: string): Promise<Buffer | null> {
+  if (!fs.existsSync(coverPath) || !fs.statSync(coverPath).isFile()) {
+    return null;
+  }
+
+  let cachedCover = coverImageCache.get(coverPath);
+  if (!cachedCover) {
+    cachedCover = sharp(coverPath)
+      .resize({
+        fit: "inside",
+        height: 1320,
+        width: 880,
+        withoutEnlargement: true,
+      })
+      .jpeg({ mozjpeg: true, quality: 86 })
+      .toBuffer();
+    coverImageCache.set(coverPath, cachedCover);
+  }
+
+  return cachedCover;
+}
+
 function plainInline(markdown: string): string {
   return markdown
     .replace(/!\[([^\]]*)]\([^)]*\)/g, "$1")
@@ -184,20 +218,52 @@ function parseMarkdownBlocks(markdown: string): PdfBlock[] {
     });
 }
 
-function addFooter(doc: PDFKit.PDFDocument, label: string, fonts: PdfFonts): void {
+function paintPage(doc: PDFKit.PDFDocument): void {
+  doc.save();
+  doc.rect(0, 0, doc.page.width, doc.page.height).fill("#fbf7ef");
+  doc.restore();
+}
+
+function contentBottom(doc: PDFKit.PDFDocument): number {
+  return doc.page.height - doc.page.margins.bottom;
+}
+
+function ensureSpace(doc: PDFKit.PDFDocument, points: number): void {
+  if (doc.y + points > contentBottom(doc)) {
+    doc.addPage();
+  }
+}
+
+function addFooter(
+  doc: PDFKit.PDFDocument,
+  label: string,
+  fonts: PdfFonts,
+  startPage = 0,
+): void {
   const pageCount = doc.bufferedPageRange().count;
-  for (let index = 0; index < pageCount; index += 1) {
+  const printedPageCount = Math.max(pageCount - startPage, 0);
+  for (let index = startPage; index < pageCount; index += 1) {
     doc.switchToPage(index);
-    const pageNumber = index + 1;
+    const pageNumber = index - startPage + 1;
     const bottom = doc.page.height - 46;
+    const pageNumberText = `${pageNumber.toLocaleString()} of ${printedPageCount.toLocaleString()}`;
+    doc.save();
     doc
       .font(fonts.regular)
       .fontSize(8)
       .fillColor("#7b6b5a")
-      .text(label, 72, bottom, { continued: true, width: 320 })
-      .text(`${pageNumber.toLocaleString()} of ${pageCount.toLocaleString()}`, {
+      .text(label, 72, bottom, {
+        height: 12,
+        lineBreak: false,
+        width: 300,
+      })
+      .text(pageNumberText, doc.page.width - 190, bottom, {
         align: "right",
+        height: 12,
+        lineBreak: false,
+        width: 118,
       });
+    doc.restore();
   }
 }
 
@@ -208,6 +274,7 @@ function renderBlock(
 ): void {
   if (block.kind === "heading") {
     const size = block.level === 1 ? 20 : block.level === 2 ? 16 : 13;
+    ensureSpace(doc, size * 3.2);
     doc
       .moveDown(block.level === 1 ? 1 : 0.65)
       .font(fonts.bold)
@@ -219,6 +286,7 @@ function renderBlock(
   }
 
   if (block.kind === "quote") {
+    ensureSpace(doc, 54);
     doc
       .moveDown(0.25)
       .font(fonts.italic)
@@ -230,6 +298,7 @@ function renderBlock(
   }
 
   if (block.kind === "table") {
+    ensureSpace(doc, 70);
     doc.moveDown(0.35).font(fonts.mono).fontSize(8.5).fillColor("#2c1f12");
     for (const row of block.rows) {
       doc.text(row.join("  |  "), { lineGap: 2 });
@@ -239,6 +308,7 @@ function renderBlock(
   }
 
   if (block.kind === "list") {
+    ensureSpace(doc, 62);
     doc.moveDown(0.2).font(fonts.regular).fontSize(11.5).fillColor("#2c1f12");
     for (const item of block.items) {
       doc.text(`- ${item}`, { indent: 12, lineGap: 3 });
@@ -247,6 +317,7 @@ function renderBlock(
     return;
   }
 
+  ensureSpace(doc, 46);
   doc
     .font(fonts.regular)
     .fontSize(11.5)
@@ -259,7 +330,8 @@ async function writePdf(
   filePath: string,
   title: string,
   label: string,
-  render: (doc: PDFKit.PDFDocument, fonts: PdfFonts) => void,
+  footerStartPage: number,
+  render: (doc: PDFKit.PDFDocument, fonts: PdfFonts) => void | Promise<void>,
 ): Promise<void> {
   ensureDir(path.dirname(filePath));
   await new Promise<void>((resolve, reject) => {
@@ -280,19 +352,155 @@ async function writePdf(
     doc.on("error", reject);
     doc.pipe(stream);
     const fonts = registerFonts(doc);
+    doc.on("pageAdded", () => paintPage(doc));
     doc.addPage();
-    render(doc, fonts);
-    addFooter(doc, label, fonts);
-    doc.end();
+    paintPage(doc);
+    void (async () => {
+      try {
+        await render(doc, fonts);
+        addFooter(doc, label, fonts, footerStartPage);
+        doc.end();
+      } catch (error) {
+        reject(error);
+      }
+    })();
   });
+}
+
+async function renderCoverPage(
+  doc: PDFKit.PDFDocument,
+  volume: CompiledVolume,
+  fonts: PdfFonts,
+): Promise<void> {
+  doc.save();
+  doc.rect(0, 0, doc.page.width, doc.page.height).fill("#17110c");
+
+  const coverPath = publicPathFromHref(volume.coverImage);
+  const coverImage = await pdfCoverImage(coverPath);
+  if (coverImage) {
+    doc.image(coverImage, 0, 0, {
+      align: "center",
+      fit: [doc.page.width, doc.page.height],
+      valign: "center",
+    });
+  } else {
+    doc
+      .font(fonts.regular)
+      .fontSize(10)
+      .fillColor("#d9c3a3")
+      .text("THE COHERENCE THESIS", 72, 190, {
+        align: "center",
+        characterSpacing: 1.2,
+        width: doc.page.width - 144,
+      });
+    doc
+      .moveDown(0.9)
+      .font(fonts.bold)
+      .fontSize(34)
+      .fillColor("#fbf7ef")
+      .text(volume.title, {
+        align: "center",
+        lineGap: 4,
+        width: doc.page.width - 144,
+      });
+    if (volume.subtitle) {
+      doc
+        .moveDown(0.8)
+        .font(fonts.italic)
+        .fontSize(15)
+        .fillColor("#d9c3a3")
+        .text(volume.subtitle, {
+          align: "center",
+          lineGap: 3,
+          width: doc.page.width - 144,
+        });
+    }
+  }
+
+  doc.restore();
+}
+
+function renderDocumentTitle(
+  doc: PDFKit.PDFDocument,
+  volume: CompiledVolume,
+  fonts: PdfFonts,
+  detail: string,
+): void {
+  doc
+    .font(fonts.regular)
+    .fontSize(10)
+    .fillColor("#7b6b5a")
+    .text(`VOLUME ${volume.numberLabel}`, { characterSpacing: 0.5 });
+  doc.moveDown(0.35);
+  doc
+    .font(fonts.bold)
+    .fontSize(28)
+    .fillColor("#2c1f12")
+    .text(volume.title, { lineGap: 2 });
+  if (volume.subtitle) {
+    doc.moveDown(0.35).font(fonts.italic).fontSize(14).text(volume.subtitle);
+  }
+  doc
+    .moveDown(0.8)
+    .font(fonts.regular)
+    .fontSize(10)
+    .fillColor("#7b6b5a")
+    .text(detail);
+  doc
+    .moveDown(1.2)
+    .strokeColor("#b08a5f")
+    .lineWidth(0.8)
+    .moveTo(72, doc.y)
+    .lineTo(doc.page.width - 72, doc.y)
+    .stroke();
+  doc.moveDown(1.2);
+}
+
+function renderContents(
+  doc: PDFKit.PDFDocument,
+  volume: CompiledVolume,
+  fonts: PdfFonts,
+): void {
+  ensureSpace(doc, 96);
+  doc
+    .font(fonts.bold)
+    .fontSize(13)
+    .fillColor("#2c1f12")
+    .text("Contents");
+  doc.moveDown(0.45);
+
+  for (const part of volume.parts) {
+    ensureSpace(doc, 42);
+    doc
+      .font(fonts.bold)
+      .fontSize(9.5)
+      .fillColor("#4b3928")
+      .text(part.title, { lineGap: 1.5 });
+    const chapters = part.chapters.filter((chapter) => chapter.title !== part.title);
+    for (const chapter of chapters) {
+      ensureSpace(doc, 24);
+      doc
+        .font(fonts.regular)
+        .fontSize(8.5)
+        .fillColor("#7b6b5a")
+        .text(chapter.title, { indent: 14, lineGap: 1.25 });
+    }
+    doc.moveDown(0.35);
+  }
+  doc.moveDown(0.8);
 }
 
 function renderSection(
   doc: PDFKit.PDFDocument,
   section: CompiledSection,
   fonts: PdfFonts,
-  includeHierarchy = true,
+  options: SectionRenderOptions = {},
 ): void {
+  const includeHierarchy = options.includeHierarchy ?? true;
+  const includeStats = options.includeStats ?? true;
+  const headingSize = options.headingSize ?? (includeHierarchy ? 23 : 18);
+
+  ensureSpace(doc, includeHierarchy ? 120 : 82);
   doc.font(fonts.regular).fontSize(10).fillColor("#7b6b5a");
   if (includeHierarchy) {
     doc.text(section.volumeTitle.toUpperCase(), { characterSpacing: 0.5 });
@@ -300,24 +508,69 @@ function renderSection(
   }
   doc
     .font(fonts.bold)
-    .fontSize(includeHierarchy ? 23 : 18)
+    .fontSize(headingSize)
     .fillColor("#2c1f12")
     .text(section.title, { lineGap: 2 });
-  doc.moveDown(0.35);
-  doc
-    .font(fonts.regular)
-    .fontSize(9.5)
-    .fillColor("#7b6b5a")
-    .text(
-      `${section.wordCount.toLocaleString()} words, about ${section.readingMinutes.toLocaleString()} minute${
-        section.readingMinutes === 1 ? "" : "s"
-      }.`,
-    );
+  if (includeStats) {
+    doc.moveDown(0.35);
+    doc
+      .font(fonts.regular)
+      .fontSize(9.5)
+      .fillColor("#7b6b5a")
+      .text(
+        `${section.wordCount.toLocaleString()} words, about ${section.readingMinutes.toLocaleString()} minute${
+          section.readingMinutes === 1 ? "" : "s"
+        }.`,
+      );
+  }
   doc.moveDown(1);
 
   for (const block of parseMarkdownBlocks(section.body)) {
     renderBlock(doc, block, fonts);
   }
+}
+
+function renderPartHeading(
+  doc: PDFKit.PDFDocument,
+  title: string,
+  fonts: PdfFonts,
+): void {
+  ensureSpace(doc, 116);
+  doc.moveDown(1.3);
+  doc
+    .font(fonts.regular)
+    .fontSize(9)
+    .fillColor("#8a6a48")
+    .text("PART", { characterSpacing: 1.2 });
+  doc.moveDown(0.25);
+  doc
+    .font(fonts.bold)
+    .fontSize(22)
+    .fillColor("#2c1f12")
+    .text(title, { lineGap: 2 });
+  doc
+    .moveDown(0.6)
+    .strokeColor("#b08a5f")
+    .lineWidth(0.6)
+    .moveTo(72, doc.y)
+    .lineTo(doc.page.width - 72, doc.y)
+    .stroke();
+  doc.moveDown(0.9);
+}
+
+function renderChapterHeading(
+  doc: PDFKit.PDFDocument,
+  title: string,
+  fonts: PdfFonts,
+): void {
+  ensureSpace(doc, 72);
+  doc.moveDown(0.7);
+  doc
+    .font(fonts.bold)
+    .fontSize(14)
+    .fillColor("#4b3928")
+    .text(title, { lineGap: 2 });
+  doc.moveDown(0.35);
 }
 
 function volumeContentHash(volume: CompiledVolume, sections: CompiledSection[]): string {
@@ -329,13 +582,65 @@ function volumeContentHash(volume: CompiledVolume, sections: CompiledSection[]):
   ).slice(0, 16);
 }
 
-async function writeSectionPdf(section: CompiledSection): Promise<void> {
+async function writeSectionPdf(
+  section: CompiledSection,
+  volume: CompiledVolume | undefined,
+): Promise<void> {
   await writePdf(
     outputPathFromHref(sectionPdfHref(section.sectionId)),
     section.title,
     section.title,
-    (doc, fonts) => renderSection(doc, section, fonts),
+    1,
+    async (doc, fonts) => {
+      if (volume) {
+        await renderCoverPage(doc, volume, fonts);
+        doc.addPage();
+        renderDocumentTitle(
+          doc,
+          volume,
+          fonts,
+          `${section.wordCount.toLocaleString()} words, about ${section.readingMinutes.toLocaleString()} minute${
+            section.readingMinutes === 1 ? "" : "s"
+          }.`,
+        );
+      }
+      renderSection(doc, section, fonts, {
+        headingSize: 22,
+        includeHierarchy: !volume,
+        includeStats: false,
+      });
+    },
   );
+}
+
+function buildVolumeLookup(
+  sections: CompiledSection[],
+  volumes: CompiledVolume[] = [],
+): Map<string, CompiledVolume> {
+  const lookup = new Map<string, CompiledVolume>();
+  for (const volume of volumes) {
+    lookup.set(volume.volumeId, volume);
+  }
+
+  for (const section of sections) {
+    if (lookup.has(section.volumeId)) continue;
+    lookup.set(section.volumeId, {
+      coverAlt: "",
+      coverImage: "",
+      href: `/manuscripts/${section.volumeId}/`,
+      numberLabel: String(section.volumeOrder),
+      order: section.volumeOrder,
+      parts: [],
+      planet: "",
+      sectionIds: [],
+      subtitle: "",
+      title: section.volumeTitle,
+      volumeId: section.volumeId,
+      wordCount: section.wordCount,
+    });
+  }
+
+  return lookup;
 }
 
 async function writeManuscriptPdf(
@@ -347,37 +652,45 @@ async function writeManuscriptPdf(
     outputPathFromHref(manuscriptPdfHref(volume.volumeId)),
     volume.title,
     volume.title,
-    (doc, fonts) => {
-      doc
-        .font(fonts.regular)
-        .fontSize(10)
-        .fillColor("#7b6b5a")
-        .text(volume.numberLabel.toUpperCase(), { characterSpacing: 0.5 });
-      doc.moveDown(0.35);
-      doc
-        .font(fonts.bold)
-        .fontSize(28)
-        .fillColor("#2c1f12")
-        .text(volume.title, { lineGap: 2 });
-      if (volume.subtitle) {
-        doc.moveDown(0.3).font(fonts.italic).fontSize(14).text(volume.subtitle);
-      }
-      doc
-        .moveDown(0.7)
-        .font(fonts.regular)
-        .fontSize(10)
-        .fillColor("#7b6b5a")
-        .text(
-          `${volume.wordCount.toLocaleString()} words across ${volumeSections.length.toLocaleString()} sections.`,
-        );
+    1,
+    async (doc, fonts) => {
+      await renderCoverPage(doc, volume, fonts);
+      doc.addPage();
+      renderDocumentTitle(
+        doc,
+        volume,
+        fonts,
+        `${volume.wordCount.toLocaleString()} words across ${volumeSections.length.toLocaleString()} sections.`,
+      );
+      renderContents(doc, volume, fonts);
 
-      volumeSections.forEach((section, index) => {
-        doc.addPage();
-        renderSection(doc, section, fonts, false);
-        if (index < volumeSections.length - 1) {
-          doc.moveDown(0.5);
+      let previousPartId: string | null = null;
+      let previousChapterId: string | null = null;
+      for (const section of volumeSections) {
+        if (section.partId !== previousPartId) {
+          renderPartHeading(doc, section.partTitle, fonts);
+          previousPartId = section.partId;
+          previousChapterId = null;
         }
-      });
+
+        if (
+          section.chapterId !== previousChapterId &&
+          section.chapterTitle !== section.partTitle &&
+          section.chapterTitle !== section.title
+        ) {
+          renderChapterHeading(doc, section.chapterTitle, fonts);
+          previousChapterId = section.chapterId;
+        } else if (section.chapterId !== previousChapterId) {
+          previousChapterId = section.chapterId;
+        }
+
+        renderSection(doc, section, fonts, {
+          headingSize: 15,
+          includeHierarchy: false,
+          includeStats: false,
+        });
+        doc.moveDown(0.65);
+      }
     },
   );
 }
@@ -389,8 +702,10 @@ export async function buildPdfDownloads(
   ensureDir(sectionDownloadRoot);
   ensureDir(manuscriptDownloadRoot);
 
+  const volumesById = buildVolumeLookup(catalog.sections, catalog.volumes);
+
   for (const section of catalog.sections) {
-    await writeSectionPdf(section);
+    await writeSectionPdf(section, volumesById.get(section.volumeId));
   }
 
   for (const volume of catalog.volumes) {

@@ -50,10 +50,10 @@ Do not edit generated files by hand. Edit source Markdown or series metadata, th
 
 <!-- BEGIN:development-status -->
 
-Generated: 2026-06-30T04:14:17.103Z
+Generated: 2026-07-01T01:32:50.198Z
 
-- Branch: fix/redundant-manuscript-routes
-- Revision: fe6e647
+- Branch: fix/pdf-download-experience
+- Revision: c1e3280
 - Working tree: local changes present
 - Next.js: 16.2.9
 - Manuscripts: 9 volume, 47 parts, 408 chapters, 566 sections
@@ -64,11 +64,11 @@ Generated: 2026-06-30T04:14:17.103Z
 Recent commits:
 
 ```text
+c1e3280 fix: stabilize audio listen button width
+f5a6e2b fix: remove redundant manuscript route segments
 fe6e647 feat: refine reader design system
 a43b6dd feat: add reader PDF sharing menu
 7449fc8 fix: match browser toolbar color
-32f59fe fix: correct singleton section navigation (#16)
-5e332f4 feat: add reader section footer navigation (#10)
 ```
 
 <!-- END:development-status -->

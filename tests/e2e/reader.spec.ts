@@ -5,6 +5,9 @@ import { readerProgressStorageKey } from "../../src/lib/reader-state";
 import { formatReadingDurationForWords } from "../../src/lib/reading-time";
 
 const firstSection = catalog.sections[0];
+const firstSectionVolume = catalog.volumes.find(
+  (volume) => volume.volumeId === firstSection.volumeId,
+)!;
 const firstSectionVersionDate = new Intl.DateTimeFormat("en-US", {
   month: "long",
   day: "numeric",
@@ -121,6 +124,18 @@ function hexToRgb(hex: string): string {
   const blue = value & 255;
 
   return `rgb(${red}, ${green}, ${blue})`;
+}
+
+function pdfObjectCount(bytes: Buffer, pattern: RegExp): number {
+  return (bytes.toString("latin1").match(pattern) ?? []).length;
+}
+
+function pdfPageCount(bytes: Buffer): number {
+  return pdfObjectCount(bytes, /^\/Type \/Page$/gm);
+}
+
+function pdfImageCount(bytes: Buffer): number {
+  return pdfObjectCount(bytes, /^\/Subtype \/Image$/gm);
 }
 
 test("home page presents the overview and manuscript entry points", async ({
@@ -892,9 +907,20 @@ test("reader share menu exposes page sharing and PDF downloads", async ({ page }
   const sectionPdfResponse = await page.request.get(sectionPdfHref);
   expect(sectionPdfResponse.ok()).toBe(true);
   expect(sectionPdfResponse.headers()["content-type"]).toContain("application/pdf");
+  const sectionPdfBytes = await sectionPdfResponse.body();
+  expect(pdfPageCount(sectionPdfBytes)).toBeGreaterThanOrEqual(2);
+  expect(pdfPageCount(sectionPdfBytes)).toBeLessThanOrEqual(4);
+  expect(pdfImageCount(sectionPdfBytes)).toBeGreaterThanOrEqual(1);
+  expect(sectionPdfBytes.byteLength).toBeLessThan(450_000);
   const manuscriptPdfResponse = await page.request.get(manuscriptPdfHref);
   expect(manuscriptPdfResponse.ok()).toBe(true);
   expect(manuscriptPdfResponse.headers()["content-type"]).toContain("application/pdf");
+  const manuscriptPdfBytes = await manuscriptPdfResponse.body();
+  const manuscriptPageCount = pdfPageCount(manuscriptPdfBytes);
+  expect(manuscriptPageCount).toBeGreaterThan(2);
+  expect(manuscriptPageCount).toBeLessThan(firstSectionVolume.sectionIds.length);
+  expect(pdfImageCount(manuscriptPdfBytes)).toBeGreaterThanOrEqual(1);
+  expect(manuscriptPdfBytes.byteLength).toBeLessThan(700_000);
 
   await shareMenu.getByRole("button", { name: "Share this page" }).click();
   await expect(shareMenu.getByRole("status")).toHaveText("Shared");
