@@ -137,6 +137,12 @@ export function ToolbarBrandIsland({ volumes }: { volumes: BrandVolume[] }) {
     >
       <span className="brand-kicker">{kicker}</span>
       <span className="brand-title">
+        <span className="brand-title-mobile-logo" aria-hidden="true">
+          <span className="brand-title-mobile-logo-full">
+            Coherence Thesis
+          </span>
+          <span className="brand-title-mobile-logo-initials">CT</span>
+        </span>
         <span className="brand-title-full">{title}</span>
         {mobileTitle ? (
           <span className="brand-title-mobile" aria-hidden="true">

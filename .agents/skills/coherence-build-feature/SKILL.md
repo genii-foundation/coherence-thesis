@@ -33,16 +33,17 @@ Implement a complete feature or fix in the Coherence Thesis repository, validate
    - `npm run test` after pure TypeScript or state helper changes
    - `npm run test:e2e:fast:desktop` for narrow desktop UI checks while iterating
    - `npm run test:e2e:fast` after reader navigation, toolbar, progress, audio, or responsive UI changes while iterating
-10. Run `npm run readme:update` when stats, package metadata, recent commits, generated catalog state, or development status changed.
-11. Launch a local development preview from the feature worktree on a fresh random port after the feature is implemented. Do this even when another preview is already running. For visible UI work, do not open or update the pull request until the preview is running, unless the user explicitly says not to launch one.
-12. Run `npm run validate` before committing.
-13. If the change affects browser behavior, run `npm run test:e2e` before committing unless the user explicitly narrows the validation target.
-14. Review the final diff before staging. Confirm the diff is focused, generated files are expected, no debug logs or temporary files remain, and unrelated local changes are left alone.
-15. Stage the complete feature, commit with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user requested a direct main change, commit directly on `main` and do not open a pull request unless asked.
-16. As soon as the preview is ready, send the exact URL as a Markdown link in a user-visible update.
-17. Ask the user whether they are ready to publish or what follow-on revisions are needed. Do not merge, publish, or mark the pull request ready for merge until the user explicitly confirms that the preview looks good.
-18. If the user requests revisions after preview review, implement them on the same focused branch, validate again, push the update, and ask for preview approval again.
-19. After the user explicitly confirms the preview looks good and asks to publish or merge, complete the publish or merge workflow.
+10. If multiple user revisions are queued, implement all clear queued tasks on the same focused branch before running the deepest validation pass. Use focused checks during the queue only when they answer a specific implementation question. Run `npm run validate` and `npm run test:e2e` once after the queue is empty unless the user explicitly narrows validation.
+11. Run `npm run readme:update` when stats, package metadata, recent commits, generated catalog state, or development status changed.
+12. Launch a local development preview from the feature worktree on a fresh random port after the feature is implemented. Do this even when another preview is already running. For visible UI work, do not open or update the pull request until the preview is running, unless the user explicitly says not to launch one.
+13. Run `npm run validate` before committing.
+14. If the change affects browser behavior, run `npm run test:e2e` before committing unless the user explicitly narrows the validation target.
+15. Review the final diff before staging. Confirm the diff is focused, generated files are expected, no debug logs or temporary files remain, and unrelated local changes are left alone.
+16. Stage the complete feature, commit with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user requested a direct main change, commit directly on `main` and do not open a pull request unless asked.
+17. As soon as the preview is ready, send the exact URL as a Markdown link in a user-visible update.
+18. Ask the user whether they are ready to publish or what follow-on revisions are needed. Do not merge, publish, or mark the pull request ready for merge until the user explicitly confirms that the preview looks good.
+19. If the user requests revisions after preview review, implement them on the same focused branch, validate again, push the update, and ask for preview approval again.
+20. After the user explicitly confirms the preview looks good and asks to publish or merge, complete the publish or merge workflow.
 
 ## Preview
 
@@ -50,10 +51,10 @@ Use a local development preview when the user should inspect the feature or iter
 
 ```bash
 PORT=$(node -e "const net=require('node:net');const server=net.createServer();server.listen(0,'127.0.0.1',()=>{console.log(server.address().port);server.close();});")
-npm run dev -- --hostname 127.0.0.1 --port "$PORT"
+npm run preview:dev -- --hostname 127.0.0.1 --port "$PORT"
 ```
 
-The preview URL is `http://127.0.0.1:$PORT`. Keep the preview process running for the user, open the URL in a browser when requested, and include the exact URL in closeout and pull request preview section. Do not ship a visible UI pull request whose preview section says the preview was not launched. Use the static preview only for final publish verification or when the user specifically asks for a production build preview:
+The preview URL is `http://127.0.0.1:$PORT`. Keep the preview process running for the user, open the URL in a browser when requested, and include the exact URL in closeout and pull request preview section. Check the preview process with `npm run preview:dev:status -- --port "$PORT"` before closeout. Stop it with `npm run preview:dev:stop -- --port "$PORT"` only when the worktree is being removed or the user asks to shut it down. Do not ship a visible UI pull request whose preview section says the preview was not launched. Use the static preview only for final publish verification or when the user specifically asks for a production build preview:
 
 ```bash
 npm run build

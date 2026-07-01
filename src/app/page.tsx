@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { BookOpen, ListTree } from "lucide-react";
+import { ManuscriptTileRevealIsland } from "@/components/ManuscriptTileRevealIsland";
 import { catalog } from "@/lib/manuscript-data";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 
@@ -16,18 +17,24 @@ const manuscriptTags: Record<string, string[]> = {
   "cardinal-scale": ["Iconic patterning", "Cardinal orientation"],
 };
 
+const planetSymbols: Record<string, string> = {
+  Jupiter: "♃",
+  Mars: "♂",
+  Mercury: "☿",
+  Moon: "☽",
+  Neptune: "♆",
+  Saturn: "♄",
+  Sun: "☉",
+  Uranus: "♅",
+  Venus: "♀",
+};
+
 export default function Home() {
   return (
     <div className="home-page">
       <section className="hero-section">
         <div className="hero-copy">
-          <p className="eyebrow">Nine volume series</p>
-          <h1>The Coherence Thesis</h1>
-          <p className="hero-deck">
-            A living manuscript body on coherence, intelligence, coordination,
-            human potential, and the future institutions required for a civilization
-            worth inheriting.
-          </p>
+          <h1>Nine-volume series: a living manuscript body on coherence.</h1>
           <div className="hero-actions">
             <Link className="primary-link" href="/overview/">
               <ListTree aria-hidden="true" size={18} />
@@ -75,11 +82,8 @@ export default function Home() {
         aria-label="Published manuscripts"
       >
         {catalog.volumes.map((volume) => {
-          const chapterCount = volume.parts.reduce(
-            (total, part) => total + part.chapters.length,
-            0,
-          );
           const tags = manuscriptTags[volume.volumeId] ?? [volume.planet];
+          const planetSymbol = planetSymbols[volume.planet] ?? "";
 
           return (
             <Link
@@ -93,23 +97,27 @@ export default function Home() {
                 alt=""
                 width={512}
                 height={768}
+                priority={volume.order === 1}
                 sizes="(max-width: 720px) 92vw, (max-width: 1100px) 44vw, 31vw"
               />
               <span className="manuscript-card-panel" aria-hidden="true">
                 <span className="manuscript-card-kicker">
                   Volume {volume.numberLabel}
                 </span>
+                {planetSymbol ? (
+                  <span
+                    className="manuscript-card-symbol"
+                    aria-label={volume.planet}
+                  >
+                    {planetSymbol}
+                  </span>
+                ) : null}
                 <strong>{volume.title}</strong>
                 <span className="manuscript-card-description">
                   {volume.subtitle}
                 </span>
-                <span className="manuscript-card-stats">
-                  <span>{formatReadingDurationForWords(volume.wordCount)}</span>
-                  <span>{volume.parts.length.toLocaleString()} parts</span>
-                  <span>{chapterCount.toLocaleString()} chapters</span>
-                </span>
                 <span className="manuscript-card-tags">
-                  <span>{volume.planet}</span>
+                  <span>{formatReadingDurationForWords(volume.wordCount)}</span>
                   {tags.map((tag) => (
                     <span key={tag}>{tag}</span>
                   ))}
@@ -119,6 +127,7 @@ export default function Home() {
           );
         })}
       </section>
+      <ManuscriptTileRevealIsland />
     </div>
   );
 }

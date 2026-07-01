@@ -42,6 +42,9 @@ export function ToolbarShareIsland() {
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<ShareStatus>("idle");
   const [downloads, setDownloads] = useState<PdfDownloadManifest | null>(null);
+  const [actionablePdfHrefs, setActionablePdfHrefs] = useState<Set<string>>(
+    new Set(),
+  );
 
   const currentSection = useMemo(() => {
     const currentPath = normalizePath(pathname);
@@ -53,6 +56,13 @@ export function ToolbarShareIsland() {
     if (!volumeId) return null;
     return downloads?.manuscripts.find((manuscript) => manuscript.volumeId === volumeId) ?? null;
   }, [currentSection, downloads, pathname]);
+
+  const downloadCandidates = useMemo(() => {
+    const hrefs = [currentSection?.pdfHref, currentVolume?.pdfHref].filter(
+      (href): href is string => Boolean(href),
+    );
+    return [...new Set(hrefs)];
+  }, [currentSection?.pdfHref, currentVolume?.pdfHref]);
 
   useEffect(() => {
     let mounted = true;
@@ -75,6 +85,32 @@ export function ToolbarShareIsland() {
     }, 0);
     return () => window.clearTimeout(closeTimer);
   }, [pathname]);
+
+  useEffect(() => {
+    let mounted = true;
+
+    if (downloadCandidates.length === 0) return;
+
+    Promise.all(
+      downloadCandidates.map(async (href) => {
+        try {
+          const response = await fetch(href, { method: "HEAD" });
+          return response.ok ? href : null;
+        } catch {
+          return null;
+        }
+      }),
+    ).then((hrefs) => {
+      if (!mounted) return;
+      setActionablePdfHrefs(
+        new Set(hrefs.filter((href): href is string => Boolean(href))),
+      );
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, [downloadCandidates]);
 
   useEffect(() => {
     if (!open) return;
@@ -123,8 +159,14 @@ export function ToolbarShareIsland() {
   }
 
   const visibleStatus = statusLabel(status);
-  const sectionDownload = currentSection as PdfDownloadSection | null;
-  const manuscriptDownload = currentVolume as PdfDownloadManuscript | null;
+  const sectionDownload =
+    currentSection && actionablePdfHrefs.has(currentSection.pdfHref)
+      ? (currentSection as PdfDownloadSection)
+      : null;
+  const manuscriptDownload =
+    currentVolume && actionablePdfHrefs.has(currentVolume.pdfHref)
+      ? (currentVolume as PdfDownloadManuscript)
+      : null;
 
   return (
     <div className="share-menu" ref={containerRef}>
@@ -149,7 +191,7 @@ export function ToolbarShareIsland() {
             <Link aria-hidden="true" size={16} />
             <span className="share-action-label">Share this page</span>
           </button>
-          {sectionDownload && (
+          {sectionDownload?.pdfHref ? (
             <a
               className="share-action"
               href={sectionDownload.pdfHref}
@@ -160,7 +202,7 @@ export function ToolbarShareIsland() {
               <span className="share-action-label">Download this section</span>
               <Download aria-hidden="true" size={15} />
             </a>
-          )}
+          ) : null}
           {manuscriptDownload?.pdfHref ? (
             <a
               className="share-action"
@@ -172,12 +214,7 @@ export function ToolbarShareIsland() {
               <span className="share-action-label">Download full manuscript</span>
               <Download aria-hidden="true" size={15} />
             </a>
-          ) : (
-            <button type="button" className="share-action" disabled>
-              <BookOpen aria-hidden="true" size={16} />
-              <span className="share-action-label">Download full manuscript</span>
-            </button>
-          )}
+          ) : null}
           {visibleStatus && (
             <p className="share-status" role="status">
               <Check aria-hidden="true" size={15} />
