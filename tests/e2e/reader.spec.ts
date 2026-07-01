@@ -544,12 +544,14 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   const searchButton = page.getByRole("button", { name: "Search manuscripts" });
   const outlineButton = page.getByRole("button", { name: /Outline/ });
   const settingsButton = page.getByRole("button", { name: "Reader settings" });
+  const shareButton = page.getByRole("button", { name: "Share and downloads" });
   const audioButton = page.getByRole("button", { name: /Listen/ });
   const progressButton = page.getByRole("button", { name: /Progress/ });
   await expect(page.locator(".site-nav .mobile-home-link")).toHaveCount(0);
   await expect(searchButton).toBeVisible();
   await expect(outlineButton).toBeVisible();
   await expect(settingsButton).toBeVisible();
+  await expect(shareButton).toBeVisible();
   await expect(audioButton).toBeVisible();
   await expect(progressButton).toBeVisible();
 
@@ -565,6 +567,9 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       ?.getBoundingClientRect();
     const settings = document
       .querySelector(".settings-menu-button")
+      ?.getBoundingClientRect();
+    const share = document
+      .querySelector(".share-menu-button")
       ?.getBoundingClientRect();
     const audio = document
       .querySelector(".audio-menu-button")
@@ -659,11 +664,13 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       searchLeft: search?.left ?? 0,
       settingsLeft: settings?.left ?? 0,
       outlineLeft: outline?.left ?? 0,
+      shareLeft: share?.left ?? 0,
       audioLeft: audio?.left ?? 0,
       progressLeft: progress?.left ?? 0,
       searchWidth: search?.width ?? 0,
       outlineWidth: outline?.width ?? 0,
       settingsWidth: settings?.width ?? 0,
+      shareWidth: share?.width ?? 0,
       audioWidth: audio?.width ?? 0,
       progressWidth: progress?.width ?? 0,
       progressLabelWidth: progressLabel?.getBoundingClientRect().width ?? 0,
@@ -737,9 +744,10 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       toolbarMetrics.pageHeadingTop,
     );
   }
-  expect(toolbarMetrics.searchLeft).toBeLessThan(toolbarMetrics.settingsLeft);
-  expect(toolbarMetrics.settingsLeft).toBeLessThan(toolbarMetrics.outlineLeft);
-  expect(toolbarMetrics.outlineLeft).toBeLessThan(toolbarMetrics.audioLeft);
+  expect(toolbarMetrics.searchLeft).toBeLessThan(toolbarMetrics.outlineLeft);
+  expect(toolbarMetrics.outlineLeft).toBeLessThan(toolbarMetrics.settingsLeft);
+  expect(toolbarMetrics.settingsLeft).toBeLessThan(toolbarMetrics.shareLeft);
+  expect(toolbarMetrics.shareLeft).toBeLessThan(toolbarMetrics.audioLeft);
   expect(toolbarMetrics.audioLeft).toBeLessThan(toolbarMetrics.progressLeft);
   if (layout.clientWidth <= 860) {
     const toolbarRightGap =
@@ -754,6 +762,9 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     ).toBeLessThanOrEqual(1);
     expect(
       Math.abs(toolbarMetrics.audioWidth - toolbarMetrics.outlineWidth),
+    ).toBeLessThanOrEqual(1);
+    expect(
+      Math.abs(toolbarMetrics.shareWidth - toolbarMetrics.outlineWidth),
     ).toBeLessThanOrEqual(1);
     expect(
       Math.abs(toolbarMetrics.progressWidth - toolbarMetrics.outlineWidth),

@@ -33,16 +33,17 @@ Implement a complete feature or fix in the Coherence Thesis repository, validate
    - `npm run test` after pure TypeScript or state helper changes
    - `npm run test:e2e:fast:desktop` for narrow desktop UI checks while iterating
    - `npm run test:e2e:fast` after reader navigation, toolbar, progress, audio, or responsive UI changes while iterating
-10. Run `npm run readme:update` when stats, package metadata, recent commits, generated catalog state, or development status changed.
-11. Launch a local development preview from the feature worktree on a fresh random port after the feature is implemented. Do this even when another preview is already running. For visible UI work, do not open or update the pull request until the preview is running, unless the user explicitly says not to launch one.
-12. Run `npm run validate` before committing.
-13. If the change affects browser behavior, run `npm run test:e2e` before committing unless the user explicitly narrows the validation target.
-14. Review the final diff before staging. Confirm the diff is focused, generated files are expected, no debug logs or temporary files remain, and unrelated local changes are left alone.
-15. Stage the complete feature, commit with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user requested a direct main change, commit directly on `main` and do not open a pull request unless asked.
-16. As soon as the preview is ready, send the exact URL as a Markdown link in a user-visible update.
-17. Ask the user whether they are ready to publish or what follow-on revisions are needed. Do not merge, publish, or mark the pull request ready for merge until the user explicitly confirms that the preview looks good.
-18. If the user requests revisions after preview review, implement them on the same focused branch, validate again, push the update, and ask for preview approval again.
-19. After the user explicitly confirms the preview looks good and asks to publish or merge, complete the publish or merge workflow.
+10. If multiple user revisions are queued, implement all clear queued tasks on the same focused branch before running the deepest validation pass. Use focused checks during the queue only when they answer a specific implementation question. Run `npm run validate` and `npm run test:e2e` once after the queue is empty unless the user explicitly narrows validation.
+11. Run `npm run readme:update` when stats, package metadata, recent commits, generated catalog state, or development status changed.
+12. Launch a local development preview from the feature worktree on a fresh random port after the feature is implemented. Do this even when another preview is already running. For visible UI work, do not open or update the pull request until the preview is running, unless the user explicitly says not to launch one.
+13. Run `npm run validate` before committing.
+14. If the change affects browser behavior, run `npm run test:e2e` before committing unless the user explicitly narrows the validation target.
+15. Review the final diff before staging. Confirm the diff is focused, generated files are expected, no debug logs or temporary files remain, and unrelated local changes are left alone.
+16. Stage the complete feature, commit with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user requested a direct main change, commit directly on `main` and do not open a pull request unless asked.
+17. As soon as the preview is ready, send the exact URL as a Markdown link in a user-visible update.
+18. Ask the user whether they are ready to publish or what follow-on revisions are needed. Do not merge, publish, or mark the pull request ready for merge until the user explicitly confirms that the preview looks good.
+19. If the user requests revisions after preview review, implement them on the same focused branch, validate again, push the update, and ask for preview approval again.
+20. After the user explicitly confirms the preview looks good and asks to publish or merge, complete the publish or merge workflow.
 
 ## Preview
 

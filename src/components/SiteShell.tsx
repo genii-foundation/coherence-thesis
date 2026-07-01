@@ -46,9 +46,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <ToolbarBreadcrumbs />
         <nav className="site-nav" aria-label="Primary">
           <SearchMenuIsland />
-          <ToolbarShareIsland />
-          <ToolbarSettingsIsland />
           <OutlineMenuIsland outline={outline} />
+          <ToolbarSettingsIsland />
+          <ToolbarShareIsland />
           <AudioPlayerIsland overviewAudio={overviewAudio} />
           <ToolbarProgressIsland />
         </nav>
