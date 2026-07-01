@@ -874,6 +874,62 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     );
   }
 
+  const outlineLinkMetrics = await page.evaluate(() => {
+    const rectFor = (selector: string) => {
+      const rect = document.querySelector(selector)?.getBoundingClientRect();
+      return rect
+        ? {
+            left: rect.left,
+            right: rect.right,
+            width: rect.width,
+          }
+        : null;
+    };
+    return {
+      popover: rectFor(".outline-popover"),
+      topLink: rectFor(".outline-top-links a"),
+      topText: rectFor(".outline-top-links strong"),
+      volumeLink: rectFor(".outline-volume-link"),
+      volumeText: rectFor(".outline-volume-link strong"),
+    };
+  });
+
+  expect(outlineLinkMetrics.popover).not.toBeNull();
+  expect(outlineLinkMetrics.topLink).not.toBeNull();
+  expect(outlineLinkMetrics.topText).not.toBeNull();
+  expect(outlineLinkMetrics.volumeLink).not.toBeNull();
+  expect(outlineLinkMetrics.volumeText).not.toBeNull();
+
+  if (
+    outlineLinkMetrics.popover &&
+    outlineLinkMetrics.topLink &&
+    outlineLinkMetrics.topText &&
+    outlineLinkMetrics.volumeLink &&
+    outlineLinkMetrics.volumeText
+  ) {
+    for (const item of [
+      outlineLinkMetrics.topLink,
+      outlineLinkMetrics.topText,
+      outlineLinkMetrics.volumeLink,
+      outlineLinkMetrics.volumeText,
+    ]) {
+      expect(item.left).toBeGreaterThanOrEqual(
+        outlineLinkMetrics.popover.left - 1,
+      );
+      expect(item.right).toBeLessThanOrEqual(
+        outlineLinkMetrics.popover.right + 1,
+      );
+    }
+    expect(outlineLinkMetrics.topLink.width).toBeGreaterThan(
+      outlineLinkMetrics.popover.width * 0.7,
+    );
+    expect(outlineLinkMetrics.volumeLink.width).toBeGreaterThan(
+      outlineLinkMetrics.popover.width * 0.7,
+    );
+    expect(outlineLinkMetrics.topText.width).toBeGreaterThan(120);
+    expect(outlineLinkMetrics.volumeText.width).toBeGreaterThan(120);
+  }
+
   await page
     .getByRole("searchbox", { name: "Filter outline" })
     .fill("wielding");

@@ -579,7 +579,7 @@ input {
   gap: 0.45rem;
 }
 
-.site-nav a,
+.site-nav > a,
 .outline-menu-button,
 .search-menu-button,
 .share-menu-button,
@@ -605,14 +605,14 @@ input {
     color 160ms ease;
 }
 
-.site-nav a {
+.site-nav > a {
   border: 0;
   color: var(--ink);
   padding: 0.65rem 0.75rem;
 }
 
-.site-nav a:hover,
-.site-nav a:focus-visible,
+.site-nav > a:hover,
+.site-nav > a:focus-visible,
 .outline-menu-button:hover,
 .outline-menu-button:focus-visible,
 .search-menu-button:hover,
@@ -3024,7 +3024,7 @@ input {
     min-width: 0;
   }
 
-  .site-nav a,
+  .site-nav > a,
   .outline-menu,
   .search-menu,
   .share-menu,
@@ -3035,7 +3035,7 @@ input {
     min-width: 0;
   }
 
-  .site-nav a,
+  .site-nav > a,
   .outline-menu-button,
   .search-menu-button,
   .share-menu-button,
@@ -3240,7 +3240,7 @@ input {
     flex-basis: min(39vw, 12rem);
   }
 
-  .site-nav a,
+  .site-nav > a,
   .outline-menu-button,
   .search-menu-button,
   .share-menu-button,
@@ -3329,7 +3329,7 @@ input {
     gap: 0.25rem;
   }
 
-  .site-nav a,
+  .site-nav > a,
   .outline-menu-button,
   .search-menu-button,
   .share-menu-button,
