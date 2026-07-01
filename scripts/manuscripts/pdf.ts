@@ -48,6 +48,7 @@ export type PdfDownloadManifest = {
     title: string;
     href: string;
     pdfHref: string;
+    fileName: string;
     contentHash: string;
   }>;
   manuscripts: Array<{
@@ -55,16 +56,50 @@ export type PdfDownloadManifest = {
     title: string;
     href: string;
     pdfHref: string;
+    fileName: string;
     contentHash: string;
   }>;
 };
 
-export function sectionPdfHref(sectionId: string): string {
-  return `/downloads/sections/${sectionId}.pdf`;
+function padNumber(value: number, size: number): string {
+  return value.toString().padStart(size, "0");
 }
 
-export function manuscriptPdfHref(volumeId: string): string {
-  return `/downloads/manuscripts/${volumeId}.pdf`;
+function fileNameText(value: string): string {
+  return value
+    .normalize("NFKC")
+    .replace(/[<>:"/\\|?*\u0000-\u001f]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function pdfFileName(number: string, name: string): string {
+  return `The Coherence Thesis - ${number} - ${fileNameText(name)}.pdf`;
+}
+
+export function manuscriptPdfFileName(volume: CompiledVolume): string {
+  return pdfFileName(padNumber(volume.order, 2), volume.title);
+}
+
+export function sectionPdfFileName(
+  section: CompiledSection,
+  volume?: CompiledVolume,
+): string {
+  const volumeSectionIndex = volume?.sectionIds.indexOf(section.sectionId) ?? -1;
+  const sectionNumber = volumeSectionIndex >= 0 ? volumeSectionIndex + 1 : section.sectionOrder;
+
+  return pdfFileName(
+    `${padNumber(section.volumeOrder, 2)}.${padNumber(sectionNumber, 3)}`,
+    section.title,
+  );
+}
+
+export function sectionPdfHref(section: CompiledSection, volume?: CompiledVolume): string {
+  return `/downloads/sections/${sectionPdfFileName(section, volume)}`;
+}
+
+export function manuscriptPdfHref(volume: CompiledVolume): string {
+  return `/downloads/manuscripts/${manuscriptPdfFileName(volume)}`;
 }
 
 function firstExistingPath(paths: string[]): string | null {
@@ -587,7 +622,7 @@ async function writeSectionPdf(
   volume: CompiledVolume | undefined,
 ): Promise<void> {
   await writePdf(
-    outputPathFromHref(sectionPdfHref(section.sectionId)),
+    outputPathFromHref(sectionPdfHref(section, volume)),
     section.title,
     section.title,
     1,
@@ -649,7 +684,7 @@ async function writeManuscriptPdf(
 ): Promise<void> {
   const volumeSections = sections.filter((section) => section.volumeId === volume.volumeId);
   await writePdf(
-    outputPathFromHref(manuscriptPdfHref(volume.volumeId)),
+    outputPathFromHref(manuscriptPdfHref(volume)),
     volume.title,
     volume.title,
     1,
@@ -719,14 +754,16 @@ export async function buildPdfDownloads(
       volumeTitle: section.volumeTitle,
       title: section.title,
       href: section.href,
-      pdfHref: sectionPdfHref(section.sectionId),
+      pdfHref: sectionPdfHref(section, volumesById.get(section.volumeId)),
+      fileName: sectionPdfFileName(section, volumesById.get(section.volumeId)),
       contentHash: section.contentHash,
     })),
     manuscripts: catalog.volumes.map((volume) => ({
       volumeId: volume.volumeId,
       title: volume.title,
       href: volume.href,
-      pdfHref: manuscriptPdfHref(volume.volumeId),
+      pdfHref: manuscriptPdfHref(volume),
+      fileName: manuscriptPdfFileName(volume),
       contentHash: volumeContentHash(volume, catalog.sections),
     })),
   };

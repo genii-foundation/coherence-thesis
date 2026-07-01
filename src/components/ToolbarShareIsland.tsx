@@ -153,7 +153,7 @@ export function ToolbarShareIsland() {
             <a
               className="share-action"
               href={sectionDownload.pdfHref}
-              download
+              download={sectionDownload.fileName}
               aria-label={`Download this section as PDF: ${sectionDownload.title}`}
             >
               <FileText aria-hidden="true" size={16} />
@@ -165,7 +165,7 @@ export function ToolbarShareIsland() {
             <a
               className="share-action"
               href={manuscriptDownload.pdfHref}
-              download
+              download={manuscriptDownload.fileName}
               aria-label={`Download full manuscript as PDF: ${manuscriptDownload.title}`}
             >
               <BookOpen aria-hidden="true" size={16} />

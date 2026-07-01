@@ -15,11 +15,25 @@ describe("manuscript compiler helpers", () => {
   });
 
   it("creates stable PDF download URLs", () => {
-    expect(sectionPdfHref("v01-orientation")).toBe(
-      "/downloads/sections/v01-orientation.pdf",
+    const catalog = buildCatalog();
+    const firstVolume = catalog.volumes[0];
+    const firstSection = catalog.sections[0];
+    const structureSection = catalog.sections.find(
+      (section) => section.sectionId === "v01-how-this-book-is-structured",
     );
-    expect(manuscriptPdfHref("humanitys-most-viable-future")).toBe(
-      "/downloads/manuscripts/humanitys-most-viable-future.pdf",
+
+    expect(firstVolume).toBeDefined();
+    expect(firstSection).toBeDefined();
+    expect(structureSection).toBeDefined();
+
+    expect(sectionPdfHref(firstSection!, firstVolume!)).toBe(
+      "/downloads/sections/The Coherence Thesis - 01.001 - Orientation.pdf",
+    );
+    expect(sectionPdfHref(structureSection!, firstVolume!)).toBe(
+      "/downloads/sections/The Coherence Thesis - 01.004 - How This Book Is Structured.pdf",
+    );
+    expect(manuscriptPdfHref(firstVolume!)).toBe(
+      "/downloads/manuscripts/The Coherence Thesis - 01 - Humanity's Most Viable Future.pdf",
     );
   });
 

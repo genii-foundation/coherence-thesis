@@ -8,6 +8,9 @@ const firstSection = catalog.sections[0];
 const firstSectionVolume = catalog.volumes.find(
   (volume) => volume.volumeId === firstSection.volumeId,
 )!;
+const firstSectionPdfFileName = "The Coherence Thesis - 01.001 - Orientation.pdf";
+const firstManuscriptPdfFileName =
+  "The Coherence Thesis - 01 - Humanity's Most Viable Future.pdf";
 const firstSectionVersionDate = new Intl.DateTimeFormat("en-US", {
   month: "long",
   day: "numeric",
@@ -890,8 +893,8 @@ test("reader share menu exposes page sharing and PDF downloads", async ({ page }
     expect(shareBox.x + shareBox.width).toBeLessThanOrEqual(viewport.width + 1);
   }
 
-  const sectionPdfHref = `/downloads/sections/${firstSection.sectionId}.pdf`;
-  const manuscriptPdfHref = `/downloads/manuscripts/${firstSection.volumeId}.pdf`;
+  const sectionPdfHref = `/downloads/sections/${firstSectionPdfFileName}`;
+  const manuscriptPdfHref = `/downloads/manuscripts/${firstManuscriptPdfFileName}`;
   const sectionDownload = shareMenu.getByRole("link", {
     name: `Download this section as PDF: ${firstSection.title}`,
   });
@@ -901,12 +904,15 @@ test("reader share menu exposes page sharing and PDF downloads", async ({ page }
 
   await expect(sectionDownload).toContainText("Download this section");
   await expect(sectionDownload).toHaveAttribute("href", sectionPdfHref);
-  await expect(sectionDownload).toHaveAttribute("download", "");
+  await expect(sectionDownload).toHaveAttribute("download", firstSectionPdfFileName);
   await expect(manuscriptDownload).toContainText("Download full manuscript");
   await expect(manuscriptDownload).toHaveAttribute("href", manuscriptPdfHref);
-  await expect(manuscriptDownload).toHaveAttribute("download", "");
+  await expect(manuscriptDownload).toHaveAttribute(
+    "download",
+    firstManuscriptPdfFileName,
+  );
 
-  const sectionPdfResponse = await page.request.get(sectionPdfHref);
+  const sectionPdfResponse = await page.request.get(encodeURI(sectionPdfHref));
   expect(sectionPdfResponse.ok()).toBe(true);
   expect(sectionPdfResponse.headers()["content-type"]).toContain("application/pdf");
   const sectionPdfBytes = await sectionPdfResponse.body();
@@ -914,7 +920,7 @@ test("reader share menu exposes page sharing and PDF downloads", async ({ page }
   expect(pdfPageCount(sectionPdfBytes)).toBeLessThanOrEqual(4);
   expect(pdfImageCount(sectionPdfBytes)).toBeGreaterThanOrEqual(1);
   expect(sectionPdfBytes.byteLength).toBeLessThan(450_000);
-  const manuscriptPdfResponse = await page.request.get(manuscriptPdfHref);
+  const manuscriptPdfResponse = await page.request.get(encodeURI(manuscriptPdfHref));
   expect(manuscriptPdfResponse.ok()).toBe(true);
   expect(manuscriptPdfResponse.headers()["content-type"]).toContain("application/pdf");
   const manuscriptPdfBytes = await manuscriptPdfResponse.body();
@@ -954,9 +960,12 @@ test("volume share menu only offers the full manuscript download", async ({
   await expect(manuscriptDownload).toContainText("Download full manuscript");
   await expect(manuscriptDownload).toHaveAttribute(
     "href",
-    `/downloads/manuscripts/${firstSectionVolume.volumeId}.pdf`,
+    `/downloads/manuscripts/${firstManuscriptPdfFileName}`,
   );
-  await expect(manuscriptDownload).toHaveAttribute("download", "");
+  await expect(manuscriptDownload).toHaveAttribute(
+    "download",
+    firstManuscriptPdfFileName,
+  );
 
   const actionMetrics = await manuscriptDownload.evaluate((element) => {
     const panel = element.closest(".reader-share")?.getBoundingClientRect();
@@ -1008,13 +1017,18 @@ test("singleton section share menu offers both PDF downloads", async ({
   await expect(sectionDownload).toContainText("Download this section");
   await expect(sectionDownload).toHaveAttribute(
     "href",
-    `/downloads/sections/${firstSection.sectionId}.pdf`,
+    `/downloads/sections/${firstSectionPdfFileName}`,
   );
   await expect(manuscriptDownload).toBeVisible();
   await expect(manuscriptDownload).toContainText("Download full manuscript");
   await expect(manuscriptDownload).toHaveAttribute(
     "href",
-    `/downloads/manuscripts/${firstSectionVolume.volumeId}.pdf`,
+    `/downloads/manuscripts/${firstManuscriptPdfFileName}`,
+  );
+  await expect(sectionDownload).toHaveAttribute("download", firstSectionPdfFileName);
+  await expect(manuscriptDownload).toHaveAttribute(
+    "download",
+    firstManuscriptPdfFileName,
   );
 });
 

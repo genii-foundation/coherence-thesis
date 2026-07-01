@@ -47,6 +47,7 @@ export type PdfDownloadSection = {
   title: string;
   href: string;
   pdfHref: string;
+  fileName: string;
   contentHash: string;
 };
 
@@ -55,6 +56,7 @@ export type PdfDownloadManuscript = {
   title: string;
   href: string;
   pdfHref: string;
+  fileName: string;
   contentHash: string;
 };
 
