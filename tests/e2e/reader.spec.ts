@@ -1977,6 +1977,27 @@ test("toolbar brand owns the active manuscript identity", async ({
     .locator(".brand-title")
     .evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize));
 
+  await page.goto("/overview/");
+  const overviewBrandTitleMetrics = await brand.evaluate((element) => {
+    const title = element.querySelector(".brand-title")!;
+    const titleText = element.querySelector(".brand-title-full")!;
+
+    return {
+      brandWidth: element.getBoundingClientRect().width,
+      titleWidth: title.getBoundingClientRect().width,
+      titleTextWidth: titleText.getBoundingClientRect().width,
+    };
+  });
+  expect(overviewBrandTitleMetrics.titleWidth).toBeLessThan(
+    overviewBrandTitleMetrics.brandWidth - 24,
+  );
+  expect(
+    Math.abs(
+      overviewBrandTitleMetrics.titleWidth -
+        overviewBrandTitleMetrics.titleTextWidth,
+    ),
+  ).toBeLessThanOrEqual(1);
+
   await page.goto(wieldingVolume.href);
   await expect(brand).toHaveAttribute(
     "aria-label",

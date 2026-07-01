@@ -369,6 +369,8 @@ input {
   position: relative;
   display: block;
   min-width: 0;
+  max-width: 100%;
+  width: fit-content;
   overflow: hidden;
   border-bottom: 1px solid transparent;
   font-family: var(--font-display);
