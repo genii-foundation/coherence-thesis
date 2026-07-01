@@ -50,10 +50,10 @@ Use a local development preview when the user should inspect the feature or iter
 
 ```bash
 PORT=$(node -e "const net=require('node:net');const server=net.createServer();server.listen(0,'127.0.0.1',()=>{console.log(server.address().port);server.close();});")
-npm run dev -- --hostname 127.0.0.1 --port "$PORT"
+npm run preview:dev -- --hostname 127.0.0.1 --port "$PORT"
 ```
 
-The preview URL is `http://127.0.0.1:$PORT`. Keep the preview process running for the user, open the URL in a browser when requested, and include the exact URL in closeout and pull request preview section. Do not ship a visible UI pull request whose preview section says the preview was not launched. Use the static preview only for final publish verification or when the user specifically asks for a production build preview:
+The preview URL is `http://127.0.0.1:$PORT`. Keep the preview process running for the user, open the URL in a browser when requested, and include the exact URL in closeout and pull request preview section. Check the preview process with `npm run preview:dev:status -- --port "$PORT"` before closeout. Stop it with `npm run preview:dev:stop -- --port "$PORT"` only when the worktree is being removed or the user asks to shut it down. Do not ship a visible UI pull request whose preview section says the preview was not launched. Use the static preview only for final publish verification or when the user specifically asks for a production build preview:
 
 ```bash
 npm run build

@@ -69,7 +69,10 @@ function writeInstallState(expectedState) {
 }
 
 function runNpmCi() {
-  const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
+  const npmCommand = path.join(
+    path.dirname(process.execPath),
+    process.platform === "win32" ? "npm.cmd" : "npm",
+  );
   const result = spawnSync(npmCommand, ["ci"], {
     cwd: repoRoot,
     env: {
