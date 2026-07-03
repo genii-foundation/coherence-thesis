@@ -18,8 +18,28 @@ type SearchResult = SearchIndexEntry & {
   snippet: string;
 };
 
+// Normalized fields are computed once when the index loads, not per keystroke,
+// so per-query work is substring matching over ~1.25 MB rather than re-running
+// regex passes over the whole corpus on every character typed.
+type NormalizedEntry = SearchIndexEntry & {
+  titleNorm: string;
+  hierarchyNorm: string;
+  bodyNorm: string;
+};
+
 function normalize(value: string): string {
   return value.toLowerCase().replace(/[^a-z0-9'\s]+/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function normalizeEntry(entry: SearchIndexEntry): NormalizedEntry {
+  return {
+    ...entry,
+    titleNorm: normalize(entry.title),
+    hierarchyNorm: normalize(
+      `${entry.volumeTitle} ${entry.partTitle} ${entry.chapterTitle}`,
+    ),
+    bodyNorm: normalize(entry.text),
+  };
 }
 
 function queryTerms(query: string): string[] {
@@ -44,13 +64,11 @@ function resultSnippet(text: string, terms: string[]): string {
   return `${prefix}${text.slice(start, end).trim()}${suffix}`;
 }
 
-function scoreEntry(entry: SearchIndexEntry, terms: string[], phrase: string): SearchResult | null {
+function scoreEntry(entry: NormalizedEntry, terms: string[], phrase: string): SearchResult | null {
   if (terms.length === 0) return null;
-  const titleText = normalize(entry.title);
-  const hierarchyText = normalize(
-    `${entry.volumeTitle} ${entry.partTitle} ${entry.chapterTitle}`,
-  );
-  const bodyText = normalize(entry.text);
+  const titleText = entry.titleNorm;
+  const hierarchyText = entry.hierarchyNorm;
+  const bodyText = entry.bodyNorm;
   const haystack = `${titleText} ${hierarchyText} ${bodyText}`;
   if (!terms.every((term) => haystack.includes(term))) return null;
 
@@ -81,22 +99,19 @@ export function SearchMenuIsland() {
   const lastSubmittedQueryRef = useRef("");
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const [index, setIndex] = useState<SearchIndexEntry[]>([]);
+  const [index, setIndex] = useState<NormalizedEntry[]>([]);
   const [loadError, setLoadError] = useState(false);
+  const loadStartedRef = useRef(false);
 
+  // Defer the ~1.5 MB search index fetch until the reader first opens search,
+  // instead of downloading and parsing it on every page load.
   useEffect(() => {
-    let mounted = true;
+    if (!open || loadStartedRef.current) return;
+    loadStartedRef.current = true;
     loadSearchIndex()
-      .then((entries) => {
-        if (mounted) setIndex(entries);
-      })
-      .catch(() => {
-        if (mounted) setLoadError(true);
-      });
-    return () => {
-      mounted = false;
-    };
-  }, []);
+      .then((entries) => setIndex(entries.map(normalizeEntry)))
+      .catch(() => setLoadError(true));
+  }, [open]);
 
   useEffect(() => {
     const closeTimer = window.setTimeout(() => {

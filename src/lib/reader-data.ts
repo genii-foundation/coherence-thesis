@@ -65,47 +65,45 @@ export type PdfDownloadManifest = {
   manuscripts: PdfDownloadManuscript[];
 };
 
-let readerSectionsPromise: Promise<ReaderSectionData[]> | null = null;
-let breadcrumbRoutesPromise: Promise<BreadcrumbRoute[]> | null = null;
-let searchIndexPromise: Promise<SearchIndexEntry[]> | null = null;
-let pdfDownloadsPromise: Promise<PdfDownloadManifest> | null = null;
-
-export function loadReaderSections(): Promise<ReaderSectionData[]> {
-  readerSectionsPromise ??= fetch("/data/reader-sections.json").then((response) => {
-    if (!response.ok) {
-      throw new Error(`Unable to load reader section data: ${response.status}`);
-    }
-    return response.json() as Promise<ReaderSectionData[]>;
-  });
-  return readerSectionsPromise;
+// Memoizes only fulfilled results. A rejected fetch clears the cache so the
+// next call retries, rather than permanently disabling a feature after one
+// transient network error during the (now interaction-triggered) load.
+function memoizedLoader<T>(url: string, label: string): () => Promise<T> {
+  let cached: Promise<T> | null = null;
+  return () => {
+    if (cached) return cached;
+    const request = fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Unable to load ${label}: ${response.status}`);
+        }
+        return response.json() as Promise<T>;
+      })
+      .catch((error: unknown) => {
+        cached = null;
+        throw error;
+      });
+    cached = request;
+    return request;
+  };
 }
 
-export function loadBreadcrumbRoutes(): Promise<BreadcrumbRoute[]> {
-  breadcrumbRoutesPromise ??= fetch("/data/breadcrumb-routes.json").then((response) => {
-    if (!response.ok) {
-      throw new Error(`Unable to load breadcrumb data: ${response.status}`);
-    }
-    return response.json() as Promise<BreadcrumbRoute[]>;
-  });
-  return breadcrumbRoutesPromise;
-}
+export const loadReaderSections = memoizedLoader<ReaderSectionData[]>(
+  "/data/reader-sections.json",
+  "reader section data",
+);
 
-export function loadSearchIndex(): Promise<SearchIndexEntry[]> {
-  searchIndexPromise ??= fetch("/data/search-index.json").then((response) => {
-    if (!response.ok) {
-      throw new Error(`Unable to load search index: ${response.status}`);
-    }
-    return response.json() as Promise<SearchIndexEntry[]>;
-  });
-  return searchIndexPromise;
-}
+export const loadBreadcrumbRoutes = memoizedLoader<BreadcrumbRoute[]>(
+  "/data/breadcrumb-routes.json",
+  "breadcrumb data",
+);
 
-export function loadPdfDownloads(): Promise<PdfDownloadManifest> {
-  pdfDownloadsPromise ??= fetch("/data/pdf-downloads.json").then((response) => {
-    if (!response.ok) {
-      throw new Error(`Unable to load PDF download data: ${response.status}`);
-    }
-    return response.json() as Promise<PdfDownloadManifest>;
-  });
-  return pdfDownloadsPromise;
-}
+export const loadSearchIndex = memoizedLoader<SearchIndexEntry[]>(
+  "/data/search-index.json",
+  "search index",
+);
+
+export const loadPdfDownloads = memoizedLoader<PdfDownloadManifest>(
+  "/data/pdf-downloads.json",
+  "PDF download data",
+);

@@ -44,6 +44,7 @@ export function AudioPlayerIsland({
   const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
   const [sections, setSections] = useState<ReaderSectionData[]>([]);
+  const sectionsLoadStartedRef = useRef(false);
   const playbackSections = useMemo(() => {
     const currentPath = normalizePath(pathname);
     if (currentPath === "/overview/") return [overviewAudio];
@@ -96,19 +97,15 @@ export function AudioPlayerIsland({
     );
   }, [pathname]);
 
+  // Defer the ~1.9 MB reader-sections fetch until the reader first opens the
+  // audio controls, since the text is only needed once playback can start.
   useEffect(() => {
-    let mounted = true;
+    if (!open || sectionsLoadStartedRef.current) return;
+    sectionsLoadStartedRef.current = true;
     loadReaderSections()
-      .then((loadedSections) => {
-        if (mounted) setSections(loadedSections);
-      })
-      .catch(() => {
-        if (mounted) setSections([]);
-      });
-    return () => {
-      mounted = false;
-    };
-  }, [flushAudioSeconds]);
+      .then((loadedSections) => setSections(loadedSections))
+      .catch(() => setSections([]));
+  }, [open]);
 
   useEffect(() => {
     const hydrationTimer = window.setTimeout(() => {
@@ -207,6 +204,14 @@ export function AudioPlayerIsland({
       } else {
         setPlaying(false);
       }
+    };
+    // Without this, a synthesis error (voice unavailable, engine interruption)
+    // leaves `playing` true forever: onend never fires, the queue stalls, and
+    // listen-seconds keep accumulating as if audio were still playing.
+    utterance.onerror = () => {
+      if (token !== playbackTokenRef.current) return;
+      flushAudioSeconds();
+      setPlaying(false);
     };
     window.speechSynthesis.speak(utterance);
     setPlaying(true);

@@ -7,6 +7,14 @@ export async function updateSupabaseSession(request: NextRequest) {
 
   if (!url || !anonKey) return NextResponse.next({ request });
 
+  // The overwhelming majority of requests to this static-content site are
+  // anonymous. Only refresh the session when a Supabase auth cookie is present,
+  // so anonymous readers skip constructing a client and the getUser round trip.
+  const hasAuthCookie = request.cookies
+    .getAll()
+    .some((cookie) => cookie.name.startsWith("sb-"));
+  if (!hasAuthCookie) return NextResponse.next({ request });
+
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient(url, anonKey, {
