@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { allSections } from "./manuscript-data";
 import {
   emptyProgress,
+  isSectionRead,
   markRead,
   markSectionOpened,
   mergeProgressStates,
@@ -102,13 +103,42 @@ describe("reader progress", () => {
 
     const merged = mergeProgressStates(local, remote);
 
+    // Counters take the max across sides, never the sum. Remote is this
+    // device's own prior upload, so summing would double every metric.
     expect(merged.sections[section.sectionId]).toMatchObject({
       contentHash: section.contentHash,
       readAt: 3_000,
-      openCount: 3,
+      openCount: 2,
       activeSeconds: 40,
       manualReadCount: 1,
     });
+  });
+
+  it("is idempotent when merging a state with its own uploaded copy", () => {
+    const section = allSections()[0];
+    const opened = markSectionOpened(emptyProgress(), section, 1_000);
+    const timed = recordReadingTime(opened, section, {
+      activeSeconds: 30,
+      idleSeconds: 4,
+      totalVisibleSeconds: 34,
+    });
+    const state = markRead(timed, section, 100, 5_000, "manual");
+
+    const once = mergeProgressStates(state, state);
+    const twice = mergeProgressStates(once, once);
+
+    // Merging a device's state with its own remote mirror must not inflate any
+    // counter, on the first sync or any repeat.
+    for (const merged of [once, twice]) {
+      expect(merged.sections[section.sectionId]).toMatchObject({
+        openCount: state.sections[section.sectionId].openCount,
+        activeSeconds: state.sections[section.sectionId].activeSeconds,
+        idleSeconds: state.sections[section.sectionId].idleSeconds,
+        totalVisibleSeconds:
+          state.sections[section.sectionId].totalVisibleSeconds,
+        manualReadCount: state.sections[section.sectionId].manualReadCount,
+      });
+    }
   });
 
   it("detects content updates after a section was read", () => {
@@ -165,6 +195,27 @@ describe("reader progress", () => {
         href: sections[1].href,
         isUpdated: false,
       },
+    ]);
+  });
+
+  it("reports read state by content hash", () => {
+    const section = allSections()[0];
+    const read = markRead(emptyProgress(), section);
+    expect(isSectionRead(read, section)).toBe(true);
+    expect(isSectionRead(emptyProgress(), section)).toBe(false);
+    expect(isSectionRead(read, { ...section, contentHash: "changed" })).toBe(
+      false,
+    );
+  });
+
+  it("excludes opened-but-unread sections from recently read", () => {
+    const sections = allSections().slice(0, 3);
+    const opened = markSectionOpened(emptyProgress(), sections[0], 1_000);
+    const withRead = markRead(opened, sections[1], 100, 2_000);
+
+    const recent = recentlyReadSections(withRead, sections, 4);
+    expect(recent.map((entry) => entry.sectionId)).toEqual([
+      sections[1].sectionId,
     ]);
   });
 

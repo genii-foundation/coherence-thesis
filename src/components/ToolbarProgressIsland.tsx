@@ -47,6 +47,7 @@ import {
 } from "@/lib/reader-sync";
 import {
   emptyProgress,
+  isSectionRead,
   markRead,
   markSectionOpened,
   mergeProgressStates,
@@ -69,6 +70,15 @@ function parentRoute(path: string): string {
 
 const idleThresholdMs = 45_000;
 const scrollMilestones = [25, 50, 75, 100];
+// Percent scrolled at which a section counts as read and the read event fires.
+const readThresholdPercent = 80;
+// How often the visibility timer samples active vs idle time.
+const timingSampleIntervalMs = 5_000;
+// Trailing debounce before a scroll-driven progress change is persisted, so
+// localStorage serialization runs a few times per page instead of per frame.
+const scrollWriteDebounceMs = 500;
+// Debounce before a local change is pushed to the remote sync backend.
+const syncDebounceMs = 1_500;
 
 type SyncStatus = "idle" | "syncing" | "synced" | "paused" | "error";
 
@@ -87,6 +97,7 @@ export function ToolbarProgressIsland() {
   const [authMessage, setAuthMessage] = useState("");
   const [syncStatus, setSyncStatus] = useState<SyncStatus>("idle");
   const [syncMessage, setSyncMessage] = useState("");
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
 
   const section = useMemo(() => {
     const currentPath = normalizePath(pathname);
@@ -152,6 +163,7 @@ export function ToolbarProgressIsland() {
   useEffect(() => {
     const closeTimer = window.setTimeout(() => {
       setOpen(false);
+      setConfirmingDelete(false);
     }, 0);
     return () => window.clearTimeout(closeTimer);
   }, [pathname]);
@@ -159,6 +171,7 @@ export function ToolbarProgressIsland() {
   useEffect(() => {
     sectionRef.current = section;
   }, [section]);
+
 
   useEffect(() => {
     if (!user) return;
@@ -193,13 +206,19 @@ export function ToolbarProgressIsland() {
 
   useEffect(() => {
     if (!open) return;
+    const dismiss = () => {
+      setOpen(false);
+      // Disarm the delete confirmation on any close so a stale armed state
+      // cannot commit on the next open.
+      setConfirmingDelete(false);
+    };
     const onPointerDown = (event: PointerEvent) => {
       if (!containerRef.current?.contains(event.target as Node)) {
-        setOpen(false);
+        dismiss();
       }
     };
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") dismiss();
     };
     document.addEventListener("pointerdown", onPointerDown);
     document.addEventListener("keydown", onKeyDown);
@@ -265,11 +284,35 @@ export function ToolbarProgressIsland() {
       sampleTiming();
       timing.lastActivityAt = Date.now();
     };
-    const onScroll = () => {
+    // Persist scroll-driven progress on a trailing debounce instead of on every
+    // frame. writeStoredProgress serializes the whole progress blob and
+    // dispatches an event that other islands re-read, so per-frame writes stall
+    // scrolling on long pages.
+    let pendingWrite: ReaderProgressState | null = null;
+    let writeTimer = 0;
+    const flushProgressWrite = () => {
+      writeTimer = 0;
+      if (!pendingWrite) return;
+      writeStoredProgress(pendingWrite);
+      pendingWrite = null;
+    };
+    const scheduleProgressWrite = (next: ReaderProgressState) => {
+      pendingWrite = next;
+      if (!writeTimer) {
+        writeTimer = window.setTimeout(flushProgressWrite, scrollWriteDebounceMs);
+      }
+    };
+
+    let scrollTicking = false;
+    let lastScrollPercent = -1;
+    const handleScrollFrame = () => {
+      scrollTicking = false;
       markActivity();
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
       if (scrollable <= 0) return;
       const percent = Math.round((window.scrollY / scrollable) * 100);
+      if (percent === lastScrollPercent) return;
+      lastScrollPercent = percent;
       const reached = scrollMilestones.filter(
         (milestone) => percent >= milestone && !reachedMilestones.has(milestone),
       );
@@ -288,10 +331,10 @@ export function ToolbarProgressIsland() {
       }
       setProgress((current) => {
         const next = recordScrollProgress(current, section, percent);
-        writeStoredProgress(next);
+        if (next !== current) scheduleProgressWrite(next);
         return next;
       });
-      if (percent < 80) return;
+      if (percent < readThresholdPercent) return;
       if (!readThresholdCaptured) {
         readThresholdCaptured = true;
         appendStoredEvent(
@@ -309,19 +352,28 @@ export function ToolbarProgressIsland() {
           return current;
         }
         const next = markRead(current, section);
+        // Marking read is meaningful state; persist it immediately and keep the
+        // pending debounce pointed at the same value so a later flush is a no-op.
         writeStoredProgress(next);
+        pendingWrite = next;
         return next;
       });
+    };
+    const onScroll = () => {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      window.requestAnimationFrame(handleScrollFrame);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("pointerdown", markActivity, { passive: true });
     window.addEventListener("keydown", markActivity);
     window.addEventListener("focus", markActivity);
     document.addEventListener("visibilitychange", sampleTiming);
-    const interval = window.setInterval(sampleTiming, 5_000);
-    onScroll();
+    const interval = window.setInterval(sampleTiming, timingSampleIntervalMs);
+    handleScrollFrame();
     return () => {
       window.clearTimeout(openTimer);
+      flushProgressWrite();
       sampleTiming();
       window.clearInterval(interval);
       window.removeEventListener("scroll", onScroll);
@@ -395,7 +447,7 @@ export function ToolbarProgressIsland() {
     if (!user || !consent.granted) return;
     const timer = window.setTimeout(() => {
       void syncNow(progress);
-    }, 1_500);
+    }, syncDebounceMs);
     return () => window.clearTimeout(timer);
   }, [consent.granted, progress, syncNow, user]);
 
@@ -412,9 +464,7 @@ export function ToolbarProgressIsland() {
     [allSections, progress],
   );
   const revisedCount = recommendations.filter((item) => item.isUpdated).length;
-  const isRead = section
-    ? progress.sections[section.sectionId]?.contentHash === section.contentHash
-    : false;
+  const isRead = section ? isSectionRead(progress, section) : false;
   const isUpdated = section ? updatedSinceRead(progress, section) : false;
 
   useEffect(() => {
@@ -468,21 +518,34 @@ export function ToolbarProgressIsland() {
     const nextConsent = grantSyncConsent();
     setConsent(nextConsent);
     writeStoredConsent(nextConsent);
-    const remote = await loadRemoteReaderState(user.id);
-    const nextProgress = remote.progress
-      ? mergeProgressStates(readStoredProgress(), remote.progress)
-      : readStoredProgress();
-    writeStoredProgress(nextProgress);
-    setProgress(nextProgress);
-    await upsertRemoteConsent(user.id, nextConsent);
-    await syncNow(nextProgress);
+    try {
+      const remote = await loadRemoteReaderState(user.id);
+      const nextProgress = remote.progress
+        ? mergeProgressStates(readStoredProgress(), remote.progress)
+        : readStoredProgress();
+      writeStoredProgress(nextProgress);
+      setProgress(nextProgress);
+      const { error } = await upsertRemoteConsent(user.id, nextConsent);
+      if (error) throw error;
+      await syncNow(nextProgress);
+    } catch {
+      setSyncStatus("error");
+      setSyncMessage("Sync could not start. Local progress is still saved.");
+    }
   }
 
   async function revokeConsentAndPause() {
     const nextConsent = revokeSyncConsent(consent);
     setConsent(nextConsent);
     writeStoredConsent(nextConsent);
-    if (user) await upsertRemoteConsent(user.id, nextConsent);
+    if (user) {
+      const { error } = await upsertRemoteConsent(user.id, nextConsent);
+      if (error) {
+        setSyncStatus("error");
+        setSyncMessage("Sync could not be paused remotely. It is paused locally.");
+        return;
+      }
+    }
     setSyncStatus("paused");
     setSyncMessage("Sync paused. Local history stays in this browser.");
   }
@@ -503,6 +566,14 @@ export function ToolbarProgressIsland() {
   }
 
   async function deleteAccount() {
+    // Two-step confirmation: the first click arms the action, the second
+    // commits it. Account deletion is irreversible and cascades all synced data.
+    if (!confirmingDelete) {
+      setConfirmingDelete(true);
+      setSyncMessage("Click again to permanently delete your account.");
+      return;
+    }
+    setConfirmingDelete(false);
     const { error } = await deleteReaderAccount();
     if (error) {
       setSyncStatus("error");
@@ -535,7 +606,10 @@ export function ToolbarProgressIsland() {
             "--progress-value": number;
           }
         }
-        onClick={() => setOpen((current) => !current)}
+        onClick={() => {
+          setOpen((current) => !current);
+          setConfirmingDelete(false);
+        }}
       >
         <span className="progress-percent">{percent}%</span>
       </button>
@@ -581,7 +655,11 @@ export function ToolbarProgressIsland() {
                   <UserRound aria-hidden="true" size={17} />
                   <span>Sign in to sync</span>
                 </button>
-                {authMessage && <p className="quiet-copy">{authMessage}</p>}
+                {authMessage && (
+                  <p className="quiet-copy" role="status" aria-live="polite">
+                    {authMessage}
+                  </p>
+                )}
               </form>
             )}
             {syncConfigured && user && !consent.granted && (
@@ -617,14 +695,27 @@ export function ToolbarProgressIsland() {
                     <Trash2 aria-hidden="true" size={17} />
                     <span>Delete synced data</span>
                   </button>
-                  <button type="button" className="icon-button" onClick={deleteAccount}>
+                  <button
+                    type="button"
+                    className="icon-button"
+                    onClick={deleteAccount}
+                    aria-pressed={confirmingDelete}
+                  >
                     <Trash2 aria-hidden="true" size={17} />
-                    <span>Delete account</span>
+                    <span>
+                      {confirmingDelete
+                        ? "Confirm delete account"
+                        : "Delete account"}
+                    </span>
                   </button>
                 </div>
               </div>
             )}
-            {syncMessage && <p className="quiet-copy">{syncMessage}</p>}
+            {syncMessage && (
+              <p className="quiet-copy" role="status" aria-live="polite">
+                {syncMessage}
+              </p>
+            )}
           </div>
           {section && (
             <div className="reader-actions progress-section">

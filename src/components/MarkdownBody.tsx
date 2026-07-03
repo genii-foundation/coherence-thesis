@@ -20,6 +20,19 @@ function renderInline(text: string): ReactNode[] {
   return nodes;
 }
 
+function isList(block: string): boolean {
+  const lines = block.split("\n").map((line) => line.trim()).filter(Boolean);
+  return lines.length > 0 && lines.every((line) => /^[-*]\s+/.test(line));
+}
+
+function listItems(block: string): string[] {
+  return block
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => line.replace(/^[-*]\s+/, ""));
+}
+
 function isTable(block: string): boolean {
   const lines = block.split("\n").map((line) => line.trim());
   return (
@@ -65,6 +78,15 @@ export function MarkdownBody({
         }
         if (block.startsWith("> ")) {
           return <blockquote id={anchor} key={index}>{renderInline(block.replace(/^>\s?/gm, ""))}</blockquote>;
+        }
+        if (isList(block)) {
+          return (
+            <ul id={anchor} key={index}>
+              {listItems(block).map((item, itemIndex) => (
+                <li key={itemIndex}>{renderInline(item)}</li>
+              ))}
+            </ul>
+          );
         }
         if (isTable(block)) {
           const [head, , ...rows] = block.split("\n");

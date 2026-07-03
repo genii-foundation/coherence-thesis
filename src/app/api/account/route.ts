@@ -1,10 +1,27 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import {
   createAdminSupabaseClient,
   createServerSupabaseClient,
 } from "@/lib/supabase/server";
 
-export async function DELETE() {
+// Reject cross-origin calls to this destructive endpoint. When an Origin header
+// is present it must match the request host; same-origin fetches from the app
+// always satisfy this.
+function isSameOrigin(request: NextRequest): boolean {
+  const origin = request.headers.get("origin");
+  if (!origin) return true;
+  try {
+    return new URL(origin).host === request.headers.get("host");
+  } catch {
+    return false;
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  if (!isSameOrigin(request)) {
+    return NextResponse.json({ error: "Invalid origin." }, { status: 403 });
+  }
+
   const supabase = await createServerSupabaseClient();
   const admin = createAdminSupabaseClient();
 

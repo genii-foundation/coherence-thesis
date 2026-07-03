@@ -2507,7 +2507,7 @@ test("toolbar brand owns the active manuscript identity", async ({
   );
   await page.mouse.move(4, 4);
   await expect(brandTooltip).toHaveCount(0);
-  await narrowBrandStyle.evaluate((element) => element.remove());
+  await narrowBrandStyle.evaluate((element) => (element as Element).remove());
 
   await page.goto(wieldingSection.href);
   const firstBreadcrumbLink = page

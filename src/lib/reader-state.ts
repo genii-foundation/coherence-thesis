@@ -130,6 +130,19 @@ export function recordScrollProgress(
   percent: number,
 ): ReaderProgressState {
   const existing = progress.sections[section.sectionId];
+  const nextPercent = maxPercent(existing?.percent, percent);
+  const nextMaxScroll = maxPercent(existing?.maxScrollPercent, percent);
+
+  // Scroll fires many times per second; when the max percent has not advanced
+  // there is nothing to record. Returning the same reference lets callers skip
+  // a re-render and a localStorage write.
+  if (
+    existing &&
+    existing.percent === nextPercent &&
+    existing.maxScrollPercent === nextMaxScroll
+  ) {
+    return progress;
+  }
 
   return {
     sections: {
@@ -139,8 +152,8 @@ export function recordScrollProgress(
         sectionId: section.sectionId,
         contentHash: existing?.contentHash ?? section.contentHash,
         readAt: existing?.readAt ?? 0,
-        percent: maxPercent(existing?.percent, percent),
-        maxScrollPercent: maxPercent(existing?.maxScrollPercent, percent),
+        percent: nextPercent,
+        maxScrollPercent: nextMaxScroll,
       },
     },
   };
@@ -264,25 +277,46 @@ export function mergeProgressStates(
         localSection.lastOpenedAt ?? 0,
         remoteSection.lastOpenedAt ?? 0,
       ),
-      openCount: (localSection.openCount ?? 0) + (remoteSection.openCount ?? 0),
-      returnCount:
-        (localSection.returnCount ?? 0) + (remoteSection.returnCount ?? 0),
-      activeSeconds:
-        (localSection.activeSeconds ?? 0) + (remoteSection.activeSeconds ?? 0),
-      idleSeconds: (localSection.idleSeconds ?? 0) + (remoteSection.idleSeconds ?? 0),
-      totalVisibleSeconds:
-        (localSection.totalVisibleSeconds ?? 0) +
-        (remoteSection.totalVisibleSeconds ?? 0),
+      // Counters are monotonic per device, and remote is this device's own
+      // last upload, so max keeps the newest count without re-adding a value
+      // the device already contributed. Summing here doubled every metric on
+      // each signed-in load.
+      openCount: Math.max(
+        localSection.openCount ?? 0,
+        remoteSection.openCount ?? 0,
+      ),
+      returnCount: Math.max(
+        localSection.returnCount ?? 0,
+        remoteSection.returnCount ?? 0,
+      ),
+      activeSeconds: Math.max(
+        localSection.activeSeconds ?? 0,
+        remoteSection.activeSeconds ?? 0,
+      ),
+      idleSeconds: Math.max(
+        localSection.idleSeconds ?? 0,
+        remoteSection.idleSeconds ?? 0,
+      ),
+      totalVisibleSeconds: Math.max(
+        localSection.totalVisibleSeconds ?? 0,
+        remoteSection.totalVisibleSeconds ?? 0,
+      ),
       maxScrollPercent: Math.max(
         localSection.maxScrollPercent ?? localSection.percent ?? 0,
         remoteSection.maxScrollPercent ?? remoteSection.percent ?? 0,
       ),
-      manualReadCount:
-        (localSection.manualReadCount ?? 0) + (remoteSection.manualReadCount ?? 0),
-      autoReadCount:
-        (localSection.autoReadCount ?? 0) + (remoteSection.autoReadCount ?? 0),
-      audioSeconds:
-        (localSection.audioSeconds ?? 0) + (remoteSection.audioSeconds ?? 0),
+      manualReadCount: Math.max(
+        localSection.manualReadCount ?? 0,
+        remoteSection.manualReadCount ?? 0,
+      ),
+      autoReadCount: Math.max(
+        localSection.autoReadCount ?? 0,
+        remoteSection.autoReadCount ?? 0,
+      ),
+      audioSeconds: Math.max(
+        localSection.audioSeconds ?? 0,
+        remoteSection.audioSeconds ?? 0,
+      ),
     };
 
     if (sections[sectionId].firstOpenedAt === Number.MAX_SAFE_INTEGER) {
@@ -324,14 +358,22 @@ export function revisedSectionHref(
   return anchor ? `${section.href}#${anchor}` : section.href;
 }
 
+export function isSectionRead(
+  progress: ReaderProgressState,
+  section: Pick<Section, "sectionId" | "contentHash">,
+): boolean {
+  return (
+    progress.sections[section.sectionId]?.contentHash === section.contentHash
+  );
+}
+
 export function readPercent(
   progress: ReaderProgressState,
   sections: Array<Pick<Section, "sectionId" | "contentHash">>,
 ): number {
   if (sections.length === 0) return 0;
-  const read = sections.filter(
-    (section) =>
-      progress.sections[section.sectionId]?.contentHash === section.contentHash,
+  const read = sections.filter((section) =>
+    isSectionRead(progress, section),
   ).length;
   return Math.round((read / sections.length) * 100);
 }
@@ -345,7 +387,7 @@ export function recommendNextSections(
     (section) => !progress.sections[section.sectionId],
   );
   const updated = sections.filter((section) => updatedSinceRead(progress, section));
-  return [
+  const candidates = [
     ...updated.map((section) => ({
       sectionId: section.sectionId,
       title: section.title,
@@ -358,12 +400,17 @@ export function recommendNextSections(
       href: section.href,
       isUpdated: false,
     })),
-  ]
-    .filter(
-      (section, index, list) =>
-        list.findIndex((candidate) => candidate.sectionId === section.sectionId) === index,
-    )
-    .slice(0, limit);
+  ];
+
+  const seen = new Set<string>();
+  const deduped: ReaderRecommendation[] = [];
+  for (const candidate of candidates) {
+    if (seen.has(candidate.sectionId)) continue;
+    seen.add(candidate.sectionId);
+    deduped.push(candidate);
+    if (deduped.length === limit) break;
+  }
+  return deduped;
 }
 
 export function recentlyReadSections(
@@ -374,7 +421,9 @@ export function recentlyReadSections(
   return sections
     .map((section) => {
       const state = progress.sections[section.sectionId];
-      return state
+      // readAt is 0 for sections that were only opened, never read. Those must
+      // not appear under "Recently read".
+      return state && state.readAt > 0
         ? {
             sectionId: section.sectionId,
             title: section.title,
