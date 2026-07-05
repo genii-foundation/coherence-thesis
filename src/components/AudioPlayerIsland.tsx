@@ -42,7 +42,6 @@ export function AudioPlayerIsland({
   const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
   const [sections, setSections] = useState<ReaderSectionData[]>([]);
-  const sectionsLoadStartedRef = useRef(false);
   const playbackSections = useMemo(() => {
     const currentPath = normalizePath(pathname);
     if (currentPath === "/overview/") return [overviewAudio];
@@ -95,15 +94,22 @@ export function AudioPlayerIsland({
     );
   }, [pathname]);
 
-  // Defer the ~1.9 MB reader-sections fetch until the reader first opens the
-  // audio controls, since the text is only needed once playback can start.
+  // The audio island renders nothing until it knows the current page's queue,
+  // so it must load reader-sections eagerly. This shares the module-level cache
+  // with ToolbarProgressIsland, so it is not an extra network fetch.
   useEffect(() => {
-    if (!open || sectionsLoadStartedRef.current) return;
-    sectionsLoadStartedRef.current = true;
+    let mounted = true;
     loadReaderSections()
-      .then((loadedSections) => setSections(loadedSections))
-      .catch(() => setSections([]));
-  }, [open]);
+      .then((loadedSections) => {
+        if (mounted) setSections(loadedSections);
+      })
+      .catch(() => {
+        if (mounted) setSections([]);
+      });
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   useEffect(() => {
     const hydrationTimer = window.setTimeout(() => {
