@@ -2,10 +2,12 @@
 
 A comprehensive review of the application code, build pipeline, data layer, and
 release engineering, with a phased plan to modernize the codebase. This document
-is the entry point. The full evidence sits in two companion files:
+is the entry point. The full evidence sits in the companion files:
 
 - [findings-register.md](findings-register.md): every confirmed finding, with
   file and line references, the concrete failure it causes, and the fix.
+- [implementation-status.md](implementation-status.md): what this PR implements
+  versus what is deferred to follow-up PRs.
 - [methodology.md](methodology.md): how the review was run and how findings were
   verified.
 
