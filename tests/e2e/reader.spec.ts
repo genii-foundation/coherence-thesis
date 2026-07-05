@@ -172,15 +172,15 @@ test("home page presents the overview and manuscript entry points", async ({
   ).toHaveCount(0);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     "content",
-    "https://www.coherence-thesis.com/art/coherence-thesis-hero.png",
+    "https://www.coherence-thesis.com/share/coherence-thesis-og.jpg",
   );
   await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute(
     "content",
-    "1024",
+    "1200",
   );
   await expect(
     page.locator('meta[property="og:image:height"]'),
-  ).toHaveAttribute("content", "1536");
+  ).toHaveAttribute("content", "630");
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
     "content",
     "summary_large_image",
