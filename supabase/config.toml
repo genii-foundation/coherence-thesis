@@ -1,5 +1,0 @@
-# Minimal Supabase project config. Identifies this directory to the Supabase
-# CLI and GitHub integration; migrations live in supabase/migrations and are
-# applied to production by .github/workflows/supabase-migrate.yml on merge to
-# main. Local-stack settings use CLI defaults.
-project_id = "coherence-thesis"
