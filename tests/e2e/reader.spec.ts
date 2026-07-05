@@ -244,9 +244,11 @@ test("home page presents the overview and manuscript entry points", async ({
     expect(brandKickerFit.clientWidth).toBeGreaterThanOrEqual(
       brandKickerFit.scrollWidth,
     );
+    // Image optimization is active now that the site is no longer a static
+    // export, so the rendered src is a /_next/image URL wrapping the asset.
     await expect(page.locator(".hero-art img")).toHaveAttribute(
       "src",
-      "/art/coherence-thesis-hero.png",
+      /coherence-thesis-hero\.png/,
     );
   }
   const footer = page.getByRole("contentinfo", { name: "Site information" });

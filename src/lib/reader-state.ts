@@ -332,7 +332,14 @@ export function updatedSinceRead(
   section: Pick<Section, "sectionId" | "contentHash">,
 ): boolean {
   const state = progress.sections[section.sectionId];
-  return Boolean(state && state.contentHash !== section.contentHash);
+  // Only a genuinely read section can be "updated since you read it". Records
+  // created by merely opening a section have readAt 0 and must not trigger
+  // revision notices or update badges.
+  return Boolean(
+    state &&
+      (state.readAt ?? 0) > 0 &&
+      state.contentHash !== section.contentHash,
+  );
 }
 
 function firstChangedParagraphAnchor(
@@ -362,8 +369,14 @@ export function isSectionRead(
   progress: ReaderProgressState,
   section: Pick<Section, "sectionId" | "contentHash">,
 ): boolean {
-  return (
-    progress.sections[section.sectionId]?.contentHash === section.contentHash
+  const state = progress.sections[section.sectionId];
+  // A record alone does not mean read: merely opening a section stores its
+  // contentHash (markSectionOpened, recordScrollProgress). Read requires an
+  // actual read event, which is the only writer of a positive readAt.
+  return Boolean(
+    state &&
+      (state.readAt ?? 0) > 0 &&
+      state.contentHash === section.contentHash,
   );
 }
 

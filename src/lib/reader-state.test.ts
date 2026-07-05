@@ -11,6 +11,7 @@ import {
   recentlyReadSections,
   recommendNextSections,
   recordReadingTime,
+  recordScrollProgress,
   updatedSinceRead,
 } from "./reader-state";
 
@@ -206,6 +207,23 @@ describe("reader progress", () => {
     expect(isSectionRead(read, { ...section, contentHash: "changed" })).toBe(
       false,
     );
+  });
+
+  it("does not treat an opened or scrolled section as read or updated", () => {
+    const section = allSections()[0];
+    // Opening and scrolling store the section's contentHash for revision
+    // tracking, but only an actual read event may flip the read state or arm
+    // the updated-since-read notice.
+    const visited = recordScrollProgress(
+      markSectionOpened(emptyProgress(), section, 1_000),
+      section,
+      50,
+    );
+
+    expect(isSectionRead(visited, section)).toBe(false);
+    expect(
+      updatedSinceRead(visited, { ...section, contentHash: "changed" }),
+    ).toBe(false);
   });
 
   it("excludes opened-but-unread sections from recently read", () => {
