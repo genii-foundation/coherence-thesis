@@ -64,7 +64,7 @@ npm run validate
 npm run test:e2e
 ```
 
-- Fast local UI gate, reuses or starts Next dev instead of rebuilding the static export:
+- Fast local UI gate, reuses or starts Next dev instead of rebuilding the production site:
 
 ```bash
 npm run test:e2e:fast
@@ -84,7 +84,7 @@ npm run build
 npm start
 ```
 
-- `npm run validate` already compiles manuscripts, validates manuscript references, lints, runs unit tests, and builds the static export.
+- `npm run validate` already validates manuscript references and generated artifact freshness, type checks, lints, runs unit tests, and builds the production site (a Next.js server deployment with statically prerendered pages plus the auth and account route handlers, not a static export).
 - Use focused tests during implementation when they answer a specific question. Do not spend full validation time after every tiny visual tweak when a batch is still open.
 
 ## Git Workflow

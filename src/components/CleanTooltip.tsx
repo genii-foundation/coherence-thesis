@@ -114,9 +114,16 @@ export function useCleanTooltip({
       frame = window.requestAnimationFrame(updatePosition);
     };
 
+    // WCAG 1.4.13: hover/focus content must be dismissable without moving the
+    // pointer.
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
     requestUpdate();
     window.addEventListener("resize", requestUpdate);
     window.addEventListener("scroll", requestUpdate, true);
+    document.addEventListener("keydown", onKeyDown);
 
     const resizeObserver = new ResizeObserver(requestUpdate);
     if (triggerRef.current) resizeObserver.observe(triggerRef.current);
@@ -126,6 +133,7 @@ export function useCleanTooltip({
       window.cancelAnimationFrame(frame);
       window.removeEventListener("resize", requestUpdate);
       window.removeEventListener("scroll", requestUpdate, true);
+      document.removeEventListener("keydown", onKeyDown);
       resizeObserver.disconnect();
     };
   }, [open, triggerRef]);
