@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { execFileSync } from "node:child_process";
-import { buildCatalog, repoRoot } from "./manuscripts/shared";
+import { buildCatalog, git as runGit, repoRoot } from "./manuscripts/shared";
 
 const readmePath = path.join(repoRoot, "README.md");
 const startMarker = "<!-- BEGIN:development-status -->";
@@ -9,11 +8,7 @@ const endMarker = "<!-- END:development-status -->";
 
 function git(args: string[]): string {
   try {
-    return execFileSync("git", args, {
-      cwd: repoRoot,
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "ignore"],
-    }).trim();
+    return runGit(args);
   } catch {
     return "";
   }

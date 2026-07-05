@@ -1,5 +1,7 @@
 "use client";
 
+import { normalizePath } from "@/lib/routes";
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Headphones, Pause, Play, Square } from "lucide-react";
@@ -19,10 +21,6 @@ import {
 import { recordAudioSeconds } from "@/lib/reader-state";
 
 const voiceStorageKey = "coherence-audio-voice-v1";
-
-function normalizePath(path: string): string {
-  return path.endsWith("/") ? path : `${path}/`;
-}
 
 function loadPreference(): AudioVoicePreference {
   if (typeof window === "undefined") return defaultVoicePreference;

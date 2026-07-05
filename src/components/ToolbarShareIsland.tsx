@@ -1,5 +1,7 @@
 "use client";
 
+import { normalizePath } from "@/lib/routes";
+
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { BookOpen, Check, Download, FileText, Link, Share2 } from "lucide-react";
@@ -11,10 +13,6 @@ import {
 } from "@/lib/reader-data";
 
 type ShareStatus = "idle" | "copied" | "shared" | "failed";
-
-function normalizePath(path: string): string {
-  return path.endsWith("/") ? path : `${path}/`;
-}
 
 function volumeIdFromPath(pathname: string): string | null {
   const match = pathname.match(/^\/manuscripts\/([^/]+)/);

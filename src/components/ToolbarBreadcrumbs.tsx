@@ -1,14 +1,12 @@
 "use client";
 
+import { normalizePath } from "@/lib/routes";
+
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useCleanTooltip } from "@/components/CleanTooltip";
 import { loadBreadcrumbRoutes, type BreadcrumbRoute } from "@/lib/reader-data";
-
-function normalizePath(path: string): string {
-  return path.endsWith("/") ? path : `${path}/`;
-}
 
 function isTruncated(element: HTMLElement | null): boolean {
   if (!element) return false;

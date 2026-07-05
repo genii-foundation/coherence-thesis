@@ -1,5 +1,7 @@
 "use client";
 
+import { normalizePath, parentRoute } from "@/lib/routes";
+
 import {
   useCallback,
   useEffect,
@@ -59,14 +61,6 @@ import {
   updatedSinceRead,
   type ReaderProgressState,
 } from "@/lib/reader-state";
-
-function normalizePath(path: string): string {
-  return path.endsWith("/") ? path : `${path}/`;
-}
-
-function parentRoute(path: string): string {
-  return normalizePath(path).replace(/[^/]+\/$/, "");
-}
 
 const idleThresholdMs = 45_000;
 const scrollMilestones = [25, 50, 75, 100];
