@@ -70,7 +70,9 @@ jobs:
           COHERENCE_BOOTSTRAPPING: "1"
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+        # The desktop project runs Chromium; the mobile project emulates
+        # iPhone 15, which runs on WebKit.
+        run: npx playwright install --with-deps chromium webkit
 
       - name: Run end-to-end tests
         run: npm run test:e2e
