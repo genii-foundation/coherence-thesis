@@ -8,6 +8,7 @@ import {
   readFileSync,
   writeFileSync,
 } from "node:fs";
+import process from "node:process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -69,10 +70,15 @@ function writeInstallState(expectedState) {
 }
 
 function runNpmCi() {
-  const npmCommand = path.join(
+  const localNpmCommand = path.join(
     path.dirname(process.execPath),
     process.platform === "win32" ? "npm.cmd" : "npm",
   );
+  const npmCommand = existsSync(localNpmCommand)
+    ? localNpmCommand
+    : process.platform === "win32"
+      ? "npm.cmd"
+      : "npm";
   const result = spawnSync(npmCommand, ["ci"], {
     cwd: repoRoot,
     env: {
@@ -89,10 +95,24 @@ function runNpmCi() {
   return result.status;
 }
 
+const minimumNodeMajor = 20;
+
+function assertSupportedNode() {
+  const [major] = process.versions.node.split(".");
+  if (Number(major) < minimumNodeMajor) {
+    console.error(
+      `Node ${process.versions.node} is too old. This project requires Node >= ${minimumNodeMajor}.9 (see .nvmrc and package.json engines). Run \`nvm use\` or install a supported Node before continuing.`,
+    );
+    process.exit(1);
+  }
+}
+
 function main() {
   if (process.env.COHERENCE_BOOTSTRAPPING === "1") {
     return;
   }
+
+  assertSupportedNode();
 
   if (!existsSync(packageLockPath)) {
     console.error("Missing package-lock.json. Cannot bootstrap dependencies.");

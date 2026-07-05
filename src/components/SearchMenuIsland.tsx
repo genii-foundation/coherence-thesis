@@ -10,14 +10,36 @@ import {
 import { usePathname } from "next/navigation";
 import { Search } from "lucide-react";
 import { loadSearchIndex, type SearchIndexEntry } from "@/lib/reader-data";
+import { createEngagementEvent } from "@/lib/reader-engagement";
+import { appendStoredEvent } from "@/lib/reader-progress-store";
 
 type SearchResult = SearchIndexEntry & {
   score: number;
   snippet: string;
 };
 
+// Normalized fields are computed once when the index loads, not per keystroke,
+// so per-query work is substring matching over ~1.25 MB rather than re-running
+// regex passes over the whole corpus on every character typed.
+type NormalizedEntry = SearchIndexEntry & {
+  titleNorm: string;
+  hierarchyNorm: string;
+  bodyNorm: string;
+};
+
 function normalize(value: string): string {
   return value.toLowerCase().replace(/[^a-z0-9'\s]+/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function normalizeEntry(entry: SearchIndexEntry): NormalizedEntry {
+  return {
+    ...entry,
+    titleNorm: normalize(entry.title),
+    hierarchyNorm: normalize(
+      `${entry.volumeTitle} ${entry.partTitle} ${entry.chapterTitle}`,
+    ),
+    bodyNorm: normalize(entry.text),
+  };
 }
 
 function queryTerms(query: string): string[] {
@@ -42,13 +64,11 @@ function resultSnippet(text: string, terms: string[]): string {
   return `${prefix}${text.slice(start, end).trim()}${suffix}`;
 }
 
-function scoreEntry(entry: SearchIndexEntry, terms: string[], phrase: string): SearchResult | null {
+function scoreEntry(entry: NormalizedEntry, terms: string[], phrase: string): SearchResult | null {
   if (terms.length === 0) return null;
-  const titleText = normalize(entry.title);
-  const hierarchyText = normalize(
-    `${entry.volumeTitle} ${entry.partTitle} ${entry.chapterTitle}`,
-  );
-  const bodyText = normalize(entry.text);
+  const titleText = entry.titleNorm;
+  const hierarchyText = entry.hierarchyNorm;
+  const bodyText = entry.bodyNorm;
   const haystack = `${titleText} ${hierarchyText} ${bodyText}`;
   if (!terms.every((term) => haystack.includes(term))) return null;
 
@@ -76,24 +96,22 @@ export function SearchMenuIsland() {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const resultRefs = useRef<Array<HTMLAnchorElement | null>>([]);
+  const lastSubmittedQueryRef = useRef("");
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const [index, setIndex] = useState<SearchIndexEntry[]>([]);
+  const [index, setIndex] = useState<NormalizedEntry[]>([]);
   const [loadError, setLoadError] = useState(false);
+  const loadStartedRef = useRef(false);
 
+  // Defer the ~1.5 MB search index fetch until the reader first opens search,
+  // instead of downloading and parsing it on every page load.
   useEffect(() => {
-    let mounted = true;
+    if (!open || loadStartedRef.current) return;
+    loadStartedRef.current = true;
     loadSearchIndex()
-      .then((entries) => {
-        if (mounted) setIndex(entries);
-      })
-      .catch(() => {
-        if (mounted) setLoadError(true);
-      });
-    return () => {
-      mounted = false;
-    };
-  }, []);
+      .then((entries) => setIndex(entries.map(normalizeEntry)))
+      .catch(() => setLoadError(true));
+  }, [open]);
 
   useEffect(() => {
     const closeTimer = window.setTimeout(() => {
@@ -142,6 +160,24 @@ export function SearchMenuIsland() {
 
   const trimmedQuery = query.trim();
 
+  useEffect(() => {
+    if (!open || trimmedQuery.length < 2) return;
+    const timer = window.setTimeout(() => {
+      if (lastSubmittedQueryRef.current === trimmedQuery) return;
+      lastSubmittedQueryRef.current = trimmedQuery;
+      appendStoredEvent(
+        createEngagementEvent("search_submitted", {
+          route: pathname,
+          payload: {
+            query: trimmedQuery,
+            resultCount: results.length,
+          },
+        }),
+      );
+    }, 800);
+    return () => window.clearTimeout(timer);
+  }, [open, pathname, results.length, trimmedQuery]);
+
   function focusResult(index: number): void {
     resultRefs.current[index]?.focus();
   }
@@ -155,6 +191,16 @@ export function SearchMenuIsland() {
 
     if (event.key === "Enter" && results.length > 0) {
       event.preventDefault();
+      appendStoredEvent(
+        createEngagementEvent("search_result_clicked", {
+          sectionId: results[0].sectionId,
+          route: results[0].href,
+          payload: {
+            query: trimmedQuery,
+            rank: 1,
+          },
+        }),
+      );
       window.location.assign(results[0].href);
       return;
     }
@@ -261,6 +307,18 @@ export function SearchMenuIsland() {
                 href={result.href}
                 className="search-result"
                 onKeyDown={(event) => onResultKeyDown(event, resultIndex)}
+                onClick={() =>
+                  appendStoredEvent(
+                    createEngagementEvent("search_result_clicked", {
+                      sectionId: result.sectionId,
+                      route: result.href,
+                      payload: {
+                        query: trimmedQuery,
+                        rank: resultIndex + 1,
+                      },
+                    }),
+                  )
+                }
               >
                 <span className="search-result-title">
                   <strong>{result.title}</strong>

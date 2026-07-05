@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Overview",
   description:
     "A five minute overview of The Coherence Thesis with direct links into the manuscript.",
+  alternates: { canonical: "/overview/" },
 };
 
 export default function OverviewPage() {

@@ -2,10 +2,16 @@ import { describe, expect, it } from "vitest";
 import { allSections } from "./manuscript-data";
 import {
   emptyProgress,
+  isSectionRead,
   markRead,
+  markSectionOpened,
+  mergeProgressStates,
+  parseProgress,
   readPercent,
   recentlyReadSections,
   recommendNextSections,
+  recordReadingTime,
+  recordScrollProgress,
   updatedSinceRead,
 } from "./reader-state";
 
@@ -22,9 +28,118 @@ describe("reader progress", () => {
         contentHash: paragraph.contentHash,
       })),
       readAt: 1_700_000_000,
+      lastReadAt: 1_700_000_000,
+      percent: 100,
+      autoReadCount: 1,
+    });
+    expect(updatedSinceRead(progress, section)).toBe(false);
+  });
+
+  it("keeps legacy v1 progress readable", () => {
+    const section = allSections()[0];
+    const progress = parseProgress(
+      JSON.stringify({
+        sections: {
+          [section.sectionId]: {
+            sectionId: section.sectionId,
+            contentHash: section.contentHash,
+            readAt: 1_700,
+            percent: 100,
+          },
+        },
+      }),
+    );
+
+    expect(progress.sections[section.sectionId]).toMatchObject({
+      contentHash: section.contentHash,
+      readAt: 1_700,
       percent: 100,
     });
     expect(updatedSinceRead(progress, section)).toBe(false);
+  });
+
+  it("tracks opens, returns, and conservative reading time", () => {
+    const section = allSections()[0];
+    const opened = markSectionOpened(emptyProgress(), section, 1_000, "direct");
+    const returned = markSectionOpened(opened, section, 2_000, "search");
+    const timed = recordReadingTime(returned, section, {
+      activeSeconds: 20,
+      idleSeconds: 5,
+      totalVisibleSeconds: 25,
+    });
+
+    expect(timed.sections[section.sectionId]).toMatchObject({
+      firstOpenedAt: 1_000,
+      lastOpenedAt: 2_000,
+      openCount: 2,
+      returnCount: 1,
+      activeSeconds: 20,
+      idleSeconds: 5,
+      totalVisibleSeconds: 25,
+      lastSource: "search",
+    });
+  });
+
+  it("merges synced summaries while preserving the newest read hash", () => {
+    const section = allSections()[0];
+    const local = markRead(
+      markSectionOpened(emptyProgress(), section, 1_000),
+      section,
+      100,
+      3_000,
+      "manual",
+    );
+    const remote = {
+      sections: {
+        [section.sectionId]: {
+          sectionId: section.sectionId,
+          contentHash: "older",
+          readAt: 2_000,
+          percent: 100,
+          openCount: 2,
+          activeSeconds: 40,
+        },
+      },
+    };
+
+    const merged = mergeProgressStates(local, remote);
+
+    // Counters take the max across sides, never the sum. Remote is this
+    // device's own prior upload, so summing would double every metric.
+    expect(merged.sections[section.sectionId]).toMatchObject({
+      contentHash: section.contentHash,
+      readAt: 3_000,
+      openCount: 2,
+      activeSeconds: 40,
+      manualReadCount: 1,
+    });
+  });
+
+  it("is idempotent when merging a state with its own uploaded copy", () => {
+    const section = allSections()[0];
+    const opened = markSectionOpened(emptyProgress(), section, 1_000);
+    const timed = recordReadingTime(opened, section, {
+      activeSeconds: 30,
+      idleSeconds: 4,
+      totalVisibleSeconds: 34,
+    });
+    const state = markRead(timed, section, 100, 5_000, "manual");
+
+    const once = mergeProgressStates(state, state);
+    const twice = mergeProgressStates(once, once);
+
+    // Merging a device's state with its own remote mirror must not inflate any
+    // counter, on the first sync or any repeat.
+    for (const merged of [once, twice]) {
+      expect(merged.sections[section.sectionId]).toMatchObject({
+        openCount: state.sections[section.sectionId].openCount,
+        activeSeconds: state.sections[section.sectionId].activeSeconds,
+        idleSeconds: state.sections[section.sectionId].idleSeconds,
+        totalVisibleSeconds:
+          state.sections[section.sectionId].totalVisibleSeconds,
+        manualReadCount: state.sections[section.sectionId].manualReadCount,
+      });
+    }
   });
 
   it("detects content updates after a section was read", () => {
@@ -81,6 +196,44 @@ describe("reader progress", () => {
         href: sections[1].href,
         isUpdated: false,
       },
+    ]);
+  });
+
+  it("reports read state by content hash", () => {
+    const section = allSections()[0];
+    const read = markRead(emptyProgress(), section);
+    expect(isSectionRead(read, section)).toBe(true);
+    expect(isSectionRead(emptyProgress(), section)).toBe(false);
+    expect(isSectionRead(read, { ...section, contentHash: "changed" })).toBe(
+      false,
+    );
+  });
+
+  it("does not treat an opened or scrolled section as read or updated", () => {
+    const section = allSections()[0];
+    // Opening and scrolling store the section's contentHash for revision
+    // tracking, but only an actual read event may flip the read state or arm
+    // the updated-since-read notice.
+    const visited = recordScrollProgress(
+      markSectionOpened(emptyProgress(), section, 1_000),
+      section,
+      50,
+    );
+
+    expect(isSectionRead(visited, section)).toBe(false);
+    expect(
+      updatedSinceRead(visited, { ...section, contentHash: "changed" }),
+    ).toBe(false);
+  });
+
+  it("excludes opened-but-unread sections from recently read", () => {
+    const sections = allSections().slice(0, 3);
+    const opened = markSectionOpened(emptyProgress(), sections[0], 1_000);
+    const withRead = markRead(opened, sections[1], 100, 2_000);
+
+    const recent = recentlyReadSections(withRead, sections, 4);
+    expect(recent.map((entry) => entry.sectionId)).toEqual([
+      sections[1].sectionId,
     ]);
   });
 

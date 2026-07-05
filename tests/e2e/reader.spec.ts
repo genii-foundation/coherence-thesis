@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { catalog, partById } from "../../src/lib/manuscript-data";
+import { readerEventsStorageKey } from "../../src/lib/reader-engagement";
 import { readerPreferencesStorageKey } from "../../src/lib/reader-preferences";
 import { readerProgressStorageKey } from "../../src/lib/reader-state";
 import { formatReadingDurationForWords } from "../../src/lib/reading-time";
@@ -171,15 +172,15 @@ test("home page presents the overview and manuscript entry points", async ({
   ).toHaveCount(0);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     "content",
-    "https://www.coherence-thesis.com/art/coherence-thesis-hero.png",
+    "https://www.coherence-thesis.com/share/coherence-thesis-og.jpg",
   );
   await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute(
     "content",
-    "1024",
+    "1200",
   );
   await expect(
     page.locator('meta[property="og:image:height"]'),
-  ).toHaveAttribute("content", "1536");
+  ).toHaveAttribute("content", "630");
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
     "content",
     "summary_large_image",
@@ -243,9 +244,11 @@ test("home page presents the overview and manuscript entry points", async ({
     expect(brandKickerFit.clientWidth).toBeGreaterThanOrEqual(
       brandKickerFit.scrollWidth,
     );
+    // Image optimization is active now that the site is no longer a static
+    // export, so the rendered src is a /_next/image URL wrapping the asset.
     await expect(page.locator(".hero-art img")).toHaveAttribute(
       "src",
-      "/art/coherence-thesis-hero.png",
+      /coherence-thesis-hero\.png/,
     );
   }
   const footer = page.getByRole("contentinfo", { name: "Site information" });
@@ -1062,6 +1065,9 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   await expect(homeProgressButton).toHaveAttribute("aria-expanded", "true");
   const popover = page.getByRole("region", { name: "Reader progress" });
   await expect(popover).toBeVisible();
+  await expect(
+    popover.getByText("Reading history is kept in this browser until you choose to sync."),
+  ).toBeVisible();
 
   const popoverBox = await popover.boundingBox();
   const viewport = page.viewportSize();
@@ -1076,7 +1082,7 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   }
 
   const progressCopy = popover.getByText(
-    "Stored only in this browser. No account, no server reading history.",
+    "Reading history is kept in this browser until you choose to sync.",
   );
   await expect(progressCopy).toBeVisible();
   const firstRecommendation = popover.locator(".recommendations a").first();
@@ -1760,6 +1766,18 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   expect(recentLinkMetrics.width).toBeGreaterThan(
     recentLinkMetrics.panelWidth - 80,
   );
+  const localEvents = await page.evaluate((key) => {
+    return JSON.parse(window.localStorage.getItem(key) ?? "[]") as Array<{
+      eventType: string;
+      sectionId?: string;
+    }>;
+  }, readerEventsStorageKey);
+  expect(localEvents.some((event) => event.eventType === "section_opened")).toBe(
+    true,
+  );
+  expect(localEvents.some((event) => event.eventType === "manual_mark_read")).toBe(
+    true,
+  );
   const listenButton = page.getByRole("button", { name: /Listen/ });
   await expect(listenButton).toBeVisible();
   const idleListenButtonWidth = await listenButton.evaluate(
@@ -1796,6 +1814,33 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await expect(
     footer.getByText(`© ${copyrightYearLabel} by the Providence Collective.`),
   ).toBeVisible();
+});
+
+test("singleton section alias records anonymous engagement events", async ({
+  page,
+}) => {
+  const aliasHref = firstSection.href.replace(`${firstSection.sectionId}/`, "");
+
+  await page.goto(aliasHref);
+  await expect(
+    page.getByRole("heading", { name: firstSection.title }),
+  ).toBeVisible();
+
+  await expect
+    .poll(async () => {
+      return page.evaluate((key) => {
+        return JSON.parse(window.localStorage.getItem(key) ?? "[]") as Array<{
+          eventType: string;
+          sectionId?: string;
+        }>;
+      }, readerEventsStorageKey);
+    })
+    .toContainEqual(
+      expect.objectContaining({
+        eventType: "section_opened",
+        sectionId: firstSection.sectionId,
+      }),
+    );
 });
 
 test("reader shows subtle revision status for previously read sections", async ({
@@ -2464,7 +2509,7 @@ test("toolbar brand owns the active manuscript identity", async ({
   );
   await page.mouse.move(4, 4);
   await expect(brandTooltip).toHaveCount(0);
-  await narrowBrandStyle.evaluate((element) => element.remove());
+  await narrowBrandStyle.evaluate((element) => (element as Element).remove());
 
   await page.goto(wieldingSection.href);
   const firstBreadcrumbLink = page

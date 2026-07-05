@@ -1,5 +1,7 @@
 "use client";
 
+import { normalizePath } from "@/lib/routes";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ToolbarBreadcrumbs } from "@/components/ToolbarBreadcrumbs";
@@ -9,10 +11,6 @@ type ContextVolume = {
   numberLabel: string;
   title: string;
 };
-
-function normalizePath(path: string): string {
-  return path.endsWith("/") ? path : `${path}/`;
-}
 
 export function MobilePageContextIsland({
   volumes,

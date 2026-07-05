@@ -33,6 +33,7 @@ export async function generateMetadata({
     description: volume
       ? `${volume.title}, part of The Coherence Thesis.`
       : "The Coherence Thesis manuscript.",
+    alternates: volume ? { canonical: volume.href } : undefined,
   };
 }
 

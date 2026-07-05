@@ -1,5 +1,7 @@
 "use client";
 
+import { normalizePath } from "@/lib/routes";
+
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { BookOpen, Check, Download, FileText, Link, Share2 } from "lucide-react";
@@ -11,10 +13,6 @@ import {
 } from "@/lib/reader-data";
 
 type ShareStatus = "idle" | "copied" | "shared" | "failed";
-
-function normalizePath(path: string): string {
-  return path.endsWith("/") ? path : `${path}/`;
-}
 
 function volumeIdFromPath(pathname: string): string | null {
   const match = pathname.match(/^\/manuscripts\/([^/]+)/);
@@ -45,6 +43,7 @@ export function ToolbarShareIsland() {
   const [actionablePdfHrefs, setActionablePdfHrefs] = useState<Set<string>>(
     new Set(),
   );
+  const loadStartedRef = useRef(false);
 
   const currentSection = useMemo(() => {
     const currentPath = normalizePath(pathname);
@@ -64,19 +63,15 @@ export function ToolbarShareIsland() {
     return [...new Set(hrefs)];
   }, [currentSection?.pdfHref, currentVolume?.pdfHref]);
 
+  // Defer the PDF manifest fetch until the reader first opens the share menu,
+  // instead of downloading it on every page load.
   useEffect(() => {
-    let mounted = true;
+    if (!open || loadStartedRef.current) return;
+    loadStartedRef.current = true;
     loadPdfDownloads()
-      .then((nextDownloads) => {
-        if (mounted) setDownloads(nextDownloads);
-      })
-      .catch(() => {
-        if (mounted) setDownloads({ sections: [], manuscripts: [] });
-      });
-    return () => {
-      mounted = false;
-    };
-  }, []);
+      .then((nextDownloads) => setDownloads(nextDownloads))
+      .catch(() => setDownloads({ sections: [], manuscripts: [] }));
+  }, [open]);
 
   useEffect(() => {
     const closeTimer = window.setTimeout(() => {

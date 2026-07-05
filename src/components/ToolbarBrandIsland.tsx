@@ -1,5 +1,7 @@
 "use client";
 
+import { normalizePath } from "@/lib/routes";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useRef, useState } from "react";
@@ -10,10 +12,6 @@ type BrandVolume = {
   href: string;
   numberLabel: string;
 };
-
-function normalizePath(path: string): string {
-  return path.endsWith("/") ? path : `${path}/`;
-}
 
 export function ToolbarBrandIsland({ volumes }: { volumes: BrandVolume[] }) {
   const pathname = usePathname();

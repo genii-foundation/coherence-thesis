@@ -10,5 +10,12 @@ export default defineConfig({
   test: {
     environment: "node",
     exclude: ["tests/e2e/**", "node_modules/**", "dist/**", ".next/**"],
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "lcov"],
+      reportsDirectory: "coverage",
+      include: ["src/lib/**/*.ts", "scripts/manuscripts/**/*.ts"],
+      exclude: ["**/*.test.ts", "**/*.d.ts"],
+    },
   },
 });

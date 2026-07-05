@@ -6,7 +6,7 @@
   --paper-soft: #fbf6eb;
   --ink: #13202a;
   --ink-soft: #40515d;
-  --ink-muted: #6d7a80;
+  --ink-muted: #5a666c;
   --bronze: #a47b3f;
   --bronze-deep: #77542a;
   --sage: #60796d;
@@ -61,7 +61,7 @@ html[data-reader-theme="light"] {
   --paper-soft: #fffefa;
   --ink: #111827;
   --ink-soft: #334155;
-  --ink-muted: #64748b;
+  --ink-muted: #586573;
   --bronze: #8f6a32;
   --bronze-deep: #594018;
   --sage: #3f6858;
@@ -638,6 +638,19 @@ input {
   background: var(--nav-hover-background);
   color: var(--ink);
   outline: none;
+}
+
+/*
+ * Accessibility: guarantee a visible, theme-aware keyboard focus indicator on
+ * every interactive element. Individual components set `outline: none` and reuse
+ * the ~10% hover tint, which leaves keyboard users unable to see focus (WCAG
+ * 2.4.7) and unable to tell a focused option from a selected one. This single
+ * rule overrides those; !important is the intended tool for an app-wide focus
+ * ring that must win over component styles.
+ */
+:focus-visible {
+  outline: 2px solid var(--bronze-deep) !important;
+  outline-offset: 2px !important;
 }
 
 .outline-menu,
@@ -2548,6 +2561,43 @@ input {
 }
 
 .reader-status .reader-actions {
+  margin-top: 0;
+}
+
+.reader-sync,
+.reader-sync-form,
+.reader-sync-consent,
+.reader-sync-actions {
+  display: grid;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.reader-sync-form label {
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.reader-sync-form input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--subtle-control-background);
+  color: var(--ink);
+  font: inherit;
+  padding: 0.68rem 0.72rem;
+}
+
+.reader-sync-form input:focus-visible {
+  border-color: rgba(119, 84, 42, 0.52);
+  outline: 2px solid rgba(119, 84, 42, 0.28);
+  outline-offset: 0.15rem;
+}
+
+.reader-sync-actions .reader-actions {
   margin-top: 0;
 }
 

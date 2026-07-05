@@ -102,51 +102,32 @@ export function manuscriptPdfHref(volume: CompiledVolume): string {
   return `/downloads/manuscripts/${manuscriptPdfFileName(volume)}`;
 }
 
-function firstExistingPath(paths: string[]): string | null {
-  return paths.find((candidate) => fs.existsSync(candidate)) ?? null;
-}
+// Fonts are vendored in the repo (OFL PT Serif and PT Mono) and registered
+// unconditionally so every build host renders identical, fully-glyphed PDFs.
+// The previous probing of system font paths silently fell back to PDFKit core
+// fonts (WinAnsi) on the deploy host, dropping every non-WinAnsi glyph.
+const fontRoot = path.join(repoRoot, "fonts");
+const fontFiles = {
+  regular: "PTSerif-Regular.ttf",
+  bold: "PTSerif-Bold.ttf",
+  italic: "PTSerif-Italic.ttf",
+  mono: "PTMono-Regular.ttf",
+} as const;
 
 function registerFonts(doc: PDFKit.PDFDocument): PdfFonts {
-  const regular = firstExistingPath([
-    "/System/Library/Fonts/Supplemental/Georgia.ttf",
-    "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
-    "/usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf",
-  ]);
-  const bold = firstExistingPath([
-    "/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
-    "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
-    "/usr/share/fonts/truetype/liberation2/LiberationSerif-Bold.ttf",
-  ]);
-  const italic = firstExistingPath([
-    "/System/Library/Fonts/Supplemental/Georgia Italic.ttf",
-    "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Italic.ttf",
-    "/usr/share/fonts/truetype/liberation2/LiberationSerif-Italic.ttf",
-  ]);
-  const mono = firstExistingPath([
-    "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
-    "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf",
-    "/usr/share/fonts/truetype/liberation2/LiberationMono-Regular.ttf",
-  ]);
-
-  if (regular && bold && italic && mono) {
-    doc.registerFont("reader-regular", regular);
-    doc.registerFont("reader-bold", bold);
-    doc.registerFont("reader-italic", italic);
-    doc.registerFont("reader-mono", mono);
-    return {
-      regular: "reader-regular",
-      bold: "reader-bold",
-      italic: "reader-italic",
-      mono: "reader-mono",
-    };
+  const registered: Partial<PdfFonts> = {};
+  for (const [role, fileName] of Object.entries(fontFiles)) {
+    const fontPath = path.join(fontRoot, fileName);
+    if (!fs.existsSync(fontPath)) {
+      throw new Error(
+        `Missing vendored PDF font: ${fontPath}. Reader PDFs require the repo fonts/ directory; refusing to build with PDFKit core fonts that drop non-WinAnsi glyphs.`,
+      );
+    }
+    const alias = `reader-${role}`;
+    doc.registerFont(alias, fontPath);
+    registered[role as keyof PdfFonts] = alias;
   }
-
-  return {
-    regular: "Times-Roman",
-    bold: "Times-Bold",
-    italic: "Times-Italic",
-    mono: "Courier",
-  };
+  return registered as PdfFonts;
 }
 
 function outputPathFromHref(href: string): string {

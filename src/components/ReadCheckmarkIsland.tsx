@@ -3,18 +3,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { Check } from "lucide-react";
 import type { ProgressSection } from "@/lib/manuscript-data";
+import { readStoredProgress } from "@/lib/reader-progress-store";
 import {
   emptyProgress,
-  parseProgress,
-  readerProgressStorageKey,
+  isSectionRead,
   readerProgressUpdatedEvent,
   type ReaderProgressState,
 } from "@/lib/reader-state";
-
-function readStoredProgress(): ReaderProgressState {
-  if (typeof window === "undefined") return emptyProgress();
-  return parseProgress(window.localStorage.getItem(readerProgressStorageKey));
-}
 
 function sectionsAreRead(
   progress: ReaderProgressState,
@@ -22,10 +17,7 @@ function sectionsAreRead(
 ): boolean {
   return (
     sections.length > 0 &&
-    sections.every(
-      (section) =>
-        progress.sections[section.sectionId]?.contentHash === section.contentHash,
-    )
+    sections.every((section) => isSectionRead(progress, section))
   );
 }
 
@@ -59,6 +51,7 @@ export function ReadCheckmarkIsland({
   return (
     <span
       className={["read-checkmark", className].filter(Boolean).join(" ")}
+      role="img"
       aria-label="Read"
       data-read-checkmark="true"
       title="Read"

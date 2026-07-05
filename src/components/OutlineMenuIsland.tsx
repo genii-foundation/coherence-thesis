@@ -1,14 +1,12 @@
 "use client";
 
+import { normalizePath } from "@/lib/routes";
+
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronRight, Home, ListTree, Search } from "lucide-react";
 import type { ToolbarOutline } from "@/lib/manuscript-data";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
-
-function normalizePath(path: string): string {
-  return path.endsWith("/") ? path : `${path}/`;
-}
 
 function searchable(value: string): string {
   return value.trim().toLowerCase();

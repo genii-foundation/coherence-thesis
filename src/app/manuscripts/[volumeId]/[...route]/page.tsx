@@ -57,6 +57,7 @@ export async function generateMetadata({
     return {
       title: chapter.title,
       description: `${chapter.title} in The Coherence Thesis.`,
+      alternates: { canonical: chapter.href },
     };
   }
 
@@ -64,6 +65,7 @@ export async function generateMetadata({
   return {
     title: part?.title ?? "Manuscript",
     description: part ? `${part.title} in The Coherence Thesis.` : undefined,
+    alternates: part ? { canonical: part.href } : undefined,
   };
 }
 

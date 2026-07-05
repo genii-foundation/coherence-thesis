@@ -1,9 +1,8 @@
 import type { MetadataRoute } from "next";
 import { catalog } from "@/lib/manuscript-data";
+import { siteUrl } from "@/lib/site-url";
 
 export const dynamic = "force-static";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://coherence-thesis.local";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -46,11 +45,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.64,
     })),
-    ...catalog.aliases.map((alias) => ({
-      url: `${siteUrl}${alias.sourceHref}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.32,
-    })),
+    // Alias routes render as duplicate copies whose canonical points at the real
+    // section, so they are intentionally excluded from the sitemap.
   ];
 
   return [...staticRoutes, ...manuscriptRoutes];

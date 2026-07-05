@@ -2,6 +2,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
+import { readingMinutesForWords } from "../../src/lib/reading-time";
 
 export const repoRoot = path.resolve(import.meta.dirname, "../..");
 export const contentRoot = path.join(repoRoot, "content");
@@ -254,9 +255,10 @@ export function wordCount(value: string): number {
   return words ? words.length : 0;
 }
 
-export function readingMinutes(words: number): number {
-  return Math.max(1, Math.ceil(words / 220));
-}
+// The reading pace lives in one place (src/lib/reading-time.ts) so the
+// build-time section headers and the client-side outline durations cannot
+// disagree for the same content.
+export const readingMinutes = readingMinutesForWords;
 
 export function stripMarkdown(value: string): string {
   return value
@@ -452,13 +454,19 @@ export function volumeHref(volumeId: string): string {
   return `/manuscripts/${volumeId}/`;
 }
 
+// Canonical git subprocess runner for the build scripts. Throws on failure so
+// callers choose their own fallback.
+export function git(args: string[], cwd = repoRoot): string {
+  return execFileSync("git", args, {
+    cwd,
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "ignore"],
+  }).trim();
+}
+
 export function getGitRevision(): string {
   try {
-    return execFileSync("git", ["rev-parse", "--short", "HEAD"], {
-      cwd: repoRoot,
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "ignore"],
-    }).trim();
+    return git(["rev-parse", "--short", "HEAD"]);
   } catch {
     return "uncommitted";
   }

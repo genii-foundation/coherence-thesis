@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { normalizePath } from "@/lib/routes";
+
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Headphones, Pause, Play, Square } from "lucide-react";
 import {
@@ -10,12 +12,15 @@ import {
   type AudioVoicePreference,
 } from "@/lib/audio-queue";
 import { loadReaderSections, type ReaderSectionData } from "@/lib/reader-data";
+import { createEngagementEvent } from "@/lib/reader-engagement";
+import {
+  appendStoredEvent,
+  readStoredProgress,
+  writeStoredProgress,
+} from "@/lib/reader-progress-store";
+import { recordAudioSeconds } from "@/lib/reader-state";
 
 const voiceStorageKey = "coherence-audio-voice-v1";
-
-function normalizePath(path: string): string {
-  return path.endsWith("/") ? path : `${path}/`;
-}
 
 function loadPreference(): AudioVoicePreference {
   if (typeof window === "undefined") return defaultVoicePreference;
@@ -62,7 +67,36 @@ export function AudioPlayerIsland({
   const [playing, setPlaying] = useState(false);
   const [supported, setSupported] = useState(true);
   const playbackTokenRef = useRef(0);
+  const audioStartedAtRef = useRef<number | null>(null);
+  const audioItemRef = useRef<AudioQueueItem | null>(null);
 
+  const flushAudioSeconds = useCallback((): void => {
+    const startedAt = audioStartedAtRef.current;
+    const item = audioItemRef.current;
+    if (!startedAt || !item) return;
+    const seconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
+    audioStartedAtRef.current = null;
+    if (seconds <= 0) return;
+    const progress = readStoredProgress();
+    const next = recordAudioSeconds(
+      progress,
+      { sectionId: item.sectionId, contentHash: item.audioVersionId },
+      seconds,
+    );
+    writeStoredProgress(next);
+    appendStoredEvent(
+      createEngagementEvent("audio_seconds_listened", {
+        sectionId: item.sectionId,
+        contentHash: item.audioVersionId,
+        route: pathname,
+        payload: { seconds },
+      }),
+    );
+  }, [pathname]);
+
+  // The audio island renders nothing until it knows the current page's queue,
+  // so it must load reader-sections eagerly. This shares the module-level cache
+  // with ToolbarProgressIsland, so it is not an extra network fetch.
   useEffect(() => {
     let mounted = true;
     loadReaderSections()
@@ -94,15 +128,17 @@ export function AudioPlayerIsland({
     return () => {
       window.clearTimeout(hydrationTimer);
       if ("speechSynthesis" in window) {
+        flushAudioSeconds();
         window.speechSynthesis.cancel();
         window.speechSynthesis.removeEventListener("voiceschanged", updateVoices);
       }
     };
-  }, []);
+  }, [flushAudioSeconds]);
 
   useEffect(() => {
     playbackTokenRef.current += 1;
     if ("speechSynthesis" in window) {
+      flushAudioSeconds();
       window.speechSynthesis.cancel();
     }
     const resetTimer = window.setTimeout(() => {
@@ -111,7 +147,7 @@ export function AudioPlayerIsland({
       setPlaying(false);
     }, 0);
     return () => window.clearTimeout(resetTimer);
-  }, [pathname]);
+  }, [flushAudioSeconds, pathname]);
 
   useEffect(() => {
     if (!open) return;
@@ -139,7 +175,17 @@ export function AudioPlayerIsland({
   function playIndex(index: number, token: number): void {
     const item = queue[index];
     if (!item || !supported) return;
+    flushAudioSeconds();
     window.speechSynthesis.cancel();
+    audioStartedAtRef.current = Date.now();
+    audioItemRef.current = item;
+    appendStoredEvent(
+      createEngagementEvent("audio_started", {
+        sectionId: item.sectionId,
+        contentHash: item.audioVersionId,
+        route: pathname,
+      }),
+    );
     const utterance = new SpeechSynthesisUtterance(`${item.title}. ${item.text}`);
     utterance.rate = preference.rate;
     utterance.pitch = preference.pitch;
@@ -147,6 +193,14 @@ export function AudioPlayerIsland({
       voices.find((voice) => voice.voiceURI === preference.voiceURI) ?? null;
     utterance.onend = () => {
       if (token !== playbackTokenRef.current) return;
+      flushAudioSeconds();
+      appendStoredEvent(
+        createEngagementEvent("audio_completed", {
+          sectionId: item.sectionId,
+          contentHash: item.audioVersionId,
+          route: pathname,
+        }),
+      );
       const nextIndex = index + 1;
       if (queue[nextIndex]) {
         setActiveIndex(nextIndex);
@@ -155,22 +209,56 @@ export function AudioPlayerIsland({
         setPlaying(false);
       }
     };
+    // Without this, a synthesis error (voice unavailable, engine interruption)
+    // leaves `playing` true forever: onend never fires, the queue stalls, and
+    // listen-seconds keep accumulating as if audio were still playing.
+    utterance.onerror = () => {
+      if (token !== playbackTokenRef.current) return;
+      flushAudioSeconds();
+      setPlaying(false);
+    };
     window.speechSynthesis.speak(utterance);
     setPlaying(true);
   }
 
   function speak(index = activeIndex): void {
+    if (window.speechSynthesis.paused && audioItemRef.current) {
+      audioStartedAtRef.current = Date.now();
+      window.speechSynthesis.resume();
+      setPlaying(true);
+      appendStoredEvent(
+        createEngagementEvent("audio_resumed", {
+          sectionId: audioItemRef.current.sectionId,
+          contentHash: audioItemRef.current.audioVersionId,
+          route: pathname,
+        }),
+      );
+      return;
+    }
+
     const token = playbackTokenRef.current + 1;
     playbackTokenRef.current = token;
     playIndex(index, token);
   }
 
   function pause(): void {
+    const item = audioItemRef.current;
+    flushAudioSeconds();
+    if (item) {
+      appendStoredEvent(
+        createEngagementEvent("audio_paused", {
+          sectionId: item.sectionId,
+          contentHash: item.audioVersionId,
+          route: pathname,
+        }),
+      );
+    }
     window.speechSynthesis.pause();
     setPlaying(false);
   }
 
   function stop(): void {
+    flushAudioSeconds();
     playbackTokenRef.current += 1;
     window.speechSynthesis.cancel();
     setPlaying(false);

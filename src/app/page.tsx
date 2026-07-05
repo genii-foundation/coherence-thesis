@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, ListTree } from "lucide-react";
 import { ManuscriptCoverFlowIsland } from "@/components/ManuscriptCoverFlowIsland";
 import { catalog } from "@/lib/manuscript-data";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

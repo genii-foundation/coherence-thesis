@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/site-url";
 
 export const dynamic = "force-static";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://coherence-thesis.local";
 
 export default function robots(): MetadataRoute.Robots {
   return {
