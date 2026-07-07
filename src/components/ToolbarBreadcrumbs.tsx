@@ -3,13 +3,14 @@
 import { normalizePath } from "@/lib/routes";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useCleanTooltip } from "@/components/CleanTooltip";
-import { loadBreadcrumbRoutes, type BreadcrumbRoute } from "@/lib/reader-data";
-import { useLoadedData } from "@/lib/use-loaded-data";
+import { loadBreadcrumbShard, type BreadcrumbRoute } from "@/lib/reader-data";
 
-const emptyBreadcrumbRoutes: BreadcrumbRoute[] = [];
+function breadcrumbShardKey(path: string): string {
+  return path.match(/^\/manuscripts\/([^/]+)\//)?.[1] ?? "index";
+}
 
 function isTruncated(element: HTMLElement | null): boolean {
   if (!element) return false;
@@ -73,11 +74,30 @@ function BreadcrumbTooltip({
 
 export function ToolbarBreadcrumbs({ className }: { className?: string } = {}) {
   const pathname = usePathname();
-  const routes = useLoadedData(loadBreadcrumbRoutes, emptyBreadcrumbRoutes);
   const currentPath = normalizePath(pathname);
-  const route =
-    routes.find((candidate) => normalizePath(candidate.href) === currentPath) ??
-    routes[0];
+  const shardKey = breadcrumbShardKey(currentPath);
+  const [routes, setRoutes] = useState<BreadcrumbRoute[]>([]);
+
+  // Load only the current volume's shard. It refetches only when the volume
+  // changes; it is cached per key, so navigation within a volume never refetches
+  // and the route lookup below just re-runs against the loaded shard.
+  useEffect(() => {
+    let active = true;
+    loadBreadcrumbShard(shardKey)
+      .then((loaded) => {
+        if (active) setRoutes(loaded);
+      })
+      .catch(() => {
+        if (active) setRoutes([]);
+      });
+    return () => {
+      active = false;
+    };
+  }, [shardKey]);
+
+  const route = routes.find(
+    (candidate) => normalizePath(candidate.href) === currentPath,
+  );
 
   if (!route || route.crumbs.length === 0) return null;
 

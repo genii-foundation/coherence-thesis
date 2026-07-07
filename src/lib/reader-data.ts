@@ -130,10 +130,28 @@ export const loadReaderSections = memoizedLoader<ReaderSectionData[]>(
   "reader section data",
 );
 
-export const loadBreadcrumbRoutes = memoizedLoader<BreadcrumbRoute[]>(
-  "/data/breadcrumb-routes.json",
-  "breadcrumb data",
-);
+// Breadcrumb routes are sharded by volume (PERF-01). Each shard is fetched once
+// and cached; a reader only pulls the shard for the volume they are in, or the
+// small "index" shard for non-manuscript routes.
+const breadcrumbShardCache = new Map<string, Promise<BreadcrumbRoute[]>>();
+
+export function loadBreadcrumbShard(key: string): Promise<BreadcrumbRoute[]> {
+  const existing = breadcrumbShardCache.get(key);
+  if (existing) return existing;
+  const request = fetch(`/data/breadcrumbs/${key}.json`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Unable to load breadcrumb shard '${key}': ${response.status}`);
+      }
+      return response.json() as Promise<BreadcrumbRoute[]>;
+    })
+    .catch((error: unknown) => {
+      breadcrumbShardCache.delete(key);
+      throw error;
+    });
+  breadcrumbShardCache.set(key, request);
+  return request;
+}
 
 export const loadSearchIndex = memoizedLoader<SearchIndexEntry[]>(
   "/data/search-index.json",
