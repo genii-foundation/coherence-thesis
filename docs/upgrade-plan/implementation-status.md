@@ -28,6 +28,21 @@ local gate (`manuscripts:validate`, typecheck, lint, unit tests, build) green.
   `recordScrollProgress` returning the same reference already limit writes to
   actual changes, so `updateStoredProgress` is a no-op on idle scroll frames.
 
+## Follow-up PR: audio playback provider seam (Phase 4, wave 2)
+
+- **ARCH-05** `AudioPlayback` provider interface in `src/lib/audio-playback.ts`.
+  `AudioPlayerIsland` no longer calls `window.speechSynthesis` directly (it had
+  17 call sites); it depends on an `AudioPlaybackProvider` obtained from
+  `createDefaultAudioProvider()`, and the browser engine lives behind
+  `createBrowserSpeechProvider()`. The island keeps queue orchestration, the
+  playback token, engagement events, and listen-seconds; the provider owns the
+  engine. This is the seam the audio-provider research calls for: a precomputed
+  `<audio>` clip provider can implement the same interface without touching the
+  island. Covered by `audio-playback.test.ts` (the provider contract against a
+  faked engine) and the desktop e2e audio-controls test.
+- Folds in `docs/audio-provider-research.md` (was the standalone doc-only PR
+  #22) so the design and its first implementation land together.
+
 ## Done in the base PR (#24)
 
 ### Phase 0: correctness and safety
@@ -88,7 +103,6 @@ self-contained next PR; the register entry has the full detail.
 - **ARCH-02** decompose the (now ~640-line) `ToolbarProgressIsland`
 - **ARCH-03** read and act on sync `schema_version` / consent versioning
 - **ARCH-04** section-ID drift gate in the import pipeline
-- **ARCH-05** `AudioPlayback` provider interface
 - **MAINT-05** split `scripts/manuscripts/shared.ts`
 
 ### Duplication (remaining)

@@ -11,6 +11,10 @@ import {
   type AudioQueueItem,
   type AudioVoicePreference,
 } from "@/lib/audio-queue";
+import {
+  createDefaultAudioProvider,
+  type AudioPlaybackVoice,
+} from "@/lib/audio-playback";
 import { loadReaderSections, type ReaderSectionData } from "@/lib/reader-data";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import {
@@ -57,7 +61,8 @@ export function AudioPlayerIsland({
     () => queueFromSections(playbackSections),
     [playbackSections],
   );
-  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const provider = useMemo(() => createDefaultAudioProvider(), []);
+  const [voices, setVoices] = useState<AudioPlaybackVoice[]>([]);
   const [preference, setPreference] = useState<AudioVoicePreference>(
     () => defaultVoicePreference,
   );
@@ -112,33 +117,32 @@ export function AudioPlayerIsland({
 
   useEffect(() => {
     const hydrationTimer = window.setTimeout(() => {
-      if (!("speechSynthesis" in window)) {
+      if (!provider.isSupported()) {
         setSupported(false);
         return;
       }
       setPreference(loadPreference());
-      setVoices(window.speechSynthesis.getVoices());
+      setVoices(provider.getVoices());
     }, 0);
 
-    const updateVoices = () => setVoices(window.speechSynthesis.getVoices());
-    if ("speechSynthesis" in window) {
-      window.speechSynthesis.addEventListener("voiceschanged", updateVoices);
-    }
+    const unsubscribeVoices = provider.subscribeVoices(() =>
+      setVoices(provider.getVoices()),
+    );
     return () => {
       window.clearTimeout(hydrationTimer);
-      if ("speechSynthesis" in window) {
+      unsubscribeVoices();
+      if (provider.isSupported()) {
         flushAudioSeconds();
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.removeEventListener("voiceschanged", updateVoices);
+        provider.cancel();
       }
     };
-  }, [flushAudioSeconds]);
+  }, [flushAudioSeconds, provider]);
 
   useEffect(() => {
     playbackTokenRef.current += 1;
-    if ("speechSynthesis" in window) {
+    if (provider.isSupported()) {
       flushAudioSeconds();
-      window.speechSynthesis.cancel();
+      provider.cancel();
     }
     const resetTimer = window.setTimeout(() => {
       setActiveIndex(0);
@@ -146,7 +150,7 @@ export function AudioPlayerIsland({
       setPlaying(false);
     }, 0);
     return () => window.clearTimeout(resetTimer);
-  }, [flushAudioSeconds, pathname]);
+  }, [flushAudioSeconds, pathname, provider]);
 
   useEffect(() => {
     if (!open) return;
@@ -175,7 +179,6 @@ export function AudioPlayerIsland({
     const item = queue[index];
     if (!item || !supported) return;
     flushAudioSeconds();
-    window.speechSynthesis.cancel();
     audioStartedAtRef.current = Date.now();
     audioItemRef.current = item;
     appendStoredEvent(
@@ -185,45 +188,46 @@ export function AudioPlayerIsland({
         route: pathname,
       }),
     );
-    const utterance = new SpeechSynthesisUtterance(`${item.title}. ${item.text}`);
-    utterance.rate = preference.rate;
-    utterance.pitch = preference.pitch;
-    utterance.voice =
-      voices.find((voice) => voice.voiceURI === preference.voiceURI) ?? null;
-    utterance.onend = () => {
-      if (token !== playbackTokenRef.current) return;
-      flushAudioSeconds();
-      appendStoredEvent(
-        createEngagementEvent("audio_completed", {
-          sectionId: item.sectionId,
-          contentHash: item.audioVersionId,
-          route: pathname,
-        }),
-      );
-      const nextIndex = index + 1;
-      if (queue[nextIndex]) {
-        setActiveIndex(nextIndex);
-        playIndex(nextIndex, token);
-      } else {
+    provider.speak({
+      text: `${item.title}. ${item.text}`,
+      voiceId: preference.voiceURI,
+      rate: preference.rate,
+      pitch: preference.pitch,
+      onEnd: () => {
+        if (token !== playbackTokenRef.current) return;
+        flushAudioSeconds();
+        appendStoredEvent(
+          createEngagementEvent("audio_completed", {
+            sectionId: item.sectionId,
+            contentHash: item.audioVersionId,
+            route: pathname,
+          }),
+        );
+        const nextIndex = index + 1;
+        if (queue[nextIndex]) {
+          setActiveIndex(nextIndex);
+          playIndex(nextIndex, token);
+        } else {
+          setPlaying(false);
+        }
+      },
+      // Without this, a synthesis error (voice unavailable, engine
+      // interruption) leaves `playing` true forever: onEnd never fires, the
+      // queue stalls, and listen-seconds keep accumulating as if audio were
+      // still playing.
+      onError: () => {
+        if (token !== playbackTokenRef.current) return;
+        flushAudioSeconds();
         setPlaying(false);
-      }
-    };
-    // Without this, a synthesis error (voice unavailable, engine interruption)
-    // leaves `playing` true forever: onend never fires, the queue stalls, and
-    // listen-seconds keep accumulating as if audio were still playing.
-    utterance.onerror = () => {
-      if (token !== playbackTokenRef.current) return;
-      flushAudioSeconds();
-      setPlaying(false);
-    };
-    window.speechSynthesis.speak(utterance);
+      },
+    });
     setPlaying(true);
   }
 
   function speak(index = activeIndex): void {
-    if (window.speechSynthesis.paused && audioItemRef.current) {
+    if (provider.isPaused() && audioItemRef.current) {
       audioStartedAtRef.current = Date.now();
-      window.speechSynthesis.resume();
+      provider.resume();
       setPlaying(true);
       appendStoredEvent(
         createEngagementEvent("audio_resumed", {
@@ -252,14 +256,14 @@ export function AudioPlayerIsland({
         }),
       );
     }
-    window.speechSynthesis.pause();
+    provider.pause();
     setPlaying(false);
   }
 
   function stop(): void {
     flushAudioSeconds();
     playbackTokenRef.current += 1;
-    window.speechSynthesis.cancel();
+    provider.cancel();
     setPlaying(false);
   }
 
@@ -331,8 +335,8 @@ export function AudioPlayerIsland({
             >
               <option value="">System voice</option>
               {voices.map((voice) => (
-                <option key={voice.voiceURI} value={voice.voiceURI}>
-                  {voice.name}
+                <option key={voice.id} value={voice.id}>
+                  {voice.label}
                 </option>
               ))}
             </select>
