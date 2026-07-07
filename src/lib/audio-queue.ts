@@ -5,13 +5,6 @@ export type AudioQueueItem = {
   audioVersionId: string;
 };
 
-type AudioSection = {
-  sectionId: string;
-  title: string;
-  text: string;
-  audioVersionId: string;
-};
-
 export type AudioVoicePreference = {
   voiceURI: string | null;
   rate: number;
@@ -24,18 +17,9 @@ export const defaultVoicePreference: AudioVoicePreference = {
   pitch: 1,
 };
 
-export function queueFromSection(section: AudioSection): AudioQueueItem[] {
-  return [
-    {
-      sectionId: section.sectionId,
-      title: section.title,
-      text: section.text,
-      audioVersionId: section.audioVersionId,
-    },
-  ];
-}
-
-export function queueFromSections(sections: AudioSection[]): AudioQueueItem[] {
+export function queueFromSections(
+  sections: readonly AudioQueueItem[],
+): AudioQueueItem[] {
   return sections.map((section) => ({
     sectionId: section.sectionId,
     title: section.title,

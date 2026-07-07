@@ -140,9 +140,25 @@ function requireNumber(frontmatter: Record<string, unknown>, key: string): numbe
 
 export function readMarkdownDocuments(root = manuscriptRoot): MarkdownDocument[] {
   return markdownFiles(root).map((filePath) => {
-    const parsed = parseFrontmatter(readUtf8(filePath));
-    const frontmatter: ManuscriptFrontmatter = {
-      volumeId: requireString(parsed.frontmatter, "volumeId"),
+    const relativePath = path.relative(repoRoot, filePath).replace(/\\/g, "/");
+    try {
+      return parseMarkdownDocument(filePath, relativePath);
+    } catch (error) {
+      // Name the offending file so a bad frontmatter block or a missing
+      // required field is actionable instead of an anonymous failure (MAINT-03).
+      const reason = error instanceof Error ? error.message : String(error);
+      throw new Error(`${relativePath}: ${reason}`);
+    }
+  });
+}
+
+function parseMarkdownDocument(
+  filePath: string,
+  relativePath: string,
+): MarkdownDocument {
+  const parsed = parseFrontmatter(readUtf8(filePath));
+  const frontmatter: ManuscriptFrontmatter = {
+    volumeId: requireString(parsed.frontmatter, "volumeId"),
       volumeTitle: requireString(parsed.frontmatter, "volumeTitle"),
       volumeOrder: requireNumber(parsed.frontmatter, "volumeOrder"),
       partId: requireString(parsed.frontmatter, "partId"),
@@ -170,17 +186,11 @@ export function readMarkdownDocuments(root = manuscriptRoot): MarkdownDocument[]
         typeof parsed.frontmatter.sourceParagraphEnd === "number"
           ? parsed.frontmatter.sourceParagraphEnd
           : undefined,
-      aliases: Array.isArray(parsed.frontmatter.aliases)
-        ? (parsed.frontmatter.aliases as string[])
-        : undefined,
-    };
-    return {
-      filePath,
-      relativePath: path.relative(repoRoot, filePath).replace(/\\/g, "/"),
-      frontmatter,
-      body: parsed.body,
-    };
-  });
+    aliases: Array.isArray(parsed.frontmatter.aliases)
+      ? (parsed.frontmatter.aliases as string[])
+      : undefined,
+  };
+  return { filePath, relativePath, frontmatter, body: parsed.body };
 }
 
 export function sectionHref(section: Pick<

@@ -13,6 +13,17 @@ import { catalog, toolbarOutline } from "@/lib/manuscript-data";
 
 const copyrightStartYear = 2026;
 
+// Small deterministic content hash so the overview audio id is stable across
+// commits and only changes when the overview text itself changes (DOC-05).
+// Using the git revision reset audio progress on every deploy.
+function contentHash(value: string): string {
+  let hash = 5381;
+  for (let index = 0; index < value.length; index += 1) {
+    hash = (hash * 33) ^ value.charCodeAt(index);
+  }
+  return (hash >>> 0).toString(36);
+}
+
 function copyrightYearLabel() {
   const currentYear = new Date().getFullYear();
 
@@ -33,14 +44,15 @@ export function SiteShell({ children }: { children: ReactNode }) {
     numberLabel: volume.numberLabel,
   }));
   const yearLabel = copyrightYearLabel();
+  const overviewText = [
+    catalog.overview.subtitle,
+    ...catalog.overview.nodes.map((node) => `${node.title}. ${node.summary}`),
+  ].join("\n\n");
   const overviewAudio = {
     sectionId: "overview",
     title: catalog.overview.title,
-    text: [
-      catalog.overview.subtitle,
-      ...catalog.overview.nodes.map((node) => `${node.title}. ${node.summary}`),
-    ].join("\n\n"),
-    audioVersionId: `overview-${catalog.gitRevision}`,
+    text: overviewText,
+    audioVersionId: `overview-${contentHash(overviewText)}`,
   };
 
   return (
