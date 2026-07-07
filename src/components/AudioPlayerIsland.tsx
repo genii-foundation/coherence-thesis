@@ -23,20 +23,13 @@ import {
   updateStoredProgress,
 } from "@/lib/reader-progress-store";
 import { recordAudioSeconds } from "@/lib/reader-state";
+import {
+  readVoicePreference,
+  writeVoicePreference,
+} from "@/lib/audio-preferences";
+import { useLoadedData } from "@/lib/use-loaded-data";
 
-const voiceStorageKey = "coherence-audio-voice-v1";
-
-function loadPreference(): AudioVoicePreference {
-  if (typeof window === "undefined") return defaultVoicePreference;
-  try {
-    return {
-      ...defaultVoicePreference,
-      ...JSON.parse(window.localStorage.getItem(voiceStorageKey) ?? "{}"),
-    };
-  } catch {
-    return defaultVoicePreference;
-  }
-}
+const emptyReaderSections: ReaderSectionData[] = [];
 
 export function AudioPlayerIsland({
   overviewAudio,
@@ -46,7 +39,10 @@ export function AudioPlayerIsland({
   const pathname = usePathname();
   const { open, setOpen, toggle, containerRef, triggerRef } =
     useToolbarMenu<HTMLDivElement>();
-  const [sections, setSections] = useState<ReaderSectionData[]>([]);
+  // The audio island renders nothing until it knows the current page's queue, so
+  // it loads reader-sections eagerly. The module-level cache is shared with
+  // ToolbarProgressIsland, so this is not an extra network fetch.
+  const sections = useLoadedData(loadReaderSections, emptyReaderSections);
   const playbackSections = useMemo(() => {
     const currentPath = normalizePath(pathname);
     if (currentPath === "/overview/") return [overviewAudio];
@@ -99,30 +95,13 @@ export function AudioPlayerIsland({
     );
   }, [pathname]);
 
-  // The audio island renders nothing until it knows the current page's queue,
-  // so it must load reader-sections eagerly. This shares the module-level cache
-  // with ToolbarProgressIsland, so it is not an extra network fetch.
-  useEffect(() => {
-    let mounted = true;
-    loadReaderSections()
-      .then((loadedSections) => {
-        if (mounted) setSections(loadedSections);
-      })
-      .catch(() => {
-        if (mounted) setSections([]);
-      });
-    return () => {
-      mounted = false;
-    };
-  }, []);
-
   useEffect(() => {
     const hydrationTimer = window.setTimeout(() => {
       if (!provider.isSupported()) {
         setSupported(false);
         return;
       }
-      setPreference(loadPreference());
+      setPreference(readVoicePreference());
       setVoices(provider.getVoices());
     }, 0);
 
@@ -155,8 +134,7 @@ export function AudioPlayerIsland({
 
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    window.localStorage.setItem(voiceStorageKey, JSON.stringify(preference));
+    writeVoicePreference(preference);
   }, [preference]);
 
   function playIndex(index: number, token: number): void {

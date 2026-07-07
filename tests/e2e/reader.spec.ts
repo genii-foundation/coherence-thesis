@@ -2414,6 +2414,38 @@ test("home page presents an interactive cover flow", async ({ page }) => {
       ".cover-flow-card.is-active .cover-flow-card-panel strong",
     ),
   ).toHaveText(catalog.volumes[initialActiveIndex + 1]!.title);
+
+  const nextButton = page.getByRole("button", { name: "Next manuscript" });
+  for (
+    let targetIndex = initialActiveIndex + 2;
+    targetIndex < catalog.volumes.length;
+    targetIndex += 1
+  ) {
+    await nextButton.click();
+    await expect(
+      coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+    ).toHaveAttribute("href", catalog.volumes[targetIndex]!.href);
+  }
+
+  await expect(nextButton).toBeDisabled();
+
+  const previousButton = page.getByRole("button", {
+    name: "Previous manuscript",
+  });
+  await previousButton.click();
+  await expect(
+    coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+  ).toHaveAttribute("href", catalog.volumes.at(-2)!.href);
+
+  await coverFlow.locator(".cover-flow-scroll").dispatchEvent("wheel", {
+    bubbles: true,
+    cancelable: true,
+    deltaX: 920,
+    deltaY: 0,
+  });
+  await expect(
+    coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+  ).toHaveAttribute("href", catalog.volumes.at(-1)!.href);
 });
 
 test("organizational manuscript pages expose page navigation", async ({

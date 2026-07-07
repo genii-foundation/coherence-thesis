@@ -6,9 +6,56 @@ import {
   markEventsSynced,
   parseEngagementEvents,
   parseSyncConsent,
+  pruneEvents,
   revokeSyncConsent,
   unsyncedEvents,
 } from "./reader-engagement";
+
+describe("engagement event pruning", () => {
+  // syncedAt uses index + 1 so it is never 0 (which reads as "unsynced").
+  const event = (index: number, synced: boolean) =>
+    createEngagementEvent("section_opened", {
+      clientEventId: `e-${index}`,
+      eventAt: index,
+      sectionId: "s",
+      ...(synced ? { syncedAt: index + 1 } : {}),
+    });
+
+  it("keeps the log bounded, dropping the oldest synced events first", () => {
+    const events = Array.from({ length: 10 }, (_, i) => event(i, true));
+    const pruned = pruneEvents(events, 4);
+    expect(pruned.map((entry) => entry.clientEventId)).toEqual([
+      "e-6",
+      "e-7",
+      "e-8",
+      "e-9",
+    ]);
+  });
+
+  it("keeps unsynced events, dropping synced ones to make room", () => {
+    const events = [
+      ...Array.from({ length: 3 }, (_, i) => event(i, true)),
+      ...Array.from({ length: 5 }, (_, i) => event(i + 3, false)),
+    ];
+    const pruned = pruneEvents(events, 6);
+    // All five unsynced survive (they still need uploading); one synced is kept
+    // to fill the cap, the older two are dropped.
+    expect(unsyncedEvents(pruned)).toHaveLength(5);
+    expect(pruned).toHaveLength(6);
+  });
+
+  it("still bounds storage when unsynced events alone exceed the cap", () => {
+    const events = Array.from({ length: 8 }, (_, i) => event(i, false));
+    expect(pruneEvents(events, 4)).toHaveLength(4);
+  });
+
+  it("prunes as part of addEngagementEvent", () => {
+    let events = Array.from({ length: 2000 }, (_, i) => event(i, true));
+    events = addEngagementEvent(events, event(9999, false));
+    expect(events.length).toBeLessThanOrEqual(2000);
+    expect(events.some((entry) => entry.clientEventId === "e-9999")).toBe(true);
+  });
+});
 
 describe("reader engagement", () => {
   it("deduplicates events by client id", () => {

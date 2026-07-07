@@ -3,10 +3,13 @@
 import { normalizePath } from "@/lib/routes";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { usePathname } from "next/navigation";
 import { useCleanTooltip } from "@/components/CleanTooltip";
 import { loadBreadcrumbRoutes, type BreadcrumbRoute } from "@/lib/reader-data";
+import { useLoadedData } from "@/lib/use-loaded-data";
+
+const emptyBreadcrumbRoutes: BreadcrumbRoute[] = [];
 
 function isTruncated(element: HTMLElement | null): boolean {
   if (!element) return false;
@@ -70,25 +73,11 @@ function BreadcrumbTooltip({
 
 export function ToolbarBreadcrumbs({ className }: { className?: string } = {}) {
   const pathname = usePathname();
-  const [routes, setRoutes] = useState<BreadcrumbRoute[]>([]);
+  const routes = useLoadedData(loadBreadcrumbRoutes, emptyBreadcrumbRoutes);
   const currentPath = normalizePath(pathname);
   const route =
     routes.find((candidate) => normalizePath(candidate.href) === currentPath) ??
     routes[0];
-
-  useEffect(() => {
-    let mounted = true;
-    loadBreadcrumbRoutes()
-      .then((loadedRoutes) => {
-        if (mounted) setRoutes(loadedRoutes);
-      })
-      .catch(() => {
-        if (mounted) setRoutes([]);
-      });
-    return () => {
-      mounted = false;
-    };
-  }, []);
 
   if (!route || route.crumbs.length === 0) return null;
 
