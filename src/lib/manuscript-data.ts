@@ -295,49 +295,6 @@ export function chapterById(
   );
 }
 
-export function sectionByRoute(
-  volumeId: string,
-  partId: string,
-  chapterId: string,
-  sectionId: string,
-): Section | undefined {
-  return catalog.sections.find(
-    (section) =>
-      section.volumeId === volumeId &&
-      section.partId === partId &&
-      section.chapterId === chapterId &&
-      section.sectionId === sectionId,
-  );
-}
-
-export function aliasByRoute(
-  volumeId: string,
-  partId: string,
-  chapterId: string,
-  sectionId: string,
-): SectionAlias | undefined {
-  return catalog.aliases.find(
-    (alias) =>
-      alias.sourceRoute.volumeId === volumeId &&
-      alias.sourceRoute.partId === partId &&
-      alias.sourceRoute.chapterId === chapterId &&
-      alias.sourceRoute.sectionId === sectionId,
-  );
-}
-
-export function sectionByRouteOrAlias(
-  volumeId: string,
-  partId: string,
-  chapterId: string,
-  sectionId: string,
-): { section: Section; alias?: SectionAlias } | undefined {
-  const section = sectionByRoute(volumeId, partId, chapterId, sectionId);
-  if (section) return { section };
-  const alias = aliasByRoute(volumeId, partId, chapterId, sectionId);
-  const target = alias ? sectionById(alias.targetSectionId) : undefined;
-  return target ? { section: target, alias } : undefined;
-}
-
 function normalizeHref(href: string): string {
   if (href === "/") return href;
   return href.endsWith("/") ? href : `${href}/`;
@@ -505,18 +462,6 @@ export function sectionsForPart(volumeId: string, partId: string): Section[] {
   return catalog.sections.filter((section) => ids.has(section.sectionId));
 }
 
-export function routeParams() {
-  return [
-    ...catalog.sections.map((section) => ({
-      volumeId: section.volumeId,
-      partId: section.partId,
-      chapterId: section.chapterId,
-      sectionId: section.sectionId,
-    })),
-    ...catalog.aliases.map((alias) => alias.sourceRoute),
-  ];
-}
-
 export function manuscriptPathParams(): Array<{ volumeId: string; route: string[] }> {
   const params = new Map<string, { volumeId: string; route: string[] }>();
   const addHref = (href: string) => {
@@ -542,8 +487,3 @@ export function manuscriptPathParams(): Array<{ volumeId: string; route: string[
   return [...params.values()];
 }
 
-export function excerpt(text: string, maxLength = 180): string {
-  if (text.length <= maxLength) return text;
-  const shortened = text.slice(0, maxLength);
-  return `${shortened.slice(0, shortened.lastIndexOf(" "))}...`;
-}

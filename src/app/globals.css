@@ -605,6 +605,7 @@ input {
   justify-content: center;
   gap: 0.5rem;
   min-height: 2.75rem;
+  min-width: 2.75rem;
   border-radius: var(--radius);
   text-decoration: none;
   white-space: nowrap;

@@ -109,43 +109,38 @@ local gate (`manuscripts:validate`, typecheck, lint, unit tests, build) green.
 - **SEC-01** payload/row size bounds and per-user event cap (hardening migration)
 - **SEC-07** pinned trigger search_path
 
+## Shipped as follow-up PRs (Phase 4/5 waves)
+
+Each landed as its own focused, CI-green PR on top of the base:
+
+- **ARCH-01 / BUG-02** single reader-progress store (`useSyncExternalStore`),
+  which also delivered **DUP-05**
+- **ARCH-05** audio playback provider seam
+- **ARCH-03** reader-sync schema-version guard
+- **ARCH-04** section-ID drift gate (`content/series/section-ledger.json`)
+- **MAINT-05** split `scripts/manuscripts/shared.ts` into `types.ts` / `io.ts`
+- **DUP-03** shared `markdown-blocks` splitter
+- **DUP-01 / A11Y-04** `useToolbarMenu` hook with Escape focus return
+- **DUP-06 / DUP-11** `useLoadedData` load-once hook and `audio-preferences`
+  module
+- **SEC-03 / SEC-04** client progress sanitization and engagement-log pruning
+- **PERF-07** incremental PDF build
+- **PERF-05** fetch-on-demand outline payload (~68KB off every page)
+- **TEST-02** sync-orchestration and account-route unit tests
+- **TEST-05** `noUncheckedIndexedAccess` enabled, all sites guarded
+- **MAINT-03 / MAINT-04 / DOC-05 / A11Y-10** named frontmatter errors, dead
+  export removal, content-based overview audio id, 44px touch targets
+
 ## Deferred to follow-up PRs
 
-These are the larger refactors and the remaining polish. Each is a clean,
-self-contained next PR; the register entry has the full detail.
+The genuinely remaining items:
 
-### Architecture (highest value remaining)
-- **ARCH-02** decompose the (now ~660-line) `ToolbarProgressIsland`
-- **ARCH-04** section-ID drift gate in the import pipeline
-- **MAINT-05** split `scripts/manuscripts/shared.ts`
-
-### Duplication (remaining)
-- **DUP-01** `useToolbarMenu` hook (also fixes **A11Y-04** focus-return in five
-  menus)
-- **DUP-02** shared catalog schema module with a payload schema version
-- **DUP-03** shared `markdown-blocks` module (BUG-04 was fixed inline in
-  `MarkdownBody`; the anchor-drift invariant still wants one parser)
-- **DUP-06 / DUP-08 / DUP-11** loader hook, brand-context helper, audio
-  voice-pref module (DUP-05 shipped with the progress store above)
-
-### Performance (remaining)
+- **ARCH-02** decompose `ToolbarProgressIsland`
 - **PERF-01 (rest)** slim progress manifest and server-side breadcrumbs so
   `ToolbarProgressIsland` and `ToolbarBreadcrumbs` stop loading full payloads
-- **PERF-05** lazy outline payload
-- **PERF-07** incremental PDF build
-
-### Testing and types (remaining)
-- **TEST-02** unit tests for sync orchestration, `reader-sync`, and the account
-  route
-- **TEST-03 / TEST-04** split the 1772-line e2e spec and decouple it from prose
-- **TEST-05 (rest)** `noUncheckedIndexedAccess` (147 call sites to guard) and
-  type-checked lint rules
-
-### Accessibility and docs (remaining)
-- **A11Y-06** no-JS toolbar fallback
-- **A11Y-07** font-picker keyboard model
-- **A11Y-10** 44px mobile touch targets
-- **SEC-03 / SEC-04** client-side payload validation and event-log pruning
-- **DOC-02 / DOC-03 / DOC-04 / DOC-05 / DOC-06 / DOC-08** README status block,
-  license clarity, homepage tags in series config, overview audio id, Tailwind
-  decision, footer year
+- **TEST-03 / TEST-04** split the large e2e spec and decouple it from prose
+- **A11Y-06 / A11Y-07** no-JS toolbar fallback and font-picker keyboard model
+- **DOC-02 / DOC-03 / DOC-04 / DOC-06 / DOC-08** README status block, license
+  clarity, homepage tags in series config, Tailwind decision, footer year
+- **DUP-02** shared build/runtime catalog schema module (a payload schema
+  version is the useful part; the type-share is cross-boundary and low value)

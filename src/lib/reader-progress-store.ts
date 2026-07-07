@@ -3,7 +3,6 @@
 import { useSyncExternalStore } from "react";
 import {
   addEngagementEvent,
-  grantSyncConsent,
   parseEngagementEvents,
   parseSyncConsent,
   readerEventsStorageKey,
@@ -139,10 +138,4 @@ export function readStoredConsent(): ReaderSyncConsent {
 
 export function writeStoredConsent(consent: ReaderSyncConsent): void {
   window.localStorage.setItem(readerSyncConsentStorageKey, serializeSyncConsent(consent));
-}
-
-export function grantStoredConsent(now = Date.now()): ReaderSyncConsent {
-  const consent = grantSyncConsent(now);
-  writeStoredConsent(consent);
-  return consent;
 }

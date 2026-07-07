@@ -1,5 +1,3 @@
-import type { ReaderNavigationSource } from "./reader-state";
-
 export const readerEventsStorageKey = "coherence-reader-events-v1";
 export const readerSyncConsentStorageKey = "coherence-reader-sync-consent-v1";
 export const readerSyncConsentVersion = 1;
@@ -189,12 +187,6 @@ export function unsyncedEvents(
   events: ReaderEngagementEvent[],
 ): ReaderEngagementEvent[] {
   return events.filter((event) => !event.syncedAt);
-}
-
-export function navigationSourcePayload(
-  source: ReaderNavigationSource,
-): ReaderEngagementPayload {
-  return { source };
 }
 
 function isReaderEngagementEvent(value: unknown): value is ReaderEngagementEvent {
