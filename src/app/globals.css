@@ -793,7 +793,7 @@ input {
 
 .progress-percent {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   min-width: 0;
   border: 0;
   border-radius: 999px;
@@ -804,6 +804,23 @@ input {
   line-height: 1;
   padding: 0;
   text-align: center;
+}
+
+.progress-percent-cloud {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 2.08rem;
+  height: 1.5rem;
+  color: rgba(119, 84, 42, 0.62);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.progress-menu-button.is-signed-in .progress-percent {
+  font-size: 0.68rem;
+  transform: translateY(0.02rem);
 }
 
 .outline-popover,

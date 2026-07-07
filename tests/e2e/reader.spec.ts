@@ -1185,6 +1185,103 @@ test("progress menu shows a resettable email sent confirmation", async ({
   ).toBeVisible();
 });
 
+test("progress button wraps percent in a cloud when signed in", async ({
+  page,
+}) => {
+  await page.route("**/auth/v1/user**", async (route) => {
+    await route.fulfill({
+      status: 401,
+      contentType: "application/json",
+      body: JSON.stringify({ message: "not signed in" }),
+    });
+  });
+  await page.route("**/auth/v1/otp**", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: "{}",
+    });
+  });
+  await page.route("**/auth/v1/verify**", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        access_token: "test-access-token",
+        token_type: "bearer",
+        expires_in: 3600,
+        expires_at: Math.floor(Date.now() / 1000) + 3600,
+        refresh_token: "test-refresh-token",
+        user: {
+          id: "user-1",
+          aud: "authenticated",
+          role: "authenticated",
+          email: "reader@example.com",
+          app_metadata: {},
+          user_metadata: {},
+          created_at: new Date().toISOString(),
+        },
+      }),
+    });
+  });
+
+  await page.goto(wieldingSection.href);
+
+  const progressButton = page.locator(".progress-menu-button");
+  await expect(progressButton.locator(".progress-percent-cloud")).toHaveCount(
+    0,
+  );
+  await page.getByRole("button", { name: /Progress/ }).click();
+
+  if (
+    await page
+      .getByText("Sync is not configured for this build.")
+      .isVisible()
+  ) {
+    test.skip(true, "Sync is not configured in this test environment.");
+  }
+
+  await page.getByLabel("Email").fill("reader@example.com");
+  await page.getByRole("button", { name: "Sign in to sync" }).click();
+  await page.getByLabel("One-time code").fill("12345678");
+  await page.getByRole("button", { name: "Verify code" }).click();
+
+  await expect(progressButton).toHaveClass(/is-signed-in/);
+  await expect(progressButton.locator(".progress-percent-cloud")).toHaveCount(
+    1,
+  );
+  await expect(progressButton).toHaveAttribute(
+    "aria-label",
+    /Progress \d+%, signed in/,
+  );
+
+  const signedInProgressGeometry = await progressButton.evaluate((element) => {
+    const cloud = element.querySelector(".progress-percent-cloud");
+    const percent = element.querySelector(".progress-percent");
+    const buttonBox = element.getBoundingClientRect();
+    const cloudBox = cloud?.getBoundingClientRect();
+    const percentBox = percent?.getBoundingClientRect();
+    return {
+      cloudCenterX: Math.round(
+        ((cloudBox?.left ?? 0) + (cloudBox?.right ?? 0)) / 2 - buttonBox.left,
+      ),
+      cloudWidth: Math.round(cloudBox?.width ?? 0),
+      percentCenterX: Math.round(
+        ((percentBox?.left ?? 0) + (percentBox?.right ?? 0)) / 2 -
+          buttonBox.left,
+      ),
+    };
+  });
+
+  expect(signedInProgressGeometry.cloudWidth).toBeGreaterThan(28);
+  expect(
+    Math.abs(
+      signedInProgressGeometry.cloudCenterX -
+        signedInProgressGeometry.percentCenterX,
+    ),
+  ).toBeLessThanOrEqual(1);
+});
+
 test("reader share menu exposes page sharing and PDF downloads", async ({
   page,
 }) => {

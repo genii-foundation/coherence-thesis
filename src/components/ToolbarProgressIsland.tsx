@@ -589,8 +589,8 @@ export function ToolbarProgressIsland() {
     <div className="progress-menu" ref={containerRef}>
       <button
         type="button"
-        className="progress-menu-button"
-        aria-label={`Progress ${percent}%`}
+        className={`progress-menu-button${user ? " is-signed-in" : ""}`}
+        aria-label={`Progress ${percent}%${user ? ", signed in" : ""}`}
         aria-expanded={open}
         aria-controls="reader-progress-menu"
         style={
@@ -603,6 +603,13 @@ export function ToolbarProgressIsland() {
           setConfirmingDelete(false);
         }}
       >
+        {user && (
+          <Cloud
+            className="progress-percent-cloud"
+            aria-hidden="true"
+            strokeWidth={1.85}
+          />
+        )}
         <span className="progress-percent">{percent}%</span>
       </button>
       {open && (
