@@ -8,6 +8,7 @@ import {
   ensureDir,
   generatedRoot,
   publicDataRoot,
+  outlineDataPath,
   readerSectionsPath,
   repoRoot,
   searchIndexPath,
@@ -97,6 +98,12 @@ export async function compileManuscripts(): Promise<void> {
   writeJson(searchIndexPath, searchIndex);
   writeJson(pdfManifestPath, pdfDownloads);
   writeJson(sectionLedgerPath, sectionLedger);
+  // Emit the toolbar outline tree as a fetch-on-demand payload (PERF-05). The
+  // dynamic import runs after catalog.json is written above, so the runtime
+  // builder reads the fresh catalog; manuscript-data is not imported earlier in
+  // this process, so its module-level catalog is not stale.
+  const { toolbarOutline } = await import("../../src/lib/manuscript-data");
+  writeJson(outlineDataPath, toolbarOutline());
   console.log(
     `Compiled ${catalog.stats.sectionCount} sections, ${catalog.stats.wordCount.toLocaleString()} words`,
   );

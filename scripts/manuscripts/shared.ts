@@ -49,6 +49,7 @@ export const publicDataRoot = path.join(repoRoot, "public/data");
 export const readerSectionsPath = path.join(publicDataRoot, "reader-sections.json");
 export const breadcrumbRoutesPath = path.join(publicDataRoot, "breadcrumb-routes.json");
 export const searchIndexPath = path.join(publicDataRoot, "search-index.json");
+export const outlineDataPath = path.join(publicDataRoot, "outline.json");
 export const artifactsRoot = path.join(repoRoot, "artifacts/imports");
 
 export function markdownFiles(root = manuscriptRoot): string[] {
