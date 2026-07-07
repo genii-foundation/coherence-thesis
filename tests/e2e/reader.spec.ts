@@ -1124,6 +1124,59 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   expect(progressMenuMetrics.recommendationWidth).toBeGreaterThan(220);
 });
 
+test("progress menu shows a resettable email sent confirmation", async ({
+  page,
+}) => {
+  await page.route("**/auth/v1/otp**", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: "{}",
+    });
+  });
+
+  await page.goto(wieldingSection.href);
+  await page.getByRole("button", { name: /Progress/ }).click();
+
+  const emailInput = page.getByLabel("Email");
+  const signInButton = page.getByRole("button", { name: "Sign in to sync" });
+  await emailInput.fill("reader@example.com");
+  const initialBackground = await signInButton.evaluate(
+    (element) => window.getComputedStyle(element).backgroundColor,
+  );
+  await signInButton.click();
+
+  const sentButton = page.getByRole("button", {
+    name: "Check your email to finish.",
+  });
+  await expect(sentButton).toBeVisible();
+  await expect(page.getByLabel("One-time code")).toBeVisible();
+  await expect(page.getByText("Check your email to finish.")).toHaveCount(1);
+  await expect(signInButton).toHaveCount(0);
+
+  const sentButtonState = await sentButton.evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    const style = window.getComputedStyle(element);
+    return {
+      background: style.backgroundColor,
+      className: element.className,
+      height: Math.round(rect.height),
+    };
+  });
+
+  expect(sentButtonState.className).toContain("reader-sync-sent-button");
+  expect(sentButtonState.background).not.toBe(initialBackground);
+  expect(sentButtonState.height).toBeGreaterThan(40);
+
+  await sentButton.click();
+
+  await expect(emailInput).toHaveValue("");
+  await expect(page.getByLabel("One-time code")).toHaveCount(0);
+  await expect(
+    page.getByRole("button", { name: "Sign in to sync" }),
+  ).toBeVisible();
+});
+
 test("reader share menu exposes page sharing and PDF downloads", async ({
   page,
 }) => {

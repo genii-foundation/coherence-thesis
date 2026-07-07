@@ -477,8 +477,15 @@ export function ToolbarProgressIsland() {
     setAuthMessage(
       error
         ? "Sign in could not start. Try again."
-        : "Check your email. Use the link, or enter the code if the email includes one.",
+        : "",
     );
+  }
+
+  function resetPendingEmail() {
+    setPendingOtpEmail("");
+    setAuthEmail("");
+    setAuthOtp("");
+    setAuthMessage("");
   }
 
   async function submitOtp(event: FormEvent<HTMLFormElement>) {
@@ -638,12 +645,22 @@ export function ToolbarProgressIsland() {
                     placeholder="you@example.com"
                     autoComplete="email"
                   />
-                  <button type="submit" className="icon-button">
-                    <UserRound aria-hidden="true" size={17} />
-                    <span>
-                      {pendingOtpEmail ? "Send fresh sign-in email" : "Sign in to sync"}
-                    </span>
-                  </button>
+                  {pendingOtpEmail ? (
+                    <button
+                      type="button"
+                      className="icon-button reader-sync-sent-button"
+                      onClick={resetPendingEmail}
+                      aria-live="polite"
+                    >
+                      <Check aria-hidden="true" size={17} />
+                      <span>Check your email to finish.</span>
+                    </button>
+                  ) : (
+                    <button type="submit" className="icon-button">
+                      <UserRound aria-hidden="true" size={17} />
+                      <span>Sign in to sync</span>
+                    </button>
+                  )}
                 </form>
                 {pendingOtpEmail && (
                   <form className="reader-sync-form" onSubmit={submitOtp}>

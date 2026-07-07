@@ -2598,6 +2598,38 @@ input {
   outline-offset: 0.15rem;
 }
 
+.reader-sync-sent-button {
+  border-color: rgba(119, 84, 42, 0.34);
+  background: rgba(119, 84, 42, 0.16);
+  color: var(--ink);
+  animation: reader-sync-sent-in 220ms ease-out;
+}
+
+.reader-sync-sent-button:hover,
+.reader-sync-sent-button:focus-visible {
+  border-color: rgba(119, 84, 42, 0.48);
+  background: rgba(119, 84, 42, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(119, 84, 42, 0.16);
+}
+
+@keyframes reader-sync-sent-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reader-sync-sent-button {
+    animation: none;
+  }
+}
+
 .reader-sync-actions .reader-actions {
   margin-top: 0;
 }
