@@ -35,6 +35,7 @@ import {
   writeStoredConsent,
   writeStoredEvents,
 } from "@/lib/reader-progress-store";
+import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 import {
   deleteReaderAccount,
   deleteRemoteReaderData,
@@ -76,14 +77,12 @@ type SyncStatus = "idle" | "syncing" | "synced" | "paused" | "error";
 
 export function ToolbarProgressIsland() {
   const pathname = usePathname();
-  const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<ProgressSection | undefined>(undefined);
   const syncingRef = useRef(false);
   // Set when the remote progress row was written by a newer schema than this
   // client understands. While true, the client neither merges the remote row
   // nor uploads over it, so an outdated device cannot clobber newer data.
   const remoteSchemaAheadRef = useRef(false);
-  const [open, setOpen] = useState(false);
   const progress = useReaderProgress();
   const [allSections, setAllSections] = useState<ProgressSection[]>([]);
   const [syncConfigured, setSyncConfigured] = useState(false);
@@ -94,6 +93,12 @@ export function ToolbarProgressIsland() {
   const [syncStatus, setSyncStatus] = useState<SyncStatus>("idle");
   const [syncMessage, setSyncMessage] = useState("");
   const [confirmingDelete, setConfirmingDelete] = useState(false);
+  // Disarm the delete confirmation on any close so a stale armed state cannot
+  // commit on the next open.
+  const { open, setOpen, toggle, containerRef, triggerRef } =
+    useToolbarMenu<HTMLDivElement>({
+      onDismiss: () => setConfirmingDelete(false),
+    });
 
   const section = useMemo(() => {
     const currentPath = normalizePath(pathname);
@@ -161,7 +166,7 @@ export function ToolbarProgressIsland() {
       setConfirmingDelete(false);
     }, 0);
     return () => window.clearTimeout(closeTimer);
-  }, [pathname]);
+  }, [pathname, setOpen]);
 
   useEffect(() => {
     sectionRef.current = section;
@@ -211,29 +216,6 @@ export function ToolbarProgressIsland() {
     };
   }, [user]);
 
-  useEffect(() => {
-    if (!open) return;
-    const dismiss = () => {
-      setOpen(false);
-      // Disarm the delete confirmation on any close so a stale armed state
-      // cannot commit on the next open.
-      setConfirmingDelete(false);
-    };
-    const onPointerDown = (event: PointerEvent) => {
-      if (!containerRef.current?.contains(event.target as Node)) {
-        dismiss();
-      }
-    };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") dismiss();
-    };
-    document.addEventListener("pointerdown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [open]);
 
   useEffect(() => {
     if (!section) return;
@@ -596,6 +578,7 @@ export function ToolbarProgressIsland() {
   return (
     <div className="progress-menu" ref={containerRef}>
       <button
+        ref={triggerRef}
         type="button"
         className="progress-menu-button"
         aria-label={`Progress ${percent}%`}
@@ -607,7 +590,7 @@ export function ToolbarProgressIsland() {
           }
         }
         onClick={() => {
-          setOpen((current) => !current);
+          toggle();
           setConfirmingDelete(false);
         }}
       >
