@@ -67,7 +67,7 @@ export function firstCommitForCurrentHash(
     .map((line) => line.trim())
     .filter(Boolean)
     .map((line) => {
-      const [commitSha, versionDate] = line.split("\t");
+      const [commitSha = "", versionDate = ""] = line.split("\t");
       return { commitSha, versionDate };
     })
     .reverse();

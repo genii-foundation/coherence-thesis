@@ -39,7 +39,7 @@ function isTable(block: string): boolean {
   return (
     lines.length >= 2 &&
     lines.every((line) => line.startsWith("|") && line.endsWith("|")) &&
-    /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(lines[1])
+    /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(lines[1] ?? "")
   );
 }
 
@@ -87,7 +87,7 @@ export function MarkdownBody({
           );
         }
         if (isTable(block)) {
-          const [head, , ...rows] = block.split("\n");
+          const [head = "", , ...rows] = block.split("\n");
           return (
             <div id={anchor} className="table-scroll" key={index}>
               <table>

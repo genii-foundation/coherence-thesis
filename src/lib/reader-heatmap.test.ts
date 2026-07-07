@@ -33,7 +33,7 @@ describe("reader heatmap", () => {
 
   it("computes graduated fill from partial section progress", () => {
     const model = buildReaderHeatmapModel();
-    const cell = model.volumes[0].cells[0];
+    const cell = model.volumes[0]!.cells[0]!;
     const progress = cell.portions.reduce(
       (current, portion) => recordScrollProgress(current, portion, 50),
       emptyProgress(),
@@ -47,7 +47,7 @@ describe("reader heatmap", () => {
 
   it("marks revised cells when a completed section has a newer hash", () => {
     const model = buildReaderHeatmapModel();
-    const cell = model.volumes[0].cells[0];
+    const cell = model.volumes[0]!.cells[0]!;
     const progress = markRead(
       emptyProgress(),
       { ...cell.primary, contentHash: "previous-version" },
@@ -63,8 +63,8 @@ describe("reader heatmap", () => {
 
   it("summarizes completed and revised cell counts", () => {
     const model = buildReaderHeatmapModel();
-    const cells = model.volumes[0].cells.slice(0, 2);
-    const progress = markRead(emptyProgress(), cells[0].primary, 100, 1_700);
+    const cells = model.volumes[0]!.cells.slice(0, 2);
+    const progress = markRead(emptyProgress(), cells[0]!.primary, 100, 1_700);
 
     expect(readCellsPercent(progress, cells)).toBeGreaterThan(0);
     expect(readCellsPercent(progress, cells)).toBeLessThan(100);

@@ -12,7 +12,7 @@ import {
 describe("manuscript data", () => {
   it("returns the canonical playback suffix from a section", () => {
     const sections = allSections();
-    const start = sections[2];
+    const start = sections[2]!;
 
     expect(sectionsStartingAt(start.sectionId).map((section) => section.sectionId)).toEqual(
       sections.slice(2).map((section) => section.sectionId),

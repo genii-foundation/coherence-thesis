@@ -189,19 +189,20 @@ export function SearchMenuIsland() {
       return;
     }
 
-    if (event.key === "Enter" && results.length > 0) {
+    const topResult = results[0];
+    if (event.key === "Enter" && topResult) {
       event.preventDefault();
       appendStoredEvent(
         createEngagementEvent("search_result_clicked", {
-          sectionId: results[0].sectionId,
-          route: results[0].href,
+          sectionId: topResult.sectionId,
+          route: topResult.href,
           payload: {
             query: trimmedQuery,
             rank: 1,
           },
         }),
       );
-      window.location.assign(results[0].href);
+      window.location.assign(topResult.href);
       return;
     }
 

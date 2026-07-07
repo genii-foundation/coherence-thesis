@@ -428,10 +428,12 @@ function siblingNavigation<T extends NavigationItem>(
 ): PageNavigation | undefined {
   const currentIndex = items.findIndex((item) => item.href === currentHref);
   if (currentIndex < 0) return undefined;
+  const previous = items[currentIndex - 1];
+  const next = items[currentIndex + 1];
   return {
-    previous: items[currentIndex - 1] ? navigationItem(items[currentIndex - 1]) : null,
+    previous: previous ? navigationItem(previous) : null,
     parent: navigationItem(parent),
-    next: items[currentIndex + 1] ? navigationItem(items[currentIndex + 1]) : null,
+    next: next ? navigationItem(next) : null,
   };
 }
 

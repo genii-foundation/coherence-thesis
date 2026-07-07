@@ -101,7 +101,7 @@ describe("browser speech provider", () => {
 
       // The engine is cancelled before each speak to avoid overlap.
       expect(stub.engine.cancel).toHaveBeenCalledOnce();
-      const utterance = stub.spoken[0];
+      const utterance = stub.spoken[0]!;
       expect(utterance.text).toBe("Title. Body.");
       expect(utterance.rate).toBe(1.2);
       expect(utterance.pitch).toBe(0.9);
@@ -123,7 +123,7 @@ describe("browser speech provider", () => {
         onEnd: vi.fn(),
         onError: vi.fn(),
       });
-      expect(stub.spoken[0]?.voice).toBeNull();
+      expect(stub.spoken[0]!.voice).toBeNull();
     });
 
     it("delegates pause, resume, cancel, and isPaused to the engine", () => {

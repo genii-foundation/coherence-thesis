@@ -80,8 +80,8 @@ describe("reader engagement", () => {
 
     const marked = markEventsSynced([first, second], ["event-1"], 3);
 
-    expect(marked[0].syncedAt).toBe(3);
-    expect(marked[1].syncedAt).toBeUndefined();
+    expect(marked[0]!.syncedAt).toBe(3);
+    expect(marked[1]!.syncedAt).toBeUndefined();
     expect(unsyncedEvents(marked)).toEqual([second]);
   });
 
