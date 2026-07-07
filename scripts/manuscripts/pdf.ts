@@ -3,8 +3,8 @@ import path from "node:path";
 import PDFDocument from "pdfkit";
 import sharp from "sharp";
 import {
-  cleanDir,
   ensureDir,
+  fileHash,
   publicDataRoot,
   repoRoot,
   sha256,
@@ -15,6 +15,10 @@ import {
 
 const publicDownloadsRoot = path.join(repoRoot, "public/downloads");
 export const pdfManifestPath = path.join(publicDataRoot, "pdf-downloads.json");
+// Incremental build cache (PERF-07). Lives inside the gitignored downloads
+// directory: a fresh CI checkout starts empty and does a full build, while local
+// author iterations only re-render the PDFs whose inputs changed.
+const pdfBuildCachePath = path.join(publicDownloadsRoot, ".pdf-build-cache.json");
 
 const sectionDownloadRoot = path.join(publicDownloadsRoot, "sections");
 const manuscriptDownloadRoot = path.join(publicDownloadsRoot, "manuscripts");
@@ -711,22 +715,111 @@ async function writeManuscriptPdf(
   );
 }
 
+type PdfBuildCache = { version: number; entries: Record<string, string> };
+
+function readPdfBuildCache(): PdfBuildCache {
+  try {
+    const parsed = JSON.parse(fs.readFileSync(pdfBuildCachePath, "utf8")) as PdfBuildCache;
+    if (parsed && typeof parsed === "object" && parsed.entries) return parsed;
+  } catch {
+    // Missing or unreadable cache means a full build.
+  }
+  return { version: 1, entries: {} };
+}
+
+// A signature of everything that affects rendering but is not part of a
+// section's content: this module's own source (so a rendering-code change
+// invalidates every PDF), the vendored fonts, and the cover images.
+function renderSignature(volumes: CompiledVolume[]): string {
+  const parts = [fileHash(path.join(import.meta.dirname, "pdf.ts"))];
+  for (const fileName of Object.values(fontFiles)) {
+    parts.push(fileHash(path.join(fontRoot, fileName)));
+  }
+  for (const cover of new Set(volumes.map((volume) => volume.coverImage).filter(Boolean))) {
+    const coverPath = publicPathFromHref(cover);
+    if (fs.existsSync(coverPath)) parts.push(fileHash(coverPath));
+  }
+  return sha256(parts.join("|")).slice(0, 16);
+}
+
+export function sectionRenderHash(
+  section: CompiledSection,
+  volume: CompiledVolume | undefined,
+  signature: string,
+): string {
+  return sha256(
+    [section.contentHash, volume?.title ?? "", volume?.numberLabel ?? "", signature].join("|"),
+  ).slice(0, 16);
+}
+
+function volumeRenderHash(
+  volume: CompiledVolume,
+  sections: CompiledSection[],
+  signature: string,
+): string {
+  return sha256(
+    [volumeContentHash(volume, sections), volume.title, volume.numberLabel, signature].join("|"),
+  ).slice(0, 16);
+}
+
+function pruneStalePdfs(expectedPaths: Set<string>): void {
+  for (const root of [sectionDownloadRoot, manuscriptDownloadRoot]) {
+    if (!fs.existsSync(root)) continue;
+    for (const entry of fs.readdirSync(root)) {
+      const filePath = path.join(root, entry);
+      if (!filePath.endsWith(".pdf")) continue;
+      if (!expectedPaths.has(filePath)) fs.rmSync(filePath, { force: true });
+    }
+  }
+}
+
 export async function buildPdfDownloads(
   catalog: CompiledCatalog,
 ): Promise<PdfDownloadManifest> {
-  cleanDir(publicDownloadsRoot);
   ensureDir(sectionDownloadRoot);
   ensureDir(manuscriptDownloadRoot);
 
   const volumesById = buildVolumeLookup(catalog.sections, catalog.volumes);
+  const cache = readPdfBuildCache();
+  const signature = renderSignature(catalog.volumes);
+  const nextEntries: Record<string, string> = {};
+  const expectedPaths = new Set<string>();
+  let built = 0;
+  let skipped = 0;
 
   for (const section of catalog.sections) {
-    await writeSectionPdf(section, volumesById.get(section.volumeId));
+    const volume = volumesById.get(section.volumeId);
+    const outputPath = outputPathFromHref(sectionPdfHref(section, volume));
+    const hash = sectionRenderHash(section, volume, signature);
+    expectedPaths.add(outputPath);
+    nextEntries[outputPath] = hash;
+    if (fs.existsSync(outputPath) && cache.entries[outputPath] === hash) {
+      skipped += 1;
+      continue;
+    }
+    await writeSectionPdf(section, volume);
+    built += 1;
   }
 
   for (const volume of catalog.volumes) {
+    const outputPath = outputPathFromHref(manuscriptPdfHref(volume));
+    const hash = volumeRenderHash(volume, catalog.sections, signature);
+    expectedPaths.add(outputPath);
+    nextEntries[outputPath] = hash;
+    if (fs.existsSync(outputPath) && cache.entries[outputPath] === hash) {
+      skipped += 1;
+      continue;
+    }
     await writeManuscriptPdf(volume, catalog.sections);
+    built += 1;
   }
+
+  pruneStalePdfs(expectedPaths);
+  fs.writeFileSync(
+    pdfBuildCachePath,
+    `${JSON.stringify({ version: 1, entries: nextEntries }, null, 2)}\n`,
+  );
+  console.log(`PDF downloads: ${built} built, ${skipped} unchanged`);
 
   return {
     sections: catalog.sections.map((section) => ({
