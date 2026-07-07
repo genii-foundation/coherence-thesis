@@ -1138,6 +1138,14 @@ test("progress menu shows a resettable email sent confirmation", async ({
   await page.goto(wieldingSection.href);
   await page.getByRole("button", { name: /Progress/ }).click();
 
+  if (
+    await page
+      .getByText("Sync is not configured for this build.")
+      .isVisible()
+  ) {
+    test.skip(true, "Sync is not configured in this test environment.");
+  }
+
   const emailInput = page.getByLabel("Email");
   const signInButton = page.getByRole("button", { name: "Sign in to sync" });
   await emailInput.fill("reader@example.com");
