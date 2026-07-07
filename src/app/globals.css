@@ -2615,6 +2615,64 @@ input {
   outline-offset: 0.15rem;
 }
 
+.reader-sync-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(19, 27, 34, 0.28);
+}
+
+.reader-sync-modal {
+  display: grid;
+  gap: 0.9rem;
+  width: min(28rem, 100%);
+  border: 1px solid rgba(119, 84, 42, 0.28);
+  border-radius: var(--radius);
+  background: var(--panel-background);
+  box-shadow: 0 1.2rem 3rem rgba(19, 27, 34, 0.22);
+  color: var(--ink);
+  padding: 1.1rem;
+}
+
+.reader-sync-modal > svg {
+  color: var(--bronze-deep);
+}
+
+.reader-sync-modal-copy {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.reader-sync-modal-copy h2,
+.reader-sync-modal-copy p {
+  margin: 0;
+}
+
+.reader-sync-modal-copy h2 {
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+
+.reader-sync-modal-copy p {
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.reader-sync-modal-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.6rem;
+}
+
+.reader-sync-modal-actions .secondary-link,
+.reader-sync-modal-actions .icon-button {
+  width: 100%;
+}
+
 .reader-sync-sent-button {
   border-color: rgba(119, 84, 42, 0.34);
   background: rgba(119, 84, 42, 0.16);

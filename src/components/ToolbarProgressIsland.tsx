@@ -79,6 +79,7 @@ export function ToolbarProgressIsland() {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<ProgressSection | undefined>(undefined);
   const syncingRef = useRef(false);
+  const syncLoginContinueRef = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = useState(false);
   const progress = useReaderProgress();
   const [allSections, setAllSections] = useState<ProgressSection[]>([]);
@@ -88,6 +89,7 @@ export function ToolbarProgressIsland() {
   const [authEmail, setAuthEmail] = useState("");
   const [authOtp, setAuthOtp] = useState("");
   const [pendingOtpEmail, setPendingOtpEmail] = useState("");
+  const [syncLoginModalEmail, setSyncLoginModalEmail] = useState("");
   const [authMessage, setAuthMessage] = useState("");
   const [syncStatus, setSyncStatus] = useState<SyncStatus>("idle");
   const [syncMessage, setSyncMessage] = useState("");
@@ -157,6 +159,7 @@ export function ToolbarProgressIsland() {
     const closeTimer = window.setTimeout(() => {
       setOpen(false);
       setConfirmingDelete(false);
+      setSyncLoginModalEmail("");
     }, 0);
     return () => window.clearTimeout(closeTimer);
   }, [pathname]);
@@ -173,11 +176,13 @@ export function ToolbarProgressIsland() {
     loadRemoteReaderState(user.id)
       .then((remote) => {
         if (!mounted) return;
-        if (remote.consent) {
+        const localConsent = readStoredConsent();
+        const effectiveConsent = localConsent.granted ? localConsent : remote.consent;
+        if (remote.consent && !localConsent.granted) {
           setConsent(remote.consent);
           writeStoredConsent(remote.consent);
         }
-        if (remote.consent?.granted && remote.progress) {
+        if (effectiveConsent?.granted && remote.progress) {
           const remoteProgress = remote.progress;
           updateStoredProgress((current) =>
             mergeProgressStates(current, remoteProgress),
@@ -203,6 +208,7 @@ export function ToolbarProgressIsland() {
       // Disarm the delete confirmation on any close so a stale armed state
       // cannot commit on the next open.
       setConfirmingDelete(false);
+      setSyncLoginModalEmail("");
     };
     const onPointerDown = (event: PointerEvent) => {
       if (!containerRef.current?.contains(event.target as Node)) {
@@ -219,6 +225,14 @@ export function ToolbarProgressIsland() {
       document.removeEventListener("keydown", onKeyDown);
     };
   }, [open]);
+
+  useEffect(() => {
+    if (!syncLoginModalEmail) return;
+    const focusTimer = window.setTimeout(() => {
+      syncLoginContinueRef.current?.focus();
+    }, 0);
+    return () => window.clearTimeout(focusTimer);
+  }, [syncLoginModalEmail]);
 
   useEffect(() => {
     if (!section) return;
@@ -461,24 +475,44 @@ export function ToolbarProgressIsland() {
     );
   }
 
+  function grantSyncConsentLocally(): ReaderSyncConsent {
+    const nextConsent = grantSyncConsent();
+    setConsent(nextConsent);
+    writeStoredConsent(nextConsent);
+    return nextConsent;
+  }
+
   async function submitEmail(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setAuthMessage("");
     const email = authEmail.trim();
     if (!email) return;
+    setSyncLoginModalEmail(email);
+  }
+
+  async function continueSyncLogin() {
+    const email = syncLoginModalEmail.trim();
+    if (!email) return;
+    setAuthMessage("");
     const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(
       pathname,
     )}`;
     const { error } = await sendMagicLink(email, redirectTo);
     if (!error) {
+      grantSyncConsentLocally();
       setPendingOtpEmail(email);
       setAuthOtp("");
+      setSyncLoginModalEmail("");
     }
     setAuthMessage(
       error
         ? "Sign in could not start. Try again."
         : "",
     );
+  }
+
+  function cancelSyncLogin() {
+    setSyncLoginModalEmail("");
   }
 
   function resetPendingEmail() {
@@ -499,31 +533,13 @@ export function ToolbarProgressIsland() {
       setAuthMessage("Code sign in failed. Request a fresh email and try again.");
       return;
     }
+    if (!consent.granted) {
+      grantSyncConsentLocally();
+    }
     setAuthOtp("");
     setPendingOtpEmail("");
     setUser(data.user ? { id: data.user.id, email: data.user.email ?? undefined } : null);
-    setAuthMessage("Signed in. Review sync consent before anything uploads.");
-  }
-
-  async function grantConsentAndSync() {
-    if (!user) return;
-    const nextConsent = grantSyncConsent();
-    setConsent(nextConsent);
-    writeStoredConsent(nextConsent);
-    try {
-      const remote = await loadRemoteReaderState(user.id);
-      const nextProgress = remote.progress
-        ? updateStoredProgress((current) =>
-            mergeProgressStates(current, remote.progress!),
-          )
-        : readStoredProgress();
-      const { error } = await upsertRemoteConsent(user.id, nextConsent);
-      if (error) throw error;
-      await syncNow(nextProgress);
-    } catch {
-      setSyncStatus("error");
-      setSyncMessage("Sync could not start. Local progress is still saved.");
-    }
+    setAuthMessage("Signed in. Sync will start shortly.");
   }
 
   async function revokeConsentAndPause() {
@@ -601,6 +617,7 @@ export function ToolbarProgressIsland() {
         onClick={() => {
           setOpen((current) => !current);
           setConfirmingDelete(false);
+          setSyncLoginModalEmail("");
         }}
       >
         {user && (
@@ -669,6 +686,44 @@ export function ToolbarProgressIsland() {
                     </button>
                   )}
                 </form>
+                {syncLoginModalEmail && (
+                  <div className="reader-sync-modal-backdrop">
+                    <div
+                      className="reader-sync-modal"
+                      role="dialog"
+                      aria-modal="true"
+                      aria-labelledby="reader-sync-modal-title"
+                    >
+                      <Cloud aria-hidden="true" size={20} />
+                      <div className="reader-sync-modal-copy">
+                        <h2 id="reader-sync-modal-title">Sync reading progress?</h2>
+                        <p>
+                          If you continue, reading progress will be synchronized to
+                          your Cloud account so this site can remember where you
+                          left off and share progress between your devices.
+                        </p>
+                      </div>
+                      <div className="reader-sync-modal-actions">
+                        <button
+                          type="button"
+                          className="secondary-link"
+                          onClick={cancelSyncLogin}
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="button"
+                          className="icon-button"
+                          onClick={continueSyncLogin}
+                          ref={syncLoginContinueRef}
+                        >
+                          <Cloud aria-hidden="true" size={17} />
+                          <span>Continue</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 {pendingOtpEmail && (
                   <form className="reader-sync-form" onSubmit={submitOtp}>
                     <label htmlFor="reader-sync-otp">One-time code</label>
@@ -697,11 +752,15 @@ export function ToolbarProgressIsland() {
             {syncConfigured && user && !consent.granted && (
               <div className="reader-sync-consent">
                 <p className="quiet-copy">
-                  Sign in is active. Sync will not upload anything until you allow it.
+                  Sync is paused. Local history is still saved in this browser.
                 </p>
-                <button type="button" className="icon-button" onClick={grantConsentAndSync}>
+                <button
+                  type="button"
+                  className="icon-button"
+                  onClick={grantSyncConsentLocally}
+                >
                   <Cloud aria-hidden="true" size={17} />
-                  <span>Allow sync</span>
+                  <span>Resume sync</span>
                 </button>
               </div>
             )}

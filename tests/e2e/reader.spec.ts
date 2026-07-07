@@ -1127,7 +1127,9 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
 test("progress menu shows a resettable email sent confirmation", async ({
   page,
 }) => {
+  let signInEmailRequests = 0;
   await page.route("**/auth/v1/otp**", async (route) => {
+    signInEmailRequests += 1;
     await route.fulfill({
       status: 200,
       contentType: "application/json",
@@ -1154,10 +1156,33 @@ test("progress menu shows a resettable email sent confirmation", async ({
   );
   await signInButton.click();
 
+  const syncModal = page.getByRole("dialog", {
+    name: "Sync reading progress?",
+  });
+  await expect(syncModal).toBeVisible();
+  await expect(
+    syncModal.getByText(
+      "If you continue, reading progress will be synchronized to your Cloud account so this site can remember where you left off and share progress between your devices.",
+    ),
+  ).toBeVisible();
+  expect(signInEmailRequests).toBe(0);
+
+  await syncModal.getByRole("button", { name: "Cancel" }).click();
+  await expect(syncModal).toHaveCount(0);
+  expect(signInEmailRequests).toBe(0);
+  await expect(emailInput).toHaveValue("reader@example.com");
+
+  await signInButton.click();
+  await page
+    .getByRole("dialog", { name: "Sync reading progress?" })
+    .getByRole("button", { name: "Continue" })
+    .click();
+
   const sentButton = page.getByRole("button", {
     name: "Check your email to finish.",
   });
   await expect(sentButton).toBeVisible();
+  expect(signInEmailRequests).toBe(1);
   await expect(page.getByLabel("One-time code")).toBeVisible();
   await expect(page.getByText("Check your email to finish.")).toHaveCount(1);
   await expect(signInButton).toHaveCount(0);
@@ -1243,10 +1268,15 @@ test("progress button wraps percent in a cloud when signed in", async ({
 
   await page.getByLabel("Email").fill("reader@example.com");
   await page.getByRole("button", { name: "Sign in to sync" }).click();
+  await page
+    .getByRole("dialog", { name: "Sync reading progress?" })
+    .getByRole("button", { name: "Continue" })
+    .click();
   await page.getByLabel("One-time code").fill("12345678");
   await page.getByRole("button", { name: "Verify code" }).click();
 
   await expect(progressButton).toHaveClass(/is-signed-in/);
+  await expect(page.getByText("Allow sync")).toHaveCount(0);
   await expect(progressButton.locator(".progress-percent-cloud")).toHaveCount(
     1,
   );
