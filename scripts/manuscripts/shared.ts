@@ -12,6 +12,7 @@ export const seriesRoot = path.join(contentRoot, "series");
 export const volumeConfigPath = path.join(seriesRoot, "volumes.json");
 export const aliasConfigPath = path.join(seriesRoot, "aliases.json");
 export const versionProvenancePath = path.join(seriesRoot, "version-provenance.json");
+export const sectionLedgerPath = path.join(seriesRoot, "section-ledger.json");
 export const generatedRoot = path.join(repoRoot, "src/generated/manuscripts");
 export const catalogPath = path.join(generatedRoot, "catalog.json");
 export const publicDataRoot = path.join(repoRoot, "public/data");
@@ -157,6 +158,21 @@ export type SectionAlias = SectionAliasInput & {
     chapterId: string;
     sectionId: string;
   };
+};
+
+// One published section route. Section IDs are the localStorage key for read
+// progress and the anchor for deep links, audio queues, and aliases, so the
+// ledger records every route that has ever been published. It only grows: a
+// removed or renamed section stays here so the drift gate can insist its old
+// route still resolves through an alias.
+export type SectionLedgerEntry = {
+  sectionId: string;
+  href: string;
+};
+
+export type SectionLedger = {
+  version: number;
+  routes: SectionLedgerEntry[];
 };
 
 export type VersionProvenanceEntry = {
@@ -519,6 +535,39 @@ export function readVersionProvenance(): VersionProvenanceManifest {
     return { version: 1, generatedAt: new Date(0).toISOString(), entries: [] };
   }
   return JSON.parse(readUtf8(versionProvenancePath)) as VersionProvenanceManifest;
+}
+
+export function readSectionLedger(): SectionLedger {
+  if (!fs.existsSync(sectionLedgerPath)) {
+    return { version: 1, routes: [] };
+  }
+  return JSON.parse(readUtf8(sectionLedgerPath)) as SectionLedger;
+}
+
+// Union the current catalog's section routes into the existing ledger and sort
+// deterministically. Historical entries are never dropped, so the result is
+// stable input for both the committed artifact and the drift check.
+export function buildSectionLedger(
+  catalog: CompiledCatalog,
+  existing: SectionLedger = readSectionLedger(),
+): SectionLedger {
+  const routes = new Map<string, SectionLedgerEntry>();
+  const add = (entry: SectionLedgerEntry) => {
+    routes.set(`${entry.sectionId} ${entry.href}`, {
+      sectionId: entry.sectionId,
+      href: entry.href,
+    });
+  };
+  for (const entry of existing.routes) add(entry);
+  for (const section of catalog.sections) {
+    add({ sectionId: section.sectionId, href: section.href });
+  }
+  const sorted = [...routes.values()].sort((a, b) =>
+    a.href === b.href
+      ? a.sectionId.localeCompare(b.sectionId)
+      : a.href.localeCompare(b.href),
+  );
+  return { version: existing.version || 1, routes: sorted };
 }
 
 export function audioVersionId(sectionId: string, contentHash: string): string {
