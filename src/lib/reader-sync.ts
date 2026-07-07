@@ -58,6 +58,22 @@ export async function sendMagicLink(email: string, redirectTo: string) {
   });
 }
 
+export async function verifyEmailOtp(email: string, token: string) {
+  const supabase = createBrowserSupabaseClient();
+  if (!supabase) {
+    return {
+      data: { user: null, session: null },
+      error: new Error("Sync is not configured."),
+    };
+  }
+
+  return supabase.auth.verifyOtp({
+    email,
+    token,
+    type: "email",
+  });
+}
+
 export async function signOutReader() {
   const supabase = createBrowserSupabaseClient();
   if (!supabase) return { error: new Error("Sync is not configured.") };

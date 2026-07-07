@@ -2565,6 +2565,7 @@ input {
 }
 
 .reader-sync,
+.reader-sync-login,
 .reader-sync-form,
 .reader-sync-consent,
 .reader-sync-actions {

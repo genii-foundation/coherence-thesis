@@ -12,7 +12,7 @@ import {
   type FormEvent,
 } from "react";
 import { usePathname } from "next/navigation";
-import { Check, Cloud, RotateCcw, Trash2, UserRound } from "lucide-react";
+import { Check, Cloud, KeyRound, RotateCcw, Trash2, UserRound } from "lucide-react";
 import { loadReaderSections } from "@/lib/reader-data";
 import type { ProgressSection } from "@/lib/manuscript-data";
 import {
@@ -47,6 +47,7 @@ import {
   uploadRemoteEvents,
   upsertRemoteConsent,
   upsertRemoteProgress,
+  verifyEmailOtp,
 } from "@/lib/reader-sync";
 import {
   isSectionRead,
@@ -85,6 +86,8 @@ export function ToolbarProgressIsland() {
   const [user, setUser] = useState<{ id: string; email?: string } | null>(null);
   const [consent, setConsent] = useState<ReaderSyncConsent>(() => parseSyncConsent(null));
   const [authEmail, setAuthEmail] = useState("");
+  const [authOtp, setAuthOtp] = useState("");
+  const [pendingOtpEmail, setPendingOtpEmail] = useState("");
   const [authMessage, setAuthMessage] = useState("");
   const [syncStatus, setSyncStatus] = useState<SyncStatus>("idle");
   const [syncMessage, setSyncMessage] = useState("");
@@ -467,9 +470,32 @@ export function ToolbarProgressIsland() {
       pathname,
     )}`;
     const { error } = await sendMagicLink(email, redirectTo);
+    if (!error) {
+      setPendingOtpEmail(email);
+      setAuthOtp("");
+    }
     setAuthMessage(
-      error ? "Sign in could not start. Try again." : "Check your email to finish.",
+      error
+        ? "Sign in could not start. Try again."
+        : "Check your email. Use the link, or enter the code if the email includes one.",
     );
+  }
+
+  async function submitOtp(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setAuthMessage("");
+    const email = pendingOtpEmail || authEmail.trim();
+    const token = authOtp.replace(/\s+/g, "");
+    if (!email || !token) return;
+    const { data, error } = await verifyEmailOtp(email, token);
+    if (error) {
+      setAuthMessage("Code sign in failed. Request a fresh email and try again.");
+      return;
+    }
+    setAuthOtp("");
+    setPendingOtpEmail("");
+    setUser(data.user ? { id: data.user.id, email: data.user.email ?? undefined } : null);
+    setAuthMessage("Signed in. Review sync consent before anything uploads.");
   }
 
   async function grantConsentAndSync() {
@@ -601,25 +627,48 @@ export function ToolbarProgressIsland() {
               <p className="quiet-copy">Sync is not configured for this build.</p>
             )}
             {syncConfigured && !user && (
-              <form className="reader-sync-form" onSubmit={submitEmail}>
-                <label htmlFor="reader-sync-email">Email</label>
-                <input
-                  id="reader-sync-email"
-                  type="email"
-                  value={authEmail}
-                  onChange={(event) => setAuthEmail(event.target.value)}
-                  placeholder="you@example.com"
-                />
-                <button type="submit" className="icon-button">
-                  <UserRound aria-hidden="true" size={17} />
-                  <span>Sign in to sync</span>
-                </button>
+              <div className="reader-sync-login">
+                <form className="reader-sync-form" onSubmit={submitEmail}>
+                  <label htmlFor="reader-sync-email">Email</label>
+                  <input
+                    id="reader-sync-email"
+                    type="email"
+                    value={authEmail}
+                    onChange={(event) => setAuthEmail(event.target.value)}
+                    placeholder="you@example.com"
+                    autoComplete="email"
+                  />
+                  <button type="submit" className="icon-button">
+                    <UserRound aria-hidden="true" size={17} />
+                    <span>
+                      {pendingOtpEmail ? "Send fresh sign-in email" : "Sign in to sync"}
+                    </span>
+                  </button>
+                </form>
+                {pendingOtpEmail && (
+                  <form className="reader-sync-form" onSubmit={submitOtp}>
+                    <label htmlFor="reader-sync-otp">One-time code</label>
+                    <input
+                      id="reader-sync-otp"
+                      type="text"
+                      inputMode="numeric"
+                      autoComplete="one-time-code"
+                      value={authOtp}
+                      onChange={(event) => setAuthOtp(event.target.value)}
+                      placeholder="12345678"
+                    />
+                    <button type="submit" className="icon-button">
+                      <KeyRound aria-hidden="true" size={17} />
+                      <span>Verify code</span>
+                    </button>
+                  </form>
+                )}
                 {authMessage && (
                   <p className="quiet-copy" role="status" aria-live="polite">
                     {authMessage}
                   </p>
                 )}
-              </form>
+              </div>
             )}
             {syncConfigured && user && !consent.granted && (
               <div className="reader-sync-consent">
