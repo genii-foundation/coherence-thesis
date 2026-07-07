@@ -3,8 +3,9 @@ import {
   buildCatalog,
   buildSearchIndex,
   buildSectionLedger,
-  breadcrumbRoutesPath,
+  breadcrumbsDir,
   catalogPath,
+  cleanDir,
   ensureDir,
   generatedRoot,
   publicDataRoot,
@@ -105,6 +106,17 @@ export async function compileManuscripts(): Promise<void> {
     })),
   }));
   const breadcrumbRoutes = buildBreadcrumbRoutes(catalog);
+  // Shard breadcrumbs by volume so each page fetches only its volume's routes
+  // (largest shard ~130KB) instead of the full ~483KB set (PERF-01). Routes not
+  // under a volume (the home and overview crumbs) go in an "index" shard.
+  const breadcrumbShards = new Map<string, typeof breadcrumbRoutes>();
+  for (const route of breadcrumbRoutes) {
+    const match = route.href.match(/^\/manuscripts\/([^/]+)\//);
+    const key = match ? match[1]! : "index";
+    const shard = breadcrumbShards.get(key) ?? [];
+    shard.push(route);
+    breadcrumbShards.set(key, shard);
+  }
   const searchIndex = buildSearchIndex(catalog);
   const sectionLedger = buildSectionLedger(catalog);
   ensureDir(generatedRoot);
@@ -112,7 +124,10 @@ export async function compileManuscripts(): Promise<void> {
   writeJson(catalogPath, catalog);
   writeJson(readerSectionsPath, readerSections);
   writeJson(progressSectionsPath, progressSections);
-  writeJson(breadcrumbRoutesPath, breadcrumbRoutes);
+  cleanDir(breadcrumbsDir);
+  for (const [key, shard] of breadcrumbShards) {
+    writeJson(path.join(breadcrumbsDir, `${key}.json`), shard);
+  }
   writeJson(searchIndexPath, searchIndex);
   writeJson(pdfManifestPath, pdfDownloads);
   writeJson(sectionLedgerPath, sectionLedger);
@@ -127,7 +142,9 @@ export async function compileManuscripts(): Promise<void> {
   );
   console.log(`Catalog: ${path.relative(repoRoot, catalogPath)}`);
   console.log(`Reader data: ${path.relative(repoRoot, readerSectionsPath)}`);
-  console.log(`Breadcrumb data: ${path.relative(repoRoot, breadcrumbRoutesPath)}`);
+  console.log(
+    `Breadcrumb shards: ${breadcrumbShards.size} in ${path.relative(repoRoot, breadcrumbsDir)}`,
+  );
   console.log(`Search index: ${path.relative(repoRoot, searchIndexPath)}`);
   console.log(`PDF downloads: ${path.relative(repoRoot, pdfManifestPath)}`);
 }
