@@ -5,7 +5,7 @@ import { normalizePath } from "@/lib/routes";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronRight, Home, ListTree, Search } from "lucide-react";
-import type { ToolbarOutline } from "@/lib/manuscript-data";
+import { loadToolbarOutline, type ToolbarOutlineData } from "@/lib/reader-data";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 
@@ -18,35 +18,53 @@ function matchesQuery(values: string[], query: string): boolean {
   return values.some((value) => searchable(value).includes(query));
 }
 
-export function OutlineMenuIsland({ outline }: { outline: ToolbarOutline }) {
+export function OutlineMenuIsland() {
   const pathname = usePathname();
   const { open, setOpen, toggle, containerRef, triggerRef } =
     useToolbarMenu<HTMLDivElement>();
   const searchRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
+  const [outline, setOutline] = useState<ToolbarOutlineData | null>(null);
+  const loadStartedRef = useRef(false);
   const currentPath = normalizePath(pathname);
   const normalizedQuery = searchable(query);
 
+  // Fetch the outline tree the first time the menu opens, instead of shipping it
+  // in every page (PERF-05).
+  useEffect(() => {
+    if (!open || loadStartedRef.current) return;
+    loadStartedRef.current = true;
+    loadToolbarOutline()
+      .then(setOutline)
+      .catch(() => {
+        loadStartedRef.current = false;
+      });
+  }, [open]);
+
   const topLinks = useMemo(
     () =>
-      [
-        {
-          title: outline.home.title,
-          href: outline.home.href,
-          detail: "Home",
-        },
-        {
-          title: outline.overview.title,
-          href: outline.overview.href,
-          detail: "Overview",
-        },
-      ].filter((item) => matchesQuery([item.title, item.detail], normalizedQuery)),
-    [normalizedQuery, outline.home, outline.overview],
+      !outline
+        ? []
+        : [
+            {
+              title: outline.home.title,
+              href: outline.home.href,
+              detail: "Home",
+            },
+            {
+              title: outline.overview.title,
+              href: outline.overview.href,
+              detail: "Overview",
+            },
+          ].filter((item) =>
+            matchesQuery([item.title, item.detail], normalizedQuery),
+          ),
+    [normalizedQuery, outline],
   );
 
   const volumes = useMemo(
     () =>
-      outline.volumes
+      (outline?.volumes ?? [])
         .map((volume) => {
           const volumeMatches = matchesQuery(
             [volume.title, volume.subtitle, volume.numberLabel],
@@ -81,7 +99,7 @@ export function OutlineMenuIsland({ outline }: { outline: ToolbarOutline }) {
           };
         })
         .filter((volume) => volume.visible),
-    [normalizedQuery, outline.volumes],
+    [normalizedQuery, outline],
   );
 
   const hasResults = topLinks.length > 0 || volumes.length > 0;
@@ -230,7 +248,10 @@ export function OutlineMenuIsland({ outline }: { outline: ToolbarOutline }) {
                 </div>
               </div>
             )}
-            {!hasResults && (
+            {!outline && (
+              <p className="quiet-copy outline-empty">Loading outline…</p>
+            )}
+            {outline && !hasResults && (
               <p className="quiet-copy outline-empty">No outline matches.</p>
             )}
           </div>

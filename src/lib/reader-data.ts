@@ -65,6 +65,30 @@ export type PdfDownloadManifest = {
   manuscripts: PdfDownloadManuscript[];
 };
 
+// The toolbar outline tree (~68KB) is fetched on demand when the outline menu
+// first opens, rather than serialized into every page. These mirror the
+// manuscript-data ToolbarOutline shape as browser-facing types.
+export type OutlineChapter = { title: string; href: string; wordCount: number };
+export type OutlinePart = {
+  title: string;
+  href: string;
+  wordCount: number;
+  chapters: OutlineChapter[];
+};
+export type OutlineVolume = {
+  title: string;
+  subtitle: string;
+  href: string;
+  numberLabel: string;
+  wordCount: number;
+  parts: OutlinePart[];
+};
+export type ToolbarOutlineData = {
+  home: { title: string; href: string };
+  overview: { title: string; href: string };
+  volumes: OutlineVolume[];
+};
+
 // Memoizes only fulfilled results. A rejected fetch clears the cache so the
 // next call retries, rather than permanently disabling a feature after one
 // transient network error during the (now interaction-triggered) load.
@@ -106,4 +130,9 @@ export const loadSearchIndex = memoizedLoader<SearchIndexEntry[]>(
 export const loadPdfDownloads = memoizedLoader<PdfDownloadManifest>(
   "/data/pdf-downloads.json",
   "PDF download data",
+);
+
+export const loadToolbarOutline = memoizedLoader<ToolbarOutlineData>(
+  "/data/outline.json",
+  "outline data",
 );

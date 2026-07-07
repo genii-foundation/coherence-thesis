@@ -24,7 +24,14 @@ function copyrightYearLabel() {
 }
 
 export function SiteShell({ children }: { children: ReactNode }) {
-  const outline = toolbarOutline();
+  // Only the slim volume identity (title, href, number) is serialized into every
+  // page for the brand and mobile-context islands. The full outline tree is
+  // fetched on demand when the outline menu opens (PERF-05).
+  const brandVolumes = toolbarOutline().volumes.map((volume) => ({
+    title: volume.title,
+    href: volume.href,
+    numberLabel: volume.numberLabel,
+  }));
   const yearLabel = copyrightYearLabel();
   const overviewAudio = {
     sectionId: "overview",
@@ -42,11 +49,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
         Skip to main content
       </a>
       <header className="site-header">
-        <ToolbarBrandIsland volumes={outline.volumes} />
+        <ToolbarBrandIsland volumes={brandVolumes} />
         <ToolbarBreadcrumbs />
         <nav className="site-nav" aria-label="Primary">
           <SearchMenuIsland />
-          <OutlineMenuIsland outline={outline} />
+          <OutlineMenuIsland />
           <ToolbarSettingsIsland />
           <ToolbarShareIsland />
           <AudioPlayerIsland overviewAudio={overviewAudio} />
@@ -54,7 +61,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         </nav>
       </header>
       <main id="main-content">
-        <MobilePageContextIsland volumes={outline.volumes} />
+        <MobilePageContextIsland volumes={brandVolumes} />
         <PageFadeIsland>{children}</PageFadeIsland>
       </main>
       <footer className="site-footer" aria-label="Site information">
