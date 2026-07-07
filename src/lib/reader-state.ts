@@ -58,6 +58,12 @@ export const readerProgressStorageKey = "coherence-reader-progress-v1";
 export const readerProgressV2StorageKey = "coherence-reader-progress-v2";
 export const readerProgressUpdatedEvent = "coherence-reader-progress-updated";
 
+// The schema version this client writes to and understands from the remote
+// `reader_progress.schema_version` column. Bump this when the persisted
+// progress shape changes in a way older clients cannot safely read, and add the
+// matching upgrade step in reconcileRemoteProgress.
+export const readerProgressSchemaVersion = 2;
+
 export function emptyProgress(): ReaderProgressState {
   return { sections: {} };
 }
@@ -325,6 +331,23 @@ export function mergeProgressStates(
   }
 
   return { sections };
+}
+
+// Decide how to fold a remote progress row into local state given the schema
+// version it was written with. Returns the merged state when the remote is at
+// or below this client's known schema, or null when it is newer and must not be
+// merged: an older client that blindly merged a newer row could drop fields it
+// does not understand and then overwrite the richer remote row with a lossy
+// copy. Rows at an older version (v1) differ from the current shape only by
+// additive optional fields, so they merge as-is; a future breaking bump adds
+// its upgrade transform here before the merge.
+export function reconcileRemoteProgress(
+  local: ReaderProgressState,
+  remote: ReaderProgressState,
+  remoteSchemaVersion: number,
+): ReaderProgressState | null {
+  if (remoteSchemaVersion > readerProgressSchemaVersion) return null;
+  return mergeProgressStates(local, remote);
 }
 
 export function updatedSinceRead(

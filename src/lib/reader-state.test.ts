@@ -7,7 +7,9 @@ import {
   markSectionOpened,
   mergeProgressStates,
   parseProgress,
+  readerProgressSchemaVersion,
   readPercent,
+  reconcileRemoteProgress,
   recentlyReadSections,
   recommendNextSections,
   recordReadingTime,
@@ -140,6 +142,49 @@ describe("reader progress", () => {
         manualReadCount: state.sections[section.sectionId].manualReadCount,
       });
     }
+  });
+
+  it("reconciles a remote row at or below the known schema by merging it", () => {
+    const section = allSections()[0];
+    const local = markRead(emptyProgress(), section, 100, 3_000, "manual");
+    const remote = {
+      sections: {
+        [section.sectionId]: {
+          sectionId: section.sectionId,
+          contentHash: section.contentHash,
+          readAt: 1_000,
+          percent: 40,
+          audioSeconds: 25,
+        },
+      },
+    };
+
+    // v1 rows differ only by additive optional fields, so an older row merges.
+    const reconciled = reconcileRemoteProgress(local, remote, 1);
+    expect(reconciled).not.toBeNull();
+    expect(reconciled?.sections[section.sectionId]).toMatchObject({
+      readAt: 3_000,
+      audioSeconds: 25,
+    });
+
+    const current = reconcileRemoteProgress(
+      local,
+      remote,
+      readerProgressSchemaVersion,
+    );
+    expect(current).not.toBeNull();
+  });
+
+  it("refuses to merge a remote row written by a newer schema", () => {
+    const section = allSections()[0];
+    const local = markRead(emptyProgress(), section, 100, 3_000, "manual");
+    const remote = { sections: {} };
+
+    // A newer row may carry fields this client would drop, then overwrite the
+    // richer remote copy. reconcileRemoteProgress signals "do not merge".
+    expect(
+      reconcileRemoteProgress(local, remote, readerProgressSchemaVersion + 1),
+    ).toBeNull();
   });
 
   it("detects content updates after a section was read", () => {
