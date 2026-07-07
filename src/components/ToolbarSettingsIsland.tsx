@@ -178,11 +178,9 @@ export function ToolbarSettingsIsland() {
             <div className="font-select">
               <button
                 type="button"
-                role="combobox"
                 className="font-select-button"
                 aria-controls="reader-font-options"
                 aria-expanded={fontMenuOpen}
-                aria-haspopup="listbox"
                 aria-label="Reader font"
                 onClick={() => setFontMenuOpen((current) => !current)}
               >
@@ -195,15 +193,13 @@ export function ToolbarSettingsIsland() {
                 <div
                   id="reader-font-options"
                   className="font-select-options"
-                  role="listbox"
-                  aria-labelledby="reader-font-label"
+                  aria-label="Reader font options"
                 >
                   {readerFontOptions.map((fontOption) => (
                     <button
                       key={fontOption.id}
                       type="button"
-                      role="option"
-                      aria-selected={preferences.fontFamily === fontOption.id}
+                      aria-pressed={preferences.fontFamily === fontOption.id}
                       className="font-select-option"
                       style={{ fontFamily: fontOption.stack }}
                       onClick={() => {
@@ -239,7 +235,11 @@ export function ToolbarSettingsIsland() {
                 <RotateCcw aria-hidden="true" size={14} />
               </button>
             </div>
-            <div className="settings-theme-group" aria-label="Reader theme">
+            <div
+              className="settings-theme-group"
+              role="group"
+              aria-label="Reader theme"
+            >
               {readerThemeOptions.map((theme) => (
                 <button
                   key={theme}

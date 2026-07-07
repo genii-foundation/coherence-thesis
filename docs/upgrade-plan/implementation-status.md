@@ -140,11 +140,18 @@ Each landed as its own focused, CI-green PR on top of the base:
   `public/data/breadcrumbs/`; a page fetches only its volume's shard (6-130KB)
   instead of the full 483KB set. PERF-01 is now complete.
 
+- **A11Y-06 / A11Y-07 / DOC-02** hide the inert toolbar nav for no-JS readers,
+  make the font picker an honest disclosure (dropping the misleading combobox
+  roles it never implemented) with a grouped theme row, and strip the volatile
+  git state from the committed README status block
+
 ## Deferred to follow-up PRs
 
 The genuinely remaining items:
 
 - **TEST-03 / TEST-04** split the large e2e spec and decouple it from prose
+- **DOC-03 / DOC-06** license-scope clarity (needs a product decision) and the
+  unused-Tailwind removal (needs a visual-regression pass on the reset)
 - **A11Y-06 / A11Y-07** no-JS toolbar fallback and font-picker keyboard model
 - **DOC-02 / DOC-03 / DOC-04 / DOC-06 / DOC-08** README status block, license
   clarity, homepage tags in series config, Tailwind decision, footer year

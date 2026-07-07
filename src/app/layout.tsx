@@ -92,6 +92,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
+      <head>
+        {/* The toolbar menus and breadcrumbs are client islands that do nothing
+            without JavaScript. Hide them for no-JS readers rather than present
+            inert, focusable controls (A11Y-06); the prose and prev/up/next links
+            still work. */}
+        <noscript>
+          <style>{`.site-nav, .breadcrumb-trail { display: none !important; }`}</style>
+        </noscript>
+      </head>
       <body>
         <script
           dangerouslySetInnerHTML={{ __html: preferencesBootstrap }}

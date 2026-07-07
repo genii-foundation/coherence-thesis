@@ -1765,9 +1765,12 @@ test("reader settings update and persist local appearance preferences", async ({
     input.dispatchEvent(new Event("change", { bubbles: true }));
   });
 
-  const fontSelect = page.getByRole("combobox", { name: "Reader font" });
+  const fontSelect = settingsMenu.getByRole("button", { name: "Reader font" });
   await fontSelect.click();
-  const georgiaOption = page.getByRole("option", { name: "Georgia" });
+  const georgiaOption = settingsMenu.getByRole("button", {
+    name: "Georgia",
+    exact: true,
+  });
   await expect(georgiaOption).toBeVisible();
   const georgiaOptionFont = await georgiaOption.evaluate(
     (element) => getComputedStyle(element).fontFamily,
@@ -1865,7 +1868,7 @@ test("reader settings update and persist local appearance preferences", async ({
     "125",
   );
   await expect(
-    page.getByRole("combobox", { name: "Reader font" }),
+    page.getByRole("button", { name: "Reader font" }),
   ).toContainText("Georgia");
 
   const storedAfterReload = await page.evaluate((key) => {
