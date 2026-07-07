@@ -231,7 +231,8 @@ export function AudioPlayerIsland({
 
   if (!supported || queue.length === 0) return null;
 
-  const active = queue[activeIndex] ?? queue[0];
+  // queue is non-empty here, so queue[0] is defined.
+  const active = queue[activeIndex] ?? queue[0]!;
 
   return (
     <div className="audio-menu" ref={containerRef}>

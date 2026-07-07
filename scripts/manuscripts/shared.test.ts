@@ -17,7 +17,7 @@ describe("manuscript compiler helpers", () => {
   it("creates stable PDF download URLs", () => {
     const catalog = buildCatalog();
     const firstVolume = catalog.volumes[0];
-    const firstSection = catalog.sections[0];
+    const firstSection = catalog.sections[0]!;
     const structureSection = catalog.sections.find(
       (section) => section.sectionId === "v01-how-this-book-is-structured",
     );
@@ -39,7 +39,7 @@ describe("manuscript compiler helpers", () => {
 
   it("builds the current catalog from canonical markdown", () => {
     const catalog = buildCatalog();
-    const section = catalog.sections[0];
+    const section = catalog.sections[0]!;
 
     expect(catalog.stats.volumeCount).toBe(9);
     expect(catalog.stats.sectionCount).toBeGreaterThan(500);

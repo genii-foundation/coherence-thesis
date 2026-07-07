@@ -95,7 +95,7 @@ export function parseFrontmatter(source: string): {
     throw new Error("Markdown file is missing frontmatter.");
   }
   const frontmatter: Record<string, unknown> = {};
-  for (const line of match[1].split("\n")) {
+  for (const line of (match[1] ?? "").split("\n")) {
     const trimmed = line.trim();
     if (!trimmed || trimmed.startsWith("#")) continue;
     const separatorIndex = trimmed.indexOf(":");
@@ -106,7 +106,7 @@ export function parseFrontmatter(source: string): {
     const value = trimmed.slice(separatorIndex + 1);
     frontmatter[key] = parseYamlScalar(value);
   }
-  return { frontmatter, body: normalizeNewlines(match[2]) };
+  return { frontmatter, body: normalizeNewlines(match[2] ?? "") };
 }
 
 function yamlValue(value: unknown): string {
@@ -324,15 +324,11 @@ function routeFromHref(href: string): SectionAlias["sourceRoute"] {
   const match = href.match(
     /^\/manuscripts\/([^/]+)\/([^/]+)\/([^/]+)\/([^/]+)\/?$/,
   );
-  if (!match) {
+  const [, volumeId, partId, chapterId, sectionId] = match ?? [];
+  if (!volumeId || !partId || !chapterId || !sectionId) {
     throw new Error(`Alias sourceHref must be a section route: ${href}`);
   }
-  return {
-    volumeId: match[1],
-    partId: match[2],
-    chapterId: match[3],
-    sectionId: match[4],
-  };
+  return { volumeId, partId, chapterId, sectionId };
 }
 
 function fullDepthSectionHref(section: Pick<

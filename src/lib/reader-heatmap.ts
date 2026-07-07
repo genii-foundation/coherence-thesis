@@ -76,7 +76,8 @@ function allocateCells(items: WeightedItem[], totalCells: number): Map<string, n
     const byRemainder = [...allocations].sort((a, b) => b.remainder - a.remainder);
     let index = 0;
     while (assigned < totalCells) {
-      byRemainder[index % byRemainder.length].count += 1;
+      const entry = byRemainder[index % byRemainder.length];
+      if (entry) entry.count += 1;
       assigned += 1;
       index += 1;
     }
@@ -87,7 +88,7 @@ function allocateCells(items: WeightedItem[], totalCells: number): Map<string, n
     let index = 0;
     while (assigned > totalCells) {
       const item = byRemainder[index % byRemainder.length];
-      if (item.count > 1) {
+      if (item && item.count > 1) {
         item.count -= 1;
         assigned -= 1;
       }
@@ -135,7 +136,7 @@ function buildVolumeCells({
 
     while (
       rangeIndex < ranges.length - 1 &&
-      ranges[rangeIndex].end <= cellStart
+      (ranges[rangeIndex]?.end ?? Infinity) <= cellStart
     ) {
       rangeIndex += 1;
     }
@@ -143,7 +144,7 @@ function buildVolumeCells({
     const portions: ReaderHeatmapSectionPortion[] = [];
     for (let index = rangeIndex; index < ranges.length; index += 1) {
       const range = ranges[index];
-      if (range.start >= cellEnd) break;
+      if (!range || range.start >= cellEnd) break;
       const overlap = Math.min(cellEnd, range.end) - Math.max(cellStart, range.start);
       if (overlap <= 0) continue;
       portions.push({
@@ -156,7 +157,9 @@ function buildVolumeCells({
       });
     }
 
-    const fallback = ranges[Math.min(rangeIndex, ranges.length - 1)].section;
+    // ranges is non-empty here (the early return guards sections.length === 0),
+    // so this index is always valid.
+    const fallback = ranges[Math.min(rangeIndex, ranges.length - 1)]!.section;
     const resolvedPortions =
       portions.length > 0
         ? portions

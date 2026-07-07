@@ -181,7 +181,7 @@ function isTable(block: string): boolean {
   return (
     lines.length >= 2 &&
     lines.every((line) => line.startsWith("|") && line.endsWith("|")) &&
-    /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(lines[1])
+    /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(lines[1] ?? "")
   );
 }
 

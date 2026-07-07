@@ -5,7 +5,7 @@ import { readerPreferencesStorageKey } from "../../src/lib/reader-preferences";
 import { readerProgressStorageKey } from "../../src/lib/reader-state";
 import { formatReadingDurationForWords } from "../../src/lib/reading-time";
 
-const firstSection = catalog.sections[0];
+const firstSection = catalog.sections[0]!;
 const firstSectionVolume = catalog.volumes.find(
   (volume) => volume.volumeId === firstSection.volumeId,
 )!;
@@ -2160,7 +2160,7 @@ test("reader shows subtle revision status for previously read sections", async (
     }),
   ).toHaveAttribute(
     "href",
-    `${firstSection.href}#${firstSection.paragraphs[0].anchor}`,
+    `${firstSection.href}#${firstSection.paragraphs[0]!.anchor}`,
   );
 
   await page.goto(

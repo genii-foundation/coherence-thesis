@@ -112,8 +112,8 @@ function markdownHeading(line: string): Heading | null {
   const hashMatch = line.match(/^(#{1,6})\s+(.+)$/);
   if (hashMatch) {
     return {
-      level: hashMatch[1].length,
-      text: smartTitle(plainLine(hashMatch[2])),
+      level: (hashMatch[1] ?? "").length,
+      text: smartTitle(plainLine(hashMatch[2] ?? "")),
     };
   }
 
@@ -121,7 +121,7 @@ function markdownHeading(line: string): Heading | null {
     .trim()
     .match(/^\*{2,3}\s*(.+?)\s*\*{2,3}$/);
   if (boldMatch) {
-    const text = smartTitle(plainLine(boldMatch[1]));
+    const text = smartTitle(plainLine(boldMatch[1] ?? ""));
     if (text.length <= 96) return { level: 3, text };
   }
 
@@ -139,7 +139,7 @@ function partInfo(line: string): { order: number | null; title: string | null } 
   const match = plain.match(/^part\s+([a-z0-9ivx]+)(?:\s*[·:.,-]\s*(.+))?$/i);
   if (!match) return null;
   return {
-    order: parseOrdinal(match[1]),
+    order: parseOrdinal(match[1] ?? ""),
     title: match[2] ? smartTitle(match[2]) : null,
   };
 }
@@ -162,8 +162,9 @@ function ignoreLine(line: string): boolean {
 
 function nextHeading(lines: string[], startIndex: number): { heading: Heading; index: number } | null {
   for (let index = startIndex; index < lines.length; index += 1) {
-    if (!lines[index].trim()) continue;
-    const heading = markdownHeading(lines[index]);
+    const line = lines[index];
+    if (!line || !line.trim()) continue;
+    const heading = markdownHeading(line);
     if (heading) return { heading, index };
     return null;
   }
@@ -282,7 +283,7 @@ function buildSections(config: VolumeConfig): DraftSection[] {
   }
 
   for (let index = findStart(lines, config.volumeId); index < lines.length; index += 1) {
-    const line = lines[index];
+    const line = lines[index]!;
     if (ignoreLine(line)) continue;
 
     const part = partInfo(line);
