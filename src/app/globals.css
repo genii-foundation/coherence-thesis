@@ -1250,6 +1250,16 @@ input {
   width: min(22rem, calc(100vw - 2rem));
 }
 
+.share-popover,
+.audio-popover,
+.settings-popover,
+.progress-popover {
+  max-height: min(42rem, calc(100svh - 7rem));
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .home-page,
 .page-frame {
   width: min(1160px, calc(100% - 2rem));
@@ -2434,7 +2444,8 @@ input {
 }
 
 .reader-status {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .reader-share {

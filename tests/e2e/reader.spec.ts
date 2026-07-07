@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 import { catalog, partById } from "../../src/lib/manuscript-data";
 import { readerEventsStorageKey } from "../../src/lib/reader-engagement";
 import { readerPreferencesStorageKey } from "../../src/lib/reader-preferences";
@@ -137,6 +137,37 @@ function hexToRgb(hex: string): string {
   const blue = value & 255;
 
   return `rgb(${red}, ${green}, ${blue})`;
+}
+
+async function expectMenuFitsViewport(
+  page: Page,
+  selector: string,
+  scrollSelector = selector,
+): Promise<void> {
+  const menu = page.locator(selector);
+  await expect(menu).toBeVisible();
+  const metrics = await menu.evaluate((element, targetSelector) => {
+    const menuBox = element.getBoundingClientRect();
+    const scrollTarget =
+      targetSelector === "__self__"
+        ? element
+        : (element.querySelector(targetSelector) ?? element);
+    const scrollStyle = window.getComputedStyle(scrollTarget);
+    return {
+      bottom: menuBox.bottom,
+      clientHeight: scrollTarget.clientHeight,
+      scrollHeight: scrollTarget.scrollHeight,
+      top: menuBox.top,
+      viewportHeight: window.innerHeight,
+      overflowY: scrollStyle.overflowY,
+    };
+  }, scrollSelector === selector ? "__self__" : scrollSelector);
+
+  expect(metrics.top).toBeGreaterThanOrEqual(-1);
+  expect(metrics.bottom).toBeLessThanOrEqual(metrics.viewportHeight + 1);
+  if (metrics.scrollHeight > metrics.clientHeight + 1) {
+    expect(["auto", "scroll", "overlay"]).toContain(metrics.overflowY);
+  }
 }
 
 function pdfObjectCount(bytes: Buffer, pattern: RegExp): number {
@@ -1124,6 +1155,69 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   expect(progressMenuMetrics.recommendationWidth).toBeGreaterThan(220);
 });
 
+test("toolbar popovers scroll within a short viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 1024, height: 360 });
+  await page.addInitScript(() => {
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        addEventListener: () => undefined,
+        cancel: () => undefined,
+        getVoices: () => [],
+        pause: () => undefined,
+        removeEventListener: () => undefined,
+        speak: () => undefined,
+      },
+    });
+  });
+
+  await page.goto(wieldingSection.href);
+
+  await page.getByRole("button", { name: "Search manuscripts" }).click();
+  const searchMenu = page.getByRole("region", { name: "Manuscript search" });
+  await page.getByRole("searchbox", { name: "Search all manuscripts" }).fill("the");
+  await expect(searchMenu.locator(".search-result").first()).toBeVisible();
+  await expectMenuFitsViewport(page, ".search-popover", ".search-results");
+  await page.keyboard.press("Escape");
+  await expect(searchMenu).toHaveCount(0);
+
+  await page.getByRole("button", { name: /Outline/ }).click();
+  const outlineMenu = page.getByRole("region", { name: "Site outline" });
+  await expect(outlineMenu.locator(".outline-volume-link").first()).toBeVisible();
+  await expectMenuFitsViewport(page, ".outline-popover", ".outline-scroll");
+  await page.keyboard.press("Escape");
+  await expect(outlineMenu).toHaveCount(0);
+
+  await page.getByRole("button", { name: "Reader settings" }).click();
+  const settingsMenu = page.getByRole("region", { name: "Reader settings" });
+  await expect(settingsMenu.getByText("Reading settings")).toBeVisible();
+  await expectMenuFitsViewport(page, ".settings-popover");
+  await page.keyboard.press("Escape");
+  await expect(settingsMenu).toHaveCount(0);
+
+  await page.getByRole("button", { name: "Share and downloads" }).click();
+  const shareMenu = page.getByLabel("Share and downloads").filter({
+    hasText: "Share",
+  });
+  await expect(shareMenu).toBeVisible();
+  await expectMenuFitsViewport(page, ".share-popover");
+  await page.keyboard.press("Escape");
+  await expect(shareMenu).toHaveCount(0);
+
+  await page.getByRole("button", { name: /Listen/ }).click();
+  const audioMenu = page.getByLabel("Audiobook controls");
+  await expect(audioMenu).toBeVisible();
+  await expectMenuFitsViewport(page, ".audio-popover");
+  await page.keyboard.press("Escape");
+  await expect(audioMenu).toHaveCount(0);
+
+  await page.getByRole("button", { name: /Progress/ }).click();
+  const progressMenu = page.getByRole("region", { name: "Reader progress" });
+  await expect(progressMenu).toBeVisible();
+  await expect(progressMenu.getByText("Recommended next")).toBeVisible();
+  await expectMenuFitsViewport(page, ".progress-popover");
+});
+
 test("progress menu shows a resettable email sent confirmation", async ({
   page,
 }) => {
@@ -1322,6 +1416,8 @@ test("progress button wraps percent in a cloud when signed in", async ({
     syncSection.getByText("Progress synced. Reading history details will retry."),
   ).toBeVisible();
   await expect(syncSection.getByRole("button")).toHaveCount(2);
+  await expect(syncSection.getByRole("button", { name: "Sync now" })).toBeVisible();
+  await expect(syncSection.getByRole("button", { name: "Sign out" })).toBeVisible();
   await expect(page.getByText("Allow sync")).toHaveCount(0);
   await expect(page.getByText("Pause sync")).toHaveCount(0);
   await expect(page.getByText("Resume sync")).toHaveCount(0);
