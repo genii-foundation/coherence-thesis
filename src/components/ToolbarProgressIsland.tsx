@@ -52,8 +52,9 @@ import {
   isSectionRead,
   markRead,
   markSectionOpened,
-  mergeProgressStates,
+  readerProgressSchemaVersion,
   readPercent,
+  reconcileRemoteProgress,
   recentlyReadSections,
   recordReadingTime,
   recordScrollProgress,
@@ -78,6 +79,10 @@ export function ToolbarProgressIsland() {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<ProgressSection | undefined>(undefined);
   const syncingRef = useRef(false);
+  // Set when the remote progress row was written by a newer schema than this
+  // client understands. While true, the client neither merges the remote row
+  // nor uploads over it, so an outdated device cannot clobber newer data.
+  const remoteSchemaAheadRef = useRef(false);
   const [open, setOpen] = useState(false);
   const progress = useReaderProgress();
   const [allSections, setAllSections] = useState<ProgressSection[]>([]);
@@ -176,9 +181,22 @@ export function ToolbarProgressIsland() {
         }
         if (remote.consent?.granted && remote.progress) {
           const remoteProgress = remote.progress;
-          updateStoredProgress((current) =>
-            mergeProgressStates(current, remoteProgress),
-          );
+          const remoteVersion =
+            remote.progressSchemaVersion ?? readerProgressSchemaVersion;
+          if (remoteVersion > readerProgressSchemaVersion) {
+            remoteSchemaAheadRef.current = true;
+            setSyncStatus("error");
+            setSyncMessage(
+              "Your reading history was saved by a newer version of the reader. Update this device to sync it.",
+            );
+          } else {
+            remoteSchemaAheadRef.current = false;
+            updateStoredProgress(
+              (current) =>
+                reconcileRemoteProgress(current, remoteProgress, remoteVersion) ??
+                current,
+            );
+          }
         }
       })
       .catch(() => {
@@ -375,6 +393,13 @@ export function ToolbarProgressIsland() {
   const syncNow = useCallback(
     async (overrideProgress?: ReaderProgressState, overrideEvents?: ReaderEngagementEvent[]) => {
       if (!user || !consent.granted || syncingRef.current) return;
+      if (remoteSchemaAheadRef.current) {
+        setSyncStatus("error");
+        setSyncMessage(
+          "Sync paused: your account has newer data than this version of the reader supports.",
+        );
+        return;
+      }
       syncingRef.current = true;
       setSyncStatus("syncing");
       setSyncMessage("Syncing reading history.");
@@ -479,9 +504,25 @@ export function ToolbarProgressIsland() {
     writeStoredConsent(nextConsent);
     try {
       const remote = await loadRemoteReaderState(user.id);
-      const nextProgress = remote.progress
-        ? updateStoredProgress((current) =>
-            mergeProgressStates(current, remote.progress!),
+      const remoteProgress = remote.progress;
+      const remoteVersion =
+        remote.progressSchemaVersion ?? readerProgressSchemaVersion;
+      if (remoteProgress && remoteVersion > readerProgressSchemaVersion) {
+        // The account already holds data from a newer reader. Keep local intact
+        // and do not upload over it; syncNow will stay paused on this flag.
+        remoteSchemaAheadRef.current = true;
+        setSyncStatus("error");
+        setSyncMessage(
+          "Your reading history was saved by a newer version of the reader. Update this device to sync it.",
+        );
+        return;
+      }
+      remoteSchemaAheadRef.current = false;
+      const nextProgress = remoteProgress
+        ? updateStoredProgress(
+            (current) =>
+              reconcileRemoteProgress(current, remoteProgress, remoteVersion) ??
+              current,
           )
         : readStoredProgress();
       const { error } = await upsertRemoteConsent(user.id, nextConsent);
