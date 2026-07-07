@@ -218,6 +218,21 @@ describe("reader progress", () => {
     ]);
   });
 
+  it("keeps partial progress graduated without treating the section as read", () => {
+    const sections = allSections().slice(0, 3);
+    const progress = recordScrollProgress(emptyProgress(), sections[0], 50);
+
+    expect(readPercent(progress, sections)).toBe(17);
+    expect(isSectionRead(progress, sections[0])).toBe(false);
+    expect(recommendNextSections(progress, sections, 1)).toMatchObject([
+      {
+        sectionId: sections[0].sectionId,
+        href: sections[0].href,
+        isUpdated: false,
+      },
+    ]);
+  });
+
   it("prioritizes revised sections with changed paragraph anchors", () => {
     const sections = allSections().slice(0, 3);
     const progress = markRead(emptyProgress(), sections[0]);

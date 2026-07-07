@@ -12,7 +12,7 @@ import {
   type FormEvent,
 } from "react";
 import { usePathname } from "next/navigation";
-import { Check, Cloud, RotateCcw, Trash2, UserRound } from "lucide-react";
+import { Check, Cloud, Map as MapIcon, RotateCcw, Trash2, UserRound } from "lucide-react";
 import { loadReaderSections } from "@/lib/reader-data";
 import type { ProgressSection } from "@/lib/manuscript-data";
 import {
@@ -67,7 +67,7 @@ import {
 const idleThresholdMs = 45_000;
 const scrollMilestones = [25, 50, 75, 100];
 // Percent scrolled at which a section counts as read and the read event fires.
-const readThresholdPercent = 80;
+const readThresholdPercent = 100;
 // How often the visibility timer samples active vs idle time.
 const timingSampleIntervalMs = 5_000;
 // Debounce before a local change is pushed to the remote sync backend.
@@ -618,6 +618,12 @@ export function ToolbarProgressIsland() {
                 ? "Synced with your account after consent."
                 : "Reading history is kept in this browser until you choose to sync."}
             </p>
+          </div>
+          <div className="reader-actions progress-section">
+            <a className="icon-button" href="/progress/">
+              <MapIcon aria-hidden="true" size={17} />
+              <span>Open reading map</span>
+            </a>
           </div>
           <div className="progress-section reader-sync">
             <p className="eyebrow">Sync</p>
