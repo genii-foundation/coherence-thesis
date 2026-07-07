@@ -143,6 +143,27 @@ export function createEngagementEvent(
   };
 }
 
+// Upper bound on locally stored engagement events. The server already caps rows
+// per user (migration), but the browser log grew unbounded, so a long-lived
+// reader could bloat localStorage and eventually hit the quota. Synced events
+// are pruned first; unsynced events are retained (they still need uploading)
+// until they too exceed the cap.
+export const maxStoredEvents = 2000;
+
+export function pruneEvents(
+  events: ReaderEngagementEvent[],
+  cap = maxStoredEvents,
+): ReaderEngagementEvent[] {
+  if (events.length <= cap) return events;
+  const unsynced = events.filter((event) => !event.syncedAt);
+  if (unsynced.length >= cap) {
+    return unsynced.slice(-cap);
+  }
+  const synced = events.filter((event) => event.syncedAt);
+  const keptSynced = synced.slice(-(cap - unsynced.length));
+  return [...keptSynced, ...unsynced].sort((a, b) => a.eventAt - b.eventAt);
+}
+
 export function addEngagementEvent(
   events: ReaderEngagementEvent[],
   event: ReaderEngagementEvent,
@@ -150,7 +171,7 @@ export function addEngagementEvent(
   if (events.some((candidate) => candidate.clientEventId === event.clientEventId)) {
     return events;
   }
-  return [...events, event];
+  return pruneEvents([...events, event]);
 }
 
 export function markEventsSynced(

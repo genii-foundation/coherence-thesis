@@ -68,14 +68,49 @@ export function emptyProgress(): ReaderProgressState {
   return { sections: {} };
 }
 
+function isValidSectionState(value: unknown): value is SectionReadState {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const section = value as Record<string, unknown>;
+  return (
+    typeof section.sectionId === "string" &&
+    typeof section.contentHash === "string" &&
+    typeof section.readAt === "number" &&
+    Number.isFinite(section.readAt) &&
+    typeof section.percent === "number" &&
+    Number.isFinite(section.percent)
+  );
+}
+
+// Validate a progress object's shape before it enters local state. Storage can
+// be edited by hand and, once sync is on, remote rows are merged in; a malformed
+// entry (wrong types, an array where an object is expected) would otherwise flow
+// into the merge and read paths. Structurally invalid entries are dropped;
+// valid entries are kept intact with all their optional fields.
+export function sanitizeProgress(value: unknown): ReaderProgressState {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return emptyProgress();
+  }
+  const sectionsRaw = (value as { sections?: unknown }).sections;
+  if (
+    !sectionsRaw ||
+    typeof sectionsRaw !== "object" ||
+    Array.isArray(sectionsRaw)
+  ) {
+    return emptyProgress();
+  }
+  const sections: ReaderProgressState["sections"] = {};
+  for (const [key, entry] of Object.entries(
+    sectionsRaw as Record<string, unknown>,
+  )) {
+    if (isValidSectionState(entry)) sections[key] = entry;
+  }
+  return { sections };
+}
+
 export function parseProgress(raw: string | null): ReaderProgressState {
   if (!raw) return emptyProgress();
   try {
-    const parsed = JSON.parse(raw) as ReaderProgressState;
-    if (!parsed || typeof parsed !== "object" || !parsed.sections) {
-      return emptyProgress();
-    }
-    return parsed;
+    return sanitizeProgress(JSON.parse(raw));
   } catch {
     return emptyProgress();
   }
