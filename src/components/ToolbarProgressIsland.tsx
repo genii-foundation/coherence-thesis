@@ -12,7 +12,7 @@ import {
   type FormEvent,
 } from "react";
 import { usePathname } from "next/navigation";
-import { Check, Cloud, KeyRound, RotateCcw, Trash2, UserRound } from "lucide-react";
+import { Check, Cloud, KeyRound, RotateCcw, UserRound } from "lucide-react";
 import { loadReaderSections } from "@/lib/reader-data";
 import type { ProgressSection } from "@/lib/manuscript-data";
 import {
@@ -20,7 +20,6 @@ import {
   grantSyncConsent,
   markEventsSynced,
   parseSyncConsent,
-  revokeSyncConsent,
   unsyncedEvents,
   type ReaderEngagementEvent,
   type ReaderSyncConsent,
@@ -36,8 +35,6 @@ import {
   writeStoredEvents,
 } from "@/lib/reader-progress-store";
 import {
-  deleteReaderAccount,
-  deleteRemoteReaderData,
   getCurrentUser,
   isReaderSyncConfigured,
   loadRemoteReaderState,
@@ -71,8 +68,44 @@ const readThresholdPercent = 80;
 const timingSampleIntervalMs = 5_000;
 // Debounce before a local change is pushed to the remote sync backend.
 const syncDebounceMs = 1_500;
+const lastSyncedStorageKey = "coherence-reader-last-synced-at-v1";
 
-type SyncStatus = "idle" | "syncing" | "synced" | "paused" | "error";
+type SyncStatus = "idle" | "syncing" | "synced" | "error";
+
+function readLastSyncedAt(): number | null {
+  if (typeof window === "undefined") return null;
+  const value = window.localStorage.getItem(lastSyncedStorageKey);
+  if (!value) return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function writeLastSyncedAt(value: number): void {
+  window.localStorage.setItem(lastSyncedStorageKey, String(value));
+}
+
+function relativeTimeFrom(timestamp: number, now: number): string {
+  const seconds = Math.max(0, Math.round((now - timestamp) / 1000));
+  if (seconds < 45) return "just now";
+  const minutes = Math.round(seconds / 60);
+  if (minutes < 60) return `${minutes} minute${minutes === 1 ? "" : "s"} ago`;
+  const hours = Math.round(minutes / 60);
+  if (hours < 24) return `${hours} hour${hours === 1 ? "" : "s"} ago`;
+  const days = Math.round(hours / 24);
+  return `${days} day${days === 1 ? "" : "s"} ago`;
+}
+
+function formatLastSyncedAt(timestamp: number | null, now: number): string {
+  if (!timestamp) return "Not synced yet";
+  const absolute = new Intl.DateTimeFormat(undefined, {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(new Date(timestamp));
+  return `${absolute} (${relativeTimeFrom(timestamp, now)})`;
+}
 
 export function ToolbarProgressIsland() {
   const pathname = usePathname();
@@ -93,7 +126,8 @@ export function ToolbarProgressIsland() {
   const [authMessage, setAuthMessage] = useState("");
   const [syncStatus, setSyncStatus] = useState<SyncStatus>("idle");
   const [syncMessage, setSyncMessage] = useState("");
-  const [confirmingDelete, setConfirmingDelete] = useState(false);
+  const [lastSyncedAt, setLastSyncedAt] = useState<number | null>(null);
+  const [relativeNow, setRelativeNow] = useState(() => Date.now());
 
   const section = useMemo(() => {
     const currentPath = normalizePath(pathname);
@@ -110,9 +144,17 @@ export function ToolbarProgressIsland() {
   useEffect(() => {
     const hydrationTimer = window.setTimeout(() => {
       setConsent(readStoredConsent());
+      setLastSyncedAt(readLastSyncedAt());
       setSyncConfigured(isReaderSyncConfigured());
     }, 0);
     return () => window.clearTimeout(hydrationTimer);
+  }, []);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setRelativeNow(Date.now());
+    }, 30_000);
+    return () => window.clearInterval(timer);
   }, []);
 
   useEffect(() => {
@@ -158,7 +200,6 @@ export function ToolbarProgressIsland() {
   useEffect(() => {
     const closeTimer = window.setTimeout(() => {
       setOpen(false);
-      setConfirmingDelete(false);
       setSyncLoginModalEmail("");
     }, 0);
     return () => window.clearTimeout(closeTimer);
@@ -205,9 +246,6 @@ export function ToolbarProgressIsland() {
     if (!open) return;
     const dismiss = () => {
       setOpen(false);
-      // Disarm the delete confirmation on any close so a stale armed state
-      // cannot commit on the next open.
-      setConfirmingDelete(false);
       setSyncLoginModalEmail("");
     };
     const onPointerDown = (event: PointerEvent) => {
@@ -390,8 +428,17 @@ export function ToolbarProgressIsland() {
   }, [pathname, section]);
 
   const syncNow = useCallback(
-    async (overrideProgress?: ReaderProgressState, overrideEvents?: ReaderEngagementEvent[]) => {
-      if (!user || !consent.granted || syncingRef.current) return;
+    async (
+      overrideProgress?: ReaderProgressState,
+      overrideEvents?: ReaderEngagementEvent[],
+      options: { grantConsent?: boolean } = {},
+    ) => {
+      if (!user || syncingRef.current) return;
+      let activeConsent = consent;
+      if (!activeConsent.granted) {
+        if (!options.grantConsent) return;
+        activeConsent = grantSyncConsentLocally();
+      }
       syncingRef.current = true;
       setSyncStatus("syncing");
       setSyncMessage("Syncing reading history.");
@@ -401,19 +448,33 @@ export function ToolbarProgressIsland() {
 
       try {
         const progressResult = await upsertRemoteProgress(user.id, currentProgress);
-        const consentResult = await upsertRemoteConsent(user.id, consent);
+        const consentResult = await upsertRemoteConsent(user.id, activeConsent);
+        const primaryError = progressResult.error ?? consentResult.error ?? null;
+        if (primaryError) throw primaryError;
+
         const eventResult = await uploadRemoteEvents(user.id, pendingEvents);
-        const error =
-          progressResult.error ?? consentResult.error ?? eventResult.error ?? null;
-        if (error) throw error;
         if (eventResult.uploadedIds.length > 0) {
           writeStoredEvents(markEventsSynced(currentEvents, eventResult.uploadedIds));
         }
+        const syncedAt = Date.now();
+        setLastSyncedAt(syncedAt);
+        writeLastSyncedAt(syncedAt);
         setSyncStatus("synced");
-        setSyncMessage("Synced with your account.");
-      } catch {
+        setSyncMessage(
+          eventResult.error
+            ? "Progress synced. Reading history details will retry."
+            : "Synced across your devices.",
+        );
+        if (eventResult.error) {
+          console.warn("Reader engagement event sync failed.", eventResult.error);
+        }
+      } catch (error) {
         setSyncStatus("error");
-        setSyncMessage("Sync paused. Local progress is still saved.");
+        setSyncMessage(
+          error instanceof Error
+            ? `Sync failed: ${error.message}`
+            : "Sync failed. Local progress is still saved.",
+        );
       } finally {
         syncingRef.current = false;
       }
@@ -444,6 +505,7 @@ export function ToolbarProgressIsland() {
   const revisedCount = recommendations.filter((item) => item.isUpdated).length;
   const isRead = section ? isSectionRead(progress, section) : false;
   const isUpdated = section ? updatedSinceRead(progress, section) : false;
+  const lastSyncedLabel = formatLastSyncedAt(lastSyncedAt, relativeNow);
 
   useEffect(() => {
     if (!open || recommendations.length === 0) return;
@@ -542,58 +604,6 @@ export function ToolbarProgressIsland() {
     setAuthMessage("Signed in. Sync will start shortly.");
   }
 
-  async function revokeConsentAndPause() {
-    const nextConsent = revokeSyncConsent(consent);
-    setConsent(nextConsent);
-    writeStoredConsent(nextConsent);
-    if (user) {
-      const { error } = await upsertRemoteConsent(user.id, nextConsent);
-      if (error) {
-        setSyncStatus("error");
-        setSyncMessage("Sync could not be paused remotely. It is paused locally.");
-        return;
-      }
-    }
-    setSyncStatus("paused");
-    setSyncMessage("Sync paused. Local history stays in this browser.");
-  }
-
-  async function deleteSyncedData() {
-    if (!user) return;
-    const { error } = await deleteRemoteReaderData(user.id);
-    if (error) {
-      setSyncStatus("error");
-      setSyncMessage("Synced data could not be deleted.");
-      return;
-    }
-    const nextConsent = revokeSyncConsent(consent);
-    setConsent(nextConsent);
-    writeStoredConsent(nextConsent);
-    setSyncStatus("paused");
-    setSyncMessage("Synced data deleted. Local history was kept.");
-  }
-
-  async function deleteAccount() {
-    // Two-step confirmation: the first click arms the action, the second
-    // commits it. Account deletion is irreversible and cascades all synced data.
-    if (!confirmingDelete) {
-      setConfirmingDelete(true);
-      setSyncMessage("Click again to permanently delete your account.");
-      return;
-    }
-    setConfirmingDelete(false);
-    const { error } = await deleteReaderAccount();
-    if (error) {
-      setSyncStatus("error");
-      setSyncMessage("Account deletion failed.");
-      return;
-    }
-    await signOutReader();
-    setUser(null);
-    setSyncStatus("paused");
-    setSyncMessage("Account deleted. Local history was kept.");
-  }
-
   async function signOut() {
     await signOutReader();
     setUser(null);
@@ -616,7 +626,6 @@ export function ToolbarProgressIsland() {
         }
         onClick={() => {
           setOpen((current) => !current);
-          setConfirmingDelete(false);
           setSyncLoginModalEmail("");
         }}
       >
@@ -637,9 +646,7 @@ export function ToolbarProgressIsland() {
           aria-label="Reader progress"
         >
           <div className="progress-section">
-            <p className="eyebrow">
-              {user && consent.granted ? "Synced progress" : "Local progress"}
-            </p>
+            <p className="eyebrow">Reading progress</p>
             <div className="progress-row">
               <div className="progress-bar" aria-hidden="true">
                 <span style={{ width: `${percent}%` }} />
@@ -647,8 +654,8 @@ export function ToolbarProgressIsland() {
               <strong>{percent}%</strong>
             </div>
             <p className="quiet-copy">
-              {user && consent.granted
-                ? "Synced with your account after consent."
+              {user
+                ? "Synced across all your devices."
                 : "Reading history is kept in this browser until you choose to sync."}
             </p>
           </div>
@@ -749,55 +756,30 @@ export function ToolbarProgressIsland() {
                 )}
               </div>
             )}
-            {syncConfigured && user && !consent.granted && (
-              <div className="reader-sync-consent">
-                <p className="quiet-copy">
-                  Sync is paused. Local history is still saved in this browser.
-                </p>
-                <button
-                  type="button"
-                  className="icon-button"
-                  onClick={grantSyncConsentLocally}
-                >
-                  <Cloud aria-hidden="true" size={17} />
-                  <span>Resume sync</span>
-                </button>
-              </div>
-            )}
-            {syncConfigured && user && consent.granted && (
+            {syncConfigured && user && (
               <div className="reader-sync-actions">
-                <p className="quiet-copy">{user.email ?? "Signed in"}</p>
+                <dl className="reader-sync-meta">
+                  <div>
+                    <dt>Account:</dt>
+                    <dd>{user.email ?? "Signed in"}</dd>
+                  </div>
+                  <div>
+                    <dt>Last synced:</dt>
+                    <dd>{lastSyncedLabel}</dd>
+                  </div>
+                </dl>
                 <div className="reader-actions">
-                  <button type="button" className="icon-button" onClick={() => syncNow()}>
+                  <button
+                    type="button"
+                    className="icon-button"
+                    onClick={() => syncNow(undefined, undefined, { grantConsent: true })}
+                  >
                     <Cloud aria-hidden="true" size={17} />
                     <span>{syncStatus === "syncing" ? "Syncing" : "Sync now"}</span>
-                  </button>
-                  <button type="button" className="icon-button" onClick={revokeConsentAndPause}>
-                    <RotateCcw aria-hidden="true" size={17} />
-                    <span>Pause sync</span>
                   </button>
                   <button type="button" className="icon-button" onClick={signOut}>
                     <UserRound aria-hidden="true" size={17} />
                     <span>Sign out</span>
-                  </button>
-                </div>
-                <div className="reader-actions">
-                  <button type="button" className="icon-button" onClick={deleteSyncedData}>
-                    <Trash2 aria-hidden="true" size={17} />
-                    <span>Delete synced data</span>
-                  </button>
-                  <button
-                    type="button"
-                    className="icon-button"
-                    onClick={deleteAccount}
-                    aria-pressed={confirmingDelete}
-                  >
-                    <Trash2 aria-hidden="true" size={17} />
-                    <span>
-                      {confirmingDelete
-                        ? "Confirm delete account"
-                        : "Delete account"}
-                    </span>
                   </button>
                 </div>
               </div>

@@ -2584,11 +2584,37 @@ input {
 .reader-sync,
 .reader-sync-login,
 .reader-sync-form,
-.reader-sync-consent,
 .reader-sync-actions {
   display: grid;
   gap: 0.7rem;
   min-width: 0;
+}
+
+.reader-sync-meta {
+  display: grid;
+  gap: 0.28rem;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.reader-sync-meta div {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.45rem;
+  align-items: baseline;
+}
+
+.reader-sync-meta dt {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.reader-sync-meta dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .reader-sync-form label {

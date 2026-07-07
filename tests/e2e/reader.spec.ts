@@ -1213,6 +1213,10 @@ test("progress menu shows a resettable email sent confirmation", async ({
 test("progress button wraps percent in a cloud when signed in", async ({
   page,
 }) => {
+  let progressWrites = 0;
+  let consentWrites = 0;
+  let eventWrites = 0;
+
   await page.route("**/auth/v1/user**", async (route) => {
     await route.fulfill({
       status: 401,
@@ -1249,6 +1253,37 @@ test("progress button wraps percent in a cloud when signed in", async ({
       }),
     });
   });
+  await page.route("**/rest/v1/reader_progress**", async (route) => {
+    if (route.request().method() !== "GET") {
+      progressWrites += 1;
+    }
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: route.request().method() === "GET" ? "null" : "{}",
+    });
+  });
+  await page.route("**/rest/v1/reader_sync_consent**", async (route) => {
+    if (route.request().method() !== "GET") {
+      consentWrites += 1;
+    }
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: route.request().method() === "GET" ? "null" : "{}",
+    });
+  });
+  await page.route("**/rest/v1/reader_engagement_events**", async (route) => {
+    eventWrites += 1;
+    await route.fulfill({
+      status: 400,
+      contentType: "application/json",
+      body: JSON.stringify({
+        message: "debug event upload failure",
+        code: "TEST_EVENT_FAILURE",
+      }),
+    });
+  });
 
   await page.goto(wieldingSection.href);
 
@@ -1276,7 +1311,22 @@ test("progress button wraps percent in a cloud when signed in", async ({
   await page.getByRole("button", { name: "Verify code" }).click();
 
   await expect(progressButton).toHaveClass(/is-signed-in/);
+  const syncSection = page.locator(".reader-sync");
+  await expect(page.getByText("Reading progress")).toBeVisible();
+  await expect(page.getByText("Synced across all your devices.")).toBeVisible();
+  await expect(syncSection.getByText("Account:")).toBeVisible();
+  await expect(syncSection.getByText("reader@example.com")).toBeVisible();
+  await expect(syncSection.getByText("Last synced:")).toBeVisible();
+  await expect(syncSection.getByText(/\(just now\)/)).toBeVisible();
+  await expect(
+    syncSection.getByText("Progress synced. Reading history details will retry."),
+  ).toBeVisible();
+  await expect(syncSection.getByRole("button")).toHaveCount(2);
   await expect(page.getByText("Allow sync")).toHaveCount(0);
+  await expect(page.getByText("Pause sync")).toHaveCount(0);
+  await expect(page.getByText("Resume sync")).toHaveCount(0);
+  await expect(page.getByText("Delete synced data")).toHaveCount(0);
+  await expect(page.getByText("Delete account")).toHaveCount(0);
   await expect(progressButton.locator(".progress-percent-cloud")).toHaveCount(
     1,
   );
@@ -1310,6 +1360,9 @@ test("progress button wraps percent in a cloud when signed in", async ({
         signedInProgressGeometry.percentCenterX,
     ),
   ).toBeLessThanOrEqual(1);
+  expect(progressWrites).toBeGreaterThan(0);
+  expect(consentWrites).toBeGreaterThan(0);
+  expect(eventWrites).toBeGreaterThan(0);
 });
 
 test("reader share menu exposes page sharing and PDF downloads", async ({
