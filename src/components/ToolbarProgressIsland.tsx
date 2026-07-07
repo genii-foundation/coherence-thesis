@@ -12,7 +12,7 @@ import {
   type FormEvent,
 } from "react";
 import { usePathname } from "next/navigation";
-import { Check, Cloud, KeyRound, RotateCcw, UserRound } from "lucide-react";
+import { Check, Cloud, KeyRound, Map as MapIcon, RotateCcw, UserRound } from "lucide-react";
 import { loadReaderSections } from "@/lib/reader-data";
 import type { ProgressSection } from "@/lib/manuscript-data";
 import {
@@ -34,6 +34,7 @@ import {
   writeStoredConsent,
   writeStoredEvents,
 } from "@/lib/reader-progress-store";
+import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 import {
   getCurrentUser,
   isReaderSyncConfigured,
@@ -50,8 +51,9 @@ import {
   isSectionRead,
   markRead,
   markSectionOpened,
-  mergeProgressStates,
+  readerProgressSchemaVersion,
   readPercent,
+  reconcileRemoteProgress,
   recentlyReadSections,
   recordReadingTime,
   recordScrollProgress,
@@ -63,7 +65,7 @@ import {
 const idleThresholdMs = 45_000;
 const scrollMilestones = [25, 50, 75, 100];
 // Percent scrolled at which a section counts as read and the read event fires.
-const readThresholdPercent = 80;
+const readThresholdPercent = 100;
 // How often the visibility timer samples active vs idle time.
 const timingSampleIntervalMs = 5_000;
 // Debounce before a local change is pushed to the remote sync backend.
@@ -109,11 +111,13 @@ function formatLastSyncedAt(timestamp: number | null, now: number): string {
 
 export function ToolbarProgressIsland() {
   const pathname = usePathname();
-  const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<ProgressSection | undefined>(undefined);
   const syncingRef = useRef(false);
   const syncLoginContinueRef = useRef<HTMLButtonElement | null>(null);
-  const [open, setOpen] = useState(false);
+  // Set when the remote progress row was written by a newer schema than this
+  // client understands. While true, the client neither merges the remote row
+  // nor uploads over it, so an outdated device cannot clobber newer data.
+  const remoteSchemaAheadRef = useRef(false);
   const progress = useReaderProgress();
   const [allSections, setAllSections] = useState<ProgressSection[]>([]);
   const [syncConfigured, setSyncConfigured] = useState(false);
@@ -128,6 +132,10 @@ export function ToolbarProgressIsland() {
   const [syncMessage, setSyncMessage] = useState("");
   const [lastSyncedAt, setLastSyncedAt] = useState<number | null>(null);
   const [relativeNow, setRelativeNow] = useState(() => Date.now());
+  const { open, setOpen, toggle, containerRef, triggerRef } =
+    useToolbarMenu<HTMLDivElement>({
+      onDismiss: () => setSyncLoginModalEmail(""),
+    });
 
   const section = useMemo(() => {
     const currentPath = normalizePath(pathname);
@@ -203,7 +211,7 @@ export function ToolbarProgressIsland() {
       setSyncLoginModalEmail("");
     }, 0);
     return () => window.clearTimeout(closeTimer);
-  }, [pathname]);
+  }, [pathname, setOpen]);
 
   useEffect(() => {
     sectionRef.current = section;
@@ -225,9 +233,22 @@ export function ToolbarProgressIsland() {
         }
         if (effectiveConsent?.granted && remote.progress) {
           const remoteProgress = remote.progress;
-          updateStoredProgress((current) =>
-            mergeProgressStates(current, remoteProgress),
-          );
+          const remoteVersion =
+            remote.progressSchemaVersion ?? readerProgressSchemaVersion;
+          if (remoteVersion > readerProgressSchemaVersion) {
+            remoteSchemaAheadRef.current = true;
+            setSyncStatus("error");
+            setSyncMessage(
+              "Your reading history was saved by a newer version of the reader. Update this device to sync it.",
+            );
+          } else {
+            remoteSchemaAheadRef.current = false;
+            updateStoredProgress(
+              (current) =>
+                reconcileRemoteProgress(current, remoteProgress, remoteVersion) ??
+                current,
+            );
+          }
         }
       })
       .catch(() => {
@@ -241,28 +262,6 @@ export function ToolbarProgressIsland() {
       mounted = false;
     };
   }, [user]);
-
-  useEffect(() => {
-    if (!open) return;
-    const dismiss = () => {
-      setOpen(false);
-      setSyncLoginModalEmail("");
-    };
-    const onPointerDown = (event: PointerEvent) => {
-      if (!containerRef.current?.contains(event.target as Node)) {
-        dismiss();
-      }
-    };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") dismiss();
-    };
-    document.addEventListener("pointerdown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [open]);
 
   useEffect(() => {
     if (!syncLoginModalEmail) return;
@@ -434,6 +433,13 @@ export function ToolbarProgressIsland() {
       options: { grantConsent?: boolean } = {},
     ) => {
       if (!user || syncingRef.current) return;
+      if (remoteSchemaAheadRef.current) {
+        setSyncStatus("error");
+        setSyncMessage(
+          "Sync paused: your account has newer data than this version of the reader supports.",
+        );
+        return;
+      }
       let activeConsent = consent;
       if (!activeConsent.granted) {
         if (!options.grantConsent) return;
@@ -614,6 +620,7 @@ export function ToolbarProgressIsland() {
   return (
     <div className="progress-menu" ref={containerRef}>
       <button
+        ref={triggerRef}
         type="button"
         className={`progress-menu-button${user ? " is-signed-in" : ""}`}
         aria-label={`Progress ${percent}%${user ? ", signed in" : ""}`}
@@ -625,7 +632,7 @@ export function ToolbarProgressIsland() {
           }
         }
         onClick={() => {
-          setOpen((current) => !current);
+          toggle();
           setSyncLoginModalEmail("");
         }}
       >
@@ -658,6 +665,12 @@ export function ToolbarProgressIsland() {
                 ? "Synced across all your devices."
                 : "Reading history is kept in this browser until you choose to sync."}
             </p>
+          </div>
+          <div className="reader-actions progress-section">
+            <a className="icon-button" href="/progress/">
+              <MapIcon aria-hidden="true" size={17} />
+              <span>Open reading map</span>
+            </a>
           </div>
           <div className="progress-section reader-sync">
             <p className="eyebrow">Sync</p>

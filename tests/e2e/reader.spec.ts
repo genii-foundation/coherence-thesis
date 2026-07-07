@@ -1962,6 +1962,9 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
     })
     .toBe("true");
   const popover = page.getByRole("region", { name: "Reader progress" });
+  const readingMapLink = popover.getByRole("link", { name: "Open reading map" });
+  await expect(readingMapLink).toBeVisible();
+  await expect(readingMapLink).toHaveAttribute("href", "/progress/");
   const markReadButton = popover.getByRole("button", {
     name: /^(Mark current section as read|Current section is marked read)$/,
   });
@@ -2055,6 +2058,31 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await expect(
     footer.getByText(`© ${copyrightYearLabel} by the Providence Collective.`),
   ).toBeVisible();
+});
+
+test("reading map renders the manuscript heatmap", async ({ page }) => {
+  await page.goto("/progress/");
+
+  await expect(page.getByRole("heading", { name: "Reading Map" })).toBeVisible();
+  await expect(page.locator(".progress-heatmap-volume")).toHaveCount(9);
+  await expect(page.locator(".progress-heatmap-cell")).toHaveCount(1_000);
+
+  const firstCell = page.locator(".progress-heatmap-cell").first();
+  await expect(firstCell).toHaveAttribute("href", /\/manuscripts\//);
+
+  const mapMetrics = await page.evaluate(() => {
+    const cell = document.querySelector(".progress-heatmap-cell");
+    const box = cell?.getBoundingClientRect();
+    return {
+      cellWidth: box?.width ?? 0,
+      cellHeight: box?.height ?? 0,
+      scrollWidth: document.documentElement.scrollWidth,
+      viewportWidth: document.documentElement.clientWidth,
+    };
+  });
+
+  expect(Math.abs(mapMetrics.cellWidth - mapMetrics.cellHeight)).toBeLessThanOrEqual(1);
+  expect(mapMetrics.scrollWidth).toBeLessThanOrEqual(mapMetrics.viewportWidth + 1);
 });
 
 test("singleton section alias records anonymous engagement events", async ({

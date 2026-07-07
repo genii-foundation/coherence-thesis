@@ -6,13 +6,21 @@ import {
   type ReaderEngagementEvent,
   type ReaderSyncConsent,
 } from "./reader-engagement";
-import { parseProgress, type ReaderProgressState } from "./reader-state";
+import {
+  parseProgress,
+  readerProgressSchemaVersion,
+  type ReaderProgressState,
+} from "./reader-state";
 import { createBrowserSupabaseClient } from "./supabase/browser";
 
 export type ReaderSyncClient = ReturnType<typeof createBrowserSupabaseClient>;
 
 export type ReaderRemoteState = {
   progress: ReaderProgressState | null;
+  // Schema version the remote progress row was written with, or null when there
+  // is no remote row. Callers use this to refuse merging rows newer than this
+  // client understands.
+  progressSchemaVersion: number | null;
   consent: ReaderSyncConsent | null;
 };
 
@@ -83,12 +91,12 @@ export async function signOutReader() {
 
 export async function loadRemoteReaderState(userId: string): Promise<ReaderRemoteState> {
   const supabase = createBrowserSupabaseClient();
-  if (!supabase) return { progress: null, consent: null };
+  if (!supabase) return { progress: null, progressSchemaVersion: null, consent: null };
 
   const [progressResponse, consentResponse] = await Promise.all([
     supabase
       .from("reader_progress")
-      .select("progress")
+      .select("progress, schema_version")
       .eq("user_id", userId)
       .maybeSingle(),
     supabase
@@ -102,6 +110,10 @@ export async function loadRemoteReaderState(userId: string): Promise<ReaderRemot
     progress: progressResponse.data?.progress
       ? parseProgress(JSON.stringify(progressResponse.data.progress))
       : null,
+    progressSchemaVersion:
+      typeof progressResponse.data?.schema_version === "number"
+        ? progressResponse.data.schema_version
+        : null,
     consent: consentResponse.data
       ? {
           version: consentResponse.data.consent_version,
@@ -129,7 +141,7 @@ export async function upsertRemoteProgress(
     {
       user_id: userId,
       progress,
-      schema_version: 2,
+      schema_version: readerProgressSchemaVersion,
     },
     { onConflict: "user_id" },
   );

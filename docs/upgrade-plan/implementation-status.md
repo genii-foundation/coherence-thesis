@@ -43,6 +43,21 @@ local gate (`manuscripts:validate`, typecheck, lint, unit tests, build) green.
 - Folds in `docs/audio-provider-research.md` (was the standalone doc-only PR
   #22) so the design and its first implementation land together.
 
+## Follow-up PR: sync schema versioning (Phase 4, wave 3)
+
+- **ARCH-03** read and act on the remote `reader_progress.schema_version`.
+  `loadRemoteReaderState` now returns `progressSchemaVersion`, uploads write the
+  single `readerProgressSchemaVersion` constant instead of a literal `2`, and
+  `reconcileRemoteProgress` decides the fold: it merges rows at or below the
+  known schema and returns null for newer rows. `ToolbarProgressIsland` refuses
+  to merge or upload over a row written by a newer reader (guarded by
+  `remoteSchemaAheadRef`), so an outdated device cannot silently drop unknown
+  fields or clobber richer remote data; it surfaces an "update this device"
+  status instead. Covered by new `reconcileRemoteProgress` unit tests and the
+  desktop e2e sync path. Scoped to the progress schema; re-prompting consent
+  when `readerSyncConsentCopyVersion` changes remains a separate small
+  follow-up (the version fields are already read and stored).
+
 ## Done in the base PR (#24)
 
 ### Phase 0: correctness and safety
@@ -100,8 +115,7 @@ These are the larger refactors and the remaining polish. Each is a clean,
 self-contained next PR; the register entry has the full detail.
 
 ### Architecture (highest value remaining)
-- **ARCH-02** decompose the (now ~640-line) `ToolbarProgressIsland`
-- **ARCH-03** read and act on sync `schema_version` / consent versioning
+- **ARCH-02** decompose the (now ~660-line) `ToolbarProgressIsland`
 - **ARCH-04** section-ID drift gate in the import pipeline
 - **MAINT-05** split `scripts/manuscripts/shared.ts`
 

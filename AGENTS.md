@@ -29,7 +29,7 @@ npm run manuscripts:validate
 ```
 
 - Do not accept an import when the parser has collapsed, fragmented, reordered, or renamed sections incorrectly. Fix the source or importer first.
-- Treat removed or renamed sections as a link preservation event. Add aliases when old public routes should continue to resolve.
+- Treat removed or renamed sections as a link preservation event. Add aliases when old public routes should continue to resolve. `manuscripts:validate` enforces this: the section ledger in `content/series/section-ledger.json` records every route ever published, and the build fails if a published route stops resolving without an alias.
 
 ## Interface Rules
 
