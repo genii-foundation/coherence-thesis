@@ -130,12 +130,13 @@ Each landed as its own focused, CI-green PR on top of the base:
 - **TEST-05** `noUncheckedIndexedAccess` enabled, all sites guarded
 - **MAINT-03 / MAINT-04 / DOC-05 / A11Y-10** named frontmatter errors, dead
   export removal, content-based overview audio id, 44px touch targets
+- **ARCH-02** extracted the ~155-line section-engagement tracking out of
+  `ToolbarProgressIsland` into a `useSectionEngagement` hook
 
 ## Deferred to follow-up PRs
 
 The genuinely remaining items:
 
-- **ARCH-02** decompose `ToolbarProgressIsland`
 - **PERF-01 (rest)** slim progress manifest and server-side breadcrumbs so
   `ToolbarProgressIsland` and `ToolbarBreadcrumbs` stop loading full payloads
 - **TEST-03 / TEST-04** split the large e2e spec and decouple it from prose
