@@ -1,8 +1,38 @@
-import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
-import { readingMinutesForWords } from "../../src/lib/reading-time";
+import type {
+  CompiledCatalog,
+  CompiledChapter,
+  CompiledPart,
+  CompiledSection,
+  CompiledVolume,
+  ManuscriptFrontmatter,
+  MarkdownDocument,
+  OverviewDocument,
+  SearchIndexEntry,
+  SectionAlias,
+  SectionAliasConfig,
+  SectionLedger,
+  SectionLedgerEntry,
+  VersionProvenanceManifest,
+  VolumeConfig,
+} from "./types";
+import {
+  normalizeNewlines,
+  paragraphFingerprints,
+  readingMinutes,
+  readUtf8,
+  sha256,
+  stripMarkdown,
+  wordCount,
+} from "./io";
+
+// Re-export the split modules so existing `from "./shared"` imports keep working
+// (MAINT-05: shared.ts was one 770-line file; types live in ./types, filesystem
+// and text helpers in ./io, and the pipeline builders remain here).
+export type * from "./types";
+export * from "./io";
 
 export const repoRoot = path.resolve(import.meta.dirname, "../..");
 export const contentRoot = path.join(repoRoot, "content");
@@ -20,291 +50,6 @@ export const readerSectionsPath = path.join(publicDataRoot, "reader-sections.jso
 export const breadcrumbRoutesPath = path.join(publicDataRoot, "breadcrumb-routes.json");
 export const searchIndexPath = path.join(publicDataRoot, "search-index.json");
 export const artifactsRoot = path.join(repoRoot, "artifacts/imports");
-
-export type ManuscriptFrontmatter = {
-  volumeId: string;
-  volumeTitle: string;
-  volumeOrder: number;
-  partId: string;
-  partTitle: string;
-  partOrder: number;
-  chapterId: string;
-  chapterTitle: string;
-  chapterOrder: number;
-  sectionId: string;
-  title: string;
-  sectionOrder: number;
-  sourceDoc?: string;
-  sourceHash?: string;
-  sourceParagraphStart?: number;
-  sourceParagraphEnd?: number;
-  aliases?: string[];
-};
-
-export type MarkdownDocument = {
-  filePath: string;
-  relativePath: string;
-  frontmatter: ManuscriptFrontmatter;
-  body: string;
-};
-
-export type CompiledSection = ManuscriptFrontmatter & {
-  path: string;
-  href: string;
-  body: string;
-  text: string;
-  paragraphs: CompiledParagraph[];
-  wordCount: number;
-  readingMinutes: number;
-  contentHash: string;
-  versionHash: string;
-  versionDate: string;
-  versionUrl: string;
-  audioVersionId: string;
-  previousSectionId: string | null;
-  nextSectionId: string | null;
-};
-
-export type VolumeConfig = {
-  volumeId: string;
-  title: string;
-  subtitle: string;
-  order: number;
-  numberLabel: string;
-  planet: string;
-  coverImage: string;
-  coverAlt: string;
-  sourcePath: string;
-};
-
-export type CompiledParagraph = {
-  paragraphId: string;
-  anchor: string;
-  order: number;
-  contentHash: string;
-  text: string;
-};
-
-export type CompiledChapter = {
-  chapterId: string;
-  title: string;
-  order: number;
-  href: string;
-  sectionIds: string[];
-  wordCount: number;
-};
-
-export type CompiledPart = {
-  partId: string;
-  title: string;
-  order: number;
-  href: string;
-  chapters: CompiledChapter[];
-  sectionIds: string[];
-  wordCount: number;
-};
-
-export type CompiledVolume = {
-  volumeId: string;
-  title: string;
-  subtitle: string;
-  order: number;
-  numberLabel: string;
-  planet: string;
-  coverImage: string;
-  coverAlt: string;
-  href: string;
-  parts: CompiledPart[];
-  sectionIds: string[];
-  wordCount: number;
-};
-
-export type OverviewReference = {
-  sectionId: string;
-  label?: string;
-};
-
-export type OverviewNode = {
-  id: string;
-  title: string;
-  summary: string;
-  references: OverviewReference[];
-  children?: OverviewNode[];
-};
-
-export type OverviewDocument = {
-  title: string;
-  subtitle: string;
-  readingMinutes: number;
-  nodes: OverviewNode[];
-};
-
-export type SectionAliasInput = {
-  sourceHref: string;
-  targetSectionId: string;
-  note?: string;
-};
-
-export type SectionAliasConfig = {
-  version: number;
-  aliases: SectionAliasInput[];
-};
-
-export type SectionAlias = SectionAliasInput & {
-  targetHref: string;
-  sourceRoute: {
-    volumeId: string;
-    partId: string;
-    chapterId: string;
-    sectionId: string;
-  };
-};
-
-// One published section route. Section IDs are the localStorage key for read
-// progress and the anchor for deep links, audio queues, and aliases, so the
-// ledger records every route that has ever been published. It only grows: a
-// removed or renamed section stays here so the drift gate can insist its old
-// route still resolves through an alias.
-export type SectionLedgerEntry = {
-  sectionId: string;
-  href: string;
-};
-
-export type SectionLedger = {
-  version: number;
-  routes: SectionLedgerEntry[];
-};
-
-export type VersionProvenanceEntry = {
-  contentHash: string;
-  versionDate: string;
-  commitSha: string;
-  commitUrl: string;
-  pullRequestUrl?: string;
-  pullRequestNumber?: number;
-};
-
-export type VersionProvenanceManifest = {
-  version: number;
-  generatedAt: string;
-  entries: VersionProvenanceEntry[];
-};
-
-export type CompiledCatalog = {
-  siteTitle: string;
-  generatedFrom: string;
-  gitRevision: string;
-  stats: {
-    volumeCount: number;
-    partCount: number;
-    chapterCount: number;
-    sectionCount: number;
-    wordCount: number;
-    readingMinutes: number;
-  };
-  volumes: CompiledVolume[];
-  sections: CompiledSection[];
-  aliases: SectionAlias[];
-  overview: OverviewDocument;
-};
-
-export type SearchIndexEntry = {
-  sectionId: string;
-  href: string;
-  title: string;
-  volumeTitle: string;
-  partTitle: string;
-  chapterTitle: string;
-  wordCount: number;
-  contentHash: string;
-  text: string;
-};
-
-export function ensureDir(dirPath: string): void {
-  fs.mkdirSync(dirPath, { recursive: true });
-}
-
-export function cleanDir(dirPath: string): void {
-  fs.rmSync(dirPath, { recursive: true, force: true });
-  ensureDir(dirPath);
-}
-
-export function readUtf8(filePath: string): string {
-  return fs.readFileSync(filePath, "utf8");
-}
-
-export function writeUtf8(filePath: string, value: string): void {
-  ensureDir(path.dirname(filePath));
-  fs.writeFileSync(filePath, value);
-}
-
-export function writeJson(filePath: string, value: unknown): void {
-  writeUtf8(filePath, `${JSON.stringify(value, null, 2)}\n`);
-}
-
-export function sha256(value: string | Buffer): string {
-  return crypto.createHash("sha256").update(value).digest("hex");
-}
-
-export function fileHash(filePath: string): string {
-  return sha256(fs.readFileSync(filePath));
-}
-
-export function normalizeNewlines(value: string): string {
-  return value.replace(/\r\n/g, "\n").replace(/\r/g, "\n").trim();
-}
-
-export function slugify(value: string): string {
-  return value
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/['\u2019]/g, "")
-    .replace(/&/g, " and ")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .replace(/-{2,}/g, "-") || "untitled";
-}
-
-export function wordCount(value: string): number {
-  const words = stripMarkdown(value).match(/[A-Za-z0-9]+(?:['\u2019][A-Za-z0-9]+)?/g);
-  return words ? words.length : 0;
-}
-
-// The reading pace lives in one place (src/lib/reading-time.ts) so the
-// build-time section headers and the client-side outline durations cannot
-// disagree for the same content.
-export const readingMinutes = readingMinutesForWords;
-
-export function stripMarkdown(value: string): string {
-  return value
-    .replace(/^---[\s\S]*?---\n?/, "")
-    .replace(/```[\s\S]*?```/g, " ")
-    .replace(/^\|.*\|$/gm, " ")
-    .replace(/!\[[^\]]*]\([^)]*\)/g, " ")
-    .replace(/\[([^\]]+)]\([^)]*\)/g, "$1")
-    .replace(/[*_`>#|\-]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-export function paragraphFingerprints(markdown: string): CompiledParagraph[] {
-  return markdown
-    .split(/\n{2,}/)
-    .map((block) => block.trim())
-    .filter(Boolean)
-    .map((block, index) => {
-      const order = index + 1;
-      const text = stripMarkdown(block);
-      return {
-        paragraphId: `p-${order}`,
-        anchor: `p-${order}`,
-        order,
-        contentHash: sha256(text || block).slice(0, 16),
-        text,
-      };
-    });
-}
 
 export function markdownFiles(root = manuscriptRoot): string[] {
   if (!fs.existsSync(root)) return [];
