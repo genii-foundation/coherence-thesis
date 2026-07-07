@@ -793,7 +793,7 @@ input {
 
 .progress-percent {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   min-width: 0;
   border: 0;
   border-radius: 999px;
@@ -804,6 +804,23 @@ input {
   line-height: 1;
   padding: 0;
   text-align: center;
+}
+
+.progress-percent-cloud {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 2.08rem;
+  height: 1.5rem;
+  color: rgba(119, 84, 42, 0.62);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.progress-menu-button.is-signed-in .progress-percent {
+  font-size: 0.68rem;
+  transform: translateY(0.02rem);
 }
 
 .outline-popover,
@@ -2565,12 +2582,39 @@ input {
 }
 
 .reader-sync,
+.reader-sync-login,
 .reader-sync-form,
-.reader-sync-consent,
 .reader-sync-actions {
   display: grid;
   gap: 0.7rem;
   min-width: 0;
+}
+
+.reader-sync-meta {
+  display: grid;
+  gap: 0.28rem;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.reader-sync-meta div {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.45rem;
+  align-items: baseline;
+}
+
+.reader-sync-meta dt {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.reader-sync-meta dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .reader-sync-form label {
@@ -2595,6 +2639,96 @@ input {
   border-color: rgba(119, 84, 42, 0.52);
   outline: 2px solid rgba(119, 84, 42, 0.28);
   outline-offset: 0.15rem;
+}
+
+.reader-sync-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(19, 27, 34, 0.28);
+}
+
+.reader-sync-modal {
+  display: grid;
+  gap: 0.9rem;
+  width: min(28rem, 100%);
+  border: 1px solid rgba(119, 84, 42, 0.28);
+  border-radius: var(--radius);
+  background: var(--panel-background);
+  box-shadow: 0 1.2rem 3rem rgba(19, 27, 34, 0.22);
+  color: var(--ink);
+  padding: 1.1rem;
+}
+
+.reader-sync-modal > svg {
+  color: var(--bronze-deep);
+}
+
+.reader-sync-modal-copy {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.reader-sync-modal-copy h2,
+.reader-sync-modal-copy p {
+  margin: 0;
+}
+
+.reader-sync-modal-copy h2 {
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+
+.reader-sync-modal-copy p {
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.reader-sync-modal-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.6rem;
+}
+
+.reader-sync-modal-actions .secondary-link,
+.reader-sync-modal-actions .icon-button {
+  width: 100%;
+}
+
+.reader-sync-sent-button {
+  border-color: rgba(119, 84, 42, 0.34);
+  background: rgba(119, 84, 42, 0.16);
+  color: var(--ink);
+  animation: reader-sync-sent-in 220ms ease-out;
+}
+
+.reader-sync-sent-button:hover,
+.reader-sync-sent-button:focus-visible {
+  border-color: rgba(119, 84, 42, 0.48);
+  background: rgba(119, 84, 42, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(119, 84, 42, 0.16);
+}
+
+@keyframes reader-sync-sent-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reader-sync-sent-button {
+    animation: none;
+  }
 }
 
 .reader-sync-actions .reader-actions {

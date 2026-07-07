@@ -1124,6 +1124,247 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   expect(progressMenuMetrics.recommendationWidth).toBeGreaterThan(220);
 });
 
+test("progress menu shows a resettable email sent confirmation", async ({
+  page,
+}) => {
+  let signInEmailRequests = 0;
+  await page.route("**/auth/v1/otp**", async (route) => {
+    signInEmailRequests += 1;
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: "{}",
+    });
+  });
+
+  await page.goto(wieldingSection.href);
+  await page.getByRole("button", { name: /Progress/ }).click();
+
+  if (
+    await page
+      .getByText("Sync is not configured for this build.")
+      .isVisible()
+  ) {
+    test.skip(true, "Sync is not configured in this test environment.");
+  }
+
+  const emailInput = page.getByLabel("Email");
+  const signInButton = page.getByRole("button", { name: "Sign in to sync" });
+  await emailInput.fill("reader@example.com");
+  const initialBackground = await signInButton.evaluate(
+    (element) => window.getComputedStyle(element).backgroundColor,
+  );
+  await signInButton.click();
+
+  const syncModal = page.getByRole("dialog", {
+    name: "Sync reading progress?",
+  });
+  await expect(syncModal).toBeVisible();
+  await expect(
+    syncModal.getByText(
+      "If you continue, reading progress will be synchronized to your Cloud account so this site can remember where you left off and share progress between your devices.",
+    ),
+  ).toBeVisible();
+  expect(signInEmailRequests).toBe(0);
+
+  await syncModal.getByRole("button", { name: "Cancel" }).click();
+  await expect(syncModal).toHaveCount(0);
+  expect(signInEmailRequests).toBe(0);
+  await expect(emailInput).toHaveValue("reader@example.com");
+
+  await signInButton.click();
+  await page
+    .getByRole("dialog", { name: "Sync reading progress?" })
+    .getByRole("button", { name: "Continue" })
+    .click();
+
+  const sentButton = page.getByRole("button", {
+    name: "Check your email to finish.",
+  });
+  await expect(sentButton).toBeVisible();
+  expect(signInEmailRequests).toBe(1);
+  await expect(page.getByLabel("One-time code")).toBeVisible();
+  await expect(page.getByText("Check your email to finish.")).toHaveCount(1);
+  await expect(signInButton).toHaveCount(0);
+
+  const sentButtonState = await sentButton.evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    const style = window.getComputedStyle(element);
+    return {
+      background: style.backgroundColor,
+      className: element.className,
+      height: Math.round(rect.height),
+    };
+  });
+
+  expect(sentButtonState.className).toContain("reader-sync-sent-button");
+  expect(sentButtonState.background).not.toBe(initialBackground);
+  expect(sentButtonState.height).toBeGreaterThan(40);
+
+  await sentButton.click();
+
+  await expect(emailInput).toHaveValue("");
+  await expect(page.getByLabel("One-time code")).toHaveCount(0);
+  await expect(
+    page.getByRole("button", { name: "Sign in to sync" }),
+  ).toBeVisible();
+});
+
+test("progress button wraps percent in a cloud when signed in", async ({
+  page,
+}) => {
+  let progressWrites = 0;
+  let consentWrites = 0;
+  let eventWrites = 0;
+
+  await page.route("**/auth/v1/user**", async (route) => {
+    await route.fulfill({
+      status: 401,
+      contentType: "application/json",
+      body: JSON.stringify({ message: "not signed in" }),
+    });
+  });
+  await page.route("**/auth/v1/otp**", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: "{}",
+    });
+  });
+  await page.route("**/auth/v1/verify**", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        access_token: "test-access-token",
+        token_type: "bearer",
+        expires_in: 3600,
+        expires_at: Math.floor(Date.now() / 1000) + 3600,
+        refresh_token: "test-refresh-token",
+        user: {
+          id: "user-1",
+          aud: "authenticated",
+          role: "authenticated",
+          email: "reader@example.com",
+          app_metadata: {},
+          user_metadata: {},
+          created_at: new Date().toISOString(),
+        },
+      }),
+    });
+  });
+  await page.route("**/rest/v1/reader_progress**", async (route) => {
+    if (route.request().method() !== "GET") {
+      progressWrites += 1;
+    }
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: route.request().method() === "GET" ? "null" : "{}",
+    });
+  });
+  await page.route("**/rest/v1/reader_sync_consent**", async (route) => {
+    if (route.request().method() !== "GET") {
+      consentWrites += 1;
+    }
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: route.request().method() === "GET" ? "null" : "{}",
+    });
+  });
+  await page.route("**/rest/v1/reader_engagement_events**", async (route) => {
+    eventWrites += 1;
+    await route.fulfill({
+      status: 400,
+      contentType: "application/json",
+      body: JSON.stringify({
+        message: "debug event upload failure",
+        code: "TEST_EVENT_FAILURE",
+      }),
+    });
+  });
+
+  await page.goto(wieldingSection.href);
+
+  const progressButton = page.locator(".progress-menu-button");
+  await expect(progressButton.locator(".progress-percent-cloud")).toHaveCount(
+    0,
+  );
+  await page.getByRole("button", { name: /Progress/ }).click();
+
+  if (
+    await page
+      .getByText("Sync is not configured for this build.")
+      .isVisible()
+  ) {
+    test.skip(true, "Sync is not configured in this test environment.");
+  }
+
+  await page.getByLabel("Email").fill("reader@example.com");
+  await page.getByRole("button", { name: "Sign in to sync" }).click();
+  await page
+    .getByRole("dialog", { name: "Sync reading progress?" })
+    .getByRole("button", { name: "Continue" })
+    .click();
+  await page.getByLabel("One-time code").fill("12345678");
+  await page.getByRole("button", { name: "Verify code" }).click();
+
+  await expect(progressButton).toHaveClass(/is-signed-in/);
+  const syncSection = page.locator(".reader-sync");
+  await expect(page.getByText("Reading progress")).toBeVisible();
+  await expect(page.getByText("Synced across all your devices.")).toBeVisible();
+  await expect(syncSection.getByText("Account:")).toBeVisible();
+  await expect(syncSection.getByText("reader@example.com")).toBeVisible();
+  await expect(syncSection.getByText("Last synced:")).toBeVisible();
+  await expect(syncSection.getByText(/\(just now\)/)).toBeVisible();
+  await expect(
+    syncSection.getByText("Progress synced. Reading history details will retry."),
+  ).toBeVisible();
+  await expect(syncSection.getByRole("button")).toHaveCount(2);
+  await expect(page.getByText("Allow sync")).toHaveCount(0);
+  await expect(page.getByText("Pause sync")).toHaveCount(0);
+  await expect(page.getByText("Resume sync")).toHaveCount(0);
+  await expect(page.getByText("Delete synced data")).toHaveCount(0);
+  await expect(page.getByText("Delete account")).toHaveCount(0);
+  await expect(progressButton.locator(".progress-percent-cloud")).toHaveCount(
+    1,
+  );
+  await expect(progressButton).toHaveAttribute(
+    "aria-label",
+    /Progress \d+%, signed in/,
+  );
+
+  const signedInProgressGeometry = await progressButton.evaluate((element) => {
+    const cloud = element.querySelector(".progress-percent-cloud");
+    const percent = element.querySelector(".progress-percent");
+    const buttonBox = element.getBoundingClientRect();
+    const cloudBox = cloud?.getBoundingClientRect();
+    const percentBox = percent?.getBoundingClientRect();
+    return {
+      cloudCenterX: Math.round(
+        ((cloudBox?.left ?? 0) + (cloudBox?.right ?? 0)) / 2 - buttonBox.left,
+      ),
+      cloudWidth: Math.round(cloudBox?.width ?? 0),
+      percentCenterX: Math.round(
+        ((percentBox?.left ?? 0) + (percentBox?.right ?? 0)) / 2 -
+          buttonBox.left,
+      ),
+    };
+  });
+
+  expect(signedInProgressGeometry.cloudWidth).toBeGreaterThan(28);
+  expect(
+    Math.abs(
+      signedInProgressGeometry.cloudCenterX -
+        signedInProgressGeometry.percentCenterX,
+    ),
+  ).toBeLessThanOrEqual(1);
+  expect(progressWrites).toBeGreaterThan(0);
+  expect(consentWrites).toBeGreaterThan(0);
+  expect(eventWrites).toBeGreaterThan(0);
+});
+
 test("reader share menu exposes page sharing and PDF downloads", async ({
   page,
 }) => {
