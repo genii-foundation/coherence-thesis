@@ -14,8 +14,42 @@ import {
   recommendNextSections,
   recordReadingTime,
   recordScrollProgress,
+  sanitizeProgress,
   updatedSinceRead,
 } from "./reader-state";
+
+describe("progress sanitization", () => {
+  it("drops structurally invalid section entries and keeps valid ones intact", () => {
+    const sanitized = sanitizeProgress({
+      sections: {
+        good: {
+          sectionId: "good",
+          contentHash: "h",
+          readAt: 5,
+          percent: 80,
+          audioSeconds: 12,
+        },
+        missingHash: { sectionId: "missingHash", readAt: 1, percent: 1 },
+        wrongTypes: {
+          sectionId: "wrongTypes",
+          contentHash: "h",
+          readAt: "nope",
+          percent: 1,
+        },
+        notAnObject: 42,
+      },
+    });
+
+    expect(Object.keys(sanitized.sections)).toEqual(["good"]);
+    expect(sanitized.sections.good).toMatchObject({ percent: 80, audioSeconds: 12 });
+  });
+
+  it("returns empty progress for non-object or array-shaped input", () => {
+    expect(sanitizeProgress(null).sections).toEqual({});
+    expect(sanitizeProgress({ sections: [] }).sections).toEqual({});
+    expect(sanitizeProgress("nope").sections).toEqual({});
+  });
+});
 
 describe("reader progress", () => {
   it("marks a section read with its current hash", () => {

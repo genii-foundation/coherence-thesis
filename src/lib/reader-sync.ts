@@ -7,8 +7,8 @@ import {
   type ReaderSyncConsent,
 } from "./reader-engagement";
 import {
-  parseProgress,
   readerProgressSchemaVersion,
+  sanitizeProgress,
   type ReaderProgressState,
 } from "./reader-state";
 import { createBrowserSupabaseClient } from "./supabase/browser";
@@ -92,7 +92,7 @@ export async function loadRemoteReaderState(userId: string): Promise<ReaderRemot
 
   return {
     progress: progressResponse.data?.progress
-      ? parseProgress(JSON.stringify(progressResponse.data.progress))
+      ? sanitizeProgress(progressResponse.data.progress)
       : null,
     progressSchemaVersion:
       typeof progressResponse.data?.schema_version === "number"
