@@ -338,6 +338,7 @@ export function updatedSinceRead(
   return Boolean(
     state &&
       (state.readAt ?? 0) > 0 &&
+      (state.percent ?? 0) >= 100 &&
       state.contentHash !== section.contentHash,
   );
 }
@@ -376,6 +377,7 @@ export function isSectionRead(
   return Boolean(
     state &&
       (state.readAt ?? 0) > 0 &&
+      (state.percent ?? 0) >= 100 &&
       state.contentHash === section.contentHash,
   );
 }
@@ -385,10 +387,12 @@ export function readPercent(
   sections: Array<Pick<Section, "sectionId" | "contentHash">>,
 ): number {
   if (sections.length === 0) return 0;
-  const read = sections.filter((section) =>
-    isSectionRead(progress, section),
-  ).length;
-  return Math.round((read / sections.length) * 100);
+  const read = sections.reduce((total, section) => {
+    const state = progress.sections[section.sectionId];
+    if (!state || state.contentHash !== section.contentHash) return total;
+    return total + Math.min(100, Math.max(0, state.percent ?? 0));
+  }, 0);
+  return Math.round(read / sections.length);
 }
 
 export function recommendNextSections(
@@ -396,9 +400,7 @@ export function recommendNextSections(
   sections: ProgressSection[],
   limit = 4,
 ): ReaderRecommendation[] {
-  const firstUnread = sections.filter(
-    (section) => !progress.sections[section.sectionId],
-  );
+  const firstUnread = sections.filter((section) => !isSectionRead(progress, section));
   const updated = sections.filter((section) => updatedSinceRead(progress, section));
   const candidates = [
     ...updated.map((section) => ({
