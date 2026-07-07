@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { ChevronRight, Home, ListTree, Search } from "lucide-react";
 import type { ToolbarOutline } from "@/lib/manuscript-data";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
+import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 
 function searchable(value: string): string {
   return value.trim().toLowerCase();
@@ -19,9 +20,9 @@ function matchesQuery(values: string[], query: string): boolean {
 
 export function OutlineMenuIsland({ outline }: { outline: ToolbarOutline }) {
   const pathname = usePathname();
-  const containerRef = useRef<HTMLDivElement>(null);
+  const { open, setOpen, toggle, containerRef, triggerRef } =
+    useToolbarMenu<HTMLDivElement>();
   const searchRef = useRef<HTMLInputElement>(null);
-  const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const currentPath = normalizePath(pathname);
   const normalizedQuery = searchable(query);
@@ -91,37 +92,26 @@ export function OutlineMenuIsland({ outline }: { outline: ToolbarOutline }) {
       setQuery("");
     }, 0);
     return () => window.clearTimeout(closeTimer);
-  }, [pathname]);
+  }, [pathname, setOpen]);
 
+  // Open/close, outside-click, and Escape (with focus return) come from
+  // useToolbarMenu; this only adds the search-field autofocus on open.
   useEffect(() => {
     if (!open) return;
     const focusTimer = window.setTimeout(() => searchRef.current?.focus(), 0);
-    const onPointerDown = (event: PointerEvent) => {
-      if (!containerRef.current?.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
-    document.addEventListener("pointerdown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      window.clearTimeout(focusTimer);
-      document.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
-    };
+    return () => window.clearTimeout(focusTimer);
   }, [open]);
 
   return (
     <div className="outline-menu" ref={containerRef}>
       <button
+        ref={triggerRef}
         type="button"
         className="outline-menu-button"
         aria-label="Outline"
         aria-expanded={open}
         aria-controls="site-outline-menu"
-        onClick={() => setOpen((current) => !current)}
+        onClick={toggle}
       >
         <ListTree aria-hidden="true" size={17} />
       </button>

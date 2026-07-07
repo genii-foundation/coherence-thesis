@@ -15,6 +15,7 @@ import {
   createDefaultAudioProvider,
   type AudioPlaybackVoice,
 } from "@/lib/audio-playback";
+import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 import { loadReaderSections, type ReaderSectionData } from "@/lib/reader-data";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import {
@@ -43,7 +44,8 @@ export function AudioPlayerIsland({
   overviewAudio: AudioQueueItem;
 }) {
   const pathname = usePathname();
-  const containerRef = useRef<HTMLDivElement>(null);
+  const { open, setOpen, toggle, containerRef, triggerRef } =
+    useToolbarMenu<HTMLDivElement>();
   const [sections, setSections] = useState<ReaderSectionData[]>([]);
   const playbackSections = useMemo(() => {
     const currentPath = normalizePath(pathname);
@@ -67,7 +69,6 @@ export function AudioPlayerIsland({
     () => defaultVoicePreference,
   );
   const [activeIndex, setActiveIndex] = useState(0);
-  const [open, setOpen] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [supported, setSupported] = useState(true);
   const playbackTokenRef = useRef(0);
@@ -150,25 +151,8 @@ export function AudioPlayerIsland({
       setPlaying(false);
     }, 0);
     return () => window.clearTimeout(resetTimer);
-  }, [flushAudioSeconds, pathname, provider]);
+  }, [flushAudioSeconds, pathname, provider, setOpen]);
 
-  useEffect(() => {
-    if (!open) return;
-    const onPointerDown = (event: PointerEvent) => {
-      if (!containerRef.current?.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
-    document.addEventListener("pointerdown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [open]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -274,12 +258,13 @@ export function AudioPlayerIsland({
   return (
     <div className="audio-menu" ref={containerRef}>
       <button
+        ref={triggerRef}
         type="button"
         className={`audio-menu-button${playing ? " is-playing" : ""}`}
         aria-expanded={open}
         aria-controls="audiobook-menu"
         aria-label={playing ? "Audiobook playing, open controls" : "Listen"}
-        onClick={() => setOpen((current) => !current)}
+        onClick={toggle}
       >
         {playing ? (
           <>

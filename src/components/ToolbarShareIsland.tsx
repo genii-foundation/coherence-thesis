@@ -5,6 +5,7 @@ import { normalizePath } from "@/lib/routes";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { BookOpen, Check, Download, FileText, Link, Share2 } from "lucide-react";
+import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 import {
   loadPdfDownloads,
   type PdfDownloadManifest,
@@ -36,8 +37,8 @@ function statusLabel(status: ShareStatus): string | null {
 
 export function ToolbarShareIsland() {
   const pathname = usePathname();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [open, setOpen] = useState(false);
+  const { open, setOpen, toggle, containerRef, triggerRef } =
+    useToolbarMenu<HTMLDivElement>();
   const [status, setStatus] = useState<ShareStatus>("idle");
   const [downloads, setDownloads] = useState<PdfDownloadManifest | null>(null);
   const [actionablePdfHrefs, setActionablePdfHrefs] = useState<Set<string>>(
@@ -79,7 +80,7 @@ export function ToolbarShareIsland() {
       setStatus("idle");
     }, 0);
     return () => window.clearTimeout(closeTimer);
-  }, [pathname]);
+  }, [pathname, setOpen]);
 
   useEffect(() => {
     let mounted = true;
@@ -106,24 +107,6 @@ export function ToolbarShareIsland() {
       mounted = false;
     };
   }, [downloadCandidates]);
-
-  useEffect(() => {
-    if (!open) return;
-    const onPointerDown = (event: PointerEvent) => {
-      if (!containerRef.current?.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
-    document.addEventListener("pointerdown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [open]);
 
   async function shareCurrentPage(): Promise<void> {
     const url = window.location.href;
@@ -166,12 +149,13 @@ export function ToolbarShareIsland() {
   return (
     <div className="share-menu" ref={containerRef}>
       <button
+        ref={triggerRef}
         type="button"
         className="share-menu-button"
         aria-label="Share and downloads"
         aria-expanded={open}
         aria-controls="reader-share-menu"
-        onClick={() => setOpen((current) => !current)}
+        onClick={toggle}
       >
         <Share2 aria-hidden="true" size={17} />
       </button>
