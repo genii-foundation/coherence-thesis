@@ -3,14 +3,17 @@ import { pathToFileURL } from "node:url";
 import {
   buildCatalog,
   buildSearchIndex,
+  buildSectionLedger,
   catalogPath,
   readMarkdownDocuments,
+  readSectionLedger,
   readVersionProvenance,
   sectionHref,
   searchIndexPath,
+  sectionLedgerPath,
   versionProvenancePath,
 } from "./shared";
-import type { CompiledCatalog } from "./shared";
+import type { CompiledCatalog, SectionLedger } from "./shared";
 
 function collectOverviewRefs(
   nodes: Array<{ references?: Array<{ sectionId: string }>; children?: unknown[] }>,
@@ -58,6 +61,48 @@ export function catalogForStaleCheck(catalog: CompiledCatalog): CompiledCatalog 
 
 function catalogJsonForStaleCheck(value: string): string {
   return `${JSON.stringify(catalogForStaleCheck(JSON.parse(value) as CompiledCatalog), null, 2)}\n`;
+}
+
+// ARCH-04: section-ID drift gate. Section routes are the contract behind deep
+// links, read-progress keys, audio queues, and aliases. The committed ledger
+// records every route ever published; this fails the build when a previously
+// published route no longer resolves (canonically or through an alias), forcing
+// a link-preservation alias when a section is renamed or removed.
+export function validateSectionLedger(
+  catalog: CompiledCatalog,
+  committed: SectionLedger = readSectionLedger(),
+  { checkStale = fs.existsSync(sectionLedgerPath) }: { checkStale?: boolean } = {},
+): void {
+  if (checkStale) {
+    const next = buildSectionLedger(catalog, committed);
+    assert(
+      JSON.stringify(committed) === JSON.stringify(next),
+      "Section ledger is stale. Run npm run manuscripts:compile.",
+    );
+  }
+
+  const canonicalHrefs = new Set(catalog.sections.map((section) => section.href));
+  const currentSectionIds = new Set(
+    catalog.sections.map((section) => section.sectionId),
+  );
+  const aliasSources = new Set(catalog.aliases.map((alias) => alias.sourceHref));
+  const aliasTargetsResolve = catalog.aliases.every((alias) =>
+    currentSectionIds.has(alias.targetSectionId),
+  );
+  assert(
+    aliasTargetsResolve,
+    "An alias points at a section that no longer exists.",
+  );
+
+  for (const entry of committed.routes) {
+    if (canonicalHrefs.has(entry.href) || aliasSources.has(entry.href)) continue;
+    assert(
+      false,
+      `Published route '${entry.href}' (section '${entry.sectionId}') no longer resolves. ` +
+        "This is a link-preservation event: add an alias in content/series/aliases.json " +
+        "pointing it at the current section, then run npm run manuscripts:compile.",
+    );
+  }
 }
 
 export function validateManuscripts(): void {
@@ -188,6 +233,8 @@ export function validateManuscripts(): void {
       "Generated search index is stale. Run npm run manuscripts:compile.",
     );
   }
+
+  validateSectionLedger(catalog);
 
   console.log(
     `Validated ${docs.length} manuscript files and ${overviewRefs.length} overview references`,

@@ -2,6 +2,7 @@ import path from "node:path";
 import {
   buildCatalog,
   buildSearchIndex,
+  buildSectionLedger,
   breadcrumbRoutesPath,
   catalogPath,
   ensureDir,
@@ -10,6 +11,7 @@ import {
   readerSectionsPath,
   repoRoot,
   searchIndexPath,
+  sectionLedgerPath,
   writeJson,
 } from "./shared";
 import { buildPdfDownloads, pdfManifestPath } from "./pdf";
@@ -86,6 +88,7 @@ export async function compileManuscripts(): Promise<void> {
   }));
   const breadcrumbRoutes = buildBreadcrumbRoutes(catalog);
   const searchIndex = buildSearchIndex(catalog);
+  const sectionLedger = buildSectionLedger(catalog);
   ensureDir(generatedRoot);
   ensureDir(publicDataRoot);
   writeJson(catalogPath, catalog);
@@ -93,6 +96,7 @@ export async function compileManuscripts(): Promise<void> {
   writeJson(breadcrumbRoutesPath, breadcrumbRoutes);
   writeJson(searchIndexPath, searchIndex);
   writeJson(pdfManifestPath, pdfDownloads);
+  writeJson(sectionLedgerPath, sectionLedger);
   console.log(
     `Compiled ${catalog.stats.sectionCount} sections, ${catalog.stats.wordCount.toLocaleString()} words`,
   );
