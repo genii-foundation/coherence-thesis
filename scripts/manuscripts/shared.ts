@@ -47,6 +47,7 @@ export const generatedRoot = path.join(repoRoot, "src/generated/manuscripts");
 export const catalogPath = path.join(generatedRoot, "catalog.json");
 export const publicDataRoot = path.join(repoRoot, "public/data");
 export const readerSectionsPath = path.join(publicDataRoot, "reader-sections.json");
+export const progressSectionsPath = path.join(publicDataRoot, "progress-sections.json");
 export const breadcrumbRoutesPath = path.join(publicDataRoot, "breadcrumb-routes.json");
 export const searchIndexPath = path.join(publicDataRoot, "search-index.json");
 export const outlineDataPath = path.join(publicDataRoot, "outline.json");

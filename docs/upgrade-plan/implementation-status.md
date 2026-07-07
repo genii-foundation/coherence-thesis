@@ -132,13 +132,18 @@ Each landed as its own focused, CI-green PR on top of the base:
   export removal, content-based overview audio id, 44px touch targets
 - **ARCH-02** extracted the ~155-line section-engagement tracking out of
   `ToolbarProgressIsland` into a `useSectionEngagement` hook
+- **PERF-01 (rest, progress + audio)** slim `progress-sections.json` manifest
+  (~510KB, no body text) for the toolbar and the audio queue; the full ~1.9MB
+  `reader-sections.json` is now fetched lazily only when audio first plays,
+  removing ~1.4MB from every page load
 
 ## Deferred to follow-up PRs
 
 The genuinely remaining items:
 
-- **PERF-01 (rest)** slim progress manifest and server-side breadcrumbs so
-  `ToolbarProgressIsland` and `ToolbarBreadcrumbs` stop loading full payloads
+- **PERF-01 (breadcrumbs)** `ToolbarBreadcrumbs` still fetches the 483KB
+  breadcrumb-routes payload; serving the current route's crumbs more cheaply is
+  a separate change
 - **TEST-03 / TEST-04** split the large e2e spec and decouple it from prose
 - **A11Y-06 / A11Y-07** no-JS toolbar fallback and font-picker keyboard model
 - **DOC-02 / DOC-03 / DOC-04 / DOC-06 / DOC-08** README status block, license

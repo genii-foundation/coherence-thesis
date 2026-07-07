@@ -16,14 +16,3 @@ export const defaultVoicePreference: AudioVoicePreference = {
   rate: 1,
   pitch: 1,
 };
-
-export function queueFromSections(
-  sections: readonly AudioQueueItem[],
-): AudioQueueItem[] {
-  return sections.map((section) => ({
-    sectionId: section.sectionId,
-    title: section.title,
-    text: section.text,
-    audioVersionId: section.audioVersionId,
-  }));
-}

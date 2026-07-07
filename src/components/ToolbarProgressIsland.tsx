@@ -13,7 +13,7 @@ import {
 } from "react";
 import { usePathname } from "next/navigation";
 import { Check, Cloud, KeyRound, Map as MapIcon, RotateCcw, UserRound } from "lucide-react";
-import { loadReaderSections } from "@/lib/reader-data";
+import { loadProgressSections } from "@/lib/reader-data";
 import { useLoadedData } from "@/lib/use-loaded-data";
 import type { ProgressSection } from "@/lib/manuscript-data";
 
@@ -114,7 +114,7 @@ export function ToolbarProgressIsland() {
   const remoteSchemaAheadRef = useRef(false);
   const progress = useReaderProgress();
   const allSections = useLoadedData<ProgressSection[]>(
-    loadReaderSections,
+    loadProgressSections,
     emptyProgressSections,
   );
   const [syncConfigured, setSyncConfigured] = useState(false);

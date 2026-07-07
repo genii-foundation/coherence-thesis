@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Headphones, Pause, Play, Square } from "lucide-react";
 import {
   defaultVoicePreference,
-  queueFromSections,
   type AudioQueueItem,
   type AudioVoicePreference,
 } from "@/lib/audio-queue";
@@ -16,7 +15,11 @@ import {
   type AudioPlaybackVoice,
 } from "@/lib/audio-playback";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
-import { loadReaderSections, type ReaderSectionData } from "@/lib/reader-data";
+import {
+  loadProgressSections,
+  loadReaderSections,
+  type ProgressSectionData,
+} from "@/lib/reader-data";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import {
   appendStoredEvent,
@@ -29,7 +32,7 @@ import {
 } from "@/lib/audio-preferences";
 import { useLoadedData } from "@/lib/use-loaded-data";
 
-const emptyReaderSections: ReaderSectionData[] = [];
+const emptyProgressSections: ProgressSectionData[] = [];
 
 export function AudioPlayerIsland({
   overviewAudio,
@@ -39,11 +42,11 @@ export function AudioPlayerIsland({
   const pathname = usePathname();
   const { open, setOpen, toggle, containerRef, triggerRef } =
     useToolbarMenu<HTMLDivElement>();
-  // The audio island renders nothing until it knows the current page's queue, so
-  // it loads reader-sections eagerly. The module-level cache is shared with
-  // ToolbarProgressIsland, so this is not an extra network fetch.
-  const sections = useLoadedData(loadReaderSections, emptyReaderSections);
-  const playbackSections = useMemo(() => {
+  // The queue is built from the slim per-section manifest (titles, ids — no body
+  // text) so a page that never plays audio does not fetch the ~1.7MB text
+  // payload. The full text is loaded lazily on first play (PERF-01).
+  const sections = useLoadedData(loadProgressSections, emptyProgressSections);
+  const queue = useMemo<AudioQueueItem[]>(() => {
     const currentPath = normalizePath(pathname);
     if (currentPath === "/overview/") return [overviewAudio];
     if (!currentPath.startsWith("/manuscripts/")) return [];
@@ -51,14 +54,29 @@ export function AudioPlayerIsland({
     const exactSectionIndex = sections.findIndex(
       (section) => normalizePath(section.href) === currentPath,
     );
-    if (exactSectionIndex >= 0) return sections.slice(exactSectionIndex);
-
-    return sections.filter((section) => normalizePath(section.href).startsWith(currentPath));
+    const chosen =
+      exactSectionIndex >= 0
+        ? sections.slice(exactSectionIndex)
+        : sections.filter((section) =>
+            normalizePath(section.href).startsWith(currentPath),
+          );
+    return chosen.map((section) => ({
+      sectionId: section.sectionId,
+      title: section.title,
+      text: "",
+      audioVersionId: section.audioVersionId,
+    }));
   }, [overviewAudio, pathname, sections]);
-  const queue = useMemo<AudioQueueItem[]>(
-    () => queueFromSections(playbackSections),
-    [playbackSections],
-  );
+  // Section text is resolved lazily on first play; the overview item already
+  // carries its text.
+  const sectionTextRef = useRef<Map<string, string> | null>(null);
+  const ensureSectionText = useCallback(async (): Promise<Map<string, string>> => {
+    if (sectionTextRef.current) return sectionTextRef.current;
+    const full = await loadReaderSections();
+    const map = new Map(full.map((section) => [section.sectionId, section.text]));
+    sectionTextRef.current = map;
+    return map;
+  }, []);
   const provider = useMemo(() => createDefaultAudioProvider(), []);
   const [voices, setVoices] = useState<AudioPlaybackVoice[]>([]);
   const [preference, setPreference] = useState<AudioVoicePreference>(
@@ -150,8 +168,9 @@ export function AudioPlayerIsland({
         route: pathname,
       }),
     );
+    const text = item.text || sectionTextRef.current?.get(item.sectionId) || "";
     provider.speak({
-      text: `${item.title}. ${item.text}`,
+      text: `${item.title}. ${text}`,
       voiceId: preference.voiceURI,
       rate: preference.rate,
       pitch: preference.pitch,
@@ -186,7 +205,7 @@ export function AudioPlayerIsland({
     setPlaying(true);
   }
 
-  function speak(index = activeIndex): void {
+  async function speak(index = activeIndex): Promise<void> {
     if (provider.isPaused() && audioItemRef.current) {
       audioStartedAtRef.current = Date.now();
       provider.resume();
@@ -201,6 +220,9 @@ export function AudioPlayerIsland({
       return;
     }
 
+    // Load the section text on first play if the item does not already carry it
+    // (manuscript items come from the slim manifest; the overview item does not).
+    if (queue[index] && !queue[index]!.text) await ensureSectionText();
     const token = playbackTokenRef.current + 1;
     playbackTokenRef.current = token;
     playIndex(index, token);

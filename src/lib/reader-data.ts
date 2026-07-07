@@ -65,6 +65,19 @@ export type PdfDownloadManifest = {
   manuscripts: PdfDownloadManuscript[];
 };
 
+// Slim per-section manifest (no body text) fetched on every page for the
+// toolbar progress meter and the audio queue. Structurally a superset of
+// ProgressSection, plus audioVersionId for building the queue. The full
+// reader-sections payload (with text) is loaded lazily only when audio plays.
+export type ProgressSectionData = {
+  sectionId: string;
+  contentHash: string;
+  title: string;
+  href: string;
+  audioVersionId: string;
+  paragraphs: ReaderParagraph[];
+};
+
 // The toolbar outline tree (~68KB) is fetched on demand when the outline menu
 // first opens, rather than serialized into every page. These mirror the
 // manuscript-data ToolbarOutline shape as browser-facing types.
@@ -135,4 +148,9 @@ export const loadPdfDownloads = memoizedLoader<PdfDownloadManifest>(
 export const loadToolbarOutline = memoizedLoader<ToolbarOutlineData>(
   "/data/outline.json",
   "outline data",
+);
+
+export const loadProgressSections = memoizedLoader<ProgressSectionData[]>(
+  "/data/progress-sections.json",
+  "progress section data",
 );
