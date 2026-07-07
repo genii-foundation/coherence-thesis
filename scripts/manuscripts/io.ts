@@ -4,6 +4,7 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import { splitMarkdownBlocks } from "../../src/lib/markdown-blocks";
 import { readingMinutesForWords } from "../../src/lib/reading-time";
 import type { CompiledParagraph } from "./types";
 
@@ -76,10 +77,7 @@ export function stripMarkdown(value: string): string {
 }
 
 export function paragraphFingerprints(markdown: string): CompiledParagraph[] {
-  return markdown
-    .split(/\n{2,}/)
-    .map((block) => block.trim())
-    .filter(Boolean)
+  return splitMarkdownBlocks(markdown)
     .map((block, index) => {
       const order = index + 1;
       const text = stripMarkdown(block);

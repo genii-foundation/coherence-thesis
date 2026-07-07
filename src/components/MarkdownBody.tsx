@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Section } from "@/lib/manuscript-data";
+import { splitMarkdownBlocks } from "@/lib/markdown-blocks";
 
 function renderInline(text: string): ReactNode[] {
   const nodes: ReactNode[] = [];
@@ -58,10 +59,7 @@ export function MarkdownBody({
   markdown: string;
   paragraphs?: Section["paragraphs"];
 }) {
-  const blocks = markdown
-    .split(/\n{2,}/)
-    .map((block) => block.trim())
-    .filter(Boolean);
+  const blocks = splitMarkdownBlocks(markdown);
 
   return (
     <div className="manuscript-prose">
