@@ -14,7 +14,10 @@ import {
 import { usePathname } from "next/navigation";
 import { Check, Cloud, RotateCcw, Trash2, UserRound } from "lucide-react";
 import { loadReaderSections } from "@/lib/reader-data";
+import { useLoadedData } from "@/lib/use-loaded-data";
 import type { ProgressSection } from "@/lib/manuscript-data";
+
+const emptyProgressSections: ProgressSection[] = [];
 import {
   createEngagementEvent,
   grantSyncConsent,
@@ -84,7 +87,10 @@ export function ToolbarProgressIsland() {
   // nor uploads over it, so an outdated device cannot clobber newer data.
   const remoteSchemaAheadRef = useRef(false);
   const progress = useReaderProgress();
-  const [allSections, setAllSections] = useState<ProgressSection[]>([]);
+  const allSections = useLoadedData<ProgressSection[]>(
+    loadReaderSections,
+    emptyProgressSections,
+  );
   const [syncConfigured, setSyncConfigured] = useState(false);
   const [user, setUser] = useState<{ id: string; email?: string } | null>(null);
   const [consent, setConsent] = useState<ReaderSyncConsent>(() => parseSyncConsent(null));
@@ -146,19 +152,6 @@ export function ToolbarProgressIsland() {
     };
   }, []);
 
-  useEffect(() => {
-    let mounted = true;
-    loadReaderSections()
-      .then((sections) => {
-        if (mounted) setAllSections(sections);
-      })
-      .catch(() => {
-        if (mounted) setAllSections([]);
-      });
-    return () => {
-      mounted = false;
-    };
-  }, []);
 
   useEffect(() => {
     const closeTimer = window.setTimeout(() => {
