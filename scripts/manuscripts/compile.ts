@@ -9,6 +9,7 @@ import {
   generatedRoot,
   publicDataRoot,
   outlineDataPath,
+  progressSectionsPath,
   readerSectionsPath,
   repoRoot,
   searchIndexPath,
@@ -87,6 +88,22 @@ export async function compileManuscripts(): Promise<void> {
       contentHash: paragraph.contentHash,
     })),
   }));
+  // Slim per-section manifest without the section body text (PERF-01). The
+  // toolbar progress island and the audio queue need only these fields on every
+  // page; the full ~1.7MB reader-sections payload is now fetched lazily (audio
+  // text on first play), not on every page load.
+  const progressSections = catalog.sections.map((section) => ({
+    sectionId: section.sectionId,
+    contentHash: section.contentHash,
+    title: section.title,
+    href: section.href,
+    audioVersionId: section.audioVersionId,
+    paragraphs: section.paragraphs.map((paragraph) => ({
+      paragraphId: paragraph.paragraphId,
+      anchor: paragraph.anchor,
+      contentHash: paragraph.contentHash,
+    })),
+  }));
   const breadcrumbRoutes = buildBreadcrumbRoutes(catalog);
   const searchIndex = buildSearchIndex(catalog);
   const sectionLedger = buildSectionLedger(catalog);
@@ -94,6 +111,7 @@ export async function compileManuscripts(): Promise<void> {
   ensureDir(publicDataRoot);
   writeJson(catalogPath, catalog);
   writeJson(readerSectionsPath, readerSections);
+  writeJson(progressSectionsPath, progressSections);
   writeJson(breadcrumbRoutesPath, breadcrumbRoutes);
   writeJson(searchIndexPath, searchIndex);
   writeJson(pdfManifestPath, pdfDownloads);
