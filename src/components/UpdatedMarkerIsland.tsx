@@ -1,15 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { RotateCcw } from "lucide-react";
 import type { ProgressSection } from "@/lib/manuscript-data";
-import { readStoredProgress } from "@/lib/reader-progress-store";
-import {
-  emptyProgress,
-  readerProgressUpdatedEvent,
-  updatedSinceRead,
-  type ReaderProgressState,
-} from "@/lib/reader-state";
+import { useReaderProgress } from "@/lib/reader-progress-store";
+import { updatedSinceRead } from "@/lib/reader-state";
 
 export function UpdatedMarkerIsland({
   sections,
@@ -18,21 +13,7 @@ export function UpdatedMarkerIsland({
   sections: ProgressSection[];
   className?: string;
 }) {
-  const [progress, setProgress] = useState<ReaderProgressState>(() => emptyProgress());
-
-  useEffect(() => {
-    const updateProgress = () => setProgress(readStoredProgress());
-    const hydrationTimer = window.setTimeout(updateProgress, 0);
-
-    window.addEventListener("storage", updateProgress);
-    window.addEventListener(readerProgressUpdatedEvent, updateProgress);
-
-    return () => {
-      window.clearTimeout(hydrationTimer);
-      window.removeEventListener("storage", updateProgress);
-      window.removeEventListener(readerProgressUpdatedEvent, updateProgress);
-    };
-  }, []);
+  const progress = useReaderProgress();
 
   const hasUpdatedSection = useMemo(
     () => sections.some((section) => updatedSinceRead(progress, section)),

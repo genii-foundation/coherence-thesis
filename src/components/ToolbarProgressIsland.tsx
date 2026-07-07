@@ -30,9 +30,10 @@ import {
   readStoredConsent,
   readStoredEvents,
   readStoredProgress,
+  updateStoredProgress,
+  useReaderProgress,
   writeStoredConsent,
   writeStoredEvents,
-  writeStoredProgress,
 } from "@/lib/reader-progress-store";
 import {
   deleteReaderAccount,
@@ -48,7 +49,6 @@ import {
   upsertRemoteProgress,
 } from "@/lib/reader-sync";
 import {
-  emptyProgress,
   isSectionRead,
   markRead,
   markSectionOpened,
@@ -68,9 +68,6 @@ const scrollMilestones = [25, 50, 75, 100];
 const readThresholdPercent = 80;
 // How often the visibility timer samples active vs idle time.
 const timingSampleIntervalMs = 5_000;
-// Trailing debounce before a scroll-driven progress change is persisted, so
-// localStorage serialization runs a few times per page instead of per frame.
-const scrollWriteDebounceMs = 500;
 // Debounce before a local change is pushed to the remote sync backend.
 const syncDebounceMs = 1_500;
 
@@ -82,7 +79,7 @@ export function ToolbarProgressIsland() {
   const sectionRef = useRef<ProgressSection | undefined>(undefined);
   const syncingRef = useRef(false);
   const [open, setOpen] = useState(false);
-  const [progress, setProgress] = useState<ReaderProgressState>(() => emptyProgress());
+  const progress = useReaderProgress();
   const [allSections, setAllSections] = useState<ProgressSection[]>([]);
   const [syncConfigured, setSyncConfigured] = useState(false);
   const [user, setUser] = useState<{ id: string; email?: string } | null>(null);
@@ -107,7 +104,6 @@ export function ToolbarProgressIsland() {
 
   useEffect(() => {
     const hydrationTimer = window.setTimeout(() => {
-      setProgress(readStoredProgress());
       setConsent(readStoredConsent());
       setSyncConfigured(isReaderSyncConfigured());
     }, 0);
@@ -179,11 +175,10 @@ export function ToolbarProgressIsland() {
           writeStoredConsent(remote.consent);
         }
         if (remote.consent?.granted && remote.progress) {
-          setProgress((current) => {
-            const next = mergeProgressStates(current, remote.progress ?? emptyProgress());
-            writeStoredProgress(next);
-            return next;
-          });
+          const remoteProgress = remote.progress;
+          updateStoredProgress((current) =>
+            mergeProgressStates(current, remoteProgress),
+          );
         }
       })
       .catch(() => {
@@ -227,11 +222,9 @@ export function ToolbarProgressIsland() {
     const existingOpenCount =
       readStoredProgress().sections[section.sectionId]?.openCount ?? 0;
     const openTimer = window.setTimeout(() => {
-      setProgress((current) => {
-        const next = markSectionOpened(current, section, Date.now(), "direct");
-        writeStoredProgress(next);
-        return next;
-      });
+      updateStoredProgress((current) =>
+        markSectionOpened(current, section, Date.now(), "direct"),
+      );
     }, 0);
     appendStoredEvent(
       createEngagementEvent(existingOpenCount > 0 ? "section_returned" : "section_opened", {
@@ -278,25 +271,6 @@ export function ToolbarProgressIsland() {
       sampleTiming();
       timing.lastActivityAt = Date.now();
     };
-    // Persist scroll-driven progress on a trailing debounce instead of on every
-    // frame. writeStoredProgress serializes the whole progress blob and
-    // dispatches an event that other islands re-read, so per-frame writes stall
-    // scrolling on long pages.
-    let pendingWrite: ReaderProgressState | null = null;
-    let writeTimer = 0;
-    const flushProgressWrite = () => {
-      writeTimer = 0;
-      if (!pendingWrite) return;
-      writeStoredProgress(pendingWrite);
-      pendingWrite = null;
-    };
-    const scheduleProgressWrite = (next: ReaderProgressState) => {
-      pendingWrite = next;
-      if (!writeTimer) {
-        writeTimer = window.setTimeout(flushProgressWrite, scrollWriteDebounceMs);
-      }
-    };
-
     let scrollTicking = false;
     let lastScrollPercent = -1;
     const handleScrollFrame = () => {
@@ -305,6 +279,9 @@ export function ToolbarProgressIsland() {
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
       if (scrollable <= 0) return;
       const percent = Math.round((window.scrollY / scrollable) * 100);
+      // Only act when the rounded percent advances. recordScrollProgress then
+      // returns the same reference when nothing changed, so updateStoredProgress
+      // is a no-op and no localStorage write happens on idle scroll frames.
       if (percent === lastScrollPercent) return;
       lastScrollPercent = percent;
       const reached = scrollMilestones.filter(
@@ -323,11 +300,9 @@ export function ToolbarProgressIsland() {
           );
         });
       }
-      setProgress((current) => {
-        const next = recordScrollProgress(current, section, percent);
-        if (next !== current) scheduleProgressWrite(next);
-        return next;
-      });
+      updateStoredProgress((current) =>
+        recordScrollProgress(current, section, percent),
+      );
       if (percent < readThresholdPercent) return;
       if (!readThresholdCaptured) {
         readThresholdCaptured = true;
@@ -340,17 +315,12 @@ export function ToolbarProgressIsland() {
           }),
         );
       }
-      setProgress((current) => {
+      updateStoredProgress((current) => {
         const existing = current.sections[section.sectionId];
         if (existing?.contentHash === section.contentHash && existing.percent >= 100) {
           return current;
         }
-        const next = markRead(current, section);
-        // Marking read is meaningful state; persist it immediately and keep the
-        // pending debounce pointed at the same value so a later flush is a no-op.
-        writeStoredProgress(next);
-        pendingWrite = next;
-        return next;
+        return markRead(current, section);
       });
     };
     const onScroll = () => {
@@ -367,7 +337,6 @@ export function ToolbarProgressIsland() {
     handleScrollFrame();
     return () => {
       window.clearTimeout(openTimer);
-      flushProgressWrite();
       sampleTiming();
       window.clearInterval(interval);
       window.removeEventListener("scroll", onScroll);
@@ -380,15 +349,13 @@ export function ToolbarProgressIsland() {
       const totalVisibleSeconds = Math.round(timing.totalVisibleMs / 1000);
       if (activeSeconds > 0 || idleSeconds > 0 || totalVisibleSeconds > 0) {
         const currentSection = sectionRef.current ?? section;
-        setProgress((current) => {
-          const next = recordReadingTime(current, currentSection, {
+        updateStoredProgress((current) =>
+          recordReadingTime(current, currentSection, {
             activeSeconds,
             idleSeconds,
             totalVisibleSeconds,
-          });
-          writeStoredProgress(next);
-          return next;
-        });
+          }),
+        );
         appendStoredEvent(
           createEngagementEvent("section_visibility_ended", {
             sectionId: section.sectionId,
@@ -486,11 +453,9 @@ export function ToolbarProgressIsland() {
         route: pathname,
       }),
     );
-    setProgress((current) => {
-      const next = markRead(current, section, 100, Date.now(), "manual");
-      writeStoredProgress(next);
-      return next;
-    });
+    updateStoredProgress((current) =>
+      markRead(current, section, 100, Date.now(), "manual"),
+    );
   }
 
   async function submitEmail(event: FormEvent<HTMLFormElement>) {
@@ -515,10 +480,10 @@ export function ToolbarProgressIsland() {
     try {
       const remote = await loadRemoteReaderState(user.id);
       const nextProgress = remote.progress
-        ? mergeProgressStates(readStoredProgress(), remote.progress)
+        ? updateStoredProgress((current) =>
+            mergeProgressStates(current, remote.progress!),
+          )
         : readStoredProgress();
-      writeStoredProgress(nextProgress);
-      setProgress(nextProgress);
       const { error } = await upsertRemoteConsent(user.id, nextConsent);
       if (error) throw error;
       await syncNow(nextProgress);

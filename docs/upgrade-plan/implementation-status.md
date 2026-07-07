@@ -4,11 +4,31 @@ Tracks which findings from the [findings-register.md](findings-register.md) are
 implemented in this PR and which are deferred to focused follow-ups. IDs link to
 the register.
 
-This PR carries the reader-sync feature (formerly PR #21) plus the first,
-lower-risk waves of the modernization plan. Every commit keeps the full local
-gate (`manuscripts:validate`, typecheck, lint, unit tests, build) green.
+The base PR (#24, merged) carried the reader-sync feature plus the first,
+lower-risk waves of the modernization plan. Follow-up PRs pick up the deferred
+architecture work one coherent slice at a time. Every commit keeps the full
+local gate (`manuscripts:validate`, typecheck, lint, unit tests, build) green.
 
-## Done in this PR
+## Follow-up PR: single reader-progress store (Phase 4, wave 1)
+
+- **ARCH-01 / BUG-02** one reader-progress store in `reader-progress-store.ts`
+  via `useSyncExternalStore`. Every island now reads through `useReaderProgress()`
+  and writes through `updateStoredProgress()`, an atomic read-modify-write against
+  one in-memory snapshot kept in sync with `localStorage` and other tabs. This
+  removes the lost-update window entirely: a scroll tick and an audio-seconds
+  write can no longer clobber each other because neither holds a private stale
+  copy. Covered by `reader-progress-store.test.ts` (the exact concurrent-writer
+  scenario) and the full desktop + mobile e2e reader suite.
+- **DUP-05** the progress-subscription effect (duplicated across
+  `ReadCheckmarkIsland`, `UpdatedMarkerIsland`, `SectionRevisionNotice`) collapses
+  into the store's one subscription. As a side effect the revision notice now
+  reacts live when a section is marked read instead of showing stale text until
+  reload.
+- Removes the scroll-write debounce machinery: the rounded-percent gate plus
+  `recordScrollProgress` returning the same reference already limit writes to
+  actual changes, so `updateStoredProgress` is a no-op on idle scroll frames.
+
+## Done in the base PR (#24)
 
 ### Phase 0: correctness and safety
 - **BUG-01** merge counters with `max`, not sum (with idempotence test)
@@ -65,10 +85,7 @@ These are the larger refactors and the remaining polish. Each is a clean,
 self-contained next PR; the register entry has the full detail.
 
 ### Architecture (highest value remaining)
-- **ARCH-01 / BUG-02** single progress store via `useSyncExternalStore`. The
-  lost-update window is already narrowed (debounced writes, audio read-modify-
-  write), but the store is the real fix.
-- **ARCH-02** decompose the 687-line `ToolbarProgressIsland`
+- **ARCH-02** decompose the (now ~640-line) `ToolbarProgressIsland`
 - **ARCH-03** read and act on sync `schema_version` / consent versioning
 - **ARCH-04** section-ID drift gate in the import pipeline
 - **ARCH-05** `AudioPlayback` provider interface
@@ -80,8 +97,8 @@ self-contained next PR; the register entry has the full detail.
 - **DUP-02** shared catalog schema module with a payload schema version
 - **DUP-03** shared `markdown-blocks` module (BUG-04 was fixed inline in
   `MarkdownBody`; the anchor-drift invariant still wants one parser)
-- **DUP-05 / DUP-06 / DUP-08 / DUP-11** progress-subscription hook, loader hook,
-  brand-context helper, audio voice-pref module
+- **DUP-06 / DUP-08 / DUP-11** loader hook, brand-context helper, audio
+  voice-pref module (DUP-05 shipped with the progress store above)
 
 ### Performance (remaining)
 - **PERF-01 (rest)** slim progress manifest and server-side breadcrumbs so

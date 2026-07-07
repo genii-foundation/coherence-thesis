@@ -15,8 +15,7 @@ import { loadReaderSections, type ReaderSectionData } from "@/lib/reader-data";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import {
   appendStoredEvent,
-  readStoredProgress,
-  writeStoredProgress,
+  updateStoredProgress,
 } from "@/lib/reader-progress-store";
 import { recordAudioSeconds } from "@/lib/reader-state";
 
@@ -77,13 +76,13 @@ export function AudioPlayerIsland({
     const seconds = Math.max(0, Math.round((Date.now() - startedAt) / 1000));
     audioStartedAtRef.current = null;
     if (seconds <= 0) return;
-    const progress = readStoredProgress();
-    const next = recordAudioSeconds(
-      progress,
-      { sectionId: item.sectionId, contentHash: item.audioVersionId },
-      seconds,
+    updateStoredProgress((current) =>
+      recordAudioSeconds(
+        current,
+        { sectionId: item.sectionId, contentHash: item.audioVersionId },
+        seconds,
+      ),
     );
-    writeStoredProgress(next);
     appendStoredEvent(
       createEngagementEvent("audio_seconds_listened", {
         sectionId: item.sectionId,

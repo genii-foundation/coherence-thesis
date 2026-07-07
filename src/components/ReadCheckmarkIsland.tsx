@@ -1,15 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Check } from "lucide-react";
 import type { ProgressSection } from "@/lib/manuscript-data";
-import { readStoredProgress } from "@/lib/reader-progress-store";
-import {
-  emptyProgress,
-  isSectionRead,
-  readerProgressUpdatedEvent,
-  type ReaderProgressState,
-} from "@/lib/reader-state";
+import { useReaderProgress } from "@/lib/reader-progress-store";
+import { isSectionRead, type ReaderProgressState } from "@/lib/reader-state";
 
 function sectionsAreRead(
   progress: ReaderProgressState,
@@ -28,21 +23,7 @@ export function ReadCheckmarkIsland({
   sections: ProgressSection[];
   className?: string;
 }) {
-  const [progress, setProgress] = useState<ReaderProgressState>(() => emptyProgress());
-
-  useEffect(() => {
-    const updateProgress = () => setProgress(readStoredProgress());
-    const hydrationTimer = window.setTimeout(updateProgress, 0);
-
-    window.addEventListener("storage", updateProgress);
-    window.addEventListener(readerProgressUpdatedEvent, updateProgress);
-
-    return () => {
-      window.clearTimeout(hydrationTimer);
-      window.removeEventListener("storage", updateProgress);
-      window.removeEventListener(readerProgressUpdatedEvent, updateProgress);
-    };
-  }, []);
+  const progress = useReaderProgress();
 
   const isRead = useMemo(() => sectionsAreRead(progress, sections), [progress, sections]);
 

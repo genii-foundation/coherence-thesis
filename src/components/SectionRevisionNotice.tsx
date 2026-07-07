@@ -1,26 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { RotateCcw } from "lucide-react";
 import type { ProgressSection } from "@/lib/manuscript-data";
 import { createEngagementEvent } from "@/lib/reader-engagement";
-import { appendStoredEvent, readStoredProgress } from "@/lib/reader-progress-store";
 import {
-  emptyProgress,
-  revisedSectionHref,
-  updatedSinceRead,
-  type ReaderProgressState,
-} from "@/lib/reader-state";
+  appendStoredEvent,
+  useReaderProgress,
+} from "@/lib/reader-progress-store";
+import { revisedSectionHref, updatedSinceRead } from "@/lib/reader-state";
 
 export function SectionRevisionNotice({ section }: { section: ProgressSection }) {
-  const [progress, setProgress] = useState<ReaderProgressState>(() => emptyProgress());
-
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      setProgress(readStoredProgress());
-    }, 0);
-    return () => window.clearTimeout(timer);
-  }, []);
+  // Subscribing to the shared store means the notice reacts when the reader
+  // marks the section read from the toolbar, instead of showing a stale
+  // "Revised since you read this" until a full reload.
+  const progress = useReaderProgress();
 
   const isUpdated = updatedSinceRead(progress, section);
 
