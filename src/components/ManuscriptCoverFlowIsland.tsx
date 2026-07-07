@@ -7,10 +7,15 @@ import {
   useRef,
   useState,
 } from "react";
+import type { WheelEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { getCoverFlowTransform } from "@/lib/cover-flow-motion";
+import {
+  coverFlowTuning,
+  getCoverFlowFlickTarget,
+  getCoverFlowTransform,
+} from "@/lib/cover-flow-motion";
 import type { Volume } from "@/lib/manuscript-data";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 
@@ -31,6 +36,12 @@ type CoverFlowVolume = Pick<
 
 type ManuscriptCoverFlowIslandProps = {
   volumes: CoverFlowVolume[];
+};
+
+type WheelGesture = {
+  distancePx: number;
+  peakDeltaPx: number;
+  timeoutId: number | null;
 };
 
 const manuscriptTags: Record<string, string[]> = {
@@ -75,6 +86,12 @@ export function ManuscriptCoverFlowIsland({
   const cardRefs = useRef<Array<HTMLAnchorElement | null>>([]);
   const snapRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const frameRef = useRef<number | null>(null);
+  const activeIndexRef = useRef(activeIndex);
+  const wheelGestureRef = useRef<WheelGesture>({
+    distancePx: 0,
+    peakDeltaPx: 0,
+    timeoutId: null,
+  });
 
   const updateCardPositions = useCallback(() => {
     const scroller = scrollRef.current;
@@ -82,6 +99,11 @@ export function ManuscriptCoverFlowIsland({
 
     const scrollerRect = scroller.getBoundingClientRect();
     const center = scrollerRect.left + scrollerRect.width / 2;
+    const maxScrollLeft = Math.max(
+      0,
+      scroller.scrollWidth - scroller.clientWidth,
+    );
+    const scrollLeft = scroller.scrollLeft;
     let closestIndex = 0;
     let closestDistance = Number.POSITIVE_INFINITY;
 
@@ -127,10 +149,19 @@ export function ManuscriptCoverFlowIsland({
       }
     });
 
+    if (scrollLeft <= coverFlowTuning.scroll.endSnapTolerancePx) {
+      closestIndex = 0;
+    } else if (
+      maxScrollLeft - scrollLeft <=
+      coverFlowTuning.scroll.endSnapTolerancePx
+    ) {
+      closestIndex = Math.max(volumes.length - 1, 0);
+    }
+
     setActiveIndex((current) =>
       current === closestIndex ? current : closestIndex,
     );
-  }, []);
+  }, [volumes.length]);
 
   const schedulePositionUpdate = useCallback(() => {
     if (frameRef.current !== null) return;
@@ -142,18 +173,65 @@ export function ManuscriptCoverFlowIsland({
   }, [updateCardPositions]);
 
   const scrollToIndex = useCallback(
-    (index: number) => {
+    (index: number, behavior: ScrollBehavior = "smooth") => {
       const nextIndex = Math.max(0, Math.min(volumes.length - 1, index));
       const scroller = scrollRef.current;
       const snap = snapRefs.current[nextIndex];
       if (!scroller || !snap) return;
 
+      const maxScrollLeft = Math.max(
+        0,
+        scroller.scrollWidth - scroller.clientWidth,
+      );
+      const targetScrollLeft =
+        snap.offsetLeft + snap.offsetWidth / 2 - scroller.clientWidth / 2;
+
       scroller.scrollTo({
-        left: snap.offsetLeft + snap.offsetWidth / 2 - scroller.clientWidth / 2,
-        behavior: "smooth",
+        left: Math.max(0, Math.min(targetScrollLeft, maxScrollLeft)),
+        behavior,
       });
     },
     [volumes.length],
+  );
+
+  const handleWheel = useCallback(
+    (event: WheelEvent<HTMLDivElement>) => {
+      const horizontalDelta =
+        Math.abs(event.deltaX) >= Math.abs(event.deltaY) || event.shiftKey
+          ? event.deltaX || event.deltaY
+          : 0;
+
+      if (horizontalDelta === 0) return;
+
+      const gesture = wheelGestureRef.current;
+      gesture.distancePx += horizontalDelta;
+
+      if (Math.abs(horizontalDelta) > Math.abs(gesture.peakDeltaPx)) {
+        gesture.peakDeltaPx = horizontalDelta;
+      }
+
+      if (gesture.timeoutId !== null) {
+        window.clearTimeout(gesture.timeoutId);
+      }
+
+      gesture.timeoutId = window.setTimeout(() => {
+        const targetIndex = getCoverFlowFlickTarget({
+          activeIndex: activeIndexRef.current,
+          distancePx: gesture.distancePx,
+          peakDeltaPx: gesture.peakDeltaPx,
+          volumeCount: volumes.length,
+        });
+
+        gesture.distancePx = 0;
+        gesture.peakDeltaPx = 0;
+        gesture.timeoutId = null;
+
+        if (targetIndex !== null) {
+          scrollToIndex(targetIndex);
+        }
+      }, coverFlowTuning.scroll.flickSettleMs);
+    },
+    [scrollToIndex, volumes.length],
   );
 
   useLayoutEffect(() => {
@@ -161,12 +239,21 @@ export function ManuscriptCoverFlowIsland({
   }, [updateCardPositions]);
 
   useEffect(() => {
+    activeIndexRef.current = activeIndex;
+  }, [activeIndex]);
+
+  useEffect(() => {
+    const wheelGesture = wheelGestureRef.current;
+
     window.addEventListener("resize", schedulePositionUpdate);
 
     return () => {
       window.removeEventListener("resize", schedulePositionUpdate);
       if (frameRef.current !== null) {
         window.cancelAnimationFrame(frameRef.current);
+      }
+      if (wheelGesture.timeoutId !== null) {
+        window.clearTimeout(wheelGesture.timeoutId);
       }
     };
   }, [schedulePositionUpdate]);
@@ -206,6 +293,7 @@ export function ManuscriptCoverFlowIsland({
         ref={scrollRef}
         className="cover-flow-scroll"
         onScroll={schedulePositionUpdate}
+        onWheel={handleWheel}
       >
         <div className="cover-flow-track">
           {volumes.map((volume, index) => {

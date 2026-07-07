@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { getCoverFlowTransform } from "./cover-flow-motion";
+import {
+  coverFlowTuning,
+  getCoverFlowFlickTarget,
+  getCoverFlowTransform,
+} from "./cover-flow-motion";
 
 describe("cover flow motion", () => {
   it("keeps the center transform continuous through tiny scroll changes", () => {
@@ -31,5 +35,49 @@ describe("cover flow motion", () => {
     expect(inactive.panelOpacity).toBe(0);
     expect(inactive.panelVisibility).toBe("hidden");
     expect(inactive.coverWashOpacity).toBeGreaterThan(0);
+  });
+
+  it("sends a decisive forward flick to the last cover", () => {
+    expect(
+      getCoverFlowFlickTarget({
+        activeIndex: 2,
+        distancePx: coverFlowTuning.scroll.flickDistancePx + 1,
+        peakDeltaPx: 12,
+        volumeCount: 9,
+      }),
+    ).toBe(8);
+  });
+
+  it("sends a decisive backward flick to the first cover", () => {
+    expect(
+      getCoverFlowFlickTarget({
+        activeIndex: 6,
+        distancePx: -coverFlowTuning.scroll.flickDistancePx - 1,
+        peakDeltaPx: -12,
+        volumeCount: 9,
+      }),
+    ).toBe(0);
+  });
+
+  it("ignores small cover flow wheel movement", () => {
+    expect(
+      getCoverFlowFlickTarget({
+        activeIndex: 2,
+        distancePx: coverFlowTuning.scroll.flickDistancePx - 1,
+        peakDeltaPx: coverFlowTuning.scroll.flickPeakDeltaPx - 1,
+        volumeCount: 9,
+      }),
+    ).toBeNull();
+  });
+
+  it("ignores flicks that already target the active rail end", () => {
+    expect(
+      getCoverFlowFlickTarget({
+        activeIndex: 8,
+        distancePx: coverFlowTuning.scroll.flickDistancePx + 1,
+        peakDeltaPx: 12,
+        volumeCount: 9,
+      }),
+    ).toBeNull();
   });
 });

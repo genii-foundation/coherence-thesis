@@ -7,6 +7,12 @@ const smoothstep = (value: number) => {
 };
 
 export const coverFlowTuning = {
+  scroll: {
+    endSnapTolerancePx: 2,
+    flickDistancePx: 620,
+    flickPeakDeltaPx: 260,
+    flickSettleMs: 110,
+  },
   rotation: {
     maxDegrees: 72,
     degreesPerCardOffset: 86,
@@ -136,4 +142,30 @@ export function getCoverFlowTransform(offset: number) {
     shift,
     z,
   };
+}
+
+export function getCoverFlowFlickTarget({
+  activeIndex,
+  distancePx,
+  peakDeltaPx,
+  volumeCount,
+}: {
+  activeIndex: number;
+  distancePx: number;
+  peakDeltaPx: number;
+  volumeCount: number;
+}) {
+  if (volumeCount < 2) return null;
+
+  const direction = Math.sign(distancePx || peakDeltaPx);
+  if (direction === 0) return null;
+
+  const isFlick =
+    Math.abs(distancePx) >= coverFlowTuning.scroll.flickDistancePx ||
+    Math.abs(peakDeltaPx) >= coverFlowTuning.scroll.flickPeakDeltaPx;
+
+  if (!isFlick) return null;
+
+  const targetIndex = direction > 0 ? volumeCount - 1 : 0;
+  return targetIndex === activeIndex ? null : targetIndex;
 }
