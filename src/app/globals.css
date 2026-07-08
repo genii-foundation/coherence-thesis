@@ -3582,6 +3582,766 @@ input {
   text-align: left;
 }
 
+.background-lab-page {
+  --lab-ink: #14222a;
+  --lab-muted: #475760;
+  --lab-accent: #8f6433;
+  --lab-accent-rgb: 143 100 51;
+  --lab-card: rgba(255, 251, 241, 0.72);
+  --lab-card-strong: rgba(255, 251, 241, 0.88);
+  --lab-line: rgba(111, 79, 42, 0.24);
+  --lab-page-background:
+    radial-gradient(ellipse at 18% 12%, rgba(156, 112, 66, 0.16), transparent 34rem),
+    radial-gradient(ellipse at 82% 18%, rgba(80, 116, 113, 0.12), transparent 38rem),
+    linear-gradient(150deg, #fbf6ea 0%, #f2e4ca 46%, #ead9b9 100%);
+  --lab-texture-overlay:
+    repeating-linear-gradient(
+      112deg,
+      rgba(80, 57, 35, 0.055) 0 1px,
+      transparent 1px 8px
+    ),
+    repeating-radial-gradient(
+      ellipse at 35% 20%,
+      rgba(255, 255, 255, 0.12) 0 1px,
+      transparent 1px 10px
+    );
+
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100vh - 8rem);
+  overflow: hidden;
+  background: var(--lab-page-background);
+  color: var(--lab-ink);
+}
+
+.background-lab-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--lab-texture-overlay);
+  opacity: 0.82;
+  pointer-events: none;
+}
+
+.site-shell:has(.background-lab-page) .site-footer {
+  border-top: 1px solid var(--line);
+  background: rgba(244, 234, 215, 0.96);
+  box-shadow: 0 0 0 100vmax rgba(244, 234, 215, 0.96);
+  clip-path: inset(0 -100vmax);
+}
+
+.background-lab-vellum-fiber {
+  --lab-page-background:
+    radial-gradient(ellipse at 16% 18%, rgba(173, 122, 67, 0.18), transparent 35rem),
+    radial-gradient(ellipse at 86% 8%, rgba(97, 121, 103, 0.12), transparent 34rem),
+    linear-gradient(145deg, #fff8ec 0%, #f4e5c9 48%, #e8d5b4 100%);
+  --lab-texture-overlay:
+    repeating-linear-gradient(
+      102deg,
+      rgba(95, 66, 39, 0.05) 0 1px,
+      transparent 1px 7px
+    ),
+    repeating-linear-gradient(
+      12deg,
+      rgba(255, 255, 255, 0.12) 0 1px,
+      transparent 1px 13px
+    );
+}
+
+.background-lab-river-silt {
+  --lab-accent: #6f7560;
+  --lab-accent-rgb: 111 117 96;
+  --lab-page-background:
+    radial-gradient(ellipse at 24% 4%, rgba(111, 117, 96, 0.18), transparent 34rem),
+    radial-gradient(ellipse at 80% 38%, rgba(67, 91, 99, 0.12), transparent 42rem),
+    linear-gradient(158deg, #f9f1df 0%, #e9deca 43%, #d9c9ae 100%);
+  --lab-texture-overlay:
+    repeating-linear-gradient(
+      168deg,
+      rgba(74, 63, 49, 0.05) 0 2px,
+      transparent 2px 13px
+    ),
+    conic-gradient(from 20deg at 28% 72%, rgba(255, 255, 255, 0.1), transparent, rgba(67, 91, 99, 0.07), transparent);
+}
+
+.background-lab-moss-grain {
+  --lab-accent: #55705e;
+  --lab-accent-rgb: 85 112 94;
+  --lab-page-background:
+    radial-gradient(ellipse at 12% 22%, rgba(85, 112, 94, 0.22), transparent 35rem),
+    radial-gradient(ellipse at 86% 20%, rgba(150, 117, 63, 0.12), transparent 36rem),
+    linear-gradient(148deg, #f5f0df 0%, #dfe4cf 47%, #c8d1b7 100%);
+  --lab-texture-overlay:
+    repeating-radial-gradient(
+      ellipse at 45% 28%,
+      rgba(52, 78, 61, 0.055) 0 1px,
+      transparent 1px 9px
+    ),
+    repeating-linear-gradient(
+      74deg,
+      rgba(255, 255, 255, 0.11) 0 1px,
+      transparent 1px 12px
+    );
+}
+
+.background-lab-ember-paper {
+  --lab-accent: #a25737;
+  --lab-accent-rgb: 162 87 55;
+  --lab-page-background:
+    radial-gradient(ellipse at 20% 14%, rgba(162, 87, 55, 0.2), transparent 34rem),
+    radial-gradient(ellipse at 76% 16%, rgba(109, 89, 55, 0.14), transparent 34rem),
+    linear-gradient(142deg, #fff1df 0%, #edd1b1 48%, #d9b18e 100%);
+  --lab-texture-overlay:
+    repeating-linear-gradient(
+      126deg,
+      rgba(111, 56, 39, 0.052) 0 1px,
+      transparent 1px 9px
+    ),
+    conic-gradient(from 145deg at 55% 34%, rgba(255, 255, 255, 0.11), transparent, rgba(143, 75, 46, 0.08), transparent);
+}
+
+.background-lab-fog-bank {
+  --lab-accent: #6b7275;
+  --lab-accent-rgb: 107 114 117;
+  --lab-page-background:
+    radial-gradient(ellipse at 18% 10%, rgba(107, 114, 117, 0.13), transparent 35rem),
+    radial-gradient(ellipse at 78% 28%, rgba(139, 129, 104, 0.12), transparent 40rem),
+    linear-gradient(150deg, #fffdf6 0%, #eee9dc 52%, #ded8c8 100%);
+  --lab-texture-overlay:
+    repeating-linear-gradient(
+      34deg,
+      rgba(82, 86, 86, 0.042) 0 1px,
+      transparent 1px 10px
+    ),
+    repeating-radial-gradient(
+      ellipse at 60% 42%,
+      rgba(255, 255, 255, 0.13) 0 1px,
+      transparent 1px 12px
+    );
+}
+
+.background-lab-tide-wash {
+  --lab-accent: #416a78;
+  --lab-accent-rgb: 65 106 120;
+  --lab-page-background:
+    radial-gradient(ellipse at 24% 10%, rgba(65, 106, 120, 0.2), transparent 34rem),
+    radial-gradient(ellipse at 82% 18%, rgba(109, 91, 69, 0.12), transparent 38rem),
+    linear-gradient(150deg, #f5f3e9 0%, #dbe4e0 48%, #bfced0 100%);
+  --lab-texture-overlay:
+    repeating-linear-gradient(
+      9deg,
+      rgba(45, 80, 91, 0.05) 0 1px,
+      transparent 1px 11px
+    ),
+    conic-gradient(from 88deg at 44% 68%, rgba(255, 255, 255, 0.12), transparent, rgba(65, 106, 120, 0.08), transparent);
+}
+
+.background-lab-lichen-map {
+  --lab-accent: #7a7742;
+  --lab-accent-rgb: 122 119 66;
+  --lab-page-background:
+    radial-gradient(ellipse at 22% 18%, rgba(122, 119, 66, 0.22), transparent 34rem),
+    radial-gradient(ellipse at 88% 16%, rgba(101, 126, 105, 0.16), transparent 34rem),
+    linear-gradient(145deg, #f6efd6 0%, #ded8b0 47%, #c7c99b 100%);
+  --lab-texture-overlay:
+    repeating-radial-gradient(
+      ellipse at 35% 32%,
+      rgba(85, 90, 47, 0.06) 0 1px,
+      transparent 1px 8px
+    ),
+    repeating-linear-gradient(
+      138deg,
+      rgba(255, 255, 255, 0.11) 0 1px,
+      transparent 1px 12px
+    );
+}
+
+.background-lab-graphite-mist {
+  --lab-ink: #f4efe5;
+  --lab-muted: #cfc5b6;
+  --lab-accent: #d8ad72;
+  --lab-accent-rgb: 216 173 114;
+  --lab-card: rgba(33, 34, 32, 0.68);
+  --lab-card-strong: rgba(43, 44, 41, 0.86);
+  --lab-line: rgba(232, 210, 176, 0.22);
+  --lab-page-background:
+    radial-gradient(ellipse at 18% 8%, rgba(216, 173, 114, 0.13), transparent 34rem),
+    radial-gradient(ellipse at 86% 18%, rgba(93, 126, 124, 0.12), transparent 36rem),
+    linear-gradient(152deg, #262724 0%, #1c1d1b 54%, #111211 100%);
+  --lab-texture-overlay:
+    repeating-linear-gradient(
+      116deg,
+      rgba(255, 255, 255, 0.035) 0 1px,
+      transparent 1px 9px
+    ),
+    repeating-radial-gradient(
+      ellipse at 46% 22%,
+      rgba(255, 255, 255, 0.04) 0 1px,
+      transparent 1px 10px
+    );
+}
+
+.background-lab-copper-patina {
+  --lab-accent: #2f7b73;
+  --lab-accent-rgb: 47 123 115;
+  --lab-page-background:
+    radial-gradient(ellipse at 16% 14%, rgba(47, 123, 115, 0.22), transparent 34rem),
+    radial-gradient(ellipse at 82% 18%, rgba(168, 105, 55, 0.15), transparent 36rem),
+    linear-gradient(145deg, #f4efdc 0%, #cad8c9 42%, #9fbdb4 100%);
+  --lab-texture-overlay:
+    repeating-linear-gradient(
+      128deg,
+      rgba(43, 82, 76, 0.052) 0 1px,
+      transparent 1px 8px
+    ),
+    conic-gradient(from 210deg at 54% 36%, rgba(255, 255, 255, 0.1), transparent, rgba(168, 105, 55, 0.09), transparent);
+}
+
+.background-lab-night-vellum {
+  --lab-ink: #f5efe3;
+  --lab-muted: #c9beac;
+  --lab-accent: #d7b579;
+  --lab-accent-rgb: 215 181 121;
+  --lab-card: rgba(24, 23, 21, 0.7);
+  --lab-card-strong: rgba(34, 32, 28, 0.88);
+  --lab-line: rgba(226, 196, 140, 0.23);
+  --lab-page-background:
+    radial-gradient(ellipse at 20% 10%, rgba(215, 181, 121, 0.12), transparent 35rem),
+    radial-gradient(ellipse at 78% 18%, rgba(92, 127, 125, 0.11), transparent 38rem),
+    linear-gradient(150deg, #171512 0%, #0f1110 48%, #070808 100%);
+  --lab-texture-overlay:
+    repeating-linear-gradient(
+      108deg,
+      rgba(255, 255, 255, 0.038) 0 1px,
+      transparent 1px 8px
+    ),
+    repeating-radial-gradient(
+      ellipse at 52% 28%,
+      rgba(255, 255, 255, 0.04) 0 1px,
+      transparent 1px 10px
+    );
+}
+
+.background-lab-page {
+  --lab-noise-layer: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.48'/%3E%3C/svg%3E");
+}
+
+.background-lab-page::before {
+  background:
+    var(--lab-texture-overlay),
+    var(--lab-noise-layer);
+  background-size:
+    auto,
+    260px 260px;
+  mix-blend-mode: multiply;
+  opacity: 0.34;
+}
+
+.background-lab-vellum-fiber {
+  --lab-texture-overlay:
+    conic-gradient(from 22deg at 22% 28%, rgba(143, 100, 51, 0.12), transparent 22%, rgba(255, 255, 255, 0.18), transparent 64%, rgba(97, 121, 103, 0.1)),
+    radial-gradient(ellipse at 62% 20%, rgba(255, 255, 255, 0.18), transparent 24rem),
+    radial-gradient(ellipse at 38% 82%, rgba(119, 84, 42, 0.08), transparent 30rem);
+}
+
+.background-lab-river-silt {
+  --lab-texture-overlay:
+    conic-gradient(from 84deg at 36% 66%, rgba(111, 117, 96, 0.16), transparent 26%, rgba(67, 91, 99, 0.1), transparent 68%),
+    radial-gradient(ellipse at 18% 70%, rgba(255, 255, 255, 0.14), transparent 26rem),
+    radial-gradient(ellipse at 84% 22%, rgba(74, 63, 49, 0.08), transparent 28rem);
+}
+
+.background-lab-moss-grain {
+  --lab-texture-overlay:
+    conic-gradient(from 142deg at 28% 32%, rgba(85, 112, 94, 0.18), transparent 24%, rgba(150, 117, 63, 0.12), transparent 66%),
+    radial-gradient(ellipse at 68% 18%, rgba(255, 255, 255, 0.13), transparent 25rem),
+    radial-gradient(ellipse at 46% 84%, rgba(52, 78, 61, 0.1), transparent 28rem);
+}
+
+.background-lab-ember-paper {
+  --lab-texture-overlay:
+    conic-gradient(from 206deg at 42% 30%, rgba(162, 87, 55, 0.16), transparent 24%, rgba(255, 255, 255, 0.15), transparent 64%, rgba(111, 56, 39, 0.1)),
+    radial-gradient(ellipse at 18% 76%, rgba(255, 255, 255, 0.12), transparent 26rem),
+    radial-gradient(ellipse at 82% 18%, rgba(143, 75, 46, 0.1), transparent 27rem);
+}
+
+.background-lab-fog-bank {
+  --lab-texture-overlay:
+    conic-gradient(from 30deg at 58% 36%, rgba(107, 114, 117, 0.1), transparent 26%, rgba(255, 255, 255, 0.2), transparent 68%),
+    radial-gradient(ellipse at 22% 24%, rgba(139, 129, 104, 0.1), transparent 26rem),
+    radial-gradient(ellipse at 76% 82%, rgba(82, 86, 86, 0.07), transparent 28rem);
+}
+
+.background-lab-tide-wash {
+  --lab-texture-overlay:
+    conic-gradient(from 96deg at 42% 72%, rgba(65, 106, 120, 0.16), transparent 25%, rgba(255, 255, 255, 0.14), transparent 68%),
+    radial-gradient(ellipse at 24% 18%, rgba(45, 80, 91, 0.09), transparent 26rem),
+    radial-gradient(ellipse at 84% 24%, rgba(109, 91, 69, 0.08), transparent 30rem);
+}
+
+.background-lab-lichen-map {
+  --lab-texture-overlay:
+    conic-gradient(from 18deg at 32% 36%, rgba(122, 119, 66, 0.18), transparent 24%, rgba(101, 126, 105, 0.14), transparent 70%),
+    radial-gradient(ellipse at 70% 18%, rgba(255, 255, 255, 0.12), transparent 25rem),
+    radial-gradient(ellipse at 36% 84%, rgba(85, 90, 47, 0.1), transparent 28rem);
+}
+
+.background-lab-graphite-mist {
+  --lab-texture-overlay:
+    conic-gradient(from 112deg at 34% 28%, rgba(216, 173, 114, 0.08), transparent 25%, rgba(93, 126, 124, 0.08), transparent 66%),
+    radial-gradient(ellipse at 22% 80%, rgba(255, 255, 255, 0.05), transparent 26rem),
+    radial-gradient(ellipse at 84% 18%, rgba(0, 0, 0, 0.12), transparent 30rem);
+}
+
+.background-lab-copper-patina {
+  --lab-texture-overlay:
+    conic-gradient(from 214deg at 52% 34%, rgba(47, 123, 115, 0.18), transparent 24%, rgba(168, 105, 55, 0.12), transparent 68%),
+    radial-gradient(ellipse at 20% 74%, rgba(255, 255, 255, 0.13), transparent 26rem),
+    radial-gradient(ellipse at 82% 18%, rgba(43, 82, 76, 0.09), transparent 29rem);
+}
+
+.background-lab-night-vellum {
+  --lab-texture-overlay:
+    conic-gradient(from 168deg at 42% 28%, rgba(215, 181, 121, 0.08), transparent 24%, rgba(92, 127, 125, 0.08), transparent 68%),
+    radial-gradient(ellipse at 20% 80%, rgba(255, 255, 255, 0.045), transparent 26rem),
+    radial-gradient(ellipse at 84% 18%, rgba(0, 0, 0, 0.14), transparent 30rem);
+}
+
+.background-lab-graphite-mist::before,
+.background-lab-night-vellum::before {
+  mix-blend-mode: screen;
+  opacity: 0.22;
+}
+
+.background-lab-shell {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 4.5rem) 0;
+}
+
+.background-lab-hero,
+.background-lab-preview,
+.background-lab-band {
+  border: 1px solid var(--lab-line);
+  border-radius: var(--radius);
+  background: var(--lab-card);
+  box-shadow: 0 24px 80px rgba(28, 20, 12, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.background-lab-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: stretch;
+  padding: clamp(1rem, 4vw, 2rem);
+}
+
+.background-lab-hero-copy {
+  display: grid;
+  align-content: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.background-lab-hero h1,
+.background-lab-preview h2,
+.background-lab-band h2,
+.background-lab-mini-card h3 {
+  margin: 0;
+  color: var(--lab-ink);
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.background-lab-hero h1 {
+  max-width: 14ch;
+  font-size: clamp(2.3rem, 5vw, 4.7rem);
+  line-height: 0.98;
+}
+
+.background-lab-hero p,
+.background-lab-reader p,
+.background-lab-mini-card p,
+.background-lab-current p {
+  margin: 0;
+  color: var(--lab-muted);
+  line-height: 1.65;
+}
+
+.background-lab-hero-copy > p:not(.eyebrow) {
+  max-width: 44rem;
+  font-size: clamp(1.02rem, 2vw, 1.18rem);
+}
+
+.background-lab-hero-copy strong,
+.background-lab-current strong {
+  color: var(--lab-ink);
+}
+
+.background-lab-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.background-lab-page button.primary-link,
+.background-lab-page button.secondary-link {
+  border: 0;
+  cursor: pointer;
+}
+
+.background-lab-page button.secondary-link {
+  border: 1px solid var(--lab-line);
+}
+
+.background-lab-current {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: 1rem;
+  align-content: start;
+  min-width: 0;
+  border: 1px solid var(--lab-line);
+  border-radius: var(--radius);
+  background: var(--lab-card-strong);
+  padding: 1rem;
+}
+
+.background-lab-current-swatch,
+.background-lab-option-swatch {
+  display: block;
+  border: 1px solid rgb(var(--lab-accent-rgb) / 0.28);
+  border-radius: var(--radius);
+  background: var(--lab-page-background);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+.background-lab-current-swatch {
+  width: 4rem;
+  height: 4rem;
+}
+
+.background-lab-current span,
+.background-lab-stat span,
+.background-lab-option-copy small {
+  color: var(--lab-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.background-lab-current strong {
+  display: block;
+  margin: 0.18rem 0 0.32rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.05;
+}
+
+.background-lab-options {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.background-lab-option {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: center;
+  min-width: 0;
+  border: 1px solid var(--lab-line);
+  border-radius: var(--radius);
+  background: var(--lab-card);
+  color: var(--lab-ink);
+  cursor: pointer;
+  padding: 0.62rem;
+  text-align: left;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    color 160ms ease;
+}
+
+.background-lab-option:hover,
+.background-lab-option:focus-visible,
+.background-lab-option[aria-pressed="true"] {
+  border-color: rgb(var(--lab-accent-rgb) / 0.54);
+  background: var(--lab-card-strong);
+  box-shadow: inset 0 0 0 1px rgb(var(--lab-accent-rgb) / 0.16);
+}
+
+.background-lab-option[aria-pressed="true"] {
+  color: var(--lab-accent);
+}
+
+.background-lab-option-swatch {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.background-lab-option-copy {
+  display: grid;
+  gap: 0.16rem;
+  min-width: 0;
+}
+
+.background-lab-option-copy span,
+.background-lab-option-copy small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.background-lab-option-copy span {
+  font-weight: 850;
+}
+
+.background-lab-option-swatch-vellum-fiber {
+  background:
+    repeating-linear-gradient(102deg, rgba(95, 66, 39, 0.08) 0 1px, transparent 1px 7px),
+    linear-gradient(145deg, #fff8ec, #e8d5b4);
+}
+
+.background-lab-option-swatch-river-silt {
+  background:
+    repeating-linear-gradient(168deg, rgba(74, 63, 49, 0.08) 0 2px, transparent 2px 13px),
+    linear-gradient(158deg, #f9f1df, #d9c9ae);
+}
+
+.background-lab-option-swatch-moss-grain {
+  background:
+    repeating-radial-gradient(ellipse at 45% 28%, rgba(52, 78, 61, 0.08) 0 1px, transparent 1px 9px),
+    linear-gradient(148deg, #f5f0df, #c8d1b7);
+}
+
+.background-lab-option-swatch-ember-paper {
+  background:
+    repeating-linear-gradient(126deg, rgba(111, 56, 39, 0.08) 0 1px, transparent 1px 9px),
+    linear-gradient(142deg, #fff1df, #d9b18e);
+}
+
+.background-lab-option-swatch-fog-bank {
+  background:
+    repeating-linear-gradient(34deg, rgba(82, 86, 86, 0.07) 0 1px, transparent 1px 10px),
+    linear-gradient(150deg, #fffdf6, #ded8c8);
+}
+
+.background-lab-option-swatch-tide-wash {
+  background:
+    repeating-linear-gradient(9deg, rgba(45, 80, 91, 0.08) 0 1px, transparent 1px 11px),
+    linear-gradient(150deg, #f5f3e9, #bfced0);
+}
+
+.background-lab-option-swatch-lichen-map {
+  background:
+    repeating-radial-gradient(ellipse at 35% 32%, rgba(85, 90, 47, 0.1) 0 1px, transparent 1px 8px),
+    linear-gradient(145deg, #f6efd6, #c7c99b);
+}
+
+.background-lab-option-swatch-graphite-mist {
+  background:
+    repeating-linear-gradient(116deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 9px),
+    linear-gradient(152deg, #262724, #111211);
+}
+
+.background-lab-option-swatch-copper-patina {
+  background:
+    repeating-linear-gradient(128deg, rgba(43, 82, 76, 0.08) 0 1px, transparent 1px 8px),
+    linear-gradient(145deg, #f4efdc, #9fbdb4);
+}
+
+.background-lab-option-swatch-night-vellum {
+  background:
+    repeating-linear-gradient(108deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 8px),
+    linear-gradient(150deg, #171512, #070808);
+}
+
+.background-lab-preview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
+  gap: clamp(0.9rem, 2vw, 1.2rem);
+  padding: clamp(1rem, 3vw, 1.35rem);
+}
+
+.background-lab-panel,
+.background-lab-mini-card {
+  min-width: 0;
+  border: 1px solid var(--lab-line);
+  border-radius: var(--radius);
+  background: var(--lab-card-strong);
+}
+
+.background-lab-reader {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  padding: clamp(1rem, 3vw, 1.4rem);
+}
+
+.background-lab-reader h2,
+.background-lab-band h2 {
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  line-height: 1.06;
+}
+
+.background-lab-reader blockquote {
+  margin: 0;
+  border-left: 3px solid rgb(var(--lab-accent-rgb) / 0.55);
+  color: var(--lab-ink);
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  line-height: 1.5;
+  padding: 0.15rem 0 0.15rem 1rem;
+}
+
+.background-lab-stack {
+  display: grid;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.background-lab-control-panel {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1rem;
+}
+
+.background-lab-panel-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.background-lab-panel-heading svg,
+.background-lab-mini-card svg {
+  color: var(--lab-accent);
+}
+
+.background-lab-control-panel label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--lab-muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.background-lab-control-panel select,
+.background-lab-control-panel input {
+  width: 100%;
+  min-height: 2.7rem;
+  border: 1px solid var(--lab-line);
+  border-radius: var(--radius);
+  background: rgb(255 255 255 / 0.48);
+  color: var(--lab-ink);
+  padding: 0 0.75rem;
+}
+
+.background-lab-graphite-mist .background-lab-control-panel select,
+.background-lab-graphite-mist .background-lab-control-panel input,
+.background-lab-night-vellum .background-lab-control-panel select,
+.background-lab-night-vellum .background-lab-control-panel input {
+  background: rgb(255 255 255 / 0.08);
+}
+
+.background-lab-check-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--lab-accent);
+  font-weight: 850;
+}
+
+.background-lab-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.background-lab-mini-card {
+  display: grid;
+  gap: 0.55rem;
+  align-content: start;
+  padding: 0.85rem;
+}
+
+.background-lab-mini-card h3 {
+  font-size: 1.15rem;
+}
+
+.background-lab-mini-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  width: fit-content;
+  color: var(--lab-accent);
+  font-size: 0.86rem;
+  font-weight: 850;
+  text-decoration-color: rgb(var(--lab-accent-rgb) / 0.52);
+}
+
+.background-lab-band {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(22rem, 1fr);
+  gap: 1rem;
+  align-items: start;
+  padding: clamp(1rem, 3vw, 1.35rem);
+}
+
+.background-lab-band > div:first-child {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.background-lab-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.background-lab-stat {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+  border: 1px solid var(--lab-line);
+  border-radius: var(--radius);
+  background: var(--lab-card-strong);
+  padding: 0.8rem;
+}
+
+.background-lab-stat strong {
+  overflow: hidden;
+  color: var(--lab-ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.background-lab-tags {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.background-lab-tags span {
+  border: 1px solid rgb(var(--lab-accent-rgb) / 0.3);
+  border-radius: 999px;
+  background: rgb(var(--lab-accent-rgb) / 0.1);
+  color: var(--lab-accent);
+  font-size: 0.78rem;
+  font-weight: 850;
+  padding: 0.38rem 0.62rem;
+}
+
 .progress-page {
   max-width: 78rem;
 }
@@ -4258,6 +5018,17 @@ input {
   font-size: clamp(2rem, 5vw, 3.2rem);
 }
 
+@media (max-width: 1040px) {
+  .background-lab-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .background-lab-preview,
+  .background-lab-band {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 860px) {
   .site-header {
     flex-direction: row;
@@ -4266,6 +5037,24 @@ input {
     gap: 0.7rem;
     padding: 0.65rem max(0.85rem, env(safe-area-inset-right)) 0.55rem
       max(0.85rem, env(safe-area-inset-left));
+  }
+
+  .background-lab-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .background-lab-current {
+    grid-template-columns: 3.25rem minmax(0, 1fr);
+  }
+
+  .background-lab-current-swatch {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  .background-lab-card-grid,
+  .background-lab-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .site-header > .breadcrumb-trail {
@@ -4610,6 +5399,47 @@ input {
   .page-frame {
     width: min(100% - 2.5rem, 1160px);
     padding: clamp(2rem, 8vw, 3rem) 0;
+  }
+
+  .background-lab-shell {
+    width: min(100% - 1.5rem, 1180px);
+    padding: clamp(1rem, 7vw, 2rem) 0;
+  }
+
+  .background-lab-hero,
+  .background-lab-preview,
+  .background-lab-band {
+    padding: 0.85rem;
+  }
+
+  .background-lab-hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.05rem, 11vw, 3rem);
+  }
+
+  .background-lab-hero-actions,
+  .background-lab-hero-actions .primary-link,
+  .background-lab-hero-actions .secondary-link {
+    width: 100%;
+  }
+
+  .background-lab-options,
+  .background-lab-card-grid,
+  .background-lab-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .background-lab-option {
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+  }
+
+  .background-lab-option-swatch {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .background-lab-option-copy small {
+    white-space: normal;
   }
 
   .site-footer {
