@@ -1174,13 +1174,10 @@ input {
 
 .site-nav > * > button[data-toolbar-menu-trigger][aria-expanded="true"]:not(
     .progress-menu-button
+  ):not(
+    .audio-menu-button
   ) {
   background: var(--nav-hover-background);
-  color: var(--ink);
-}
-
-.audio-menu-button.is-playing {
-  background: rgba(164, 123, 63, 0.13);
   color: var(--ink);
 }
 

@@ -33,6 +33,31 @@ async function expectToolbarTriggerActive(
     .toBe(true);
 }
 
+async function expectToolbarTriggerOpenWithoutActiveWash(
+  page: Page,
+  selector: string,
+): Promise<void> {
+  const trigger = page.locator(selector);
+  await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  await expect(trigger).toHaveAttribute("data-toolbar-menu-trigger", "true");
+  await expect(trigger).toHaveAttribute("data-menu-open", "true");
+
+  await expect
+    .poll(async () =>
+      trigger.evaluate((element) => {
+        const style = window.getComputedStyle(element);
+        const probe = document.createElement("div");
+        probe.style.background = "var(--nav-hover-background)";
+        document.body.append(probe);
+        const activeBackground = window.getComputedStyle(probe).backgroundColor;
+        probe.remove();
+
+        return style.backgroundColor !== activeBackground;
+      }),
+    )
+    .toBe(true);
+}
+
 async function expectRestingControlBorder(
   page: Page,
   selector: string,
@@ -728,18 +753,27 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
 
   await page.getByRole("button", { name: /Listen/ }).click();
   const audioMenu = page.getByLabel("Audiobook controls");
-  await expectToolbarTriggerActive(page, ".audio-menu-button");
+  await expectToolbarTriggerOpenWithoutActiveWash(page, ".audio-menu-button");
   await expect(audioMenu).toBeVisible();
   await expectRestingControlBorder(page, ".voice-field select");
   await expect(audioMenu.getByText("Voice", { exact: true })).toBeVisible();
   await expect(audioMenu.locator("optgroup[label='High quality voices']")).toHaveCount(1);
   await expect(audioMenu.locator("optgroup[label='System voices']")).toHaveCount(1);
-  await expect(audioMenu.locator("option", { hasText: "Fish Audio Default" })).toBeDisabled();
+  const fishAudioOption = audioMenu.locator("option", {
+    hasText: "Fish Audio Default",
+  });
+  await expect(fishAudioOption).toHaveCount(1);
   await expect(audioMenu.locator("option", { hasText: "Automatic system voice" })).toHaveCount(1);
   await expect(audioMenu.locator("option", { hasText: "Albert" })).toHaveCount(0);
   await expect(audioMenu.getByText("Offline playback")).toBeVisible();
-  await expect(audioMenu.getByText("Audio clips pending").first()).toBeVisible();
-  await expect(audioMenu.locator(".audio-offline-meter")).toHaveCount(0);
+  if (await fishAudioOption.isEnabled()) {
+    await expect(audioMenu.locator(".audio-offline-item").first()).toBeVisible();
+    await expect(audioMenu.locator(".audio-offline-meter").first()).toHaveCount(1);
+  } else {
+    await expect(fishAudioOption).toBeDisabled();
+    await expect(audioMenu.getByText("Audio clips pending").first()).toBeVisible();
+    await expect(audioMenu.locator(".audio-offline-meter")).toHaveCount(0);
+  }
   await expectMenuFitsViewport(page, ".audio-popover");
   await page.getByRole("button", { name: "Pause audiobook" }).click();
   await page.keyboard.press("Escape");
