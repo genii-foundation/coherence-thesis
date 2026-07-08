@@ -84,19 +84,23 @@ const playbackShellSquare = [
   34.38, 14.22, 36.8, 17.2, 36.8, 30.8, 36.8, 33.78, 36.8, 36.2,
   34.38, 36.2, 31.4, 36.2, 16.6, 36.2, 13.62, 33.78, 11.2, 30.8, 11.2,
 ] as const;
-const playbackShellScale = 1.2;
+const playbackShellTriangleScale = 1.2;
+const playbackShellSquareScale = 0.96;
 const playbackShellCenter = 24;
 
-function scalePlaybackShellCoordinate(value: number): number {
-  return playbackShellCenter + (value - playbackShellCenter) * playbackShellScale;
+function scalePlaybackShellCoordinate(value: number, scale: number): number {
+  return playbackShellCenter + (value - playbackShellCenter) * scale;
 }
 
 function playbackShellPath(progress: number): string {
   const values = playbackShellTriangle.map((start, index) => {
     const end = playbackShellSquare[index] ?? start;
-    return scalePlaybackShellCoordinate(
-      start + (end - start) * progress,
-    ).toFixed(3);
+    const scaledStart = scalePlaybackShellCoordinate(
+      start,
+      playbackShellTriangleScale,
+    );
+    const scaledEnd = scalePlaybackShellCoordinate(end, playbackShellSquareScale);
+    return (scaledStart + (scaledEnd - scaledStart) * progress).toFixed(3);
   });
   return [
     `M${values[0]} ${values[1]}`,
