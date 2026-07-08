@@ -38,6 +38,8 @@
     "manuscripts:versions": "tsx scripts/manuscripts/versions.ts",
     "premanuscripts:validate": "node scripts/ensure-node-modules.mjs",
     "manuscripts:validate": "tsx scripts/manuscripts/validate.ts",
+    "audio:fish": "tsx scripts/audio/fish-generate.ts",
+    "audio:publish-manifest": "tsx scripts/audio/fish-publish-manifest.ts",
     "prereadme:update": "node scripts/ensure-node-modules.mjs",
     "readme:update": "tsx scripts/update-readme-status.ts",
     "prevalidate": "node scripts/ensure-node-modules.mjs",

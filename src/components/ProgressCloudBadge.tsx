@@ -8,7 +8,6 @@ type ProgressCloudVariant = {
   height: number;
   cloudFill: string;
   cloudStroke: string;
-  cloudInner: string;
   track: string;
   progress: string;
   textColor: string;
@@ -30,7 +29,6 @@ type ProgressCloudStyle = CSSProperties & {
   "--progress-circle-linecap": string;
   "--progress-cloud-fill": string;
   "--progress-cloud-height": string;
-  "--progress-cloud-inner": string;
   "--progress-cloud-progress": string;
   "--progress-cloud-stroke": string;
   "--progress-cloud-text-color": string;
@@ -48,15 +46,14 @@ const syncOrbitVariant: ProgressCloudVariant = {
   id: "sync-orbit",
   label: "Orbit",
   percent: 1,
-  width: 58,
-  height: 38,
+  width: 46.4,
+  height: 46.4,
   cloudFill: "rgba(255, 252, 244, 0.92)",
   cloudStroke: "rgba(119, 84, 42, 0.16)",
-  cloudInner: "rgba(119, 84, 42, 0.07)",
   track: "rgba(119, 84, 42, 0.06)",
   progress: "var(--bronze-deep)",
   textColor: "var(--bronze-deep)",
-  textSize: 16,
+  textSize: 12.8,
   strokeWidth: 2.7,
 };
 
@@ -70,7 +67,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     height: 32,
     cloudFill: "rgba(255, 252, 244, 0.96)",
     cloudStroke: "rgba(19, 32, 42, 0.48)",
-    cloudInner: "rgba(19, 32, 42, 0.16)",
     track: "rgba(119, 84, 42, 0.11)",
     progress: "var(--ink-soft)",
     textColor: "var(--ink-soft)",
@@ -86,7 +82,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     height: 33,
     cloudFill: "rgba(244, 235, 214, 0.9)",
     cloudStroke: "rgba(119, 84, 42, 0.72)",
-    cloudInner: "rgba(119, 84, 42, 0.24)",
     track: "rgba(19, 32, 42, 0.12)",
     progress: "var(--bronze)",
     textColor: "var(--bronze-deep)",
@@ -102,7 +97,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     height: 33,
     cloudFill: "rgba(255, 252, 244, 0.96)",
     cloudStroke: "var(--ink)",
-    cloudInner: "rgba(19, 32, 42, 0.15)",
     track: "rgba(119, 84, 42, 0.13)",
     progress: "var(--ink)",
     textColor: "var(--ink)",
@@ -118,7 +112,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     height: 34,
     cloudFill: "rgba(255, 252, 244, 0.94)",
     cloudStroke: "rgba(119, 84, 42, 0.66)",
-    cloudInner: "rgba(164, 123, 63, 0.2)",
     track: "rgba(19, 32, 42, 0.1)",
     progress: "var(--sage)",
     textColor: "var(--bronze-deep)",
@@ -134,7 +127,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     height: 34,
     cloudFill: "rgba(244, 235, 214, 0.94)",
     cloudStroke: "rgba(164, 123, 63, 0.78)",
-    cloudInner: "rgba(119, 84, 42, 0.22)",
     track: "rgba(119, 84, 42, 0.14)",
     progress: "var(--bronze-deep)",
     textColor: "var(--bronze-deep)",
@@ -150,7 +142,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     height: 33,
     cloudFill: "rgba(255, 252, 244, 0.92)",
     cloudStroke: "rgba(19, 32, 42, 0.46)",
-    cloudInner: "rgba(19, 32, 42, 0.13)",
     track: "rgba(19, 32, 42, 0.09)",
     progress: "var(--ink-soft)",
     textColor: "var(--ink-soft)",
@@ -166,7 +157,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     height: 34,
     cloudFill: "rgba(244, 235, 214, 0.92)",
     cloudStroke: "rgba(119, 84, 42, 0.74)",
-    cloudInner: "rgba(164, 123, 63, 0.24)",
     track: "rgba(119, 84, 42, 0.13)",
     progress: "var(--bronze)",
     textColor: "var(--bronze-deep)",
@@ -182,7 +172,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     height: 34,
     cloudFill: "rgba(255, 252, 244, 0.97)",
     cloudStroke: "var(--ink)",
-    cloudInner: "rgba(19, 32, 42, 0.16)",
     track: "rgba(19, 32, 42, 0.1)",
     progress: "var(--ink)",
     textColor: "var(--ink)",
@@ -198,7 +187,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     height: 35,
     cloudFill: "rgba(255, 252, 244, 0.98)",
     cloudStroke: "rgba(119, 84, 42, 0.8)",
-    cloudInner: "rgba(119, 84, 42, 0.24)",
     track: "rgba(119, 84, 42, 0.13)",
     progress: "var(--bronze-deep)",
     textColor: "var(--bronze-deep)",
@@ -261,7 +249,6 @@ export function ProgressCloudBadge({
     "--progress-circle-linecap": offlineLineCap,
     "--progress-cloud-fill": variant.cloudFill,
     "--progress-cloud-height": `${variant.height}px`,
-    "--progress-cloud-inner": variant.cloudInner,
     "--progress-cloud-progress": variant.progress,
     "--progress-cloud-stroke": variant.cloudStroke,
     "--progress-cloud-text-color": variant.textColor,
@@ -320,7 +307,6 @@ export function ProgressCloudBadge({
           viewBox="0 0 64 64"
         >
           <circle className="progress-cloud-fill" cx="32" cy="32" r="26" />
-          <circle className="progress-cloud-inner" cx="32" cy="32" r="19" />
           <circle
             className="progress-cloud-track"
             cx="32"

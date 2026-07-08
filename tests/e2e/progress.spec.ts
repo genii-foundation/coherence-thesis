@@ -472,14 +472,12 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await listenButton.click();
   const audioPanel = page.getByLabel("Audiobook controls");
   await expect(audioPanel).toBeVisible();
-  const playButton = page.getByRole("button", { name: "Play audiobook" });
-  await expect(playButton).toBeVisible();
   await expect(page.getByRole("combobox", { name: "Voice" })).toBeVisible();
+  await expect(audioPanel.getByText("Voice", { exact: true })).toBeVisible();
   await expect(audioPanel.getByText("Speed", { exact: true })).toBeVisible();
-  await playButton.click();
 
   const activeListenButton = page.getByRole("button", {
-    name: "Audiobook playing, open controls",
+    name: "Pause audiobook",
   });
   await expect(activeListenButton).toBeVisible();
   const activeListenButtonWidth = await activeListenButton.evaluate(
@@ -494,12 +492,99 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await page.keyboard.press("Escape");
   await expect(audioPanel).toHaveCount(0);
   await activeListenButton.click();
+  await expect(page.getByRole("button", { name: /Listen/ })).toBeVisible();
   await expect(page.getByLabel("Audiobook controls")).toBeVisible();
+  await page.keyboard.press("Escape");
   const footer = page.getByRole("contentinfo", { name: "Site information" });
   await expect(footer).toBeVisible();
   await expect(
     footer.getByText(`© ${copyrightYearLabel} by the Providence Collective.`),
   ).toBeVisible();
+});
+
+test("audio voice selection restarts active playback", async ({ page }) => {
+  await page.addInitScript(() => {
+    class TestSpeechSynthesisUtterance {
+      text: string;
+      rate = 1;
+      pitch = 1;
+      voice: SpeechSynthesisVoice | null = null;
+      onend: (() => void) | null = null;
+
+      constructor(text: string) {
+        this.text = text;
+      }
+    }
+
+    const voices = [
+      { name: "Samantha", voiceURI: "samantha" },
+      { name: "Daniel", voiceURI: "daniel" },
+      { name: "Karen", voiceURI: "karen" },
+      { name: "Moira", voiceURI: "moira" },
+      { name: "Tessa", voiceURI: "tessa" },
+    ] as SpeechSynthesisVoice[];
+    const spokenVoices: Array<string | null> = [];
+
+    Object.defineProperty(window, "__spokenVoices", {
+      configurable: true,
+      value: spokenVoices,
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: TestSpeechSynthesisUtterance,
+    });
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        addEventListener: () => undefined,
+        cancel: () => undefined,
+        getVoices: () => voices,
+        pause: () => undefined,
+        removeEventListener: () => undefined,
+        resume: () => undefined,
+        speak: (utterance: SpeechSynthesisUtterance) => {
+          spokenVoices.push(utterance.voice?.voiceURI ?? null);
+        },
+      },
+    });
+  });
+
+  await page.goto(firstSection.href);
+  await page.getByRole("button", { name: /Listen/ }).click();
+  const audioPanel = page.getByLabel("Audiobook controls");
+  await expect(audioPanel).toBeVisible();
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as unknown as { __spokenVoices: Array<string | null> })
+            .__spokenVoices,
+      ),
+    )
+    .toEqual([null]);
+
+  const voiceSelect = page.getByRole("combobox", { name: "Voice" });
+  await voiceSelect.selectOption("samantha");
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as unknown as { __spokenVoices: Array<string | null> })
+            .__spokenVoices,
+      ),
+    )
+    .toEqual([null, "samantha"]);
+
+  await voiceSelect.selectOption("");
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as unknown as { __spokenVoices: Array<string | null> })
+            .__spokenVoices,
+      ),
+    )
+    .toEqual([null, "samantha", null]);
 });
 
 test("reading map renders the manuscript heatmap", async ({ page }) => {

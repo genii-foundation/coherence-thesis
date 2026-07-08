@@ -31,6 +31,31 @@ async function expectToolbarTriggerActive(
     .toBe(true);
 }
 
+async function expectToolbarTriggerOpenWithoutActiveWash(
+  page: Page,
+  selector: string,
+): Promise<void> {
+  const trigger = page.locator(selector);
+  await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  await expect(trigger).toHaveAttribute("data-toolbar-menu-trigger", "true");
+  await expect(trigger).toHaveAttribute("data-menu-open", "true");
+
+  await expect
+    .poll(async () =>
+      trigger.evaluate((element) => {
+        const style = window.getComputedStyle(element);
+        const probe = document.createElement("div");
+        probe.style.background = "var(--nav-hover-background)";
+        document.body.append(probe);
+        const activeBackground = window.getComputedStyle(probe).backgroundColor;
+        probe.remove();
+
+        return style.backgroundColor !== activeBackground;
+      }),
+    )
+    .toBe(true);
+}
+
 async function expectRestingControlBorder(
   page: Page,
   selector: string,
@@ -56,6 +81,38 @@ async function expectRestingControlBorder(
   expect(border.color).not.toBe("transparent");
 }
 
+async function expectMobilePopoverStartsBelowToolbar(
+  page: Page,
+  selector: string,
+): Promise<void> {
+  await expect
+    .poll(async () =>
+      page.locator(selector).evaluate((element) => {
+        const popover = element.getBoundingClientRect();
+        const header = document
+          .querySelector(".site-header")
+          ?.getBoundingClientRect();
+        const headerBottom = header?.bottom ?? 0;
+        return (
+          popover.top >= headerBottom - 1 &&
+          popover.top <= headerBottom + 2
+        );
+      }),
+    )
+    .toBe(true);
+
+  const metrics = await page.locator(selector).evaluate((element) => {
+    const style = window.getComputedStyle(element);
+    return {
+      radiusTopLeft: Number.parseFloat(style.borderTopLeftRadius),
+      radiusTopRight: Number.parseFloat(style.borderTopRightRadius),
+    };
+  });
+
+  expect(metrics.radiusTopLeft).toBe(0);
+  expect(metrics.radiusTopRight).toBe(0);
+}
+
 async function toolbarMenuHeightTarget(
   page: Page,
   selector: string,
@@ -77,7 +134,16 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       value: {
         addEventListener: () => undefined,
         cancel: () => undefined,
-        getVoices: () => [],
+        getVoices: () => [
+          { name: "Albert", voiceURI: "albert" },
+          { name: "Samantha", voiceURI: "samantha" },
+          { name: "Daniel", voiceURI: "daniel" },
+          { name: "Karen", voiceURI: "karen" },
+          { name: "Moira", voiceURI: "moira" },
+          { name: "Tessa", voiceURI: "tessa" },
+          { name: "Zarvox", voiceURI: "zarvox" },
+          { name: "Bubbles", voiceURI: "bubbles" },
+        ],
         pause: () => undefined,
         removeEventListener: () => undefined,
         speak: () => undefined,
@@ -112,7 +178,7 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   expect(layout.headerRight).toBeLessThanOrEqual(layout.clientWidth + 1);
 
   if (layout.clientWidth <= 540) {
-    expect(layout.headerHeight).toBeLessThanOrEqual(72);
+    expect(layout.headerHeight).toBeLessThanOrEqual(88);
   }
   if (layout.clientWidth > 860) {
     expect(layout.headerPaddingLeft).toBeCloseTo(layout.headerPaddingTop, 1);
@@ -162,9 +228,6 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     const outlineIcon = document.querySelector(".outline-menu-button svg");
     const audioChevron = document.querySelector(
       ".audio-menu-button .audio-menu-chevron",
-    );
-    const progressChevron = document.querySelector(
-      ".progress-menu-button svg:last-child",
     );
     const percent = document.querySelector(".progress-percent");
     const headerBrand = document.querySelector(".site-header > .brand-mark");
@@ -230,9 +293,6 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     const audioChevronStyle = audioChevron
       ? window.getComputedStyle(audioChevron)
       : null;
-    const progressChevronStyle = progressChevron
-      ? window.getComputedStyle(progressChevron)
-      : null;
     const percentStyle = percent ? window.getComputedStyle(percent) : null;
     const pageContextBrandBox = pageContextBrandTitle?.getBoundingClientRect();
     const pageContextBreadcrumbBox =
@@ -259,7 +319,6 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       audioLabelClipped: audioLabelStyle?.clip ?? "",
       outlineIconDisplay: outlineIconStyle?.display ?? "",
       audioChevronDisplay: audioChevronStyle?.display ?? "",
-      progressChevronDisplay: progressChevronStyle?.display ?? "",
       progressColor: percentStyle?.color ?? "",
       progressBorderColor: percentStyle?.borderTopColor ?? "",
       progressBackground: percentStyle?.backgroundColor ?? "",
@@ -361,17 +420,17 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       Math.abs(toolbarMetrics.searchWidth - toolbarMetrics.outlineWidth),
     ).toBeLessThanOrEqual(1);
     expect(
-      Math.abs(toolbarMetrics.audioWidth - toolbarMetrics.outlineWidth),
-    ).toBeLessThanOrEqual(1);
-    expect(
       Math.abs(toolbarMetrics.shareWidth - toolbarMetrics.outlineWidth),
-    ).toBeLessThanOrEqual(1);
-    expect(
-      Math.abs(toolbarMetrics.progressWidth - toolbarMetrics.outlineWidth),
     ).toBeLessThanOrEqual(1);
     expect(
       Math.abs(toolbarMetrics.settingsWidth - toolbarMetrics.outlineWidth),
     ).toBeLessThanOrEqual(1);
+    expect(toolbarMetrics.audioWidth).toBeGreaterThan(
+      toolbarMetrics.outlineWidth,
+    );
+    expect(toolbarMetrics.progressWidth).toBeGreaterThan(
+      toolbarMetrics.outlineWidth,
+    );
   }
   if (layout.clientWidth <= 860) {
     expect(toolbarMetrics.outlineLabelWidth).toBeLessThanOrEqual(1);
@@ -388,7 +447,6 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     );
     expect(toolbarMetrics.outlineIconDisplay).not.toBe("none");
     expect(["", "none"]).toContain(toolbarMetrics.audioChevronDisplay);
-    expect(["", "none"]).toContain(toolbarMetrics.progressChevronDisplay);
     expect(toolbarMetrics.progressText).toMatch(/^\d+%$/);
     expect(toolbarMetrics.progressBorderColor).toBe(
       toolbarMetrics.progressColor,
@@ -776,11 +834,71 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(shareMenu).toHaveCount(0);
 
   await page.getByRole("button", { name: /Listen/ }).click();
+  await page.mouse.move(12, 12);
   const audioMenu = page.getByLabel("Audiobook controls");
-  await expectToolbarTriggerActive(page, ".audio-menu-button");
+  await expectToolbarTriggerOpenWithoutActiveWash(page, ".audio-menu-button");
   await expect(audioMenu).toBeVisible();
-  await expectRestingControlBorder(page, ".audio-controls select");
+  await expectRestingControlBorder(page, ".voice-field select");
+  await expect(audioMenu.getByText("Voice", { exact: true })).toBeVisible();
+  await expect(audioMenu.getByText("Speed", { exact: true })).toBeVisible();
+  await expect(
+    audioMenu.locator("optgroup[label='High quality voices']"),
+  ).toHaveCount(1);
+  await expect(
+    audioMenu.locator("optgroup[label='System voices']"),
+  ).toHaveCount(1);
+  const voiceSelect = audioMenu.getByRole("combobox", { name: "Voice" });
+  const speedSlider = audioMenu.getByRole("slider", { name: "Speed" });
+  const resetVoice = audioMenu.getByRole("button", { name: "Reset voice" });
+  const resetSpeed = audioMenu.getByRole("button", { name: "Reset speed" });
+  await expect(resetVoice).toBeDisabled();
+  await expect(resetSpeed).toBeDisabled();
+  const highQualityOption = audioMenu.locator("option", {
+    hasText: "High Quality 1",
+  });
+  await expect(highQualityOption).toHaveCount(1);
+  await expect(
+    audioMenu.locator("option", { hasText: "Automatic system voice" }),
+  ).toHaveCount(1);
+  await expect(audioMenu.locator("option", { hasText: "Albert" })).toHaveCount(0);
+  await expect(audioMenu.getByText("Offline playback")).toBeVisible();
+  await voiceSelect.selectOption("");
+  await expect(resetVoice).toBeEnabled();
+  await expect(resetSpeed).toBeDisabled();
+  await speedSlider.evaluate((element) => {
+    const input = element as HTMLInputElement;
+    const valueSetter = Object.getOwnPropertyDescriptor(
+      window.HTMLInputElement.prototype,
+      "value",
+    )?.set;
+    valueSetter?.call(input, "1.25");
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+  await expect(speedSlider).toHaveValue("1.25");
+  await expect(resetSpeed).toBeEnabled();
+  await resetVoice.click();
+  await expect(voiceSelect).toHaveValue("clip:default");
+  await expect(speedSlider).toHaveValue("1.25");
+  await expect(resetVoice).toBeDisabled();
+  await expect(resetSpeed).toBeEnabled();
+  await resetSpeed.click();
+  await expect(speedSlider).toHaveValue("1");
+  await expect(resetSpeed).toBeDisabled();
+  if (await highQualityOption.isEnabled()) {
+    await expect(voiceSelect).toHaveValue("clip:default");
+    await expect(audioMenu.locator(".audio-offline-item").first()).toBeVisible();
+    await expect(audioMenu.locator(".audio-offline-meter").first()).toHaveCount(1);
+  } else {
+    await expect(highQualityOption).toBeDisabled();
+    await expect(audioMenu.getByText("Audio clips pending").first()).toBeVisible();
+    await expect(audioMenu.locator(".audio-offline-meter")).toHaveCount(0);
+  }
   await expectMenuFitsViewport(page, ".audio-popover");
+  await page.getByRole("button", { name: "Pause audiobook" }).click();
+  await expect(audioMenu).toBeVisible();
+  await expectToolbarTriggerOpenWithoutActiveWash(page, ".audio-menu-button");
+  await expect(page.getByRole("button", { name: /Listen/ })).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(audioMenu).toHaveCount(0);
 
@@ -790,6 +908,59 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(progressMenu).toBeVisible();
   await expect(progressMenu.getByText("Recommended next")).toBeVisible();
   await expectMenuFitsViewport(page, ".progress-popover");
+});
+
+test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
+  await page.setViewportSize({ width: 810, height: 520 });
+  await page.addInitScript(() => {
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        addEventListener: () => undefined,
+        cancel: () => undefined,
+        getVoices: () => [],
+        pause: () => undefined,
+        removeEventListener: () => undefined,
+        speak: () => undefined,
+      },
+    });
+  });
+
+  await page.goto(wieldingSection.href);
+
+  await page.getByRole("button", { name: "Search manuscripts" }).click();
+  await expect(page.getByRole("region", { name: "Manuscript search" })).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(page, ".search-popover");
+  await page.keyboard.press("Escape");
+
+  await page.getByRole("button", { name: /Outline/ }).click();
+  await expect(page.getByRole("region", { name: "Site outline" })).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(page, ".outline-popover");
+  await page.keyboard.press("Escape");
+
+  await page.getByRole("button", { name: "Reader settings" }).click();
+  await expect(page.getByRole("region", { name: "Reader settings" })).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(page, ".settings-popover");
+  await page.keyboard.press("Escape");
+
+  await page.getByRole("button", { name: "Share and downloads" }).click();
+  await expect(
+    page.getByLabel("Share and downloads").filter({ hasText: "Share" }),
+  ).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(page, ".share-popover");
+  await page.keyboard.press("Escape");
+
+  await page.getByRole("button", { name: /Listen/ }).click();
+  await expect(page.getByLabel("Audiobook controls")).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(page, ".audio-popover");
+  await page.getByRole("button", { name: "Pause audiobook" }).click();
+  await expect(page.getByLabel("Audiobook controls")).toBeVisible();
+  await expect(page.getByRole("button", { name: /Listen/ })).toBeVisible();
+  await page.keyboard.press("Escape");
+
+  await page.getByRole("button", { name: /Progress/ }).click();
+  await expect(page.getByRole("region", { name: "Reader progress" })).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(page, ".progress-popover");
 });
 
 test("toolbar brand owns the active manuscript identity", async ({
