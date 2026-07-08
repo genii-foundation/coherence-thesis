@@ -839,20 +839,44 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectToolbarTriggerOpenWithoutActiveWash(page, ".audio-menu-button");
   await expect(audioMenu).toBeVisible();
   await expectRestingControlBorder(page, ".voice-field select");
+  await expect(audioMenu.getByText("Voice settings")).toBeVisible();
   await expect(audioMenu.getByText("Voice", { exact: true })).toBeVisible();
-  await expect(audioMenu.locator("optgroup[label='High quality voices']")).toHaveCount(1);
-  await expect(audioMenu.locator("optgroup[label='System voices']")).toHaveCount(1);
+  await expect(
+    audioMenu.locator("optgroup[label='High quality voices']"),
+  ).toHaveCount(1);
+  await expect(
+    audioMenu.locator("optgroup[label='System voices']"),
+  ).toHaveCount(1);
+  const voiceSelect = audioMenu.getByRole("combobox", { name: "Voice" });
+  const speedSlider = audioMenu.getByRole("slider", { name: "Speed" });
+  const resetVoiceSettings = audioMenu.getByRole("button", {
+    name: "Reset voice settings",
+  });
+  await expect(resetVoiceSettings).toBeDisabled();
   const highQualityOption = audioMenu.locator("option", {
     hasText: "High Quality 1",
   });
   await expect(highQualityOption).toHaveCount(1);
-  await expect(audioMenu.locator("option", { hasText: "Automatic system voice" })).toHaveCount(1);
+  await expect(
+    audioMenu.locator("option", { hasText: "Automatic system voice" }),
+  ).toHaveCount(1);
   await expect(audioMenu.locator("option", { hasText: "Albert" })).toHaveCount(0);
   await expect(audioMenu.getByText("Offline playback")).toBeVisible();
+  await voiceSelect.selectOption("");
+  await expect(resetVoiceSettings).toBeEnabled();
+  await speedSlider.evaluate((element) => {
+    const input = element as HTMLInputElement;
+    input.value = "1.25";
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+  await expect(speedSlider).toHaveValue("1.25");
+  await resetVoiceSettings.click();
+  await expect(voiceSelect).toHaveValue("clip:default");
+  await expect(speedSlider).toHaveValue("1");
+  await expect(resetVoiceSettings).toBeDisabled();
   if (await highQualityOption.isEnabled()) {
-    await expect(audioMenu.getByRole("combobox", { name: "Voice" })).toHaveValue(
-      "clip:default",
-    );
+    await expect(voiceSelect).toHaveValue("clip:default");
     await expect(audioMenu.locator(".audio-offline-item").first()).toBeVisible();
     await expect(audioMenu.locator(".audio-offline-meter").first()).toHaveCount(1);
   } else {

@@ -15,6 +15,7 @@ import {
   AlertTriangle,
   CheckCircle2,
   Download,
+  RotateCcw,
 } from "lucide-react";
 import {
   emptyAudioClipManifest,
@@ -142,6 +143,7 @@ function usePlaybackWaveform(playing: boolean): number[] {
   const frameRef = useRef<number | null>(null);
   const lastFrameAtRef = useRef<number | null>(null);
   const reducedMotionRef = useRef(false);
+  const animateRef = useRef<(now: number) => void>(() => undefined);
 
   const publishScales = useCallback((next: number[]) => {
     scalesRef.current = next;
@@ -173,7 +175,7 @@ function usePlaybackWaveform(playing: boolean): number[] {
       publishScales(amplitudeRef.current === 0 ? [...hold] : next);
 
       if (targetPlayingRef.current || amplitudeRef.current > 0) {
-        frameRef.current = window.requestAnimationFrame(animate);
+        frameRef.current = window.requestAnimationFrame(animateRef.current);
       } else {
         frameRef.current = null;
         lastFrameAtRef.current = null;
@@ -181,6 +183,10 @@ function usePlaybackWaveform(playing: boolean): number[] {
     },
     [publishScales],
   );
+
+  useEffect(() => {
+    animateRef.current = animate;
+  }, [animate]);
 
   useEffect(() => {
     reducedMotionRef.current = window.matchMedia(
@@ -718,10 +724,28 @@ export function AudioPlayerIsland({
     void restartActivePlayback(nextPreference);
   }
 
+  function handleSpeedChange(rate: number): void {
+    const nextPreference = {
+      ...preference,
+      rate,
+    };
+    setPreference(nextPreference);
+    void restartActivePlayback(nextPreference);
+  }
+
+  function resetVoiceSettings(): void {
+    setPreference(defaultVoicePreference);
+    void restartActivePlayback(defaultVoicePreference);
+  }
+
   if (!supported || queue.length === 0) return null;
 
   // queue is non-empty here, so queue[0] is defined.
   const active = queue[activeIndex] ?? queue[0]!;
+  const voiceSettingsAreDefault = audioPreferencesEqual(
+    preference,
+    defaultVoicePreference,
+  );
 
   return (
     <div className="audio-menu" ref={containerRef}>
@@ -747,6 +771,18 @@ export function AudioPlayerIsland({
             <strong>{active.title}</strong>
           </div>
           <div className="audio-controls">
+            <div className="settings-control-row audio-settings-heading">
+              <span className="eyebrow">Voice settings</span>
+              <button
+                type="button"
+                className="settings-reset-button"
+                aria-label="Reset voice settings"
+                disabled={voiceSettingsAreDefault}
+                onClick={resetVoiceSettings}
+              >
+                <RotateCcw aria-hidden="true" size={14} />
+              </button>
+            </div>
             <div className="audio-control-fields">
               <label className="audio-field voice-field">
                 <span>Voice</span>
@@ -782,11 +818,9 @@ export function AudioPlayerIsland({
                   max="1.4"
                   step="0.05"
                   value={preference.rate}
+                  aria-label="Speed"
                   onChange={(event) =>
-                    setPreference((current) => ({
-                      ...current,
-                      rate: Number(event.target.value),
-                    }))
+                    handleSpeedChange(Number(event.target.value))
                   }
                 />
               </label>

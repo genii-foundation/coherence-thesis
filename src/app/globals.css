@@ -4158,6 +4158,14 @@ input {
   align-items: start;
 }
 
+.audio-settings-heading {
+  color: var(--ink-soft);
+}
+
+.audio-settings-heading .eyebrow {
+  margin: 0;
+}
+
 .audio-control-fields {
   display: grid;
   gap: 0.65rem;
