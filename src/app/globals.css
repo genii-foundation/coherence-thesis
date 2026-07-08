@@ -2630,6 +2630,10 @@ input {
 }
 
 .overview-node {
+  --overview-body-gap: clamp(1rem, 3vw, 1.4rem);
+  --overview-cover-width: 8rem;
+  --overview-heading-gap: 1rem;
+  --overview-number-width: 3rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--card-background);
@@ -2661,10 +2665,25 @@ input {
 
 .overview-node-heading {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr);
+  grid-template-columns: var(--overview-number-width) minmax(0, 1fr);
   align-items: center;
-  gap: 1rem;
+  gap: var(--overview-heading-gap);
   min-width: 0;
+}
+
+.overview-node[open] .overview-node-heading {
+  grid-template-columns:
+    var(--overview-number-width)
+    calc(
+      var(--overview-cover-width) + var(--overview-body-gap) -
+        var(--overview-number-width) - var(--overview-heading-gap) -
+        var(--overview-heading-gap)
+    )
+    minmax(0, 1fr);
+}
+
+.overview-node[open] .overview-node-heading strong {
+  grid-column: 3;
 }
 
 .overview-node-number {
@@ -2737,15 +2756,15 @@ input {
 
 .overview-node-cover-open {
   display: block;
-  width: min(100%, 8rem);
+  width: min(100%, var(--overview-cover-width));
   aspect-ratio: 2 / 3;
 }
 
 .overview-node-body {
   display: grid;
-  grid-template-columns: 8rem minmax(0, 1fr);
+  grid-template-columns: var(--overview-cover-width) minmax(0, 1fr);
   align-items: start;
-  gap: clamp(1rem, 3vw, 1.4rem);
+  gap: var(--overview-body-gap);
   padding: 0 1.1rem 1.2rem;
 }
 
@@ -4602,6 +4621,13 @@ input {
     grid-template-columns: 1fr 1fr;
   }
 
+  .overview-node {
+    --overview-body-gap: 0.8rem;
+    --overview-cover-width: 4.5rem;
+    --overview-heading-gap: 0.7rem;
+    --overview-number-width: 2.2rem;
+  }
+
   .overview-node summary {
     grid-template-columns: 2.7rem minmax(0, 1fr) auto;
     gap: 0.7rem;
@@ -4611,18 +4637,12 @@ input {
     grid-template-columns: minmax(0, 1fr) auto;
   }
 
-  .overview-node-heading {
-    grid-template-columns: 2.2rem minmax(0, 1fr);
-    gap: 0.7rem;
-  }
-
   .overview-node-cover-closed {
     width: 2.7rem;
   }
 
   .overview-node-body {
-    grid-template-columns: 4.5rem minmax(0, 1fr);
-    gap: 0.8rem;
+    grid-template-columns: var(--overview-cover-width) minmax(0, 1fr);
   }
 
   .section-nav {

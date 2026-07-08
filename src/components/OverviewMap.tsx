@@ -30,6 +30,7 @@ export function OverviewMap() {
           return section ? [toProgressSection(section)] : [];
         });
         const coverVolume = coverVolumeForNode(node, index);
+        const numberLabel = coverVolume?.numberLabel ?? String(index + 1);
 
         return (
           <details key={node.id} className="overview-node" open>
@@ -50,7 +51,7 @@ export function OverviewMap() {
               </span>
               <span className="overview-node-heading">
                 <span className="overview-node-number">
-                  {String(index + 1).padStart(2, "0")}
+                  {numberLabel}
                 </span>
                 <strong>{node.title}</strong>
               </span>

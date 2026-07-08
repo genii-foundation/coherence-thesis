@@ -327,9 +327,25 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
   expect(
     await page.locator(".overview-node[open]").count(),
   ).toBe(catalog.overview.nodes.length);
+  await expect(page.locator(".overview-node-number")).toHaveText(
+    catalog.volumes.map((volume) => volume.numberLabel),
+  );
   await expect(page.locator(".overview-node-cover-open img")).toHaveCount(
     catalog.overview.nodes.length,
   );
+  const overviewNodeAlignment = await page.evaluate(() => {
+    const nodes = Array.from(document.querySelectorAll(".overview-node[open]"));
+
+    return nodes.map((node) => {
+      const heading = node.querySelector("summary strong");
+      const copy = node.querySelector(".overview-node-content p");
+      const headingLeft = heading?.getBoundingClientRect().left ?? 0;
+      const copyLeft = copy?.getBoundingClientRect().left ?? 0;
+
+      return Math.abs(headingLeft - copyLeft);
+    });
+  });
+  expect(Math.max(...overviewNodeAlignment)).toBeLessThanOrEqual(1);
   await page.locator(".overview-node summary").first().click();
   await expect(
     page
