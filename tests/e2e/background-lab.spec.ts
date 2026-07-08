@@ -30,6 +30,36 @@ test("background lab toggles texture variations", async ({ page }) => {
     page.getByRole("heading", { name: "Common inputs" }),
   ).toBeVisible();
 
+  const filledPreviewSurfaces = await page.evaluate(() =>
+    [
+      ".background-lab-hero",
+      ".background-lab-current",
+      ".background-lab-preview",
+      ".background-lab-panel",
+      ".background-lab-mini-card",
+      ".background-lab-stat",
+      ".background-lab-tags span",
+      ".background-lab-reader blockquote",
+      ".background-lab-option",
+    ].flatMap((selector) =>
+      Array.from(document.querySelectorAll<HTMLElement>(selector))
+        .filter((element) => {
+          const style = window.getComputedStyle(element);
+
+          return (
+            style.backgroundColor !== "rgba(0, 0, 0, 0)" ||
+            style.backgroundImage !== "none"
+          );
+        })
+        .map((element) => ({
+          selector,
+          backgroundColor: window.getComputedStyle(element).backgroundColor,
+          backgroundImage: window.getComputedStyle(element).backgroundImage,
+        })),
+    ),
+  );
+  expect(filledPreviewSurfaces).toEqual([]);
+
   const overflow = await page.evaluate(
     () => document.documentElement.scrollWidth - window.innerWidth,
   );

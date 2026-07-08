@@ -4075,8 +4075,8 @@ input {
   --lab-muted: var(--ink-soft);
   --lab-accent: var(--bronze-deep);
   --lab-accent-rgb: 119 84 42;
-  --lab-card: rgba(251, 246, 235, 0.44);
-  --lab-card-strong: rgba(251, 246, 235, 0.6);
+  --lab-card: transparent;
+  --lab-card-strong: transparent;
   --lab-line: transparent;
   --lab-paper-rgb: 244 234 215;
   --lab-paper-soft-rgb: 251 246 235;
@@ -4211,28 +4211,28 @@ input {
 .background-lab-hero,
 .background-lab-preview,
 .background-lab-band {
-  background: linear-gradient(180deg, rgb(var(--lab-paper-soft-rgb) / 0.34), rgb(var(--lab-paper-rgb) / 0.18));
-  box-shadow: 0 24px 80px rgb(var(--lab-ink-rgb) / 0.08);
-  backdrop-filter: blur(10px);
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .background-lab-current,
 .background-lab-panel,
 .background-lab-mini-card,
 .background-lab-stat {
-  background: rgb(var(--lab-paper-soft-rgb) / 0.26);
+  background: transparent;
   box-shadow: none;
 }
 
 .background-lab-option {
-  background: rgb(var(--lab-paper-soft-rgb) / 0.22);
+  background: transparent;
   box-shadow: none;
 }
 
 .background-lab-option:hover,
 .background-lab-option:focus-visible,
 .background-lab-option[aria-pressed="true"] {
-  background: rgb(var(--lab-paper-soft-rgb) / 0.48);
+  background: transparent;
   box-shadow: 0 0 0 1px rgb(var(--lab-bronze-deep-rgb) / 0.14);
 }
 
@@ -4343,13 +4343,13 @@ input {
 
 .background-lab-reader blockquote {
   border-left: 0;
-  background: rgb(var(--lab-paper-soft-rgb) / 0.24);
+  background: transparent;
   border-radius: var(--radius);
   padding: 0.85rem 1rem;
 }
 
 .background-lab-tags span {
-  background: rgb(var(--lab-paper-soft-rgb) / 0.36);
+  background: transparent;
 }
 
 .progress-page {
