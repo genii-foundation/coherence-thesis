@@ -5,7 +5,7 @@ import { normalizePath } from "@/lib/routes";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useCleanTooltip } from "@/components/CleanTooltip";
+import { CleanTooltip } from "@/components/CleanTooltip";
 import { loadBreadcrumbShard, type BreadcrumbRoute } from "@/lib/reader-data";
 
 function breadcrumbShardKey(path: string): string {
@@ -27,11 +27,6 @@ function BreadcrumbTooltip({
   label: string;
 }) {
   const labelRef = useRef<HTMLElement | null>(null);
-  const labelTooltip = useCleanTooltip({
-    label,
-    shouldOpen: () => isTruncated(labelRef.current),
-    triggerRef: labelRef,
-  });
 
   const setLabelElement = (
     element: HTMLAnchorElement | HTMLSpanElement | null,
@@ -40,34 +35,25 @@ function BreadcrumbTooltip({
   };
 
   return (
-    <span
-      className="breadcrumb-tooltip-trigger"
-      onBlur={labelTooltip.closeTooltip}
-      onFocus={labelTooltip.openTooltip}
-      onPointerDown={labelTooltip.closeTooltip}
-      onPointerEnter={labelTooltip.openTooltip}
-      onPointerLeave={labelTooltip.closeTooltip}
-    >
-      {current ? (
-        <span
-          ref={setLabelElement}
-          aria-current="page"
-          aria-describedby={labelTooltip.describedBy}
-          className="breadcrumb-label"
-        >
-          {label}
-        </span>
-      ) : (
-        <Link
-          ref={setLabelElement}
-          href={href}
-          aria-describedby={labelTooltip.describedBy}
-          className="breadcrumb-label"
-        >
-          {label}
-        </Link>
-      )}
-      {labelTooltip.tooltip}
+    <span className="breadcrumb-tooltip-trigger">
+      <CleanTooltip
+        label={label}
+        shouldOpen={() => isTruncated(labelRef.current)}
+      >
+        {current ? (
+          <span
+            ref={setLabelElement}
+            aria-current="page"
+            className="breadcrumb-label"
+          >
+            {label}
+          </span>
+        ) : (
+          <Link ref={setLabelElement} href={href} className="breadcrumb-label">
+            {label}
+          </Link>
+        )}
+      </CleanTooltip>
     </span>
   );
 }

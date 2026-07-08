@@ -17,6 +17,7 @@ describe("reader heatmap", () => {
     expect(cells).toHaveLength(readerHeatmapCellCount);
     expect(model.volumes).toHaveLength(9);
     expect(model.volumes.every((volume) => volume.cells.length > 0)).toBe(true);
+    expect(model.volumes.every((volume) => volume.sectionCount > 0)).toBe(true);
   });
 
   it("allows short adjacent sections to share a cell", () => {
@@ -48,11 +49,18 @@ describe("reader heatmap", () => {
   it("marks revised cells when a completed section has a newer hash", () => {
     const model = buildReaderHeatmapModel();
     const cell = model.volumes[0]!.cells[0]!;
-    const progress = markRead(
+    const progress = cell.portions.reduce(
+      (current, portion, index) =>
+        markRead(
+          current,
+          {
+            ...portion,
+            contentHash: index === 0 ? "previous-version" : portion.contentHash,
+          },
+          100,
+          1_700,
+        ),
       emptyProgress(),
-      { ...cell.primary, contentHash: "previous-version" },
-      100,
-      1_700,
     );
 
     expect(progressForHeatmapCell(progress, cell)).toMatchObject({
