@@ -9,7 +9,7 @@ import {
 import { emptyProgress, markRead, recordScrollProgress } from "./reader-state";
 
 describe("reader heatmap", () => {
-  it("builds exactly one thousand cells across the manuscript volumes", () => {
+  it("builds exactly one hundred cells across the manuscript volumes", () => {
     const model = buildReaderHeatmapModel();
     const cells = model.volumes.flatMap((volume) => volume.cells);
 
@@ -49,11 +49,18 @@ describe("reader heatmap", () => {
   it("marks revised cells when a completed section has a newer hash", () => {
     const model = buildReaderHeatmapModel();
     const cell = model.volumes[0]!.cells[0]!;
-    const progress = markRead(
+    const progress = cell.portions.reduce(
+      (current, portion, index) =>
+        markRead(
+          current,
+          {
+            ...portion,
+            contentHash: index === 0 ? "previous-version" : portion.contentHash,
+          },
+          100,
+          1_700,
+        ),
       emptyProgress(),
-      { ...cell.primary, contentHash: "previous-version" },
-      100,
-      1_700,
     );
 
     expect(progressForHeatmapCell(progress, cell)).toMatchObject({
