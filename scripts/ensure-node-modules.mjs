@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import { spawnSync } from "node:child_process";
-import { createHash } from "node:crypto";
 import {
   existsSync,
   mkdirSync,
@@ -22,14 +21,6 @@ const installStatePath = path.join(
   ".coherence-install-state.json",
 );
 
-function hashValue(value) {
-  return createHash("sha256").update(value).digest("hex");
-}
-
-function hashFile(filePath) {
-  return hashValue(readFileSync(filePath));
-}
-
 function readJson(filePath) {
   return JSON.parse(readFileSync(filePath, "utf8"));
 }
@@ -44,18 +35,88 @@ function readInstallState() {
 
 function buildExpectedState() {
   return {
-    lockfileSha256: hashFile(packageLockPath),
     nodeMajor: process.versions.node.split(".")[0],
     packageManager: "npm",
   };
+}
+
+// npm writes node_modules/.package-lock.json as its record of what is actually
+// on disk, and keeps it in step with the root lockfile on every install. The
+// previous check hashed package-lock.json into our own state file, so a routine
+// `npm install <pkg>` (which rewrites both lockfiles but not our state file) read
+// as stale and forced a full `npm ci`, wiping node_modules and the package the
+// developer just added (TEST-09). Comparing the two lockfiles directly is npm's
+// own "is the tree in sync" signal, so `npm install` now leaves us in sync.
+//
+// The two files are not byte-identical even when in sync: the root lockfile also
+// lists packages that are not installed on this platform (optional deps and
+// os/cpu-gated native binaries), and carries manifest metadata on the root
+// entry. So we compare by identity fields over the packages that matter.
+function packageMatches(list, actual) {
+  const values = Array.isArray(list) ? list : [list];
+  const negated = values
+    .filter((value) => value.startsWith("!"))
+    .map((value) => value.slice(1));
+  if (negated.includes(actual)) return false;
+  const allowed = values.filter((value) => !value.startsWith("!"));
+  return allowed.length === 0 || allowed.includes(actual);
+}
+
+// A root-lockfile package that npm is expected to place on disk here. Optional
+// deps (installed or not depending on the resolved platform) and packages gated
+// to another os/cpu are legitimately absent, so they do not signal drift.
+function isExpectedOnThisPlatform(entry) {
+  if (entry.optional || entry.devOptional) return false;
+  if (entry.os && !packageMatches(entry.os, process.platform)) return false;
+  if (entry.cpu && !packageMatches(entry.cpu, process.arch)) return false;
+  return true;
+}
+
+function packageIdentity(entry) {
+  return [
+    entry.version ?? "",
+    entry.resolved ?? "",
+    entry.integrity ?? "",
+    entry.link ?? false,
+  ].join("|");
+}
+
+function nodeModulesInSyncWithLockfile() {
+  if (!existsSync(npmHiddenLockPath)) return false;
+  try {
+    const rootPackages = readJson(packageLockPath).packages ?? {};
+    const installedPackages = readJson(npmHiddenLockPath).packages ?? {};
+
+    // Every installed package must still match the root lockfile. Catches a
+    // version bump or removal pulled in from git since the last install.
+    for (const [key, entry] of Object.entries(installedPackages)) {
+      if (key === "") continue;
+      const rootEntry = rootPackages[key];
+      if (!rootEntry || packageIdentity(rootEntry) !== packageIdentity(entry)) {
+        return false;
+      }
+    }
+
+    // Every package the root lockfile expects on this platform must be present.
+    // Catches a dependency added to the lockfile since the last install.
+    for (const [key, entry] of Object.entries(rootPackages)) {
+      if (key === "") continue;
+      if (isExpectedOnThisPlatform(entry) && !(key in installedPackages)) {
+        return false;
+      }
+    }
+
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function isCurrent(expectedState) {
   const actualState = readInstallState();
 
   return (
-    existsSync(npmHiddenLockPath) &&
-    actualState?.lockfileSha256 === expectedState.lockfileSha256 &&
+    nodeModulesInSyncWithLockfile() &&
     actualState?.nodeMajor === expectedState.nodeMajor &&
     actualState?.packageManager === expectedState.packageManager
   );
@@ -79,13 +140,19 @@ function runNpmCi() {
     : process.platform === "win32"
       ? "npm.cmd"
       : "npm";
-  const result = spawnSync(npmCommand, ["ci"], {
+  // Node >= 18.20 / 20.12 refuse to spawn a .cmd/.bat shim on Windows without
+  // shell: true (CVE-2024-27980), so npm.cmd throws EINVAL otherwise. With the
+  // shell on, the command is joined into one string, so the path (which may
+  // contain spaces, e.g. "C:\Program Files\nodejs\npm.cmd") must be quoted.
+  const isWindows = process.platform === "win32";
+  const result = spawnSync(isWindows ? `"${npmCommand}"` : npmCommand, ["ci"], {
     cwd: repoRoot,
     env: {
       ...process.env,
       COHERENCE_BOOTSTRAPPING: "1",
     },
     stdio: "inherit",
+    shell: isWindows,
   });
 
   if (result.status === null) {

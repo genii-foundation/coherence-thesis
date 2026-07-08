@@ -6,12 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useRef, useState } from "react";
 import { useCleanTooltip } from "@/components/CleanTooltip";
-
-type BrandVolume = {
-  title: string;
-  href: string;
-  numberLabel: string;
-};
+import { brandIdentity, type BrandVolume } from "@/lib/brand-identity";
 
 export function ToolbarBrandIsland({ volumes }: { volumes: BrandVolume[] }) {
   const pathname = usePathname();
@@ -19,19 +14,8 @@ export function ToolbarBrandIsland({ volumes }: { volumes: BrandVolume[] }) {
   const measureRef = useRef<HTMLSpanElement>(null);
   const [compactTitle, setCompactTitle] = useState(false);
   const currentPath = normalizePath(pathname);
-  const activeVolume = volumes.find((volume) =>
-    currentPath.startsWith(normalizePath(volume.href)),
-  );
-  const hasActiveVolume = Boolean(activeVolume);
-  const kicker = activeVolume
-    ? "The Coherence Thesis"
-    : "Providence Collective";
-  const title = activeVolume
-    ? `Volume ${activeVolume.numberLabel} · ${activeVolume.title}`
-    : "The Coherence Thesis";
-  const mobileTitle = activeVolume
-    ? `Volume ${activeVolume.numberLabel}`
-    : undefined;
+  const { activeVolume, hasActiveVolume, kicker, title, mobileTitle } =
+    brandIdentity(volumes, currentPath);
   const showCompactTitle = Boolean(activeVolume && compactTitle);
   const brandTooltip = useCleanTooltip({
     label: title,

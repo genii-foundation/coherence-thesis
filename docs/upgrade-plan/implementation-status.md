@@ -118,7 +118,7 @@ Each landed as its own focused, CI-green PR on top of the base:
 - **ARCH-05** audio playback provider seam
 - **ARCH-03** reader-sync schema-version guard
 - **ARCH-04** section-ID drift gate (`content/series/section-ledger.json`)
-- **MAINT-05** split `scripts/manuscripts/shared.ts` into `types.ts` / `io.ts`
+- **MAINT-02** split `scripts/manuscripts/shared.ts` into `types.ts` / `io.ts`
 - **DUP-03** shared `markdown-blocks` splitter
 - **DUP-01 / A11Y-04** `useToolbarMenu` hook with Escape focus return
 - **DUP-06 / DUP-11** `useLoadedData` load-once hook and `audio-preferences`
@@ -153,6 +153,23 @@ Each landed as its own focused, CI-green PR on top of the base:
 - **TEST-03 / TEST-04** split the 3,000-line `reader.spec.ts` into seven
   thematic spec files (overview, navigation, toolbar, progress, share, settings,
   engagement) over a shared `fixtures.ts`
+- **DUP-08 / MAINT-05 / TEST-09 / PERF-02** close the remaining low-risk register
+  items. **DUP-08**: the active-volume plus `Volume N · Title` derivation, copied
+  into `ToolbarBrandIsland` and `MobilePageContextIsland`, moves to a shared
+  `brandIdentity` helper (`src/lib/brand-identity.ts`) both import. **MAINT-05**:
+  the five `reader-state.ts` section mutators shared the same base-record envelope
+  by hand; an `updateSection` helper now owns it so each mutator only expresses
+  what it changes and no field can be silently dropped (the 19 reader-state and
+  store unit tests confirm behavior is unchanged). **TEST-09**: `ensure-node-modules`
+  compared a stored hash of `package-lock.json`, so a routine `npm install <pkg>`
+  read as stale and forced a full `npm ci` that wiped `node_modules`; it now
+  compares against npm's own `node_modules/.package-lock.json` (skipping optional
+  and off-platform packages), and the Windows `npm.cmd` spawn runs with
+  `shell: true` to avoid the CVE-2024-27980 EINVAL on patched Node. **PERF-02**
+  (unthrottled scroll handler) was already resolved when the single progress store
+  landed: `recordScrollProgress` returns the same reference on an idle frame and
+  the rounded-percent gate limits writes to actual changes, so scroll ticks no
+  longer stall the reading interaction.
 
 - **DOC-08** footer copyright year is now rendered client-side by
   `CopyrightYearIsland` so it stays current on the statically prerendered site
