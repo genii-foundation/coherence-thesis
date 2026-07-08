@@ -1575,6 +1575,7 @@ input {
 .cover-flow-card {
   --card-accent: #77542a;
   --card-rgb: 119 84 42;
+  --cover-flow-cover-shadow-strength: 1;
   --cover-flow-cover-wash-opacity: 0;
   --cover-flow-panel-opacity: 1;
   --cover-flow-panel-visibility: visible;
@@ -1627,8 +1628,10 @@ input {
   border-radius: var(--radius);
   background: var(--card-background);
   box-shadow:
-    0 34px 60px rgba(44, 31, 18, 0.2),
-    0 7px 18px rgba(44, 31, 18, 0.14);
+    0 34px 60px
+      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.2)),
+    0 7px 18px
+      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.14));
   transition:
     border-color 180ms ease,
     box-shadow 220ms ease,
@@ -1641,14 +1644,21 @@ input {
 .cover-flow-card:hover .cover-flow-image-frame,
 .cover-flow-cover-link:focus-visible .cover-flow-image-frame {
   border-color: rgb(var(--card-rgb) / 0.68);
-  box-shadow: var(--cover-shadow-hover);
+  box-shadow:
+    0 20px 52px
+      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.16)),
+    0 8px 24px
+      rgba(119, 84, 42, calc(var(--cover-flow-cover-shadow-strength) * 0.18)),
+    0 2px 0 rgba(255, 255, 255, 0.62) inset;
 }
 
 .cover-flow-card.is-active.is-read-cue .cover-flow-image-frame {
   border-color: rgb(var(--card-rgb) / 0.72);
   box-shadow:
-    0 46px 80px rgba(44, 31, 18, 0.25),
-    0 14px 30px rgba(44, 31, 18, 0.18);
+    0 46px 80px
+      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.25)),
+    0 14px 30px
+      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.18));
   transform: translateZ(1.25rem) scale(1.024);
 }
 

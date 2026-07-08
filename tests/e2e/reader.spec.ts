@@ -2567,6 +2567,12 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   ).toBeVisible();
 
   const coverFlowTransforms = await coverFlow.evaluate((flow) => {
+    const shadowAlpha = (element: HTMLElement | null) => {
+      if (!element) return 0;
+      const shadow = window.getComputedStyle(element).boxShadow;
+      const match = shadow.match(/rgba?\([^,]+,[^,]+,[^,]+,\s*([^)]+)\)/);
+      return match ? Number.parseFloat(match[1] ?? "0") : 0;
+    };
     const active = flow.querySelector<HTMLElement>(
       '.cover-flow-card[aria-current="true"]',
     );
@@ -2588,6 +2594,12 @@ test("home page presents an interactive cover flow", async ({ page }) => {
     return {
       activeRotate: active?.style.getPropertyValue("--cover-flow-rotate") ?? "",
       activeScale: active?.style.getPropertyValue("--cover-flow-scale") ?? "",
+      activeShadowStrength:
+        active?.style.getPropertyValue("--cover-flow-cover-shadow-strength") ??
+        "",
+      activeShadowAlpha: shadowAlpha(
+        active?.querySelector<HTMLElement>(".cover-flow-image-frame") ?? null,
+      ),
       activeTransform: active ? getComputedStyle(active).transform : "",
       cardGap: window.getComputedStyle(flow.querySelector(".cover-flow-track")!)
         .gap,
@@ -2602,6 +2614,12 @@ test("home page presents an interactive cover flow", async ({ page }) => {
           .backdropFilter,
       sideRotate: sideCard?.style.getPropertyValue("--cover-flow-rotate") ?? "",
       sideScale: sideCard?.style.getPropertyValue("--cover-flow-scale") ?? "",
+      sideShadowStrength:
+        sideCard?.style.getPropertyValue("--cover-flow-cover-shadow-strength") ??
+        "",
+      sideShadowAlpha: shadowAlpha(
+        sideCard?.querySelector<HTMLElement>(".cover-flow-image-frame") ?? null,
+      ),
       viewportWidth: document.documentElement.clientWidth,
     };
   });
@@ -2622,6 +2640,14 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   expect(coverFlowTransforms.panelVisible).not.toBe("none");
   expect(coverFlowTransforms.sideRotate).not.toBe("0deg");
   expect(Number.parseFloat(coverFlowTransforms.sideScale)).toBeLessThan(1);
+  expect(
+    Number.parseFloat(coverFlowTransforms.activeShadowStrength),
+  ).toBeGreaterThan(0.95);
+  expect(Number.parseFloat(coverFlowTransforms.sideShadowStrength)).toBeLessThan(
+    Number.parseFloat(coverFlowTransforms.activeShadowStrength),
+  );
+  expect(coverFlowTransforms.activeShadowAlpha).toBeGreaterThanOrEqual(0.16);
+  expect(coverFlowTransforms.sideShadowAlpha).toBeLessThan(0.19);
 
   const backgroundTarget = catalog.volumes[initialActiveIndex + 1]!;
   await coverFlow

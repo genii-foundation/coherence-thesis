@@ -239,6 +239,10 @@ export function ManuscriptCoverFlowIsland({
         transform.coverWashOpacity.toFixed(3),
       );
       card.style.setProperty(
+        "--cover-flow-cover-shadow-strength",
+        transform.coverShadowStrength.toFixed(3),
+      );
+      card.style.setProperty(
         "--cover-flow-panel-opacity",
         String(transform.panelOpacity),
       );

@@ -46,6 +46,11 @@ export const coverFlowTuning = {
     falloffCurve: 1.08,
     max: 0.88,
   },
+  coverShadow: {
+    falloffPerCard: 0.46,
+    falloffCurve: 1.12,
+    min: 0.08,
+  },
   panelOpacity: {
     activeDistance: 0.34,
     active: 1,
@@ -143,6 +148,12 @@ export function getCoverFlowTransform(offset: number) {
     coverFlowTuning.coverWash.opacityPerCard *
       Math.pow(distance, coverFlowTuning.coverWash.falloffCurve),
   );
+  const coverShadowStrength = Math.max(
+    coverFlowTuning.coverShadow.min,
+    1 -
+      coverFlowTuning.coverShadow.falloffPerCard *
+        Math.pow(distance, coverFlowTuning.coverShadow.falloffCurve),
+  );
   const panelOpacity =
     distance < coverFlowTuning.panelOpacity.activeDistance
       ? coverFlowTuning.panelOpacity.active
@@ -158,6 +169,7 @@ export function getCoverFlowTransform(offset: number) {
   );
 
   return {
+    coverShadowStrength,
     coverWashOpacity,
     layer,
     panelOpacity,

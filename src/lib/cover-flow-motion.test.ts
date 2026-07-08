@@ -48,6 +48,17 @@ describe("cover flow motion", () => {
     expect(inactive.coverWashOpacity).toBeGreaterThan(0);
   });
 
+  it("fades cover shadows as cards move into the background", () => {
+    const active = getCoverFlowTransform(0).coverShadowStrength;
+    const side = getCoverFlowTransform(1).coverShadowStrength;
+    const far = getCoverFlowTransform(2.4).coverShadowStrength;
+
+    expect(active).toBe(1);
+    expect(side).toBeLessThan(active);
+    expect(far).toBeLessThan(side);
+    expect(far).toBe(coverFlowTuning.coverShadow.min);
+  });
+
   it("sends a decisive forward flick to the last cover", () => {
     expect(
       getCoverFlowFlickTarget({
