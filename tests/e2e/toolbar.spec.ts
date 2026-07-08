@@ -67,7 +67,16 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       value: {
         addEventListener: () => undefined,
         cancel: () => undefined,
-        getVoices: () => [],
+        getVoices: () => [
+          { name: "Albert", voiceURI: "albert" },
+          { name: "Samantha", voiceURI: "samantha" },
+          { name: "Daniel", voiceURI: "daniel" },
+          { name: "Karen", voiceURI: "karen" },
+          { name: "Moira", voiceURI: "moira" },
+          { name: "Tessa", voiceURI: "tessa" },
+          { name: "Zarvox", voiceURI: "zarvox" },
+          { name: "Bubbles", voiceURI: "bubbles" },
+        ],
         pause: () => undefined,
         removeEventListener: () => undefined,
         speak: () => undefined,
@@ -698,6 +707,11 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectToolbarTriggerActive(page, ".audio-menu-button");
   await expect(audioMenu).toBeVisible();
   await expectRestingControlBorder(page, ".audio-controls select");
+  await expect(audioMenu.locator("optgroup[label='High quality voices']")).toHaveCount(1);
+  await expect(audioMenu.locator("optgroup[label='System voices']")).toHaveCount(1);
+  await expect(audioMenu.locator("option", { hasText: "Fish Audio Default" })).toBeDisabled();
+  await expect(audioMenu.locator("option", { hasText: "Automatic system voice" })).toHaveCount(1);
+  await expect(audioMenu.locator("option", { hasText: "Albert" })).toHaveCount(0);
   await expect(audioMenu.getByText("Offline playback")).toBeVisible();
   await expect(audioMenu.getByText("Audio clips pending").first()).toBeVisible();
   await expectMenuFitsViewport(page, ".audio-popover");

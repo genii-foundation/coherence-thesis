@@ -35,6 +35,10 @@ import {
   type AudioVoicePreference,
 } from "@/lib/audio-queue";
 import {
+  audioVoiceMenuGroups,
+  selectableVoiceIds,
+} from "@/lib/audio-voices";
+import {
   createDefaultAudioProvider,
   type AudioPlaybackVoice,
 } from "@/lib/audio-playback";
@@ -133,6 +137,11 @@ export function AudioPlayerIsland({
   const [preference, setPreference] = useState<AudioVoicePreference>(
     () => defaultVoicePreference,
   );
+  const voiceGroups = useMemo(
+    () => audioVoiceMenuGroups({ voices, manifest: audioManifest }),
+    [audioManifest, voices],
+  );
+  const voiceIds = useMemo(() => selectableVoiceIds(voiceGroups), [voiceGroups]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [supported, setSupported] = useState(true);
@@ -239,6 +248,11 @@ export function AudioPlayerIsland({
   useEffect(() => {
     writeVoicePreference(preference);
   }, [preference]);
+
+  useEffect(() => {
+    if (!preference.voiceURI || voiceIds.has(preference.voiceURI)) return;
+    setPreference((current) => ({ ...current, voiceURI: null }));
+  }, [preference.voiceURI, voiceIds]);
 
   function playIndex(index: number, token: number): void {
     const item = queue[index];
@@ -428,12 +442,21 @@ export function AudioPlayerIsland({
                 }))
               }
             >
-              <option value="">System voice</option>
-              {voices.map((voice) => (
-                <option key={voice.id} value={voice.id}>
-                  {voice.label}
-                </option>
-              ))}
+              <optgroup label="High quality voices">
+                {voiceGroups.highQuality.map((voice) => (
+                  <option key={voice.id} value={voice.id} disabled={voice.disabled}>
+                    {voice.label}
+                  </option>
+                ))}
+              </optgroup>
+              <optgroup label="System voices">
+                <option value="">Automatic system voice</option>
+                {voiceGroups.system.map((voice) => (
+                  <option key={voice.id} value={voice.id}>
+                    {voice.label}
+                  </option>
+                ))}
+              </optgroup>
             </select>
           </div>
           <label className="range-field">
