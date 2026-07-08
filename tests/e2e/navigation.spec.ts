@@ -48,6 +48,35 @@ test("manuscript volume heading does not overlap its stats line", async ({
   }
 });
 
+test("manuscript volume heading uses the colored astrology icon", async ({
+  page,
+}) => {
+  const volume = catalog.volumes[0];
+  expect(volume).toBeDefined();
+
+  await page.goto(volume!.href);
+
+  const meta = page.locator(".volume-meta-tags");
+  const astrologyIcon = meta.locator("> .astrology-icon");
+  await expect(astrologyIcon).toBeVisible();
+  await expect(astrologyIcon).toHaveAttribute("aria-label", volume!.planet);
+  await expect(astrologyIcon).toHaveClass(/astrology-icon-sun/);
+  await expect(astrologyIcon).toHaveText("☉");
+  await expect(meta.getByText(volume!.planet, { exact: true })).toHaveCount(0);
+
+  const iconStyle = await astrologyIcon.evaluate((element) => {
+    const styles = window.getComputedStyle(element);
+    return {
+      borderColor: styles.borderColor,
+      boxShadow: styles.boxShadow,
+      color: styles.color,
+    };
+  });
+  expect(iconStyle.borderColor).toContain("rgba");
+  expect(iconStyle.boxShadow).not.toBe("none");
+  expect(iconStyle.color).toContain("rgb");
+});
+
 test("single-section chapter cards open reader content directly", async ({
   page,
 }) => {

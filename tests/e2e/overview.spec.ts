@@ -236,6 +236,13 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(wieldingPanel.locator(".manuscript-card-symbol")).toHaveText(
     "☽",
   );
+  await expect(wieldingPanel.locator(".manuscript-card-symbol")).toHaveClass(
+    /astrology-icon-moon/,
+  );
+  await expect(wieldingPanel.locator(".manuscript-card-symbol")).toHaveAttribute(
+    "aria-label",
+    "Moon",
+  );
   const symbolAlignment = await wieldingPanel
     .locator(".manuscript-card-symbol")
     .evaluate((element) => {
@@ -248,11 +255,11 @@ test("home page presents the overview and manuscript entry points", async ({
       return {
         badgeCenter: badgeBox.top + badgeBox.height / 2,
         badgeHeight: badgeBox.height,
+        boxShadow: window.getComputedStyle(element).boxShadow,
         glyphCenter: glyphBox.top + glyphBox.height / 2,
-        paddingTop: window.getComputedStyle(element).paddingTop,
       };
     });
-  expect(Number.parseFloat(symbolAlignment.paddingTop)).toBeGreaterThan(0);
+  expect(symbolAlignment.boxShadow).not.toBe("none");
   expect(symbolAlignment.badgeHeight).toBeGreaterThan(28);
   expect(symbolAlignment.badgeHeight).toBeLessThan(40);
   expect(symbolAlignment.glyphCenter).toBeGreaterThan(
