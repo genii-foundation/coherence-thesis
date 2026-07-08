@@ -199,17 +199,17 @@ test("reader settings update and persist local appearance preferences", async ({
       fontOptionsMetrics.viewportHeight,
     );
   }
-  const georgiaOption = page.getByRole("button", {
-    name: "Georgia",
+  const newsreaderOption = page.getByRole("button", {
+    name: "Newsreader",
     exact: true,
   });
-  await expect(georgiaOption).toBeVisible();
-  const georgiaOptionFont = await georgiaOption.evaluate(
+  await expect(newsreaderOption).toBeVisible();
+  const newsreaderOptionFont = await newsreaderOption.evaluate(
     (element) => getComputedStyle(element).fontFamily,
   );
-  expect(georgiaOptionFont).toContain("Georgia");
-  await georgiaOption.click();
-  await expect(fontSelect).toContainText("Georgia");
+  expect(newsreaderOptionFont).toContain("Newsreader");
+  await newsreaderOption.click();
+  await expect(fontSelect).toContainText("Newsreader");
   await expect(resetFontButton).toBeEnabled();
   await expect(settingsMenu.getByText("Saved in this browser")).toHaveCount(0);
 
@@ -292,9 +292,9 @@ test("reader settings update and persist local appearance preferences", async ({
   expect(changedAppearance.toolbarFontSize).toBeGreaterThan(
     initialAppearance.toolbarFontSize,
   );
-  expect(changedAppearance.fontFamily).toContain("Georgia");
-  expect(changedAppearance.headingFontFamily).toContain("Georgia");
-  expect(changedAppearance.toolbarFontFamily).toContain("Georgia");
+  expect(changedAppearance.fontFamily).toContain("Newsreader");
+  expect(changedAppearance.headingFontFamily).toContain("Newsreader");
+  expect(changedAppearance.toolbarFontFamily).toContain("Newsreader");
   expect(changedAppearance.rootTheme).toBe("black");
   expect(changedAppearance.rootAnimations).toBe("none");
   expect(changedAppearance.bodyBackground).toBe("rgb(0, 0, 0)");
@@ -303,7 +303,7 @@ test("reader settings update and persist local appearance preferences", async ({
   expect(changedAppearance.stored).not.toBeNull();
   expect(JSON.parse(changedAppearance.stored ?? "{}")).toEqual({
     fontSize: 125,
-    fontFamily: "georgia",
+    fontFamily: "newsreader",
     theme: "black",
     animations: "none",
   });
@@ -327,7 +327,7 @@ test("reader settings update and persist local appearance preferences", async ({
   );
   await expect(
     page.getByRole("button", { name: "Reader font" }),
-  ).toContainText("Georgia");
+  ).toContainText("Newsreader");
   await expect(page.getByRole("radio", { name: "None" })).toBeChecked();
 
   const storedAfterReload = await page.evaluate((key) => {
@@ -338,10 +338,10 @@ test("reader settings update and persist local appearance preferences", async ({
     };
   }, readerPreferencesStorageKey);
 
-  expect(storedAfterReload.fontFamily).toContain("Georgia");
+  expect(storedAfterReload.fontFamily).toContain("Newsreader");
   expect(JSON.parse(storedAfterReload.stored ?? "{}")).toEqual({
     fontSize: 125,
-    fontFamily: "georgia",
+    fontFamily: "newsreader",
     theme: "black",
     animations: "none",
   });
@@ -367,6 +367,6 @@ test("reader settings update and persist local appearance preferences", async ({
         : "",
     };
   });
-  expect(homeAppearance.brandFontFamily).toContain("Georgia");
-  expect(homeAppearance.heroFontFamily).toContain("Georgia");
+  expect(homeAppearance.brandFontFamily).toContain("Newsreader");
+  expect(homeAppearance.heroFontFamily).toContain("Newsreader");
 });

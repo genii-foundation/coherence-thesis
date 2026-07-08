@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { BookOpen, ListTree } from "lucide-react";
+import { HeroActionsIsland } from "@/components/HeroActionsIsland";
 import { ManuscriptCoverFlowIsland } from "@/components/ManuscriptCoverFlowIsland";
 import { catalog } from "@/lib/manuscript-data";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
@@ -10,6 +9,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+const firstReadTarget = catalog.sections[0]!;
+const heroReadTargets = catalog.sections.map((section) => ({
+  sectionId: section.sectionId,
+  contentHash: section.contentHash,
+  href: section.href,
+}));
 const heroStats = [
   `${catalog.stats.volumeCount.toLocaleString()} volumes`,
   `${catalog.stats.sectionCount.toLocaleString()} sections`,
@@ -21,22 +26,16 @@ export default function Home() {
     <div className="home-page">
       <section className="hero-section">
         <div className="hero-copy">
-          <h1>There is a field forming around the work civilization forgot to name.</h1>
+          <h1>Follow the common thread.</h1>
           <p className="hero-deck">
-            Presence, trust architecture, regenerative economics, anti-capture
-            governance, humane intelligence, and right-sized community are not
-            separate projects here. They are strands of one civilizational craft.
+            If your path moves through inner development, social architecture,
+            humane technology, and place-based regeneration, join us in shaping
+            a future worth inheriting.
           </p>
-          <div className="hero-actions">
-            <Link className="primary-link" href={catalog.volumes[0]!.href}>
-              <BookOpen aria-hidden="true" size={18} />
-              Begin Volume I
-            </Link>
-            <Link className="secondary-link" href="/overview/">
-              <ListTree aria-hidden="true" size={18} />
-              Read the overview
-            </Link>
-          </div>
+          <HeroActionsIsland
+            fallbackHref={firstReadTarget.href}
+            sections={heroReadTargets}
+          />
           <ul className="hero-stats" aria-label="Manuscript stats">
             {heroStats.map((stat) => (
               <li key={stat}>{stat}</li>

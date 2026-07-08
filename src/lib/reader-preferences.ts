@@ -19,33 +19,41 @@ export const readerThemeColorByTheme: Record<ReaderTheme, string> = {
 
 export const readerFontOptions = [
   {
-    id: "iowan",
-    label: "Iowan Old Style",
-    stack: "\"Iowan Old Style\", \"Palatino Linotype\", \"Book Antiqua\", Georgia, serif",
+    id: "literata",
+    label: "Literata",
+    stack: "var(--font-literata), Georgia, serif",
   },
   {
-    id: "baskerville",
-    label: "Baskerville",
-    stack: "Baskerville, \"Libre Baskerville\", \"Times New Roman\", serif",
+    id: "source-serif",
+    label: "Source Serif 4",
+    stack: "var(--font-source-serif), Georgia, serif",
   },
   {
-    id: "palatino",
-    label: "Palatino",
-    stack: "\"Palatino Linotype\", Palatino, \"Book Antiqua\", Georgia, serif",
+    id: "newsreader",
+    label: "Newsreader",
+    stack: "var(--font-newsreader), Georgia, serif",
   },
   {
-    id: "charter",
-    label: "Charter",
-    stack: "Charter, \"Bitstream Charter\", Cambria, Georgia, serif",
+    id: "cormorant",
+    label: "Cormorant Garamond",
+    stack: "var(--font-cormorant), Georgia, serif",
   },
   {
-    id: "georgia",
-    label: "Georgia",
-    stack: "Georgia, \"Times New Roman\", serif",
+    id: "fraunces",
+    label: "Fraunces",
+    stack: "var(--font-fraunces), Georgia, serif",
   },
 ] as const;
 
 export type ReaderFontId = (typeof readerFontOptions)[number]["id"];
+
+const legacyReaderFontAliases: Record<string, ReaderFontId> = {
+  baskerville: "source-serif",
+  charter: "newsreader",
+  georgia: "source-serif",
+  iowan: "literata",
+  palatino: "cormorant",
+};
 
 export type ReaderPreferences = {
   fontSize: number;
@@ -56,7 +64,7 @@ export type ReaderPreferences = {
 
 export const defaultReaderPreferences: ReaderPreferences = {
   fontSize: 100,
-  fontFamily: "iowan",
+  fontFamily: "literata",
   theme: "textured",
   animations: "balanced",
 };
@@ -114,6 +122,10 @@ function parseFontFamily(value: unknown): ReaderFontId {
     readerFontOptions.some((fontOption) => fontOption.id === value)
   ) {
     return value as ReaderFontId;
+  }
+
+  if (typeof value === "string" && legacyReaderFontAliases[value]) {
+    return legacyReaderFontAliases[value];
   }
 
   return defaultReaderPreferences.fontFamily;
