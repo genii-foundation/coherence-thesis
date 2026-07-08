@@ -15,6 +15,7 @@ sourceDoc: "sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-futu
 sourceHash: "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a"
 sourceParagraphStart: 125
 sourceParagraphEnd: 153
+aliases: ["/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/","/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/"]
 ---
 
 *A ≈ One–Three Minute Orientation*

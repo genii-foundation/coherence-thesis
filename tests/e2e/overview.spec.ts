@@ -25,9 +25,10 @@ test("home page presents the overview and manuscript entry points", async ({
 
   await expect(
     page.getByRole("heading", {
-      name: "There is a field forming around the work civilization forgot to name.",
+      name: "Follow the common thread.",
     }),
   ).toBeVisible();
+  await expect(page.locator(".hero-copy h1")).toHaveCSS("font-weight", "300");
   await expect(page.locator(".brand-kicker")).toHaveText(
     "Providence Collective",
   );
@@ -70,19 +71,23 @@ test("home page presents the overview and manuscript entry points", async ({
   expect(toolbarColors.headerBackground).toBe(
     hexToRgb(toolbarColors.themeColor),
   );
+  const firstReadTarget = catalog.sections[0]!;
   await expect(
-    page.getByRole("link", { name: /Read the overview/ }),
+    page.getByRole("link", { name: "Listen" }),
+  ).toHaveAttribute("href", firstReadTarget.href);
+  await expect(
+    page.getByRole("link", { name: "Read" }),
+  ).toHaveAttribute("href", firstReadTarget.href);
+  await expect(
+    page.getByRole("link", { name: "Overview" }),
   ).toHaveAttribute("href", "/overview/");
   await expect(
-    page.getByRole("link", { name: /Begin Volume I/ }),
-  ).toHaveAttribute("href", catalog.volumes[0]!.href);
-  await expect(
-    page.getByRole("link", { name: /Browse manuscripts/ }),
+    page.getByRole("link", { name: /Browse manuscripts|Begin Volume I|Read the overview/ }),
   ).toHaveCount(0);
   await expect(page.getByText("Nine volume series")).toHaveCount(0);
   await expect(
     page.getByText(
-      "Presence, trust architecture, regenerative economics, anti-capture governance, humane intelligence, and right-sized community are not separate projects here. They are strands of one civilizational craft.",
+      "If your path moves through inner development, social architecture, humane technology, and place-based regeneration, join us in shaping a future worth inheriting.",
     ),
   ).toBeVisible();
   await expect(page.locator(".hero-stats li")).toHaveText([
@@ -90,6 +95,14 @@ test("home page presents the overview and manuscript entry points", async ({
     `${catalog.stats.sectionCount.toLocaleString()} sections`,
     `${formatReadingDurationForWords(catalog.stats.wordCount)} of audio`,
   ]);
+  await expect(page.locator(".hero-stats li").first()).toHaveCSS(
+    "font-weight",
+    "300",
+  );
+  await expect(page.locator(".hero-stats li").first()).toHaveCSS(
+    "color",
+    hexToRgb("#a47b3f"),
+  );
   await expect(page.locator(".overview-map")).toHaveCount(0);
   await expect(page.locator(".stats-band")).toHaveCount(0);
   await expect(page.getByText("Ready for the full body")).toHaveCount(0);
@@ -107,6 +120,10 @@ test("home page presents the overview and manuscript entry points", async ({
   );
   if (testInfo.project.name !== "mobile") {
     await page.setViewportSize({ width: 880, height: 900 });
+    const actionTops = await page.locator(".hero-actions a").evaluateAll((links) =>
+      links.map((link) => Math.round(link.getBoundingClientRect().top)),
+    );
+    expect(new Set(actionTops).size).toBe(1);
     const brandKickerFit = await page
       .locator(".site-header .brand-kicker")
       .evaluate((element) => ({
@@ -154,14 +171,32 @@ test("home page presents the overview and manuscript entry points", async ({
     const hero = document
       .querySelector(".hero-section")
       ?.getBoundingClientRect();
+    const heroHeading = document
+      .querySelector(".hero-copy h1")
+      ?.getBoundingClientRect();
+    const heroDeck = document
+      .querySelector(".hero-deck")
+      ?.getBoundingClientRect();
+    const heroActions = document
+      .querySelector(".hero-actions")
+      ?.getBoundingClientRect();
     const coverFlow = document
       .querySelector(".cover-flow")
       ?.getBoundingClientRect();
     return {
+      deckToActionsGap:
+        heroDeck && heroActions ? heroActions.top - heroDeck.bottom : 0,
       gap: hero && coverFlow ? coverFlow.top - hero.bottom : 0,
+      headingToDeckGap:
+        heroHeading && heroDeck ? heroDeck.top - heroHeading.bottom : 0,
       heroHeight: hero?.height ?? 0,
     };
   });
+  expect(
+    Math.abs(
+      homepageSpacing.headingToDeckGap - homepageSpacing.deckToActionsGap,
+    ),
+  ).toBeLessThanOrEqual(1);
   expect(homepageSpacing.gap).toBeGreaterThanOrEqual(24);
   if (testInfo.project.name === "desktop") {
     expect(homepageSpacing.heroHeight).toBeLessThanOrEqual(1000);
@@ -230,6 +265,47 @@ test("home page presents the overview and manuscript entry points", async ({
     symbolAlignment.glyphCenter - symbolAlignment.badgeCenter,
   ).toBeLessThan(4);
 
+});
+
+test("home page listen and read actions resume at the first unread section", async ({
+  page,
+}) => {
+  const readSection = catalog.sections[0]!;
+  const unreadSection = catalog.sections[1]!;
+
+  await page.addInitScript(
+    ({ contentHash, key, sectionId }) => {
+      window.localStorage.setItem(
+        key,
+        JSON.stringify({
+          sections: {
+            [sectionId]: {
+              sectionId,
+              contentHash,
+              readAt: Date.now(),
+              percent: 100,
+            },
+          },
+        }),
+      );
+    },
+    {
+      contentHash: readSection.contentHash,
+      key: readerProgressStorageKey,
+      sectionId: readSection.sectionId,
+    },
+  );
+
+  await page.goto("/");
+
+  await expect(page.getByRole("link", { name: "Listen" })).toHaveAttribute(
+    "href",
+    unreadSection.href,
+  );
+  await expect(page.getByRole("link", { name: "Read" })).toHaveAttribute(
+    "href",
+    unreadSection.href,
+  );
 });
 
 test("overview links into canonical manuscript sections", async ({

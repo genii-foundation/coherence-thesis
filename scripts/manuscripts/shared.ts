@@ -332,14 +332,20 @@ export function audioVersionId(sectionId: string, contentHash: string): string {
 }
 
 function routeFromHref(href: string): SectionAlias["sourceRoute"] {
-  const match = href.match(
-    /^\/manuscripts\/([^/]+)\/([^/]+)\/([^/]+)\/([^/]+)\/?$/,
-  );
-  const [, volumeId, partId, chapterId, sectionId] = match ?? [];
-  if (!volumeId || !partId || !chapterId || !sectionId) {
+  const route = href
+    .replace(/^\/manuscripts\//, "")
+    .replace(/\/$/, "")
+    .split("/");
+  const [volumeId, partId, chapterIdOrSectionId, sectionId] = route;
+  if (!volumeId || !partId || !chapterIdOrSectionId || route.length > 4) {
     throw new Error(`Alias sourceHref must be a section route: ${href}`);
   }
-  return { volumeId, partId, chapterId, sectionId };
+  return {
+    volumeId,
+    partId,
+    chapterId: sectionId ? chapterIdOrSectionId : partId,
+    sectionId: sectionId ?? chapterIdOrSectionId,
+  };
 }
 
 function fullDepthSectionHref(section: Pick<
@@ -467,6 +473,16 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
   );
   const sectionById = new Map(sections.map((section) => [section.sectionId, section]));
   const aliasInputs = [...readAliasConfig().aliases];
+  for (const section of sections) {
+    for (const sourceHref of section.aliases ?? []) {
+      if (aliasInputs.some((alias) => alias.sourceHref === sourceHref)) continue;
+      aliasInputs.push({
+        sourceHref,
+        targetSectionId: section.sectionId,
+        note: "Generated alias for a skipped subtitle-only opener route.",
+      });
+    }
+  }
   for (const section of sections) {
     const sourceHref = fullDepthSectionHref(section);
     if (sourceHref === section.href) continue;
