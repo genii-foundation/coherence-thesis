@@ -10,7 +10,8 @@
   --bronze: #a47b3f;
   --bronze-deep: #77542a;
   --sage: #60796d;
-  --blue: #244960;
+  --emphasis: #77542a;
+  --page-texture-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.74' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
   --line: rgba(119, 84, 42, 0.24);
   --shadow: 0 20px 80px rgba(44, 31, 18, 0.14);
   --cover-shadow:
@@ -39,20 +40,12 @@
   --card-background-hover: rgba(251, 246, 235, 0.86);
   --glass-background: rgba(251, 246, 235, 0.72);
   --page-background:
-    linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px),
-    radial-gradient(
-      circle at 12% 8%,
-      rgba(164, 123, 63, 0.16),
-      transparent 34rem
-    ),
-    radial-gradient(
-      circle at 86% 2%,
-      rgba(36, 73, 96, 0.12),
-      transparent 30rem
-    ),
+    radial-gradient(ellipse at 20% 18%, rgba(96, 121, 109, 0.14), transparent 28rem),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 251, 241, 0.2), transparent 26rem),
+    radial-gradient(ellipse at 50% 86%, rgba(119, 84, 42, 0.11), transparent 30rem),
+    var(--page-texture-noise),
     linear-gradient(180deg, var(--paper-soft), var(--paper) 34%, #eadbbd);
-  --page-background-size: 42px 42px, 42px 42px, auto, auto, auto;
+  --page-background-size: auto, auto, auto, 320px 320px, auto;
 }
 
 html[data-reader-theme="light"] {
@@ -65,7 +58,7 @@ html[data-reader-theme="light"] {
   --bronze: #8f6a32;
   --bronze-deep: #594018;
   --sage: #3f6858;
-  --blue: #1d4f73;
+  --emphasis: #594018;
   --line: rgba(17, 24, 39, 0.16);
   --shadow: 0 20px 80px rgba(17, 24, 39, 0.12);
   --header-background: #fffefa;
@@ -79,8 +72,13 @@ html[data-reader-theme="light"] {
   --card-background: rgba(255, 254, 250, 0.82);
   --card-background-hover: rgba(255, 254, 250, 0.96);
   --glass-background: rgba(255, 254, 250, 0.78);
-  --page-background: linear-gradient(180deg, #fffefa, #f8f6f1 58%, #f0ebe2);
-  --page-background-size: auto;
+  --page-background:
+    radial-gradient(ellipse at 20% 18%, rgba(63, 104, 88, 0.1), transparent 28rem),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 254, 250, 0.42), transparent 26rem),
+    radial-gradient(ellipse at 50% 86%, rgba(89, 64, 24, 0.08), transparent 30rem),
+    var(--page-texture-noise),
+    linear-gradient(180deg, #fffefa, #f8f6f1 58%, #f0ebe2);
+  --page-background-size: auto, auto, auto, 320px 320px, auto;
 }
 
 html[data-reader-theme="dark"] {
@@ -93,7 +91,7 @@ html[data-reader-theme="dark"] {
   --bronze: #d6a45d;
   --bronze-deep: #e2bd7c;
   --sage: #8db19e;
-  --blue: #9fc8e0;
+  --emphasis: #e2bd7c;
   --line: rgba(226, 189, 124, 0.24);
   --shadow: 0 20px 80px rgba(0, 0, 0, 0.42);
   --header-background: #11100e;
@@ -108,18 +106,12 @@ html[data-reader-theme="dark"] {
   --card-background-hover: rgba(42, 39, 34, 0.9);
   --glass-background: rgba(24, 23, 21, 0.82);
   --page-background:
-    radial-gradient(
-      circle at 18% 4%,
-      rgba(214, 164, 93, 0.08),
-      transparent 30rem
-    ),
-    radial-gradient(
-      circle at 84% 0%,
-      rgba(159, 200, 224, 0.05),
-      transparent 32rem
-    ),
+    radial-gradient(ellipse at 20% 18%, rgba(141, 177, 158, 0.08), transparent 28rem),
+    radial-gradient(ellipse at 70% 30%, rgba(244, 239, 230, 0.05), transparent 26rem),
+    radial-gradient(ellipse at 50% 86%, rgba(226, 189, 124, 0.07), transparent 30rem),
+    var(--page-texture-noise),
     linear-gradient(180deg, #11100e, #181715 52%, #0b0a09);
-  --page-background-size: auto, auto, auto;
+  --page-background-size: auto, auto, auto, 320px 320px, auto;
 }
 
 html[data-reader-theme="black"] {
@@ -132,7 +124,7 @@ html[data-reader-theme="black"] {
   --bronze: #b8b2a4;
   --bronze-deep: #e3ded2;
   --sage: #b8b2a4;
-  --blue: #d0d0ca;
+  --emphasis: #e3ded2;
   --line: rgba(255, 255, 255, 0.18);
   --shadow: 0 20px 80px rgba(0, 0, 0, 0.76);
   --header-background: #000000;
@@ -2452,8 +2444,8 @@ input {
 }
 
 .manuscript-cover-card-2 {
-  --card-accent: #375b78;
-  --card-rgb: 55 91 120;
+  --card-accent: #60796d;
+  --card-rgb: 96 121 109;
 }
 
 .manuscript-cover-card-3 {
@@ -2462,13 +2454,13 @@ input {
 }
 
 .manuscript-cover-card-4 {
-  --card-accent: #2d747b;
-  --card-rgb: 45 116 123;
+  --card-accent: #77542a;
+  --card-rgb: 119 84 42;
 }
 
 .manuscript-cover-card-5 {
-  --card-accent: #62676f;
-  --card-rgb: 98 103 111;
+  --card-accent: #6f6046;
+  --card-rgb: 111 96 70;
 }
 
 .manuscript-cover-card-6 {
@@ -2477,8 +2469,8 @@ input {
 }
 
 .manuscript-cover-card-7 {
-  --card-accent: #2d5b83;
-  --card-rgb: 45 91 131;
+  --card-accent: #8f6a32;
+  --card-rgb: 143 106 50;
 }
 
 .manuscript-cover-card-8 {
@@ -3582,776 +3574,6 @@ input {
   text-align: left;
 }
 
-.background-lab-page {
-  --lab-ink: #14222a;
-  --lab-muted: #475760;
-  --lab-accent: var(--bronze-deep);
-  --lab-accent-rgb: 143 100 51;
-  --lab-card: rgba(255, 251, 241, 0.72);
-  --lab-card-strong: rgba(255, 251, 241, 0.88);
-  --lab-line: rgba(111, 79, 42, 0.24);
-  --lab-page-background:
-    radial-gradient(ellipse at 18% 12%, rgba(156, 112, 66, 0.16), transparent 34rem),
-    radial-gradient(ellipse at 82% 18%, rgba(80, 116, 113, 0.12), transparent 38rem),
-    linear-gradient(150deg, #fbf6ea 0%, #f2e4ca 46%, #ead9b9 100%);
-  --lab-texture-overlay:
-    repeating-linear-gradient(
-      112deg,
-      rgba(80, 57, 35, 0.055) 0 1px,
-      transparent 1px 8px
-    ),
-    repeating-radial-gradient(
-      ellipse at 35% 20%,
-      rgba(255, 255, 255, 0.12) 0 1px,
-      transparent 1px 10px
-    );
-
-  position: relative;
-  isolation: isolate;
-  min-height: calc(100vh - 8rem);
-  overflow: hidden;
-  background: var(--lab-page-background);
-  color: var(--lab-ink);
-}
-
-.background-lab-page::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--lab-texture-overlay);
-  opacity: 0.82;
-  pointer-events: none;
-}
-
-.site-shell:has(.background-lab-page) .site-footer {
-  border-top: 1px solid var(--line);
-  background: rgba(244, 234, 215, 0.96);
-  box-shadow: 0 0 0 100vmax rgba(244, 234, 215, 0.96);
-  clip-path: inset(0 -100vmax);
-}
-
-.background-lab-shell {
-  display: grid;
-  gap: clamp(1rem, 3vw, 1.5rem);
-  width: min(1180px, calc(100% - 2rem));
-  margin: 0 auto;
-  padding: clamp(1.5rem, 5vw, 4.5rem) 0;
-}
-
-.background-lab-hero,
-.background-lab-preview,
-.background-lab-band {
-  border: 1px solid var(--lab-line);
-  border-radius: var(--radius);
-  background: var(--lab-card);
-  box-shadow: 0 24px 80px rgba(28, 20, 12, 0.12);
-  backdrop-filter: blur(18px);
-}
-
-.background-lab-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem);
-  gap: clamp(1rem, 3vw, 2rem);
-  align-items: stretch;
-  padding: clamp(1rem, 4vw, 2rem);
-}
-
-.background-lab-hero-copy {
-  display: grid;
-  align-content: center;
-  gap: 1rem;
-  min-width: 0;
-}
-
-.background-lab-hero h1,
-.background-lab-preview h2,
-.background-lab-band h2,
-.background-lab-mini-card h3 {
-  margin: 0;
-  color: var(--lab-ink);
-  font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: 0;
-}
-
-.background-lab-hero h1 {
-  max-width: 14ch;
-  font-size: clamp(2.3rem, 5vw, 4.7rem);
-  line-height: 0.98;
-}
-
-.background-lab-hero p,
-.background-lab-reader p,
-.background-lab-mini-card p,
-.background-lab-current p {
-  margin: 0;
-  color: var(--lab-muted);
-  line-height: 1.65;
-}
-
-.background-lab-hero-copy > p:not(.eyebrow) {
-  max-width: 44rem;
-  font-size: clamp(1.02rem, 2vw, 1.18rem);
-}
-
-.background-lab-hero-copy strong,
-.background-lab-current strong {
-  color: var(--lab-ink);
-}
-
-.background-lab-hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.background-lab-page button.primary-link,
-.background-lab-page button.secondary-link {
-  border: 0;
-  cursor: pointer;
-}
-
-.background-lab-page button.secondary-link {
-  border: 1px solid var(--lab-line);
-}
-
-.background-lab-current {
-  display: grid;
-  grid-template-columns: 4rem minmax(0, 1fr);
-  gap: 1rem;
-  align-content: start;
-  min-width: 0;
-  border: 1px solid var(--lab-line);
-  border-radius: var(--radius);
-  background: var(--lab-card-strong);
-  padding: 1rem;
-}
-
-.background-lab-current-swatch,
-.background-lab-option-swatch {
-  display: block;
-  border: 1px solid rgb(var(--lab-accent-rgb) / 0.28);
-  border-radius: var(--radius);
-  background: var(--lab-page-background);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
-}
-
-.background-lab-current-swatch {
-  width: 4rem;
-  height: 4rem;
-}
-
-.background-lab-current span,
-.background-lab-stat span,
-.background-lab-option-copy small {
-  color: var(--lab-muted);
-  font-size: 0.78rem;
-  font-weight: 800;
-}
-
-.background-lab-current strong {
-  display: block;
-  margin: 0.18rem 0 0.32rem;
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  line-height: 1.05;
-}
-
-.background-lab-options {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0.65rem;
-}
-
-.background-lab-option {
-  display: grid;
-  grid-template-columns: 2.5rem minmax(0, 1fr);
-  gap: 0.65rem;
-  align-items: center;
-  min-width: 0;
-  border: 1px solid var(--lab-line);
-  border-radius: var(--radius);
-  background: var(--lab-card);
-  color: var(--lab-ink);
-  cursor: pointer;
-  padding: 0.62rem;
-  text-align: left;
-  transition:
-    background 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease,
-    color 160ms ease;
-}
-
-.background-lab-option:hover,
-.background-lab-option:focus-visible,
-.background-lab-option[aria-pressed="true"] {
-  border-color: rgb(var(--lab-accent-rgb) / 0.54);
-  background: var(--lab-card-strong);
-  box-shadow: inset 0 0 0 1px rgb(var(--lab-accent-rgb) / 0.16);
-}
-
-.background-lab-option[aria-pressed="true"] {
-  color: var(--lab-accent);
-}
-
-.background-lab-option-swatch {
-  width: 2.5rem;
-  height: 2.5rem;
-}
-
-.background-lab-option-swatch-pulp-bloom {
-  background:
-    radial-gradient(ellipse at 18% 24%, rgb(var(--lab-paper-soft-rgb) / 0.46), transparent 1.8rem),
-    radial-gradient(ellipse at 64% 18%, rgb(var(--lab-bronze-rgb) / 0.16), transparent 2.4rem),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-option-swatch-linen-drift {
-  background:
-    repeating-linear-gradient(18deg, rgb(var(--lab-ink-rgb) / 0.05) 0 1px, transparent 1px 8px),
-    repeating-linear-gradient(104deg, rgb(var(--lab-bronze-deep-rgb) / 0.045) 0 1px, transparent 1px 10px),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-option-swatch-cloud-wash {
-  background:
-    radial-gradient(ellipse at 16% 18%, rgb(var(--lab-paper-soft-rgb) / 0.52), transparent 1.8rem),
-    radial-gradient(ellipse at 58% 36%, rgb(var(--lab-bronze-rgb) / 0.16), transparent 2.8rem),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-option-swatch-silt-current {
-  background:
-    conic-gradient(from 130deg at 48% 44%, rgb(var(--lab-bronze-deep-rgb) / 0.16), transparent 23%, rgb(var(--lab-sage-rgb) / 0.14), transparent 68%),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-option-swatch-marbled-vellum {
-  background:
-    conic-gradient(from 38deg at 28% 30%, rgb(var(--lab-bronze-rgb) / 0.16), transparent 16%, rgb(var(--lab-paper-soft-rgb) / 0.34), transparent 34%, rgb(var(--lab-sage-rgb) / 0.14), transparent 62%),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-option-swatch-pressed-leaf {
-  background:
-    radial-gradient(ellipse at 30% 20%, rgb(var(--lab-sage-rgb) / 0.18), transparent 2.6rem),
-    repeating-linear-gradient(62deg, transparent 0 10px, rgb(var(--lab-sage-rgb) / 0.08) 10px 11px, transparent 11px 22px),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-option-swatch-ink-mist {
-  background:
-    radial-gradient(circle at 24% 26%, rgb(var(--lab-warm-white-rgb) / 0.34), transparent 1.9rem),
-    radial-gradient(circle at 68% 38%, rgb(var(--lab-ink-rgb) / 0.09), transparent 2.2rem),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-option-swatch-weathered-patina {
-  background:
-    radial-gradient(ellipse at 20% 18%, rgb(var(--lab-sage-rgb) / 0.18), transparent 2.8rem),
-    radial-gradient(ellipse at 70% 30%, rgb(var(--lab-warm-white-rgb) / 0.28), transparent 2.6rem),
-    radial-gradient(ellipse at 50% 86%, rgb(var(--lab-bronze-deep-rgb) / 0.14), transparent 3rem),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-option-swatch-handmade-fiber {
-  background:
-    repeating-linear-gradient(96deg, rgb(var(--lab-ink-rgb) / 0.05) 0 1px, transparent 1px 11px),
-    radial-gradient(ellipse at 18% 62%, rgb(var(--lab-paper-soft-rgb) / 0.42), transparent 2rem),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-option-swatch-soft-terrain {
-  background:
-    repeating-radial-gradient(ellipse at 42% 48%, rgb(var(--lab-bronze-deep-rgb) / 0.075) 0 1px, transparent 1px 11px),
-    radial-gradient(ellipse at 18% 20%, rgb(var(--lab-sage-rgb) / 0.16), transparent 2.4rem),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-option-copy {
-  display: grid;
-  gap: 0.16rem;
-  min-width: 0;
-}
-
-.background-lab-option-copy span,
-.background-lab-option-copy small {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.background-lab-option-copy span {
-  font-weight: 850;
-}
-
-.background-lab-preview {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
-  gap: clamp(0.9rem, 2vw, 1.2rem);
-  padding: clamp(1rem, 3vw, 1.35rem);
-}
-
-.background-lab-panel,
-.background-lab-mini-card {
-  min-width: 0;
-  border: 1px solid var(--lab-line);
-  border-radius: var(--radius);
-  background: var(--lab-card-strong);
-}
-
-.background-lab-reader {
-  display: grid;
-  align-content: start;
-  gap: 1rem;
-  padding: clamp(1rem, 3vw, 1.4rem);
-}
-
-.background-lab-reader h2,
-.background-lab-band h2 {
-  font-size: clamp(1.7rem, 3vw, 2.6rem);
-  line-height: 1.06;
-}
-
-.background-lab-reader blockquote {
-  margin: 0;
-  color: var(--lab-ink);
-  font-family: var(--font-body);
-  font-size: clamp(1.25rem, 2vw, 1.55rem);
-  line-height: 1.5;
-  padding: 0.15rem 0 0.15rem 0;
-}
-
-.background-lab-stack {
-  display: grid;
-  gap: 0.9rem;
-  min-width: 0;
-}
-
-.background-lab-control-panel {
-  display: grid;
-  gap: 0.85rem;
-  padding: 1rem;
-}
-
-.background-lab-panel-heading {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.background-lab-panel-heading svg,
-.background-lab-mini-card svg {
-  color: var(--lab-accent);
-}
-
-.background-lab-control-panel label {
-  display: grid;
-  gap: 0.35rem;
-  color: var(--lab-muted);
-  font-size: 0.82rem;
-  font-weight: 800;
-}
-
-.background-lab-control-panel select,
-.background-lab-control-panel input {
-  width: 100%;
-  min-height: 2.7rem;
-  border: 1px solid var(--lab-line);
-  border-radius: var(--radius);
-  background: rgb(255 255 255 / 0.48);
-  color: var(--lab-ink);
-  padding: 0 0.75rem;
-}
-
-.background-lab-check-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  color: var(--lab-accent);
-  font-weight: 850;
-}
-
-.background-lab-card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
-}
-
-.background-lab-mini-card {
-  display: grid;
-  gap: 0.55rem;
-  align-content: start;
-  padding: 0.85rem;
-}
-
-.background-lab-mini-card h3 {
-  font-size: 1.15rem;
-}
-
-.background-lab-mini-card a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  width: fit-content;
-  color: var(--lab-accent);
-  font-size: 0.86rem;
-  font-weight: 850;
-  text-decoration-color: rgb(var(--lab-accent-rgb) / 0.52);
-}
-
-.background-lab-band {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(22rem, 1fr);
-  gap: 1rem;
-  align-items: start;
-  padding: clamp(1rem, 3vw, 1.35rem);
-}
-
-.background-lab-band > div:first-child {
-  display: grid;
-  gap: 0.55rem;
-}
-
-.background-lab-stat-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.7rem;
-}
-
-.background-lab-stat {
-  display: grid;
-  gap: 0.2rem;
-  min-width: 0;
-  border: 1px solid var(--lab-line);
-  border-radius: var(--radius);
-  background: var(--lab-card-strong);
-  padding: 0.8rem;
-}
-
-.background-lab-stat strong {
-  overflow: hidden;
-  color: var(--lab-ink);
-  font-family: var(--font-display);
-  font-size: clamp(1.35rem, 2vw, 1.9rem);
-  font-weight: 500;
-  line-height: 1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.background-lab-tags {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-}
-
-.background-lab-tags span {
-  border: 1px solid rgb(var(--lab-accent-rgb) / 0.3);
-  border-radius: 999px;
-  background: rgb(var(--lab-accent-rgb) / 0.1);
-  color: var(--lab-accent);
-  font-size: 0.78rem;
-  font-weight: 850;
-  padding: 0.38rem 0.62rem;
-}
-
-.background-lab-page {
-  --lab-ink: var(--ink);
-  --lab-muted: var(--ink-soft);
-  --lab-accent: var(--bronze-deep);
-  --lab-accent-rgb: 119 84 42;
-  --lab-card: transparent;
-  --lab-card-strong: transparent;
-  --lab-line: transparent;
-  --lab-paper-rgb: 244 234 215;
-  --lab-paper-soft-rgb: 251 246 235;
-  --lab-paper-deep-rgb: 227 209 173;
-  --lab-bronze-rgb: 164 123 63;
-  --lab-bronze-deep-rgb: 119 84 42;
-  --lab-sage-rgb: 96 121 109;
-  --lab-warm-white-rgb: 255 251 241;
-  --lab-ink-rgb: 19 32 42;
-  --lab-fiber-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.74' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
-  --lab-page-background:
-    radial-gradient(ellipse at 18% 14%, rgb(var(--lab-bronze-rgb) / 0.13), transparent 34rem),
-    radial-gradient(ellipse at 84% 10%, rgb(var(--lab-warm-white-rgb) / 0.34), transparent 36rem),
-    linear-gradient(180deg, var(--paper-soft), var(--paper) 48%, #eadbbd);
-  --lab-texture-overlay:
-    radial-gradient(ellipse at 20% 22%, rgb(var(--lab-bronze-rgb) / 0.12), transparent 22rem),
-    radial-gradient(ellipse at 78% 28%, rgb(var(--lab-sage-rgb) / 0.1), transparent 26rem),
-    radial-gradient(ellipse at 44% 86%, rgb(var(--lab-bronze-rgb) / 0.07), transparent 30rem),
-    var(--lab-fiber-noise);
-
-  background: var(--lab-page-background);
-}
-
-.background-lab-page::before {
-  background: var(--lab-texture-overlay);
-  background-size:
-    auto,
-    auto,
-    auto,
-    320px 320px;
-  mix-blend-mode: multiply;
-  opacity: 0.52;
-}
-
-.background-lab-pulp-bloom {
-  --lab-texture-overlay:
-    radial-gradient(ellipse at 18% 24%, rgb(var(--lab-paper-soft-rgb) / 0.38), transparent 17rem),
-    radial-gradient(ellipse at 64% 18%, rgb(var(--lab-bronze-rgb) / 0.12), transparent 24rem),
-    radial-gradient(ellipse at 40% 78%, rgb(var(--lab-sage-rgb) / 0.1), transparent 28rem),
-    var(--lab-fiber-noise);
-}
-
-.background-lab-linen-drift {
-  --lab-texture-overlay:
-    repeating-linear-gradient(18deg, rgb(var(--lab-ink-rgb) / 0.025) 0 1px, transparent 1px 12px),
-    repeating-linear-gradient(104deg, rgb(var(--lab-bronze-deep-rgb) / 0.028) 0 1px, transparent 1px 16px),
-    radial-gradient(ellipse at 72% 24%, rgb(var(--lab-sage-rgb) / 0.1), transparent 25rem),
-    var(--lab-fiber-noise);
-}
-
-.background-lab-cloud-wash {
-  --lab-texture-overlay:
-    radial-gradient(ellipse at 16% 18%, rgb(var(--lab-paper-soft-rgb) / 0.42), transparent 18rem),
-    radial-gradient(ellipse at 58% 36%, rgb(var(--lab-bronze-rgb) / 0.12), transparent 30rem),
-    radial-gradient(ellipse at 86% 62%, rgb(var(--lab-warm-white-rgb) / 0.26), transparent 24rem),
-    var(--lab-fiber-noise);
-}
-
-.background-lab-silt-current {
-  --lab-texture-overlay:
-    conic-gradient(from 130deg at 48% 44%, rgb(var(--lab-bronze-deep-rgb) / 0.1), transparent 23%, rgb(var(--lab-sage-rgb) / 0.1), transparent 68%),
-    radial-gradient(ellipse at 24% 72%, rgb(var(--lab-bronze-rgb) / 0.1), transparent 24rem),
-    radial-gradient(ellipse at 86% 16%, rgb(var(--lab-paper-soft-rgb) / 0.28), transparent 22rem),
-    var(--lab-fiber-noise);
-}
-
-.background-lab-marbled-vellum {
-  --lab-texture-overlay:
-    conic-gradient(from 38deg at 28% 30%, rgb(var(--lab-bronze-rgb) / 0.12), transparent 16%, rgb(var(--lab-paper-soft-rgb) / 0.28), transparent 34%, rgb(var(--lab-sage-rgb) / 0.1), transparent 62%),
-    conic-gradient(from 222deg at 72% 64%, rgb(var(--lab-warm-white-rgb) / 0.24), transparent 18%, rgb(var(--lab-bronze-deep-rgb) / 0.1), transparent 58%),
-    var(--lab-fiber-noise);
-}
-
-.background-lab-pressed-leaf {
-  --lab-texture-overlay:
-    radial-gradient(ellipse at 30% 20%, rgb(var(--lab-sage-rgb) / 0.13), transparent 26rem),
-    repeating-linear-gradient(62deg, transparent 0 22px, rgb(var(--lab-sage-rgb) / 0.05) 22px 23px, transparent 23px 46px),
-    radial-gradient(ellipse at 76% 78%, rgb(var(--lab-bronze-rgb) / 0.1), transparent 27rem),
-    var(--lab-fiber-noise);
-}
-
-.background-lab-ink-mist {
-  --lab-texture-overlay:
-    radial-gradient(circle at 24% 26%, rgb(var(--lab-warm-white-rgb) / 0.22), transparent 18rem),
-    radial-gradient(circle at 68% 38%, rgb(var(--lab-ink-rgb) / 0.055), transparent 22rem),
-    radial-gradient(ellipse at 48% 84%, rgb(var(--lab-bronze-rgb) / 0.09), transparent 28rem),
-    var(--lab-fiber-noise);
-}
-
-.background-lab-weathered-patina {
-  --lab-texture-overlay:
-    radial-gradient(ellipse at 20% 18%, rgb(var(--lab-sage-rgb) / 0.14), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgb(var(--lab-warm-white-rgb) / 0.2), transparent 26rem),
-    radial-gradient(ellipse at 50% 86%, rgb(var(--lab-bronze-deep-rgb) / 0.11), transparent 30rem),
-    var(--lab-fiber-noise);
-}
-
-.background-lab-handmade-fiber {
-  --lab-texture-overlay:
-    repeating-linear-gradient(96deg, rgb(var(--lab-ink-rgb) / 0.026) 0 1px, transparent 1px 18px),
-    radial-gradient(ellipse at 18% 62%, rgb(var(--lab-paper-soft-rgb) / 0.36), transparent 20rem),
-    radial-gradient(ellipse at 80% 20%, rgb(var(--lab-bronze-rgb) / 0.12), transparent 26rem),
-    var(--lab-fiber-noise);
-}
-
-.background-lab-soft-terrain {
-  --lab-texture-overlay:
-    repeating-radial-gradient(ellipse at 42% 48%, rgb(var(--lab-bronze-deep-rgb) / 0.045) 0 1px, transparent 1px 18px),
-    radial-gradient(ellipse at 18% 20%, rgb(var(--lab-sage-rgb) / 0.12), transparent 24rem),
-    radial-gradient(ellipse at 82% 76%, rgb(var(--lab-bronze-rgb) / 0.08), transparent 28rem),
-    var(--lab-fiber-noise);
-}
-
-.site-shell:has(.background-lab-page) .site-footer,
-.background-lab-hero,
-.background-lab-preview,
-.background-lab-band,
-.background-lab-current,
-.background-lab-option,
-.background-lab-current-swatch,
-.background-lab-option-swatch,
-.background-lab-panel,
-.background-lab-mini-card,
-.background-lab-control-panel select,
-.background-lab-control-panel input,
-.background-lab-stat,
-.background-lab-tags span,
-.background-lab-page button.secondary-link {
-  border: 0;
-}
-
-.background-lab-hero,
-.background-lab-preview,
-.background-lab-band {
-  background: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-}
-
-.background-lab-current,
-.background-lab-panel,
-.background-lab-mini-card,
-.background-lab-stat {
-  background: transparent;
-  box-shadow: none;
-}
-
-.background-lab-option {
-  background: transparent;
-  box-shadow: none;
-}
-
-.background-lab-option:hover,
-.background-lab-option:focus-visible,
-.background-lab-option[aria-pressed="true"] {
-  background: transparent;
-  box-shadow: 0 0 0 1px rgb(var(--lab-bronze-deep-rgb) / 0.14);
-}
-
-.background-lab-option[aria-pressed="true"] {
-  color: var(--bronze-deep);
-}
-
-.background-lab-current-swatch,
-.background-lab-option-swatch {
-  background:
-    var(--lab-texture-overlay),
-    var(--lab-page-background);
-  background-size:
-    auto,
-    auto,
-    auto,
-    160px 160px,
-    auto;
-  box-shadow:
-    inset 0 0 0 1px rgb(var(--lab-paper-soft-rgb) / 0.34),
-    inset 0 -16px 28px rgb(var(--lab-bronze-deep-rgb) / 0.06);
-}
-
-.background-lab-page .background-lab-option-swatch-pulp-bloom {
-  background:
-    radial-gradient(ellipse at 18% 24%, rgb(var(--lab-paper-soft-rgb) / 0.46), transparent 1.8rem),
-    radial-gradient(ellipse at 64% 18%, rgb(var(--lab-bronze-rgb) / 0.16), transparent 2.4rem),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-page .background-lab-option-swatch-linen-drift {
-  background:
-    repeating-linear-gradient(18deg, rgb(var(--lab-ink-rgb) / 0.05) 0 1px, transparent 1px 8px),
-    repeating-linear-gradient(104deg, rgb(var(--lab-bronze-deep-rgb) / 0.045) 0 1px, transparent 1px 10px),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-page .background-lab-option-swatch-cloud-wash {
-  background:
-    radial-gradient(ellipse at 16% 18%, rgb(var(--lab-paper-soft-rgb) / 0.52), transparent 1.8rem),
-    radial-gradient(ellipse at 58% 36%, rgb(var(--lab-bronze-rgb) / 0.16), transparent 2.8rem),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-page .background-lab-option-swatch-silt-current {
-  background:
-    conic-gradient(from 130deg at 48% 44%, rgb(var(--lab-bronze-deep-rgb) / 0.16), transparent 23%, rgb(var(--lab-sage-rgb) / 0.14), transparent 68%),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-page .background-lab-option-swatch-marbled-vellum {
-  background:
-    conic-gradient(from 38deg at 28% 30%, rgb(var(--lab-bronze-rgb) / 0.16), transparent 16%, rgb(var(--lab-paper-soft-rgb) / 0.34), transparent 34%, rgb(var(--lab-sage-rgb) / 0.14), transparent 62%),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-page .background-lab-option-swatch-pressed-leaf {
-  background:
-    radial-gradient(ellipse at 30% 20%, rgb(var(--lab-sage-rgb) / 0.18), transparent 2.6rem),
-    repeating-linear-gradient(62deg, transparent 0 10px, rgb(var(--lab-sage-rgb) / 0.08) 10px 11px, transparent 11px 22px),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-page .background-lab-option-swatch-ink-mist {
-  background:
-    radial-gradient(circle at 24% 26%, rgb(var(--lab-warm-white-rgb) / 0.34), transparent 1.9rem),
-    radial-gradient(circle at 68% 38%, rgb(var(--lab-ink-rgb) / 0.09), transparent 2.2rem),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-page .background-lab-option-swatch-weathered-patina {
-  background:
-    radial-gradient(ellipse at 20% 18%, rgb(var(--lab-sage-rgb) / 0.18), transparent 2.8rem),
-    radial-gradient(ellipse at 70% 30%, rgb(var(--lab-warm-white-rgb) / 0.28), transparent 2.6rem),
-    radial-gradient(ellipse at 50% 86%, rgb(var(--lab-bronze-deep-rgb) / 0.14), transparent 3rem),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-page .background-lab-option-swatch-handmade-fiber {
-  background:
-    repeating-linear-gradient(96deg, rgb(var(--lab-ink-rgb) / 0.05) 0 1px, transparent 1px 11px),
-    radial-gradient(ellipse at 18% 62%, rgb(var(--lab-paper-soft-rgb) / 0.42), transparent 2rem),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-page .background-lab-option-swatch-soft-terrain {
-  background:
-    repeating-radial-gradient(ellipse at 42% 48%, rgb(var(--lab-bronze-deep-rgb) / 0.075) 0 1px, transparent 1px 11px),
-    radial-gradient(ellipse at 18% 20%, rgb(var(--lab-sage-rgb) / 0.16), transparent 2.4rem),
-    var(--lab-fiber-noise),
-    var(--lab-page-background);
-}
-
-.background-lab-control-panel select,
-.background-lab-control-panel input {
-  background: rgb(var(--lab-paper-soft-rgb) / 0.46);
-  box-shadow: inset 0 -1px 0 rgb(var(--lab-bronze-deep-rgb) / 0.18);
-}
-
-.background-lab-reader blockquote {
-  border-left: 0;
-  background: transparent;
-  border-radius: var(--radius);
-  padding: 0.85rem 1rem;
-}
-
-.background-lab-tags span {
-  background: transparent;
-}
-
 .progress-page {
   max-width: 78rem;
 }
@@ -4765,7 +3987,7 @@ input {
 }
 
 .manuscript-prose em {
-  color: var(--blue);
+  color: var(--emphasis);
 }
 
 .manuscript-prose strong {
@@ -5028,17 +4250,6 @@ input {
   font-size: clamp(2rem, 5vw, 3.2rem);
 }
 
-@media (max-width: 1040px) {
-  .background-lab-options {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .background-lab-preview,
-  .background-lab-band {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 860px) {
   .site-header {
     flex-direction: row;
@@ -5047,24 +4258,6 @@ input {
     gap: 0.7rem;
     padding: 0.65rem max(0.85rem, env(safe-area-inset-right)) 0.55rem
       max(0.85rem, env(safe-area-inset-left));
-  }
-
-  .background-lab-hero {
-    grid-template-columns: 1fr;
-  }
-
-  .background-lab-current {
-    grid-template-columns: 3.25rem minmax(0, 1fr);
-  }
-
-  .background-lab-current-swatch {
-    width: 3.25rem;
-    height: 3.25rem;
-  }
-
-  .background-lab-card-grid,
-  .background-lab-stat-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .site-header > .breadcrumb-trail {
@@ -5409,47 +4602,6 @@ input {
   .page-frame {
     width: min(100% - 2.5rem, 1160px);
     padding: clamp(2rem, 8vw, 3rem) 0;
-  }
-
-  .background-lab-shell {
-    width: min(100% - 1.5rem, 1180px);
-    padding: clamp(1rem, 7vw, 2rem) 0;
-  }
-
-  .background-lab-hero,
-  .background-lab-preview,
-  .background-lab-band {
-    padding: 0.85rem;
-  }
-
-  .background-lab-hero h1 {
-    max-width: 100%;
-    font-size: clamp(2.05rem, 11vw, 3rem);
-  }
-
-  .background-lab-hero-actions,
-  .background-lab-hero-actions .primary-link,
-  .background-lab-hero-actions .secondary-link {
-    width: 100%;
-  }
-
-  .background-lab-options,
-  .background-lab-card-grid,
-  .background-lab-stat-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .background-lab-option {
-    grid-template-columns: 2.25rem minmax(0, 1fr);
-  }
-
-  .background-lab-option-swatch {
-    width: 2.25rem;
-    height: 2.25rem;
-  }
-
-  .background-lab-option-copy small {
-    white-space: normal;
   }
 
   .site-footer {
