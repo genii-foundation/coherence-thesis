@@ -9,12 +9,14 @@ type ProgressReadAnimationProps = {
   variantId?: string;
 };
 
+const sealPopVariant: ProgressReadAnimationVariant = {
+  id: "seal-pop",
+  label: "Seal Pop",
+  description: "A quick seal bloom with a confident check stroke.",
+};
+
 export const progressReadAnimationVariants: ProgressReadAnimationVariant[] = [
-  {
-    id: "seal-pop",
-    label: "Seal Pop",
-    description: "A quick seal bloom with a confident check stroke.",
-  },
+  sealPopVariant,
   {
     id: "orbit-tick",
     label: "Orbit Tick",
@@ -68,7 +70,7 @@ export function ProgressReadAnimation({
 }: ProgressReadAnimationProps) {
   const variant =
     progressReadAnimationVariants.find((item) => item.id === variantId) ??
-    progressReadAnimationVariants[0];
+    sealPopVariant;
 
   return (
     <span

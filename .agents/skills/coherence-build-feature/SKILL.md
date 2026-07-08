@@ -43,7 +43,9 @@ Implement a complete feature or fix in the Coherence Thesis repository, validate
 17. As soon as the preview is ready, send the exact URL as a Markdown link in a user-visible update.
 18. Ask the user whether they are ready to publish or what follow-on revisions are needed. Do not merge, publish, or mark the pull request ready for merge until the user explicitly confirms that the preview looks good.
 19. If the user requests revisions after preview review, implement them on the same focused branch, validate again, push the update, and ask for preview approval again.
-20. After the user explicitly confirms the preview looks good and asks to publish or merge, complete the publish or merge workflow.
+20. After the user explicitly confirms the preview looks good and asks to publish or merge, refresh the branch against the current base and run the production build gate before merging. Use `npm run build` at minimum, or the repository production build command if the package scripts change. Do not merge a PR after conflict resolution, rebase, or branch refresh until that production build has succeeded on the final branch contents.
+21. Merge the pull request only after the final production build succeeds. After merging, confirm the resulting production deployment or deployment check succeeded. For Vercel-backed work, inspect the deployment linked to the merge commit or project dashboard. If the deployment fails, treat it as a continuation of the merge task: create a focused fix branch, reproduce or explain the failure locally with the production build, push a fix PR, merge it, and repeat until the production build or deployment is green.
+22. Complete the publish or merge workflow only after the merge commit and production build or deployment status are both confirmed.
 
 ## Preview
 
@@ -144,4 +146,4 @@ Make every commit reviewable on its own:
 
 ## Closeout
 
-Close out with the commit hash, pushed branch, pull request URL when one exists, validation commands, and a Markdown link to the preview URL when a preview is running. If validation was skipped or narrowed, state exactly why. If the preview has not been approved yet, say that the pull request is waiting for user preview approval before merge or publish.
+Close out with the commit hash, pushed branch, pull request URL when one exists, validation commands, production build evidence, post-merge deployment status, and a Markdown link to the preview URL when a preview is running. If validation was skipped or narrowed, state exactly why. If the preview has not been approved yet, say that the pull request is waiting for user preview approval before merge or publish.

@@ -44,22 +44,24 @@ const cloudPath =
 const offlineCircleRadius = 25.2;
 const offlineCircleLength = 2 * Math.PI * offlineCircleRadius;
 
+const syncOrbitVariant: ProgressCloudVariant = {
+  id: "sync-orbit",
+  label: "Orbit",
+  percent: 1,
+  width: 58,
+  height: 38,
+  cloudFill: "rgba(255, 252, 244, 0.92)",
+  cloudStroke: "rgba(119, 84, 42, 0.16)",
+  cloudInner: "rgba(119, 84, 42, 0.07)",
+  track: "rgba(119, 84, 42, 0.06)",
+  progress: "var(--bronze-deep)",
+  textColor: "var(--bronze-deep)",
+  textSize: 16,
+  strokeWidth: 2.7,
+};
+
 export const progressCloudVariants: ProgressCloudVariant[] = [
-  {
-    id: "sync-orbit",
-    label: "Orbit",
-    percent: 1,
-    width: 58,
-    height: 38,
-    cloudFill: "rgba(255, 252, 244, 0.92)",
-    cloudStroke: "rgba(119, 84, 42, 0.16)",
-    cloudInner: "rgba(119, 84, 42, 0.07)",
-    track: "rgba(119, 84, 42, 0.06)",
-    progress: "var(--bronze-deep)",
-    textColor: "var(--bronze-deep)",
-    textSize: 16,
-    strokeWidth: 2.7,
-  },
+  syncOrbitVariant,
   {
     id: "sync-lantern",
     label: "Lantern",
@@ -249,7 +251,7 @@ export function ProgressCloudBadge({
 }: ProgressCloudBadgeProps) {
   const variant =
     progressCloudVariants.find((item) => item.id === variantId) ??
-    progressCloudVariants[0];
+    syncOrbitVariant;
 
   const progressPercent = clampPercent(percent);
   const text = `${Math.round(progressPercent)}%`;
