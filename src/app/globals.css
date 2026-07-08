@@ -10,7 +10,8 @@
   --bronze: #a47b3f;
   --bronze-deep: #77542a;
   --sage: #60796d;
-  --blue: #244960;
+  --emphasis: #77542a;
+  --page-texture-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.74' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
   --line: rgba(119, 84, 42, 0.24);
   --shadow: 0 20px 80px rgba(44, 31, 18, 0.14);
   --cover-shadow:
@@ -39,20 +40,12 @@
   --card-background-hover: rgba(251, 246, 235, 0.86);
   --glass-background: rgba(251, 246, 235, 0.72);
   --page-background:
-    linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px),
-    radial-gradient(
-      circle at 12% 8%,
-      rgba(164, 123, 63, 0.16),
-      transparent 34rem
-    ),
-    radial-gradient(
-      circle at 86% 2%,
-      rgba(36, 73, 96, 0.12),
-      transparent 30rem
-    ),
+    radial-gradient(ellipse at 20% 18%, rgba(96, 121, 109, 0.14), transparent 28rem),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 251, 241, 0.2), transparent 26rem),
+    radial-gradient(ellipse at 50% 86%, rgba(119, 84, 42, 0.11), transparent 30rem),
+    var(--page-texture-noise),
     linear-gradient(180deg, var(--paper-soft), var(--paper) 34%, #eadbbd);
-  --page-background-size: 42px 42px, 42px 42px, auto, auto, auto;
+  --page-background-size: auto, auto, auto, 320px 320px, auto;
 }
 
 html[data-reader-theme="light"] {
@@ -65,7 +58,7 @@ html[data-reader-theme="light"] {
   --bronze: #8f6a32;
   --bronze-deep: #594018;
   --sage: #3f6858;
-  --blue: #1d4f73;
+  --emphasis: #594018;
   --line: rgba(17, 24, 39, 0.16);
   --shadow: 0 20px 80px rgba(17, 24, 39, 0.12);
   --header-background: #fffefa;
@@ -79,8 +72,13 @@ html[data-reader-theme="light"] {
   --card-background: rgba(255, 254, 250, 0.82);
   --card-background-hover: rgba(255, 254, 250, 0.96);
   --glass-background: rgba(255, 254, 250, 0.78);
-  --page-background: linear-gradient(180deg, #fffefa, #f8f6f1 58%, #f0ebe2);
-  --page-background-size: auto;
+  --page-background:
+    radial-gradient(ellipse at 20% 18%, rgba(63, 104, 88, 0.1), transparent 28rem),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 254, 250, 0.42), transparent 26rem),
+    radial-gradient(ellipse at 50% 86%, rgba(89, 64, 24, 0.08), transparent 30rem),
+    var(--page-texture-noise),
+    linear-gradient(180deg, #fffefa, #f8f6f1 58%, #f0ebe2);
+  --page-background-size: auto, auto, auto, 320px 320px, auto;
 }
 
 html[data-reader-theme="dark"] {
@@ -93,7 +91,7 @@ html[data-reader-theme="dark"] {
   --bronze: #d6a45d;
   --bronze-deep: #e2bd7c;
   --sage: #8db19e;
-  --blue: #9fc8e0;
+  --emphasis: #e2bd7c;
   --line: rgba(226, 189, 124, 0.24);
   --shadow: 0 20px 80px rgba(0, 0, 0, 0.42);
   --header-background: #11100e;
@@ -108,18 +106,12 @@ html[data-reader-theme="dark"] {
   --card-background-hover: rgba(42, 39, 34, 0.9);
   --glass-background: rgba(24, 23, 21, 0.82);
   --page-background:
-    radial-gradient(
-      circle at 18% 4%,
-      rgba(214, 164, 93, 0.08),
-      transparent 30rem
-    ),
-    radial-gradient(
-      circle at 84% 0%,
-      rgba(159, 200, 224, 0.05),
-      transparent 32rem
-    ),
+    radial-gradient(ellipse at 20% 18%, rgba(141, 177, 158, 0.08), transparent 28rem),
+    radial-gradient(ellipse at 70% 30%, rgba(244, 239, 230, 0.05), transparent 26rem),
+    radial-gradient(ellipse at 50% 86%, rgba(226, 189, 124, 0.07), transparent 30rem),
+    var(--page-texture-noise),
     linear-gradient(180deg, #11100e, #181715 52%, #0b0a09);
-  --page-background-size: auto, auto, auto;
+  --page-background-size: auto, auto, auto, 320px 320px, auto;
 }
 
 html[data-reader-theme="black"] {
@@ -132,7 +124,7 @@ html[data-reader-theme="black"] {
   --bronze: #b8b2a4;
   --bronze-deep: #e3ded2;
   --sage: #b8b2a4;
-  --blue: #d0d0ca;
+  --emphasis: #e3ded2;
   --line: rgba(255, 255, 255, 0.18);
   --shadow: 0 20px 80px rgba(0, 0, 0, 0.76);
   --header-background: #000000;
@@ -2452,8 +2444,8 @@ input {
 }
 
 .manuscript-cover-card-2 {
-  --card-accent: #375b78;
-  --card-rgb: 55 91 120;
+  --card-accent: #60796d;
+  --card-rgb: 96 121 109;
 }
 
 .manuscript-cover-card-3 {
@@ -2462,13 +2454,13 @@ input {
 }
 
 .manuscript-cover-card-4 {
-  --card-accent: #2d747b;
-  --card-rgb: 45 116 123;
+  --card-accent: #77542a;
+  --card-rgb: 119 84 42;
 }
 
 .manuscript-cover-card-5 {
-  --card-accent: #62676f;
-  --card-rgb: 98 103 111;
+  --card-accent: #6f6046;
+  --card-rgb: 111 96 70;
 }
 
 .manuscript-cover-card-6 {
@@ -2477,8 +2469,8 @@ input {
 }
 
 .manuscript-cover-card-7 {
-  --card-accent: #2d5b83;
-  --card-rgb: 45 91 131;
+  --card-accent: #8f6a32;
+  --card-rgb: 143 106 50;
 }
 
 .manuscript-cover-card-8 {
@@ -3995,7 +3987,7 @@ input {
 }
 
 .manuscript-prose em {
-  color: var(--blue);
+  color: var(--emphasis);
 }
 
 .manuscript-prose strong {
