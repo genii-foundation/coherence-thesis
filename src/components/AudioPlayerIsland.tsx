@@ -75,6 +75,34 @@ const waveformInitialScales = [0.82, 1, 0.76, 0.9] as const;
 const waveformCenters = [0.88, 0.88, 0.84, 0.91] as const;
 const waveformAmplitudes = [0.221, 0.12, 0.1955, 0.2295] as const;
 const waveformPhaseOffsets = [0, 1.9, 3.8, 5.1] as const;
+const playbackShellTriangle = [
+  16.8, 12.1, 17.5, 12.1, 18.2, 12.3, 19, 12.8, 34.5, 21.6, 37.2,
+  23.1, 37.2, 24.9, 34.4, 26.6, 18.7, 35.4, 15.7, 37.1, 13.2, 35.6,
+  13.1, 32.1, 13.4, 16.2, 13.5, 13.6, 14.9, 12.1, 16.8, 12.1,
+] as const;
+const playbackShellSquare = [
+  13.2, 14.2, 10.22, 14.2, 7.8, 16.62, 7.8, 19.6, 7.8, 34, 7.8,
+  36.98, 10.22, 39.4, 13.2, 39.4, 26.8, 39.4, 29.78, 39.4, 32.2,
+  36.98, 32.2, 34, 32.2, 19.6, 32.2, 16.62, 29.78, 14.2, 26.8, 14.2,
+] as const;
+
+function playbackShellPath(progress: number): string {
+  const values = playbackShellTriangle.map((start, index) => {
+    const end = playbackShellSquare[index] ?? start;
+    return (start + (end - start) * progress).toFixed(3);
+  });
+  return [
+    `M${values[0]} ${values[1]}`,
+    `C${values[2]} ${values[3]} ${values[4]} ${values[5]} ${values[6]} ${values[7]}`,
+    `L${values[8]} ${values[9]}`,
+    `C${values[10]} ${values[11]} ${values[12]} ${values[13]} ${values[14]} ${values[15]}`,
+    `L${values[16]} ${values[17]}`,
+    `C${values[18]} ${values[19]} ${values[20]} ${values[21]} ${values[22]} ${values[23]}`,
+    `L${values[24]} ${values[25]}`,
+    `C${values[26]} ${values[27]} ${values[28]} ${values[29]} ${values[30]} ${values[31]}`,
+    "Z",
+  ].join(" ");
+}
 
 function waveformSample(now: number, index: number): number {
   const center = waveformCenters[index] ?? 0.9;
@@ -159,6 +187,64 @@ function usePlaybackWaveform(playing: boolean): number[] {
   return scales;
 }
 
+function usePlaybackShellProgress(playing: boolean): number {
+  const [progress, setProgress] = useState(() => (playing ? 1 : 0));
+  const progressRef = useRef(progress);
+  const frameRef = useRef<number | null>(null);
+  const reducedMotionRef = useRef(false);
+
+  const publishProgress = useCallback((next: number) => {
+    progressRef.current = next;
+    setProgress((current) =>
+      Math.abs(current - next) > 0.003 ? next : current,
+    );
+  }, []);
+
+  useEffect(() => {
+    reducedMotionRef.current = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+  }, []);
+
+  useEffect(() => {
+    const target = playing ? 1 : 0;
+    const start = progressRef.current;
+    if (reducedMotionRef.current || Math.abs(start - target) < 0.001) {
+      publishProgress(target);
+      return;
+    }
+
+    if (frameRef.current !== null) {
+      window.cancelAnimationFrame(frameRef.current);
+    }
+
+    const startedAt = window.performance.now();
+    const duration = 240;
+    const animate = (now: number) => {
+      const rawProgress = Math.min(1, (now - startedAt) / duration);
+      const easedProgress = 1 - (1 - rawProgress) ** 3;
+      publishProgress(start + (target - start) * easedProgress);
+      if (rawProgress < 1) {
+        frameRef.current = window.requestAnimationFrame(animate);
+      } else {
+        frameRef.current = null;
+      }
+    };
+    frameRef.current = window.requestAnimationFrame(animate);
+  }, [playing, publishProgress]);
+
+  useEffect(
+    () => () => {
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
+    },
+    [],
+  );
+
+  return progress;
+}
+
 function PlaybackToolbarIcon({
   playing,
   waveformScales,
@@ -166,6 +252,8 @@ function PlaybackToolbarIcon({
   playing: boolean;
   waveformScales: number[];
 }) {
+  const shellProgress = usePlaybackShellProgress(playing);
+
   return (
     <svg
       className={`audio-playback-icon${playing ? " is-playing" : ""}`}
@@ -176,16 +264,8 @@ function PlaybackToolbarIcon({
       focusable="false"
     >
       <path
-        className="audio-playback-icon-shell audio-playback-icon-triangle"
-        d="M18.2 12.1L33.1 20.5Q38.7 23.7 33 27.2L18 35.7Q12.9 38.5 13 32.2L13.4 15.5Q13.6 9.2 18.2 12.1Z"
-      />
-      <rect
-        className="audio-playback-icon-shell audio-playback-icon-square"
-        x="12.8"
-        y="11.2"
-        width="24.4"
-        height="25.6"
-        rx="5.4"
+        className="audio-playback-icon-shell"
+        d={playbackShellPath(shellProgress)}
       />
       <g className="audio-waveform" transform="translate(16 16)">
         <rect
