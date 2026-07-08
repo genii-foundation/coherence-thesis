@@ -2,9 +2,33 @@
 
 import { normalizePath } from "@/lib/routes";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Headphones, Pause, Play, Square } from "lucide-react";
+import {
+  AlertTriangle,
+  CheckCircle2,
+  ChevronDown,
+  Download,
+  Headphones,
+  Pause,
+  Play,
+  Square,
+} from "lucide-react";
+import { emptyAudioClipManifest } from "@/lib/audio-manifest";
+import {
+  buildOfflineAudioPacks,
+  cacheOfflineAudioPack,
+  inspectOfflineAudioPack,
+  type OfflineAudioDownloadProgress,
+  type OfflineAudioPackStatus,
+} from "@/lib/audio-offline-cache";
 import {
   defaultVoicePreference,
   type AudioQueueItem,
@@ -18,7 +42,10 @@ import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 import {
   loadProgressSections,
   loadReaderSections,
+  loadAudioClipManifest,
+  loadToolbarOutline,
   type ProgressSectionData,
+  type ToolbarOutlineData,
 } from "@/lib/reader-data";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import {
@@ -33,6 +60,13 @@ import {
 import { useLoadedData } from "@/lib/use-loaded-data";
 
 const emptyProgressSections: ProgressSectionData[] = [];
+const emptyToolbarOutline: ToolbarOutlineData = {
+  home: { title: "Home", href: "/" },
+  overview: { title: "Overview", href: "/overview/" },
+  volumes: [],
+};
+const emptyOfflineStatuses: Record<string, OfflineAudioPackStatus> = {};
+const formatter = new Intl.NumberFormat("en-US");
 
 export function AudioPlayerIsland({
   overviewAudio,
@@ -46,6 +80,20 @@ export function AudioPlayerIsland({
   // text) so a page that never plays audio does not fetch the ~1.7MB text
   // payload. The full text is loaded lazily on first play (PERF-01).
   const sections = useLoadedData(loadProgressSections, emptyProgressSections);
+  const outline = useLoadedData(loadToolbarOutline, emptyToolbarOutline);
+  const audioManifest = useLoadedData(
+    loadAudioClipManifest,
+    emptyAudioClipManifest,
+  );
+  const offlinePacks = useMemo(
+    () =>
+      buildOfflineAudioPacks({
+        volumes: outline.volumes,
+        sections,
+        manifest: audioManifest,
+      }),
+    [audioManifest, outline.volumes, sections],
+  );
   const queue = useMemo<AudioQueueItem[]>(() => {
     const currentPath = normalizePath(pathname);
     if (currentPath === "/overview/") return [overviewAudio];
@@ -77,7 +125,10 @@ export function AudioPlayerIsland({
     sectionTextRef.current = map;
     return map;
   }, []);
-  const provider = useMemo(() => createDefaultAudioProvider(), []);
+  const provider = useMemo(
+    () => createDefaultAudioProvider(audioManifest),
+    [audioManifest],
+  );
   const [voices, setVoices] = useState<AudioPlaybackVoice[]>([]);
   const [preference, setPreference] = useState<AudioVoicePreference>(
     () => defaultVoicePreference,
@@ -85,6 +136,16 @@ export function AudioPlayerIsland({
   const [activeIndex, setActiveIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [supported, setSupported] = useState(true);
+  const [offlineStatuses, setOfflineStatuses] = useState(
+    () => emptyOfflineStatuses,
+  );
+  const [offlineProgress, setOfflineProgress] = useState<
+    Record<string, OfflineAudioDownloadProgress>
+  >({});
+  const [offlineError, setOfflineError] = useState<Record<string, string>>({});
+  const [downloadingVolumeId, setDownloadingVolumeId] = useState<string | null>(
+    null,
+  );
   const playbackTokenRef = useRef(0);
   const audioStartedAtRef = useRef<number | null>(null);
   const audioItemRef = useRef<AudioQueueItem | null>(null);
@@ -119,6 +180,7 @@ export function AudioPlayerIsland({
         setSupported(false);
         return;
       }
+      setSupported(true);
       setPreference(readVoicePreference());
       setVoices(provider.getVoices());
     }, 0);
@@ -135,6 +197,29 @@ export function AudioPlayerIsland({
       }
     };
   }, [flushAudioSeconds, provider]);
+
+  useEffect(() => {
+    let active = true;
+    if (offlinePacks.length === 0) {
+      setOfflineStatuses(emptyOfflineStatuses);
+      return () => {
+        active = false;
+      };
+    }
+    Promise.all(
+      offlinePacks.map((pack) =>
+        inspectOfflineAudioPack(pack).then((status) => [pack.volumeId, status] as const),
+      ),
+    )
+      .then((entries) => {
+        if (!active) return;
+        setOfflineStatuses(Object.fromEntries(entries));
+      })
+      .catch(() => undefined);
+    return () => {
+      active = false;
+    };
+  }, [offlinePacks]);
 
   useEffect(() => {
     playbackTokenRef.current += 1;
@@ -192,6 +277,8 @@ export function AudioPlayerIsland({
           setPlaying(false);
         }
       },
+      sectionId: item.sectionId,
+      audioVersionId: item.audioVersionId,
       // Without this, a synthesis error (voice unavailable, engine
       // interruption) leaves `playing` true forever: onEnd never fires, the
       // queue stalls, and listen-seconds keep accumulating as if audio were
@@ -203,6 +290,29 @@ export function AudioPlayerIsland({
       },
     });
     setPlaying(true);
+  }
+
+  async function downloadOfflinePack(volumeId: string): Promise<void> {
+    const pack = offlinePacks.find((candidate) => candidate.volumeId === volumeId);
+    if (!pack || downloadingVolumeId) return;
+    setOfflineError((current) => ({ ...current, [volumeId]: "" }));
+    setDownloadingVolumeId(volumeId);
+    try {
+      const status = await cacheOfflineAudioPack(pack, (progress) => {
+        setOfflineProgress((current) => ({ ...current, [volumeId]: progress }));
+      });
+      setOfflineStatuses((current) => ({ ...current, [volumeId]: status }));
+    } catch (error) {
+      setOfflineError((current) => ({
+        ...current,
+        [volumeId]:
+          error instanceof Error
+            ? error.message
+            : "Download failed. Please try again.",
+      }));
+    } finally {
+      setDownloadingVolumeId(null);
+    }
   }
 
   async function speak(index = activeIndex): Promise<void> {
@@ -342,6 +452,75 @@ export function AudioPlayerIsland({
               }
             />
           </label>
+          <div className="audio-offline" aria-label="Offline audiobook downloads">
+            <div className="audio-offline-title">
+              <span className="eyebrow">Offline playback</span>
+              <strong>Pre-download manuscripts</strong>
+            </div>
+            <div className="audio-offline-list">
+              {offlinePacks.map((pack) => {
+                const status = offlineStatuses[pack.volumeId];
+                const progress = offlineProgress[pack.volumeId] ?? status;
+                const cachedCount = progress?.cachedCount ?? 0;
+                const totalCount = progress?.totalCount ?? pack.urls.length;
+                const complete = Boolean(status?.complete);
+                const downloading = downloadingVolumeId === pack.volumeId;
+                const clipsPending = pack.audioClipCount === 0;
+                const percent =
+                  totalCount > 0
+                    ? Math.round((cachedCount / totalCount) * 100)
+                    : 0;
+                const helper = clipsPending
+                  ? "Audio clips pending"
+                  : complete
+                    ? "Available offline"
+                    : downloading
+                      ? `${percent.toLocaleString()}% downloaded`
+                      : `${formatter.format(pack.sectionCount)} sections, ${formatter.format(pack.audioClipCount)} clips`;
+                return (
+                  <div className="audio-offline-item" key={pack.volumeId}>
+                    <div className="audio-offline-copy">
+                      <span>{pack.title}</span>
+                      <small>{helper}</small>
+                    </div>
+                    <button
+                      type="button"
+                      className="audio-offline-button"
+                      onClick={() => void downloadOfflinePack(pack.volumeId)}
+                      disabled={downloadingVolumeId !== null || clipsPending || complete}
+                      aria-label={
+                        complete
+                          ? `${pack.title} is available offline`
+                          : `Download ${pack.title} for offline playback`
+                      }
+                    >
+                      {complete ? (
+                        <CheckCircle2 aria-hidden="true" size={17} />
+                      ) : clipsPending ? (
+                        <AlertTriangle aria-hidden="true" size={17} />
+                      ) : (
+                        <Download aria-hidden="true" size={17} />
+                      )}
+                    </button>
+                    <div
+                      className="audio-offline-meter"
+                      aria-hidden="true"
+                      style={
+                        {
+                          "--audio-offline-progress": `${percent}%`,
+                        } as CSSProperties
+                      }
+                    />
+                    {offlineError[pack.volumeId] ? (
+                      <small className="audio-offline-error">
+                        {offlineError[pack.volumeId]}
+                      </small>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </section>
       )}
     </div>

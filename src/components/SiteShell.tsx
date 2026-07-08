@@ -3,6 +3,7 @@ import { copyrightYearLabel } from "@/lib/copyright";
 import { CopyrightYearIsland } from "@/components/CopyrightYearIsland";
 import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
 import { MobilePageContextIsland } from "@/components/MobilePageContextIsland";
+import { OfflineSupportIsland } from "@/components/OfflineSupportIsland";
 import { OutlineMenuIsland } from "@/components/OutlineMenuIsland";
 import { PageFadeIsland } from "@/components/PageFadeIsland";
 import { SearchMenuIsland } from "@/components/SearchMenuIsland";
@@ -66,6 +67,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       </header>
       <main id="main-content">
         <MobilePageContextIsland volumes={brandVolumes} />
+        <OfflineSupportIsland />
         <PageFadeIsland>{children}</PageFadeIsland>
       </main>
       <footer className="site-footer" aria-label="Site information">

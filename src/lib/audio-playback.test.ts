@@ -91,6 +91,8 @@ describe("browser speech provider", () => {
       const onEnd = vi.fn();
       const onError = vi.fn();
       provider.speak({
+        sectionId: "section-a",
+        audioVersionId: "section-a-hash",
         text: "Title. Body.",
         voiceId: "voice-b",
         rate: 1.2,
@@ -116,6 +118,8 @@ describe("browser speech provider", () => {
     it("leaves the voice null when the saved preference does not match", () => {
       const provider = createBrowserSpeechProvider();
       provider.speak({
+        sectionId: "section-a",
+        audioVersionId: "section-a-hash",
         text: "x",
         voiceId: "missing",
         rate: 1,

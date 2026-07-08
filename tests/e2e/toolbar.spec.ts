@@ -27,10 +27,6 @@ async function expectToolbarTriggerActive(
         const expectedBackground = window.getComputedStyle(probe).backgroundColor;
         probe.remove();
 
-        if (element.classList.contains("progress-menu-button")) {
-          return style.boxShadow !== "none";
-        }
-
         return style.backgroundColor === expectedBackground;
       }),
     )
@@ -702,6 +698,8 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectToolbarTriggerActive(page, ".audio-menu-button");
   await expect(audioMenu).toBeVisible();
   await expectRestingControlBorder(page, ".audio-controls select");
+  await expect(audioMenu.getByText("Offline playback")).toBeVisible();
+  await expect(audioMenu.getByText("Audio clips pending").first()).toBeVisible();
   await expectMenuFitsViewport(page, ".audio-popover");
   await page.keyboard.press("Escape");
   await expect(audioMenu).toHaveCount(0);
