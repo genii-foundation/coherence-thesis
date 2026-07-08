@@ -635,11 +635,11 @@ export function AudioPlayerIsland({
   }
 
   function handleToolbarButtonClick(): void {
+    setOpen(true);
     if (playing) {
       pause();
       return;
     }
-    setOpen(true);
     void speak();
   }
 
