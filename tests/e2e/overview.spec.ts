@@ -17,7 +17,7 @@ test("home page presents the overview and manuscript entry points", async ({
 
   await expect(
     page.getByRole("heading", {
-      name: "The Coherence Thesis",
+      name: "There is a field forming around the work civilization forgot to name.",
     }),
   ).toBeVisible();
   await expect(page.locator(".brand-kicker")).toHaveText(
@@ -74,9 +74,14 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(page.getByText("Nine volume series")).toHaveCount(0);
   await expect(
     page.getByText(
-      "Nine living manuscripts on coherence, trust, and the future institutions required for a civilization worth inheriting.",
+      "Presence, trust architecture, regenerative economics, anti-capture governance, humane intelligence, and right-sized community are not separate projects here. They are strands of one civilizational craft.",
     ),
   ).toBeVisible();
+  await expect(page.locator(".hero-stats li")).toHaveText([
+    `${catalog.stats.volumeCount.toLocaleString()} volumes`,
+    `${catalog.stats.sectionCount.toLocaleString()} sections`,
+    `${formatReadingDurationForWords(catalog.stats.wordCount)} of audio`,
+  ]);
   await expect(page.locator(".overview-map")).toHaveCount(0);
   await expect(page.locator(".stats-band")).toHaveCount(0);
   await expect(page.getByText("Ready for the full body")).toHaveCount(0);
@@ -88,9 +93,11 @@ test("home page presents the overview and manuscript entry points", async ({
       (volume) => `/art/coherence-thesis-vol${volume.order}-cover.png`,
     ),
   );
-  if (testInfo.project.name === "mobile") {
-    await expect(page.locator(".hero-art")).toBeHidden();
-  } else {
+  await expect(page.locator(".hero-art img")).toHaveAttribute(
+    "src",
+    /coherence-thesis-hero\.png/,
+  );
+  if (testInfo.project.name !== "mobile") {
     await page.setViewportSize({ width: 880, height: 900 });
     const brandKickerFit = await page
       .locator(".site-header .brand-kicker")
@@ -102,12 +109,6 @@ test("home page presents the overview and manuscript entry points", async ({
     expect(brandKickerFit.textOverflow).not.toBe("ellipsis");
     expect(brandKickerFit.clientWidth).toBeGreaterThanOrEqual(
       brandKickerFit.scrollWidth,
-    );
-    // Image optimization is active now that the site is no longer a static
-    // export, so the rendered src is a /_next/image URL wrapping the asset.
-    await expect(page.locator(".hero-art img")).toHaveAttribute(
-      "src",
-      /coherence-thesis-hero\.png/,
     );
   }
   const footer = page.getByRole("contentinfo", { name: "Site information" });

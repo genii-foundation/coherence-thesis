@@ -4,20 +4,28 @@ import Link from "next/link";
 import { BookOpen, ListTree } from "lucide-react";
 import { ManuscriptCoverFlowIsland } from "@/components/ManuscriptCoverFlowIsland";
 import { catalog } from "@/lib/manuscript-data";
+import { formatReadingDurationForWords } from "@/lib/reading-time";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
+
+const heroStats = [
+  `${catalog.stats.volumeCount.toLocaleString()} volumes`,
+  `${catalog.stats.sectionCount.toLocaleString()} sections`,
+  `${formatReadingDurationForWords(catalog.stats.wordCount)} of audio`,
+];
 
 export default function Home() {
   return (
     <div className="home-page">
       <section className="hero-section">
         <div className="hero-copy">
-          <h1>The Coherence Thesis</h1>
+          <h1>There is a field forming around the work civilization forgot to name.</h1>
           <p className="hero-deck">
-            Nine living manuscripts on coherence, trust, and the future
-            institutions required for a civilization worth inheriting.
+            Presence, trust architecture, regenerative economics, anti-capture
+            governance, humane intelligence, and right-sized community are not
+            separate projects here. They are strands of one civilizational craft.
           </p>
           <div className="hero-actions">
             <Link className="primary-link" href={catalog.volumes[0]!.href}>
@@ -29,6 +37,11 @@ export default function Home() {
               Read the overview
             </Link>
           </div>
+          <ul className="hero-stats" aria-label="Manuscript stats">
+            {heroStats.map((stat) => (
+              <li key={stat}>{stat}</li>
+            ))}
+          </ul>
         </div>
         <div className="hero-art" aria-label="Coherence Thesis cover art">
           <Image
