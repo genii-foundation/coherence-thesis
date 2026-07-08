@@ -400,6 +400,8 @@ export function AudioPlayerIsland({
   const [preference, setPreference] = useState<AudioVoicePreference>(
     () => defaultVoicePreference,
   );
+  const [preferenceReady, setPreferenceReady] = useState(false);
+  const [voicesReady, setVoicesReady] = useState(false);
   const voiceGroups = useMemo(
     () => audioVoiceMenuGroups({ voices, manifest: audioManifest }),
     [audioManifest, voices],
@@ -449,19 +451,26 @@ export function AudioPlayerIsland({
   }, [pathname]);
 
   useEffect(() => {
+    setPreferenceReady(false);
+    setVoicesReady(false);
     const hydrationTimer = window.setTimeout(() => {
       if (!provider.isSupported()) {
         setSupported(false);
+        setPreferenceReady(true);
+        setVoicesReady(true);
         return;
       }
       setSupported(true);
       setPreference(readVoicePreference());
       setVoices(provider.getVoices());
+      setPreferenceReady(true);
+      setVoicesReady(true);
     }, 0);
 
-    const unsubscribeVoices = provider.subscribeVoices(() =>
-      setVoices(provider.getVoices()),
-    );
+    const unsubscribeVoices = provider.subscribeVoices(() => {
+      setVoices(provider.getVoices());
+      setVoicesReady(true);
+    });
     return () => {
       window.clearTimeout(hydrationTimer);
       unsubscribeVoices();
@@ -511,13 +520,19 @@ export function AudioPlayerIsland({
 
 
   useEffect(() => {
+    if (!preferenceReady) return;
     writeVoicePreference(preference);
-  }, [preference]);
+  }, [preference, preferenceReady]);
 
   useEffect(() => {
+    if (!preferenceReady || !voicesReady) return;
     if (!preference.voiceURI || voiceIds.has(preference.voiceURI)) return;
+    const pendingPreferredVoice = voiceGroups.highQuality.some(
+      (voice) => voice.disabled && voice.id === preference.voiceURI,
+    );
+    if (pendingPreferredVoice) return;
     setPreference((current) => ({ ...current, voiceURI: null }));
-  }, [preference.voiceURI, voiceIds]);
+  }, [preference.voiceURI, preferenceReady, voiceGroups, voiceIds, voicesReady]);
 
   async function ensurePlayableAudio(
     index: number,
@@ -689,7 +704,11 @@ export function AudioPlayerIsland({
   }
 
   function handleVoiceChange(voiceURI: string | null): void {
-    const nextPreference = { ...preference, voiceURI };
+    const nextPreference = {
+      ...preference,
+      voiceURI,
+      useSystemVoice: voiceURI === null,
+    };
     setPreference(nextPreference);
     void restartActivePlayback(nextPreference);
   }

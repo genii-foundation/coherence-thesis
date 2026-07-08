@@ -189,7 +189,7 @@ describe("hosted clip provider", () => {
     });
   });
 
-  it("labels the default Fish voice for the voice menu", () => {
+  it("labels the default hosted voice for the voice menu", () => {
     const provider = createHostedClipProvider(
       {
         version: 1,
@@ -217,7 +217,7 @@ describe("hosted clip provider", () => {
     );
 
     expect(provider.getVoices()).toEqual([
-      { id: "clip:default", label: "Fish Audio Default" },
+      { id: "clip:default", label: "High Quality 1" },
     ]);
   });
 

@@ -114,7 +114,7 @@ async function responseForAudioUrl(url: string): Promise<Response> {
 
 function hostedVoiceLabel(voice: AudioClipManifest["voices"][number]): string {
   if (voice.provider === "fish-audio" && voice.id === "default") {
-    return "Fish Audio Default";
+    return "High Quality 1";
   }
   return voice.label;
 }

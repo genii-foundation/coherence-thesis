@@ -752,6 +752,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(shareMenu).toHaveCount(0);
 
   await page.getByRole("button", { name: /Listen/ }).click();
+  await page.mouse.move(12, 12);
   const audioMenu = page.getByLabel("Audiobook controls");
   await expectToolbarTriggerOpenWithoutActiveWash(page, ".audio-menu-button");
   await expect(audioMenu).toBeVisible();
@@ -759,18 +760,21 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(audioMenu.getByText("Voice", { exact: true })).toBeVisible();
   await expect(audioMenu.locator("optgroup[label='High quality voices']")).toHaveCount(1);
   await expect(audioMenu.locator("optgroup[label='System voices']")).toHaveCount(1);
-  const fishAudioOption = audioMenu.locator("option", {
-    hasText: "Fish Audio Default",
+  const highQualityOption = audioMenu.locator("option", {
+    hasText: "High Quality 1",
   });
-  await expect(fishAudioOption).toHaveCount(1);
+  await expect(highQualityOption).toHaveCount(1);
   await expect(audioMenu.locator("option", { hasText: "Automatic system voice" })).toHaveCount(1);
   await expect(audioMenu.locator("option", { hasText: "Albert" })).toHaveCount(0);
   await expect(audioMenu.getByText("Offline playback")).toBeVisible();
-  if (await fishAudioOption.isEnabled()) {
+  if (await highQualityOption.isEnabled()) {
+    await expect(audioMenu.getByRole("combobox", { name: "Voice" })).toHaveValue(
+      "clip:default",
+    );
     await expect(audioMenu.locator(".audio-offline-item").first()).toBeVisible();
     await expect(audioMenu.locator(".audio-offline-meter").first()).toHaveCount(1);
   } else {
-    await expect(fishAudioOption).toBeDisabled();
+    await expect(highQualityOption).toBeDisabled();
     await expect(audioMenu.getByText("Audio clips pending").first()).toBeVisible();
     await expect(audioMenu.locator(".audio-offline-meter")).toHaveCount(0);
   }

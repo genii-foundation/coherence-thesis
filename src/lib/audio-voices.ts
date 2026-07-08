@@ -1,4 +1,5 @@
 import {
+  clipVoicePreferenceId,
   parseClipVoicePreferenceId,
   type AudioClipManifest,
 } from "@/lib/audio-manifest";
@@ -84,7 +85,7 @@ export function audioVoiceMenuGroups(input: {
   );
   const pendingVoiceLabel = input.manifest.voices[0]?.label
     ? `${input.manifest.voices[0].label} (clips pending)`
-    : "Fish Audio Default (clips pending)";
+    : "High Quality 1 (clips pending)";
   const system = elegantSystemVoices(
     input.voices.filter((voice) => !parseClipVoicePreferenceId(voice.id)),
   );
@@ -95,7 +96,7 @@ export function audioVoiceMenuGroups(input: {
         ? highQuality
         : [
             {
-              id: "fish-audio-pending",
+              id: clipVoicePreferenceId("default"),
               label: pendingVoiceLabel,
               disabled: true,
             },

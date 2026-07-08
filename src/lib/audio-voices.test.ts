@@ -35,7 +35,7 @@ describe("audio voice menu", () => {
         voices: [
           {
             id: "default",
-            label: "Fish Audio Default",
+            label: "High Quality 1",
             sections: [],
           },
         ],
@@ -43,7 +43,7 @@ describe("audio voice menu", () => {
       voices: [
         {
           id: clipVoicePreferenceId("default"),
-          label: "Fish Audio Default",
+          label: "High Quality 1",
         },
         { id: "samantha", label: "Samantha" },
         { id: "albert", label: "Albert" },
@@ -53,7 +53,7 @@ describe("audio voice menu", () => {
     expect(groups.highQuality).toEqual([
       {
         id: "clip:default",
-        label: "Fish Audio Default",
+        label: "High Quality 1",
       },
     ]);
     expect(groups.system).toEqual([{ id: "samantha", label: "Samantha" }]);
@@ -67,11 +67,11 @@ describe("audio voice menu", () => {
 
     expect(groups.highQuality).toEqual([
       {
-        id: "fish-audio-pending",
-        label: "Fish Audio Default (clips pending)",
+        id: "clip:default",
+        label: "High Quality 1 (clips pending)",
         disabled: true,
       },
     ]);
-    expect(selectableVoiceIds(groups).has("fish-audio-pending")).toBe(false);
+    expect(selectableVoiceIds(groups).has("clip:default")).toBe(false);
   });
 });
