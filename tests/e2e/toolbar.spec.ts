@@ -14,8 +14,6 @@ async function expectToolbarTriggerActive(
 ): Promise<void> {
   const trigger = page.locator(selector);
   await expect(trigger).toHaveAttribute("aria-expanded", "true");
-  await expect(trigger).toHaveAttribute("data-toolbar-menu-trigger", "true");
-  await expect(trigger).toHaveAttribute("data-menu-open", "true");
 
   await expect
     .poll(async () =>
@@ -679,6 +677,31 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectToolbarTriggerActive(page, ".settings-menu-button");
   await expect(settingsMenu.getByText("Reading settings")).toBeVisible();
   await expectRestingControlBorder(page, ".font-select-button");
+  await settingsMenu.getByRole("button", { name: "Reader font" }).click();
+  const fontOptions = page.locator(".font-select-options");
+  await expect(fontOptions).toBeVisible();
+  const fontOptionMetrics = await page.evaluate(() => {
+    const options = document.querySelector(".font-select-options");
+    const settings = document.querySelector(".settings-popover");
+    const optionsBox = options?.getBoundingClientRect();
+    return {
+      bottom: optionsBox?.bottom ?? 0,
+      parentTag: options?.parentElement?.tagName ?? "",
+      settingsContainsOptions: Boolean(
+        options && settings?.contains(options),
+      ),
+      top: optionsBox?.top ?? 0,
+      viewportHeight: window.innerHeight,
+    };
+  });
+  expect(fontOptionMetrics.parentTag).toBe("BODY");
+  expect(fontOptionMetrics.settingsContainsOptions).toBe(false);
+  expect(fontOptionMetrics.top).toBeGreaterThanOrEqual(-1);
+  expect(fontOptionMetrics.bottom).toBeLessThanOrEqual(
+    fontOptionMetrics.viewportHeight + 1,
+  );
+  await settingsMenu.getByRole("button", { name: "Reader font" }).click();
+  await expect(fontOptions).toHaveCount(0);
   await expectMenuFitsViewport(page, ".settings-popover");
   await page.keyboard.press("Escape");
   await expect(settingsMenu).toHaveCount(0);

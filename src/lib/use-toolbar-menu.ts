@@ -9,6 +9,7 @@ import { useCallback, useEffect, useRef, useState, type RefObject } from "react"
 // button so keyboard users are not stranded on the closed menu. Clicking
 // outside intentionally does not steal focus back, so focus follows the click.
 type ToolbarMenuOptions = {
+  floatingRefs?: Array<RefObject<HTMLElement | null>>;
   onDismiss?: () => void;
   onEscape?: () => boolean | void;
 };
@@ -31,14 +32,16 @@ export type ToolbarMenu<C extends HTMLElement> = {
 };
 
 export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
-  { onDismiss, onEscape }: ToolbarMenuOptions = {},
+  { floatingRefs = [], onDismiss, onEscape }: ToolbarMenuOptions = {},
 ): ToolbarMenu<C> {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<C | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const floatingRefsRef = useRef(floatingRefs);
   const onDismissRef = useRef(onDismiss);
   const onEscapeRef = useRef(onEscape);
   useEffect(() => {
+    floatingRefsRef.current = floatingRefs;
     onDismissRef.current = onDismiss;
     onEscapeRef.current = onEscape;
   });
@@ -49,7 +52,12 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
   useEffect(() => {
     if (!open) return;
     const onPointerDown = (event: PointerEvent) => {
-      if (!containerRef.current?.contains(event.target as Node)) {
+      const target = event.target as Node;
+      const isInsideContainer = containerRef.current?.contains(target);
+      const isInsideFloatingElement = floatingRefsRef.current.some((ref) =>
+        ref.current?.contains(target),
+      );
+      if (!isInsideContainer && !isInsideFloatingElement) {
         setOpen(false);
         onDismissRef.current?.();
       }

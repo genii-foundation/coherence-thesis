@@ -8,6 +8,10 @@ test("reader settings update and persist local appearance preferences", async ({
   page,
 }) => {
   await page.goto(firstSection.href);
+  await page.evaluate((key) => {
+    window.localStorage.removeItem(key);
+  }, readerPreferencesStorageKey);
+  await page.reload();
 
   const settingsButton = page.getByRole("button", { name: "Reader settings" });
   await expect(settingsButton).toBeVisible();
@@ -96,7 +100,49 @@ test("reader settings update and persist local appearance preferences", async ({
 
   const fontSelect = settingsMenu.getByRole("button", { name: "Reader font" });
   await fontSelect.click();
-  const georgiaOption = settingsMenu.getByRole("button", {
+  const fontOptions = page.locator(".font-select-options");
+  await expect(fontOptions).toBeVisible();
+  const fontOptionsMetrics = await page.evaluate(() => {
+    const options = document.querySelector(".font-select-options");
+    const settings = document.querySelector(".settings-popover");
+    const rect = (element: Element | null) => {
+      if (!element) return null;
+      const box = element.getBoundingClientRect();
+      return {
+        bottom: box.bottom,
+        left: box.left,
+        right: box.right,
+        top: box.top,
+      };
+    };
+    const optionsBox = rect(options);
+    const settingsBox = rect(settings);
+    return {
+      optionsBox,
+      parentTag: options?.parentElement?.tagName ?? "",
+      settingsBox,
+      settingsContainsOptions: Boolean(
+        options && settings?.contains(options),
+      ),
+      viewportHeight: window.innerHeight,
+      viewportWidth: window.innerWidth,
+    };
+  });
+  expect(fontOptionsMetrics.parentTag).toBe("BODY");
+  expect(fontOptionsMetrics.settingsContainsOptions).toBe(false);
+  expect(fontOptionsMetrics.optionsBox).not.toBeNull();
+  expect(fontOptionsMetrics.settingsBox).not.toBeNull();
+  if (fontOptionsMetrics.optionsBox) {
+    expect(fontOptionsMetrics.optionsBox.top).toBeGreaterThanOrEqual(0);
+    expect(fontOptionsMetrics.optionsBox.left).toBeGreaterThanOrEqual(0);
+    expect(fontOptionsMetrics.optionsBox.right).toBeLessThanOrEqual(
+      fontOptionsMetrics.viewportWidth,
+    );
+    expect(fontOptionsMetrics.optionsBox.bottom).toBeLessThanOrEqual(
+      fontOptionsMetrics.viewportHeight,
+    );
+  }
+  const georgiaOption = page.getByRole("button", {
     name: "Georgia",
     exact: true,
   });
