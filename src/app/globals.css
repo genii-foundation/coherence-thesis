@@ -5,7 +5,7 @@
   --paper-deep: #e3d1ad;
   --paper-soft: #fbf6eb;
   --ink: #13202a;
-  --ink-soft: #40515d;
+  --ink-soft: #4f4d49;
   --ink-muted: #5a666c;
   --bronze: #a47b3f;
   --bronze-deep: #77542a;
@@ -60,7 +60,7 @@ html[data-reader-theme="light"] {
   --paper-deep: #e6dfd4;
   --paper-soft: #fffefa;
   --ink: #111827;
-  --ink-soft: #334155;
+  --ink-soft: #44423e;
   --ink-muted: #586573;
   --bronze: #8f6a32;
   --bronze-deep: #594018;
@@ -721,7 +721,7 @@ input {
   border-radius: var(--radius);
   background: transparent;
   box-shadow: none;
-  color: var(--bronze-deep);
+  color: var(--ink-soft);
 }
 
 .progress-menu-button::before {
@@ -733,7 +733,7 @@ input {
 .site-nav > * > .progress-menu-button[data-toolbar-menu-trigger][aria-expanded="true"] {
   background: var(--nav-hover-background);
   box-shadow: none;
-  color: var(--bronze-deep);
+  color: var(--ink);
 }
 
 .progress-percent {
@@ -745,7 +745,7 @@ input {
   width: var(--progress-cloud-width);
   min-width: var(--progress-cloud-width);
   height: var(--progress-cloud-height);
-  color: var(--bronze-deep);
+  color: inherit;
   line-height: 1;
   padding: 0;
 }
@@ -772,20 +772,22 @@ input {
 }
 
 .progress-cloud-inner {
-  stroke: var(--progress-cloud-inner);
+  stroke: currentColor;
+  opacity: 0.26;
   stroke-linejoin: round;
   stroke-width: 7;
 }
 
 .progress-cloud-track {
-  stroke: var(--progress-cloud-track);
+  stroke: currentColor;
+  opacity: 0.2;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3.8;
 }
 
 .progress-cloud-progress {
-  stroke: var(--progress-cloud-progress);
+  stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3.8;
@@ -793,7 +795,7 @@ input {
 }
 
 .progress-cloud-mark-offline .progress-cloud-inner {
-  opacity: 0.28;
+  opacity: 0.26;
   stroke-width: 1.05;
 }
 
@@ -811,12 +813,12 @@ input {
 }
 
 .progress-cloud-mark-offline .progress-cloud-track {
-  opacity: 1;
-  stroke: rgba(119, 84, 42, 0.16);
+  opacity: 0.2;
+  stroke: currentColor;
 }
 
 .progress-cloud-text {
-  fill: var(--progress-cloud-text-color);
+  fill: currentColor;
   font-family: var(--font-ui);
   font-size: var(--progress-cloud-text-size);
   font-weight: 800;
@@ -1238,7 +1240,7 @@ input {
   z-index: 1;
   width: 2.08rem;
   height: 1.5rem;
-  color: rgba(119, 84, 42, 0.62);
+  color: currentColor;
   pointer-events: none;
   transform: translate(-50%, -50%);
 }
