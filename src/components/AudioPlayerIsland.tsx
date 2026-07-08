@@ -252,6 +252,7 @@ function PlaybackToolbarIcon({
   waveformScales: number[];
 }) {
   const shellProgress = usePlaybackShellProgress(playing);
+  const waveformX = 16 + 2.75 * shellProgress;
 
   return (
     <svg
@@ -268,7 +269,7 @@ function PlaybackToolbarIcon({
       />
       <g
         className="audio-waveform"
-        transform={playing ? "translate(18.75 16)" : "translate(16 16)"}
+        transform={`translate(${waveformX.toFixed(3)} 16)`}
       >
         <rect
           className="audio-waveform-bar audio-waveform-bar-1"
