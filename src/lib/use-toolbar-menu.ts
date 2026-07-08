@@ -56,6 +56,7 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
   const [rendered, setRendered] = useState(false);
   const [menuState, setMenuState] = useState<"open" | "closing">("closing");
   const [menuHeight, setMenuHeight] = useState(0);
+  const openRef = useRef(open);
   const containerRef = useRef<C | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const floatingRefsRef = useRef(floatingRefs);
@@ -107,6 +108,7 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     clearCloseTimer();
     clearMeasureFrame();
     clearTransitionFrame();
+    openRef.current = true;
     setRendered(true);
     setMenuState("closing");
     setMenuHeight(0);
@@ -118,6 +120,7 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     clearMeasureFrame();
     clearTransitionFrame();
     measurePopover();
+    openRef.current = false;
     setMenuState("closing");
     setOpen(false);
     transitionFrameRef.current = window.requestAnimationFrame(() => {
@@ -137,6 +140,7 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
 
   const setMenuOpen = useCallback(
     (nextOpen: boolean) => {
+      if (nextOpen === openRef.current) return;
       if (nextOpen) beginOpen();
       else beginClose();
     },

@@ -866,7 +866,11 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(resetVoiceSettings).toBeEnabled();
   await speedSlider.evaluate((element) => {
     const input = element as HTMLInputElement;
-    input.value = "1.25";
+    const valueSetter = Object.getOwnPropertyDescriptor(
+      window.HTMLInputElement.prototype,
+      "value",
+    )?.set;
+    valueSetter?.call(input, "1.25");
     input.dispatchEvent(new Event("input", { bubbles: true }));
     input.dispatchEvent(new Event("change", { bubbles: true }));
   });
@@ -886,6 +890,9 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   }
   await expectMenuFitsViewport(page, ".audio-popover");
   await page.getByRole("button", { name: "Pause audiobook" }).click();
+  await expect(audioMenu).toBeVisible();
+  await expectToolbarTriggerOpenWithoutActiveWash(page, ".audio-menu-button");
+  await expect(page.getByRole("button", { name: /Listen/ })).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(audioMenu).toHaveCount(0);
 
@@ -941,6 +948,8 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
   await expect(page.getByLabel("Audiobook controls")).toBeVisible();
   await expectMobilePopoverStartsBelowToolbar(page, ".audio-popover");
   await page.getByRole("button", { name: "Pause audiobook" }).click();
+  await expect(page.getByLabel("Audiobook controls")).toBeVisible();
+  await expect(page.getByRole("button", { name: /Listen/ })).toBeVisible();
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: /Progress/ }).click();
