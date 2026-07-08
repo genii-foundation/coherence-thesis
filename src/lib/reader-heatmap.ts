@@ -1,7 +1,7 @@
 import { catalog, type Section, type Volume } from "./manuscript-data";
 import { type ReaderProgressState, updatedSinceRead } from "./reader-state";
 
-export const readerHeatmapCellCount = 100;
+export const readerHeatmapCellCount = 1_000;
 
 type WeightedItem = {
   id: string;

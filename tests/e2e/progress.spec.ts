@@ -510,7 +510,7 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
     page.getByText("One thousand squares across the nine manuscripts."),
   ).toHaveCount(0);
   await expect(page.locator(".progress-heatmap-volume")).toHaveCount(9);
-  await expect(page.locator(".progress-heatmap-cell")).toHaveCount(100);
+  await expect(page.locator(".progress-heatmap-cell")).toHaveCount(1_000);
   await expect(page.locator(".progress-heatmap-volume-read-tag")).toHaveCount(9);
   await expect(page.locator(".progress-heatmap-volume-read-tag").first()).toHaveText(
     "0% read",

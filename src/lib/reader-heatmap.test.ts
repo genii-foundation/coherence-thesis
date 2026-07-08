@@ -9,7 +9,7 @@ import {
 import { emptyProgress, markRead, recordScrollProgress } from "./reader-state";
 
 describe("reader heatmap", () => {
-  it("builds exactly one hundred cells across the manuscript volumes", () => {
+  it("builds exactly one thousand cells across the manuscript volumes", () => {
     const model = buildReaderHeatmapModel();
     const cells = model.volumes.flatMap((volume) => volume.cells);
 
