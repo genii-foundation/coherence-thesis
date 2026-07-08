@@ -6,14 +6,20 @@ const smoothstep = (value: number) => {
   return normalized * normalized * (3 - 2 * normalized);
 };
 
+const distributionPeak = (distance: number, peakOffset: number, width: number) => {
+  const normalized = (distance - peakOffset) / width;
+  return Math.exp(-0.5 * normalized * normalized);
+};
+
 export const coverFlowTuning = {
   scroll: {
     endSnapTolerancePx: 2,
     flickDistancePx: 620,
     flickPeakDeltaPx: 260,
     flickSettleMs: 110,
+    verticalReleaseMs: 160,
     verticalTakeoverMinDeltaPx: 3,
-    verticalTakeoverRatio: 0.55,
+    verticalTakeoverRatio: 1.15,
   },
   rotation: {
     maxDegrees: 72,
@@ -27,6 +33,16 @@ export const coverFlowTuning = {
     min: 0.54,
   },
   spacing: {
+    backgroundDistributionCenterGateOffset: 0.25,
+    firstBackgroundOutwardPx: 26,
+    firstBackgroundPeakOffset: 0.48,
+    firstBackgroundWidth: 0.26,
+    secondBackgroundOutwardPx: 130,
+    secondBackgroundPeakOffset: 0.94,
+    secondBackgroundWidth: 0.28,
+    thirdBackgroundInwardPx: 52,
+    thirdBackgroundPeakOffset: 1.4,
+    thirdBackgroundWidth: 0.31,
     centerGutterPx: 315,
     centerGutterFalloff: 1.18,
     centerGutterPeakOffset: 0.58,
@@ -126,7 +142,34 @@ export function getCoverFlowTransform(offset: number) {
     coverFlowTuning.spacing.sideStackMaxCompressionRatio;
   const sideStackCompression =
     -direction * Math.min(desiredCompression, maxCompression);
-  const shift = distance < 0.001 ? 0 : centerGutter + sideStackCompression;
+  const distributionGate = smoothstep(
+    distance / coverFlowTuning.spacing.backgroundDistributionCenterGateOffset,
+  );
+  const backgroundDistributionCorrection =
+    direction *
+    distributionGate *
+    (coverFlowTuning.spacing.firstBackgroundOutwardPx *
+      distributionPeak(
+        distance,
+        coverFlowTuning.spacing.firstBackgroundPeakOffset,
+        coverFlowTuning.spacing.firstBackgroundWidth,
+      ) +
+      coverFlowTuning.spacing.secondBackgroundOutwardPx *
+        distributionPeak(
+          distance,
+          coverFlowTuning.spacing.secondBackgroundPeakOffset,
+          coverFlowTuning.spacing.secondBackgroundWidth,
+        ) -
+      coverFlowTuning.spacing.thirdBackgroundInwardPx *
+        distributionPeak(
+          distance,
+          coverFlowTuning.spacing.thirdBackgroundPeakOffset,
+          coverFlowTuning.spacing.thirdBackgroundWidth,
+        ));
+  const shift =
+    distance < 0.001
+      ? 0
+      : centerGutter + sideStackCompression + backgroundDistributionCorrection;
   const rotate = clamp(
     clampedOffset * -coverFlowTuning.rotation.degreesPerCardOffset,
     -coverFlowTuning.rotation.maxDegrees,

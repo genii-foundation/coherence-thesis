@@ -1541,6 +1541,12 @@ input {
   display: none;
 }
 
+.cover-flow-scroll.is-vertical-wheel-release {
+  overflow-x: hidden;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
 .cover-flow-track {
   display: flex;
   align-items: start;
@@ -1765,17 +1771,14 @@ input {
   flex-direction: column;
   gap: 0.55rem;
   min-height: 0;
-  margin-top: 0.15rem;
-  border-top: 1px solid rgb(var(--card-rgb) / 0.16);
-  padding-top: 0.75rem;
+  margin-top: 0.35rem;
 }
 
 .manuscript-card-outline-fixed {
   flex: 0 0 auto;
 }
 
-.manuscript-card-outline-full,
-.manuscript-card-outline-chapters a {
+.manuscript-card-outline-full {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1798,9 +1801,7 @@ input {
 .cover-flow-cover-link:hover
   + .cover-flow-card-panel
   .manuscript-card-outline-full,
-.cover-flow-card-panel.is-read-cue .manuscript-card-outline-full,
-.manuscript-card-outline-chapters a:hover,
-.manuscript-card-outline-chapters a:focus-visible {
+.cover-flow-card-panel.is-read-cue .manuscript-card-outline-full {
   border-color: rgba(119, 84, 42, 0.38);
   background: rgba(164, 123, 63, 0.11);
   color: var(--ink);
@@ -1812,9 +1813,7 @@ input {
   background: transparent;
 }
 
-.manuscript-card-outline-full > span:first-child,
-.manuscript-card-outline-title > span,
-.manuscript-card-outline-chapters a > span:first-child {
+.manuscript-card-outline-title > span {
   display: block;
   overflow: hidden;
   min-width: 0;
@@ -1822,44 +1821,14 @@ input {
   white-space: nowrap;
 }
 
-.manuscript-card-outline-read-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.38rem;
-  min-width: 0;
+.manuscript-card-outline-title {
   transform: translateX(0);
   transition:
     color 160ms ease,
     transform 180ms ease;
 }
 
-.manuscript-card-outline-title,
-.manuscript-card-outline-chapters a > span:first-child {
-  transform: translateX(0);
-  transition:
-    color 160ms ease,
-    transform 180ms ease;
-}
-
-.manuscript-card-outline-full .manuscript-card-outline-read-label {
-  display: inline-flex;
-  flex: 1 1 auto;
-}
-
-.manuscript-card-outline-full .manuscript-card-outline-read-label > span {
-  display: inline;
-}
-
-.manuscript-card-outline-read-label > span {
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  text-decoration-thickness: 0.06em;
-  text-underline-offset: 0.18em;
-  transition: text-decoration-color 180ms ease;
-}
-
-.manuscript-card-outline-title > span,
-.manuscript-card-outline-chapters a > span:first-child {
+.manuscript-card-outline-title > span {
   text-decoration: underline;
   text-decoration-color: transparent;
   text-decoration-thickness: 0.06em;
@@ -1869,34 +1838,35 @@ input {
 
 .cover-flow-cover-link:hover
   + .cover-flow-card-panel
-  .manuscript-card-outline-read-label,
-.cover-flow-card-panel.is-read-cue .manuscript-card-outline-read-label,
-.manuscript-card-outline-full:hover .manuscript-card-outline-read-label,
-.manuscript-card-outline-full:focus-visible .manuscript-card-outline-read-label,
+  .manuscript-card-outline-full
+  .manuscript-card-outline-title,
+.cover-flow-card-panel.is-read-cue
+  .manuscript-card-outline-full
+  .manuscript-card-outline-title,
+.manuscript-card-outline-full:hover .manuscript-card-outline-title,
+.manuscript-card-outline-full:focus-visible .manuscript-card-outline-title,
 .manuscript-card-outline-part-button:hover .manuscript-card-outline-title,
-.manuscript-card-outline-part-button:focus-visible .manuscript-card-outline-title,
-.manuscript-card-outline-chapters a:hover > span:first-child,
-.manuscript-card-outline-chapters a:focus-visible > span:first-child {
+.manuscript-card-outline-part-button:focus-visible .manuscript-card-outline-title {
   transform: translateX(0.28rem);
 }
 
 .cover-flow-cover-link:hover
   + .cover-flow-card-panel
-  .manuscript-card-outline-read-label
+  .manuscript-card-outline-full
+  .manuscript-card-outline-title
   > span,
 .cover-flow-card-panel.is-read-cue
-  .manuscript-card-outline-read-label
+  .manuscript-card-outline-full
+  .manuscript-card-outline-title
   > span,
-.manuscript-card-outline-full:hover .manuscript-card-outline-read-label > span,
+.manuscript-card-outline-full:hover .manuscript-card-outline-title > span,
 .manuscript-card-outline-full:focus-visible
-  .manuscript-card-outline-read-label
+  .manuscript-card-outline-title
   > span,
 .manuscript-card-outline-part-button:hover .manuscript-card-outline-title > span,
 .manuscript-card-outline-part-button:focus-visible
   .manuscript-card-outline-title
-  > span,
-.manuscript-card-outline-chapters a:hover > span:first-child,
-.manuscript-card-outline-chapters a:focus-visible > span:first-child {
+  > span {
   text-decoration-color: currentColor;
 }
 
@@ -1911,8 +1881,7 @@ input {
 }
 
 .manuscript-card-outline-full small,
-.manuscript-card-outline-part-button small,
-.manuscript-card-outline-chapters a small {
+.manuscript-card-outline-part-button small {
   display: block;
   flex: 0 0 auto;
   color: var(--ink-muted);
@@ -1951,7 +1920,8 @@ input {
   scrollbar-width: thin;
 }
 
-.manuscript-card-outline-parts {
+.manuscript-card-outline-parts,
+.manuscript-card-outline-chapters {
   margin-left: 1rem;
   border-left: 1px solid rgba(119, 84, 42, 0.2);
   padding-left: 0.75rem;
@@ -1970,6 +1940,7 @@ input {
   cursor: pointer;
   padding: 0.42rem 0.48rem;
   text-align: left;
+  text-decoration: none;
   transition:
     background 160ms ease,
     border-color 160ms ease,
@@ -1988,6 +1959,7 @@ input {
 .manuscript-card-outline-title {
   display: flex;
   align-items: center;
+  flex: 1 1 auto;
   gap: 0.38rem;
   min-width: 0;
 }
@@ -2025,22 +1997,8 @@ input {
   outline: none;
 }
 
-.manuscript-card-outline-chapters {
-  padding-left: 1.1rem;
-}
-
-.manuscript-card-outline-chapters a {
-  border-color: transparent;
-  background: transparent;
-  padding: 0.36rem 0.42rem;
-}
-
 .manuscript-card-outline-part-overview {
-  color: var(--ink) !important;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  color: var(--ink-soft);
 }
 
 .cover-flow-edge-button {

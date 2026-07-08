@@ -2459,6 +2459,26 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   await expect(
     activePanel.locator(".manuscript-card-outline-full"),
   ).toHaveAttribute("href", firstSection.href);
+  const readFullLabelMetrics = await activePanel
+    .locator(".manuscript-card-outline-full")
+    .evaluate((row) => {
+      const icon = row.querySelector("svg")?.getBoundingClientRect();
+      const label = row
+        .querySelector(".manuscript-card-outline-title > span")
+        ?.getBoundingClientRect();
+
+      return {
+        iconCenter: icon ? icon.top + icon.height / 2 : 0,
+        labelCenter: label ? label.top + label.height / 2 : 0,
+        labelHeight: label?.height ?? 0,
+      };
+    });
+  expect(
+    Math.abs(
+      readFullLabelMetrics.iconCenter - readFullLabelMetrics.labelCenter,
+    ),
+  ).toBeLessThanOrEqual(3);
+  expect(readFullLabelMetrics.labelHeight).toBeLessThan(32);
   await expect(
     activePanel.getByRole("button", { name: /Part: Front Matter/ }),
   ).toBeVisible();
@@ -2561,7 +2581,66 @@ test("home page presents an interactive cover flow", async ({ page }) => {
       name: new RegExp(initialActiveVolume.parts[0]!.chapters[0]!.title),
     }),
   ).toHaveAttribute("href", initialActiveVolume.parts[0]!.chapters[0]!.href);
-  await activePanel.getByRole("button", { name: "Back to parts" }).click();
+  const chapterRowMetrics = await activePanel
+    .locator(".manuscript-card-outline-chapters")
+    .evaluate((outline) => {
+      const rows = Array.from(
+        outline.querySelectorAll<HTMLElement>(
+          ".manuscript-card-outline-part-button",
+        ),
+      );
+
+      return rows.map((row) => {
+        const minutes = row.querySelector("small")?.getBoundingClientRect();
+        const dot = row
+          .querySelector(".progress-state-dot")
+          ?.getBoundingClientRect();
+
+        return {
+          hasChevron: Boolean(row.querySelector(".manuscript-card-outline-chevron")),
+          isAnchor: row.tagName === "A",
+          minuteDotDelta:
+            minutes && dot
+              ? Math.abs(
+                  minutes.top +
+                    minutes.height / 2 -
+                    (dot.top + dot.height / 2),
+                )
+              : null,
+        };
+      });
+    });
+  expect(chapterRowMetrics.length).toBeGreaterThan(1);
+  expect(chapterRowMetrics.every((row) => row.hasChevron)).toBe(true);
+  expect(chapterRowMetrics.every((row) => row.isAnchor)).toBe(true);
+  expect(
+    Math.max(...chapterRowMetrics.map((row) => row.minuteDotDelta ?? 100)),
+  ).toBeLessThanOrEqual(3);
+  const firstChapterRow = activePanel
+    .locator(".manuscript-card-outline-chapters .manuscript-card-outline-part-button")
+    .nth(1);
+  const chapterRowContract = await firstChapterRow.evaluate((row) => {
+    const title = row.querySelector(".manuscript-card-outline-title");
+    const titleText = title?.querySelector("span:last-child");
+    const titleStyle = title ? window.getComputedStyle(title) : null;
+    const titleTextStyle = titleText ? window.getComputedStyle(titleText) : null;
+
+    return {
+      titleDisplay: titleStyle?.display ?? "",
+      titleTransition: titleStyle?.transitionProperty ?? "",
+      textDecorationLine: titleTextStyle?.textDecorationLine ?? "",
+      textDecorationTransition: titleTextStyle?.transitionProperty ?? "",
+    };
+  });
+  expect(chapterRowContract.titleDisplay).toBe("flex");
+  expect(chapterRowContract.titleTransition).toContain("transform");
+  expect(chapterRowContract.textDecorationLine).toContain("underline");
+  expect(chapterRowContract.textDecorationTransition).toContain(
+    "text-decoration-color",
+  );
+  await activePanel
+    .getByRole("button", { name: "Back to parts" })
+    .dispatchEvent("click");
   await expect(
     activePanel.getByRole("button", { name: /Part: Front Matter/ }),
   ).toBeVisible();
@@ -2695,16 +2774,28 @@ test("home page presents an interactive cover flow", async ({ page }) => {
     window.scrollTo(0, 0);
   });
   await expect.poll(async () => page.evaluate(() => window.scrollY)).toBe(0);
-  const scrollBeforeMixedWheel = await page.evaluate(() => window.scrollY);
-  await coverFlow.locator(".cover-flow-scroll").dispatchEvent("wheel", {
-    bubbles: true,
-    cancelable: true,
-    deltaX: 160,
-    deltaY: 220,
-  });
-  await expect
-    .poll(async () => page.evaluate(() => window.scrollY))
-    .toBeGreaterThan(scrollBeforeMixedWheel);
+  const mixedWheelResult = await coverFlow
+    .locator(".cover-flow-scroll")
+    .evaluate((scroller) => {
+      const scrollLeftBefore = scroller.scrollLeft;
+      const event = new WheelEvent("wheel", {
+        bubbles: true,
+        cancelable: true,
+        deltaX: 160,
+        deltaY: 220,
+      });
+      const released = scroller.dispatchEvent(event);
+
+      return {
+        released,
+        scrollLeftAfter: scroller.scrollLeft,
+        scrollLeftBefore,
+      };
+    });
+  expect(mixedWheelResult.released).toBe(true);
+  expect(mixedWheelResult.scrollLeftAfter).toBe(
+    mixedWheelResult.scrollLeftBefore,
+  );
 
   await coverFlow.locator(".cover-flow-scroll").dispatchEvent("wheel", {
     bubbles: true,

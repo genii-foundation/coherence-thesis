@@ -62,6 +62,89 @@ type WheelGesture = {
   timeoutId: number | null;
 };
 
+type ManuscriptCardOutlineRowMeta = {
+  status: ReturnType<typeof sectionGroupProgressStatus>;
+  wordCount: number;
+};
+
+function ManuscriptCardOutlineRowContent({
+  icon = "single",
+  label,
+  meta,
+}: {
+  icon?: "double" | "single";
+  label: string;
+  meta: ManuscriptCardOutlineRowMeta;
+}) {
+  return (
+    <>
+      <span className="manuscript-card-outline-title">
+        {icon === "double" ? (
+          <ChevronsRight
+            aria-hidden="true"
+            size={17}
+            className="manuscript-card-outline-chevron"
+          />
+        ) : (
+          <ChevronRight
+            aria-hidden="true"
+            size={15}
+            className="manuscript-card-outline-chevron"
+          />
+        )}
+        <span>{label}</span>
+      </span>
+      <span className="manuscript-card-outline-meta">
+        <small>{formatReadingDurationForWords(meta.wordCount)}</small>
+        <ProgressStateDot status={meta.status} />
+      </span>
+    </>
+  );
+}
+
+type ManuscriptCardOutlineRowProps = {
+  className?: string;
+  label: string;
+  meta: ManuscriptCardOutlineRowMeta;
+} & (
+  | {
+      href: string;
+      onClick?: never;
+    }
+  | {
+      href?: never;
+      onClick: () => void;
+    }
+);
+
+function ManuscriptCardOutlineRow({
+  className,
+  label,
+  meta,
+  ...props
+}: ManuscriptCardOutlineRowProps) {
+  const rowClassName = ["manuscript-card-outline-part-button", className]
+    .filter(Boolean)
+    .join(" ");
+  const content = (
+    <ManuscriptCardOutlineRowContent label={label} meta={meta} />
+  );
+
+  if (props.href) {
+    return (
+      <Link className={rowClassName} href={props.href}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <button type="button" className={rowClassName} onClick={props.onClick}>
+      {content}
+    </button>
+  );
+}
+
 const planetSymbols: Record<string, string> = {
   Jupiter: "♃",
   Mars: "♂",
@@ -96,6 +179,8 @@ export function ManuscriptCoverFlowIsland({
   const activeIndexRef = useRef(activeIndex);
   const panelHeightFrameRef = useRef<number | null>(null);
   const pendingPanelHeightAnimationsRef = useRef(new Set<string>());
+  const verticalWheelReleaseFrameRef = useRef<number | null>(null);
+  const verticalWheelReleaseTimeoutRef = useRef<number | null>(null);
   const wheelGestureRef = useRef<WheelGesture>({
     distancePx: 0,
     peakDeltaPx: 0,
@@ -304,32 +389,73 @@ export function ManuscriptCoverFlowIsland({
     [volumes.length],
   );
 
-  const applyVerticalWheelDelta = useCallback((event: WheelEvent) => {
-    if (event.shiftKey || event.deltaY === 0) return;
+  const restoreHorizontalWheel = useCallback(() => {
+    const scroller = scrollRef.current;
+    if (!scroller) return;
 
-    const target = event.target as HTMLElement | null;
-    const scrollPanel = target?.closest<HTMLElement>(
-      ".cover-flow-card-panel-scroll",
-    );
-
-    if (scrollPanel) {
-      const maxScrollTop = Math.max(
-        0,
-        scrollPanel.scrollHeight - scrollPanel.clientHeight,
-      );
-      const nextScrollTop = Math.max(
-        0,
-        Math.min(maxScrollTop, scrollPanel.scrollTop + event.deltaY),
-      );
-
-      if (nextScrollTop !== scrollPanel.scrollTop) {
-        scrollPanel.scrollTop = nextScrollTop;
-        return;
-      }
+    if (verticalWheelReleaseTimeoutRef.current !== null) {
+      window.clearTimeout(verticalWheelReleaseTimeoutRef.current);
+      verticalWheelReleaseTimeoutRef.current = null;
+    }
+    if (verticalWheelReleaseFrameRef.current !== null) {
+      window.cancelAnimationFrame(verticalWheelReleaseFrameRef.current);
+      verticalWheelReleaseFrameRef.current = null;
     }
 
-    window.scrollBy({ top: event.deltaY, left: 0, behavior: "auto" });
+    scroller.classList.remove("is-vertical-wheel-release");
+    scroller.style.removeProperty("overflow-x");
+    scroller.style.removeProperty("scroll-behavior");
+    scroller.style.removeProperty("scroll-snap-type");
   }, []);
+
+  const releaseVerticalWheelToPage = useCallback(() => {
+    const scroller = scrollRef.current;
+    if (!scroller) return;
+
+    const lockedScrollLeft = scroller.scrollLeft;
+    scroller.classList.add("is-vertical-wheel-release");
+    scroller.style.overflowX = "hidden";
+    scroller.style.scrollBehavior = "auto";
+    scroller.style.scrollSnapType = "none";
+    scroller.scrollLeft = lockedScrollLeft;
+
+    if (verticalWheelReleaseTimeoutRef.current !== null) {
+      window.clearTimeout(verticalWheelReleaseTimeoutRef.current);
+    }
+    if (verticalWheelReleaseFrameRef.current !== null) {
+      window.cancelAnimationFrame(verticalWheelReleaseFrameRef.current);
+    }
+
+    const holdHorizontalPosition = () => {
+      scroller.scrollLeft = lockedScrollLeft;
+      if (verticalWheelReleaseTimeoutRef.current === null) {
+        verticalWheelReleaseFrameRef.current = null;
+        return;
+      }
+
+      verticalWheelReleaseFrameRef.current = window.requestAnimationFrame(
+        holdHorizontalPosition,
+      );
+    };
+
+    verticalWheelReleaseFrameRef.current = window.requestAnimationFrame(
+      holdHorizontalPosition,
+    );
+
+    verticalWheelReleaseTimeoutRef.current = window.setTimeout(() => {
+      verticalWheelReleaseTimeoutRef.current = null;
+      if (verticalWheelReleaseFrameRef.current !== null) {
+        window.cancelAnimationFrame(verticalWheelReleaseFrameRef.current);
+        verticalWheelReleaseFrameRef.current = null;
+      }
+      scroller.classList.remove("is-vertical-wheel-release");
+      scroller.scrollLeft = lockedScrollLeft;
+      scroller.style.removeProperty("overflow-x");
+      scroller.style.removeProperty("scroll-behavior");
+      scroller.style.removeProperty("scroll-snap-type");
+      schedulePositionUpdate();
+    }, coverFlowTuning.scroll.verticalReleaseMs);
+  }, [schedulePositionUpdate]);
 
   const handleWheel = useCallback(
     (event: WheelEvent) => {
@@ -342,17 +468,15 @@ export function ManuscriptCoverFlowIsland({
         ? event.deltaY !== 0
         : event.deltaX !== 0;
 
-      if (intent === "vertical" && !hasHorizontalWheelDelta) {
+      if (intent === "vertical") {
         resetWheelGesture();
-        const scroller = scrollRef.current;
-        if (scroller) {
-          scroller.scrollTo({ left: scroller.scrollLeft, behavior: "auto" });
-        }
-
-        event.preventDefault();
-        applyVerticalWheelDelta(event);
+        releaseVerticalWheelToPage();
         return;
       }
+
+      if (intent !== "horizontal") return;
+
+      restoreHorizontalWheel();
 
       const horizontalDelta = hasHorizontalWheelDelta
         ? event.shiftKey
@@ -367,7 +491,6 @@ export function ManuscriptCoverFlowIsland({
       if (scroller) {
         scroller.scrollLeft += horizontalDelta;
       }
-      applyVerticalWheelDelta(event);
 
       const gesture = wheelGestureRef.current;
       gesture.distancePx += horizontalDelta;
@@ -397,7 +520,13 @@ export function ManuscriptCoverFlowIsland({
         }
       }, coverFlowTuning.scroll.flickSettleMs);
     },
-    [applyVerticalWheelDelta, resetWheelGesture, scrollToIndex, volumes.length],
+    [
+      releaseVerticalWheelToPage,
+      resetWheelGesture,
+      restoreHorizontalWheel,
+      scrollToIndex,
+      volumes.length,
+    ],
   );
 
   useEffect(() => {
@@ -445,6 +574,12 @@ export function ManuscriptCoverFlowIsland({
       }
       if (panelHeightFrameRef.current !== null) {
         window.cancelAnimationFrame(panelHeightFrameRef.current);
+      }
+      if (verticalWheelReleaseFrameRef.current !== null) {
+        window.cancelAnimationFrame(verticalWheelReleaseFrameRef.current);
+      }
+      if (verticalWheelReleaseTimeoutRef.current !== null) {
+        window.clearTimeout(verticalWheelReleaseTimeoutRef.current);
       }
       if (wheelGesture.timeoutId !== null) {
         window.clearTimeout(wheelGesture.timeoutId);
@@ -614,42 +749,31 @@ export function ManuscriptCoverFlowIsland({
                             </button>
                           </div>
                           <div className="cover-flow-card-panel-scroll manuscript-card-outline-chapters">
-                            <Link
+                            <ManuscriptCardOutlineRow
                               className="manuscript-card-outline-part-overview"
                               href={selectedPart.href}
-                            >
-                              <span>Part Overview</span>
-                              <span className="manuscript-card-outline-meta">
-                                <small>
-                                  {formatReadingDurationForWords(
-                                    selectedPart.wordCount,
-                                  )}
-                                </small>
-                                <ProgressStateDot
-                                  status={sectionGroupProgressStatus(
-                                    progress,
-                                    sectionsForIds(selectedPart.sectionIds),
-                                  )}
-                                />
-                              </span>
-                            </Link>
+                              label="Part Overview"
+                              meta={{
+                                status: sectionGroupProgressStatus(
+                                  progress,
+                                  sectionsForIds(selectedPart.sectionIds),
+                                ),
+                                wordCount: selectedPart.wordCount,
+                              }}
+                            />
                             {selectedPart.chapters.map((chapter) => (
-                              <Link key={chapter.href} href={chapter.href}>
-                                <span>{chapter.title}</span>
-                                <span className="manuscript-card-outline-meta">
-                                  <small>
-                                    {formatReadingDurationForWords(
-                                      chapter.wordCount,
-                                    )}
-                                  </small>
-                                  <ProgressStateDot
-                                    status={sectionGroupProgressStatus(
-                                      progress,
-                                      sectionsForIds(chapter.sectionIds),
-                                    )}
-                                  />
-                                </span>
-                              </Link>
+                              <ManuscriptCardOutlineRow
+                                key={chapter.href}
+                                href={chapter.href}
+                                label={chapter.title}
+                                meta={{
+                                  status: sectionGroupProgressStatus(
+                                    progress,
+                                    sectionsForIds(chapter.sectionIds),
+                                  ),
+                                  wordCount: chapter.wordCount,
+                                }}
+                              />
                             ))}
                           </div>
                         </>
@@ -660,26 +784,20 @@ export function ManuscriptCoverFlowIsland({
                               className="manuscript-card-outline-full"
                               href={volume.firstSectionHref}
                             >
-                              <span className="manuscript-card-outline-read-label">
-                                <ChevronsRight aria-hidden="true" size={17} />
-                                <span>Read Full Manuscript</span>
-                              </span>
-                              <span className="manuscript-card-outline-meta">
-                                <small>
-                                  {formatReadingDurationForWords(
-                                    volume.wordCount,
-                                  )}
-                                </small>
-                                <ProgressStateDot status={volumeStatus} />
-                              </span>
+                              <ManuscriptCardOutlineRowContent
+                                icon="double"
+                                label="Read Full Manuscript"
+                                meta={{
+                                  status: volumeStatus,
+                                  wordCount: volume.wordCount,
+                                }}
+                              />
                             </Link>
                           </div>
                           <div className="cover-flow-card-panel-scroll manuscript-card-outline-parts">
                             {volume.parts.map((part) => (
-                              <button
+                              <ManuscriptCardOutlineRow
                                 key={part.href}
-                                type="button"
-                                className="manuscript-card-outline-part-button"
                                 onClick={() => {
                                   if (!active) return;
                                   preparePanelHeightAnimation(volume.volumeId);
@@ -688,29 +806,15 @@ export function ManuscriptCoverFlowIsland({
                                     [volume.volumeId]: part.partId,
                                   }));
                                 }}
-                              >
-                                <span className="manuscript-card-outline-title">
-                                  <ChevronRight
-                                    aria-hidden="true"
-                                    size={15}
-                                    className="manuscript-card-outline-chevron"
-                                  />
-                                  <span>Part: {part.title}</span>
-                                </span>
-                                <span className="manuscript-card-outline-meta">
-                                  <small>
-                                    {formatReadingDurationForWords(
-                                      part.wordCount,
-                                    )}
-                                  </small>
-                                  <ProgressStateDot
-                                    status={sectionGroupProgressStatus(
-                                      progress,
-                                      sectionsForIds(part.sectionIds),
-                                    )}
-                                  />
-                                </span>
-                              </button>
+                                label={`Part: ${part.title}`}
+                                meta={{
+                                  status: sectionGroupProgressStatus(
+                                    progress,
+                                    sectionsForIds(part.sectionIds),
+                                  ),
+                                  wordCount: part.wordCount,
+                                }}
+                              />
                             ))}
                           </div>
                         </>

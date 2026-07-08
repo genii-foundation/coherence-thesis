@@ -17,23 +17,28 @@ describe("cover flow motion", () => {
       previous = current;
     }
 
-    expect(maxShiftStep).toBeLessThan(4);
+    expect(maxShiftStep).toBeLessThan(5);
   });
 
-  it("keeps side covers in their own visual lane instead of crossing the active cover", () => {
+  it("keeps side cover corrections mirrored and bounded", () => {
     for (let offset = 0.05; offset <= 2.6; offset += 0.05) {
-      expect(getCoverFlowTransform(offset).shift).toBeGreaterThanOrEqual(0);
-      expect(getCoverFlowTransform(-offset).shift).toBeLessThanOrEqual(0);
+      const right = getCoverFlowTransform(offset).shift;
+      const left = getCoverFlowTransform(-offset).shift;
+
+      expect(Math.abs(right + left)).toBeLessThan(0.001);
+      expect(Math.abs(right)).toBeLessThan(340);
     }
   });
 
-  it("opens space around the active cover while compressing the far side stack", () => {
+  it("fans the first two background cards while pulling the outer stack inward", () => {
     const activeNeighbor = getCoverFlowTransform(0.44).shift;
     const firstBackground = getCoverFlowTransform(1).shift;
+    const outerBackground = getCoverFlowTransform(1.4).shift;
     const farBackground = getCoverFlowTransform(2).shift;
 
-    expect(activeNeighbor).toBeGreaterThan(225);
-    expect(firstBackground).toBeLessThan(20);
+    expect(activeNeighbor).toBeGreaterThan(260);
+    expect(firstBackground).toBeGreaterThan(80);
+    expect(outerBackground).toBeLessThan(10);
     expect(farBackground).toBeLessThan(firstBackground / 2);
   });
 
@@ -105,11 +110,14 @@ describe("cover flow motion", () => {
 
   it("hands meaningful vertical wheel intent back to the page during leftover horizontal inertia", () => {
     expect(
-      getCoverFlowWheelIntent({ deltaX: 20, deltaY: 12, shiftKey: false }),
+      getCoverFlowWheelIntent({ deltaX: 20, deltaY: 32, shiftKey: false }),
     ).toBe("vertical");
   });
 
-  it("keeps clear horizontal and shift-wheel gestures on the cover rail", () => {
+  it("keeps horizontal trackpad swipes and shift-wheel gestures on the cover rail", () => {
+    expect(
+      getCoverFlowWheelIntent({ deltaX: 20, deltaY: 12, shiftKey: false }),
+    ).toBe("horizontal");
     expect(
       getCoverFlowWheelIntent({ deltaX: 24, deltaY: 2, shiftKey: false }),
     ).toBe("horizontal");
