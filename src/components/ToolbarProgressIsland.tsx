@@ -135,8 +135,15 @@ export function ToolbarProgressIsland() {
     sectionId: null,
     isRead: false,
   });
-  const { open, setOpen, toggle, containerRef, triggerProps } =
-    useToolbarMenu<HTMLDivElement>({
+  const {
+    open,
+    rendered,
+    setOpen,
+    toggle,
+    containerRef,
+    triggerProps,
+    popoverProps,
+  } = useToolbarMenu<HTMLDivElement>({
       onDismiss: () => setSyncLoginModalEmail(""),
     });
 
@@ -487,8 +494,9 @@ export function ToolbarProgressIsland() {
           <ProgressCloudBadge connected={Boolean(user)} percent={percent} />
         )}
       </button>
-      {open && (
+      {rendered && (
         <div
+          {...popoverProps}
           id="reader-progress-menu"
           className="reader-status progress-popover"
           role="region"

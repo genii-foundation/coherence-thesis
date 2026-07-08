@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { SiteShell } from "@/components/SiteShell";
 import {
   defaultReaderThemeColor,
+  readerAnimationOptions,
   readerFontOptions,
   readerFontSizeMax,
   readerFontSizeMin,
@@ -31,7 +32,7 @@ const preferencesBootstrap = `(function(){try{var K=${JSON.stringify(
   readerPreferencesStorageKey,
 )},TC=${JSON.stringify(readerThemeColorByTheme)},FS=${JSON.stringify(
   fontStacks,
-)},MIN=${readerFontSizeMin},MAX=${readerFontSizeMax};var raw=localStorage.getItem(K);if(!raw)return;var p=JSON.parse(raw),r=document.documentElement;if(p&&TC[p.theme]){r.dataset.readerTheme=p.theme;var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',TC[p.theme]);}if(p&&typeof p.fontSize==='number'&&p.fontSize>=MIN&&p.fontSize<=MAX){r.style.setProperty('--reader-font-scale',(p.fontSize/100).toString());r.style.setProperty('--reader-font-scale-percent',p.fontSize+'%');}if(p&&FS[p.fontFamily]){r.style.setProperty('--font-body',FS[p.fontFamily]);r.style.setProperty('--font-display',FS[p.fontFamily]);r.style.setProperty('--font-ui',FS[p.fontFamily]);}}catch(e){}})();`;
+)},AO=${JSON.stringify(readerAnimationOptions)},MIN=${readerFontSizeMin},MAX=${readerFontSizeMax};var raw=localStorage.getItem(K);if(!raw)return;var p=JSON.parse(raw),r=document.documentElement;if(p&&TC[p.theme]){r.dataset.readerTheme=p.theme;var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',TC[p.theme]);}if(p&&typeof p.fontSize==='number'&&p.fontSize>=MIN&&p.fontSize<=MAX){r.style.setProperty('--reader-font-scale',(p.fontSize/100).toString());r.style.setProperty('--reader-font-scale-percent',p.fontSize+'%');}if(p&&FS[p.fontFamily]){r.style.setProperty('--font-body',FS[p.fontFamily]);r.style.setProperty('--font-display',FS[p.fontFamily]);r.style.setProperty('--font-ui',FS[p.fontFamily]);}if(p&&AO.indexOf(p.animations)!==-1){r.dataset.readerAnimations=p.animations;}}catch(e){}})();`;
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -91,7 +92,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      data-reader-animations="balanced"
+    >
       <head>
         {/* The toolbar menus and breadcrumbs are client islands that do nothing
             without JavaScript. Hide them for no-JS readers rather than present

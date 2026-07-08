@@ -20,8 +20,15 @@ function matchesQuery(values: string[], query: string): boolean {
 
 export function OutlineMenuIsland() {
   const pathname = usePathname();
-  const { open, setOpen, toggle, containerRef, triggerProps } =
-    useToolbarMenu<HTMLDivElement>();
+  const {
+    open,
+    rendered,
+    setOpen,
+    toggle,
+    containerRef,
+    triggerProps,
+    popoverProps,
+  } = useToolbarMenu<HTMLDivElement>();
   const searchRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
   const [outline, setOutline] = useState<ToolbarOutlineData | null>(null);
@@ -132,8 +139,9 @@ export function OutlineMenuIsland() {
       >
         <ListTree aria-hidden="true" size={17} />
       </button>
-      {open && (
+      {rendered && (
         <section
+          {...popoverProps}
           id="site-outline-menu"
           className="outline-popover"
           aria-label="Site outline"

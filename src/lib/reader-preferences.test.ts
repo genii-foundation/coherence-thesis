@@ -30,12 +30,14 @@ describe("reader preferences", () => {
           fontSize: 115,
           fontFamily: "charter",
           theme: "black",
+          animations: "none",
         }),
       ),
     ).toEqual({
       fontSize: 115,
       fontFamily: "charter",
       theme: "black",
+      animations: "none",
     });
   });
 
@@ -46,6 +48,7 @@ describe("reader preferences", () => {
           fontSize: 116,
           fontFamily: "papyrus",
           theme: "void",
+          animations: "sparkle",
         }),
       ),
     ).toEqual(defaultReaderPreferences);
@@ -62,7 +65,10 @@ describe("reader preferences", () => {
         fontSize: 90,
         fontFamily: "georgia",
         theme: "light",
+        animations: "balanced",
       }),
-    ).toBe('{"fontSize":90,"fontFamily":"georgia","theme":"light"}');
+    ).toBe(
+      '{"fontSize":90,"fontFamily":"georgia","theme":"light","animations":"balanced"}',
+    );
   });
 });

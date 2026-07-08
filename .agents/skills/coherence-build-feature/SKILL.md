@@ -87,6 +87,7 @@ the preview looks good.
 - Keep dropdowns inside the viewport with internal scrolling when needed.
 - Match existing typography, radius, color, spacing, and focus states.
 - Do not add hover lift, bounce, glossy controls, or one-off gradients.
+- Use the shared connected radio pattern for radio controls: `settings-radio-section`, `settings-radio-group`, and `settings-radio-option`.
 - Use `Number.toLocaleString()` or `Intl.NumberFormat` for displayed counts.
 
 ## Pull Request Quality
