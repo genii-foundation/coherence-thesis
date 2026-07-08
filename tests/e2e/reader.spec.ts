@@ -1310,6 +1310,8 @@ test("progress button wraps percent in a cloud when signed in", async ({
   let progressWrites = 0;
   let consentWrites = 0;
   let eventWrites = 0;
+  let holdNextProgressWrite = false;
+  let releaseProgressWrite: () => void = () => {};
 
   await page.route("**/auth/v1/user**", async (route) => {
     await route.fulfill({
@@ -1350,6 +1352,12 @@ test("progress button wraps percent in a cloud when signed in", async ({
   await page.route("**/rest/v1/reader_progress**", async (route) => {
     if (route.request().method() !== "GET") {
       progressWrites += 1;
+      if (holdNextProgressWrite) {
+        holdNextProgressWrite = false;
+        await new Promise<void>((resolve) => {
+          releaseProgressWrite = resolve;
+        });
+      }
     }
     await route.fulfill({
       status: 200,
@@ -1407,7 +1415,7 @@ test("progress button wraps percent in a cloud when signed in", async ({
   await expect(progressButton).toHaveClass(/is-signed-in/);
   const syncSection = page.locator(".reader-sync");
   await expect(page.getByText("Reading progress")).toBeVisible();
-  await expect(page.getByText("Synced across all your devices.")).toBeVisible();
+  await expect(page.getByText("Synced across all your devices.")).toHaveCount(0);
   await expect(syncSection.getByText("Account:")).toBeVisible();
   await expect(syncSection.getByText("reader@example.com")).toBeVisible();
   await expect(syncSection.getByText("Last synced:")).toBeVisible();
@@ -1416,8 +1424,19 @@ test("progress button wraps percent in a cloud when signed in", async ({
     syncSection.getByText("Progress synced. Reading history details will retry."),
   ).toBeVisible();
   await expect(syncSection.getByRole("button")).toHaveCount(2);
-  await expect(syncSection.getByRole("button", { name: "Sync now" })).toBeVisible();
-  await expect(syncSection.getByRole("button", { name: "Sign out" })).toBeVisible();
+  const syncNowButton = syncSection.getByRole("button", { name: "Sync now" });
+  await expect(syncNowButton).toBeVisible();
+  await expect(syncNowButton).toHaveClass(/reader-menu-link/);
+  await expect(syncNowButton.locator(".reader-menu-link-icon")).toHaveCount(1);
+  await expect(syncSection.getByRole("button", { name: "Sign out" })).toHaveClass(
+    /reader-menu-link/,
+  );
+  holdNextProgressWrite = true;
+  await syncNowButton.click();
+  await expect(syncNowButton).toHaveAttribute("aria-busy", "true");
+  await expect(syncNowButton.locator(".reader-sync-spinner")).toBeVisible();
+  releaseProgressWrite();
+  await expect(syncNowButton).toHaveAttribute("aria-busy", "false");
   await expect(page.getByText("Allow sync")).toHaveCount(0);
   await expect(page.getByText("Pause sync")).toHaveCount(0);
   await expect(page.getByText("Resume sync")).toHaveCount(0);
@@ -2064,6 +2083,8 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   const readingMapLink = popover.getByRole("link", { name: "Open reading map" });
   await expect(readingMapLink).toBeVisible();
   await expect(readingMapLink).toHaveAttribute("href", "/progress/");
+  await expect(readingMapLink).toHaveClass(/reader-menu-link/);
+  await expect(readingMapLink.locator(".reader-menu-link-icon")).toHaveCount(1);
   const markReadButton = popover.getByRole("button", {
     name: /^(Mark current section as read|Current section is marked read)$/,
   });
@@ -2089,6 +2110,12 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await expect(popover.locator(".recently-read a").first()).toContainText(
     firstSection.title,
   );
+  await expect(popover.locator(".recently-read a").first()).toHaveClass(
+    /reader-menu-link/,
+  );
+  await expect(
+    popover.locator(".recently-read a").first().locator(".reader-menu-link-icon"),
+  ).toHaveCount(1);
   const recentLinkMetrics = await popover
     .locator(".recently-read a")
     .first()

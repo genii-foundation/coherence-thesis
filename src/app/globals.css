@@ -2991,6 +2991,86 @@ input {
   white-space: nowrap;
 }
 
+.reader-menu-link {
+  appearance: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  width: 100%;
+  min-width: 0;
+  min-height: 2.05rem;
+  box-sizing: border-box;
+  overflow: visible;
+  border: 1px solid transparent;
+  border-radius: calc(var(--radius) - 2px);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.25;
+  padding: 0.34rem 0.45rem;
+  text-align: left;
+  text-decoration: none;
+  text-decoration-color: rgba(19, 32, 42, 0.28);
+  text-underline-offset: 0.2em;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    opacity 160ms ease,
+    text-decoration-color 160ms ease;
+}
+
+.reader-menu-link span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.reader-menu-link-icon,
+.reader-sync-spinner {
+  flex: 0 0 auto;
+  margin-top: 0.12rem;
+  color: var(--bronze-deep);
+  stroke-width: 2;
+}
+
+.reader-sync-spinner {
+  animation: reader-sync-spin 720ms linear infinite;
+}
+
+.reader-menu-link:hover,
+.reader-menu-link:focus-visible {
+  border-color: rgba(119, 84, 42, 0.24);
+  background: rgba(164, 123, 63, 0.1);
+  color: var(--ink);
+  outline: none;
+  text-decoration-color: rgba(119, 84, 42, 0.72);
+}
+
+.reader-menu-link:disabled {
+  cursor: wait;
+  opacity: 0.78;
+}
+
+.reader-menu-link:disabled:hover,
+.reader-menu-link:disabled:focus-visible {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+@keyframes reader-sync-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reader-sync-spinner {
+    animation: none;
+  }
+}
+
 .updated-badge {
   display: inline-flex;
   align-items: center;
@@ -3186,41 +3266,19 @@ input {
 }
 
 .progress-link-list a {
-  display: flex;
   flex: none;
   align-self: stretch;
   width: calc(22rem - 2.4rem);
   inline-size: calc(22rem - 2.4rem);
   max-width: none;
   min-width: 100%;
-  box-sizing: border-box;
-  overflow: visible;
-  border: 1px solid transparent;
-  border-radius: var(--radius);
-  color: var(--ink);
-  padding: 0.32rem 0.45rem;
-  line-height: 1.25;
-  text-align: left;
-  text-decoration: none;
-  text-decoration-color: rgba(19, 32, 42, 0.28);
-  text-underline-offset: 0.2em;
   text-overflow: clip;
   white-space: normal;
-  overflow-wrap: anywhere;
-  transition:
-    background 160ms ease,
-    border-color 160ms ease,
-    color 160ms ease,
-    text-decoration-color 160ms ease;
 }
 
-.progress-link-list a:hover,
-.progress-link-list a:focus-visible {
-  border-color: rgba(119, 84, 42, 0.24);
-  background: rgba(164, 123, 63, 0.1);
-  color: var(--ink);
-  outline: none;
-  text-decoration-color: rgba(119, 84, 42, 0.72);
+.progress-link-list a span {
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .manuscript-prose {
