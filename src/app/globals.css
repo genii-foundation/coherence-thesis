@@ -1583,7 +1583,7 @@ input {
   --cover-flow-shift: 0px;
   --cover-flow-z: 0px;
   display: grid;
-  gap: 1.25rem;
+  gap: 1.85rem;
   position: relative;
   width: 100%;
   color: var(--ink);
@@ -1785,6 +1785,10 @@ input {
 
 .manuscript-card-outline-full:hover,
 .manuscript-card-outline-full:focus-visible,
+.cover-flow-cover-link:hover
+  + .cover-flow-card-panel
+  .manuscript-card-outline-full,
+.cover-flow-card-panel.is-read-cue .manuscript-card-outline-full,
 .manuscript-card-outline-chapters a:hover,
 .manuscript-card-outline-chapters a:focus-visible {
   border-color: rgba(119, 84, 42, 0.38);

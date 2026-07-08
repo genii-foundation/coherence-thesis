@@ -27,7 +27,7 @@ export const coverFlowTuning = {
     min: 0.54,
   },
   spacing: {
-    centerGutterPx: 325,
+    centerGutterPx: 315,
     centerGutterFalloff: 1.18,
     centerGutterPeakOffset: 0.58,
     sideStackCompressionPx: 760,

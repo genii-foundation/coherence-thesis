@@ -2479,6 +2479,17 @@ test("home page presents an interactive cover flow", async ({ page }) => {
       }),
     )
     .toBeGreaterThan(idleCoverScale + 0.015);
+  const readCueOutline = await activePanel
+    .locator(".manuscript-card-outline-full")
+    .evaluate((element) => {
+      const style = getComputedStyle(element);
+      return {
+        backgroundColor: style.backgroundColor,
+        borderColor: style.borderColor,
+      };
+    });
+  expect(readCueOutline.backgroundColor).not.toBe("rgba(0, 0, 0, 0)");
+  expect(readCueOutline.borderColor).not.toBe("rgba(0, 0, 0, 0)");
   await page.mouse.move(4, 4);
 
   const panelMetrics = await activeCard.evaluate((card) => {
@@ -2494,6 +2505,8 @@ test("home page presents an interactive cover flow", async ({ page }) => {
 
     return {
       coverHeight: coverBox?.height ?? 0,
+      coverToPanelGap:
+        coverBox && panelBox ? panelBox.top - coverBox.bottom : 0,
       panelHeight: panelBox?.height ?? 0,
       panelMaxHeight: panelStyle?.maxHeight ?? "",
       panelOverflowY: panelStyle?.overflowY ?? "",
@@ -2506,6 +2519,7 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   expect(panelMetrics.panelHeight).toBeLessThanOrEqual(
     (panelMetrics.coverHeight * 2) / 3 + 2,
   );
+  expect(panelMetrics.coverToPanelGap).toBeGreaterThanOrEqual(22);
   expect(panelMetrics.panelMaxHeight).not.toBe("none");
   expect(panelMetrics.panelOverflowY).toBe("hidden");
   expect(panelMetrics.panelTransitionProperty).toContain("height");

@@ -32,7 +32,7 @@ describe("cover flow motion", () => {
     const firstBackground = getCoverFlowTransform(1).shift;
     const farBackground = getCoverFlowTransform(2).shift;
 
-    expect(activeNeighbor).toBeGreaterThan(235);
+    expect(activeNeighbor).toBeGreaterThan(225);
     expect(firstBackground).toBeLessThan(20);
     expect(farBackground).toBeLessThan(firstBackground / 2);
   });
