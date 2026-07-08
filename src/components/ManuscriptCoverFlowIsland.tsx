@@ -489,6 +489,8 @@ export function ManuscriptCoverFlowIsland({
                   }}
                   className={`cover-flow-card manuscript-cover-card-${volume.order}${
                     active ? " is-active" : ""
+                  }${
+                    readCueVolumeId === volume.volumeId ? " is-read-cue" : ""
                   }`}
                   aria-label={`Open ${volume.title}`}
                   aria-current={active ? "true" : undefined}
@@ -520,6 +522,11 @@ export function ManuscriptCoverFlowIsland({
                     href={volume.firstSectionHref}
                     className="cover-flow-cover-link"
                     aria-label={`Open ${volume.title}`}
+                    onClick={(event) => {
+                      if (active) return;
+                      event.preventDefault();
+                      scrollToIndex(index);
+                    }}
                   >
                     <span className="cover-flow-image-frame">
                       <Image

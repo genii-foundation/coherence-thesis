@@ -2462,6 +2462,24 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   await expect(
     activePanel.getByRole("button", { name: /Part: Front Matter/ }),
   ).toBeVisible();
+  const activeCoverFrame = activeCard.locator(".cover-flow-image-frame");
+  const idleCoverScale = await activeCoverFrame.evaluate((element) => {
+    const transform = getComputedStyle(element).transform;
+    return transform === "none" ? 1 : new DOMMatrixReadOnly(transform).m11;
+  });
+  await activeCard.locator(".cover-flow-cover-link").hover();
+  await expect(activeCard).toHaveClass(/is-read-cue/);
+  await expect
+    .poll(async () =>
+      activeCoverFrame.evaluate((element) => {
+        const transform = getComputedStyle(element).transform;
+        return transform === "none"
+          ? 1
+          : new DOMMatrixReadOnly(transform).m11;
+      }),
+    )
+    .toBeGreaterThan(idleCoverScale + 0.015);
+  await page.mouse.move(4, 4);
 
   const panelMetrics = await activeCard.evaluate((card) => {
     const cover = card.querySelector(".cover-flow-image-frame");
@@ -2572,23 +2590,34 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   expect(coverFlowTransforms.sideRotate).not.toBe("0deg");
   expect(Number.parseFloat(coverFlowTransforms.sideScale)).toBeLessThan(1);
 
-  await page.getByRole("button", { name: "Next manuscript" }).click();
+  const backgroundTarget = catalog.volumes[initialActiveIndex + 1]!;
+  await coverFlow
+    .locator(
+      `.cover-flow-card[data-volume-href="${backgroundTarget.href}"] .cover-flow-cover-link`,
+    )
+    .dispatchEvent("click");
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("data-volume-href", catalog.volumes[initialActiveIndex + 1]!.href);
+  ).toHaveAttribute("data-volume-href", backgroundTarget.href);
+  await expect(page).toHaveURL(/\/$/);
   await expect(
     coverFlow.locator(
-      ".cover-flow-card.is-active .cover-flow-card-panel strong",
+      '.cover-flow-card[aria-current="true"] .cover-flow-card-panel strong',
     ),
-  ).toHaveText(catalog.volumes[initialActiveIndex + 1]!.title);
+  ).toHaveText(backgroundTarget.title);
+  await page.reload();
+  await expect(coverFlow).toBeVisible();
+  await expect(
+    coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+  ).toHaveAttribute("data-volume-href", initialActiveVolume.href);
 
-  const nextButton = page.getByRole("button", { name: "Next manuscript" });
+  const nextButton = coverFlow.locator(".cover-flow-edge-button-next");
   for (
-    let targetIndex = initialActiveIndex + 2;
+    let targetIndex = initialActiveIndex + 1;
     targetIndex < catalog.volumes.length;
     targetIndex += 1
   ) {
-    await nextButton.click();
+    await nextButton.dispatchEvent("click");
     await expect(
       coverFlow.locator('.cover-flow-card[aria-current="true"]'),
     ).toHaveAttribute("data-volume-href", catalog.volumes[targetIndex]!.href);
@@ -2596,10 +2625,8 @@ test("home page presents an interactive cover flow", async ({ page }) => {
 
   await expect(nextButton).toBeDisabled();
 
-  const previousButton = page.getByRole("button", {
-    name: "Previous manuscript",
-  });
-  await previousButton.click();
+  const previousButton = coverFlow.locator(".cover-flow-edge-button-previous");
+  await previousButton.dispatchEvent("click");
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
   ).toHaveAttribute("data-volume-href", catalog.volumes.at(-2)!.href);

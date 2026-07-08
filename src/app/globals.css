@@ -1631,13 +1631,25 @@ input {
     0 7px 18px rgba(44, 31, 18, 0.14);
   transition:
     border-color 180ms ease,
-    box-shadow 180ms ease;
+    box-shadow 220ms ease,
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateZ(0) scale(1);
+  transform-origin: center center;
+  will-change: transform;
 }
 
 .cover-flow-card:hover .cover-flow-image-frame,
 .cover-flow-cover-link:focus-visible .cover-flow-image-frame {
   border-color: rgb(var(--card-rgb) / 0.68);
   box-shadow: var(--cover-shadow-hover);
+}
+
+.cover-flow-card.is-active.is-read-cue .cover-flow-image-frame {
+  border-color: rgb(var(--card-rgb) / 0.72);
+  box-shadow:
+    0 46px 80px rgba(44, 31, 18, 0.25),
+    0 14px 30px rgba(44, 31, 18, 0.18);
+  transform: translateZ(1.25rem) scale(1.024);
 }
 
 .cover-flow-image-frame::after {
