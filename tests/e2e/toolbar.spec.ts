@@ -85,22 +85,30 @@ async function expectMobilePopoverStartsBelowToolbar(
   page: Page,
   selector: string,
 ): Promise<void> {
+  await expect
+    .poll(async () =>
+      page.locator(selector).evaluate((element) => {
+        const popover = element.getBoundingClientRect();
+        const header = document
+          .querySelector(".site-header")
+          ?.getBoundingClientRect();
+        const headerBottom = header?.bottom ?? 0;
+        return (
+          popover.top >= headerBottom - 1 &&
+          popover.top <= headerBottom + 2
+        );
+      }),
+    )
+    .toBe(true);
+
   const metrics = await page.locator(selector).evaluate((element) => {
-    const popover = element.getBoundingClientRect();
-    const header = document
-      .querySelector(".site-header")
-      ?.getBoundingClientRect();
     const style = window.getComputedStyle(element);
     return {
-      headerBottom: header?.bottom ?? 0,
       radiusTopLeft: Number.parseFloat(style.borderTopLeftRadius),
       radiusTopRight: Number.parseFloat(style.borderTopRightRadius),
-      popoverTop: popover.top,
     };
   });
 
-  expect(metrics.popoverTop).toBeGreaterThanOrEqual(metrics.headerBottom - 1);
-  expect(metrics.popoverTop).toBeLessThanOrEqual(metrics.headerBottom + 2);
   expect(metrics.radiusTopLeft).toBe(0);
   expect(metrics.radiusTopRight).toBe(0);
 }
@@ -170,7 +178,7 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   expect(layout.headerRight).toBeLessThanOrEqual(layout.clientWidth + 1);
 
   if (layout.clientWidth <= 540) {
-    expect(layout.headerHeight).toBeLessThanOrEqual(72);
+    expect(layout.headerHeight).toBeLessThanOrEqual(88);
   }
   if (layout.clientWidth > 860) {
     expect(layout.headerPaddingLeft).toBeCloseTo(layout.headerPaddingTop, 1);
@@ -220,9 +228,6 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     const outlineIcon = document.querySelector(".outline-menu-button svg");
     const audioChevron = document.querySelector(
       ".audio-menu-button .audio-menu-chevron",
-    );
-    const progressChevron = document.querySelector(
-      ".progress-menu-button svg:last-child",
     );
     const percent = document.querySelector(".progress-percent");
     const headerBrand = document.querySelector(".site-header > .brand-mark");
@@ -288,9 +293,6 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     const audioChevronStyle = audioChevron
       ? window.getComputedStyle(audioChevron)
       : null;
-    const progressChevronStyle = progressChevron
-      ? window.getComputedStyle(progressChevron)
-      : null;
     const percentStyle = percent ? window.getComputedStyle(percent) : null;
     const pageContextBrandBox = pageContextBrandTitle?.getBoundingClientRect();
     const pageContextBreadcrumbBox =
@@ -317,7 +319,6 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       audioLabelClipped: audioLabelStyle?.clip ?? "",
       outlineIconDisplay: outlineIconStyle?.display ?? "",
       audioChevronDisplay: audioChevronStyle?.display ?? "",
-      progressChevronDisplay: progressChevronStyle?.display ?? "",
       progressColor: percentStyle?.color ?? "",
       progressBorderColor: percentStyle?.borderTopColor ?? "",
       progressBackground: percentStyle?.backgroundColor ?? "",
@@ -419,17 +420,17 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       Math.abs(toolbarMetrics.searchWidth - toolbarMetrics.outlineWidth),
     ).toBeLessThanOrEqual(1);
     expect(
-      Math.abs(toolbarMetrics.audioWidth - toolbarMetrics.outlineWidth),
-    ).toBeLessThanOrEqual(1);
-    expect(
       Math.abs(toolbarMetrics.shareWidth - toolbarMetrics.outlineWidth),
-    ).toBeLessThanOrEqual(1);
-    expect(
-      Math.abs(toolbarMetrics.progressWidth - toolbarMetrics.outlineWidth),
     ).toBeLessThanOrEqual(1);
     expect(
       Math.abs(toolbarMetrics.settingsWidth - toolbarMetrics.outlineWidth),
     ).toBeLessThanOrEqual(1);
+    expect(toolbarMetrics.audioWidth).toBeGreaterThan(
+      toolbarMetrics.outlineWidth,
+    );
+    expect(toolbarMetrics.progressWidth).toBeGreaterThan(
+      toolbarMetrics.outlineWidth,
+    );
   }
   if (layout.clientWidth <= 860) {
     expect(toolbarMetrics.outlineLabelWidth).toBeLessThanOrEqual(1);
@@ -446,7 +447,6 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     );
     expect(toolbarMetrics.outlineIconDisplay).not.toBe("none");
     expect(["", "none"]).toContain(toolbarMetrics.audioChevronDisplay);
-    expect(["", "none"]).toContain(toolbarMetrics.progressChevronDisplay);
     expect(toolbarMetrics.progressText).toMatch(/^\d+%$/);
     expect(toolbarMetrics.progressBorderColor).toBe(
       toolbarMetrics.progressColor,

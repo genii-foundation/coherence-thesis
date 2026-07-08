@@ -1177,6 +1177,11 @@ input {
   color: var(--ink);
 }
 
+.site-nav > * > .audio-menu-button[data-toolbar-menu-trigger][aria-expanded="true"] {
+  background: transparent;
+  color: var(--ink-soft);
+}
+
 .audio-playback-icon {
   display: block;
   width: var(--toolbar-emphasis-control-size);
