@@ -537,6 +537,11 @@ input {
   visibility: visible;
 }
 
+.tooltip-arrow polygon {
+  stroke-dasharray: 0 30 40;
+  stroke-linejoin: round;
+}
+
 .clean-tooltip {
   z-index: 60;
   max-width: min(24rem, calc(100vw - 1.5rem));
