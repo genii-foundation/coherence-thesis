@@ -3239,8 +3239,15 @@ input {
     color 160ms ease;
 }
 
-.settings-reset-button:hover,
-.settings-reset-button:focus-visible {
+.settings-reset-button:disabled {
+  border-color: rgba(119, 84, 42, 0.18);
+  background: rgba(255, 252, 246, 0.44);
+  color: rgba(52, 70, 82, 0.42);
+  cursor: default;
+}
+
+.settings-reset-button:not(:disabled):hover,
+.settings-reset-button:not(:disabled):focus-visible {
   border-color: rgba(119, 84, 42, 0.5);
   background: var(--nav-hover-background);
   color: var(--ink);
@@ -3299,13 +3306,11 @@ input {
 }
 
 .font-select-options {
-  position: absolute;
-  top: calc(100% + 0.35rem);
-  right: 0;
-  left: 0;
+  position: fixed;
   z-index: 25;
   display: grid;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel-background);

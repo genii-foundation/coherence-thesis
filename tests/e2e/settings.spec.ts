@@ -8,6 +8,10 @@ test("reader settings update and persist local appearance preferences", async ({
   page,
 }) => {
   await page.goto(firstSection.href);
+  await page.evaluate((key) => {
+    window.localStorage.removeItem(key);
+  }, readerPreferencesStorageKey);
+  await page.reload();
 
   const settingsButton = page.getByRole("button", { name: "Reader settings" });
   await expect(settingsButton).toBeVisible();
@@ -31,15 +35,22 @@ test("reader settings update and persist local appearance preferences", async ({
 
   const firstParagraph = page.locator(".manuscript-prose p").first();
   await expect(firstParagraph).toBeVisible();
-  await expect(
-    settingsMenu.getByRole("button", { name: "Reset font size" }),
-  ).toBeVisible();
-  await expect(
-    settingsMenu.getByRole("button", { exact: true, name: "Reset font" }),
-  ).toBeVisible();
-  await expect(
-    settingsMenu.getByRole("button", { name: "Reset theme" }),
-  ).toBeVisible();
+  const resetFontSizeButton = settingsMenu.getByRole("button", {
+    name: "Reset font size",
+  });
+  const resetFontButton = settingsMenu.getByRole("button", {
+    exact: true,
+    name: "Reset font",
+  });
+  const resetThemeButton = settingsMenu.getByRole("button", {
+    name: "Reset theme",
+  });
+  await expect(resetFontSizeButton).toBeVisible();
+  await expect(resetFontSizeButton).toBeDisabled();
+  await expect(resetFontButton).toBeVisible();
+  await expect(resetFontButton).toBeDisabled();
+  await expect(resetThemeButton).toBeVisible();
+  await expect(resetThemeButton).toBeDisabled();
   const initialAppearance = await page.evaluate(() => {
     const heading = document.querySelector(".manuscript-heading h1");
     const paragraph = document.querySelector(".manuscript-prose p");
@@ -71,9 +82,11 @@ test("reader settings update and persist local appearance preferences", async ({
     input.dispatchEvent(new Event("input", { bubbles: true }));
     input.dispatchEvent(new Event("change", { bubbles: true }));
   });
+  await expect(resetFontSizeButton).toBeEnabled();
   await expect(settingsMenu.getByText("125% text")).toHaveCount(0);
-  await settingsMenu.getByRole("button", { name: "Reset font size" }).click();
+  await resetFontSizeButton.click();
   await expect(fontSizeSlider).toHaveValue("100");
+  await expect(resetFontSizeButton).toBeDisabled();
   await fontSizeSlider.evaluate((element) => {
     const input = element as HTMLInputElement;
     const valueSetter = Object.getOwnPropertyDescriptor(
@@ -87,7 +100,49 @@ test("reader settings update and persist local appearance preferences", async ({
 
   const fontSelect = settingsMenu.getByRole("button", { name: "Reader font" });
   await fontSelect.click();
-  const georgiaOption = settingsMenu.getByRole("button", {
+  const fontOptions = page.locator(".font-select-options");
+  await expect(fontOptions).toBeVisible();
+  const fontOptionsMetrics = await page.evaluate(() => {
+    const options = document.querySelector(".font-select-options");
+    const settings = document.querySelector(".settings-popover");
+    const rect = (element: Element | null) => {
+      if (!element) return null;
+      const box = element.getBoundingClientRect();
+      return {
+        bottom: box.bottom,
+        left: box.left,
+        right: box.right,
+        top: box.top,
+      };
+    };
+    const optionsBox = rect(options);
+    const settingsBox = rect(settings);
+    return {
+      optionsBox,
+      parentTag: options?.parentElement?.tagName ?? "",
+      settingsBox,
+      settingsContainsOptions: Boolean(
+        options && settings?.contains(options),
+      ),
+      viewportHeight: window.innerHeight,
+      viewportWidth: window.innerWidth,
+    };
+  });
+  expect(fontOptionsMetrics.parentTag).toBe("BODY");
+  expect(fontOptionsMetrics.settingsContainsOptions).toBe(false);
+  expect(fontOptionsMetrics.optionsBox).not.toBeNull();
+  expect(fontOptionsMetrics.settingsBox).not.toBeNull();
+  if (fontOptionsMetrics.optionsBox) {
+    expect(fontOptionsMetrics.optionsBox.top).toBeGreaterThanOrEqual(0);
+    expect(fontOptionsMetrics.optionsBox.left).toBeGreaterThanOrEqual(0);
+    expect(fontOptionsMetrics.optionsBox.right).toBeLessThanOrEqual(
+      fontOptionsMetrics.viewportWidth,
+    );
+    expect(fontOptionsMetrics.optionsBox.bottom).toBeLessThanOrEqual(
+      fontOptionsMetrics.viewportHeight,
+    );
+  }
+  const georgiaOption = page.getByRole("button", {
     name: "Georgia",
     exact: true,
   });
@@ -98,12 +153,14 @@ test("reader settings update and persist local appearance preferences", async ({
   expect(georgiaOptionFont).toContain("Georgia");
   await georgiaOption.click();
   await expect(fontSelect).toContainText("Georgia");
+  await expect(resetFontButton).toBeEnabled();
   await expect(settingsMenu.getByText("Saved in this browser")).toHaveCount(0);
 
   const initialBodyBackground = await page.evaluate(
     () => getComputedStyle(document.body).backgroundColor,
   );
   await settingsMenu.getByRole("button", { name: "Dark" }).click();
+  await expect(resetThemeButton).toBeEnabled();
 
   await expect(page.locator("html")).toHaveAttribute(
     "data-reader-theme",
