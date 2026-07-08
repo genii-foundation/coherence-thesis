@@ -2639,6 +2639,7 @@ input {
 
 .overview-node {
   --overview-body-gap: clamp(1rem, 3vw, 1.4rem);
+  --overview-card-padding: clamp(1.45rem, 3vw, 1.8rem);
   --overview-cover-width: 8rem;
   --overview-heading-gap: 1rem;
   --overview-number-width: 3rem;
@@ -2667,7 +2668,7 @@ input {
   gap: var(--overview-heading-gap);
   min-width: 0;
   pointer-events: none;
-  padding: 1.1rem 1.1rem 0.9rem;
+  padding: var(--overview-card-padding) var(--overview-card-padding) 1rem;
 }
 
 .overview-node-card-link {
@@ -2734,7 +2735,7 @@ input {
   align-items: start;
   gap: var(--overview-body-gap);
   pointer-events: none;
-  padding: 0 1.1rem 1.2rem;
+  padding: 0 var(--overview-card-padding) var(--overview-card-padding);
 }
 
 .overview-node-content {

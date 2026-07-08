@@ -377,6 +377,11 @@ test("overview links into canonical manuscript sections", async ({
   await expect(
     page.locator(".overview-read-link-indicator").first(),
   ).toHaveText("››");
+  const cardPadding = await page
+    .locator(".overview-node-heading")
+    .first()
+    .evaluate((heading) => parseFloat(getComputedStyle(heading).paddingLeft));
+  expect(cardPadding).toBeGreaterThanOrEqual(23);
   const overviewNodeAlignment = await page.evaluate(() => {
     const nodes = Array.from(document.querySelectorAll(".overview-node"));
 
