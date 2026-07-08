@@ -112,6 +112,13 @@ async function responseForAudioUrl(url: string): Promise<Response> {
   return fetch(url, { credentials: "same-origin" });
 }
 
+function hostedVoiceLabel(voice: AudioClipManifest["voices"][number]): string {
+  if (voice.provider === "fish-audio" && voice.id === "default") {
+    return "Fish Audio Default";
+  }
+  return voice.label;
+}
+
 export function createHostedClipProvider(
   manifest: AudioClipManifest,
   fallback: AudioPlaybackProvider = createBrowserSpeechProvider(),
@@ -144,7 +151,7 @@ export function createHostedClipProvider(
       return [
         ...manifest.voices.map((voice) => ({
           id: clipVoicePreferenceId(voice.id),
-          label: voice.label,
+          label: hostedVoiceLabel(voice),
         })),
         ...fallback.getVoices(),
       ];

@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { createBrowserSpeechProvider } from "./audio-playback";
+import { createBrowserSpeechProvider, createHostedClipProvider } from "./audio-playback";
 
 // Minimal fakes for the browser speech engine so the provider contract can be
 // exercised in the node test environment.
@@ -152,5 +152,39 @@ describe("browser speech provider", () => {
       unsubscribe();
       expect(stub.listenerCount()).toBe(0);
     });
+  });
+});
+
+describe("hosted clip provider", () => {
+  it("labels the default Fish voice for the voice menu", () => {
+    const provider = createHostedClipProvider(
+      {
+        version: 1,
+        voices: [
+          {
+            id: "default",
+            label: "default",
+            provider: "fish-audio",
+            model: "s2.1-pro-free",
+            sections: [],
+          },
+        ],
+      },
+      {
+        id: "fallback",
+        isSupported: () => false,
+        getVoices: () => [],
+        subscribeVoices: () => () => {},
+        speak: () => {},
+        pause: () => {},
+        resume: () => {},
+        cancel: () => {},
+        isPaused: () => false,
+      },
+    );
+
+    expect(provider.getVoices()).toEqual([
+      { id: "clip:default", label: "Fish Audio Default" },
+    ]);
   });
 });
