@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -12,6 +13,7 @@ import { Search } from "lucide-react";
 import { loadSearchIndex, type SearchIndexEntry } from "@/lib/reader-data";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import { appendStoredEvent } from "@/lib/reader-progress-store";
+import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 
 type SearchResult = SearchIndexEntry & {
   score: number;
@@ -92,12 +94,11 @@ function scoreEntry(entry: NormalizedEntry, terms: string[], phrase: string): Se
 
 export function SearchMenuIsland() {
   const pathname = usePathname();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const resultRefs = useRef<Array<HTMLAnchorElement | null>>([]);
   const lastSubmittedQueryRef = useRef("");
-  const [open, setOpen] = useState(false);
+  const { open, setOpen, toggle, containerRef, triggerRef, triggerProps } =
+    useToolbarMenu<HTMLDivElement>();
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState<NormalizedEntry[]>([]);
   const [loadError, setLoadError] = useState(false);
@@ -119,14 +120,14 @@ export function SearchMenuIsland() {
       setQuery("");
     }, 0);
     return () => window.clearTimeout(closeTimer);
-  }, [pathname]);
+  }, [pathname, setOpen]);
 
-  function closeSearch(restoreFocus = false): void {
+  const closeSearch = useCallback((restoreFocus = false): void => {
     setOpen(false);
     if (restoreFocus) {
-      window.setTimeout(() => buttonRef.current?.focus(), 0);
+      window.setTimeout(() => triggerRef.current?.focus(), 0);
     }
-  }
+  }, [setOpen, triggerRef]);
 
   useEffect(() => {
     if (!open) return;
@@ -146,7 +147,7 @@ export function SearchMenuIsland() {
       document.removeEventListener("pointerdown", onPointerDown);
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, [open]);
+  }, [closeSearch, containerRef, open]);
 
   const results = useMemo(() => {
     const terms = queryTerms(query);
@@ -253,13 +254,12 @@ export function SearchMenuIsland() {
   return (
     <div className="search-menu" ref={containerRef}>
       <button
-        ref={buttonRef}
+        {...triggerProps}
         type="button"
         className="search-menu-button"
         aria-label="Search manuscripts"
-        aria-expanded={open}
         aria-controls="site-search-menu"
-        onClick={() => setOpen((current) => !current)}
+        onClick={toggle}
       >
         <Search aria-hidden="true" size={18} />
       </button>
