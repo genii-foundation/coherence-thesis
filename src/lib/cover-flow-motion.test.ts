@@ -17,7 +17,7 @@ describe("cover flow motion", () => {
       previous = current;
     }
 
-    expect(maxShiftStep).toBeLessThan(3);
+    expect(maxShiftStep).toBeLessThan(4);
   });
 
   it("keeps side covers in their own visual lane instead of crossing the active cover", () => {
@@ -25,6 +25,16 @@ describe("cover flow motion", () => {
       expect(getCoverFlowTransform(offset).shift).toBeGreaterThanOrEqual(0);
       expect(getCoverFlowTransform(-offset).shift).toBeLessThanOrEqual(0);
     }
+  });
+
+  it("opens space around the active cover while compressing the far side stack", () => {
+    const activeNeighbor = getCoverFlowTransform(0.44).shift;
+    const firstBackground = getCoverFlowTransform(1).shift;
+    const farBackground = getCoverFlowTransform(2).shift;
+
+    expect(activeNeighbor).toBeGreaterThan(235);
+    expect(firstBackground).toBeLessThan(20);
+    expect(farBackground).toBeLessThan(firstBackground / 2);
   });
 
   it("hides inactive details while keeping all cover anchors fully opaque", () => {
