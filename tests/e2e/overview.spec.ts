@@ -94,6 +94,52 @@ test("home page presents the overview and manuscript entry points", async ({
     "color",
     hexToRgb("#a47b3f"),
   );
+  const highlightPanel = page.getByRole("region", {
+    name: "Background highlight intensity",
+  });
+  await expect(highlightPanel).toBeVisible();
+  const highlightPanelBounds = await highlightPanel.evaluate((panel) => {
+    const rect = panel.getBoundingClientRect();
+    return {
+      bottom: rect.bottom,
+      left: rect.left,
+      right: rect.right,
+      top: rect.top,
+      viewportHeight: window.innerHeight,
+      viewportWidth: window.innerWidth,
+    };
+  });
+  expect(highlightPanelBounds.left).toBeGreaterThanOrEqual(0);
+  expect(highlightPanelBounds.right).toBeLessThanOrEqual(
+    highlightPanelBounds.viewportWidth,
+  );
+  expect(highlightPanelBounds.top).toBeGreaterThanOrEqual(0);
+  expect(highlightPanelBounds.bottom).toBeLessThanOrEqual(
+    highlightPanelBounds.viewportHeight,
+  );
+  await expect(
+    highlightPanel.getByRole("button", { name: /^Highlight intensity/ }),
+  ).toHaveCount(5);
+  await expect(
+    highlightPanel.getByRole("button", { name: "Highlight intensity 3" }),
+  ).toHaveAttribute("aria-pressed", "true");
+  const defaultBackgroundImage = await page.evaluate(
+    () => getComputedStyle(document.body).backgroundImage,
+  );
+  await highlightPanel
+    .getByRole("button", { name: "Highlight intensity 5" })
+    .click();
+  await expect(
+    highlightPanel.getByRole("button", { name: "Highlight intensity 5" }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-background-highlight",
+    "5",
+  );
+  const strongerBackgroundImage = await page.evaluate(
+    () => getComputedStyle(document.body).backgroundImage,
+  );
+  expect(strongerBackgroundImage).not.toBe(defaultBackgroundImage);
   await expect(page.locator(".overview-map")).toHaveCount(0);
   await expect(page.locator(".stats-band")).toHaveCount(0);
   await expect(page.getByText("Ready for the full body")).toHaveCount(0);

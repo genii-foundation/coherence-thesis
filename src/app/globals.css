@@ -37,13 +37,56 @@
   --card-background: rgba(251, 246, 235, 0.66);
   --card-background-hover: rgba(251, 246, 235, 0.86);
   --glass-background: rgba(251, 246, 235, 0.72);
+  --page-background-highlight-alpha: 0.075;
+  --page-background-highlight-wash-alpha: 0.026;
+  --page-background-highlight-spread: 31rem;
   --page-background:
+    radial-gradient(
+      ellipse at 70% 7%,
+      rgba(255, 255, 255, var(--page-background-highlight-alpha)),
+      transparent var(--page-background-highlight-spread)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, var(--page-background-highlight-wash-alpha)),
+      transparent 13rem
+    ),
     radial-gradient(ellipse at 20% 18%, rgba(96, 121, 109, 0.14), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgba(255, 251, 241, 0.2), transparent 26rem),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 251, 241, 0.08), transparent 26rem),
     radial-gradient(ellipse at 50% 86%, rgba(119, 84, 42, 0.11), transparent 30rem),
     var(--page-texture-noise),
-    linear-gradient(180deg, var(--paper-soft), var(--paper) 34%, #eadbbd);
-  --page-background-size: auto, auto, auto, 320px 320px, auto;
+    linear-gradient(180deg, #efe0c5, var(--paper) 42%, #eadbbd);
+  --page-background-size: auto, auto, auto, auto, auto, 320px 320px, auto;
+}
+
+html[data-background-highlight="1"] {
+  --page-background-highlight-alpha: 0.035;
+  --page-background-highlight-wash-alpha: 0.012;
+  --page-background-highlight-spread: 25rem;
+}
+
+html[data-background-highlight="2"] {
+  --page-background-highlight-alpha: 0.055;
+  --page-background-highlight-wash-alpha: 0.018;
+  --page-background-highlight-spread: 28rem;
+}
+
+html[data-background-highlight="3"] {
+  --page-background-highlight-alpha: 0.075;
+  --page-background-highlight-wash-alpha: 0.026;
+  --page-background-highlight-spread: 31rem;
+}
+
+html[data-background-highlight="4"] {
+  --page-background-highlight-alpha: 0.095;
+  --page-background-highlight-wash-alpha: 0.034;
+  --page-background-highlight-spread: 34rem;
+}
+
+html[data-background-highlight="5"] {
+  --page-background-highlight-alpha: 0.12;
+  --page-background-highlight-wash-alpha: 0.044;
+  --page-background-highlight-spread: 37rem;
 }
 
 html[data-reader-theme="light"] {
@@ -71,12 +114,22 @@ html[data-reader-theme="light"] {
   --card-background-hover: rgba(255, 254, 250, 0.96);
   --glass-background: rgba(255, 254, 250, 0.78);
   --page-background:
+    radial-gradient(
+      ellipse at 70% 7%,
+      rgba(255, 255, 255, var(--page-background-highlight-alpha)),
+      transparent var(--page-background-highlight-spread)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, var(--page-background-highlight-wash-alpha)),
+      transparent 13rem
+    ),
     radial-gradient(ellipse at 20% 18%, rgba(63, 104, 88, 0.1), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgba(255, 254, 250, 0.42), transparent 26rem),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 254, 250, 0.12), transparent 26rem),
     radial-gradient(ellipse at 50% 86%, rgba(89, 64, 24, 0.08), transparent 30rem),
     var(--page-texture-noise),
-    linear-gradient(180deg, #fffefa, #f8f6f1 58%, #f0ebe2);
-  --page-background-size: auto, auto, auto, 320px 320px, auto;
+    linear-gradient(180deg, #f4ead7, #f8f6f1 58%, #f0ebe2);
+  --page-background-size: auto, auto, auto, auto, auto, 320px 320px, auto;
 }
 
 html[data-reader-theme="dark"] {
@@ -1897,6 +1950,72 @@ input {
   border: 1px solid rgba(119, 84, 42, 0.28);
   border-radius: var(--radius);
   box-shadow: var(--cover-shadow);
+}
+
+.background-highlight-panel {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 12;
+  display: none;
+  align-items: center;
+  gap: 0.45rem;
+  max-width: calc(100vw - 2rem);
+  border: 1px solid rgba(119, 84, 42, 0.24);
+  border-radius: var(--radius);
+  background: rgba(251, 246, 235, 0.78);
+  box-shadow: 0 16px 40px rgba(44, 31, 18, 0.14);
+  color: var(--ink);
+  padding: 0.4rem;
+  backdrop-filter: blur(14px);
+}
+
+body:has(.home-page) .background-highlight-panel {
+  display: flex;
+}
+
+.background-highlight-label {
+  color: var(--bronze-deep);
+  padding: 0 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.background-highlight-options {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.background-highlight-options button {
+  display: inline-grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border: 1px solid rgba(119, 84, 42, 0.24);
+  border-radius: 6px;
+  background: rgba(255, 250, 240, 0.64);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.78rem;
+  line-height: 1;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.background-highlight-options button:hover,
+.background-highlight-options button:focus-visible {
+  border-color: rgba(119, 84, 42, 0.44);
+  background: rgba(164, 123, 63, 0.12);
+  outline: none;
+}
+
+.background-highlight-options button[aria-pressed="true"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper-soft);
 }
 
 .hero-stats {
@@ -4691,6 +4810,11 @@ input {
   .hero-actions .secondary-link,
   .hero-stats {
     width: 100%;
+  }
+
+  .background-highlight-panel {
+    right: max(0.75rem, env(safe-area-inset-right));
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
   }
 
   .hero-stats li {
