@@ -1,0 +1,33 @@
+Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+
+Copyright (c) 2026 Providence Collective
+
+This LICENSE-content file governs the CREATIVE WORK in this repository, which is
+distinct from the software (see LICENSE for the Apache-2.0 grant that covers the
+source code). See NOTICE for the path-by-path mapping of which license applies
+to which files.
+
+Works covered by this license:
+
+- The manuscript source text in sources/manuscripts/
+- The generated canonical manuscript sections in content/manuscripts/
+- Site copy and editorial text authored for this project
+- Owned cover artwork and hero imagery in public/art/ and public/share/
+
+These works are licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License (CC BY-SA 4.0). You are free to share and adapt the material
+for any purpose, even commercially, under the following terms:
+
+- Attribution: You must give appropriate credit, provide a link to the license,
+  and indicate if changes were made.
+- ShareAlike: If you remix, transform, or build upon the material, you must
+  distribute your contributions under the same license as the original.
+
+The authoritative text of this license is published by Creative Commons and is
+incorporated here by reference:
+
+- Human-readable summary: https://creativecommons.org/licenses/by-sa/4.0/
+- Full legal code:        https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+Third-party materials (for example, vendored fonts under their own OFL license
+in fonts/) remain governed by their own licenses and are not relicensed here.

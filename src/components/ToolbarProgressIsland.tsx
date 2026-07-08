@@ -135,7 +135,7 @@ export function ToolbarProgressIsland() {
     sectionId: null,
     isRead: false,
   });
-  const { open, setOpen, toggle, containerRef, triggerRef } =
+  const { open, setOpen, toggle, containerRef, triggerProps } =
     useToolbarMenu<HTMLDivElement>({
       onDismiss: () => setSyncLoginModalEmail(""),
     });
@@ -471,11 +471,10 @@ export function ToolbarProgressIsland() {
   return (
     <div className="progress-menu" ref={containerRef}>
       <button
-        ref={triggerRef}
+        {...triggerProps}
         type="button"
         className={`progress-menu-button${user ? " is-signed-in" : ""}`}
         aria-label={`Progress ${percent}%${user ? ", signed in" : ""}`}
-        aria-expanded={open}
         aria-controls="reader-progress-menu"
         onClick={() => {
           toggle();

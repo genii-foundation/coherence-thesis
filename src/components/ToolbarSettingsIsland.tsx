@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Check, ChevronDown, RotateCcw, Settings } from "lucide-react";
 import {
@@ -19,6 +19,7 @@ import {
   type ReaderPreferences,
   type ReaderTheme,
 } from "@/lib/reader-preferences";
+import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 
 function readStoredPreferences(): ReaderPreferences {
   if (typeof window === "undefined") return defaultReaderPreferences;
@@ -43,9 +44,16 @@ function themeLabel(theme: ReaderTheme): string {
 
 export function ToolbarSettingsIsland() {
   const pathname = usePathname();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [open, setOpen] = useState(false);
   const [fontMenuOpen, setFontMenuOpen] = useState(false);
+  const { open, setOpen, toggle, containerRef, triggerProps } =
+    useToolbarMenu<HTMLDivElement>({
+      onDismiss: () => setFontMenuOpen(false),
+      onEscape: () => {
+        if (!fontMenuOpen) return true;
+        setFontMenuOpen(false);
+        return false;
+      },
+    });
   const [hydrated, setHydrated] = useState(false);
   const [preferences, setPreferences] = useState<ReaderPreferences>(
     () => defaultReaderPreferences,
@@ -67,32 +75,7 @@ export function ToolbarSettingsIsland() {
       setFontMenuOpen(false);
     }, 0);
     return () => window.clearTimeout(closeTimer);
-  }, [pathname]);
-
-  useEffect(() => {
-    if (!open) return;
-    const onPointerDown = (event: PointerEvent) => {
-      if (!containerRef.current?.contains(event.target as Node)) {
-        setOpen(false);
-        setFontMenuOpen(false);
-      }
-    };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        if (fontMenuOpen) {
-          setFontMenuOpen(false);
-          return;
-        }
-        setOpen(false);
-      }
-    };
-    document.addEventListener("pointerdown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [fontMenuOpen, open]);
+  }, [pathname, setOpen]);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -112,12 +95,12 @@ export function ToolbarSettingsIsland() {
   return (
     <div className="settings-menu" ref={containerRef}>
       <button
+        {...triggerProps}
         type="button"
         className="settings-menu-button"
         aria-label="Reader settings"
-        aria-expanded={open}
         aria-controls="reader-settings-menu"
-        onClick={() => setOpen((current) => !current)}
+        onClick={toggle}
       >
         <Settings aria-hidden="true" size={17} />
       </button>

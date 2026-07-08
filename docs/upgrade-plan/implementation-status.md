@@ -118,7 +118,7 @@ Each landed as its own focused, CI-green PR on top of the base:
 - **ARCH-05** audio playback provider seam
 - **ARCH-03** reader-sync schema-version guard
 - **ARCH-04** section-ID drift gate (`content/series/section-ledger.json`)
-- **MAINT-05** split `scripts/manuscripts/shared.ts` into `types.ts` / `io.ts`
+- **MAINT-02** split `scripts/manuscripts/shared.ts` into `types.ts` / `io.ts`
 - **DUP-03** shared `markdown-blocks` splitter
 - **DUP-01 / A11Y-04** `useToolbarMenu` hook with Escape focus return
 - **DUP-06 / DUP-11** `useLoadedData` load-once hook and `audio-preferences`
@@ -144,16 +144,50 @@ Each landed as its own focused, CI-green PR on top of the base:
   make the font picker an honest disclosure (dropping the misleading combobox
   roles it never implemented) with a grouped theme row, and strip the volatile
   git state from the committed README status block
+- **DOC-03** back the CC BY-SA content license with `LICENSE-content` and a
+  `NOTICE` that maps each path to its license
+- **DOC-06** remove the unused Tailwind dependency, vendoring its Preflight
+  reset into `src/app/reset.css` (verified pixel-safe against the full e2e
+  layout suite and manual screenshots)
 
-## Deferred to follow-up PRs
+- **TEST-03 / TEST-04** split the 3,000-line `reader.spec.ts` into seven
+  thematic spec files (overview, navigation, toolbar, progress, share, settings,
+  engagement) over a shared `fixtures.ts`
+- **DUP-08 / MAINT-05 / TEST-09 / PERF-02** close the remaining low-risk register
+  items. **DUP-08**: the active-volume plus `Volume N · Title` derivation, copied
+  into `ToolbarBrandIsland` and `MobilePageContextIsland`, moves to a shared
+  `brandIdentity` helper (`src/lib/brand-identity.ts`) both import. **MAINT-05**:
+  the five `reader-state.ts` section mutators shared the same base-record envelope
+  by hand; an `updateSection` helper now owns it so each mutator only expresses
+  what it changes and no field can be silently dropped (the 19 reader-state and
+  store unit tests confirm behavior is unchanged). **TEST-09**: `ensure-node-modules`
+  compared a stored hash of `package-lock.json`, so a routine `npm install <pkg>`
+  read as stale and forced a full `npm ci` that wiped `node_modules`; it now
+  compares against npm's own `node_modules/.package-lock.json` (skipping optional
+  and off-platform packages), and the Windows `npm.cmd` spawn runs with
+  `shell: true` to avoid the CVE-2024-27980 EINVAL on patched Node. **PERF-02**
+  (unthrottled scroll handler) was already resolved when the single progress store
+  landed: `recordScrollProgress` returns the same reference on an idle frame and
+  the rounded-percent gate limits writes to actual changes, so scroll ticks no
+  longer stall the reading interaction.
 
-The genuinely remaining items:
+- **DOC-08** footer copyright year is now rendered client-side by
+  `CopyrightYearIsland` so it stays current on the statically prerendered site
+  instead of freezing at build time
 
-- **TEST-03 / TEST-04** split the large e2e spec and decouple it from prose
-- **DOC-03 / DOC-06** license-scope clarity (needs a product decision) and the
-  unused-Tailwind removal (needs a visual-regression pass on the reset)
-- **A11Y-06 / A11Y-07** no-JS toolbar fallback and font-picker keyboard model
-- **DOC-02 / DOC-03 / DOC-04 / DOC-06 / DOC-08** README status block, license
-  clarity, homepage tags in series config, Tailwind decision, footer year
-- **DUP-02** shared build/runtime catalog schema module (a payload schema
-  version is the useful part; the type-share is cross-boundary and low value)
+## Closed without a code change
+
+- **DOC-04** (homepage hardcodes per-volume tags): the `manuscriptTags` record it
+  referenced no longer exists in `src/app/page.tsx`; the concern was resolved by
+  earlier homepage work, so there is nothing to move.
+- **DUP-02** (shared build/runtime catalog schema): resolved as won't-fix. The
+  build types (`scripts/manuscripts/types.ts`) describe the full compiled
+  sections with body text; the runtime types (`reader-data.ts`) describe the
+  slim browser payloads. They are intentionally different shapes, and the
+  browser payloads are bare arrays, so a shared schema plus a wrapping "payload
+  version" would add cross-boundary indirection for no real benefit.
+
+## Every register finding is now addressed.
+
+Each finding in [findings-register.md](findings-register.md) has either shipped
+in one of the PRs above or is closed with the rationale in this document.

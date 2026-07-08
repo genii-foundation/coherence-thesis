@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import { copyrightYearLabel } from "@/lib/copyright";
+import { CopyrightYearIsland } from "@/components/CopyrightYearIsland";
 import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
 import { MobilePageContextIsland } from "@/components/MobilePageContextIsland";
 import { OutlineMenuIsland } from "@/components/OutlineMenuIsland";
@@ -24,16 +26,6 @@ function contentHash(value: string): string {
   return (hash >>> 0).toString(36);
 }
 
-function copyrightYearLabel() {
-  const currentYear = new Date().getFullYear();
-
-  if (currentYear <= copyrightStartYear) {
-    return `${copyrightStartYear}`;
-  }
-
-  return `${copyrightStartYear} to ${currentYear}`;
-}
-
 export function SiteShell({ children }: { children: ReactNode }) {
   // Only the slim volume identity (title, href, number) is serialized into every
   // page for the brand and mobile-context islands. The full outline tree is
@@ -43,7 +35,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     href: volume.href,
     numberLabel: volume.numberLabel,
   }));
-  const yearLabel = copyrightYearLabel();
+  const yearLabel = copyrightYearLabel(copyrightStartYear);
   const overviewText = [
     catalog.overview.subtitle,
     ...catalog.overview.nodes.map((node) => `${node.title}. ${node.summary}`),
@@ -77,7 +69,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <PageFadeIsland>{children}</PageFadeIsland>
       </main>
       <footer className="site-footer" aria-label="Site information">
-        <p>© {yearLabel} by the Providence Collective.</p>
+        <p>
+          ©{" "}
+          <CopyrightYearIsland startYear={copyrightStartYear} fallback={yearLabel} />{" "}
+          by the Providence Collective.
+        </p>
         <p>
           Licensing:{" "}
           <a
