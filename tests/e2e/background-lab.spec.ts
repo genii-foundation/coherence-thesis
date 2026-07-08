@@ -15,17 +15,17 @@ test("background lab toggles texture variations", async ({ page }) => {
   await expect(variationButtons).toHaveCount(10);
 
   const labPage = page.locator(".background-lab-page");
-  await expect(labPage).toHaveClass(/background-lab-vellum-fiber/);
+  await expect(labPage).toHaveClass(/background-lab-pulp-bloom/);
 
-  await page.getByRole("button", { name: /Moss grain/ }).click();
-  await expect(labPage).toHaveClass(/background-lab-moss-grain/);
-  await expect(page.getByRole("button", { name: /Moss grain/ })).toHaveAttribute(
+  await page.getByRole("button", { name: /Cloud wash/ }).click();
+  await expect(labPage).toHaveClass(/background-lab-cloud-wash/);
+  await expect(page.getByRole("button", { name: /Cloud wash/ })).toHaveAttribute(
     "aria-pressed",
     "true",
   );
 
-  await page.getByRole("button", { name: /Night vellum/ }).click();
-  await expect(labPage).toHaveClass(/background-lab-night-vellum/);
+  await page.getByRole("button", { name: /Soft terrain/ }).click();
+  await expect(labPage).toHaveClass(/background-lab-soft-terrain/);
   await expect(
     page.getByRole("heading", { name: "Common inputs" }),
   ).toBeVisible();
