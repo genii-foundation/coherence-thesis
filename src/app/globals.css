@@ -534,6 +534,7 @@ input {
   pointer-events: none;
   stroke: var(--tooltip-border-color);
   stroke-width: 1px;
+  visibility: visible;
 }
 
 .clean-tooltip {

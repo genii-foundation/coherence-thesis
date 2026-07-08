@@ -27,10 +27,6 @@ async function expectToolbarTriggerActive(
         const expectedBackground = window.getComputedStyle(probe).backgroundColor;
         probe.remove();
 
-        if (element.classList.contains("progress-menu-button")) {
-          return style.boxShadow !== "none";
-        }
-
         return style.backgroundColor === expectedBackground;
       }),
     )
@@ -789,33 +785,28 @@ test("toolbar brand owns the active manuscript identity", async ({
     await expect(page.locator(".site-nav .mobile-home-link")).toHaveCount(0);
     await expect(brand).toHaveClass(/brand-mark-compact/);
     await brand.focus();
-    const mobileBrandTooltip = page.getByRole("tooltip");
+    const mobileBrandTooltip = page.locator(".clean-tooltip");
     await expect(mobileBrandTooltip).toBeVisible();
     await page.waitForFunction(() => {
-      const tooltip = document.querySelector('[role="tooltip"]');
+      const tooltip = document.querySelector(".clean-tooltip");
       if (!tooltip) return false;
-      const arrowLeft = Number.parseFloat(
-        window
-          .getComputedStyle(tooltip)
-          .getPropertyValue("--clean-tooltip-arrow-left"),
-      );
-      return Number.isFinite(arrowLeft) && arrowLeft > 0;
+      const arrow = tooltip.querySelector(".clean-tooltip-arrow");
+      const arrowBox = arrow?.getBoundingClientRect();
+      return Boolean(arrowBox && arrowBox.width > 0 && arrowBox.height > 0);
     });
     const mobileBrandTooltipAlignment = await page.evaluate(() => {
       const brandBox = document
         .querySelector(".site-header > .brand-mark")
         ?.getBoundingClientRect();
-      const tooltip = document.querySelector('[role="tooltip"]');
-      const tooltipBox = tooltip?.getBoundingClientRect();
-      const tooltipStyle = tooltip ? window.getComputedStyle(tooltip) : null;
-      const arrowLeft = Number.parseFloat(
-        tooltipStyle?.getPropertyValue("--clean-tooltip-arrow-left") ?? "0",
-      );
+      const tooltip = document.querySelector(".clean-tooltip");
+      const arrowBox = tooltip
+        ?.querySelector(".clean-tooltip-arrow")
+        ?.getBoundingClientRect();
 
       return {
         brandCenter: brandBox ? brandBox.left + brandBox.width / 2 : 0,
         brandWidth: brandBox?.width ?? 0,
-        tooltipArrowX: tooltipBox ? tooltipBox.left + arrowLeft : 0,
+        tooltipArrowX: arrowBox ? arrowBox.left + arrowBox.width / 2 : 0,
       };
     });
     expect(mobileBrandTooltipAlignment.brandWidth).toBeLessThan(56);
