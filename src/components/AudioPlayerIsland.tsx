@@ -266,7 +266,10 @@ function PlaybackToolbarIcon({
         className="audio-playback-icon-shell"
         d={playbackShellPath(shellProgress)}
       />
-      <g className="audio-waveform" transform="translate(16 16)">
+      <g
+        className="audio-waveform"
+        transform={playing ? "translate(18.75 16)" : "translate(16 16)"}
+      >
         <rect
           className="audio-waveform-bar audio-waveform-bar-1"
           x="0"
