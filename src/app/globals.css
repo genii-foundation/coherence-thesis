@@ -1925,7 +1925,7 @@ input {
   color: var(--ink);
   font-family: var(--font-display);
   font-size: clamp(2.55rem, 4.9rem, 5.15rem);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 0.98;
 }
 
