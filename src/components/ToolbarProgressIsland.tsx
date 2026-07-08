@@ -8,11 +8,12 @@ import {
   useMemo,
   useRef,
   useState,
-  type CSSProperties,
   type FormEvent,
 } from "react";
 import { usePathname } from "next/navigation";
 import { Check, Cloud, KeyRound, Map as MapIcon, RotateCcw, UserRound } from "lucide-react";
+import { ProgressCloudBadge } from "@/components/ProgressCloudBadge";
+import { ProgressReadAnimation } from "@/components/ProgressReadAnimation";
 import { loadProgressSections } from "@/lib/reader-data";
 import { useLoadedData } from "@/lib/use-loaded-data";
 import type { ProgressSection } from "@/lib/manuscript-data";
@@ -129,6 +130,11 @@ export function ToolbarProgressIsland() {
   const [syncMessage, setSyncMessage] = useState("");
   const [lastSyncedAt, setLastSyncedAt] = useState<number | null>(null);
   const [relativeNow, setRelativeNow] = useState(() => Date.now());
+  const [showReadAnimation, setShowReadAnimation] = useState(false);
+  const previousReadStateRef = useRef<{ sectionId: string | null; isRead: boolean }>({
+    sectionId: null,
+    isRead: false,
+  });
   const { open, setOpen, toggle, containerRef, triggerRef } =
     useToolbarMenu<HTMLDivElement>({
       onDismiss: () => setSyncLoginModalEmail(""),
@@ -340,6 +346,25 @@ export function ToolbarProgressIsland() {
   const lastSyncedLabel = formatLastSyncedAt(lastSyncedAt, relativeNow);
 
   useEffect(() => {
+    const sectionId = section?.sectionId ?? null;
+    const previous = previousReadStateRef.current;
+    const becameRead =
+      Boolean(sectionId) &&
+      previous.sectionId === sectionId &&
+      !previous.isRead &&
+      isRead;
+    previousReadStateRef.current = { sectionId, isRead };
+
+    if (!becameRead) return;
+
+    setShowReadAnimation(true);
+    const timer = window.setTimeout(() => {
+      setShowReadAnimation(false);
+    }, 1_600);
+    return () => window.clearTimeout(timer);
+  }, [isRead, section?.sectionId]);
+
+  useEffect(() => {
     if (!open || recommendations.length === 0) return;
     recommendations.forEach((item, index) => {
       appendStoredEvent(
@@ -452,24 +477,16 @@ export function ToolbarProgressIsland() {
         aria-label={`Progress ${percent}%${user ? ", signed in" : ""}`}
         aria-expanded={open}
         aria-controls="reader-progress-menu"
-        style={
-          { "--progress-value": percent } as CSSProperties & {
-            "--progress-value": number;
-          }
-        }
         onClick={() => {
           toggle();
           setSyncLoginModalEmail("");
         }}
       >
-        {user && (
-          <Cloud
-            className="progress-percent-cloud"
-            aria-hidden="true"
-            strokeWidth={1.85}
-          />
+        {showReadAnimation ? (
+          <ProgressReadAnimation />
+        ) : (
+          <ProgressCloudBadge connected={Boolean(user)} percent={percent} />
         )}
-        <span className="progress-percent">{percent}%</span>
       </button>
       {open && (
         <div
