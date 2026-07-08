@@ -20,6 +20,7 @@ test("home page presents the overview and manuscript entry points", async ({
       name: "Follow the common thread.",
     }),
   ).toBeVisible();
+  await expect(page.locator(".hero-copy h1")).toHaveCSS("font-weight", "300");
   await expect(page.locator(".brand-kicker")).toHaveText(
     "Providence Collective",
   );
@@ -162,14 +163,32 @@ test("home page presents the overview and manuscript entry points", async ({
     const hero = document
       .querySelector(".hero-section")
       ?.getBoundingClientRect();
+    const heroHeading = document
+      .querySelector(".hero-copy h1")
+      ?.getBoundingClientRect();
+    const heroDeck = document
+      .querySelector(".hero-deck")
+      ?.getBoundingClientRect();
+    const heroActions = document
+      .querySelector(".hero-actions")
+      ?.getBoundingClientRect();
     const coverFlow = document
       .querySelector(".cover-flow")
       ?.getBoundingClientRect();
     return {
+      deckToActionsGap:
+        heroDeck && heroActions ? heroActions.top - heroDeck.bottom : 0,
       gap: hero && coverFlow ? coverFlow.top - hero.bottom : 0,
+      headingToDeckGap:
+        heroHeading && heroDeck ? heroDeck.top - heroHeading.bottom : 0,
       heroHeight: hero?.height ?? 0,
     };
   });
+  expect(
+    Math.abs(
+      homepageSpacing.headingToDeckGap - homepageSpacing.deckToActionsGap,
+    ),
+  ).toBeLessThanOrEqual(1);
   expect(homepageSpacing.gap).toBeGreaterThanOrEqual(24);
   if (testInfo.project.name === "desktop") {
     expect(homepageSpacing.heroHeight).toBeLessThanOrEqual(1000);
