@@ -31,15 +31,22 @@ test("reader settings update and persist local appearance preferences", async ({
 
   const firstParagraph = page.locator(".manuscript-prose p").first();
   await expect(firstParagraph).toBeVisible();
-  await expect(
-    settingsMenu.getByRole("button", { name: "Reset font size" }),
-  ).toBeVisible();
-  await expect(
-    settingsMenu.getByRole("button", { exact: true, name: "Reset font" }),
-  ).toBeVisible();
-  await expect(
-    settingsMenu.getByRole("button", { name: "Reset theme" }),
-  ).toBeVisible();
+  const resetFontSizeButton = settingsMenu.getByRole("button", {
+    name: "Reset font size",
+  });
+  const resetFontButton = settingsMenu.getByRole("button", {
+    exact: true,
+    name: "Reset font",
+  });
+  const resetThemeButton = settingsMenu.getByRole("button", {
+    name: "Reset theme",
+  });
+  await expect(resetFontSizeButton).toBeVisible();
+  await expect(resetFontSizeButton).toBeDisabled();
+  await expect(resetFontButton).toBeVisible();
+  await expect(resetFontButton).toBeDisabled();
+  await expect(resetThemeButton).toBeVisible();
+  await expect(resetThemeButton).toBeDisabled();
   const initialAppearance = await page.evaluate(() => {
     const heading = document.querySelector(".manuscript-heading h1");
     const paragraph = document.querySelector(".manuscript-prose p");
@@ -71,9 +78,11 @@ test("reader settings update and persist local appearance preferences", async ({
     input.dispatchEvent(new Event("input", { bubbles: true }));
     input.dispatchEvent(new Event("change", { bubbles: true }));
   });
+  await expect(resetFontSizeButton).toBeEnabled();
   await expect(settingsMenu.getByText("125% text")).toHaveCount(0);
-  await settingsMenu.getByRole("button", { name: "Reset font size" }).click();
+  await resetFontSizeButton.click();
   await expect(fontSizeSlider).toHaveValue("100");
+  await expect(resetFontSizeButton).toBeDisabled();
   await fontSizeSlider.evaluate((element) => {
     const input = element as HTMLInputElement;
     const valueSetter = Object.getOwnPropertyDescriptor(
@@ -98,12 +107,14 @@ test("reader settings update and persist local appearance preferences", async ({
   expect(georgiaOptionFont).toContain("Georgia");
   await georgiaOption.click();
   await expect(fontSelect).toContainText("Georgia");
+  await expect(resetFontButton).toBeEnabled();
   await expect(settingsMenu.getByText("Saved in this browser")).toHaveCount(0);
 
   const initialBodyBackground = await page.evaluate(
     () => getComputedStyle(document.body).backgroundColor,
   );
   await settingsMenu.getByRole("button", { name: "Dark" }).click();
+  await expect(resetThemeButton).toBeEnabled();
 
   await expect(page.locator("html")).toHaveAttribute(
     "data-reader-theme",

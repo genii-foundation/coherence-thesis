@@ -91,6 +91,11 @@ export function ToolbarSettingsIsland() {
   }
 
   const selectedFont = fontOptionById(preferences.fontFamily);
+  const fontSizeIsDefault =
+    preferences.fontSize === defaultReaderPreferences.fontSize;
+  const fontFamilyIsDefault =
+    preferences.fontFamily === defaultReaderPreferences.fontFamily;
+  const themeIsDefault = preferences.theme === defaultReaderPreferences.theme;
 
   return (
     <div className="settings-menu" ref={containerRef}>
@@ -120,6 +125,7 @@ export function ToolbarSettingsIsland() {
                 type="button"
                 className="settings-reset-button"
                 aria-label="Reset font size"
+                disabled={fontSizeIsDefault}
                 onClick={() =>
                   updatePreferences({
                     fontSize: defaultReaderPreferences.fontSize,
@@ -149,6 +155,7 @@ export function ToolbarSettingsIsland() {
                 type="button"
                 className="settings-reset-button"
                 aria-label="Reset font"
+                disabled={fontFamilyIsDefault}
                 onClick={() =>
                   updatePreferences({
                     fontFamily: defaultReaderPreferences.fontFamily,
@@ -209,6 +216,7 @@ export function ToolbarSettingsIsland() {
                 type="button"
                 className="settings-reset-button"
                 aria-label="Reset theme"
+                disabled={themeIsDefault}
                 onClick={() =>
                   updatePreferences({
                     theme: defaultReaderPreferences.theme,
