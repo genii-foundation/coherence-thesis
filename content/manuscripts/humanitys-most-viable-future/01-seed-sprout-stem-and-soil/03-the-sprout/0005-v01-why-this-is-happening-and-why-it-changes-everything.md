@@ -15,6 +15,7 @@ sourceDoc: "sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-futu
 sourceHash: "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a"
 sourceParagraphStart: 205
 sourceParagraphEnd: 324
+aliases: ["/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-the-sprout/"]
 ---
 
 If the claim you have just read is correct, then much of what we treat as political conflict, cultural decay, or institutional failure must be reinterpreted.

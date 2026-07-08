@@ -53,6 +53,24 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
+      <svg
+        className="common-thread-texture"
+        aria-hidden="true"
+        focusable="false"
+        preserveAspectRatio="none"
+        viewBox="0 0 1160 1700"
+      >
+        <path
+          d="M400 0C396 76 360 122 362 206C366 350 522 374 486 520C454 648 650 650 692 764C756 944 520 1054 642 1198C766 1344 958 1302 992 1462C1012 1564 1060 1628 1098 1700"
+          fill="none"
+          stroke="currentColor"
+          strokeDasharray="1 15"
+          strokeLinecap="round"
+          strokeWidth="3"
+        />
+        <circle cx="400" cy="0" r="2.2" fill="currentColor" />
+        <circle cx="1098" cy="1700" r="2.2" fill="currentColor" />
+      </svg>
       <header className="site-header">
         <ToolbarBrandIsland volumes={brandVolumes} />
         <ToolbarBreadcrumbs />

@@ -591,23 +591,135 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
   await page.goto("/progress/");
 
   await expect(page.getByRole("heading", { name: "Reading Map" })).toBeVisible();
+  await expect(
+    page.getByText("One thousand squares across the nine manuscripts."),
+  ).toHaveCount(0);
   await expect(page.locator(".progress-heatmap-volume")).toHaveCount(9);
   await expect(page.locator(".progress-heatmap-cell")).toHaveCount(1_000);
+  await expect(page.locator(".progress-heatmap-volume-read-tag")).toHaveCount(9);
+  await expect(page.locator(".progress-heatmap-volume-read-tag").first()).toHaveText(
+    "0% read",
+  );
+
+  const progressSummary = page.getByLabel("Reading progress summary");
+  await expect(progressSummary.getByText("sections read")).toBeVisible();
+  await expect(progressSummary.getByText("revised sections")).toBeVisible();
+  await expect(progressSummary.getByText("squares")).toHaveCount(0);
 
   const firstCell = page.locator(".progress-heatmap-cell").first();
-  await expect(firstCell).toHaveAttribute("href", /\/manuscripts\//);
+  await expect(firstCell).toHaveAttribute("type", "button");
+  await firstCell.hover();
+
+  const tooltip = page.getByRole("dialog", { name: "Section jump links" });
+  await expect(tooltip).toBeVisible();
+  await expect(tooltip).toHaveCount(1);
+  const hoverHint = page.getByText("(click to jump)");
+  await expect(hoverHint).toHaveCount(0);
+  await expect(tooltip.getByRole("link").first()).toHaveAttribute(
+    "href",
+    /\/manuscripts\//,
+  );
+  await firstCell.click();
+  await expect(tooltip).toBeVisible();
+  await expect(hoverHint).toHaveCount(0);
+  await expect(tooltip).toHaveCount(1);
+
+  const secondCell = page.locator(".progress-heatmap-cell").nth(1);
+  await secondCell.hover();
+  await expect(tooltip).toBeVisible();
+  await expect(tooltip).toHaveCount(1);
+  await expect(hoverHint).toHaveCount(0);
 
   const mapMetrics = await page.evaluate(() => {
     const cell = document.querySelector(".progress-heatmap-cell");
+    const tooltip = document.querySelector(".progress-heatmap-tooltip");
+    const tooltipArrow = document.querySelector(".progress-heatmap-tooltip-arrow");
+    const tooltipContent = tooltip?.querySelector(".progress-heatmap-tooltip-content");
+    const tooltipReadTag = tooltip?.querySelector(".progress-heatmap-tooltip-read-tag");
+    const tooltipLink = tooltip?.querySelector(".progress-heatmap-tooltip-links a");
+    const tooltipLinkIndicator = tooltipLink?.querySelector(
+      ".progress-heatmap-tooltip-link-indicator",
+    );
+    const tooltipLinkTitle = tooltipLink?.querySelector(
+      ".progress-heatmap-tooltip-link-title",
+    );
+    const volume = document.querySelector(".progress-heatmap-volume");
+    const volumeReadTag = volume?.querySelector(".progress-heatmap-volume-read-tag");
     const box = cell?.getBoundingClientRect();
+    const tooltipBox = tooltip?.getBoundingClientRect();
+    const tooltipContentBox = tooltipContent?.getBoundingClientRect();
+    const tooltipReadTagBox = tooltipReadTag?.getBoundingClientRect();
+    const tooltipArrowBox = tooltipArrow?.getBoundingClientRect();
+    const tooltipStyle = tooltip ? window.getComputedStyle(tooltip) : null;
+    const tooltipLinkStyle = tooltipLinkTitle
+      ? window.getComputedStyle(tooltipLinkTitle)
+      : null;
+    const tooltipArrowOutside =
+      tooltipBox && tooltipArrowBox
+        ? tooltipArrowBox.bottom > tooltipBox.bottom + 2 ||
+          tooltipArrowBox.top < tooltipBox.top - 2 ||
+          tooltipArrowBox.right > tooltipBox.right + 2 ||
+          tooltipArrowBox.left < tooltipBox.left - 2
+        : false;
+    const volumeBox = volume?.getBoundingClientRect();
+    const volumeReadTagBox = volumeReadTag?.getBoundingClientRect();
+    const cellStyle = cell ? window.getComputedStyle(cell) : null;
     return {
       cellWidth: box?.width ?? 0,
       cellHeight: box?.height ?? 0,
+      cellBorderRadius: Number.parseFloat(cellStyle?.borderTopLeftRadius ?? "0"),
       scrollWidth: document.documentElement.scrollWidth,
       viewportWidth: document.documentElement.clientWidth,
+      tooltipLeft: tooltipBox?.left ?? 0,
+      tooltipRight: tooltipBox?.right ?? 0,
+      tooltipTop: tooltipBox?.top ?? 0,
+      tooltipBottom: tooltipBox?.bottom ?? 0,
+      tooltipArrowWidth: tooltipArrowBox?.width ?? 0,
+      tooltipArrowHeight: tooltipArrowBox?.height ?? 0,
+      tooltipArrowOutside,
+      tooltipOverflowX: tooltipStyle?.overflowX ?? "",
+      tooltipOverflowY: tooltipStyle?.overflowY ?? "",
+      tooltipLinkFontWeight: Number.parseFloat(
+        tooltipLinkStyle?.fontWeight ?? "0",
+      ),
+      tooltipLinkIndicator: tooltipLinkIndicator?.textContent?.trim() ?? "",
+      tooltipReadTagRightGap:
+        tooltipContentBox && tooltipReadTagBox
+          ? tooltipContentBox.right - tooltipReadTagBox.right
+          : 0,
+      tooltipReadTagTopGap:
+        tooltipContentBox && tooltipReadTagBox
+          ? tooltipReadTagBox.top - tooltipContentBox.top
+          : 0,
+      volumeReadTagRightGap:
+        volumeBox && volumeReadTagBox ? volumeBox.right - volumeReadTagBox.right : 0,
+      volumeReadTagTopGap:
+        volumeBox && volumeReadTagBox ? volumeReadTagBox.top - volumeBox.top : 0,
+      viewportHeight: document.documentElement.clientHeight,
     };
   });
 
   expect(Math.abs(mapMetrics.cellWidth - mapMetrics.cellHeight)).toBeLessThanOrEqual(1);
+  expect(mapMetrics.cellBorderRadius).toBeGreaterThanOrEqual(
+    mapMetrics.cellWidth / 2 - 1,
+  );
   expect(mapMetrics.scrollWidth).toBeLessThanOrEqual(mapMetrics.viewportWidth + 1);
+  expect(mapMetrics.tooltipLeft).toBeGreaterThanOrEqual(0);
+  expect(mapMetrics.tooltipRight).toBeLessThanOrEqual(mapMetrics.viewportWidth);
+  expect(mapMetrics.tooltipTop).toBeGreaterThanOrEqual(0);
+  expect(mapMetrics.tooltipBottom).toBeLessThanOrEqual(mapMetrics.viewportHeight);
+  expect(mapMetrics.tooltipArrowWidth).toBeGreaterThan(0);
+  expect(mapMetrics.tooltipArrowHeight).toBeGreaterThan(0);
+  expect(mapMetrics.tooltipArrowOutside).toBe(true);
+  expect(mapMetrics.tooltipOverflowX).toBe("visible");
+  expect(mapMetrics.tooltipOverflowY).toBe("visible");
+  expect(mapMetrics.tooltipLinkFontWeight).toBeLessThanOrEqual(600);
+  expect(mapMetrics.tooltipLinkIndicator).toBe("››");
+  expect(mapMetrics.tooltipReadTagRightGap).toBeLessThanOrEqual(1);
+  expect(mapMetrics.tooltipReadTagTopGap).toBeLessThanOrEqual(2);
+  expect(mapMetrics.volumeReadTagRightGap).toBeLessThanOrEqual(2);
+  expect(mapMetrics.volumeReadTagTopGap).toBeLessThanOrEqual(24);
+
+  await page.keyboard.press("Escape");
+  await expect(tooltip).toHaveCount(0);
 });

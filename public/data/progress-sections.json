@@ -211,20 +211,6 @@
     ]
   },
   {
-    "sectionId": "v01-seed-sprout-stem-and-soil",
-    "contentHash": "f886ee589a71f9ca",
-    "title": "Seed, Sprout, Stem & Soil",
-    "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
-    "audioVersionId": "v01-seed-sprout-stem-and-soil-f886ee589a71f9ca",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "contentHash": "3342d0678aceab23"
-      }
-    ]
-  },
-  {
     "sectionId": "v01-the-seed",
     "contentHash": "19eb6aa2134cb98b",
     "title": "The Seed",
@@ -404,20 +390,6 @@
         "paragraphId": "p-21",
         "anchor": "p-21",
         "contentHash": "43e84f7f51d375ec"
-      }
-    ]
-  },
-  {
-    "sectionId": "v01-the-sprout",
-    "contentHash": "b30c88247b76c469",
-    "title": "The Sprout",
-    "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-the-sprout/",
-    "audioVersionId": "v01-the-sprout-b30c88247b76c469",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "contentHash": "0d343cf449cc7b00"
       }
     ]
   },
@@ -831,20 +803,6 @@
     ]
   },
   {
-    "sectionId": "v01-the-stem",
-    "contentHash": "979099d9c5da3f18",
-    "title": "The Stem",
-    "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-stem/v01-the-stem/",
-    "audioVersionId": "v01-the-stem-979099d9c5da3f18",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "contentHash": "f82a2b70da3c9361"
-      }
-    ]
-  },
-  {
     "sectionId": "v01-how-coherence-becomes-structure",
     "contentHash": "d83e101fb2513d3c",
     "title": "How Coherence Becomes Structure",
@@ -1054,20 +1012,6 @@
         "paragraphId": "p-3",
         "anchor": "p-3",
         "contentHash": "a81ef3786251856b"
-      }
-    ]
-  },
-  {
-    "sectionId": "v01-the-soil",
-    "contentHash": "c41f52ee4b1300d9",
-    "title": "The Soil",
-    "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-soil/v01-the-soil/",
-    "audioVersionId": "v01-the-soil-c41f52ee4b1300d9",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "contentHash": "2be3b80639ac012e"
       }
     ]
   },
@@ -2670,20 +2614,6 @@
         "paragraphId": "p-6",
         "anchor": "p-6",
         "contentHash": "d352086e4a70ad7e"
-      }
-    ]
-  },
-  {
-    "sectionId": "v02-the-response",
-    "contentHash": "de765ebf1357cc14",
-    "title": "The Response",
-    "href": "/manuscripts/wielding-intelligence/the-response/v02-the-response/",
-    "audioVersionId": "v02-the-response-de765ebf1357cc14",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "contentHash": "edc3498e7059e444"
       }
     ]
   },

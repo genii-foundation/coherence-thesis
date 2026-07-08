@@ -14,8 +14,6 @@ async function expectToolbarTriggerActive(
 ): Promise<void> {
   const trigger = page.locator(selector);
   await expect(trigger).toHaveAttribute("aria-expanded", "true");
-  await expect(trigger).toHaveAttribute("data-toolbar-menu-trigger", "true");
-  await expect(trigger).toHaveAttribute("data-menu-open", "true");
 
   await expect
     .poll(async () =>
@@ -105,6 +103,18 @@ async function expectMobilePopoverStartsBelowToolbar(
   expect(metrics.popoverTop).toBeLessThanOrEqual(metrics.headerBottom + 2);
   expect(metrics.radiusTopLeft).toBe(0);
   expect(metrics.radiusTopRight).toBe(0);
+}
+
+async function toolbarMenuHeightTarget(
+  page: Page,
+  selector: string,
+): Promise<number> {
+  return page.locator(selector).evaluate((element) => {
+    const value = getComputedStyle(element)
+      .getPropertyValue("--toolbar-menu-height")
+      .trim();
+    return Number.parseFloat(value);
+  });
 }
 
 test("mobile toolbar and progress menu stay within the viewport", async ({
@@ -695,6 +705,53 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   expect(progressMenuMetrics.recommendationWidth).toBeGreaterThan(220);
 });
 
+test("toolbar popovers slide, fade, and resize through content changes", async ({
+  page,
+}) => {
+  await page.goto(wieldingSection.href);
+
+  await page.getByRole("button", { name: "Search manuscripts" }).click();
+  const searchMenu = page.getByRole("region", { name: "Manuscript search" });
+  const searchPopover = page.locator(".search-popover");
+  await expect(searchMenu).toBeVisible();
+  await expect(searchPopover).toHaveAttribute("data-menu-state", "open");
+  await expect
+    .poll(() =>
+      searchPopover.evaluate((element) => getComputedStyle(element).opacity),
+    )
+    .toBe("1");
+
+  const openMotion = await searchPopover.evaluate((element) => {
+    const style = getComputedStyle(element);
+    return {
+      opacity: style.opacity,
+      transform: style.transform,
+      transitionProperty: style.transitionProperty,
+    };
+  });
+  expect(openMotion.opacity).toBe("1");
+  expect(openMotion.transform).toMatch(/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
+  expect(openMotion.transitionProperty).toContain("height");
+  expect(openMotion.transitionProperty).toContain("opacity");
+  expect(openMotion.transitionProperty).toContain("transform");
+
+  const emptyHeightTarget = await toolbarMenuHeightTarget(
+    page,
+    ".search-popover",
+  );
+  await page
+    .getByRole("searchbox", { name: "Search all manuscripts" })
+    .fill("the");
+  await expect(searchMenu.locator(".search-result").first()).toBeVisible();
+  await expect
+    .poll(() => toolbarMenuHeightTarget(page, ".search-popover"))
+    .toBeGreaterThan(emptyHeightTarget + 20);
+
+  await page.keyboard.press("Escape");
+  await expect(searchMenu).toHaveCount(0);
+  await expect(searchPopover).toHaveCount(0);
+});
+
 test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 360 });
   await page.addInitScript(() => {
@@ -737,6 +794,31 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectToolbarTriggerActive(page, ".settings-menu-button");
   await expect(settingsMenu.getByText("Reading settings")).toBeVisible();
   await expectRestingControlBorder(page, ".font-select-button");
+  await settingsMenu.getByRole("button", { name: "Reader font" }).click();
+  const fontOptions = page.locator(".font-select-options");
+  await expect(fontOptions).toBeVisible();
+  const fontOptionMetrics = await page.evaluate(() => {
+    const options = document.querySelector(".font-select-options");
+    const settings = document.querySelector(".settings-popover");
+    const optionsBox = options?.getBoundingClientRect();
+    return {
+      bottom: optionsBox?.bottom ?? 0,
+      parentTag: options?.parentElement?.tagName ?? "",
+      settingsContainsOptions: Boolean(
+        options && settings?.contains(options),
+      ),
+      top: optionsBox?.top ?? 0,
+      viewportHeight: window.innerHeight,
+    };
+  });
+  expect(fontOptionMetrics.parentTag).toBe("BODY");
+  expect(fontOptionMetrics.settingsContainsOptions).toBe(false);
+  expect(fontOptionMetrics.top).toBeGreaterThanOrEqual(-1);
+  expect(fontOptionMetrics.bottom).toBeLessThanOrEqual(
+    fontOptionMetrics.viewportHeight + 1,
+  );
+  await settingsMenu.getByRole("button", { name: "Reader font" }).click();
+  await expect(fontOptions).toHaveCount(0);
   await expectMenuFitsViewport(page, ".settings-popover");
   await page.keyboard.press("Escape");
   await expect(settingsMenu).toHaveCount(0);
@@ -917,33 +999,28 @@ test("toolbar brand owns the active manuscript identity", async ({
     await expect(page.locator(".site-nav .mobile-home-link")).toHaveCount(0);
     await expect(brand).toHaveClass(/brand-mark-compact/);
     await brand.focus();
-    const mobileBrandTooltip = page.getByRole("tooltip");
+    const mobileBrandTooltip = page.locator(".clean-tooltip");
     await expect(mobileBrandTooltip).toBeVisible();
     await page.waitForFunction(() => {
-      const tooltip = document.querySelector('[role="tooltip"]');
+      const tooltip = document.querySelector(".clean-tooltip");
       if (!tooltip) return false;
-      const arrowLeft = Number.parseFloat(
-        window
-          .getComputedStyle(tooltip)
-          .getPropertyValue("--clean-tooltip-arrow-left"),
-      );
-      return Number.isFinite(arrowLeft) && arrowLeft > 0;
+      const arrow = tooltip.querySelector(".clean-tooltip-arrow");
+      const arrowBox = arrow?.getBoundingClientRect();
+      return Boolean(arrowBox && arrowBox.width > 0 && arrowBox.height > 0);
     });
     const mobileBrandTooltipAlignment = await page.evaluate(() => {
       const brandBox = document
         .querySelector(".site-header > .brand-mark")
         ?.getBoundingClientRect();
-      const tooltip = document.querySelector('[role="tooltip"]');
-      const tooltipBox = tooltip?.getBoundingClientRect();
-      const tooltipStyle = tooltip ? window.getComputedStyle(tooltip) : null;
-      const arrowLeft = Number.parseFloat(
-        tooltipStyle?.getPropertyValue("--clean-tooltip-arrow-left") ?? "0",
-      );
+      const tooltip = document.querySelector(".clean-tooltip");
+      const arrowBox = tooltip
+        ?.querySelector(".clean-tooltip-arrow")
+        ?.getBoundingClientRect();
 
       return {
         brandCenter: brandBox ? brandBox.left + brandBox.width / 2 : 0,
         brandWidth: brandBox?.width ?? 0,
-        tooltipArrowX: tooltipBox ? tooltipBox.left + arrowLeft : 0,
+        tooltipArrowX: arrowBox ? arrowBox.left + arrowBox.width / 2 : 0,
       };
     });
     expect(mobileBrandTooltipAlignment.brandWidth).toBeLessThan(56);

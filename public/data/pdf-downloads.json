@@ -41,23 +41,13 @@
       "contentHash": "1dc0b5aa896103f9"
     },
     {
-      "sectionId": "v01-seed-sprout-stem-and-soil",
-      "volumeId": "humanitys-most-viable-future",
-      "volumeTitle": "Humanity's Most Viable Future",
-      "title": "Seed, Sprout, Stem & Soil",
-      "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.005 - Seed, Sprout, Stem & Soil.pdf",
-      "fileName": "The Coherence Thesis - 01.005 - Seed, Sprout, Stem & Soil.pdf",
-      "contentHash": "f886ee589a71f9ca"
-    },
-    {
       "sectionId": "v01-the-seed",
       "volumeId": "humanitys-most-viable-future",
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "The Seed",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.006 - The Seed.pdf",
-      "fileName": "The Coherence Thesis - 01.006 - The Seed.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.005 - The Seed.pdf",
+      "fileName": "The Coherence Thesis - 01.005 - The Seed.pdf",
       "contentHash": "19eb6aa2134cb98b"
     },
     {
@@ -66,19 +56,9 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Taking Pause Between Seed and Sprout",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/taking-pause-between-seed-and-sprout/v01-taking-pause-between-seed-and-sprout/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.007 - Taking Pause Between Seed and Sprout.pdf",
-      "fileName": "The Coherence Thesis - 01.007 - Taking Pause Between Seed and Sprout.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.006 - Taking Pause Between Seed and Sprout.pdf",
+      "fileName": "The Coherence Thesis - 01.006 - Taking Pause Between Seed and Sprout.pdf",
       "contentHash": "19cb9b45b16a7f3b"
-    },
-    {
-      "sectionId": "v01-the-sprout",
-      "volumeId": "humanitys-most-viable-future",
-      "volumeTitle": "Humanity's Most Viable Future",
-      "title": "The Sprout",
-      "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-the-sprout/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.008 - The Sprout.pdf",
-      "fileName": "The Coherence Thesis - 01.008 - The Sprout.pdf",
-      "contentHash": "b30c88247b76c469"
     },
     {
       "sectionId": "v01-why-this-is-happening-and-why-it-changes-everything",
@@ -86,8 +66,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Why This Is Happening, and Why It Changes Everything",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-why-this-is-happening-and-why-it-changes-everything/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.009 - Why This Is Happening, and Why It Changes Everything.pdf",
-      "fileName": "The Coherence Thesis - 01.009 - Why This Is Happening, and Why It Changes Everything.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.007 - Why This Is Happening, and Why It Changes Everything.pdf",
+      "fileName": "The Coherence Thesis - 01.007 - Why This Is Happening, and Why It Changes Everything.pdf",
       "contentHash": "be4de9d575498d3b"
     },
     {
@@ -96,8 +76,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "On Scope, Constraint, and What This Argument Does Not Claim",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/between-sprout-and-stem/v01-on-scope-constraint-and-what-this-argument-does-not-claim/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.010 - On Scope, Constraint, and What This Argument Does Not Claim.pdf",
-      "fileName": "The Coherence Thesis - 01.010 - On Scope, Constraint, and What This Argument Does Not Claim.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.008 - On Scope, Constraint, and What This Argument Does Not Claim.pdf",
+      "fileName": "The Coherence Thesis - 01.008 - On Scope, Constraint, and What This Argument Does Not Claim.pdf",
       "contentHash": "f71430bafc7707f9"
     },
     {
@@ -106,8 +86,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "On Reductionism",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/between-sprout-and-stem/v01-on-reductionism/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.011 - On Reductionism.pdf",
-      "fileName": "The Coherence Thesis - 01.011 - On Reductionism.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.009 - On Reductionism.pdf",
+      "fileName": "The Coherence Thesis - 01.009 - On Reductionism.pdf",
       "contentHash": "b3b6f735cc8c112c"
     },
     {
@@ -116,8 +96,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "On Historical and Structural Causality",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/between-sprout-and-stem/v01-on-historical-and-structural-causality/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.012 - On Historical and Structural Causality.pdf",
-      "fileName": "The Coherence Thesis - 01.012 - On Historical and Structural Causality.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.010 - On Historical and Structural Causality.pdf",
+      "fileName": "The Coherence Thesis - 01.010 - On Historical and Structural Causality.pdf",
       "contentHash": "c39fca5ca39eb789"
     },
     {
@@ -126,8 +106,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "On Measurement and Falsifiability",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/between-sprout-and-stem/v01-on-measurement-and-falsifiability/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.013 - On Measurement and Falsifiability.pdf",
-      "fileName": "The Coherence Thesis - 01.013 - On Measurement and Falsifiability.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.011 - On Measurement and Falsifiability.pdf",
+      "fileName": "The Coherence Thesis - 01.011 - On Measurement and Falsifiability.pdf",
       "contentHash": "3997488d5536d1f6"
     },
     {
@@ -136,19 +116,9 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "What This Section Has — and Has Not — Established",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/between-sprout-and-stem/v01-what-this-section-has-and-has-not-established/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.014 - What This Section Has — and Has Not — Established.pdf",
-      "fileName": "The Coherence Thesis - 01.014 - What This Section Has — and Has Not — Established.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.012 - What This Section Has — and Has Not — Established.pdf",
+      "fileName": "The Coherence Thesis - 01.012 - What This Section Has — and Has Not — Established.pdf",
       "contentHash": "f4d8ca8bf443a34f"
-    },
-    {
-      "sectionId": "v01-the-stem",
-      "volumeId": "humanitys-most-viable-future",
-      "volumeTitle": "Humanity's Most Viable Future",
-      "title": "The Stem",
-      "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-stem/v01-the-stem/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.015 - The Stem.pdf",
-      "fileName": "The Coherence Thesis - 01.015 - The Stem.pdf",
-      "contentHash": "979099d9c5da3f18"
     },
     {
       "sectionId": "v01-how-coherence-becomes-structure",
@@ -156,8 +126,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "How Coherence Becomes Structure",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-stem/v01-how-coherence-becomes-structure/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.016 - How Coherence Becomes Structure.pdf",
-      "fileName": "The Coherence Thesis - 01.016 - How Coherence Becomes Structure.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.013 - How Coherence Becomes Structure.pdf",
+      "fileName": "The Coherence Thesis - 01.013 - How Coherence Becomes Structure.pdf",
       "contentHash": "d83e101fb2513d3c"
     },
     {
@@ -166,8 +136,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "From Extraction to Regeneration",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-stem/v01-from-extraction-to-regeneration/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.017 - From Extraction to Regeneration.pdf",
-      "fileName": "The Coherence Thesis - 01.017 - From Extraction to Regeneration.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.014 - From Extraction to Regeneration.pdf",
+      "fileName": "The Coherence Thesis - 01.014 - From Extraction to Regeneration.pdf",
       "contentHash": "4ed10d24deadd1fa"
     },
     {
@@ -176,8 +146,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Intelligence as an Emergent Property",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-stem/v01-intelligence-as-an-emergent-property/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.018 - Intelligence as an Emergent Property.pdf",
-      "fileName": "The Coherence Thesis - 01.018 - Intelligence as an Emergent Property.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.015 - Intelligence as an Emergent Property.pdf",
+      "fileName": "The Coherence Thesis - 01.015 - Intelligence as an Emergent Property.pdf",
       "contentHash": "3de8357c3d68cb6f"
     },
     {
@@ -186,8 +156,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Governance as Regulation, Not Control",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-stem/v01-governance-as-regulation-not-control/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.019 - Governance as Regulation, Not Control.pdf",
-      "fileName": "The Coherence Thesis - 01.019 - Governance as Regulation, Not Control.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.016 - Governance as Regulation, Not Control.pdf",
+      "fileName": "The Coherence Thesis - 01.016 - Governance as Regulation, Not Control.pdf",
       "contentHash": "b7c98f33ff0ee87a"
     },
     {
@@ -196,8 +166,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Intelligence We Now Build",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-stem/v01-intelligence-we-now-build/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.020 - Intelligence We Now Build.pdf",
-      "fileName": "The Coherence Thesis - 01.020 - Intelligence We Now Build.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.017 - Intelligence We Now Build.pdf",
+      "fileName": "The Coherence Thesis - 01.017 - Intelligence We Now Build.pdf",
       "contentHash": "3c435368b8abf281"
     },
     {
@@ -206,8 +176,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "A Horizon, Not Yet a Blueprint",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-stem/v01-a-horizon-not-yet-a-blueprint/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.021 - A Horizon, Not Yet a Blueprint.pdf",
-      "fileName": "The Coherence Thesis - 01.021 - A Horizon, Not Yet a Blueprint.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.018 - A Horizon, Not Yet a Blueprint.pdf",
+      "fileName": "The Coherence Thesis - 01.018 - A Horizon, Not Yet a Blueprint.pdf",
       "contentHash": "31db84de9a158d89"
     },
     {
@@ -216,19 +186,9 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Taking Pause in the Soil",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/taking-pause-in-the-soil/v01-taking-pause-in-the-soil/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.022 - Taking Pause in the Soil.pdf",
-      "fileName": "The Coherence Thesis - 01.022 - Taking Pause in the Soil.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.019 - Taking Pause in the Soil.pdf",
+      "fileName": "The Coherence Thesis - 01.019 - Taking Pause in the Soil.pdf",
       "contentHash": "70643741ceb553b7"
-    },
-    {
-      "sectionId": "v01-the-soil",
-      "volumeId": "humanitys-most-viable-future",
-      "volumeTitle": "Humanity's Most Viable Future",
-      "title": "The Soil",
-      "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-soil/v01-the-soil/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.023 - The Soil.pdf",
-      "fileName": "The Coherence Thesis - 01.023 - The Soil.pdf",
-      "contentHash": "c41f52ee4b1300d9"
     },
     {
       "sectionId": "v01-the-human-being-reconsidered",
@@ -236,8 +196,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "The Human Being Reconsidered",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-soil/v01-the-human-being-reconsidered/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.024 - The Human Being Reconsidered.pdf",
-      "fileName": "The Coherence Thesis - 01.024 - The Human Being Reconsidered.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.020 - The Human Being Reconsidered.pdf",
+      "fileName": "The Coherence Thesis - 01.020 - The Human Being Reconsidered.pdf",
       "contentHash": "ed9fc9f7ecc088e2"
     },
     {
@@ -246,8 +206,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Intelligence, Meaning, Trust",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-soil/v01-intelligence-meaning-trust/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.025 - Intelligence, Meaning, Trust.pdf",
-      "fileName": "The Coherence Thesis - 01.025 - Intelligence, Meaning, Trust.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.021 - Intelligence, Meaning, Trust.pdf",
+      "fileName": "The Coherence Thesis - 01.021 - Intelligence, Meaning, Trust.pdf",
       "contentHash": "a6677beb26ae912d"
     },
     {
@@ -256,8 +216,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Consciousness and Participation",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-soil/v01-consciousness-and-participation/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.026 - Consciousness and Participation.pdf",
-      "fileName": "The Coherence Thesis - 01.026 - Consciousness and Participation.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.022 - Consciousness and Participation.pdf",
+      "fileName": "The Coherence Thesis - 01.022 - Consciousness and Participation.pdf",
       "contentHash": "b90526afca19075a"
     },
     {
@@ -266,8 +226,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Civilization as a Living Process",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-soil/v01-civilization-as-a-living-process/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.027 - Civilization as a Living Process.pdf",
-      "fileName": "The Coherence Thesis - 01.027 - Civilization as a Living Process.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.023 - Civilization as a Living Process.pdf",
+      "fileName": "The Coherence Thesis - 01.023 - Civilization as a Living Process.pdf",
       "contentHash": "4485aceb85875b75"
     },
     {
@@ -276,8 +236,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Reverence, Arrived at Honestly",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-soil/v01-reverence-arrived-at-honestly/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.028 - Reverence, Arrived at Honestly.pdf",
-      "fileName": "The Coherence Thesis - 01.028 - Reverence, Arrived at Honestly.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.024 - Reverence, Arrived at Honestly.pdf",
+      "fileName": "The Coherence Thesis - 01.024 - Reverence, Arrived at Honestly.pdf",
       "contentHash": "2656f14a5d6fb6f1"
     },
     {
@@ -286,8 +246,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Why This Is Necessity, Not Preference",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-soil/v01-why-this-is-necessity-not-preference/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.029 - Why This Is Necessity, Not Preference.pdf",
-      "fileName": "The Coherence Thesis - 01.029 - Why This Is Necessity, Not Preference.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.025 - Why This Is Necessity, Not Preference.pdf",
+      "fileName": "The Coherence Thesis - 01.025 - Why This Is Necessity, Not Preference.pdf",
       "contentHash": "2cf308c2ca50804c"
     },
     {
@@ -296,8 +256,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Into the Flower",
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/into-the-flower/v01-into-the-flower/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.030 - Into the Flower.pdf",
-      "fileName": "The Coherence Thesis - 01.030 - Into the Flower.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.026 - Into the Flower.pdf",
+      "fileName": "The Coherence Thesis - 01.026 - Into the Flower.pdf",
       "contentHash": "3736a61bc88596e5"
     },
     {
@@ -306,8 +266,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "The Flower",
       "href": "/manuscripts/humanitys-most-viable-future/the-flower/v01-the-flower/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.031 - The Flower.pdf",
-      "fileName": "The Coherence Thesis - 01.031 - The Flower.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.027 - The Flower.pdf",
+      "fileName": "The Coherence Thesis - 01.027 - The Flower.pdf",
       "contentHash": "95e782eff5cb2ab5"
     },
     {
@@ -316,8 +276,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "The Question Becomes an Experiment",
       "href": "/manuscripts/humanitys-most-viable-future/the-flower/the-question-becomes-an-experiment/v01-the-question-becomes-an-experiment/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.032 - The Question Becomes an Experiment.pdf",
-      "fileName": "The Coherence Thesis - 01.032 - The Question Becomes an Experiment.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.028 - The Question Becomes an Experiment.pdf",
+      "fileName": "The Coherence Thesis - 01.028 - The Question Becomes an Experiment.pdf",
       "contentHash": "2a7e62938db9f76f"
     },
     {
@@ -326,8 +286,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "What Providence Is",
       "href": "/manuscripts/humanitys-most-viable-future/the-flower/what-providence-is/v01-what-providence-is/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.033 - What Providence Is.pdf",
-      "fileName": "The Coherence Thesis - 01.033 - What Providence Is.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.029 - What Providence Is.pdf",
+      "fileName": "The Coherence Thesis - 01.029 - What Providence Is.pdf",
       "contentHash": "020a16f7a7b21ab8"
     },
     {
@@ -336,8 +296,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "PURPOSEFUL: The Cultivation of Human Coherence",
       "href": "/manuscripts/humanitys-most-viable-future/the-flower/purposeful-the-cultivation-of-human-coherence/v01-purposeful-the-cultivation-of-human-coherence/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.034 - PURPOSEFUL The Cultivation of Human Coherence.pdf",
-      "fileName": "The Coherence Thesis - 01.034 - PURPOSEFUL The Cultivation of Human Coherence.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.030 - PURPOSEFUL The Cultivation of Human Coherence.pdf",
+      "fileName": "The Coherence Thesis - 01.030 - PURPOSEFUL The Cultivation of Human Coherence.pdf",
       "contentHash": "32752528e4b788a7"
     },
     {
@@ -346,8 +306,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "The Currency of Presence",
       "href": "/manuscripts/humanitys-most-viable-future/the-flower/the-currency-of-presence/v01-the-currency-of-presence/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.035 - The Currency of Presence.pdf",
-      "fileName": "The Coherence Thesis - 01.035 - The Currency of Presence.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.031 - The Currency of Presence.pdf",
+      "fileName": "The Coherence Thesis - 01.031 - The Currency of Presence.pdf",
       "contentHash": "be7e4e202ca9367f"
     },
     {
@@ -356,8 +316,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Its Name",
       "href": "/manuscripts/humanitys-most-viable-future/the-flower/the-currency-of-presence/v01-its-name/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.036 - Its Name.pdf",
-      "fileName": "The Coherence Thesis - 01.036 - Its Name.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.032 - Its Name.pdf",
+      "fileName": "The Coherence Thesis - 01.032 - Its Name.pdf",
       "contentHash": "2f80a0957f6a96f5"
     },
     {
@@ -366,8 +326,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "Why This Is Not What You Fear",
       "href": "/manuscripts/humanitys-most-viable-future/the-flower/the-currency-of-presence/v01-why-this-is-not-what-you-fear/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.037 - Why This Is Not What You Fear.pdf",
-      "fileName": "The Coherence Thesis - 01.037 - Why This Is Not What You Fear.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.033 - Why This Is Not What You Fear.pdf",
+      "fileName": "The Coherence Thesis - 01.033 - Why This Is Not What You Fear.pdf",
       "contentHash": "9494bd514c9daf73"
     },
     {
@@ -376,8 +336,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "What It Looks Like From Inside",
       "href": "/manuscripts/humanitys-most-viable-future/the-flower/the-currency-of-presence/v01-what-it-looks-like-from-inside/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.038 - What It Looks Like From Inside.pdf",
-      "fileName": "The Coherence Thesis - 01.038 - What It Looks Like From Inside.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.034 - What It Looks Like From Inside.pdf",
+      "fileName": "The Coherence Thesis - 01.034 - What It Looks Like From Inside.pdf",
       "contentHash": "ec7b399a4ac2fdfa"
     },
     {
@@ -386,8 +346,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "ICONS, and the First Scale",
       "href": "/manuscripts/humanitys-most-viable-future/the-flower/icons-and-the-first-scale/v01-icons-and-the-first-scale/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.039 - ICONS, and the First Scale.pdf",
-      "fileName": "The Coherence Thesis - 01.039 - ICONS, and the First Scale.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.035 - ICONS, and the First Scale.pdf",
+      "fileName": "The Coherence Thesis - 01.035 - ICONS, and the First Scale.pdf",
       "contentHash": "4166e79c2653000f"
     },
     {
@@ -396,8 +356,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "What This Is, and What It Is Not",
       "href": "/manuscripts/humanitys-most-viable-future/the-flower/what-this-is-and-what-it-is-not/v01-what-this-is-and-what-it-is-not/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.040 - What This Is, and What It Is Not.pdf",
-      "fileName": "The Coherence Thesis - 01.040 - What This Is, and What It Is Not.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.036 - What This Is, and What It Is Not.pdf",
+      "fileName": "The Coherence Thesis - 01.036 - What This Is, and What It Is Not.pdf",
       "contentHash": "dc3a8d24ff6ba1f6"
     },
     {
@@ -406,8 +366,8 @@
       "volumeTitle": "Humanity's Most Viable Future",
       "title": "The Invitation",
       "href": "/manuscripts/humanitys-most-viable-future/the-flower/the-invitation/v01-the-invitation/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.041 - The Invitation.pdf",
-      "fileName": "The Coherence Thesis - 01.041 - The Invitation.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 01.037 - The Invitation.pdf",
+      "fileName": "The Coherence Thesis - 01.037 - The Invitation.pdf",
       "contentHash": "f811117912ab76a9"
     },
     {
@@ -511,23 +471,13 @@
       "contentHash": "c8a017a9d29ee491"
     },
     {
-      "sectionId": "v02-the-response",
-      "volumeId": "wielding-intelligence",
-      "volumeTitle": "Wielding Intelligence",
-      "title": "The Response",
-      "href": "/manuscripts/wielding-intelligence/the-response/v02-the-response/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.011 - The Response.pdf",
-      "fileName": "The Coherence Thesis - 02.011 - The Response.pdf",
-      "contentHash": "de765ebf1357cc14"
-    },
-    {
       "sectionId": "v02-coherence-as-infrastructure",
       "volumeId": "wielding-intelligence",
       "volumeTitle": "Wielding Intelligence",
       "title": "Coherence as Infrastructure",
       "href": "/manuscripts/wielding-intelligence/the-response/coherence-as-infrastructure/v02-coherence-as-infrastructure/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.012 - Coherence as Infrastructure.pdf",
-      "fileName": "The Coherence Thesis - 02.012 - Coherence as Infrastructure.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.011 - Coherence as Infrastructure.pdf",
+      "fileName": "The Coherence Thesis - 02.011 - Coherence as Infrastructure.pdf",
       "contentHash": "58e4adb2adec477b"
     },
     {
@@ -536,8 +486,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Infrastructure That Is Not Yet Visible",
       "href": "/manuscripts/wielding-intelligence/the-response/infrastructure-that-is-not-yet-visible/v02-infrastructure-that-is-not-yet-visible/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.013 - Infrastructure That Is Not Yet Visible.pdf",
-      "fileName": "The Coherence Thesis - 02.013 - Infrastructure That Is Not Yet Visible.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.012 - Infrastructure That Is Not Yet Visible.pdf",
+      "fileName": "The Coherence Thesis - 02.012 - Infrastructure That Is Not Yet Visible.pdf",
       "contentHash": "711d685a5a808d67"
     },
     {
@@ -546,8 +496,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What Providence Intends to Be",
       "href": "/manuscripts/wielding-intelligence/the-response/what-providence-intends-to-be/v02-what-providence-intends-to-be/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.014 - What Providence Intends to Be.pdf",
-      "fileName": "The Coherence Thesis - 02.014 - What Providence Intends to Be.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.013 - What Providence Intends to Be.pdf",
+      "fileName": "The Coherence Thesis - 02.013 - What Providence Intends to Be.pdf",
       "contentHash": "6e9c35fb74158ddc"
     },
     {
@@ -556,8 +506,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Surveillance Problem",
       "href": "/manuscripts/wielding-intelligence/the-response/the-surveillance-problem/v02-the-surveillance-problem/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.015 - The Surveillance Problem.pdf",
-      "fileName": "The Coherence Thesis - 02.015 - The Surveillance Problem.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.014 - The Surveillance Problem.pdf",
+      "fileName": "The Coherence Thesis - 02.014 - The Surveillance Problem.pdf",
       "contentHash": "0a341877d996a94d"
     },
     {
@@ -566,8 +516,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What Has to Be True for This to Work",
       "href": "/manuscripts/wielding-intelligence/the-response/what-has-to-be-true-for-this-to-work/v02-what-has-to-be-true-for-this-to-work/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.016 - What Has to Be True for This to Work.pdf",
-      "fileName": "The Coherence Thesis - 02.016 - What Has to Be True for This to Work.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.015 - What Has to Be True for This to Work.pdf",
+      "fileName": "The Coherence Thesis - 02.015 - What Has to Be True for This to Work.pdf",
       "contentHash": "e3d095688f80096c"
     },
     {
@@ -576,8 +526,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Why Now",
       "href": "/manuscripts/wielding-intelligence/the-response/why-now/v02-why-now/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.017 - Why Now.pdf",
-      "fileName": "The Coherence Thesis - 02.017 - Why Now.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.016 - Why Now.pdf",
+      "fileName": "The Coherence Thesis - 02.016 - Why Now.pdf",
       "contentHash": "7de7ab336b150679"
     },
     {
@@ -586,8 +536,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Providence: Proposed Functionality",
       "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-providence-proposed-functionality/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.018 - Providence Proposed Functionality.pdf",
-      "fileName": "The Coherence Thesis - 02.018 - Providence Proposed Functionality.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.017 - Providence Proposed Functionality.pdf",
+      "fileName": "The Coherence Thesis - 02.017 - Providence Proposed Functionality.pdf",
       "contentHash": "31038cbd423e8043"
     },
     {
@@ -596,8 +546,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Layer 1 — Relational Coordination Network",
       "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-layer-1-relational-coordination-network/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.019 - Layer 1 — Relational Coordination Network.pdf",
-      "fileName": "The Coherence Thesis - 02.019 - Layer 1 — Relational Coordination Network.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.018 - Layer 1 — Relational Coordination Network.pdf",
+      "fileName": "The Coherence Thesis - 02.018 - Layer 1 — Relational Coordination Network.pdf",
       "contentHash": "92a93fdff867c005"
     },
     {
@@ -606,8 +556,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Layer 2 — Trust Architecture",
       "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-layer-2-trust-architecture/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.020 - Layer 2 — Trust Architecture.pdf",
-      "fileName": "The Coherence Thesis - 02.020 - Layer 2 — Trust Architecture.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.019 - Layer 2 — Trust Architecture.pdf",
+      "fileName": "The Coherence Thesis - 02.019 - Layer 2 — Trust Architecture.pdf",
       "contentHash": "e0289f885f107d76"
     },
     {
@@ -616,8 +566,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Layer 4 — Coordination Substrate",
       "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-layer-4-coordination-substrate/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.021 - Layer 4 — Coordination Substrate.pdf",
-      "fileName": "The Coherence Thesis - 02.021 - Layer 4 — Coordination Substrate.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.020 - Layer 4 — Coordination Substrate.pdf",
+      "fileName": "The Coherence Thesis - 02.020 - Layer 4 — Coordination Substrate.pdf",
       "contentHash": "6270ca918f1271a5"
     },
     {
@@ -626,8 +576,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Layer 5 — Governance Experiment",
       "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-layer-5-governance-experiment/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.022 - Layer 5 — Governance Experiment.pdf",
-      "fileName": "The Coherence Thesis - 02.022 - Layer 5 — Governance Experiment.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.021 - Layer 5 — Governance Experiment.pdf",
+      "fileName": "The Coherence Thesis - 02.021 - Layer 5 — Governance Experiment.pdf",
       "contentHash": "41387adb39bc5059"
     },
     {
@@ -636,8 +586,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Cross-Cutting Commitments",
       "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-cross-cutting-commitments/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.023 - Cross-Cutting Commitments.pdf",
-      "fileName": "The Coherence Thesis - 02.023 - Cross-Cutting Commitments.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.022 - Cross-Cutting Commitments.pdf",
+      "fileName": "The Coherence Thesis - 02.022 - Cross-Cutting Commitments.pdf",
       "contentHash": "836d8de36d838e31"
     },
     {
@@ -646,8 +596,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What Comes Next in This Work",
       "href": "/manuscripts/wielding-intelligence/the-response/what-comes-next-in-this-work/v02-what-comes-next-in-this-work/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.024 - What Comes Next in This Work.pdf",
-      "fileName": "The Coherence Thesis - 02.024 - What Comes Next in This Work.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.023 - What Comes Next in This Work.pdf",
+      "fileName": "The Coherence Thesis - 02.023 - What Comes Next in This Work.pdf",
       "contentHash": "f01b4307bfa32b3c"
     },
     {
@@ -656,8 +606,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "A Note to the Builders",
       "href": "/manuscripts/wielding-intelligence/the-response/a-note-to-the-builders/v02-a-note-to-the-builders/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.025 - A Note to the Builders.pdf",
-      "fileName": "The Coherence Thesis - 02.025 - A Note to the Builders.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.024 - A Note to the Builders.pdf",
+      "fileName": "The Coherence Thesis - 02.024 - A Note to the Builders.pdf",
       "contentHash": "259fcc1f768d30f7"
     },
     {
@@ -666,8 +616,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Coherence Intelligence",
       "href": "/manuscripts/wielding-intelligence/the-response/the-coherence-intelligence/v02-the-coherence-intelligence/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.026 - The Coherence Intelligence.pdf",
-      "fileName": "The Coherence Thesis - 02.026 - The Coherence Intelligence.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.025 - The Coherence Intelligence.pdf",
+      "fileName": "The Coherence Thesis - 02.025 - The Coherence Intelligence.pdf",
       "contentHash": "29bbf4426bf5f3d6"
     },
     {
@@ -676,8 +626,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Sensemaking at Scale",
       "href": "/manuscripts/wielding-intelligence/the-response/sensemaking-at-scale/v02-sensemaking-at-scale/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.027 - Sensemaking at Scale.pdf",
-      "fileName": "The Coherence Thesis - 02.027 - Sensemaking at Scale.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.026 - Sensemaking at Scale.pdf",
+      "fileName": "The Coherence Thesis - 02.026 - Sensemaking at Scale.pdf",
       "contentHash": "2765cf70518b0280"
     },
     {
@@ -686,8 +636,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Earth as Substrate",
       "href": "/manuscripts/wielding-intelligence/the-response/earth-as-substrate/v02-earth-as-substrate/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.028 - Earth as Substrate.pdf",
-      "fileName": "The Coherence Thesis - 02.028 - Earth as Substrate.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.027 - Earth as Substrate.pdf",
+      "fileName": "The Coherence Thesis - 02.027 - Earth as Substrate.pdf",
       "contentHash": "71538caa274eea98"
     },
     {
@@ -696,8 +646,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What the Pattern Reveals",
       "href": "/manuscripts/wielding-intelligence/the-response/what-the-pattern-reveals/v02-what-the-pattern-reveals/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.029 - What the Pattern Reveals.pdf",
-      "fileName": "The Coherence Thesis - 02.029 - What the Pattern Reveals.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.028 - What the Pattern Reveals.pdf",
+      "fileName": "The Coherence Thesis - 02.028 - What the Pattern Reveals.pdf",
       "contentHash": "f18dacf9306b06f3"
     },
     {
@@ -706,8 +656,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What Providence Is and Is Not Doing in This Dimension",
       "href": "/manuscripts/wielding-intelligence/the-response/what-providence-is-and-is-not-doing-in-this-dimension/v02-what-providence-is-and-is-not-doing-in-this-dimension/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.030 - What Providence Is and Is Not Doing in This Dimension.pdf",
-      "fileName": "The Coherence Thesis - 02.030 - What Providence Is and Is Not Doing in This Dimension.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.029 - What Providence Is and Is Not Doing in This Dimension.pdf",
+      "fileName": "The Coherence Thesis - 02.029 - What Providence Is and Is Not Doing in This Dimension.pdf",
       "contentHash": "09fc039059acfd60"
     },
     {
@@ -716,8 +666,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Threshold",
       "href": "/manuscripts/wielding-intelligence/the-response/the-threshold/v02-the-threshold-2/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.031 - The Threshold.pdf",
-      "fileName": "The Coherence Thesis - 02.031 - The Threshold.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.030 - The Threshold.pdf",
+      "fileName": "The Coherence Thesis - 02.030 - The Threshold.pdf",
       "contentHash": "45ad490214d28183"
     },
     {
@@ -726,8 +676,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Currencies of Coherence",
       "href": "/manuscripts/wielding-intelligence/the-response/currencies-of-coherence/v02-currencies-of-coherence/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.032 - Currencies of Coherence.pdf",
-      "fileName": "The Coherence Thesis - 02.032 - Currencies of Coherence.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.031 - Currencies of Coherence.pdf",
+      "fileName": "The Coherence Thesis - 02.031 - Currencies of Coherence.pdf",
       "contentHash": "6f20d6677584f9ce"
     },
     {
@@ -736,8 +686,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Why Physiology",
       "href": "/manuscripts/wielding-intelligence/the-response/why-physiology/v02-why-physiology/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.033 - Why Physiology.pdf",
-      "fileName": "The Coherence Thesis - 02.033 - Why Physiology.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.032 - Why Physiology.pdf",
+      "fileName": "The Coherence Thesis - 02.032 - Why Physiology.pdf",
       "contentHash": "380d3db08f3b09cd"
     },
     {
@@ -746,8 +696,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What Has Not Been Solved",
       "href": "/manuscripts/wielding-intelligence/the-response/what-has-not-been-solved/v02-what-has-not-been-solved/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.034 - What Has Not Been Solved.pdf",
-      "fileName": "The Coherence Thesis - 02.034 - What Has Not Been Solved.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.033 - What Has Not Been Solved.pdf",
+      "fileName": "The Coherence Thesis - 02.033 - What Has Not Been Solved.pdf",
       "contentHash": "cf97140d6adbc471"
     },
     {
@@ -756,8 +706,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What Providence Is and Is Not Doing",
       "href": "/manuscripts/wielding-intelligence/the-response/what-providence-is-and-is-not-doing/v02-what-providence-is-and-is-not-doing/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.035 - What Providence Is and Is Not Doing.pdf",
-      "fileName": "The Coherence Thesis - 02.035 - What Providence Is and Is Not Doing.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.034 - What Providence Is and Is Not Doing.pdf",
+      "fileName": "The Coherence Thesis - 02.034 - What Providence Is and Is Not Doing.pdf",
       "contentHash": "f8878c84d816f3e3"
     },
     {
@@ -766,8 +716,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Larger Argument",
       "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument/v02-the-larger-argument/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.036 - The Larger Argument.pdf",
-      "fileName": "The Coherence Thesis - 02.036 - The Larger Argument.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.035 - The Larger Argument.pdf",
+      "fileName": "The Coherence Thesis - 02.035 - The Larger Argument.pdf",
       "contentHash": "76533e2b519bd55b"
     },
     {
@@ -776,8 +726,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Economics of Regeneration",
       "href": "/manuscripts/wielding-intelligence/the-response/the-economics-of-regeneration/v02-the-economics-of-regeneration/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.037 - The Economics of Regeneration.pdf",
-      "fileName": "The Coherence Thesis - 02.037 - The Economics of Regeneration.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.036 - The Economics of Regeneration.pdf",
+      "fileName": "The Coherence Thesis - 02.036 - The Economics of Regeneration.pdf",
       "contentHash": "3546768e36beb8b8"
     },
     {
@@ -786,8 +736,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What Money Cannot Carry",
       "href": "/manuscripts/wielding-intelligence/the-response/what-money-cannot-carry/v02-what-money-cannot-carry/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.038 - What Money Cannot Carry.pdf",
-      "fileName": "The Coherence Thesis - 02.038 - What Money Cannot Carry.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.037 - What Money Cannot Carry.pdf",
+      "fileName": "The Coherence Thesis - 02.037 - What Money Cannot Carry.pdf",
       "contentHash": "3c9ef8473fdd2fe1"
     },
     {
@@ -796,8 +746,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What Has Been Tried",
       "href": "/manuscripts/wielding-intelligence/the-response/what-has-been-tried/v02-what-has-been-tried/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.039 - What Has Been Tried.pdf",
-      "fileName": "The Coherence Thesis - 02.039 - What Has Been Tried.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.038 - What Has Been Tried.pdf",
+      "fileName": "The Coherence Thesis - 02.038 - What Has Been Tried.pdf",
       "contentHash": "3fac777f3bb10621"
     },
     {
@@ -806,8 +756,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Coherence as Flow",
       "href": "/manuscripts/wielding-intelligence/the-response/coherence-as-flow/v02-coherence-as-flow/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.040 - Coherence as Flow.pdf",
-      "fileName": "The Coherence Thesis - 02.040 - Coherence as Flow.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.039 - Coherence as Flow.pdf",
+      "fileName": "The Coherence Thesis - 02.039 - Coherence as Flow.pdf",
       "contentHash": "4526667fc8968d8c"
     },
     {
@@ -816,8 +766,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What Providence Is and Is Not Doing in This Dimension",
       "href": "/manuscripts/wielding-intelligence/the-response/what-providence-is-and-is-not-doing-in-this-dimension-2/v02-what-providence-is-and-is-not-doing-in-this-dimension-2/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.041 - What Providence Is and Is Not Doing in This Dimension.pdf",
-      "fileName": "The Coherence Thesis - 02.041 - What Providence Is and Is Not Doing in This Dimension.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.040 - What Providence Is and Is Not Doing in This Dimension.pdf",
+      "fileName": "The Coherence Thesis - 02.040 - What Providence Is and Is Not Doing in This Dimension.pdf",
       "contentHash": "354c79c13af8c28f"
     },
     {
@@ -826,8 +776,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Larger Argument",
       "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-2/v02-the-larger-argument-2/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.042 - The Larger Argument.pdf",
-      "fileName": "The Coherence Thesis - 02.042 - The Larger Argument.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.041 - The Larger Argument.pdf",
+      "fileName": "The Coherence Thesis - 02.041 - The Larger Argument.pdf",
       "contentHash": "62a052ed02199224"
     },
     {
@@ -836,8 +786,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Governance Beyond Domination",
       "href": "/manuscripts/wielding-intelligence/the-response/governance-beyond-domination/v02-governance-beyond-domination/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.043 - Governance Beyond Domination.pdf",
-      "fileName": "The Coherence Thesis - 02.043 - Governance Beyond Domination.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.042 - Governance Beyond Domination.pdf",
+      "fileName": "The Coherence Thesis - 02.042 - Governance Beyond Domination.pdf",
       "contentHash": "12bd524ace4fab56"
     },
     {
@@ -846,8 +796,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What Has Been Tried",
       "href": "/manuscripts/wielding-intelligence/the-response/what-has-been-tried-2/v02-what-has-been-tried-2/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.044 - What Has Been Tried.pdf",
-      "fileName": "The Coherence Thesis - 02.044 - What Has Been Tried.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.043 - What Has Been Tried.pdf",
+      "fileName": "The Coherence Thesis - 02.043 - What Has Been Tried.pdf",
       "contentHash": "1990dac6acf09393"
     },
     {
@@ -856,8 +806,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Coherence as a Property of Governance Systems",
       "href": "/manuscripts/wielding-intelligence/the-response/coherence-as-a-property-of-governance-systems/v02-coherence-as-a-property-of-governance-systems/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.045 - Coherence as a Property of Governance Systems.pdf",
-      "fileName": "The Coherence Thesis - 02.045 - Coherence as a Property of Governance Systems.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.044 - Coherence as a Property of Governance Systems.pdf",
+      "fileName": "The Coherence Thesis - 02.044 - Coherence as a Property of Governance Systems.pdf",
       "contentHash": "5aaac13548bff093"
     },
     {
@@ -866,8 +816,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What Providence Is and Is Not Doing in This Dimension",
       "href": "/manuscripts/wielding-intelligence/the-response/what-providence-is-and-is-not-doing-in-this-dimension-3/v02-what-providence-is-and-is-not-doing-in-this-dimension-3/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.046 - What Providence Is and Is Not Doing in This Dimension.pdf",
-      "fileName": "The Coherence Thesis - 02.046 - What Providence Is and Is Not Doing in This Dimension.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.045 - What Providence Is and Is Not Doing in This Dimension.pdf",
+      "fileName": "The Coherence Thesis - 02.045 - What Providence Is and Is Not Doing in This Dimension.pdf",
       "contentHash": "e957f21fd665ca88"
     },
     {
@@ -876,8 +826,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Larger Argument",
       "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-3/v02-the-larger-argument-3/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.047 - The Larger Argument.pdf",
-      "fileName": "The Coherence Thesis - 02.047 - The Larger Argument.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.046 - The Larger Argument.pdf",
+      "fileName": "The Coherence Thesis - 02.046 - The Larger Argument.pdf",
       "contentHash": "cdd19584e1f80ad5"
     },
     {
@@ -886,8 +836,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Intelligence in Right Relationship",
       "href": "/manuscripts/wielding-intelligence/the-response/intelligence-in-right-relationship/v02-intelligence-in-right-relationship/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.048 - Intelligence in Right Relationship.pdf",
-      "fileName": "The Coherence Thesis - 02.048 - Intelligence in Right Relationship.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.047 - Intelligence in Right Relationship.pdf",
+      "fileName": "The Coherence Thesis - 02.047 - Intelligence in Right Relationship.pdf",
       "contentHash": "9dd996b62619102d"
     },
     {
@@ -896,8 +846,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Current State of Alignment",
       "href": "/manuscripts/wielding-intelligence/the-response/the-current-state-of-alignment/v02-the-current-state-of-alignment/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.049 - The Current State of Alignment.pdf",
-      "fileName": "The Coherence Thesis - 02.049 - The Current State of Alignment.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.048 - The Current State of Alignment.pdf",
+      "fileName": "The Coherence Thesis - 02.048 - The Current State of Alignment.pdf",
       "contentHash": "55bcff434a3034ea"
     },
     {
@@ -906,8 +856,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What AI Can Already Do for Coherence",
       "href": "/manuscripts/wielding-intelligence/the-response/what-ai-can-already-do-for-coherence/v02-what-ai-can-already-do-for-coherence/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.050 - What AI Can Already Do for Coherence.pdf",
-      "fileName": "The Coherence Thesis - 02.050 - What AI Can Already Do for Coherence.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.049 - What AI Can Already Do for Coherence.pdf",
+      "fileName": "The Coherence Thesis - 02.049 - What AI Can Already Do for Coherence.pdf",
       "contentHash": "5b829b874bf5c2ca"
     },
     {
@@ -916,8 +866,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Where the Real Asymmetry Lies",
       "href": "/manuscripts/wielding-intelligence/the-response/where-the-real-asymmetry-lies/v02-where-the-real-asymmetry-lies/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.051 - Where the Real Asymmetry Lies.pdf",
-      "fileName": "The Coherence Thesis - 02.051 - Where the Real Asymmetry Lies.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.050 - Where the Real Asymmetry Lies.pdf",
+      "fileName": "The Coherence Thesis - 02.050 - Where the Real Asymmetry Lies.pdf",
       "contentHash": "563e56a21bd4bff4"
     },
     {
@@ -926,8 +876,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What Providence Is and Is Not Doing in This Dimension",
       "href": "/manuscripts/wielding-intelligence/the-response/what-providence-is-and-is-not-doing-in-this-dimension-4/v02-what-providence-is-and-is-not-doing-in-this-dimension-4/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.052 - What Providence Is and Is Not Doing in This Dimension.pdf",
-      "fileName": "The Coherence Thesis - 02.052 - What Providence Is and Is Not Doing in This Dimension.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.051 - What Providence Is and Is Not Doing in This Dimension.pdf",
+      "fileName": "The Coherence Thesis - 02.051 - What Providence Is and Is Not Doing in This Dimension.pdf",
       "contentHash": "8d3a4a101f351a8c"
     },
     {
@@ -936,8 +886,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Larger Argument",
       "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-4/v02-the-larger-argument-4/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.053 - The Larger Argument.pdf",
-      "fileName": "The Coherence Thesis - 02.053 - The Larger Argument.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.052 - The Larger Argument.pdf",
+      "fileName": "The Coherence Thesis - 02.052 - The Larger Argument.pdf",
       "contentHash": "7ec69f944fc08d7a"
     },
     {
@@ -946,8 +896,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Toward Humane Technology",
       "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-4/v02-toward-humane-technology-3/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.054 - Toward Humane Technology.pdf",
-      "fileName": "The Coherence Thesis - 02.054 - Toward Humane Technology.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.053 - Toward Humane Technology.pdf",
+      "fileName": "The Coherence Thesis - 02.053 - Toward Humane Technology.pdf",
       "contentHash": "b04e3d05ad8f1045"
     },
     {
@@ -956,8 +906,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Wielding Intelligence",
       "href": "/manuscripts/wielding-intelligence/v02-wielding-intelligence/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.055 - Wielding Intelligence.pdf",
-      "fileName": "The Coherence Thesis - 02.055 - Wielding Intelligence.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.054 - Wielding Intelligence.pdf",
+      "fileName": "The Coherence Thesis - 02.054 - Wielding Intelligence.pdf",
       "contentHash": "c70d456118ae438c"
     },
     {
@@ -966,8 +916,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Builders of the Coherent Civilization",
       "href": "/manuscripts/wielding-intelligence/builders-of-the-coherent-civilization/v02-builders-of-the-coherent-civilization/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.056 - Builders of the Coherent Civilization.pdf",
-      "fileName": "The Coherence Thesis - 02.056 - Builders of the Coherent Civilization.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.055 - Builders of the Coherent Civilization.pdf",
+      "fileName": "The Coherence Thesis - 02.055 - Builders of the Coherent Civilization.pdf",
       "contentHash": "b1ee587bd3296293"
     },
     {
@@ -976,8 +926,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Field That Does Not Yet Know It Is a Field",
       "href": "/manuscripts/wielding-intelligence/the-field-that-does-not-yet-know-it-is-a-field/v02-the-field-that-does-not-yet-know-it-is-a-field/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.057 - The Field That Does Not Yet Know It Is a Field.pdf",
-      "fileName": "The Coherence Thesis - 02.057 - The Field That Does Not Yet Know It Is a Field.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.056 - The Field That Does Not Yet Know It Is a Field.pdf",
+      "fileName": "The Coherence Thesis - 02.056 - The Field That Does Not Yet Know It Is a Field.pdf",
       "contentHash": "97202136883e8702"
     },
     {
@@ -986,8 +936,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What the Builders Have in Common",
       "href": "/manuscripts/wielding-intelligence/what-the-builders-have-in-common/v02-what-the-builders-have-in-common/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.058 - What the Builders Have in Common.pdf",
-      "fileName": "The Coherence Thesis - 02.058 - What the Builders Have in Common.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.057 - What the Builders Have in Common.pdf",
+      "fileName": "The Coherence Thesis - 02.057 - What the Builders Have in Common.pdf",
       "contentHash": "0770a9db0fd84631"
     },
     {
@@ -996,8 +946,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Three Builder Types Worth Naming",
       "href": "/manuscripts/wielding-intelligence/three-builder-types-worth-naming/v02-three-builder-types-worth-naming/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.059 - Three Builder Types Worth Naming.pdf",
-      "fileName": "The Coherence Thesis - 02.059 - Three Builder Types Worth Naming.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.058 - Three Builder Types Worth Naming.pdf",
+      "fileName": "The Coherence Thesis - 02.058 - Three Builder Types Worth Naming.pdf",
       "contentHash": "1915d330a872423c"
     },
     {
@@ -1006,8 +956,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What Providence Is and Is Not Doing in This Dimension",
       "href": "/manuscripts/wielding-intelligence/what-providence-is-and-is-not-doing-in-this-dimension-5/v02-what-providence-is-and-is-not-doing-in-this-dimension-5/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.060 - What Providence Is and Is Not Doing in This Dimension.pdf",
-      "fileName": "The Coherence Thesis - 02.060 - What Providence Is and Is Not Doing in This Dimension.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.059 - What Providence Is and Is Not Doing in This Dimension.pdf",
+      "fileName": "The Coherence Thesis - 02.059 - What Providence Is and Is Not Doing in This Dimension.pdf",
       "contentHash": "1ec7127ec88023a6"
     },
     {
@@ -1016,8 +966,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Larger Argument",
       "href": "/manuscripts/wielding-intelligence/the-larger-argument-5/v02-the-larger-argument-5/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.061 - The Larger Argument.pdf",
-      "fileName": "The Coherence Thesis - 02.061 - The Larger Argument.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.060 - The Larger Argument.pdf",
+      "fileName": "The Coherence Thesis - 02.060 - The Larger Argument.pdf",
       "contentHash": "4432bbb5e26645da"
     },
     {
@@ -1026,8 +976,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Transition",
       "href": "/manuscripts/wielding-intelligence/the-transition/v02-the-transition/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.062 - The Transition.pdf",
-      "fileName": "The Coherence Thesis - 02.062 - The Transition.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.061 - The Transition.pdf",
+      "fileName": "The Coherence Thesis - 02.061 - The Transition.pdf",
       "contentHash": "2ea37b75ca6a57fb"
     },
     {
@@ -1036,8 +986,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What This Threshold Actually Feels Like",
       "href": "/manuscripts/wielding-intelligence/what-this-threshold-actually-feels-like/v02-what-this-threshold-actually-feels-like/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.063 - What This Threshold Actually Feels Like.pdf",
-      "fileName": "The Coherence Thesis - 02.063 - What This Threshold Actually Feels Like.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.062 - What This Threshold Actually Feels Like.pdf",
+      "fileName": "The Coherence Thesis - 02.062 - What This Threshold Actually Feels Like.pdf",
       "contentHash": "971a5cc1543bf0a4"
     },
     {
@@ -1046,8 +996,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Liminal Phase",
       "href": "/manuscripts/wielding-intelligence/the-liminal-phase/v02-the-liminal-phase/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.064 - The Liminal Phase.pdf",
-      "fileName": "The Coherence Thesis - 02.064 - The Liminal Phase.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.063 - The Liminal Phase.pdf",
+      "fileName": "The Coherence Thesis - 02.063 - The Liminal Phase.pdf",
       "contentHash": "8c84fe3939d6c3be"
     },
     {
@@ -1056,8 +1006,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What This Asks of the People Living Through It",
       "href": "/manuscripts/wielding-intelligence/what-this-asks-of-the-people-living-through-it/v02-what-this-asks-of-the-people-living-through-it/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.065 - What This Asks of the People Living Through It.pdf",
-      "fileName": "The Coherence Thesis - 02.065 - What This Asks of the People Living Through It.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.064 - What This Asks of the People Living Through It.pdf",
+      "fileName": "The Coherence Thesis - 02.064 - What This Asks of the People Living Through It.pdf",
       "contentHash": "717557f014c5aa7e"
     },
     {
@@ -1066,8 +1016,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Texture of What Comes Next",
       "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/v02-the-texture-of-what-comes-next/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.066 - The Texture of What Comes Next.pdf",
-      "fileName": "The Coherence Thesis - 02.066 - The Texture of What Comes Next.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.065 - The Texture of What Comes Next.pdf",
+      "fileName": "The Coherence Thesis - 02.065 - The Texture of What Comes Next.pdf",
       "contentHash": "eba28df5103086c7"
     },
     {
@@ -1076,8 +1026,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Toward Humane Technology",
       "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/v02-toward-humane-technology-4/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.067 - Toward Humane Technology.pdf",
-      "fileName": "The Coherence Thesis - 02.067 - Toward Humane Technology.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.066 - Toward Humane Technology.pdf",
+      "fileName": "The Coherence Thesis - 02.066 - Toward Humane Technology.pdf",
       "contentHash": "9844fa585554f133"
     },
     {
@@ -1086,8 +1036,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "Wielding Intelligence",
       "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/v02-wielding-intelligence-2/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.068 - Wielding Intelligence.pdf",
-      "fileName": "The Coherence Thesis - 02.068 - Wielding Intelligence.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.067 - Wielding Intelligence.pdf",
+      "fileName": "The Coherence Thesis - 02.067 - Wielding Intelligence.pdf",
       "contentHash": "21023b7fa1e2ffd3"
     },
     {
@@ -1096,8 +1046,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What This Asks of the Reader",
       "href": "/manuscripts/wielding-intelligence/what-this-asks-of-the-reader/v02-what-this-asks-of-the-reader/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.069 - What This Asks of the Reader.pdf",
-      "fileName": "The Coherence Thesis - 02.069 - What This Asks of the Reader.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.068 - What This Asks of the Reader.pdf",
+      "fileName": "The Coherence Thesis - 02.068 - What This Asks of the Reader.pdf",
       "contentHash": "eb55470481e58eff"
     },
     {
@@ -1106,8 +1056,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "The Last Reframe",
       "href": "/manuscripts/wielding-intelligence/the-last-reframe/v02-the-last-reframe/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.070 - The Last Reframe.pdf",
-      "fileName": "The Coherence Thesis - 02.070 - The Last Reframe.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.069 - The Last Reframe.pdf",
+      "fileName": "The Coherence Thesis - 02.069 - The Last Reframe.pdf",
       "contentHash": "07e8f29ef5a82d7a"
     },
     {
@@ -1116,8 +1066,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "An Honest Accounting",
       "href": "/manuscripts/wielding-intelligence/an-honest-accounting/v02-an-honest-accounting/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.071 - An Honest Accounting.pdf",
-      "fileName": "The Coherence Thesis - 02.071 - An Honest Accounting.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.070 - An Honest Accounting.pdf",
+      "fileName": "The Coherence Thesis - 02.070 - An Honest Accounting.pdf",
       "contentHash": "1c6987bf54a32c9a"
     },
     {
@@ -1126,8 +1076,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "On the Form",
       "href": "/manuscripts/wielding-intelligence/on-the-form/v02-on-the-form/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.072 - On the Form.pdf",
-      "fileName": "The Coherence Thesis - 02.072 - On the Form.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.071 - On the Form.pdf",
+      "fileName": "The Coherence Thesis - 02.071 - On the Form.pdf",
       "contentHash": "179859ac83be9698"
     },
     {
@@ -1136,8 +1086,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "On the Conversation",
       "href": "/manuscripts/wielding-intelligence/on-the-conversation/v02-on-the-conversation/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.073 - On the Conversation.pdf",
-      "fileName": "The Coherence Thesis - 02.073 - On the Conversation.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.072 - On the Conversation.pdf",
+      "fileName": "The Coherence Thesis - 02.072 - On the Conversation.pdf",
       "contentHash": "8f06670c2ed5e930"
     },
     {
@@ -1146,8 +1096,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "On the State of the Project",
       "href": "/manuscripts/wielding-intelligence/on-the-state-of-the-project/v02-on-the-state-of-the-project/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.074 - On the State of the Project.pdf",
-      "fileName": "The Coherence Thesis - 02.074 - On the State of the Project.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.073 - On the State of the Project.pdf",
+      "fileName": "The Coherence Thesis - 02.073 - On the State of the Project.pdf",
       "contentHash": "ad1e74bbc3addeeb"
     },
     {
@@ -1156,8 +1106,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "On Releasing the Book Now",
       "href": "/manuscripts/wielding-intelligence/on-releasing-the-book-now/v02-on-releasing-the-book-now/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.075 - On Releasing the Book Now.pdf",
-      "fileName": "The Coherence Thesis - 02.075 - On Releasing the Book Now.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.074 - On Releasing the Book Now.pdf",
+      "fileName": "The Coherence Thesis - 02.074 - On Releasing the Book Now.pdf",
       "contentHash": "fb05fe33a6066102"
     },
     {
@@ -1166,8 +1116,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "What This Book Is",
       "href": "/manuscripts/wielding-intelligence/what-this-book-is/v02-what-this-book-is/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.076 - What This Book Is.pdf",
-      "fileName": "The Coherence Thesis - 02.076 - What This Book Is.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.075 - What This Book Is.pdf",
+      "fileName": "The Coherence Thesis - 02.075 - What This Book Is.pdf",
       "contentHash": "f3a6840466a3e928"
     },
     {
@@ -1176,8 +1126,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "A Proposal for the Threshold Ahead",
       "href": "/manuscripts/wielding-intelligence/what-this-book-is/v02-a-proposal-for-the-threshold-ahead/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.077 - A Proposal for the Threshold Ahead.pdf",
-      "fileName": "The Coherence Thesis - 02.077 - A Proposal for the Threshold Ahead.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.076 - A Proposal for the Threshold Ahead.pdf",
+      "fileName": "The Coherence Thesis - 02.076 - A Proposal for the Threshold Ahead.pdf",
       "contentHash": "ab01689c8cbf20a5"
     },
     {
@@ -1186,8 +1136,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "If You Are a Builder",
       "href": "/manuscripts/wielding-intelligence/if-you-are-a-builder/v02-if-you-are-a-builder/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.078 - If You Are a Builder.pdf",
-      "fileName": "The Coherence Thesis - 02.078 - If You Are a Builder.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.077 - If You Are a Builder.pdf",
+      "fileName": "The Coherence Thesis - 02.077 - If You Are a Builder.pdf",
       "contentHash": "d07ad8389689c27f"
     },
     {
@@ -1196,8 +1146,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "If You Are a Funder",
       "href": "/manuscripts/wielding-intelligence/if-you-are-a-funder/v02-if-you-are-a-funder/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.079 - If You Are a Funder.pdf",
-      "fileName": "The Coherence Thesis - 02.079 - If You Are a Funder.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.078 - If You Are a Funder.pdf",
+      "fileName": "The Coherence Thesis - 02.078 - If You Are a Funder.pdf",
       "contentHash": "e7e18cac0edbc361"
     },
     {
@@ -1206,8 +1156,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "If You Are Gathering Communities",
       "href": "/manuscripts/wielding-intelligence/if-you-are-gathering-communities/v02-if-you-are-gathering-communities/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.080 - If You Are Gathering Communities.pdf",
-      "fileName": "The Coherence Thesis - 02.080 - If You Are Gathering Communities.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.079 - If You Are Gathering Communities.pdf",
+      "fileName": "The Coherence Thesis - 02.079 - If You Are Gathering Communities.pdf",
       "contentHash": "79a0ff7733b9d1b7"
     },
     {
@@ -1216,8 +1166,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "If You Are Already Doing the Work",
       "href": "/manuscripts/wielding-intelligence/if-you-are-already-doing-the-work/v02-if-you-are-already-doing-the-work/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.081 - If You Are Already Doing the Work.pdf",
-      "fileName": "The Coherence Thesis - 02.081 - If You Are Already Doing the Work.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.080 - If You Are Already Doing the Work.pdf",
+      "fileName": "The Coherence Thesis - 02.080 - If You Are Already Doing the Work.pdf",
       "contentHash": "23dc99f3b775bc25"
     },
     {
@@ -1226,8 +1176,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "If You Are Not Sure",
       "href": "/manuscripts/wielding-intelligence/if-you-are-not-sure/v02-if-you-are-not-sure/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.082 - If You Are Not Sure.pdf",
-      "fileName": "The Coherence Thesis - 02.082 - If You Are Not Sure.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.081 - If You Are Not Sure.pdf",
+      "fileName": "The Coherence Thesis - 02.081 - If You Are Not Sure.pdf",
       "contentHash": "9df6093b2c729ca7"
     },
     {
@@ -1236,8 +1186,8 @@
       "volumeTitle": "Wielding Intelligence",
       "title": "A Last Word",
       "href": "/manuscripts/wielding-intelligence/a-last-word/v02-a-last-word/",
-      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.083 - A Last Word.pdf",
-      "fileName": "The Coherence Thesis - 02.083 - A Last Word.pdf",
+      "pdfHref": "/downloads/sections/The Coherence Thesis - 02.082 - A Last Word.pdf",
+      "fileName": "The Coherence Thesis - 02.082 - A Last Word.pdf",
       "contentHash": "3bb119c4a8c31837"
     },
     {
@@ -5668,7 +5618,7 @@
       "href": "/manuscripts/humanitys-most-viable-future/",
       "pdfHref": "/downloads/manuscripts/The Coherence Thesis - 01 - Humanity's Most Viable Future.pdf",
       "fileName": "The Coherence Thesis - 01 - Humanity's Most Viable Future.pdf",
-      "contentHash": "843ada88ee08e865"
+      "contentHash": "702c656fbe0d4823"
     },
     {
       "volumeId": "wielding-intelligence",
@@ -5676,7 +5626,7 @@
       "href": "/manuscripts/wielding-intelligence/",
       "pdfHref": "/downloads/manuscripts/The Coherence Thesis - 02 - Wielding Intelligence.pdf",
       "fileName": "The Coherence Thesis - 02 - Wielding Intelligence.pdf",
-      "contentHash": "699af30a9da07578"
+      "contentHash": "68d62f8ee6f7b516"
     },
     {
       "volumeId": "providence-imperative",

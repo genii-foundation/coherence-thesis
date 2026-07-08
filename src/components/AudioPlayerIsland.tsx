@@ -341,8 +341,13 @@ export function AudioPlayerIsland({
   overviewAudio: AudioQueueItem;
 }) {
   const pathname = usePathname();
-  const { open, setOpen, containerRef, triggerProps } =
-    useToolbarMenu<HTMLDivElement>();
+  const {
+    rendered,
+    setOpen,
+    containerRef,
+    triggerProps,
+    popoverProps,
+  } = useToolbarMenu<HTMLDivElement>();
   // The queue is built from the slim per-section manifest (titles, ids — no body
   // text) so a page that never plays audio does not fetch the ~1.7MB text
   // payload. The full text is loaded lazily on first play (PERF-01).
@@ -730,8 +735,9 @@ export function AudioPlayerIsland({
       >
         <PlaybackToolbarIcon playing={playing} waveformScales={waveformScales} />
       </button>
-      {open && (
+      {rendered && (
         <section
+          {...popoverProps}
           id="audiobook-menu"
           className="audio-player audio-popover"
           aria-label="Audiobook controls"
