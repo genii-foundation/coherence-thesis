@@ -10,6 +10,14 @@ import {
   hexToRgb,
 } from "./fixtures";
 
+function sectionForId(sectionId: string) {
+  const section = catalog.sections.find(
+    (candidate) => candidate.sectionId === sectionId,
+  );
+  if (!section) throw new Error(`Missing section fixture: ${sectionId}`);
+  return section;
+}
+
 test("home page presents the overview and manuscript entry points", async ({
   page,
 }, testInfo) => {
@@ -224,7 +232,9 @@ test("home page presents the overview and manuscript entry points", async ({
 
 });
 
-test("overview links into canonical manuscript sections", async ({ page }) => {
+test("overview links into canonical manuscript sections", async ({
+  page,
+}, testInfo) => {
   await page.addInitScript(() => {
     Object.defineProperty(window, "speechSynthesis", {
       configurable: true,
@@ -346,6 +356,27 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
   await expect(page.locator(".overview-node-cover-open img")).toHaveCount(
     catalog.overview.nodes.length,
   );
+  await expect(page.locator(".overview-node-card-link")).toHaveCount(
+    catalog.overview.nodes.length,
+  );
+  await expect(page.locator(".overview-read-link")).toHaveCount(
+    catalog.overview.nodes.length,
+  );
+  const firstVolumeFirstSection = sectionForId(catalog.volumes[0]!.sectionIds[0]!);
+  await expect(page.locator(".overview-node-card-link").first()).toHaveAttribute(
+    "href",
+    firstVolumeFirstSection.href,
+  );
+  await expect(page.locator(".overview-read-link").first()).toHaveAttribute(
+    "href",
+    firstVolumeFirstSection.href,
+  );
+  await expect(page.locator(".overview-read-link").first()).toContainText(
+    "Read This Manuscript",
+  );
+  await expect(
+    page.locator(".overview-read-link-indicator").first(),
+  ).toHaveText("››");
   const overviewNodeAlignment = await page.evaluate(() => {
     const nodes = Array.from(document.querySelectorAll(".overview-node"));
 
@@ -359,6 +390,28 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
     });
   });
   expect(Math.max(...overviewNodeAlignment)).toBeLessThanOrEqual(1);
+  if (testInfo.project.name === "desktop") {
+    const firstCard = page.locator(".overview-node").first();
+    const firstReadLink = page.locator(".overview-read-link").first();
+    await firstCard.hover();
+    await page.waitForTimeout(240);
+    const hoverScale = await firstCard.evaluate((card) => {
+      const transform = getComputedStyle(card).transform;
+      if (transform === "none") return 1;
+      const matrix = new DOMMatrixReadOnly(transform);
+      return matrix.a;
+    });
+    expect(hoverScale).toBeGreaterThan(1.01);
+
+    await firstReadLink.hover();
+    await expect
+      .poll(() =>
+        firstReadLink.evaluate(
+          (link) => getComputedStyle(link).textDecorationLine,
+        ),
+      )
+      .toContain("underline");
+  }
   await expect(page.getByRole("button", { name: "Listen" })).toBeVisible();
   await expect(
     page.getByRole("link", { name: /^Seed$/ }).first(),
@@ -368,6 +421,66 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
     .first()
     .click();
   await expect(page).toHaveURL(/\/manuscripts\/humanitys-most-viable-future\//);
+});
+
+test("overview manuscript cards target the next unread section", async ({
+  page,
+}) => {
+  const firstVolume = catalog.volumes[0]!;
+  const readSection = sectionForId(firstVolume.sectionIds[0]!);
+  const mostRecentUnreadSection = sectionForId(firstVolume.sectionIds[2]!);
+
+  await page.addInitScript(
+    ({ key, mostRecentUnread, read }) => {
+      window.localStorage.setItem(
+        key,
+        JSON.stringify({
+          sections: {
+            [read.sectionId]: {
+              sectionId: read.sectionId,
+              contentHash: read.contentHash,
+              readAt: 1_000,
+              percent: 100,
+            },
+            [mostRecentUnread.sectionId]: {
+              sectionId: mostRecentUnread.sectionId,
+              contentHash: mostRecentUnread.contentHash,
+              readAt: 0,
+              percent: 42,
+              firstOpenedAt: 1_500,
+              lastOpenedAt: 2_000,
+            },
+          },
+        }),
+      );
+    },
+    {
+      key: readerProgressStorageKey,
+      mostRecentUnread: {
+        contentHash: mostRecentUnreadSection.contentHash,
+        sectionId: mostRecentUnreadSection.sectionId,
+      },
+      read: {
+        contentHash: readSection.contentHash,
+        sectionId: readSection.sectionId,
+      },
+    },
+  );
+
+  await page.goto("/overview/");
+
+  const firstCard = page.locator(".overview-node").first();
+  await expect(firstCard.locator(".overview-node-card-link")).toHaveAttribute(
+    "href",
+    mostRecentUnreadSection.href,
+  );
+  await expect(firstCard.locator(".overview-read-link")).toHaveAttribute(
+    "href",
+    mostRecentUnreadSection.href,
+  );
+
+  await firstCard.locator(".overview-node-card-link").click();
+  await expect(page).toHaveURL(mostRecentUnreadSection.href);
 });
 
 test("overview references show local read checkmarks", async ({ page }) => {

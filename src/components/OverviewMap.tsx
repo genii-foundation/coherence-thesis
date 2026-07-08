@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { catalog, sectionById, toProgressSection } from "@/lib/manuscript-data";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
+import { OverviewReadTargetIsland } from "@/components/OverviewReadTargetIsland";
 
 function coverVolumeForNode(
   node: (typeof catalog.overview.nodes)[number],
@@ -30,6 +31,22 @@ export function OverviewMap() {
         });
         const coverVolume = coverVolumeForNode(node, index);
         const numberLabel = coverVolume?.numberLabel ?? String(index + 1);
+        const volumeSections =
+          coverVolume?.sectionIds.flatMap((sectionId) => {
+            const section = sectionById(sectionId);
+            return section
+              ? [
+                  {
+                    sectionId: section.sectionId,
+                    contentHash: section.contentHash,
+                    href: section.href,
+                  },
+                ]
+              : [];
+          }) ?? [];
+        const fallbackReadHref =
+          volumeSections[0]?.href ?? coverVolume?.href ?? nodeSections[0]?.href ?? "/";
+        const readLabel = coverVolume?.title ?? node.title;
 
         return (
           <article key={node.id} className="overview-node">
@@ -57,6 +74,11 @@ export function OverviewMap() {
               </span>
               <div className="overview-node-content">
                 <p>{node.summary}</p>
+                <OverviewReadTargetIsland
+                  fallbackHref={fallbackReadHref}
+                  label={readLabel}
+                  sections={volumeSections}
+                />
                 <div className="reference-grid">
                   {node.references.map((reference) => {
                     const section = sectionById(reference.sectionId);
