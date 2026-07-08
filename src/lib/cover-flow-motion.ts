@@ -12,6 +12,8 @@ export const coverFlowTuning = {
     flickDistancePx: 620,
     flickPeakDeltaPx: 260,
     flickSettleMs: 110,
+    verticalTakeoverMinDeltaPx: 3,
+    verticalTakeoverRatio: 0.55,
   },
   rotation: {
     maxDegrees: 72,
@@ -55,6 +57,29 @@ export const coverFlowTuning = {
     min: 1,
   },
 };
+
+export function getCoverFlowWheelIntent({
+  deltaX,
+  deltaY,
+  shiftKey,
+}: {
+  deltaX: number;
+  deltaY: number;
+  shiftKey: boolean;
+}): "horizontal" | "vertical" | "none" {
+  const absX = Math.abs(deltaX);
+  const absY = Math.abs(deltaY);
+
+  if (shiftKey && absY > 0) return "horizontal";
+  if (absX === 0 && absY === 0) return "none";
+  if (
+    absY >= coverFlowTuning.scroll.verticalTakeoverMinDeltaPx &&
+    absY >= absX * coverFlowTuning.scroll.verticalTakeoverRatio
+  ) {
+    return "vertical";
+  }
+  return absX > 0 || absY > 0 ? "horizontal" : "none";
+}
 
 export function getCoverFlowTransform(offset: number) {
   const distance = Math.abs(offset);

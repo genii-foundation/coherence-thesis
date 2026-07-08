@@ -3,6 +3,7 @@ import {
   coverFlowTuning,
   getCoverFlowFlickTarget,
   getCoverFlowTransform,
+  getCoverFlowWheelIntent,
 } from "./cover-flow-motion";
 
 describe("cover flow motion", () => {
@@ -79,5 +80,20 @@ describe("cover flow motion", () => {
         volumeCount: 9,
       }),
     ).toBeNull();
+  });
+
+  it("hands meaningful vertical wheel intent back to the page during leftover horizontal inertia", () => {
+    expect(
+      getCoverFlowWheelIntent({ deltaX: 20, deltaY: 12, shiftKey: false }),
+    ).toBe("vertical");
+  });
+
+  it("keeps clear horizontal and shift-wheel gestures on the cover rail", () => {
+    expect(
+      getCoverFlowWheelIntent({ deltaX: 24, deltaY: 2, shiftKey: false }),
+    ).toBe("horizontal");
+    expect(
+      getCoverFlowWheelIntent({ deltaX: 0, deltaY: 24, shiftKey: true }),
+    ).toBe("horizontal");
   });
 });

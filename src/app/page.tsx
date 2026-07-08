@@ -10,6 +10,18 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const volumes = catalog.volumes.map((volume) => ({
+    ...volume,
+    firstSectionHref:
+      catalog.sections.find((section) => section.volumeId === volume.volumeId)
+        ?.href ?? volume.href,
+  }));
+  const progressSections = catalog.sections.map((section) => ({
+    contentHash: section.contentHash,
+    href: section.href,
+    sectionId: section.sectionId,
+  }));
+
   return (
     <div className="home-page">
       <section className="hero-section">
@@ -41,7 +53,10 @@ export default function Home() {
         </div>
       </section>
 
-      <ManuscriptCoverFlowIsland volumes={catalog.volumes} />
+      <ManuscriptCoverFlowIsland
+        progressSections={progressSections}
+        volumes={volumes}
+      />
     </div>
   );
 }

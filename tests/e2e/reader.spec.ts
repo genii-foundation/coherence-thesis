@@ -342,15 +342,20 @@ test("home page presents the overview and manuscript entry points", async ({
   expect(homepageCoverShadows.hero).not.toBe("none");
 
   await page.getByRole("button", { name: "Next manuscript" }).click();
-  const wieldingCard = page.getByRole("link", {
-    name: "Open Wielding Intelligence",
-  });
+  const wieldingCard = page.locator(
+    `.cover-flow-card[data-volume-href="${wieldingVolume.href}"]`,
+  );
   const wieldingPanel = wieldingCard.locator(".cover-flow-card-panel");
+  await expect(
+    wieldingCard.getByRole("link", { name: "Open Wielding Intelligence" }),
+  ).toBeVisible();
   await expect(wieldingCard.locator("img")).toBeVisible();
   await expect(wieldingPanel).toBeVisible();
-  await expect(wieldingPanel.getByText("Wielding Intelligence")).toBeVisible();
+  await expect(wieldingPanel.locator("strong")).toHaveText(
+    "Wielding Intelligence",
+  );
   await expect(
-    wieldingPanel.getByText(
+    wieldingPanel.locator(".manuscript-card-tags").getByText(
       formatReadingDurationForWords(wieldingVolume.wordCount),
     ),
   ).toBeVisible();
@@ -2172,7 +2177,9 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
   const mapMetrics = await page.evaluate(() => {
     const cell = document.querySelector(".progress-heatmap-cell");
     const box = cell?.getBoundingClientRect();
+    const style = cell ? window.getComputedStyle(cell) : null;
     return {
+      cellBorderRadius: style?.borderTopLeftRadius ?? "",
       cellWidth: box?.width ?? 0,
       cellHeight: box?.height ?? 0,
       scrollWidth: document.documentElement.scrollWidth,
@@ -2181,6 +2188,9 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
   });
 
   expect(Math.abs(mapMetrics.cellWidth - mapMetrics.cellHeight)).toBeLessThanOrEqual(1);
+  expect(Number.parseFloat(mapMetrics.cellBorderRadius)).toBeGreaterThan(
+    mapMetrics.cellWidth * 0.4,
+  );
   expect(mapMetrics.scrollWidth).toBeLessThanOrEqual(mapMetrics.viewportWidth + 1);
 });
 
@@ -2440,12 +2450,70 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   );
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("href", initialActiveVolume.href);
+  ).toHaveAttribute("data-volume-href", initialActiveVolume.href);
   await expect(
     coverFlow.locator(
       ".cover-flow-card.is-active .cover-flow-card-panel strong",
     ),
   ).toHaveText(initialActiveVolume.title);
+  const activeCard = coverFlow.locator('.cover-flow-card[aria-current="true"]');
+  const activePanel = activeCard.locator(".cover-flow-card-panel");
+  await expect(
+    activePanel.locator(".manuscript-card-outline-full"),
+  ).toHaveAttribute("href", firstSection.href);
+  await expect(
+    activePanel.getByRole("button", { name: /Part: Front Matter/ }),
+  ).toBeVisible();
+
+  const panelMetrics = await activeCard.evaluate((card) => {
+    const cover = card.querySelector(".cover-flow-image-frame");
+    const panel = card.querySelector(".cover-flow-card-panel");
+    const panelScroll = card.querySelector(".cover-flow-card-panel-scroll");
+    const coverBox = cover?.getBoundingClientRect();
+    const panelBox = panel?.getBoundingClientRect();
+    const panelStyle = panel ? window.getComputedStyle(panel) : null;
+    const panelScrollStyle = panelScroll
+      ? window.getComputedStyle(panelScroll)
+      : null;
+
+    return {
+      coverHeight: coverBox?.height ?? 0,
+      panelHeight: panelBox?.height ?? 0,
+      panelMaxHeight: panelStyle?.maxHeight ?? "",
+      panelOverflowY: panelStyle?.overflowY ?? "",
+      panelScrollClientHeight: panelScroll?.clientHeight ?? 0,
+      panelScrollHeight: panelScroll?.scrollHeight ?? 0,
+      panelScrollOverflowY: panelScrollStyle?.overflowY ?? "",
+    };
+  });
+  expect(panelMetrics.panelHeight).toBeLessThanOrEqual(
+    (panelMetrics.coverHeight * 2) / 3 + 2,
+  );
+  expect(panelMetrics.panelMaxHeight).not.toBe("none");
+  expect(panelMetrics.panelOverflowY).toBe("hidden");
+  expect(panelMetrics.panelScrollOverflowY).toBe("auto");
+  expect(panelMetrics.panelScrollHeight).toBeGreaterThanOrEqual(
+    panelMetrics.panelScrollClientHeight,
+  );
+
+  await activePanel
+    .getByRole("button", { name: /Part: Front Matter/ })
+    .click();
+  await expect(
+    activePanel.getByRole("button", { name: "Back to parts" }),
+  ).toBeVisible();
+  await expect(
+    activePanel.locator(".manuscript-card-outline-part-overview"),
+  ).toHaveAttribute("href", initialActiveVolume.parts[0]!.href);
+  await expect(
+    activePanel.getByRole("link", {
+      name: new RegExp(initialActiveVolume.parts[0]!.chapters[0]!.title),
+    }),
+  ).toHaveAttribute("href", initialActiveVolume.parts[0]!.chapters[0]!.href);
+  await activePanel.getByRole("button", { name: "Back to parts" }).click();
+  await expect(
+    activePanel.getByRole("button", { name: /Part: Front Matter/ }),
+  ).toBeVisible();
 
   const coverFlowTransforms = await coverFlow.evaluate((flow) => {
     const active = flow.querySelector<HTMLElement>(
@@ -2507,7 +2575,7 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   await page.getByRole("button", { name: "Next manuscript" }).click();
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("href", catalog.volumes[initialActiveIndex + 1]!.href);
+  ).toHaveAttribute("data-volume-href", catalog.volumes[initialActiveIndex + 1]!.href);
   await expect(
     coverFlow.locator(
       ".cover-flow-card.is-active .cover-flow-card-panel strong",
@@ -2523,7 +2591,7 @@ test("home page presents an interactive cover flow", async ({ page }) => {
     await nextButton.click();
     await expect(
       coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-    ).toHaveAttribute("href", catalog.volumes[targetIndex]!.href);
+    ).toHaveAttribute("data-volume-href", catalog.volumes[targetIndex]!.href);
   }
 
   await expect(nextButton).toBeDisabled();
@@ -2534,7 +2602,7 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   await previousButton.click();
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("href", catalog.volumes.at(-2)!.href);
+  ).toHaveAttribute("data-volume-href", catalog.volumes.at(-2)!.href);
 
   await coverFlow.locator(".cover-flow-scroll").dispatchEvent("wheel", {
     bubbles: true,
@@ -2544,7 +2612,7 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   });
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("href", catalog.volumes.at(-1)!.href);
+  ).toHaveAttribute("data-volume-href", catalog.volumes.at(-1)!.href);
 });
 
 test("organizational manuscript pages expose page navigation", async ({

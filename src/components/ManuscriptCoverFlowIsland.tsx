@@ -4,20 +4,32 @@ import {
   useCallback,
   useEffect,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
-import type { WheelEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowLeft,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsRight,
+} from "lucide-react";
 import {
   coverFlowTuning,
   getCoverFlowFlickTarget,
   getCoverFlowTransform,
+  getCoverFlowWheelIntent,
 } from "@/lib/cover-flow-motion";
 import type { Volume } from "@/lib/manuscript-data";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
+import { useReaderProgress } from "@/lib/reader-progress-store";
+import {
+  sectionGroupProgressStatus,
+  type SectionProgressInput,
+} from "@/lib/section-progress";
+import { ProgressStateDot } from "@/components/ProgressStateDot";
 
 type CoverFlowVolume = Pick<
   Volume,
@@ -28,13 +40,19 @@ type CoverFlowVolume = Pick<
   | "order"
   | "parts"
   | "planet"
+  | "sectionIds"
   | "subtitle"
   | "title"
   | "volumeId"
   | "wordCount"
->;
+> & {
+  firstSectionHref: string;
+};
+
+type CoverFlowProgressSection = SectionProgressInput & { href: string };
 
 type ManuscriptCoverFlowIslandProps = {
+  progressSections: CoverFlowProgressSection[];
   volumes: CoverFlowVolume[];
 };
 
@@ -77,14 +95,20 @@ const planetSymbols: Record<string, string> = {
 const initialIndex = 0;
 
 export function ManuscriptCoverFlowIsland({
+  progressSections,
   volumes,
 }: ManuscriptCoverFlowIslandProps) {
   const [activeIndex, setActiveIndex] = useState(() =>
     Math.min(initialIndex, Math.max(volumes.length - 1, 0)),
   );
+  const [selectedPartByVolumeId, setSelectedPartByVolumeId] = useState<
+    Record<string, string | null>
+  >({});
+  const [readCueVolumeId, setReadCueVolumeId] = useState<string | null>(null);
+  const progress = useReaderProgress();
   const scrollRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<Array<HTMLAnchorElement | null>>([]);
-  const snapRefs = useRef<Array<HTMLSpanElement | null>>([]);
+  const cardRefs = useRef<Array<HTMLElement | null>>([]);
+  const snapRefs = useRef<Array<HTMLDivElement | null>>([]);
   const frameRef = useRef<number | null>(null);
   const activeIndexRef = useRef(activeIndex);
   const wheelGestureRef = useRef<WheelGesture>({
@@ -92,6 +116,36 @@ export function ManuscriptCoverFlowIsland({
     peakDeltaPx: 0,
     timeoutId: null,
   });
+
+  const progressSectionById = useMemo(
+    () =>
+      new Map(
+        progressSections.map((section) => [section.sectionId, section]),
+      ),
+    [progressSections],
+  );
+
+  const sectionsForIds = useCallback(
+    (sectionIds: string[]) => {
+      const resolved: SectionProgressInput[] = [];
+      sectionIds.forEach((sectionId) => {
+        const section = progressSectionById.get(sectionId);
+        if (section) resolved.push(section);
+      });
+      return resolved;
+    },
+    [progressSectionById],
+  );
+
+  const resetWheelGesture = useCallback(() => {
+    const gesture = wheelGestureRef.current;
+    gesture.distancePx = 0;
+    gesture.peakDeltaPx = 0;
+    if (gesture.timeoutId !== null) {
+      window.clearTimeout(gesture.timeoutId);
+      gesture.timeoutId = null;
+    }
+  }, []);
 
   const updateCardPositions = useCallback(() => {
     const scroller = scrollRef.current;
@@ -195,11 +249,44 @@ export function ManuscriptCoverFlowIsland({
   );
 
   const handleWheel = useCallback(
-    (event: WheelEvent<HTMLDivElement>) => {
+    (event: WheelEvent) => {
+      const intent = getCoverFlowWheelIntent({
+        deltaX: event.deltaX,
+        deltaY: event.deltaY,
+        shiftKey: event.shiftKey,
+      });
+
+      if (intent === "vertical") {
+        resetWheelGesture();
+        const scroller = scrollRef.current;
+        if (scroller) {
+          scroller.scrollTo({ left: scroller.scrollLeft, behavior: "auto" });
+        }
+
+        const target = event.target as HTMLElement | null;
+        const scrollPanel = target?.closest<HTMLElement>(
+          ".cover-flow-card-panel-scroll",
+        );
+        if (scrollPanel) {
+          const canScrollUp = scrollPanel.scrollTop > 0;
+          const canScrollDown =
+            scrollPanel.scrollTop + scrollPanel.clientHeight <
+            scrollPanel.scrollHeight - 1;
+          if (
+            (event.deltaY < 0 && canScrollUp) ||
+            (event.deltaY > 0 && canScrollDown)
+          ) {
+            return;
+          }
+        }
+
+        event.preventDefault();
+        window.scrollBy({ top: event.deltaY, left: 0, behavior: "auto" });
+        return;
+      }
+
       const horizontalDelta =
-        Math.abs(event.deltaX) >= Math.abs(event.deltaY) || event.shiftKey
-          ? event.deltaX || event.deltaY
-          : 0;
+        intent === "horizontal" ? event.deltaX || event.deltaY : 0;
 
       if (horizontalDelta === 0) return;
 
@@ -231,8 +318,18 @@ export function ManuscriptCoverFlowIsland({
         }
       }, coverFlowTuning.scroll.flickSettleMs);
     },
-    [scrollToIndex, volumes.length],
+    [resetWheelGesture, scrollToIndex, volumes.length],
   );
+
+  useEffect(() => {
+    const scroller = scrollRef.current;
+    if (!scroller) return;
+
+    scroller.addEventListener("wheel", handleWheel, { passive: false });
+    return () => {
+      scroller.removeEventListener("wheel", handleWheel);
+    };
+  }, [handleWheel]);
 
   useLayoutEffect(() => {
     updateCardPositions();
@@ -293,75 +390,235 @@ export function ManuscriptCoverFlowIsland({
         ref={scrollRef}
         className="cover-flow-scroll"
         onScroll={schedulePositionUpdate}
-        onWheel={handleWheel}
       >
         <div className="cover-flow-track">
           {volumes.map((volume, index) => {
             const tags = manuscriptTags[volume.volumeId] ?? [volume.planet];
             const planetSymbol = planetSymbols[volume.planet] ?? "";
             const active = index === activeIndex;
+            const selectedPartId =
+              selectedPartByVolumeId[volume.volumeId] ?? null;
+            const selectedPart =
+              volume.parts.find((part) => part.partId === selectedPartId) ??
+              null;
+            const volumeStatus = sectionGroupProgressStatus(
+              progress,
+              sectionsForIds(volume.sectionIds),
+            );
 
             return (
-              <span
+              <div
                 key={volume.volumeId}
                 ref={(snap) => {
                   snapRefs.current[index] = snap;
                 }}
                 className="cover-flow-card-shell"
               >
-                <Link
+                <article
                   ref={(card) => {
                     cardRefs.current[index] = card;
                   }}
-                  href={volume.href}
                   className={`cover-flow-card manuscript-cover-card-${volume.order}${
                     active ? " is-active" : ""
                   }`}
                   aria-label={`Open ${volume.title}`}
                   aria-current={active ? "true" : undefined}
+                  data-volume-href={volume.href}
                   onClick={(event) => {
-                    if (active) return;
+                    if (active) {
+                      const target = event.target as HTMLElement | null;
+                      if (target?.closest("a, button")) return;
+                      window.location.href = volume.firstSectionHref;
+                      return;
+                    }
                     event.preventDefault();
                     scrollToIndex(index);
                   }}
+                  onMouseLeave={() => setReadCueVolumeId(null)}
+                  onMouseMove={(event) => {
+                    if (!active) return;
+                    const target = event.target as HTMLElement | null;
+                    const specificTarget = target?.closest(
+                      "button, a:not(.cover-flow-cover-link):not(.manuscript-card-outline-full)",
+                    );
+                    const nextVolumeId = specificTarget ? null : volume.volumeId;
+                    setReadCueVolumeId((current) =>
+                      current === nextVolumeId ? current : nextVolumeId,
+                    );
+                  }}
                 >
-                  <span className="cover-flow-image-frame">
-                    <Image
-                      src={volume.coverImage}
-                      alt={volume.coverAlt}
-                      width={512}
-                      height={768}
-                      sizes="(max-width: 720px) 78vw, (max-width: 1180px) 38vw, 420px"
-                      priority={index === activeIndex}
-                    />
-                  </span>
-                  <span className="cover-flow-card-panel">
-                    <span className="manuscript-card-kicker">
-                      Volume {volume.numberLabel}
+                  <Link
+                    href={volume.firstSectionHref}
+                    className="cover-flow-cover-link"
+                    aria-label={`Open ${volume.title}`}
+                  >
+                    <span className="cover-flow-image-frame">
+                      <Image
+                        src={volume.coverImage}
+                        alt={volume.coverAlt}
+                        width={512}
+                        height={768}
+                        sizes="(max-width: 720px) 78vw, (max-width: 1180px) 38vw, 420px"
+                        priority={index === activeIndex}
+                      />
                     </span>
-                    {planetSymbol ? (
-                      <span
-                        className="manuscript-card-symbol"
-                        aria-label={volume.planet}
-                      >
-                        {planetSymbol}
+                  </Link>
+                  <div
+                    className={`cover-flow-card-panel${
+                      readCueVolumeId === volume.volumeId ? " is-read-cue" : ""
+                    }`}
+                  >
+                    <div className="manuscript-card-panel-top">
+                      <span className="manuscript-card-kicker">
+                        Volume {volume.numberLabel}
                       </span>
-                    ) : null}
-                    <strong>{volume.title}</strong>
-                    <span className="manuscript-card-description">
-                      {volume.subtitle}
-                    </span>
-                    <span className="manuscript-card-tags">
-                      <span>
-                        {formatReadingDurationForWords(volume.wordCount)}
+                      {planetSymbol ? (
+                        <span
+                          className="manuscript-card-symbol"
+                          aria-label={volume.planet}
+                        >
+                          {planetSymbol}
+                        </span>
+                      ) : null}
+                      <strong>{volume.title}</strong>
+                      <span className="manuscript-card-description">
+                        {volume.subtitle}
                       </span>
-                      {tags.map((tag) => (
-                        <span key={tag}>{tag}</span>
-                      ))}
-                    </span>
-                  </span>
-                </Link>
-              </span>
+                      <span className="manuscript-card-tags">
+                        <span>
+                          {formatReadingDurationForWords(volume.wordCount)}
+                        </span>
+                        {tags.map((tag) => (
+                          <span key={tag}>{tag}</span>
+                        ))}
+                      </span>
+                    </div>
+                    <nav
+                      className="manuscript-card-outline"
+                      aria-label={`${volume.title} sections`}
+                    >
+                      {selectedPart ? (
+                        <>
+                          <div className="manuscript-card-outline-fixed">
+                            <button
+                              type="button"
+                              className="manuscript-card-outline-back"
+                              onClick={() => {
+                                setSelectedPartByVolumeId((current) => ({
+                                  ...current,
+                                  [volume.volumeId]: null,
+                                }));
+                              }}
+                            >
+                              <ArrowLeft aria-hidden="true" size={14} />
+                              Back to parts
+                            </button>
+                          </div>
+                          <div className="cover-flow-card-panel-scroll manuscript-card-outline-chapters">
+                            <Link
+                              className="manuscript-card-outline-part-overview"
+                              href={selectedPart.href}
+                            >
+                              <span>Part Overview</span>
+                              <span className="manuscript-card-outline-meta">
+                                <small>
+                                  {formatReadingDurationForWords(
+                                    selectedPart.wordCount,
+                                  )}
+                                </small>
+                                <ProgressStateDot
+                                  status={sectionGroupProgressStatus(
+                                    progress,
+                                    sectionsForIds(selectedPart.sectionIds),
+                                  )}
+                                />
+                              </span>
+                            </Link>
+                            {selectedPart.chapters.map((chapter) => (
+                              <Link key={chapter.href} href={chapter.href}>
+                                <span>{chapter.title}</span>
+                                <span className="manuscript-card-outline-meta">
+                                  <small>
+                                    {formatReadingDurationForWords(
+                                      chapter.wordCount,
+                                    )}
+                                  </small>
+                                  <ProgressStateDot
+                                    status={sectionGroupProgressStatus(
+                                      progress,
+                                      sectionsForIds(chapter.sectionIds),
+                                    )}
+                                  />
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="manuscript-card-outline-fixed">
+                            <Link
+                              className="manuscript-card-outline-full"
+                              href={volume.firstSectionHref}
+                            >
+                              <span className="manuscript-card-outline-read-label">
+                                <ChevronsRight aria-hidden="true" size={17} />
+                                <span>Read Full Manuscript</span>
+                              </span>
+                              <span className="manuscript-card-outline-meta">
+                                <small>
+                                  {formatReadingDurationForWords(
+                                    volume.wordCount,
+                                  )}
+                                </small>
+                                <ProgressStateDot status={volumeStatus} />
+                              </span>
+                            </Link>
+                          </div>
+                          <div className="cover-flow-card-panel-scroll manuscript-card-outline-parts">
+                            {volume.parts.map((part) => (
+                              <button
+                                key={part.href}
+                                type="button"
+                                className="manuscript-card-outline-part-button"
+                                onClick={() => {
+                                  if (!active) return;
+                                  setSelectedPartByVolumeId((current) => ({
+                                    ...current,
+                                    [volume.volumeId]: part.partId,
+                                  }));
+                                }}
+                              >
+                                <span className="manuscript-card-outline-title">
+                                  <ChevronRight
+                                    aria-hidden="true"
+                                    size={15}
+                                    className="manuscript-card-outline-chevron"
+                                  />
+                                  <span>Part: {part.title}</span>
+                                </span>
+                                <span className="manuscript-card-outline-meta">
+                                  <small>
+                                    {formatReadingDurationForWords(
+                                      part.wordCount,
+                                    )}
+                                  </small>
+                                  <ProgressStateDot
+                                    status={sectionGroupProgressStatus(
+                                      progress,
+                                      sectionsForIds(part.sectionIds),
+                                    )}
+                                  />
+                                </span>
+                              </button>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </nav>
+                  </div>
+                </article>
+              </div>
             );
           })}
           <span className="cover-flow-scroll-spacer" aria-hidden="true" />

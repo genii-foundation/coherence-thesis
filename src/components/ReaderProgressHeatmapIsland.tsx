@@ -58,7 +58,7 @@ export function ReaderProgressHeatmapIsland({
         </div>
         <div>
           <strong>{model.totalCells.toLocaleString()}</strong>
-          <span>squares</span>
+          <span>circles</span>
         </div>
         <div>
           <strong>{revisedCount.toLocaleString()}</strong>
