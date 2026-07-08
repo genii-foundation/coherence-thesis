@@ -15,7 +15,6 @@ import {
   AlertTriangle,
   CheckCircle2,
   Download,
-  Square,
 } from "lucide-react";
 import {
   emptyAudioClipManifest,
@@ -619,13 +618,6 @@ export function AudioPlayerIsland({
     setPlaying(false);
   }
 
-  function stop(): void {
-    flushAudioSeconds();
-    playbackTokenRef.current += 1;
-    provider.cancel();
-    setPlaying(false);
-  }
-
   function handleToolbarButtonClick(): void {
     if (playing) {
       pause();
@@ -663,9 +655,6 @@ export function AudioPlayerIsland({
             <strong>{active.title}</strong>
           </div>
           <div className="audio-controls">
-            <button type="button" className="round-button subtle" onClick={stop} aria-label="Stop audiobook">
-              <Square aria-hidden="true" size={18} />
-            </button>
             <div className="audio-control-fields">
               <label className="audio-field voice-field">
                 <span>Voice</span>

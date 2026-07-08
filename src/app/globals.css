@@ -1806,9 +1806,7 @@ input {
 .primary-link:hover,
 .primary-link:focus-visible,
 .final-cta a:hover,
-.final-cta a:focus-visible,
-.round-button:hover,
-.round-button:focus-visible {
+.final-cta a:focus-visible {
   background: var(--bronze-deep);
   color: var(--paper-soft);
   outline: none;
@@ -3838,7 +3836,7 @@ input {
 }
 
 .audio-controls {
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
 }
 
@@ -3846,38 +3844,6 @@ input {
   display: grid;
   gap: 0.65rem;
   min-width: 0;
-}
-
-.round-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.65rem;
-  height: 2.65rem;
-  border: 0;
-  border-radius: 999px;
-  background: var(--ink);
-  color: var(--paper-soft);
-  cursor: pointer;
-  transition:
-    background 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease,
-    color 160ms ease;
-}
-
-.round-button.subtle {
-  border: 1px solid var(--line);
-  background: var(--subtle-control-background);
-  color: var(--ink);
-}
-
-.round-button.subtle:hover,
-.round-button.subtle:focus-visible {
-  border-color: rgba(119, 84, 42, 0.42);
-  background: rgba(164, 123, 63, 0.12);
-  box-shadow: inset 0 0 0 1px rgba(119, 84, 42, 0.16);
-  color: var(--ink);
 }
 
 .audio-field select,

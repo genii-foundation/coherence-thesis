@@ -717,7 +717,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(audioMenu.getByText("Audio clips pending").first()).toBeVisible();
   await expect(audioMenu.locator(".audio-offline-meter")).toHaveCount(0);
   await expectMenuFitsViewport(page, ".audio-popover");
-  await audioMenu.getByRole("button", { name: "Stop audiobook" }).click();
+  await page.getByRole("button", { name: "Pause audiobook" }).click();
   await page.keyboard.press("Escape");
   await expect(audioMenu).toHaveCount(0);
 
