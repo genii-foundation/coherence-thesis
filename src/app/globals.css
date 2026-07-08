@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "./reset.css";
 
 :root {
   --paper: #f4ead7;
@@ -148,13 +148,6 @@ html[data-reader-theme="black"] {
   --glass-background: rgba(0, 0, 0, 0.82);
   --page-background: #000000;
   --page-background-size: auto;
-}
-
-@theme inline {
-  --color-background: #f4ead7;
-  --color-foreground: #13202a;
-  --font-sans: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
-  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
 * {

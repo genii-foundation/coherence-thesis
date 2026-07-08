@@ -144,16 +144,33 @@ Each landed as its own focused, CI-green PR on top of the base:
   make the font picker an honest disclosure (dropping the misleading combobox
   roles it never implemented) with a grouped theme row, and strip the volatile
   git state from the committed README status block
+- **DOC-03** back the CC BY-SA content license with `LICENSE-content` and a
+  `NOTICE` that maps each path to its license
+- **DOC-06** remove the unused Tailwind dependency, vendoring its Preflight
+  reset into `src/app/reset.css` (verified pixel-safe against the full e2e
+  layout suite and manual screenshots)
 
-## Deferred to follow-up PRs
+- **TEST-03 / TEST-04** split the 3,000-line `reader.spec.ts` into seven
+  thematic spec files (overview, navigation, toolbar, progress, share, settings,
+  engagement) over a shared `fixtures.ts`
 
-The genuinely remaining items:
+- **DOC-08** footer copyright year is now rendered client-side by
+  `CopyrightYearIsland` so it stays current on the statically prerendered site
+  instead of freezing at build time
 
-- **TEST-03 / TEST-04** split the large e2e spec and decouple it from prose
-- **DOC-03 / DOC-06** license-scope clarity (needs a product decision) and the
-  unused-Tailwind removal (needs a visual-regression pass on the reset)
-- **A11Y-06 / A11Y-07** no-JS toolbar fallback and font-picker keyboard model
-- **DOC-02 / DOC-03 / DOC-04 / DOC-06 / DOC-08** README status block, license
-  clarity, homepage tags in series config, Tailwind decision, footer year
-- **DUP-02** shared build/runtime catalog schema module (a payload schema
-  version is the useful part; the type-share is cross-boundary and low value)
+## Closed without a code change
+
+- **DOC-04** (homepage hardcodes per-volume tags): the `manuscriptTags` record it
+  referenced no longer exists in `src/app/page.tsx`; the concern was resolved by
+  earlier homepage work, so there is nothing to move.
+- **DUP-02** (shared build/runtime catalog schema): resolved as won't-fix. The
+  build types (`scripts/manuscripts/types.ts`) describe the full compiled
+  sections with body text; the runtime types (`reader-data.ts`) describe the
+  slim browser payloads. They are intentionally different shapes, and the
+  browser payloads are bare arrays, so a shared schema plus a wrapping "payload
+  version" would add cross-boundary indirection for no real benefit.
+
+## Every register finding is now addressed.
+
+Each finding in [findings-register.md](findings-register.md) has either shipped
+in one of the PRs above or is closed with the rationale in this document.

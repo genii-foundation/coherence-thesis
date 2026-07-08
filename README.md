@@ -156,7 +156,9 @@ There is no account requirement. If a reader signs in with email, remote sync do
 
 The site software, including source code, scripts, components, tests, and build tooling, is licensed under the Apache License 2.0. See `LICENSE`.
 
-Original manuscripts, site copy, and owned artwork are licensed under Creative Commons Attribution-ShareAlike 4.0 International. Third party materials remain governed by their own licenses.
+Original manuscripts, site copy, and owned artwork are licensed under Creative Commons Attribution-ShareAlike 4.0 International. See `LICENSE-content`. Third party materials remain governed by their own licenses.
+
+`NOTICE` maps each part of the repository to the license that applies to it.
 
 ## Roadmap
 
