@@ -49,7 +49,7 @@ const syncOrbitVariant: ProgressCloudVariant = {
   label: "Orbit",
   percent: 1,
   width: 58,
-  height: 38,
+  height: 58,
   cloudFill: "rgba(255, 252, 244, 0.92)",
   cloudStroke: "rgba(119, 84, 42, 0.16)",
   cloudInner: "rgba(119, 84, 42, 0.07)",

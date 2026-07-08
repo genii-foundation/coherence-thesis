@@ -6,6 +6,7 @@ export const offlineAudioCacheName = "coherence-offline-v1";
 export type OfflineAudioPack = {
   volumeId: string;
   title: string;
+  numberLabel: string;
   href: string;
   sectionCount: number;
   audioClipCount: number;
@@ -61,6 +62,7 @@ export function buildOfflineAudioPacks(input: {
     return {
       volumeId: volumeIdFromHref(volume.href),
       title: volume.title,
+      numberLabel: volume.numberLabel,
       href: volume.href,
       sectionCount: sections.length,
       audioClipCount: clipUrls.length,

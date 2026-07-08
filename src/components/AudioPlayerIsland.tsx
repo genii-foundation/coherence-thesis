@@ -14,14 +14,16 @@ import { usePathname } from "next/navigation";
 import {
   AlertTriangle,
   CheckCircle2,
-  ChevronDown,
   Download,
-  Headphones,
   Pause,
   Play,
   Square,
 } from "lucide-react";
-import { emptyAudioClipManifest } from "@/lib/audio-manifest";
+import {
+  emptyAudioClipManifest,
+  findAudioClip,
+  parseClipVoicePreferenceId,
+} from "@/lib/audio-manifest";
 import {
   buildOfflineAudioPacks,
   cacheOfflineAudioPack,
@@ -71,6 +73,149 @@ const emptyToolbarOutline: ToolbarOutlineData = {
 };
 const emptyOfflineStatuses: Record<string, OfflineAudioPackStatus> = {};
 const formatter = new Intl.NumberFormat("en-US");
+const waveformInitialScales = [0.82, 1, 0.76, 0.9] as const;
+const waveformCenters = [0.88, 0.88, 0.84, 0.91] as const;
+const waveformAmplitudes = [0.221, 0.12, 0.1955, 0.2295] as const;
+const waveformPhaseOffsets = [0, 1.9, 3.8, 5.1] as const;
+
+function waveformSample(now: number, index: number): number {
+  const center = waveformCenters[index] ?? 0.9;
+  const amplitude = waveformAmplitudes[index] ?? 0.24;
+  const phase = waveformPhaseOffsets[index] ?? 0;
+  return center + Math.sin(now * 0.006 + phase) * amplitude;
+}
+
+function usePlaybackWaveform(playing: boolean): number[] {
+  const [scales, setScales] = useState<number[]>(() => [...waveformInitialScales]);
+  const scalesRef = useRef<number[]>([...waveformInitialScales]);
+  const holdRef = useRef<number[]>([...waveformInitialScales]);
+  const amplitudeRef = useRef(0);
+  const targetPlayingRef = useRef(false);
+  const frameRef = useRef<number | null>(null);
+  const lastFrameAtRef = useRef<number | null>(null);
+  const reducedMotionRef = useRef(false);
+
+  const publishScales = useCallback((next: number[]) => {
+    scalesRef.current = next;
+    setScales((current) =>
+      current.some((value, index) => Math.abs(value - next[index]!) > 0.003)
+        ? next
+        : current,
+    );
+  }, []);
+
+  const animate = useCallback(
+    (now: number) => {
+      const lastFrameAt = lastFrameAtRef.current ?? now;
+      const delta = Math.min(64, Math.max(0, now - lastFrameAt));
+      lastFrameAtRef.current = now;
+      const targetAmplitude = targetPlayingRef.current ? 1 : 0;
+      const rampDuration = targetPlayingRef.current ? 210 : 110;
+      const ease = 1 - Math.exp(-delta / rampDuration);
+      const amplitude =
+        amplitudeRef.current + (targetAmplitude - amplitudeRef.current) * ease;
+      amplitudeRef.current =
+        !targetPlayingRef.current && amplitude < 0.012 ? 0 : amplitude;
+
+      const hold = holdRef.current;
+      const next = hold.map((value, index) => {
+        const wave = waveformSample(now, index);
+        return value + (wave - value) * amplitudeRef.current;
+      });
+      publishScales(amplitudeRef.current === 0 ? [...hold] : next);
+
+      if (targetPlayingRef.current || amplitudeRef.current > 0) {
+        frameRef.current = window.requestAnimationFrame(animate);
+      } else {
+        frameRef.current = null;
+        lastFrameAtRef.current = null;
+      }
+    },
+    [publishScales],
+  );
+
+  useEffect(() => {
+    reducedMotionRef.current = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+  }, []);
+
+  useEffect(() => {
+    targetPlayingRef.current = playing;
+    holdRef.current = [...scalesRef.current];
+    if (reducedMotionRef.current) return;
+    if (playing || amplitudeRef.current > 0) {
+      frameRef.current ??= window.requestAnimationFrame(animate);
+    }
+  }, [animate, playing]);
+
+  useEffect(
+    () => () => {
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
+    },
+    [],
+  );
+
+  return scales;
+}
+
+function PlaybackToolbarIcon({ waveformScales }: { waveformScales: number[] }) {
+  return (
+    <svg
+      className="audio-playback-icon"
+      viewBox="0 0 48 48"
+      width="48"
+      height="48"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        className="audio-playback-icon-shell"
+        d="M18.2 12.1L33.1 20.5Q38.7 23.7 33 27.2L18 35.7Q12.9 38.5 13 32.2L13.4 15.5Q13.6 9.2 18.2 12.1Z"
+      />
+      <g className="audio-waveform" transform="translate(16 16)">
+        <rect
+          className="audio-waveform-bar audio-waveform-bar-1"
+          x="0"
+          y="4.1"
+          width="2.25"
+          height="7.8"
+          rx="1.125"
+          style={{ "--audio-waveform-scale": waveformScales[0] ?? 1 } as CSSProperties}
+        />
+        <rect
+          className="audio-waveform-bar audio-waveform-bar-2"
+          x="2.75"
+          y="0.85"
+          width="2.25"
+          height="13"
+          rx="1.125"
+          style={{ "--audio-waveform-scale": waveformScales[1] ?? 1 } as CSSProperties}
+        />
+        <rect
+          className="audio-waveform-bar audio-waveform-bar-3"
+          x="5.5"
+          y="4.8"
+          width="2.25"
+          height="6.8"
+          rx="1.125"
+          style={{ "--audio-waveform-scale": waveformScales[2] ?? 1 } as CSSProperties}
+        />
+        <rect
+          className="audio-waveform-bar audio-waveform-bar-4"
+          x="8.25"
+          y="3.55"
+          width="2.25"
+          height="8.9"
+          rx="1.125"
+          style={{ "--audio-waveform-scale": waveformScales[3] ?? 1 } as CSSProperties}
+        />
+      </g>
+    </svg>
+  );
+}
 
 export function AudioPlayerIsland({
   overviewAudio,
@@ -144,6 +289,7 @@ export function AudioPlayerIsland({
   const voiceIds = useMemo(() => selectableVoiceIds(voiceGroups), [voiceGroups]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
+  const waveformScales = usePlaybackWaveform(playing);
   const [supported, setSupported] = useState(true);
   const [offlineStatuses, setOfflineStatuses] = useState(
     () => emptyOfflineStatuses,
@@ -345,8 +491,21 @@ export function AudioPlayerIsland({
     }
 
     // Load the section text on first play if the item does not already carry it
-    // (manuscript items come from the slim manifest; the overview item does not).
-    if (queue[index] && !queue[index]!.text) await ensureSectionText();
+    // and no hosted clip can satisfy the request. Fish clips only need the
+    // stable section id and audio hash, so they can start inside the click
+    // gesture instead of waiting on the full text payload.
+    const item = queue[index];
+    const clipVoiceId = parseClipVoicePreferenceId(preference.voiceURI);
+    const hasHostedClip =
+      item && clipVoiceId
+        ? findAudioClip(
+            audioManifest,
+            clipVoiceId,
+            item.sectionId,
+            item.audioVersionId,
+          ) !== null
+        : false;
+    if (item && !item.text && !hasHostedClip) await ensureSectionText();
     const token = playbackTokenRef.current + 1;
     playbackTokenRef.current = token;
     playIndex(index, token);
@@ -390,25 +549,7 @@ export function AudioPlayerIsland({
         aria-label={playing ? "Audiobook playing, open controls" : "Listen"}
         onClick={toggle}
       >
-        {playing ? (
-          <>
-            <span className="audio-menu-button-sizer" aria-hidden="true">
-              <Headphones aria-hidden="true" size={17} />
-              <span>Listen</span>
-              <ChevronDown className="audio-menu-chevron" aria-hidden="true" size={16} />
-            </span>
-            <span className="audio-playing-indicator" aria-hidden="true">
-              <span className="audio-waveform">
-                <span />
-                <span />
-                <span />
-              </span>
-              <Pause aria-hidden="true" size={15} />
-            </span>
-          </>
-        ) : (
-          <Headphones aria-hidden="true" size={17} />
-        )}
+        <PlaybackToolbarIcon waveformScales={waveformScales} />
       </button>
       {open && (
         <section
@@ -502,6 +643,9 @@ export function AudioPlayerIsland({
                       : `${formatter.format(pack.sectionCount)} sections, ${formatter.format(pack.audioClipCount)} clips`;
                 return (
                   <div className="audio-offline-item" key={pack.volumeId}>
+                    <span className="audio-offline-number" aria-hidden="true">
+                      {pack.numberLabel}
+                    </span>
                     <div className="audio-offline-copy">
                       <span>{pack.title}</span>
                       <small>{helper}</small>

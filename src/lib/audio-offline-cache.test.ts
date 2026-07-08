@@ -61,6 +61,7 @@ describe("offline audio packs", () => {
     expect(packs[0]).toMatchObject({
       volumeId: "volume-one",
       title: "Volume One",
+      numberLabel: "I",
       sectionCount: 2,
       audioClipCount: 0,
     });

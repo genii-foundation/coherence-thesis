@@ -139,6 +139,51 @@ export function createHostedClipProvider(
     objectUrl = null;
   };
 
+  const playAudio = (
+    source: string,
+    request: AudioPlaybackRequest,
+    onFailure: (error?: unknown) => void,
+    managedObjectUrl?: string,
+  ) => {
+    clearAudio();
+    objectUrl = managedObjectUrl ?? null;
+    const currentAudio = new Audio();
+    audio = currentAudio;
+    playingClip = true;
+    currentAudio.src = source;
+    currentAudio.preload = "auto";
+    currentAudio.playbackRate = request.rate;
+    currentAudio.onended = () => {
+      if (audio !== currentAudio) return;
+      clearAudio();
+      request.onEnd();
+    };
+    const fail = (error?: unknown) => {
+      if (audio !== currentAudio) return;
+      clearAudio();
+      onFailure(error);
+    };
+    currentAudio.onerror = fail;
+    currentAudio.play().catch(fail);
+  };
+
+  const playCachedBlob = (clip: AudioClipSection, request: AudioPlaybackRequest) => {
+    responseForAudioUrl(clip.href)
+      .then(async (response) => {
+        if (!response.ok) throw new Error(`Audio clip failed: ${response.status}`);
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        playAudio(blobUrl, request, () => {
+          clearAudio();
+          fallback.speak(request);
+        }, blobUrl);
+      })
+      .catch(() => {
+        clearAudio();
+        fallback.speak(request);
+      });
+  };
+
   return {
     id: "hosted-clips",
     isSupported() {
@@ -160,8 +205,7 @@ export function createHostedClipProvider(
       return fallback.subscribeVoices(listener);
     },
     speak(request) {
-      const explicitClipVoiceId = parseClipVoicePreferenceId(request.voiceId);
-      const clipVoiceId = explicitClipVoiceId ?? firstClipVoiceId(manifest);
+      const clipVoiceId = parseClipVoicePreferenceId(request.voiceId);
       const clip =
         clipVoiceId === null
           ? null
@@ -177,29 +221,7 @@ export function createHostedClipProvider(
       }
 
       fallback.cancel();
-      clearAudio();
-      playingClip = true;
-      responseForAudioUrl(clip.href)
-        .then(async (response) => {
-          if (!response.ok) throw new Error(`Audio clip failed: ${response.status}`);
-          const blob = await response.blob();
-          objectUrl = URL.createObjectURL(blob);
-          audio = new Audio(objectUrl);
-          audio.playbackRate = request.rate;
-          audio.onended = () => {
-            clearAudio();
-            request.onEnd();
-          };
-          audio.onerror = (event) => {
-            clearAudio();
-            request.onError(event);
-          };
-          return audio.play();
-        })
-        .catch(() => {
-          clearAudio();
-          fallback.speak(request);
-        });
+      playAudio(clip.href, request, () => playCachedBlob(clip, request));
     },
     pause() {
       if (audio && playingClip) {
@@ -240,8 +262,8 @@ export function createDefaultAudioProvider(
 import {
   clipVoicePreferenceId,
   findAudioClip,
-  firstClipVoiceId,
   parseClipVoicePreferenceId,
+  type AudioClipSection,
   type AudioClipManifest,
 } from "@/lib/audio-manifest";
 import { offlineAudioCacheName } from "@/lib/audio-offline-cache";
