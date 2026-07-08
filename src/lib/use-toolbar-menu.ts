@@ -8,6 +8,18 @@ import { useCallback, useEffect, useRef, useState, type RefObject } from "react"
 // adds focus return (A11Y-04): pressing Escape sends focus back to the trigger
 // button so keyboard users are not stranded on the closed menu. Clicking
 // outside intentionally does not steal focus back, so focus follows the click.
+type ToolbarMenuOptions = {
+  onDismiss?: () => void;
+  onEscape?: () => boolean | void;
+};
+
+type ToolbarMenuTriggerProps = {
+  ref: RefObject<HTMLButtonElement | null>;
+  "aria-expanded": boolean;
+  "data-menu-open"?: "true";
+  "data-toolbar-menu-trigger": "true";
+};
+
 export type ToolbarMenu<C extends HTMLElement> = {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -15,17 +27,20 @@ export type ToolbarMenu<C extends HTMLElement> = {
   close: () => void;
   containerRef: RefObject<C | null>;
   triggerRef: RefObject<HTMLButtonElement | null>;
+  triggerProps: ToolbarMenuTriggerProps;
 };
 
 export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
-  { onDismiss }: { onDismiss?: () => void } = {},
+  { onDismiss, onEscape }: ToolbarMenuOptions = {},
 ): ToolbarMenu<C> {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<C | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const onDismissRef = useRef(onDismiss);
+  const onEscapeRef = useRef(onEscape);
   useEffect(() => {
     onDismissRef.current = onDismiss;
+    onEscapeRef.current = onEscape;
   });
 
   const close = useCallback(() => setOpen(false), []);
@@ -41,6 +56,7 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     };
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
+      if (onEscapeRef.current?.() === false) return;
       setOpen(false);
       onDismissRef.current?.();
       // Escape is a keyboard dismissal; return focus to the trigger.
@@ -54,5 +70,18 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     };
   }, [open]);
 
-  return { open, setOpen, toggle, close, containerRef, triggerRef };
+  return {
+    open,
+    setOpen,
+    toggle,
+    close,
+    containerRef,
+    triggerRef,
+    triggerProps: {
+      ref: triggerRef,
+      "aria-expanded": open,
+      "data-menu-open": open ? "true" : undefined,
+      "data-toolbar-menu-trigger": "true",
+    },
+  };
 }

@@ -170,6 +170,60 @@ async function expectMenuFitsViewport(
   }
 }
 
+async function expectToolbarTriggerActive(
+  page: Page,
+  selector: string,
+): Promise<void> {
+  const trigger = page.locator(selector);
+  await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  await expect(trigger).toHaveAttribute("data-toolbar-menu-trigger", "true");
+  await expect(trigger).toHaveAttribute("data-menu-open", "true");
+
+  await expect
+    .poll(async () =>
+      trigger.evaluate((element) => {
+        const style = window.getComputedStyle(element);
+        const probe = document.createElement("div");
+        probe.style.background = "var(--nav-hover-background)";
+        document.body.append(probe);
+        const expectedBackground = window.getComputedStyle(probe).backgroundColor;
+        probe.remove();
+
+        if (element.classList.contains("progress-menu-button")) {
+          return style.boxShadow !== "none";
+        }
+
+        return style.backgroundColor === expectedBackground;
+      }),
+    )
+    .toBe(true);
+}
+
+async function expectRestingControlBorder(
+  page: Page,
+  selector: string,
+): Promise<void> {
+  const control = page.locator(selector);
+  await expect(control).toBeVisible();
+  await control.evaluate((element) => {
+    if (element instanceof HTMLElement) element.blur();
+  });
+
+  const border = await control.evaluate((element) => {
+    const style = window.getComputedStyle(element);
+    return {
+      color: style.borderTopColor,
+      style: style.borderTopStyle,
+      width: Number.parseFloat(style.borderTopWidth),
+    };
+  });
+
+  expect(border.width).toBeGreaterThanOrEqual(1);
+  expect(border.style).not.toBe("none");
+  expect(border.color).not.toBe("rgba(0, 0, 0, 0)");
+  expect(border.color).not.toBe("transparent");
+}
+
 function pdfObjectCount(bytes: Buffer, pattern: RegExp): number {
   return (bytes.toString("latin1").match(pattern) ?? []).length;
 }
@@ -1175,6 +1229,8 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
 
   await page.getByRole("button", { name: "Search manuscripts" }).click();
   const searchMenu = page.getByRole("region", { name: "Manuscript search" });
+  await expectToolbarTriggerActive(page, ".search-menu-button");
+  await expectRestingControlBorder(page, ".search-field input");
   await page.getByRole("searchbox", { name: "Search all manuscripts" }).fill("the");
   await expect(searchMenu.locator(".search-result").first()).toBeVisible();
   await expectMenuFitsViewport(page, ".search-popover", ".search-results");
@@ -1183,6 +1239,8 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
 
   await page.getByRole("button", { name: /Outline/ }).click();
   const outlineMenu = page.getByRole("region", { name: "Site outline" });
+  await expectToolbarTriggerActive(page, ".outline-menu-button");
+  await expectRestingControlBorder(page, ".outline-search input");
   await expect(outlineMenu.locator(".outline-volume-link").first()).toBeVisible();
   await expectMenuFitsViewport(page, ".outline-popover", ".outline-scroll");
   await page.keyboard.press("Escape");
@@ -1190,7 +1248,9 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
 
   await page.getByRole("button", { name: "Reader settings" }).click();
   const settingsMenu = page.getByRole("region", { name: "Reader settings" });
+  await expectToolbarTriggerActive(page, ".settings-menu-button");
   await expect(settingsMenu.getByText("Reading settings")).toBeVisible();
+  await expectRestingControlBorder(page, ".font-select-button");
   await expectMenuFitsViewport(page, ".settings-popover");
   await page.keyboard.press("Escape");
   await expect(settingsMenu).toHaveCount(0);
@@ -1199,6 +1259,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   const shareMenu = page.getByLabel("Share and downloads").filter({
     hasText: "Share",
   });
+  await expectToolbarTriggerActive(page, ".share-menu-button");
   await expect(shareMenu).toBeVisible();
   await expectMenuFitsViewport(page, ".share-popover");
   await page.keyboard.press("Escape");
@@ -1206,13 +1267,16 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
 
   await page.getByRole("button", { name: /Listen/ }).click();
   const audioMenu = page.getByLabel("Audiobook controls");
+  await expectToolbarTriggerActive(page, ".audio-menu-button");
   await expect(audioMenu).toBeVisible();
+  await expectRestingControlBorder(page, ".audio-controls select");
   await expectMenuFitsViewport(page, ".audio-popover");
   await page.keyboard.press("Escape");
   await expect(audioMenu).toHaveCount(0);
 
   await page.getByRole("button", { name: /Progress/ }).click();
   const progressMenu = page.getByRole("region", { name: "Reader progress" });
+  await expectToolbarTriggerActive(page, ".progress-menu-button");
   await expect(progressMenu).toBeVisible();
   await expect(progressMenu.getByText("Recommended next")).toBeVisible();
   await expectMenuFitsViewport(page, ".progress-popover");

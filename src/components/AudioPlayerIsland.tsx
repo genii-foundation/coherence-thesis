@@ -40,7 +40,7 @@ export function AudioPlayerIsland({
   overviewAudio: AudioQueueItem;
 }) {
   const pathname = usePathname();
-  const { open, setOpen, toggle, containerRef, triggerRef } =
+  const { open, setOpen, toggle, containerRef, triggerProps } =
     useToolbarMenu<HTMLDivElement>();
   // The queue is built from the slim per-section manifest (titles, ids — no body
   // text) so a page that never plays audio does not fetch the ~1.7MB text
@@ -259,10 +259,9 @@ export function AudioPlayerIsland({
   return (
     <div className="audio-menu" ref={containerRef}>
       <button
-        ref={triggerRef}
+        {...triggerProps}
         type="button"
         className={`audio-menu-button${playing ? " is-playing" : ""}`}
-        aria-expanded={open}
         aria-controls="audiobook-menu"
         aria-label={playing ? "Audiobook playing, open controls" : "Listen"}
         onClick={toggle}

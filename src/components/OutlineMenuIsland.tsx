@@ -20,7 +20,7 @@ function matchesQuery(values: string[], query: string): boolean {
 
 export function OutlineMenuIsland() {
   const pathname = usePathname();
-  const { open, setOpen, toggle, containerRef, triggerRef } =
+  const { open, setOpen, toggle, containerRef, triggerProps } =
     useToolbarMenu<HTMLDivElement>();
   const searchRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
@@ -123,11 +123,10 @@ export function OutlineMenuIsland() {
   return (
     <div className="outline-menu" ref={containerRef}>
       <button
-        ref={triggerRef}
+        {...triggerProps}
         type="button"
         className="outline-menu-button"
         aria-label="Outline"
-        aria-expanded={open}
         aria-controls="site-outline-menu"
         onClick={toggle}
       >
