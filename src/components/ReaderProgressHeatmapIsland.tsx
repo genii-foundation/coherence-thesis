@@ -10,16 +10,7 @@ import {
   type Dispatch,
   type SetStateAction,
 } from "react";
-import {
-  arrow,
-  autoUpdate,
-  flip,
-  FloatingPortal,
-  offset,
-  type Placement,
-  shift,
-  useFloating,
-} from "@floating-ui/react";
+import * as Popover from "@radix-ui/react-popover";
 import { Check, RotateCcw } from "lucide-react";
 import { useReaderProgress } from "@/lib/reader-progress-store";
 import {
@@ -94,18 +85,6 @@ function cellStatusClass({
   return "progress-heatmap-cell progress-heatmap-cell-unread";
 }
 
-function tooltipArrowSide(placement: Placement): "top" | "right" | "bottom" | "left" {
-  const side = placement.split("-")[0];
-  if (side === "top") return "bottom";
-  if (side === "right") return "left";
-  if (side === "bottom") return "top";
-  return "right";
-}
-
-function tooltipPlacementSide(placement: Placement): string {
-  return placement.split("-")[0] ?? "top";
-}
-
 function ReaderProgressHeatmapCell({
   cell,
   progress,
@@ -119,7 +98,7 @@ function ReaderProgressHeatmapCell({
   activeCell: ActiveHeatmapCell;
   setActiveCell: Dispatch<SetStateAction<ActiveHeatmapCell>>;
 }) {
-  const [arrowElement, setArrowElement] = useState<HTMLSpanElement | null>(null);
+  const cellButtonRef = useRef<HTMLButtonElement | null>(null);
   const hoverCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const state = progressForHeatmapCell(progress, cell);
   const tooltipId = `progress-heatmap-tooltip-${cell.id}`;
@@ -132,46 +111,6 @@ function ReaderProgressHeatmapCell({
     revised: state.revised,
     volumeTitle,
   });
-
-  const {
-    floatingStyles,
-    middlewareData,
-    placement,
-    refs: floatingRefs,
-  } = useFloating({
-    middleware: [
-      offset(14),
-      flip({ padding: 10 }),
-      shift({ padding: 10 }),
-      arrow({ element: arrowElement, padding: 12 }),
-    ],
-    open: isOpen,
-    placement: "top-start",
-    strategy: "fixed",
-    whileElementsMounted: autoUpdate,
-  });
-  const arrowX = middlewareData.arrow?.x;
-  const arrowY = middlewareData.arrow?.y;
-  const arrowStaticSide = tooltipArrowSide(placement);
-  const arrowStyle = {
-    left: arrowX == null ? undefined : `${arrowX}px`,
-    top: arrowY == null ? undefined : `${arrowY}px`,
-    [arrowStaticSide]: "calc(var(--progress-heatmap-tooltip-tail-size) / -2)",
-  } as CSSProperties;
-
-  const setReference = useCallback(
-    (node: HTMLButtonElement | null) => {
-      floatingRefs.setReference(node);
-    },
-    [floatingRefs],
-  );
-
-  const setFloating = useCallback(
-    (node: HTMLDivElement | null) => {
-      floatingRefs.setFloating(node);
-    },
-    [floatingRefs],
-  );
 
   const clearHoverCloseTimer = useCallback(() => {
     if (!hoverCloseTimer.current) return;
@@ -218,40 +157,62 @@ function ReaderProgressHeatmapCell({
 
   return (
     <div className="progress-heatmap-cell-wrap">
-      <button
-        ref={setReference}
-        type="button"
-        className={cellStatusClass(state)}
-        aria-label={label}
-        aria-describedby={isOpen ? tooltipId : undefined}
-        aria-expanded={isOpen}
-        aria-haspopup="dialog"
-        onClick={() => openCell("active")}
-        onFocus={() => openCell("active")}
-        onKeyDown={(event) => {
-          if (event.key === "Escape") {
-            event.preventDefault();
-            closeCell();
-          }
+      <Popover.Root
+        open={isOpen}
+        onOpenChange={(nextOpen) => {
+          if (!nextOpen) closeCell();
         }}
-        onMouseEnter={() => openCell("hover")}
-        onMouseLeave={queueHoverClose}
-        style={{ "--cell-progress": state.percent / 100 } as CellStyle}
       >
-        <span className="sr-only">{label}</span>
-        {state.revised && <RotateCcw aria-hidden="true" size={10} />}
-        {!state.revised && state.percent >= 100 && (
-          <Check aria-hidden="true" size={10} />
-        )}
-      </button>
-      {isOpen && (
-        <FloatingPortal>
-          <div
-            ref={setFloating}
+        <Popover.Anchor asChild>
+          <button
+            ref={cellButtonRef}
+            type="button"
+            className={cellStatusClass(state)}
+            aria-label={label}
+            aria-describedby={isOpen ? tooltipId : undefined}
+            aria-expanded={isOpen}
+            aria-haspopup="dialog"
+            onClick={() => openCell("active")}
+            onFocus={() => openCell("active")}
+            onKeyDown={(event) => {
+              if (event.key === "Escape") {
+                event.preventDefault();
+                closeCell();
+              }
+            }}
+            onMouseEnter={() => openCell("hover")}
+            onMouseLeave={queueHoverClose}
+            style={{ "--cell-progress": state.percent / 100 } as CellStyle}
+          >
+            <span className="sr-only">{label}</span>
+            {state.revised && <RotateCcw aria-hidden="true" size={10} />}
+            {!state.revised && state.percent >= 100 && (
+              <Check aria-hidden="true" size={10} />
+            )}
+          </button>
+        </Popover.Anchor>
+        <Popover.Portal>
+          <Popover.Content
             id={tooltipId}
-            className="progress-heatmap-tooltip"
+            className="progress-heatmap-tooltip tooltip-surface"
             role="dialog"
             aria-label="Section jump links"
+            side="top"
+            align="start"
+            sideOffset={12}
+            collisionPadding={10}
+            arrowPadding={12}
+            onOpenAutoFocus={(event) => event.preventDefault()}
+            onCloseAutoFocus={(event) => event.preventDefault()}
+            onPointerDownOutside={(event) => {
+              const target = event.target;
+              if (
+                target instanceof Node &&
+                cellButtonRef.current?.contains(target)
+              ) {
+                event.preventDefault();
+              }
+            }}
             onKeyDown={(event) => {
               if (event.key === "Escape") {
                 event.preventDefault();
@@ -260,14 +221,7 @@ function ReaderProgressHeatmapCell({
             }}
             onMouseEnter={clearHoverCloseTimer}
             onMouseLeave={queueHoverClose}
-            style={floatingStyles}
           >
-            <span
-              ref={setArrowElement}
-              className="progress-heatmap-tooltip-arrow"
-              data-side={tooltipPlacementSide(placement)}
-              style={arrowStyle}
-            />
             <div className="progress-heatmap-tooltip-content">
               <p className="progress-heatmap-tooltip-title">
                 {sectionCountLabel(cellSections.length)}
@@ -285,9 +239,14 @@ function ReaderProgressHeatmapCell({
                 <p className="progress-heatmap-tooltip-hint">(click to jump)</p>
               )}
             </div>
-          </div>
-        </FloatingPortal>
-      )}
+            <Popover.Arrow
+              className="progress-heatmap-tooltip-arrow tooltip-arrow"
+              width={30}
+              height={15}
+            />
+          </Popover.Content>
+        </Popover.Portal>
+      </Popover.Root>
     </div>
   );
 }

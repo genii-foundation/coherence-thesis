@@ -520,71 +520,37 @@ input {
 }
 
 .tooltip-surface {
-  --tooltip-arrow-left: var(--clean-tooltip-arrow-left, 1.25rem);
   --tooltip-background: rgba(251, 246, 235, 0.97);
   --tooltip-border-color: rgba(119, 84, 42, 0.42);
-  --tooltip-tail-border-size: 10px;
-  --tooltip-tail-fill-size: 8px;
-  --tooltip-tail-offset: -10px;
-  --tooltip-tail-fill-offset: -8px;
+  position: relative;
+  border: 1px solid var(--tooltip-border-color);
+  background: var(--tooltip-background);
+  box-shadow: 0 16px 34px rgba(21, 34, 43, 0.15);
 }
 
-.tooltip-surface::before,
-.tooltip-surface::after {
-  position: absolute;
-  left: var(--tooltip-arrow-left);
-  width: 0;
-  height: 0;
-  content: "";
-  transform: translateX(-50%);
-}
-
-.tooltip-surface-bottom::before {
-  top: var(--tooltip-tail-offset);
-  border-right: var(--tooltip-tail-border-size) solid transparent;
-  border-bottom: var(--tooltip-tail-border-size) solid var(--tooltip-border-color);
-  border-left: var(--tooltip-tail-border-size) solid transparent;
-  filter: drop-shadow(0 -1px 1px rgb(19 32 42 / 0.08));
-}
-
-.tooltip-surface-bottom::after {
-  top: var(--tooltip-tail-fill-offset);
-  border-right: var(--tooltip-tail-fill-size) solid transparent;
-  border-bottom: var(--tooltip-tail-fill-size) solid var(--tooltip-background);
-  border-left: var(--tooltip-tail-fill-size) solid transparent;
-}
-
-.tooltip-surface-top::before {
-  bottom: var(--tooltip-tail-offset);
-  border-top: var(--tooltip-tail-border-size) solid var(--tooltip-border-color);
-  border-right: var(--tooltip-tail-border-size) solid transparent;
-  border-left: var(--tooltip-tail-border-size) solid transparent;
-  filter: drop-shadow(0 1px 1px rgb(19 32 42 / 0.08));
-}
-
-.tooltip-surface-top::after {
-  bottom: var(--tooltip-tail-fill-offset);
-  border-top: var(--tooltip-tail-fill-size) solid var(--tooltip-background);
-  border-right: var(--tooltip-tail-fill-size) solid transparent;
-  border-left: var(--tooltip-tail-fill-size) solid transparent;
+.tooltip-arrow {
+  fill: var(--tooltip-background);
+  filter: drop-shadow(0 2px 1px rgb(19 32 42 / 0.08));
+  pointer-events: none;
+  stroke: var(--tooltip-border-color);
+  stroke-width: 2px;
 }
 
 .clean-tooltip {
-  position: fixed;
   z-index: 60;
   max-width: min(24rem, calc(100vw - 1.5rem));
   padding: 0.62rem 0.74rem;
-  border: 1px solid var(--tooltip-border-color);
   border-radius: 8px;
-  background: var(--tooltip-background);
-  box-shadow: 0 16px 34px rgba(21, 34, 43, 0.15);
   color: var(--ink);
   font-size: 0.78rem;
   line-height: 1.35;
   pointer-events: none;
   text-align: center;
-  transform: translateZ(0);
-  transition: opacity 120ms ease;
+  transform-origin: var(--radix-tooltip-content-transform-origin);
+}
+
+.clean-tooltip-arrow {
+  margin-top: -1px;
 }
 
 .site-nav {
@@ -3630,38 +3596,28 @@ input {
 }
 
 .progress-heatmap-tooltip {
-  --progress-heatmap-tooltip-border: rgba(119, 84, 42, 0.48);
-  --progress-heatmap-tooltip-tail-size: 1rem;
-  isolation: isolate;
+  --tooltip-background: var(--panel-background);
+  --tooltip-border-color: rgba(119, 84, 42, 0.48);
   z-index: 80;
   width: min(20rem, calc(100vw - 2rem));
-  outline: none;
-}
-
-.progress-heatmap-tooltip-arrow {
-  position: absolute;
-  z-index: 0;
-  width: var(--progress-heatmap-tooltip-tail-size);
-  height: var(--progress-heatmap-tooltip-tail-size);
-  border: 1px solid var(--progress-heatmap-tooltip-border);
-  background: var(--panel-background);
-  box-shadow: 3px 3px 5px rgb(19 32 42 / 0.08);
-  pointer-events: none;
-  transform: rotate(45deg);
-}
-
-.progress-heatmap-tooltip-content {
-  position: relative;
-  z-index: 1;
   display: grid;
   gap: 0.55rem;
   max-height: min(18rem, 70vh);
   overflow-y: auto;
-  border: 1px solid var(--progress-heatmap-tooltip-border);
   border-radius: var(--radius);
-  background: var(--panel-background);
   box-shadow: 0 18px 42px rgb(19 32 42 / 0.2);
+  outline: none;
   padding: 0.72rem;
+}
+
+.progress-heatmap-tooltip-arrow {
+  margin-bottom: -1px;
+}
+
+.progress-heatmap-tooltip-content {
+  display: grid;
+  gap: 0.55rem;
+  min-width: 0;
 }
 
 .progress-heatmap-tooltip-title {

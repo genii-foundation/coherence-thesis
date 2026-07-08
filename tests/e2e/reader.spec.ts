@@ -2748,30 +2748,27 @@ test("toolbar brand owns the active manuscript identity", async ({
     const mobileBrandTooltip = page.getByRole("tooltip");
     await expect(mobileBrandTooltip).toBeVisible();
     await page.waitForFunction(() => {
-      const tooltip = document.querySelector('[role="tooltip"]');
-      if (!tooltip) return false;
-      const arrowLeft = Number.parseFloat(
-        window
-          .getComputedStyle(tooltip)
-          .getPropertyValue("--clean-tooltip-arrow-left"),
+      const tooltipArrow = document.querySelector(".clean-tooltip-arrow");
+      const tooltipArrowBox = tooltipArrow?.getBoundingClientRect();
+      return Boolean(
+        tooltipArrowBox &&
+          tooltipArrowBox.width > 0 &&
+          tooltipArrowBox.height > 0,
       );
-      return Number.isFinite(arrowLeft) && arrowLeft > 0;
     });
     const mobileBrandTooltipAlignment = await page.evaluate(() => {
       const brandBox = document
         .querySelector(".site-header > .brand-mark")
         ?.getBoundingClientRect();
-      const tooltip = document.querySelector('[role="tooltip"]');
-      const tooltipBox = tooltip?.getBoundingClientRect();
-      const tooltipStyle = tooltip ? window.getComputedStyle(tooltip) : null;
-      const arrowLeft = Number.parseFloat(
-        tooltipStyle?.getPropertyValue("--clean-tooltip-arrow-left") ?? "0",
-      );
+      const tooltipArrow = document.querySelector(".clean-tooltip-arrow");
+      const tooltipArrowBox = tooltipArrow?.getBoundingClientRect();
 
       return {
         brandCenter: brandBox ? brandBox.left + brandBox.width / 2 : 0,
         brandWidth: brandBox?.width ?? 0,
-        tooltipArrowX: tooltipBox ? tooltipBox.left + arrowLeft : 0,
+        tooltipArrowX: tooltipArrowBox
+          ? tooltipArrowBox.left + tooltipArrowBox.width / 2
+          : 0,
       };
     });
     expect(mobileBrandTooltipAlignment.brandWidth).toBeLessThan(56);
@@ -3079,15 +3076,18 @@ test("truncated breadcrumb labels reveal their full title in a tooltip", async (
 
   const tooltipBox = await tooltip.boundingBox();
   const viewport = page.viewportSize();
-  const sharedTooltipTail = await tooltip.evaluate((element) => {
-    const tail = window.getComputedStyle(element, "::after");
-    return {
-      borderBottomWidth: tail.borderBottomWidth,
-      borderTopWidth: tail.borderTopWidth,
-      borderBottomColor: tail.borderBottomColor,
-      borderTopColor: tail.borderTopColor,
-    };
-  });
+  const sharedTooltipTail = await page
+    .locator(".clean-tooltip-arrow")
+    .evaluate((element) => {
+      const tailBox = element.getBoundingClientRect();
+      const tail = window.getComputedStyle(element);
+      return {
+        fill: tail.fill,
+        height: tailBox.height,
+        stroke: tail.stroke,
+        width: tailBox.width,
+      };
+    });
   expect(tooltipBox).not.toBeNull();
   expect(viewport).not.toBeNull();
   expect(tooltipBox!.x).toBeGreaterThanOrEqual(0);
@@ -3098,12 +3098,10 @@ test("truncated breadcrumb labels reveal their full title in a tooltip", async (
   expect(tooltipBox!.y + tooltipBox!.height).toBeLessThanOrEqual(
     viewport!.height,
   );
-  expect(
-    [sharedTooltipTail.borderBottomWidth, sharedTooltipTail.borderTopWidth],
-  ).toContain("8px");
-  expect(
-    [sharedTooltipTail.borderBottomColor, sharedTooltipTail.borderTopColor],
-  ).not.toEqual(["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0)"]);
+  expect(sharedTooltipTail.width).toBeGreaterThan(0);
+  expect(sharedTooltipTail.height).toBeGreaterThan(0);
+  expect(sharedTooltipTail.fill).not.toBe("none");
+  expect(sharedTooltipTail.stroke).not.toBe("none");
 
   await page.mouse.move(4, viewport!.height - 4);
   await expect(tooltip).toHaveCount(0);
