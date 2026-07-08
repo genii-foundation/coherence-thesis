@@ -97,8 +97,16 @@ export function SearchMenuIsland() {
   const inputRef = useRef<HTMLInputElement>(null);
   const resultRefs = useRef<Array<HTMLAnchorElement | null>>([]);
   const lastSubmittedQueryRef = useRef("");
-  const { open, setOpen, toggle, containerRef, triggerRef, triggerProps } =
-    useToolbarMenu<HTMLDivElement>();
+  const {
+    open,
+    rendered,
+    setOpen,
+    toggle,
+    containerRef,
+    triggerRef,
+    triggerProps,
+    popoverProps,
+  } = useToolbarMenu<HTMLDivElement>();
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState<NormalizedEntry[]>([]);
   const [loadError, setLoadError] = useState(false);
@@ -263,8 +271,9 @@ export function SearchMenuIsland() {
       >
         <Search aria-hidden="true" size={18} />
       </button>
-      {open && (
+      {rendered && (
         <section
+          {...popoverProps}
           id="site-search-menu"
           className="search-popover"
           aria-label="Manuscript search"

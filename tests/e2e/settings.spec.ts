@@ -51,6 +51,61 @@ test("reader settings update and persist local appearance preferences", async ({
   await expect(resetFontButton).toBeDisabled();
   await expect(resetThemeButton).toBeVisible();
   await expect(resetThemeButton).toBeDisabled();
+  const balancedAnimations = settingsMenu.getByRole("radio", {
+    name: "Balanced",
+  });
+  const noAnimations = settingsMenu.getByRole("radio", { name: "None" });
+  const noAnimationsOption = settingsMenu
+    .locator(".settings-radio-option")
+    .filter({ hasText: "None" });
+  await expect(balancedAnimations).toBeChecked();
+  await expect(noAnimations).not.toBeChecked();
+  const animationControlMetrics = await settingsMenu
+    .locator(".settings-radio-group")
+    .evaluate((group) => {
+      const options = Array.from(
+        group.querySelectorAll<HTMLElement>(".settings-radio-option"),
+      );
+      const inputs = Array.from(
+        group.querySelectorAll<HTMLInputElement>("input"),
+      );
+      const groupStyle = getComputedStyle(group);
+      const optionRects = options.map((option) =>
+        option.getBoundingClientRect(),
+      );
+      const activeOptionStyle =
+        options[0] ? getComputedStyle(options[0]) : null;
+      inputs[0]?.focus();
+      const focusedInputStyle =
+        inputs[0] ? getComputedStyle(inputs[0]) : null;
+      const focusedOptionStyle =
+        options[0] ? getComputedStyle(options[0]) : null;
+      return {
+        groupDisplay: groupStyle.display,
+        groupColumns: groupStyle.gridTemplateColumns.split(" ").length,
+        groupBorderWidth: Number.parseFloat(groupStyle.borderTopWidth),
+        groupRadius: Number.parseFloat(groupStyle.borderTopLeftRadius),
+        firstOptionRadius: activeOptionStyle
+          ? Number.parseFloat(activeOptionStyle.borderTopLeftRadius)
+          : 0,
+        inputOpacities: inputs.map((input) => getComputedStyle(input).opacity),
+        focusedInputOutline: focusedInputStyle?.outlineStyle ?? "",
+        focusedOptionShadow: focusedOptionStyle?.boxShadow ?? "",
+        optionGap:
+          optionRects.length >= 2
+            ? Math.round(optionRects[1]!.left - optionRects[0]!.right)
+            : 0,
+      };
+    });
+  expect(animationControlMetrics.groupDisplay).toBe("grid");
+  expect(animationControlMetrics.groupColumns).toBe(2);
+  expect(animationControlMetrics.groupBorderWidth).toBeGreaterThanOrEqual(1);
+  expect(animationControlMetrics.groupRadius).toBeGreaterThan(0);
+  expect(animationControlMetrics.firstOptionRadius).toBeGreaterThan(0);
+  expect(animationControlMetrics.inputOpacities).toEqual(["0", "0"]);
+  expect(animationControlMetrics.focusedInputOutline).toBe("none");
+  expect(animationControlMetrics.focusedOptionShadow).not.toBe("none");
+  expect(animationControlMetrics.optionGap).toBe(0);
   const initialAppearance = await page.evaluate(() => {
     const heading = document.querySelector(".manuscript-heading h1");
     const paragraph = document.querySelector(".manuscript-prose p");
@@ -68,8 +123,10 @@ test("reader settings update and persist local appearance preferences", async ({
         ? getComputedStyle(toolbarButton).fontFamily
         : "",
       rootTheme: document.documentElement.dataset.readerTheme ?? "",
+      rootAnimations: document.documentElement.dataset.readerAnimations ?? "",
     };
   });
+  expect(initialAppearance.rootAnimations).toBe("balanced");
 
   const fontSizeSlider = page.getByRole("slider", { name: "Font size" });
   await fontSizeSlider.evaluate((element) => {
@@ -179,6 +236,27 @@ test("reader settings update and persist local appearance preferences", async ({
     "content",
     "#000000",
   );
+  await noAnimationsOption.click();
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-reader-animations",
+    "none",
+  );
+  const disabledMotion = await page.evaluate(() => {
+    const button = document.querySelector(".settings-menu-button");
+    const buttonStyle = button ? getComputedStyle(button) : null;
+    return {
+      transitionDuration: buttonStyle?.transitionDuration ?? "",
+      animationName: buttonStyle?.animationName ?? "",
+      scrollBehavior: getComputedStyle(document.documentElement).scrollBehavior,
+    };
+  });
+  expect(
+    disabledMotion.transitionDuration
+      .split(",")
+      .every((duration) => duration.trim() === "0s"),
+  ).toBe(true);
+  expect(disabledMotion.animationName).toBe("none");
+  expect(disabledMotion.scrollBehavior).toBe("auto");
 
   const changedAppearance = await page.evaluate(() => {
     const heading = document.querySelector(".manuscript-heading h1");
@@ -203,6 +281,7 @@ test("reader settings update and persist local appearance preferences", async ({
         ? getComputedStyle(toolbarButton).fontFamily
         : "",
       rootTheme: document.documentElement.dataset.readerTheme ?? "",
+      rootAnimations: document.documentElement.dataset.readerAnimations ?? "",
       stored,
     };
   });
@@ -217,6 +296,7 @@ test("reader settings update and persist local appearance preferences", async ({
   expect(changedAppearance.headingFontFamily).toContain("Georgia");
   expect(changedAppearance.toolbarFontFamily).toContain("Georgia");
   expect(changedAppearance.rootTheme).toBe("black");
+  expect(changedAppearance.rootAnimations).toBe("none");
   expect(changedAppearance.bodyBackground).toBe("rgb(0, 0, 0)");
   expect(changedAppearance.headerBackground).toBe("rgb(0, 0, 0)");
   expect(changedAppearance.bodyBackground).not.toBe(initialBodyBackground);
@@ -225,6 +305,7 @@ test("reader settings update and persist local appearance preferences", async ({
     fontSize: 125,
     fontFamily: "georgia",
     theme: "black",
+    animations: "none",
   });
 
   await page.keyboard.press("Escape");
@@ -247,6 +328,7 @@ test("reader settings update and persist local appearance preferences", async ({
   await expect(
     page.getByRole("button", { name: "Reader font" }),
   ).toContainText("Georgia");
+  await expect(page.getByRole("radio", { name: "None" })).toBeChecked();
 
   const storedAfterReload = await page.evaluate((key) => {
     const paragraph = document.querySelector(".manuscript-prose p");
@@ -261,12 +343,17 @@ test("reader settings update and persist local appearance preferences", async ({
     fontSize: 125,
     fontFamily: "georgia",
     theme: "black",
+    animations: "none",
   });
 
   await page.goto("/");
   await expect(page.locator("html")).toHaveAttribute(
     "data-reader-theme",
     "black",
+  );
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-reader-animations",
+    "none",
   );
   const homeAppearance = await page.evaluate(() => {
     const brandTitle = document.querySelector(".brand-title");

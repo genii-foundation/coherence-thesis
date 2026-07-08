@@ -15,6 +15,7 @@ import {
   defaultReaderPreferences,
   fontOptionById,
   parseReaderPreferences,
+  readerAnimationOptions,
   readerFontOptions,
   readerFontSizeMax,
   readerFontSizeMin,
@@ -22,6 +23,7 @@ import {
   readerPreferencesStorageKey,
   readerThemeOptions,
   serializeReaderPreferences,
+  type ReaderAnimations,
   type ReaderFontId,
   type ReaderPreferences,
   type ReaderTheme,
@@ -64,6 +66,11 @@ function clamp(value: number, minimum: number, maximum: number): number {
   return Math.min(Math.max(value, minimum), maximum);
 }
 
+function animationLabel(animations: ReaderAnimations): string {
+  if (animations === "balanced") return "Balanced";
+  return "None";
+}
+
 export function ToolbarSettingsIsland() {
   const pathname = usePathname();
   const fontButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -76,16 +83,23 @@ export function ToolbarSettingsIsland() {
     top: 0,
     width: 280,
   });
-  const { open, setOpen, toggle, containerRef, triggerProps } =
-    useToolbarMenu<HTMLDivElement>({
-      floatingRefs: [fontOptionsRef],
-      onDismiss: () => setFontMenuOpen(false),
-      onEscape: () => {
-        if (!fontMenuOpen) return true;
-        setFontMenuOpen(false);
-        return false;
-      },
-    });
+  const {
+    open,
+    rendered,
+    setOpen,
+    toggle,
+    containerRef,
+    triggerProps,
+    popoverProps,
+  } = useToolbarMenu<HTMLDivElement>({
+    floatingRefs: [fontOptionsRef],
+    onDismiss: () => setFontMenuOpen(false),
+    onEscape: () => {
+      if (!fontMenuOpen) return true;
+      setFontMenuOpen(false);
+      return false;
+    },
+  });
   const [hydrated, setHydrated] = useState(false);
   const [preferences, setPreferences] = useState<ReaderPreferences>(
     () => defaultReaderPreferences,
@@ -273,8 +287,9 @@ export function ToolbarSettingsIsland() {
       >
         <Settings aria-hidden="true" size={17} />
       </button>
-      {open && (
+      {rendered && (
         <section
+          {...popoverProps}
           id="reader-settings-menu"
           className="reader-settings settings-popover"
           aria-label="Reader settings"
@@ -382,6 +397,23 @@ export function ToolbarSettingsIsland() {
               ))}
             </div>
           </div>
+          <fieldset className="settings-control settings-radio-section">
+            <legend>Animations</legend>
+            <div className="settings-radio-group">
+              {readerAnimationOptions.map((animations) => (
+                <label key={animations} className="settings-radio-option">
+                  <input
+                    type="radio"
+                    name="reader-animations"
+                    value={animations}
+                    checked={preferences.animations === animations}
+                    onChange={() => updatePreferences({ animations })}
+                  />
+                  <span>{animationLabel(animations)}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
         </section>
       )}
       {fontOptions}

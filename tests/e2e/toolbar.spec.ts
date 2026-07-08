@@ -56,6 +56,18 @@ async function expectRestingControlBorder(
   expect(border.color).not.toBe("transparent");
 }
 
+async function toolbarMenuHeightTarget(
+  page: Page,
+  selector: string,
+): Promise<number> {
+  return page.locator(selector).evaluate((element) => {
+    const value = getComputedStyle(element)
+      .getPropertyValue("--toolbar-menu-height")
+      .trim();
+    return Number.parseFloat(value);
+  });
+}
+
 test("mobile toolbar and progress menu stay within the viewport", async ({
   page,
 }) => {
@@ -633,6 +645,53 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     progressMenuMetrics.panelRight + 1,
   );
   expect(progressMenuMetrics.recommendationWidth).toBeGreaterThan(220);
+});
+
+test("toolbar popovers slide, fade, and resize through content changes", async ({
+  page,
+}) => {
+  await page.goto(wieldingSection.href);
+
+  await page.getByRole("button", { name: "Search manuscripts" }).click();
+  const searchMenu = page.getByRole("region", { name: "Manuscript search" });
+  const searchPopover = page.locator(".search-popover");
+  await expect(searchMenu).toBeVisible();
+  await expect(searchPopover).toHaveAttribute("data-menu-state", "open");
+  await expect
+    .poll(() =>
+      searchPopover.evaluate((element) => getComputedStyle(element).opacity),
+    )
+    .toBe("1");
+
+  const openMotion = await searchPopover.evaluate((element) => {
+    const style = getComputedStyle(element);
+    return {
+      opacity: style.opacity,
+      transform: style.transform,
+      transitionProperty: style.transitionProperty,
+    };
+  });
+  expect(openMotion.opacity).toBe("1");
+  expect(openMotion.transform).toMatch(/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
+  expect(openMotion.transitionProperty).toContain("height");
+  expect(openMotion.transitionProperty).toContain("opacity");
+  expect(openMotion.transitionProperty).toContain("transform");
+
+  const emptyHeightTarget = await toolbarMenuHeightTarget(
+    page,
+    ".search-popover",
+  );
+  await page
+    .getByRole("searchbox", { name: "Search all manuscripts" })
+    .fill("the");
+  await expect(searchMenu.locator(".search-result").first()).toBeVisible();
+  await expect
+    .poll(() => toolbarMenuHeightTarget(page, ".search-popover"))
+    .toBeGreaterThan(emptyHeightTarget + 20);
+
+  await page.keyboard.press("Escape");
+  await expect(searchMenu).toHaveCount(0);
+  await expect(searchPopover).toHaveCount(0);
 });
 
 test("toolbar popovers scroll within a short viewport", async ({ page }) => {

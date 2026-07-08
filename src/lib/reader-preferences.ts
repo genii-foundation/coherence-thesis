@@ -7,6 +7,9 @@ export const readerFontSizeStep = 5;
 export const readerThemeOptions = ["textured", "light", "dark", "black"] as const;
 export type ReaderTheme = (typeof readerThemeOptions)[number];
 
+export const readerAnimationOptions = ["balanced", "none"] as const;
+export type ReaderAnimations = (typeof readerAnimationOptions)[number];
+
 export const readerThemeColorByTheme: Record<ReaderTheme, string> = {
   textured: "#f4ead7",
   light: "#fffefa",
@@ -48,12 +51,14 @@ export type ReaderPreferences = {
   fontSize: number;
   fontFamily: ReaderFontId;
   theme: ReaderTheme;
+  animations: ReaderAnimations;
 };
 
 export const defaultReaderPreferences: ReaderPreferences = {
   fontSize: 100,
   fontFamily: "iowan",
   theme: "textured",
+  animations: "balanced",
 };
 
 export const defaultReaderThemeColor =
@@ -125,6 +130,17 @@ function parseTheme(value: unknown): ReaderTheme {
   return defaultReaderPreferences.theme;
 }
 
+function parseAnimations(value: unknown): ReaderAnimations {
+  if (
+    typeof value === "string" &&
+    readerAnimationOptions.includes(value as ReaderAnimations)
+  ) {
+    return value as ReaderAnimations;
+  }
+
+  return defaultReaderPreferences.animations;
+}
+
 export function parseReaderPreferences(raw: string | null): ReaderPreferences {
   if (!raw) return defaultReaderPreferences;
 
@@ -136,6 +152,7 @@ export function parseReaderPreferences(raw: string | null): ReaderPreferences {
       fontSize: parseFontSize(parsed.fontSize),
       fontFamily: parseFontFamily(parsed.fontFamily),
       theme: parseTheme(parsed.theme),
+      animations: parseAnimations(parsed.animations),
     };
   } catch {
     return defaultReaderPreferences;
@@ -155,6 +172,7 @@ export function applyReaderPreferences(
   const fontStack = fontOptionById(preferences.fontFamily).stack;
 
   root.dataset.readerTheme = preferences.theme;
+  root.dataset.readerAnimations = preferences.animations;
   root.style.setProperty(
     "--reader-font-scale",
     (preferences.fontSize / 100).toString(),
