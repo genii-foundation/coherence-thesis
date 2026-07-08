@@ -1680,6 +1680,7 @@ input {
 }
 
 .cover-flow-card-panel {
+  --cover-flow-panel-height: auto;
   display: flex;
   flex-direction: column;
   justify-self: center;
@@ -1701,6 +1702,7 @@ input {
   padding: clamp(0.95rem, 1.8vw, 1.2rem);
   opacity: var(--cover-flow-panel-opacity);
   transition:
+    height 240ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 120ms linear,
     visibility 120ms linear;
   visibility: var(--cover-flow-panel-visibility);
@@ -1708,11 +1710,23 @@ input {
   backdrop-filter: blur(18px) saturate(135%);
 }
 
+.cover-flow-card-panel.is-height-locked {
+  height: var(--cover-flow-panel-height);
+}
+
 .manuscript-card-panel-top {
   display: grid;
   flex: 0 0 auto;
   gap: 0.55rem;
   min-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover-flow-card-panel {
+    transition:
+      opacity 120ms linear,
+      visibility 120ms linear;
+  }
 }
 
 .cover-flow-card-panel strong {

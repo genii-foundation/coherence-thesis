@@ -2484,6 +2484,7 @@ test("home page presents an interactive cover flow", async ({ page }) => {
       panelScrollClientHeight: panelScroll?.clientHeight ?? 0,
       panelScrollHeight: panelScroll?.scrollHeight ?? 0,
       panelScrollOverflowY: panelScrollStyle?.overflowY ?? "",
+      panelTransitionProperty: panelStyle?.transitionProperty ?? "",
     };
   });
   expect(panelMetrics.panelHeight).toBeLessThanOrEqual(
@@ -2491,6 +2492,7 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   );
   expect(panelMetrics.panelMaxHeight).not.toBe("none");
   expect(panelMetrics.panelOverflowY).toBe("hidden");
+  expect(panelMetrics.panelTransitionProperty).toContain("height");
   expect(panelMetrics.panelScrollOverflowY).toBe("auto");
   expect(panelMetrics.panelScrollHeight).toBeGreaterThanOrEqual(
     panelMetrics.panelScrollClientHeight,

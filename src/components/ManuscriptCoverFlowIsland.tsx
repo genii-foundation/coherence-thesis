@@ -108,9 +108,12 @@ export function ManuscriptCoverFlowIsland({
   const progress = useReaderProgress();
   const scrollRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Array<HTMLElement | null>>([]);
+  const panelRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const snapRefs = useRef<Array<HTMLDivElement | null>>([]);
   const frameRef = useRef<number | null>(null);
   const activeIndexRef = useRef(activeIndex);
+  const panelHeightFrameRef = useRef<number | null>(null);
+  const pendingPanelHeightAnimationsRef = useRef(new Set<string>());
   const wheelGestureRef = useRef<WheelGesture>({
     distancePx: 0,
     peakDeltaPx: 0,
@@ -146,6 +149,73 @@ export function ManuscriptCoverFlowIsland({
       gesture.timeoutId = null;
     }
   }, []);
+
+  const measuredPanelHeight = useCallback((panel: HTMLDivElement) => {
+    const maxHeight = Number.parseFloat(window.getComputedStyle(panel).maxHeight);
+    const contentHeight = panel.scrollHeight;
+    if (!Number.isFinite(maxHeight) || maxHeight <= 0) return contentHeight;
+    return Math.min(contentHeight, maxHeight);
+  }, []);
+
+  const preparePanelHeightAnimation = useCallback((volumeId: string) => {
+    const panel = panelRefs.current[volumeId];
+    if (!panel) return;
+
+    pendingPanelHeightAnimationsRef.current.add(volumeId);
+    panel.style.setProperty(
+      "--cover-flow-panel-height",
+      `${panel.getBoundingClientRect().height}px`,
+    );
+    panel.classList.add("is-height-locked");
+  }, []);
+
+  const animatePanelHeightToContent = useCallback(
+    (volumeId: string) => {
+      const panel = panelRefs.current[volumeId];
+      if (!panel) return;
+
+      const currentHeight = panel.getBoundingClientRect().height;
+      panel.style.transition = "none";
+      panel.classList.remove("is-height-locked");
+      panel.style.removeProperty("--cover-flow-panel-height");
+      const targetHeight = measuredPanelHeight(panel);
+      panel.classList.add("is-height-locked");
+      panel.style.setProperty(
+        "--cover-flow-panel-height",
+        `${currentHeight}px`,
+      );
+      void panel.offsetHeight;
+      panel.style.removeProperty("transition");
+
+      if (Math.abs(currentHeight - targetHeight) < 1) {
+        panel.classList.remove("is-height-locked");
+        panel.style.removeProperty("--cover-flow-panel-height");
+        return;
+      }
+
+      let cleanupTimer: number | null = null;
+      let targetFrame: number | null = null;
+      const cleanup = (event?: TransitionEvent) => {
+        if (event && event.propertyName !== "height") return;
+        if (cleanupTimer !== null) window.clearTimeout(cleanupTimer);
+        if (targetFrame !== null) window.cancelAnimationFrame(targetFrame);
+        panel.removeEventListener("transitionend", cleanup);
+        panel.classList.remove("is-height-locked");
+        panel.style.removeProperty("--cover-flow-panel-height");
+      };
+
+      panel.addEventListener("transitionend", cleanup);
+      cleanupTimer = window.setTimeout(cleanup, 360);
+      targetFrame = window.requestAnimationFrame(() => {
+        targetFrame = null;
+        panel.style.setProperty(
+          "--cover-flow-panel-height",
+          `${targetHeight}px`,
+        );
+      });
+    },
+    [measuredPanelHeight],
+  );
 
   const updateCardPositions = useCallback(() => {
     const scroller = scrollRef.current;
@@ -335,6 +405,21 @@ export function ManuscriptCoverFlowIsland({
     updateCardPositions();
   }, [updateCardPositions]);
 
+  useLayoutEffect(() => {
+    const pending = Array.from(pendingPanelHeightAnimationsRef.current);
+    if (pending.length === 0) return;
+    pendingPanelHeightAnimationsRef.current.clear();
+
+    if (panelHeightFrameRef.current !== null) {
+      window.cancelAnimationFrame(panelHeightFrameRef.current);
+    }
+
+    panelHeightFrameRef.current = window.requestAnimationFrame(() => {
+      panelHeightFrameRef.current = null;
+      pending.forEach(animatePanelHeightToContent);
+    });
+  }, [animatePanelHeightToContent, selectedPartByVolumeId]);
+
   useEffect(() => {
     activeIndexRef.current = activeIndex;
   }, [activeIndex]);
@@ -348,6 +433,9 @@ export function ManuscriptCoverFlowIsland({
       window.removeEventListener("resize", schedulePositionUpdate);
       if (frameRef.current !== null) {
         window.cancelAnimationFrame(frameRef.current);
+      }
+      if (panelHeightFrameRef.current !== null) {
+        window.cancelAnimationFrame(panelHeightFrameRef.current);
       }
       if (wheelGesture.timeoutId !== null) {
         window.clearTimeout(wheelGesture.timeoutId);
@@ -464,6 +552,9 @@ export function ManuscriptCoverFlowIsland({
                     </span>
                   </Link>
                   <div
+                    ref={(panel) => {
+                      panelRefs.current[volume.volumeId] = panel;
+                    }}
                     className={`cover-flow-card-panel${
                       readCueVolumeId === volume.volumeId ? " is-read-cue" : ""
                     }`}
@@ -504,6 +595,7 @@ export function ManuscriptCoverFlowIsland({
                               type="button"
                               className="manuscript-card-outline-back"
                               onClick={() => {
+                                preparePanelHeightAnimation(volume.volumeId);
                                 setSelectedPartByVolumeId((current) => ({
                                   ...current,
                                   [volume.volumeId]: null,
@@ -583,6 +675,7 @@ export function ManuscriptCoverFlowIsland({
                                 className="manuscript-card-outline-part-button"
                                 onClick={() => {
                                   if (!active) return;
+                                  preparePanelHeightAnimation(volume.volumeId);
                                   setSelectedPartByVolumeId((current) => ({
                                     ...current,
                                     [volume.volumeId]: part.partId,
