@@ -1767,6 +1767,11 @@ input {
   outline: none;
 }
 
+.manuscript-card-outline-full {
+  border-color: transparent;
+  background: transparent;
+}
+
 .manuscript-card-outline-full span,
 .manuscript-card-outline-title span,
 .manuscript-card-outline-chapters a span {
@@ -1782,6 +1787,14 @@ input {
   align-items: center;
   gap: 0.38rem;
   min-width: 0;
+  transform: translateX(0);
+  transition:
+    color 160ms ease,
+    transform 180ms ease;
+}
+
+.manuscript-card-outline-title,
+.manuscript-card-outline-chapters a > span:first-child {
   transform: translateX(0);
   transition:
     color 160ms ease,
@@ -1805,12 +1818,25 @@ input {
   transition: text-decoration-color 180ms ease;
 }
 
+.manuscript-card-outline-title > span,
+.manuscript-card-outline-chapters a > span:first-child {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color 180ms ease;
+}
+
 .cover-flow-cover-link:hover
   + .cover-flow-card-panel
   .manuscript-card-outline-read-label,
 .cover-flow-card-panel.is-read-cue .manuscript-card-outline-read-label,
 .manuscript-card-outline-full:hover .manuscript-card-outline-read-label,
-.manuscript-card-outline-full:focus-visible .manuscript-card-outline-read-label {
+.manuscript-card-outline-full:focus-visible .manuscript-card-outline-read-label,
+.manuscript-card-outline-part-button:hover .manuscript-card-outline-title,
+.manuscript-card-outline-part-button:focus-visible .manuscript-card-outline-title,
+.manuscript-card-outline-chapters a:hover > span:first-child,
+.manuscript-card-outline-chapters a:focus-visible > span:first-child {
   transform: translateX(0.28rem);
 }
 
@@ -1824,8 +1850,24 @@ input {
 .manuscript-card-outline-full:hover .manuscript-card-outline-read-label > span,
 .manuscript-card-outline-full:focus-visible
   .manuscript-card-outline-read-label
-  > span {
+  > span,
+.manuscript-card-outline-part-button:hover .manuscript-card-outline-title > span,
+.manuscript-card-outline-part-button:focus-visible
+  .manuscript-card-outline-title
+  > span,
+.manuscript-card-outline-chapters a:hover > span:first-child,
+.manuscript-card-outline-chapters a:focus-visible > span:first-child {
   text-decoration-color: currentColor;
+}
+
+.manuscript-card-outline-full:hover,
+.manuscript-card-outline-full:focus-visible {
+  border-color: rgba(119, 84, 42, 0.28);
+  background: rgba(164, 123, 63, 0.1);
+}
+
+.manuscript-card-outline-full:focus-visible {
+  outline: none;
 }
 
 .manuscript-card-outline-full small,
