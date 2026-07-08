@@ -29,80 +29,60 @@ type HeroVariant = {
   title: string;
   deck: string;
   Icon: LucideIcon;
-  proofPoints: string[];
 };
 
-const overviewNodes = catalog.overview.nodes;
 const firstVolume = catalog.volumes[0]!;
-const fullReadingMinutes = formatReadingDurationForWords(catalog.stats.wordCount);
 const manuscriptCount = catalog.stats.volumeCount.toLocaleString();
 const sectionCount = catalog.stats.sectionCount.toLocaleString();
+const wordCount = catalog.stats.wordCount.toLocaleString();
+const audioLength = formatReadingDurationForWords(catalog.stats.wordCount);
+const heroStats = [
+  `${audioLength} audio`,
+  `${wordCount} words`,
+  `${manuscriptCount} volumes`,
+  `${sectionCount} sections`,
+];
 
 const heroVariants: HeroVariant[] = [
   {
-    id: "coherent-power",
-    eyebrow: "Variant 01",
-    title: "Power, but grown inside coherence.",
-    deck:
-      "Nine manuscripts trace a practical architecture for becoming more capable without becoming more extractive. The work moves from biology and trust into governance, technology, culture, and place.",
-    Icon: Compass,
-    proofPoints: [
-      `${manuscriptCount} volumes`,
-      `${sectionCount} sections`,
-      fullReadingMinutes,
-    ],
-  },
-  {
-    id: "builders-threshold",
-    eyebrow: "Variant 02",
-    title: "A build manual for the people carrying the future.",
-    deck:
-      "Providence is treated as a coordination device, a social architecture, and eventually a place. The thesis asks what builders need before wisdom can become operational.",
-    Icon: Network,
-    proofPoints: [
-      overviewNodes[1]!.title,
-      overviewNodes[3]!.title,
-      overviewNodes[8]!.title,
-    ],
-  },
-  {
     id: "field-forming",
-    eyebrow: "Variant 03",
+    eyebrow: "Variant 01",
     title: "There is a field forming around the work civilization forgot to name.",
     deck:
       "Presence, trust architecture, regenerative economics, anti-capture governance, humane intelligence, and right-sized community are not separate projects here. They are strands of one civilizational craft.",
     Icon: Radio,
-    proofPoints: [
-      overviewNodes[4]!.title,
-      overviewNodes[5]!.title,
-      overviewNodes[6]!.title,
-    ],
   },
   {
-    id: "architecture-of-trust",
+    id: "civilizational-craft",
+    eyebrow: "Variant 02",
+    title: "A field guide for people building what comes after extraction.",
+    deck:
+      "The Coherence Thesis gathers the practical arts of a different civilization: builders, stewards, technologists, teachers, funders, and communities learning how to make wisdom operational.",
+    Icon: Compass,
+  },
+  {
+    id: "named-work",
+    eyebrow: "Variant 03",
+    title: "For the people who can feel the pattern before it has a name.",
+    deck:
+      "If your work sits between inner development, social architecture, humane technology, and place-based regeneration, this body of manuscripts is an attempt to make the whole pattern legible.",
+    Icon: Network,
+  },
+  {
+    id: "coherence-commons",
     eyebrow: "Variant 04",
-    title: "The thesis is not a mood. It is architecture.",
+    title: "The commons beneath the next civilization is coherence.",
     deck:
-      "The argument is built like infrastructure: substrate, coordination device, build sequence, human practice, and first scale. The question is whether power can be held by systems designed not to capture what they touch.",
+      "This is not a manifesto for better vibes. It is a long attempt to describe the substrate that lets trust, intelligence, governance, economics, culture, and power stay in right relationship.",
     Icon: Layers3,
-    proofPoints: [
-      overviewNodes[0]!.title,
-      overviewNodes[2]!.title,
-      overviewNodes[3]!.title,
-    ],
   },
   {
-    id: "begin-the-body",
+    id: "body-again",
     eyebrow: "Variant 05",
-    title: "Start where civilization becomes a body again.",
+    title: "Start where civilization becomes a living body again.",
     deck:
-      "The Coherence Thesis is for readers who suspect the future cannot be repaired by abstractions alone. It begins with the living conditions of trust and follows them until they become tools, culture, and a place to stand.",
+      "The future cannot be repaired by abstractions alone. These manuscripts begin with the living conditions of trust and follow them until they become tools, practices, institutions, and a place to stand.",
     Icon: BookOpen,
-    proofPoints: [
-      firstVolume.title,
-      "The practical arts of coherence",
-      "A place to begin",
-    ],
   },
 ];
 
@@ -157,8 +137,8 @@ export default function HeroLabPage() {
               <h2>{variant.title}</h2>
               <p>{variant.deck}</p>
               <VariantActions />
-              <ul aria-label={`${variant.eyebrow} proof points`}>
-                {variant.proofPoints.map((point) => (
+              <ul aria-label={`${variant.eyebrow} stats`}>
+                {heroStats.map((point) => (
                   <li key={point}>{point}</li>
                 ))}
               </ul>

@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { catalog } from "./fixtures";
+import { catalog, formatReadingDurationForWords } from "./fixtures";
 
 test("hero lab presents five homepage hero variants", async ({ page }) => {
   await page.goto("/hero-lab/");
@@ -26,21 +26,35 @@ test("hero lab presents five homepage hero variants", async ({ page }) => {
   await expect(page.locator(".hero-lab-cover-visual img")).toHaveCount(5);
   await expect(
     page.getByRole("heading", {
-      name: "Power, but grown inside coherence.",
+      name: "There is a field forming around the work civilization forgot to name.",
     }),
   ).toBeVisible();
+  await expect(variants.first()).toContainText(
+    "There is a field forming around the work civilization forgot to name.",
+  );
+  const firstVariantStats = page.getByLabel("Variant 01 stats");
   await expect(
-    page.getByText(`${catalog.stats.volumeCount.toLocaleString()} volumes`),
+    firstVariantStats.getByText(`${catalog.stats.volumeCount.toLocaleString()} volumes`),
   ).toBeVisible();
   await expect(
-    page.getByText(`${catalog.stats.sectionCount.toLocaleString()} sections`),
+    firstVariantStats.getByText(
+      `${catalog.stats.sectionCount.toLocaleString()} sections`,
+    ),
   ).toBeVisible();
   await expect(
-    page.getByText("A build manual for the people carrying the future."),
+    firstVariantStats.getByText(`${catalog.stats.wordCount.toLocaleString()} words`),
+  ).toBeVisible();
+  await expect(
+    firstVariantStats.getByText(
+      `${formatReadingDurationForWords(catalog.stats.wordCount)} audio`,
+    ),
+  ).toBeVisible();
+  await expect(
+    page.getByText("A field guide for people building what comes after extraction."),
   ).toBeVisible();
   await expect(
     page.getByText(
-      "There is a field forming around the work civilization forgot to name.",
+      "Start where civilization becomes a living body again.",
     ),
   ).toBeVisible();
   await expect(

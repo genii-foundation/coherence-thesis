@@ -1887,24 +1887,29 @@ input {
   padding: clamp(1.25rem, 4vw, 3rem);
 }
 
-.hero-lab-variant.builders-threshold {
-  --hero-lab-accent: var(--sage);
-  --hero-lab-accent-rgb: 96 121 109;
-}
-
 .hero-lab-variant.field-forming {
   --hero-lab-accent: #9f5e44;
   --hero-lab-accent-rgb: 159 94 68;
 }
 
-.hero-lab-variant.architecture-of-trust {
+.hero-lab-variant.civilizational-craft {
+  --hero-lab-accent: var(--sage);
+  --hero-lab-accent-rgb: 96 121 109;
+}
+
+.hero-lab-variant.named-work {
   --hero-lab-accent: var(--blue);
   --hero-lab-accent-rgb: 36 73 96;
 }
 
-.hero-lab-variant.begin-the-body {
+.hero-lab-variant.coherence-commons {
   --hero-lab-accent: #6f6845;
   --hero-lab-accent-rgb: 111 104 69;
+}
+
+.hero-lab-variant.body-again {
+  --hero-lab-accent: #885467;
+  --hero-lab-accent-rgb: 136 84 103;
 }
 
 .hero-lab-copy {
