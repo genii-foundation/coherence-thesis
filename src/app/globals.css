@@ -1200,6 +1200,31 @@ input {
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.audio-playback-icon-triangle {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.audio-playback-icon-square {
+  opacity: 0;
+  transform: scale(0.76) rotate(-4deg);
+}
+
+.audio-playback-icon.is-playing .audio-playback-icon-triangle {
+  opacity: 0;
+  transform: scale(0.78) rotate(4deg);
+}
+
+.audio-playback-icon.is-playing .audio-playback-icon-square {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
 }
 
 .audio-waveform {

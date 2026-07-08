@@ -161,10 +161,16 @@ function usePlaybackWaveform(playing: boolean): number[] {
   return scales;
 }
 
-function PlaybackToolbarIcon({ waveformScales }: { waveformScales: number[] }) {
+function PlaybackToolbarIcon({
+  playing,
+  waveformScales,
+}: {
+  playing: boolean;
+  waveformScales: number[];
+}) {
   return (
     <svg
-      className="audio-playback-icon"
+      className={`audio-playback-icon${playing ? " is-playing" : ""}`}
       viewBox="0 0 48 48"
       width="48"
       height="48"
@@ -172,8 +178,16 @@ function PlaybackToolbarIcon({ waveformScales }: { waveformScales: number[] }) {
       focusable="false"
     >
       <path
-        className="audio-playback-icon-shell"
+        className="audio-playback-icon-shell audio-playback-icon-triangle"
         d="M18.2 12.1L33.1 20.5Q38.7 23.7 33 27.2L18 35.7Q12.9 38.5 13 32.2L13.4 15.5Q13.6 9.2 18.2 12.1Z"
+      />
+      <rect
+        className="audio-playback-icon-shell audio-playback-icon-square"
+        x="12.8"
+        y="11.2"
+        width="24.4"
+        height="25.6"
+        rx="5.4"
       />
       <g className="audio-waveform" transform="translate(16 16)">
         <rect
@@ -534,6 +548,14 @@ export function AudioPlayerIsland({
     setPlaying(false);
   }
 
+  function handleToolbarButtonClick(): void {
+    if (playing) {
+      pause();
+      return;
+    }
+    toggle();
+  }
+
   if (!supported || queue.length === 0) return null;
 
   // queue is non-empty here, so queue[0] is defined.
@@ -546,10 +568,10 @@ export function AudioPlayerIsland({
         type="button"
         className={`audio-menu-button${playing ? " is-playing" : ""}`}
         aria-controls="audiobook-menu"
-        aria-label={playing ? "Audiobook playing, open controls" : "Listen"}
-        onClick={toggle}
+        aria-label={playing ? "Pause audiobook" : "Listen"}
+        onClick={handleToolbarButtonClick}
       >
-        <PlaybackToolbarIcon waveformScales={waveformScales} />
+        <PlaybackToolbarIcon playing={playing} waveformScales={waveformScales} />
       </button>
       {open && (
         <section
