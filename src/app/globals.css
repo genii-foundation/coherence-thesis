@@ -764,18 +764,10 @@ input {
   stroke-width: 2.2;
 }
 
-.progress-cloud-inner,
 .progress-cloud-track,
 .progress-cloud-progress {
   fill: none;
   vector-effect: non-scaling-stroke;
-}
-
-.progress-cloud-inner {
-  stroke: currentColor;
-  opacity: 0.26;
-  stroke-linejoin: round;
-  stroke-width: 7;
 }
 
 .progress-cloud-track {
@@ -792,11 +784,6 @@ input {
   stroke-linejoin: round;
   stroke-width: 3.8;
   transition: stroke-dashoffset 180ms ease;
-}
-
-.progress-cloud-mark-offline .progress-cloud-inner {
-  opacity: 0.26;
-  stroke-width: 1.05;
 }
 
 .progress-cloud-mark-offline .progress-cloud-fill {
