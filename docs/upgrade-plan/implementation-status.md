@@ -154,11 +154,23 @@ Each landed as its own focused, CI-green PR on top of the base:
   thematic spec files (overview, navigation, toolbar, progress, share, settings,
   engagement) over a shared `fixtures.ts`
 
-## Deferred to follow-up PRs
+- **DOC-08** footer copyright year is now rendered client-side by
+  `CopyrightYearIsland` so it stays current on the statically prerendered site
+  instead of freezing at build time
 
-The genuinely remaining items:
+## Closed without a code change
 
-- **DOC-08** the footer copyright year is fixed at build time (fine for a
-  statically prerendered site; a client-rendered year is the only change)
-- **DUP-02** shared build/runtime catalog schema module (a payload schema
-  version is the useful part; the type-share is cross-boundary and low value)
+- **DOC-04** (homepage hardcodes per-volume tags): the `manuscriptTags` record it
+  referenced no longer exists in `src/app/page.tsx`; the concern was resolved by
+  earlier homepage work, so there is nothing to move.
+- **DUP-02** (shared build/runtime catalog schema): resolved as won't-fix. The
+  build types (`scripts/manuscripts/types.ts`) describe the full compiled
+  sections with body text; the runtime types (`reader-data.ts`) describe the
+  slim browser payloads. They are intentionally different shapes, and the
+  browser payloads are bare arrays, so a shared schema plus a wrapping "payload
+  version" would add cross-boundary indirection for no real benefit.
+
+## Every register finding is now addressed.
+
+Each finding in [findings-register.md](findings-register.md) has either shipped
+in one of the PRs above or is closed with the rationale in this document.
