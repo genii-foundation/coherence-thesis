@@ -91,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
         {/* The toolbar menus and breadcrumbs are client islands that do nothing
             without JavaScript. Hide them for no-JS readers rather than present
