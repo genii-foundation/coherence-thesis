@@ -88,6 +88,17 @@ const playbackShellTriangleScale = 1.2;
 const playbackShellSquareScale = 0.96;
 const playbackShellCenter = 24;
 
+function audioPreferencesEqual(
+  left: AudioVoicePreference,
+  right: AudioVoicePreference,
+): boolean {
+  return (
+    left.voiceURI === right.voiceURI &&
+    left.rate === right.rate &&
+    left.pitch === right.pitch
+  );
+}
+
 function scalePlaybackShellCoordinate(value: number, scale: number): number {
   return playbackShellCenter + (value - playbackShellCenter) * scale;
 }
@@ -411,6 +422,7 @@ export function AudioPlayerIsland({
   const playbackTokenRef = useRef(0);
   const audioStartedAtRef = useRef<number | null>(null);
   const audioItemRef = useRef<AudioQueueItem | null>(null);
+  const audioPreferenceRef = useRef<AudioVoicePreference>(defaultVoicePreference);
 
   const flushAudioSeconds = useCallback((): void => {
     const startedAt = audioStartedAtRef.current;
@@ -507,12 +519,35 @@ export function AudioPlayerIsland({
     setPreference((current) => ({ ...current, voiceURI: null }));
   }, [preference.voiceURI, voiceIds]);
 
-  function playIndex(index: number, token: number): void {
+  async function ensurePlayableAudio(
+    index: number,
+    playbackPreference: AudioVoicePreference,
+  ): Promise<void> {
+    const item = queue[index];
+    const clipVoiceId = parseClipVoicePreferenceId(playbackPreference.voiceURI);
+    const hasHostedClip =
+      item && clipVoiceId
+        ? findAudioClip(
+            audioManifest,
+            clipVoiceId,
+            item.sectionId,
+            item.audioVersionId,
+          ) !== null
+        : false;
+    if (item && !item.text && !hasHostedClip) await ensureSectionText();
+  }
+
+  function playIndex(
+    index: number,
+    token: number,
+    playbackPreference: AudioVoicePreference = preference,
+  ): void {
     const item = queue[index];
     if (!item || !supported) return;
     flushAudioSeconds();
     audioStartedAtRef.current = Date.now();
     audioItemRef.current = item;
+    audioPreferenceRef.current = playbackPreference;
     appendStoredEvent(
       createEngagementEvent("audio_started", {
         sectionId: item.sectionId,
@@ -523,9 +558,9 @@ export function AudioPlayerIsland({
     const text = item.text || sectionTextRef.current?.get(item.sectionId) || "";
     provider.speak({
       text: `${item.title}. ${text}`,
-      voiceId: preference.voiceURI,
-      rate: preference.rate,
-      pitch: preference.pitch,
+      voiceId: playbackPreference.voiceURI,
+      rate: playbackPreference.rate,
+      pitch: playbackPreference.pitch,
       onEnd: () => {
         if (token !== playbackTokenRef.current) return;
         flushAudioSeconds();
@@ -539,7 +574,7 @@ export function AudioPlayerIsland({
         const nextIndex = index + 1;
         if (queue[nextIndex]) {
           setActiveIndex(nextIndex);
-          playIndex(nextIndex, token);
+          playIndex(nextIndex, token, playbackPreference);
         } else {
           setPlaying(false);
         }
@@ -582,8 +617,15 @@ export function AudioPlayerIsland({
     }
   }
 
-  async function speak(index = activeIndex): Promise<void> {
-    if (provider.isPaused() && audioItemRef.current) {
+  async function speak(
+    index = activeIndex,
+    playbackPreference: AudioVoicePreference = preference,
+  ): Promise<void> {
+    if (
+      provider.isPaused() &&
+      audioItemRef.current &&
+      audioPreferencesEqual(audioPreferenceRef.current, playbackPreference)
+    ) {
       audioStartedAtRef.current = Date.now();
       provider.resume();
       setPlaying(true);
@@ -601,21 +643,24 @@ export function AudioPlayerIsland({
     // and no hosted clip can satisfy the request. Fish clips only need the
     // stable section id and audio hash, so they can start inside the click
     // gesture instead of waiting on the full text payload.
-    const item = queue[index];
-    const clipVoiceId = parseClipVoicePreferenceId(preference.voiceURI);
-    const hasHostedClip =
-      item && clipVoiceId
-        ? findAudioClip(
-            audioManifest,
-            clipVoiceId,
-            item.sectionId,
-            item.audioVersionId,
-          ) !== null
-        : false;
-    if (item && !item.text && !hasHostedClip) await ensureSectionText();
+    await ensurePlayableAudio(index, playbackPreference);
     const token = playbackTokenRef.current + 1;
     playbackTokenRef.current = token;
-    playIndex(index, token);
+    playIndex(index, token, playbackPreference);
+  }
+
+  async function restartActivePlayback(
+    playbackPreference: AudioVoicePreference,
+  ): Promise<void> {
+    if (!playing) return;
+    const index = activeIndex;
+    if (!queue[index]) return;
+    await ensurePlayableAudio(index, playbackPreference);
+    const token = playbackTokenRef.current + 1;
+    playbackTokenRef.current = token;
+    flushAudioSeconds();
+    provider.cancel();
+    playIndex(index, token, playbackPreference);
   }
 
   function pause(): void {
@@ -641,6 +686,12 @@ export function AudioPlayerIsland({
       return;
     }
     void speak();
+  }
+
+  function handleVoiceChange(voiceURI: string | null): void {
+    const nextPreference = { ...preference, voiceURI };
+    setPreference(nextPreference);
+    void restartActivePlayback(nextPreference);
   }
 
   if (!supported || queue.length === 0) return null;
@@ -678,10 +729,7 @@ export function AudioPlayerIsland({
                   aria-label="Voice"
                   value={preference.voiceURI ?? ""}
                   onChange={(event) =>
-                    setPreference((current) => ({
-                      ...current,
-                      voiceURI: event.target.value || null,
-                    }))
+                    handleVoiceChange(event.target.value || null)
                   }
                 >
                   <optgroup label="High quality voices">
