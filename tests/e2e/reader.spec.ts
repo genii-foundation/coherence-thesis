@@ -354,21 +354,18 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(wieldingPanel.locator("strong")).toHaveText(
     "Wielding Intelligence",
   );
+  await expect(wieldingPanel.locator(".manuscript-card-tags")).toHaveCount(0);
+  const wieldingPanelTop = wieldingPanel.locator(".manuscript-card-panel-top");
   await expect(
-    wieldingPanel.locator(".manuscript-card-tags").getByText(
+    wieldingPanelTop.getByText(
       formatReadingDurationForWords(wieldingVolume.wordCount),
     ),
-  ).toBeVisible();
+  ).toHaveCount(0);
   await expect(wieldingPanel.getByText("Moon")).toHaveCount(0);
   await expect(
     wieldingPanel.getByText(`${wieldingVolume.parts.length} parts`),
   ).toHaveCount(0);
   await expect(wieldingPanel.getByText(/chapters/)).toHaveCount(0);
-  const detailTagHeight = await wieldingPanel
-    .locator(".manuscript-card-tags span")
-    .first()
-    .evaluate((element) => element.getBoundingClientRect().height);
-  expect(detailTagHeight).toBeLessThanOrEqual(24);
   await expect(wieldingPanel.locator(".manuscript-card-symbol")).toHaveText(
     "☽",
   );
@@ -2458,6 +2455,7 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   ).toHaveText(initialActiveVolume.title);
   const activeCard = coverFlow.locator('.cover-flow-card[aria-current="true"]');
   const activePanel = activeCard.locator(".cover-flow-card-panel");
+  await expect(activePanel.locator(".manuscript-card-tags")).toHaveCount(0);
   await expect(
     activePanel.locator(".manuscript-card-outline-full"),
   ).toHaveAttribute("href", firstSection.href);

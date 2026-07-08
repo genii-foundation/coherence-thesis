@@ -62,24 +62,6 @@ type WheelGesture = {
   timeoutId: number | null;
 };
 
-const manuscriptTags: Record<string, string[]> = {
-  "humanitys-most-viable-future": [
-    "Post-extractive civilization",
-    "Social substrate",
-  ],
-  "wielding-intelligence": ["Humane technology", "AI coordination"],
-  "providence-imperative": [
-    "Coordination infrastructure",
-    "Civilizational design",
-  ],
-  "architecting-providence": ["Systems architecture", "Coherent governance"],
-  purposeful: ["Builder discovery", "Human purpose"],
-  "smallest-nest": ["Planetary containment", "Living scale"],
-  "presencing-genius": ["Presence praxis", "Collective genius"],
-  "misanthropic-artifice": ["Academic critique", "Saturnine inquiry"],
-  "cardinal-scale": ["Iconic patterning", "Cardinal orientation"],
-};
-
 const planetSymbols: Record<string, string> = {
   Jupiter: "♃",
   Mars: "♂",
@@ -481,7 +463,6 @@ export function ManuscriptCoverFlowIsland({
       >
         <div className="cover-flow-track">
           {volumes.map((volume, index) => {
-            const tags = manuscriptTags[volume.volumeId] ?? [volume.planet];
             const planetSymbol = planetSymbols[volume.planet] ?? "";
             const active = index === activeIndex;
             const selectedPartId =
@@ -574,14 +555,6 @@ export function ManuscriptCoverFlowIsland({
                       <strong>{volume.title}</strong>
                       <span className="manuscript-card-description">
                         {volume.subtitle}
-                      </span>
-                      <span className="manuscript-card-tags">
-                        <span>
-                          {formatReadingDurationForWords(volume.wordCount)}
-                        </span>
-                        {tags.map((tag) => (
-                          <span key={tag}>{tag}</span>
-                        ))}
                       </span>
                     </div>
                     <nav

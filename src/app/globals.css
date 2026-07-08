@@ -2208,8 +2208,7 @@ input {
   visibility: visible;
 }
 
-.manuscript-card-kicker,
-.manuscript-card-tags {
+.manuscript-card-kicker {
   font-family: var(--font-ui);
 }
 
@@ -2262,33 +2261,6 @@ input {
   line-height: 1.45;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-}
-
-.manuscript-card-tags {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.32rem;
-}
-
-.manuscript-card-tags span {
-  display: inline-flex;
-  align-self: center;
-  align-items: center;
-  border: 1px solid rgb(var(--card-rgb) / 0.24);
-  border-radius: 999px;
-  background: var(--subtle-control-background);
-  color: var(--ink-soft);
-  font-size: 0.68rem;
-  line-height: 1.05;
-  padding: 0.12rem 0.42rem;
-  white-space: nowrap;
-}
-
-.manuscript-card-tags span:first-child {
-  background: rgb(var(--card-rgb) / 0.12);
-  color: var(--card-accent);
-  font-weight: 700;
 }
 
 .manuscript-cover-card-1 {
