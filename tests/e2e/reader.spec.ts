@@ -2517,9 +2517,9 @@ test("home page presents an interactive cover flow", async ({ page }) => {
     };
   });
   expect(panelMetrics.panelHeight).toBeLessThanOrEqual(
-    (panelMetrics.coverHeight * 2) / 3 + 2,
+    panelMetrics.coverHeight * 0.88 + 2,
   );
-  expect(panelMetrics.coverToPanelGap).toBeGreaterThanOrEqual(22);
+  expect(panelMetrics.coverToPanelGap).toBeGreaterThanOrEqual(44);
   expect(panelMetrics.panelMaxHeight).not.toBe("none");
   expect(panelMetrics.panelOverflowY).toBe("hidden");
   expect(panelMetrics.panelTransitionProperty).toContain("height");
@@ -2537,6 +2537,25 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   await expect(
     activePanel.locator(".manuscript-card-outline-part-overview"),
   ).toHaveAttribute("href", initialActiveVolume.parts[0]!.href);
+  const partOverviewMetaAlignment = await activePanel
+    .locator(".manuscript-card-outline-part-overview")
+    .evaluate((row) => {
+      const minutes = row.querySelector("small")?.getBoundingClientRect();
+      const dot = row
+        .querySelector(".progress-state-dot")
+        ?.getBoundingClientRect();
+
+      return {
+        dotCenter: dot ? dot.top + dot.height / 2 : 0,
+        minutesCenter: minutes ? minutes.top + minutes.height / 2 : 0,
+      };
+    });
+  expect(
+    Math.abs(
+      partOverviewMetaAlignment.minutesCenter -
+        partOverviewMetaAlignment.dotCenter,
+    ),
+  ).toBeLessThanOrEqual(3);
   await expect(
     activePanel.getByRole("link", {
       name: new RegExp(initialActiveVolume.parts[0]!.chapters[0]!.title),
