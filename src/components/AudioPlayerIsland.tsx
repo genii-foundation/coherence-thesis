@@ -525,15 +525,17 @@ export function AudioPlayerIsland({
                         <Download aria-hidden="true" size={17} />
                       )}
                     </button>
-                    <div
-                      className="audio-offline-meter"
-                      aria-hidden="true"
-                      style={
-                        {
-                          "--audio-offline-progress": `${percent}%`,
-                        } as CSSProperties
-                      }
-                    />
+                    {clipsPending ? null : (
+                      <div
+                        className="audio-offline-meter"
+                        aria-hidden="true"
+                        style={
+                          {
+                            "--audio-offline-progress": `${percent}%`,
+                          } as CSSProperties
+                        }
+                      />
+                    )}
                     {offlineError[pack.volumeId] ? (
                       <small className="audio-offline-error">
                         {offlineError[pack.volumeId]}

@@ -13,6 +13,30 @@ function shouldCache(request) {
   );
 }
 
+async function cacheFirst(cache, request) {
+  const cached = await cache.match(request);
+  if (cached) return cached;
+  const response = await fetch(request);
+  if (response.ok) {
+    await cache.put(request, response.clone());
+  }
+  return response;
+}
+
+async function networkFirst(cache, request) {
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      await cache.put(request, response.clone());
+    }
+    return response;
+  } catch (error) {
+    const cached = await cache.match(request);
+    if (cached) return cached;
+    throw error;
+  }
+}
+
 self.addEventListener("install", (event) => {
   event.waitUntil(self.skipWaiting());
 });
@@ -26,13 +50,11 @@ self.addEventListener("fetch", (event) => {
   if (!shouldCache(request)) return;
   event.respondWith(
     caches.open(CACHE_NAME).then(async (cache) => {
-      const cached = await cache.match(request);
-      if (cached) return cached;
-      const response = await fetch(request);
-      if (response.ok) {
-        await cache.put(request, response.clone());
+      const url = new URL(request.url);
+      if (url.pathname.startsWith("/audio/")) {
+        return cacheFirst(cache, request);
       }
-      return response;
+      return networkFirst(cache, request);
     }),
   );
 });
