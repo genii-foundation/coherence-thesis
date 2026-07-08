@@ -1,7 +1,25 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { catalog, sectionById, toProgressSection } from "@/lib/manuscript-data";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
+
+function coverVolumeForNode(
+  node: (typeof catalog.overview.nodes)[number],
+  index: number,
+) {
+  for (const reference of node.references) {
+    const section = sectionById(reference.sectionId);
+    const volume = section
+      ? catalog.volumes.find(
+          (candidate) => candidate.volumeId === section.volumeId,
+        )
+      : undefined;
+    if (volume) return volume;
+  }
+
+  return catalog.volumes[index];
+}
 
 export function OverviewMap() {
   return (
@@ -11,14 +29,31 @@ export function OverviewMap() {
           const section = sectionById(reference.sectionId);
           return section ? [toProgressSection(section)] : [];
         });
+        const coverVolume = coverVolumeForNode(node, index);
 
         return (
-          <details key={node.id} className="overview-node" open={index < 3}>
+          <details key={node.id} className="overview-node" open>
             <summary>
-              <span className="overview-node-number">
-                {String(index + 1).padStart(2, "0")}
+              <span
+                className="overview-node-cover overview-node-cover-closed"
+                aria-hidden="true"
+              >
+                {coverVolume ? (
+                  <Image
+                    src={coverVolume.coverImage}
+                    alt=""
+                    width={96}
+                    height={144}
+                    sizes="3.2rem"
+                  />
+                ) : null}
               </span>
-              <strong>{node.title}</strong>
+              <span className="overview-node-heading">
+                <span className="overview-node-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <strong>{node.title}</strong>
+              </span>
               <span className="overview-node-actions">
                 <ReadCheckmarkIsland sections={nodeSections} />
                 <ChevronRight
@@ -28,18 +63,38 @@ export function OverviewMap() {
                 />
               </span>
             </summary>
-            <p>{node.summary}</p>
-            <div className="reference-grid">
-              {node.references.map((reference) => {
-                const section = sectionById(reference.sectionId);
-                if (!section) return null;
-                return (
-                  <Link key={reference.sectionId} href={section.href}>
-                    <span>{reference.label ?? section.title}</span>
-                    <ReadCheckmarkIsland sections={[toProgressSection(section)]} />
-                  </Link>
-                );
-              })}
+            <div className="overview-node-body">
+              <span
+                className="overview-node-cover overview-node-cover-open"
+                aria-hidden="true"
+              >
+                {coverVolume ? (
+                  <Image
+                    src={coverVolume.coverImage}
+                    alt=""
+                    width={192}
+                    height={288}
+                    sizes="(max-width: 720px) 4.5rem, 8rem"
+                  />
+                ) : null}
+              </span>
+              <div className="overview-node-content">
+                <p>{node.summary}</p>
+                <div className="reference-grid">
+                  {node.references.map((reference) => {
+                    const section = sectionById(reference.sectionId);
+                    if (!section) return null;
+                    return (
+                      <Link key={reference.sectionId} href={section.href}>
+                        <span>{reference.label ?? section.title}</span>
+                        <ReadCheckmarkIsland
+                          sections={[toProgressSection(section)]}
+                        />
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </details>
         );

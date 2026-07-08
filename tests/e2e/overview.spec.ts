@@ -243,6 +243,12 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
   await expect(
     page.getByRole("heading", { name: "The Coherence Thesis" }),
   ).toBeVisible();
+  await expect(
+    page.locator(".page-heading .eyebrow", { hasText: "Five minute map" }),
+  ).toHaveCount(0);
+  await expect(
+    page.getByText("a five-minute overview of the nine published manuscripts."),
+  ).toBeVisible();
   const overviewLayout = await page.evaluate(() => {
     const heading = document
       .querySelector(".page-heading")
@@ -284,12 +290,60 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
       formatReadingDurationForWords(catalog.stats.wordCount),
     ),
   ).toBeVisible();
+  const statLayout = await overviewStats.evaluate((stats) => {
+    const items = Array.from(stats.querySelectorAll<HTMLElement>("div"));
+    const duration = stats.querySelector<HTMLElement>(
+      ".stats-band-duration strong",
+    );
+    let durationLineCount = 0;
+
+    if (duration) {
+      const range = document.createRange();
+      range.selectNodeContents(duration);
+      durationLineCount = range.getClientRects().length;
+      range.detach();
+    }
+
+    return {
+      aligned: items.every((item) => {
+        const value = item.querySelector<HTMLElement>("strong");
+        const label = item.querySelector<HTMLElement>("span");
+        if (!value || !label) return false;
+        return (
+          Math.abs(
+            value.getBoundingClientRect().left -
+              label.getBoundingClientRect().left,
+          ) < 1
+        );
+      }),
+      durationLineCount,
+    };
+  });
+  expect(statLayout.aligned).toBe(true);
+  expect(statLayout.durationLineCount).toBe(1);
+  await expect(page.locator(".overview-node")).toHaveCount(
+    catalog.overview.nodes.length,
+  );
+  expect(
+    await page.locator(".overview-node[open]").count(),
+  ).toBe(catalog.overview.nodes.length);
+  await expect(page.locator(".overview-node-cover-open img")).toHaveCount(
+    catalog.overview.nodes.length,
+  );
+  await page.locator(".overview-node summary").first().click();
+  await expect(
+    page
+      .locator(".overview-node")
+      .first()
+      .locator(".overview-node-cover-closed img"),
+  ).toBeVisible();
+  await page.locator(".overview-node summary").first().click();
   await expect(page.getByRole("button", { name: "Listen" })).toBeVisible();
   await expect(
-    page.getByRole("link", { name: /The seed/ }).first(),
+    page.getByRole("link", { name: /^Seed$/ }).first(),
   ).toBeVisible();
   await page
-    .getByRole("link", { name: /The seed/ })
+    .getByRole("link", { name: /^Seed$/ })
     .first()
     .click();
   await expect(page).toHaveURL(/\/manuscripts\/humanitys-most-viable-future\//);
