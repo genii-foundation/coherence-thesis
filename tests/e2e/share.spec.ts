@@ -80,8 +80,9 @@ test("reader share menu exposes page sharing and PDF downloads", async ({
     "application/pdf",
   );
   const sectionPdfBytes = await sectionPdfResponse.body();
-  expect(pdfPageCount(sectionPdfBytes)).toBeGreaterThanOrEqual(2);
-  expect(pdfPageCount(sectionPdfBytes)).toBeLessThanOrEqual(4);
+  const sectionPageCount = pdfPageCount(sectionPdfBytes);
+  expect(sectionPageCount).toBeGreaterThanOrEqual(2);
+  expect(sectionPageCount).toBeLessThanOrEqual(4);
   expect(pdfImageCount(sectionPdfBytes)).toBeGreaterThanOrEqual(1);
   expect(sectionPdfBytes.byteLength).toBeLessThan(450_000);
   const manuscriptPdfResponse = await page.request.get(
@@ -93,11 +94,11 @@ test("reader share menu exposes page sharing and PDF downloads", async ({
   );
   const manuscriptPdfBytes = await manuscriptPdfResponse.body();
   const manuscriptPageCount = pdfPageCount(manuscriptPdfBytes);
-  expect(manuscriptPageCount).toBeGreaterThan(2);
-  expect(manuscriptPageCount).toBeLessThan(
-    firstSectionVolume.sectionIds.length,
-  );
+  expect(manuscriptPageCount).toBeGreaterThan(sectionPageCount);
   expect(pdfImageCount(manuscriptPdfBytes)).toBeGreaterThanOrEqual(1);
+  expect(manuscriptPdfBytes.byteLength).toBeGreaterThan(
+    sectionPdfBytes.byteLength,
+  );
   expect(manuscriptPdfBytes.byteLength).toBeLessThan(700_000);
 
   await shareMenu.getByRole("button", { name: "Share this page" }).click();

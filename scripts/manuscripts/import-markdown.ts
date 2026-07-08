@@ -9,6 +9,7 @@ import {
   readUtf8,
   readVolumeConfigs,
   repoRoot,
+  sectionHref,
   sha256,
   slugify,
   writeJson,
@@ -203,6 +204,62 @@ function uniqueId(base: string, used: Set<string>): string {
   return candidate;
 }
 
+function sectionKey(section: DraftSection): string {
+  const fm = section.frontmatter;
+  return `${fm.volumeId}:${fm.partId}:${fm.chapterId}`;
+}
+
+function bodyText(section: DraftSection): string {
+  return section.body.map(plainLine).filter(Boolean).join(" ");
+}
+
+function wordTokenCount(text: string): number {
+  return text.match(/[A-Za-z0-9]+/g)?.length ?? 0;
+}
+
+function isSubtitleOnlyChapterOpener(
+  section: DraftSection,
+  chapterSections: DraftSection[],
+): boolean {
+  if (chapterSections.length < 2 || chapterSections[0] !== section) return false;
+  if (section.frontmatter.title !== section.frontmatter.chapterTitle) return false;
+
+  const text = bodyText(section);
+  if (!text) return false;
+  if (wordTokenCount(text) > 8) return false;
+  if (/[.!?]$/.test(text)) return false;
+
+  return section.body.filter((line) => plainLine(line)).length <= 2;
+}
+
+function addAlias(section: DraftSection, sourceHref: string): void {
+  const aliases = section.frontmatter.aliases ?? [];
+  if (!aliases.includes(sourceHref)) {
+    section.frontmatter.aliases = [...aliases, sourceHref];
+  }
+}
+
+function removeSubtitleOnlyChapterOpeners(sections: DraftSection[]): DraftSection[] {
+  const chapterSections = new Map<string, DraftSection[]>();
+  for (const section of sections) {
+    const key = sectionKey(section);
+    chapterSections.set(key, [...(chapterSections.get(key) ?? []), section]);
+  }
+
+  const removed = new Set<DraftSection>();
+  for (const group of chapterSections.values()) {
+    const opener = group[0];
+    const target = group[1];
+    if (!opener || !target) continue;
+    if (!isSubtitleOnlyChapterOpener(opener, group)) continue;
+
+    addAlias(target, sectionHref(opener.frontmatter));
+    removed.add(opener);
+  }
+
+  return sections.filter((section) => !removed.has(section));
+}
+
 function buildSections(config: VolumeConfig): DraftSection[] {
   const sourcePath = sourcePathFor(config);
   const source = normalizeNewlines(readUtf8(sourcePath));
@@ -326,7 +383,9 @@ function buildSections(config: VolumeConfig): DraftSection[] {
     section.frontmatter.sourceParagraphEnd = index + 1;
   }
 
-  return sections.filter((section) => section.body.join("\n").trim().length > 0);
+  return removeSubtitleOnlyChapterOpeners(
+    sections.filter((section) => section.body.join("\n").trim().length > 0),
+  );
 }
 
 function main(): void {

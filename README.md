@@ -51,8 +51,8 @@ Do not edit generated files by hand. Edit source Markdown or series metadata, th
 <!-- BEGIN:development-status -->
 
 - Next.js: 16.2.9
-- Manuscripts: 9 volume, 47 parts, 408 chapters, 566 sections
-- Canonical words: 198,717
+- Manuscripts: 9 volume, 47 parts, 408 chapters, 563 sections
+- Canonical words: 198,704
 - Estimated full read: 904 minutes
 - Overview nodes: 9
 

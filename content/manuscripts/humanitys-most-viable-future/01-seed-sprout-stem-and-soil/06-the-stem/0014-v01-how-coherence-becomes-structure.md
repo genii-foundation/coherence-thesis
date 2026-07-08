@@ -15,6 +15,7 @@ sourceDoc: "sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-futu
 sourceHash: "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a"
 sourceParagraphStart: 394
 sourceParagraphEnd: 407
+aliases: ["/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-stem/v01-the-stem/"]
 ---
 
 With the constraints now clearly stated, the work turns from diagnosis to structure — not to propose a finished system, but to ask what kinds of systems are even possible under the conditions described.

@@ -468,6 +468,16 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
   const sectionById = new Map(sections.map((section) => [section.sectionId, section]));
   const aliasInputs = [...readAliasConfig().aliases];
   for (const section of sections) {
+    for (const sourceHref of section.aliases ?? []) {
+      if (aliasInputs.some((alias) => alias.sourceHref === sourceHref)) continue;
+      aliasInputs.push({
+        sourceHref,
+        targetSectionId: section.sectionId,
+        note: "Generated alias for a skipped chapter opener route.",
+      });
+    }
+  }
+  for (const section of sections) {
     const sourceHref = fullDepthSectionHref(section);
     if (sourceHref === section.href) continue;
     if (aliasInputs.some((alias) => alias.sourceHref === sourceHref)) continue;

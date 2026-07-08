@@ -408,20 +408,6 @@
     ]
   },
   {
-    "sectionId": "v01-the-sprout",
-    "contentHash": "b30c88247b76c469",
-    "title": "The Sprout",
-    "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-the-sprout/",
-    "audioVersionId": "v01-the-sprout-b30c88247b76c469",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "contentHash": "0d343cf449cc7b00"
-      }
-    ]
-  },
-  {
     "sectionId": "v01-why-this-is-happening-and-why-it-changes-everything",
     "contentHash": "be4de9d575498d3b",
     "title": "Why This Is Happening, and Why It Changes Everything",
@@ -831,20 +817,6 @@
     ]
   },
   {
-    "sectionId": "v01-the-stem",
-    "contentHash": "979099d9c5da3f18",
-    "title": "The Stem",
-    "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-stem/v01-the-stem/",
-    "audioVersionId": "v01-the-stem-979099d9c5da3f18",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "contentHash": "f82a2b70da3c9361"
-      }
-    ]
-  },
-  {
     "sectionId": "v01-how-coherence-becomes-structure",
     "contentHash": "d83e101fb2513d3c",
     "title": "How Coherence Becomes Structure",
@@ -1054,20 +1026,6 @@
         "paragraphId": "p-3",
         "anchor": "p-3",
         "contentHash": "a81ef3786251856b"
-      }
-    ]
-  },
-  {
-    "sectionId": "v01-the-soil",
-    "contentHash": "c41f52ee4b1300d9",
-    "title": "The Soil",
-    "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-soil/v01-the-soil/",
-    "audioVersionId": "v01-the-soil-c41f52ee4b1300d9",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "contentHash": "2be3b80639ac012e"
       }
     ]
   },
