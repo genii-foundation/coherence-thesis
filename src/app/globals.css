@@ -1788,6 +1788,15 @@ input {
     transform 180ms ease;
 }
 
+.manuscript-card-outline-full .manuscript-card-outline-read-label {
+  display: inline-flex;
+  flex: 1 1 auto;
+}
+
+.manuscript-card-outline-full .manuscript-card-outline-read-label > span {
+  display: inline;
+}
+
 .manuscript-card-outline-read-label > span {
   text-decoration: underline;
   text-decoration-color: transparent;
@@ -1837,6 +1846,10 @@ input {
   justify-content: flex-end;
   gap: 0.5rem;
   min-width: max-content;
+}
+
+.manuscript-card-outline-full .manuscript-card-outline-meta {
+  display: inline-flex;
 }
 
 .manuscript-card-outline-parts,
