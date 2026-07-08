@@ -93,4 +93,22 @@ describe("manuscript compiler helpers", () => {
         "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
     });
   });
+
+  it("aliases subtitle-only chapter openers to their first content sections", () => {
+    const catalog = buildCatalog();
+    const alias = catalog.aliases.find(
+      (candidate) =>
+        candidate.sourceHref ===
+        "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-the-sprout/",
+    );
+
+    expect(
+      catalog.sections.some((section) => section.sectionId === "v01-the-sprout"),
+    ).toBe(false);
+    expect(alias).toMatchObject({
+      targetSectionId: "v01-why-this-is-happening-and-why-it-changes-everything",
+      targetHref:
+        "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-why-this-is-happening-and-why-it-changes-everything/",
+    });
+  });
 });

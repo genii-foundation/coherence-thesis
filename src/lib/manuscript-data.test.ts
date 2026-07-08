@@ -68,6 +68,26 @@ describe("manuscript data", () => {
     expect(sectionByHrefOrAlias(oldDuplicate)?.alias?.targetHref).toBe(canonical);
   });
 
+  it("resolves skipped chapter opener aliases to content sections", () => {
+    const opener =
+      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-the-sprout/";
+    const target =
+      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-why-this-is-happening-and-why-it-changes-everything/";
+    const keys = new Set(
+      manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
+    );
+
+    expect(sectionByHrefOrAlias(opener)?.section.sectionId).toBe(
+      "v01-why-this-is-happening-and-why-it-changes-everything",
+    );
+    expect(sectionByHrefOrAlias(opener)?.alias?.targetHref).toBe(target);
+    expect(
+      keys.has(
+        "humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-the-sprout",
+      ),
+    ).toBe(true);
+  });
+
   it("keeps duplicate part and chapter labels out of collapsed breadcrumbs", () => {
     const route = breadcrumbRoutes().find(
       (candidate) =>
