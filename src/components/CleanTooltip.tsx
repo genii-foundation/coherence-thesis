@@ -145,7 +145,7 @@ export function useCleanTooltip({
             ref={tooltipRef}
             id={tooltipId}
             role="tooltip"
-            className={`clean-tooltip clean-tooltip-${position.placement}`}
+            className={`clean-tooltip tooltip-surface tooltip-surface-${position.placement}`}
             style={
               {
                 "--clean-tooltip-arrow-left": `${position.arrowLeft}px`,

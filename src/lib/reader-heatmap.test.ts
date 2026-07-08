@@ -17,6 +17,7 @@ describe("reader heatmap", () => {
     expect(cells).toHaveLength(readerHeatmapCellCount);
     expect(model.volumes).toHaveLength(9);
     expect(model.volumes.every((volume) => volume.cells.length > 0)).toBe(true);
+    expect(model.volumes.every((volume) => volume.sectionCount > 0)).toBe(true);
   });
 
   it("allows short adjacent sections to share a cell", () => {
