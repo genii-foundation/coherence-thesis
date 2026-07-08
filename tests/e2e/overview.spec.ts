@@ -10,6 +10,14 @@ import {
   hexToRgb,
 } from "./fixtures";
 
+function sectionForId(sectionId: string) {
+  const section = catalog.sections.find(
+    (candidate) => candidate.sectionId === sectionId,
+  );
+  if (!section) throw new Error(`Missing section fixture: ${sectionId}`);
+  return section;
+}
+
 test("home page presents the overview and manuscript entry points", async ({
   page,
 }, testInfo) => {
@@ -300,7 +308,9 @@ test("home page listen and read actions resume at the first unread section", asy
   );
 });
 
-test("overview links into canonical manuscript sections", async ({ page }) => {
+test("overview links into canonical manuscript sections", async ({
+  page,
+}, testInfo) => {
   await page.addInitScript(() => {
     Object.defineProperty(window, "speechSynthesis", {
       configurable: true,
@@ -318,6 +328,12 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
 
   await expect(
     page.getByRole("heading", { name: "The Coherence Thesis" }),
+  ).toBeVisible();
+  await expect(
+    page.locator(".page-heading .eyebrow", { hasText: "Five minute map" }),
+  ).toHaveCount(0);
+  await expect(
+    page.getByText("Five-Minute Overview of the nine published manuscripts."),
   ).toBeVisible();
   const overviewLayout = await page.evaluate(() => {
     const heading = document
@@ -360,15 +376,224 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
       formatReadingDurationForWords(catalog.stats.wordCount),
     ),
   ).toBeVisible();
+  const statLayout = await overviewStats.evaluate((stats) => {
+    const items = Array.from(stats.querySelectorAll<HTMLElement>("div"));
+    const durationValue = stats.querySelector<HTMLElement>(
+      ".stats-band-duration-value",
+    );
+    const durationUnit = stats.querySelector<HTMLElement>(
+      ".stats-band-duration-unit",
+    );
+    let durationSharesLine = false;
+
+    if (durationValue && durationUnit) {
+      const valueRect = durationValue.getBoundingClientRect();
+      const unitRect = durationUnit.getBoundingClientRect();
+      durationSharesLine =
+        valueRect.top < unitRect.bottom && unitRect.top < valueRect.bottom;
+    }
+
+    return {
+      aligned: items.every((item) => {
+        const value = item.querySelector<HTMLElement>("strong");
+        const label = item.querySelector<HTMLElement>("span");
+        if (!value || !label) return false;
+        return (
+          Math.abs(
+            value.getBoundingClientRect().left -
+              label.getBoundingClientRect().left,
+          ) < 1
+        );
+      }),
+      durationSharesLine,
+      durationUnitIsSmaller:
+        durationValue && durationUnit
+          ? parseFloat(getComputedStyle(durationUnit).fontSize) <
+            parseFloat(getComputedStyle(durationValue).fontSize)
+          : false,
+      durationValueColor: durationValue
+        ? getComputedStyle(durationValue).color
+        : "",
+      firstStatColor:
+        items[0]?.querySelector("strong")
+          ? getComputedStyle(items[0]!.querySelector("strong")!).color
+          : "",
+      minLeftPadding: Math.min(
+        ...items.map((item) => parseFloat(getComputedStyle(item).paddingLeft)),
+      ),
+    };
+  });
+  expect(statLayout.aligned).toBe(true);
+  expect(statLayout.durationSharesLine).toBe(true);
+  expect(statLayout.durationUnitIsSmaller).toBe(true);
+  expect(statLayout.durationValueColor).toBe(statLayout.firstStatColor);
+  expect(statLayout.minLeftPadding).toBeGreaterThanOrEqual(23);
+  await expect(page.locator(".overview-node")).toHaveCount(
+    catalog.overview.nodes.length,
+  );
+  await expect(page.locator("details.overview-node")).toHaveCount(0);
+  await expect(page.locator(".overview-node summary")).toHaveCount(0);
+  await expect(page.locator(".overview-chevron")).toHaveCount(0);
+  await expect(page.locator(".overview-node-number")).toHaveText(
+    catalog.volumes.map((volume) => volume.numberLabel),
+  );
+  await expect(page.locator(".overview-node-cover-open img")).toHaveCount(
+    catalog.overview.nodes.length,
+  );
+  await expect(page.locator(".overview-node-card-link")).toHaveCount(
+    catalog.overview.nodes.length,
+  );
+  await expect(page.locator(".overview-read-link")).toHaveCount(
+    catalog.overview.nodes.length,
+  );
+  await expect(
+    page.getByText(
+      "The Cardinal Scale is where the thesis stops describing civilization and starts building one.",
+    ),
+  ).toBeVisible();
+  const firstVolumeFirstSection = sectionForId(catalog.volumes[0]!.sectionIds[0]!);
+  await expect(page.locator(".overview-node-card-link").first()).toHaveAttribute(
+    "href",
+    firstVolumeFirstSection.href,
+  );
+  await expect(page.locator(".overview-read-link").first()).toHaveAttribute(
+    "href",
+    firstVolumeFirstSection.href,
+  );
+  await expect(page.locator(".overview-read-link").first()).toContainText(
+    "Read This Manuscript",
+  );
+  await expect(
+    page.locator(".overview-read-link-indicator").first(),
+  ).toHaveText("››");
+  const cardPadding = await page
+    .locator(".overview-node-heading")
+    .first()
+    .evaluate((heading) => parseFloat(getComputedStyle(heading).paddingLeft));
+  expect(cardPadding).toBeGreaterThanOrEqual(23);
+  const overviewNodeAlignment = await page.evaluate(() => {
+    const nodes = Array.from(document.querySelectorAll(".overview-node"));
+
+    return nodes.map((node) => {
+      const heading = node.querySelector(".overview-node-heading strong");
+      const copy = node.querySelector(".overview-node-content p");
+      const headingLeft = heading?.getBoundingClientRect().left ?? 0;
+      const copyLeft = copy?.getBoundingClientRect().left ?? 0;
+
+      return Math.abs(headingLeft - copyLeft);
+    });
+  });
+  expect(Math.max(...overviewNodeAlignment)).toBeLessThanOrEqual(1);
+  if (testInfo.project.name === "desktop") {
+    const firstCard = page.locator(".overview-node").first();
+    const firstReadLink = page.locator(".overview-read-link").first();
+    await firstCard.hover();
+    await page.waitForTimeout(240);
+    const hoverScale = await firstCard.evaluate((card) => {
+      const transform = getComputedStyle(card).transform;
+      if (transform === "none") return 1;
+      const matrix = new DOMMatrixReadOnly(transform);
+      return matrix.a;
+    });
+    expect(hoverScale).toBeGreaterThan(1.01);
+
+    await expect
+      .poll(() =>
+        firstReadLink.evaluate(
+          (link) => getComputedStyle(link).textDecorationColor,
+        ),
+      )
+      .toBe(await firstReadLink.evaluate((link) => getComputedStyle(link).color));
+
+    await firstReadLink.hover();
+    const readLinkStyle = await firstReadLink.evaluate((link) => {
+      const indicator = link.querySelector<HTMLElement>(
+        ".overview-read-link-indicator",
+      );
+      const style = getComputedStyle(link);
+      return {
+        color: style.color,
+        columnGap: style.columnGap,
+        decorationColor: style.textDecorationColor,
+        decorationLine: style.textDecorationLine,
+        indicatorColor: indicator ? getComputedStyle(indicator).color : "",
+      };
+    });
+    expect(readLinkStyle.decorationLine).toContain("underline");
+    expect(readLinkStyle.decorationColor).toBe(readLinkStyle.color);
+    expect(readLinkStyle.indicatorColor).toBe(readLinkStyle.color);
+    expect(Number.parseFloat(readLinkStyle.columnGap)).toBeGreaterThan(4);
+  }
   await expect(page.getByRole("button", { name: "Listen" })).toBeVisible();
   await expect(
-    page.getByRole("link", { name: /The seed/ }).first(),
+    page.getByRole("link", { name: /^Seed$/ }).first(),
   ).toBeVisible();
   await page
-    .getByRole("link", { name: /The seed/ })
+    .getByRole("link", { name: /^Seed$/ })
     .first()
     .click();
   await expect(page).toHaveURL(/\/manuscripts\/humanitys-most-viable-future\//);
+});
+
+test("overview manuscript cards target the earliest unread section", async ({
+  page,
+}) => {
+  const firstVolume = catalog.volumes[0]!;
+  const readSection = sectionForId(firstVolume.sectionIds[0]!);
+  const earliestUnreadSection = sectionForId(firstVolume.sectionIds[1]!);
+  const laterUnreadSection = sectionForId(firstVolume.sectionIds[2]!);
+
+  await page.addInitScript(
+    ({ key, laterUnread, read }) => {
+      window.localStorage.setItem(
+        key,
+        JSON.stringify({
+          sections: {
+            [read.sectionId]: {
+              sectionId: read.sectionId,
+              contentHash: read.contentHash,
+              readAt: 1_000,
+              percent: 100,
+            },
+            [laterUnread.sectionId]: {
+              sectionId: laterUnread.sectionId,
+              contentHash: laterUnread.contentHash,
+              readAt: 0,
+              percent: 42,
+              firstOpenedAt: 1_500,
+              lastOpenedAt: 2_000,
+            },
+          },
+        }),
+      );
+    },
+    {
+      key: readerProgressStorageKey,
+      laterUnread: {
+        contentHash: laterUnreadSection.contentHash,
+        sectionId: laterUnreadSection.sectionId,
+      },
+      read: {
+        contentHash: readSection.contentHash,
+        sectionId: readSection.sectionId,
+      },
+    },
+  );
+
+  await page.goto("/overview/");
+
+  const firstCard = page.locator(".overview-node").first();
+  await expect(firstCard.locator(".overview-node-card-link")).toHaveAttribute(
+    "href",
+    earliestUnreadSection.href,
+  );
+  await expect(firstCard.locator(".overview-read-link")).toHaveAttribute(
+    "href",
+    earliestUnreadSection.href,
+  );
+
+  await firstCard.click({ position: { x: 24, y: 24 } });
+  await expect(page).toHaveURL(earliestUnreadSection.href);
 });
 
 test("overview references show local read checkmarks", async ({ page }) => {

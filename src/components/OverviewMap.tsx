@@ -1,7 +1,25 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
 import { catalog, sectionById, toProgressSection } from "@/lib/manuscript-data";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
+import { OverviewReadTargetIsland } from "@/components/OverviewReadTargetIsland";
+
+function coverVolumeForNode(
+  node: (typeof catalog.overview.nodes)[number],
+  index: number,
+) {
+  for (const reference of node.references) {
+    const section = sectionById(reference.sectionId);
+    const volume = section
+      ? catalog.volumes.find(
+          (candidate) => candidate.volumeId === section.volumeId,
+        )
+      : undefined;
+    if (volume) return volume;
+  }
+
+  return catalog.volumes[index];
+}
 
 export function OverviewMap() {
   return (
@@ -11,37 +29,73 @@ export function OverviewMap() {
           const section = sectionById(reference.sectionId);
           return section ? [toProgressSection(section)] : [];
         });
+        const coverVolume = coverVolumeForNode(node, index);
+        const numberLabel = coverVolume?.numberLabel ?? String(index + 1);
+        const volumeSections =
+          coverVolume?.sectionIds.flatMap((sectionId) => {
+            const section = sectionById(sectionId);
+            return section
+              ? [
+                  {
+                    sectionId: section.sectionId,
+                    contentHash: section.contentHash,
+                    href: section.href,
+                  },
+                ]
+              : [];
+          }) ?? [];
+        const fallbackReadHref =
+          volumeSections[0]?.href ?? coverVolume?.href ?? nodeSections[0]?.href ?? "/";
+        const readLabel = coverVolume?.title ?? node.title;
 
         return (
-          <details key={node.id} className="overview-node" open={index < 3}>
-            <summary>
-              <span className="overview-node-number">
-                {String(index + 1).padStart(2, "0")}
-              </span>
+          <article key={node.id} className="overview-node">
+            <div className="overview-node-heading">
+              <span className="overview-node-number">{numberLabel}</span>
               <strong>{node.title}</strong>
-              <span className="overview-node-actions">
+              <span className="overview-node-status">
                 <ReadCheckmarkIsland sections={nodeSections} />
-                <ChevronRight
-                  aria-hidden="true"
-                  className="overview-chevron"
-                  size={18}
-                />
               </span>
-            </summary>
-            <p>{node.summary}</p>
-            <div className="reference-grid">
-              {node.references.map((reference) => {
-                const section = sectionById(reference.sectionId);
-                if (!section) return null;
-                return (
-                  <Link key={reference.sectionId} href={section.href}>
-                    <span>{reference.label ?? section.title}</span>
-                    <ReadCheckmarkIsland sections={[toProgressSection(section)]} />
-                  </Link>
-                );
-              })}
             </div>
-          </details>
+            <div className="overview-node-body">
+              <span
+                className="overview-node-cover overview-node-cover-open"
+                aria-hidden="true"
+              >
+                {coverVolume ? (
+                  <Image
+                    src={coverVolume.coverImage}
+                    alt=""
+                    width={192}
+                    height={288}
+                    sizes="(max-width: 720px) 4.5rem, 8rem"
+                  />
+                ) : null}
+              </span>
+              <div className="overview-node-content">
+                <p>{node.summary}</p>
+                <OverviewReadTargetIsland
+                  fallbackHref={fallbackReadHref}
+                  label={readLabel}
+                  sections={volumeSections}
+                />
+                <div className="reference-grid">
+                  {node.references.map((reference) => {
+                    const section = sectionById(reference.sectionId);
+                    if (!section) return null;
+                    return (
+                      <Link key={reference.sectionId} href={section.href}>
+                        <span>{reference.label ?? section.title}</span>
+                        <ReadCheckmarkIsland
+                          sections={[toProgressSection(section)]}
+                        />
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </article>
         );
       })}
     </section>
