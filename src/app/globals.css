@@ -3849,7 +3849,7 @@ input {
 
 .background-lab-option-swatch-ink-mist {
   background:
-    radial-gradient(circle at 24% 26%, rgb(var(--lab-blue-rgb) / 0.16), transparent 1.9rem),
+    radial-gradient(circle at 24% 26%, rgb(var(--lab-warm-white-rgb) / 0.34), transparent 1.9rem),
     radial-gradient(circle at 68% 38%, rgb(var(--lab-ink-rgb) / 0.09), transparent 2.2rem),
     var(--lab-fiber-noise),
     var(--lab-page-background);
@@ -3858,7 +3858,7 @@ input {
 .background-lab-option-swatch-weathered-patina {
   background:
     radial-gradient(ellipse at 20% 18%, rgb(var(--lab-sage-rgb) / 0.18), transparent 2.8rem),
-    radial-gradient(ellipse at 70% 30%, rgb(var(--lab-blue-rgb) / 0.12), transparent 2.6rem),
+    radial-gradient(ellipse at 70% 30%, rgb(var(--lab-warm-white-rgb) / 0.28), transparent 2.6rem),
     radial-gradient(ellipse at 50% 86%, rgb(var(--lab-bronze-deep-rgb) / 0.14), transparent 3rem),
     var(--lab-fiber-noise),
     var(--lab-page-background);
@@ -3895,66 +3895,6 @@ input {
 
 .background-lab-option-copy span {
   font-weight: 850;
-}
-
-.background-lab-option-swatch-vellum-fiber {
-  background:
-    repeating-linear-gradient(102deg, rgba(95, 66, 39, 0.08) 0 1px, transparent 1px 7px),
-    linear-gradient(145deg, #fff8ec, #e8d5b4);
-}
-
-.background-lab-option-swatch-river-silt {
-  background:
-    repeating-linear-gradient(168deg, rgba(74, 63, 49, 0.08) 0 2px, transparent 2px 13px),
-    linear-gradient(158deg, #f9f1df, #d9c9ae);
-}
-
-.background-lab-option-swatch-moss-grain {
-  background:
-    repeating-radial-gradient(ellipse at 45% 28%, rgba(52, 78, 61, 0.08) 0 1px, transparent 1px 9px),
-    linear-gradient(148deg, #f5f0df, #c8d1b7);
-}
-
-.background-lab-option-swatch-ember-paper {
-  background:
-    repeating-linear-gradient(126deg, rgba(111, 56, 39, 0.08) 0 1px, transparent 1px 9px),
-    linear-gradient(142deg, #fff1df, #d9b18e);
-}
-
-.background-lab-option-swatch-fog-bank {
-  background:
-    repeating-linear-gradient(34deg, rgba(82, 86, 86, 0.07) 0 1px, transparent 1px 10px),
-    linear-gradient(150deg, #fffdf6, #ded8c8);
-}
-
-.background-lab-option-swatch-tide-wash {
-  background:
-    repeating-linear-gradient(9deg, rgba(45, 80, 91, 0.08) 0 1px, transparent 1px 11px),
-    linear-gradient(150deg, #f5f3e9, #bfced0);
-}
-
-.background-lab-option-swatch-lichen-map {
-  background:
-    repeating-radial-gradient(ellipse at 35% 32%, rgba(85, 90, 47, 0.1) 0 1px, transparent 1px 8px),
-    linear-gradient(145deg, #f6efd6, #c7c99b);
-}
-
-.background-lab-option-swatch-graphite-mist {
-  background:
-    repeating-linear-gradient(116deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 9px),
-    linear-gradient(152deg, #262724, #111211);
-}
-
-.background-lab-option-swatch-copper-patina {
-  background:
-    repeating-linear-gradient(128deg, rgba(43, 82, 76, 0.08) 0 1px, transparent 1px 8px),
-    linear-gradient(145deg, #f4efdc, #9fbdb4);
-}
-
-.background-lab-option-swatch-night-vellum {
-  background:
-    repeating-linear-gradient(108deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 8px),
-    linear-gradient(150deg, #171512, #070808);
 }
 
 .background-lab-preview {
@@ -4144,17 +4084,17 @@ input {
   --lab-bronze-rgb: 164 123 63;
   --lab-bronze-deep-rgb: 119 84 42;
   --lab-sage-rgb: 96 121 109;
-  --lab-blue-rgb: 36 73 96;
+  --lab-warm-white-rgb: 255 251 241;
   --lab-ink-rgb: 19 32 42;
   --lab-fiber-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.74' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
   --lab-page-background:
     radial-gradient(ellipse at 18% 14%, rgb(var(--lab-bronze-rgb) / 0.13), transparent 34rem),
-    radial-gradient(ellipse at 84% 10%, rgb(var(--lab-sage-rgb) / 0.12), transparent 36rem),
+    radial-gradient(ellipse at 84% 10%, rgb(var(--lab-warm-white-rgb) / 0.34), transparent 36rem),
     linear-gradient(180deg, var(--paper-soft), var(--paper) 48%, #eadbbd);
   --lab-texture-overlay:
     radial-gradient(ellipse at 20% 22%, rgb(var(--lab-bronze-rgb) / 0.12), transparent 22rem),
     radial-gradient(ellipse at 78% 28%, rgb(var(--lab-sage-rgb) / 0.1), transparent 26rem),
-    radial-gradient(ellipse at 44% 86%, rgb(var(--lab-blue-rgb) / 0.08), transparent 30rem),
+    radial-gradient(ellipse at 44% 86%, rgb(var(--lab-bronze-rgb) / 0.07), transparent 30rem),
     var(--lab-fiber-noise);
 
   background: var(--lab-page-background);
@@ -4191,7 +4131,7 @@ input {
   --lab-texture-overlay:
     radial-gradient(ellipse at 16% 18%, rgb(var(--lab-paper-soft-rgb) / 0.42), transparent 18rem),
     radial-gradient(ellipse at 58% 36%, rgb(var(--lab-bronze-rgb) / 0.12), transparent 30rem),
-    radial-gradient(ellipse at 86% 62%, rgb(var(--lab-blue-rgb) / 0.08), transparent 24rem),
+    radial-gradient(ellipse at 86% 62%, rgb(var(--lab-warm-white-rgb) / 0.26), transparent 24rem),
     var(--lab-fiber-noise);
 }
 
@@ -4206,7 +4146,7 @@ input {
 .background-lab-marbled-vellum {
   --lab-texture-overlay:
     conic-gradient(from 38deg at 28% 30%, rgb(var(--lab-bronze-rgb) / 0.12), transparent 16%, rgb(var(--lab-paper-soft-rgb) / 0.28), transparent 34%, rgb(var(--lab-sage-rgb) / 0.1), transparent 62%),
-    conic-gradient(from 222deg at 72% 64%, rgb(var(--lab-blue-rgb) / 0.08), transparent 18%, rgb(var(--lab-bronze-deep-rgb) / 0.1), transparent 58%),
+    conic-gradient(from 222deg at 72% 64%, rgb(var(--lab-warm-white-rgb) / 0.24), transparent 18%, rgb(var(--lab-bronze-deep-rgb) / 0.1), transparent 58%),
     var(--lab-fiber-noise);
 }
 
@@ -4220,7 +4160,7 @@ input {
 
 .background-lab-ink-mist {
   --lab-texture-overlay:
-    radial-gradient(circle at 24% 26%, rgb(var(--lab-blue-rgb) / 0.11), transparent 18rem),
+    radial-gradient(circle at 24% 26%, rgb(var(--lab-warm-white-rgb) / 0.22), transparent 18rem),
     radial-gradient(circle at 68% 38%, rgb(var(--lab-ink-rgb) / 0.055), transparent 22rem),
     radial-gradient(ellipse at 48% 84%, rgb(var(--lab-bronze-rgb) / 0.09), transparent 28rem),
     var(--lab-fiber-noise);
@@ -4229,7 +4169,7 @@ input {
 .background-lab-weathered-patina {
   --lab-texture-overlay:
     radial-gradient(ellipse at 20% 18%, rgb(var(--lab-sage-rgb) / 0.14), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgb(var(--lab-blue-rgb) / 0.09), transparent 26rem),
+    radial-gradient(ellipse at 70% 30%, rgb(var(--lab-warm-white-rgb) / 0.2), transparent 26rem),
     radial-gradient(ellipse at 50% 86%, rgb(var(--lab-bronze-deep-rgb) / 0.11), transparent 30rem),
     var(--lab-fiber-noise);
 }
@@ -4246,7 +4186,7 @@ input {
   --lab-texture-overlay:
     repeating-radial-gradient(ellipse at 42% 48%, rgb(var(--lab-bronze-deep-rgb) / 0.045) 0 1px, transparent 1px 18px),
     radial-gradient(ellipse at 18% 20%, rgb(var(--lab-sage-rgb) / 0.12), transparent 24rem),
-    radial-gradient(ellipse at 82% 76%, rgb(var(--lab-blue-rgb) / 0.08), transparent 28rem),
+    radial-gradient(ellipse at 82% 76%, rgb(var(--lab-bronze-rgb) / 0.08), transparent 28rem),
     var(--lab-fiber-noise);
 }
 
@@ -4364,7 +4304,7 @@ input {
 
 .background-lab-page .background-lab-option-swatch-ink-mist {
   background:
-    radial-gradient(circle at 24% 26%, rgb(var(--lab-blue-rgb) / 0.16), transparent 1.9rem),
+    radial-gradient(circle at 24% 26%, rgb(var(--lab-warm-white-rgb) / 0.34), transparent 1.9rem),
     radial-gradient(circle at 68% 38%, rgb(var(--lab-ink-rgb) / 0.09), transparent 2.2rem),
     var(--lab-fiber-noise),
     var(--lab-page-background);
@@ -4373,7 +4313,7 @@ input {
 .background-lab-page .background-lab-option-swatch-weathered-patina {
   background:
     radial-gradient(ellipse at 20% 18%, rgb(var(--lab-sage-rgb) / 0.18), transparent 2.8rem),
-    radial-gradient(ellipse at 70% 30%, rgb(var(--lab-blue-rgb) / 0.12), transparent 2.6rem),
+    radial-gradient(ellipse at 70% 30%, rgb(var(--lab-warm-white-rgb) / 0.28), transparent 2.6rem),
     radial-gradient(ellipse at 50% 86%, rgb(var(--lab-bronze-deep-rgb) / 0.14), transparent 3rem),
     var(--lab-fiber-noise),
     var(--lab-page-background);
