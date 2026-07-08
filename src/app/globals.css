@@ -3418,7 +3418,7 @@ input {
 .progress-heatmap {
   --progress-heatmap-dot-size: 0.72rem;
   display: grid;
-  gap: 1.35rem;
+  gap: 1.7rem;
   min-width: 0;
 }
 
@@ -3462,7 +3462,7 @@ input {
   gap: 0.72rem;
   min-width: 0;
   border-top: 1px solid rgb(var(--heatmap-rgb) / 0.36);
-  padding-top: 0.95rem;
+  padding-top: 1.2rem;
 }
 
 .progress-heatmap-heading {
