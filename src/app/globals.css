@@ -2567,7 +2567,7 @@ input {
   justify-items: start;
   gap: 0.3rem;
   background: var(--card-background);
-  padding: 1rem;
+  padding: 1.2rem 1.2rem 1.2rem clamp(1.45rem, 2.5vw, 2rem);
   text-align: left;
 }
 
@@ -2590,6 +2590,14 @@ input {
 .chapter-card small {
   color: var(--ink-muted);
   font-size: 0.88rem;
+}
+
+.stats-band .stats-band-duration-unit {
+  font-size: 0.72em;
+}
+
+.stats-band .stats-band-duration-value {
+  font-size: inherit;
 }
 
 .stats-band + .overview-map {

@@ -11,6 +11,10 @@ export const metadata: Metadata = {
 };
 
 export default function OverviewPage() {
+  const fullReadDuration = formatReadingDurationForWords(catalog.stats.wordCount);
+  const [fullReadValue, ...fullReadUnitParts] = fullReadDuration.split(" ");
+  const fullReadUnit = fullReadUnitParts.join(" ");
+
   return (
     <div className="page-frame reader-layout">
       <article className="reader-main">
@@ -33,7 +37,10 @@ export default function OverviewPage() {
           </div>
           <div className="stats-band-item stats-band-duration">
             <strong>
-              {formatReadingDurationForWords(catalog.stats.wordCount)}
+              <span className="stats-band-duration-value">
+                {fullReadValue}
+              </span>{" "}
+              <span className="stats-band-duration-unit">{fullReadUnit}</span>
             </strong>
             <span>full read</span>
           </div>

@@ -292,16 +292,19 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
   ).toBeVisible();
   const statLayout = await overviewStats.evaluate((stats) => {
     const items = Array.from(stats.querySelectorAll<HTMLElement>("div"));
-    const duration = stats.querySelector<HTMLElement>(
-      ".stats-band-duration strong",
+    const durationValue = stats.querySelector<HTMLElement>(
+      ".stats-band-duration-value",
     );
-    let durationLineCount = 0;
+    const durationUnit = stats.querySelector<HTMLElement>(
+      ".stats-band-duration-unit",
+    );
+    let durationSharesLine = false;
 
-    if (duration) {
-      const range = document.createRange();
-      range.selectNodeContents(duration);
-      durationLineCount = range.getClientRects().length;
-      range.detach();
+    if (durationValue && durationUnit) {
+      const valueRect = durationValue.getBoundingClientRect();
+      const unitRect = durationUnit.getBoundingClientRect();
+      durationSharesLine =
+        valueRect.top < unitRect.bottom && unitRect.top < valueRect.bottom;
     }
 
     return {
@@ -316,11 +319,21 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
           ) < 1
         );
       }),
-      durationLineCount,
+      durationSharesLine,
+      durationUnitIsSmaller:
+        durationValue && durationUnit
+          ? parseFloat(getComputedStyle(durationUnit).fontSize) <
+            parseFloat(getComputedStyle(durationValue).fontSize)
+          : false,
+      minLeftPadding: Math.min(
+        ...items.map((item) => parseFloat(getComputedStyle(item).paddingLeft)),
+      ),
     };
   });
   expect(statLayout.aligned).toBe(true);
-  expect(statLayout.durationLineCount).toBe(1);
+  expect(statLayout.durationSharesLine).toBe(true);
+  expect(statLayout.durationUnitIsSmaller).toBe(true);
+  expect(statLayout.minLeftPadding).toBeGreaterThanOrEqual(23);
   await expect(page.locator(".overview-node")).toHaveCount(
     catalog.overview.nodes.length,
   );
