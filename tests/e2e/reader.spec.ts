@@ -2208,6 +2208,13 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
     const tooltipArrow = document.querySelector(".progress-heatmap-tooltip-arrow");
     const tooltipContent = tooltip?.querySelector(".progress-heatmap-tooltip-content");
     const tooltipReadTag = tooltip?.querySelector(".progress-heatmap-tooltip-read-tag");
+    const tooltipLink = tooltip?.querySelector(".progress-heatmap-tooltip-links a");
+    const tooltipLinkIndicator = tooltipLink?.querySelector(
+      ".progress-heatmap-tooltip-link-indicator",
+    );
+    const tooltipLinkTitle = tooltipLink?.querySelector(
+      ".progress-heatmap-tooltip-link-title",
+    );
     const volume = document.querySelector(".progress-heatmap-volume");
     const volumeReadTag = volume?.querySelector(".progress-heatmap-volume-read-tag");
     const box = cell?.getBoundingClientRect();
@@ -2215,6 +2222,17 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
     const tooltipContentBox = tooltipContent?.getBoundingClientRect();
     const tooltipReadTagBox = tooltipReadTag?.getBoundingClientRect();
     const tooltipArrowBox = tooltipArrow?.getBoundingClientRect();
+    const tooltipStyle = tooltip ? window.getComputedStyle(tooltip) : null;
+    const tooltipLinkStyle = tooltipLinkTitle
+      ? window.getComputedStyle(tooltipLinkTitle)
+      : null;
+    const tooltipArrowOutside =
+      tooltipBox && tooltipArrowBox
+        ? tooltipArrowBox.bottom > tooltipBox.bottom + 2 ||
+          tooltipArrowBox.top < tooltipBox.top - 2 ||
+          tooltipArrowBox.right > tooltipBox.right + 2 ||
+          tooltipArrowBox.left < tooltipBox.left - 2
+        : false;
     const volumeBox = volume?.getBoundingClientRect();
     const volumeReadTagBox = volumeReadTag?.getBoundingClientRect();
     const cellStyle = cell ? window.getComputedStyle(cell) : null;
@@ -2230,6 +2248,13 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
       tooltipBottom: tooltipBox?.bottom ?? 0,
       tooltipArrowWidth: tooltipArrowBox?.width ?? 0,
       tooltipArrowHeight: tooltipArrowBox?.height ?? 0,
+      tooltipArrowOutside,
+      tooltipOverflowX: tooltipStyle?.overflowX ?? "",
+      tooltipOverflowY: tooltipStyle?.overflowY ?? "",
+      tooltipLinkFontWeight: Number.parseFloat(
+        tooltipLinkStyle?.fontWeight ?? "0",
+      ),
+      tooltipLinkIndicator: tooltipLinkIndicator?.textContent?.trim() ?? "",
       tooltipReadTagRightGap:
         tooltipContentBox && tooltipReadTagBox
           ? tooltipContentBox.right - tooltipReadTagBox.right
@@ -2257,6 +2282,11 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
   expect(mapMetrics.tooltipBottom).toBeLessThanOrEqual(mapMetrics.viewportHeight);
   expect(mapMetrics.tooltipArrowWidth).toBeGreaterThan(0);
   expect(mapMetrics.tooltipArrowHeight).toBeGreaterThan(0);
+  expect(mapMetrics.tooltipArrowOutside).toBe(true);
+  expect(mapMetrics.tooltipOverflowX).toBe("visible");
+  expect(mapMetrics.tooltipOverflowY).toBe("visible");
+  expect(mapMetrics.tooltipLinkFontWeight).toBeLessThanOrEqual(600);
+  expect(mapMetrics.tooltipLinkIndicator).toBe("››");
   expect(mapMetrics.tooltipReadTagRightGap).toBeLessThanOrEqual(1);
   expect(mapMetrics.tooltipReadTagTopGap).toBeLessThanOrEqual(2);
   expect(mapMetrics.volumeReadTagRightGap).toBeLessThanOrEqual(2);

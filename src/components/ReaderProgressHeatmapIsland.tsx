@@ -238,7 +238,15 @@ function ReaderProgressHeatmapCell({
               <div className="progress-heatmap-tooltip-links">
                 {cellSections.map((section) => (
                   <a key={section.sectionId} href={section.href}>
-                    {section.title}
+                    <span
+                      className="progress-heatmap-tooltip-link-indicator"
+                      aria-hidden="true"
+                    >
+                      ››
+                    </span>
+                    <span className="progress-heatmap-tooltip-link-title">
+                      {section.title}
+                    </span>
                   </a>
                 ))}
               </div>
