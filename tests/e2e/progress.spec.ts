@@ -472,14 +472,15 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await listenButton.click();
   const audioPanel = page.getByLabel("Audiobook controls");
   await expect(audioPanel).toBeVisible();
-  const playButton = page.getByRole("button", { name: "Play audiobook" });
-  await expect(playButton).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Play audiobook" }),
+  ).toHaveCount(0);
   await expect(page.getByRole("combobox", { name: "Voice" })).toBeVisible();
+  await expect(audioPanel.getByText("Voice", { exact: true })).toBeVisible();
   await expect(audioPanel.getByText("Speed", { exact: true })).toBeVisible();
-  await playButton.click();
 
   const activeListenButton = page.getByRole("button", {
-    name: "Audiobook playing, open controls",
+    name: "Pause audiobook",
   });
   await expect(activeListenButton).toBeVisible();
   const activeListenButtonWidth = await activeListenButton.evaluate(
@@ -494,7 +495,8 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await page.keyboard.press("Escape");
   await expect(audioPanel).toHaveCount(0);
   await activeListenButton.click();
-  await expect(page.getByLabel("Audiobook controls")).toBeVisible();
+  await expect(page.getByRole("button", { name: /Listen/ })).toBeVisible();
+  await expect(page.getByLabel("Audiobook controls")).toHaveCount(0);
   const footer = page.getByRole("contentinfo", { name: "Site information" });
   await expect(footer).toBeVisible();
   await expect(

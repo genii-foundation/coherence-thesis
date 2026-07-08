@@ -706,7 +706,8 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   const audioMenu = page.getByLabel("Audiobook controls");
   await expectToolbarTriggerActive(page, ".audio-menu-button");
   await expect(audioMenu).toBeVisible();
-  await expectRestingControlBorder(page, ".audio-controls select");
+  await expectRestingControlBorder(page, ".voice-field select");
+  await expect(audioMenu.getByText("Voice", { exact: true })).toBeVisible();
   await expect(audioMenu.locator("optgroup[label='High quality voices']")).toHaveCount(1);
   await expect(audioMenu.locator("optgroup[label='System voices']")).toHaveCount(1);
   await expect(audioMenu.locator("option", { hasText: "Fish Audio Default" })).toBeDisabled();
@@ -716,6 +717,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(audioMenu.getByText("Audio clips pending").first()).toBeVisible();
   await expect(audioMenu.locator(".audio-offline-meter")).toHaveCount(0);
   await expectMenuFitsViewport(page, ".audio-popover");
+  await audioMenu.getByRole("button", { name: "Stop audiobook" }).click();
   await page.keyboard.press("Escape");
   await expect(audioMenu).toHaveCount(0);
 

@@ -3861,8 +3861,14 @@ input {
 }
 
 .audio-controls {
-  grid-template-columns: auto auto minmax(0, 1fr);
-  align-items: center;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+}
+
+.audio-control-fields {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
 }
 
 .round-button {
@@ -3897,12 +3903,12 @@ input {
   color: var(--ink);
 }
 
-.audio-controls select,
-.range-field input {
+.audio-field select,
+.audio-field input {
   width: 100%;
 }
 
-.audio-controls select {
+.audio-field select {
   min-height: 2.65rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -3916,22 +3922,25 @@ input {
     box-shadow 160ms ease;
 }
 
-.audio-controls select:hover,
-.audio-controls select:focus-visible {
+.audio-field select:hover,
+.audio-field select:focus-visible {
   border-color: rgba(119, 84, 42, 0.52);
   background: var(--field-background-hover);
   box-shadow: inset 0 0 0 1px rgba(119, 84, 42, 0.14);
   outline: none;
 }
 
-.range-field {
+.audio-field {
   display: grid;
   grid-template-columns: 3rem minmax(0, 1fr);
   align-items: center;
   gap: 0.65rem;
-  margin-top: 0.8rem;
   color: var(--ink-soft);
   font-size: 0.9rem;
+}
+
+.audio-field > span {
+  min-width: 0;
 }
 
 .range-field input {

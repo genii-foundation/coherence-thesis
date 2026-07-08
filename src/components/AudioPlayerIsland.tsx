@@ -15,8 +15,6 @@ import {
   AlertTriangle,
   CheckCircle2,
   Download,
-  Pause,
-  Play,
   Square,
 } from "lucide-react";
 import {
@@ -237,7 +235,7 @@ export function AudioPlayerIsland({
   overviewAudio: AudioQueueItem;
 }) {
   const pathname = usePathname();
-  const { open, setOpen, toggle, containerRef, triggerProps } =
+  const { open, setOpen, containerRef, triggerProps } =
     useToolbarMenu<HTMLDivElement>();
   // The queue is built from the slim per-section manifest (titles, ids — no body
   // text) so a page that never plays audio does not fetch the ~1.7MB text
@@ -553,7 +551,8 @@ export function AudioPlayerIsland({
       pause();
       return;
     }
-    toggle();
+    setOpen(true);
+    void speak();
   }
 
   if (!supported || queue.length === 0) return null;
@@ -584,60 +583,57 @@ export function AudioPlayerIsland({
             <strong>{active.title}</strong>
           </div>
           <div className="audio-controls">
-            <button
-              type="button"
-              className="round-button"
-              onClick={() => (playing ? pause() : speak())}
-              aria-label={playing ? "Pause audiobook" : "Play audiobook"}
-            >
-              {playing ? <Pause aria-hidden="true" size={20} /> : <Play aria-hidden="true" size={20} />}
-            </button>
             <button type="button" className="round-button subtle" onClick={stop} aria-label="Stop audiobook">
               <Square aria-hidden="true" size={18} />
             </button>
-            <select
-              aria-label="Voice"
-              value={preference.voiceURI ?? ""}
-              onChange={(event) =>
-                setPreference((current) => ({
-                  ...current,
-                  voiceURI: event.target.value || null,
-                }))
-              }
-            >
-              <optgroup label="High quality voices">
-                {voiceGroups.highQuality.map((voice) => (
-                  <option key={voice.id} value={voice.id} disabled={voice.disabled}>
-                    {voice.label}
-                  </option>
-                ))}
-              </optgroup>
-              <optgroup label="System voices">
-                <option value="">Automatic system voice</option>
-                {voiceGroups.system.map((voice) => (
-                  <option key={voice.id} value={voice.id}>
-                    {voice.label}
-                  </option>
-                ))}
-              </optgroup>
-            </select>
+            <div className="audio-control-fields">
+              <label className="audio-field voice-field">
+                <span>Voice</span>
+                <select
+                  aria-label="Voice"
+                  value={preference.voiceURI ?? ""}
+                  onChange={(event) =>
+                    setPreference((current) => ({
+                      ...current,
+                      voiceURI: event.target.value || null,
+                    }))
+                  }
+                >
+                  <optgroup label="High quality voices">
+                    {voiceGroups.highQuality.map((voice) => (
+                      <option key={voice.id} value={voice.id} disabled={voice.disabled}>
+                        {voice.label}
+                      </option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="System voices">
+                    <option value="">Automatic system voice</option>
+                    {voiceGroups.system.map((voice) => (
+                      <option key={voice.id} value={voice.id}>
+                        {voice.label}
+                      </option>
+                    ))}
+                  </optgroup>
+                </select>
+              </label>
+              <label className="audio-field range-field">
+                <span>Speed</span>
+                <input
+                  type="range"
+                  min="0.75"
+                  max="1.4"
+                  step="0.05"
+                  value={preference.rate}
+                  onChange={(event) =>
+                    setPreference((current) => ({
+                      ...current,
+                      rate: Number(event.target.value),
+                    }))
+                  }
+                />
+              </label>
+            </div>
           </div>
-          <label className="range-field">
-            Speed
-            <input
-              type="range"
-              min="0.75"
-              max="1.4"
-              step="0.05"
-              value={preference.rate}
-              onChange={(event) =>
-                setPreference((current) => ({
-                  ...current,
-                  rate: Number(event.target.value),
-                }))
-              }
-            />
-          </label>
           <div className="audio-offline" aria-label="Offline audiobook downloads">
             <div className="audio-offline-title">
               <span className="eyebrow">Offline playback</span>
