@@ -6,7 +6,7 @@ import { formatReadingDurationForWords } from "@/lib/reading-time";
 export const metadata: Metadata = {
   title: "Overview",
   description:
-    "A five-minute overview of The Coherence Thesis with direct links into the manuscript.",
+    "Five-Minute Overview of The Coherence Thesis with direct links into the manuscript.",
   alternates: { canonical: "/overview/" },
 };
 

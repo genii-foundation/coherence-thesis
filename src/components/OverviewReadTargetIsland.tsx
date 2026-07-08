@@ -15,23 +15,10 @@ function readTargetHref(
   fallbackHref: string,
   progress: ReturnType<typeof useReaderProgress>,
 ): string {
-  const unreadSections = sections.filter(
-    (section) => !isSectionRead(progress, section),
+  return (
+    sections.find((section) => !isSectionRead(progress, section))?.href ??
+    fallbackHref
   );
-  const recentUnread = unreadSections.reduce<{
-    href: string;
-    openedAt: number;
-  } | null>((best, section) => {
-    const state = progress.sections[section.sectionId];
-    const openedAt = Math.max(
-      state?.lastOpenedAt ?? 0,
-      state?.firstOpenedAt ?? 0,
-    );
-    if (openedAt <= 0 || (best && best.openedAt >= openedAt)) return best;
-    return { href: section.href, openedAt };
-  }, null);
-
-  return recentUnread?.href ?? unreadSections[0]?.href ?? fallbackHref;
 }
 
 export function OverviewReadTargetIsland({

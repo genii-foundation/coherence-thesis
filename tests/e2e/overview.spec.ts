@@ -257,7 +257,7 @@ test("overview links into canonical manuscript sections", async ({
     page.locator(".page-heading .eyebrow", { hasText: "Five minute map" }),
   ).toHaveCount(0);
   await expect(
-    page.getByText("a five-minute overview of the nine published manuscripts."),
+    page.getByText("Five-Minute Overview of the nine published manuscripts."),
   ).toBeVisible();
   const overviewLayout = await page.evaluate(() => {
     const heading = document
@@ -335,6 +335,13 @@ test("overview links into canonical manuscript sections", async ({
           ? parseFloat(getComputedStyle(durationUnit).fontSize) <
             parseFloat(getComputedStyle(durationValue).fontSize)
           : false,
+      durationValueColor: durationValue
+        ? getComputedStyle(durationValue).color
+        : "",
+      firstStatColor:
+        items[0]?.querySelector("strong")
+          ? getComputedStyle(items[0]!.querySelector("strong")!).color
+          : "",
       minLeftPadding: Math.min(
         ...items.map((item) => parseFloat(getComputedStyle(item).paddingLeft)),
       ),
@@ -343,6 +350,7 @@ test("overview links into canonical manuscript sections", async ({
   expect(statLayout.aligned).toBe(true);
   expect(statLayout.durationSharesLine).toBe(true);
   expect(statLayout.durationUnitIsSmaller).toBe(true);
+  expect(statLayout.durationValueColor).toBe(statLayout.firstStatColor);
   expect(statLayout.minLeftPadding).toBeGreaterThanOrEqual(23);
   await expect(page.locator(".overview-node")).toHaveCount(
     catalog.overview.nodes.length,
@@ -408,14 +416,32 @@ test("overview links into canonical manuscript sections", async ({
     });
     expect(hoverScale).toBeGreaterThan(1.01);
 
-    await firstReadLink.hover();
     await expect
       .poll(() =>
         firstReadLink.evaluate(
-          (link) => getComputedStyle(link).textDecorationLine,
+          (link) => getComputedStyle(link).textDecorationColor,
         ),
       )
-      .toContain("underline");
+      .toBe(await firstReadLink.evaluate((link) => getComputedStyle(link).color));
+
+    await firstReadLink.hover();
+    const readLinkStyle = await firstReadLink.evaluate((link) => {
+      const indicator = link.querySelector<HTMLElement>(
+        ".overview-read-link-indicator",
+      );
+      const style = getComputedStyle(link);
+      return {
+        color: style.color,
+        columnGap: style.columnGap,
+        decorationColor: style.textDecorationColor,
+        decorationLine: style.textDecorationLine,
+        indicatorColor: indicator ? getComputedStyle(indicator).color : "",
+      };
+    });
+    expect(readLinkStyle.decorationLine).toContain("underline");
+    expect(readLinkStyle.decorationColor).toBe(readLinkStyle.color);
+    expect(readLinkStyle.indicatorColor).toBe(readLinkStyle.color);
+    expect(Number.parseFloat(readLinkStyle.columnGap)).toBeGreaterThan(4);
   }
   await expect(page.getByRole("button", { name: "Listen" })).toBeVisible();
   await expect(
@@ -428,15 +454,16 @@ test("overview links into canonical manuscript sections", async ({
   await expect(page).toHaveURL(/\/manuscripts\/humanitys-most-viable-future\//);
 });
 
-test("overview manuscript cards target the next unread section", async ({
+test("overview manuscript cards target the earliest unread section", async ({
   page,
 }) => {
   const firstVolume = catalog.volumes[0]!;
   const readSection = sectionForId(firstVolume.sectionIds[0]!);
-  const mostRecentUnreadSection = sectionForId(firstVolume.sectionIds[2]!);
+  const earliestUnreadSection = sectionForId(firstVolume.sectionIds[1]!);
+  const laterUnreadSection = sectionForId(firstVolume.sectionIds[2]!);
 
   await page.addInitScript(
-    ({ key, mostRecentUnread, read }) => {
+    ({ key, laterUnread, read }) => {
       window.localStorage.setItem(
         key,
         JSON.stringify({
@@ -447,9 +474,9 @@ test("overview manuscript cards target the next unread section", async ({
               readAt: 1_000,
               percent: 100,
             },
-            [mostRecentUnread.sectionId]: {
-              sectionId: mostRecentUnread.sectionId,
-              contentHash: mostRecentUnread.contentHash,
+            [laterUnread.sectionId]: {
+              sectionId: laterUnread.sectionId,
+              contentHash: laterUnread.contentHash,
               readAt: 0,
               percent: 42,
               firstOpenedAt: 1_500,
@@ -461,9 +488,9 @@ test("overview manuscript cards target the next unread section", async ({
     },
     {
       key: readerProgressStorageKey,
-      mostRecentUnread: {
-        contentHash: mostRecentUnreadSection.contentHash,
-        sectionId: mostRecentUnreadSection.sectionId,
+      laterUnread: {
+        contentHash: laterUnreadSection.contentHash,
+        sectionId: laterUnreadSection.sectionId,
       },
       read: {
         contentHash: readSection.contentHash,
@@ -477,15 +504,15 @@ test("overview manuscript cards target the next unread section", async ({
   const firstCard = page.locator(".overview-node").first();
   await expect(firstCard.locator(".overview-node-card-link")).toHaveAttribute(
     "href",
-    mostRecentUnreadSection.href,
+    earliestUnreadSection.href,
   );
   await expect(firstCard.locator(".overview-read-link")).toHaveAttribute(
     "href",
-    mostRecentUnreadSection.href,
+    earliestUnreadSection.href,
   );
 
-  await firstCard.locator(".overview-node-card-link").click();
-  await expect(page).toHaveURL(mostRecentUnreadSection.href);
+  await firstCard.click({ position: { x: 24, y: 24 } });
+  await expect(page).toHaveURL(earliestUnreadSection.href);
 });
 
 test("overview references show local read checkmarks", async ({ page }) => {

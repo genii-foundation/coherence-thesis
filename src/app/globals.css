@@ -2593,10 +2593,12 @@ input {
 }
 
 .stats-band .stats-band-duration-unit {
+  color: var(--ink);
   font-size: 0.72em;
 }
 
 .stats-band .stats-band-duration-value {
+  color: var(--ink);
   font-size: inherit;
 }
 
@@ -2759,7 +2761,7 @@ input {
   display: inline-flex;
   width: fit-content;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.38rem;
   color: var(--bronze-deep);
   font-family: var(--font-ui);
   font-size: 0.86rem;
@@ -2767,16 +2769,20 @@ input {
   letter-spacing: 0.08em;
   line-height: 1.2;
   pointer-events: auto;
-  text-decoration: none;
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 0.08em;
   text-transform: uppercase;
   text-underline-offset: 0.2em;
 }
 
 .overview-read-link:hover,
-.overview-read-link:focus-visible {
+.overview-read-link:focus-visible,
+.overview-node:hover .overview-read-link,
+.overview-node:focus-within .overview-read-link {
   color: var(--ink);
   outline: none;
-  text-decoration: underline;
+  text-decoration-color: currentColor;
 }
 
 .overview-read-link:focus-visible {
@@ -2784,7 +2790,7 @@ input {
 }
 
 .overview-read-link-indicator {
-  color: var(--sage);
+  color: inherit;
   font-weight: 900;
 }
 
