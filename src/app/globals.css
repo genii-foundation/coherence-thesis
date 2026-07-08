@@ -758,7 +758,7 @@ input {
 }
 
 .progress-cloud-fill {
-  fill: var(--progress-cloud-fill);
+  fill: none;
   stroke: transparent;
   stroke-linejoin: round;
   stroke-width: 2.2;
@@ -1192,7 +1192,7 @@ input {
 }
 
 .audio-playback-icon-shell {
-  fill: rgba(255, 252, 244, 0.92);
+  fill: none;
   stroke: currentColor;
   stroke-width: 1.45;
   stroke-linecap: round;
