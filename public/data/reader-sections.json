@@ -262,25 +262,6 @@
     ]
   },
   {
-    "sectionId": "v01-seed-sprout-stem-and-soil",
-    "title": "Seed, Sprout, Stem & Soil",
-    "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
-    "text": "The Living Architecture of an Argument",
-    "contentHash": "f886ee589a71f9ca",
-    "versionHash": "f886ee589a71f9ca",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v01-seed-sprout-stem-and-soil-f886ee589a71f9ca",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "3342d0678aceab23"
-      }
-    ]
-  },
-  {
     "sectionId": "v01-the-seed",
     "title": "The Seed",
     "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/",
@@ -501,25 +482,6 @@
         "anchor": "p-21",
         "order": 21,
         "contentHash": "43e84f7f51d375ec"
-      }
-    ]
-  },
-  {
-    "sectionId": "v01-the-sprout",
-    "title": "The Sprout",
-    "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-the-sprout/",
-    "text": "A ≈ Five–Eight Minute Orientation",
-    "contentHash": "b30c88247b76c469",
-    "versionHash": "b30c88247b76c469",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v01-the-sprout-b30c88247b76c469",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "0d343cf449cc7b00"
       }
     ]
   },
@@ -1028,25 +990,6 @@
     ]
   },
   {
-    "sectionId": "v01-the-stem",
-    "title": "The Stem",
-    "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-stem/v01-the-stem/",
-    "text": "A ≈ Ten–Fifteen Minute Orientation",
-    "contentHash": "979099d9c5da3f18",
-    "versionHash": "979099d9c5da3f18",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v01-the-stem-979099d9c5da3f18",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "f82a2b70da3c9361"
-      }
-    ]
-  },
-  {
     "sectionId": "v01-how-coherence-becomes-structure",
     "title": "How Coherence Becomes Structure",
     "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-stem/v01-how-coherence-becomes-structure/",
@@ -1314,25 +1257,6 @@
         "anchor": "p-3",
         "order": 3,
         "contentHash": "a81ef3786251856b"
-      }
-    ]
-  },
-  {
-    "sectionId": "v01-the-soil",
-    "title": "The Soil",
-    "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-soil/v01-the-soil/",
-    "text": "The Deepest Foundations",
-    "contentHash": "c41f52ee4b1300d9",
-    "versionHash": "c41f52ee4b1300d9",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v01-the-soil-c41f52ee4b1300d9",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "2be3b80639ac012e"
       }
     ]
   },
@@ -3317,25 +3241,6 @@
         "anchor": "p-6",
         "order": 6,
         "contentHash": "d352086e4a70ad7e"
-      }
-    ]
-  },
-  {
-    "sectionId": "v02-the-response",
-    "title": "The Response",
-    "href": "/manuscripts/wielding-intelligence/the-response/v02-the-response/",
-    "text": "The Possibility of Coherence",
-    "contentHash": "de765ebf1357cc14",
-    "versionHash": "de765ebf1357cc14",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v02-the-response-de765ebf1357cc14",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "edc3498e7059e444"
       }
     ]
   },

@@ -5,31 +5,18 @@ import { normalizePath } from "@/lib/routes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ToolbarBreadcrumbs } from "@/components/ToolbarBreadcrumbs";
-
-type ContextVolume = {
-  href: string;
-  numberLabel: string;
-  title: string;
-};
+import { brandIdentity, type BrandVolume } from "@/lib/brand-identity";
 
 export function MobilePageContextIsland({
   volumes,
 }: {
-  volumes: ContextVolume[];
+  volumes: BrandVolume[];
 }) {
   const pathname = usePathname();
   const currentPath = normalizePath(pathname);
   if (currentPath === "/") return null;
 
-  const activeVolume = volumes.find((volume) =>
-    currentPath.startsWith(normalizePath(volume.href)),
-  );
-  const kicker = activeVolume
-    ? "The Coherence Thesis"
-    : "Providence Collective";
-  const title = activeVolume
-    ? `Volume ${activeVolume.numberLabel} · ${activeVolume.title}`
-    : "The Coherence Thesis";
+  const { kicker, title } = brandIdentity(volumes, currentPath);
 
   return (
     <section className="mobile-page-context" aria-label="Page context">

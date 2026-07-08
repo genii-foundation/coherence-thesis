@@ -37,8 +37,15 @@ function statusLabel(status: ShareStatus): string | null {
 
 export function ToolbarShareIsland() {
   const pathname = usePathname();
-  const { open, setOpen, toggle, containerRef, triggerRef } =
-    useToolbarMenu<HTMLDivElement>();
+  const {
+    open,
+    rendered,
+    setOpen,
+    toggle,
+    containerRef,
+    triggerProps,
+    popoverProps,
+  } = useToolbarMenu<HTMLDivElement>();
   const [status, setStatus] = useState<ShareStatus>("idle");
   const [downloads, setDownloads] = useState<PdfDownloadManifest | null>(null);
   const [actionablePdfHrefs, setActionablePdfHrefs] = useState<Set<string>>(
@@ -149,18 +156,18 @@ export function ToolbarShareIsland() {
   return (
     <div className="share-menu" ref={containerRef}>
       <button
-        ref={triggerRef}
+        {...triggerProps}
         type="button"
         className="share-menu-button"
         aria-label="Share and downloads"
-        aria-expanded={open}
         aria-controls="reader-share-menu"
         onClick={toggle}
       >
         <Share2 aria-hidden="true" size={17} />
       </button>
-      {open && (
+      {rendered && (
         <section
+          {...popoverProps}
           id="reader-share-menu"
           className="reader-share share-popover"
           aria-label="Share and downloads"

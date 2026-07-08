@@ -28,15 +28,38 @@ describe("reader preferences", () => {
       parseReaderPreferences(
         JSON.stringify({
           fontSize: 115,
-          fontFamily: "charter",
+          fontFamily: "newsreader",
           theme: "black",
+          animations: "none",
         }),
       ),
     ).toEqual({
       fontSize: 115,
-      fontFamily: "charter",
+      fontFamily: "newsreader",
       theme: "black",
+      animations: "none",
     });
+  });
+
+  test("maps legacy font preferences to variable font choices", () => {
+    expect(
+      parseReaderPreferences(
+        JSON.stringify({
+          fontSize: 100,
+          fontFamily: "iowan",
+          theme: "textured",
+        }),
+      ).fontFamily,
+    ).toBe("literata");
+    expect(
+      parseReaderPreferences(
+        JSON.stringify({
+          fontSize: 100,
+          fontFamily: "georgia",
+          theme: "textured",
+        }),
+      ).fontFamily,
+    ).toBe("source-serif");
   });
 
   test("falls back field by field for malformed preferences", () => {
@@ -46,6 +69,7 @@ describe("reader preferences", () => {
           fontSize: 116,
           fontFamily: "papyrus",
           theme: "void",
+          animations: "sparkle",
         }),
       ),
     ).toEqual(defaultReaderPreferences);
@@ -60,9 +84,12 @@ describe("reader preferences", () => {
     expect(
       serializeReaderPreferences({
         fontSize: 90,
-        fontFamily: "georgia",
+        fontFamily: "source-serif",
         theme: "light",
+        animations: "balanced",
       }),
-    ).toBe('{"fontSize":90,"fontFamily":"georgia","theme":"light"}');
+    ).toBe(
+      '{"fontSize":90,"fontFamily":"source-serif","theme":"light","animations":"balanced"}',
+    );
   });
 });

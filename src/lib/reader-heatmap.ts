@@ -33,6 +33,7 @@ export type ReaderHeatmapVolume = {
   order: number;
   href: string;
   wordCount: number;
+  sectionCount: number;
   cellCount: number;
   cells: ReaderHeatmapCell[];
 };
@@ -204,9 +205,10 @@ export function buildReaderHeatmapModel(
 
   const volumes = catalog.volumes.map((volume) => {
     const cellCount = volumeCells.get(volume.volumeId) ?? 0;
+    const sections = sectionsForVolume(volume, catalog.sections);
     const cells = buildVolumeCells({
       volume,
-      sections: sectionsForVolume(volume, catalog.sections),
+      sections,
       cellCount,
       startIndex,
     });
@@ -218,6 +220,7 @@ export function buildReaderHeatmapModel(
       order: volume.order,
       href: volume.href,
       wordCount: volume.wordCount,
+      sectionCount: sections.length,
       cellCount: cells.length,
       cells,
     };

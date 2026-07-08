@@ -1,23 +1,23 @@
 {
   "title": "The Coherence Thesis",
-  "subtitle": "A five minute map across the nine published manuscripts.",
+  "subtitle": "Five-Minute Overview of the nine published manuscripts.",
   "readingMinutes": 5,
   "nodes": [
     {
       "id": "substrate",
       "title": "The substrate",
-      "summary": "The opening claim is that civilization rests on a substrate. An extractive substrate spends down what it depends on. A coherent substrate keeps physiology, relationship, intelligence, and institutions aligned enough to coordinate under pressure.",
+      "summary": "Civilization rests on a substrate. Extraction spends down the living ground it needs. Coherence keeps physiology, relationship, intelligence, and institutions aligned enough to act under pressure.",
       "references": [
         {
           "sectionId": "v01-orientation",
-          "label": "Volume I orientation"
+          "label": "Orientation"
         },
         {
           "sectionId": "v01-the-seed",
-          "label": "The seed"
+          "label": "Seed"
         },
         {
-          "sectionId": "v01-the-sprout",
+          "sectionId": "v01-why-this-is-happening-and-why-it-changes-everything",
           "label": "The sprout"
         },
         {
@@ -29,7 +29,7 @@
     {
       "id": "intelligence",
       "title": "Intelligence in relationship",
-      "summary": "The second volume reframes intelligence as relational rather than private. Humane technology must strengthen the conditions that let people think, trust, regulate, and coordinate together.",
+      "summary": "Intelligence is relational, not private property. Humane technology strengthens the conditions that let people think, trust, regulate, and coordinate together.",
       "references": [
         {
           "sectionId": "v02-what-the-first-volume-left-in-our-hands",
@@ -37,11 +37,11 @@
         },
         {
           "sectionId": "v02-toward-humane-technology",
-          "label": "Toward humane technology"
+          "label": "Humane technology"
         },
         {
           "sectionId": "v02-the-crisis-beneath-the-crises",
-          "label": "The crisis beneath the crises"
+          "label": "Crisis beneath the crises"
         },
         {
           "sectionId": "v02-relational-coherence",
@@ -52,11 +52,11 @@
     {
       "id": "providence",
       "title": "The coordination device",
-      "summary": "The Providence Imperative names the coordination problem directly. It asks how trust, care, wisdom, and action can become legible and portable without becoming coercion or surveillance.",
+      "summary": "Providence names the coordination problem without flinching. Trust, care, wisdom, and action must become legible and portable without becoming coercion or surveillance.",
       "references": [
         {
           "sectionId": "v03-the-central-wound",
-          "label": "The central wound"
+          "label": "Central wound"
         },
         {
           "sectionId": "v03-what-coherence-actually-means",
@@ -64,72 +64,72 @@
         },
         {
           "sectionId": "v03-the-architecture-of-providence",
-          "label": "Architecture of Providence"
+          "label": "Providence architecture"
         },
         {
           "sectionId": "v03-the-coherence-engine-and-the-reflective-mirror",
-          "label": "Coherence Engine"
+          "label": "Coherence engine"
         }
       ]
     },
     {
       "id": "building",
       "title": "The buildable architecture",
-      "summary": "Architecting Providence turns the design into construction requirements: sequence, funding, governance, technology, human practice, and the first fully embodied community.",
+      "summary": "The architecture becomes buildable here. Sequence, funding, governance, technology, practice, and place turn Providence from thesis into construction.",
       "references": [
         {
           "sectionId": "v04-what-it-means-to-begin",
-          "label": "What it means to begin"
+          "label": "Begin well"
         },
         {
           "sectionId": "v04-what-volume-iii-left-unbuilt",
-          "label": "What Volume III left unbuilt"
+          "label": "Unbuilt work"
         },
         {
           "sectionId": "v04-why-purposeful-exists-and-how-providence-begins",
-          "label": "How Providence begins"
+          "label": "Providence begins"
         },
         {
           "sectionId": "v04-the-cardinal-scale-seen-from-here",
-          "label": "The Cardinal Scale"
+          "label": "Cardinal Scale"
         }
       ]
     },
     {
       "id": "human",
       "title": "The human center",
-      "summary": "Purposeful brings the series back to the person. The future is not built by abstractions. It is built by people whose gifts are recognized, cultivated, connected, and made useful.",
+      "summary": "The series returns to the person. The future is built by people whose gifts are recognized, cultivated, connected, and made useful.",
       "references": [
         {
           "sectionId": "v05-on-returning-to-the-human",
-          "label": "Returning to the human"
+          "label": "Return to the human"
         },
         {
           "sectionId": "v05-the-greatest-untapped-resource-on-earth",
-          "label": "Untapped human potential"
+          "label": "Human potential"
         },
         {
           "sectionId": "v05-finding-your-people",
-          "label": "Finding your people"
+          "label": "Find your people"
         },
         {
           "sectionId": "v05-the-cardinal-scale",
-          "label": "The Cardinal Scale"
+          "label": "Cardinal Scale"
         }
       ]
     },
     {
       "id": "smallest-nest",
       "title": "The smallest nest",
-      "summary": "The sixth volume compresses the architecture into its smallest container: current, gift, pathway, seeing, people, loom, currency, right size, dragon, and nest.",
+      "summary": "The architecture contracts to its smallest working container. Current, gift, pathway, seeing, people, loom, currency, right size, dragon, and nest become one portable pattern.",
       "references": [
         {
           "sectionId": "v06-the-whole-briefly",
-          "label": "The whole, briefly"
+          "label": "Whole, briefly"
         },
         {
           "sectionId": "v06-the-current",
-          "label": "The current"
+          "label": "Current"
         },
         {
           "sectionId": "v06-your-people",
@@ -137,14 +137,14 @@
         },
         {
           "sectionId": "v06-the-dragon",
-          "label": "The dragon"
+          "label": "Dragon"
         }
       ]
     },
     {
       "id": "praxis",
       "title": "The praxis",
-      "summary": "Presencing Genius turns the argument into practice. Presence, presencing, the Seven Initiates, the Twelve Tenets, mentorship, curriculum, retreats, and holding become the inner technologies of coherent civilization.",
+      "summary": "Civilization has inner technologies. Presence, presencing, initiation, tenets, mentorship, curriculum, retreats, and holding train the human capacities that coherent worlds require.",
       "references": [
         {
           "sectionId": "v07-the-internal-technologies",
@@ -156,7 +156,7 @@
         },
         {
           "sectionId": "v07-the-seven-initiates",
-          "label": "The Seven Initiates"
+          "label": "Seven Initiates"
         },
         {
           "sectionId": "v07-the-year-of-initiations",
@@ -167,7 +167,7 @@
     {
       "id": "reckoning",
       "title": "The reckoning",
-      "summary": "A Misanthropic Artifice counts what the extractive order has already built and already damaged. It names the rival architecture so the opposite can be built deliberately.",
+      "summary": "The extractive order already has an architecture. This volume counts what it has built, names what it has damaged, and clears the ground for its opposite.",
       "references": [
         {
           "sectionId": "v08-prologue-two-scenes",
@@ -175,26 +175,26 @@
         },
         {
           "sectionId": "v08-2-the-accounting",
-          "label": "The accounting"
+          "label": "Accounting"
         },
         {
           "sectionId": "v08-11-the-inversion-the-same-tools-the-opposite-god",
-          "label": "The inversion"
+          "label": "Inversion"
         },
         {
           "sectionId": "v08-16-a-blessing-and-a-door",
-          "label": "A blessing and a door"
+          "label": "Blessing and door"
         }
       ]
     },
     {
       "id": "cardinal-scale",
       "title": "The first scale",
-      "summary": "The Cardinal Scale turns the whole series toward one buildable place. A Scale is one complete expression of the thesis: land, doors, membrane, currency, engine, container, and community.",
+      "summary": "The Cardinal Scale is where the thesis stops describing civilization and starts building one. A first community becomes proof of life for the whole architecture: land, doors, membrane, currency, engine, container, and people held in coherent relation.",
       "references": [
         {
           "sectionId": "v09-1-the-ninth-turn-where-the-eight-have-brought-us",
-          "label": "The ninth turn"
+          "label": "Ninth turn"
         },
         {
           "sectionId": "v09-2-what-a-scale-is",

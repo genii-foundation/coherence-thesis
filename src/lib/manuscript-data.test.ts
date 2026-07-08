@@ -58,30 +58,66 @@ describe("manuscript data", () => {
 
   it("resolves collapsed canonical section hrefs and old duplicate aliases", () => {
     const canonical =
-      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/";
+      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/";
     const oldDuplicate =
       "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/";
 
-    expect(sectionByHrefOrAlias(canonical)?.section.sectionId).toBe(
-      "v01-seed-sprout-stem-and-soil",
-    );
+    expect(sectionByHrefOrAlias(canonical)?.section.sectionId).toBe("v01-the-seed");
     expect(sectionByHrefOrAlias(oldDuplicate)?.alias?.targetHref).toBe(canonical);
+  });
+
+  it("resolves skipped part opener aliases to content sections", () => {
+    const opener =
+      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/";
+    const target =
+      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/";
+    const keys = new Set(
+      manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
+    );
+
+    expect(sectionByHrefOrAlias(opener)?.section.sectionId).toBe("v01-the-seed");
+    expect(sectionByHrefOrAlias(opener)?.alias?.targetHref).toBe(target);
+    expect(
+      keys.has(
+        "humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil",
+      ),
+    ).toBe(true);
+  });
+
+  it("resolves skipped chapter opener aliases to content sections", () => {
+    const opener =
+      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-the-sprout/";
+    const target =
+      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-why-this-is-happening-and-why-it-changes-everything/";
+    const keys = new Set(
+      manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
+    );
+
+    expect(sectionByHrefOrAlias(opener)?.section.sectionId).toBe(
+      "v01-why-this-is-happening-and-why-it-changes-everything",
+    );
+    expect(sectionByHrefOrAlias(opener)?.alias?.targetHref).toBe(target);
+    expect(
+      keys.has(
+        "humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-the-sprout",
+      ),
+    ).toBe(true);
   });
 
   it("keeps duplicate part and chapter labels out of collapsed breadcrumbs", () => {
     const route = breadcrumbRoutes().find(
       (candidate) =>
         candidate.href ===
-        "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
+        "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/",
     );
 
     expect(route?.crumbs.map((crumb) => crumb.label)).toEqual([
       "Seed, Sprout, Stem & Soil",
-      "Seed, Sprout, Stem & Soil",
+      "The Seed",
     ]);
     expect(route?.crumbs.map((crumb) => crumb.href)).toEqual([
       "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/",
-      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
+      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/",
     ]);
   });
 
@@ -92,7 +128,7 @@ describe("manuscript data", () => {
 
     expect(
       keys.has(
-        "humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil",
+        "humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed",
       ),
     ).toBe(true);
     expect(
