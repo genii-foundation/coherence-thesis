@@ -7,7 +7,7 @@ test("hero lab presents five homepage hero variants", async ({ page }) => {
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "Five hero directions for The Coherence Thesis",
+      name: "Five merged hero directions for The Coherence Thesis",
     }),
   ).toBeVisible();
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
@@ -17,10 +17,16 @@ test("hero lab presents five homepage hero variants", async ({ page }) => {
 
   const variants = page.locator(".hero-lab-variant");
   await expect(variants).toHaveCount(5);
-  await expect(page.getByRole("link", { name: "Read more" })).toHaveCount(5);
+  await expect(page.getByRole("link", { name: "Begin Volume I" })).toHaveCount(
+    5,
+  );
+  await expect(
+    page.getByRole("link", { name: "Read the overview" }),
+  ).toHaveCount(5);
+  await expect(page.locator(".hero-lab-cover-visual img")).toHaveCount(5);
   await expect(
     page.getByRole("heading", {
-      name: "A living architecture for a civilization worth inheriting.",
+      name: "Power, but grown inside coherence.",
     }),
   ).toBeVisible();
   await expect(
@@ -30,14 +36,19 @@ test("hero lab presents five homepage hero variants", async ({ page }) => {
     page.getByText(`${catalog.stats.sectionCount.toLocaleString()} sections`),
   ).toBeVisible();
   await expect(
-    page.getByText("The future begins below politics."),
+    page.getByText("A build manual for the people carrying the future."),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: "Read more" }).nth(1),
-  ).toHaveAttribute("href", catalog.sections[0]!.href);
-  await expect(page.locator(".hero-lab-map-visual a")).toHaveCount(5);
-  await expect(page.locator(".hero-lab-library-visual a")).toHaveCount(5);
-  await expect(page.locator(".hero-lab-thesis-visual span")).toHaveCount(9);
+    page.getByText(
+      "There is a field forming around the work civilization forgot to name.",
+    ),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Begin Volume I" }).first(),
+  ).toHaveAttribute("href", catalog.volumes[0]!.href);
+  await expect(
+    page.getByRole("link", { name: "Read the overview" }).first(),
+  ).toHaveAttribute("href", "/overview/");
 
   const layout = await page.evaluate(() => {
     const documentWidth = document.documentElement.scrollWidth;
