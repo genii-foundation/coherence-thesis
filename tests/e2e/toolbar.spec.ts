@@ -839,8 +839,8 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectToolbarTriggerOpenWithoutActiveWash(page, ".audio-menu-button");
   await expect(audioMenu).toBeVisible();
   await expectRestingControlBorder(page, ".voice-field select");
-  await expect(audioMenu.getByText("Voice settings")).toBeVisible();
   await expect(audioMenu.getByText("Voice", { exact: true })).toBeVisible();
+  await expect(audioMenu.getByText("Speed", { exact: true })).toBeVisible();
   await expect(
     audioMenu.locator("optgroup[label='High quality voices']"),
   ).toHaveCount(1);
@@ -849,10 +849,10 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   ).toHaveCount(1);
   const voiceSelect = audioMenu.getByRole("combobox", { name: "Voice" });
   const speedSlider = audioMenu.getByRole("slider", { name: "Speed" });
-  const resetVoiceSettings = audioMenu.getByRole("button", {
-    name: "Reset voice settings",
-  });
-  await expect(resetVoiceSettings).toBeDisabled();
+  const resetVoice = audioMenu.getByRole("button", { name: "Reset voice" });
+  const resetSpeed = audioMenu.getByRole("button", { name: "Reset speed" });
+  await expect(resetVoice).toBeDisabled();
+  await expect(resetSpeed).toBeDisabled();
   const highQualityOption = audioMenu.locator("option", {
     hasText: "High Quality 1",
   });
@@ -863,7 +863,8 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(audioMenu.locator("option", { hasText: "Albert" })).toHaveCount(0);
   await expect(audioMenu.getByText("Offline playback")).toBeVisible();
   await voiceSelect.selectOption("");
-  await expect(resetVoiceSettings).toBeEnabled();
+  await expect(resetVoice).toBeEnabled();
+  await expect(resetSpeed).toBeDisabled();
   await speedSlider.evaluate((element) => {
     const input = element as HTMLInputElement;
     const valueSetter = Object.getOwnPropertyDescriptor(
@@ -875,10 +876,15 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
     input.dispatchEvent(new Event("change", { bubbles: true }));
   });
   await expect(speedSlider).toHaveValue("1.25");
-  await resetVoiceSettings.click();
+  await expect(resetSpeed).toBeEnabled();
+  await resetVoice.click();
   await expect(voiceSelect).toHaveValue("clip:default");
+  await expect(speedSlider).toHaveValue("1.25");
+  await expect(resetVoice).toBeDisabled();
+  await expect(resetSpeed).toBeEnabled();
+  await resetSpeed.click();
   await expect(speedSlider).toHaveValue("1");
-  await expect(resetVoiceSettings).toBeDisabled();
+  await expect(resetSpeed).toBeDisabled();
   if (await highQualityOption.isEnabled()) {
     await expect(voiceSelect).toHaveValue("clip:default");
     await expect(audioMenu.locator(".audio-offline-item").first()).toBeVisible();

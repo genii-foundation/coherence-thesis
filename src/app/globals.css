@@ -4158,26 +4158,18 @@ input {
   align-items: start;
 }
 
-.audio-settings-heading {
-  color: var(--ink-soft);
-}
-
-.audio-settings-heading .eyebrow {
-  margin: 0;
-}
-
 .audio-control-fields {
   display: grid;
   gap: 0.65rem;
   min-width: 0;
 }
 
-.audio-field select,
-.audio-field input {
+.audio-setting-control select,
+.audio-setting-control input {
   width: 100%;
 }
 
-.audio-field select {
+.audio-setting-control select {
   min-height: 2.65rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -4191,25 +4183,12 @@ input {
     box-shadow 160ms ease;
 }
 
-.audio-field select:hover,
-.audio-field select:focus-visible {
+.audio-setting-control select:hover,
+.audio-setting-control select:focus-visible {
   border-color: rgba(119, 84, 42, 0.52);
   background: var(--field-background-hover);
   box-shadow: inset 0 0 0 1px rgba(119, 84, 42, 0.14);
   outline: none;
-}
-
-.audio-field {
-  display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr);
-  align-items: center;
-  gap: 0.65rem;
-  color: var(--ink-soft);
-  font-size: 0.9rem;
-}
-
-.audio-field > span {
-  min-width: 0;
 }
 
 .range-field input {

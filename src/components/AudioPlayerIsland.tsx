@@ -733,19 +733,33 @@ export function AudioPlayerIsland({
     void restartActivePlayback(nextPreference);
   }
 
-  function resetVoiceSettings(): void {
-    setPreference(defaultVoicePreference);
-    void restartActivePlayback(defaultVoicePreference);
+  function resetVoice(): void {
+    const nextPreference = {
+      ...preference,
+      voiceURI: defaultVoicePreference.voiceURI,
+      useSystemVoice: defaultVoicePreference.useSystemVoice,
+    };
+    setPreference(nextPreference);
+    void restartActivePlayback(nextPreference);
+  }
+
+  function resetSpeed(): void {
+    const nextPreference = {
+      ...preference,
+      rate: defaultVoicePreference.rate,
+    };
+    setPreference(nextPreference);
+    void restartActivePlayback(nextPreference);
   }
 
   if (!supported || queue.length === 0) return null;
 
   // queue is non-empty here, so queue[0] is defined.
   const active = queue[activeIndex] ?? queue[0]!;
-  const voiceSettingsAreDefault = audioPreferencesEqual(
-    preference,
-    defaultVoicePreference,
-  );
+  const voiceIsDefault =
+    preference.voiceURI === defaultVoicePreference.voiceURI &&
+    preference.useSystemVoice !== true;
+  const speedIsDefault = preference.rate === defaultVoicePreference.rate;
 
   return (
     <div className="audio-menu" ref={containerRef}>
@@ -771,22 +785,22 @@ export function AudioPlayerIsland({
             <strong>{active.title}</strong>
           </div>
           <div className="audio-controls">
-            <div className="settings-control-row audio-settings-heading">
-              <span className="eyebrow">Voice settings</span>
-              <button
-                type="button"
-                className="settings-reset-button"
-                aria-label="Reset voice settings"
-                disabled={voiceSettingsAreDefault}
-                onClick={resetVoiceSettings}
-              >
-                <RotateCcw aria-hidden="true" size={14} />
-              </button>
-            </div>
             <div className="audio-control-fields">
-              <label className="audio-field voice-field">
-                <span>Voice</span>
+              <div className="settings-control audio-setting-control voice-field">
+                <div className="settings-control-row">
+                  <label htmlFor="audio-voice-select">Voice</label>
+                  <button
+                    type="button"
+                    className="settings-reset-button"
+                    aria-label="Reset voice"
+                    disabled={voiceIsDefault}
+                    onClick={resetVoice}
+                  >
+                    <RotateCcw aria-hidden="true" size={14} />
+                  </button>
+                </div>
                 <select
+                  id="audio-voice-select"
                   aria-label="Voice"
                   value={preference.voiceURI ?? ""}
                   onChange={(event) =>
@@ -809,10 +823,22 @@ export function AudioPlayerIsland({
                     ))}
                   </optgroup>
                 </select>
-              </label>
-              <label className="audio-field range-field">
-                <span>Speed</span>
+              </div>
+              <div className="settings-control audio-setting-control range-field">
+                <div className="settings-control-row">
+                  <label htmlFor="audio-speed">Speed</label>
+                  <button
+                    type="button"
+                    className="settings-reset-button"
+                    aria-label="Reset speed"
+                    disabled={speedIsDefault}
+                    onClick={resetSpeed}
+                  >
+                    <RotateCcw aria-hidden="true" size={14} />
+                  </button>
+                </div>
                 <input
+                  id="audio-speed"
                   type="range"
                   min="0.75"
                   max="1.4"
@@ -823,7 +849,7 @@ export function AudioPlayerIsland({
                     handleSpeedChange(Number(event.target.value))
                   }
                 />
-              </label>
+              </div>
             </div>
           </div>
           <div className="audio-offline" aria-label="Offline audiobook downloads">
