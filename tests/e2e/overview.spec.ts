@@ -337,9 +337,9 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
   await expect(page.locator(".overview-node")).toHaveCount(
     catalog.overview.nodes.length,
   );
-  expect(
-    await page.locator(".overview-node[open]").count(),
-  ).toBe(catalog.overview.nodes.length);
+  await expect(page.locator("details.overview-node")).toHaveCount(0);
+  await expect(page.locator(".overview-node summary")).toHaveCount(0);
+  await expect(page.locator(".overview-chevron")).toHaveCount(0);
   await expect(page.locator(".overview-node-number")).toHaveText(
     catalog.volumes.map((volume) => volume.numberLabel),
   );
@@ -347,10 +347,10 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
     catalog.overview.nodes.length,
   );
   const overviewNodeAlignment = await page.evaluate(() => {
-    const nodes = Array.from(document.querySelectorAll(".overview-node[open]"));
+    const nodes = Array.from(document.querySelectorAll(".overview-node"));
 
     return nodes.map((node) => {
-      const heading = node.querySelector("summary strong");
+      const heading = node.querySelector(".overview-node-heading strong");
       const copy = node.querySelector(".overview-node-content p");
       const headingLeft = heading?.getBoundingClientRect().left ?? 0;
       const copyLeft = copy?.getBoundingClientRect().left ?? 0;
@@ -359,14 +359,6 @@ test("overview links into canonical manuscript sections", async ({ page }) => {
     });
   });
   expect(Math.max(...overviewNodeAlignment)).toBeLessThanOrEqual(1);
-  await page.locator(".overview-node summary").first().click();
-  await expect(
-    page
-      .locator(".overview-node")
-      .first()
-      .locator(".overview-node-cover-closed img"),
-  ).toBeVisible();
-  await page.locator(".overview-node summary").first().click();
   await expect(page.getByRole("button", { name: "Listen" })).toBeVisible();
   await expect(
     page.getByRole("link", { name: /^Seed$/ }).first(),

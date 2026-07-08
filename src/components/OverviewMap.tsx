@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
 import { catalog, sectionById, toProgressSection } from "@/lib/manuscript-data";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
 
@@ -33,37 +32,14 @@ export function OverviewMap() {
         const numberLabel = coverVolume?.numberLabel ?? String(index + 1);
 
         return (
-          <details key={node.id} className="overview-node" open>
-            <summary>
-              <span
-                className="overview-node-cover overview-node-cover-closed"
-                aria-hidden="true"
-              >
-                {coverVolume ? (
-                  <Image
-                    src={coverVolume.coverImage}
-                    alt=""
-                    width={96}
-                    height={144}
-                    sizes="3.2rem"
-                  />
-                ) : null}
-              </span>
-              <span className="overview-node-heading">
-                <span className="overview-node-number">
-                  {numberLabel}
-                </span>
-                <strong>{node.title}</strong>
-              </span>
-              <span className="overview-node-actions">
+          <article key={node.id} className="overview-node">
+            <div className="overview-node-heading">
+              <span className="overview-node-number">{numberLabel}</span>
+              <strong>{node.title}</strong>
+              <span className="overview-node-status">
                 <ReadCheckmarkIsland sections={nodeSections} />
-                <ChevronRight
-                  aria-hidden="true"
-                  className="overview-chevron"
-                  size={18}
-                />
               </span>
-            </summary>
+            </div>
             <div className="overview-node-body">
               <span
                 className="overview-node-cover overview-node-cover-open"
@@ -97,7 +73,7 @@ export function OverviewMap() {
                 </div>
               </div>
             </div>
-          </details>
+          </article>
         );
       })}
     </section>
