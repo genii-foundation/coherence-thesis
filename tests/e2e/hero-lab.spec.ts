@@ -32,23 +32,19 @@ test("hero lab presents five homepage hero variants", async ({ page }) => {
   await expect(variants.first()).toContainText(
     "There is a field forming around the work civilization forgot to name.",
   );
-  const firstVariantStats = page.getByLabel("Variant 01 stats");
-  await expect(
-    firstVariantStats.getByText(`${catalog.stats.volumeCount.toLocaleString()} volumes`),
-  ).toBeVisible();
-  await expect(
-    firstVariantStats.getByText(
-      `${catalog.stats.sectionCount.toLocaleString()} sections`,
-    ),
-  ).toBeVisible();
-  await expect(
-    firstVariantStats.getByText(`${catalog.stats.wordCount.toLocaleString()} words`),
-  ).toBeVisible();
-  await expect(
-    firstVariantStats.getByText(
-      `${formatReadingDurationForWords(catalog.stats.wordCount)} audio`,
-    ),
-  ).toBeVisible();
+  const expectedStats = [
+    `${catalog.stats.volumeCount.toLocaleString()} volumes`,
+    `${catalog.stats.sectionCount.toLocaleString()} sections`,
+    `${formatReadingDurationForWords(catalog.stats.wordCount)} of audio`,
+  ];
+  await expect(variants.first().locator("li")).toHaveText(expectedStats);
+  await expect(variants.locator("li")).toHaveText([
+    ...expectedStats,
+    ...expectedStats,
+    ...expectedStats,
+    ...expectedStats,
+    ...expectedStats,
+  ]);
   await expect(
     page.getByText("A field guide for people building what comes after extraction."),
   ).toBeVisible();

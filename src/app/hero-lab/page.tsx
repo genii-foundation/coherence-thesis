@@ -1,15 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  BookOpen,
-  Compass,
-  Layers3,
-  ListTree,
-  Network,
-  Radio,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { BookOpen, ListTree } from "lucide-react";
 import { catalog } from "@/lib/manuscript-data";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 
@@ -28,19 +20,16 @@ type HeroVariant = {
   eyebrow: string;
   title: string;
   deck: string;
-  Icon: LucideIcon;
 };
 
 const firstVolume = catalog.volumes[0]!;
 const manuscriptCount = catalog.stats.volumeCount.toLocaleString();
 const sectionCount = catalog.stats.sectionCount.toLocaleString();
-const wordCount = catalog.stats.wordCount.toLocaleString();
 const audioLength = formatReadingDurationForWords(catalog.stats.wordCount);
 const heroStats = [
-  `${audioLength} audio`,
-  `${wordCount} words`,
   `${manuscriptCount} volumes`,
   `${sectionCount} sections`,
+  `${audioLength} of audio`,
 ];
 
 const heroVariants: HeroVariant[] = [
@@ -50,7 +39,6 @@ const heroVariants: HeroVariant[] = [
     title: "There is a field forming around the work civilization forgot to name.",
     deck:
       "Presence, trust architecture, regenerative economics, anti-capture governance, humane intelligence, and right-sized community are not separate projects here. They are strands of one civilizational craft.",
-    Icon: Radio,
   },
   {
     id: "civilizational-craft",
@@ -58,7 +46,6 @@ const heroVariants: HeroVariant[] = [
     title: "A field guide for people building what comes after extraction.",
     deck:
       "The Coherence Thesis gathers the practical arts of a different civilization: builders, stewards, technologists, teachers, funders, and communities learning how to make wisdom operational.",
-    Icon: Compass,
   },
   {
     id: "named-work",
@@ -66,7 +53,6 @@ const heroVariants: HeroVariant[] = [
     title: "For the people who can feel the pattern before it has a name.",
     deck:
       "If your work sits between inner development, social architecture, humane technology, and place-based regeneration, this body of manuscripts is an attempt to make the whole pattern legible.",
-    Icon: Network,
   },
   {
     id: "coherence-commons",
@@ -74,7 +60,6 @@ const heroVariants: HeroVariant[] = [
     title: "The commons beneath the next civilization is coherence.",
     deck:
       "This is not a manifesto for better vibes. It is a long attempt to describe the substrate that lets trust, intelligence, governance, economics, culture, and power stay in right relationship.",
-    Icon: Layers3,
   },
   {
     id: "body-again",
@@ -82,7 +67,6 @@ const heroVariants: HeroVariant[] = [
     title: "Start where civilization becomes a living body again.",
     deck:
       "The future cannot be repaired by abstractions alone. These manuscripts begin with the living conditions of trust and follow them until they become tools, practices, institutions, and a place to stand.",
-    Icon: BookOpen,
   },
 ];
 
@@ -133,7 +117,6 @@ export default function HeroLabPage() {
           <section className={`hero-lab-variant ${variant.id}`} key={variant.id}>
             <div className="hero-lab-copy">
               <p className="eyebrow">{variant.eyebrow}</p>
-              <variant.Icon aria-hidden="true" className="hero-lab-icon" />
               <h2>{variant.title}</h2>
               <p>{variant.deck}</p>
               <VariantActions />
