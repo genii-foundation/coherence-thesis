@@ -370,6 +370,11 @@ test("overview links into canonical manuscript sections", async ({
   await expect(page.locator(".overview-read-link")).toHaveCount(
     catalog.overview.nodes.length,
   );
+  await expect(
+    page.getByText(
+      "The Cardinal Scale is where the thesis stops describing civilization and starts building one.",
+    ),
+  ).toBeVisible();
   const firstVolumeFirstSection = sectionForId(catalog.volumes[0]!.sectionIds[0]!);
   await expect(page.locator(".overview-node-card-link").first()).toHaveAttribute(
     "href",
