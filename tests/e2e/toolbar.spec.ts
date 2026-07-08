@@ -58,6 +58,30 @@ async function expectRestingControlBorder(
   expect(border.color).not.toBe("transparent");
 }
 
+async function expectMobilePopoverStartsBelowToolbar(
+  page: Page,
+  selector: string,
+): Promise<void> {
+  const metrics = await page.locator(selector).evaluate((element) => {
+    const popover = element.getBoundingClientRect();
+    const header = document
+      .querySelector(".site-header")
+      ?.getBoundingClientRect();
+    const style = window.getComputedStyle(element);
+    return {
+      headerBottom: header?.bottom ?? 0,
+      radiusTopLeft: Number.parseFloat(style.borderTopLeftRadius),
+      radiusTopRight: Number.parseFloat(style.borderTopRightRadius),
+      popoverTop: popover.top,
+    };
+  });
+
+  expect(metrics.popoverTop).toBeGreaterThanOrEqual(metrics.headerBottom - 1);
+  expect(metrics.popoverTop).toBeLessThanOrEqual(metrics.headerBottom + 2);
+  expect(metrics.radiusTopLeft).toBe(0);
+  expect(metrics.radiusTopRight).toBe(0);
+}
+
 test("mobile toolbar and progress menu stay within the viewport", async ({
   page,
 }) => {
@@ -727,6 +751,57 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(progressMenu).toBeVisible();
   await expect(progressMenu.getByText("Recommended next")).toBeVisible();
   await expectMenuFitsViewport(page, ".progress-popover");
+});
+
+test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
+  await page.setViewportSize({ width: 810, height: 520 });
+  await page.addInitScript(() => {
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        addEventListener: () => undefined,
+        cancel: () => undefined,
+        getVoices: () => [],
+        pause: () => undefined,
+        removeEventListener: () => undefined,
+        speak: () => undefined,
+      },
+    });
+  });
+
+  await page.goto(wieldingSection.href);
+
+  await page.getByRole("button", { name: "Search manuscripts" }).click();
+  await expect(page.getByRole("region", { name: "Manuscript search" })).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(page, ".search-popover");
+  await page.keyboard.press("Escape");
+
+  await page.getByRole("button", { name: /Outline/ }).click();
+  await expect(page.getByRole("region", { name: "Site outline" })).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(page, ".outline-popover");
+  await page.keyboard.press("Escape");
+
+  await page.getByRole("button", { name: "Reader settings" }).click();
+  await expect(page.getByRole("region", { name: "Reader settings" })).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(page, ".settings-popover");
+  await page.keyboard.press("Escape");
+
+  await page.getByRole("button", { name: "Share and downloads" }).click();
+  await expect(
+    page.getByLabel("Share and downloads").filter({ hasText: "Share" }),
+  ).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(page, ".share-popover");
+  await page.keyboard.press("Escape");
+
+  await page.getByRole("button", { name: /Listen/ }).click();
+  await expect(page.getByLabel("Audiobook controls")).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(page, ".audio-popover");
+  await page.getByRole("button", { name: "Pause audiobook" }).click();
+  await page.keyboard.press("Escape");
+
+  await page.getByRole("button", { name: /Progress/ }).click();
+  await expect(page.getByRole("region", { name: "Reader progress" })).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(page, ".progress-popover");
 });
 
 test("toolbar brand owns the active manuscript identity", async ({
