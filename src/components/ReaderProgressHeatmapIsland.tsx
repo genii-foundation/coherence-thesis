@@ -253,8 +253,8 @@ function ReaderProgressHeatmapCell({
             </div>
             <Popover.Arrow
               className="progress-heatmap-tooltip-arrow tooltip-arrow"
-              width={30}
-              height={15}
+              width={18}
+              height={9}
             />
           </Popover.Content>
         </Popover.Portal>

@@ -533,7 +533,7 @@ input {
   filter: drop-shadow(0 2px 1px rgb(19 32 42 / 0.08));
   pointer-events: none;
   stroke: var(--tooltip-border-color);
-  stroke-width: 2px;
+  stroke-width: 1px;
 }
 
 .clean-tooltip {
