@@ -2645,6 +2645,22 @@ test("home page presents an interactive cover flow", async ({ page }) => {
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
   ).toHaveAttribute("data-volume-href", catalog.volumes.at(-2)!.href);
 
+  await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+  });
+  await expect.poll(async () => page.evaluate(() => window.scrollY)).toBe(0);
+  const scrollBeforeMixedWheel = await page.evaluate(() => window.scrollY);
+  await coverFlow.locator(".cover-flow-scroll").dispatchEvent("wheel", {
+    bubbles: true,
+    cancelable: true,
+    deltaX: 160,
+    deltaY: 220,
+  });
+  await expect
+    .poll(async () => page.evaluate(() => window.scrollY))
+    .toBeGreaterThan(scrollBeforeMixedWheel);
+
   await coverFlow.locator(".cover-flow-scroll").dispatchEvent("wheel", {
     bubbles: true,
     cancelable: true,

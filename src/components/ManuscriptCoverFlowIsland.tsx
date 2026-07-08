@@ -300,6 +300,33 @@ export function ManuscriptCoverFlowIsland({
     [volumes.length],
   );
 
+  const applyVerticalWheelDelta = useCallback((event: WheelEvent) => {
+    if (event.shiftKey || event.deltaY === 0) return;
+
+    const target = event.target as HTMLElement | null;
+    const scrollPanel = target?.closest<HTMLElement>(
+      ".cover-flow-card-panel-scroll",
+    );
+
+    if (scrollPanel) {
+      const maxScrollTop = Math.max(
+        0,
+        scrollPanel.scrollHeight - scrollPanel.clientHeight,
+      );
+      const nextScrollTop = Math.max(
+        0,
+        Math.min(maxScrollTop, scrollPanel.scrollTop + event.deltaY),
+      );
+
+      if (nextScrollTop !== scrollPanel.scrollTop) {
+        scrollPanel.scrollTop = nextScrollTop;
+        return;
+      }
+    }
+
+    window.scrollBy({ top: event.deltaY, left: 0, behavior: "auto" });
+  }, []);
+
   const handleWheel = useCallback(
     (event: WheelEvent) => {
       const intent = getCoverFlowWheelIntent({
@@ -307,40 +334,36 @@ export function ManuscriptCoverFlowIsland({
         deltaY: event.deltaY,
         shiftKey: event.shiftKey,
       });
+      const hasHorizontalWheelDelta = event.shiftKey
+        ? event.deltaY !== 0
+        : event.deltaX !== 0;
 
-      if (intent === "vertical") {
+      if (intent === "vertical" && !hasHorizontalWheelDelta) {
         resetWheelGesture();
         const scroller = scrollRef.current;
         if (scroller) {
           scroller.scrollTo({ left: scroller.scrollLeft, behavior: "auto" });
         }
 
-        const target = event.target as HTMLElement | null;
-        const scrollPanel = target?.closest<HTMLElement>(
-          ".cover-flow-card-panel-scroll",
-        );
-        if (scrollPanel) {
-          const canScrollUp = scrollPanel.scrollTop > 0;
-          const canScrollDown =
-            scrollPanel.scrollTop + scrollPanel.clientHeight <
-            scrollPanel.scrollHeight - 1;
-          if (
-            (event.deltaY < 0 && canScrollUp) ||
-            (event.deltaY > 0 && canScrollDown)
-          ) {
-            return;
-          }
-        }
-
         event.preventDefault();
-        window.scrollBy({ top: event.deltaY, left: 0, behavior: "auto" });
+        applyVerticalWheelDelta(event);
         return;
       }
 
-      const horizontalDelta =
-        intent === "horizontal" ? event.deltaX || event.deltaY : 0;
+      const horizontalDelta = hasHorizontalWheelDelta
+        ? event.shiftKey
+          ? event.deltaY
+          : event.deltaX
+        : 0;
 
       if (horizontalDelta === 0) return;
+
+      event.preventDefault();
+      const scroller = scrollRef.current;
+      if (scroller) {
+        scroller.scrollLeft += horizontalDelta;
+      }
+      applyVerticalWheelDelta(event);
 
       const gesture = wheelGestureRef.current;
       gesture.distancePx += horizontalDelta;
@@ -370,7 +393,7 @@ export function ManuscriptCoverFlowIsland({
         }
       }, coverFlowTuning.scroll.flickSettleMs);
     },
-    [resetWheelGesture, scrollToIndex, volumes.length],
+    [applyVerticalWheelDelta, resetWheelGesture, scrollToIndex, volumes.length],
   );
 
   useEffect(() => {
