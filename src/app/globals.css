@@ -1193,7 +1193,7 @@ input {
 
 .audio-playback-icon-shell {
   fill: rgba(255, 252, 244, 0.92);
-  stroke: rgba(119, 84, 42, 0.58);
+  stroke: var(--bronze-deep);
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -1202,7 +1202,7 @@ input {
 }
 
 .audio-waveform {
-  color: rgba(119, 84, 42, 0.72);
+  color: var(--bronze-deep);
   opacity: 0.94;
   transform-box: fill-box;
   transform-origin: center;
