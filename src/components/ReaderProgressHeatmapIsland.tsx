@@ -104,7 +104,6 @@ function ReaderProgressHeatmapCell({
   const tooltipId = `progress-heatmap-tooltip-${cell.id}`;
   const cellSections = uniqueCellSections(cell);
   const isOpen = activeCell?.id === cell.id;
-  const showHoverHint = isOpen && activeCell?.mode === "hover";
   const label = cellLabel({
     cell,
     percent: state.percent,
@@ -224,9 +223,17 @@ function ReaderProgressHeatmapCell({
           >
             <div className="progress-heatmap-tooltip-content">
               <p className="progress-heatmap-tooltip-title">
-                {sectionCountLabel(cellSections.length)}
-                <span>{state.percent}% read</span>
-                {state.revised && <span>revised</span>}
+                <span className="progress-heatmap-tooltip-count">
+                  {sectionCountLabel(cellSections.length)}
+                </span>
+                <span className="progress-heatmap-tooltip-read-tag">
+                  {state.percent}% read
+                </span>
+                {state.revised && (
+                  <span className="progress-heatmap-tooltip-status-tag">
+                    revised
+                  </span>
+                )}
               </p>
               <div className="progress-heatmap-tooltip-links">
                 {cellSections.map((section) => (
@@ -235,9 +242,6 @@ function ReaderProgressHeatmapCell({
                   </a>
                 ))}
               </div>
-              {showHoverHint && (
-                <p className="progress-heatmap-tooltip-hint">(click to jump)</p>
-              )}
             </div>
             <Popover.Arrow
               className="progress-heatmap-tooltip-arrow tooltip-arrow"

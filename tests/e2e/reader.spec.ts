@@ -2185,31 +2185,35 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
   const tooltip = page.getByRole("dialog", { name: "Section jump links" });
   await expect(tooltip).toBeVisible();
   await expect(tooltip).toHaveCount(1);
-  const hoverHint = tooltip.getByText("(click to jump)");
-  await expect(hoverHint).toBeVisible();
+  const hoverHint = page.getByText("(click to jump)");
+  await expect(hoverHint).toHaveCount(0);
   await expect(tooltip.getByRole("link").first()).toHaveAttribute(
     "href",
     /\/manuscripts\//,
   );
   await firstCell.click();
   await expect(tooltip).toBeVisible();
-  await expect(hoverHint).toBeHidden();
+  await expect(hoverHint).toHaveCount(0);
   await expect(tooltip).toHaveCount(1);
 
   const secondCell = page.locator(".progress-heatmap-cell").nth(1);
   await secondCell.hover();
   await expect(tooltip).toBeVisible();
   await expect(tooltip).toHaveCount(1);
-  await expect(hoverHint).toBeVisible();
+  await expect(hoverHint).toHaveCount(0);
 
   const mapMetrics = await page.evaluate(() => {
     const cell = document.querySelector(".progress-heatmap-cell");
     const tooltip = document.querySelector(".progress-heatmap-tooltip");
     const tooltipArrow = document.querySelector(".progress-heatmap-tooltip-arrow");
+    const tooltipContent = tooltip?.querySelector(".progress-heatmap-tooltip-content");
+    const tooltipReadTag = tooltip?.querySelector(".progress-heatmap-tooltip-read-tag");
     const volume = document.querySelector(".progress-heatmap-volume");
     const volumeReadTag = volume?.querySelector(".progress-heatmap-volume-read-tag");
     const box = cell?.getBoundingClientRect();
     const tooltipBox = tooltip?.getBoundingClientRect();
+    const tooltipContentBox = tooltipContent?.getBoundingClientRect();
+    const tooltipReadTagBox = tooltipReadTag?.getBoundingClientRect();
     const tooltipArrowBox = tooltipArrow?.getBoundingClientRect();
     const volumeBox = volume?.getBoundingClientRect();
     const volumeReadTagBox = volumeReadTag?.getBoundingClientRect();
@@ -2226,6 +2230,14 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
       tooltipBottom: tooltipBox?.bottom ?? 0,
       tooltipArrowWidth: tooltipArrowBox?.width ?? 0,
       tooltipArrowHeight: tooltipArrowBox?.height ?? 0,
+      tooltipReadTagRightGap:
+        tooltipContentBox && tooltipReadTagBox
+          ? tooltipContentBox.right - tooltipReadTagBox.right
+          : 0,
+      tooltipReadTagTopGap:
+        tooltipContentBox && tooltipReadTagBox
+          ? tooltipReadTagBox.top - tooltipContentBox.top
+          : 0,
       volumeReadTagRightGap:
         volumeBox && volumeReadTagBox ? volumeBox.right - volumeReadTagBox.right : 0,
       volumeReadTagTopGap:
@@ -2245,6 +2257,8 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
   expect(mapMetrics.tooltipBottom).toBeLessThanOrEqual(mapMetrics.viewportHeight);
   expect(mapMetrics.tooltipArrowWidth).toBeGreaterThan(0);
   expect(mapMetrics.tooltipArrowHeight).toBeGreaterThan(0);
+  expect(mapMetrics.tooltipReadTagRightGap).toBeLessThanOrEqual(1);
+  expect(mapMetrics.tooltipReadTagTopGap).toBeLessThanOrEqual(2);
   expect(mapMetrics.volumeReadTagRightGap).toBeLessThanOrEqual(2);
   expect(mapMetrics.volumeReadTagTopGap).toBeLessThanOrEqual(24);
 

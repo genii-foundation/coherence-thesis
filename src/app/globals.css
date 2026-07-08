@@ -3621,17 +3621,31 @@ input {
 }
 
 .progress-heatmap-tooltip-title {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.32rem 0.5rem;
   margin: 0;
   color: var(--ink);
   font-size: 0.78rem;
   font-weight: 800;
 }
 
-.progress-heatmap-tooltip-title span {
+.progress-heatmap-tooltip-count {
+  min-width: 0;
+}
+
+.progress-heatmap-tooltip-read-tag {
+  justify-self: end;
+}
+
+.progress-heatmap-tooltip-status-tag {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+.progress-heatmap-tooltip-read-tag,
+.progress-heatmap-tooltip-status-tag {
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0.08rem 0.35rem;
@@ -3666,15 +3680,6 @@ input {
   outline: none;
   text-decoration: underline;
   text-underline-offset: 0.16rem;
-}
-
-.progress-heatmap-tooltip-hint {
-  margin: 0;
-  color: var(--ink-soft);
-  font-size: 0.72rem;
-  font-style: italic;
-  font-weight: 700;
-  line-height: 1.2;
 }
 
 @media (max-width: 640px) {
