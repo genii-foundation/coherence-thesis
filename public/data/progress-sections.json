@@ -211,20 +211,6 @@
     ]
   },
   {
-    "sectionId": "v01-seed-sprout-stem-and-soil",
-    "contentHash": "f886ee589a71f9ca",
-    "title": "Seed, Sprout, Stem & Soil",
-    "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
-    "audioVersionId": "v01-seed-sprout-stem-and-soil-f886ee589a71f9ca",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "contentHash": "3342d0678aceab23"
-      }
-    ]
-  },
-  {
     "sectionId": "v01-the-seed",
     "contentHash": "19eb6aa2134cb98b",
     "title": "The Seed",
@@ -2628,20 +2614,6 @@
         "paragraphId": "p-6",
         "anchor": "p-6",
         "contentHash": "d352086e4a70ad7e"
-      }
-    ]
-  },
-  {
-    "sectionId": "v02-the-response",
-    "contentHash": "de765ebf1357cc14",
-    "title": "The Response",
-    "href": "/manuscripts/wielding-intelligence/the-response/v02-the-response/",
-    "audioVersionId": "v02-the-response-de765ebf1357cc14",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "contentHash": "edc3498e7059e444"
       }
     ]
   },

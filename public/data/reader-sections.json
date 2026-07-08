@@ -262,25 +262,6 @@
     ]
   },
   {
-    "sectionId": "v01-seed-sprout-stem-and-soil",
-    "title": "Seed, Sprout, Stem & Soil",
-    "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
-    "text": "The Living Architecture of an Argument",
-    "contentHash": "f886ee589a71f9ca",
-    "versionHash": "f886ee589a71f9ca",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v01-seed-sprout-stem-and-soil-f886ee589a71f9ca",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "3342d0678aceab23"
-      }
-    ]
-  },
-  {
     "sectionId": "v01-the-seed",
     "title": "The Seed",
     "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/",
@@ -3260,25 +3241,6 @@
         "anchor": "p-6",
         "order": 6,
         "contentHash": "d352086e4a70ad7e"
-      }
-    ]
-  },
-  {
-    "sectionId": "v02-the-response",
-    "title": "The Response",
-    "href": "/manuscripts/wielding-intelligence/the-response/v02-the-response/",
-    "text": "The Possibility of Coherence",
-    "contentHash": "de765ebf1357cc14",
-    "versionHash": "de765ebf1357cc14",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v02-the-response-de765ebf1357cc14",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "edc3498e7059e444"
       }
     ]
   },

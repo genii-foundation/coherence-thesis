@@ -204,9 +204,14 @@ function uniqueId(base: string, used: Set<string>): string {
   return candidate;
 }
 
-function sectionKey(section: DraftSection): string {
+function chapterKey(section: DraftSection): string {
   const fm = section.frontmatter;
   return `${fm.volumeId}:${fm.partId}:${fm.chapterId}`;
+}
+
+function partKey(section: DraftSection): string {
+  const fm = section.frontmatter;
+  return `${fm.volumeId}:${fm.partId}`;
 }
 
 function bodyText(section: DraftSection): string {
@@ -217,6 +222,15 @@ function wordTokenCount(text: string): number {
   return text.match(/[A-Za-z0-9]+/g)?.length ?? 0;
 }
 
+function isSubtitleOnlyOpener(section: DraftSection): boolean {
+  const text = bodyText(section);
+  if (!text) return false;
+  if (wordTokenCount(text) > 8) return false;
+  if (/[.!?]$/.test(text)) return false;
+
+  return section.body.filter((line) => plainLine(line)).length <= 2;
+}
+
 function isSubtitleOnlyChapterOpener(
   section: DraftSection,
   chapterSections: DraftSection[],
@@ -224,12 +238,17 @@ function isSubtitleOnlyChapterOpener(
   if (chapterSections.length < 2 || chapterSections[0] !== section) return false;
   if (section.frontmatter.title !== section.frontmatter.chapterTitle) return false;
 
-  const text = bodyText(section);
-  if (!text) return false;
-  if (wordTokenCount(text) > 8) return false;
-  if (/[.!?]$/.test(text)) return false;
+  return isSubtitleOnlyOpener(section);
+}
 
-  return section.body.filter((line) => plainLine(line)).length <= 2;
+function isSubtitleOnlyPartOpener(
+  section: DraftSection,
+  partSections: DraftSection[],
+): boolean {
+  if (partSections.length < 2 || partSections[0] !== section) return false;
+  if (section.frontmatter.title !== section.frontmatter.partTitle) return false;
+
+  return isSubtitleOnlyOpener(section);
 }
 
 function addAlias(section: DraftSection, sourceHref: string): void {
@@ -239,21 +258,45 @@ function addAlias(section: DraftSection, sourceHref: string): void {
   }
 }
 
-function removeSubtitleOnlyChapterOpeners(sections: DraftSection[]): DraftSection[] {
+function fullDepthSectionHref(section: DraftSection): string {
+  const fm = section.frontmatter;
+  return `/manuscripts/${fm.volumeId}/${fm.partId}/${fm.chapterId}/${fm.sectionId}/`;
+}
+
+function addOpenerAliases(target: DraftSection, opener: DraftSection): void {
+  addAlias(target, sectionHref(opener.frontmatter));
+  addAlias(target, fullDepthSectionHref(opener));
+}
+
+function removeSubtitleOnlyOpeners(sections: DraftSection[]): DraftSection[] {
+  const partSections = new Map<string, DraftSection[]>();
   const chapterSections = new Map<string, DraftSection[]>();
   for (const section of sections) {
-    const key = sectionKey(section);
-    chapterSections.set(key, [...(chapterSections.get(key) ?? []), section]);
+    const part = partKey(section);
+    const chapter = chapterKey(section);
+    partSections.set(part, [...(partSections.get(part) ?? []), section]);
+    chapterSections.set(chapter, [...(chapterSections.get(chapter) ?? []), section]);
   }
 
   const removed = new Set<DraftSection>();
-  for (const group of chapterSections.values()) {
+  for (const group of partSections.values()) {
     const opener = group[0];
     const target = group[1];
     if (!opener || !target) continue;
+    if (!isSubtitleOnlyPartOpener(opener, group)) continue;
+
+    addOpenerAliases(target, opener);
+    removed.add(opener);
+  }
+
+  for (const group of chapterSections.values()) {
+    const opener = group[0];
+    const target = group[1];
+    if (opener && removed.has(opener)) continue;
+    if (!opener || !target) continue;
     if (!isSubtitleOnlyChapterOpener(opener, group)) continue;
 
-    addAlias(target, sectionHref(opener.frontmatter));
+    addOpenerAliases(target, opener);
     removed.add(opener);
   }
 
@@ -383,7 +426,7 @@ function buildSections(config: VolumeConfig): DraftSection[] {
     section.frontmatter.sourceParagraphEnd = index + 1;
   }
 
-  return removeSubtitleOnlyChapterOpeners(
+  return removeSubtitleOnlyOpeners(
     sections.filter((section) => section.body.join("\n").trim().length > 0),
   );
 }
