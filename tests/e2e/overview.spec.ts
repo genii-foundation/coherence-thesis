@@ -89,12 +89,17 @@ test("home page presents the overview and manuscript entry points", async ({
   ]);
   await expect(page.locator(".hero-stats li").first()).toHaveCSS(
     "font-weight",
-    "800",
+    "600",
   );
   await expect(page.locator(".hero-stats li").first()).toHaveCSS(
     "text-transform",
     "uppercase",
   );
+  const statSeparatorContent = await page
+    .locator(".hero-stats li")
+    .first()
+    .evaluate((item) => getComputedStyle(item, "::after").content);
+  expect(statSeparatorContent).toBe("none");
   await expect(page.locator(".hero-stats li").first()).toHaveCSS(
     "color",
     hexToRgb("#77542a"),
