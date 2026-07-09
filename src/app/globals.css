@@ -1858,11 +1858,20 @@ input {
   line-height: 1.58;
 }
 
+.hero-cta-stack {
+  display: grid;
+  justify-items: center;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 2.4rem;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center;
   gap: 0.75rem;
-  margin-top: 2.4rem;
+  width: 100%;
 }
 
 .primary-link,
@@ -1925,18 +1934,32 @@ input {
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.1rem;
-  margin: 0.65rem 0 0;
-  padding: 0;
+  justify-content: center;
+  gap: 0.45rem 0.9rem;
+  width: 100%;
+  margin: 0.8rem 0 0;
+  border-top: 1px solid rgba(119, 84, 42, 0.28);
+  border-bottom: 1px solid rgba(119, 84, 42, 0.18);
+  padding: 0.48rem 0.2rem 0.42rem;
   list-style: none;
 }
 
 .hero-stats li {
-  color: var(--bronze);
+  color: var(--bronze-deep);
   padding: 0;
-  font-family: var(--font-ui);
-  font-size: 0.8rem;
-  font-weight: 300;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 800;
+  font-variant-numeric: lining-nums;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+.hero-stats li:not(:last-child)::after {
+  content: "·";
+  color: rgba(119, 84, 42, 0.62);
+  padding-left: 0.9rem;
 }
 
 .volume-grid {
@@ -4709,11 +4732,20 @@ input {
     flex-direction: column;
   }
 
+  .hero-cta-stack,
   .hero-actions,
   .hero-actions .primary-link,
   .hero-actions .secondary-link,
   .hero-stats {
     width: 100%;
+  }
+
+  .hero-cta-stack {
+    justify-items: stretch;
+  }
+
+  .hero-stats {
+    justify-content: flex-start;
   }
 
   .hero-stats li {

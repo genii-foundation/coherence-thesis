@@ -89,11 +89,15 @@ test("home page presents the overview and manuscript entry points", async ({
   ]);
   await expect(page.locator(".hero-stats li").first()).toHaveCSS(
     "font-weight",
-    "300",
+    "800",
+  );
+  await expect(page.locator(".hero-stats li").first()).toHaveCSS(
+    "text-transform",
+    "uppercase",
   );
   await expect(page.locator(".hero-stats li").first()).toHaveCSS(
     "color",
-    hexToRgb("#a47b3f"),
+    hexToRgb("#77542a"),
   );
   await expect(
     page.getByRole("region", { name: "Background highlight intensity" }),
@@ -119,6 +123,24 @@ test("home page presents the overview and manuscript entry points", async ({
       links.map((link) => Math.round(link.getBoundingClientRect().top)),
     );
     expect(new Set(actionTops).size).toBe(1);
+    const heroCtaAlignment = await page.evaluate(() => {
+      const actions = document
+        .querySelector(".hero-actions")
+        ?.getBoundingClientRect();
+      const stats = document
+        .querySelector(".hero-stats")
+        ?.getBoundingClientRect();
+
+      return {
+        centerDelta:
+          actions && stats
+            ? Math.abs(
+                actions.left + actions.width / 2 - (stats.left + stats.width / 2),
+              )
+            : Number.POSITIVE_INFINITY,
+      };
+    });
+    expect(heroCtaAlignment.centerDelta).toBeLessThanOrEqual(1);
     const brandKickerFit = await page
       .locator(".site-header .brand-kicker")
       .evaluate((element) => ({
