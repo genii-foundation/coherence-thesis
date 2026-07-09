@@ -4271,12 +4271,10 @@ input {
 
 .progress-heatmap-cell-partial {
   border-color: rgba(96, 121, 109, 0.48);
-  background:
-    radial-gradient(circle, var(--panel-background) 0 48%, transparent 50%),
-    conic-gradient(
-      rgba(96, 121, 109, 0.76) calc(var(--cell-progress) * 1turn),
-      rgba(96, 121, 109, 0.16) 0
-    );
+  background: conic-gradient(
+    rgba(96, 121, 109, 0.76) calc(var(--cell-progress) * 1turn),
+    rgba(96, 121, 109, 0.16) 0
+  );
 }
 
 .progress-heatmap-cell-read {

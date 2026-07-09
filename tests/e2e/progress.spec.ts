@@ -1,5 +1,15 @@
 import { expect, test } from "@playwright/test";
 import {
+  buildReaderHeatmapModel,
+  progressForHeatmapCell,
+} from "../../src/lib/reader-heatmap";
+import {
+  emptyProgress,
+  readerProgressV2StorageKey,
+  recordScrollProgress,
+  serializeProgress,
+} from "../../src/lib/reader-state";
+import {
   readerEventsStorageKey,
   firstSection,
   firstSectionVersionDate,
@@ -722,4 +732,41 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
 
   await page.keyboard.press("Escape");
   await expect(tooltip).toHaveCount(0);
+});
+
+test("reading map partial cells fill to the center", async ({ page }) => {
+  const model = buildReaderHeatmapModel();
+  const partialCell = model.volumes[0]!.cells[0]!;
+  const partialProgress = partialCell.portions.reduce(
+    (current, portion) => recordScrollProgress(current, portion, 50),
+    emptyProgress(),
+  );
+  expect(progressForHeatmapCell(partialProgress, partialCell).percent).toBe(50);
+
+  await page.addInitScript(
+    ({ key, value }) => {
+      window.localStorage.setItem(key, value);
+    },
+    {
+      key: readerProgressV2StorageKey,
+      value: serializeProgress(partialProgress),
+    },
+  );
+
+  await page.goto("/progress/");
+
+  const partialCellButton = page.locator(".progress-heatmap-cell-partial").first();
+  await expect(partialCellButton).toBeVisible();
+
+  const partialCellStyle = await partialCellButton.evaluate((element) => {
+    const style = window.getComputedStyle(element);
+    return {
+      backgroundImage: style.backgroundImage,
+      progress: style.getPropertyValue("--cell-progress").trim(),
+    };
+  });
+
+  expect(partialCellStyle.progress).toBe("0.5");
+  expect(partialCellStyle.backgroundImage).toContain("conic-gradient");
+  expect(partialCellStyle.backgroundImage).not.toContain("radial-gradient");
 });
