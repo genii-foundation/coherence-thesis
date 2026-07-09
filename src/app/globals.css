@@ -867,6 +867,10 @@ input {
   transition: stroke-dashoffset 180ms ease;
 }
 
+.progress-cloud-mark:not(.progress-cloud-mark-offline) .progress-cloud-progress {
+  stroke-width: 3.4;
+}
+
 .progress-cloud-progress-blip {
   fill: currentColor;
 }

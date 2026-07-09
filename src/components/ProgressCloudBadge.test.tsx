@@ -19,11 +19,11 @@ describe("ProgressCloudBadge", () => {
 
     expect(partial).toContain('viewBox="0 0 64 64"');
     expect(empty).toContain('class="progress-cloud-progress-blip"');
-    expect(empty).toContain('cx="30.857" cy="14.248" r="1.9"');
+    expect(empty).toContain('cx="30.857" cy="13.248" r="1.9"');
     expect(partial).toContain(
-      'transform="translate(0 10.667) scale(0.7619048)"',
+      'transform="translate(0 9.667) scale(0.7619048)"',
     );
-    expect(partial).toContain('--progress-cloud-text-size:14px');
+    expect(partial).toContain('--progress-cloud-text-size:15px');
     expect(partial).toContain('d="M20.6 46.4');
     expect(partial).toContain('stroke-dasharray="1 99"');
     expect(partial).toContain('stroke-dashoffset="62.75"');
@@ -43,7 +43,7 @@ describe("ProgressCloudBadge", () => {
     expect(empty).toContain('class="progress-cloud-progress-blip"');
     expect(empty).toContain('cx="32" cy="6.8" r="1.6"');
     expect(partial).toContain('d="M 32.000 6.800');
-    expect(partial).toContain('--progress-cloud-text-size:14px');
+    expect(partial).toContain('--progress-cloud-text-size:15px');
     expect(partial).toContain('stroke-linecap="round"');
     expect(complete).toContain('transform="rotate(-90 32 32)"');
     expect(complete).toContain('stroke-dasharray="158.33626974092556 0"');

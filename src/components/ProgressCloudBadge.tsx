@@ -35,12 +35,12 @@ type ProgressCloudStyle = CSSProperties & {
 
 const cloudPath =
   "M20.6 46.4c-8.1 0-14.6-5.7-14.6-12.9 0-6.5 5.2-11.8 12.2-12.6C20.8 11 29.8 4.7 40.5 4.7c9.4 0 17.5 4.7 21.2 12.4 9.8.4 17.3 7.1 17.3 15.5 0 7.8-6.8 13.8-15.6 13.8H20.6Z";
-const cloudPathTransform = "translate(0 10.667) scale(0.7619048)";
+const cloudPathTransform = "translate(0 9.667) scale(0.7619048)";
 // The cloud path begins at its lower-left edge. Its highest point sits 37.25%
 // around the path. SVG offsets the dash in the inverse direction, so partial
 // fills need the remaining 62.75% to begin at the top and proceed clockwise.
 const cloudTopDashOffset = 62.75;
-const cloudTopPoint = { x: 30.857, y: 14.248 };
+const cloudTopPoint = { x: 30.857, y: 13.248 };
 const cloudProgressBlipRadius = 1.9;
 const offlineCircleRadius = 25.2;
 const offlineCircleLength = 2 * Math.PI * offlineCircleRadius;
@@ -58,7 +58,7 @@ const syncOrbitVariant: ProgressCloudVariant = {
   track: "rgba(119, 84, 42, 0.06)",
   progress: "var(--bronze-deep)",
   textColor: "var(--bronze-deep)",
-  textSize: 14,
+  textSize: 15,
   strokeWidth: 2.7,
 };
 
@@ -238,7 +238,7 @@ export function ProgressCloudBadge({
   const progressPercent = clampPercent(percent);
   const text = `${Math.round(progressPercent)}%`;
   const textSize =
-    text.length >= 4 ? Math.max(10.5, variant.textSize - 1.5) : variant.textSize;
+    text.length >= 4 ? Math.max(10.5, variant.textSize - 0.75) : variant.textSize;
   const style: ProgressCloudStyle = {
     "--progress-cloud-fill": variant.cloudFill,
     "--progress-cloud-height": `${variant.height}px`,
