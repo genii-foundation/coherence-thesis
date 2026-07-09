@@ -879,7 +879,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     panelMetrics.coverHeight * 0.88 + 2,
   );
   expect(panelMetrics.stageEndGap).toBeLessThanOrEqual(
-    panelMetrics.viewportWidth <= 540 ? 80 : 150,
+    panelMetrics.viewportWidth <= 540 ? 150 : 260,
   );
   expect(panelMetrics.coverToPanelGap).toBeGreaterThanOrEqual(44);
   expect(panelMetrics.panelMaxHeight).not.toBe("none");
@@ -1068,7 +1068,10 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   );
   expect(coverFlowTransforms.panelVisible).not.toBe("none");
   expect(coverFlowTransforms.sideRotate).not.toBe("0deg");
-  expect(coverFlowTransforms.maxVisibleRotation).toBeLessThan(65);
+  expect(coverFlowTransforms.maxVisibleRotation).toBeLessThan(45);
+  expect(Number.parseFloat(coverFlowTransforms.sideScale)).toBeGreaterThan(
+    0.74,
+  );
   expect(Number.parseFloat(coverFlowTransforms.sideScale)).toBeLessThan(1);
   expect(
     Number.parseFloat(coverFlowTransforms.activeShadowStrength),

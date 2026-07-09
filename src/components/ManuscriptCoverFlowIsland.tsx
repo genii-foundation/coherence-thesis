@@ -264,6 +264,10 @@ export function ManuscriptCoverFlowIsland({
     const scrollLeft = scroller.scrollLeft;
     let closestIndex = 0;
     let closestDistance = Number.POSITIVE_INFINITY;
+    const referenceCoverHeight =
+      cardRefs.current[0]?.querySelector<HTMLElement>(
+        ".cover-flow-image-frame",
+      )?.offsetHeight ?? 0;
     const positionedCards: HTMLElement[] = [];
 
     cardRefs.current.forEach((card, index) => {
@@ -275,10 +279,7 @@ export function ManuscriptCoverFlowIsland({
       const offset = (cardCenter - center) / scrollStepWidth;
       const distance = Math.abs(offset);
       const transform = getCoverFlowTransform(offset, scrollStepWidth);
-      const coverFrame = card.querySelector<HTMLElement>(
-        ".cover-flow-image-frame",
-      );
-      const coverCenterY = (coverFrame?.offsetHeight ?? 0) / 2;
+      const coverCenterY = referenceCoverHeight / 2;
       const verticalCenterShift =
         coverCenterY *
         (coverFlowTuning.scale.active - transform.scale) *
@@ -343,26 +344,32 @@ export function ManuscriptCoverFlowIsland({
           trackPaddingTop +
           referenceCover.offsetTop +
           (referenceCover.offsetHeight * coverFlowTuning.scale.active) / 2
-      : null;
+        : null;
 
     if (targetCoverCenterY !== null) {
-      for (let pass = 0; pass < 3; pass += 1) {
-        positionedCards.forEach((card) => {
+      for (let pass = 0; pass < 2; pass += 1) {
+        const corrections = positionedCards.flatMap((card) => {
           const coverFrame = card.querySelector<HTMLElement>(
             ".cover-flow-image-frame",
           );
           const coverBox = coverFrame?.getBoundingClientRect();
-          if (!coverBox) return;
+          if (!coverBox) return [];
 
           const currentY = Number.parseFloat(
             card.style.getPropertyValue("--cover-flow-y") || "0",
           );
           const coverCenterY = coverBox.top + coverBox.height / 2;
-          const correctedY = currentY + targetCoverCenterY - coverCenterY;
-          card.style.setProperty(
-            "--cover-flow-y",
-            `${correctedY.toFixed(1)}px`,
-          );
+
+          return [
+            {
+              card,
+              y: currentY + targetCoverCenterY - coverCenterY,
+            },
+          ];
+        });
+
+        corrections.forEach(({ card, y }) => {
+          card.style.setProperty("--cover-flow-y", `${y.toFixed(1)}px`);
         });
       }
     }

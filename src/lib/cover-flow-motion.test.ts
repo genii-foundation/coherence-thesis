@@ -31,9 +31,14 @@ describe("cover flow motion", () => {
       offset <= coverFlowTuning.rotation.maxMeasuredOffset;
       offset += 0.05
     ) {
-      expect(Math.abs(getCoverFlowTransform(offset).rotate)).toBeLessThan(65);
+      expect(Math.abs(getCoverFlowTransform(offset).rotate)).toBeLessThan(45);
       expect(Math.abs(getCoverFlowTransform(offset).rotate)).toBeLessThan(90);
     }
+  });
+
+  it("keeps immediate side covers large enough to stay legible", () => {
+    expect(getCoverFlowTransform(1).scale).toBeGreaterThanOrEqual(0.75);
+    expect(getCoverFlowTransform(-1).scale).toBeGreaterThanOrEqual(0.75);
   });
 
   it("keeps visual card centers monotonic with a tighter peripheral stack", () => {
