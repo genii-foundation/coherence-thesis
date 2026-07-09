@@ -436,6 +436,13 @@ export function AudioPlayerIsland({
   const audioStartedAtRef = useRef<number | null>(null);
   const audioItemRef = useRef<AudioQueueItem | null>(null);
   const audioPreferenceRef = useRef<AudioVoicePreference>(defaultVoicePreference);
+  const handledListenRequestRef = useRef<string | null>(null);
+  const speakRef = useRef<
+    (
+      index?: number,
+      playbackPreference?: AudioVoicePreference,
+    ) => Promise<void>
+  >(async () => undefined);
 
   const flushAudioSeconds = useCallback((): void => {
     const startedAt = audioStartedAtRef.current;
@@ -675,6 +682,8 @@ export function AudioPlayerIsland({
     playIndex(index, token, playbackPreference);
   }
 
+  speakRef.current = speak;
+
   async function restartActivePlayback(
     playbackPreference: AudioVoicePreference,
   ): Promise<void> {
@@ -713,6 +722,34 @@ export function AudioPlayerIsland({
     }
     void speak();
   }
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.get("listen") !== "1") return;
+    if (!preferenceReady || !voicesReady || !supported || queue.length === 0) {
+      return;
+    }
+    const requestKey = `${pathname}?${searchParams.toString()}`;
+    if (handledListenRequestRef.current === requestKey) return;
+    handledListenRequestRef.current = requestKey;
+    setOpen(true);
+    void speakRef.current(0);
+    const remainingParams = new URLSearchParams(searchParams.toString());
+    remainingParams.delete("listen");
+    const nextSearch = remainingParams.toString();
+    window.history.replaceState(
+      window.history.state,
+      "",
+      `${pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`,
+    );
+  }, [
+    pathname,
+    preferenceReady,
+    queue.length,
+    setOpen,
+    supported,
+    voicesReady,
+  ]);
 
   function handleVoiceChange(voiceURI: string | null): void {
     const nextPreference = {

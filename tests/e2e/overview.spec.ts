@@ -74,7 +74,7 @@ test("home page presents the overview and manuscript entry points", async ({
   const firstReadTarget = catalog.sections[0]!;
   await expect(
     page.getByRole("link", { name: "Listen" }),
-  ).toHaveAttribute("href", firstReadTarget.href);
+  ).toHaveAttribute("href", `${firstReadTarget.href}?listen=1`);
   await expect(
     page.getByRole("link", { name: "Read", exact: true }),
   ).toHaveAttribute("href", firstReadTarget.href);
@@ -337,11 +337,66 @@ test("home page listen and read actions resume at the first unread section", asy
 
   await expect(page.getByRole("link", { name: "Listen" })).toHaveAttribute(
     "href",
-    unreadSection.href,
+    `${unreadSection.href}?listen=1`,
   );
   await expect(
     page.getByRole("link", { name: "Read", exact: true }),
   ).toHaveAttribute("href", unreadSection.href);
+});
+
+test("home page listen action starts audiobook playback", async ({ page }) => {
+  await page.addInitScript(() => {
+    class TestSpeechSynthesisUtterance {
+      text: string;
+      rate = 1;
+      pitch = 1;
+      voice: SpeechSynthesisVoice | null = null;
+      onend: (() => void) | null = null;
+
+      constructor(text: string) {
+        this.text = text;
+      }
+    }
+
+    const spokenAudio: string[] = [];
+    Object.defineProperty(window, "__spokenAudio", {
+      configurable: true,
+      value: spokenAudio,
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: TestSpeechSynthesisUtterance,
+    });
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        addEventListener: () => undefined,
+        cancel: () => undefined,
+        getVoices: () => [],
+        pause: () => undefined,
+        removeEventListener: () => undefined,
+        resume: () => undefined,
+        speak: (utterance: SpeechSynthesisUtterance) => {
+          spokenAudio.push(utterance.text);
+        },
+      },
+    });
+  });
+
+  await page.goto("/");
+  await page.getByRole("link", { name: "Listen" }).click();
+
+  await expect(page).toHaveURL(new RegExp(`${catalog.sections[0]!.href}$`));
+  await expect(
+    page.getByRole("button", { name: "Pause audiobook" }),
+  ).toBeVisible();
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __spokenAudio: string[] }).__spokenAudio,
+      ),
+    )
+    .toHaveLength(1);
 });
 
 test("overview links into canonical manuscript sections", async ({
