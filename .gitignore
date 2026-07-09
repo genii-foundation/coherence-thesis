@@ -16,6 +16,15 @@
 /test-results
 /.next-e2e/
 /.local-preview/
+/.playwright-mcp/
+
+# local editor state
+/.idea/
+
+# root-level visual QA captures
+/coherence-*-preview.png
+/cover-flow-*.png
+/orbit-*.png
 
 # next.js
 /.next/
