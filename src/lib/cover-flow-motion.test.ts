@@ -1,10 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  coverFlowTuning,
-  getCoverFlowFlickTarget,
-  getCoverFlowTransform,
-  getCoverFlowWheelIntent,
-} from "./cover-flow-motion";
+import { coverFlowTuning, getCoverFlowTransform } from "./cover-flow-motion";
 
 describe("cover flow motion", () => {
   it("keeps the center transform continuous through tiny scroll changes", () => {
@@ -30,16 +25,26 @@ describe("cover flow motion", () => {
     }
   });
 
-  it("fans the first two background cards while pulling the outer stack inward", () => {
-    const activeNeighbor = getCoverFlowTransform(0.44).shift;
-    const firstBackground = getCoverFlowTransform(1).shift;
-    const outerBackground = getCoverFlowTransform(1.4).shift;
-    const farBackground = getCoverFlowTransform(2).shift;
+  it("keeps visual card centers monotonic with a tighter peripheral stack", () => {
+    const step = coverFlowTuning.spacing.nativeScrollStepPx;
+    const visualCenter = (offset: number) =>
+      offset * step + getCoverFlowTransform(offset, step).shift;
 
-    expect(activeNeighbor).toBeGreaterThan(260);
-    expect(firstBackground).toBeGreaterThan(80);
-    expect(outerBackground).toBeLessThan(10);
-    expect(farBackground).toBeLessThan(firstBackground / 2);
+    const halfStep = visualCenter(0.5);
+    const firstBackground = visualCenter(1);
+    const secondBackground = visualCenter(2);
+    const thirdBackground = visualCenter(3);
+    const fourthBackground = visualCenter(4);
+
+    expect(halfStep).toBeGreaterThan(240);
+    expect(firstBackground).toBeGreaterThan(400);
+    expect(secondBackground).toBeGreaterThan(firstBackground);
+    expect(thirdBackground).toBeGreaterThan(secondBackground);
+    expect(fourthBackground).toBeGreaterThan(thirdBackground);
+    expect(secondBackground - firstBackground).toBeLessThan(firstBackground);
+    expect(thirdBackground - secondBackground).toBeLessThan(
+      secondBackground - firstBackground,
+    );
   });
 
   it("hides inactive details while keeping all cover anchors fully opaque", () => {
@@ -64,65 +69,4 @@ describe("cover flow motion", () => {
     expect(far).toBe(coverFlowTuning.coverShadow.min);
   });
 
-  it("sends a decisive forward flick to the last cover", () => {
-    expect(
-      getCoverFlowFlickTarget({
-        activeIndex: 2,
-        distancePx: coverFlowTuning.scroll.flickDistancePx + 1,
-        peakDeltaPx: 12,
-        volumeCount: 9,
-      }),
-    ).toBe(8);
-  });
-
-  it("sends a decisive backward flick to the first cover", () => {
-    expect(
-      getCoverFlowFlickTarget({
-        activeIndex: 6,
-        distancePx: -coverFlowTuning.scroll.flickDistancePx - 1,
-        peakDeltaPx: -12,
-        volumeCount: 9,
-      }),
-    ).toBe(0);
-  });
-
-  it("ignores small cover flow wheel movement", () => {
-    expect(
-      getCoverFlowFlickTarget({
-        activeIndex: 2,
-        distancePx: coverFlowTuning.scroll.flickDistancePx - 1,
-        peakDeltaPx: coverFlowTuning.scroll.flickPeakDeltaPx - 1,
-        volumeCount: 9,
-      }),
-    ).toBeNull();
-  });
-
-  it("ignores flicks that already target the active rail end", () => {
-    expect(
-      getCoverFlowFlickTarget({
-        activeIndex: 8,
-        distancePx: coverFlowTuning.scroll.flickDistancePx + 1,
-        peakDeltaPx: 12,
-        volumeCount: 9,
-      }),
-    ).toBeNull();
-  });
-
-  it("hands meaningful vertical wheel intent back to the page during leftover horizontal inertia", () => {
-    expect(
-      getCoverFlowWheelIntent({ deltaX: 20, deltaY: 32, shiftKey: false }),
-    ).toBe("vertical");
-  });
-
-  it("keeps horizontal trackpad swipes and shift-wheel gestures on the cover rail", () => {
-    expect(
-      getCoverFlowWheelIntent({ deltaX: 20, deltaY: 12, shiftKey: false }),
-    ).toBe("horizontal");
-    expect(
-      getCoverFlowWheelIntent({ deltaX: 24, deltaY: 2, shiftKey: false }),
-    ).toBe("horizontal");
-    expect(
-      getCoverFlowWheelIntent({ deltaX: 0, deltaY: 24, shiftKey: true }),
-    ).toBe("horizontal");
-  });
 });
