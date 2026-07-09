@@ -37,13 +37,26 @@
   --card-background: rgba(251, 246, 235, 0.66);
   --card-background-hover: rgba(251, 246, 235, 0.86);
   --glass-background: rgba(251, 246, 235, 0.72);
+  --page-background-highlight-alpha: 0.12;
+  --page-background-highlight-wash-alpha: 0.044;
+  --page-background-highlight-spread: 37rem;
   --page-background:
+    radial-gradient(
+      ellipse at 70% 7%,
+      rgba(255, 255, 255, var(--page-background-highlight-alpha)),
+      transparent var(--page-background-highlight-spread)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, var(--page-background-highlight-wash-alpha)),
+      transparent 13rem
+    ),
     radial-gradient(ellipse at 20% 18%, rgba(96, 121, 109, 0.14), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgba(255, 251, 241, 0.2), transparent 26rem),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 251, 241, 0.08), transparent 26rem),
     radial-gradient(ellipse at 50% 86%, rgba(119, 84, 42, 0.11), transparent 30rem),
     var(--page-texture-noise),
-    linear-gradient(180deg, var(--paper-soft), var(--paper) 34%, #eadbbd);
-  --page-background-size: auto, auto, auto, 320px 320px, auto;
+    linear-gradient(180deg, #efe0c5, var(--paper) 42%, #eadbbd);
+  --page-background-size: auto, auto, auto, auto, auto, 320px 320px, auto;
 }
 
 html[data-reader-theme="light"] {
@@ -71,12 +84,22 @@ html[data-reader-theme="light"] {
   --card-background-hover: rgba(255, 254, 250, 0.96);
   --glass-background: rgba(255, 254, 250, 0.78);
   --page-background:
+    radial-gradient(
+      ellipse at 70% 7%,
+      rgba(255, 255, 255, var(--page-background-highlight-alpha)),
+      transparent var(--page-background-highlight-spread)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, var(--page-background-highlight-wash-alpha)),
+      transparent 13rem
+    ),
     radial-gradient(ellipse at 20% 18%, rgba(63, 104, 88, 0.1), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgba(255, 254, 250, 0.42), transparent 26rem),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 254, 250, 0.12), transparent 26rem),
     radial-gradient(ellipse at 50% 86%, rgba(89, 64, 24, 0.08), transparent 30rem),
     var(--page-texture-noise),
-    linear-gradient(180deg, #fffefa, #f8f6f1 58%, #f0ebe2);
-  --page-background-size: auto, auto, auto, 320px 320px, auto;
+    linear-gradient(180deg, #f4ead7, #f8f6f1 58%, #f0ebe2);
+  --page-background-size: auto, auto, auto, auto, auto, 320px 320px, auto;
 }
 
 html[data-reader-theme="dark"] {
@@ -1840,11 +1863,25 @@ input {
   line-height: 1.58;
 }
 
+.hero-cta-stack {
+  display: grid;
+  justify-items: center;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: var(--home-hero-copy-gap);
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center;
   gap: 0.75rem;
   margin-top: var(--home-hero-copy-gap);
+}
+
+.hero-cta-stack .hero-actions {
+  width: 100%;
+  margin-top: 0;
 }
 
 .primary-link,
@@ -1905,18 +1942,25 @@ input {
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.1rem;
-  margin: 0.65rem 0 0;
+  justify-content: center;
+  gap: 0.32rem 0.58rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0.8rem 0 0;
   padding: 0;
   list-style: none;
 }
 
 .hero-stats li {
-  color: var(--bronze);
+  color: var(--bronze-deep);
   padding: 0;
-  font-family: var(--font-ui);
-  font-size: 0.8rem;
-  font-weight: 300;
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 600;
+  font-variant-numeric: lining-nums;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.38);
 }
 
 .volume-grid {
@@ -5253,11 +5297,20 @@ input {
     flex-direction: column;
   }
 
+  .hero-cta-stack,
   .hero-actions,
   .hero-actions .primary-link,
   .hero-actions .secondary-link,
   .hero-stats {
     width: 100%;
+  }
+
+  .hero-cta-stack {
+    justify-items: stretch;
+  }
+
+  .hero-stats {
+    justify-content: flex-start;
   }
 
   .hero-stats li {

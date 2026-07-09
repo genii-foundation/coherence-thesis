@@ -44,15 +44,17 @@ export default function Home() {
             humane technology, and place-based regeneration, join us in shaping
             a future worth inheriting.
           </p>
-          <HeroActionsIsland
-            fallbackHref={firstReadTarget.href}
-            sections={heroReadTargets}
-          />
-          <ul className="hero-stats" aria-label="Manuscript stats">
-            {heroStats.map((stat) => (
-              <li key={stat}>{stat}</li>
-            ))}
-          </ul>
+          <div className="hero-cta-stack">
+            <HeroActionsIsland
+              fallbackHref={firstReadTarget.href}
+              sections={heroReadTargets}
+            />
+            <ul className="hero-stats" aria-label="Manuscript stats">
+              {heroStats.map((stat) => (
+                <li key={stat}>{stat}</li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div className="hero-art" aria-label="Coherence Thesis cover art">
           <Image

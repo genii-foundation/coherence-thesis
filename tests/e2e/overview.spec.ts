@@ -90,6 +90,7 @@ test("home page presents the overview and manuscript entry points", async ({
       "If your path moves through inner development, social architecture, humane technology, and place-based regeneration, join us in shaping a future worth inheriting.",
     ),
   ).toBeVisible();
+  await expect(page.locator(".hero-copy h1")).toHaveCSS("font-weight", "300");
   await expect(page.locator(".hero-stats li")).toHaveText([
     `${catalog.stats.volumeCount.toLocaleString()} volumes`,
     `${catalog.stats.sectionCount.toLocaleString()} sections`,
@@ -97,12 +98,24 @@ test("home page presents the overview and manuscript entry points", async ({
   ]);
   await expect(page.locator(".hero-stats li").first()).toHaveCSS(
     "font-weight",
-    "300",
+    "600",
   );
   await expect(page.locator(".hero-stats li").first()).toHaveCSS(
-    "color",
-    hexToRgb("#a47b3f"),
+    "text-transform",
+    "uppercase",
   );
+  const statSeparatorContent = await page
+    .locator(".hero-stats li")
+    .first()
+    .evaluate((item) => getComputedStyle(item, "::after").content);
+  expect(statSeparatorContent).toBe("none");
+  await expect(page.locator(".hero-stats li").first()).toHaveCSS(
+    "color",
+    hexToRgb("#77542a"),
+  );
+  await expect(
+    page.getByRole("region", { name: "Background highlight intensity" }),
+  ).toHaveCount(0);
   await expect(page.locator(".overview-map")).toHaveCount(0);
   await expect(page.locator(".stats-band")).toHaveCount(0);
   await expect(page.getByText("Ready for the full body")).toHaveCount(0);
@@ -124,6 +137,29 @@ test("home page presents the overview and manuscript entry points", async ({
       links.map((link) => Math.round(link.getBoundingClientRect().top)),
     );
     expect(new Set(actionTops).size).toBe(1);
+    const heroCtaAlignment = await page.evaluate(() => {
+      const actions = document
+        .querySelector(".hero-actions")
+        ?.getBoundingClientRect();
+      const stats = document
+        .querySelector(".hero-stats")
+        ?.getBoundingClientRect();
+
+      return {
+        centerDelta:
+          actions && stats
+            ? Math.abs(
+                actions.left + actions.width / 2 - (stats.left + stats.width / 2),
+              )
+            : Number.POSITIVE_INFINITY,
+        statsWidth: stats?.width ?? Number.POSITIVE_INFINITY,
+        actionsWidth: actions?.width ?? 0,
+      };
+    });
+    expect(heroCtaAlignment.centerDelta).toBeLessThanOrEqual(1);
+    expect(heroCtaAlignment.statsWidth).toBeLessThanOrEqual(
+      heroCtaAlignment.actionsWidth,
+    );
     const brandKickerFit = await page
       .locator(".site-header .brand-kicker")
       .evaluate((element) => ({
