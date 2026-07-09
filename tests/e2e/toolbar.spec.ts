@@ -503,6 +503,14 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   await expect(
     outlineMenu.locator(".outline-volume-link").first(),
   ).toBeVisible();
+  const topLinks = outlineMenu.locator(".outline-top-links a");
+  await expect(topLinks).toHaveCount(2);
+  await expect(topLinks.nth(0).locator("small")).toHaveText("Home");
+  await expect(topLinks.nth(1).locator("small")).toHaveText("Outline");
+  const topLinkIcons = await topLinks.evaluateAll((links) =>
+    links.map((link) => link.querySelector("svg")?.innerHTML ?? ""),
+  );
+  expect(topLinkIcons[0]).not.toBe(topLinkIcons[1]);
 
   const outlineBox = await outlineMenu.boundingBox();
   const outlineViewport = page.viewportSize();

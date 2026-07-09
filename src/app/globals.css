@@ -3377,7 +3377,7 @@ input {
 }
 
 .page-heading h1 + p {
-  margin-top: clamp(0.85rem, 1.8vw, 1.15rem);
+  margin-top: clamp(0.9rem, 1.8vw, 1.15rem);
 }
 
 .volume-heading {
