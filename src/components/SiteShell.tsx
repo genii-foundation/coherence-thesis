@@ -54,6 +54,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     sectionId: firstSection.sectionId,
     title: firstSection.title,
     text: "",
+    contentHash: firstSection.contentHash,
     audioVersionId: firstSection.audioVersionId,
     href: firstSection.href,
     chapterHref: firstSection.chapterHref,

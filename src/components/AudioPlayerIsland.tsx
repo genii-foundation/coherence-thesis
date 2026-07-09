@@ -105,6 +105,9 @@ type PlaybackLocation = {
   wordId?: string;
 };
 
+type ProgressAudioQueueItem = AudioQueueItem &
+  Pick<ProgressSectionData, "contentHash">;
+
 type SpeakAudio = (
   index?: number,
   playbackPreference?: AudioVoicePreference,
@@ -403,7 +406,7 @@ export function AudioPlayerIsland({
   fallbackAudio,
   overviewAudio,
 }: {
-  fallbackAudio: AudioQueueItem;
+  fallbackAudio: ProgressAudioQueueItem;
   overviewAudio: AudioQueueItem;
 }) {
   const pathname = usePathname();
@@ -488,7 +491,7 @@ export function AudioPlayerIsland({
       readerHref: section.readerHref,
     }));
   }, [hash, overviewAudio, pathname, sections]);
-  const sectionQueue = useMemo<AudioQueueItem[]>(
+  const sectionQueue = useMemo<ProgressAudioQueueItem[]>(
     () =>
       sections
         .filter((section) => Boolean(section.audioVersionId))
@@ -496,6 +499,7 @@ export function AudioPlayerIsland({
           sectionId: section.sectionId,
           title: section.title,
           text: "",
+          contentHash: section.contentHash,
           audioVersionId: section.audioVersionId,
           href: section.href,
           chapterHref: section.chapterHref,
@@ -503,7 +507,7 @@ export function AudioPlayerIsland({
         })),
     [sections],
   );
-  const fallbackQueue = useMemo<AudioQueueItem[]>(() => {
+  const fallbackQueue = useMemo<ProgressAudioQueueItem[]>(() => {
     if (sectionQueue.length === 0) return [fallbackAudio];
 
     const firstUnreadIndex = sectionQueue.findIndex((section) =>
