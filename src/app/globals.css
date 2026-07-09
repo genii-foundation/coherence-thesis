@@ -4328,86 +4328,8 @@ input {
   text-align: center;
 }
 
-.progress-cloud-offset-editor {
-  display: grid;
-  gap: 1rem;
-  margin-top: 1.25rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--card-background);
-  padding: 1rem;
-}
-
-.progress-cloud-offset-heading {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.progress-cloud-offset-heading .eyebrow,
-.progress-cloud-offset-heading h2,
-.progress-cloud-offset-help {
-  margin: 0;
-}
-
-.progress-cloud-offset-heading h2 {
-  color: var(--ink);
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-}
-
-.progress-cloud-offset-heading output {
-  color: var(--bronze-deep);
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 800;
-}
-
-.progress-cloud-offset-control {
-  display: grid;
-  gap: 0.35rem;
-  color: var(--ink-soft);
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.progress-cloud-offset-control input {
-  width: 100%;
-  accent-color: var(--bronze-deep);
-}
-
-.progress-cloud-offset-help {
-  color: var(--ink-soft);
-  font-size: 0.85rem;
-}
-
-.progress-cloud-offset-samples {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.6rem;
-}
-
-.progress-cloud-offset-samples figure {
-  display: grid;
-  justify-items: center;
-  gap: 0.4rem;
-  min-width: 0;
-  margin: 0;
-}
-
-.progress-cloud-offset-samples figcaption {
-  color: var(--ink-soft);
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-
 @media (max-width: 48rem) {
   .progress-preview-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .progress-cloud-offset-samples {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

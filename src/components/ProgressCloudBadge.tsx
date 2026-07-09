@@ -16,7 +16,6 @@ type ProgressCloudVariant = {
 };
 
 type ProgressCloudBadgeProps = {
-  cloudDashOffset?: number;
   connected?: boolean;
   percent: number;
   variantId?: string;
@@ -35,11 +34,13 @@ type ProgressCloudStyle = CSSProperties & {
 
 const cloudPath =
   "M20.6 46.4c-8.1 0-14.6-5.7-14.6-12.9 0-6.5 5.2-11.8 12.2-12.6C20.8 11 29.8 4.7 40.5 4.7c9.4 0 17.5 4.7 21.2 12.4 9.8.4 17.3 7.1 17.3 15.5 0 7.8-6.8 13.8-15.6 13.8H20.6Z";
+const cloudProgressPath =
+  "M40.5 4.7c9.4 0 17.5 4.7 21.2 12.4 9.8.4 17.3 7.1 17.3 15.5 0 7.8-6.8 13.8-15.6 13.8H20.6c-8.1 0-14.6-5.7-14.6-12.9 0-6.5 5.2-11.8 12.2-12.6C20.8 11 29.8 4.7 40.5 4.7Z";
 const cloudPathTransform = "translate(0 9.667) scale(0.7619048)";
-// The cloud path begins at its lower-left edge. Its highest point sits 37.25%
-// around the path. SVG offsets the dash in the inverse direction, so partial
-// fills need the remaining 62.75% to begin at the top and proceed clockwise.
-const cloudTopDashOffset = 62.75;
+// Measured from the source path with SVGGeometryElement.getTotalLength().
+// Real perimeter units stay stable when the path is transformed and its stroke
+// uses vector-effect: non-scaling-stroke.
+const cloudPathLength = 188.17681884765625;
 const cloudTopPoint = { x: 30.857, y: 13.248 };
 const cloudProgressBlipRadius = 1.9;
 const offlineCircleRadius = 25.2;
@@ -196,10 +197,11 @@ function clampPercent(percent: number) {
   return Math.max(0, Math.min(100, percent));
 }
 
-function progressDash(percent: number) {
+function cloudProgressDash(percent: number) {
   const progress = clampPercent(percent);
-  if (progress >= 100) return "100 0";
-  return `${progress} ${100 - progress}`;
+  if (progress >= 100) return undefined;
+  const progressLength = (cloudPathLength * progress) / 100;
+  return `${progressLength} ${cloudPathLength}`;
 }
 
 function circlePoint(angle: number) {
@@ -226,7 +228,6 @@ function circleProgressArc(percent: number, offset: number) {
 }
 
 export function ProgressCloudBadge({
-  cloudDashOffset: cloudDashOffsetOverride,
   connected = false,
   percent,
   variantId = "sync-orbit",
@@ -251,10 +252,6 @@ export function ProgressCloudBadge({
   };
 
   const offlineRotation = "rotate(-90 32 32)";
-  const cloudDashOffset =
-    progressPercent >= 100
-      ? 0
-      : (cloudDashOffsetOverride ?? cloudTopDashOffset);
   const offlineProgressArc = circleProgressArc(progressPercent, 0);
 
   return (
@@ -276,15 +273,12 @@ export function ProgressCloudBadge({
             <path
               className="progress-cloud-track"
               d={cloudPath}
-              pathLength={100}
             />
             {progressPercent <= 0 ? null : (
               <path
                 className="progress-cloud-progress"
-                d={cloudPath}
-                pathLength={100}
-                strokeDasharray={progressDash(progressPercent)}
-                strokeDashoffset={cloudDashOffset}
+                d={cloudProgressPath}
+                strokeDasharray={cloudProgressDash(progressPercent)}
               />
             )}
           </g>

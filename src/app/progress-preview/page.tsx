@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { ProgressCloudBadge } from "@/components/ProgressCloudBadge";
-import { ProgressCloudOffsetEditor } from "@/components/ProgressCloudOffsetEditor";
 
 export const metadata: Metadata = {
   title: "Progress Icon Preview",
@@ -41,7 +40,6 @@ export default function ProgressPreviewPage() {
           </section>
         ))}
       </div>
-      <ProgressCloudOffsetEditor />
     </main>
   );
 }

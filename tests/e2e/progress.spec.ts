@@ -27,6 +27,81 @@ const systemVoicePreference = {
   useSystemVoice: true,
 };
 
+test("cloud progress uses exact perimeter proportions from twelve o'clock", async ({
+  page,
+}) => {
+  await page.goto("/progress-preview/");
+
+  const expectedPercents = [0, 1, 25, 50, 97, 100];
+  const cards = page.locator(".progress-preview-card");
+  await expect(cards).toHaveCount(expectedPercents.length);
+
+  for (const [index, expectedPercent] of expectedPercents.entries()) {
+    const cloud = cards
+      .nth(index)
+      .locator("svg.progress-cloud-mark:not(.progress-cloud-mark-offline)");
+
+    if (expectedPercent === 0) {
+      const blip = cloud.locator(".progress-cloud-progress-blip");
+      await expect(blip).toHaveAttribute("cx", "30.857");
+      await expect(blip).toHaveAttribute("cy", "13.248");
+      continue;
+    }
+
+    const geometry = await cloud.evaluate((svg) => {
+      const progressPath = svg.querySelector<SVGPathElement>(
+        ".progress-cloud-progress",
+      );
+      if (!progressPath) throw new Error("Missing cloud progress path");
+
+      const totalLength = progressPath.getTotalLength();
+      const dashLength = Number.parseFloat(
+        progressPath.getAttribute("stroke-dasharray") ?? String(totalLength),
+      );
+      const ownerSvg = progressPath.ownerSVGElement;
+      if (!ownerSvg) throw new Error("Missing cloud progress SVG");
+
+      const ownerMatrix = ownerSvg.getCTM();
+      const pathMatrix = progressPath.getCTM();
+      if (!ownerMatrix || !pathMatrix) {
+        throw new Error("Missing cloud progress transform");
+      }
+      const matrix = ownerMatrix.inverse().multiply(pathMatrix);
+
+      const toOuterPoint = (point: DOMPoint) => point.matrixTransform(matrix);
+      const start = toOuterPoint(progressPath.getPointAtLength(0));
+      const end = toOuterPoint(
+        progressPath.getPointAtLength(Math.min(dashLength, totalLength)),
+      );
+      const angle = (point: DOMPoint) =>
+        (Math.atan2(point.x - 32, 32 - point.y) * 180) / Math.PI;
+      const startAngle = angle(start);
+      const endAngle = angle(end);
+
+      return {
+        angularSweep: (endAngle - startAngle + 360) % 360,
+        dashRatio: (dashLength / totalLength) * 100,
+        hasDashOffset: progressPath.hasAttribute("stroke-dashoffset"),
+        hasNormalizedPathLength: progressPath.hasAttribute("pathLength"),
+        startX: start.x,
+        startY: start.y,
+      };
+    });
+
+    expect(geometry.startX).toBeCloseTo(30.857, 2);
+    expect(geometry.startY).toBeCloseTo(13.248, 2);
+    expect(Math.abs(geometry.dashRatio - expectedPercent)).toBeLessThan(0.001);
+    expect(geometry.hasDashOffset).toBe(false);
+    expect(geometry.hasNormalizedPathLength).toBe(false);
+
+    if (expectedPercent < 100) {
+      expect(
+        Math.abs(geometry.angularSweep - expectedPercent * 3.6),
+      ).toBeLessThan(5);
+    }
+  }
+});
+
 test("progress menu shows a resettable email sent confirmation", async ({
   page,
 }) => {
