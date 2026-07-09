@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { AstrologyIcon } from "@/components/AstrologyIcon";
 import {
+  coverFlowTuning,
   getCoverFlowTransform,
 } from "@/lib/cover-flow-motion";
 import type { Volume } from "@/lib/manuscript-data";
@@ -259,6 +260,7 @@ export function ManuscriptCoverFlowIsland({
     const scrollLeft = scroller.scrollLeft;
     let closestIndex = 0;
     let closestDistance = Number.POSITIVE_INFINITY;
+    const positionedCards: HTMLElement[] = [];
 
     cardRefs.current.forEach((card, index) => {
       const snap = snapRefs.current[index];
@@ -269,10 +271,22 @@ export function ManuscriptCoverFlowIsland({
       const offset = (cardCenter - center) / scrollStepWidth;
       const distance = Math.abs(offset);
       const transform = getCoverFlowTransform(offset, scrollStepWidth);
+      const coverFrame = card.querySelector<HTMLElement>(
+        ".cover-flow-image-frame",
+      );
+      const coverCenterY = (coverFrame?.offsetHeight ?? 0) / 2;
+      const verticalCenterShift =
+        coverCenterY *
+        (coverFlowTuning.scale.active - transform.scale) *
+        coverFlowTuning.verticalAlignment.sideCoverCenterCompensation;
 
       card.style.setProperty(
         "--cover-flow-shift",
         `${transform.shift.toFixed(1)}px`,
+      );
+      card.style.setProperty(
+        "--cover-flow-y",
+        `${verticalCenterShift.toFixed(1)}px`,
       );
       card.style.setProperty("--cover-flow-rotate", `${transform.rotate}deg`);
       card.style.setProperty("--cover-flow-scale", transform.scale.toFixed(3));
@@ -295,6 +309,7 @@ export function ManuscriptCoverFlowIsland({
       );
       card.style.zIndex = String(transform.layer);
       snap.style.zIndex = String(transform.layer);
+      positionedCards.push(card);
 
       if (distance < closestDistance) {
         closestDistance = distance;
@@ -308,6 +323,44 @@ export function ManuscriptCoverFlowIsland({
       maxScrollLeft - scrollLeft <= 2
     ) {
       closestIndex = Math.max(volumes.length - 1, 0);
+    }
+
+    const track = scroller.querySelector<HTMLElement>(".cover-flow-track");
+    const referenceCover =
+      positionedCards[0]?.querySelector<HTMLElement>(
+        ".cover-flow-image-frame",
+      ) ?? null;
+    const trackPaddingTop = track
+      ? Number.parseFloat(window.getComputedStyle(track).paddingTop)
+      : 0;
+    const targetCoverCenterY =
+      track && referenceCover
+        ? scroller.getBoundingClientRect().top +
+          trackPaddingTop +
+          referenceCover.offsetTop +
+          (referenceCover.offsetHeight * coverFlowTuning.scale.active) / 2
+      : null;
+
+    if (targetCoverCenterY !== null) {
+      for (let pass = 0; pass < 3; pass += 1) {
+        positionedCards.forEach((card) => {
+          const coverFrame = card.querySelector<HTMLElement>(
+            ".cover-flow-image-frame",
+          );
+          const coverBox = coverFrame?.getBoundingClientRect();
+          if (!coverBox) return;
+
+          const currentY = Number.parseFloat(
+            card.style.getPropertyValue("--cover-flow-y") || "0",
+          );
+          const coverCenterY = coverBox.top + coverBox.height / 2;
+          const correctedY = currentY + targetCoverCenterY - coverCenterY;
+          card.style.setProperty(
+            "--cover-flow-y",
+            `${correctedY.toFixed(1)}px`,
+          );
+        });
+      }
     }
 
     setActiveIndex((current) =>

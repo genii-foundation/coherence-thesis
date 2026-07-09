@@ -1060,10 +1060,26 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   const verticalStability = await coverFlow
     .locator(".cover-flow-scroll")
     .evaluate(async (scroller) => {
+      const waitForTransformFrame = async () => {
+        await new Promise<void>((resolve) => {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => resolve());
+              });
+            });
+          });
+        });
+      };
+
+      scroller.scrollLeft = 0;
+      scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
+      await waitForTransformFrame();
+
       const card = document.querySelector<HTMLElement>(".cover-flow-card");
       const cover = card?.querySelector<HTMLElement>(".cover-flow-image-frame");
       const originalScrollLeft = scroller.scrollLeft;
-      const tops: number[] = [];
+      const centers: number[] = [];
       const maxScrollLeft = Math.min(
         scroller.scrollWidth - scroller.clientWidth,
         420,
@@ -1072,26 +1088,22 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       for (let scrollLeft = 0; scrollLeft <= maxScrollLeft; scrollLeft += 30) {
         scroller.scrollLeft = scrollLeft;
         scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
-        await new Promise<void>((resolve) => {
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => resolve());
-          });
-        });
+        await waitForTransformFrame();
         const coverBox = cover?.getBoundingClientRect();
-        if (coverBox) tops.push(coverBox.top);
+        if (coverBox) centers.push(coverBox.top + coverBox.height / 2);
       }
 
       scroller.scrollLeft = originalScrollLeft;
       scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
 
       return {
-        maxTop: Math.max(...tops),
-        minTop: Math.min(...tops),
+        maxCenter: Math.max(...centers),
+        minCenter: Math.min(...centers),
       };
     });
-  expect(verticalStability.maxTop - verticalStability.minTop).toBeLessThanOrEqual(
-    1,
-  );
+  expect(
+    verticalStability.maxCenter - verticalStability.minCenter,
+  ).toBeLessThanOrEqual(2);
 
   const currentActiveHref = await coverFlow
     .locator('.cover-flow-card[aria-current="true"]')

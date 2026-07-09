@@ -2131,6 +2131,7 @@ input {
   --cover-flow-rotate: 0deg;
   --cover-flow-scale: 1;
   --cover-flow-shift: 0px;
+  --cover-flow-y: 0px;
   --cover-flow-z: 0px;
   display: grid;
   gap: clamp(3rem, 4.2vw, 3.5rem);
@@ -2143,8 +2144,9 @@ input {
   text-decoration: none;
   opacity: 1;
   transform: perspective(var(--cover-flow-card-perspective))
-    translateX(var(--cover-flow-shift)) translateZ(var(--cover-flow-z))
-    rotateY(var(--cover-flow-rotate)) scale(var(--cover-flow-scale));
+    translateX(var(--cover-flow-shift)) translateY(var(--cover-flow-y))
+    translateZ(var(--cover-flow-z)) rotateY(var(--cover-flow-rotate))
+    scale(var(--cover-flow-scale));
   transform-origin: center var(--cover-flow-cover-origin-y);
   transform-style: flat;
   will-change: transform;
