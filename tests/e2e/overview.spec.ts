@@ -1124,6 +1124,81 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     catalog.volumes.findIndex((volume) => volume.href === currentActiveHref),
     0,
   );
+  if (testInfo.project.name !== "mobile") {
+    await page.setViewportSize({ width: 2048, height: 1152 });
+    await page.reload();
+    await expect(coverFlow).toBeVisible();
+    await expect(
+      coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+    ).toHaveAttribute("data-volume-href", initialActiveVolume.href);
+    await coverFlow
+      .locator('.cover-flow-card[aria-current="true"] .cover-flow-image-frame')
+      .scrollIntoViewIfNeeded();
+    const farBackgroundClickPoint = await coverFlow.evaluate(
+      (flow) => {
+        const cards = Array.from(
+          flow.querySelectorAll<HTMLElement>(".cover-flow-card"),
+        );
+        const activeIndex = cards.findIndex(
+          (card) => card.getAttribute("aria-current") === "true",
+        );
+        const targetIndex = Math.min(activeIndex + 3, cards.length - 1);
+        const card = cards[targetIndex];
+        const cover = card?.querySelector<HTMLElement>(
+          ".cover-flow-image-frame",
+        );
+        const coverBox = cover?.getBoundingClientRect();
+        const visibleLeft = coverBox
+          ? Math.max(coverBox.left, 0)
+          : 0;
+        const visibleRight = coverBox
+          ? Math.min(coverBox.right, document.documentElement.clientWidth)
+          : 0;
+        const x = coverBox ? (visibleLeft + visibleRight) / 2 : -1;
+        const y = coverBox ? coverBox.top + coverBox.height / 2 : -1;
+
+        return {
+          href: card?.getAttribute("data-volume-href") ?? "",
+          height: coverBox?.height ?? 0,
+          targetOffset: targetIndex - activeIndex,
+          visibleWidth: Math.max(0, visibleRight - visibleLeft),
+          viewportHeight: document.documentElement.clientHeight,
+          viewportWidth: document.documentElement.clientWidth,
+          width: coverBox?.width ?? 0,
+          x,
+          y,
+        };
+      },
+    );
+    expect(farBackgroundClickPoint.targetOffset).toBeGreaterThanOrEqual(3);
+    expect(farBackgroundClickPoint.href).not.toBe(initialActiveVolume.href);
+    expect(farBackgroundClickPoint.width).toBeGreaterThan(0);
+    expect(farBackgroundClickPoint.height).toBeGreaterThan(0);
+    expect(farBackgroundClickPoint.visibleWidth).toBeGreaterThan(16);
+    expect(farBackgroundClickPoint.x).toBeGreaterThanOrEqual(0);
+    expect(farBackgroundClickPoint.x).toBeLessThanOrEqual(
+      farBackgroundClickPoint.viewportWidth,
+    );
+    expect(farBackgroundClickPoint.y).toBeGreaterThanOrEqual(0);
+    expect(farBackgroundClickPoint.y).toBeLessThanOrEqual(
+      farBackgroundClickPoint.viewportHeight,
+    );
+    await page.mouse.click(
+      farBackgroundClickPoint.x,
+      farBackgroundClickPoint.y,
+    );
+    await expect(
+      coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+    ).toHaveAttribute("data-volume-href", farBackgroundClickPoint.href, {
+      timeout: 15000,
+    });
+    await expect(page).toHaveURL(/\/$/);
+    await page.reload();
+    await expect(coverFlow).toBeVisible();
+    await expect(
+      coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+    ).toHaveAttribute("data-volume-href", initialActiveVolume.href);
+  }
   const backgroundTarget =
     catalog.volumes[
       currentActiveIndex < catalog.volumes.length - 1
