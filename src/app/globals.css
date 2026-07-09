@@ -339,18 +339,28 @@ input {
   left: 1rem;
   top: 1rem;
   z-index: 20;
-  transform: translateY(-150%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
   border-radius: var(--radius);
   background: var(--ink);
   color: var(--paper-soft);
-  padding: 0.75rem 1rem;
-  transition:
-    background 160ms ease,
-    transform 160ms ease;
+  padding: 0;
+  white-space: nowrap;
+  transition: background 160ms ease;
 }
 
 .skip-link:focus {
-  transform: translateY(0);
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  padding: 0.75rem 1rem;
 }
 
 .skip-link:hover,

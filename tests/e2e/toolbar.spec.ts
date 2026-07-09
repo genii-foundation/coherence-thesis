@@ -1070,6 +1070,48 @@ test("mobile background texture fills the dynamic viewport", async ({ page }) =>
   expect(metrics.textureBottom).toBeGreaterThanOrEqual(metrics.shellBottom - 1);
 });
 
+test("skip link remains clipped until it receives keyboard focus", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+
+  const skipLink = page.getByRole("link", { name: "Skip to main content" });
+  const initiallyHidden = await skipLink.evaluate((element) => {
+    const style = window.getComputedStyle(element);
+    const bounds = element.getBoundingClientRect();
+
+    return {
+      clipPath: style.clipPath,
+      height: bounds.height,
+      overflow: style.overflow,
+      width: bounds.width,
+    };
+  });
+
+  expect(initiallyHidden.clipPath).toContain("inset");
+  expect(initiallyHidden.height).toBeLessThanOrEqual(1);
+  expect(initiallyHidden.overflow).toBe("hidden");
+  expect(initiallyHidden.width).toBeLessThanOrEqual(1);
+
+  await skipLink.focus();
+  await expect(skipLink).toBeFocused();
+
+  const focused = await skipLink.evaluate((element) => {
+    const style = window.getComputedStyle(element);
+    const bounds = element.getBoundingClientRect();
+
+    return {
+      clipPath: style.clipPath,
+      height: bounds.height,
+      overflow: style.overflow,
+      width: bounds.width,
+    };
+  });
+
+  expect(focused.clipPath).toBe("none");
+  expect(focused.height).toBeGreaterThan(1);
+  expect(focused.overflow).toBe("visible");
+  expect(focused.width).toBeGreaterThan(1);
+});
+
 test("toolbar brand owns the active manuscript identity", async ({
   page,
 }, testInfo) => {
