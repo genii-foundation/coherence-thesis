@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BookOpen } from "lucide-react";
+import { AstrologyIcon } from "@/components/AstrologyIcon";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
 import { UpdatedMarkerIsland } from "@/components/UpdatedMarkerIsland";
@@ -67,7 +68,11 @@ export default async function VolumePage({
             <h1 id="volume-title">{volume.title}</h1>
             <p>{volume.subtitle}</p>
             <div className="volume-meta-tags" aria-label="Volume details">
-              <span>{volume.planet}</span>
+              <AstrologyIcon
+                planet={volume.planet}
+                size="compact"
+                className="volume-meta-astrology-icon"
+              />
               <span>{volume.parts.length.toLocaleString()} parts</span>
               <span>{volume.sectionIds.length.toLocaleString()} sections</span>
               <span>{formatReadingDurationForWords(volume.wordCount)}</span>

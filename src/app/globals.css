@@ -2683,26 +2683,86 @@ input {
   text-transform: uppercase;
 }
 
-.manuscript-card-symbol {
-  position: absolute;
-  top: clamp(0.72rem, 1.7vw, 1rem);
-  right: clamp(0.72rem, 1.7vw, 1rem);
+.astrology-icon {
+  --astrology-rgb: 119 84 42;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  padding-top: 0.12rem;
-  border: 1px solid rgb(var(--card-rgb) / 0.28);
+  border: 1px solid rgb(var(--astrology-rgb) / 0.42);
   border-radius: 999px;
-  background: rgb(var(--card-rgb) / 0.1);
-  color: var(--card-accent);
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      rgb(255 255 255 / 0.82),
+      rgb(255 255 255 / 0) 38%
+    ),
+    rgb(var(--astrology-rgb) / 0.16);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.42) inset,
+    0 8px 18px rgb(var(--astrology-rgb) / 0.16);
+  color: rgb(var(--astrology-rgb));
   font-family:
     "Apple Symbols", "Segoe UI Symbol", "Noto Sans Symbols 2",
     "Noto Sans Symbols", sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.22rem;
+  font-weight: 700;
   line-height: 1;
+}
+
+.astrology-icon > span {
+  display: block;
+  transform: translateY(0.03em);
+}
+
+.astrology-icon-compact {
+  width: 1.85rem;
+  height: 1.85rem;
+  font-size: 1.08rem;
+}
+
+.astrology-icon-jupiter {
+  --astrology-rgb: 132 85 43;
+}
+
+.astrology-icon-mars {
+  --astrology-rgb: 169 58 43;
+}
+
+.astrology-icon-mercury {
+  --astrology-rgb: 104 112 67;
+}
+
+.astrology-icon-moon {
+  --astrology-rgb: 91 116 121;
+}
+
+.astrology-icon-neptune {
+  --astrology-rgb: 68 94 145;
+}
+
+.astrology-icon-saturn {
+  --astrology-rgb: 116 91 48;
+}
+
+.astrology-icon-sun {
+  --astrology-rgb: 200 111 24;
+}
+
+.astrology-icon-uranus {
+  --astrology-rgb: 47 122 130;
+}
+
+.astrology-icon-venus {
+  --astrology-rgb: 151 78 108;
+}
+
+.manuscript-card-symbol {
+  position: absolute;
+  top: clamp(0.72rem, 1.7vw, 1rem);
+  right: clamp(0.72rem, 1.7vw, 1rem);
 }
 
 .manuscript-card-panel strong {
@@ -2815,7 +2875,7 @@ input {
   margin-top: 1rem;
 }
 
-.volume-meta-tags span {
+.volume-meta-tags > span:not(.astrology-icon) {
   border: 1px solid rgba(119, 84, 42, 0.24);
   border-radius: 999px;
   background: rgba(251, 246, 235, 0.62);
@@ -2826,6 +2886,10 @@ input {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.volume-meta-astrology-icon {
+  align-self: center;
 }
 
 .stats-band {
