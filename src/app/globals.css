@@ -5905,9 +5905,14 @@ input {
     --cover-flow-panel-width-extra: 0rem;
     --cover-flow-scroll-step: min(56vw, 13.3rem);
     --cover-flow-stage-min-height: clamp(50rem, 174vw, 64rem);
-    --cover-flow-stage-padding-bottom: 10rem;
+    --cover-flow-stage-padding-bottom: 7.2rem;
     --cover-flow-stage-padding-top: 4.9rem;
     width: 100vw;
+  }
+
+  .cover-flow-card {
+    /* Matches the visible side gutter after the active 1.14 cover scale. */
+    gap: max(3.85965vw, calc(43.85965vw - 9.5rem));
   }
 
   .manuscript-card-panel {

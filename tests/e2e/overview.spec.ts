@@ -958,11 +958,11 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     const panelScrollStyle = panelScroll
       ? window.getComputedStyle(panelScroll)
       : null;
-
     return {
       coverHeight: coverBox?.height ?? 0,
       coverToPanelGap:
         coverBox && panelBox ? panelBox.top - coverBox.bottom : 0,
+      coverToPanelGapTarget: coverBox?.left ?? 0,
       panelHeight: panelBox?.height ?? 0,
       panelMaxHeight: panelStyle?.maxHeight ?? "",
       panelOverflowY: panelStyle?.overflowY ?? "",
@@ -1030,7 +1030,15 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   expect(panelMetrics.stageEndGap).toBeLessThanOrEqual(
     panelMetrics.viewportWidth <= 540 ? 150 : 260,
   );
-  expect(panelMetrics.coverToPanelGap).toBeGreaterThanOrEqual(44);
+  if (panelMetrics.viewportWidth <= 540) {
+    expect(
+      Math.abs(
+        panelMetrics.coverToPanelGap - panelMetrics.coverToPanelGapTarget,
+      ),
+    ).toBeLessThanOrEqual(2);
+  } else {
+    expect(panelMetrics.coverToPanelGap).toBeGreaterThanOrEqual(44);
+  }
   expect(panelMetrics.panelMaxHeight).not.toBe("none");
   expect(panelMetrics.panelOverflowY).toBe("hidden");
   expect(panelMetrics.panelTransitionProperty).toContain("height");
