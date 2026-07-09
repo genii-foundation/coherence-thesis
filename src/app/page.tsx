@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { HeroActionsIsland } from "@/components/HeroActionsIsland";
+import { HeroStats } from "@/components/HeroStats";
 import { ManuscriptCoverFlowIsland } from "@/components/ManuscriptCoverFlowIsland";
 import { catalog } from "@/lib/manuscript-data";
-import { formatReadingDurationForWords } from "@/lib/reading-time";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -15,12 +15,6 @@ const heroReadTargets = catalog.sections.map((section) => ({
   contentHash: section.contentHash,
   href: section.readerHref,
 }));
-const heroStats = [
-  `${catalog.stats.volumeCount.toLocaleString()} volumes`,
-  `${catalog.stats.sectionCount.toLocaleString()} sections`,
-  `${formatReadingDurationForWords(catalog.stats.wordCount)} of audio`,
-];
-
 export default function Home() {
   const volumes = catalog.volumes.map((volume) => ({
     ...volume,
@@ -49,11 +43,7 @@ export default function Home() {
               fallbackHref={firstReadTarget.href}
               sections={heroReadTargets}
             />
-            <ul className="hero-stats" aria-label="Manuscript stats">
-              {heroStats.map((stat) => (
-                <li key={stat}>{stat}</li>
-              ))}
-            </ul>
+            <HeroStats className="hero-stats hero-stats--copperplate" />
           </div>
         </div>
         <div className="hero-art" aria-label="Coherence Thesis cover art">

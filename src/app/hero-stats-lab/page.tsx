@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { HeroActionsIsland } from "@/components/HeroActionsIsland";
+import { HeroStats } from "@/components/HeroStats";
 import { catalog } from "@/lib/manuscript-data";
-import { formatReadingDurationForWords } from "@/lib/reading-time";
 
 export const metadata: Metadata = {
   title: "Hero stat treatments",
@@ -17,24 +17,6 @@ const heroReadTargets = catalog.sections.map((section) => ({
   href: section.readerHref,
   sectionId: section.sectionId,
 }));
-
-const heroStats = [
-  {
-    label: "Volumes",
-    value: catalog.stats.volumeCount.toLocaleString(),
-  },
-  {
-    label: "Sections",
-    value: catalog.stats.sectionCount.toLocaleString(),
-  },
-  {
-    label: "Hours of audio",
-    value: formatReadingDurationForWords(catalog.stats.wordCount).replace(
-      / hours$/,
-      "",
-    ),
-  },
-];
 
 const treatments = [
   {
@@ -92,14 +74,11 @@ export default function HeroStatsLab() {
                 fallbackHref={firstReadTarget.href}
                 sections={heroReadTargets}
               />
-              <dl className="hero-stats-lab-stats" aria-label="Manuscript stats">
-                {heroStats.map((stat) => (
-                  <div key={stat.label}>
-                    <dt>{stat.label}</dt>
-                    <dd>{stat.value}</dd>
-                  </div>
-                ))}
-              </dl>
+              <HeroStats
+                className={`hero-stats-lab-stats${
+                  treatment.id === "copperplate" ? " hero-stats--copperplate" : ""
+                }`}
+              />
             </div>
           </section>
         ))}
