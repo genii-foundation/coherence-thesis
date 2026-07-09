@@ -14,6 +14,11 @@ import {
   volumeNavigation,
   volumeById,
 } from "@/lib/manuscript-data";
+import {
+  displayPartCountLabel,
+  displayPartKicker,
+  displayPartTitle,
+} from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 
 export const dynamicParams = false;
@@ -73,7 +78,7 @@ export default async function VolumePage({
                 size="compact"
                 className="volume-meta-astrology-icon"
               />
-              <span>{volume.parts.length.toLocaleString()} parts</span>
+              <span>{displayPartCountLabel(volume)}</span>
               <span>{volume.sectionIds.length.toLocaleString()} sections</span>
               <span>{formatReadingDurationForWords(volume.wordCount)}</span>
             </div>
@@ -90,13 +95,13 @@ export default async function VolumePage({
               <Link key={part.partId} href={part.href} className="part-card">
                 <span className="card-kicker">
                   <BookOpen aria-hidden="true" size={21} />
-                  Part {part.order || "0"}
+                  {displayPartKicker(part, volume)}
                   <span className="content-status-row">
                     <UpdatedMarkerIsland sections={partSections} />
                     <ReadCheckmarkIsland sections={partSections} />
                   </span>
                 </span>
-                <strong>{part.title}</strong>
+                <strong>{displayPartTitle(part, volume)}</strong>
                 <small>{formatReadingDurationForWords(part.wordCount)}</small>
               </Link>
             );

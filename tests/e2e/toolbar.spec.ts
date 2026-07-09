@@ -1324,7 +1324,7 @@ test("toolbar brand owns the active manuscript identity", async ({
   await expect(breadcrumbs.getByText("Wielding Intelligence")).toHaveCount(0);
   await expect(breadcrumbs.locator("li")).toHaveCount(1);
   await expect(breadcrumbs.locator('[aria-current="page"]')).toHaveText(
-    "Front Matter",
+    "Opening",
   );
 
   await page.setViewportSize({ width: 1280, height: 800 });

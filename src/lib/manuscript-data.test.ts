@@ -2,7 +2,9 @@ import { describe, expect, it } from "vitest";
 import {
   allSections,
   breadcrumbRoutes,
+  chapterByHref,
   manuscriptPathParams,
+  partByHref,
   partById,
   sectionNavigation,
   sectionByHrefOrAlias,
@@ -82,6 +84,60 @@ describe("manuscript data", () => {
         "humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil",
       ),
     ).toBe(true);
+  });
+
+  it("publishes clean synthetic opening and contents routes", () => {
+    const opening = partByHref("/manuscripts/humanitys-most-viable-future/opening/");
+    const contents = partByHref("/manuscripts/misanthropic-artifice/contents/");
+    const openingSection = sectionByHrefOrAlias(
+      "/manuscripts/humanitys-most-viable-future/opening/orientation/v01-orientation/",
+    );
+    const contentsSection = sectionByHrefOrAlias(
+      "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-prologue-two-scenes/",
+    );
+
+    expect(opening?.part.partId).toBe("front-matter");
+    expect(opening?.part.title).toBe("Front Matter");
+    expect(contents?.part.partId).toBe("front-matter");
+    expect(contents?.part.title).toBe("Front Matter");
+    expect(openingSection?.section.sectionId).toBe("v01-orientation");
+    expect(contentsSection?.section.sectionId).toBe("v08-prologue-two-scenes");
+  });
+
+  it("keeps legacy front matter routes available as aliases", () => {
+    const legacyOpeningPart = partByHref(
+      "/manuscripts/humanitys-most-viable-future/front-matter/",
+    );
+    const legacyContentsPart = partByHref(
+      "/manuscripts/misanthropic-artifice/front-matter/",
+    );
+    const legacyChapter = chapterByHref(
+      "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/",
+    );
+    const legacySection = sectionByHrefOrAlias(
+      "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-prologue-two-scenes/",
+    );
+    const keys = new Set(
+      manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
+    );
+
+    expect(legacyOpeningPart?.part.href).toBe(
+      "/manuscripts/humanitys-most-viable-future/opening/",
+    );
+    expect(legacyContentsPart?.part.href).toBe(
+      "/manuscripts/misanthropic-artifice/contents/",
+    );
+    expect(legacyChapter?.chapter.href).toBe(
+      "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/",
+    );
+    expect(legacySection?.section.href).toBe(
+      "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-prologue-two-scenes/",
+    );
+    expect(legacySection?.alias?.targetHref).toBe(
+      "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-prologue-two-scenes/",
+    );
+    expect(keys.has("humanitys-most-viable-future/front-matter")).toBe(true);
+    expect(keys.has("misanthropic-artifice/front-matter/prologue-two-scenes")).toBe(true);
   });
 
   it("resolves skipped chapter opener aliases to content sections", () => {

@@ -8,6 +8,7 @@ import {
   readMarkdownDocuments,
   readSectionLedger,
   readVersionProvenance,
+  routeVolumesForDocuments,
   sectionHref,
   searchIndexPath,
   sectionLedgerPath,
@@ -112,12 +113,13 @@ export function validateManuscripts(): void {
   const seenSectionIds = new Set<string>();
   const seenPaths = new Set<string>();
   const volumeIds = new Set<string>();
+  const routeContexts = routeVolumesForDocuments(docs);
   for (const doc of docs) {
     const id = doc.frontmatter.sectionId;
     assert(!seenSectionIds.has(id), `Duplicate sectionId '${id}'.`);
     seenSectionIds.add(id);
     volumeIds.add(doc.frontmatter.volumeId);
-    const href = sectionHref(doc.frontmatter);
+    const href = sectionHref(doc.frontmatter, routeContexts.get(doc.frontmatter.volumeId));
     assert(!seenPaths.has(href), `Duplicate section route '${href}'.`);
     seenPaths.add(href);
     assert(doc.body.trim().length > 0, `Empty manuscript body in ${doc.relativePath}.`);

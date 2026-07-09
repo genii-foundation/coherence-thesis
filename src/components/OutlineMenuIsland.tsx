@@ -271,7 +271,7 @@ export function OutlineMenuIsland() {
                                       partPath === currentPath ? "page" : undefined
                                     }
                                   >
-                                    <span>Part overview</span>
+                                    <span>Overview</span>
                                     <span className="outline-row-meta">
                                       <ProgressStateDot
                                         className="outline-progress-dot"

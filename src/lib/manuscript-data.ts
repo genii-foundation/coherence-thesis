@@ -1,4 +1,9 @@
 import catalogJson from "@/generated/manuscripts/catalog.json";
+import {
+  displayPartRouteSegment,
+  displayPartTitle,
+  isSyntheticFrontMatterPart,
+} from "@/lib/manuscript-labels";
 
 export type ParagraphFingerprint = {
   paragraphId: string;
@@ -215,7 +220,7 @@ export function toolbarOutline(): ToolbarOutline {
       numberLabel: volume.numberLabel,
       wordCount: volume.wordCount,
       parts: volume.parts.map((part) => ({
-        title: part.title,
+        title: displayPartTitle(part, volume),
         href: part.href,
         wordCount: part.wordCount,
         chapters: part.chapters.map((chapter) => ({
@@ -247,7 +252,7 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
     addBreadcrumbRoute(routes, volume.href, []);
 
     for (const part of volume.parts) {
-      const partCrumb = { label: part.title, href: part.href };
+      const partCrumb = { label: displayPartTitle(part, volume), href: part.href };
       addBreadcrumbRoute(routes, part.href, [partCrumb]);
 
       for (const chapter of part.chapters) {
@@ -265,7 +270,7 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
     const chapter = chapterById(section.volumeId, section.partId, section.chapterId);
     if (!volume || !part || !chapter) continue;
     const crumbs = [
-      { label: part.title, href: part.href },
+      { label: displayPartTitle(part, volume), href: part.href },
       { label: section.title, href: section.readerHref },
     ];
     if (chapter.href !== part.href && !isSingletonChapterSection(chapter, section)) {
@@ -274,7 +279,7 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
     addBreadcrumbRoute(routes, section.readerHref, crumbs);
     if (section.href !== section.readerHref) {
       addBreadcrumbRoute(routes, section.href, [
-        { label: part.title, href: part.href },
+        { label: displayPartTitle(part, volume), href: part.href },
         { label: chapter.title, href: chapter.href },
       ]);
     }
@@ -330,6 +335,12 @@ export function partByHref(href: string): PartRouteMatch | undefined {
   for (const volume of catalog.volumes) {
     const part = volume.parts.find((candidate) => normalizeHref(candidate.href) === normalized);
     if (part) return { volume, part };
+    const legacyFrontMatterPart = volume.parts.find(
+      (candidate) =>
+        isSyntheticFrontMatterPart(candidate) &&
+        normalizeHref(`/manuscripts/${volume.volumeId}/front-matter/`) === normalized,
+    );
+    if (legacyFrontMatterPart) return { volume, part: legacyFrontMatterPart };
     const legacyPart = volume.parts.find(
       (candidate) =>
         candidate.partId === volume.volumeId &&
@@ -350,6 +361,14 @@ export function chapterByHref(href: string): ChapterRouteMatch | undefined {
           normalizeHref(candidate.href) !== normalizeHref(part.href),
       );
       if (chapter) return { volume, part, chapter };
+      if (!isSyntheticFrontMatterPart(part)) continue;
+      const legacyChapter = part.chapters.find(
+        (candidate) =>
+          normalizeHref(`/manuscripts/${volume.volumeId}/front-matter/${candidate.chapterId}/`) ===
+            normalized &&
+          normalizeHref(candidate.href) !== normalizeHref(part.href),
+      );
+      if (legacyChapter) return { volume, part, chapter: legacyChapter };
     }
   }
   return undefined;
@@ -482,11 +501,18 @@ export function manuscriptPathParams(): Array<{ volumeId: string; route: string[
   for (const volume of catalog.volumes) {
     for (const part of volume.parts) {
       addHref(part.href);
+      if (isSyntheticFrontMatterPart(part)) {
+        addHref(`/manuscripts/${volume.volumeId}/front-matter/`);
+        addHref(`/manuscripts/${volume.volumeId}/${displayPartRouteSegment(part, volume)}/`);
+      }
       if (part.partId === volume.volumeId) {
         addHref(`/manuscripts/${volume.volumeId}/${part.partId}/`);
       }
       for (const chapter of part.chapters) {
         if (chapter.href !== part.href) addHref(chapter.href);
+        if (isSyntheticFrontMatterPart(part)) {
+          addHref(`/manuscripts/${volume.volumeId}/front-matter/${chapter.chapterId}/`);
+        }
       }
     }
   }

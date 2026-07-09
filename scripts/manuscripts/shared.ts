@@ -27,6 +27,11 @@ import {
   stripMarkdown,
   wordCount,
 } from "./io";
+import {
+  displayPartRouteSegment,
+  displayPartTitle,
+  type VolumeLabelSource,
+} from "../../src/lib/manuscript-labels";
 
 // Re-export the split modules so existing `from "./shared"` imports keep working
 // (MAINT-05: shared.ts was one 770-line file; types live in ./types, filesystem
@@ -194,45 +199,98 @@ function parseMarkdownDocument(
   return { filePath, relativePath, frontmatter, body: parsed.body };
 }
 
-export function sectionHref(section: Pick<
+type RouteSection = Pick<
   ManuscriptFrontmatter,
-  "volumeId" | "partId" | "chapterId" | "sectionId"
->): string {
+  | "volumeId"
+  | "partId"
+  | "partTitle"
+  | "partOrder"
+  | "chapterId"
+  | "sectionId"
+>;
+
+type RoutePart = Pick<
+  ManuscriptFrontmatter,
+  "volumeId" | "partId" | "partTitle" | "partOrder"
+>;
+
+export function routeVolumesForDocuments(
+  docs: MarkdownDocument[],
+): Map<string, VolumeLabelSource> {
+  const partMaps = new Map<string, Map<string, RoutePart>>();
+  for (const doc of docs) {
+    const fm = doc.frontmatter;
+    const parts = partMaps.get(fm.volumeId) ?? new Map<string, RoutePart>();
+    if (!parts.has(fm.partId)) {
+      parts.set(fm.partId, {
+        volumeId: fm.volumeId,
+        partId: fm.partId,
+        partTitle: fm.partTitle,
+        partOrder: fm.partOrder,
+      });
+    }
+    partMaps.set(fm.volumeId, parts);
+  }
+
+  return new Map(
+    [...partMaps].map(([volumeId, parts]) => [
+      volumeId,
+      { parts: [...parts.values()] },
+    ]),
+  );
+}
+
+function routeVolume(
+  contexts: Map<string, VolumeLabelSource>,
+  volumeId: string,
+): VolumeLabelSource | undefined {
+  return contexts.get(volumeId);
+}
+
+export function sectionHref(
+  section: RouteSection,
+  volume?: VolumeLabelSource,
+): string {
   const route = [section.volumeId];
-  if (section.partId !== section.volumeId) route.push(section.partId);
+  if (section.partId !== section.volumeId) {
+    route.push(displayPartRouteSegment(section, volume));
+  }
   if (section.chapterId !== section.partId) route.push(section.chapterId);
   route.push(section.sectionId);
   return `/manuscripts/${route.join("/")}/`;
 }
 
 function sectionReaderHref(
-  section: Pick<
-    ManuscriptFrontmatter,
-    "volumeId" | "partId" | "chapterId" | "sectionId"
-  >,
+  section: RouteSection,
   chapterSectionCount: number,
+  volume?: VolumeLabelSource,
 ): string {
-  const chapterRoute = chapterHref(section);
-  if (chapterSectionCount <= 1) return sectionHref(section);
+  const chapterRoute = chapterHref(section, volume);
+  if (chapterSectionCount <= 1) return sectionHref(section, volume);
   return `${chapterRoute}#${section.sectionId}`;
 }
 
-export function chapterHref(section: Pick<
-  ManuscriptFrontmatter,
-  "volumeId" | "partId" | "chapterId"
->): string {
-  if (section.chapterId === section.partId) return partHref(section);
+export function chapterHref(
+  section: RouteSection,
+  volume?: VolumeLabelSource,
+): string {
+  if (section.chapterId === section.partId) return partHref(section, volume);
   const route = [section.volumeId];
-  if (section.partId !== section.volumeId) route.push(section.partId);
+  if (section.partId !== section.volumeId) {
+    route.push(displayPartRouteSegment(section, volume));
+  }
   route.push(section.chapterId);
   return `/manuscripts/${route.join("/")}/`;
 }
 
-export function partHref(section: Pick<ManuscriptFrontmatter, "volumeId" | "partId">): string {
+export function partHref(
+  section: RoutePart,
+  volume?: VolumeLabelSource,
+): string {
   if (section.partId === section.volumeId) {
     return `/manuscripts/${section.volumeId}/part-${section.partId}/`;
   }
-  return `/manuscripts/${section.volumeId}/${section.partId}/`;
+  return `/manuscripts/${section.volumeId}/${displayPartRouteSegment(section, volume)}/`;
 }
 
 export function volumeHref(volumeId: string): string {
@@ -375,6 +433,7 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
   const volumeConfigs = new Map(
     readVolumeConfigs().map((volume) => [volume.volumeId, volume]),
   );
+  const routeContexts = routeVolumesForDocuments(docs);
   const chapterSectionCounts = docs.reduce((counts, doc) => {
     const key = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}:${doc.frontmatter.chapterId}`;
     counts.set(key, (counts.get(key) ?? 0) + 1);
@@ -386,12 +445,13 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
     const provenance = provenanceByHash.get(contentHash);
     const chapterKey = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}:${doc.frontmatter.chapterId}`;
     const chapterSectionCount = chapterSectionCounts.get(chapterKey) ?? 1;
+    const volume = routeVolume(routeContexts, doc.frontmatter.volumeId);
     return {
       ...doc.frontmatter,
       path: doc.relativePath,
-      href: sectionHref(doc.frontmatter),
-      chapterHref: chapterHref(doc.frontmatter),
-      readerHref: sectionReaderHref(doc.frontmatter, chapterSectionCount),
+      href: sectionHref(doc.frontmatter, volume),
+      chapterHref: chapterHref(doc.frontmatter, volume),
+      readerHref: sectionReaderHref(doc.frontmatter, chapterSectionCount, volume),
       body: doc.body,
       text: stripMarkdown(doc.body),
       paragraphs: paragraphFingerprints(doc.body),
@@ -441,7 +501,7 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
         partId: section.partId,
         title: section.partTitle,
         order: section.partOrder,
-        href: partHref(section),
+        href: partHref(section, routeVolume(routeContexts, section.volumeId)),
         chapters: [],
         sectionIds: [],
         wordCount: 0,
@@ -457,7 +517,7 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
         chapterId: section.chapterId,
         title: section.chapterTitle,
         order: section.chapterOrder,
-        href: chapterHref(section),
+        href: chapterHref(section, routeVolume(routeContexts, section.volumeId)),
         sectionIds: [],
         wordCount: 0,
       };
@@ -549,16 +609,22 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
 }
 
 export function buildSearchIndex(catalog: CompiledCatalog): SearchIndexEntry[] {
-  return catalog.sections.map((section) => ({
-    sectionId: section.sectionId,
-    href: section.readerHref,
-    readerHref: section.readerHref,
-    title: section.title,
-    volumeTitle: section.volumeTitle,
-    partTitle: section.partTitle,
-    chapterTitle: section.chapterTitle,
-    wordCount: section.wordCount,
-    contentHash: section.contentHash,
-    text: section.text,
-  }));
+  return catalog.sections.map((section) => {
+    const volume = catalog.volumes.find(
+      (candidate) => candidate.volumeId === section.volumeId,
+    );
+
+    return {
+      sectionId: section.sectionId,
+      href: section.readerHref,
+      readerHref: section.readerHref,
+      title: section.title,
+      volumeTitle: section.volumeTitle,
+      partTitle: displayPartTitle(section, volume),
+      chapterTitle: section.chapterTitle,
+      wordCount: section.wordCount,
+      contentHash: section.contentHash,
+      text: section.text,
+    };
+  });
 }

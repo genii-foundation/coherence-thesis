@@ -21,6 +21,7 @@ import {
   getCoverFlowTransform,
 } from "@/lib/cover-flow-motion";
 import type { Volume } from "@/lib/manuscript-data";
+import { displayPartTitle } from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 import { useReaderProgress } from "@/lib/reader-progress-store";
 import {
@@ -538,7 +539,7 @@ export function ManuscriptCoverFlowIsland({
                             <ManuscriptCardOutlineRow
                               className="manuscript-card-outline-part-overview"
                               href={selectedPart.href}
-                              label="Part Overview"
+                              label="Overview"
                               meta={{
                                 status: sectionGroupProgressStatus(
                                   progress,
@@ -592,7 +593,7 @@ export function ManuscriptCoverFlowIsland({
                                     [volume.volumeId]: part.partId,
                                   }));
                                 }}
-                                label={`Part: ${part.title}`}
+                                label={displayPartTitle(part, volume)}
                                 meta={{
                                   status: sectionGroupProgressStatus(
                                     progress,
