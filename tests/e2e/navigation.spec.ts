@@ -82,14 +82,17 @@ test("single-section chapter cards open reader content directly", async ({
 }) => {
   await page.goto(singleSectionPart.href);
 
-  const chapterCard = page.getByRole("link", {
+  const chapterCard = page.locator(".chapter-list").getByRole("link", {
     name: new RegExp(singleSectionChapterTarget.title),
   });
   await expect(chapterCard).toHaveAttribute(
     "href",
     singleSectionChapterTarget.href,
   );
-  await chapterCard.click();
+  await Promise.all([
+    page.waitForURL(singleSectionChapterTarget.href),
+    chapterCard.click(),
+  ]);
 
   await expect(page).toHaveURL(singleSectionChapterTarget.href);
   await expect(

@@ -4,19 +4,25 @@ import { normalizePath } from "@/lib/routes";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { CleanTooltip } from "@/components/CleanTooltip";
 import { brandIdentity, type BrandVolume } from "@/lib/brand-identity";
 
 export function ToolbarBrandIsland({ volumes }: { volumes: BrandVolume[] }) {
   const pathname = usePathname();
-  const brandRef = useRef<HTMLAnchorElement>(null);
+  const brandRef = useRef<HTMLAnchorElement | HTMLDivElement>(null);
   const measureRef = useRef<HTMLSpanElement>(null);
   const [compactTitle, setCompactTitle] = useState(false);
   const currentPath = normalizePath(pathname);
   const { activeVolume, hasActiveVolume, kicker, title, mobileTitle } =
     brandIdentity(volumes, currentPath);
   const showCompactTitle = Boolean(activeVolume && compactTitle);
+  const setBrandElement = useCallback(
+    (element: HTMLAnchorElement | HTMLDivElement | null) => {
+      brandRef.current = element;
+    },
+    [],
+  );
 
   useLayoutEffect(() => {
     if (!hasActiveVolume) return;
@@ -93,18 +99,70 @@ export function ToolbarBrandIsland({ volumes }: { volumes: BrandVolume[] }) {
     };
   }, [hasActiveVolume, title]);
 
+  const brandClassName = [
+    "brand-mark",
+    activeVolume ? "brand-mark-active" : "",
+    showCompactTitle ? "brand-mark-compact" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  if (activeVolume) {
+    return (
+      <div
+        ref={setBrandElement}
+        className={brandClassName}
+        role="group"
+        aria-label={`${kicker} ${title}`}
+      >
+        <Link
+          href="/"
+          className="brand-link brand-home-link"
+          aria-label="The Coherence Thesis home"
+        >
+          <span className="brand-kicker">{kicker}</span>
+        </Link>
+        <CleanTooltip label={title} shouldOpen={() => showCompactTitle}>
+          <Link
+            href={activeVolume.href}
+            className="brand-link brand-volume-link"
+            aria-label={`${title} outline`}
+          >
+            <span className="brand-title">
+              <span className="brand-title-mobile-logo" aria-hidden="true">
+                <span className="brand-title-mobile-logo-full">
+                  Coherence Thesis
+                </span>
+                <span className="brand-title-mobile-logo-initials">CT</span>
+              </span>
+              <span className="brand-title-full">{title}</span>
+              {mobileTitle ? (
+                <span className="brand-title-mobile" aria-hidden="true">
+                  {mobileTitle}
+                </span>
+              ) : null}
+              {mobileTitle ? (
+                <span
+                  className="brand-title-measure"
+                  ref={measureRef}
+                  aria-hidden="true"
+                >
+                  {title}
+                </span>
+              ) : null}
+            </span>
+          </Link>
+        </CleanTooltip>
+      </div>
+    );
+  }
+
   return (
     <CleanTooltip label={title} shouldOpen={() => showCompactTitle}>
       <Link
-        ref={brandRef}
+        ref={setBrandElement}
         href="/"
-        className={[
-          "brand-mark",
-          activeVolume ? "brand-mark-active" : "",
-          showCompactTitle ? "brand-mark-compact" : "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
+        className={brandClassName}
         aria-label={`${kicker} ${title} home`}
       >
         <span className="brand-kicker">{kicker}</span>
