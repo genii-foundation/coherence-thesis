@@ -169,6 +169,8 @@ html[data-reader-theme="black"] {
 
 html {
   min-height: 100%;
+  min-height: 100svh;
+  min-height: 100dvh;
   width: 100%;
   overflow-x: clip;
   background: var(--page-background);
@@ -198,6 +200,8 @@ html[data-reader-theme="black"] {
 
 body {
   min-height: 100%;
+  min-height: 100svh;
+  min-height: 100dvh;
   width: 100%;
   max-width: 100%;
   overflow-x: clip;
@@ -285,6 +289,8 @@ input {
 .site-shell {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   max-width: 100%;
@@ -4902,13 +4908,23 @@ input {
 }
 
 @media (max-width: 860px) {
+  :root {
+    --page-background-highlight-alpha: 0.15;
+    --page-background-highlight-wash-alpha: 0.056;
+    --page-background-highlight-spread: 24rem;
+  }
+
   .site-header {
+    --mobile-toolbar-height: calc(env(safe-area-inset-top) + 3.5625rem);
+
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
     gap: 0.7rem;
-    padding: 0.65rem max(0.85rem, env(safe-area-inset-right)) 0.55rem
-      max(0.85rem, env(safe-area-inset-left));
+    min-height: var(--mobile-toolbar-height);
+    padding: calc(env(safe-area-inset-top) + 0.375rem)
+      max(0.75rem, env(safe-area-inset-right)) 0.375rem
+      max(0.75rem, env(safe-area-inset-left));
   }
 
   .site-header > .breadcrumb-trail {
@@ -5034,6 +5050,10 @@ input {
   }
 
   .site-nav {
+    --toolbar-control-size: 2.75rem;
+    --toolbar-emphasis-control-size: 2.75rem;
+    --toolbar-progress-control-width: 2.75rem;
+
     flex: 1 1 auto;
     justify-content: flex-end;
     gap: 0;
@@ -5056,8 +5076,9 @@ input {
   .share-menu-button,
   .settings-menu-button {
     min-width: 0;
-    min-height: 2.45rem;
-    width: 2.45rem;
+    min-height: var(--toolbar-control-size);
+    width: var(--toolbar-control-size);
+    height: var(--toolbar-control-size);
     padding: 0;
   }
 
@@ -5074,15 +5095,23 @@ input {
     display: none;
   }
 
+  .audio-menu,
+  .progress-menu {
+    height: var(--toolbar-emphasis-control-size);
+  }
+
   .outline-popover,
   .search-popover,
   .share-popover,
   .audio-popover,
   .settings-popover,
   .progress-popover {
-    --toolbar-menu-max-height: calc(100svh - env(safe-area-inset-top) - 5rem);
-    --toolbar-mobile-popover-top: calc(env(safe-area-inset-top) + 5.2625rem);
-    --toolbar-mobile-popover-bottom-gap: max(0.85rem, env(safe-area-inset-bottom));
+    --toolbar-menu-max-height: calc(
+      100dvh - var(--mobile-toolbar-height) -
+        max(0.75rem, env(safe-area-inset-bottom))
+    );
+    --toolbar-mobile-popover-top: var(--mobile-toolbar-height);
+    --toolbar-mobile-popover-bottom-gap: max(0.75rem, env(safe-area-inset-bottom));
 
     position: fixed;
     top: var(--toolbar-mobile-popover-top);
@@ -5090,7 +5119,7 @@ input {
     left: max(0.85rem, env(safe-area-inset-left));
     width: auto;
     max-height: calc(
-      100svh - var(--toolbar-mobile-popover-top) -
+      100dvh - var(--toolbar-mobile-popover-top) -
         var(--toolbar-mobile-popover-bottom-gap)
     );
     border-top-left-radius: 0;
@@ -5107,28 +5136,28 @@ input {
 
   .outline-popover {
     max-height: calc(
-      100svh - var(--toolbar-mobile-popover-top) -
+      100dvh - var(--toolbar-mobile-popover-top) -
         var(--toolbar-mobile-popover-bottom-gap)
     );
   }
 
   .search-popover {
     max-height: calc(
-      100svh - var(--toolbar-mobile-popover-top) -
+      100dvh - var(--toolbar-mobile-popover-top) -
         var(--toolbar-mobile-popover-bottom-gap)
     );
   }
 
   .outline-scroll {
     max-height: calc(
-      100svh - var(--toolbar-mobile-popover-top) - 4.45rem -
+      100dvh - var(--toolbar-mobile-popover-top) - 4.45rem -
         var(--toolbar-mobile-popover-bottom-gap)
     );
   }
 
   .search-results {
     max-height: calc(
-      100svh - var(--toolbar-mobile-popover-top) - 4.45rem -
+      100dvh - var(--toolbar-mobile-popover-top) - 4.45rem -
         var(--toolbar-mobile-popover-bottom-gap)
     );
   }

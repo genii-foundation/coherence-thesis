@@ -386,7 +386,9 @@ test("home page listen action starts audiobook playback", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("link", { name: "Listen" }).click();
 
-  await expect(page).toHaveURL(new RegExp(`${catalog.sections[0]!.href}$`));
+  await expect
+    .poll(() => new URL(page.url()).pathname)
+    .toBe(catalog.sections[0]!.href);
   await expect(
     page.getByRole("button", { name: "Pause audiobook" }),
   ).toBeVisible();
