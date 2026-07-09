@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { audioVoiceStorageKey } from "../../src/lib/audio-preferences";
+import { readerProgressV2StorageKey } from "../../src/lib/reader-state";
 import {
   catalog,
   readerProgressStorageKey,
@@ -440,6 +441,91 @@ test("home page listen action starts audiobook playback", async ({ page }) => {
   await expect
     .poll(() => new URL(page.url()).pathname, { timeout: 15000 })
     .toBe(catalog.sections[0]!.href);
+  await expect(
+    page.getByRole("button", { name: "Pause audiobook" }),
+  ).toBeVisible();
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __spokenAudio: string[] }).__spokenAudio,
+      ),
+    )
+    .toHaveLength(1);
+});
+
+test("home toolbar playback starts at the first unread section", async ({ page }) => {
+  const firstSection = catalog.sections[0]!;
+  const unreadSection = catalog.sections[1]!;
+  await page.addInitScript(
+    ({ storageKey, progressKeys, preference, section }) => {
+      window.localStorage.setItem(storageKey, JSON.stringify(preference));
+      for (const progressKey of progressKeys) {
+        window.localStorage.setItem(
+          progressKey,
+          JSON.stringify({
+            sections: {
+              [section.sectionId]: {
+                sectionId: section.sectionId,
+                contentHash: section.contentHash,
+                readAt: Date.now(),
+                percent: 100,
+              },
+            },
+          }),
+        );
+      }
+      class TestSpeechSynthesisUtterance {
+        text: string;
+        rate = 1;
+        pitch = 1;
+        voice: SpeechSynthesisVoice | null = null;
+        onend: (() => void) | null = null;
+
+        constructor(text: string) {
+          this.text = text;
+        }
+      }
+
+      const spokenAudio: string[] = [];
+      Object.defineProperty(window, "__spokenAudio", {
+        configurable: true,
+        value: spokenAudio,
+      });
+      Object.defineProperty(window, "SpeechSynthesisUtterance", {
+        configurable: true,
+        value: TestSpeechSynthesisUtterance,
+      });
+      Object.defineProperty(window, "speechSynthesis", {
+        configurable: true,
+        value: {
+          addEventListener: () => undefined,
+          cancel: () => undefined,
+          getVoices: () => [],
+          pause: () => undefined,
+          removeEventListener: () => undefined,
+          resume: () => undefined,
+          speak: (utterance: SpeechSynthesisUtterance) => {
+            spokenAudio.push(utterance.text);
+          },
+        },
+      });
+    },
+    {
+      storageKey: audioVoiceStorageKey,
+      progressKeys: [readerProgressStorageKey, readerProgressV2StorageKey],
+      preference: systemVoicePreference,
+      section: firstSection,
+    },
+  );
+
+  await page.goto("/");
+  const toolbarListen = page.getByRole("button", { name: "Listen" });
+  await expect(toolbarListen).toBeVisible();
+  await toolbarListen.click();
+
+  await expect
+    .poll(() => new URL(page.url()).pathname, { timeout: 15000 })
+    .toBe(unreadSection.href);
   await expect(
     page.getByRole("button", { name: "Pause audiobook" }),
   ).toBeVisible();

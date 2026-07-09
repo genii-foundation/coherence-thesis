@@ -49,6 +49,16 @@ export function SiteShell({ children }: { children: ReactNode }) {
     audioVersionId: `overview-${contentHash(overviewText)}`,
     href: "/overview/",
   };
+  const firstSection = catalog.sections[0]!;
+  const fallbackAudio = {
+    sectionId: firstSection.sectionId,
+    title: firstSection.title,
+    text: "",
+    audioVersionId: firstSection.audioVersionId,
+    href: firstSection.href,
+    chapterHref: firstSection.chapterHref,
+    readerHref: firstSection.readerHref,
+  };
 
   return (
     <div className="site-shell">
@@ -82,7 +92,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <OutlineMenuIsland />
           <ToolbarSettingsIsland />
           <ToolbarShareIsland />
-          <AudioPlayerIsland overviewAudio={overviewAudio} />
+          <AudioPlayerIsland
+            fallbackAudio={fallbackAudio}
+            overviewAudio={overviewAudio}
+          />
           <ToolbarProgressIsland />
         </nav>
       </header>

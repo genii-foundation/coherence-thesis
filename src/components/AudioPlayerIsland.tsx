@@ -10,7 +10,7 @@ import {
   useState,
   type CSSProperties,
 } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   AlertTriangle,
   CheckCircle2,
@@ -54,9 +54,11 @@ import {
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import {
   appendStoredEvent,
+  readStoredProgress,
+  useReaderProgress,
   updateStoredProgress,
 } from "@/lib/reader-progress-store";
-import { recordAudioSeconds } from "@/lib/reader-state";
+import { isSectionRead, recordAudioSeconds } from "@/lib/reader-state";
 import {
   readVoicePreference,
   writeVoicePreference,
@@ -398,11 +400,15 @@ function PlaybackToolbarIcon({
 }
 
 export function AudioPlayerIsland({
+  fallbackAudio,
   overviewAudio,
 }: {
+  fallbackAudio: AudioQueueItem;
   overviewAudio: AudioQueueItem;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const progress = useReaderProgress();
   const {
     rendered,
     setOpen,
@@ -482,6 +488,31 @@ export function AudioPlayerIsland({
       readerHref: section.readerHref,
     }));
   }, [hash, overviewAudio, pathname, sections]);
+  const sectionQueue = useMemo<AudioQueueItem[]>(
+    () =>
+      sections
+        .filter((section) => Boolean(section.audioVersionId))
+        .map((section) => ({
+          sectionId: section.sectionId,
+          title: section.title,
+          text: "",
+          audioVersionId: section.audioVersionId,
+          href: section.href,
+          chapterHref: section.chapterHref,
+          readerHref: section.readerHref,
+        })),
+    [sections],
+  );
+  const fallbackQueue = useMemo<AudioQueueItem[]>(() => {
+    if (sectionQueue.length === 0) return [fallbackAudio];
+
+    const firstUnreadIndex = sectionQueue.findIndex((section) =>
+      !isSectionRead(progress, section),
+    );
+    return firstUnreadIndex >= 0
+      ? sectionQueue.slice(firstUnreadIndex)
+      : sectionQueue;
+  }, [fallbackAudio, progress, sectionQueue]);
   // Section text is resolved lazily on first play; the overview item already
   // carries its text.
   const sectionTextRef = useRef<Map<string, string> | null>(null);
@@ -512,6 +543,7 @@ export function AudioPlayerIsland({
   const [playbackLocation, setPlaybackLocation] =
     useState<PlaybackLocation | null>(null);
   const [playing, setPlaying] = useState(false);
+  const [pendingFallbackPlayback, setPendingFallbackPlayback] = useState(false);
   const waveformScales = usePlaybackWaveform(playing);
   const [supported, setSupported] = useState(true);
   const [offlineStatuses, setOfflineStatuses] = useState(
@@ -543,6 +575,21 @@ export function AudioPlayerIsland({
   useEffect(() => {
     visibleQueueRef.current = visibleQueue;
   }, [visibleQueue]);
+
+  const navigateToFallbackPlayback = useCallback(() => {
+    const latestProgress = readStoredProgress();
+    const target =
+      sectionQueue.find((section) => !isSectionRead(latestProgress, section)) ??
+      sectionQueue[0] ??
+      fallbackAudio;
+    if (target.href) router.push(`${target.href}?listen=1`);
+  }, [fallbackAudio, router, sectionQueue]);
+
+  useEffect(() => {
+    if (!pendingFallbackPlayback || sections.length === 0) return;
+    setPendingFallbackPlayback(false);
+    navigateToFallbackPlayback();
+  }, [navigateToFallbackPlayback, pendingFallbackPlayback, sections.length]);
 
   useEffect(() => {
     activeIndexRef.current = activeIndex;
@@ -920,11 +967,20 @@ export function AudioPlayerIsland({
   }
 
   function handleToolbarButtonClick(): void {
-    setOpen(true);
     if (playing) {
+      setOpen(true);
       pause();
       return;
     }
+    if (visibleQueueRef.current.length === 0) {
+      if (sections.length === 0) {
+        setPendingFallbackPlayback(true);
+        return;
+      }
+      navigateToFallbackPlayback();
+      return;
+    }
+    setOpen(true);
     void speak(0, preference, visibleQueueRef.current);
   }
 
@@ -999,8 +1055,10 @@ export function AudioPlayerIsland({
     void restartActivePlayback(nextPreference);
   }
 
-  const activeQueue = playbackQueue.length > 0 ? playbackQueue : visibleQueue;
-  if (!supported || activeQueue.length === 0) return null;
+  const availableQueue =
+    visibleQueue.length > 0 ? visibleQueue : fallbackQueue;
+  const activeQueue = playbackQueue.length > 0 ? playbackQueue : availableQueue;
+  if (activeQueue.length === 0) return null;
 
   // activeQueue is non-empty here, so activeQueue[0] is defined.
   const active = activeQueue[activeIndex] ?? activeQueue[0]!;
