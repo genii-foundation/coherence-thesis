@@ -5,6 +5,9 @@ export type AudioQueueItem = {
   title: string;
   text: string;
   audioVersionId: string;
+  href?: string;
+  chapterHref?: string;
+  readerHref?: string;
 };
 
 export type AudioVoicePreference = {

@@ -13,7 +13,7 @@ const firstReadTarget = catalog.sections[0]!;
 const heroReadTargets = catalog.sections.map((section) => ({
   sectionId: section.sectionId,
   contentHash: section.contentHash,
-  href: section.href,
+  href: section.readerHref,
 }));
 const heroStats = [
   `${catalog.stats.volumeCount.toLocaleString()} volumes`,
@@ -30,7 +30,7 @@ export default function Home() {
   }));
   const progressSections = catalog.sections.map((section) => ({
     contentHash: section.contentHash,
-    href: section.href,
+    href: section.readerHref,
     sectionId: section.sectionId,
   }));
 

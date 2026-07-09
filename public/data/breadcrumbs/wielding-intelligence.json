@@ -52,7 +52,7 @@
     ]
   },
   {
-    "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/v02-on-nests-and-why-this-book-is-deliberately-incomplete/",
+    "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/#v02-on-nests-and-why-this-book-is-deliberately-incomplete",
     "crumbs": [
       {
         "label": "Front Matter",
@@ -64,7 +64,37 @@
       },
       {
         "label": "On Nests, and Why This Book Is Deliberately Incomplete",
-        "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/v02-on-nests-and-why-this-book-is-deliberately-incomplete/"
+        "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/#v02-on-nests-and-why-this-book-is-deliberately-incomplete"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/v02-on-nests-and-why-this-book-is-deliberately-incomplete/",
+    "crumbs": [
+      {
+        "label": "Front Matter",
+        "href": "/manuscripts/wielding-intelligence/front-matter/"
+      },
+      {
+        "label": "On Nests, and Why This Book Is Deliberately Incomplete",
+        "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/#v02-the-threshold",
+    "crumbs": [
+      {
+        "label": "Front Matter",
+        "href": "/manuscripts/wielding-intelligence/front-matter/"
+      },
+      {
+        "label": "On Nests, and Why This Book Is Deliberately Incomplete",
+        "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/"
+      },
+      {
+        "label": "The Threshold",
+        "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/#v02-the-threshold"
       }
     ]
   },
@@ -78,10 +108,23 @@
       {
         "label": "On Nests, and Why This Book Is Deliberately Incomplete",
         "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/#v02-toward-humane-technology",
+    "crumbs": [
+      {
+        "label": "Front Matter",
+        "href": "/manuscripts/wielding-intelligence/front-matter/"
       },
       {
-        "label": "The Threshold",
-        "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/v02-the-threshold/"
+        "label": "On Nests, and Why This Book Is Deliberately Incomplete",
+        "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/"
+      },
+      {
+        "label": "Toward Humane Technology",
+        "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/#v02-toward-humane-technology"
       }
     ]
   },
@@ -95,10 +138,6 @@
       {
         "label": "On Nests, and Why This Book Is Deliberately Incomplete",
         "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/"
-      },
-      {
-        "label": "Toward Humane Technology",
-        "href": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/v02-toward-humane-technology/"
       }
     ]
   },
@@ -216,7 +255,7 @@
     ]
   },
   {
-    "href": "/manuscripts/wielding-intelligence/the-diagnosis/the-architecture-of-extraction/v02-the-architecture-of-extraction/",
+    "href": "/manuscripts/wielding-intelligence/the-diagnosis/the-architecture-of-extraction/#v02-the-architecture-of-extraction",
     "crumbs": [
       {
         "label": "The Diagnosis",
@@ -228,7 +267,37 @@
       },
       {
         "label": "The Architecture of Extraction",
-        "href": "/manuscripts/wielding-intelligence/the-diagnosis/the-architecture-of-extraction/v02-the-architecture-of-extraction/"
+        "href": "/manuscripts/wielding-intelligence/the-diagnosis/the-architecture-of-extraction/#v02-the-architecture-of-extraction"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/the-diagnosis/the-architecture-of-extraction/v02-the-architecture-of-extraction/",
+    "crumbs": [
+      {
+        "label": "The Diagnosis",
+        "href": "/manuscripts/wielding-intelligence/the-diagnosis/"
+      },
+      {
+        "label": "The Architecture of Extraction",
+        "href": "/manuscripts/wielding-intelligence/the-diagnosis/the-architecture-of-extraction/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/the-diagnosis/the-architecture-of-extraction/#v02-toward-humane-technology-2",
+    "crumbs": [
+      {
+        "label": "The Diagnosis",
+        "href": "/manuscripts/wielding-intelligence/the-diagnosis/"
+      },
+      {
+        "label": "The Architecture of Extraction",
+        "href": "/manuscripts/wielding-intelligence/the-diagnosis/the-architecture-of-extraction/"
+      },
+      {
+        "label": "Toward Humane Technology",
+        "href": "/manuscripts/wielding-intelligence/the-diagnosis/the-architecture-of-extraction/#v02-toward-humane-technology-2"
       }
     ]
   },
@@ -242,10 +311,6 @@
       {
         "label": "The Architecture of Extraction",
         "href": "/manuscripts/wielding-intelligence/the-diagnosis/the-architecture-of-extraction/"
-      },
-      {
-        "label": "Toward Humane Technology",
-        "href": "/manuscripts/wielding-intelligence/the-diagnosis/the-architecture-of-extraction/v02-toward-humane-technology-2/"
       }
     ]
   },
@@ -428,7 +493,7 @@
     ]
   },
   {
-    "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-providence-proposed-functionality/",
+    "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/#v02-providence-proposed-functionality",
     "crumbs": [
       {
         "label": "The Response",
@@ -440,7 +505,37 @@
       },
       {
         "label": "Providence: Proposed Functionality",
-        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-providence-proposed-functionality/"
+        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/#v02-providence-proposed-functionality"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-providence-proposed-functionality/",
+    "crumbs": [
+      {
+        "label": "The Response",
+        "href": "/manuscripts/wielding-intelligence/the-response/"
+      },
+      {
+        "label": "Providence: Proposed Functionality",
+        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/#v02-layer-1-relational-coordination-network",
+    "crumbs": [
+      {
+        "label": "The Response",
+        "href": "/manuscripts/wielding-intelligence/the-response/"
+      },
+      {
+        "label": "Providence: Proposed Functionality",
+        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/"
+      },
+      {
+        "label": "Layer 1 — Relational Coordination Network",
+        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/#v02-layer-1-relational-coordination-network"
       }
     ]
   },
@@ -454,10 +549,23 @@
       {
         "label": "Providence: Proposed Functionality",
         "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/#v02-layer-2-trust-architecture",
+    "crumbs": [
+      {
+        "label": "The Response",
+        "href": "/manuscripts/wielding-intelligence/the-response/"
       },
       {
-        "label": "Layer 1 — Relational Coordination Network",
-        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-layer-1-relational-coordination-network/"
+        "label": "Providence: Proposed Functionality",
+        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/"
+      },
+      {
+        "label": "Layer 2 — Trust Architecture",
+        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/#v02-layer-2-trust-architecture"
       }
     ]
   },
@@ -471,10 +579,23 @@
       {
         "label": "Providence: Proposed Functionality",
         "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/#v02-layer-4-coordination-substrate",
+    "crumbs": [
+      {
+        "label": "The Response",
+        "href": "/manuscripts/wielding-intelligence/the-response/"
       },
       {
-        "label": "Layer 2 — Trust Architecture",
-        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-layer-2-trust-architecture/"
+        "label": "Providence: Proposed Functionality",
+        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/"
+      },
+      {
+        "label": "Layer 4 — Coordination Substrate",
+        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/#v02-layer-4-coordination-substrate"
       }
     ]
   },
@@ -488,10 +609,23 @@
       {
         "label": "Providence: Proposed Functionality",
         "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/#v02-layer-5-governance-experiment",
+    "crumbs": [
+      {
+        "label": "The Response",
+        "href": "/manuscripts/wielding-intelligence/the-response/"
       },
       {
-        "label": "Layer 4 — Coordination Substrate",
-        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-layer-4-coordination-substrate/"
+        "label": "Providence: Proposed Functionality",
+        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/"
+      },
+      {
+        "label": "Layer 5 — Governance Experiment",
+        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/#v02-layer-5-governance-experiment"
       }
     ]
   },
@@ -505,10 +639,23 @@
       {
         "label": "Providence: Proposed Functionality",
         "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/#v02-cross-cutting-commitments",
+    "crumbs": [
+      {
+        "label": "The Response",
+        "href": "/manuscripts/wielding-intelligence/the-response/"
       },
       {
-        "label": "Layer 5 — Governance Experiment",
-        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-layer-5-governance-experiment/"
+        "label": "Providence: Proposed Functionality",
+        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/"
+      },
+      {
+        "label": "Cross-Cutting Commitments",
+        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/#v02-cross-cutting-commitments"
       }
     ]
   },
@@ -522,10 +669,6 @@
       {
         "label": "Providence: Proposed Functionality",
         "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/"
-      },
-      {
-        "label": "Cross-Cutting Commitments",
-        "href": "/manuscripts/wielding-intelligence/the-response/providence-proposed-functionality/v02-cross-cutting-commitments/"
       }
     ]
   },
@@ -1297,7 +1440,7 @@
     ]
   },
   {
-    "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-4/v02-the-larger-argument-4/",
+    "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-4/#v02-the-larger-argument-4",
     "crumbs": [
       {
         "label": "The Response",
@@ -1309,7 +1452,37 @@
       },
       {
         "label": "The Larger Argument",
-        "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-4/v02-the-larger-argument-4/"
+        "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-4/#v02-the-larger-argument-4"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-4/v02-the-larger-argument-4/",
+    "crumbs": [
+      {
+        "label": "The Response",
+        "href": "/manuscripts/wielding-intelligence/the-response/"
+      },
+      {
+        "label": "The Larger Argument",
+        "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-4/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-4/#v02-toward-humane-technology-3",
+    "crumbs": [
+      {
+        "label": "The Response",
+        "href": "/manuscripts/wielding-intelligence/the-response/"
+      },
+      {
+        "label": "The Larger Argument",
+        "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-4/"
+      },
+      {
+        "label": "Toward Humane Technology",
+        "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-4/#v02-toward-humane-technology-3"
       }
     ]
   },
@@ -1323,10 +1496,6 @@
       {
         "label": "The Larger Argument",
         "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-4/"
-      },
-      {
-        "label": "Toward Humane Technology",
-        "href": "/manuscripts/wielding-intelligence/the-response/the-larger-argument-4/v02-toward-humane-technology-3/"
       }
     ]
   },
@@ -1626,7 +1795,7 @@
     ]
   },
   {
-    "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/v02-the-texture-of-what-comes-next/",
+    "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/#v02-the-texture-of-what-comes-next",
     "crumbs": [
       {
         "label": "Wielding Intelligence",
@@ -1638,7 +1807,37 @@
       },
       {
         "label": "The Texture of What Comes Next",
-        "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/v02-the-texture-of-what-comes-next/"
+        "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/#v02-the-texture-of-what-comes-next"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/v02-the-texture-of-what-comes-next/",
+    "crumbs": [
+      {
+        "label": "Wielding Intelligence",
+        "href": "/manuscripts/wielding-intelligence/part-wielding-intelligence/"
+      },
+      {
+        "label": "The Texture of What Comes Next",
+        "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/#v02-toward-humane-technology-4",
+    "crumbs": [
+      {
+        "label": "Wielding Intelligence",
+        "href": "/manuscripts/wielding-intelligence/part-wielding-intelligence/"
+      },
+      {
+        "label": "The Texture of What Comes Next",
+        "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/"
+      },
+      {
+        "label": "Toward Humane Technology",
+        "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/#v02-toward-humane-technology-4"
       }
     ]
   },
@@ -1652,10 +1851,23 @@
       {
         "label": "The Texture of What Comes Next",
         "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/#v02-wielding-intelligence-2",
+    "crumbs": [
+      {
+        "label": "Wielding Intelligence",
+        "href": "/manuscripts/wielding-intelligence/part-wielding-intelligence/"
       },
       {
-        "label": "Toward Humane Technology",
-        "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/v02-toward-humane-technology-4/"
+        "label": "The Texture of What Comes Next",
+        "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/"
+      },
+      {
+        "label": "Wielding Intelligence",
+        "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/#v02-wielding-intelligence-2"
       }
     ]
   },
@@ -1669,10 +1881,6 @@
       {
         "label": "The Texture of What Comes Next",
         "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/"
-      },
-      {
-        "label": "Wielding Intelligence",
-        "href": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/v02-wielding-intelligence-2/"
       }
     ]
   },
@@ -1872,7 +2080,7 @@
     ]
   },
   {
-    "href": "/manuscripts/wielding-intelligence/what-this-book-is/v02-what-this-book-is/",
+    "href": "/manuscripts/wielding-intelligence/what-this-book-is/#v02-what-this-book-is",
     "crumbs": [
       {
         "label": "Wielding Intelligence",
@@ -1884,7 +2092,37 @@
       },
       {
         "label": "What This Book Is",
-        "href": "/manuscripts/wielding-intelligence/what-this-book-is/v02-what-this-book-is/"
+        "href": "/manuscripts/wielding-intelligence/what-this-book-is/#v02-what-this-book-is"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/what-this-book-is/v02-what-this-book-is/",
+    "crumbs": [
+      {
+        "label": "Wielding Intelligence",
+        "href": "/manuscripts/wielding-intelligence/part-wielding-intelligence/"
+      },
+      {
+        "label": "What This Book Is",
+        "href": "/manuscripts/wielding-intelligence/what-this-book-is/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/wielding-intelligence/what-this-book-is/#v02-a-proposal-for-the-threshold-ahead",
+    "crumbs": [
+      {
+        "label": "Wielding Intelligence",
+        "href": "/manuscripts/wielding-intelligence/part-wielding-intelligence/"
+      },
+      {
+        "label": "What This Book Is",
+        "href": "/manuscripts/wielding-intelligence/what-this-book-is/"
+      },
+      {
+        "label": "A Proposal for the Threshold Ahead",
+        "href": "/manuscripts/wielding-intelligence/what-this-book-is/#v02-a-proposal-for-the-threshold-ahead"
       }
     ]
   },
@@ -1898,10 +2136,6 @@
       {
         "label": "What This Book Is",
         "href": "/manuscripts/wielding-intelligence/what-this-book-is/"
-      },
-      {
-        "label": "A Proposal for the Threshold Ahead",
-        "href": "/manuscripts/wielding-intelligence/what-this-book-is/v02-a-proposal-for-the-threshold-ahead/"
       }
     ]
   },

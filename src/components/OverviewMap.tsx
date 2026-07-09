@@ -39,7 +39,7 @@ export function OverviewMap() {
                   {
                     sectionId: section.sectionId,
                     contentHash: section.contentHash,
-                    href: section.href,
+                    href: section.readerHref,
                   },
                 ]
               : [];
@@ -84,7 +84,7 @@ export function OverviewMap() {
                     const section = sectionById(reference.sectionId);
                     if (!section) return null;
                     return (
-                      <Link key={reference.sectionId} href={section.href}>
+                      <Link key={reference.sectionId} href={section.readerHref}>
                         <span>{reference.label ?? section.title}</span>
                         <ReadCheckmarkIsland
                           sections={[toProgressSection(section)]}

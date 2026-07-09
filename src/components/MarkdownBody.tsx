@@ -55,16 +55,20 @@ function tableCells(line: string): string[] {
 export function MarkdownBody({
   markdown,
   paragraphs = [],
+  anchorPrefix = "",
 }: {
   markdown: string;
   paragraphs?: Section["paragraphs"];
+  anchorPrefix?: string;
 }) {
   const blocks = splitMarkdownBlocks(markdown);
 
   return (
     <div className="manuscript-prose">
       {blocks.map((block, index) => {
-        const anchor = paragraphs[index]?.anchor;
+        const anchor = paragraphs[index]?.anchor
+          ? `${anchorPrefix}${paragraphs[index]?.anchor}`
+          : undefined;
         if (block.startsWith("### ")) {
           return <h3 id={anchor} key={index}>{renderInline(block.slice(4))}</h3>;
         }

@@ -28,6 +28,8 @@ export type Section = {
   aliases?: string[];
   path: string;
   href: string;
+  chapterHref: string;
+  readerHref: string;
   body: string;
   text: string;
   paragraphs: ParagraphFingerprint[];
@@ -123,7 +125,7 @@ export type ProgressParagraph = Pick<
 >;
 export type ProgressSection = Pick<
   Section,
-  "sectionId" | "contentHash" | "title" | "href"
+  "sectionId" | "contentHash" | "title" | "href" | "chapterHref" | "readerHref"
 > & {
   paragraphs: ProgressParagraph[];
 };
@@ -188,6 +190,8 @@ export function toProgressSection(section: Section): ProgressSection {
     contentHash: section.contentHash,
     title: section.title,
     href: section.href,
+    chapterHref: section.chapterHref,
+    readerHref: section.readerHref,
     paragraphs: section.paragraphs.map((paragraph) => ({
       paragraphId: paragraph.paragraphId,
       anchor: paragraph.anchor,
@@ -262,12 +266,18 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
     if (!volume || !part || !chapter) continue;
     const crumbs = [
       { label: part.title, href: part.href },
-      { label: section.title, href: section.href },
+      { label: section.title, href: section.readerHref },
     ];
     if (chapter.href !== part.href && !isSingletonChapterSection(chapter, section)) {
       crumbs.splice(1, 0, { label: chapter.title, href: chapter.href });
     }
-    addBreadcrumbRoute(routes, section.href, crumbs);
+    addBreadcrumbRoute(routes, section.readerHref, crumbs);
+    if (section.href !== section.readerHref) {
+      addBreadcrumbRoute(routes, section.href, [
+        { label: part.title, href: part.href },
+        { label: chapter.title, href: chapter.href },
+      ]);
+    }
   }
 
   return [...routes.values()];
@@ -486,4 +496,3 @@ export function manuscriptPathParams(): Array<{ volumeId: string; route: string[
 
   return [...params.values()];
 }
-

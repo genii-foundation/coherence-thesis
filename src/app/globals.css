@@ -4562,6 +4562,34 @@ input {
   color: var(--bronze-deep);
 }
 
+.chapter-reader-section {
+  max-width: 48rem;
+  scroll-margin-top: clamp(5rem, 12vh, 7.5rem);
+}
+
+.chapter-reader-section + .chapter-reader-section {
+  border-top: 1px solid var(--line);
+  margin-top: clamp(2.5rem, 7vw, 4rem);
+  padding-top: clamp(2.25rem, 6vw, 3.5rem);
+}
+
+.chapter-reader-section > h2 {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 0.98;
+  margin: 0 0 1.5rem;
+}
+
+.chapter-reader-section:not(:first-of-type) .manuscript-prose p:first-of-type::first-letter {
+  color: inherit;
+  float: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding-right: 0;
+}
+
 .section-nav {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

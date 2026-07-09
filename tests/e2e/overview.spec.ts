@@ -881,6 +881,20 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   await expect(
     activePanel.getByRole("button", { name: /Part: Front Matter/ }),
   ).toBeVisible();
+  await expect
+    .poll(() =>
+      coverFlow.evaluate((flow) => {
+        const active = flow.querySelector<HTMLElement>(
+          '.cover-flow-card[aria-current="true"]',
+        );
+        return Math.abs(
+          Number.parseFloat(
+            active?.style.getPropertyValue("--cover-flow-rotate") ?? "100",
+          ),
+        );
+      }),
+    )
+    .toBeLessThan(1);
 
   const coverFlowTransforms = await coverFlow.evaluate((flow) => {
     const shadowAlpha = (element: HTMLElement | null) => {
@@ -973,7 +987,12 @@ test("home page presents an interactive cover flow", async ({ page }) => {
     .dispatchEvent("click");
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("data-volume-href", backgroundTarget.href);
+  ).toHaveCount(1, { timeout: 15000 });
+  await expect(
+    coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+  ).toHaveAttribute("data-volume-href", backgroundTarget.href, {
+    timeout: 15000,
+  });
   await expect(page).toHaveURL(/\/$/);
   await expect(
     coverFlow.locator(

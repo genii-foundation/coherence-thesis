@@ -58,18 +58,28 @@ export function sectionGroupProgressStatus(
   };
 }
 
-export function progressSectionsForPrefix<T extends Pick<ProgressSection, "href">>(
+export function progressSectionsForPrefix<
+  T extends Pick<ProgressSection, "href" | "readerHref">,
+>(
   sections: T[],
   href: string,
 ): T[] {
   const normalizedHref = href.endsWith("/") ? href : `${href}/`;
-  return sections.filter((section) => section.href.startsWith(normalizedHref));
+  return sections.filter(
+    (section) =>
+      section.href.startsWith(normalizedHref) ||
+      section.readerHref.startsWith(normalizedHref),
+  );
 }
 
-export function progressSectionForHref<T extends Pick<ProgressSection, "href">>(
+export function progressSectionForHref<
+  T extends Pick<ProgressSection, "href" | "readerHref">,
+>(
   sections: T[],
   href: string,
 ): T[] {
   const normalizedHref = href.endsWith("/") ? href : `${href}/`;
-  return sections.filter((section) => section.href === normalizedHref);
+  return sections.filter(
+    (section) => section.href === normalizedHref || section.readerHref === href,
+  );
 }

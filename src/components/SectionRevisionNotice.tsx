@@ -24,10 +24,10 @@ export function SectionRevisionNotice({ section }: { section: ProgressSection })
       createEngagementEvent("updated_notice_shown", {
         sectionId: section.sectionId,
         contentHash: section.contentHash,
-        route: section.href,
+        route: section.readerHref,
       }),
     );
-  }, [isUpdated, section.contentHash, section.href, section.sectionId]);
+  }, [isUpdated, section.contentHash, section.readerHref, section.sectionId]);
 
   if (!isUpdated) return null;
   const revisedHref = revisedSectionHref(progress, section);
