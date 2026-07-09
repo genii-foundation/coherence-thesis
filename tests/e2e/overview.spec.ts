@@ -100,25 +100,38 @@ test("home page presents the overview and manuscript entry points", async ({
     ),
   ).toBeVisible();
   await expect(page.locator(".hero-copy h1")).toHaveCSS("font-weight", "300");
-  await expect(page.locator(".hero-stats li")).toHaveText([
-    `${catalog.stats.volumeCount.toLocaleString()} volumes`,
-    `${catalog.stats.sectionCount.toLocaleString()} sections`,
-    `${formatReadingDurationForWords(catalog.stats.wordCount)} of audio`,
+  const heroStats = page.getByLabel("Manuscript stats");
+  await expect(heroStats.locator("dt")).toHaveText([
+    "Volumes",
+    "Sections",
+    "Hours of audio",
   ]);
-  await expect(page.locator(".hero-stats li").first()).toHaveCSS(
+  await expect(heroStats.locator("dd")).toHaveText([
+    catalog.stats.volumeCount.toLocaleString(),
+    catalog.stats.sectionCount.toLocaleString(),
+    formatReadingDurationForWords(catalog.stats.wordCount).replace(/ hours$/, ""),
+  ]);
+  await expect(heroStats.locator("dd").first()).toHaveCSS(
     "font-weight",
-    "600",
+    "400",
   );
-  await expect(page.locator(".hero-stats li").first()).toHaveCSS(
+  await expect(heroStats.locator("dt").first()).toHaveCSS(
     "text-transform",
     "uppercase",
   );
-  const statSeparatorContent = await page
-    .locator(".hero-stats li")
-    .first()
-    .evaluate((item) => getComputedStyle(item, "::after").content);
-  expect(statSeparatorContent).toBe("none");
-  await expect(page.locator(".hero-stats li").first()).toHaveCSS(
+  expect(
+    await heroStats.evaluate((stats) => ({
+      dividers: Array.from(stats.querySelectorAll(":scope > div + div")).map(
+        (stat) => getComputedStyle(stat).borderLeftWidth,
+      ),
+      topRule: getComputedStyle(stats, "::before").content,
+    })),
+  ).toEqual({ dividers: ["0px", "0px"], topRule: "none" });
+  await expect(heroStats.locator("dd").first()).toHaveCSS(
+    "color",
+    hexToRgb("#13202a"),
+  );
+  await expect(heroStats.locator("dt").first()).toHaveCSS(
     "color",
     hexToRgb("#77542a"),
   );
