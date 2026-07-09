@@ -7,6 +7,9 @@ export const readerFontSizeStep = 5;
 export const readerThemeOptions = ["textured", "light", "dark", "black"] as const;
 export type ReaderTheme = (typeof readerThemeOptions)[number];
 
+export const readerAnimationOptions = ["balanced", "none"] as const;
+export type ReaderAnimations = (typeof readerAnimationOptions)[number];
+
 export const readerThemeColorByTheme: Record<ReaderTheme, string> = {
   textured: "#f4ead7",
   light: "#fffefa",
@@ -16,44 +19,54 @@ export const readerThemeColorByTheme: Record<ReaderTheme, string> = {
 
 export const readerFontOptions = [
   {
-    id: "iowan",
-    label: "Iowan Old Style",
-    stack: "\"Iowan Old Style\", \"Palatino Linotype\", \"Book Antiqua\", Georgia, serif",
+    id: "literata",
+    label: "Literata",
+    stack: "var(--font-literata), Georgia, serif",
   },
   {
-    id: "baskerville",
-    label: "Baskerville",
-    stack: "Baskerville, \"Libre Baskerville\", \"Times New Roman\", serif",
+    id: "source-serif",
+    label: "Source Serif 4",
+    stack: "var(--font-source-serif), Georgia, serif",
   },
   {
-    id: "palatino",
-    label: "Palatino",
-    stack: "\"Palatino Linotype\", Palatino, \"Book Antiqua\", Georgia, serif",
+    id: "newsreader",
+    label: "Newsreader",
+    stack: "var(--font-newsreader), Georgia, serif",
   },
   {
-    id: "charter",
-    label: "Charter",
-    stack: "Charter, \"Bitstream Charter\", Cambria, Georgia, serif",
+    id: "cormorant",
+    label: "Cormorant Garamond",
+    stack: "var(--font-cormorant), Georgia, serif",
   },
   {
-    id: "georgia",
-    label: "Georgia",
-    stack: "Georgia, \"Times New Roman\", serif",
+    id: "fraunces",
+    label: "Fraunces",
+    stack: "var(--font-fraunces), Georgia, serif",
   },
 ] as const;
 
 export type ReaderFontId = (typeof readerFontOptions)[number]["id"];
 
+const legacyReaderFontAliases: Record<string, ReaderFontId> = {
+  baskerville: "source-serif",
+  charter: "newsreader",
+  georgia: "source-serif",
+  iowan: "literata",
+  palatino: "cormorant",
+};
+
 export type ReaderPreferences = {
   fontSize: number;
   fontFamily: ReaderFontId;
   theme: ReaderTheme;
+  animations: ReaderAnimations;
 };
 
 export const defaultReaderPreferences: ReaderPreferences = {
   fontSize: 100,
-  fontFamily: "iowan",
+  fontFamily: "literata",
   theme: "textured",
+  animations: "balanced",
 };
 
 export const defaultReaderThemeColor =
@@ -111,6 +124,10 @@ function parseFontFamily(value: unknown): ReaderFontId {
     return value as ReaderFontId;
   }
 
+  if (typeof value === "string" && legacyReaderFontAliases[value]) {
+    return legacyReaderFontAliases[value];
+  }
+
   return defaultReaderPreferences.fontFamily;
 }
 
@@ -125,6 +142,17 @@ function parseTheme(value: unknown): ReaderTheme {
   return defaultReaderPreferences.theme;
 }
 
+function parseAnimations(value: unknown): ReaderAnimations {
+  if (
+    typeof value === "string" &&
+    readerAnimationOptions.includes(value as ReaderAnimations)
+  ) {
+    return value as ReaderAnimations;
+  }
+
+  return defaultReaderPreferences.animations;
+}
+
 export function parseReaderPreferences(raw: string | null): ReaderPreferences {
   if (!raw) return defaultReaderPreferences;
 
@@ -136,6 +164,7 @@ export function parseReaderPreferences(raw: string | null): ReaderPreferences {
       fontSize: parseFontSize(parsed.fontSize),
       fontFamily: parseFontFamily(parsed.fontFamily),
       theme: parseTheme(parsed.theme),
+      animations: parseAnimations(parsed.animations),
     };
   } catch {
     return defaultReaderPreferences;
@@ -155,6 +184,7 @@ export function applyReaderPreferences(
   const fontStack = fontOptionById(preferences.fontFamily).stack;
 
   root.dataset.readerTheme = preferences.theme;
+  root.dataset.readerAnimations = preferences.animations;
   root.style.setProperty(
     "--reader-font-scale",
     (preferences.fontSize / 100).toString(),

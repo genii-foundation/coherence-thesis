@@ -1,0 +1,25 @@
+The Coherence Thesis
+Copyright (c) 2026 Providence Collective
+
+This repository contains two kinds of material under two different licenses.
+
+Software (Apache License 2.0 — see LICENSE)
+  Everything that is source code, scripts, configuration, or build tooling,
+  including but not limited to:
+    - src/
+    - scripts/
+    - tests/
+    - middleware.ts, next.config.ts, and other root config files
+
+Creative work (CC BY-SA 4.0 — see LICENSE-content)
+  The manuscripts, site copy, and owned artwork, including:
+    - sources/manuscripts/
+    - content/manuscripts/, content/series/, content/overview/
+    - public/art/, public/share/
+
+Generated artifacts (for example src/generated/, public/data/, public/downloads/)
+derive from the creative work above and carry the license of their source
+material.
+
+Third-party materials retain their own licenses. In particular, the fonts in
+fonts/ (PT Serif and PT Mono) are distributed under the SIL Open Font License.

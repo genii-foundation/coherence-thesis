@@ -17,39 +17,48 @@ git branch --show-current
 git status --short
 ```
 
-2. Pull or fetch only when needed for the requested publish action. Do not overwrite local changes.
-3. Capture publish context while working:
+2. For publish, deploy, preview, or verification against `main`, refresh the remote base before trusting the checkout:
+
+```bash
+git fetch origin main
+git rev-parse origin/main
+git rev-parse HEAD
+```
+
+If the fetch fails, stop and report the failure. If the requested publish target is `origin/main`, verify the checkout is at the freshly fetched `origin/main` or can fast-forward cleanly before validating. Do not publish, deploy, or verify a stale local `main` as current.
+3. Pull or fetch any additional deployment refs only when needed for the requested publish action. Do not overwrite local changes.
+4. Capture publish context while working:
    - What publish, preview, deploy, or verification request is being handled.
    - Which revision, branch, and generated catalog state are being verified.
    - Whether any publish-prep change was needed and why.
    - Which routes, browser behaviors, and deploy target evidence matter for this publish.
-4. Run the full validation gate:
+5. Run the full validation gate:
 
 ```bash
 npm run validate
 ```
 
-5. Run desktop and mobile browser smoke tests:
+6. Run desktop and mobile browser smoke tests:
 
 ```bash
 npm run test:e2e
 ```
 
-6. Start or refresh the static preview:
+7. Start or refresh the static preview:
 
 ```bash
 npm start
 ```
 
-7. Verify representative routes:
+8. Verify representative routes:
    - `/`
    - `/overview/`
    - one deep manuscript section route
    - `/sitemap.xml`
    - `/robots.txt`
-8. If a deployment target exists, use the project-approved deploy command for that target. Do not invent a raw deploy command.
-9. Review the final diff before staging. Confirm generated files are expected, README state is intentional, preview or deploy evidence is recorded, and unrelated local changes are left alone.
-10. Commit any publish-prep changes with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
+9. If a deployment target exists, use the project-approved deploy command for that target. Do not invent a raw deploy command.
+10. Review the final diff before staging. Confirm generated files are expected, README state is intentional, preview or deploy evidence is recorded, and unrelated local changes are left alone.
+11. Commit any publish-prep changes with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
 
 ## Publishability Checks
 

@@ -5,13 +5,8 @@ import { normalizePath } from "@/lib/routes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useRef, useState } from "react";
-import { useCleanTooltip } from "@/components/CleanTooltip";
-
-type BrandVolume = {
-  title: string;
-  href: string;
-  numberLabel: string;
-};
+import { CleanTooltip } from "@/components/CleanTooltip";
+import { brandIdentity, type BrandVolume } from "@/lib/brand-identity";
 
 export function ToolbarBrandIsland({ volumes }: { volumes: BrandVolume[] }) {
   const pathname = usePathname();
@@ -19,25 +14,9 @@ export function ToolbarBrandIsland({ volumes }: { volumes: BrandVolume[] }) {
   const measureRef = useRef<HTMLSpanElement>(null);
   const [compactTitle, setCompactTitle] = useState(false);
   const currentPath = normalizePath(pathname);
-  const activeVolume = volumes.find((volume) =>
-    currentPath.startsWith(normalizePath(volume.href)),
-  );
-  const hasActiveVolume = Boolean(activeVolume);
-  const kicker = activeVolume
-    ? "The Coherence Thesis"
-    : "Providence Collective";
-  const title = activeVolume
-    ? `Volume ${activeVolume.numberLabel} · ${activeVolume.title}`
-    : "The Coherence Thesis";
-  const mobileTitle = activeVolume
-    ? `Volume ${activeVolume.numberLabel}`
-    : undefined;
+  const { activeVolume, hasActiveVolume, kicker, title, mobileTitle } =
+    brandIdentity(volumes, currentPath);
   const showCompactTitle = Boolean(activeVolume && compactTitle);
-  const brandTooltip = useCleanTooltip({
-    label: title,
-    shouldOpen: () => showCompactTitle,
-    triggerRef: brandRef,
-  });
 
   useLayoutEffect(() => {
     if (!hasActiveVolume) return;
@@ -115,49 +94,44 @@ export function ToolbarBrandIsland({ volumes }: { volumes: BrandVolume[] }) {
   }, [hasActiveVolume, title]);
 
   return (
-    <Link
-      ref={brandRef}
-      href="/"
-      className={[
-        "brand-mark",
-        activeVolume ? "brand-mark-active" : "",
-        showCompactTitle ? "brand-mark-compact" : "",
-      ]
-        .filter(Boolean)
-        .join(" ")}
-      aria-label={`${kicker} ${title} home`}
-      aria-describedby={brandTooltip.describedBy}
-      onBlur={brandTooltip.closeTooltip}
-      onFocus={brandTooltip.openTooltip}
-      onPointerDown={brandTooltip.closeTooltip}
-      onPointerEnter={brandTooltip.openTooltip}
-      onPointerLeave={brandTooltip.closeTooltip}
-    >
-      <span className="brand-kicker">{kicker}</span>
-      <span className="brand-title">
-        <span className="brand-title-mobile-logo" aria-hidden="true">
-          <span className="brand-title-mobile-logo-full">
-            Coherence Thesis
+    <CleanTooltip label={title} shouldOpen={() => showCompactTitle}>
+      <Link
+        ref={brandRef}
+        href="/"
+        className={[
+          "brand-mark",
+          activeVolume ? "brand-mark-active" : "",
+          showCompactTitle ? "brand-mark-compact" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        aria-label={`${kicker} ${title} home`}
+      >
+        <span className="brand-kicker">{kicker}</span>
+        <span className="brand-title">
+          <span className="brand-title-mobile-logo" aria-hidden="true">
+            <span className="brand-title-mobile-logo-full">
+              Coherence Thesis
+            </span>
+            <span className="brand-title-mobile-logo-initials">CT</span>
           </span>
-          <span className="brand-title-mobile-logo-initials">CT</span>
+          <span className="brand-title-full">{title}</span>
+          {mobileTitle ? (
+            <span className="brand-title-mobile" aria-hidden="true">
+              {mobileTitle}
+            </span>
+          ) : null}
+          {mobileTitle ? (
+            <span
+              className="brand-title-measure"
+              ref={measureRef}
+              aria-hidden="true"
+            >
+              {title}
+            </span>
+          ) : null}
         </span>
-        <span className="brand-title-full">{title}</span>
-        {mobileTitle ? (
-          <span className="brand-title-mobile" aria-hidden="true">
-            {mobileTitle}
-          </span>
-        ) : null}
-        {mobileTitle ? (
-          <span
-            className="brand-title-measure"
-            ref={measureRef}
-            aria-hidden="true"
-          >
-            {title}
-          </span>
-        ) : null}
-      </span>
-      {brandTooltip.tooltip}
-    </Link>
+      </Link>
+    </CleanTooltip>
   );
 }

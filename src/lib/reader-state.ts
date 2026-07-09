@@ -137,15 +137,19 @@ function maxPercent(current: number | undefined, percent: number): number {
   return Math.max(current ?? 0, Math.min(100, Math.max(0, Math.round(percent))));
 }
 
-export function markSectionOpened(
+// Every section mutator rebuilds the same base record envelope (spread the
+// section map, spread the existing entry, re-assert the id and the
+// default-preserving contentHash/readAt/percent) before applying its own fields.
+// Centralizing it (MAINT-05) means a future field cannot be silently dropped by
+// one mutator, and each mutator below only expresses what it actually changes.
+// The fields returned by `patch` are spread last, so a mutator can still
+// override a base default (markRead sets contentHash and readAt outright).
+function updateSection(
   progress: ReaderProgressState,
   section: Pick<ProgressSection, "sectionId" | "contentHash">,
-  now = Date.now(),
-  source: ReaderNavigationSource = "unknown",
+  patch: (existing: SectionReadState | undefined) => Partial<SectionReadState>,
 ): ReaderProgressState {
   const existing = progress.sections[section.sectionId];
-  const openCount = existing?.openCount ?? 0;
-
   return {
     sections: {
       ...progress.sections,
@@ -155,14 +159,28 @@ export function markSectionOpened(
         contentHash: existing?.contentHash ?? section.contentHash,
         readAt: existing?.readAt ?? 0,
         percent: existing?.percent ?? 0,
-        firstOpenedAt: existing?.firstOpenedAt ?? now,
-        lastOpenedAt: now,
-        openCount: openCount + 1,
-        returnCount: openCount > 0 ? (existing?.returnCount ?? 0) + 1 : 0,
-        lastSource: source,
+        ...patch(existing),
       },
     },
   };
+}
+
+export function markSectionOpened(
+  progress: ReaderProgressState,
+  section: Pick<ProgressSection, "sectionId" | "contentHash">,
+  now = Date.now(),
+  source: ReaderNavigationSource = "unknown",
+): ReaderProgressState {
+  return updateSection(progress, section, (existing) => {
+    const openCount = existing?.openCount ?? 0;
+    return {
+      firstOpenedAt: existing?.firstOpenedAt ?? now,
+      lastOpenedAt: now,
+      openCount: openCount + 1,
+      returnCount: openCount > 0 ? (existing?.returnCount ?? 0) + 1 : 0,
+      lastSource: source,
+    };
+  });
 }
 
 export function recordScrollProgress(
@@ -185,19 +203,10 @@ export function recordScrollProgress(
     return progress;
   }
 
-  return {
-    sections: {
-      ...progress.sections,
-      [section.sectionId]: {
-        ...existing,
-        sectionId: section.sectionId,
-        contentHash: existing?.contentHash ?? section.contentHash,
-        readAt: existing?.readAt ?? 0,
-        percent: nextPercent,
-        maxScrollPercent: nextMaxScroll,
-      },
-    },
-  };
+  return updateSection(progress, section, () => ({
+    percent: nextPercent,
+    maxScrollPercent: nextMaxScroll,
+  }));
 }
 
 export function recordReadingTime(
@@ -209,26 +218,14 @@ export function recordReadingTime(
     totalVisibleSeconds: number;
   },
 ): ReaderProgressState {
-  const existing = progress.sections[section.sectionId];
-
-  return {
-    sections: {
-      ...progress.sections,
-      [section.sectionId]: {
-        ...existing,
-        sectionId: section.sectionId,
-        contentHash: existing?.contentHash ?? section.contentHash,
-        readAt: existing?.readAt ?? 0,
-        percent: existing?.percent ?? 0,
-        activeSeconds: addSeconds(existing?.activeSeconds, timing.activeSeconds),
-        idleSeconds: addSeconds(existing?.idleSeconds, timing.idleSeconds),
-        totalVisibleSeconds: addSeconds(
-          existing?.totalVisibleSeconds,
-          timing.totalVisibleSeconds,
-        ),
-      },
-    },
-  };
+  return updateSection(progress, section, (existing) => ({
+    activeSeconds: addSeconds(existing?.activeSeconds, timing.activeSeconds),
+    idleSeconds: addSeconds(existing?.idleSeconds, timing.idleSeconds),
+    totalVisibleSeconds: addSeconds(
+      existing?.totalVisibleSeconds,
+      timing.totalVisibleSeconds,
+    ),
+  }));
 }
 
 export function recordAudioSeconds(
@@ -236,22 +233,10 @@ export function recordAudioSeconds(
   section: Pick<ProgressSection, "sectionId" | "contentHash">,
   seconds: number,
 ): ReaderProgressState {
-  const existing = progress.sections[section.sectionId];
-
-  return {
-    sections: {
-      ...progress.sections,
-      [section.sectionId]: {
-        ...existing,
-        sectionId: section.sectionId,
-        contentHash: existing?.contentHash ?? section.contentHash,
-        readAt: existing?.readAt ?? 0,
-        percent: existing?.percent ?? 0,
-        audioSeconds: addSeconds(existing?.audioSeconds, seconds),
-        lastSource: "audio",
-      },
-    },
-  };
+  return updateSection(progress, section, (existing) => ({
+    audioSeconds: addSeconds(existing?.audioSeconds, seconds),
+    lastSource: "audio",
+  }));
 }
 
 export function markRead(
@@ -262,28 +247,19 @@ export function markRead(
   now = Date.now(),
   method: "auto" | "manual" = "auto",
 ): ReaderProgressState {
-  const existing = progress.sections[section.sectionId];
-
-  return {
-    sections: {
-      ...progress.sections,
-      [section.sectionId]: {
-        ...existing,
-        sectionId: section.sectionId,
-        contentHash: section.contentHash,
-        paragraphs: paragraphHashes(section) ?? existing?.paragraphs,
-        readAt: now,
-        lastReadAt: now,
-        percent: maxPercent(existing?.percent, percent),
-        firstOpenedAt: existing?.firstOpenedAt ?? now,
-        lastOpenedAt: existing?.lastOpenedAt ?? now,
-        maxScrollPercent: maxPercent(existing?.maxScrollPercent, percent),
-        manualReadCount:
-          (existing?.manualReadCount ?? 0) + (method === "manual" ? 1 : 0),
-        autoReadCount: (existing?.autoReadCount ?? 0) + (method === "auto" ? 1 : 0),
-      },
-    },
-  };
+  return updateSection(progress, section, (existing) => ({
+    contentHash: section.contentHash,
+    paragraphs: paragraphHashes(section) ?? existing?.paragraphs,
+    readAt: now,
+    lastReadAt: now,
+    percent: maxPercent(existing?.percent, percent),
+    firstOpenedAt: existing?.firstOpenedAt ?? now,
+    lastOpenedAt: existing?.lastOpenedAt ?? now,
+    maxScrollPercent: maxPercent(existing?.maxScrollPercent, percent),
+    manualReadCount:
+      (existing?.manualReadCount ?? 0) + (method === "manual" ? 1 : 0),
+    autoReadCount: (existing?.autoReadCount ?? 0) + (method === "auto" ? 1 : 0),
+  }));
 }
 
 export function mergeProgressStates(
@@ -421,7 +397,12 @@ export function revisedSectionHref(
   section: ProgressSection,
 ): string {
   const anchor = firstChangedParagraphAnchor(progress, section);
-  return anchor ? `${section.href}#${anchor}` : section.href;
+  if (!anchor) return section.readerHref ?? section.href;
+  const baseHref = section.readerHref ?? section.href;
+  if (baseHref.includes("#")) {
+    return `${(section.chapterHref ?? section.href).replace(/#.*$/, "")}#${section.sectionId}-${anchor}`;
+  }
+  return `${baseHref}#${anchor}`;
 }
 
 export function isSectionRead(
@@ -470,7 +451,7 @@ export function recommendNextSections(
     ...firstUnread.map((section) => ({
       sectionId: section.sectionId,
       title: section.title,
-      href: section.href,
+      href: section.readerHref ?? section.href,
       isUpdated: false,
     })),
   ];
@@ -500,7 +481,7 @@ export function recentlyReadSections(
         ? {
             sectionId: section.sectionId,
             title: section.title,
-            href: section.href,
+            href: section.readerHref ?? section.href,
             readAt: state.readAt,
           }
         : null;

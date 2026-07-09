@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { ChapterReader } from "@/components/ChapterReader";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
 import { SectionReader } from "@/components/SectionReader";
@@ -48,7 +49,7 @@ export async function generateMetadata({
     return {
       title: section.title,
       description: section.text.slice(0, 155),
-      alternates: { canonical: section.href },
+      alternates: { canonical: section.readerHref },
     };
   }
 
@@ -102,7 +103,7 @@ function PartPage({ match }: { match: PartRouteMatch }) {
               ? sections.map((section) => (
                   <Link
                     key={section.sectionId}
-                    href={section.href}
+                    href={section.readerHref}
                     className="chapter-card"
                   >
                     <span className="card-kicker">
@@ -190,32 +191,7 @@ function ChapterPage({ match }: { match: ChapterRouteMatch }) {
 
   return (
     <div className="page-frame reader-layout">
-      <article className="reader-main">
-        <header className="page-heading">
-          <p className="eyebrow">Chapter {chapter.order || "0"}</p>
-          <h1>{chapter.title}</h1>
-          <p>
-            {formatReadingDurationForWords(chapter.wordCount)} across{" "}
-            {sections.length} sections.
-          </p>
-        </header>
-        <div className="section-index">
-          {sections.map((section) => (
-            <Link key={section.sectionId} href={section.href}>
-              <span>{section.title}</span>
-              <span className="content-status-row">
-                <UpdatedMarkerIsland sections={[toProgressSection(section)]} />
-                <ReadCheckmarkIsland sections={[toProgressSection(section)]} />
-              </span>
-            </Link>
-          ))}
-        </div>
-        <ManuscriptNavigation
-          previous={navigation.previous}
-          parent={navigation.parent}
-          next={navigation.next}
-        />
-      </article>
+      <ChapterReader chapter={chapter} sections={sections} navigation={navigation} />
     </div>
   );
 }
@@ -229,6 +205,7 @@ export default async function ManuscriptRoutePage({
   const href = routeHref(resolvedParams);
   const section = sectionByHrefOrAlias(href);
   if (section) {
+    if (section.section.readerHref !== href) redirect(section.section.readerHref);
     return (
       <div className="page-frame reader-layout">
         <SectionReader section={section.section} alias={section.alias} />

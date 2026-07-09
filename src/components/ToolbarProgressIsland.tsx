@@ -8,7 +8,6 @@ import {
   useMemo,
   useRef,
   useState,
-  type CSSProperties,
   type FormEvent,
 } from "react";
 import { usePathname } from "next/navigation";
@@ -21,6 +20,12 @@ import {
   RotateCcw,
   UserRound,
 } from "lucide-react";
+import { ProgressCloudBadge } from "@/components/ProgressCloudBadge";
+import { ProgressReadAnimation } from "@/components/ProgressReadAnimation";
+import {
+  readerActiveSectionEvent,
+  type ReaderActiveSectionDetail,
+} from "@/lib/reader-active-section";
 import { loadProgressSections } from "@/lib/reader-data";
 import { useLoadedData } from "@/lib/use-loaded-data";
 import type { ProgressSection } from "@/lib/manuscript-data";
@@ -46,7 +51,6 @@ import {
   writeStoredEvents,
 } from "@/lib/reader-progress-store";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
-import { useSectionEngagement } from "@/lib/use-section-engagement";
 import {
   getCurrentUser,
   isReaderSyncConfigured,
@@ -137,13 +141,30 @@ export function ToolbarProgressIsland() {
   const [syncMessage, setSyncMessage] = useState("");
   const [lastSyncedAt, setLastSyncedAt] = useState<number | null>(null);
   const [relativeNow, setRelativeNow] = useState(() => Date.now());
-  const { open, setOpen, toggle, containerRef, triggerRef } =
-    useToolbarMenu<HTMLDivElement>({
+  const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
+  const [showReadAnimation, setShowReadAnimation] = useState(false);
+  const previousReadStateRef = useRef<{ sectionId: string | null; isRead: boolean }>({
+    sectionId: null,
+    isRead: false,
+  });
+  const {
+    open,
+    rendered,
+    setOpen,
+    toggle,
+    containerRef,
+    triggerProps,
+    popoverProps,
+  } = useToolbarMenu<HTMLDivElement>({
       onDismiss: () => setSyncLoginModalEmail(""),
     });
 
   const section = useMemo(() => {
     const currentPath = normalizePath(pathname);
+    const activeMatch = activeSectionId
+      ? allSections.find((candidate) => candidate.sectionId === activeSectionId)
+      : undefined;
+    if (activeMatch) return activeMatch;
     const exactMatch = allSections.find(
       (candidate) => normalizePath(candidate.href) === currentPath,
     );
@@ -152,7 +173,7 @@ export function ToolbarProgressIsland() {
       (candidate) => parentRoute(candidate.href) === currentPath,
     );
     return parentMatches.length === 1 ? parentMatches[0] : undefined;
-  }, [allSections, pathname]);
+  }, [activeSectionId, allSections, pathname]);
 
   useEffect(() => {
     const hydrationTimer = window.setTimeout(() => {
@@ -201,11 +222,20 @@ export function ToolbarProgressIsland() {
     const closeTimer = window.setTimeout(() => {
       setOpen(false);
       setSyncLoginModalEmail("");
+      setActiveSectionId(null);
     }, 0);
     return () => window.clearTimeout(closeTimer);
   }, [pathname, setOpen]);
 
-  useSectionEngagement(section, pathname);
+  useEffect(() => {
+    const onActiveSection = (event: Event) => {
+      const detail = (event as CustomEvent<ReaderActiveSectionDetail>).detail;
+      setActiveSectionId(detail.sectionId);
+    };
+    window.addEventListener(readerActiveSectionEvent, onActiveSection);
+    return () =>
+      window.removeEventListener(readerActiveSectionEvent, onActiveSection);
+  }, []);
 
   useEffect(() => {
     if (!user) return;
@@ -348,6 +378,25 @@ export function ToolbarProgressIsland() {
   const lastSyncedLabel = formatLastSyncedAt(lastSyncedAt, relativeNow);
 
   useEffect(() => {
+    const sectionId = section?.sectionId ?? null;
+    const previous = previousReadStateRef.current;
+    const becameRead =
+      Boolean(sectionId) &&
+      previous.sectionId === sectionId &&
+      !previous.isRead &&
+      isRead;
+    previousReadStateRef.current = { sectionId, isRead };
+
+    if (!becameRead) return;
+
+    setShowReadAnimation(true);
+    const timer = window.setTimeout(() => {
+      setShowReadAnimation(false);
+    }, 1_600);
+    return () => window.clearTimeout(timer);
+  }, [isRead, section?.sectionId]);
+
+  useEffect(() => {
     if (!open || recommendations.length === 0) return;
     recommendations.forEach((item, index) => {
       appendStoredEvent(
@@ -454,33 +503,25 @@ export function ToolbarProgressIsland() {
   return (
     <div className="progress-menu" ref={containerRef}>
       <button
-        ref={triggerRef}
+        {...triggerProps}
         type="button"
         className={`progress-menu-button${user ? " is-signed-in" : ""}`}
         aria-label={`Progress ${percent}%${user ? ", signed in" : ""}`}
-        aria-expanded={open}
         aria-controls="reader-progress-menu"
-        style={
-          { "--progress-value": percent } as CSSProperties & {
-            "--progress-value": number;
-          }
-        }
         onClick={() => {
           toggle();
           setSyncLoginModalEmail("");
         }}
       >
-        {user && (
-          <Cloud
-            className="progress-percent-cloud"
-            aria-hidden="true"
-            strokeWidth={1.85}
-          />
+        {showReadAnimation ? (
+          <ProgressReadAnimation />
+        ) : (
+          <ProgressCloudBadge connected={Boolean(user)} percent={percent} />
         )}
-        <span className="progress-percent">{percent}%</span>
       </button>
-      {open && (
+      {rendered && (
         <div
+          {...popoverProps}
           id="reader-progress-menu"
           className="reader-status progress-popover"
           role="region"

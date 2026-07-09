@@ -15,7 +15,6 @@ export default function ProgressPage() {
       <header className="page-heading">
         <p className="eyebrow">Local progress</p>
         <h1>Reading Map</h1>
-        <p>One thousand squares across the nine manuscripts.</p>
       </header>
       <ReaderProgressHeatmapIsland model={model} />
     </div>

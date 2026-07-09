@@ -205,6 +205,18 @@ export function sectionHref(section: Pick<
   return `/manuscripts/${route.join("/")}/`;
 }
 
+function sectionReaderHref(
+  section: Pick<
+    ManuscriptFrontmatter,
+    "volumeId" | "partId" | "chapterId" | "sectionId"
+  >,
+  chapterSectionCount: number,
+): string {
+  const chapterRoute = chapterHref(section);
+  if (chapterSectionCount <= 1) return sectionHref(section);
+  return `${chapterRoute}#${section.sectionId}`;
+}
+
 export function chapterHref(section: Pick<
   ManuscriptFrontmatter,
   "volumeId" | "partId" | "chapterId"
@@ -332,14 +344,20 @@ export function audioVersionId(sectionId: string, contentHash: string): string {
 }
 
 function routeFromHref(href: string): SectionAlias["sourceRoute"] {
-  const match = href.match(
-    /^\/manuscripts\/([^/]+)\/([^/]+)\/([^/]+)\/([^/]+)\/?$/,
-  );
-  const [, volumeId, partId, chapterId, sectionId] = match ?? [];
-  if (!volumeId || !partId || !chapterId || !sectionId) {
+  const route = href
+    .replace(/^\/manuscripts\//, "")
+    .replace(/\/$/, "")
+    .split("/");
+  const [volumeId, partId, chapterIdOrSectionId, sectionId] = route;
+  if (!volumeId || !partId || !chapterIdOrSectionId || route.length > 4) {
     throw new Error(`Alias sourceHref must be a section route: ${href}`);
   }
-  return { volumeId, partId, chapterId, sectionId };
+  return {
+    volumeId,
+    partId,
+    chapterId: sectionId ? chapterIdOrSectionId : partId,
+    sectionId: sectionId ?? chapterIdOrSectionId,
+  };
 }
 
 function fullDepthSectionHref(section: Pick<
@@ -357,14 +375,23 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
   const volumeConfigs = new Map(
     readVolumeConfigs().map((volume) => [volume.volumeId, volume]),
   );
+  const chapterSectionCounts = docs.reduce((counts, doc) => {
+    const key = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}:${doc.frontmatter.chapterId}`;
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+    return counts;
+  }, new Map<string, number>());
   const sections = docs.map((doc, index) => {
     const words = wordCount(doc.body);
     const contentHash = sha256(normalizeNewlines(doc.body)).slice(0, 16);
     const provenance = provenanceByHash.get(contentHash);
+    const chapterKey = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}:${doc.frontmatter.chapterId}`;
+    const chapterSectionCount = chapterSectionCounts.get(chapterKey) ?? 1;
     return {
       ...doc.frontmatter,
       path: doc.relativePath,
       href: sectionHref(doc.frontmatter),
+      chapterHref: chapterHref(doc.frontmatter),
+      readerHref: sectionReaderHref(doc.frontmatter, chapterSectionCount),
       body: doc.body,
       text: stripMarkdown(doc.body),
       paragraphs: paragraphFingerprints(doc.body),
@@ -468,6 +495,16 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
   const sectionById = new Map(sections.map((section) => [section.sectionId, section]));
   const aliasInputs = [...readAliasConfig().aliases];
   for (const section of sections) {
+    for (const sourceHref of section.aliases ?? []) {
+      if (aliasInputs.some((alias) => alias.sourceHref === sourceHref)) continue;
+      aliasInputs.push({
+        sourceHref,
+        targetSectionId: section.sectionId,
+        note: "Generated alias for a skipped subtitle-only opener route.",
+      });
+    }
+  }
+  for (const section of sections) {
     const sourceHref = fullDepthSectionHref(section);
     if (sourceHref === section.href) continue;
     if (aliasInputs.some((alias) => alias.sourceHref === sourceHref)) continue;
@@ -514,7 +551,8 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
 export function buildSearchIndex(catalog: CompiledCatalog): SearchIndexEntry[] {
   return catalog.sections.map((section) => ({
     sectionId: section.sectionId,
-    href: section.href,
+    href: section.readerHref,
+    readerHref: section.readerHref,
     title: section.title,
     volumeTitle: section.volumeTitle,
     partTitle: section.partTitle,

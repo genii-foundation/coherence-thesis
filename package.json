@@ -38,6 +38,8 @@
     "manuscripts:versions": "tsx scripts/manuscripts/versions.ts",
     "premanuscripts:validate": "node scripts/ensure-node-modules.mjs",
     "manuscripts:validate": "tsx scripts/manuscripts/validate.ts",
+    "audio:fish": "tsx scripts/audio/fish-generate.ts",
+    "audio:publish-manifest": "tsx scripts/audio/fish-publish-manifest.ts",
     "prereadme:update": "node scripts/ensure-node-modules.mjs",
     "readme:update": "tsx scripts/update-readme-status.ts",
     "prevalidate": "node scripts/ensure-node-modules.mjs",
@@ -47,6 +49,8 @@
     "node": ">=20.9"
   },
   "dependencies": {
+    "@radix-ui/react-popover": "^1.1.19",
+    "@radix-ui/react-tooltip": "^1.2.12",
     "@supabase/ssr": "^0.12.0",
     "@supabase/supabase-js": "^2.110.0",
     "lucide-react": "^1.21.0",
@@ -56,7 +60,6 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1",
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/pdfkit": "^0.17.6",
     "@types/react": "^19",
@@ -66,7 +69,6 @@
     "eslint-config-next": "16.2.9",
     "pdfkit": "^0.19.1",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4",
     "tsx": "^4.22.4",
     "typescript": "^5",
     "vitest": "^4.1.9"

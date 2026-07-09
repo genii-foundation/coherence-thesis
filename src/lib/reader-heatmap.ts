@@ -13,6 +13,7 @@ export type ReaderHeatmapSectionPortion = {
   contentHash: string;
   title: string;
   href: string;
+  readerHref: string;
   wordCount: number;
   fraction: number;
 };
@@ -33,6 +34,7 @@ export type ReaderHeatmapVolume = {
   order: number;
   href: string;
   wordCount: number;
+  sectionCount: number;
   cellCount: number;
   cells: ReaderHeatmapCell[];
 };
@@ -151,7 +153,8 @@ function buildVolumeCells({
         sectionId: range.section.sectionId,
         contentHash: range.section.contentHash,
         title: range.section.title,
-        href: range.section.href,
+        href: range.section.readerHref,
+        readerHref: range.section.readerHref,
         wordCount: range.section.wordCount,
         fraction: overlap / cellSpan,
       });
@@ -168,7 +171,8 @@ function buildVolumeCells({
               sectionId: fallback.sectionId,
               contentHash: fallback.contentHash,
               title: fallback.title,
-              href: fallback.href,
+              href: fallback.readerHref,
+              readerHref: fallback.readerHref,
               wordCount: fallback.wordCount,
               fraction: 1,
             },
@@ -204,9 +208,10 @@ export function buildReaderHeatmapModel(
 
   const volumes = catalog.volumes.map((volume) => {
     const cellCount = volumeCells.get(volume.volumeId) ?? 0;
+    const sections = sectionsForVolume(volume, catalog.sections);
     const cells = buildVolumeCells({
       volume,
-      sections: sectionsForVolume(volume, catalog.sections),
+      sections,
       cellCount,
       startIndex,
     });
@@ -218,6 +223,7 @@ export function buildReaderHeatmapModel(
       order: volume.order,
       href: volume.href,
       wordCount: volume.wordCount,
+      sectionCount: sections.length,
       cellCount: cells.length,
       cells,
     };

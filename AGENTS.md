@@ -38,6 +38,7 @@ npm run manuscripts:validate
 - Toolbar controls must remain reachable at supported desktop and mobile widths. If controls collapse into a menu, make form controls fill the menu width.
 - Floating menus, dropdowns, command palettes, and overlays must stay inside the viewport and scroll internally when content grows.
 - Buttons and dialog controls should use the established button hierarchy, radius, typography, and focus states. Do not add hover lift, bounce, glossy buttons, or one-off gradient CTA treatments.
+- Radio controls should use the shared connected radio pattern with `settings-radio-section`, `settings-radio-group`, and `settings-radio-option` unless native circles are explicitly required.
 - User-facing numbers must use `Number.toLocaleString()` or `Intl.NumberFormat`.
 - Long manuscript titles in compact UI must truncate or wrap cleanly. Text must not overlap adjacent controls.
 

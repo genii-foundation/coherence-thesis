@@ -6,12 +6,20 @@ const smoothstep = (value: number) => {
   return normalized * normalized * (3 - 2 * normalized);
 };
 
+const distributionPeak = (distance: number, peakOffset: number, width: number) => {
+  const normalized = (distance - peakOffset) / width;
+  return Math.exp(-0.5 * normalized * normalized);
+};
+
 export const coverFlowTuning = {
   scroll: {
     endSnapTolerancePx: 2,
     flickDistancePx: 620,
     flickPeakDeltaPx: 260,
     flickSettleMs: 110,
+    verticalReleaseMs: 160,
+    verticalTakeoverMinDeltaPx: 3,
+    verticalTakeoverRatio: 1.15,
   },
   rotation: {
     maxDegrees: 72,
@@ -25,14 +33,24 @@ export const coverFlowTuning = {
     min: 0.54,
   },
   spacing: {
-    centerGutterPx: 235,
-    centerGutterFalloff: 0.56,
-    centerGutterPeakOffset: 0.68,
-    sideStackCompressionPx: 460,
-    sideStackDistributionCurve: 1.16,
-    sideStackMaxCompressionRatio: 0.72,
-    sideStackMaxDistance: 2.7,
-    sideStackStartOffset: 0.2,
+    backgroundDistributionCenterGateOffset: 0.25,
+    firstBackgroundOutwardPx: 26,
+    firstBackgroundPeakOffset: 0.48,
+    firstBackgroundWidth: 0.26,
+    secondBackgroundOutwardPx: 130,
+    secondBackgroundPeakOffset: 0.94,
+    secondBackgroundWidth: 0.28,
+    thirdBackgroundInwardPx: 52,
+    thirdBackgroundPeakOffset: 1.4,
+    thirdBackgroundWidth: 0.31,
+    centerGutterPx: 315,
+    centerGutterFalloff: 1.18,
+    centerGutterPeakOffset: 0.58,
+    sideStackCompressionPx: 760,
+    sideStackDistributionCurve: 0.98,
+    sideStackMaxCompressionRatio: 0.92,
+    sideStackMaxDistance: 2.45,
+    sideStackStartOffset: 0.14,
   },
   depth: {
     pxPerCard: 118,
@@ -43,6 +61,11 @@ export const coverFlowTuning = {
     opacityPerCard: 0.48,
     falloffCurve: 1.08,
     max: 0.88,
+  },
+  coverShadow: {
+    falloffPerCard: 0.46,
+    falloffCurve: 1.12,
+    min: 0.08,
   },
   panelOpacity: {
     activeDistance: 0.34,
@@ -55,6 +78,29 @@ export const coverFlowTuning = {
     min: 1,
   },
 };
+
+export function getCoverFlowWheelIntent({
+  deltaX,
+  deltaY,
+  shiftKey,
+}: {
+  deltaX: number;
+  deltaY: number;
+  shiftKey: boolean;
+}): "horizontal" | "vertical" | "none" {
+  const absX = Math.abs(deltaX);
+  const absY = Math.abs(deltaY);
+
+  if (shiftKey && absY > 0) return "horizontal";
+  if (absX === 0 && absY === 0) return "none";
+  if (
+    absY >= coverFlowTuning.scroll.verticalTakeoverMinDeltaPx &&
+    absY >= absX * coverFlowTuning.scroll.verticalTakeoverRatio
+  ) {
+    return "vertical";
+  }
+  return absX > 0 || absY > 0 ? "horizontal" : "none";
+}
 
 export function getCoverFlowTransform(offset: number) {
   const distance = Math.abs(offset);
@@ -96,7 +142,34 @@ export function getCoverFlowTransform(offset: number) {
     coverFlowTuning.spacing.sideStackMaxCompressionRatio;
   const sideStackCompression =
     -direction * Math.min(desiredCompression, maxCompression);
-  const shift = distance < 0.001 ? 0 : centerGutter + sideStackCompression;
+  const distributionGate = smoothstep(
+    distance / coverFlowTuning.spacing.backgroundDistributionCenterGateOffset,
+  );
+  const backgroundDistributionCorrection =
+    direction *
+    distributionGate *
+    (coverFlowTuning.spacing.firstBackgroundOutwardPx *
+      distributionPeak(
+        distance,
+        coverFlowTuning.spacing.firstBackgroundPeakOffset,
+        coverFlowTuning.spacing.firstBackgroundWidth,
+      ) +
+      coverFlowTuning.spacing.secondBackgroundOutwardPx *
+        distributionPeak(
+          distance,
+          coverFlowTuning.spacing.secondBackgroundPeakOffset,
+          coverFlowTuning.spacing.secondBackgroundWidth,
+        ) -
+      coverFlowTuning.spacing.thirdBackgroundInwardPx *
+        distributionPeak(
+          distance,
+          coverFlowTuning.spacing.thirdBackgroundPeakOffset,
+          coverFlowTuning.spacing.thirdBackgroundWidth,
+        ));
+  const shift =
+    distance < 0.001
+      ? 0
+      : centerGutter + sideStackCompression + backgroundDistributionCorrection;
   const rotate = clamp(
     clampedOffset * -coverFlowTuning.rotation.degreesPerCardOffset,
     -coverFlowTuning.rotation.maxDegrees,
@@ -118,6 +191,12 @@ export function getCoverFlowTransform(offset: number) {
     coverFlowTuning.coverWash.opacityPerCard *
       Math.pow(distance, coverFlowTuning.coverWash.falloffCurve),
   );
+  const coverShadowStrength = Math.max(
+    coverFlowTuning.coverShadow.min,
+    1 -
+      coverFlowTuning.coverShadow.falloffPerCard *
+        Math.pow(distance, coverFlowTuning.coverShadow.falloffCurve),
+  );
   const panelOpacity =
     distance < coverFlowTuning.panelOpacity.activeDistance
       ? coverFlowTuning.panelOpacity.active
@@ -133,6 +212,7 @@ export function getCoverFlowTransform(offset: number) {
   );
 
   return {
+    coverShadowStrength,
     coverWashOpacity,
     layer,
     panelOpacity,

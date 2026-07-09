@@ -4,20 +4,33 @@ import {
   useCallback,
   useEffect,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
-import type { WheelEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowLeft,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsRight,
+} from "lucide-react";
+import { AstrologyIcon } from "@/components/AstrologyIcon";
 import {
   coverFlowTuning,
   getCoverFlowFlickTarget,
   getCoverFlowTransform,
+  getCoverFlowWheelIntent,
 } from "@/lib/cover-flow-motion";
 import type { Volume } from "@/lib/manuscript-data";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
+import { useReaderProgress } from "@/lib/reader-progress-store";
+import {
+  sectionGroupProgressStatus,
+  type SectionProgressInput,
+} from "@/lib/section-progress";
+import { ProgressStateDot } from "@/components/ProgressStateDot";
 
 type CoverFlowVolume = Pick<
   Volume,
@@ -28,13 +41,19 @@ type CoverFlowVolume = Pick<
   | "order"
   | "parts"
   | "planet"
+  | "sectionIds"
   | "subtitle"
   | "title"
   | "volumeId"
   | "wordCount"
->;
+> & {
+  firstSectionHref: string;
+};
+
+type CoverFlowProgressSection = SectionProgressInput & { href: string };
 
 type ManuscriptCoverFlowIslandProps = {
+  progressSections: CoverFlowProgressSection[];
   volumes: CoverFlowVolume[];
 };
 
@@ -44,54 +63,215 @@ type WheelGesture = {
   timeoutId: number | null;
 };
 
-const manuscriptTags: Record<string, string[]> = {
-  "humanitys-most-viable-future": [
-    "Post-extractive civilization",
-    "Social substrate",
-  ],
-  "wielding-intelligence": ["Humane technology", "AI coordination"],
-  "providence-imperative": [
-    "Coordination infrastructure",
-    "Civilizational design",
-  ],
-  "architecting-providence": ["Systems architecture", "Coherent governance"],
-  purposeful: ["Builder discovery", "Human purpose"],
-  "smallest-nest": ["Planetary containment", "Living scale"],
-  "presencing-genius": ["Presence praxis", "Collective genius"],
-  "misanthropic-artifice": ["Academic critique", "Saturnine inquiry"],
-  "cardinal-scale": ["Iconic patterning", "Cardinal orientation"],
+type ManuscriptCardOutlineRowMeta = {
+  status: ReturnType<typeof sectionGroupProgressStatus>;
+  wordCount: number;
 };
 
-const planetSymbols: Record<string, string> = {
-  Jupiter: "♃",
-  Mars: "♂",
-  Mercury: "☿",
-  Moon: "☽",
-  Neptune: "♆",
-  Saturn: "♄",
-  Sun: "☉",
-  Uranus: "♅",
-  Venus: "♀",
-};
+function ManuscriptCardOutlineRowContent({
+  icon = "single",
+  label,
+  meta,
+}: {
+  icon?: "double" | "single";
+  label: string;
+  meta: ManuscriptCardOutlineRowMeta;
+}) {
+  return (
+    <>
+      <span className="manuscript-card-outline-title">
+        {icon === "double" ? (
+          <ChevronsRight
+            aria-hidden="true"
+            size={17}
+            className="manuscript-card-outline-chevron"
+          />
+        ) : (
+          <ChevronRight
+            aria-hidden="true"
+            size={15}
+            className="manuscript-card-outline-chevron"
+          />
+        )}
+        <span>{label}</span>
+      </span>
+      <span className="manuscript-card-outline-meta">
+        <small>{formatReadingDurationForWords(meta.wordCount)}</small>
+        <ProgressStateDot status={meta.status} />
+      </span>
+    </>
+  );
+}
+
+type ManuscriptCardOutlineRowProps = {
+  className?: string;
+  label: string;
+  meta: ManuscriptCardOutlineRowMeta;
+} & (
+  | {
+      href: string;
+      onClick?: never;
+    }
+  | {
+      href?: never;
+      onClick: () => void;
+    }
+);
+
+function ManuscriptCardOutlineRow({
+  className,
+  label,
+  meta,
+  ...props
+}: ManuscriptCardOutlineRowProps) {
+  const rowClassName = ["manuscript-card-outline-part-button", className]
+    .filter(Boolean)
+    .join(" ");
+  const content = (
+    <ManuscriptCardOutlineRowContent label={label} meta={meta} />
+  );
+
+  if (props.href) {
+    return (
+      <Link className={rowClassName} href={props.href}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <button type="button" className={rowClassName} onClick={props.onClick}>
+      {content}
+    </button>
+  );
+}
 
 const initialIndex = 0;
 
 export function ManuscriptCoverFlowIsland({
+  progressSections,
   volumes,
 }: ManuscriptCoverFlowIslandProps) {
   const [activeIndex, setActiveIndex] = useState(() =>
     Math.min(initialIndex, Math.max(volumes.length - 1, 0)),
   );
+  const [selectedPartByVolumeId, setSelectedPartByVolumeId] = useState<
+    Record<string, string | null>
+  >({});
+  const [readCueVolumeId, setReadCueVolumeId] = useState<string | null>(null);
+  const progress = useReaderProgress();
   const scrollRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<Array<HTMLAnchorElement | null>>([]);
-  const snapRefs = useRef<Array<HTMLSpanElement | null>>([]);
+  const cardRefs = useRef<Array<HTMLElement | null>>([]);
+  const panelRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const snapRefs = useRef<Array<HTMLDivElement | null>>([]);
   const frameRef = useRef<number | null>(null);
   const activeIndexRef = useRef(activeIndex);
+  const panelHeightFrameRef = useRef<number | null>(null);
+  const pendingPanelHeightAnimationsRef = useRef(new Set<string>());
+  const verticalWheelReleaseFrameRef = useRef<number | null>(null);
+  const verticalWheelReleaseTimeoutRef = useRef<number | null>(null);
   const wheelGestureRef = useRef<WheelGesture>({
     distancePx: 0,
     peakDeltaPx: 0,
     timeoutId: null,
   });
+
+  const progressSectionById = useMemo(
+    () =>
+      new Map(
+        progressSections.map((section) => [section.sectionId, section]),
+      ),
+    [progressSections],
+  );
+
+  const sectionsForIds = useCallback(
+    (sectionIds: string[]) => {
+      const resolved: SectionProgressInput[] = [];
+      sectionIds.forEach((sectionId) => {
+        const section = progressSectionById.get(sectionId);
+        if (section) resolved.push(section);
+      });
+      return resolved;
+    },
+    [progressSectionById],
+  );
+
+  const resetWheelGesture = useCallback(() => {
+    const gesture = wheelGestureRef.current;
+    gesture.distancePx = 0;
+    gesture.peakDeltaPx = 0;
+    if (gesture.timeoutId !== null) {
+      window.clearTimeout(gesture.timeoutId);
+      gesture.timeoutId = null;
+    }
+  }, []);
+
+  const measuredPanelHeight = useCallback((panel: HTMLDivElement) => {
+    const maxHeight = Number.parseFloat(window.getComputedStyle(panel).maxHeight);
+    const contentHeight = panel.scrollHeight;
+    if (!Number.isFinite(maxHeight) || maxHeight <= 0) return contentHeight;
+    return Math.min(contentHeight, maxHeight);
+  }, []);
+
+  const preparePanelHeightAnimation = useCallback((volumeId: string) => {
+    const panel = panelRefs.current[volumeId];
+    if (!panel) return;
+
+    pendingPanelHeightAnimationsRef.current.add(volumeId);
+    panel.style.setProperty(
+      "--cover-flow-panel-height",
+      `${panel.getBoundingClientRect().height}px`,
+    );
+    panel.classList.add("is-height-locked");
+  }, []);
+
+  const animatePanelHeightToContent = useCallback(
+    (volumeId: string) => {
+      const panel = panelRefs.current[volumeId];
+      if (!panel) return;
+
+      const currentHeight = panel.getBoundingClientRect().height;
+      panel.style.transition = "none";
+      panel.classList.remove("is-height-locked");
+      panel.style.removeProperty("--cover-flow-panel-height");
+      const targetHeight = measuredPanelHeight(panel);
+      panel.classList.add("is-height-locked");
+      panel.style.setProperty(
+        "--cover-flow-panel-height",
+        `${currentHeight}px`,
+      );
+      void panel.offsetHeight;
+      panel.style.removeProperty("transition");
+
+      if (Math.abs(currentHeight - targetHeight) < 1) {
+        panel.classList.remove("is-height-locked");
+        panel.style.removeProperty("--cover-flow-panel-height");
+        return;
+      }
+
+      let cleanupTimer: number | null = null;
+      let targetFrame: number | null = null;
+      const cleanup = (event?: TransitionEvent) => {
+        if (event && event.propertyName !== "height") return;
+        if (cleanupTimer !== null) window.clearTimeout(cleanupTimer);
+        if (targetFrame !== null) window.cancelAnimationFrame(targetFrame);
+        panel.removeEventListener("transitionend", cleanup);
+        panel.classList.remove("is-height-locked");
+        panel.style.removeProperty("--cover-flow-panel-height");
+      };
+
+      panel.addEventListener("transitionend", cleanup);
+      cleanupTimer = window.setTimeout(cleanup, 360);
+      targetFrame = window.requestAnimationFrame(() => {
+        targetFrame = null;
+        panel.style.setProperty(
+          "--cover-flow-panel-height",
+          `${targetHeight}px`,
+        );
+      });
+    },
+    [measuredPanelHeight],
+  );
 
   const updateCardPositions = useCallback(() => {
     const scroller = scrollRef.current;
@@ -131,6 +311,10 @@ export function ManuscriptCoverFlowIsland({
       card.style.setProperty(
         "--cover-flow-cover-wash-opacity",
         transform.coverWashOpacity.toFixed(3),
+      );
+      card.style.setProperty(
+        "--cover-flow-cover-shadow-strength",
+        transform.coverShadowStrength.toFixed(3),
       );
       card.style.setProperty(
         "--cover-flow-panel-opacity",
@@ -194,14 +378,108 @@ export function ManuscriptCoverFlowIsland({
     [volumes.length],
   );
 
+  const restoreHorizontalWheel = useCallback(() => {
+    const scroller = scrollRef.current;
+    if (!scroller) return;
+
+    if (verticalWheelReleaseTimeoutRef.current !== null) {
+      window.clearTimeout(verticalWheelReleaseTimeoutRef.current);
+      verticalWheelReleaseTimeoutRef.current = null;
+    }
+    if (verticalWheelReleaseFrameRef.current !== null) {
+      window.cancelAnimationFrame(verticalWheelReleaseFrameRef.current);
+      verticalWheelReleaseFrameRef.current = null;
+    }
+
+    scroller.classList.remove("is-vertical-wheel-release");
+    scroller.style.removeProperty("overflow-x");
+    scroller.style.removeProperty("scroll-behavior");
+    scroller.style.removeProperty("scroll-snap-type");
+  }, []);
+
+  const releaseVerticalWheelToPage = useCallback(() => {
+    const scroller = scrollRef.current;
+    if (!scroller) return;
+
+    const lockedScrollLeft = scroller.scrollLeft;
+    scroller.classList.add("is-vertical-wheel-release");
+    scroller.style.overflowX = "hidden";
+    scroller.style.scrollBehavior = "auto";
+    scroller.style.scrollSnapType = "none";
+    scroller.scrollLeft = lockedScrollLeft;
+
+    if (verticalWheelReleaseTimeoutRef.current !== null) {
+      window.clearTimeout(verticalWheelReleaseTimeoutRef.current);
+    }
+    if (verticalWheelReleaseFrameRef.current !== null) {
+      window.cancelAnimationFrame(verticalWheelReleaseFrameRef.current);
+    }
+
+    const holdHorizontalPosition = () => {
+      scroller.scrollLeft = lockedScrollLeft;
+      if (verticalWheelReleaseTimeoutRef.current === null) {
+        verticalWheelReleaseFrameRef.current = null;
+        return;
+      }
+
+      verticalWheelReleaseFrameRef.current = window.requestAnimationFrame(
+        holdHorizontalPosition,
+      );
+    };
+
+    verticalWheelReleaseFrameRef.current = window.requestAnimationFrame(
+      holdHorizontalPosition,
+    );
+
+    verticalWheelReleaseTimeoutRef.current = window.setTimeout(() => {
+      verticalWheelReleaseTimeoutRef.current = null;
+      if (verticalWheelReleaseFrameRef.current !== null) {
+        window.cancelAnimationFrame(verticalWheelReleaseFrameRef.current);
+        verticalWheelReleaseFrameRef.current = null;
+      }
+      scroller.classList.remove("is-vertical-wheel-release");
+      scroller.scrollLeft = lockedScrollLeft;
+      scroller.style.removeProperty("overflow-x");
+      scroller.style.removeProperty("scroll-behavior");
+      scroller.style.removeProperty("scroll-snap-type");
+      schedulePositionUpdate();
+    }, coverFlowTuning.scroll.verticalReleaseMs);
+  }, [schedulePositionUpdate]);
+
   const handleWheel = useCallback(
-    (event: WheelEvent<HTMLDivElement>) => {
-      const horizontalDelta =
-        Math.abs(event.deltaX) >= Math.abs(event.deltaY) || event.shiftKey
-          ? event.deltaX || event.deltaY
-          : 0;
+    (event: WheelEvent) => {
+      const intent = getCoverFlowWheelIntent({
+        deltaX: event.deltaX,
+        deltaY: event.deltaY,
+        shiftKey: event.shiftKey,
+      });
+      const hasHorizontalWheelDelta = event.shiftKey
+        ? event.deltaY !== 0
+        : event.deltaX !== 0;
+
+      if (intent === "vertical") {
+        resetWheelGesture();
+        releaseVerticalWheelToPage();
+        return;
+      }
+
+      if (intent !== "horizontal") return;
+
+      restoreHorizontalWheel();
+
+      const horizontalDelta = hasHorizontalWheelDelta
+        ? event.shiftKey
+          ? event.deltaY
+          : event.deltaX
+        : 0;
 
       if (horizontalDelta === 0) return;
+
+      event.preventDefault();
+      const scroller = scrollRef.current;
+      if (scroller) {
+        scroller.scrollLeft += horizontalDelta;
+      }
 
       const gesture = wheelGestureRef.current;
       gesture.distancePx += horizontalDelta;
@@ -231,12 +509,43 @@ export function ManuscriptCoverFlowIsland({
         }
       }, coverFlowTuning.scroll.flickSettleMs);
     },
-    [scrollToIndex, volumes.length],
+    [
+      releaseVerticalWheelToPage,
+      resetWheelGesture,
+      restoreHorizontalWheel,
+      scrollToIndex,
+      volumes.length,
+    ],
   );
+
+  useEffect(() => {
+    const scroller = scrollRef.current;
+    if (!scroller) return;
+
+    scroller.addEventListener("wheel", handleWheel, { passive: false });
+    return () => {
+      scroller.removeEventListener("wheel", handleWheel);
+    };
+  }, [handleWheel]);
 
   useLayoutEffect(() => {
     updateCardPositions();
   }, [updateCardPositions]);
+
+  useLayoutEffect(() => {
+    const pending = Array.from(pendingPanelHeightAnimationsRef.current);
+    if (pending.length === 0) return;
+    pendingPanelHeightAnimationsRef.current.clear();
+
+    if (panelHeightFrameRef.current !== null) {
+      window.cancelAnimationFrame(panelHeightFrameRef.current);
+    }
+
+    panelHeightFrameRef.current = window.requestAnimationFrame(() => {
+      panelHeightFrameRef.current = null;
+      pending.forEach(animatePanelHeightToContent);
+    });
+  }, [animatePanelHeightToContent, selectedPartByVolumeId]);
 
   useEffect(() => {
     activeIndexRef.current = activeIndex;
@@ -251,6 +560,15 @@ export function ManuscriptCoverFlowIsland({
       window.removeEventListener("resize", schedulePositionUpdate);
       if (frameRef.current !== null) {
         window.cancelAnimationFrame(frameRef.current);
+      }
+      if (panelHeightFrameRef.current !== null) {
+        window.cancelAnimationFrame(panelHeightFrameRef.current);
+      }
+      if (verticalWheelReleaseFrameRef.current !== null) {
+        window.cancelAnimationFrame(verticalWheelReleaseFrameRef.current);
+      }
+      if (verticalWheelReleaseTimeoutRef.current !== null) {
+        window.clearTimeout(verticalWheelReleaseTimeoutRef.current);
       }
       if (wheelGesture.timeoutId !== null) {
         window.clearTimeout(wheelGesture.timeoutId);
@@ -293,75 +611,202 @@ export function ManuscriptCoverFlowIsland({
         ref={scrollRef}
         className="cover-flow-scroll"
         onScroll={schedulePositionUpdate}
-        onWheel={handleWheel}
       >
         <div className="cover-flow-track">
           {volumes.map((volume, index) => {
-            const tags = manuscriptTags[volume.volumeId] ?? [volume.planet];
-            const planetSymbol = planetSymbols[volume.planet] ?? "";
             const active = index === activeIndex;
+            const selectedPartId =
+              selectedPartByVolumeId[volume.volumeId] ?? null;
+            const selectedPart =
+              volume.parts.find((part) => part.partId === selectedPartId) ??
+              null;
+            const volumeStatus = sectionGroupProgressStatus(
+              progress,
+              sectionsForIds(volume.sectionIds),
+            );
 
             return (
-              <span
+              <div
                 key={volume.volumeId}
                 ref={(snap) => {
                   snapRefs.current[index] = snap;
                 }}
                 className="cover-flow-card-shell"
               >
-                <Link
+                <article
                   ref={(card) => {
                     cardRefs.current[index] = card;
                   }}
-                  href={volume.href}
                   className={`cover-flow-card manuscript-cover-card-${volume.order}${
                     active ? " is-active" : ""
+                  }${
+                    readCueVolumeId === volume.volumeId ? " is-read-cue" : ""
                   }`}
                   aria-label={`Open ${volume.title}`}
                   aria-current={active ? "true" : undefined}
+                  data-volume-href={volume.href}
                   onClick={(event) => {
-                    if (active) return;
+                    if (active) {
+                      const target = event.target as HTMLElement | null;
+                      if (target?.closest("a, button")) return;
+                      window.location.href = volume.firstSectionHref;
+                      return;
+                    }
                     event.preventDefault();
                     scrollToIndex(index);
                   }}
+                  onMouseLeave={() => setReadCueVolumeId(null)}
+                  onMouseMove={(event) => {
+                    if (!active) return;
+                    const target = event.target as HTMLElement | null;
+                    const specificTarget = target?.closest(
+                      "button, a:not(.cover-flow-cover-link):not(.manuscript-card-outline-full)",
+                    );
+                    const nextVolumeId = specificTarget ? null : volume.volumeId;
+                    setReadCueVolumeId((current) =>
+                      current === nextVolumeId ? current : nextVolumeId,
+                    );
+                  }}
                 >
-                  <span className="cover-flow-image-frame">
-                    <Image
-                      src={volume.coverImage}
-                      alt={volume.coverAlt}
-                      width={512}
-                      height={768}
-                      sizes="(max-width: 720px) 78vw, (max-width: 1180px) 38vw, 420px"
-                      priority={index === activeIndex}
-                    />
-                  </span>
-                  <span className="cover-flow-card-panel">
-                    <span className="manuscript-card-kicker">
-                      Volume {volume.numberLabel}
+                  <Link
+                    href={volume.firstSectionHref}
+                    className="cover-flow-cover-link"
+                    aria-label={`Open ${volume.title}`}
+                    onClick={(event) => {
+                      if (active) return;
+                      event.preventDefault();
+                      scrollToIndex(index);
+                    }}
+                  >
+                    <span className="cover-flow-image-frame">
+                      <Image
+                        src={volume.coverImage}
+                        alt={volume.coverAlt}
+                        width={512}
+                        height={768}
+                        sizes="(max-width: 720px) 78vw, (max-width: 1180px) 38vw, 420px"
+                        priority={index === activeIndex}
+                      />
                     </span>
-                    {planetSymbol ? (
-                      <span
+                  </Link>
+                  <div
+                    ref={(panel) => {
+                      panelRefs.current[volume.volumeId] = panel;
+                    }}
+                    className={`cover-flow-card-panel${
+                      readCueVolumeId === volume.volumeId ? " is-read-cue" : ""
+                    }`}
+                  >
+                    <div className="manuscript-card-panel-top">
+                      <span className="manuscript-card-kicker">
+                        Volume {volume.numberLabel}
+                      </span>
+                      <AstrologyIcon
+                        planet={volume.planet}
                         className="manuscript-card-symbol"
-                        aria-label={volume.planet}
-                      >
-                        {planetSymbol}
+                      />
+                      <strong>{volume.title}</strong>
+                      <span className="manuscript-card-description">
+                        {volume.subtitle}
                       </span>
-                    ) : null}
-                    <strong>{volume.title}</strong>
-                    <span className="manuscript-card-description">
-                      {volume.subtitle}
-                    </span>
-                    <span className="manuscript-card-tags">
-                      <span>
-                        {formatReadingDurationForWords(volume.wordCount)}
-                      </span>
-                      {tags.map((tag) => (
-                        <span key={tag}>{tag}</span>
-                      ))}
-                    </span>
-                  </span>
-                </Link>
-              </span>
+                    </div>
+                    <nav
+                      className="manuscript-card-outline"
+                      aria-label={`${volume.title} sections`}
+                    >
+                      {selectedPart ? (
+                        <>
+                          <div className="manuscript-card-outline-fixed">
+                            <button
+                              type="button"
+                              className="manuscript-card-outline-back"
+                              onClick={() => {
+                                preparePanelHeightAnimation(volume.volumeId);
+                                setSelectedPartByVolumeId((current) => ({
+                                  ...current,
+                                  [volume.volumeId]: null,
+                                }));
+                              }}
+                            >
+                              <ArrowLeft aria-hidden="true" size={14} />
+                              Back to parts
+                            </button>
+                          </div>
+                          <div className="cover-flow-card-panel-scroll manuscript-card-outline-chapters">
+                            <ManuscriptCardOutlineRow
+                              className="manuscript-card-outline-part-overview"
+                              href={selectedPart.href}
+                              label="Part Overview"
+                              meta={{
+                                status: sectionGroupProgressStatus(
+                                  progress,
+                                  sectionsForIds(selectedPart.sectionIds),
+                                ),
+                                wordCount: selectedPart.wordCount,
+                              }}
+                            />
+                            {selectedPart.chapters.map((chapter) => (
+                              <ManuscriptCardOutlineRow
+                                key={chapter.href}
+                                href={chapter.href}
+                                label={chapter.title}
+                                meta={{
+                                  status: sectionGroupProgressStatus(
+                                    progress,
+                                    sectionsForIds(chapter.sectionIds),
+                                  ),
+                                  wordCount: chapter.wordCount,
+                                }}
+                              />
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="manuscript-card-outline-fixed">
+                            <Link
+                              className="manuscript-card-outline-full"
+                              href={volume.firstSectionHref}
+                            >
+                              <ManuscriptCardOutlineRowContent
+                                icon="double"
+                                label="Read Full Manuscript"
+                                meta={{
+                                  status: volumeStatus,
+                                  wordCount: volume.wordCount,
+                                }}
+                              />
+                            </Link>
+                          </div>
+                          <div className="cover-flow-card-panel-scroll manuscript-card-outline-parts">
+                            {volume.parts.map((part) => (
+                              <ManuscriptCardOutlineRow
+                                key={part.href}
+                                onClick={() => {
+                                  if (!active) return;
+                                  preparePanelHeightAnimation(volume.volumeId);
+                                  setSelectedPartByVolumeId((current) => ({
+                                    ...current,
+                                    [volume.volumeId]: part.partId,
+                                  }));
+                                }}
+                                label={`Part: ${part.title}`}
+                                meta={{
+                                  status: sectionGroupProgressStatus(
+                                    progress,
+                                    sectionsForIds(part.sectionIds),
+                                  ),
+                                  wordCount: part.wordCount,
+                                }}
+                              />
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </nav>
+                  </div>
+                </article>
+              </div>
             );
           })}
           <span className="cover-flow-scroll-spacer" aria-hidden="true" />
