@@ -175,6 +175,26 @@ test("legacy front matter routes redirect to clean canonical routes", async ({
   );
 });
 
+test("synthetic opening part headings do not repeat their title", async ({
+  page,
+}) => {
+  await page.goto("/manuscripts/humanitys-most-viable-future/opening/");
+
+  const heading = page.locator(".page-heading");
+  await expect(heading.locator(".eyebrow")).toHaveCount(0);
+  await expect(heading.getByRole("heading", { level: 1 })).toHaveText("Opening");
+  await expect(heading.locator("h1 + p")).toHaveText(
+    "5 minutes across 4 chapters.",
+  );
+
+  const headingGap = await heading.evaluate((element) => {
+    const title = element.querySelector("h1")?.getBoundingClientRect();
+    const summary = element.querySelector("h1 + p")?.getBoundingClientRect();
+    return title && summary ? summary.top - title.bottom : 0;
+  });
+  expect(headingGap).toBeGreaterThanOrEqual(14);
+});
+
 test("singleton chapter section navigation points up to the part", async ({
   page,
 }) => {
