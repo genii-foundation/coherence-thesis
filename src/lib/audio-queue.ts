@@ -5,6 +5,7 @@ export type AudioQueueItem = {
   title: string;
   text: string;
   audioVersionId: string;
+  href?: string;
 };
 
 export type AudioVoicePreference = {

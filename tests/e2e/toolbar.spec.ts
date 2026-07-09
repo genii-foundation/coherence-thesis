@@ -858,7 +858,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   });
   await expect(highQualityOption).toHaveCount(1);
   await expect(
-    audioMenu.locator("option", { hasText: "Automatic system voice" }),
+    audioMenu.locator("option", { hasText: "System voice" }),
   ).toHaveCount(1);
   await expect(audioMenu.locator("option", { hasText: "Albert" })).toHaveCount(0);
   await expect(audioMenu.getByText("Offline playback")).toBeVisible();

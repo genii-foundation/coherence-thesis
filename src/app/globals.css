@@ -4423,6 +4423,88 @@ input {
   font-weight: 700;
 }
 
+.audio-word {
+  position: relative;
+  scroll-margin-top: 6.75rem;
+  border-radius: 0.18em;
+  cursor: pointer;
+  transition:
+    background 140ms ease,
+    color 140ms ease,
+    font-weight 140ms ease;
+}
+
+.audio-word:hover,
+.audio-word.is-audio-focused,
+.audio-word:target {
+  background: rgba(164, 123, 63, 0.14);
+}
+
+.audio-word.is-audio-current,
+.audio-word:target {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.audio-word-tooltip {
+  position: fixed;
+  z-index: 90;
+  width: max-content;
+  max-width: min(14rem, calc(100vw - 2rem));
+  transform: translate(-50%, calc(-100% - 0.36rem));
+  border-radius: 999px;
+  padding: 0.18rem 0.46rem 0.2rem;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 0.66rem;
+  font-weight: 800;
+  line-height: 1.05;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.audio-word-tooltip::before,
+.audio-word-tooltip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.audio-word-tooltip::before {
+  bottom: -0.42rem;
+  border-left: 0.38rem solid transparent;
+  border-right: 0.38rem solid transparent;
+  border-top: 0.42rem solid var(--tooltip-border-color);
+}
+
+.audio-word-tooltip::after {
+  bottom: -0.32rem;
+  border-left: 0.3rem solid transparent;
+  border-right: 0.3rem solid transparent;
+  border-top: 0.34rem solid var(--tooltip-background);
+}
+
+.audio-word-tooltip.is-focused {
+  pointer-events: auto;
+}
+
+.audio-current-speaker {
+  position: fixed;
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  color: var(--ink-soft);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
 .manuscript-prose blockquote {
   border-left: 3px solid var(--bronze);
   color: var(--ink-soft);
@@ -4569,6 +4651,39 @@ input {
 .audio-player-title {
   display: grid;
   gap: 0.15rem;
+}
+
+.audio-player-title-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.45rem;
+}
+
+.audio-player-title-row strong {
+  min-width: 0;
+}
+
+.audio-location-link {
+  justify-self: end;
+  align-self: start;
+  border: 1px solid rgba(119, 84, 42, 0.34);
+  border-radius: 999px;
+  padding: 0.16rem 0.44rem;
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.audio-location-link:hover,
+.audio-location-link:focus-visible {
+  border-color: rgba(119, 84, 42, 0.58);
+  color: var(--ink);
+  outline: none;
 }
 
 .audio-player {

@@ -5,6 +5,8 @@ import {
   firstSectionVersionDate,
   wieldingSection,
   copyrightYearLabel,
+  nextSection,
+  sectionWithNeighbors,
 } from "./fixtures";
 
 test("progress menu shows a resettable email sent confirmation", async ({
@@ -502,7 +504,7 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   ).toBeVisible();
 });
 
-test("audio voice selection restarts active playback", async ({ page }) => {
+test("audio voice selection exposes one built-in system option", async ({ page }) => {
   await page.addInitScript(() => {
     class TestSpeechSynthesisUtterance {
       text: string;
@@ -564,16 +566,10 @@ test("audio voice selection restarts active playback", async ({ page }) => {
     .toEqual([null]);
 
   const voiceSelect = page.getByRole("combobox", { name: "Voice" });
-  await voiceSelect.selectOption("samantha");
-  await expect
-    .poll(() =>
-      page.evaluate(
-        () =>
-          (window as unknown as { __spokenVoices: Array<string | null> })
-            .__spokenVoices,
-      ),
-    )
-    .toEqual([null, "samantha"]);
+  await expect(voiceSelect.locator("option", { hasText: "System voice" }))
+    .toHaveCount(1);
+  await expect(voiceSelect.locator("option", { hasText: "Samantha" }))
+    .toHaveCount(0);
 
   await voiceSelect.selectOption("");
   await expect
@@ -584,7 +580,242 @@ test("audio voice selection restarts active playback", async ({ page }) => {
             .__spokenVoices,
       ),
     )
-    .toEqual([null, "samantha", null]);
+    .toEqual([null, null]);
+
+  await page.getByRole("button", { name: "Reset voice" }).click();
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as unknown as { __spokenVoices: Array<string | null> })
+            .__spokenVoices,
+      ),
+    )
+    .toEqual([null, null, null]);
+});
+
+test("reader words can start playback from a focused word", async ({ page }) => {
+  await page.addInitScript(() => {
+    class TestSpeechSynthesisUtterance {
+      text: string;
+      rate = 1;
+      pitch = 1;
+      voice: SpeechSynthesisVoice | null = null;
+      onboundary: ((event: SpeechSynthesisEvent) => void) | null = null;
+      onend: (() => void) | null = null;
+
+      constructor(text: string) {
+        this.text = text;
+      }
+    }
+
+    const spokenTexts: string[] = [];
+
+    Object.defineProperty(window, "__spokenTexts", {
+      configurable: true,
+      value: spokenTexts,
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: TestSpeechSynthesisUtterance,
+    });
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        addEventListener: () => undefined,
+        cancel: () => undefined,
+        getVoices: () => [{ name: "Samantha", voiceURI: "samantha" }],
+        pause: () => undefined,
+        removeEventListener: () => undefined,
+        resume: () => undefined,
+        speak: (utterance: SpeechSynthesisUtterance) => {
+          spokenTexts.push(utterance.text);
+          utterance.onboundary?.({
+            charIndex: 0,
+            charLength: utterance.text.split(/\s+/)[0]?.length ?? 0,
+            elapsedTime: 0,
+            name: "word",
+          } as SpeechSynthesisEvent);
+        },
+      },
+    });
+  });
+
+  await page.goto(firstSection.href);
+  const targetWord = page.locator(".manuscript-prose p .audio-word").first();
+  await expect(targetWord).toBeVisible();
+  const targetText = (await targetWord.textContent())?.trim() ?? "";
+
+  await targetWord.hover();
+  const initialTooltip = page.getByRole("button", {
+    name: "Click Here to Play",
+  });
+  await expect(initialTooltip).toBeVisible();
+  await expect
+    .poll(() =>
+      initialTooltip.evaluate((element) => {
+        const tail = window.getComputedStyle(element, "::before");
+        return Number.parseFloat(tail.borderTopWidth);
+      }),
+    )
+    .toBeGreaterThan(0);
+
+  await targetWord.click();
+  await expect(targetWord).toHaveClass(/is-audio-focused/);
+  const selectedTooltip = page.getByRole("button", {
+    name: "Click Again to start playback",
+  });
+  await expect(selectedTooltip).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(targetWord).not.toHaveClass(/is-audio-focused/);
+  await expect(selectedTooltip).toHaveCount(0);
+
+  await targetWord.hover();
+  await targetWord.click();
+  await expect(targetWord).toHaveClass(/is-audio-focused/);
+  const selectedTooltipAfterOutsideClick = page.getByRole("button", {
+    name: "Click Again to start playback",
+  });
+  await expect(selectedTooltipAfterOutsideClick).toBeVisible();
+  await page.evaluate(() =>
+    document.body.dispatchEvent(
+      new MouseEvent("click", { bubbles: true, cancelable: true }),
+    ),
+  );
+  await expect(targetWord).not.toHaveClass(/is-audio-focused/);
+  await expect(selectedTooltipAfterOutsideClick).toHaveCount(0);
+
+  await targetWord.hover();
+  await targetWord.click();
+  await expect(targetWord).toHaveClass(/is-audio-focused/);
+  const playTooltip = page.getByRole("button", {
+    name: "Click Again to start playback",
+  });
+  await expect(playTooltip).toBeVisible();
+  await playTooltip.click();
+
+  await expect(page.getByRole("button", { name: "Pause audiobook" }))
+    .toBeVisible();
+  await expect(page.getByLabel("Audiobook controls")).toBeVisible();
+  const targetId = await targetWord.getAttribute("id");
+  expect(targetId).not.toBeNull();
+  const targetHash = targetId ?? "";
+  const jumpLink = page.getByRole("link", { name: "Jump to playback location" });
+  await expect(jumpLink).toHaveAttribute("href", new RegExp(`#${targetHash}$`));
+  await expect(targetWord).toHaveClass(/is-audio-current/);
+  await expect(page.locator(".audio-current-speaker")).toBeVisible();
+  const speakerAlignmentDelta = () =>
+    page.evaluate((id) => {
+      const word = document.getElementById(id);
+      const speaker = document.querySelector(".audio-current-speaker");
+      if (!word || !speaker) return 999;
+      const wordRect = word.getBoundingClientRect();
+      const speakerRect = speaker.getBoundingClientRect();
+      const wordCenter = wordRect.top + wordRect.height / 2;
+      const speakerCenter = speakerRect.top + speakerRect.height / 2;
+      return Math.abs(wordCenter - speakerCenter);
+    }, targetHash);
+  await expect.poll(speakerAlignmentDelta).toBeLessThan(4);
+  await page.evaluate(() => window.scrollBy(0, 24));
+  await expect.poll(speakerAlignmentDelta).toBeLessThan(4);
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await jumpLink.click();
+  await expect(page).toHaveURL(new RegExp(`#${targetHash}$`));
+  await expect
+    .poll(() =>
+      page.evaluate((id) => document.getElementById(id)?.matches(":target"), targetHash),
+    )
+    .toBe(true);
+  await expect
+    .poll(() =>
+      page.evaluate(
+        (expectedWord) =>
+          (window as unknown as { __spokenTexts: string[] }).__spokenTexts
+            .at(0)
+            ?.startsWith(expectedWord) ?? false,
+        targetText,
+      ),
+    )
+    .toBe(true);
+});
+
+test("reader navigation does not interrupt active playback", async ({ page }) => {
+  await page.addInitScript(() => {
+    class TestSpeechSynthesisUtterance {
+      text: string;
+      rate = 1;
+      pitch = 1;
+      voice: SpeechSynthesisVoice | null = null;
+      onend: (() => void) | null = null;
+
+      constructor(text: string) {
+        this.text = text;
+      }
+    }
+
+    const spokenTexts: string[] = [];
+    let cancelCount = 0;
+
+    Object.defineProperties(window, {
+      __spokenTexts: {
+        configurable: true,
+        value: spokenTexts,
+      },
+      __cancelCount: {
+        configurable: true,
+        get: () => cancelCount,
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: TestSpeechSynthesisUtterance,
+    });
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        addEventListener: () => undefined,
+        cancel: () => {
+          cancelCount += 1;
+        },
+        getVoices: () => [{ name: "Samantha", voiceURI: "samantha" }],
+        pause: () => undefined,
+        removeEventListener: () => undefined,
+        resume: () => undefined,
+        speak: (utterance: SpeechSynthesisUtterance) => {
+          spokenTexts.push(utterance.text);
+        },
+      },
+    });
+  });
+
+  await page.goto(sectionWithNeighbors.href);
+  await page.getByRole("button", { name: /Listen/ }).click();
+  await expect(page.getByRole("button", { name: "Pause audiobook" }))
+    .toBeVisible();
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __spokenTexts: string[] }).__spokenTexts,
+      ),
+    )
+    .toHaveLength(1);
+  const cancelCountAfterStart = await page.evaluate(
+    () => (window as unknown as { __cancelCount: number }).__cancelCount,
+  );
+
+  await page.keyboard.press("Escape");
+  await expect(page.getByLabel("Audiobook controls")).toHaveCount(0);
+  await page.locator(".section-nav-link-next").click();
+  await expect(page).toHaveURL(new RegExp(`${nextSection.href}$`));
+  await expect(page.getByRole("button", { name: "Pause audiobook" }))
+    .toBeVisible();
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __cancelCount: number }).__cancelCount,
+      ),
+    )
+    .toBe(cancelCountAfterStart);
 });
 
 test("reading map renders the manuscript heatmap", async ({ page }) => {

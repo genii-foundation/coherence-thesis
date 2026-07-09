@@ -46,6 +46,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     title: catalog.overview.title,
     text: overviewText,
     audioVersionId: `overview-${contentHash(overviewText)}`,
+    href: "/overview/",
   };
 
   return (
