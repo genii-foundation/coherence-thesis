@@ -13,14 +13,11 @@ type ProgressCloudVariant = {
   textColor: string;
   textSize: number;
   strokeWidth: number;
-  dashOffset?: number;
 };
 
 type ProgressCloudBadgeProps = {
-  cloudDashOffset?: number;
   connected?: boolean;
   offlineLineCap?: "butt" | "round" | "square";
-  offlineDashOffset?: number;
   percent: number;
   variantId?: string;
 };
@@ -39,6 +36,8 @@ type ProgressCloudStyle = CSSProperties & {
 
 const cloudPath =
   "M20.6 46.4c-8.1 0-14.6-5.7-14.6-12.9 0-6.5 5.2-11.8 12.2-12.6C20.8 11 29.8 4.7 40.5 4.7c9.4 0 17.5 4.7 21.2 12.4 9.8.4 17.3 7.1 17.3 15.5 0 7.8-6.8 13.8-15.6 13.8H20.6Z";
+const cloudProgressPath =
+  "M40.5 4.7c9.4 0 17.5 4.7 21.2 12.4 9.8.4 17.3 7.1 17.3 15.5 0 7.8-6.8 13.8-15.6 13.8H20.6c-8.1 0-14.6-5.7-14.6-12.9 0-6.5 5.2-11.8 12.2-12.6C20.8 11 29.8 4.7 40.5 4.7Z";
 const offlineCircleRadius = 25.2;
 const offlineCircleLength = 2 * Math.PI * offlineCircleRadius;
 
@@ -72,7 +71,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     textColor: "var(--ink-soft)",
     textSize: 14.5,
     strokeWidth: 2.5,
-    dashOffset: 10,
   },
   {
     id: "sync-archive",
@@ -87,7 +85,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     textColor: "var(--bronze-deep)",
     textSize: 13.8,
     strokeWidth: 2.8,
-    dashOffset: 20,
   },
   {
     id: "sync-seal",
@@ -102,7 +99,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     textColor: "var(--ink)",
     textSize: 13.8,
     strokeWidth: 2.55,
-    dashOffset: 30,
   },
   {
     id: "sync-tide",
@@ -117,7 +113,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     textColor: "var(--bronze-deep)",
     textSize: 13.4,
     strokeWidth: 2.6,
-    dashOffset: 40,
   },
   {
     id: "sync-brass",
@@ -132,7 +127,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     textColor: "var(--bronze-deep)",
     textSize: 13.4,
     strokeWidth: 2.7,
-    dashOffset: 50,
   },
   {
     id: "sync-quiet",
@@ -147,7 +141,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     textColor: "var(--ink-soft)",
     textSize: 13.3,
     strokeWidth: 2.35,
-    dashOffset: 60,
   },
   {
     id: "sync-ember",
@@ -162,7 +155,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     textColor: "var(--bronze-deep)",
     textSize: 13,
     strokeWidth: 2.85,
-    dashOffset: 70,
   },
   {
     id: "sync-ink",
@@ -177,7 +169,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     textColor: "var(--ink)",
     textSize: 13,
     strokeWidth: 2.6,
-    dashOffset: 80,
   },
   {
     id: "sync-full",
@@ -192,7 +183,6 @@ export const progressCloudVariants: ProgressCloudVariant[] = [
     textColor: "var(--bronze-deep)",
     textSize: 11.5,
     strokeWidth: 2.75,
-    dashOffset: 90,
   },
 ];
 
@@ -230,10 +220,8 @@ function circleProgressArc(percent: number, offset: number) {
 }
 
 export function ProgressCloudBadge({
-  cloudDashOffset: cloudDashOffsetOverride,
   connected = false,
   offlineLineCap = "butt",
-  offlineDashOffset: offlineDashOffsetOverride,
   percent,
   variantId = "sync-orbit",
 }: ProgressCloudBadgeProps) {
@@ -257,16 +245,8 @@ export function ProgressCloudBadge({
     "--progress-cloud-width": `${variant.width}px`,
   };
 
-  const cloudDashOffset =
-    progressPercent >= 100
-      ? 0
-      : (cloudDashOffsetOverride ?? 75) - (variant.dashOffset ?? 0);
-  const offlineRotation = `rotate(${-90 + (variant.dashOffset ?? 0)} 32 32)`;
-  const offlineStartOffset = offlineDashOffsetOverride ?? 0;
-  const offlineProgressArc = circleProgressArc(
-    progressPercent,
-    offlineStartOffset,
-  );
+  const offlineRotation = "rotate(-90 32 32)";
+  const offlineProgressArc = circleProgressArc(progressPercent, 0);
 
   return (
     <span
@@ -290,10 +270,10 @@ export function ProgressCloudBadge({
           />
           <path
             className="progress-cloud-progress"
-            d={cloudPath}
+            d={cloudProgressPath}
             pathLength={100}
             strokeDasharray={progressDash(progressPercent)}
-            strokeDashoffset={cloudDashOffset}
+            strokeDashoffset={0}
           />
           <text className="progress-cloud-text" x="42" y="33" textAnchor="middle">
             {text}
