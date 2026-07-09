@@ -5579,14 +5579,14 @@ input {
   }
 
   .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: stretch;
-    flex-direction: column;
+    gap: 0.45rem;
   }
 
   .hero-cta-stack,
   .hero-actions,
-  .hero-actions .primary-link,
-  .hero-actions .secondary-link,
   .hero-stats {
     width: 100%;
   }
@@ -5603,10 +5603,16 @@ input {
     max-width: 100%;
   }
 
-  .primary-link,
-  .secondary-link {
+  .hero-actions .primary-link,
+  .hero-actions .secondary-link {
+    min-width: 0;
+    min-height: 2.75rem;
+    box-sizing: border-box;
+    gap: 0.35rem;
+    padding: 0.7rem 0.4rem;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: center;
+    font-size: clamp(0.76rem, 3.1vw, 0.92rem);
   }
 
   .stats-band,
@@ -5733,6 +5739,25 @@ input {
   .settings-menu-button {
     min-height: 2.25rem;
     width: 2.25rem;
+  }
+
+  .hero-actions {
+    gap: 0.35rem;
+  }
+
+  .hero-actions .primary-link,
+  .hero-actions .secondary-link {
+    min-height: 2.5rem;
+    padding: 0.5rem;
+  }
+
+  .hero-actions .hero-action-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 }
 

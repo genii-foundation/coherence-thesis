@@ -137,6 +137,33 @@ test("home page presents the overview and manuscript entry points", async ({
   );
   if (testInfo.project.name === "mobile") {
     await expect(page.locator(".hero-art")).toBeHidden();
+
+    await page.setViewportSize({ width: 320, height: 720 });
+    const heroActionLayout = await page.locator(".hero-actions").evaluate(
+      (actions) => {
+        const actionBox = actions.getBoundingClientRect();
+        const links = Array.from(actions.querySelectorAll("a")).map((link) => {
+          const box = link.getBoundingClientRect();
+          return { height: box.height, top: Math.round(box.top), width: box.width };
+        });
+
+        return {
+          actionWidth: actionBox.width,
+          clientWidth: document.documentElement.clientWidth,
+          links,
+          scrollWidth: document.documentElement.scrollWidth,
+        };
+      },
+    );
+    expect(new Set(heroActionLayout.links.map((link) => link.top)).size).toBe(1);
+    expect(heroActionLayout.links).toHaveLength(3);
+    for (const link of heroActionLayout.links) {
+      expect(link.width).toBeLessThan(heroActionLayout.actionWidth);
+      expect(link.height).toBeGreaterThanOrEqual(40);
+    }
+    expect(heroActionLayout.scrollWidth).toBeLessThanOrEqual(
+      heroActionLayout.clientWidth + 1,
+    );
   } else {
     await expect(page.locator(".hero-art img")).toHaveAttribute(
       "src",

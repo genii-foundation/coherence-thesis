@@ -37,15 +37,15 @@ export function HeroActionsIsland({
     <div className={className}>
       <Link className="primary-link" href={listenHref(targetHref)}>
         <Headphones aria-hidden="true" size={18} />
-        <span>Listen</span>
+        <span className="hero-action-label">Listen</span>
       </Link>
       <Link className="secondary-link" href={targetHref}>
         <BookOpen aria-hidden="true" size={18} />
-        <span>Read</span>
+        <span className="hero-action-label">Read</span>
       </Link>
       <Link className="secondary-link" href="/overview/">
         <ListTree aria-hidden="true" size={18} />
-        <span>Overview</span>
+        <span className="hero-action-label">Overview</span>
       </Link>
     </div>
   );
