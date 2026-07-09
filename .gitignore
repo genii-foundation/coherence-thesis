@@ -21,11 +21,6 @@
 # local editor state
 /.idea/
 
-# root-level visual QA captures
-/coherence-*-preview.png
-/cover-flow-*.png
-/orbit-*.png
-
 # next.js
 /.next/
 /out/
