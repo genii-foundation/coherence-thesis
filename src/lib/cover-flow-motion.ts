@@ -3,15 +3,15 @@ const clamp = (value: number, min: number, max: number) =>
 
 export const coverFlowTuning = {
   rotation: {
-    maxDegrees: 58,
-    degreesPerCardOffset: 58,
+    maxDegrees: 40,
+    degreesPerCardOffset: 42,
     maxMeasuredOffset: 2.6,
   },
   scale: {
     active: 1.14,
-    falloffPerCard: 0.48,
-    falloffCurve: 1.12,
-    min: 0.54,
+    falloffPerCard: 0.38,
+    falloffCurve: 1.08,
+    min: 0.62,
   },
   verticalAlignment: {
     sideCoverCenterCompensation: 1.06,

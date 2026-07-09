@@ -2065,8 +2065,8 @@ input {
   --cover-flow-panel-width-extra: clamp(7rem, 13vw, 12rem);
   --cover-flow-scroll-step: clamp(10.25rem, 16vw, 14rem);
   --cover-flow-side-gutter: calc((100vw - var(--cover-flow-scroll-step)) / 2);
-  --cover-flow-stage-min-height: clamp(44rem, 66vw, 58rem);
-  --cover-flow-stage-padding-bottom: clamp(5rem, 8vw, 7rem);
+  --cover-flow-stage-min-height: clamp(52rem, 72vw, 68rem);
+  --cover-flow-stage-padding-bottom: clamp(12rem, 14vw, 15rem);
   --cover-flow-stage-padding-top: clamp(5.75rem, 9vw, 8.25rem);
   position: relative;
   left: 50%;
@@ -5400,7 +5400,7 @@ input {
   }
 
   .cover-flow-track {
-    min-height: clamp(44rem, 104vw, 54rem);
+    min-height: clamp(52rem, 112vw, 64rem);
   }
 
   .hero-copy h1 {
@@ -5599,8 +5599,8 @@ input {
     --cover-flow-card-perspective: 58rem;
     --cover-flow-panel-width-extra: 0rem;
     --cover-flow-scroll-step: min(56vw, 13.3rem);
-    --cover-flow-stage-min-height: clamp(42rem, 154vw, 55rem);
-    --cover-flow-stage-padding-bottom: 6rem;
+    --cover-flow-stage-min-height: clamp(50rem, 174vw, 64rem);
+    --cover-flow-stage-padding-bottom: 10rem;
     --cover-flow-stage-padding-top: 4.9rem;
     width: 100vw;
   }
