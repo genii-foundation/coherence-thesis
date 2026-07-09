@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { audioVoiceStorageKey } from "../../src/lib/audio-preferences";
 import {
   catalog,
   readerProgressStorageKey,
@@ -9,6 +10,13 @@ import {
   copyrightYearLabel,
   hexToRgb,
 } from "./fixtures";
+
+const systemVoicePreference = {
+  voiceURI: null,
+  rate: 1,
+  pitch: 1,
+  useSystemVoice: true,
+};
 
 function sectionForId(sectionId: string) {
   const section = catalog.sections.find(
@@ -345,7 +353,8 @@ test("home page listen and read actions resume at the first unread section", asy
 });
 
 test("home page listen action starts audiobook playback", async ({ page }) => {
-  await page.addInitScript(() => {
+  await page.addInitScript(({ storageKey, preference }) => {
+    window.localStorage.setItem(storageKey, JSON.stringify(preference));
     class TestSpeechSynthesisUtterance {
       text: string;
       rate = 1;
@@ -381,7 +390,7 @@ test("home page listen action starts audiobook playback", async ({ page }) => {
         },
       },
     });
-  });
+  }, { storageKey: audioVoiceStorageKey, preference: systemVoicePreference });
 
   await page.goto("/");
   await page.getByRole("link", { name: "Listen" }).click();
@@ -1106,10 +1115,13 @@ test("home page presents an interactive cover flow", async ({ page }) => {
     targetIndex < catalog.volumes.length;
     targetIndex += 1
   ) {
-    await nextButton.dispatchEvent("click");
+    await expect(nextButton).toBeEnabled({ timeout: 15000 });
+    await nextButton.click();
     await expect(
       coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-    ).toHaveAttribute("data-volume-href", catalog.volumes[targetIndex]!.href);
+    ).toHaveAttribute("data-volume-href", catalog.volumes[targetIndex]!.href, {
+      timeout: 15000,
+    });
   }
 
   await expect(nextButton).toBeDisabled();

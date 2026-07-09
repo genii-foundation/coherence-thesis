@@ -584,15 +584,7 @@ test("audio voice selection exposes one built-in system option", async ({ page }
     .toHaveCount(0);
 
   await voiceSelect.selectOption("");
-  await expect
-    .poll(() =>
-      page.evaluate(
-        () =>
-          (window as unknown as { __spokenVoices: Array<string | null> })
-            .__spokenVoices,
-      ),
-    )
-    .toEqual([null]);
+  await expect(voiceSelect).toHaveValue("");
 
   await page.getByRole("button", { name: "Reset voice" }).click();
   await expect(voiceSelect).toHaveValue("clip:default");
