@@ -2,12 +2,24 @@
 
 import { normalizePath } from "@/lib/routes";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronRight, Home, ListTree, Search } from "lucide-react";
-import { loadToolbarOutline, type ToolbarOutlineData } from "@/lib/reader-data";
+import {
+  loadProgressSections,
+  loadToolbarOutline,
+  type ProgressSectionData,
+  type ToolbarOutlineData,
+} from "@/lib/reader-data";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
+import { useReaderProgress } from "@/lib/reader-progress-store";
+import {
+  progressSectionForHref,
+  progressSectionsForPrefix,
+  sectionGroupProgressStatus,
+} from "@/lib/section-progress";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
+import { ProgressStateDot } from "@/components/ProgressStateDot";
 
 function searchable(value: string): string {
   return value.trim().toLowerCase();
@@ -30,8 +42,12 @@ export function OutlineMenuIsland() {
     popoverProps,
   } = useToolbarMenu<HTMLDivElement>();
   const searchRef = useRef<HTMLInputElement>(null);
+  const progress = useReaderProgress();
   const [query, setQuery] = useState("");
   const [outline, setOutline] = useState<ToolbarOutlineData | null>(null);
+  const [progressSections, setProgressSections] = useState<ProgressSectionData[]>(
+    [],
+  );
   const loadStartedRef = useRef(false);
   const currentPath = normalizePath(pathname);
   const normalizedQuery = searchable(query);
@@ -46,6 +62,7 @@ export function OutlineMenuIsland() {
       .catch(() => {
         loadStartedRef.current = false;
       });
+    loadProgressSections().then(setProgressSections).catch(() => undefined);
   }, [open]);
 
   const topLinks = useMemo(
@@ -110,6 +127,24 @@ export function OutlineMenuIsland() {
   );
 
   const hasResults = topLinks.length > 0 || volumes.length > 0;
+
+  const progressStatusForPrefix = useCallback(
+    (href: string) =>
+      sectionGroupProgressStatus(
+        progress,
+        progressSectionsForPrefix(progressSections, href),
+      ),
+    [progress, progressSections],
+  );
+
+  const progressStatusForHref = useCallback(
+    (href: string) =>
+      sectionGroupProgressStatus(
+        progress,
+        progressSectionForHref(progressSections, href),
+      ),
+    [progress, progressSections],
+  );
 
   useEffect(() => {
     const closeTimer = window.setTimeout(() => {
@@ -195,6 +230,10 @@ export function OutlineMenuIsland() {
                           <strong>{volume.title}</strong>
                           <small>{formatReadingDurationForWords(volume.wordCount)}</small>
                         </span>
+                        <ProgressStateDot
+                          className="outline-progress-dot"
+                          status={progressStatusForPrefix(volume.href)}
+                        />
                       </a>
                       {volume.parts.length > 0 && (
                         <div className="outline-parts">
@@ -216,7 +255,13 @@ export function OutlineMenuIsland() {
                                     />
                                     <span>{part.title}</span>
                                   </span>
-                                  <small>{formatReadingDurationForWords(part.wordCount)}</small>
+                                  <span className="outline-row-meta">
+                                    <small>{formatReadingDurationForWords(part.wordCount)}</small>
+                                    <ProgressStateDot
+                                      className="outline-progress-dot"
+                                      status={progressStatusForPrefix(part.href)}
+                                    />
+                                  </span>
                                 </summary>
                                 <div className="outline-chapters">
                                   <a
@@ -227,6 +272,12 @@ export function OutlineMenuIsland() {
                                     }
                                   >
                                     <span>Part overview</span>
+                                    <span className="outline-row-meta">
+                                      <ProgressStateDot
+                                        className="outline-progress-dot"
+                                        status={progressStatusForHref(part.href)}
+                                      />
+                                    </span>
                                   </a>
                                   {part.chapters.map((chapter) => (
                                     <a
@@ -239,9 +290,15 @@ export function OutlineMenuIsland() {
                                       }
                                     >
                                       <span>{chapter.title}</span>
-                                      <small>
-                                        {formatReadingDurationForWords(chapter.wordCount)}
-                                      </small>
+                                      <span className="outline-row-meta">
+                                        <small>
+                                          {formatReadingDurationForWords(chapter.wordCount)}
+                                        </small>
+                                        <ProgressStateDot
+                                          className="outline-progress-dot"
+                                          status={progressStatusForPrefix(chapter.href)}
+                                        />
+                                      </span>
                                     </a>
                                   ))}
                                 </div>

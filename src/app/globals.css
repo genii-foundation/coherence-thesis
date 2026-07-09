@@ -1503,6 +1503,11 @@ input {
   text-align: left;
 }
 
+.outline-volume-link > span:not(.outline-volume-number):not(.progress-state-dot) {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .outline-top-links a:hover,
 .outline-top-links a:focus-visible,
 .outline-volume-link:hover,
@@ -1672,6 +1677,10 @@ input {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.outline-progress-dot {
+  --progress-dot-rgb: var(--card-rgb, 96 121 109);
 }
 
 .outline-empty {
@@ -1978,10 +1987,11 @@ input {
   --cover-flow-card-width: clamp(18.75rem, 30vw, 27rem);
   --cover-flow-card-overlap: clamp(10rem, 16vw, 15rem);
   --cover-flow-card-perspective: clamp(56rem, 78vw, 76rem);
+  --cover-flow-panel-max-height: calc(var(--cover-flow-card-width) * 1.3);
   --cover-flow-panel-width-extra: clamp(7rem, 13vw, 12rem);
   --cover-flow-side-gutter: calc((100vw - var(--cover-flow-card-width)) / 2);
-  --cover-flow-stage-min-height: clamp(49rem, 76vw, 69rem);
-  --cover-flow-stage-padding-bottom: clamp(6.25rem, 9vw, 8rem);
+  --cover-flow-stage-min-height: clamp(53rem, 82vw, 76rem);
+  --cover-flow-stage-padding-bottom: clamp(12rem, 22vw, 20rem);
   --cover-flow-stage-padding-top: clamp(5.75rem, 9vw, 8.25rem);
   position: relative;
   left: 50%;
@@ -2005,6 +2015,12 @@ input {
 
 .cover-flow-scroll::-webkit-scrollbar {
   display: none;
+}
+
+.cover-flow-scroll.is-vertical-wheel-release {
+  overflow-x: hidden;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
 }
 
 .cover-flow-track {
@@ -2041,6 +2057,7 @@ input {
 .cover-flow-card {
   --card-accent: #77542a;
   --card-rgb: 119 84 42;
+  --cover-flow-cover-shadow-strength: 1;
   --cover-flow-cover-wash-opacity: 0;
   --cover-flow-panel-opacity: 1;
   --cover-flow-panel-visibility: visible;
@@ -2049,7 +2066,7 @@ input {
   --cover-flow-shift: 0px;
   --cover-flow-z: 0px;
   display: grid;
-  gap: 0.95rem;
+  gap: clamp(3rem, 4.2vw, 3.5rem);
   position: relative;
   width: 100%;
   color: var(--ink);
@@ -2063,11 +2080,17 @@ input {
   will-change: transform;
 }
 
-.cover-flow-card:focus-visible {
+.cover-flow-cover-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cover-flow-cover-link:focus-visible {
   outline: none;
 }
 
-.cover-flow-card:focus-visible .cover-flow-image-frame {
+.cover-flow-cover-link:focus-visible .cover-flow-image-frame {
   box-shadow:
     0 0 0 3px var(--panel-background),
     0 0 0 6px rgb(var(--card-rgb) / 0.54),
@@ -2087,17 +2110,38 @@ input {
   border-radius: var(--radius);
   background: var(--card-background);
   box-shadow:
-    0 34px 60px rgba(44, 31, 18, 0.2),
-    0 7px 18px rgba(44, 31, 18, 0.14);
+    0 34px 60px
+      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.2)),
+    0 7px 18px
+      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.14));
   transition:
     border-color 180ms ease,
-    box-shadow 180ms ease;
+    box-shadow 220ms ease,
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateZ(0) scale(1);
+  transform-origin: center center;
+  will-change: transform;
 }
 
 .cover-flow-card:hover .cover-flow-image-frame,
-.cover-flow-card:focus-visible .cover-flow-image-frame {
+.cover-flow-cover-link:focus-visible .cover-flow-image-frame {
   border-color: rgb(var(--card-rgb) / 0.68);
-  box-shadow: var(--cover-shadow-hover);
+  box-shadow:
+    0 20px 52px
+      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.16)),
+    0 8px 24px
+      rgba(119, 84, 42, calc(var(--cover-flow-cover-shadow-strength) * 0.18)),
+    0 2px 0 rgba(255, 255, 255, 0.62) inset;
+}
+
+.cover-flow-card.is-active.is-read-cue .cover-flow-image-frame {
+  border-color: rgb(var(--card-rgb) / 0.72);
+  box-shadow:
+    0 46px 80px
+      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.25)),
+    0 14px 30px
+      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.18));
+  transform: translateZ(1.25rem) scale(1.024);
 }
 
 .cover-flow-image-frame::after {
@@ -2140,14 +2184,17 @@ input {
 }
 
 .cover-flow-card-panel {
-  display: grid;
+  --cover-flow-panel-height: auto;
+  display: flex;
+  flex-direction: column;
   justify-self: center;
-  gap: 0.55rem;
+  gap: 0;
   width: min(
     calc(100% + var(--cover-flow-panel-width-extra)),
     calc(100vw - 2rem)
   );
-  min-height: 15.4rem;
+  min-height: 0;
+  max-height: var(--cover-flow-panel-max-height);
   border: 1px solid rgb(var(--card-rgb) / 0.32);
   border-radius: var(--radius);
   background: var(--glass-background);
@@ -2155,14 +2202,35 @@ input {
     0 12px 30px rgba(19, 32, 42, 0.1),
     0 1px 0 rgba(255, 255, 255, 0.54) inset;
   color: var(--ink);
+  overflow: hidden;
   padding: clamp(0.95rem, 1.8vw, 1.2rem);
   opacity: var(--cover-flow-panel-opacity);
   transition:
+    height 240ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 120ms linear,
     visibility 120ms linear;
   visibility: var(--cover-flow-panel-visibility);
   -webkit-backdrop-filter: blur(18px) saturate(135%);
   backdrop-filter: blur(18px) saturate(135%);
+}
+
+.cover-flow-card-panel.is-height-locked {
+  height: var(--cover-flow-panel-height);
+}
+
+.manuscript-card-panel-top {
+  display: grid;
+  flex: 0 0 auto;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover-flow-card-panel {
+    transition:
+      opacity 120ms linear,
+      visibility 120ms linear;
+  }
 }
 
 .cover-flow-card-panel strong {
@@ -2171,6 +2239,242 @@ input {
   font-size: clamp(1.45rem, 2.4vw, 2.15rem);
   font-weight: 500;
   line-height: 0.98;
+}
+
+.manuscript-card-outline {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-height: 0;
+  margin-top: 0.35rem;
+}
+
+.manuscript-card-outline-fixed {
+  flex: 0 0 auto;
+}
+
+.manuscript-card-outline-full {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  min-width: 0;
+  border: 1px solid rgba(119, 84, 42, 0.2);
+  border-radius: var(--radius);
+  background: var(--item-background);
+  color: var(--ink);
+  padding: 0.55rem 0.62rem;
+  text-decoration: none;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.manuscript-card-outline-full:hover,
+.manuscript-card-outline-full:focus-visible,
+.cover-flow-cover-link:hover
+  + .cover-flow-card-panel
+  .manuscript-card-outline-full,
+.cover-flow-card-panel.is-read-cue .manuscript-card-outline-full {
+  border-color: rgba(119, 84, 42, 0.38);
+  background: rgba(164, 123, 63, 0.11);
+  color: var(--ink);
+  outline: none;
+}
+
+.manuscript-card-outline-full {
+  border-color: transparent;
+  background: transparent;
+}
+
+.manuscript-card-outline-title > span {
+  display: block;
+  overflow: hidden;
+  min-width: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.manuscript-card-outline-title {
+  transform: translateX(0);
+  transition:
+    color 160ms ease,
+    transform 180ms ease;
+}
+
+.manuscript-card-outline-title > span {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color 180ms ease;
+}
+
+.cover-flow-cover-link:hover
+  + .cover-flow-card-panel
+  .manuscript-card-outline-full
+  .manuscript-card-outline-title,
+.cover-flow-card-panel.is-read-cue
+  .manuscript-card-outline-full
+  .manuscript-card-outline-title,
+.manuscript-card-outline-full:hover .manuscript-card-outline-title,
+.manuscript-card-outline-full:focus-visible .manuscript-card-outline-title,
+.manuscript-card-outline-part-button:hover .manuscript-card-outline-title,
+.manuscript-card-outline-part-button:focus-visible .manuscript-card-outline-title {
+  transform: translateX(0.28rem);
+}
+
+.cover-flow-cover-link:hover
+  + .cover-flow-card-panel
+  .manuscript-card-outline-full
+  .manuscript-card-outline-title
+  > span,
+.cover-flow-card-panel.is-read-cue
+  .manuscript-card-outline-full
+  .manuscript-card-outline-title
+  > span,
+.manuscript-card-outline-full:hover .manuscript-card-outline-title > span,
+.manuscript-card-outline-full:focus-visible
+  .manuscript-card-outline-title
+  > span,
+.manuscript-card-outline-part-button:hover .manuscript-card-outline-title > span,
+.manuscript-card-outline-part-button:focus-visible
+  .manuscript-card-outline-title
+  > span {
+  text-decoration-color: currentColor;
+}
+
+.manuscript-card-outline-full:hover,
+.manuscript-card-outline-full:focus-visible {
+  border-color: rgba(119, 84, 42, 0.28);
+  background: rgba(164, 123, 63, 0.1);
+}
+
+.manuscript-card-outline-full:focus-visible {
+  outline: none;
+}
+
+.manuscript-card-outline-full small,
+.manuscript-card-outline-part-button small {
+  display: block;
+  flex: 0 0 auto;
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.manuscript-card-outline-meta,
+.outline-row-meta {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  min-width: max-content;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.manuscript-card-outline-full .manuscript-card-outline-meta {
+  display: inline-flex;
+}
+
+.manuscript-card-outline-parts,
+.manuscript-card-outline-chapters {
+  display: grid;
+  gap: 0.22rem;
+}
+
+.cover-flow-card-panel-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: rgb(var(--card-rgb) / 0.3) transparent;
+  scrollbar-width: thin;
+}
+
+.manuscript-card-outline-parts,
+.manuscript-card-outline-chapters {
+  margin-left: 1rem;
+  border-left: 1px solid rgba(119, 84, 42, 0.2);
+  padding-left: 0.75rem;
+}
+
+.manuscript-card-outline-part-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  min-width: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  padding: 0.42rem 0.48rem;
+  text-align: left;
+  text-decoration: none;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 140ms ease,
+    text-decoration-color 140ms ease;
+}
+
+.manuscript-card-outline-part-button:hover,
+.manuscript-card-outline-part-button:focus-visible {
+  border-color: rgba(119, 84, 42, 0.28);
+  background: rgba(164, 123, 63, 0.1);
+  color: var(--ink);
+  outline: none;
+}
+
+.manuscript-card-outline-title {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  gap: 0.38rem;
+  min-width: 0;
+}
+
+.manuscript-card-outline-chevron {
+  flex: 0 0 auto;
+  color: var(--bronze-deep);
+}
+
+.manuscript-card-outline-back {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 0.35rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--bronze-deep);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.22rem 0.36rem;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.manuscript-card-outline-back:hover,
+.manuscript-card-outline-back:focus-visible {
+  border-color: rgba(119, 84, 42, 0.24);
+  background: rgba(164, 123, 63, 0.1);
+  color: var(--ink);
+  outline: none;
+}
+
+.manuscript-card-outline-part-overview {
+  color: var(--ink-soft);
 }
 
 .cover-flow-edge-button {
@@ -2366,8 +2670,7 @@ input {
   visibility: visible;
 }
 
-.manuscript-card-kicker,
-.manuscript-card-tags {
+.manuscript-card-kicker {
   font-family: var(--font-ui);
 }
 
@@ -2420,33 +2723,6 @@ input {
   line-height: 1.45;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-}
-
-.manuscript-card-tags {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.32rem;
-}
-
-.manuscript-card-tags span {
-  display: inline-flex;
-  align-self: center;
-  align-items: center;
-  border: 1px solid rgb(var(--card-rgb) / 0.24);
-  border-radius: 999px;
-  background: var(--subtle-control-background);
-  color: var(--ink-soft);
-  font-size: 0.68rem;
-  line-height: 1.05;
-  padding: 0.12rem 0.42rem;
-  white-space: nowrap;
-}
-
-.manuscript-card-tags span:first-child {
-  background: rgb(var(--card-rgb) / 0.12);
-  color: var(--card-accent);
-  font-weight: 700;
 }
 
 .manuscript-cover-card-1 {
@@ -2871,6 +3147,47 @@ input {
   border-radius: 999px;
   background: rgba(96, 121, 109, 0.14);
   color: var(--sage);
+}
+
+.progress-state-dot {
+  --progress-dot-rgb: var(--card-rgb, 96 121 109);
+  --progress-dot-degrees: 0deg;
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 1.05rem;
+  height: 1.05rem;
+  border: 1px solid rgb(var(--progress-dot-rgb) / 0.42);
+  border-radius: 999px;
+  background: transparent;
+  color: rgb(var(--progress-dot-rgb) / 0.92);
+}
+
+.progress-state-dot[data-progress-state="partial"] {
+  background:
+    conic-gradient(
+      rgb(var(--progress-dot-rgb) / 0.62) var(--progress-dot-degrees),
+      rgb(var(--progress-dot-rgb) / 0.1) 0
+    ),
+    var(--panel-background);
+}
+
+.progress-state-dot[data-progress-state="read"] {
+  border-color: rgb(var(--progress-dot-rgb) / 0.72);
+  background: rgb(var(--progress-dot-rgb) / 0.82);
+  color: var(--paper-soft);
+}
+
+.progress-state-dot[data-progress-state="updated"] {
+  border-color: rgba(164, 123, 63, 0.72);
+  background: rgba(164, 123, 63, 0.16);
+  color: var(--bronze-deep);
+}
+
+.progress-state-dot svg {
+  width: 0.68rem;
+  height: 0.68rem;
+  stroke-width: 2.2;
 }
 
 .updated-marker {
@@ -3812,10 +4129,10 @@ input {
   height: var(--progress-heatmap-dot-size);
   min-width: 0;
   overflow: hidden;
-  border: 1px solid rgba(96, 121, 109, 0.28);
+  border: 1px solid rgb(var(--heatmap-rgb) / calc(0.34 + var(--cell-progress) * 0.32));
   border-radius: 999px;
-  background: transparent;
-  color: var(--sage);
+  background: rgb(var(--heatmap-rgb) / calc(var(--cell-progress) * 0.92));
+  color: var(--paper-soft);
   cursor: pointer;
   font: inherit;
   line-height: 1;
@@ -4909,14 +5226,10 @@ input {
     --cover-flow-card-overlap: clamp(7rem, 38vw, 9.2rem);
     --cover-flow-card-perspective: 58rem;
     --cover-flow-panel-width-extra: 3rem;
-    --cover-flow-stage-min-height: clamp(48rem, 166vw, 58rem);
-    --cover-flow-stage-padding-bottom: 6.5rem;
+    --cover-flow-stage-min-height: clamp(53rem, 184vw, 66rem);
+    --cover-flow-stage-padding-bottom: 10rem;
     --cover-flow-stage-padding-top: 4.9rem;
     width: 100vw;
-  }
-
-  .cover-flow-card-panel {
-    min-height: 15rem;
   }
 
   .cover-flow-edge-button {

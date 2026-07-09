@@ -76,7 +76,7 @@ test("home page presents the overview and manuscript entry points", async ({
     page.getByRole("link", { name: "Listen" }),
   ).toHaveAttribute("href", firstReadTarget.href);
   await expect(
-    page.getByRole("link", { name: "Read" }),
+    page.getByRole("link", { name: "Read", exact: true }),
   ).toHaveAttribute("href", firstReadTarget.href);
   await expect(
     page.getByRole("link", { name: "Overview" }),
@@ -214,13 +214,15 @@ test("home page presents the overview and manuscript entry points", async ({
   expect(homepageCoverShadows.hero).not.toBe("none");
 
   await page.getByRole("button", { name: "Next manuscript" }).click();
-  const wieldingCard = page.getByRole("link", {
-    name: "Open Wielding Intelligence",
-  });
+  const wieldingCard = page.locator(
+    '.cover-flow-card[aria-label="Open Wielding Intelligence"]',
+  );
   const wieldingPanel = wieldingCard.locator(".cover-flow-card-panel");
   await expect(wieldingCard.locator("img")).toBeVisible();
   await expect(wieldingPanel).toBeVisible();
-  await expect(wieldingPanel.getByText("Wielding Intelligence")).toBeVisible();
+  await expect(
+    wieldingPanel.locator(".manuscript-card-panel-top strong"),
+  ).toHaveText("Wielding Intelligence");
   await expect(
     wieldingPanel.getByText(
       formatReadingDurationForWords(wieldingVolume.wordCount),
@@ -231,11 +233,6 @@ test("home page presents the overview and manuscript entry points", async ({
     wieldingPanel.getByText(`${wieldingVolume.parts.length} parts`),
   ).toHaveCount(0);
   await expect(wieldingPanel.getByText(/chapters/)).toHaveCount(0);
-  const detailTagHeight = await wieldingPanel
-    .locator(".manuscript-card-tags span")
-    .first()
-    .evaluate((element) => element.getBoundingClientRect().height);
-  expect(detailTagHeight).toBeLessThanOrEqual(24);
   await expect(wieldingPanel.locator(".manuscript-card-symbol")).toHaveText(
     "☽",
   );
@@ -302,10 +299,9 @@ test("home page listen and read actions resume at the first unread section", asy
     "href",
     unreadSection.href,
   );
-  await expect(page.getByRole("link", { name: "Read" })).toHaveAttribute(
-    "href",
-    unreadSection.href,
-  );
+  await expect(
+    page.getByRole("link", { name: "Read", exact: true }),
+  ).toHaveAttribute("href", unreadSection.href);
 });
 
 test("overview links into canonical manuscript sections", async ({
@@ -644,14 +640,160 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   );
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("href", initialActiveVolume.href);
+  ).toHaveAttribute("data-volume-href", initialActiveVolume.href);
   await expect(
     coverFlow.locator(
       ".cover-flow-card.is-active .cover-flow-card-panel strong",
     ),
   ).toHaveText(initialActiveVolume.title);
+  const firstSection = catalog.sections[0]!;
+  const activeCard = coverFlow.locator('.cover-flow-card[aria-current="true"]');
+  const activePanel = activeCard.locator(".cover-flow-card-panel");
+  await expect(activePanel.locator(".manuscript-card-tags")).toHaveCount(0);
+  await expect(
+    activePanel.locator(".manuscript-card-outline-full"),
+  ).toHaveAttribute("href", firstSection.href);
+  const readFullLabelMetrics = await activePanel
+    .locator(".manuscript-card-outline-full")
+    .evaluate((row) => {
+      const icon = row.querySelector("svg")?.getBoundingClientRect();
+      const label = row
+        .querySelector(".manuscript-card-outline-title > span")
+        ?.getBoundingClientRect();
+
+      return {
+        iconCenter: icon ? icon.top + icon.height / 2 : 0,
+        labelCenter: label ? label.top + label.height / 2 : 0,
+        labelHeight: label?.height ?? 0,
+      };
+    });
+  expect(
+    Math.abs(
+      readFullLabelMetrics.iconCenter - readFullLabelMetrics.labelCenter,
+    ),
+  ).toBeLessThanOrEqual(3);
+  expect(readFullLabelMetrics.labelHeight).toBeLessThan(32);
+  await expect(
+    activePanel.getByRole("button", { name: /Part: Front Matter/ }),
+  ).toBeVisible();
+  const panelMetrics = await activeCard.evaluate((card) => {
+    const cover = card.querySelector(".cover-flow-image-frame");
+    const panel = card.querySelector(".cover-flow-card-panel");
+    const panelScroll = card.querySelector(".cover-flow-card-panel-scroll");
+    const coverBox = cover?.getBoundingClientRect();
+    const panelBox = panel?.getBoundingClientRect();
+    const panelStyle = panel ? window.getComputedStyle(panel) : null;
+    const panelScrollStyle = panelScroll
+      ? window.getComputedStyle(panelScroll)
+      : null;
+
+    return {
+      coverHeight: coverBox?.height ?? 0,
+      coverToPanelGap:
+        coverBox && panelBox ? panelBox.top - coverBox.bottom : 0,
+      panelHeight: panelBox?.height ?? 0,
+      panelMaxHeight: panelStyle?.maxHeight ?? "",
+      panelOverflowY: panelStyle?.overflowY ?? "",
+      panelScrollClientHeight: panelScroll?.clientHeight ?? 0,
+      panelScrollHeight: panelScroll?.scrollHeight ?? 0,
+      panelScrollOverflowY: panelScrollStyle?.overflowY ?? "",
+      panelTransitionProperty: panelStyle?.transitionProperty ?? "",
+    };
+  });
+  expect(panelMetrics.panelHeight).toBeLessThanOrEqual(
+    panelMetrics.coverHeight * 0.88 + 2,
+  );
+  expect(panelMetrics.coverToPanelGap).toBeGreaterThanOrEqual(44);
+  expect(panelMetrics.panelMaxHeight).not.toBe("none");
+  expect(panelMetrics.panelOverflowY).toBe("hidden");
+  expect(panelMetrics.panelTransitionProperty).toContain("height");
+  expect(panelMetrics.panelScrollOverflowY).toBe("auto");
+  expect(panelMetrics.panelScrollHeight).toBeGreaterThanOrEqual(
+    panelMetrics.panelScrollClientHeight,
+  );
+
+  await activePanel
+    .getByRole("button", { name: /Part: Front Matter/ })
+    .click();
+  await expect(
+    activePanel.getByRole("button", { name: "Back to parts" }),
+  ).toBeVisible();
+  await expect(
+    activePanel.locator(".manuscript-card-outline-part-overview"),
+  ).toHaveAttribute("href", initialActiveVolume.parts[0]!.href);
+  const partOverviewMetaAlignment = await activePanel
+    .locator(".manuscript-card-outline-part-overview")
+    .evaluate((row) => {
+      const minutes = row.querySelector("small")?.getBoundingClientRect();
+      const dot = row
+        .querySelector(".progress-state-dot")
+        ?.getBoundingClientRect();
+
+      return {
+        dotCenter: dot ? dot.top + dot.height / 2 : 0,
+        minutesCenter: minutes ? minutes.top + minutes.height / 2 : 0,
+      };
+    });
+  expect(
+    Math.abs(
+      partOverviewMetaAlignment.minutesCenter -
+        partOverviewMetaAlignment.dotCenter,
+    ),
+  ).toBeLessThanOrEqual(3);
+  await expect(
+    activePanel.getByRole("link", {
+      name: new RegExp(initialActiveVolume.parts[0]!.chapters[0]!.title),
+    }),
+  ).toHaveAttribute("href", initialActiveVolume.parts[0]!.chapters[0]!.href);
+  const chapterRowMetrics = await activePanel
+    .locator(".manuscript-card-outline-chapters")
+    .evaluate((outline) => {
+      const rows = Array.from(
+        outline.querySelectorAll<HTMLElement>(
+          ".manuscript-card-outline-part-button",
+        ),
+      );
+
+      return rows.map((row) => {
+        const minutes = row.querySelector("small")?.getBoundingClientRect();
+        const dot = row
+          .querySelector(".progress-state-dot")
+          ?.getBoundingClientRect();
+
+        return {
+          hasChevron: Boolean(row.querySelector(".manuscript-card-outline-chevron")),
+          isAnchor: row.tagName === "A",
+          minuteDotDelta:
+            minutes && dot
+              ? Math.abs(
+                  minutes.top +
+                    minutes.height / 2 -
+                    (dot.top + dot.height / 2),
+                )
+              : null,
+        };
+      });
+    });
+  expect(chapterRowMetrics.length).toBeGreaterThan(1);
+  expect(chapterRowMetrics.every((row) => row.hasChevron)).toBe(true);
+  expect(chapterRowMetrics.every((row) => row.isAnchor)).toBe(true);
+  expect(
+    Math.max(...chapterRowMetrics.map((row) => row.minuteDotDelta ?? 100)),
+  ).toBeLessThanOrEqual(3);
+  await activePanel
+    .getByRole("button", { name: "Back to parts" })
+    .dispatchEvent("click");
+  await expect(
+    activePanel.getByRole("button", { name: /Part: Front Matter/ }),
+  ).toBeVisible();
 
   const coverFlowTransforms = await coverFlow.evaluate((flow) => {
+    const shadowAlpha = (element: HTMLElement | null) => {
+      if (!element) return 0;
+      const shadow = window.getComputedStyle(element).boxShadow;
+      const match = shadow.match(/rgba?\([^,]+,[^,]+,[^,]+,\s*([^)]+)\)/);
+      return match ? Number.parseFloat(match[1] ?? "0") : 0;
+    };
     const active = flow.querySelector<HTMLElement>(
       '.cover-flow-card[aria-current="true"]',
     );
@@ -673,6 +815,12 @@ test("home page presents an interactive cover flow", async ({ page }) => {
     return {
       activeRotate: active?.style.getPropertyValue("--cover-flow-rotate") ?? "",
       activeScale: active?.style.getPropertyValue("--cover-flow-scale") ?? "",
+      activeShadowStrength:
+        active?.style.getPropertyValue("--cover-flow-cover-shadow-strength") ??
+        "",
+      activeShadowAlpha: shadowAlpha(
+        active?.querySelector<HTMLElement>(".cover-flow-image-frame") ?? null,
+      ),
       activeTransform: active ? getComputedStyle(active).transform : "",
       cardGap: window.getComputedStyle(flow.querySelector(".cover-flow-track")!)
         .gap,
@@ -687,6 +835,12 @@ test("home page presents an interactive cover flow", async ({ page }) => {
           .backdropFilter,
       sideRotate: sideCard?.style.getPropertyValue("--cover-flow-rotate") ?? "",
       sideScale: sideCard?.style.getPropertyValue("--cover-flow-scale") ?? "",
+      sideShadowStrength:
+        sideCard?.style.getPropertyValue("--cover-flow-cover-shadow-strength") ??
+        "",
+      sideShadowAlpha: shadowAlpha(
+        sideCard?.querySelector<HTMLElement>(".cover-flow-image-frame") ?? null,
+      ),
       viewportWidth: document.documentElement.clientWidth,
     };
   });
@@ -707,38 +861,83 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   expect(coverFlowTransforms.panelVisible).not.toBe("none");
   expect(coverFlowTransforms.sideRotate).not.toBe("0deg");
   expect(Number.parseFloat(coverFlowTransforms.sideScale)).toBeLessThan(1);
+  expect(
+    Number.parseFloat(coverFlowTransforms.activeShadowStrength),
+  ).toBeGreaterThan(0.95);
+  expect(Number.parseFloat(coverFlowTransforms.sideShadowStrength)).toBeLessThan(
+    Number.parseFloat(coverFlowTransforms.activeShadowStrength),
+  );
+  expect(coverFlowTransforms.activeShadowAlpha).toBeGreaterThanOrEqual(0.16);
+  expect(coverFlowTransforms.sideShadowAlpha).toBeLessThan(0.19);
 
-  await page.getByRole("button", { name: "Next manuscript" }).click();
+  const backgroundTarget = catalog.volumes[initialActiveIndex + 1]!;
+  await coverFlow
+    .locator(
+      `.cover-flow-card[data-volume-href="${backgroundTarget.href}"] .cover-flow-cover-link`,
+    )
+    .dispatchEvent("click");
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("href", catalog.volumes[initialActiveIndex + 1]!.href);
+  ).toHaveAttribute("data-volume-href", backgroundTarget.href);
+  await expect(page).toHaveURL(/\/$/);
   await expect(
     coverFlow.locator(
-      ".cover-flow-card.is-active .cover-flow-card-panel strong",
+      '.cover-flow-card[aria-current="true"] .cover-flow-card-panel strong',
     ),
-  ).toHaveText(catalog.volumes[initialActiveIndex + 1]!.title);
+  ).toHaveText(backgroundTarget.title);
+  await page.reload();
+  await expect(coverFlow).toBeVisible();
+  await expect(
+    coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+  ).toHaveAttribute("data-volume-href", initialActiveVolume.href);
 
-  const nextButton = page.getByRole("button", { name: "Next manuscript" });
+  const nextButton = coverFlow.locator(".cover-flow-edge-button-next");
   for (
-    let targetIndex = initialActiveIndex + 2;
+    let targetIndex = initialActiveIndex + 1;
     targetIndex < catalog.volumes.length;
     targetIndex += 1
   ) {
-    await nextButton.click();
+    await nextButton.dispatchEvent("click");
     await expect(
       coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-    ).toHaveAttribute("href", catalog.volumes[targetIndex]!.href);
+    ).toHaveAttribute("data-volume-href", catalog.volumes[targetIndex]!.href);
   }
 
   await expect(nextButton).toBeDisabled();
 
-  const previousButton = page.getByRole("button", {
-    name: "Previous manuscript",
-  });
-  await previousButton.click();
+  const previousButton = coverFlow.locator(".cover-flow-edge-button-previous");
+  await previousButton.dispatchEvent("click");
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("href", catalog.volumes.at(-2)!.href);
+  ).toHaveAttribute("data-volume-href", catalog.volumes.at(-2)!.href);
+
+  await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+  });
+  await expect.poll(async () => page.evaluate(() => window.scrollY)).toBe(0);
+  const mixedWheelResult = await coverFlow
+    .locator(".cover-flow-scroll")
+    .evaluate((scroller) => {
+      const scrollLeftBefore = scroller.scrollLeft;
+      const event = new WheelEvent("wheel", {
+        bubbles: true,
+        cancelable: true,
+        deltaX: 160,
+        deltaY: 220,
+      });
+      const released = scroller.dispatchEvent(event);
+
+      return {
+        released,
+        scrollLeftAfter: scroller.scrollLeft,
+        scrollLeftBefore,
+      };
+    });
+  expect(mixedWheelResult.released).toBe(true);
+  expect(mixedWheelResult.scrollLeftAfter).toBe(
+    mixedWheelResult.scrollLeftBefore,
+  );
 
   await coverFlow.locator(".cover-flow-scroll").dispatchEvent("wheel", {
     bubbles: true,
@@ -748,5 +947,5 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   });
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("href", catalog.volumes.at(-1)!.href);
+  ).toHaveAttribute("data-volume-href", catalog.volumes.at(-1)!.href);
 });
