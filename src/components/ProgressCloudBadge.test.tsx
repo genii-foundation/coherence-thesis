@@ -11,6 +11,11 @@ describe("ProgressCloudBadge", () => {
       <ProgressCloudBadge connected percent={100} />,
     );
 
+    expect(partial).toContain('viewBox="0 0 64 64"');
+    expect(partial).toContain(
+      'transform="translate(0 10.667) scale(0.7619048)"',
+    );
+    expect(partial).toContain('--progress-cloud-text-size:14px');
     expect(partial).toContain('d="M40.5 4.7');
     expect(partial).toContain('stroke-dasharray="1 99"');
     expect(partial).toContain('stroke-dashoffset="0"');
@@ -25,6 +30,7 @@ describe("ProgressCloudBadge", () => {
     );
 
     expect(partial).toContain('d="M 32.000 6.800');
+    expect(partial).toContain('--progress-cloud-text-size:14px');
     expect(partial).toContain('stroke-linecap="round"');
     expect(complete).toContain('transform="rotate(-90 32 32)"');
     expect(complete).toContain('stroke-dasharray="158.33626974092556 0"');
