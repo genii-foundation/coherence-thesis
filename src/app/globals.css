@@ -876,10 +876,6 @@ input {
   stroke-width: 3.2;
 }
 
-.progress-cloud-mark-offline .progress-cloud-progress {
-  stroke-linecap: var(--progress-circle-linecap);
-}
-
 .progress-cloud-mark-offline .progress-cloud-track {
   opacity: 0.2;
   stroke: currentColor;

@@ -25,7 +25,9 @@ describe("ProgressCloudBadge", () => {
     );
 
     expect(partial).toContain('d="M 32.000 6.800');
+    expect(partial).toContain('stroke-linecap="round"');
     expect(complete).toContain('transform="rotate(-90 32 32)"');
     expect(complete).toContain('stroke-dasharray="158.33626974092556 0"');
+    expect(complete).toContain('stroke-linecap="round"');
   });
 });

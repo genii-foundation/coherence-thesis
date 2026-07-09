@@ -17,13 +17,11 @@ type ProgressCloudVariant = {
 
 type ProgressCloudBadgeProps = {
   connected?: boolean;
-  offlineLineCap?: "butt" | "round" | "square";
   percent: number;
   variantId?: string;
 };
 
 type ProgressCloudStyle = CSSProperties & {
-  "--progress-circle-linecap": string;
   "--progress-cloud-fill": string;
   "--progress-cloud-height": string;
   "--progress-cloud-progress": string;
@@ -221,7 +219,6 @@ function circleProgressArc(percent: number, offset: number) {
 
 export function ProgressCloudBadge({
   connected = false,
-  offlineLineCap = "butt",
   percent,
   variantId = "sync-orbit",
 }: ProgressCloudBadgeProps) {
@@ -234,7 +231,6 @@ export function ProgressCloudBadge({
   const textSize =
     text.length >= 4 ? Math.max(10.5, variant.textSize - 1.5) : variant.textSize;
   const style: ProgressCloudStyle = {
-    "--progress-circle-linecap": offlineLineCap,
     "--progress-cloud-fill": variant.cloudFill,
     "--progress-cloud-height": `${variant.height}px`,
     "--progress-cloud-progress": variant.progress,
@@ -301,11 +297,16 @@ export function ProgressCloudBadge({
               cy="32"
               r={offlineCircleRadius}
               strokeDasharray={`${offlineCircleLength} 0`}
+              strokeLinecap="round"
               transform={offlineRotation}
             />
           ) : null}
           {progressPercent > 0 && progressPercent < 100 ? (
-            <path className="progress-cloud-progress" d={offlineProgressArc} />
+            <path
+              className="progress-cloud-progress"
+              d={offlineProgressArc}
+              strokeLinecap="round"
+            />
           ) : null}
           <text className="progress-cloud-text" x="32" y="33" textAnchor="middle">
             {text}
