@@ -114,12 +114,33 @@ export function validateManuscripts(): void {
   const seenPaths = new Set<string>();
   const volumeIds = new Set<string>();
   const routeContexts = routeVolumesForDocuments(docs);
+  const chapterSectionCounts = docs.reduce((counts, doc) => {
+    const key = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}:${doc.frontmatter.chapterId}`;
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+    return counts;
+  }, new Map<string, number>());
+  const partChapters = docs.reduce((chapters, doc) => {
+    const key = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}`;
+    const partChapters = chapters.get(key) ?? new Set<string>();
+    partChapters.add(doc.frontmatter.chapterId);
+    chapters.set(key, partChapters);
+    return chapters;
+  }, new Map<string, Set<string>>());
   for (const doc of docs) {
     const id = doc.frontmatter.sectionId;
     assert(!seenSectionIds.has(id), `Duplicate sectionId '${id}'.`);
     seenSectionIds.add(id);
     volumeIds.add(doc.frontmatter.volumeId);
-    const href = sectionHref(doc.frontmatter, routeContexts.get(doc.frontmatter.volumeId));
+    const chapterKey = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}:${doc.frontmatter.chapterId}`;
+    const partKey = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}`;
+    const href = sectionHref(
+      doc.frontmatter,
+      routeContexts.get(doc.frontmatter.volumeId),
+      {
+        chapterSectionCount: chapterSectionCounts.get(chapterKey) ?? 1,
+        partChapterCount: partChapters.get(partKey)?.size ?? 1,
+      },
+    );
     assert(!seenPaths.has(href), `Duplicate section route '${href}'.`);
     seenPaths.add(href);
     assert(doc.body.trim().length > 0, `Empty manuscript body in ${doc.relativePath}.`);

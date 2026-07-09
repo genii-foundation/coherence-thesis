@@ -112,7 +112,7 @@ test("multi-section chapters render one anchored reader page", async ({
   page,
 }) => {
   const chapterHref =
-    "/manuscripts/architecting-providence/the-governance-architecture/the-amendment-architecture/";
+    "/manuscripts/4/the-governance-architecture/the-amendment-architecture/";
   const sections = catalog.sections.filter(
     (section) => section.chapterHref === chapterHref,
   );
@@ -161,27 +161,27 @@ test("legacy front matter routes redirect to clean canonical routes", async ({
   page,
 }) => {
   await page.goto("/manuscripts/humanitys-most-viable-future/front-matter/");
-  await expect(page).toHaveURL("/manuscripts/humanitys-most-viable-future/opening/");
+  await expect(page).toHaveURL("/manuscripts/1/opening/");
 
   await page.goto(
     "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/",
   );
   await expect(page).toHaveURL(
-    "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/",
+    "/manuscripts/8/contents/prologue-two-scenes/",
   );
 
   await page.goto(
     "/manuscripts/humanitys-most-viable-future/front-matter/orientation/v01-orientation/",
   );
   await expect(page).toHaveURL(
-    "/manuscripts/humanitys-most-viable-future/opening/orientation/v01-orientation/",
+    "/manuscripts/1/opening/orientation/",
   );
 });
 
 test("synthetic opening part headings do not repeat their title", async ({
   page,
 }) => {
-  await page.goto("/manuscripts/humanitys-most-viable-future/opening/");
+  await page.goto("/manuscripts/1/opening/");
 
   const heading = page.locator(".page-heading");
   await expect(heading.locator(".eyebrow")).toHaveCount(0);
@@ -439,7 +439,7 @@ test("truncated breadcrumb labels reveal their full title in a tooltip", async (
 
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto(
-    "/manuscripts/providence-imperative/the-living-reality/the-second-link-perception-makes-new-coordination-possible/",
+    "/manuscripts/3/the-living-reality/the-second-link-perception-makes-new-coordination-possible/",
   );
 
   const breadcrumbs = page.getByRole("navigation", { name: "Breadcrumb" });

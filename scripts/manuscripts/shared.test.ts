@@ -58,9 +58,13 @@ describe("manuscript compiler helpers", () => {
     const section = catalog.sections.find(
       (candidate) => candidate.sectionId === "v01-the-seed",
     );
+    const secondVolume = catalog.volumes.find(
+      (candidate) => candidate.volumeId === "wielding-intelligence",
+    );
 
+    expect(secondVolume?.href).toBe("/manuscripts/2/");
     expect(section?.href).toBe(
-      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/",
+      "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
     );
     const hrefs = catalog.volumes.flatMap((volume) => [
       volume.href,
@@ -77,6 +81,7 @@ describe("manuscript compiler helpers", () => {
         return segments.some((segment, index) => segment === segments[index - 1]);
       }),
     ).toEqual([]);
+    expect(hrefs.filter((href) => /\/v\d+-/.test(href))).toEqual([]);
   });
 
   it("publishes clean routes for synthetic front matter groups", () => {
@@ -95,19 +100,17 @@ describe("manuscript compiler helpers", () => {
       ?.parts.find((part) => part.partId === "front-matter");
 
     expect(opening?.href).toBe(
-      "/manuscripts/humanitys-most-viable-future/opening/orientation/v01-orientation/",
+      "/manuscripts/1/opening/orientation/",
     );
     expect(opening?.readerHref).toBe(opening?.href);
     expect(contents?.href).toBe(
-      "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-prologue-two-scenes/",
+      "/manuscripts/8/contents/prologue-two-scenes/start/",
     );
     expect(contents?.readerHref).toBe(
-      "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/#v08-prologue-two-scenes",
+      "/manuscripts/8/contents/prologue-two-scenes/#v08-prologue-two-scenes",
     );
-    expect(openingPart?.href).toBe(
-      "/manuscripts/humanitys-most-viable-future/opening/",
-    );
-    expect(contentsPart?.href).toBe("/manuscripts/misanthropic-artifice/contents/");
+    expect(openingPart?.href).toBe("/manuscripts/1/opening/");
+    expect(contentsPart?.href).toBe("/manuscripts/8/contents/");
   });
 
   it("preserves old duplicate section routes as generated aliases", () => {
@@ -120,8 +123,7 @@ describe("manuscript compiler helpers", () => {
 
     expect(alias).toMatchObject({
       targetSectionId: "v01-the-seed",
-      targetHref:
-        "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/",
+      targetHref: "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
     });
   });
 
@@ -140,8 +142,7 @@ describe("manuscript compiler helpers", () => {
     ).toBe(false);
     expect(alias).toMatchObject({
       targetSectionId: "v01-the-seed",
-      targetHref:
-        "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/",
+      targetHref: "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
     });
   });
 
@@ -159,7 +160,7 @@ describe("manuscript compiler helpers", () => {
     expect(alias).toMatchObject({
       targetSectionId: "v01-why-this-is-happening-and-why-it-changes-everything",
       targetHref:
-        "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-why-this-is-happening-and-why-it-changes-everything/",
+        "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/why-this-is-happening-and-why-it-changes-everything/",
     });
   });
 

@@ -9,6 +9,7 @@ import {
   sectionNavigation,
   sectionByHrefOrAlias,
   sectionsStartingAt,
+  volumeByRouteSegment,
 } from "./manuscript-data";
 
 describe("manuscript data", () => {
@@ -25,11 +26,19 @@ describe("manuscript data", () => {
     expect(sectionsStartingAt("missing-section")).toEqual([]);
   });
 
+  it("resolves numeric volume routes without renaming stable volume IDs", () => {
+    const volume = volumeByRouteSegment("2");
+
+    expect(volume?.volumeId).toBe("wielding-intelligence");
+    expect(volume?.href).toBe("/manuscripts/2/");
+    expect(volumeByRouteSegment("wielding-intelligence")?.href).toBe(volume?.href);
+  });
+
   it("uses the part as the parent for singleton chapter sections", () => {
     const section = allSections().find(
       (candidate) =>
         candidate.href ===
-        "/manuscripts/providence-imperative/the-reckoning/the-central-wound/v03-the-central-wound/",
+        "/manuscripts/3/the-reckoning/the-central-wound/",
     );
     expect(section).toBeDefined();
     const part = partById(section!.volumeId, section!.partId);
@@ -45,7 +54,7 @@ describe("manuscript data", () => {
     const route = breadcrumbRoutes().find(
       (candidate) =>
         candidate.href ===
-        "/manuscripts/providence-imperative/the-reckoning/the-central-wound/v03-the-central-wound/",
+        "/manuscripts/3/the-reckoning/the-central-wound/",
     );
 
     expect(route?.crumbs.map((crumb) => crumb.label)).toEqual([
@@ -53,14 +62,23 @@ describe("manuscript data", () => {
       "The Central Wound",
     ]);
     expect(route?.crumbs.map((crumb) => crumb.href)).toEqual([
-      "/manuscripts/providence-imperative/the-reckoning/",
-      "/manuscripts/providence-imperative/the-reckoning/the-central-wound/v03-the-central-wound/",
+      "/manuscripts/3/the-reckoning/",
+      "/manuscripts/3/the-reckoning/the-central-wound/",
+    ]);
+  });
+
+  it("omits repeated breadcrumb labels for self-titled sections", () => {
+    const route = breadcrumbRoutes().find(
+      (candidate) => candidate.href === "/manuscripts/2/main/wielding-intelligence/",
+    );
+
+    expect(route?.crumbs.map((crumb) => crumb.label)).toEqual([
+      "Wielding Intelligence",
     ]);
   });
 
   it("resolves collapsed canonical section hrefs and old duplicate aliases", () => {
-    const canonical =
-      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/";
+    const canonical = "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/";
     const oldDuplicate =
       "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/";
 
@@ -71,8 +89,7 @@ describe("manuscript data", () => {
   it("resolves skipped part opener aliases to content sections", () => {
     const opener =
       "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/";
-    const target =
-      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/";
+    const target = "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/";
     const keys = new Set(
       manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
     );
@@ -87,13 +104,11 @@ describe("manuscript data", () => {
   });
 
   it("publishes clean synthetic opening and contents routes", () => {
-    const opening = partByHref("/manuscripts/humanitys-most-viable-future/opening/");
-    const contents = partByHref("/manuscripts/misanthropic-artifice/contents/");
-    const openingSection = sectionByHrefOrAlias(
-      "/manuscripts/humanitys-most-viable-future/opening/orientation/v01-orientation/",
-    );
+    const opening = partByHref("/manuscripts/1/opening/");
+    const contents = partByHref("/manuscripts/8/contents/");
+    const openingSection = sectionByHrefOrAlias("/manuscripts/1/opening/orientation/");
     const contentsSection = sectionByHrefOrAlias(
-      "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-prologue-two-scenes/",
+      "/manuscripts/8/contents/prologue-two-scenes/start/",
     );
 
     expect(opening?.part.partId).toBe("front-matter");
@@ -122,19 +137,17 @@ describe("manuscript data", () => {
     );
 
     expect(legacyOpeningPart?.part.href).toBe(
-      "/manuscripts/humanitys-most-viable-future/opening/",
+      "/manuscripts/1/opening/",
     );
-    expect(legacyContentsPart?.part.href).toBe(
-      "/manuscripts/misanthropic-artifice/contents/",
-    );
+    expect(legacyContentsPart?.part.href).toBe("/manuscripts/8/contents/");
     expect(legacyChapter?.chapter.href).toBe(
-      "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/",
+      "/manuscripts/8/contents/prologue-two-scenes/",
     );
     expect(legacySection?.section.href).toBe(
-      "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-prologue-two-scenes/",
+      "/manuscripts/8/contents/prologue-two-scenes/start/",
     );
     expect(legacySection?.alias?.targetHref).toBe(
-      "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-prologue-two-scenes/",
+      "/manuscripts/8/contents/prologue-two-scenes/start/",
     );
     expect(keys.has("humanitys-most-viable-future/front-matter")).toBe(true);
     expect(keys.has("misanthropic-artifice/front-matter/prologue-two-scenes")).toBe(true);
@@ -144,7 +157,7 @@ describe("manuscript data", () => {
     const opener =
       "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-the-sprout/";
     const target =
-      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-why-this-is-happening-and-why-it-changes-everything/";
+      "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/why-this-is-happening-and-why-it-changes-everything/";
     const keys = new Set(
       manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
     );
@@ -164,7 +177,7 @@ describe("manuscript data", () => {
     const route = breadcrumbRoutes().find(
       (candidate) =>
         candidate.href ===
-        "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/",
+        "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
     );
 
     expect(route?.crumbs.map((crumb) => crumb.label)).toEqual([
@@ -172,15 +185,15 @@ describe("manuscript data", () => {
       "The Seed",
     ]);
     expect(route?.crumbs.map((crumb) => crumb.href)).toEqual([
-      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/",
-      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed/",
+      "/manuscripts/1/seed-sprout-stem-and-soil/",
+      "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
     ]);
   });
 
   it("points multi-section chapters at one reader page with section anchors", () => {
     const sections = allSections().filter((section) =>
       section.chapterHref.endsWith(
-        "/architecting-providence/the-governance-architecture/the-amendment-architecture/",
+        "/4/the-governance-architecture/the-amendment-architecture/",
       ),
     );
     const sectionIds = sections.map((section) => section.sectionId);
@@ -211,11 +224,7 @@ describe("manuscript data", () => {
       manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
     );
 
-    expect(
-      keys.has(
-        "humanitys-most-viable-future/seed-sprout-stem-and-soil/the-seed/v01-the-seed",
-      ),
-    ).toBe(true);
+    expect(keys.has("1/seed-sprout-stem-and-soil/the-seed")).toBe(true);
     expect(
       keys.has(
         "humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil",

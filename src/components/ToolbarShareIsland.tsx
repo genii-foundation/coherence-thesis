@@ -60,8 +60,14 @@ export function ToolbarShareIsland() {
 
   const currentVolume = useMemo(() => {
     const volumeId = currentSection?.volumeId ?? volumeIdFromPath(pathname);
-    if (!volumeId) return null;
-    return downloads?.manuscripts.find((manuscript) => manuscript.volumeId === volumeId) ?? null;
+    const currentPath = normalizePath(pathname);
+    return (
+      downloads?.manuscripts.find(
+        (manuscript) =>
+          manuscript.volumeId === volumeId ||
+          normalizePath(manuscript.href) === currentPath,
+      ) ?? null
+    );
   }, [currentSection, downloads, pathname]);
 
   const downloadCandidates = useMemo(() => {
