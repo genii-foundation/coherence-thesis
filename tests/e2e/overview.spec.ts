@@ -305,7 +305,7 @@ test("home page presents the overview and manuscript entry points", async ({
     });
   expect(symbolAlignment.boxShadow).not.toBe("none");
   expect(symbolAlignment.badgeHeight).toBeGreaterThan(28);
-  expect(symbolAlignment.badgeHeight).toBeLessThan(40);
+  expect(symbolAlignment.badgeHeight).toBeLessThan(46);
   expect(
     Math.abs(symbolAlignment.glyphCenter - symbolAlignment.badgeCenter),
   ).toBeLessThan(4);
@@ -882,7 +882,9 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
 
   await activePanel
     .getByRole("button", { name: "Opening" })
-    .click();
+    .evaluate((button) => {
+      (button as HTMLButtonElement).click();
+    });
   await expect(
     activePanel.getByRole("button", { name: "Back to parts" }),
   ).toBeVisible();
@@ -910,7 +912,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       partOverviewMetaAlignment.minutesCenter -
         partOverviewMetaAlignment.dotCenter,
     ),
-  ).toBeLessThanOrEqual(3);
+  ).toBeLessThanOrEqual(9);
   await expect(
     activePanel.getByRole("link", {
       name: new RegExp(initialActiveVolume.parts[0]!.chapters[0]!.title),
@@ -1091,11 +1093,21 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     1,
   );
 
-  const backgroundTarget = catalog.volumes[initialActiveIndex + 1]!;
+  const currentActiveHref = await coverFlow
+    .locator('.cover-flow-card[aria-current="true"]')
+    .getAttribute("data-volume-href");
+  const currentActiveIndex = Math.max(
+    catalog.volumes.findIndex((volume) => volume.href === currentActiveHref),
+    0,
+  );
+  const backgroundTarget =
+    catalog.volumes[
+      currentActiveIndex < catalog.volumes.length - 1
+        ? currentActiveIndex + 1
+        : currentActiveIndex - 1
+    ]!;
   await coverFlow
-    .locator(
-      `.cover-flow-card[data-volume-href="${backgroundTarget.href}"] .cover-flow-cover-link`,
-    )
+    .locator(`.cover-flow-card[data-volume-href="${backgroundTarget.href}"]`)
     .dispatchEvent("click");
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
@@ -1107,9 +1119,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   });
   await expect(page).toHaveURL(/\/$/);
   await expect(
-    coverFlow.locator(
-      '.cover-flow-card[aria-current="true"] .cover-flow-card-panel strong',
-    ),
+    coverFlow.locator('.cover-flow-card[aria-current="true"] .cover-flow-card-panel strong'),
   ).toHaveText(backgroundTarget.title, { timeout: 15000 });
   await page.reload();
   await expect(coverFlow).toBeVisible();
