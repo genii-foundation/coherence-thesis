@@ -677,9 +677,11 @@ test("home page presents an interactive cover flow", async ({ page }) => {
     activePanel.getByRole("button", { name: /Part: Front Matter/ }),
   ).toBeVisible();
   const panelMetrics = await activeCard.evaluate((card) => {
+    const flow = card.closest(".cover-flow");
     const cover = card.querySelector(".cover-flow-image-frame");
     const panel = card.querySelector(".cover-flow-card-panel");
     const panelScroll = card.querySelector(".cover-flow-card-panel-scroll");
+    const flowBox = flow?.getBoundingClientRect();
     const coverBox = cover?.getBoundingClientRect();
     const panelBox = panel?.getBoundingClientRect();
     const panelStyle = panel ? window.getComputedStyle(panel) : null;
@@ -697,11 +699,66 @@ test("home page presents an interactive cover flow", async ({ page }) => {
       panelScrollClientHeight: panelScroll?.clientHeight ?? 0,
       panelScrollHeight: panelScroll?.scrollHeight ?? 0,
       panelScrollOverflowY: panelScrollStyle?.overflowY ?? "",
+      stageEndGap: flowBox && panelBox ? flowBox.bottom - panelBox.bottom : 0,
       panelTransitionProperty: panelStyle?.transitionProperty ?? "",
+      viewportWidth: document.documentElement.clientWidth,
     };
   });
+  const mobileCoverFlowAlignment = await coverFlow.evaluate((flow) => {
+    const active = flow.querySelector<HTMLElement>(
+      '.cover-flow-card[aria-current="true"]',
+    );
+    const cover = active?.querySelector<HTMLElement>(".cover-flow-image-frame");
+    const panel = active?.querySelector<HTMLElement>(".cover-flow-card-panel");
+    const previous = flow.querySelector<HTMLElement>(
+      ".cover-flow-edge-button-previous",
+    );
+    const next = flow.querySelector<HTMLElement>(".cover-flow-edge-button-next");
+    const coverBox = cover?.getBoundingClientRect();
+    const panelBox = panel?.getBoundingClientRect();
+    const previousBox = previous?.getBoundingClientRect();
+    const nextBox = next?.getBoundingClientRect();
+    const coverCenterY = coverBox ? coverBox.top + coverBox.height / 2 : 0;
+
+    return {
+      nextCenterOffset:
+        nextBox && coverBox
+          ? nextBox.top + nextBox.height / 2 - coverCenterY
+          : 0,
+      nextRightInset: nextBox
+        ? document.documentElement.clientWidth - nextBox.right
+        : 0,
+      panelLeftDelta:
+        coverBox && panelBox ? Math.abs(panelBox.left - coverBox.left) : 0,
+      panelRightDelta:
+        coverBox && panelBox ? Math.abs(panelBox.right - coverBox.right) : 0,
+      previousCenterOffset:
+        previousBox && coverBox
+          ? previousBox.top + previousBox.height / 2 - coverCenterY
+          : 0,
+      previousLeftInset: previousBox?.left ?? 0,
+      viewportWidth: document.documentElement.clientWidth,
+    };
+  });
+  if (mobileCoverFlowAlignment.viewportWidth <= 540) {
+    expect(mobileCoverFlowAlignment.panelLeftDelta).toBeLessThanOrEqual(2);
+    expect(mobileCoverFlowAlignment.panelRightDelta).toBeLessThanOrEqual(2);
+    expect(mobileCoverFlowAlignment.previousCenterOffset).toBeGreaterThanOrEqual(
+      3,
+    );
+    expect(mobileCoverFlowAlignment.previousCenterOffset).toBeLessThanOrEqual(
+      8,
+    );
+    expect(mobileCoverFlowAlignment.nextCenterOffset).toBeGreaterThanOrEqual(3);
+    expect(mobileCoverFlowAlignment.nextCenterOffset).toBeLessThanOrEqual(8);
+    expect(mobileCoverFlowAlignment.previousLeftInset).toBeGreaterThan(8);
+    expect(mobileCoverFlowAlignment.nextRightInset).toBeGreaterThan(8);
+  }
   expect(panelMetrics.panelHeight).toBeLessThanOrEqual(
     panelMetrics.coverHeight * 0.88 + 2,
+  );
+  expect(panelMetrics.stageEndGap).toBeLessThanOrEqual(
+    panelMetrics.viewportWidth <= 540 ? 80 : 150,
   );
   expect(panelMetrics.coverToPanelGap).toBeGreaterThanOrEqual(44);
   expect(panelMetrics.panelMaxHeight).not.toBe("none");
@@ -869,6 +926,42 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   );
   expect(coverFlowTransforms.activeShadowAlpha).toBeGreaterThanOrEqual(0.16);
   expect(coverFlowTransforms.sideShadowAlpha).toBeLessThan(0.19);
+
+  const verticalStability = await coverFlow
+    .locator(".cover-flow-scroll")
+    .evaluate(async (scroller) => {
+      const card = document.querySelector<HTMLElement>(".cover-flow-card");
+      const cover = card?.querySelector<HTMLElement>(".cover-flow-image-frame");
+      const originalScrollLeft = scroller.scrollLeft;
+      const centers: number[] = [];
+      const maxScrollLeft = Math.min(
+        scroller.scrollWidth - scroller.clientWidth,
+        420,
+      );
+
+      for (let scrollLeft = 0; scrollLeft <= maxScrollLeft; scrollLeft += 30) {
+        scroller.scrollLeft = scrollLeft;
+        scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
+        await new Promise<void>((resolve) => {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => resolve());
+          });
+        });
+        const coverBox = cover?.getBoundingClientRect();
+        if (coverBox) centers.push(coverBox.top + coverBox.height / 2);
+      }
+
+      scroller.scrollLeft = originalScrollLeft;
+      scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
+
+      return {
+        maxCenter: Math.max(...centers),
+        minCenter: Math.min(...centers),
+      };
+    });
+  expect(
+    verticalStability.maxCenter - verticalStability.minCenter,
+  ).toBeLessThanOrEqual(1);
 
   const backgroundTarget = catalog.volumes[initialActiveIndex + 1]!;
   await coverFlow
