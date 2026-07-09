@@ -27,6 +27,7 @@ import {
   stripMarkdown,
   wordCount,
 } from "./io";
+import { displayPartTitle } from "../../src/lib/manuscript-labels";
 
 // Re-export the split modules so existing `from "./shared"` imports keep working
 // (MAINT-05: shared.ts was one 770-line file; types live in ./types, filesystem
@@ -549,16 +550,22 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
 }
 
 export function buildSearchIndex(catalog: CompiledCatalog): SearchIndexEntry[] {
-  return catalog.sections.map((section) => ({
-    sectionId: section.sectionId,
-    href: section.readerHref,
-    readerHref: section.readerHref,
-    title: section.title,
-    volumeTitle: section.volumeTitle,
-    partTitle: section.partTitle,
-    chapterTitle: section.chapterTitle,
-    wordCount: section.wordCount,
-    contentHash: section.contentHash,
-    text: section.text,
-  }));
+  return catalog.sections.map((section) => {
+    const volume = catalog.volumes.find(
+      (candidate) => candidate.volumeId === section.volumeId,
+    );
+
+    return {
+      sectionId: section.sectionId,
+      href: section.readerHref,
+      readerHref: section.readerHref,
+      title: section.title,
+      volumeTitle: section.volumeTitle,
+      partTitle: displayPartTitle(section, volume),
+      chapterTitle: section.chapterTitle,
+      wordCount: section.wordCount,
+      contentHash: section.contentHash,
+      text: section.text,
+    };
+  });
 }

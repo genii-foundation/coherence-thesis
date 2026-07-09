@@ -393,7 +393,12 @@ test("home page listen action starts audiobook playback", async ({ page }) => {
   }, { storageKey: audioVoiceStorageKey, preference: systemVoicePreference });
 
   await page.goto("/");
-  await page.getByRole("link", { name: "Listen" }).click();
+  const listenLink = page.getByRole("link", { name: "Listen" });
+  await expect(listenLink).toHaveAttribute(
+    "href",
+    `${catalog.sections[0]!.href}?listen=1`,
+  );
+  await listenLink.click();
 
   await expect
     .poll(() => new URL(page.url()).pathname)
@@ -780,7 +785,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   ).toBeLessThanOrEqual(3);
   expect(readFullLabelMetrics.labelHeight).toBeLessThan(32);
   await expect(
-    activePanel.getByRole("button", { name: /Part: Front Matter/ }),
+    activePanel.getByRole("button", { name: "Opening" }),
   ).toBeVisible();
   const panelMetrics = await activeCard.evaluate((card) => {
     const flow = card.closest(".cover-flow");
@@ -876,7 +881,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   );
 
   await activePanel
-    .getByRole("button", { name: /Part: Front Matter/ })
+    .getByRole("button", { name: "Opening" })
     .click();
   await expect(
     activePanel.getByRole("button", { name: "Back to parts" }),
@@ -884,6 +889,9 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   await expect(
     activePanel.locator(".manuscript-card-outline-part-overview"),
   ).toHaveAttribute("href", initialActiveVolume.parts[0]!.href);
+  await expect(
+    activePanel.locator(".manuscript-card-outline-part-overview"),
+  ).toContainText("Overview");
   const partOverviewMetaAlignment = await activePanel
     .locator(".manuscript-card-outline-part-overview")
     .evaluate((row) => {
@@ -947,7 +955,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     .getByRole("button", { name: "Back to parts" })
     .dispatchEvent("click");
   await expect(
-    activePanel.getByRole("button", { name: /Part: Front Matter/ }),
+    activePanel.getByRole("button", { name: "Opening" }),
   ).toBeVisible();
   await expect
     .poll(() =>

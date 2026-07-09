@@ -1,4 +1,5 @@
 import catalogJson from "@/generated/manuscripts/catalog.json";
+import { displayPartTitle } from "@/lib/manuscript-labels";
 
 export type ParagraphFingerprint = {
   paragraphId: string;
@@ -215,7 +216,7 @@ export function toolbarOutline(): ToolbarOutline {
       numberLabel: volume.numberLabel,
       wordCount: volume.wordCount,
       parts: volume.parts.map((part) => ({
-        title: part.title,
+        title: displayPartTitle(part, volume),
         href: part.href,
         wordCount: part.wordCount,
         chapters: part.chapters.map((chapter) => ({
@@ -247,7 +248,7 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
     addBreadcrumbRoute(routes, volume.href, []);
 
     for (const part of volume.parts) {
-      const partCrumb = { label: part.title, href: part.href };
+      const partCrumb = { label: displayPartTitle(part, volume), href: part.href };
       addBreadcrumbRoute(routes, part.href, [partCrumb]);
 
       for (const chapter of part.chapters) {
@@ -265,7 +266,7 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
     const chapter = chapterById(section.volumeId, section.partId, section.chapterId);
     if (!volume || !part || !chapter) continue;
     const crumbs = [
-      { label: part.title, href: part.href },
+      { label: displayPartTitle(part, volume), href: part.href },
       { label: section.title, href: section.readerHref },
     ];
     if (chapter.href !== part.href && !isSingletonChapterSection(chapter, section)) {
@@ -274,7 +275,7 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
     addBreadcrumbRoute(routes, section.readerHref, crumbs);
     if (section.href !== section.readerHref) {
       addBreadcrumbRoute(routes, section.href, [
-        { label: part.title, href: part.href },
+        { label: displayPartTitle(part, volume), href: part.href },
         { label: chapter.title, href: chapter.href },
       ]);
     }

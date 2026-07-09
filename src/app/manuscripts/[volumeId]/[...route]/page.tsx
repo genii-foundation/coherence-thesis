@@ -20,6 +20,10 @@ import {
   type ChapterRouteMatch,
   type PartRouteMatch,
 } from "@/lib/manuscript-data";
+import {
+  displayPartKicker,
+  displayPartTitle,
+} from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 
 export const dynamicParams = false;
@@ -62,10 +66,13 @@ export async function generateMetadata({
     };
   }
 
-  const part = partByHref(href)?.part;
+  const partMatch = partByHref(href);
+  const part = partMatch?.part;
   return {
-    title: part?.title ?? "Manuscript",
-    description: part ? `${part.title} in The Coherence Thesis.` : undefined,
+    title: partMatch ? displayPartTitle(partMatch.part, partMatch.volume) : "Manuscript",
+    description: partMatch
+      ? `${displayPartTitle(partMatch.part, partMatch.volume)} in The Coherence Thesis.`
+      : undefined,
     alternates: part ? { canonical: part.href } : undefined,
   };
 }
@@ -86,8 +93,8 @@ function PartPage({ match }: { match: PartRouteMatch }) {
     <div className="page-frame reader-layout">
       <article className="reader-main">
         <header className="page-heading">
-          <p className="eyebrow">Part {part.order || "0"}</p>
-          <h1>{part.title}</h1>
+          <p className="eyebrow">{displayPartKicker(part, volume)}</p>
+          <h1>{displayPartTitle(part, volume)}</h1>
           <p>
             {formatReadingDurationForWords(part.wordCount)} across {count}{" "}
             {label}.

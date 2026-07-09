@@ -18,6 +18,7 @@ import {
   writeJson,
 } from "./shared";
 import { buildPdfDownloads, pdfManifestPath } from "./pdf";
+import { displayPartTitle } from "../../src/lib/manuscript-labels";
 
 function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
   const routes = new Map<
@@ -36,7 +37,7 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
     addRoute(volume.href, []);
 
     for (const part of volume.parts) {
-      const partCrumb = { label: part.title, href: part.href };
+      const partCrumb = { label: displayPartTitle(part, volume), href: part.href };
       addRoute(part.href, [partCrumb]);
 
       for (const chapter of part.chapters) {
