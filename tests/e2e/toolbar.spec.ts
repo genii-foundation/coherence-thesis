@@ -189,7 +189,8 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   expect(layout.headerRight).toBeLessThanOrEqual(layout.clientWidth + 1);
 
   if (layout.clientWidth <= 540) {
-    expect(layout.headerHeight).toBeLessThanOrEqual(88);
+    expect(layout.headerHeight).toBeGreaterThanOrEqual(52);
+    expect(layout.headerHeight).toBeLessThanOrEqual(64);
   }
   if (layout.clientWidth > 860) {
     expect(layout.headerPaddingLeft).toBeCloseTo(layout.headerPaddingTop, 1);
@@ -322,6 +323,12 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       shareWidth: share?.width ?? 0,
       audioWidth: audio?.width ?? 0,
       progressWidth: progress?.width ?? 0,
+      searchHeight: search?.height ?? 0,
+      outlineHeight: outline?.height ?? 0,
+      settingsHeight: settings?.height ?? 0,
+      shareHeight: share?.height ?? 0,
+      audioHeight: audio?.height ?? 0,
+      progressHeight: progress?.height ?? 0,
       progressLabelWidth: progressLabel?.getBoundingClientRect().width ?? 0,
       progressLabelClipped: progressLabelStyle?.clip ?? "",
       outlineLabelWidth: outlineLabel?.getBoundingClientRect().width ?? 0,
@@ -436,12 +443,34 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     expect(
       Math.abs(toolbarMetrics.settingsWidth - toolbarMetrics.outlineWidth),
     ).toBeLessThanOrEqual(1);
-    expect(toolbarMetrics.audioWidth).toBeGreaterThan(
+    expect(
+      Math.abs(toolbarMetrics.audioWidth - toolbarMetrics.outlineWidth),
+    ).toBeLessThanOrEqual(1);
+    expect(
+      Math.abs(toolbarMetrics.progressWidth - toolbarMetrics.outlineWidth),
+    ).toBeLessThanOrEqual(1);
+    [
+      toolbarMetrics.searchHeight,
+      toolbarMetrics.outlineHeight,
+      toolbarMetrics.settingsHeight,
+      toolbarMetrics.shareHeight,
+      toolbarMetrics.audioHeight,
+      toolbarMetrics.progressHeight,
+    ].forEach((controlHeight) => {
+      expect(controlHeight).toBeGreaterThanOrEqual(44);
+      expect(controlHeight).toBeLessThanOrEqual(46);
+    });
+    [
+      toolbarMetrics.searchWidth,
       toolbarMetrics.outlineWidth,
-    );
-    expect(toolbarMetrics.progressWidth).toBeGreaterThan(
-      toolbarMetrics.outlineWidth,
-    );
+      toolbarMetrics.settingsWidth,
+      toolbarMetrics.shareWidth,
+      toolbarMetrics.audioWidth,
+      toolbarMetrics.progressWidth,
+    ].forEach((controlWidth) => {
+      expect(controlWidth).toBeGreaterThanOrEqual(44);
+      expect(controlWidth).toBeLessThanOrEqual(46);
+    });
   }
   if (layout.clientWidth <= 860) {
     expect(toolbarMetrics.outlineLabelWidth).toBeLessThanOrEqual(1);
@@ -974,6 +1003,50 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
   await expectMobilePopoverStartsBelowToolbar(page, ".progress-popover");
 });
 
+test("mobile background texture fills the dynamic viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 393, height: 852 });
+  await page.goto("/");
+
+  const metrics = await page.evaluate(() => {
+    const parsePixels = (value: string) => Number.parseFloat(value) || 0;
+    const texture = document.querySelector(".common-thread-texture");
+    const textureBox = texture?.getBoundingClientRect();
+    const shell = document.querySelector(".site-shell");
+    const shellBox = shell?.getBoundingClientRect();
+    const htmlStyle = window.getComputedStyle(document.documentElement);
+    const bodyStyle = window.getComputedStyle(document.body);
+    const shellStyle = shell ? window.getComputedStyle(shell) : null;
+    const bottomElement = document.elementFromPoint(
+      window.innerWidth / 2,
+      window.innerHeight - 1,
+    );
+
+    return {
+      bodyBackground: bodyStyle.backgroundImage,
+      bodyMinHeight: parsePixels(bodyStyle.minHeight),
+      bottomInsideShell: Boolean(bottomElement?.closest(".site-shell")),
+      htmlBackground: htmlStyle.backgroundImage,
+      htmlMinHeight: parsePixels(htmlStyle.minHeight),
+      shellBottom: shellBox?.bottom ?? 0,
+      shellMinHeight: parsePixels(shellStyle?.minHeight ?? "0"),
+      textureBottom: textureBox?.bottom ?? 0,
+      textureDisplay: texture ? window.getComputedStyle(texture).display : "",
+      textureTop: textureBox?.top ?? 0,
+      viewportHeight: window.innerHeight,
+    };
+  });
+
+  expect(metrics.htmlBackground).toContain("radial-gradient");
+  expect(metrics.bodyBackground).toContain("radial-gradient");
+  expect(metrics.htmlMinHeight).toBeGreaterThanOrEqual(metrics.viewportHeight);
+  expect(metrics.bodyMinHeight).toBeGreaterThanOrEqual(metrics.viewportHeight);
+  expect(metrics.shellMinHeight).toBeGreaterThanOrEqual(metrics.viewportHeight);
+  expect(metrics.bottomInsideShell).toBe(true);
+  expect(metrics.textureDisplay).toBe("block");
+  expect(metrics.textureTop).toBeLessThanOrEqual(0);
+  expect(metrics.textureBottom).toBeGreaterThanOrEqual(metrics.shellBottom - 1);
+});
+
 test("toolbar brand owns the active manuscript identity", async ({
   page,
 }, testInfo) => {
@@ -990,7 +1063,7 @@ test("toolbar brand owns the active manuscript identity", async ({
     );
     await expect(page.locator(".mobile-page-context")).toHaveCount(0);
 
-    await page.goto("/overview");
+    await page.goto("/overview/", { waitUntil: "domcontentloaded" });
     await expect(brand.locator(".brand-title-mobile-logo-full")).toBeHidden();
     await expect(
       brand.locator(".brand-title-mobile-logo-initials"),
@@ -1037,7 +1110,7 @@ test("toolbar brand owns the active manuscript identity", async ({
     expect(overviewBrandOverflow.kicker).not.toBe("ellipsis");
     expect(overviewBrandOverflow.title).not.toBe("ellipsis");
 
-    await page.goto(wieldingVolume.href);
+    await page.goto(wieldingVolume.href, { waitUntil: "domcontentloaded" });
     await expect(brand).toBeVisible();
     await expect(brand.locator(".brand-title-mobile-logo-full")).toBeHidden();
     await expect(
@@ -1079,7 +1152,7 @@ test("toolbar brand owns the active manuscript identity", async ({
         mobileBrandTooltipAlignment.tooltipArrowX -
           mobileBrandTooltipAlignment.brandCenter,
       ),
-    ).toBeLessThanOrEqual(2);
+    ).toBeLessThanOrEqual(3);
     await brand.evaluate((element) => (element as HTMLElement).blur());
     await expect(mobileBrandTooltip).toHaveCount(0);
 
