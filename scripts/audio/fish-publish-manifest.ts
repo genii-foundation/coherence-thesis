@@ -1,17 +1,66 @@
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import {
   artifactsAudioRoot,
   relativeToRepo,
+  type FishAudioFile,
   type FishRunManifest,
 } from "./fish-generator";
-import { ensureDir, repoRoot, writeJson } from "../manuscripts/shared";
-import type { AudioClipManifest, AudioClipVoice } from "../../src/lib/audio-manifest";
+import {
+  ensureDir,
+  progressSectionsPath,
+  repoRoot,
+  writeJson,
+} from "../manuscripts/shared";
+import type {
+  AudioClipManifest,
+  AudioClipSection,
+  AudioClipVoice,
+} from "../../src/lib/audio-manifest";
+import type { ProgressSectionData } from "../../src/lib/reader-data";
+
+const defaultBucket = "audio-clips";
+const defaultCacheControl = "public, max-age=31536000, immutable";
+const emptyPayloadHash =
+  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
 
 type Options = {
-  runId: string;
-  publicBase: string;
+  runId?: string;
+  runManifest?: string;
+  version: string;
+  bucket: string;
   output: string;
+  upload: boolean;
+  skipExisting: boolean;
+  concurrency: number;
+  projectRef?: string;
+  endpoint?: string;
+  region?: string;
+  publicBase?: string;
+};
+
+type PublishCredentials = {
+  accessKeyId: string;
+  secretAccessKey: string;
+  region: string;
+};
+
+export type PublishCatalogSection = Pick<
+  ProgressSectionData,
+  "sectionId" | "title" | "audioVersionId"
+>;
+
+export type PublishableAudioFile = {
+  source: FishAudioFile;
+  filePath: string;
+  objectKey: string;
+  href: string;
+};
+
+type UploadResult = {
+  uploaded: number;
+  skipped: number;
 };
 
 function optionValue(args: string[], name: string): string | undefined {
@@ -22,79 +71,477 @@ function optionValue(args: string[], name: string): string | undefined {
   return index >= 0 ? args[index + 1] : undefined;
 }
 
+function hasFlag(args: string[], name: string): boolean {
+  return args.includes(name);
+}
+
+function parsePositiveInteger(value: string | undefined, fallback: number): number {
+  if (!value) return fallback;
+  const parsed = Number.parseInt(value, 10);
+  if (!Number.isInteger(parsed) || parsed < 1) {
+    throw new Error(`Expected a positive integer for ${value}.`);
+  }
+  return parsed;
+}
+
 function parseCli(args: string[]): Options {
   const runId = optionValue(args, "--run-id");
-  if (!runId) throw new Error("Set --run-id to a generated Fish audio run.");
+  const runManifest = optionValue(args, "--run-manifest");
+  if (!runId && !runManifest) {
+    throw new Error("Set --run-id or --run-manifest to a generated Fish audio run.");
+  }
+  if (runId && runManifest) {
+    throw new Error("Use either --run-id or --run-manifest, not both.");
+  }
+  const version = optionValue(args, "--version");
+  if (!version) {
+    throw new Error("Set --version for immutable audio object paths.");
+  }
   return {
     runId,
-    publicBase: optionValue(args, "--public-base") ?? `/audio/${runId}`,
+    runManifest,
+    version,
+    bucket: optionValue(args, "--bucket") ?? defaultBucket,
     output:
       optionValue(args, "--output") ??
       path.join(repoRoot, "public/data/audio-manifest.json"),
+    upload: hasFlag(args, "--upload"),
+    skipExisting: hasFlag(args, "--skip-existing"),
+    concurrency: parsePositiveInteger(optionValue(args, "--concurrency"), 3),
+    projectRef:
+      optionValue(args, "--project-ref") ?? process.env.SUPABASE_PROJECT_REF,
+    endpoint:
+      optionValue(args, "--endpoint") ?? process.env.SUPABASE_STORAGE_S3_ENDPOINT,
+    region: optionValue(args, "--region") ?? process.env.SUPABASE_S3_REGION,
+    publicBase: optionValue(args, "--public-base"),
   };
 }
 
-function publicHref(publicBase: string, relativeOutputPath: string): string {
-  return [publicBase.replace(/\/+$/g, ""), relativeOutputPath]
-    .filter(Boolean)
-    .join("/")
-    .replace(/\\/g, "/");
+function encodeObjectPath(value: string): string {
+  return value.split("/").map(encodeURIComponent).join("/");
+}
+
+function defaultPublicBase(projectRef: string, bucket: string): string {
+  return `https://${projectRef}.supabase.co/storage/v1/object/public/${bucket}`;
+}
+
+function defaultS3Endpoint(projectRef: string): string {
+  return `https://${projectRef}.storage.supabase.co/storage/v1/s3`;
+}
+
+function publicHref(publicBase: string, objectKey: string): string {
+  return `${publicBase.replace(/\/+$/g, "")}/${encodeObjectPath(objectKey)}`;
+}
+
+function objectKeyFor(input: {
+  version: string;
+  voiceId: string;
+  audioVersionId: string;
+}): string {
+  if (!/^[a-z0-9][a-z0-9._-]*$/i.test(input.voiceId)) {
+    throw new Error(`Voice id '${input.voiceId}' is not safe for object keys.`);
+  }
+  return [
+    "audiobook",
+    input.version,
+    input.voiceId,
+    `${input.audioVersionId}.mp3`,
+  ].join("/");
+}
+
+function readRunManifest(options: Options): {
+  run: FishRunManifest;
+  manifestPath: string;
+  runRoot: string;
+} {
+  const manifestPath = options.runManifest
+    ? path.resolve(options.runManifest)
+    : path.join(artifactsAudioRoot(), options.runId!, "manifest.json");
+  const run = JSON.parse(fs.readFileSync(manifestPath, "utf8")) as FishRunManifest;
+  return { run, manifestPath, runRoot: path.dirname(manifestPath) };
+}
+
+function readCatalogSections(): PublishCatalogSection[] {
+  return JSON.parse(fs.readFileSync(progressSectionsPath, "utf8")) as ProgressSectionData[];
+}
+
+function resolveRunFilePath(file: FishAudioFile, runRoot: string): string {
+  if (path.isAbsolute(file.outputPath) && fs.existsSync(file.outputPath)) {
+    return file.outputPath;
+  }
+  return path.resolve(runRoot, file.relativeOutputPath);
+}
+
+function generatedFiles(run: FishRunManifest): FishAudioFile[] {
+  return run.files.filter((file) => !file.error && (file.generatedAt || file.skipped));
+}
+
+export function validateAudioRunForPublish(input: {
+  run: FishRunManifest;
+  runRoot: string;
+  catalogSections: PublishCatalogSection[];
+  version: string;
+  publicBase: string;
+}): PublishableAudioFile[] {
+  const catalogBySectionId = new Map(
+    input.catalogSections.map((section) => [section.sectionId, section]),
+  );
+  const files = generatedFiles(input.run);
+  const seen = new Map<string, FishAudioFile>();
+  const byVoiceSection = new Map<string, PublishableAudioFile>();
+  const publishable: PublishableAudioFile[] = [];
+
+  for (const file of files) {
+    const catalogSection = catalogBySectionId.get(file.sectionId);
+    if (!catalogSection) {
+      throw new Error(`Unknown sectionId in audio run: ${file.sectionId}`);
+    }
+    if (catalogSection.audioVersionId !== file.audioVersionId) {
+      throw new Error(
+        `Stale audioVersionId for ${file.sectionId}: ${file.audioVersionId}`,
+      );
+    }
+    if (file.format !== "mp3") {
+      throw new Error(`Unsupported audio format for ${file.sectionId}: ${file.format}`);
+    }
+    const key = `${file.voiceId}:${file.sectionId}:${file.audioVersionId}`;
+    if (seen.has(key)) {
+      throw new Error(`Duplicate audio mapping for ${file.voiceId}/${file.sectionId}`);
+    }
+    seen.set(key, file);
+    const filePath = resolveRunFilePath(file, input.runRoot);
+    if (!fs.existsSync(filePath)) {
+      throw new Error(`Missing audio file for ${file.sectionId}: ${filePath}`);
+    }
+    const objectKey = objectKeyFor({
+      version: input.version,
+      voiceId: file.voiceId,
+      audioVersionId: file.audioVersionId,
+    });
+    const entry = {
+      source: file,
+      filePath,
+      objectKey,
+      href: publicHref(input.publicBase, objectKey),
+    };
+    byVoiceSection.set(`${file.voiceId}:${file.sectionId}`, entry);
+    publishable.push(entry);
+  }
+
+  for (const voice of input.run.voices) {
+    for (const section of input.catalogSections) {
+      if (!byVoiceSection.has(`${voice.id}:${section.sectionId}`)) {
+        throw new Error(
+          `Missing generated audio for ${voice.id}/${section.sectionId}`,
+        );
+      }
+    }
+  }
+
+  return publishable;
 }
 
 export function createAudioClipManifest(input: {
   run: FishRunManifest;
-  publicBase: string;
+  catalogSections: PublishCatalogSection[];
+  files: PublishableAudioFile[];
 }): AudioClipManifest {
-  const files = input.run.files.filter(
-    (file) => !file.error && (file.generatedAt || file.skipped),
+  const filesByVoiceSection = new Map(
+    input.files.map((file) => [`${file.source.voiceId}:${file.source.sectionId}`, file]),
   );
-  const voiceById = new Map<string, AudioClipVoice>();
-  for (const voice of input.run.voices) {
-    voiceById.set(voice.id, {
+  const voices: AudioClipVoice[] = input.run.voices.map((voice) => {
+    const sections: AudioClipSection[] = input.catalogSections.map((section) => {
+      const file = filesByVoiceSection.get(`${voice.id}:${section.sectionId}`);
+      if (!file) {
+        throw new Error(`Missing validated audio for ${voice.id}/${section.sectionId}`);
+      }
+      return {
+        sectionId: file.source.sectionId,
+        audioVersionId: file.source.audioVersionId,
+        href: file.href,
+        byteSize: file.source.byteSize,
+        durationSeconds: file.source.durationSeconds,
+      };
+    });
+    return {
       id: voice.id,
       label: voice.label,
       provider: input.run.provider,
       model: input.run.model,
-      sections: [],
-    });
-  }
-  for (const file of files) {
-    const voice = voiceById.get(file.voiceId);
-    if (!voice) continue;
-    voice.sections.push({
-      sectionId: file.sectionId,
-      audioVersionId: file.audioVersionId,
-      href: publicHref(input.publicBase, file.relativeOutputPath),
-      byteSize: file.byteSize,
-      durationSeconds: file.durationSeconds,
-    });
-  }
+      sections,
+    };
+  });
   return {
     version: 1,
     generatedAt: input.run.generatedAt,
-    voices: Array.from(voiceById.values()),
+    voices,
   };
 }
 
-function main() {
+function sha256Hex(value: crypto.BinaryLike): string {
+  return crypto.createHash("sha256").update(value).digest("hex");
+}
+
+function hmac(key: crypto.BinaryLike | crypto.KeyObject, value: string): Buffer {
+  return crypto.createHmac("sha256", key).update(value).digest();
+}
+
+function amzDate(date: Date): { dateStamp: string; timestamp: string } {
+  const iso = date.toISOString().replace(/[:-]|\.\d{3}/g, "");
+  return {
+    dateStamp: iso.slice(0, 8),
+    timestamp: iso,
+  };
+}
+
+function canonicalPath(url: URL): string {
+  return url.pathname
+    .split("/")
+    .map((part) => encodeURIComponent(decodeURIComponent(part)))
+    .join("/")
+    .replace(/%2F/g, "/");
+}
+
+function signS3Request(input: {
+  method: string;
+  url: URL;
+  headers: Record<string, string>;
+  payloadHash: string;
+  credentials: PublishCredentials;
+  now?: Date;
+}): Record<string, string> {
+  const now = input.now ?? new Date();
+  const { dateStamp, timestamp } = amzDate(now);
+  const headers: Record<string, string> = {
+    ...input.headers,
+    host: input.url.host,
+    "x-amz-content-sha256": input.payloadHash,
+    "x-amz-date": timestamp,
+  };
+  const sortedHeaderNames = Object.keys(headers)
+    .map((name) => name.toLowerCase())
+    .sort();
+  const canonicalHeaders = sortedHeaderNames
+    .map((name) => `${name}:${headers[name]!.trim()}\n`)
+    .join("");
+  const signedHeaders = sortedHeaderNames.join(";");
+  const canonicalRequest = [
+    input.method,
+    canonicalPath(input.url),
+    input.url.searchParams.toString(),
+    canonicalHeaders,
+    signedHeaders,
+    input.payloadHash,
+  ].join("\n");
+  const credentialScope = `${dateStamp}/${input.credentials.region}/s3/aws4_request`;
+  const stringToSign = [
+    "AWS4-HMAC-SHA256",
+    timestamp,
+    credentialScope,
+    sha256Hex(canonicalRequest),
+  ].join("\n");
+  const dateKey = hmac(`AWS4${input.credentials.secretAccessKey}`, dateStamp);
+  const regionKey = hmac(dateKey, input.credentials.region);
+  const serviceKey = hmac(regionKey, "s3");
+  const signingKey = hmac(serviceKey, "aws4_request");
+  const signature = crypto
+    .createHmac("sha256", signingKey)
+    .update(stringToSign)
+    .digest("hex");
+  return {
+    ...headers,
+    Authorization: [
+      `AWS4-HMAC-SHA256 Credential=${input.credentials.accessKeyId}/${credentialScope}`,
+      `SignedHeaders=${signedHeaders}`,
+      `Signature=${signature}`,
+    ].join(", "),
+  };
+}
+
+function s3ObjectUrl(endpoint: string, bucket: string, objectKey: string): URL {
+  const base = endpoint.replace(/\/+$/g, "");
+  return new URL(`${base}/${encodeURIComponent(bucket)}/${encodeObjectPath(objectKey)}`);
+}
+
+async function objectExists(input: {
+  endpoint: string;
+  bucket: string;
+  objectKey: string;
+  credentials: PublishCredentials;
+}): Promise<boolean> {
+  const url = s3ObjectUrl(input.endpoint, input.bucket, input.objectKey);
+  const headers = signS3Request({
+    method: "HEAD",
+    url,
+    headers: {},
+    payloadHash: emptyPayloadHash,
+    credentials: input.credentials,
+  });
+  const response = await fetch(url, { method: "HEAD", headers });
+  if (response.status === 404) return false;
+  if (response.ok) return true;
+  throw new Error(
+    `Unable to check object ${input.objectKey}: ${response.status} ${response.statusText}`,
+  );
+}
+
+async function uploadObject(input: {
+  endpoint: string;
+  bucket: string;
+  file: PublishableAudioFile;
+  credentials: PublishCredentials;
+}): Promise<"uploaded" | "skipped"> {
+  const exists = await objectExists({
+    endpoint: input.endpoint,
+    bucket: input.bucket,
+    objectKey: input.file.objectKey,
+    credentials: input.credentials,
+  });
+  if (exists) return "skipped";
+  const body = fs.readFileSync(input.file.filePath);
+  const payloadHash = sha256Hex(body);
+  const url = s3ObjectUrl(input.endpoint, input.bucket, input.file.objectKey);
+  const headers = signS3Request({
+    method: "PUT",
+    url,
+    headers: {
+      "cache-control": defaultCacheControl,
+      "content-type": "audio/mpeg",
+    },
+    payloadHash,
+    credentials: input.credentials,
+  });
+  const response = await fetch(url, { method: "PUT", headers, body });
+  if (!response.ok) {
+    throw new Error(
+      `Unable to upload ${input.file.objectKey}: ${response.status} ${response.statusText}`,
+    );
+  }
+  return "uploaded";
+}
+
+function readCredentials(options: Options): PublishCredentials {
+  const accessKeyId =
+    process.env.SUPABASE_S3_ACCESS_KEY_ID ?? process.env.AWS_ACCESS_KEY_ID;
+  const secretAccessKey =
+    process.env.SUPABASE_S3_SECRET_ACCESS_KEY ?? process.env.AWS_SECRET_ACCESS_KEY;
+  if (!accessKeyId || !secretAccessKey) {
+    throw new Error(
+      "Set SUPABASE_S3_ACCESS_KEY_ID and SUPABASE_S3_SECRET_ACCESS_KEY in the environment.",
+    );
+  }
+  if (!options.region) {
+    throw new Error("Set --region or SUPABASE_S3_REGION from the Supabase S3 settings.");
+  }
+  return {
+    accessKeyId,
+    secretAccessKey,
+    region: options.region,
+  };
+}
+
+async function runLimited<T>(
+  items: T[],
+  concurrency: number,
+  task: (item: T, index: number) => Promise<void>,
+): Promise<void> {
+  let nextIndex = 0;
+  const workers = Array.from(
+    { length: Math.min(concurrency, items.length) },
+    async () => {
+      while (nextIndex < items.length) {
+        const index = nextIndex;
+        nextIndex += 1;
+        await task(items[index]!, index);
+      }
+    },
+  );
+  await Promise.all(workers);
+}
+
+async function uploadFiles(input: {
+  files: PublishableAudioFile[];
+  endpoint: string;
+  bucket: string;
+  credentials: PublishCredentials;
+  skipExisting: boolean;
+  concurrency: number;
+}): Promise<UploadResult> {
+  let uploaded = 0;
+  let skipped = 0;
+  await runLimited(input.files, input.concurrency, async (file) => {
+    const result = await uploadObject({
+      endpoint: input.endpoint,
+      bucket: input.bucket,
+      file,
+      credentials: input.credentials,
+    });
+    if (result === "skipped") {
+      if (!input.skipExisting) {
+        throw new Error(`Refusing to overwrite existing object: ${file.objectKey}`);
+      }
+      skipped += 1;
+    } else {
+      uploaded += 1;
+    }
+  });
+  return { uploaded, skipped };
+}
+
+async function main() {
   const options = parseCli(process.argv.slice(2));
-  const runManifestPath = path.join(artifactsAudioRoot(), options.runId, "manifest.json");
-  const run = JSON.parse(fs.readFileSync(runManifestPath, "utf8")) as FishRunManifest;
+  const endpoint = options.endpoint ?? (
+    options.projectRef ? defaultS3Endpoint(options.projectRef) : undefined
+  );
+  const publicBase = options.publicBase ?? (
+    options.projectRef ? defaultPublicBase(options.projectRef, options.bucket) : undefined
+  );
+  if (!publicBase) {
+    throw new Error("Set --project-ref or --public-base for public object URLs.");
+  }
+  if (options.upload && !endpoint) {
+    throw new Error("Set --project-ref or --endpoint for Supabase S3 uploads.");
+  }
+  const { run, manifestPath, runRoot } = readRunManifest(options);
+  const catalogSections = readCatalogSections();
+  const files = validateAudioRunForPublish({
+    run,
+    runRoot,
+    catalogSections,
+    version: options.version,
+    publicBase,
+  });
   const manifest = createAudioClipManifest({
     run,
-    publicBase: options.publicBase,
+    catalogSections,
+    files,
   });
+
+  let uploadResult: UploadResult = { uploaded: 0, skipped: 0 };
+  if (options.upload) {
+    uploadResult = await uploadFiles({
+      files,
+      endpoint: endpoint!,
+      bucket: options.bucket,
+      credentials: readCredentials(options),
+      skipExisting: options.skipExisting,
+      concurrency: options.concurrency,
+    });
+  }
+
   ensureDir(path.dirname(options.output));
   writeJson(options.output, manifest);
   console.log(
     JSON.stringify(
       {
+        runManifest: relativeToRepo(manifestPath),
         output: relativeToRepo(options.output),
+        version: options.version,
+        bucket: options.bucket,
         voices: manifest.voices.length,
-        clips: manifest.voices.reduce(
-          (total, voice) => total + voice.sections.length,
-          0,
-        ),
+        clips: files.length,
+        uploaded: uploadResult.uploaded,
+        skipped: uploadResult.skipped,
       },
       null,
       2,
@@ -103,5 +550,8 @@ function main() {
 }
 
 if (process.argv[1]?.endsWith("fish-publish-manifest.ts")) {
-  main();
+  main().catch((error: unknown) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exit(1);
+  });
 }

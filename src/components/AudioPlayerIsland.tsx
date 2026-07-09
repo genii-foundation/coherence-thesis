@@ -19,8 +19,6 @@ import {
 } from "lucide-react";
 import {
   emptyAudioClipManifest,
-  findAudioClip,
-  parseClipVoicePreferenceId,
 } from "@/lib/audio-manifest";
 import {
   buildOfflineAudioPacks,
@@ -669,21 +667,10 @@ export function AudioPlayerIsland({
 
   async function ensurePlayableAudio(
     index: number,
-    playbackPreference: AudioVoicePreference,
     queueItems: AudioQueueItem[] = playbackQueueRef.current,
   ): Promise<void> {
     const item = queueItems[index];
-    const clipVoiceId = parseClipVoicePreferenceId(playbackPreference.voiceURI);
-    const hasHostedClip =
-      item && clipVoiceId
-        ? findAudioClip(
-            audioManifest,
-            clipVoiceId,
-            item.sectionId,
-            item.audioVersionId,
-          ) !== null
-        : false;
-    if (item && !item.text && !hasHostedClip) await ensureSectionText();
+    if (item && !item.text) await ensureSectionText();
   }
 
   function playIndex(
@@ -839,11 +826,9 @@ export function AudioPlayerIsland({
     }
 
     if (!item) return;
-    // Load the section text on first play if the item does not already carry it
-    // and no hosted clip can satisfy the request. Fish clips only need the
-    // stable section id and audio hash, so they can start inside the click
-    // gesture instead of waiting on the full text payload.
-    await ensurePlayableAudio(index, playbackPreference, queueItems);
+    // Hosted clips still need full text loaded before playback so browser
+    // speech can recover with the complete section if network media fails.
+    await ensurePlayableAudio(index, queueItems);
     const token = playbackTokenRef.current + 1;
     playbackTokenRef.current = token;
     flushAudioSeconds();
@@ -875,7 +860,7 @@ export function AudioPlayerIsland({
       playbackLocationRef.current?.sectionId === item.sectionId
         ? playbackLocationRef.current.bodyCharIndex
         : 0;
-    await ensurePlayableAudio(index, playbackPreference, queueItems);
+    await ensurePlayableAudio(index, queueItems);
     const token = playbackTokenRef.current + 1;
     playbackTokenRef.current = token;
     flushAudioSeconds();

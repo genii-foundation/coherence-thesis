@@ -145,11 +145,11 @@ async function responseForAudioUrl(url: string): Promise<Response> {
     const cache = await caches.open(offlineAudioCacheName);
     const cached = await cache.match(url);
     if (cached) return cached;
-    const response = await fetch(url, { credentials: "same-origin" });
+    const response = await fetch(url, { credentials: "omit" });
     if (response.ok) await cache.put(url, response.clone());
     return response;
   }
-  return fetch(url, { credentials: "same-origin" });
+  return fetch(url, { credentials: "omit" });
 }
 
 function hostedVoiceLabel(voice: AudioClipManifest["voices"][number]): string {
