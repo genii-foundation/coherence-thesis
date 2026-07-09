@@ -134,6 +134,34 @@ npm run manuscripts:validate
 
 When a future section route should keep working after a heading or structure change, add an entry to `content/series/aliases.json` instead of forcing new headings to match old paths.
 
+## Audiobook Clip Publishing
+
+Hosted audiobook clips are keyed by each section's `audioVersionId`. `npm run manuscripts:compile` updates those IDs from the current manuscript text and structure. If manuscript content, section boundaries, or volume metadata changes, treat changed `audioVersionId` values as an audiobook invalidation event.
+
+Validate the current generated run against the current catalog before shipping manuscript changes that should keep high quality hosted playback complete:
+
+```bash
+npm run audio:publish-manifest -- --run-id <run-id> --version <version> --project-ref <supabase-project-ref>
+```
+
+Without `--upload`, this checks that every generated MP3 maps to a known section, matches the current `audioVersionId`, exists on disk, and covers every section for every voice in the run. It fails before writing `public/data/audio-manifest.json` when audio is stale or incomplete.
+
+Regenerate changed clips with Fish Audio when needed. Use a focused section list when the changed sections are known, or `--mode full` so existing files skip and missing current clips generate:
+
+```bash
+FISH_AUDIO_API_KEY=<from-secret-store> npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <voice-id:label> --run-id <run-id>
+FISH_AUDIO_API_KEY=<from-secret-store> npm run audio:fish -- --mode full --voices <voice-id:label> --run-id <run-id>
+```
+
+Publish with a new immutable version path. Do not overwrite Supabase objects in place, and never commit or print upload credentials:
+
+```bash
+SUPABASE_S3_ACCESS_KEY_ID=<from-secret-store> \
+SUPABASE_S3_SECRET_ACCESS_KEY=<from-secret-store> \
+SUPABASE_S3_REGION=<region> \
+npm run audio:publish-manifest -- --run-id <run-id> --version <new-version> --project-ref <supabase-project-ref> --upload --skip-existing
+```
+
 ## Architecture
 
 - `content/manuscripts/` contains author editable Markdown.
