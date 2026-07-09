@@ -4258,6 +4258,84 @@ input {
   max-width: 78rem;
 }
 
+.progress-preview-page {
+  max-width: 72rem;
+}
+
+.progress-preview-page .page-heading > p:last-child {
+  max-width: 42rem;
+  color: var(--ink-soft);
+}
+
+.progress-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.progress-preview-card {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card-background);
+  padding: 1rem;
+}
+
+.progress-preview-card h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.progress-preview-icons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.progress-preview-icons figure {
+  display: grid;
+  justify-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+  margin: 0;
+}
+
+.progress-preview-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5.75rem;
+}
+
+.progress-preview-icon .progress-percent {
+  transform: scale(1.75);
+  transform-origin: center;
+}
+
+.progress-preview-icons figcaption {
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 48rem) {
+  .progress-preview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 32rem) {
+  .progress-preview-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .progress-heatmap {
   --progress-heatmap-dot-size: 0.72rem;
   display: grid;
