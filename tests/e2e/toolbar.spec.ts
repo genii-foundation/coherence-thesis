@@ -1005,7 +1005,7 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
 
 test("mobile background texture fills the dynamic viewport", async ({ page }) => {
   await page.setViewportSize({ width: 393, height: 852 });
-  await page.goto("/");
+  await page.goto("/", { waitUntil: "domcontentloaded" });
 
   const metrics = await page.evaluate(() => {
     const parsePixels = (value: string) => Number.parseFloat(value) || 0;
@@ -1015,6 +1015,7 @@ test("mobile background texture fills the dynamic viewport", async ({ page }) =>
     const shellBox = shell?.getBoundingClientRect();
     const htmlStyle = window.getComputedStyle(document.documentElement);
     const bodyStyle = window.getComputedStyle(document.body);
+    const bodyTextureStyle = window.getComputedStyle(document.body, "::before");
     const shellStyle = shell ? window.getComputedStyle(shell) : null;
     const bottomElement = document.elementFromPoint(
       window.innerWidth / 2,
@@ -1023,12 +1024,19 @@ test("mobile background texture fills the dynamic viewport", async ({ page }) =>
 
     return {
       bodyBackground: bodyStyle.backgroundImage,
+      bodyOverscrollY: bodyStyle.overscrollBehaviorY,
+      bodyTextureBackground: bodyTextureStyle.backgroundImage,
+      bodyTextureContent: bodyTextureStyle.content,
+      bodyTexturePosition: bodyTextureStyle.position,
+      bodyTextureZIndex: bodyTextureStyle.zIndex,
       bodyMinHeight: parsePixels(bodyStyle.minHeight),
       bottomInsideShell: Boolean(bottomElement?.closest(".site-shell")),
       htmlBackground: htmlStyle.backgroundImage,
+      htmlOverscrollY: htmlStyle.overscrollBehaviorY,
       htmlMinHeight: parsePixels(htmlStyle.minHeight),
       shellBottom: shellBox?.bottom ?? 0,
       shellMinHeight: parsePixels(shellStyle?.minHeight ?? "0"),
+      shellZIndex: shellStyle?.zIndex ?? "",
       textureBottom: textureBox?.bottom ?? 0,
       textureDisplay: texture ? window.getComputedStyle(texture).display : "",
       textureTop: textureBox?.top ?? 0,
@@ -1038,6 +1046,13 @@ test("mobile background texture fills the dynamic viewport", async ({ page }) =>
 
   expect(metrics.htmlBackground).toContain("radial-gradient");
   expect(metrics.bodyBackground).toContain("radial-gradient");
+  expect(metrics.htmlOverscrollY).toBe("contain");
+  expect(metrics.bodyOverscrollY).toBe("contain");
+  expect(metrics.bodyTextureContent).not.toBe("none");
+  expect(metrics.bodyTexturePosition).toBe("fixed");
+  expect(metrics.bodyTextureZIndex).toBe("0");
+  expect(metrics.bodyTextureBackground).toContain("radial-gradient");
+  expect(metrics.shellZIndex).toBe("1");
   expect(metrics.htmlMinHeight).toBeGreaterThanOrEqual(metrics.viewportHeight);
   expect(metrics.bodyMinHeight).toBeGreaterThanOrEqual(metrics.viewportHeight);
   expect(metrics.shellMinHeight).toBeGreaterThanOrEqual(metrics.viewportHeight);
