@@ -165,6 +165,7 @@ export default function RootLayout({
       className={readerFontVariables}
       data-scroll-behavior="smooth"
       data-reader-animations="balanced"
+      suppressHydrationWarning
     >
       <head>
         {/* The toolbar menus and breadcrumbs are client islands that do nothing
