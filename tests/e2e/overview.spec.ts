@@ -135,10 +135,14 @@ test("home page presents the overview and manuscript entry points", async ({
       (volume) => `/art/coherence-thesis-vol${volume.order}-cover.png`,
     ),
   );
-  await expect(page.locator(".hero-art img")).toHaveAttribute(
-    "src",
-    /coherence-thesis-hero\.png/,
-  );
+  if (testInfo.project.name === "mobile") {
+    await expect(page.locator(".hero-art")).toBeHidden();
+  } else {
+    await expect(page.locator(".hero-art img")).toHaveAttribute(
+      "src",
+      /coherence-thesis-hero\.png/,
+    );
+  }
   if (testInfo.project.name !== "mobile") {
     await page.setViewportSize({ width: 880, height: 900 });
     const actionTops = await page.locator(".hero-actions a").evaluateAll((links) =>
@@ -247,15 +251,21 @@ test("home page presents the overview and manuscript entry points", async ({
   }
 
   const homepageCoverShadows = await page.evaluate(() => {
+    const heroArt = document.querySelector<HTMLElement>(".hero-art");
     const heroImage = document.querySelector(".hero-art img");
     const coverCard = document.querySelector(".cover-flow-image-frame");
     return {
+      heroArtDisplay: heroArt ? getComputedStyle(heroArt).display : "",
       hero: heroImage ? getComputedStyle(heroImage).boxShadow : "",
       card: coverCard ? getComputedStyle(coverCard).boxShadow : "",
     };
   });
   expect(homepageCoverShadows.card).not.toBe("none");
-  expect(homepageCoverShadows.hero).not.toBe("none");
+  if (testInfo.project.name === "mobile") {
+    expect(homepageCoverShadows.heroArtDisplay).toBe("none");
+  } else {
+    expect(homepageCoverShadows.hero).not.toBe("none");
+  }
 
   await page.getByRole("button", { name: "Next manuscript" }).click();
   const wieldingCard = page.locator(
@@ -1286,4 +1296,103 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       coverFlow.locator('.cover-flow-card[aria-current="true"]'),
     ).not.toHaveAttribute("data-volume-href", initialActiveVolume.href);
   }
+});
+
+test("mobile homepage keeps the cover flow usable in landscape", async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== "mobile", "mobile layout only");
+
+  await page.setViewportSize({ width: 852, height: 393 });
+  await page.goto("/");
+
+  const topMetrics = await page.evaluate(() => {
+    const header = document.querySelector<HTMLElement>(".site-header");
+    const heroArt = document.querySelector<HTMLElement>(".hero-art");
+
+    return {
+      headerPosition: header ? getComputedStyle(header).position : "",
+      headerTop: header?.getBoundingClientRect().top ?? 0,
+      heroArtDisplay: heroArt ? getComputedStyle(heroArt).display : "",
+    };
+  });
+
+  expect(topMetrics.headerPosition).toBe("static");
+  expect(Math.round(topMetrics.headerTop)).toBe(0);
+  expect(topMetrics.heroArtDisplay).toBe("none");
+
+  await page.evaluate(() => {
+    window.scrollTo(0, 180);
+  });
+  await expect
+    .poll(async () => page.evaluate(() => window.scrollY))
+    .toBeGreaterThan(0);
+
+  const scrolledHeaderTop = await page
+    .locator(".site-header")
+    .evaluate((header) => header.getBoundingClientRect().top);
+  expect(scrolledHeaderTop).toBeLessThan(0);
+
+  await page.locator(".cover-flow").evaluate((flow) => {
+    document.documentElement.style.scrollBehavior = "auto";
+    flow.scrollIntoView({ block: "start", inline: "nearest" });
+  });
+  const coverFlow = page.locator(".cover-flow");
+  await expect
+    .poll(() =>
+      coverFlow.evaluate((flow) =>
+        Math.round(flow.getBoundingClientRect().top),
+      ),
+    )
+    .toBeLessThanOrEqual(1);
+  const nextButton = coverFlow.locator(".cover-flow-edge-button-next");
+
+  await expect(coverFlow).toBeVisible();
+  await expect(nextButton).toBeVisible();
+
+  const landscapeMetrics = await coverFlow.evaluate((flow) => {
+    const activeCard = flow.querySelector<HTMLElement>(
+      '.cover-flow-card[aria-current="true"]',
+    );
+    const activeCover = activeCard?.querySelector<HTMLElement>(
+      ".cover-flow-image-frame",
+    );
+    const activePanel = activeCard?.querySelector<HTMLElement>(
+      ".cover-flow-card-panel",
+    );
+    const next = flow.querySelector<HTMLElement>(".cover-flow-edge-button-next");
+    const cover = activeCover?.getBoundingClientRect();
+    const panel = activePanel?.getBoundingClientRect();
+    const nextRect = next?.getBoundingClientRect();
+
+    return {
+      coverBottom: cover?.bottom ?? 0,
+      coverHeight: cover?.height ?? 0,
+      coverTop: cover?.top ?? 0,
+      nextBottom: nextRect?.bottom ?? 0,
+      nextTop: nextRect?.top ?? 0,
+      panelBottom: panel?.bottom ?? 0,
+      panelTop: panel?.top ?? 0,
+      viewportHeight: window.innerHeight,
+    };
+  });
+
+  expect(landscapeMetrics.coverTop).toBeGreaterThanOrEqual(-16);
+  expect(landscapeMetrics.coverHeight).toBeGreaterThan(180);
+  expect(landscapeMetrics.coverBottom).toBeLessThan(
+    landscapeMetrics.viewportHeight,
+  );
+  expect(landscapeMetrics.panelTop).toBeLessThan(landscapeMetrics.viewportHeight);
+  expect(landscapeMetrics.panelBottom).toBeGreaterThan(
+    landscapeMetrics.panelTop,
+  );
+  expect(landscapeMetrics.nextTop).toBeGreaterThanOrEqual(0);
+  expect(landscapeMetrics.nextBottom).toBeLessThanOrEqual(
+    landscapeMetrics.viewportHeight,
+  );
+
+  await nextButton.click();
+  await expect(
+    coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+  ).toHaveAttribute("data-volume-href", catalog.volumes[1]!.href);
 });

@@ -5116,6 +5116,7 @@ input {
   .site-header {
     --mobile-toolbar-height: calc(env(safe-area-inset-top) + 3.5625rem);
 
+    position: static;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
@@ -5374,12 +5375,7 @@ input {
   }
 
   .hero-art {
-    justify-self: stretch;
-    width: 100%;
-  }
-
-  .hero-art img {
-    width: min(100%, 18rem);
+    display: none;
   }
 
   .manuscript-showcase {
@@ -5611,6 +5607,66 @@ input {
 
   .section-nav-link strong {
     font-size: 0.94rem;
+  }
+}
+
+@media (max-width: 960px) and (orientation: landscape) {
+  .site-header {
+    position: static;
+  }
+
+  .home-page {
+    padding-top: clamp(1rem, 4vw, 1.4rem);
+  }
+
+  .hero-section {
+    grid-template-columns: 1fr;
+    max-height: none;
+    min-height: auto;
+    padding-right: 0;
+  }
+
+  .hero-art {
+    display: none;
+  }
+
+  .cover-flow {
+    --cover-flow-arrow-edge-inset: max(0.8rem, env(safe-area-inset-left));
+    --cover-flow-arrow-height: 3.2rem;
+    --cover-flow-arrow-icon-size: 1.85rem;
+    --cover-flow-arrow-width: 3.2rem;
+    --cover-flow-card-width: clamp(8rem, 24vw, 10rem);
+    --cover-flow-card-perspective: 42rem;
+    --cover-flow-panel-max-height: 6.5rem;
+    --cover-flow-panel-width-extra: clamp(3.5rem, 16vw, 7rem);
+    --cover-flow-stage-min-height: clamp(20rem, 58vw, 24rem);
+    --cover-flow-stage-padding-bottom: 0.75rem;
+    --cover-flow-stage-padding-top: 0.75rem;
+    margin-top: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  .cover-flow-card {
+    gap: 0.75rem;
+  }
+
+  .cover-flow-track {
+    min-height: var(--cover-flow-stage-min-height);
+  }
+
+  .cover-flow-card-panel {
+    padding: 0.7rem;
+  }
+
+  .cover-flow-card-panel strong {
+    font-size: clamp(1.15rem, 3.8vw, 1.45rem);
+  }
+
+  .manuscript-card-description {
+    display: none;
+  }
+
+  .cover-flow-edge-button {
+    top: clamp(6.2rem, 18vw, 7.25rem);
   }
 }
 
