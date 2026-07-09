@@ -11,7 +11,15 @@ import {
   type FormEvent,
 } from "react";
 import { usePathname } from "next/navigation";
-import { Check, Cloud, KeyRound, Map as MapIcon, RotateCcw, UserRound } from "lucide-react";
+import {
+  Check,
+  ChevronsRight,
+  Cloud,
+  KeyRound,
+  LoaderCircle,
+  RotateCcw,
+  UserRound,
+} from "lucide-react";
 import { ProgressCloudBadge } from "@/components/ProgressCloudBadge";
 import { ProgressReadAnimation } from "@/components/ProgressReadAnimation";
 import {
@@ -527,15 +535,19 @@ export function ToolbarProgressIsland() {
               </div>
               <strong>{percent}%</strong>
             </div>
-            <p className="quiet-copy">
-              {user
-                ? "Synced across all your devices."
-                : "Reading history is kept in this browser until you choose to sync."}
-            </p>
+            {!user && (
+              <p className="quiet-copy">
+                Reading history is kept in this browser until you choose to sync.
+              </p>
+            )}
           </div>
           <div className="reader-actions progress-section">
-            <a className="icon-button" href="/progress/">
-              <MapIcon aria-hidden="true" size={17} />
+            <a className="reader-menu-link" href="/progress/">
+              <ChevronsRight
+                className="reader-menu-link-icon"
+                aria-hidden="true"
+                size={16}
+              />
               <span>Open reading map</span>
             </a>
           </div>
@@ -651,14 +663,32 @@ export function ToolbarProgressIsland() {
                 <div className="reader-actions">
                   <button
                     type="button"
-                    className="icon-button"
+                    className="reader-menu-link"
+                    disabled={syncStatus === "syncing"}
+                    aria-busy={syncStatus === "syncing"}
                     onClick={() => syncNow(undefined, undefined, { grantConsent: true })}
                   >
-                    <Cloud aria-hidden="true" size={17} />
-                    <span>{syncStatus === "syncing" ? "Syncing" : "Sync now"}</span>
+                    {syncStatus === "syncing" ? (
+                      <LoaderCircle
+                        className="reader-sync-spinner"
+                        aria-hidden="true"
+                        size={16}
+                      />
+                    ) : (
+                      <ChevronsRight
+                        className="reader-menu-link-icon"
+                        aria-hidden="true"
+                        size={16}
+                      />
+                    )}
+                    <span>Sync now</span>
                   </button>
-                  <button type="button" className="icon-button" onClick={signOut}>
-                    <UserRound aria-hidden="true" size={17} />
+                  <button type="button" className="reader-menu-link" onClick={signOut}>
+                    <ChevronsRight
+                      className="reader-menu-link-icon"
+                      aria-hidden="true"
+                      size={16}
+                    />
                     <span>Sign out</span>
                   </button>
                 </div>
@@ -693,8 +723,17 @@ export function ToolbarProgressIsland() {
               <p className="eyebrow">Recently read</p>
               <div className="progress-link-list">
                 {recentSections.map((item) => (
-                  <a key={item.sectionId} href={item.href}>
-                    {item.title}
+                  <a
+                    key={item.sectionId}
+                    className="reader-menu-link"
+                    href={item.href}
+                  >
+                    <ChevronsRight
+                      className="reader-menu-link-icon"
+                      aria-hidden="true"
+                      size={16}
+                    />
+                    <span>{item.title}</span>
                   </a>
                 ))}
               </div>
@@ -710,7 +749,11 @@ export function ToolbarProgressIsland() {
                   <a
                     key={item.sectionId}
                     href={item.href}
-                    className={item.isUpdated ? "revised-link" : undefined}
+                    className={
+                      item.isUpdated
+                        ? "reader-menu-link revised-link"
+                        : "reader-menu-link"
+                    }
                     onClick={() =>
                       appendStoredEvent(
                         createEngagementEvent("recommendation_clicked", {
@@ -721,8 +764,15 @@ export function ToolbarProgressIsland() {
                       )
                     }
                   >
-                    {item.isUpdated ? "Updated: " : ""}
-                    {item.title}
+                    <ChevronsRight
+                      className="reader-menu-link-icon"
+                      aria-hidden="true"
+                      size={16}
+                    />
+                    <span>
+                      {item.isUpdated ? "Updated: " : ""}
+                      {item.title}
+                    </span>
                   </a>
                 ))}
               </div>
