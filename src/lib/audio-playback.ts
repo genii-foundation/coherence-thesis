@@ -8,12 +8,29 @@
 // SpeechSynthesis provider; the recommended precomputed-clip path can ship a
 // second implementation of this same interface without touching the island.
 
+import {
+  clipVoicePreferenceId,
+  findAudioClip,
+  parseClipVoicePreferenceId,
+  type AudioClipSection,
+  type AudioClipManifest,
+} from "@/lib/audio-manifest";
+import { offlineAudioCacheName } from "@/lib/audio-offline-cache";
+
 export type AudioPlaybackVoice = {
   // Stable identifier used to match a saved preference. For the browser engine
   // this is the SpeechSynthesisVoice.voiceURI; for a clip provider it is the
   // approved-voice id.
   id: string;
   label: string;
+};
+
+export type AudioPlaybackProgress = {
+  sectionId: string;
+  audioVersionId: string;
+  charIndex?: number;
+  seconds?: number;
+  durationSeconds?: number;
 };
 
 export type AudioPlaybackRequest = {
@@ -23,12 +40,15 @@ export type AudioPlaybackRequest = {
   voiceId: string | null;
   rate: number;
   pitch: number;
+  startCharIndex?: number;
+  startSeconds?: number;
   // The provider invokes exactly one of these per request: onEnd when playback
   // finishes cleanly, onError when the engine fails. The island guards both
   // with its playback token so a stale callback after a route change is
   // ignored.
   onEnd: () => void;
   onError: (error?: unknown) => void;
+  onProgress?: (progress: AudioPlaybackProgress) => void;
 };
 
 export interface AudioPlaybackProvider {
@@ -69,18 +89,38 @@ export function createBrowserSpeechProvider(): AudioPlaybackProvider {
       engine.addEventListener("voiceschanged", listener);
       return () => engine.removeEventListener("voiceschanged", listener);
     },
-    speak({ text, voiceId, rate, pitch, onEnd, onError }) {
+    speak({
+      text,
+      voiceId,
+      rate,
+      pitch,
+      startCharIndex = 0,
+      sectionId,
+      audioVersionId,
+      onEnd,
+      onError,
+      onProgress,
+    }) {
       const engine = synth();
       if (!engine) {
         onError(new Error("Speech synthesis is not available."));
         return;
       }
       engine.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
+      const safeStartCharIndex = Math.max(0, Math.min(text.length, startCharIndex));
+      const utterance = new SpeechSynthesisUtterance(text.slice(safeStartCharIndex));
       utterance.rate = rate;
       utterance.pitch = pitch;
       utterance.voice =
         engine.getVoices().find((voice) => voice.voiceURI === voiceId) ?? null;
+      utterance.onboundary = (event) => {
+        if (event.name !== "word") return;
+        onProgress?.({
+          sectionId,
+          audioVersionId,
+          charIndex: safeStartCharIndex + event.charIndex,
+        });
+      };
       utterance.onend = () => onEnd();
       utterance.onerror = (event) => onError(event);
       engine.speak(utterance);
@@ -105,11 +145,11 @@ async function responseForAudioUrl(url: string): Promise<Response> {
     const cache = await caches.open(offlineAudioCacheName);
     const cached = await cache.match(url);
     if (cached) return cached;
-    const response = await fetch(url, { credentials: "same-origin" });
+    const response = await fetch(url, { credentials: "omit" });
     if (response.ok) await cache.put(url, response.clone());
     return response;
   }
-  return fetch(url, { credentials: "same-origin" });
+  return fetch(url, { credentials: "omit" });
 }
 
 function hostedVoiceLabel(voice: AudioClipManifest["voices"][number]): string {
@@ -153,6 +193,37 @@ export function createHostedClipProvider(
     currentAudio.src = source;
     currentAudio.preload = "auto";
     currentAudio.playbackRate = request.rate;
+    currentAudio.ontimeupdate = () => {
+      const durationSeconds = Number.isFinite(currentAudio.duration)
+        ? currentAudio.duration
+        : undefined;
+      const seconds = currentAudio.currentTime;
+      const charIndex =
+        durationSeconds && durationSeconds > 0
+          ? Math.floor((seconds / durationSeconds) * request.text.length)
+          : undefined;
+      request.onProgress?.({
+        sectionId: request.sectionId,
+        audioVersionId: request.audioVersionId,
+        charIndex,
+        seconds,
+        durationSeconds,
+      });
+    };
+    currentAudio.onloadedmetadata = () => {
+      if (typeof request.startSeconds === "number") {
+        currentAudio.currentTime = Math.max(
+          0,
+          Math.min(currentAudio.duration || request.startSeconds, request.startSeconds),
+        );
+      } else if (typeof request.startCharIndex === "number" && request.text.length > 0) {
+        const durationSeconds = Number.isFinite(currentAudio.duration)
+          ? currentAudio.duration
+          : 0;
+        currentAudio.currentTime =
+          durationSeconds * (request.startCharIndex / request.text.length);
+      }
+    };
     currentAudio.onended = () => {
       if (audio !== currentAudio) return;
       clearAudio();
@@ -259,11 +330,3 @@ export function createDefaultAudioProvider(
   }
   return createBrowserSpeechProvider();
 }
-import {
-  clipVoicePreferenceId,
-  findAudioClip,
-  parseClipVoicePreferenceId,
-  type AudioClipSection,
-  type AudioClipManifest,
-} from "@/lib/audio-manifest";
-import { offlineAudioCacheName } from "@/lib/audio-offline-cache";

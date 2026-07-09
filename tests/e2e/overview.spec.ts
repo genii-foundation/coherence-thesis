@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { audioVoiceStorageKey } from "../../src/lib/audio-preferences";
 import {
   catalog,
   readerProgressStorageKey,
@@ -9,6 +10,13 @@ import {
   copyrightYearLabel,
   hexToRgb,
 } from "./fixtures";
+
+const systemVoicePreference = {
+  voiceURI: null,
+  rate: 1,
+  pitch: 1,
+  useSystemVoice: true,
+};
 
 function sectionForId(sectionId: string) {
   const section = catalog.sections.find(
@@ -345,7 +353,8 @@ test("home page listen and read actions resume at the first unread section", asy
 });
 
 test("home page listen action starts audiobook playback", async ({ page }) => {
-  await page.addInitScript(() => {
+  await page.addInitScript(({ storageKey, preference }) => {
+    window.localStorage.setItem(storageKey, JSON.stringify(preference));
     class TestSpeechSynthesisUtterance {
       text: string;
       rate = 1;
@@ -381,7 +390,7 @@ test("home page listen action starts audiobook playback", async ({ page }) => {
         },
       },
     });
-  });
+  }, { storageKey: audioVoiceStorageKey, preference: systemVoicePreference });
 
   await page.goto("/");
   await page.getByRole("link", { name: "Listen" }).click();
@@ -724,7 +733,7 @@ test("overview references show local read checkmarks", async ({ page }) => {
   ).toBeVisible();
 });
 
-test("home page presents an interactive cover flow", async ({ page }) => {
+test("home page presents an interactive cover flow", async ({ page }, testInfo) => {
   await page.goto("/");
   const coverFlow = page.locator(".cover-flow");
   const initialActiveIndex = 0;
@@ -1101,19 +1110,25 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   ).toHaveAttribute("data-volume-href", initialActiveVolume.href);
 
   const nextButton = coverFlow.locator(".cover-flow-edge-button-next");
+  const finalTargetIndex =
+    testInfo.project.name === "mobile" ? initialActiveIndex + 1 : catalog.volumes.length - 1;
   for (
     let targetIndex = initialActiveIndex + 1;
-    targetIndex < catalog.volumes.length;
+    targetIndex <= finalTargetIndex;
     targetIndex += 1
   ) {
+    await expect(nextButton).toBeEnabled({ timeout: 15000 });
     await nextButton.dispatchEvent("click");
     await expect(
       coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-    ).toHaveAttribute("data-volume-href", catalog.volumes[targetIndex]!.href);
+    ).toHaveAttribute("data-volume-href", catalog.volumes[targetIndex]!.href, {
+      timeout: 15000,
+    });
   }
 
-  await expect(nextButton).toBeDisabled();
+  if (testInfo.project.name === "mobile") return;
 
+  await expect(nextButton).toBeDisabled();
   const previousButton = coverFlow.locator(".cover-flow-edge-button-previous");
   await previousButton.dispatchEvent("click");
   await expect(

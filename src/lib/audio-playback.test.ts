@@ -460,12 +460,100 @@ describe("hosted clip provider", () => {
 
     expect(globalThis.fetch).toHaveBeenCalledWith(
       "/audio/fish/section-a.mp3",
-      { credentials: "same-origin" },
+      { credentials: "omit" },
     );
     await vi.waitFor(() => expect(URL.createObjectURL).toHaveBeenCalledOnce());
     expect(audioInstances).toHaveLength(2);
     expect(audioInstances[1]!.src).toBe("blob:fish-clip");
     expect(audioInstances[1]!.play).toHaveBeenCalledOnce();
     expect(fallback.speak).not.toHaveBeenCalled();
+  });
+
+  it("falls back to browser speech with the full section text when hosted and blob playback fail", async () => {
+    const audioInstances: Array<{
+      src: string;
+      preload: string;
+      playbackRate: number;
+      play: ReturnType<typeof vi.fn>;
+      pause: ReturnType<typeof vi.fn>;
+      removeAttribute: ReturnType<typeof vi.fn>;
+      load: ReturnType<typeof vi.fn>;
+      onended: (() => void) | null;
+      onerror: ((event: unknown) => void) | null;
+    }> = [];
+    class FakeAudio {
+      src = "";
+      preload = "";
+      playbackRate = 1;
+      play = vi.fn(() => Promise.resolve());
+      pause = vi.fn();
+      removeAttribute = vi.fn((name: string) => {
+        if (name === "src") this.src = "";
+      });
+      load = vi.fn();
+      onended: (() => void) | null = null;
+      onerror: ((event: unknown) => void) | null = null;
+      constructor() {
+        audioInstances.push(this);
+      }
+    }
+    Object.defineProperty(globalThis, "Audio", {
+      configurable: true,
+      value: FakeAudio,
+    });
+    Object.defineProperty(globalThis, "fetch", {
+      configurable: true,
+      value: vi.fn(() => Promise.reject(new Error("blocked"))),
+    });
+    const fallback = {
+      id: "fallback",
+      isSupported: () => true,
+      getVoices: () => [],
+      subscribeVoices: () => () => {},
+      speak: vi.fn(),
+      pause: vi.fn(),
+      resume: vi.fn(),
+      cancel: vi.fn(),
+      isPaused: () => false,
+    };
+    const provider = createHostedClipProvider(
+      {
+        version: 1,
+        voices: [
+          {
+            id: "default",
+            label: "default",
+            provider: "fish-audio",
+            model: "s2.1-pro-free",
+            sections: [
+              {
+                sectionId: "section-a",
+                audioVersionId: "section-a-hash",
+                href: "/audio/fish/section-a.mp3",
+              },
+            ],
+          },
+        ],
+      },
+      fallback,
+    );
+    const fullText = "Section A. This is the complete body text, not just the title.";
+
+    provider.speak({
+      sectionId: "section-a",
+      audioVersionId: "section-a-hash",
+      text: fullText,
+      voiceId: clipVoicePreferenceId("default"),
+      rate: 1,
+      pitch: 1,
+      onEnd: vi.fn(),
+      onError: vi.fn(),
+    });
+    audioInstances[0]!.onerror?.("direct media error");
+
+    await vi.waitFor(() => expect(fallback.speak).toHaveBeenCalledOnce());
+    expect(fallback.speak).toHaveBeenCalledWith(
+      expect.objectContaining({ text: fullText }),
+    );
   });
 });

@@ -115,7 +115,7 @@ export async function cacheOfflineAudioPack(
     if (!existing) {
       const response = await fetch(url, {
         cache: "reload",
-        credentials: "same-origin",
+        credentials: "omit",
       });
       if (!response.ok) {
         throw new Error(`Unable to download ${url}: ${response.status}`);

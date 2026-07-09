@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
+import { ReaderAudioWordInteractionIsland } from "@/components/ReaderAudioWordInteractionIsland";
 import { ReaderEngagementIsland } from "@/components/ReaderEngagementIsland";
 import { SectionRevisionNotice } from "@/components/SectionRevisionNotice";
 import {
@@ -85,7 +86,12 @@ export function SectionReader({
         </aside>
       )}
       <SectionRevisionNotice section={toProgressSection(section)} />
-      <MarkdownBody markdown={section.body} paragraphs={section.paragraphs} />
+      <MarkdownBody
+        markdown={section.body}
+        paragraphs={section.paragraphs}
+        sectionId={section.sectionId}
+      />
+      <ReaderAudioWordInteractionIsland sectionId={section.sectionId} />
       <ReaderEngagementIsland sections={[toProgressSection(section)]} />
       <ManuscriptNavigation
         previous={resolvedNavigation.previous}

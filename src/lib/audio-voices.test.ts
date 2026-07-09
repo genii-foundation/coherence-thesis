@@ -2,12 +2,11 @@ import { describe, expect, it } from "vitest";
 import { clipVoicePreferenceId } from "@/lib/audio-manifest";
 import {
   audioVoiceMenuGroups,
-  elegantSystemVoices,
   selectableVoiceIds,
 } from "@/lib/audio-voices";
 
 describe("audio voice menu", () => {
-  it("limits system voices to five narrator-style choices", () => {
+  it("collapses local system voices to one built-in option", () => {
     const voices = [
       { id: "albert", label: "Albert" },
       { id: "zarvox", label: "Zarvox" },
@@ -19,13 +18,12 @@ describe("audio voice menu", () => {
       { id: "ava", label: "Ava" },
     ];
 
-    expect(elegantSystemVoices(voices).map((voice) => voice.label)).toEqual([
-      "Samantha",
-      "Daniel",
-      "Karen",
-      "Moira",
-      "Tessa",
-    ]);
+    const groups = audioVoiceMenuGroups({
+      manifest: { version: 1, voices: [] },
+      voices,
+    });
+
+    expect(groups.system).toEqual([{ id: "", label: "System voice" }]);
   });
 
   it("places hosted clip voices above system voices", () => {
@@ -56,7 +54,7 @@ describe("audio voice menu", () => {
         label: "High Quality 1",
       },
     ]);
-    expect(groups.system).toEqual([{ id: "samantha", label: "Samantha" }]);
+    expect(groups.system).toEqual([{ id: "", label: "System voice" }]);
   });
 
   it("shows Fish as pending when hosted clips are not available yet", () => {
@@ -72,6 +70,8 @@ describe("audio voice menu", () => {
         disabled: true,
       },
     ]);
+    expect(groups.system).toEqual([{ id: "", label: "System voice" }]);
     expect(selectableVoiceIds(groups).has("clip:default")).toBe(false);
+    expect(selectableVoiceIds(groups).has("")).toBe(true);
   });
 });
