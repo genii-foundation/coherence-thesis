@@ -59,9 +59,34 @@ npm run readme:update
 npm run test
 ```
 
-8. Run `npm run build` when route data, overview references, or generated catalog data changed.
-9. Review the final diff before staging. Confirm generated files are expected, public link preservation is handled, no import report surprise is ignored, and unrelated local changes are left alone.
-10. Commit with an `edit:` Conventional Commit title, push the branch, and open or update a focused pull request. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
+8. Check whether hosted audiobook clips became stale. Manuscript compile output owns `audioVersionId` values in `public/data/progress-sections.json`; any body or structure change can change those IDs.
+   - If `public/data/progress-sections.json`, `src/generated/manuscripts/catalog.json`, or relevant generated section Markdown changed, validate the current audio run before shipping:
+
+```bash
+npm run audio:publish-manifest -- --run-id <run-id> --version <version> --project-ref <supabase-project-ref>
+```
+
+   - This command can run without upload credentials when `--upload` is omitted. It fails before writing a manifest when generated audio is missing, a section is unknown, an `audioVersionId` is stale, or a voice does not cover every current section.
+   - If the validation fails because audio is stale or missing, regenerate changed clips before merge. Use `--sections` for a comma separated section list when only known sections changed, or `--mode full` to let existing files skip and missing current clips generate:
+
+```bash
+FISH_AUDIO_API_KEY=<from-secret-store> npm run audio:fish -- --mode full --voices <voice-id:label> --run-id <run-id>
+FISH_AUDIO_API_KEY=<from-secret-store> npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <voice-id:label> --run-id <run-id>
+```
+
+   - Republish only with temporary Supabase S3 credentials from the environment. Never commit, echo, paste, or log those credentials:
+
+```bash
+SUPABASE_S3_ACCESS_KEY_ID=<from-secret-store> \
+SUPABASE_S3_SECRET_ACCESS_KEY=<from-secret-store> \
+SUPABASE_S3_REGION=<region> \
+npm run audio:publish-manifest -- --run-id <run-id> --version <new-version> --project-ref <supabase-project-ref> --upload --skip-existing
+```
+
+   - Use a new immutable version path when publishing new audio. Do not overwrite existing Supabase objects in place.
+9. Run `npm run build` when route data, overview references, generated catalog data, or audio manifest data changed.
+10. Review the final diff before staging. Confirm generated files are expected, public link preservation is handled, audio manifest state is current when manuscript audio changed, no import report surprise is ignored, and unrelated local changes are left alone.
+11. Commit with an `edit:` Conventional Commit title, push the branch, and open or update a focused pull request. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
 
 ## Stable IDs
 
@@ -69,10 +94,12 @@ npm run test
 - Add an alias when a future route should keep resolving after a section moves, splits, merges, or is renamed.
 - Do not force new headings to mimic old section structures just to preserve links.
 - Paragraph fingerprints are generated into the catalog so local progress can identify changed passages after a reader has read an older section version.
+- Audio version fingerprints are generated from section text and structure. Treat changed `audioVersionId` values as a hosted-audio invalidation event.
 
 ## Failure Handling
 
 - Stop on duplicate IDs, empty bodies, missing frontmatter, broken overview references, bad aliases, bad ordering, or stale generated data.
+- Stop on stale or missing hosted audio when the manuscript change affects current `audioVersionId` values and the user expects audiobook coverage to remain complete.
 - If the parser collapses or fragments the document, fix the source or importer before publishing.
 - Never normalize a broken import into canonical Markdown.
 
@@ -84,6 +111,7 @@ Include manuscript-specific context whenever it applies:
 
 - The source Markdown path, series metadata, or manifest entry that prompted the import.
 - Generated canonical reader sections, browser data, overview references, aliases, and README state touched by the change.
+- Audio impact: whether `audioVersionId` values changed, whether clips were regenerated, the audio version path used, and whether `public/data/audio-manifest.json` changed.
 - Public route preservation decisions, including why aliases were added or why none were needed.
 - Importer, parser, heading, ordering, or section ID decisions.
 - Evidence from `artifacts/imports/markdown-series-report.json` when it explains the result.
