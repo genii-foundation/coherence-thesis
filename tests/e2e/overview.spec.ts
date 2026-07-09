@@ -1027,6 +1027,17 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       sideShadowAlpha: shadowAlpha(
         sideCard?.querySelector<HTMLElement>(".cover-flow-image-frame") ?? null,
       ),
+      maxVisibleRotation: Math.max(
+        ...Array.from(
+          flow.querySelectorAll<HTMLElement>(".cover-flow-card"),
+          (card) =>
+            Math.abs(
+              Number.parseFloat(
+                card.style.getPropertyValue("--cover-flow-rotate") || "0",
+              ),
+            ),
+        ),
+      ),
       viewportWidth: document.documentElement.clientWidth,
     };
   });
@@ -1047,6 +1058,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   );
   expect(coverFlowTransforms.panelVisible).not.toBe("none");
   expect(coverFlowTransforms.sideRotate).not.toBe("0deg");
+  expect(coverFlowTransforms.maxVisibleRotation).toBeLessThan(65);
   expect(Number.parseFloat(coverFlowTransforms.sideScale)).toBeLessThan(1);
   expect(
     Number.parseFloat(coverFlowTransforms.activeShadowStrength),

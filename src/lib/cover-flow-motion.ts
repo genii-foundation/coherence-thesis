@@ -3,8 +3,8 @@ const clamp = (value: number, min: number, max: number) =>
 
 export const coverFlowTuning = {
   rotation: {
-    maxDegrees: 72,
-    degreesPerCardOffset: 68,
+    maxDegrees: 58,
+    degreesPerCardOffset: 58,
     maxMeasuredOffset: 2.6,
   },
   scale: {
