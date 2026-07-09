@@ -20,7 +20,7 @@ import {
   sectionWithNeighbors,
   previousSection,
   nextSection,
-  parentChapter,
+  parentSectionContainer,
 } from "./fixtures";
 
 test("manuscript volume heading does not overlap its stats line", async ({
@@ -76,6 +76,55 @@ test("single-section chapter cards open reader content directly", async ({
   await expect(page.locator(".section-index")).toHaveCount(0);
 });
 
+test("multi-section chapters render one anchored reader page", async ({
+  page,
+}) => {
+  const chapterHref =
+    "/manuscripts/architecting-providence/the-governance-architecture/the-amendment-architecture/";
+  const sections = catalog.sections.filter(
+    (section) => section.chapterHref === chapterHref,
+  );
+
+  expect(sections.map((section) => section.sectionId)).toEqual([
+    "v04-the-amendment-architecture",
+    "v04-the-deeper-inquiry-9",
+    "v04-what-remains-open-9",
+  ]);
+
+  await page.goto(chapterHref);
+
+  await expect(page).toHaveURL(chapterHref);
+  await expect(
+    page.getByRole("heading", { level: 1, name: "The Amendment Architecture" }),
+  ).toBeVisible();
+  await expect(page.locator(".section-index")).toHaveCount(0);
+  await expect(page.locator(".chapter-reader-section")).toHaveCount(3);
+  await expect(
+    page.locator("#v04-the-deeper-inquiry-9").getByRole("heading", {
+      name: "The Deeper Inquiry",
+    }),
+  ).toBeVisible();
+  await expect(
+    page.locator("#v04-what-remains-open-9").getByRole("heading", {
+      name: "What Remains Open",
+    }),
+  ).toBeVisible();
+
+  const breadcrumbs = page.getByRole("navigation", { name: "Breadcrumb" });
+  await expect(breadcrumbs.locator(".breadcrumb-label")).toHaveText([
+    "The Governance Architecture",
+    "The Amendment Architecture",
+  ]);
+
+  await page.goto(sections[1]!.href);
+  await expect(page).toHaveURL(sections[1]!.readerHref);
+  await expect(
+    page.locator("#v04-the-deeper-inquiry-9").getByRole("heading", {
+      name: "The Deeper Inquiry",
+    }),
+  ).toBeVisible();
+});
+
 test("singleton chapter section navigation points up to the part", async ({
   page,
 }) => {
@@ -98,7 +147,7 @@ test("singleton chapter section navigation points up to the part", async ({
   await expect(parentLink.locator("strong")).toHaveText(centralWoundPart.title);
 });
 
-test("reader footer links adjacent sections and the containing chapter", async ({
+test("reader footer links adjacent sections and the containing parent", async ({
   page,
 }, testInfo) => {
   await page.goto(sectionWithNeighbors.href);
@@ -114,9 +163,9 @@ test("reader footer links adjacent sections and the containing chapter", async (
   );
 
   const parentLink = footerNav.locator(".section-nav-link-parent");
-  await expect(parentLink).toHaveAttribute("href", parentChapter.href);
+  await expect(parentLink).toHaveAttribute("href", parentSectionContainer.href);
   await expect(parentLink.locator("small")).toHaveText("Up");
-  await expect(parentLink.locator("strong")).toHaveText(parentChapter.title);
+  await expect(parentLink.locator("strong")).toHaveText(parentSectionContainer.title);
   const parentLinkLayout = await parentLink.evaluate((link) => {
     const icon = link
       .querySelector(".section-nav-icon")

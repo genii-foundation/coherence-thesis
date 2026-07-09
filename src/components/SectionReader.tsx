@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
+import { ReaderEngagementIsland } from "@/components/ReaderEngagementIsland";
 import { SectionRevisionNotice } from "@/components/SectionRevisionNotice";
 import {
   sectionNavigation,
@@ -53,7 +54,7 @@ export function SectionReader({
   if (!resolvedNavigation) notFound();
 
   return (
-    <article className="reader-main">
+    <article className="reader-main" data-reader-section-id={section.sectionId}>
       <header className="manuscript-heading">
         <h1>{section.title}</h1>
         <p>{formatReadingDuration(section.readingMinutes)} read.</p>
@@ -80,11 +81,12 @@ export function SectionReader({
       {alias && (
         <aside className="revision-notice" aria-label="Section alias notice">
           <span>This older link now opens the current section.</span>
-          <a href={section.href}>Use the canonical link</a>
+          <a href={section.readerHref}>Use the canonical link</a>
         </aside>
       )}
       <SectionRevisionNotice section={toProgressSection(section)} />
       <MarkdownBody markdown={section.body} paragraphs={section.paragraphs} />
+      <ReaderEngagementIsland sections={[toProgressSection(section)]} />
       <ManuscriptNavigation
         previous={resolvedNavigation.previous}
         parent={resolvedNavigation.parent}

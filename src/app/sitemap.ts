@@ -40,11 +40,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         })),
       ),
     ),
-    ...catalog.sections.map((section) => ({
-      url: `${siteUrl}${section.href}`,
-      changeFrequency: "weekly" as const,
-      priority: 0.64,
-    })),
+    ...catalog.sections
+      .filter((section) => section.href === section.readerHref)
+      .map((section) => ({
+        url: `${siteUrl}${section.href}`,
+        changeFrequency: "weekly" as const,
+        priority: 0.64,
+      })),
     // Alias routes render as duplicate copies whose canonical points at the real
     // section, so they are intentionally excluded from the sitemap.
   ];

@@ -363,6 +363,13 @@ export function AudioPlayerIsland({
     loadAudioClipManifest,
     emptyAudioClipManifest,
   );
+  const [hash, setHash] = useState("");
+  useEffect(() => {
+    const readHash = () => setHash(window.location.hash);
+    readHash();
+    window.addEventListener("hashchange", readHash);
+    return () => window.removeEventListener("hashchange", readHash);
+  }, [pathname]);
   const offlinePacks = useMemo(
     () =>
       buildOfflineAudioPacks({
@@ -377,12 +384,35 @@ export function AudioPlayerIsland({
     if (currentPath === "/overview/") return [overviewAudio];
     if (!currentPath.startsWith("/manuscripts/")) return [];
 
+    const hashTarget = hash.replace(/^#/, "");
+    const hashSectionId =
+      sections.find(
+        (section) =>
+          hashTarget === section.sectionId ||
+          hashTarget.startsWith(`${section.sectionId}-p-`),
+      )?.sectionId ?? "";
     const exactSectionIndex = sections.findIndex(
       (section) => normalizePath(section.href) === currentPath,
     );
-    const chosen =
+    const anchoredChapterIndex = hashSectionId
+      ? sections.findIndex(
+          (section) =>
+            section.sectionId === hashSectionId &&
+            normalizePath(section.chapterHref) === currentPath,
+        )
+      : -1;
+    const chapterIndex = sections.findIndex(
+      (section) => normalizePath(section.chapterHref) === currentPath,
+    );
+    const startIndex =
       exactSectionIndex >= 0
-        ? sections.slice(exactSectionIndex)
+        ? exactSectionIndex
+        : anchoredChapterIndex >= 0
+          ? anchoredChapterIndex
+          : chapterIndex;
+    const chosen =
+      startIndex >= 0
+        ? sections.slice(startIndex)
         : sections.filter((section) =>
             normalizePath(section.href).startsWith(currentPath),
           );
@@ -391,8 +421,11 @@ export function AudioPlayerIsland({
       title: section.title,
       text: "",
       audioVersionId: section.audioVersionId,
+      href: section.href,
+      chapterHref: section.chapterHref,
+      readerHref: section.readerHref,
     }));
-  }, [overviewAudio, pathname, sections]);
+  }, [hash, overviewAudio, pathname, sections]);
   // Section text is resolved lazily on first play; the overview item already
   // carries its text.
   const sectionTextRef = useRef<Map<string, string> | null>(null);

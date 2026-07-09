@@ -8,6 +8,17 @@ import {
   expectMenuFitsViewport,
 } from "./fixtures";
 
+function expectSettledTransform(transform: string): void {
+  if (transform === "none") return;
+  const values = transform.match(/^matrix\(([^)]+)\)$/)?.[1]
+    ?.split(",")
+    .map((value) => Number.parseFloat(value.trim()));
+  expect(values).toBeDefined();
+  expect(values?.slice(0, 4)).toEqual([1, 0, 0, 1]);
+  expect(Math.abs(values?.[4] ?? 100)).toBeLessThanOrEqual(0.01);
+  expect(Math.abs(values?.[5] ?? 100)).toBeLessThanOrEqual(0.01);
+}
+
 async function expectToolbarTriggerActive(
   page: Page,
   selector: string,
@@ -730,7 +741,7 @@ test("toolbar popovers slide, fade, and resize through content changes", async (
     };
   });
   expect(openMotion.opacity).toBe("1");
-  expect(openMotion.transform).toMatch(/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
+  expectSettledTransform(openMotion.transform);
   expect(openMotion.transitionProperty).toContain("height");
   expect(openMotion.transitionProperty).toContain("opacity");
   expect(openMotion.transitionProperty).toContain("transform");

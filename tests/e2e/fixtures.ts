@@ -110,7 +110,7 @@ export const sectionWithNeighbors = catalog.sections.find((section) => {
     section.previousSectionId &&
     section.nextSectionId &&
     chapter &&
-    chapter.sectionIds.length > 1,
+    chapter.sectionIds.length === 1,
   );
 })!;
 export const previousSection = catalog.sections.find(
@@ -119,12 +119,10 @@ export const previousSection = catalog.sections.find(
 export const nextSection = catalog.sections.find(
   (section) => section.sectionId === sectionWithNeighbors.nextSectionId,
 )!;
-export const parentChapter = catalog.volumes
-  .find((volume) => volume.volumeId === sectionWithNeighbors.volumeId)!
-  .parts.find((part) => part.partId === sectionWithNeighbors.partId)!
-  .chapters.find(
-    (chapter) => chapter.chapterId === sectionWithNeighbors.chapterId,
-  )!;
+export const parentSectionContainer = partById(
+  sectionWithNeighbors.volumeId,
+  sectionWithNeighbors.partId,
+)!;
 
 export const currentYear = new Date().getFullYear();
 export const copyrightYearLabel =

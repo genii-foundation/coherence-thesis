@@ -50,17 +50,17 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
             (candidate) => candidate.sectionId === sectionId,
           );
           if (!section) continue;
-          const crumbs = [
-            partCrumb,
-            { label: section.title, href: section.href },
-          ];
+          const crumbs = [partCrumb, { label: section.title, href: section.readerHref }];
           if (
             chapter.href !== part.href &&
             (chapter.sectionIds.length !== 1 || chapter.sectionIds[0] !== section.sectionId)
           ) {
             crumbs.splice(1, 0, chapterCrumb);
           }
-          addRoute(section.href, crumbs);
+          addRoute(section.readerHref, crumbs);
+          if (section.href !== section.readerHref) {
+            addRoute(section.href, [partCrumb, chapterCrumb]);
+          }
         }
       }
     }
@@ -76,6 +76,8 @@ export async function compileManuscripts(): Promise<void> {
     sectionId: section.sectionId,
     title: section.title,
     href: section.href,
+    chapterHref: section.chapterHref,
+    readerHref: section.readerHref,
     text: section.text,
     contentHash: section.contentHash,
     versionHash: section.versionHash,
@@ -98,6 +100,8 @@ export async function compileManuscripts(): Promise<void> {
     contentHash: section.contentHash,
     title: section.title,
     href: section.href,
+    chapterHref: section.chapterHref,
+    readerHref: section.readerHref,
     audioVersionId: section.audioVersionId,
     paragraphs: section.paragraphs.map((paragraph) => ({
       paragraphId: paragraph.paragraphId,

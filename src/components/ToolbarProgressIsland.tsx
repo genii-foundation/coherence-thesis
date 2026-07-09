@@ -14,6 +14,10 @@ import { usePathname } from "next/navigation";
 import { Check, Cloud, KeyRound, Map as MapIcon, RotateCcw, UserRound } from "lucide-react";
 import { ProgressCloudBadge } from "@/components/ProgressCloudBadge";
 import { ProgressReadAnimation } from "@/components/ProgressReadAnimation";
+import {
+  readerActiveSectionEvent,
+  type ReaderActiveSectionDetail,
+} from "@/lib/reader-active-section";
 import { loadProgressSections } from "@/lib/reader-data";
 import { useLoadedData } from "@/lib/use-loaded-data";
 import type { ProgressSection } from "@/lib/manuscript-data";
@@ -39,7 +43,6 @@ import {
   writeStoredEvents,
 } from "@/lib/reader-progress-store";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
-import { useSectionEngagement } from "@/lib/use-section-engagement";
 import {
   getCurrentUser,
   isReaderSyncConfigured,
@@ -130,6 +133,7 @@ export function ToolbarProgressIsland() {
   const [syncMessage, setSyncMessage] = useState("");
   const [lastSyncedAt, setLastSyncedAt] = useState<number | null>(null);
   const [relativeNow, setRelativeNow] = useState(() => Date.now());
+  const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
   const [showReadAnimation, setShowReadAnimation] = useState(false);
   const previousReadStateRef = useRef<{ sectionId: string | null; isRead: boolean }>({
     sectionId: null,
@@ -149,6 +153,10 @@ export function ToolbarProgressIsland() {
 
   const section = useMemo(() => {
     const currentPath = normalizePath(pathname);
+    const activeMatch = activeSectionId
+      ? allSections.find((candidate) => candidate.sectionId === activeSectionId)
+      : undefined;
+    if (activeMatch) return activeMatch;
     const exactMatch = allSections.find(
       (candidate) => normalizePath(candidate.href) === currentPath,
     );
@@ -157,7 +165,7 @@ export function ToolbarProgressIsland() {
       (candidate) => parentRoute(candidate.href) === currentPath,
     );
     return parentMatches.length === 1 ? parentMatches[0] : undefined;
-  }, [allSections, pathname]);
+  }, [activeSectionId, allSections, pathname]);
 
   useEffect(() => {
     const hydrationTimer = window.setTimeout(() => {
@@ -206,11 +214,20 @@ export function ToolbarProgressIsland() {
     const closeTimer = window.setTimeout(() => {
       setOpen(false);
       setSyncLoginModalEmail("");
+      setActiveSectionId(null);
     }, 0);
     return () => window.clearTimeout(closeTimer);
   }, [pathname, setOpen]);
 
-  useSectionEngagement(section, pathname);
+  useEffect(() => {
+    const onActiveSection = (event: Event) => {
+      const detail = (event as CustomEvent<ReaderActiveSectionDetail>).detail;
+      setActiveSectionId(detail.sectionId);
+    };
+    window.addEventListener(readerActiveSectionEvent, onActiveSection);
+    return () =>
+      window.removeEventListener(readerActiveSectionEvent, onActiveSection);
+  }, []);
 
   useEffect(() => {
     if (!user) return;
