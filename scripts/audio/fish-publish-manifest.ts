@@ -63,6 +63,52 @@ type UploadResult = {
   skipped: number;
 };
 
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function describeFetchError(error: unknown): string {
+  if (!(error instanceof Error)) return String(error);
+  const cause = error.cause;
+  if (
+    cause &&
+    typeof cause === "object" &&
+    ("code" in cause || "hostname" in cause || "syscall" in cause)
+  ) {
+    const details = cause as {
+      code?: string;
+      hostname?: string;
+      syscall?: string;
+    };
+    return [
+      error.message,
+      details.code,
+      details.syscall,
+      details.hostname,
+    ].filter(Boolean).join(" ");
+  }
+  return error.message;
+}
+
+async function fetchWithRetry(
+  url: URL,
+  init: RequestInit,
+  label: string,
+): Promise<Response> {
+  const attempts = 4;
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      return await fetch(url, init);
+    } catch (error) {
+      lastError = error;
+      if (attempt === attempts) break;
+      await sleep(750 * attempt);
+    }
+  }
+  throw new Error(`${label}: ${describeFetchError(lastError)}`);
+}
+
 function optionValue(args: string[], name: string): string | undefined {
   const prefix = `${name}=`;
   const found = args.find((arg) => arg.startsWith(prefix));
@@ -377,7 +423,11 @@ async function objectExists(input: {
     payloadHash: emptyPayloadHash,
     credentials: input.credentials,
   });
-  const response = await fetch(url, { method: "HEAD", headers });
+  const response = await fetchWithRetry(
+    url,
+    { method: "HEAD", headers },
+    `Unable to check object ${input.objectKey}`,
+  );
   if (response.status === 404) return false;
   if (response.ok) return true;
   throw new Error(
@@ -411,7 +461,11 @@ async function uploadObject(input: {
     payloadHash,
     credentials: input.credentials,
   });
-  const response = await fetch(url, { method: "PUT", headers, body });
+  const response = await fetchWithRetry(
+    url,
+    { method: "PUT", headers, body },
+    `Unable to upload ${input.file.objectKey}`,
+  );
   if (!response.ok) {
     throw new Error(
       `Unable to upload ${input.file.objectKey}: ${response.status} ${response.statusText}`,
@@ -469,6 +523,7 @@ async function uploadFiles(input: {
 }): Promise<UploadResult> {
   let uploaded = 0;
   let skipped = 0;
+  let completed = 0;
   await runLimited(input.files, input.concurrency, async (file) => {
     const result = await uploadObject({
       endpoint: input.endpoint,
@@ -483,6 +538,17 @@ async function uploadFiles(input: {
       skipped += 1;
     } else {
       uploaded += 1;
+    }
+    completed += 1;
+    if (completed % 25 === 0 || completed === input.files.length) {
+      console.log(
+        JSON.stringify({
+          progress: completed,
+          total: input.files.length,
+          uploaded,
+          skipped,
+        }),
+      );
     }
   });
   return { uploaded, skipped };
