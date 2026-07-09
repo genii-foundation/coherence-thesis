@@ -2759,9 +2759,16 @@ input {
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
+  border-top: 1px solid transparent;
   -webkit-overflow-scrolling: touch;
   scrollbar-color: rgb(var(--card-rgb) / 0.3) transparent;
   scrollbar-width: thin;
+  transition: border-color 160ms ease;
+}
+
+.manuscript-card-outline-fixed.is-scrolled
+  + .cover-flow-card-panel-scroll {
+  border-top-color: rgb(var(--card-rgb) / 0.3);
 }
 
 .manuscript-card-outline-parts,

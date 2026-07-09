@@ -1047,6 +1047,57 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     panelMetrics.panelScrollClientHeight,
   );
 
+  const nextManuscriptButton = coverFlow.getByRole("button", {
+    name: "Next manuscript",
+  });
+  await nextManuscriptButton.click();
+  await nextManuscriptButton.click();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    catalog.volumes[2]!.href,
+  );
+
+  const outlineScroll = activePanel.locator(".cover-flow-card-panel-scroll");
+  const outlineFixed = activePanel.locator(".manuscript-card-outline-fixed");
+  await expect
+    .poll(() =>
+      outlineScroll.evaluate(
+        (element) => element.scrollHeight - element.clientHeight,
+      ),
+    )
+    .toBeGreaterThan(1);
+  await outlineScroll.evaluate((element) => {
+    element.scrollTop = 24;
+    element.dispatchEvent(new Event("scroll", { bubbles: true }));
+  });
+  await expect(outlineFixed).toHaveClass(/is-scrolled/);
+  const scrollDividerWidth = await outlineScroll.evaluate((element) =>
+    Number.parseFloat(getComputedStyle(element).borderTopWidth),
+  );
+  expect(scrollDividerWidth).toBeGreaterThan(0);
+  await expect
+    .poll(() =>
+      outlineScroll.evaluate(
+        (element) => getComputedStyle(element).borderTopColor,
+      ),
+    )
+    .not.toBe("rgba(0, 0, 0, 0)");
+  await outlineScroll.evaluate((element) => {
+    element.scrollTop = 0;
+    element.dispatchEvent(new Event("scroll", { bubbles: true }));
+  });
+  await expect(outlineFixed).not.toHaveClass(/is-scrolled/);
+
+  const previousManuscriptButton = coverFlow.getByRole("button", {
+    name: "Previous manuscript",
+  });
+  await previousManuscriptButton.click();
+  await previousManuscriptButton.click();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    initialActiveVolume.href,
+  );
+
   await activePanel
     .getByRole("button", { name: "Opening" })
     .evaluate((button) => {
