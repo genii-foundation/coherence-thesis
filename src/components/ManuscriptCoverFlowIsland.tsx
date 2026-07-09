@@ -16,6 +16,7 @@ import {
   ChevronRight,
   ChevronsRight,
 } from "lucide-react";
+import { AstrologyIcon } from "@/components/AstrologyIcon";
 import {
   coverFlowTuning,
   getCoverFlowFlickTarget,
@@ -144,18 +145,6 @@ function ManuscriptCardOutlineRow({
     </button>
   );
 }
-
-const planetSymbols: Record<string, string> = {
-  Jupiter: "♃",
-  Mars: "♂",
-  Mercury: "☿",
-  Moon: "☽",
-  Neptune: "♆",
-  Saturn: "♄",
-  Sun: "☉",
-  Uranus: "♅",
-  Venus: "♀",
-};
 
 const initialIndex = 0;
 
@@ -625,7 +614,6 @@ export function ManuscriptCoverFlowIsland({
       >
         <div className="cover-flow-track">
           {volumes.map((volume, index) => {
-            const planetSymbol = planetSymbols[volume.planet] ?? "";
             const active = index === activeIndex;
             const selectedPartId =
               selectedPartByVolumeId[volume.volumeId] ?? null;
@@ -713,14 +701,10 @@ export function ManuscriptCoverFlowIsland({
                       <span className="manuscript-card-kicker">
                         Volume {volume.numberLabel}
                       </span>
-                      {planetSymbol ? (
-                        <span
-                          className="manuscript-card-symbol"
-                          aria-label={volume.planet}
-                        >
-                          {planetSymbol}
-                        </span>
-                      ) : null}
+                      <AstrologyIcon
+                        planet={volume.planet}
+                        className="manuscript-card-symbol"
+                      />
                       <strong>{volume.title}</strong>
                       <span className="manuscript-card-description">
                         {volume.subtitle}

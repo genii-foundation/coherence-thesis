@@ -121,6 +121,35 @@ describe("manuscript data", () => {
     ]);
   });
 
+  it("points multi-section chapters at one reader page with section anchors", () => {
+    const sections = allSections().filter((section) =>
+      section.chapterHref.endsWith(
+        "/architecting-providence/the-governance-architecture/the-amendment-architecture/",
+      ),
+    );
+    const sectionIds = sections.map((section) => section.sectionId);
+
+    expect(sectionIds).toEqual([
+      "v04-the-amendment-architecture",
+      "v04-the-deeper-inquiry-9",
+      "v04-what-remains-open-9",
+    ]);
+    expect(sections.map((section) => section.readerHref)).toEqual([
+      `${sections[0]!.chapterHref}#v04-the-amendment-architecture`,
+      `${sections[0]!.chapterHref}#v04-the-deeper-inquiry-9`,
+      `${sections[0]!.chapterHref}#v04-what-remains-open-9`,
+    ]);
+
+    const oldChildRoute = breadcrumbRoutes().find(
+      (candidate) => candidate.href === sections[0]!.href,
+    );
+
+    expect(oldChildRoute?.crumbs.map((crumb) => crumb.label)).toEqual([
+      "The Governance Architecture",
+      "The Amendment Architecture",
+    ]);
+  });
+
   it("generates static params for canonical and aliased section paths", () => {
     const keys = new Set(
       manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),

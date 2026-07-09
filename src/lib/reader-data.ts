@@ -9,6 +9,8 @@ export type ReaderSectionData = {
   sectionId: string;
   title: string;
   href: string;
+  chapterHref: string;
+  readerHref: string;
   text: string;
   contentHash: string;
   versionHash: string;
@@ -31,6 +33,7 @@ export type BreadcrumbRoute = {
 export type SearchIndexEntry = {
   sectionId: string;
   href: string;
+  readerHref: string;
   title: string;
   volumeTitle: string;
   partTitle: string;
@@ -74,6 +77,8 @@ export type ProgressSectionData = {
   contentHash: string;
   title: string;
   href: string;
+  chapterHref: string;
+  readerHref: string;
   audioVersionId: string;
   paragraphs: ReaderParagraph[];
 };

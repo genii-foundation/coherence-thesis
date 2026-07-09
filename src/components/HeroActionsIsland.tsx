@@ -15,6 +15,11 @@ type HeroActionsIslandProps = {
   sections: HeroReadTarget[];
 };
 
+function listenHref(href: string): string {
+  const separator = href.includes("?") ? "&" : "?";
+  return `${href}${separator}listen=1`;
+}
+
 export function HeroActionsIsland({
   className = "hero-actions",
   fallbackHref,
@@ -30,7 +35,7 @@ export function HeroActionsIsland({
 
   return (
     <div className={className}>
-      <Link className="primary-link" href={targetHref}>
+      <Link className="primary-link" href={listenHref(targetHref)}>
         <Headphones aria-hidden="true" size={18} />
         <span>Listen</span>
       </Link>

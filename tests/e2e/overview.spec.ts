@@ -74,7 +74,7 @@ test("home page presents the overview and manuscript entry points", async ({
   const firstReadTarget = catalog.sections[0]!;
   await expect(
     page.getByRole("link", { name: "Listen" }),
-  ).toHaveAttribute("href", firstReadTarget.href);
+  ).toHaveAttribute("href", `${firstReadTarget.href}?listen=1`);
   await expect(
     page.getByRole("link", { name: "Read", exact: true }),
   ).toHaveAttribute("href", firstReadTarget.href);
@@ -90,6 +90,7 @@ test("home page presents the overview and manuscript entry points", async ({
       "If your path moves through inner development, social architecture, humane technology, and place-based regeneration, join us in shaping a future worth inheriting.",
     ),
   ).toBeVisible();
+  await expect(page.locator(".hero-copy h1")).toHaveCSS("font-weight", "300");
   await expect(page.locator(".hero-stats li")).toHaveText([
     `${catalog.stats.volumeCount.toLocaleString()} volumes`,
     `${catalog.stats.sectionCount.toLocaleString()} sections`,
@@ -97,12 +98,24 @@ test("home page presents the overview and manuscript entry points", async ({
   ]);
   await expect(page.locator(".hero-stats li").first()).toHaveCSS(
     "font-weight",
-    "300",
+    "600",
   );
   await expect(page.locator(".hero-stats li").first()).toHaveCSS(
-    "color",
-    hexToRgb("#a47b3f"),
+    "text-transform",
+    "uppercase",
   );
+  const statSeparatorContent = await page
+    .locator(".hero-stats li")
+    .first()
+    .evaluate((item) => getComputedStyle(item, "::after").content);
+  expect(statSeparatorContent).toBe("none");
+  await expect(page.locator(".hero-stats li").first()).toHaveCSS(
+    "color",
+    hexToRgb("#77542a"),
+  );
+  await expect(
+    page.getByRole("region", { name: "Background highlight intensity" }),
+  ).toHaveCount(0);
   await expect(page.locator(".overview-map")).toHaveCount(0);
   await expect(page.locator(".stats-band")).toHaveCount(0);
   await expect(page.getByText("Ready for the full body")).toHaveCount(0);
@@ -124,6 +137,29 @@ test("home page presents the overview and manuscript entry points", async ({
       links.map((link) => Math.round(link.getBoundingClientRect().top)),
     );
     expect(new Set(actionTops).size).toBe(1);
+    const heroCtaAlignment = await page.evaluate(() => {
+      const actions = document
+        .querySelector(".hero-actions")
+        ?.getBoundingClientRect();
+      const stats = document
+        .querySelector(".hero-stats")
+        ?.getBoundingClientRect();
+
+      return {
+        centerDelta:
+          actions && stats
+            ? Math.abs(
+                actions.left + actions.width / 2 - (stats.left + stats.width / 2),
+              )
+            : Number.POSITIVE_INFINITY,
+        statsWidth: stats?.width ?? Number.POSITIVE_INFINITY,
+        actionsWidth: actions?.width ?? 0,
+      };
+    });
+    expect(heroCtaAlignment.centerDelta).toBeLessThanOrEqual(1);
+    expect(heroCtaAlignment.statsWidth).toBeLessThanOrEqual(
+      heroCtaAlignment.actionsWidth,
+    );
     const brandKickerFit = await page
       .locator(".site-header .brand-kicker")
       .evaluate((element) => ({
@@ -236,6 +272,13 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(wieldingPanel.locator(".manuscript-card-symbol")).toHaveText(
     "☽",
   );
+  await expect(wieldingPanel.locator(".manuscript-card-symbol")).toHaveClass(
+    /astrology-icon-moon/,
+  );
+  await expect(wieldingPanel.locator(".manuscript-card-symbol")).toHaveAttribute(
+    "aria-label",
+    "Moon",
+  );
   const symbolAlignment = await wieldingPanel
     .locator(".manuscript-card-symbol")
     .evaluate((element) => {
@@ -248,18 +291,15 @@ test("home page presents the overview and manuscript entry points", async ({
       return {
         badgeCenter: badgeBox.top + badgeBox.height / 2,
         badgeHeight: badgeBox.height,
+        boxShadow: window.getComputedStyle(element).boxShadow,
         glyphCenter: glyphBox.top + glyphBox.height / 2,
-        paddingTop: window.getComputedStyle(element).paddingTop,
       };
     });
-  expect(Number.parseFloat(symbolAlignment.paddingTop)).toBeGreaterThan(0);
+  expect(symbolAlignment.boxShadow).not.toBe("none");
   expect(symbolAlignment.badgeHeight).toBeGreaterThan(28);
   expect(symbolAlignment.badgeHeight).toBeLessThan(40);
-  expect(symbolAlignment.glyphCenter).toBeGreaterThan(
-    symbolAlignment.badgeCenter,
-  );
   expect(
-    symbolAlignment.glyphCenter - symbolAlignment.badgeCenter,
+    Math.abs(symbolAlignment.glyphCenter - symbolAlignment.badgeCenter),
   ).toBeLessThan(4);
 
 });
@@ -297,11 +337,68 @@ test("home page listen and read actions resume at the first unread section", asy
 
   await expect(page.getByRole("link", { name: "Listen" })).toHaveAttribute(
     "href",
-    unreadSection.href,
+    `${unreadSection.href}?listen=1`,
   );
   await expect(
     page.getByRole("link", { name: "Read", exact: true }),
   ).toHaveAttribute("href", unreadSection.href);
+});
+
+test("home page listen action starts audiobook playback", async ({ page }) => {
+  await page.addInitScript(() => {
+    class TestSpeechSynthesisUtterance {
+      text: string;
+      rate = 1;
+      pitch = 1;
+      voice: SpeechSynthesisVoice | null = null;
+      onend: (() => void) | null = null;
+
+      constructor(text: string) {
+        this.text = text;
+      }
+    }
+
+    const spokenAudio: string[] = [];
+    Object.defineProperty(window, "__spokenAudio", {
+      configurable: true,
+      value: spokenAudio,
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: TestSpeechSynthesisUtterance,
+    });
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        addEventListener: () => undefined,
+        cancel: () => undefined,
+        getVoices: () => [],
+        pause: () => undefined,
+        removeEventListener: () => undefined,
+        resume: () => undefined,
+        speak: (utterance: SpeechSynthesisUtterance) => {
+          spokenAudio.push(utterance.text);
+        },
+      },
+    });
+  });
+
+  await page.goto("/");
+  await page.getByRole("link", { name: "Listen" }).click();
+
+  await expect
+    .poll(() => new URL(page.url()).pathname)
+    .toBe(catalog.sections[0]!.href);
+  await expect(
+    page.getByRole("button", { name: "Pause audiobook" }),
+  ).toBeVisible();
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __spokenAudio: string[] }).__spokenAudio,
+      ),
+    )
+    .toHaveLength(1);
 });
 
 test("overview links into canonical manuscript sections", async ({
@@ -677,9 +774,11 @@ test("home page presents an interactive cover flow", async ({ page }) => {
     activePanel.getByRole("button", { name: /Part: Front Matter/ }),
   ).toBeVisible();
   const panelMetrics = await activeCard.evaluate((card) => {
+    const flow = card.closest(".cover-flow");
     const cover = card.querySelector(".cover-flow-image-frame");
     const panel = card.querySelector(".cover-flow-card-panel");
     const panelScroll = card.querySelector(".cover-flow-card-panel-scroll");
+    const flowBox = flow?.getBoundingClientRect();
     const coverBox = cover?.getBoundingClientRect();
     const panelBox = panel?.getBoundingClientRect();
     const panelStyle = panel ? window.getComputedStyle(panel) : null;
@@ -697,11 +796,66 @@ test("home page presents an interactive cover flow", async ({ page }) => {
       panelScrollClientHeight: panelScroll?.clientHeight ?? 0,
       panelScrollHeight: panelScroll?.scrollHeight ?? 0,
       panelScrollOverflowY: panelScrollStyle?.overflowY ?? "",
+      stageEndGap: flowBox && panelBox ? flowBox.bottom - panelBox.bottom : 0,
       panelTransitionProperty: panelStyle?.transitionProperty ?? "",
+      viewportWidth: document.documentElement.clientWidth,
     };
   });
+  const mobileCoverFlowAlignment = await coverFlow.evaluate((flow) => {
+    const active = flow.querySelector<HTMLElement>(
+      '.cover-flow-card[aria-current="true"]',
+    );
+    const cover = active?.querySelector<HTMLElement>(".cover-flow-image-frame");
+    const panel = active?.querySelector<HTMLElement>(".cover-flow-card-panel");
+    const previous = flow.querySelector<HTMLElement>(
+      ".cover-flow-edge-button-previous",
+    );
+    const next = flow.querySelector<HTMLElement>(".cover-flow-edge-button-next");
+    const coverBox = cover?.getBoundingClientRect();
+    const panelBox = panel?.getBoundingClientRect();
+    const previousBox = previous?.getBoundingClientRect();
+    const nextBox = next?.getBoundingClientRect();
+    const coverCenterY = coverBox ? coverBox.top + coverBox.height / 2 : 0;
+
+    return {
+      nextCenterOffset:
+        nextBox && coverBox
+          ? nextBox.top + nextBox.height / 2 - coverCenterY
+          : 0,
+      nextRightInset: nextBox
+        ? document.documentElement.clientWidth - nextBox.right
+        : 0,
+      panelLeftDelta:
+        coverBox && panelBox ? Math.abs(panelBox.left - coverBox.left) : 0,
+      panelRightDelta:
+        coverBox && panelBox ? Math.abs(panelBox.right - coverBox.right) : 0,
+      previousCenterOffset:
+        previousBox && coverBox
+          ? previousBox.top + previousBox.height / 2 - coverCenterY
+          : 0,
+      previousLeftInset: previousBox?.left ?? 0,
+      viewportWidth: document.documentElement.clientWidth,
+    };
+  });
+  if (mobileCoverFlowAlignment.viewportWidth <= 540) {
+    expect(mobileCoverFlowAlignment.panelLeftDelta).toBeLessThanOrEqual(2);
+    expect(mobileCoverFlowAlignment.panelRightDelta).toBeLessThanOrEqual(2);
+    expect(mobileCoverFlowAlignment.previousCenterOffset).toBeGreaterThanOrEqual(
+      3,
+    );
+    expect(mobileCoverFlowAlignment.previousCenterOffset).toBeLessThanOrEqual(
+      8,
+    );
+    expect(mobileCoverFlowAlignment.nextCenterOffset).toBeGreaterThanOrEqual(3);
+    expect(mobileCoverFlowAlignment.nextCenterOffset).toBeLessThanOrEqual(8);
+    expect(mobileCoverFlowAlignment.previousLeftInset).toBeGreaterThan(8);
+    expect(mobileCoverFlowAlignment.nextRightInset).toBeGreaterThan(8);
+  }
   expect(panelMetrics.panelHeight).toBeLessThanOrEqual(
     panelMetrics.coverHeight * 0.88 + 2,
+  );
+  expect(panelMetrics.stageEndGap).toBeLessThanOrEqual(
+    panelMetrics.viewportWidth <= 540 ? 80 : 150,
   );
   expect(panelMetrics.coverToPanelGap).toBeGreaterThanOrEqual(44);
   expect(panelMetrics.panelMaxHeight).not.toBe("none");
@@ -786,6 +940,20 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   await expect(
     activePanel.getByRole("button", { name: /Part: Front Matter/ }),
   ).toBeVisible();
+  await expect
+    .poll(() =>
+      coverFlow.evaluate((flow) => {
+        const active = flow.querySelector<HTMLElement>(
+          '.cover-flow-card[aria-current="true"]',
+        );
+        return Math.abs(
+          Number.parseFloat(
+            active?.style.getPropertyValue("--cover-flow-rotate") ?? "100",
+          ),
+        );
+      }),
+    )
+    .toBeLessThan(1);
 
   const coverFlowTransforms = await coverFlow.evaluate((flow) => {
     const shadowAlpha = (element: HTMLElement | null) => {
@@ -870,6 +1038,42 @@ test("home page presents an interactive cover flow", async ({ page }) => {
   expect(coverFlowTransforms.activeShadowAlpha).toBeGreaterThanOrEqual(0.16);
   expect(coverFlowTransforms.sideShadowAlpha).toBeLessThan(0.19);
 
+  const verticalStability = await coverFlow
+    .locator(".cover-flow-scroll")
+    .evaluate(async (scroller) => {
+      const card = document.querySelector<HTMLElement>(".cover-flow-card");
+      const cover = card?.querySelector<HTMLElement>(".cover-flow-image-frame");
+      const originalScrollLeft = scroller.scrollLeft;
+      const centers: number[] = [];
+      const maxScrollLeft = Math.min(
+        scroller.scrollWidth - scroller.clientWidth,
+        420,
+      );
+
+      for (let scrollLeft = 0; scrollLeft <= maxScrollLeft; scrollLeft += 30) {
+        scroller.scrollLeft = scrollLeft;
+        scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
+        await new Promise<void>((resolve) => {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => resolve());
+          });
+        });
+        const coverBox = cover?.getBoundingClientRect();
+        if (coverBox) centers.push(coverBox.top + coverBox.height / 2);
+      }
+
+      scroller.scrollLeft = originalScrollLeft;
+      scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
+
+      return {
+        maxCenter: Math.max(...centers),
+        minCenter: Math.min(...centers),
+      };
+    });
+  expect(
+    verticalStability.maxCenter - verticalStability.minCenter,
+  ).toBeLessThanOrEqual(1);
+
   const backgroundTarget = catalog.volumes[initialActiveIndex + 1]!;
   await coverFlow
     .locator(
@@ -878,7 +1082,12 @@ test("home page presents an interactive cover flow", async ({ page }) => {
     .dispatchEvent("click");
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("data-volume-href", backgroundTarget.href);
+  ).toHaveCount(1, { timeout: 15000 });
+  await expect(
+    coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+  ).toHaveAttribute("data-volume-href", backgroundTarget.href, {
+    timeout: 15000,
+  });
   await expect(page).toHaveURL(/\/$/);
   await expect(
     coverFlow.locator(

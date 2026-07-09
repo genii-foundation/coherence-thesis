@@ -1,5 +1,16 @@
 import { expect, test } from "@playwright/test";
 import {
+  buildReaderHeatmapModel,
+  progressForHeatmapCell,
+} from "../../src/lib/reader-heatmap";
+import { audioVoiceStorageKey } from "../../src/lib/audio-preferences";
+import {
+  emptyProgress,
+  readerProgressV2StorageKey,
+  recordScrollProgress,
+  serializeProgress,
+} from "../../src/lib/reader-state";
+import {
   readerEventsStorageKey,
   firstSection,
   firstSectionVersionDate,
@@ -8,6 +19,13 @@ import {
   nextSection,
   sectionWithNeighbors,
 } from "./fixtures";
+
+const systemVoicePreference = {
+  voiceURI: null,
+  rate: 1,
+  pitch: 1,
+  useSystemVoice: true,
+};
 
 test("progress menu shows a resettable email sent confirmation", async ({
   page,
@@ -555,17 +573,11 @@ test("audio voice selection exposes one built-in system option", async ({ page }
   await page.getByRole("button", { name: /Listen/ }).click();
   const audioPanel = page.getByLabel("Audiobook controls");
   await expect(audioPanel).toBeVisible();
-  await expect
-    .poll(() =>
-      page.evaluate(
-        () =>
-          (window as unknown as { __spokenVoices: Array<string | null> })
-            .__spokenVoices,
-      ),
-    )
-    .toEqual([null]);
 
   const voiceSelect = page.getByRole("combobox", { name: "Voice" });
+  await expect(voiceSelect).toHaveValue("clip:default");
+  await expect(voiceSelect.locator("option", { hasText: "High Quality 1" }))
+    .toHaveCount(1);
   await expect(voiceSelect.locator("option", { hasText: "System voice" }))
     .toHaveCount(1);
   await expect(voiceSelect.locator("option", { hasText: "Samantha" }))
@@ -580,22 +592,15 @@ test("audio voice selection exposes one built-in system option", async ({ page }
             .__spokenVoices,
       ),
     )
-    .toEqual([null, null]);
+    .toEqual([null]);
 
   await page.getByRole("button", { name: "Reset voice" }).click();
-  await expect
-    .poll(() =>
-      page.evaluate(
-        () =>
-          (window as unknown as { __spokenVoices: Array<string | null> })
-            .__spokenVoices,
-      ),
-    )
-    .toEqual([null, null, null]);
+  await expect(voiceSelect).toHaveValue("clip:default");
 });
 
 test("reader words can start playback from a focused word", async ({ page }) => {
-  await page.addInitScript(() => {
+  await page.addInitScript(({ storageKey, preference }) => {
+    window.localStorage.setItem(storageKey, JSON.stringify(preference));
     class TestSpeechSynthesisUtterance {
       text: string;
       rate = 1;
@@ -639,7 +644,7 @@ test("reader words can start playback from a focused word", async ({ page }) => 
         },
       },
     });
-  });
+  }, { storageKey: audioVoiceStorageKey, preference: systemVoicePreference });
 
   await page.goto(firstSection.href);
   const targetWord = page.locator(".manuscript-prose p .audio-word").first();
@@ -740,7 +745,8 @@ test("reader words can start playback from a focused word", async ({ page }) => 
 });
 
 test("reader navigation does not interrupt active playback", async ({ page }) => {
-  await page.addInitScript(() => {
+  await page.addInitScript(({ storageKey, preference }) => {
+    window.localStorage.setItem(storageKey, JSON.stringify(preference));
     class TestSpeechSynthesisUtterance {
       text: string;
       rate = 1;
@@ -786,7 +792,7 @@ test("reader navigation does not interrupt active playback", async ({ page }) =>
         },
       },
     });
-  });
+  }, { storageKey: audioVoiceStorageKey, preference: systemVoicePreference });
 
   await page.goto(sectionWithNeighbors.href);
   await page.getByRole("button", { name: /Listen/ }).click();
@@ -953,4 +959,41 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
 
   await page.keyboard.press("Escape");
   await expect(tooltip).toHaveCount(0);
+});
+
+test("reading map partial cells fill to the center", async ({ page }) => {
+  const model = buildReaderHeatmapModel();
+  const partialCell = model.volumes[0]!.cells[0]!;
+  const partialProgress = partialCell.portions.reduce(
+    (current, portion) => recordScrollProgress(current, portion, 50),
+    emptyProgress(),
+  );
+  expect(progressForHeatmapCell(partialProgress, partialCell).percent).toBe(50);
+
+  await page.addInitScript(
+    ({ key, value }) => {
+      window.localStorage.setItem(key, value);
+    },
+    {
+      key: readerProgressV2StorageKey,
+      value: serializeProgress(partialProgress),
+    },
+  );
+
+  await page.goto("/progress/");
+
+  const partialCellButton = page.locator(".progress-heatmap-cell-partial").first();
+  await expect(partialCellButton).toBeVisible();
+
+  const partialCellStyle = await partialCellButton.evaluate((element) => {
+    const style = window.getComputedStyle(element);
+    return {
+      backgroundImage: style.backgroundImage,
+      progress: style.getPropertyValue("--cell-progress").trim(),
+    };
+  });
+
+  expect(partialCellStyle.progress).toBe("0.5");
+  expect(partialCellStyle.backgroundImage).toContain("conic-gradient");
+  expect(partialCellStyle.backgroundImage).not.toContain("radial-gradient");
 });

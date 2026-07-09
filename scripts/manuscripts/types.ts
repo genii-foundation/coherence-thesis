@@ -31,6 +31,8 @@ export type MarkdownDocument = {
 export type CompiledSection = ManuscriptFrontmatter & {
   path: string;
   href: string;
+  chapterHref: string;
+  readerHref: string;
   body: string;
   text: string;
   paragraphs: CompiledParagraph[];
@@ -191,6 +193,7 @@ export type CompiledCatalog = {
 export type SearchIndexEntry = {
   sectionId: string;
   href: string;
+  readerHref: string;
   title: string;
   volumeTitle: string;
   partTitle: string;

@@ -419,6 +419,13 @@ export function AudioPlayerIsland({
     loadAudioClipManifest,
     emptyAudioClipManifest,
   );
+  const [hash, setHash] = useState("");
+  useEffect(() => {
+    const readHash = () => setHash(window.location.hash);
+    readHash();
+    window.addEventListener("hashchange", readHash);
+    return () => window.removeEventListener("hashchange", readHash);
+  }, [pathname]);
   const offlinePacks = useMemo(
     () =>
       buildOfflineAudioPacks({
@@ -433,12 +440,35 @@ export function AudioPlayerIsland({
     if (currentPath === "/overview/") return [overviewAudio];
     if (!currentPath.startsWith("/manuscripts/")) return [];
 
+    const hashTarget = hash.replace(/^#/, "");
+    const hashSectionId =
+      sections.find(
+        (section) =>
+          hashTarget === section.sectionId ||
+          hashTarget.startsWith(`${section.sectionId}-p-`),
+      )?.sectionId ?? "";
     const exactSectionIndex = sections.findIndex(
       (section) => normalizePath(section.href) === currentPath,
     );
-    const chosen =
+    const anchoredChapterIndex = hashSectionId
+      ? sections.findIndex(
+          (section) =>
+            section.sectionId === hashSectionId &&
+            normalizePath(section.chapterHref) === currentPath,
+        )
+      : -1;
+    const chapterIndex = sections.findIndex(
+      (section) => normalizePath(section.chapterHref) === currentPath,
+    );
+    const startIndex =
       exactSectionIndex >= 0
-        ? sections.slice(exactSectionIndex)
+        ? exactSectionIndex
+        : anchoredChapterIndex >= 0
+          ? anchoredChapterIndex
+          : chapterIndex;
+    const chosen =
+      startIndex >= 0
+        ? sections.slice(startIndex)
         : sections.filter((section) =>
             normalizePath(section.href).startsWith(currentPath),
           );
@@ -448,8 +478,10 @@ export function AudioPlayerIsland({
       text: "",
       audioVersionId: section.audioVersionId,
       href: section.href,
+      chapterHref: section.chapterHref,
+      readerHref: section.readerHref,
     }));
-  }, [overviewAudio, pathname, sections]);
+  }, [hash, overviewAudio, pathname, sections]);
   // Section text is resolved lazily on first play; the overview item already
   // carries its text.
   const sectionTextRef = useRef<Map<string, string> | null>(null);
@@ -496,6 +528,7 @@ export function AudioPlayerIsland({
   const audioStartedAtRef = useRef<number | null>(null);
   const audioItemRef = useRef<AudioQueueItem | null>(null);
   const audioPreferenceRef = useRef<AudioVoicePreference>(defaultVoicePreference);
+  const handledListenRequestRef = useRef<string | null>(null);
   const playbackQueueRef = useRef<AudioQueueItem[]>([]);
   const visibleQueueRef = useRef<AudioQueueItem[]>([]);
   const activeIndexRef = useRef(0);
@@ -641,10 +674,12 @@ export function AudioPlayerIsland({
       const queueItems = sections.slice(sectionIndex).map((section) => ({
         sectionId: section.sectionId,
         title: section.title,
-        text: "",
-        audioVersionId: section.audioVersionId,
-        href: section.href,
-      }));
+      text: "",
+      audioVersionId: section.audioVersionId,
+      href: section.href,
+      chapterHref: section.chapterHref,
+      readerHref: section.readerHref,
+    }));
       setOpen(true);
       setPlaybackLocation({
         sectionId: detail.sectionId,
@@ -892,6 +927,39 @@ export function AudioPlayerIsland({
     }
     void speak(0, preference, visibleQueueRef.current);
   }
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.get("listen") !== "1") return;
+    if (
+      !preferenceReady ||
+      !voicesReady ||
+      !supported ||
+      visibleQueue.length === 0
+    ) {
+      return;
+    }
+    const requestKey = `${pathname}?${searchParams.toString()}`;
+    if (handledListenRequestRef.current === requestKey) return;
+    handledListenRequestRef.current = requestKey;
+    setOpen(true);
+    void speakRef.current?.(0);
+    const remainingParams = new URLSearchParams(searchParams.toString());
+    remainingParams.delete("listen");
+    const nextSearch = remainingParams.toString();
+    window.history.replaceState(
+      window.history.state,
+      "",
+      `${pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`,
+    );
+  }, [
+    pathname,
+    preferenceReady,
+    setOpen,
+    supported,
+    visibleQueue.length,
+    voicesReady,
+  ]);
 
   function handleVoiceChange(voiceURI: string | null): void {
     const nextPreference = {

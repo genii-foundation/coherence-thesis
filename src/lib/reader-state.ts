@@ -397,7 +397,12 @@ export function revisedSectionHref(
   section: ProgressSection,
 ): string {
   const anchor = firstChangedParagraphAnchor(progress, section);
-  return anchor ? `${section.href}#${anchor}` : section.href;
+  if (!anchor) return section.readerHref ?? section.href;
+  const baseHref = section.readerHref ?? section.href;
+  if (baseHref.includes("#")) {
+    return `${(section.chapterHref ?? section.href).replace(/#.*$/, "")}#${section.sectionId}-${anchor}`;
+  }
+  return `${baseHref}#${anchor}`;
 }
 
 export function isSectionRead(
@@ -446,7 +451,7 @@ export function recommendNextSections(
     ...firstUnread.map((section) => ({
       sectionId: section.sectionId,
       title: section.title,
-      href: section.href,
+      href: section.readerHref ?? section.href,
       isUpdated: false,
     })),
   ];
@@ -476,7 +481,7 @@ export function recentlyReadSections(
         ? {
             sectionId: section.sectionId,
             title: section.title,
-            href: section.href,
+            href: section.readerHref ?? section.href,
             readAt: state.readAt,
           }
         : null;

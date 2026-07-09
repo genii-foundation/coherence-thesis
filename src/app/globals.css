@@ -37,13 +37,26 @@
   --card-background: rgba(251, 246, 235, 0.66);
   --card-background-hover: rgba(251, 246, 235, 0.86);
   --glass-background: rgba(251, 246, 235, 0.72);
+  --page-background-highlight-alpha: 0.12;
+  --page-background-highlight-wash-alpha: 0.044;
+  --page-background-highlight-spread: 37rem;
   --page-background:
+    radial-gradient(
+      ellipse at 70% 7%,
+      rgba(255, 255, 255, var(--page-background-highlight-alpha)),
+      transparent var(--page-background-highlight-spread)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, var(--page-background-highlight-wash-alpha)),
+      transparent 13rem
+    ),
     radial-gradient(ellipse at 20% 18%, rgba(96, 121, 109, 0.14), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgba(255, 251, 241, 0.2), transparent 26rem),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 251, 241, 0.08), transparent 26rem),
     radial-gradient(ellipse at 50% 86%, rgba(119, 84, 42, 0.11), transparent 30rem),
     var(--page-texture-noise),
-    linear-gradient(180deg, var(--paper-soft), var(--paper) 34%, #eadbbd);
-  --page-background-size: auto, auto, auto, 320px 320px, auto;
+    linear-gradient(180deg, #efe0c5, var(--paper) 42%, #eadbbd);
+  --page-background-size: auto, auto, auto, auto, auto, 320px 320px, auto;
 }
 
 html[data-reader-theme="light"] {
@@ -71,12 +84,22 @@ html[data-reader-theme="light"] {
   --card-background-hover: rgba(255, 254, 250, 0.96);
   --glass-background: rgba(255, 254, 250, 0.78);
   --page-background:
+    radial-gradient(
+      ellipse at 70% 7%,
+      rgba(255, 255, 255, var(--page-background-highlight-alpha)),
+      transparent var(--page-background-highlight-spread)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, var(--page-background-highlight-wash-alpha)),
+      transparent 13rem
+    ),
     radial-gradient(ellipse at 20% 18%, rgba(63, 104, 88, 0.1), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgba(255, 254, 250, 0.42), transparent 26rem),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 254, 250, 0.12), transparent 26rem),
     radial-gradient(ellipse at 50% 86%, rgba(89, 64, 24, 0.08), transparent 30rem),
     var(--page-texture-noise),
-    linear-gradient(180deg, #fffefa, #f8f6f1 58%, #f0ebe2);
-  --page-background-size: auto, auto, auto, 320px 320px, auto;
+    linear-gradient(180deg, #f4ead7, #f8f6f1 58%, #f0ebe2);
+  --page-background-size: auto, auto, auto, auto, auto, 320px 320px, auto;
 }
 
 html[data-reader-theme="dark"] {
@@ -146,6 +169,8 @@ html[data-reader-theme="black"] {
 
 html {
   min-height: 100%;
+  min-height: 100svh;
+  min-height: 100dvh;
   width: 100%;
   overflow-x: clip;
   background: var(--page-background);
@@ -175,6 +200,8 @@ html[data-reader-theme="black"] {
 
 body {
   min-height: 100%;
+  min-height: 100svh;
+  min-height: 100dvh;
   width: 100%;
   max-width: 100%;
   overflow-x: clip;
@@ -262,6 +289,8 @@ input {
 .site-shell {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   max-width: 100%;
@@ -1840,11 +1869,25 @@ input {
   line-height: 1.58;
 }
 
+.hero-cta-stack {
+  display: grid;
+  justify-items: center;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: var(--home-hero-copy-gap);
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center;
   gap: 0.75rem;
   margin-top: var(--home-hero-copy-gap);
+}
+
+.hero-cta-stack .hero-actions {
+  width: 100%;
+  margin-top: 0;
 }
 
 .primary-link,
@@ -1905,18 +1948,25 @@ input {
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.1rem;
-  margin: 0.65rem 0 0;
+  justify-content: center;
+  gap: 0.32rem 0.58rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0.8rem 0 0;
   padding: 0;
   list-style: none;
 }
 
 .hero-stats li {
-  color: var(--bronze);
+  color: var(--bronze-deep);
   padding: 0;
-  font-family: var(--font-ui);
-  font-size: 0.8rem;
-  font-weight: 300;
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 600;
+  font-variant-numeric: lining-nums;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.38);
 }
 
 .volume-grid {
@@ -1987,11 +2037,16 @@ input {
   --cover-flow-card-width: clamp(18.75rem, 30vw, 27rem);
   --cover-flow-card-overlap: clamp(10rem, 16vw, 15rem);
   --cover-flow-card-perspective: clamp(56rem, 78vw, 76rem);
-  --cover-flow-panel-max-height: calc(var(--cover-flow-card-width) * 1.3);
+  --cover-flow-cover-origin-y: calc(var(--cover-flow-card-width) * 0.75);
+  --cover-flow-panel-max-height: min(
+    30rem,
+    calc(var(--cover-flow-card-width) * 1.02),
+    calc(100svh - 18rem)
+  );
   --cover-flow-panel-width-extra: clamp(7rem, 13vw, 12rem);
   --cover-flow-side-gutter: calc((100vw - var(--cover-flow-card-width)) / 2);
-  --cover-flow-stage-min-height: clamp(53rem, 82vw, 76rem);
-  --cover-flow-stage-padding-bottom: clamp(12rem, 22vw, 20rem);
+  --cover-flow-stage-min-height: clamp(44rem, 66vw, 58rem);
+  --cover-flow-stage-padding-bottom: clamp(5rem, 8vw, 7rem);
   --cover-flow-stage-padding-top: clamp(5.75rem, 9vw, 8.25rem);
   position: relative;
   left: 50%;
@@ -2075,7 +2130,7 @@ input {
   transform: perspective(var(--cover-flow-card-perspective))
     translateX(var(--cover-flow-shift)) translateZ(var(--cover-flow-z))
     rotateY(var(--cover-flow-rotate)) scale(var(--cover-flow-scale));
-  transform-origin: center center;
+  transform-origin: center var(--cover-flow-cover-origin-y);
   transform-style: flat;
   will-change: transform;
 }
@@ -2683,26 +2738,86 @@ input {
   text-transform: uppercase;
 }
 
-.manuscript-card-symbol {
-  position: absolute;
-  top: clamp(0.72rem, 1.7vw, 1rem);
-  right: clamp(0.72rem, 1.7vw, 1rem);
+.astrology-icon {
+  --astrology-rgb: 119 84 42;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  padding-top: 0.12rem;
-  border: 1px solid rgb(var(--card-rgb) / 0.28);
+  border: 1px solid rgb(var(--astrology-rgb) / 0.42);
   border-radius: 999px;
-  background: rgb(var(--card-rgb) / 0.1);
-  color: var(--card-accent);
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      rgb(255 255 255 / 0.82),
+      rgb(255 255 255 / 0) 38%
+    ),
+    rgb(var(--astrology-rgb) / 0.16);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.42) inset,
+    0 8px 18px rgb(var(--astrology-rgb) / 0.16);
+  color: rgb(var(--astrology-rgb));
   font-family:
     "Apple Symbols", "Segoe UI Symbol", "Noto Sans Symbols 2",
     "Noto Sans Symbols", sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.22rem;
+  font-weight: 700;
   line-height: 1;
+}
+
+.astrology-icon > span {
+  display: block;
+  transform: translateY(0.03em);
+}
+
+.astrology-icon-compact {
+  width: 1.85rem;
+  height: 1.85rem;
+  font-size: 1.08rem;
+}
+
+.astrology-icon-jupiter {
+  --astrology-rgb: 132 85 43;
+}
+
+.astrology-icon-mars {
+  --astrology-rgb: 169 58 43;
+}
+
+.astrology-icon-mercury {
+  --astrology-rgb: 104 112 67;
+}
+
+.astrology-icon-moon {
+  --astrology-rgb: 91 116 121;
+}
+
+.astrology-icon-neptune {
+  --astrology-rgb: 68 94 145;
+}
+
+.astrology-icon-saturn {
+  --astrology-rgb: 116 91 48;
+}
+
+.astrology-icon-sun {
+  --astrology-rgb: 200 111 24;
+}
+
+.astrology-icon-uranus {
+  --astrology-rgb: 47 122 130;
+}
+
+.astrology-icon-venus {
+  --astrology-rgb: 151 78 108;
+}
+
+.manuscript-card-symbol {
+  position: absolute;
+  top: clamp(0.72rem, 1.7vw, 1rem);
+  right: clamp(0.72rem, 1.7vw, 1rem);
 }
 
 .manuscript-card-panel strong {
@@ -2815,7 +2930,7 @@ input {
   margin-top: 1rem;
 }
 
-.volume-meta-tags span {
+.volume-meta-tags > span:not(.astrology-icon) {
   border: 1px solid rgba(119, 84, 42, 0.24);
   border-radius: 999px;
   background: rgba(251, 246, 235, 0.62);
@@ -2826,6 +2941,10 @@ input {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.volume-meta-astrology-icon {
+  align-self: center;
 }
 
 .stats-band {
@@ -4163,12 +4282,10 @@ input {
 
 .progress-heatmap-cell-partial {
   border-color: rgba(96, 121, 109, 0.48);
-  background:
-    radial-gradient(circle, var(--panel-background) 0 48%, transparent 50%),
-    conic-gradient(
-      rgba(96, 121, 109, 0.76) calc(var(--cell-progress) * 1turn),
-      rgba(96, 121, 109, 0.16) 0
-    );
+  background: conic-gradient(
+    rgba(96, 121, 109, 0.76) calc(var(--cell-progress) * 1turn),
+    rgba(96, 121, 109, 0.16) 0
+  );
 }
 
 .progress-heatmap-cell-read {
@@ -4538,6 +4655,34 @@ input {
   color: var(--bronze-deep);
 }
 
+.chapter-reader-section {
+  max-width: 48rem;
+  scroll-margin-top: clamp(5rem, 12vh, 7.5rem);
+}
+
+.chapter-reader-section + .chapter-reader-section {
+  border-top: 1px solid var(--line);
+  margin-top: clamp(2.5rem, 7vw, 4rem);
+  padding-top: clamp(2.25rem, 6vw, 3.5rem);
+}
+
+.chapter-reader-section > h2 {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 0.98;
+  margin: 0 0 1.5rem;
+}
+
+.chapter-reader-section:not(:first-of-type) .manuscript-prose p:first-of-type::first-letter {
+  color: inherit;
+  float: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding-right: 0;
+}
+
 .section-nav {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -4883,13 +5028,23 @@ input {
 }
 
 @media (max-width: 860px) {
+  :root {
+    --page-background-highlight-alpha: 0.15;
+    --page-background-highlight-wash-alpha: 0.056;
+    --page-background-highlight-spread: 24rem;
+  }
+
   .site-header {
+    --mobile-toolbar-height: calc(env(safe-area-inset-top) + 3.5625rem);
+
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
     gap: 0.7rem;
-    padding: 0.65rem max(0.85rem, env(safe-area-inset-right)) 0.55rem
-      max(0.85rem, env(safe-area-inset-left));
+    min-height: var(--mobile-toolbar-height);
+    padding: calc(env(safe-area-inset-top) + 0.375rem)
+      max(0.75rem, env(safe-area-inset-right)) 0.375rem
+      max(0.75rem, env(safe-area-inset-left));
   }
 
   .site-header > .breadcrumb-trail {
@@ -5015,6 +5170,10 @@ input {
   }
 
   .site-nav {
+    --toolbar-control-size: 2.75rem;
+    --toolbar-emphasis-control-size: 2.75rem;
+    --toolbar-progress-control-width: 2.75rem;
+
     flex: 1 1 auto;
     justify-content: flex-end;
     gap: 0;
@@ -5037,8 +5196,9 @@ input {
   .share-menu-button,
   .settings-menu-button {
     min-width: 0;
-    min-height: 2.45rem;
-    width: 2.45rem;
+    min-height: var(--toolbar-control-size);
+    width: var(--toolbar-control-size);
+    height: var(--toolbar-control-size);
     padding: 0;
   }
 
@@ -5055,15 +5215,23 @@ input {
     display: none;
   }
 
+  .audio-menu,
+  .progress-menu {
+    height: var(--toolbar-emphasis-control-size);
+  }
+
   .outline-popover,
   .search-popover,
   .share-popover,
   .audio-popover,
   .settings-popover,
   .progress-popover {
-    --toolbar-menu-max-height: calc(100svh - env(safe-area-inset-top) - 5rem);
-    --toolbar-mobile-popover-top: calc(env(safe-area-inset-top) + 5.2625rem);
-    --toolbar-mobile-popover-bottom-gap: max(0.85rem, env(safe-area-inset-bottom));
+    --toolbar-menu-max-height: calc(
+      100dvh - var(--mobile-toolbar-height) -
+        max(0.75rem, env(safe-area-inset-bottom))
+    );
+    --toolbar-mobile-popover-top: var(--mobile-toolbar-height);
+    --toolbar-mobile-popover-bottom-gap: max(0.75rem, env(safe-area-inset-bottom));
 
     position: fixed;
     top: var(--toolbar-mobile-popover-top);
@@ -5071,7 +5239,7 @@ input {
     left: max(0.85rem, env(safe-area-inset-left));
     width: auto;
     max-height: calc(
-      100svh - var(--toolbar-mobile-popover-top) -
+      100dvh - var(--toolbar-mobile-popover-top) -
         var(--toolbar-mobile-popover-bottom-gap)
     );
     border-top-left-radius: 0;
@@ -5088,28 +5256,28 @@ input {
 
   .outline-popover {
     max-height: calc(
-      100svh - var(--toolbar-mobile-popover-top) -
+      100dvh - var(--toolbar-mobile-popover-top) -
         var(--toolbar-mobile-popover-bottom-gap)
     );
   }
 
   .search-popover {
     max-height: calc(
-      100svh - var(--toolbar-mobile-popover-top) -
+      100dvh - var(--toolbar-mobile-popover-top) -
         var(--toolbar-mobile-popover-bottom-gap)
     );
   }
 
   .outline-scroll {
     max-height: calc(
-      100svh - var(--toolbar-mobile-popover-top) - 4.45rem -
+      100dvh - var(--toolbar-mobile-popover-top) - 4.45rem -
         var(--toolbar-mobile-popover-bottom-gap)
     );
   }
 
   .search-results {
     max-height: calc(
-      100svh - var(--toolbar-mobile-popover-top) - 4.45rem -
+      100dvh - var(--toolbar-mobile-popover-top) - 4.45rem -
         var(--toolbar-mobile-popover-bottom-gap)
     );
   }
@@ -5304,11 +5472,20 @@ input {
     flex-direction: column;
   }
 
+  .hero-cta-stack,
   .hero-actions,
   .hero-actions .primary-link,
   .hero-actions .secondary-link,
   .hero-stats {
     width: 100%;
+  }
+
+  .hero-cta-stack {
+    justify-items: stretch;
+  }
+
+  .hero-stats {
+    justify-content: flex-start;
   }
 
   .hero-stats li {
@@ -5335,20 +5512,27 @@ input {
   .cover-flow {
     --cover-flow-arrow-edge-inset: 0.8rem;
     --cover-flow-arrow-height: 4.2rem;
+    --cover-flow-arrow-half-height: 2.1rem;
     --cover-flow-arrow-icon-size: 2.25rem;
     --cover-flow-arrow-width: 4.2rem;
     --cover-flow-card-width: min(80vw, 19rem);
     --cover-flow-card-overlap: clamp(7rem, 38vw, 9.2rem);
     --cover-flow-card-perspective: 58rem;
-    --cover-flow-panel-width-extra: 3rem;
-    --cover-flow-stage-min-height: clamp(53rem, 184vw, 66rem);
-    --cover-flow-stage-padding-bottom: 10rem;
+    --cover-flow-cover-center-y: min(60vw, 14.25rem);
+    --cover-flow-mobile-arrow-center-correction: -0.3rem;
+    --cover-flow-panel-width-extra: 0rem;
+    --cover-flow-stage-min-height: clamp(42rem, 154vw, 55rem);
+    --cover-flow-stage-padding-bottom: 6rem;
     --cover-flow-stage-padding-top: 4.9rem;
     width: 100vw;
   }
 
   .cover-flow-edge-button {
-    top: 9.8rem;
+    top: calc(
+      var(--cover-flow-stage-padding-top) + var(--cover-flow-cover-center-y) -
+        var(--cover-flow-arrow-half-height) -
+        var(--cover-flow-mobile-arrow-center-correction)
+    );
   }
 
   .manuscript-card-panel {

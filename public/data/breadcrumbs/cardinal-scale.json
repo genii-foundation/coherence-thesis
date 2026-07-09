@@ -130,7 +130,7 @@
     ]
   },
   {
-    "href": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not/",
+    "href": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/#v09-4-what-we-know-and-what-we-do-not",
     "crumbs": [
       {
         "label": "Front Matter",
@@ -142,7 +142,37 @@
       },
       {
         "label": "§4 — What We Know, and What We Do Not",
-        "href": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not/"
+        "href": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/#v09-4-what-we-know-and-what-we-do-not"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not/",
+    "crumbs": [
+      {
+        "label": "Front Matter",
+        "href": "/manuscripts/cardinal-scale/front-matter/"
+      },
+      {
+        "label": "§4 — What We Know, and What We Do Not",
+        "href": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/#v09-what-we-know",
+    "crumbs": [
+      {
+        "label": "Front Matter",
+        "href": "/manuscripts/cardinal-scale/front-matter/"
+      },
+      {
+        "label": "§4 — What We Know, and What We Do Not",
+        "href": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/"
+      },
+      {
+        "label": "What we know.",
+        "href": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/#v09-what-we-know"
       }
     ]
   },
@@ -156,10 +186,6 @@
       {
         "label": "§4 — What We Know, and What We Do Not",
         "href": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/"
-      },
-      {
-        "label": "What we know.",
-        "href": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/v09-what-we-know/"
       }
     ]
   },
@@ -203,7 +229,7 @@
     ]
   },
   {
-    "href": "/manuscripts/cardinal-scale/front-matter/closing/v09-closing/",
+    "href": "/manuscripts/cardinal-scale/front-matter/closing/#v09-closing",
     "crumbs": [
       {
         "label": "Front Matter",
@@ -215,7 +241,37 @@
       },
       {
         "label": "Closing",
-        "href": "/manuscripts/cardinal-scale/front-matter/closing/v09-closing/"
+        "href": "/manuscripts/cardinal-scale/front-matter/closing/#v09-closing"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/cardinal-scale/front-matter/closing/v09-closing/",
+    "crumbs": [
+      {
+        "label": "Front Matter",
+        "href": "/manuscripts/cardinal-scale/front-matter/"
+      },
+      {
+        "label": "Closing",
+        "href": "/manuscripts/cardinal-scale/front-matter/closing/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/cardinal-scale/front-matter/closing/#v09-providence",
+    "crumbs": [
+      {
+        "label": "Front Matter",
+        "href": "/manuscripts/cardinal-scale/front-matter/"
+      },
+      {
+        "label": "Closing",
+        "href": "/manuscripts/cardinal-scale/front-matter/closing/"
+      },
+      {
+        "label": "Providence.",
+        "href": "/manuscripts/cardinal-scale/front-matter/closing/#v09-providence"
       }
     ]
   },
@@ -229,10 +285,6 @@
       {
         "label": "Closing",
         "href": "/manuscripts/cardinal-scale/front-matter/closing/"
-      },
-      {
-        "label": "Providence.",
-        "href": "/manuscripts/cardinal-scale/front-matter/closing/v09-providence/"
       }
     ]
   }

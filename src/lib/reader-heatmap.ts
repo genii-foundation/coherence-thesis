@@ -13,6 +13,7 @@ export type ReaderHeatmapSectionPortion = {
   contentHash: string;
   title: string;
   href: string;
+  readerHref: string;
   wordCount: number;
   fraction: number;
 };
@@ -152,7 +153,8 @@ function buildVolumeCells({
         sectionId: range.section.sectionId,
         contentHash: range.section.contentHash,
         title: range.section.title,
-        href: range.section.href,
+        href: range.section.readerHref,
+        readerHref: range.section.readerHref,
         wordCount: range.section.wordCount,
         fraction: overlap / cellSpan,
       });
@@ -169,7 +171,8 @@ function buildVolumeCells({
               sectionId: fallback.sectionId,
               contentHash: fallback.contentHash,
               title: fallback.title,
-              href: fallback.href,
+              href: fallback.readerHref,
+              readerHref: fallback.readerHref,
               wordCount: fallback.wordCount,
               fraction: 1,
             },

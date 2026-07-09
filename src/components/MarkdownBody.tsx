@@ -114,10 +114,12 @@ export function MarkdownBody({
   markdown,
   paragraphs = [],
   sectionId,
+  anchorPrefix = "",
 }: {
   markdown: string;
   paragraphs?: Section["paragraphs"];
   sectionId?: string;
+  anchorPrefix?: string;
 }) {
   const blocks = splitMarkdownBlocks(markdown);
   const audioCursor: AudioCursor | undefined = sectionId
@@ -127,7 +129,9 @@ export function MarkdownBody({
   return (
     <div className="manuscript-prose">
       {blocks.map((block, index) => {
-        const anchor = paragraphs[index]?.anchor;
+        const anchor = paragraphs[index]?.anchor
+          ? `${anchorPrefix}${paragraphs[index]?.anchor}`
+          : undefined;
         const advanceBlockGap = () => {
           if (audioCursor) audioCursor.charIndex += 2;
         };
