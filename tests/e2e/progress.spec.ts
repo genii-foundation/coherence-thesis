@@ -44,7 +44,7 @@ test("cloud progress uses exact perimeter proportions from twelve o'clock", asyn
     if (expectedPercent === 0) {
       const blip = cloud.locator(".progress-cloud-progress-blip");
       await expect(blip).toHaveAttribute("cx", "30.857");
-      await expect(blip).toHaveAttribute("cy", "13.248");
+      await expect(blip).toHaveAttribute("cy", "11.248");
       continue;
     }
 
@@ -74,7 +74,7 @@ test("cloud progress uses exact perimeter proportions from twelve o'clock", asyn
         progressPath.getPointAtLength(Math.min(dashLength, totalLength)),
       );
       const angle = (point: DOMPoint) =>
-        (Math.atan2(point.x - 32, 32 - point.y) * 180) / Math.PI;
+        (Math.atan2(point.x - 32, 30 - point.y) * 180) / Math.PI;
       const startAngle = angle(start);
       const endAngle = angle(end);
 
@@ -89,7 +89,7 @@ test("cloud progress uses exact perimeter proportions from twelve o'clock", asyn
     });
 
     expect(geometry.startX).toBeCloseTo(30.857, 2);
-    expect(geometry.startY).toBeCloseTo(13.248, 2);
+    expect(geometry.startY).toBeCloseTo(11.248, 2);
     expect(Math.abs(geometry.dashRatio - expectedPercent)).toBeLessThan(0.001);
     expect(geometry.hasDashOffset).toBe(false);
     expect(geometry.hasNormalizedPathLength).toBe(false);

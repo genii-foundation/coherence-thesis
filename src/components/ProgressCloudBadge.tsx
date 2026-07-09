@@ -36,12 +36,12 @@ const cloudPath =
   "M20.6 46.4c-8.1 0-14.6-5.7-14.6-12.9 0-6.5 5.2-11.8 12.2-12.6C20.8 11 29.8 4.7 40.5 4.7c9.4 0 17.5 4.7 21.2 12.4 9.8.4 17.3 7.1 17.3 15.5 0 7.8-6.8 13.8-15.6 13.8H20.6Z";
 const cloudProgressPath =
   "M40.5 4.7c9.4 0 17.5 4.7 21.2 12.4 9.8.4 17.3 7.1 17.3 15.5 0 7.8-6.8 13.8-15.6 13.8H20.6c-8.1 0-14.6-5.7-14.6-12.9 0-6.5 5.2-11.8 12.2-12.6C20.8 11 29.8 4.7 40.5 4.7Z";
-const cloudPathTransform = "translate(0 9.667) scale(0.7619048)";
+const cloudPathTransform = "translate(0 7.667) scale(0.7619048)";
 // Measured from the source path with SVGGeometryElement.getTotalLength().
 // Real perimeter units stay stable when the path is transformed and its stroke
 // uses vector-effect: non-scaling-stroke.
 const cloudPathLength = 188.17681884765625;
-const cloudTopPoint = { x: 30.857, y: 13.248 };
+const cloudTopPoint = { x: 30.857, y: 11.248 };
 const cloudProgressBlipRadius = 1.9;
 const offlineCircleRadius = 25.2;
 const offlineCircleLength = 2 * Math.PI * offlineCircleRadius;

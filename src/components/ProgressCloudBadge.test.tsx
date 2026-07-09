@@ -25,9 +25,9 @@ describe("ProgressCloudBadge", () => {
 
     expect(partial).toContain('viewBox="0 0 64 64"');
     expect(empty).toContain('class="progress-cloud-progress-blip"');
-    expect(empty).toContain('cx="30.857" cy="13.248" r="1.9"');
+    expect(empty).toContain('cx="30.857" cy="11.248" r="1.9"');
     expect(partial).toContain(
-      'transform="translate(0 9.667) scale(0.7619048)"',
+      'transform="translate(0 7.667) scale(0.7619048)"',
     );
     expect(partial).toContain('--progress-cloud-text-size:15px');
     expect(partial).toContain('d="M40.5 4.7');
