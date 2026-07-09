@@ -12,40 +12,54 @@ Implement a complete feature or fix in the Coherence Thesis repository, validate
 
 1. Read `AGENTS.md`, `README.md`, and the files that own the requested surface.
 2. Confirm the request is clear before writing code. Ask concise clarifying questions when the desired behavior, affected surface, or acceptance criteria are ambiguous.
-3. Check `git status --short --branch`. Preserve unrelated local changes. Create a dedicated worktree and branch by default. Stay on `main` only when the user explicitly requests it.
-4. Search for an existing component, hook, helper, script, fixture, or test pattern before adding a new one.
-5. Keep manuscript source rules intact:
+3. Check `git status --short --branch`. Preserve unrelated local changes.
+4. Before creating a new worktree or branch, refresh the remote base:
+
+```bash
+git fetch origin main
+git rev-parse origin/main
+```
+
+If the fetch fails, stop and report the failure. Do not create a feature branch from a stale local `main`, stale `origin/main`, or an existing feature worktree. Create the dedicated branch and worktree from the freshly fetched `origin/main` by default:
+
+```bash
+git worktree add -b <type>/<slug> <worktree-path> origin/main
+```
+
+Stay on `main` only when the user explicitly requests it. In that case, verify local `main` is clean and current with `origin/main` before editing. If it is behind, fast-forward it before editing. If it cannot be fast-forwarded cleanly, stop and report the blocker.
+5. Search for an existing component, hook, helper, script, fixture, or test pattern before adding a new one.
+6. Keep manuscript source rules intact:
    - Source manuscripts live in `sources/manuscripts/`.
    - Generated canonical reader sections live in `content/manuscripts/`.
    - Generated browser data lives in `public/data/`.
    - Do not edit generated manuscript or catalog data by hand.
-6. Capture implementation context while working:
+7. Capture implementation context while working:
    - What user problem or publishing constraint the change addresses.
    - Which existing patterns or primitives were reused.
    - Why any new component, hook, helper, script, or test was created.
    - Which alternatives were considered and why they were rejected.
    - Any product, accessibility, manuscript, performance, or compatibility tradeoffs.
-7. Implement the smallest coherent slice that handles the request end to end.
-8. Before shipping, verify every exported function, class, component, hook, or script entry point added in the change has an appropriate consumer.
-9. Use focused checks while iterating:
+8. Implement the smallest coherent slice that handles the request end to end.
+9. Before shipping, verify every exported function, class, component, hook, or script entry point added in the change has an appropriate consumer.
+10. Use focused checks while iterating:
    - `npm run manuscripts:compile` after manuscript or overview edits
    - `npm run manuscripts:validate` after manuscript or overview reference changes
    - `npm run test` after pure TypeScript or state helper changes
    - `npm run test:e2e:fast:desktop` for narrow desktop UI checks while iterating
    - `npm run test:e2e:fast` after reader navigation, toolbar, progress, audio, or responsive UI changes while iterating
-10. If multiple user revisions are queued, implement all clear queued tasks on the same focused branch before running the deepest validation pass. Use focused checks during the queue only when they answer a specific implementation question. Run `npm run validate` and `npm run test:e2e` once after the queue is empty unless the user explicitly narrows validation.
-11. Run `npm run readme:update` when stats, package metadata, recent commits, generated catalog state, or development status changed.
-12. Launch a local development preview from the feature worktree on a fresh random port after the feature is implemented. Do this even when another preview is already running. For visible UI work, do not open or update the pull request until the preview is running, unless the user explicitly says not to launch one.
-13. Run `npm run validate` before committing.
-14. If the change affects browser behavior, run `npm run test:e2e` before committing unless the user explicitly narrows the validation target.
-15. Review the final diff before staging. Confirm the diff is focused, generated files are expected, no debug logs or temporary files remain, and unrelated local changes are left alone.
-16. Stage the complete feature, commit with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user requested a direct main change, commit directly on `main` and do not open a pull request unless asked.
-17. As soon as the preview is ready, send the exact URL as a Markdown link in a user-visible update.
-18. Ask the user whether they are ready to publish or what follow-on revisions are needed. Do not merge, publish, or mark the pull request ready for merge until the user explicitly confirms that the preview looks good.
-19. If the user requests revisions after preview review, implement them on the same focused branch, validate again, push the update, and ask for preview approval again.
-20. After the user explicitly confirms the preview looks good and asks to publish or merge, refresh the branch against the current base and run the production build gate before merging. Use `npm run build` at minimum, or the repository production build command if the package scripts change. Do not merge a PR after conflict resolution, rebase, or branch refresh until that production build has succeeded on the final branch contents.
-21. Merge the pull request only after the final production build succeeds. After merging, confirm the resulting production deployment or deployment check succeeded. For Vercel-backed work, inspect the deployment linked to the merge commit or project dashboard. If the deployment fails, treat it as a continuation of the merge task: create a focused fix branch, reproduce or explain the failure locally with the production build, push a fix PR, merge it, and repeat until the production build or deployment is green.
-22. Complete the publish or merge workflow only after the merge commit and production build or deployment status are both confirmed.
+11. If multiple user revisions are queued, implement all clear queued tasks on the same focused branch before running the deepest validation pass. Use focused checks during the queue only when they answer a specific implementation question. Run `npm run validate` and `npm run test:e2e` once after the queue is empty unless the user explicitly narrows validation.
+12. Run `npm run readme:update` when stats, package metadata, recent commits, generated catalog state, or development status changed.
+13. Launch a local development preview from the feature worktree on a fresh random port after the feature is implemented. Do this even when another preview is already running. For visible UI work, do not open or update the pull request until the preview is running, unless the user explicitly says not to launch one.
+14. Run `npm run validate` before committing.
+15. If the change affects browser behavior, run `npm run test:e2e` before committing unless the user explicitly narrows the validation target.
+16. Review the final diff before staging. Confirm the diff is focused, generated files are expected, no debug logs or temporary files remain, and unrelated local changes are left alone.
+17. Stage the complete feature, commit with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user requested a direct main change, commit directly on `main` and do not open a pull request unless asked.
+18. As soon as the preview is ready, send the exact URL as a Markdown link in a user-visible update.
+19. Ask the user whether they are ready to publish or what follow-on revisions are needed. Do not merge, publish, or mark the pull request ready for merge until the user explicitly confirms that the preview looks good.
+20. If the user requests revisions after preview review, implement them on the same focused branch, validate again, push the update, and ask for preview approval again.
+21. After the user explicitly confirms the preview looks good and asks to publish or merge, refresh the branch against the current base and run the production build gate before merging. Use `npm run build` at minimum, or the repository production build command if the package scripts change. Do not merge a PR after conflict resolution, rebase, or branch refresh until that production build has succeeded on the final branch contents.
+22. Merge the pull request only after the final production build succeeds. After merging, confirm the resulting production deployment or deployment check succeeded. For Vercel-backed work, inspect the deployment linked to the merge commit or project dashboard. If the deployment fails, treat it as a continuation of the merge task: create a focused fix branch, reproduce or explain the failure locally with the production build, push a fix PR, merge it, and repeat until the production build or deployment is green.
+23. Complete the publish or merge workflow only after the merge commit and production build or deployment status are both confirmed.
 
 ## Preview
 
