@@ -138,9 +138,14 @@ test("home page presents the overview and manuscript entry points", async ({
                 actions.left + actions.width / 2 - (stats.left + stats.width / 2),
               )
             : Number.POSITIVE_INFINITY,
+        statsWidth: stats?.width ?? Number.POSITIVE_INFINITY,
+        actionsWidth: actions?.width ?? 0,
       };
     });
     expect(heroCtaAlignment.centerDelta).toBeLessThanOrEqual(1);
+    expect(heroCtaAlignment.statsWidth).toBeLessThanOrEqual(
+      heroCtaAlignment.actionsWidth,
+    );
     const brandKickerFit = await page
       .locator(".site-header .brand-kicker")
       .evaluate((element) => ({
