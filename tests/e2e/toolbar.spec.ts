@@ -1070,6 +1070,42 @@ test("mobile background texture fills the dynamic viewport", async ({ page }) =>
   expect(metrics.textureBottom).toBeGreaterThanOrEqual(metrics.shellBottom - 1);
 });
 
+test("toolbar shadow deepens as the page scrolls", async ({ page }) => {
+  await page.goto(wieldingSection.href, { waitUntil: "domcontentloaded" });
+
+  const header = page.locator(".site-header");
+  await expect
+    .poll(() =>
+      header.evaluate((element) =>
+        element.style.getPropertyValue("--toolbar-shadow-opacity"),
+      ),
+    )
+    .not.toBe("");
+
+  const restingOpacity = await header.evaluate((element) =>
+    Number.parseFloat(
+      window
+        .getComputedStyle(element)
+        .getPropertyValue("--toolbar-shadow-opacity"),
+    ),
+  );
+
+  await page.evaluate(() => window.scrollTo(0, 120));
+  await expect
+    .poll(() =>
+      header.evaluate((element) =>
+        Number.parseFloat(
+          window
+            .getComputedStyle(element)
+            .getPropertyValue("--toolbar-shadow-opacity"),
+        ),
+      ),
+    )
+    .toBe(0.1);
+
+  expect(restingOpacity).toBeLessThan(0.1);
+});
+
 test("skip link remains clipped until it receives keyboard focus", async ({ page }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" });
 

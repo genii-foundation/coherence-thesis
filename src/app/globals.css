@@ -370,6 +370,7 @@ input {
 }
 
 .site-header {
+  --toolbar-shadow-opacity: 0.025;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -379,8 +380,9 @@ input {
   gap: 1rem;
   border-bottom: 1px solid var(--line);
   background: var(--header-background);
-  box-shadow: 0 10px 28px rgba(44, 31, 18, 0.1);
+  box-shadow: 0 10px 28px rgb(44 31 18 / var(--toolbar-shadow-opacity));
   padding: 0.85rem;
+  transition: box-shadow 180ms ease;
 }
 
 .site-footer {
