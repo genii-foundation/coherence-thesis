@@ -1,26 +1,7 @@
 const clamp = (value: number, min: number, max: number) =>
   Math.max(min, Math.min(max, value));
 
-const smoothstep = (value: number) => {
-  const normalized = clamp(value, 0, 1);
-  return normalized * normalized * (3 - 2 * normalized);
-};
-
-const distributionPeak = (distance: number, peakOffset: number, width: number) => {
-  const normalized = (distance - peakOffset) / width;
-  return Math.exp(-0.5 * normalized * normalized);
-};
-
 export const coverFlowTuning = {
-  scroll: {
-    endSnapTolerancePx: 2,
-    flickDistancePx: 620,
-    flickPeakDeltaPx: 260,
-    flickSettleMs: 110,
-    verticalReleaseMs: 160,
-    verticalTakeoverMinDeltaPx: 3,
-    verticalTakeoverRatio: 1.15,
-  },
   rotation: {
     maxDegrees: 72,
     degreesPerCardOffset: 86,
@@ -33,24 +14,11 @@ export const coverFlowTuning = {
     min: 0.54,
   },
   spacing: {
-    backgroundDistributionCenterGateOffset: 0.25,
-    firstBackgroundOutwardPx: 26,
-    firstBackgroundPeakOffset: 0.48,
-    firstBackgroundWidth: 0.26,
-    secondBackgroundOutwardPx: 130,
-    secondBackgroundPeakOffset: 0.94,
-    secondBackgroundWidth: 0.28,
-    thirdBackgroundInwardPx: 52,
-    thirdBackgroundPeakOffset: 1.4,
-    thirdBackgroundWidth: 0.31,
-    centerGutterPx: 315,
-    centerGutterFalloff: 1.18,
-    centerGutterPeakOffset: 0.58,
-    sideStackCompressionPx: 760,
-    sideStackDistributionCurve: 0.98,
-    sideStackMaxCompressionRatio: 0.92,
-    sideStackMaxDistance: 2.45,
-    sideStackStartOffset: 0.14,
+    centerClearancePx: 420,
+    centerClearanceCurve: 1.34,
+    nativeScrollStepPx: 224,
+    peripheralStackPx: 390,
+    peripheralStackCurve: 0.78,
   },
   depth: {
     pxPerCard: 118,
@@ -79,30 +47,28 @@ export const coverFlowTuning = {
   },
 };
 
-export function getCoverFlowWheelIntent({
-  deltaX,
-  deltaY,
-  shiftKey,
-}: {
-  deltaX: number;
-  deltaY: number;
-  shiftKey: boolean;
-}): "horizontal" | "vertical" | "none" {
-  const absX = Math.abs(deltaX);
-  const absY = Math.abs(deltaY);
-
-  if (shiftKey && absY > 0) return "horizontal";
-  if (absX === 0 && absY === 0) return "none";
-  if (
-    absY >= coverFlowTuning.scroll.verticalTakeoverMinDeltaPx &&
-    absY >= absX * coverFlowTuning.scroll.verticalTakeoverRatio
-  ) {
-    return "vertical";
+const visualDistanceForOffset = (distance: number) => {
+  if (distance <= 1) {
+    return (
+      coverFlowTuning.spacing.centerClearancePx *
+      (1 - Math.pow(1 - distance, coverFlowTuning.spacing.centerClearanceCurve))
+    );
   }
-  return absX > 0 || absY > 0 ? "horizontal" : "none";
-}
 
-export function getCoverFlowTransform(offset: number) {
+  return (
+    coverFlowTuning.spacing.centerClearancePx +
+    coverFlowTuning.spacing.peripheralStackPx *
+      (1 -
+        Math.exp(
+          -(distance - 1) * coverFlowTuning.spacing.peripheralStackCurve,
+        ))
+  );
+};
+
+export function getCoverFlowTransform(
+  offset: number,
+  nativeScrollStepPx = coverFlowTuning.spacing.nativeScrollStepPx,
+) {
   const distance = Math.abs(offset);
   const direction = Math.sign(offset);
   const clampedOffset = clamp(
@@ -110,66 +76,12 @@ export function getCoverFlowTransform(offset: number) {
     -coverFlowTuning.rotation.maxMeasuredOffset,
     coverFlowTuning.rotation.maxMeasuredOffset,
   );
-  const stackDistance = Math.min(
-    distance,
-    coverFlowTuning.spacing.sideStackMaxDistance,
-  );
-  const centerGutterProgress = smoothstep(
-    distance / coverFlowTuning.spacing.centerGutterPeakOffset,
-  );
-  const centerGutterFade = Math.exp(
-    -Math.max(0, distance - coverFlowTuning.spacing.centerGutterPeakOffset) *
-      coverFlowTuning.spacing.centerGutterFalloff,
-  );
-  const centerGutter =
-    direction *
-    coverFlowTuning.spacing.centerGutterPx *
-    centerGutterProgress *
-    centerGutterFade;
-  const sideStackProgress = smoothstep(
-    (stackDistance - coverFlowTuning.spacing.sideStackStartOffset) /
-      (coverFlowTuning.spacing.sideStackMaxDistance -
-        coverFlowTuning.spacing.sideStackStartOffset),
-  );
-  const desiredCompression =
-    coverFlowTuning.spacing.sideStackCompressionPx *
-    Math.pow(
-      sideStackProgress,
-      coverFlowTuning.spacing.sideStackDistributionCurve,
-    );
-  const maxCompression =
-    Math.abs(centerGutter) *
-    coverFlowTuning.spacing.sideStackMaxCompressionRatio;
-  const sideStackCompression =
-    -direction * Math.min(desiredCompression, maxCompression);
-  const distributionGate = smoothstep(
-    distance / coverFlowTuning.spacing.backgroundDistributionCenterGateOffset,
-  );
-  const backgroundDistributionCorrection =
-    direction *
-    distributionGate *
-    (coverFlowTuning.spacing.firstBackgroundOutwardPx *
-      distributionPeak(
-        distance,
-        coverFlowTuning.spacing.firstBackgroundPeakOffset,
-        coverFlowTuning.spacing.firstBackgroundWidth,
-      ) +
-      coverFlowTuning.spacing.secondBackgroundOutwardPx *
-        distributionPeak(
-          distance,
-          coverFlowTuning.spacing.secondBackgroundPeakOffset,
-          coverFlowTuning.spacing.secondBackgroundWidth,
-        ) -
-      coverFlowTuning.spacing.thirdBackgroundInwardPx *
-        distributionPeak(
-          distance,
-          coverFlowTuning.spacing.thirdBackgroundPeakOffset,
-          coverFlowTuning.spacing.thirdBackgroundWidth,
-        ));
+  const visualDistance = visualDistanceForOffset(distance);
+  const nativeDistance = distance * nativeScrollStepPx;
   const shift =
     distance < 0.001
       ? 0
-      : centerGutter + sideStackCompression + backgroundDistributionCorrection;
+      : direction * (visualDistance - nativeDistance);
   const rotate = clamp(
     clampedOffset * -coverFlowTuning.rotation.degreesPerCardOffset,
     -coverFlowTuning.rotation.maxDegrees,
@@ -222,30 +134,4 @@ export function getCoverFlowTransform(offset: number) {
     shift,
     z,
   };
-}
-
-export function getCoverFlowFlickTarget({
-  activeIndex,
-  distancePx,
-  peakDeltaPx,
-  volumeCount,
-}: {
-  activeIndex: number;
-  distancePx: number;
-  peakDeltaPx: number;
-  volumeCount: number;
-}) {
-  if (volumeCount < 2) return null;
-
-  const direction = Math.sign(distancePx || peakDeltaPx);
-  if (direction === 0) return null;
-
-  const isFlick =
-    Math.abs(distancePx) >= coverFlowTuning.scroll.flickDistancePx ||
-    Math.abs(peakDeltaPx) >= coverFlowTuning.scroll.flickPeakDeltaPx;
-
-  if (!isFlick) return null;
-
-  const targetIndex = direction > 0 ? volumeCount - 1 : 0;
-  return targetIndex === activeIndex ? null : targetIndex;
 }

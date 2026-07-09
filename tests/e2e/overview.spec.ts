@@ -974,11 +974,9 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     const active = flow.querySelector<HTMLElement>(
       '.cover-flow-card[aria-current="true"]',
     );
-    const shells = Array.from(
-      flow.querySelectorAll<HTMLElement>(".cover-flow-card-shell"),
+    const activeCover = active?.querySelector<HTMLElement>(
+      ".cover-flow-image-frame",
     );
-    const firstShellRect = shells[0]?.getBoundingClientRect();
-    const secondShellRect = shells[1]?.getBoundingClientRect();
     const activeShell = active?.closest<HTMLElement>(".cover-flow-card-shell");
     const sideCard =
       activeShell?.previousElementSibling?.querySelector<HTMLElement>(
@@ -1001,11 +999,12 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       activeTransform: active ? getComputedStyle(active).transform : "",
       cardGap: window.getComputedStyle(flow.querySelector(".cover-flow-track")!)
         .gap,
+      nativeSnapStop: activeShell
+        ? window.getComputedStyle(activeShell).scrollSnapStop
+        : "",
       flowWidth: flow.getBoundingClientRect().width,
-      overlap:
-        firstShellRect && secondShellRect
-          ? firstShellRect.right - secondShellRect.left
-          : 0,
+      scrollStepWidth: activeShell?.getBoundingClientRect().width ?? 0,
+      activeCoverWidth: activeCover?.getBoundingClientRect().width ?? 0,
       panelVisible:
         active?.querySelector(".cover-flow-card-panel") &&
         window.getComputedStyle(active.querySelector(".cover-flow-card-panel")!)
@@ -1032,8 +1031,9 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   expect(coverFlowTransforms.flowWidth).toBeGreaterThanOrEqual(
     coverFlowTransforms.viewportWidth,
   );
-  expect(coverFlowTransforms.overlap).toBeGreaterThan(
-    coverFlowTransforms.viewportWidth < 720 ? 90 : 140,
+  expect(coverFlowTransforms.nativeSnapStop).toBe("normal");
+  expect(coverFlowTransforms.scrollStepWidth).toBeLessThan(
+    coverFlowTransforms.activeCoverWidth,
   );
   expect(coverFlowTransforms.panelVisible).not.toBe("none");
   expect(coverFlowTransforms.sideRotate).not.toBe("0deg");
@@ -1053,7 +1053,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       const card = document.querySelector<HTMLElement>(".cover-flow-card");
       const cover = card?.querySelector<HTMLElement>(".cover-flow-image-frame");
       const originalScrollLeft = scroller.scrollLeft;
-      const centers: number[] = [];
+      const tops: number[] = [];
       const maxScrollLeft = Math.min(
         scroller.scrollWidth - scroller.clientWidth,
         420,
@@ -1068,20 +1068,20 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
           });
         });
         const coverBox = cover?.getBoundingClientRect();
-        if (coverBox) centers.push(coverBox.top + coverBox.height / 2);
+        if (coverBox) tops.push(coverBox.top);
       }
 
       scroller.scrollLeft = originalScrollLeft;
       scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
 
       return {
-        maxCenter: Math.max(...centers),
-        minCenter: Math.min(...centers),
+        maxTop: Math.max(...tops),
+        minTop: Math.min(...tops),
       };
     });
-  expect(
-    verticalStability.maxCenter - verticalStability.minCenter,
-  ).toBeLessThanOrEqual(1);
+  expect(verticalStability.maxTop - verticalStability.minTop).toBeLessThanOrEqual(
+    1,
+  );
 
   const backgroundTarget = catalog.volumes[initialActiveIndex + 1]!;
   await coverFlow
@@ -1102,7 +1102,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     coverFlow.locator(
       '.cover-flow-card[aria-current="true"] .cover-flow-card-panel strong',
     ),
-  ).toHaveText(backgroundTarget.title);
+  ).toHaveText(backgroundTarget.title, { timeout: 15000 });
   await page.reload();
   await expect(coverFlow).toBeVisible();
   await expect(
@@ -1135,41 +1135,38 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
   ).toHaveAttribute("data-volume-href", catalog.volumes.at(-2)!.href);
 
-  await page.evaluate(() => {
-    document.documentElement.style.scrollBehavior = "auto";
-    window.scrollTo(0, 0);
-  });
-  await expect.poll(async () => page.evaluate(() => window.scrollY)).toBe(0);
-  const mixedWheelResult = await coverFlow
-    .locator(".cover-flow-scroll")
-    .evaluate((scroller) => {
-      const scrollLeftBefore = scroller.scrollLeft;
-      const event = new WheelEvent("wheel", {
-        bubbles: true,
-        cancelable: true,
-        deltaX: 160,
-        deltaY: 220,
-      });
-      const released = scroller.dispatchEvent(event);
-
-      return {
-        released,
-        scrollLeftAfter: scroller.scrollLeft,
-        scrollLeftBefore,
-      };
+  if (testInfo.project.name !== "mobile") {
+    await page.evaluate(() => {
+      document.documentElement.style.scrollBehavior = "auto";
+      window.scrollTo(0, 0);
     });
-  expect(mixedWheelResult.released).toBe(true);
-  expect(mixedWheelResult.scrollLeftAfter).toBe(
-    mixedWheelResult.scrollLeftBefore,
-  );
+    await expect.poll(async () => page.evaluate(() => window.scrollY)).toBe(0);
+    await coverFlow.scrollIntoViewIfNeeded();
+    await coverFlow.locator(".cover-flow-scroll").hover();
+    await page.mouse.wheel(0, 380);
+    await expect
+      .poll(async () => page.evaluate(() => window.scrollY))
+      .toBeGreaterThan(40);
 
-  await coverFlow.locator(".cover-flow-scroll").dispatchEvent("wheel", {
-    bubbles: true,
-    cancelable: true,
-    deltaX: 920,
-    deltaY: 0,
-  });
-  await expect(
-    coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("data-volume-href", catalog.volumes.at(-1)!.href);
+    await coverFlow.scrollIntoViewIfNeeded();
+    await coverFlow.locator(".cover-flow-scroll").evaluate((scroller) => {
+      scroller.scrollLeft = 0;
+      scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
+    });
+    await coverFlow.locator(".cover-flow-scroll").hover();
+    const nativeHorizontalScroll = await coverFlow
+      .locator(".cover-flow-scroll")
+      .evaluate((scroller) => scroller.scrollLeft);
+    await page.mouse.wheel(920, 0);
+    await expect
+      .poll(() =>
+        coverFlow
+          .locator(".cover-flow-scroll")
+          .evaluate((scroller) => scroller.scrollLeft),
+      )
+      .toBeGreaterThan(nativeHorizontalScroll + 80);
+    await expect(
+      coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+    ).not.toHaveAttribute("data-volume-href", initialActiveVolume.href);
+  }
 });

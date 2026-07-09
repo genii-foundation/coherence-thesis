@@ -2032,19 +2032,22 @@ input {
   /* Cover flow layout tuning. */
   --cover-flow-arrow-edge-inset: clamp(1rem, 2vw, 1.75rem);
   --cover-flow-arrow-height: clamp(3.65rem, 5vw, 4.4rem);
+  --cover-flow-arrow-half-height: calc(var(--cover-flow-arrow-height) / 2);
   --cover-flow-arrow-icon-size: clamp(2rem, 3vw, 2.45rem);
   --cover-flow-arrow-width: clamp(3.65rem, 5vw, 4.4rem);
+  --cover-flow-arrow-center-correction: 0rem;
   --cover-flow-card-width: clamp(18.75rem, 30vw, 27rem);
-  --cover-flow-card-overlap: clamp(10rem, 16vw, 15rem);
   --cover-flow-card-perspective: clamp(56rem, 78vw, 76rem);
-  --cover-flow-cover-origin-y: calc(var(--cover-flow-card-width) * 0.75);
+  --cover-flow-cover-center-y: calc(var(--cover-flow-card-width) * 0.855);
+  --cover-flow-cover-origin-y: 0%;
   --cover-flow-panel-max-height: min(
     30rem,
     calc(var(--cover-flow-card-width) * 1.02),
     calc(100svh - 18rem)
   );
   --cover-flow-panel-width-extra: clamp(7rem, 13vw, 12rem);
-  --cover-flow-side-gutter: calc((100vw - var(--cover-flow-card-width)) / 2);
+  --cover-flow-scroll-step: clamp(10.25rem, 16vw, 14rem);
+  --cover-flow-side-gutter: calc((100vw - var(--cover-flow-scroll-step)) / 2);
   --cover-flow-stage-min-height: clamp(44rem, 66vw, 58rem);
   --cover-flow-stage-padding-bottom: clamp(5rem, 8vw, 7rem);
   --cover-flow-stage-padding-top: clamp(5.75rem, 9vw, 8.25rem);
@@ -2059,6 +2062,7 @@ input {
   position: relative;
   overflow-x: auto;
   overflow-y: hidden;
+  overscroll-behavior-y: auto;
   overscroll-behavior-x: contain;
   perspective: clamp(62rem, 86vw, 84rem);
   scroll-behavior: smooth;
@@ -2070,12 +2074,6 @@ input {
 
 .cover-flow-scroll::-webkit-scrollbar {
   display: none;
-}
-
-.cover-flow-scroll.is-vertical-wheel-release {
-  overflow-x: hidden;
-  scroll-behavior: auto;
-  scroll-snap-type: none;
 }
 
 .cover-flow-track {
@@ -2090,10 +2088,6 @@ input {
   transform-style: flat;
 }
 
-.cover-flow-card-shell + .cover-flow-card-shell {
-  margin-left: calc(-1 * var(--cover-flow-card-overlap));
-}
-
 .cover-flow-scroll-spacer {
   flex: 0 0 var(--cover-flow-side-gutter);
   min-width: 0;
@@ -2101,11 +2095,12 @@ input {
 }
 
 .cover-flow-card-shell {
-  flex: 0 0 var(--cover-flow-card-width);
+  flex: 0 0 var(--cover-flow-scroll-step);
   isolation: isolate;
+  min-width: 0;
   position: relative;
   scroll-snap-align: center;
-  scroll-snap-stop: always;
+  scroll-snap-stop: normal;
   transform-style: flat;
 }
 
@@ -2123,7 +2118,10 @@ input {
   display: grid;
   gap: clamp(3rem, 4.2vw, 3.5rem);
   position: relative;
-  width: 100%;
+  width: var(--cover-flow-card-width);
+  margin-left: calc(
+    (var(--cover-flow-scroll-step) - var(--cover-flow-card-width)) / 2
+  );
   color: var(--ink);
   text-decoration: none;
   opacity: 1;
@@ -2534,7 +2532,11 @@ input {
 
 .cover-flow-edge-button {
   position: absolute;
-  top: clamp(11rem, 24vw, 18rem);
+  top: calc(
+    var(--cover-flow-stage-padding-top) + var(--cover-flow-cover-center-y) -
+      var(--cover-flow-arrow-half-height) -
+      var(--cover-flow-arrow-center-correction)
+  );
   z-index: 140;
   display: grid;
   place-items: center;
@@ -5316,7 +5318,7 @@ input {
 
   .cover-flow {
     --cover-flow-card-width: clamp(18rem, 52vw, 23rem);
-    --cover-flow-card-overlap: clamp(8.5rem, 22vw, 12.5rem);
+    --cover-flow-scroll-step: clamp(9.5rem, 28vw, 13rem);
     width: 100vw;
   }
 
@@ -5515,24 +5517,15 @@ input {
     --cover-flow-arrow-half-height: 2.1rem;
     --cover-flow-arrow-icon-size: 2.25rem;
     --cover-flow-arrow-width: 4.2rem;
+    --cover-flow-arrow-center-correction: -0.3rem;
     --cover-flow-card-width: min(80vw, 19rem);
-    --cover-flow-card-overlap: clamp(7rem, 38vw, 9.2rem);
     --cover-flow-card-perspective: 58rem;
-    --cover-flow-cover-center-y: min(60vw, 14.25rem);
-    --cover-flow-mobile-arrow-center-correction: -0.3rem;
     --cover-flow-panel-width-extra: 0rem;
+    --cover-flow-scroll-step: min(56vw, 13.3rem);
     --cover-flow-stage-min-height: clamp(42rem, 154vw, 55rem);
     --cover-flow-stage-padding-bottom: 6rem;
     --cover-flow-stage-padding-top: 4.9rem;
     width: 100vw;
-  }
-
-  .cover-flow-edge-button {
-    top: calc(
-      var(--cover-flow-stage-padding-top) + var(--cover-flow-cover-center-y) -
-        var(--cover-flow-arrow-half-height) -
-        var(--cover-flow-mobile-arrow-center-correction)
-    );
   }
 
   .manuscript-card-panel {
