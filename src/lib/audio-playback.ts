@@ -17,6 +17,8 @@ export type AudioPlaybackVoice = {
 };
 
 export type AudioPlaybackRequest = {
+  sectionId: string;
+  audioVersionId: string;
   text: string;
   voiceId: string | null;
   rate: number;
@@ -98,9 +100,170 @@ export function createBrowserSpeechProvider(): AudioPlaybackProvider {
   };
 }
 
+async function responseForAudioUrl(url: string): Promise<Response> {
+  if ("caches" in globalThis) {
+    const cache = await caches.open(offlineAudioCacheName);
+    const cached = await cache.match(url);
+    if (cached) return cached;
+    const response = await fetch(url, { credentials: "same-origin" });
+    if (response.ok) await cache.put(url, response.clone());
+    return response;
+  }
+  return fetch(url, { credentials: "same-origin" });
+}
+
+function hostedVoiceLabel(voice: AudioClipManifest["voices"][number]): string {
+  if (voice.provider === "fish-audio" && voice.id === "default") {
+    return "High Quality 1";
+  }
+  return voice.label;
+}
+
+export function createHostedClipProvider(
+  manifest: AudioClipManifest,
+  fallback: AudioPlaybackProvider = createBrowserSpeechProvider(),
+): AudioPlaybackProvider {
+  let audio: HTMLAudioElement | null = null;
+  let objectUrl: string | null = null;
+  let playingClip = false;
+
+  const clearAudio = () => {
+    if (audio) {
+      audio.pause();
+      audio.removeAttribute("src");
+      audio.load();
+    }
+    audio = null;
+    playingClip = false;
+    if (objectUrl) URL.revokeObjectURL(objectUrl);
+    objectUrl = null;
+  };
+
+  const playAudio = (
+    source: string,
+    request: AudioPlaybackRequest,
+    onFailure: (error?: unknown) => void,
+    managedObjectUrl?: string,
+  ) => {
+    clearAudio();
+    objectUrl = managedObjectUrl ?? null;
+    const currentAudio = new Audio();
+    audio = currentAudio;
+    playingClip = true;
+    currentAudio.src = source;
+    currentAudio.preload = "auto";
+    currentAudio.playbackRate = request.rate;
+    currentAudio.onended = () => {
+      if (audio !== currentAudio) return;
+      clearAudio();
+      request.onEnd();
+    };
+    const fail = (error?: unknown) => {
+      if (audio !== currentAudio) return;
+      clearAudio();
+      onFailure(error);
+    };
+    currentAudio.onerror = fail;
+    currentAudio.play().catch(fail);
+  };
+
+  const playCachedBlob = (clip: AudioClipSection, request: AudioPlaybackRequest) => {
+    responseForAudioUrl(clip.href)
+      .then(async (response) => {
+        if (!response.ok) throw new Error(`Audio clip failed: ${response.status}`);
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        playAudio(blobUrl, request, () => {
+          clearAudio();
+          fallback.speak(request);
+        }, blobUrl);
+      })
+      .catch(() => {
+        clearAudio();
+        fallback.speak(request);
+      });
+  };
+
+  return {
+    id: "hosted-clips",
+    isSupported() {
+      return (
+        (typeof Audio !== "undefined" && manifest.voices.length > 0) ||
+        fallback.isSupported()
+      );
+    },
+    getVoices() {
+      return [
+        ...manifest.voices.map((voice) => ({
+          id: clipVoicePreferenceId(voice.id),
+          label: hostedVoiceLabel(voice),
+        })),
+        ...fallback.getVoices(),
+      ];
+    },
+    subscribeVoices(listener) {
+      return fallback.subscribeVoices(listener);
+    },
+    speak(request) {
+      const clipVoiceId = parseClipVoicePreferenceId(request.voiceId);
+      const clip =
+        clipVoiceId === null
+          ? null
+          : findAudioClip(
+              manifest,
+              clipVoiceId,
+              request.sectionId,
+              request.audioVersionId,
+            );
+      if (!clip || typeof Audio === "undefined") {
+        fallback.speak(request);
+        return;
+      }
+
+      fallback.cancel();
+      playAudio(clip.href, request, () => playCachedBlob(clip, request));
+    },
+    pause() {
+      if (audio && playingClip) {
+        audio.pause();
+        return;
+      }
+      fallback.pause();
+    },
+    resume() {
+      if (audio && playingClip) {
+        void audio.play();
+        return;
+      }
+      fallback.resume();
+    },
+    cancel() {
+      clearAudio();
+      fallback.cancel();
+    },
+    isPaused() {
+      if (audio && playingClip) return audio.paused;
+      return fallback.isPaused();
+    },
+  };
+}
+
 // Selects the playback provider for the reader. Today this is always the
 // browser engine; when a precomputed audio manifest exists, a clip-backed
 // provider can be chosen here without any island change.
-export function createDefaultAudioProvider(): AudioPlaybackProvider {
+export function createDefaultAudioProvider(
+  manifest?: AudioClipManifest,
+): AudioPlaybackProvider {
+  if (manifest?.voices.length) {
+    return createHostedClipProvider(manifest);
+  }
   return createBrowserSpeechProvider();
 }
+import {
+  clipVoicePreferenceId,
+  findAudioClip,
+  parseClipVoicePreferenceId,
+  type AudioClipSection,
+  type AudioClipManifest,
+} from "@/lib/audio-manifest";
+import { offlineAudioCacheName } from "@/lib/audio-offline-cache";

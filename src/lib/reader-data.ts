@@ -172,3 +172,9 @@ export const loadProgressSections = memoizedLoader<ProgressSectionData[]>(
   "/data/progress-sections.json",
   "progress section data",
 );
+
+export const loadAudioClipManifest = memoizedLoader<AudioClipManifest>(
+  "/data/audio-manifest.json",
+  "audio clip manifest",
+);
+import type { AudioClipManifest } from "@/lib/audio-manifest";

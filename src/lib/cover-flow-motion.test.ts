@@ -3,6 +3,7 @@ import {
   coverFlowTuning,
   getCoverFlowFlickTarget,
   getCoverFlowTransform,
+  getCoverFlowWheelIntent,
 } from "./cover-flow-motion";
 
 describe("cover flow motion", () => {
@@ -16,14 +17,29 @@ describe("cover flow motion", () => {
       previous = current;
     }
 
-    expect(maxShiftStep).toBeLessThan(3);
+    expect(maxShiftStep).toBeLessThan(5);
   });
 
-  it("keeps side covers in their own visual lane instead of crossing the active cover", () => {
+  it("keeps side cover corrections mirrored and bounded", () => {
     for (let offset = 0.05; offset <= 2.6; offset += 0.05) {
-      expect(getCoverFlowTransform(offset).shift).toBeGreaterThanOrEqual(0);
-      expect(getCoverFlowTransform(-offset).shift).toBeLessThanOrEqual(0);
+      const right = getCoverFlowTransform(offset).shift;
+      const left = getCoverFlowTransform(-offset).shift;
+
+      expect(Math.abs(right + left)).toBeLessThan(0.001);
+      expect(Math.abs(right)).toBeLessThan(340);
     }
+  });
+
+  it("fans the first two background cards while pulling the outer stack inward", () => {
+    const activeNeighbor = getCoverFlowTransform(0.44).shift;
+    const firstBackground = getCoverFlowTransform(1).shift;
+    const outerBackground = getCoverFlowTransform(1.4).shift;
+    const farBackground = getCoverFlowTransform(2).shift;
+
+    expect(activeNeighbor).toBeGreaterThan(260);
+    expect(firstBackground).toBeGreaterThan(80);
+    expect(outerBackground).toBeLessThan(10);
+    expect(farBackground).toBeLessThan(firstBackground / 2);
   });
 
   it("hides inactive details while keeping all cover anchors fully opaque", () => {
@@ -35,6 +51,17 @@ describe("cover flow motion", () => {
     expect(inactive.panelOpacity).toBe(0);
     expect(inactive.panelVisibility).toBe("hidden");
     expect(inactive.coverWashOpacity).toBeGreaterThan(0);
+  });
+
+  it("fades cover shadows as cards move into the background", () => {
+    const active = getCoverFlowTransform(0).coverShadowStrength;
+    const side = getCoverFlowTransform(1).coverShadowStrength;
+    const far = getCoverFlowTransform(2.4).coverShadowStrength;
+
+    expect(active).toBe(1);
+    expect(side).toBeLessThan(active);
+    expect(far).toBeLessThan(side);
+    expect(far).toBe(coverFlowTuning.coverShadow.min);
   });
 
   it("sends a decisive forward flick to the last cover", () => {
@@ -79,5 +106,23 @@ describe("cover flow motion", () => {
         volumeCount: 9,
       }),
     ).toBeNull();
+  });
+
+  it("hands meaningful vertical wheel intent back to the page during leftover horizontal inertia", () => {
+    expect(
+      getCoverFlowWheelIntent({ deltaX: 20, deltaY: 32, shiftKey: false }),
+    ).toBe("vertical");
+  });
+
+  it("keeps horizontal trackpad swipes and shift-wheel gestures on the cover rail", () => {
+    expect(
+      getCoverFlowWheelIntent({ deltaX: 20, deltaY: 12, shiftKey: false }),
+    ).toBe("horizontal");
+    expect(
+      getCoverFlowWheelIntent({ deltaX: 24, deltaY: 2, shiftKey: false }),
+    ).toBe("horizontal");
+    expect(
+      getCoverFlowWheelIntent({ deltaX: 0, deltaY: 24, shiftKey: true }),
+    ).toBe("horizontal");
   });
 });

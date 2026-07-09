@@ -30,11 +30,16 @@ type ToolbarMenuTriggerProps = {
   "data-toolbar-menu-trigger": "true";
 };
 
+type ToolbarMenuStyle = CSSProperties & {
+  "--toolbar-menu-height": string;
+  "--toolbar-mobile-popover-top"?: string;
+};
+
 type ToolbarMenuPopoverProps = {
   ref: (element: HTMLElement | null) => void;
   "aria-hidden"?: true;
   "data-menu-state": "open" | "closing";
-  style: CSSProperties;
+  style: ToolbarMenuStyle;
 };
 
 export type ToolbarMenu<C extends HTMLElement> = {
@@ -56,6 +61,8 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
   const [rendered, setRendered] = useState(false);
   const [menuState, setMenuState] = useState<"open" | "closing">("closing");
   const [menuHeight, setMenuHeight] = useState(0);
+  const [mobilePopoverTop, setMobilePopoverTop] = useState<number | null>(null);
+  const openRef = useRef(open);
   const containerRef = useRef<C | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const floatingRefsRef = useRef(floatingRefs);
@@ -89,11 +96,26 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     closeTimerRef.current = null;
   }, []);
 
+  const measureMobilePopoverTop = useCallback(() => {
+    if (!window.matchMedia("(max-width: 860px)").matches) {
+      setMobilePopoverTop(null);
+      return;
+    }
+
+    const headerBottom =
+      document.querySelector(".site-header")?.getBoundingClientRect().bottom ??
+      null;
+    setMobilePopoverTop(
+      headerBottom === null ? null : Math.max(0, Math.ceil(headerBottom) + 1),
+    );
+  }, []);
+
   const measurePopover = useCallback(() => {
     const popover = popoverRef.current;
     if (!popover) return;
+    measureMobilePopoverTop();
     setMenuHeight(popover.scrollHeight);
-  }, []);
+  }, [measureMobilePopoverTop]);
 
   const scheduleMeasure = useCallback(() => {
     clearMeasureFrame();
@@ -107,17 +129,25 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     clearCloseTimer();
     clearMeasureFrame();
     clearTransitionFrame();
+    openRef.current = true;
     setRendered(true);
     setMenuState("closing");
     setMenuHeight(0);
+    measureMobilePopoverTop();
     setOpen(true);
-  }, [clearCloseTimer, clearMeasureFrame, clearTransitionFrame]);
+  }, [
+    clearCloseTimer,
+    clearMeasureFrame,
+    clearTransitionFrame,
+    measureMobilePopoverTop,
+  ]);
 
   const beginClose = useCallback(() => {
     clearCloseTimer();
     clearMeasureFrame();
     clearTransitionFrame();
     measurePopover();
+    openRef.current = false;
     setMenuState("closing");
     setOpen(false);
     transitionFrameRef.current = window.requestAnimationFrame(() => {
@@ -137,6 +167,7 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
 
   const setMenuOpen = useCallback(
     (nextOpen: boolean) => {
+      if (nextOpen === openRef.current) return;
       if (nextOpen) beginOpen();
       else beginClose();
     },
@@ -207,6 +238,14 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
   }, [open, rendered, scheduleMeasure]);
 
   useEffect(() => {
+    if (!open || !rendered) return;
+    window.addEventListener("resize", scheduleMeasure);
+    return () => {
+      window.removeEventListener("resize", scheduleMeasure);
+    };
+  }, [open, rendered, scheduleMeasure]);
+
+  useEffect(() => {
     return () => {
       clearMeasureFrame();
       clearTransitionFrame();
@@ -236,7 +275,10 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
       "data-menu-state": menuState,
       style: {
         "--toolbar-menu-height": `${menuHeight}px`,
-      } as CSSProperties,
+        ...(mobilePopoverTop === null
+          ? {}
+          : { "--toolbar-mobile-popover-top": `${mobilePopoverTop}px` }),
+      },
     },
   };
 }
