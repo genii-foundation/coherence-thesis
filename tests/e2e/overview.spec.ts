@@ -963,6 +963,10 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       coverToPanelGap:
         coverBox && panelBox ? panelBox.top - coverBox.bottom : 0,
       coverToPanelGapTarget: coverBox?.left ?? 0,
+      coverToPanelGapRatio:
+        coverBox && panelBox
+          ? (panelBox.top - coverBox.bottom) / coverBox.height
+          : 0,
       panelHeight: panelBox?.height ?? 0,
       panelMaxHeight: panelStyle?.maxHeight ?? "",
       panelOverflowY: panelStyle?.overflowY ?? "",
@@ -1037,7 +1041,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       ),
     ).toBeLessThanOrEqual(2);
   } else {
-    expect(panelMetrics.coverToPanelGap).toBeGreaterThanOrEqual(44);
+    expect(panelMetrics.coverToPanelGapRatio).toBeCloseTo(1 / 22.5, 2);
   }
   expect(panelMetrics.panelMaxHeight).not.toBe("none");
   expect(panelMetrics.panelOverflowY).toBe("hidden");
@@ -1584,6 +1588,8 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
       nextTop: nextRect?.top ?? 0,
       panelBottom: panel?.bottom ?? 0,
       panelTop: panel?.top ?? 0,
+      coverToPanelGap:
+        cover && panel ? panel.top - cover.bottom : 0,
       viewportHeight: window.innerHeight,
     };
   });
@@ -1593,6 +1599,12 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
   expect(landscapeMetrics.coverBottom).toBeLessThan(
     landscapeMetrics.viewportHeight,
   );
+  expect(
+    landscapeMetrics.coverToPanelGap / landscapeMetrics.coverHeight,
+  ).toBeGreaterThanOrEqual(0.04);
+  expect(
+    landscapeMetrics.coverToPanelGap / landscapeMetrics.coverHeight,
+  ).toBeLessThanOrEqual(0.06);
   expect(landscapeMetrics.panelTop).toBeLessThan(landscapeMetrics.viewportHeight);
   expect(landscapeMetrics.panelBottom).toBeGreaterThan(
     landscapeMetrics.panelTop,
