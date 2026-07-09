@@ -82,14 +82,17 @@ test("single-section chapter cards open reader content directly", async ({
 }) => {
   await page.goto(singleSectionPart.href);
 
-  const chapterCard = page.getByRole("link", {
+  const chapterCard = page.locator(".chapter-list").getByRole("link", {
     name: new RegExp(singleSectionChapterTarget.title),
   });
   await expect(chapterCard).toHaveAttribute(
     "href",
     singleSectionChapterTarget.href,
   );
-  await chapterCard.click();
+  await Promise.all([
+    page.waitForURL(singleSectionChapterTarget.href),
+    chapterCard.click(),
+  ]);
 
   await expect(page).toHaveURL(singleSectionChapterTarget.href);
   await expect(
@@ -109,7 +112,7 @@ test("multi-section chapters render one anchored reader page", async ({
   page,
 }) => {
   const chapterHref =
-    "/manuscripts/architecting-providence/the-governance-architecture/the-amendment-architecture/";
+    "/manuscripts/4/the-governance-architecture/the-amendment-architecture/";
   const sections = catalog.sections.filter(
     (section) => section.chapterHref === chapterHref,
   );
@@ -158,21 +161,74 @@ test("legacy front matter routes redirect to clean canonical routes", async ({
   page,
 }) => {
   await page.goto("/manuscripts/humanitys-most-viable-future/front-matter/");
-  await expect(page).toHaveURL("/manuscripts/humanitys-most-viable-future/opening/");
+  await expect(page).toHaveURL("/manuscripts/1/opening/");
 
   await page.goto(
     "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/",
   );
   await expect(page).toHaveURL(
-    "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/",
+    "/manuscripts/8/contents/prologue-two-scenes/",
   );
 
   await page.goto(
     "/manuscripts/humanitys-most-viable-future/front-matter/orientation/v01-orientation/",
   );
   await expect(page).toHaveURL(
-    "/manuscripts/humanitys-most-viable-future/opening/orientation/v01-orientation/",
+    "/manuscripts/1/opening/orientation/",
   );
+});
+
+test("structural part opener routes redirect to substantive content", async ({
+  page,
+}) => {
+  await page.goto(
+    "/manuscripts/wielding-intelligence/v02-wielding-intelligence/",
+  );
+  await expect(page).toHaveURL(
+    "/manuscripts/2/main/builders-of-the-coherent-civilization/",
+  );
+  await expect(
+    page.getByRole("heading", {
+      level: 1,
+      name: "Builders of the Coherent Civilization",
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("navigation", { name: "Breadcrumb" }).locator(
+      ".breadcrumb-label",
+    ),
+  ).toHaveText([
+    "Wielding Intelligence",
+    "Builders of the Coherent Civilization",
+  ]);
+
+  await page.goto("/manuscripts/3/the-reckoning/start/");
+  await expect(page).toHaveURL(
+    "/manuscripts/3/the-reckoning/the-central-wound/",
+  );
+  await expect(
+    page.getByRole("heading", { level: 1, name: "The Central Wound" }),
+  ).toBeVisible();
+});
+
+test("synthetic opening part headings do not repeat their title", async ({
+  page,
+}) => {
+  await page.goto("/manuscripts/1/opening/");
+
+  const heading = page.locator(".page-heading");
+  await expect(heading.locator(".eyebrow")).toHaveCount(0);
+  await expect(heading.getByRole("heading", { level: 1 })).toHaveText("Opening");
+  await expect(heading.locator("h1 + p")).toHaveText(
+    "5 minutes across 4 chapters.",
+  );
+
+  const headingGap = await heading.evaluate((element) => {
+    const title = element.querySelector("h1")?.getBoundingClientRect();
+    const summary = element.querySelector("h1 + p")?.getBoundingClientRect();
+    return title && summary ? summary.top - title.bottom : 0;
+  });
+  expect(headingGap).toBeGreaterThanOrEqual(14);
 });
 
 test("singleton chapter section navigation points up to the part", async ({
@@ -416,7 +472,7 @@ test("truncated breadcrumb labels reveal their full title in a tooltip", async (
 
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto(
-    "/manuscripts/providence-imperative/the-living-reality/the-second-link-perception-makes-new-coordination-possible/",
+    "/manuscripts/3/the-living-reality/the-second-link-perception-makes-new-coordination-possible/",
   );
 
   const breadcrumbs = page.getByRole("navigation", { name: "Breadcrumb" });

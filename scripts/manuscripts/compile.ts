@@ -27,7 +27,10 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
   >();
   const overview = { label: "Overview", href: "/overview/" };
   const addRoute = (href: string, crumbs: Array<{ label: string; href: string }>) => {
-    routes.set(href, { href, crumbs });
+    const compactCrumbs = crumbs.filter(
+      (crumb, index) => crumb.label !== crumbs[index + 1]?.label,
+    );
+    routes.set(href, { href, crumbs: compactCrumbs });
   };
 
   addRoute("/", []);

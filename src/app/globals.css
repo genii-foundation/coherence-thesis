@@ -420,6 +420,18 @@ input {
   transition: color 160ms ease;
 }
 
+.brand-link {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand-link:where(:visited) {
+  color: inherit;
+}
+
 .brand-kicker,
 .eyebrow {
   color: var(--bronze-deep);
@@ -432,8 +444,13 @@ input {
 }
 
 .brand-kicker {
+  width: fit-content;
+  border-bottom: 1px solid transparent;
   overflow: hidden;
   text-overflow: clip;
+  transition:
+    border-color 160ms ease,
+    color 160ms ease;
   white-space: nowrap;
 }
 
@@ -456,7 +473,13 @@ input {
 }
 
 .brand-mark-active {
+  gap: 0.3rem;
   max-width: clamp(18rem, 36vw, 30rem);
+}
+
+.brand-mark-active .brand-kicker {
+  font-size: clamp(0.82rem, 1.12vw, 0.95rem);
+  line-height: 1.15;
 }
 
 .brand-mark-active .brand-title {
@@ -565,14 +588,19 @@ input {
   color: inherit;
 }
 
-.brand-mark:hover,
+.brand-link:hover,
+.brand-link:focus-visible,
 .brand-mark:focus-visible {
   color: var(--ink);
   outline: none;
 }
 
-.brand-mark:hover .brand-title,
-.brand-mark:focus-visible .brand-title,
+.brand-home-link:hover .brand-kicker,
+.brand-home-link:focus-visible .brand-kicker,
+.brand-volume-link:hover .brand-title,
+.brand-volume-link:focus-visible .brand-title,
+.brand-mark[href]:hover .brand-title,
+.brand-mark[href]:focus-visible .brand-title,
 .breadcrumb-trail a.breadcrumb-label:hover,
 .breadcrumb-trail a.breadcrumb-label:focus-visible {
   border-color: rgba(119, 84, 42, 0.62);
@@ -3376,6 +3404,10 @@ input {
   line-height: 1.05;
 }
 
+.page-heading h1 + p {
+  margin-top: clamp(0.9rem, 1.8vw, 1.15rem);
+}
+
 .volume-heading {
   max-width: none;
 }
@@ -5139,6 +5171,10 @@ input {
     min-width: 0;
     max-width: max-content;
     padding: 0.2rem 0 0.2rem 0.4rem;
+  }
+
+  .site-header .brand-home-link {
+    display: none;
   }
 
   .site-header .brand-kicker,

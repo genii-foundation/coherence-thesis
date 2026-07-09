@@ -83,8 +83,8 @@ export const wieldingSection = catalog.sections.find(
 )!;
 export const singleSectionChapterTarget = catalog.sections.find(
   (section) =>
-    section.href ===
-    "/manuscripts/providence-imperative/the-living-reality/the-second-link-perception-makes-new-coordination-possible/v03-the-second-link-perception-makes-new-coordination-possible/",
+    section.sectionId ===
+    "v03-the-second-link-perception-makes-new-coordination-possible",
 )!;
 export const singleSectionPart = partById(
   singleSectionChapterTarget.volumeId,
@@ -94,9 +94,7 @@ export const singleSectionChapter = singleSectionPart.chapters.find(
   (chapter) => chapter.chapterId === singleSectionChapterTarget.chapterId,
 )!;
 export const centralWoundSection = catalog.sections.find(
-  (section) =>
-    section.href ===
-    "/manuscripts/providence-imperative/the-reckoning/the-central-wound/v03-the-central-wound/",
+  (section) => section.sectionId === "v03-the-central-wound",
 )!;
 export const centralWoundPart = partById(
   centralWoundSection.volumeId,

@@ -503,6 +503,14 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   await expect(
     outlineMenu.locator(".outline-volume-link").first(),
   ).toBeVisible();
+  const topLinks = outlineMenu.locator(".outline-top-links a");
+  await expect(topLinks).toHaveCount(2);
+  await expect(topLinks.nth(0).locator("small")).toHaveText("Home");
+  await expect(topLinks.nth(1).locator("small")).toHaveText("Outline");
+  const topLinkIcons = await topLinks.evaluateAll((links) =>
+    links.map((link) => link.querySelector("svg")?.innerHTML ?? ""),
+  );
+  expect(topLinkIcons[0]).not.toBe(topLinkIcons[1]);
 
   const outlineBox = await outlineMenu.boundingBox();
   const outlineViewport = page.viewportSize();
@@ -582,7 +590,7 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   ).toBeVisible();
   await expect(
     outlineMenu.locator(".outline-chapters").getByRole("link", {
-      name: /^Wielding Intelligence/,
+      name: /^Builders of the Coherent Civilization/,
     }),
   ).toBeVisible();
   await page.keyboard.press("Escape");
@@ -1136,7 +1144,7 @@ test("toolbar brand owns the active manuscript identity", async ({
     );
     await expect(page.locator(".site-nav .mobile-home-link")).toHaveCount(0);
     await expect(brand).toHaveClass(/brand-mark-compact/);
-    await brand.focus();
+    await brand.locator(".brand-volume-link").focus();
     const mobileBrandTooltip = page.locator(".clean-tooltip");
     await expect(mobileBrandTooltip).toBeVisible();
     await page.waitForFunction(() => {
@@ -1167,8 +1175,10 @@ test("toolbar brand owns the active manuscript identity", async ({
         mobileBrandTooltipAlignment.tooltipArrowX -
           mobileBrandTooltipAlignment.brandCenter,
       ),
-    ).toBeLessThanOrEqual(3);
-    await brand.evaluate((element) => (element as HTMLElement).blur());
+    ).toBeLessThanOrEqual(4);
+    await brand
+      .locator(".brand-volume-link")
+      .evaluate((element) => (element as HTMLElement).blur());
     await expect(mobileBrandTooltip).toHaveCount(0);
 
     await page.setViewportSize({ width: 500, height: 760 });
@@ -1246,6 +1256,11 @@ test("toolbar brand owns the active manuscript identity", async ({
     .evaluate((element) =>
       Number.parseFloat(getComputedStyle(element).fontSize),
     );
+  const homepageBrandKickerSize = await brand
+    .locator(".brand-kicker")
+    .evaluate((element) =>
+      Number.parseFloat(getComputedStyle(element).fontSize),
+    );
 
   await page.goto("/overview/");
   const overviewBrandTitleMetrics = await brand.evaluate((element) => {
@@ -1271,7 +1286,12 @@ test("toolbar brand owns the active manuscript identity", async ({
   await page.goto(wieldingVolume.href);
   await expect(brand).toHaveAttribute(
     "aria-label",
-    `The Coherence Thesis Volume ${wieldingVolume.numberLabel} · ${wieldingVolume.title} home`,
+    `The Coherence Thesis Volume ${wieldingVolume.numberLabel} · ${wieldingVolume.title}`,
+  );
+  await expect(brand.locator(".brand-home-link")).toHaveAttribute("href", "/");
+  await expect(brand.locator(".brand-volume-link")).toHaveAttribute(
+    "href",
+    wieldingVolume.href,
   );
   await expect(brand.locator(".brand-kicker")).toHaveText(
     "The Coherence Thesis",
@@ -1288,24 +1308,60 @@ test("toolbar brand owns the active manuscript identity", async ({
       Number.parseFloat(getComputedStyle(element).fontSize),
     );
   expect(activeBrandTitleSize).toBeLessThan(homepageBrandTitleSize);
+  const activeBrandMetrics = await brand.evaluate((element) => {
+    const kicker = element.querySelector(".brand-kicker")!;
+    const title = element.querySelector(".brand-title")!;
+    const kickerRect = kicker.getBoundingClientRect();
+    const titleRect = title.getBoundingClientRect();
+
+    return {
+      kickerFontSize: Number.parseFloat(getComputedStyle(kicker).fontSize),
+      lineGap: titleRect.top - kickerRect.bottom,
+    };
+  });
+  expect(activeBrandMetrics.kickerFontSize).toBeGreaterThan(
+    homepageBrandKickerSize + 1,
+  );
+  expect(activeBrandMetrics.lineGap).toBeGreaterThanOrEqual(4);
   await expect(
     page.getByRole("navigation", { name: "Breadcrumb" }),
   ).toHaveCount(0);
 
   const brandStyles = await brand.evaluate((element) => ({
     background: window.getComputedStyle(element).backgroundColor,
-    titleBorder: window.getComputedStyle(element.querySelector(".brand-title")!)
-      .borderBottomColor,
+    kickerBorder: window.getComputedStyle(
+      element.querySelector(".brand-kicker")!,
+    ).borderBottomColor,
+    titleBorder: window.getComputedStyle(
+      element.querySelector(".brand-title")!,
+    ).borderBottomColor,
   }));
-  await brand.hover();
+  await brand.locator(".brand-home-link").hover();
   await page.waitForTimeout(200);
-  const brandHoverStyles = await brand.evaluate((element) => ({
-    background: window.getComputedStyle(element).backgroundColor,
-    titleBorder: window.getComputedStyle(element.querySelector(".brand-title")!)
-      .borderBottomColor,
+  const homeHoverStyles = await brand.evaluate((element) => ({
+    kickerBorder: window.getComputedStyle(
+      element.querySelector(".brand-kicker")!,
+    ).borderBottomColor,
+    titleBorder: window.getComputedStyle(
+      element.querySelector(".brand-title")!,
+    ).borderBottomColor,
   }));
-  expect(brandHoverStyles.background).toBe(brandStyles.background);
-  expect(brandHoverStyles.titleBorder).not.toBe(brandStyles.titleBorder);
+  expect(homeHoverStyles.kickerBorder).not.toBe(brandStyles.kickerBorder);
+  expect(homeHoverStyles.titleBorder).toBe(brandStyles.titleBorder);
+  await brand.locator(".brand-volume-link").hover();
+  await page.waitForTimeout(200);
+  const volumeHoverStyles = await brand.evaluate((element) => ({
+    background: window.getComputedStyle(element).backgroundColor,
+    kickerBorder: window.getComputedStyle(
+      element.querySelector(".brand-kicker")!,
+    ).borderBottomColor,
+    titleBorder: window.getComputedStyle(
+      element.querySelector(".brand-title")!,
+    ).borderBottomColor,
+  }));
+  expect(volumeHoverStyles.background).toBe(brandStyles.background);
+  expect(volumeHoverStyles.kickerBorder).toBe(brandStyles.kickerBorder);
+  expect(volumeHoverStyles.titleBorder).not.toBe(brandStyles.titleBorder);
   if (page.viewportSize()?.width && page.viewportSize()!.width > 860) {
     await expect(page.getByRole("tooltip")).toHaveCount(0);
   }
@@ -1356,7 +1412,7 @@ test("toolbar brand owns the active manuscript identity", async ({
   await expect(brand.locator(".brand-title-mobile")).toHaveText(
     `Volume ${wieldingVolume.numberLabel}`,
   );
-  await brand.hover();
+  await brand.locator(".brand-volume-link").hover();
   const brandTooltip = page.getByRole("tooltip");
   await expect(brandTooltip).toBeVisible();
   await expect(brandTooltip).toHaveText(

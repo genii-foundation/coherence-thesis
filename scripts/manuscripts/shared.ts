@@ -202,6 +202,7 @@ function parseMarkdownDocument(
 type RouteSection = Pick<
   ManuscriptFrontmatter,
   | "volumeId"
+  | "volumeOrder"
   | "partId"
   | "partTitle"
   | "partOrder"
@@ -211,8 +212,19 @@ type RouteSection = Pick<
 
 type RoutePart = Pick<
   ManuscriptFrontmatter,
-  "volumeId" | "partId" | "partTitle" | "partOrder"
+  "volumeId" | "volumeOrder" | "partId" | "partTitle" | "partOrder"
 >;
+
+type VolumeRouteSource = {
+  volumeId: string;
+  volumeOrder?: number;
+  order?: number;
+};
+
+type SectionHrefOptions = {
+  chapterSectionCount?: number;
+  partChapterCount?: number;
+};
 
 export function routeVolumesForDocuments(
   docs: MarkdownDocument[],
@@ -224,6 +236,7 @@ export function routeVolumesForDocuments(
     if (!parts.has(fm.partId)) {
       parts.set(fm.partId, {
         volumeId: fm.volumeId,
+        volumeOrder: fm.volumeOrder,
         partId: fm.partId,
         partTitle: fm.partTitle,
         partOrder: fm.partOrder,
@@ -247,26 +260,72 @@ function routeVolume(
   return contexts.get(volumeId);
 }
 
+export function volumeRouteSegment(volume: VolumeRouteSource): string {
+  const order = volume.volumeOrder ?? volume.order;
+  return typeof order === "number" && Number.isInteger(order) && order > 0
+    ? String(order)
+    : volume.volumeId;
+}
+
+function partRouteSegment(section: RoutePart, volume?: VolumeLabelSource): string {
+  if (section.partId === section.volumeId) return "main";
+  return displayPartRouteSegment(section, volume);
+}
+
+function sectionRouteSegment(section: Pick<RouteSection, "sectionId">): string {
+  return section.sectionId.replace(/^v\d+-/, "");
+}
+
+function partRouteSegments(section: RoutePart, volume?: VolumeLabelSource): string[] {
+  return [volumeRouteSegment(section), partRouteSegment(section, volume)];
+}
+
+function chapterRouteSegments(
+  section: RouteSection,
+  volume?: VolumeLabelSource,
+): string[] {
+  if (section.chapterId === section.partId) return partRouteSegments(section, volume);
+  return [...partRouteSegments(section, volume), section.chapterId];
+}
+
+function shouldOmitSectionRouteSegment(
+  section: RouteSection,
+  volume: VolumeLabelSource | undefined,
+  options: SectionHrefOptions,
+): boolean {
+  const leaf = sectionRouteSegment(section);
+  const previousSegment = chapterRouteSegments(section, volume).at(-1);
+  if (leaf !== previousSegment) return false;
+  if (options.chapterSectionCount !== 1) return false;
+  if (section.chapterId === section.partId && (options.partChapterCount ?? 0) > 1) {
+    return false;
+  }
+  return true;
+}
+
 export function sectionHref(
   section: RouteSection,
   volume?: VolumeLabelSource,
+  options: SectionHrefOptions = {},
 ): string {
-  const route = [section.volumeId];
-  if (section.partId !== section.volumeId) {
-    route.push(displayPartRouteSegment(section, volume));
+  const route = chapterRouteSegments(section, volume);
+  if (!shouldOmitSectionRouteSegment(section, volume, options)) {
+    const leaf = sectionRouteSegment(section);
+    route.push(leaf === route.at(-1) ? "start" : leaf);
   }
-  if (section.chapterId !== section.partId) route.push(section.chapterId);
-  route.push(section.sectionId);
   return `/manuscripts/${route.join("/")}/`;
 }
 
 function sectionReaderHref(
   section: RouteSection,
   chapterSectionCount: number,
+  partChapterCount: number,
   volume?: VolumeLabelSource,
 ): string {
   const chapterRoute = chapterHref(section, volume);
-  if (chapterSectionCount <= 1) return sectionHref(section, volume);
+  if (chapterSectionCount <= 1) {
+    return sectionHref(section, volume, { chapterSectionCount, partChapterCount });
+  }
   return `${chapterRoute}#${section.sectionId}`;
 }
 
@@ -274,12 +333,7 @@ export function chapterHref(
   section: RouteSection,
   volume?: VolumeLabelSource,
 ): string {
-  if (section.chapterId === section.partId) return partHref(section, volume);
-  const route = [section.volumeId];
-  if (section.partId !== section.volumeId) {
-    route.push(displayPartRouteSegment(section, volume));
-  }
-  route.push(section.chapterId);
+  const route = chapterRouteSegments(section, volume);
   return `/manuscripts/${route.join("/")}/`;
 }
 
@@ -287,14 +341,11 @@ export function partHref(
   section: RoutePart,
   volume?: VolumeLabelSource,
 ): string {
-  if (section.partId === section.volumeId) {
-    return `/manuscripts/${section.volumeId}/part-${section.partId}/`;
-  }
-  return `/manuscripts/${section.volumeId}/${displayPartRouteSegment(section, volume)}/`;
+  return `/manuscripts/${partRouteSegments(section, volume).join("/")}/`;
 }
 
-export function volumeHref(volumeId: string): string {
-  return `/manuscripts/${volumeId}/`;
+export function volumeHref(volume: VolumeRouteSource): string {
+  return `/manuscripts/${volumeRouteSegment(volume)}/`;
 }
 
 // Canonical git subprocess runner for the build scripts. Throws on failure so
@@ -380,7 +431,7 @@ export function buildSectionLedger(
 ): SectionLedger {
   const routes = new Map<string, SectionLedgerEntry>();
   const add = (entry: SectionLedgerEntry) => {
-    routes.set(`${entry.sectionId} ${entry.href}`, {
+    routes.set(JSON.stringify([entry.sectionId, entry.href]), {
       sectionId: entry.sectionId,
       href: entry.href,
     });
@@ -407,8 +458,16 @@ function routeFromHref(href: string): SectionAlias["sourceRoute"] {
     .replace(/\/$/, "")
     .split("/");
   const [volumeId, partId, chapterIdOrSectionId, sectionId] = route;
-  if (!volumeId || !partId || !chapterIdOrSectionId || route.length > 4) {
+  if (!volumeId || !partId || route.length > 4) {
     throw new Error(`Alias sourceHref must be a section route: ${href}`);
+  }
+  if (!chapterIdOrSectionId) {
+    return {
+      volumeId,
+      partId: volumeId,
+      chapterId: volumeId,
+      sectionId: partId,
+    };
   }
   return {
     volumeId,
@@ -425,6 +484,73 @@ function fullDepthSectionHref(section: Pick<
   return `/manuscripts/${section.volumeId}/${section.partId}/${section.chapterId}/${section.sectionId}/`;
 }
 
+function legacySectionHref(
+  section: RouteSection,
+  volume?: VolumeLabelSource,
+): string {
+  const route = [section.volumeId];
+  if (section.partId !== section.volumeId) {
+    route.push(displayPartRouteSegment(section, volume));
+  }
+  if (section.chapterId !== section.partId) route.push(section.chapterId);
+  route.push(section.sectionId);
+  return `/manuscripts/${route.join("/")}/`;
+}
+
+function canonicalVolumeLegacySectionHref(
+  section: RouteSection,
+  volume?: VolumeLabelSource,
+): string {
+  const route = chapterRouteSegments(section, volume);
+  route.push(section.sectionId);
+  return `/manuscripts/${route.join("/")}/`;
+}
+
+function canonicalVolumeRepeatedSectionHref(
+  section: RouteSection,
+  volume?: VolumeLabelSource,
+): string {
+  const route = chapterRouteSegments(section, volume);
+  route.push(sectionRouteSegment(section));
+  return `/manuscripts/${route.join("/")}/`;
+}
+
+const STRUCTURAL_PART_OPENER_WORD_LIMIT = 75;
+
+function structuralPartOpenerIds(
+  docs: MarkdownDocument[],
+  chapterSectionCounts: Map<string, number>,
+  partChapters: Map<string, Set<string>>,
+): Set<string> {
+  const firstChapterOrderByPart = new Map<string, number>();
+  for (const doc of docs) {
+    const fm = doc.frontmatter;
+    const partKey = `${fm.volumeId}:${fm.partId}`;
+    firstChapterOrderByPart.set(
+      partKey,
+      Math.min(firstChapterOrderByPart.get(partKey) ?? Infinity, fm.chapterOrder),
+    );
+  }
+
+  return new Set(
+    docs
+      .filter((doc) => {
+        const fm = doc.frontmatter;
+        const chapterKey = `${fm.volumeId}:${fm.partId}:${fm.chapterId}`;
+        const partKey = `${fm.volumeId}:${fm.partId}`;
+        return (
+          fm.title === fm.partTitle &&
+          fm.title === fm.chapterTitle &&
+          chapterSectionCounts.get(chapterKey) === 1 &&
+          (partChapters.get(partKey)?.size ?? 0) > 1 &&
+          fm.chapterOrder === firstChapterOrderByPart.get(partKey) &&
+          wordCount(doc.body) <= STRUCTURAL_PART_OPENER_WORD_LIMIT
+        );
+      })
+      .map((doc) => doc.frontmatter.sectionId),
+  );
+}
+
 export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
   const docs = sortDocuments(readMarkdownDocuments(root));
   const provenanceByHash = new Map(
@@ -434,24 +560,61 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
     readVolumeConfigs().map((volume) => [volume.volumeId, volume]),
   );
   const routeContexts = routeVolumesForDocuments(docs);
-  const chapterSectionCounts = docs.reduce((counts, doc) => {
+  const rawChapterSectionCounts = docs.reduce((counts, doc) => {
     const key = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}:${doc.frontmatter.chapterId}`;
     counts.set(key, (counts.get(key) ?? 0) + 1);
     return counts;
   }, new Map<string, number>());
-  const sections = docs.map((doc, index) => {
+  const rawPartChapters = docs.reduce((chapters, doc) => {
+    const key = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}`;
+    const partChapters = chapters.get(key) ?? new Set<string>();
+    partChapters.add(doc.frontmatter.chapterId);
+    chapters.set(key, partChapters);
+    return chapters;
+  }, new Map<string, Set<string>>());
+  const skippedStructuralOpenerIds = structuralPartOpenerIds(
+    docs,
+    rawChapterSectionCounts,
+    rawPartChapters,
+  );
+  const publishedDocs = docs.filter(
+    (doc) => !skippedStructuralOpenerIds.has(doc.frontmatter.sectionId),
+  );
+  const chapterSectionCounts = publishedDocs.reduce((counts, doc) => {
+    const key = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}:${doc.frontmatter.chapterId}`;
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+    return counts;
+  }, new Map<string, number>());
+  const partChapters = publishedDocs.reduce((chapters, doc) => {
+    const key = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}`;
+    const chaptersInPart = chapters.get(key) ?? new Set<string>();
+    chaptersInPart.add(doc.frontmatter.chapterId);
+    chapters.set(key, chaptersInPart);
+    return chapters;
+  }, new Map<string, Set<string>>());
+  const sections = publishedDocs.map((doc, index) => {
     const words = wordCount(doc.body);
     const contentHash = sha256(normalizeNewlines(doc.body)).slice(0, 16);
     const provenance = provenanceByHash.get(contentHash);
     const chapterKey = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}:${doc.frontmatter.chapterId}`;
     const chapterSectionCount = chapterSectionCounts.get(chapterKey) ?? 1;
+    const partKey = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}`;
+    const partChapterCount = partChapters.get(partKey)?.size ?? 1;
     const volume = routeVolume(routeContexts, doc.frontmatter.volumeId);
     return {
       ...doc.frontmatter,
       path: doc.relativePath,
-      href: sectionHref(doc.frontmatter, volume),
+      href: sectionHref(doc.frontmatter, volume, {
+        chapterSectionCount,
+        partChapterCount,
+      }),
       chapterHref: chapterHref(doc.frontmatter, volume),
-      readerHref: sectionReaderHref(doc.frontmatter, chapterSectionCount, volume),
+      readerHref: sectionReaderHref(
+        doc.frontmatter,
+        chapterSectionCount,
+        partChapterCount,
+        volume,
+      ),
       body: doc.body,
       text: stripMarkdown(doc.body),
       paragraphs: paragraphFingerprints(doc.body),
@@ -462,8 +625,8 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
       versionDate: provenance?.versionDate ?? "",
       versionUrl: provenance?.pullRequestUrl ?? provenance?.commitUrl ?? "",
       audioVersionId: audioVersionId(doc.frontmatter.sectionId, contentHash),
-      previousSectionId: docs[index - 1]?.frontmatter.sectionId ?? null,
-      nextSectionId: docs[index + 1]?.frontmatter.sectionId ?? null,
+      previousSectionId: publishedDocs[index - 1]?.frontmatter.sectionId ?? null,
+      nextSectionId: publishedDocs[index + 1]?.frontmatter.sectionId ?? null,
     } satisfies CompiledSection;
   });
 
@@ -486,7 +649,7 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
         coverAlt:
           config?.coverAlt ??
           `Cover artwork for ${section.volumeTitle}, part of The Coherence Thesis.`,
-        href: volumeHref(section.volumeId),
+        href: volumeHref(config ?? section),
         parts: [],
         sectionIds: [],
         wordCount: 0,
@@ -554,25 +717,96 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
   );
   const sectionById = new Map(sections.map((section) => [section.sectionId, section]));
   const aliasInputs = [...readAliasConfig().aliases];
+  const addAlias = (
+    sourceHref: string,
+    targetSectionId: string,
+    note: string,
+  ) => {
+    if (aliasInputs.some((alias) => alias.sourceHref === sourceHref)) return;
+    aliasInputs.push({ sourceHref, targetSectionId, note });
+  };
+
+  for (const [index, doc] of docs.entries()) {
+    if (!skippedStructuralOpenerIds.has(doc.frontmatter.sectionId)) continue;
+    const target = docs.slice(index + 1).find(
+      (candidate) =>
+        candidate.frontmatter.volumeId === doc.frontmatter.volumeId &&
+        candidate.frontmatter.partId === doc.frontmatter.partId &&
+        !skippedStructuralOpenerIds.has(candidate.frontmatter.sectionId),
+    );
+    if (!target) {
+      throw new Error(
+        `Structural opener '${doc.frontmatter.sectionId}' has no content section in its part.`,
+      );
+    }
+    const fm = doc.frontmatter;
+    const chapterKey = `${fm.volumeId}:${fm.partId}:${fm.chapterId}`;
+    const partKey = `${fm.volumeId}:${fm.partId}`;
+    const volume = routeVolume(routeContexts, fm.volumeId);
+    const targetSectionId = target.frontmatter.sectionId;
+    const note = "Generated alias for a removed structural part opener.";
+    const sourceHrefs = new Set([
+      sectionHref(fm, volume, {
+        chapterSectionCount: rawChapterSectionCounts.get(chapterKey) ?? 1,
+        partChapterCount: rawPartChapters.get(partKey)?.size ?? 1,
+      }),
+      fullDepthSectionHref(fm),
+      legacySectionHref(fm, volume),
+      canonicalVolumeLegacySectionHref(fm, volume),
+      canonicalVolumeRepeatedSectionHref(fm, volume),
+      ...(fm.aliases ?? []),
+    ]);
+    for (const sourceHref of sourceHrefs) {
+      addAlias(sourceHref, targetSectionId, note);
+    }
+  }
   for (const section of sections) {
     for (const sourceHref of section.aliases ?? []) {
-      if (aliasInputs.some((alias) => alias.sourceHref === sourceHref)) continue;
-      aliasInputs.push({
+      addAlias(
         sourceHref,
-        targetSectionId: section.sectionId,
-        note: "Generated alias for a skipped subtitle-only opener route.",
-      });
+        section.sectionId,
+        "Generated alias for a skipped subtitle-only opener route.",
+      );
     }
   }
   for (const section of sections) {
     const sourceHref = fullDepthSectionHref(section);
     if (sourceHref === section.href) continue;
-    if (aliasInputs.some((alias) => alias.sourceHref === sourceHref)) continue;
-    aliasInputs.push({
+    addAlias(
       sourceHref,
-      targetSectionId: section.sectionId,
-      note: "Generated alias for the former full depth route.",
-    });
+      section.sectionId,
+      "Generated alias for the former full depth route.",
+    );
+  }
+  for (const section of sections) {
+    const volume = routeVolume(routeContexts, section.volumeId);
+    const sourceHref = legacySectionHref(section, volume);
+    if (sourceHref === section.href) continue;
+    addAlias(
+      sourceHref,
+      section.sectionId,
+      "Generated alias for the former title-based volume route.",
+    );
+  }
+  for (const section of sections) {
+    const volume = routeVolume(routeContexts, section.volumeId);
+    const sourceHref = canonicalVolumeLegacySectionHref(section, volume);
+    if (sourceHref === section.href) continue;
+    addAlias(
+      sourceHref,
+      section.sectionId,
+      "Generated alias for the former volume-prefixed section slug.",
+    );
+  }
+  for (const section of sections) {
+    const volume = routeVolume(routeContexts, section.volumeId);
+    const sourceHref = canonicalVolumeRepeatedSectionHref(section, volume);
+    if (sourceHref === section.href) continue;
+    addAlias(
+      sourceHref,
+      section.sectionId,
+      "Generated alias for the repeated section slug route.",
+    );
   }
 
   const aliases = aliasInputs.map((alias) => {

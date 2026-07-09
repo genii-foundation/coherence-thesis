@@ -88,13 +88,16 @@ function PartPage({ match }: { match: PartRouteMatch }) {
   const label = showSections
     ? `section${count === 1 ? "" : "s"}`
     : `chapter${count === 1 ? "" : "s"}`;
+  const partTitle = displayPartTitle(part, volume);
+  const partKicker = displayPartKicker(part, volume);
+  const showPartKicker = partKicker !== partTitle;
 
   return (
     <div className="page-frame reader-layout">
       <article className="reader-main">
         <header className="page-heading">
-          <p className="eyebrow">{displayPartKicker(part, volume)}</p>
-          <h1>{displayPartTitle(part, volume)}</h1>
+          {showPartKicker && <p className="eyebrow">{partKicker}</p>}
+          <h1>{partTitle}</h1>
           <p>
             {formatReadingDurationForWords(part.wordCount)} across {count}{" "}
             {label}.

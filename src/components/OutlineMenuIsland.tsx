@@ -74,11 +74,13 @@ export function OutlineMenuIsland() {
               title: outline.home.title,
               href: outline.home.href,
               detail: "Home",
+              icon: "home",
             },
             {
               title: outline.overview.title,
               href: outline.overview.href,
-              detail: "Overview",
+              detail: "Outline",
+              icon: "outline",
             },
           ].filter((item) =>
             matchesQuery([item.title, item.detail], normalizedQuery),
@@ -204,7 +206,11 @@ export function OutlineMenuIsland() {
                       href={item.href}
                       aria-current={normalizePath(item.href) === currentPath ? "page" : undefined}
                     >
-                      <Home aria-hidden="true" size={16} />
+                      {item.icon === "outline" ? (
+                        <ListTree aria-hidden="true" size={16} />
+                      ) : (
+                        <Home aria-hidden="true" size={16} />
+                      )}
                       <span>
                         <strong>{item.title}</strong>
                         <small>{item.detail}</small>

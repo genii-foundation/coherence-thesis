@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { BookOpen } from "lucide-react";
 import { AstrologyIcon } from "@/components/AstrologyIcon";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
@@ -12,7 +12,7 @@ import {
   sectionsForPart,
   toProgressSection,
   volumeNavigation,
-  volumeById,
+  volumeByRouteSegment,
 } from "@/lib/manuscript-data";
 import {
   displayPartCountLabel,
@@ -24,7 +24,13 @@ import { formatReadingDurationForWords } from "@/lib/reading-time";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return catalog.volumes.map((volume) => ({ volumeId: volume.volumeId }));
+  const params = new Map<string, { volumeId: string }>();
+  for (const volume of catalog.volumes) {
+    const canonical = volume.href.split("/").filter(Boolean)[1] ?? volume.volumeId;
+    params.set(canonical, { volumeId: canonical });
+    params.set(volume.volumeId, { volumeId: volume.volumeId });
+  }
+  return [...params.values()];
 }
 
 export async function generateMetadata({
@@ -33,7 +39,7 @@ export async function generateMetadata({
   params: Promise<{ volumeId: string }>;
 }): Promise<Metadata> {
   const { volumeId } = await params;
-  const volume = volumeById(volumeId);
+  const volume = volumeByRouteSegment(volumeId);
   return {
     title: volume?.title ?? "Manuscript",
     description: volume
@@ -49,9 +55,10 @@ export default async function VolumePage({
   params: Promise<{ volumeId: string }>;
 }) {
   const { volumeId } = await params;
-  const volume = volumeById(volumeId);
+  const volume = volumeByRouteSegment(volumeId);
   if (!volume) notFound();
-  const navigation = volumeNavigation(volumeId);
+  if (`/manuscripts/${volumeId}/` !== volume.href) redirect(volume.href);
+  const navigation = volumeNavigation(volume.volumeId);
   if (!navigation) notFound();
 
   return (

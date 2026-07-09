@@ -649,7 +649,7 @@ test("overview links into canonical manuscript sections", async ({
     .getByRole("link", { name: /^Seed$/ })
     .first()
     .click();
-  await expect(page).toHaveURL(/\/manuscripts\/humanitys-most-viable-future\//);
+  await expect(page).toHaveURL(/\/manuscripts\/1\//);
 });
 
 test("overview manuscript cards target the earliest unread section", async ({
