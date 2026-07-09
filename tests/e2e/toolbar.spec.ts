@@ -1054,8 +1054,8 @@ test("mobile background texture fills the dynamic viewport", async ({ page }) =>
 
   expect(metrics.htmlBackground).toContain("radial-gradient");
   expect(metrics.bodyBackground).toContain("radial-gradient");
-  expect(metrics.htmlOverscrollY).toBe("contain");
-  expect(metrics.bodyOverscrollY).toBe("contain");
+  expect(metrics.htmlOverscrollY).toBe("auto");
+  expect(metrics.bodyOverscrollY).toBe("auto");
   expect(metrics.bodyTextureContent).not.toBe("none");
   expect(metrics.bodyTexturePosition).toBe("fixed");
   expect(metrics.bodyTextureZIndex).toBe("0");
