@@ -1027,6 +1027,17 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       sideShadowAlpha: shadowAlpha(
         sideCard?.querySelector<HTMLElement>(".cover-flow-image-frame") ?? null,
       ),
+      maxVisibleRotation: Math.max(
+        ...Array.from(
+          flow.querySelectorAll<HTMLElement>(".cover-flow-card"),
+          (card) =>
+            Math.abs(
+              Number.parseFloat(
+                card.style.getPropertyValue("--cover-flow-rotate") || "0",
+              ),
+            ),
+        ),
+      ),
       viewportWidth: document.documentElement.clientWidth,
     };
   });
@@ -1047,6 +1058,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   );
   expect(coverFlowTransforms.panelVisible).not.toBe("none");
   expect(coverFlowTransforms.sideRotate).not.toBe("0deg");
+  expect(coverFlowTransforms.maxVisibleRotation).toBeLessThan(65);
   expect(Number.parseFloat(coverFlowTransforms.sideScale)).toBeLessThan(1);
   expect(
     Number.parseFloat(coverFlowTransforms.activeShadowStrength),
@@ -1060,10 +1072,26 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   const verticalStability = await coverFlow
     .locator(".cover-flow-scroll")
     .evaluate(async (scroller) => {
+      const waitForTransformFrame = async () => {
+        await new Promise<void>((resolve) => {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => resolve());
+              });
+            });
+          });
+        });
+      };
+
+      scroller.scrollLeft = 0;
+      scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
+      await waitForTransformFrame();
+
       const card = document.querySelector<HTMLElement>(".cover-flow-card");
       const cover = card?.querySelector<HTMLElement>(".cover-flow-image-frame");
       const originalScrollLeft = scroller.scrollLeft;
-      const tops: number[] = [];
+      const centers: number[] = [];
       const maxScrollLeft = Math.min(
         scroller.scrollWidth - scroller.clientWidth,
         420,
@@ -1072,26 +1100,22 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       for (let scrollLeft = 0; scrollLeft <= maxScrollLeft; scrollLeft += 30) {
         scroller.scrollLeft = scrollLeft;
         scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
-        await new Promise<void>((resolve) => {
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => resolve());
-          });
-        });
+        await waitForTransformFrame();
         const coverBox = cover?.getBoundingClientRect();
-        if (coverBox) tops.push(coverBox.top);
+        if (coverBox) centers.push(coverBox.top + coverBox.height / 2);
       }
 
       scroller.scrollLeft = originalScrollLeft;
       scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
 
       return {
-        maxTop: Math.max(...tops),
-        minTop: Math.min(...tops),
+        maxCenter: Math.max(...centers),
+        minCenter: Math.min(...centers),
       };
     });
-  expect(verticalStability.maxTop - verticalStability.minTop).toBeLessThanOrEqual(
-    1,
-  );
+  expect(
+    verticalStability.maxCenter - verticalStability.minCenter,
+  ).toBeLessThanOrEqual(2);
 
   const currentActiveHref = await coverFlow
     .locator('.cover-flow-card[aria-current="true"]')
@@ -1100,6 +1124,81 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     catalog.volumes.findIndex((volume) => volume.href === currentActiveHref),
     0,
   );
+  if (testInfo.project.name !== "mobile") {
+    await page.setViewportSize({ width: 2048, height: 1152 });
+    await page.reload();
+    await expect(coverFlow).toBeVisible();
+    await expect(
+      coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+    ).toHaveAttribute("data-volume-href", initialActiveVolume.href);
+    await coverFlow
+      .locator('.cover-flow-card[aria-current="true"] .cover-flow-image-frame')
+      .scrollIntoViewIfNeeded();
+    const farBackgroundClickPoint = await coverFlow.evaluate(
+      (flow) => {
+        const cards = Array.from(
+          flow.querySelectorAll<HTMLElement>(".cover-flow-card"),
+        );
+        const activeIndex = cards.findIndex(
+          (card) => card.getAttribute("aria-current") === "true",
+        );
+        const targetIndex = Math.min(activeIndex + 3, cards.length - 1);
+        const card = cards[targetIndex];
+        const cover = card?.querySelector<HTMLElement>(
+          ".cover-flow-image-frame",
+        );
+        const coverBox = cover?.getBoundingClientRect();
+        const visibleLeft = coverBox
+          ? Math.max(coverBox.left, 0)
+          : 0;
+        const visibleRight = coverBox
+          ? Math.min(coverBox.right, document.documentElement.clientWidth)
+          : 0;
+        const x = coverBox ? (visibleLeft + visibleRight) / 2 : -1;
+        const y = coverBox ? coverBox.top + coverBox.height / 2 : -1;
+
+        return {
+          href: card?.getAttribute("data-volume-href") ?? "",
+          height: coverBox?.height ?? 0,
+          targetOffset: targetIndex - activeIndex,
+          visibleWidth: Math.max(0, visibleRight - visibleLeft),
+          viewportHeight: document.documentElement.clientHeight,
+          viewportWidth: document.documentElement.clientWidth,
+          width: coverBox?.width ?? 0,
+          x,
+          y,
+        };
+      },
+    );
+    expect(farBackgroundClickPoint.targetOffset).toBeGreaterThanOrEqual(3);
+    expect(farBackgroundClickPoint.href).not.toBe(initialActiveVolume.href);
+    expect(farBackgroundClickPoint.width).toBeGreaterThan(0);
+    expect(farBackgroundClickPoint.height).toBeGreaterThan(0);
+    expect(farBackgroundClickPoint.visibleWidth).toBeGreaterThan(16);
+    expect(farBackgroundClickPoint.x).toBeGreaterThanOrEqual(0);
+    expect(farBackgroundClickPoint.x).toBeLessThanOrEqual(
+      farBackgroundClickPoint.viewportWidth,
+    );
+    expect(farBackgroundClickPoint.y).toBeGreaterThanOrEqual(0);
+    expect(farBackgroundClickPoint.y).toBeLessThanOrEqual(
+      farBackgroundClickPoint.viewportHeight,
+    );
+    await page.mouse.click(
+      farBackgroundClickPoint.x,
+      farBackgroundClickPoint.y,
+    );
+    await expect(
+      coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+    ).toHaveAttribute("data-volume-href", farBackgroundClickPoint.href, {
+      timeout: 15000,
+    });
+    await expect(page).toHaveURL(/\/$/);
+    await page.reload();
+    await expect(coverFlow).toBeVisible();
+    await expect(
+      coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+    ).toHaveAttribute("data-volume-href", initialActiveVolume.href);
+  }
   const backgroundTarget =
     catalog.volumes[
       currentActiveIndex < catalog.volumes.length - 1

@@ -25,6 +25,17 @@ describe("cover flow motion", () => {
     }
   });
 
+  it("keeps every card safely short of a backside rotation", () => {
+    for (
+      let offset = -coverFlowTuning.rotation.maxMeasuredOffset;
+      offset <= coverFlowTuning.rotation.maxMeasuredOffset;
+      offset += 0.05
+    ) {
+      expect(Math.abs(getCoverFlowTransform(offset).rotate)).toBeLessThan(65);
+      expect(Math.abs(getCoverFlowTransform(offset).rotate)).toBeLessThan(90);
+    }
+  });
+
   it("keeps visual card centers monotonic with a tighter peripheral stack", () => {
     const step = coverFlowTuning.spacing.nativeScrollStepPx;
     const visualCenter = (offset: number) =>
