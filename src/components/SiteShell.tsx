@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { copyrightYearLabel } from "@/lib/copyright";
 import { CopyrightYearIsland } from "@/components/CopyrightYearIsland";
 import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
-import { BackgroundHighlightPanel } from "@/components/BackgroundHighlightPanel";
 import { MobilePageContextIsland } from "@/components/MobilePageContextIsland";
 import { OutlineMenuIsland } from "@/components/OutlineMenuIsland";
 import { PageFadeIsland } from "@/components/PageFadeIsland";
@@ -53,7 +52,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
-      <BackgroundHighlightPanel />
       <svg
         className="common-thread-texture"
         aria-hidden="true"
