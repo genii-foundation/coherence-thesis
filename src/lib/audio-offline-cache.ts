@@ -44,11 +44,17 @@ export function buildOfflineAudioPacks(input: {
   manifest: AudioClipManifest;
 }): OfflineAudioPack[] {
   const clipsBySectionId = new Map<string, string[]>();
+  const clipCountBySectionId = new Map<string, number>();
   for (const voice of input.manifest.voices) {
     for (const clip of voice.sections) {
       const current = clipsBySectionId.get(clip.sectionId) ?? [];
       current.push(clip.href);
+      if (clip.timingsHref) current.push(clip.timingsHref);
       clipsBySectionId.set(clip.sectionId, current);
+      clipCountBySectionId.set(
+        clip.sectionId,
+        (clipCountBySectionId.get(clip.sectionId) ?? 0) + 1,
+      );
     }
   }
 
@@ -65,7 +71,10 @@ export function buildOfflineAudioPacks(input: {
       numberLabel: volume.numberLabel,
       href: volume.href,
       sectionCount: sections.length,
-      audioClipCount: clipUrls.length,
+      audioClipCount: sections.reduce(
+        (total, section) => total + (clipCountBySectionId.get(section.sectionId) ?? 0),
+        0,
+      ),
       urls: uniqueUrls([
         ...sharedOfflineUrls,
         volume.href,

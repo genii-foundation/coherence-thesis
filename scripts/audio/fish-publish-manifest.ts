@@ -19,6 +19,7 @@ import type {
   AudioClipVoice,
 } from "../../src/lib/audio-manifest";
 import type { ProgressSectionData } from "../../src/lib/reader-data";
+import { isAudioTimingDocument } from "../../src/lib/audio-timings";
 
 const defaultBucket = "audio-clips";
 const defaultCacheControl = "public, max-age=31536000, immutable";
@@ -56,6 +57,16 @@ export type PublishableAudioFile = {
   filePath: string;
   objectKey: string;
   href: string;
+  contentType: string;
+  timingsFilePath?: string;
+  timingsObjectKey?: string;
+  timingsHref?: string;
+};
+
+type PublishableObject = {
+  filePath: string;
+  objectKey: string;
+  contentType: string;
 };
 
 type UploadResult = {
@@ -183,6 +194,7 @@ function objectKeyFor(input: {
   version: string;
   voiceId: string;
   audioVersionId: string;
+  extension: string;
 }): string {
   if (!/^[a-z0-9][a-z0-9._-]*$/i.test(input.voiceId)) {
     throw new Error(`Voice id '${input.voiceId}' is not safe for object keys.`);
@@ -191,8 +203,14 @@ function objectKeyFor(input: {
     "audiobook",
     input.version,
     input.voiceId,
-    `${input.audioVersionId}.mp3`,
+    `${input.audioVersionId}.${input.extension}`,
   ].join("/");
+}
+
+function audioContentType(format: FishAudioFile["format"]): string {
+  if (format === "opus") return "audio/ogg";
+  if (format === "wav") return "audio/wav";
+  return "audio/mpeg";
 }
 
 function readRunManifest(options: Options): {
@@ -247,7 +265,7 @@ export function validateAudioRunForPublish(input: {
         `Stale audioVersionId for ${file.sectionId}: ${file.audioVersionId}`,
       );
     }
-    if (file.format !== "mp3") {
+    if (!(["mp3", "opus", "wav"] as const).includes(file.format)) {
       throw new Error(`Unsupported audio format for ${file.sectionId}: ${file.format}`);
     }
     const key = `${file.voiceId}:${file.sectionId}:${file.audioVersionId}`;
@@ -263,12 +281,46 @@ export function validateAudioRunForPublish(input: {
       version: input.version,
       voiceId: file.voiceId,
       audioVersionId: file.audioVersionId,
+      extension: file.format,
     });
+    let timingsFilePath: string | undefined;
+    let timingsObjectKey: string | undefined;
+    let timingsHref: string | undefined;
+    if (file.timingsRelativeOutputPath || file.timingsOutputPath) {
+      timingsFilePath = file.timingsOutputPath && fs.existsSync(file.timingsOutputPath)
+        ? file.timingsOutputPath
+        : path.resolve(input.runRoot, file.timingsRelativeOutputPath ?? "");
+      if (!fs.existsSync(timingsFilePath)) {
+        throw new Error(`Missing audio timings for ${file.sectionId}: ${timingsFilePath}`);
+      }
+      const timings: unknown = JSON.parse(fs.readFileSync(timingsFilePath, "utf8"));
+      if (
+        !isAudioTimingDocument(timings) ||
+        timings.sectionId !== file.sectionId ||
+        timings.audioVersionId !== file.audioVersionId ||
+        timings.voiceId !== file.voiceId
+      ) {
+        throw new Error(`Invalid audio timings for ${file.voiceId}/${file.sectionId}`);
+      }
+      timingsObjectKey = objectKeyFor({
+        version: input.version,
+        voiceId: file.voiceId,
+        audioVersionId: file.audioVersionId,
+        extension: "timings.json",
+      });
+      timingsHref = publicHref(input.publicBase, timingsObjectKey);
+    } else if (input.run.endpoint === "stream-with-timestamp") {
+      throw new Error(`Missing timestamp sidecar mapping for ${file.sectionId}.`);
+    }
     const entry = {
       source: file,
       filePath,
       objectKey,
       href: publicHref(input.publicBase, objectKey),
+      contentType: audioContentType(file.format),
+      timingsFilePath,
+      timingsObjectKey,
+      timingsHref,
     };
     byVoiceSection.set(`${file.voiceId}:${file.sectionId}`, entry);
     publishable.push(entry);
@@ -301,13 +353,19 @@ export function createAudioClipManifest(input: {
       if (!file) {
         throw new Error(`Missing validated audio for ${voice.id}/${section.sectionId}`);
       }
-      return {
+      const manifestSection: AudioClipSection = {
         sectionId: file.source.sectionId,
         audioVersionId: file.source.audioVersionId,
         href: file.href,
+        format: file.source.format,
         byteSize: file.source.byteSize,
         durationSeconds: file.source.durationSeconds,
       };
+      if (file.timingsHref) manifestSection.timingsHref = file.timingsHref;
+      if (file.source.timingsByteSize !== undefined) {
+        manifestSection.timingsByteSize = file.source.timingsByteSize;
+      }
+      return manifestSection;
     });
     return {
       id: voice.id,
@@ -438,7 +496,7 @@ async function objectExists(input: {
 async function uploadObject(input: {
   endpoint: string;
   bucket: string;
-  file: PublishableAudioFile;
+  file: PublishableObject;
   credentials: PublishCredentials;
 }): Promise<"uploaded" | "skipped"> {
   const exists = await objectExists({
@@ -456,7 +514,7 @@ async function uploadObject(input: {
     url,
     headers: {
       "cache-control": defaultCacheControl,
-      "content-type": "audio/mpeg",
+      "content-type": input.file.contentType,
     },
     payloadHash,
     credentials: input.credentials,
@@ -514,7 +572,7 @@ async function runLimited<T>(
 }
 
 async function uploadFiles(input: {
-  files: PublishableAudioFile[];
+  files: PublishableObject[];
   endpoint: string;
   bucket: string;
   credentials: PublishCredentials;
@@ -584,9 +642,23 @@ async function main() {
   });
 
   let uploadResult: UploadResult = { uploaded: 0, skipped: 0 };
+  const objects: PublishableObject[] = files.flatMap((file) => [
+    {
+      filePath: file.filePath,
+      objectKey: file.objectKey,
+      contentType: file.contentType,
+    },
+    ...(file.timingsFilePath && file.timingsObjectKey
+      ? [{
+          filePath: file.timingsFilePath,
+          objectKey: file.timingsObjectKey,
+          contentType: "application/json",
+        }]
+      : []),
+  ]);
   if (options.upload) {
     uploadResult = await uploadFiles({
-      files,
+      files: objects,
       endpoint: endpoint!,
       bucket: options.bucket,
       credentials: readCredentials(options),
@@ -606,6 +678,7 @@ async function main() {
         bucket: options.bucket,
         voices: manifest.voices.length,
         clips: files.length,
+        objects: objects.length,
         uploaded: uploadResult.uploaded,
         skipped: uploadResult.skipped,
       },

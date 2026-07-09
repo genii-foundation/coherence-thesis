@@ -2,7 +2,10 @@ export type AudioClipSection = {
   sectionId: string;
   audioVersionId: string;
   href: string;
+  format?: "mp3" | "opus" | "wav";
+  timingsHref?: string;
   byteSize?: number;
+  timingsByteSize?: number;
   durationSeconds?: number;
 };
 
@@ -38,6 +41,17 @@ export function parseClipVoicePreferenceId(value: string | null): string | null 
 
 export function firstClipVoiceId(manifest: AudioClipManifest): string | null {
   return manifest.voices[0]?.id ?? null;
+}
+
+export function resolveHostedVoicePreference(
+  manifest: AudioClipManifest,
+  preferenceId: string | null,
+): string | null {
+  const clipVoiceId = parseClipVoicePreferenceId(preferenceId);
+  if (!clipVoiceId) return null;
+  if (manifest.voices.length === 0) return preferenceId;
+  const selected = manifest.voices.find((voice) => voice.id === clipVoiceId);
+  return clipVoicePreferenceId(selected?.id ?? manifest.voices[0]!.id);
 }
 
 export function hasAudioClips(manifest: AudioClipManifest): boolean {

@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import {
   emptyAudioClipManifest,
+  resolveHostedVoicePreference,
 } from "@/lib/audio-manifest";
 import {
   buildOfflineAudioPacks,
@@ -43,6 +44,7 @@ import {
 } from "@/lib/audio-playback";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 import { audioWordIdForCharIndex } from "@/lib/audio-word-anchors";
+import { audioBodyStartCharacter, textForAudio } from "@/lib/audio-text";
 import {
   loadProgressSections,
   loadReaderSections,
@@ -660,8 +662,16 @@ export function AudioPlayerIsland({
       (voice) => voice.disabled && voice.id === preference.voiceURI,
     );
     if (pendingPreferredVoice) return;
-    setPreference((current) => ({ ...current, voiceURI: null }));
-  }, [preference.voiceURI, preferenceReady, voiceGroups, voiceIds, voicesReady]);
+    const resolvedVoiceURI = resolveHostedVoicePreference(
+      audioManifest,
+      preference.voiceURI,
+    );
+    if (resolvedVoiceURI === preference.voiceURI) return;
+    setPreference((current) => ({
+      ...current,
+      voiceURI: resolveHostedVoicePreference(audioManifest, current.voiceURI),
+    }));
+  }, [audioManifest, preference.voiceURI, preferenceReady, voiceGroups, voiceIds, voicesReady]);
 
   useEffect(() => {
     const onStartFromWord = (event: Event) => {
@@ -731,17 +741,18 @@ export function AudioPlayerIsland({
       }),
     );
     const text = item.text || sectionTextRef.current?.get(item.sectionId) || "";
-    const prefix = `${item.title}. `;
+    const fullText = textForAudio({ title: item.title, text });
+    const bodyStartCharacter = audioBodyStartCharacter(item.title);
     const bodyStartCharIndex =
       typeof startBodyCharIndex === "number"
         ? Math.max(0, Math.min(text.length, startBodyCharIndex))
         : 0;
-    const fullStartCharIndex = prefix.length + bodyStartCharIndex;
+    const fullStartCharIndex = bodyStartCharacter + bodyStartCharIndex;
     const updatePlaybackProgress = (progress: AudioPlaybackProgress) => {
       if (token !== playbackTokenRef.current) return;
       const bodyCharIndex =
         typeof progress.charIndex === "number"
-          ? Math.max(0, progress.charIndex - prefix.length)
+          ? Math.max(0, progress.charIndex - bodyStartCharacter)
           : bodyStartCharIndex;
       const wordId = playbackWordId(item.sectionId, text, bodyCharIndex);
       const location = {
@@ -766,7 +777,7 @@ export function AudioPlayerIsland({
         startWordId ?? playbackWordId(item.sectionId, text, bodyStartCharIndex),
     });
     provider.speak({
-      text: `${prefix}${text}`,
+      text: fullText,
       voiceId: playbackPreference.voiceURI,
       rate: playbackPreference.rate,
       pitch: playbackPreference.pitch,

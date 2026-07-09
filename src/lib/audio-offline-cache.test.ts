@@ -99,6 +99,7 @@ describe("offline audio packs", () => {
                 sectionId: "one-a",
                 audioVersionId: "one-a-a",
                 href: "/audio/fish-default/one-a.mp3",
+                timingsHref: "/audio/fish-default/one-a.timings.json",
               },
               {
                 sectionId: "one-b",
@@ -131,6 +132,7 @@ describe("offline audio packs", () => {
     expect(packs[0]!.urls).toEqual(
       expect.arrayContaining([
         "/audio/fish-default/one-a.mp3",
+        "/audio/fish-default/one-a.timings.json",
         "/audio/fish-default/one-b.mp3",
         "/audio/second/one-a.mp3",
       ]),

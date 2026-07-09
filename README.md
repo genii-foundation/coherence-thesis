@@ -144,16 +144,28 @@ Validate the current generated run against the current catalog before shipping m
 npm run audio:publish-manifest -- --run-id <run-id> --version <version> --project-ref <supabase-project-ref>
 ```
 
-Without `--upload`, this checks that every generated MP3 maps to a known section, matches the current `audioVersionId`, exists on disk, and covers every section for every voice in the run. It fails before writing `public/data/audio-manifest.json` when audio is stale or incomplete.
+Without `--upload`, this checks that every generated audio file maps to a known section, matches the current `audioVersionId`, exists on disk, and covers every section for every voice in the run. Timestamped runs also require a valid word timing sidecar for every audio file. It fails before writing `public/data/audio-manifest.json` when audio is stale or incomplete.
 
-Regenerate changed clips with Fish Audio when needed. Use a focused section list when the changed sections are known, or `--mode full` so existing files skip and missing current clips generate:
+Fish generation uses the streamed timestamp API. It writes 48 kHz Opus at 64 kbps plus a word timing JSON sidecar for each section. Every voice must include a Fish `reference_id`. Full corpus generation accepts exactly one pinned narrator so a run cannot silently change voices between sections.
+
+Audition several pinned voices against the same representative sections before selecting the narrator:
 
 ```bash
-FISH_AUDIO_API_KEY=<from-secret-store> npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <voice-id:label> --run-id <run-id>
-FISH_AUDIO_API_KEY=<from-secret-store> npm run audio:fish -- --mode full --voices <voice-id:label> --run-id <run-id>
+FISH_AUDIO_API_KEY=<from-secret-store> npm run audio:fish -- --mode sample --sections <section-id-1,section-id-2> --voices <voice-a-id>:<reference-id>:<label>,<voice-b-id>:<reference-id>:<label> --run-id <audition-run-id>
 ```
 
-Publish with a new immutable version path. Do not overwrite Supabase objects in place, and never commit or print upload credentials:
+After one narrator is approved, generate the corpus or regenerate known changed sections into the same run:
+
+```bash
+FISH_AUDIO_API_KEY=<from-secret-store> npm run audio:fish -- --mode full --voices <narrator-id>:<reference-id>:High\ Quality\ 1 --run-id <run-id>
+FISH_AUDIO_API_KEY=<from-secret-store> npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <narrator-id>:<reference-id>:High\ Quality\ 1 --run-id <run-id>
+```
+
+The defaults favor finished audiobook quality: `s2.1-pro-free`, `latency=normal`, `chunk_length=300`, `temperature=0.7`, `top_p=0.7`, text normalization enabled, and prior Fish chunks conditioned for continuity. Quality-sensitive defaults are written into the settings hash. Use `--format wav` only for lossless auditions or masters because the files are much larger. Do not use `--max-chars` for a full run.
+
+See [Fish audiobook generation](docs/fish-audiobook-generation.md) for the narrator audition protocol, candidate reference voices, quality settings, and timing sidecar contract.
+
+Publish with a new immutable version path. Audio and timing sidecars are uploaded together. Do not overwrite Supabase objects in place, and never commit or print upload credentials:
 
 ```bash
 SUPABASE_S3_ACCESS_KEY_ID=<from-secret-store> \

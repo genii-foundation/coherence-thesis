@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { clipVoicePreferenceId } from "@/lib/audio-manifest";
+import {
+  clipVoicePreferenceId,
+  resolveHostedVoicePreference,
+} from "@/lib/audio-manifest";
 import {
   audioVoiceMenuGroups,
   selectableVoiceIds,
@@ -73,5 +76,23 @@ describe("audio voice menu", () => {
     expect(groups.system).toEqual([{ id: "", label: "System voice" }]);
     expect(selectableVoiceIds(groups).has("clip:default")).toBe(false);
     expect(selectableVoiceIds(groups).has("")).toBe(true);
+  });
+
+  it("preserves a pending hosted preference and adopts the first published narrator", () => {
+    expect(
+      resolveHostedVoicePreference(
+        { version: 1, voices: [] },
+        clipVoicePreferenceId("narrator-v1"),
+      ),
+    ).toBe("clip:narrator-v1");
+    expect(
+      resolveHostedVoicePreference(
+        {
+          version: 1,
+          voices: [{ id: "narrator-v2", label: "High Quality 1", sections: [] }],
+        },
+        clipVoicePreferenceId("default"),
+      ),
+    ).toBe("clip:narrator-v2");
   });
 });

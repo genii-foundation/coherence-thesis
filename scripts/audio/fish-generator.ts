@@ -4,6 +4,11 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { ensureDir, repoRoot, sha256, writeJson } from "../manuscripts/shared";
 import type { CompiledCatalog, CompiledSection } from "../manuscripts/types";
+import {
+  type FishTimestampChunk,
+  type FishTimestampSegment,
+} from "../../src/lib/audio-timings";
+import { textForAudio } from "../../src/lib/audio-text";
 
 export type FishVoice = {
   id: string;
@@ -12,6 +17,7 @@ export type FishVoice = {
 };
 
 export type FishRunMode = "sample" | "full";
+export type FishAudioFormat = "opus" | "wav";
 
 export type FishAudioFile = {
   sectionId: string;
@@ -23,21 +29,28 @@ export type FishAudioFile = {
   voiceLabel: string;
   provider: "fish-audio";
   model: string;
-  format: "mp3";
+  format: FishAudioFormat | "mp3";
   inputBytes: number;
   inputCharacters: number;
   outputPath: string;
   relativeOutputPath: string;
+  timingsOutputPath?: string;
+  timingsRelativeOutputPath?: string;
   publicCacheKey: string;
   generatedAt?: string;
   durationSeconds?: number;
   byteSize?: number;
+  timingsByteSize?: number;
+  exactWordCount?: number;
+  interpolatedWordCount?: number;
   skipped?: boolean;
   error?: string;
 };
 
 export type FishRunManifest = {
+  schemaVersion?: 2;
   provider: "fish-audio";
+  endpoint?: "stream-with-timestamp";
   model: string;
   mode: FishRunMode;
   runId: string;
@@ -55,11 +68,6 @@ export type FishRunManifest = {
 
 export const fishPaidUsdPerMillionBytes = 15;
 
-export const defaultFishVoice: FishVoice = {
-  id: "default",
-  label: "Fish default",
-};
-
 export const sampleSectionIds = [
   "v02-relational-coherence",
   "v05-purposeful",
@@ -76,7 +84,7 @@ export function normalizeVoiceId(value: string): string {
 }
 
 export function parseVoices(value: string | undefined): FishVoice[] {
-  if (!value?.trim()) return [defaultFishVoice];
+  if (!value?.trim()) return [];
   const parsed = value
     .split(",")
     .map((entry) => entry.trim())
@@ -91,8 +99,24 @@ export function parseVoices(value: string | undefined): FishVoice[] {
         label: rawLabel?.trim() || id,
       };
     });
-  if (parsed.length === 0) return [defaultFishVoice];
   return parsed;
+}
+
+export function validateVoicesForRun(voices: FishVoice[], mode: FishRunMode): void {
+  if (voices.length === 0) {
+    throw new Error(
+      "Select a pinned Fish voice with --voices <voice-id>:<reference-id>:<label>.",
+    );
+  }
+  const unpinned = voices.filter((voice) => !voice.referenceId);
+  if (unpinned.length > 0) {
+    throw new Error(
+      `Every Fish voice must include a reference_id. Missing: ${unpinned.map((voice) => voice.id).join(", ")}.`,
+    );
+  }
+  if (mode === "full" && voices.length !== 1) {
+    throw new Error("Full corpus generation requires exactly one pinned narrator voice.");
+  }
 }
 
 export function selectSections(
@@ -111,10 +135,6 @@ export function selectSections(
   });
 }
 
-export function textForAudio(section: Pick<CompiledSection, "title" | "text">): string {
-  return `${section.title}\n\n${section.text}`.trim();
-}
-
 export function trimTextForAudio(text: string, maxCharacters: number | null): string {
   if (maxCharacters === null || text.length <= maxCharacters) return text;
   const clipped = text.slice(0, maxCharacters);
@@ -126,50 +146,6 @@ export function trimTextForAudio(text: string, maxCharacters: number | null): st
   );
   const endIndex = sentenceBoundary > 20 ? sentenceBoundary + 1 : maxCharacters;
   return text.slice(0, endIndex).trim();
-}
-
-export function chunkTextForAudio(text: string, maxCharacters: number): string[] {
-  if (maxCharacters < 500) throw new Error("--chunk-chars must be at least 500.");
-  const paragraphs = text.split(/\n{2,}/).map((paragraph) => paragraph.trim()).filter(Boolean);
-  const chunks: string[] = [];
-  let current = "";
-
-  const pushCurrent = () => {
-    if (!current.trim()) return;
-    chunks.push(current.trim());
-    current = "";
-  };
-
-  const appendUnit = (unit: string) => {
-    const trimmed = unit.trim();
-    if (!trimmed) return;
-    if (trimmed.length > maxCharacters) {
-      pushCurrent();
-      for (let index = 0; index < trimmed.length; index += maxCharacters) {
-        chunks.push(trimmed.slice(index, index + maxCharacters).trim());
-      }
-      return;
-    }
-    const candidate = current ? `${current}\n\n${trimmed}` : trimmed;
-    if (candidate.length > maxCharacters) {
-      pushCurrent();
-      current = trimmed;
-    } else {
-      current = candidate;
-    }
-  };
-
-  for (const paragraph of paragraphs) {
-    if (paragraph.length <= maxCharacters) {
-      appendUnit(paragraph);
-      continue;
-    }
-    for (const sentence of paragraph.match(/[^.!?]+[.!?]+(?:\s+|$)|[^.!?]+$/g) ?? [paragraph]) {
-      appendUnit(sentence);
-    }
-  }
-  pushCurrent();
-  return chunks;
 }
 
 export function estimatePaidCostUsd(inputBytes: number): number {
@@ -210,6 +186,7 @@ export function buildManifestFiles(input: {
   model: string;
   runRoot: string;
   settingsHash: string;
+  format: FishAudioFormat;
 }): FishAudioFile[] {
   return input.voices.flatMap((voice) =>
     input.sections.map((section) => {
@@ -221,14 +198,21 @@ export function buildManifestFiles(input: {
         model: input.model,
         voiceId: voice.id,
         settingsHash: input.settingsHash,
-        format: "mp3",
+        format: input.format,
       });
+      const extension = input.format;
       const relativeOutputPath = path.join(
         "voices",
         voice.id,
-        `${section.audioVersionId}-${input.settingsHash}.mp3`,
+        `${section.audioVersionId}-${input.settingsHash}.${extension}`,
+      );
+      const timingsRelativeOutputPath = path.join(
+        "voices",
+        voice.id,
+        `${section.audioVersionId}-${input.settingsHash}.timings.json`,
       );
       const outputPath = path.join(input.runRoot, relativeOutputPath);
+      const timingsOutputPath = path.join(input.runRoot, timingsRelativeOutputPath);
       return {
         sectionId: section.sectionId,
         title: section.title,
@@ -239,11 +223,13 @@ export function buildManifestFiles(input: {
         voiceLabel: voice.label,
         provider: "fish-audio" as const,
         model: input.model,
-        format: "mp3" as const,
+        format: input.format,
         inputBytes: Buffer.byteLength(text, "utf8"),
         inputCharacters: text.length,
         outputPath,
         relativeOutputPath,
+        timingsOutputPath,
+        timingsRelativeOutputPath,
         publicCacheKey,
       };
     }),
@@ -263,7 +249,9 @@ export function createRunManifest(input: {
     0,
   );
   return {
+    schemaVersion: 2,
     provider: "fish-audio",
+    endpoint: "stream-with-timestamp",
     model: input.model,
     mode: input.mode,
     runId: input.runId,
@@ -280,32 +268,98 @@ export function createRunManifest(input: {
   };
 }
 
-export async function fishTts(input: {
+type FishTimestampStreamEvent = {
+  audio_base64: string;
+  content: string;
+  alignment: {
+    segments: FishTimestampSegment[];
+    audio_duration: number;
+  } | null;
+  chunk_seq: number;
+  chunk_audio_offset_sec: number;
+};
+
+export type FishTimestampedAudio = {
+  audio: Buffer;
+  chunks: FishTimestampChunk[];
+};
+
+function parseTimestampEvent(value: string): FishTimestampStreamEvent | null {
+  if (!value || value === "[DONE]") return null;
+  const event = JSON.parse(value) as Partial<FishTimestampStreamEvent>;
+  if (
+    typeof event.audio_base64 !== "string" ||
+    typeof event.content !== "string" ||
+    typeof event.chunk_seq !== "number" ||
+    typeof event.chunk_audio_offset_sec !== "number" ||
+    !(event.alignment === null || typeof event.alignment === "object")
+  ) {
+    throw new Error("Fish Audio returned an invalid timestamp stream event.");
+  }
+  return event as FishTimestampStreamEvent;
+}
+
+export function parseFishTimestampSseEvents(value: string): FishTimestampStreamEvent[] {
+  return value
+    .replace(/\r\n/g, "\n")
+    .split("\n\n")
+    .map((eventText) =>
+      eventText
+        .split("\n")
+        .filter((line) => line.startsWith("data:"))
+        .map((line) => line.slice(5).trimStart())
+        .join("\n"),
+    )
+    .map(parseTimestampEvent)
+    .filter((event): event is FishTimestampStreamEvent => event !== null);
+}
+
+export async function fishTtsWithTimestamps(input: {
   apiKey: string;
   model: string;
   text: string;
-  referenceId?: string;
+  referenceId: string;
+  format: FishAudioFormat;
   speed: number;
   normalize: boolean;
+  latency: "normal" | "balanced" | "low";
+  chunkLength: number;
+  opusBitrate: 24000 | 32000 | 48000 | 64000;
   temperature?: number;
   topP?: number;
   timeoutMs: number;
-}): Promise<Buffer> {
+}): Promise<FishTimestampedAudio> {
   const body: Record<string, unknown> = {
     text: input.text,
-    format: "mp3",
+    format: input.format,
     normalize: input.normalize,
-    prosody: { speed: input.speed, volume: 0 },
+    prosody: { speed: input.speed, volume: 0, normalize_loudness: true },
+    reference_id: input.referenceId,
+    latency: input.latency,
+    chunk_length: input.chunkLength,
+    condition_on_previous_chunks: true,
+    max_new_tokens: 1024,
+    repetition_penalty: 1.2,
+    min_chunk_length: 50,
+    early_stop_threshold: 1,
   };
-  if (input.referenceId) body.reference_id = input.referenceId;
+  if (input.format === "opus") {
+    body.sample_rate = 48000;
+    body.opus_bitrate = input.opusBitrate;
+  }
   if (input.temperature !== undefined) body.temperature = input.temperature;
   if (input.topP !== undefined) body.top_p = input.topP;
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), input.timeoutMs);
+  let timeout: ReturnType<typeof setTimeout> | undefined;
+  const resetTimeout = () => {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => controller.abort(), input.timeoutMs);
+  };
+  resetTimeout();
   let response: Response;
   try {
-    response = await fetch("https://api.fish.audio/v1/tts", {
+    response = await fetch("https://api.fish.audio/v1/tts/stream/with-timestamp", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${input.apiKey}`,
@@ -315,23 +369,71 @@ export async function fishTts(input: {
       body: JSON.stringify(body),
       signal: controller.signal,
     });
+    if (!response.ok) {
+      const errorText = await response.text().catch(() => "");
+      throw new Error(
+        `Fish Audio timestamped TTS failed with ${response.status}: ${errorText || response.statusText}`,
+      );
+    }
+    if (!response.body) {
+      throw new Error("Fish Audio timestamped TTS returned an empty stream.");
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    const audioChunks: Buffer[] = [];
+    const alignmentByChunk = new Map<number, FishTimestampChunk>();
+    let buffer = "";
+
+    const processEventText = (eventText: string) => {
+      for (const event of parseFishTimestampSseEvents(`${eventText}\n\n`)) {
+        audioChunks.push(Buffer.from(event.audio_base64, "base64"));
+        if (event.alignment) {
+          alignmentByChunk.set(event.chunk_seq, {
+            chunkSeq: event.chunk_seq,
+            content: event.content,
+            offsetSeconds: event.chunk_audio_offset_sec,
+            audioDurationSeconds: event.alignment.audio_duration,
+            segments: event.alignment.segments,
+          });
+        }
+      }
+    };
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      resetTimeout();
+      buffer += decoder.decode(value, { stream: true });
+      buffer = buffer.replace(/\r\n/g, "\n");
+      const eventTexts = buffer.split("\n\n");
+      buffer = eventTexts.pop() ?? "";
+      for (const eventText of eventTexts) processEventText(eventText);
+    }
+    buffer += decoder.decode();
+    if (buffer.trim()) processEventText(buffer);
+    if (audioChunks.length === 0) {
+      throw new Error("Fish Audio timestamped TTS returned no audio chunks.");
+    }
+    if (alignmentByChunk.size === 0) {
+      throw new Error("Fish Audio timestamped TTS returned no alignment snapshots.");
+    }
+    return {
+      audio: Buffer.concat(audioChunks),
+      chunks: [...alignmentByChunk.values()].sort(
+        (left, right) => left.chunkSeq - right.chunkSeq,
+      ),
+    };
   } catch (error) {
     if (error instanceof Error && error.name === "AbortError") {
-      throw new Error(`Fish Audio TTS timed out after ${input.timeoutMs}ms.`);
+      throw new Error(
+        `Fish Audio timestamped TTS was idle for ${input.timeoutMs}ms.`,
+      );
     }
     throw error;
   } finally {
-    clearTimeout(timeout);
+    if (timeout) clearTimeout(timeout);
   }
-
-  if (!response.ok) {
-    const errorText = await response.text().catch(() => "");
-    throw new Error(
-      `Fish Audio TTS failed with ${response.status}: ${errorText || response.statusText}`,
-    );
-  }
-
-  return Buffer.from(await response.arrayBuffer());
 }
 
 export function audioDurationSeconds(filePath: string): number | undefined {
@@ -369,19 +471,32 @@ export function artifactsAudioRoot(): string {
 
 export function createSettings(input: {
   model: string;
+  format: FishAudioFormat;
   speed: number;
   normalize: boolean;
+  latency: "normal" | "balanced" | "low";
+  chunkLength: number;
+  opusBitrate: 24000 | 32000 | 48000 | 64000;
   temperature?: number;
   topP?: number;
 }) {
   return {
     provider: "fish-audio",
     model: input.model,
-    format: "mp3",
+    endpoint: "stream-with-timestamp",
+    format: input.format,
     speed: input.speed,
     normalize: input.normalize,
-    temperature: input.temperature ?? null,
-    topP: input.topP ?? null,
+    latency: input.latency,
+    chunkLength: input.chunkLength,
+    opusBitrate: input.format === "opus" ? input.opusBitrate : null,
+    temperature: input.temperature ?? 0.7,
+    topP: input.topP ?? 0.7,
+    maxNewTokens: 1024,
+    repetitionPenalty: 1.2,
+    minChunkLength: 50,
+    conditionOnPreviousChunks: true,
+    earlyStopThreshold: 1,
   };
 }
 

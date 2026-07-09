@@ -1,16 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
-import { execFileSync } from "node:child_process";
 import catalogJson from "../../src/generated/manuscripts/catalog.json";
 import {
   artifactsAudioRoot,
   audioDurationSeconds,
   buildManifestFiles,
-  chunkTextForAudio,
   createRunManifest,
   createSettings,
   existingFileMetadata,
-  fishTts,
+  fishTtsWithTimestamps,
   generatedFileFingerprint,
   parseVoices,
   relativeToRepo,
@@ -18,17 +16,22 @@ import {
   selectSections,
   settingsHash,
   trimTextForAudio,
+  validateVoicesForRun,
   writeRunManifest,
+  type FishAudioFormat,
   type FishAudioFile,
   type FishRunMode,
 } from "./fish-generator";
 import { ensureDir, writeJson } from "../manuscripts/shared";
 import type { CompiledCatalog } from "../manuscripts/types";
+import { createAudioTimingDocument } from "../../src/lib/audio-timings";
+import { textForAudio } from "../../src/lib/audio-text";
 
 type CliOptions = {
   mode: FishRunMode;
   dryRun: boolean;
   model: string;
+  format: FishAudioFormat;
   runId: string;
   voices: string | undefined;
   sectionIds: string[];
@@ -36,10 +39,12 @@ type CliOptions = {
   concurrency: number;
   speed: number;
   normalize: boolean;
-  temperature?: number;
-  topP?: number;
+  latency: "normal" | "balanced" | "low";
+  chunkLength: number;
+  opusBitrate: 24000 | 32000 | 48000 | 64000;
+  temperature: number;
+  topP: number;
   maxCharacters: number | null;
-  chunkCharacters: number;
   timeoutMs: number;
 };
 
@@ -62,6 +67,19 @@ function parseNumber(value: string | undefined, fallback: number): number {
   return parsed;
 }
 
+function parseChoice<T extends string>(
+  value: string | undefined,
+  fallback: T,
+  choices: readonly T[],
+  name: string,
+): T {
+  const chosen = (value ?? fallback) as T;
+  if (!choices.includes(chosen)) {
+    throw new Error(`${name} must be one of: ${choices.join(", ")}.`);
+  }
+  return chosen;
+}
+
 function parseCli(args: string[]): CliOptions {
   const mode = (optionValue(args, "--mode") ?? "sample") as FishRunMode;
   if (mode !== "sample" && mode !== "full") {
@@ -79,13 +97,47 @@ function parseCli(args: string[]): CliOptions {
 
   const concurrency = Math.max(1, Math.floor(parseNumber(optionValue(args, "--concurrency"), 1)));
   const speed = parseNumber(optionValue(args, "--speed"), 1);
+  if (speed < 0.5 || speed > 2) {
+    throw new Error("--speed must be between 0.5 and 2.");
+  }
   const maxCharactersValue = optionValue(args, "--max-chars");
-  const chunkCharacters = Math.floor(parseNumber(optionValue(args, "--chunk-chars"), 1_500));
+  if (mode === "full" && maxCharactersValue !== undefined) {
+    throw new Error("--max-chars is only allowed for sample auditions.");
+  }
+  const format = parseChoice(
+    optionValue(args, "--format"),
+    "opus",
+    ["opus", "wav"] as const,
+    "--format",
+  );
+  const latency = parseChoice(
+    optionValue(args, "--latency"),
+    "normal",
+    ["normal", "balanced", "low"] as const,
+    "--latency",
+  );
+  const chunkLength = Math.floor(parseNumber(optionValue(args, "--chunk-length"), 300));
+  if (chunkLength < 100 || chunkLength > 300) {
+    throw new Error("--chunk-length must be between 100 and 300.");
+  }
+  const opusBitrate = parseNumber(optionValue(args, "--opus-bitrate"), 64000);
+  if (![24000, 32000, 48000, 64000].includes(opusBitrate)) {
+    throw new Error("--opus-bitrate must be 24000, 32000, 48000, or 64000.");
+  }
+  const temperature = parseNumber(optionValue(args, "--temperature"), 0.7);
+  const topP = parseNumber(optionValue(args, "--top-p"), 0.7);
+  if (temperature < 0 || temperature > 1) {
+    throw new Error("--temperature must be between 0 and 1.");
+  }
+  if (topP < 0 || topP > 1) {
+    throw new Error("--top-p must be between 0 and 1.");
+  }
 
   return {
     mode,
     dryRun: hasFlag(args, "--dry-run"),
-    model: optionValue(args, "--model") ?? "s2.1-pro",
+    model: optionValue(args, "--model") ?? "s2.1-pro-free",
+    format,
     runId: optionValue(args, "--run-id") ?? runIdForNow(),
     voices: optionValue(args, "--voices") ?? process.env.FISH_AUDIO_VOICES,
     sectionIds,
@@ -93,18 +145,14 @@ function parseCli(args: string[]): CliOptions {
     concurrency,
     speed,
     normalize: !hasFlag(args, "--no-normalize"),
+    latency,
+    chunkLength,
+    opusBitrate: opusBitrate as CliOptions["opusBitrate"],
     maxCharacters:
       maxCharactersValue === undefined ? null : parseNumber(maxCharactersValue, 0),
-    chunkCharacters,
-    timeoutMs: Math.max(1, Math.floor(parseNumber(optionValue(args, "--timeout-ms"), 180_000))),
-    temperature:
-      optionValue(args, "--temperature") === undefined
-        ? undefined
-        : parseNumber(optionValue(args, "--temperature"), 0),
-    topP:
-      optionValue(args, "--top-p") === undefined
-        ? undefined
-        : parseNumber(optionValue(args, "--top-p"), 0),
+    timeoutMs: Math.max(1, Math.floor(parseNumber(optionValue(args, "--timeout-ms"), 600_000))),
+    temperature,
+    topP,
   };
 }
 
@@ -129,85 +177,68 @@ async function generateOne(input: {
   apiKey: string;
   voiceReferenceId?: string;
   model: string;
+  format: FishAudioFormat;
   speed: number;
   normalize: boolean;
-  temperature?: number;
-  topP?: number;
+  latency: "normal" | "balanced" | "low";
+  chunkLength: number;
+  opusBitrate: 24000 | 32000 | 48000 | 64000;
+  temperature: number;
+  topP: number;
   timeoutMs: number;
   text: string;
-  chunkCharacters: number;
-  chunkRoot: string;
 }): Promise<void> {
   ensureDir(path.dirname(input.file.outputPath));
+  if (!input.file.timingsOutputPath) {
+    throw new Error(`Missing timing output path for ${input.file.sectionId}.`);
+  }
   const existing = existingFileMetadata(input.file.outputPath);
-  if (existing?.byteSize && existing.byteSize > 0) {
+  const existingTimings = existingFileMetadata(input.file.timingsOutputPath);
+  if (
+    existing?.byteSize &&
+    existing.byteSize > 0 &&
+    existingTimings?.byteSize &&
+    existingTimings.byteSize > 0
+  ) {
     input.file.skipped = true;
     input.file.byteSize = existing.byteSize;
     input.file.durationSeconds = existing.durationSeconds;
+    input.file.timingsByteSize = existingTimings.byteSize;
     return;
   }
-
-  const chunks = chunkTextForAudio(input.text, input.chunkCharacters);
-  const chunkSetId = generatedFileFingerprint(
-    Buffer.from(`${input.file.publicCacheKey}:${input.file.outputPath}`),
-  ).slice(0, 16);
-  const chunkDir = path.join(
-    input.chunkRoot,
-    input.file.voiceId,
-    chunkSetId,
-  );
-  ensureDir(chunkDir);
-  const chunkPaths: string[] = [];
-  for (const [chunkIndex, chunk] of chunks.entries()) {
-    const chunkPath = path.join(chunkDir, `${String(chunkIndex + 1).padStart(4, "0")}.mp3`);
-    chunkPaths.push(chunkPath);
-    if (fs.existsSync(chunkPath) && fs.statSync(chunkPath).size > 0) {
-      console.log(
-        `chunk ${chunkIndex + 1}/${chunks.length} skipped ${input.file.voiceId} ${input.file.sectionId}`,
-      );
-      continue;
-    }
-    const audio = await fishTts({
-      apiKey: input.apiKey,
-      model: input.model,
-      text: chunk,
-      referenceId: input.voiceReferenceId,
-      speed: input.speed,
-      normalize: input.normalize,
-      temperature: input.temperature,
-      topP: input.topP,
-      timeoutMs: input.timeoutMs,
-    });
-    fs.writeFileSync(chunkPath, audio);
-    console.log(
-      `chunk ${chunkIndex + 1}/${chunks.length} generated ${input.file.voiceId} ${input.file.sectionId}`,
-    );
+  if (!input.voiceReferenceId) {
+    throw new Error(`Missing pinned reference_id for ${input.file.voiceId}.`);
   }
-  if (chunkPaths.length === 1) {
-    fs.copyFileSync(chunkPaths[0]!, input.file.outputPath);
-  } else {
-    const concatList = path.join(chunkDir, "concat.txt");
-    fs.writeFileSync(
-      concatList,
-      chunkPaths.map((chunkPath) => `file '${chunkPath.replace(/'/g, "'\\''")}'`).join("\n"),
-    );
-    execFileSync("ffmpeg", [
-      "-hide_banner",
-      "-loglevel",
-      "error",
-      "-f",
-      "concat",
-      "-safe",
-      "0",
-      "-i",
-      concatList,
-      "-c",
-      "copy",
-      input.file.outputPath,
-    ]);
-  }
+  const generated = await fishTtsWithTimestamps({
+    apiKey: input.apiKey,
+    model: input.model,
+    text: input.text,
+    referenceId: input.voiceReferenceId,
+    format: input.format,
+    speed: input.speed,
+    normalize: input.normalize,
+    latency: input.latency,
+    chunkLength: input.chunkLength,
+    opusBitrate: input.opusBitrate,
+    temperature: input.temperature,
+    topP: input.topP,
+    timeoutMs: input.timeoutMs,
+  });
+  const timings = createAudioTimingDocument({
+    sectionId: input.file.sectionId,
+    audioVersionId: input.file.audioVersionId,
+    voiceId: input.file.voiceId,
+    text: input.text,
+    chunks: generated.chunks,
+  });
+  fs.writeFileSync(input.file.outputPath, generated.audio);
+  writeJson(input.file.timingsOutputPath, timings);
   input.file.byteSize = fs.statSync(input.file.outputPath).size;
-  input.file.durationSeconds = audioDurationSeconds(input.file.outputPath);
+  input.file.timingsByteSize = fs.statSync(input.file.timingsOutputPath).size;
+  input.file.durationSeconds =
+    audioDurationSeconds(input.file.outputPath) ?? timings.durationSeconds;
+  input.file.exactWordCount = timings.exactWordCount;
+  input.file.interpolatedWordCount = timings.interpolatedWordCount;
   input.file.generatedAt = new Date().toISOString();
   input.file.publicCacheKey = `${input.file.publicCacheKey}/${generatedFileFingerprint(fs.readFileSync(input.file.outputPath)).slice(0, 12)}`;
 }
@@ -216,25 +247,30 @@ async function main() {
   const options = parseCli(process.argv.slice(2));
   const catalog = catalogJson as CompiledCatalog;
   const voices = parseVoices(options.voices);
+  validateVoicesForRun(voices, options.mode);
   let sections = selectSections(catalog, options.mode, options.sectionIds);
   if (options.limit !== null) sections = sections.slice(0, options.limit);
 
   const settings = createSettings({
     model: options.model,
+    format: options.format,
     speed: options.speed,
     normalize: options.normalize,
+    latency: options.latency,
+    chunkLength: options.chunkLength,
+    opusBitrate: options.opusBitrate,
     temperature: options.temperature,
     topP: options.topP,
   });
   const hash = settingsHash(settings);
   const runRoot = path.join(artifactsAudioRoot(), options.runId);
-  const chunkRoot = path.join(runRoot, "chunks");
   const files = buildManifestFiles({
     sections,
     voices,
     model: options.model,
     runRoot,
     settingsHash: hash,
+    format: options.format,
   });
   const manifest = createRunManifest({
     model: options.model,
@@ -246,7 +282,7 @@ async function main() {
   const trimmedTextBySection = new Map(
     sections.map((section) => [
       section.sectionId,
-      trimTextForAudio(`${section.title}\n\n${section.text}`.trim(), options.maxCharacters),
+      trimTextForAudio(textForAudio(section), options.maxCharacters),
     ]),
   );
   for (const file of files) {
@@ -278,7 +314,10 @@ async function main() {
         model: options.model,
         settingsHash: hash,
         maxCharacters: options.maxCharacters,
-        chunkCharacters: options.chunkCharacters,
+        format: options.format,
+        latency: options.latency,
+        chunkLength: options.chunkLength,
+        opusBitrate: options.opusBitrate,
         timeoutMs: options.timeoutMs,
       },
       null,
@@ -309,14 +348,16 @@ async function main() {
         apiKey,
         voiceReferenceId: referenceIdByVoice.get(file.voiceId),
         model: options.model,
+        format: options.format,
         speed: options.speed,
         normalize: options.normalize,
+        latency: options.latency,
+        chunkLength: options.chunkLength,
+        opusBitrate: options.opusBitrate,
         temperature: options.temperature,
         topP: options.topP,
         timeoutMs: options.timeoutMs,
         text,
-        chunkCharacters: options.chunkCharacters,
-        chunkRoot,
       });
       console.log(
         `${index + 1}/${files.length} ${file.skipped ? "skipped" : "generated"} ${file.voiceId} ${file.sectionId}`,

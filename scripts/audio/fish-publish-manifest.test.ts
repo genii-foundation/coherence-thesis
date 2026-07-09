@@ -100,6 +100,7 @@ describe("Fish Supabase audio manifest publishing", () => {
               sectionId: "section-a",
               audioVersionId: "section-a-hash",
               href: "https://project.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-audiobook-v1/default/section-a-hash.mp3",
+              format: "mp3",
               byteSize: 123,
               durationSeconds: 12,
             },
@@ -107,6 +108,81 @@ describe("Fish Supabase audio manifest publishing", () => {
         },
       ],
     });
+  });
+
+  it("publishes timestamped Opus audio and timing sidecars together", () => {
+    const opusPath = path.join(runRoot, "voices/default/file.opus");
+    const timingsPath = path.join(runRoot, "voices/default/file.timings.json");
+    fs.writeFileSync(opusPath, "opus-audio");
+    fs.writeFileSync(
+      timingsPath,
+      JSON.stringify({
+        version: 1,
+        sectionId: "section-a",
+        audioVersionId: "section-a-hash",
+        voiceId: "default",
+        textCharacters: 9,
+        durationSeconds: 1,
+        exactWordCount: 1,
+        interpolatedWordCount: 0,
+        words: [
+          {
+            charStart: 0,
+            charEnd: 7,
+            startSeconds: 0,
+            endSeconds: 0.7,
+            match: "exact",
+          },
+        ],
+      }),
+    );
+    const file = audioFile({
+      format: "opus",
+      outputPath: opusPath,
+      relativeOutputPath: "voices/default/file.opus",
+      timingsOutputPath: timingsPath,
+      timingsRelativeOutputPath: "voices/default/file.timings.json",
+      timingsByteSize: fs.statSync(timingsPath).size,
+    });
+    const run = { ...runWith([file]), schemaVersion: 2 as const, endpoint: "stream-with-timestamp" as const };
+    const files = validateAudioRunForPublish({
+      run,
+      runRoot,
+      catalogSections,
+      version: "2026-07-audiobook-v2",
+      publicBase: "https://project.supabase.co/storage/v1/object/public/audio-clips",
+    });
+
+    expect(files[0]).toMatchObject({
+      objectKey: "audiobook/2026-07-audiobook-v2/default/section-a-hash.opus",
+      contentType: "audio/ogg",
+      timingsObjectKey:
+        "audiobook/2026-07-audiobook-v2/default/section-a-hash.timings.json",
+    });
+    expect(createAudioClipManifest({ run, catalogSections, files }).voices[0]!.sections[0])
+      .toMatchObject({
+        format: "opus",
+        timingsHref:
+          "https://project.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-audiobook-v2/default/section-a-hash.timings.json",
+      });
+  });
+
+  it("rejects a timestamped run without its timing sidecar", () => {
+    const run = {
+      ...runWith([audioFile()]),
+      schemaVersion: 2 as const,
+      endpoint: "stream-with-timestamp" as const,
+    };
+
+    expect(() =>
+      validateAudioRunForPublish({
+        run,
+        runRoot,
+        catalogSections,
+        version: "2026-07-audiobook-v2",
+        publicBase: "https://project.supabase.co/storage/v1/object/public/audio-clips",
+      }),
+    ).toThrow("Missing timestamp sidecar mapping");
   });
 
   it("rejects unknown sections", () => {

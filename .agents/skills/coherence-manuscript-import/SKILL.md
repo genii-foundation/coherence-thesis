@@ -70,8 +70,8 @@ npm run audio:publish-manifest -- --run-id <run-id> --version <version> --projec
    - If the validation fails because audio is stale or missing, regenerate changed clips before merge. Use `--sections` for a comma separated section list when only known sections changed, or `--mode full` to let existing files skip and missing current clips generate:
 
 ```bash
-FISH_AUDIO_API_KEY=<from-secret-store> npm run audio:fish -- --mode full --voices <voice-id:label> --run-id <run-id>
-FISH_AUDIO_API_KEY=<from-secret-store> npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <voice-id:label> --run-id <run-id>
+FISH_AUDIO_API_KEY=<from-secret-store> npm run audio:fish -- --mode full --voices <voice-id>:<reference-id>:<label> --run-id <run-id>
+FISH_AUDIO_API_KEY=<from-secret-store> npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <voice-id>:<reference-id>:<label> --run-id <run-id>
 ```
 
    - Republish only with temporary Supabase S3 credentials from the environment. Never commit, echo, paste, or log those credentials:

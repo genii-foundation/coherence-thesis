@@ -5,6 +5,7 @@ const isCI = !!process.env.CI;
 const baseURL =
   process.env.PLAYWRIGHT_BASE_URL ??
   (fastE2e ? "http://127.0.0.1:3200" : "http://127.0.0.1:3100");
+const basePort = new URL(baseURL).port || (baseURL.startsWith("https:") ? "443" : "80");
 
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -20,7 +21,7 @@ export default defineConfig({
   webServer: {
     command: fastE2e
       ? "npm run dev:e2e"
-      : "npm run build && npm run preview:production",
+      : `npm run build && npm run preview:production -- --port ${basePort}`,
     url: baseURL,
     reuseExistingServer: fastE2e,
     // The full-mode server runs a production build (manuscript compile, PDF

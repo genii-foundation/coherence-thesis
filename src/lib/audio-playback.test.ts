@@ -306,6 +306,118 @@ describe("hosted clip provider", () => {
     expect(audioInstances[0]!.play).toHaveBeenCalledOnce();
   });
 
+  it("uses hosted word timings for exact seeking and progress", async () => {
+    const audioInstances: Array<{
+      src: string;
+      currentTime: number;
+      duration: number;
+      ontimeupdate: (() => void) | null;
+      onloadedmetadata: (() => void) | null;
+      play: ReturnType<typeof vi.fn>;
+    }> = [];
+    class FakeAudio {
+      src = "";
+      preload = "";
+      playbackRate = 1;
+      currentTime = 0;
+      duration = 2;
+      paused = false;
+      play = vi.fn(() => Promise.resolve());
+      pause = vi.fn();
+      removeAttribute = vi.fn();
+      load = vi.fn();
+      ontimeupdate: (() => void) | null = null;
+      onloadedmetadata: (() => void) | null = null;
+      onended: (() => void) | null = null;
+      onerror: ((event: unknown) => void) | null = null;
+      constructor() {
+        audioInstances.push(this);
+      }
+    }
+    Object.defineProperty(globalThis, "Audio", {
+      configurable: true,
+      value: FakeAudio,
+    });
+    const text = "Title\n\nAlpha beta.";
+    Object.defineProperty(globalThis, "fetch", {
+      configurable: true,
+      value: vi.fn(() =>
+        Promise.resolve({
+          ok: true,
+          json: () =>
+            Promise.resolve({
+              version: 1,
+              sectionId: "section-a",
+              audioVersionId: "section-a-hash",
+              voiceId: "narrator",
+              textCharacters: text.length,
+              durationSeconds: 2,
+              exactWordCount: 3,
+              interpolatedWordCount: 0,
+              words: [
+                { charStart: 0, charEnd: 5, startSeconds: 0, endSeconds: 0.5, match: "exact" },
+                { charStart: 7, charEnd: 12, startSeconds: 0.5, endSeconds: 1.2, match: "exact" },
+                { charStart: 13, charEnd: 17, startSeconds: 1.2, endSeconds: 2, match: "exact" },
+              ],
+            }),
+        }),
+      ),
+    });
+    const onProgress = vi.fn();
+    const provider = createHostedClipProvider(
+      {
+        version: 1,
+        voices: [
+          {
+            id: "narrator",
+            label: "High Quality 1",
+            sections: [
+              {
+                sectionId: "section-a",
+                audioVersionId: "section-a-hash",
+                href: "/audio/section-a.opus",
+                timingsHref: "/audio/section-a.timings.json",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: "fallback",
+        isSupported: () => false,
+        getVoices: () => [],
+        subscribeVoices: () => () => {},
+        speak: vi.fn(),
+        pause: vi.fn(),
+        resume: vi.fn(),
+        cancel: vi.fn(),
+        isPaused: () => false,
+      },
+    );
+
+    provider.speak({
+      sectionId: "section-a",
+      audioVersionId: "section-a-hash",
+      text,
+      voiceId: clipVoicePreferenceId("narrator"),
+      rate: 1,
+      pitch: 1,
+      startCharIndex: 13,
+      onProgress,
+      onEnd: vi.fn(),
+      onError: vi.fn(),
+    });
+
+    await vi.waitFor(() => expect(audioInstances).toHaveLength(1));
+    audioInstances[0]!.onloadedmetadata?.();
+    expect(audioInstances[0]!.currentTime).toBe(1.2);
+    audioInstances[0]!.currentTime = 1.3;
+    audioInstances[0]!.ontimeupdate?.();
+    expect(onProgress).toHaveBeenLastCalledWith(
+      expect.objectContaining({ charIndex: 13, seconds: 1.3 }),
+    );
+  });
+
   it("uses the fallback voice engine for automatic and named system voices", () => {
     const fallback = {
       id: "fallback",

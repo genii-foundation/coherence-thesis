@@ -3,27 +3,48 @@ import { describe, expect, it } from "vitest";
 import {
   audioCacheKey,
   buildManifestFiles,
-  chunkTextForAudio,
   createRunManifest,
   estimatePaidCostUsd,
+  parseFishTimestampSseEvents,
   parseVoices,
   sampleSectionIds,
   selectSections,
   settingsHash,
-  textForAudio,
   trimTextForAudio,
+  validateVoicesForRun,
 } from "./fish-generator";
 import { buildCatalog } from "../manuscripts/shared";
+import { textForAudio } from "../../src/lib/audio-text";
 
 describe("Fish audio generator", () => {
-  it("parses default and reference voices", () => {
-    expect(parseVoices(undefined)).toEqual([
-      { id: "default", label: "Fish default" },
-    ]);
+  it("parses only explicitly selected reference voices", () => {
+    expect(parseVoices(undefined)).toEqual([]);
     expect(parseVoices("narrator:abc123:Narrator, warm voice:def456:Warm Voice")).toEqual([
       { id: "narrator", referenceId: "abc123", label: "Narrator" },
       { id: "warm-voice", referenceId: "def456", label: "Warm Voice" },
     ]);
+  });
+
+  it("requires one pinned narrator for full corpus generation", () => {
+    expect(() => validateVoicesForRun([], "full")).toThrow("Select a pinned Fish voice");
+    expect(() =>
+      validateVoicesForRun([{ id: "default", label: "Default" }], "full"),
+    ).toThrow("reference_id");
+    expect(() =>
+      validateVoicesForRun(
+        [
+          { id: "one", label: "One", referenceId: "ref-one" },
+          { id: "two", label: "Two", referenceId: "ref-two" },
+        ],
+        "full",
+      ),
+    ).toThrow("exactly one");
+    expect(() =>
+      validateVoicesForRun(
+        [{ id: "narrator", label: "Narrator", referenceId: "ref-one" }],
+        "full",
+      ),
+    ).not.toThrow();
   });
 
   it("selects the sample sections from the current catalog", () => {
@@ -43,6 +64,7 @@ describe("Fish audio generator", () => {
       model: "s2.1-pro",
       runRoot: "/tmp/audio-run",
       settingsHash: settings,
+      format: "opus",
     });
 
     expect(files).toHaveLength(1);
@@ -54,14 +76,21 @@ describe("Fish audio generator", () => {
         sectionId: "v02-relational-coherence",
         contentHash: sections[0]!.contentHash,
         settingsHash: settings,
-        format: "mp3",
+        format: "opus",
       }),
     );
     expect(files[0]!.outputPath).toBe(
       path.join(
         "/tmp/audio-run",
         "voices/default",
-        `${sections[0]!.audioVersionId}-${settings}.mp3`,
+        `${sections[0]!.audioVersionId}-${settings}.opus`,
+      ),
+    );
+    expect(files[0]!.timingsOutputPath).toBe(
+      path.join(
+        "/tmp/audio-run",
+        "voices/default",
+        `${sections[0]!.audioVersionId}-${settings}.timings.json`,
       ),
     );
   });
@@ -78,16 +107,30 @@ describe("Fish audio generator", () => {
     expect(trimTextForAudio(text, 32)).toBe("Title\n\nFirst sentence.");
   });
 
-  it("chunks text without exceeding the request target", () => {
-    const text = [
-      "Title",
-      "First paragraph has one sentence. ".repeat(12),
-      "Second paragraph has enough words to force another chunk. ".repeat(12),
-    ].join("\n\n");
-    const chunks = chunkTextForAudio(text, 500);
+  it("parses audio and cumulative alignment events from Fish SSE", () => {
+    const events = parseFishTimestampSseEvents([
+      `data: ${JSON.stringify({
+        audio_base64: Buffer.from("one").toString("base64"),
+        content: "Hello world",
+        alignment: null,
+        chunk_seq: 0,
+        chunk_audio_offset_sec: 0,
+      })}`,
+      `data: ${JSON.stringify({
+        audio_base64: Buffer.from("two").toString("base64"),
+        content: "Hello world",
+        alignment: {
+          audio_duration: 1,
+          segments: [{ text: "Hello", start: 0, end: 0.5 }],
+        },
+        chunk_seq: 0,
+        chunk_audio_offset_sec: 0,
+      })}`,
+      "",
+    ].join("\n\n"));
 
-    expect(chunks.length).toBeGreaterThan(1);
-    expect(chunks.every((chunk) => chunk.length <= 500)).toBe(true);
+    expect(events).toHaveLength(2);
+    expect(events[1]!.alignment?.segments[0]?.text).toBe("Hello");
   });
 
   it("creates a manifest summary for selected files", () => {
@@ -99,6 +142,7 @@ describe("Fish audio generator", () => {
       model: "s2.1-pro",
       runRoot: "/tmp/audio-run",
       settingsHash: "abc",
+      format: "opus",
     });
     const manifest = createRunManifest({
       model: "s2.1-pro",
@@ -109,6 +153,7 @@ describe("Fish audio generator", () => {
     });
 
     expect(manifest.corpus.sections).toBe(1);
+    expect(manifest.endpoint).toBe("stream-with-timestamp");
     expect(manifest.corpus.voices).toBe(1);
     expect(manifest.corpus.inputBytes).toBe(
       Buffer.byteLength(textForAudio(sections[0]!), "utf8"),

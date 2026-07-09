@@ -16,6 +16,12 @@ import {
   type AudioClipManifest,
 } from "@/lib/audio-manifest";
 import { offlineAudioCacheName } from "@/lib/audio-offline-cache";
+import {
+  isAudioTimingDocument,
+  timingForCharIndex,
+  timingForSeconds,
+  type AudioTimingDocument,
+} from "@/lib/audio-timings";
 
 export type AudioPlaybackVoice = {
   // Stable identifier used to match a saved preference. For the browser engine
@@ -166,6 +172,8 @@ export function createHostedClipProvider(
   let audio: HTMLAudioElement | null = null;
   let objectUrl: string | null = null;
   let playingClip = false;
+  let requestSequence = 0;
+  const timingRequests = new Map<string, Promise<AudioTimingDocument | null>>();
 
   const clearAudio = () => {
     if (audio) {
@@ -183,6 +191,7 @@ export function createHostedClipProvider(
     source: string,
     request: AudioPlaybackRequest,
     onFailure: (error?: unknown) => void,
+    timings: AudioTimingDocument | null,
     managedObjectUrl?: string,
   ) => {
     clearAudio();
@@ -198,10 +207,12 @@ export function createHostedClipProvider(
         ? currentAudio.duration
         : undefined;
       const seconds = currentAudio.currentTime;
-      const charIndex =
+      const exactTiming = timings ? timingForSeconds(timings, seconds) : undefined;
+      const charIndex = exactTiming?.charStart ?? (
         durationSeconds && durationSeconds > 0
           ? Math.floor((seconds / durationSeconds) * request.text.length)
-          : undefined;
+          : undefined
+      );
       request.onProgress?.({
         sectionId: request.sectionId,
         audioVersionId: request.audioVersionId,
@@ -217,11 +228,18 @@ export function createHostedClipProvider(
           Math.min(currentAudio.duration || request.startSeconds, request.startSeconds),
         );
       } else if (typeof request.startCharIndex === "number" && request.text.length > 0) {
-        const durationSeconds = Number.isFinite(currentAudio.duration)
-          ? currentAudio.duration
-          : 0;
-        currentAudio.currentTime =
-          durationSeconds * (request.startCharIndex / request.text.length);
+        const exactTiming = timings
+          ? timingForCharIndex(timings, request.startCharIndex)
+          : undefined;
+        if (exactTiming) {
+          currentAudio.currentTime = exactTiming.startSeconds;
+        } else {
+          const durationSeconds = Number.isFinite(currentAudio.duration)
+            ? currentAudio.duration
+            : 0;
+          currentAudio.currentTime =
+            durationSeconds * (request.startCharIndex / request.text.length);
+        }
       }
     };
     currentAudio.onended = () => {
@@ -238,7 +256,39 @@ export function createHostedClipProvider(
     currentAudio.play().catch(fail);
   };
 
-  const playCachedBlob = (clip: AudioClipSection, request: AudioPlaybackRequest) => {
+  const loadTimings = (
+    clip: AudioClipSection,
+    request: AudioPlaybackRequest,
+    voiceId: string,
+  ): Promise<AudioTimingDocument | null> => {
+    if (!clip.timingsHref) return Promise.resolve(null);
+    const existing = timingRequests.get(clip.timingsHref);
+    if (existing) return existing;
+    const pending = responseForAudioUrl(clip.timingsHref)
+      .then(async (response) => {
+        if (!response.ok) return null;
+        const value: unknown = await response.json();
+        if (!isAudioTimingDocument(value)) return null;
+        if (
+          value.sectionId !== request.sectionId ||
+          value.audioVersionId !== request.audioVersionId ||
+          value.voiceId !== voiceId ||
+          value.textCharacters !== request.text.length
+        ) {
+          return null;
+        }
+        return value;
+      })
+      .catch(() => null);
+    timingRequests.set(clip.timingsHref, pending);
+    return pending;
+  };
+
+  const playCachedBlob = (
+    clip: AudioClipSection,
+    request: AudioPlaybackRequest,
+    timings: AudioTimingDocument | null,
+  ) => {
     responseForAudioUrl(clip.href)
       .then(async (response) => {
         if (!response.ok) throw new Error(`Audio clip failed: ${response.status}`);
@@ -247,7 +297,7 @@ export function createHostedClipProvider(
         playAudio(blobUrl, request, () => {
           clearAudio();
           fallback.speak(request);
-        }, blobUrl);
+        }, timings, blobUrl);
       })
       .catch(() => {
         clearAudio();
@@ -286,13 +336,33 @@ export function createHostedClipProvider(
               request.sectionId,
               request.audioVersionId,
             );
-      if (!clip || typeof Audio === "undefined") {
+      if (!clipVoiceId || !clip || typeof Audio === "undefined") {
+        requestSequence += 1;
         fallback.speak(request);
         return;
       }
 
+      const sequence = ++requestSequence;
+      clearAudio();
       fallback.cancel();
-      playAudio(clip.href, request, () => playCachedBlob(clip, request));
+      if (!clip.timingsHref) {
+        playAudio(
+          clip.href,
+          request,
+          () => playCachedBlob(clip, request, null),
+          null,
+        );
+        return;
+      }
+      void loadTimings(clip, request, clipVoiceId).then((timings) => {
+        if (sequence !== requestSequence) return;
+        playAudio(
+          clip.href,
+          request,
+          () => playCachedBlob(clip, request, timings),
+          timings,
+        );
+      });
     },
     pause() {
       if (audio && playingClip) {
@@ -309,6 +379,7 @@ export function createHostedClipProvider(
       fallback.resume();
     },
     cancel() {
+      requestSequence += 1;
       clearAudio();
       fallback.cancel();
     },
