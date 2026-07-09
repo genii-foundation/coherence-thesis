@@ -2733,27 +2733,6 @@
     ]
   },
   {
-    "sectionId": "v02-the-diagnosis",
-    "title": "The Diagnosis",
-    "href": "/manuscripts/2/the-diagnosis/start/",
-    "chapterHref": "/manuscripts/2/the-diagnosis/",
-    "readerHref": "/manuscripts/2/the-diagnosis/start/",
-    "text": "Every civilization eventually becomes organized around whatever it has learned to reward.",
-    "contentHash": "d5d477530b862f51",
-    "versionHash": "d5d477530b862f51",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v02-the-diagnosis-d5d477530b862f51",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "5b7d82567722e626"
-      }
-    ]
-  },
-  {
     "sectionId": "v02-the-crisis-beneath-the-crises",
     "title": "The Crisis Beneath the Crises",
     "href": "/manuscripts/2/the-diagnosis/the-crisis-beneath-the-crises/",
@@ -5244,27 +5223,6 @@
     ]
   },
   {
-    "sectionId": "v02-wielding-intelligence",
-    "title": "Wielding Intelligence",
-    "href": "/manuscripts/2/main/wielding-intelligence/",
-    "chapterHref": "/manuscripts/2/main/",
-    "readerHref": "/manuscripts/2/main/wielding-intelligence/",
-    "text": "The future will not be built by isolated genius. It will be built by builders who learn to find each other before fragmentation becomes irreversible.",
-    "contentHash": "c70d456118ae438c",
-    "versionHash": "c70d456118ae438c",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v02-wielding-intelligence-c70d456118ae438c",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "e5bb96b64f85b2fa"
-      }
-    ]
-  },
-  {
     "sectionId": "v02-builders-of-the-coherent-civilization",
     "title": "Builders of the Coherent Civilization",
     "href": "/manuscripts/2/main/builders-of-the-coherent-civilization/",
@@ -6639,33 +6597,6 @@
     ]
   },
   {
-    "sectionId": "v03-the-reckoning",
-    "title": "The Reckoning",
-    "href": "/manuscripts/3/the-reckoning/start/",
-    "chapterHref": "/manuscripts/3/the-reckoning/",
-    "readerHref": "/manuscripts/3/the-reckoning/start/",
-    "text": "On Coordination, Collapse, and the Institutions That Were Supposed to Hold We are not short of knowledge, or of will, or of people who care. We are short of the means to act on them together — and that absence is the shape of every crisis in this book.",
-    "contentHash": "3acf61bca3c840e5",
-    "versionHash": "3acf61bca3c840e5",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v03-the-reckoning-3acf61bca3c840e5",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "829c35bd5b46d512"
-      },
-      {
-        "paragraphId": "p-2",
-        "anchor": "p-2",
-        "order": 2,
-        "contentHash": "1390d395ff122736"
-      }
-    ]
-  },
-  {
     "sectionId": "v03-the-central-wound",
     "title": "The Central Wound",
     "href": "/manuscripts/3/the-reckoning/the-central-wound/",
@@ -7244,33 +7175,6 @@
         "anchor": "p-4",
         "order": 4,
         "contentHash": "e2cfd244e23bb27a"
-      }
-    ]
-  },
-  {
-    "sectionId": "v03-the-innovation",
-    "title": "The Innovation",
-    "href": "/manuscripts/3/the-innovation/start/",
-    "chapterHref": "/manuscripts/3/the-innovation/",
-    "readerHref": "/manuscripts/3/the-innovation/start/",
-    "text": "What Providence Is, How It Works, and Why It Constitutes a New Currency for Civilization Every currency teaches its holders what to become. What follows is the design of one that would teach us to be present.",
-    "contentHash": "7ffb10600b0ac3d6",
-    "versionHash": "7ffb10600b0ac3d6",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v03-the-innovation-7ffb10600b0ac3d6",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "472848f9bd88132b"
-      },
-      {
-        "paragraphId": "p-2",
-        "anchor": "p-2",
-        "order": 2,
-        "contentHash": "9104d28cdf9926c0"
       }
     ]
   },
@@ -8124,33 +8028,6 @@
     ]
   },
   {
-    "sectionId": "v03-the-mechanism",
-    "title": "The Mechanism",
-    "href": "/manuscripts/3/the-mechanism/start/",
-    "chapterHref": "/manuscripts/3/the-mechanism/",
-    "readerHref": "/manuscripts/3/the-mechanism/start/",
-    "text": "How Presence Becomes Legible — The Operating Engine of the Currency The will can compose itself. The body beneath it keeps telling the truth. It is that older, more honest language the engine is built to read.",
-    "contentHash": "4f733efe8d0e26fe",
-    "versionHash": "4f733efe8d0e26fe",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v03-the-mechanism-4f733efe8d0e26fe",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "b77c17dac60ec48b"
-      },
-      {
-        "paragraphId": "p-2",
-        "anchor": "p-2",
-        "order": 2,
-        "contentHash": "85836a34581d0c57"
-      }
-    ]
-  },
-  {
     "sectionId": "v03-the-body-as-primary-text",
     "title": "The Body as Primary Text",
     "href": "/manuscripts/3/the-mechanism/the-body-as-primary-text/",
@@ -8717,33 +8594,6 @@
         "anchor": "p-3",
         "order": 3,
         "contentHash": "895beae86dc114af"
-      }
-    ]
-  },
-  {
-    "sectionId": "v03-the-living-reality",
-    "title": "The Living Reality",
-    "href": "/manuscripts/3/the-living-reality/start/",
-    "chapterHref": "/manuscripts/3/the-living-reality/",
-    "readerHref": "/manuscripts/3/the-living-reality/start/",
-    "text": "What It Is to Live Inside Providence, and How a Currency of Presence Reaches the Ground of Material Life Everything before this was architecture. Now we go indoors — into one year, one life, one creek — to ask whether the design holds when a human being actually lives inside it.",
-    "contentHash": "0b8d35a06b7c4580",
-    "versionHash": "0b8d35a06b7c4580",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v03-the-living-reality-0b8d35a06b7c4580",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "1e741442727e79b6"
-      },
-      {
-        "paragraphId": "p-2",
-        "anchor": "p-2",
-        "order": 2,
-        "contentHash": "756be64a1fc4381c"
       }
     ]
   },
@@ -9425,33 +9275,6 @@
         "anchor": "p-4",
         "order": 4,
         "contentHash": "8881b8d1ca83f26e"
-      }
-    ]
-  },
-  {
-    "sectionId": "v03-the-governance",
-    "title": "The Governance",
-    "href": "/manuscripts/3/the-governance/start/",
-    "chapterHref": "/manuscripts/3/the-governance/",
-    "readerHref": "/manuscripts/3/the-governance/start/",
-    "text": "On Constitutional Design for Institutions That Must Outlast Their Founders Any instrument strong enough to coordinate a civilization is strong enough to enslave it. All of governance is the discipline of building the first while making the second structurally impossible.",
-    "contentHash": "e164de12cd8a81f4",
-    "versionHash": "e164de12cd8a81f4",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v03-the-governance-e164de12cd8a81f4",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "c456a433d2163beb"
-      },
-      {
-        "paragraphId": "p-2",
-        "anchor": "p-2",
-        "order": 2,
-        "contentHash": "67b517ffd15d6e85"
       }
     ]
   },
@@ -10251,33 +10074,6 @@
     ]
   },
   {
-    "sectionId": "v03-the-sovereign-architecture",
-    "title": "The Sovereign Architecture",
-    "href": "/manuscripts/3/the-sovereign-architecture/start/",
-    "chapterHref": "/manuscripts/3/the-sovereign-architecture/",
-    "readerHref": "/manuscripts/3/the-sovereign-architecture/start/",
-    "text": "On Federated Intelligence and a System That Must Never Become What It Was Built to Replace The surest way to become the power you feared is to build the cure as a throne. What follows is the architecture of refusing the throne — of building so that no center can ever hold it all.",
-    "contentHash": "db0b66a3b544da53",
-    "versionHash": "db0b66a3b544da53",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v03-the-sovereign-architecture-db0b66a3b544da53",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "86390d4ba07fcf97"
-      },
-      {
-        "paragraphId": "p-2",
-        "anchor": "p-2",
-        "order": 2,
-        "contentHash": "6ce6c38ea9c96ee2"
-      }
-    ]
-  },
-  {
     "sectionId": "v03-the-federated-imperative",
     "title": "The Federated Imperative",
     "href": "/manuscripts/3/the-sovereign-architecture/the-federated-imperative/",
@@ -10662,33 +10458,6 @@
     ]
   },
   {
-    "sectionId": "v03-the-earth-compact",
-    "title": "The Earth Compact",
-    "href": "/manuscripts/3/the-earth-compact/start/",
-    "chapterHref": "/manuscripts/3/the-earth-compact/",
-    "readerHref": "/manuscripts/3/the-earth-compact/start/",
-    "text": "On Energy, Ecology, and the Obligation to Regenerate What We Use No instrument that consumes the living world to coordinate its care has earned the name. What we draw from the earth to build this, we are bound to return — and then a little more.",
-    "contentHash": "0f34db826575078c",
-    "versionHash": "0f34db826575078c",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v03-the-earth-compact-0f34db826575078c",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "3f82e59f8458f067"
-      },
-      {
-        "paragraphId": "p-2",
-        "anchor": "p-2",
-        "order": 2,
-        "contentHash": "bd6e01e63c2848f1"
-      }
-    ]
-  },
-  {
     "sectionId": "v03-a-system-that-heals-what-it-inhabits",
     "title": "A System That Heals What It Inhabits",
     "href": "/manuscripts/3/the-earth-compact/a-system-that-heals-what-it-inhabits/",
@@ -10823,33 +10592,6 @@
         "anchor": "p-3",
         "order": 3,
         "contentHash": "ec76b09c7aacccac"
-      }
-    ]
-  },
-  {
-    "sectionId": "v03-the-invitation",
-    "title": "The Invitation",
-    "href": "/manuscripts/3/the-invitation/start/",
-    "chapterHref": "/manuscripts/3/the-invitation/",
-    "readerHref": "/manuscripts/3/the-invitation/start/",
-    "text": "Not to Join Something, But to Help Prove Whether It Is Possible We are not asking you to believe. We are asking you to help find out. The nest was left unfinished on purpose; what remains is the part that was always meant for other hands.",
-    "contentHash": "939dc7a51abd1cd9",
-    "versionHash": "939dc7a51abd1cd9",
-    "versionDate": "2026-06-27T19:50:31-07:00",
-    "versionUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-    "audioVersionId": "v03-the-invitation-939dc7a51abd1cd9",
-    "paragraphs": [
-      {
-        "paragraphId": "p-1",
-        "anchor": "p-1",
-        "order": 1,
-        "contentHash": "fa8ac5f18f96e826"
-      },
-      {
-        "paragraphId": "p-2",
-        "anchor": "p-2",
-        "order": 2,
-        "contentHash": "8825a5d5895d238c"
       }
     ]
   },

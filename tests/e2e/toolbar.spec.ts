@@ -590,7 +590,7 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   ).toBeVisible();
   await expect(
     outlineMenu.locator(".outline-chapters").getByRole("link", {
-      name: /^Wielding Intelligence/,
+      name: /^Builders of the Coherent Civilization/,
     }),
   ).toBeVisible();
   await page.keyboard.press("Escape");

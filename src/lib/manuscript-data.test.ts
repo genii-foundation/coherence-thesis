@@ -67,14 +67,27 @@ describe("manuscript data", () => {
     ]);
   });
 
-  it("omits repeated breadcrumb labels for self-titled sections", () => {
-    const route = breadcrumbRoutes().find(
-      (candidate) => candidate.href === "/manuscripts/2/main/wielding-intelligence/",
-    );
+  it("resolves structural title cards to their first content sections", () => {
+    const oldRoute =
+      "/manuscripts/wielding-intelligence/v02-wielding-intelligence/";
+    const canonicalRoute =
+      "/manuscripts/2/main/builders-of-the-coherent-civilization/";
+    const result = sectionByHrefOrAlias(oldRoute);
 
-    expect(route?.crumbs.map((crumb) => crumb.label)).toEqual([
-      "Wielding Intelligence",
-    ]);
+    expect(
+      allSections().some(
+        (section) => section.sectionId === "v02-wielding-intelligence",
+      ),
+    ).toBe(false);
+    expect(result?.section.sectionId).toBe(
+      "v02-builders-of-the-coherent-civilization",
+    );
+    expect(result?.alias?.targetHref).toBe(canonicalRoute);
+    expect(
+      breadcrumbRoutes().some(
+        (candidate) => candidate.href === "/manuscripts/2/main/wielding-intelligence/",
+      ),
+    ).toBe(false);
   });
 
   it("resolves collapsed canonical section hrefs and old duplicate aliases", () => {

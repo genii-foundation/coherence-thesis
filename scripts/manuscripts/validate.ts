@@ -147,6 +147,7 @@ export function validateManuscripts(): void {
   }
 
   const catalog = buildCatalog();
+  const publishedPaths = new Set(catalog.sections.map((section) => section.href));
   const provenance = readVersionProvenance();
   assert(
     fs.existsSync(versionProvenancePath),
@@ -221,7 +222,7 @@ export function validateManuscripts(): void {
   const aliasSources = new Set<string>();
   for (const alias of catalog.aliases) {
     assert(
-      !seenPaths.has(alias.sourceHref),
+      !publishedPaths.has(alias.sourceHref),
       `Alias sourceHref '${alias.sourceHref}' conflicts with a canonical section route.`,
     );
     assert(

@@ -178,6 +178,39 @@ test("legacy front matter routes redirect to clean canonical routes", async ({
   );
 });
 
+test("structural part opener routes redirect to substantive content", async ({
+  page,
+}) => {
+  await page.goto(
+    "/manuscripts/wielding-intelligence/v02-wielding-intelligence/",
+  );
+  await expect(page).toHaveURL(
+    "/manuscripts/2/main/builders-of-the-coherent-civilization/",
+  );
+  await expect(
+    page.getByRole("heading", {
+      level: 1,
+      name: "Builders of the Coherent Civilization",
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("navigation", { name: "Breadcrumb" }).locator(
+      ".breadcrumb-label",
+    ),
+  ).toHaveText([
+    "Wielding Intelligence",
+    "Builders of the Coherent Civilization",
+  ]);
+
+  await page.goto("/manuscripts/3/the-reckoning/start/");
+  await expect(page).toHaveURL(
+    "/manuscripts/3/the-reckoning/the-central-wound/",
+  );
+  await expect(
+    page.getByRole("heading", { level: 1, name: "The Central Wound" }),
+  ).toBeVisible();
+});
+
 test("synthetic opening part headings do not repeat their title", async ({
   page,
 }) => {

@@ -127,6 +127,55 @@ describe("manuscript compiler helpers", () => {
     });
   });
 
+  it("removes low-content structural part openers from every catalog surface", () => {
+    const catalog = buildCatalog();
+    const removedIds = [
+      "v02-the-diagnosis",
+      "v02-wielding-intelligence",
+      "v03-the-reckoning",
+      "v03-the-innovation",
+      "v03-the-mechanism",
+      "v03-the-living-reality",
+      "v03-the-governance",
+      "v03-the-sovereign-architecture",
+      "v03-the-earth-compact",
+      "v03-the-invitation",
+    ];
+    const publishedIds = new Set(catalog.sections.map((section) => section.sectionId));
+    const nestedIds = new Set(
+      catalog.volumes.flatMap((volume) =>
+        volume.parts.flatMap((part) =>
+          part.chapters.flatMap((chapter) => chapter.sectionIds),
+        ),
+      ),
+    );
+
+    for (const sectionId of removedIds) {
+      expect(publishedIds.has(sectionId)).toBe(false);
+      expect(nestedIds.has(sectionId)).toBe(false);
+    }
+
+    expect(
+      catalog.aliases.find(
+        (alias) =>
+          alias.sourceHref ===
+          "/manuscripts/wielding-intelligence/v02-wielding-intelligence/",
+      ),
+    ).toMatchObject({
+      targetSectionId: "v02-builders-of-the-coherent-civilization",
+      targetHref:
+        "/manuscripts/2/main/builders-of-the-coherent-civilization/",
+    });
+    expect(
+      catalog.aliases.find(
+        (alias) => alias.sourceHref === "/manuscripts/3/the-reckoning/start/",
+      ),
+    ).toMatchObject({
+      targetSectionId: "v03-the-central-wound",
+      targetHref: "/manuscripts/3/the-reckoning/the-central-wound/",
+    });
+  });
+
   it("aliases subtitle-only part openers to their first content sections", () => {
     const catalog = buildCatalog();
     const alias = catalog.aliases.find(
