@@ -2204,11 +2204,11 @@ input {
 .hero-stats-lab-copperplate .hero-stats-lab-stats {
   position: relative;
   gap: 0;
+  width: min(100%, 22.25rem);
   padding: 0.5rem 0;
 }
 
-.hero-stats-lab-copperplate .hero-stats-lab-stats::before,
-.hero-stats-lab-copperplate .hero-stats-lab-stats::after {
+.hero-stats-lab-copperplate .hero-stats-lab-stats::before {
   position: absolute;
   left: 18%;
   right: 18%;
@@ -2219,10 +2219,6 @@ input {
 
 .hero-stats-lab-copperplate .hero-stats-lab-stats::before {
   top: 0;
-}
-
-.hero-stats-lab-copperplate .hero-stats-lab-stats::after {
-  bottom: 0;
 }
 
 .hero-stats-lab-copperplate .hero-stats-lab-stats > div {
@@ -2245,7 +2241,7 @@ input {
 }
 
 .hero-stats-lab-copperplate .hero-stats-lab-stats dd {
-  color: var(--bronze-deep);
+  color: var(--ink);
   font-family: "Copperplate", "Copperplate Gothic Light", var(--font-fraunces), serif;
   font-size: clamp(1.22rem, 2.8vw, 1.86rem);
   font-weight: 400;
