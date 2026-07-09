@@ -154,6 +154,27 @@ test("multi-section chapters render one anchored reader page", async ({
   ).toBeVisible();
 });
 
+test("legacy front matter routes redirect to clean canonical routes", async ({
+  page,
+}) => {
+  await page.goto("/manuscripts/humanitys-most-viable-future/front-matter/");
+  await expect(page).toHaveURL("/manuscripts/humanitys-most-viable-future/opening/");
+
+  await page.goto(
+    "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/",
+  );
+  await expect(page).toHaveURL(
+    "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/",
+  );
+
+  await page.goto(
+    "/manuscripts/humanitys-most-viable-future/front-matter/orientation/v01-orientation/",
+  );
+  await expect(page).toHaveURL(
+    "/manuscripts/humanitys-most-viable-future/opening/orientation/v01-orientation/",
+  );
+});
+
 test("singleton chapter section navigation points up to the part", async ({
   page,
 }) => {

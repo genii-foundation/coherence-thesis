@@ -1,5 +1,9 @@
 import catalogJson from "@/generated/manuscripts/catalog.json";
-import { displayPartTitle } from "@/lib/manuscript-labels";
+import {
+  displayPartRouteSegment,
+  displayPartTitle,
+  isSyntheticFrontMatterPart,
+} from "@/lib/manuscript-labels";
 
 export type ParagraphFingerprint = {
   paragraphId: string;
@@ -331,6 +335,12 @@ export function partByHref(href: string): PartRouteMatch | undefined {
   for (const volume of catalog.volumes) {
     const part = volume.parts.find((candidate) => normalizeHref(candidate.href) === normalized);
     if (part) return { volume, part };
+    const legacyFrontMatterPart = volume.parts.find(
+      (candidate) =>
+        isSyntheticFrontMatterPart(candidate) &&
+        normalizeHref(`/manuscripts/${volume.volumeId}/front-matter/`) === normalized,
+    );
+    if (legacyFrontMatterPart) return { volume, part: legacyFrontMatterPart };
     const legacyPart = volume.parts.find(
       (candidate) =>
         candidate.partId === volume.volumeId &&
@@ -351,6 +361,14 @@ export function chapterByHref(href: string): ChapterRouteMatch | undefined {
           normalizeHref(candidate.href) !== normalizeHref(part.href),
       );
       if (chapter) return { volume, part, chapter };
+      if (!isSyntheticFrontMatterPart(part)) continue;
+      const legacyChapter = part.chapters.find(
+        (candidate) =>
+          normalizeHref(`/manuscripts/${volume.volumeId}/front-matter/${candidate.chapterId}/`) ===
+            normalized &&
+          normalizeHref(candidate.href) !== normalizeHref(part.href),
+      );
+      if (legacyChapter) return { volume, part, chapter: legacyChapter };
     }
   }
   return undefined;
@@ -483,11 +501,18 @@ export function manuscriptPathParams(): Array<{ volumeId: string; route: string[
   for (const volume of catalog.volumes) {
     for (const part of volume.parts) {
       addHref(part.href);
+      if (isSyntheticFrontMatterPart(part)) {
+        addHref(`/manuscripts/${volume.volumeId}/front-matter/`);
+        addHref(`/manuscripts/${volume.volumeId}/${displayPartRouteSegment(part, volume)}/`);
+      }
       if (part.partId === volume.volumeId) {
         addHref(`/manuscripts/${volume.volumeId}/${part.partId}/`);
       }
       for (const chapter of part.chapters) {
         if (chapter.href !== part.href) addHref(chapter.href);
+        if (isSyntheticFrontMatterPart(part)) {
+          addHref(`/manuscripts/${volume.volumeId}/front-matter/${chapter.chapterId}/`);
+        }
       }
     }
   }

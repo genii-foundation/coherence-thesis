@@ -221,10 +221,16 @@ export default async function ManuscriptRoutePage({
   }
 
   const chapter = chapterByHref(href);
-  if (chapter) return <ChapterPage match={chapter} />;
+  if (chapter) {
+    if (chapter.chapter.href !== href) redirect(chapter.chapter.href);
+    return <ChapterPage match={chapter} />;
+  }
 
   const part = partByHref(href);
-  if (part) return <PartPage match={part} />;
+  if (part) {
+    if (part.part.href !== href) redirect(part.part.href);
+    return <PartPage match={part} />;
+  }
 
   notFound();
 }

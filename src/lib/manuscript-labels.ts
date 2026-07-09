@@ -1,4 +1,4 @@
-type PartLabelSource = {
+export type PartLabelSource = {
   partId: string;
   title?: string;
   partTitle?: string;
@@ -6,7 +6,7 @@ type PartLabelSource = {
   partOrder?: number;
 };
 
-type VolumeLabelSource = {
+export type VolumeLabelSource = {
   parts: PartLabelSource[];
 };
 
@@ -52,4 +52,13 @@ export function displayPartCountLabel(volume: VolumeLabelSource): string {
   const count = authoredPartCount(volume);
   if (count === 0) return "Unpartitioned";
   return `${count.toLocaleString()} part${count === 1 ? "" : "s"}`;
+}
+
+export function displayPartRouteSegment(
+  part: PartLabelSource,
+  volume?: VolumeLabelSource,
+): string {
+  if (!isSyntheticFrontMatterPart(part)) return part.partId;
+  if (volume && authoredPartCount(volume) === 0) return "contents";
+  return "opening";
 }

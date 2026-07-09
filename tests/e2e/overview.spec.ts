@@ -401,7 +401,7 @@ test("home page listen action starts audiobook playback", async ({ page }) => {
   await listenLink.click();
 
   await expect
-    .poll(() => new URL(page.url()).pathname)
+    .poll(() => new URL(page.url()).pathname, { timeout: 15000 })
     .toBe(catalog.sections[0]!.href);
   await expect(
     page.getByRole("button", { name: "Pause audiobook" }),

@@ -79,6 +79,37 @@ describe("manuscript compiler helpers", () => {
     ).toEqual([]);
   });
 
+  it("publishes clean routes for synthetic front matter groups", () => {
+    const catalog = buildCatalog();
+    const opening = catalog.sections.find(
+      (candidate) => candidate.sectionId === "v01-orientation",
+    );
+    const contents = catalog.sections.find(
+      (candidate) => candidate.sectionId === "v08-prologue-two-scenes",
+    );
+    const openingPart = catalog.volumes
+      .find((volume) => volume.volumeId === "humanitys-most-viable-future")
+      ?.parts.find((part) => part.partId === "front-matter");
+    const contentsPart = catalog.volumes
+      .find((volume) => volume.volumeId === "misanthropic-artifice")
+      ?.parts.find((part) => part.partId === "front-matter");
+
+    expect(opening?.href).toBe(
+      "/manuscripts/humanitys-most-viable-future/opening/orientation/v01-orientation/",
+    );
+    expect(opening?.readerHref).toBe(opening?.href);
+    expect(contents?.href).toBe(
+      "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-prologue-two-scenes/",
+    );
+    expect(contents?.readerHref).toBe(
+      "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/#v08-prologue-two-scenes",
+    );
+    expect(openingPart?.href).toBe(
+      "/manuscripts/humanitys-most-viable-future/opening/",
+    );
+    expect(contentsPart?.href).toBe("/manuscripts/misanthropic-artifice/contents/");
+  });
+
   it("preserves old duplicate section routes as generated aliases", () => {
     const catalog = buildCatalog();
     const alias = catalog.aliases.find(

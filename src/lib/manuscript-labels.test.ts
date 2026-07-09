@@ -3,6 +3,7 @@ import {
   authoredPartCount,
   displayPartCountLabel,
   displayPartKicker,
+  displayPartRouteSegment,
   displayPartTitle,
   isSyntheticFrontMatterPart,
 } from "./manuscript-labels";
@@ -31,6 +32,7 @@ describe("manuscript labels", () => {
     expect(authoredPartCount(volume)).toBe(1);
     expect(displayPartTitle(frontMatterPart, volume)).toBe("Opening");
     expect(displayPartKicker(frontMatterPart, volume)).toBe("Opening");
+    expect(displayPartRouteSegment(frontMatterPart, volume)).toBe("opening");
     expect(displayPartCountLabel(volume)).toBe("1 part");
   });
 
@@ -40,6 +42,7 @@ describe("manuscript labels", () => {
     expect(authoredPartCount(volume)).toBe(0);
     expect(displayPartTitle(frontMatterPart, volume)).toBe("Contents");
     expect(displayPartKicker(frontMatterPart, volume)).toBe("Manuscript");
+    expect(displayPartRouteSegment(frontMatterPart, volume)).toBe("contents");
     expect(displayPartCountLabel(volume)).toBe("Unpartitioned");
   });
 });
