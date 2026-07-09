@@ -18,10 +18,7 @@ import {
 } from "lucide-react";
 import { AstrologyIcon } from "@/components/AstrologyIcon";
 import {
-  coverFlowTuning,
-  getCoverFlowFlickTarget,
   getCoverFlowTransform,
-  getCoverFlowWheelIntent,
 } from "@/lib/cover-flow-motion";
 import type { Volume } from "@/lib/manuscript-data";
 import { displayPartTitle } from "@/lib/manuscript-labels";
@@ -56,12 +53,6 @@ type CoverFlowProgressSection = SectionProgressInput & { href: string };
 type ManuscriptCoverFlowIslandProps = {
   progressSections: CoverFlowProgressSection[];
   volumes: CoverFlowVolume[];
-};
-
-type WheelGesture = {
-  distancePx: number;
-  peakDeltaPx: number;
-  timeoutId: number | null;
 };
 
 type ManuscriptCardOutlineRowMeta = {
@@ -166,16 +157,8 @@ export function ManuscriptCoverFlowIsland({
   const panelRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const snapRefs = useRef<Array<HTMLDivElement | null>>([]);
   const frameRef = useRef<number | null>(null);
-  const activeIndexRef = useRef(activeIndex);
   const panelHeightFrameRef = useRef<number | null>(null);
   const pendingPanelHeightAnimationsRef = useRef(new Set<string>());
-  const verticalWheelReleaseFrameRef = useRef<number | null>(null);
-  const verticalWheelReleaseTimeoutRef = useRef<number | null>(null);
-  const wheelGestureRef = useRef<WheelGesture>({
-    distancePx: 0,
-    peakDeltaPx: 0,
-    timeoutId: null,
-  });
 
   const progressSectionById = useMemo(
     () =>
@@ -196,16 +179,6 @@ export function ManuscriptCoverFlowIsland({
     },
     [progressSectionById],
   );
-
-  const resetWheelGesture = useCallback(() => {
-    const gesture = wheelGestureRef.current;
-    gesture.distancePx = 0;
-    gesture.peakDeltaPx = 0;
-    if (gesture.timeoutId !== null) {
-      window.clearTimeout(gesture.timeoutId);
-      gesture.timeoutId = null;
-    }
-  }, []);
 
   const measuredPanelHeight = useCallback((panel: HTMLDivElement) => {
     const maxHeight = Number.parseFloat(window.getComputedStyle(panel).maxHeight);
@@ -278,8 +251,7 @@ export function ManuscriptCoverFlowIsland({
     const scroller = scrollRef.current;
     if (!scroller) return;
 
-    const scrollerRect = scroller.getBoundingClientRect();
-    const center = scrollerRect.left + scrollerRect.width / 2;
+    const center = scroller.scrollLeft + scroller.clientWidth / 2;
     const maxScrollLeft = Math.max(
       0,
       scroller.scrollWidth - scroller.clientWidth,
@@ -292,15 +264,11 @@ export function ManuscriptCoverFlowIsland({
       const snap = snapRefs.current[index];
       if (!card || !snap) return;
 
-      const cardWidth = snap.offsetWidth;
-      const cardCenter =
-        scrollerRect.left +
-        snap.offsetLeft +
-        cardWidth / 2 -
-        scroller.scrollLeft;
-      const offset = (cardCenter - center) / cardWidth;
+      const scrollStepWidth = snap.offsetWidth;
+      const cardCenter = snap.offsetLeft + scrollStepWidth / 2;
+      const offset = (cardCenter - center) / scrollStepWidth;
       const distance = Math.abs(offset);
-      const transform = getCoverFlowTransform(offset);
+      const transform = getCoverFlowTransform(offset, scrollStepWidth);
 
       card.style.setProperty(
         "--cover-flow-shift",
@@ -334,11 +302,10 @@ export function ManuscriptCoverFlowIsland({
       }
     });
 
-    if (scrollLeft <= coverFlowTuning.scroll.endSnapTolerancePx) {
+    if (scrollLeft <= 2) {
       closestIndex = 0;
     } else if (
-      maxScrollLeft - scrollLeft <=
-      coverFlowTuning.scroll.endSnapTolerancePx
+      maxScrollLeft - scrollLeft <= 2
     ) {
       closestIndex = Math.max(volumes.length - 1, 0);
     }
@@ -379,156 +346,6 @@ export function ManuscriptCoverFlowIsland({
     [volumes.length],
   );
 
-  const restoreHorizontalWheel = useCallback(() => {
-    const scroller = scrollRef.current;
-    if (!scroller) return;
-
-    if (verticalWheelReleaseTimeoutRef.current !== null) {
-      window.clearTimeout(verticalWheelReleaseTimeoutRef.current);
-      verticalWheelReleaseTimeoutRef.current = null;
-    }
-    if (verticalWheelReleaseFrameRef.current !== null) {
-      window.cancelAnimationFrame(verticalWheelReleaseFrameRef.current);
-      verticalWheelReleaseFrameRef.current = null;
-    }
-
-    scroller.classList.remove("is-vertical-wheel-release");
-    scroller.style.removeProperty("overflow-x");
-    scroller.style.removeProperty("scroll-behavior");
-    scroller.style.removeProperty("scroll-snap-type");
-  }, []);
-
-  const releaseVerticalWheelToPage = useCallback(() => {
-    const scroller = scrollRef.current;
-    if (!scroller) return;
-
-    const lockedScrollLeft = scroller.scrollLeft;
-    scroller.classList.add("is-vertical-wheel-release");
-    scroller.style.overflowX = "hidden";
-    scroller.style.scrollBehavior = "auto";
-    scroller.style.scrollSnapType = "none";
-    scroller.scrollLeft = lockedScrollLeft;
-
-    if (verticalWheelReleaseTimeoutRef.current !== null) {
-      window.clearTimeout(verticalWheelReleaseTimeoutRef.current);
-    }
-    if (verticalWheelReleaseFrameRef.current !== null) {
-      window.cancelAnimationFrame(verticalWheelReleaseFrameRef.current);
-    }
-
-    const holdHorizontalPosition = () => {
-      scroller.scrollLeft = lockedScrollLeft;
-      if (verticalWheelReleaseTimeoutRef.current === null) {
-        verticalWheelReleaseFrameRef.current = null;
-        return;
-      }
-
-      verticalWheelReleaseFrameRef.current = window.requestAnimationFrame(
-        holdHorizontalPosition,
-      );
-    };
-
-    verticalWheelReleaseFrameRef.current = window.requestAnimationFrame(
-      holdHorizontalPosition,
-    );
-
-    verticalWheelReleaseTimeoutRef.current = window.setTimeout(() => {
-      verticalWheelReleaseTimeoutRef.current = null;
-      if (verticalWheelReleaseFrameRef.current !== null) {
-        window.cancelAnimationFrame(verticalWheelReleaseFrameRef.current);
-        verticalWheelReleaseFrameRef.current = null;
-      }
-      scroller.classList.remove("is-vertical-wheel-release");
-      scroller.scrollLeft = lockedScrollLeft;
-      scroller.style.removeProperty("overflow-x");
-      scroller.style.removeProperty("scroll-behavior");
-      scroller.style.removeProperty("scroll-snap-type");
-      schedulePositionUpdate();
-    }, coverFlowTuning.scroll.verticalReleaseMs);
-  }, [schedulePositionUpdate]);
-
-  const handleWheel = useCallback(
-    (event: WheelEvent) => {
-      const intent = getCoverFlowWheelIntent({
-        deltaX: event.deltaX,
-        deltaY: event.deltaY,
-        shiftKey: event.shiftKey,
-      });
-      const hasHorizontalWheelDelta = event.shiftKey
-        ? event.deltaY !== 0
-        : event.deltaX !== 0;
-
-      if (intent === "vertical") {
-        resetWheelGesture();
-        releaseVerticalWheelToPage();
-        return;
-      }
-
-      if (intent !== "horizontal") return;
-
-      restoreHorizontalWheel();
-
-      const horizontalDelta = hasHorizontalWheelDelta
-        ? event.shiftKey
-          ? event.deltaY
-          : event.deltaX
-        : 0;
-
-      if (horizontalDelta === 0) return;
-
-      event.preventDefault();
-      const scroller = scrollRef.current;
-      if (scroller) {
-        scroller.scrollLeft += horizontalDelta;
-      }
-
-      const gesture = wheelGestureRef.current;
-      gesture.distancePx += horizontalDelta;
-
-      if (Math.abs(horizontalDelta) > Math.abs(gesture.peakDeltaPx)) {
-        gesture.peakDeltaPx = horizontalDelta;
-      }
-
-      if (gesture.timeoutId !== null) {
-        window.clearTimeout(gesture.timeoutId);
-      }
-
-      gesture.timeoutId = window.setTimeout(() => {
-        const targetIndex = getCoverFlowFlickTarget({
-          activeIndex: activeIndexRef.current,
-          distancePx: gesture.distancePx,
-          peakDeltaPx: gesture.peakDeltaPx,
-          volumeCount: volumes.length,
-        });
-
-        gesture.distancePx = 0;
-        gesture.peakDeltaPx = 0;
-        gesture.timeoutId = null;
-
-        if (targetIndex !== null) {
-          scrollToIndex(targetIndex);
-        }
-      }, coverFlowTuning.scroll.flickSettleMs);
-    },
-    [
-      releaseVerticalWheelToPage,
-      resetWheelGesture,
-      restoreHorizontalWheel,
-      scrollToIndex,
-      volumes.length,
-    ],
-  );
-
-  useEffect(() => {
-    const scroller = scrollRef.current;
-    if (!scroller) return;
-
-    scroller.addEventListener("wheel", handleWheel, { passive: false });
-    return () => {
-      scroller.removeEventListener("wheel", handleWheel);
-    };
-  }, [handleWheel]);
-
   useLayoutEffect(() => {
     updateCardPositions();
   }, [updateCardPositions]);
@@ -549,12 +366,6 @@ export function ManuscriptCoverFlowIsland({
   }, [animatePanelHeightToContent, selectedPartByVolumeId]);
 
   useEffect(() => {
-    activeIndexRef.current = activeIndex;
-  }, [activeIndex]);
-
-  useEffect(() => {
-    const wheelGesture = wheelGestureRef.current;
-
     window.addEventListener("resize", schedulePositionUpdate);
 
     return () => {
@@ -564,15 +375,6 @@ export function ManuscriptCoverFlowIsland({
       }
       if (panelHeightFrameRef.current !== null) {
         window.cancelAnimationFrame(panelHeightFrameRef.current);
-      }
-      if (verticalWheelReleaseFrameRef.current !== null) {
-        window.cancelAnimationFrame(verticalWheelReleaseFrameRef.current);
-      }
-      if (verticalWheelReleaseTimeoutRef.current !== null) {
-        window.clearTimeout(verticalWheelReleaseTimeoutRef.current);
-      }
-      if (wheelGesture.timeoutId !== null) {
-        window.clearTimeout(wheelGesture.timeoutId);
       }
     };
   }, [schedulePositionUpdate]);

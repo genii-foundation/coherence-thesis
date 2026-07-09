@@ -47,6 +47,7 @@ Stay on `main` only when the user explicitly requests it. In that case, verify l
    - `npm run test` after pure TypeScript or state helper changes
    - `npm run test:e2e:fast:desktop` for narrow desktop UI checks while iterating
    - `npm run test:e2e:fast` after reader navigation, toolbar, progress, audio, or responsive UI changes while iterating
+   - `npm run audio:publish-manifest -- --run-id <run-id> --version <version> --project-ref <supabase-project-ref>` without `--upload` after manuscript changes that may make hosted audiobook clips stale
 11. If multiple user revisions are queued, implement all clear queued tasks on the same focused branch before running the deepest validation pass. Use focused checks during the queue only when they answer a specific implementation question. Run `npm run validate` and `npm run test:e2e` once after the queue is empty unless the user explicitly narrows validation.
 12. Run `npm run readme:update` when stats, package metadata, recent commits, generated catalog state, or development status changed.
 13. Launch a local development preview from the feature worktree on a fresh random port after the feature is implemented. Do this even when another preview is already running. For visible UI work, do not open or update the pull request until the preview is running, unless the user explicitly says not to launch one.
@@ -143,6 +144,7 @@ Include these details whenever they apply:
 - Existing primitives and patterns that were reused.
 - Alternatives considered, with the concrete reason they were not chosen.
 - Accessibility, responsive layout, no-JavaScript reader behavior, manuscript link preservation, performance, cache, or browser compatibility considerations.
+- Audio manifest considerations, including whether hosted clips still match current `audioVersionId` values and whether a new immutable Supabase version path is required.
 - Validation commands run, their outcomes, and any useful manual preview or screenshot evidence.
 - Known limits, residual risk, and follow-up work that should not block the pull request.
 
