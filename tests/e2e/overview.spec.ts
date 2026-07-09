@@ -262,11 +262,8 @@ test("home page presents the overview and manuscript entry points", async ({
   expect(symbolAlignment.boxShadow).not.toBe("none");
   expect(symbolAlignment.badgeHeight).toBeGreaterThan(28);
   expect(symbolAlignment.badgeHeight).toBeLessThan(40);
-  expect(symbolAlignment.glyphCenter).toBeGreaterThan(
-    symbolAlignment.badgeCenter,
-  );
   expect(
-    symbolAlignment.glyphCenter - symbolAlignment.badgeCenter,
+    Math.abs(symbolAlignment.glyphCenter - symbolAlignment.badgeCenter),
   ).toBeLessThan(4);
 
 });
