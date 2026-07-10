@@ -420,6 +420,12 @@ input {
   outline: none;
 }
 
+.site-footer-github-icon {
+  display: block;
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
 .brand-mark {
   flex: 0 1 auto;
   display: grid;

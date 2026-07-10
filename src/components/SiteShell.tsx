@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { copyrightYearLabel } from "@/lib/copyright";
 import { CopyrightYearIsland } from "@/components/CopyrightYearIsland";
 import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
+import { GitHubMark } from "@/components/GitHubMark";
 import { MobilePageContextIsland } from "@/components/MobilePageContextIsland";
 import { OfflineSupportIsland } from "@/components/OfflineSupportIsland";
 import { OutlineMenuIsland } from "@/components/OutlineMenuIsland";
@@ -140,6 +141,16 @@ export function SiteShell({ children }: { children: ReactNode }) {
             Aubrey Falconer
           </a>
           .
+        </p>
+        <p>
+          <a
+            href="https://github.com/providence-collective/coherence-thesis"
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label="View the source on GitHub"
+          >
+            <GitHubMark className="site-footer-github-icon" />
+          </a>
         </p>
       </footer>
     </div>
