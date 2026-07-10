@@ -4968,6 +4968,7 @@ input {
 }
 
 .manuscript-prose {
+  --reader-drop-cap-size: 4.2rem;
   max-width: 48rem;
   font-family: var(--font-body);
 }
@@ -4980,11 +4981,20 @@ input {
   line-height: 1.78;
 }
 
+.manuscript-prose > p:first-of-type {
+  display: flow-root;
+}
+
+.reader-main > .manuscript-prose > p:first-of-type,
+.chapter-reader-section:first-of-type > .manuscript-prose > p:first-of-type {
+  min-height: var(--reader-drop-cap-size);
+}
+
 .manuscript-prose p:first-of-type::first-letter {
   color: var(--bronze-deep);
   float: left;
   font-family: var(--font-display);
-  font-size: 4.2rem;
+  font-size: var(--reader-drop-cap-size);
   line-height: 0.82;
   padding-right: 0.45rem;
 }

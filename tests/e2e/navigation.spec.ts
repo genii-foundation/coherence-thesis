@@ -72,6 +72,104 @@ test("manuscript volume heading does not overlap its stats line", async ({
   }
 });
 
+test("short opening paragraphs reserve the drop cap's full height", async ({
+  page,
+}) => {
+  await page.goto(
+    "/manuscripts/1/opening/the-work-behind-the-book/",
+  );
+
+  const layout = await page.locator(".manuscript-prose").evaluate((prose) => {
+    const paragraphs = Array.from(prose.children).filter(
+      (element): element is HTMLParagraphElement =>
+        element instanceof HTMLParagraphElement,
+    );
+    const firstParagraph = paragraphs[0];
+    const secondParagraph = paragraphs[1];
+    const firstWordText = firstParagraph
+      ?.querySelector(".audio-word")
+      ?.firstChild;
+    const secondWord = secondParagraph?.querySelector(".audio-word");
+
+    if (!firstParagraph || !secondParagraph || !firstWordText || !secondWord) {
+      return null;
+    }
+
+    const firstLetterRange = document.createRange();
+    firstLetterRange.setStart(firstWordText, 0);
+    firstLetterRange.setEnd(firstWordText, 1);
+    const firstLetterBox = firstLetterRange.getBoundingClientRect();
+    const firstParagraphBox = firstParagraph.getBoundingClientRect();
+    const secondParagraphBox = secondParagraph.getBoundingClientRect();
+    const secondWordBox = secondWord.getBoundingClientRect();
+    const firstParagraphStyle = window.getComputedStyle(firstParagraph);
+    const firstLetterStyle = window.getComputedStyle(
+      firstParagraph,
+      "::first-letter",
+    );
+
+    return {
+      clearance: secondWordBox.top - firstLetterBox.bottom,
+      dropCapFloat: firstLetterStyle.float,
+      dropCapFontSize: Number.parseFloat(firstLetterStyle.fontSize),
+      firstParagraphDisplay: firstParagraphStyle.display,
+      firstParagraphHeight: firstParagraphBox.height,
+      horizontalOverflow:
+        document.documentElement.scrollWidth - window.innerWidth,
+      paragraphGap: secondParagraphBox.top - firstParagraphBox.bottom,
+      paragraphMargin: Number.parseFloat(firstParagraphStyle.marginBottom),
+    };
+  });
+
+  expect(layout).not.toBeNull();
+  expect(layout?.dropCapFloat).toBe("left");
+  expect(layout?.firstParagraphDisplay).toBe("flow-root");
+  expect(layout?.firstParagraphHeight ?? 0).toBeGreaterThanOrEqual(
+    (layout?.dropCapFontSize ?? 0) - 1,
+  );
+  expect(layout?.paragraphGap ?? 0).toBeGreaterThanOrEqual(
+    (layout?.paragraphMargin ?? 0) - 1,
+  );
+  expect(layout?.clearance ?? 0).toBeGreaterThanOrEqual(8);
+  expect(layout?.horizontalOverflow ?? Number.POSITIVE_INFINITY).toBeLessThanOrEqual(
+    1,
+  );
+});
+
+test("later chapter sections do not reserve disabled drop cap space", async ({
+  page,
+}) => {
+  await page.goto(
+    "/manuscripts/2/the-diagnosis/the-architecture-of-extraction/",
+  );
+
+  const laterOpening = page
+    .locator("#v02-toward-humane-technology-2")
+    .locator(".manuscript-prose > p:first-of-type");
+  await expect(laterOpening).toBeVisible();
+
+  const layout = await laterOpening.evaluate((firstParagraph) => {
+    const style = window.getComputedStyle(firstParagraph);
+    const firstLetterStyle = window.getComputedStyle(
+      firstParagraph,
+      "::first-letter",
+    );
+    return {
+      firstLetterFloat: firstLetterStyle.float,
+      height: firstParagraph.getBoundingClientRect().height,
+      lineHeight: Number.parseFloat(style.lineHeight),
+      minHeight: style.minHeight,
+    };
+  });
+
+  expect(layout).not.toBeNull();
+  expect(layout?.firstLetterFloat).toBe("none");
+  expect(layout?.minHeight).toBe("0px");
+  expect(layout?.height ?? Number.POSITIVE_INFINITY).toBeLessThan(
+    (layout?.lineHeight ?? 0) * 1.5,
+  );
+});
+
 test("manuscript volume heading uses the colored astrology icon", async ({
   page,
 }) => {

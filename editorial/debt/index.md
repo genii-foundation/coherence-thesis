@@ -4,7 +4,7 @@
 
 This index records known literary, philosophical, factual, continuity, publication, and technical obligations across The Coherence Thesis. A resolved item remains in the library as evidence of paydown.
 
-Open: 49. Queries: 38. Deferred: 4. Resolved: 7.
+Open: 49. Queries: 38. Deferred: 4. Resolved: 8.
 
 ## Active debt
 
@@ -113,3 +113,4 @@ Open: 49. Queries: 38. Deferred: 4. Resolved: 7.
 | [CTD-0032](items/ctd-0032-volume-one-ampersand-normalization.md) | Restore intentional and citation ampersands | resolved | literary | medium | volume-1, volume-3, corpus | 2026-07-09 |
 | [CTD-0097](items/ctd-0097-reader-navigation-boundaries.md) | Keep Next navigation continuous across manuscript boundaries | resolved | link | medium | volume-2, reader, corpus | 2026-07-09 |
 | [CTD-0098](items/ctd-0098-reader-heading-copy-links.md) | Expose copyable anchors on reader headings | resolved | link | medium | reader, corpus | 2026-07-09 |
+| [CTD-0099](items/ctd-0099-short-opening-drop-cap-clearance.md) | Keep short opening paragraphs clear of their drop caps | resolved | technical | medium | reader, corpus | 2026-07-09 |
