@@ -5,6 +5,7 @@ import { notFound, redirect } from "next/navigation";
 import { BookOpen } from "lucide-react";
 import { AstrologyIcon } from "@/components/AstrologyIcon";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
+import { LegacyFragmentRedirectIsland } from "@/components/LegacyFragmentRedirectIsland";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
 import { UpdatedMarkerIsland } from "@/components/UpdatedMarkerIsland";
 import {
@@ -64,6 +65,7 @@ export default async function VolumePage({
   return (
     <div className="page-frame reader-layout">
       <div className="reader-main">
+        <LegacyFragmentRedirectIsland />
         <section
           className="volume-hero volume-heading"
           aria-labelledby="volume-title"

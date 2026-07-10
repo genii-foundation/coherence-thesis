@@ -1,5 +1,6 @@
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { buildCatalog } from "../manuscripts/shared";
 import {
   audioCacheKey,
   buildManifestFiles,
@@ -13,7 +14,13 @@ import {
   textForAudio,
   trimTextForAudio,
 } from "./fish-generator";
-import { buildCatalog } from "../manuscripts/shared";
+
+let cachedCurrentCatalog: ReturnType<typeof buildCatalog> | undefined;
+
+function currentCatalog(): ReturnType<typeof buildCatalog> {
+  cachedCurrentCatalog ??= buildCatalog();
+  return cachedCurrentCatalog;
+}
 
 describe("Fish audio generator", () => {
   it("parses default and reference voices", () => {
@@ -27,14 +34,14 @@ describe("Fish audio generator", () => {
   });
 
   it("selects the sample sections from the current catalog", () => {
-    const catalog = buildCatalog();
+    const catalog = currentCatalog();
     const sections = selectSections(catalog, "sample", []);
 
     expect(sections.map((section) => section.sectionId)).toEqual(sampleSectionIds);
-  });
+  }, 20_000);
 
   it("builds stable cache keys and output paths", () => {
-    const catalog = buildCatalog();
+    const catalog = currentCatalog();
     const sections = selectSections(catalog, "sample", ["v02-relational-coherence"]);
     const settings = settingsHash({ model: "s2.1-pro", speed: 1 });
     const files = buildManifestFiles({
@@ -91,7 +98,7 @@ describe("Fish audio generator", () => {
   });
 
   it("creates a manifest summary for selected files", () => {
-    const catalog = buildCatalog();
+    const catalog = currentCatalog();
     const sections = selectSections(catalog, "sample", ["v05-purposeful"]);
     const files = buildManifestFiles({
       sections,

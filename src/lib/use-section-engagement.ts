@@ -9,8 +9,10 @@ import {
   updateStoredProgress,
 } from "@/lib/reader-progress-store";
 import {
+  isSectionRead,
   markRead,
   markSectionOpened,
+  progressStateForSection,
   recordReadingTime,
   recordScrollProgress,
 } from "@/lib/reader-state";
@@ -39,7 +41,7 @@ export function useSectionEngagement(
   useEffect(() => {
     if (!section) return;
     const existingOpenCount =
-      readStoredProgress().sections[section.sectionId]?.openCount ?? 0;
+      progressStateForSection(readStoredProgress(), section)?.openCount ?? 0;
     const openTimer = window.setTimeout(() => {
       updateStoredProgress((current) =>
         markSectionOpened(current, section, Date.now(), "direct"),
@@ -135,8 +137,7 @@ export function useSectionEngagement(
         );
       }
       updateStoredProgress((current) => {
-        const existing = current.sections[section.sectionId];
-        if (existing?.contentHash === section.contentHash && existing.percent >= 100) {
+        if (isSectionRead(current, section)) {
           return current;
         }
         return markRead(current, section);

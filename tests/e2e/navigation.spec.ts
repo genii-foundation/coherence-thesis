@@ -157,6 +157,33 @@ test("multi-section chapters render one anchored reader page", async ({
   ).toBeVisible();
 });
 
+test("historical paragraph links survive a move into a multi-section chapter", async ({
+  page,
+}) => {
+  const section = catalog.sections.find(
+    (candidate) => candidate.sectionId === "v01-how-coherence-becomes-structure",
+  )!;
+  const legacySectionId = "v01-the-stem";
+  const alias = catalog.aliases.find(
+    (candidate) =>
+      candidate.targetSectionId === section.sectionId &&
+      candidate.sourceHref.endsWith(`/${legacySectionId}/`),
+  )!;
+  const paragraphAnchor = section.paragraphs[0]!.anchor;
+  const canonicalBase = section.readerHref.replace(/#.*$/, "");
+  const canonicalFragment = `${section.sectionId}-${paragraphAnchor}`;
+
+  await page.goto(`${alias.sourceHref}#${paragraphAnchor}`);
+  await expect(page).toHaveURL(`${canonicalBase}#${canonicalFragment}`);
+  await expect(page.locator(`#${canonicalFragment}`)).toBeVisible();
+
+  await page.goto(
+    `${alias.sourceHref}#${legacySectionId}-${paragraphAnchor}`,
+  );
+  await expect(page).toHaveURL(`${canonicalBase}#${canonicalFragment}`);
+  await expect(page.locator(`#${canonicalFragment}`)).toBeVisible();
+});
+
 test("legacy front matter routes redirect to clean canonical routes", async ({
   page,
 }) => {

@@ -2,6 +2,10 @@ import { clipVoicePreferenceId } from "@/lib/audio-manifest";
 
 export type AudioQueueItem = {
   sectionId: string;
+  continuityId?: string;
+  legacyContinuityIds?: string[];
+  progressContinuityGroups?: string[][];
+  contentHash?: string;
   title: string;
   text: string;
   audioVersionId: string;

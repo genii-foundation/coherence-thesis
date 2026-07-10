@@ -128,11 +128,64 @@ After changing a source volume or `content/series/volumes.json`, run:
 
 ```bash
 npm run manuscripts:import
+npm run manuscripts:preserve-links -- --base HEAD --write
 npm run manuscripts:compile
 npm run manuscripts:validate
 ```
 
-When a future section route should keep working after a heading or structure change, add an entry to `content/series/aliases.json` instead of forcing new headings to match old paths.
+Headings, section identities, and structure may evolve. Public IDs are separate from the technical continuity IDs that preserve reading history and route ancestry. The link-preservation planner carries established lineage and unique unchanged content automatically. Similar prose is only a suggestion. The planner writes section aliases and reviewed structural redirects, then stops whenever a split, merge, deep rewrite, or reorganization lacks an explicit successor.
+
+```bash
+npm run manuscripts:preserve-links -- --map old-section-id=new-section-id --write
+npm run manuscripts:preserve-links -- --route-map /old-part-or-chapter/=/new-part-or-chapter/ --write
+npm run manuscripts:audit-history -- --summary
+```
+
+Technical lineage lives in `content/series/section-lineage.json`. Section aliases live in `content/series/aliases.json`, structural redirects live in `content/series/route-aliases.json`, and reviewed early identities live in `content/series/historical-section-mappings.json`. Historical routes are recorded with their lineage in `content/series/route-ledger.json`. The history audit currently covers 4,387 distinct links across 42 first-parent catalog revisions, including 3,936 generated static paths and 451 fragment links. Validation fails if a route disappears, a fragment loses its related passage, or a route is reused by unrelated content. Part, chapter, and volume membership may evolve when related lineage remains. Volume root paths stay fixed unless redirect support is added as a separate site change.
+
+## Manuscript Editorial Workflow
+
+The repository editorial skill is `.agents/skills/coherence-editorial-review/`. It governs developmental review, sentence-level revision, semantic preservation, voice protection, independent review, and publication.
+
+Pilot and production batches store durable review evidence under `editorial/reviews/<volume-id>/<batch-id>/`. The sentence ledger covers every source sentence, including prose omitted from generated reader sections. The structure ledger covers every Markdown heading and standalone display unit. Validate both against the immutable baseline and current worktree:
+
+```bash
+npm run manuscripts:editorial-ledgers:init -- \
+  --base <base-sha> \
+  --current WORKTREE \
+  --source sources/manuscripts/<volume>.md \
+  --output editorial/reviews/<volume-id>/<batch-id>
+
+npm run manuscripts:editorial-ledger -- \
+  --base <base-sha> \
+  --current WORKTREE \
+  --source sources/manuscripts/<volume>.md \
+  --require-approved \
+  editorial/reviews/<volume-id>/<batch-id>/sentence-ledger.jsonl
+
+npm run manuscripts:structure-ledger -- \
+  --base <base-sha> \
+  --current WORKTREE \
+  --source sources/manuscripts/<volume>.md \
+  --require-approved \
+  editorial/reviews/<volume-id>/<batch-id>/structure-ledger.jsonl
+```
+
+The initializer leaves every inferred alignment pending. Each independent slop review records a result for all 24 categories in the editorial standard. Detector output supports that review but does not replace it.
+
+Run the advisory corpus audit:
+
+```bash
+npm run manuscripts:editorial
+```
+
+Hard fail a completed volume on prohibited punctuation:
+
+```bash
+npm run manuscripts:editorial:strict -- --volume <volume-id>
+```
+
+The global strict audit is intentionally not part of `npm run validate` while unrevised volumes still contain baseline violations. Add it after all nine volumes complete the editorial program. Judgment-heavy findings remain review prompts rather than automatic failures.
 
 ## Audiobook Clip Publishing
 
@@ -164,8 +217,8 @@ npm run audio:publish-manifest -- --run-id <run-id> --version <new-version> --pr
 
 ## Architecture
 
-- `content/manuscripts/` contains author editable Markdown.
-- `sources/manuscripts/` contains source Markdown for the publishing pipeline.
+- `sources/manuscripts/` contains the author editable source Markdown.
+- `content/manuscripts/` contains generated reader Markdown. Never edit it by hand.
 - `content/series/` contains volume metadata and manual deep link aliases.
 - `content/overview/` contains the curated five minute overview map.
 - `scripts/manuscripts/` owns Markdown import, compile, and validation workflows.

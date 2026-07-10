@@ -710,11 +710,20 @@
     ]
   },
   {
-    "href": "/manuscripts/1/the-flower/start/",
+    "href": "/manuscripts/1/the-flower/chapter-start/",
     "crumbs": [
       {
         "label": "The Flower",
-        "href": "/manuscripts/1/the-flower/start/"
+        "href": "/manuscripts/1/the-flower/chapter-start/"
+      }
+    ]
+  },
+  {
+    "href": "/manuscripts/1/the-flower/chapter-start/the-flower/",
+    "crumbs": [
+      {
+        "label": "The Flower",
+        "href": "/manuscripts/1/the-flower/chapter-start/the-flower/"
       }
     ]
   },

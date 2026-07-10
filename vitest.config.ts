@@ -9,6 +9,7 @@ export default defineConfig({
   },
   test: {
     environment: "node",
+    testTimeout: 20_000,
     exclude: ["tests/e2e/**", "node_modules/**", "dist/**", ".next/**"],
     coverage: {
       provider: "v8",

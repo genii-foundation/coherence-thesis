@@ -5039,6 +5039,14 @@ input {
   scroll-margin-top: clamp(5rem, 12vh, 7.5rem);
 }
 
+.legacy-section-anchor {
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  scroll-margin-top: clamp(5rem, 12vh, 7.5rem);
+}
+
 .chapter-reader-section + .chapter-reader-section {
   border-top: 1px solid var(--line);
   margin-top: clamp(2.5rem, 7vw, 4rem);

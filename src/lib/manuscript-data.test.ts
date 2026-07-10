@@ -3,14 +3,19 @@ import {
   allSections,
   breadcrumbRoutes,
   chapterByHref,
+  manuscriptHrefFromRoute,
   manuscriptPathParams,
   partByHref,
   partById,
+  routeAliasByHref,
   sectionNavigation,
   sectionByHrefOrAlias,
+  sectionsForChapter,
+  sectionsForPart,
   sectionsStartingAt,
   volumeByRouteSegment,
 } from "./manuscript-data";
+import { buildCatalog, resolvePublishedRoute } from "../../scripts/manuscripts/shared";
 
 describe("manuscript data", () => {
   it("returns the canonical playback suffix from a section", () => {
@@ -243,5 +248,138 @@ describe("manuscript data", () => {
         "humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil",
       ),
     ).toBe(true);
+  }, 20_000);
+
+  it("resolves every generated static path through page precedence", () => {
+    const catalog = buildCatalog();
+    const runtimeCache = new Map<
+      string,
+      | {
+          kind: string;
+          targetHref: string;
+          targetContinuityIds: string[];
+        }
+      | undefined
+    >();
+    const canonicalRuntimeHref = (volumeId: string, route: string[]) => {
+      const volume = volumeByRouteSegment(volumeId);
+      const canonicalVolumeId = volume?.href.split("/").filter(Boolean)[1];
+      return manuscriptHrefFromRoute(canonicalVolumeId ?? volumeId, route);
+    };
+    const runtimeResolution = (href: string) => {
+      if (runtimeCache.has(href)) return runtimeCache.get(href);
+      const routeAlias = routeAliasByHref(href);
+      const resolvedHref = routeAlias?.targetHref ?? href;
+      const section = sectionByHrefOrAlias(resolvedHref);
+      const chapter = section ? undefined : chapterByHref(resolvedHref);
+      const part = section || chapter ? undefined : partByHref(resolvedHref);
+      const runtimeSections = section
+        ? [section.section]
+        : chapter
+          ? sectionsForChapter(
+              chapter.volume.volumeId,
+              chapter.part.partId,
+              chapter.chapter.chapterId,
+            )
+          : part
+            ? sectionsForPart(part.volume.volumeId, part.part.partId)
+            : [];
+      const targetContinuityIds = [
+        ...new Set(
+          runtimeSections.flatMap((candidate) => [
+            candidate.continuityId,
+            ...candidate.legacyContinuityIds,
+          ]),
+        ),
+      ].sort();
+      const resolution = routeAlias
+        ? {
+            kind: "route-alias",
+            targetHref: routeAlias.targetHref,
+            targetContinuityIds,
+          }
+        : section
+          ? {
+              kind: section.alias ? "section-alias" : "section",
+              targetHref: section.alias
+                ? section.section.readerHref
+                : section.section.href,
+              targetContinuityIds,
+            }
+          : chapter
+            ? {
+                kind: "chapter",
+                targetHref: chapter.chapter.href,
+                targetContinuityIds,
+              }
+            : part
+              ? {
+                  kind: "part",
+                  targetHref: part.part.href,
+                  targetContinuityIds,
+                }
+              : undefined;
+      runtimeCache.set(href, resolution);
+      return resolution;
+    };
+    const failures = manuscriptPathParams().flatMap((param) => {
+      const requestedHref = manuscriptHrefFromRoute(param.volumeId, param.route);
+      const compiledMatch = resolvePublishedRoute(catalog, requestedHref);
+      const runtimeMatch = runtimeResolution(
+        canonicalRuntimeHref(param.volumeId, param.route),
+      );
+      if (!runtimeMatch || !compiledMatch) return [requestedHref];
+      return runtimeMatch.kind === compiledMatch.kind &&
+        runtimeMatch.targetHref === compiledMatch.targetHref &&
+        JSON.stringify(runtimeMatch.targetContinuityIds) ===
+          JSON.stringify(compiledMatch.targetContinuityIds)
+        ? []
+        : [
+            `${requestedHref} runtime=${JSON.stringify(runtimeMatch)} compiled=${JSON.stringify(compiledMatch)}`,
+          ];
+    });
+
+    expect(failures).toEqual([]);
+  }, 60_000);
+
+  it("lands every reader link on a page that renders its section", () => {
+    const failures = allSections().flatMap((section) => {
+      const href = section.readerHref.replace(/#.*$/, "");
+      const standalone = sectionByHrefOrAlias(href)?.section;
+      if (standalone?.sectionId === section.sectionId) return [];
+      const chapter = chapterByHref(href);
+      if (
+        chapter &&
+        sectionsForChapter(
+          chapter.volume.volumeId,
+          chapter.part.partId,
+          chapter.chapter.chapterId,
+        ).some((candidate) => candidate.sectionId === section.sectionId)
+      ) {
+        return [];
+      }
+      const part = partByHref(href);
+      if (
+        part &&
+        sectionsForPart(part.volume.volumeId, part.part.partId).some(
+          (candidate) => candidate.sectionId === section.sectionId,
+        )
+      ) {
+        return [];
+      }
+      return [section.readerHref];
+    });
+
+    expect(failures).toEqual([]);
+  });
+
+  it("resolves numeric and named volume variants to the same alias target", () => {
+    const numeric = routeAliasByHref("/manuscripts/1/front-matter/");
+    const named = routeAliasByHref(
+      "/manuscripts/humanitys-most-viable-future/front-matter/",
+    );
+
+    expect(numeric).toBeDefined();
+    expect(named?.targetHref).toBe(numeric?.targetHref);
   });
 });

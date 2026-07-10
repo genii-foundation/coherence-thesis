@@ -38,19 +38,38 @@ npm run manuscripts:validate
 npm run manuscripts:import
 ```
 
-5. Review changed generated sections and the Markdown import report:
+5. Preserve every published route before compiling. Headings, section identities, and structure may evolve, but old links must continue to resolve:
+
+```bash
+npm run manuscripts:preserve-links -- --base HEAD --write
+```
+
+Review every confirmed section successor and alias. Established lineage and unique unchanged content may carry forward automatically. Similarity is advisory only. When a rename changes prose, or when a split, merge, removal, move, or deep rewrite has no confirmed successor, provide an explicit reviewed mapping:
+
+```bash
+npm run manuscripts:preserve-links -- --base HEAD --map old-section-id=new-section-id --write
+```
+
+When a chapter or part has no unique structural successor, provide a reviewed route mapping:
+
+```bash
+npm run manuscripts:preserve-links -- --base HEAD --route-map /old-route/=/new-route/ --write
+```
+
+6. Review changed generated sections and the Markdown import report:
 
 ```bash
 git diff -- content/manuscripts artifacts/imports/markdown-series-report.json
 ```
 
-6. Capture import context while working:
+7. Capture import context while working:
    - What source changed and why the import is needed.
    - Which generated reader sections, aliases, overview nodes, and browser data changed.
    - Whether public routes moved, split, merged, or were renamed.
-   - Why any alias, source cleanup, importer change, or overview adjustment was created.
+   - Why any heading, identity, alias, source cleanup, importer change, or overview adjustment was created.
+   - Which historical section, chapter, and part routes were preserved.
    - Any parser behavior, ordering decision, or manuscript structure tradeoff.
-7. Regenerate and validate:
+8. Regenerate and validate:
 
 ```bash
 npm run manuscripts:compile
@@ -59,7 +78,7 @@ npm run readme:update
 npm run test
 ```
 
-8. Check whether hosted audiobook clips became stale. Manuscript compile output owns `audioVersionId` values in `public/data/progress-sections.json`; any body or structure change can change those IDs.
+9. Check whether hosted audiobook clips became stale. Manuscript compile output owns `audioVersionId` values in `public/data/progress-sections.json`; any body, identity, or structure change can change those IDs.
    - If `public/data/progress-sections.json`, `src/generated/manuscripts/catalog.json`, or relevant generated section Markdown changed, validate the current audio run before shipping:
 
 ```bash
@@ -84,21 +103,24 @@ npm run audio:publish-manifest -- --run-id <run-id> --version <new-version> --pr
 ```
 
    - Use a new immutable version path when publishing new audio. Do not overwrite existing Supabase objects in place.
-9. Run `npm run build` when route data, overview references, generated catalog data, or audio manifest data changed.
-10. Review the final diff before staging. Confirm generated files are expected, public link preservation is handled, audio manifest state is current when manuscript audio changed, no import report surprise is ignored, and unrelated local changes are left alone.
-11. Commit with an `edit:` Conventional Commit title, push the branch, and open or update a focused pull request. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
+10. Run `npm run build` when route data, overview references, generated catalog data, or audio manifest data changed.
+11. Review the final diff before staging. Confirm generated files are expected, public link preservation is handled at every route level, audio manifest state is current when manuscript audio changed, no import report surprise is ignored, and unrelated local changes are left alone.
+12. Commit with an `edit:` Conventional Commit title, push the branch, and open or update a focused pull request. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
 
-## Stable IDs
+## Editorial Identity and Stable Access
 
-- Public section routes are preserved through `content/series/aliases.json`.
-- Add an alias when a future route should keep resolving after a section moves, splits, merges, or is renamed.
-- Do not force new headings to mimic old section structures just to preserve links.
-- Paragraph fingerprints are generated into the catalog so local progress can identify changed passages after a reader has read an older section version.
+- Headings and part, chapter, and section IDs may change whenever editorial quality requires it.
+- Never force a new heading to mimic an old structure merely to preserve a slug.
+- Technical continuity in `content/series/section-lineage.json` preserves reading history without freezing public section IDs.
+- Section routes are preserved through `content/series/aliases.json`. Chapter and part routes are preserved through `content/series/route-aliases.json`. `content/series/route-ledger.json` records each route with its served continuity lineage.
+- `manuscripts:preserve-links` carries forward superseded section, chapter, part, and inherited alias routes. It stops for explicit review when lineage is not established or unchanged.
+- Paragraph fingerprints use content-derived anchors. Unchanged passages retain exact links after reordering. Removed or edited historical fragments fall back to the related section instead of a coincidentally numbered paragraph.
+- Volume root routes remain fixed unless a separate site change adds reviewed redirect support.
 - Audio version fingerprints are generated from section text and structure. Treat changed `audioVersionId` values as a hosted-audio invalidation event.
 
 ## Failure Handling
 
-- Stop on duplicate IDs, empty bodies, missing frontmatter, broken overview references, bad aliases, bad ordering, or stale generated data.
+- Stop on duplicate IDs, empty bodies, missing frontmatter, broken overview references, bad aliases, unresolved historical routes, bad ordering, or stale generated data.
 - Stop on stale or missing hosted audio when the manuscript change affects current `audioVersionId` values and the user expects audiobook coverage to remain complete.
 - If the parser collapses or fragments the document, fix the source or importer before publishing.
 - Never normalize a broken import into canonical Markdown.

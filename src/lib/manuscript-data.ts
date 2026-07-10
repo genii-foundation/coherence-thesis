@@ -24,6 +24,10 @@ export type Section = {
   chapterTitle: string;
   chapterOrder: number;
   sectionId: string;
+  continuityId: string;
+  legacyContinuityIds: string[];
+  progressContinuityGroups: string[][];
+  legacySectionIds: string[];
   title: string;
   sectionOrder: number;
   sourceDoc?: string;
@@ -96,6 +100,12 @@ export type SectionAlias = {
   };
 };
 
+export type RouteAlias = {
+  sourceHref: string;
+  targetHref: string;
+  note?: string;
+};
+
 export type Catalog = {
   siteTitle: string;
   generatedFrom: string;
@@ -111,6 +121,7 @@ export type Catalog = {
   volumes: Volume[];
   sections: Section[];
   aliases: SectionAlias[];
+  routeAliases: RouteAlias[];
   overview: {
     title: string;
     subtitle: string;
@@ -130,7 +141,16 @@ export type ProgressParagraph = Pick<
 >;
 export type ProgressSection = Pick<
   Section,
-  "sectionId" | "contentHash" | "title" | "href" | "chapterHref" | "readerHref"
+  | "sectionId"
+  | "continuityId"
+  | "legacyContinuityIds"
+  | "progressContinuityGroups"
+  | "legacySectionIds"
+  | "contentHash"
+  | "title"
+  | "href"
+  | "chapterHref"
+  | "readerHref"
 > & {
   paragraphs: ProgressParagraph[];
 };
@@ -185,6 +205,13 @@ export type ChapterRouteMatch = PartRouteMatch & {
 
 export const catalog = catalogJson as Catalog;
 
+const sectionByIdIndex = new Map(
+  catalog.sections.map((section) => [section.sectionId, section]),
+);
+const volumeByIdIndex = new Map(
+  catalog.volumes.map((volume) => [volume.volumeId, volume]),
+);
+
 export function allSections(): Section[] {
   return catalog.sections;
 }
@@ -192,6 +219,10 @@ export function allSections(): Section[] {
 export function toProgressSection(section: Section): ProgressSection {
   return {
     sectionId: section.sectionId,
+    continuityId: section.continuityId,
+    legacyContinuityIds: section.legacyContinuityIds,
+    progressContinuityGroups: section.progressContinuityGroups,
+    legacySectionIds: section.legacySectionIds,
     contentHash: section.contentHash,
     title: section.title,
     href: section.href,
@@ -292,11 +323,11 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
 }
 
 export function sectionById(sectionId: string): Section | undefined {
-  return catalog.sections.find((section) => section.sectionId === sectionId);
+  return sectionByIdIndex.get(sectionId);
 }
 
 export function volumeById(volumeId: string): Volume | undefined {
-  return catalog.volumes.find((volume) => volume.volumeId === volumeId);
+  return volumeByIdIndex.get(volumeId);
 }
 
 function volumeRouteSegment(volume: Volume): string {
@@ -308,13 +339,11 @@ function volumeRouteSegments(volume: Volume): string[] {
 }
 
 export function volumeByRouteSegment(segment: string): Volume | undefined {
-  return catalog.volumes.find((volume) =>
-    volumeRouteSegments(volume).includes(segment),
-  );
+  return runtimeRouteIndexes().volumeBySegment.get(segment);
 }
 
 export function partById(volumeId: string, partId: string): Part | undefined {
-  return volumeById(volumeId)?.parts.find((part) => part.partId === partId);
+  return runtimeRouteIndexes().partById.get(`${volumeId}:${partId}`);
 }
 
 export function chapterById(
@@ -322,8 +351,8 @@ export function chapterById(
   partId: string,
   chapterId: string,
 ): Chapter | undefined {
-  return partById(volumeId, partId)?.chapters.find(
-    (chapter) => chapter.chapterId === chapterId,
+  return runtimeRouteIndexes().chapterById.get(
+    `${volumeId}:${partId}:${chapterId}`,
   );
 }
 
@@ -342,13 +371,164 @@ function manuscriptHrefWithVolumeSegment(
   return normalizeHref(`/${parts.join("/")}`);
 }
 
-function canonicalizeManuscriptVolumeHref(href: string): string {
-  const parts = normalizeHref(href).split("/").filter(Boolean);
-  if (parts[0] !== "manuscripts" || !parts[1]) return normalizeHref(href);
-  const volume = volumeByRouteSegment(parts[1]);
-  if (!volume) return normalizeHref(href);
-  parts[1] = volumeRouteSegment(volume);
-  return normalizeHref(`/${parts.join("/")}`);
+type RuntimeRouteIndexes = {
+  volumeBySegment: Map<string, Volume>;
+  partById: Map<string, Part>;
+  chapterById: Map<string, Chapter>;
+  partByHref: Map<string, PartRouteMatch>;
+  chapterByHref: Map<string, ChapterRouteMatch>;
+  sectionByHref: Map<string, Section>;
+  sectionAliasByHref: Map<string, { section: Section; alias: SectionAlias }>;
+  routeAliasByHref: Map<string, RouteAlias>;
+  sectionsByPart: Map<string, Section[]>;
+  sectionsByChapter: Map<string, Section[]>;
+};
+
+let cachedRuntimeRouteIndexes: RuntimeRouteIndexes | undefined;
+
+function runtimeRouteIndexes(): RuntimeRouteIndexes {
+  if (cachedRuntimeRouteIndexes) return cachedRuntimeRouteIndexes;
+  const volumeBySegment = new Map<string, Volume>();
+  const partById = new Map<string, Part>();
+  const chapterById = new Map<string, Chapter>();
+  const partByHref = new Map<string, PartRouteMatch>();
+  const chapterByHref = new Map<string, ChapterRouteMatch>();
+  const sectionByHref = new Map<string, Section>();
+  const sectionAliasByHref = new Map<
+    string,
+    { section: Section; alias: SectionAlias }
+  >();
+  const routeAliasByHref = new Map<string, RouteAlias>();
+  const sectionsByPart = new Map<string, Section[]>();
+  const sectionsByChapter = new Map<string, Section[]>();
+
+  const addVolumeVariants = (
+    volume: Volume,
+    href: string,
+    add: (normalized: string) => void,
+  ) => {
+    for (const segment of volumeRouteSegments(volume)) {
+      add(manuscriptHrefWithVolumeSegment(href, segment));
+    }
+  };
+
+  for (const volume of catalog.volumes) {
+    for (const segment of volumeRouteSegments(volume)) {
+      volumeBySegment.set(segment, volume);
+    }
+    for (const part of volume.parts) {
+      const partKey = `${volume.volumeId}:${part.partId}`;
+      const partMatch = { volume, part };
+      partById.set(partKey, part);
+      addVolumeVariants(volume, part.href, (href) =>
+        partByHref.set(normalizeHref(href), partMatch),
+      );
+      if (isSyntheticFrontMatterPart(part)) {
+        for (const segment of volumeRouteSegments(volume)) {
+          partByHref.set(
+            normalizeHref(`/manuscripts/${segment}/front-matter/`),
+            partMatch,
+          );
+          partByHref.set(
+            normalizeHref(
+              `/manuscripts/${segment}/${displayPartRouteSegment(part, volume)}/`,
+            ),
+            partMatch,
+          );
+        }
+      }
+      if (part.partId === volume.volumeId) {
+        for (const segment of volumeRouteSegments(volume)) {
+          partByHref.set(
+            normalizeHref(`/manuscripts/${segment}/${part.partId}/`),
+            partMatch,
+          );
+          partByHref.set(
+            normalizeHref(`/manuscripts/${segment}/part-${part.partId}/`),
+            partMatch,
+          );
+        }
+      }
+      for (const chapter of part.chapters) {
+        const chapterKey = `${partKey}:${chapter.chapterId}`;
+        chapterById.set(chapterKey, chapter);
+        if (normalizeHref(chapter.href) !== normalizeHref(part.href)) {
+          const chapterMatch = { volume, part, chapter };
+          addVolumeVariants(volume, chapter.href, (href) =>
+            chapterByHref.set(normalizeHref(href), chapterMatch),
+          );
+          if (isSyntheticFrontMatterPart(part)) {
+            for (const segment of volumeRouteSegments(volume)) {
+              chapterByHref.set(
+                normalizeHref(
+                  `/manuscripts/${segment}/front-matter/${chapter.chapterId}/`,
+                ),
+                chapterMatch,
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+
+  for (const section of catalog.sections) {
+    const volume = volumeByIdIndex.get(section.volumeId);
+    if (volume) {
+      addVolumeVariants(volume, section.href, (href) =>
+        sectionByHref.set(normalizeHref(href), section),
+      );
+    } else {
+      sectionByHref.set(normalizeHref(section.href), section);
+    }
+    const partKey = `${section.volumeId}:${section.partId}`;
+    const chapterKey = `${partKey}:${section.chapterId}`;
+    const partSections = sectionsByPart.get(partKey) ?? [];
+    partSections.push(section);
+    sectionsByPart.set(partKey, partSections);
+    const chapterSections = sectionsByChapter.get(chapterKey) ?? [];
+    chapterSections.push(section);
+    sectionsByChapter.set(chapterKey, chapterSections);
+  }
+
+  for (const alias of catalog.aliases) {
+    const section = sectionByIdIndex.get(alias.targetSectionId);
+    if (!section) continue;
+    const segments = normalizeHref(alias.sourceHref).split("/").filter(Boolean);
+    const volume = segments[1] ? volumeBySegment.get(segments[1]) : undefined;
+    if (volume) {
+      addVolumeVariants(volume, alias.sourceHref, (href) =>
+        sectionAliasByHref.set(normalizeHref(href), { section, alias }),
+      );
+    } else {
+      sectionAliasByHref.set(normalizeHref(alias.sourceHref), { section, alias });
+    }
+  }
+  for (const alias of catalog.routeAliases ?? []) {
+    const segments = normalizeHref(alias.sourceHref).split("/").filter(Boolean);
+    const volume = segments[1] ? volumeBySegment.get(segments[1]) : undefined;
+    if (volume) {
+      addVolumeVariants(volume, alias.sourceHref, (href) =>
+        routeAliasByHref.set(normalizeHref(href), alias),
+      );
+    } else {
+      routeAliasByHref.set(normalizeHref(alias.sourceHref), alias);
+    }
+  }
+
+  cachedRuntimeRouteIndexes = {
+    volumeBySegment,
+    partById,
+    chapterById,
+    partByHref,
+    chapterByHref,
+    sectionByHref,
+    sectionAliasByHref,
+    routeAliasByHref,
+    sectionsByPart,
+    sectionsByChapter,
+  };
+  return cachedRuntimeRouteIndexes;
 }
 
 export function manuscriptHrefFromRoute(volumeId: string, route: string[]): string {
@@ -368,84 +548,27 @@ export function manuscriptRouteFromHref(href: string): { volumeId: string; route
 
 export function partByHref(href: string): PartRouteMatch | undefined {
   const normalized = normalizeHref(href);
-  const canonicalized = canonicalizeManuscriptVolumeHref(href);
-  for (const volume of catalog.volumes) {
-    const part = volume.parts.find((candidate) => normalizeHref(candidate.href) === normalized);
-    if (part) return { volume, part };
-    const canonicalPart = volume.parts.find(
-      (candidate) => normalizeHref(candidate.href) === canonicalized,
-    );
-    if (canonicalPart) return { volume, part: canonicalPart };
-    const legacyFrontMatterPart = volume.parts.find(
-      (candidate) =>
-        isSyntheticFrontMatterPart(candidate) &&
-        volumeRouteSegments(volume).some(
-          (segment) =>
-            normalizeHref(`/manuscripts/${segment}/front-matter/`) === normalized,
-        ),
-    );
-    if (legacyFrontMatterPart) return { volume, part: legacyFrontMatterPart };
-    const legacyPart = volume.parts.find(
-      (candidate) =>
-        candidate.partId === volume.volumeId &&
-        volumeRouteSegments(volume).some(
-          (segment) =>
-            normalizeHref(`/manuscripts/${segment}/${candidate.partId}/`) ===
-            normalized,
-        ),
-    );
-    if (legacyPart) return { volume, part: legacyPart };
-  }
-  return undefined;
+  return runtimeRouteIndexes().partByHref.get(normalized);
 }
 
 export function chapterByHref(href: string): ChapterRouteMatch | undefined {
   const normalized = normalizeHref(href);
-  const canonicalized = canonicalizeManuscriptVolumeHref(href);
-  for (const volume of catalog.volumes) {
-    for (const part of volume.parts) {
-      const chapter = part.chapters.find(
-        (candidate) =>
-          (normalizeHref(candidate.href) === normalized ||
-            normalizeHref(candidate.href) === canonicalized) &&
-          normalizeHref(candidate.href) !== normalizeHref(part.href),
-      );
-      if (chapter) return { volume, part, chapter };
-      if (!isSyntheticFrontMatterPart(part)) continue;
-      const legacyChapter = part.chapters.find(
-        (candidate) =>
-          volumeRouteSegments(volume).some(
-            (segment) =>
-              normalizeHref(
-                `/manuscripts/${segment}/front-matter/${candidate.chapterId}/`,
-              ) === normalized,
-          ) &&
-          normalizeHref(candidate.href) !== normalizeHref(part.href),
-      );
-      if (legacyChapter) return { volume, part, chapter: legacyChapter };
-    }
-  }
-  return undefined;
+  return runtimeRouteIndexes().chapterByHref.get(normalized);
 }
 
 export function sectionByHrefOrAlias(
   href: string,
 ): { section: Section; alias?: SectionAlias } | undefined {
   const normalized = normalizeHref(href);
-  const canonicalized = canonicalizeManuscriptVolumeHref(href);
-  const section = catalog.sections.find(
-    (candidate) =>
-      normalizeHref(candidate.href) === normalized ||
-      normalizeHref(candidate.href) === canonicalized,
-  );
+  const indexes = runtimeRouteIndexes();
+  const section = indexes.sectionByHref.get(normalized);
   if (section) return { section };
-  const alias = catalog.aliases.find(
-    (candidate) =>
-      normalizeHref(candidate.sourceHref) === normalized ||
-      normalizeHref(candidate.sourceHref) === canonicalized,
-  );
-  const target = alias ? sectionById(alias.targetSectionId) : undefined;
-  return target ? { section: target, alias } : undefined;
+  return indexes.sectionAliasByHref.get(normalized);
+}
+
+export function routeAliasByHref(href: string): RouteAlias | undefined {
+  const normalized = normalizeHref(href);
+  return runtimeRouteIndexes().routeAliasByHref.get(normalized);
 }
 
 function navigationItem(item: NavigationItem): NavigationItem {
@@ -537,17 +660,15 @@ export function sectionsForChapter(
   partId: string,
   chapterId: string,
 ): Section[] {
-  const chapter = chapterById(volumeId, partId, chapterId);
-  if (!chapter) return [];
-  const ids = new Set(chapter.sectionIds);
-  return catalog.sections.filter((section) => ids.has(section.sectionId));
+  return (
+    runtimeRouteIndexes().sectionsByChapter.get(
+      `${volumeId}:${partId}:${chapterId}`,
+    ) ?? []
+  );
 }
 
 export function sectionsForPart(volumeId: string, partId: string): Section[] {
-  const part = partById(volumeId, partId);
-  if (!part) return [];
-  const ids = new Set(part.sectionIds);
-  return catalog.sections.filter((section) => ids.has(section.sectionId));
+  return runtimeRouteIndexes().sectionsByPart.get(`${volumeId}:${partId}`) ?? [];
 }
 
 export function manuscriptPathParams(): Array<{ volumeId: string; route: string[] }> {
@@ -581,7 +702,9 @@ export function manuscriptPathParams(): Array<{ volumeId: string; route: string[
         if (chapter.href !== part.href) addVolumeHrefs(volume, chapter.href);
         if (isSyntheticFrontMatterPart(part)) {
           for (const segment of volumeRouteSegments(volume)) {
-            addHref(`/manuscripts/${segment}/front-matter/${chapter.chapterId}/`);
+            if (chapter.href !== part.href) {
+              addHref(`/manuscripts/${segment}/front-matter/${chapter.chapterId}/`);
+            }
           }
         }
       }
@@ -596,7 +719,15 @@ export function manuscriptPathParams(): Array<{ volumeId: string; route: string[
       addHref(section.href);
     }
   }
-  for (const alias of catalog.aliases) addHref(alias.sourceHref);
+  for (const alias of [
+    ...catalog.aliases,
+    ...(catalog.routeAliases ?? []),
+  ]) {
+    const route = manuscriptRouteFromHref(alias.sourceHref);
+    const volume = volumeByRouteSegment(route.volumeId);
+    if (volume) addVolumeHrefs(volume, alias.sourceHref);
+    else addHref(alias.sourceHref);
+  }
 
   return [...params.values()];
 }

@@ -3,7 +3,7 @@
 ## Core Rules
 
 - This repository is the canonical source of truth for The Coherence Thesis. Source manuscripts are Markdown files in `sources/manuscripts/`. Generated canonical reader sections live in `content/manuscripts/`.
-- Do not edit generated manuscript data by hand. Edit Markdown, then run `npm run manuscripts:compile`. This also rebuilds the public reader data, breadcrumb data, and manuscript search index.
+- Do not edit generated manuscript data by hand. Edit source Markdown, then run the manuscript import, link preservation, and compile workflow. Compilation rebuilds public reader data, breadcrumb data, and the manuscript search index.
 - After implementing any feature, run the narrowest useful checks during iteration, then run `npm run validate` before commit.
 - For UI changes, use `npm run test:e2e:fast:desktop` for narrow desktop checks and `npm run test:e2e:fast` for broader local checks during iteration. Run `npm run test:e2e` before commit unless the change cannot affect browser behavior.
 - After every completed feature, commit the complete change and open or update a focused PR without waiting to be asked again.
@@ -19,17 +19,19 @@
 - Do not edit generated canonical reader sections in `content/manuscripts/` by hand. Run `npm run manuscripts:import`.
 - Generated browser data lives in `public/data/`, including the reader payload, breadcrumb routes, and manuscript search index.
 - Overview nodes live in `content/overview/` and must reference real section IDs.
-- Stable section IDs support deep links, read progress, update badges, recommendations, audio queues, and future spaced repetition. Preserve historical deep links from this publishing pipeline forward with `content/series/aliases.json`.
+- Public section IDs and headings are editorial material, not permanent wording constraints. Technical continuity IDs in `content/series/section-lineage.json` preserve reading history and route ancestry while public identities evolve. Preserve historical section routes in `content/series/aliases.json`, structural routes in `content/series/route-aliases.json`, and all published lineage in the append-only route ledger.
 - New Markdown source updates must go through the publishing workflow:
 
 ```bash
 npm run manuscripts:import
+npm run manuscripts:preserve-links -- --base HEAD --write
 npm run manuscripts:compile
 npm run manuscripts:validate
 ```
 
 - Do not accept an import when the parser has collapsed, fragmented, reordered, or renamed sections incorrectly. Fix the source or importer first.
-- Treat removed or renamed sections as a link preservation event. Add aliases when old public routes should continue to resolve. `manuscripts:validate` enforces this: the section ledger in `content/series/section-ledger.json` records every route ever published, and the build fails if a published route stops resolving without an alias.
+- Treat renamed, moved, split, merged, or removed sections as link preservation events. Do not keep a weak heading or obsolete ID merely to protect a URL. Run `npm run manuscripts:preserve-links` after import and before compile. Established lineage and unique unchanged content may carry forward automatically. Prose similarity is advisory only. Provide explicit section and structural mappings for every other case, then commit lineage and alias files. `manuscripts:validate` rejects missing routes and unrelated route reuse. Part, chapter, and volume membership may evolve when related lineage remains. Volume root paths remain fixed unless a separate site change adds reviewed redirects.
+- Run `npm run manuscripts:audit-history -- --summary` after compilation whenever identities or routes change. It must report zero broken historical links across the complete first-parent catalog history.
 
 ## Interface Rules
 
@@ -50,6 +52,9 @@ npm run manuscripts:validate
 - Prefer short concrete sentences. If a sentence needs heavy punctuation to stay standing, split it.
 - User-facing copy should sound like a person wrote it. Prefer concrete language over abstract phrasing.
 - Contractions are fine.
+- Use `.agents/skills/coherence-editorial-review/` for manuscript audits, developmental review, sentence-level editing, and final editorial verification.
+- Commit each pilot and production review under `editorial/reviews/<volume-id>/<batch-id>/`. Include a validated sentence ledger that accounts for every baseline sentence and reconstructs every current sentence exactly once. Include a validated structure ledger that does the same for every heading and standalone display unit.
+- Keep the corpus editorial audit advisory until every published volume has completed the new editorial pass. Hard fail completed volumes with `npm run manuscripts:editorial:strict -- --volume <volume-id>`. Add the global strict command to `npm run validate` only after all volumes are clean.
 
 ## Validation
 

@@ -11,10 +11,15 @@ import type {
   MarkdownDocument,
   OverviewDocument,
   SearchIndexEntry,
+  RouteAliasConfig,
   SectionAlias,
   SectionAliasConfig,
+  SectionLineageConfig,
   SectionLedger,
   SectionLedgerEntry,
+  RouteLedger,
+  RouteLedgerEntry,
+  PublishedRouteResolution,
   VersionProvenanceManifest,
   VolumeConfig,
 } from "./types";
@@ -30,6 +35,7 @@ import {
 import {
   displayPartRouteSegment,
   displayPartTitle,
+  isSyntheticFrontMatterPart,
   type VolumeLabelSource,
 } from "../../src/lib/manuscript-labels";
 
@@ -46,8 +52,11 @@ export const overviewRoot = path.join(contentRoot, "overview");
 export const seriesRoot = path.join(contentRoot, "series");
 export const volumeConfigPath = path.join(seriesRoot, "volumes.json");
 export const aliasConfigPath = path.join(seriesRoot, "aliases.json");
+export const routeAliasConfigPath = path.join(seriesRoot, "route-aliases.json");
+export const sectionLineagePath = path.join(seriesRoot, "section-lineage.json");
 export const versionProvenancePath = path.join(seriesRoot, "version-provenance.json");
 export const sectionLedgerPath = path.join(seriesRoot, "section-ledger.json");
+export const routeLedgerPath = path.join(seriesRoot, "route-ledger.json");
 export const generatedRoot = path.join(repoRoot, "src/generated/manuscripts");
 export const catalogPath = path.join(generatedRoot, "catalog.json");
 export const publicDataRoot = path.join(repoRoot, "public/data");
@@ -283,8 +292,13 @@ function partRouteSegments(section: RoutePart, volume?: VolumeLabelSource): stri
 function chapterRouteSegments(
   section: RouteSection,
   volume?: VolumeLabelSource,
+  options: SectionHrefOptions = {},
 ): string[] {
-  if (section.chapterId === section.partId) return partRouteSegments(section, volume);
+  if (section.chapterId === section.partId) {
+    const route = partRouteSegments(section, volume);
+    if ((options.partChapterCount ?? 0) > 1) route.push("chapter-start");
+    return route;
+  }
   return [...partRouteSegments(section, volume), section.chapterId];
 }
 
@@ -294,7 +308,7 @@ function shouldOmitSectionRouteSegment(
   options: SectionHrefOptions,
 ): boolean {
   const leaf = sectionRouteSegment(section);
-  const previousSegment = chapterRouteSegments(section, volume).at(-1);
+  const previousSegment = chapterRouteSegments(section, volume, options).at(-1);
   if (leaf !== previousSegment) return false;
   if (options.chapterSectionCount !== 1) return false;
   if (section.chapterId === section.partId && (options.partChapterCount ?? 0) > 1) {
@@ -308,7 +322,7 @@ export function sectionHref(
   volume?: VolumeLabelSource,
   options: SectionHrefOptions = {},
 ): string {
-  const route = chapterRouteSegments(section, volume);
+  const route = chapterRouteSegments(section, volume, options);
   if (!shouldOmitSectionRouteSegment(section, volume, options)) {
     const leaf = sectionRouteSegment(section);
     route.push(leaf === route.at(-1) ? "start" : leaf);
@@ -322,8 +336,11 @@ function sectionReaderHref(
   partChapterCount: number,
   volume?: VolumeLabelSource,
 ): string {
-  const chapterRoute = chapterHref(section, volume);
-  if (chapterSectionCount <= 1) {
+  const chapterRoute = chapterHref(section, volume, { partChapterCount });
+  if (
+    chapterSectionCount <= 1 ||
+    (section.chapterId === section.partId && partChapterCount === 1)
+  ) {
     return sectionHref(section, volume, { chapterSectionCount, partChapterCount });
   }
   return `${chapterRoute}#${section.sectionId}`;
@@ -332,8 +349,9 @@ function sectionReaderHref(
 export function chapterHref(
   section: RouteSection,
   volume?: VolumeLabelSource,
+  options: SectionHrefOptions = {},
 ): string {
-  const route = chapterRouteSegments(section, volume);
+  const route = chapterRouteSegments(section, volume, options);
   return `/manuscripts/${route.join("/")}/`;
 }
 
@@ -408,6 +426,119 @@ export function readAliasConfig(): SectionAliasConfig {
   return JSON.parse(readUtf8(aliasConfigPath)) as SectionAliasConfig;
 }
 
+export function readRouteAliasConfig(): RouteAliasConfig {
+  if (!fs.existsSync(routeAliasConfigPath)) return { version: 1, aliases: [] };
+  return JSON.parse(readUtf8(routeAliasConfigPath)) as RouteAliasConfig;
+}
+
+export function readSectionLineage(): SectionLineageConfig {
+  if (!fs.existsSync(sectionLineagePath)) return { version: 1, sections: [] };
+  return JSON.parse(readUtf8(sectionLineagePath)) as SectionLineageConfig;
+}
+
+export function validateSectionLineageConfig(
+  catalog: CompiledCatalog,
+  config: SectionLineageConfig = readSectionLineage(),
+): void {
+  if (config.version !== 1) {
+    throw new Error("Section lineage must use version 1.");
+  }
+  const catalogIds = new Set(catalog.sections.map((section) => section.sectionId));
+  const currentIds = new Set<string>();
+  const identityOwners = new Map<string, string>();
+  const claimIdentity = (identity: string, owner: string) => {
+    const existingOwner = identityOwners.get(identity);
+    if (existingOwner && existingOwner !== owner) {
+      throw new Error(
+        `Identity '${identity}' is owned by both '${existingOwner}' and '${owner}'.`,
+      );
+    }
+    identityOwners.set(identity, owner);
+  };
+  for (const entry of config.sections) {
+    if (currentIds.has(entry.currentSectionId)) {
+      throw new Error(
+        `Duplicate section lineage entry for '${entry.currentSectionId}'.`,
+      );
+    }
+    currentIds.add(entry.currentSectionId);
+    claimIdentity(entry.currentSectionId, entry.currentSectionId);
+    if (!catalogIds.has(entry.currentSectionId)) {
+      throw new Error(
+        `Section lineage references missing current section '${entry.currentSectionId}'.`,
+      );
+    }
+    if (entry.continuityIds.length === 0 || entry.continuityIds.some((id) => !id)) {
+      throw new Error(
+        `Section lineage '${entry.currentSectionId}' needs a continuity ID.`,
+      );
+    }
+    if (new Set(entry.continuityIds).size !== entry.continuityIds.length) {
+      throw new Error(
+        `Section lineage '${entry.currentSectionId}' repeats a continuity ID.`,
+      );
+    }
+    if (entry.progressContinuityGroups) {
+      if (entry.progressContinuityGroups.length === 0) {
+        throw new Error(
+          `Section lineage '${entry.currentSectionId}' needs a progress continuity group.`,
+        );
+      }
+      if (
+        entry.progressContinuityGroups[0]?.[0] !== entry.continuityIds[0]
+      ) {
+        throw new Error(
+          `Section lineage '${entry.currentSectionId}' must begin its progress continuity groups with the primary continuity ID.`,
+        );
+      }
+      const progressIds = new Set<string>();
+      const continuityIds = new Set(entry.continuityIds);
+      for (const group of entry.progressContinuityGroups) {
+        if (group.length === 0) {
+          throw new Error(
+            `Section lineage '${entry.currentSectionId}' has an empty progress continuity group.`,
+          );
+        }
+        for (const id of group) {
+          if (!continuityIds.has(id)) {
+            throw new Error(
+              `Section lineage '${entry.currentSectionId}' uses unknown progress continuity ID '${id}'.`,
+            );
+          }
+          if (progressIds.has(id)) {
+            throw new Error(
+              `Section lineage '${entry.currentSectionId}' repeats progress continuity ID '${id}'.`,
+            );
+          }
+          progressIds.add(id);
+        }
+      }
+    }
+    if (
+      new Set(entry.historicalSectionIds).size !==
+      entry.historicalSectionIds.length
+    ) {
+      throw new Error(
+        `Section lineage '${entry.currentSectionId}' repeats a historical section ID.`,
+      );
+    }
+    for (const historicalId of entry.historicalSectionIds) {
+      claimIdentity(historicalId, entry.currentSectionId);
+    }
+    for (const continuityId of entry.continuityIds) {
+      claimIdentity(continuityId, entry.currentSectionId);
+    }
+  }
+  const missing = catalog.sections
+    .map((section) => section.sectionId)
+    .filter((sectionId) => !currentIds.has(sectionId));
+  if (missing.length > 0) {
+    throw new Error(
+      `Section lineage is missing ${missing.length.toLocaleString()} current section(s), starting with '${missing[0]}'. Run npm run manuscripts:preserve-links before compiling.`,
+    );
+  }
+}
+
 export function readVersionProvenance(): VersionProvenanceManifest {
   if (!fs.existsSync(versionProvenancePath)) {
     return { version: 1, generatedAt: new Date(0).toISOString(), entries: [] };
@@ -420,6 +551,21 @@ export function readSectionLedger(): SectionLedger {
     return { version: 1, routes: [] };
   }
   return JSON.parse(readUtf8(sectionLedgerPath)) as SectionLedger;
+}
+
+export function readRouteLedger(): RouteLedger {
+  if (!fs.existsSync(routeLedgerPath)) {
+    throw new Error(
+      "Route ledger is missing. Restore content/series/route-ledger.json before compiling.",
+    );
+  }
+  const parsed = JSON.parse(readUtf8(routeLedgerPath)) as RouteLedger;
+  if (parsed.version !== 2) {
+    throw new Error(
+      `Route ledger version ${parsed.version} is unsupported. Expected version 2.`,
+    );
+  }
+  return parsed;
 }
 
 // Union the current catalog's section routes into the existing ledger and sort
@@ -448,6 +594,331 @@ export function buildSectionLedger(
   return { version: existing.version || 1, routes: sorted };
 }
 
+export function sectionContinuityIds(
+  section: Pick<
+    CompiledSection,
+    "sectionId" | "continuityId" | "legacyContinuityIds"
+  >,
+): string[] {
+  return [
+    ...new Set([
+      section.continuityId || section.sectionId,
+      ...(section.legacyContinuityIds ?? []),
+    ]),
+  ].sort();
+}
+
+function continuityIdsForSections(
+  catalog: CompiledCatalog,
+  sectionIds: string[],
+): string[] {
+  const wanted = new Set(sectionIds);
+  return [
+    ...new Set(
+      catalog.sections
+        .filter((section) => wanted.has(section.sectionId))
+        .flatMap(sectionContinuityIds),
+    ),
+  ].sort();
+}
+
+function normalizePublishedHref(href: string): string {
+  const [pathPart, fragment] = href.split("#", 2);
+  const normalizedPath = pathPart === "/" || pathPart?.endsWith("/")
+    ? pathPart
+    : `${pathPart}/`;
+  return fragment ? `${normalizedPath}#${fragment}` : normalizedPath ?? href;
+}
+
+function routeVariants(catalog: CompiledCatalog, href: string): string[] {
+  const [pathPart, fragment] = normalizePublishedHref(href).split("#", 2);
+  const segments = (pathPart ?? "").split("/").filter(Boolean);
+  if (segments[0] !== "manuscripts" || !segments[1]) return [href];
+  const volume = catalog.volumes.find((candidate) => {
+    const canonical = candidate.href.split("/").filter(Boolean)[1];
+    return canonical === segments[1] || candidate.volumeId === segments[1];
+  });
+  if (!volume) return [href];
+  const canonical = volume.href.split("/").filter(Boolean)[1] ?? volume.volumeId;
+  return [...new Set([canonical, volume.volumeId])].map((segment) => {
+    const next = [...segments];
+    next[1] = segment;
+    const pathHref = `/${next.join("/")}/`;
+    return fragment ? `${pathHref}#${fragment}` : pathHref;
+  });
+}
+
+const canonicalResolutionCache = new WeakMap<
+  CompiledCatalog,
+  Map<string, PublishedRouteResolution>
+>();
+
+type PublishedRouteIndexes = {
+  routeAliasByPath: Map<string, CompiledCatalog["routeAliases"][number]>;
+  sectionAliasByPath: Map<string, CompiledCatalog["aliases"][number]>;
+  sectionById: Map<string, CompiledSection>;
+  directReaderByHref: Map<string, CompiledSection>;
+  sectionsByContinuityId: Map<string, CompiledSection[]>;
+};
+
+const publishedRouteIndexCache = new WeakMap<
+  CompiledCatalog,
+  PublishedRouteIndexes
+>();
+
+function publishedRouteIndexes(catalog: CompiledCatalog): PublishedRouteIndexes {
+  const cached = publishedRouteIndexCache.get(catalog);
+  if (cached) return cached;
+  const routeAliasByPath = new Map<
+    string,
+    CompiledCatalog["routeAliases"][number]
+  >();
+  for (const alias of catalog.routeAliases ?? []) {
+    for (const variant of routeVariants(catalog, alias.sourceHref)) {
+      routeAliasByPath.set(normalizePublishedHref(variant), alias);
+    }
+  }
+  const sectionAliasByPath = new Map<
+    string,
+    CompiledCatalog["aliases"][number]
+  >();
+  for (const alias of catalog.aliases) {
+    for (const variant of routeVariants(catalog, alias.sourceHref)) {
+      sectionAliasByPath.set(normalizePublishedHref(variant), alias);
+    }
+  }
+  const sectionById = new Map(
+    catalog.sections.map((section) => [section.sectionId, section]),
+  );
+  const directReaderByHref = new Map(
+    catalog.sections.flatMap((section) =>
+      typeof section.readerHref === "string" && section.readerHref
+        ? [[normalizePublishedHref(section.readerHref), section] as const]
+        : [],
+    ),
+  );
+  const sectionsByContinuityId = new Map<string, CompiledSection[]>();
+  for (const section of catalog.sections) {
+    for (const id of sectionContinuityIds(section)) {
+      const matches = sectionsByContinuityId.get(id) ?? [];
+      matches.push(section);
+      sectionsByContinuityId.set(id, matches);
+    }
+  }
+  const indexes = {
+    routeAliasByPath,
+    sectionAliasByPath,
+    sectionById,
+    directReaderByHref,
+    sectionsByContinuityId,
+  };
+  publishedRouteIndexCache.set(catalog, indexes);
+  return indexes;
+}
+
+function canonicalRouteResolutions(
+  catalog: CompiledCatalog,
+): Map<string, PublishedRouteResolution> {
+  const cached = canonicalResolutionCache.get(catalog);
+  if (cached) return cached;
+  const routes = new Map<string, PublishedRouteResolution>();
+  const add = (
+    href: string,
+    kind: PublishedRouteResolution["kind"],
+    targetContinuityIds: string[],
+    targetHref = href,
+  ) => {
+    for (const variant of routeVariants(catalog, href)) {
+      routes.set(normalizePublishedHref(variant), {
+        href: normalizePublishedHref(variant),
+        kind,
+        targetContinuityIds: [...new Set(targetContinuityIds)].sort(),
+        targetHref,
+      });
+    }
+  };
+
+  // Runtime resolution prefers sections over chapters and parts. Adding the
+  // broadest routes first and sections last reproduces that precedence.
+  for (const volume of catalog.volumes) {
+    add(
+      volume.href,
+      "volume",
+      continuityIdsForSections(catalog, volume.sectionIds),
+    );
+    for (const part of volume.parts) {
+      add(part.href, "part", continuityIdsForSections(catalog, part.sectionIds));
+      for (const chapter of part.chapters) {
+        if (chapter.href === part.href) continue;
+        add(
+          chapter.href,
+          "chapter",
+          continuityIdsForSections(catalog, chapter.sectionIds),
+        );
+      }
+    }
+  }
+  for (const section of catalog.sections) {
+    add(section.href, "section", sectionContinuityIds(section));
+  }
+  canonicalResolutionCache.set(catalog, routes);
+  return routes;
+}
+
+export function resolvePublishedRoute(
+  catalog: CompiledCatalog,
+  href: string,
+): PublishedRouteResolution | undefined {
+  const normalized = normalizePublishedHref(href);
+  const [pathHref, fragment] = normalized.split("#", 2);
+  const canonical = canonicalRouteResolutions(catalog);
+  const indexes = publishedRouteIndexes(catalog);
+  const routeAlias = indexes.routeAliasByPath.get(pathHref ?? normalized);
+  if (routeAlias) {
+    const target = canonical.get(normalizePublishedHref(routeAlias.targetHref));
+    if (!target) return undefined;
+    return {
+      href: normalized,
+      kind: "route-alias",
+      targetContinuityIds: target.targetContinuityIds,
+      targetHref: routeAlias.targetHref,
+    };
+  }
+  const canonicalAtPath = canonical.get(pathHref ?? normalized);
+  const sectionAlias =
+    canonicalAtPath?.kind === "section"
+      ? undefined
+      : indexes.sectionAliasByPath.get(pathHref ?? normalized);
+  if (sectionAlias) {
+    const section = indexes.sectionById.get(sectionAlias.targetSectionId);
+    if (!section) return undefined;
+    return {
+      href: normalized,
+      kind: fragment ? "reader" : "section-alias",
+      targetContinuityIds: sectionContinuityIds(section),
+      targetHref: section.readerHref,
+    };
+  }
+
+  if (fragment) {
+    const directReader = indexes.directReaderByHref.get(normalized);
+    if (directReader) {
+      return {
+        href: normalized,
+        kind: "reader",
+        targetContinuityIds: sectionContinuityIds(directReader),
+        targetHref: directReader.readerHref,
+      };
+    }
+    const base = canonical.get(pathHref ?? normalized);
+    if (!base) return undefined;
+    const baseSections = [
+      ...new Map(
+        base.targetContinuityIds
+          .flatMap((id) => indexes.sectionsByContinuityId.get(id) ?? [])
+          .map((section) => [section.sectionId, section]),
+      ).values(),
+    ];
+    const legacyTarget = baseSections.find((section) => {
+      const sectionIds = [section.sectionId, ...(section.legacySectionIds ?? [])];
+      return (
+        (sectionIds.some(
+          (sectionId) =>
+            fragment === sectionId || fragment.startsWith(`${sectionId}-p-`),
+        ) ||
+          (/^p-(?:\d+|h[0-9a-f]{16}(?:-\d+)?)$/.test(fragment) &&
+            baseSections.length === 1))
+      );
+    });
+    if (!legacyTarget) return undefined;
+    return {
+      href: normalized,
+      kind: "reader",
+      targetContinuityIds: sectionContinuityIds(legacyTarget),
+      targetHref: legacyTarget.readerHref,
+    };
+  }
+  return canonical.get(normalized);
+}
+
+export function currentPublishedRoutes(
+  catalog: CompiledCatalog,
+): RouteLedgerEntry[] {
+  const routes = new Map<string, RouteLedgerEntry>();
+  const add = (entry: RouteLedgerEntry) => {
+    const normalized: RouteLedgerEntry = {
+      href: normalizePublishedHref(entry.href),
+      kind: entry.kind,
+      targetContinuityIds: [...new Set(entry.targetContinuityIds)].sort(),
+    };
+    const key = JSON.stringify([
+      normalized.href,
+      normalized.kind,
+      normalized.targetContinuityIds,
+    ]);
+    routes.set(key, normalized);
+  };
+  for (const resolution of canonicalRouteResolutions(catalog).values()) {
+    add(resolution);
+  }
+  for (const alias of catalog.aliases) {
+    for (const variant of routeVariants(catalog, alias.sourceHref)) {
+      const resolved = resolvePublishedRoute(catalog, variant);
+      if (resolved) add(resolved);
+    }
+  }
+  for (const alias of catalog.routeAliases ?? []) {
+    for (const variant of routeVariants(catalog, alias.sourceHref)) {
+      const resolved = resolvePublishedRoute(catalog, variant);
+      if (resolved) add(resolved);
+    }
+  }
+  for (const section of catalog.sections) {
+    if (!section.readerHref?.includes("#")) continue;
+    const resolved = resolvePublishedRoute(catalog, section.readerHref);
+    if (resolved) add(resolved);
+  }
+  return [...routes.values()];
+}
+
+export function buildRouteLedger(
+  catalog: CompiledCatalog,
+  existing: RouteLedger = readRouteLedger(),
+  sectionLedger: SectionLedger = readSectionLedger(),
+): RouteLedger {
+  const routes = new Map<string, RouteLedgerEntry>();
+  const add = (entry: RouteLedgerEntry) => {
+    const normalized: RouteLedgerEntry = {
+      href: normalizePublishedHref(entry.href),
+      kind: entry.kind,
+      targetContinuityIds: [...new Set(entry.targetContinuityIds)].sort(),
+    };
+    const key = JSON.stringify([
+      normalized.href,
+      normalized.kind,
+      normalized.targetContinuityIds,
+    ]);
+    routes.set(key, normalized);
+  };
+  for (const entry of existing.routes) add(entry);
+  for (const entry of currentPublishedRoutes(catalog)) add(entry);
+  for (const entry of sectionLedger.routes) {
+    const resolved = resolvePublishedRoute(catalog, entry.href);
+    if (resolved) add(resolved);
+  }
+  return {
+    version: 2,
+    routes: [...routes.values()].sort(
+      (left, right) =>
+        left.href.localeCompare(right.href) ||
+        left.kind.localeCompare(right.kind) ||
+        left.targetContinuityIds.join("\0").localeCompare(
+          right.targetContinuityIds.join("\0"),
+        ),
+    ),
+  };
+}
+
 export function audioVersionId(sectionId: string, contentHash: string): string {
   return `${sectionId}-${contentHash}`;
 }
@@ -458,8 +929,16 @@ function routeFromHref(href: string): SectionAlias["sourceRoute"] {
     .replace(/\/$/, "")
     .split("/");
   const [volumeId, partId, chapterIdOrSectionId, sectionId] = route;
-  if (!volumeId || !partId || route.length > 4) {
-    throw new Error(`Alias sourceHref must be a section route: ${href}`);
+  if (!volumeId || route.length > 4) {
+    throw new Error(`Alias sourceHref must be a manuscript route: ${href}`);
+  }
+  if (!partId) {
+    return {
+      volumeId,
+      partId: volumeId,
+      chapterId: volumeId,
+      sectionId: volumeId,
+    };
   }
   if (!chapterIdOrSectionId) {
     return {
@@ -551,8 +1030,22 @@ function structuralPartOpenerIds(
   );
 }
 
-export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
+export function buildCatalog(
+  root = manuscriptRoot,
+  {
+    aliasConfig = readAliasConfig(),
+    routeAliasConfig = readRouteAliasConfig(),
+    sectionLineage = readSectionLineage(),
+  }: {
+    aliasConfig?: SectionAliasConfig;
+    routeAliasConfig?: RouteAliasConfig;
+    sectionLineage?: SectionLineageConfig;
+  } = {},
+): CompiledCatalog {
   const docs = sortDocuments(readMarkdownDocuments(root));
+  const lineageByCurrentId = new Map(
+    sectionLineage.sections.map((entry) => [entry.currentSectionId, entry]),
+  );
   const provenanceByHash = new Map(
     readVersionProvenance().entries.map((entry) => [entry.contentHash, entry]),
   );
@@ -601,14 +1094,27 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
     const partKey = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}`;
     const partChapterCount = partChapters.get(partKey)?.size ?? 1;
     const volume = routeVolume(routeContexts, doc.frontmatter.volumeId);
+    const lineage = lineageByCurrentId.get(doc.frontmatter.sectionId);
+    const continuityIds = lineage?.continuityIds.filter(Boolean) ?? [];
+    const primaryContinuityId = continuityIds[0] ?? doc.frontmatter.sectionId;
+    const progressContinuityGroups = lineage?.progressContinuityGroups?.length
+      ? lineage.progressContinuityGroups.map((group) => [...group])
+      : [
+          [primaryContinuityId],
+          ...continuityIds.slice(1).map((id) => [id]),
+        ];
     return {
       ...doc.frontmatter,
+      continuityId: primaryContinuityId,
+      legacyContinuityIds: continuityIds.slice(1),
+      progressContinuityGroups,
+      legacySectionIds: lineage?.historicalSectionIds ?? [],
       path: doc.relativePath,
       href: sectionHref(doc.frontmatter, volume, {
         chapterSectionCount,
         partChapterCount,
       }),
-      chapterHref: chapterHref(doc.frontmatter, volume),
+      chapterHref: chapterHref(doc.frontmatter, volume, { partChapterCount }),
       readerHref: sectionReaderHref(
         doc.frontmatter,
         chapterSectionCount,
@@ -680,7 +1186,7 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
         chapterId: section.chapterId,
         title: section.chapterTitle,
         order: section.chapterOrder,
-        href: chapterHref(section, routeVolume(routeContexts, section.volumeId)),
+        href: section.chapterHref,
         sectionIds: [],
         wordCount: 0,
       };
@@ -716,7 +1222,7 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
     0,
   );
   const sectionById = new Map(sections.map((section) => [section.sectionId, section]));
-  const aliasInputs = [...readAliasConfig().aliases];
+  const aliasInputs = [...aliasConfig.aliases];
   const addAlias = (
     sourceHref: string,
     targetSectionId: string,
@@ -823,6 +1329,181 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
     };
   });
 
+  const sectionAliasTargetsByVariant = new Map<string, string>();
+  for (const alias of aliases) {
+    for (const variant of routeVariants(
+      { volumes } as CompiledCatalog,
+      alias.sourceHref,
+    )) {
+      const currentTarget = sectionAliasTargetsByVariant.get(variant);
+      if (currentTarget && currentTarget !== alias.targetSectionId) {
+        throw new Error(
+          `Equivalent section alias route '${variant}' targets both '${currentTarget}' and '${alias.targetSectionId}'.`,
+        );
+      }
+      sectionAliasTargetsByVariant.set(variant, alias.targetSectionId);
+    }
+  }
+
+  const canonicalHrefs = new Set<string>();
+  for (const volume of volumes) {
+    canonicalHrefs.add(volume.href);
+    for (const part of volume.parts) {
+      canonicalHrefs.add(part.href);
+      for (const chapter of part.chapters) canonicalHrefs.add(chapter.href);
+    }
+  }
+  for (const section of sections) canonicalHrefs.add(section.href);
+  const servedCanonicalHrefs = new Set(
+    [...canonicalHrefs].flatMap((href) =>
+      routeVariants({ volumes } as CompiledCatalog, href),
+    ),
+  );
+  const canonicalSectionTargetsByVariant = new Map<string, string>();
+  for (const section of sections) {
+    for (const variant of routeVariants(
+      { volumes } as CompiledCatalog,
+      section.href,
+    )) {
+      canonicalSectionTargetsByVariant.set(variant, section.sectionId);
+    }
+  }
+  for (const alias of aliases) {
+    for (const variant of routeVariants(
+      { volumes } as CompiledCatalog,
+      alias.sourceHref,
+    )) {
+      if (!servedCanonicalHrefs.has(variant)) continue;
+      const canonicalTarget = canonicalSectionTargetsByVariant.get(variant);
+      if (canonicalTarget === alias.targetSectionId) continue;
+      throw new Error(
+        `Section alias sourceHref '${alias.sourceHref}' conflicts with canonical route variant '${variant}'.`,
+      );
+    }
+  }
+  const sectionAliasSources = new Set(
+    aliases.flatMap((alias) =>
+      routeVariants({ volumes } as CompiledCatalog, alias.sourceHref),
+    ),
+  );
+  const routeAliasesBySource = new Map<string, RouteAliasConfig["aliases"][number]>();
+  const addRouteAlias = (
+    sourceHref: string,
+    targetHref: string,
+    note: string,
+  ) => {
+    if (sourceHref === targetHref) return;
+    const existing = routeAliasesBySource.get(sourceHref);
+    if (existing && existing.targetHref !== targetHref) {
+      throw new Error(
+        `Route alias source '${sourceHref}' targets both '${existing.targetHref}' and '${targetHref}'.`,
+      );
+    }
+    routeAliasesBySource.set(sourceHref, existing ?? { sourceHref, targetHref, note });
+  };
+  for (const alias of routeAliasConfig.aliases) {
+    addRouteAlias(alias.sourceHref, alias.targetHref, alias.note ?? "Reviewed route alias.");
+  }
+  for (const volume of volumes) {
+    const volumeSegments = [
+      ...new Set([
+        volume.href.split("/").filter(Boolean)[1] ?? volume.volumeId,
+        volume.volumeId,
+      ]),
+    ];
+    for (const part of volume.parts) {
+      if (isSyntheticFrontMatterPart(part)) {
+        for (const segment of volumeSegments) {
+          addRouteAlias(
+            `/manuscripts/${segment}/front-matter/`,
+            part.href,
+            "Generated alias for a former front matter part route.",
+          );
+          for (const chapter of part.chapters) {
+            if (chapter.href === part.href) continue;
+            addRouteAlias(
+              `/manuscripts/${segment}/front-matter/${chapter.chapterId}/`,
+              chapter.href,
+              "Generated alias for a former front matter chapter route.",
+            );
+          }
+        }
+      }
+      if (part.partId === volume.volumeId) {
+        for (const segment of volumeSegments) {
+          addRouteAlias(
+            `/manuscripts/${segment}/${part.partId}/`,
+            part.href,
+            "Generated alias for a former implicit part route.",
+          );
+          addRouteAlias(
+            `/manuscripts/${segment}/part-${part.partId}/`,
+            part.href,
+            "Generated alias for a former prefixed part route.",
+          );
+        }
+      }
+    }
+  }
+  const routeAliases = [...routeAliasesBySource.values()];
+  const routeAliasSources = new Set<string>();
+  const routeAliasTargetsByVariant = new Map<string, string>();
+  for (const alias of routeAliases) {
+    const sourceVariants = routeVariants(
+      { volumes } as CompiledCatalog,
+      alias.sourceHref,
+    );
+    const sourceDepth = alias.sourceHref.split("/").filter(Boolean).length;
+    if (
+      !alias.sourceHref.startsWith("/manuscripts/") ||
+      sourceDepth < 3 ||
+      alias.sourceHref.includes("?") ||
+      alias.sourceHref.includes("#") ||
+      !alias.sourceHref.endsWith("/")
+    ) {
+      throw new Error(
+        `Route alias sourceHref must be a non-volume manuscript route: ${alias.sourceHref}`,
+      );
+    }
+    if (
+      alias.targetHref.includes("?") ||
+      alias.targetHref.includes("#") ||
+      !alias.targetHref.endsWith("/")
+    ) {
+      throw new Error(
+        `Route alias targetHref must be a canonical manuscript route: ${alias.targetHref}`,
+      );
+    }
+    if (
+      sourceVariants.some(
+        (variant) =>
+          servedCanonicalHrefs.has(variant) || sectionAliasSources.has(variant),
+      )
+    ) {
+      throw new Error(
+        `Route alias sourceHref '${alias.sourceHref}' conflicts with a current route.`,
+      );
+    }
+    if (routeAliasSources.has(alias.sourceHref)) {
+      throw new Error(`Duplicate route alias sourceHref '${alias.sourceHref}'.`);
+    }
+    for (const variant of sourceVariants) {
+      const currentTarget = routeAliasTargetsByVariant.get(variant);
+      if (currentTarget && currentTarget !== alias.targetHref) {
+        throw new Error(
+          `Equivalent route alias source '${variant}' targets both '${currentTarget}' and '${alias.targetHref}'.`,
+        );
+      }
+      routeAliasTargetsByVariant.set(variant, alias.targetHref);
+    }
+    if (!canonicalHrefs.has(alias.targetHref)) {
+      throw new Error(
+        `Route alias targetHref '${alias.targetHref}' must be a current canonical route.`,
+      );
+    }
+    routeAliasSources.add(alias.sourceHref);
+  }
+
   return {
     siteTitle: "The Coherence Thesis",
     generatedFrom: "canonical markdown",
@@ -838,6 +1519,7 @@ export function buildCatalog(root = manuscriptRoot): CompiledCatalog {
     volumes,
     sections,
     aliases,
+    routeAliases,
     overview: readOverview(),
   };
 }

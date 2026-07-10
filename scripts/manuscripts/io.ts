@@ -77,15 +77,20 @@ export function stripMarkdown(value: string): string {
 }
 
 export function paragraphFingerprints(markdown: string): CompiledParagraph[] {
+  const occurrences = new Map<string, number>();
   return splitMarkdownBlocks(markdown)
     .map((block, index) => {
       const order = index + 1;
       const text = stripMarkdown(block);
+      const contentHash = sha256(text || block).slice(0, 16);
+      const count = (occurrences.get(contentHash) ?? 0) + 1;
+      occurrences.set(contentHash, count);
+      const anchor = `p-h${contentHash}${count > 1 ? `-${count}` : ""}`;
       return {
-        paragraphId: `p-${order}`,
-        anchor: `p-${order}`,
+        paragraphId: anchor,
+        anchor,
         order,
-        contentHash: sha256(text || block).slice(0, 16),
+        contentHash,
         text,
       };
     });

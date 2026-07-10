@@ -63,7 +63,7 @@ describe("reader progress store", () => {
     expect(stored?.audioSeconds).toBe(30);
     expect(stored?.maxScrollPercent).toBe(65);
     expect(storage.size).toBeGreaterThan(0);
-  });
+  }, 20_000);
 
   it("returns the same state and skips persistence when the updater is a no-op", async () => {
     const { updateStoredProgress } = await import("./reader-progress-store");

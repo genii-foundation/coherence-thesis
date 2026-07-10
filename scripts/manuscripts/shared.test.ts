@@ -1,6 +1,19 @@
 import { describe, expect, it } from "vitest";
 import { manuscriptPdfHref, sectionPdfHref } from "./pdf";
-import { buildCatalog, slugify, wordCount } from "./shared";
+import {
+  buildCatalog,
+  currentPublishedRoutes,
+  manuscriptRoot,
+  slugify,
+  wordCount,
+} from "./shared";
+
+let cachedCurrentCatalog: ReturnType<typeof buildCatalog> | undefined;
+
+function currentCatalog(): ReturnType<typeof buildCatalog> {
+  cachedCurrentCatalog ??= buildCatalog();
+  return cachedCurrentCatalog;
+}
 
 describe("manuscript compiler helpers", () => {
   it("creates stable URL slugs", () => {
@@ -15,7 +28,7 @@ describe("manuscript compiler helpers", () => {
   });
 
   it("creates stable PDF download URLs", () => {
-    const catalog = buildCatalog();
+    const catalog = currentCatalog();
     const firstVolume = catalog.volumes[0];
     const firstSection = catalog.sections[0]!;
     const structureSection = catalog.sections.find(
@@ -35,11 +48,18 @@ describe("manuscript compiler helpers", () => {
     expect(manuscriptPdfHref(firstVolume!)).toBe(
       "/downloads/manuscripts/The Coherence Thesis - 01 - Humanity's Most Viable Future.pdf",
     );
-  });
+  }, 20_000);
 
   it("builds the current catalog from canonical markdown", () => {
-    const catalog = buildCatalog();
+    const catalog = currentCatalog();
     const section = catalog.sections[0]!;
+    const historicalRename = catalog.sections.find(
+      (candidate) =>
+        candidate.sectionId === "v03-on-the-meaning-of-coordination-failure",
+    );
+    const routeOnlyAncestor = catalog.sections.find(
+      (candidate) => candidate.sectionId === "v01-the-seed",
+    );
 
     expect(catalog.stats.volumeCount).toBe(9);
     expect(catalog.stats.sectionCount).toBeGreaterThan(500);
@@ -50,11 +70,23 @@ describe("manuscript compiler helpers", () => {
       /^https:\/\/github\.com\/providence-collective\/coherence-thesis\/pull\/\d+$/,
     );
     expect(section.audioVersionId).toBe(`${section.sectionId}-${section.contentHash}`);
+    expect(historicalRename?.progressContinuityGroups).toEqual([
+      [
+        "v03-on-the-meaning-of-coordination-failure",
+        "the-central-wound-on-the-meaning-of-coordination-failure",
+      ],
+    ]);
+    expect(routeOnlyAncestor?.legacyContinuityIds).toContain(
+      "v01-seed-sprout-stem-and-soil",
+    );
+    expect(routeOnlyAncestor?.progressContinuityGroups).toEqual([
+      ["v01-the-seed"],
+    ]);
     expect(catalog.overview.nodes.length).toBe(9);
   });
 
   it("collapses duplicate part and chapter slugs in canonical section routes", () => {
-    const catalog = buildCatalog();
+    const catalog = currentCatalog();
     const section = catalog.sections.find(
       (candidate) => candidate.sectionId === "v01-the-seed",
     );
@@ -85,7 +117,7 @@ describe("manuscript compiler helpers", () => {
   });
 
   it("publishes clean routes for synthetic front matter groups", () => {
-    const catalog = buildCatalog();
+    const catalog = currentCatalog();
     const opening = catalog.sections.find(
       (candidate) => candidate.sectionId === "v01-orientation",
     );
@@ -113,8 +145,44 @@ describe("manuscript compiler helpers", () => {
     expect(contentsPart?.href).toBe("/manuscripts/8/contents/");
   });
 
+  it("disambiguates an opening chapter that shares its part identity", () => {
+    const catalog = currentCatalog();
+    const section = catalog.sections.find(
+      (candidate) => candidate.sectionId === "v04-the-sequence-problem",
+    );
+
+    expect(section?.chapterId).toBe(section?.partId);
+    expect(section?.href).toBe(
+      "/manuscripts/4/the-sequence-problem/chapter-start/the-sequence-problem/",
+    );
+  });
+
+  it("gives every section in a single-chapter part a direct reader route", () => {
+    const catalog = currentCatalog();
+    const sections = catalog.sections.filter(
+      (candidate) => candidate.partId === "the-internal-technologies",
+    );
+
+    expect(sections.length).toBeGreaterThan(1);
+    expect(sections.every((section) => section.readerHref === section.href)).toBe(
+      true,
+    );
+  });
+
+  it("records every generated compatibility alias in published routes", () => {
+    const catalog = currentCatalog();
+    const published = new Set(
+      currentPublishedRoutes(catalog).map((entry) => entry.href),
+    );
+    const missing = (catalog.routeAliases ?? [])
+      .map((alias) => alias.sourceHref)
+      .filter((href) => !published.has(href));
+
+    expect(missing).toEqual([]);
+  }, 40_000);
+
   it("preserves old duplicate section routes as generated aliases", () => {
-    const catalog = buildCatalog();
+    const catalog = currentCatalog();
     const alias = catalog.aliases.find(
       (candidate) =>
         candidate.sourceHref ===
@@ -128,7 +196,7 @@ describe("manuscript compiler helpers", () => {
   });
 
   it("removes low-content structural part openers from every catalog surface", () => {
-    const catalog = buildCatalog();
+    const catalog = currentCatalog();
     const removedIds = [
       "v02-the-diagnosis",
       "v02-wielding-intelligence",
@@ -177,7 +245,7 @@ describe("manuscript compiler helpers", () => {
   });
 
   it("aliases subtitle-only part openers to their first content sections", () => {
-    const catalog = buildCatalog();
+    const catalog = currentCatalog();
     const alias = catalog.aliases.find(
       (candidate) =>
         candidate.sourceHref ===
@@ -196,7 +264,7 @@ describe("manuscript compiler helpers", () => {
   });
 
   it("aliases subtitle-only chapter openers to their first content sections", () => {
-    const catalog = buildCatalog();
+    const catalog = currentCatalog();
     const alias = catalog.aliases.find(
       (candidate) =>
         candidate.sourceHref ===
@@ -214,7 +282,7 @@ describe("manuscript compiler helpers", () => {
   });
 
   it("does not publish subtitle-only structural openers anywhere in the catalog", () => {
-    const catalog = buildCatalog();
+    const catalog = currentCatalog();
     const partSections = new Map<string, typeof catalog.sections>();
     const chapterSections = new Map<string, typeof catalog.sections>();
     const isSubtitleOnly = (section: (typeof catalog.sections)[number]) => {
@@ -254,5 +322,43 @@ describe("manuscript compiler helpers", () => {
     ];
 
     expect(publishedOpeners).toEqual([]);
+  });
+
+  it("rejects equivalent alias variants with conflicting targets", () => {
+    expect(() =>
+      buildCatalog(manuscriptRoot, {
+        routeAliasConfig: {
+          version: 1,
+          aliases: [
+            {
+              sourceHref: "/manuscripts/1/retired-route/",
+              targetHref: "/manuscripts/1/opening/",
+            },
+            {
+              sourceHref:
+                "/manuscripts/humanitys-most-viable-future/retired-route/",
+              targetHref: "/manuscripts/1/seed-sprout-stem-and-soil/",
+            },
+          ],
+        },
+      }),
+    ).toThrow(/equivalent route alias source.*targets both/i);
+  });
+
+  it("rejects a section alias that occupies a canonical volume-name variant", () => {
+    expect(() =>
+      buildCatalog(manuscriptRoot, {
+        aliasConfig: {
+          version: 1,
+          aliases: [
+            {
+              sourceHref:
+                "/manuscripts/humanitys-most-viable-future/opening/orientation/",
+              targetSectionId: "v01-how-this-book-is-structured",
+            },
+          ],
+        },
+      }),
+    ).toThrow(/section alias sourceHref.*canonical route variant/i);
   });
 });

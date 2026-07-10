@@ -3,6 +3,7 @@ import {
   buildCatalog,
   buildSearchIndex,
   buildSectionLedger,
+  buildRouteLedger,
   breadcrumbsDir,
   catalogPath,
   cleanDir,
@@ -15,9 +16,13 @@ import {
   repoRoot,
   searchIndexPath,
   sectionLedgerPath,
+  routeLedgerPath,
+  readRouteLedger,
+  validateSectionLineageConfig,
   writeJson,
 } from "./shared";
 import { buildPdfDownloads, pdfManifestPath } from "./pdf";
+import { validateRouteLedger } from "./validate";
 import { displayPartTitle } from "../../src/lib/manuscript-labels";
 
 function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
@@ -75,9 +80,19 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
 
 export async function compileManuscripts(): Promise<void> {
   const catalog = buildCatalog();
+  validateSectionLineageConfig(catalog);
+  const existingRouteLedger = readRouteLedger();
+  // The ledger is the durable record of every published route. Validate its
+  // shape and ownership before any generated file or PDF is touched. A broken
+  // ledger must never be normalized into a fresh one by compilation.
+  validateRouteLedger(catalog, existingRouteLedger, { checkStale: false });
   const pdfDownloads = await buildPdfDownloads(catalog);
   const readerSections = catalog.sections.map((section) => ({
     sectionId: section.sectionId,
+    continuityId: section.continuityId,
+    legacyContinuityIds: section.legacyContinuityIds,
+    progressContinuityGroups: section.progressContinuityGroups,
+    legacySectionIds: section.legacySectionIds,
     title: section.title,
     href: section.href,
     chapterHref: section.chapterHref,
@@ -101,6 +116,10 @@ export async function compileManuscripts(): Promise<void> {
   // text on first play), not on every page load.
   const progressSections = catalog.sections.map((section) => ({
     sectionId: section.sectionId,
+    continuityId: section.continuityId,
+    legacyContinuityIds: section.legacyContinuityIds,
+    progressContinuityGroups: section.progressContinuityGroups,
+    legacySectionIds: section.legacySectionIds,
     contentHash: section.contentHash,
     title: section.title,
     href: section.href,
@@ -127,6 +146,7 @@ export async function compileManuscripts(): Promise<void> {
   }
   const searchIndex = buildSearchIndex(catalog);
   const sectionLedger = buildSectionLedger(catalog);
+  const routeLedger = buildRouteLedger(catalog, existingRouteLedger);
   ensureDir(generatedRoot);
   ensureDir(publicDataRoot);
   writeJson(catalogPath, catalog);
@@ -139,6 +159,7 @@ export async function compileManuscripts(): Promise<void> {
   writeJson(searchIndexPath, searchIndex);
   writeJson(pdfManifestPath, pdfDownloads);
   writeJson(sectionLedgerPath, sectionLedger);
+  writeJson(routeLedgerPath, routeLedger);
   // Emit the toolbar outline tree as a fetch-on-demand payload (PERF-05). The
   // dynamic import runs after catalog.json is written above, so the runtime
   // builder reads the fresh catalog; manuscript-data is not imported earlier in
