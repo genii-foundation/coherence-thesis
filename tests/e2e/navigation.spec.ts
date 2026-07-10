@@ -241,8 +241,8 @@ test("multi-section chapters render one anchored reader page", async ({
 
   expect(sections.map((section) => section.sectionId)).toEqual([
     "v04-the-amendment-architecture",
-    "v04-the-deeper-inquiry-9",
-    "v04-what-remains-open-9",
+    "v04-research-lineages-9",
+    "v04-open-questions-9",
   ]);
 
   await page.goto(chapterHref);
@@ -254,13 +254,13 @@ test("multi-section chapters render one anchored reader page", async ({
   await expect(page.locator(".section-index")).toHaveCount(0);
   await expect(page.locator(".chapter-reader-section")).toHaveCount(3);
   await expect(
-    page.locator("#v04-the-deeper-inquiry-9").getByRole("heading", {
-      name: "The Deeper Inquiry",
+    page.locator("#v04-research-lineages-9").getByRole("heading", {
+      name: "Research Lineages",
     }),
   ).toBeVisible();
   await expect(
-    page.locator("#v04-what-remains-open-9").getByRole("heading", {
-      name: "What Remains Open",
+    page.locator("#v04-open-questions-9").getByRole("heading", {
+      name: "Open Questions",
     }),
   ).toBeVisible();
 
@@ -273,8 +273,8 @@ test("multi-section chapters render one anchored reader page", async ({
   await page.goto(sections[1]!.href);
   await expect(page).toHaveURL(sections[1]!.readerHref);
   await expect(
-    page.locator("#v04-the-deeper-inquiry-9").getByRole("heading", {
-      name: "The Deeper Inquiry",
+    page.locator("#v04-research-lineages-9").getByRole("heading", {
+      name: "Research Lineages",
     }),
   ).toBeVisible();
 });
@@ -365,12 +365,17 @@ test("reader headings reveal and copy full anchored links", async ({
   await precedingCopyButton.focus();
   await page.keyboard.press("Tab");
   await expect(copyButton).toBeFocused();
-  const focusedStyle = await copyButton.evaluate((element) => ({
-    boxShadow: window.getComputedStyle(element).boxShadow,
-    opacity: Number.parseFloat(window.getComputedStyle(element).opacity),
-  }));
-  expect(focusedStyle.opacity).toBe(1);
-  expect(focusedStyle.boxShadow).not.toBe("none");
+  await expect
+    .poll(() =>
+      copyButton.evaluate((element) => {
+        const style = window.getComputedStyle(element);
+        return {
+          hasBoxShadow: style.boxShadow !== "none",
+          opacity: Number.parseFloat(style.opacity),
+        };
+      }),
+    )
+    .toEqual({ hasBoxShadow: true, opacity: 1 });
   await copyButton.press("Enter");
 
   const expectedHref = new URL(

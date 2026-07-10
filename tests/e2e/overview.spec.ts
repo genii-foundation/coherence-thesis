@@ -714,7 +714,7 @@ test("overview links into canonical manuscript sections", async ({
   );
   await expect(
     page.getByText(
-      "The Cardinal Scale is where the thesis stops describing civilization and starts building one.",
+      "The Cardinal Scale is presented as a place where the thesis might be tested. Land, Doors, Membrane, currency, governance, and community remain design commitments until the site, law, safeguards, and implementation are verified.",
     ),
   ).toBeVisible();
   const firstVolumeFirstSection = sectionForId(catalog.volumes[0]!.sectionIds[0]!);
