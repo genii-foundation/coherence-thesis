@@ -4,6 +4,7 @@ import {
   firstCommitForCurrentHash,
   originRepoSlug,
   originRepoUrl,
+  preserveVersionProvenance,
   type GitCommand,
 } from "./versions";
 
@@ -73,5 +74,38 @@ describe("manuscript version provenance", () => {
       commitSha: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       versionDate: "2026-01-01T00:00:00Z",
     });
+  });
+
+  it("preserves immutable pull request provenance when live lookup is unavailable", () => {
+    const fresh = {
+      version: 1 as const,
+      generatedAt: "2026-07-10T02:00:00Z",
+      entries: [
+        {
+          contentHash: "same-content",
+          versionDate: "2026-07-10T02:00:00Z",
+          commitSha: "later",
+          commitUrl: "https://github.com/example/repo/commit/later",
+        },
+      ],
+    };
+    const committed = {
+      version: 1 as const,
+      generatedAt: "2026-07-09T01:00:00Z",
+      entries: [
+        {
+          contentHash: "same-content",
+          versionDate: "2026-07-09T01:00:00Z",
+          commitSha: "first",
+          commitUrl: "https://github.com/example/repo/commit/first",
+          pullRequestUrl: "https://github.com/example/repo/pull/12",
+          pullRequestNumber: 12,
+        },
+      ],
+    };
+
+    expect(preserveVersionProvenance(fresh, committed).entries[0]).toEqual(
+      committed.entries[0],
+    );
   });
 });

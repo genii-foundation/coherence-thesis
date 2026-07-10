@@ -12,17 +12,17 @@ sectionId: "v05-for-the-ones-not-yet-born"
 title: "For the Ones Not Yet Born"
 sectionOrder: 4
 sourceDoc: "sources/manuscripts/coherence-thesis-vol5-purposeful.md"
-sourceHash: "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f"
-sourceParagraphStart: 647
-sourceParagraphEnd: 657
+sourceHash: "b10eea00ac11dca166812e0a1fa1b60980818ca1c55e27f2c2c0bd4ac989f6b5"
+sourceParagraphStart: 641
+sourceParagraphEnd: 651
 ---
 
-If these words last long enough to reach you, then they were never really written for us. They were written for you—for those who will inherit what we managed to leave behind, who will live among the consequences of both our wisdom and our failures, whose names we will never know and whose faces we will never see.
+If these words last long enough to reach you, they were written partly for you: those who will inherit what we leave behind and live among the consequences of our wisdom and failure.
 
-We lived in a strange moment. Humanity had acquired enormous power and only uncertain wisdom about how to use it. The civilization around us could have tilted toward extraction or toward coherence, toward fragmentation or toward stewardship, and for most of our lives it was genuinely unclear which way it would go. This work was never an attempt to predict the outcome. It was an attempt to ask the right question. Not what will happen, but what should—what kind of civilization deserves to exist, what kind of future deserves to be inherited, and what kind of people we would have to become in order to build it.
+We lived with great power and uncertain wisdom about its use. The civilization around us could tilt toward extraction or coherence, fragmentation or stewardship. This work did not predict the outcome. It asked what kind of civilization should exist, what future should be inherited, and what kind of people could build it.
 
-If we succeeded, even partially, it will have been because enough people chose responsibility over indifference, stewardship over extraction, contribution over isolation, and one another over the seductive solitude of going it alone. It will have been because enough of them did the unglamorous, unrewarded, mostly invisible work of recognizing the gifts in the people around them and helping those people find their place. If the world you live in is more humane than the one we received, the credit belongs to a vast number of builders whose names history will not record—people who cared, who contributed, who became stewards, who planted trees whose shade they knew they would never sit beneath.
+If we helped at all, it will have been because people chose responsibility, stewardship, contribution, and one another. Many will have done the quiet work of recognizing capacities and helping them find responsible use. If your world is more humane than ours, much of the credit belongs to builders history did not record, people who planted trees knowing the shade was for someone else.
 
-I want to end by doing the one thing this entire book has been about, and doing it to you, across whatever distance of time separates us. There is something in you. There is a capacity in you that the world has need of, and that may not yet have found its name or its use, and that no one may have told you about because the person who could see it never had the chance, or the words. Consider yourself told. Find out what it is. Find the others. And when your own turn comes to pass the future forward—as it will, sooner than you expect—do for someone else what was done for me on a low wooden stool a long time ago. Look at them clearly. Name what you see. And point it at the work.
+I want to end with an invitation rather than a verdict about who you are. You may carry a capacity that has not found its name or use. You may also know someone whose capacity they cannot yet see. Stay curious about both possibilities. Find the others when that search is yours to make. When an honest recognition becomes available, offer it without assigning a destiny. Look clearly, name what you can responsibly see, and let the other person decide where it points.
 
-The work is now yours.
+The work is available to whoever freely chooses it.

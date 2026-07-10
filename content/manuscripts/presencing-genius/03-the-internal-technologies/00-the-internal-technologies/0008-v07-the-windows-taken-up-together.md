@@ -9,14 +9,14 @@ chapterId: "the-internal-technologies"
 chapterTitle: "The Internal Technologies"
 chapterOrder: 0
 sectionId: "v07-the-windows-taken-up-together"
-title: "The Windows, Taken Up Together"
+title: "The Windows Taken Up Together"
 sectionOrder: 8
 sourceDoc: "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md"
-sourceHash: "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876"
-sourceParagraphStart: 151
-sourceParagraphEnd: 156
+sourceHash: "c61640a9d5d3bb07082166fedd9ad808fa86b651534e64f8f4afac247da46f0f"
+sourceParagraphStart: 117
+sourceParagraphEnd: 122
 ---
 
-According to Taoist philosophy, these four windows are not only how we perceive the world but how, each of us, we construct it: every person assembles the reality they inhabit out of what they intend, attend to, imagine, and sense. Ordinarily this happens unconsciously, and so each of us lives in a world built largely by habit and inheritance. But the windows can be taken up deliberately — and what becomes possible when a single person does so becomes something else entirely when many do it together. For if we begin to take responsibility for the four windows collectively — intending, attending, imagining, and sensing in concert rather than at cross-purposes — we begin to construct a shared world rather than a million private ones, and to discover, in that shared making, how human beings might interact with far greater coherence, far greater coordination, and far greater capacity than our present fragmentation allows. The work of this volume is, in the end, the work of learning to build the world together, on purpose.
+Habit and inheritance shape how people use these faculties. Practice can make that shaping more visible and deliberate. When people compare perception rather than assume a single private view is complete, they may build a more trustworthy shared account. The manuscript's earlier attribution of this four-part model to Taoist philosophy remains unverified and should not be published as lineage without a source.
 
-***Within the Coherence Thesis.   ****this is the hinge on which everything practical turns. A coherent civilization cannot be installed; it can only be grown, encounter by encounter, as people learn to meet one another coherently rather than extractively. Presence and genius are the names for that learned capacity at the smallest scale — and because civilizations are made of nothing but encounters, a change in how we meet is, in the end, a change in everything we build from our meeting.*
+A coherent civilization cannot be installed as software. It must be cultivated in repeated encounters, then tested in the institutions built from them.

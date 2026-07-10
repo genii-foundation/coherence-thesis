@@ -1,14 +1,14 @@
 ---
 id: CTD-0075
 title: Correct Volume IV's false account of Volume III's structure
-status: open
+status: resolved
 kind: structural
 severity: high
 scopes: ["volume-3", "volume-4", "corpus"]
 sources: ["sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md", "sources/manuscripts/coherence-thesis-vol4-architecting-providence.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
 discovered: 2026-07-09
-updated: 2026-07-09
-resolved:
+updated: 2026-07-10
+resolved: 2026-07-10
 discoveredIn: corpus-audit/2026-07-09
 ---
 
@@ -27,3 +27,8 @@ Reconcile Volume IV against the final Volume III structure. Replace phantom sect
 ## History
 
 - 2026-07-09: Recorded by the initial independent corpus audit.
+- 2026-07-10: Resolved after a fresh reviewer compared Volume IV's cross-volume claims with the complete current Volume III and corrected the surviving predecessor attributions.
+
+## Resolution
+
+Volume IV no longer attributes `The Deeper Inquiry`, `What Remains Open`, or an opening disclaimer to current Volume III. The handoff at `sources/manuscripts/coherence-thesis-vol4-architecting-providence.md` lines 43 to 49 and 111 to 145 now describes Volume III as a design space and presents Volume IV's lists as self-contained proposals. The fresh comparison in `editorial/reviews/volume-4/production-pass/semantic-review.md` also found and corrected four surviving formal-list attributions, one stale lineage attribution, and the incorrect AI predecessor. The integrated review reports no remaining false cross-volume structural reference.

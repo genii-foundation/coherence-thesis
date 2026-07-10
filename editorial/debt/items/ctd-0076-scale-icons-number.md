@@ -7,7 +7,7 @@ severity: medium
 scopes: ["volume-4", "volume-6", "volume-8", "volume-9", "master-ledger", "corpus"]
 sources: ["sources/manuscripts/coherence-thesis-vol4-architecting-providence.md", "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md", "sources/manuscripts/coherence-thesis-vol8-a-misanthropic-artifice.md", "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md", "sources/manuscripts/coherence-thesis-master-ledger.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
 discovered: 2026-07-09
-updated: 2026-07-09
+updated: 2026-07-10
 resolved:
 discoveredIn: corpus-audit/2026-07-09
 ---
@@ -27,3 +27,11 @@ Replace every singular ICON or ICONS with Scale unless an exact quotation requir
 ## History
 
 - 2026-07-09: Recorded by the initial independent corpus audit after surviving uses disproved the earlier completion claim.
+- 2026-07-10: Recorded source-side correction across Volumes IV through IX, while retaining the debt because the master ledger still contains singular `ICONS community` language.
+- 2026-07-10: Confirmed that the revised source wording survives final ledger reconstruction and the validated 534-file manuscript import; retained the item for the master-ledger repair and final corpus terminology search.
+
+## Partial paydown
+
+The current production sources consistently use `Scale` for one community and `ICONS` for the plural network. The independent semantic records at `editorial/reviews/volume-4/production-pass/semantic-review.md`, `editorial/reviews/volume-5/production-pass/semantic-review.md`, and `editorial/reviews/volume-6/production-pass/semantic-review.md` explicitly confirm the repair, and Volumes VIII and IX state the distinction directly. The revised wording is covered by the final ledger set, which passes baseline coverage and exact current reconstruction with zero pending records, and by manuscript validation across 534 generated files and 36 overview references. The route planner also reports 551 predecessor matches with zero unresolved routes, and the historical audit reports 5,833 hrefs with zero broken links.
+
+The item remains open because `sources/manuscripts/coherence-thesis-master-ledger.md` still contains `A single ICONS community` and `one ICONS community` language. A final corpus terminology search and the master-ledger correction are still required.

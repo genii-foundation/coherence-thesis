@@ -1,14 +1,14 @@
 ---
 id: CTD-0095
 title: Reconcile or retire Volume IV's repeated coda system
-status: open
+status: resolved
 kind: structural
 severity: high
 scopes: ["volume-4"]
 sources: ["sources/manuscripts/coherence-thesis-vol4-architecting-providence.md", "docs/manuscript-editorial-plan.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
 discovered: 2026-07-09
-updated: 2026-07-09
-resolved:
+updated: 2026-07-10
+resolved: 2026-07-10
 discoveredIn: corpus-audit/2026-07-09
 ---
 
@@ -27,3 +27,8 @@ Give every coda one disposition: retain, integrate, rewrite, or remove. Verify e
 ## History
 
 - 2026-07-09: Recorded by the initial independent corpus audit.
+- 2026-07-10: Resolved after all twenty-eight codas received an explicit remove-and-integrate disposition and fresh review found no missing image, mechanism, or claim requiring restoration.
+
+## Resolution
+
+All twenty-eight `Coda: In Plain Terms` units and their `Toward the coherent substrate` blocks were retired from `sources/manuscripts/coherence-thesis-vol4-architecting-providence.md`. The retired-coda inventory in `editorial/reviews/volume-4/production-pass/review.md` assigns each historical coda to its parent chapter. `editorial/reviews/volume-4/production-pass/overcompression-audit.md` records the review of every coda, the integration or rejection of unique material, and the complete chapter-level preservation check. Fresh independent semantic and literary review confirmed that no coda, image, mechanism, chronology, modality, or transition needs restoration. Historical coda route continuity remains a separate link-preservation gate and does not require the obsolete coda structure to return.

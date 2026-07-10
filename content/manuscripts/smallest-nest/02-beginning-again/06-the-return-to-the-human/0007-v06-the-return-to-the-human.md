@@ -12,17 +12,17 @@ sectionId: "v06-the-return-to-the-human"
 title: "The Return to the Human"
 sectionOrder: 7
 sourceDoc: "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
-sourceHash: "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
-sourceParagraphStart: 453
-sourceParagraphEnd: 464
+sourceHash: "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+sourceParagraphStart: 337
+sourceParagraphEnd: 348
 ---
 
-And the fifth volume came down to the ground. After four ascents—through substrate and intelligence and architecture and engineering—it returned to the single human life on which every abstraction is finally tested, and there it found the thing the whole work had been circling all along.
+Volume V came down to the ground. After four ascents through substrate, intelligence, architecture, and engineering, it returned to the human life on which every abstraction is tested.
 
-Human potential is the most wasted resource on Earth. Not as a figure of speech, but in plain accounting: the inventors who never invented, the healers who never healed, the gifts that died unspent for want of anywhere to be given. The fifth volume traced how that waste might end. It showed that purpose cannot be assigned but can be discovered, and named the pathway by which the discovering happens. It recovered the lost art of recognition—the seamstress’s gift, the bare ability to see what a person is for—and called it the gift our civilization squanders most completely of all.
+Volume V proposes that unrealized human potential is a vast and poorly measured loss: inventions, care, teaching, and other gifts that never find conditions in which to emerge. It asks how that waste might be reduced. Purpose cannot be assigned, but it can be discovered through experience and relation. The seamstress at the volume’s center embodies recognition, the ability to notice a capacity before it has become an achievement.
 
-It showed that no one becomes themselves alone; that we ripen only in the company of those who recognize us; and that such company has a natural size—roughly a hundred and fifty, the most a person can truly hold—the scale at which we can still be known, and missed, and held to our word. It gave the coordinating device its name, Providence, and its single inversion: that systems exist to serve life. It named the sovereign communities—Individual Communities Observing Natural Sovereignty—and the planetary whole they slowly compose, the dragon named Earth, beginning to wake through us.
+It argues that people develop in company and that communities need a scale at which mutual recognition remains possible. The series provisionally places that relational scale near one hundred and fifty, while leaving the evidence and nesting model open. It names the proposed coordinating system Providence and gives it one governing principle: systems should serve life. It calls each sovereign community a Scale, the plural network ICONS, and the planetary image they might compose the dragon named Earth.
 
-Almost everything in this little book is drawn, above all, from that fifth volume—because the fifth volume is where the great architecture finally narrows to a single person, standing in a small room, deciding whether or not to build.
+Much of this book is drawn from Volume V because that volume narrows the architecture to a person standing in a small room and deciding whether to build.
 
 THE CLOSE OF PART TWO

@@ -21,7 +21,7 @@ Each JSONL record contains:
 - `routeOutcome`: a concrete description of the canonical route, alias, or lack of public route impact
 - `reviewStatus`: `pending`, `query`, `reviewed`, or `approved`
 
-An approved public rename, move, split, merge, or removal must replace the initializer's pending route text with an adjudicated canonical destination and alias outcome. Query disposition, route impact, and review status remain paired until the question is resolved.
+An approved public rename, move, split, merge, or removal must replace the initializer's pending route text with an adjudicated canonical destination and alias outcome. A query review status may preserve a known disposition and route impact while canonical route evidence remains unresolved. If the disposition or route impact itself is `query`, then disposition, route impact, and review status remain paired until the question is resolved.
 
 Validate the complete source inventory against the immutable base and imported worktree:
 

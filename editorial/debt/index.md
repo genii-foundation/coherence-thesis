@@ -4,7 +4,7 @@
 
 This index records known literary, philosophical, factual, continuity, publication, and technical obligations across The Coherence Thesis. A resolved item remains in the library as evidence of paydown.
 
-Open: 49. Queries: 38. Deferred: 4. Resolved: 8.
+Open: 46. Queries: 38. Deferred: 4. Resolved: 12.
 
 ## Active debt
 
@@ -18,14 +18,14 @@ Open: 49. Queries: 38. Deferred: 4. Resolved: 8.
 | [CTD-0030](items/ctd-0030-cardinal-scale-existence-claims.md) | Verify whether the first Cardinal Scale exists | query | factual | critical | volume-4, volume-5, volume-9, corpus | 2026-07-09 |
 | [CTD-0048](items/ctd-0048-volume-eight-fact-audit.md) | Refresh and verify Volume VIII's factual record | open | citation | critical | volume-8, corpus | 2026-07-09 |
 | [CTD-0055](items/ctd-0055-providence-protocol-ownership-promises.md) | Prove Providence's implementation and safeguard claims | open | technical | critical | volume-1, volume-2, volume-3, volume-4, site, corpus | 2026-07-09 |
-| [CTD-0088](items/ctd-0088-volume-seven-mentor-safeguarding.md) | Bound mentor authority and add safeguarding to Volume VII | open | canon | critical | volume-7, site, corpus | 2026-07-09 |
+| [CTD-0088](items/ctd-0088-volume-seven-mentor-safeguarding.md) | Bound mentor authority and add safeguarding to Volume VII | open | canon | critical | volume-7, site, corpus | 2026-07-10 |
 | [CTD-0001](items/ctd-0001-missing-roots-bibliography.md) | Volume I promises a Roots bibliography that does not exist | open | promise | high | volume-1 | 2026-07-09 |
 | [CTD-0002](items/ctd-0002-volume-one-empirical-sourcing.md) | Volume I empirical claims lack visible primary sources | open | citation | high | volume-1, corpus | 2026-07-09 |
 | [CTD-0003](items/ctd-0003-coherence-unit-ontology.md) | Define whether COHERENCE is a relation or its portable record | query | canon | high | volume-1, volume-2, volume-3, volume-4, volume-9, corpus | 2026-07-09 |
 | [CTD-0004](items/ctd-0004-historical-priority-claims.md) | Verify or remove historical universals and priority claims | open | factual | high | volume-1, volume-2, volume-3, corpus | 2026-07-09 |
 | [CTD-0007](items/ctd-0007-epigraph-verification.md) | Verify every epigraph and mark adaptations honestly | open | citation | high | volume-2, volume-3, volume-4, volume-7, volume-9, corpus | 2026-07-09 |
 | [CTD-0008](items/ctd-0008-douro-history-verification.md) | Verify the Douro history and institutional lineage claims | open | factual | high | volume-3, corpus | 2026-07-09 |
-| [CTD-0011](items/ctd-0011-first-wave-audio-republication.md) | Republish immutable audio for the first editorial wave | deferred | audio | high | volume-1, volume-2, volume-3 | 2026-07-09 |
+| [CTD-0011](items/ctd-0011-first-wave-audio-republication.md) | Republish immutable audio after the complete editorial pass | deferred | audio | high | volume-1, volume-2, volume-3, volume-4, volume-5, volume-6, volume-7, volume-8, volume-9, corpus | 2026-07-09 |
 | [CTD-0012](items/ctd-0012-bio-consensus-currency-conflation.md) | Separate Bio-Consensus from the COHERENCE currency | open | terminology | high | volume-1, volume-2, volume-3, volume-8, volume-9, corpus | 2026-07-09 |
 | [CTD-0013](items/ctd-0013-historical-extraction-moral-claim.md) | Decide Volume I's moral claim about historical extraction | query | logical | high | volume-1, corpus | 2026-07-09 |
 | [CTD-0016](items/ctd-0016-technological-power-thesis.md) | Decide whether coherence governs technological power | query | canon | high | volume-1, volume-2, corpus | 2026-07-09 |
@@ -56,23 +56,20 @@ Open: 49. Queries: 38. Deferred: 4. Resolved: 8.
 | [CTD-0071](items/ctd-0071-providence-constitutional-review.md) | Subject Providence's constitution to legal and democratic review | open | structural | high | volume-3, volume-4, corpus | 2026-07-09 |
 | [CTD-0072](items/ctd-0072-providence-purposeful-implementation-inventory.md) | Publish a dated Providence and PURPOSEFUL implementation inventory and roadmap | open | promise | high | volume-2, volume-3, volume-4, volume-5, volume-7, volume-9, master-ledger, site, corpus | 2026-07-09 |
 | [CTD-0073](items/ctd-0073-volume-three-compression-approval.md) | Obtain author approval of Volume III's developmental compression | query | literary | high | volume-3 | 2026-07-09 |
-| [CTD-0074](items/ctd-0074-volume-four-donor-outcome.md) | Reconcile the Volume IV donor outcome | open | logical | high | volume-4 | 2026-07-09 |
-| [CTD-0075](items/ctd-0075-volume-four-volume-three-structure.md) | Correct Volume IV's false account of Volume III's structure | open | structural | high | volume-3, volume-4, corpus | 2026-07-09 |
-| [CTD-0078](items/ctd-0078-volume-four-citation-audit.md) | Complete Volume IV's citation and quotation audit | open | citation | high | volume-4, corpus | 2026-07-09 |
-| [CTD-0079](items/ctd-0079-volume-five-fact-audit.md) | Complete Volume V's factual and citation audit | open | citation | high | volume-5, corpus | 2026-07-09 |
-| [CTD-0080](items/ctd-0080-volume-six-fact-audit.md) | Complete Volume VI's factual and citation audit | open | citation | high | volume-6, corpus | 2026-07-09 |
-| [CTD-0081](items/ctd-0081-numerology-as-evidence.md) | Decide whether numerology is symbolism or evidence | query | logical | high | volume-7, volume-9, master-ledger, corpus | 2026-07-09 |
-| [CTD-0082](items/ctd-0082-volume-seven-cultural-citation-audit.md) | Complete Volume VII's cultural, etymological, and citation audit | open | citation | high | volume-7, corpus | 2026-07-09 |
-| [CTD-0083](items/ctd-0083-volume-eight-trauma-causality.md) | Reassess Volume VIII's trauma-linked causal claim | query | logical | high | volume-8, corpus | 2026-07-09 |
-| [CTD-0086](items/ctd-0086-volume-seven-inscrutability.md) | Decide whether Volume VII intends scrutability or inscrutability | query | literary | high | volume-7 | 2026-07-09 |
-| [CTD-0087](items/ctd-0087-volume-seven-curriculum-completeness.md) | Complete or reframe Volume VII's curriculum architecture | open | promise | high | volume-7, corpus | 2026-07-09 |
-| [CTD-0089](items/ctd-0089-volume-four-production-pass.md) | Complete Volume IV's editorial production pass | open | literary | high | volume-4 | 2026-07-09 |
-| [CTD-0090](items/ctd-0090-volume-five-production-pass.md) | Complete Volume V's editorial production pass | open | literary | high | volume-5 | 2026-07-09 |
-| [CTD-0091](items/ctd-0091-volume-six-production-pass.md) | Complete Volume VI's editorial production pass and protect reader autonomy | open | literary | high | volume-6 | 2026-07-09 |
-| [CTD-0092](items/ctd-0092-volume-seven-production-pass.md) | Complete Volume VII's editorial production pass | open | literary | high | volume-7 | 2026-07-09 |
-| [CTD-0093](items/ctd-0093-volume-eight-production-pass.md) | Complete Volume VIII's editorial production pass | open | literary | high | volume-8 | 2026-07-09 |
-| [CTD-0094](items/ctd-0094-volume-nine-production-pass.md) | Complete Volume IX's editorial production pass | open | literary | high | volume-9 | 2026-07-09 |
-| [CTD-0095](items/ctd-0095-volume-four-coda-system.md) | Reconcile or retire Volume IV's repeated coda system | open | structural | high | volume-4 | 2026-07-09 |
+| [CTD-0078](items/ctd-0078-volume-four-citation-audit.md) | Complete Volume IV's citation and quotation audit | open | citation | high | volume-4, corpus | 2026-07-10 |
+| [CTD-0079](items/ctd-0079-volume-five-fact-audit.md) | Complete Volume V's factual and citation audit | open | citation | high | volume-5, corpus | 2026-07-10 |
+| [CTD-0080](items/ctd-0080-volume-six-fact-audit.md) | Complete Volume VI's factual and citation audit | open | citation | high | volume-6, corpus | 2026-07-10 |
+| [CTD-0081](items/ctd-0081-numerology-as-evidence.md) | Decide whether numerology is symbolism or evidence | query | logical | high | volume-7, volume-9, master-ledger, corpus | 2026-07-10 |
+| [CTD-0082](items/ctd-0082-volume-seven-cultural-citation-audit.md) | Complete Volume VII's cultural, etymological, and citation audit | open | citation | high | volume-7, corpus | 2026-07-10 |
+| [CTD-0083](items/ctd-0083-volume-eight-trauma-causality.md) | Reassess Volume VIII's trauma-linked causal claim | query | logical | high | volume-8, corpus | 2026-07-10 |
+| [CTD-0086](items/ctd-0086-volume-seven-inscrutability.md) | Decide whether Volume VII intends scrutability or inscrutability | query | literary | high | volume-7 | 2026-07-10 |
+| [CTD-0087](items/ctd-0087-volume-seven-curriculum-completeness.md) | Complete or reframe Volume VII's curriculum architecture | open | promise | high | volume-7, corpus | 2026-07-10 |
+| [CTD-0089](items/ctd-0089-volume-four-production-pass.md) | Complete Volume IV's editorial production pass | open | literary | high | volume-4 | 2026-07-10 |
+| [CTD-0090](items/ctd-0090-volume-five-production-pass.md) | Complete Volume V's editorial production pass | open | literary | high | volume-5 | 2026-07-10 |
+| [CTD-0091](items/ctd-0091-volume-six-production-pass.md) | Complete Volume VI's editorial production pass and protect reader autonomy | open | literary | high | volume-6 | 2026-07-10 |
+| [CTD-0092](items/ctd-0092-volume-seven-production-pass.md) | Complete Volume VII's editorial production pass | open | literary | high | volume-7 | 2026-07-10 |
+| [CTD-0093](items/ctd-0093-volume-eight-production-pass.md) | Complete Volume VIII's editorial production pass | open | literary | high | volume-8 | 2026-07-10 |
+| [CTD-0094](items/ctd-0094-volume-nine-production-pass.md) | Complete Volume IX's editorial production pass | open | literary | high | volume-9 | 2026-07-10 |
 | [CTD-0014](items/ctd-0014-soil-metaphysical-modality.md) | Decide the modality of the Soil's living-development claim | query | canon | medium | volume-1, corpus | 2026-07-09 |
 | [CTD-0017](items/ctd-0017-four-movements-structural-scope.md) | Decide what the Four Movements heading promises | query | structural | medium | volume-1 | 2026-07-09 |
 | [CTD-0020](items/ctd-0020-volume-two-warning-invitation-balance.md) | Approve Volume II's balance of warning and invitation | query | literary | medium | volume-2 | 2026-07-09 |
@@ -89,11 +86,11 @@ Open: 49. Queries: 38. Deferred: 4. Resolved: 8.
 | [CTD-0063](items/ctd-0063-earth-compact-scope.md) | Decide whether the Earth Compact needs a lived ecological scene | query | structural | medium | volume-3, volume-4, corpus | 2026-07-09 |
 | [CTD-0064](items/ctd-0064-volume-two-nest-status.md) | Clarify Nest Three and update Volume II to current-library tense | query | promise | medium | volume-2, volume-3, volume-4, corpus | 2026-07-09 |
 | [CTD-0067](items/ctd-0067-volume-two-builder-taxonomy.md) | Frame Volume II's builder taxonomy as a heuristic | query | structural | medium | volume-2, corpus | 2026-07-09 |
-| [CTD-0076](items/ctd-0076-scale-icons-number.md) | Enforce the Scale and ICONS singular and plural distinction | open | terminology | medium | volume-4, volume-6, volume-8, volume-9, master-ledger, corpus | 2026-07-09 |
-| [CTD-0077](items/ctd-0077-volume-six-reading-path.md) | Make Volume VI's cross-volume reading path navigable | open | link | medium | volume-6, site, corpus | 2026-07-09 |
-| [CTD-0084](items/ctd-0084-volume-six-seven-display-matter.md) | Repair malformed display matter in Volumes VI and VII | open | structural | medium | volume-6, volume-7 | 2026-07-09 |
-| [CTD-0085](items/ctd-0085-bow-art-alchemy-display.md) | Canonicalize B.O.W. and Art and Alchemy display forms | query | terminology | medium | volume-6, volume-7, volume-8, volume-9, master-ledger, corpus | 2026-07-09 |
+| [CTD-0076](items/ctd-0076-scale-icons-number.md) | Enforce the Scale and ICONS singular and plural distinction | open | terminology | medium | volume-4, volume-6, volume-8, volume-9, master-ledger, corpus | 2026-07-10 |
+| [CTD-0084](items/ctd-0084-volume-six-seven-display-matter.md) | Repair malformed display matter in Volumes VI and VII | open | structural | medium | volume-6, volume-7 | 2026-07-10 |
+| [CTD-0085](items/ctd-0085-bow-art-alchemy-display.md) | Canonicalize B.O.W. and Art and Alchemy display forms | query | terminology | medium | volume-6, volume-7, volume-8, volume-9, master-ledger, corpus | 2026-07-10 |
 | [CTD-0096](items/ctd-0096-reader-audio-pending-intent.md) | Make pending reader audio intent route safe | open | technical | medium | corpus, reader | 2026-07-09 |
+| [CTD-0100](items/ctd-0100-semantic-cross-reference-linking.md) | Add conservative semantic cross-reference linking | open | link | medium | volume-1, site, corpus | 2026-07-09 |
 | [CTD-0010](items/ctd-0010-volume-four-proof-of-council-foreshadow.md) | Add the promised Volume IV Proof of Council foreshadowing | deferred | canon | low | volume-4, corpus | 2026-07-09 |
 | [CTD-0018](items/ctd-0018-maren-coda-register.md) | Choose the final register of the Maren coda | query | literary | low | volume-1 | 2026-07-09 |
 | [CTD-0029](items/ctd-0029-cardinal-scale-forthcoming-book.md) | Track the promised original Cardinal Scale account | deferred | promise | low | volume-9, master-ledger, corpus | 2026-07-09 |
@@ -111,6 +108,10 @@ Open: 49. Queries: 38. Deferred: 4. Resolved: 8.
 | [CTD-0023](items/ctd-0023-first-wave-link-continuity.md) | Complete first-wave import and historical link audit | resolved | link | critical | volume-1, volume-2, volume-3, corpus | 2026-07-09 |
 | [CTD-0026](items/ctd-0026-volume-one-subtitle-metadata.md) | Align the Volume I reader subtitle with the manuscript | resolved | terminology | medium | volume-1 | 2026-07-09 |
 | [CTD-0032](items/ctd-0032-volume-one-ampersand-normalization.md) | Restore intentional and citation ampersands | resolved | literary | medium | volume-1, volume-3, corpus | 2026-07-09 |
+| [CTD-0074](items/ctd-0074-volume-four-donor-outcome.md) | Reconcile the Volume IV donor outcome | resolved | logical | high | volume-4 | 2026-07-10 |
+| [CTD-0075](items/ctd-0075-volume-four-volume-three-structure.md) | Correct Volume IV's false account of Volume III's structure | resolved | structural | high | volume-3, volume-4, corpus | 2026-07-10 |
+| [CTD-0077](items/ctd-0077-volume-six-reading-path.md) | Make Volume VI's cross-volume reading path navigable | resolved | link | medium | volume-6, site, corpus | 2026-07-10 |
+| [CTD-0095](items/ctd-0095-volume-four-coda-system.md) | Reconcile or retire Volume IV's repeated coda system | resolved | structural | high | volume-4 | 2026-07-10 |
 | [CTD-0097](items/ctd-0097-reader-navigation-boundaries.md) | Keep Next navigation continuous across manuscript boundaries | resolved | link | medium | volume-2, reader, corpus | 2026-07-09 |
 | [CTD-0098](items/ctd-0098-reader-heading-copy-links.md) | Expose copyable anchors on reader headings | resolved | link | medium | reader, corpus | 2026-07-09 |
 | [CTD-0099](items/ctd-0099-short-opening-drop-cap-clearance.md) | Keep short opening paragraphs clear of their drop caps | resolved | technical | medium | reader, corpus | 2026-07-09 |

@@ -107,6 +107,16 @@ npm run manuscripts:editorial-ledgers:init -- \
 
 The initializer may align exact text and propose mechanical split, merge, recast, or removal records. It leaves every record pending. Treat each inferred change as a review queue, never as an editorial judgment. Complete claim types, invariants, reasons, route outcomes, and risks before approval.
 
+After all independent review artifacts are complete, the adjudication helper may perform the conservative clerical pass over a freshly initialized ledger pair:
+
+```bash
+npm run manuscripts:editorial-ledgers:adjudicate -- \
+  --review editorial/reviews/<volume-id>/<batch-id> \
+  --write
+```
+
+Run it without `--write` first to inspect status counts. The helper preserves reconstruction fields, leaves authority-sensitive claims as queries, and leaves changed public structure unresolved until concrete route and alias evidence exists. It does not provide author or publication approval.
+
 ### 5. Perform adversarial review
 
 Use fresh reviewers for every pilot and production batch. Run them sequentially if concurrent capacity is unavailable. Give each reviewer the original and revised passage without the lead editor's rationale. Stop the batch if independent review cannot be completed.
@@ -149,6 +159,19 @@ npm run manuscripts:structure-ledger -- \
 ```
 
 For a sentence microbatch, declare every baseline section with `--section` and every current section with `--current-section`. The sentence validator must prove complete declared baseline coverage, exact proposed text at every current result location, and complete reconstruction of the declared current scope. The structure validator intentionally remains whole-source. Run it with `--source` even when the prose batch covers only selected sections, because headings and display matter outside generated reader sections still require an inventory.
+
+### Pull request review commentary
+
+When the author requests exhaustive pull request commentary, generate it from the validated ledgers after the final source diff is stable:
+
+```bash
+npm run manuscripts:pr-comments -- \
+  --base <base-sha> \
+  --review editorial/reviews/<volume-id>/<batch-id> \
+  --output artifacts/editorial/pr-comments
+```
+
+Repeat `--review` for every included batch. The generated manifest groups sentence changes by section and accounts separately for changed headings and display units. Each record carries its stable ledger address, disposition, risk or route impact, status, and reason codes. Each body also carries a deterministic hidden key. Compare those keys with existing pull request comments and skip exact duplicates. Exact wording remains in the committed ledger and visible diff. Review the generated line anchors against the final remote patch, then post the comments only after the branch has been pushed. Do not hand compose a partial parallel account or post against an obsolete commit.
 
 ### 7. Publish through the manuscript pipeline
 

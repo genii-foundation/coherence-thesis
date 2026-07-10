@@ -262,18 +262,14 @@ export function parseStructureLedger(
       ) {
         throw new Error(`${file}:${line}: merge units need a groupId.`);
       }
-      if (
-        record.disposition === "query" ||
-        record.routeImpact === "query" ||
-        record.reviewStatus === "query"
-      ) {
+      if (record.disposition === "query" || record.routeImpact === "query") {
         if (
           record.disposition !== "query" ||
           record.routeImpact !== "query" ||
           record.reviewStatus !== "query"
         ) {
           throw new Error(
-            `${file}:${line}: query disposition, route impact, and review status must appear together.`,
+            `${file}:${line}: a query disposition or route impact requires all three query fields.`,
           );
         }
       }

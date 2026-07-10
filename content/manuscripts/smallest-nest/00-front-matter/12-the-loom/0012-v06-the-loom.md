@@ -12,26 +12,17 @@ sectionId: "v06-the-loom"
 title: "The Loom"
 sectionOrder: 12
 sourceDoc: "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
-sourceHash: "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
-sourceParagraphStart: 245
-sourceParagraphEnd: 266
+sourceHash: "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+sourceParagraphStart: 181
+sourceParagraphEnd: 192
 ---
 
-A current, a pathway, and scattered people are still not a civilization. Something has to weave them—to take distributed potential and turn it into coordinated capability, to help the right people meet not by accident but reliably, before the moment that needed them has passed.
+A current, a pathway, and scattered people are still not a civilization. Something has to weave them into coordinated capability and help promising relationships form before the moment that needs them has passed.
 
-Providence is the name for that loom. Not a ruler, not a marketplace, not a machine that moves people like material—but a coordinating device built on a single inversion: that systems exist to serve life, and not life to serve systems.
+Providence is the name for that proposed loom. It is neither a ruler nor a marketplace nor a machine that moves people like material. It is a coordinating system built on one inversion: systems should serve life.
 
-It measures itself by gentler and more intelligent instruments—by devices and designs and forms of intelligence turned, almost as an act of devotion, to a single end: that more people discover their purpose, that more find their mentors and their collaborators and the place that was waiting for them. It builds such things only so that we might finally be free to ask the questions that matter most. Are more of us becoming what we are for? Are the generations to come inheriting something healthier than we did? Everything Providence does is in service of those questions—and so are the societies it fosters, which measure themselves less by ownership and success inside a sick culture than by the thriving of humanity, and by something deeper than thriving: the slow deepening of us, drawn from the greatest untapped resource we possess, which is the depth within one another.
+Its success would be measured by human outcomes. Are more people discovering useful purpose? Are they finding mentors and collaborators? Are future generations inheriting healthier conditions? Technology matters here only insofar as it serves those questions. The proposal should be judged by what it helps people and communities become, not by the novelty of its machinery.
 
-
-*The right people are out there, and the meeting is left to luck.*
-
-*We are building the loom that makes the meeting reliable instead.*
-
-*That is why.*
-
-*That is why Providence exists at all: to turn the lucky accidents we have always depended on into something a civilization can be trusted to do on purpose.*
-
-TO GO DEEPER   *Volume III — the architecture of coordination    ·    Volume V — **"**Providence Reconsidered**"*
+TO GO DEEPER   *[Volume III: the architecture of coordination](/manuscripts/3/) & [Volume V: “Providence Reconsidered”](/manuscripts/5/the-architecture-of-becoming/providence-reconsidered/)*
 
 VIII

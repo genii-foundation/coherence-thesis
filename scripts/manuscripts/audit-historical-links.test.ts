@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   auditHistoricalLinks,
+  recordedContinuityOwner,
   selectWritableSuccessor,
 } from "./audit-historical-links";
 
@@ -83,5 +84,22 @@ describe("historical manuscript links", () => {
         unmappedOldSectionIds: [],
       }),
     ).toThrow(/changed route roles/i);
+  });
+
+  it("records a saved continuity owner instead of an unrelated current ID", () => {
+    expect(
+      recordedContinuityOwner(
+        "v01-four-movements",
+        "v01-four-movements",
+        new Set(["v01-a-note-on-compression"]),
+      ),
+    ).toBe("v01-a-note-on-compression");
+    expect(
+      recordedContinuityOwner(
+        "current",
+        "retired-coda",
+        new Set(["current", "retired-coda"]),
+      ),
+    ).toBe("retired-coda");
   });
 });

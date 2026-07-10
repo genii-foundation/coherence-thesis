@@ -33,7 +33,7 @@ Use one JSON object per original source sentence. Blank lines are allowed. The s
 - A split sentence has at least two proposed sentences and one destination for each.
 - Every source sentence in a merge uses the same nonempty `groupId`, result text, and result locations. A merge group contains at least two inputs.
 - A moved sentence points to its actual current section and ordinal.
-- A queried sentence uses `reviewStatus: "query"` until resolved.
+- An unresolved authority question uses `reviewStatus: "query"` until resolved. The recorded disposition and reconstruction fields remain exact when the wording result is known. Use `disposition: "query"` only when the editorial disposition itself cannot be determined, and pair that disposition with `reviewStatus: "query"`.
 - Every current sentence in the declared output scope is claimed exactly once. A merge result is counted once for its whole group.
 - An approved sentence has at least one reason code, one explicit claim type, and one claim invariant. Initializer output remains pending until those fields have been reviewed and completed.
 

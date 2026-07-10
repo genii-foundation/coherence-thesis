@@ -30,6 +30,30 @@ npm run manuscripts:editorial-ledgers:init -- \
 
 The initializer supplies alignment evidence only. It does not approve a sentence, heading, claim, route decision, or inferred disposition.
 
+After the semantic, literary, and complete 24-category slop reviews are finished, adjudicate a freshly initialized pair of ledgers with a dry run first:
+
+```bash
+npm run manuscripts:editorial-ledgers:adjudicate -- \
+  --review editorial/reviews/<volume-id>/<batch-id>
+
+npm run manuscripts:editorial-ledgers:adjudicate -- \
+  --review editorial/reviews/<volume-id>/<batch-id> \
+  --write
+```
+
+The helper preserves baseline identity, dispositions, proposed text, result locations, merge groups, citation attachments, and route impact. It replaces only initializer evidence fields, risk, review status, and pending route explanations. Unchanged low-risk prose may become approved. Changed prose becomes reviewed when independent review found no unresolved authority. Empirical, medical, legal, historical, quotation, implementation-status, and authorial-doctrine claims remain queries. Changed public structure also remains a query until link preservation supplies a concrete canonical route and alias outcome. These statuses are editorial evidence, never publication approval.
+
+After the ledgers validate, prepare section grouped pull request review comments with:
+
+```bash
+npm run manuscripts:pr-comments -- \
+  --base <base-sha> \
+  --review editorial/reviews/<volume-id>/<batch-id> \
+  --output artifacts/editorial/pr-comments
+```
+
+Repeat `--review` for each batch included in the pull request. The generator emits a local `comments.json` manifest and one Markdown body per comment. Every changed sentence, heading, and display unit is represented by its stable ledger address, disposition, risk or route impact, status, and reason codes. Each body carries a deterministic hidden key so an identical posting pass can skip duplicates. Exact wording remains in the committed ledgers and visible source diff. The generator does not post to GitHub. Posting remains an explicit external action after the branch is pushed and the final diff is stable.
+
 Validate a complete source batch against its immutable baseline and current worktree with:
 
 ```bash

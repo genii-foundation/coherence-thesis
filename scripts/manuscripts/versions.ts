@@ -22,6 +22,29 @@ export type PullRequestMatch = {
   number: number;
 };
 
+export function preserveVersionProvenance(
+  current: VersionProvenanceManifest,
+  ...priorManifests: VersionProvenanceManifest[]
+): VersionProvenanceManifest {
+  const priorByHash = priorManifests.map(
+    (manifest) =>
+      new Map(manifest.entries.map((entry) => [entry.contentHash, entry])),
+  );
+  return {
+    ...current,
+    entries: current.entries.map((entry) => {
+      const prior = priorByHash
+        .map((entries) => entries.get(entry.contentHash))
+        .filter((candidate): candidate is VersionProvenanceEntry => Boolean(candidate));
+      return (
+        [entry, ...prior].find((candidate) => candidate.pullRequestUrl) ??
+        prior[0] ??
+        entry
+      );
+    }),
+  };
+}
+
 export function git(args: string[], cwd = repoRoot): string {
   return execFileSync("git", args, {
     cwd,
@@ -175,8 +198,20 @@ export function buildVersionProvenanceManifest({
 }
 
 export function refreshVersionProvenance(): void {
-  const manifest = buildVersionProvenanceManifest();
   const existing = readVersionProvenance();
+  let committed: VersionProvenanceManifest | undefined;
+  try {
+    committed = JSON.parse(
+      git(["show", "HEAD:content/series/version-provenance.json"]),
+    ) as VersionProvenanceManifest;
+  } catch {
+    committed = undefined;
+  }
+  const manifest = preserveVersionProvenance(
+    buildVersionProvenanceManifest(),
+    existing,
+    ...(committed ? [committed] : []),
+  );
   if (JSON.stringify(existing.entries) === JSON.stringify(manifest.entries)) {
     manifest.generatedAt = existing.generatedAt;
   }

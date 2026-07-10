@@ -12,24 +12,15 @@ sectionId: "v06-your-people"
 title: "Your People"
 sectionOrder: 11
 sourceDoc: "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
-sourceHash: "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
-sourceParagraphStart: 225
-sourceParagraphEnd: 244
+sourceHash: "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+sourceParagraphStart: 171
+sourceParagraphEnd: 180
 ---
 
-No one becomes themselves alone. Somewhere are the people who would recognize you—who carry the complementary gift, who are bent toward the same distant thing, in whose company you would become more than you could ever be by yourself. The quiet tragedy is how rarely they find each other.
+People do not become themselves alone. There may be others who would recognize a person’s capacities, carry complementary gifts, or share the same distant aim. The difficulty is how rarely they find one another.
 
-We sort human beings by where they were born, by what they earn, by what they have already been—almost never by who they are becoming or what they are for. And so people who were made to build together pass within feet of one another and never meet. To find your people is not a luxury or a comfort. It is the precondition of becoming anything at all.
+Institutions sort people by location, income, credentials, and prior roles. They rarely help people find one another through emerging commitments or complementary capacities. People who could build together therefore remain strangers. Finding one’s people is not merely a comfort. It can change what a person is able to become.
 
-
-*You were not made to become yourself alone.*
-
-*We are building the small, knowing places where your people can find you.*
-
-*That is why.*
-
-*That is why belonging comes before achievement here: because no one becomes anything worth becoming outside the company that calls it out of them.*
-
-TO GO DEEPER   *Volume V — **"**Finding Your People**"*
+TO GO DEEPER   *[Volume V: “Finding Your People”](/manuscripts/5/how-potential-becomes-real/finding-your-people/)*
 
 VII

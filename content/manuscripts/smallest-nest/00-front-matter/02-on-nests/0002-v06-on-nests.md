@@ -12,14 +12,14 @@ sectionId: "v06-on-nests"
 title: "On Nests"
 sectionOrder: 2
 sourceDoc: "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
-sourceHash: "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
-sourceParagraphStart: 75
-sourceParagraphEnd: 88
+sourceHash: "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+sourceParagraphStart: 73
+sourceParagraphEnd: 86
 ---
 
-We have spoken, across these volumes, of nests—of the way knowledge itself can be nested, held in a form neither too large to enter nor too small to matter. Each volume before this one was such a nest, and each extended a single primary idea more inclusively, more hopefully—more nearly transcendentally—than the last. The first offered the plainest understanding: the difference between a coherent substrate and an extractive one, and why a civilization that means to last must move toward coherence. The second turned that understanding toward making—showing that intelligence is relational, and drawing from it the first lessons about how we might think, and what we might build. The third carried it further still, into the architecture of coordination a complex civilization requires. The fourth laid out the initial steps, and nested the most of all—citing builders and thinkers and the hard-won knowledge of many, pointing carefully at what must be pointed at when one actually begins to build. And the fifth came home to the human being, where everything the others described is finally won or lost.
+Across these volumes, a nest has meant knowledge held at a scale a reader can enter. Volume I distinguished coherent systems from extractive ones. Volume II treated intelligence as relational. Volume III proposed an architecture of coordination. Volume IV translated that proposal into designs that could be tested. Volume V returned the argument to the human life on which every system depends.
 
-Each was a nest of knowledge—not too much, not too little. This book attempts something different: to hold the whole architecture in the smallest space it can be held. So we begin not with a chapter but with a single line, and then we widen, slowly, one nest at a time.
+Each volume held one part of the work at greater depth. This book attempts something different. It holds the whole architecture in the smallest space that can carry it. We begin with a single line, then widen one nest at a time.
 
 
-*An effort to build the largest coordinating device the world has known—a living network turned, at last, toward the health, the wholeness, the connection, and the genius of human beings.*
+*A proposal for a living network that helps people discover purpose, find one another, and contribute what they carry.*

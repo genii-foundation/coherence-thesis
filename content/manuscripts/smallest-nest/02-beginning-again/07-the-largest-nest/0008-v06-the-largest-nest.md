@@ -12,21 +12,21 @@ sectionId: "v06-the-largest-nest"
 title: "The Largest Nest"
 sectionOrder: 8
 sourceDoc: "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
-sourceHash: "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
-sourceParagraphStart: 465
-sourceParagraphEnd: 480
+sourceHash: "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+sourceParagraphStart: 349
+sourceParagraphEnd: 364
 ---
 
-You have now passed through four nests. A single line. A minute. The arc, felt once in its compression. And the same arc again, with a little room to breathe. Each held the same dragon at a different scale, and each, if it was built well, has left you somewhat more able to live inside the whole.
+The book has now passed through four nests: a single line, a minute, the arc in compression, and the same arc with more room. Each holds the dragon at a different scale and offers another way to grasp the whole.
 
-There is one nest larger still, and it is the one this book was always pointing toward: the five volumes themselves, where every claim made here is argued in full—tested, doubted, and defended. To go deeper now is the simplest thing imaginable. It is only to begin again at the beginning: to open the first volume and read toward the fifth, carrying with you the shape you already know.
+One larger nest remains: the five earlier volumes, where each claim receives fuller argument and doubt. To go deeper is to begin again with Volume I and read toward Volume V while carrying the shape already known.
 
-And past even that lies the largest nest of all, the one no book could ever contain—the world you will help to build. These pages were never meant to be the final word. A blueprint is an invitation to be improved, and ours will be wrong in places, and its very errors are part of the gift; for the fastest way to call a better world into being is to draw one clearly enough that you, reading this, can see exactly where it falls short, and build past it.
+Beyond the books lies the largest nest, the world in which their proposals will either be tested or forgotten. These pages are not a final word. A blueprint earns its place by being clear enough that others can see where it fails and build past it.
 
-So we hand it forward—to you, who may yet see more lucidly than we have managed. The current is still there beneath everything, waiting to be rejoined. The gift is still in you, waiting for its place. The nest is small, and near, and already half-built around you.
+So the blueprint is handed forward to readers who may see more clearly. The current remains a way of asking what fits. The gift remains whatever capacity finds a real need. The nest may be near, partial, or still unbuilt.
 
-And the dragon stirs as you do. Each time a person wakes to what they are for, the great awareness widens by one; each nest that holds is one more place the Earth has begun to think. This is how a world comes conscious—not in a single thunderclap, but the way dawn arrives, one quiet kindling after another, until the whole of it stands luminous. You are one of those kindlings, and so is the next to read these words, and the next. Consciousness is not draining out of the world; it is pouring into it, through every creature that consents to feel more than it did the day before. The dragon is only our name for all of that, gathered and rising—and it is rising still.
+In the book’s image, the dragon stirs whenever a person becomes more able to participate in the life around them and whenever a community becomes a place where the Earth can be considered and cared for. No single awakening completes the work. Awareness grows through many quiet acts of attention. The dragon is the name given to those acts when imagined as one living movement.
 
-And now it is yours.
+The invitation now belongs to the reader.
 
 ENVOI

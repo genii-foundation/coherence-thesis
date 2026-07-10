@@ -12,15 +12,15 @@ sectionId: "v06-the-buildable-blueprint"
 title: "The Buildable Blueprint"
 sectionOrder: 6
 sourceDoc: "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
-sourceHash: "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
-sourceParagraphStart: 443
-sourceParagraphEnd: 452
+sourceHash: "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+sourceParagraphStart: 327
+sourceParagraphEnd: 336
 ---
 
-The fourth volume answered the oldest objection to any vision of this kind—that it is beautiful and impossible—by showing, in patient detail, that it can be built. This was the densest nest of all, and deliberately so. It gathered the work of engineers and economists, of network scientists and institutional designers, of the many who have each quietly solved some fragment of the problem without ever seeing the whole.
+Volume IV addressed the objection that the vision is too abstract to test. It gathered relevant work from engineering, economics, network science, and institutional design, then arranged those fragments into a proposed build sequence.
 
-It cited them not for ornament but for proof, assembling out of existing, demonstrated capabilities a credible account of how a coordinating architecture could actually be stood up in the world we already inhabit. It laid out initial steps: what to build first, what can run on tools we already hold in our hands, and where the genuinely hard problems still wait.
+The volume distinguished tools that already exist from mechanisms that remain speculative. It proposed what might be built first, what could use present technology, and where difficult research, governance, and safeguarding questions remain.
 
-The fourth volume is the one to return to whenever the whole project begins to feel like a dream, because its entire purpose was to convert the dream into a buildable sequence. Vision without feasibility is only longing dressed in better clothes. The fourth volume supplied the feasibility—and in doing so it earned for the fifth the right to come home to the human being and ask, at last, what all of it is actually for.
+Volume IV converts the vision into a sequence that can be criticized and tested. It does not prove that the architecture has been built or that its mechanisms will work. It creates a more concrete basis for Volume V to return to the human being and ask what the architecture is for.
 
 VOLUME V

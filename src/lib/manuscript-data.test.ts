@@ -274,13 +274,13 @@ describe("manuscript data", () => {
 
     expect(sectionIds).toEqual([
       "v04-the-amendment-architecture",
-      "v04-the-deeper-inquiry-9",
-      "v04-what-remains-open-9",
+      "v04-research-lineages-9",
+      "v04-open-questions-9",
     ]);
     expect(sections.map((section) => section.readerHref)).toEqual([
       `${sections[0]!.chapterHref}#v04-the-amendment-architecture`,
-      `${sections[0]!.chapterHref}#v04-the-deeper-inquiry-9`,
-      `${sections[0]!.chapterHref}#v04-what-remains-open-9`,
+      `${sections[0]!.chapterHref}#v04-research-lineages-9`,
+      `${sections[0]!.chapterHref}#v04-open-questions-9`,
     ]);
 
     const oldChildRoute = breadcrumbRoutes().find(

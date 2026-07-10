@@ -7,7 +7,7 @@ severity: high
 scopes: ["volume-7", "corpus"]
 sources: ["sources/manuscripts/coherence-thesis-vol7-presencing-genius.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
 discovered: 2026-07-09
-updated: 2026-07-09
+updated: 2026-07-10
 resolved:
 discoveredIn: corpus-audit/2026-07-09
 ---
@@ -27,3 +27,8 @@ Supply the complete curriculum, learning objectives, facilitator standards, cont
 ## History
 
 - 2026-07-09: Recorded by the initial independent corpus audit.
+- 2026-07-10: Reframed the year as an incomplete curriculum sketch and exposed the missing learning, facilitation, assessment, and safety apparatus.
+
+## Partial paydown
+
+`sources/manuscripts/coherence-thesis-vol7-presencing-genius.md` lines 335 to 359 now calls the fifty-two-week structure a sketch and design hypothesis, names the unpublished curriculum components, and rejects the claim that one year produces a whole person. Lines 391 to 397 classify the Academy of Muses, Systems Perspective practice, Circle of Restoration, Four Chapters, and Twelve-Year Trajectory as proposed functions or horizons rather than operating bodies. The independent semantic review at `editorial/reviews/volume-7/production-pass/semantic-review.md` confirms the narrowed promise. The item remains open because the named bodies and trajectory still lack operational definitions, milestones, governance, and evidence, and the author has not decided whether the curriculum is active, piloting, or purely conceptual.

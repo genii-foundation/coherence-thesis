@@ -12,31 +12,33 @@ sectionId: "v05-at-the-threshold-of-contribution"
 title: "At the Threshold of Contribution"
 sectionOrder: 2
 sourceDoc: "sources/manuscripts/coherence-thesis-vol5-purposeful.md"
-sourceHash: "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f"
-sourceParagraphStart: 99
-sourceParagraphEnd: 124
+sourceHash: "b10eea00ac11dca166812e0a1fa1b60980818ca1c55e27f2c2c0bd4ac989f6b5"
+sourceParagraphStart: 91
+sourceParagraphEnd: 118
 ---
 
 I want to begin with a woman I will call Donna.
 
-Let me say plainly what she is, because the rest will not work if I pretend otherwise. She is not someone I am reporting to you; this is not a memoir, and I will not dress invention as testimony, for that would not be true. Donna is made. And yet—maybe, just maybe, a woman very like her once knelt with pins in her mouth and said a true thing to a distracted child; and maybe that child, thirty years on, is the one setting it down now, no longer able to tell where the memory ends and the meaning begins. Hold her that way: as a fiction that keeps faith with something that may well have been real. It is the truest way I know to begin.
+Donna is a composite, not a person I can report as fact. A woman much like her may once have knelt with pins in her mouth and spoken to a distracted child. Thirty years later, memory and meaning no longer separate cleanly. Read Donna as fiction that keeps faith with a possible memory.
 
-She made and mended clothes in a small place for the better part of fifty years. Not a designer, not an artist with a name—a seamstress, the kind a town used to have one of, who took in trousers and let out wedding dresses and turned collars on the coats of men who could not afford new ones. People came to her at the thresholds of their lives, though none of them would have called it that. They came before the weddings and after the funerals, when a boy outgrew his confirmation suit and when a girl needed a hem raised for a first interview. They stood on a low wooden stool in front of her mirror while she knelt with pins in her mouth, and for a few minutes she saw them more completely than almost anyone else ever would.
+She made and mended clothes in a small town for nearly fifty years. She was a seamstress who took in trousers, let out wedding dresses, and turned the collars of coats their owners could not afford to replace. People came before weddings and after funerals, when a boy outgrew his confirmation suit or a girl needed a hem raised for a first interview. They stood on a low wooden stool while she knelt with pins in her mouth. For a few minutes, she attended to them more closely than most people did.
 
-And Donna had a peculiarity that I did not understand until long after she was gone. She knew things about people. Not gossip—she was the least gossiping person I have ever met. She knew what they were for. She would pin a hem and say, almost to herself, that a certain quiet boy ought to be allowed near machines, or that a restless girl was wasting herself behind a counter. She was right with a frequency that, looking back, is difficult to explain. But she was a seamstress in a town that needed its trousers shortened, and there was no one whose job it was to listen to a seamstress about the secret shape of other people’s lives. So the perceptions came and went like weather. She died having altered some ten thousand garments. Was there ever a reckoning of what else she changed—of the lives quietly turned by being seen, for a few minutes, more completely than anyone else would ever see them? As far as the records go: nothing. As far as the actual reach of it—a word here, a noticing there, a boy sent toward the machines he was born for—it may be past all counting. And she was never compensated for any of it. There was no line on any ledger for the gift that was hers and no one else’s; no part of the world was arranged to receive it. That is the question her life leaves on the table, the one this book cannot put down: might there be a way to build a civilization in which a person is truly known—and truly honored—for what they carry?
+Donna seemed able to notice capacities in other people. She might say that a quiet boy should be allowed near machines, or that a restless girl was wasting herself behind a counter. I cannot verify how often she was right. What matters to the story is that no role existed for carrying such perceptions toward opportunity. They came and went like weather.
 
-Here is the question beneath that one, the one that has stayed with me: what was lost when Donna died?
+She altered thousands of garments. No record tells us whether a word from her redirected a life. There was no line on any ledger for the gift that was hers and no one else’s. Her story leaves this question: can a civilization help people become known and valued for capacities that ordinary institutions overlook?
 
-The easy answer is that nothing was lost—that she lived a modest, decent life and reached its natural end, as billions have. But I do not think that is true. I think something specific and irreplaceable went into the ground with her, and that the same thing goes into the ground with an enormous number of people, and that we have built a civilization remarkably good at not noticing.
+The question beneath it has stayed with me: what was lost when Donna died?
+
+Her craft and attention ended with her. Something specific and irreplaceable may have gone into the ground, as it does whenever a capacity dies without being shared or developed. Modern institutions have few ways to notice that loss.
 
 The first four volumes of this work asked what kind of civilization should exist. They asked about substrate and intelligence and coordination and architecture. This volume asks a simpler and harder question.
 
 Who will build it?
 
-Not in the abstract. Not “humanity.” Specific human beings, with specific gifts, who must first discover that they have those gifts, then find others who recognize them, then find work worthy of them, and then—if they are very fortunate, and if the world cooperates—become responsible for something larger than themselves. That sequence is not automatic. It is not even common. For most people, across most of history, it has been left almost entirely to chance.
+The answer cannot remain “humanity” in the abstract. It must mean particular people who discover capacities, find others able to recognize them, reach consequential work, and perhaps become responsible for something larger than themselves. That sequence is never automatic and is still too often left to chance.
 
-The crisis of our age is usually described as ecological, or technological, or political, and it is all of those. But beneath them lies a quieter crisis that receives almost no attention, because it is measured in things that never happened. We have forgotten how to help human beings become who they are capable of becoming. We have built magnificent systems for extracting work from people and almost none for discovering what is actually inside them.
+Our ecological, technological, and political crises contain another loss that is harder to measure: capacities that never find use. Modern systems are practiced at extracting labor and less practiced at discovering forms of contribution that do not fit an existing role.
 
-Donna is where this book begins because Donna is the question made flesh. Somewhere right now there is a person whose gift is exactly what some corner of the world is starving for, and the two will never meet. Multiply that by a lifetime. Multiply it by eight billion. The number you arrive at is the true cost of the thing we are about to examine, and it is larger than any deficit, any shortage, any scarcity we currently know how to name.
+Donna gives the question a human shape. Somewhere a person carries a capacity that a community needs, and the two may never meet. No honest number captures that loss. Its invisibility is part of the problem.
 
 She said something to me once, while I stood on that wooden stool. I did not understand it for nearly thirty years. I will come back to it before the end.

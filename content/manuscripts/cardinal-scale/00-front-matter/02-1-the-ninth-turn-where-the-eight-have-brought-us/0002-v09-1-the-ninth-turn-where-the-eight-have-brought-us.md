@@ -6,33 +6,33 @@ partId: "front-matter"
 partTitle: "Front Matter"
 partOrder: 0
 chapterId: "1-the-ninth-turn-where-the-eight-have-brought-us"
-chapterTitle: "§1 — The Ninth Turn: Where the Eight Have Brought Us"
+chapterTitle: "§1: The Ninth Turn: Where the Eight Have Brought Us"
 chapterOrder: 2
 sectionId: "v09-1-the-ninth-turn-where-the-eight-have-brought-us"
-title: "§1 — The Ninth Turn: Where the Eight Have Brought Us"
+title: "§1: The Ninth Turn: Where the Eight Have Brought Us"
 sectionOrder: 2
 sourceDoc: "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md"
-sourceHash: "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762"
-sourceParagraphStart: 37
-sourceParagraphEnd: 58
+sourceHash: "cc987e30c656a8a586f5c1d27308c302fd1de7fb77ed349be48c0d235ce56dc3"
+sourceParagraphStart: 35
+sourceParagraphEnd: 56
 ---
 
-This has been one argument, turned nine times in the light, and a reader arriving here should be able to feel the whole spiral close.
+This has been one argument turned through nine volumes. Before building, the volume recalls the path without inventing new titles for the books behind it.
 
-In **Volume I**, *The Two Substrates*, we laid the ground beneath everything: that a civilization runs on either a coherent substrate or an extractive one, and that the extractive can win for a season but never for an age, *because it is always spending a principal it insists on calling income.* The most viable substrate for a post-extractive world, it turned out, was people all along.
+**Volume I, *Humanity's Most Viable Future,*** laid the ground: a civilization can cultivate a coherent substrate or continue spending living principal as though it were income. People, not a technical system, became the proposed foundation of a post-extractive world.
 
-In **Volume II**, *Wielding Intelligence*, we corrected the oldest error about intelligence: that it is a possession sealed in a single skull. It is not. It lives in the *between* — the pattern that connects — and so the only technology worth building is technology that strengthens the between rather than severing it.
+**Volume II, *Wielding Intelligence,*** located intelligence within minds and in relation, in the pattern that connects. It asked technology to strengthen that relation rather than sever it.
 
-In **Volume III**, *The Providence Imperative*, we named the device the first two volumes had been reaching toward. **Providence**: a trust network whose single function is to make earned trust legible and portable — *it remembers presence so that people can find, trust, and provision one another without coercion or surveillance.* We named its currency, the **Currency of Presence**, minted by **Bio-Consensus** not from energy burned or capital staked but from *presence* and *presencing*; and we were honest that a coordination infrastructure cannot be built during the crisis that requires it — it must already exist when the crisis arrives.
+**Volume III, *The Providence Imperative,*** proposed **Providence**, a trust network intended to help people find, trust, and provision one another without coercion or surveillance. It named **COHERENCE** as the unit of the Currency of Presence and **Bio-Consensus** as its primary proposed biometric minting path. It also marked the research and governance work that remains unfinished.
 
-In **Volume IV**, *Architecting Providence*, the nest that every prior volume had only woven was finally asked to bear weight. We moved from map to ground: the sequence that cannot be skipped (proof-of-life before scale), the economics that cannot be bought, the governance that cannot be captured, the technology that must be sovereign and open. And we gave the first community its name. The **ICONS** — *Individual Communities Observing Natural Sovereignty* — are the living units; a single one is a Scale, and the first Scale is the Cardinal Scale.
+**Volume IV, *Architecting Providence,*** tested the proposal against economics, governance, technology, and land. It established **ICONS**, *Individual Communities Observing Natural Sovereignty*, as the plural network. A single community is a Scale. The claimed status of the first Cardinal Scale remains unresolved.
 
-In **Volume V**, *The Return to the Human*, we made the wager the whole work rests on: that human potential is the most wasted resource on Earth, and that purpose cannot be assigned, only discovered — through recognition (the seamstress who *sees* the child), through finding the people in whose company one becomes more than oneself, at the one scale, near a hundred and fifty, where no one disappears.
+**Volume V, *Purposeful,*** returned the architecture to human purpose. It proposed that purpose is discovered through recognition, practice, and the people with whom a capacity can become contribution.
 
-In **Volume VI**, *The Smallest Nest*, we held the whole architecture in one hand — the current, the gift, the pathway, the seeing, your people, the loom, the currency, the right size, the dragon — or rather, Earth Awakening to Itself — and showed that coherence, made visible, becomes the quiet currency of a world that has finally stopped living by extraction.
+**Volume VI, *The Smallest Nest,*** compressed the architecture into a sequence of current, gift, pathway, people, loom, currency, scale, and the dragon named Earth.
 
-In **Volume VII**, the *Seven Initiates of a BOW* — a Body of Worship — we opened the inner door: listening, intimacy, balance, art and alchemy, embodiment, worship, providence. These are the inner technologies, the practice of presence itself, that make a people less dependent on external machinery and more capable within. *A civilization that cannot love at the scale of two will not coordinate at the scale of eight billion.*
+**Volume VII, *Presencing Genius,*** opened the inner practices of Listening, Intimacy, Balance, Art & Alchemy, Embodiment, Worship, and Providence. It also made clear that mentorship and retreat require consent, safeguards, independent oversight, and freedom to leave.
 
-And in **Volume VIII**, *A Misanthropic Artifice*, we named the enemy without euphemism: the built order that runs on the very same raw material — human presence — and turns it to the opposite god, harvesting as a *score* what Providence would honor as a *currency.* We drew the fork. We laid the first stone. And we left the colder instruments down with a single sentence that this volume now takes literally: *the artifice already proves the tools work; we propose only to change the god they serve.*
+**Volume VIII, *A Misanthropic Artifice,*** examined systems that harvest human presence for prediction and control. It also corrected its own metaphor: the artifice proves that capture can work. It does not prove that the same instruments can measure trust or serve consent.
 
-So we arrive at the Ninth, the volume no amount of reading can complete. Everything before this was the long approach to one question, and the question has two halves:
+The ninth volume therefore arrives at two questions:

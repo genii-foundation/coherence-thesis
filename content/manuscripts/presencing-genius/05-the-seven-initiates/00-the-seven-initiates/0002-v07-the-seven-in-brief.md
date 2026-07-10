@@ -9,24 +9,38 @@ chapterId: "the-seven-initiates"
 chapterTitle: "The Seven Initiates"
 chapterOrder: 0
 sectionId: "v07-the-seven-in-brief"
-title: "The Seven, in Brief"
+title: "The Seven in Brief"
 sectionOrder: 2
 sourceDoc: "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md"
-sourceHash: "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876"
-sourceParagraphStart: 201
-sourceParagraphEnd: 216
+sourceHash: "c61640a9d5d3bb07082166fedd9ad808fa86b651534e64f8f4afac247da46f0f"
+sourceParagraphStart: 161
+sourceParagraphEnd: 190
 ---
 
-Listening is the gateway. To listen, in its fullest sense, is not only to hear but to discern whatever the senses relay; it is the base of all organismic understanding. Until we have learned to listen — first to ourselves — the line between the extraordinary and the ordinary stays drawn just where habit drew it.
+Listening is the gateway. It includes hearing and attending to what the senses relay. The practice begins with noticing oneself without assuming that every sensation is self-interpreting.
 
-Intimacy follows from Listening. It is in the lack of intimacy with our own inherent nature that the devolution of our values begins; and it is through intimacy that we come to see everything arising as an opportunity for our choosing.
+Listening also includes what is difficult to hear: the limit in a tired body, the hesitation behind agreement, the bird no one noticed until it stopped. It asks attention to stay long enough for the ordinary to recover its grain.
 
-Balance rests upon Intimacy. It is not merely the key to a good life but the foundation of life itself — the ground on which the doors of perception, and so Art, may at last be approached with the keys already in hand.
+Intimacy follows from Listening. It asks for contact with one's own experience and with another person without possession, performance, or forced disclosure.
 
-Art and Alchemy is entered once one approaches the doors of perception no longer empty-handed. Here one becomes a conscious creator rather than the unconscious inheritor of others’ creations — generating elevated states, and shaping a life as one shapes a work of art.
+Intimacy does not mean access to everything. A boundary spoken and received can be more intimate than a confession extracted in the name of depth. The practice is measured partly by how safely another person's no can remain in the room.
 
-Embodiment is awareness brought fully, at last, into the body — the vital impetus of change met and inhabited rather than feared, so that one moves with the one constancy of the universe instead of bracing against it.
+Balance rests upon Intimacy. It is the capacity to remain responsive among competing needs, limits, and desires.
 
-Worship is reverence and devotion for whatever gives us life — and, in the work’s understanding, a form of healing: the turning of the whole being toward the source of its own aliveness.
+Balance is not a still point discovered once. It is the continual work of leaning, noticing, and returning. A living body balances by moving.
 
-Providence is the seventh, which is secretly the prior six made actual — the path put into practice, a clearer sense of the world and of our place in it, carried at last into dependable action.
+Art & Alchemy concerns deliberate making and transformation. It asks how inherited forms may be received, altered, or refused, and how a life may become a conscious practice rather than an unconscious repetition.
+
+The alchemy is not escape from material constraint. It is the conversion of what has been given into a form that can carry new life. A meal, a song, a room, an agreement, or a daily habit can become such a form.
+
+Embodiment brings awareness into the body and its limits. It asks a person to notice change without treating discomfort as failure or overriding the body's refusal.
+
+The body is not a symbol placed beneath the argument. It is where hunger, fear, pleasure, exhaustion, illness, disability, and consent become specific. Any practice that cannot hear those facts has left embodiment behind.
+
+Worship is reverence for what gives and sustains life. The term may name religious devotion, secular awe, or another accountable practice of gratitude. It should not be presented as medical treatment.
+
+Worship turns attention toward what exceeds possession. It may occur in prayer, music, work, silence, a watershed, or the care of another person. The object and language may differ. The discipline is to serve without claiming ownership of the sacred.
+
+Providence is the prior six carried into dependable action. It asks whether perception, intimacy, balance, making, embodiment, and reverence change how a person participates in the world.
+
+The seventh threshold therefore returns the path to Tuesday morning. Does the listening alter the meeting? Does intimacy change how conflict is held? Does reverence affect the budget, the water, or the person who has been forgotten? Providence is where inner language becomes answerable to consequence.

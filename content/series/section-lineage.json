@@ -3586,11 +3586,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-first-the-story",
+      "currentSectionId": "v04-power-without-coordination",
       "continuityIds": [
         "v04-first-the-story"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-first-the-story"
+      ],
       "progressContinuityGroups": [
         [
           "v04-first-the-story"
@@ -3598,11 +3600,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-it-means-to-begin",
+      "currentSectionId": "v04-from-invitation-to-construction",
       "continuityIds": [
         "v04-what-it-means-to-begin"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-it-means-to-begin"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-it-means-to-begin"
@@ -3610,11 +3614,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-intellectual-posture-of-this-volume",
+      "currentSectionId": "v04-claims-proposals-and-tests",
       "continuityIds": [
         "v04-the-intellectual-posture-of-this-volume"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-intellectual-posture-of-this-volume"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-intellectual-posture-of-this-volume"
@@ -3622,11 +3628,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-music-of-this-book-and-what-it-asks-of-you",
+      "currentSectionId": "v04-how-to-read-this-architecture",
       "continuityIds": [
         "v04-the-music-of-this-book-and-what-it-asks-of-you"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-music-of-this-book-and-what-it-asks-of-you"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-music-of-this-book-and-what-it-asks-of-you"
@@ -3634,11 +3642,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-why-purposeful-exists-and-how-providence-begins",
+      "currentSectionId": "v04-purposeful-before-providence",
       "continuityIds": [
         "v04-why-purposeful-exists-and-how-providence-begins"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-why-purposeful-exists-and-how-providence-begins"
+      ],
       "progressContinuityGroups": [
         [
           "v04-why-purposeful-exists-and-how-providence-begins"
@@ -3646,11 +3656,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-why-a-book-comes-first",
+      "currentSectionId": "v04-why-publish-before-building",
       "continuityIds": [
         "v04-why-a-book-comes-first"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-why-a-book-comes-first"
+      ],
       "progressContinuityGroups": [
         [
           "v04-why-a-book-comes-first"
@@ -3658,11 +3670,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-cardinal-scale-seen-from-here",
+      "currentSectionId": "v04-the-cardinal-scale-as-design-fiction",
       "continuityIds": [
         "v04-the-cardinal-scale-seen-from-here"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-cardinal-scale-seen-from-here"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-cardinal-scale-seen-from-here"
@@ -3682,23 +3696,32 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-volume-iii-left-unbuilt",
+      "currentSectionId": "v04-from-design-to-construction",
       "continuityIds": [
-        "v04-what-volume-iii-left-unbuilt"
+        "v04-what-volume-iii-left-unbuilt",
+        "v04-coda-in-plain-terms"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-volume-iii-left-unbuilt",
+        "v04-coda-in-plain-terms"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-volume-iii-left-unbuilt"
+        ],
+        [
+          "v04-coda-in-plain-terms"
         ]
       ]
     },
     {
-      "currentSectionId": "v04-the-open-questions-as-building-problems",
+      "currentSectionId": "v04-four-kinds-of-building-question",
       "continuityIds": [
         "v04-the-open-questions-as-building-problems"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-open-questions-as-building-problems"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-open-questions-as-building-problems"
@@ -3706,11 +3729,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-this-chapter-commits-to",
+      "currentSectionId": "v04-what-this-volume-can-offer",
       "continuityIds": [
         "v04-what-this-chapter-commits-to"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-this-chapter-commits-to"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-this-chapter-commits-to"
@@ -3718,11 +3743,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry",
+      "currentSectionId": "v04-research-lineages",
       "continuityIds": [
         "v04-the-deeper-inquiry"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry"
@@ -3730,11 +3757,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open",
+      "currentSectionId": "v04-open-questions",
       "continuityIds": [
         "v04-what-remains-open"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open"
@@ -3742,26 +3771,20 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms",
-      "continuityIds": [
-        "v04-coda-in-plain-terms"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-the-proof-of-life-requirement",
       "continuityIds": [
-        "v04-the-proof-of-life-requirement"
+        "v04-the-proof-of-life-requirement",
+        "v04-coda-in-plain-terms-2"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-2"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-proof-of-life-requirement"
+        ],
+        [
+          "v04-coda-in-plain-terms-2"
         ]
       ]
     },
@@ -3790,11 +3813,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-2",
+      "currentSectionId": "v04-research-lineages-2",
       "continuityIds": [
         "v04-the-deeper-inquiry-2"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-2"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-2"
@@ -3802,11 +3827,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-2",
+      "currentSectionId": "v04-open-questions-2",
       "continuityIds": [
         "v04-what-remains-open-2"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-2"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-2"
@@ -3814,26 +3841,21 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-2",
+      "currentSectionId": "v04-what-scaling-changes",
       "continuityIds": [
-        "v04-coda-in-plain-terms-2"
+        "v04-the-scaling-problem",
+        "v04-coda-in-plain-terms-3"
       ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-2"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-the-scaling-problem",
-      "continuityIds": [
-        "v04-the-scaling-problem"
+      "historicalSectionIds": [
+        "v04-the-scaling-problem",
+        "v04-coda-in-plain-terms-3"
       ],
-      "historicalSectionIds": [],
       "progressContinuityGroups": [
         [
           "v04-the-scaling-problem"
+        ],
+        [
+          "v04-coda-in-plain-terms-3"
         ]
       ]
     },
@@ -3874,11 +3896,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-3",
+      "currentSectionId": "v04-research-lineages-3",
       "continuityIds": [
         "v04-the-deeper-inquiry-3"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-3"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-3"
@@ -3886,11 +3910,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-3",
+      "currentSectionId": "v04-open-questions-3",
       "continuityIds": [
         "v04-what-remains-open-3"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-3"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-3"
@@ -3898,26 +3924,20 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-3",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-3"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-3"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-the-time-architecture",
       "continuityIds": [
-        "v04-the-time-architecture"
+        "v04-the-time-architecture",
+        "v04-coda-in-plain-terms-4"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-4"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-time-architecture"
+        ],
+        [
+          "v04-coda-in-plain-terms-4"
         ]
       ]
     },
@@ -3946,11 +3966,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-4",
+      "currentSectionId": "v04-research-lineages-4",
       "continuityIds": [
         "v04-the-deeper-inquiry-4"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-4"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-4"
@@ -3958,26 +3980,16 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-4",
+      "currentSectionId": "v04-open-questions-4",
       "continuityIds": [
         "v04-what-remains-open-4"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-4"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-4"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-coda-in-plain-terms-4",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-4"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-4"
         ]
       ]
     },
@@ -3996,12 +4008,18 @@
     {
       "currentSectionId": "v04-the-funding-paradox",
       "continuityIds": [
-        "v04-the-funding-paradox"
+        "v04-the-funding-paradox",
+        "v04-coda-in-plain-terms-5"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-5"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-funding-paradox"
+        ],
+        [
+          "v04-coda-in-plain-terms-5"
         ]
       ]
     },
@@ -4018,11 +4036,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-5",
+      "currentSectionId": "v04-research-lineages-5",
       "continuityIds": [
         "v04-the-deeper-inquiry-5"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-5"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-5"
@@ -4030,11 +4050,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-5",
+      "currentSectionId": "v04-open-questions-5",
       "continuityIds": [
         "v04-what-remains-open-5"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-5"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-5"
@@ -4042,26 +4064,21 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-5",
+      "currentSectionId": "v04-what-the-institution-rewards",
       "continuityIds": [
-        "v04-coda-in-plain-terms-5"
+        "v04-regenerative-economics-as-internal-architecture",
+        "v04-coda-in-plain-terms-6"
       ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-5"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-regenerative-economics-as-internal-architecture",
-      "continuityIds": [
-        "v04-regenerative-economics-as-internal-architecture"
+      "historicalSectionIds": [
+        "v04-regenerative-economics-as-internal-architecture",
+        "v04-coda-in-plain-terms-6"
       ],
-      "historicalSectionIds": [],
       "progressContinuityGroups": [
         [
           "v04-regenerative-economics-as-internal-architecture"
+        ],
+        [
+          "v04-coda-in-plain-terms-6"
         ]
       ]
     },
@@ -4090,11 +4107,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-6",
+      "currentSectionId": "v04-research-lineages-6",
       "continuityIds": [
         "v04-the-deeper-inquiry-6"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-6"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-6"
@@ -4102,11 +4121,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-6",
+      "currentSectionId": "v04-open-questions-6",
       "continuityIds": [
         "v04-what-remains-open-6"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-6"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-6"
@@ -4114,26 +4135,20 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-6",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-6"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-6"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-the-commons-layer",
       "continuityIds": [
-        "v04-the-commons-layer"
+        "v04-the-commons-layer",
+        "v04-coda-in-plain-terms-7"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-7"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-commons-layer"
+        ],
+        [
+          "v04-coda-in-plain-terms-7"
         ]
       ]
     },
@@ -4150,11 +4165,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-7",
+      "currentSectionId": "v04-research-lineages-7",
       "continuityIds": [
         "v04-the-deeper-inquiry-7"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-7"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-7"
@@ -4162,11 +4179,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-7",
+      "currentSectionId": "v04-open-questions-7",
       "continuityIds": [
         "v04-what-remains-open-7"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-7"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-7"
@@ -4174,35 +4193,32 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-7",
+      "currentSectionId": "v04-capital-without-command",
       "continuityIds": [
-        "v04-coda-in-plain-terms-7"
+        "v04-capital-patient-enough",
+        "v04-coda-in-plain-terms-8"
       ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-7"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-capital-patient-enough",
-      "continuityIds": [
-        "v04-capital-patient-enough"
+      "historicalSectionIds": [
+        "v04-capital-patient-enough",
+        "v04-coda-in-plain-terms-8"
       ],
-      "historicalSectionIds": [],
       "progressContinuityGroups": [
         [
           "v04-capital-patient-enough"
+        ],
+        [
+          "v04-coda-in-plain-terms-8"
         ]
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-8",
+      "currentSectionId": "v04-research-lineages-8",
       "continuityIds": [
         "v04-the-deeper-inquiry-8"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-8"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-8"
@@ -4210,11 +4226,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-8",
+      "currentSectionId": "v04-open-questions-8",
       "continuityIds": [
         "v04-what-remains-open-8"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-8"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-8"
@@ -4222,38 +4240,26 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-8",
+      "currentSectionId": "v04-interpreting-and-amending-the-constitution",
       "continuityIds": [
-        "v04-coda-in-plain-terms-8"
+        "v04-the-governance-architecture",
+        "v04-the-constitutional-layer-in-practice",
+        "v04-coda-in-plain-terms-9"
       ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-8"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-the-governance-architecture",
-      "continuityIds": [
-        "v04-the-governance-architecture"
+      "historicalSectionIds": [
+        "v04-the-governance-architecture",
+        "v04-the-constitutional-layer-in-practice",
+        "v04-coda-in-plain-terms-9"
       ],
-      "historicalSectionIds": [],
       "progressContinuityGroups": [
         [
           "v04-the-governance-architecture"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-the-constitutional-layer-in-practice",
-      "continuityIds": [
-        "v04-the-constitutional-layer-in-practice"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
+        ],
         [
           "v04-the-constitutional-layer-in-practice"
+        ],
+        [
+          "v04-coda-in-plain-terms-9"
         ]
       ]
     },
@@ -4282,11 +4288,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-9",
+      "currentSectionId": "v04-research-lineages-9",
       "continuityIds": [
         "v04-the-deeper-inquiry-9"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-9"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-9"
@@ -4294,11 +4302,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-9",
+      "currentSectionId": "v04-open-questions-9",
       "continuityIds": [
         "v04-what-remains-open-9"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-9"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-9"
@@ -4306,26 +4316,20 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-9",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-9"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-9"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-stewardship-as-practice",
       "continuityIds": [
-        "v04-stewardship-as-practice"
+        "v04-stewardship-as-practice",
+        "v04-coda-in-plain-terms-10"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-10"
+      ],
       "progressContinuityGroups": [
         [
           "v04-stewardship-as-practice"
+        ],
+        [
+          "v04-coda-in-plain-terms-10"
         ]
       ]
     },
@@ -4354,11 +4358,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-10",
+      "currentSectionId": "v04-research-lineages-10",
       "continuityIds": [
         "v04-the-deeper-inquiry-10"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-10"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-10"
@@ -4366,11 +4372,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-10",
+      "currentSectionId": "v04-open-questions-10",
       "continuityIds": [
         "v04-what-remains-open-10"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-10"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-10"
@@ -4378,26 +4386,21 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-10",
+      "currentSectionId": "v04-founders-funders-and-technical-dependence",
       "continuityIds": [
-        "v04-coda-in-plain-terms-10"
+        "v04-the-anti-capture-architecture-in-detail",
+        "v04-coda-in-plain-terms-11"
       ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-10"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-the-anti-capture-architecture-in-detail",
-      "continuityIds": [
-        "v04-the-anti-capture-architecture-in-detail"
+      "historicalSectionIds": [
+        "v04-the-anti-capture-architecture-in-detail",
+        "v04-coda-in-plain-terms-11"
       ],
-      "historicalSectionIds": [],
       "progressContinuityGroups": [
         [
           "v04-the-anti-capture-architecture-in-detail"
+        ],
+        [
+          "v04-coda-in-plain-terms-11"
         ]
       ]
     },
@@ -4438,11 +4441,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-11",
+      "currentSectionId": "v04-research-lineages-11",
       "continuityIds": [
         "v04-the-deeper-inquiry-11"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-11"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-11"
@@ -4450,11 +4455,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-11",
+      "currentSectionId": "v04-open-questions-11",
       "continuityIds": [
         "v04-what-remains-open-11"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-11"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-11"
@@ -4462,26 +4469,20 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-11",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-11"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-11"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-when-communities-diverge",
       "continuityIds": [
-        "v04-when-communities-diverge"
+        "v04-when-communities-diverge",
+        "v04-coda-in-plain-terms-12"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-12"
+      ],
       "progressContinuityGroups": [
         [
           "v04-when-communities-diverge"
+        ],
+        [
+          "v04-coda-in-plain-terms-12"
         ]
       ]
     },
@@ -4498,11 +4499,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-12",
+      "currentSectionId": "v04-research-lineages-12",
       "continuityIds": [
         "v04-the-deeper-inquiry-12"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-12"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-12"
@@ -4510,11 +4513,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-12",
+      "currentSectionId": "v04-open-questions-12",
       "continuityIds": [
         "v04-what-remains-open-12"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-12"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-12"
@@ -4522,47 +4527,36 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-12",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-12"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-12"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-the-technological-architecture-in-detail",
-      "continuityIds": [
-        "v04-the-technological-architecture-in-detail"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-the-technological-architecture-in-detail"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-the-identity-layer",
       "continuityIds": [
-        "v04-the-identity-layer"
+        "v04-the-identity-layer",
+        "v04-the-technological-architecture-in-detail",
+        "v04-coda-in-plain-terms-13"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-technological-architecture-in-detail",
+        "v04-coda-in-plain-terms-13"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-identity-layer"
+        ],
+        [
+          "v04-the-technological-architecture-in-detail"
+        ],
+        [
+          "v04-coda-in-plain-terms-13"
         ]
       ]
     },
     {
-      "currentSectionId": "v04-the-current-state-of-the-technical-art",
+      "currentSectionId": "v04-candidate-approaches-and-limits",
       "continuityIds": [
         "v04-the-current-state-of-the-technical-art"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-current-state-of-the-technical-art"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-current-state-of-the-technical-art"
@@ -4570,11 +4564,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-13",
+      "currentSectionId": "v04-research-lineages-13",
       "continuityIds": [
         "v04-the-deeper-inquiry-13"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-13"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-13"
@@ -4582,11 +4578,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-13",
+      "currentSectionId": "v04-open-questions-13",
       "continuityIds": [
         "v04-what-remains-open-13"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-13"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-13"
@@ -4594,35 +4592,31 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-13",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-13"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-13"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-the-trust-layer",
       "continuityIds": [
-        "v04-the-trust-layer"
+        "v04-the-trust-layer",
+        "v04-coda-in-plain-terms-14"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-14"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-trust-layer"
+        ],
+        [
+          "v04-coda-in-plain-terms-14"
         ]
       ]
     },
     {
-      "currentSectionId": "v04-what-the-trust-layer-can-currently-deliver",
+      "currentSectionId": "v04-what-a-bounded-first-layer-might-deliver",
       "continuityIds": [
         "v04-what-the-trust-layer-can-currently-deliver"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-the-trust-layer-can-currently-deliver"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-the-trust-layer-can-currently-deliver"
@@ -4630,11 +4624,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-14",
+      "currentSectionId": "v04-research-lineages-14",
       "continuityIds": [
         "v04-the-deeper-inquiry-14"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-14"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-14"
@@ -4642,11 +4638,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-14",
+      "currentSectionId": "v04-open-questions-14",
       "continuityIds": [
         "v04-what-remains-open-14"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-14"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-14"
@@ -4654,26 +4652,20 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-14",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-14"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-14"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-ai-as-infrastructure-not-sovereign",
       "continuityIds": [
-        "v04-ai-as-infrastructure-not-sovereign"
+        "v04-ai-as-infrastructure-not-sovereign",
+        "v04-coda-in-plain-terms-15"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-15"
+      ],
       "progressContinuityGroups": [
         [
           "v04-ai-as-infrastructure-not-sovereign"
+        ],
+        [
+          "v04-coda-in-plain-terms-15"
         ]
       ]
     },
@@ -4702,11 +4694,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-15",
+      "currentSectionId": "v04-research-lineages-15",
       "continuityIds": [
         "v04-the-deeper-inquiry-15"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-15"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-15"
@@ -4714,11 +4708,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-15",
+      "currentSectionId": "v04-open-questions-15",
       "continuityIds": [
         "v04-what-remains-open-15"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-15"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-15"
@@ -4726,35 +4722,32 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-15",
+      "currentSectionId": "v04-a-constitutional-specification-for-the-first-application",
       "continuityIds": [
-        "v04-coda-in-plain-terms-15"
+        "v04-the-providence-application-first-version",
+        "v04-coda-in-plain-terms-16"
       ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-15"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-the-providence-application-first-version",
-      "continuityIds": [
-        "v04-the-providence-application-first-version"
+      "historicalSectionIds": [
+        "v04-the-providence-application-first-version",
+        "v04-coda-in-plain-terms-16"
       ],
-      "historicalSectionIds": [],
       "progressContinuityGroups": [
         [
           "v04-the-providence-application-first-version"
+        ],
+        [
+          "v04-coda-in-plain-terms-16"
         ]
       ]
     },
     {
-      "currentSectionId": "v04-what-the-first-version-does",
+      "currentSectionId": "v04-what-the-first-version-would-do",
       "continuityIds": [
         "v04-what-the-first-version-does"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-the-first-version-does"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-the-first-version-does"
@@ -4762,11 +4755,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-the-first-version-feels-like",
+      "currentSectionId": "v04-a-use-scenario",
       "continuityIds": [
         "v04-what-the-first-version-feels-like"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-the-first-version-feels-like"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-the-first-version-feels-like"
@@ -4774,11 +4769,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-the-first-version-refuses-to-do",
+      "currentSectionId": "v04-nonnegotiable-requirements",
       "continuityIds": [
         "v04-what-the-first-version-refuses-to-do"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-the-first-version-refuses-to-do"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-the-first-version-refuses-to-do"
@@ -4786,11 +4783,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-16",
+      "currentSectionId": "v04-research-lineages-16",
       "continuityIds": [
         "v04-the-deeper-inquiry-16"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-16"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-16"
@@ -4798,11 +4797,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-16",
+      "currentSectionId": "v04-open-questions-16",
       "continuityIds": [
         "v04-what-remains-open-16"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-16"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-16"
@@ -4810,38 +4811,25 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-16",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-16"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-16"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-the-human-architecture-in-practice",
-      "continuityIds": [
-        "v04-the-human-architecture-in-practice"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-the-human-architecture-in-practice"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-who-builds-this-and-what-it-costs-them",
       "continuityIds": [
-        "v04-who-builds-this-and-what-it-costs-them"
+        "v04-who-builds-this-and-what-it-costs-them",
+        "v04-the-human-architecture-in-practice",
+        "v04-coda-in-plain-terms-17"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-human-architecture-in-practice",
+        "v04-coda-in-plain-terms-17"
+      ],
       "progressContinuityGroups": [
         [
           "v04-who-builds-this-and-what-it-costs-them"
+        ],
+        [
+          "v04-the-human-architecture-in-practice"
+        ],
+        [
+          "v04-coda-in-plain-terms-17"
         ]
       ]
     },
@@ -4870,11 +4858,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-17",
+      "currentSectionId": "v04-research-lineages-17",
       "continuityIds": [
         "v04-the-deeper-inquiry-17"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-17"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-17"
@@ -4882,11 +4872,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-17",
+      "currentSectionId": "v04-open-questions-17",
       "continuityIds": [
         "v04-what-remains-open-17"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-17"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-17"
@@ -4894,26 +4886,20 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-17",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-17"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-17"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-the-culture-before-the-platform",
       "continuityIds": [
-        "v04-the-culture-before-the-platform"
+        "v04-the-culture-before-the-platform",
+        "v04-coda-in-plain-terms-18"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-18"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-culture-before-the-platform"
+        ],
+        [
+          "v04-coda-in-plain-terms-18"
         ]
       ]
     },
@@ -4930,11 +4916,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-18",
+      "currentSectionId": "v04-research-lineages-18",
       "continuityIds": [
         "v04-the-deeper-inquiry-18"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-18"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-18"
@@ -4942,11 +4930,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-18",
+      "currentSectionId": "v04-open-questions-18",
       "continuityIds": [
         "v04-what-remains-open-18"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-18"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-18"
@@ -4954,26 +4944,20 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-18",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-18"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-18"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-the-developmental-arc",
       "continuityIds": [
-        "v04-the-developmental-arc"
+        "v04-the-developmental-arc",
+        "v04-coda-in-plain-terms-19"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-19"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-developmental-arc"
+        ],
+        [
+          "v04-coda-in-plain-terms-19"
         ]
       ]
     },
@@ -4990,11 +4974,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-19",
+      "currentSectionId": "v04-research-lineages-19",
       "continuityIds": [
         "v04-the-deeper-inquiry-19"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-19"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-19"
@@ -5002,11 +4988,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-19",
+      "currentSectionId": "v04-open-questions-19",
       "continuityIds": [
         "v04-what-remains-open-19"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-19"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-19"
@@ -5014,38 +5002,26 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-19",
+      "currentSectionId": "v04-when-the-architecture-meets-existing-power",
       "continuityIds": [
-        "v04-coda-in-plain-terms-19"
+        "v04-contact-with-the-world",
+        "v04-the-contact-problem",
+        "v04-coda-in-plain-terms-20"
       ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-19"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-contact-with-the-world",
-      "continuityIds": [
-        "v04-contact-with-the-world"
+      "historicalSectionIds": [
+        "v04-contact-with-the-world",
+        "v04-the-contact-problem",
+        "v04-coda-in-plain-terms-20"
       ],
-      "historicalSectionIds": [],
       "progressContinuityGroups": [
         [
           "v04-contact-with-the-world"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-the-contact-problem",
-      "continuityIds": [
-        "v04-the-contact-problem"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
+        ],
         [
           "v04-the-contact-problem"
+        ],
+        [
+          "v04-coda-in-plain-terms-20"
         ]
       ]
     },
@@ -5074,11 +5050,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-20",
+      "currentSectionId": "v04-research-lineages-20",
       "continuityIds": [
         "v04-the-deeper-inquiry-20"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-20"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-20"
@@ -5086,11 +5064,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-20",
+      "currentSectionId": "v04-open-questions-20",
       "continuityIds": [
         "v04-what-remains-open-20"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-20"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-20"
@@ -5098,26 +5078,21 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-20",
+      "currentSectionId": "v04-three-ways-providence-could-fail",
       "continuityIds": [
-        "v04-coda-in-plain-terms-20"
+        "v04-what-failure-looks-like-and-why-its-worth-risking",
+        "v04-coda-in-plain-terms-21"
       ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-20"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-what-failure-looks-like-and-why-its-worth-risking",
-      "continuityIds": [
-        "v04-what-failure-looks-like-and-why-its-worth-risking"
+      "historicalSectionIds": [
+        "v04-what-failure-looks-like-and-why-its-worth-risking",
+        "v04-coda-in-plain-terms-21"
       ],
-      "historicalSectionIds": [],
       "progressContinuityGroups": [
         [
           "v04-what-failure-looks-like-and-why-its-worth-risking"
+        ],
+        [
+          "v04-coda-in-plain-terms-21"
         ]
       ]
     },
@@ -5158,11 +5133,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-why-its-worth-risking",
+      "currentSectionId": "v04-the-case-for-a-bounded-experiment",
       "continuityIds": [
         "v04-why-its-worth-risking"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-why-its-worth-risking"
+      ],
       "progressContinuityGroups": [
         [
           "v04-why-its-worth-risking"
@@ -5170,11 +5147,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-21",
+      "currentSectionId": "v04-research-lineages-21",
       "continuityIds": [
         "v04-the-deeper-inquiry-21"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-21"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-21"
@@ -5182,11 +5161,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-21",
+      "currentSectionId": "v04-open-questions-21",
       "continuityIds": [
         "v04-what-remains-open-21"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-21"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-21"
@@ -5194,26 +5175,20 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-21",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-21"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-21"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-the-invitation",
       "continuityIds": [
-        "v04-the-invitation"
+        "v04-the-invitation",
+        "v04-coda-in-plain-terms-22"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-22"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-invitation"
+        ],
+        [
+          "v04-coda-in-plain-terms-22"
         ]
       ]
     },
@@ -5242,11 +5217,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-22",
+      "currentSectionId": "v04-research-lineages-22",
       "continuityIds": [
         "v04-the-deeper-inquiry-22"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-22"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-22"
@@ -5254,11 +5231,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-22",
+      "currentSectionId": "v04-open-questions-22",
       "continuityIds": [
         "v04-what-remains-open-22"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-22"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-22"
@@ -5266,38 +5245,25 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-22",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-22"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-22"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-the-civilization-made-visible",
-      "continuityIds": [
-        "v04-the-civilization-made-visible"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-the-civilization-made-visible"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-tuesday-afternoon",
       "continuityIds": [
-        "v04-tuesday-afternoon"
+        "v04-tuesday-afternoon",
+        "v04-the-civilization-made-visible",
+        "v04-coda-in-plain-terms-23"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-civilization-made-visible",
+        "v04-coda-in-plain-terms-23"
+      ],
       "progressContinuityGroups": [
         [
           "v04-tuesday-afternoon"
+        ],
+        [
+          "v04-the-civilization-made-visible"
+        ],
+        [
+          "v04-coda-in-plain-terms-23"
         ]
       ]
     },
@@ -5338,11 +5304,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-23",
+      "currentSectionId": "v04-research-lineages-23",
       "continuityIds": [
         "v04-the-deeper-inquiry-23"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-23"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-23"
@@ -5350,11 +5318,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-23",
+      "currentSectionId": "v04-open-questions-23",
       "continuityIds": [
         "v04-what-remains-open-23"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-23"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-23"
@@ -5362,26 +5332,20 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-23",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-23"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-23"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-when-the-money-arrives",
       "continuityIds": [
-        "v04-when-the-money-arrives"
+        "v04-when-the-money-arrives",
+        "v04-coda-in-plain-terms-24"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-24"
+      ],
       "progressContinuityGroups": [
         [
           "v04-when-the-money-arrives"
+        ],
+        [
+          "v04-coda-in-plain-terms-24"
         ]
       ]
     },
@@ -5410,11 +5374,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-outcome",
+      "currentSectionId": "v04-the-outcome-in-this-scenario",
       "continuityIds": [
         "v04-the-outcome"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-outcome"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-outcome"
@@ -5422,11 +5388,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-24",
+      "currentSectionId": "v04-research-lineages-24",
       "continuityIds": [
         "v04-the-deeper-inquiry-24"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-24"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-24"
@@ -5434,11 +5402,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-24",
+      "currentSectionId": "v04-open-questions-24",
       "continuityIds": [
         "v04-what-remains-open-24"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-24"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-24"
@@ -5446,26 +5416,20 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-24",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-24"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-24"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-how-power-adapts",
       "continuityIds": [
-        "v04-how-power-adapts"
+        "v04-how-power-adapts",
+        "v04-coda-in-plain-terms-25"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-25"
+      ],
       "progressContinuityGroups": [
         [
           "v04-how-power-adapts"
+        ],
+        [
+          "v04-coda-in-plain-terms-25"
         ]
       ]
     },
@@ -5494,11 +5458,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-how-providence-survives-success",
+      "currentSectionId": "v04-how-providence-might-survive-success",
       "continuityIds": [
         "v04-how-providence-survives-success"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-how-providence-survives-success"
+      ],
       "progressContinuityGroups": [
         [
           "v04-how-providence-survives-success"
@@ -5506,11 +5472,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-the-deeper-inquiry-25",
+      "currentSectionId": "v04-research-lineages-25",
       "continuityIds": [
         "v04-the-deeper-inquiry-25"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-deeper-inquiry-25"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-deeper-inquiry-25"
@@ -5518,11 +5486,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-what-remains-open-25",
+      "currentSectionId": "v04-open-questions-25",
       "continuityIds": [
         "v04-what-remains-open-25"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-what-remains-open-25"
+      ],
       "progressContinuityGroups": [
         [
           "v04-what-remains-open-25"
@@ -5530,38 +5500,25 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-25",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-25"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-25"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-the-scales-of-the-dragon",
-      "continuityIds": [
-        "v04-the-scales-of-the-dragon"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-the-scales-of-the-dragon"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-presence-as-infrastructure",
       "continuityIds": [
-        "v04-presence-as-infrastructure"
+        "v04-presence-as-infrastructure",
+        "v04-the-scales-of-the-dragon",
+        "v04-coda-in-plain-terms-26"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-scales-of-the-dragon",
+        "v04-coda-in-plain-terms-26"
+      ],
       "progressContinuityGroups": [
         [
           "v04-presence-as-infrastructure"
+        ],
+        [
+          "v04-the-scales-of-the-dragon"
+        ],
+        [
+          "v04-coda-in-plain-terms-26"
         ]
       ]
     },
@@ -5590,35 +5547,31 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-26",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-26"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-26"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-the-first-scale",
       "continuityIds": [
-        "v04-the-first-scale"
+        "v04-the-first-scale",
+        "v04-coda-in-plain-terms-27"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-27"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-first-scale"
+        ],
+        [
+          "v04-coda-in-plain-terms-27"
         ]
       ]
     },
     {
-      "currentSectionId": "v04-why-the-first-five-hundred-matter",
+      "currentSectionId": "v04-what-five-hundred-would-test",
       "continuityIds": [
         "v04-why-the-first-five-hundred-matter"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-why-the-first-five-hundred-matter"
+      ],
       "progressContinuityGroups": [
         [
           "v04-why-the-first-five-hundred-matter"
@@ -5626,35 +5579,31 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-27",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-27"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-27"
-        ]
-      ]
-    },
-    {
       "currentSectionId": "v04-earth-awakening-to-itself",
       "continuityIds": [
-        "v04-earth-awakening-to-itself"
+        "v04-earth-awakening-to-itself",
+        "v04-coda-in-plain-terms-28"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-coda-in-plain-terms-28"
+      ],
       "progressContinuityGroups": [
         [
           "v04-earth-awakening-to-itself"
+        ],
+        [
+          "v04-coda-in-plain-terms-28"
         ]
       ]
     },
     {
-      "currentSectionId": "v04-the-dragon-and-what-it-has-always-meant",
+      "currentSectionId": "v04-the-dragon-and-its-limits",
       "continuityIds": [
         "v04-the-dragon-and-what-it-has-always-meant"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-the-dragon-and-what-it-has-always-meant"
+      ],
       "progressContinuityGroups": [
         [
           "v04-the-dragon-and-what-it-has-always-meant"
@@ -5686,23 +5635,13 @@
       ]
     },
     {
-      "currentSectionId": "v04-coda-in-plain-terms-28",
-      "continuityIds": [
-        "v04-coda-in-plain-terms-28"
-      ],
-      "historicalSectionIds": [],
-      "progressContinuityGroups": [
-        [
-          "v04-coda-in-plain-terms-28"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v04-an-honest-accounting",
+      "currentSectionId": "v04-what-remains-unbuilt",
       "continuityIds": [
         "v04-an-honest-accounting"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v04-an-honest-accounting"
+      ],
       "progressContinuityGroups": [
         [
           "v04-an-honest-accounting"
@@ -5746,11 +5685,13 @@
       ]
     },
     {
-      "currentSectionId": "v05-the-greatest-untapped-resource-on-earth",
+      "currentSectionId": "v05-the-human-capacity-we-fail-to-see",
       "continuityIds": [
         "v05-the-greatest-untapped-resource-on-earth"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v05-the-greatest-untapped-resource-on-earth"
+      ],
       "progressContinuityGroups": [
         [
           "v05-the-greatest-untapped-resource-on-earth"
@@ -5902,11 +5843,13 @@
       ]
     },
     {
-      "currentSectionId": "v05-the-largest-mentorship-network-possible",
+      "currentSectionId": "v05-mentorship-as-infrastructure",
       "continuityIds": [
         "v05-the-largest-mentorship-network-possible"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v05-the-largest-mentorship-network-possible"
+      ],
       "progressContinuityGroups": [
         [
           "v05-the-largest-mentorship-network-possible"
@@ -6370,11 +6313,13 @@
       ]
     },
     {
-      "currentSectionId": "v07-genius-the-genii",
+      "currentSectionId": "v07-genius-and-the-genii",
       "continuityIds": [
         "v07-genius-the-genii"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v07-genius-the-genii"
+      ],
       "progressContinuityGroups": [
         [
           "v07-genius-the-genii"
@@ -6442,11 +6387,13 @@
       ]
     },
     {
-      "currentSectionId": "v07-why-the-mentor-group-is-the-leveraged-act",
+      "currentSectionId": "v07-why-mentors-come-first",
       "continuityIds": [
         "v07-why-the-mentor-group-is-the-leveraged-act"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v07-why-the-mentor-group-is-the-leveraged-act"
+      ],
       "progressContinuityGroups": [
         [
           "v07-why-the-mentor-group-is-the-leveraged-act"
@@ -6454,11 +6401,13 @@
       ]
     },
     {
-      "currentSectionId": "v07-the-greatest-untapped-resource",
+      "currentSectionId": "v07-human-capacity-is-not-a-resource-deposit",
       "continuityIds": [
         "v07-the-greatest-untapped-resource"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v07-the-greatest-untapped-resource"
+      ],
       "progressContinuityGroups": [
         [
           "v07-the-greatest-untapped-resource"
@@ -6466,11 +6415,13 @@
       ]
     },
     {
-      "currentSectionId": "v07-internal-technologies-first-and-the-instruments-that-honor-them",
+      "currentSectionId": "v07-internal-practice-and-external-instruments",
       "continuityIds": [
         "v07-internal-technologies-first-and-the-instruments-that-honor-them"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v07-internal-technologies-first-and-the-instruments-that-honor-them"
+      ],
       "progressContinuityGroups": [
         [
           "v07-internal-technologies-first-and-the-instruments-that-honor-them"
@@ -6502,11 +6453,13 @@
       ]
     },
     {
-      "currentSectionId": "v07-as-we-deepen-the-loves-beneath-the-path",
+      "currentSectionId": "v07-the-loves-beneath-the-path",
       "continuityIds": [
         "v07-as-we-deepen-the-loves-beneath-the-path"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v07-as-we-deepen-the-loves-beneath-the-path"
+      ],
       "progressContinuityGroups": [
         [
           "v07-as-we-deepen-the-loves-beneath-the-path"
@@ -6550,11 +6503,13 @@
       ]
     },
     {
-      "currentSectionId": "v07-3-direct-experience-living-doctrine",
+      "currentSectionId": "v07-3-direct-experience-and-living-doctrine",
       "continuityIds": [
         "v07-3-direct-experience-living-doctrine"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v07-3-direct-experience-living-doctrine"
+      ],
       "progressContinuityGroups": [
         [
           "v07-3-direct-experience-living-doctrine"
@@ -6742,11 +6697,13 @@
       ]
     },
     {
-      "currentSectionId": "v07-sequence-and-metered-depth",
+      "currentSectionId": "v07-sequence-and-paced-depth",
       "continuityIds": [
         "v07-sequence-and-metered-depth"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v07-sequence-and-metered-depth"
+      ],
       "progressContinuityGroups": [
         [
           "v07-sequence-and-metered-depth"
@@ -6838,11 +6795,13 @@
       ]
     },
     {
-      "currentSectionId": "v07-the-birthright",
+      "currentSectionId": "v07-coda-the-birthright",
       "continuityIds": [
         "v07-the-birthright"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v07-the-birthright"
+      ],
       "progressContinuityGroups": [
         [
           "v07-the-birthright"
@@ -6862,11 +6821,13 @@
       ]
     },
     {
-      "currentSectionId": "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register",
+      "currentSectionId": "v08-saturns-day-cosmological-opening-and-register",
       "continuityIds": [
         "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ],
       "progressContinuityGroups": [
         [
           "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
@@ -6922,11 +6883,13 @@
       ]
     },
     {
-      "currentSectionId": "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name",
+      "currentSectionId": "v08-5-the-meaning-of-the-title",
       "continuityIds": [
         "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ],
       "progressContinuityGroups": [
         [
           "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
@@ -6934,11 +6897,13 @@
       ]
     },
     {
-      "currentSectionId": "v08-6-the-three-roads-otherwise",
+      "currentSectionId": "v08-6-three-dangers",
       "continuityIds": [
         "v08-6-the-three-roads-otherwise"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v08-6-the-three-roads-otherwise"
+      ],
       "progressContinuityGroups": [
         [
           "v08-6-the-three-roads-otherwise"
@@ -6958,11 +6923,13 @@
       ]
     },
     {
-      "currentSectionId": "v08-8-the-selection-of-the-dark-triad",
+      "currentSectionId": "v08-8-what-power-selects-for",
       "continuityIds": [
         "v08-8-the-selection-of-the-dark-triad"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ],
       "progressContinuityGroups": [
         [
           "v08-8-the-selection-of-the-dark-triad"
@@ -6970,11 +6937,13 @@
       ]
     },
     {
-      "currentSectionId": "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening",
+      "currentSectionId": "v08-9-the-strain-on-liberal-democracy",
       "continuityIds": [
         "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ],
       "progressContinuityGroups": [
         [
           "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
@@ -6982,11 +6951,13 @@
       ]
     },
     {
-      "currentSectionId": "v08-10-the-case-rests-and-why-we-wrote-one-more-book",
+      "currentSectionId": "v08-10-why-write-one-more-book",
       "continuityIds": [
         "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ],
       "progressContinuityGroups": [
         [
           "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
@@ -6994,11 +6965,13 @@
       ]
     },
     {
-      "currentSectionId": "v08-11-the-inversion-the-same-tools-the-opposite-god",
+      "currentSectionId": "v08-11-the-same-tools-a-different-purpose",
       "continuityIds": [
         "v08-11-the-inversion-the-same-tools-the-opposite-god"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ],
       "progressContinuityGroups": [
         [
           "v08-11-the-inversion-the-same-tools-the-opposite-god"
@@ -7006,11 +6979,13 @@
       ]
     },
     {
-      "currentSectionId": "v08-12-how-providence-tends-the-three-primal-goods",
+      "currentSectionId": "v08-12-how-providence-would-tend-three-primal-goods",
       "continuityIds": [
         "v08-12-how-providence-tends-the-three-primal-goods"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ],
       "progressContinuityGroups": [
         [
           "v08-12-how-providence-tends-the-three-primal-goods"
@@ -7018,11 +6993,13 @@
       ]
     },
     {
-      "currentSectionId": "v08-13-purposeful-cultivating-the-human-the-artifice-degrades",
+      "currentSectionId": "v08-13-purposeful-and-human-development",
       "continuityIds": [
         "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ],
       "progressContinuityGroups": [
         [
           "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
@@ -7030,11 +7007,13 @@
       ]
     },
     {
-      "currentSectionId": "v08-14-the-scales-of-the-dragon-earth-awakening",
+      "currentSectionId": "v08-14-the-scales-of-the-dragon",
       "continuityIds": [
         "v08-14-the-scales-of-the-dragon-earth-awakening"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ],
       "progressContinuityGroups": [
         [
           "v08-14-the-scales-of-the-dragon-earth-awakening"
@@ -7102,11 +7081,13 @@
       ]
     },
     {
-      "currentSectionId": "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week",
+      "currentSectionId": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week",
       "continuityIds": [
         "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week"
+      ],
       "progressContinuityGroups": [
         [
           "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week"
@@ -7222,11 +7203,13 @@
       ]
     },
     {
-      "currentSectionId": "v09-a-note-on-the-register-of-this-volume",
+      "currentSectionId": "v09-a-note-on-the-register",
       "continuityIds": [
         "v09-a-note-on-the-register-of-this-volume"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v09-a-note-on-the-register-of-this-volume"
+      ],
       "progressContinuityGroups": [
         [
           "v09-a-note-on-the-register-of-this-volume"
@@ -7270,11 +7253,13 @@
       ]
     },
     {
-      "currentSectionId": "v09-4-what-we-know-and-what-we-do-not",
+      "currentSectionId": "v09-4-what-the-design-holds-and-what-remains-open",
       "continuityIds": [
         "v09-4-what-we-know-and-what-we-do-not"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v09-4-what-we-know-and-what-we-do-not"
+      ],
       "progressContinuityGroups": [
         [
           "v09-4-what-we-know-and-what-we-do-not"
@@ -7282,11 +7267,13 @@
       ]
     },
     {
-      "currentSectionId": "v09-what-we-know",
+      "currentSectionId": "v09-what-the-design-commits-to",
       "continuityIds": [
         "v09-what-we-know"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v09-what-we-know"
+      ],
       "progressContinuityGroups": [
         [
           "v09-what-we-know"
@@ -7294,11 +7281,25 @@
       ]
     },
     {
-      "currentSectionId": "v09-5-the-invitation-lay-one-stone",
+      "currentSectionId": "v09-what-remains-open",
+      "continuityIds": [
+        "v09-what-remains-open"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v09-what-remains-open"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v09-5-the-invitation-to-test-the-design",
       "continuityIds": [
         "v09-5-the-invitation-lay-one-stone"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v09-5-the-invitation-lay-one-stone"
+      ],
       "progressContinuityGroups": [
         [
           "v09-5-the-invitation-lay-one-stone"

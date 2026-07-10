@@ -1,4 +1,5 @@
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import {
   cleanDir,
   ensureDir,
@@ -28,16 +29,16 @@ type Heading = {
   text: string;
 };
 
-const startMarkers: Record<string, string> = {
+export const startMarkers: Record<string, string> = {
   "humanitys-most-viable-future": "ORIENTATION",
   "wielding-intelligence": "Continuity",
   "providence-imperative": "Continuity",
-  "architecting-providence": "First, the Story",
+  "architecting-providence": "Power Without Coordination",
   purposeful: "On Returning to the Human",
   "smallest-nest": "The Whole, in the Fewest Words",
-  "presencing-genius": "Part I",
+  "presencing-genius": "Part I: The Argument, Arrived",
   "misanthropic-artifice": "Prologue · Two Scenes",
-  "cardinal-scale": "A note on the register of this volume",
+  "cardinal-scale": "A Note on the Register",
 };
 
 const numberWords: Record<string, number> = {
@@ -172,13 +173,16 @@ function nextHeading(lines: string[], startIndex: number): { heading: Heading; i
   return null;
 }
 
-function findStart(lines: string[], volumeId: string): number {
+export function findStart(lines: string[], volumeId: string): number {
   const marker = startMarkers[volumeId];
   if (!marker) return 0;
   const headingIndex = lines.findIndex((line) => markdownHeading(line)?.text === marker);
   if (headingIndex >= 0) return headingIndex;
   const index = lines.findIndex((line) => plainLine(line) === marker);
-  return index >= 0 ? index : 0;
+  if (index >= 0) return index;
+  throw new Error(
+    `Reader start marker '${marker}' was not found for '${volumeId}'. Update the nonpublic importer boundary when the first reader heading evolves.`,
+  );
 }
 
 function sourcePathFor(config: VolumeConfig): string {
@@ -303,7 +307,7 @@ function removeSubtitleOnlyOpeners(sections: DraftSection[]): DraftSection[] {
   return sections.filter((section) => !removed.has(section));
 }
 
-function buildSections(config: VolumeConfig): DraftSection[] {
+export function buildSections(config: VolumeConfig): DraftSection[] {
   const sourcePath = sourcePathFor(config);
   const source = normalizeNewlines(readUtf8(sourcePath));
   const sourceHash = fileHash(sourcePath);
@@ -431,7 +435,7 @@ function buildSections(config: VolumeConfig): DraftSection[] {
   );
 }
 
-function main(): void {
+export function runImportMarkdown(): void {
   const configs = readVolumeConfigs();
   if (configs.length === 0) {
     throw new Error("No volume configs found in content/series/volumes.json.");
@@ -469,4 +473,6 @@ function main(): void {
   console.log(`Report: ${path.relative(repoRoot, reportPath)}`);
 }
 
-main();
+if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
+  runImportMarkdown();
+}

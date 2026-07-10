@@ -112,7 +112,21 @@ describe("editorial sentence ledger", () => {
           record({ disposition: "query", reviewStatus: "approved" }),
         ),
       ),
-    ).toThrow(/query disposition and query reviewStatus/);
+    ).toThrow(/query disposition requires query reviewStatus/);
+  });
+
+  it("preserves a known disposition while authority remains a query", () => {
+    expect(() =>
+      parseSentenceLedger(
+        JSON.stringify(
+          record({
+            disposition: "recast",
+            proposedText: ["The reviewed wording remains unverified."],
+            reviewStatus: "query",
+          }),
+        ),
+      ),
+    ).not.toThrow();
   });
 
   it("proves complete ordered coverage against the baseline", () => {

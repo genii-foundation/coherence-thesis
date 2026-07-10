@@ -12,11 +12,11 @@ sectionId: "v07-the-primary-technology-of-coordination"
 title: "The Primary Technology of Coordination"
 sectionOrder: 1
 sourceDoc: "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md"
-sourceHash: "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876"
-sourceParagraphStart: 160
-sourceParagraphEnd: 164
+sourceHash: "c61640a9d5d3bb07082166fedd9ad808fa86b651534e64f8f4afac247da46f0f"
+sourceParagraphStart: 124
+sourceParagraphEnd: 128
 ---
 
-*Presence at Scale, Accountability, and the Untapped Resource*
+*Presence, Accountability, and Coordination*
 
-If presence and genius are the internal technologies, then their largest application is not personal but collective — for the hardest problem any civilization faces is not production but coordination: how to get many people to act together, coherently, at scale, without coercion and without collapse into chaos. We have built extraordinary external technologies for this — markets, bureaucracies, networks — and each works by substituting a proxy for presence: a price, a rule, a metric. Each is powerful; and each, left to itself, drifts toward extraction, because a proxy can be gamed in ways that a present human being cannot. We propose that the missing coordination technology is an internal one — a massive, deliberate training in the art of presence, distributed widely enough that presence itself becomes a medium in which large numbers of people coordinate.
+Civilization faces a recurring problem: how can many people coordinate without coercion or collapse? Markets, bureaucracies, and networks answer with prices, rules, and metrics. These proxies can coordinate action, but they can also be gamed or detached from the people they affect. This volume proposes that people train how they attend and relate, then test whether groups make better decisions as a result. The proposal has not yet been demonstrated at civilizational scale.

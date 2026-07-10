@@ -1758,6 +1758,18 @@
       "href": "/manuscripts/4/contact-with-the-world/start/"
     },
     {
+      "sectionId": "v04-open-questions-21",
+      "href": "/manuscripts/4/contact-with-the-world/the-case-for-a-bounded-experiment/open-questions-21/"
+    },
+    {
+      "sectionId": "v04-research-lineages-21",
+      "href": "/manuscripts/4/contact-with-the-world/the-case-for-a-bounded-experiment/research-lineages-21/"
+    },
+    {
+      "sectionId": "v04-the-case-for-a-bounded-experiment",
+      "href": "/manuscripts/4/contact-with-the-world/the-case-for-a-bounded-experiment/start/"
+    },
+    {
       "sectionId": "v04-the-co-optation-pressure",
       "href": "/manuscripts/4/contact-with-the-world/the-co-optation-pressure/"
     },
@@ -1768,6 +1780,14 @@
     {
       "sectionId": "v04-the-invitation",
       "href": "/manuscripts/4/contact-with-the-world/the-invitation/"
+    },
+    {
+      "sectionId": "v04-open-questions-20",
+      "href": "/manuscripts/4/contact-with-the-world/the-scaling-dynamics-that-transform-movements/open-questions-20/"
+    },
+    {
+      "sectionId": "v04-research-lineages-20",
+      "href": "/manuscripts/4/contact-with-the-world/the-scaling-dynamics-that-transform-movements/research-lineages-20/"
     },
     {
       "sectionId": "v04-the-scaling-dynamics-that-transform-movements",
@@ -1782,8 +1802,20 @@
       "href": "/manuscripts/4/contact-with-the-world/the-scaling-dynamics-that-transform-movements/what-remains-open-20/"
     },
     {
+      "sectionId": "v04-three-ways-providence-could-fail",
+      "href": "/manuscripts/4/contact-with-the-world/three-ways-providence-could-fail/"
+    },
+    {
       "sectionId": "v04-what-failure-looks-like-and-why-its-worth-risking",
       "href": "/manuscripts/4/contact-with-the-world/what-failure-looks-like-and-why-its-worth-risking/"
+    },
+    {
+      "sectionId": "v04-open-questions-22",
+      "href": "/manuscripts/4/contact-with-the-world/what-the-institution-commits-in-return/open-questions-22/"
+    },
+    {
+      "sectionId": "v04-research-lineages-22",
+      "href": "/manuscripts/4/contact-with-the-world/what-the-institution-commits-in-return/research-lineages-22/"
     },
     {
       "sectionId": "v04-what-the-institution-commits-in-return",
@@ -1802,6 +1834,10 @@
       "href": "/manuscripts/4/contact-with-the-world/what-the-invitation-asks/"
     },
     {
+      "sectionId": "v04-when-the-architecture-meets-existing-power",
+      "href": "/manuscripts/4/contact-with-the-world/when-the-architecture-meets-existing-power/"
+    },
+    {
       "sectionId": "v04-why-its-worth-risking",
       "href": "/manuscripts/4/contact-with-the-world/why-its-worth-risking/start/"
     },
@@ -1814,8 +1850,32 @@
       "href": "/manuscripts/4/contact-with-the-world/why-its-worth-risking/what-remains-open-21/"
     },
     {
+      "sectionId": "v04-claims-proposals-and-tests",
+      "href": "/manuscripts/4/opening/claims-proposals-and-tests/"
+    },
+    {
       "sectionId": "v04-first-the-story",
       "href": "/manuscripts/4/opening/first-the-story/"
+    },
+    {
+      "sectionId": "v04-from-invitation-to-construction",
+      "href": "/manuscripts/4/opening/from-invitation-to-construction/"
+    },
+    {
+      "sectionId": "v04-how-to-read-this-architecture",
+      "href": "/manuscripts/4/opening/how-to-read-this-architecture/"
+    },
+    {
+      "sectionId": "v04-power-without-coordination",
+      "href": "/manuscripts/4/opening/power-without-coordination/"
+    },
+    {
+      "sectionId": "v04-purposeful-before-providence",
+      "href": "/manuscripts/4/opening/purposeful-before-providence/"
+    },
+    {
+      "sectionId": "v04-the-cardinal-scale-as-design-fiction",
+      "href": "/manuscripts/4/opening/the-cardinal-scale-as-design-fiction/"
     },
     {
       "sectionId": "v04-the-cardinal-scale-seen-from-here",
@@ -1836,6 +1896,10 @@
     {
       "sectionId": "v04-why-a-book-comes-first",
       "href": "/manuscripts/4/opening/why-a-book-comes-first/"
+    },
+    {
+      "sectionId": "v04-why-publish-before-building",
+      "href": "/manuscripts/4/opening/why-publish-before-building/"
     },
     {
       "sectionId": "v04-why-purposeful-exists-and-how-providence-begins",
@@ -1862,6 +1926,18 @@
       "href": "/manuscripts/4/the-civilization-made-visible/how-power-adapts/"
     },
     {
+      "sectionId": "v04-open-questions-25",
+      "href": "/manuscripts/4/the-civilization-made-visible/how-providence-might-survive-success/open-questions-25/"
+    },
+    {
+      "sectionId": "v04-research-lineages-25",
+      "href": "/manuscripts/4/the-civilization-made-visible/how-providence-might-survive-success/research-lineages-25/"
+    },
+    {
+      "sectionId": "v04-how-providence-might-survive-success",
+      "href": "/manuscripts/4/the-civilization-made-visible/how-providence-might-survive-success/start/"
+    },
+    {
       "sectionId": "v04-how-providence-survives-success",
       "href": "/manuscripts/4/the-civilization-made-visible/how-providence-survives-success/start/"
     },
@@ -1880,6 +1956,18 @@
     {
       "sectionId": "v04-the-forms-of-adaptive-power",
       "href": "/manuscripts/4/the-civilization-made-visible/the-forms-of-adaptive-power/"
+    },
+    {
+      "sectionId": "v04-open-questions-24",
+      "href": "/manuscripts/4/the-civilization-made-visible/the-outcome-in-this-scenario/open-questions-24/"
+    },
+    {
+      "sectionId": "v04-research-lineages-24",
+      "href": "/manuscripts/4/the-civilization-made-visible/the-outcome-in-this-scenario/research-lineages-24/"
+    },
+    {
+      "sectionId": "v04-the-outcome-in-this-scenario",
+      "href": "/manuscripts/4/the-civilization-made-visible/the-outcome-in-this-scenario/start/"
     },
     {
       "sectionId": "v04-the-outcome",
@@ -1904,6 +1992,14 @@
     {
       "sectionId": "v04-the-rotation",
       "href": "/manuscripts/4/the-civilization-made-visible/the-rotation/"
+    },
+    {
+      "sectionId": "v04-open-questions-23",
+      "href": "/manuscripts/4/the-civilization-made-visible/the-water/open-questions-23/"
+    },
+    {
+      "sectionId": "v04-research-lineages-23",
+      "href": "/manuscripts/4/the-civilization-made-visible/the-water/research-lineages-23/"
     },
     {
       "sectionId": "v04-the-water",
@@ -1946,6 +2042,18 @@
       "href": "/manuscripts/4/the-economic-architecture/capital-patient-enough/what-remains-open-8/"
     },
     {
+      "sectionId": "v04-open-questions-8",
+      "href": "/manuscripts/4/the-economic-architecture/capital-without-command/open-questions-8/"
+    },
+    {
+      "sectionId": "v04-research-lineages-8",
+      "href": "/manuscripts/4/the-economic-architecture/capital-without-command/research-lineages-8/"
+    },
+    {
+      "sectionId": "v04-capital-without-command",
+      "href": "/manuscripts/4/the-economic-architecture/capital-without-command/start/"
+    },
+    {
       "sectionId": "v04-the-economic-architecture",
       "href": "/manuscripts/4/the-economic-architecture/chapter-start/the-economic-architecture/"
     },
@@ -1964,6 +2072,14 @@
     {
       "sectionId": "v04-coda-in-plain-terms-8",
       "href": "/manuscripts/4/the-economic-architecture/coda-in-plain-terms-8/"
+    },
+    {
+      "sectionId": "v04-open-questions-6",
+      "href": "/manuscripts/4/the-economic-architecture/how-value-circulates/open-questions-6/"
+    },
+    {
+      "sectionId": "v04-research-lineages-6",
+      "href": "/manuscripts/4/the-economic-architecture/how-value-circulates/research-lineages-6/"
     },
     {
       "sectionId": "v04-how-value-circulates",
@@ -1998,6 +2114,14 @@
       "href": "/manuscripts/4/the-economic-architecture/what-gets-measured/"
     },
     {
+      "sectionId": "v04-open-questions-7",
+      "href": "/manuscripts/4/the-economic-architecture/what-must-be-common-and-why/open-questions-7/"
+    },
+    {
+      "sectionId": "v04-research-lineages-7",
+      "href": "/manuscripts/4/the-economic-architecture/what-must-be-common-and-why/research-lineages-7/"
+    },
+    {
       "sectionId": "v04-what-must-be-common-and-why",
       "href": "/manuscripts/4/the-economic-architecture/what-must-be-common-and-why/start/"
     },
@@ -2010,6 +2134,14 @@
       "href": "/manuscripts/4/the-economic-architecture/what-must-be-common-and-why/what-remains-open-7/"
     },
     {
+      "sectionId": "v04-open-questions-5",
+      "href": "/manuscripts/4/the-economic-architecture/what-the-historical-record-shows/open-questions-5/"
+    },
+    {
+      "sectionId": "v04-research-lineages-5",
+      "href": "/manuscripts/4/the-economic-architecture/what-the-historical-record-shows/research-lineages-5/"
+    },
+    {
       "sectionId": "v04-what-the-historical-record-shows",
       "href": "/manuscripts/4/the-economic-architecture/what-the-historical-record-shows/start/"
     },
@@ -2020,6 +2152,10 @@
     {
       "sectionId": "v04-what-remains-open-5",
       "href": "/manuscripts/4/the-economic-architecture/what-the-historical-record-shows/what-remains-open-5/"
+    },
+    {
+      "sectionId": "v04-what-the-institution-rewards",
+      "href": "/manuscripts/4/the-economic-architecture/what-the-institution-rewards/"
     },
     {
       "sectionId": "v04-the-governance-architecture",
@@ -2050,6 +2186,22 @@
       "href": "/manuscripts/4/the-governance-architecture/founder-capture/"
     },
     {
+      "sectionId": "v04-founders-funders-and-technical-dependence",
+      "href": "/manuscripts/4/the-governance-architecture/founders-funders-and-technical-dependence/"
+    },
+    {
+      "sectionId": "v04-interpreting-and-amending-the-constitution",
+      "href": "/manuscripts/4/the-governance-architecture/interpreting-and-amending-the-constitution/"
+    },
+    {
+      "sectionId": "v04-open-questions-10",
+      "href": "/manuscripts/4/the-governance-architecture/protecting-stewards-from-the-stewardship-role/open-questions-10/"
+    },
+    {
+      "sectionId": "v04-research-lineages-10",
+      "href": "/manuscripts/4/the-governance-architecture/protecting-stewards-from-the-stewardship-role/research-lineages-10/"
+    },
+    {
       "sectionId": "v04-protecting-stewards-from-the-stewardship-role",
       "href": "/manuscripts/4/the-governance-architecture/protecting-stewards-from-the-stewardship-role/start/"
     },
@@ -2070,6 +2222,14 @@
       "href": "/manuscripts/4/the-governance-architecture/stewardship-as-practice/"
     },
     {
+      "sectionId": "v04-open-questions-11",
+      "href": "/manuscripts/4/the-governance-architecture/technological-capture/open-questions-11/"
+    },
+    {
+      "sectionId": "v04-research-lineages-11",
+      "href": "/manuscripts/4/the-governance-architecture/technological-capture/research-lineages-11/"
+    },
+    {
       "sectionId": "v04-technological-capture",
       "href": "/manuscripts/4/the-governance-architecture/technological-capture/start/"
     },
@@ -2080,6 +2240,14 @@
     {
       "sectionId": "v04-what-remains-open-11",
       "href": "/manuscripts/4/the-governance-architecture/technological-capture/what-remains-open-11/"
+    },
+    {
+      "sectionId": "v04-open-questions-9",
+      "href": "/manuscripts/4/the-governance-architecture/the-amendment-architecture/open-questions-9/"
+    },
+    {
+      "sectionId": "v04-research-lineages-9",
+      "href": "/manuscripts/4/the-governance-architecture/the-amendment-architecture/research-lineages-9/"
     },
     {
       "sectionId": "v04-the-amendment-architecture",
@@ -2100,6 +2268,14 @@
     {
       "sectionId": "v04-the-constitutional-layer-in-practice",
       "href": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/"
+    },
+    {
+      "sectionId": "v04-open-questions-12",
+      "href": "/manuscripts/4/the-governance-architecture/the-exit-architecture/open-questions-12/"
+    },
+    {
+      "sectionId": "v04-research-lineages-12",
+      "href": "/manuscripts/4/the-governance-architecture/the-exit-architecture/research-lineages-12/"
     },
     {
       "sectionId": "v04-the-exit-architecture",
@@ -2154,6 +2330,14 @@
       "href": "/manuscripts/4/the-human-architecture-in-practice/the-developmental-arc/"
     },
     {
+      "sectionId": "v04-open-questions-18",
+      "href": "/manuscripts/4/the-human-architecture-in-practice/the-practices-that-constitute-the-culture/open-questions-18/"
+    },
+    {
+      "sectionId": "v04-research-lineages-18",
+      "href": "/manuscripts/4/the-human-architecture-in-practice/the-practices-that-constitute-the-culture/research-lineages-18/"
+    },
+    {
       "sectionId": "v04-the-practices-that-constitute-the-culture",
       "href": "/manuscripts/4/the-human-architecture-in-practice/the-practices-that-constitute-the-culture/start/"
     },
@@ -2166,6 +2350,14 @@
       "href": "/manuscripts/4/the-human-architecture-in-practice/the-practices-that-constitute-the-culture/what-remains-open-18/"
     },
     {
+      "sectionId": "v04-open-questions-19",
+      "href": "/manuscripts/4/the-human-architecture-in-practice/the-stages-of-the-arc/open-questions-19/"
+    },
+    {
+      "sectionId": "v04-research-lineages-19",
+      "href": "/manuscripts/4/the-human-architecture-in-practice/the-stages-of-the-arc/research-lineages-19/"
+    },
+    {
       "sectionId": "v04-the-stages-of-the-arc",
       "href": "/manuscripts/4/the-human-architecture-in-practice/the-stages-of-the-arc/start/"
     },
@@ -2176,6 +2368,14 @@
     {
       "sectionId": "v04-what-remains-open-19",
       "href": "/manuscripts/4/the-human-architecture-in-practice/the-stages-of-the-arc/what-remains-open-19/"
+    },
+    {
+      "sectionId": "v04-open-questions-17",
+      "href": "/manuscripts/4/the-human-architecture-in-practice/the-support-structures-that-make-it-sustainable/open-questions-17/"
+    },
+    {
+      "sectionId": "v04-research-lineages-17",
+      "href": "/manuscripts/4/the-human-architecture-in-practice/the-support-structures-that-make-it-sustainable/research-lineages-17/"
     },
     {
       "sectionId": "v04-the-support-structures-that-make-it-sustainable",
@@ -2246,6 +2446,10 @@
       "href": "/manuscripts/4/the-scales-of-the-dragon/start/"
     },
     {
+      "sectionId": "v04-the-dragon-and-its-limits",
+      "href": "/manuscripts/4/the-scales-of-the-dragon/the-dragon-and-its-limits/"
+    },
+    {
       "sectionId": "v04-the-dragon-and-what-it-has-always-meant",
       "href": "/manuscripts/4/the-scales-of-the-dragon/the-dragon-and-what-it-has-always-meant/"
     },
@@ -2256,6 +2460,18 @@
     {
       "sectionId": "v04-the-widening-of-presence",
       "href": "/manuscripts/4/the-scales-of-the-dragon/the-widening-of-presence/"
+    },
+    {
+      "sectionId": "v04-what-five-hundred-would-test",
+      "href": "/manuscripts/4/the-scales-of-the-dragon/what-five-hundred-would-test/"
+    },
+    {
+      "sectionId": "v04-providence",
+      "href": "/manuscripts/4/the-scales-of-the-dragon/what-remains-unbuilt/providence/"
+    },
+    {
+      "sectionId": "v04-what-remains-unbuilt",
+      "href": "/manuscripts/4/the-scales-of-the-dragon/what-remains-unbuilt/start/"
     },
     {
       "sectionId": "v04-why-the-first-five-hundred-matter",
@@ -2282,6 +2498,22 @@
       "href": "/manuscripts/4/the-sequence-problem/coda-in-plain-terms/"
     },
     {
+      "sectionId": "v04-four-kinds-of-building-question",
+      "href": "/manuscripts/4/the-sequence-problem/four-kinds-of-building-question/"
+    },
+    {
+      "sectionId": "v04-from-design-to-construction",
+      "href": "/manuscripts/4/the-sequence-problem/from-design-to-construction/"
+    },
+    {
+      "sectionId": "v04-open-questions-4",
+      "href": "/manuscripts/4/the-sequence-problem/protecting-each-layer-from-the-others/open-questions-4/"
+    },
+    {
+      "sectionId": "v04-research-lineages-4",
+      "href": "/manuscripts/4/the-sequence-problem/protecting-each-layer-from-the-others/research-lineages-4/"
+    },
+    {
       "sectionId": "v04-protecting-each-layer-from-the-others",
       "href": "/manuscripts/4/the-sequence-problem/protecting-each-layer-from-the-others/start/"
     },
@@ -2302,6 +2534,14 @@
       "href": "/manuscripts/4/the-sequence-problem/the-extractive-attractor/"
     },
     {
+      "sectionId": "v04-open-questions-2",
+      "href": "/manuscripts/4/the-sequence-problem/the-failure-modes-of-first-communities/open-questions-2/"
+    },
+    {
+      "sectionId": "v04-research-lineages-2",
+      "href": "/manuscripts/4/the-sequence-problem/the-failure-modes-of-first-communities/research-lineages-2/"
+    },
+    {
       "sectionId": "v04-the-failure-modes-of-first-communities",
       "href": "/manuscripts/4/the-sequence-problem/the-failure-modes-of-first-communities/start/"
     },
@@ -2316,6 +2556,14 @@
     {
       "sectionId": "v04-the-four-temporal-layers",
       "href": "/manuscripts/4/the-sequence-problem/the-four-temporal-layers/"
+    },
+    {
+      "sectionId": "v04-open-questions-3",
+      "href": "/manuscripts/4/the-sequence-problem/the-ideological-drift-risk/open-questions-3/"
+    },
+    {
+      "sectionId": "v04-research-lineages-3",
+      "href": "/manuscripts/4/the-sequence-problem/the-ideological-drift-risk/research-lineages-3/"
     },
     {
       "sectionId": "v04-the-ideological-drift-risk",
@@ -2350,6 +2598,10 @@
       "href": "/manuscripts/4/the-sequence-problem/the-time-architecture/"
     },
     {
+      "sectionId": "v04-what-scaling-changes",
+      "href": "/manuscripts/4/the-sequence-problem/what-scaling-changes/"
+    },
+    {
       "sectionId": "v04-what-the-first-community-requires",
       "href": "/manuscripts/4/the-sequence-problem/what-the-first-community-requires/"
     },
@@ -2366,12 +2618,44 @@
       "href": "/manuscripts/4/the-sequence-problem/what-this-chapter-commits-to/what-remains-open/"
     },
     {
+      "sectionId": "v04-open-questions",
+      "href": "/manuscripts/4/the-sequence-problem/what-this-volume-can-offer/open-questions/"
+    },
+    {
+      "sectionId": "v04-research-lineages",
+      "href": "/manuscripts/4/the-sequence-problem/what-this-volume-can-offer/research-lineages/"
+    },
+    {
+      "sectionId": "v04-what-this-volume-can-offer",
+      "href": "/manuscripts/4/the-sequence-problem/what-this-volume-can-offer/start/"
+    },
+    {
       "sectionId": "v04-what-volume-iii-left-unbuilt",
       "href": "/manuscripts/4/the-sequence-problem/what-volume-iii-left-unbuilt/"
     },
     {
+      "sectionId": "v04-a-constitutional-specification-for-the-first-application",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/a-constitutional-specification-for-the-first-application/"
+    },
+    {
+      "sectionId": "v04-a-use-scenario",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/a-use-scenario/"
+    },
+    {
       "sectionId": "v04-ai-as-infrastructure-not-sovereign",
       "href": "/manuscripts/4/the-technological-architecture-in-detail/ai-as-infrastructure-not-sovereign/"
+    },
+    {
+      "sectionId": "v04-open-questions-13",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/candidate-approaches-and-limits/open-questions-13/"
+    },
+    {
+      "sectionId": "v04-research-lineages-13",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/candidate-approaches-and-limits/research-lineages-13/"
+    },
+    {
+      "sectionId": "v04-candidate-approaches-and-limits",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/candidate-approaches-and-limits/start/"
     },
     {
       "sectionId": "v04-the-technological-architecture-in-detail",
@@ -2392,6 +2676,18 @@
     {
       "sectionId": "v04-coda-in-plain-terms-16",
       "href": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-16/"
+    },
+    {
+      "sectionId": "v04-open-questions-16",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/nonnegotiable-requirements/open-questions-16/"
+    },
+    {
+      "sectionId": "v04-research-lineages-16",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/nonnegotiable-requirements/research-lineages-16/"
+    },
+    {
+      "sectionId": "v04-nonnegotiable-requirements",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/nonnegotiable-requirements/start/"
     },
     {
       "sectionId": "v04-the-technological-architecture-in-detail",
@@ -2420,6 +2716,26 @@
     {
       "sectionId": "v04-the-trust-layer",
       "href": "/manuscripts/4/the-technological-architecture-in-detail/the-trust-layer/"
+    },
+    {
+      "sectionId": "v04-open-questions-14",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/what-a-bounded-first-layer-might-deliver/open-questions-14/"
+    },
+    {
+      "sectionId": "v04-research-lineages-14",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/what-a-bounded-first-layer-might-deliver/research-lineages-14/"
+    },
+    {
+      "sectionId": "v04-what-a-bounded-first-layer-might-deliver",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/what-a-bounded-first-layer-might-deliver/start/"
+    },
+    {
+      "sectionId": "v04-open-questions-15",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/what-ai-is-constitutionally-forbidden-from-doing/open-questions-15/"
+    },
+    {
+      "sectionId": "v04-research-lineages-15",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/what-ai-is-constitutionally-forbidden-from-doing/research-lineages-15/"
     },
     {
       "sectionId": "v04-what-ai-is-constitutionally-forbidden-from-doing",
@@ -2456,6 +2772,10 @@
     {
       "sectionId": "v04-what-remains-open-16",
       "href": "/manuscripts/4/the-technological-architecture-in-detail/what-the-first-version-refuses-to-do/what-remains-open-16/"
+    },
+    {
+      "sectionId": "v04-what-the-first-version-would-do",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/what-the-first-version-would-do/"
     },
     {
       "sectionId": "v04-what-the-trust-layer-can-currently-deliver",
@@ -2500,6 +2820,10 @@
     {
       "sectionId": "v05-on-returning-to-the-human",
       "href": "/manuscripts/5/opening/on-returning-to-the-human/"
+    },
+    {
+      "sectionId": "v05-mentorship-as-infrastructure",
+      "href": "/manuscripts/5/the-architecture-of-becoming/mentorship-as-infrastructure/"
     },
     {
       "sectionId": "v05-providence-reconsidered",
@@ -2548,6 +2872,10 @@
     {
       "sectionId": "v05-the-greatest-untapped-resource-on-earth",
       "href": "/manuscripts/5/the-crisis-of-unrealized-potential/the-greatest-untapped-resource-on-earth/"
+    },
+    {
+      "sectionId": "v05-the-human-capacity-we-fail-to-see",
+      "href": "/manuscripts/5/the-crisis-of-unrealized-potential/the-human-capacity-we-fail-to-see/"
     },
     {
       "sectionId": "v05-this-is-not-a-return",
@@ -2683,6 +3011,26 @@
     },
     {
       "sectionId": "v07-organs-that-serve-the-living-whole",
+      "href": "/manuscripts/7/the-holding/chapter-start/organs-that-serve-the-living-whole/"
+    },
+    {
+      "sectionId": "v07-the-holding",
+      "href": "/manuscripts/7/the-holding/chapter-start/the-holding/"
+    },
+    {
+      "sectionId": "v07-the-long-view",
+      "href": "/manuscripts/7/the-holding/chapter-start/the-long-view/"
+    },
+    {
+      "sectionId": "v07-to-meet-each-at-their-depth",
+      "href": "/manuscripts/7/the-holding/chapter-start/to-meet-each-at-their-depth/"
+    },
+    {
+      "sectionId": "v07-coda-the-birthright",
+      "href": "/manuscripts/7/the-holding/coda-the-birthright/"
+    },
+    {
+      "sectionId": "v07-organs-that-serve-the-living-whole",
       "href": "/manuscripts/7/the-holding/organs-that-serve-the-living-whole/"
     },
     {
@@ -2708,6 +3056,10 @@
     {
       "sectionId": "v07-coherence-versus-extraction",
       "href": "/manuscripts/7/the-internal-technologies/coherence-versus-extraction/"
+    },
+    {
+      "sectionId": "v07-genius-and-the-genii",
+      "href": "/manuscripts/7/the-internal-technologies/genius-and-the-genii/"
     },
     {
       "sectionId": "v07-genius-the-genii",
@@ -2742,6 +3094,14 @@
       "href": "/manuscripts/7/the-primary-technology-of-coordination/accountable-to-our-word-and-our-presence/"
     },
     {
+      "sectionId": "v07-human-capacity-is-not-a-resource-deposit",
+      "href": "/manuscripts/7/the-primary-technology-of-coordination/human-capacity-is-not-a-resource-deposit/"
+    },
+    {
+      "sectionId": "v07-internal-practice-and-external-instruments",
+      "href": "/manuscripts/7/the-primary-technology-of-coordination/internal-practice-and-external-instruments/"
+    },
+    {
       "sectionId": "v07-internal-technologies-first-and-the-instruments-that-honor-them",
       "href": "/manuscripts/7/the-primary-technology-of-coordination/internal-technologies-first-and-the-instruments-that-honor-them/"
     },
@@ -2752,6 +3112,10 @@
     {
       "sectionId": "v07-the-greatest-untapped-resource",
       "href": "/manuscripts/7/the-primary-technology-of-coordination/the-greatest-untapped-resource/"
+    },
+    {
+      "sectionId": "v07-why-mentors-come-first",
+      "href": "/manuscripts/7/the-primary-technology-of-coordination/why-mentors-come-first/"
     },
     {
       "sectionId": "v07-why-the-mentor-group-is-the-leveraged-act",
@@ -2778,6 +3142,10 @@
       "href": "/manuscripts/7/the-seven-initiates/start/"
     },
     {
+      "sectionId": "v07-the-loves-beneath-the-path",
+      "href": "/manuscripts/7/the-seven-initiates/the-loves-beneath-the-path/"
+    },
+    {
       "sectionId": "v07-the-seven-in-brief",
       "href": "/manuscripts/7/the-seven-initiates/the-seven-in-brief/"
     },
@@ -2800,6 +3168,10 @@
     {
       "sectionId": "v07-2-witnessing-consciousness",
       "href": "/manuscripts/7/the-twelve-tenets/2-witnessing-consciousness/"
+    },
+    {
+      "sectionId": "v07-3-direct-experience-and-living-doctrine",
+      "href": "/manuscripts/7/the-twelve-tenets/3-direct-experience-and-living-doctrine/"
     },
     {
       "sectionId": "v07-3-direct-experience-living-doctrine",
@@ -2842,12 +3214,56 @@
       "href": "/manuscripts/7/the-year-of-initiations/sequence-and-metered-depth/"
     },
     {
+      "sectionId": "v07-sequence-and-paced-depth",
+      "href": "/manuscripts/7/the-year-of-initiations/sequence-and-paced-depth/"
+    },
+    {
       "sectionId": "v07-the-year-of-initiations",
       "href": "/manuscripts/7/the-year-of-initiations/start/"
     },
     {
       "sectionId": "v08-appendix-a-the-fork-two-roads-side-by-side",
       "href": "/manuscripts/8/contents/appendix-a-the-fork-two-roads-side-by-side/"
+    },
+    {
+      "sectionId": "v08-for-coordination-the-actual-work",
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/for-coordination-the-actual-work/"
+    },
+    {
+      "sectionId": "v08-for-the-long-view",
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/for-the-long-view/"
+    },
+    {
+      "sectionId": "v08-for-the-tending",
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/for-the-tending/"
+    },
+    {
+      "sectionId": "v08-for-your-attention-take-it-back",
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/for-your-attention-take-it-back/"
+    },
+    {
+      "sectionId": "v08-for-your-body-and-your-ground",
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/for-your-body-and-your-ground/"
+    },
+    {
+      "sectionId": "v08-for-your-bonds",
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/for-your-bonds/"
+    },
+    {
+      "sectionId": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week",
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/start/"
+    },
+    {
+      "sectionId": "v08-the-living-world-2",
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/the-living-world-2/"
+    },
+    {
+      "sectionId": "v08-the-roots-of-this-volume",
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/the-roots-of-this-volume/"
+    },
+    {
+      "sectionId": "v08-the-state-of-2026-3",
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/the-state-of-2026-3/"
     },
     {
       "sectionId": "v08-for-coordination-the-actual-work",
@@ -2898,12 +3314,28 @@
       "href": "/manuscripts/8/contents/prologue-two-scenes/10-the-case-rests-and-why-we-wrote-one-more-book/"
     },
     {
+      "sectionId": "v08-10-why-write-one-more-book",
+      "href": "/manuscripts/8/contents/prologue-two-scenes/10-why-write-one-more-book/"
+    },
+    {
       "sectionId": "v08-11-the-inversion-the-same-tools-the-opposite-god",
       "href": "/manuscripts/8/contents/prologue-two-scenes/11-the-inversion-the-same-tools-the-opposite-god/"
     },
     {
+      "sectionId": "v08-11-the-same-tools-a-different-purpose",
+      "href": "/manuscripts/8/contents/prologue-two-scenes/11-the-same-tools-a-different-purpose/"
+    },
+    {
       "sectionId": "v08-12-how-providence-tends-the-three-primal-goods",
       "href": "/manuscripts/8/contents/prologue-two-scenes/12-how-providence-tends-the-three-primal-goods/"
+    },
+    {
+      "sectionId": "v08-12-how-providence-would-tend-three-primal-goods",
+      "href": "/manuscripts/8/contents/prologue-two-scenes/12-how-providence-would-tend-three-primal-goods/"
+    },
+    {
+      "sectionId": "v08-13-purposeful-and-human-development",
+      "href": "/manuscripts/8/contents/prologue-two-scenes/13-purposeful-and-human-development/"
     },
     {
       "sectionId": "v08-13-purposeful-cultivating-the-human-the-artifice-degrades",
@@ -2912,6 +3344,10 @@
     {
       "sectionId": "v08-14-the-scales-of-the-dragon-earth-awakening",
       "href": "/manuscripts/8/contents/prologue-two-scenes/14-the-scales-of-the-dragon-earth-awakening/"
+    },
+    {
+      "sectionId": "v08-14-the-scales-of-the-dragon",
+      "href": "/manuscripts/8/contents/prologue-two-scenes/14-the-scales-of-the-dragon/"
     },
     {
       "sectionId": "v08-15-two-addresses",
@@ -2934,12 +3370,20 @@
       "href": "/manuscripts/8/contents/prologue-two-scenes/4-the-birds-and-the-bees-the-second-meaning/"
     },
     {
+      "sectionId": "v08-5-the-meaning-of-the-title",
+      "href": "/manuscripts/8/contents/prologue-two-scenes/5-the-meaning-of-the-title/"
+    },
+    {
       "sectionId": "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name",
       "href": "/manuscripts/8/contents/prologue-two-scenes/5-the-shape-of-the-artifice-and-the-meaning-of-its-name/"
     },
     {
       "sectionId": "v08-6-the-three-roads-otherwise",
       "href": "/manuscripts/8/contents/prologue-two-scenes/6-the-three-roads-otherwise/"
+    },
+    {
+      "sectionId": "v08-6-three-dangers",
+      "href": "/manuscripts/8/contents/prologue-two-scenes/6-three-dangers/"
     },
     {
       "sectionId": "v08-7-let-the-architects-speak",
@@ -2950,12 +3394,24 @@
       "href": "/manuscripts/8/contents/prologue-two-scenes/8-the-selection-of-the-dark-triad/"
     },
     {
+      "sectionId": "v08-8-what-power-selects-for",
+      "href": "/manuscripts/8/contents/prologue-two-scenes/8-what-power-selects-for/"
+    },
+    {
       "sectionId": "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening",
       "href": "/manuscripts/8/contents/prologue-two-scenes/9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening/"
     },
     {
+      "sectionId": "v08-9-the-strain-on-liberal-democracy",
+      "href": "/manuscripts/8/contents/prologue-two-scenes/9-the-strain-on-liberal-democracy/"
+    },
+    {
       "sectionId": "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register",
       "href": "/manuscripts/8/contents/prologue-two-scenes/saturns-day-a-cosmological-opening-and-a-note-on-the-register/"
+    },
+    {
+      "sectionId": "v08-saturns-day-cosmological-opening-and-register",
+      "href": "/manuscripts/8/contents/prologue-two-scenes/saturns-day-cosmological-opening-and-register/"
     },
     {
       "sectionId": "v08-prologue-two-scenes",
@@ -2982,6 +3438,18 @@
       "href": "/manuscripts/9/contents/3-providence-the-device-that-coordinates-the-many/"
     },
     {
+      "sectionId": "v09-4-what-the-design-holds-and-what-remains-open",
+      "href": "/manuscripts/9/contents/4-what-the-design-holds-and-what-remains-open/start/"
+    },
+    {
+      "sectionId": "v09-what-remains-open",
+      "href": "/manuscripts/9/contents/4-what-the-design-holds-and-what-remains-open/what-remains-open/"
+    },
+    {
+      "sectionId": "v09-what-the-design-commits-to",
+      "href": "/manuscripts/9/contents/4-what-the-design-holds-and-what-remains-open/what-the-design-commits-to/"
+    },
+    {
       "sectionId": "v09-4-what-we-know-and-what-we-do-not",
       "href": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/start/"
     },
@@ -2994,8 +3462,16 @@
       "href": "/manuscripts/9/contents/5-the-invitation-lay-one-stone/"
     },
     {
+      "sectionId": "v09-5-the-invitation-to-test-the-design",
+      "href": "/manuscripts/9/contents/5-the-invitation-to-test-the-design/"
+    },
+    {
       "sectionId": "v09-a-note-on-the-register-of-this-volume",
       "href": "/manuscripts/9/contents/a-note-on-the-register-of-this-volume/"
+    },
+    {
+      "sectionId": "v09-a-note-on-the-register",
+      "href": "/manuscripts/9/contents/a-note-on-the-register/"
     },
     {
       "sectionId": "v09-providence",

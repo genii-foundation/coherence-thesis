@@ -288,7 +288,8 @@ For every batch:
 20. Supply explicit section mappings, continuity mappings, and route mappings for changed-content renames, ambiguous splits, merges, removals, or deep rewrites.
 21. Compile, validate, and inspect generated changes only after every historical route has a destination.
 22. Open a focused pull request with representative comparisons, editorial debt changes, and unresolved queries.
-23. Wait for explicit author approval before merge.
+23. When exhaustive review commentary is requested, generate section grouped comments from the validated sentence and structure ledgers, verify their anchors against the final remote diff, and post them only after the branch tip is stable.
+24. Wait for explicit author approval before merge.
 
 Draft in parallel after the pilot, then integrate in volume order from I through IX. Later volumes depend on definitions and promises established earlier. Treat the master ledger as the continuity authority and edit it only after manuscript claims have stabilized.
 
@@ -447,4 +448,4 @@ Do not optimize for the greatest number of changed sentences, the lowest possibl
 
 ## First execution decision
 
-The author has explicitly authorized the first production draft wave for Volumes I, II, and III before pilot approval. Complete their developmental maps, voice cards, sentence and structure ledgers, revisions, independent reviews, publishing workflow, and review pull requests in one continuous program. Use the Volume III pull request as the primary tone and strategy checkpoint. Do not merge any volume until the author explicitly approves its prose. Continue later waves only after that checkpoint. Complete each volume's strict audit before marking it editorially finished. Activate the global hard failure only after all nine volumes and the master ledger pass together.
+The author first authorized the production draft wave for Volumes I, II, and III, then extended that authorization to all nine published volumes. Complete their developmental maps, voice cards, sentence and structure ledgers, revisions, independent reviews, publishing workflow, and review pull request in one continuous program. Use the complete pull request, with Volume III as a primary tone checkpoint, for author review. Do not merge any volume until the author explicitly approves its prose. Complete each volume's strict audit before marking it editorially finished. Activate the global hard failure after all nine published volumes pass together. Keep the master ledger advisory under CTD-0033 until its separate canon and process-history reconciliation is complete.

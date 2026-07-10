@@ -7,7 +7,7 @@ severity: high
 scopes: ["volume-4", "corpus"]
 sources: ["sources/manuscripts/coherence-thesis-vol4-architecting-providence.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
 discovered: 2026-07-09
-updated: 2026-07-09
+updated: 2026-07-10
 resolved:
 discoveredIn: corpus-audit/2026-07-09
 ---
@@ -27,3 +27,8 @@ Build a complete source register. Verify every quotation and attributed summary 
 ## History
 
 - 2026-07-09: Recorded by the initial independent corpus audit.
+- 2026-07-10: Narrowed unsupported proof language and classified research lineages during the production pass; external quotation and source verification remains open.
+
+## Partial paydown
+
+The Volume IV production pass retained named research lineages while separating source, synthesis, analogy, proposal, and design fiction. It marked nine self-epigraphs as adaptations and removed research superlatives that made lineage function as proof. `editorial/reviews/volume-4/production-pass/semantic-review.md` records that no citation was invented and that citation, epigraph, historical, legal, scientific, and technical verification was not performed. No complete source register or primary-source quotation audit exists, so the item remains open.

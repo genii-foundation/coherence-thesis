@@ -12,11 +12,13 @@ sectionId: "v07-7-ontological-authority"
 title: "7 · Ontological Authority"
 sectionOrder: 10
 sourceDoc: "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md"
-sourceHash: "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876"
-sourceParagraphStart: 281
-sourceParagraphEnd: 286
+sourceHash: "c61640a9d5d3bb07082166fedd9ad808fa86b651534e64f8f4afac247da46f0f"
+sourceParagraphStart: 263
+sourceParagraphEnd: 270
 ---
 
 *“Instead of studying history, why not make history.”*
 
-Ontological Authority is the firm conviction about one’s relationship to the nature of being that comes only through Direct Experience — not borrowed belief but earned knowledge. It is the capacity to hold elevated internal states independent of external conditions, and in that independence to cease being merely the result of one’s environment and to become instead its conscious modulator. A person of ontological authority is no longer simply weathered by what happens to them; they have become a cause in the world rather than only an effect. It is, as well, the doorway into Cosmological Reliability — for only one who can stand in their own being can be entrusted with a larger order.
+Ontological Authority is confidence grounded in examined experience rather than borrowed belief. It does not make a person sovereign over facts, free from circumstance, or entitled to authority over others. Its test is whether conviction remains open to evidence, consequence, and correction.
+
+Authority here should mean the capacity to inhabit one's life without outsourcing every judgment. It ends where another person's equal authority begins.

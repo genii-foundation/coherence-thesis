@@ -7,7 +7,7 @@ severity: high
 scopes: ["volume-6"]
 sources: ["sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md", "docs/manuscript-editorial-plan.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
 discovered: 2026-07-09
-updated: 2026-07-09
+updated: 2026-07-10
 resolved:
 discoveredIn: corpus-audit/2026-07-09
 ---
@@ -27,3 +27,13 @@ Complete the Volume VI voice card, developmental map, sentence ledger, structure
 ## History
 
 - 2026-07-09: Recorded after the initial corpus audit measured the remaining production and reader-autonomy burden.
+- 2026-07-10: Completed the source edit, voice card, fresh reviews, compression record, strict punctuation gate, and source-side reader-autonomy repair; retained the item for integration and approval gates.
+- 2026-07-10: Completed final ledger, route, historical-link, manuscript, focused-test, repository-test, and webpack production-build proof; retained author, fact, specialist, audio, and rendered-review gates.
+
+## Partial paydown
+
+Volume VI now has a voice card at `editorial/voice-cards/volume-6.md` and a complete production record at `editorial/reviews/volume-6/production-pass/`. The fresh reviewer corrected the currency refrain's modality and removed the final assigned identity, then passed semantic fidelity, literary integrity, reader autonomy, and all twenty-four slop categories. The strict audit reports zero prohibited-punctuation errors. The source fell from 7,591 to 4,568 words, a 39.8 percent reduction. All eleven deeper-reading entries now contain explicit links.
+
+Final machine integration proof is complete for the source-side pass. All 12 manuscript ledgers pass complete baseline coverage and exact current reconstruction. Across all nine volumes, they contain 10,778 sentence records and 1,401 structure records, with zero pending. The route planner reports 551 predecessor matches and zero unresolved routes. The historical audit covers 5,833 hrefs with zero broken. Manuscript validation passes 534 generated files and 36 overview references. Focused checks pass 110 of 110. Repository lint and unit checks pass, including 277 of 277 unit tests. The webpack production build generated 6,025 pages.
+
+This item remains open because author approval of lyric breath and ceremonial temperature is pending. Factual and cultural verification, specialist terminology review, audio republication, and rendered review of the reading links remain incomplete. The literal `npm run validate` completion and local preview remain environment-blocked because the default Turbopack path cannot bind a port in this environment. That limitation is not rendered proof.

@@ -12,19 +12,19 @@ sectionId: "v06-the-whole-unfolded"
 title: "The Whole, Unfolded"
 sectionOrder: 4
 sourceDoc: "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
-sourceHash: "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
-sourceParagraphStart: 97
-sourceParagraphEnd: 112
+sourceHash: "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+sourceParagraphStart: 95
+sourceParagraphEnd: 110
 ---
 
-Start underneath, with what carries everything else. Some arrangements of a society renew whatever they touch; others quietly wear it away. The first run with the grain of living things; the second run against it, and pay for the difference in a coin they pretend not to see. We have spent centuries cutting against the grain and calling it progress—and only now, with the costs grown too large to hide, can we read the true bill.
+Start underneath, with what carries everything else. Some social arrangements renew the conditions they depend on. Others consume those conditions faster than they restore them. This series calls the first coherent and the second extractive. Much modern prosperity has hidden its ecological and social costs by placing them outside the ledger.
 
-Then a correction about the mind. Brilliance is not a private holding sealed in one skull; it forms in the meeting of people, in whatever moves across the space between them. Tend that space and a community grows luminous. Neglect it, and even gifted strangers add up to little.
+Then a correction about the mind. Intelligence is not only a private capacity. It also forms between people, in questions, trust, disagreement, and shared attention. A group can become wiser or more foolish according to the quality of those relations.
 
-Now the human center of it. Each of us arrives with a particular set of capacities the world has never seen arranged in quite that way, and most of them are never once called upon—not for want of worth, but because nothing ever asked. Where a person’s capacity meets a real need, something completes itself; yet almost nothing in our shared life is built to bring about that meeting. It starts with being seen, which is rarer than it ought to be, and it ripens among the few who draw a person upward—the right companions, in a circle small enough that no one is lost in it.
+Now the human center of it. Each person carries a distinct arrangement of capacities. Many are never called into use because no fitting need, mentor, or community reaches them. Purpose often begins when capacity meets a real need. Recognition helps that meeting occur, and companionship gives it somewhere to grow.
 
-To make all of that dependable rather than accidental is the task of what we have named Providence: a way of weaving people, purposes, and places together on purpose, deliberately, instead of leaving it to luck. And every weaving needs a measure—something a society agrees to notice and to prize. We propose an unfamiliar one. Not how much a person has gathered to themselves, but how coherent they have become, how present, how alive: coherence itself made into the quiet currency of a world that has finally stopped living by extraction.
+Providence is the proposed means of making such meetings less accidental. It would weave people, purposes, and places without assigning anyone a fixed identity. The proposal also asks what a society should notice and reward. Its answer is coherence: the demonstrated quality of presence, relation, and contribution, rather than accumulation alone. Whether and how that quality could become a currency remains a design and research question.
 
-Gather enough of these well-woven circles, each sovereign and rooted, and a far larger body begins to stir—the whole life of the planet, slowly waking to itself through us. The older traditions had a name for such a power, and meant by it not a monster but a blessing: the benevolent dragon of the East, bringer of rain and river and spring, the generative vitality of the world moving, at last, consciously through the creatures who can feel it. To sense it even faintly is to know that the ground beneath us is itself alive.
+Gather enough sovereign, rooted communities and a larger pattern could emerge among them. This series imagines that pattern as the dragon named Earth. The image draws on the benevolent dragon of East Asian traditions, associated with water, rain, and generative power. Here it names the possibility of planetary life becoming more consciously coordinated through human participation. It is an image and a proposition, not proof.
 
-That is the architecture, end to end. What follows says it once more, slowly, so you can feel its heart—the heart of Earth growing aware of itself through the evolution of our own consciousness.
+That is the architecture from end to end. What follows says it again, slowly, so each relation can be examined on its own.

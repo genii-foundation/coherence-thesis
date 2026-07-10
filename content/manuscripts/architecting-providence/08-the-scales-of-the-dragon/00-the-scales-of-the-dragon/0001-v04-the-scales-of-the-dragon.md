@@ -12,11 +12,11 @@ sectionId: "v04-the-scales-of-the-dragon"
 title: "The Scales of the Dragon"
 sectionOrder: 1
 sourceDoc: "sources/manuscripts/coherence-thesis-vol4-architecting-providence.md"
-sourceHash: "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74"
-sourceParagraphStart: 1522
-sourceParagraphEnd: 1526
+sourceHash: "66f2cc7c3e340085f2b71a493c7771f241aba49c635cc262115e3dc9bff3351d"
+sourceParagraphStart: 1205
+sourceParagraphEnd: 1209
 ---
 
 *What Becomes Possible When the Architecture Is Built Well*
 
-The preceding seven parts were disciplined by a single question: how can Providence be built without becoming what it was designed to replace? That question was necessary, and the rigor it demanded was not optional. But a book that only asks how a thing avoids failure has described a scaffold and never the cathedral the scaffold is for. This part turns, at last, toward what the architecture makes possible. It does not abandon the rigor. It completes it — by letting the reader see, and feel, the civilization that all the careful construction is in service of. We have shown what Providence must not become. Here we show what it could become, if it is built well.
+The earlier parts concentrated on constraint and failure. Part VIII turns toward the civic and ecological possibilities those safeguards are meant to protect, while keeping the vision conditional.

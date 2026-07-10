@@ -77,6 +77,196 @@
       "note": "Preserved chapter route from HEAD."
     },
     {
+      "sourceHref": "/manuscripts/4/contact-with-the-world/chapter-start/",
+      "targetHref": "/manuscripts/4/contact-with-the-world/when-the-architecture-meets-existing-power/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/contact-with-the-world/why-its-worth-risking/",
+      "targetHref": "/manuscripts/4/contact-with-the-world/the-case-for-a-bounded-experiment/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/front-matter/first-the-story/",
+      "targetHref": "/manuscripts/4/opening/power-without-coordination/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/4/front-matter/the-cardinal-scale-seen-from-here/",
+      "targetHref": "/manuscripts/4/opening/the-cardinal-scale-as-design-fiction/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/4/front-matter/the-intellectual-posture-of-this-volume/",
+      "targetHref": "/manuscripts/4/opening/claims-proposals-and-tests/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/4/front-matter/the-music-of-this-book-and-what-it-asks-of-you/",
+      "targetHref": "/manuscripts/4/opening/how-to-read-this-architecture/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/4/front-matter/what-it-means-to-begin/",
+      "targetHref": "/manuscripts/4/opening/from-invitation-to-construction/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/4/front-matter/why-a-book-comes-first/",
+      "targetHref": "/manuscripts/4/opening/why-publish-before-building/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/4/front-matter/why-purposeful-exists-and-how-providence-begins/",
+      "targetHref": "/manuscripts/4/opening/purposeful-before-providence/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/4/the-civilization-made-visible/chapter-start/",
+      "targetHref": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/the-civilization-made-visible/how-providence-survives-success/",
+      "targetHref": "/manuscripts/4/the-civilization-made-visible/how-providence-might-survive-success/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/the-civilization-made-visible/the-outcome/",
+      "targetHref": "/manuscripts/4/the-civilization-made-visible/the-outcome-in-this-scenario/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/the-economic-architecture/capital-patient-enough/",
+      "targetHref": "/manuscripts/4/the-economic-architecture/capital-without-command/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/the-governance-architecture/chapter-start/",
+      "targetHref": "/manuscripts/4/the-governance-architecture/interpreting-and-amending-the-constitution/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/the-human-architecture-in-practice/chapter-start/",
+      "targetHref": "/manuscripts/4/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/the-scales-of-the-dragon/an-honest-accounting/",
+      "targetHref": "/manuscripts/4/the-scales-of-the-dragon/what-remains-unbuilt/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/the-scales-of-the-dragon/chapter-start/",
+      "targetHref": "/manuscripts/4/the-scales-of-the-dragon/presence-as-infrastructure/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/the-sequence-problem/what-this-chapter-commits-to/",
+      "targetHref": "/manuscripts/4/the-sequence-problem/what-this-volume-can-offer/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/the-technological-architecture-in-detail/chapter-start/",
+      "targetHref": "/manuscripts/4/the-technological-architecture-in-detail/the-identity-layer/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/the-technological-architecture-in-detail/the-current-state-of-the-technical-art/",
+      "targetHref": "/manuscripts/4/the-technological-architecture-in-detail/candidate-approaches-and-limits/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/the-technological-architecture-in-detail/what-the-first-version-refuses-to-do/",
+      "targetHref": "/manuscripts/4/the-technological-architecture-in-detail/nonnegotiable-requirements/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/4/the-technological-architecture-in-detail/what-the-trust-layer-can-currently-deliver/",
+      "targetHref": "/manuscripts/4/the-technological-architecture-in-detail/what-a-bounded-first-layer-might-deliver/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/",
+      "targetHref": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/8/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/",
+      "targetHref": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/",
+      "targetHref": "/manuscripts/9/contents/4-what-the-design-holds-and-what-remains-open/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/9/front-matter/4-what-we-know-and-what-we-do-not/",
+      "targetHref": "/manuscripts/9/contents/4-what-the-design-holds-and-what-remains-open/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/9/front-matter/5-the-invitation-lay-one-stone/",
+      "targetHref": "/manuscripts/9/contents/5-the-invitation-to-test-the-design/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/9/front-matter/a-note-on-the-register-of-this-volume/",
+      "targetHref": "/manuscripts/9/contents/a-note-on-the-register/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/architecting-providence/front-matter/first-the-story/",
+      "targetHref": "/manuscripts/4/opening/power-without-coordination/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/architecting-providence/front-matter/the-cardinal-scale-seen-from-here/",
+      "targetHref": "/manuscripts/4/opening/the-cardinal-scale-as-design-fiction/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/architecting-providence/front-matter/the-intellectual-posture-of-this-volume/",
+      "targetHref": "/manuscripts/4/opening/claims-proposals-and-tests/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/architecting-providence/front-matter/the-music-of-this-book-and-what-it-asks-of-you/",
+      "targetHref": "/manuscripts/4/opening/how-to-read-this-architecture/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/architecting-providence/front-matter/what-it-means-to-begin/",
+      "targetHref": "/manuscripts/4/opening/from-invitation-to-construction/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/architecting-providence/front-matter/why-a-book-comes-first/",
+      "targetHref": "/manuscripts/4/opening/why-publish-before-building/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/architecting-providence/front-matter/why-purposeful-exists-and-how-providence-begins/",
+      "targetHref": "/manuscripts/4/opening/purposeful-before-providence/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/",
+      "targetHref": "/manuscripts/9/contents/4-what-the-design-holds-and-what-remains-open/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/cardinal-scale/front-matter/5-the-invitation-lay-one-stone/",
+      "targetHref": "/manuscripts/9/contents/5-the-invitation-to-test-the-design/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/cardinal-scale/front-matter/a-note-on-the-register-of-this-volume/",
+      "targetHref": "/manuscripts/9/contents/a-note-on-the-register/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
       "sourceHref": "/manuscripts/humanitys-most-viable-future/front-matter/a-note-on-compression/",
       "targetHref": "/manuscripts/1/opening/four-movements/",
       "note": "Generated alias for a former front matter chapter route."
@@ -95,6 +285,11 @@
       "sourceHref": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil/",
       "targetHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
       "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/",
+      "targetHref": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/",
+      "note": "Generated alias for a former front matter chapter route."
     },
     {
       "sourceHref": "/manuscripts/providence-imperative/front-matter/on-the-title-providence-and-imperative/",

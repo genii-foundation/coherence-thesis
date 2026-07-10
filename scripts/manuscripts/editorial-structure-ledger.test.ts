@@ -206,4 +206,25 @@ describe("editorial structure ledger", () => {
       ),
     ).toThrow(/adjudicated route outcome/);
   });
+
+  it("preserves known route impact while route evidence remains a query", () => {
+    const changedSource = baseline.replace("# First Heading", "# Better Heading");
+    const changed = records();
+    changed[2] = {
+      ...changed[2]!,
+      disposition: "recast",
+      proposedText: ["Better Heading"],
+      routeImpact: "renamed",
+      routeOutcome: "Canonical route and historical alias evidence remain open.",
+      reviewStatus: "query",
+    };
+    expect(() =>
+      validateStructureLedger(
+        changed,
+        "sources/manuscripts/test.md",
+        baseline,
+        changedSource,
+      ),
+    ).not.toThrow();
+  });
 });

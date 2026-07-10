@@ -12,28 +12,19 @@ sectionId: "v06-the-right-size"
 title: "The Right Size"
 sectionOrder: 14
 sourceDoc: "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
-sourceHash: "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
-sourceParagraphStart: 295
-sourceParagraphEnd: 318
+sourceHash: "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+sourceParagraphStart: 211
+sourceParagraphEnd: 224
 ---
 
-Weave too tightly and you crush what makes each thread itself. Weave too loosely and nothing holds. Every civilization meets the same problem: how to coordinate the many without erasing each one. The answer turns out to be a matter of scale.
+Weave too tightly and you crush what makes each thread itself. Weave too loosely and nothing holds. Every civilization meets the same problem: how to coordinate the many without erasing each one. Part of the answer is scale.
 
-There is a size at which a community is large enough to take on real work and small enough that no one disappears—roughly a hundred and fifty souls, near the most a person can truly hold in mind and heart—where you can still be known by name, still be missed when you are gone, still be held to your word by people who will see you again tomorrow. Build at that scale, and the abstractions become daily life.
+The design needs a community large enough to take on real work and small enough that people remain mutually legible. This series uses roughly one hundred and fifty people as a provisional relational scale, not a proven natural law. Larger communities would require nested groups and explicit ways to preserve trust, accountability, and the experience of being known.
 
-But the right size can still hold the wrong people, and this is where every previous age fell short. There has never been a coordinating device able to compose these groups well—to gather, from across the whole of humanity, the particular cohort in which a given person would actually come alive, and to let people move between cohorts as they change and grow. For all of history, belonging was left to accident: you stayed where you were born, where chance set you down, where need required you to be. What becomes possible now, for the first time, is to land not merely where we need to but where we are meant to—communities of genuine fit rather than mere proximity, held open by a freedom of movement that keeps the fit alive as people change.
+Size alone cannot compose a healthy community. Historically, belonging has often been constrained by birth, necessity, exclusion, and geography. New coordination tools might widen the field of choice and help people discover communities of genuine fit. They cannot guarantee belonging, and any system of matching would need to protect refusal, movement, difference, and the right not to be classified.
 
-These are the smallest whole things from which a larger whole can be made: Individual Communities Observing Natural Sovereignty—sovereign, rooted, cooperating without dissolving into one another. The nest is woven to exactly this size.
+The series calls the plural network Individual Communities Observing Natural Sovereignty, or ICONS. Each single community is a Scale: sovereign, rooted, and able to cooperate without dissolving into the whole. The nest is woven at a human scale, with its exact size still open to evidence and practice.
 
-
-*You want to matter, and you want to be known, and the world keeps making you choose between them.*
-
-*We are building at the one scale where you need only choose to belong to yourself—to choose what the self would become, and to test it, and be it, and let it be transformed.*
-
-*That is why.*
-
-*That is why the nest is kept small: so that a person has somewhere real enough to become themselves, in the company of others doing the same.*
-
-TO GO DEEPER   *Volume V — **"**The Cardinal Scale**"*
+TO GO DEEPER   *[Volume V: “The Cardinal Scale”](/manuscripts/5/the-builders/the-cardinal-scale/)*
 
 X

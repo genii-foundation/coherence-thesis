@@ -38,6 +38,8 @@ npm run manuscripts:validate
 npm run manuscripts:import
 ```
 
+The importer keeps a nonpublic start marker for each source so title pages and contents do not become reader sections. When the first public heading evolves, update that importer boundary in the same change. A missing boundary must fail the import. It must never fall back to importing the title page as prose.
+
 5. Preserve every published route before compiling. Headings, section identities, and structure may evolve, but old links must continue to resolve:
 
 ```bash

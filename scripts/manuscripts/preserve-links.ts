@@ -210,12 +210,27 @@ function matchLineage(
   const currentById = new Map(
     current.sections.map((section) => [section.sectionId, section]),
   );
-  const establishedByCurrent = new Map(
-    existingLineage.sections.map((entry) => [entry.currentSectionId, entry]),
-  );
+  const unresolved: LinkPreservationIssue[] = [];
+  const establishedOwnerByIdentity = new Map<string, string>();
+  for (const entry of existingLineage.sections) {
+    for (const identity of [
+      entry.currentSectionId,
+      ...entry.continuityIds,
+      ...entry.historicalSectionIds,
+    ]) {
+      const owner = establishedOwnerByIdentity.get(identity);
+      if (owner && owner !== entry.currentSectionId) {
+        unresolved.push({
+          previousSectionId: identity,
+          message: `Established lineage identity '${identity}' is assigned to both '${owner}' and '${entry.currentSectionId}'.`,
+        });
+        continue;
+      }
+      establishedOwnerByIdentity.set(identity, entry.currentSectionId);
+    }
+  }
   const matches = new Map<string, SectionLineageMatch>();
   const automaticallyUsedCurrent = new Set<string>();
-  const unresolved: LinkPreservationIssue[] = [];
 
   const add = (
     previousSectionId: string,
@@ -260,21 +275,32 @@ function matchLineage(
 
   for (const previousSection of previous.sections) {
     if (matches.has(previousSection.sectionId)) continue;
-    const currentSection = currentById.get(previousSection.sectionId);
-    const established = establishedByCurrent.get(previousSection.sectionId);
-    if (!currentSection || !established) continue;
-    if (
-      intersect(
-        compatibleContinuityIds(previousSection),
-        established.continuityIds,
-      ).length > 0
-    ) {
+    const establishedOwners = new Set(
+      [
+        previousSection.sectionId,
+        ...compatibleContinuityIds(previousSection),
+        ...(previousSection.legacySectionIds ?? []),
+      ]
+        .map((identity) => establishedOwnerByIdentity.get(identity))
+        .filter((owner): owner is string => Boolean(owner && currentById.has(owner))),
+    );
+    if (establishedOwners.size === 1) {
+      const currentSectionId = [...establishedOwners][0]!;
       add(
         previousSection.sectionId,
-        currentSection.sectionId,
+        currentSectionId,
         1,
         "established-lineage",
+        true,
       );
+    } else if (establishedOwners.size > 1) {
+      unresolved.push({
+        previousSectionId: previousSection.sectionId,
+        sourceHref: previousSection.href,
+        message: `Established lineage identities point to several current sections: ${[
+          ...establishedOwners,
+        ].join(", ")}.`,
+      });
     }
   }
 

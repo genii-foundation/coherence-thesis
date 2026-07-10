@@ -1135,6 +1135,17 @@ function normalizedHistoricalHref(href: string): string {
   return fragment ? `${normalizedPath}#${fragment}` : normalizedPath;
 }
 
+export function recordedContinuityOwner(
+  currentSectionId: string,
+  historicalSectionId: string,
+  ownedContinuityIds: ReadonlySet<string> | undefined,
+): string | undefined {
+  if (!ownedContinuityIds || ownedContinuityIds.size === 0) return undefined;
+  if (ownedContinuityIds.has(historicalSectionId)) return historicalSectionId;
+  if (ownedContinuityIds.has(currentSectionId)) return currentSectionId;
+  return [...ownedContinuityIds].sort()[0];
+}
+
 function recordHistoricalLedger(
   history: Map<string, HistoricalRoute>,
   current: CatalogSnapshot,
@@ -1165,7 +1176,22 @@ function recordHistoricalLedger(
       normalized,
     );
   };
-  for (const entry of ledger.routes) add(entry);
+  for (const entry of ledger.routes) {
+    add({
+      ...entry,
+      targetContinuityIds: entry.targetContinuityIds.map((identity) => {
+        const currentSectionId = evolution.get(identity);
+        if (!currentSectionId) return identity;
+        return (
+          recordedContinuityOwner(
+            currentSectionId,
+            identity,
+            continuityByCurrent.get(currentSectionId),
+          ) ?? identity
+        );
+      }),
+    });
+  }
   const before = entries.size;
   for (const route of history.values()) {
     const resolution = runtimeResolution(current, route.href);
@@ -1182,9 +1208,17 @@ function recordHistoricalLedger(
           );
         }
         const owned = continuityByCurrent.get(currentSectionId);
-        targetContinuityIds.push(
-          owned?.has(oldSectionId) ? oldSectionId : currentSectionId,
+        const continuityOwner = recordedContinuityOwner(
+          currentSectionId,
+          oldSectionId,
+          owned,
         );
+        if (!continuityOwner) {
+          throw new Error(
+            `Historical route '${route.href}' has no continuity owner for current section '${currentSectionId}'.`,
+          );
+        }
+        targetContinuityIds.push(continuityOwner);
       }
       if (
         targetContinuityIds.length !== occurrence.targetSectionIds.length ||

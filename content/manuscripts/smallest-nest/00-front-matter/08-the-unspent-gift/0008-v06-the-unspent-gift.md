@@ -12,24 +12,15 @@ sectionId: "v06-the-unspent-gift"
 title: "The Unspent Gift"
 sectionOrder: 8
 sourceDoc: "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
-sourceHash: "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
-sourceParagraphStart: 165
-sourceParagraphEnd: 184
+sourceHash: "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+sourceParagraphStart: 141
+sourceParagraphEnd: 150
 ---
 
-Every person arrives carrying something only they carry—a particular way of seeing, of making, of caring, arranged in a combination the world has never held before and will never hold again. Most of it is never spent. Not because it lacked worth, but because it never found the place that needed it.
+Every person carries a distinct way of seeing, making, or caring. Much of that capacity is never spent because it never finds the place that needs it.
 
-The rarest scarcity on Earth is not oil, or gold, or even time. It is the meeting of a gift and the need that would complete it. We have built vast machinery for counting what we can extract from people, and almost none for discovering what is inside them. And so the largest reserve of value we possess sits unspent—distributed among billions, breathing, quietly waiting to be asked.
+One consequential scarcity is the meeting of a gift with a need that would call it into use. Modern institutions are adept at counting what people produce and less adept at recognizing capacities that do not fit an existing role. Much human value therefore remains unspent, present but unasked for.
 
-
-*You carry something that has nowhere yet to go.*
-
-*So does everyone alive, and we are building the places where it can finally be given.*
-
-*That is why.*
-
-*That is why we treat human potential as the first resource and not the last: because it is the largest one we have, and the one we waste most completely.*
-
-TO GO DEEPER   *Volume V — **"**The Greatest Untapped Resource on Earth**"*
+TO GO DEEPER   *[Volume V: “The Human Capacity We Fail to See”](/manuscripts/5/the-crisis-of-unrealized-potential/the-human-capacity-we-fail-to-see/)*
 
 IV

@@ -12,24 +12,15 @@ sectionId: "v06-the-pathway"
 title: "The Pathway"
 sectionOrder: 9
 sourceDoc: "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
-sourceHash: "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
-sourceParagraphStart: 185
-sourceParagraphEnd: 204
+sourceHash: "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+sourceParagraphStart: 151
+sourceParagraphEnd: 160
 ---
 
-No one can be handed a purpose. It is not a possession to be given but a relationship to be discovered—between who a person is becoming and what the world is quietly asking of them. Yet while purpose cannot be handed over, the conditions in which it reveals itself can be built.
+No one can be handed a purpose. Purpose is a relationship to be discovered between who a person is becoming and what a situation asks of them. The conditions in which that relationship becomes visible can be cultivated.
 
-That is what Purposeful names: a pathway, not a verdict. It begins with three plain questions—what do you value, what do you intend, what impact do you hope to make—and it makes the answers visible, so that purpose can find itself, and so that people bending toward the same far thing can at last find one another. The path never tells you who you are. It is only the ground on which you discover it, walking.
+Purposeful names a proposed pathway, not a verdict. It begins with three plain questions: What do you value? What do you intend? What impact do you hope to make? Making those answers visible could help people with related commitments find one another. The path would not tell anyone who they are. It would offer ground on which they could discover it through action.
 
-
-*No one can hand you your purpose.*
-
-*But we can build the path on which you meet it, walking toward you.*
-
-*That is why.*
-
-*That is why Purposeful is a pathway and never a verdict: so that purpose can be discovered rather than assigned.*
-
-TO GO DEEPER   *Volume V — **"**Purposeful**"*
+TO GO DEEPER   *[Volume V: “Purposeful”](/manuscripts/5/the-architecture-of-becoming/purposeful/)*
 
 V

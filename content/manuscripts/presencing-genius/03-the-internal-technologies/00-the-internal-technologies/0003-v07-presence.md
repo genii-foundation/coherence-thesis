@@ -12,9 +12,11 @@ sectionId: "v07-presence"
 title: "Presence"
 sectionOrder: 3
 sourceDoc: "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md"
-sourceHash: "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876"
-sourceParagraphStart: 127
-sourceParagraphEnd: 130
+sourceHash: "c61640a9d5d3bb07082166fedd9ad808fa86b651534e64f8f4afac247da46f0f"
+sourceParagraphStart: 87
+sourceParagraphEnd: 92
 ---
 
-Presence is the first of these internal technologies, and the ground of all the others. To be present is not a vague softness of mood; it is a trainable faculty — the capacity to bring the whole of one’s awareness to bear on what is actually here, rather than on the remembered or the anticipated. Nothing can be perceived deliberately, related to lovingly, or created consciously by an attention that is elsewhere. And presence is the precise opposite of extraction at the level of attention: to be present is to give attention rather than to take it, and giving attention is the one gift that enriches the giver in the giving.
+Presence is the first of these practices. It is the trainable capacity to bring awareness toward what is here rather than remain wholly occupied by memory or anticipation. Presence does not guarantee love, truth, or good judgment. It makes deliberate perception and responsive relation more possible.
+
+Its scale is ordinary. A person stops preparing a reply long enough to hear the change in another's voice. A hand releases the object it had been gripping. A room notices that one member has gone quiet before the agenda moves on. None of these moments is revelation. Each is a small return from assumption to contact.

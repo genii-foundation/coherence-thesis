@@ -48,20 +48,24 @@
     "manuscripts:editorial-ledger": "node --import tsx scripts/manuscripts/editorial-ledger.ts",
     "premanuscripts:editorial-ledgers:init": "node scripts/ensure-node-modules.mjs",
     "manuscripts:editorial-ledgers:init": "node --import tsx scripts/manuscripts/editorial-ledger-init.ts",
+    "premanuscripts:editorial-ledgers:adjudicate": "node scripts/ensure-node-modules.mjs",
+    "manuscripts:editorial-ledgers:adjudicate": "node --import tsx scripts/manuscripts/editorial-ledger-adjudicate.ts",
     "premanuscripts:structure-ledger": "node scripts/ensure-node-modules.mjs",
     "manuscripts:structure-ledger": "node --import tsx scripts/manuscripts/editorial-structure-ledger.ts",
+    "premanuscripts:pr-comments": "node scripts/ensure-node-modules.mjs",
+    "manuscripts:pr-comments": "node --import tsx scripts/manuscripts/editorial-pr-comments.ts",
     "premanuscripts:preserve-links": "node scripts/ensure-node-modules.mjs",
     "manuscripts:preserve-links": "node --import tsx scripts/manuscripts/preserve-links.ts",
     "premanuscripts:audit-history": "node scripts/ensure-node-modules.mjs",
     "manuscripts:audit-history": "node --import tsx scripts/manuscripts/audit-historical-links.ts",
     "premanuscripts:editorial:strict": "node scripts/ensure-node-modules.mjs",
-    "manuscripts:editorial:strict": "node --import tsx scripts/manuscripts/editorial-lint.ts --strict",
+    "manuscripts:editorial:strict": "node --import tsx scripts/manuscripts/editorial-lint.ts --strict --volume humanitys-most-viable-future --volume wielding-intelligence --volume providence-imperative --volume architecting-providence --volume purposeful --volume smallest-nest --volume presencing-genius --volume misanthropic-artifice --volume cardinal-scale",
     "audio:fish": "node --import tsx scripts/audio/fish-generate.ts",
     "audio:publish-manifest": "node --import tsx scripts/audio/fish-publish-manifest.ts",
     "prereadme:update": "node scripts/ensure-node-modules.mjs",
     "readme:update": "node --import tsx scripts/update-readme-status.ts",
     "prevalidate": "node scripts/ensure-node-modules.mjs",
-    "validate": "npm run manuscripts:debt && npm run manuscripts:validate && npm run typecheck && npm run lint && npm run test && npm run build"
+    "validate": "npm run manuscripts:debt && npm run manuscripts:editorial:strict && npm run manuscripts:validate && npm run typecheck && npm run lint && npm run test && npm run build"
   },
   "engines": {
     "node": ">=20.9"

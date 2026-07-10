@@ -159,10 +159,18 @@ describe("manuscript compiler helpers", () => {
 
   it("gives every section in a single-chapter part a direct reader route", () => {
     const catalog = currentCatalog();
-    const sections = catalog.sections.filter(
-      (candidate) => candidate.partId === "the-internal-technologies",
+    const part = catalog.volumes
+      .flatMap((volume) => volume.parts)
+      .find(
+        (candidate) =>
+          candidate.chapters.length === 1 && candidate.sectionIds.length > 1,
+      );
+    const sectionIds = new Set(part?.sectionIds ?? []);
+    const sections = catalog.sections.filter((candidate) =>
+      sectionIds.has(candidate.sectionId),
     );
 
+    expect(part).toBeDefined();
     expect(sections.length).toBeGreaterThan(1);
     expect(sections.every((section) => section.readerHref === section.href)).toBe(
       true,

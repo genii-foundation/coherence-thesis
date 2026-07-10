@@ -12,9 +12,11 @@ sectionId: "v07-the-four-windows-of-perception"
 title: "The Four Windows of Perception"
 sectionOrder: 7
 sourceDoc: "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md"
-sourceHash: "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876"
-sourceParagraphStart: 147
-sourceParagraphEnd: 150
+sourceHash: "c61640a9d5d3bb07082166fedd9ad808fa86b651534e64f8f4afac247da46f0f"
+sourceParagraphStart: 111
+sourceParagraphEnd: 116
 ---
 
-These technologies are practiced through four faculties so near to us that we seldom notice them as faculties at all — Intention, Attention, Imagination, and Sensation, the Four Windows of Perception. They stand in no hierarchy; they are heterarchical, in constant correspondence, each conditioning the others. Sensation is the physicality of every thought and feeling, the most immediate of the ways we know. Imagination is what lends sensation its meaning, the faculty by which we construct the world we believe ourselves to be sensing. Attention is the choosing by which some part of the whole becomes, for us, the world. And intention is the disposition behind the choosing — the active desire toward a future state that aims all the rest. One who intends to find beauty will attend to beauty, imagine beauty, and so come to sense beauty everywhere. These four are the lenses; everything that follows is practiced through them.
+The practices use four faculties: intention, attention, imagination, and sensation. The volume calls them the Four Windows of Perception. Sensation supplies bodily information. Imagination helps interpret it. Attention selects part of a larger field. Intention gives that selection direction. The four affect one another, and none should be mistaken for an unfiltered account of reality.
+
+If a person intends to find beauty, their attention may begin to notice color, proportion, tenderness, or repair. Imagination gives those perceptions a frame, and sensation gives them weight. The same process can confirm prejudice. A disciplined use of the windows therefore includes comparison with other witnesses and a willingness to discover that one's intention has bent the view.

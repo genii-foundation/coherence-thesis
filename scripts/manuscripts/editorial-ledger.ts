@@ -256,10 +256,10 @@ export function parseSentenceLedger(
         line,
       );
     }
-    if (record.disposition === "query" || record.reviewStatus === "query") {
+    if (record.disposition === "query") {
       assertRecord(
-        record.disposition === "query" && record.reviewStatus === "query",
-        "a query disposition and query reviewStatus must appear together.",
+        record.reviewStatus === "query",
+        "a query disposition requires query reviewStatus.",
         file,
         line,
       );

@@ -12,9 +12,11 @@ sectionId: "v07-10-interspecies-communication"
 title: "10 · Interspecies Communication"
 sectionOrder: 14
 sourceDoc: "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md"
-sourceHash: "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876"
-sourceParagraphStart: 299
-sourceParagraphEnd: 302
+sourceHash: "c61640a9d5d3bb07082166fedd9ad808fa86b651534e64f8f4afac247da46f0f"
+sourceParagraphStart: 287
+sourceParagraphEnd: 292
 ---
 
-Interspecies Communication is the extension of perception and sentient experience to include communion with other species — plants, animals, and the elemental presences of a place. It is the practiced consequence of Animistic Awareness: once the world is known to be alive and addressable, one begins, in fact, to address it — and to be answered. We mean this not as metaphor but as relationship: a disciplined attentiveness to the many intelligences we share the world with, most of which our culture has trained us not to notice. To communicate beyond our species is to remember that we were never the only ones here, and never the only ones speaking.
+Interspecies Communication extends attention toward other species and the signals through which they respond to their environments and to us. The practice may include observation, learned interpretation, and forms of communion. Claims of communication beyond observable behavior require their own evidence and should not be presented as established fact.
+
+Other species have never been silent. Birds alarm, bees dance, roots exchange signals, and bodies orient toward threat and care. The difficulty is learning what can responsibly be inferred from forms of speech unlike our own.

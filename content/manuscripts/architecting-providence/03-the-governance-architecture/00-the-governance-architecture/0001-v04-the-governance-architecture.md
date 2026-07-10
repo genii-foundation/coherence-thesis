@@ -12,13 +12,11 @@ sectionId: "v04-the-governance-architecture"
 title: "The Governance Architecture"
 sectionOrder: 1
 sourceDoc: "sources/manuscripts/coherence-thesis-vol4-architecting-providence.md"
-sourceHash: "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74"
-sourceParagraphStart: 564
-sourceParagraphEnd: 570
+sourceHash: "66f2cc7c3e340085f2b71a493c7771f241aba49c635cc262115e3dc9bff3351d"
+sourceParagraphStart: 449
+sourceParagraphEnd: 453
 ---
 
-*How Distributed Sovereignty and Planetary Coordination Actually Coexist*
+*Interpretation, Exit, and Shared Limits*
 
-Volume III's Part II established the philosophical and constitutional foundations of Providence's governance: the Providence Principle, the Living Constitution, the distinction between platform and protocol, the ten constitutional principles. Those foundations were established with the depth they required, and establishing them was the necessary first work. Volume IV's Part III makes them operational. The principles are no longer the question. The mechanisms are.
-
-The movement from principle to mechanism is not a diminishment. It is where the principles become real. A constitutional commitment that has not been converted into governance mechanisms is not a constitutional commitment. It is a stated intention, and stated intentions are subject to all of the pressures that governance mechanisms are designed to resist. The governance architecture of Part III is therefore not the implementation of Volume III's constitutional philosophy. It is the constitution itself, made operational in the only form in which constitutions actually function: as specific, visible, enforceable mechanisms that constrain and channel behavior regardless of any individual actor's preferences.
+Volume III described provisional constitutional safeguards. Part III asks what mechanisms might give those safeguards force. The answer remains a proposal. No body described here should be mistaken for an operating authority, and the design still requires jurisdiction-specific legal and democratic review.

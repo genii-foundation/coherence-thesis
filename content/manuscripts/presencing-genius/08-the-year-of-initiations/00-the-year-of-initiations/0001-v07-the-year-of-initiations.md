@@ -12,11 +12,11 @@ sectionId: "v07-the-year-of-initiations"
 title: "The Year of Initiations"
 sectionOrder: 1
 sourceDoc: "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md"
-sourceHash: "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876"
-sourceParagraphStart: 342
-sourceParagraphEnd: 346
+sourceHash: "c61640a9d5d3bb07082166fedd9ad808fa86b651534e64f8f4afac247da46f0f"
+sourceParagraphStart: 332
+sourceParagraphEnd: 336
 ---
 
 *The pne(h)uma(n) Curriculum*
 
-With mentors gathered and trained, the work can be sequenced — and the sequence is a year. The year-long course of study is called the pne(h)uma(n) Curriculum: the breath-and-spirit human, the pneuma within the human, brought to maturity through the seven initiates and the twelve tenets across fifty-two initiations. One initiation for each week of the year; one year to walk, for the first time, the whole path from Listening to Providence.
+The proposed year-long course is called the pne(h)uma(n) Curriculum. It sketches fifty-two weekly initiations across the Seven Initiates and Twelve Tenets. The name joins breath, spirit, and the human. The full curriculum, learning objectives, facilitation standards, assessment, contraindications, and safety apparatus have not yet been published.

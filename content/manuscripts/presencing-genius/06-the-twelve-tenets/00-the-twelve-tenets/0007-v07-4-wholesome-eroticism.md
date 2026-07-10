@@ -12,11 +12,13 @@ sectionId: "v07-4-wholesome-eroticism"
 title: "4 · Wholesome Eroticism"
 sectionOrder: 7
 sourceDoc: "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md"
-sourceHash: "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876"
-sourceParagraphStart: 263
-sourceParagraphEnd: 268
+sourceHash: "c61640a9d5d3bb07082166fedd9ad808fa86b651534e64f8f4afac247da46f0f"
+sourceParagraphStart: 239
+sourceParagraphEnd: 246
 ---
 
 *“Turning ourselves on, we can begin to turn the world around us on.”*
 
-With the fourth tenet the work turns from perceiving to relating. Wholesome Eroticism is the self-fulfilling arousal and enthusiasm toward our own relationship with life — the good feeling of being turned on by direct experience itself, born of witnessing consciousness and deliberate perception. It is not sexuality but the channeling of life-force: a pure relationship with the animating forces of existence, in which desire may be expressed as it arises, without agenda and without grasping. It is the hinge on which the first three tenets open into all that follows, for one who is not in some measure turned on by life will not have the charge to relate to it generously.
+Wholesome Eroticism names a felt enthusiasm for being alive. It is broader than sexuality and does not authorize uninvited expression of desire. The practice asks how vitality can move without grasping, coercion, or shame.
+
+Its question is whether desire can remain warm and generative without turning another being into its instrument. Consent is not a brake placed on vitality. It is part of the form through which vitality becomes trustworthy.

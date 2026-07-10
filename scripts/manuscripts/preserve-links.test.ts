@@ -640,6 +640,122 @@ describe("editorial link preservation", () => {
     );
   });
 
+  it("reuses saved lineage after a renamed section is deeply rewritten", () => {
+    const previousSection = section({
+      id: "old-id",
+      href: "/old/",
+      hash: "old",
+      text: "The former argument and image.",
+    });
+    const currentSection = section({
+      id: "better-id",
+      href: "/better/",
+      hash: "new",
+      text: "A completely rebuilt argument in a different register.",
+    });
+    const plan = planLinkPreservation({
+      previous: catalog([previousSection]),
+      current: catalog([currentSection]),
+      existingSectionLineage: {
+        version: 1,
+        sections: [
+          {
+            currentSectionId: "better-id",
+            continuityIds: ["old-id"],
+            historicalSectionIds: ["old-id"],
+            progressContinuityGroups: [["old-id"]],
+          },
+        ],
+      },
+      existingSectionAliases: {
+        version: 1,
+        aliases: [{ sourceHref: "/old/", targetSectionId: "better-id" }],
+      },
+    });
+
+    expect(plan.unresolved).toEqual([]);
+    expect(plan.lineage).toEqual([
+      expect.objectContaining({
+        previousSectionId: "old-id",
+        currentSectionId: "better-id",
+        reason: "established-lineage",
+      }),
+    ]);
+    expect(plan.sectionLineage.sections).toContainEqual(
+      expect.objectContaining({
+        currentSectionId: "better-id",
+        continuityIds: ["old-id"],
+        historicalSectionIds: ["old-id"],
+      }),
+    );
+  });
+
+  it("reuses saved lineage for several retired sections sharing one successor", () => {
+    const first = section({
+      id: "old-first",
+      href: "/old-first/",
+      hash: "first",
+      text: "The first retired section.",
+    });
+    const second = section({
+      id: "old-second",
+      href: "/old-second/",
+      hash: "second",
+      text: "The second retired section.",
+    });
+    const current = section({
+      id: "merged",
+      href: "/merged/",
+      hash: "merged",
+      text: "A new synthesis replaces both retired sections.",
+    });
+    const plan = planLinkPreservation({
+      previous: catalog([first, second]),
+      current: catalog([current]),
+      existingSectionLineage: {
+        version: 1,
+        sections: [
+          {
+            currentSectionId: "merged",
+            continuityIds: ["old-first", "old-second"],
+            historicalSectionIds: ["old-first", "old-second"],
+            progressContinuityGroups: [["old-first"], ["old-second"]],
+          },
+        ],
+      },
+      existingSectionAliases: {
+        version: 1,
+        aliases: [
+          { sourceHref: "/old-first/", targetSectionId: "merged" },
+          { sourceHref: "/old-second/", targetSectionId: "merged" },
+        ],
+      },
+    });
+
+    expect(plan.unresolved).toEqual([]);
+    expect(plan.lineage).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          previousSectionId: "old-first",
+          currentSectionId: "merged",
+          reason: "established-lineage",
+        }),
+        expect.objectContaining({
+          previousSectionId: "old-second",
+          currentSectionId: "merged",
+          reason: "established-lineage",
+        }),
+      ]),
+    );
+    expect(plan.sectionLineage.sections).toContainEqual(
+      expect.objectContaining({
+        currentSectionId: "merged",
+        continuityIds: ["old-first", "old-second"],
+        historicalSectionIds: ["old-first", "old-second"],
+      }),
+    );
+  });
+
   it("assigns a split lineage to only one reviewed successor", () => {
     const previousSection = section({
       id: "whole",

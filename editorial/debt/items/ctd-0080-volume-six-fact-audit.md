@@ -7,7 +7,7 @@ severity: high
 scopes: ["volume-6", "corpus"]
 sources: ["sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
 discovered: 2026-07-09
-updated: 2026-07-09
+updated: 2026-07-10
 resolved:
 discoveredIn: corpus-audit/2026-07-09
 ---
@@ -27,3 +27,8 @@ Classify each material claim as evidence, inference, metaphor, or author convict
 ## History
 
 - 2026-07-09: Recorded by the initial independent corpus audit.
+- 2026-07-10: Classified the principal scientific and metaphysical claims by evidentiary status and retained the item for primary-source and qualified review.
+
+## Partial paydown
+
+The current Volume VI treats coherence's grain as image, physiological measurement as a research hypothesis, roughly one hundred and fifty as provisional, and the dragon as image, open metaphysical proposition, and social supposition. `editorial/reviews/volume-6/production-pass/semantic-review.md` records these changes and preserves Bateson, Buhner, Plato, and cultural-lineage claims as unverified. The required source audit, scientific review, population evidence, and cultural review have not occurred, so the item remains open.

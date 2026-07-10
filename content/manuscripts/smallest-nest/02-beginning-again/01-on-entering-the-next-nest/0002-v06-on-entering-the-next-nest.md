@@ -12,15 +12,15 @@ sectionId: "v06-on-entering-the-next-nest"
 title: "On Entering the Next Nest"
 sectionOrder: 2
 sourceDoc: "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
-sourceHash: "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
-sourceParagraphStart: 403
-sourceParagraphEnd: 412
+sourceHash: "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+sourceParagraphStart: 287
+sourceParagraphEnd: 296
 ---
 
-You could stop here. The whole of it has been said.
+The reader could stop here. The whole has been said in compression.
 
-But the smallest nest is built to be outgrown, and there is a larger one waiting—made of the same shape, at greater size. To enter it is not to learn anything new. It is to begin again at the beginning, and to let each line you were just given open into a page, and then, beyond this book, into a volume. What was a sentence becomes a paragraph; what was a paragraph becomes a chapter; what was a chapter becomes a life’s argument. This is how understanding actually deepens—not by gathering more facts, but by returning to the same truth at ever-larger scale, until at last you can live inside it.
+The smallest nest is built to be outgrown. A larger one waits in the same shape. To enter it is to begin again and let each line open into a page, then into a volume. A sentence becomes a paragraph, and a paragraph becomes a chapter. Understanding can deepen through such returns, as an idea is tested at larger scales and against more detail.
 
-What follows is the second nest: the five volumes, gathered and retold with a little more room to breathe, so that when you go to them in full you will already know the country.
+What follows is the second nest: the five earlier volumes retold with more room, so a reader entering them in full will already know the country.
 
 VOLUME I

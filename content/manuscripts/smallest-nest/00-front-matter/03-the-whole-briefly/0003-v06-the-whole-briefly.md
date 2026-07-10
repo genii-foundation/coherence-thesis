@@ -12,11 +12,11 @@ sectionId: "v06-the-whole-briefly"
 title: "The Whole, Briefly"
 sectionOrder: 3
 sourceDoc: "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
-sourceHash: "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
-sourceParagraphStart: 89
-sourceParagraphEnd: 96
+sourceHash: "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+sourceParagraphStart: 87
+sourceParagraphEnd: 94
 ---
 
-Human potential is the most underused resource on Earth. People come alive when they discover their purpose, when they are recognized for what they carry, when they find the people they were meant to build beside, and when they are given real work to contribute. Almost none of this is arranged on purpose; nearly all of it is left to luck.
+Much human capacity never finds the people, work, or conditions that would draw it into use. Purpose, recognition, companionship, and consequential work are still left too often to circumstance.
 
-Providence is the name for a coordinating device that would change that—built on one inversion: that systems exist to serve life, and not life to serve systems. It helps people discover purpose, find one another at the human scale where they can truly be known, and contribute what only they can. Enough such communities, sovereign and cooperating, begin to compose something far larger: a living planet waking to itself through us. This book is the smallest container built to hold that whole idea.
+Providence names a proposed response, built on one inversion: systems should serve life. It would help people discover purpose, find one another at a scale where they can be known, and contribute what they carry. Enough sovereign, cooperating communities might then compose something larger. The image this series gives that possibility is a living planet waking to itself through us. This book is the smallest container built to hold the idea.
