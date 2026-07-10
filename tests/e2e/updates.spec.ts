@@ -1,6 +1,8 @@
 import { expect, test } from "@playwright/test";
 import {
+  updatesBranch,
   updateKindLabels,
+  updatesRepositoryUrl,
   type UpdateEntry,
 } from "../../src/lib/updates";
 import {
@@ -65,7 +67,31 @@ test("updates page renders the latest history with timeline pagination", async (
 }) => {
   await page.goto("/updates/");
 
-  await expect(page.getByRole("heading", { level: 1, name: "Updates" })).toBeVisible();
+  const updatesHeading = page.locator(".updates-heading");
+  await expect(updatesHeading).toHaveCount(1);
+  await expect(
+    updatesHeading.getByRole("heading", { level: 1, name: "Updates" }),
+  ).toBeVisible();
+  await expect(updatesHeading.locator(".eyebrow")).toHaveCount(0);
+  await expect(
+    updatesHeading.getByText(
+      "Every change to the thesis and its reader interface, newest first.",
+      { exact: true },
+    ),
+  ).toBeVisible();
+  const historyLink = updatesHeading.getByRole("link", {
+    name: "Browse history",
+    exact: true,
+  });
+  await expect(historyLink).toHaveAttribute(
+    "href",
+    updatesRepositoryUrl + "/commits/" + updatesBranch,
+  );
+  await expect(historyLink.locator("svg")).toHaveCount(1);
+  const newestFirstMentions = await updatesHeading.evaluate(
+    (heading) => (heading.textContent?.match(/newest first/g) ?? []).length,
+  );
+  expect(newestFirstMentions).toBe(1);
   await expect(
     page.getByText(
       new RegExp(
@@ -128,6 +154,56 @@ test("updates page renders the latest history with timeline pagination", async (
   expect(cardGeometry.heightDelta).toBeLessThanOrEqual(2.1);
   expect(cardGeometry.widthDelta).toBeLessThanOrEqual(2.1);
 
+  const latestCard = latestEntry.locator("article");
+  const standardCard = page
+    .locator(".updates-entry:not(.is-latest) article")
+    .first();
+  const [latestCardDefault, standardCardDefault] = await Promise.all([
+    latestCard.evaluate((card) => {
+      const style = window.getComputedStyle(card);
+      return {
+        backgroundColor: style.backgroundColor,
+        borderColor: style.borderColor,
+      };
+    }),
+    standardCard.evaluate((card) => {
+      const style = window.getComputedStyle(card);
+      return {
+        backgroundColor: style.backgroundColor,
+        borderColor: style.borderColor,
+      };
+    }),
+  ]);
+  expect(latestCardDefault.backgroundColor).toBe(
+    standardCardDefault.backgroundColor,
+  );
+  expect(latestCardDefault.borderColor).toBe(standardCardDefault.borderColor);
+
+  const expectedHoverBorder = await latestCard.evaluate((card) => {
+    const probe = document.createElement("span");
+    probe.style.border =
+      "1px solid color-mix(in srgb, var(--bronze-deep) 62%, var(--line))";
+    card.append(probe);
+    const borderColor = window.getComputedStyle(probe).borderColor;
+    probe.remove();
+    return borderColor;
+  });
+  await latestCard.hover();
+  await expect
+    .poll(() =>
+      latestCard.evaluate((card) => window.getComputedStyle(card).borderColor),
+    )
+    .toBe(expectedHoverBorder);
+  await standardCard.hover();
+  await expect
+    .poll(() =>
+      standardCard.evaluate((card) =>
+        window.getComputedStyle(card).borderColor,
+      ),
+    )
+    .toBe(expectedHoverBorder);
+  expect(expectedHoverBorder).not.toBe(latestCardDefault.borderColor);
+
   const topPagination = page.getByRole("navigation", {
     name: "Updates pagination",
     exact: true,
@@ -161,13 +237,20 @@ test("updates page renders the latest history with timeline pagination", async (
   expect(timelineGeometry.circleWidth).toBeGreaterThanOrEqual(10);
   expect(timelineGeometry.circleHeight).toBeGreaterThanOrEqual(10);
 
-  const dayHeadingAlignment = await page
+  const dayHeadingStyle = await page
     .locator(".updates-day-heading")
     .first()
-    .evaluate((heading) => window.getComputedStyle(heading).textAlign);
-  expect(dayHeadingAlignment).toBe(
+    .evaluate((heading) => {
+      const style = window.getComputedStyle(heading);
+      return {
+        borderTopWidth: style.borderTopWidth,
+        textAlign: style.textAlign,
+      };
+    });
+  expect(dayHeadingStyle.textAlign).toBe(
     (page.viewportSize()?.width ?? 0) > 720 ? "right" : "left",
   );
+  expect(dayHeadingStyle.borderTopWidth).toBe("0px");
 
   const horizontalLayout = await page.evaluate(() => ({
     documentWidth: document.documentElement.scrollWidth,

@@ -4581,6 +4581,9 @@ input {
 }
 
 .updates-summary a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
   color: var(--bronze-deep);
   font-weight: 700;
   text-decoration-thickness: 0.08em;
@@ -4594,6 +4597,11 @@ input {
 .updates-summary a:hover,
 .updates-summary a:focus-visible {
   color: var(--ink);
+}
+
+.updates-summary-github-icon {
+  width: 0.86rem;
+  height: 0.86rem;
 }
 
 .updates-history {
@@ -4662,7 +4670,6 @@ input {
 
 .updates-day-heading {
   grid-column: 1;
-  border-top: 1px solid var(--line);
   padding-top: 0.9rem;
   text-align: right;
 }
@@ -4773,13 +4780,9 @@ input {
     box-shadow 160ms ease;
 }
 
-.updates-entry.is-latest article {
-  background: color-mix(in srgb, var(--bronze) 9%, transparent);
-}
-
 .updates-entry article:hover,
 .updates-entry article:has(.updates-card-link:focus-visible) {
-  border-color: color-mix(in srgb, var(--bronze-deep) 38%, transparent);
+  border-color: color-mix(in srgb, var(--bronze-deep) 62%, var(--line));
   background: var(--card-background-hover);
   box-shadow:
     0 13px 32px rgba(44, 31, 18, 0.1),

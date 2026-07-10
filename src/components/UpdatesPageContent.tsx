@@ -59,21 +59,20 @@ export function UpdatesPageContent({
   return (
     <div className="page-frame updates-page">
       <header className="page-heading updates-heading">
-        <p className="eyebrow">Public record</p>
         <h1>Updates</h1>
         <p>
-          Every commit to the thesis and the reader that carries it, compiled
-          automatically from the public repository.
+          Every change to the thesis and its reader interface, newest first.
         </p>
         <p className="updates-summary">
           <strong>{totalCommitCount.toLocaleString()}</strong> commits across{" "}
-          <strong>{totalDayCount.toLocaleString()}</strong> days, newest first.{" "}
+          <strong>{totalDayCount.toLocaleString()}</strong> days.{" "}
           <a
             href={updatesRepositoryUrl + "/commits/" + updatesBranch}
             rel="noopener noreferrer"
             target="_blank"
           >
-            Browse the complete history
+            <GitHubMark className="updates-summary-github-icon" />
+            Browse history
           </a>
           .
         </p>
