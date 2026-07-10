@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { audioVoiceStorageKey } from "../../src/lib/audio-preferences";
+import { readerProgressV2StorageKey } from "../../src/lib/reader-state";
 import {
   catalog,
   readerProgressStorageKey,
@@ -99,25 +100,38 @@ test("home page presents the overview and manuscript entry points", async ({
     ),
   ).toBeVisible();
   await expect(page.locator(".hero-copy h1")).toHaveCSS("font-weight", "300");
-  await expect(page.locator(".hero-stats li")).toHaveText([
-    `${catalog.stats.volumeCount.toLocaleString()} volumes`,
-    `${catalog.stats.sectionCount.toLocaleString()} sections`,
-    `${formatReadingDurationForWords(catalog.stats.wordCount)} of audio`,
+  const heroStats = page.getByLabel("Manuscript stats");
+  await expect(heroStats.locator("dt")).toHaveText([
+    "Volumes",
+    "Sections",
+    "Hours of audio",
   ]);
-  await expect(page.locator(".hero-stats li").first()).toHaveCSS(
+  await expect(heroStats.locator("dd")).toHaveText([
+    catalog.stats.volumeCount.toLocaleString(),
+    catalog.stats.sectionCount.toLocaleString(),
+    formatReadingDurationForWords(catalog.stats.wordCount).replace(/ hours$/, ""),
+  ]);
+  await expect(heroStats.locator("dd").first()).toHaveCSS(
     "font-weight",
-    "600",
+    "400",
   );
-  await expect(page.locator(".hero-stats li").first()).toHaveCSS(
+  await expect(heroStats.locator("dt").first()).toHaveCSS(
     "text-transform",
     "uppercase",
   );
-  const statSeparatorContent = await page
-    .locator(".hero-stats li")
-    .first()
-    .evaluate((item) => getComputedStyle(item, "::after").content);
-  expect(statSeparatorContent).toBe("none");
-  await expect(page.locator(".hero-stats li").first()).toHaveCSS(
+  expect(
+    await heroStats.evaluate((stats) => ({
+      dividers: Array.from(stats.querySelectorAll(":scope > div + div")).map(
+        (stat) => getComputedStyle(stat).borderLeftWidth,
+      ),
+      topRule: getComputedStyle(stats, "::before").content,
+    })),
+  ).toEqual({ dividers: ["0px", "0px"], topRule: "none" });
+  await expect(heroStats.locator("dd").first()).toHaveCSS(
+    "color",
+    hexToRgb("#13202a"),
+  );
+  await expect(heroStats.locator("dt").first()).toHaveCSS(
     "color",
     hexToRgb("#77542a"),
   );
@@ -139,6 +153,29 @@ test("home page presents the overview and manuscript entry points", async ({
     await expect(page.locator(".hero-art")).toBeHidden();
 
     await page.setViewportSize({ width: 320, height: 720 });
+    const heroStatsLayout = await heroStats.evaluate((stats) => {
+      const copyBox = document
+        .querySelector(".hero-copy")
+        ?.getBoundingClientRect();
+      const textBoxes = Array.from(stats.querySelectorAll("dt, dd")).map(
+        (item) => item.getBoundingClientRect(),
+      );
+      const textLeft = Math.min(...textBoxes.map((box) => box.left));
+      const textRight = Math.max(...textBoxes.map((box) => box.right));
+
+      return {
+        copyCenter: copyBox ? copyBox.left + copyBox.width / 2 : 0,
+        scrollWidth: document.documentElement.scrollWidth,
+        statsTextCenter: textLeft + (textRight - textLeft) / 2,
+        viewportWidth: document.documentElement.clientWidth,
+      };
+    });
+    expect(
+      Math.abs(heroStatsLayout.statsTextCenter - heroStatsLayout.copyCenter),
+    ).toBeLessThanOrEqual(1);
+    expect(heroStatsLayout.scrollWidth).toBeLessThanOrEqual(
+      heroStatsLayout.viewportWidth + 1,
+    );
     const heroActionLayout = await page.locator(".hero-actions").evaluate(
       (actions) => {
         const actionBox = actions.getBoundingClientRect();
@@ -241,6 +278,19 @@ test("home page presents the overview and manuscript entry points", async ({
   );
   await expect(aubreyLink).toHaveAttribute("target", "_blank");
   await expect(aubreyLink).toHaveAttribute("rel", "author");
+  const githubLink = footer.getByRole("link", {
+    name: "Open to Source",
+  });
+  await expect(githubLink).toHaveAttribute(
+    "href",
+    "https://github.com/providence-collective/coherence-thesis",
+  );
+  await expect(githubLink).toHaveAttribute("target", "_blank");
+  await expect(githubLink).toHaveAttribute("rel", "noopener noreferrer");
+  await githubLink.hover();
+  const githubTooltip = page.locator(".clean-tooltip");
+  await expect(githubTooltip).toContainText("Open to Source");
+  await expect(githubTooltip.locator(".clean-tooltip-arrow")).toBeVisible();
 
   const homepageSpacing = await page.evaluate(() => {
     const hero = document
@@ -440,6 +490,91 @@ test("home page listen action starts audiobook playback", async ({ page }) => {
   await expect
     .poll(() => new URL(page.url()).pathname, { timeout: 15000 })
     .toBe(catalog.sections[0]!.href);
+  await expect(
+    page.getByRole("button", { name: "Pause audiobook" }),
+  ).toBeVisible();
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __spokenAudio: string[] }).__spokenAudio,
+      ),
+    )
+    .toHaveLength(1);
+});
+
+test("home toolbar playback starts at the first unread section", async ({ page }) => {
+  const firstSection = catalog.sections[0]!;
+  const unreadSection = catalog.sections[1]!;
+  await page.addInitScript(
+    ({ storageKey, progressKeys, preference, section }) => {
+      window.localStorage.setItem(storageKey, JSON.stringify(preference));
+      for (const progressKey of progressKeys) {
+        window.localStorage.setItem(
+          progressKey,
+          JSON.stringify({
+            sections: {
+              [section.sectionId]: {
+                sectionId: section.sectionId,
+                contentHash: section.contentHash,
+                readAt: Date.now(),
+                percent: 100,
+              },
+            },
+          }),
+        );
+      }
+      class TestSpeechSynthesisUtterance {
+        text: string;
+        rate = 1;
+        pitch = 1;
+        voice: SpeechSynthesisVoice | null = null;
+        onend: (() => void) | null = null;
+
+        constructor(text: string) {
+          this.text = text;
+        }
+      }
+
+      const spokenAudio: string[] = [];
+      Object.defineProperty(window, "__spokenAudio", {
+        configurable: true,
+        value: spokenAudio,
+      });
+      Object.defineProperty(window, "SpeechSynthesisUtterance", {
+        configurable: true,
+        value: TestSpeechSynthesisUtterance,
+      });
+      Object.defineProperty(window, "speechSynthesis", {
+        configurable: true,
+        value: {
+          addEventListener: () => undefined,
+          cancel: () => undefined,
+          getVoices: () => [],
+          pause: () => undefined,
+          removeEventListener: () => undefined,
+          resume: () => undefined,
+          speak: (utterance: SpeechSynthesisUtterance) => {
+            spokenAudio.push(utterance.text);
+          },
+        },
+      });
+    },
+    {
+      storageKey: audioVoiceStorageKey,
+      progressKeys: [readerProgressStorageKey, readerProgressV2StorageKey],
+      preference: systemVoicePreference,
+      section: firstSection,
+    },
+  );
+
+  await page.goto("/");
+  const toolbarListen = page.getByRole("button", { name: "Listen" });
+  await expect(toolbarListen).toBeVisible();
+  await toolbarListen.click();
+
+  await expect
+    .poll(() => new URL(page.url()).pathname, { timeout: 15000 })
+    .toBe(unreadSection.href);
   await expect(
     page.getByRole("button", { name: "Pause audiobook" }),
   ).toBeVisible();
@@ -776,6 +911,7 @@ test("overview references show local read checkmarks", async ({ page }) => {
 });
 
 test("home page presents an interactive cover flow", async ({ page }, testInfo) => {
+  test.setTimeout(60_000);
   await page.goto("/");
   const coverFlow = page.locator(".cover-flow");
   const initialActiveIndex = 0;
@@ -836,11 +972,15 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     const panelScrollStyle = panelScroll
       ? window.getComputedStyle(panelScroll)
       : null;
-
     return {
       coverHeight: coverBox?.height ?? 0,
       coverToPanelGap:
         coverBox && panelBox ? panelBox.top - coverBox.bottom : 0,
+      coverToPanelGapTarget: coverBox?.left ?? 0,
+      coverToPanelGapRatio:
+        coverBox && panelBox
+          ? (panelBox.top - coverBox.bottom) / coverBox.height
+          : 0,
       panelHeight: panelBox?.height ?? 0,
       panelMaxHeight: panelStyle?.maxHeight ?? "",
       panelOverflowY: panelStyle?.overflowY ?? "",
@@ -903,18 +1043,113 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     expect(mobileCoverFlowAlignment.nextRightInset).toBeGreaterThan(8);
   }
   expect(panelMetrics.panelHeight).toBeLessThanOrEqual(
-    panelMetrics.coverHeight * 0.88 + 2,
+    panelMetrics.coverHeight * 1.02 + 2,
   );
+  if (panelMetrics.viewportWidth <= 540) {
+    expect(panelMetrics.panelHeight).toBeGreaterThanOrEqual(
+      panelMetrics.coverHeight * 0.75,
+    );
+    expect(panelMetrics.panelScrollClientHeight).toBeGreaterThanOrEqual(100);
+  }
   expect(panelMetrics.stageEndGap).toBeLessThanOrEqual(
     panelMetrics.viewportWidth <= 540 ? 150 : 260,
   );
-  expect(panelMetrics.coverToPanelGap).toBeGreaterThanOrEqual(44);
+  if (panelMetrics.viewportWidth <= 540) {
+    expect(
+      Math.abs(
+        panelMetrics.coverToPanelGap - panelMetrics.coverToPanelGapTarget,
+      ),
+    ).toBeLessThanOrEqual(2);
+  } else {
+    expect(panelMetrics.coverToPanelGapRatio).toBeCloseTo(1 / 22.5, 2);
+  }
   expect(panelMetrics.panelMaxHeight).not.toBe("none");
   expect(panelMetrics.panelOverflowY).toBe("hidden");
   expect(panelMetrics.panelTransitionProperty).toContain("height");
   expect(panelMetrics.panelScrollOverflowY).toBe("auto");
   expect(panelMetrics.panelScrollHeight).toBeGreaterThanOrEqual(
     panelMetrics.panelScrollClientHeight,
+  );
+
+  const nextManuscriptButton = coverFlow.getByRole("button", {
+    name: "Next manuscript",
+  });
+  await nextManuscriptButton.click();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    catalog.volumes[1]!.href,
+  );
+  await nextManuscriptButton.click();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    catalog.volumes[2]!.href,
+  );
+
+  const tallPanelMetrics = await activeCard.evaluate((card) => {
+    const cover = card.querySelector(".cover-flow-image-frame");
+    const panel = card.querySelector(".cover-flow-card-panel");
+    const coverBox = cover?.getBoundingClientRect();
+    const panelBox = panel?.getBoundingClientRect();
+
+    return {
+      coverHeight: coverBox?.height ?? 0,
+      panelHeight: panelBox?.height ?? 0,
+    };
+  });
+  expect(tallPanelMetrics.panelHeight).toBeGreaterThanOrEqual(
+    tallPanelMetrics.coverHeight * 0.84,
+  );
+
+  const outlineScroll = activePanel.locator(".cover-flow-card-panel-scroll");
+  const outlineFixed = activePanel.locator(".manuscript-card-outline-fixed");
+  await expect
+    .poll(() =>
+      outlineScroll.evaluate(
+        (element) => element.scrollHeight - element.clientHeight,
+      ),
+    )
+    .toBeGreaterThan(1);
+  await outlineScroll.evaluate((element) => {
+    element.scrollTop = 24;
+    element.dispatchEvent(new Event("scroll", { bubbles: true }));
+  });
+  await expect(outlineFixed).toHaveClass(/is-scrolled/);
+  const scrollDividerWidth = await outlineScroll.evaluate((element) =>
+    Number.parseFloat(getComputedStyle(element).borderTopWidth),
+  );
+  expect(scrollDividerWidth).toBeGreaterThan(0);
+  await expect
+    .poll(() =>
+      outlineScroll.evaluate(
+        (element) => getComputedStyle(element).borderTopColor,
+      ),
+    )
+    .not.toBe("rgba(0, 0, 0, 0)");
+  const scrollDividerColor = await outlineScroll.evaluate(
+    (element) => getComputedStyle(element).borderTopColor,
+  );
+  const panelBorderColor = await activePanel.evaluate(
+    (element) => getComputedStyle(element).borderLeftColor,
+  );
+  expect(scrollDividerColor).toBe(panelBorderColor);
+  await outlineScroll.evaluate((element) => {
+    element.scrollTop = 0;
+    element.dispatchEvent(new Event("scroll", { bubbles: true }));
+  });
+  await expect(outlineFixed).not.toHaveClass(/is-scrolled/);
+
+  const previousManuscriptButton = coverFlow.getByRole("button", {
+    name: "Previous manuscript",
+  });
+  await previousManuscriptButton.click();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    catalog.volumes[1]!.href,
+  );
+  await previousManuscriptButton.click();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    initialActiveVolume.href,
   );
 
   await activePanel
@@ -1293,6 +1528,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   ).toHaveAttribute("data-volume-href", catalog.volumes.at(-2)!.href);
 
   if (testInfo.project.name !== "mobile") {
+    await page.waitForTimeout(400);
     await page.evaluate(() => {
       document.documentElement.style.scrollBehavior = "auto";
       window.scrollTo(0, 0);
@@ -1403,6 +1639,8 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
       nextTop: nextRect?.top ?? 0,
       panelBottom: panel?.bottom ?? 0,
       panelTop: panel?.top ?? 0,
+      coverToPanelGap:
+        cover && panel ? panel.top - cover.bottom : 0,
       viewportHeight: window.innerHeight,
     };
   });
@@ -1412,6 +1650,12 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
   expect(landscapeMetrics.coverBottom).toBeLessThan(
     landscapeMetrics.viewportHeight,
   );
+  expect(
+    landscapeMetrics.coverToPanelGap / landscapeMetrics.coverHeight,
+  ).toBeGreaterThanOrEqual(0.04);
+  expect(
+    landscapeMetrics.coverToPanelGap / landscapeMetrics.coverHeight,
+  ).toBeLessThanOrEqual(0.06);
   expect(landscapeMetrics.panelTop).toBeLessThan(landscapeMetrics.viewportHeight);
   expect(landscapeMetrics.panelBottom).toBeGreaterThan(
     landscapeMetrics.panelTop,

@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 import { copyrightYearLabel } from "@/lib/copyright";
 import { CopyrightYearIsland } from "@/components/CopyrightYearIsland";
 import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
+import { CleanTooltip } from "@/components/CleanTooltip";
+import { GitHubMark } from "@/components/GitHubMark";
 import { MobilePageContextIsland } from "@/components/MobilePageContextIsland";
 import { OfflineSupportIsland } from "@/components/OfflineSupportIsland";
 import { OutlineMenuIsland } from "@/components/OutlineMenuIsland";
@@ -12,6 +14,7 @@ import { ToolbarBreadcrumbs } from "@/components/ToolbarBreadcrumbs";
 import { ToolbarProgressIsland } from "@/components/ToolbarProgressIsland";
 import { ToolbarSettingsIsland } from "@/components/ToolbarSettingsIsland";
 import { ToolbarShareIsland } from "@/components/ToolbarShareIsland";
+import { ToolbarScrollShadowIsland } from "@/components/ToolbarScrollShadowIsland";
 import { catalog, toolbarOutline } from "@/lib/manuscript-data";
 
 const copyrightStartYear = 2026;
@@ -48,6 +51,17 @@ export function SiteShell({ children }: { children: ReactNode }) {
     audioVersionId: `overview-${contentHash(overviewText)}`,
     href: "/overview/",
   };
+  const firstSection = catalog.sections[0]!;
+  const fallbackAudio = {
+    sectionId: firstSection.sectionId,
+    title: firstSection.title,
+    text: "",
+    contentHash: firstSection.contentHash,
+    audioVersionId: firstSection.audioVersionId,
+    href: firstSection.href,
+    chapterHref: firstSection.chapterHref,
+    readerHref: firstSection.readerHref,
+  };
 
   return (
     <div className="site-shell">
@@ -73,6 +87,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <circle cx="1098" cy="1700" r="2.2" fill="currentColor" />
       </svg>
       <header className="site-header">
+        <ToolbarScrollShadowIsland />
         <ToolbarBrandIsland volumes={brandVolumes} />
         <ToolbarBreadcrumbs />
         <nav className="site-nav" aria-label="Primary">
@@ -80,7 +95,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <OutlineMenuIsland />
           <ToolbarSettingsIsland />
           <ToolbarShareIsland />
-          <AudioPlayerIsland overviewAudio={overviewAudio} />
+          <AudioPlayerIsland
+            fallbackAudio={fallbackAudio}
+            overviewAudio={overviewAudio}
+          />
           <ToolbarProgressIsland />
         </nav>
       </header>
@@ -124,6 +142,19 @@ export function SiteShell({ children }: { children: ReactNode }) {
             Aubrey Falconer
           </a>
           .
+        </p>
+        <p>
+          <CleanTooltip label="Open to Source">
+            <a
+              className="site-footer-github-link"
+              href="https://github.com/providence-collective/coherence-thesis"
+              rel="noopener noreferrer"
+              target="_blank"
+              aria-label="Open to Source"
+            >
+              <GitHubMark className="site-footer-github-icon" />
+            </a>
+          </CleanTooltip>
         </p>
       </footer>
     </div>

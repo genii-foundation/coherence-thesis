@@ -2,6 +2,7 @@
 
 import {
   type MouseEvent as ReactMouseEvent,
+  type UIEvent as ReactUIEvent,
   useCallback,
   useEffect,
   useLayoutEffect,
@@ -156,6 +157,9 @@ export function ManuscriptCoverFlowIsland({
     Record<string, string | null>
   >({});
   const [readCueVolumeId, setReadCueVolumeId] = useState<string | null>(null);
+  const [outlineScrolledByVolumeId, setOutlineScrolledByVolumeId] = useState<
+    Record<string, boolean>
+  >({});
   const progress = useReaderProgress();
   const scrollRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Array<HTMLElement | null>>([]);
@@ -388,6 +392,25 @@ export function ManuscriptCoverFlowIsland({
     });
   }, [updateCardPositions]);
 
+  const setOutlineScrolled = useCallback(
+    (volumeId: string, scrollTop: number) => {
+      const isScrolled = scrollTop > 1;
+      setOutlineScrolledByVolumeId((current) =>
+        current[volumeId] === isScrolled
+          ? current
+          : { ...current, [volumeId]: isScrolled },
+      );
+    },
+    [],
+  );
+
+  const handleOutlineScroll = useCallback(
+    (volumeId: string, event: ReactUIEvent<HTMLDivElement>) => {
+      setOutlineScrolled(volumeId, event.currentTarget.scrollTop);
+    },
+    [setOutlineScrolled],
+  );
+
   const scrollToIndex = useCallback(
     (index: number, behavior: ScrollBehavior = "smooth") => {
       const nextIndex = Math.max(0, Math.min(volumes.length - 1, index));
@@ -560,6 +583,9 @@ export function ManuscriptCoverFlowIsland({
               progress,
               sectionsForIds(volume.sectionIds),
             );
+            const outlineFixedClassName = `manuscript-card-outline-fixed${
+              outlineScrolledByVolumeId[volume.volumeId] ? " is-scrolled" : ""
+            }`;
 
             return (
               <div
@@ -652,12 +678,13 @@ export function ManuscriptCoverFlowIsland({
                     >
                       {selectedPart ? (
                         <>
-                          <div className="manuscript-card-outline-fixed">
+                          <div className={outlineFixedClassName}>
                             <button
                               type="button"
                               className="manuscript-card-outline-back"
                               onClick={() => {
                                 preparePanelHeightAnimation(volume.volumeId);
+                                setOutlineScrolled(volume.volumeId, 0);
                                 setSelectedPartByVolumeId((current) => ({
                                   ...current,
                                   [volume.volumeId]: null,
@@ -668,7 +695,12 @@ export function ManuscriptCoverFlowIsland({
                               Back to parts
                             </button>
                           </div>
-                          <div className="cover-flow-card-panel-scroll manuscript-card-outline-chapters">
+                          <div
+                            className="cover-flow-card-panel-scroll manuscript-card-outline-chapters"
+                            onScroll={(event) =>
+                              handleOutlineScroll(volume.volumeId, event)
+                            }
+                          >
                             <ManuscriptCardOutlineRow
                               className="manuscript-card-outline-part-overview"
                               href={selectedPart.href}
@@ -699,7 +731,7 @@ export function ManuscriptCoverFlowIsland({
                         </>
                       ) : (
                         <>
-                          <div className="manuscript-card-outline-fixed">
+                          <div className={outlineFixedClassName}>
                             <Link
                               className="manuscript-card-outline-full"
                               href={volume.firstSectionHref}
@@ -714,13 +746,19 @@ export function ManuscriptCoverFlowIsland({
                               />
                             </Link>
                           </div>
-                          <div className="cover-flow-card-panel-scroll manuscript-card-outline-parts">
+                          <div
+                            className="cover-flow-card-panel-scroll manuscript-card-outline-parts"
+                            onScroll={(event) =>
+                              handleOutlineScroll(volume.volumeId, event)
+                            }
+                          >
                             {volume.parts.map((part) => (
                               <ManuscriptCardOutlineRow
                                 key={part.href}
                                 onClick={() => {
                                   if (!active) return;
                                   preparePanelHeightAnimation(volume.volumeId);
+                                  setOutlineScrolled(volume.volumeId, 0);
                                   setSelectedPartByVolumeId((current) => ({
                                     ...current,
                                     [volume.volumeId]: part.partId,
