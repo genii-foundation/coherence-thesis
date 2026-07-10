@@ -35,6 +35,11 @@ test("cloud progress uses exact perimeter proportions from twelve o'clock", asyn
   const expectedPercents = [0, 1, 25, 50, 97, 100];
   const cards = page.locator(".progress-preview-card");
   await expect(cards).toHaveCount(expectedPercents.length);
+  const toolbarClouds = page.locator(
+    ".progress-preview-toolbar-clouds .progress-percent[data-connected='true']",
+  );
+  await expect(toolbarClouds).toHaveCount(4);
+  await expect(toolbarClouds.filter({ hasText: "100%" })).toHaveCount(1);
 
   for (const [index, expectedPercent] of expectedPercents.entries()) {
     const cloud = cards
@@ -528,6 +533,16 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   const readingMapLink = popover.getByRole("link", { name: "Open reading map" });
   await expect(readingMapLink).toBeVisible();
   await expect(readingMapLink).toHaveAttribute("href", "/progress/");
+  const readingMapGap = await readingMapLink.evaluate((element) => {
+    const section = element.closest(".reader-actions");
+    const previousSection = section?.previousElementSibling;
+    if (!previousSection) return 0;
+    return (
+      element.getBoundingClientRect().top -
+      previousSection.getBoundingClientRect().bottom
+    );
+  });
+  expect(readingMapGap).toBeGreaterThanOrEqual(12);
   const markReadButton = popover.getByRole("button", {
     name: /^(Mark current section as read|Current section is marked read)$/,
   });

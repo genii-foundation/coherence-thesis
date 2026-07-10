@@ -33,6 +33,7 @@ type ToolbarMenuTriggerProps = {
 type ToolbarMenuStyle = CSSProperties & {
   "--toolbar-menu-height": string;
   "--toolbar-mobile-popover-top"?: string;
+  "--toolbar-popover-top"?: string;
 };
 
 type ToolbarMenuPopoverProps = {
@@ -62,6 +63,7 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
   const [menuState, setMenuState] = useState<"open" | "closing">("closing");
   const [menuHeight, setMenuHeight] = useState(0);
   const [mobilePopoverTop, setMobilePopoverTop] = useState<number | null>(null);
+  const [popoverTop, setPopoverTop] = useState<number | null>(null);
   const openRef = useRef(open);
   const containerRef = useRef<C | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
@@ -110,12 +112,26 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     );
   }, []);
 
+  const measurePopoverTop = useCallback(() => {
+    const container = containerRef.current;
+    const trigger = triggerRef.current;
+    if (!container || !trigger) {
+      setPopoverTop(null);
+      return;
+    }
+
+    const containerBox = container.getBoundingClientRect();
+    const triggerBox = trigger.getBoundingClientRect();
+    setPopoverTop(Math.max(0, triggerBox.bottom - containerBox.top));
+  }, []);
+
   const measurePopover = useCallback(() => {
     const popover = popoverRef.current;
     if (!popover) return;
     measureMobilePopoverTop();
+    measurePopoverTop();
     setMenuHeight(popover.scrollHeight);
-  }, [measureMobilePopoverTop]);
+  }, [measureMobilePopoverTop, measurePopoverTop]);
 
   const scheduleMeasure = useCallback(() => {
     clearMeasureFrame();
@@ -134,12 +150,14 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     setMenuState("closing");
     setMenuHeight(0);
     measureMobilePopoverTop();
+    measurePopoverTop();
     setOpen(true);
   }, [
     clearCloseTimer,
     clearMeasureFrame,
     clearTransitionFrame,
     measureMobilePopoverTop,
+    measurePopoverTop,
   ]);
 
   const beginClose = useCallback(() => {
@@ -278,6 +296,9 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
         ...(mobilePopoverTop === null
           ? {}
           : { "--toolbar-mobile-popover-top": `${mobilePopoverTop}px` }),
+        ...(popoverTop === null
+          ? {}
+          : { "--toolbar-popover-top": `${popoverTop}px` }),
       },
     },
   };

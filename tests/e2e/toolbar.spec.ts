@@ -124,6 +124,30 @@ async function expectMobilePopoverStartsBelowToolbar(
   expect(metrics.radiusTopRight).toBe(0);
 }
 
+async function expectDesktopPopoverStartsAtTriggerBottom(
+  page: Page,
+  triggerSelector: string,
+  popoverSelector: string,
+): Promise<void> {
+  await expect
+    .poll(async () =>
+      page.evaluate(
+        ({ popoverSelector, triggerSelector }) => {
+          const popover = document
+            .querySelector(popoverSelector)
+            ?.getBoundingClientRect();
+          const trigger = document
+            .querySelector(triggerSelector)
+            ?.getBoundingClientRect();
+          if (!popover || !trigger) return Number.POSITIVE_INFINITY;
+          return Math.abs(popover.top - trigger.bottom);
+        },
+        { popoverSelector, triggerSelector },
+      ),
+    )
+    .toBeLessThanOrEqual(1);
+}
+
 async function toolbarMenuHeightTarget(
   page: Page,
   selector: string,
@@ -824,6 +848,11 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectRestingControlBorder(page, ".search-field input");
   await page.getByRole("searchbox", { name: "Search all manuscripts" }).fill("the");
   await expect(searchMenu.locator(".search-result").first()).toBeVisible();
+  await expectDesktopPopoverStartsAtTriggerBottom(
+    page,
+    ".search-menu-button",
+    ".search-popover",
+  );
   await expectMenuFitsViewport(page, ".search-popover", ".search-results");
   await page.keyboard.press("Escape");
   await expect(searchMenu).toHaveCount(0);
@@ -833,6 +862,11 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectToolbarTriggerActive(page, ".outline-menu-button");
   await expectRestingControlBorder(page, ".outline-search input");
   await expect(outlineMenu.locator(".outline-volume-link").first()).toBeVisible();
+  await expectDesktopPopoverStartsAtTriggerBottom(
+    page,
+    ".outline-menu-button",
+    ".outline-popover",
+  );
   await expectMenuFitsViewport(page, ".outline-popover", ".outline-scroll");
   await page.keyboard.press("Escape");
   await expect(outlineMenu).toHaveCount(0);
@@ -842,6 +876,11 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectToolbarTriggerActive(page, ".settings-menu-button");
   await expect(settingsMenu.getByText("Reading settings")).toBeVisible();
   await expectRestingControlBorder(page, ".font-select-button");
+  await expectDesktopPopoverStartsAtTriggerBottom(
+    page,
+    ".settings-menu-button",
+    ".settings-popover",
+  );
   await settingsMenu.getByRole("button", { name: "Reader font" }).click();
   const fontOptions = page.locator(".font-select-options");
   await expect(fontOptions).toBeVisible();
@@ -877,6 +916,11 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   });
   await expectToolbarTriggerActive(page, ".share-menu-button");
   await expect(shareMenu).toBeVisible();
+  await expectDesktopPopoverStartsAtTriggerBottom(
+    page,
+    ".share-menu-button",
+    ".share-popover",
+  );
   await expectMenuFitsViewport(page, ".share-popover");
   await page.keyboard.press("Escape");
   await expect(shareMenu).toHaveCount(0);
@@ -886,6 +930,11 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   const audioMenu = page.getByLabel("Audiobook controls");
   await expectToolbarTriggerOpenWithoutActiveWash(page, ".audio-menu-button");
   await expect(audioMenu).toBeVisible();
+  await expectDesktopPopoverStartsAtTriggerBottom(
+    page,
+    ".audio-menu-button",
+    ".audio-popover",
+  );
   await expectRestingControlBorder(page, ".voice-field select");
   await expect(audioMenu.getByText("Voice", { exact: true })).toBeVisible();
   await expect(audioMenu.getByText("Speed", { exact: true })).toBeVisible();
@@ -954,6 +1003,11 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   const progressMenu = page.getByRole("region", { name: "Reader progress" });
   await expectToolbarTriggerActive(page, ".progress-menu-button");
   await expect(progressMenu).toBeVisible();
+  await expectDesktopPopoverStartsAtTriggerBottom(
+    page,
+    ".progress-menu-button",
+    ".progress-popover",
+  );
   await expect(progressMenu.getByText("Recommended next")).toBeVisible();
   await expectMenuFitsViewport(page, ".progress-popover");
 });

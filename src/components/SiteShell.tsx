@@ -6,6 +6,7 @@ import { MobilePageContextIsland } from "@/components/MobilePageContextIsland";
 import { OfflineSupportIsland } from "@/components/OfflineSupportIsland";
 import { OutlineMenuIsland } from "@/components/OutlineMenuIsland";
 import { PageFadeIsland } from "@/components/PageFadeIsland";
+import { ProgressToolbarPreviewIsland } from "@/components/ProgressToolbarPreviewIsland";
 import { SearchMenuIsland } from "@/components/SearchMenuIsland";
 import { ToolbarBrandIsland } from "@/components/ToolbarBrandIsland";
 import { ToolbarBreadcrumbs } from "@/components/ToolbarBreadcrumbs";
@@ -75,6 +76,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <header className="site-header">
         <ToolbarBrandIsland volumes={brandVolumes} />
         <ToolbarBreadcrumbs />
+        <ProgressToolbarPreviewIsland />
         <nav className="site-nav" aria-label="Primary">
           <SearchMenuIsland />
           <OutlineMenuIsland />
