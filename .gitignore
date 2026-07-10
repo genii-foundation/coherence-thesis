@@ -35,7 +35,10 @@
 # misc
 .DS_Store
 *.pem
-/.claude/
+
+# local Claude Code state stays ignored; shared project skills are committed
+/.claude/*
+!/.claude/skills/
 
 # debug
 npm-debug.log*
