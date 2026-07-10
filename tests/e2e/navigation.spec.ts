@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 import {
   catalog,
   volumeWithNeighbors,
@@ -23,6 +23,29 @@ import {
   parentSectionContainer,
   formatReadingDurationForWords,
 } from "./fixtures";
+
+async function captureClipboardWrites(page: Page) {
+  await page.addInitScript(() => {
+    Object.defineProperty(window.navigator, "clipboard", {
+      configurable: true,
+      value: {
+        writeText: async (text: string) => {
+          (
+            window as Window & { __copiedReaderHeadingLink?: string }
+          ).__copiedReaderHeadingLink = text;
+        },
+      },
+    });
+  });
+}
+
+async function copiedReaderHeadingLink(page: Page): Promise<string | undefined> {
+  return page.evaluate(
+    () =>
+      (window as Window & { __copiedReaderHeadingLink?: string })
+        .__copiedReaderHeadingLink,
+  );
+}
 
 test("manuscript volume heading does not overlap its stats line", async ({
   page,
@@ -156,6 +179,163 @@ test("multi-section chapters render one anchored reader page", async ({
       name: "The Deeper Inquiry",
     }),
   ).toBeVisible();
+});
+
+test("reader headings reveal and copy full anchored links", async ({
+  page,
+}, testInfo) => {
+  await captureClipboardWrites(page);
+  await page.goto(
+    "/manuscripts/2/the-diagnosis/the-architecture-of-extraction/",
+  );
+
+  const section = page.locator("#v02-toward-humane-technology-2");
+  const heading = section.getByRole("heading", {
+    level: 2,
+    name: "Toward Humane Technology",
+  });
+  const copyButton = section.getByRole("button", {
+    name: "Copy link to Toward Humane Technology",
+  });
+  await expect(heading).toBeVisible();
+  await expect(copyButton).toHaveCount(1);
+
+  const restingButton = await copyButton.evaluate((element) => {
+    const style = window.getComputedStyle(element);
+    const box = element.getBoundingClientRect();
+    return {
+      height: box.height,
+      opacity: Number.parseFloat(style.opacity),
+      pointerEvents: style.pointerEvents,
+      right: box.right,
+      viewportWidth: window.innerWidth,
+      width: box.width,
+    };
+  });
+
+  if (testInfo.project.name === "mobile") {
+    expect(restingButton.opacity).toBeGreaterThan(0.5);
+    expect(restingButton.pointerEvents).toBe("auto");
+    expect(restingButton.width).toBeGreaterThanOrEqual(44);
+    expect(restingButton.height).toBeGreaterThanOrEqual(44);
+    expect(restingButton.right).toBeLessThanOrEqual(
+      restingButton.viewportWidth + 1,
+    );
+
+    const tailAlignment = await copyButton.evaluate((element) => {
+      const heading = element.parentElement?.querySelector("h2");
+      const textNode = heading?.firstChild;
+      if (!textNode?.textContent) return null;
+      const range = document.createRange();
+      range.setStart(textNode, textNode.textContent.length - 1);
+      range.setEnd(textNode, textNode.textContent.length);
+      const glyph = range.getBoundingClientRect();
+      const button = element.getBoundingClientRect();
+      return {
+        buttonBottom: button.bottom,
+        buttonTop: button.top,
+        glyphBottom: glyph.bottom,
+        glyphTop: glyph.top,
+      };
+    });
+    expect(tailAlignment).not.toBeNull();
+    expect(tailAlignment!.buttonTop).toBeLessThan(tailAlignment!.glyphBottom);
+    expect(tailAlignment!.buttonBottom).toBeGreaterThan(tailAlignment!.glyphTop);
+  } else {
+    expect(restingButton.opacity).toBe(0);
+    expect(restingButton.pointerEvents).toBe("none");
+
+    await heading.hover();
+    await expect
+      .poll(() =>
+        copyButton.evaluate((element) => ({
+          opacity: Number.parseFloat(window.getComputedStyle(element).opacity),
+          pointerEvents: window.getComputedStyle(element).pointerEvents,
+        })),
+      )
+      .toEqual({ opacity: 1, pointerEvents: "auto" });
+
+    await copyButton.hover();
+    const tooltip = page.getByRole("tooltip");
+    await expect(tooltip).toBeVisible();
+    await expect(tooltip).toHaveText("Click to copy link");
+  }
+
+  const precedingCopyButton = page.getByRole("button", {
+    name: "Copy link to The Architecture of Extraction",
+  });
+  await precedingCopyButton.focus();
+  await page.keyboard.press("Tab");
+  await expect(copyButton).toBeFocused();
+  const focusedStyle = await copyButton.evaluate((element) => ({
+    boxShadow: window.getComputedStyle(element).boxShadow,
+    opacity: Number.parseFloat(window.getComputedStyle(element).opacity),
+  }));
+  expect(focusedStyle.opacity).toBe(1);
+  expect(focusedStyle.boxShadow).not.toBe("none");
+  await copyButton.press("Enter");
+
+  const expectedHref = new URL(
+    "/manuscripts/2/the-diagnosis/the-architecture-of-extraction/#v02-toward-humane-technology-2",
+    page.url(),
+  ).href;
+  await expect.poll(() => copiedReaderHeadingLink(page)).toBe(expectedHref);
+
+  const toast = page.locator(".reader-copy-toast");
+  await expect(toast).toHaveAttribute("role", "status");
+  await expect(toast).toHaveText("Link copied");
+  const toastBox = await toast.boundingBox();
+  const viewport = page.viewportSize();
+  expect(toastBox).not.toBeNull();
+  expect(viewport).not.toBeNull();
+  expect(toastBox!.x).toBeGreaterThanOrEqual(0);
+  expect(toastBox!.x + toastBox!.width).toBeLessThanOrEqual(viewport!.width);
+  expect(toastBox!.y + toastBox!.height).toBeLessThanOrEqual(viewport!.height);
+
+  await precedingCopyButton.press("Enter");
+  await expect
+    .poll(() => copiedReaderHeadingLink(page))
+    .toBe(
+      new URL(
+        "/manuscripts/2/the-diagnosis/the-architecture-of-extraction/#v02-the-architecture-of-extraction",
+        page.url(),
+      ).href,
+    );
+  await expect(page.locator(".reader-copy-toast")).toHaveCount(1);
+  await expect(page.locator(".reader-copy-toast")).toHaveText("Link copied");
+});
+
+test("standalone and first-section headings keep their section fragments", async ({
+  page,
+}) => {
+  await captureClipboardWrites(page);
+
+  await page.goto(centralWoundSection.href);
+  const standaloneCopy = page.getByRole("button", {
+    name: `Copy link to ${centralWoundSection.title}`,
+  });
+  await standaloneCopy.focus();
+  await standaloneCopy.press("Enter");
+  await expect
+    .poll(() => copiedReaderHeadingLink(page))
+    .toBe(
+      new URL(
+        `${centralWoundSection.readerHref.replace(/#.*$/, "")}#${centralWoundSection.sectionId}`,
+        page.url(),
+      ).href,
+    );
+
+  const chapterHref =
+    "/manuscripts/4/the-governance-architecture/the-amendment-architecture/";
+  await page.goto(chapterHref);
+  const chapterCopy = page.getByRole("button", {
+    name: "Copy link to The Amendment Architecture",
+  });
+  await chapterCopy.focus();
+  await chapterCopy.press("Enter");
+  await expect
+    .poll(() => copiedReaderHeadingLink(page))
+    .toBe(new URL(`${chapterHref}#v04-the-amendment-architecture`, page.url()).href);
 });
 
 test("chapter navigation continues into the first section of the next part", async ({

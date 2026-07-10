@@ -6,6 +6,7 @@ import { LegacyFragmentRedirectIsland } from "@/components/LegacyFragmentRedirec
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReaderAudioWordInteractionIsland } from "@/components/ReaderAudioWordInteractionIsland";
 import { ReaderEngagementIsland } from "@/components/ReaderEngagementIsland";
+import { ReaderLinkableHeading } from "@/components/ReaderLinkableHeading";
 import { SectionRevisionNotice } from "@/components/SectionRevisionNotice";
 import { SectionAliasRedirectIsland } from "@/components/SectionAliasRedirectIsland";
 import {
@@ -16,6 +17,7 @@ import {
   type SectionAlias,
 } from "@/lib/manuscript-data";
 import { formatReadingDuration } from "@/lib/reading-time";
+import { sectionHeadingHref } from "@/lib/reader-fragments";
 
 function formatVersionDate(value: string): string {
   const date = new Date(value);
@@ -77,7 +79,11 @@ export function SectionReader({
         legacySectionIds={section.legacySectionIds}
       />
       <header className="manuscript-heading">
-        <h1>{section.title}</h1>
+        <ReaderLinkableHeading
+          href={sectionHeadingHref(section.readerHref, section.sectionId)}
+          level={1}
+          title={section.title}
+        />
         <p>{formatReadingDuration(section.readingMinutes)} read.</p>
         <p className="section-version-meta">
           <span>Last Updated:</span>

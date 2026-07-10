@@ -9,6 +9,13 @@ export type ReaderFragmentTarget = {
   anchorId: string;
 };
 
+export function sectionHeadingHref(
+  readerHref: string,
+  sectionId: string,
+): string {
+  return `${readerHref.replace(/#.*$/, "")}#${sectionId}`;
+}
+
 export function canonicalReaderDestination(
   readerHref: string,
   currentHash: string,

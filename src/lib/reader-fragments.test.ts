@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   canonicalReaderDestination,
   readerFragmentTarget,
+  sectionHeadingHref,
 } from "./reader-fragments";
 
 const sections = [
@@ -13,6 +14,25 @@ const sections = [
 ];
 
 describe("reader fragment fallback", () => {
+  it("builds a full section heading fragment for every reader route", () => {
+    expect(
+      sectionHeadingHref(
+        "/manuscripts/2/the-diagnosis/the-architecture-of-extraction/#old",
+        "v02-toward-humane-technology-2",
+      ),
+    ).toBe(
+      "/manuscripts/2/the-diagnosis/the-architecture-of-extraction/#v02-toward-humane-technology-2",
+    );
+    expect(
+      sectionHeadingHref(
+        "/manuscripts/3/the-reckoning/the-central-wound/",
+        "v03-the-central-wound",
+      ),
+    ).toBe(
+      "/manuscripts/3/the-reckoning/the-central-wound/#v03-the-central-wound",
+    );
+  });
+
   it("keeps a historical fragment while canonicalizing an alias", () => {
     expect(
       canonicalReaderDestination(
