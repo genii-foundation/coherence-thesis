@@ -12,13 +12,17 @@ sectionId: "v03-arrival"
 title: "Arrival"
 sectionOrder: 3
 sourceDoc: "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"
-sourceHash: "72eef2809146d6e4560feee82fc606dae083676730b0019eaaac76914052b104"
-sourceParagraphStart: 683
-sourceParagraphEnd: 690
+sourceHash: "ae6adff173fc5363eca581cf47551b71c412e31437eb0a0ecd2a8d0dd528414c"
+sourceParagraphStart: 657
+sourceParagraphEnd: 668
 ---
 
-Maren is forty-three. For eleven years she has run a small project on the edge of a mid-sized city, restoring a degraded urban watershed — a creek that was buried in a culvert in the 1960s and that she and a shifting handful of volunteers have been daylighting, foot by foot, ever since. The work is real and it is good. It is also, by every measure the world offers her, failing. The grants are erratic. The volunteers burn out. The city's planning department treats her as a nuisance. She is, at the moment she encounters Providence, closer to quitting than she has admitted to anyone, including herself.
+Maren is forty-three. For eleven years she has led a small project at the edge of a mid-sized city, restoring an urban creek buried in a culvert during the 1960s. She and a changing group of volunteers have been bringing it back to daylight, foot by foot.
 
-She does not arrive through advertising, because Providence does not advertise. She arrives through a single conversation — a woman she met years ago at a conference, someone whose steadiness she had never forgotten, writes to her. Not a pitch. A letter. It says, in essence: I have found something I think you should see, not because it will solve your problems but because I think you are one of the people it is for. Would you be willing to have a conversation about whether it is real?
+The work is real and good. By nearly every measure available to her, it is also failing. Grants arrive erratically. Volunteers burn out. The planning department treats her as a nuisance. She is closer to quitting than she has admitted, even to herself.
 
-This is the first thing Maren experiences of Providence, and it is not a product. It is the quality of an invitation extended by someone whose discernment she trusts. She says yes — less out of hope, which she has little of, than out of respect for the person asking.
+Providence does not reach her through advertising. A woman she met years ago at a conference writes a letter. Maren remembers her steadiness. The letter contains no promise:
+
+I have found something I think you should see. I do not know whether it will solve any of your problems. I think you may be one of the people it is for. Would you be willing to help me decide whether it is real?
+
+Maren says yes less from hope, which is running thin, than from trust in the discernment of the person asking.

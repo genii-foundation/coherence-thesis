@@ -12,17 +12,19 @@ sectionId: "v03-the-record"
 title: "The Record"
 sectionOrder: 7
 sourceDoc: "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"
-sourceHash: "72eef2809146d6e4560feee82fc606dae083676730b0019eaaac76914052b104"
-sourceParagraphStart: 725
-sourceParagraphEnd: 736
+sourceHash: "ae6adff173fc5363eca581cf47551b71c412e31437eb0a0ecd2a8d0dd528414c"
+sourceParagraphStart: 713
+sourceParagraphEnd: 726
 ---
 
-By the end of her first year, Maren carries something she did not have before: a coherence record. It is not a score. It is not a ranking. It is a longitudinal portrait — a quiet, accumulating account of how she has shown up across the year: the consistency of her presence, the generative quality of the encounters she has entered, the trajectory of her own development from the constrained and exhausted woman of the intake toward something more regulated, more open, more available.
+By the end of the year, Maren carries the beginning of a coherence record. It is not a score or rank. It is a participant-owned account of encounters she chose to include, reflections she accepted or contested, commitments she made, and patterns that may be useful to her development.
 
-The record belongs to her. It is encrypted with her own keys; it lives on her own devices; no one can see it without her explicit consent; and the raw material from which it is drawn — the recordings, the biometric streams — never left her own hardware in the first place. What she can do, when she chooses, is prove things from it: that she has, over a documented year, demonstrated the qualities that make someone a genuine partner in long-horizon work. Not creditworthiness in the bank's sense. Something the bank has never been able to measure: trustworthiness in the deep sense, the kind that ordinarily takes years of proximity to establish, now legible at the moment of introduction.
+The record is encrypted under her keys and stored on hardware she controls. Raw recordings and biometric streams remain local. When she chooses, she may disclose a narrow proof, a reference, or part of the record to someone considering a collaboration. No proof removes the need for judgment.
 
-She does not yet know what this record will make possible. She knows only that she is no longer alone, that her project is no longer failing, that she has a mentor and a collaborator and a circle of eleven people scattered across the country who are, in some real sense, hers. She has been woven into something. And the something has begun, in ways she is only beginning to perceive, to provide.
+The record shows a person in motion, not an identity fixed by data. It also contains disagreement. Some interpretations helped her. Some did not. The right to say "the system misread me" belongs inside the record rather than outside the institution's patience.
 
-That is the experience of a year inside Providence. It is not a transaction. It is not a service consumed. It is the slow, patient, measurable process of being genuinely seen, genuinely matched, and genuinely held within a network of people who are paying attention — and of becoming, through that being-held, more genuinely capable of holding others. This is what the architecture of the previous chapters produces when it is alive. This is the thing the governance of the following chapters exists to protect.
+Maren ends the year with a mentor, a collaborator, and a circle of people who understand the work. Her project is not magically rescued. She is no longer carrying it alone.
 
-But we have left a question hanging, the same question Maren left hanging when she almost declined the third introduction. A network of genuine connection is a beautiful thing. But Maren still has to eat. Her volunteers still have to eat. The creek does not feed anyone. And so the deepest question this book must answer is the one we turn to now: how does any of this — the presence, the presencing, the coherence record, the regulated nervous system — reach the ground of material life? How does it feed people?
+At its most credible, a year inside Providence is a sequence of encounters through which a person becomes better known, better connected, and more capable of knowing and holding others.
+
+A harder question remains. Maren still has to eat. Her volunteers still have to eat. The creek does not feed anyone by metaphor. How could presence reach material life without becoming another moral score imposed on people who need food?

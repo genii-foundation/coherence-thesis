@@ -51,9 +51,9 @@ Do not edit generated files by hand. Edit source Markdown or series metadata, th
 <!-- BEGIN:development-status -->
 
 - Next.js: 16.2.9
-- Manuscripts: 9 volume, 47 parts, 396 chapters, 551 sections
-- Canonical words: 198,303
-- Estimated full read: 902 minutes
+- Manuscripts: 9 volume, 47 parts, 394 chapters, 551 sections
+- Canonical words: 166,216
+- Estimated full read: 756 minutes
 - Overview nodes: 9
 
 <!-- END:development-status -->
@@ -186,6 +186,13 @@ npm run manuscripts:editorial:strict -- --volume <volume-id>
 ```
 
 The global strict audit is intentionally not part of `npm run validate` while unrevised volumes still contain baseline violations. Add it after all nine volumes complete the editorial program. Judgment-heavy findings remain review prompts rather than automatic failures.
+
+Durable inconsistencies, unfulfilled promises, unresolved claims, citation gaps, canon conflicts, literary weaknesses, link obligations, audio obligations, and editorial tooling limitations live in `editorial/debt/`. Add one stable item per discovery, resolve paid debt without deleting its history, and reopen the same item if later evidence shows the paydown was only partial. Then refresh and validate the index:
+
+```bash
+npm run manuscripts:debt:update
+npm run manuscripts:debt
+```
 
 ## Audiobook Clip Publishing
 

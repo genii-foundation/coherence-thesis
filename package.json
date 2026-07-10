@@ -40,6 +40,10 @@
     "manuscripts:validate": "node --import tsx scripts/manuscripts/validate.ts",
     "premanuscripts:editorial": "node scripts/ensure-node-modules.mjs",
     "manuscripts:editorial": "node --import tsx scripts/manuscripts/editorial-lint.ts",
+    "premanuscripts:debt": "node scripts/ensure-node-modules.mjs",
+    "manuscripts:debt": "node --import tsx scripts/manuscripts/editorial-debt.ts",
+    "premanuscripts:debt:update": "node scripts/ensure-node-modules.mjs",
+    "manuscripts:debt:update": "node --import tsx scripts/manuscripts/editorial-debt.ts --write",
     "premanuscripts:editorial-ledger": "node scripts/ensure-node-modules.mjs",
     "manuscripts:editorial-ledger": "node --import tsx scripts/manuscripts/editorial-ledger.ts",
     "premanuscripts:editorial-ledgers:init": "node scripts/ensure-node-modules.mjs",
@@ -57,7 +61,7 @@
     "prereadme:update": "node scripts/ensure-node-modules.mjs",
     "readme:update": "node --import tsx scripts/update-readme-status.ts",
     "prevalidate": "node scripts/ensure-node-modules.mjs",
-    "validate": "npm run manuscripts:validate && npm run typecheck && npm run lint && npm run test && npm run build"
+    "validate": "npm run manuscripts:debt && npm run manuscripts:validate && npm run typecheck && npm run lint && npm run test && npm run build"
   },
   "engines": {
     "node": ">=20.9"

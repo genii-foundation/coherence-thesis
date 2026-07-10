@@ -12,18 +12,16 @@ sectionId: "v01-orientation"
 title: "Orientation"
 sectionOrder: 1
 sourceDoc: "sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md"
-sourceHash: "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a"
-sourceParagraphStart: 15
-sourceParagraphEnd: 37
+sourceHash: "6a576b8800f676b5159558794fbbbae406fd935c8d080feb9cd958d7bea44b8d"
+sourceParagraphStart: 11
+sourceParagraphEnd: 29
 ---
 
-The Coherence Thesis is an invitation to recognize that the future of civilization will not be decided by technology or ideology, but by whether we learn to organize society around the biological conditions that make intelligence, trust, and coordination possible at planetary scale.
+The Coherence Thesis begins with a constraint: civilization cannot coordinate at planetary scale unless its people can sustain intelligence and trust under pressure. Technology and ideology matter, but neither can override the biological conditions that make coordination possible.
 
+Our crises appear political, ideological, and technological. Beneath them lies a biological oversight. Global interdependence, speed, and systemic entanglement have exceeded the capacity of inherited forms of coordination. Any viable post-extractive future must therefore sustain collective intelligence through coherence.
 
-It argues that civilization's current crises are not primarily political, ideological, or technological failures, but biological oversights — and that any viable post-extractive future must be built on coherence as the substrate that sustains collective intelligence at planetary scale, where global interdependence, velocity, and total systemic entanglement exceed the capacity of traditional forms of coordination.
-
-
-This book is written for the moment when the scale of our technological power has begun to exceed the coherence with which we wield it — and when recognizing that mismatch may determine whether civilization adapts, hardens, or collapses.
+This book addresses the widening gap between our technological power and the coherence with which we wield it. Whether we recognize that gap may determine whether civilization adapts, hardens, or collapses.
 
 **co·her·ence** | kōˈhirəns |
 *noun*
@@ -32,4 +30,4 @@ This book is written for the moment when the scale of our technological power ha
 
 **2** the quality of forming a unified whole: *the group began to lose coherence and the artists took separate directions.*
 
-**3** the measurable capacity of a nervous system — individual or collective — to remain regulated, relational, and reality-responsive as complexity and consequence scale.
+**3** the measurable capacity of a nervous system, individual or collective, to remain regulated, relational, and responsive to reality as complexity and consequence grow.

@@ -12,13 +12,15 @@ sectionId: "v03-the-four-streams"
 title: "The Four Streams"
 sectionOrder: 5
 sourceDoc: "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"
-sourceHash: "72eef2809146d6e4560feee82fc606dae083676730b0019eaaac76914052b104"
-sourceParagraphStart: 545
-sourceParagraphEnd: 552
+sourceHash: "ae6adff173fc5363eca581cf47551b71c412e31437eb0a0ecd2a8d0dd528414c"
+sourceParagraphStart: 505
+sourceParagraphEnd: 514
 ---
 
-*The truth of a meeting between two people is written in four hands at once: in their words, in their voices, in their hearts, and in the pulse at the wrist. We are learning, at last, to read all four.*
+*An encounter leaves traces in words, voice, cardiac rhythm, and pulse. The task is to learn what those traces can reveal, and what they cannot.*
 
-— The Coherence Thesis, Vol. II
+*Adapted from The Coherence Thesis, Volume II*
 
-The Providence measurement architecture integrates four streams of physiological and linguistic data. Each stream captures a different dimension of the encounter. None is sufficient alone; each can be misread in isolation. Together, they triangulate something that no single stream could reliably identify: the presence of genuine presence, and the occurrence of genuine presencing. These four streams, read locally and never surveilled, are what the work also calls **Bio-Consensus** — the biometric reading of presence; the two terms name the same thing and are used interchangeably. We describe each in turn — what it captures, why it works, and what it contributes to the minting of the currency.
+The Providence measurement architecture proposes four streams of data. Together they are called **Bio-Consensus**, the local biometric reading used to support reflection on presence and presencing.
+
+The name must not imply certainty. Consensus among sensors is still only agreement among instruments. Each stream can be distorted or misunderstood. Their combination may reduce some forms of error while creating new ones. Raw data should remain on hardware controlled by the participant, and every use requires specific, revocable consent.

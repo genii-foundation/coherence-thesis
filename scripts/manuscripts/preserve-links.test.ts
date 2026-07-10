@@ -1,3 +1,6 @@
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import type {
   CompiledCatalog,
@@ -7,7 +10,11 @@ import type {
   CompiledVolume,
 } from "./shared";
 import { resolvePublishedRoute } from "./shared";
-import { planLinkPreservation, proseSimilarity } from "./preserve-links";
+import {
+  planLinkPreservation,
+  proseSimilarity,
+  writeLinkPreservationPlan,
+} from "./preserve-links";
 
 function section({
   id,
@@ -242,6 +249,116 @@ describe("editorial link preservation", () => {
     expect(plan.updatedSectionAliases).toContainEqual(
       expect.objectContaining({ sourceHref: "/ancient/", targetSectionId: "new-id" }),
     );
+  });
+
+  it("refreshes a historical mapping target through resolved lineage", () => {
+    const previousSection = section({
+      id: "old-id",
+      href: "/old/",
+      hash: "same",
+      text: "Persistent text.",
+    });
+    const currentSection = section({
+      id: "new-id",
+      href: "/new/",
+      hash: "same",
+      text: "Persistent text.",
+    });
+    const plan = planLinkPreservation({
+      previous: catalog([previousSection]),
+      current: catalog([currentSection]),
+      existingHistoricalSectionMappings: {
+        version: 1,
+        mappings: [
+          { oldSectionId: "ancient-id", currentSectionId: "old-id" },
+        ],
+      },
+    });
+
+    expect(plan.unresolved).toEqual([]);
+    expect(plan.historicalSectionMappings.mappings).toEqual([
+      { oldSectionId: "ancient-id", currentSectionId: "new-id" },
+    ]);
+    expect(plan.updatedHistoricalSectionMappings).toEqual([
+      { oldSectionId: "ancient-id", currentSectionId: "new-id" },
+    ]);
+  });
+
+  it("counts an unresolvable historical mapping target as unresolved", () => {
+    const current = section({
+      id: "current",
+      href: "/current/",
+      hash: "same",
+      text: "Persistent text.",
+    });
+    const plan = planLinkPreservation({
+      previous: catalog([current]),
+      current: catalog([current]),
+      existingHistoricalSectionMappings: {
+        version: 1,
+        mappings: [
+          { oldSectionId: "ancient-id", currentSectionId: "missing-id" },
+        ],
+      },
+    });
+
+    expect(plan.unresolved).toContainEqual({
+      previousSectionId: "ancient-id",
+      message:
+        "Historical section mapping target 'missing-id' has no confirmed current lineage owner.",
+    });
+  });
+
+  it("writes only the historical mapping file when it is the only stale artifact", () => {
+    const previousSection = section({
+      id: "old-id",
+      href: "/old/",
+      hash: "same",
+      text: "Persistent text.",
+    });
+    const currentSection = section({
+      id: "new-id",
+      href: "/new/",
+      hash: "same",
+      text: "Persistent text.",
+    });
+    const staleHistoricalMappings = {
+      version: 1,
+      mappings: [{ oldSectionId: "ancient-id", currentSectionId: "old-id" }],
+    };
+    const plan = planLinkPreservation({
+      previous: catalog([previousSection]),
+      current: catalog([currentSection]),
+      existingHistoricalSectionMappings: staleHistoricalMappings,
+    });
+    const directory = fs.mkdtempSync(path.join(os.tmpdir(), "preserve-links-"));
+    const paths = {
+      sectionLineage: path.join(directory, "section-lineage.json"),
+      sectionAliases: path.join(directory, "aliases.json"),
+      routeAliases: path.join(directory, "route-aliases.json"),
+      historicalSectionMappings: path.join(
+        directory,
+        "historical-section-mappings.json",
+      ),
+    };
+    try {
+      fs.writeFileSync(paths.sectionLineage, JSON.stringify(plan.sectionLineage));
+      fs.writeFileSync(paths.sectionAliases, JSON.stringify(plan.sectionAliases));
+      fs.writeFileSync(paths.routeAliases, JSON.stringify(plan.routeAliases));
+      fs.writeFileSync(
+        paths.historicalSectionMappings,
+        JSON.stringify(staleHistoricalMappings),
+      );
+
+      expect(writeLinkPreservationPlan(plan, paths)).toEqual([
+        paths.historicalSectionMappings,
+      ]);
+      expect(
+        JSON.parse(fs.readFileSync(paths.historicalSectionMappings, "utf8")),
+      ).toEqual(plan.historicalSectionMappings);
+    } finally {
+      fs.rmSync(directory, { recursive: true, force: true });
+    }
   });
 
   it("requires an explicit mapping when prose and identity both change beyond recognition", () => {

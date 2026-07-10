@@ -12,12 +12,12 @@ sectionId: "v03-the-reckoning"
 title: "The Reckoning"
 sectionOrder: 1
 sourceDoc: "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"
-sourceHash: "72eef2809146d6e4560feee82fc606dae083676730b0019eaaac76914052b104"
-sourceParagraphStart: 98
-sourceParagraphEnd: 104
+sourceHash: "ae6adff173fc5363eca581cf47551b71c412e31437eb0a0ecd2a8d0dd528414c"
+sourceParagraphStart: 74
+sourceParagraphEnd: 80
 ---
 
-*On Coordination, Collapse, and the Institutions That Were Supposed to Hold*
+*On Coordination, Collapse, and the Institutions Meant to Hold*
 
 
-*We are not short of knowledge, or of will, or of people who care. We are short of the means to act on them together — and that absence is the shape of every crisis in this book.*
+*We are not short of knowledge, will, or people who care. We are short of trustworthy ways to act together, and that absence takes the shape of many crises.*

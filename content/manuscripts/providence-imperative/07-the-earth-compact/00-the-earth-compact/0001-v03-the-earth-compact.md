@@ -12,12 +12,12 @@ sectionId: "v03-the-earth-compact"
 title: "The Earth Compact"
 sectionOrder: 1
 sourceDoc: "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"
-sourceHash: "72eef2809146d6e4560feee82fc606dae083676730b0019eaaac76914052b104"
-sourceParagraphStart: 1188
-sourceParagraphEnd: 1194
+sourceHash: "ae6adff173fc5363eca581cf47551b71c412e31437eb0a0ecd2a8d0dd528414c"
+sourceParagraphStart: 1162
+sourceParagraphEnd: 1168
 ---
 
-*On Energy, Ecology, and the Obligation to Regenerate What We Use*
+*Energy, Ecology, and the Obligation to Repair What the Institution Uses*
 
 
-*No instrument that consumes the living world to coordinate its care has earned the name. What we draw from the earth to build this, we are bound to return — and then a little more.*
+*An instrument that consumes the living world while claiming to coordinate its care has misunderstood its own purpose.*

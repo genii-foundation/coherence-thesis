@@ -32,6 +32,7 @@ npm run manuscripts:validate
 - Do not accept an import when the parser has collapsed, fragmented, reordered, or renamed sections incorrectly. Fix the source or importer first.
 - Treat renamed, moved, split, merged, or removed sections as link preservation events. Do not keep a weak heading or obsolete ID merely to protect a URL. Run `npm run manuscripts:preserve-links` after import and before compile. Established lineage and unique unchanged content may carry forward automatically. Prose similarity is advisory only. Provide explicit section and structural mappings for every other case, then commit lineage and alias files. `manuscripts:validate` rejects missing routes and unrelated route reuse. Part, chapter, and volume membership may evolve when related lineage remains. Volume root paths remain fixed unless a separate site change adds reviewed redirects.
 - Run `npm run manuscripts:audit-history -- --summary` after compilation whenever identities or routes change. It must report zero broken historical links across the complete first-parent catalog history.
+- Record every discovered inconsistency, unfulfilled promise, unresolved claim, citation gap, canon conflict, literary weakness, link obligation, audio obligation, or editorial tooling limitation in `editorial/debt/items/`. Never delete a published debt item. Mark it resolved with evidence and retain its history. Reopen the same item if later evidence proves the paydown was partial. Run `npm run manuscripts:debt:update` after any debt change.
 
 ## Interface Rules
 
@@ -54,6 +55,7 @@ npm run manuscripts:validate
 - Contractions are fine.
 - Use `.agents/skills/coherence-editorial-review/` for manuscript audits, developmental review, sentence-level editing, and final editorial verification.
 - Commit each pilot and production review under `editorial/reviews/<volume-id>/<batch-id>/`. Include a validated sentence ledger that accounts for every baseline sentence and reconstructs every current sentence exactly once. Include a validated structure ledger that does the same for every heading and standalone display unit.
+- Read `editorial/debt/index.md` before each batch. Cite every debt item opened, carried, or resolved in the review record and pull request.
 - Keep the corpus editorial audit advisory until every published volume has completed the new editorial pass. Hard fail completed volumes with `npm run manuscripts:editorial:strict -- --volume <volume-id>`. Add the global strict command to `npm run validate` only after all volumes are clean.
 
 ## Validation

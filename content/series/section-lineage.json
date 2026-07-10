@@ -14,11 +14,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-on-form-timing-and-why-this-book-exists",
+      "currentSectionId": "v01-the-work-behind-the-book",
       "continuityIds": [
         "v01-on-form-timing-and-why-this-book-exists"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-on-form-timing-and-why-this-book-exists"
+      ],
       "progressContinuityGroups": [
         [
           "v01-on-form-timing-and-why-this-book-exists"
@@ -26,11 +28,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-a-note-on-compression",
+      "currentSectionId": "v01-four-movements",
       "continuityIds": [
         "v01-a-note-on-compression"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-a-note-on-compression"
+      ],
       "progressContinuityGroups": [
         [
           "v01-a-note-on-compression"
@@ -38,11 +42,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-how-this-book-is-structured",
+      "currentSectionId": "v01-how-understanding-takes-root",
       "continuityIds": [
         "v01-how-this-book-is-structured"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-how-this-book-is-structured"
+      ],
       "progressContinuityGroups": [
         [
           "v01-how-this-book-is-structured"
@@ -65,11 +71,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-taking-pause-between-seed-and-sprout",
+      "currentSectionId": "v01-the-seeds-boundaries",
       "continuityIds": [
         "v01-taking-pause-between-seed-and-sprout"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-taking-pause-between-seed-and-sprout"
+      ],
       "progressContinuityGroups": [
         [
           "v01-taking-pause-between-seed-and-sprout"
@@ -77,13 +85,14 @@
       ]
     },
     {
-      "currentSectionId": "v01-why-this-is-happening-and-why-it-changes-everything",
+      "currentSectionId": "v01-when-scale-outruns-regulation",
       "continuityIds": [
         "v01-why-this-is-happening-and-why-it-changes-everything",
         "v01-the-sprout"
       ],
       "historicalSectionIds": [
-        "v01-the-sprout"
+        "v01-the-sprout",
+        "v01-why-this-is-happening-and-why-it-changes-everything"
       ],
       "progressContinuityGroups": [
         [
@@ -92,11 +101,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
+      "currentSectionId": "v01-the-limits-of-the-claim",
       "continuityIds": [
         "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
+      ],
       "progressContinuityGroups": [
         [
           "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
@@ -104,11 +115,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-on-reductionism",
+      "currentSectionId": "v01-reductionism",
       "continuityIds": [
         "v01-on-reductionism"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-on-reductionism"
+      ],
       "progressContinuityGroups": [
         [
           "v01-on-reductionism"
@@ -116,11 +129,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-on-historical-and-structural-causality",
+      "currentSectionId": "v01-historical-and-structural-causality",
       "continuityIds": [
         "v01-on-historical-and-structural-causality"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-on-historical-and-structural-causality"
+      ],
       "progressContinuityGroups": [
         [
           "v01-on-historical-and-structural-causality"
@@ -128,11 +143,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-on-measurement-and-falsifiability",
+      "currentSectionId": "v01-measurement-and-falsifiability",
       "continuityIds": [
         "v01-on-measurement-and-falsifiability"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-on-measurement-and-falsifiability"
+      ],
       "progressContinuityGroups": [
         [
           "v01-on-measurement-and-falsifiability"
@@ -140,11 +157,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-what-this-section-has-and-has-not-established",
+      "currentSectionId": "v01-what-the-argument-has-established",
       "continuityIds": [
         "v01-what-this-section-has-and-has-not-established"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-what-this-section-has-and-has-not-established"
+      ],
       "progressContinuityGroups": [
         [
           "v01-what-this-section-has-and-has-not-established"
@@ -191,11 +210,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-governance-as-regulation-not-control",
+      "currentSectionId": "v01-regulation-as-the-work-of-governance",
       "continuityIds": [
         "v01-governance-as-regulation-not-control"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-governance-as-regulation-not-control"
+      ],
       "progressContinuityGroups": [
         [
           "v01-governance-as-regulation-not-control"
@@ -203,11 +224,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-intelligence-we-now-build",
+      "currentSectionId": "v01-the-intelligence-we-are-building",
       "continuityIds": [
         "v01-intelligence-we-now-build"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-intelligence-we-now-build"
+      ],
       "progressContinuityGroups": [
         [
           "v01-intelligence-we-now-build"
@@ -215,11 +238,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-a-horizon-not-yet-a-blueprint",
+      "currentSectionId": "v01-the-horizon-before-the-blueprint",
       "continuityIds": [
         "v01-a-horizon-not-yet-a-blueprint"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-a-horizon-not-yet-a-blueprint"
+      ],
       "progressContinuityGroups": [
         [
           "v01-a-horizon-not-yet-a-blueprint"
@@ -227,11 +252,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-taking-pause-in-the-soil",
+      "currentSectionId": "v01-the-ground-beneath-the-argument",
       "continuityIds": [
         "v01-taking-pause-in-the-soil"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-taking-pause-in-the-soil"
+      ],
       "progressContinuityGroups": [
         [
           "v01-taking-pause-in-the-soil"
@@ -290,11 +317,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-reverence-arrived-at-honestly",
+      "currentSectionId": "v01-reverence-through-observation",
       "continuityIds": [
         "v01-reverence-arrived-at-honestly"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-reverence-arrived-at-honestly"
+      ],
       "progressContinuityGroups": [
         [
           "v01-reverence-arrived-at-honestly"
@@ -302,11 +331,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-why-this-is-necessity-not-preference",
+      "currentSectionId": "v01-why-coherence-is-a-prerequisite",
       "continuityIds": [
         "v01-why-this-is-necessity-not-preference"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-why-this-is-necessity-not-preference"
+      ],
       "progressContinuityGroups": [
         [
           "v01-why-this-is-necessity-not-preference"
@@ -338,11 +369,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-the-question-becomes-an-experiment",
+      "currentSectionId": "v01-from-thesis-to-experiment",
       "continuityIds": [
         "v01-the-question-becomes-an-experiment"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-the-question-becomes-an-experiment"
+      ],
       "progressContinuityGroups": [
         [
           "v01-the-question-becomes-an-experiment"
@@ -386,11 +419,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-its-name",
+      "currentSectionId": "v01-why-the-currency-is-called-coherence",
       "continuityIds": [
         "v01-its-name"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-its-name"
+      ],
       "progressContinuityGroups": [
         [
           "v01-its-name"
@@ -398,11 +433,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-why-this-is-not-what-you-fear",
+      "currentSectionId": "v01-boundaries-against-surveillance",
       "continuityIds": [
         "v01-why-this-is-not-what-you-fear"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-why-this-is-not-what-you-fear"
+      ],
       "progressContinuityGroups": [
         [
           "v01-why-this-is-not-what-you-fear"
@@ -410,11 +447,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-what-it-looks-like-from-inside",
+      "currentSectionId": "v01-maren-trust-that-can-travel",
       "continuityIds": [
         "v01-what-it-looks-like-from-inside"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-what-it-looks-like-from-inside"
+      ],
       "progressContinuityGroups": [
         [
           "v01-what-it-looks-like-from-inside"
@@ -422,11 +461,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-icons-and-the-first-scale",
+      "currentSectionId": "v01-icons-and-the-cardinal-scale",
       "continuityIds": [
         "v01-icons-and-the-first-scale"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-icons-and-the-first-scale"
+      ],
       "progressContinuityGroups": [
         [
           "v01-icons-and-the-first-scale"
@@ -434,11 +475,13 @@
       ]
     },
     {
-      "currentSectionId": "v01-what-this-is-and-what-it-is-not",
+      "currentSectionId": "v01-boundaries-and-burden-of-proof",
       "continuityIds": [
         "v01-what-this-is-and-what-it-is-not"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v01-what-this-is-and-what-it-is-not"
+      ],
       "progressContinuityGroups": [
         [
           "v01-what-this-is-and-what-it-is-not"
@@ -470,11 +513,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-on-nests-and-why-this-book-is-deliberately-incomplete",
+      "currentSectionId": "v02-the-nest-this-book-occupies",
       "continuityIds": [
         "v02-on-nests-and-why-this-book-is-deliberately-incomplete"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-on-nests-and-why-this-book-is-deliberately-incomplete"
+      ],
       "progressContinuityGroups": [
         [
           "v02-on-nests-and-why-this-book-is-deliberately-incomplete"
@@ -521,11 +566,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-the-substrate-beneath-the-substrate",
+      "currentSectionId": "v02-the-nervous-system-as-civilizational-ground",
       "continuityIds": [
         "v02-the-substrate-beneath-the-substrate"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-the-substrate-beneath-the-substrate"
+      ],
       "progressContinuityGroups": [
         [
           "v02-the-substrate-beneath-the-substrate"
@@ -584,11 +631,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-infrastructure-that-is-not-yet-visible",
+      "currentSectionId": "v02-the-infrastructure-beneath-infrastructure",
       "continuityIds": [
         "v02-infrastructure-that-is-not-yet-visible"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-infrastructure-that-is-not-yet-visible"
+      ],
       "progressContinuityGroups": [
         [
           "v02-infrastructure-that-is-not-yet-visible"
@@ -596,11 +645,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-providence-intends-to-be",
+      "currentSectionId": "v02-providence-as-coordination-infrastructure",
       "continuityIds": [
         "v02-what-providence-intends-to-be"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-providence-intends-to-be"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-providence-intends-to-be"
@@ -620,11 +671,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-has-to-be-true-for-this-to-work",
+      "currentSectionId": "v02-conditions-for-providence-to-work",
       "continuityIds": [
         "v02-what-has-to-be-true-for-this-to-work"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-has-to-be-true-for-this-to-work"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-has-to-be-true-for-this-to-work"
@@ -632,11 +685,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-why-now",
+      "currentSectionId": "v02-the-narrowing-window",
       "continuityIds": [
         "v02-why-now"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-why-now"
+      ],
       "progressContinuityGroups": [
         [
           "v02-why-now"
@@ -680,6 +735,18 @@
       ]
     },
     {
+      "currentSectionId": "v02-layer-3-bio-consensus-and-the-currency-of-presence",
+      "continuityIds": [
+        "v02-layer-3-bio-consensus-and-the-currency-of-presence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-layer-3-bio-consensus-and-the-currency-of-presence"
+        ]
+      ]
+    },
+    {
       "currentSectionId": "v02-layer-4-coordination-substrate",
       "continuityIds": [
         "v02-layer-4-coordination-substrate"
@@ -716,11 +783,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-comes-next-in-this-work",
+      "currentSectionId": "v02-from-foundation-to-blueprint",
       "continuityIds": [
         "v02-what-comes-next-in-this-work"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-comes-next-in-this-work"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-comes-next-in-this-work"
@@ -740,11 +809,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-the-coherence-intelligence",
+      "currentSectionId": "v02-intelligence-in-service-of-coherence",
       "continuityIds": [
         "v02-the-coherence-intelligence"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-the-coherence-intelligence"
+      ],
       "progressContinuityGroups": [
         [
           "v02-the-coherence-intelligence"
@@ -764,11 +835,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-earth-as-substrate",
+      "currentSectionId": "v02-intelligence-in-service-of-earth",
       "continuityIds": [
         "v02-earth-as-substrate"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-earth-as-substrate"
+      ],
       "progressContinuityGroups": [
         [
           "v02-earth-as-substrate"
@@ -776,11 +849,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-the-pattern-reveals",
+      "currentSectionId": "v02-the-choice-of-orientation",
       "continuityIds": [
         "v02-what-the-pattern-reveals"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-the-pattern-reveals"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-the-pattern-reveals"
@@ -788,11 +863,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-providence-is-and-is-not-doing-in-this-dimension",
+      "currentSectionId": "v02-providence-and-artificial-intelligence",
       "continuityIds": [
         "v02-what-providence-is-and-is-not-doing-in-this-dimension"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-providence-is-and-is-not-doing-in-this-dimension"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-providence-is-and-is-not-doing-in-this-dimension"
@@ -800,11 +877,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-the-threshold-2",
+      "currentSectionId": "v02-civilizational-alignment",
       "continuityIds": [
         "v02-the-threshold-2"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-the-threshold-2"
+      ],
       "progressContinuityGroups": [
         [
           "v02-the-threshold-2"
@@ -824,11 +903,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-why-physiology",
+      "currentSectionId": "v02-physiology-as-signal",
       "continuityIds": [
         "v02-why-physiology"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-why-physiology"
+      ],
       "progressContinuityGroups": [
         [
           "v02-why-physiology"
@@ -836,11 +917,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-has-not-been-solved",
+      "currentSectionId": "v02-four-unsolved-problems",
       "continuityIds": [
         "v02-what-has-not-been-solved"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-has-not-been-solved"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-has-not-been-solved"
@@ -848,11 +931,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-providence-is-and-is-not-doing",
+      "currentSectionId": "v02-providence-and-the-currency-question",
       "continuityIds": [
         "v02-what-providence-is-and-is-not-doing"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-providence-is-and-is-not-doing"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-providence-is-and-is-not-doing"
@@ -860,11 +945,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-the-larger-argument",
+      "currentSectionId": "v02-the-limits-of-legibility",
       "continuityIds": [
         "v02-the-larger-argument"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-the-larger-argument"
+      ],
       "progressContinuityGroups": [
         [
           "v02-the-larger-argument"
@@ -884,11 +971,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-money-cannot-carry",
+      "currentSectionId": "v02-what-money-cannot-see",
       "continuityIds": [
         "v02-what-money-cannot-carry"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-money-cannot-carry"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-money-cannot-carry"
@@ -896,11 +985,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-has-been-tried",
+      "currentSectionId": "v02-working-alternatives",
       "continuityIds": [
         "v02-what-has-been-tried"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-has-been-tried"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-has-been-tried"
@@ -908,11 +999,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-coherence-as-flow",
+      "currentSectionId": "v02-coherence-as-circulation",
       "continuityIds": [
         "v02-coherence-as-flow"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-coherence-as-flow"
+      ],
       "progressContinuityGroups": [
         [
           "v02-coherence-as-flow"
@@ -920,11 +1013,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-providence-is-and-is-not-doing-in-this-dimension-2",
+      "currentSectionId": "v02-providence-and-economic-experiment",
       "continuityIds": [
         "v02-what-providence-is-and-is-not-doing-in-this-dimension-2"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-providence-is-and-is-not-doing-in-this-dimension-2"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-providence-is-and-is-not-doing-in-this-dimension-2"
@@ -932,11 +1027,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-the-larger-argument-2",
+      "currentSectionId": "v02-value-beyond-extraction",
       "continuityIds": [
         "v02-the-larger-argument-2"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-the-larger-argument-2"
+      ],
       "progressContinuityGroups": [
         [
           "v02-the-larger-argument-2"
@@ -956,11 +1053,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-has-been-tried-2",
+      "currentSectionId": "v02-practices-beyond-representation",
       "continuityIds": [
         "v02-what-has-been-tried-2"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-has-been-tried-2"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-has-been-tried-2"
@@ -968,11 +1067,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-coherence-as-a-property-of-governance-systems",
+      "currentSectionId": "v02-how-coherent-governance-behaves",
       "continuityIds": [
         "v02-coherence-as-a-property-of-governance-systems"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-coherence-as-a-property-of-governance-systems"
+      ],
       "progressContinuityGroups": [
         [
           "v02-coherence-as-a-property-of-governance-systems"
@@ -980,11 +1081,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-providence-is-and-is-not-doing-in-this-dimension-3",
+      "currentSectionId": "v02-providence-and-governance-experiment",
       "continuityIds": [
         "v02-what-providence-is-and-is-not-doing-in-this-dimension-3"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-providence-is-and-is-not-doing-in-this-dimension-3"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-providence-is-and-is-not-doing-in-this-dimension-3"
@@ -992,11 +1095,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-the-larger-argument-3",
+      "currentSectionId": "v02-legitimacy-as-living-feedback",
       "continuityIds": [
         "v02-the-larger-argument-3"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-the-larger-argument-3"
+      ],
       "progressContinuityGroups": [
         [
           "v02-the-larger-argument-3"
@@ -1016,11 +1121,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-the-current-state-of-alignment",
+      "currentSectionId": "v02-what-alignment-research-can-do",
       "continuityIds": [
         "v02-the-current-state-of-alignment"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-the-current-state-of-alignment"
+      ],
       "progressContinuityGroups": [
         [
           "v02-the-current-state-of-alignment"
@@ -1028,11 +1135,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-ai-can-already-do-for-coherence",
+      "currentSectionId": "v02-ai-already-serving-coherence",
       "continuityIds": [
         "v02-what-ai-can-already-do-for-coherence"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-ai-can-already-do-for-coherence"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-ai-can-already-do-for-coherence"
@@ -1040,11 +1149,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-where-the-real-asymmetry-lies",
+      "currentSectionId": "v02-capability-outruns-coherence",
       "continuityIds": [
         "v02-where-the-real-asymmetry-lies"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-where-the-real-asymmetry-lies"
+      ],
       "progressContinuityGroups": [
         [
           "v02-where-the-real-asymmetry-lies"
@@ -1052,11 +1163,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-providence-is-and-is-not-doing-in-this-dimension-4",
+      "currentSectionId": "v02-providence-and-ai-integration",
       "continuityIds": [
         "v02-what-providence-is-and-is-not-doing-in-this-dimension-4"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-providence-is-and-is-not-doing-in-this-dimension-4"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-providence-is-and-is-not-doing-in-this-dimension-4"
@@ -1064,11 +1177,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-the-larger-argument-4",
+      "currentSectionId": "v02-the-substrate-of-alignment",
       "continuityIds": [
         "v02-the-larger-argument-4"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-the-larger-argument-4"
+      ],
       "progressContinuityGroups": [
         [
           "v02-the-larger-argument-4"
@@ -1103,11 +1218,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-the-field-that-does-not-yet-know-it-is-a-field",
+      "currentSectionId": "v02-a-field-still-finding-itself",
       "continuityIds": [
         "v02-the-field-that-does-not-yet-know-it-is-a-field"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-the-field-that-does-not-yet-know-it-is-a-field"
+      ],
       "progressContinuityGroups": [
         [
           "v02-the-field-that-does-not-yet-know-it-is-a-field"
@@ -1115,11 +1232,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-the-builders-have-in-common",
+      "currentSectionId": "v02-the-builders-shared-ground",
       "continuityIds": [
         "v02-what-the-builders-have-in-common"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-the-builders-have-in-common"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-the-builders-have-in-common"
@@ -1127,11 +1246,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-three-builder-types-worth-naming",
+      "currentSectionId": "v02-three-builders-the-work-needs",
       "continuityIds": [
         "v02-three-builder-types-worth-naming"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-three-builder-types-worth-naming"
+      ],
       "progressContinuityGroups": [
         [
           "v02-three-builder-types-worth-naming"
@@ -1139,11 +1260,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-providence-is-and-is-not-doing-in-this-dimension-5",
+      "currentSectionId": "v02-providence-and-the-builder-field",
       "continuityIds": [
         "v02-what-providence-is-and-is-not-doing-in-this-dimension-5"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-providence-is-and-is-not-doing-in-this-dimension-5"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-providence-is-and-is-not-doing-in-this-dimension-5"
@@ -1151,11 +1274,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-the-larger-argument-5",
+      "currentSectionId": "v02-the-builders-are-already-here",
       "continuityIds": [
         "v02-the-larger-argument-5"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-the-larger-argument-5"
+      ],
       "progressContinuityGroups": [
         [
           "v02-the-larger-argument-5"
@@ -1163,11 +1288,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-the-transition",
+      "currentSectionId": "v02-living-through-the-threshold",
       "continuityIds": [
         "v02-the-transition"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-the-transition"
+      ],
       "progressContinuityGroups": [
         [
           "v02-the-transition"
@@ -1175,11 +1302,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-this-threshold-actually-feels-like",
+      "currentSectionId": "v02-the-nervous-system-in-transition",
       "continuityIds": [
         "v02-what-this-threshold-actually-feels-like"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-this-threshold-actually-feels-like"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-this-threshold-actually-feels-like"
@@ -1199,11 +1328,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-this-asks-of-the-people-living-through-it",
+      "currentSectionId": "v02-practices-for-the-passage",
       "continuityIds": [
         "v02-what-this-asks-of-the-people-living-through-it"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-this-asks-of-the-people-living-through-it"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-this-asks-of-the-people-living-through-it"
@@ -1211,11 +1342,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-the-texture-of-what-comes-next",
+      "currentSectionId": "v02-fragments-of-the-next-civilization",
       "continuityIds": [
         "v02-the-texture-of-what-comes-next"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-the-texture-of-what-comes-next"
+      ],
       "progressContinuityGroups": [
         [
           "v02-the-texture-of-what-comes-next"
@@ -1247,11 +1380,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-this-asks-of-the-reader",
+      "currentSectionId": "v02-the-readers-part",
       "continuityIds": [
         "v02-what-this-asks-of-the-reader"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-this-asks-of-the-reader"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-this-asks-of-the-reader"
@@ -1259,11 +1394,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-the-last-reframe",
+      "currentSectionId": "v02-what-wielding-means",
       "continuityIds": [
         "v02-the-last-reframe"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-the-last-reframe"
+      ],
       "progressContinuityGroups": [
         [
           "v02-the-last-reframe"
@@ -1283,11 +1420,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-on-the-form",
+      "currentSectionId": "v02-why-this-book-has-no-footnotes",
       "continuityIds": [
         "v02-on-the-form"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-on-the-form"
+      ],
       "progressContinuityGroups": [
         [
           "v02-on-the-form"
@@ -1295,11 +1434,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-on-the-conversation",
+      "currentSectionId": "v02-the-traditions-behind-the-argument",
       "continuityIds": [
         "v02-on-the-conversation"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-on-the-conversation"
+      ],
       "progressContinuityGroups": [
         [
           "v02-on-the-conversation"
@@ -1307,11 +1448,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-on-the-state-of-the-project",
+      "currentSectionId": "v02-what-providence-actually-is-today",
       "continuityIds": [
         "v02-on-the-state-of-the-project"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-on-the-state-of-the-project"
+      ],
       "progressContinuityGroups": [
         [
           "v02-on-the-state-of-the-project"
@@ -1319,11 +1462,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-on-releasing-the-book-now",
+      "currentSectionId": "v02-why-publish-before-completion",
       "continuityIds": [
         "v02-on-releasing-the-book-now"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-on-releasing-the-book-now"
+      ],
       "progressContinuityGroups": [
         [
           "v02-on-releasing-the-book-now"
@@ -1331,11 +1476,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-what-this-book-is",
+      "currentSectionId": "v02-a-founding-document-not-a-finished-system",
       "continuityIds": [
         "v02-what-this-book-is"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-what-this-book-is"
+      ],
       "progressContinuityGroups": [
         [
           "v02-what-this-book-is"
@@ -1415,11 +1562,13 @@
       ]
     },
     {
-      "currentSectionId": "v02-a-last-word",
+      "currentSectionId": "v02-the-work-beyond-the-book",
       "continuityIds": [
         "v02-a-last-word"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v02-a-last-word"
+      ],
       "progressContinuityGroups": [
         [
           "v02-a-last-word"
@@ -1442,11 +1591,13 @@
       ]
     },
     {
-      "currentSectionId": "v03-on-the-title-providence-and-imperative",
+      "currentSectionId": "v03-providence-and-imperative",
       "continuityIds": [
         "v03-on-the-title-providence-and-imperative"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v03-on-the-title-providence-and-imperative"
+      ],
       "progressContinuityGroups": [
         [
           "v03-on-the-title-providence-and-imperative"
@@ -1474,13 +1625,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-on-the-meaning-of-coordination-failure",
+      "currentSectionId": "v03-coordination-failure",
       "continuityIds": [
         "v03-on-the-meaning-of-coordination-failure",
         "the-central-wound-on-the-meaning-of-coordination-failure"
       ],
       "historicalSectionIds": [
-        "the-central-wound-on-the-meaning-of-coordination-failure"
+        "the-central-wound-on-the-meaning-of-coordination-failure",
+        "v03-on-the-meaning-of-coordination-failure"
       ],
       "progressContinuityGroups": [
         [
@@ -1490,13 +1642,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-what-coherence-actually-means",
+      "currentSectionId": "v03-coherence-under-pressure",
       "continuityIds": [
         "v03-what-coherence-actually-means",
         "the-central-wound-what-coherence-actually-means"
       ],
       "historicalSectionIds": [
-        "the-central-wound-what-coherence-actually-means"
+        "the-central-wound-what-coherence-actually-means",
+        "v03-what-coherence-actually-means"
       ],
       "progressContinuityGroups": [
         [
@@ -1522,13 +1675,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-multiplier-and-the-bottleneck",
+      "currentSectionId": "v03-multipliers-and-bottlenecks",
       "continuityIds": [
         "v03-the-multiplier-and-the-bottleneck",
         "the-coordination-deadline-the-multiplier-and-the-bottleneck"
       ],
       "historicalSectionIds": [
-        "the-coordination-deadline-the-multiplier-and-the-bottleneck"
+        "the-coordination-deadline-the-multiplier-and-the-bottleneck",
+        "v03-the-multiplier-and-the-bottleneck"
       ],
       "progressContinuityGroups": [
         [
@@ -1538,13 +1692,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-first-force-intelligence-becomes-abundant",
+      "currentSectionId": "v03-intelligence-becomes-abundant",
       "continuityIds": [
         "v03-the-first-force-intelligence-becomes-abundant",
         "the-coordination-deadline-the-first-force-intelligence-becomes-abundant"
       ],
       "historicalSectionIds": [
-        "the-coordination-deadline-the-first-force-intelligence-becomes-abundant"
+        "the-coordination-deadline-the-first-force-intelligence-becomes-abundant",
+        "v03-the-first-force-intelligence-becomes-abundant"
       ],
       "progressContinuityGroups": [
         [
@@ -1554,13 +1709,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-second-force-trust-collapses-as-leverage-rises",
+      "currentSectionId": "v03-trust-weakens-as-capability-grows",
       "continuityIds": [
         "v03-the-second-force-trust-collapses-as-leverage-rises",
         "the-coordination-deadline-the-second-force-trust-collapses-as-leverage-rises"
       ],
       "historicalSectionIds": [
-        "the-coordination-deadline-the-second-force-trust-collapses-as-leverage-rises"
+        "the-coordination-deadline-the-second-force-trust-collapses-as-leverage-rises",
+        "v03-the-second-force-trust-collapses-as-leverage-rises"
       ],
       "progressContinuityGroups": [
         [
@@ -1570,13 +1726,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-third-force-the-slow-variables-come-due",
+      "currentSectionId": "v03-the-slow-variables-come-due",
       "continuityIds": [
         "v03-the-third-force-the-slow-variables-come-due",
         "the-coordination-deadline-the-third-force-the-slow-variables-come-due"
       ],
       "historicalSectionIds": [
-        "the-coordination-deadline-the-third-force-the-slow-variables-come-due"
+        "the-coordination-deadline-the-third-force-the-slow-variables-come-due",
+        "v03-the-third-force-the-slow-variables-come-due"
       ],
       "progressContinuityGroups": [
         [
@@ -1602,13 +1759,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-why-now-and-why-not-later",
+      "currentSectionId": "v03-why-begin-now",
       "continuityIds": [
         "v03-why-now-and-why-not-later",
         "the-coordination-deadline-why-now-and-why-not-later"
       ],
       "historicalSectionIds": [
-        "the-coordination-deadline-why-now-and-why-not-later"
+        "the-coordination-deadline-why-now-and-why-not-later",
+        "v03-why-now-and-why-not-later"
       ],
       "progressContinuityGroups": [
         [
@@ -1618,13 +1776,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-what-each-institution-solved-and-what-it-broke",
+      "currentSectionId": "v03-what-institutions-held-and-what-they-cost",
       "continuityIds": [
         "v03-what-each-institution-solved-and-what-it-broke",
         "what-each-institution-solved-and-what-it-broke-opening"
       ],
       "historicalSectionIds": [
-        "what-each-institution-solved-and-what-it-broke-opening"
+        "what-each-institution-solved-and-what-it-broke-opening",
+        "v03-what-each-institution-solved-and-what-it-broke"
       ],
       "progressContinuityGroups": [
         [
@@ -1634,13 +1793,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-church-coordinating-meaning-across-time",
+      "currentSectionId": "v03-the-church-meaning-across-time",
       "continuityIds": [
         "v03-the-church-coordinating-meaning-across-time",
         "what-each-institution-solved-and-what-it-broke-the-church-coordinating-meaning-across-time"
       ],
       "historicalSectionIds": [
-        "what-each-institution-solved-and-what-it-broke-the-church-coordinating-meaning-across-time"
+        "what-each-institution-solved-and-what-it-broke-the-church-coordinating-meaning-across-time",
+        "v03-the-church-coordinating-meaning-across-time"
       ],
       "progressContinuityGroups": [
         [
@@ -1650,13 +1810,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-nation-state-coordinating-identity-across-space",
+      "currentSectionId": "v03-the-nation-state-obligation-across-distance",
       "continuityIds": [
         "v03-the-nation-state-coordinating-identity-across-space",
         "what-each-institution-solved-and-what-it-broke-the-nation-state-coordinating-identity-across-space"
       ],
       "historicalSectionIds": [
-        "what-each-institution-solved-and-what-it-broke-the-nation-state-coordinating-identity-across-space"
+        "what-each-institution-solved-and-what-it-broke-the-nation-state-coordinating-identity-across-space",
+        "v03-the-nation-state-coordinating-identity-across-space"
       ],
       "progressContinuityGroups": [
         [
@@ -1666,13 +1827,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-corporation-coordinating-exchange-at-velocity",
+      "currentSectionId": "v03-the-corporation-action-at-speed",
       "continuityIds": [
         "v03-the-corporation-coordinating-exchange-at-velocity",
         "what-each-institution-solved-and-what-it-broke-the-corporation-coordinating-exchange-at-velocity"
       ],
       "historicalSectionIds": [
-        "what-each-institution-solved-and-what-it-broke-the-corporation-coordinating-exchange-at-velocity"
+        "what-each-institution-solved-and-what-it-broke-the-corporation-coordinating-exchange-at-velocity",
+        "v03-the-corporation-coordinating-exchange-at-velocity"
       ],
       "progressContinuityGroups": [
         [
@@ -1682,13 +1844,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-university-coordinating-knowledge-across-generations",
+      "currentSectionId": "v03-the-university-knowledge-across-generations",
       "continuityIds": [
         "v03-the-university-coordinating-knowledge-across-generations",
         "what-each-institution-solved-and-what-it-broke-the-university-coordinating-knowledge-across-generations"
       ],
       "historicalSectionIds": [
-        "what-each-institution-solved-and-what-it-broke-the-university-coordinating-knowledge-across-generations"
+        "what-each-institution-solved-and-what-it-broke-the-university-coordinating-knowledge-across-generations",
+        "v03-the-university-coordinating-knowledge-across-generations"
       ],
       "progressContinuityGroups": [
         [
@@ -1698,13 +1861,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-platform-coordinating-attention-toward-its-own-ends",
+      "currentSectionId": "v03-the-platform-discovery-and-capture",
       "continuityIds": [
         "v03-the-platform-coordinating-attention-toward-its-own-ends",
         "what-each-institution-solved-and-what-it-broke-the-platform-coordinating-attention-toward-its-own-ends"
       ],
       "historicalSectionIds": [
-        "what-each-institution-solved-and-what-it-broke-the-platform-coordinating-attention-toward-its-own-ends"
+        "what-each-institution-solved-and-what-it-broke-the-platform-coordinating-attention-toward-its-own-ends",
+        "v03-the-platform-coordinating-attention-toward-its-own-ends"
       ],
       "progressContinuityGroups": [
         [
@@ -1714,7 +1878,7 @@
       ]
     },
     {
-      "currentSectionId": "v03-what-coordinates-wisdom",
+      "currentSectionId": "v03-the-conditions-of-wisdom",
       "continuityIds": [
         "v03-what-coordinates-wisdom",
         "the-innovation-overview",
@@ -1724,7 +1888,8 @@
       "historicalSectionIds": [
         "the-innovation-overview",
         "v03-the-innovation",
-        "what-coordinates-wisdom-opening"
+        "what-coordinates-wisdom-opening",
+        "v03-what-coordinates-wisdom"
       ],
       "progressContinuityGroups": [
         [
@@ -1734,13 +1899,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-seven-initiates-a-topology-of-the-necessary-capacities",
+      "currentSectionId": "v03-the-seven-initiates",
       "continuityIds": [
         "v03-the-seven-initiates-a-topology-of-the-necessary-capacities",
         "what-coordinates-wisdom-the-seven-initiates-a-topology-of-the-necessary-capacities"
       ],
       "historicalSectionIds": [
-        "what-coordinates-wisdom-the-seven-initiates-a-topology-of-the-necessary-capacities"
+        "what-coordinates-wisdom-the-seven-initiates-a-topology-of-the-necessary-capacities",
+        "v03-the-seven-initiates-a-topology-of-the-necessary-capacities"
       ],
       "progressContinuityGroups": [
         [
@@ -1749,13 +1915,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-lineage",
+      "currentSectionId": "v03-inheritance",
       "continuityIds": [
         "v03-the-lineage",
         "the-lineage-opening"
       ],
       "historicalSectionIds": [
-        "the-lineage-opening"
+        "the-lineage-opening",
+        "v03-the-lineage"
       ],
       "progressContinuityGroups": [
         [
@@ -1765,13 +1932,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-monasteries-institutions-that-hold-across-time",
+      "currentSectionId": "v03-monasteries-practice-across-time",
       "continuityIds": [
         "v03-the-monasteries-institutions-that-hold-across-time",
         "the-lineage-the-monasteries-institutions-that-hold-across-time"
       ],
       "historicalSectionIds": [
-        "the-lineage-the-monasteries-institutions-that-hold-across-time"
+        "the-lineage-the-monasteries-institutions-that-hold-across-time",
+        "v03-the-monasteries-institutions-that-hold-across-time"
       ],
       "progressContinuityGroups": [
         [
@@ -1781,13 +1949,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-guilds-mentorship-and-the-transmission-of-mastery",
+      "currentSectionId": "v03-guilds-mastery-through-relationship",
       "continuityIds": [
         "v03-the-guilds-mentorship-and-the-transmission-of-mastery",
         "the-lineage-the-guilds-mentorship-and-the-transmission-of-mastery"
       ],
       "historicalSectionIds": [
-        "the-lineage-the-guilds-mentorship-and-the-transmission-of-mastery"
+        "the-lineage-the-guilds-mentorship-and-the-transmission-of-mastery",
+        "v03-the-guilds-mentorship-and-the-transmission-of-mastery"
       ],
       "progressContinuityGroups": [
         [
@@ -1797,13 +1966,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-indigenous-governance-coordination-around-the-living-world",
+      "currentSectionId": "v03-indigenous-governance-accountability-to-place-and-descendants",
       "continuityIds": [
         "v03-indigenous-governance-coordination-around-the-living-world",
         "the-lineage-indigenous-governance-coordination-around-the-living-world"
       ],
       "historicalSectionIds": [
-        "the-lineage-indigenous-governance-coordination-around-the-living-world"
+        "the-lineage-indigenous-governance-coordination-around-the-living-world",
+        "v03-indigenous-governance-coordination-around-the-living-world"
       ],
       "progressContinuityGroups": [
         [
@@ -1812,13 +1982,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-mutual-aid-and-cooperative-economics-provisioning-without-extraction",
+      "currentSectionId": "v03-mutual-aid-and-cooperative-economics-provision-without-capture",
       "continuityIds": [
         "v03-mutual-aid-and-cooperative-economics-provisioning-without-extraction",
         "the-lineage-mutual-aid-and-cooperative-economics-provisioning-without-extraction"
       ],
       "historicalSectionIds": [
-        "the-lineage-mutual-aid-and-cooperative-economics-provisioning-without-extraction"
+        "the-lineage-mutual-aid-and-cooperative-economics-provisioning-without-extraction",
+        "v03-mutual-aid-and-cooperative-economics-provisioning-without-extraction"
       ],
       "progressContinuityGroups": [
         [
@@ -1828,13 +1999,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter",
+      "currentSectionId": "v03-scientific-inquiry-and-quaker-process-disciplined-encounter",
       "continuityIds": [
         "v03-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter",
         "the-lineage-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter"
       ],
       "historicalSectionIds": [
-        "the-lineage-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter"
+        "the-lineage-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter",
+        "v03-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter"
       ],
       "progressContinuityGroups": [
         [
@@ -1844,13 +2016,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold",
+      "currentSectionId": "v03-trusts-and-commons-holding-what-must-not-be-sold",
       "continuityIds": [
         "v03-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold",
         "the-lineage-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold"
       ],
       "historicalSectionIds": [
-        "the-lineage-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold"
+        "the-lineage-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold",
+        "v03-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold"
       ],
       "progressContinuityGroups": [
         [
@@ -1860,13 +2033,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-synthesis-and-the-moment",
+      "currentSectionId": "v03-the-synthesis",
       "continuityIds": [
         "v03-the-synthesis-and-the-moment",
         "the-lineage-the-synthesis-and-the-moment"
       ],
       "historicalSectionIds": [
-        "the-lineage-the-synthesis-and-the-moment"
+        "the-lineage-the-synthesis-and-the-moment",
+        "v03-the-synthesis-and-the-moment"
       ],
       "progressContinuityGroups": [
         [
@@ -1876,13 +2050,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-architecture-of-providence",
+      "currentSectionId": "v03-three-doors-and-a-membrane",
       "continuityIds": [
         "v03-the-architecture-of-providence",
         "the-architecture-of-providence-opening"
       ],
       "historicalSectionIds": [
-        "the-architecture-of-providence-opening"
+        "the-architecture-of-providence-opening",
+        "v03-the-architecture-of-providence"
       ],
       "progressContinuityGroups": [
         [
@@ -1908,13 +2083,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-second-door-the-retreats",
+      "currentSectionId": "v03-the-second-door-gatherings-and-retreats",
       "continuityIds": [
         "v03-the-second-door-the-retreats",
         "the-architecture-of-providence-the-second-door-the-retreats"
       ],
       "historicalSectionIds": [
-        "the-architecture-of-providence-the-second-door-the-retreats"
+        "the-architecture-of-providence-the-second-door-the-retreats",
+        "v03-the-second-door-the-retreats"
       ],
       "progressContinuityGroups": [
         [
@@ -1940,13 +2116,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-membrane-how-the-three-doors-become-one-network",
+      "currentSectionId": "v03-the-membrane",
       "continuityIds": [
         "v03-the-membrane-how-the-three-doors-become-one-network",
         "the-architecture-of-providence-the-membrane-how-the-three-doors-become-one-network"
       ],
       "historicalSectionIds": [
-        "the-architecture-of-providence-the-membrane-how-the-three-doors-become-one-network"
+        "the-architecture-of-providence-the-membrane-how-the-three-doors-become-one-network",
+        "v03-the-membrane-how-the-three-doors-become-one-network"
       ],
       "progressContinuityGroups": [
         [
@@ -1970,13 +2147,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted",
+      "currentSectionId": "v03-presence-and-presencing",
       "continuityIds": [
         "v03-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted",
         "the-currency-of-presence-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted"
       ],
       "historicalSectionIds": [
-        "the-currency-of-presence-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted"
+        "the-currency-of-presence-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted",
+        "v03-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted"
       ],
       "progressContinuityGroups": [
         [
@@ -1986,13 +2164,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-how-the-currency-circulates",
+      "currentSectionId": "v03-how-it-circulates",
       "continuityIds": [
         "v03-how-the-currency-circulates",
         "the-currency-of-presence-how-the-currency-circulates"
       ],
       "historicalSectionIds": [
-        "the-currency-of-presence-how-the-currency-circulates"
+        "the-currency-of-presence-how-the-currency-circulates",
+        "v03-how-the-currency-circulates"
       ],
       "progressContinuityGroups": [
         [
@@ -2001,13 +2180,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-where-we-begin-and-where-we-are-heading",
+      "currentSectionId": "v03-where-we-begin",
       "continuityIds": [
         "v03-where-we-begin-and-where-we-are-heading",
         "the-currency-of-presence-where-we-begin-and-where-we-are-heading"
       ],
       "historicalSectionIds": [
-        "the-currency-of-presence-where-we-begin-and-where-we-are-heading"
+        "the-currency-of-presence-where-we-begin-and-where-we-are-heading",
+        "v03-where-we-begin-and-where-we-are-heading"
       ],
       "progressContinuityGroups": [
         [
@@ -2017,13 +2197,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church",
+      "currentSectionId": "v03-the-container-must-fit-the-currency",
       "continuityIds": [
         "v03-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church",
         "the-currency-of-presence-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church"
       ],
       "historicalSectionIds": [
-        "the-currency-of-presence-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church"
+        "the-currency-of-presence-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church",
+        "v03-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church"
       ],
       "progressContinuityGroups": [
         [
@@ -2032,11 +2213,13 @@
       ]
     },
     {
-      "currentSectionId": "v03-a-word-to-the-doubter",
+      "currentSectionId": "v03-the-reasonable-doubt",
       "continuityIds": [
         "v03-a-word-to-the-doubter"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v03-a-word-to-the-doubter"
+      ],
       "progressContinuityGroups": [
         [
           "v03-a-word-to-the-doubter"
@@ -2044,7 +2227,7 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-body-as-primary-text",
+      "currentSectionId": "v03-the-body-as-evidence",
       "continuityIds": [
         "v03-the-body-as-primary-text",
         "the-body-as-primary-text-opening",
@@ -2054,7 +2237,8 @@
       "historicalSectionIds": [
         "the-body-as-primary-text-opening",
         "the-mechanism-overview",
-        "v03-the-mechanism"
+        "v03-the-mechanism",
+        "v03-the-body-as-primary-text"
       ],
       "progressContinuityGroups": [
         [
@@ -2063,13 +2247,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-a-note-on-evidence-four-tiers-of-certainty",
+      "currentSectionId": "v03-four-tiers-of-evidence",
       "continuityIds": [
         "v03-a-note-on-evidence-four-tiers-of-certainty",
         "the-body-as-primary-text-a-note-on-evidence-four-tiers-of-certainty"
       ],
       "historicalSectionIds": [
-        "the-body-as-primary-text-a-note-on-evidence-four-tiers-of-certainty"
+        "the-body-as-primary-text-a-note-on-evidence-four-tiers-of-certainty",
+        "v03-a-note-on-evidence-four-tiers-of-certainty"
       ],
       "progressContinuityGroups": [
         [
@@ -2079,13 +2264,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-what-the-body-reveals-that-the-will-cannot-conceal",
+      "currentSectionId": "v03-what-the-body-contributes",
       "continuityIds": [
         "v03-what-the-body-reveals-that-the-will-cannot-conceal",
         "the-body-as-primary-text-what-the-body-reveals-that-the-will-cannot-conceal"
       ],
       "historicalSectionIds": [
-        "the-body-as-primary-text-what-the-body-reveals-that-the-will-cannot-conceal"
+        "the-body-as-primary-text-what-the-body-reveals-that-the-will-cannot-conceal",
+        "v03-what-the-body-reveals-that-the-will-cannot-conceal"
       ],
       "progressContinuityGroups": [
         [
@@ -2110,13 +2296,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-stream-one-the-language-of-genuine-encounter",
+      "currentSectionId": "v03-stream-one-the-language-of-encounter",
       "continuityIds": [
         "v03-stream-one-the-language-of-genuine-encounter",
         "the-four-streams-stream-one-the-language-of-genuine-encounter"
       ],
       "historicalSectionIds": [
-        "the-four-streams-stream-one-the-language-of-genuine-encounter"
+        "the-four-streams-stream-one-the-language-of-genuine-encounter",
+        "v03-stream-one-the-language-of-genuine-encounter"
       ],
       "progressContinuityGroups": [
         [
@@ -2126,13 +2313,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-stream-two-the-voice-as-autonomic-readout",
+      "currentSectionId": "v03-stream-two-voice-and-autonomic-state",
       "continuityIds": [
         "v03-stream-two-the-voice-as-autonomic-readout",
         "the-four-streams-stream-two-the-voice-as-autonomic-readout"
       ],
       "historicalSectionIds": [
-        "the-four-streams-stream-two-the-voice-as-autonomic-readout"
+        "the-four-streams-stream-two-the-voice-as-autonomic-readout",
+        "v03-stream-two-the-voice-as-autonomic-readout"
       ],
       "progressContinuityGroups": [
         [
@@ -2142,13 +2330,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-stream-three-the-heart-as-truth-teller",
+      "currentSectionId": "v03-stream-three-cardiac-rhythm-in-context",
       "continuityIds": [
         "v03-stream-three-the-heart-as-truth-teller",
         "the-four-streams-stream-three-the-heart-as-truth-teller"
       ],
       "historicalSectionIds": [
-        "the-four-streams-stream-three-the-heart-as-truth-teller"
+        "the-four-streams-stream-three-the-heart-as-truth-teller",
+        "v03-stream-three-the-heart-as-truth-teller"
       ],
       "progressContinuityGroups": [
         [
@@ -2158,13 +2347,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-stream-four-the-pulse-as-endocrine-map",
+      "currentSectionId": "v03-stream-four-pulse-morphology",
       "continuityIds": [
         "v03-stream-four-the-pulse-as-endocrine-map",
         "the-four-streams-stream-four-the-pulse-as-endocrine-map"
       ],
       "historicalSectionIds": [
-        "the-four-streams-stream-four-the-pulse-as-endocrine-map"
+        "the-four-streams-stream-four-the-pulse-as-endocrine-map",
+        "v03-stream-four-the-pulse-as-endocrine-map"
       ],
       "progressContinuityGroups": [
         [
@@ -2174,13 +2364,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-endocrine-frontier-reading-the-chemistry-of-connection",
+      "currentSectionId": "v03-the-endocrine-frontier",
       "continuityIds": [
         "v03-the-endocrine-frontier-reading-the-chemistry-of-connection",
         "the-four-streams-the-endocrine-frontier-reading-the-chemistry-of-connection"
       ],
       "historicalSectionIds": [
-        "the-four-streams-the-endocrine-frontier-reading-the-chemistry-of-connection"
+        "the-four-streams-the-endocrine-frontier-reading-the-chemistry-of-connection",
+        "v03-the-endocrine-frontier-reading-the-chemistry-of-connection"
       ],
       "progressContinuityGroups": [
         [
@@ -2190,11 +2381,13 @@
       ]
     },
     {
-      "currentSectionId": "v03-a-note-before-we-go-on",
+      "currentSectionId": "v03-a-standing-invitation-to-scrutiny",
       "continuityIds": [
         "v03-a-note-before-we-go-on"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v03-a-note-before-we-go-on"
+      ],
       "progressContinuityGroups": [
         [
           "v03-a-note-before-we-go-on"
@@ -2202,13 +2395,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-coherence-engine-and-the-reflective-mirror",
+      "currentSectionId": "v03-the-coherence-engine",
       "continuityIds": [
         "v03-the-coherence-engine-and-the-reflective-mirror",
         "the-coherence-engine-and-the-reflective-mirror-opening"
       ],
       "historicalSectionIds": [
-        "the-coherence-engine-and-the-reflective-mirror-opening"
+        "the-coherence-engine-and-the-reflective-mirror-opening",
+        "v03-the-coherence-engine-and-the-reflective-mirror"
       ],
       "progressContinuityGroups": [
         [
@@ -2217,13 +2411,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-reflective-mirror-how-the-engine-serves-the-people-it-measures",
+      "currentSectionId": "v03-the-reflective-mirror",
       "continuityIds": [
         "v03-the-reflective-mirror-how-the-engine-serves-the-people-it-measures",
         "the-coherence-engine-and-the-reflective-mirror-the-reflective-mirror-how-the-engine-serves-the-people-it-measures"
       ],
       "historicalSectionIds": [
-        "the-coherence-engine-and-the-reflective-mirror-the-reflective-mirror-how-the-engine-serves-the-people-it-measures"
+        "the-coherence-engine-and-the-reflective-mirror-the-reflective-mirror-how-the-engine-serves-the-people-it-measures",
+        "v03-the-reflective-mirror-how-the-engine-serves-the-people-it-measures"
       ],
       "progressContinuityGroups": [
         [
@@ -2233,13 +2428,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-shadows-we-name-before-they-name-themselves",
+      "currentSectionId": "v03-the-shadows",
       "continuityIds": [
         "v03-the-shadows-we-name-before-they-name-themselves",
         "the-coherence-engine-and-the-reflective-mirror-the-shadows-we-name-before-they-name-themselves"
       ],
       "historicalSectionIds": [
-        "the-coherence-engine-and-the-reflective-mirror-the-shadows-we-name-before-they-name-themselves"
+        "the-coherence-engine-and-the-reflective-mirror-the-shadows-we-name-before-they-name-themselves",
+        "v03-the-shadows-we-name-before-they-name-themselves"
       ],
       "progressContinuityGroups": [
         [
@@ -2249,11 +2445,13 @@
       ]
     },
     {
-      "currentSectionId": "v03-a-word-on-the-long-now",
+      "currentSectionId": "v03-the-long-now",
       "continuityIds": [
         "v03-a-word-on-the-long-now"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v03-a-word-on-the-long-now"
+      ],
       "progressContinuityGroups": [
         [
           "v03-a-word-on-the-long-now"
@@ -2375,13 +2573,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-first-link-presence-widens-the-aperture-of-perception",
+      "currentSectionId": "v03-first-link-presence-can-widen-perception",
       "continuityIds": [
         "v03-the-first-link-presence-widens-the-aperture-of-perception",
         "how-presence-becomes-bread-the-first-link-presence-widens-the-aperture-of-perception"
       ],
       "historicalSectionIds": [
-        "how-presence-becomes-bread-the-first-link-presence-widens-the-aperture-of-perception"
+        "how-presence-becomes-bread-the-first-link-presence-widens-the-aperture-of-perception",
+        "v03-the-first-link-presence-widens-the-aperture-of-perception"
       ],
       "progressContinuityGroups": [
         [
@@ -2391,13 +2590,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-second-link-perception-makes-new-coordination-possible",
+      "currentSectionId": "v03-second-link-perception-supports-coordination",
       "continuityIds": [
         "v03-the-second-link-perception-makes-new-coordination-possible",
         "how-presence-becomes-bread-the-second-link-perception-makes-new-coordination-possible"
       ],
       "historicalSectionIds": [
-        "how-presence-becomes-bread-the-second-link-perception-makes-new-coordination-possible"
+        "how-presence-becomes-bread-the-second-link-perception-makes-new-coordination-possible",
+        "v03-the-second-link-perception-makes-new-coordination-possible"
       ],
       "progressContinuityGroups": [
         [
@@ -2407,13 +2607,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-third-link-the-currency-makes-that-coordination-findable-and-trustable",
+      "currentSectionId": "v03-third-link-the-network-makes-collaboration-more-findable",
       "continuityIds": [
         "v03-the-third-link-the-currency-makes-that-coordination-findable-and-trustable",
         "how-presence-becomes-bread-the-third-link-the-currency-makes-that-coordination-findable-and-trustable"
       ],
       "historicalSectionIds": [
-        "how-presence-becomes-bread-the-third-link-the-currency-makes-that-coordination-findable-and-trustable"
+        "how-presence-becomes-bread-the-third-link-the-currency-makes-that-coordination-findable-and-trustable",
+        "v03-the-third-link-the-currency-makes-that-coordination-findable-and-trustable"
       ],
       "progressContinuityGroups": [
         [
@@ -2422,13 +2623,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-fourth-link-the-record-can-carry-material-weight",
+      "currentSectionId": "v03-fourth-link-relational-standing-can-inform-stewardship",
       "continuityIds": [
         "v03-the-fourth-link-the-record-can-carry-material-weight",
         "how-presence-becomes-bread-the-fourth-link-the-record-can-carry-material-weight"
       ],
       "historicalSectionIds": [
-        "how-presence-becomes-bread-the-fourth-link-the-record-can-carry-material-weight"
+        "how-presence-becomes-bread-the-fourth-link-the-record-can-carry-material-weight",
+        "v03-the-fourth-link-the-record-can-carry-material-weight"
       ],
       "progressContinuityGroups": [
         [
@@ -2437,13 +2639,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship",
+      "currentSectionId": "v03-the-floor-and-the-height",
       "continuityIds": [
         "v03-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship",
         "how-presence-becomes-bread-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship"
       ],
       "historicalSectionIds": [
-        "how-presence-becomes-bread-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship"
+        "how-presence-becomes-bread-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship",
+        "v03-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship"
       ],
       "progressContinuityGroups": [
         [
@@ -2452,13 +2655,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-two-economies-and-what-each-is-for",
+      "currentSectionId": "v03-two-economies",
       "continuityIds": [
         "v03-the-two-economies-and-what-each-is-for",
         "how-presence-becomes-bread-the-two-economies-and-what-each-is-for"
       ],
       "historicalSectionIds": [
-        "how-presence-becomes-bread-the-two-economies-and-what-each-is-for"
+        "how-presence-becomes-bread-the-two-economies-and-what-each-is-for",
+        "v03-the-two-economies-and-what-each-is-for"
       ],
       "progressContinuityGroups": [
         [
@@ -2467,13 +2671,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-marens-creek-and-the-harvest-that-came-from-it",
+      "currentSectionId": "v03-marens-creek",
       "continuityIds": [
         "v03-marens-creek-and-the-harvest-that-came-from-it",
         "how-presence-becomes-bread-marens-creek-and-the-harvest-that-came-from-it"
       ],
       "historicalSectionIds": [
-        "how-presence-becomes-bread-marens-creek-and-the-harvest-that-came-from-it"
+        "how-presence-becomes-bread-marens-creek-and-the-harvest-that-came-from-it",
+        "v03-marens-creek-and-the-harvest-that-came-from-it"
       ],
       "progressContinuityGroups": [
         [
@@ -2482,11 +2687,13 @@
       ]
     },
     {
-      "currentSectionId": "v03-a-necessary-question-whose-nervous-system",
+      "currentSectionId": "v03-whose-nervous-system",
       "continuityIds": [
         "v03-a-necessary-question-whose-nervous-system"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v03-a-necessary-question-whose-nervous-system"
+      ],
       "progressContinuityGroups": [
         [
           "v03-a-necessary-question-whose-nervous-system"
@@ -2513,11 +2720,13 @@
       ]
     },
     {
-      "currentSectionId": "v03-before-the-design-a-caveat-on-everything-that-follows",
+      "currentSectionId": "v03-a-provisional-constitution",
       "continuityIds": [
         "v03-before-the-design-a-caveat-on-everything-that-follows"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v03-before-the-design-a-caveat-on-everything-that-follows"
+      ],
       "progressContinuityGroups": [
         [
           "v03-before-the-design-a-caveat-on-everything-that-follows"
@@ -2525,13 +2734,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-two-entities-one-mission-one-productive-tension",
+      "currentSectionId": "v03-two-entities-in-productive-tension",
       "continuityIds": [
         "v03-two-entities-one-mission-one-productive-tension",
         "the-constitutional-problem-two-entities-one-mission-one-productive-tension"
       ],
       "historicalSectionIds": [
-        "the-constitutional-problem-two-entities-one-mission-one-productive-tension"
+        "the-constitutional-problem-two-entities-one-mission-one-productive-tension",
+        "v03-two-entities-one-mission-one-productive-tension"
       ],
       "progressContinuityGroups": [
         [
@@ -2540,13 +2750,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-three-chamber-governance-model",
+      "currentSectionId": "v03-three-chambers",
       "continuityIds": [
         "v03-the-three-chamber-governance-model",
         "the-constitutional-problem-the-three-chamber-governance-model"
       ],
       "historicalSectionIds": [
-        "the-constitutional-problem-the-three-chamber-governance-model"
+        "the-constitutional-problem-the-three-chamber-governance-model",
+        "v03-the-three-chamber-governance-model"
       ],
       "progressContinuityGroups": [
         [
@@ -2555,13 +2766,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-on-corruption-and-its-prevention-through-design",
+      "currentSectionId": "v03-designing-for-corruption",
       "continuityIds": [
         "v03-on-corruption-and-its-prevention-through-design",
         "the-constitutional-problem-on-corruption-and-its-prevention-through-design"
       ],
       "historicalSectionIds": [
-        "the-constitutional-problem-on-corruption-and-its-prevention-through-design"
+        "the-constitutional-problem-on-corruption-and-its-prevention-through-design",
+        "v03-on-corruption-and-its-prevention-through-design"
       ],
       "progressContinuityGroups": [
         [
@@ -2571,13 +2783,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-why-providence-might-fail",
+      "currentSectionId": "v03-how-providence-could-fail",
       "continuityIds": [
         "v03-why-providence-might-fail",
         "why-providence-might-fail-opening"
       ],
       "historicalSectionIds": [
-        "why-providence-might-fail-opening"
+        "why-providence-might-fail-opening",
+        "v03-why-providence-might-fail"
       ],
       "progressContinuityGroups": [
         [
@@ -2587,13 +2800,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-failure-of-measurement-what-if-coherence-cannot-be-measured",
+      "currentSectionId": "v03-measurement-without-meaning",
       "continuityIds": [
         "v03-the-failure-of-measurement-what-if-coherence-cannot-be-measured",
         "why-providence-might-fail-the-failure-of-measurement-what-if-coherence-cannot-be-measured"
       ],
       "historicalSectionIds": [
-        "why-providence-might-fail-the-failure-of-measurement-what-if-coherence-cannot-be-measured"
+        "why-providence-might-fail-the-failure-of-measurement-what-if-coherence-cannot-be-measured",
+        "v03-the-failure-of-measurement-what-if-coherence-cannot-be-measured"
       ],
       "progressContinuityGroups": [
         [
@@ -2603,13 +2817,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward",
+      "currentSectionId": "v03-the-wrong-signal",
       "continuityIds": [
         "v03-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward",
         "why-providence-might-fail-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward"
       ],
       "historicalSectionIds": [
-        "why-providence-might-fail-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward"
+        "why-providence-might-fail-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward",
+        "v03-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward"
       ],
       "progressContinuityGroups": [
         [
@@ -2619,13 +2834,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-failure-of-structure-what-if-coordination-naturally-centralizes",
+      "currentSectionId": "v03-centralization",
       "continuityIds": [
         "v03-the-failure-of-structure-what-if-coordination-naturally-centralizes",
         "why-providence-might-fail-the-failure-of-structure-what-if-coordination-naturally-centralizes"
       ],
       "historicalSectionIds": [
-        "why-providence-might-fail-the-failure-of-structure-what-if-coordination-naturally-centralizes"
+        "why-providence-might-fail-the-failure-of-structure-what-if-coordination-naturally-centralizes",
+        "v03-the-failure-of-structure-what-if-coordination-naturally-centralizes"
       ],
       "progressContinuityGroups": [
         [
@@ -2635,13 +2851,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-failure-of-justice-what-if-providence-becomes-an-elite",
+      "currentSectionId": "v03-elite-capture",
       "continuityIds": [
         "v03-the-failure-of-justice-what-if-providence-becomes-an-elite",
         "why-providence-might-fail-the-failure-of-justice-what-if-providence-becomes-an-elite"
       ],
       "historicalSectionIds": [
-        "why-providence-might-fail-the-failure-of-justice-what-if-providence-becomes-an-elite"
+        "why-providence-might-fail-the-failure-of-justice-what-if-providence-becomes-an-elite",
+        "v03-the-failure-of-justice-what-if-providence-becomes-an-elite"
       ],
       "progressContinuityGroups": [
         [
@@ -2650,13 +2867,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-failure-of-authenticity-coherence-theater-and-the-performed-self",
+      "currentSectionId": "v03-coherence-theater",
       "continuityIds": [
         "v03-the-failure-of-authenticity-coherence-theater-and-the-performed-self",
         "why-providence-might-fail-the-failure-of-authenticity-coherence-theater-and-the-performed-self"
       ],
       "historicalSectionIds": [
-        "why-providence-might-fail-the-failure-of-authenticity-coherence-theater-and-the-performed-self"
+        "why-providence-might-fail-the-failure-of-authenticity-coherence-theater-and-the-performed-self",
+        "v03-the-failure-of-authenticity-coherence-theater-and-the-performed-self"
       ],
       "progressContinuityGroups": [
         [
@@ -2666,13 +2884,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-failure-of-spirit-cult-dynamics-and-ideological-capture",
+      "currentSectionId": "v03-cult-dynamics",
       "continuityIds": [
         "v03-the-failure-of-spirit-cult-dynamics-and-ideological-capture",
         "why-providence-might-fail-the-failure-of-spirit-cult-dynamics-and-ideological-capture"
       ],
       "historicalSectionIds": [
-        "why-providence-might-fail-the-failure-of-spirit-cult-dynamics-and-ideological-capture"
+        "why-providence-might-fail-the-failure-of-spirit-cult-dynamics-and-ideological-capture",
+        "v03-the-failure-of-spirit-cult-dynamics-and-ideological-capture"
       ],
       "progressContinuityGroups": [
         [
@@ -2682,13 +2901,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose",
+      "currentSectionId": "v03-drift-toward-surveillance-and-rank",
       "continuityIds": [
         "v03-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose",
         "why-providence-might-fail-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose"
       ],
       "historicalSectionIds": [
-        "why-providence-might-fail-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose"
+        "why-providence-might-fail-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose",
+        "v03-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose"
       ],
       "progressContinuityGroups": [
         [
@@ -2698,29 +2918,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-what-this-chapter-is-for",
-      "continuityIds": [
-        "v03-what-this-chapter-is-for",
-        "why-providence-might-fail-what-this-chapter-is-for"
-      ],
-      "historicalSectionIds": [
-        "why-providence-might-fail-what-this-chapter-is-for"
-      ],
-      "progressContinuityGroups": [
-        [
-          "v03-what-this-chapter-is-for",
-          "why-providence-might-fail-what-this-chapter-is-for"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v03-the-method-of-correction",
+      "currentSectionId": "v03-correction-as-a-core-function",
       "continuityIds": [
         "v03-the-method-of-correction",
         "why-providence-might-fail-the-method-of-correction"
       ],
       "historicalSectionIds": [
-        "why-providence-might-fail-the-method-of-correction"
+        "why-providence-might-fail-the-method-of-correction",
+        "v03-the-method-of-correction"
       ],
       "progressContinuityGroups": [
         [
@@ -2730,28 +2935,38 @@
       ]
     },
     {
-      "currentSectionId": "v03-many-ways-to-fail-and-many-ways-to-succeed",
+      "currentSectionId": "v03-what-failure-requires-of-us",
       "continuityIds": [
+        "v03-what-this-chapter-is-for",
+        "why-providence-might-fail-what-this-chapter-is-for",
         "v03-many-ways-to-fail-and-many-ways-to-succeed",
         "why-providence-might-fail-many-ways-to-fail-and-many-ways-to-succeed"
       ],
       "historicalSectionIds": [
-        "why-providence-might-fail-many-ways-to-fail-and-many-ways-to-succeed"
+        "why-providence-might-fail-what-this-chapter-is-for",
+        "v03-what-this-chapter-is-for",
+        "why-providence-might-fail-many-ways-to-fail-and-many-ways-to-succeed",
+        "v03-many-ways-to-fail-and-many-ways-to-succeed"
       ],
       "progressContinuityGroups": [
+        [
+          "v03-what-this-chapter-is-for",
+          "why-providence-might-fail-what-this-chapter-is-for"
+        ],
         [
           "v03-many-ways-to-fail-and-many-ways-to-succeed"
         ]
       ]
     },
     {
-      "currentSectionId": "v03-why-providence-is-not-social-credit",
+      "currentSectionId": "v03-the-bright-lines",
       "continuityIds": [
         "v03-why-providence-is-not-social-credit",
         "why-providence-is-not-social-credit-opening"
       ],
       "historicalSectionIds": [
-        "why-providence-is-not-social-credit-opening"
+        "why-providence-is-not-social-credit-opening",
+        "v03-why-providence-is-not-social-credit"
       ],
       "progressContinuityGroups": [
         [
@@ -2761,13 +2976,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-what-a-social-credit-system-is",
+      "currentSectionId": "v03-the-danger-being-named",
       "continuityIds": [
         "v03-what-a-social-credit-system-is",
         "why-providence-is-not-social-credit-what-a-social-credit-system-is"
       ],
       "historicalSectionIds": [
-        "why-providence-is-not-social-credit-what-a-social-credit-system-is"
+        "why-providence-is-not-social-credit-what-a-social-credit-system-is",
+        "v03-what-a-social-credit-system-is"
       ],
       "progressContinuityGroups": [
         [
@@ -2777,13 +2993,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-lines-that-cannot-be-crossed",
+      "currentSectionId": "v03-six-bright-lines",
       "continuityIds": [
         "v03-the-lines-that-cannot-be-crossed",
         "why-providence-is-not-social-credit-the-lines-that-cannot-be-crossed"
       ],
       "historicalSectionIds": [
-        "why-providence-is-not-social-credit-the-lines-that-cannot-be-crossed"
+        "why-providence-is-not-social-credit-the-lines-that-cannot-be-crossed",
+        "v03-the-lines-that-cannot-be-crossed"
       ],
       "progressContinuityGroups": [
         [
@@ -2793,13 +3010,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-what-remains-permanently-sovereign",
+      "currentSectionId": "v03-the-person-remains-sovereign",
       "continuityIds": [
         "v03-what-remains-permanently-sovereign",
         "why-providence-is-not-social-credit-what-remains-permanently-sovereign"
       ],
       "historicalSectionIds": [
-        "why-providence-is-not-social-credit-what-remains-permanently-sovereign"
+        "why-providence-is-not-social-credit-what-remains-permanently-sovereign",
+        "v03-what-remains-permanently-sovereign"
       ],
       "progressContinuityGroups": [
         [
@@ -2809,13 +3027,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-deeper-difference-direction-of-intent",
+      "currentSectionId": "v03-intent-is-not-the-difference",
       "continuityIds": [
         "v03-the-deeper-difference-direction-of-intent",
         "why-providence-is-not-social-credit-the-deeper-difference-direction-of-intent"
       ],
       "historicalSectionIds": [
-        "why-providence-is-not-social-credit-the-deeper-difference-direction-of-intent"
+        "why-providence-is-not-social-credit-the-deeper-difference-direction-of-intent",
+        "v03-the-deeper-difference-direction-of-intent"
       ],
       "progressContinuityGroups": [
         [
@@ -2845,13 +3064,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-providence-as-protocol-not-platform",
+      "currentSectionId": "v03-protocol-rather-than-platform",
       "continuityIds": [
         "v03-providence-as-protocol-not-platform",
         "the-federated-imperative-providence-as-protocol-not-platform"
       ],
       "historicalSectionIds": [
-        "the-federated-imperative-providence-as-protocol-not-platform"
+        "the-federated-imperative-providence-as-protocol-not-platform",
+        "v03-providence-as-protocol-not-platform"
       ],
       "progressContinuityGroups": [
         [
@@ -2861,13 +3081,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-moral-obligation-not-to-centralize",
+      "currentSectionId": "v03-resisting-consolidation",
       "continuityIds": [
         "v03-the-moral-obligation-not-to-centralize",
         "the-federated-imperative-the-moral-obligation-not-to-centralize"
       ],
       "historicalSectionIds": [
-        "the-federated-imperative-the-moral-obligation-not-to-centralize"
+        "the-federated-imperative-the-moral-obligation-not-to-centralize",
+        "v03-the-moral-obligation-not-to-centralize"
       ],
       "progressContinuityGroups": [
         [
@@ -2877,13 +3098,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-why-it-must-be-open",
+      "currentSectionId": "v03-open-by-design",
       "continuityIds": [
         "v03-why-it-must-be-open",
         "why-it-must-be-open-opening"
       ],
       "historicalSectionIds": [
-        "why-it-must-be-open-opening"
+        "why-it-must-be-open-opening",
+        "v03-why-it-must-be-open"
       ],
       "progressContinuityGroups": [
         [
@@ -2893,13 +3115,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-panopticon-pointed-at-the-self",
+      "currentSectionId": "v03-the-panopticon-pointed-inward",
       "continuityIds": [
         "v03-the-panopticon-pointed-at-the-self",
         "why-it-must-be-open-the-panopticon-pointed-at-the-self"
       ],
       "historicalSectionIds": [
-        "why-it-must-be-open-the-panopticon-pointed-at-the-self"
+        "why-it-must-be-open-the-panopticon-pointed-at-the-self",
+        "v03-the-panopticon-pointed-at-the-self"
       ],
       "progressContinuityGroups": [
         [
@@ -2909,13 +3132,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-what-verifiability-actually-requires",
+      "currentSectionId": "v03-what-verifiability-requires",
       "continuityIds": [
         "v03-what-verifiability-actually-requires",
         "why-it-must-be-open-what-verifiability-actually-requires"
       ],
       "historicalSectionIds": [
-        "why-it-must-be-open-what-verifiability-actually-requires"
+        "why-it-must-be-open-what-verifiability-actually-requires",
+        "v03-what-verifiability-actually-requires"
       ],
       "progressContinuityGroups": [
         [
@@ -2925,13 +3149,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-sovereign-compute-the-machine-you-can-trust",
+      "currentSectionId": "v03-sovereign-compute",
       "continuityIds": [
         "v03-sovereign-compute-the-machine-you-can-trust",
         "why-it-must-be-open-sovereign-compute-the-machine-you-can-trust"
       ],
       "historicalSectionIds": [
-        "why-it-must-be-open-sovereign-compute-the-machine-you-can-trust"
+        "why-it-must-be-open-sovereign-compute-the-machine-you-can-trust",
+        "v03-sovereign-compute-the-machine-you-can-trust"
       ],
       "progressContinuityGroups": [
         [
@@ -2941,13 +3166,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-an-honest-accounting-of-the-limits",
+      "currentSectionId": "v03-threats-the-architecture-does-not-defeat",
       "continuityIds": [
         "v03-an-honest-accounting-of-the-limits",
         "why-it-must-be-open-an-honest-accounting-of-the-limits"
       ],
       "historicalSectionIds": [
-        "why-it-must-be-open-an-honest-accounting-of-the-limits"
+        "why-it-must-be-open-an-honest-accounting-of-the-limits",
+        "v03-an-honest-accounting-of-the-limits"
       ],
       "progressContinuityGroups": [
         [
@@ -2957,31 +3183,24 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-pattern-we-refuse-to-repeat",
+      "currentSectionId": "v03-a-commons-that-can-continue",
       "continuityIds": [
         "v03-the-pattern-we-refuse-to-repeat",
-        "why-it-must-be-open-the-pattern-we-refuse-to-repeat"
+        "why-it-must-be-open-the-pattern-we-refuse-to-repeat",
+        "v03-one-genius-at-a-time",
+        "why-it-must-be-open-one-genius-at-a-time"
       ],
       "historicalSectionIds": [
-        "why-it-must-be-open-the-pattern-we-refuse-to-repeat"
+        "why-it-must-be-open-the-pattern-we-refuse-to-repeat",
+        "v03-the-pattern-we-refuse-to-repeat",
+        "why-it-must-be-open-one-genius-at-a-time",
+        "v03-one-genius-at-a-time"
       ],
       "progressContinuityGroups": [
         [
           "v03-the-pattern-we-refuse-to-repeat",
           "why-it-must-be-open-the-pattern-we-refuse-to-repeat"
-        ]
-      ]
-    },
-    {
-      "currentSectionId": "v03-one-genius-at-a-time",
-      "continuityIds": [
-        "v03-one-genius-at-a-time",
-        "why-it-must-be-open-one-genius-at-a-time"
-      ],
-      "historicalSectionIds": [
-        "why-it-must-be-open-one-genius-at-a-time"
-      ],
-      "progressContinuityGroups": [
+        ],
         [
           "v03-one-genius-at-a-time",
           "why-it-must-be-open-one-genius-at-a-time"
@@ -2989,7 +3208,7 @@
       ]
     },
     {
-      "currentSectionId": "v03-a-system-that-heals-what-it-inhabits",
+      "currentSectionId": "v03-a-system-accountable-to-its-place",
       "continuityIds": [
         "v03-a-system-that-heals-what-it-inhabits",
         "a-system-that-heals-what-it-inhabits-opening",
@@ -2999,7 +3218,8 @@
       "historicalSectionIds": [
         "a-system-that-heals-what-it-inhabits-opening",
         "the-earth-compact-overview",
-        "v03-the-earth-compact"
+        "v03-the-earth-compact",
+        "v03-a-system-that-heals-what-it-inhabits"
       ],
       "progressContinuityGroups": [
         [
@@ -3009,13 +3229,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-architecture-of-a-federated-footprint",
+      "currentSectionId": "v03-a-federated-footprint",
       "continuityIds": [
         "v03-the-architecture-of-a-federated-footprint",
         "a-system-that-heals-what-it-inhabits-the-architecture-of-a-federated-footprint"
       ],
       "historicalSectionIds": [
-        "a-system-that-heals-what-it-inhabits-the-architecture-of-a-federated-footprint"
+        "a-system-that-heals-what-it-inhabits-the-architecture-of-a-federated-footprint",
+        "v03-the-architecture-of-a-federated-footprint"
       ],
       "progressContinuityGroups": [
         [
@@ -3025,13 +3246,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-regenerative-physical-infrastructure",
+      "currentSectionId": "v03-regenerative-places",
       "continuityIds": [
         "v03-the-regenerative-physical-infrastructure",
         "a-system-that-heals-what-it-inhabits-the-regenerative-physical-infrastructure"
       ],
       "historicalSectionIds": [
-        "a-system-that-heals-what-it-inhabits-the-regenerative-physical-infrastructure"
+        "a-system-that-heals-what-it-inhabits-the-regenerative-physical-infrastructure",
+        "v03-the-regenerative-physical-infrastructure"
       ],
       "progressContinuityGroups": [
         [
@@ -3041,13 +3263,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-network-as-ecological-force",
+      "currentSectionId": "v03-the-networks-ecological-test",
       "continuityIds": [
         "v03-the-network-as-ecological-force",
         "a-system-that-heals-what-it-inhabits-the-network-as-ecological-force"
       ],
       "historicalSectionIds": [
-        "a-system-that-heals-what-it-inhabits-the-network-as-ecological-force"
+        "a-system-that-heals-what-it-inhabits-the-network-as-ecological-force",
+        "v03-the-network-as-ecological-force"
       ],
       "progressContinuityGroups": [
         [
@@ -3076,13 +3299,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-sequence-how-providence-matures-version-by-version",
+      "currentSectionId": "v03-a-versioned-path",
       "continuityIds": [
         "v03-the-sequence-how-providence-matures-version-by-version",
         "how-we-begin-the-sequence-how-providence-matures-version-by-version"
       ],
       "historicalSectionIds": [
-        "how-we-begin-the-sequence-how-providence-matures-version-by-version"
+        "how-we-begin-the-sequence-how-providence-matures-version-by-version",
+        "v03-the-sequence-how-providence-matures-version-by-version"
       ],
       "progressContinuityGroups": [
         [
@@ -3108,13 +3332,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-financial-architecture-of-proof",
+      "currentSectionId": "v03-financing-proof",
       "continuityIds": [
         "v03-the-financial-architecture-of-proof",
         "how-we-begin-the-financial-architecture-of-proof"
       ],
       "historicalSectionIds": [
-        "how-we-begin-the-financial-architecture-of-proof"
+        "how-we-begin-the-financial-architecture-of-proof",
+        "v03-the-financial-architecture-of-proof"
       ],
       "progressContinuityGroups": [
         [
@@ -3140,13 +3365,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-where-we-honestly-begin",
+      "currentSectionId": "v03-where-beginning-is-honest",
       "continuityIds": [
         "v03-where-we-honestly-begin",
         "the-flywheel-where-we-honestly-begin"
       ],
       "historicalSectionIds": [
-        "the-flywheel-where-we-honestly-begin"
+        "the-flywheel-where-we-honestly-begin",
+        "v03-where-we-honestly-begin"
       ],
       "progressContinuityGroups": [
         [
@@ -3155,13 +3381,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-first-niche-coherence-in-gathering",
+      "currentSectionId": "v03-first-niche-reflection-in-gathering",
       "continuityIds": [
         "v03-the-first-niche-coherence-in-gathering",
         "the-flywheel-the-first-niche-coherence-in-gathering"
       ],
       "historicalSectionIds": [
-        "the-flywheel-the-first-niche-coherence-in-gathering"
+        "the-flywheel-the-first-niche-coherence-in-gathering",
+        "v03-the-first-niche-coherence-in-gathering"
       ],
       "progressContinuityGroups": [
         [
@@ -3171,13 +3398,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-second-niche-the-companion-of-a-life",
+      "currentSectionId": "v03-second-niche-a-personal-companion",
       "continuityIds": [
         "v03-the-second-niche-the-companion-of-a-life",
         "the-flywheel-the-second-niche-the-companion-of-a-life"
       ],
       "historicalSectionIds": [
-        "the-flywheel-the-second-niche-the-companion-of-a-life"
+        "the-flywheel-the-second-niche-the-companion-of-a-life",
+        "v03-the-second-niche-the-companion-of-a-life"
       ],
       "progressContinuityGroups": [
         [
@@ -3187,13 +3415,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-why-this-engine-is-both-possible-and-unbuilt",
+      "currentSectionId": "v03-why-it-remains-unbuilt",
       "continuityIds": [
         "v03-why-this-engine-is-both-possible-and-unbuilt",
         "the-flywheel-why-this-engine-is-both-possible-and-unbuilt"
       ],
       "historicalSectionIds": [
-        "the-flywheel-why-this-engine-is-both-possible-and-unbuilt"
+        "the-flywheel-why-this-engine-is-both-possible-and-unbuilt",
+        "v03-why-this-engine-is-both-possible-and-unbuilt"
       ],
       "progressContinuityGroups": [
         [
@@ -3202,13 +3431,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-the-opening-and-what-it-is-worth",
+      "currentSectionId": "v03-an-economic-hypothesis",
       "continuityIds": [
         "v03-the-opening-and-what-it-is-worth",
         "the-flywheel-the-opening-and-what-it-is-worth"
       ],
       "historicalSectionIds": [
-        "the-flywheel-the-opening-and-what-it-is-worth"
+        "the-flywheel-the-opening-and-what-it-is-worth",
+        "v03-the-opening-and-what-it-is-worth"
       ],
       "progressContinuityGroups": [
         [
@@ -3218,13 +3448,14 @@
       ]
     },
     {
-      "currentSectionId": "v03-how-the-wheel-begins-to-turn",
+      "currentSectionId": "v03-turning-the-wheel",
       "continuityIds": [
         "v03-how-the-wheel-begins-to-turn",
         "the-flywheel-how-the-wheel-begins-to-turn"
       ],
       "historicalSectionIds": [
-        "the-flywheel-how-the-wheel-begins-to-turn"
+        "the-flywheel-how-the-wheel-begins-to-turn",
+        "v03-how-the-wheel-begins-to-turn"
       ],
       "progressContinuityGroups": [
         [
@@ -3245,11 +3476,13 @@
       ]
     },
     {
-      "currentSectionId": "v03-appendix-the-studies-we-are-aware-of",
+      "currentSectionId": "v03-appendix-evidence-map-and-verification-queue",
       "continuityIds": [
         "v03-appendix-the-studies-we-are-aware-of"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v03-appendix-the-studies-we-are-aware-of"
+      ],
       "progressContinuityGroups": [
         [
           "v03-appendix-the-studies-we-are-aware-of"
@@ -3257,11 +3490,13 @@
       ]
     },
     {
-      "currentSectionId": "v03-i-that-two-people-genuinely-present-with-each-other-show-measurable-physiological-alignment",
+      "currentSectionId": "v03-i-interpersonal-physiological-alignment",
       "continuityIds": [
         "v03-i-that-two-people-genuinely-present-with-each-other-show-measurable-physiological-alignment"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v03-i-that-two-people-genuinely-present-with-each-other-show-measurable-physiological-alignment"
+      ],
       "progressContinuityGroups": [
         [
           "v03-i-that-two-people-genuinely-present-with-each-other-show-measurable-physiological-alignment"
@@ -3269,11 +3504,13 @@
       ]
     },
     {
-      "currentSectionId": "v03-ii-that-heart-rate-variability-indexes-a-regulated-nervous-system-and-tracks-emotional-and-cognitive-self-regulation",
+      "currentSectionId": "v03-ii-heart-rate-variability-and-regulation",
       "continuityIds": [
         "v03-ii-that-heart-rate-variability-indexes-a-regulated-nervous-system-and-tracks-emotional-and-cognitive-self-regulation"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v03-ii-that-heart-rate-variability-indexes-a-regulated-nervous-system-and-tracks-emotional-and-cognitive-self-regulation"
+      ],
       "progressContinuityGroups": [
         [
           "v03-ii-that-heart-rate-variability-indexes-a-regulated-nervous-system-and-tracks-emotional-and-cognitive-self-regulation"
@@ -3281,11 +3518,13 @@
       ]
     },
     {
-      "currentSectionId": "v03-iii-that-the-bodys-inner-signals-interoception-shape-emotion-decision-and-self-knowledge-listening-to-the-within",
+      "currentSectionId": "v03-iii-interoception-emotion-and-decision",
       "continuityIds": [
         "v03-iii-that-the-bodys-inner-signals-interoception-shape-emotion-decision-and-self-knowledge-listening-to-the-within"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v03-iii-that-the-bodys-inner-signals-interoception-shape-emotion-decision-and-self-knowledge-listening-to-the-within"
+      ],
       "progressContinuityGroups": [
         [
           "v03-iii-that-the-bodys-inner-signals-interoception-shape-emotion-decision-and-self-knowledge-listening-to-the-within"
@@ -3293,11 +3532,13 @@
       ]
     },
     {
-      "currentSectionId": "v03-iv-that-being-accurately-seen-and-understood-is-a-basic-human-need-with-a-measurable-neural-signature",
+      "currentSectionId": "v03-iv-feeling-understood",
       "continuityIds": [
         "v03-iv-that-being-accurately-seen-and-understood-is-a-basic-human-need-with-a-measurable-neural-signature"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v03-iv-that-being-accurately-seen-and-understood-is-a-basic-human-need-with-a-measurable-neural-signature"
+      ],
       "progressContinuityGroups": [
         [
           "v03-iv-that-being-accurately-seen-and-understood-is-a-basic-human-need-with-a-measurable-neural-signature"
@@ -3305,11 +3546,13 @@
       ]
     },
     {
-      "currentSectionId": "v03-v-that-groups-possess-a-measurable-collective-intelligence-shaped-by-social-sensitivity-and-turn-taking-a-claim-that-is-real-but-contested",
+      "currentSectionId": "v03-v-group-performance-and-collective-intelligence",
       "continuityIds": [
         "v03-v-that-groups-possess-a-measurable-collective-intelligence-shaped-by-social-sensitivity-and-turn-taking-a-claim-that-is-real-but-contested"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v03-v-that-groups-possess-a-measurable-collective-intelligence-shaped-by-social-sensitivity-and-turn-taking-a-claim-that-is-real-but-contested"
+      ],
       "progressContinuityGroups": [
         [
           "v03-v-that-groups-possess-a-measurable-collective-intelligence-shaped-by-social-sensitivity-and-turn-taking-a-claim-that-is-real-but-contested"
@@ -3317,14 +3560,28 @@
       ]
     },
     {
-      "currentSectionId": "v03-vi-that-nervous-systems-differ-so-a-measure-of-presence-must-be-baselined-to-each-person-never-to-a-population-norm",
+      "currentSectionId": "v03-vi-variation-among-nervous-systems",
       "continuityIds": [
         "v03-vi-that-nervous-systems-differ-so-a-measure-of-presence-must-be-baselined-to-each-person-never-to-a-population-norm"
+      ],
+      "historicalSectionIds": [
+        "v03-vi-that-nervous-systems-differ-so-a-measure-of-presence-must-be-baselined-to-each-person-never-to-a-population-norm"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-vi-that-nervous-systems-differ-so-a-measure-of-presence-must-be-baselined-to-each-person-never-to-a-population-norm"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-vii-pulse-and-endocrine-frontier",
+      "continuityIds": [
+        "v03-vii-pulse-and-endocrine-frontier"
       ],
       "historicalSectionIds": [],
       "progressContinuityGroups": [
         [
-          "v03-vi-that-nervous-systems-differ-so-a-measure-of-presence-must-be-baselined-to-each-person-never-to-a-population-norm"
+          "v03-vii-pulse-and-endocrine-frontier"
         ]
       ]
     },

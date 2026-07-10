@@ -175,13 +175,13 @@ describe("manuscript data", () => {
     const opener =
       "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-the-sprout/";
     const target =
-      "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/why-this-is-happening-and-why-it-changes-everything/";
+      "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/when-scale-outruns-regulation/";
     const keys = new Set(
       manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
     );
 
     expect(sectionByHrefOrAlias(opener)?.section.sectionId).toBe(
-      "v01-why-this-is-happening-and-why-it-changes-everything",
+      "v01-when-scale-outruns-regulation",
     );
     expect(sectionByHrefOrAlias(opener)?.alias?.targetHref).toBe(target);
     expect(

@@ -21,6 +21,7 @@ import {
   previousSection,
   nextSection,
   parentSectionContainer,
+  formatReadingDurationForWords,
 } from "./fixtures";
 
 test("manuscript volume heading does not overlap its stats line", async ({
@@ -241,13 +242,18 @@ test("structural part opener routes redirect to substantive content", async ({
 test("synthetic opening part headings do not repeat their title", async ({
   page,
 }) => {
+  const openingPart = catalog.volumes
+    .find((volume) => volume.href === "/manuscripts/1/")
+    ?.parts.find((part) => part.href === "/manuscripts/1/opening/");
+  expect(openingPart).toBeDefined();
+
   await page.goto("/manuscripts/1/opening/");
 
   const heading = page.locator(".page-heading");
   await expect(heading.locator(".eyebrow")).toHaveCount(0);
   await expect(heading.getByRole("heading", { level: 1 })).toHaveText("Opening");
   await expect(heading.locator("h1 + p")).toHaveText(
-    "5 minutes across 4 chapters.",
+    `${formatReadingDurationForWords(openingPart!.wordCount)} across ${openingPart!.chapters.length} chapters.`,
   );
 
   const headingGap = await heading.evaluate((element) => {
@@ -494,13 +500,14 @@ test("truncated breadcrumb labels reveal their full title in a tooltip", async (
     "Hover tooltips are verified in the desktop project.",
   );
 
-  const longBreadcrumbLabel =
-    "The Second Link: Perception Makes New Coordination Possible";
+  const breadcrumbTarget = catalog.sections
+    .filter((section) => section.volumeId === "providence-imperative")
+    .sort((left, right) => right.title.length - left.title.length)[0];
+  expect(breadcrumbTarget).toBeDefined();
+  const longBreadcrumbLabel = breadcrumbTarget!.title;
 
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto(
-    "/manuscripts/3/the-living-reality/the-second-link-perception-makes-new-coordination-possible/",
-  );
+  await page.goto(breadcrumbTarget!.href);
 
   const breadcrumbs = page.getByRole("navigation", { name: "Breadcrumb" });
   await expect(breadcrumbs).toBeVisible();

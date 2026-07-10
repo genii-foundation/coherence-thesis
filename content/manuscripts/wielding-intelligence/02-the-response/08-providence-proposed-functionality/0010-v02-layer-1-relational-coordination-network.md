@@ -9,12 +9,12 @@ chapterId: "providence-proposed-functionality"
 chapterTitle: "Providence: Proposed Functionality"
 chapterOrder: 8
 sectionId: "v02-layer-1-relational-coordination-network"
-title: "Layer 1 — Relational Coordination Network"
+title: "Layer 1: Relational Coordination Network"
 sectionOrder: 10
 sourceDoc: "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md"
-sourceHash: "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d"
+sourceHash: "ec529fd16f1cc6050151bb9fb2709d40acdca9ecadcb4c3dd3098422aee0c785"
 sourceParagraphStart: 449
 sourceParagraphEnd: 452
 ---
 
-Participants opt in and declare their values, intentions, capacities, areas of work, and the kinds of impact they want to create. The system’s job is to help aligned people find each other—researchers, practitioners, technologists, ecologists, communities—so that people doing compatible regenerative work stop being structurally invisible to one another. Declarations are not one-time; they’re refreshed twice a month on the new and full moons, so the matching adapts as people change and the project’s rhythm runs on natural cycles rather than industrial time.
+Participants opt in and declare their values, intentions, capacities, areas of work, and the kinds of impact they want to create. The system’s job is to help aligned people find one another, including researchers, practitioners, technologists, ecologists, and communities, so people doing compatible regenerative work are no longer structurally invisible to one another. Declarations are not one-time acts. They are refreshed twice a month on the new and full moons, allowing matching to adapt as people change and the project’s rhythm to run on natural cycles rather than industrial time.

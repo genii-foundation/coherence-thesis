@@ -12,31 +12,25 @@ sectionId: "v01-the-currency-of-presence"
 title: "The Currency of Presence"
 sectionOrder: 5
 sourceDoc: "sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md"
-sourceHash: "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a"
-sourceParagraphStart: 676
-sourceParagraphEnd: 703
+sourceHash: "6a576b8800f676b5159558794fbbbae406fd935c8d080feb9cd958d7bea44b8d"
+sourceParagraphStart: 515
+sourceParagraphEnd: 534
 ---
 
-Here is the problem any honest attempt at coordination must face.
+Trust, as the Soil showed, is a state built slowly through reliable encounters. Shared history makes this possible within a village, but a civilization consists mostly of strangers. The person you most need to build with, learn from, or receive care from may have a history you cannot see. At scale, village trust runs out.
 
-Trust, as the Soil showed, is not a belief but a state — and it is built slowly, through reliable encounter over time. Between people who share a history, this works. But a civilization is mostly strangers. The person you would most benefit from building with, learning from, or being cared for by is almost always someone whose history you cannot see. At scale, the slow trust that holds a village together simply runs out.
+Civilization usually manufactures trust through expenditure or surveillance. Money, collateral, and costly signals favor those who already have resources. Watching and profiling people favors those who hold the data. Both methods can coordinate strangers. Both corrode the trust they seek to protect.
 
-Civilization's usual answers to this are the two we met in the Stem. One manufactures trust through expenditure — money, collateral, the costly signal. The other manufactures it through surveillance — watch everyone, profile everyone, and let the system vouch for them. The first concentrates power in those who already have resources. The second concentrates it in those who hold the data. Both work, after a fashion. Both corrode the thing they are trying to protect.
+Providence proposes a third answer: the **Currency of Presence**. Its unit is **COHERENCE**. The biometric process later volumes call **Bio-Consensus** is the primary path by which it is minted.
 
-Providence proposes a third answer, and it is the part that has never existed before. We call it **Bio-Consensus: the Currency of Presence.**
+Everything turns on what the Currency of Presence measures. It does not measure your worth, beliefs, productivity, compliance, or character. It measures something narrower and stranger: **presence**, and more importantly, **presencing.**
 
+Presence names the state of a nervous system that is here, regulated, available, and attending, rather than performing the appearance of that state. Presencing is rarer and happens only *between* people. Two nervous systems begin to settle and synchronize, making possible something neither brought alone. Presence is what you bring. Presencing occurs when your presence meets another's and changes both of you.
 
-Begin with what it measures, because everything turns on this.
+This distinction is the system's deepest protection against what its critics rightly fear.
 
-It does not measure your worth. It does not measure your beliefs, your productivity, your compliance, or your character. It measures something narrower and stranger: **presence** — and, more importantly, **presencing.**
+You can fake the coherence you *claim* for yourself more easily than the coherence you *evoke* in another person. A currency rooted in presencing, in measurable shifts that others attest to, is harder to counterfeit than a currency based on self-report. You cannot perform your way into it alone. Only relationship can mint it.
 
-Presence is a state you can be in: whether your nervous system is genuinely here — regulated, available, attending — or merely performing the appearance of it. Presencing is the rarer thing, and it happens only *between* people: the moment two nervous systems begin to settle and synchronize, and something becomes possible between them that neither arrived with. Presence is what you bring. Presencing is what occurs when your presence meets another's and they are changed by it, and you by them.
+When we call presence a currency, we mean neither a score nor a metaphor.
 
-This distinction is not a flourish. It is the system's deepest protection — and the reason it cannot become what its critics will fear.
-
-Because it is one thing to fake the coherence you *claim* for yourself. It is far harder to fake the coherence you genuinely *evoke* in another living person. A currency rooted in presencing — in the measurable shift you produce in others, attested by them — resists counterfeiting in a way that any currency of self-report never could. You cannot perform your way into it alone. It is, by design, something only relationship can mint.
-
-
-So when we call presence a currency, we do not mean a score, and we do not mean a metaphor.
-
-We mean a *memory system.* Money, at its root, is memory — a way for a society to remember who contributed what, so that contribution can be honored later, among strangers, without anyone having to personally recall it. The Currency of Presence is memory of a different ledger: it remembers what money is structurally blind to. The depth of someone's listening. The steadiness they brought to a hard room. The trust they have actually earned in the lives they have touched. Money does not make its holders better people. A currency sought through presence would make its holders — quietly, structurally — more present. The incentive and the good would point, for once, in the same direction.
+We mean a *memory system.* Money lets a society remember contribution so that it can be honored later among strangers. The Currency of Presence remembers what money cannot see: the depth of someone's listening, the steadiness they brought to a hard room, the trust they earned in the lives they touched. Money does not make its holders better people. A currency earned through presence would reward its holders for becoming more present. The incentive and the good would point in the same direction.

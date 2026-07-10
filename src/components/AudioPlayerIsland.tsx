@@ -985,7 +985,7 @@ export function AudioPlayerIsland({
       pause();
       return;
     }
-    if (visibleQueueRef.current.length === 0) {
+    if (visibleQueue.length === 0) {
       if (sections.length === 0) {
         setPendingFallbackPlayback(true);
         return;
@@ -994,7 +994,7 @@ export function AudioPlayerIsland({
       return;
     }
     setOpen(true);
-    void speak(0, preference, visibleQueueRef.current);
+    void speak(0, preference, visibleQueue);
   }
 
   useEffect(() => {
@@ -1092,6 +1092,9 @@ export function AudioPlayerIsland({
         className={`audio-menu-button${playing ? " is-playing" : ""}`}
         aria-controls="audiobook-menu"
         aria-label={playing ? "Pause audiobook" : "Listen"}
+        data-audio-ready={
+          sections.length > 0 && preferenceReady && voicesReady && supported
+        }
         onClick={handleToolbarButtonClick}
       >
         <PlaybackToolbarIcon playing={playing} waveformScales={waveformScales} />

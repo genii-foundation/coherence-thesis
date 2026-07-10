@@ -6,6 +6,8 @@ Use this layout:
 
 ```text
 editorial/
+  debt/index.md
+  debt/items/<ctd-id>-<slug>.md
   voice-cards/<volume-id>.md
   reviews/<volume-id>/<batch-id>/review.md
   reviews/<volume-id>/<batch-id>/sentence-ledger.jsonl
@@ -13,6 +15,8 @@ editorial/
 ```
 
 The sentence and structure ledgers are required for every pilot and production batch. The sentence ledger accounts for all prose, including source material omitted by reader generation. The structure ledger accounts for every heading and standalone display unit. The human review record captures structural choices, author questions, all 24 slop catalog results, independent reviews, link decisions, and approval. Keep temporary reports outside this directory.
+
+The editorial debt library preserves obligations that outlive one batch. Add an item as soon as an inconsistency, unfulfilled promise, unresolved claim, citation gap, canon conflict, literary weakness, link obligation, audio obligation, or technical limitation is discovered. Use the next stable `CTD-` identifier. Never delete an item after publication. Resolve it with evidence and retain its history. If the same issue survives elsewhere, reopen the original item and preserve the partial paydown instead of creating a duplicate. Store corpus audit reports in `editorial/debt/audits/`, then reconcile every finding into the item library. Read `editorial/debt/index.md` before a batch and run `npm run manuscripts:debt:update` after every debt change.
 
 Initialize exhaustive pending ledgers after importing the edited source:
 

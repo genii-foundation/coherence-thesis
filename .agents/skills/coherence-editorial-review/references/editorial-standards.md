@@ -54,6 +54,8 @@ Do not replace a prohibited mark with another mark by reflex. First identify the
 
 Use ordinary hyphens in established compounds when grammar requires them. Write numeric and date ranges with `to`, such as `from 2018 to 2024`.
 
+Do not expand ampersands by reflex. Prefer `and` in ordinary prose unless a proper name, exact quotation, citation style, or approved usage requires `&`. In a bibliography that uses an ampersand before the final author, preserve it. In headings, titles, labels, and compact display matter, preserve an ampersand when it carries pace, visual balance, or identity. Judge the phrase in context and read it aloud.
+
 Do not silently alter an exact quotation or bibliographic title to satisfy this rule. Verify the primary source. If the published corpus must contain no prohibited glyphs, use an accurate paraphrase with attribution or obtain explicit approval for another faithful treatment. Do not change quoted wording while continuing to present it as exact.
 
 Avoid punctuation theater. A colon should introduce something. A fragment should earn its isolation. Italics should not perform conviction that the sentence has failed to establish.

@@ -12,12 +12,12 @@ sectionId: "v03-the-living-reality"
 title: "The Living Reality"
 sectionOrder: 1
 sourceDoc: "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"
-sourceHash: "72eef2809146d6e4560feee82fc606dae083676730b0019eaaac76914052b104"
-sourceParagraphStart: 662
-sourceParagraphEnd: 668
+sourceHash: "ae6adff173fc5363eca581cf47551b71c412e31437eb0a0ecd2a8d0dd528414c"
+sourceParagraphStart: 638
+sourceParagraphEnd: 644
 ---
 
-*What It Is to Live Inside Providence, and How a Currency of Presence Reaches the Ground of Material Life*
+*One Year, One Life, and the Question of Material Provision*
 
 
-*Everything before this was architecture. Now we go indoors — into one year, one life, one creek — to ask whether the design holds when a human being actually lives inside it.*
+*Everything before this was architecture. Now we enter one imagined life and ask whether the design can hold a human being.*

@@ -1,7 +1,7 @@
 # THE COHERENCE THESIS — MASTER LEDGER
 
 *A canon reference and continuity register for the nine-volume series.*
-*Compiled from the most recent uploaded version of each volume. Status: **FINAL PASS COMPLETE** — all decisions applied across the nine volumes (see Completion Log, §9).*
+*Compiled from the most recent uploaded version of each volume. Status: prior canon alignment pass complete. Current publication readiness is governed by the active editorial debt register in `editorial/debt/index.md`; open debt means the corpus is not final.*
 
 > **Scope note.** These nine are the **first, outward-facing volumes** of a larger and ongoing work. More volumes are forthcoming, written through the many authors that compose the single authorial voice "Tao Yu," and will become accessible through **The Coherence Thesis Network** now being built. The series is complete enough to enter and use, and deliberately open-ended at its far edge.
 
@@ -11,7 +11,7 @@
 
 | Vol | Title | Subtitle | Number / Planet | Byline |
 |----|-------|----------|-----------------|--------|
-| I | **Humanity's Most Viable Future** | *The Obvious Substrate for the Existential Necessity of a Post-Extractive Civilization* | One · Sun | Tao Yu / ed. Robert James Ryan III |
+| I | **Humanity's Most Viable Future** | *Coherence as the Ground of a Post-Extractive Civilization* | One · Sun | Tao Yu / ed. Robert James Ryan III |
 | II | **Wielding Intelligence** | *To Center in Humane Technology* | Two · Moon | Tao Yu / ed. RJR III |
 | III | **The Providence Imperative** | *How We Build the Coordination Infrastructure That Civilization Needs to Survive Itself* | Three · Jupiter | Tao Yu / ed. RJR III |
 | IV | **Architecting Providence** | *Building Coherent Civilization* | Four · Uranus | Tao Yu / ed. RJR III |
@@ -191,9 +191,9 @@ Vol VI's file has no "Written by Tao Yu / ed. RJR III / Purposeful Foundation" l
 
 ---
 
-## 9. Completion Log — Final Pass Applied
+## 9. Completion Log for the Prior Canon Alignment Pass
 
-All decisions executed. Changes by volume:
+The decisions recorded in that pass were applied as listed below. Later editorial review has opened additional obligations, which now live in the durable editorial debt register.
 
 - **Vol I** — attribution standardized; ICONS-defining passage rewritten to introduce **Scale** as the singular (ICONS = plural); singular "an ICONS" usages → "a Scale." *Maren references preserved* (recurring character).
 - **Vol II** — attribution standardized (front matter + colophon).

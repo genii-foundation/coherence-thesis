@@ -57,7 +57,7 @@ describe("editorial structure ledger", () => {
     ]);
   });
 
-  it("extracts blockquotes and unmarked attribution lines", () => {
+  it("extracts quoted and attributed display lines", () => {
     const source = [
       "# Chapter",
       "",
@@ -66,6 +66,10 @@ describe("editorial structure ledger", () => {
       "> A second displayed line.",
       "",
       "\u2014 Joseph Tainter, The Collapse of Complex Societies",
+      "",
+      "*An italic display quotation.*",
+      "",
+      "*Adapted from The Coherence Thesis, Volume I*",
       "",
       "Ordinary body prose.",
     ].join("\n");
@@ -86,6 +90,16 @@ describe("editorial structure ledger", () => {
         unitOrdinal: 4,
         text: "Joseph Tainter, The Collapse of Complex Societies",
       },
+      {
+        unitType: "display-metadata",
+        unitOrdinal: 5,
+        text: "An italic display quotation.",
+      },
+      {
+        unitType: "display-metadata",
+        unitOrdinal: 6,
+        text: "Adapted from The Coherence Thesis, Volume I",
+      },
     ]);
   });
 
@@ -95,6 +109,7 @@ describe("editorial structure ledger", () => {
       "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md",
     ];
     let displayLineCount = 0;
+    let adaptedAttributionCount = 0;
     for (const sourceFile of sourceFiles) {
       const source = fs.readFileSync(path.join(repoRoot, sourceFile), "utf8");
       const structureText = new Set(
@@ -104,7 +119,11 @@ describe("editorial structure ledger", () => {
       );
       const expected = source
         .split(/\r?\n/)
-        .filter((line) => /^\s{0,3}>\s*\S|^\s*[\u2013\u2014]\s+\S/.test(line))
+        .filter((line) =>
+          /^\s{0,3}>\s*\S|^\s*[\u2013\u2014]\s+\S|^\s*(?:\*\*[^*]+\*\*|\*[^*]+\*)\s*$/.test(
+            line,
+          ),
+        )
         .map((line) =>
           line
             .replace(/^\s*(?:>\s*)+/, "")
@@ -116,9 +135,13 @@ describe("editorial structure ledger", () => {
             .trim(),
         );
       displayLineCount += expected.length;
+      adaptedAttributionCount += expected.filter((text) =>
+        /^(?:After|Adapted from)\b/.test(text),
+      ).length;
       for (const text of expected) expect(structureText).toContain(text);
     }
     expect(displayLineCount).toBeGreaterThan(20);
+    expect(adaptedAttributionCount).toBeGreaterThan(10);
   });
 
   it("validates complete baseline and current reconstruction", () => {

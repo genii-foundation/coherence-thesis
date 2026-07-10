@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process";
+import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
@@ -44,18 +45,30 @@ export type LinkPreservationIssue = {
   candidates?: Array<{ sectionId?: string; href?: string; score: number }>;
 };
 
+export type HistoricalSectionMappingInput = {
+  oldSectionId: string;
+  currentSectionId: string;
+};
+
+export type HistoricalSectionMappingConfig = {
+  version: number;
+  mappings: HistoricalSectionMappingInput[];
+};
+
 export type LinkPreservationPlan = {
   base: string;
   lineage: SectionLineageMatch[];
   sectionLineage: SectionLineageConfig;
   sectionAliases: SectionAliasConfig;
   routeAliases: RouteAliasConfig;
+  historicalSectionMappings: HistoricalSectionMappingConfig;
   addedSectionAliases: SectionAliasInput[];
   updatedSectionAliases: SectionAliasInput[];
   removedSectionAliases: SectionAliasInput[];
   addedRouteAliases: RouteAliasInput[];
   updatedRouteAliases: RouteAliasInput[];
   removedRouteAliases: RouteAliasInput[];
+  updatedHistoricalSectionMappings: HistoricalSectionMappingInput[];
   unresolved: LinkPreservationIssue[];
   changed: boolean;
 };
@@ -67,11 +80,24 @@ type PlanOptions = {
   existingRouteAliases?: RouteAliasConfig;
   existingRouteLedger?: RouteLedger;
   existingSectionLineage?: SectionLineageConfig;
+  existingHistoricalSectionMappings?: HistoricalSectionMappingConfig;
   explicitMappings?: Map<string, string>;
   explicitContinuityMappings?: Map<string, string>;
   explicitRouteMappings?: Map<string, string>;
   base?: string;
 };
+
+export type LinkPreservationWritePaths = {
+  sectionLineage: string;
+  sectionAliases: string;
+  routeAliases: string;
+  historicalSectionMappings: string;
+};
+
+export const historicalSectionMappingPath = path.join(
+  repoRoot,
+  "content/series/historical-section-mappings.json",
+);
 
 type CliOptions = {
   base: string;
@@ -719,6 +745,54 @@ function diffRouteAliases(
   };
 }
 
+export function refreshHistoricalSectionMappings(
+  existing: HistoricalSectionMappingConfig,
+  sectionLineage: SectionLineageConfig,
+  currentSectionIds: Set<string>,
+): {
+  config: HistoricalSectionMappingConfig;
+  updated: HistoricalSectionMappingInput[];
+  unresolved: LinkPreservationIssue[];
+} {
+  const lineageOwner = new Map<string, string>();
+  for (const entry of sectionLineage.sections) {
+    for (const identity of [
+      entry.currentSectionId,
+      ...entry.continuityIds,
+      ...entry.historicalSectionIds,
+    ]) {
+      lineageOwner.set(identity, entry.currentSectionId);
+    }
+  }
+  const unresolved: LinkPreservationIssue[] = [];
+  const mappings = existing.mappings.map((mapping) => {
+    const currentSectionId = currentSectionIds.has(mapping.currentSectionId)
+      ? mapping.currentSectionId
+      : lineageOwner.get(mapping.currentSectionId);
+    if (!currentSectionId || !currentSectionIds.has(currentSectionId)) {
+      unresolved.push({
+        previousSectionId: mapping.oldSectionId,
+        message:
+          `Historical section mapping target '${mapping.currentSectionId}' has no confirmed current lineage owner.`,
+      });
+      return mapping;
+    }
+    return { ...mapping, currentSectionId };
+  });
+  const previousByOldId = new Map(
+    existing.mappings.map((mapping) => [mapping.oldSectionId, mapping]),
+  );
+  const updated = mappings.filter((mapping) => {
+    const previous = previousByOldId.get(mapping.oldSectionId);
+    return previous && !sameJson(previous, mapping);
+  });
+  return {
+    config: { version: 1, mappings },
+    updated,
+    unresolved,
+  };
+}
+
 function uniqueIssues(issues: LinkPreservationIssue[]): LinkPreservationIssue[] {
   return issues.filter(
     (issue, index) =>
@@ -738,6 +812,7 @@ export function planLinkPreservation({
   existingRouteAliases = { version: 1, aliases: [] },
   existingRouteLedger = { version: 2, routes: [] },
   existingSectionLineage = { version: 1, sections: [] },
+  existingHistoricalSectionMappings = { version: 1, mappings: [] },
   explicitMappings = new Map(),
   explicitContinuityMappings = new Map(),
   explicitRouteMappings = new Map(),
@@ -772,7 +847,16 @@ export function planLinkPreservation({
     proposedCurrent.aliases.map((alias) => alias.sourceHref),
   );
   const nextSectionAliases = new Map<string, SectionAliasInput>();
-  const unresolved = [...matched.unresolved, ...lineageBuild.unresolved];
+  const historicalMappingRefresh = refreshHistoricalSectionMappings(
+    existingHistoricalSectionMappings,
+    sectionLineage,
+    new Set(currentSections.keys()),
+  );
+  const unresolved = [
+    ...matched.unresolved,
+    ...lineageBuild.unresolved,
+    ...historicalMappingRefresh.unresolved,
+  ];
   try {
     validateSectionLineageConfig(proposedCurrent, sectionLineage);
   } catch (error) {
@@ -1321,12 +1405,14 @@ export function planLinkPreservation({
     sectionLineage,
     sectionAliases,
     routeAliases,
+    historicalSectionMappings: historicalMappingRefresh.config,
     addedSectionAliases: sectionDiff.added,
     updatedSectionAliases: sectionDiff.updated,
     removedSectionAliases: sectionDiff.removed,
     addedRouteAliases: routeDiff.added,
     updatedRouteAliases: routeDiff.updated,
     removedRouteAliases: routeDiff.removed,
+    updatedHistoricalSectionMappings: historicalMappingRefresh.updated,
     unresolved: uniqueIssues(unresolved),
     changed:
       !sameJson(normalizedExistingLineage, sectionLineage) ||
@@ -1337,6 +1423,10 @@ export function planLinkPreservation({
       !sameJson(
         sortedRouteAliases(existingRouteAliases.aliases),
         routeAliases.aliases,
+      ) ||
+      !sameJson(
+        existingHistoricalSectionMappings,
+        historicalMappingRefresh.config,
       ),
   };
 }
@@ -1450,6 +1540,7 @@ export function formatLinkPlan(plan: LinkPreservationPlan): string {
     `${plan.addedRouteAliases.length.toLocaleString()} structural alias(es) to add`,
     `${plan.updatedRouteAliases.length.toLocaleString()} structural alias(es) to update`,
     `${plan.removedRouteAliases.length.toLocaleString()} structural alias(es) to remove`,
+    `${plan.updatedHistoricalSectionMappings.length.toLocaleString()} historical mapping target(s) to update`,
     `${plan.unresolved.length.toLocaleString()} unresolved item(s)`,
   ];
   formatAliasChanges(lines, "Section aliases to add", plan.addedSectionAliases);
@@ -1495,6 +1586,64 @@ export function linkHelp(): string {
   ].join("\n");
 }
 
+export function readHistoricalSectionMappings(
+  filePath = historicalSectionMappingPath,
+): HistoricalSectionMappingConfig {
+  if (!fs.existsSync(filePath)) return { version: 1, mappings: [] };
+  const parsed = JSON.parse(
+    fs.readFileSync(filePath, "utf8"),
+  ) as HistoricalSectionMappingConfig;
+  if (parsed.version !== 1 || !Array.isArray(parsed.mappings)) {
+    throw new Error("Historical section mappings must use version 1.");
+  }
+  const oldSectionIds = new Set<string>();
+  for (const mapping of parsed.mappings) {
+    if (!mapping.oldSectionId || !mapping.currentSectionId) {
+      throw new Error("Historical section mappings require old and current IDs.");
+    }
+    if (oldSectionIds.has(mapping.oldSectionId)) {
+      throw new Error(
+        `Historical section '${mapping.oldSectionId}' is mapped more than once.`,
+      );
+    }
+    oldSectionIds.add(mapping.oldSectionId);
+  }
+  return parsed;
+}
+
+export function writeLinkPreservationPlan(
+  plan: LinkPreservationPlan,
+  paths: LinkPreservationWritePaths = {
+    sectionLineage: sectionLineagePath,
+    sectionAliases: aliasConfigPath,
+    routeAliases: routeAliasConfigPath,
+    historicalSectionMappings: historicalSectionMappingPath,
+  },
+): string[] {
+  if (plan.unresolved.length > 0) {
+    throw new Error("Cannot write a link preservation plan with unresolved items.");
+  }
+  const artifacts: Array<{ filePath: string; value: unknown }> = [
+    { filePath: paths.sectionLineage, value: plan.sectionLineage },
+    { filePath: paths.sectionAliases, value: plan.sectionAliases },
+    { filePath: paths.routeAliases, value: plan.routeAliases },
+    {
+      filePath: paths.historicalSectionMappings,
+      value: plan.historicalSectionMappings,
+    },
+  ];
+  const updated: string[] = [];
+  for (const artifact of artifacts) {
+    const existing = fs.existsSync(artifact.filePath)
+      ? JSON.parse(fs.readFileSync(artifact.filePath, "utf8"))
+      : undefined;
+    if (existing !== undefined && sameJson(existing, artifact.value)) continue;
+    writeJson(artifact.filePath, artifact.value);
+    updated.push(artifact.filePath);
+  }
+  return updated;
+}
+
 export function runLinkCli(args = process.argv.slice(2)): number {
   try {
     const options = parseLinkArgs(args);
@@ -1504,6 +1653,9 @@ export function runLinkCli(args = process.argv.slice(2)): number {
     }
     const previous = loadCatalogAtGitRef(options.base);
     const existingLineage = readSectionLineage();
+    const existingSectionAliases = readAliasConfig();
+    const existingRouteAliases = readRouteAliasConfig();
+    const existingHistoricalSectionMappings = readHistoricalSectionMappings();
     const current = buildCatalog(manuscriptRoot, {
       aliasConfig: { version: 1, aliases: [] },
       routeAliasConfig: { version: 1, aliases: [] },
@@ -1512,10 +1664,11 @@ export function runLinkCli(args = process.argv.slice(2)): number {
     const plan = planLinkPreservation({
       previous,
       current,
-      existingSectionAliases: readAliasConfig(),
-      existingRouteAliases: readRouteAliasConfig(),
+      existingSectionAliases,
+      existingRouteAliases,
       existingRouteLedger: readRouteLedger(),
       existingSectionLineage: existingLineage,
+      existingHistoricalSectionMappings,
       explicitMappings: options.mappings,
       explicitContinuityMappings: options.continuityMappings,
       explicitRouteMappings: options.routeMappings,
@@ -1526,12 +1679,9 @@ export function runLinkCli(args = process.argv.slice(2)): number {
     );
     if (plan.unresolved.length > 0) return 1;
     if (options.write && plan.changed) {
-      writeJson(sectionLineagePath, plan.sectionLineage);
-      writeJson(aliasConfigPath, plan.sectionAliases);
-      writeJson(routeAliasConfigPath, plan.routeAliases);
-      console.log(`Updated ${path.relative(repoRoot, sectionLineagePath)}`);
-      console.log(`Updated ${path.relative(repoRoot, aliasConfigPath)}`);
-      console.log(`Updated ${path.relative(repoRoot, routeAliasConfigPath)}`);
+      for (const filePath of writeLinkPreservationPlan(plan)) {
+        console.log(`Updated ${path.relative(repoRoot, filePath)}`);
+      }
       return 0;
     }
     return plan.changed ? 1 : 0;

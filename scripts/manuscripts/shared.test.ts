@@ -32,7 +32,7 @@ describe("manuscript compiler helpers", () => {
     const firstVolume = catalog.volumes[0];
     const firstSection = catalog.sections[0]!;
     const structureSection = catalog.sections.find(
-      (section) => section.sectionId === "v01-how-this-book-is-structured",
+      (section) => section.sectionId === "v01-how-understanding-takes-root",
     );
 
     expect(firstVolume).toBeDefined();
@@ -43,7 +43,7 @@ describe("manuscript compiler helpers", () => {
       "/downloads/sections/The Coherence Thesis - 01.001 - Orientation.pdf",
     );
     expect(sectionPdfHref(structureSection!, firstVolume!)).toBe(
-      "/downloads/sections/The Coherence Thesis - 01.004 - How This Book Is Structured.pdf",
+      "/downloads/sections/The Coherence Thesis - 01.004 - How Understanding Takes Root.pdf",
     );
     expect(manuscriptPdfHref(firstVolume!)).toBe(
       "/downloads/manuscripts/The Coherence Thesis - 01 - Humanity's Most Viable Future.pdf",
@@ -55,7 +55,7 @@ describe("manuscript compiler helpers", () => {
     const section = catalog.sections[0]!;
     const historicalRename = catalog.sections.find(
       (candidate) =>
-        candidate.sectionId === "v03-on-the-meaning-of-coordination-failure",
+        candidate.sectionId === "v03-coordination-failure",
     );
     const routeOnlyAncestor = catalog.sections.find(
       (candidate) => candidate.sectionId === "v01-the-seed",
@@ -275,9 +275,9 @@ describe("manuscript compiler helpers", () => {
       catalog.sections.some((section) => section.sectionId === "v01-the-sprout"),
     ).toBe(false);
     expect(alias).toMatchObject({
-      targetSectionId: "v01-why-this-is-happening-and-why-it-changes-everything",
+      targetSectionId: "v01-when-scale-outruns-regulation",
       targetHref:
-        "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/why-this-is-happening-and-why-it-changes-everything/",
+        "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/when-scale-outruns-regulation/",
     });
   });
 
@@ -354,7 +354,7 @@ describe("manuscript compiler helpers", () => {
             {
               sourceHref:
                 "/manuscripts/humanitys-most-viable-future/opening/orientation/",
-              targetSectionId: "v01-how-this-book-is-structured",
+              targetSectionId: "v01-how-understanding-takes-root",
             },
           ],
         },

@@ -12,9 +12,9 @@ sectionId: "v02-wielding-intelligence"
 title: "Wielding Intelligence"
 sectionOrder: 1
 sourceDoc: "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md"
-sourceHash: "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d"
-sourceParagraphStart: 876
-sourceParagraphEnd: 878
+sourceHash: "ec529fd16f1cc6050151bb9fb2709d40acdca9ecadcb4c3dd3098422aee0c785"
+sourceParagraphStart: 878
+sourceParagraphEnd: 880
 ---
 
 *The future will not be built by isolated genius. It will be built by builders who learn to find each other before fragmentation becomes irreversible.*

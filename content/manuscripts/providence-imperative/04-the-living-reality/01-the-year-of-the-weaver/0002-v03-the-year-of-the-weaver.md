@@ -12,17 +12,15 @@ sectionId: "v03-the-year-of-the-weaver"
 title: "The Year of the Weaver"
 sectionOrder: 2
 sourceDoc: "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"
-sourceHash: "72eef2809146d6e4560feee82fc606dae083676730b0019eaaac76914052b104"
-sourceParagraphStart: 671
-sourceParagraphEnd: 682
+sourceHash: "ae6adff173fc5363eca581cf47551b71c412e31437eb0a0ecd2a8d0dd528414c"
+sourceParagraphStart: 647
+sourceParagraphEnd: 656
 ---
 
-*To describe an institution only in the language of its architecture is to describe a house only by its blueprints. One must also say what it is to wake within its walls.*
+*A house is not understood from its plans alone. Someone must wake within its walls.*
 
-— The Coherence Thesis, Vol. II
+*Adapted from The Coherence Thesis, Volume II*
 
-We have built, in the preceding chapters, the full architecture of Providence — the three doors, the seven initiates, the Currency of Presence and presencing, the four streams by which presence is made legible, the engine that mints the currency and the mirror that returns it. It is time now to do something the architecture alone cannot do. It is time to walk through it.
+Architecture can show how parts fit. It cannot show what belonging feels like or whether an institution remains humane when an ordinary day presses against it.
 
-What follows is a single year in the life of one person who enters Providence. She is a composite — every detail is drawn from the kinds of people the network is built to serve, but the particular woman is an invention, a vessel for showing what the abstractions of the previous chapters actually feel like from the inside. We follow her not because her story is exceptional but because it is ordinary in exactly the way the network intends: the story of someone of genuine purpose who arrives in isolation and discovers, over a year, what it is to be woven into something larger. We will call her Maren.
-
-We tell it in detail, and without hurry, because the whole burden of this volume rests on a claim that can only be felt and not merely argued: that a coordination device built on presence is not an abstraction but a lived reality, and that the difference between this and every platform that preceded it is a difference one experiences in the body, in the quality of one's days, in what becomes possible that was not possible before.
+Maren is a composite character. Her details are invented from the kinds of lives Providence is meant to serve. Nothing in her story should be mistaken for evidence that the network or its measurement system already works. The story is a design test in narrative form.

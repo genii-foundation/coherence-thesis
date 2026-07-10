@@ -6,8 +6,16 @@
       "href": "/manuscripts/1/opening/a-note-on-compression/"
     },
     {
+      "sectionId": "v01-four-movements",
+      "href": "/manuscripts/1/opening/four-movements/"
+    },
+    {
       "sectionId": "v01-how-this-book-is-structured",
       "href": "/manuscripts/1/opening/how-this-book-is-structured/"
+    },
+    {
+      "sectionId": "v01-how-understanding-takes-root",
+      "href": "/manuscripts/1/opening/how-understanding-takes-root/"
     },
     {
       "sectionId": "v01-on-form-timing-and-why-this-book-exists",
@@ -16,6 +24,10 @@
     {
       "sectionId": "v01-orientation",
       "href": "/manuscripts/1/opening/orientation/"
+    },
+    {
+      "sectionId": "v01-the-work-behind-the-book",
+      "href": "/manuscripts/1/opening/the-work-behind-the-book/"
     },
     {
       "sectionId": "v01-on-historical-and-structural-causality",
@@ -50,8 +62,36 @@
       "href": "/manuscripts/1/seed-sprout-stem-and-soil/taking-pause-in-the-soil/"
     },
     {
+      "sectionId": "v01-the-ground-beneath-the-argument",
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-ground-beneath-the-argument/"
+    },
+    {
+      "sectionId": "v01-historical-and-structural-causality",
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/historical-and-structural-causality/"
+    },
+    {
+      "sectionId": "v01-measurement-and-falsifiability",
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/measurement-and-falsifiability/"
+    },
+    {
+      "sectionId": "v01-reductionism",
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/reductionism/"
+    },
+    {
+      "sectionId": "v01-the-limits-of-the-claim",
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/start/"
+    },
+    {
+      "sectionId": "v01-what-the-argument-has-established",
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/what-the-argument-has-established/"
+    },
+    {
       "sectionId": "v01-the-seed",
       "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/"
+    },
+    {
+      "sectionId": "v01-the-seeds-boundaries",
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-seeds-boundaries/"
     },
     {
       "sectionId": "v01-civilization-as-a-living-process",
@@ -70,12 +110,24 @@
       "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/reverence-arrived-at-honestly/"
     },
     {
+      "sectionId": "v01-reverence-through-observation",
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/reverence-through-observation/"
+    },
+    {
       "sectionId": "v01-the-human-being-reconsidered",
       "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/the-human-being-reconsidered/"
     },
     {
+      "sectionId": "v01-why-coherence-is-a-prerequisite",
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/why-coherence-is-a-prerequisite/"
+    },
+    {
       "sectionId": "v01-why-this-is-necessity-not-preference",
       "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/why-this-is-necessity-not-preference/"
+    },
+    {
+      "sectionId": "v01-when-scale-outruns-regulation",
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/when-scale-outruns-regulation/"
     },
     {
       "sectionId": "v01-why-this-is-happening-and-why-it-changes-everything",
@@ -106,8 +158,32 @@
       "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/intelligence-we-now-build/"
     },
     {
+      "sectionId": "v01-regulation-as-the-work-of-governance",
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/regulation-as-the-work-of-governance/"
+    },
+    {
+      "sectionId": "v01-the-horizon-before-the-blueprint",
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/the-horizon-before-the-blueprint/"
+    },
+    {
+      "sectionId": "v01-the-intelligence-we-are-building",
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/the-intelligence-we-are-building/"
+    },
+    {
+      "sectionId": "v01-boundaries-and-burden-of-proof",
+      "href": "/manuscripts/1/the-flower/boundaries-and-burden-of-proof/"
+    },
+    {
       "sectionId": "v01-the-flower",
       "href": "/manuscripts/1/the-flower/chapter-start/the-flower/"
+    },
+    {
+      "sectionId": "v01-from-thesis-to-experiment",
+      "href": "/manuscripts/1/the-flower/from-thesis-to-experiment/"
+    },
+    {
+      "sectionId": "v01-icons-and-the-cardinal-scale",
+      "href": "/manuscripts/1/the-flower/icons-and-the-cardinal-scale/"
     },
     {
       "sectionId": "v01-icons-and-the-first-scale",
@@ -122,8 +198,16 @@
       "href": "/manuscripts/1/the-flower/start/"
     },
     {
+      "sectionId": "v01-boundaries-against-surveillance",
+      "href": "/manuscripts/1/the-flower/the-currency-of-presence/boundaries-against-surveillance/"
+    },
+    {
       "sectionId": "v01-its-name",
       "href": "/manuscripts/1/the-flower/the-currency-of-presence/its-name/"
+    },
+    {
+      "sectionId": "v01-maren-trust-that-can-travel",
+      "href": "/manuscripts/1/the-flower/the-currency-of-presence/maren-trust-that-can-travel/"
     },
     {
       "sectionId": "v01-the-currency-of-presence",
@@ -132,6 +216,10 @@
     {
       "sectionId": "v01-what-it-looks-like-from-inside",
       "href": "/manuscripts/1/the-flower/the-currency-of-presence/what-it-looks-like-from-inside/"
+    },
+    {
+      "sectionId": "v01-why-the-currency-is-called-coherence",
+      "href": "/manuscripts/1/the-flower/the-currency-of-presence/why-the-currency-is-called-coherence/"
     },
     {
       "sectionId": "v01-why-this-is-not-what-you-fear",
@@ -154,6 +242,18 @@
       "href": "/manuscripts/1/the-flower/what-this-is-and-what-it-is-not/"
     },
     {
+      "sectionId": "v02-a-field-still-finding-itself",
+      "href": "/manuscripts/2/main/a-field-still-finding-itself/"
+    },
+    {
+      "sectionId": "v02-a-proposal-for-the-threshold-ahead",
+      "href": "/manuscripts/2/main/a-founding-document-not-a-finished-system/a-proposal-for-the-threshold-ahead/"
+    },
+    {
+      "sectionId": "v02-a-founding-document-not-a-finished-system",
+      "href": "/manuscripts/2/main/a-founding-document-not-a-finished-system/start/"
+    },
+    {
       "sectionId": "v02-a-last-word",
       "href": "/manuscripts/2/main/a-last-word/"
     },
@@ -164,6 +264,18 @@
     {
       "sectionId": "v02-builders-of-the-coherent-civilization",
       "href": "/manuscripts/2/main/builders-of-the-coherent-civilization/"
+    },
+    {
+      "sectionId": "v02-fragments-of-the-next-civilization",
+      "href": "/manuscripts/2/main/fragments-of-the-next-civilization/start/"
+    },
+    {
+      "sectionId": "v02-toward-humane-technology-4",
+      "href": "/manuscripts/2/main/fragments-of-the-next-civilization/toward-humane-technology-4/"
+    },
+    {
+      "sectionId": "v02-wielding-intelligence-2",
+      "href": "/manuscripts/2/main/fragments-of-the-next-civilization/wielding-intelligence-2/"
     },
     {
       "sectionId": "v02-if-you-are-a-builder",
@@ -186,6 +298,10 @@
       "href": "/manuscripts/2/main/if-you-are-not-sure/"
     },
     {
+      "sectionId": "v02-living-through-the-threshold",
+      "href": "/manuscripts/2/main/living-through-the-threshold/"
+    },
+    {
       "sectionId": "v02-on-releasing-the-book-now",
       "href": "/manuscripts/2/main/on-releasing-the-book-now/"
     },
@@ -200,6 +316,22 @@
     {
       "sectionId": "v02-on-the-state-of-the-project",
       "href": "/manuscripts/2/main/on-the-state-of-the-project/"
+    },
+    {
+      "sectionId": "v02-practices-for-the-passage",
+      "href": "/manuscripts/2/main/practices-for-the-passage/"
+    },
+    {
+      "sectionId": "v02-providence-and-the-builder-field",
+      "href": "/manuscripts/2/main/providence-and-the-builder-field/"
+    },
+    {
+      "sectionId": "v02-the-builders-are-already-here",
+      "href": "/manuscripts/2/main/the-builders-are-already-here/"
+    },
+    {
+      "sectionId": "v02-the-builders-shared-ground",
+      "href": "/manuscripts/2/main/the-builders-shared-ground/"
     },
     {
       "sectionId": "v02-the-field-that-does-not-yet-know-it-is-a-field",
@@ -218,6 +350,14 @@
       "href": "/manuscripts/2/main/the-liminal-phase/"
     },
     {
+      "sectionId": "v02-the-nervous-system-in-transition",
+      "href": "/manuscripts/2/main/the-nervous-system-in-transition/"
+    },
+    {
+      "sectionId": "v02-the-readers-part",
+      "href": "/manuscripts/2/main/the-readers-part/"
+    },
+    {
       "sectionId": "v02-the-texture-of-what-comes-next",
       "href": "/manuscripts/2/main/the-texture-of-what-comes-next/start/"
     },
@@ -230,12 +370,28 @@
       "href": "/manuscripts/2/main/the-texture-of-what-comes-next/wielding-intelligence-2/"
     },
     {
+      "sectionId": "v02-the-traditions-behind-the-argument",
+      "href": "/manuscripts/2/main/the-traditions-behind-the-argument/"
+    },
+    {
       "sectionId": "v02-the-transition",
       "href": "/manuscripts/2/main/the-transition/"
     },
     {
+      "sectionId": "v02-the-work-beyond-the-book",
+      "href": "/manuscripts/2/main/the-work-beyond-the-book/"
+    },
+    {
       "sectionId": "v02-three-builder-types-worth-naming",
       "href": "/manuscripts/2/main/three-builder-types-worth-naming/"
+    },
+    {
+      "sectionId": "v02-three-builders-the-work-needs",
+      "href": "/manuscripts/2/main/three-builders-the-work-needs/"
+    },
+    {
+      "sectionId": "v02-what-providence-actually-is-today",
+      "href": "/manuscripts/2/main/what-providence-actually-is-today/"
     },
     {
       "sectionId": "v02-what-providence-is-and-is-not-doing-in-this-dimension-5",
@@ -266,6 +422,18 @@
       "href": "/manuscripts/2/main/what-this-threshold-actually-feels-like/"
     },
     {
+      "sectionId": "v02-what-wielding-means",
+      "href": "/manuscripts/2/main/what-wielding-means/"
+    },
+    {
+      "sectionId": "v02-why-publish-before-completion",
+      "href": "/manuscripts/2/main/why-publish-before-completion/"
+    },
+    {
+      "sectionId": "v02-why-this-book-has-no-footnotes",
+      "href": "/manuscripts/2/main/why-this-book-has-no-footnotes/"
+    },
+    {
       "sectionId": "v02-wielding-intelligence",
       "href": "/manuscripts/2/main/wielding-intelligence/"
     },
@@ -280,6 +448,18 @@
     {
       "sectionId": "v02-toward-humane-technology",
       "href": "/manuscripts/2/opening/on-nests-and-why-this-book-is-deliberately-incomplete/toward-humane-technology/"
+    },
+    {
+      "sectionId": "v02-the-nest-this-book-occupies",
+      "href": "/manuscripts/2/opening/the-nest-this-book-occupies/start/"
+    },
+    {
+      "sectionId": "v02-the-threshold",
+      "href": "/manuscripts/2/opening/the-nest-this-book-occupies/the-threshold/"
+    },
+    {
+      "sectionId": "v02-toward-humane-technology",
+      "href": "/manuscripts/2/opening/the-nest-this-book-occupies/toward-humane-technology/"
     },
     {
       "sectionId": "v02-what-the-first-volume-left-in-our-hands",
@@ -306,6 +486,10 @@
       "href": "/manuscripts/2/the-diagnosis/the-crisis-beneath-the-crises/"
     },
     {
+      "sectionId": "v02-the-nervous-system-as-civilizational-ground",
+      "href": "/manuscripts/2/the-diagnosis/the-nervous-system-as-civilizational-ground/"
+    },
+    {
       "sectionId": "v02-the-substrate-beneath-the-substrate",
       "href": "/manuscripts/2/the-diagnosis/the-substrate-beneath-the-substrate/"
     },
@@ -314,8 +498,24 @@
       "href": "/manuscripts/2/the-response/a-note-to-the-builders/"
     },
     {
+      "sectionId": "v02-ai-already-serving-coherence",
+      "href": "/manuscripts/2/the-response/ai-already-serving-coherence/"
+    },
+    {
+      "sectionId": "v02-capability-outruns-coherence",
+      "href": "/manuscripts/2/the-response/capability-outruns-coherence/"
+    },
+    {
+      "sectionId": "v02-civilizational-alignment",
+      "href": "/manuscripts/2/the-response/civilizational-alignment/"
+    },
+    {
       "sectionId": "v02-coherence-as-a-property-of-governance-systems",
       "href": "/manuscripts/2/the-response/coherence-as-a-property-of-governance-systems/"
+    },
+    {
+      "sectionId": "v02-coherence-as-circulation",
+      "href": "/manuscripts/2/the-response/coherence-as-circulation/"
     },
     {
       "sectionId": "v02-coherence-as-flow",
@@ -326,6 +526,10 @@
       "href": "/manuscripts/2/the-response/coherence-as-infrastructure/"
     },
     {
+      "sectionId": "v02-conditions-for-providence-to-work",
+      "href": "/manuscripts/2/the-response/conditions-for-providence-to-work/"
+    },
+    {
       "sectionId": "v02-currencies-of-coherence",
       "href": "/manuscripts/2/the-response/currencies-of-coherence/"
     },
@@ -334,8 +538,20 @@
       "href": "/manuscripts/2/the-response/earth-as-substrate/"
     },
     {
+      "sectionId": "v02-four-unsolved-problems",
+      "href": "/manuscripts/2/the-response/four-unsolved-problems/"
+    },
+    {
+      "sectionId": "v02-from-foundation-to-blueprint",
+      "href": "/manuscripts/2/the-response/from-foundation-to-blueprint/"
+    },
+    {
       "sectionId": "v02-governance-beyond-domination",
       "href": "/manuscripts/2/the-response/governance-beyond-domination/"
+    },
+    {
+      "sectionId": "v02-how-coherent-governance-behaves",
+      "href": "/manuscripts/2/the-response/how-coherent-governance-behaves/"
     },
     {
       "sectionId": "v02-infrastructure-that-is-not-yet-visible",
@@ -344,6 +560,50 @@
     {
       "sectionId": "v02-intelligence-in-right-relationship",
       "href": "/manuscripts/2/the-response/intelligence-in-right-relationship/"
+    },
+    {
+      "sectionId": "v02-intelligence-in-service-of-coherence",
+      "href": "/manuscripts/2/the-response/intelligence-in-service-of-coherence/"
+    },
+    {
+      "sectionId": "v02-intelligence-in-service-of-earth",
+      "href": "/manuscripts/2/the-response/intelligence-in-service-of-earth/"
+    },
+    {
+      "sectionId": "v02-legitimacy-as-living-feedback",
+      "href": "/manuscripts/2/the-response/legitimacy-as-living-feedback/"
+    },
+    {
+      "sectionId": "v02-physiology-as-signal",
+      "href": "/manuscripts/2/the-response/physiology-as-signal/"
+    },
+    {
+      "sectionId": "v02-practices-beyond-representation",
+      "href": "/manuscripts/2/the-response/practices-beyond-representation/"
+    },
+    {
+      "sectionId": "v02-providence-and-ai-integration",
+      "href": "/manuscripts/2/the-response/providence-and-ai-integration/"
+    },
+    {
+      "sectionId": "v02-providence-and-artificial-intelligence",
+      "href": "/manuscripts/2/the-response/providence-and-artificial-intelligence/"
+    },
+    {
+      "sectionId": "v02-providence-and-economic-experiment",
+      "href": "/manuscripts/2/the-response/providence-and-economic-experiment/"
+    },
+    {
+      "sectionId": "v02-providence-and-governance-experiment",
+      "href": "/manuscripts/2/the-response/providence-and-governance-experiment/"
+    },
+    {
+      "sectionId": "v02-providence-and-the-currency-question",
+      "href": "/manuscripts/2/the-response/providence-and-the-currency-question/"
+    },
+    {
+      "sectionId": "v02-providence-as-coordination-infrastructure",
+      "href": "/manuscripts/2/the-response/providence-as-coordination-infrastructure/"
     },
     {
       "sectionId": "v02-cross-cutting-commitments",
@@ -356,6 +616,10 @@
     {
       "sectionId": "v02-layer-2-trust-architecture",
       "href": "/manuscripts/2/the-response/providence-proposed-functionality/layer-2-trust-architecture/"
+    },
+    {
+      "sectionId": "v02-layer-3-bio-consensus-and-the-currency-of-presence",
+      "href": "/manuscripts/2/the-response/providence-proposed-functionality/layer-3-bio-consensus-and-the-currency-of-presence/"
     },
     {
       "sectionId": "v02-layer-4-coordination-substrate",
@@ -374,6 +638,10 @@
       "href": "/manuscripts/2/the-response/sensemaking-at-scale/"
     },
     {
+      "sectionId": "v02-the-choice-of-orientation",
+      "href": "/manuscripts/2/the-response/the-choice-of-orientation/"
+    },
+    {
       "sectionId": "v02-the-coherence-intelligence",
       "href": "/manuscripts/2/the-response/the-coherence-intelligence/"
     },
@@ -384,6 +652,10 @@
     {
       "sectionId": "v02-the-economics-of-regeneration",
       "href": "/manuscripts/2/the-response/the-economics-of-regeneration/"
+    },
+    {
+      "sectionId": "v02-the-infrastructure-beneath-infrastructure",
+      "href": "/manuscripts/2/the-response/the-infrastructure-beneath-infrastructure/"
     },
     {
       "sectionId": "v02-the-larger-argument-2",
@@ -406,6 +678,22 @@
       "href": "/manuscripts/2/the-response/the-larger-argument/"
     },
     {
+      "sectionId": "v02-the-limits-of-legibility",
+      "href": "/manuscripts/2/the-response/the-limits-of-legibility/"
+    },
+    {
+      "sectionId": "v02-the-narrowing-window",
+      "href": "/manuscripts/2/the-response/the-narrowing-window/"
+    },
+    {
+      "sectionId": "v02-the-substrate-of-alignment",
+      "href": "/manuscripts/2/the-response/the-substrate-of-alignment/start/"
+    },
+    {
+      "sectionId": "v02-toward-humane-technology-3",
+      "href": "/manuscripts/2/the-response/the-substrate-of-alignment/toward-humane-technology-3/"
+    },
+    {
       "sectionId": "v02-the-surveillance-problem",
       "href": "/manuscripts/2/the-response/the-surveillance-problem/"
     },
@@ -414,8 +702,16 @@
       "href": "/manuscripts/2/the-response/the-threshold/the-threshold-2/"
     },
     {
+      "sectionId": "v02-value-beyond-extraction",
+      "href": "/manuscripts/2/the-response/value-beyond-extraction/"
+    },
+    {
       "sectionId": "v02-what-ai-can-already-do-for-coherence",
       "href": "/manuscripts/2/the-response/what-ai-can-already-do-for-coherence/"
+    },
+    {
+      "sectionId": "v02-what-alignment-research-can-do",
+      "href": "/manuscripts/2/the-response/what-alignment-research-can-do/"
     },
     {
       "sectionId": "v02-what-comes-next-in-this-work",
@@ -440,6 +736,10 @@
     {
       "sectionId": "v02-what-money-cannot-carry",
       "href": "/manuscripts/2/the-response/what-money-cannot-carry/"
+    },
+    {
+      "sectionId": "v02-what-money-cannot-see",
+      "href": "/manuscripts/2/the-response/what-money-cannot-see/"
     },
     {
       "sectionId": "v02-what-providence-intends-to-be",
@@ -482,16 +782,200 @@
       "href": "/manuscripts/2/the-response/why-physiology/"
     },
     {
+      "sectionId": "v02-working-alternatives",
+      "href": "/manuscripts/2/the-response/working-alternatives/"
+    },
+    {
+      "sectionId": "v03-a-provisional-constitution",
+      "href": "/manuscripts/3/governance/a-provisional-constitution/"
+    },
+    {
+      "sectionId": "v03-centralization",
+      "href": "/manuscripts/3/governance/centralization/"
+    },
+    {
+      "sectionId": "v03-coherence-theater",
+      "href": "/manuscripts/3/governance/coherence-theater/"
+    },
+    {
+      "sectionId": "v03-correction-as-a-core-function",
+      "href": "/manuscripts/3/governance/correction-as-a-core-function/"
+    },
+    {
+      "sectionId": "v03-cult-dynamics",
+      "href": "/manuscripts/3/governance/cult-dynamics/"
+    },
+    {
+      "sectionId": "v03-designing-for-corruption",
+      "href": "/manuscripts/3/governance/designing-for-corruption/"
+    },
+    {
+      "sectionId": "v03-drift-toward-surveillance-and-rank",
+      "href": "/manuscripts/3/governance/drift-toward-surveillance-and-rank/"
+    },
+    {
+      "sectionId": "v03-elite-capture",
+      "href": "/manuscripts/3/governance/elite-capture/"
+    },
+    {
+      "sectionId": "v03-how-providence-could-fail",
+      "href": "/manuscripts/3/governance/how-providence-could-fail/"
+    },
+    {
+      "sectionId": "v03-intent-is-not-the-difference",
+      "href": "/manuscripts/3/governance/intent-is-not-the-difference/"
+    },
+    {
+      "sectionId": "v03-measurement-without-meaning",
+      "href": "/manuscripts/3/governance/measurement-without-meaning/"
+    },
+    {
+      "sectionId": "v03-six-bright-lines",
+      "href": "/manuscripts/3/governance/six-bright-lines/"
+    },
+    {
+      "sectionId": "v03-the-bright-lines",
+      "href": "/manuscripts/3/governance/the-bright-lines/"
+    },
+    {
+      "sectionId": "v03-the-constitutional-problem",
+      "href": "/manuscripts/3/governance/the-constitutional-problem/"
+    },
+    {
+      "sectionId": "v03-the-danger-being-named",
+      "href": "/manuscripts/3/governance/the-danger-being-named/"
+    },
+    {
+      "sectionId": "v03-the-person-remains-sovereign",
+      "href": "/manuscripts/3/governance/the-person-remains-sovereign/"
+    },
+    {
+      "sectionId": "v03-the-wrong-signal",
+      "href": "/manuscripts/3/governance/the-wrong-signal/"
+    },
+    {
+      "sectionId": "v03-three-chambers",
+      "href": "/manuscripts/3/governance/three-chambers/"
+    },
+    {
+      "sectionId": "v03-two-entities-in-productive-tension",
+      "href": "/manuscripts/3/governance/two-entities-in-productive-tension/"
+    },
+    {
+      "sectionId": "v03-what-failure-requires-of-us",
+      "href": "/manuscripts/3/governance/what-failure-requires-of-us/"
+    },
+    {
       "sectionId": "v03-on-the-title-providence-and-imperative",
       "href": "/manuscripts/3/opening/on-the-title-providence-and-imperative/"
+    },
+    {
+      "sectionId": "v03-providence-and-imperative",
+      "href": "/manuscripts/3/opening/providence-and-imperative/"
     },
     {
       "sectionId": "v03-the-next-nest",
       "href": "/manuscripts/3/opening/the-next-nest/"
     },
     {
+      "sectionId": "v03-guilds-mastery-through-relationship",
+      "href": "/manuscripts/3/the-design/guilds-mastery-through-relationship/"
+    },
+    {
+      "sectionId": "v03-how-it-circulates",
+      "href": "/manuscripts/3/the-design/how-it-circulates/"
+    },
+    {
+      "sectionId": "v03-indigenous-governance-accountability-to-place-and-descendants",
+      "href": "/manuscripts/3/the-design/indigenous-governance-accountability-to-place-and-descendants/"
+    },
+    {
+      "sectionId": "v03-inheritance",
+      "href": "/manuscripts/3/the-design/inheritance/"
+    },
+    {
+      "sectionId": "v03-monasteries-practice-across-time",
+      "href": "/manuscripts/3/the-design/monasteries-practice-across-time/"
+    },
+    {
+      "sectionId": "v03-mutual-aid-and-cooperative-economics-provision-without-capture",
+      "href": "/manuscripts/3/the-design/mutual-aid-and-cooperative-economics-provision-without-capture/"
+    },
+    {
+      "sectionId": "v03-presence-and-presencing",
+      "href": "/manuscripts/3/the-design/presence-and-presencing/"
+    },
+    {
+      "sectionId": "v03-scientific-inquiry-and-quaker-process-disciplined-encounter",
+      "href": "/manuscripts/3/the-design/scientific-inquiry-and-quaker-process-disciplined-encounter/"
+    },
+    {
+      "sectionId": "v03-the-conditions-of-wisdom",
+      "href": "/manuscripts/3/the-design/the-conditions-of-wisdom/"
+    },
+    {
+      "sectionId": "v03-the-container-must-fit-the-currency",
+      "href": "/manuscripts/3/the-design/the-container-must-fit-the-currency/"
+    },
+    {
+      "sectionId": "v03-the-currency-of-presence",
+      "href": "/manuscripts/3/the-design/the-currency-of-presence/"
+    },
+    {
+      "sectionId": "v03-the-first-door-one-on-one-mentorship",
+      "href": "/manuscripts/3/the-design/the-first-door-one-on-one-mentorship/"
+    },
+    {
+      "sectionId": "v03-the-membrane",
+      "href": "/manuscripts/3/the-design/the-membrane/"
+    },
+    {
+      "sectionId": "v03-the-reasonable-doubt",
+      "href": "/manuscripts/3/the-design/the-reasonable-doubt/"
+    },
+    {
+      "sectionId": "v03-the-second-door-gatherings-and-retreats",
+      "href": "/manuscripts/3/the-design/the-second-door-gatherings-and-retreats/"
+    },
+    {
+      "sectionId": "v03-the-seven-initiates",
+      "href": "/manuscripts/3/the-design/the-seven-initiates/"
+    },
+    {
+      "sectionId": "v03-the-synthesis",
+      "href": "/manuscripts/3/the-design/the-synthesis/"
+    },
+    {
+      "sectionId": "v03-the-third-door-the-year-long-curriculum",
+      "href": "/manuscripts/3/the-design/the-third-door-the-year-long-curriculum/"
+    },
+    {
+      "sectionId": "v03-three-doors-and-a-membrane",
+      "href": "/manuscripts/3/the-design/three-doors-and-a-membrane/"
+    },
+    {
+      "sectionId": "v03-trusts-and-commons-holding-what-must-not-be-sold",
+      "href": "/manuscripts/3/the-design/trusts-and-commons-holding-what-must-not-be-sold/"
+    },
+    {
+      "sectionId": "v03-where-we-begin",
+      "href": "/manuscripts/3/the-design/where-we-begin/"
+    },
+    {
+      "sectionId": "v03-a-federated-footprint",
+      "href": "/manuscripts/3/the-earth-compact/a-federated-footprint/"
+    },
+    {
+      "sectionId": "v03-a-system-accountable-to-its-place",
+      "href": "/manuscripts/3/the-earth-compact/a-system-accountable-to-its-place/"
+    },
+    {
       "sectionId": "v03-a-system-that-heals-what-it-inhabits",
       "href": "/manuscripts/3/the-earth-compact/a-system-that-heals-what-it-inhabits/"
+    },
+    {
+      "sectionId": "v03-regenerative-places",
+      "href": "/manuscripts/3/the-earth-compact/regenerative-places/"
     },
     {
       "sectionId": "v03-the-earth-compact",
@@ -504,6 +988,10 @@
     {
       "sectionId": "v03-the-network-as-ecological-force",
       "href": "/manuscripts/3/the-earth-compact/the-network-as-ecological-force/"
+    },
+    {
+      "sectionId": "v03-the-networks-ecological-test",
+      "href": "/manuscripts/3/the-earth-compact/the-networks-ecological-test/"
     },
     {
       "sectionId": "v03-the-regenerative-physical-infrastructure",
@@ -686,6 +1174,46 @@
       "href": "/manuscripts/3/the-innovation/why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church/"
     },
     {
+      "sectionId": "v03-a-versioned-path",
+      "href": "/manuscripts/3/the-invitation/a-versioned-path/"
+    },
+    {
+      "sectionId": "v03-an-economic-hypothesis",
+      "href": "/manuscripts/3/the-invitation/an-economic-hypothesis/"
+    },
+    {
+      "sectionId": "v03-i-interpersonal-physiological-alignment",
+      "href": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/i-interpersonal-physiological-alignment/"
+    },
+    {
+      "sectionId": "v03-ii-heart-rate-variability-and-regulation",
+      "href": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/ii-heart-rate-variability-and-regulation/"
+    },
+    {
+      "sectionId": "v03-iii-interoception-emotion-and-decision",
+      "href": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/iii-interoception-emotion-and-decision/"
+    },
+    {
+      "sectionId": "v03-iv-feeling-understood",
+      "href": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/iv-feeling-understood/"
+    },
+    {
+      "sectionId": "v03-appendix-evidence-map-and-verification-queue",
+      "href": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/start/"
+    },
+    {
+      "sectionId": "v03-v-group-performance-and-collective-intelligence",
+      "href": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/v-group-performance-and-collective-intelligence/"
+    },
+    {
+      "sectionId": "v03-vi-variation-among-nervous-systems",
+      "href": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/vi-variation-among-nervous-systems/"
+    },
+    {
+      "sectionId": "v03-vii-pulse-and-endocrine-frontier",
+      "href": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/vii-pulse-and-endocrine-frontier/"
+    },
+    {
       "sectionId": "v03-i-that-two-people-genuinely-present-with-each-other-show-measurable-physiological-alignment",
       "href": "/manuscripts/3/the-invitation/appendix-the-studies-we-are-aware-of/i-that-two-people-genuinely-present-with-each-other-show-measurable-physiological-alignment/"
     },
@@ -714,6 +1242,14 @@
       "href": "/manuscripts/3/the-invitation/appendix-the-studies-we-are-aware-of/vi-that-nervous-systems-differ-so-a-measure-of-presence-must-be-baselined-to-each-person-never-to-a-population-norm/"
     },
     {
+      "sectionId": "v03-financing-proof",
+      "href": "/manuscripts/3/the-invitation/financing-proof/"
+    },
+    {
+      "sectionId": "v03-first-niche-reflection-in-gathering",
+      "href": "/manuscripts/3/the-invitation/first-niche-reflection-in-gathering/"
+    },
+    {
       "sectionId": "v03-providence",
       "href": "/manuscripts/3/the-invitation/how-the-wheel-begins-to-turn/providence/"
     },
@@ -724,6 +1260,10 @@
     {
       "sectionId": "v03-how-we-begin",
       "href": "/manuscripts/3/the-invitation/how-we-begin/"
+    },
+    {
+      "sectionId": "v03-second-niche-a-personal-companion",
+      "href": "/manuscripts/3/the-invitation/second-niche-a-personal-companion/"
     },
     {
       "sectionId": "v03-the-invitation",
@@ -758,8 +1298,24 @@
       "href": "/manuscripts/3/the-invitation/the-sequence-how-providence-matures-version-by-version/"
     },
     {
+      "sectionId": "v03-providence",
+      "href": "/manuscripts/3/the-invitation/turning-the-wheel/providence/"
+    },
+    {
+      "sectionId": "v03-turning-the-wheel",
+      "href": "/manuscripts/3/the-invitation/turning-the-wheel/start/"
+    },
+    {
+      "sectionId": "v03-where-beginning-is-honest",
+      "href": "/manuscripts/3/the-invitation/where-beginning-is-honest/"
+    },
+    {
       "sectionId": "v03-where-we-honestly-begin",
       "href": "/manuscripts/3/the-invitation/where-we-honestly-begin/"
+    },
+    {
+      "sectionId": "v03-why-it-remains-unbuilt",
+      "href": "/manuscripts/3/the-invitation/why-it-remains-unbuilt/"
     },
     {
       "sectionId": "v03-why-this-engine-is-both-possible-and-unbuilt",
@@ -774,12 +1330,28 @@
       "href": "/manuscripts/3/the-living-reality/arrival/"
     },
     {
+      "sectionId": "v03-first-link-presence-can-widen-perception",
+      "href": "/manuscripts/3/the-living-reality/first-link-presence-can-widen-perception/"
+    },
+    {
+      "sectionId": "v03-fourth-link-relational-standing-can-inform-stewardship",
+      "href": "/manuscripts/3/the-living-reality/fourth-link-relational-standing-can-inform-stewardship/"
+    },
+    {
       "sectionId": "v03-how-presence-becomes-bread",
       "href": "/manuscripts/3/the-living-reality/how-presence-becomes-bread/"
     },
     {
       "sectionId": "v03-marens-creek-and-the-harvest-that-came-from-it",
       "href": "/manuscripts/3/the-living-reality/marens-creek-and-the-harvest-that-came-from-it/"
+    },
+    {
+      "sectionId": "v03-marens-creek",
+      "href": "/manuscripts/3/the-living-reality/marens-creek/"
+    },
+    {
+      "sectionId": "v03-second-link-perception-supports-coordination",
+      "href": "/manuscripts/3/the-living-reality/second-link-perception-supports-coordination/"
     },
     {
       "sectionId": "v03-the-living-reality",
@@ -796,6 +1368,10 @@
     {
       "sectionId": "v03-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship",
       "href": "/manuscripts/3/the-living-reality/the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship/"
+    },
+    {
+      "sectionId": "v03-the-floor-and-the-height",
+      "href": "/manuscripts/3/the-living-reality/the-floor-and-the-height/"
     },
     {
       "sectionId": "v03-the-fourth-link-the-record-can-carry-material-weight",
@@ -830,6 +1406,18 @@
       "href": "/manuscripts/3/the-living-reality/the-year-of-the-weaver/"
     },
     {
+      "sectionId": "v03-third-link-the-network-makes-collaboration-more-findable",
+      "href": "/manuscripts/3/the-living-reality/third-link-the-network-makes-collaboration-more-findable/"
+    },
+    {
+      "sectionId": "v03-two-economies",
+      "href": "/manuscripts/3/the-living-reality/two-economies/"
+    },
+    {
+      "sectionId": "v03-whose-nervous-system",
+      "href": "/manuscripts/3/the-living-reality/whose-nervous-system/"
+    },
+    {
       "sectionId": "v03-a-note-before-we-go-on",
       "href": "/manuscripts/3/the-mechanism/a-note-before-we-go-on/"
     },
@@ -838,20 +1426,40 @@
       "href": "/manuscripts/3/the-mechanism/a-note-on-evidence-four-tiers-of-certainty/"
     },
     {
+      "sectionId": "v03-a-standing-invitation-to-scrutiny",
+      "href": "/manuscripts/3/the-mechanism/a-standing-invitation-to-scrutiny/"
+    },
+    {
       "sectionId": "v03-a-word-on-the-long-now",
       "href": "/manuscripts/3/the-mechanism/a-word-on-the-long-now/"
+    },
+    {
+      "sectionId": "v03-four-tiers-of-evidence",
+      "href": "/manuscripts/3/the-mechanism/four-tiers-of-evidence/"
     },
     {
       "sectionId": "v03-the-mechanism",
       "href": "/manuscripts/3/the-mechanism/start/"
     },
     {
+      "sectionId": "v03-stream-four-pulse-morphology",
+      "href": "/manuscripts/3/the-mechanism/stream-four-pulse-morphology/"
+    },
+    {
       "sectionId": "v03-stream-four-the-pulse-as-endocrine-map",
       "href": "/manuscripts/3/the-mechanism/stream-four-the-pulse-as-endocrine-map/"
     },
     {
+      "sectionId": "v03-stream-one-the-language-of-encounter",
+      "href": "/manuscripts/3/the-mechanism/stream-one-the-language-of-encounter/"
+    },
+    {
       "sectionId": "v03-stream-one-the-language-of-genuine-encounter",
       "href": "/manuscripts/3/the-mechanism/stream-one-the-language-of-genuine-encounter/"
+    },
+    {
+      "sectionId": "v03-stream-three-cardiac-rhythm-in-context",
+      "href": "/manuscripts/3/the-mechanism/stream-three-cardiac-rhythm-in-context/"
     },
     {
       "sectionId": "v03-stream-three-the-heart-as-truth-teller",
@@ -862,6 +1470,14 @@
       "href": "/manuscripts/3/the-mechanism/stream-two-the-voice-as-autonomic-readout/"
     },
     {
+      "sectionId": "v03-stream-two-voice-and-autonomic-state",
+      "href": "/manuscripts/3/the-mechanism/stream-two-voice-and-autonomic-state/"
+    },
+    {
+      "sectionId": "v03-the-body-as-evidence",
+      "href": "/manuscripts/3/the-mechanism/the-body-as-evidence/"
+    },
+    {
       "sectionId": "v03-the-body-as-primary-text",
       "href": "/manuscripts/3/the-mechanism/the-body-as-primary-text/"
     },
@@ -870,24 +1486,64 @@
       "href": "/manuscripts/3/the-mechanism/the-coherence-engine-and-the-reflective-mirror/"
     },
     {
+      "sectionId": "v03-the-coherence-engine",
+      "href": "/manuscripts/3/the-mechanism/the-coherence-engine/"
+    },
+    {
       "sectionId": "v03-the-endocrine-frontier-reading-the-chemistry-of-connection",
       "href": "/manuscripts/3/the-mechanism/the-endocrine-frontier-reading-the-chemistry-of-connection/"
+    },
+    {
+      "sectionId": "v03-the-endocrine-frontier",
+      "href": "/manuscripts/3/the-mechanism/the-endocrine-frontier/"
     },
     {
       "sectionId": "v03-the-four-streams",
       "href": "/manuscripts/3/the-mechanism/the-four-streams/"
     },
     {
+      "sectionId": "v03-the-long-now",
+      "href": "/manuscripts/3/the-mechanism/the-long-now/"
+    },
+    {
       "sectionId": "v03-the-reflective-mirror-how-the-engine-serves-the-people-it-measures",
       "href": "/manuscripts/3/the-mechanism/the-reflective-mirror-how-the-engine-serves-the-people-it-measures/"
+    },
+    {
+      "sectionId": "v03-the-reflective-mirror",
+      "href": "/manuscripts/3/the-mechanism/the-reflective-mirror/"
     },
     {
       "sectionId": "v03-the-shadows-we-name-before-they-name-themselves",
       "href": "/manuscripts/3/the-mechanism/the-shadows-we-name-before-they-name-themselves/"
     },
     {
+      "sectionId": "v03-the-shadows",
+      "href": "/manuscripts/3/the-mechanism/the-shadows/"
+    },
+    {
+      "sectionId": "v03-what-the-body-contributes",
+      "href": "/manuscripts/3/the-mechanism/what-the-body-contributes/"
+    },
+    {
       "sectionId": "v03-what-the-body-reveals-that-the-will-cannot-conceal",
       "href": "/manuscripts/3/the-mechanism/what-the-body-reveals-that-the-will-cannot-conceal/"
+    },
+    {
+      "sectionId": "v03-coherence-under-pressure",
+      "href": "/manuscripts/3/the-reckoning/coherence-under-pressure/"
+    },
+    {
+      "sectionId": "v03-coordination-failure",
+      "href": "/manuscripts/3/the-reckoning/coordination-failure/"
+    },
+    {
+      "sectionId": "v03-intelligence-becomes-abundant",
+      "href": "/manuscripts/3/the-reckoning/intelligence-becomes-abundant/"
+    },
+    {
+      "sectionId": "v03-multipliers-and-bottlenecks",
+      "href": "/manuscripts/3/the-reckoning/multipliers-and-bottlenecks/"
     },
     {
       "sectionId": "v03-on-the-meaning-of-coordination-failure",
@@ -906,12 +1562,20 @@
       "href": "/manuscripts/3/the-reckoning/the-church-coordinating-meaning-across-time/"
     },
     {
+      "sectionId": "v03-the-church-meaning-across-time",
+      "href": "/manuscripts/3/the-reckoning/the-church-meaning-across-time/"
+    },
+    {
       "sectionId": "v03-the-convergence",
       "href": "/manuscripts/3/the-reckoning/the-convergence/"
     },
     {
       "sectionId": "v03-the-coordination-deadline",
       "href": "/manuscripts/3/the-reckoning/the-coordination-deadline/"
+    },
+    {
+      "sectionId": "v03-the-corporation-action-at-speed",
+      "href": "/manuscripts/3/the-reckoning/the-corporation-action-at-speed/"
     },
     {
       "sectionId": "v03-the-corporation-coordinating-exchange-at-velocity",
@@ -930,12 +1594,24 @@
       "href": "/manuscripts/3/the-reckoning/the-nation-state-coordinating-identity-across-space/"
     },
     {
+      "sectionId": "v03-the-nation-state-obligation-across-distance",
+      "href": "/manuscripts/3/the-reckoning/the-nation-state-obligation-across-distance/"
+    },
+    {
       "sectionId": "v03-the-platform-coordinating-attention-toward-its-own-ends",
       "href": "/manuscripts/3/the-reckoning/the-platform-coordinating-attention-toward-its-own-ends/"
     },
     {
+      "sectionId": "v03-the-platform-discovery-and-capture",
+      "href": "/manuscripts/3/the-reckoning/the-platform-discovery-and-capture/"
+    },
+    {
       "sectionId": "v03-the-second-force-trust-collapses-as-leverage-rises",
       "href": "/manuscripts/3/the-reckoning/the-second-force-trust-collapses-as-leverage-rises/"
+    },
+    {
+      "sectionId": "v03-the-slow-variables-come-due",
+      "href": "/manuscripts/3/the-reckoning/the-slow-variables-come-due/"
     },
     {
       "sectionId": "v03-the-third-force-the-slow-variables-come-due",
@@ -946,6 +1622,14 @@
       "href": "/manuscripts/3/the-reckoning/the-university-coordinating-knowledge-across-generations/"
     },
     {
+      "sectionId": "v03-the-university-knowledge-across-generations",
+      "href": "/manuscripts/3/the-reckoning/the-university-knowledge-across-generations/"
+    },
+    {
+      "sectionId": "v03-trust-weakens-as-capability-grows",
+      "href": "/manuscripts/3/the-reckoning/trust-weakens-as-capability-grows/"
+    },
+    {
       "sectionId": "v03-what-coherence-actually-means",
       "href": "/manuscripts/3/the-reckoning/what-coherence-actually-means/"
     },
@@ -954,8 +1638,20 @@
       "href": "/manuscripts/3/the-reckoning/what-each-institution-solved-and-what-it-broke/"
     },
     {
+      "sectionId": "v03-what-institutions-held-and-what-they-cost",
+      "href": "/manuscripts/3/the-reckoning/what-institutions-held-and-what-they-cost/"
+    },
+    {
+      "sectionId": "v03-why-begin-now",
+      "href": "/manuscripts/3/the-reckoning/why-begin-now/"
+    },
+    {
       "sectionId": "v03-why-now-and-why-not-later",
       "href": "/manuscripts/3/the-reckoning/why-now-and-why-not-later/"
+    },
+    {
+      "sectionId": "v03-a-commons-that-can-continue",
+      "href": "/manuscripts/3/the-sovereign-architecture/a-commons-that-can-continue/"
     },
     {
       "sectionId": "v03-an-honest-accounting-of-the-limits",
@@ -966,12 +1662,28 @@
       "href": "/manuscripts/3/the-sovereign-architecture/one-genius-at-a-time/"
     },
     {
+      "sectionId": "v03-open-by-design",
+      "href": "/manuscripts/3/the-sovereign-architecture/open-by-design/"
+    },
+    {
+      "sectionId": "v03-protocol-rather-than-platform",
+      "href": "/manuscripts/3/the-sovereign-architecture/protocol-rather-than-platform/"
+    },
+    {
       "sectionId": "v03-providence-as-protocol-not-platform",
       "href": "/manuscripts/3/the-sovereign-architecture/providence-as-protocol-not-platform/"
     },
     {
+      "sectionId": "v03-resisting-consolidation",
+      "href": "/manuscripts/3/the-sovereign-architecture/resisting-consolidation/"
+    },
+    {
       "sectionId": "v03-sovereign-compute-the-machine-you-can-trust",
       "href": "/manuscripts/3/the-sovereign-architecture/sovereign-compute-the-machine-you-can-trust/"
+    },
+    {
+      "sectionId": "v03-sovereign-compute",
+      "href": "/manuscripts/3/the-sovereign-architecture/sovereign-compute/"
     },
     {
       "sectionId": "v03-the-sovereign-architecture",
@@ -990,12 +1702,24 @@
       "href": "/manuscripts/3/the-sovereign-architecture/the-panopticon-pointed-at-the-self/"
     },
     {
+      "sectionId": "v03-the-panopticon-pointed-inward",
+      "href": "/manuscripts/3/the-sovereign-architecture/the-panopticon-pointed-inward/"
+    },
+    {
       "sectionId": "v03-the-pattern-we-refuse-to-repeat",
       "href": "/manuscripts/3/the-sovereign-architecture/the-pattern-we-refuse-to-repeat/"
     },
     {
+      "sectionId": "v03-threats-the-architecture-does-not-defeat",
+      "href": "/manuscripts/3/the-sovereign-architecture/threats-the-architecture-does-not-defeat/"
+    },
+    {
       "sectionId": "v03-what-verifiability-actually-requires",
       "href": "/manuscripts/3/the-sovereign-architecture/what-verifiability-actually-requires/"
+    },
+    {
+      "sectionId": "v03-what-verifiability-requires",
+      "href": "/manuscripts/3/the-sovereign-architecture/what-verifiability-requires/"
     },
     {
       "sectionId": "v03-why-it-must-be-open",

@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import {
+  catalog,
   readerPreferencesStorageKey,
   firstSection,
 } from "./fixtures";
@@ -7,6 +8,11 @@ import {
 test("reader settings update and persist local appearance preferences", async ({
   page,
 }) => {
+  const nextFirstSection = catalog.sections.find(
+    (section) => section.sectionId === firstSection.nextSectionId,
+  );
+  expect(nextFirstSection).toBeDefined();
+
   await page.goto(firstSection.href);
   await page.evaluate((key) => {
     window.localStorage.removeItem(key);
@@ -315,7 +321,7 @@ test("reader settings update and persist local appearance preferences", async ({
     .getByRole("navigation", { name: "Page navigation" })
     .locator(".section-nav-link-next")
     .click();
-  await expect(page).toHaveURL(/on-form-timing-and-why-this-book-exists/);
+  await expect(page).toHaveURL(nextFirstSection!.href);
   await expect(page.locator("html")).toHaveAttribute(
     "data-reader-theme",
     "black",

@@ -84,7 +84,7 @@ export const wieldingSection = catalog.sections.find(
 export const singleSectionChapterTarget = catalog.sections.find(
   (section) =>
     section.sectionId ===
-    "v03-the-second-link-perception-makes-new-coordination-possible",
+    "v03-second-link-perception-supports-coordination",
 )!;
 export const singleSectionPart = partById(
   singleSectionChapterTarget.volumeId,
@@ -125,6 +125,12 @@ export const parentSectionContainer = partById(
 export const currentYear = new Date().getFullYear();
 export const copyrightYearLabel =
   currentYear > 2026 ? `2026 to ${currentYear}` : "2026";
+
+export async function readyListenButton(page: Page) {
+  const listenButton = page.getByRole("button", { name: /Listen/ });
+  await expect(listenButton).toHaveAttribute("data-audio-ready", "true");
+  return listenButton;
+}
 
 export function hexToRgb(hex: string): string {
   const value = Number.parseInt(hex.slice(1), 16);

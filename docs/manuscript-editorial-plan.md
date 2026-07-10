@@ -24,6 +24,7 @@ The program is complete when:
 12. Audiobook invalidation has been identified and resolved for each published batch.
 13. The author has approved the pilot voice and every production pull request before merge.
 14. The global strict editorial audit is part of `npm run validate` only after all nine volumes reach zero prohibited punctuation.
+15. Every discovered durable editorial obligation has a stable item in `editorial/debt/items/`, every paid obligation remains as resolved history, and the generated debt index passes validation.
 
 ## Scope
 
@@ -114,6 +115,8 @@ The sentence ledger validator is `scripts/manuscripts/editorial-ledger.ts`. It v
 The structure ledger validator is `scripts/manuscripts/editorial-structure-ledger.ts`. It proves that every baseline heading and display unit received a disposition and that the proposed structure exactly reconstructs the current source.
 
 The ledger initializer is `scripts/manuscripts/editorial-ledger-init.ts`. It aligns the immutable baseline with the current imported source and creates exhaustive pending sentence and structure records. Its inferred dispositions are a review queue, not approval. The editor and independent reviewers must complete and adjudicate every changed record.
+
+The editorial debt validator is `scripts/manuscripts/editorial-debt.ts`. It enforces stable contiguous IDs, required evidence and paydown criteria, source references, dated history, resolution evidence, and a fresh generated index. Run `npm run manuscripts:debt:update` whenever an item is opened or paid down. Resolved items remain in the library.
 
 The link-preservation planner is `scripts/manuscripts/preserve-links.ts`. It separates public section identity from technical continuity. Established lineage and unique unchanged content may carry forward automatically. Prose similarity supplies candidates but never authorizes a mapping. All changed-content renames, splits, merges, removals, and ambiguous structural moves require explicit review. The planner writes section lineage, section aliases, and structural aliases. The append-only route ledger records target continuity and makes route loss or unrelated route reuse a validation failure. Part, chapter, and volume membership may evolve. A historical structural route needs related continuity, not permanent ownership of every section it once contained. The complete history audit covers 4,387 distinct links from 42 first-parent catalog revisions, including 3,936 generated static paths and 451 fragment links, and must remain at zero broken links.
 
@@ -275,15 +278,17 @@ For every batch:
 10. Review `structure-ledger.jsonl` and assign every heading and standalone display unit a final disposition and route outcome.
 11. Run semantic, literary, and complete 24-category slop reviews with fresh context.
 12. Reconcile every material finding in the source and ledgers.
-13. Run the detector again and require zero prohibited punctuation in changed prose.
-14. Validate the complete source sentence ledger with `--base <base-sha> --current WORKTREE --source <source.md> --require-approved`.
-15. Validate the complete structure ledger with the same baseline, current worktree, source, and approval requirements.
-16. Read the batch aloud.
-17. Run the link-preservation planner and review every confirmed lineage and alias.
-18. Supply explicit section mappings, continuity mappings, and route mappings for changed-content renames, ambiguous splits, merges, removals, or deep rewrites.
-19. Compile, validate, and inspect generated changes only after every historical route has a destination.
-20. Open a focused pull request with representative comparisons and unresolved queries.
-21. Wait for explicit author approval before merge.
+13. Open durable editorial debt for every obligation the batch cannot safely finish. Resolve existing debt with evidence when the batch pays it down.
+14. Run `npm run manuscripts:debt:update` and `npm run manuscripts:debt`.
+15. Run the detector again and require zero prohibited punctuation in changed prose.
+16. Validate the complete source sentence ledger with `--base <base-sha> --current WORKTREE --source <source.md> --require-approved`.
+17. Validate the complete structure ledger with the same baseline, current worktree, source, and approval requirements.
+18. Read the batch aloud.
+19. Run the link-preservation planner and review every confirmed lineage and alias.
+20. Supply explicit section mappings, continuity mappings, and route mappings for changed-content renames, ambiguous splits, merges, removals, or deep rewrites.
+21. Compile, validate, and inspect generated changes only after every historical route has a destination.
+22. Open a focused pull request with representative comparisons, editorial debt changes, and unresolved queries.
+23. Wait for explicit author approval before merge.
 
 Draft in parallel after the pilot, then integrate in volume order from I through IX. Later volumes depend on definitions and promises established earlier. Treat the master ledger as the continuity authority and edit it only after manuscript claims have stabilized.
 
@@ -384,6 +389,7 @@ Default production work to Level 2. Escalate individual passages, not whole volu
 
 ### Publication gate
 
+- `npm run manuscripts:debt`
 - `npm run manuscripts:import`
 - `npm run manuscripts:preserve-links -- --base HEAD --write`
 - `npm run manuscripts:compile`
@@ -409,6 +415,7 @@ Track:
 - Detector findings before and after, by rule
 - Prohibited punctuation before and after
 - Author queries opened and resolved
+- Editorial debt opened, carried, and resolved
 - Semantic review findings and corrections
 - Literary review findings and corrections
 - Factual claims verified, corrected, or left unresolved
@@ -435,6 +442,7 @@ Do not optimize for the greatest number of changed sentences, the lowest possibl
 | Chapter or part links disappear while section links survive | Append-only route ledger covers section, chapter, and part lineage |
 | Audio silently becomes stale | Track `audioVersionId` changes and republish immutable versions |
 | Review fatigue lowers standards | Small batches, fresh reviewers, one coherent pull request at a time |
+| Cross-volume obligations disappear into review prose | Append-only editorial debt items, generated index, source evidence, and paydown history |
 | Version history points at the wrong text | Verify provenance behavior before production and stop on false commit attribution |
 
 ## First execution decision

@@ -121,6 +121,15 @@ Required fields:
    - Why intent cannot be inferred safely:
    - Available options:
 
+## Editorial debt
+
+- Debt index reviewed:
+- Items opened by this batch:
+- Items carried by this batch:
+- Items resolved by this batch:
+- Debt validator command and result:
+- Critical debt that blocks publication:
+
 ## Fact and citation record
 
 | Location | Original claim | Result | Source | Change |

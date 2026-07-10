@@ -12,12 +12,12 @@ sectionId: "v03-the-invitation"
 title: "The Invitation"
 sectionOrder: 1
 sourceDoc: "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"
-sourceHash: "72eef2809146d6e4560feee82fc606dae083676730b0019eaaac76914052b104"
-sourceParagraphStart: 1234
-sourceParagraphEnd: 1240
+sourceHash: "ae6adff173fc5363eca581cf47551b71c412e31437eb0a0ecd2a8d0dd528414c"
+sourceParagraphStart: 1219
+sourceParagraphEnd: 1225
 ---
 
-*Not to Join Something, But to Help Prove Whether It Is Possible*
+*Testing Whether a New Institution Should Exist*
 
 
-*We are not asking you to believe. We are asking you to help find out. The nest was left unfinished on purpose; what remains is the part that was always meant for other hands.*
+*Belief is not the price of entry. The work begins with inquiry, evidence, and the freedom to change the design.*

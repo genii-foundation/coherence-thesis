@@ -2,9 +2,104 @@
   "version": 1,
   "aliases": [
     {
+      "sourceHref": "/manuscripts/1/front-matter/a-note-on-compression/",
+      "targetHref": "/manuscripts/1/opening/four-movements/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/1/front-matter/how-this-book-is-structured/",
+      "targetHref": "/manuscripts/1/opening/how-understanding-takes-root/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/1/front-matter/on-form-timing-and-why-this-book-exists/",
+      "targetHref": "/manuscripts/1/opening/the-work-behind-the-book/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/",
+      "targetHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/2/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/",
+      "targetHref": "/manuscripts/2/opening/the-nest-this-book-occupies/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/2/main/the-texture-of-what-comes-next/",
+      "targetHref": "/manuscripts/2/main/fragments-of-the-next-civilization/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/2/main/what-this-book-is/",
+      "targetHref": "/manuscripts/2/main/a-founding-document-not-a-finished-system/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/2/opening/on-nests-and-why-this-book-is-deliberately-incomplete/",
+      "targetHref": "/manuscripts/2/opening/the-nest-this-book-occupies/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/2/the-response/the-larger-argument-4/",
+      "targetHref": "/manuscripts/2/the-response/the-substrate-of-alignment/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/2/the-response/the-threshold/",
+      "targetHref": "/manuscripts/2/the-response/civilizational-alignment/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/3/front-matter/on-the-title-providence-and-imperative/",
+      "targetHref": "/manuscripts/3/opening/providence-and-imperative/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/3/the-governance/",
+      "targetHref": "/manuscripts/3/governance/",
+      "note": "Preserved part route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/3/the-innovation/",
+      "targetHref": "/manuscripts/3/the-design/",
+      "note": "Preserved part route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/3/the-invitation/appendix-the-studies-we-are-aware-of/",
+      "targetHref": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/3/the-invitation/how-the-wheel-begins-to-turn/",
+      "targetHref": "/manuscripts/3/the-invitation/turning-the-wheel/",
+      "note": "Preserved chapter route from HEAD."
+    },
+    {
+      "sourceHref": "/manuscripts/humanitys-most-viable-future/front-matter/a-note-on-compression/",
+      "targetHref": "/manuscripts/1/opening/four-movements/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/humanitys-most-viable-future/front-matter/how-this-book-is-structured/",
+      "targetHref": "/manuscripts/1/opening/how-understanding-takes-root/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/humanitys-most-viable-future/front-matter/on-form-timing-and-why-this-book-exists/",
+      "targetHref": "/manuscripts/1/opening/the-work-behind-the-book/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
       "sourceHref": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil/",
       "targetHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
       "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/providence-imperative/front-matter/on-the-title-providence-and-imperative/",
+      "targetHref": "/manuscripts/3/opening/providence-and-imperative/",
+      "note": "Generated alias for a former front matter chapter route."
     },
     {
       "sourceHref": "/manuscripts/providence-imperative/front-matter/preface/",
@@ -13,17 +108,17 @@
     },
     {
       "sourceHref": "/manuscripts/providence-imperative/the-earth-compact/the-earth-compact-overview/",
-      "targetHref": "/manuscripts/3/the-earth-compact/a-system-that-heals-what-it-inhabits/",
+      "targetHref": "/manuscripts/3/the-earth-compact/a-system-accountable-to-its-place/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/providence-imperative/the-governance/the-governance-overview/",
-      "targetHref": "/manuscripts/3/the-governance/the-constitutional-problem/",
+      "targetHref": "/manuscripts/3/governance/the-constitutional-problem/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-innovation-overview/",
-      "targetHref": "/manuscripts/3/the-innovation/what-coordinates-wisdom/",
+      "targetHref": "/manuscripts/3/the-design/the-conditions-of-wisdom/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
@@ -38,7 +133,7 @@
     },
     {
       "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-mechanism-overview/",
-      "targetHref": "/manuscripts/3/the-mechanism/the-body-as-primary-text/",
+      "targetHref": "/manuscripts/3/the-mechanism/the-body-as-evidence/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
@@ -53,7 +148,7 @@
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/a-last-word/",
-      "targetHref": "/manuscripts/2/main/a-last-word/",
+      "targetHref": "/manuscripts/2/main/the-work-beyond-the-book/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
@@ -65,6 +160,11 @@
       "sourceHref": "/manuscripts/wielding-intelligence/builders-of-the-coherent-civilization/",
       "targetHref": "/manuscripts/2/main/builders-of-the-coherent-civilization/",
       "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/",
+      "targetHref": "/manuscripts/2/opening/the-nest-this-book-occupies/",
+      "note": "Generated alias for a former front matter chapter route."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/if-you-are-a-builder/",
@@ -93,37 +193,37 @@
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/on-releasing-the-book-now/",
-      "targetHref": "/manuscripts/2/main/on-releasing-the-book-now/",
+      "targetHref": "/manuscripts/2/main/why-publish-before-completion/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/on-the-conversation/",
-      "targetHref": "/manuscripts/2/main/on-the-conversation/",
+      "targetHref": "/manuscripts/2/main/the-traditions-behind-the-argument/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/on-the-form/",
-      "targetHref": "/manuscripts/2/main/on-the-form/",
+      "targetHref": "/manuscripts/2/main/why-this-book-has-no-footnotes/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/on-the-state-of-the-project/",
-      "targetHref": "/manuscripts/2/main/on-the-state-of-the-project/",
+      "targetHref": "/manuscripts/2/main/what-providence-actually-is-today/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/the-field-that-does-not-yet-know-it-is-a-field/",
-      "targetHref": "/manuscripts/2/main/the-field-that-does-not-yet-know-it-is-a-field/",
+      "targetHref": "/manuscripts/2/main/a-field-still-finding-itself/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/the-larger-argument-5/",
-      "targetHref": "/manuscripts/2/main/the-larger-argument-5/",
+      "targetHref": "/manuscripts/2/main/the-builders-are-already-here/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/the-last-reframe/",
-      "targetHref": "/manuscripts/2/main/the-last-reframe/",
+      "targetHref": "/manuscripts/2/main/what-wielding-means/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
@@ -138,52 +238,52 @@
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/",
-      "targetHref": "/manuscripts/2/main/the-texture-of-what-comes-next/",
+      "targetHref": "/manuscripts/2/main/fragments-of-the-next-civilization/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/the-transition/",
-      "targetHref": "/manuscripts/2/main/the-transition/",
+      "targetHref": "/manuscripts/2/main/living-through-the-threshold/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/three-builder-types-worth-naming/",
-      "targetHref": "/manuscripts/2/main/three-builder-types-worth-naming/",
+      "targetHref": "/manuscripts/2/main/three-builders-the-work-needs/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/what-providence-is-and-is-not-doing-in-this-dimension-5/",
-      "targetHref": "/manuscripts/2/main/what-providence-is-and-is-not-doing-in-this-dimension-5/",
+      "targetHref": "/manuscripts/2/main/providence-and-the-builder-field/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/what-the-builders-have-in-common/",
-      "targetHref": "/manuscripts/2/main/what-the-builders-have-in-common/",
+      "targetHref": "/manuscripts/2/main/the-builders-shared-ground/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/what-this-asks-of-the-people-living-through-it/",
-      "targetHref": "/manuscripts/2/main/what-this-asks-of-the-people-living-through-it/",
+      "targetHref": "/manuscripts/2/main/practices-for-the-passage/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/what-this-asks-of-the-reader/",
-      "targetHref": "/manuscripts/2/main/what-this-asks-of-the-reader/",
+      "targetHref": "/manuscripts/2/main/the-readers-part/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/what-this-book-is/",
-      "targetHref": "/manuscripts/2/main/what-this-book-is/",
+      "targetHref": "/manuscripts/2/main/a-founding-document-not-a-finished-system/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/what-this-threshold-actually-feels-like/",
-      "targetHref": "/manuscripts/2/main/what-this-threshold-actually-feels-like/",
+      "targetHref": "/manuscripts/2/main/the-nervous-system-in-transition/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/a-last-word/",
-      "targetHref": "/manuscripts/2/main/a-last-word/",
+      "targetHref": "/manuscripts/2/main/the-work-beyond-the-book/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
@@ -223,37 +323,37 @@
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/on-releasing-the-book-now/",
-      "targetHref": "/manuscripts/2/main/on-releasing-the-book-now/",
+      "targetHref": "/manuscripts/2/main/why-publish-before-completion/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-conversation/",
-      "targetHref": "/manuscripts/2/main/on-the-conversation/",
+      "targetHref": "/manuscripts/2/main/the-traditions-behind-the-argument/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-form/",
-      "targetHref": "/manuscripts/2/main/on-the-form/",
+      "targetHref": "/manuscripts/2/main/why-this-book-has-no-footnotes/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-state-of-the-project/",
-      "targetHref": "/manuscripts/2/main/on-the-state-of-the-project/",
+      "targetHref": "/manuscripts/2/main/what-providence-actually-is-today/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/the-field-that-does-not-yet-know-it-is-a-field/",
-      "targetHref": "/manuscripts/2/main/the-field-that-does-not-yet-know-it-is-a-field/",
+      "targetHref": "/manuscripts/2/main/a-field-still-finding-itself/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/the-larger-argument-5/",
-      "targetHref": "/manuscripts/2/main/the-larger-argument-5/",
+      "targetHref": "/manuscripts/2/main/the-builders-are-already-here/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/the-last-reframe/",
-      "targetHref": "/manuscripts/2/main/the-last-reframe/",
+      "targetHref": "/manuscripts/2/main/what-wielding-means/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
@@ -263,47 +363,47 @@
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/the-texture-of-what-comes-next/",
-      "targetHref": "/manuscripts/2/main/the-texture-of-what-comes-next/",
+      "targetHref": "/manuscripts/2/main/fragments-of-the-next-civilization/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/the-transition/",
-      "targetHref": "/manuscripts/2/main/the-transition/",
+      "targetHref": "/manuscripts/2/main/living-through-the-threshold/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/three-builder-types-worth-naming/",
-      "targetHref": "/manuscripts/2/main/three-builder-types-worth-naming/",
+      "targetHref": "/manuscripts/2/main/three-builders-the-work-needs/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/what-providence-is-and-is-not-doing-in-this-dimension-5/",
-      "targetHref": "/manuscripts/2/main/what-providence-is-and-is-not-doing-in-this-dimension-5/",
+      "targetHref": "/manuscripts/2/main/providence-and-the-builder-field/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/what-the-builders-have-in-common/",
-      "targetHref": "/manuscripts/2/main/what-the-builders-have-in-common/",
+      "targetHref": "/manuscripts/2/main/the-builders-shared-ground/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-asks-of-the-people-living-through-it/",
-      "targetHref": "/manuscripts/2/main/what-this-asks-of-the-people-living-through-it/",
+      "targetHref": "/manuscripts/2/main/practices-for-the-passage/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-asks-of-the-reader/",
-      "targetHref": "/manuscripts/2/main/what-this-asks-of-the-reader/",
+      "targetHref": "/manuscripts/2/main/the-readers-part/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-book-is/",
-      "targetHref": "/manuscripts/2/main/what-this-book-is/",
+      "targetHref": "/manuscripts/2/main/a-founding-document-not-a-finished-system/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-threshold-actually-feels-like/",
-      "targetHref": "/manuscripts/2/main/what-this-threshold-actually-feels-like/",
+      "targetHref": "/manuscripts/2/main/the-nervous-system-in-transition/",
       "note": "Reviewed successor from the complete catalog history."
     },
     {

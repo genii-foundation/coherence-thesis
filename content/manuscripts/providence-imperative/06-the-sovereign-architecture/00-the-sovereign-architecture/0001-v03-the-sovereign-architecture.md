@@ -12,12 +12,12 @@ sectionId: "v03-the-sovereign-architecture"
 title: "The Sovereign Architecture"
 sectionOrder: 1
 sourceDoc: "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"
-sourceHash: "72eef2809146d6e4560feee82fc606dae083676730b0019eaaac76914052b104"
-sourceParagraphStart: 1076
-sourceParagraphEnd: 1082
+sourceHash: "ae6adff173fc5363eca581cf47551b71c412e31437eb0a0ecd2a8d0dd528414c"
+sourceParagraphStart: 1042
+sourceParagraphEnd: 1048
 ---
 
-*On Federated Intelligence and a System That Must Never Become What It Was Built to Replace*
+*Federated Intelligence for a System That Must Not Become What It Was Built to Replace*
 
 
-*The surest way to become the power you feared is to build the cure as a throne. What follows is the architecture of refusing the throne — of building so that no center can ever hold it all.*
+*Do not build the cure as a throne. Distribute what no center should ever hold.*

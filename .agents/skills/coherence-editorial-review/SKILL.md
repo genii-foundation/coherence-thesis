@@ -9,7 +9,7 @@ Treat editorial quality as a joint test of language, reasoning, voice, and fidel
 
 ## Load the standards
 
-Read [references/editorial-standards.md](references/editorial-standards.md) completely before evaluating or changing manuscript prose. Read [references/review-record-template.md](references/review-record-template.md) before preparing a review record. Read [references/sentence-ledger-schema.md](references/sentence-ledger-schema.md) before creating the required sentence ledger. Read [references/structure-ledger-schema.md](references/structure-ledger-schema.md) before reviewing headings or display matter. Use [references/voice-card-template.md](references/voice-card-template.md) to create or update the current volume's voice card. For a corpus-scale program, also read `docs/manuscript-editorial-plan.md`.
+Read [references/editorial-standards.md](references/editorial-standards.md) completely before evaluating or changing manuscript prose. Read [references/review-record-template.md](references/review-record-template.md) before preparing a review record. Read [references/sentence-ledger-schema.md](references/sentence-ledger-schema.md) before creating the required sentence ledger. Read [references/structure-ledger-schema.md](references/structure-ledger-schema.md) before reviewing headings or display matter. Read [references/editorial-debt-schema.md](references/editorial-debt-schema.md) before recording or resolving a durable obligation. Use [references/voice-card-template.md](references/voice-card-template.md) to create or update the current volume's voice card. For a corpus-scale program, also read `docs/manuscript-editorial-plan.md` and `editorial/debt/index.md`.
 
 ## Observe the nonnegotiable rules
 
@@ -23,6 +23,7 @@ Read [references/editorial-standards.md](references/editorial-standards.md) comp
 8. Allow headings, section boundaries, and section identities to improve when the manuscript needs them to improve. Treat each change as an editorial and link-preservation decision. Never retain inferior wording merely to keep an old slug.
 9. Preserve access, not obsolete identity. Every previously published section, chapter, part, and volume route must still resolve through the append-only route ledger and explicit aliases after headings or IDs change. Structural membership may evolve when related lineage remains. Volume root paths remain fixed unless a separate site change adds reviewed volume redirects.
 10. Read the relevant portions of `sources/manuscripts/coherence-thesis-master-ledger.md` before each batch. Treat the ledger as the continuity authority, not as routine copy-editing scope.
+11. Record every discovered inconsistency, unfulfilled promise, unresolved claim, citation gap, canon conflict, literary weakness, link obligation, audio obligation, or tooling limitation in `editorial/debt/items/`. Debt IDs and files are append-only. Pay debt down by resolving the item with evidence, never by deleting its history. Reopen the same item when later evidence proves that a supposed corpus-wide resolution was only partial.
 
 ## Select the operating mode
 
@@ -57,8 +58,9 @@ Review an existing editorial diff without rewriting it. Reconstruct the source b
 1. Confirm the exact source file, sections, desired intervention level, and whether fact checking is included.
 2. Read the complete target section, its preceding and following sections, the volume opening, and the volume closing. Read more when a concept or motif depends on distant context.
 3. Read the relevant master ledger sections and the approved volume voice card.
-4. Write a brief authorial profile for the batch: central claims, register, point of view, characteristic rhythm, recurring images, protected terms, protected lines, and known uncertainties.
-5. Run the strongest editorial reasoning model available in the active environment. If model choice and reasoning level are exposed, select the strongest model and highest reasoning level. Record the actual model only when the runtime exposes it.
+4. Read `editorial/debt/index.md` and every active item that touches the volume, concept, route, or publication surface.
+5. Write a brief authorial profile for the batch: central claims, register, point of view, characteristic rhythm, recurring images, protected terms, protected lines, and known uncertainties.
+6. Run the strongest editorial reasoning model available in the active environment. If model choice and reasoning level are exposed, select the strongest model and highest reasoning level. Record the actual model only when the runtime exposes it.
 
 ### 2. Prepare the work safely
 
@@ -75,6 +77,8 @@ Review an existing editorial diff without rewriting it. Reconstruct the source b
 3. Separate high-confidence repairs from author questions. Do not conceal uncertainty beneath fluent replacement prose.
 4. Identify repeated habits across the batch before editing individual instances. Repair the underlying habit while allowing intentional recurrence.
 5. Complete developmental triage before line editing. Classify repeated sections, codas, summaries, and refrains as cumulative, independently necessary, or redundant. Do not spend exquisite sentences on an argument that should appear once.
+6. Open or update editorial debt items as soon as an obligation becomes larger than the current safe edit. Cite the debt ID in the batch review record. Do not bury durable debt only in prose notes or pull request discussion.
+7. For a cross-volume pass, store the dated independent scan under `editorial/debt/audits/`. Complete the source scan before deduplicating against the active index. Reconcile every finding into an existing or new debt item before closing the pass. The audit report is evidence, not a substitute for the item library.
 
 ### 4. Edit sentence by sentence
 
@@ -121,7 +125,8 @@ Use fresh reviewers for every pilot and production batch. Run them sequentially 
 5. Confirm that headings, Markdown, quotations, citations, section order, and public route intent remain correct.
 6. If headings, IDs, parts, chapters, or section boundaries changed, review the proposed section lineage and every new alias. Resolve ambiguous successors explicitly.
 7. Complete the review record from the bundled template.
-8. Validate a complete source sentence ledger against both immutable baseline and current worktree:
+8. Reconcile the editorial debt register. Open every newly discovered durable item, resolve items paid down by the batch with evidence, then run `npm run manuscripts:debt:update` and `npm run manuscripts:debt`.
+9. Validate a complete source sentence ledger against both immutable baseline and current worktree:
 
 ```bash
 npm run manuscripts:editorial-ledger -- \
@@ -132,7 +137,7 @@ npm run manuscripts:editorial-ledger -- \
   <sentence-ledger-path>
 ```
 
-9. Validate the companion structure ledger against the same baseline and current source:
+10. Validate the companion structure ledger against the same baseline and current source:
 
 ```bash
 npm run manuscripts:structure-ledger -- \
@@ -150,6 +155,8 @@ For a sentence microbatch, declare every baseline section with `--section` and e
 Run the canonical workflow after source edits:
 
 ```bash
+npm run manuscripts:debt:update
+npm run manuscripts:debt
 npm run manuscripts:import
 npm run manuscripts:preserve-links -- --base HEAD --write
 npm run manuscripts:compile
@@ -178,7 +185,8 @@ The current provenance tool derives first-version commits from Git history. Befo
 1. Commit with an `edit:` Conventional Commit title.
 2. Open or update a focused pull request whose body begins with `(AI Generated).`
 3. Include the original problem, authorial profile, intervention level, representative before and after examples, semantic review, audit results, validation, generated impact, route impact, audio impact, open queries, and residual risk.
-4. Do not merge a pilot or production edit until the user explicitly approves the prose.
+4. Include every editorial debt item opened, carried, or resolved by the batch.
+5. Do not merge a pilot or production edit until the user explicitly approves the prose.
 
 ## Stop conditions
 
@@ -191,6 +199,7 @@ Stop and request direction when any of the following is true:
 - The link-preservation planner reports an ambiguous lineage that editorial judgment has not resolved.
 - A revision would reconcile a contradiction by inventing a position.
 - Independent review finds unresolved semantic drift.
+- Critical editorial debt would make the proposed publication misleading, unsafe, internally contradictory, or impossible to validate.
 - The pilot voice has not been approved and the author has not explicitly authorized the named draft wave before pilot approval.
 
 ## Activate the final corpus gate

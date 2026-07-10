@@ -17,6 +17,7 @@ import {
   wieldingSection,
   copyrightYearLabel,
   nextSection,
+  readyListenButton,
   sectionWithNeighbors,
 } from "./fixtures";
 
@@ -570,7 +571,7 @@ test("audio voice selection exposes one built-in system option", async ({ page }
   });
 
   await page.goto(firstSection.href);
-  await page.getByRole("button", { name: /Listen/ }).click();
+  await (await readyListenButton(page)).click();
   const audioPanel = page.getByLabel("Audiobook controls");
   await expect(audioPanel).toBeVisible();
 
@@ -787,7 +788,7 @@ test("reader navigation does not interrupt active playback", async ({ page }) =>
   }, { storageKey: audioVoiceStorageKey, preference: systemVoicePreference });
 
   await page.goto(sectionWithNeighbors.href);
-  await page.getByRole("button", { name: /Listen/ }).click();
+  await (await readyListenButton(page)).click();
   await expect(page.getByRole("button", { name: "Pause audiobook" }))
     .toBeVisible();
   await expect

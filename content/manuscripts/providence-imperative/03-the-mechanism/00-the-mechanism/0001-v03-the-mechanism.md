@@ -12,12 +12,12 @@ sectionId: "v03-the-mechanism"
 title: "The Mechanism"
 sectionOrder: 1
 sourceDoc: "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"
-sourceHash: "72eef2809146d6e4560feee82fc606dae083676730b0019eaaac76914052b104"
-sourceParagraphStart: 498
-sourceParagraphEnd: 504
+sourceHash: "ae6adff173fc5363eca581cf47551b71c412e31437eb0a0ecd2a8d0dd528414c"
+sourceParagraphStart: 458
+sourceParagraphEnd: 464
 ---
 
-*How Presence Becomes Legible — The Operating Engine of the Currency*
+*How Presence Might Become Legible*
 
 
-*The will can compose itself. The body beneath it keeps telling the truth. It is that older, more honest language the engine is built to read.*
+*The will can compose an account of itself. The body contributes another account, older and less fully governed by intention. Neither should be mistaken for the whole truth.*

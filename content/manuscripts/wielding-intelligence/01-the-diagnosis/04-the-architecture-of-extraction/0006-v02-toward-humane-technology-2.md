@@ -12,7 +12,7 @@ sectionId: "v02-toward-humane-technology-2"
 title: "Toward Humane Technology"
 sectionOrder: 6
 sourceDoc: "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md"
-sourceHash: "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d"
+sourceHash: "ec529fd16f1cc6050151bb9fb2709d40acdca9ecadcb4c3dd3098422aee0c785"
 sourceParagraphStart: 331
 sourceParagraphEnd: 344
 ---
