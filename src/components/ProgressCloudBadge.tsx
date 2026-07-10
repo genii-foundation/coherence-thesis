@@ -36,10 +36,10 @@ const cloudPath =
   "M20.6 46.4c-8.1 0-14.6-5.7-14.6-12.9 0-6.5 5.2-11.8 12.2-12.6C20.8 11 29.8 4.7 40.5 4.7c9.4 0 17.5 4.7 21.2 12.4 9.8.4 17.3 7.1 17.3 15.5 0 7.8-6.8 13.8-15.6 13.8H20.6Z";
 const cloudProgressPath =
   "M40.5 4.7c9.4 0 17.5 4.7 21.2 12.4 9.8.4 17.3 7.1 17.3 15.5 0 7.8-6.8 13.8-15.6 13.8H20.6c-8.1 0-14.6-5.7-14.6-12.9 0-6.5 5.2-11.8 12.2-12.6C20.8 11 29.8 4.7 40.5 4.7Z";
-const cloudPathTransform = "translate(0 7.667) scale(0.7619048)";
+const cloudPathScale = 0.7619048;
+const cloudPathTransform = `translate(0 7.667) scale(${cloudPathScale})`;
+const cloudViewBoxSize = 64;
 // Measured from the source path with SVGGeometryElement.getTotalLength().
-// Real perimeter units stay stable when the path is transformed and its stroke
-// uses vector-effect: non-scaling-stroke.
 const cloudPathLength = 188.17681884765625;
 const cloudTopPoint = { x: 30.857, y: 11.248 };
 const cloudProgressBlipRadius = 1.9;
@@ -197,11 +197,20 @@ function clampPercent(percent: number) {
   return Math.max(0, Math.min(100, percent));
 }
 
-function cloudProgressDash(percent: number) {
+function cloudRenderedPathLength(variant: ProgressCloudVariant) {
+  // A non-scaling stroke interprets dash lengths in rendered CSS pixels. Map
+  // the source perimeter through the group and viewBox scales before applying
+  // a percentage, or a nominal 50% dash covers about 90% of the visible cloud.
+  const viewBoxScale =
+    Math.min(variant.width, variant.height) / cloudViewBoxSize;
+  return cloudPathLength * cloudPathScale * viewBoxScale;
+}
+
+function cloudProgressDash(percent: number, renderedPathLength: number) {
   const progress = clampPercent(percent);
   if (progress >= 100) return undefined;
-  const progressLength = (cloudPathLength * progress) / 100;
-  return `${progressLength} ${cloudPathLength}`;
+  const progressLength = (renderedPathLength * progress) / 100;
+  return `${progressLength} ${renderedPathLength}`;
 }
 
 function circlePoint(angle: number) {
@@ -237,6 +246,7 @@ export function ProgressCloudBadge({
     syncOrbitVariant;
 
   const progressPercent = clampPercent(percent);
+  const renderedCloudPathLength = cloudRenderedPathLength(variant);
   const text = `${Math.round(progressPercent)}%`;
   const textSize =
     text.length >= 4 ? Math.max(10.5, variant.textSize - 0.75) : variant.textSize;
@@ -278,7 +288,10 @@ export function ProgressCloudBadge({
               <path
                 className="progress-cloud-progress"
                 d={cloudProgressPath}
-                strokeDasharray={cloudProgressDash(progressPercent)}
+                strokeDasharray={cloudProgressDash(
+                  progressPercent,
+                  renderedCloudPathLength,
+                )}
               />
             )}
           </g>

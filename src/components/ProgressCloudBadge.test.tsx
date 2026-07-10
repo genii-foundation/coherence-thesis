@@ -31,19 +31,24 @@ describe("ProgressCloudBadge", () => {
     );
     expect(partial).toContain('--progress-cloud-text-size:15px');
     expect(partial).toContain('d="M40.5 4.7');
-    expect(partial).toContain(
-      'stroke-dasharray="1.8817681884765625 188.17681884765625"',
-    );
     expect(partial).not.toContain('stroke-dashoffset');
-    expect(quarter).toContain(
-      'stroke-dasharray="47.04420471191406 188.17681884765625"',
-    );
-    expect(halfway).toContain(
-      'stroke-dasharray="94.08840942382812 188.17681884765625"',
-    );
-    expect(almostComplete).toContain(
-      'stroke-dasharray="182.53151428222657 188.17681884765625"',
-    );
+    for (const [markup, expectedPercent] of [
+      [partial, 1],
+      [quarter, 25],
+      [halfway, 50],
+      [almostComplete, 97],
+    ] as const) {
+      const dash = markup.match(/stroke-dasharray="([^"]+)"/)?.[1];
+      if (!dash) throw new Error("Missing connected cloud dash array");
+      const dashValues = dash.split(" ").map(Number);
+      const progressLength = dashValues[0] ?? Number.NaN;
+      const renderedPathLength = dashValues[1] ?? Number.NaN;
+      expect(renderedPathLength).toBeCloseTo(103.9453, 4);
+      expect((progressLength / renderedPathLength) * 100).toBeCloseTo(
+        expectedPercent,
+        6,
+      );
+    }
     expect(complete).not.toContain('stroke-dasharray');
   });
 
