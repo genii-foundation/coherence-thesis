@@ -95,6 +95,7 @@ npm start
 - Create a short branch with a Conventional Commit prefix, such as `feat/`, `fix/`, `edit/`, `docs/`, `chore/`, `refactor/`, or `perf/`, followed by a kebab-case description.
 - Use `edit/` for manuscript updates, including changes to `content/manuscripts/`, `content/overview/`, import applications, and generated manuscript catalog updates caused by canonical text edits.
 - Keep each PR focused. One worktree should map to one coherent PR.
+- Do not merge changes to a shared UI component inside a PR whose stated purpose does not mention that surface. Move the UI change to a focused branch, or expand the PR scope and validation evidence before review.
 - Commit messages should follow "Conventional Commits" when possible. Use `edit:` for manuscript updates.
 - Run `npm run validate` before opening or updating a PR for merge.
 - PR bodies must begin with `(AI Generated).`
@@ -105,5 +106,7 @@ npm start
 For rare, stateful, intermittent, or hard-to-reproduce failures, do not ship only a one-off patch. Preserve evidence, add targeted diagnostics when useful, and make the next occurrence easier to explain.
 
 Good evidence can include route, visible UI state, local storage state, generated catalog hashes, import reports, build output, failed job output, package versions, and browser console errors.
+
+For transformed SVG, canvas, or other geometry-sensitive UI, test the rendered result after viewBox, element, CSS, and vector-effect transforms. Source attributes and normalized path arithmetic are not proof of visible geometry. Cover representative boundary and midpoint states on desktop and mobile.
 
 Mitigation should be conservative and observable. It should recover without churn, log or expose the reason where appropriate, and include tests for the state machine or threshold that failed.
