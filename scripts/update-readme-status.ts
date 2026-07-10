@@ -21,7 +21,7 @@ function buildStatus(): string {
     startMarker,
     "",
     `- Next.js: ${packageJson.dependencies?.next ?? "unknown"}`,
-    `- Manuscripts: ${catalog.stats.volumeCount} volume, ${catalog.stats.partCount} parts, ${catalog.stats.chapterCount} chapters, ${catalog.stats.sectionCount} sections`,
+    `- Manuscripts: ${catalog.stats.volumeCount} ${catalog.stats.volumeCount === 1 ? "volume" : "volumes"}, ${catalog.stats.partCount} parts, ${catalog.stats.chapterCount} chapters, ${catalog.stats.sectionCount} sections`,
     `- Canonical words: ${catalog.stats.wordCount.toLocaleString()}`,
     `- Estimated full read: ${catalog.stats.readingMinutes} minutes`,
     `- Overview nodes: ${catalog.overview.nodes.length}`,
