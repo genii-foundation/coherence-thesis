@@ -69,7 +69,9 @@ export function SectionReader({
           section={toProgressSection(section)}
         />
       )}
-      <LegacyFragmentRedirectIsland sections={[toProgressSection(section)]} />
+      {!alias && (
+        <LegacyFragmentRedirectIsland sections={[toProgressSection(section)]} />
+      )}
       <LegacySectionAnchors
         currentSectionId={section.sectionId}
         legacySectionIds={section.legacySectionIds}
