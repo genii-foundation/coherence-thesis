@@ -5854,8 +5854,7 @@ input {
   }
 
   .hero-cta-stack,
-  .hero-actions,
-  .hero-stats {
+  .hero-actions {
     width: 100%;
   }
 
@@ -5864,11 +5863,11 @@ input {
   }
 
   .hero-stats {
-    justify-content: flex-start;
-  }
-
-  .hero-stats li {
-    max-width: 100%;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: center;
+    justify-self: center;
+    column-gap: clamp(0.7rem, 4vw, 1.1rem);
+    width: 100%;
   }
 
   .hero-actions .primary-link,

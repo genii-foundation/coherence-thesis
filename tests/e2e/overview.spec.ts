@@ -153,6 +153,29 @@ test("home page presents the overview and manuscript entry points", async ({
     await expect(page.locator(".hero-art")).toBeHidden();
 
     await page.setViewportSize({ width: 320, height: 720 });
+    const heroStatsLayout = await heroStats.evaluate((stats) => {
+      const copyBox = document
+        .querySelector(".hero-copy")
+        ?.getBoundingClientRect();
+      const textBoxes = Array.from(stats.querySelectorAll("dt, dd")).map(
+        (item) => item.getBoundingClientRect(),
+      );
+      const textLeft = Math.min(...textBoxes.map((box) => box.left));
+      const textRight = Math.max(...textBoxes.map((box) => box.right));
+
+      return {
+        copyCenter: copyBox ? copyBox.left + copyBox.width / 2 : 0,
+        scrollWidth: document.documentElement.scrollWidth,
+        statsTextCenter: textLeft + (textRight - textLeft) / 2,
+        viewportWidth: document.documentElement.clientWidth,
+      };
+    });
+    expect(
+      Math.abs(heroStatsLayout.statsTextCenter - heroStatsLayout.copyCenter),
+    ).toBeLessThanOrEqual(1);
+    expect(heroStatsLayout.scrollWidth).toBeLessThanOrEqual(
+      heroStatsLayout.viewportWidth + 1,
+    );
     const heroActionLayout = await page.locator(".hero-actions").evaluate(
       (actions) => {
         const actionBox = actions.getBoundingClientRect();
