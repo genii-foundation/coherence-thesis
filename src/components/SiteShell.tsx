@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { copyrightYearLabel } from "@/lib/copyright";
 import { CopyrightYearIsland } from "@/components/CopyrightYearIsland";
 import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
@@ -142,6 +143,9 @@ export function SiteShell({ children }: { children: ReactNode }) {
             Aubrey Falconer
           </a>
           .
+        </p>
+        <p>
+          <Link href="/updates/">Updates</Link>
         </p>
         <p>
           <CleanTooltip label="Open to Source">

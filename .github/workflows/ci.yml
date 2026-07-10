@@ -1,5 +1,8 @@
 name: CI
 
+permissions:
+  contents: read
+
 on:
   pull_request:
   push:
@@ -41,6 +44,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Check generated browser data is committed and current
         run: |
@@ -78,6 +83,7 @@ jobs:
         run: npm run test:e2e
         env:
           CI: "true"
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Upload Playwright report on failure
         if: failure()

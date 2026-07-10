@@ -18,6 +18,7 @@ The reader is a Next.js application with:
 - Section and paragraph fingerprints that reveal text updated since a previous read
 - Instant local search across a generated static index
 - Browser speech playback and optional hosted audiobook clips
+- A public updates log compiled from every commit on the main branch
 - Responsive reader controls, accessibility coverage, and downloadable manuscript PDFs
 
 ## Development Status
@@ -42,7 +43,7 @@ This block contains stable facts generated from the current package metadata and
 | `content/series/` | Volume metadata, section ledger, and route aliases | Edit deliberately and preserve published links |
 | `content/overview/` | Curated overview nodes | Every reference must resolve to a real section |
 | `content/manuscripts/` | Generated canonical reader sections | Never edit by hand |
-| `src/generated/manuscripts/` | Generated application catalog | Never edit by hand |
+| `src/generated/` | Generated application catalog and updates fallback | Never edit by hand |
 | `public/data/` | Generated reader payloads, routes, search data, and audio metadata | Never edit by hand |
 | `src/app/` | Next.js pages and server route handlers | Reader and account application code |
 | `src/components/` | Shared interface components and client islands | Reuse existing primitives before adding new ones |
@@ -114,6 +115,16 @@ npm run manuscripts:validate
 Do not accept an import that collapses, fragments, reorders, or incorrectly renames sections. Fix the source or importer first.
 
 Published routes are durable. When a heading or structure change removes a historical route, add a deliberate alias to `content/series/aliases.json`. The section ledger records every published route, and validation fails when one disappears without a replacement.
+
+## Updates Publishing
+
+The public [Updates page](https://www.coherence-thesis.com/updates/) is compiled from every commit on the main branch. Refresh its checked in fallback with:
+
+```bash
+npm run updates:generate
+```
+
+The production build runs this command automatically. It reads a complete local Git history when one is available. Shallow deploys use the pinned main branch head from the GitHub API and fetch every result page. If neither source is available, the build uses the last valid snapshot in `src/generated/updates.json`. The page groups commits by UTC date and shows five dates per numbered page.
 
 ## Audiobook Publishing
 
