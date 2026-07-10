@@ -158,6 +158,38 @@ test("multi-section chapters render one anchored reader page", async ({
   ).toBeVisible();
 });
 
+test("chapter navigation continues into the first section of the next part", async ({
+  page,
+}) => {
+  await page.goto(
+    "/manuscripts/2/the-diagnosis/the-architecture-of-extraction/",
+  );
+
+  const nextLink = page
+    .getByRole("navigation", { name: "Page navigation" })
+    .locator(".section-nav-link-next");
+  await expect(nextLink).toHaveAttribute(
+    "href",
+    "/manuscripts/2/the-response/coherence-as-infrastructure/",
+  );
+  await expect(nextLink.locator("strong")).toHaveText(
+    "Coherence as Infrastructure",
+  );
+
+  await Promise.all([
+    page.waitForURL(
+      "/manuscripts/2/the-response/coherence-as-infrastructure/",
+    ),
+    nextLink.click(),
+  ]);
+  await expect(
+    page.getByRole("heading", {
+      level: 1,
+      name: "Coherence as Infrastructure",
+    }),
+  ).toBeVisible();
+});
+
 test("historical paragraph links survive a move into a multi-section chapter", async ({
   page,
 }) => {

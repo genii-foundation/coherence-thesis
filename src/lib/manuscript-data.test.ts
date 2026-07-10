@@ -3,6 +3,7 @@ import {
   allSections,
   breadcrumbRoutes,
   chapterByHref,
+  chapterNavigation,
   manuscriptHrefFromRoute,
   manuscriptPathParams,
   partByHref,
@@ -52,6 +53,61 @@ describe("manuscript data", () => {
     expect(navigation?.parent).toEqual({
       title: part?.title,
       href: part?.href,
+    });
+  });
+
+  it("continues chapter readers through every part and volume boundary", () => {
+    const sections = allSections();
+    const sectionIndex = new Map(
+      sections.map((section, index) => [section.sectionId, index]),
+    );
+    const failures = buildCatalog().volumes.flatMap((volume) =>
+      volume.parts.flatMap((part) =>
+        part.chapters.flatMap((chapter) => {
+          if (chapter !== part.chapters[part.chapters.length - 1]) return [];
+
+          const chapterSections = sectionsForChapter(
+            volume.volumeId,
+            part.partId,
+            chapter.chapterId,
+          );
+          const lastSection = chapterSections[chapterSections.length - 1];
+          if (!lastSection) return [`${chapter.href}: missing sections`];
+
+          const lastIndex = sectionIndex.get(lastSection.sectionId);
+          const expectedNext =
+            lastIndex === undefined ? undefined : sections[lastIndex + 1];
+          const actualNext = chapterNavigation(
+            volume.volumeId,
+            part.partId,
+            chapter.chapterId,
+          )?.next;
+          const expectedNavigation = expectedNext
+            ? { title: expectedNext.title, href: expectedNext.readerHref }
+            : null;
+
+          return JSON.stringify(actualNext) === JSON.stringify(expectedNavigation)
+            ? []
+            : [
+                `${chapter.href}: expected ${JSON.stringify(expectedNavigation)}, received ${JSON.stringify(actualNext)}`,
+              ];
+        }),
+      ),
+    );
+
+    expect(failures).toEqual([]);
+  });
+
+  it("advances the final Diagnosis chapter into the first Response section", () => {
+    const navigation = chapterNavigation(
+      "wielding-intelligence",
+      "the-diagnosis",
+      "the-architecture-of-extraction",
+    );
+
+    expect(navigation?.next).toEqual({
+      title: "Coherence as Infrastructure",
+      href: "/manuscripts/2/the-response/coherence-as-infrastructure/",
     });
   });
 
