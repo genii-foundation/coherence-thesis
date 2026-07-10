@@ -278,6 +278,19 @@ test("home page presents the overview and manuscript entry points", async ({
   );
   await expect(aubreyLink).toHaveAttribute("target", "_blank");
   await expect(aubreyLink).toHaveAttribute("rel", "author");
+  const githubLink = footer.getByRole("link", {
+    name: "Open to Source",
+  });
+  await expect(githubLink).toHaveAttribute(
+    "href",
+    "https://github.com/providence-collective/coherence-thesis",
+  );
+  await expect(githubLink).toHaveAttribute("target", "_blank");
+  await expect(githubLink).toHaveAttribute("rel", "noopener noreferrer");
+  await githubLink.hover();
+  const githubTooltip = page.locator(".clean-tooltip");
+  await expect(githubTooltip).toContainText("Open to Source");
+  await expect(githubTooltip.locator(".clean-tooltip-arrow")).toBeVisible();
 
   const homepageSpacing = await page.evaluate(() => {
     const hero = document
