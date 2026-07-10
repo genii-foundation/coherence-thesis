@@ -1,4 +1,15 @@
 {
   "version": 1,
-  "aliases": []
+  "aliases": [
+    {
+      "sourceHref": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
+      "targetSectionId": "v01-the-seed",
+      "note": "Link preservation: the importer used to emit this collapsed route for the skipped subtitle-only part opener; newer route logic emits only the full-depth form. Recorded in the section ledger, so it must keep resolving."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/the-response/v02-the-response/",
+      "targetSectionId": "v02-coherence-as-infrastructure",
+      "note": "Link preservation: the importer used to emit this collapsed route for the skipped subtitle-only part opener; newer route logic emits only the full-depth form. Recorded in the section ledger, so it must keep resolving."
+    }
+  ]
 }
