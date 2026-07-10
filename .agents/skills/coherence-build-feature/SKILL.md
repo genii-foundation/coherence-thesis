@@ -104,10 +104,14 @@ the preview looks good.
 - Do not add hover lift, bounce, glossy controls, or one-off gradients.
 - Use the shared connected radio pattern for radio controls: `settings-radio-section`, `settings-radio-group`, and `settings-radio-option`.
 - Use `Number.toLocaleString()` or `Intl.NumberFormat` for displayed counts.
+- For transformed SVG progress paths, measure the visible rendered geometry after all SVG and CSS transforms. Do not accept source path ratios or dash attributes as visual proof.
+- Keep temporary comparison routes available through explicit preview approval when they are the clearest way to review multiple visual states. Remove them only after approval and rerun the affected browser coverage.
 
 ## Pull Request Quality
 
 Every pull request description must explain not only what changed, but why the change exists and why this shape was chosen. The body must begin with `(AI Generated).`
+
+If a diff changes a shared UI surface that is not named by the PR title and summary, split that change into a focused branch before review. Broad validation does not make an unrelated product change part of the stated scope.
 
 Start from `.agents/templates/pull-request-description.md` by default:
 
