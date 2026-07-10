@@ -898,6 +898,7 @@ test("overview references show local read checkmarks", async ({ page }) => {
 });
 
 test("home page presents an interactive cover flow", async ({ page }, testInfo) => {
+  test.setTimeout(60_000);
   await page.goto("/");
   const coverFlow = page.locator(".cover-flow");
   const initialActiveIndex = 0;
@@ -958,11 +959,15 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     const panelScrollStyle = panelScroll
       ? window.getComputedStyle(panelScroll)
       : null;
-
     return {
       coverHeight: coverBox?.height ?? 0,
       coverToPanelGap:
         coverBox && panelBox ? panelBox.top - coverBox.bottom : 0,
+      coverToPanelGapTarget: coverBox?.left ?? 0,
+      coverToPanelGapRatio:
+        coverBox && panelBox
+          ? (panelBox.top - coverBox.bottom) / coverBox.height
+          : 0,
       panelHeight: panelBox?.height ?? 0,
       panelMaxHeight: panelStyle?.maxHeight ?? "",
       panelOverflowY: panelStyle?.overflowY ?? "",
@@ -1025,18 +1030,113 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     expect(mobileCoverFlowAlignment.nextRightInset).toBeGreaterThan(8);
   }
   expect(panelMetrics.panelHeight).toBeLessThanOrEqual(
-    panelMetrics.coverHeight * 0.88 + 2,
+    panelMetrics.coverHeight * 1.02 + 2,
   );
+  if (panelMetrics.viewportWidth <= 540) {
+    expect(panelMetrics.panelHeight).toBeGreaterThanOrEqual(
+      panelMetrics.coverHeight * 0.75,
+    );
+    expect(panelMetrics.panelScrollClientHeight).toBeGreaterThanOrEqual(100);
+  }
   expect(panelMetrics.stageEndGap).toBeLessThanOrEqual(
     panelMetrics.viewportWidth <= 540 ? 150 : 260,
   );
-  expect(panelMetrics.coverToPanelGap).toBeGreaterThanOrEqual(44);
+  if (panelMetrics.viewportWidth <= 540) {
+    expect(
+      Math.abs(
+        panelMetrics.coverToPanelGap - panelMetrics.coverToPanelGapTarget,
+      ),
+    ).toBeLessThanOrEqual(2);
+  } else {
+    expect(panelMetrics.coverToPanelGapRatio).toBeCloseTo(1 / 22.5, 2);
+  }
   expect(panelMetrics.panelMaxHeight).not.toBe("none");
   expect(panelMetrics.panelOverflowY).toBe("hidden");
   expect(panelMetrics.panelTransitionProperty).toContain("height");
   expect(panelMetrics.panelScrollOverflowY).toBe("auto");
   expect(panelMetrics.panelScrollHeight).toBeGreaterThanOrEqual(
     panelMetrics.panelScrollClientHeight,
+  );
+
+  const nextManuscriptButton = coverFlow.getByRole("button", {
+    name: "Next manuscript",
+  });
+  await nextManuscriptButton.click();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    catalog.volumes[1]!.href,
+  );
+  await nextManuscriptButton.click();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    catalog.volumes[2]!.href,
+  );
+
+  const tallPanelMetrics = await activeCard.evaluate((card) => {
+    const cover = card.querySelector(".cover-flow-image-frame");
+    const panel = card.querySelector(".cover-flow-card-panel");
+    const coverBox = cover?.getBoundingClientRect();
+    const panelBox = panel?.getBoundingClientRect();
+
+    return {
+      coverHeight: coverBox?.height ?? 0,
+      panelHeight: panelBox?.height ?? 0,
+    };
+  });
+  expect(tallPanelMetrics.panelHeight).toBeGreaterThanOrEqual(
+    tallPanelMetrics.coverHeight * 0.84,
+  );
+
+  const outlineScroll = activePanel.locator(".cover-flow-card-panel-scroll");
+  const outlineFixed = activePanel.locator(".manuscript-card-outline-fixed");
+  await expect
+    .poll(() =>
+      outlineScroll.evaluate(
+        (element) => element.scrollHeight - element.clientHeight,
+      ),
+    )
+    .toBeGreaterThan(1);
+  await outlineScroll.evaluate((element) => {
+    element.scrollTop = 24;
+    element.dispatchEvent(new Event("scroll", { bubbles: true }));
+  });
+  await expect(outlineFixed).toHaveClass(/is-scrolled/);
+  const scrollDividerWidth = await outlineScroll.evaluate((element) =>
+    Number.parseFloat(getComputedStyle(element).borderTopWidth),
+  );
+  expect(scrollDividerWidth).toBeGreaterThan(0);
+  await expect
+    .poll(() =>
+      outlineScroll.evaluate(
+        (element) => getComputedStyle(element).borderTopColor,
+      ),
+    )
+    .not.toBe("rgba(0, 0, 0, 0)");
+  const scrollDividerColor = await outlineScroll.evaluate(
+    (element) => getComputedStyle(element).borderTopColor,
+  );
+  const panelBorderColor = await activePanel.evaluate(
+    (element) => getComputedStyle(element).borderLeftColor,
+  );
+  expect(scrollDividerColor).toBe(panelBorderColor);
+  await outlineScroll.evaluate((element) => {
+    element.scrollTop = 0;
+    element.dispatchEvent(new Event("scroll", { bubbles: true }));
+  });
+  await expect(outlineFixed).not.toHaveClass(/is-scrolled/);
+
+  const previousManuscriptButton = coverFlow.getByRole("button", {
+    name: "Previous manuscript",
+  });
+  await previousManuscriptButton.click();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    catalog.volumes[1]!.href,
+  );
+  await previousManuscriptButton.click();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    initialActiveVolume.href,
   );
 
   await activePanel
@@ -1415,6 +1515,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   ).toHaveAttribute("data-volume-href", catalog.volumes.at(-2)!.href);
 
   if (testInfo.project.name !== "mobile") {
+    await page.waitForTimeout(400);
     await page.evaluate(() => {
       document.documentElement.style.scrollBehavior = "auto";
       window.scrollTo(0, 0);
@@ -1525,6 +1626,8 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
       nextTop: nextRect?.top ?? 0,
       panelBottom: panel?.bottom ?? 0,
       panelTop: panel?.top ?? 0,
+      coverToPanelGap:
+        cover && panel ? panel.top - cover.bottom : 0,
       viewportHeight: window.innerHeight,
     };
   });
@@ -1534,6 +1637,12 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
   expect(landscapeMetrics.coverBottom).toBeLessThan(
     landscapeMetrics.viewportHeight,
   );
+  expect(
+    landscapeMetrics.coverToPanelGap / landscapeMetrics.coverHeight,
+  ).toBeGreaterThanOrEqual(0.04);
+  expect(
+    landscapeMetrics.coverToPanelGap / landscapeMetrics.coverHeight,
+  ).toBeLessThanOrEqual(0.06);
   expect(landscapeMetrics.panelTop).toBeLessThan(landscapeMetrics.viewportHeight);
   expect(landscapeMetrics.panelBottom).toBeGreaterThan(
     landscapeMetrics.panelTop,
