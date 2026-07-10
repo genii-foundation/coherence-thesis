@@ -1112,6 +1112,13 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       ),
     )
     .not.toBe("rgba(0, 0, 0, 0)");
+  const scrollDividerColor = await outlineScroll.evaluate(
+    (element) => getComputedStyle(element).borderTopColor,
+  );
+  const panelBorderColor = await activePanel.evaluate(
+    (element) => getComputedStyle(element).borderLeftColor,
+  );
+  expect(scrollDividerColor).toBe(panelBorderColor);
   await outlineScroll.evaluate((element) => {
     element.scrollTop = 0;
     element.dispatchEvent(new Event("scroll", { bubbles: true }));

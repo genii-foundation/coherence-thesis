@@ -2771,7 +2771,7 @@ input {
 
 .manuscript-card-outline-fixed.is-scrolled
   + .cover-flow-card-panel-scroll {
-  border-top-color: rgb(var(--card-rgb) / 0.3);
+  border-top-color: rgb(var(--card-rgb) / 0.32);
 }
 
 .manuscript-card-outline-parts,
