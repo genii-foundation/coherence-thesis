@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-29T01:51:39.167Z",
+  "generatedAt": "2026-07-10T07:30:41.899Z",
   "entries": [
     {
       "contentHash": "0113f4833da9d667",
@@ -12,14 +12,6 @@
     },
     {
       "contentHash": "011b630f9ebf275f",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "020a16f7a7b21ab8",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -83,6 +75,14 @@
       "pullRequestNumber": 1
     },
     {
+      "contentHash": "0421571fb55ad2b8",
+      "versionDate": "2026-07-10T07:30:43.864Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
+    },
+    {
       "contentHash": "0425ab74d7c0b26e",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -105,6 +105,14 @@
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
       "pullRequestNumber": 1
+    },
+    {
+      "contentHash": "05895d258884c1d5",
+      "versionDate": "2026-07-10T07:30:43.905Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "05963809cc39ccf0",
@@ -179,6 +187,14 @@
       "pullRequestNumber": 1
     },
     {
+      "contentHash": "084f6d3924ec5db0",
+      "versionDate": "2026-07-10T07:30:44.054Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
+    },
+    {
       "contentHash": "08c5d351bc9dcee8",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -211,12 +227,12 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "0b8d35a06b7c4580",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
+      "contentHash": "0abde619876bc8cf",
+      "versionDate": "2026-07-10T07:30:43.743Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "0d9cfd757ab7a80a",
@@ -244,14 +260,6 @@
     },
     {
       "contentHash": "0e8b3bfd110eb914",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "0f34db826575078c",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -363,15 +371,15 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "14b29bd592ba5b22",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
+      "contentHash": "145285e7402308be",
+      "versionDate": "2026-07-10T07:30:43.805Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
-      "contentHash": "14d71facf7503af4",
+      "contentHash": "14b29bd592ba5b22",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -443,14 +451,6 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "19cb9b45b16a7f3b",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "19e96c6434d31743",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -459,23 +459,7 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "19eb6aa2134cb98b",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "19ec63707d4eb4d1",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "19f0907742968693",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -497,6 +481,14 @@
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
       "pullRequestNumber": 1
+    },
+    {
+      "contentHash": "1b48c88aaf3a62b9",
+      "versionDate": "2026-07-10T07:30:43.023Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "1be4baa8756cbd90",
@@ -531,20 +523,12 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "1d996adc5e7c01f6",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "1dc0b5aa896103f9",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
+      "contentHash": "1cae4317bb50f50b",
+      "versionDate": "2026-07-10T07:30:44.198Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "1dc63d6f278f65c1",
@@ -731,14 +715,6 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "2656f14a5d6fb6f1",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "2729af6261eaac81",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -787,12 +763,12 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "2a7e62938db9f76f",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
+      "contentHash": "2b40044c6fd2baad",
+      "versionDate": "2026-07-10T07:30:44.264Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "2bae87a214b4bd11",
@@ -804,14 +780,6 @@
     },
     {
       "contentHash": "2c90007b8bddb800",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "2cf308c2ca50804c",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -835,6 +803,14 @@
       "pullRequestNumber": 1
     },
     {
+      "contentHash": "2da926ef6916e744",
+      "versionDate": "2026-07-10T07:30:44.383Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
+    },
+    {
       "contentHash": "2e0191d609a4b96e",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -844,14 +820,6 @@
     },
     {
       "contentHash": "2ea37b75ca6a57fb",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "2f80a0957f6a96f5",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -907,23 +875,7 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "31db84de9a158d89",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "3208b15174cb3e2e",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "32752528e4b788a7",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -1011,14 +963,6 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "3736a61bc88596e5",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "3739ea8b8070087c",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -1067,14 +1011,6 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "3997488d5536d1f6",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "399d01827ffc486d",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -1084,14 +1020,6 @@
     },
     {
       "contentHash": "3ab00fbd03817c24",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "3acf61bca3c840e5",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -1124,14 +1052,6 @@
     },
     {
       "contentHash": "3bb385a0e95bc7fe",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "3c435368b8abf281",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -1172,14 +1092,6 @@
     },
     {
       "contentHash": "3dd76c12d11e5270",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "3de8357c3d68cb6f",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -1259,14 +1171,6 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "4166e79c2653000f",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "416707fe57d0a653",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -1315,14 +1219,6 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "4485aceb85875b75",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "4526667fc8968d8c",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -1361,6 +1257,14 @@
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
       "pullRequestNumber": 1
+    },
+    {
+      "contentHash": "4630d44739483c76",
+      "versionDate": "2026-07-10T07:30:42.865Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "46518e479d5d008f",
@@ -1435,6 +1339,14 @@
       "pullRequestNumber": 1
     },
     {
+      "contentHash": "4b4321ed090c0dce",
+      "versionDate": "2026-07-10T07:30:44.141Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
+    },
+    {
       "contentHash": "4b998328d4d8581f",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -1475,6 +1387,14 @@
       "pullRequestNumber": 1
     },
     {
+      "contentHash": "4d3de8e24d52da3a",
+      "versionDate": "2026-07-10T07:30:44.295Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
+    },
+    {
       "contentHash": "4dbf119e5ef9840c",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -1484,22 +1404,6 @@
     },
     {
       "contentHash": "4e7eb98ab6f2c62c",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "4ed10d24deadd1fa",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "4f733efe8d0e26fe",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -1771,6 +1675,14 @@
       "pullRequestNumber": 1
     },
     {
+      "contentHash": "5e2b10505ea192f8",
+      "versionDate": "2026-07-10T07:30:44.112Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
+    },
+    {
       "contentHash": "5eb88a9454fae13e",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -1793,6 +1705,14 @@
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
       "pullRequestNumber": 1
+    },
+    {
+      "contentHash": "60323ebd37ca107d",
+      "versionDate": "2026-07-10T07:30:44.412Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "614f019a833b0a7a",
@@ -1995,6 +1915,14 @@
       "pullRequestNumber": 1
     },
     {
+      "contentHash": "6e2accd787f2cc20",
+      "versionDate": "2026-07-10T07:30:43.835Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
+    },
+    {
       "contentHash": "6e9c35fb74158ddc",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -2035,15 +1963,15 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "7001fb4862bd17cd",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
+      "contentHash": "70015e2bca4d8af7",
+      "versionDate": "2026-07-10T07:30:42.963Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
-      "contentHash": "70643741ceb553b7",
+      "contentHash": "7001fb4862bd17cd",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -2153,6 +2081,14 @@
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
       "pullRequestNumber": 1
+    },
+    {
+      "contentHash": "765d9a61fb48ffc6",
+      "versionDate": "2026-07-10T07:30:44.083Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "76de1bedd39342fb",
@@ -2323,15 +2259,15 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "7fc0f9ef8af78726",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
+      "contentHash": "7fa9f7f0c628ddcb",
+      "versionDate": "2026-07-10T07:30:42.733Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
-      "contentHash": "7ffb10600b0ac3d6",
+      "contentHash": "7fc0f9ef8af78726",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -2465,6 +2401,14 @@
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
       "pullRequestNumber": 1
+    },
+    {
+      "contentHash": "8c14643e910ab0ad",
+      "versionDate": "2026-07-10T07:30:44.231Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "8c84fe3939d6c3be",
@@ -2619,28 +2563,20 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "939dc7a51abd1cd9",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "9494bd514c9daf73",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "94f10795775eb7bf",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
       "pullRequestNumber": 1
+    },
+    {
+      "contentHash": "95d945f96bb457ad",
+      "versionDate": "2026-07-10T07:30:43.713Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "95dc8e0e5c7a92fe",
@@ -2651,12 +2587,12 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "95e782eff5cb2ab5",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
+      "contentHash": "96c8b735bba48602",
+      "versionDate": "2026-07-10T07:30:44.169Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "971a5cc1543bf0a4",
@@ -2683,7 +2619,7 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "979099d9c5da3f18",
+      "contentHash": "97a8d50461d62fc3",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -2691,12 +2627,12 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "97a8d50461d62fc3",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
+      "contentHash": "97b88d8f032489f7",
+      "versionDate": "2026-07-10T07:30:43.965Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "97c872befd3f45d2",
@@ -2803,6 +2739,14 @@
       "pullRequestNumber": 1
     },
     {
+      "contentHash": "9f66309b37938b2d",
+      "versionDate": "2026-07-10T07:30:42.933Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
+    },
+    {
       "contentHash": "9f7ab067a759ae0f",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -2907,14 +2851,6 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "a6677beb26ae912d",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "a68eb0e76c3a6610",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -2971,12 +2907,28 @@
       "pullRequestNumber": 1
     },
     {
+      "contentHash": "a8606b37921abfa0",
+      "versionDate": "2026-07-10T07:30:42.992Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
+    },
+    {
       "contentHash": "a893d5d65ede4fe9",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
       "pullRequestNumber": 1
+    },
+    {
+      "contentHash": "a93ffd7669197537",
+      "versionDate": "2026-07-10T07:30:44.324Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "a98179c1ee83d7b5",
@@ -2993,6 +2945,22 @@
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
       "pullRequestNumber": 1
+    },
+    {
+      "contentHash": "aaa746ab4dbbf6db",
+      "versionDate": "2026-07-10T07:30:42.768Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
+    },
+    {
+      "contentHash": "aabceefc3cd553a2",
+      "versionDate": "2026-07-10T07:30:44.024Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "ab01689c8cbf20a5",
@@ -3171,20 +3139,12 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "b30c88247b76c469",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "b3b6f735cc8c112c",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
+      "contentHash": "b34693308c2ca2fb",
+      "versionDate": "2026-07-10T07:30:44.354Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "b4dcfdebe4ff7eba",
@@ -3201,6 +3161,14 @@
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
       "pullRequestNumber": 1
+    },
+    {
+      "contentHash": "b50d1d336bb4a620",
+      "versionDate": "2026-07-10T07:30:42.798Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "b530e8eb260f8c20",
@@ -3251,23 +3219,7 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "b7c98f33ff0ee87a",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "b8a12dff13c69ee4",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "b90526afca19075a",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -3339,23 +3291,7 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "be4de9d575498d3b",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "be4ffa5d129460e3",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "be7e4e202ca9367f",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -3393,6 +3329,14 @@
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
       "pullRequestNumber": 1
+    },
+    {
+      "contentHash": "c0bed6238fccc002",
+      "versionDate": "2026-07-10T07:30:42.060Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "c0f7df0cbe8fcd51",
@@ -3459,23 +3403,15 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "c39fca5ca39eb789",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
+      "contentHash": "c402038b9a503ba6",
+      "versionDate": "2026-07-10T07:30:43.935Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "c41adcff9f39e803",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "c41f52ee4b1300d9",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -3524,14 +3460,6 @@
     },
     {
       "contentHash": "c6d0f88441b9f697",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "c70d456118ae438c",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -3779,14 +3707,6 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "d5d477530b862f51",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "d65b87e71a551825",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -3827,14 +3747,6 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "d83e101fb2513d3c",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "d94bb47d565834ca",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -3851,14 +3763,6 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "db0b66a3b544da53",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "db3e6d65cc9d9665",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -3867,15 +3771,15 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "dc0dd86178c04e7b",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
+      "contentHash": "db734c3cc66875d9",
+      "versionDate": "2026-07-10T07:30:43.994Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
-      "contentHash": "dc3a8d24ff6ba1f6",
+      "contentHash": "dc0dd86178c04e7b",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -3907,12 +3811,12 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "de765ebf1357cc14",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
+      "contentHash": "ded7f77f82e60608",
+      "versionDate": "2026-07-10T07:30:42.904Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "df1374bcd9dafd2a",
@@ -3980,14 +3884,6 @@
     },
     {
       "contentHash": "e118b0c3672cc406",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "e164de12cd8a81f4",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -4163,14 +4059,6 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "ec7b399a4ac2fdfa",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "ecd922fb8999eeff",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -4187,7 +4075,7 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "ed9fc9f7ecc088e2",
+      "contentHash": "ee25e162cbde2d29",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -4195,12 +4083,12 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "ee25e162cbde2d29",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
+      "contentHash": "ee46dc29c0cca3fd",
+      "versionDate": "2026-07-10T07:30:43.682Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "ee8854f93aa59701",
@@ -4315,6 +4203,14 @@
       "pullRequestNumber": 1
     },
     {
+      "contentHash": "f3785835209fed8b",
+      "versionDate": "2026-07-10T07:30:43.775Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
+    },
+    {
       "contentHash": "f3a6840466a3e928",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -4395,31 +4291,7 @@
       "pullRequestNumber": 1
     },
     {
-      "contentHash": "f71430bafc7707f9",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
       "contentHash": "f75f32e74b2a4a9e",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "f811117912ab76a9",
-      "versionDate": "2026-06-27T19:50:31-07:00",
-      "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
-      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
-      "pullRequestNumber": 1
-    },
-    {
-      "contentHash": "f886ee589a71f9ca",
       "versionDate": "2026-06-27T19:50:31-07:00",
       "commitSha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -4473,6 +4345,14 @@
       "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4465251ec2d23e3ae03b21c5bf54f4640da5e945",
       "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/1",
       "pullRequestNumber": 1
+    },
+    {
+      "contentHash": "fb2c25bdf4dac07c",
+      "versionDate": "2026-07-10T07:30:42.837Z",
+      "commitSha": "27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/27182d1c0e5a9d97e3a4beb8d93b708cb0ec6f67",
+      "pullRequestUrl": "https://github.com/providence-collective/coherence-thesis/pull/101",
+      "pullRequestNumber": 101
     },
     {
       "contentHash": "fc57a6bc609212e4",

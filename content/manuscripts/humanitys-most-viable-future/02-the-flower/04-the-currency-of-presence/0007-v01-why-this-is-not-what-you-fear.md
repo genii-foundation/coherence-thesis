@@ -12,14 +12,14 @@ sectionId: "v01-why-this-is-not-what-you-fear"
 title: "Why This Is Not What You Fear"
 sectionOrder: 7
 sourceDoc: "sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md"
-sourceHash: "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a"
-sourceParagraphStart: 726
-sourceParagraphEnd: 747
+sourceHash: "3da7fa35f688e0daf0afd8b6eaaa9de4f99be4800ebea07c5d72bd3a951c42e4"
+sourceParagraphStart: 610
+sourceParagraphEnd: 631
 ---
 
-It would be reasonable, reading this, to feel a chill. A system that measures the quality of human encounter and turns it into a kind of currency sounds, on its face, like the most total surveillance ever devised — a social credit score for the soul.
+It would be reasonable, reading this, to feel a chill. A system that measures the quality of human encounter and turns it into a kind of currency sounds, on its face, like the most total surveillance ever devised: a social credit score for the soul.
 
-This fear is correct about the danger and must be answered directly, not waved away. The answer is architectural, and it is the difference between a prison wall and the wall of a home.
+This fear is correct about the danger. The answer is architectural: the difference between a prison wall and the wall of a home.
 
 A social credit system has four features, and Providence inverts all four.
 
@@ -32,6 +32,6 @@ It is **held by the powerful** — stored in a central database the watched cann
 And it is **exclusionary** — a low score locks you out of life: travel, housing, work, food. This is the line that must never be crossed, and so it is written into the foundation as law: **the currency may open doors to greater trust, but it may never close the door to survival.** The floor of belonging — food, shelter, care, dignity, a place among others — is unconditional, and is never gated by any record. The currency can raise a ceiling. It can never lower a floor.
 
 
-These are not promises. Promises can be broken by whoever holds the system. They are **invariants** — constraints written into the protocol itself, such that violating them means the thing being run is no longer Providence, and anyone may say so out loud. Participation is always voluntary and revocable. The record is always yours, on your own device. There is no central authority and no central store. Anyone may leave at any time, carrying or destroying their record. And the protocol is open — a standard anyone may inspect, audit, or fork — owned by no one, precisely so that no one can take it over.
+These are not promises. Promises can be broken by whoever holds the system. They are **invariants**: constraints written into the protocol itself, such that violating them means the thing being run is no longer Providence, and anyone may say so out loud. Participation is always voluntary and revocable. The record is always yours, on your own device. There is no central authority and no central store. Anyone may leave at any time, carrying or destroying their record. And the protocol is open, a standard anyone may inspect, audit, or fork, owned by no one, precisely so that no one can take it over.
 
 A system you can read, hold, leave, and fork is not a cage. It is a tool. The whole of the design exists to keep it one.

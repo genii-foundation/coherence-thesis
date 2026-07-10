@@ -15,7 +15,7 @@ sourceDoc: "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md"
 sourceHash: "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d"
 sourceParagraphStart: 353
 sourceParagraphEnd: 370
-aliases: ["/manuscripts/wielding-intelligence/the-response/v02-the-response/","/manuscripts/wielding-intelligence/the-response/the-response/v02-the-response/"]
+aliases: ["/manuscripts/2/the-response/start/","/manuscripts/wielding-intelligence/the-response/the-response/v02-the-response/"]
 ---
 
 *Beneath every economy lies a culture. Beneath every culture lies a set of relationships. Beneath every relationship lies a nervous system. And beneath every enduring civilization lies a capacity for coherence.*

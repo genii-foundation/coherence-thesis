@@ -1,12 +1,12 @@
 [
   {
     "sectionId": "v01-orientation",
-    "contentHash": "19f0907742968693",
+    "contentHash": "c0bed6238fccc002",
     "title": "Orientation",
     "href": "/manuscripts/1/opening/orientation/",
     "chapterHref": "/manuscripts/1/opening/orientation/",
     "readerHref": "/manuscripts/1/opening/orientation/",
-    "audioVersionId": "v01-orientation-19f0907742968693",
+    "audioVersionId": "v01-orientation-c0bed6238fccc002",
     "paragraphs": [
       {
         "paragraphId": "p-1",
@@ -16,12 +16,12 @@
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "bba3cbe8a4995210"
+        "contentHash": "4c8c0c3b7bdc0e85"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "326c91a917649b41"
+        "contentHash": "0b291cd0691beaf5"
       },
       {
         "paragraphId": "p-4",
@@ -47,12 +47,12 @@
   },
   {
     "sectionId": "v01-on-form-timing-and-why-this-book-exists",
-    "contentHash": "1d996adc5e7c01f6",
+    "contentHash": "7fa9f7f0c628ddcb",
     "title": "On Form, Timing, and Why This Book Exists",
     "href": "/manuscripts/1/opening/on-form-timing-and-why-this-book-exists/",
     "chapterHref": "/manuscripts/1/opening/on-form-timing-and-why-this-book-exists/",
     "readerHref": "/manuscripts/1/opening/on-form-timing-and-why-this-book-exists/",
-    "audioVersionId": "v01-on-form-timing-and-why-this-book-exists-1d996adc5e7c01f6",
+    "audioVersionId": "v01-on-form-timing-and-why-this-book-exists-7fa9f7f0c628ddcb",
     "paragraphs": [
       {
         "paragraphId": "p-1",
@@ -62,7 +62,7 @@
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "089be0e8d1b323c7"
+        "contentHash": "2d5158d52e566467"
       },
       {
         "paragraphId": "p-3",
@@ -72,12 +72,12 @@
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "a039816d108adac6"
+        "contentHash": "dd68021f340e9e59"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "497dcf530cc0a1c9"
+        "contentHash": "a8c202932b6701f3"
       },
       {
         "paragraphId": "p-6",
@@ -87,18 +87,18 @@
       {
         "paragraphId": "p-7",
         "anchor": "p-7",
-        "contentHash": "d4a940b12a775f2c"
+        "contentHash": "e1e1b61533c177f8"
       }
     ]
   },
   {
     "sectionId": "v01-a-note-on-compression",
-    "contentHash": "14d71facf7503af4",
+    "contentHash": "aaa746ab4dbbf6db",
     "title": "A Note on Compression",
     "href": "/manuscripts/1/opening/a-note-on-compression/",
     "chapterHref": "/manuscripts/1/opening/a-note-on-compression/",
     "readerHref": "/manuscripts/1/opening/a-note-on-compression/",
-    "audioVersionId": "v01-a-note-on-compression-14d71facf7503af4",
+    "audioVersionId": "v01-a-note-on-compression-aaa746ab4dbbf6db",
     "paragraphs": [
       {
         "paragraphId": "p-1",
@@ -108,124 +108,94 @@
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "e825891f7b482402"
+        "contentHash": "c71f219814c87d10"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "253952cd98bb01c2"
+        "contentHash": "2b8621fa7a4e7046"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "2b8621fa7a4e7046"
+        "contentHash": "7dde160712918089"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "7dde160712918089"
+        "contentHash": "e674e3d3d811052f"
       },
       {
         "paragraphId": "p-6",
         "anchor": "p-6",
-        "contentHash": "e674e3d3d811052f"
+        "contentHash": "008c6cd455ba09bb"
       },
       {
         "paragraphId": "p-7",
         "anchor": "p-7",
-        "contentHash": "bede7d084ffa2670"
+        "contentHash": "6af0b60e5e29c071"
       },
       {
         "paragraphId": "p-8",
         "anchor": "p-8",
-        "contentHash": "d86db3138bf785a9"
+        "contentHash": "36850b447f3f9ca3"
       },
       {
         "paragraphId": "p-9",
         "anchor": "p-9",
-        "contentHash": "6af0b60e5e29c071"
-      },
-      {
-        "paragraphId": "p-10",
-        "anchor": "p-10",
-        "contentHash": "36850b447f3f9ca3"
-      },
-      {
-        "paragraphId": "p-11",
-        "anchor": "p-11",
-        "contentHash": "18aca9b257157e92"
+        "contentHash": "ae18e6de9b412ab2"
       }
     ]
   },
   {
     "sectionId": "v01-how-this-book-is-structured",
-    "contentHash": "1dc0b5aa896103f9",
+    "contentHash": "b50d1d336bb4a620",
     "title": "How This Book Is Structured",
     "href": "/manuscripts/1/opening/how-this-book-is-structured/",
     "chapterHref": "/manuscripts/1/opening/how-this-book-is-structured/",
     "readerHref": "/manuscripts/1/opening/how-this-book-is-structured/",
-    "audioVersionId": "v01-how-this-book-is-structured-1dc0b5aa896103f9",
+    "audioVersionId": "v01-how-this-book-is-structured-b50d1d336bb4a620",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "db7589d9f4503b34"
+        "contentHash": "49331655a4b7f98e"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "396f3493b94042d9"
+        "contentHash": "5f4efe9601d68350"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "286bf5b4249f11e0"
+        "contentHash": "0c74e35a0217685a"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "4b28398ac3de040b"
+        "contentHash": "14275d75ffb55830"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "82ad26e41b66dc9d"
+        "contentHash": "918895016ddc1d1a"
       },
       {
         "paragraphId": "p-6",
         "anchor": "p-6",
-        "contentHash": "755d49861013f775"
-      },
-      {
-        "paragraphId": "p-7",
-        "anchor": "p-7",
-        "contentHash": "89e47c4cbc5bc836"
-      },
-      {
-        "paragraphId": "p-8",
-        "anchor": "p-8",
-        "contentHash": "54093359e2287751"
-      },
-      {
-        "paragraphId": "p-9",
-        "anchor": "p-9",
-        "contentHash": "3ac625cc9d8f2946"
-      },
-      {
-        "paragraphId": "p-10",
-        "anchor": "p-10",
         "contentHash": "45bacefe504c2b11"
       }
     ]
   },
   {
     "sectionId": "v01-the-seed",
-    "contentHash": "19eb6aa2134cb98b",
+    "contentHash": "fb2c25bdf4dac07c",
     "title": "The Seed",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
-    "audioVersionId": "v01-the-seed-19eb6aa2134cb98b",
+    "audioVersionId": "v01-the-seed-fb2c25bdf4dac07c",
     "paragraphs": [
       {
         "paragraphId": "p-1",
@@ -235,17 +205,17 @@
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "2da68a097766a9cc"
+        "contentHash": "7fe2945c753d3dde"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "9d38798e1c7f139f"
+        "contentHash": "ccd6d65210f2f6f6"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "832ae56e0d68f2ff"
+        "contentHash": "0e319f5118d3b2db"
       },
       {
         "paragraphId": "p-5",
@@ -260,7 +230,7 @@
       {
         "paragraphId": "p-7",
         "anchor": "p-7",
-        "contentHash": "737aed132ef4b3ff"
+        "contentHash": "9d11d28652d9c043"
       },
       {
         "paragraphId": "p-8",
@@ -270,12 +240,12 @@
       {
         "paragraphId": "p-9",
         "anchor": "p-9",
-        "contentHash": "772094d5fe8d0cf8"
+        "contentHash": "0223c17139bb2fe0"
       },
       {
         "paragraphId": "p-10",
         "anchor": "p-10",
-        "contentHash": "7e11163434a081d4"
+        "contentHash": "d9cba46ef4698017"
       },
       {
         "paragraphId": "p-11",
@@ -291,440 +261,275 @@
   },
   {
     "sectionId": "v01-taking-pause-between-seed-and-sprout",
-    "contentHash": "19cb9b45b16a7f3b",
+    "contentHash": "4630d44739483c76",
     "title": "Taking Pause Between Seed and Sprout",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/taking-pause-between-seed-and-sprout/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/taking-pause-between-seed-and-sprout/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/taking-pause-between-seed-and-sprout/",
-    "audioVersionId": "v01-taking-pause-between-seed-and-sprout-19cb9b45b16a7f3b",
+    "audioVersionId": "v01-taking-pause-between-seed-and-sprout-4630d44739483c76",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "38c1a5bc5a7cf274"
+        "contentHash": "c47e10bf8eea9adf"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "f09eaea2f053ca75"
+        "contentHash": "f7cce098950ee01f"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "f7cce098950ee01f"
+        "contentHash": "0b055bcdb92ea58a"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "8f131ce0fdef7670"
+        "contentHash": "fffa97aabe2c4795"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "252c553646b8e23b"
+        "contentHash": "3d7ab892d8cefc70"
       },
       {
         "paragraphId": "p-6",
         "anchor": "p-6",
-        "contentHash": "e9440f1c182b6715"
+        "contentHash": "42788cbdb143737f"
       },
       {
         "paragraphId": "p-7",
         "anchor": "p-7",
-        "contentHash": "fffa97aabe2c4795"
+        "contentHash": "a8a83544634684bc"
       },
       {
         "paragraphId": "p-8",
         "anchor": "p-8",
-        "contentHash": "e668ee668b03cc9e"
+        "contentHash": "2a177308a58f0a5a"
       },
       {
         "paragraphId": "p-9",
         "anchor": "p-9",
-        "contentHash": "1d6768e5faf4a937"
+        "contentHash": "35f30988cd68ad5f"
       },
       {
         "paragraphId": "p-10",
         "anchor": "p-10",
-        "contentHash": "4ea044b5c18b4dcc"
+        "contentHash": "50a799991b3e8473"
       },
       {
         "paragraphId": "p-11",
         "anchor": "p-11",
-        "contentHash": "1af84f8cd24f4662"
+        "contentHash": "dc1d657392b76eab"
       },
       {
         "paragraphId": "p-12",
         "anchor": "p-12",
-        "contentHash": "eafa50f373f13dba"
-      },
-      {
-        "paragraphId": "p-13",
-        "anchor": "p-13",
-        "contentHash": "87b8cf53b7671436"
-      },
-      {
-        "paragraphId": "p-14",
-        "anchor": "p-14",
-        "contentHash": "b584395913a4f703"
-      },
-      {
-        "paragraphId": "p-15",
-        "anchor": "p-15",
-        "contentHash": "2a177308a58f0a5a"
-      },
-      {
-        "paragraphId": "p-16",
-        "anchor": "p-16",
-        "contentHash": "3fdaa9d33cf065ab"
-      },
-      {
-        "paragraphId": "p-17",
-        "anchor": "p-17",
-        "contentHash": "bb58f2c93e0ed7ac"
-      },
-      {
-        "paragraphId": "p-18",
-        "anchor": "p-18",
-        "contentHash": "9b970beba8ebfcf5"
-      },
-      {
-        "paragraphId": "p-19",
-        "anchor": "p-19",
-        "contentHash": "9793841147adf9c4"
-      },
-      {
-        "paragraphId": "p-20",
-        "anchor": "p-20",
-        "contentHash": "890015c9b9f63604"
-      },
-      {
-        "paragraphId": "p-21",
-        "anchor": "p-21",
         "contentHash": "43e84f7f51d375ec"
       }
     ]
   },
   {
     "sectionId": "v01-why-this-is-happening-and-why-it-changes-everything",
-    "contentHash": "be4de9d575498d3b",
+    "contentHash": "ded7f77f82e60608",
     "title": "Why This Is Happening, and Why It Changes Everything",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/why-this-is-happening-and-why-it-changes-everything/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/why-this-is-happening-and-why-it-changes-everything/",
-    "audioVersionId": "v01-why-this-is-happening-and-why-it-changes-everything-be4de9d575498d3b",
+    "audioVersionId": "v01-why-this-is-happening-and-why-it-changes-everything-ded7f77f82e60608",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "f4f08b8d682445d4"
+        "contentHash": "f36103fa85997bec"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "41af9fd7e037b2f2"
+        "contentHash": "9713bca734bad955"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "f16cceab835d04eb"
+        "contentHash": "dd088be2d0ae218c"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "8572239ea4d559a6"
+        "contentHash": "93c444a3f5d9592f"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "577a19155ebac075"
+        "contentHash": "afbc06216cde7a49"
       },
       {
         "paragraphId": "p-6",
         "anchor": "p-6",
-        "contentHash": "1d90b006b5626c1a"
+        "contentHash": "f328ad4785df9806"
       },
       {
         "paragraphId": "p-7",
         "anchor": "p-7",
-        "contentHash": "cf2fe65323362592"
+        "contentHash": "a5eb252bc0e9a1dd"
       },
       {
         "paragraphId": "p-8",
         "anchor": "p-8",
-        "contentHash": "61b5f050172d5a4f"
+        "contentHash": "9b44aa97fbef93cd"
       },
       {
         "paragraphId": "p-9",
         "anchor": "p-9",
-        "contentHash": "93c444a3f5d9592f"
+        "contentHash": "e4e5a28194fe1ca8"
       },
       {
         "paragraphId": "p-10",
         "anchor": "p-10",
-        "contentHash": "12da83346346e556"
+        "contentHash": "009d70f269c59b2c"
       },
       {
         "paragraphId": "p-11",
         "anchor": "p-11",
-        "contentHash": "f92625d7e7d5c01f"
+        "contentHash": "3f34784bf8edfae7"
       },
       {
         "paragraphId": "p-12",
         "anchor": "p-12",
-        "contentHash": "0909305622631b26"
+        "contentHash": "5cb08f6c1b9fe115"
       },
       {
         "paragraphId": "p-13",
         "anchor": "p-13",
-        "contentHash": "bca88b1abd385eac"
+        "contentHash": "10410315b8334659"
       },
       {
         "paragraphId": "p-14",
         "anchor": "p-14",
-        "contentHash": "380f25cc215f813a"
+        "contentHash": "53184fb4449047f9"
       },
       {
         "paragraphId": "p-15",
         "anchor": "p-15",
-        "contentHash": "129336f3c4ea0ba6"
+        "contentHash": "9e4f78ce726746e5"
       },
       {
         "paragraphId": "p-16",
         "anchor": "p-16",
-        "contentHash": "9b44aa97fbef93cd"
+        "contentHash": "4d7fa9994faa2ca0"
       },
       {
         "paragraphId": "p-17",
         "anchor": "p-17",
-        "contentHash": "e4e5a28194fe1ca8"
+        "contentHash": "fed463b468045859"
       },
       {
         "paragraphId": "p-18",
         "anchor": "p-18",
-        "contentHash": "009d70f269c59b2c"
+        "contentHash": "34b1c6fcd1644c41"
       },
       {
         "paragraphId": "p-19",
         "anchor": "p-19",
-        "contentHash": "3f34784bf8edfae7"
+        "contentHash": "15efde89502d07cc"
       },
       {
         "paragraphId": "p-20",
         "anchor": "p-20",
-        "contentHash": "f7354d559bf50381"
+        "contentHash": "2f4be2d546e69b8a"
       },
       {
         "paragraphId": "p-21",
         "anchor": "p-21",
-        "contentHash": "379f29920b15748a"
+        "contentHash": "11af4e8d50df799d"
       },
       {
         "paragraphId": "p-22",
         "anchor": "p-22",
-        "contentHash": "689d10250a963c09"
+        "contentHash": "581239dc7d731ef7"
       },
       {
         "paragraphId": "p-23",
         "anchor": "p-23",
-        "contentHash": "10410315b8334659"
+        "contentHash": "aaf1d4c3c01003e2"
       },
       {
         "paragraphId": "p-24",
         "anchor": "p-24",
-        "contentHash": "53184fb4449047f9"
+        "contentHash": "cd7b050d939ce8d5"
       },
       {
         "paragraphId": "p-25",
         "anchor": "p-25",
-        "contentHash": "9e4f78ce726746e5"
+        "contentHash": "c89a0b11ac8baed6"
       },
       {
         "paragraphId": "p-26",
         "anchor": "p-26",
-        "contentHash": "69ec3784b90e27f5"
+        "contentHash": "bcffb8c5528c1ad3"
       },
       {
         "paragraphId": "p-27",
         "anchor": "p-27",
-        "contentHash": "4dd29c03ff2054b9"
-      },
-      {
-        "paragraphId": "p-28",
-        "anchor": "p-28",
-        "contentHash": "2cb29740d82a1bf1"
-      },
-      {
-        "paragraphId": "p-29",
-        "anchor": "p-29",
-        "contentHash": "fed463b468045859"
-      },
-      {
-        "paragraphId": "p-30",
-        "anchor": "p-30",
-        "contentHash": "e17b15816791706c"
-      },
-      {
-        "paragraphId": "p-31",
-        "anchor": "p-31",
-        "contentHash": "48c02bdd67ef3df2"
-      },
-      {
-        "paragraphId": "p-32",
-        "anchor": "p-32",
-        "contentHash": "a0958eb49859f55e"
-      },
-      {
-        "paragraphId": "p-33",
-        "anchor": "p-33",
-        "contentHash": "5ebb0eb7ff2114f0"
-      },
-      {
-        "paragraphId": "p-34",
-        "anchor": "p-34",
-        "contentHash": "40c6daaf01f6ca7b"
-      },
-      {
-        "paragraphId": "p-35",
-        "anchor": "p-35",
-        "contentHash": "34a5a3876e8c87ad"
-      },
-      {
-        "paragraphId": "p-36",
-        "anchor": "p-36",
-        "contentHash": "01560dd6310476da"
-      },
-      {
-        "paragraphId": "p-37",
-        "anchor": "p-37",
-        "contentHash": "8d346ee8961e32e0"
-      },
-      {
-        "paragraphId": "p-38",
-        "anchor": "p-38",
-        "contentHash": "d038cb3c95ed2968"
-      },
-      {
-        "paragraphId": "p-39",
-        "anchor": "p-39",
-        "contentHash": "fce9097bf3323ab9"
-      },
-      {
-        "paragraphId": "p-40",
-        "anchor": "p-40",
-        "contentHash": "6ae6e6f92365627f"
-      },
-      {
-        "paragraphId": "p-41",
-        "anchor": "p-41",
-        "contentHash": "aaf1d4c3c01003e2"
-      },
-      {
-        "paragraphId": "p-42",
-        "anchor": "p-42",
-        "contentHash": "cd7b050d939ce8d5"
-      },
-      {
-        "paragraphId": "p-43",
-        "anchor": "p-43",
-        "contentHash": "9fafd9068b6e73c5"
-      },
-      {
-        "paragraphId": "p-44",
-        "anchor": "p-44",
-        "contentHash": "5273a2b8cd5c555a"
-      },
-      {
-        "paragraphId": "p-45",
-        "anchor": "p-45",
-        "contentHash": "bcffb8c5528c1ad3"
-      },
-      {
-        "paragraphId": "p-46",
-        "anchor": "p-46",
         "contentHash": "5b8246e914be55de"
       }
     ]
   },
   {
     "sectionId": "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
-    "contentHash": "f71430bafc7707f9",
+    "contentHash": "9f66309b37938b2d",
     "title": "On Scope, Constraint, and What This Argument Does Not Claim",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/on-scope-constraint-and-what-this-argument-does-not-claim/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/#v01-on-scope-constraint-and-what-this-argument-does-not-claim",
-    "audioVersionId": "v01-on-scope-constraint-and-what-this-argument-does-not-claim-f71430bafc7707f9",
+    "audioVersionId": "v01-on-scope-constraint-and-what-this-argument-does-not-claim-9f66309b37938b2d",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "db10ed8d1762688a"
+        "contentHash": "bb099112e68b13ab"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "7ee5d4e63663c794"
+        "contentHash": "a7793572cc3af5e1"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "d6aff17e749b312b"
+        "contentHash": "9464f87b937b6938"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "e95eb26e0616daea"
+        "contentHash": "4e349d508a82c74c"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "1c97a35d424355c9"
-      },
-      {
-        "paragraphId": "p-6",
-        "anchor": "p-6",
-        "contentHash": "b370ae502726f5b7"
-      },
-      {
-        "paragraphId": "p-7",
-        "anchor": "p-7",
-        "contentHash": "4bc0b57969744cc6"
-      },
-      {
-        "paragraphId": "p-8",
-        "anchor": "p-8",
-        "contentHash": "80de4e7243cc2144"
-      },
-      {
-        "paragraphId": "p-9",
-        "anchor": "p-9",
-        "contentHash": "f184783362b6b990"
-      },
-      {
-        "paragraphId": "p-10",
-        "anchor": "p-10",
-        "contentHash": "9237c2bf87f3cbbb"
+        "contentHash": "4159c0fb7f20b2bd"
       }
     ]
   },
   {
     "sectionId": "v01-on-reductionism",
-    "contentHash": "b3b6f735cc8c112c",
+    "contentHash": "70015e2bca4d8af7",
     "title": "On Reductionism",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/on-reductionism/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/#v01-on-reductionism",
-    "audioVersionId": "v01-on-reductionism-b3b6f735cc8c112c",
+    "audioVersionId": "v01-on-reductionism-70015e2bca4d8af7",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "58b6582d511bac9c"
+        "contentHash": "4afeefec4cdb5591"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "4f867b563da90c68"
+        "contentHash": "a79606a83555789b"
       },
       {
         "paragraphId": "p-3",
@@ -734,76 +539,66 @@
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "d47bbb1d030a7129"
+        "contentHash": "fa9a73e1602f327b"
       }
     ]
   },
   {
     "sectionId": "v01-on-historical-and-structural-causality",
-    "contentHash": "c39fca5ca39eb789",
+    "contentHash": "a8606b37921abfa0",
     "title": "On Historical and Structural Causality",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/on-historical-and-structural-causality/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/#v01-on-historical-and-structural-causality",
-    "audioVersionId": "v01-on-historical-and-structural-causality-c39fca5ca39eb789",
+    "audioVersionId": "v01-on-historical-and-structural-causality-a8606b37921abfa0",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "3d04de514829ba80"
+        "contentHash": "a9f5ac6b52268545"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "1b41b005f14b9750"
+        "contentHash": "2c5583eab1521f48"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "5623eb1a00f79338"
-      },
-      {
-        "paragraphId": "p-4",
-        "anchor": "p-4",
-        "contentHash": "a6a492d7920debba"
+        "contentHash": "545e5aaf4a7b3139"
       }
     ]
   },
   {
     "sectionId": "v01-on-measurement-and-falsifiability",
-    "contentHash": "3997488d5536d1f6",
+    "contentHash": "1b48c88aaf3a62b9",
     "title": "On Measurement and Falsifiability",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/on-measurement-and-falsifiability/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/#v01-on-measurement-and-falsifiability",
-    "audioVersionId": "v01-on-measurement-and-falsifiability-3997488d5536d1f6",
+    "audioVersionId": "v01-on-measurement-and-falsifiability-1b48c88aaf3a62b9",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "6a747a5b4b474e3a"
+        "contentHash": "aad64e102f2e972b"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "40e7da708778c3b1"
+        "contentHash": "6d0cc92d5ab37b8f"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "b42d3d46846cc1f3"
-      },
-      {
-        "paragraphId": "p-4",
-        "anchor": "p-4",
-        "contentHash": "e393a84085b49d99"
+        "contentHash": "9eef76b7d9ae74d0"
       }
     ]
   },
   {
     "sectionId": "v01-what-this-section-has-and-has-not-established",
     "contentHash": "f4d8ca8bf443a34f",
-    "title": "What This Section Has — and Has Not — Established",
+    "title": "What This Section Has and Has Not Established",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/what-this-section-has-and-has-not-established/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/#v01-what-this-section-has-and-has-not-established",
@@ -828,22 +623,22 @@
   },
   {
     "sectionId": "v01-how-coherence-becomes-structure",
-    "contentHash": "d83e101fb2513d3c",
+    "contentHash": "ee46dc29c0cca3fd",
     "title": "How Coherence Becomes Structure",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/how-coherence-becomes-structure/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-how-coherence-becomes-structure",
-    "audioVersionId": "v01-how-coherence-becomes-structure-d83e101fb2513d3c",
+    "audioVersionId": "v01-how-coherence-becomes-structure-ee46dc29c0cca3fd",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "340bf31cd478df06"
+        "contentHash": "8e8c2db51ea5ee41"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "901a40d7c4d79e50"
+        "contentHash": "d7f6dc43679673b7"
       },
       {
         "paragraphId": "p-3",
@@ -853,75 +648,70 @@
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "e5aabd5e46d2c481"
-      },
-      {
-        "paragraphId": "p-5",
-        "anchor": "p-5",
-        "contentHash": "5acefa4f00bad52a"
+        "contentHash": "d00c45f5ac977f79"
       }
     ]
   },
   {
     "sectionId": "v01-from-extraction-to-regeneration",
-    "contentHash": "4ed10d24deadd1fa",
+    "contentHash": "95d945f96bb457ad",
     "title": "From Extraction to Regeneration",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/from-extraction-to-regeneration/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-from-extraction-to-regeneration",
-    "audioVersionId": "v01-from-extraction-to-regeneration-4ed10d24deadd1fa",
+    "audioVersionId": "v01-from-extraction-to-regeneration-95d945f96bb457ad",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "a886002b05a5b15a"
+        "contentHash": "7b9afd84164d1715"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "f851243cfed6cf66"
+        "contentHash": "0cf506bf29198c37"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "f5abbcd34adfc95b"
+        "contentHash": "211bd739285f9437"
       }
     ]
   },
   {
     "sectionId": "v01-intelligence-as-an-emergent-property",
-    "contentHash": "3de8357c3d68cb6f",
+    "contentHash": "0abde619876bc8cf",
     "title": "Intelligence as an Emergent Property",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/intelligence-as-an-emergent-property/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-intelligence-as-an-emergent-property",
-    "audioVersionId": "v01-intelligence-as-an-emergent-property-3de8357c3d68cb6f",
+    "audioVersionId": "v01-intelligence-as-an-emergent-property-0abde619876bc8cf",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "54b6fa20acfc5123"
+        "contentHash": "3dfecf55c71c987a"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "670bdbef6a72adc4"
+        "contentHash": "54f5c290f4d69cda"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "d9904bc19e665c54"
+        "contentHash": "0e76e37d3fe69e3e"
       }
     ]
   },
   {
     "sectionId": "v01-governance-as-regulation-not-control",
-    "contentHash": "b7c98f33ff0ee87a",
+    "contentHash": "f3785835209fed8b",
     "title": "Governance as Regulation, Not Control",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/governance-as-regulation-not-control/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-governance-as-regulation-not-control",
-    "audioVersionId": "v01-governance-as-regulation-not-control-b7c98f33ff0ee87a",
+    "audioVersionId": "v01-governance-as-regulation-not-control-f3785835209fed8b",
     "paragraphs": [
       {
         "paragraphId": "p-1",
@@ -931,28 +721,28 @@
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "af85f46f4d42abc9"
+        "contentHash": "e9850c96bc64721a"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "3da0690fb156b298"
+        "contentHash": "d8d101d0421cc3b2"
       }
     ]
   },
   {
     "sectionId": "v01-intelligence-we-now-build",
-    "contentHash": "3c435368b8abf281",
+    "contentHash": "145285e7402308be",
     "title": "Intelligence We Now Build",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/intelligence-we-now-build/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-intelligence-we-now-build",
-    "audioVersionId": "v01-intelligence-we-now-build-3c435368b8abf281",
+    "audioVersionId": "v01-intelligence-we-now-build-145285e7402308be",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "6e35416171287c07"
+        "contentHash": "f0d1e0d7a3f2178d"
       },
       {
         "paragraphId": "p-2",
@@ -962,7 +752,7 @@
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "d40ce8406efa6278"
+        "contentHash": "97c8bfe7e8888402"
       },
       {
         "paragraphId": "p-4",
@@ -972,7 +762,7 @@
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "a2440a180bab5ea2"
+        "contentHash": "bb49615b907b059e"
       },
       {
         "paragraphId": "p-6",
@@ -982,90 +772,85 @@
       {
         "paragraphId": "p-7",
         "anchor": "p-7",
-        "contentHash": "493c11e32352de84"
+        "contentHash": "1f7cf04c046f155b"
       }
     ]
   },
   {
     "sectionId": "v01-a-horizon-not-yet-a-blueprint",
-    "contentHash": "31db84de9a158d89",
+    "contentHash": "6e2accd787f2cc20",
     "title": "A Horizon, Not Yet a Blueprint",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/a-horizon-not-yet-a-blueprint/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-a-horizon-not-yet-a-blueprint",
-    "audioVersionId": "v01-a-horizon-not-yet-a-blueprint-31db84de9a158d89",
+    "audioVersionId": "v01-a-horizon-not-yet-a-blueprint-6e2accd787f2cc20",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "ee7aee753167dd27"
+        "contentHash": "b48aa042f7a10182"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "677a5f22236a3aee"
+        "contentHash": "1c27268f351d91bc"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "53d391119f54859e"
+        "contentHash": "cfbc85481477c3cc"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "990b7ced402547fc"
+        "contentHash": "257d0d8d4a1fcd7e"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "822de1ef31ee9a37"
-      },
-      {
-        "paragraphId": "p-6",
-        "anchor": "p-6",
         "contentHash": "5b8246e914be55de"
       }
     ]
   },
   {
     "sectionId": "v01-taking-pause-in-the-soil",
-    "contentHash": "70643741ceb553b7",
+    "contentHash": "0421571fb55ad2b8",
     "title": "Taking Pause in the Soil",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/taking-pause-in-the-soil/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/taking-pause-in-the-soil/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/taking-pause-in-the-soil/",
-    "audioVersionId": "v01-taking-pause-in-the-soil-70643741ceb553b7",
+    "audioVersionId": "v01-taking-pause-in-the-soil-0421571fb55ad2b8",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "2229776c6c9d991a"
+        "contentHash": "437f3c0da2f842de"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "80c6853e2fa3d0d5"
+        "contentHash": "24a1fb9e17b68dcd"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "a81ef3786251856b"
+        "contentHash": "77607ab822f317f4"
       }
     ]
   },
   {
     "sectionId": "v01-the-human-being-reconsidered",
-    "contentHash": "ed9fc9f7ecc088e2",
+    "contentHash": "05895d258884c1d5",
     "title": "The Human Being Reconsidered",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/the-human-being-reconsidered/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-the-human-being-reconsidered",
-    "audioVersionId": "v01-the-human-being-reconsidered-ed9fc9f7ecc088e2",
+    "audioVersionId": "v01-the-human-being-reconsidered-05895d258884c1d5",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "4009f9fc5b74fbe9"
+        "contentHash": "65cdd38066fa47cb"
       },
       {
         "paragraphId": "p-2",
@@ -1075,12 +860,12 @@
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "fd25331452aaa27a"
+        "contentHash": "c86f763a84cbfec2"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "6a1629293bb612b3"
+        "contentHash": "75e0d167207074d5"
       },
       {
         "paragraphId": "p-5",
@@ -1091,12 +876,12 @@
   },
   {
     "sectionId": "v01-intelligence-meaning-trust",
-    "contentHash": "a6677beb26ae912d",
+    "contentHash": "c402038b9a503ba6",
     "title": "Intelligence, Meaning, Trust",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/intelligence-meaning-trust/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-intelligence-meaning-trust",
-    "audioVersionId": "v01-intelligence-meaning-trust-a6677beb26ae912d",
+    "audioVersionId": "v01-intelligence-meaning-trust-c402038b9a503ba6",
     "paragraphs": [
       {
         "paragraphId": "p-1",
@@ -1106,17 +891,17 @@
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "d28aab56d277ef23"
+        "contentHash": "63b9d32ba541ad21"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "5245413ccc9c18bf"
+        "contentHash": "0df1feaecf30b67f"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "a20dd3b70a36ba0f"
+        "contentHash": "c5deade0075010fc"
       },
       {
         "paragraphId": "p-5",
@@ -1127,38 +912,38 @@
   },
   {
     "sectionId": "v01-consciousness-and-participation",
-    "contentHash": "b90526afca19075a",
+    "contentHash": "97b88d8f032489f7",
     "title": "Consciousness and Participation",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/consciousness-and-participation/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-consciousness-and-participation",
-    "audioVersionId": "v01-consciousness-and-participation-b90526afca19075a",
+    "audioVersionId": "v01-consciousness-and-participation-97b88d8f032489f7",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "a1e0c8a409276b9a"
+        "contentHash": "33c7ba92b125b0d2"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "52a6955fb3b473ee"
+        "contentHash": "e4948e41cedc92f5"
       }
     ]
   },
   {
     "sectionId": "v01-civilization-as-a-living-process",
-    "contentHash": "4485aceb85875b75",
+    "contentHash": "db734c3cc66875d9",
     "title": "Civilization as a Living Process",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/civilization-as-a-living-process/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-civilization-as-a-living-process",
-    "audioVersionId": "v01-civilization-as-a-living-process-4485aceb85875b75",
+    "audioVersionId": "v01-civilization-as-a-living-process-db734c3cc66875d9",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "54843caa78847446"
+        "contentHash": "312fdf8d79c49bde"
       },
       {
         "paragraphId": "p-2",
@@ -1168,49 +953,44 @@
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "89d80eebdefdd077"
+        "contentHash": "332c35d91a1aa840"
       }
     ]
   },
   {
     "sectionId": "v01-reverence-arrived-at-honestly",
-    "contentHash": "2656f14a5d6fb6f1",
+    "contentHash": "aabceefc3cd553a2",
     "title": "Reverence, Arrived at Honestly",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/reverence-arrived-at-honestly/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-reverence-arrived-at-honestly",
-    "audioVersionId": "v01-reverence-arrived-at-honestly-2656f14a5d6fb6f1",
+    "audioVersionId": "v01-reverence-arrived-at-honestly-aabceefc3cd553a2",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "28655de64637319a"
+        "contentHash": "3db1f555bb1749be"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "444d556a54b14062"
+        "contentHash": "1be1a677d125d30a"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "1f1e118b76b08833"
-      },
-      {
-        "paragraphId": "p-4",
-        "anchor": "p-4",
-        "contentHash": "7bb1907b4a00f6ab"
+        "contentHash": "f9f3f3be4b996440"
       }
     ]
   },
   {
     "sectionId": "v01-why-this-is-necessity-not-preference",
-    "contentHash": "2cf308c2ca50804c",
+    "contentHash": "084f6d3924ec5db0",
     "title": "Why This Is Necessity, Not Preference",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/why-this-is-necessity-not-preference/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-why-this-is-necessity-not-preference",
-    "audioVersionId": "v01-why-this-is-necessity-not-preference-2cf308c2ca50804c",
+    "audioVersionId": "v01-why-this-is-necessity-not-preference-084f6d3924ec5db0",
     "paragraphs": [
       {
         "paragraphId": "p-1",
@@ -1220,89 +1000,69 @@
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "1e84869da203f7b3"
+        "contentHash": "c058c7117c077085"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "4f61f0edcb9f2de6"
+        "contentHash": "d61dedf0c4c8d412"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "d1728eda22c8f6e6"
+        "contentHash": "5da0cb0a9df49bec"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "9160b416dd8db846"
-      },
-      {
-        "paragraphId": "p-6",
-        "anchor": "p-6",
-        "contentHash": "2bd2c62058cc20e0"
-      },
-      {
-        "paragraphId": "p-7",
-        "anchor": "p-7",
-        "contentHash": "656e925e3821f27c"
+        "contentHash": "a73f2f73beb6657c"
       }
     ]
   },
   {
     "sectionId": "v01-into-the-flower",
-    "contentHash": "3736a61bc88596e5",
+    "contentHash": "765d9a61fb48ffc6",
     "title": "Into the Flower",
     "href": "/manuscripts/1/seed-sprout-stem-and-soil/into-the-flower/",
     "chapterHref": "/manuscripts/1/seed-sprout-stem-and-soil/into-the-flower/",
     "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/into-the-flower/",
-    "audioVersionId": "v01-into-the-flower-3736a61bc88596e5",
+    "audioVersionId": "v01-into-the-flower-765d9a61fb48ffc6",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "1da8473feef78edc"
+        "contentHash": "8b0305e37b735166"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "bcea4c61a0a3f366"
+        "contentHash": "ca6afbf7254242f2"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "9dc63c4e0bd78087"
+        "contentHash": "b8b4db87e5d354cd"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "17c6249e9b5dff78"
+        "contentHash": "6b4ef0e1c07421fa"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "afc7975fbc83ac0e"
-      },
-      {
-        "paragraphId": "p-6",
-        "anchor": "p-6",
-        "contentHash": "215f019e5fb58ff2"
-      },
-      {
-        "paragraphId": "p-7",
-        "anchor": "p-7",
         "contentHash": "c5701e31197ed619"
       }
     ]
   },
   {
     "sectionId": "v01-the-flower",
-    "contentHash": "95e782eff5cb2ab5",
+    "contentHash": "5e2b10505ea192f8",
     "title": "The Flower",
     "href": "/manuscripts/1/the-flower/start/",
     "chapterHref": "/manuscripts/1/the-flower/",
     "readerHref": "/manuscripts/1/the-flower/start/",
-    "audioVersionId": "v01-the-flower-95e782eff5cb2ab5",
+    "audioVersionId": "v01-the-flower-5e2b10505ea192f8",
     "paragraphs": [
       {
         "paragraphId": "p-1",
@@ -1312,43 +1072,28 @@
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "36b861d77c626519"
+        "contentHash": "605667be160402b2"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "757e23e3e692ab90"
+        "contentHash": "ff2dc89a4b3d2e0a"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "79b93c728bea8c0e"
-      },
-      {
-        "paragraphId": "p-5",
-        "anchor": "p-5",
-        "contentHash": "84f232252b648e0b"
-      },
-      {
-        "paragraphId": "p-6",
-        "anchor": "p-6",
-        "contentHash": "2a88428452e97d11"
-      },
-      {
-        "paragraphId": "p-7",
-        "anchor": "p-7",
         "contentHash": "3cf261c74a58d595"
       }
     ]
   },
   {
     "sectionId": "v01-the-question-becomes-an-experiment",
-    "contentHash": "2a7e62938db9f76f",
+    "contentHash": "4b4321ed090c0dce",
     "title": "The Question Becomes an Experiment",
     "href": "/manuscripts/1/the-flower/the-question-becomes-an-experiment/",
     "chapterHref": "/manuscripts/1/the-flower/the-question-becomes-an-experiment/",
     "readerHref": "/manuscripts/1/the-flower/the-question-becomes-an-experiment/",
-    "audioVersionId": "v01-the-question-becomes-an-experiment-2a7e62938db9f76f",
+    "audioVersionId": "v01-the-question-becomes-an-experiment-4b4321ed090c0dce",
     "paragraphs": [
       {
         "paragraphId": "p-1",
@@ -1363,73 +1108,68 @@
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "7ab466a79187bad5"
+        "contentHash": "5b6d3e8cce4da36a"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "b87407d928e2527b"
+        "contentHash": "ebe2da156b2e1fe5"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "ebe2da156b2e1fe5"
+        "contentHash": "f03c4d9032a97974"
       },
       {
         "paragraphId": "p-6",
         "anchor": "p-6",
-        "contentHash": "efd1ceeb6b856e50"
+        "contentHash": "56ee0efa706c85dd"
       },
       {
         "paragraphId": "p-7",
         "anchor": "p-7",
-        "contentHash": "b0c23b2c2b579ae8"
-      },
-      {
-        "paragraphId": "p-8",
-        "anchor": "p-8",
-        "contentHash": "b79d7134d9747c7d"
+        "contentHash": "a29cf86a33d6f59a"
       }
     ]
   },
   {
     "sectionId": "v01-what-providence-is",
-    "contentHash": "020a16f7a7b21ab8",
+    "contentHash": "96c8b735bba48602",
     "title": "What Providence Is",
     "href": "/manuscripts/1/the-flower/what-providence-is/",
     "chapterHref": "/manuscripts/1/the-flower/what-providence-is/",
     "readerHref": "/manuscripts/1/the-flower/what-providence-is/",
-    "audioVersionId": "v01-what-providence-is-020a16f7a7b21ab8",
+    "audioVersionId": "v01-what-providence-is-96c8b735bba48602",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "0c17a8c86afba63f"
+        "contentHash": "9051caa8b5e8da70"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "0f462eff7e7b48c6"
+        "contentHash": "71a0478056b52797"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "419a393152234b07"
+        "contentHash": "570822d6f725780d"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "02c1825572e98221"
+        "contentHash": "623dae2d138a9c2e"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "f501d691d037ed05"
+        "contentHash": "f3b2589cdd1be7c4"
       },
       {
         "paragraphId": "p-6",
         "anchor": "p-6",
-        "contentHash": "ed0e7aff09ceedf6"
+        "contentHash": "abc573df61cc8926"
       },
       {
         "paragraphId": "p-7",
@@ -1449,28 +1189,28 @@
       {
         "paragraphId": "p-10",
         "anchor": "p-10",
-        "contentHash": "be49aa83350eff81"
+        "contentHash": "69b79117887dc3c5"
       }
     ]
   },
   {
     "sectionId": "v01-purposeful-the-cultivation-of-human-coherence",
-    "contentHash": "32752528e4b788a7",
+    "contentHash": "1cae4317bb50f50b",
     "title": "PURPOSEFUL: The Cultivation of Human Coherence",
     "href": "/manuscripts/1/the-flower/purposeful-the-cultivation-of-human-coherence/",
     "chapterHref": "/manuscripts/1/the-flower/purposeful-the-cultivation-of-human-coherence/",
     "readerHref": "/manuscripts/1/the-flower/purposeful-the-cultivation-of-human-coherence/",
-    "audioVersionId": "v01-purposeful-the-cultivation-of-human-coherence-32752528e4b788a7",
+    "audioVersionId": "v01-purposeful-the-cultivation-of-human-coherence-1cae4317bb50f50b",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "9ec5bcab91b42ff6"
+        "contentHash": "0073dde2e20acbe5"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "a11a1733cb9daf2a"
+        "contentHash": "e9d5838b1ff93773"
       },
       {
         "paragraphId": "p-3",
@@ -1480,73 +1220,68 @@
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "10d4cad8de161dd0"
+        "contentHash": "12709d89d661a527"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "1b34ed4bfbf0927c"
+        "contentHash": "d6f1b8f15dc3b8a9"
       },
       {
         "paragraphId": "p-6",
         "anchor": "p-6",
-        "contentHash": "eec0b71913da4233"
+        "contentHash": "6a05d4a7665910f2"
       },
       {
         "paragraphId": "p-7",
         "anchor": "p-7",
-        "contentHash": "000a81f8d0c3bae4"
+        "contentHash": "edecd0ab17684bd5"
       },
       {
         "paragraphId": "p-8",
         "anchor": "p-8",
-        "contentHash": "aa067da41a61d3a6"
+        "contentHash": "dd8b10f6d2948fdc"
       },
       {
         "paragraphId": "p-9",
         "anchor": "p-9",
-        "contentHash": "cdbcbb87098e5b57"
+        "contentHash": "ced979ba3626bcb1"
       },
       {
         "paragraphId": "p-10",
         "anchor": "p-10",
-        "contentHash": "fa3b172781e91eb5"
+        "contentHash": "3df8d345a4bedf96"
       },
       {
         "paragraphId": "p-11",
         "anchor": "p-11",
-        "contentHash": "00cb3ee0ed05ec5f"
-      },
-      {
-        "paragraphId": "p-12",
-        "anchor": "p-12",
-        "contentHash": "a099589974c08ed9"
+        "contentHash": "c79b04580198e232"
       }
     ]
   },
   {
     "sectionId": "v01-the-currency-of-presence",
-    "contentHash": "be7e4e202ca9367f",
+    "contentHash": "8c14643e910ab0ad",
     "title": "The Currency of Presence",
     "href": "/manuscripts/1/the-flower/the-currency-of-presence/start/",
     "chapterHref": "/manuscripts/1/the-flower/the-currency-of-presence/",
     "readerHref": "/manuscripts/1/the-flower/the-currency-of-presence/#v01-the-currency-of-presence",
-    "audioVersionId": "v01-the-currency-of-presence-be7e4e202ca9367f",
+    "audioVersionId": "v01-the-currency-of-presence-8c14643e910ab0ad",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "ccd270594b08b1ec"
+        "contentHash": "761b0dce615618fc"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "63d273172d9c5a3e"
+        "contentHash": "e524914acb6aa788"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "e3a8201851021fdd"
+        "contentHash": "5792760415c798eb"
       },
       {
         "paragraphId": "p-4",
@@ -1561,109 +1296,84 @@
       {
         "paragraphId": "p-6",
         "anchor": "p-6",
-        "contentHash": "1d208ea3da374e70"
+        "contentHash": "6428310e3fb02d47"
       },
       {
         "paragraphId": "p-7",
         "anchor": "p-7",
-        "contentHash": "d915cef28fbf9ad3"
+        "contentHash": "528d48fe775f9c65"
       },
       {
         "paragraphId": "p-8",
         "anchor": "p-8",
-        "contentHash": "a39771f6196153d5"
+        "contentHash": "548df5212561a499"
       },
       {
         "paragraphId": "p-9",
         "anchor": "p-9",
-        "contentHash": "8b1ff8cec48ef742"
+        "contentHash": "4dc6b3d7e1f8604e"
       },
       {
         "paragraphId": "p-10",
         "anchor": "p-10",
-        "contentHash": "4dc6b3d7e1f8604e"
-      },
-      {
-        "paragraphId": "p-11",
-        "anchor": "p-11",
-        "contentHash": "ebae01cc9939d2ba"
+        "contentHash": "b825ffd64cebef82"
       }
     ]
   },
   {
     "sectionId": "v01-its-name",
-    "contentHash": "2f80a0957f6a96f5",
+    "contentHash": "2b40044c6fd2baad",
     "title": "Its Name",
     "href": "/manuscripts/1/the-flower/the-currency-of-presence/its-name/",
     "chapterHref": "/manuscripts/1/the-flower/the-currency-of-presence/",
     "readerHref": "/manuscripts/1/the-flower/the-currency-of-presence/#v01-its-name",
-    "audioVersionId": "v01-its-name-2f80a0957f6a96f5",
+    "audioVersionId": "v01-its-name-2b40044c6fd2baad",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "4c4135c384805387"
+        "contentHash": "3f9ce4fb15d7aea2"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "94fd8937f58e89c6"
+        "contentHash": "7fb3d30cf1ea4174"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "13926fb9dff8da69"
+        "contentHash": "5edb759e70e32083"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "5edb759e70e32083"
+        "contentHash": "1c89b12d2c5519ea"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "b34bf8f879216bf6"
-      },
-      {
-        "paragraphId": "p-6",
-        "anchor": "p-6",
-        "contentHash": "d3380a8b5d72fc3e"
-      },
-      {
-        "paragraphId": "p-7",
-        "anchor": "p-7",
-        "contentHash": "293709d94cd57b68"
-      },
-      {
-        "paragraphId": "p-8",
-        "anchor": "p-8",
-        "contentHash": "9746ad3fd38a72e4"
-      },
-      {
-        "paragraphId": "p-9",
-        "anchor": "p-9",
-        "contentHash": "63db3e1d374318eb"
+        "contentHash": "be1a87540dcdb7ff"
       }
     ]
   },
   {
     "sectionId": "v01-why-this-is-not-what-you-fear",
-    "contentHash": "9494bd514c9daf73",
+    "contentHash": "4d3de8e24d52da3a",
     "title": "Why This Is Not What You Fear",
     "href": "/manuscripts/1/the-flower/the-currency-of-presence/why-this-is-not-what-you-fear/",
     "chapterHref": "/manuscripts/1/the-flower/the-currency-of-presence/",
     "readerHref": "/manuscripts/1/the-flower/the-currency-of-presence/#v01-why-this-is-not-what-you-fear",
-    "audioVersionId": "v01-why-this-is-not-what-you-fear-9494bd514c9daf73",
+    "audioVersionId": "v01-why-this-is-not-what-you-fear-4d3de8e24d52da3a",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "230a73558d021708"
+        "contentHash": "cce280f2c85a6692"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "dc76722271e3a1c2"
+        "contentHash": "0c89714cae5f1e45"
       },
       {
         "paragraphId": "p-3",
@@ -1693,7 +1403,7 @@
       {
         "paragraphId": "p-8",
         "anchor": "p-8",
-        "contentHash": "d7a74fa655ec3970"
+        "contentHash": "63d07574b51dc0c2"
       },
       {
         "paragraphId": "p-9",
@@ -1704,12 +1414,12 @@
   },
   {
     "sectionId": "v01-what-it-looks-like-from-inside",
-    "contentHash": "ec7b399a4ac2fdfa",
+    "contentHash": "a93ffd7669197537",
     "title": "What It Looks Like From Inside",
     "href": "/manuscripts/1/the-flower/the-currency-of-presence/what-it-looks-like-from-inside/",
     "chapterHref": "/manuscripts/1/the-flower/the-currency-of-presence/",
     "readerHref": "/manuscripts/1/the-flower/the-currency-of-presence/#v01-what-it-looks-like-from-inside",
-    "audioVersionId": "v01-what-it-looks-like-from-inside-ec7b399a4ac2fdfa",
+    "audioVersionId": "v01-what-it-looks-like-from-inside-a93ffd7669197537",
     "paragraphs": [
       {
         "paragraphId": "p-1",
@@ -1719,17 +1429,17 @@
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "ea2748e2f562d6b7"
+        "contentHash": "08bbc589cd7db660"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "465e7b6d16197994"
+        "contentHash": "9c760c00913aae93"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "befb0b10ce573f60"
+        "contentHash": "794d57b0bb6bb64a"
       },
       {
         "paragraphId": "p-5",
@@ -1745,58 +1455,48 @@
   },
   {
     "sectionId": "v01-icons-and-the-first-scale",
-    "contentHash": "4166e79c2653000f",
+    "contentHash": "b34693308c2ca2fb",
     "title": "ICONS, and the First Scale",
     "href": "/manuscripts/1/the-flower/icons-and-the-first-scale/",
     "chapterHref": "/manuscripts/1/the-flower/icons-and-the-first-scale/",
     "readerHref": "/manuscripts/1/the-flower/icons-and-the-first-scale/",
-    "audioVersionId": "v01-icons-and-the-first-scale-4166e79c2653000f",
+    "audioVersionId": "v01-icons-and-the-first-scale-b34693308c2ca2fb",
     "paragraphs": [
       {
         "paragraphId": "p-1",
         "anchor": "p-1",
-        "contentHash": "777303840f620b72"
+        "contentHash": "0ea01f031f6924a5"
       },
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "5d718b40069fc3e1"
+        "contentHash": "21b8579c48e93b4c"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "d556293e5744020b"
+        "contentHash": "19376d814175d496"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "907203b210f53364"
+        "contentHash": "60161ca45a03bbba"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "c7ead93462efd972"
-      },
-      {
-        "paragraphId": "p-6",
-        "anchor": "p-6",
-        "contentHash": "c27942610739748f"
-      },
-      {
-        "paragraphId": "p-7",
-        "anchor": "p-7",
-        "contentHash": "b355eeb6e27b1c78"
+        "contentHash": "86712f628d743748"
       }
     ]
   },
   {
     "sectionId": "v01-what-this-is-and-what-it-is-not",
-    "contentHash": "dc3a8d24ff6ba1f6",
+    "contentHash": "2da926ef6916e744",
     "title": "What This Is, and What It Is Not",
     "href": "/manuscripts/1/the-flower/what-this-is-and-what-it-is-not/",
     "chapterHref": "/manuscripts/1/the-flower/what-this-is-and-what-it-is-not/",
     "readerHref": "/manuscripts/1/the-flower/what-this-is-and-what-it-is-not/",
-    "audioVersionId": "v01-what-this-is-and-what-it-is-not-dc3a8d24ff6ba1f6",
+    "audioVersionId": "v01-what-this-is-and-what-it-is-not-2da926ef6916e744",
     "paragraphs": [
       {
         "paragraphId": "p-1",
@@ -1811,7 +1511,7 @@
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "4a0da0426922a777"
+        "contentHash": "3dd767e0d606f0e6"
       },
       {
         "paragraphId": "p-4",
@@ -1831,12 +1531,12 @@
       {
         "paragraphId": "p-7",
         "anchor": "p-7",
-        "contentHash": "8048c96f7483b3a5"
+        "contentHash": "811f17a0aab2a7bf"
       },
       {
         "paragraphId": "p-8",
         "anchor": "p-8",
-        "contentHash": "662f8953cee25fbc"
+        "contentHash": "4c2f023161481320"
       },
       {
         "paragraphId": "p-9",
@@ -1847,12 +1547,12 @@
   },
   {
     "sectionId": "v01-the-invitation",
-    "contentHash": "f811117912ab76a9",
+    "contentHash": "60323ebd37ca107d",
     "title": "The Invitation",
     "href": "/manuscripts/1/the-flower/the-invitation/",
     "chapterHref": "/manuscripts/1/the-flower/the-invitation/",
     "readerHref": "/manuscripts/1/the-flower/the-invitation/",
-    "audioVersionId": "v01-the-invitation-f811117912ab76a9",
+    "audioVersionId": "v01-the-invitation-60323ebd37ca107d",
     "paragraphs": [
       {
         "paragraphId": "p-1",
@@ -1862,66 +1562,56 @@
       {
         "paragraphId": "p-2",
         "anchor": "p-2",
-        "contentHash": "3d710c7c45e981a2"
+        "contentHash": "f217e5fc216618bf"
       },
       {
         "paragraphId": "p-3",
         "anchor": "p-3",
-        "contentHash": "a8eb58717cdb3617"
+        "contentHash": "01fd3ad8e9521d1b"
       },
       {
         "paragraphId": "p-4",
         "anchor": "p-4",
-        "contentHash": "46d394e1b48a6266"
+        "contentHash": "de48188cdcf72e6c"
       },
       {
         "paragraphId": "p-5",
         "anchor": "p-5",
-        "contentHash": "702071eed0953ee5"
+        "contentHash": "ec818b785c26941a"
       },
       {
         "paragraphId": "p-6",
         "anchor": "p-6",
-        "contentHash": "78421f4fd0a186c3"
+        "contentHash": "a657bbf163e6c626"
       },
       {
         "paragraphId": "p-7",
         "anchor": "p-7",
-        "contentHash": "a657bbf163e6c626"
+        "contentHash": "72766182f474e81d"
       },
       {
         "paragraphId": "p-8",
         "anchor": "p-8",
-        "contentHash": "a40c06facc09fe5f"
+        "contentHash": "3cac5718b0b599d5"
       },
       {
         "paragraphId": "p-9",
         "anchor": "p-9",
-        "contentHash": "cd2206321d723c8d"
+        "contentHash": "5b7bd5426ef06c42"
       },
       {
         "paragraphId": "p-10",
         "anchor": "p-10",
-        "contentHash": "76f371950a9d112c"
+        "contentHash": "681419d45dec9c1a"
       },
       {
         "paragraphId": "p-11",
         "anchor": "p-11",
-        "contentHash": "0439bd6b6e7beb12"
+        "contentHash": "03b577bacdb1b3e1"
       },
       {
         "paragraphId": "p-12",
         "anchor": "p-12",
-        "contentHash": "681419d45dec9c1a"
-      },
-      {
-        "paragraphId": "p-13",
-        "anchor": "p-13",
-        "contentHash": "03b577bacdb1b3e1"
-      },
-      {
-        "paragraphId": "p-14",
-        "anchor": "p-14",
         "contentHash": "10dd76cd28bd55b2"
       }
     ]
