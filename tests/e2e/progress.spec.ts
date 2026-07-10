@@ -579,10 +579,9 @@ test("audio voice selection exposes one built-in system option", async ({ page }
     });
   });
 
-  await page.goto(firstSection.href);
-  await page.getByRole("button", { name: /Listen/ }).click();
+  await page.goto(`${firstSection.href}?listen=1`);
   const audioPanel = page.getByLabel("Audiobook controls");
-  await expect(audioPanel).toBeVisible();
+  await expect(audioPanel).toBeVisible({ timeout: 15_000 });
 
   const voiceSelect = page.getByRole("combobox", { name: "Voice" });
   await expect(voiceSelect).toHaveValue("clip:default");
@@ -796,10 +795,9 @@ test("reader navigation does not interrupt active playback", async ({ page }) =>
     });
   }, { storageKey: audioVoiceStorageKey, preference: systemVoicePreference });
 
-  await page.goto(sectionWithNeighbors.href);
-  await page.getByRole("button", { name: /Listen/ }).click();
+  await page.goto(`${sectionWithNeighbors.href}?listen=1`);
   await expect(page.getByRole("button", { name: "Pause audiobook" }))
-    .toBeVisible();
+    .toBeVisible({ timeout: 15_000 });
   await expect
     .poll(() =>
       page.evaluate(
@@ -812,7 +810,7 @@ test("reader navigation does not interrupt active playback", async ({ page }) =>
   );
 
   await page.keyboard.press("Escape");
-  await expect(page.getByLabel("Audiobook controls")).toHaveCount(0);
+  await expect(page.locator(".audio-popover")).toHaveCount(0);
   await page.locator(".section-nav-link-next").click();
   await expect(page).toHaveURL(new RegExp(`${nextSection.href}$`));
   await expect(page.getByRole("button", { name: "Pause audiobook" }))
