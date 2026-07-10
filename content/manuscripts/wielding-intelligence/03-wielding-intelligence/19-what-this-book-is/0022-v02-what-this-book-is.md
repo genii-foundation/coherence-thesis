@@ -12,9 +12,9 @@ sectionId: "v02-what-this-book-is"
 title: "What This Book Is"
 sectionOrder: 22
 sourceDoc: "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md"
-sourceHash: "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d"
-sourceParagraphStart: 1127
-sourceParagraphEnd: 1136
+sourceHash: "75c6157ae5b2e27f803eb14f316daad576535841fa04a09bde0627f6c2d5792c"
+sourceParagraphStart: 1085
+sourceParagraphEnd: 1094
 ---
 
 This book is a structural argument about coherence as a civilizational variable, articulated cleanly enough that builders can act on it. It is the founding document of a project that is being built openly, by whoever can take up the work. It is an invitation into a larger conversation that is already underway, distributed across many traditions and communities, often without those traditions and communities recognizing each other.

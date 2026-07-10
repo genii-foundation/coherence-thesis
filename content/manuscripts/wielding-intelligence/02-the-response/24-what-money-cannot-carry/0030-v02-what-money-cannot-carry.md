@@ -12,12 +12,12 @@ sectionId: "v02-what-money-cannot-carry"
 title: "What Money Cannot Carry"
 sectionOrder: 30
 sourceDoc: "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md"
-sourceHash: "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d"
-sourceParagraphStart: 669
-sourceParagraphEnd: 680
+sourceHash: "75c6157ae5b2e27f803eb14f316daad576535841fa04a09bde0627f6c2d5792c"
+sourceParagraphStart: 647
+sourceParagraphEnd: 658
 ---
 
-Money is one of the most powerful coordination technologies humanity has built. It allows strangers to cooperate across distance, time, and language, compressing enormous information about preference, scarcity, and demand into a single transmissible signal. These achievements are real and should not be dismissed by anyone serious about civilizational coordination.
+As a coordination technology, money has few equals. It allows strangers to cooperate across distance, time, and language, compressing enormous information about preference, scarcity, and demand into a single transmissible signal. These achievements are real and should not be dismissed by anyone serious about civilizational coordination.
 
 But money’s signal is limited in specific ways that matter. It can perceive transactions but not the conditions that make transactions meaningful. It can reward output but not the regenerative capacity that allows output to continue. It moves with extraordinary speed and precision, but only toward what it has been designed to recognize. A forest converted to lumber registers as economic activity. The same forest functioning as a regulator of climate, biodiversity, and water cycles registers as nothing, because money has no instrument for perceiving the work the forest is doing while standing. The accounting system is structurally blind to its own substrate.
 

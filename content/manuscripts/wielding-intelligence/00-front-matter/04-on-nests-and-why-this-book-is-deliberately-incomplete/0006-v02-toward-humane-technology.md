@@ -12,16 +12,16 @@ sectionId: "v02-toward-humane-technology"
 title: "Toward Humane Technology"
 sectionOrder: 6
 sourceDoc: "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md"
-sourceHash: "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d"
+sourceHash: "75c6157ae5b2e27f803eb14f316daad576535841fa04a09bde0627f6c2d5792c"
 sourceParagraphStart: 139
 sourceParagraphEnd: 150
 ---
 
 *An Orientation*
 
-The chapters that follow examine many things—physiology, relationship, extraction, infrastructure, economics, governance, intelligence—and they may not always appear to be about technology directly. They are. The book is making a sustained argument about what humane technology would have to become, and the argument can only be made by descending first into the conditions beneath technology and then climbing back up to ask what kind of technology those conditions can support.
+The chapters that follow examine physiology, relationship, extraction, infrastructure, economics, governance, and intelligence, and they may not always appear to be about technology directly. They are. The book is making a sustained argument about what humane technology would have to become, and the argument can only be made by descending first into the conditions beneath technology and then climbing back up to ask what kind of technology those conditions can support.
 
-The framing question is straightforward. Modern civilization has spent several centuries optimizing technology for extraction, attention capture, behavioral prediction, and centralized control. The technologies built within those incentive structures are now powerful enough to transform every layer of civilization simultaneously. The question is whether humanity can develop technologies that operate by a different logic—technologies that strengthen rather than degrade the conditions under which human beings think clearly, trust one another, regulate their nervous systems, coordinate across difference, and remain in right relationship with the living systems that sustain them.
+The framing question is straightforward. Modern civilization has spent several centuries optimizing technology for extraction, attention capture, behavioral prediction, and centralized control. The technologies built within those incentive structures are now powerful enough to transform every layer of civilization simultaneously. The question is whether humanity can develop technologies that operate by a different logic: technologies that strengthen rather than degrade the conditions under which human beings think clearly, trust one another, regulate their nervous systems, coordinate across difference, and remain in right relationship with the living systems that sustain them.
 
 This is not a question about specific applications. It is a question about substrate. Humane technology will not emerge from better intentions applied to the current architectures. It will emerge from civilizations whose underlying conditions are coherent enough to deploy technology coherently. Which means the work of building humane technology is also, and primarily, the work of building the coherence on which it would depend.
 

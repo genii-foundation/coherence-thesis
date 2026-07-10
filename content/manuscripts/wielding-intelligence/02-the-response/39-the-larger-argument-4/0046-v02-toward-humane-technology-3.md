@@ -12,9 +12,9 @@ sectionId: "v02-toward-humane-technology-3"
 title: "Toward Humane Technology"
 sectionOrder: 46
 sourceDoc: "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md"
-sourceHash: "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d"
-sourceParagraphStart: 861
-sourceParagraphEnd: 872
+sourceHash: "75c6157ae5b2e27f803eb14f316daad576535841fa04a09bde0627f6c2d5792c"
+sourceParagraphStart: 831
+sourceParagraphEnd: 842
 ---
 
 *From Building to Doing*
@@ -23,6 +23,6 @@ Part II has described a substrate. Coordination infrastructure that helps cohere
 
 But conditions do not build themselves. The chapters of Part II describe what would have to exist. They do not describe how it gets built or who builds it. That is the work of Part III, and it is where the book’s argument either becomes actionable or remains philosophical.
 
-Humane technology will not emerge from technologists alone. It will emerge from the meeting of technologists with everyone else the previous chapters have named—the contemplative practitioners who hold the physiological substrate, the bioregional coordinators who work the ecological one, the governance practitioners who know what deliberation requires, the economists working on regenerative alternatives, the trauma-informed researchers who understand what trust costs and what it requires, the Indigenous communities whose governance traditions modernity ignored, the funders willing to direct capital toward what current markets cannot reward. The technology question is the integration question. Humane technology is what gets built when these worlds find each other and work together at higher density than the dominant institutional architectures currently permit.
+Humane technology will not emerge from technologists alone. It will emerge from the meeting of technologists with everyone else the previous chapters have named: the contemplative practitioners who hold the physiological substrate, the bioregional coordinators who work the ecological one, the governance practitioners who know what deliberation requires, the economists working on regenerative alternatives, the trauma-informed researchers who understand what trust costs and what it requires, the Indigenous communities whose governance traditions modernity ignored, the funders willing to direct capital toward what current markets cannot reward. The technology question is the integration question. Humane technology is what gets built when these worlds find each other and work together at higher density than the dominant institutional architectures currently permit.
 
 *The chapters ahead describe what that finding looks like, what it asks of the people who can already feel its necessity, and what the threshold ahead actually requires. Read them as the practical answer to the question Part II has been building toward: not what should be built, but who builds it and how.*

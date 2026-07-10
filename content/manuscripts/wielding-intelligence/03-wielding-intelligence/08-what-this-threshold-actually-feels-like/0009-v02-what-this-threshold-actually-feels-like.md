@@ -12,14 +12,14 @@ sectionId: "v02-what-this-threshold-actually-feels-like"
 title: "What This Threshold Actually Feels Like"
 sectionOrder: 9
 sourceDoc: "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md"
-sourceHash: "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d"
-sourceParagraphStart: 959
-sourceParagraphEnd: 972
+sourceHash: "75c6157ae5b2e27f803eb14f316daad576535841fa04a09bde0627f6c2d5792c"
+sourceParagraphStart: 923
+sourceParagraphEnd: 936
 ---
 
-Many people are not sleeping well. The reason is not always obvious to them. Their lives may be functional. Their relationships may be intact. Their work may be meaningful. And yet there is something operating beneath the surface that produces a quality of background dread, a sense of structural unease, a persistent feeling that the ground is shifting in ways that no individual response can address. This is not pathology. It is accurate perception.
+Many people are not sleeping well. The reason is not always obvious to them. Their lives may be functional. Their relationships may be intact. Their work may be meaningful. And yet something beneath the surface produces a background dread, a structural unease, a persistent feeling that the ground is shifting in ways no individual response can address. This is not pathology. It is accurate perception.
 
-People in their twenties are inheriting a civilization that visibly does not work and being told to build careers within it. The institutions they were raised to trust—universities, governments, professional fields, news organizations—have lost much of their legitimacy in the years they have been coming of age. The economic systems they are entering offer worse prospects than their parents had at the same age, often substantially worse. The ecological conditions they will live the longest under are deteriorating at rates that older generations have not had to integrate into their own life planning. The technological conditions they will work within are being designed with little input from anyone whose career will be most affected by them. And they are doing all of this while being asked to demonstrate that they are personally resilient, optimistic, and well-adjusted.
+People in their twenties are inheriting a civilization that visibly does not work and being told to build careers within it. The institutions they were raised to trust (universities, governments, professional fields, news organizations) have lost much of their legitimacy in the years they have been coming of age. The economic systems they are entering offer worse prospects than their parents had at the same age, often substantially worse. The ecological conditions they will live the longest under are deteriorating at rates that older generations have not had to integrate into their own life planning. The technological conditions they will work within are being designed with little input from anyone whose career will be most affected by them. And they are doing all of this while being asked to demonstrate that they are personally resilient, optimistic, and well-adjusted.
 
 People in their thirties and forties are in many cases the load-bearing generation of a moment they did not design. They are running the institutions whose foundations are crumbling. They are raising children into conditions they cannot promise. They are working inside organizations whose stated values often contradict their operational logics, and they are aware of the contradiction in ways that earlier generations of professionals were not. Many of them are carrying private grief about what they were taught the world would be and what they have learned it is. Many of them are doing this without permission to name it.
 

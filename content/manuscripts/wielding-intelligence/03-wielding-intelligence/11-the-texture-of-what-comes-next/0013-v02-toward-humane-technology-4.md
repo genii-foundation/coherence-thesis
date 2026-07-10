@@ -12,9 +12,9 @@ sectionId: "v02-toward-humane-technology-4"
 title: "Toward Humane Technology"
 sectionOrder: 13
 sourceDoc: "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md"
-sourceHash: "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d"
-sourceParagraphStart: 1013
-sourceParagraphEnd: 1024
+sourceHash: "75c6157ae5b2e27f803eb14f316daad576535841fa04a09bde0627f6c2d5792c"
+sourceParagraphStart: 975
+sourceParagraphEnd: 986
 ---
 
 *The Final Integration*
