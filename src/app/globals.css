@@ -4557,7 +4557,8 @@ input {
 
 .updates-heading {
   max-width: 52rem;
-  margin-bottom: 1.35rem;
+  margin: 0 auto 1.35rem;
+  text-align: center;
 }
 
 .updates-heading h1 {

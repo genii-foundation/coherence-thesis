@@ -115,7 +115,7 @@ test("updates page renders the latest history with timeline pagination", async (
   await expect(updatesHeading.locator(".eyebrow")).toHaveCount(0);
   await expect(
     updatesHeading.getByText(
-      "Every change to the thesis and its reader interface.",
+      "Every change to the thesis, and its reader interface.",
       { exact: true },
     ),
   ).toBeVisible();

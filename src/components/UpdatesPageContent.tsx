@@ -74,7 +74,7 @@ export function UpdatesPageContent({
     <div className="page-frame updates-page">
       <header className="page-heading updates-heading">
         <h1>Updates</h1>
-        <p>Every change to the thesis and its reader interface.</p>
+        <p>Every change to the thesis, and its reader interface.</p>
         <p className="updates-summary">
           <strong>{totalCommitCount.toLocaleString()}</strong> commits across{" "}
           <strong>{totalDayCount.toLocaleString()}</strong> days, newest first.{" "}
