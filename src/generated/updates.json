@@ -2,8 +2,19 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "9b1bc51fd5ff98b0af572fa31e04312ed148b34b",
+  "headSha": "2280dae1dd02ccbafe816466f3e1bcd2f5ad4466",
   "commits": [
+    {
+      "sha": "2280dae1dd02ccbafe816466f3e1bcd2f5ad4466",
+      "committedAt": "2026-07-11T21:56:25.000Z",
+      "subject": "feat: flatten unpartitioned manuscript overviews (#114)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/2280dae1dd02ccbafe816466f3e1bcd2f5ad4466",
+      "filesChanged": 5,
+      "additions": 162,
+      "deletions": 70,
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-n1xwri876-aubreyfs-projects.vercel.app"
+    },
     {
       "sha": "9b1bc51fd5ff98b0af572fa31e04312ed148b34b",
       "committedAt": "2026-07-11T21:41:46.000Z",
