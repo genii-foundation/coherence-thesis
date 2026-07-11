@@ -1,5 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import {
+  hexToRgb,
   searchTargetSection,
   wieldingVolume,
   wieldingFrontMatter,
@@ -1065,99 +1066,193 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
   await expectMobilePopoverStartsBelowToolbar(page, ".progress-popover");
 });
 
-test("mobile background texture fills the dynamic viewport", async ({ page }) => {
-  await page.setViewportSize({ width: 393, height: 852 });
-  await page.goto("/", { waitUntil: "domcontentloaded" });
+test("toolbar positioning does not lag through scroll direction changes", async ({
+  page,
+}, testInfo) => {
+  await page.setViewportSize(
+    testInfo.project.name === "mobile"
+      ? { width: 393, height: 700 }
+      : { width: 1280, height: 720 },
+  );
+  await page.goto(wieldingSection.href, { waitUntil: "domcontentloaded" });
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+  });
 
-  const metrics = await page.evaluate(() => {
-    const parsePixels = (value: string) => Number.parseFloat(value) || 0;
-    const texture = document.querySelector(".common-thread-texture");
-    const textureBox = texture?.getBoundingClientRect();
-    const shell = document.querySelector(".site-shell");
-    const shellBox = shell?.getBoundingClientRect();
-    const htmlStyle = window.getComputedStyle(document.documentElement);
-    const bodyStyle = window.getComputedStyle(document.body);
-    const bodyTextureStyle = window.getComputedStyle(document.body, "::before");
-    const shellStyle = shell ? window.getComputedStyle(shell) : null;
+  const header = page.locator(".site-header");
+  const contract = await header.evaluate((element) => {
+    const verticalScrollAncestors: string[] = [];
+    let ancestor = element.parentElement;
+    while (ancestor) {
+      const overflowY = window.getComputedStyle(ancestor).overflowY;
+      if (["auto", "overlay", "scroll"].includes(overflowY)) {
+        verticalScrollAncestors.push(ancestor.tagName);
+      }
+      ancestor = ancestor.parentElement;
+    }
+
+    return {
+      position: window.getComputedStyle(element).position,
+      scrollingElement: document.scrollingElement?.tagName ?? "",
+      shellOverflowY: window.getComputedStyle(element.parentElement!).overflowY,
+      verticalScrollAncestors,
+    };
+  });
+
+  expect(contract.scrollingElement).toBe("HTML");
+  expect(contract.shellOverflowY).toBe("visible");
+  expect(contract.verticalScrollAncestors).toEqual([]);
+  expect(contract.position).toBe(
+    testInfo.project.name === "mobile" ? "static" : "sticky",
+  );
+
+  const sampleHeader = () =>
+    header.evaluate((element) => {
+      const bounds = element.getBoundingClientRect();
+      const style = window.getComputedStyle(element);
+      return {
+        boxShadow: style.boxShadow,
+        documentTop: bounds.top + window.scrollY,
+        height: bounds.height,
+        inlineShadowOpacity: element.style.getPropertyValue(
+          "--toolbar-shadow-opacity",
+        ),
+        top: bounds.top,
+        transitionDuration: style.transitionDuration,
+      };
+    });
+  const samples = [await sampleHeader()];
+
+  for (const delta of [3, 8, 21, 55, -3, -8, -21, 34]) {
+    const previousScrollY = await page.evaluate(() => window.scrollY);
+    if (testInfo.project.name === "mobile") {
+      await page.evaluate((scrollDelta) => window.scrollBy(0, scrollDelta), delta);
+    } else {
+      await page.mouse.wheel(0, delta);
+    }
+    if (delta > 0) {
+      await expect
+        .poll(() => page.evaluate(() => window.scrollY))
+        .toBeGreaterThan(previousScrollY);
+    } else {
+      await expect
+        .poll(() => page.evaluate(() => window.scrollY))
+        .toBeLessThan(previousScrollY);
+    }
+    samples.push(await sampleHeader());
+  }
+
+  const heights = samples.map((sample) => sample.height);
+  expect(Math.max(...heights) - Math.min(...heights)).toBeLessThanOrEqual(1);
+  expect(new Set(samples.map((sample) => sample.boxShadow)).size).toBe(1);
+  expect(samples.every((sample) => sample.inlineShadowOpacity === "")).toBe(true);
+  expect(samples.every((sample) => sample.transitionDuration === "0s")).toBe(true);
+
+  if (testInfo.project.name === "mobile") {
+    const documentTops = samples.map((sample) => sample.documentTop);
+    expect(Math.max(...documentTops) - Math.min(...documentTops)).toBeLessThanOrEqual(
+      1,
+    );
+  } else {
+    expect(samples.every((sample) => Math.abs(sample.top) <= 1)).toBe(true);
+  }
+});
+
+test("root canvas covers mobile Safari edges without a fixed paint layer", async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== "mobile", "mobile viewport contract");
+
+  await page.setViewportSize({ width: 393, height: 852 });
+  await page.goto(wieldingSection.href, { waitUntil: "domcontentloaded" });
+
+  for (const height of [852, 700, 852]) {
+    await page.setViewportSize({ width: 393, height });
+    await expect.poll(() => page.evaluate(() => window.innerHeight)).toBe(height);
+
+    const metrics = await page.evaluate(() => {
+      const shell = document.querySelector(".site-shell");
+      const htmlStyle = window.getComputedStyle(document.documentElement);
+      const bodyStyle = window.getComputedStyle(document.body);
+      const bodyTextureStyle = window.getComputedStyle(document.body, "::before");
+      const shellStyle = shell ? window.getComputedStyle(shell) : null;
+      const bottomElement = document.elementFromPoint(
+        window.innerWidth / 2,
+        window.innerHeight - 1,
+      );
+
+      return {
+        bodyBackgroundColor: bodyStyle.backgroundColor,
+        bodyBackgroundImage: bodyStyle.backgroundImage,
+        bodyIsolation: bodyStyle.isolation,
+        bodyOverscrollY: bodyStyle.overscrollBehaviorY,
+        bodyPosition: bodyStyle.position,
+        bodyTextureContent: bodyTextureStyle.content,
+        bottomInsideShell: Boolean(bottomElement?.closest(".site-shell")),
+        htmlBackgroundColor: htmlStyle.backgroundColor,
+        htmlBackgroundImage: htmlStyle.backgroundImage,
+        htmlOverscrollY: htmlStyle.overscrollBehaviorY,
+        scrollingElement: document.scrollingElement?.tagName ?? "",
+        shellMinHeight: Number.parseFloat(shellStyle?.minHeight ?? "0"),
+        shellOverflowY: shellStyle?.overflowY ?? "",
+        shellZIndex: shellStyle?.zIndex ?? "",
+        themeColor:
+          document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')
+            ?.content ?? "",
+        viewport:
+          document.querySelector<HTMLMetaElement>('meta[name="viewport"]')
+            ?.content ?? "",
+        viewportHeight: window.innerHeight,
+      };
+    });
+
+    expect(metrics.scrollingElement).toBe("HTML");
+    expect(metrics.viewport).toContain("viewport-fit=cover");
+    expect(metrics.htmlBackgroundColor).toBe(hexToRgb(metrics.themeColor));
+    expect(metrics.htmlBackgroundImage).toBe("none");
+    expect(metrics.bodyBackgroundColor).not.toBe("rgba(0, 0, 0, 0)");
+    expect(metrics.bodyBackgroundImage).toContain("radial-gradient");
+    expect(metrics.htmlOverscrollY).toBe("none");
+    expect(metrics.bodyOverscrollY).toBe("none");
+    expect(metrics.bodyTextureContent).toBe("none");
+    expect(metrics.bodyPosition).toBe("static");
+    expect(metrics.bodyIsolation).toBe("auto");
+    expect(metrics.shellOverflowY).toBe("visible");
+    expect(metrics.shellZIndex).toBe("auto");
+    expect(metrics.shellMinHeight).toBeGreaterThanOrEqual(
+      metrics.viewportHeight - 1,
+    );
+    expect(metrics.bottomInsideShell).toBe(true);
+  }
+
+  await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, document.documentElement.scrollHeight);
+  });
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+
+  const bottomEdge = await page.evaluate(() => {
+    const footer = document.querySelector(".site-footer")?.getBoundingClientRect();
     const bottomElement = document.elementFromPoint(
       window.innerWidth / 2,
       window.innerHeight - 1,
     );
-
     return {
-      bodyBackground: bodyStyle.backgroundImage,
-      bodyOverscrollY: bodyStyle.overscrollBehaviorY,
-      bodyTextureBackground: bodyTextureStyle.backgroundImage,
-      bodyTextureContent: bodyTextureStyle.content,
-      bodyTexturePosition: bodyTextureStyle.position,
-      bodyTextureZIndex: bodyTextureStyle.zIndex,
-      bodyMinHeight: parsePixels(bodyStyle.minHeight),
       bottomInsideShell: Boolean(bottomElement?.closest(".site-shell")),
-      htmlBackground: htmlStyle.backgroundImage,
-      htmlOverscrollY: htmlStyle.overscrollBehaviorY,
-      htmlMinHeight: parsePixels(htmlStyle.minHeight),
-      shellBottom: shellBox?.bottom ?? 0,
-      shellMinHeight: parsePixels(shellStyle?.minHeight ?? "0"),
-      shellZIndex: shellStyle?.zIndex ?? "",
-      textureBottom: textureBox?.bottom ?? 0,
-      textureDisplay: texture ? window.getComputedStyle(texture).display : "",
-      textureTop: textureBox?.top ?? 0,
+      distanceFromDocumentBottom:
+        document.documentElement.scrollHeight - window.scrollY - window.innerHeight,
+      footerBottom: footer?.bottom ?? 0,
       viewportHeight: window.innerHeight,
     };
   });
 
-  expect(metrics.htmlBackground).toContain("radial-gradient");
-  expect(metrics.bodyBackground).toContain("radial-gradient");
-  expect(metrics.htmlOverscrollY).toBe("contain");
-  expect(metrics.bodyOverscrollY).toBe("contain");
-  expect(metrics.bodyTextureContent).not.toBe("none");
-  expect(metrics.bodyTexturePosition).toBe("fixed");
-  expect(metrics.bodyTextureZIndex).toBe("0");
-  expect(metrics.bodyTextureBackground).toContain("radial-gradient");
-  expect(metrics.shellZIndex).toBe("1");
-  expect(metrics.htmlMinHeight).toBeGreaterThanOrEqual(metrics.viewportHeight);
-  expect(metrics.bodyMinHeight).toBeGreaterThanOrEqual(metrics.viewportHeight);
-  expect(metrics.shellMinHeight).toBeGreaterThanOrEqual(metrics.viewportHeight);
-  expect(metrics.bottomInsideShell).toBe(true);
-  expect(metrics.textureDisplay).toBe("block");
-  expect(metrics.textureTop).toBeLessThanOrEqual(0);
-  expect(metrics.textureBottom).toBeGreaterThanOrEqual(metrics.shellBottom - 1);
-});
-
-test("toolbar shadow deepens as the page scrolls", async ({ page }) => {
-  await page.goto(wieldingSection.href, { waitUntil: "domcontentloaded" });
-
-  const header = page.locator(".site-header");
-  await expect
-    .poll(() =>
-      header.evaluate((element) =>
-        element.style.getPropertyValue("--toolbar-shadow-opacity"),
-      ),
-    )
-    .not.toBe("");
-
-  const restingOpacity = await header.evaluate((element) =>
-    Number.parseFloat(
-      window
-        .getComputedStyle(element)
-        .getPropertyValue("--toolbar-shadow-opacity"),
-    ),
+  expect(Math.abs(bottomEdge.distanceFromDocumentBottom)).toBeLessThanOrEqual(1);
+  expect(Math.abs(bottomEdge.footerBottom - bottomEdge.viewportHeight)).toBeLessThanOrEqual(
+    1,
   );
-
-  await page.evaluate(() => window.scrollTo(0, 120));
-  await expect
-    .poll(() =>
-      header.evaluate((element) =>
-        Number.parseFloat(
-          window
-            .getComputedStyle(element)
-            .getPropertyValue("--toolbar-shadow-opacity"),
-        ),
-      ),
-    )
-    .toBe(0.1);
-
-  expect(restingOpacity).toBeLessThan(0.1);
+  expect(bottomEdge.bottomInsideShell).toBe(true);
 });
 
 test("skip link remains clipped until it receives keyboard focus", async ({ page }) => {
