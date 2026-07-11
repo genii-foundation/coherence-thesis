@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "0224ed2dc75367ce6b6bc55dfd4302f3adee7dc9",
+  "headSha": "7eccc336bd4d897268adafcf732752278d70c884",
   "commits": [
+    {
+      "sha": "7eccc336bd4d897268adafcf732752278d70c884",
+      "committedAt": "2026-07-11T20:53:17.000Z",
+      "subject": "docs: establish editorial debt register (#111)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/7eccc336bd4d897268adafcf732752278d70c884",
+      "filesChanged": 116,
+      "additions": 4626,
+      "deletions": 3,
+      "isLiterary": false
+    },
     {
       "sha": "0224ed2dc75367ce6b6bc55dfd4302f3adee7dc9",
       "committedAt": "2026-07-11T20:41:58.000Z",
@@ -12,7 +22,8 @@
       "filesChanged": 6,
       "additions": 86,
       "deletions": 11,
-      "isLiterary": false
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-oeq2flddv-aubreyfs-projects.vercel.app"
     },
     {
       "sha": "998b3057555d2358368e967ab2221865e42f3f13",

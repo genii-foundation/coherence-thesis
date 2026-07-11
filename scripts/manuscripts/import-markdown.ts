@@ -1,4 +1,5 @@
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import {
   cleanDir,
   ensureDir,
@@ -109,7 +110,7 @@ function smartTitle(text: string): string {
   return trimmed;
 }
 
-function markdownHeading(line: string): Heading | null {
+export function markdownHeading(line: string): Heading | null {
   const hashMatch = line.match(/^(#{1,6})\s+(.+)$/);
   if (hashMatch) {
     return {
@@ -469,4 +470,6 @@ function main(): void {
   console.log(`Report: ${path.relative(repoRoot, reportPath)}`);
 }
 
-main();
+if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
+  main();
+}

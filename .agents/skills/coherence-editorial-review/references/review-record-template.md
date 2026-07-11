@@ -143,6 +143,18 @@ Comments are selective correspondence, not a duplicate ledger. List the material
 
 ## Independent review
 
+### Tooling evidence
+
+Complete these fields only after the initialized ledgers and all three independent review files are final. The adjudication helper verifies each hash before it changes any ledger status.
+
+- Source file:
+- Source hash:
+- Initialized sentence ledger hash:
+- Initialized structure ledger hash:
+- Semantic review hash:
+- Literary review hash:
+- Slop review hash:
+
 ### Semantic review
 
 - Drift found:
