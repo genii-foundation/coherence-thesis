@@ -38,7 +38,7 @@ function UpdatesPagination({
         className="updates-mode-link"
         href={getUpdatesPageHref(1, otherMode)}
       >
-        {mode === "all" ? "Show Literary Updates" : "Show All Updates"}
+        {mode === "all" ? "Show Only Literary Updates" : "Show All Updates"}
       </Link>
       {Array.from({ length: totalPages }, (_, index) => {
         const page = index + 1;
