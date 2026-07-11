@@ -139,7 +139,7 @@ Every pull request refreshes and verifies `src/generated/updates.json` through i
 
 The default view shows all updates. The [Literary view](https://www.coherence-thesis.com/updates/literary/) filters before grouping and pagination to show commits that touched canonical manuscript sources or their historical generated sections. Mixed commits remain literary, while each card keeps the complete commit statistics.
 
-When an exact commit still has a successful public Vercel production deployment, its card can link to that rendered version. These links are keyed by the full commit SHA, checked for public reachability within a fixed generation budget, and omitted when the deployment is missing or no longer available. CI preserves the checked mappings instead of making required gates depend on optional network changes. This best effort enrichment never replaces or weakens complete history validation.
+When an exact commit still has a successful public Vercel production deployment, its card can link to that rendered version. These links are keyed by the full commit SHA. Every production publication rechecks every stored historical URL and removes links that Vercel confirms are unavailable. Transient network failures, rate limits, and Vercel server errors preserve the last confirmed link instead of treating uncertainty as deletion. New link discovery remains time bounded. CI preserves the checked mappings because it validates but does not publish the site. This best effort enrichment never replaces or weakens complete history validation.
 
 ## Audiobook Publishing
 

@@ -26,10 +26,18 @@ const githubRequestTimeoutMs = 15_000;
 const maxGithubPages = 1_000;
 const maxGithubCommitFiles = 3_000;
 const deploymentLookupConcurrency = 8;
-const deploymentEnrichmentBudgetMs = 20_000;
+const deploymentDiscoveryBudgetMs = 20_000;
 const deploymentRequestTimeoutMs = 5_000;
 const deploymentReachabilityTimeoutMs = 5_000;
 const maxAnonymousDeploymentLookups = 8;
+
+export function shouldRefreshUpdateDeployments(
+  environment: Readonly<Record<string, string | undefined>>,
+): boolean {
+  if (environment.VERCEL_ENV === "production") return true;
+  if (environment.VERCEL_ENV === "preview") return false;
+  return environment.UPDATES_REFRESH_DEPLOYMENTS !== "false";
+}
 
 export function getRequiredUpdatesHeadSha(
   environment: Readonly<Record<string, string | undefined>>,
@@ -532,14 +540,14 @@ async function findReachableGitHubDeployment(
 async function inDeploymentBatches<T>(
   values: readonly T[],
   operation: (value: T) => Promise<void>,
-  deadline: number,
+  deadline?: number,
 ): Promise<void> {
   for (
     let index = 0;
     index < values.length;
     index += deploymentLookupConcurrency
   ) {
-    if (Date.now() >= deadline) return;
+    if (deadline !== undefined && Date.now() >= deadline) return;
     await Promise.all(
       values
         .slice(index, index + deploymentLookupConcurrency)
@@ -602,7 +610,6 @@ export async function enrichUpdatesSnapshotDeployments(
       return applyDeploymentUrls(snapshot, resolvedUrls);
     }
 
-    const deadline = Date.now() + deploymentEnrichmentBudgetMs;
     const cachedEntries = [...cachedUrls.entries()].filter(
       ([sha]) => sha !== trustedCurrentSha,
     );
@@ -612,7 +619,7 @@ export async function enrichUpdatesSnapshotDeployments(
         fetcher,
       );
       if (reachability === "unavailable") resolvedUrls.delete(sha);
-    }, deadline);
+    });
 
     const unresolvedShas = snapshot.commits
       .map((commit) => commit.sha)
@@ -620,6 +627,7 @@ export async function enrichUpdatesSnapshotDeployments(
     const lookupShas = authToken
       ? unresolvedShas
       : unresolvedShas.slice(0, maxAnonymousDeploymentLookups);
+    const discoveryDeadline = Date.now() + deploymentDiscoveryBudgetMs;
     await inDeploymentBatches(lookupShas, async (sha) => {
       try {
         const deploymentUrl = await findReachableGitHubDeployment(
@@ -631,10 +639,13 @@ export async function enrichUpdatesSnapshotDeployments(
       } catch {
         // Deployment links are optional and cannot weaken history generation.
       }
-    }, deadline);
+    }, discoveryDeadline);
 
     return applyDeploymentUrls(snapshot, resolvedUrls);
-  } catch {
+  } catch (error) {
+    if (environment.VERCEL_ENV === "production" && refreshDeployments) {
+      throw error;
+    }
     return snapshot;
   }
 }

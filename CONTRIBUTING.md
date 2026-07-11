@@ -101,7 +101,7 @@ Do not edit `src/generated/updates.json` manually. It caches immutable file and 
 
 The default Updates view includes every commit. The Literary view includes commits whose changed or renamed paths touch `sources/manuscripts/` or `content/manuscripts/`. This path rule preserves manuscript history across the source publishing transition and does not rely on commit message conventions.
 
-Cards may include a best effort `View version` link to the successful public Vercel production deployment for the exact full commit SHA. Generation validates cached and discovered links and omits unavailable deployments. Remote checks use a fixed budget. CI preserves the checked deployment mappings so optional network changes cannot fail required gates. Version link lookup must not relax the requirement for complete, current commit history.
+Cards may include a best effort `View version` link to the successful public Vercel production deployment for the exact full commit SHA. Every Vercel production publication rechecks every stored historical URL and removes links confirmed unavailable. Transient failures preserve the previous mapping because they do not prove that Vercel deleted the deployment. Historical checks use bounded concurrency and per-request timeouts. Discovery of previously unknown links stops starting new batches after a fixed window. CI remains cache only because it validates but does not publish the site. Version link lookup must not relax the requirement for complete, current commit history.
 
 ## Validation
 

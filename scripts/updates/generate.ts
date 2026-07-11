@@ -5,6 +5,7 @@ import {
   enrichUpdatesSnapshotDeployments,
   generateUpdatesSnapshot,
   getRequiredUpdatesHeadSha,
+  shouldRefreshUpdateDeployments,
 } from "./generator";
 
 const outputPath = path.join(repoRoot, "src/generated/updates.json");
@@ -43,9 +44,7 @@ async function main(): Promise<void> {
       authToken,
       existingSnapshot,
       environment: process.env,
-      refreshDeployments:
-        process.env.UPDATES_REFRESH_DEPLOYMENTS !== "false" &&
-        process.env.VERCEL_ENV !== "preview",
+      refreshDeployments: shouldRefreshUpdateDeployments(process.env),
     }),
   };
 

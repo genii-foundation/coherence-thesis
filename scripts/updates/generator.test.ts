@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { createUpdatesSnapshot } from "../../src/lib/updates";
 import {
   enrichUpdatesSnapshotDeployments,
@@ -8,6 +8,7 @@ import {
   parseLocalGitLog,
   parseLocalNumstat,
   readCompleteLocalSnapshot,
+  shouldRefreshUpdateDeployments,
   type FetchCommand,
   type GitCommand,
 } from "./generator";
@@ -89,6 +90,27 @@ function jsonResponse(
 }
 
 describe("updates snapshot generator", () => {
+  it("always refreshes links for production publications", () => {
+    expect(
+      shouldRefreshUpdateDeployments({
+        VERCEL_ENV: "production",
+        UPDATES_REFRESH_DEPLOYMENTS: "false",
+      }),
+    ).toBe(true);
+    expect(
+      shouldRefreshUpdateDeployments({
+        VERCEL_ENV: "preview",
+        UPDATES_REFRESH_DEPLOYMENTS: "true",
+      }),
+    ).toBe(false);
+    expect(
+      shouldRefreshUpdateDeployments({
+        CI: "true",
+        UPDATES_REFRESH_DEPLOYMENTS: "false",
+      }),
+    ).toBe(false);
+  });
+
   it("requires the deployed main head in production environments", () => {
     expect(
       getRequiredUpdatesHeadSha({
@@ -628,6 +650,47 @@ describe("updates snapshot generator", () => {
 
     expect(enriched.commits[0]?.deploymentUrl).toBeUndefined();
     expect(enriched.commits[1]?.deploymentUrl).toBe(transientUrl);
+  });
+
+  it("revalidates every cached link before applying the discovery budget", async () => {
+    const commits = Array.from({ length: 9 }, (_, index) => ({
+      sha: index.toString(16).padStart(40, "0"),
+      committedAt: `2026-07-${String(10 - index).padStart(2, "0")}T17:33:35.000Z`,
+      subject: `fix: cached deployment ${index}`,
+      filesChanged: 1,
+      additions: 1,
+      deletions: 0,
+    }));
+    const snapshot = createUpdatesSnapshot(commits[0]!.sha, commits);
+    const cached = createUpdatesSnapshot(
+      snapshot.headSha,
+      snapshot.commits.map((commit, index) => ({
+        ...commit,
+        deploymentUrl: `https://coherence-thesis-cache${index}-aubreyfs-projects.vercel.app`,
+      })),
+    );
+    const requestedUrls: string[] = [];
+    const dateNow = vi.spyOn(Date, "now").mockReturnValueOnce(0);
+
+    try {
+      const enriched = await enrichUpdatesSnapshotDeployments(snapshot, {
+        existingSnapshot: cached,
+        fetcher: async (input, init) => {
+          if (init?.method !== "HEAD") {
+            return jsonResponse({ message: "unexpected" }, { status: 500 });
+          }
+          requestedUrls.push(String(input));
+          return new Response(null, { status: 200 });
+        },
+      });
+
+      expect(requestedUrls).toEqual(
+        cached.commits.map((commit) => `${commit.deploymentUrl}/`),
+      );
+      expect(enriched.commits.every((commit) => commit.deploymentUrl)).toBe(true);
+    } finally {
+      dateNow.mockRestore();
+    }
   });
 
   it("preserves cached links without network access when refresh is disabled", async () => {
