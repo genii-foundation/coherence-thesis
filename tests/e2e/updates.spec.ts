@@ -717,7 +717,7 @@ test("literary mode filters commits and resets pagination when switching views",
   ]) {
     const modeLink = page
       .getByRole("navigation", { name: paginationName, exact: true })
-      .getByRole("link", { name: "All updates", exact: true });
+      .getByRole("link", { name: "Show All Updates", exact: true });
     await expect(modeLink).toHaveAttribute("href", "/updates/");
   }
 
