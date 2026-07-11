@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 import {
   catalog,
   volumeWithNeighbors,
@@ -23,6 +23,54 @@ import {
   parentSectionContainer,
 } from "./fixtures";
 
+async function measureOpeningDropCap(page: Page, href: string) {
+  await page.goto(href);
+
+  return page.locator(".manuscript-prose").first().evaluate((prose) => {
+    const paragraphs = Array.from(prose.children).filter(
+      (element): element is HTMLParagraphElement =>
+        element instanceof HTMLParagraphElement,
+    );
+    const firstParagraph = paragraphs[0];
+    const secondParagraph = paragraphs[1];
+    const firstWordText = firstParagraph
+      ?.querySelector(".audio-word")
+      ?.firstChild;
+    const secondWord = secondParagraph?.querySelector(".audio-word");
+
+    if (!firstParagraph || !secondParagraph || !firstWordText || !secondWord) {
+      return null;
+    }
+
+    const firstLetterRange = document.createRange();
+    firstLetterRange.setStart(firstWordText, 0);
+    firstLetterRange.setEnd(firstWordText, 1);
+    const firstLetterBox = firstLetterRange.getBoundingClientRect();
+    const firstParagraphBox = firstParagraph.getBoundingClientRect();
+    const secondParagraphBox = secondParagraph.getBoundingClientRect();
+    const secondWordBox = secondWord.getBoundingClientRect();
+    const firstParagraphStyle = window.getComputedStyle(firstParagraph);
+    const firstLetterStyle = window.getComputedStyle(
+      firstParagraph,
+      "::first-letter",
+    );
+
+    return {
+      clearance: secondWordBox.top - firstLetterBox.bottom,
+      dropCapFloat: firstLetterStyle.float,
+      dropCapFontSize: Number.parseFloat(firstLetterStyle.fontSize),
+      firstParagraphDisplay: firstParagraphStyle.display,
+      firstParagraphHeight: firstParagraphBox.height,
+      firstParagraphTextLength: firstParagraph.textContent?.trim().length ?? 0,
+      horizontalOverflow:
+        document.documentElement.scrollWidth - window.innerWidth,
+      lineHeight: Number.parseFloat(firstParagraphStyle.lineHeight),
+      paragraphGap: secondParagraphBox.top - firstParagraphBox.bottom,
+      paragraphMargin: Number.parseFloat(firstParagraphStyle.marginBottom),
+    };
+  });
+}
+
 test("manuscript volume heading does not overlap its stats line", async ({
   page,
 }) => {
@@ -46,6 +94,69 @@ test("manuscript volume heading does not overlap its stats line", async ({
       statsBox.y - 1,
     );
   }
+});
+
+test("short and long openings keep their drop caps clear", async ({ page }) => {
+  const shortOpening = await measureOpeningDropCap(
+    page,
+    "/manuscripts/1/opening/on-form-timing-and-why-this-book-exists/",
+  );
+  const longOpening = await measureOpeningDropCap(
+    page,
+    "/manuscripts/1/opening/orientation/",
+  );
+
+  expect(shortOpening).not.toBeNull();
+  expect(longOpening).not.toBeNull();
+
+  if (!shortOpening || !longOpening) return;
+
+  for (const opening of [shortOpening, longOpening]) {
+    expect(opening.dropCapFloat).toBe("left");
+    expect(opening.firstParagraphDisplay).toBe("flow-root");
+    expect(opening.firstParagraphHeight).toBeGreaterThanOrEqual(
+      opening.dropCapFontSize - 1,
+    );
+    expect(opening.paragraphGap).toBeGreaterThanOrEqual(
+      opening.paragraphMargin - 1,
+    );
+    expect(opening.clearance).toBeGreaterThanOrEqual(8);
+    expect(opening.horizontalOverflow).toBeLessThanOrEqual(1);
+  }
+
+  expect(shortOpening.firstParagraphTextLength).toBeLessThan(60);
+  expect(longOpening.firstParagraphTextLength).toBeGreaterThan(200);
+  expect(longOpening.firstParagraphHeight).toBeGreaterThan(
+    shortOpening.firstParagraphHeight + longOpening.lineHeight,
+  );
+});
+
+test("later chapter sections do not reserve drop cap space", async ({
+  page,
+}) => {
+  await page.goto(
+    "/manuscripts/2/the-diagnosis/the-architecture-of-extraction/",
+  );
+
+  const laterOpening = page
+    .locator("#v02-toward-humane-technology-2")
+    .locator(".manuscript-prose > p:first-of-type");
+  await expect(laterOpening).toBeVisible();
+
+  const layout = await laterOpening.evaluate((firstParagraph) => {
+    const style = window.getComputedStyle(firstParagraph);
+    const firstLetterStyle = window.getComputedStyle(
+      firstParagraph,
+      "::first-letter",
+    );
+    return {
+      firstLetterFloat: firstLetterStyle.float,
+      minHeight: style.minHeight,
+    };
+  });
+
+  expect(layout.firstLetterFloat).toBe("none");
+  expect(layout.minHeight).toBe("0px");
 });
 
 test("manuscript volume heading uses the colored astrology icon", async ({

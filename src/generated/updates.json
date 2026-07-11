@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "348605f93af38d61343e6d73eaef2b3f9c06a835",
+  "headSha": "328028c2ed8f854f333e0184ca6ac89ec3db5ea5",
   "commits": [
+    {
+      "sha": "328028c2ed8f854f333e0184ca6ac89ec3db5ea5",
+      "committedAt": "2026-07-11T21:15:59.000Z",
+      "subject": "fix: continue reader navigation across boundaries (#106)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/328028c2ed8f854f333e0184ca6ac89ec3db5ea5",
+      "filesChanged": 4,
+      "additions": 124,
+      "deletions": 3,
+      "isLiterary": false
+    },
     {
       "sha": "348605f93af38d61343e6d73eaef2b3f9c06a835",
       "committedAt": "2026-07-11T21:05:53.000Z",
@@ -12,7 +22,8 @@
       "filesChanged": 16,
       "additions": 4822,
       "deletions": 5,
-      "isLiterary": false
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-c1us1shp9-aubreyfs-projects.vercel.app"
     },
     {
       "sha": "7eccc336bd4d897268adafcf732752278d70c884",
