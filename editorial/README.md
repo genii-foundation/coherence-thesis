@@ -38,6 +38,82 @@ Each production batch includes three related forms of evidence:
 
 Follow the schemas bundled with the editorial review skill. Record the actual validation method available on the branch. Never cite an imagined command to make a review look more complete than it is.
 
+## Editorial tooling
+
+The deterministic audit finds prohibited punctuation and recurring patterns that deserve attention. Its default corpus run is advisory:
+
+```bash
+npm run manuscripts:editorial
+```
+
+Narrow the audit to a volume or source path while editing:
+
+```bash
+npm run manuscripts:editorial -- --volume <volume-id>
+npm run manuscripts:editorial -- sources/manuscripts/<volume>.md
+```
+
+The strict corpus audit fails on prohibited punctuation. It remains an explicit command while the unrevised source still contains known violations:
+
+```bash
+npm run manuscripts:editorial:strict
+```
+
+Do not add the strict corpus audit to `npm run validate` until the nine-volume revision pull request lands and the complete source corpus passes it. Warning rules remain editorial prompts, even after the punctuation gate is active.
+
+After importing an edited source, initialize pending sentence and structure ledgers from an immutable baseline:
+
+```bash
+npm run manuscripts:editorial-ledgers:init -- \
+  --base <base-sha> \
+  --current WORKTREE \
+  --source sources/manuscripts/<volume>.md \
+  --output editorial/reviews/<volume-id>/<batch-id>
+```
+
+The initializer aligns exact and changed text. It does not make an editorial judgment. Review every inferred disposition, result location, claim, and route outcome before approval.
+
+Validate the resulting ledgers against the baseline and current source:
+
+```bash
+npm run manuscripts:editorial-ledger -- \
+  --base <base-sha> \
+  --current WORKTREE \
+  --source sources/manuscripts/<volume>.md \
+  --require-approved \
+  editorial/reviews/<volume-id>/<batch-id>/sentence-ledger.jsonl
+
+npm run manuscripts:structure-ledger -- \
+  --base <base-sha> \
+  --current WORKTREE \
+  --source sources/manuscripts/<volume>.md \
+  --require-approved \
+  editorial/reviews/<volume-id>/<batch-id>/structure-ledger.jsonl
+```
+
+Adjudication can fill repeatable internal evidence after the semantic, literary, and complete slop reviews exist. Run it without `--write` first:
+
+```bash
+npm run manuscripts:editorial-ledgers:adjudicate -- \
+  --base <base-sha> \
+  --current WORKTREE \
+  --source sources/manuscripts/<volume>.md \
+  --review editorial/reviews/<volume-id>/<batch-id>
+
+npm run manuscripts:editorial-ledgers:adjudicate -- \
+  --base <base-sha> \
+  --current WORKTREE \
+  --source sources/manuscripts/<volume>.md \
+  --review editorial/reviews/<volume-id>/<batch-id> \
+  --write
+```
+
+Before adjudication, complete the tooling evidence fields in `review.md` with the source hash, both initialized ledger hashes, and the hashes of the semantic, literary, and slop reviews. The helper rejects stale hashes, any review without an explicit PASS verdict, incomplete slop coverage, and ledgers that cannot reconstruct their immutable baseline and current source.
+
+Adjudication preserves the baseline text, dispositions, result locations, merge groups, citation attachments, and route impact. It keeps changed claims and public structure below approved status until the necessary authority and link decisions exist.
+
+These tools create and validate internal evidence only. They do not generate or post pull request comments. Editorial comments remain selective correspondence about the actual argument, image, cadence, structure, or author question.
+
 ## Pull request comments
 
 The ledgers are exhaustive. Pull request comments are selective.

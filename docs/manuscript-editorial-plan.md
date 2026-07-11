@@ -111,7 +111,7 @@ The repository skill lives at `.agents/skills/coherence-editorial-review/`. It c
 - The structure ledger contract in `references/structure-ledger-schema.md`
 - A reusable volume voice card in `references/voice-card-template.md`
 
-This standards change defines the contracts. A separate tooling change may implement detectors, ledger initialization, ledger validation, comment assistance, and other automation. The standards must remain usable before that tooling lands, and the tooling must not silently redefine the standards.
+This standards change defines the contracts. A separate tooling change may implement detectors, ledger initialization, ledger validation, adjudication assistance, and other internal automation. The standards must remain usable before that tooling lands, and the tooling must not silently redefine the standards. Pull request commentary is deliberately excluded from mechanical generation. It remains selective correspondence written from close editorial judgment.
 
 Do not cite a command that is absent from the active branch. When automation is available, record the exact command and result. When it is not, document the manual comparison used to prove coverage and reconstruction.
 
