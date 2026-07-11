@@ -95,6 +95,7 @@ async function expectRestingControlBorder(
 
 async function expectMobilePopoverStartsBelowToolbar(
   page: Page,
+  triggerSelector: string,
   selector: string,
 ): Promise<void> {
   await expect
@@ -113,22 +114,69 @@ async function expectMobilePopoverStartsBelowToolbar(
     )
     .toBe(true);
 
-  const metrics = await page.locator(selector).evaluate((element) => {
-    const style = window.getComputedStyle(element);
-    return {
-      radiusTopLeft: Number.parseFloat(style.borderTopLeftRadius),
-      radiusTopRight: Number.parseFloat(style.borderTopRightRadius),
-    };
-  });
+  const metrics = await page.evaluate(
+    ({ selector, triggerSelector }) => {
+      const popover = document.querySelector(selector);
+      const trigger = document.querySelector(triggerSelector);
+      const popoverStyle = popover ? window.getComputedStyle(popover) : null;
+      const triggerStyle = trigger ? window.getComputedStyle(trigger) : null;
 
-  expect(metrics.radiusTopLeft).toBe(0);
-  expect(metrics.radiusTopRight).toBe(0);
+      return {
+        popoverRadiusTopLeft: Number.parseFloat(
+          popoverStyle?.borderTopLeftRadius ?? "0",
+        ),
+        popoverRadiusTopRight: Number.parseFloat(
+          popoverStyle?.borderTopRightRadius ?? "0",
+        ),
+        triggerRadiusBottomLeft: Number.parseFloat(
+          triggerStyle?.borderBottomLeftRadius ?? "0",
+        ),
+        triggerRadiusBottomRight: Number.parseFloat(
+          triggerStyle?.borderBottomRightRadius ?? "0",
+        ),
+        triggerRadiusTopLeft: Number.parseFloat(
+          triggerStyle?.borderTopLeftRadius ?? "0",
+        ),
+        triggerRadiusTopRight: Number.parseFloat(
+          triggerStyle?.borderTopRightRadius ?? "0",
+        ),
+      };
+    },
+    { selector, triggerSelector },
+  );
+
+  expect(metrics.popoverRadiusTopLeft).toBe(0);
+  expect(metrics.popoverRadiusTopRight).toBe(0);
+  expect(metrics.triggerRadiusBottomLeft).toBeGreaterThan(0);
+  expect(metrics.triggerRadiusBottomRight).toBeGreaterThan(0);
+  expect(metrics.triggerRadiusTopLeft).toBeGreaterThan(0);
+  expect(metrics.triggerRadiusTopRight).toBeGreaterThan(0);
+}
+
+async function expectToolbarTriggerRounded(
+  page: Page,
+  selector: string,
+): Promise<void> {
+  await expect
+    .poll(() =>
+      page.locator(selector).evaluate((element) => {
+        const style = window.getComputedStyle(element);
+        return [
+          style.borderTopLeftRadius,
+          style.borderTopRightRadius,
+          style.borderBottomRightRadius,
+          style.borderBottomLeftRadius,
+        ].every((radius) => Number.parseFloat(radius) > 0);
+      }),
+    )
+    .toBe(true);
 }
 
 async function expectDesktopPopoverStartsAtTriggerBottom(
   page: Page,
   triggerSelector: string,
   popoverSelector: string,
+  connectsToTrigger = true,
 ): Promise<void> {
   await expect
     .poll(async () =>
@@ -147,6 +195,57 @@ async function expectDesktopPopoverStartsAtTriggerBottom(
       ),
     )
     .toBeLessThanOrEqual(1);
+
+  const metrics = await page.evaluate(
+    ({ popoverSelector, triggerSelector }) => {
+      const popover = document.querySelector(popoverSelector);
+      const trigger = document.querySelector(triggerSelector);
+      const popoverBox = popover?.getBoundingClientRect();
+      const triggerBox = trigger?.getBoundingClientRect();
+      const popoverStyle = popover ? window.getComputedStyle(popover) : null;
+      const triggerStyle = trigger ? window.getComputedStyle(trigger) : null;
+
+      return {
+        rightEdgeDelta:
+          popoverBox && triggerBox
+            ? Math.abs(popoverBox.right - triggerBox.right)
+            : Number.POSITIVE_INFINITY,
+        popoverRadiusTopLeft: Number.parseFloat(
+          popoverStyle?.borderTopLeftRadius ?? "0",
+        ),
+        popoverRadiusTopRight: Number.parseFloat(
+          popoverStyle?.borderTopRightRadius ?? "0",
+        ),
+        triggerRadiusBottomLeft: Number.parseFloat(
+          triggerStyle?.borderBottomLeftRadius ?? "0",
+        ),
+        triggerRadiusBottomRight: Number.parseFloat(
+          triggerStyle?.borderBottomRightRadius ?? "0",
+        ),
+        triggerRadiusTopLeft: Number.parseFloat(
+          triggerStyle?.borderTopLeftRadius ?? "0",
+        ),
+        triggerRadiusTopRight: Number.parseFloat(
+          triggerStyle?.borderTopRightRadius ?? "0",
+        ),
+      };
+    },
+    { popoverSelector, triggerSelector },
+  );
+
+  expect(metrics.rightEdgeDelta).toBeLessThanOrEqual(1);
+  expect(metrics.popoverRadiusTopLeft).toBeGreaterThan(0);
+  expect(metrics.triggerRadiusTopLeft).toBeGreaterThan(0);
+  expect(metrics.triggerRadiusTopRight).toBeGreaterThan(0);
+  if (connectsToTrigger) {
+    expect(metrics.popoverRadiusTopRight).toBe(0);
+    expect(metrics.triggerRadiusBottomLeft).toBe(0);
+    expect(metrics.triggerRadiusBottomRight).toBe(0);
+  } else {
+    expect(metrics.popoverRadiusTopRight).toBeGreaterThan(0);
+    expect(metrics.triggerRadiusBottomLeft).toBeGreaterThan(0);
+    expect(metrics.triggerRadiusBottomRight).toBeGreaterThan(0);
+  }
 }
 
 async function toolbarMenuHeightTarget(
@@ -613,11 +712,39 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       hasText: "Wielding Intelligence",
     }),
   ).toBeVisible();
-  await expect(
-    outlineMenu.locator(".outline-chapters").getByRole("link", {
+  const outlineChapterLink = outlineMenu
+    .locator(".outline-chapters")
+    .getByRole("link", {
       name: /^Builders of the Coherent Civilization/,
-    }),
-  ).toBeVisible();
+    });
+  await expect(outlineChapterLink).toBeVisible();
+  const outlineChapterMeta = await outlineChapterLink.evaluate((row) => {
+    const meta = row.querySelector<HTMLElement>(".outline-row-meta");
+    const minutes = meta?.querySelector("small")?.getBoundingClientRect();
+    const dot = meta
+      ?.querySelector(".progress-state-dot")
+      ?.getBoundingClientRect();
+    const metaStyle = meta ? window.getComputedStyle(meta) : null;
+
+    return {
+      display: metaStyle?.display ?? "",
+      minuteDotCenterDelta:
+        minutes && dot
+          ? Math.abs(
+              minutes.top +
+                minutes.height / 2 -
+                (dot.top + dot.height / 2),
+            )
+          : Number.POSITIVE_INFINITY,
+      dotStartsAfterMinutes:
+        minutes && dot ? dot.left >= minutes.right - 1 : false,
+      whiteSpace: metaStyle?.whiteSpace ?? "",
+    };
+  });
+  expect(["flex", "inline-flex"]).toContain(outlineChapterMeta.display);
+  expect(outlineChapterMeta.whiteSpace).toBe("nowrap");
+  expect(outlineChapterMeta.dotStartsAfterMinutes).toBe(true);
+  expect(outlineChapterMeta.minuteDotCenterDelta).toBeLessThanOrEqual(3);
   await page.keyboard.press("Escape");
   await expect(outlineMenu).toHaveCount(0);
 
@@ -702,6 +829,7 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   await expect(searchInput).toBeFocused();
   await page.keyboard.press("Escape");
   await expect(searchMenu).toHaveCount(0);
+  await expectToolbarTriggerRounded(page, ".search-menu-button");
   await expect(searchButton).toBeFocused();
 
   await searchButton.click();
@@ -935,6 +1063,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
     page,
     ".audio-menu-button",
     ".audio-popover",
+    false,
   );
   await expectRestingControlBorder(page, ".voice-field select");
   await expect(audioMenu.getByText("Voice", { exact: true })).toBeVisible();
@@ -1033,29 +1162,49 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
 
   await page.getByRole("button", { name: "Search manuscripts" }).click();
   await expect(page.getByRole("region", { name: "Manuscript search" })).toBeVisible();
-  await expectMobilePopoverStartsBelowToolbar(page, ".search-popover");
+  await expectMobilePopoverStartsBelowToolbar(
+    page,
+    ".search-menu-button",
+    ".search-popover",
+  );
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: /Outline/ }).click();
   await expect(page.getByRole("region", { name: "Site outline" })).toBeVisible();
-  await expectMobilePopoverStartsBelowToolbar(page, ".outline-popover");
+  await expectMobilePopoverStartsBelowToolbar(
+    page,
+    ".outline-menu-button",
+    ".outline-popover",
+  );
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: "Reader settings" }).click();
   await expect(page.getByRole("region", { name: "Reader settings" })).toBeVisible();
-  await expectMobilePopoverStartsBelowToolbar(page, ".settings-popover");
+  await expectMobilePopoverStartsBelowToolbar(
+    page,
+    ".settings-menu-button",
+    ".settings-popover",
+  );
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: "Share and downloads" }).click();
   await expect(
     page.getByLabel("Share and downloads").filter({ hasText: "Share" }),
   ).toBeVisible();
-  await expectMobilePopoverStartsBelowToolbar(page, ".share-popover");
+  await expectMobilePopoverStartsBelowToolbar(
+    page,
+    ".share-menu-button",
+    ".share-popover",
+  );
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: /Listen/ }).click();
   await expect(page.getByLabel("Audiobook controls")).toBeVisible();
-  await expectMobilePopoverStartsBelowToolbar(page, ".audio-popover");
+  await expectMobilePopoverStartsBelowToolbar(
+    page,
+    ".audio-menu-button",
+    ".audio-popover",
+  );
   await page.getByRole("button", { name: "Pause audiobook" }).click();
   await expect(page.getByLabel("Audiobook controls")).toBeVisible();
   await expect(page.getByRole("button", { name: /Listen/ })).toBeVisible();
@@ -1063,7 +1212,11 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
 
   await page.getByRole("button", { name: /Progress/ }).click();
   await expect(page.getByRole("region", { name: "Reader progress" })).toBeVisible();
-  await expectMobilePopoverStartsBelowToolbar(page, ".progress-popover");
+  await expectMobilePopoverStartsBelowToolbar(
+    page,
+    ".progress-menu-button",
+    ".progress-popover",
+  );
 });
 
 test("toolbar positioning does not lag through scroll direction changes", async ({

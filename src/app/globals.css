@@ -1630,7 +1630,7 @@ input {
 .outline-top-links strong,
 .outline-volume-link strong,
 .outline-part-title span,
-.outline-chapters span {
+.outline-chapters a > span:first-child {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1814,6 +1814,26 @@ input {
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 861px) {
+  .site-nav
+    > *
+    > button[data-toolbar-menu-trigger][aria-expanded="true"]:not(
+      .audio-menu-button
+    ) {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .site-nav
+    > *
+    > button[data-toolbar-menu-trigger][aria-expanded="true"]:not(
+      .audio-menu-button
+    )
+    + [data-menu-state="open"] {
+    border-top-right-radius: 0;
+  }
 }
 
 .home-page,
