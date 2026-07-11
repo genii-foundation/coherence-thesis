@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "b137a70fe689012321203f0d0fc3a4ae82a63696",
+  "headSha": "9b39730a5fe7c73de6671c68add46a1fc493f027",
   "commits": [
+    {
+      "sha": "9b39730a5fe7c73de6671c68add46a1fc493f027",
+      "committedAt": "2026-07-11T19:10:25.000Z",
+      "subject": "feat: add literary updates and version links (#116)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/9b39730a5fe7c73de6671c68add46a1fc493f027",
+      "filesChanged": 21,
+      "additions": 1461,
+      "deletions": 203,
+      "isLiterary": false
+    },
     {
       "sha": "b137a70fe689012321203f0d0fc3a4ae82a63696",
       "committedAt": "2026-07-11T18:48:36.000Z",
