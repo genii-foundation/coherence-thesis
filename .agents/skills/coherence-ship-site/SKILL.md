@@ -1,12 +1,12 @@
 ---
 name: coherence-ship-site
-description: Prepare and verify the Coherence Thesis static site for publishing, then document publish decisions, validation evidence, deploy state, and any publish-prep changes in a high-context pull request or closeout. Use when asked to ship, publish, deploy, create a preview, verify static export output, or confirm that origin/main contains a validated publishable state.
+description: Prepare and verify the Coherence Thesis Next.js site for publishing, then document publish decisions, validation evidence, deploy state, and any publish-prep changes in a high-context pull request or closeout. Use when asked to ship, publish, deploy, create a preview, verify production build output, or confirm that origin/main contains a validated publishable state.
 disable-model-invocation: true
 ---
 
 # Ship Site
 
-Prepare the static manuscript site for publishing from the current `main` branch.
+Prepare the manuscript site for publishing from the current `main` branch.
 
 ## Workflow
 
@@ -32,38 +32,47 @@ If the fetch fails, stop and report the failure. If the requested publish target
    - Which revision, branch, and generated catalog state are being verified.
    - Whether any publish-prep change was needed and why.
    - Which routes, browser behaviors, and deploy target evidence matter for this publish.
-5. Run the full validation gate:
+5. Refresh the checked Updates fallback through the target main revision and verify its head:
+
+```bash
+npm run updates:generate
+npm run updates:verify -- <target-main-sha>
+```
+
+6. Run the full validation gate:
 
 ```bash
 npm run validate
 ```
 
-6. Run desktop and mobile browser smoke tests:
+7. Run desktop and mobile browser smoke tests:
 
 ```bash
 npm run test:e2e
 ```
 
-7. Start or refresh the static preview:
+8. Start or refresh the production preview:
 
 ```bash
 npm start
 ```
 
-8. Verify representative routes:
+9. Verify representative routes:
    - `/`
    - `/overview/`
+   - `/updates/`
    - one deep manuscript section route
    - `/sitemap.xml`
    - `/robots.txt`
-9. If a deployment target exists, use the project-approved deploy command for that target. Do not invent a raw deploy command.
-10. Review the final diff before staging. Confirm generated files are expected, README state is intentional, preview or deploy evidence is recorded, and unrelated local changes are left alone.
-11. Commit any publish-prep changes with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
+10. If a deployment target exists, use the project-approved deploy command for that target. Do not invent a raw deploy command. After a main deployment, verify that production `/updates/` contains the deployed commit SHA or merged pull request.
+11. Review the final diff before staging. Confirm generated files are expected, README state is intentional, preview or deploy evidence is recorded, the Updates fallback is current, and unrelated local changes are left alone. When verifying an already merged main revision, do not create a snapshot-only commit just to record that revision. The next normal pull request carries it forward through its base refresh.
+12. Commit any publish-prep changes with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
 
 ## Publishability Checks
 
-- Static export must complete without route generation errors.
+- The production build must complete without route generation errors.
 - `src/generated/manuscripts/catalog.json` must be fresh.
+- `src/generated/updates.json` must match the target main revision before publish, and the live Updates page must contain the deployed SHA after publish.
 - README status should reflect the current branch, revision, and manuscript stats.
 - The site must remain readable without JavaScript.
 - Toolbar progress, breadcrumbs, overview links, and audio controls should pass browser smoke tests.
@@ -78,7 +87,7 @@ Include publish-specific context whenever it applies:
 - The source revision, branch, generated catalog state, and README state being verified.
 - The reason for any publish-prep change, including generated file refreshes or metadata updates.
 - Representative routes checked and why they cover the publishing risk.
-- Static preview, browser smoke, deployment command, deployment URL, and deploy status evidence.
+- Production preview, browser smoke, deployment command, deployment URL, and deploy status evidence.
 - Any skipped, narrowed, retried, or failed validation with the exact reason.
 - Known publish risks, such as stale generated data, route generation sensitivity, deployment target uncertainty, or follow-up monitoring.
 

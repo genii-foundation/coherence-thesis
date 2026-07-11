@@ -1,6 +1,10 @@
 import type { MetadataRoute } from "next";
 import { catalog } from "@/lib/manuscript-data";
 import { siteUrl } from "@/lib/site-url";
+import {
+  getUpdatesPageHref,
+  getUpdatesPaginationStaticParams,
+} from "@/lib/updates-pagination";
 
 export const dynamic = "force-static";
 
@@ -16,6 +20,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.95,
     },
+    {
+      url: `${siteUrl}/updates/`,
+      changeFrequency: "daily",
+      priority: 0.5,
+    },
+    ...getUpdatesPaginationStaticParams().map(({ page }) => ({
+      url: `${siteUrl}${getUpdatesPageHref(Number.parseInt(page, 10))}`,
+      changeFrequency: "daily" as const,
+      priority: 0.4,
+    })),
   ];
 
   const manuscriptRoutes: MetadataRoute.Sitemap = [

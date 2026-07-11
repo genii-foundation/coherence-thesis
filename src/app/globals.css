@@ -4551,6 +4551,517 @@ input {
   max-width: 78rem;
 }
 
+.updates-page {
+  max-width: 68rem;
+}
+
+.updates-heading {
+  max-width: 52rem;
+  margin-bottom: 1.35rem;
+}
+
+.updates-heading h1 {
+  font-weight: 400;
+}
+
+.updates-heading > p:not(.eyebrow) {
+  font-weight: 400;
+}
+
+.updates-heading .updates-summary {
+  margin-top: 1rem;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.updates-summary strong {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.updates-summary a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  color: var(--bronze-deep);
+  font-weight: 700;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+.updates-summary a:where(:visited) {
+  color: var(--bronze-deep);
+}
+
+.updates-summary a:hover,
+.updates-summary a:focus-visible {
+  color: var(--ink);
+}
+
+.updates-summary-github-icon {
+  width: 0.86rem;
+  height: 0.86rem;
+}
+
+.updates-history {
+  --updates-history-gap: clamp(1.8rem, 4vw, 2.8rem);
+
+  display: grid;
+  gap: var(--updates-history-gap);
+  max-width: 64rem;
+}
+
+.updates-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  min-height: 2rem;
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.updates-pagination-top {
+  margin-bottom: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+.updates-pagination-bottom {
+  margin-top: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.updates-pagination a,
+.updates-pagination span {
+  border-radius: var(--radius);
+  color: inherit;
+  padding: 0.32rem 0.48rem;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.24em;
+}
+
+.updates-pagination a:where(:visited) {
+  color: inherit;
+}
+
+.updates-pagination a:hover,
+.updates-pagination a:focus-visible {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+
+.updates-pagination span[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--bronze-deep);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.24em;
+}
+
+.updates-day {
+  display: grid;
+  grid-template-columns: minmax(8.5rem, 0.28fr) 1rem minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(0.7rem, 2vw, 1.3rem);
+  min-width: 0;
+}
+
+.updates-day-heading {
+  grid-column: 1;
+  padding-top: 0.9rem;
+  text-align: right;
+}
+
+.updates-day-heading h2,
+.updates-day-heading p {
+  margin: 0;
+}
+
+.updates-day-heading h2 {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.08rem, 1.7vw, 1.28rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.updates-day-heading p {
+  margin-top: 0.35rem;
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.updates-timeline-rail {
+  position: relative;
+  grid-column: 2;
+  align-self: stretch;
+  min-height: 100%;
+}
+
+.updates-timeline-rail::before {
+  position: absolute;
+  top: 1.2rem;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--bronze-deep) 42%, transparent),
+    color-mix(in srgb, var(--bronze-deep) 13%, transparent) 78%,
+    color-mix(in srgb, var(--bronze-deep) 28%, transparent)
+  );
+  content: "";
+  transform: translateX(-50%);
+}
+
+.updates-day:last-child .updates-timeline-rail::before {
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--bronze-deep) 34%, transparent),
+    transparent
+  );
+}
+
+.updates-timeline-rail::after {
+  position: absolute;
+  top: 0.78rem;
+  left: 50%;
+  width: 0.56rem;
+  height: 0.56rem;
+  border: 1px solid color-mix(in srgb, var(--bronze-deep) 62%, transparent);
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--bronze) 6%, transparent);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.updates-day[data-latest-day="true"] .updates-timeline-rail::after {
+  width: 0.78rem;
+  height: 0.78rem;
+  border-color: color-mix(in srgb, var(--bronze-deep) 74%, transparent);
+  background: var(--bronze);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--bronze) 15%, transparent),
+    0 0 18px color-mix(in srgb, var(--bronze) 28%, transparent);
+}
+
+.updates-list {
+  display: grid;
+  grid-column: 3;
+  gap: 0.72rem;
+  min-width: 0;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+
+.updates-entry {
+  min-width: 0;
+}
+
+.updates-entry article {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) * 1.35);
+  background: var(--card-background);
+  box-shadow:
+    0 9px 24px rgba(44, 31, 18, 0.075),
+    0 1px 0 rgba(255, 255, 255, 0.38) inset;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.updates-entry article:hover,
+.updates-entry article:has(.updates-card-link:focus-visible) {
+  border-color: color-mix(in srgb, var(--bronze-deep) 62%, var(--line));
+  background: var(--card-background-hover);
+  box-shadow:
+    0 13px 32px rgba(44, 31, 18, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.46) inset;
+}
+
+.updates-card-link {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.updates-card-link:focus-visible {
+  outline-offset: -3px !important;
+}
+
+.updates-card-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1rem);
+  padding: clamp(0.82rem, 2vw, 1.05rem);
+  pointer-events: none;
+}
+
+.updates-card-main {
+  min-width: 0;
+}
+
+.updates-entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.38rem 0.55rem;
+  min-width: 0;
+}
+
+.updates-kind,
+.updates-latest-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.35rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  line-height: 1;
+  padding: 0.28rem 0.48rem;
+  text-transform: uppercase;
+}
+
+.updates-latest-badge {
+  background: var(--bronze-deep);
+  color: var(--paper-soft);
+}
+
+.updates-kind {
+  border: 1px solid color-mix(in srgb, var(--ink-muted) 25%, transparent);
+  background: color-mix(in srgb, var(--ink-muted) 8%, transparent);
+  color: var(--ink-muted);
+}
+
+.updates-kind[data-update-kind="feature"],
+.updates-kind[data-update-kind="manuscript"] {
+  border-color: color-mix(in srgb, var(--bronze-deep) 34%, transparent);
+  background: color-mix(in srgb, var(--bronze) 11%, transparent);
+  color: var(--bronze-deep);
+}
+
+.updates-kind[data-update-kind="fix"],
+.updates-kind[data-update-kind="performance"] {
+  border-color: color-mix(in srgb, var(--sage) 38%, transparent);
+  background: color-mix(in srgb, var(--sage) 11%, transparent);
+  color: var(--ink);
+}
+
+.updates-commit-reference,
+.updates-pull-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  color: var(--ink-muted);
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.updates-pull-link {
+  position: relative;
+  z-index: 2;
+  justify-content: center;
+  min-height: 1.5rem;
+  margin-inline: -0.16rem;
+  border-radius: 0.3rem;
+  padding-inline: 0.16rem;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease;
+  pointer-events: auto;
+}
+
+.updates-primary-reference,
+.updates-commit-link {
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease;
+}
+
+.updates-commit-link {
+  position: relative;
+  z-index: 2;
+  justify-content: center;
+  min-height: 1.5rem;
+  margin-inline: -0.16rem;
+  border-radius: 0.3rem;
+  padding-inline: 0.16rem;
+  pointer-events: auto;
+}
+
+.updates-pull-link:where(:visited),
+.updates-commit-link:where(:visited) {
+  color: var(--ink-muted);
+}
+
+.updates-pull-link:hover,
+.updates-pull-link:focus-visible,
+.updates-commit-link:hover,
+.updates-commit-link:focus-visible {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+
+.updates-entry
+  article:hover:not(:has(.updates-commit-link:hover))
+  .updates-primary-reference,
+.updates-entry
+  article:has(.updates-card-link:focus-visible)
+  .updates-primary-reference {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+
+.updates-commit-reference code {
+  font: inherit;
+}
+
+.updates-github-icon {
+  display: block;
+  width: 0.78rem;
+  height: 0.78rem;
+}
+
+.updates-entry h3 {
+  margin: 0.58rem 0 0;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: clamp(0.96rem, 1.5vw, 1.06rem);
+  font-weight: 450;
+  line-height: 1.48;
+}
+
+.updates-change-summary {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-self: end;
+  gap: 0.55rem;
+  min-width: max-content;
+}
+
+.updates-change-counts {
+  display: grid;
+  gap: 0.18rem;
+  color: var(--ink-muted);
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.updates-change-counts strong {
+  color: var(--ink-soft);
+  font-weight: 650;
+}
+
+.updates-change-meter {
+  display: flex;
+  align-items: end;
+  gap: 0.12rem;
+  height: 1.2rem;
+}
+
+.updates-change-meter > span {
+  width: 0.16rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--line) 80%, transparent);
+}
+
+.updates-change-meter > span:nth-child(1) {
+  height: 0.28rem;
+}
+
+.updates-change-meter > span:nth-child(2) {
+  height: 0.48rem;
+}
+
+.updates-change-meter > span:nth-child(3) {
+  height: 0.68rem;
+}
+
+.updates-change-meter > span:nth-child(4) {
+  height: 0.9rem;
+}
+
+.updates-change-meter > span:nth-child(5) {
+  height: 1.12rem;
+}
+
+.updates-change-meter > span[data-filled="true"] {
+  background: var(--bronze-deep);
+}
+
+@media (max-width: 720px) {
+  .updates-pull-link,
+  .updates-commit-link {
+    min-height: 2rem;
+  }
+
+  .updates-card-content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.65rem;
+  }
+
+  .updates-change-summary {
+    justify-self: stretch;
+    justify-content: end;
+    border-top: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+    padding-top: 0.55rem;
+  }
+
+  .updates-day {
+    grid-template-columns: 1rem minmax(0, 1fr);
+    gap: 0.72rem 0.6rem;
+  }
+
+  .updates-day-heading {
+    display: flex;
+    grid-column: 1 / -1;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: left;
+  }
+
+  .updates-day-heading p {
+    margin-top: 0;
+    white-space: nowrap;
+  }
+
+  .updates-timeline-rail {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .updates-list {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
 .progress-heatmap {
   --progress-heatmap-dot-size: 0.72rem;
   display: grid;

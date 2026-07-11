@@ -31,6 +31,16 @@ npm run manuscripts:validate
 - Do not accept an import when the parser has collapsed, fragmented, reordered, or renamed sections incorrectly. Fix the source or importer first.
 - Treat removed or renamed sections as a link preservation event. Add aliases when old public routes should continue to resolve. `manuscripts:validate` enforces this: the section ledger in `content/series/section-ledger.json` records every route ever published, and the build fails if a published route stops resolving without an alias.
 
+## Updates History
+
+- The public `/updates/` page is generated from every commit on `main`. Do not write manual changelog entries.
+- `src/generated/updates.json` is the checked fallback and immutable statistics cache. Never edit it by hand. In a pull request, do not discard it as incidental build churn when it advances through the current main base.
+- After refreshing `origin/main`, run `npm run updates:generate` before the final commit on every pull request. Commit the snapshot when it advances. Pull request CI rejects a fallback cache that is behind the current base.
+- A post-merge build on `main` necessarily advances the generated snapshot through its own commit. Do not create a recursive snapshot-only commit for that output. The next normal pull request persists it as part of its base refresh.
+- Production builds must generate history through the exact deployed `main` SHA. If complete Git history and GitHub are both unavailable, production must fail without replacing the last good deployment. It must never publish a green but stale Updates page.
+- Preserve the page contract when changing this pipeline: every commit appears, pull requests are the primary card target when the squash subject identifies one, commit hashes remain available, and file and line statistics remain exact in the generated data.
+- After merging, verify that the production `/updates/` page contains the merged pull request or commit SHA before closing the task.
+
 ## Interface Rules
 
 - Reader text must remain readable without JavaScript. Client islands may enhance progress, audio, menus, and preferences.
