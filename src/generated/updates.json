@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "998b3057555d2358368e967ab2221865e42f3f13",
+  "headSha": "0224ed2dc75367ce6b6bc55dfd4302f3adee7dc9",
   "commits": [
+    {
+      "sha": "0224ed2dc75367ce6b6bc55dfd4302f3adee7dc9",
+      "committedAt": "2026-07-11T20:41:58.000Z",
+      "subject": "docs: define pull request review status (#117)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/0224ed2dc75367ce6b6bc55dfd4302f3adee7dc9",
+      "filesChanged": 6,
+      "additions": 86,
+      "deletions": 11,
+      "isLiterary": false
+    },
     {
       "sha": "998b3057555d2358368e967ab2221865e42f3f13",
       "committedAt": "2026-07-11T20:25:19.000Z",
@@ -12,7 +22,8 @@
       "filesChanged": 11,
       "additions": 1398,
       "deletions": 1,
-      "isLiterary": false
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-f2m9ua02y-aubreyfs-projects.vercel.app"
     },
     {
       "sha": "9b39730a5fe7c73de6671c68add46a1fc493f027",
