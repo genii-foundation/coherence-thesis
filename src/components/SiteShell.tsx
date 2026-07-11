@@ -15,7 +15,6 @@ import { ToolbarBreadcrumbs } from "@/components/ToolbarBreadcrumbs";
 import { ToolbarProgressIsland } from "@/components/ToolbarProgressIsland";
 import { ToolbarSettingsIsland } from "@/components/ToolbarSettingsIsland";
 import { ToolbarShareIsland } from "@/components/ToolbarShareIsland";
-import { ToolbarScrollShadowIsland } from "@/components/ToolbarScrollShadowIsland";
 import { catalog, toolbarOutline } from "@/lib/manuscript-data";
 
 const copyrightStartYear = 2026;
@@ -88,7 +87,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <circle cx="1098" cy="1700" r="2.2" fill="currentColor" />
       </svg>
       <header className="site-header">
-        <ToolbarScrollShadowIsland />
         <ToolbarBrandIsland volumes={brandVolumes} />
         <ToolbarBreadcrumbs />
         <nav className="site-nav" aria-label="Primary">

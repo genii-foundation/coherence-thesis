@@ -2,8 +2,19 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "97510275c5456cb7f25fa843a466f76bdb54ed64",
+  "headSha": "5183b6347b366e829d61d213cdc98bde157bd0d7",
   "commits": [
+    {
+      "sha": "5183b6347b366e829d61d213cdc98bde157bd0d7",
+      "committedAt": "2026-07-11T22:41:13.000Z",
+      "subject": "feat: preserve manuscript link continuity (#110)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/5183b6347b366e829d61d213cdc98bde157bd0d7",
+      "filesChanged": 56,
+      "additions": 77879,
+      "deletions": 215,
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-m7stkgwar-aubreyfs-projects.vercel.app"
+    },
     {
       "sha": "97510275c5456cb7f25fa843a466f76bdb54ed64",
       "committedAt": "2026-07-11T22:10:29.000Z",
