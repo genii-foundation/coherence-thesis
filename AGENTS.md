@@ -64,6 +64,9 @@ npm run manuscripts:validate
 - Prefer short concrete sentences. If a sentence needs heavy punctuation to stay standing, split it.
 - User-facing copy should sound like a person wrote it. Prefer concrete language over abstract phrasing.
 - Contractions are fine.
+- Use `.agents/skills/coherence-editorial-review/` for manuscript audits, developmental review, sentence-level editing, and final editorial verification.
+- Store durable pilot and production evidence under `editorial/reviews/<volume-id>/<batch-id>/`. Keep canonical prose in `sources/manuscripts/` and keep temporary editorial output outside the repository.
+- Keep review ledgers exhaustive and pull request comments selective. Comments must explain a real claim, image, cadence, structural choice, or author question in natural editorial language. Never turn reason codes or mechanical dispositions into a spray of formulaic inline notes.
 
 ## Validation
 
