@@ -19,6 +19,7 @@ export type UpdatesGenerationResult = {
 };
 
 const githubApiRoot = `https://api.github.com/repos/${updatesRepository}`;
+const githubGitRepository = `https://github.com/${updatesRepository}.git`;
 const githubPageSize = 100;
 const githubRequestTimeoutMs = 15_000;
 const maxGithubPages = 1_000;
@@ -176,11 +177,13 @@ function completeShallowLocalHistory(runGit: GitCommand): void {
     "credential.helper=",
     "-c",
     "http.extraHeader=",
+    "-c",
+    "http.https://github.com/.extraheader=",
     "fetch",
     "--unshallow",
     "--no-tags",
     "--no-recurse-submodules",
-    "origin",
+    githubGitRepository,
     `+refs/heads/${updatesBranch}:refs/remotes/origin/${updatesBranch}`,
   ]);
 }

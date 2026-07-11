@@ -124,7 +124,7 @@ The public [Updates page](https://www.coherence-thesis.com/updates/) is compiled
 npm run updates:generate
 ```
 
-No manual changelog entry is needed. The production build runs this command before Next renders the site. It reads complete local Git history when available, including changed file, addition, and deletion totals for every commit. Shallow deploys first expand `main` from the existing Git remote and read the exact deployed SHA locally. If that fetch fails, they fall back to GitHub. The GitHub path reuses immutable diff totals from the checked snapshot, then requests commit details only for new SHAs.
+No manual changelog entry is needed. The production build runs this command before Next renders the site. It reads complete local Git history when available, including changed file, addition, and deletion totals for every commit. Shallow deploys first expand `main` from the canonical public Git repository and read the exact deployed SHA locally. If that fetch fails, they fall back to the GitHub API. The API path reuses immutable diff totals from the checked snapshot, then requests commit details only for new SHAs.
 
 Every pull request refreshes and verifies `src/generated/updates.json` through its current main base. Because main requires current checks before merge, the checked cache stays one successful merge behind at most. Production main builds require the generated history to match the exact deployed SHA. If neither complete Git history nor GitHub can provide that history, the new deployment fails and Vercel keeps the previous good deployment. Local and preview builds may still use the last valid snapshot when offline. The page groups commits by UTC date and shows five dates per numbered page.
 
