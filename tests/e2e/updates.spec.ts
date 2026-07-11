@@ -684,7 +684,7 @@ test("literary mode filters commits and resets pagination when switching views",
       exact: true,
     });
     const modeLink = pagination.getByRole("link", {
-      name: "Literary updates",
+      name: "Show Literary Updates",
       exact: true,
     });
     await expect(modeLink).toHaveAttribute("href", "/updates/literary/");
@@ -740,7 +740,7 @@ test("literary mode filters commits and resets pagination when switching views",
           name: "Updates pagination",
           exact: true,
         })
-        .getByRole("link", { name: "Literary updates", exact: true }),
+        .getByRole("link", { name: "Show Literary Updates", exact: true }),
     ).toHaveAttribute("href", "/updates/literary/");
   }
 });
