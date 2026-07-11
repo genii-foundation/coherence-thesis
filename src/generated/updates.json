@@ -2,8 +2,17 @@
   "schemaVersion": 2,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "4eb49904ba6de3e18270df67a70ae684e6454d7b",
+  "headSha": "b50713c5b02006d26a2bff0be0a20f3a864a9984",
   "commits": [
+    {
+      "sha": "b50713c5b02006d26a2bff0be0a20f3a864a9984",
+      "committedAt": "2026-07-11T02:34:55.000Z",
+      "subject": "fix: recover updates history in shallow deploys (#103)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/b50713c5b02006d26a2bff0be0a20f3a864a9984",
+      "filesChanged": 6,
+      "additions": 85,
+      "deletions": 6
+    },
     {
       "sha": "4eb49904ba6de3e18270df67a70ae684e6454d7b",
       "committedAt": "2026-07-11T01:56:51.000Z",
