@@ -2,8 +2,8 @@
 
 ## Core Rules
 
-- This repository is the canonical source of truth for The Coherence Thesis. Source manuscripts are Markdown files in `sources/manuscripts/`. Generated canonical reader sections live in `content/manuscripts/`.
-- Do not edit generated manuscript data by hand. Edit Markdown, then run `npm run manuscripts:compile`. This also rebuilds the public reader data, breadcrumb data, and manuscript search index.
+- This repository is the canonical source of truth for The Coherence Thesis. Tracked source manuscripts are Markdown files in `sources/manuscripts/`. Reader sections and browser payloads are generated locally and are not committed.
+- Do not edit generated manuscript data by hand. Edit source Markdown, then run `npm run manuscripts:prepare`. Development, tests, and builds run the same preparation automatically.
 - After implementing any feature, run the narrowest useful checks during iteration, then run `npm run validate` before commit.
 - For UI changes, use `npm run test:e2e:fast:desktop` for narrow desktop checks and `npm run test:e2e:fast` for broader local checks during iteration. Run `npm run test:e2e` before commit unless the change cannot affect browser behavior.
 - After every completed feature, commit the complete change and open or update a focused PR without waiting to be asked again.
@@ -16,20 +16,21 @@
 ## Manuscripts
 
 - Authors edit source Markdown in `sources/manuscripts/` or series metadata in `content/series/`.
-- Do not edit generated canonical reader sections in `content/manuscripts/` by hand. Run `npm run manuscripts:import`.
-- Generated browser data lives in `public/data/`, including the reader payload, breadcrumb routes, and manuscript search index.
+- Do not edit generated reader sections in `content/manuscripts/` by hand. They are ignored materializations created by `npm run manuscripts:prepare`.
+- Generated browser payloads live in `public/data/` and remain ignored. `public/data/audio-manifest.json` is the exception because it records externally published immutable audio.
 - Overview nodes live in `content/overview/` and must reference real section IDs.
 - Stable section IDs support deep links, read progress, update badges, recommendations, audio queues, and future spaced repetition. Preserve historical deep links from this publishing pipeline forward with `content/series/aliases.json`.
 - New Markdown source updates must go through the publishing workflow:
 
 ```bash
 npm run manuscripts:import
-npm run manuscripts:compile
+npm run manuscripts:record-routes
+npm run manuscripts:prepare -- --force
 npm run manuscripts:validate
 ```
 
 - Do not accept an import when the parser has collapsed, fragmented, reordered, or renamed sections incorrectly. Fix the source or importer first.
-- Treat removed or renamed sections as a link preservation event. Add aliases when old public routes should continue to resolve. `manuscripts:validate` enforces this: the section ledger in `content/series/section-ledger.json` records every route ever published, and the build fails if a published route stops resolving without an alias.
+- Treat removed or renamed sections as a link preservation event. Add aliases when old public routes should continue to resolve. `manuscripts:validate` enforces this through the durable section ledger. Automatic preparation never updates that ledger. Only `npm run manuscripts:record-routes` records reviewed public routes.
 
 ## Updates History
 
@@ -103,7 +104,7 @@ npm start
 - Do not work directly on `main` for feature, manuscript, or process changes unless the user explicitly asks for a direct commit.
 - Use a separate git worktree for each feature, manuscript edit, bug fix, or process change. Keep the primary checkout on `main` as the clean integration workspace.
 - Create a short branch with a Conventional Commit prefix, such as `feat/`, `fix/`, `edit/`, `docs/`, `chore/`, `refactor/`, or `perf/`, followed by a kebab-case description.
-- Use `edit/` for manuscript updates, including changes to `content/manuscripts/`, `content/overview/`, import applications, and generated manuscript catalog updates caused by canonical text edits.
+- Use `edit/` for manuscript updates, including changes to source Markdown, `content/overview/`, and reviewed durable publishing metadata.
 - Keep each PR focused. One worktree should map to one coherent PR.
 - Do not merge changes to a shared UI component inside a PR whose stated purpose does not mention that surface. Move the UI change to a focused branch, or expand the PR scope and validation evidence before review.
 - Commit messages should follow "Conventional Commits" when possible. Use `edit:` for manuscript updates.
