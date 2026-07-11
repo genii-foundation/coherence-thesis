@@ -4704,7 +4704,7 @@ input {
 .updates-timeline-rail::before {
   position: absolute;
   top: 1.2rem;
-  bottom: calc(-1 * var(--updates-history-gap));
+  bottom: 0;
   left: 50%;
   width: 1px;
   background: linear-gradient(
