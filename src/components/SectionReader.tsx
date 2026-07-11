@@ -2,11 +2,14 @@ import { notFound } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { GitHubMark } from "@/components/GitHubMark";
 import { MarkdownBody } from "@/components/MarkdownBody";
+import { LegacyFragmentRedirectIsland } from "@/components/LegacyFragmentRedirectIsland";
+import { LegacySectionAnchors } from "@/components/LegacySectionAnchors";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReaderAudioWordInteractionIsland } from "@/components/ReaderAudioWordInteractionIsland";
 import { ReaderEngagementIsland } from "@/components/ReaderEngagementIsland";
 import { ReaderLinkableHeading } from "@/components/ReaderLinkableHeading";
 import { SectionRevisionNotice } from "@/components/SectionRevisionNotice";
+import { SectionAliasRedirectIsland } from "@/components/SectionAliasRedirectIsland";
 import {
   sectionNavigation,
   toProgressSection,
@@ -47,6 +50,18 @@ export function SectionReader({
       className="reader-main"
       data-reader-section-id={section.sectionId}
     >
+      {alias ? (
+        <SectionAliasRedirectIsland
+          readerHref={section.readerHref}
+          section={toProgressSection(section)}
+        />
+      ) : (
+        <LegacyFragmentRedirectIsland sections={[toProgressSection(section)]} />
+      )}
+      <LegacySectionAnchors
+        currentSectionId={section.sectionId}
+        legacySectionIds={section.legacySectionIds}
+      />
       <header className="manuscript-heading">
         <ReaderLinkableHeading
           href={sectionHeadingHref(section.readerHref, section.sectionId)}
@@ -85,6 +100,7 @@ export function SectionReader({
         markdown={section.body}
         paragraphs={section.paragraphs}
         sectionId={section.sectionId}
+        anchorPrefix={alias ? `${section.sectionId}-` : ""}
       />
       <ReaderAudioWordInteractionIsland sectionId={section.sectionId} />
       <ReaderEngagementIsland sections={[toProgressSection(section)]} />

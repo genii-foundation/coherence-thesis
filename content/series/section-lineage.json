@@ -1,0 +1,7076 @@
+{
+  "version": 1,
+  "sections": [
+    {
+      "currentSectionId": "v01-orientation",
+      "continuityIds": [
+        "v01-orientation"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-orientation"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-on-form-timing-and-why-this-book-exists",
+      "continuityIds": [
+        "v01-on-form-timing-and-why-this-book-exists"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-on-form-timing-and-why-this-book-exists"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-a-note-on-compression",
+      "continuityIds": [
+        "v01-a-note-on-compression"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-a-note-on-compression"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-how-this-book-is-structured",
+      "continuityIds": [
+        "v01-how-this-book-is-structured"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-how-this-book-is-structured"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-the-seed",
+      "continuityIds": [
+        "v01-the-seed",
+        "v01-seed-sprout-stem-and-soil"
+      ],
+      "historicalSectionIds": [
+        "v01-seed-sprout-stem-and-soil"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v01-the-seed"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-taking-pause-between-seed-and-sprout",
+      "continuityIds": [
+        "v01-taking-pause-between-seed-and-sprout"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-taking-pause-between-seed-and-sprout"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-why-this-is-happening-and-why-it-changes-everything",
+      "continuityIds": [
+        "v01-why-this-is-happening-and-why-it-changes-everything",
+        "v01-the-sprout"
+      ],
+      "historicalSectionIds": [
+        "v01-the-sprout"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v01-why-this-is-happening-and-why-it-changes-everything"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
+      "continuityIds": [
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-on-reductionism",
+      "continuityIds": [
+        "v01-on-reductionism"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-on-reductionism"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-on-historical-and-structural-causality",
+      "continuityIds": [
+        "v01-on-historical-and-structural-causality"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-on-historical-and-structural-causality"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-on-measurement-and-falsifiability",
+      "continuityIds": [
+        "v01-on-measurement-and-falsifiability"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-on-measurement-and-falsifiability"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-what-this-section-has-and-has-not-established",
+      "continuityIds": [
+        "v01-what-this-section-has-and-has-not-established"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-what-this-section-has-and-has-not-established"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-how-coherence-becomes-structure",
+      "continuityIds": [
+        "v01-how-coherence-becomes-structure",
+        "v01-the-stem"
+      ],
+      "historicalSectionIds": [
+        "v01-the-stem"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v01-how-coherence-becomes-structure"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-from-extraction-to-regeneration",
+      "continuityIds": [
+        "v01-from-extraction-to-regeneration"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-from-extraction-to-regeneration"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-intelligence-as-an-emergent-property",
+      "continuityIds": [
+        "v01-intelligence-as-an-emergent-property"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-intelligence-as-an-emergent-property"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-governance-as-regulation-not-control",
+      "continuityIds": [
+        "v01-governance-as-regulation-not-control"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-governance-as-regulation-not-control"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-intelligence-we-now-build",
+      "continuityIds": [
+        "v01-intelligence-we-now-build"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-intelligence-we-now-build"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-a-horizon-not-yet-a-blueprint",
+      "continuityIds": [
+        "v01-a-horizon-not-yet-a-blueprint"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-a-horizon-not-yet-a-blueprint"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-taking-pause-in-the-soil",
+      "continuityIds": [
+        "v01-taking-pause-in-the-soil"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-taking-pause-in-the-soil"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-the-human-being-reconsidered",
+      "continuityIds": [
+        "v01-the-human-being-reconsidered",
+        "v01-the-soil"
+      ],
+      "historicalSectionIds": [
+        "v01-the-soil"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v01-the-human-being-reconsidered"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-intelligence-meaning-trust",
+      "continuityIds": [
+        "v01-intelligence-meaning-trust"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-intelligence-meaning-trust"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-consciousness-and-participation",
+      "continuityIds": [
+        "v01-consciousness-and-participation"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-consciousness-and-participation"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-civilization-as-a-living-process",
+      "continuityIds": [
+        "v01-civilization-as-a-living-process"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-civilization-as-a-living-process"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-reverence-arrived-at-honestly",
+      "continuityIds": [
+        "v01-reverence-arrived-at-honestly"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-reverence-arrived-at-honestly"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-why-this-is-necessity-not-preference",
+      "continuityIds": [
+        "v01-why-this-is-necessity-not-preference"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-why-this-is-necessity-not-preference"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-into-the-flower",
+      "continuityIds": [
+        "v01-into-the-flower"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-into-the-flower"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-the-flower",
+      "continuityIds": [
+        "v01-the-flower"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-the-flower"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-the-question-becomes-an-experiment",
+      "continuityIds": [
+        "v01-the-question-becomes-an-experiment"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-the-question-becomes-an-experiment"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-what-providence-is",
+      "continuityIds": [
+        "v01-what-providence-is"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-what-providence-is"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-purposeful-the-cultivation-of-human-coherence",
+      "continuityIds": [
+        "v01-purposeful-the-cultivation-of-human-coherence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-purposeful-the-cultivation-of-human-coherence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-the-currency-of-presence",
+      "continuityIds": [
+        "v01-the-currency-of-presence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-the-currency-of-presence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-its-name",
+      "continuityIds": [
+        "v01-its-name"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-its-name"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-why-this-is-not-what-you-fear",
+      "continuityIds": [
+        "v01-why-this-is-not-what-you-fear"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-why-this-is-not-what-you-fear"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-what-it-looks-like-from-inside",
+      "continuityIds": [
+        "v01-what-it-looks-like-from-inside"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-what-it-looks-like-from-inside"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-icons-and-the-first-scale",
+      "continuityIds": [
+        "v01-icons-and-the-first-scale"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-icons-and-the-first-scale"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-what-this-is-and-what-it-is-not",
+      "continuityIds": [
+        "v01-what-this-is-and-what-it-is-not"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-what-this-is-and-what-it-is-not"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v01-the-invitation",
+      "continuityIds": [
+        "v01-the-invitation"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v01-the-invitation"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-the-first-volume-left-in-our-hands",
+      "continuityIds": [
+        "v02-what-the-first-volume-left-in-our-hands"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-the-first-volume-left-in-our-hands"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-on-nests-and-why-this-book-is-deliberately-incomplete",
+      "continuityIds": [
+        "v02-on-nests-and-why-this-book-is-deliberately-incomplete"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-on-nests-and-why-this-book-is-deliberately-incomplete"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-threshold",
+      "continuityIds": [
+        "v02-the-threshold"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-threshold"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-toward-humane-technology",
+      "continuityIds": [
+        "v02-toward-humane-technology"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-toward-humane-technology"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-crisis-beneath-the-crises",
+      "continuityIds": [
+        "v02-the-crisis-beneath-the-crises",
+        "v02-the-diagnosis"
+      ],
+      "historicalSectionIds": [
+        "v02-the-diagnosis"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v02-the-crisis-beneath-the-crises"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-substrate-beneath-the-substrate",
+      "continuityIds": [
+        "v02-the-substrate-beneath-the-substrate"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-substrate-beneath-the-substrate"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-relational-coherence",
+      "continuityIds": [
+        "v02-relational-coherence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-relational-coherence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-architecture-of-extraction",
+      "continuityIds": [
+        "v02-the-architecture-of-extraction"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-architecture-of-extraction"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-toward-humane-technology-2",
+      "continuityIds": [
+        "v02-toward-humane-technology-2"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-toward-humane-technology-2"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-coherence-as-infrastructure",
+      "continuityIds": [
+        "v02-coherence-as-infrastructure",
+        "v02-the-response"
+      ],
+      "historicalSectionIds": [
+        "v02-the-response"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v02-coherence-as-infrastructure"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-infrastructure-that-is-not-yet-visible",
+      "continuityIds": [
+        "v02-infrastructure-that-is-not-yet-visible"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-infrastructure-that-is-not-yet-visible"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-providence-intends-to-be",
+      "continuityIds": [
+        "v02-what-providence-intends-to-be"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-providence-intends-to-be"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-surveillance-problem",
+      "continuityIds": [
+        "v02-the-surveillance-problem"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-surveillance-problem"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-has-to-be-true-for-this-to-work",
+      "continuityIds": [
+        "v02-what-has-to-be-true-for-this-to-work"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-has-to-be-true-for-this-to-work"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-why-now",
+      "continuityIds": [
+        "v02-why-now"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-why-now"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-providence-proposed-functionality",
+      "continuityIds": [
+        "v02-providence-proposed-functionality"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-providence-proposed-functionality"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-layer-1-relational-coordination-network",
+      "continuityIds": [
+        "v02-layer-1-relational-coordination-network"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-layer-1-relational-coordination-network"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-layer-2-trust-architecture",
+      "continuityIds": [
+        "v02-layer-2-trust-architecture"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-layer-2-trust-architecture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-layer-4-coordination-substrate",
+      "continuityIds": [
+        "v02-layer-4-coordination-substrate"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-layer-4-coordination-substrate"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-layer-5-governance-experiment",
+      "continuityIds": [
+        "v02-layer-5-governance-experiment"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-layer-5-governance-experiment"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-cross-cutting-commitments",
+      "continuityIds": [
+        "v02-cross-cutting-commitments"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-cross-cutting-commitments"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-comes-next-in-this-work",
+      "continuityIds": [
+        "v02-what-comes-next-in-this-work"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-comes-next-in-this-work"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-a-note-to-the-builders",
+      "continuityIds": [
+        "v02-a-note-to-the-builders"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-a-note-to-the-builders"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-coherence-intelligence",
+      "continuityIds": [
+        "v02-the-coherence-intelligence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-coherence-intelligence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-sensemaking-at-scale",
+      "continuityIds": [
+        "v02-sensemaking-at-scale"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-sensemaking-at-scale"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-earth-as-substrate",
+      "continuityIds": [
+        "v02-earth-as-substrate"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-earth-as-substrate"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-the-pattern-reveals",
+      "continuityIds": [
+        "v02-what-the-pattern-reveals"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-the-pattern-reveals"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-providence-is-and-is-not-doing-in-this-dimension",
+      "continuityIds": [
+        "v02-what-providence-is-and-is-not-doing-in-this-dimension"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-providence-is-and-is-not-doing-in-this-dimension"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-threshold-2",
+      "continuityIds": [
+        "v02-the-threshold-2"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-threshold-2"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-currencies-of-coherence",
+      "continuityIds": [
+        "v02-currencies-of-coherence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-currencies-of-coherence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-why-physiology",
+      "continuityIds": [
+        "v02-why-physiology"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-why-physiology"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-has-not-been-solved",
+      "continuityIds": [
+        "v02-what-has-not-been-solved"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-has-not-been-solved"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-providence-is-and-is-not-doing",
+      "continuityIds": [
+        "v02-what-providence-is-and-is-not-doing"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-providence-is-and-is-not-doing"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-larger-argument",
+      "continuityIds": [
+        "v02-the-larger-argument"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-larger-argument"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-economics-of-regeneration",
+      "continuityIds": [
+        "v02-the-economics-of-regeneration"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-economics-of-regeneration"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-money-cannot-carry",
+      "continuityIds": [
+        "v02-what-money-cannot-carry"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-money-cannot-carry"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-has-been-tried",
+      "continuityIds": [
+        "v02-what-has-been-tried"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-has-been-tried"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-coherence-as-flow",
+      "continuityIds": [
+        "v02-coherence-as-flow"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-coherence-as-flow"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-providence-is-and-is-not-doing-in-this-dimension-2",
+      "continuityIds": [
+        "v02-what-providence-is-and-is-not-doing-in-this-dimension-2"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-providence-is-and-is-not-doing-in-this-dimension-2"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-larger-argument-2",
+      "continuityIds": [
+        "v02-the-larger-argument-2"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-larger-argument-2"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-governance-beyond-domination",
+      "continuityIds": [
+        "v02-governance-beyond-domination"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-governance-beyond-domination"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-has-been-tried-2",
+      "continuityIds": [
+        "v02-what-has-been-tried-2"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-has-been-tried-2"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-coherence-as-a-property-of-governance-systems",
+      "continuityIds": [
+        "v02-coherence-as-a-property-of-governance-systems"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-coherence-as-a-property-of-governance-systems"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-providence-is-and-is-not-doing-in-this-dimension-3",
+      "continuityIds": [
+        "v02-what-providence-is-and-is-not-doing-in-this-dimension-3"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-providence-is-and-is-not-doing-in-this-dimension-3"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-larger-argument-3",
+      "continuityIds": [
+        "v02-the-larger-argument-3"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-larger-argument-3"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-intelligence-in-right-relationship",
+      "continuityIds": [
+        "v02-intelligence-in-right-relationship"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-intelligence-in-right-relationship"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-current-state-of-alignment",
+      "continuityIds": [
+        "v02-the-current-state-of-alignment"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-current-state-of-alignment"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-ai-can-already-do-for-coherence",
+      "continuityIds": [
+        "v02-what-ai-can-already-do-for-coherence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-ai-can-already-do-for-coherence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-where-the-real-asymmetry-lies",
+      "continuityIds": [
+        "v02-where-the-real-asymmetry-lies"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-where-the-real-asymmetry-lies"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-providence-is-and-is-not-doing-in-this-dimension-4",
+      "continuityIds": [
+        "v02-what-providence-is-and-is-not-doing-in-this-dimension-4"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-providence-is-and-is-not-doing-in-this-dimension-4"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-larger-argument-4",
+      "continuityIds": [
+        "v02-the-larger-argument-4"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-larger-argument-4"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-toward-humane-technology-3",
+      "continuityIds": [
+        "v02-toward-humane-technology-3"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-toward-humane-technology-3"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-builders-of-the-coherent-civilization",
+      "continuityIds": [
+        "v02-builders-of-the-coherent-civilization",
+        "v02-wielding-intelligence"
+      ],
+      "historicalSectionIds": [
+        "v02-wielding-intelligence"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v02-builders-of-the-coherent-civilization"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-field-that-does-not-yet-know-it-is-a-field",
+      "continuityIds": [
+        "v02-the-field-that-does-not-yet-know-it-is-a-field"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-field-that-does-not-yet-know-it-is-a-field"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-the-builders-have-in-common",
+      "continuityIds": [
+        "v02-what-the-builders-have-in-common"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-the-builders-have-in-common"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-three-builder-types-worth-naming",
+      "continuityIds": [
+        "v02-three-builder-types-worth-naming"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-three-builder-types-worth-naming"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-providence-is-and-is-not-doing-in-this-dimension-5",
+      "continuityIds": [
+        "v02-what-providence-is-and-is-not-doing-in-this-dimension-5"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-providence-is-and-is-not-doing-in-this-dimension-5"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-larger-argument-5",
+      "continuityIds": [
+        "v02-the-larger-argument-5"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-larger-argument-5"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-transition",
+      "continuityIds": [
+        "v02-the-transition"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-transition"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-this-threshold-actually-feels-like",
+      "continuityIds": [
+        "v02-what-this-threshold-actually-feels-like"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-this-threshold-actually-feels-like"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-liminal-phase",
+      "continuityIds": [
+        "v02-the-liminal-phase"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-liminal-phase"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-this-asks-of-the-people-living-through-it",
+      "continuityIds": [
+        "v02-what-this-asks-of-the-people-living-through-it"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-this-asks-of-the-people-living-through-it"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-texture-of-what-comes-next",
+      "continuityIds": [
+        "v02-the-texture-of-what-comes-next"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-texture-of-what-comes-next"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-toward-humane-technology-4",
+      "continuityIds": [
+        "v02-toward-humane-technology-4"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-toward-humane-technology-4"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-wielding-intelligence-2",
+      "continuityIds": [
+        "v02-wielding-intelligence-2"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-wielding-intelligence-2"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-this-asks-of-the-reader",
+      "continuityIds": [
+        "v02-what-this-asks-of-the-reader"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-this-asks-of-the-reader"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-the-last-reframe",
+      "continuityIds": [
+        "v02-the-last-reframe"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-the-last-reframe"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-an-honest-accounting",
+      "continuityIds": [
+        "v02-an-honest-accounting"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-an-honest-accounting"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-on-the-form",
+      "continuityIds": [
+        "v02-on-the-form"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-on-the-form"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-on-the-conversation",
+      "continuityIds": [
+        "v02-on-the-conversation"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-on-the-conversation"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-on-the-state-of-the-project",
+      "continuityIds": [
+        "v02-on-the-state-of-the-project"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-on-the-state-of-the-project"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-on-releasing-the-book-now",
+      "continuityIds": [
+        "v02-on-releasing-the-book-now"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-on-releasing-the-book-now"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-what-this-book-is",
+      "continuityIds": [
+        "v02-what-this-book-is"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-what-this-book-is"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-a-proposal-for-the-threshold-ahead",
+      "continuityIds": [
+        "v02-a-proposal-for-the-threshold-ahead"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-a-proposal-for-the-threshold-ahead"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-if-you-are-a-builder",
+      "continuityIds": [
+        "v02-if-you-are-a-builder"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-if-you-are-a-builder"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-if-you-are-a-funder",
+      "continuityIds": [
+        "v02-if-you-are-a-funder"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-if-you-are-a-funder"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-if-you-are-gathering-communities",
+      "continuityIds": [
+        "v02-if-you-are-gathering-communities"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-if-you-are-gathering-communities"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-if-you-are-already-doing-the-work",
+      "continuityIds": [
+        "v02-if-you-are-already-doing-the-work"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-if-you-are-already-doing-the-work"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-if-you-are-not-sure",
+      "continuityIds": [
+        "v02-if-you-are-not-sure"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-if-you-are-not-sure"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v02-a-last-word",
+      "continuityIds": [
+        "v02-a-last-word"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v02-a-last-word"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-next-nest",
+      "continuityIds": [
+        "v03-the-next-nest",
+        "preface"
+      ],
+      "historicalSectionIds": [
+        "preface"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-next-nest"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-on-the-title-providence-and-imperative",
+      "continuityIds": [
+        "v03-on-the-title-providence-and-imperative"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-on-the-title-providence-and-imperative"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-central-wound",
+      "continuityIds": [
+        "v03-the-central-wound",
+        "the-central-wound-opening",
+        "the-reckoning-overview",
+        "v03-the-reckoning"
+      ],
+      "historicalSectionIds": [
+        "the-central-wound-opening",
+        "the-reckoning-overview",
+        "v03-the-reckoning"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-central-wound",
+          "the-central-wound-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-on-the-meaning-of-coordination-failure",
+      "continuityIds": [
+        "v03-on-the-meaning-of-coordination-failure",
+        "the-central-wound-on-the-meaning-of-coordination-failure"
+      ],
+      "historicalSectionIds": [
+        "the-central-wound-on-the-meaning-of-coordination-failure"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-on-the-meaning-of-coordination-failure",
+          "the-central-wound-on-the-meaning-of-coordination-failure"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-what-coherence-actually-means",
+      "continuityIds": [
+        "v03-what-coherence-actually-means",
+        "the-central-wound-what-coherence-actually-means"
+      ],
+      "historicalSectionIds": [
+        "the-central-wound-what-coherence-actually-means"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-what-coherence-actually-means",
+          "the-central-wound-what-coherence-actually-means"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-coordination-deadline",
+      "continuityIds": [
+        "v03-the-coordination-deadline",
+        "the-coordination-deadline-opening"
+      ],
+      "historicalSectionIds": [
+        "the-coordination-deadline-opening"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-coordination-deadline",
+          "the-coordination-deadline-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-multiplier-and-the-bottleneck",
+      "continuityIds": [
+        "v03-the-multiplier-and-the-bottleneck",
+        "the-coordination-deadline-the-multiplier-and-the-bottleneck"
+      ],
+      "historicalSectionIds": [
+        "the-coordination-deadline-the-multiplier-and-the-bottleneck"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-multiplier-and-the-bottleneck",
+          "the-coordination-deadline-the-multiplier-and-the-bottleneck"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-first-force-intelligence-becomes-abundant",
+      "continuityIds": [
+        "v03-the-first-force-intelligence-becomes-abundant",
+        "the-coordination-deadline-the-first-force-intelligence-becomes-abundant"
+      ],
+      "historicalSectionIds": [
+        "the-coordination-deadline-the-first-force-intelligence-becomes-abundant"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-first-force-intelligence-becomes-abundant",
+          "the-coordination-deadline-the-first-force-intelligence-becomes-abundant"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-second-force-trust-collapses-as-leverage-rises",
+      "continuityIds": [
+        "v03-the-second-force-trust-collapses-as-leverage-rises",
+        "the-coordination-deadline-the-second-force-trust-collapses-as-leverage-rises"
+      ],
+      "historicalSectionIds": [
+        "the-coordination-deadline-the-second-force-trust-collapses-as-leverage-rises"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-second-force-trust-collapses-as-leverage-rises",
+          "the-coordination-deadline-the-second-force-trust-collapses-as-leverage-rises"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-third-force-the-slow-variables-come-due",
+      "continuityIds": [
+        "v03-the-third-force-the-slow-variables-come-due",
+        "the-coordination-deadline-the-third-force-the-slow-variables-come-due"
+      ],
+      "historicalSectionIds": [
+        "the-coordination-deadline-the-third-force-the-slow-variables-come-due"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-third-force-the-slow-variables-come-due",
+          "the-coordination-deadline-the-third-force-the-slow-variables-come-due"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-convergence",
+      "continuityIds": [
+        "v03-the-convergence",
+        "the-coordination-deadline-the-convergence"
+      ],
+      "historicalSectionIds": [
+        "the-coordination-deadline-the-convergence"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-convergence",
+          "the-coordination-deadline-the-convergence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-why-now-and-why-not-later",
+      "continuityIds": [
+        "v03-why-now-and-why-not-later",
+        "the-coordination-deadline-why-now-and-why-not-later"
+      ],
+      "historicalSectionIds": [
+        "the-coordination-deadline-why-now-and-why-not-later"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-why-now-and-why-not-later",
+          "the-coordination-deadline-why-now-and-why-not-later"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-what-each-institution-solved-and-what-it-broke",
+      "continuityIds": [
+        "v03-what-each-institution-solved-and-what-it-broke",
+        "what-each-institution-solved-and-what-it-broke-opening"
+      ],
+      "historicalSectionIds": [
+        "what-each-institution-solved-and-what-it-broke-opening"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-what-each-institution-solved-and-what-it-broke",
+          "what-each-institution-solved-and-what-it-broke-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-church-coordinating-meaning-across-time",
+      "continuityIds": [
+        "v03-the-church-coordinating-meaning-across-time",
+        "what-each-institution-solved-and-what-it-broke-the-church-coordinating-meaning-across-time"
+      ],
+      "historicalSectionIds": [
+        "what-each-institution-solved-and-what-it-broke-the-church-coordinating-meaning-across-time"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-church-coordinating-meaning-across-time",
+          "what-each-institution-solved-and-what-it-broke-the-church-coordinating-meaning-across-time"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-nation-state-coordinating-identity-across-space",
+      "continuityIds": [
+        "v03-the-nation-state-coordinating-identity-across-space",
+        "what-each-institution-solved-and-what-it-broke-the-nation-state-coordinating-identity-across-space"
+      ],
+      "historicalSectionIds": [
+        "what-each-institution-solved-and-what-it-broke-the-nation-state-coordinating-identity-across-space"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-nation-state-coordinating-identity-across-space",
+          "what-each-institution-solved-and-what-it-broke-the-nation-state-coordinating-identity-across-space"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-corporation-coordinating-exchange-at-velocity",
+      "continuityIds": [
+        "v03-the-corporation-coordinating-exchange-at-velocity",
+        "what-each-institution-solved-and-what-it-broke-the-corporation-coordinating-exchange-at-velocity"
+      ],
+      "historicalSectionIds": [
+        "what-each-institution-solved-and-what-it-broke-the-corporation-coordinating-exchange-at-velocity"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-corporation-coordinating-exchange-at-velocity",
+          "what-each-institution-solved-and-what-it-broke-the-corporation-coordinating-exchange-at-velocity"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-university-coordinating-knowledge-across-generations",
+      "continuityIds": [
+        "v03-the-university-coordinating-knowledge-across-generations",
+        "what-each-institution-solved-and-what-it-broke-the-university-coordinating-knowledge-across-generations"
+      ],
+      "historicalSectionIds": [
+        "what-each-institution-solved-and-what-it-broke-the-university-coordinating-knowledge-across-generations"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-university-coordinating-knowledge-across-generations",
+          "what-each-institution-solved-and-what-it-broke-the-university-coordinating-knowledge-across-generations"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-platform-coordinating-attention-toward-its-own-ends",
+      "continuityIds": [
+        "v03-the-platform-coordinating-attention-toward-its-own-ends",
+        "what-each-institution-solved-and-what-it-broke-the-platform-coordinating-attention-toward-its-own-ends"
+      ],
+      "historicalSectionIds": [
+        "what-each-institution-solved-and-what-it-broke-the-platform-coordinating-attention-toward-its-own-ends"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-platform-coordinating-attention-toward-its-own-ends",
+          "what-each-institution-solved-and-what-it-broke-the-platform-coordinating-attention-toward-its-own-ends"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-what-coordinates-wisdom",
+      "continuityIds": [
+        "v03-what-coordinates-wisdom",
+        "the-innovation-overview",
+        "v03-the-innovation",
+        "what-coordinates-wisdom-opening"
+      ],
+      "historicalSectionIds": [
+        "the-innovation-overview",
+        "v03-the-innovation",
+        "what-coordinates-wisdom-opening"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-what-coordinates-wisdom",
+          "what-coordinates-wisdom-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-seven-initiates-a-topology-of-the-necessary-capacities",
+      "continuityIds": [
+        "v03-the-seven-initiates-a-topology-of-the-necessary-capacities",
+        "what-coordinates-wisdom-the-seven-initiates-a-topology-of-the-necessary-capacities"
+      ],
+      "historicalSectionIds": [
+        "what-coordinates-wisdom-the-seven-initiates-a-topology-of-the-necessary-capacities"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-seven-initiates-a-topology-of-the-necessary-capacities"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-lineage",
+      "continuityIds": [
+        "v03-the-lineage",
+        "the-lineage-opening"
+      ],
+      "historicalSectionIds": [
+        "the-lineage-opening"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-lineage",
+          "the-lineage-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-monasteries-institutions-that-hold-across-time",
+      "continuityIds": [
+        "v03-the-monasteries-institutions-that-hold-across-time",
+        "the-lineage-the-monasteries-institutions-that-hold-across-time"
+      ],
+      "historicalSectionIds": [
+        "the-lineage-the-monasteries-institutions-that-hold-across-time"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-monasteries-institutions-that-hold-across-time",
+          "the-lineage-the-monasteries-institutions-that-hold-across-time"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-guilds-mentorship-and-the-transmission-of-mastery",
+      "continuityIds": [
+        "v03-the-guilds-mentorship-and-the-transmission-of-mastery",
+        "the-lineage-the-guilds-mentorship-and-the-transmission-of-mastery"
+      ],
+      "historicalSectionIds": [
+        "the-lineage-the-guilds-mentorship-and-the-transmission-of-mastery"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-guilds-mentorship-and-the-transmission-of-mastery",
+          "the-lineage-the-guilds-mentorship-and-the-transmission-of-mastery"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-indigenous-governance-coordination-around-the-living-world",
+      "continuityIds": [
+        "v03-indigenous-governance-coordination-around-the-living-world",
+        "the-lineage-indigenous-governance-coordination-around-the-living-world"
+      ],
+      "historicalSectionIds": [
+        "the-lineage-indigenous-governance-coordination-around-the-living-world"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-indigenous-governance-coordination-around-the-living-world"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-mutual-aid-and-cooperative-economics-provisioning-without-extraction",
+      "continuityIds": [
+        "v03-mutual-aid-and-cooperative-economics-provisioning-without-extraction",
+        "the-lineage-mutual-aid-and-cooperative-economics-provisioning-without-extraction"
+      ],
+      "historicalSectionIds": [
+        "the-lineage-mutual-aid-and-cooperative-economics-provisioning-without-extraction"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-mutual-aid-and-cooperative-economics-provisioning-without-extraction",
+          "the-lineage-mutual-aid-and-cooperative-economics-provisioning-without-extraction"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter",
+      "continuityIds": [
+        "v03-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter",
+        "the-lineage-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter"
+      ],
+      "historicalSectionIds": [
+        "the-lineage-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter",
+          "the-lineage-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold",
+      "continuityIds": [
+        "v03-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold",
+        "the-lineage-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold"
+      ],
+      "historicalSectionIds": [
+        "the-lineage-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold",
+          "the-lineage-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-synthesis-and-the-moment",
+      "continuityIds": [
+        "v03-the-synthesis-and-the-moment",
+        "the-lineage-the-synthesis-and-the-moment"
+      ],
+      "historicalSectionIds": [
+        "the-lineage-the-synthesis-and-the-moment"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-synthesis-and-the-moment",
+          "the-lineage-the-synthesis-and-the-moment"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-architecture-of-providence",
+      "continuityIds": [
+        "v03-the-architecture-of-providence",
+        "the-architecture-of-providence-opening"
+      ],
+      "historicalSectionIds": [
+        "the-architecture-of-providence-opening"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-architecture-of-providence",
+          "the-architecture-of-providence-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-first-door-one-on-one-mentorship",
+      "continuityIds": [
+        "v03-the-first-door-one-on-one-mentorship",
+        "the-architecture-of-providence-the-first-door-one-on-one-mentorship"
+      ],
+      "historicalSectionIds": [
+        "the-architecture-of-providence-the-first-door-one-on-one-mentorship"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-first-door-one-on-one-mentorship",
+          "the-architecture-of-providence-the-first-door-one-on-one-mentorship"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-second-door-the-retreats",
+      "continuityIds": [
+        "v03-the-second-door-the-retreats",
+        "the-architecture-of-providence-the-second-door-the-retreats"
+      ],
+      "historicalSectionIds": [
+        "the-architecture-of-providence-the-second-door-the-retreats"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-second-door-the-retreats",
+          "the-architecture-of-providence-the-second-door-the-retreats"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-third-door-the-year-long-curriculum",
+      "continuityIds": [
+        "v03-the-third-door-the-year-long-curriculum",
+        "the-architecture-of-providence-the-third-door-the-year-long-curriculum"
+      ],
+      "historicalSectionIds": [
+        "the-architecture-of-providence-the-third-door-the-year-long-curriculum"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-third-door-the-year-long-curriculum",
+          "the-architecture-of-providence-the-third-door-the-year-long-curriculum"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-membrane-how-the-three-doors-become-one-network",
+      "continuityIds": [
+        "v03-the-membrane-how-the-three-doors-become-one-network",
+        "the-architecture-of-providence-the-membrane-how-the-three-doors-become-one-network"
+      ],
+      "historicalSectionIds": [
+        "the-architecture-of-providence-the-membrane-how-the-three-doors-become-one-network"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-membrane-how-the-three-doors-become-one-network"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-currency-of-presence",
+      "continuityIds": [
+        "v03-the-currency-of-presence",
+        "the-currency-of-presence-opening"
+      ],
+      "historicalSectionIds": [
+        "the-currency-of-presence-opening"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-currency-of-presence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted",
+      "continuityIds": [
+        "v03-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted",
+        "the-currency-of-presence-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted"
+      ],
+      "historicalSectionIds": [
+        "the-currency-of-presence-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted",
+          "the-currency-of-presence-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-how-the-currency-circulates",
+      "continuityIds": [
+        "v03-how-the-currency-circulates",
+        "the-currency-of-presence-how-the-currency-circulates"
+      ],
+      "historicalSectionIds": [
+        "the-currency-of-presence-how-the-currency-circulates"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-how-the-currency-circulates"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-where-we-begin-and-where-we-are-heading",
+      "continuityIds": [
+        "v03-where-we-begin-and-where-we-are-heading",
+        "the-currency-of-presence-where-we-begin-and-where-we-are-heading"
+      ],
+      "historicalSectionIds": [
+        "the-currency-of-presence-where-we-begin-and-where-we-are-heading"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-where-we-begin-and-where-we-are-heading",
+          "the-currency-of-presence-where-we-begin-and-where-we-are-heading"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church",
+      "continuityIds": [
+        "v03-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church",
+        "the-currency-of-presence-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church"
+      ],
+      "historicalSectionIds": [
+        "the-currency-of-presence-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-a-word-to-the-doubter",
+      "continuityIds": [
+        "v03-a-word-to-the-doubter"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-a-word-to-the-doubter"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-body-as-primary-text",
+      "continuityIds": [
+        "v03-the-body-as-primary-text",
+        "the-body-as-primary-text-opening",
+        "the-mechanism-overview",
+        "v03-the-mechanism"
+      ],
+      "historicalSectionIds": [
+        "the-body-as-primary-text-opening",
+        "the-mechanism-overview",
+        "v03-the-mechanism"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-body-as-primary-text"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-a-note-on-evidence-four-tiers-of-certainty",
+      "continuityIds": [
+        "v03-a-note-on-evidence-four-tiers-of-certainty",
+        "the-body-as-primary-text-a-note-on-evidence-four-tiers-of-certainty"
+      ],
+      "historicalSectionIds": [
+        "the-body-as-primary-text-a-note-on-evidence-four-tiers-of-certainty"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-a-note-on-evidence-four-tiers-of-certainty",
+          "the-body-as-primary-text-a-note-on-evidence-four-tiers-of-certainty"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-what-the-body-reveals-that-the-will-cannot-conceal",
+      "continuityIds": [
+        "v03-what-the-body-reveals-that-the-will-cannot-conceal",
+        "the-body-as-primary-text-what-the-body-reveals-that-the-will-cannot-conceal"
+      ],
+      "historicalSectionIds": [
+        "the-body-as-primary-text-what-the-body-reveals-that-the-will-cannot-conceal"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-what-the-body-reveals-that-the-will-cannot-conceal",
+          "the-body-as-primary-text-what-the-body-reveals-that-the-will-cannot-conceal"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-four-streams",
+      "continuityIds": [
+        "v03-the-four-streams",
+        "the-four-streams-opening"
+      ],
+      "historicalSectionIds": [
+        "the-four-streams-opening"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-four-streams"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-stream-one-the-language-of-genuine-encounter",
+      "continuityIds": [
+        "v03-stream-one-the-language-of-genuine-encounter",
+        "the-four-streams-stream-one-the-language-of-genuine-encounter"
+      ],
+      "historicalSectionIds": [
+        "the-four-streams-stream-one-the-language-of-genuine-encounter"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-stream-one-the-language-of-genuine-encounter",
+          "the-four-streams-stream-one-the-language-of-genuine-encounter"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-stream-two-the-voice-as-autonomic-readout",
+      "continuityIds": [
+        "v03-stream-two-the-voice-as-autonomic-readout",
+        "the-four-streams-stream-two-the-voice-as-autonomic-readout"
+      ],
+      "historicalSectionIds": [
+        "the-four-streams-stream-two-the-voice-as-autonomic-readout"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-stream-two-the-voice-as-autonomic-readout",
+          "the-four-streams-stream-two-the-voice-as-autonomic-readout"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-stream-three-the-heart-as-truth-teller",
+      "continuityIds": [
+        "v03-stream-three-the-heart-as-truth-teller",
+        "the-four-streams-stream-three-the-heart-as-truth-teller"
+      ],
+      "historicalSectionIds": [
+        "the-four-streams-stream-three-the-heart-as-truth-teller"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-stream-three-the-heart-as-truth-teller",
+          "the-four-streams-stream-three-the-heart-as-truth-teller"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-stream-four-the-pulse-as-endocrine-map",
+      "continuityIds": [
+        "v03-stream-four-the-pulse-as-endocrine-map",
+        "the-four-streams-stream-four-the-pulse-as-endocrine-map"
+      ],
+      "historicalSectionIds": [
+        "the-four-streams-stream-four-the-pulse-as-endocrine-map"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-stream-four-the-pulse-as-endocrine-map",
+          "the-four-streams-stream-four-the-pulse-as-endocrine-map"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-endocrine-frontier-reading-the-chemistry-of-connection",
+      "continuityIds": [
+        "v03-the-endocrine-frontier-reading-the-chemistry-of-connection",
+        "the-four-streams-the-endocrine-frontier-reading-the-chemistry-of-connection"
+      ],
+      "historicalSectionIds": [
+        "the-four-streams-the-endocrine-frontier-reading-the-chemistry-of-connection"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-endocrine-frontier-reading-the-chemistry-of-connection",
+          "the-four-streams-the-endocrine-frontier-reading-the-chemistry-of-connection"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-a-note-before-we-go-on",
+      "continuityIds": [
+        "v03-a-note-before-we-go-on"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-a-note-before-we-go-on"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-coherence-engine-and-the-reflective-mirror",
+      "continuityIds": [
+        "v03-the-coherence-engine-and-the-reflective-mirror",
+        "the-coherence-engine-and-the-reflective-mirror-opening"
+      ],
+      "historicalSectionIds": [
+        "the-coherence-engine-and-the-reflective-mirror-opening"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-coherence-engine-and-the-reflective-mirror"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-reflective-mirror-how-the-engine-serves-the-people-it-measures",
+      "continuityIds": [
+        "v03-the-reflective-mirror-how-the-engine-serves-the-people-it-measures",
+        "the-coherence-engine-and-the-reflective-mirror-the-reflective-mirror-how-the-engine-serves-the-people-it-measures"
+      ],
+      "historicalSectionIds": [
+        "the-coherence-engine-and-the-reflective-mirror-the-reflective-mirror-how-the-engine-serves-the-people-it-measures"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-reflective-mirror-how-the-engine-serves-the-people-it-measures",
+          "the-coherence-engine-and-the-reflective-mirror-the-reflective-mirror-how-the-engine-serves-the-people-it-measures"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-shadows-we-name-before-they-name-themselves",
+      "continuityIds": [
+        "v03-the-shadows-we-name-before-they-name-themselves",
+        "the-coherence-engine-and-the-reflective-mirror-the-shadows-we-name-before-they-name-themselves"
+      ],
+      "historicalSectionIds": [
+        "the-coherence-engine-and-the-reflective-mirror-the-shadows-we-name-before-they-name-themselves"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-shadows-we-name-before-they-name-themselves",
+          "the-coherence-engine-and-the-reflective-mirror-the-shadows-we-name-before-they-name-themselves"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-a-word-on-the-long-now",
+      "continuityIds": [
+        "v03-a-word-on-the-long-now"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-a-word-on-the-long-now"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-year-of-the-weaver",
+      "continuityIds": [
+        "v03-the-year-of-the-weaver",
+        "the-living-reality-overview",
+        "the-year-of-the-weaver-opening",
+        "v03-the-living-reality"
+      ],
+      "historicalSectionIds": [
+        "the-living-reality-overview",
+        "the-year-of-the-weaver-opening",
+        "v03-the-living-reality"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-year-of-the-weaver"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-arrival",
+      "continuityIds": [
+        "v03-arrival",
+        "the-year-of-the-weaver-arrival"
+      ],
+      "historicalSectionIds": [
+        "the-year-of-the-weaver-arrival"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-arrival",
+          "the-year-of-the-weaver-arrival"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-intake",
+      "continuityIds": [
+        "v03-the-intake",
+        "the-year-of-the-weaver-the-intake"
+      ],
+      "historicalSectionIds": [
+        "the-year-of-the-weaver-the-intake"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-intake",
+          "the-year-of-the-weaver-the-intake"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-first-matches",
+      "continuityIds": [
+        "v03-the-first-matches",
+        "the-year-of-the-weaver-the-first-matches"
+      ],
+      "historicalSectionIds": [
+        "the-year-of-the-weaver-the-first-matches"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-first-matches",
+          "the-year-of-the-weaver-the-first-matches"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-gathering",
+      "continuityIds": [
+        "v03-the-gathering",
+        "the-year-of-the-weaver-the-gathering"
+      ],
+      "historicalSectionIds": [
+        "the-year-of-the-weaver-the-gathering"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-gathering"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-record",
+      "continuityIds": [
+        "v03-the-record",
+        "the-year-of-the-weaver-the-record"
+      ],
+      "historicalSectionIds": [
+        "the-year-of-the-weaver-the-record"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-record",
+          "the-year-of-the-weaver-the-record"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-how-presence-becomes-bread",
+      "continuityIds": [
+        "v03-how-presence-becomes-bread",
+        "how-presence-becomes-bread-opening"
+      ],
+      "historicalSectionIds": [
+        "how-presence-becomes-bread-opening"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-how-presence-becomes-bread",
+          "how-presence-becomes-bread-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-first-link-presence-widens-the-aperture-of-perception",
+      "continuityIds": [
+        "v03-the-first-link-presence-widens-the-aperture-of-perception",
+        "how-presence-becomes-bread-the-first-link-presence-widens-the-aperture-of-perception"
+      ],
+      "historicalSectionIds": [
+        "how-presence-becomes-bread-the-first-link-presence-widens-the-aperture-of-perception"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-first-link-presence-widens-the-aperture-of-perception",
+          "how-presence-becomes-bread-the-first-link-presence-widens-the-aperture-of-perception"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-second-link-perception-makes-new-coordination-possible",
+      "continuityIds": [
+        "v03-the-second-link-perception-makes-new-coordination-possible",
+        "how-presence-becomes-bread-the-second-link-perception-makes-new-coordination-possible"
+      ],
+      "historicalSectionIds": [
+        "how-presence-becomes-bread-the-second-link-perception-makes-new-coordination-possible"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-second-link-perception-makes-new-coordination-possible",
+          "how-presence-becomes-bread-the-second-link-perception-makes-new-coordination-possible"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-third-link-the-currency-makes-that-coordination-findable-and-trustable",
+      "continuityIds": [
+        "v03-the-third-link-the-currency-makes-that-coordination-findable-and-trustable",
+        "how-presence-becomes-bread-the-third-link-the-currency-makes-that-coordination-findable-and-trustable"
+      ],
+      "historicalSectionIds": [
+        "how-presence-becomes-bread-the-third-link-the-currency-makes-that-coordination-findable-and-trustable"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-third-link-the-currency-makes-that-coordination-findable-and-trustable"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-fourth-link-the-record-can-carry-material-weight",
+      "continuityIds": [
+        "v03-the-fourth-link-the-record-can-carry-material-weight",
+        "how-presence-becomes-bread-the-fourth-link-the-record-can-carry-material-weight"
+      ],
+      "historicalSectionIds": [
+        "how-presence-becomes-bread-the-fourth-link-the-record-can-carry-material-weight"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-fourth-link-the-record-can-carry-material-weight"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship",
+      "continuityIds": [
+        "v03-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship",
+        "how-presence-becomes-bread-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship"
+      ],
+      "historicalSectionIds": [
+        "how-presence-becomes-bread-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-two-economies-and-what-each-is-for",
+      "continuityIds": [
+        "v03-the-two-economies-and-what-each-is-for",
+        "how-presence-becomes-bread-the-two-economies-and-what-each-is-for"
+      ],
+      "historicalSectionIds": [
+        "how-presence-becomes-bread-the-two-economies-and-what-each-is-for"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-two-economies-and-what-each-is-for"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-marens-creek-and-the-harvest-that-came-from-it",
+      "continuityIds": [
+        "v03-marens-creek-and-the-harvest-that-came-from-it",
+        "how-presence-becomes-bread-marens-creek-and-the-harvest-that-came-from-it"
+      ],
+      "historicalSectionIds": [
+        "how-presence-becomes-bread-marens-creek-and-the-harvest-that-came-from-it"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-marens-creek-and-the-harvest-that-came-from-it"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-a-necessary-question-whose-nervous-system",
+      "continuityIds": [
+        "v03-a-necessary-question-whose-nervous-system"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-a-necessary-question-whose-nervous-system"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-constitutional-problem",
+      "continuityIds": [
+        "v03-the-constitutional-problem",
+        "the-constitutional-problem-opening",
+        "the-governance-overview",
+        "v03-the-governance"
+      ],
+      "historicalSectionIds": [
+        "the-constitutional-problem-opening",
+        "the-governance-overview",
+        "v03-the-governance"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-constitutional-problem"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-before-the-design-a-caveat-on-everything-that-follows",
+      "continuityIds": [
+        "v03-before-the-design-a-caveat-on-everything-that-follows"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-before-the-design-a-caveat-on-everything-that-follows"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-two-entities-one-mission-one-productive-tension",
+      "continuityIds": [
+        "v03-two-entities-one-mission-one-productive-tension",
+        "the-constitutional-problem-two-entities-one-mission-one-productive-tension"
+      ],
+      "historicalSectionIds": [
+        "the-constitutional-problem-two-entities-one-mission-one-productive-tension"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-two-entities-one-mission-one-productive-tension"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-three-chamber-governance-model",
+      "continuityIds": [
+        "v03-the-three-chamber-governance-model",
+        "the-constitutional-problem-the-three-chamber-governance-model"
+      ],
+      "historicalSectionIds": [
+        "the-constitutional-problem-the-three-chamber-governance-model"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-three-chamber-governance-model"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-on-corruption-and-its-prevention-through-design",
+      "continuityIds": [
+        "v03-on-corruption-and-its-prevention-through-design",
+        "the-constitutional-problem-on-corruption-and-its-prevention-through-design"
+      ],
+      "historicalSectionIds": [
+        "the-constitutional-problem-on-corruption-and-its-prevention-through-design"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-on-corruption-and-its-prevention-through-design",
+          "the-constitutional-problem-on-corruption-and-its-prevention-through-design"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-why-providence-might-fail",
+      "continuityIds": [
+        "v03-why-providence-might-fail",
+        "why-providence-might-fail-opening"
+      ],
+      "historicalSectionIds": [
+        "why-providence-might-fail-opening"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-why-providence-might-fail",
+          "why-providence-might-fail-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-failure-of-measurement-what-if-coherence-cannot-be-measured",
+      "continuityIds": [
+        "v03-the-failure-of-measurement-what-if-coherence-cannot-be-measured",
+        "why-providence-might-fail-the-failure-of-measurement-what-if-coherence-cannot-be-measured"
+      ],
+      "historicalSectionIds": [
+        "why-providence-might-fail-the-failure-of-measurement-what-if-coherence-cannot-be-measured"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-failure-of-measurement-what-if-coherence-cannot-be-measured",
+          "why-providence-might-fail-the-failure-of-measurement-what-if-coherence-cannot-be-measured"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward",
+      "continuityIds": [
+        "v03-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward",
+        "why-providence-might-fail-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward"
+      ],
+      "historicalSectionIds": [
+        "why-providence-might-fail-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward",
+          "why-providence-might-fail-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-failure-of-structure-what-if-coordination-naturally-centralizes",
+      "continuityIds": [
+        "v03-the-failure-of-structure-what-if-coordination-naturally-centralizes",
+        "why-providence-might-fail-the-failure-of-structure-what-if-coordination-naturally-centralizes"
+      ],
+      "historicalSectionIds": [
+        "why-providence-might-fail-the-failure-of-structure-what-if-coordination-naturally-centralizes"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-failure-of-structure-what-if-coordination-naturally-centralizes",
+          "why-providence-might-fail-the-failure-of-structure-what-if-coordination-naturally-centralizes"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-failure-of-justice-what-if-providence-becomes-an-elite",
+      "continuityIds": [
+        "v03-the-failure-of-justice-what-if-providence-becomes-an-elite",
+        "why-providence-might-fail-the-failure-of-justice-what-if-providence-becomes-an-elite"
+      ],
+      "historicalSectionIds": [
+        "why-providence-might-fail-the-failure-of-justice-what-if-providence-becomes-an-elite"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-failure-of-justice-what-if-providence-becomes-an-elite"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-failure-of-authenticity-coherence-theater-and-the-performed-self",
+      "continuityIds": [
+        "v03-the-failure-of-authenticity-coherence-theater-and-the-performed-self",
+        "why-providence-might-fail-the-failure-of-authenticity-coherence-theater-and-the-performed-self"
+      ],
+      "historicalSectionIds": [
+        "why-providence-might-fail-the-failure-of-authenticity-coherence-theater-and-the-performed-self"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-failure-of-authenticity-coherence-theater-and-the-performed-self",
+          "why-providence-might-fail-the-failure-of-authenticity-coherence-theater-and-the-performed-self"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-failure-of-spirit-cult-dynamics-and-ideological-capture",
+      "continuityIds": [
+        "v03-the-failure-of-spirit-cult-dynamics-and-ideological-capture",
+        "why-providence-might-fail-the-failure-of-spirit-cult-dynamics-and-ideological-capture"
+      ],
+      "historicalSectionIds": [
+        "why-providence-might-fail-the-failure-of-spirit-cult-dynamics-and-ideological-capture"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-failure-of-spirit-cult-dynamics-and-ideological-capture",
+          "why-providence-might-fail-the-failure-of-spirit-cult-dynamics-and-ideological-capture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose",
+      "continuityIds": [
+        "v03-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose",
+        "why-providence-might-fail-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose"
+      ],
+      "historicalSectionIds": [
+        "why-providence-might-fail-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose",
+          "why-providence-might-fail-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-what-this-chapter-is-for",
+      "continuityIds": [
+        "v03-what-this-chapter-is-for",
+        "why-providence-might-fail-what-this-chapter-is-for"
+      ],
+      "historicalSectionIds": [
+        "why-providence-might-fail-what-this-chapter-is-for"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-what-this-chapter-is-for",
+          "why-providence-might-fail-what-this-chapter-is-for"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-method-of-correction",
+      "continuityIds": [
+        "v03-the-method-of-correction",
+        "why-providence-might-fail-the-method-of-correction"
+      ],
+      "historicalSectionIds": [
+        "why-providence-might-fail-the-method-of-correction"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-method-of-correction",
+          "why-providence-might-fail-the-method-of-correction"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-many-ways-to-fail-and-many-ways-to-succeed",
+      "continuityIds": [
+        "v03-many-ways-to-fail-and-many-ways-to-succeed",
+        "why-providence-might-fail-many-ways-to-fail-and-many-ways-to-succeed"
+      ],
+      "historicalSectionIds": [
+        "why-providence-might-fail-many-ways-to-fail-and-many-ways-to-succeed"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-many-ways-to-fail-and-many-ways-to-succeed"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-why-providence-is-not-social-credit",
+      "continuityIds": [
+        "v03-why-providence-is-not-social-credit",
+        "why-providence-is-not-social-credit-opening"
+      ],
+      "historicalSectionIds": [
+        "why-providence-is-not-social-credit-opening"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-why-providence-is-not-social-credit",
+          "why-providence-is-not-social-credit-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-what-a-social-credit-system-is",
+      "continuityIds": [
+        "v03-what-a-social-credit-system-is",
+        "why-providence-is-not-social-credit-what-a-social-credit-system-is"
+      ],
+      "historicalSectionIds": [
+        "why-providence-is-not-social-credit-what-a-social-credit-system-is"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-what-a-social-credit-system-is",
+          "why-providence-is-not-social-credit-what-a-social-credit-system-is"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-lines-that-cannot-be-crossed",
+      "continuityIds": [
+        "v03-the-lines-that-cannot-be-crossed",
+        "why-providence-is-not-social-credit-the-lines-that-cannot-be-crossed"
+      ],
+      "historicalSectionIds": [
+        "why-providence-is-not-social-credit-the-lines-that-cannot-be-crossed"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-lines-that-cannot-be-crossed",
+          "why-providence-is-not-social-credit-the-lines-that-cannot-be-crossed"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-what-remains-permanently-sovereign",
+      "continuityIds": [
+        "v03-what-remains-permanently-sovereign",
+        "why-providence-is-not-social-credit-what-remains-permanently-sovereign"
+      ],
+      "historicalSectionIds": [
+        "why-providence-is-not-social-credit-what-remains-permanently-sovereign"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-what-remains-permanently-sovereign",
+          "why-providence-is-not-social-credit-what-remains-permanently-sovereign"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-deeper-difference-direction-of-intent",
+      "continuityIds": [
+        "v03-the-deeper-difference-direction-of-intent",
+        "why-providence-is-not-social-credit-the-deeper-difference-direction-of-intent"
+      ],
+      "historicalSectionIds": [
+        "why-providence-is-not-social-credit-the-deeper-difference-direction-of-intent"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-deeper-difference-direction-of-intent",
+          "why-providence-is-not-social-credit-the-deeper-difference-direction-of-intent"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-federated-imperative",
+      "continuityIds": [
+        "v03-the-federated-imperative",
+        "the-federated-imperative-opening",
+        "the-sovereign-architecture-overview",
+        "v03-the-sovereign-architecture"
+      ],
+      "historicalSectionIds": [
+        "the-federated-imperative-opening",
+        "the-sovereign-architecture-overview",
+        "v03-the-sovereign-architecture"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-federated-imperative",
+          "the-federated-imperative-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-providence-as-protocol-not-platform",
+      "continuityIds": [
+        "v03-providence-as-protocol-not-platform",
+        "the-federated-imperative-providence-as-protocol-not-platform"
+      ],
+      "historicalSectionIds": [
+        "the-federated-imperative-providence-as-protocol-not-platform"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-providence-as-protocol-not-platform",
+          "the-federated-imperative-providence-as-protocol-not-platform"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-moral-obligation-not-to-centralize",
+      "continuityIds": [
+        "v03-the-moral-obligation-not-to-centralize",
+        "the-federated-imperative-the-moral-obligation-not-to-centralize"
+      ],
+      "historicalSectionIds": [
+        "the-federated-imperative-the-moral-obligation-not-to-centralize"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-moral-obligation-not-to-centralize",
+          "the-federated-imperative-the-moral-obligation-not-to-centralize"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-why-it-must-be-open",
+      "continuityIds": [
+        "v03-why-it-must-be-open",
+        "why-it-must-be-open-opening"
+      ],
+      "historicalSectionIds": [
+        "why-it-must-be-open-opening"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-why-it-must-be-open",
+          "why-it-must-be-open-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-panopticon-pointed-at-the-self",
+      "continuityIds": [
+        "v03-the-panopticon-pointed-at-the-self",
+        "why-it-must-be-open-the-panopticon-pointed-at-the-self"
+      ],
+      "historicalSectionIds": [
+        "why-it-must-be-open-the-panopticon-pointed-at-the-self"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-panopticon-pointed-at-the-self",
+          "why-it-must-be-open-the-panopticon-pointed-at-the-self"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-what-verifiability-actually-requires",
+      "continuityIds": [
+        "v03-what-verifiability-actually-requires",
+        "why-it-must-be-open-what-verifiability-actually-requires"
+      ],
+      "historicalSectionIds": [
+        "why-it-must-be-open-what-verifiability-actually-requires"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-what-verifiability-actually-requires",
+          "why-it-must-be-open-what-verifiability-actually-requires"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-sovereign-compute-the-machine-you-can-trust",
+      "continuityIds": [
+        "v03-sovereign-compute-the-machine-you-can-trust",
+        "why-it-must-be-open-sovereign-compute-the-machine-you-can-trust"
+      ],
+      "historicalSectionIds": [
+        "why-it-must-be-open-sovereign-compute-the-machine-you-can-trust"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-sovereign-compute-the-machine-you-can-trust",
+          "why-it-must-be-open-sovereign-compute-the-machine-you-can-trust"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-an-honest-accounting-of-the-limits",
+      "continuityIds": [
+        "v03-an-honest-accounting-of-the-limits",
+        "why-it-must-be-open-an-honest-accounting-of-the-limits"
+      ],
+      "historicalSectionIds": [
+        "why-it-must-be-open-an-honest-accounting-of-the-limits"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-an-honest-accounting-of-the-limits",
+          "why-it-must-be-open-an-honest-accounting-of-the-limits"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-pattern-we-refuse-to-repeat",
+      "continuityIds": [
+        "v03-the-pattern-we-refuse-to-repeat",
+        "why-it-must-be-open-the-pattern-we-refuse-to-repeat"
+      ],
+      "historicalSectionIds": [
+        "why-it-must-be-open-the-pattern-we-refuse-to-repeat"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-pattern-we-refuse-to-repeat",
+          "why-it-must-be-open-the-pattern-we-refuse-to-repeat"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-one-genius-at-a-time",
+      "continuityIds": [
+        "v03-one-genius-at-a-time",
+        "why-it-must-be-open-one-genius-at-a-time"
+      ],
+      "historicalSectionIds": [
+        "why-it-must-be-open-one-genius-at-a-time"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-one-genius-at-a-time",
+          "why-it-must-be-open-one-genius-at-a-time"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-a-system-that-heals-what-it-inhabits",
+      "continuityIds": [
+        "v03-a-system-that-heals-what-it-inhabits",
+        "a-system-that-heals-what-it-inhabits-opening",
+        "the-earth-compact-overview",
+        "v03-the-earth-compact"
+      ],
+      "historicalSectionIds": [
+        "a-system-that-heals-what-it-inhabits-opening",
+        "the-earth-compact-overview",
+        "v03-the-earth-compact"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-a-system-that-heals-what-it-inhabits",
+          "a-system-that-heals-what-it-inhabits-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-architecture-of-a-federated-footprint",
+      "continuityIds": [
+        "v03-the-architecture-of-a-federated-footprint",
+        "a-system-that-heals-what-it-inhabits-the-architecture-of-a-federated-footprint"
+      ],
+      "historicalSectionIds": [
+        "a-system-that-heals-what-it-inhabits-the-architecture-of-a-federated-footprint"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-architecture-of-a-federated-footprint",
+          "a-system-that-heals-what-it-inhabits-the-architecture-of-a-federated-footprint"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-regenerative-physical-infrastructure",
+      "continuityIds": [
+        "v03-the-regenerative-physical-infrastructure",
+        "a-system-that-heals-what-it-inhabits-the-regenerative-physical-infrastructure"
+      ],
+      "historicalSectionIds": [
+        "a-system-that-heals-what-it-inhabits-the-regenerative-physical-infrastructure"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-regenerative-physical-infrastructure",
+          "a-system-that-heals-what-it-inhabits-the-regenerative-physical-infrastructure"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-network-as-ecological-force",
+      "continuityIds": [
+        "v03-the-network-as-ecological-force",
+        "a-system-that-heals-what-it-inhabits-the-network-as-ecological-force"
+      ],
+      "historicalSectionIds": [
+        "a-system-that-heals-what-it-inhabits-the-network-as-ecological-force"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-network-as-ecological-force"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-how-we-begin",
+      "continuityIds": [
+        "v03-how-we-begin",
+        "how-we-begin-opening",
+        "the-invitation-overview",
+        "v03-the-invitation"
+      ],
+      "historicalSectionIds": [
+        "how-we-begin-opening",
+        "the-invitation-overview",
+        "v03-the-invitation"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-how-we-begin",
+          "how-we-begin-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-sequence-how-providence-matures-version-by-version",
+      "continuityIds": [
+        "v03-the-sequence-how-providence-matures-version-by-version",
+        "how-we-begin-the-sequence-how-providence-matures-version-by-version"
+      ],
+      "historicalSectionIds": [
+        "how-we-begin-the-sequence-how-providence-matures-version-by-version"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-sequence-how-providence-matures-version-by-version",
+          "how-we-begin-the-sequence-how-providence-matures-version-by-version"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-first-gatherings",
+      "continuityIds": [
+        "v03-the-first-gatherings",
+        "how-we-begin-the-first-gatherings"
+      ],
+      "historicalSectionIds": [
+        "how-we-begin-the-first-gatherings"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-first-gatherings",
+          "how-we-begin-the-first-gatherings"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-financial-architecture-of-proof",
+      "continuityIds": [
+        "v03-the-financial-architecture-of-proof",
+        "how-we-begin-the-financial-architecture-of-proof"
+      ],
+      "historicalSectionIds": [
+        "how-we-begin-the-financial-architecture-of-proof"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-financial-architecture-of-proof",
+          "how-we-begin-the-financial-architecture-of-proof"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-flywheel",
+      "continuityIds": [
+        "v03-the-flywheel",
+        "the-flywheel-opening"
+      ],
+      "historicalSectionIds": [
+        "the-flywheel-opening"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-flywheel",
+          "the-flywheel-opening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-where-we-honestly-begin",
+      "continuityIds": [
+        "v03-where-we-honestly-begin",
+        "the-flywheel-where-we-honestly-begin"
+      ],
+      "historicalSectionIds": [
+        "the-flywheel-where-we-honestly-begin"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-where-we-honestly-begin"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-first-niche-coherence-in-gathering",
+      "continuityIds": [
+        "v03-the-first-niche-coherence-in-gathering",
+        "the-flywheel-the-first-niche-coherence-in-gathering"
+      ],
+      "historicalSectionIds": [
+        "the-flywheel-the-first-niche-coherence-in-gathering"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-first-niche-coherence-in-gathering",
+          "the-flywheel-the-first-niche-coherence-in-gathering"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-second-niche-the-companion-of-a-life",
+      "continuityIds": [
+        "v03-the-second-niche-the-companion-of-a-life",
+        "the-flywheel-the-second-niche-the-companion-of-a-life"
+      ],
+      "historicalSectionIds": [
+        "the-flywheel-the-second-niche-the-companion-of-a-life"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-second-niche-the-companion-of-a-life",
+          "the-flywheel-the-second-niche-the-companion-of-a-life"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-why-this-engine-is-both-possible-and-unbuilt",
+      "continuityIds": [
+        "v03-why-this-engine-is-both-possible-and-unbuilt",
+        "the-flywheel-why-this-engine-is-both-possible-and-unbuilt"
+      ],
+      "historicalSectionIds": [
+        "the-flywheel-why-this-engine-is-both-possible-and-unbuilt"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-why-this-engine-is-both-possible-and-unbuilt"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-the-opening-and-what-it-is-worth",
+      "continuityIds": [
+        "v03-the-opening-and-what-it-is-worth",
+        "the-flywheel-the-opening-and-what-it-is-worth"
+      ],
+      "historicalSectionIds": [
+        "the-flywheel-the-opening-and-what-it-is-worth"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-the-opening-and-what-it-is-worth",
+          "the-flywheel-the-opening-and-what-it-is-worth"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-how-the-wheel-begins-to-turn",
+      "continuityIds": [
+        "v03-how-the-wheel-begins-to-turn",
+        "the-flywheel-how-the-wheel-begins-to-turn"
+      ],
+      "historicalSectionIds": [
+        "the-flywheel-how-the-wheel-begins-to-turn"
+      ],
+      "progressContinuityGroups": [
+        [
+          "v03-how-the-wheel-begins-to-turn"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-providence",
+      "continuityIds": [
+        "v03-providence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-providence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-appendix-the-studies-we-are-aware-of",
+      "continuityIds": [
+        "v03-appendix-the-studies-we-are-aware-of"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-appendix-the-studies-we-are-aware-of"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-i-that-two-people-genuinely-present-with-each-other-show-measurable-physiological-alignment",
+      "continuityIds": [
+        "v03-i-that-two-people-genuinely-present-with-each-other-show-measurable-physiological-alignment"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-i-that-two-people-genuinely-present-with-each-other-show-measurable-physiological-alignment"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-ii-that-heart-rate-variability-indexes-a-regulated-nervous-system-and-tracks-emotional-and-cognitive-self-regulation",
+      "continuityIds": [
+        "v03-ii-that-heart-rate-variability-indexes-a-regulated-nervous-system-and-tracks-emotional-and-cognitive-self-regulation"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-ii-that-heart-rate-variability-indexes-a-regulated-nervous-system-and-tracks-emotional-and-cognitive-self-regulation"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-iii-that-the-bodys-inner-signals-interoception-shape-emotion-decision-and-self-knowledge-listening-to-the-within",
+      "continuityIds": [
+        "v03-iii-that-the-bodys-inner-signals-interoception-shape-emotion-decision-and-self-knowledge-listening-to-the-within"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-iii-that-the-bodys-inner-signals-interoception-shape-emotion-decision-and-self-knowledge-listening-to-the-within"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-iv-that-being-accurately-seen-and-understood-is-a-basic-human-need-with-a-measurable-neural-signature",
+      "continuityIds": [
+        "v03-iv-that-being-accurately-seen-and-understood-is-a-basic-human-need-with-a-measurable-neural-signature"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-iv-that-being-accurately-seen-and-understood-is-a-basic-human-need-with-a-measurable-neural-signature"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-v-that-groups-possess-a-measurable-collective-intelligence-shaped-by-social-sensitivity-and-turn-taking-a-claim-that-is-real-but-contested",
+      "continuityIds": [
+        "v03-v-that-groups-possess-a-measurable-collective-intelligence-shaped-by-social-sensitivity-and-turn-taking-a-claim-that-is-real-but-contested"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-v-that-groups-possess-a-measurable-collective-intelligence-shaped-by-social-sensitivity-and-turn-taking-a-claim-that-is-real-but-contested"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v03-vi-that-nervous-systems-differ-so-a-measure-of-presence-must-be-baselined-to-each-person-never-to-a-population-norm",
+      "continuityIds": [
+        "v03-vi-that-nervous-systems-differ-so-a-measure-of-presence-must-be-baselined-to-each-person-never-to-a-population-norm"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v03-vi-that-nervous-systems-differ-so-a-measure-of-presence-must-be-baselined-to-each-person-never-to-a-population-norm"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-first-the-story",
+      "continuityIds": [
+        "v04-first-the-story"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-first-the-story"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-it-means-to-begin",
+      "continuityIds": [
+        "v04-what-it-means-to-begin"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-it-means-to-begin"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-intellectual-posture-of-this-volume",
+      "continuityIds": [
+        "v04-the-intellectual-posture-of-this-volume"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-intellectual-posture-of-this-volume"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-music-of-this-book-and-what-it-asks-of-you",
+      "continuityIds": [
+        "v04-the-music-of-this-book-and-what-it-asks-of-you"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-music-of-this-book-and-what-it-asks-of-you"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-why-purposeful-exists-and-how-providence-begins",
+      "continuityIds": [
+        "v04-why-purposeful-exists-and-how-providence-begins"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-why-purposeful-exists-and-how-providence-begins"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-why-a-book-comes-first",
+      "continuityIds": [
+        "v04-why-a-book-comes-first"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-why-a-book-comes-first"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-cardinal-scale-seen-from-here",
+      "continuityIds": [
+        "v04-the-cardinal-scale-seen-from-here"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-cardinal-scale-seen-from-here"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-sequence-problem",
+      "continuityIds": [
+        "v04-the-sequence-problem"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-sequence-problem"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-volume-iii-left-unbuilt",
+      "continuityIds": [
+        "v04-what-volume-iii-left-unbuilt"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-volume-iii-left-unbuilt"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-open-questions-as-building-problems",
+      "continuityIds": [
+        "v04-the-open-questions-as-building-problems"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-open-questions-as-building-problems"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-this-chapter-commits-to",
+      "continuityIds": [
+        "v04-what-this-chapter-commits-to"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-this-chapter-commits-to"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry",
+      "continuityIds": [
+        "v04-the-deeper-inquiry"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open",
+      "continuityIds": [
+        "v04-what-remains-open"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms",
+      "continuityIds": [
+        "v04-coda-in-plain-terms"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-proof-of-life-requirement",
+      "continuityIds": [
+        "v04-the-proof-of-life-requirement"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-proof-of-life-requirement"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-the-first-community-requires",
+      "continuityIds": [
+        "v04-what-the-first-community-requires"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-the-first-community-requires"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-failure-modes-of-first-communities",
+      "continuityIds": [
+        "v04-the-failure-modes-of-first-communities"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-failure-modes-of-first-communities"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-2",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-2"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-2"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-2",
+      "continuityIds": [
+        "v04-what-remains-open-2"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-2"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-2",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-2"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-2"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-scaling-problem",
+      "continuityIds": [
+        "v04-the-scaling-problem"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-scaling-problem"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-extractive-attractor",
+      "continuityIds": [
+        "v04-the-extractive-attractor"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-extractive-attractor"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-relational-coherence-threshold",
+      "continuityIds": [
+        "v04-the-relational-coherence-threshold"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-relational-coherence-threshold"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-ideological-drift-risk",
+      "continuityIds": [
+        "v04-the-ideological-drift-risk"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-ideological-drift-risk"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-3",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-3"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-3"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-3",
+      "continuityIds": [
+        "v04-what-remains-open-3"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-3"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-3",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-3"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-3"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-time-architecture",
+      "continuityIds": [
+        "v04-the-time-architecture"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-time-architecture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-four-temporal-layers",
+      "continuityIds": [
+        "v04-the-four-temporal-layers"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-four-temporal-layers"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-protecting-each-layer-from-the-others",
+      "continuityIds": [
+        "v04-protecting-each-layer-from-the-others"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-protecting-each-layer-from-the-others"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-4",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-4"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-4"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-4",
+      "continuityIds": [
+        "v04-what-remains-open-4"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-4"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-4",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-4"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-4"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-economic-architecture",
+      "continuityIds": [
+        "v04-the-economic-architecture"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-economic-architecture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-funding-paradox",
+      "continuityIds": [
+        "v04-the-funding-paradox"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-funding-paradox"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-the-historical-record-shows",
+      "continuityIds": [
+        "v04-what-the-historical-record-shows"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-the-historical-record-shows"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-5",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-5"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-5"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-5",
+      "continuityIds": [
+        "v04-what-remains-open-5"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-5"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-5",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-5"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-5"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-regenerative-economics-as-internal-architecture",
+      "continuityIds": [
+        "v04-regenerative-economics-as-internal-architecture"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-regenerative-economics-as-internal-architecture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-gets-measured",
+      "continuityIds": [
+        "v04-what-gets-measured"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-gets-measured"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-how-value-circulates",
+      "continuityIds": [
+        "v04-how-value-circulates"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-how-value-circulates"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-6",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-6"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-6"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-6",
+      "continuityIds": [
+        "v04-what-remains-open-6"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-6"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-6",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-6"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-6"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-commons-layer",
+      "continuityIds": [
+        "v04-the-commons-layer"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-commons-layer"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-must-be-common-and-why",
+      "continuityIds": [
+        "v04-what-must-be-common-and-why"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-must-be-common-and-why"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-7",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-7"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-7"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-7",
+      "continuityIds": [
+        "v04-what-remains-open-7"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-7"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-7",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-7"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-7"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-capital-patient-enough",
+      "continuityIds": [
+        "v04-capital-patient-enough"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-capital-patient-enough"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-8",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-8"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-8"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-8",
+      "continuityIds": [
+        "v04-what-remains-open-8"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-8"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-8",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-8"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-8"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-governance-architecture",
+      "continuityIds": [
+        "v04-the-governance-architecture"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-governance-architecture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-constitutional-layer-in-practice",
+      "continuityIds": [
+        "v04-the-constitutional-layer-in-practice"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-constitutional-layer-in-practice"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-interpretive-architecture",
+      "continuityIds": [
+        "v04-the-interpretive-architecture"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-interpretive-architecture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-amendment-architecture",
+      "continuityIds": [
+        "v04-the-amendment-architecture"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-amendment-architecture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-9",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-9"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-9"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-9",
+      "continuityIds": [
+        "v04-what-remains-open-9"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-9"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-9",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-9"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-9"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-stewardship-as-practice",
+      "continuityIds": [
+        "v04-stewardship-as-practice"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-stewardship-as-practice"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-stewardship-development-arc",
+      "continuityIds": [
+        "v04-the-stewardship-development-arc"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-stewardship-development-arc"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-protecting-stewards-from-the-stewardship-role",
+      "continuityIds": [
+        "v04-protecting-stewards-from-the-stewardship-role"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-protecting-stewards-from-the-stewardship-role"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-10",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-10"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-10"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-10",
+      "continuityIds": [
+        "v04-what-remains-open-10"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-10"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-10",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-10"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-10"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-anti-capture-architecture-in-detail",
+      "continuityIds": [
+        "v04-the-anti-capture-architecture-in-detail"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-anti-capture-architecture-in-detail"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-founder-capture",
+      "continuityIds": [
+        "v04-founder-capture"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-founder-capture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-financial-capture",
+      "continuityIds": [
+        "v04-financial-capture"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-financial-capture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-technological-capture",
+      "continuityIds": [
+        "v04-technological-capture"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-technological-capture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-11",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-11"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-11"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-11",
+      "continuityIds": [
+        "v04-what-remains-open-11"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-11"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-11",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-11"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-11"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-when-communities-diverge",
+      "continuityIds": [
+        "v04-when-communities-diverge"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-when-communities-diverge"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-exit-architecture",
+      "continuityIds": [
+        "v04-the-exit-architecture"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-exit-architecture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-12",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-12"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-12"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-12",
+      "continuityIds": [
+        "v04-what-remains-open-12"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-12"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-12",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-12"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-12"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-technological-architecture-in-detail",
+      "continuityIds": [
+        "v04-the-technological-architecture-in-detail"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-technological-architecture-in-detail"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-identity-layer",
+      "continuityIds": [
+        "v04-the-identity-layer"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-identity-layer"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-current-state-of-the-technical-art",
+      "continuityIds": [
+        "v04-the-current-state-of-the-technical-art"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-current-state-of-the-technical-art"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-13",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-13"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-13"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-13",
+      "continuityIds": [
+        "v04-what-remains-open-13"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-13"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-13",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-13"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-13"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-trust-layer",
+      "continuityIds": [
+        "v04-the-trust-layer"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-trust-layer"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-the-trust-layer-can-currently-deliver",
+      "continuityIds": [
+        "v04-what-the-trust-layer-can-currently-deliver"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-the-trust-layer-can-currently-deliver"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-14",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-14"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-14"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-14",
+      "continuityIds": [
+        "v04-what-remains-open-14"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-14"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-14",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-14"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-14"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-ai-as-infrastructure-not-sovereign",
+      "continuityIds": [
+        "v04-ai-as-infrastructure-not-sovereign"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-ai-as-infrastructure-not-sovereign"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-ai-is-permitted-to-do",
+      "continuityIds": [
+        "v04-what-ai-is-permitted-to-do"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-ai-is-permitted-to-do"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-ai-is-constitutionally-forbidden-from-doing",
+      "continuityIds": [
+        "v04-what-ai-is-constitutionally-forbidden-from-doing"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-ai-is-constitutionally-forbidden-from-doing"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-15",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-15"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-15"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-15",
+      "continuityIds": [
+        "v04-what-remains-open-15"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-15"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-15",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-15"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-15"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-providence-application-first-version",
+      "continuityIds": [
+        "v04-the-providence-application-first-version"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-providence-application-first-version"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-the-first-version-does",
+      "continuityIds": [
+        "v04-what-the-first-version-does"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-the-first-version-does"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-the-first-version-feels-like",
+      "continuityIds": [
+        "v04-what-the-first-version-feels-like"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-the-first-version-feels-like"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-the-first-version-refuses-to-do",
+      "continuityIds": [
+        "v04-what-the-first-version-refuses-to-do"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-the-first-version-refuses-to-do"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-16",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-16"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-16"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-16",
+      "continuityIds": [
+        "v04-what-remains-open-16"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-16"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-16",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-16"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-16"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-human-architecture-in-practice",
+      "continuityIds": [
+        "v04-the-human-architecture-in-practice"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-human-architecture-in-practice"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-who-builds-this-and-what-it-costs-them",
+      "continuityIds": [
+        "v04-who-builds-this-and-what-it-costs-them"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-who-builds-this-and-what-it-costs-them"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-the-work-requires",
+      "continuityIds": [
+        "v04-what-the-work-requires"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-the-work-requires"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-support-structures-that-make-it-sustainable",
+      "continuityIds": [
+        "v04-the-support-structures-that-make-it-sustainable"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-support-structures-that-make-it-sustainable"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-17",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-17"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-17"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-17",
+      "continuityIds": [
+        "v04-what-remains-open-17"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-17"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-17",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-17"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-17"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-culture-before-the-platform",
+      "continuityIds": [
+        "v04-the-culture-before-the-platform"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-culture-before-the-platform"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-practices-that-constitute-the-culture",
+      "continuityIds": [
+        "v04-the-practices-that-constitute-the-culture"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-practices-that-constitute-the-culture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-18",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-18"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-18"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-18",
+      "continuityIds": [
+        "v04-what-remains-open-18"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-18"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-18",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-18"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-18"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-developmental-arc",
+      "continuityIds": [
+        "v04-the-developmental-arc"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-developmental-arc"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-stages-of-the-arc",
+      "continuityIds": [
+        "v04-the-stages-of-the-arc"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-stages-of-the-arc"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-19",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-19"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-19"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-19",
+      "continuityIds": [
+        "v04-what-remains-open-19"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-19"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-19",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-19"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-19"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-contact-with-the-world",
+      "continuityIds": [
+        "v04-contact-with-the-world"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-contact-with-the-world"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-contact-problem",
+      "continuityIds": [
+        "v04-the-contact-problem"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-contact-problem"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-co-optation-pressure",
+      "continuityIds": [
+        "v04-the-co-optation-pressure"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-co-optation-pressure"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-scaling-dynamics-that-transform-movements",
+      "continuityIds": [
+        "v04-the-scaling-dynamics-that-transform-movements"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-scaling-dynamics-that-transform-movements"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-20",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-20"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-20"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-20",
+      "continuityIds": [
+        "v04-what-remains-open-20"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-20"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-20",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-20"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-20"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-failure-looks-like-and-why-its-worth-risking",
+      "continuityIds": [
+        "v04-what-failure-looks-like-and-why-its-worth-risking"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-failure-looks-like-and-why-its-worth-risking"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-partial-failure",
+      "continuityIds": [
+        "v04-partial-failure"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-partial-failure"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-complete-failure",
+      "continuityIds": [
+        "v04-complete-failure"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-complete-failure"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-catastrophic-failure",
+      "continuityIds": [
+        "v04-catastrophic-failure"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-catastrophic-failure"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-why-its-worth-risking",
+      "continuityIds": [
+        "v04-why-its-worth-risking"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-why-its-worth-risking"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-21",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-21"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-21"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-21",
+      "continuityIds": [
+        "v04-what-remains-open-21"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-21"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-21",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-21"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-21"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-invitation",
+      "continuityIds": [
+        "v04-the-invitation"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-invitation"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-the-invitation-asks",
+      "continuityIds": [
+        "v04-what-the-invitation-asks"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-the-invitation-asks"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-the-institution-commits-in-return",
+      "continuityIds": [
+        "v04-what-the-institution-commits-in-return"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-the-institution-commits-in-return"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-22",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-22"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-22"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-22",
+      "continuityIds": [
+        "v04-what-remains-open-22"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-22"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-22",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-22"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-22"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-civilization-made-visible",
+      "continuityIds": [
+        "v04-the-civilization-made-visible"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-civilization-made-visible"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-tuesday-afternoon",
+      "continuityIds": [
+        "v04-tuesday-afternoon"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-tuesday-afternoon"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-community",
+      "continuityIds": [
+        "v04-the-community"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-community"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-rotation",
+      "continuityIds": [
+        "v04-the-rotation"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-rotation"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-water",
+      "continuityIds": [
+        "v04-the-water"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-water"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-23",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-23"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-23"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-23",
+      "continuityIds": [
+        "v04-what-remains-open-23"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-23"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-23",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-23"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-23"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-when-the-money-arrives",
+      "continuityIds": [
+        "v04-when-the-money-arrives"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-when-the-money-arrives"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-offer",
+      "continuityIds": [
+        "v04-the-offer"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-offer"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-process",
+      "continuityIds": [
+        "v04-the-process"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-process"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-outcome",
+      "continuityIds": [
+        "v04-the-outcome"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-outcome"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-24",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-24"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-24"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-24",
+      "continuityIds": [
+        "v04-what-remains-open-24"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-24"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-24",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-24"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-24"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-how-power-adapts",
+      "continuityIds": [
+        "v04-how-power-adapts"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-how-power-adapts"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-question-of-success",
+      "continuityIds": [
+        "v04-the-question-of-success"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-question-of-success"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-forms-of-adaptive-power",
+      "continuityIds": [
+        "v04-the-forms-of-adaptive-power"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-forms-of-adaptive-power"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-how-providence-survives-success",
+      "continuityIds": [
+        "v04-how-providence-survives-success"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-how-providence-survives-success"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-deeper-inquiry-25",
+      "continuityIds": [
+        "v04-the-deeper-inquiry-25"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-deeper-inquiry-25"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-what-remains-open-25",
+      "continuityIds": [
+        "v04-what-remains-open-25"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-what-remains-open-25"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-25",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-25"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-25"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-scales-of-the-dragon",
+      "continuityIds": [
+        "v04-the-scales-of-the-dragon"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-scales-of-the-dragon"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-presence-as-infrastructure",
+      "continuityIds": [
+        "v04-presence-as-infrastructure"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-presence-as-infrastructure"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-presence-as-a-civic-capacity",
+      "continuityIds": [
+        "v04-presence-as-a-civic-capacity"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-presence-as-a-civic-capacity"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-measurement-that-serves-dignity",
+      "continuityIds": [
+        "v04-measurement-that-serves-dignity"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-measurement-that-serves-dignity"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-26",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-26"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-26"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-first-scale",
+      "continuityIds": [
+        "v04-the-first-scale"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-first-scale"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-why-the-first-five-hundred-matter",
+      "continuityIds": [
+        "v04-why-the-first-five-hundred-matter"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-why-the-first-five-hundred-matter"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-27",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-27"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-27"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-earth-awakening-to-itself",
+      "continuityIds": [
+        "v04-earth-awakening-to-itself"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-earth-awakening-to-itself"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-dragon-and-what-it-has-always-meant",
+      "continuityIds": [
+        "v04-the-dragon-and-what-it-has-always-meant"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-dragon-and-what-it-has-always-meant"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-widening-of-presence",
+      "continuityIds": [
+        "v04-the-widening-of-presence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-widening-of-presence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coherence-without-conformity",
+      "continuityIds": [
+        "v04-coherence-without-conformity"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coherence-without-conformity"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms-28",
+      "continuityIds": [
+        "v04-coda-in-plain-terms-28"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms-28"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-an-honest-accounting",
+      "continuityIds": [
+        "v04-an-honest-accounting"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-an-honest-accounting"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-providence",
+      "continuityIds": [
+        "v04-providence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-providence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-on-returning-to-the-human",
+      "continuityIds": [
+        "v05-on-returning-to-the-human"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-on-returning-to-the-human"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-at-the-threshold-of-contribution",
+      "continuityIds": [
+        "v05-at-the-threshold-of-contribution"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-at-the-threshold-of-contribution"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-the-greatest-untapped-resource-on-earth",
+      "continuityIds": [
+        "v05-the-greatest-untapped-resource-on-earth"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-the-greatest-untapped-resource-on-earth"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-the-collapse-of-initiation",
+      "continuityIds": [
+        "v05-the-collapse-of-initiation"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-the-collapse-of-initiation"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-the-ecology-of-purpose",
+      "continuityIds": [
+        "v05-the-ecology-of-purpose"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-the-ecology-of-purpose"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-this-is-not-a-return",
+      "continuityIds": [
+        "v05-this-is-not-a-return"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-this-is-not-a-return"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-the-missing-elders",
+      "continuityIds": [
+        "v05-the-missing-elders"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-the-missing-elders"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-finding-your-people",
+      "continuityIds": [
+        "v05-finding-your-people"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-finding-your-people"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-from-purpose-to-contribution",
+      "continuityIds": [
+        "v05-from-purpose-to-contribution"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-from-purpose-to-contribution"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-the-collaboration-problem",
+      "continuityIds": [
+        "v05-the-collaboration-problem"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-the-collaboration-problem"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-the-architecture-of-serendipity",
+      "continuityIds": [
+        "v05-the-architecture-of-serendipity"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-the-architecture-of-serendipity"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-the-coordination-layer",
+      "continuityIds": [
+        "v05-the-coordination-layer"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-the-coordination-layer"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-living-your-word",
+      "continuityIds": [
+        "v05-living-your-word"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-living-your-word"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-trust",
+      "continuityIds": [
+        "v05-trust"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-trust"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-the-stewardship-transition",
+      "continuityIds": [
+        "v05-the-stewardship-transition"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-the-stewardship-transition"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-the-largest-mentorship-network-possible",
+      "continuityIds": [
+        "v05-the-largest-mentorship-network-possible"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-the-largest-mentorship-network-possible"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-purposeful",
+      "continuityIds": [
+        "v05-purposeful"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-purposeful"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-providence-reconsidered",
+      "continuityIds": [
+        "v05-providence-reconsidered"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-providence-reconsidered"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-builders",
+      "continuityIds": [
+        "v05-builders"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-builders"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-the-cardinal-scale",
+      "continuityIds": [
+        "v05-the-cardinal-scale"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-the-cardinal-scale"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-the-dragon-named-earth",
+      "continuityIds": [
+        "v05-the-dragon-named-earth"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-the-dragon-named-earth"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-the-future-ancestor",
+      "continuityIds": [
+        "v05-the-future-ancestor"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-the-future-ancestor"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-the-assembly-of-builders",
+      "continuityIds": [
+        "v05-the-assembly-of-builders"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-the-assembly-of-builders"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v05-for-the-ones-not-yet-born",
+      "continuityIds": [
+        "v05-for-the-ones-not-yet-born"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v05-for-the-ones-not-yet-born"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-on-nests",
+      "continuityIds": [
+        "v06-on-nests"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-on-nests"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-whole-briefly",
+      "continuityIds": [
+        "v06-the-whole-briefly"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-whole-briefly"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-whole-unfolded",
+      "continuityIds": [
+        "v06-the-whole-unfolded"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-whole-unfolded"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-what-this-is-for",
+      "continuityIds": [
+        "v06-what-this-is-for"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-what-this-is-for"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-current",
+      "continuityIds": [
+        "v06-the-current"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-current"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-between",
+      "continuityIds": [
+        "v06-the-between"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-between"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-unspent-gift",
+      "continuityIds": [
+        "v06-the-unspent-gift"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-unspent-gift"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-pathway",
+      "continuityIds": [
+        "v06-the-pathway"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-pathway"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-seeing",
+      "continuityIds": [
+        "v06-the-seeing"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-seeing"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-your-people",
+      "continuityIds": [
+        "v06-your-people"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-your-people"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-loom",
+      "continuityIds": [
+        "v06-the-loom"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-loom"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-currency",
+      "continuityIds": [
+        "v06-the-currency"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-currency"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-right-size",
+      "continuityIds": [
+        "v06-the-right-size"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-right-size"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-dragon",
+      "continuityIds": [
+        "v06-the-dragon"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-dragon"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-smallest-nest",
+      "continuityIds": [
+        "v06-the-smallest-nest"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-smallest-nest"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-first-nest-is-whole",
+      "continuityIds": [
+        "v06-the-first-nest-is-whole"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-first-nest-is-whole"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-on-entering-the-next-nest",
+      "continuityIds": [
+        "v06-on-entering-the-next-nest"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-on-entering-the-next-nest"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-two-substrates",
+      "continuityIds": [
+        "v06-the-two-substrates"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-two-substrates"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-relational-mind",
+      "continuityIds": [
+        "v06-the-relational-mind"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-relational-mind"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-architecture-of-coordination",
+      "continuityIds": [
+        "v06-the-architecture-of-coordination"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-architecture-of-coordination"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-buildable-blueprint",
+      "continuityIds": [
+        "v06-the-buildable-blueprint"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-buildable-blueprint"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-return-to-the-human",
+      "continuityIds": [
+        "v06-the-return-to-the-human"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-return-to-the-human"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-the-largest-nest",
+      "continuityIds": [
+        "v06-the-largest-nest"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-the-largest-nest"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v06-a-remembering",
+      "continuityIds": [
+        "v06-a-remembering"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v06-a-remembering"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-argument-arrived",
+      "continuityIds": [
+        "v07-the-argument-arrived"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-argument-arrived"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-numbers-and-the-structure",
+      "continuityIds": [
+        "v07-the-numbers-and-the-structure"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-numbers-and-the-structure"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-internal-technologies",
+      "continuityIds": [
+        "v07-the-internal-technologies"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-internal-technologies"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-coherence-versus-extraction",
+      "continuityIds": [
+        "v07-coherence-versus-extraction"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-coherence-versus-extraction"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-presence",
+      "continuityIds": [
+        "v07-presence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-presence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-presencing-and-the-space-between",
+      "continuityIds": [
+        "v07-presencing-and-the-space-between"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-presencing-and-the-space-between"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-genius-the-genii",
+      "continuityIds": [
+        "v07-genius-the-genii"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-genius-the-genii"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-coherence-and-the-current-beneath-the-currency",
+      "continuityIds": [
+        "v07-coherence-and-the-current-beneath-the-currency"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-coherence-and-the-current-beneath-the-currency"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-four-windows-of-perception",
+      "continuityIds": [
+        "v07-the-four-windows-of-perception"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-four-windows-of-perception"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-windows-taken-up-together",
+      "continuityIds": [
+        "v07-the-windows-taken-up-together"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-windows-taken-up-together"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-primary-technology-of-coordination",
+      "continuityIds": [
+        "v07-the-primary-technology-of-coordination"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-primary-technology-of-coordination"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-accountable-to-our-word-and-our-presence",
+      "continuityIds": [
+        "v07-accountable-to-our-word-and-our-presence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-accountable-to-our-word-and-our-presence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-why-the-mentor-group-is-the-leveraged-act",
+      "continuityIds": [
+        "v07-why-the-mentor-group-is-the-leveraged-act"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-why-the-mentor-group-is-the-leveraged-act"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-greatest-untapped-resource",
+      "continuityIds": [
+        "v07-the-greatest-untapped-resource"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-greatest-untapped-resource"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-internal-technologies-first-and-the-instruments-that-honor-them",
+      "continuityIds": [
+        "v07-internal-technologies-first-and-the-instruments-that-honor-them"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-internal-technologies-first-and-the-instruments-that-honor-them"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-seven-initiates",
+      "continuityIds": [
+        "v07-the-seven-initiates"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-seven-initiates"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-seven-in-brief",
+      "continuityIds": [
+        "v07-the-seven-in-brief"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-seven-in-brief"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-as-we-deepen-the-loves-beneath-the-path",
+      "continuityIds": [
+        "v07-as-we-deepen-the-loves-beneath-the-path"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-as-we-deepen-the-loves-beneath-the-path"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-twelve-tenets",
+      "continuityIds": [
+        "v07-the-twelve-tenets"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-twelve-tenets"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-1-deliberate-perception",
+      "continuityIds": [
+        "v07-1-deliberate-perception"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-1-deliberate-perception"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-2-witnessing-consciousness",
+      "continuityIds": [
+        "v07-2-witnessing-consciousness"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-2-witnessing-consciousness"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-3-direct-experience-living-doctrine",
+      "continuityIds": [
+        "v07-3-direct-experience-living-doctrine"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-3-direct-experience-living-doctrine"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-4-wholesome-eroticism",
+      "continuityIds": [
+        "v07-4-wholesome-eroticism"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-4-wholesome-eroticism"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-5-loving-presence",
+      "continuityIds": [
+        "v07-5-loving-presence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-5-loving-presence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-6-coherent-resonance",
+      "continuityIds": [
+        "v07-6-coherent-resonance"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-6-coherent-resonance"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-7-ontological-authority",
+      "continuityIds": [
+        "v07-7-ontological-authority"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-7-ontological-authority"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-8-mutual-beneficence",
+      "continuityIds": [
+        "v07-8-mutual-beneficence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-8-mutual-beneficence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-9-animistic-awareness",
+      "continuityIds": [
+        "v07-9-animistic-awareness"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-9-animistic-awareness"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-10-interspecies-communication",
+      "continuityIds": [
+        "v07-10-interspecies-communication"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-10-interspecies-communication"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-11-cosmological-reliability",
+      "continuityIds": [
+        "v07-11-cosmological-reliability"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-11-cosmological-reliability"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-12-immortal-responsibility",
+      "continuityIds": [
+        "v07-12-immortal-responsibility"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-12-immortal-responsibility"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-gathering",
+      "continuityIds": [
+        "v07-the-gathering"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-gathering"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-purposeful-mentorship",
+      "continuityIds": [
+        "v07-purposeful-mentorship"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-purposeful-mentorship"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-mentor-remains-a-practitioner",
+      "continuityIds": [
+        "v07-the-mentor-remains-a-practitioner"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-mentor-remains-a-practitioner"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-three-movements-of-training",
+      "continuityIds": [
+        "v07-three-movements-of-training"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-three-movements-of-training"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-year-of-initiations",
+      "continuityIds": [
+        "v07-the-year-of-initiations"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-year-of-initiations"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-linear-and-spiral-at-once",
+      "continuityIds": [
+        "v07-linear-and-spiral-at-once"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-linear-and-spiral-at-once"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-sequence-and-metered-depth",
+      "continuityIds": [
+        "v07-sequence-and-metered-depth"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-sequence-and-metered-depth"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-retreats",
+      "continuityIds": [
+        "v07-the-retreats"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-retreats"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-a-passage-not-a-program",
+      "continuityIds": [
+        "v07-a-passage-not-a-program"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-a-passage-not-a-program"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-what-is-taught-is-states",
+      "continuityIds": [
+        "v07-what-is-taught-is-states"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-what-is-taught-is-states"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-holding",
+      "continuityIds": [
+        "v07-the-holding"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-holding"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-to-meet-each-at-their-depth",
+      "continuityIds": [
+        "v07-to-meet-each-at-their-depth"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-to-meet-each-at-their-depth"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-organs-that-serve-the-living-whole",
+      "continuityIds": [
+        "v07-organs-that-serve-the-living-whole"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-organs-that-serve-the-living-whole"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-long-view",
+      "continuityIds": [
+        "v07-the-long-view"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-long-view"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v07-the-birthright",
+      "continuityIds": [
+        "v07-the-birthright"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v07-the-birthright"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-prologue-two-scenes",
+      "continuityIds": [
+        "v08-prologue-two-scenes"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-prologue-two-scenes"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register",
+      "continuityIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-1-where-the-work-has-brought-us",
+      "continuityIds": [
+        "v08-1-where-the-work-has-brought-us"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-1-where-the-work-has-brought-us"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-2-the-accounting",
+      "continuityIds": [
+        "v08-2-the-accounting"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-2-the-accounting"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-3-the-present-tense-a-reckoning-of-the-year-2026",
+      "continuityIds": [
+        "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-4-the-birds-and-the-bees-the-second-meaning",
+      "continuityIds": [
+        "v08-4-the-birds-and-the-bees-the-second-meaning"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-4-the-birds-and-the-bees-the-second-meaning"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name",
+      "continuityIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-6-the-three-roads-otherwise",
+      "continuityIds": [
+        "v08-6-the-three-roads-otherwise"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-6-the-three-roads-otherwise"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-7-let-the-architects-speak",
+      "continuityIds": [
+        "v08-7-let-the-architects-speak"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-7-let-the-architects-speak"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-8-the-selection-of-the-dark-triad",
+      "continuityIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-8-the-selection-of-the-dark-triad"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening",
+      "continuityIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-10-the-case-rests-and-why-we-wrote-one-more-book",
+      "continuityIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-11-the-inversion-the-same-tools-the-opposite-god",
+      "continuityIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-11-the-inversion-the-same-tools-the-opposite-god"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-12-how-providence-tends-the-three-primal-goods",
+      "continuityIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-12-how-providence-tends-the-three-primal-goods"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-13-purposeful-cultivating-the-human-the-artifice-degrades",
+      "continuityIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-14-the-scales-of-the-dragon-earth-awakening",
+      "continuityIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-14-the-scales-of-the-dragon-earth-awakening"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-15-two-addresses",
+      "continuityIds": [
+        "v08-15-two-addresses"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-15-two-addresses"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-the-first-address-to-those-who-would-own-the-world",
+      "continuityIds": [
+        "v08-the-first-address-to-those-who-would-own-the-world"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-the-first-address-to-those-who-would-own-the-world"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-the-second-address-to-the-frightened",
+      "continuityIds": [
+        "v08-the-second-address-to-the-frightened"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-the-second-address-to-the-frightened"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-16-a-blessing-and-a-door",
+      "continuityIds": [
+        "v08-16-a-blessing-and-a-door"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-16-a-blessing-and-a-door"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-appendix-a-the-fork-two-roads-side-by-side",
+      "continuityIds": [
+        "v08-appendix-a-the-fork-two-roads-side-by-side"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-appendix-a-the-fork-two-roads-side-by-side"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week",
+      "continuityIds": [
+        "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-for-your-attention-take-it-back",
+      "continuityIds": [
+        "v08-for-your-attention-take-it-back"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-for-your-attention-take-it-back"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-for-your-body-and-your-ground",
+      "continuityIds": [
+        "v08-for-your-body-and-your-ground"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-for-your-body-and-your-ground"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-for-your-bonds",
+      "continuityIds": [
+        "v08-for-your-bonds"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-for-your-bonds"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-for-the-tending",
+      "continuityIds": [
+        "v08-for-the-tending"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-for-the-tending"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-for-coordination-the-actual-work",
+      "continuityIds": [
+        "v08-for-coordination-the-actual-work"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-for-coordination-the-actual-work"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-for-the-long-view",
+      "continuityIds": [
+        "v08-for-the-long-view"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-for-the-long-view"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-the-roots-of-this-volume",
+      "continuityIds": [
+        "v08-the-roots-of-this-volume"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-the-roots-of-this-volume"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-the-living-world-2",
+      "continuityIds": [
+        "v08-the-living-world-2"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-the-living-world-2"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v08-the-state-of-2026-3",
+      "continuityIds": [
+        "v08-the-state-of-2026-3"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v08-the-state-of-2026-3"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v09-a-note-on-the-register-of-this-volume",
+      "continuityIds": [
+        "v09-a-note-on-the-register-of-this-volume"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v09-a-note-on-the-register-of-this-volume"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v09-1-the-ninth-turn-where-the-eight-have-brought-us",
+      "continuityIds": [
+        "v09-1-the-ninth-turn-where-the-eight-have-brought-us"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v09-1-the-ninth-turn-where-the-eight-have-brought-us"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v09-2-what-a-scale-is",
+      "continuityIds": [
+        "v09-2-what-a-scale-is"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v09-2-what-a-scale-is"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v09-3-providence-the-device-that-coordinates-the-many",
+      "continuityIds": [
+        "v09-3-providence-the-device-that-coordinates-the-many"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v09-3-providence-the-device-that-coordinates-the-many"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v09-4-what-we-know-and-what-we-do-not",
+      "continuityIds": [
+        "v09-4-what-we-know-and-what-we-do-not"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v09-4-what-we-know-and-what-we-do-not"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v09-what-we-know",
+      "continuityIds": [
+        "v09-what-we-know"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v09-what-we-know"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v09-5-the-invitation-lay-one-stone",
+      "continuityIds": [
+        "v09-5-the-invitation-lay-one-stone"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v09-5-the-invitation-lay-one-stone"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v09-closing",
+      "continuityIds": [
+        "v09-closing"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v09-closing"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v09-providence",
+      "continuityIds": [
+        "v09-providence"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v09-providence"
+        ]
+      ]
+    }
+  ]
+}

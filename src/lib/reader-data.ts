@@ -7,6 +7,10 @@ export type ReaderParagraph = {
 
 export type ReaderSectionData = {
   sectionId: string;
+  continuityId: string;
+  legacyContinuityIds: string[];
+  progressContinuityGroups: string[][];
+  legacySectionIds: string[];
   title: string;
   href: string;
   chapterHref: string;
@@ -74,6 +78,10 @@ export type PdfDownloadManifest = {
 // reader-sections payload (with text) is loaded lazily only when audio plays.
 export type ProgressSectionData = {
   sectionId: string;
+  continuityId: string;
+  legacyContinuityIds: string[];
+  progressContinuityGroups: string[][];
+  legacySectionIds: string[];
   contentHash: string;
   title: string;
   href: string;

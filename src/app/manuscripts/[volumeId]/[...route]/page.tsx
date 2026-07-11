@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { ChapterReader } from "@/components/ChapterReader";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
+import { LegacyFragmentRedirectIsland } from "@/components/LegacyFragmentRedirectIsland";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
 import { SectionCardGrid } from "@/components/SectionCardGrid";
 import { SectionReader } from "@/components/SectionReader";
@@ -14,6 +15,7 @@ import {
   manuscriptPathParams,
   partByHref,
   partNavigation,
+  routeAliasByHref,
   sectionByHrefOrAlias,
   sectionsForChapter,
   sectionsForPart,
@@ -48,7 +50,8 @@ export async function generateMetadata({
   params: Promise<RouteParams>;
 }): Promise<Metadata> {
   const resolvedParams = await params;
-  const href = routeHref(resolvedParams);
+  const requestedHref = routeHref(resolvedParams);
+  const href = routeAliasByHref(requestedHref)?.targetHref ?? requestedHref;
   const section = sectionByHrefOrAlias(href)?.section;
   if (section) {
     return {
@@ -83,6 +86,7 @@ function PartPage({ match }: { match: PartRouteMatch }) {
   const navigation = partNavigation(volume.volumeId, part.partId);
   if (!navigation) notFound();
   const sections = sectionsForPart(volume.volumeId, part.partId);
+  const progressSections = sections.map(toProgressSection);
   const showSections =
     part.chapters.length === 1 && part.chapters[0]?.href === part.href;
   const count = showSections ? sections.length : part.chapters.length;
@@ -96,6 +100,7 @@ function PartPage({ match }: { match: PartRouteMatch }) {
   return (
     <div className="page-frame reader-layout">
       <article className="reader-main">
+        <LegacyFragmentRedirectIsland sections={progressSections} />
         <header className="page-heading">
           {showPartKicker && <p className="eyebrow">{partKicker}</p>}
           <h1>{partTitle}</h1>
@@ -194,9 +199,13 @@ export default async function ManuscriptRoutePage({
 }) {
   const resolvedParams = await params;
   const href = routeHref(resolvedParams);
+  const routeAlias = routeAliasByHref(href);
+  if (routeAlias) redirect(routeAlias.targetHref);
   const section = sectionByHrefOrAlias(href);
   if (section) {
-    if (section.section.readerHref !== href) redirect(section.section.readerHref);
+    if (!section.alias && section.section.readerHref !== href) {
+      redirect(section.section.readerHref);
+    }
     return (
       <div className="page-frame reader-layout">
         <SectionReader section={section.section} alias={section.alias} />

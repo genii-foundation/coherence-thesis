@@ -106,6 +106,10 @@
       "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/intelligence-we-now-build/"
     },
     {
+      "sectionId": "v01-the-flower",
+      "href": "/manuscripts/1/the-flower/chapter-start/the-flower/"
+    },
+    {
       "sectionId": "v01-icons-and-the-first-scale",
       "href": "/manuscripts/1/the-flower/icons-and-the-first-scale/"
     },
@@ -1002,6 +1006,10 @@
       "href": "/manuscripts/4/contact-with-the-world/catastrophic-failure/"
     },
     {
+      "sectionId": "v04-contact-with-the-world",
+      "href": "/manuscripts/4/contact-with-the-world/chapter-start/contact-with-the-world/"
+    },
+    {
       "sectionId": "v04-coda-in-plain-terms-20",
       "href": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/"
     },
@@ -1110,6 +1118,10 @@
       "href": "/manuscripts/4/opening/why-purposeful-exists-and-how-providence-begins/"
     },
     {
+      "sectionId": "v04-the-civilization-made-visible",
+      "href": "/manuscripts/4/the-civilization-made-visible/chapter-start/the-civilization-made-visible/"
+    },
+    {
       "sectionId": "v04-coda-in-plain-terms-23",
       "href": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/"
     },
@@ -1210,6 +1222,10 @@
       "href": "/manuscripts/4/the-economic-architecture/capital-patient-enough/what-remains-open-8/"
     },
     {
+      "sectionId": "v04-the-economic-architecture",
+      "href": "/manuscripts/4/the-economic-architecture/chapter-start/the-economic-architecture/"
+    },
+    {
       "sectionId": "v04-coda-in-plain-terms-5",
       "href": "/manuscripts/4/the-economic-architecture/coda-in-plain-terms-5/"
     },
@@ -1280,6 +1296,10 @@
     {
       "sectionId": "v04-what-remains-open-5",
       "href": "/manuscripts/4/the-economic-architecture/what-the-historical-record-shows/what-remains-open-5/"
+    },
+    {
+      "sectionId": "v04-the-governance-architecture",
+      "href": "/manuscripts/4/the-governance-architecture/chapter-start/the-governance-architecture/"
     },
     {
       "sectionId": "v04-coda-in-plain-terms-10",
@@ -1382,6 +1402,10 @@
       "href": "/manuscripts/4/the-governance-architecture/when-communities-diverge/"
     },
     {
+      "sectionId": "v04-the-human-architecture-in-practice",
+      "href": "/manuscripts/4/the-human-architecture-in-practice/chapter-start/the-human-architecture-in-practice/"
+    },
+    {
       "sectionId": "v04-coda-in-plain-terms-17",
       "href": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/"
     },
@@ -1458,6 +1482,10 @@
       "href": "/manuscripts/4/the-scales-of-the-dragon/an-honest-accounting/start/"
     },
     {
+      "sectionId": "v04-the-scales-of-the-dragon",
+      "href": "/manuscripts/4/the-scales-of-the-dragon/chapter-start/the-scales-of-the-dragon/"
+    },
+    {
       "sectionId": "v04-coda-in-plain-terms-26",
       "href": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/"
     },
@@ -1508,6 +1536,10 @@
     {
       "sectionId": "v04-why-the-first-five-hundred-matter",
       "href": "/manuscripts/4/the-scales-of-the-dragon/why-the-first-five-hundred-matter/"
+    },
+    {
+      "sectionId": "v04-the-sequence-problem",
+      "href": "/manuscripts/4/the-sequence-problem/chapter-start/the-sequence-problem/"
     },
     {
       "sectionId": "v04-coda-in-plain-terms-2",
@@ -1616,6 +1648,10 @@
     {
       "sectionId": "v04-ai-as-infrastructure-not-sovereign",
       "href": "/manuscripts/4/the-technological-architecture-in-detail/ai-as-infrastructure-not-sovereign/"
+    },
+    {
+      "sectionId": "v04-the-technological-architecture-in-detail",
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/chapter-start/the-technological-architecture-in-detail/"
     },
     {
       "sectionId": "v04-coda-in-plain-terms-13",

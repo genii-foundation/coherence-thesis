@@ -1,6 +1,14 @@
+import fs from "node:fs";
 import { describe, expect, it } from "vitest";
 import { manuscriptPdfHref, sectionPdfHref } from "./pdf";
-import { buildCatalog, slugify, wordCount } from "./shared";
+import {
+  aliasConfigPath,
+  buildCatalog,
+  resolvePublishedRoute,
+  slugify,
+  wordCount,
+} from "./shared";
+import type { RouteLedger } from "./types";
 
 describe("manuscript compiler helpers", () => {
   it("creates stable URL slugs", () => {
@@ -254,5 +262,206 @@ describe("manuscript compiler helpers", () => {
     ];
 
     expect(publishedOpeners).toEqual([]);
+  });
+
+  it("derives a historical reader path from unique continuity ownership", () => {
+    const sourceHref = "/manuscripts/1/retired-chapter/#retired-seed";
+    const routeLedger: RouteLedger = {
+      version: 2,
+      routes: [
+        {
+          href: sourceHref,
+          kind: "reader",
+          targetContinuityIds: ["retired-seed"],
+        },
+      ],
+    };
+    const catalog = buildCatalog(undefined, {
+      aliasConfig: { version: 1, aliases: [] },
+      routeAliasConfig: { version: 1, aliases: [] },
+      sectionLineage: {
+        version: 1,
+        sections: [
+          {
+            currentSectionId: "v01-the-seed",
+            continuityIds: ["v01-the-seed", "retired-seed"],
+            historicalSectionIds: ["retired-seed"],
+          },
+        ],
+      },
+      routeLedger,
+    });
+
+    expect(
+      catalog.aliases.find(
+        (alias) => alias.sourceHref === "/manuscripts/1/retired-chapter/",
+      ),
+    ).toMatchObject({
+      targetSectionId: "v01-the-seed",
+      note: "Generated from reviewed continuity ownership in the route ledger.",
+    });
+    expect(resolvePublishedRoute(catalog, sourceHref)).toMatchObject({
+      kind: "reader",
+      targetContinuityIds: expect.arrayContaining([
+        "v01-the-seed",
+        "retired-seed",
+      ]),
+    });
+  });
+
+  it("resolves a legacy reader fragment through its current canonical base", () => {
+    const baseHref =
+      "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/";
+    const sourceHref = `${baseHref}#retired-reductionism`;
+    const catalog = buildCatalog(undefined, {
+      aliasConfig: { version: 1, aliases: [] },
+      routeAliasConfig: { version: 1, aliases: [] },
+      sectionLineage: {
+        version: 1,
+        sections: [
+          {
+            currentSectionId: "v01-on-reductionism",
+            continuityIds: ["v01-on-reductionism", "retired-reductionism"],
+            historicalSectionIds: ["retired-reductionism"],
+          },
+        ],
+      },
+      routeLedger: {
+        version: 2,
+        routes: [
+          {
+            href: sourceHref,
+            kind: "reader",
+            targetContinuityIds: ["retired-reductionism"],
+          },
+        ],
+      },
+    });
+
+    expect(catalog.aliases.some((alias) => alias.sourceHref === baseHref)).toBe(
+      false,
+    );
+    expect(resolvePublishedRoute(catalog, sourceHref)).toMatchObject({
+      kind: "reader",
+      targetContinuityIds: expect.arrayContaining([
+        "v01-on-reductionism",
+        "retired-reductionism",
+      ]),
+      targetHref: `${baseHref}#v01-on-reductionism`,
+    });
+  });
+
+  it("keeps a configured alias authoritative over ledger derivation", () => {
+    const sourceHref = "/manuscripts/1/reviewed-replacement/";
+    const catalog = buildCatalog(undefined, {
+      aliasConfig: {
+        version: 1,
+        aliases: [
+          {
+            sourceHref,
+            targetSectionId: "v01-orientation",
+            note: "Reviewed by an editor.",
+          },
+        ],
+      },
+      routeAliasConfig: { version: 1, aliases: [] },
+      sectionLineage: {
+        version: 1,
+        sections: [
+          {
+            currentSectionId: "v01-the-seed",
+            continuityIds: ["v01-the-seed", "retired-seed"],
+            historicalSectionIds: ["retired-seed"],
+          },
+        ],
+      },
+      routeLedger: {
+        version: 2,
+        routes: [
+          {
+            href: sourceHref,
+            kind: "section",
+            targetContinuityIds: ["retired-seed"],
+          },
+        ],
+      },
+    });
+
+    expect(
+      catalog.aliases.filter((alias) => alias.sourceHref === sourceHref),
+    ).toEqual([
+      expect.objectContaining({
+        targetSectionId: "v01-orientation",
+        note: "Reviewed by an editor.",
+      }),
+    ]);
+  });
+
+  it("does not guess a historical route whose lineage has split", () => {
+    const sourceHref = "/manuscripts/1/split-predecessor/";
+    const equivalentSourceHref =
+      "/manuscripts/humanitys-most-viable-future/split-predecessor/";
+    const catalog = buildCatalog(undefined, {
+      aliasConfig: { version: 1, aliases: [] },
+      routeAliasConfig: { version: 1, aliases: [] },
+      sectionLineage: {
+        version: 1,
+        sections: [
+          {
+            currentSectionId: "v01-orientation",
+            continuityIds: ["v01-orientation", "split-left"],
+            historicalSectionIds: ["split-left"],
+          },
+          {
+            currentSectionId: "v01-the-seed",
+            continuityIds: ["v01-the-seed", "split-right"],
+            historicalSectionIds: ["split-right"],
+          },
+        ],
+      },
+      routeLedger: {
+        version: 2,
+        routes: [
+          {
+            href: sourceHref,
+            kind: "section",
+            targetContinuityIds: ["split-left"],
+          },
+          {
+            href: equivalentSourceHref,
+            kind: "section-alias",
+            targetContinuityIds: ["split-right"],
+          },
+        ],
+      },
+    });
+
+    expect(
+      catalog.aliases.some(
+        (alias) =>
+          alias.sourceHref === sourceHref ||
+          alias.sourceHref === equivalentSourceHref,
+      ),
+    ).toBe(false);
+  });
+
+  it("never writes generated historical aliases to the reviewed config", () => {
+    const before = fs.readFileSync(aliasConfigPath, "utf8");
+    buildCatalog(undefined, {
+      aliasConfig: { version: 1, aliases: [] },
+      routeAliasConfig: { version: 1, aliases: [] },
+      routeLedger: {
+        version: 2,
+        routes: [
+          {
+            href: "/manuscripts/1/runtime-only-alias/",
+            kind: "section-alias",
+            targetContinuityIds: ["v01-the-seed"],
+          },
+        ],
+      },
+    });
+
+    expect(fs.readFileSync(aliasConfigPath, "utf8")).toBe(before);
   });
 });

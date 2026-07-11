@@ -54,6 +54,7 @@ rg --files content/manuscripts | sort
 7. Record reviewed routes, regenerate disposable outputs, and validate:
 
 ```bash
+npm run manuscripts:preserve-links -- --base HEAD
 npm run manuscripts:record-routes
 npm run manuscripts:prepare -- --force
 npm run manuscripts:validate
@@ -107,8 +108,8 @@ npm run audio:publish-manifest -- --run-id <run-id> --version <new-version> --pr
 
 ## Stable IDs
 
-- Public section routes are preserved through `content/series/aliases.json`.
-- Add an alias when a future route should keep resolving after a section moves, splits, merges, or is renamed.
+- Public names may evolve. Stable continuity identities live in `content/series/section-lineage.json`, while section and structural redirects live in `content/series/aliases.json` and `content/series/route-aliases.json`.
+- Run the preservation plan before recording routes. Add explicit mappings when a move, split, or merge is not safe to infer.
 - Do not force new headings to mimic old section structures just to preserve links.
 - Paragraph fingerprints are generated into the catalog so local progress can identify changed passages after a reader has read an older section version.
 - Audio version fingerprints are generated from section text and structure. Treat changed `audioVersionId` values as a hosted-audio invalidation event.

@@ -17,7 +17,11 @@ const DISPOSABLE_FILES = new Set([
 
 const REQUIRED_SERIES_FILES = [
   "content/series/aliases.json",
+  "content/series/historical-section-mappings.json",
+  "content/series/route-aliases.json",
+  "content/series/route-ledger.json",
   "content/series/section-ledger.json",
+  "content/series/section-lineage.json",
   "content/series/version-provenance.json",
   "content/series/volumes.json",
 ] as const;

@@ -4,17 +4,23 @@ import {
   buildCatalog,
   buildSearchIndex,
   buildSectionLedger,
+  buildRouteLedger,
   catalogPath,
   readMarkdownDocuments,
   readSectionLedger,
+  readSectionLineage,
+  readRouteLedger,
   readVersionProvenance,
   routeVolumesForDocuments,
   sectionHref,
   searchIndexPath,
   sectionLedgerPath,
+  routeLedgerPath,
+  resolvePublishedRoute,
+  validateSectionLineageConfig,
   versionProvenancePath,
 } from "./shared";
-import type { CompiledCatalog, SectionLedger } from "./shared";
+import type { CompiledCatalog, RouteLedger, SectionLedger } from "./shared";
 
 function collectOverviewRefs(
   nodes: Array<{ references?: Array<{ sectionId: string }>; children?: unknown[] }>,
@@ -64,11 +70,9 @@ function catalogJsonForStaleCheck(value: string): string {
   return `${JSON.stringify(catalogForStaleCheck(JSON.parse(value) as CompiledCatalog), null, 2)}\n`;
 }
 
-// ARCH-04: section-ID drift gate. Section routes are the contract behind deep
-// links, read-progress keys, audio queues, and aliases. The committed ledger
-// records every route ever published; this fails the build when a previously
-// published route no longer resolves (canonically or through an alias), forcing
-// a link-preservation alias when a section is renamed or removed.
+// Compatibility gate for the original section route ledger. The lineage-aware
+// route ledger below verifies that a historical path still serves related
+// content, not merely that some route now occupies the same string.
 export function validateSectionLedger(
   catalog: CompiledCatalog,
   committed: SectionLedger = readSectionLedger(),
@@ -78,15 +82,13 @@ export function validateSectionLedger(
     const next = buildSectionLedger(catalog, committed);
     assert(
       JSON.stringify(committed) === JSON.stringify(next),
-      "Section ledger is stale. Run npm run manuscripts:compile.",
+      "Section ledger is stale. Review link preservation, then run npm run manuscripts:record-routes.",
     );
   }
 
-  const canonicalHrefs = new Set(catalog.sections.map((section) => section.href));
   const currentSectionIds = new Set(
     catalog.sections.map((section) => section.sectionId),
   );
-  const aliasSources = new Set(catalog.aliases.map((alias) => alias.sourceHref));
   const aliasTargetsResolve = catalog.aliases.every((alias) =>
     currentSectionIds.has(alias.targetSectionId),
   );
@@ -96,12 +98,89 @@ export function validateSectionLedger(
   );
 
   for (const entry of committed.routes) {
-    if (canonicalHrefs.has(entry.href) || aliasSources.has(entry.href)) continue;
+    const resolved = resolvePublishedRoute(catalog, entry.href);
+    if (
+      resolved &&
+      ["section", "section-alias", "reader"].includes(resolved.kind)
+    ) {
+      continue;
+    }
     assert(
       false,
       `Published route '${entry.href}' (section '${entry.sectionId}') no longer resolves. ` +
-        "This is a link-preservation event: add an alias in content/series/aliases.json " +
-        "pointing it at the current section, then run npm run manuscripts:compile.",
+        "This is a link-preservation event: run npm run manuscripts:preserve-links, " +
+        "review the successor, then run npm run manuscripts:record-routes.",
+    );
+  }
+}
+
+export function validateRouteLedger(
+  catalog: CompiledCatalog,
+  committed: RouteLedger = readRouteLedger(),
+  { checkStale = fs.existsSync(routeLedgerPath) }: { checkStale?: boolean } = {},
+): void {
+  assert(committed.version === 2, "Route ledger must use version 2.");
+  assert(committed.routes.length > 0, "Route ledger must not be empty.");
+  const knownKinds = new Set([
+    "volume",
+    "part",
+    "chapter",
+    "section",
+    "section-alias",
+    "route-alias",
+    "reader",
+  ]);
+  const ledgerKeys = new Set<string>();
+  for (const entry of committed.routes) {
+    assert(knownKinds.has(entry.kind), `Unknown route ledger kind '${entry.kind}'.`);
+    assert(
+      entry.targetContinuityIds.length > 0 &&
+        entry.targetContinuityIds.every((id) => typeof id === "string" && id),
+      `Route ledger entry '${entry.href}' has no continuity owner.`,
+    );
+    assert(
+      new Set(entry.targetContinuityIds).size === entry.targetContinuityIds.length,
+      `Route ledger entry '${entry.href}' repeats a continuity owner.`,
+    );
+    const key = JSON.stringify([
+      entry.href,
+      entry.kind,
+      [...entry.targetContinuityIds].sort(),
+    ]);
+    assert(!ledgerKeys.has(key), `Duplicate route ledger entry '${entry.href}'.`);
+    ledgerKeys.add(key);
+  }
+  if (checkStale) {
+    const next = buildRouteLedger(catalog, committed);
+    assert(
+      JSON.stringify(committed) === JSON.stringify(next),
+      "Route ledger is stale. Review link preservation, then run npm run manuscripts:record-routes.",
+    );
+  }
+
+  for (const entry of committed.routes) {
+    const resolved = resolvePublishedRoute(catalog, entry.href);
+    assert(
+      resolved,
+      `Published ${entry.kind} route '${entry.href}' no longer resolves. ` +
+        "Run npm run manuscripts:preserve-links before compiling.",
+    );
+    if (!resolved) continue;
+    const currentIds = new Set(resolved.targetContinuityIds);
+    const overlap = entry.targetContinuityIds.filter((id) => currentIds.has(id));
+    const membershipMayEvolve = [
+      "volume",
+      "part",
+      "chapter",
+      "route-alias",
+    ].includes(entry.kind);
+    const preservesLineage = membershipMayEvolve
+      ? overlap.length > 0
+      : overlap.length === entry.targetContinuityIds.length;
+    assert(
+      preservesLineage,
+      `Published ${entry.kind} route '${entry.href}' now resolves to unrelated lineage. ` +
+        "Change the new canonical route or add a reviewed structural alias.",
     );
   }
 }
@@ -147,7 +226,18 @@ export function validateManuscripts(): void {
   }
 
   const catalog = buildCatalog();
-  const publishedPaths = new Set(catalog.sections.map((section) => section.href));
+  validateSectionLineageConfig(catalog, readSectionLineage());
+  validateRouteLedger(catalog);
+  const publishedPaths = new Set<string>(
+    catalog.sections.map((section) => section.href),
+  );
+  for (const volume of catalog.volumes) {
+    publishedPaths.add(volume.href);
+    for (const part of volume.parts) {
+      publishedPaths.add(part.href);
+      for (const chapter of part.chapters) publishedPaths.add(chapter.href);
+    }
+  }
   const provenance = readVersionProvenance();
   assert(
     fs.existsSync(versionProvenancePath),
@@ -221,6 +311,13 @@ export function validateManuscripts(): void {
   }
   const aliasSources = new Set<string>();
   for (const alias of catalog.aliases) {
+    assert(
+      alias.sourceHref.startsWith("/manuscripts/") &&
+        alias.sourceHref.endsWith("/") &&
+        !alias.sourceHref.includes("?") &&
+        !alias.sourceHref.includes("#"),
+      `Alias sourceHref '${alias.sourceHref}' must be a normalized manuscript route.`,
+    );
     assert(
       !publishedPaths.has(alias.sourceHref),
       `Alias sourceHref '${alias.sourceHref}' conflicts with a canonical section route.`,

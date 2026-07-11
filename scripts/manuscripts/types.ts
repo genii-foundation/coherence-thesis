@@ -29,6 +29,10 @@ export type MarkdownDocument = {
 };
 
 export type CompiledSection = ManuscriptFrontmatter & {
+  continuityId: string;
+  legacyContinuityIds: string[];
+  progressContinuityGroups: string[][];
+  legacySectionIds: string[];
   path: string;
   href: string;
   chapterHref: string;
@@ -142,11 +146,32 @@ export type SectionAlias = SectionAliasInput & {
   };
 };
 
-// One published section route. Section IDs are the localStorage key for read
-// progress and the anchor for deep links, audio queues, and aliases, so the
-// ledger records every route that has ever been published. It only grows: a
-// removed or renamed section stays here so the drift gate can insist its old
-// route still resolves through an alias.
+export type RouteAliasInput = {
+  sourceHref: string;
+  targetHref: string;
+  note?: string;
+};
+
+export type RouteAliasConfig = {
+  version: number;
+  aliases: RouteAliasInput[];
+};
+
+export type SectionLineageEntry = {
+  currentSectionId: string;
+  continuityIds: string[];
+  progressContinuityGroups?: string[][];
+  historicalSectionIds: string[];
+};
+
+export type SectionLineageConfig = {
+  version: number;
+  sections: SectionLineageEntry[];
+};
+
+// Compatibility index for section routes published before the lineage-aware
+// route ledger. Public section IDs may evolve. Technical continuity IDs now
+// preserve progress and route ancestry.
 export type SectionLedgerEntry = {
   sectionId: string;
   href: string;
@@ -155,6 +180,33 @@ export type SectionLedgerEntry = {
 export type SectionLedger = {
   version: number;
   routes: SectionLedgerEntry[];
+};
+
+export type PublishedRouteKind =
+  | "volume"
+  | "part"
+  | "chapter"
+  | "section"
+  | "section-alias"
+  | "route-alias"
+  | "reader";
+
+export type RouteLedgerEntry = {
+  href: string;
+  kind: PublishedRouteKind;
+  targetContinuityIds: string[];
+};
+
+export type RouteLedger = {
+  version: number;
+  routes: RouteLedgerEntry[];
+};
+
+export type PublishedRouteResolution = {
+  href: string;
+  kind: PublishedRouteKind;
+  targetContinuityIds: string[];
+  targetHref: string;
 };
 
 export type VersionProvenanceEntry = {
@@ -187,6 +239,7 @@ export type CompiledCatalog = {
   volumes: CompiledVolume[];
   sections: CompiledSection[];
   aliases: SectionAlias[];
+  routeAliases: RouteAliasInput[];
   overview: OverviewDocument;
 };
 

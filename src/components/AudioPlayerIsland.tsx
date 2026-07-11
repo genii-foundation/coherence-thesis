@@ -51,6 +51,7 @@ import {
   type ProgressSectionData,
   type ToolbarOutlineData,
 } from "@/lib/reader-data";
+import { readerFragmentTarget } from "@/lib/reader-fragments";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import {
   appendStoredEvent,
@@ -449,13 +450,7 @@ export function AudioPlayerIsland({
     if (currentPath === "/overview/") return [overviewAudio];
     if (!currentPath.startsWith("/manuscripts/")) return [];
 
-    const hashTarget = hash.replace(/^#/, "");
-    const hashSectionId =
-      sections.find(
-        (section) =>
-          hashTarget === section.sectionId ||
-          hashTarget.startsWith(`${section.sectionId}-p-`),
-      )?.sectionId ?? "";
+    const hashSectionId = readerFragmentTarget(hash, sections)?.sectionId ?? "";
     const exactSectionIndex = sections.findIndex(
       (section) => normalizePath(section.href) === currentPath,
     );
@@ -483,6 +478,10 @@ export function AudioPlayerIsland({
           );
     return chosen.map((section) => ({
       sectionId: section.sectionId,
+      continuityId: section.continuityId,
+      legacyContinuityIds: section.legacyContinuityIds,
+      progressContinuityGroups: section.progressContinuityGroups,
+      contentHash: section.contentHash,
       title: section.title,
       text: "",
       audioVersionId: section.audioVersionId,
@@ -617,7 +616,13 @@ export function AudioPlayerIsland({
     updateStoredProgress((current) =>
       recordAudioSeconds(
         current,
-        { sectionId: item.sectionId, contentHash: item.audioVersionId },
+        {
+          sectionId: item.sectionId,
+          continuityId: item.continuityId,
+          legacyContinuityIds: item.legacyContinuityIds,
+          progressContinuityGroups: item.progressContinuityGroups,
+          contentHash: item.contentHash ?? item.audioVersionId,
+        },
         seconds,
       ),
     );
@@ -724,6 +729,10 @@ export function AudioPlayerIsland({
       if (sectionIndex < 0) return;
       const queueItems = sections.slice(sectionIndex).map((section) => ({
         sectionId: section.sectionId,
+        continuityId: section.continuityId,
+        legacyContinuityIds: section.legacyContinuityIds,
+        progressContinuityGroups: section.progressContinuityGroups,
+        contentHash: section.contentHash,
         title: section.title,
       text: "",
       audioVersionId: section.audioVersionId,

@@ -38,6 +38,10 @@ export function OverviewMap() {
               ? [
                   {
                     sectionId: section.sectionId,
+                    continuityId: section.continuityId,
+                    legacyContinuityIds: section.legacyContinuityIds,
+                    progressContinuityGroups:
+                      section.progressContinuityGroups,
                     contentHash: section.contentHash,
                     href: section.readerHref,
                   },

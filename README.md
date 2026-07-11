@@ -116,6 +116,7 @@ After changing a source manuscript or `content/series/volumes.json`, inspect the
 
 ```bash
 npm run manuscripts:import
+npm run manuscripts:preserve-links -- --base HEAD
 npm run manuscripts:record-routes
 npm run manuscripts:prepare -- --force
 npm run manuscripts:validate
@@ -123,7 +124,7 @@ npm run manuscripts:validate
 
 Do not accept an import that collapses, fragments, reorders, or incorrectly renames sections. Fix the source or importer first.
 
-Published routes are durable. When a heading or structure change removes a historical route, add a deliberate alias to `content/series/aliases.json`. The section ledger records every published route, and validation fails when one disappears without a replacement. Ordinary development, testing, building, and deployment cannot modify that ledger.
+Published routes are durable. When a heading or structure change removes a historical route, run the preservation plan and review its proposed lineage and aliases. The route ledgers record every reviewed public path, and validation fails when one disappears without a replacement. Ordinary development, testing, building, and deployment cannot modify those ledgers. See [Manuscript Link Continuity](docs/manuscript-link-continuity.md) for the full workflow.
 
 ## Editorial Debt
 

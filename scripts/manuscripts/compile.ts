@@ -11,13 +11,15 @@ import {
   publicDataRoot,
   outlineDataPath,
   progressSectionsPath,
+  readRouteLedger,
   readerSectionsPath,
   repoRoot,
   searchIndexPath,
+  validateSectionLineageConfig,
   writeJson,
 } from "./shared";
 import { buildPdfDownloads, pdfManifestPath } from "./pdf";
-import { validateSectionLedger } from "./validate";
+import { validateRouteLedger, validateSectionLedger } from "./validate";
 import { displayPartTitle } from "../../src/lib/manuscript-labels";
 
 function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
@@ -75,14 +77,20 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
 
 export async function compileManuscripts(): Promise<void> {
   const catalog = buildCatalog();
+  validateSectionLineageConfig(catalog);
   // Compilation is safe to run from every development and build lifecycle.
   // It must enforce the durable route contract, but it must never expand that
   // contract implicitly. New routes enter the committed ledger only through
   // the explicit, transactional manuscripts:record-routes command.
   validateSectionLedger(catalog, undefined, { checkStale: false });
+  validateRouteLedger(catalog, readRouteLedger(), { checkStale: false });
   const pdfDownloads = await buildPdfDownloads(catalog);
   const readerSections = catalog.sections.map((section) => ({
     sectionId: section.sectionId,
+    continuityId: section.continuityId,
+    legacyContinuityIds: section.legacyContinuityIds,
+    progressContinuityGroups: section.progressContinuityGroups,
+    legacySectionIds: section.legacySectionIds,
     title: section.title,
     href: section.href,
     chapterHref: section.chapterHref,
@@ -106,6 +114,10 @@ export async function compileManuscripts(): Promise<void> {
   // text on first play), not on every page load.
   const progressSections = catalog.sections.map((section) => ({
     sectionId: section.sectionId,
+    continuityId: section.continuityId,
+    legacyContinuityIds: section.legacyContinuityIds,
+    progressContinuityGroups: section.progressContinuityGroups,
+    legacySectionIds: section.legacySectionIds,
     contentHash: section.contentHash,
     title: section.title,
     href: section.href,
