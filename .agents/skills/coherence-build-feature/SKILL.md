@@ -30,9 +30,9 @@ Stay on `main` only when the user explicitly requests it. In that case, verify l
 5. Search for an existing component, hook, helper, script, fixture, or test pattern before adding a new one.
 6. Keep manuscript source rules intact:
    - Source manuscripts live in `sources/manuscripts/`.
-   - Generated canonical reader sections live in `content/manuscripts/`.
-   - Generated browser data lives in `public/data/`.
-   - Do not edit generated manuscript or catalog data by hand.
+   - Ignored reader materializations live in `content/manuscripts/`.
+   - Ignored browser data lives in `public/data/`, except for the tracked hosted-audio manifest.
+   - Do not edit or commit generated manuscript or catalog data by hand.
 7. Capture implementation context while working:
    - What user problem or publishing constraint the change addresses.
    - Which existing patterns or primitives were reused.
@@ -42,7 +42,7 @@ Stay on `main` only when the user explicitly requests it. In that case, verify l
 8. Implement the smallest coherent slice that handles the request end to end.
 9. Before shipping, verify every exported function, class, component, hook, or script entry point added in the change has an appropriate consumer.
 10. Use focused checks while iterating:
-   - `npm run manuscripts:compile` after manuscript or overview edits
+   - `npm run manuscripts:prepare -- --force` after manuscript or overview edits
    - `npm run manuscripts:validate` after manuscript or overview reference changes
    - `npm run test` after pure TypeScript or state helper changes
    - `npm run test:e2e:fast:desktop` for narrow desktop UI checks while iterating
@@ -54,7 +54,7 @@ Stay on `main` only when the user explicitly requests it. In that case, verify l
 14. Run `npm run validate` before committing.
 15. After refreshing `origin/main`, run `npm run updates:generate`. Treat `src/generated/updates.json` as the required Updates fallback cache, not disposable build churn. Commit it whenever it advances through the current main base.
 16. If the change affects browser behavior, run `npm run test:e2e` before committing unless the user explicitly narrows the validation target.
-17. Review the final diff before staging. Confirm the diff is focused, generated files are expected, no debug logs or temporary files remain, and unrelated local changes are left alone.
+17. Review the final diff before staging. Confirm the diff is focused, disposable manuscript outputs are not tracked, durable publishing changes are intentional, the Updates fallback is current, no debug logs or temporary files remain, and unrelated local changes are left alone.
 18. Stage the complete feature, commit with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user requested a direct main change, commit directly on `main` and do not open a pull request unless asked.
 19. As soon as the preview is ready, send the exact URL as a Markdown link in a user-visible update.
 20. Ask the user whether they are ready to publish or what follow-on revisions are needed. Do not merge, publish, or mark the pull request ready for merge until the user explicitly confirms that the preview looks good.
@@ -150,6 +150,7 @@ Include these details whenever they apply:
 - Alternatives considered, with the concrete reason they were not chosen.
 - Accessibility, responsive layout, no-JavaScript reader behavior, manuscript link preservation, performance, cache, or browser compatibility considerations.
 - Audio manifest considerations, including whether hosted clips still match current `audioVersionId` values and whether a new immutable Supabase version path is required.
+- Source-first generation considerations, including whether durable route state changed and proof that disposable outputs remained untracked.
 - Validation commands run, their outcomes, and any useful manual preview or screenshot evidence.
 - Known limits, residual risk, and follow-up work that should not block the pull request.
 
@@ -162,7 +163,7 @@ Make every commit reviewable on its own:
 - Keep one coherent concern per commit.
 - Use a Conventional Commit title that names the user-visible or maintainer-visible change.
 - Do not mix formatting churn, generated output, or dependency changes into an unrelated feature commit.
-- Include generated artifacts only when the repository workflow requires them.
+- Never include disposable manuscript fragments, catalogs, browser payloads, or PDF indexes. Include only reviewed durable publishing state required by the repository workflow.
 - Make sure validation evidence in the closeout and pull request matches the actual commands run.
 - If validation fails, either fix the cause or leave a precise blocker with the failing command and relevant output.
 

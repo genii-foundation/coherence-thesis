@@ -32,7 +32,6 @@ git clone https://github.com/<your-account>/coherence-thesis.git
 cd coherence-thesis
 nvm use
 npm run bootstrap
-npm run manuscripts:compile
 npm run dev
 ```
 
@@ -61,18 +60,19 @@ The source manuscript workflow is intentionally strict:
 - Edit manuscript text in `sources/manuscripts/`.
 - Edit volume metadata and deliberate route aliases in `content/series/`.
 - Edit overview nodes in `content/overview/`.
-- Do not edit `content/manuscripts/`, `src/generated/manuscripts/`, or `public/data/` by hand.
-- Run the importer and compiler, then commit the expected generated output with the source change.
+- Do not edit `content/manuscripts/`, `src/generated/manuscripts/`, or generated `public/data/` payloads by hand.
+- Do not commit disposable manuscript output. `public/data/audio-manifest.json` remains tracked because it records hosted immutable audio.
 
 For manuscript or series changes, run:
 
 ```bash
 npm run manuscripts:import
-npm run manuscripts:compile
+npm run manuscripts:record-routes
+npm run manuscripts:prepare -- --force
 npm run manuscripts:validate
 ```
 
-Review the generated diff. Do not accept an import that collapses, fragments, reorders, or incorrectly renames sections.
+Review the ignored local materialization and import report. Do not accept an import that collapses, fragments, reorders, or incorrectly renames sections. Only source files and reviewed durable publishing state should appear in the Git diff.
 
 Stable section IDs and routes support public links, reading progress, update badges, recommendations, audio, and future learning tools. If a published route disappears, add an intentional alias to `content/series/aliases.json`. Validation checks the permanent section ledger and will reject silent link loss.
 
@@ -137,7 +137,7 @@ Keep each pull request focused on one coherent purpose. Include:
 - Important implementation or editorial decisions
 - Tests and validation commands run
 - Screenshots or a preview link for visible interface changes
-- Generated files and why they changed
+- Durable route, provenance, or hosted-audio state and why it changed
 - Known limits, risks, or follow-up work
 
 Resolve review conversations and keep the branch current with `main`. Maintainers may close stale, unsafe, duplicative, or out-of-scope proposals.

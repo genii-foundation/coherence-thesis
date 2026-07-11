@@ -32,6 +32,9 @@ jobs:
         env:
           COHERENCE_BOOTSTRAPPING: "1"
 
+      - name: Materialize manuscript outputs from source
+        run: npm run manuscripts:prepare
+
       - name: Validate manuscript references and artifact freshness
         run: npm run manuscripts:validate
 
@@ -50,10 +53,11 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           UPDATES_REQUIRED_HEAD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.sha }}
 
-      - name: Check generated browser data is committed and current
+      - name: Check source and durable publishing state remain clean
         run: |
-          if ! git diff --exit-code -- public/data; then
-            echo "::error::public/data is out of date. Run 'npm run manuscripts:compile' and commit the result."
+          npm run manuscripts:source-boundary
+          if ! git diff --exit-code -- content/series; then
+            echo "::error::Automatic generation changed durable publishing state. Run the explicit manuscript publishing workflow and commit the reviewed result."
             exit 1
           fi
 

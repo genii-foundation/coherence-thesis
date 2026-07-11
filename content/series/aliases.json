@@ -1,4 +1,15 @@
 {
   "version": 1,
-  "aliases": []
+  "aliases": [
+    {
+      "sourceHref": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
+      "targetSectionId": "v01-the-seed",
+      "note": "Preserve the published structural opener route after source materialization."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/the-response/v02-the-response/",
+      "targetSectionId": "v02-coherence-as-infrastructure",
+      "note": "Preserve the published structural opener route after source materialization."
+    }
+  ]
 }
