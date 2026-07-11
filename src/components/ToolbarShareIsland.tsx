@@ -5,6 +5,7 @@ import { normalizePath } from "@/lib/routes";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { BookOpen, Check, Download, FileText, Link, Share2 } from "lucide-react";
+import { copyTextToClipboard } from "@/lib/clipboard";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 import {
   loadPdfDownloads,
@@ -136,17 +137,7 @@ export function ToolbarShareIsland() {
       }
     }
 
-    if (!navigator.clipboard?.writeText) {
-      setStatus("failed");
-      return;
-    }
-
-    try {
-      await navigator.clipboard.writeText(url);
-      setStatus("copied");
-    } catch {
-      setStatus("failed");
-    }
+    setStatus((await copyTextToClipboard(url)) ? "copied" : "failed");
   }
 
   const visibleStatus = statusLabel(status);

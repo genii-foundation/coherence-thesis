@@ -173,7 +173,7 @@ export default function RootLayout({
             inert, focusable controls (A11Y-06); the prose and prev/up/next links
             still work. */}
         <noscript>
-          <style>{`.site-nav, .breadcrumb-trail { display: none !important; }`}</style>
+          <style>{`.site-nav, .breadcrumb-trail, .reader-heading-link-button { display: none !important; }`}</style>
         </noscript>
       </head>
       <body>
