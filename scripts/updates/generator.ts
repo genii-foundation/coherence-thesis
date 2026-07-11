@@ -24,6 +24,26 @@ const githubRequestTimeoutMs = 15_000;
 const maxGithubPages = 1_000;
 const maxGithubCommitFiles = 3_000;
 
+export function getRequiredUpdatesHeadSha(
+  environment: Readonly<Record<string, string | undefined>>,
+): string | undefined {
+  const explicit = environment.UPDATES_REQUIRED_HEAD_SHA?.trim();
+  if (explicit) return explicit;
+
+  if (environment.GITHUB_REF === `refs/heads/${updatesBranch}`) {
+    return environment.GITHUB_SHA?.trim() || undefined;
+  }
+
+  if (
+    environment.VERCEL_ENV === "production" &&
+    environment.VERCEL_GIT_COMMIT_REF === updatesBranch
+  ) {
+    return environment.VERCEL_GIT_COMMIT_SHA?.trim() || undefined;
+  }
+
+  return undefined;
+}
+
 function toError(value: unknown): Error {
   return value instanceof Error ? value : new Error(String(value));
 }
@@ -300,10 +320,14 @@ export async function fetchGitHubSnapshot(
   fetcher: FetchCommand = fetch,
   authToken?: string,
   existingSnapshot?: unknown,
+  requiredHeadSha?: string,
 ): Promise<UpdatesSnapshot> {
-  const refUrl = `${githubApiRoot}/git/ref/heads/${updatesBranch}`;
-  const refResponse = await fetchGitHubJson(refUrl, fetcher, authToken);
-  const headSha = (refResponse.value as GitHubRefResponse)?.object?.sha;
+  let headSha = requiredHeadSha;
+  if (!headSha) {
+    const refUrl = `${githubApiRoot}/git/ref/heads/${updatesBranch}`;
+    const refResponse = await fetchGitHubJson(refUrl, fetcher, authToken);
+    headSha = (refResponse.value as GitHubRefResponse)?.object?.sha;
+  }
   if (!headSha) {
     throw new Error("GitHub did not return the main branch head SHA.");
   }
@@ -356,17 +380,34 @@ export async function generateUpdatesSnapshot({
   fetcher = fetch,
   authToken,
   existingSnapshot,
+  requiredHeadSha,
 }: {
   runGit?: GitCommand;
   fetcher?: FetchCommand;
   authToken?: string;
   existingSnapshot?: unknown;
+  requiredHeadSha?: string;
 } = {}): Promise<UpdatesGenerationResult> {
   const failures: Error[] = [];
 
+  const acceptRequiredHead = (
+    snapshot: UpdatesSnapshot,
+    source: UpdatesSnapshotSource,
+  ): UpdatesSnapshot => {
+    if (requiredHeadSha && snapshot.headSha !== requiredHeadSha) {
+      throw new Error(
+        `The ${source} updates head ${snapshot.headSha} does not match required main head ${requiredHeadSha}.`,
+      );
+    }
+    return snapshot;
+  };
+
   try {
     return {
-      snapshot: readCompleteLocalSnapshot(runGit),
+      snapshot: acceptRequiredHead(
+        readCompleteLocalSnapshot(runGit),
+        "local-git",
+      ),
       source: "local-git",
       failures,
     };
@@ -376,7 +417,15 @@ export async function generateUpdatesSnapshot({
 
   try {
     return {
-      snapshot: await fetchGitHubSnapshot(fetcher, authToken, existingSnapshot),
+      snapshot: acceptRequiredHead(
+        await fetchGitHubSnapshot(
+          fetcher,
+          authToken,
+          existingSnapshot,
+          requiredHeadSha,
+        ),
+        "github",
+      ),
       source: "github",
       failures,
     };
@@ -384,14 +433,22 @@ export async function generateUpdatesSnapshot({
     failures.push(toError(error));
   }
 
-  try {
-    return {
-      snapshot: parseUpdatesSnapshot(existingSnapshot),
-      source: "snapshot",
-      failures,
-    };
-  } catch (error) {
-    failures.push(toError(error));
+  if (!requiredHeadSha) {
+    try {
+      return {
+        snapshot: parseUpdatesSnapshot(existingSnapshot),
+        source: "snapshot",
+        failures,
+      };
+    } catch (error) {
+      failures.push(toError(error));
+    }
+  } else {
+    failures.push(
+      new Error(
+        `A fresh Updates snapshot is required for main head ${requiredHeadSha}; checked snapshot fallback is disabled.`,
+      ),
+    );
   }
 
   throw new AggregateError(

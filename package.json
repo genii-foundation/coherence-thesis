@@ -40,6 +40,7 @@
     "manuscripts:validate": "tsx scripts/manuscripts/validate.ts",
     "preupdates:generate": "node scripts/ensure-node-modules.mjs",
     "updates:generate": "tsx scripts/updates/generate.ts",
+    "updates:verify": "tsx scripts/updates/verify.ts",
     "audio:fish": "tsx scripts/audio/fish-generate.ts",
     "audio:publish-manifest": "tsx scripts/audio/fish-publish-manifest.ts",
     "prereadme:update": "node scripts/ensure-node-modules.mjs",

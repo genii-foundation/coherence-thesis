@@ -87,6 +87,18 @@ Stable section IDs and routes support public links, reading progress, update bad
 - Add or update coverage for behavior changes.
 - Verify every new exported entry point has a real consumer.
 
+## Updates History
+
+The public Updates page is compiled from `main`. Contributors do not write changelog entries by hand.
+
+After bringing a pull request up to date with `main`, refresh the checked fallback and commit it when it changes:
+
+```bash
+npm run updates:generate
+```
+
+Do not edit `src/generated/updates.json` manually. It caches immutable file and line statistics by commit SHA so production only needs to fetch the newest merge. Pull request CI checks that this cache matches the current base. A production deployment fails instead of publishing stale history when it cannot generate through the deployed main SHA.
+
 ## Validation
 
 Run focused checks while developing, then run the full gate before requesting review:

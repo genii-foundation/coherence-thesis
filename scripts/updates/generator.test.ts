@@ -3,6 +3,7 @@ import { createUpdatesSnapshot } from "../../src/lib/updates";
 import {
   fetchGitHubSnapshot,
   generateUpdatesSnapshot,
+  getRequiredUpdatesHeadSha,
   parseLocalGitLog,
   parseLocalNumstat,
   readCompleteLocalSnapshot,
@@ -83,6 +84,36 @@ function jsonResponse(
 }
 
 describe("updates snapshot generator", () => {
+  it("requires the deployed main head in production environments", () => {
+    expect(
+      getRequiredUpdatesHeadSha({
+        UPDATES_REQUIRED_HEAD_SHA: headSha,
+        GITHUB_REF: "refs/heads/main",
+        GITHUB_SHA: olderSha,
+      }),
+    ).toBe(headSha);
+    expect(
+      getRequiredUpdatesHeadSha({
+        GITHUB_REF: "refs/heads/main",
+        GITHUB_SHA: headSha,
+      }),
+    ).toBe(headSha);
+    expect(
+      getRequiredUpdatesHeadSha({
+        VERCEL_ENV: "production",
+        VERCEL_GIT_COMMIT_REF: "main",
+        VERCEL_GIT_COMMIT_SHA: headSha,
+      }),
+    ).toBe(headSha);
+    expect(
+      getRequiredUpdatesHeadSha({
+        VERCEL_ENV: "preview",
+        VERCEL_GIT_COMMIT_REF: "feat/example",
+        VERCEL_GIT_COMMIT_SHA: headSha,
+      }),
+    ).toBeUndefined();
+  });
+
   it("reads a complete local main history", () => {
     const snapshot = readCompleteLocalSnapshot(localGit());
 
@@ -288,6 +319,106 @@ describe("updates snapshot generator", () => {
       additions: 10,
       deletions: 2,
     });
+  });
+
+  it("refreshes one future main commit from a shallow deployment cache", async () => {
+    const requestedUrls: string[] = [];
+    const existingSnapshot = createUpdatesSnapshot(olderSha, [
+      {
+        sha: olderSha,
+        committedAt: olderDate,
+        subject: "fix: repair history",
+        filesChanged: 1,
+        additions: 3,
+        deletions: 1,
+      },
+    ]);
+    const fetcher: FetchCommand = async (input) => {
+      const url = String(input);
+      requestedUrls.push(url);
+      if (url.endsWith("/git/ref/heads/main")) {
+        return jsonResponse({ object: { sha: headSha } });
+      }
+      if (url === pageOneUrl) {
+        return jsonResponse([
+          githubCommit(headSha, headDate, "feat: add updates"),
+          githubCommit(olderSha, olderDate, "fix: repair history"),
+        ]);
+      }
+      if (url === headDetailUrl) {
+        return jsonResponse(
+          githubCommitDetail(headSha, 10, 2, ["src/updates.ts"]),
+        );
+      }
+      return jsonResponse({ message: "unexpected" }, { status: 500 });
+    };
+
+    const result = await generateUpdatesSnapshot({
+      runGit: () => "true",
+      fetcher,
+      existingSnapshot,
+    });
+
+    expect(result.source).toBe("github");
+    expect(result.snapshot.headSha).toBe(headSha);
+    expect(requestedUrls).toEqual([
+      "https://api.github.com/repos/providence-collective/coherence-thesis/git/ref/heads/main",
+      pageOneUrl,
+      headDetailUrl,
+    ]);
+  });
+
+  it("pins a required head and rejects stale snapshot fallback", async () => {
+    const existingSnapshot = createUpdatesSnapshot(olderSha, [
+      {
+        sha: olderSha,
+        committedAt: olderDate,
+        subject: "fix: repair history",
+        filesChanged: 1,
+        additions: 3,
+        deletions: 1,
+      },
+    ]);
+    const requestedUrls: string[] = [];
+    const fetcher: FetchCommand = async (input) => {
+      const url = String(input);
+      requestedUrls.push(url);
+      if (url === pageOneUrl) {
+        return jsonResponse([
+          githubCommit(headSha, headDate, "feat: add updates"),
+          githubCommit(olderSha, olderDate, "fix: repair history"),
+        ]);
+      }
+      if (url === headDetailUrl) {
+        return jsonResponse(
+          githubCommitDetail(headSha, 10, 2, ["src/updates.ts"]),
+        );
+      }
+      return jsonResponse({ message: "unexpected" }, { status: 500 });
+    };
+
+    const result = await generateUpdatesSnapshot({
+      runGit: () => "true",
+      fetcher,
+      existingSnapshot,
+      requiredHeadSha: headSha,
+    });
+
+    expect(result.source).toBe("github");
+    expect(result.snapshot.headSha).toBe(headSha);
+    expect(requestedUrls).toEqual([pageOneUrl, headDetailUrl]);
+
+    await expect(
+      generateUpdatesSnapshot({
+        runGit: () => "true",
+        fetcher: async () =>
+          jsonResponse({ message: "unavailable" }, { status: 503 }),
+        existingSnapshot,
+        requiredHeadSha: headSha,
+      }),
+    ).rejects.toThrow(
+      "Unable to compile complete updates from Git, GitHub, or the snapshot.",
+    );
   });
 
   it("discards a partial GitHub refresh and keeps a valid snapshot", async () => {

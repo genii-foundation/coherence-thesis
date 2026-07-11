@@ -56,6 +56,7 @@ git diff -- content/manuscripts artifacts/imports/markdown-series-report.json
 npm run manuscripts:compile
 npm run manuscripts:validate
 npm run readme:update
+npm run updates:generate
 npm run test
 ```
 
@@ -85,7 +86,7 @@ npm run audio:publish-manifest -- --run-id <run-id> --version <new-version> --pr
 
    - Use a new immutable version path when publishing new audio. Do not overwrite existing Supabase objects in place.
 9. Run `npm run build` when route data, overview references, generated catalog data, or audio manifest data changed.
-10. Review the final diff before staging. Confirm generated files are expected, public link preservation is handled, audio manifest state is current when manuscript audio changed, no import report surprise is ignored, and unrelated local changes are left alone.
+10. Review the final diff before staging. Confirm generated files are expected, public link preservation is handled, audio manifest state is current when manuscript audio changed, `src/generated/updates.json` is refreshed through the current main base, no import report surprise is ignored, and unrelated local changes are left alone.
 11. Commit with an `edit:` Conventional Commit title, push the branch, and open or update a focused pull request. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
 
 ## Stable IDs

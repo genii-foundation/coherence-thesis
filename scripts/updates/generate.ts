@@ -1,7 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { repoRoot } from "../manuscripts/shared";
-import { generateUpdatesSnapshot } from "./generator";
+import {
+  generateUpdatesSnapshot,
+  getRequiredUpdatesHeadSha,
+} from "./generator";
 
 const outputPath = path.join(repoRoot, "src/generated/updates.json");
 
@@ -29,6 +32,7 @@ async function main(): Promise<void> {
   const result = await generateUpdatesSnapshot({
     authToken: process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN,
     existingSnapshot: readExistingSnapshot(),
+    requiredHeadSha: getRequiredUpdatesHeadSha(process.env),
   });
 
   if (result.source !== "snapshot") {

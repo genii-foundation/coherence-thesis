@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -46,6 +48,7 @@ jobs:
         run: npm run build
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          UPDATES_REQUIRED_HEAD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.sha }}
 
       - name: Check generated browser data is committed and current
         run: |
@@ -53,6 +56,18 @@ jobs:
             echo "::error::public/data is out of date. Run 'npm run manuscripts:compile' and commit the result."
             exit 1
           fi
+
+      - name: Check Updates fallback cache is current
+        if: github.event_name == 'pull_request'
+        run: |
+          if ! git diff --exit-code -- src/generated/updates.json; then
+            echo "::error::src/generated/updates.json is behind main. Run 'npm run updates:generate' after refreshing origin/main and commit the result."
+            exit 1
+          fi
+
+      - name: Verify Updates includes the main push
+        if: github.event_name == 'push'
+        run: npm run updates:verify -- "$GITHUB_SHA"
 
       - name: Dependency audit (advisory)
         run: npm audit --omit=dev --audit-level=high
@@ -63,6 +78,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -84,6 +101,7 @@ jobs:
         env:
           CI: "true"
           GITHUB_TOKEN: ${{ github.token }}
+          UPDATES_REQUIRED_HEAD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.sha }}
 
       - name: Upload Playwright report on failure
         if: failure()
