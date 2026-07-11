@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "7eccc336bd4d897268adafcf732752278d70c884",
+  "headSha": "348605f93af38d61343e6d73eaef2b3f9c06a835",
   "commits": [
+    {
+      "sha": "348605f93af38d61343e6d73eaef2b3f9c06a835",
+      "committedAt": "2026-07-11T21:05:53.000Z",
+      "subject": "feat: add editorial quality tools (#113)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/348605f93af38d61343e6d73eaef2b3f9c06a835",
+      "filesChanged": 16,
+      "additions": 4822,
+      "deletions": 5,
+      "isLiterary": false
+    },
     {
       "sha": "7eccc336bd4d897268adafcf732752278d70c884",
       "committedAt": "2026-07-11T20:53:17.000Z",
@@ -12,7 +22,8 @@
       "filesChanged": 116,
       "additions": 4626,
       "deletions": 3,
-      "isLiterary": false
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-ejsgmhmc5-aubreyfs-projects.vercel.app"
     },
     {
       "sha": "0224ed2dc75367ce6b6bc55dfd4302f3adee7dc9",

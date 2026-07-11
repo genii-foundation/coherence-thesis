@@ -455,6 +455,13 @@ function navigationItem(item: NavigationItem): NavigationItem {
   };
 }
 
+function readerNavigationItem(section: Section): NavigationItem {
+  return {
+    title: section.title,
+    href: section.readerHref,
+  };
+}
+
 function isSingletonChapterSection(chapter: Chapter, section: Section): boolean {
   return chapter.sectionIds.length === 1 && chapter.sectionIds[0] === section.sectionId;
 }
@@ -509,7 +516,20 @@ export function chapterNavigation(
   const part = partById(volumeId, partId);
   const chapter = chapterById(volumeId, partId, chapterId);
   if (!part || !chapter) return undefined;
-  return siblingNavigation(part.chapters, chapter.href, part);
+  const navigation = siblingNavigation(part.chapters, chapter.href, part);
+  if (!navigation || navigation.next) return navigation;
+
+  const sections = sectionsForChapter(volumeId, partId, chapterId);
+  const lastSection = sections[sections.length - 1];
+  if (!lastSection) return navigation;
+  const next = lastSection.nextSectionId
+    ? sectionById(lastSection.nextSectionId)
+    : undefined;
+
+  return {
+    ...navigation,
+    next: next ? readerNavigationItem(next) : null,
+  };
 }
 
 export function sectionNavigation(section: Section): PageNavigation | undefined {
