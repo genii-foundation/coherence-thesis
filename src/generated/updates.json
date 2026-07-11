@@ -2,8 +2,17 @@
   "schemaVersion": 2,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "42c9996143589b26c4267ded43fc8629d9cb6cfd",
+  "headSha": "4eb49904ba6de3e18270df67a70ae684e6454d7b",
   "commits": [
+    {
+      "sha": "4eb49904ba6de3e18270df67a70ae684e6454d7b",
+      "committedAt": "2026-07-11T01:56:51.000Z",
+      "subject": "feat: add paginated updates history (#102)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/4eb49904ba6de3e18270df67a70ae684e6454d7b",
+      "filesChanged": 25,
+      "additions": 4348,
+      "deletions": 24
+    },
     {
       "sha": "42c9996143589b26c4267ded43fc8629d9cb6cfd",
       "committedAt": "2026-07-10T17:33:35.000Z",

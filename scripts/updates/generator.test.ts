@@ -197,6 +197,51 @@ describe("updates snapshot generator", () => {
     ).toThrow("Local Git history is shallow.");
   });
 
+  it("deepens shallow history before using the GitHub API", async () => {
+    let shallow = true;
+    let githubRequested = false;
+    const fetchCommands: string[][] = [];
+    const completeGit = localGit();
+    const runGit: GitCommand = (args) => {
+      if (args.join(" ") === "rev-parse --is-shallow-repository") {
+        return shallow ? "true" : "false";
+      }
+      if (args.includes("fetch")) {
+        fetchCommands.push(args);
+        shallow = false;
+        return "";
+      }
+      return completeGit(args);
+    };
+
+    const result = await generateUpdatesSnapshot({
+      runGit,
+      fetcher: async () => {
+        githubRequested = true;
+        return jsonResponse({ message: "unexpected" }, { status: 500 });
+      },
+      requiredHeadSha: headSha,
+    });
+
+    expect(result.source).toBe("local-git");
+    expect(result.snapshot.headSha).toBe(headSha);
+    expect(githubRequested).toBe(false);
+    expect(fetchCommands).toEqual([
+      [
+        "-c",
+        "credential.helper=",
+        "-c",
+        "http.extraHeader=",
+        "fetch",
+        "--unshallow",
+        "--no-tags",
+        "--no-recurse-submodules",
+        "origin",
+        "+refs/heads/main:refs/remotes/origin/main",
+      ],
+    ]);
+  });
+
   it("pins the GitHub head before paginating and matches local output", async () => {
     const requestedUrls: string[] = [];
     const fetcher: FetchCommand = async (input) => {

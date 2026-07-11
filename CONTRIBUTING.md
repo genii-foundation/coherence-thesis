@@ -97,7 +97,7 @@ After bringing a pull request up to date with `main`, refresh the checked fallba
 npm run updates:generate
 ```
 
-Do not edit `src/generated/updates.json` manually. It caches immutable file and line statistics by commit SHA so production only needs to fetch the newest merge. Pull request CI checks that this cache matches the current base. A production deployment fails instead of publishing stale history when it cannot generate through the deployed main SHA.
+Do not edit `src/generated/updates.json` manually. It caches immutable file and line statistics by commit SHA so production only needs to fetch the newest merge. Pull request CI checks that this cache matches the current base. A shallow production checkout first expands `main` from its existing Git remote, then falls back to the GitHub API. The deployment fails instead of publishing stale history when neither source can generate through the deployed main SHA.
 
 ## Validation
 

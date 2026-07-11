@@ -122,6 +122,7 @@ export function parseLocalNumstat(
 
 export function readCompleteLocalSnapshot(
   runGit: GitCommand = git,
+  requiredHeadSha?: string,
 ): UpdatesSnapshot {
   const shallow = runGit(["rev-parse", "--is-shallow-repository"]);
   if (shallow !== "false") {
@@ -129,7 +130,7 @@ export function readCompleteLocalSnapshot(
   }
 
   const mainRef = `refs/remotes/origin/${updatesBranch}`;
-  const headSha = runGit(["rev-parse", mainRef]);
+  const headSha = requiredHeadSha ?? runGit(["rev-parse", mainRef]);
   const log = runGit([
     "log",
     headSha,
@@ -164,6 +165,24 @@ export function readCompleteLocalSnapshot(
     };
   });
   return createUpdatesSnapshot(headSha, commits);
+}
+
+function completeShallowLocalHistory(runGit: GitCommand): void {
+  const shallow = runGit(["rev-parse", "--is-shallow-repository"]);
+  if (shallow !== "true") return;
+
+  runGit([
+    "-c",
+    "credential.helper=",
+    "-c",
+    "http.extraHeader=",
+    "fetch",
+    "--unshallow",
+    "--no-tags",
+    "--no-recurse-submodules",
+    "origin",
+    `+refs/heads/${updatesBranch}:refs/remotes/origin/${updatesBranch}`,
+  ]);
 }
 
 type GitHubRefResponse = {
@@ -403,9 +422,10 @@ export async function generateUpdatesSnapshot({
   };
 
   try {
+    completeShallowLocalHistory(runGit);
     return {
       snapshot: acceptRequiredHead(
-        readCompleteLocalSnapshot(runGit),
+        readCompleteLocalSnapshot(runGit, requiredHeadSha),
         "local-git",
       ),
       source: "local-git",
