@@ -144,33 +144,49 @@ test("updates page renders the latest history with timeline pagination", async (
   await expect(latestEntry.getByRole("heading", { level: 3 })).toHaveText(
     latestUpdate.title,
   );
-  expect(latestUpdate.pullRequestNumber).toBeDefined();
-  expect(latestUpdate.pullRequestUrl).toBeDefined();
+  const latestPullRequest = hasPullRequest(latestUpdate)
+    ? latestUpdate
+    : null;
   const primaryLink = latestEntry.getByRole("link", {
-    name:
-      "Open PR #" +
-      latestUpdate.pullRequestNumber!.toLocaleString() +
-      ": " +
-      latestUpdate.title +
-      " on GitHub",
+    name: latestPullRequest
+      ? "Open PR #" +
+        latestPullRequest.pullRequestNumber.toLocaleString() +
+        ": " +
+        latestUpdate.title +
+        " on GitHub"
+      : "Open commit " +
+        latestUpdate.shortSha +
+        ": " +
+        latestUpdate.title +
+        " on GitHub",
     exact: true,
   });
   await expect(primaryLink).toHaveAttribute(
     "href",
-    latestUpdate.pullRequestUrl!,
+    latestPullRequest?.pullRequestUrl ?? latestUpdate.commitUrl,
   );
   await expect(primaryLink).toHaveAttribute("target", "_blank");
   await expect(primaryLink).toHaveAttribute("rel", "noopener noreferrer");
   await expect(latestEntry).toHaveAttribute(
     "data-primary-target",
-    "pull-request",
+    latestPullRequest ? "pull-request" : "commit",
   );
 
-  const commitHashLink = latestEntry.getByRole("link", {
-    name: "Open commit " + latestUpdate.shortSha + " on GitHub",
-    exact: true,
-  });
-  await expect(commitHashLink).toHaveAttribute("href", latestUpdate.commitUrl);
+  if (latestPullRequest) {
+    const commitHashLink = latestEntry.getByRole("link", {
+      name: "Open commit " + latestUpdate.shortSha + " on GitHub",
+      exact: true,
+    });
+    await expect(commitHashLink).toHaveAttribute(
+      "href",
+      latestUpdate.commitUrl,
+    );
+  } else {
+    await expect(latestEntry.locator(".updates-primary-reference")).toContainText(
+      latestUpdate.shortSha,
+    );
+    await expect(latestEntry.locator(".updates-commit-link")).toHaveCount(0);
+  }
 
   const cardGeometry = await latestEntry.evaluate((entry) => {
     const article = entry.querySelector("article")!.getBoundingClientRect();
@@ -343,7 +359,9 @@ test("updates page renders the latest history with timeline pagination", async (
   const primaryReference = latestEntry.locator(".updates-primary-reference");
   const secondaryCommitReference = latestEntry.locator(".updates-commit-link");
   await expect(primaryReference).toHaveCount(1);
-  await expect(secondaryCommitReference).toHaveCount(1);
+  await expect(secondaryCommitReference).toHaveCount(
+    latestPullRequest ? 1 : 0,
+  );
   await latestCard.hover();
   await expect
     .poll(() =>
@@ -353,31 +371,33 @@ test("updates page renders the latest history with timeline pagination", async (
       }),
     )
     .toBe(true);
-  await expect
-    .poll(() =>
-      secondaryCommitReference.evaluate((reference) => {
-        const style = window.getComputedStyle(reference);
-        return style.textDecorationColor === style.color;
-      }),
-    )
-    .toBe(false);
-  await secondaryCommitReference.hover();
-  await expect
-    .poll(() =>
-      secondaryCommitReference.evaluate((reference) => {
-        const style = window.getComputedStyle(reference);
-        return style.textDecorationColor === style.color;
-      }),
-    )
-    .toBe(true);
-  await expect
-    .poll(() =>
-      primaryReference.evaluate((reference) => {
-        const style = window.getComputedStyle(reference);
-        return style.textDecorationColor === style.color;
-      }),
-    )
-    .toBe(false);
+  if (latestPullRequest) {
+    await expect
+      .poll(() =>
+        secondaryCommitReference.evaluate((reference) => {
+          const style = window.getComputedStyle(reference);
+          return style.textDecorationColor === style.color;
+        }),
+      )
+      .toBe(false);
+    await secondaryCommitReference.hover();
+    await expect
+      .poll(() =>
+        secondaryCommitReference.evaluate((reference) => {
+          const style = window.getComputedStyle(reference);
+          return style.textDecorationColor === style.color;
+        }),
+      )
+      .toBe(true);
+    await expect
+      .poll(() =>
+        primaryReference.evaluate((reference) => {
+          const style = window.getComputedStyle(reference);
+          return style.textDecorationColor === style.color;
+        }),
+      )
+      .toBe(false);
+  }
 
   const topPagination = page.getByRole("navigation", {
     name: "Updates pagination",
