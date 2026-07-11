@@ -124,7 +124,7 @@ The public [Updates page](https://www.coherence-thesis.com/updates/) is compiled
 npm run updates:generate
 ```
 
-The production build runs this command automatically. It reads a complete local Git history when one is available. Shallow deploys use the pinned main branch head from the GitHub API and fetch every result page. If neither source is available, the build uses the last valid snapshot in `src/generated/updates.json`. The page groups commits by UTC date and shows five dates per numbered page.
+The production build runs this command automatically. It reads a complete local Git history when one is available, including changed file, addition, and deletion totals for every commit. Shallow deploys use the pinned main branch head from the GitHub API and fetch every result page. They reuse immutable diff totals from the checked snapshot by commit SHA, then request commit details only for new SHAs. This keeps routine anonymous builds within GitHub rate limits. If neither source is available, the build uses the last valid snapshot in `src/generated/updates.json`. The page groups commits by UTC date and shows five dates per numbered page.
 
 ## Audiobook Publishing
 

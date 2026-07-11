@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 import {
   updatesBranch,
+  formatUpdateLineCount,
   updateKindLabels,
   updatesRepositoryUrl,
   type UpdateEntry,
@@ -44,6 +45,28 @@ const pullRequestEntry =
   allUpdateDays[pullRequestDayIndex]?.entries.find(hasPullRequest) ?? null;
 const pullRequestPage =
   Math.floor(pullRequestDayIndex / updatesPageSize) + 1;
+const noPullRequestDayIndex = allUpdateDays.findIndex((day) =>
+  day.entries.some((entry) => !hasPullRequest(entry)),
+);
+const noPullRequestEntry =
+  allUpdateDays[noPullRequestDayIndex]?.entries.find(
+    (entry) => !hasPullRequest(entry),
+  ) ?? null;
+const noPullRequestPage =
+  Math.floor(noPullRequestDayIndex / updatesPageSize) + 1;
+const changeLevelTargets = ([1, 5] as const).map((changeLevel) => {
+  const dayIndex = allUpdateDays.findIndex((day) =>
+    day.entries.some((entry) => entry.changeLevel === changeLevel),
+  );
+  return {
+    changeLevel,
+    entry:
+      allUpdateDays[dayIndex]?.entries.find(
+        (entry) => entry.changeLevel === changeLevel,
+      ) ?? null,
+    page: Math.floor(dayIndex / updatesPageSize) + 1,
+  };
+});
 
 test("footer links to Updates immediately before GitHub", async ({ page }) => {
   await page.goto("/");
@@ -75,7 +98,7 @@ test("updates page renders the latest history with timeline pagination", async (
   await expect(updatesHeading.locator(".eyebrow")).toHaveCount(0);
   await expect(
     updatesHeading.getByText(
-      "Every change to the thesis and its reader interface, newest first.",
+      "Every change to the thesis and its reader interface.",
       { exact: true },
     ),
   ).toBeVisible();
@@ -92,16 +115,14 @@ test("updates page renders the latest history with timeline pagination", async (
     (heading) => (heading.textContent?.match(/newest first/g) ?? []).length,
   );
   expect(newestFirstMentions).toBe(1);
-  await expect(
-    page.getByText(
-      new RegExp(
-        updatesSnapshot.commits.length.toLocaleString() +
-          " commits across " +
-          allUpdateDays.length.toLocaleString() +
-          " days",
-      ),
+  await expect(updatesHeading.locator(".updates-summary")).toContainText(
+    new RegExp(
+      updatesSnapshot.commits.length.toLocaleString() +
+        " commits across " +
+        allUpdateDays.length.toLocaleString() +
+        " days, newest first\\.",
     ),
-  ).toBeVisible();
+  );
   await expect(page.locator("[data-update-day]")).toHaveCount(
     latestPageDays.length,
   );
@@ -123,18 +144,33 @@ test("updates page renders the latest history with timeline pagination", async (
   await expect(latestEntry.getByRole("heading", { level: 3 })).toHaveText(
     latestUpdate.title,
   );
-  const commitLink = latestEntry.getByRole("link", {
+  expect(latestUpdate.pullRequestNumber).toBeDefined();
+  expect(latestUpdate.pullRequestUrl).toBeDefined();
+  const primaryLink = latestEntry.getByRole("link", {
     name:
-      "Open commit " +
-      latestUpdate.shortSha +
+      "Open PR #" +
+      latestUpdate.pullRequestNumber!.toLocaleString() +
       ": " +
       latestUpdate.title +
       " on GitHub",
     exact: true,
   });
-  await expect(commitLink).toHaveAttribute("href", latestUpdate.commitUrl);
-  await expect(commitLink).toHaveAttribute("target", "_blank");
-  await expect(commitLink).toHaveAttribute("rel", "noopener noreferrer");
+  await expect(primaryLink).toHaveAttribute(
+    "href",
+    latestUpdate.pullRequestUrl!,
+  );
+  await expect(primaryLink).toHaveAttribute("target", "_blank");
+  await expect(primaryLink).toHaveAttribute("rel", "noopener noreferrer");
+  await expect(latestEntry).toHaveAttribute(
+    "data-primary-target",
+    "pull-request",
+  );
+
+  const commitHashLink = latestEntry.getByRole("link", {
+    name: "Open commit " + latestUpdate.shortSha + " on GitHub",
+    exact: true,
+  });
+  await expect(commitHashLink).toHaveAttribute("href", latestUpdate.commitUrl);
 
   const cardGeometry = await latestEntry.evaluate((entry) => {
     const article = entry.querySelector("article")!.getBoundingClientRect();
@@ -153,6 +189,106 @@ test("updates page renders the latest history with timeline pagination", async (
   expect(cardGeometry.boxShadow).not.toBe("none");
   expect(cardGeometry.heightDelta).toBeLessThanOrEqual(2.1);
   expect(cardGeometry.widthDelta).toBeLessThanOrEqual(2.1);
+
+  const changeSummary = latestEntry.locator(".updates-change-summary");
+  await expect(changeSummary).toHaveAttribute(
+    "data-files-changed",
+    latestUpdate.filesChanged.toLocaleString("en-US", { useGrouping: false }),
+  );
+  await expect(changeSummary).toHaveAttribute(
+    "data-lines-changed",
+    latestUpdate.linesChanged.toLocaleString("en-US", { useGrouping: false }),
+  );
+  await expect(changeSummary).toHaveAttribute(
+    "data-change-level",
+    latestUpdate.changeLevel.toLocaleString(),
+  );
+  const visibleChangeCounts = changeSummary.locator(".updates-change-counts");
+  await expect(visibleChangeCounts).toHaveAttribute("aria-hidden", "true");
+  await expect(visibleChangeCounts).toContainText(
+    latestUpdate.filesChanged.toLocaleString() +
+      " " +
+      (latestUpdate.filesChanged === 1 ? "file" : "files"),
+  );
+  await expect(visibleChangeCounts).toContainText(
+    formatUpdateLineCount(latestUpdate.linesChanged) +
+      " " +
+      (latestUpdate.linesChanged === 1 ? "line" : "lines"),
+  );
+  const changeMeter = changeSummary.locator(".updates-change-meter");
+  await expect(changeMeter).toHaveAttribute("aria-hidden", "true");
+  await expect(changeMeter.locator(":scope > span")).toHaveCount(5);
+  await expect(
+    changeMeter.locator(':scope > span[data-filled="true"]'),
+  ).toHaveCount(latestUpdate.changeLevel);
+  await expect(changeSummary.locator(".sr-only")).toContainText(
+    latestUpdate.filesChanged.toLocaleString() +
+      " " +
+      (latestUpdate.filesChanged === 1 ? "file" : "files") +
+      " changed, " +
+      latestUpdate.linesChanged.toLocaleString() +
+      " " +
+      (latestUpdate.linesChanged === 1 ? "line" : "lines") +
+      " changed.",
+  );
+
+  const changeSummaryGeometry = await latestEntry.evaluate((entry) => {
+    const content = entry
+      .querySelector(".updates-card-content")!
+      .getBoundingClientRect();
+    const main = entry
+      .querySelector(".updates-card-main")!
+      .getBoundingClientRect();
+    const summary = entry
+      .querySelector(".updates-change-summary")!
+      .getBoundingClientRect();
+    const meter = entry
+      .querySelector(".updates-change-meter")!
+      .getBoundingClientRect();
+    const counts = entry
+      .querySelector(".updates-change-counts")!
+      .getBoundingClientRect();
+    const summaryStyle = window.getComputedStyle(
+      entry.querySelector(".updates-change-summary")!,
+    );
+    const countsStyle = window.getComputedStyle(
+      entry.querySelector(".updates-change-counts")!,
+    );
+    return {
+      borderLeftWidth: summaryStyle.borderLeftWidth,
+      countsLeft: counts.left,
+      countsTextAlign: countsStyle.textAlign,
+      contentRight: content.right,
+      mainBottom: main.bottom,
+      mainRight: main.right,
+      meterRight: meter.right,
+      summaryRight: summary.right,
+      summaryTop: summary.top,
+    };
+  });
+  expect(changeSummaryGeometry.borderLeftWidth).toBe("0px");
+  expect(changeSummaryGeometry.countsTextAlign).toBe("left");
+  expect(changeSummaryGeometry.meterRight).toBeLessThanOrEqual(
+    changeSummaryGeometry.countsLeft,
+  );
+  if ((page.viewportSize()?.width ?? 0) > 720) {
+    expect(changeSummaryGeometry.summaryTop).toBeLessThan(
+      changeSummaryGeometry.mainBottom,
+    );
+    expect(changeSummaryGeometry.summaryRight).toBeLessThanOrEqual(
+      changeSummaryGeometry.contentRight + 1,
+    );
+    expect(changeSummaryGeometry.mainRight).toBeLessThanOrEqual(
+      changeSummaryGeometry.summaryRight,
+    );
+  } else {
+    expect(changeSummaryGeometry.summaryTop).toBeGreaterThanOrEqual(
+      changeSummaryGeometry.mainBottom,
+    );
+    expect(changeSummaryGeometry.summaryRight).toBeLessThanOrEqual(
+      changeSummaryGeometry.contentRight + 1,
+    );
+  }
 
   const latestCard = latestEntry.locator("article");
   const standardCard = page
@@ -203,6 +339,45 @@ test("updates page renders the latest history with timeline pagination", async (
     )
     .toBe(expectedHoverBorder);
   expect(expectedHoverBorder).not.toBe(latestCardDefault.borderColor);
+
+  const primaryReference = latestEntry.locator(".updates-primary-reference");
+  const secondaryCommitReference = latestEntry.locator(".updates-commit-link");
+  await expect(primaryReference).toHaveCount(1);
+  await expect(secondaryCommitReference).toHaveCount(1);
+  await latestCard.hover();
+  await expect
+    .poll(() =>
+      primaryReference.evaluate((reference) => {
+        const style = window.getComputedStyle(reference);
+        return style.textDecorationColor === style.color;
+      }),
+    )
+    .toBe(true);
+  await expect
+    .poll(() =>
+      secondaryCommitReference.evaluate((reference) => {
+        const style = window.getComputedStyle(reference);
+        return style.textDecorationColor === style.color;
+      }),
+    )
+    .toBe(false);
+  await secondaryCommitReference.hover();
+  await expect
+    .poll(() =>
+      secondaryCommitReference.evaluate((reference) => {
+        const style = window.getComputedStyle(reference);
+        return style.textDecorationColor === style.color;
+      }),
+    )
+    .toBe(true);
+  await expect
+    .poll(() =>
+      primaryReference.evaluate((reference) => {
+        const style = window.getComputedStyle(reference);
+        return style.textDecorationColor === style.color;
+      }),
+    )
+    .toBe(false);
 
   const topPagination = page.getByRole("navigation", {
     name: "Updates pagination",
@@ -324,6 +499,88 @@ test("pull request links keep their visible label and a distinct target", async 
   const expectedHeight = (page.viewportSize()?.width ?? 0) <= 720 ? 31.5 : 23.5;
   expect(target!.height).toBeGreaterThanOrEqual(expectedHeight);
   expect(target!.width).toBeGreaterThanOrEqual(24);
+
+  const commitLink = page
+    .locator('[data-update-sha="' + pullRequestEntry!.sha + '"]')
+    .getByRole("link", {
+      name:
+        "Open commit " + pullRequestEntry!.shortSha + " on GitHub",
+      exact: true,
+    });
+  const commitTarget = await commitLink.boundingBox();
+  expect(commitTarget).not.toBeNull();
+  expect(commitTarget!.height).toBeGreaterThanOrEqual(expectedHeight);
+  expect(commitTarget!.width).toBeGreaterThanOrEqual(24);
+});
+
+test("cards without a pull request use the commit as their primary target", async ({
+  page,
+}) => {
+  expect(noPullRequestEntry).not.toBeNull();
+  await page.goto(getUpdatesPageHref(noPullRequestPage));
+
+  const entry = page.locator(
+    '[data-update-sha="' + noPullRequestEntry!.sha + '"]',
+  );
+  await expect(entry).toHaveAttribute("data-primary-target", "commit");
+  const cardLink = entry.getByRole("link", {
+    name:
+      "Open commit " +
+      noPullRequestEntry!.shortSha +
+      ": " +
+      noPullRequestEntry!.title +
+      " on GitHub",
+    exact: true,
+  });
+  await expect(cardLink).toHaveAttribute(
+    "href",
+    noPullRequestEntry!.commitUrl,
+  );
+  await expect(entry.locator(".updates-pull-link")).toHaveCount(0);
+  await expect(entry.locator(".updates-commit-link")).toHaveCount(0);
+
+  const commitReference = entry.locator(".updates-primary-reference");
+  await expect(commitReference).toContainText(noPullRequestEntry!.shortSha);
+  await entry.locator("article").hover();
+  await expect
+    .poll(() =>
+      commitReference.evaluate((reference) => {
+        const style = window.getComputedStyle(reference);
+        return style.textDecorationColor === style.color;
+      }),
+    )
+    .toBe(true);
+});
+
+test("change meters make small and very large updates distinguishable", async ({
+  page,
+}) => {
+  for (const target of changeLevelTargets) {
+    expect(target.entry).not.toBeNull();
+    await page.goto(getUpdatesPageHref(target.page));
+
+    const summary = page.locator(
+      '[data-update-sha="' +
+        target.entry!.sha +
+        '"] .updates-change-summary',
+    );
+    await expect(summary).toHaveAttribute(
+      "data-change-level",
+      target.changeLevel.toLocaleString(),
+    );
+    await expect(
+      summary.locator('.updates-change-meter > span[data-filled="true"]'),
+    ).toHaveCount(target.changeLevel);
+    const visibleCounts = summary.locator(".updates-change-counts");
+    await expect(visibleCounts).toContainText(
+      formatUpdateLineCount(target.entry!.linesChanged) + " lines",
+    );
+    if (target.entry!.linesChanged >= 1_000) {
+      await expect(visibleCounts).not.toContainText(
+        target.entry!.linesChanged.toLocaleString(),
+      );
+    }
+  }
 });
 
 test("numbered updates pages preserve the oldest commit", async ({ page }) => {

@@ -3,6 +3,8 @@ import { createUpdatesSnapshot } from "../../src/lib/updates";
 import {
   fetchGitHubSnapshot,
   generateUpdatesSnapshot,
+  parseLocalGitLog,
+  parseLocalNumstat,
   readCompleteLocalSnapshot,
   type FetchCommand,
   type GitCommand,
@@ -10,10 +12,14 @@ import {
 
 const headSha = "b".repeat(40);
 const olderSha = "a".repeat(40);
+const mergeSha = "d".repeat(40);
+const sideSha = "c".repeat(40);
 const headDate = "2026-07-10T17:33:35.000Z";
 const olderDate = "2026-07-09T17:33:35.000Z";
 const pageOneUrl = `https://api.github.com/repos/providence-collective/coherence-thesis/commits?sha=${headSha}&per_page=100`;
 const pageTwoUrl = `${pageOneUrl}&page=2`;
+const headDetailUrl = `https://api.github.com/repos/providence-collective/coherence-thesis/commits/${headSha}`;
+const olderDetailUrl = `https://api.github.com/repos/providence-collective/coherence-thesis/commits/${olderSha}`;
 
 function localGit(): GitCommand {
   return (args) => {
@@ -25,11 +31,30 @@ function localGit(): GitCommand {
     }
     if (args[0] === "log" && args[1] === headSha) {
       return [
-        `${headSha}\u001f${headDate}\u001ffeat: add updates\u001e`,
-        `${olderSha}\u001f${olderDate}\u001ffix: repair history\u001e`,
-      ].join("\n");
+        `${headSha}\0${olderSha}\0${headDate}\0feat: add updates\0`,
+        `${olderSha}\0\0${olderDate}\0fix: repair history\0`,
+      ].join("");
+    }
+    if (args[0] === "diff" && args.at(-1) === headSha) {
+      return `10\t2\tsrc/updates.ts\0-\t-\tpublic/preview.png\0`;
+    }
+    if (args[0] === "diff-tree" && args.at(-1) === olderSha) {
+      return `3\t1\tsrc/history.ts\0`;
     }
     throw new Error(`Unexpected Git command: ${args.join(" ")}`);
+  };
+}
+
+function githubCommitDetail(
+  sha: string,
+  additions: number,
+  deletions: number,
+  filenames: string[],
+) {
+  return {
+    sha,
+    stats: { additions, deletions, total: additions + deletions },
+    files: filenames.map((filename) => ({ filename })),
   };
 }
 
@@ -66,6 +91,73 @@ describe("updates snapshot generator", () => {
       headSha,
       olderSha,
     ]);
+    expect(snapshot.commits[0]).toMatchObject({
+      filesChanged: 2,
+      additions: 10,
+      deletions: 2,
+    });
+  });
+
+  it("parses binary files, renames, and control characters safely", () => {
+    const log =
+      `${headSha}\0${olderSha} ${sideSha}\0${headDate}\0` +
+      `feat: add \u001e updates\0`;
+    const numstat = [
+      `-\t-\tpublic/binary.png\0`,
+      `4\t2\t\0old\nname.ts\0new\tname.ts\0`,
+      `1\t0\tsrc/\u001efile.ts\0`,
+    ].join("");
+
+    expect(parseLocalGitLog(log)).toEqual([
+      {
+        sha: headSha,
+        parentShas: [olderSha, sideSha],
+        committedAt: headDate,
+        subject: "feat: add \u001e updates",
+      },
+    ]);
+    expect(parseLocalNumstat(numstat)).toEqual({
+      filesChanged: 3,
+      additions: 5,
+      deletions: 2,
+    });
+  });
+
+  it("calculates merge changes against the first parent", () => {
+    const commands: string[][] = [];
+    const runGit: GitCommand = (args) => {
+      commands.push(args);
+      if (args.join(" ") === "rev-parse --is-shallow-repository") {
+        return "false";
+      }
+      if (args.join(" ") === "rev-parse refs/remotes/origin/main") {
+        return mergeSha;
+      }
+      if (args[0] === "log") {
+        return `${mergeSha}\0${headSha} ${sideSha}\0${headDate}\0Merge release branch\0`;
+      }
+      if (args[0] === "diff") {
+        return `8\t3\tsrc/merged.ts\0`;
+      }
+      throw new Error(`Unexpected Git command: ${args.join(" ")}`);
+    };
+
+    const snapshot = readCompleteLocalSnapshot(runGit);
+
+    expect(snapshot.commits[0]).toMatchObject({
+      sha: mergeSha,
+      filesChanged: 1,
+      additions: 8,
+      deletions: 3,
+    });
+    expect(commands).toContainEqual([
+      "diff",
+      "--find-renames",
+      "--numstat",
+      "-z",
+      headSha,
+      mergeSha,
+    ]);
   });
 
   it("rejects a shallow local history", () => {
@@ -93,6 +185,19 @@ describe("updates snapshot generator", () => {
           githubCommit(olderSha, olderDate, "fix: repair history"),
         ]);
       }
+      if (url === headDetailUrl) {
+        return jsonResponse(
+          githubCommitDetail(headSha, 10, 2, [
+            "src/updates.ts",
+            "public/preview.png",
+          ]),
+        );
+      }
+      if (url === olderDetailUrl) {
+        return jsonResponse(
+          githubCommitDetail(olderSha, 3, 1, ["src/history.ts"]),
+        );
+      }
       return jsonResponse({ message: "not found" }, { status: 404 });
     };
 
@@ -103,7 +208,86 @@ describe("updates snapshot generator", () => {
       "https://api.github.com/repos/providence-collective/coherence-thesis/git/ref/heads/main",
       pageOneUrl,
       pageTwoUrl,
+      headDetailUrl,
+      olderDetailUrl,
     ]);
+  });
+
+  it("reuses immutable snapshot stats without commit detail requests", async () => {
+    const requestedUrls: string[] = [];
+    const fetcher: FetchCommand = async (input) => {
+      const url = String(input);
+      requestedUrls.push(url);
+      if (url.endsWith("/git/ref/heads/main")) {
+        return jsonResponse({ object: { sha: headSha } });
+      }
+      if (url === pageOneUrl) {
+        return jsonResponse([
+          githubCommit(headSha, headDate, "feat: add updates"),
+          githubCommit(olderSha, olderDate, "fix: repair history"),
+        ]);
+      }
+      return jsonResponse({ message: "unexpected" }, { status: 500 });
+    };
+    const existingSnapshot = readCompleteLocalSnapshot(localGit());
+
+    await expect(
+      fetchGitHubSnapshot(fetcher, "token", existingSnapshot),
+    ).resolves.toEqual(existingSnapshot);
+    expect(requestedUrls).toEqual([
+      "https://api.github.com/repos/providence-collective/coherence-thesis/git/ref/heads/main",
+      pageOneUrl,
+    ]);
+  });
+
+  it("follows every changed-file page for a new commit", async () => {
+    const detailPageTwoUrl = `${headDetailUrl}?page=2`;
+    const existingSnapshot = createUpdatesSnapshot(olderSha, [
+      {
+        sha: olderSha,
+        committedAt: olderDate,
+        subject: "fix: repair history",
+        filesChanged: 1,
+        additions: 3,
+        deletions: 1,
+      },
+    ]);
+    const fetcher: FetchCommand = async (input) => {
+      const url = String(input);
+      if (url.endsWith("/git/ref/heads/main")) {
+        return jsonResponse({ object: { sha: headSha } });
+      }
+      if (url === pageOneUrl) {
+        return jsonResponse([
+          githubCommit(headSha, headDate, "feat: add updates"),
+          githubCommit(olderSha, olderDate, "fix: repair history"),
+        ]);
+      }
+      if (url === headDetailUrl) {
+        return jsonResponse(
+          githubCommitDetail(headSha, 10, 2, ["src/updates.ts"]),
+          { link: `<${detailPageTwoUrl}>; rel="next"` },
+        );
+      }
+      if (url === detailPageTwoUrl) {
+        return jsonResponse(
+          githubCommitDetail(headSha, 10, 2, ["public/preview.png"]),
+        );
+      }
+      return jsonResponse({ message: "unexpected" }, { status: 500 });
+    };
+
+    const snapshot = await fetchGitHubSnapshot(
+      fetcher,
+      "token",
+      existingSnapshot,
+    );
+
+    expect(snapshot.commits[0]).toMatchObject({
+      filesChanged: 2,
+      additions: 10,
+      deletions: 2,
+    });
   });
 
   it("discards a partial GitHub refresh and keeps a valid snapshot", async () => {
@@ -112,11 +296,17 @@ describe("updates snapshot generator", () => {
         sha: headSha,
         committedAt: headDate,
         subject: "feat: add updates",
+        filesChanged: 2,
+        additions: 10,
+        deletions: 2,
       },
       {
         sha: olderSha,
         committedAt: olderDate,
         subject: "fix: repair history",
+        filesChanged: 1,
+        additions: 3,
+        deletions: 1,
       },
     ]);
     const fetcher: FetchCommand = async (input) => {

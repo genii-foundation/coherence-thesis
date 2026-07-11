@@ -18,30 +18,86 @@ export type UpdatesGenerationResult = {
   failures: Error[];
 };
 
-const fieldSeparator = "\u001f";
-const recordSeparator = "\u001e";
 const githubApiRoot = `https://api.github.com/repos/${updatesRepository}`;
 const githubPageSize = 100;
 const githubRequestTimeoutMs = 15_000;
 const maxGithubPages = 1_000;
+const maxGithubCommitFiles = 3_000;
 
 function toError(value: unknown): Error {
   return value instanceof Error ? value : new Error(String(value));
 }
 
-export function parseLocalGitLog(value: string): UpdateCommitInput[] {
-  return value
-    .split(recordSeparator)
-    .map((record) => record.trim())
-    .filter(Boolean)
-    .map((record) => {
-      const [sha, committedAt, ...subjectParts] = record.split(fieldSeparator);
-      const subject = subjectParts.join(fieldSeparator);
-      if (!sha || !committedAt || !subject) {
-        throw new Error("Local Git returned an incomplete updates record.");
+function parseNumstatCount(value: string, label: string): number {
+  if (value === "-") return 0;
+  if (!/^\d+$/.test(value)) {
+    throw new Error(`Local Git returned an invalid ${label}: ${value}`);
+  }
+  const count = Number.parseInt(value, 10);
+  if (!Number.isSafeInteger(count)) {
+    throw new Error(`Local Git returned an unsafe ${label}: ${value}`);
+  }
+  return count;
+}
+
+type LocalGitCommitMetadata = Pick<
+  UpdateCommitInput,
+  "sha" | "committedAt" | "subject"
+> & {
+  parentShas: string[];
+};
+
+export function parseLocalGitLog(value: string): LocalGitCommitMetadata[] {
+  const fields = value.split("\0");
+  if (fields.at(-1) === "") fields.pop();
+  if (fields.length % 4 !== 0) {
+    throw new Error("Local Git returned an incomplete updates record.");
+  }
+
+  const commits: LocalGitCommitMetadata[] = [];
+  for (let index = 0; index < fields.length; index += 4) {
+    const sha = fields[index] ?? "";
+    const parentShas = (fields[index + 1] ?? "")
+      .split(" ")
+      .filter(Boolean);
+    const committedAt = fields[index + 2] ?? "";
+    const subject = fields[index + 3] ?? "";
+    if (!sha || !committedAt || !subject) {
+      throw new Error("Local Git returned an incomplete updates record.");
+    }
+    commits.push({ sha, parentShas, committedAt, subject });
+  }
+  return commits;
+}
+
+export function parseLocalNumstat(
+  value: string,
+): Pick<UpdateCommitInput, "filesChanged" | "additions" | "deletions"> {
+  const rows = value.split("\0");
+  let filesChanged = 0;
+  let additions = 0;
+  let deletions = 0;
+
+  for (let index = 0; index < rows.length; index += 1) {
+    const row = rows[index] ?? "";
+    if (!row) continue;
+    const match = row.match(/^(-|\d+)\t(-|\d+)\t([\s\S]*)$/);
+    if (!match) {
+      throw new Error("Local Git returned an invalid updates numstat row.");
+    }
+    const [, added = "", deleted = "", pathValue = ""] = match;
+    filesChanged += 1;
+    additions += parseNumstatCount(added, "addition count");
+    deletions += parseNumstatCount(deleted, "deletion count");
+    if (!pathValue) {
+      if (!rows[index + 1] || !rows[index + 2]) {
+        throw new Error("Local Git returned an incomplete rename row.");
       }
-      return { sha, committedAt, subject };
-    });
+      index += 2;
+    }
+  }
+
+  return { filesChanged, additions, deletions };
 }
 
 export function readCompleteLocalSnapshot(
@@ -57,9 +113,37 @@ export function readCompleteLocalSnapshot(
   const log = runGit([
     "log",
     headSha,
-    `--format=%H%x1f%cI%x1f%s%x1e`,
+    "-z",
+    "--format=%H%x00%P%x00%cI%x00%s",
   ]);
-  return createUpdatesSnapshot(headSha, parseLocalGitLog(log));
+  const commits = parseLocalGitLog(log).map((commit) => {
+    const firstParent = commit.parentShas[0];
+    const numstat = firstParent
+      ? runGit([
+          "diff",
+          "--find-renames",
+          "--numstat",
+          "-z",
+          firstParent,
+          commit.sha,
+        ])
+      : runGit([
+          "diff-tree",
+          "--root",
+          "--no-commit-id",
+          "--find-renames",
+          "--numstat",
+          "-z",
+          commit.sha,
+        ]);
+    return {
+      sha: commit.sha,
+      committedAt: commit.committedAt,
+      subject: commit.subject,
+      ...parseLocalNumstat(numstat),
+    };
+  });
+  return createUpdatesSnapshot(headSha, commits);
 }
 
 type GitHubRefResponse = {
@@ -76,6 +160,22 @@ type GitHubCommitResponse = {
     author?: { date?: string | null } | null;
   };
 };
+
+type GitHubCommitDetailResponse = {
+  sha?: string;
+  stats?: {
+    additions?: number;
+    deletions?: number;
+  } | null;
+  files?: Array<{
+    filename?: string;
+  }>;
+};
+
+type GitHubCommitMetadata = Pick<
+  UpdateCommitInput,
+  "sha" | "committedAt" | "subject"
+>;
 
 function githubHeaders(authToken?: string): HeadersInit {
   return {
@@ -113,7 +213,7 @@ function nextGithubPage(link: string | null): string | null {
   return null;
 }
 
-function parseGitHubCommit(value: unknown): UpdateCommitInput {
+function parseGitHubCommit(value: unknown): GitHubCommitMetadata {
   const commit = value as GitHubCommitResponse;
   const sha = commit?.sha;
   const committedAt =
@@ -126,9 +226,80 @@ function parseGitHubCommit(value: unknown): UpdateCommitInput {
   return { sha, committedAt, subject };
 }
 
+function parseGitHubChangeCount(value: unknown, label: string): number {
+  if (!Number.isSafeInteger(value) || (value as number) < 0) {
+    throw new Error(`GitHub returned an invalid ${label}.`);
+  }
+  return value as number;
+}
+
+async function fetchGitHubCommitStats(
+  sha: string,
+  fetcher: FetchCommand,
+  authToken?: string,
+): Promise<Pick<UpdateCommitInput, "filesChanged" | "additions" | "deletions">> {
+  let pageUrl: string | null = `${githubApiRoot}/commits/${sha}`;
+  const visitedUrls = new Set<string>();
+  const filenames = new Set<string>();
+  let additions: number | undefined;
+  let deletions: number | undefined;
+
+  while (pageUrl) {
+    if (visitedUrls.has(pageUrl) || visitedUrls.size >= maxGithubPages) {
+      throw new Error("GitHub commit file pagination did not terminate safely.");
+    }
+    visitedUrls.add(pageUrl);
+
+    const page = await fetchGitHubJson(pageUrl, fetcher, authToken);
+    const detail = page.value as GitHubCommitDetailResponse;
+    if (detail?.sha !== sha || !detail.stats || !Array.isArray(detail.files)) {
+      throw new Error(`GitHub returned incomplete change stats for ${sha}.`);
+    }
+
+    const pageAdditions = parseGitHubChangeCount(
+      detail.stats.additions,
+      `addition count for ${sha}`,
+    );
+    const pageDeletions = parseGitHubChangeCount(
+      detail.stats.deletions,
+      `deletion count for ${sha}`,
+    );
+    if (
+      (additions !== undefined && additions !== pageAdditions) ||
+      (deletions !== undefined && deletions !== pageDeletions)
+    ) {
+      throw new Error(`GitHub returned inconsistent change stats for ${sha}.`);
+    }
+    additions = pageAdditions;
+    deletions = pageDeletions;
+
+    for (const file of detail.files) {
+      if (!file?.filename) {
+        throw new Error(`GitHub returned an invalid changed file for ${sha}.`);
+      }
+      filenames.add(file.filename);
+    }
+    pageUrl = nextGithubPage(page.link);
+  }
+
+  if (additions === undefined || deletions === undefined) {
+    throw new Error(`GitHub did not return change stats for ${sha}.`);
+  }
+  if (filenames.size >= maxGithubCommitFiles) {
+    throw new Error(`GitHub may have truncated changed files for ${sha}.`);
+  }
+
+  return {
+    filesChanged: filenames.size,
+    additions,
+    deletions,
+  };
+}
+
 export async function fetchGitHubSnapshot(
   fetcher: FetchCommand = fetch,
   authToken?: string,
+  existingSnapshot?: unknown,
 ): Promise<UpdatesSnapshot> {
   const refUrl = `${githubApiRoot}/git/ref/heads/${updatesBranch}`;
   const refResponse = await fetchGitHubJson(refUrl, fetcher, authToken);
@@ -139,7 +310,7 @@ export async function fetchGitHubSnapshot(
 
   let pageUrl: string | null = `${githubApiRoot}/commits?sha=${headSha}&per_page=${githubPageSize}`;
   const visitedUrls = new Set<string>();
-  const commits: UpdateCommitInput[] = [];
+  const commitMetadata: GitHubCommitMetadata[] = [];
 
   while (pageUrl) {
     if (visitedUrls.has(pageUrl) || visitedUrls.size >= maxGithubPages) {
@@ -151,8 +322,30 @@ export async function fetchGitHubSnapshot(
     if (!Array.isArray(page.value)) {
       throw new Error("GitHub returned an invalid updates page.");
     }
-    commits.push(...page.value.map(parseGitHubCommit));
+    commitMetadata.push(...page.value.map(parseGitHubCommit));
     pageUrl = nextGithubPage(page.link);
+  }
+
+  let reusableSnapshot: UpdatesSnapshot | undefined;
+  try {
+    reusableSnapshot = parseUpdatesSnapshot(existingSnapshot);
+  } catch {
+    reusableSnapshot = undefined;
+  }
+  const reusableCommits = new Map(
+    reusableSnapshot?.commits.map((commit) => [commit.sha, commit]),
+  );
+  const commits: UpdateCommitInput[] = [];
+  for (const commit of commitMetadata) {
+    const reusable = reusableCommits.get(commit.sha);
+    const stats = reusable
+      ? {
+          filesChanged: reusable.filesChanged,
+          additions: reusable.additions,
+          deletions: reusable.deletions,
+        }
+      : await fetchGitHubCommitStats(commit.sha, fetcher, authToken);
+    commits.push({ ...commit, ...stats });
   }
 
   return createUpdatesSnapshot(headSha, commits);
@@ -183,7 +376,7 @@ export async function generateUpdatesSnapshot({
 
   try {
     return {
-      snapshot: await fetchGitHubSnapshot(fetcher, authToken),
+      snapshot: await fetchGitHubSnapshot(fetcher, authToken, existingSnapshot),
       source: "github",
       failures,
     };

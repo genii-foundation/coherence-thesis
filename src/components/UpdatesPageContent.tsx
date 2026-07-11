@@ -2,6 +2,7 @@ import Link from "next/link";
 import { GitHubMark } from "@/components/GitHubMark";
 import {
   formatUpdateDay,
+  formatUpdateLineCount,
   updateKindLabels,
   updatesBranch,
   updatesRepositoryUrl,
@@ -60,12 +61,10 @@ export function UpdatesPageContent({
     <div className="page-frame updates-page">
       <header className="page-heading updates-heading">
         <h1>Updates</h1>
-        <p>
-          Every change to the thesis and its reader interface, newest first.
-        </p>
+        <p>Every change to the thesis and its reader interface.</p>
         <p className="updates-summary">
           <strong>{totalCommitCount.toLocaleString()}</strong> commits across{" "}
-          <strong>{totalDayCount.toLocaleString()}</strong> days.{" "}
+          <strong>{totalDayCount.toLocaleString()}</strong> days, newest first.{" "}
           <a
             href={updatesRepositoryUrl + "/commits/" + updatesBranch}
             rel="noopener noreferrer"
@@ -106,10 +105,34 @@ export function UpdatesPageContent({
               <ol className="updates-list">
                 {day.entries.map((entry, entryIndex) => {
                   const isLatest = isLatestDay && entryIndex === 0;
+                  const hasPullRequest = Boolean(
+                    entry.pullRequestUrl && entry.pullRequestNumber,
+                  );
+                  const primaryHref = hasPullRequest
+                    ? entry.pullRequestUrl!
+                    : entry.commitUrl;
+                  const primaryLabel = hasPullRequest
+                    ? "Open PR #" +
+                      entry.pullRequestNumber!.toLocaleString() +
+                      ": " +
+                      entry.title +
+                      " on GitHub"
+                    : "Open commit " +
+                      entry.shortSha +
+                      ": " +
+                      entry.title +
+                      " on GitHub";
+                  const fileLabel =
+                    entry.filesChanged === 1 ? "file" : "files";
+                  const lineLabel =
+                    entry.linesChanged === 1 ? "line" : "lines";
                   return (
                     <li
                       className={
                         isLatest ? "updates-entry is-latest" : "updates-entry"
+                      }
+                      data-primary-target={
+                        hasPullRequest ? "pull-request" : "commit"
                       }
                       data-update-sha={entry.sha}
                       key={entry.sha}
@@ -117,51 +140,110 @@ export function UpdatesPageContent({
                       <article>
                         <a
                           className="updates-card-link"
-                          href={entry.commitUrl}
+                          href={primaryHref}
                           rel="noopener noreferrer"
                           target="_blank"
-                          aria-label={
-                            "Open commit " +
-                            entry.shortSha +
-                            ": " +
-                            entry.title +
-                            " on GitHub"
-                          }
+                          aria-label={primaryLabel}
                         />
                         <div className="updates-card-content">
-                          <div className="updates-entry-meta">
-                            {isLatest ? (
-                              <span className="updates-latest-badge">
-                                Latest
-                              </span>
-                            ) : null}
-                            <span
-                              className="updates-kind"
-                              data-update-kind={entry.kind}
-                            >
-                              {updateKindLabels[entry.kind]}
-                            </span>
-                            <span className="updates-commit-reference">
-                              <GitHubMark className="updates-github-icon" />
-                              <code>{entry.shortSha}</code>
-                            </span>
-                            {entry.pullRequestUrl && entry.pullRequestNumber ? (
-                              <a
-                                className="updates-pull-link"
-                                href={entry.pullRequestUrl}
-                                rel="noopener noreferrer"
-                                target="_blank"
-                                aria-label={
-                                  "Open PR #" +
-                                  entry.pullRequestNumber.toLocaleString() +
-                                  " on GitHub"
-                                }
+                          <div className="updates-card-main">
+                            <div className="updates-entry-meta">
+                              {isLatest ? (
+                                <span className="updates-latest-badge">
+                                  Latest
+                                </span>
+                              ) : null}
+                              <span
+                                className="updates-kind"
+                                data-update-kind={entry.kind}
                               >
-                                PR #{entry.pullRequestNumber.toLocaleString()}
-                              </a>
-                            ) : null}
+                                {updateKindLabels[entry.kind]}
+                              </span>
+                              {hasPullRequest ? (
+                                <a
+                                  className="updates-commit-reference updates-commit-link"
+                                  href={entry.commitUrl}
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                  aria-label={
+                                    "Open commit " +
+                                    entry.shortSha +
+                                    " on GitHub"
+                                  }
+                                >
+                                  <GitHubMark className="updates-github-icon" />
+                                  <code>{entry.shortSha}</code>
+                                </a>
+                              ) : (
+                                <span className="updates-commit-reference updates-primary-reference">
+                                  <GitHubMark className="updates-github-icon" />
+                                  <code>{entry.shortSha}</code>
+                                </span>
+                              )}
+                              {entry.pullRequestUrl &&
+                              entry.pullRequestNumber ? (
+                                <a
+                                  className="updates-pull-link updates-primary-reference"
+                                  href={entry.pullRequestUrl}
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                  aria-label={
+                                    "Open PR #" +
+                                    entry.pullRequestNumber.toLocaleString() +
+                                    " on GitHub"
+                                  }
+                                >
+                                  PR #{entry.pullRequestNumber.toLocaleString()}
+                                </a>
+                              ) : null}
+                            </div>
+                            <h3>{entry.title}</h3>
                           </div>
-                          <h3>{entry.title}</h3>
+                          <div
+                            className="updates-change-summary"
+                            data-change-level={entry.changeLevel}
+                            data-files-changed={entry.filesChanged}
+                            data-lines-changed={entry.linesChanged}
+                          >
+                            <span className="sr-only">
+                              {entry.filesChanged.toLocaleString()} {fileLabel}{" "}
+                              changed, {entry.linesChanged.toLocaleString()}{" "}
+                              {lineLabel} changed. Relative change size{" "}
+                              {entry.changeLevel.toLocaleString()} of 5.
+                            </span>
+                            <span
+                              className="updates-change-meter"
+                              aria-hidden="true"
+                            >
+                              {Array.from({ length: 5 }, (_, index) => (
+                                <span
+                                  data-filled={
+                                    index < entry.changeLevel
+                                      ? "true"
+                                      : undefined
+                                  }
+                                  key={index}
+                                />
+                              ))}
+                            </span>
+                            <span
+                              className="updates-change-counts"
+                              aria-hidden="true"
+                            >
+                              <span>
+                                <strong>
+                                  {entry.filesChanged.toLocaleString()}
+                                </strong>{" "}
+                                {fileLabel}
+                              </span>
+                              <span>
+                                <strong>
+                                  {formatUpdateLineCount(entry.linesChanged)}
+                                </strong>{" "}
+                                {lineLabel}
+                              </span>
+                            </span>
+                          </div>
                         </div>
                       </article>
                     </li>

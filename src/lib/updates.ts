@@ -1,13 +1,16 @@
 export const updatesRepository = "providence-collective/coherence-thesis";
 export const updatesRepositoryUrl = `https://github.com/${updatesRepository}`;
 export const updatesBranch = "main";
-export const updatesSnapshotSchemaVersion = 1;
+export const updatesSnapshotSchemaVersion = 2;
 
 export type UpdateCommit = {
   sha: string;
   committedAt: string;
   subject: string;
   commitUrl: string;
+  filesChanged: number;
+  additions: number;
+  deletions: number;
 };
 
 export type UpdatesSnapshot = {
@@ -37,9 +40,13 @@ export type UpdateEntry = UpdateCommit & {
   shortSha: string;
   title: string;
   kind: UpdateKind;
+  linesChanged: number;
+  changeLevel: UpdateChangeLevel;
   pullRequestNumber?: number;
   pullRequestUrl?: string;
 };
+
+export type UpdateChangeLevel = 0 | 1 | 2 | 3 | 4 | 5;
 
 export type UpdateDay = {
   date: string;
@@ -48,7 +55,12 @@ export type UpdateDay = {
 
 export type UpdateCommitInput = Pick<
   UpdateCommit,
-  "sha" | "committedAt" | "subject"
+  | "sha"
+  | "committedAt"
+  | "subject"
+  | "filesChanged"
+  | "additions"
+  | "deletions"
 >;
 
 export const updateKindLabels: Record<UpdateKind, string> = {
@@ -89,6 +101,11 @@ const updateDateFormatter = new Intl.DateTimeFormat("en-US", {
   timeZone: "UTC",
   year: "numeric",
 });
+const updateLineCountFormatter = new Intl.NumberFormat("en-US", {
+  compactDisplay: "short",
+  maximumFractionDigits: 0,
+  notation: "compact",
+});
 
 function normalizeCommittedAt(value: string): string {
   const date = new Date(value);
@@ -105,6 +122,13 @@ function normalizeSubject(value: string): string {
     throw new Error("Update commit subjects cannot be empty.");
   }
   return normalized;
+}
+
+function normalizeChangeCount(value: number, label: string): number {
+  if (!Number.isSafeInteger(value) || value < 0) {
+    throw new Error(`Invalid update ${label}: ${value}`);
+  }
+  return value;
 }
 
 function normalizeDisplayText(value: string): string {
@@ -157,6 +181,12 @@ export function createUpdatesSnapshot(
       committedAt: normalizeCommittedAt(commit.committedAt),
       subject: normalizeSubject(commit.subject),
       commitUrl: `${updatesRepositoryUrl}/commit/${commit.sha}`,
+      filesChanged: normalizeChangeCount(
+        commit.filesChanged,
+        "changed file count",
+      ),
+      additions: normalizeChangeCount(commit.additions, "addition count"),
+      deletions: normalizeChangeCount(commit.deletions, "deletion count"),
     };
     const existing = commitsBySha.get(commit.sha);
     if (!existing || JSON.stringify(normalized) < JSON.stringify(existing)) {
@@ -207,7 +237,10 @@ export function parseUpdatesSnapshot(value: unknown): UpdatesSnapshot {
       typeof candidate.sha !== "string" ||
       typeof candidate.committedAt !== "string" ||
       typeof candidate.subject !== "string" ||
-      typeof candidate.commitUrl !== "string"
+      typeof candidate.commitUrl !== "string" ||
+      typeof candidate.filesChanged !== "number" ||
+      typeof candidate.additions !== "number" ||
+      typeof candidate.deletions !== "number"
     ) {
       throw new Error("The updates snapshot contains an invalid commit.");
     }
@@ -219,6 +252,9 @@ export function parseUpdatesSnapshot(value: unknown): UpdatesSnapshot {
       sha: candidate.sha,
       committedAt: candidate.committedAt,
       subject: candidate.subject,
+      filesChanged: candidate.filesChanged,
+      additions: candidate.additions,
+      deletions: candidate.deletions,
     };
   });
   const normalized = createUpdatesSnapshot(value.headSha, inputs);
@@ -233,13 +269,39 @@ export function parseUpdatesSnapshot(value: unknown): UpdatesSnapshot {
       candidate.sha !== commit.sha ||
       candidate.committedAt !== commit.committedAt ||
       candidate.subject !== commit.subject ||
-      candidate.commitUrl !== commit.commitUrl
+      candidate.commitUrl !== commit.commitUrl ||
+      candidate.filesChanged !== commit.filesChanged ||
+      candidate.additions !== commit.additions ||
+      candidate.deletions !== commit.deletions
     ) {
       throw new Error("The updates snapshot is not normalized and sorted.");
     }
   }
 
   return normalized;
+}
+
+export function getUpdateChangeLevel({
+  filesChanged,
+  additions,
+  deletions,
+}: Pick<
+  UpdateCommit,
+  "filesChanged" | "additions" | "deletions"
+>): UpdateChangeLevel {
+  const linesChanged = additions + deletions;
+  const levelFor = (count: number): UpdateChangeLevel => {
+    if (count === 0) return 0;
+    if (count < 10) return 1;
+    if (count < 100) return 2;
+    if (count < 1_000) return 3;
+    if (count < 10_000) return 4;
+    return 5;
+  };
+  return Math.max(
+    levelFor(linesChanged),
+    levelFor(filesChanged),
+  ) as UpdateChangeLevel;
 }
 
 export function buildUpdateDays(snapshot: UpdatesSnapshot): UpdateDay[] {
@@ -251,11 +313,14 @@ export function buildUpdateDays(snapshot: UpdatesSnapshot): UpdateDay[] {
       ? Number(pullRequestMatch[1])
       : undefined;
     const { kind, title } = updateKindAndTitle(commit.subject);
+    const linesChanged = commit.additions + commit.deletions;
     const entry: UpdateEntry = {
       ...commit,
       shortSha: commit.sha.slice(0, 7),
       title,
       kind,
+      linesChanged,
+      changeLevel: getUpdateChangeLevel(commit),
       ...(pullRequestNumber
         ? {
             pullRequestNumber,
@@ -274,4 +339,10 @@ export function buildUpdateDays(snapshot: UpdatesSnapshot): UpdateDay[] {
 
 export function formatUpdateDay(value: string): string {
   return updateDateFormatter.format(new Date(`${value}T00:00:00.000Z`));
+}
+
+export function formatUpdateLineCount(value: number): string {
+  return updateLineCountFormatter.format(
+    normalizeChangeCount(value, "changed line count"),
+  );
 }
