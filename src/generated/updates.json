@@ -2,8 +2,17 @@
   "schemaVersion": 2,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "b50713c5b02006d26a2bff0be0a20f3a864a9984",
+  "headSha": "99adce0e9f9fdef9a29f9cca87a6b1816c3ccc05",
   "commits": [
+    {
+      "sha": "99adce0e9f9fdef9a29f9cca87a6b1816c3ccc05",
+      "committedAt": "2026-07-11T09:28:15.000Z",
+      "subject": "fix: accept commit-only updates targets",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/99adce0e9f9fdef9a29f9cca87a6b1816c3ccc05",
+      "filesChanged": 2,
+      "additions": 71,
+      "deletions": 42
+    },
     {
       "sha": "b50713c5b02006d26a2bff0be0a20f3a864a9984",
       "committedAt": "2026-07-11T02:34:55.000Z",

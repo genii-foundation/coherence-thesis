@@ -42,16 +42,17 @@ This block contains stable facts generated from the current package metadata and
 | `sources/manuscripts/` | Canonical source manuscripts | Edit these files for manuscript changes |
 | `content/series/` | Volume metadata, section ledger, and route aliases | Edit deliberately and preserve published links |
 | `content/overview/` | Curated overview nodes | Every reference must resolve to a real section |
-| `content/manuscripts/` | Generated canonical reader sections | Never edit by hand |
-| `src/generated/` | Generated application catalog and updates fallback | Never edit by hand |
-| `public/data/` | Generated reader payloads, routes, search data, and audio metadata | Never edit by hand |
+| `content/manuscripts/` | Ignored local reader materialization | Generated from canonical source, never edit by hand |
+| `src/generated/manuscripts/` | Ignored local application catalog | Generated from canonical source, never edit by hand |
+| `src/generated/updates.json` | Tracked Updates fallback and immutable statistics cache | Refresh through `npm run updates:generate`, never edit by hand |
+| `public/data/` | Ignored reader payloads plus the tracked hosted-audio manifest | Generate reader data locally; update audio only through its publishing workflow |
 | `src/app/` | Next.js pages and server route handlers | Reader and account application code |
 | `src/components/` | Shared interface components and client islands | Reuse existing primitives before adding new ones |
 | `supabase/migrations/` | Reader sync schema, policies, and API grants | Review authorization changes as security-sensitive |
 | `scripts/` | Import, compile, validation, preview, PDF, and audio tooling | Keep commands deterministic and reviewable |
 | `tests/` | Browser coverage | Add or update coverage for browser behavior changes |
 
-Generated files belong in commits only when the publishing workflow produces them.
+Generated manuscript fragments, catalogs, search data, breadcrumbs, and PDF indexes never belong in commits. Durable route history, aliases, version provenance, and the hosted-audio manifest remain tracked because current source files cannot reconstruct those reviewed or externally published facts.
 
 ## Quick Start
 
@@ -62,7 +63,6 @@ git clone https://github.com/providence-collective/coherence-thesis.git
 cd coherence-thesis
 nvm use
 npm run bootstrap
-npm run manuscripts:compile
 npm run dev
 ```
 
@@ -86,13 +86,21 @@ Never commit credentials. The service role key is server only and must not use a
 
 ## Manuscript Publishing
 
-Apply source Markdown to generated canonical sections:
+Materialize all disposable manuscript outputs from canonical source:
+
+```bash
+npm run manuscripts:prepare
+```
+
+The command imports Markdown, compiles the catalog and browser payloads, and builds missing PDFs. It caches a source fingerprint under ignored `node_modules/.cache/`, so subsequent development and validation commands avoid unnecessary work.
+
+Apply source Markdown to ignored reader sections for inspection:
 
 ```bash
 npm run manuscripts:import
 ```
 
-Compile the application catalog and public reader data:
+Compile the application catalog and public reader data without changing durable route history:
 
 ```bash
 npm run manuscripts:compile
@@ -104,17 +112,18 @@ Validate section IDs, overview references, aliases, the section ledger, and gene
 npm run manuscripts:validate
 ```
 
-After changing a source manuscript or `content/series/volumes.json`, run all three commands in order:
+After changing a source manuscript or `content/series/volumes.json`, inspect the import, preserve any historical routes with aliases, and explicitly record the reviewed route set:
 
 ```bash
 npm run manuscripts:import
-npm run manuscripts:compile
+npm run manuscripts:record-routes
+npm run manuscripts:prepare -- --force
 npm run manuscripts:validate
 ```
 
 Do not accept an import that collapses, fragments, reorders, or incorrectly renames sections. Fix the source or importer first.
 
-Published routes are durable. When a heading or structure change removes a historical route, add a deliberate alias to `content/series/aliases.json`. The section ledger records every published route, and validation fails when one disappears without a replacement.
+Published routes are durable. When a heading or structure change removes a historical route, add a deliberate alias to `content/series/aliases.json`. The section ledger records every published route, and validation fails when one disappears without a replacement. Ordinary development, testing, building, and deployment cannot modify that ledger.
 
 ## Updates Publishing
 

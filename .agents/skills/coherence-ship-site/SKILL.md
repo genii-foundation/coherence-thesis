@@ -29,7 +29,7 @@ If the fetch fails, stop and report the failure. If the requested publish target
 3. Pull or fetch any additional deployment refs only when needed for the requested publish action. Do not overwrite local changes.
 4. Capture publish context while working:
    - What publish, preview, deploy, or verification request is being handled.
-   - Which revision, branch, and generated catalog state are being verified.
+   - Which revision, branch, and source-materialized catalog state are being verified.
    - Whether any publish-prep change was needed and why.
    - Which routes, browser behaviors, and deploy target evidence matter for this publish.
 5. Refresh the checked Updates fallback through the target main revision and verify its head:
@@ -65,13 +65,13 @@ npm start
    - `/sitemap.xml`
    - `/robots.txt`
 10. If a deployment target exists, use the project-approved deploy command for that target. Do not invent a raw deploy command. After a main deployment, verify that production `/updates/` contains the deployed commit SHA or merged pull request.
-11. Review the final diff before staging. Confirm generated files are expected, README state is intentional, preview or deploy evidence is recorded, the Updates fallback is current, and unrelated local changes are left alone. When verifying an already merged main revision, do not create a snapshot-only commit just to record that revision. The next normal pull request carries it forward through its base refresh.
+11. Review the final diff before staging. Confirm disposable manuscript outputs are absent from Git, README state is intentional, preview or deploy evidence is recorded, the Updates fallback is current, and unrelated local changes are left alone. When verifying an already merged main revision, do not create a snapshot-only commit just to record that revision. The next normal pull request carries it forward through its base refresh.
 12. Commit any publish-prep changes with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
 
 ## Publishability Checks
 
 - The production build must complete without route generation errors.
-- `src/generated/manuscripts/catalog.json` must be fresh.
+- `npm run manuscripts:prepare` must produce a fresh local catalog from canonical source.
 - `src/generated/updates.json` must match the target main revision before publish, and the live Updates page must contain the deployed SHA after publish.
 - README status should reflect the current branch, revision, and manuscript stats.
 - The site must remain readable without JavaScript.
@@ -84,8 +84,8 @@ Start from `.agents/templates/pull-request-description.md`. The body must begin 
 Include publish-specific context whenever it applies:
 
 - The publish, deploy, preview, or verification request that prompted the work.
-- The source revision, branch, generated catalog state, and README state being verified.
-- The reason for any publish-prep change, including generated file refreshes or metadata updates.
+- The source revision, branch, materialized catalog state, and README state being verified.
+- The reason for any publish-prep change, including durable metadata updates.
 - Representative routes checked and why they cover the publishing risk.
 - Production preview, browser smoke, deployment command, deployment URL, and deploy status evidence.
 - Any skipped, narrowed, retried, or failed validation with the exact reason.
@@ -96,7 +96,7 @@ Include publish-specific context whenever it applies:
 Make every commit reviewable on its own:
 
 - Keep publish-prep changes separate from unrelated feature or manuscript edits.
-- Do not commit generated output unless it was intentionally refreshed for publishability.
+- Never commit disposable manuscript output. Commit only reviewed durable publishing state.
 - Make sure validation, preview, and deploy evidence in the closeout and pull request matches the actual commands run.
 - If validation or deployment fails, either fix the cause or leave a precise blocker with the failing command and relevant output.
 

@@ -1,8 +1,8 @@
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import {
   buildCatalog,
   buildSearchIndex,
-  buildSectionLedger,
   breadcrumbsDir,
   catalogPath,
   cleanDir,
@@ -14,10 +14,10 @@ import {
   readerSectionsPath,
   repoRoot,
   searchIndexPath,
-  sectionLedgerPath,
   writeJson,
 } from "./shared";
 import { buildPdfDownloads, pdfManifestPath } from "./pdf";
+import { validateSectionLedger } from "./validate";
 import { displayPartTitle } from "../../src/lib/manuscript-labels";
 
 function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
@@ -75,6 +75,11 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
 
 export async function compileManuscripts(): Promise<void> {
   const catalog = buildCatalog();
+  // Compilation is safe to run from every development and build lifecycle.
+  // It must enforce the durable route contract, but it must never expand that
+  // contract implicitly. New routes enter the committed ledger only through
+  // the explicit, transactional manuscripts:record-routes command.
+  validateSectionLedger(catalog, undefined, { checkStale: false });
   const pdfDownloads = await buildPdfDownloads(catalog);
   const readerSections = catalog.sections.map((section) => ({
     sectionId: section.sectionId,
@@ -126,7 +131,6 @@ export async function compileManuscripts(): Promise<void> {
     breadcrumbShards.set(key, shard);
   }
   const searchIndex = buildSearchIndex(catalog);
-  const sectionLedger = buildSectionLedger(catalog);
   ensureDir(generatedRoot);
   ensureDir(publicDataRoot);
   writeJson(catalogPath, catalog);
@@ -138,7 +142,6 @@ export async function compileManuscripts(): Promise<void> {
   }
   writeJson(searchIndexPath, searchIndex);
   writeJson(pdfManifestPath, pdfDownloads);
-  writeJson(sectionLedgerPath, sectionLedger);
   // Emit the toolbar outline tree as a fetch-on-demand payload (PERF-05). The
   // dynamic import runs after catalog.json is written above, so the runtime
   // builder reads the fresh catalog; manuscript-data is not imported earlier in
@@ -157,7 +160,9 @@ export async function compileManuscripts(): Promise<void> {
   console.log(`PDF downloads: ${path.relative(repoRoot, pdfManifestPath)}`);
 }
 
-compileManuscripts().catch((error: unknown) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  compileManuscripts().catch((error: unknown) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}

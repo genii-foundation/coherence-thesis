@@ -28,8 +28,16 @@
 # production
 /build
 
-# generated manuscript imports
+# generated manuscript materialization
 /artifacts
+/content/manuscripts/
+/src/generated/manuscripts/
+/public/data/breadcrumbs/
+/public/data/outline.json
+/public/data/pdf-downloads.json
+/public/data/progress-sections.json
+/public/data/reader-sections.json
+/public/data/search-index.json
 /public/downloads
 
 # misc

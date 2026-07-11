@@ -79,9 +79,15 @@ export function firstCommitForCurrentHash(
   );
 
   if (!match) {
+    const [commitSha = "", versionDate = ""] = runGit([
+      "show",
+      "-s",
+      "--format=%H%x09%cI",
+      "HEAD",
+    ]).split("\t");
     return {
-      commitSha: runGit(["rev-parse", "HEAD"]),
-      versionDate: new Date().toISOString(),
+      commitSha,
+      versionDate,
     };
   }
 
@@ -128,21 +134,32 @@ export function resolvePullRequestForCommit(
 
 export function buildVersionProvenanceManifest({
   now = new Date().toISOString(),
+  sections = buildCatalog().sections,
+  existing = readVersionProvenance(),
   runGit = git,
   resolvePullRequest = (commitSha: string) =>
     resolvePullRequestForCommit(commitSha, runGit),
 }: {
   now?: string;
+  sections?: Array<Pick<CompiledSection, "path" | "contentHash">>;
+  existing?: VersionProvenanceManifest;
   runGit?: GitCommand;
   resolvePullRequest?: PullRequestResolver;
 } = {}): VersionProvenanceManifest {
-  const catalog = buildCatalog();
   const repoUrl = originRepoUrl(runGit);
   const entriesByHash = new Map<string, VersionProvenanceEntry>();
+  const existingEntriesByHash = new Map(
+    existing.entries.map((entry) => [entry.contentHash, entry]),
+  );
   const pullRequestsByCommit = new Map<string, PullRequestMatch | null>();
 
-  for (const section of catalog.sections) {
+  for (const section of sections) {
     if (entriesByHash.has(section.contentHash)) continue;
+    const existingEntry = existingEntriesByHash.get(section.contentHash);
+    if (existingEntry) {
+      entriesByHash.set(section.contentHash, existingEntry);
+      continue;
+    }
     const firstCommit = firstCommitForCurrentHash(section, runGit);
     if (!pullRequestsByCommit.has(firstCommit.commitSha)) {
       pullRequestsByCommit.set(
