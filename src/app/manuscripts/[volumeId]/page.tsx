@@ -6,6 +6,7 @@ import { BookOpen } from "lucide-react";
 import { AstrologyIcon } from "@/components/AstrologyIcon";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
+import { SectionCardGrid } from "@/components/SectionCardGrid";
 import { UpdatedMarkerIsland } from "@/components/UpdatedMarkerIsland";
 import {
   catalog,
@@ -15,6 +16,7 @@ import {
   volumeByRouteSegment,
 } from "@/lib/manuscript-data";
 import {
+  authoredPartCount,
   displayPartCountLabel,
   displayPartKicker,
   displayPartTitle,
@@ -60,6 +62,10 @@ export default async function VolumePage({
   if (`/manuscripts/${volumeId}/` !== volume.href) redirect(volume.href);
   const navigation = volumeNavigation(volume.volumeId);
   if (!navigation) notFound();
+  const showSections = authoredPartCount(volume) === 0;
+  const sections = showSections
+    ? catalog.sections.filter((section) => section.volumeId === volume.volumeId)
+    : [];
 
   return (
     <div className="page-frame reader-layout">
@@ -91,29 +97,39 @@ export default async function VolumePage({
             </div>
           </div>
         </section>
-        <section className="part-list">
-          {volume.parts.map((part) => {
-            const partSections = sectionsForPart(
-              volume.volumeId,
-              part.partId,
-            ).map(toProgressSection);
+        {showSections ? (
+          <section
+            className="chapter-list-section"
+            aria-labelledby="volume-sections-heading"
+          >
+            <h2 id="volume-sections-heading">Sections</h2>
+            <SectionCardGrid sections={sections} />
+          </section>
+        ) : (
+          <section className="part-list">
+            {volume.parts.map((part) => {
+              const partSections = sectionsForPart(
+                volume.volumeId,
+                part.partId,
+              ).map(toProgressSection);
 
-            return (
-              <Link key={part.partId} href={part.href} className="part-card">
-                <span className="card-kicker">
-                  <BookOpen aria-hidden="true" size={21} />
-                  {displayPartKicker(part, volume)}
-                  <span className="content-status-row">
-                    <UpdatedMarkerIsland sections={partSections} />
-                    <ReadCheckmarkIsland sections={partSections} />
+              return (
+                <Link key={part.partId} href={part.href} className="part-card">
+                  <span className="card-kicker">
+                    <BookOpen aria-hidden="true" size={21} />
+                    {displayPartKicker(part, volume)}
+                    <span className="content-status-row">
+                      <UpdatedMarkerIsland sections={partSections} />
+                      <ReadCheckmarkIsland sections={partSections} />
+                    </span>
                   </span>
-                </span>
-                <strong>{displayPartTitle(part, volume)}</strong>
-                <small>{formatReadingDurationForWords(part.wordCount)}</small>
-              </Link>
-            );
-          })}
-        </section>
+                  <strong>{displayPartTitle(part, volume)}</strong>
+                  <small>{formatReadingDurationForWords(part.wordCount)}</small>
+                </Link>
+              );
+            })}
+          </section>
+        )}
         <ManuscriptNavigation
           previous={navigation.previous}
           parent={navigation.parent}
