@@ -112,6 +112,15 @@ npm start
 - Create a short branch with a Conventional Commit prefix, such as `feat/`, `fix/`, `edit/`, `docs/`, `chore/`, `refactor/`, or `perf/`, followed by a kebab-case description.
 - Use `edit/` for manuscript updates, including changes to source Markdown, `content/overview/`, and reviewed durable publishing metadata.
 - Keep each PR focused. One worktree should map to one coherent PR.
+- When a pull request is ready for user review, open it in GitHub's ready state. If an existing draft becomes reviewable, mark it ready for review. Never describe a pull request as ready while leaving it as a draft.
+- Use draft status only while work is incomplete, required validation or applicable review evidence is missing, or a concrete blocker prevents useful review. When preview, author, or publication approval applies, it gates merge or publication, not review status.
+- A stacked dependency or an open author decision may delay merge without requiring draft status when the pull request itself is complete enough to review.
+- Treat stacked pull request bases as temporary development scaffolding. A pull request may be ready for review while it targets a prerequisite branch.
+- While a pull request remains stacked, refresh `src/generated/updates.json` through its current pull request base SHA because CI validates against that base. After retargeting to `main`, refresh it through current `main`.
+- Before declaring a pull request ready to merge, merge its prerequisites, rebase its branch onto current `main`, retarget it to `main`, refresh validation, and confirm that its diff remains focused.
+- Squash each focused pull request into `main` separately so the Updates page creates one progress card for that pull request.
+- Use a recovery merge method outside the normal squash workflow only with explicit user approval and a written procedure. Validate the resulting `main` history, then restore repository merge settings immediately.
+- In every closeout, name the exact remaining gate for a draft or for a ready pull request that should not merge yet.
 - Do not merge changes to a shared UI component inside a PR whose stated purpose does not mention that surface. Move the UI change to a focused branch, or expand the PR scope and validation evidence before review.
 - Commit messages should follow "Conventional Commits" when possible. Use `edit:` for manuscript updates.
 - Run `npm run validate` before opening or updating a PR for merge.
