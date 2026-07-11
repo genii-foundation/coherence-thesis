@@ -97,8 +97,8 @@ jobs:
           COHERENCE_BOOTSTRAPPING: "1"
 
       - name: Install Playwright browsers
-        # The desktop project runs Chromium; the mobile project emulates
-        # iPhone 15, which runs on WebKit.
+        # Most browser coverage runs in Chromium. The focused cover flow
+        # regression project runs in WebKit.
         run: npx playwright install --with-deps chromium webkit
 
       - name: Run end-to-end tests

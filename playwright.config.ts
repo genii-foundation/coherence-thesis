@@ -36,5 +36,10 @@ export default defineConfig({
       name: "mobile",
       use: { ...devices["iPhone 15"] },
     },
+    {
+      name: "webkit-cover-flow",
+      testMatch: /cover-flow\.spec\.ts/,
+      use: { ...devices["Desktop Safari"] },
+    },
   ],
 });

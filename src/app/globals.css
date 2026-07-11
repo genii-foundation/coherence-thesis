@@ -2368,7 +2368,10 @@ input {
   --cover-flow-card-width: clamp(18.75rem, 30vw, 27rem);
   --cover-flow-card-perspective: clamp(56rem, 78vw, 76rem);
   --cover-flow-cover-center-y: calc(var(--cover-flow-card-width) * 0.855);
-  --cover-flow-cover-origin-y: 0%;
+  --cover-flow-cover-origin-y: calc(var(--cover-flow-card-width) * 0.75);
+  --cover-flow-card-top-offset: calc(
+    var(--cover-flow-cover-center-y) - var(--cover-flow-cover-origin-y)
+  );
   --cover-flow-panel-max-height: min(
     32rem,
     calc(var(--cover-flow-card-width) * 1.45),
@@ -2445,11 +2448,11 @@ input {
   --cover-flow-rotate: 0deg;
   --cover-flow-scale: 1;
   --cover-flow-shift: 0px;
-  --cover-flow-y: 0px;
   --cover-flow-z: 0px;
   display: grid;
   gap: 0;
   position: relative;
+  top: var(--cover-flow-card-top-offset);
   width: var(--cover-flow-card-width);
   margin-left: calc(
     (var(--cover-flow-scroll-step) - var(--cover-flow-card-width)) / 2
@@ -2458,9 +2461,8 @@ input {
   text-decoration: none;
   opacity: 1;
   transform: perspective(var(--cover-flow-card-perspective))
-    translateX(var(--cover-flow-shift)) translateY(var(--cover-flow-y))
-    translateZ(var(--cover-flow-z)) rotateY(var(--cover-flow-rotate))
-    scale(var(--cover-flow-scale));
+    translateX(var(--cover-flow-shift)) translateZ(var(--cover-flow-z))
+    rotateY(var(--cover-flow-rotate)) scale(var(--cover-flow-scale));
   transform-origin: center var(--cover-flow-cover-origin-y);
   transform-style: flat;
   will-change: transform;

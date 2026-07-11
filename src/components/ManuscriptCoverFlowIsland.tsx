@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { AstrologyIcon } from "@/components/AstrologyIcon";
 import {
-  coverFlowTuning,
+  getCoverFlowLayers,
   getCoverFlowTransform,
 } from "@/lib/cover-flow-motion";
 import type { Volume } from "@/lib/manuscript-data";
@@ -60,6 +60,22 @@ type ManuscriptCoverFlowIslandProps = {
 
 const COVER_FLOW_BACKGROUND_HIT_MIN_WIDTH = 44;
 const COVER_FLOW_BACKGROUND_HIT_Y_SLOP = 10;
+
+type CoverFlowLayoutMetrics = {
+  firstCardCenter: number;
+  maxScrollLeft: number;
+  scrollStepWidth: number;
+  viewportWidth: number;
+};
+
+function setStylePropertyIfChanged(
+  style: CSSStyleDeclaration,
+  property: string,
+  value: string,
+) {
+  if (style.getPropertyValue(property) === value) return;
+  style.setProperty(property, value);
+}
 
 type ManuscriptCardOutlineRowMeta = {
   status: ReturnType<typeof sectionGroupProgressStatus>;
@@ -163,9 +179,11 @@ export function ManuscriptCoverFlowIsland({
   const progress = useReaderProgress();
   const scrollRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Array<HTMLElement | null>>([]);
+  const layoutMetricsRef = useRef<CoverFlowLayoutMetrics | null>(null);
   const panelRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const snapRefs = useRef<Array<HTMLDivElement | null>>([]);
   const frameRef = useRef<number | null>(null);
+  const activeIndexRef = useRef(activeIndex);
   const panelHeightFrameRef = useRef<number | null>(null);
   const pendingPanelHeightAnimationsRef = useRef(new Set<string>());
 
@@ -256,132 +274,125 @@ export function ManuscriptCoverFlowIsland({
     [measuredPanelHeight],
   );
 
+  const measureCoverFlowLayout = useCallback(() => {
+    const scroller = scrollRef.current;
+    const firstSnap = snapRefs.current[0];
+    if (!scroller || !firstSnap) return null;
+
+    const scrollStepWidth = firstSnap.offsetWidth;
+    if (scrollStepWidth <= 0) return null;
+
+    const metrics = {
+      firstCardCenter: firstSnap.offsetLeft + scrollStepWidth / 2,
+      maxScrollLeft: Math.max(0, scroller.scrollWidth - scroller.clientWidth),
+      scrollStepWidth,
+      viewportWidth: scroller.clientWidth,
+    };
+    layoutMetricsRef.current = metrics;
+    return metrics;
+  }, []);
+
   const updateCardPositions = useCallback(() => {
     const scroller = scrollRef.current;
     if (!scroller) return;
 
-    const center = scroller.scrollLeft + scroller.clientWidth / 2;
-    const maxScrollLeft = Math.max(
-      0,
-      scroller.scrollWidth - scroller.clientWidth,
-    );
+    const metrics = layoutMetricsRef.current ?? measureCoverFlowLayout();
+    if (!metrics) return;
+
     const scrollLeft = scroller.scrollLeft;
+    const center = scrollLeft + metrics.viewportWidth / 2;
     let closestIndex = 0;
     let closestDistance = Number.POSITIVE_INFINITY;
-    const referenceCoverHeight =
-      cardRefs.current[0]?.querySelector<HTMLElement>(
-        ".cover-flow-image-frame",
-      )?.offsetHeight ?? 0;
-    const positionedCards: HTMLElement[] = [];
-
-    cardRefs.current.forEach((card, index) => {
+    const positionedCards = cardRefs.current.flatMap((card, index) => {
       const snap = snapRefs.current[index];
-      if (!card || !snap) return;
+      if (!card || !snap) return [];
 
-      const scrollStepWidth = snap.offsetWidth;
-      const cardCenter = snap.offsetLeft + scrollStepWidth / 2;
-      const offset = (cardCenter - center) / scrollStepWidth;
+      const cardCenter =
+        metrics.firstCardCenter + index * metrics.scrollStepWidth;
+      const offset = (cardCenter - center) / metrics.scrollStepWidth;
       const distance = Math.abs(offset);
-      const transform = getCoverFlowTransform(offset, scrollStepWidth);
-      const coverCenterY = referenceCoverHeight / 2;
-      const verticalCenterShift =
-        coverCenterY *
-        (coverFlowTuning.scale.active - transform.scale) *
-        coverFlowTuning.verticalAlignment.sideCoverCenterCompensation;
-
-      card.style.setProperty(
-        "--cover-flow-shift",
-        `${transform.shift.toFixed(1)}px`,
+      const transform = getCoverFlowTransform(
+        offset,
+        metrics.scrollStepWidth,
       );
-      card.style.setProperty(
-        "--cover-flow-y",
-        `${verticalCenterShift.toFixed(1)}px`,
-      );
-      card.style.setProperty("--cover-flow-rotate", `${transform.rotate}deg`);
-      card.style.setProperty("--cover-flow-scale", transform.scale.toFixed(3));
-      card.style.setProperty("--cover-flow-z", `${transform.z}px`);
-      card.style.setProperty(
-        "--cover-flow-cover-wash-opacity",
-        transform.coverWashOpacity.toFixed(3),
-      );
-      card.style.setProperty(
-        "--cover-flow-cover-shadow-strength",
-        transform.coverShadowStrength.toFixed(3),
-      );
-      card.style.setProperty(
-        "--cover-flow-panel-opacity",
-        String(transform.panelOpacity),
-      );
-      card.style.setProperty(
-        "--cover-flow-panel-visibility",
-        transform.panelVisibility,
-      );
-      card.style.zIndex = String(transform.layer);
-      snap.style.zIndex = String(transform.layer);
-      positionedCards.push(card);
 
       if (distance < closestDistance) {
         closestDistance = distance;
         closestIndex = index;
       }
+
+      return [{ card, index, offset, snap, transform }];
+    });
+    const layers = getCoverFlowLayers(
+      positionedCards.map(({ offset }) => offset),
+    );
+
+    positionedCards.forEach(({ card, index, snap, transform }, rank) => {
+      // Shadows and wash require painting in WebKit. Update them only when the
+      // closest card changes so fractional scrolling remains transform driven.
+      const restingTransform = getCoverFlowTransform(
+        index - closestIndex,
+        metrics.scrollStepWidth,
+      );
+
+      setStylePropertyIfChanged(
+        card.style,
+        "--cover-flow-shift",
+        `${transform.shift.toFixed(1)}px`,
+      );
+      setStylePropertyIfChanged(
+        card.style,
+        "--cover-flow-rotate",
+        `${transform.rotate}deg`,
+      );
+      setStylePropertyIfChanged(
+        card.style,
+        "--cover-flow-scale",
+        transform.scale.toFixed(3),
+      );
+      setStylePropertyIfChanged(
+        card.style,
+        "--cover-flow-z",
+        `${transform.z}px`,
+      );
+      setStylePropertyIfChanged(
+        card.style,
+        "--cover-flow-cover-wash-opacity",
+        restingTransform.coverWashOpacity.toFixed(3),
+      );
+      setStylePropertyIfChanged(
+        card.style,
+        "--cover-flow-cover-shadow-strength",
+        restingTransform.coverShadowStrength.toFixed(3),
+      );
+      setStylePropertyIfChanged(
+        card.style,
+        "--cover-flow-panel-opacity",
+        String(restingTransform.panelOpacity),
+      );
+      setStylePropertyIfChanged(
+        card.style,
+        "--cover-flow-panel-visibility",
+        restingTransform.panelVisibility,
+      );
+      if (card.style.zIndex) {
+        card.style.removeProperty("z-index");
+      }
+      const layer = String(layers[rank]);
+      if (snap.style.zIndex !== layer) snap.style.zIndex = layer;
     });
 
     if (scrollLeft <= 2) {
       closestIndex = 0;
-    } else if (
-      maxScrollLeft - scrollLeft <= 2
-    ) {
+    } else if (metrics.maxScrollLeft - scrollLeft <= 2) {
       closestIndex = Math.max(volumes.length - 1, 0);
     }
 
-    const track = scroller.querySelector<HTMLElement>(".cover-flow-track");
-    const referenceCover =
-      positionedCards[0]?.querySelector<HTMLElement>(
-        ".cover-flow-image-frame",
-      ) ?? null;
-    const trackPaddingTop = track
-      ? Number.parseFloat(window.getComputedStyle(track).paddingTop)
-      : 0;
-    const targetCoverCenterY =
-      track && referenceCover
-        ? scroller.getBoundingClientRect().top +
-          trackPaddingTop +
-          referenceCover.offsetTop +
-          (referenceCover.offsetHeight * coverFlowTuning.scale.active) / 2
-        : null;
-
-    if (targetCoverCenterY !== null) {
-      for (let pass = 0; pass < 2; pass += 1) {
-        const corrections = positionedCards.flatMap((card) => {
-          const coverFrame = card.querySelector<HTMLElement>(
-            ".cover-flow-image-frame",
-          );
-          const coverBox = coverFrame?.getBoundingClientRect();
-          if (!coverBox) return [];
-
-          const currentY = Number.parseFloat(
-            card.style.getPropertyValue("--cover-flow-y") || "0",
-          );
-          const coverCenterY = coverBox.top + coverBox.height / 2;
-
-          return [
-            {
-              card,
-              y: currentY + targetCoverCenterY - coverCenterY,
-            },
-          ];
-        });
-
-        corrections.forEach(({ card, y }) => {
-          card.style.setProperty("--cover-flow-y", `${y.toFixed(1)}px`);
-        });
-      }
+    if (activeIndexRef.current !== closestIndex) {
+      activeIndexRef.current = closestIndex;
+      setActiveIndex(closestIndex);
     }
-
-    setActiveIndex((current) =>
-      current === closestIndex ? current : closestIndex,
-    );
-  }, [volumes.length]);
+  }, [measureCoverFlowLayout, volumes.length]);
 
   const schedulePositionUpdate = useCallback(() => {
     if (frameRef.current !== null) return;
@@ -502,6 +513,7 @@ export function ManuscriptCoverFlowIsland({
   );
 
   useLayoutEffect(() => {
+    layoutMetricsRef.current = null;
     updateCardPositions();
   }, [updateCardPositions]);
 
@@ -521,10 +533,14 @@ export function ManuscriptCoverFlowIsland({
   }, [animatePanelHeightToContent, selectedPartByVolumeId]);
 
   useEffect(() => {
-    window.addEventListener("resize", schedulePositionUpdate);
+    const handleResize = () => {
+      layoutMetricsRef.current = null;
+      schedulePositionUpdate();
+    };
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", schedulePositionUpdate);
+      window.removeEventListener("resize", handleResize);
       if (frameRef.current !== null) {
         window.cancelAnimationFrame(frameRef.current);
       }

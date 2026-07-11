@@ -2,8 +2,19 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "5183b6347b366e829d61d213cdc98bde157bd0d7",
+  "headSha": "402def88884eda4478d4a585ed6f2ab64d6c2b22",
   "commits": [
+    {
+      "sha": "402def88884eda4478d4a585ed6f2ab64d6c2b22",
+      "committedAt": "2026-07-11T23:22:35.000Z",
+      "subject": "fix: stabilize toolbar and Safari page edges (#118)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/402def88884eda4478d4a585ed6f2ab64d6c2b22",
+      "filesChanged": 5,
+      "additions": 192,
+      "deletions": 160,
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-9xp39nkfd-aubreyfs-projects.vercel.app"
+    },
     {
       "sha": "5183b6347b366e829d61d213cdc98bde157bd0d7",
       "committedAt": "2026-07-11T22:41:13.000Z",

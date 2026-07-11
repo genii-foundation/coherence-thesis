@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { coverFlowTuning, getCoverFlowTransform } from "./cover-flow-motion";
+import {
+  coverFlowTuning,
+  getCoverFlowLayers,
+  getCoverFlowTransform,
+} from "./cover-flow-motion";
 
 describe("cover flow motion", () => {
   it("keeps the center transform continuous through tiny scroll changes", () => {
@@ -61,6 +65,27 @@ describe("cover flow motion", () => {
     expect(thirdBackground - secondBackground).toBeLessThan(
       secondBackground - firstBackground,
     );
+  });
+
+  it("gives every cover a unique layer that rises toward the center", () => {
+    const cardCount = 9;
+
+    for (const center of [0, 0.25, 0.5, 2.4, 4, 7.75, 8]) {
+      const offsets = Array.from(
+        { length: cardCount },
+        (_, index) => index - center,
+      );
+      const layers = getCoverFlowLayers(offsets);
+
+      expect(new Set(layers).size).toBe(cardCount);
+
+      offsets.forEach((offset, index) => {
+        offsets.forEach((otherOffset, otherIndex) => {
+          if (Math.abs(offset) >= Math.abs(otherOffset)) return;
+          expect(layers[index]!).toBeGreaterThan(layers[otherIndex]!);
+        });
+      });
+    }
   });
 
   it("hides inactive details while keeping all cover anchors fully opaque", () => {
