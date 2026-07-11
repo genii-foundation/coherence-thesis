@@ -138,7 +138,16 @@ npm run test:e2e
 6. Inspect the ignored reader materialization and import report for collapse, fragmentation, reordering, or accidental renaming. Do not commit disposable generated fragments or browser payloads.
 7. Check changed audio version identities and document whether hosted audio must be regenerated.
 8. Open a focused pull request whose body begins with `(AI Generated).` Include representative comparisons, semantic and literary review, route impact, audio impact, open queries, and residual risk.
-9. Wait for explicit prose approval before merge.
+9. Use draft status only while the editorial batch, review evidence, or validation is incomplete, or when an author answer is required before a coherent batch can be presented. Open a complete editorial pull request in the ready state. Use `gh pr ready <number>` only when an existing draft becomes reviewable. Queries deliberately presented in a completed review are the substance of author review and are not, by themselves, a reason to leave the pull request as a draft.
+10. Wait for explicit prose approval before merge.
+
+## Pull Request Status
+
+- Never call an editorial pull request ready for review while GitHub still marks it as a draft.
+- Open a complete editorial pull request in the ready state. Use `gh pr ready` only to transition an existing draft.
+- Mark a complete and validated editorial pull request ready for review even when author questions, parent pull requests, or prose approval still delay merge.
+- Convert a ready pull request back to draft only when new feedback, failed validation, or a branch refresh makes it materially incomplete.
+- State the exact remaining gate whenever a pull request remains draft or is ready for review but should not merge yet.
 
 ## Stop conditions
 

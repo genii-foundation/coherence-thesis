@@ -55,9 +55,9 @@ Stay on `main` only when the user explicitly requests it. In that case, verify l
 15. After refreshing `origin/main`, run `npm run updates:generate`. Treat `src/generated/updates.json` as the required Updates fallback cache, not disposable build churn. Commit it whenever it advances through the current main base.
 16. If the change affects browser behavior, run `npm run test:e2e` before committing unless the user explicitly narrows the validation target.
 17. Review the final diff before staging. Confirm the diff is focused, disposable manuscript outputs are not tracked, durable publishing changes are intentional, the Updates fallback is current, no debug logs or temporary files remain, and unrelated local changes are left alone.
-18. Stage the complete feature, commit with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user requested a direct main change, commit directly on `main` and do not open a pull request unless asked.
+18. Stage the complete feature, commit with a Conventional Commit title, push the branch, and open or update a focused pull request. Use draft status only when the implementation is incomplete, required validation or preview evidence is missing, or a concrete blocker prevents useful review. Open a complete pull request in the ready state. Use `gh pr ready <number>` only when an existing draft becomes reviewable. If the user requested a direct main change, commit directly on `main` and do not open a pull request unless asked.
 19. As soon as the preview is ready, send the exact URL as a Markdown link in a user-visible update.
-20. Ask the user whether they are ready to publish or what follow-on revisions are needed. Do not merge, publish, or mark the pull request ready for merge until the user explicitly confirms that the preview looks good.
+20. Ask the user whether they are ready to publish or what follow-on revisions are needed. Keep a completed pull request ready for review while waiting. Do not merge or publish until the user explicitly confirms that the preview looks good.
 21. If the user requests revisions after preview review, implement them on the same focused branch, validate again, push the update, and ask for preview approval again.
 22. After the user explicitly confirms the preview looks good and asks to publish or merge, refresh the branch against the current base, regenerate and commit `src/generated/updates.json` if it changed, then run the production build gate before merging. Use `npm run build` at minimum, or the repository production build command if the package scripts change. Do not merge a PR after conflict resolution, rebase, or branch refresh until that production build has succeeded on the final branch contents.
 23. Merge the pull request only after the final production build succeeds. After merging, confirm the resulting production deployment or deployment check succeeded. Never disable Updates deployment-link refresh for a Vercel production publication. The production generator must revalidate every stored historical link before the page is republished. For Vercel-backed work, inspect the deployment linked to the merge commit or project dashboard, then verify that production `/updates/` contains the merged pull request or commit SHA. If the deployment fails or Updates is stale, treat it as a continuation of the merge task: create a focused fix branch, reproduce or explain the failure locally with the production build, push a fix PR, merge it, and repeat until the production build, deployment, and Updates history are green.
@@ -156,6 +156,14 @@ Include these details whenever they apply:
 
 Keep the PR title concise and human. Do not include tool or agent identifiers in branch names, PR titles, commit titles, or PR prose beyond the required body prefix.
 
+## Pull Request Status
+
+- Never call a pull request ready for review while GitHub still marks it as a draft.
+- Open a complete pull request in the ready state. Use `gh pr ready` only to transition an existing draft.
+- Mark a completed, validated, and reviewable pull request ready for review even when preview approval, a stacked dependency, or a user decision still gates merge.
+- Convert a ready pull request back to draft only when new feedback, failed validation, or a branch refresh makes it materially incomplete.
+- State the exact remaining gate whenever a pull request remains draft or is ready for review but should not merge yet.
+
 ## Commit Quality
 
 Make every commit reviewable on its own:
@@ -169,4 +177,4 @@ Make every commit reviewable on its own:
 
 ## Closeout
 
-Close out with the commit hash, pushed branch, pull request URL when one exists, validation commands, production build evidence, post-merge deployment status, and a Markdown link to the preview URL when a preview is running. If validation was skipped or narrowed, state exactly why. If the preview has not been approved yet, say that the pull request is waiting for user preview approval before merge or publish.
+Close out with the commit hash, pushed branch, pull request URL when one exists, current review status, validation commands, production build evidence, post-merge deployment status, and a Markdown link to the preview URL when a preview is running. If validation was skipped or narrowed, state exactly why. Report the actual GitHub status. When a ready pull request still awaits preview approval, name that as the merge or publication gate. When a pull request remains draft, name the concrete blocker.

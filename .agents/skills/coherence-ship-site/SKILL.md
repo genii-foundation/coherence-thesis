@@ -64,9 +64,18 @@ npm start
    - one deep manuscript section route
    - `/sitemap.xml`
    - `/robots.txt`
-10. If a deployment target exists, use the project-approved deploy command for that target. Do not invent a raw deploy command. After a main deployment, verify that production `/updates/` contains the deployed commit SHA or merged pull request.
+10. If deployment has already been explicitly authorized and a target exists, use the project-approved deploy command for that target. Do not invent a raw deploy command. After a main deployment, verify that production `/updates/` contains the deployed commit SHA or merged pull request.
 11. Review the final diff before staging. Confirm disposable manuscript outputs are absent from Git, README state is intentional, preview or deploy evidence is recorded, the Updates fallback is current, and unrelated local changes are left alone. When verifying an already merged main revision, do not create a snapshot-only commit just to record that revision. The next normal pull request carries it forward through its base refresh.
-12. Commit any publish-prep changes with a Conventional Commit title, push the branch, and open or update a focused pull request. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
+12. Commit any publish-prep changes with a Conventional Commit title, push the branch, and open or update a focused pull request. Use draft status only while publish preparation, required validation, the premerge deployment target, or preview evidence is incomplete. Open a complete publish pull request in the ready state. Use `gh pr ready <number>` only when an existing draft becomes reviewable. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
+13. When a pull request exists and merge or deployment is not already authorized, share the review evidence and ask for approval. Keep a complete pull request ready for review while waiting.
+
+## Pull Request Status
+
+- Never call a publish pull request ready for review while GitHub still marks it as a draft.
+- Open a complete publish pull request in the ready state. Use `gh pr ready` only to transition an existing draft.
+- Mark a complete and validated publish pull request ready for review even when explicit approval still gates merge or deployment.
+- Convert a ready pull request back to draft only when new feedback, failed validation, or a branch refresh makes it materially incomplete.
+- State the exact remaining gate whenever a pull request remains draft or is ready for review but should not merge or deploy yet.
 
 ## Publishability Checks
 
@@ -102,4 +111,4 @@ Make every commit reviewable on its own:
 
 ## Closeout
 
-Close out with the commit hash when a commit was made, pushed branch, pull request URL when one exists, validation commands, representative routes checked, preview URL, deployment URL, and deploy status. If no code changed, state the verified revision and evidence instead.
+Close out with the commit hash when a commit was made, pushed branch, pull request URL when one exists, current review status, validation commands, representative routes checked, preview URL, deployment URL, and deploy status. If no code changed, state the verified revision and evidence instead. Name the exact remaining gate whenever a pull request remains draft or is ready for review but should not merge or deploy yet.

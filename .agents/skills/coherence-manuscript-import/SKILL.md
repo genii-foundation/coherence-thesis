@@ -89,7 +89,16 @@ npm run audio:publish-manifest -- --run-id <run-id> --version <new-version> --pr
    - Use a new immutable version path when publishing new audio. Do not overwrite existing Supabase objects in place.
 9. Run `npm run build` when route data, overview references, generated catalog data, or audio manifest data changed.
 10. Review the final diff before staging. Confirm disposable manuscript outputs are absent, durable route changes are reviewed, public link preservation is handled, audio manifest state is current when manuscript audio changed, `src/generated/updates.json` is refreshed through the current main base, no import report surprise is ignored, and unrelated local changes are left alone.
-11. Commit with an `edit:` Conventional Commit title, push the branch, and open or update a focused pull request. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
+11. Commit with an `edit:` Conventional Commit title, push the branch, and open or update a focused pull request. Use draft status only while the source update, durable publishing records, validation, or review context is incomplete. Open a complete manuscript pull request in the ready state. Use `gh pr ready <number>` only when an existing draft becomes reviewable. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
+
+## Pull Request Status
+
+- Never call a manuscript pull request ready for review while GitHub still marks it as a draft.
+- Open a complete manuscript pull request in the ready state. Use `gh pr ready` only to transition an existing draft.
+- Mark a complete and validated manuscript pull request ready for review even when author questions or parent pull requests still delay merge.
+- Required preview and author approval, when applicable, gate merge and publication. They do not require a reviewable pull request to remain draft.
+- When changed routes or rendered manuscript behavior need visual review, share a current preview before requesting merge approval.
+- Convert a ready pull request back to draft only when new feedback, failed validation, or a branch refresh makes it materially incomplete.
 
 ## Stable IDs
 
@@ -133,4 +142,4 @@ Make every commit reviewable on its own:
 
 ## Closeout
 
-Close out with the commit hash, pushed branch, pull request URL when one exists, validation commands, and any changed public routes or aliases. If validation was skipped or narrowed, state exactly why.
+Close out with the commit hash, pushed branch, pull request URL when one exists, current review status, validation commands, and any changed public routes or aliases. If validation was skipped or narrowed, state exactly why. Name the exact remaining gate whenever a pull request remains draft or is ready for review but should not merge yet.
