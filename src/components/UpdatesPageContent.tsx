@@ -84,9 +84,8 @@ export function UpdatesPageContent({
             target="_blank"
           >
             <GitHubMark className="updates-summary-github-icon" />
-            Browse history
+            Full history
           </a>
-          .
         </p>
       </header>
 

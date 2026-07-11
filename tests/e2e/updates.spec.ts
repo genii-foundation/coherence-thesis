@@ -120,7 +120,7 @@ test("updates page renders the latest history with timeline pagination", async (
     ),
   ).toBeVisible();
   const historyLink = updatesHeading.getByRole("link", {
-    name: "Browse history",
+    name: "Full history",
     exact: true,
   });
   await expect(historyLink).toHaveAttribute(
@@ -128,6 +128,9 @@ test("updates page renders the latest history with timeline pagination", async (
     updatesRepositoryUrl + "/commits/" + updatesBranch,
   );
   await expect(historyLink.locator("svg")).toHaveCount(1);
+  await expect(updatesHeading.locator(".updates-summary")).not.toContainText(
+    "Full history.",
+  );
   const newestFirstMentions = await updatesHeading.evaluate(
     (heading) => (heading.textContent?.match(/newest first/g) ?? []).length,
   );
