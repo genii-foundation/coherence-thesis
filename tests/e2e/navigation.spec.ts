@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { authoredPartCount } from "../../src/lib/manuscript-labels";
 import {
   catalog,
   volumeWithNeighbors,
@@ -186,6 +187,53 @@ test("manuscript volume heading uses the colored astrology icon", async ({
   expect(iconStyle.borderColor).toContain("rgba");
   expect(iconStyle.boxShadow).not.toBe("none");
   expect(iconStyle.color).toContain("rgb");
+});
+
+test("unpartitioned volume overviews list their sections directly", async ({
+  page,
+}) => {
+  const volumes = catalog.volumes.filter(
+    (volume) => authoredPartCount(volume) === 0,
+  );
+  expect(volumes.some((volume) => volume.order === 9)).toBe(true);
+
+  for (const volume of volumes) {
+    const sections = catalog.sections.filter(
+      (section) => section.volumeId === volume.volumeId,
+    );
+    expect(sections.length).toBeGreaterThan(1);
+
+    await page.goto(volume.href);
+
+    await expect(
+      page.getByRole("heading", { level: 2, name: "Sections" }),
+    ).toBeVisible();
+    const sectionCards = page.locator(".chapter-list").getByRole("link");
+    await expect(sectionCards).toHaveCount(sections.length);
+    await expect(sectionCards.locator(".card-kicker")).toHaveText(
+      sections.map((_section, index) => String(index + 1).padStart(2, "0")),
+    );
+    await expect(sectionCards.first()).toHaveAttribute(
+      "href",
+      sections[0]!.readerHref,
+    );
+    await expect(page.locator(".part-list")).toHaveCount(0);
+    await expect(
+      page.getByRole("link", { name: /^Contents/ }),
+    ).toHaveCount(0);
+  }
+
+  const cardinalVolume = volumes.find((volume) => volume.order === 9)!;
+  const contentsPart = cardinalVolume.parts[0];
+  expect(contentsPart).toBeDefined();
+  await page.goto(contentsPart!.href);
+  await expect(page).toHaveURL(contentsPart!.href);
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Contents" }),
+  ).toBeVisible();
+  await expect(page.locator(".chapter-list").getByRole("link")).toHaveCount(
+    contentsPart!.chapters.length,
+  );
 });
 
 test("single-section chapter cards open reader content directly", async ({

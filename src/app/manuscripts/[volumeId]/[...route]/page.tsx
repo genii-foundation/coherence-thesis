@@ -4,6 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import { ChapterReader } from "@/components/ChapterReader";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
+import { SectionCardGrid } from "@/components/SectionCardGrid";
 import { SectionReader } from "@/components/SectionReader";
 import { UpdatedMarkerIsland } from "@/components/UpdatedMarkerIsland";
 import {
@@ -108,64 +109,44 @@ function PartPage({ match }: { match: PartRouteMatch }) {
           aria-labelledby="part-sections-heading"
         >
           <h2 id="part-sections-heading">Sections</h2>
-          <div className="chapter-list">
-            {showSections
-              ? sections.map((section) => (
+          {showSections ? (
+            <SectionCardGrid sections={sections} />
+          ) : (
+            <div className="chapter-list">
+              {part.chapters.map((chapter) => {
+                const chapterSections = sections.filter(
+                  (section) => section.chapterId === chapter.chapterId,
+                );
+                const onlySection = chapterSections[0];
+                const href =
+                  chapterSections.length === 1 && onlySection
+                    ? onlySection.href
+                    : chapter.href;
+                const progressSections =
+                  chapterSections.map(toProgressSection);
+
+                return (
                   <Link
-                    key={section.sectionId}
-                    href={section.readerHref}
+                    key={chapter.chapterId}
+                    href={href}
                     className="chapter-card"
                   >
                     <span className="card-kicker">
-                      {String(section.sectionOrder).padStart(2, "0")}
+                      {String(chapter.order).padStart(2, "0")}
                       <span className="content-status-row">
-                        <UpdatedMarkerIsland
-                          sections={[toProgressSection(section)]}
-                        />
-                        <ReadCheckmarkIsland
-                          sections={[toProgressSection(section)]}
-                        />
+                        <UpdatedMarkerIsland sections={progressSections} />
+                        <ReadCheckmarkIsland sections={progressSections} />
                       </span>
                     </span>
-                    <strong>{section.title}</strong>
+                    <strong>{chapter.title}</strong>
                     <small>
-                      {formatReadingDurationForWords(section.wordCount)}
+                      {formatReadingDurationForWords(chapter.wordCount)}
                     </small>
                   </Link>
-                ))
-              : part.chapters.map((chapter) => {
-                  const chapterSections = sections.filter(
-                    (section) => section.chapterId === chapter.chapterId,
-                  );
-                  const onlySection = chapterSections[0];
-                  const href =
-                    chapterSections.length === 1 && onlySection
-                      ? onlySection.href
-                      : chapter.href;
-                  const progressSections =
-                    chapterSections.map(toProgressSection);
-
-                  return (
-                    <Link
-                      key={chapter.chapterId}
-                      href={href}
-                      className="chapter-card"
-                    >
-                      <span className="card-kicker">
-                        {String(chapter.order).padStart(2, "0")}
-                        <span className="content-status-row">
-                          <UpdatedMarkerIsland sections={progressSections} />
-                          <ReadCheckmarkIsland sections={progressSections} />
-                        </span>
-                      </span>
-                      <strong>{chapter.title}</strong>
-                      <small>
-                        {formatReadingDurationForWords(chapter.wordCount)}
-                      </small>
-                    </Link>
-                  );
-                })}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </section>
         <ManuscriptNavigation
           previous={navigation.previous}
