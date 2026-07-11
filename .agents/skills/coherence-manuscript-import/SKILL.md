@@ -96,6 +96,11 @@ npm run audio:publish-manifest -- --run-id <run-id> --version <new-version> --pr
 - Never call a manuscript pull request ready for review while GitHub still marks it as a draft.
 - Open a complete manuscript pull request in the ready state. Use `gh pr ready` only to transition an existing draft.
 - Mark a complete and validated manuscript pull request ready for review even when author questions or parent pull requests still delay merge.
+- Treat stacked pull request bases as temporary development scaffolding. A manuscript pull request may be ready for review while it targets a prerequisite branch.
+- While a manuscript pull request remains stacked, refresh `src/generated/updates.json` through its current pull request base SHA because CI validates against that base. After retargeting to `main`, refresh it through current `main`.
+- Before declaring a manuscript pull request ready to merge, merge its prerequisites, rebase its branch onto current `main`, retarget it to `main`, refresh validation, and confirm that its diff remains focused.
+- Squash each focused manuscript pull request into `main` separately so the Updates page creates one progress card for that pull request.
+- Use a recovery merge method outside the normal squash workflow only with explicit user approval and a written procedure. Validate the resulting `main` history, then restore repository merge settings immediately.
 - Required preview and author approval, when applicable, gate merge and publication. They do not require a reviewable pull request to remain draft.
 - When changed routes or rendered manuscript behavior need visual review, share a current preview before requesting merge approval.
 - Convert a ready pull request back to draft only when new feedback, failed validation, or a branch refresh makes it materially incomplete.

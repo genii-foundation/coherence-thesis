@@ -146,6 +146,11 @@ npm run test:e2e
 - Never call an editorial pull request ready for review while GitHub still marks it as a draft.
 - Open a complete editorial pull request in the ready state. Use `gh pr ready` only to transition an existing draft.
 - Mark a complete and validated editorial pull request ready for review even when author questions, parent pull requests, or prose approval still delay merge.
+- Treat stacked pull request bases as temporary development scaffolding. An editorial pull request may be ready for review while it targets a prerequisite branch.
+- While an editorial pull request remains stacked, refresh `src/generated/updates.json` through its current pull request base SHA because CI validates against that base. After retargeting to `main`, refresh it through current `main`.
+- Before declaring an editorial pull request ready to merge, merge its prerequisites, rebase its branch onto current `main`, retarget it to `main`, refresh validation, and confirm that its diff remains focused.
+- Squash each focused editorial pull request into `main` separately so the Updates page creates one progress card for that pull request.
+- Use a recovery merge method outside the normal squash workflow only with explicit user approval and a written procedure. Validate the resulting `main` history, then restore repository merge settings immediately.
 - Convert a ready pull request back to draft only when new feedback, failed validation, or a branch refresh makes it materially incomplete.
 - State the exact remaining gate whenever a pull request remains draft or is ready for review but should not merge yet.
 

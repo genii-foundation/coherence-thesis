@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "9b39730a5fe7c73de6671c68add46a1fc493f027",
+  "headSha": "998b3057555d2358368e967ab2221865e42f3f13",
   "commits": [
+    {
+      "sha": "998b3057555d2358368e967ab2221865e42f3f13",
+      "committedAt": "2026-07-11T20:25:19.000Z",
+      "subject": "docs: establish manuscript editorial standards (#105)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/998b3057555d2358368e967ab2221865e42f3f13",
+      "filesChanged": 11,
+      "additions": 1398,
+      "deletions": 1,
+      "isLiterary": false
+    },
     {
       "sha": "9b39730a5fe7c73de6671c68add46a1fc493f027",
       "committedAt": "2026-07-11T19:10:25.000Z",
@@ -12,7 +22,8 @@
       "filesChanged": 21,
       "additions": 1461,
       "deletions": 203,
-      "isLiterary": false
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-84fs2fpit-aubreyfs-projects.vercel.app"
     },
     {
       "sha": "b137a70fe689012321203f0d0fc3a4ae82a63696",
