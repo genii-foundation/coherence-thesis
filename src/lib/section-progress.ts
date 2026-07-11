@@ -1,11 +1,18 @@
 import type { ProgressSection, Section } from "./manuscript-data";
 import {
   isSectionRead,
+  progressPercentForSection,
   updatedSinceRead,
   type ReaderProgressState,
 } from "./reader-state";
 
-export type SectionProgressInput = Pick<Section, "sectionId" | "contentHash">;
+export type SectionProgressInput = Pick<Section, "sectionId" | "contentHash"> &
+  Partial<
+    Pick<
+      Section,
+      "continuityId" | "legacyContinuityIds" | "progressContinuityGroups"
+    >
+  >;
 
 export type SectionProgressKind = "unread" | "partial" | "read" | "updated";
 
@@ -30,8 +37,7 @@ export function sectionGroupProgressStatus(
 
   const percent = Math.round(
     sections.reduce((total, section) => {
-      const state = progress.sections[section.sectionId];
-      return total + clampPercent(state?.percent);
+      return total + clampPercent(progressPercentForSection(progress, section));
     }, 0) / sections.length,
   );
   const isRead = sections.every((section) => isSectionRead(progress, section));

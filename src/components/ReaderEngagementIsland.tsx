@@ -15,9 +15,12 @@ import {
 import {
   markRead,
   markSectionOpened,
+  isSectionRead,
+  progressStateForSection,
   recordReadingTime,
   recordScrollProgress,
 } from "@/lib/reader-state";
+import { readerFragmentTarget } from "@/lib/reader-fragments";
 
 const idleThresholdMs = 45_000;
 const scrollMilestones = [25, 50, 75, 100];
@@ -143,7 +146,7 @@ export function ReaderEngagementIsland({
         if (!opened.has(section.sectionId)) {
           opened.add(section.sectionId);
           const existingOpenCount =
-            readStoredProgress().sections[section.sectionId]?.openCount ?? 0;
+            progressStateForSection(readStoredProgress(), section)?.openCount ?? 0;
           updateStoredProgress((current) =>
             markSectionOpened(current, section, Date.now(), "direct"),
           );
@@ -202,11 +205,7 @@ export function ReaderEngagementIsland({
           }),
         );
         updateStoredProgress((current) => {
-          const existing = current.sections[section.sectionId];
-          if (
-            existing?.contentHash === section.contentHash &&
-            existing.percent >= 100
-          ) {
+          if (isSectionRead(current, section)) {
             return current;
           }
           return markRead(current, section);
@@ -221,15 +220,14 @@ export function ReaderEngagementIsland({
     };
 
     const onHashChange = () => {
+      const target = readerFragmentTarget(window.location.hash, sectionsRef.current);
+      if (!target) return;
       const hashTarget = window.location.hash.replace(/^#/, "");
-      const sectionId = sectionsRef.current.find(
-        (section) =>
-          hashTarget === section.sectionId ||
-          hashTarget.startsWith(`${section.sectionId}-p-`),
-      )?.sectionId;
-      if (sectionId) {
-        dispatchActiveSection(sectionId);
+      if (!document.getElementById(hashTarget)) {
+        const anchor = document.getElementById(target.anchorId);
+        anchor?.scrollIntoView({ block: "start" });
       }
+      dispatchActiveSection(target.sectionId);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });

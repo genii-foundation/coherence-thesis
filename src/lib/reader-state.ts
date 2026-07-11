@@ -1,8 +1,9 @@
-import type { ProgressSection, Section } from "./manuscript-data";
+import type { ProgressSection } from "./manuscript-data";
 
 export type SectionReadState = {
   sectionId: string;
   contentHash: string;
+  continuityIds?: string[];
   paragraphs?: Array<{
     paragraphId: string;
     contentHash: string;
@@ -27,6 +28,22 @@ export type SectionReadState = {
 export type ReaderProgressState = {
   sections: Record<string, SectionReadState>;
 };
+
+export type ProgressIdentity = Pick<ProgressSection, "sectionId" | "contentHash"> &
+  Partial<
+    Pick<
+      ProgressSection,
+      "continuityId" | "legacyContinuityIds" | "progressContinuityGroups"
+    >
+  >;
+
+type ProgressLineageIdentity = Pick<
+  ProgressIdentity,
+  | "sectionId"
+  | "continuityId"
+  | "legacyContinuityIds"
+  | "progressContinuityGroups"
+>;
 
 export type ReaderNavigationSource =
   | "direct"
@@ -137,6 +154,112 @@ function maxPercent(current: number | undefined, percent: number): number {
   return Math.max(current ?? 0, Math.min(100, Math.max(0, Math.round(percent))));
 }
 
+export function primaryProgressKey(
+  section: Pick<ProgressIdentity, "sectionId" | "continuityId">,
+): string {
+  return section.continuityId || section.sectionId;
+}
+
+export function progressGroups(section: ProgressLineageIdentity): string[][] {
+  const primary = primaryProgressKey(section);
+  const configured = section.progressContinuityGroups?.filter(
+    (group) => group.length > 0,
+  );
+  const source =
+    configured && configured.length > 0
+      ? configured
+      : [
+          [primary],
+          ...(section.legacyContinuityIds ?? []).map((id) => [id]),
+        ];
+  const used = new Set<string>();
+  const groups = source
+    .map((group) =>
+      group.filter((id) => {
+        if (!id || used.has(id)) return false;
+        used.add(id);
+        return true;
+      }),
+    )
+    .filter((group) => group.length > 0);
+
+  if (!used.has(primary)) {
+    groups.unshift([primary]);
+  }
+  return groups;
+}
+
+export function progressKeys(
+  section: ProgressLineageIdentity,
+): string[] {
+  return progressGroups(section).flat();
+}
+
+export function progressStatesForSection(
+  progress: ReaderProgressState,
+  section: ProgressLineageIdentity,
+): SectionReadState[] {
+  return [
+    ...new Set(
+      progressKeys(section)
+        .map((key) => progress.sections[key])
+        .filter((state): state is SectionReadState => Boolean(state)),
+    ),
+  ];
+}
+
+function stateCoversCurrentLineage(
+  state: SectionReadState,
+  section: ProgressLineageIdentity,
+): boolean {
+  const groups = progressGroups(section);
+  if (groups.length === 1 && state.sectionId === section.sectionId) return true;
+  const recorded = new Set([state.sectionId, ...(state.continuityIds ?? [])]);
+  return groups.every((group) =>
+    group.some((key) => recorded.has(key)),
+  );
+}
+
+export function progressStateForSection(
+  progress: ReaderProgressState,
+  section: ProgressLineageIdentity,
+): SectionReadState | undefined {
+  const primary = progress.sections[primaryProgressKey(section)];
+  if (primary?.sectionId === section.sectionId) return primary;
+  const states = progressStatesForSection(progress, section);
+  if (states.length === 0) return undefined;
+  return states.reduce((latest, state) => {
+    const latestAt = Math.max(
+      latest.lastOpenedAt ?? 0,
+      latest.lastReadAt ?? latest.readAt ?? 0,
+    );
+    const stateAt = Math.max(
+      state.lastOpenedAt ?? 0,
+      state.lastReadAt ?? state.readAt ?? 0,
+    );
+    return stateAt > latestAt ? state : latest;
+  });
+}
+
+export function progressPercentForSection(
+  progress: ReaderProgressState,
+  section: ProgressIdentity,
+): number {
+  const current = progress.sections[primaryProgressKey(section)];
+  if (current && stateCoversCurrentLineage(current, section)) {
+    return current.percent;
+  }
+  const groups = progressGroups(section);
+  if (groups.length === 1) {
+    const state = progressStateForSection(progress, section);
+    return state?.percent ?? 0;
+  }
+  const percentages = groups.map((group) =>
+    Math.max(...group.map((key) => progress.sections[key]?.percent ?? 0)),
+  );
+  return Math.min(...percentages);
+}
+
 // Every section mutator rebuilds the same base record envelope (spread the
 // section map, spread the existing entry, re-assert the id and the
 // default-preserving contentHash/readAt/percent) before applying its own fields.
@@ -146,16 +269,23 @@ function maxPercent(current: number | undefined, percent: number): number {
 // override a base default (markRead sets contentHash and readAt outright).
 function updateSection(
   progress: ReaderProgressState,
-  section: Pick<ProgressSection, "sectionId" | "contentHash">,
+  section: ProgressIdentity,
   patch: (existing: SectionReadState | undefined) => Partial<SectionReadState>,
 ): ReaderProgressState {
-  const existing = progress.sections[section.sectionId];
+  const key = primaryProgressKey(section);
+  const primaryExisting = progress.sections[key];
+  const groups = progressGroups(section);
+  const existing =
+    primaryExisting ??
+    (groups.length === 1
+      ? progressStateForSection(progress, section)
+      : undefined);
   return {
     sections: {
       ...progress.sections,
-      [section.sectionId]: {
+      [key]: {
         ...existing,
-        sectionId: section.sectionId,
+        sectionId: existing?.sectionId ?? section.sectionId,
         contentHash: existing?.contentHash ?? section.contentHash,
         readAt: existing?.readAt ?? 0,
         percent: existing?.percent ?? 0,
@@ -167,7 +297,7 @@ function updateSection(
 
 export function markSectionOpened(
   progress: ReaderProgressState,
-  section: Pick<ProgressSection, "sectionId" | "contentHash">,
+  section: ProgressIdentity,
   now = Date.now(),
   source: ReaderNavigationSource = "unknown",
 ): ReaderProgressState {
@@ -185,10 +315,10 @@ export function markSectionOpened(
 
 export function recordScrollProgress(
   progress: ReaderProgressState,
-  section: Pick<ProgressSection, "sectionId" | "contentHash">,
+  section: ProgressIdentity,
   percent: number,
 ): ReaderProgressState {
-  const existing = progress.sections[section.sectionId];
+  const existing = progressStateForSection(progress, section);
   const nextPercent = maxPercent(existing?.percent, percent);
   const nextMaxScroll = maxPercent(existing?.maxScrollPercent, percent);
 
@@ -211,7 +341,7 @@ export function recordScrollProgress(
 
 export function recordReadingTime(
   progress: ReaderProgressState,
-  section: Pick<ProgressSection, "sectionId" | "contentHash">,
+  section: ProgressIdentity,
   timing: {
     activeSeconds: number;
     idleSeconds: number;
@@ -230,7 +360,7 @@ export function recordReadingTime(
 
 export function recordAudioSeconds(
   progress: ReaderProgressState,
-  section: Pick<ProgressSection, "sectionId" | "contentHash">,
+  section: ProgressIdentity,
   seconds: number,
 ): ReaderProgressState {
   return updateSection(progress, section, (existing) => ({
@@ -241,13 +371,15 @@ export function recordAudioSeconds(
 
 export function markRead(
   progress: ReaderProgressState,
-  section: Pick<ProgressSection, "sectionId" | "contentHash"> &
+  section: ProgressIdentity &
     Partial<Pick<ProgressSection, "paragraphs">>,
   percent = 100,
   now = Date.now(),
   method: "auto" | "manual" = "auto",
 ): ReaderProgressState {
   return updateSection(progress, section, (existing) => ({
+    sectionId: section.sectionId,
+    continuityIds: progressKeys(section),
     contentHash: section.contentHash,
     paragraphs: paragraphHashes(section) ?? existing?.paragraphs,
     readAt: now,
@@ -363,17 +495,31 @@ export function reconcileRemoteProgress(
 
 export function updatedSinceRead(
   progress: ReaderProgressState,
-  section: Pick<Section, "sectionId" | "contentHash">,
+  section: ProgressIdentity,
 ): boolean {
-  const state = progress.sections[section.sectionId];
+  const states = progressStatesForSection(progress, section);
+  if (
+    states.some(
+      (state) =>
+        state.contentHash === section.contentHash &&
+        state.readAt > 0 &&
+        state.percent >= 100 &&
+        stateCoversCurrentLineage(state, section),
+    )
+  ) {
+    return false;
+  }
   // Only a genuinely read section can be "updated since you read it". Records
   // created by merely opening a section have readAt 0 and must not trigger
   // revision notices or update badges.
   return Boolean(
-    state &&
-      (state.readAt ?? 0) > 0 &&
-      (state.percent ?? 0) >= 100 &&
-      state.contentHash !== section.contentHash,
+    states.some(
+      (state) =>
+        (state.readAt ?? 0) > 0 &&
+        (state.percent ?? 0) >= 100 &&
+        (state.contentHash !== section.contentHash ||
+          !stateCoversCurrentLineage(state, section)),
+    ),
   );
 }
 
@@ -381,8 +527,31 @@ function firstChangedParagraphAnchor(
   progress: ReaderProgressState,
   section: ProgressSection,
 ): string | null {
-  const state = progress.sections[section.sectionId];
+  const state = progressStatesForSection(progress, section)
+    .filter((candidate) => candidate.readAt > 0)
+    .sort((left, right) => right.readAt - left.readAt)[0];
   if (!state?.paragraphs?.length) return section.paragraphs[0]?.anchor ?? null;
+  const legacyOrdinalParagraphs = state.paragraphs.every((paragraph) =>
+    /^p-\d+$/.test(paragraph.paragraphId),
+  );
+  if (legacyOrdinalParagraphs) {
+    const previous = [...state.paragraphs].sort(
+      (left, right) =>
+        Number(left.paragraphId.slice(2)) - Number(right.paragraphId.slice(2)),
+    );
+    const length = Math.max(previous.length, section.paragraphs.length);
+    for (let index = 0; index < length; index += 1) {
+      if (previous[index]?.contentHash === section.paragraphs[index]?.contentHash) {
+        continue;
+      }
+      return (
+        section.paragraphs[Math.min(index, section.paragraphs.length - 1)]?.anchor ??
+        section.paragraphs[0]?.anchor ??
+        null
+      );
+    }
+    return section.paragraphs[0]?.anchor ?? null;
+  }
   const readParagraphs = new Map(
     state.paragraphs.map((paragraph) => [paragraph.paragraphId, paragraph.contentHash]),
   );
@@ -407,29 +576,35 @@ export function revisedSectionHref(
 
 export function isSectionRead(
   progress: ReaderProgressState,
-  section: Pick<Section, "sectionId" | "contentHash">,
+  section: ProgressIdentity,
 ): boolean {
-  const state = progress.sections[section.sectionId];
   // A record alone does not mean read: merely opening a section stores its
   // contentHash (markSectionOpened, recordScrollProgress). Read requires an
   // actual read event, which is the only writer of a positive readAt.
-  return Boolean(
-    state &&
+  return progressStatesForSection(progress, section).some(
+    (state) =>
       (state.readAt ?? 0) > 0 &&
       (state.percent ?? 0) >= 100 &&
-      state.contentHash === section.contentHash,
+      state.contentHash === section.contentHash &&
+      stateCoversCurrentLineage(state, section),
   );
 }
 
 export function readPercent(
   progress: ReaderProgressState,
-  sections: Array<Pick<Section, "sectionId" | "contentHash">>,
+  sections: ProgressIdentity[],
 ): number {
   if (sections.length === 0) return 0;
   const read = sections.reduce((total, section) => {
-    const state = progress.sections[section.sectionId];
-    if (!state || state.contentHash !== section.contentHash) return total;
-    return total + Math.min(100, Math.max(0, state.percent ?? 0));
+    const percent = progressStatesForSection(progress, section).reduce(
+      (largest, state) =>
+        state.contentHash === section.contentHash &&
+        stateCoversCurrentLineage(state, section)
+          ? Math.max(largest, state.percent ?? 0)
+          : largest,
+      0,
+    );
+    return total + Math.min(100, Math.max(0, percent));
   }, 0);
   return Math.round(read / sections.length);
 }
@@ -474,7 +649,9 @@ export function recentlyReadSections(
 ): RecentlyReadSection[] {
   return sections
     .map((section) => {
-      const state = progress.sections[section.sectionId];
+      const state = progressStatesForSection(progress, section)
+        .filter((candidate) => candidate.readAt > 0)
+        .sort((left, right) => right.readAt - left.readAt)[0];
       // readAt is 0 for sections that were only opened, never read. Those must
       // not appear under "Recently read".
       return state && state.readAt > 0

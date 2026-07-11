@@ -9,7 +9,11 @@ import {
 const durableTrackedPaths = [
   "sources/manuscripts/coherence-thesis-vol1.md",
   "content/series/aliases.json",
+  "content/series/historical-section-mappings.json",
+  "content/series/route-aliases.json",
+  "content/series/route-ledger.json",
   "content/series/section-ledger.json",
+  "content/series/section-lineage.json",
   "content/series/version-provenance.json",
   "content/series/volumes.json",
   "public/data/audio-manifest.json",
@@ -96,7 +100,23 @@ describe("manuscript tracked source boundary audit", () => {
       }),
       expect.objectContaining({
         id: "series-metadata",
+        pathspec: "content/series/historical-section-mappings.json",
+      }),
+      expect.objectContaining({
+        id: "series-metadata",
+        pathspec: "content/series/route-aliases.json",
+      }),
+      expect.objectContaining({
+        id: "series-metadata",
+        pathspec: "content/series/route-ledger.json",
+      }),
+      expect.objectContaining({
+        id: "series-metadata",
         pathspec: "content/series/section-ledger.json",
+      }),
+      expect.objectContaining({
+        id: "series-metadata",
+        pathspec: "content/series/section-lineage.json",
       }),
       expect.objectContaining({
         id: "series-metadata",

@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
-import type {
-  CompiledCatalog,
-  CompiledSection,
-  SectionAlias,
-  SectionLedger,
+import {
+  buildCatalog,
+  type CompiledCatalog,
+  type CompiledSection,
+  type SectionAlias,
+  type SectionLedger,
 } from "./shared";
 import { catalogForStaleCheck, validateSectionLedger } from "./validate";
 
@@ -23,6 +24,7 @@ function catalogWithRevision(gitRevision: string): CompiledCatalog {
     volumes: [],
     sections: [],
     aliases: [],
+    routeAliases: [],
     overview: {
       title: "The Coherence Thesis",
       subtitle: "A five minute map.",
@@ -93,6 +95,50 @@ describe("section-ID drift gate", () => {
       { sectionId: "a", href: "/a/" },
       { sectionId: "gone", href: "/old/" },
     ]);
+    expect(() => validateSectionLedger(catalog, committed, opts)).not.toThrow();
+  });
+
+  it("accepts the canonical volume variant of a route-ledger-derived alias", () => {
+    const numericSourceHref =
+      "/manuscripts/1/retired-chapter/retired-seed/";
+    const canonicalSourceHref =
+      "/manuscripts/humanitys-most-viable-future/retired-chapter/retired-seed/";
+    const catalog = buildCatalog(undefined, {
+      aliasConfig: { version: 1, aliases: [] },
+      routeAliasConfig: { version: 1, aliases: [] },
+      sectionLineage: {
+        version: 1,
+        sections: [
+          {
+            currentSectionId: "v01-the-seed",
+            continuityIds: ["v01-the-seed", "retired-seed"],
+            historicalSectionIds: ["retired-seed"],
+          },
+        ],
+      },
+      routeLedger: {
+        version: 2,
+        routes: [
+          {
+            href: numericSourceHref,
+            kind: "section",
+            targetContinuityIds: ["retired-seed"],
+          },
+        ],
+      },
+    });
+    const committed = ledger([
+      { sectionId: "retired-seed", href: canonicalSourceHref },
+    ]);
+
+    expect(
+      catalog.aliases.find(
+        (alias) => alias.sourceHref === numericSourceHref,
+      ),
+    ).toMatchObject({
+      targetSectionId: "v01-the-seed",
+      note: "Generated from reviewed continuity ownership in the route ledger.",
+    });
     expect(() => validateSectionLedger(catalog, committed, opts)).not.toThrow();
   });
 

@@ -1,5 +1,9 @@
 import { catalog, type Section, type Volume } from "./manuscript-data";
-import { type ReaderProgressState, updatedSinceRead } from "./reader-state";
+import {
+  progressPercentForSection,
+  type ReaderProgressState,
+  updatedSinceRead,
+} from "./reader-state";
 
 export const readerHeatmapCellCount = 1_000;
 
@@ -10,6 +14,9 @@ type WeightedItem = {
 
 export type ReaderHeatmapSectionPortion = {
   sectionId: string;
+  continuityId: string;
+  legacyContinuityIds: string[];
+  progressContinuityGroups: string[][];
   contentHash: string;
   title: string;
   href: string;
@@ -49,11 +56,6 @@ export type ReaderHeatmapCellProgress = {
   percent: number;
   revised: boolean;
 };
-
-function clampPercent(value: number | undefined): number {
-  if (typeof value !== "number" || !Number.isFinite(value)) return 0;
-  return Math.min(100, Math.max(0, value));
-}
 
 function positiveWeight(value: number): number {
   return Number.isFinite(value) && value > 0 ? value : 1;
@@ -151,6 +153,9 @@ function buildVolumeCells({
       if (overlap <= 0) continue;
       portions.push({
         sectionId: range.section.sectionId,
+        continuityId: range.section.continuityId,
+        legacyContinuityIds: range.section.legacyContinuityIds,
+        progressContinuityGroups: range.section.progressContinuityGroups,
         contentHash: range.section.contentHash,
         title: range.section.title,
         href: range.section.readerHref,
@@ -169,6 +174,9 @@ function buildVolumeCells({
         : [
             {
               sectionId: fallback.sectionId,
+              continuityId: fallback.continuityId,
+              legacyContinuityIds: fallback.legacyContinuityIds,
+              progressContinuityGroups: fallback.progressContinuityGroups,
               contentHash: fallback.contentHash,
               title: fallback.title,
               href: fallback.readerHref,
@@ -244,12 +252,14 @@ export function progressForHeatmapCell(
   let revised = false;
 
   for (const portion of cell.portions) {
-    const state = progress.sections[portion.sectionId];
-    percent += clampPercent(state?.percent) * portion.fraction;
+    percent += progressPercentForSection(progress, portion) * portion.fraction;
     revised =
       revised ||
       updatedSinceRead(progress, {
         sectionId: portion.sectionId,
+        continuityId: portion.continuityId,
+        legacyContinuityIds: portion.legacyContinuityIds,
+        progressContinuityGroups: portion.progressContinuityGroups,
         contentHash: portion.contentHash,
       });
   }

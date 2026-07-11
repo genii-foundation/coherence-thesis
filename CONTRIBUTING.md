@@ -67,6 +67,7 @@ For manuscript or series changes, run:
 
 ```bash
 npm run manuscripts:import
+npm run manuscripts:preserve-links -- --base HEAD
 npm run manuscripts:record-routes
 npm run manuscripts:prepare -- --force
 npm run manuscripts:validate
@@ -74,7 +75,7 @@ npm run manuscripts:validate
 
 Review the ignored local materialization and import report. Do not accept an import that collapses, fragments, reorders, or incorrectly renames sections. Only source files and reviewed durable publishing state should appear in the Git diff.
 
-Stable section IDs and routes support public links, reading progress, update badges, recommendations, audio, and future learning tools. If a published route disappears, add an intentional alias to `content/series/aliases.json`. Validation checks the permanent section ledger and will reject silent link loss.
+Public headings and section IDs may improve, but their continuity identities and published routes remain durable. Run the preservation plan for every structural edit, review its lineage and aliases, then record the route set explicitly. Validation rejects silent link loss. The full process is documented in [Manuscript Link Continuity](docs/manuscript-link-continuity.md).
 
 ## Application Changes
 

@@ -25,6 +25,10 @@ const volumes: OutlineVolume[] = [
 const sections: ProgressSectionData[] = [
   {
     sectionId: "one-a",
+    continuityId: "one-a",
+    legacyContinuityIds: [],
+    progressContinuityGroups: [["one-a"]],
+    legacySectionIds: [],
     contentHash: "a",
     title: "One A",
     href: "/manuscripts/volume-one/part/chapter/one-a/",
@@ -35,6 +39,10 @@ const sections: ProgressSectionData[] = [
   },
   {
     sectionId: "one-b",
+    continuityId: "one-b",
+    legacyContinuityIds: [],
+    progressContinuityGroups: [["one-b"]],
+    legacySectionIds: [],
     contentHash: "b",
     title: "One B",
     href: "/manuscripts/volume-one/part/chapter/one-b/",
@@ -45,6 +53,10 @@ const sections: ProgressSectionData[] = [
   },
   {
     sectionId: "two-a",
+    continuityId: "two-a",
+    legacyContinuityIds: [],
+    progressContinuityGroups: [["two-a"]],
+    legacySectionIds: [],
     contentHash: "c",
     title: "Two A",
     href: "/manuscripts/volume-two/part/chapter/two-a/",

@@ -1,4 +1,6 @@
 import { MarkdownBody } from "@/components/MarkdownBody";
+import { LegacySectionAnchors } from "@/components/LegacySectionAnchors";
+import { LegacyFragmentRedirectIsland } from "@/components/LegacyFragmentRedirectIsland";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReaderEngagementIsland } from "@/components/ReaderEngagementIsland";
 import { ReaderLinkableHeading } from "@/components/ReaderLinkableHeading";
@@ -40,6 +42,7 @@ export function ChapterReader({
 
   return (
     <article className="reader-main">
+      <LegacyFragmentRedirectIsland sections={progressSections} />
       <header className="manuscript-heading">
         <p className="eyebrow">Chapter {chapter.order || "0"}</p>
         <ReaderLinkableHeading
@@ -57,6 +60,10 @@ export function ChapterReader({
           className="chapter-reader-section"
           data-reader-section-id={section.sectionId}
         >
+          <LegacySectionAnchors
+            currentSectionId={section.sectionId}
+            legacySectionIds={section.legacySectionIds}
+          />
           {showSectionHeading(section, chapter, index) && (
             <ReaderLinkableHeading
               href={sectionHeadingHref(

@@ -12,6 +12,9 @@ export const metadata: Metadata = {
 const firstReadTarget = catalog.sections[0]!;
 const heroReadTargets = catalog.sections.map((section) => ({
   sectionId: section.sectionId,
+  continuityId: section.continuityId,
+  legacyContinuityIds: section.legacyContinuityIds,
+  progressContinuityGroups: section.progressContinuityGroups,
   contentHash: section.contentHash,
   href: section.readerHref,
 }));
@@ -24,7 +27,10 @@ export default function Home() {
   }));
   const progressSections = catalog.sections.map((section) => ({
     contentHash: section.contentHash,
+    continuityId: section.continuityId,
     href: section.readerHref,
+    legacyContinuityIds: section.legacyContinuityIds,
+    progressContinuityGroups: section.progressContinuityGroups,
     sectionId: section.sectionId,
   }));
 

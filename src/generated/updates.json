@@ -2,8 +2,19 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "2280dae1dd02ccbafe816466f3e1bcd2f5ad4466",
+  "headSha": "97510275c5456cb7f25fa843a466f76bdb54ed64",
   "commits": [
+    {
+      "sha": "97510275c5456cb7f25fa843a466f76bdb54ed64",
+      "committedAt": "2026-07-11T22:10:29.000Z",
+      "subject": "fix: fail closed on manuscript import boundaries (#107)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/97510275c5456cb7f25fa843a466f76bdb54ed64",
+      "filesChanged": 3,
+      "additions": 102,
+      "deletions": 21,
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-lkseq5jhb-aubreyfs-projects.vercel.app"
+    },
     {
       "sha": "2280dae1dd02ccbafe816466f3e1bcd2f5ad4466",
       "committedAt": "2026-07-11T21:56:25.000Z",

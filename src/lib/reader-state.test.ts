@@ -14,6 +14,7 @@ import {
   recommendNextSections,
   recordReadingTime,
   recordScrollProgress,
+  revisedSectionHref,
   sanitizeProgress,
   updatedSinceRead,
 } from "./reader-state";
@@ -233,6 +234,226 @@ describe("reader progress", () => {
     ).toBe(true);
   });
 
+  it("preserves read progress across a pure section rename", () => {
+    const original = allSections()[0]!;
+    const progress = markRead(emptyProgress(), original, 100, 1_000);
+    const renamed = {
+      ...original,
+      sectionId: "renamed-section",
+      continuityId: original.continuityId,
+      legacyContinuityIds: [],
+      legacySectionIds: [original.sectionId],
+    };
+
+    expect(isSectionRead(progress, renamed)).toBe(true);
+    expect(updatedSinceRead(progress, renamed)).toBe(false);
+  });
+
+  it("reads a real historical rename from its equivalent continuity key", () => {
+    const renamed = allSections().find(
+      (section) =>
+        section.sectionId === "v03-on-the-meaning-of-coordination-failure",
+    )!;
+    const historicalId =
+      "the-central-wound-on-the-meaning-of-coordination-failure";
+    expect(renamed.progressContinuityGroups).toContainEqual([
+      renamed.continuityId,
+      historicalId,
+    ]);
+    const progress = {
+      sections: {
+        [historicalId]: {
+          sectionId: historicalId,
+          contentHash: renamed.contentHash,
+          readAt: 1_000,
+          percent: 100,
+        },
+      },
+    };
+
+    expect(isSectionRead(progress, renamed)).toBe(true);
+    expect(updatedSinceRead(progress, renamed)).toBe(false);
+    expect(readPercent(progress, [renamed])).toBe(100);
+  });
+
+  it("keeps history but marks a rewritten rename as updated", () => {
+    const original = allSections()[0]!;
+    const progress = markRead(emptyProgress(), original, 100, 1_000);
+    const rewritten = {
+      ...original,
+      sectionId: "renamed-section",
+      continuityId: original.continuityId,
+      legacyContinuityIds: [],
+      contentHash: "rewritten-hash",
+    };
+
+    expect(isSectionRead(progress, rewritten)).toBe(false);
+    expect(updatedSinceRead(progress, rewritten)).toBe(true);
+  });
+
+  it("writes renamed progress to the technical continuity key", () => {
+    const original = allSections()[0]!;
+    const renamed = {
+      ...original,
+      sectionId: "renamed-section",
+      continuityId: original.sectionId,
+      legacyContinuityIds: [],
+    };
+    const progress = markRead(emptyProgress(), renamed, 100, 1_000);
+
+    expect(progress.sections[original.sectionId]?.sectionId).toBe("renamed-section");
+    expect(progress.sections[renamed.sectionId]).toBeUndefined();
+  });
+
+  it("counts new partial progress after a one-to-one rename", () => {
+    const original = allSections()[0]!;
+    const renamed = {
+      ...original,
+      sectionId: "renamed-section",
+      continuityId: original.sectionId,
+      legacyContinuityIds: [],
+      progressContinuityGroups: [[original.sectionId]],
+    };
+    const progress = recordScrollProgress(emptyProgress(), renamed, 50);
+
+    expect(readPercent(progress, [renamed])).toBe(50);
+    expect(isSectionRead(progress, renamed)).toBe(false);
+  });
+
+  it("does not mark a merge read from one predecessor", () => {
+    const [first, second] = allSections().slice(0, 2);
+    const progress = markRead(emptyProgress(), first!, 100, 1_000);
+    const merged = {
+      ...first!,
+      sectionId: "merged-section",
+      continuityId: first!.sectionId,
+      legacyContinuityIds: [second!.sectionId],
+      progressContinuityGroups: [
+        [first!.sectionId],
+        [second!.sectionId],
+      ],
+      contentHash: "merged-hash",
+    };
+
+    expect(isSectionRead(progress, merged)).toBe(false);
+    expect(updatedSinceRead(progress, merged)).toBe(true);
+  });
+
+  it("does not adopt a predecessor read when a merge is opened", () => {
+    const [first, second] = allSections().slice(0, 2);
+    const predecessorProgress = markRead(emptyProgress(), first!, 100, 1_000);
+    const merged = {
+      ...first!,
+      sectionId: "merged-section",
+      continuityId: first!.sectionId,
+      legacyContinuityIds: [second!.sectionId],
+      progressContinuityGroups: [
+        [first!.sectionId],
+        [second!.sectionId],
+      ],
+      contentHash: first!.contentHash,
+    };
+    const opened = markSectionOpened(predecessorProgress, merged, 2_000);
+
+    expect(opened.sections[first!.sectionId]?.sectionId).toBe(first!.sectionId);
+    expect(isSectionRead(opened, merged)).toBe(false);
+    expect(updatedSinceRead(opened, merged)).toBe(true);
+    expect(isSectionRead(markRead(opened, merged, 100, 3_000), merged)).toBe(true);
+  });
+
+  it("clears merge update status after the merged section is read", () => {
+    const [first, second] = allSections().slice(0, 2);
+    let progress = markRead(emptyProgress(), first!, 100, 1_000);
+    progress = markRead(progress, second!, 100, 2_000);
+    const merged = {
+      ...first!,
+      sectionId: "merged-section",
+      continuityId: first!.sectionId,
+      legacyContinuityIds: [second!.sectionId],
+      progressContinuityGroups: [
+        [first!.sectionId],
+        [second!.sectionId],
+      ],
+      contentHash: "merged-hash",
+    };
+    progress = markRead(progress, merged, 100, 3_000);
+
+    expect(isSectionRead(progress, merged)).toBe(true);
+    expect(updatedSinceRead(progress, merged)).toBe(false);
+    expect(progress.sections[second!.sectionId]).toBeDefined();
+  });
+
+  it("preserves a completed merge when only its public ID changes", () => {
+    const [first, second] = allSections().slice(0, 2);
+    const merged = {
+      ...first!,
+      sectionId: "merged-old",
+      continuityId: first!.sectionId,
+      legacyContinuityIds: [second!.sectionId],
+      progressContinuityGroups: [
+        [first!.sectionId],
+        [second!.sectionId],
+      ],
+      contentHash: "merged-hash",
+    };
+    const progress = markRead(emptyProgress(), merged, 100, 1_000);
+    const renamed = {
+      ...merged,
+      sectionId: "merged-new",
+      legacySectionIds: ["merged-old"],
+    };
+
+    expect(isSectionRead(progress, renamed)).toBe(true);
+    expect(updatedSinceRead(progress, renamed)).toBe(false);
+    expect(readPercent(progress, [renamed])).toBe(100);
+  });
+
+  it("keeps a completed merge after predecessor groups are reordered", () => {
+    const [first, second, third] = allSections().slice(0, 3);
+    const merged = {
+      ...first!,
+      sectionId: "merged-old",
+      continuityId: first!.sectionId,
+      legacyContinuityIds: [second!.sectionId, third!.sectionId],
+      progressContinuityGroups: [
+        [first!.sectionId, "first-equivalent"],
+        [second!.sectionId, "second-equivalent"],
+        [third!.sectionId, "third-equivalent"],
+      ],
+      contentHash: "merged-hash",
+    };
+    const progress = markRead(emptyProgress(), merged, 100, 1_000);
+    const reordered = {
+      ...merged,
+      sectionId: "merged-new",
+      progressContinuityGroups: [
+        ["first-equivalent", first!.sectionId],
+        ["third-equivalent", third!.sectionId],
+        ["second-equivalent", second!.sectionId],
+      ],
+    };
+
+    expect(isSectionRead(progress, reordered)).toBe(true);
+    expect(updatedSinceRead(progress, reordered)).toBe(false);
+    expect(readPercent(progress, [reordered])).toBe(100);
+  });
+
+  it("does not treat a reused public ID as proof of a completed merge", () => {
+    const [first, second] = allSections().slice(0, 2);
+    const predecessorProgress = markRead(emptyProgress(), first!, 100, 1_000);
+    const merged = {
+      ...first!,
+      continuityId: first!.sectionId,
+      legacyContinuityIds: [second!.sectionId],
+      progressContinuityGroups: [
+        [first!.sectionId],
+        [second!.sectionId],
+      ],
+    };
+
+    expect(isSectionRead(predecessorProgress, merged)).toBe(false);
+  });
+
   it("computes progress and recommends unread sections", () => {
     const sections = allSections().slice(0, 3);
     const progress = markRead(emptyProgress(), sections[0]!);
@@ -291,6 +512,38 @@ describe("reader progress", () => {
         isUpdated: false,
       },
     ]);
+  });
+
+  it("locates the real changed paragraph from legacy ordinal progress", () => {
+    const section = allSections().find(
+      (candidate) =>
+        candidate.paragraphs.length >= 3 && !candidate.readerHref.includes("#"),
+    )!;
+    const progress = {
+      sections: {
+        [section.continuityId]: {
+          sectionId: section.sectionId,
+          contentHash: section.contentHash,
+          readAt: 1_000,
+          percent: 100,
+          paragraphs: section.paragraphs.map((paragraph, index) => ({
+            paragraphId: `p-${index + 1}`,
+            contentHash: paragraph.contentHash,
+          })),
+        },
+      },
+    };
+    const revised = {
+      ...section,
+      contentHash: "revised-section",
+      paragraphs: section.paragraphs.map((paragraph, index) =>
+        index === 2 ? { ...paragraph, contentHash: "revised-paragraph" } : paragraph,
+      ),
+    };
+
+    expect(revisedSectionHref(progress, revised)).toBe(
+      `${section.readerHref}#${section.paragraphs[2]!.anchor}`,
+    );
   });
 
   it("reports read state by content hash", () => {

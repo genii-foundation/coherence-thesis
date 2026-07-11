@@ -1,0 +1,315 @@
+{
+  "version": 1,
+  "aliases": [
+    {
+      "sourceHref": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil/",
+      "targetHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/providence-imperative/front-matter/preface/",
+      "targetHref": "/manuscripts/3/opening/the-next-nest/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/providence-imperative/the-earth-compact/the-earth-compact-overview/",
+      "targetHref": "/manuscripts/3/the-earth-compact/a-system-that-heals-what-it-inhabits/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/providence-imperative/the-governance/the-governance-overview/",
+      "targetHref": "/manuscripts/3/the-governance/the-constitutional-problem/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-innovation-overview/",
+      "targetHref": "/manuscripts/3/the-innovation/what-coordinates-wisdom/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/providence-imperative/the-invitation/the-invitation-overview/",
+      "targetHref": "/manuscripts/3/the-invitation/how-we-begin/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/the-living-reality-overview/",
+      "targetHref": "/manuscripts/3/the-living-reality/the-year-of-the-weaver/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-mechanism-overview/",
+      "targetHref": "/manuscripts/3/the-mechanism/the-body-as-primary-text/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/the-reckoning-overview/",
+      "targetHref": "/manuscripts/3/the-reckoning/the-central-wound/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/providence-imperative/the-sovereign-architecture/the-sovereign-architecture-overview/",
+      "targetHref": "/manuscripts/3/the-sovereign-architecture/the-federated-imperative/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/a-last-word/",
+      "targetHref": "/manuscripts/2/main/a-last-word/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/an-honest-accounting/",
+      "targetHref": "/manuscripts/2/main/an-honest-accounting/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/builders-of-the-coherent-civilization/",
+      "targetHref": "/manuscripts/2/main/builders-of-the-coherent-civilization/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/if-you-are-a-builder/",
+      "targetHref": "/manuscripts/2/main/if-you-are-a-builder/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/if-you-are-a-funder/",
+      "targetHref": "/manuscripts/2/main/if-you-are-a-funder/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/if-you-are-already-doing-the-work/",
+      "targetHref": "/manuscripts/2/main/if-you-are-already-doing-the-work/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/if-you-are-gathering-communities/",
+      "targetHref": "/manuscripts/2/main/if-you-are-gathering-communities/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/if-you-are-not-sure/",
+      "targetHref": "/manuscripts/2/main/if-you-are-not-sure/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/on-releasing-the-book-now/",
+      "targetHref": "/manuscripts/2/main/on-releasing-the-book-now/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/on-the-conversation/",
+      "targetHref": "/manuscripts/2/main/on-the-conversation/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/on-the-form/",
+      "targetHref": "/manuscripts/2/main/on-the-form/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/on-the-state-of-the-project/",
+      "targetHref": "/manuscripts/2/main/on-the-state-of-the-project/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/the-field-that-does-not-yet-know-it-is-a-field/",
+      "targetHref": "/manuscripts/2/main/the-field-that-does-not-yet-know-it-is-a-field/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/the-larger-argument-5/",
+      "targetHref": "/manuscripts/2/main/the-larger-argument-5/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/the-last-reframe/",
+      "targetHref": "/manuscripts/2/main/the-last-reframe/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/the-liminal-phase/",
+      "targetHref": "/manuscripts/2/main/the-liminal-phase/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/the-response/the-response/",
+      "targetHref": "/manuscripts/2/the-response/coherence-as-infrastructure/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/",
+      "targetHref": "/manuscripts/2/main/the-texture-of-what-comes-next/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/the-transition/",
+      "targetHref": "/manuscripts/2/main/the-transition/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/three-builder-types-worth-naming/",
+      "targetHref": "/manuscripts/2/main/three-builder-types-worth-naming/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/what-providence-is-and-is-not-doing-in-this-dimension-5/",
+      "targetHref": "/manuscripts/2/main/what-providence-is-and-is-not-doing-in-this-dimension-5/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/what-the-builders-have-in-common/",
+      "targetHref": "/manuscripts/2/main/what-the-builders-have-in-common/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/what-this-asks-of-the-people-living-through-it/",
+      "targetHref": "/manuscripts/2/main/what-this-asks-of-the-people-living-through-it/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/what-this-asks-of-the-reader/",
+      "targetHref": "/manuscripts/2/main/what-this-asks-of-the-reader/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/what-this-book-is/",
+      "targetHref": "/manuscripts/2/main/what-this-book-is/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/what-this-threshold-actually-feels-like/",
+      "targetHref": "/manuscripts/2/main/what-this-threshold-actually-feels-like/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/a-last-word/",
+      "targetHref": "/manuscripts/2/main/a-last-word/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/an-honest-accounting/",
+      "targetHref": "/manuscripts/2/main/an-honest-accounting/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/builders-of-the-coherent-civilization/",
+      "targetHref": "/manuscripts/2/main/builders-of-the-coherent-civilization/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-a-builder/",
+      "targetHref": "/manuscripts/2/main/if-you-are-a-builder/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-a-funder/",
+      "targetHref": "/manuscripts/2/main/if-you-are-a-funder/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-already-doing-the-work/",
+      "targetHref": "/manuscripts/2/main/if-you-are-already-doing-the-work/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-gathering-communities/",
+      "targetHref": "/manuscripts/2/main/if-you-are-gathering-communities/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-not-sure/",
+      "targetHref": "/manuscripts/2/main/if-you-are-not-sure/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/on-releasing-the-book-now/",
+      "targetHref": "/manuscripts/2/main/on-releasing-the-book-now/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-conversation/",
+      "targetHref": "/manuscripts/2/main/on-the-conversation/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-form/",
+      "targetHref": "/manuscripts/2/main/on-the-form/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-state-of-the-project/",
+      "targetHref": "/manuscripts/2/main/on-the-state-of-the-project/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/the-field-that-does-not-yet-know-it-is-a-field/",
+      "targetHref": "/manuscripts/2/main/the-field-that-does-not-yet-know-it-is-a-field/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/the-larger-argument-5/",
+      "targetHref": "/manuscripts/2/main/the-larger-argument-5/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/the-last-reframe/",
+      "targetHref": "/manuscripts/2/main/the-last-reframe/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/the-liminal-phase/",
+      "targetHref": "/manuscripts/2/main/the-liminal-phase/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/the-texture-of-what-comes-next/",
+      "targetHref": "/manuscripts/2/main/the-texture-of-what-comes-next/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/the-transition/",
+      "targetHref": "/manuscripts/2/main/the-transition/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/three-builder-types-worth-naming/",
+      "targetHref": "/manuscripts/2/main/three-builder-types-worth-naming/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/what-providence-is-and-is-not-doing-in-this-dimension-5/",
+      "targetHref": "/manuscripts/2/main/what-providence-is-and-is-not-doing-in-this-dimension-5/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/what-the-builders-have-in-common/",
+      "targetHref": "/manuscripts/2/main/what-the-builders-have-in-common/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-asks-of-the-people-living-through-it/",
+      "targetHref": "/manuscripts/2/main/what-this-asks-of-the-people-living-through-it/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-asks-of-the-reader/",
+      "targetHref": "/manuscripts/2/main/what-this-asks-of-the-reader/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-book-is/",
+      "targetHref": "/manuscripts/2/main/what-this-book-is/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-threshold-actually-feels-like/",
+      "targetHref": "/manuscripts/2/main/what-this-threshold-actually-feels-like/",
+      "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/wielding-intelligence/wielding-intelligence/wielding-intelligence/",
+      "targetHref": "/manuscripts/2/main/builders-of-the-coherent-civilization/",
+      "note": "Reviewed successor from the complete catalog history."
+    }
+  ]
+}

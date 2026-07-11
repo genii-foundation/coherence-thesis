@@ -33,6 +33,7 @@ function catalogWithRoutes(
     volumes: [],
     sections: sections as unknown as CompiledSection[],
     aliases: [],
+    routeAliases: [],
     overview: {
       title: "Overview",
       subtitle: "A map.",
@@ -71,7 +72,8 @@ describe("explicit section route recording", () => {
       }),
     ).toBe(true);
     expect(validate).toHaveBeenCalledOnce();
-    expect(fs.readdirSync(path.dirname(ledgerPath))).toEqual([
+    expect(fs.readdirSync(path.dirname(ledgerPath)).sort()).toEqual([
+      "route-ledger.json",
       "section-ledger.json",
     ]);
   });
@@ -94,7 +96,7 @@ describe("explicit section route recording", () => {
       }),
     ).toThrow("validation failed");
     expect(fs.readFileSync(ledgerPath, "utf8")).toBe(original);
-    expect(fs.readdirSync(path.dirname(ledgerPath))).toEqual([
+    expect(fs.readdirSync(path.dirname(ledgerPath)).sort()).toEqual([
       "section-ledger.json",
     ]);
   });
@@ -107,15 +109,25 @@ describe("explicit section route recording", () => {
     )}\n`;
     const ledgerPath = temporaryLedger(current);
     const validate = vi.fn();
+    const catalog = catalogWithRoutes([{ sectionId: "same", href: "/same/" }]);
+
+    expect(recordSectionRoutes({ catalog, ledgerPath, validate })).toBe(true);
+    const routeLedgerPath = path.join(
+      path.dirname(ledgerPath),
+      "route-ledger.json",
+    );
+    const recordedRoutes = fs.readFileSync(routeLedgerPath, "utf8");
+    validate.mockClear();
 
     expect(
       recordSectionRoutes({
-        catalog: catalogWithRoutes([{ sectionId: "same", href: "/same/" }]),
+        catalog,
         ledgerPath,
         validate,
       }),
     ).toBe(false);
     expect(validate).toHaveBeenCalledOnce();
     expect(fs.readFileSync(ledgerPath, "utf8")).toBe(current);
+    expect(fs.readFileSync(routeLedgerPath, "utf8")).toBe(recordedRoutes);
   });
 });

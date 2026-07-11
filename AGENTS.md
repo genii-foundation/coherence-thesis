@@ -24,13 +24,14 @@
 
 ```bash
 npm run manuscripts:import
+npm run manuscripts:preserve-links -- --base HEAD
 npm run manuscripts:record-routes
 npm run manuscripts:prepare -- --force
 npm run manuscripts:validate
 ```
 
 - Do not accept an import when the parser has collapsed, fragmented, reordered, or renamed sections incorrectly. Fix the source or importer first.
-- Treat removed or renamed sections as a link preservation event. Add aliases when old public routes should continue to resolve. `manuscripts:validate` enforces this through the durable section ledger. Automatic preparation never updates that ledger. Only `npm run manuscripts:record-routes` records reviewed public routes.
+- Treat removed or renamed sections as a link preservation event. Run `npm run manuscripts:preserve-links -- --base HEAD`, review every lineage and alias decision, then run `npm run manuscripts:record-routes`. Automatic preparation validates durable ledgers but never updates them.
 
 ## Updates History
 

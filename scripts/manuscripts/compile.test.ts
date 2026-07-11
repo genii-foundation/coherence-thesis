@@ -2,7 +2,9 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
   buildPdfDownloads: vi.fn(async () => ({ sections: [], manuscripts: [] })),
+  validateRouteLedger: vi.fn(),
   validateSectionLedger: vi.fn(),
+  validateSectionLineageConfig: vi.fn(),
   writeJson: vi.fn(),
 }));
 
@@ -22,8 +24,10 @@ vi.mock("./shared", () => ({
   progressSectionsPath: "/repo/public/data/progress-sections.json",
   publicDataRoot: "/repo/public/data",
   readerSectionsPath: "/repo/public/data/reader-sections.json",
+  readRouteLedger: () => ({ version: 2, routes: [] }),
   repoRoot: "/repo",
   searchIndexPath: "/repo/public/data/search-index.json",
+  validateSectionLineageConfig: mocks.validateSectionLineageConfig,
   writeJson: mocks.writeJson,
 }));
 
@@ -33,6 +37,7 @@ vi.mock("./pdf", () => ({
 }));
 
 vi.mock("./validate", () => ({
+  validateRouteLedger: mocks.validateRouteLedger,
   validateSectionLedger: mocks.validateSectionLedger,
 }));
 
@@ -62,6 +67,12 @@ describe("manuscript compilation entry point", () => {
     expect(mocks.validateSectionLedger).toHaveBeenCalledWith(
       expect.any(Object),
       undefined,
+      { checkStale: false },
+    );
+    expect(mocks.validateSectionLineageConfig).toHaveBeenCalledOnce();
+    expect(mocks.validateRouteLedger).toHaveBeenCalledWith(
+      expect.any(Object),
+      { version: 2, routes: [] },
       { checkStale: false },
     );
     expect(mocks.writeJson).not.toHaveBeenCalledWith(
