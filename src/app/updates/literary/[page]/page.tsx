@@ -12,7 +12,7 @@ import {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return getUpdatesPaginationStaticParams();
+  return getUpdatesPaginationStaticParams("literary");
 }
 
 export async function generateMetadata({
@@ -20,25 +20,25 @@ export async function generateMetadata({
 }: {
   params: Promise<{ page: string }>;
 }): Promise<Metadata> {
-  const page = parseUpdatesPage((await params).page);
+  const page = parseUpdatesPage((await params).page, "literary");
   if (!page || page === 1) notFound();
-  return buildUpdatesMetadata(page);
+  return buildUpdatesMetadata(page, "literary");
 }
 
-export default async function UpdatesPaginationPage({
+export default async function LiteraryUpdatesPaginationPage({
   params,
 }: {
   params: Promise<{ page: string }>;
 }) {
-  const page = parseUpdatesPage((await params).page);
+  const page = parseUpdatesPage((await params).page, "literary");
   if (!page || page === 1) notFound();
-  const summary = getUpdatesSummary();
+  const summary = getUpdatesSummary("literary");
 
   return (
     <UpdatesPageContent
       currentPage={page}
-      days={getUpdatesPageSlice(page)}
-      mode="all"
+      days={getUpdatesPageSlice(page, "literary")}
+      mode="literary"
       totalCommitCount={summary.totalCommitCount}
       totalDayCount={summary.totalDayCount}
     />

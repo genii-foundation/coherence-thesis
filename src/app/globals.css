@@ -4660,6 +4660,20 @@ input {
   text-underline-offset: 0.24em;
 }
 
+.updates-pagination .updates-mode-link {
+  margin-right: 0.65rem;
+  color: var(--bronze-deep);
+}
+
+.updates-pagination .updates-mode-link:where(:visited) {
+  color: var(--bronze-deep);
+}
+
+.updates-pagination .updates-mode-link:hover,
+.updates-pagination .updates-mode-link:focus-visible {
+  color: var(--ink);
+}
+
 .updates-day {
   display: grid;
   grid-template-columns: minmax(8.5rem, 0.28fr) 1rem minmax(0, 1fr);
@@ -4862,7 +4876,8 @@ input {
 }
 
 .updates-commit-reference,
-.updates-pull-link {
+.updates-pull-link,
+.updates-deployment-link {
   display: inline-flex;
   align-items: center;
   gap: 0.28rem;
@@ -4871,7 +4886,8 @@ input {
   font-weight: 600;
 }
 
-.updates-pull-link {
+.updates-pull-link,
+.updates-deployment-link {
   position: relative;
   z-index: 2;
   justify-content: center;
@@ -4889,7 +4905,8 @@ input {
 }
 
 .updates-primary-reference,
-.updates-commit-link {
+.updates-commit-link,
+.updates-deployment-link {
   text-decoration-line: underline;
   text-decoration-color: transparent;
   text-decoration-thickness: 0.08em;
@@ -4899,7 +4916,8 @@ input {
     text-decoration-color 160ms ease;
 }
 
-.updates-commit-link {
+.updates-commit-link,
+.updates-deployment-link {
   position: relative;
   z-index: 2;
   justify-content: center;
@@ -4911,20 +4929,23 @@ input {
 }
 
 .updates-pull-link:where(:visited),
-.updates-commit-link:where(:visited) {
+.updates-commit-link:where(:visited),
+.updates-deployment-link:where(:visited) {
   color: var(--ink-muted);
 }
 
 .updates-pull-link:hover,
 .updates-pull-link:focus-visible,
 .updates-commit-link:hover,
-.updates-commit-link:focus-visible {
+.updates-commit-link:focus-visible,
+.updates-deployment-link:hover,
+.updates-deployment-link:focus-visible {
   color: var(--ink);
   text-decoration-color: currentColor;
 }
 
 .updates-entry
-  article:hover:not(:has(.updates-commit-link:hover))
+  article:hover:not(:has(.updates-secondary-reference:hover))
   .updates-primary-reference,
 .updates-entry
   article:has(.updates-card-link:focus-visible)
@@ -4941,6 +4962,10 @@ input {
   display: block;
   width: 0.78rem;
   height: 0.78rem;
+}
+
+.updates-deployment-link svg {
+  flex: 0 0 auto;
 }
 
 .updates-entry h3 {
@@ -5016,7 +5041,8 @@ input {
 
 @media (max-width: 720px) {
   .updates-pull-link,
-  .updates-commit-link {
+  .updates-commit-link,
+  .updates-deployment-link {
     min-height: 2rem;
   }
 

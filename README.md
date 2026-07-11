@@ -137,6 +137,10 @@ No manual changelog entry is needed. The production build runs this command befo
 
 Every pull request refreshes and verifies `src/generated/updates.json` through its current main base. Because main requires current checks before merge, the checked cache stays one successful merge behind at most. Production main builds require the generated history to match the exact deployed SHA. If neither complete Git history nor GitHub can provide that history, the new deployment fails and Vercel keeps the previous good deployment. Local and preview builds may still use the last valid snapshot when offline. The page groups commits by UTC date and shows five dates per numbered page.
 
+The default view shows all updates. The [Literary view](https://www.coherence-thesis.com/updates/literary/) filters before grouping and pagination to show commits that touched canonical manuscript sources or their historical generated sections. Mixed commits remain literary, while each card keeps the complete commit statistics.
+
+When an exact commit still has a successful public Vercel production deployment, its card can link to that rendered version. These links are keyed by the full commit SHA, checked for public reachability within a fixed generation budget, and omitted when the deployment is missing or no longer available. CI preserves the checked mappings instead of making required gates depend on optional network changes. This best effort enrichment never replaces or weakens complete history validation.
+
 ## Audiobook Publishing
 
 Hosted audiobook clips are keyed by each section's `audioVersionId`. Manuscript content, boundaries, and volume metadata can change those IDs and make existing audio stale.

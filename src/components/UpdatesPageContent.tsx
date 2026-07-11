@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 import { GitHubMark } from "@/components/GitHubMark";
 import {
   formatUpdateDay,
@@ -11,16 +12,20 @@ import {
 import {
   getUpdatesPageHref,
   getUpdatesTotalPages,
+  type UpdatesMode,
 } from "@/lib/updates-pagination";
 
 function UpdatesPagination({
   currentPage,
+  mode,
   placement,
 }: {
   currentPage: number;
+  mode: UpdatesMode;
   placement: "top" | "bottom";
 }) {
-  const totalPages = getUpdatesTotalPages();
+  const totalPages = getUpdatesTotalPages(mode);
+  const otherMode = mode === "all" ? "literary" : "all";
 
   return (
     <nav
@@ -29,6 +34,12 @@ function UpdatesPagination({
         placement === "top" ? "Updates pagination" : "Updates pagination, end"
       }
     >
+      <Link
+        className="updates-mode-link"
+        href={getUpdatesPageHref(1, otherMode)}
+      >
+        {mode === "all" ? "Literary updates" : "All updates"}
+      </Link>
       {Array.from({ length: totalPages }, (_, index) => {
         const page = index + 1;
         const label = page === 1 ? "Latest" : page.toLocaleString();
@@ -37,7 +48,7 @@ function UpdatesPagination({
             {label}
           </span>
         ) : (
-          <Link href={getUpdatesPageHref(page)} key={page}>
+          <Link href={getUpdatesPageHref(page, mode)} key={page}>
             {label}
           </Link>
         );
@@ -49,11 +60,13 @@ function UpdatesPagination({
 export function UpdatesPageContent({
   currentPage,
   days,
+  mode,
   totalCommitCount,
   totalDayCount,
 }: {
   currentPage: number;
   days: UpdateDay[];
+  mode: UpdatesMode;
   totalCommitCount: number;
   totalDayCount: number;
 }) {
@@ -77,7 +90,11 @@ export function UpdatesPageContent({
         </p>
       </header>
 
-      <UpdatesPagination currentPage={currentPage} placement="top" />
+      <UpdatesPagination
+        currentPage={currentPage}
+        mode={mode}
+        placement="top"
+      />
 
       <section className="updates-history" aria-label="Updates history">
         {days.map((day, dayIndex) => {
@@ -177,7 +194,7 @@ export function UpdatesPageContent({
                               ) : null}
                               {hasPullRequest ? (
                                 <a
-                                  className="updates-commit-reference updates-commit-link"
+                                  className="updates-commit-reference updates-commit-link updates-secondary-reference"
                                   href={entry.commitUrl}
                                   rel="noopener noreferrer"
                                   target="_blank"
@@ -196,6 +213,22 @@ export function UpdatesPageContent({
                                   <code>{entry.shortSha}</code>
                                 </span>
                               )}
+                              {entry.deploymentUrl ? (
+                                <a
+                                  className="updates-deployment-link updates-secondary-reference"
+                                  href={entry.deploymentUrl}
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                  aria-label={
+                                    "View version for " +
+                                    entry.shortSha +
+                                    " in a new tab"
+                                  }
+                                >
+                                  View version
+                                  <ExternalLink aria-hidden="true" size={13} />
+                                </a>
+                              ) : null}
                             </div>
                             <h3>{entry.title}</h3>
                           </div>
@@ -255,7 +288,11 @@ export function UpdatesPageContent({
         })}
       </section>
 
-      <UpdatesPagination currentPage={currentPage} placement="bottom" />
+      <UpdatesPagination
+        currentPage={currentPage}
+        mode={mode}
+        placement="bottom"
+      />
     </div>
   );
 }

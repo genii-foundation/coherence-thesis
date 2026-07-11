@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { repoRoot } from "../manuscripts/shared";
 import {
+  enrichUpdatesSnapshotDeployments,
   generateUpdatesSnapshot,
   getRequiredUpdatesHeadSha,
 } from "./generator";
@@ -29,11 +30,24 @@ function writeSnapshot(value: unknown): void {
 }
 
 async function main(): Promise<void> {
-  const result = await generateUpdatesSnapshot({
-    authToken: process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN,
-    existingSnapshot: readExistingSnapshot(),
+  const authToken = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN;
+  const existingSnapshot = readExistingSnapshot();
+  const generated = await generateUpdatesSnapshot({
+    authToken,
+    existingSnapshot,
     requiredHeadSha: getRequiredUpdatesHeadSha(process.env),
   });
+  const result = {
+    ...generated,
+    snapshot: await enrichUpdatesSnapshotDeployments(generated.snapshot, {
+      authToken,
+      existingSnapshot,
+      environment: process.env,
+      refreshDeployments:
+        process.env.UPDATES_REFRESH_DEPLOYMENTS !== "false" &&
+        process.env.VERCEL_ENV !== "preview",
+    }),
+  };
 
   if (result.source !== "snapshot") {
     writeSnapshot(result.snapshot);

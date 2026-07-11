@@ -1,7 +1,7 @@
 export const updatesRepository = "providence-collective/coherence-thesis";
 export const updatesRepositoryUrl = `https://github.com/${updatesRepository}`;
 export const updatesBranch = "main";
-export const updatesSnapshotSchemaVersion = 2;
+export const updatesSnapshotSchemaVersion = 3;
 
 export type UpdateCommit = {
   sha: string;
@@ -11,6 +11,8 @@ export type UpdateCommit = {
   filesChanged: number;
   additions: number;
   deletions: number;
+  isLiterary: boolean;
+  deploymentUrl?: string;
 };
 
 export type UpdatesSnapshot = {
@@ -61,7 +63,8 @@ export type UpdateCommitInput = Pick<
   | "filesChanged"
   | "additions"
   | "deletions"
->;
+> &
+  Partial<Pick<UpdateCommit, "isLiterary" | "deploymentUrl">>;
 
 export const updateKindLabels: Record<UpdateKind, string> = {
   feature: "Feature",
@@ -95,6 +98,8 @@ const updateKindByPrefix: Record<string, UpdateKind> = {
 };
 
 const shaPattern = /^[a-f0-9]{40}$/;
+const deploymentHostnamePattern =
+  /^coherence-thesis-[a-z0-9]+-aubreyfs-projects\.vercel\.app$/;
 const updateDateFormatter = new Intl.DateTimeFormat("en-US", {
   day: "numeric",
   month: "long",
@@ -129,6 +134,28 @@ function normalizeChangeCount(value: number, label: string): number {
     throw new Error(`Invalid update ${label}: ${value}`);
   }
   return value;
+}
+
+export function normalizeUpdateDeploymentUrl(value: string): string {
+  let url: URL;
+  try {
+    url = new URL(value);
+  } catch {
+    throw new Error(`Invalid update deployment URL: ${value}`);
+  }
+  if (
+    url.protocol !== "https:" ||
+    !deploymentHostnamePattern.test(url.hostname) ||
+    url.port ||
+    url.username ||
+    url.password ||
+    (url.pathname !== "/" && url.pathname !== "") ||
+    url.search ||
+    url.hash
+  ) {
+    throw new Error(`Invalid update deployment URL: ${value}`);
+  }
+  return url.origin;
 }
 
 function normalizeDisplayText(value: string): string {
@@ -187,6 +214,10 @@ export function createUpdatesSnapshot(
       ),
       additions: normalizeChangeCount(commit.additions, "addition count"),
       deletions: normalizeChangeCount(commit.deletions, "deletion count"),
+      isLiterary: commit.isLiterary ?? false,
+      ...(commit.deploymentUrl
+        ? { deploymentUrl: normalizeUpdateDeploymentUrl(commit.deploymentUrl) }
+        : {}),
     };
     const existing = commitsBySha.get(commit.sha);
     if (!existing || JSON.stringify(normalized) < JSON.stringify(existing)) {
@@ -240,7 +271,10 @@ export function parseUpdatesSnapshot(value: unknown): UpdatesSnapshot {
       typeof candidate.commitUrl !== "string" ||
       typeof candidate.filesChanged !== "number" ||
       typeof candidate.additions !== "number" ||
-      typeof candidate.deletions !== "number"
+      typeof candidate.deletions !== "number" ||
+      typeof candidate.isLiterary !== "boolean" ||
+      (candidate.deploymentUrl !== undefined &&
+        typeof candidate.deploymentUrl !== "string")
     ) {
       throw new Error("The updates snapshot contains an invalid commit.");
     }
@@ -255,6 +289,10 @@ export function parseUpdatesSnapshot(value: unknown): UpdatesSnapshot {
       filesChanged: candidate.filesChanged,
       additions: candidate.additions,
       deletions: candidate.deletions,
+      isLiterary: candidate.isLiterary,
+      ...(candidate.deploymentUrl
+        ? { deploymentUrl: candidate.deploymentUrl }
+        : {}),
     };
   });
   const normalized = createUpdatesSnapshot(value.headSha, inputs);
@@ -272,7 +310,9 @@ export function parseUpdatesSnapshot(value: unknown): UpdatesSnapshot {
       candidate.commitUrl !== commit.commitUrl ||
       candidate.filesChanged !== commit.filesChanged ||
       candidate.additions !== commit.additions ||
-      candidate.deletions !== commit.deletions
+      candidate.deletions !== commit.deletions ||
+      candidate.isLiterary !== commit.isLiterary ||
+      candidate.deploymentUrl !== commit.deploymentUrl
     ) {
       throw new Error("The updates snapshot is not normalized and sorted.");
     }

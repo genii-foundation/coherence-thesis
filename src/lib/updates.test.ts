@@ -117,6 +117,41 @@ describe("updates data", () => {
     ).toThrow("Invalid update addition count");
   });
 
+  it("preserves literary and reachable deployment metadata", () => {
+    const deploymentUrl =
+      "https://coherence-thesis-example-aubreyfs-projects.vercel.app";
+    const snapshot = createUpdatesSnapshot(headSha, [
+      {
+        sha: headSha,
+        committedAt: "2026-07-10T17:00:00.000Z",
+        subject: "edit: refine the opening",
+        ...stats(2, 12, 4),
+        isLiterary: true,
+        deploymentUrl: `${deploymentUrl}/`,
+      },
+    ]);
+
+    expect(snapshot.commits[0]).toMatchObject({
+      isLiterary: true,
+      deploymentUrl,
+      filesChanged: 2,
+      additions: 12,
+      deletions: 4,
+    });
+    expect(parseUpdatesSnapshot(snapshot)).toEqual(snapshot);
+    expect(() =>
+      createUpdatesSnapshot(headSha, [
+        {
+          sha: headSha,
+          committedAt: "2026-07-10T17:00:00.000Z",
+          subject: "edit: refine the opening",
+          ...stats(2, 12, 4),
+          deploymentUrl: "https://unrelated.vercel.app",
+        },
+      ]),
+    ).toThrow("Invalid update deployment URL");
+  });
+
   it("uses logarithmic change levels with a binary-file fallback", () => {
     const level = (lines: number, filesChanged = 1) =>
       getUpdateChangeLevel({

@@ -99,6 +99,10 @@ npm run updates:generate
 
 Do not edit `src/generated/updates.json` manually. It caches immutable file and line statistics by commit SHA so production only needs to fetch the newest merge. Pull request CI checks that this cache matches the current base. A shallow production checkout first expands `main` from the canonical public Git repository, then falls back to the GitHub API. The deployment fails instead of publishing stale history when neither source can generate through the deployed main SHA.
 
+The default Updates view includes every commit. The Literary view includes commits whose changed or renamed paths touch `sources/manuscripts/` or `content/manuscripts/`. This path rule preserves manuscript history across the source publishing transition and does not rely on commit message conventions.
+
+Cards may include a best effort `View version` link to the successful public Vercel production deployment for the exact full commit SHA. Generation validates cached and discovered links and omits unavailable deployments. Remote checks use a fixed budget. CI preserves the checked deployment mappings so optional network changes cannot fail required gates. Version link lookup must not relax the requirement for complete, current commit history.
+
 ## Validation
 
 Run focused checks while developing, then run the full gate before requesting review:

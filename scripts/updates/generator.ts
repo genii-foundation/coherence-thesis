@@ -1,5 +1,6 @@
 import {
   createUpdatesSnapshot,
+  normalizeUpdateDeploymentUrl,
   parseUpdatesSnapshot,
   updatesBranch,
   updatesRepository,
@@ -24,6 +25,11 @@ const githubPageSize = 100;
 const githubRequestTimeoutMs = 15_000;
 const maxGithubPages = 1_000;
 const maxGithubCommitFiles = 3_000;
+const deploymentLookupConcurrency = 8;
+const deploymentEnrichmentBudgetMs = 20_000;
+const deploymentRequestTimeoutMs = 5_000;
+const deploymentReachabilityTimeoutMs = 5_000;
+const maxAnonymousDeploymentLookups = 8;
 
 export function getRequiredUpdatesHeadSha(
   environment: Readonly<Record<string, string | undefined>>,
@@ -93,11 +99,15 @@ export function parseLocalGitLog(value: string): LocalGitCommitMetadata[] {
 
 export function parseLocalNumstat(
   value: string,
-): Pick<UpdateCommitInput, "filesChanged" | "additions" | "deletions"> {
+): Pick<
+  UpdateCommitInput,
+  "filesChanged" | "additions" | "deletions" | "isLiterary"
+> {
   const rows = value.split("\0");
   let filesChanged = 0;
   let additions = 0;
   let deletions = 0;
+  let isLiterary = false;
 
   for (let index = 0; index < rows.length; index += 1) {
     const row = rows[index] ?? "";
@@ -110,15 +120,25 @@ export function parseLocalNumstat(
     filesChanged += 1;
     additions += parseNumstatCount(added, "addition count");
     deletions += parseNumstatCount(deleted, "deletion count");
+    const paths = [pathValue];
     if (!pathValue) {
       if (!rows[index + 1] || !rows[index + 2]) {
         throw new Error("Local Git returned an incomplete rename row.");
       }
+      paths.push(rows[index + 1] ?? "", rows[index + 2] ?? "");
       index += 2;
     }
+    isLiterary ||= paths.some(isLiteraryUpdatePath);
   }
 
-  return { filesChanged, additions, deletions };
+  return { filesChanged, additions, deletions, isLiterary };
+}
+
+function isLiteraryUpdatePath(value: string): boolean {
+  return (
+    value.startsWith("sources/manuscripts/") ||
+    value.startsWith("content/manuscripts/")
+  );
 }
 
 export function readCompleteLocalSnapshot(
@@ -211,6 +231,7 @@ type GitHubCommitDetailResponse = {
   } | null;
   files?: Array<{
     filename?: string;
+    previous_filename?: string;
   }>;
 };
 
@@ -232,10 +253,11 @@ async function fetchGitHubJson(
   url: string,
   fetcher: FetchCommand,
   authToken?: string,
+  timeoutMs = githubRequestTimeoutMs,
 ): Promise<{ value: unknown; link: string | null }> {
   const response = await fetcher(url, {
     headers: githubHeaders(authToken),
-    signal: AbortSignal.timeout(githubRequestTimeoutMs),
+    signal: AbortSignal.timeout(timeoutMs),
   });
   if (!response.ok) {
     throw new Error(`GitHub updates request failed with ${response.status}: ${url}`);
@@ -279,12 +301,18 @@ async function fetchGitHubCommitStats(
   sha: string,
   fetcher: FetchCommand,
   authToken?: string,
-): Promise<Pick<UpdateCommitInput, "filesChanged" | "additions" | "deletions">> {
+): Promise<
+  Pick<
+    UpdateCommitInput,
+    "filesChanged" | "additions" | "deletions" | "isLiterary"
+  >
+> {
   let pageUrl: string | null = `${githubApiRoot}/commits/${sha}`;
   const visitedUrls = new Set<string>();
   const filenames = new Set<string>();
   let additions: number | undefined;
   let deletions: number | undefined;
+  let isLiterary = false;
 
   while (pageUrl) {
     if (visitedUrls.has(pageUrl) || visitedUrls.size >= maxGithubPages) {
@@ -320,6 +348,10 @@ async function fetchGitHubCommitStats(
         throw new Error(`GitHub returned an invalid changed file for ${sha}.`);
       }
       filenames.add(file.filename);
+      isLiterary ||= isLiteraryUpdatePath(file.filename);
+      if (file.previous_filename) {
+        isLiterary ||= isLiteraryUpdatePath(file.previous_filename);
+      }
     }
     pageUrl = nextGithubPage(page.link);
   }
@@ -335,6 +367,7 @@ async function fetchGitHubCommitStats(
     filesChanged: filenames.size,
     additions,
     deletions,
+    isLiterary,
   };
 }
 
@@ -389,12 +422,242 @@ export async function fetchGitHubSnapshot(
           filesChanged: reusable.filesChanged,
           additions: reusable.additions,
           deletions: reusable.deletions,
+          isLiterary: reusable.isLiterary,
         }
       : await fetchGitHubCommitStats(commit.sha, fetcher, authToken);
     commits.push({ ...commit, ...stats });
   }
 
   return createUpdatesSnapshot(headSha, commits);
+}
+
+type GitHubDeploymentResponse = {
+  id?: number;
+  sha?: string;
+  environment?: string;
+};
+
+type GitHubDeploymentStatusResponse = {
+  state?: string;
+  environment_url?: string | null;
+};
+
+type DeploymentReachability = "reachable" | "transient" | "unavailable";
+
+function normalizeVercelDeploymentUrl(value: string): string | undefined {
+  try {
+    return normalizeUpdateDeploymentUrl(
+      value.includes("://") ? value : `https://${value}`,
+    );
+  } catch {
+    return undefined;
+  }
+}
+
+async function checkDeploymentReachability(
+  deploymentUrl: string,
+  fetcher: FetchCommand,
+): Promise<DeploymentReachability> {
+  try {
+    const response = await fetcher(`${deploymentUrl}/`, {
+      method: "HEAD",
+      redirect: "manual",
+      signal: AbortSignal.timeout(deploymentReachabilityTimeoutMs),
+    });
+    if (response.ok) return "reachable";
+    if (
+      response.status >= 500 ||
+      response.status === 408 ||
+      response.status === 425 ||
+      response.status === 429
+    ) {
+      return "transient";
+    }
+    return "unavailable";
+  } catch {
+    return "transient";
+  }
+}
+
+async function findReachableGitHubDeployment(
+  sha: string,
+  fetcher: FetchCommand,
+  authToken?: string,
+): Promise<string | undefined> {
+  const deploymentsUrl =
+    `${githubApiRoot}/deployments?sha=${encodeURIComponent(sha)}` +
+    `&environment=Production&per_page=${githubPageSize}`;
+  const response = await fetchGitHubJson(
+    deploymentsUrl,
+    fetcher,
+    authToken,
+    deploymentRequestTimeoutMs,
+  );
+  if (!Array.isArray(response.value)) return undefined;
+
+  for (const candidate of response.value as GitHubDeploymentResponse[]) {
+    if (
+      !Number.isSafeInteger(candidate?.id) ||
+      candidate.sha !== sha ||
+      candidate.environment !== "Production"
+    ) {
+      continue;
+    }
+    const statusesUrl = `${githubApiRoot}/deployments/${candidate.id}/statuses?per_page=${githubPageSize}`;
+    const statusesResponse = await fetchGitHubJson(
+      statusesUrl,
+      fetcher,
+      authToken,
+      deploymentRequestTimeoutMs,
+    );
+    if (!Array.isArray(statusesResponse.value)) continue;
+
+    for (const status of statusesResponse.value as GitHubDeploymentStatusResponse[]) {
+      if (status?.state !== "success" || !status.environment_url) continue;
+      const deploymentUrl = normalizeVercelDeploymentUrl(
+        status.environment_url,
+      );
+      if (
+        deploymentUrl &&
+        (await checkDeploymentReachability(deploymentUrl, fetcher)) ===
+          "reachable"
+      ) {
+        return deploymentUrl;
+      }
+    }
+  }
+  return undefined;
+}
+
+async function inDeploymentBatches<T>(
+  values: readonly T[],
+  operation: (value: T) => Promise<void>,
+  deadline: number,
+): Promise<void> {
+  for (
+    let index = 0;
+    index < values.length;
+    index += deploymentLookupConcurrency
+  ) {
+    if (Date.now() >= deadline) return;
+    await Promise.all(
+      values
+        .slice(index, index + deploymentLookupConcurrency)
+        .map(operation),
+    );
+  }
+}
+
+export async function enrichUpdatesSnapshotDeployments(
+  snapshot: UpdatesSnapshot,
+  {
+    fetcher = fetch,
+    authToken,
+    existingSnapshot,
+    environment = process.env,
+    refreshDeployments = true,
+  }: {
+    fetcher?: FetchCommand;
+    authToken?: string;
+    existingSnapshot?: unknown;
+    environment?: Readonly<Record<string, string | undefined>>;
+    refreshDeployments?: boolean;
+  } = {},
+): Promise<UpdatesSnapshot> {
+  try {
+    const snapshotShas = new Set(snapshot.commits.map((commit) => commit.sha));
+    const cachedUrls = new Map<string, string>();
+    for (const commit of snapshot.commits) {
+      if (commit.deploymentUrl) {
+        cachedUrls.set(commit.sha, commit.deploymentUrl);
+      }
+    }
+    try {
+      const existing = parseUpdatesSnapshot(existingSnapshot);
+      for (const commit of existing.commits) {
+        if (snapshotShas.has(commit.sha) && commit.deploymentUrl) {
+          cachedUrls.set(commit.sha, commit.deploymentUrl);
+        }
+      }
+    } catch {
+      // An older or malformed cache cannot affect complete history generation.
+    }
+
+    const resolvedUrls = new Map(cachedUrls);
+    let trustedCurrentSha: string | undefined;
+    if (
+      environment.VERCEL_ENV === "production" &&
+      environment.VERCEL_GIT_COMMIT_REF === updatesBranch &&
+      environment.VERCEL_GIT_COMMIT_SHA === snapshot.headSha &&
+      environment.VERCEL_URL
+    ) {
+      const currentUrl = normalizeVercelDeploymentUrl(environment.VERCEL_URL);
+      if (currentUrl) {
+        trustedCurrentSha = snapshot.headSha;
+        resolvedUrls.set(snapshot.headSha, currentUrl);
+      }
+    }
+
+    if (!refreshDeployments) {
+      return applyDeploymentUrls(snapshot, resolvedUrls);
+    }
+
+    const deadline = Date.now() + deploymentEnrichmentBudgetMs;
+    const cachedEntries = [...cachedUrls.entries()].filter(
+      ([sha]) => sha !== trustedCurrentSha,
+    );
+    await inDeploymentBatches(cachedEntries, async ([sha, deploymentUrl]) => {
+      const reachability = await checkDeploymentReachability(
+        deploymentUrl,
+        fetcher,
+      );
+      if (reachability === "unavailable") resolvedUrls.delete(sha);
+    }, deadline);
+
+    const unresolvedShas = snapshot.commits
+      .map((commit) => commit.sha)
+      .filter((sha) => !resolvedUrls.has(sha));
+    const lookupShas = authToken
+      ? unresolvedShas
+      : unresolvedShas.slice(0, maxAnonymousDeploymentLookups);
+    await inDeploymentBatches(lookupShas, async (sha) => {
+      try {
+        const deploymentUrl = await findReachableGitHubDeployment(
+          sha,
+          fetcher,
+          authToken,
+        );
+        if (deploymentUrl) resolvedUrls.set(sha, deploymentUrl);
+      } catch {
+        // Deployment links are optional and cannot weaken history generation.
+      }
+    }, deadline);
+
+    return applyDeploymentUrls(snapshot, resolvedUrls);
+  } catch {
+    return snapshot;
+  }
+}
+
+function applyDeploymentUrls(
+  snapshot: UpdatesSnapshot,
+  resolvedUrls: ReadonlyMap<string, string>,
+): UpdatesSnapshot {
+  return createUpdatesSnapshot(
+    snapshot.headSha,
+    snapshot.commits.map((commit) => ({
+      sha: commit.sha,
+      committedAt: commit.committedAt,
+      subject: commit.subject,
+      filesChanged: commit.filesChanged,
+      additions: commit.additions,
+      deletions: commit.deletions,
+      isLiterary: commit.isLiterary,
+      ...(resolvedUrls.has(commit.sha)
+        ? { deploymentUrl: resolvedUrls.get(commit.sha) }
+        : {}),
+    })),
+  );
 }
 
 export async function generateUpdatesSnapshot({
