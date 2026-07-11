@@ -44,6 +44,10 @@
     "manuscripts:versions": "tsx scripts/manuscripts/versions.ts",
     "premanuscripts:validate": "npm run manuscripts:prepare",
     "manuscripts:validate": "tsx scripts/manuscripts/validate.ts",
+    "premanuscripts:debt": "node scripts/ensure-node-modules.mjs",
+    "manuscripts:debt": "tsx scripts/manuscripts/editorial-debt.ts",
+    "premanuscripts:debt:update": "node scripts/ensure-node-modules.mjs",
+    "manuscripts:debt:update": "tsx scripts/manuscripts/editorial-debt.ts --write",
     "preupdates:generate": "node scripts/ensure-node-modules.mjs",
     "updates:generate": "tsx scripts/updates/generate.ts",
     "updates:verify": "tsx scripts/updates/verify.ts",
@@ -56,7 +60,7 @@
     "prereadme:update": "npm run manuscripts:prepare",
     "readme:update": "tsx scripts/update-readme-status.ts",
     "prevalidate": "npm run manuscripts:prepare",
-    "validate": "npm run manuscripts:validate && npm run manuscripts:source-boundary && npm run typecheck && npm run lint && npm run test && npm run build"
+    "validate": "npm run manuscripts:debt && npm run manuscripts:validate && npm run manuscripts:source-boundary && npm run typecheck && npm run lint && npm run test && npm run build"
   },
   "engines": {
     "node": ">=20.9"

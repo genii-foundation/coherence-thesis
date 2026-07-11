@@ -125,6 +125,19 @@ Do not accept an import that collapses, fragments, reorders, or incorrectly rena
 
 Published routes are durable. When a heading or structure change removes a historical route, add a deliberate alias to `content/series/aliases.json`. The section ledger records every published route, and validation fails when one disappears without a replacement. Ordinary development, testing, building, and deployment cannot modify that ledger.
 
+## Editorial Debt
+
+Durable inconsistencies, unfulfilled promises, unresolved claims, citation gaps, literary weaknesses, and publishing obligations live in `editorial/debt/`. Add or reopen an item instead of hiding unfinished work in a review summary. Keep resolved items as evidence of paydown.
+
+The index is generated from the item files:
+
+```bash
+npm run manuscripts:debt:update
+npm run manuscripts:debt
+```
+
+The first command rebuilds `editorial/debt/index.md`. The second validates item structure, append-only identifiers, evidence paths, lifecycle dates, and index freshness. The full `npm run validate` gate includes the debt check.
+
 ## Updates Publishing
 
 The public [Updates page](https://www.coherence-thesis.com/updates/) is compiled from every commit on the main branch. Refresh its checked in fallback with:

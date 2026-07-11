@@ -6,6 +6,8 @@ Use this layout:
 
 ```text
 editorial/
+  debt/index.md
+  debt/items/<ctd-id>-<slug>.md
   voice-cards/<volume-id>.md
   reviews/<volume-id>/<batch-id>/review.md
   reviews/<volume-id>/<batch-id>/sentence-ledger.jsonl
@@ -13,6 +15,12 @@ editorial/
 ```
 
 Keep temporary detector output, scratch comparisons, rendered previews, and generated reader fragments outside this directory. They are working material, not literary history.
+
+## Editorial debt
+
+The debt register preserves obligations that outlive one review batch. Add a stable item as soon as an inconsistency, unfulfilled promise, unresolved claim, citation gap, literary weakness, link obligation, audio obligation, or technical limitation is discovered. Resolve an item with evidence instead of deleting it. If the problem returns, reopen the same item and preserve the prior paydown.
+
+Edit item files in `editorial/debt/items/`, then run `npm run manuscripts:debt:update`. The generated index is never the source of truth. Run `npm run manuscripts:debt` to validate the complete register.
 
 ## Voice cards
 
