@@ -5,6 +5,7 @@ import { MarkdownBody } from "@/components/MarkdownBody";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReaderAudioWordInteractionIsland } from "@/components/ReaderAudioWordInteractionIsland";
 import { ReaderEngagementIsland } from "@/components/ReaderEngagementIsland";
+import { ReaderLinkableHeading } from "@/components/ReaderLinkableHeading";
 import { SectionRevisionNotice } from "@/components/SectionRevisionNotice";
 import {
   sectionNavigation,
@@ -14,6 +15,7 @@ import {
   type SectionAlias,
 } from "@/lib/manuscript-data";
 import { formatReadingDuration } from "@/lib/reading-time";
+import { sectionHeadingHref } from "@/lib/reader-heading-links";
 
 function formatVersionDate(value: string): string {
   const date = new Date(value);
@@ -40,9 +42,17 @@ export function SectionReader({
   if (!resolvedNavigation) notFound();
 
   return (
-    <article className="reader-main" data-reader-section-id={section.sectionId}>
+    <article
+      id={section.sectionId}
+      className="reader-main"
+      data-reader-section-id={section.sectionId}
+    >
       <header className="manuscript-heading">
-        <h1>{section.title}</h1>
+        <ReaderLinkableHeading
+          href={sectionHeadingHref(section.readerHref, section.sectionId)}
+          level={1}
+          title={section.title}
+        />
         <p>{formatReadingDuration(section.readingMinutes)} read.</p>
         <p className="section-version-meta">
           <span>Last Updated:</span>

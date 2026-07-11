@@ -1,6 +1,7 @@
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReaderEngagementIsland } from "@/components/ReaderEngagementIsland";
+import { ReaderLinkableHeading } from "@/components/ReaderLinkableHeading";
 import { SectionRevisionNotice } from "@/components/SectionRevisionNotice";
 import {
   toProgressSection,
@@ -9,6 +10,10 @@ import {
   type Section,
 } from "@/lib/manuscript-data";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
+import {
+  chapterHeadingHref,
+  sectionHeadingHref,
+} from "@/lib/reader-heading-links";
 
 function showSectionHeading(section: Section, chapter: Chapter, index: number): boolean {
   return index > 0 || section.title !== chapter.title;
@@ -24,12 +29,25 @@ export function ChapterReader({
   navigation: PageNavigation;
 }) {
   const progressSections = sections.map(toProgressSection);
+  const firstSection = sections[0];
+  const chapterRepresentsFirstSection = Boolean(
+    firstSection && !showSectionHeading(firstSection, chapter, 0),
+  );
+  const chapterPermalink =
+    firstSection && chapterRepresentsFirstSection
+      ? sectionHeadingHref(firstSection.readerHref, firstSection.sectionId)
+      : chapterHeadingHref(chapter.href, chapter.chapterId);
 
   return (
     <article className="reader-main">
       <header className="manuscript-heading">
         <p className="eyebrow">Chapter {chapter.order || "0"}</p>
-        <h1>{chapter.title}</h1>
+        <ReaderLinkableHeading
+          anchorId={chapterRepresentsFirstSection ? undefined : chapter.chapterId}
+          href={chapterPermalink}
+          level={1}
+          title={chapter.title}
+        />
         <p>{formatReadingDurationForWords(chapter.wordCount)} read.</p>
       </header>
       {sections.map((section, index) => (
@@ -39,7 +57,16 @@ export function ChapterReader({
           className="chapter-reader-section"
           data-reader-section-id={section.sectionId}
         >
-          {showSectionHeading(section, chapter, index) && <h2>{section.title}</h2>}
+          {showSectionHeading(section, chapter, index) && (
+            <ReaderLinkableHeading
+              href={sectionHeadingHref(
+                section.readerHref,
+                section.sectionId,
+              )}
+              level={2}
+              title={section.title}
+            />
+          )}
           <SectionRevisionNotice section={toProgressSection(section)} />
           <MarkdownBody
             markdown={section.body}

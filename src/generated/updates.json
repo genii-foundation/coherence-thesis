@@ -2,8 +2,19 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "328028c2ed8f854f333e0184ca6ac89ec3db5ea5",
+  "headSha": "7cb9619c3186246e5083388c15c4163c2c052a4e",
   "commits": [
+    {
+      "sha": "7cb9619c3186246e5083388c15c4163c2c052a4e",
+      "committedAt": "2026-07-11T21:27:33.000Z",
+      "subject": "fix: preserve space beneath short drop caps (#108)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/7cb9619c3186246e5083388c15c4163c2c052a4e",
+      "filesChanged": 3,
+      "additions": 136,
+      "deletions": 4,
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-52k5mv5u1-aubreyfs-projects.vercel.app"
+    },
     {
       "sha": "328028c2ed8f854f333e0184ca6ac89ec3db5ea5",
       "committedAt": "2026-07-11T21:15:59.000Z",
@@ -12,7 +23,8 @@
       "filesChanged": 4,
       "additions": 124,
       "deletions": 3,
-      "isLiterary": false
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-lh3j4xpak-aubreyfs-projects.vercel.app"
     },
     {
       "sha": "348605f93af38d61343e6d73eaef2b3f9c06a835",
