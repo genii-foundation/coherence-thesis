@@ -159,6 +159,22 @@ export function UpdatesPageContent({
                               >
                                 {updateKindLabels[entry.kind]}
                               </span>
+                              {entry.pullRequestUrl &&
+                              entry.pullRequestNumber ? (
+                                <a
+                                  className="updates-pull-link updates-primary-reference"
+                                  href={entry.pullRequestUrl}
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                  aria-label={
+                                    "Open PR #" +
+                                    entry.pullRequestNumber.toLocaleString() +
+                                    " on GitHub"
+                                  }
+                                >
+                                  PR #{entry.pullRequestNumber.toLocaleString()}
+                                </a>
+                              ) : null}
                               {hasPullRequest ? (
                                 <a
                                   className="updates-commit-reference updates-commit-link"
@@ -180,22 +196,6 @@ export function UpdatesPageContent({
                                   <code>{entry.shortSha}</code>
                                 </span>
                               )}
-                              {entry.pullRequestUrl &&
-                              entry.pullRequestNumber ? (
-                                <a
-                                  className="updates-pull-link updates-primary-reference"
-                                  href={entry.pullRequestUrl}
-                                  rel="noopener noreferrer"
-                                  target="_blank"
-                                  aria-label={
-                                    "Open PR #" +
-                                    entry.pullRequestNumber.toLocaleString() +
-                                    " on GitHub"
-                                  }
-                                >
-                                  PR #{entry.pullRequestNumber.toLocaleString()}
-                                </a>
-                              ) : null}
                             </div>
                             <h3>{entry.title}</h3>
                           </div>

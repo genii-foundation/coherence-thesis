@@ -494,19 +494,30 @@ test("pull request links keep their visible label and a distinct target", async 
     pullRequestEntry!.pullRequestUrl,
   );
 
+  const entry = page.locator(
+    '[data-update-sha="' + pullRequestEntry!.sha + '"]',
+  );
+  const metadataOrder = await entry.locator(".updates-entry-meta").evaluate(
+    (metadata) =>
+      Array.from(metadata.children).map((child) => ({
+        isCommit: child.classList.contains("updates-commit-reference"),
+        isPullRequest: child.classList.contains("updates-pull-link"),
+      })),
+  );
+  expect(metadataOrder.findIndex((item) => item.isPullRequest)).toBeLessThan(
+    metadataOrder.findIndex((item) => item.isCommit),
+  );
+
   const target = await pullRequestLink.boundingBox();
   expect(target).not.toBeNull();
   const expectedHeight = (page.viewportSize()?.width ?? 0) <= 720 ? 31.5 : 23.5;
   expect(target!.height).toBeGreaterThanOrEqual(expectedHeight);
   expect(target!.width).toBeGreaterThanOrEqual(24);
 
-  const commitLink = page
-    .locator('[data-update-sha="' + pullRequestEntry!.sha + '"]')
-    .getByRole("link", {
-      name:
-        "Open commit " + pullRequestEntry!.shortSha + " on GitHub",
-      exact: true,
-    });
+  const commitLink = entry.getByRole("link", {
+    name: "Open commit " + pullRequestEntry!.shortSha + " on GitHub",
+    exact: true,
+  });
   const commitTarget = await commitLink.boundingBox();
   expect(commitTarget).not.toBeNull();
   expect(commitTarget!.height).toBeGreaterThanOrEqual(expectedHeight);
