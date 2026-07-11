@@ -10,6 +10,7 @@ import {
   allUpdateDays,
   getUpdatesPageHref,
   getUpdatesPageSlice,
+  getUpdatesSummary,
   getUpdatesTotalPages,
   updatesPageSize,
   updatesSnapshot,
@@ -67,6 +68,22 @@ const changeLevelTargets = ([1, 5] as const).map((changeLevel) => {
     page: Math.floor(dayIndex / updatesPageSize) + 1,
   };
 });
+const deploymentDayIndex = allUpdateDays.findIndex((day) =>
+  day.entries.some((entry) => Boolean(entry.deploymentUrl)),
+);
+const deploymentEntry =
+  allUpdateDays[deploymentDayIndex]?.entries.find((entry) =>
+    Boolean(entry.deploymentUrl),
+  ) ?? null;
+const deploymentPage = Math.floor(deploymentDayIndex / updatesPageSize) + 1;
+const noDeploymentDayIndex = allUpdateDays.findIndex((day) =>
+  day.entries.some((entry) => !entry.deploymentUrl),
+);
+const noDeploymentEntry =
+  allUpdateDays[noDeploymentDayIndex]?.entries.find(
+    (entry) => !entry.deploymentUrl,
+  ) ?? null;
+const noDeploymentPage = Math.floor(noDeploymentDayIndex / updatesPageSize) + 1;
 
 test("footer links to Updates immediately before GitHub", async ({ page }) => {
   await page.goto("/");
@@ -98,12 +115,12 @@ test("updates page renders the latest history with timeline pagination", async (
   await expect(updatesHeading.locator(".eyebrow")).toHaveCount(0);
   await expect(
     updatesHeading.getByText(
-      "Every change to the thesis and its reader interface.",
+      "Every change to the thesis, and its reader interface.",
       { exact: true },
     ),
   ).toBeVisible();
   const historyLink = updatesHeading.getByRole("link", {
-    name: "Browse history",
+    name: "Full history",
     exact: true,
   });
   await expect(historyLink).toHaveAttribute(
@@ -111,6 +128,9 @@ test("updates page renders the latest history with timeline pagination", async (
     updatesRepositoryUrl + "/commits/" + updatesBranch,
   );
   await expect(historyLink.locator("svg")).toHaveCount(1);
+  await expect(updatesHeading.locator(".updates-summary")).not.toContainText(
+    "Full history.",
+  );
   const newestFirstMentions = await updatesHeading.evaluate(
     (heading) => (heading.textContent?.match(/newest first/g) ?? []).length,
   );
@@ -645,4 +665,128 @@ test("numbered updates pages preserve the oldest commit", async ({ page }) => {
   expect(horizontalLayout.documentWidth).toBeLessThanOrEqual(
     horizontalLayout.viewportWidth + 1,
   );
+});
+
+test("literary mode filters commits and resets pagination when switching views", async ({
+  page,
+}) => {
+  const literarySummary = getUpdatesSummary("literary");
+  const literaryLatestDays = getUpdatesPageSlice(1, "literary");
+  const literaryLatestEntries = literaryLatestDays.flatMap(
+    (day) => day.entries,
+  );
+
+  await page.goto("/updates/");
+
+  for (const paginationName of [
+    "Updates pagination",
+    "Updates pagination, end",
+  ]) {
+    const pagination = page.getByRole("navigation", {
+      name: paginationName,
+      exact: true,
+    });
+    const modeLink = pagination.getByRole("link", {
+      name: "Show Only Literary Updates",
+      exact: true,
+    });
+    await expect(modeLink).toHaveAttribute("href", "/updates/literary/");
+    await expect(pagination.locator(":scope > *").first()).toHaveClass(
+      /updates-mode-link/,
+    );
+  }
+
+  await page.goto("/updates/literary/");
+
+  await expect(page.locator("[data-update-sha]")).toHaveCount(
+    literaryLatestEntries.length,
+  );
+  expect(
+    await page.locator("[data-update-sha]").evaluateAll((entries) =>
+      entries.map((entry) => entry.getAttribute("data-update-sha")),
+    ),
+  ).toEqual(literaryLatestEntries.map((entry) => entry.sha));
+  expect(literaryLatestEntries.every((entry) => entry.isLiterary)).toBe(true);
+  await expect(page.locator(".updates-summary")).toContainText(
+    literarySummary.totalCommitCount.toLocaleString() +
+      " commits across " +
+      literarySummary.totalDayCount.toLocaleString() +
+      " days, newest first.",
+  );
+
+  for (const paginationName of [
+    "Updates pagination",
+    "Updates pagination, end",
+  ]) {
+    const modeLink = page
+      .getByRole("navigation", { name: paginationName, exact: true })
+      .getByRole("link", { name: "Show All Updates", exact: true });
+    await expect(modeLink).toHaveAttribute("href", "/updates/");
+  }
+
+  if (getUpdatesTotalPages("literary") > 1) {
+    await expect(
+      page
+        .getByRole("navigation", {
+          name: "Updates pagination",
+          exact: true,
+        })
+        .getByRole("link", { name: "2", exact: true }),
+    ).toHaveAttribute("href", "/updates/literary/2/");
+  }
+
+  if (getUpdatesTotalPages() > 1) {
+    await page.goto("/updates/2/");
+    await expect(
+      page
+        .getByRole("navigation", {
+          name: "Updates pagination",
+          exact: true,
+        })
+        .getByRole("link", { name: "Show Only Literary Updates", exact: true }),
+    ).toHaveAttribute("href", "/updates/literary/");
+  }
+});
+
+test("available historical versions appear immediately after commit links", async ({
+  page,
+}) => {
+  expect(deploymentEntry).not.toBeNull();
+  expect(noDeploymentEntry).not.toBeNull();
+
+  await page.goto(getUpdatesPageHref(deploymentPage));
+
+  const entry = page.locator(
+    '[data-update-sha="' + deploymentEntry!.sha + '"]',
+  );
+  const versionLink = entry.getByRole("link", {
+    name: "View version for " + deploymentEntry!.shortSha + " in a new tab",
+    exact: true,
+  });
+  await expect(versionLink).toHaveAttribute(
+    "href",
+    deploymentEntry!.deploymentUrl!,
+  );
+  await expect(versionLink).toHaveAttribute("target", "_blank");
+  await expect(versionLink).toHaveAttribute("rel", "noopener noreferrer");
+  await expect(versionLink).toContainText("View version");
+  await expect(versionLink.locator("svg")).toHaveCount(1);
+
+  const metadataOrder = await entry.locator(".updates-entry-meta").evaluate(
+    (metadata) =>
+      Array.from(metadata.children).map((child) => ({
+        isCommit: child.classList.contains("updates-commit-reference"),
+        isVersion: child.classList.contains("updates-deployment-link"),
+      })),
+  );
+  expect(metadataOrder.findIndex((item) => item.isCommit)).toBeLessThan(
+    metadataOrder.findIndex((item) => item.isVersion),
+  );
+
+  await page.goto(getUpdatesPageHref(noDeploymentPage));
+  await expect(
+    page
+      .locator('[data-update-sha="' + noDeploymentEntry!.sha + '"]')
+      .locator(".updates-deployment-link"),
+  ).toHaveCount(0);
 });

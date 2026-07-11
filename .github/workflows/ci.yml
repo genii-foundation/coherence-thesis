@@ -52,6 +52,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           UPDATES_REQUIRED_HEAD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.sha }}
+          UPDATES_REFRESH_DEPLOYMENTS: "false"
 
       - name: Check source and durable publishing state remain clean
         run: |
@@ -106,6 +107,7 @@ jobs:
           CI: "true"
           GITHUB_TOKEN: ${{ github.token }}
           UPDATES_REQUIRED_HEAD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.sha }}
+          UPDATES_REFRESH_DEPLOYMENTS: "false"
 
       - name: Upload Playwright report on failure
         if: failure()

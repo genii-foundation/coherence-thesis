@@ -1,12 +1,14 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { createUpdatesSnapshot } from "../../src/lib/updates";
 import {
+  enrichUpdatesSnapshotDeployments,
   fetchGitHubSnapshot,
   generateUpdatesSnapshot,
   getRequiredUpdatesHeadSha,
   parseLocalGitLog,
   parseLocalNumstat,
   readCompleteLocalSnapshot,
+  shouldRefreshUpdateDeployments,
   type FetchCommand,
   type GitCommand,
 } from "./generator";
@@ -50,12 +52,16 @@ function githubCommitDetail(
   sha: string,
   additions: number,
   deletions: number,
-  filenames: string[],
+  filenames: Array<
+    string | { filename: string; previous_filename?: string }
+  >,
 ) {
   return {
     sha,
     stats: { additions, deletions, total: additions + deletions },
-    files: filenames.map((filename) => ({ filename })),
+    files: filenames.map((filename) =>
+      typeof filename === "string" ? { filename } : filename,
+    ),
   };
 }
 
@@ -84,6 +90,27 @@ function jsonResponse(
 }
 
 describe("updates snapshot generator", () => {
+  it("always refreshes links for production publications", () => {
+    expect(
+      shouldRefreshUpdateDeployments({
+        VERCEL_ENV: "production",
+        UPDATES_REFRESH_DEPLOYMENTS: "false",
+      }),
+    ).toBe(true);
+    expect(
+      shouldRefreshUpdateDeployments({
+        VERCEL_ENV: "preview",
+        UPDATES_REFRESH_DEPLOYMENTS: "true",
+      }),
+    ).toBe(false);
+    expect(
+      shouldRefreshUpdateDeployments({
+        CI: "true",
+        UPDATES_REFRESH_DEPLOYMENTS: "false",
+      }),
+    ).toBe(false);
+  });
+
   it("requires the deployed main head in production environments", () => {
     expect(
       getRequiredUpdatesHeadSha({
@@ -151,6 +178,22 @@ describe("updates snapshot generator", () => {
       filesChanged: 3,
       additions: 5,
       deletions: 2,
+      isLiterary: false,
+    });
+  });
+
+  it("marks mixed and renamed manuscript changes as literary", () => {
+    const numstat = [
+      `7\t2\tsrc/reader.ts\0`,
+      `4\t1\t\0sources/manuscripts/one.md\0archive/one.md\0`,
+      `3\t2\tcontent/manuscripts/two.json\0`,
+    ].join("");
+
+    expect(parseLocalNumstat(numstat)).toEqual({
+      filesChanged: 3,
+      additions: 14,
+      deletions: 5,
+      isLiterary: true,
     });
   });
 
@@ -349,7 +392,12 @@ describe("updates snapshot generator", () => {
       }
       if (url === detailPageTwoUrl) {
         return jsonResponse(
-          githubCommitDetail(headSha, 10, 2, ["public/preview.png"]),
+          githubCommitDetail(headSha, 10, 2, [
+            {
+              filename: "archive/opening.md",
+              previous_filename: "sources/manuscripts/opening.md",
+            },
+          ]),
         );
       }
       return jsonResponse({ message: "unexpected" }, { status: 500 });
@@ -365,6 +413,7 @@ describe("updates snapshot generator", () => {
       filesChanged: 2,
       additions: 10,
       deletions: 2,
+      isLiterary: true,
     });
   });
 
@@ -466,6 +515,215 @@ describe("updates snapshot generator", () => {
     ).rejects.toThrow(
       "Unable to compile complete updates from Git, GitHub, or the snapshot.",
     );
+  });
+
+  it("trusts the current production URL and discovers exact successful deployments", async () => {
+    const currentUrl =
+      "https://coherence-thesis-current-aubreyfs-projects.vercel.app";
+    const historicalUrl =
+      "https://coherence-thesis-historical-aubreyfs-projects.vercel.app";
+    const deploymentsUrl =
+      `https://api.github.com/repos/providence-collective/coherence-thesis/deployments` +
+      `?sha=${olderSha}&environment=Production&per_page=100`;
+    const statusesUrl =
+      "https://api.github.com/repos/providence-collective/coherence-thesis/deployments/17/statuses?per_page=100";
+    const requests: Array<{ url: string; method: string }> = [];
+    const fetcher: FetchCommand = async (input, init) => {
+      const url = String(input);
+      const method = init?.method ?? "GET";
+      requests.push({ url, method });
+      if (url === deploymentsUrl) {
+        return jsonResponse([
+          { id: 17, sha: olderSha, environment: "Production" },
+          { id: 18, sha: headSha, environment: "Production" },
+        ]);
+      }
+      if (url === statusesUrl) {
+        return jsonResponse([
+          { state: "success", environment_url: historicalUrl },
+        ]);
+      }
+      if (url === `${historicalUrl}/` && method === "HEAD") {
+        return new Response(null, { status: 200 });
+      }
+      return jsonResponse({ message: "unexpected" }, { status: 500 });
+    };
+    const snapshot = createUpdatesSnapshot(headSha, [
+      {
+        sha: headSha,
+        committedAt: headDate,
+        subject: "feat: current",
+        filesChanged: 1,
+        additions: 2,
+        deletions: 0,
+      },
+      {
+        sha: olderSha,
+        committedAt: olderDate,
+        subject: "edit: historical",
+        filesChanged: 1,
+        additions: 3,
+        deletions: 1,
+        isLiterary: true,
+      },
+    ]);
+
+    const enriched = await enrichUpdatesSnapshotDeployments(snapshot, {
+      fetcher,
+      environment: {
+        VERCEL_ENV: "production",
+        VERCEL_GIT_COMMIT_REF: "main",
+        VERCEL_GIT_COMMIT_SHA: headSha,
+        VERCEL_URL:
+          "coherence-thesis-current-aubreyfs-projects.vercel.app",
+      },
+    });
+
+    expect(enriched.commits).toEqual([
+      expect.objectContaining({ sha: headSha, deploymentUrl: currentUrl }),
+      expect.objectContaining({
+        sha: olderSha,
+        deploymentUrl: historicalUrl,
+        isLiterary: true,
+      }),
+    ]);
+    expect(requests).toEqual([
+      { url: deploymentsUrl, method: "GET" },
+      { url: statusesUrl, method: "GET" },
+      { url: `${historicalUrl}/`, method: "HEAD" },
+    ]);
+  });
+
+  it("removes definitively unavailable cached links but preserves transient ones", async () => {
+    const unavailableUrl =
+      "https://coherence-thesis-missing-aubreyfs-projects.vercel.app";
+    const transientUrl =
+      "https://coherence-thesis-transient-aubreyfs-projects.vercel.app";
+    const deploymentsUrl =
+      `https://api.github.com/repos/providence-collective/coherence-thesis/deployments` +
+      `?sha=${headSha}&environment=Production&per_page=100`;
+    const snapshot = createUpdatesSnapshot(headSha, [
+      {
+        sha: headSha,
+        committedAt: headDate,
+        subject: "feat: current",
+        filesChanged: 1,
+        additions: 2,
+        deletions: 0,
+      },
+      {
+        sha: olderSha,
+        committedAt: olderDate,
+        subject: "fix: historical",
+        filesChanged: 1,
+        additions: 3,
+        deletions: 1,
+      },
+    ]);
+    const cached = createUpdatesSnapshot(headSha, [
+      {
+        ...snapshot.commits[0]!,
+        deploymentUrl: unavailableUrl,
+      },
+      {
+        ...snapshot.commits[1]!,
+        deploymentUrl: transientUrl,
+      },
+    ]);
+    const fetcher: FetchCommand = async (input, init) => {
+      const url = String(input);
+      if (init?.method === "HEAD" && url === `${unavailableUrl}/`) {
+        return new Response(null, { status: 404 });
+      }
+      if (init?.method === "HEAD" && url === `${transientUrl}/`) {
+        return new Response(null, { status: 503 });
+      }
+      if (url === deploymentsUrl) return jsonResponse([]);
+      return jsonResponse({ message: "unexpected" }, { status: 500 });
+    };
+
+    const enriched = await enrichUpdatesSnapshotDeployments(snapshot, {
+      fetcher,
+      existingSnapshot: cached,
+      environment: {},
+    });
+
+    expect(enriched.commits[0]?.deploymentUrl).toBeUndefined();
+    expect(enriched.commits[1]?.deploymentUrl).toBe(transientUrl);
+  });
+
+  it("revalidates every cached link before applying the discovery budget", async () => {
+    const commits = Array.from({ length: 9 }, (_, index) => ({
+      sha: index.toString(16).padStart(40, "0"),
+      committedAt: `2026-07-${String(10 - index).padStart(2, "0")}T17:33:35.000Z`,
+      subject: `fix: cached deployment ${index}`,
+      filesChanged: 1,
+      additions: 1,
+      deletions: 0,
+    }));
+    const snapshot = createUpdatesSnapshot(commits[0]!.sha, commits);
+    const cached = createUpdatesSnapshot(
+      snapshot.headSha,
+      snapshot.commits.map((commit, index) => ({
+        ...commit,
+        deploymentUrl: `https://coherence-thesis-cache${index}-aubreyfs-projects.vercel.app`,
+      })),
+    );
+    const requestedUrls: string[] = [];
+    const dateNow = vi.spyOn(Date, "now").mockReturnValueOnce(0);
+
+    try {
+      const enriched = await enrichUpdatesSnapshotDeployments(snapshot, {
+        existingSnapshot: cached,
+        fetcher: async (input, init) => {
+          if (init?.method !== "HEAD") {
+            return jsonResponse({ message: "unexpected" }, { status: 500 });
+          }
+          requestedUrls.push(String(input));
+          return new Response(null, { status: 200 });
+        },
+      });
+
+      expect(requestedUrls).toEqual(
+        cached.commits.map((commit) => `${commit.deploymentUrl}/`),
+      );
+      expect(enriched.commits.every((commit) => commit.deploymentUrl)).toBe(true);
+    } finally {
+      dateNow.mockRestore();
+    }
+  });
+
+  it("preserves cached links without network access when refresh is disabled", async () => {
+    const deploymentUrl = "https://coherence-thesis-cached-aubreyfs-projects.vercel.app";
+    const snapshot = createUpdatesSnapshot(headSha, [
+      {
+        sha: headSha,
+        committedAt: headDate,
+        subject: "feat: current",
+        filesChanged: 1,
+        additions: 2,
+        deletions: 0,
+      },
+    ]);
+    const cached = createUpdatesSnapshot(headSha, [
+      {
+        ...snapshot.commits[0]!,
+        deploymentUrl,
+      },
+    ]);
+    let requested = false;
+
+    const enriched = await enrichUpdatesSnapshotDeployments(snapshot, {
+      existingSnapshot: cached,
+      fetcher: async () => {
+        requested = true;
+        return jsonResponse({ message: "unexpected" }, { status: 500 });
+      },
+      refreshDeployments: false,
+    });
+
+    expect(enriched.commits[0]?.deploymentUrl).toBe(deploymentUrl);
+    expect(requested).toBe(false);
   });
 
   it("discards a partial GitHub refresh and keeps a valid snapshot", async () => {

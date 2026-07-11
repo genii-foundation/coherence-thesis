@@ -6,16 +6,16 @@ import {
   getUpdatesSummary,
 } from "@/lib/updates-pagination";
 
-export const metadata: Metadata = buildUpdatesMetadata(1);
+export const metadata: Metadata = buildUpdatesMetadata(1, "literary");
 
-export default function UpdatesPage() {
-  const summary = getUpdatesSummary();
+export default function LiteraryUpdatesPage() {
+  const summary = getUpdatesSummary("literary");
 
   return (
     <UpdatesPageContent
       currentPage={1}
-      days={getUpdatesPageSlice(1)}
-      mode="all"
+      days={getUpdatesPageSlice(1, "literary")}
+      mode="literary"
       totalCommitCount={summary.totalCommitCount}
       totalDayCount={summary.totalDayCount}
     />
