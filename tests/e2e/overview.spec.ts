@@ -1162,6 +1162,16 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     "data-volume-href",
     initialActiveVolume.href,
   );
+  await expect
+    .poll(() =>
+      coverFlow.locator(".cover-flow-scroll").evaluate((scroller) =>
+        Math.abs(
+          Number(scroller.dataset.coverFlowTargetScroll) -
+            Number(scroller.dataset.coverFlowVisualScroll),
+        ),
+      ),
+    )
+    .toBeLessThan(0.06);
 
   await activePanel
     .getByRole("button", { name: "Opening" })
@@ -1271,6 +1281,14 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       ".cover-flow-image-frame",
     );
     const activeShell = active?.closest<HTMLElement>(".cover-flow-card-shell");
+    const cardElements = Array.from(
+      flow.querySelectorAll<HTMLElement>(".cover-flow-card"),
+    );
+    const activeIndex = active ? cardElements.indexOf(active) : -1;
+    const activeSnap =
+      activeIndex >= 0
+        ? flow.querySelectorAll<HTMLElement>(".cover-flow-snap")[activeIndex]
+        : null;
     const sideCard =
       activeShell?.previousElementSibling?.querySelector<HTMLElement>(
         ".cover-flow-card",
@@ -1292,11 +1310,11 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       activeTransform: active ? getComputedStyle(active).transform : "",
       cardGap: window.getComputedStyle(flow.querySelector(".cover-flow-track")!)
         .gap,
-      nativeSnapStop: activeShell
-        ? window.getComputedStyle(activeShell).scrollSnapStop
+      nativeSnapStop: activeSnap
+        ? window.getComputedStyle(activeSnap).scrollSnapStop
         : "",
       flowWidth: flow.getBoundingClientRect().width,
-      scrollStepWidth: activeShell?.getBoundingClientRect().width ?? 0,
+      scrollStepWidth: activeSnap?.getBoundingClientRect().width ?? 0,
       activeCoverWidth: activeCover?.getBoundingClientRect().width ?? 0,
       panelVisible:
         active?.querySelector(".cover-flow-card-panel") &&
@@ -1358,21 +1376,24 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   const verticalStability = await coverFlow
     .locator(".cover-flow-scroll")
     .evaluate(async (scroller) => {
-      const waitForTransformFrame = async () => {
-        await new Promise<void>((resolve) => {
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              requestAnimationFrame(() => {
-                requestAnimationFrame(() => resolve());
-              });
-            });
-          });
-        });
+      const waitForTransformSettlement = async () => {
+        let stableFrames = 0;
+        for (let frame = 0; frame < 180; frame += 1) {
+          await new Promise<void>((resolve) =>
+            requestAnimationFrame(() => resolve()),
+          );
+          const target = Number(scroller.dataset.coverFlowTargetScroll);
+          const visual = Number(scroller.dataset.coverFlowVisualScroll);
+          stableFrames =
+            Math.abs(target - visual) <= 0.06 ? stableFrames + 1 : 0;
+          if (stableFrames >= 3) return;
+        }
+        throw new Error("Cover flow did not settle");
       };
 
       scroller.scrollLeft = 0;
       scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
-      await waitForTransformFrame();
+      await waitForTransformSettlement();
 
       const card = document.querySelector<HTMLElement>(".cover-flow-card");
       const cover = card?.querySelector<HTMLElement>(".cover-flow-image-frame");
@@ -1386,7 +1407,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       for (let scrollLeft = 0; scrollLeft <= maxScrollLeft; scrollLeft += 30) {
         scroller.scrollLeft = scrollLeft;
         scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
-        await waitForTransformFrame();
+        await waitForTransformSettlement();
         const coverBox = cover?.getBoundingClientRect();
         if (coverBox) centers.push(coverBox.top + coverBox.height / 2);
       }
@@ -1440,12 +1461,35 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
         const visibleRight = coverBox
           ? Math.min(coverBox.right, document.documentElement.clientWidth)
           : 0;
-        const x = coverBox ? (visibleLeft + visibleRight) / 2 : -1;
         const y = coverBox ? coverBox.top + coverBox.height / 2 : -1;
+        let x = -1;
+        if (card && coverBox) {
+          for (
+            let candidateX = visibleRight - 1;
+            candidateX >= visibleLeft + 1;
+            candidateX -= 1
+          ) {
+            const hitCard = document
+              .elementFromPoint(candidateX, y)
+              ?.closest(".cover-flow-card");
+            if (hitCard === card) {
+              x = candidateX;
+              break;
+            }
+          }
+        }
+        const hitHref =
+          x >= 0
+            ? document
+                .elementFromPoint(x, y)
+                ?.closest<HTMLElement>(".cover-flow-card")
+                ?.getAttribute("data-volume-href") ?? ""
+            : "";
 
         return {
           href: card?.getAttribute("data-volume-href") ?? "",
           height: coverBox?.height ?? 0,
+          hitHref,
           targetOffset: targetIndex - activeIndex,
           visibleWidth: Math.max(0, visibleRight - visibleLeft),
           viewportHeight: document.documentElement.clientHeight,
@@ -1458,6 +1502,9 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     );
     expect(farBackgroundClickPoint.targetOffset).toBeGreaterThanOrEqual(3);
     expect(farBackgroundClickPoint.href).not.toBe(initialActiveVolume.href);
+    expect(farBackgroundClickPoint.hitHref).toBe(
+      farBackgroundClickPoint.href,
+    );
     expect(farBackgroundClickPoint.width).toBeGreaterThan(0);
     expect(farBackgroundClickPoint.height).toBeGreaterThan(0);
     expect(farBackgroundClickPoint.visibleWidth).toBeGreaterThan(16);

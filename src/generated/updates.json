@@ -2,8 +2,19 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "76a8b698b404545d81ac19bf5b2d199239f3be4a",
+  "headSha": "3db394dc1942f11e677c0d986e5a98db963ea6e8",
   "commits": [
+    {
+      "sha": "3db394dc1942f11e677c0d986e5a98db963ea6e8",
+      "committedAt": "2026-07-12T17:27:30.000Z",
+      "subject": "feat: use Bellefair for hero stats (#121)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/3db394dc1942f11e677c0d986e5a98db963ea6e8",
+      "filesChanged": 6,
+      "additions": 35,
+      "deletions": 349,
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-atmy4pts6-aubreyfs-projects.vercel.app"
+    },
     {
       "sha": "76a8b698b404545d81ac19bf5b2d199239f3be4a",
       "committedAt": "2026-07-12T16:54:30.000Z",

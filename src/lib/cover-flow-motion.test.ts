@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  advanceCoverFlowScroll,
   coverFlowTuning,
   getCoverFlowLayers,
   getCoverFlowTransform,
@@ -7,11 +8,11 @@ import {
 
 describe("cover flow motion", () => {
   it("keeps the center transform continuous through tiny scroll changes", () => {
-    let previous = getCoverFlowTransform(-3).shift;
+    let previous = getCoverFlowTransform(-3).visualX;
     let maxShiftStep = 0;
 
     for (let offset = -2.995; offset <= 3; offset += 0.005) {
-      const current = getCoverFlowTransform(offset).shift;
+      const current = getCoverFlowTransform(offset).visualX;
       maxShiftStep = Math.max(maxShiftStep, Math.abs(current - previous));
       previous = current;
     }
@@ -21,22 +22,20 @@ describe("cover flow motion", () => {
 
   it("keeps side cover corrections mirrored and bounded", () => {
     for (let offset = 0.05; offset <= 2.6; offset += 0.05) {
-      const right = getCoverFlowTransform(offset).shift;
-      const left = getCoverFlowTransform(-offset).shift;
+      const right = getCoverFlowTransform(offset).visualX;
+      const left = getCoverFlowTransform(-offset).visualX;
 
       expect(Math.abs(right + left)).toBeLessThan(0.001);
-      expect(Math.abs(right)).toBeLessThan(340);
+      expect(Math.abs(right)).toBeLessThan(800);
     }
   });
 
-  it("keeps every card safely short of a backside rotation", () => {
-    for (
-      let offset = -coverFlowTuning.rotation.maxMeasuredOffset;
-      offset <= coverFlowTuning.rotation.maxMeasuredOffset;
-      offset += 0.05
-    ) {
-      expect(Math.abs(getCoverFlowTransform(offset).rotate)).toBeLessThan(45);
-      expect(Math.abs(getCoverFlowTransform(offset).rotate)).toBeLessThan(90);
+  it("caps every distant card at the same gentle rotation", () => {
+    expect(coverFlowTuning.rotation.maxDegrees).toBe(27);
+
+    for (const offset of [1, 2, 3, 8]) {
+      expect(getCoverFlowTransform(offset).rotate).toBe(-27);
+      expect(getCoverFlowTransform(-offset).rotate).toBe(27);
     }
   });
 
@@ -46,9 +45,8 @@ describe("cover flow motion", () => {
   });
 
   it("keeps visual card centers monotonic with a tighter peripheral stack", () => {
-    const step = coverFlowTuning.spacing.nativeScrollStepPx;
     const visualCenter = (offset: number) =>
-      offset * step + getCoverFlowTransform(offset, step).shift;
+      getCoverFlowTransform(offset).visualX;
 
     const halfStep = visualCenter(0.5);
     const firstBackground = visualCenter(1);
@@ -65,6 +63,53 @@ describe("cover flow motion", () => {
     expect(thirdBackground - secondBackground).toBeLessThan(
       secondBackground - firstBackground,
     );
+  });
+
+  it("smooths toward a target monotonically without overshooting", () => {
+    let current = 0;
+    const target = 224;
+
+    for (let frame = 0; frame < 120 && current !== target; frame += 1) {
+      const previous = current;
+      current = advanceCoverFlowScroll(current, target, 1000 / 60);
+      expect(current).toBeGreaterThan(previous);
+      expect(current).toBeLessThanOrEqual(target);
+    }
+
+    expect(current).toBe(target);
+  });
+
+  it("keeps smoothing consistent across refresh rates", () => {
+    const advanceFor = (frameMs: number, frameCount: number) => {
+      let current = 0;
+      for (let frame = 0; frame < frameCount; frame += 1) {
+        current = advanceCoverFlowScroll(current, 224, frameMs);
+      }
+      return current;
+    };
+
+    expect(advanceFor(1000 / 60, 30)).toBeCloseTo(
+      advanceFor(1000 / 120, 60),
+      8,
+    );
+  });
+
+  it("bounds long frames and snaps when motion is disabled", () => {
+    expect(advanceCoverFlowScroll(0, 224, 1000)).toBe(
+      advanceCoverFlowScroll(0, 224, coverFlowTuning.motion.maxFrameDeltaMs),
+    );
+    expect(advanceCoverFlowScroll(0, 224, 16, true)).toBe(224);
+  });
+
+  it("remains bounded through repeated direction reversals", () => {
+    let current = 0;
+
+    for (const target of [12, 12, -8, -8, 6, 6, 0]) {
+      const previous = current;
+      current = advanceCoverFlowScroll(current, target, 1000 / 60);
+      expect(current).toBeGreaterThanOrEqual(Math.min(previous, target));
+      expect(current).toBeLessThanOrEqual(Math.max(previous, target));
+    }
   });
 
   it("gives every cover a unique layer that rises toward the center", () => {
@@ -109,5 +154,4 @@ describe("cover flow motion", () => {
     expect(far).toBeLessThan(side);
     expect(far).toBe(coverFlowTuning.coverShadow.min);
   });
-
 });
