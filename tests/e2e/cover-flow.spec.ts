@@ -935,25 +935,18 @@ test("wheel sessions keep vertical escape and fractional horizontal tails", asyn
   );
   await activeCover.scrollIntoViewIfNeeded();
   await activeCover.hover();
-  const pageScrollState = await page.evaluate(() => ({
-    current: window.scrollY,
-    max: Math.max(
-      0,
-      document.documentElement.scrollHeight - window.innerHeight,
-    ),
-  }));
-  const verticalDelta =
-    pageScrollState.max - pageScrollState.current > 40 ? 120 : -120;
+  const pageScrollY = await page.evaluate(() => window.scrollY);
+  const verticalDelta = pageScrollY > 40 ? -120 : 120;
   await page.mouse.wheel(12, 0);
   await page.mouse.wheel(0.8, verticalDelta);
   if (verticalDelta > 0) {
     await expect
       .poll(() => page.evaluate(() => window.scrollY))
-      .toBeGreaterThan(pageScrollState.current + 20);
+      .toBeGreaterThan(pageScrollY + 20);
   } else {
     await expect
       .poll(() => page.evaluate(() => window.scrollY))
-      .toBeLessThan(pageScrollState.current - 20);
+      .toBeLessThan(pageScrollY - 20);
   }
 });
 
@@ -1152,10 +1145,6 @@ test("mobile cover and panel touch gestures feed the native snap rail", async ({
   );
   expect(gesture.snapTypeDuringHorizontal).toBe("none");
   expect(gesture.touchAction).toBe("pan-y");
-  await expect(activeCard).toHaveAttribute(
-    "data-volume-href",
-    catalog.volumes.at(-1)!.href,
-  );
   await expect
     .poll(async () => {
       const state = await scroller.evaluate((element) => ({
@@ -1165,4 +1154,9 @@ test("mobile cover and panel touch gestures feed the native snap rail", async ({
       return Math.abs(state.target - state.visual);
     }, { timeout: 15_000 })
     .toBeLessThan(0.06);
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    catalog.volumes.at(-1)!.href,
+    { timeout: 15_000 },
+  );
 });
