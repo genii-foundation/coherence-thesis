@@ -65,6 +65,8 @@ type ManuscriptCoverFlowIslandProps = {
 const COVER_FLOW_BACKGROUND_HIT_MIN_WIDTH = 44;
 const COVER_FLOW_BACKGROUND_HIT_Y_SLOP = 10;
 const COVER_FLOW_TOUCH_AXIS_THRESHOLD = 6;
+const COVER_FLOW_WHEEL_GESTURE_IDLE_MS = 220;
+const COVER_FLOW_WHEEL_VERTICAL_ESCAPE_RATIO = 2;
 
 type CoverFlowLayoutMetrics = {
   firstCardCenter: number;
@@ -80,6 +82,12 @@ type CoverFlowTouchGesture = {
   startScrollLeft: number;
   startX: number;
   startY: number;
+};
+
+type CoverFlowWheelGesture = {
+  previousScrollSnapType: string;
+  targetScrollLeft: number;
+  timeoutId: number | null;
 };
 
 function setStylePropertyIfChanged(
@@ -201,6 +209,7 @@ export function ManuscriptCoverFlowIsland({
   const lastFrameTimeRef = useRef<number | null>(null);
   const targetScrollLeftRef = useRef(0);
   const touchGestureRef = useRef<CoverFlowTouchGesture | null>(null);
+  const wheelGestureRef = useRef<CoverFlowWheelGesture | null>(null);
   const visualScrollLeftRef = useRef<number | null>(null);
   const activeIndexRef = useRef(activeIndex);
   const panelHeightFrameRef = useRef<number | null>(null);
@@ -503,12 +512,30 @@ export function ManuscriptCoverFlowIsland({
     [setOutlineScrolled],
   );
 
+  const cancelCoverFlowWheelGesture = useCallback(() => {
+    const gesture = wheelGestureRef.current;
+    if (!gesture) return;
+
+    if (gesture.timeoutId !== null) {
+      window.clearTimeout(gesture.timeoutId);
+    }
+    wheelGestureRef.current = null;
+
+    const scroller = scrollRef.current;
+    if (scroller) {
+      scroller.style.scrollSnapType = gesture.previousScrollSnapType;
+    }
+  }, []);
+
   const scrollToIndex = useCallback(
     (index: number, behavior: ScrollBehavior = "auto") => {
       const nextIndex = Math.max(0, Math.min(volumes.length - 1, index));
       const scroller = scrollRef.current;
+      if (!scroller) return;
+
+      cancelCoverFlowWheelGesture();
       const snap = snapRefs.current[nextIndex];
-      if (!scroller || !snap) return;
+      if (!snap) return;
 
       const maxScrollLeft = Math.max(
         0,
@@ -522,7 +549,22 @@ export function ManuscriptCoverFlowIsland({
         behavior,
       });
     },
-    [volumes.length],
+    [cancelCoverFlowWheelGesture, volumes.length],
+  );
+
+  const settleCoverFlowAtScrollLeft = useCallback(
+    (scrollLeft: number) => {
+      const metrics = layoutMetricsRef.current ?? measureCoverFlowLayout();
+      if (!metrics) return;
+      const centeredIndex = Math.round(
+        (scrollLeft +
+          metrics.viewportWidth / 2 -
+          metrics.firstCardCenter) /
+          metrics.scrollStepWidth,
+      );
+      scrollToIndex(centeredIndex);
+    },
+    [measureCoverFlowLayout, scrollToIndex],
   );
 
   const coverIndexAtPoint = useCallback((clientX: number, clientY: number) => {
@@ -618,13 +660,28 @@ export function ManuscriptCoverFlowIsland({
     [activeIndex, coverIndexAtPoint, volumes],
   );
 
+  const finishCoverFlowWheelGesture = useCallback(
+    (expectedGesture?: CoverFlowWheelGesture) => {
+      const gesture = wheelGestureRef.current;
+      if (!gesture || (expectedGesture && gesture !== expectedGesture)) return;
+
+      const scroller = scrollRef.current;
+      wheelGestureRef.current = null;
+      if (gesture.timeoutId !== null) {
+        window.clearTimeout(gesture.timeoutId);
+      }
+      if (!scroller) return;
+
+      scroller.style.scrollSnapType = gesture.previousScrollSnapType;
+      settleCoverFlowAtScrollLeft(gesture.targetScrollLeft);
+    },
+    [settleCoverFlowAtScrollLeft],
+  );
+
   const handleCoverFlowWheel = useCallback(
     (event: ReactWheelEvent<HTMLDivElement>) => {
       const scroller = scrollRef.current;
-      const target = event.target;
-      if (!scroller || (target instanceof Node && scroller.contains(target))) {
-        return;
-      }
+      if (!scroller || touchGestureRef.current?.axis === "horizontal") return;
 
       const deltaScale =
         event.deltaMode === WheelEvent.DOM_DELTA_LINE
@@ -634,7 +691,35 @@ export function ManuscriptCoverFlowIsland({
             : 1;
       const deltaX = event.deltaX * deltaScale;
       const deltaY = event.deltaY * deltaScale;
-      if (Math.abs(deltaX) < 0.5 || Math.abs(deltaX) <= Math.abs(deltaY)) {
+      let gesture = wheelGestureRef.current;
+      if (!gesture) {
+        if (Math.abs(deltaX) < 0.5 || Math.abs(deltaX) <= Math.abs(deltaY)) {
+          return;
+        }
+
+        const maxScrollLeft = Math.max(
+          0,
+          scroller.scrollWidth - scroller.clientWidth,
+        );
+        if (
+          (deltaX < 0 && scroller.scrollLeft <= 0.5) ||
+          (deltaX > 0 && maxScrollLeft - scroller.scrollLeft <= 0.5)
+        ) {
+          return;
+        }
+
+        gesture = {
+          previousScrollSnapType: scroller.style.scrollSnapType,
+          targetScrollLeft: scroller.scrollLeft,
+          timeoutId: null,
+        };
+        wheelGestureRef.current = gesture;
+        scroller.style.scrollSnapType = "none";
+      } else if (
+        deltaX === 0 ||
+        Math.abs(deltaY) >
+          Math.abs(deltaX) * COVER_FLOW_WHEEL_VERTICAL_ESCAPE_RATIO
+      ) {
         return;
       }
 
@@ -644,14 +729,23 @@ export function ManuscriptCoverFlowIsland({
       );
       const nextScrollLeft = Math.max(
         0,
-        Math.min(scroller.scrollLeft + deltaX, maxScrollLeft),
+        Math.min(gesture.targetScrollLeft + deltaX, maxScrollLeft),
       );
-      if (Math.abs(nextScrollLeft - scroller.scrollLeft) < 0.01) return;
 
       event.preventDefault();
+      gesture.targetScrollLeft = nextScrollLeft;
       scroller.scrollLeft = nextScrollLeft;
+      schedulePositionUpdate();
+
+      if (gesture.timeoutId !== null) {
+        window.clearTimeout(gesture.timeoutId);
+      }
+      gesture.timeoutId = window.setTimeout(
+        () => finishCoverFlowWheelGesture(gesture),
+        COVER_FLOW_WHEEL_GESTURE_IDLE_MS,
+      );
     },
-    [],
+    [finishCoverFlowWheelGesture, schedulePositionUpdate],
   );
 
   const handleCoverFlowTouchStart = useCallback(
@@ -659,6 +753,7 @@ export function ManuscriptCoverFlowIsland({
       const scroller = scrollRef.current;
       const target = event.target;
       const touch = event.touches.item(0);
+      cancelCoverFlowWheelGesture();
       if (
         !scroller ||
         !touch ||
@@ -677,7 +772,7 @@ export function ManuscriptCoverFlowIsland({
         startY: touch.clientY,
       };
     },
-    [],
+    [cancelCoverFlowWheelGesture],
   );
 
   const handleCoverFlowTouchMove = useCallback(
@@ -739,16 +834,8 @@ export function ManuscriptCoverFlowIsland({
     if (!gesture || !scroller || gesture.axis !== "horizontal") return;
 
     scroller.style.scrollSnapType = gesture.previousScrollSnapType;
-    const metrics = layoutMetricsRef.current ?? measureCoverFlowLayout();
-    if (!metrics) return;
-    const centeredIndex = Math.round(
-      (scroller.scrollLeft +
-        metrics.viewportWidth / 2 -
-        metrics.firstCardCenter) /
-        metrics.scrollStepWidth,
-    );
-    scrollToIndex(centeredIndex);
-  }, [measureCoverFlowLayout, scrollToIndex]);
+    settleCoverFlowAtScrollLeft(scroller.scrollLeft);
+  }, [settleCoverFlowAtScrollLeft]);
 
   useLayoutEffect(() => {
     layoutMetricsRef.current = null;
@@ -781,6 +868,7 @@ export function ManuscriptCoverFlowIsland({
       ) {
         return;
       }
+      cancelCoverFlowWheelGesture();
       layoutMetricsRef.current = null;
       syncPositionToScroll();
     };
@@ -788,6 +876,7 @@ export function ManuscriptCoverFlowIsland({
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      cancelCoverFlowWheelGesture();
       if (frameRef.current !== null) {
         window.cancelAnimationFrame(frameRef.current);
       }
@@ -795,7 +884,7 @@ export function ManuscriptCoverFlowIsland({
         window.cancelAnimationFrame(panelHeightFrameRef.current);
       }
     };
-  }, [syncPositionToScroll]);
+  }, [cancelCoverFlowWheelGesture, syncPositionToScroll]);
 
   if (volumes.length === 0) {
     return null;

@@ -1593,7 +1593,10 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     });
     await expect.poll(async () => page.evaluate(() => window.scrollY)).toBe(0);
     await coverFlow.scrollIntoViewIfNeeded();
-    await coverFlow.locator(".cover-flow-scroll").hover();
+    const gestureSurface = coverFlow.locator(
+      '.cover-flow-card[aria-current="true"] .cover-flow-cover-link',
+    );
+    await gestureSurface.hover();
     await page.mouse.wheel(0, 380);
     await expect
       .poll(async () => page.evaluate(() => window.scrollY))
@@ -1604,7 +1607,21 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       scroller.scrollLeft = 0;
       scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
     });
-    await coverFlow.locator(".cover-flow-scroll").hover();
+    await expect
+      .poll(() =>
+        coverFlow.locator(".cover-flow-scroll").evaluate((scroller) =>
+          Math.abs(
+            Number(scroller.dataset.coverFlowTargetScroll) -
+              Number(scroller.dataset.coverFlowVisualScroll),
+          ),
+        ),
+      )
+      .toBeLessThan(0.06);
+    await expect(activeCard).toHaveAttribute(
+      "data-volume-href",
+      initialActiveVolume.href,
+    );
+    await gestureSurface.hover();
     const nativeHorizontalScroll = await coverFlow
       .locator(".cover-flow-scroll")
       .evaluate((scroller) => scroller.scrollLeft);
