@@ -399,7 +399,7 @@ test("cover flow smooths small reversals without moving or reordering early", as
     }
 
     const nextFrame = () =>
-      new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+      new Promise<number>((resolve) => requestAnimationFrame(resolve));
     const farCenter = () => {
       const box = covers[8]!.getBoundingClientRect();
       return box.left + box.width / 2;
@@ -458,13 +458,15 @@ test("cover flow smooths small reversals without moving or reordering early", as
 
       moveRawScroll(base - 12);
       const reversalImmediateCenter = farCenter();
-      const reversalSamples = [reversalImmediateCenter];
+      const reversalSamples = [
+        { center: reversalImmediateCenter, timestamp: performance.now() },
+      ];
       const reversalLayers = [layers()];
       const reversalActiveIndices = [activeIndex()];
 
       for (let frame = 0; frame < 180; frame += 1) {
-        await nextFrame();
-        reversalSamples.push(farCenter());
+        const timestamp = await nextFrame();
+        reversalSamples.push({ center: farCenter(), timestamp });
         reversalLayers.push(layers());
         reversalActiveIndices.push(activeIndex());
         if (
@@ -535,16 +537,20 @@ test("cover flow smooths small reversals without moving or reordering early", as
   expect(new Set(result.reversalActiveIndices)).toEqual(new Set([4]));
 
   let previousDistance = Number.POSITIVE_INFINITY;
-  let previousCenter = result.reversalSamples[0]!;
-  result.reversalSamples.forEach((center) => {
+  let previousSample = result.reversalSamples[0]!;
+  result.reversalSamples.forEach((sample) => {
+    const { center, timestamp } = sample;
     expect(between(center, result.beforeReversal, result.minusCenter)).toBe(
       true,
     );
-    expect(Math.abs(center - previousCenter)).toBeLessThan(1);
+    const elapsedMs = Math.max(timestamp - previousSample.timestamp, 0.1);
+    const visibleVelocityPxPerMs =
+      Math.abs(center - previousSample.center) / elapsedMs;
+    expect(visibleVelocityPxPerMs).toBeLessThan(0.1);
     const distance = Math.abs(center - result.minusCenter);
     expect(distance).toBeLessThanOrEqual(previousDistance + 0.05);
     previousDistance = distance;
-    previousCenter = center;
+    previousSample = sample;
   });
 });
 
