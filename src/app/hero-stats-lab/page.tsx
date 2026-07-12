@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
+import {
+  Alegreya_SC,
+  Bellefair,
+  Cormorant_Garamond,
+  Fraunces,
+  Marcellus,
+} from "next/font/google";
 import { HeroActionsIsland } from "@/components/HeroActionsIsland";
 import { HeroStats } from "@/components/HeroStats";
 import { catalog } from "@/lib/manuscript-data";
 
 export const metadata: Metadata = {
-  title: "Hero stat treatments",
+  title: "Hero stat font comparison",
   robots: {
     index: false,
     follow: false,
@@ -18,30 +25,81 @@ const heroReadTargets = catalog.sections.map((section) => ({
   sectionId: section.sectionId,
 }));
 
+const marcellus = Marcellus({
+  display: "swap",
+  preload: false,
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const bellefair = Bellefair({
+  display: "swap",
+  preload: false,
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const alegreyaSc = Alegreya_SC({
+  display: "swap",
+  preload: false,
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  display: "swap",
+  preload: false,
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const fraunces = Fraunces({
+  display: "swap",
+  preload: false,
+  subsets: ["latin"],
+  weight: "400",
+});
+
 const treatments = [
   {
-    className: "hero-stats-lab-ledger",
-    id: "ledger",
+    fontClassName: marcellus.className,
+    id: "marcellus",
     label: "Option one",
-    title: "Hairline ledger",
+    title: "Marcellus",
     description:
-      "A quiet, high-contrast baseline with explicit labels and hairline divisions.",
+      "Classical, upright numerals with open proportions and calm authority.",
   },
   {
-    className: "hero-stats-lab-editorial",
-    id: "editorial",
+    fontClassName: bellefair.className,
+    id: "bellefair",
     label: "Option two",
-    title: "Light editorial",
+    title: "Bellefair",
     description:
-      "Ultra-light numerals do the speaking, while the labels recede into a single measured line.",
+      "Airy, elegant numerals with soft curves and generous height.",
   },
   {
-    className: "hero-stats-lab-copperplate",
-    id: "copperplate",
+    fontClassName: alegreyaSc.className,
+    id: "alegreya-sc",
     label: "Option three",
-    title: "Copperplate reserve",
+    title: "Alegreya SC",
     description:
-      "A crisper engraved feel, with restrained small caps and no visual clutter.",
+      "Calligraphic numerals with humanist curves and a little mischief.",
+  },
+  {
+    fontClassName: cormorantGaramond.className,
+    id: "cormorant-garamond",
+    label: "Option four",
+    title: "Cormorant Garamond",
+    description:
+      "Tall, elegant figures with fine contrast and generous air.",
+  },
+  {
+    fontClassName: fraunces.className,
+    id: "fraunces",
+    label: "Option five",
+    title: "Fraunces",
+    description:
+      "Warm, sculpted numerals with soft corners and an Arts and Crafts flavor.",
   },
 ];
 
@@ -49,11 +107,11 @@ export default function HeroStatsLab() {
   return (
     <main className="hero-stats-lab">
       <header className="hero-stats-lab-intro">
-        <p className="hero-stats-lab-kicker">Homepage refinement</p>
-        <h1>Three treatments for the hero proof points.</h1>
+        <p className="hero-stats-lab-kicker">Numeral study</p>
+        <h1>Five type directions for the hero stats.</h1>
         <p>
-          Same live manuscript data, same hero controls, three different ways of
-          making the small line at the bottom feel intentional.
+          Same live data, controls, labels, size, and spacing. Only the large
+          numeral face changes.
         </p>
       </header>
 
@@ -61,7 +119,7 @@ export default function HeroStatsLab() {
         {treatments.map((treatment) => (
           <section
             aria-labelledby={`${treatment.id}-title`}
-            className={`hero-stats-lab-option ${treatment.className}`}
+            className="hero-stats-lab-option"
             key={treatment.id}
           >
             <header className="hero-stats-lab-option-heading">
@@ -75,9 +133,7 @@ export default function HeroStatsLab() {
                 sections={heroReadTargets}
               />
               <HeroStats
-                className={`hero-stats-lab-stats${
-                  treatment.id === "copperplate" ? " hero-stats--copperplate" : ""
-                }`}
+                className={`hero-stats hero-stats--copperplate hero-stats-lab-stats ${treatment.fontClassName}`}
               />
             </div>
           </section>

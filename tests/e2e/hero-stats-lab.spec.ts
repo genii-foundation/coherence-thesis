@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test("hero stats lab presents three readable treatments with live proof points", async ({
+test("hero stats lab presents five readable font treatments with live proof points", async ({
   page,
 }) => {
   await page.goto("/hero-stats-lab/");
@@ -8,12 +8,19 @@ test("hero stats lab presents three readable treatments with live proof points",
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "Three treatments for the hero proof points.",
+      name: "Five type directions for the hero stats.",
     }),
   ).toBeVisible();
 
   const options = page.locator(".hero-stats-lab-option");
-  await expect(options).toHaveCount(3);
+  await expect(options).toHaveCount(5);
+  await expect(options.getByRole("heading", { level: 2 })).toHaveText([
+    "Marcellus",
+    "Bellefair",
+    "Alegreya SC",
+    "Cormorant Garamond",
+    "Fraunces",
+  ]);
 
   for (const option of await options.all()) {
     await expect(option.getByRole("link", { name: "Listen" })).toBeVisible();
@@ -24,6 +31,16 @@ test("hero stats lab presents three readable treatments with live proof points",
     await expect(option.getByText("Hours of audio", { exact: true })).toBeVisible();
   }
 
-  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
+  await page.evaluate(() => document.fonts.ready.then(() => undefined));
+  const fontFamilies = await options.evaluateAll((elements) =>
+    elements.map((element) =>
+      getComputedStyle(element.querySelector("dd")!).fontFamily,
+    ),
+  );
+  expect(new Set(fontFamilies).size).toBe(5);
+
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth > window.innerWidth,
+  );
   expect(overflow).toBe(false);
 });

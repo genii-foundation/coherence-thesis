@@ -2146,91 +2146,11 @@ input {
 }
 
 .hero-stats-lab-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  width: min(100%, 35rem);
-  margin: 1.25rem 0 0;
+  margin-top: 0.8rem;
 }
 
-.hero-stats-lab-stats > div {
-  display: grid;
-  justify-items: center;
-  min-width: 0;
-  padding: 0.15rem clamp(0.45rem, 1.8vw, 1rem);
-}
-
-.hero-stats-lab-stats > div + div {
-  border-left: 1px solid var(--line);
-}
-
-.hero-stats-lab-stats dt,
-.hero-stats-lab-stats dd {
-  margin: 0;
-  text-align: center;
-}
-
-.hero-stats-lab-stats dt {
-  grid-row: 2;
-  color: var(--ink-muted);
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  line-height: 1.3;
-  white-space: nowrap;
-}
-
-.hero-stats-lab-stats dd {
-  color: var(--bronze-deep);
-  font-family: var(--font-display);
-  font-size: clamp(1.55rem, 3.6vw, 2.4rem);
-  font-variant-numeric: lining-nums tabular-nums;
-  font-weight: 400;
-  line-height: 0.98;
-}
-
-.hero-stats-lab-ledger .hero-stats-lab-stats {
-  border-top: 1px solid var(--bronze-deep);
-  border-bottom: 1px solid var(--line);
-  padding: 0.7rem 0;
-}
-
-.hero-stats-lab-ledger .hero-stats-lab-stats dt {
-  margin-top: 0.35rem;
-  color: var(--bronze-deep);
-  font-family: "Copperplate", "Copperplate Gothic Light", var(--font-fraunces), serif;
-  font-size: 0.61rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.hero-stats-lab-ledger .hero-stats-lab-stats dd {
-  color: var(--ink);
-  font-size: clamp(1.45rem, 3.1vw, 2.1rem);
-}
-
-.hero-stats-lab-editorial .hero-stats-lab-stats {
-  align-items: baseline;
-}
-
-.hero-stats-lab-editorial .hero-stats-lab-stats > div {
-  display: block;
-}
-
-.hero-stats-lab-editorial .hero-stats-lab-stats dt {
-  margin-top: 0.48rem;
-  color: var(--ink-soft);
-  font-size: 0.64rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.hero-stats-lab-editorial .hero-stats-lab-stats dd {
-  color: var(--bronze-deep);
-  font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(2rem, 5.1vw, 3.6rem);
-  font-weight: 300;
-  letter-spacing: -0.045em;
+.hero-stats--copperplate.hero-stats-lab-stats dd {
+  font-family: inherit;
 }
 
 .hero-stats--copperplate {
