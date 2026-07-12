@@ -13,9 +13,6 @@ export const coverFlowTuning = {
     falloffCurve: 1.08,
     min: 0.62,
   },
-  verticalAlignment: {
-    sideCoverCenterCompensation: 1.06,
-  },
   spacing: {
     centerClearancePx: 420,
     centerClearanceCurve: 1.34,
@@ -42,11 +39,6 @@ export const coverFlowTuning = {
     activeDistance: 0.34,
     active: 1,
     inactive: 0,
-  },
-  layer: {
-    active: 100,
-    falloffPerCard: 20,
-    min: 1,
   },
 };
 
@@ -120,16 +112,9 @@ export function getCoverFlowTransform(
     distance < coverFlowTuning.panelOpacity.activeDistance
       ? "visible"
       : "hidden";
-  const layer = Math.max(
-    coverFlowTuning.layer.min,
-    coverFlowTuning.layer.active -
-      Math.round(distance * coverFlowTuning.layer.falloffPerCard),
-  );
-
   return {
     coverShadowStrength,
     coverWashOpacity,
-    layer,
     panelOpacity,
     panelVisibility,
     rotate,
@@ -137,4 +122,20 @@ export function getCoverFlowTransform(
     shift,
     z,
   };
+}
+
+export function getCoverFlowLayers(offsets: readonly number[]) {
+  const layers = new Array<number>(offsets.length);
+
+  offsets
+    .map((offset, index) => ({ distance: Math.abs(offset), index }))
+    .sort(
+      (first, second) =>
+        second.distance - first.distance || first.index - second.index,
+    )
+    .forEach(({ index }, rank) => {
+      layers[index] = rank + 1;
+    });
+
+  return layers;
 }
