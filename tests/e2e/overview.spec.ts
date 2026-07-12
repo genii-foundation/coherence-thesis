@@ -1593,7 +1593,10 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     });
     await expect.poll(async () => page.evaluate(() => window.scrollY)).toBe(0);
     await coverFlow.scrollIntoViewIfNeeded();
-    await coverFlow.locator(".cover-flow-scroll").hover();
+    const gestureSurface = coverFlow.locator(
+      '.cover-flow-card[aria-current="true"] .cover-flow-cover-link',
+    );
+    await gestureSurface.hover();
     await page.mouse.wheel(0, 380);
     await expect
       .poll(async () => page.evaluate(() => window.scrollY))
@@ -1604,7 +1607,21 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       scroller.scrollLeft = 0;
       scroller.dispatchEvent(new Event("scroll", { bubbles: true }));
     });
-    await coverFlow.locator(".cover-flow-scroll").hover();
+    await expect
+      .poll(() =>
+        coverFlow.locator(".cover-flow-scroll").evaluate((scroller) =>
+          Math.abs(
+            Number(scroller.dataset.coverFlowTargetScroll) -
+              Number(scroller.dataset.coverFlowVisualScroll),
+          ),
+        ),
+      )
+      .toBeLessThan(0.06);
+    await expect(activeCard).toHaveAttribute(
+      "data-volume-href",
+      initialActiveVolume.href,
+    );
+    await gestureSurface.hover();
     const nativeHorizontalScroll = await coverFlow
       .locator(".cover-flow-scroll")
       .evaluate((scroller) => scroller.scrollLeft);
@@ -1670,9 +1687,35 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
     )
     .toBeLessThanOrEqual(1);
   const nextButton = coverFlow.locator(".cover-flow-edge-button-next");
+  const previousButton = coverFlow.locator(
+    ".cover-flow-edge-button-previous",
+  );
+  const activeCard = coverFlow.locator(
+    '.cover-flow-card[aria-current="true"]',
+  );
 
   await expect(coverFlow).toBeVisible();
   await expect(nextButton).toBeVisible();
+
+  for (let index = 1; index <= 4; index += 1) {
+    await nextButton.click();
+    await expect(activeCard).toHaveAttribute(
+      "data-volume-href",
+      catalog.volumes[index]!.href,
+    );
+  }
+  await expect
+    .poll(
+      () =>
+        coverFlow.locator(".cover-flow-scroll").evaluate((scroller) =>
+          Math.abs(
+            Number(scroller.dataset.coverFlowTargetScroll) -
+              Number(scroller.dataset.coverFlowVisualScroll),
+          ),
+        ),
+      { timeout: 15_000 },
+    )
+    .toBeLessThan(0.06);
 
   const landscapeMetrics = await coverFlow.evaluate((flow) => {
     const activeCard = flow.querySelector<HTMLElement>(
@@ -1684,29 +1727,69 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
     const activePanel = activeCard?.querySelector<HTMLElement>(
       ".cover-flow-card-panel",
     );
+    const cards = Array.from(
+      flow.querySelectorAll<HTMLElement>(".cover-flow-card"),
+    );
+    const activeIndex = activeCard ? cards.indexOf(activeCard) : -1;
+    const previousCover = cards[activeIndex - 1]?.querySelector<HTMLElement>(
+      ".cover-flow-image-frame",
+    );
+    const nextCover = cards[activeIndex + 1]?.querySelector<HTMLElement>(
+      ".cover-flow-image-frame",
+    );
     const next = flow.querySelector<HTMLElement>(".cover-flow-edge-button-next");
     const cover = activeCover?.getBoundingClientRect();
     const panel = activePanel?.getBoundingClientRect();
+    const previous = previousCover?.getBoundingClientRect();
+    const following = nextCover?.getBoundingClientRect();
     const nextRect = next?.getBoundingClientRect();
 
     return {
       coverBottom: cover?.bottom ?? 0,
       coverHeight: cover?.height ?? 0,
       coverTop: cover?.top ?? 0,
+      coverWidth: cover?.width ?? 0,
+      nextCenterDistance:
+        cover && following
+          ? following.left + following.width / 2 -
+            (cover.left + cover.width / 2)
+          : Number.POSITIVE_INFINITY,
+      nextGap: cover && following ? following.left - cover.right : Infinity,
       nextBottom: nextRect?.bottom ?? 0,
       nextTop: nextRect?.top ?? 0,
       panelBottom: panel?.bottom ?? 0,
       panelTop: panel?.top ?? 0,
+      previousCenterDistance:
+        cover && previous
+          ? cover.left + cover.width / 2 -
+            (previous.left + previous.width / 2)
+          : Number.POSITIVE_INFINITY,
+      previousGap: cover && previous ? cover.left - previous.right : Infinity,
       coverToPanelGap:
         cover && panel ? panel.top - cover.bottom : 0,
       viewportHeight: window.innerHeight,
+      viewportWidth: window.innerWidth,
     };
   });
 
   expect(landscapeMetrics.coverTop).toBeGreaterThanOrEqual(-16);
-  expect(landscapeMetrics.coverHeight).toBeGreaterThan(180);
+  expect(landscapeMetrics.coverHeight).toBeGreaterThanOrEqual(
+    landscapeMetrics.viewportHeight * 0.78,
+  );
   expect(landscapeMetrics.coverBottom).toBeLessThan(
     landscapeMetrics.viewportHeight,
+  );
+  expect(landscapeMetrics.previousGap).toBeLessThanOrEqual(
+    landscapeMetrics.coverWidth * 0.5,
+  );
+  expect(landscapeMetrics.nextGap).toBeLessThanOrEqual(
+    landscapeMetrics.coverWidth * 0.5,
+  );
+  expect(landscapeMetrics.previousCenterDistance).toBeLessThanOrEqual(
+    landscapeMetrics.viewportWidth * 0.36,
+  );
+  expect(landscapeMetrics.nextCenterDistance).toBeLessThanOrEqual(
+    landscapeMetrics.viewportWidth * 0.36,
   );
   expect(
     landscapeMetrics.coverToPanelGap / landscapeMetrics.coverHeight,
@@ -1723,8 +1806,19 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
     landscapeMetrics.viewportHeight,
   );
 
-  await nextButton.click();
-  await expect(
-    coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("data-volume-href", catalog.volumes[1]!.href);
+  for (let index = 5; index < catalog.volumes.length; index += 1) {
+    await expect(nextButton).toBeEnabled();
+    await nextButton.click();
+    await expect(activeCard).toHaveAttribute(
+      "data-volume-href",
+      catalog.volumes[index]!.href,
+    );
+  }
+  await expect(nextButton).toBeDisabled();
+
+  await previousButton.click();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    catalog.volumes.at(-2)!.href,
+  );
 });
