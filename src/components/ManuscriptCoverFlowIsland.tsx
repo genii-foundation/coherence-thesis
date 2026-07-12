@@ -112,6 +112,20 @@ function coverFlowIndexAtScrollLeft(
   return Math.max(0, Math.min(volumeCount - 1, centeredIndex));
 }
 
+function coverFlowHashForVolume(volume: CoverFlowVolume) {
+  return `#volume-${volume.numberLabel.toLowerCase()}`;
+}
+
+function coverFlowIndexForHash(hash: string, volumes: CoverFlowVolume[]) {
+  const normalizedHash = hash.trim().toLowerCase();
+  if (normalizedHash === "#manuscripts") return 0;
+
+  const index = volumes.findIndex(
+    (volume) => coverFlowHashForVolume(volume) === normalizedHash,
+  );
+  return index >= 0 ? index : null;
+}
+
 type ManuscriptCardOutlineRowMeta = {
   status: ReturnType<typeof sectionGroupProgressStatus>;
   wordCount: number;
@@ -121,10 +135,12 @@ function ManuscriptCardOutlineRowContent({
   icon = "single",
   label,
   meta,
+  showDuration = false,
 }: {
   icon?: "double" | "single";
   label: string;
   meta: ManuscriptCardOutlineRowMeta;
+  showDuration?: boolean;
 }) {
   return (
     <>
@@ -145,7 +161,9 @@ function ManuscriptCardOutlineRowContent({
         <span>{label}</span>
       </span>
       <span className="manuscript-card-outline-meta">
-        <small>{formatReadingDurationForWords(meta.wordCount)}</small>
+        {showDuration ? (
+          <small>{formatReadingDurationForWords(meta.wordCount)}</small>
+        ) : null}
         <ProgressStateDot status={meta.status} />
       </span>
     </>
@@ -227,6 +245,8 @@ export function ManuscriptCoverFlowIsland({
   const activeIndexRef = useRef(activeIndex);
   const panelHeightFrameRef = useRef<number | null>(null);
   const pendingPanelHeightAnimationsRef = useRef(new Set<string>());
+  const pendingHashIndexRef = useRef<number | null>(null);
+  const pausedHashIndexRef = useRef<number | null>(null);
 
   const initialLayers = useMemo(
     () => getCoverFlowLayers(volumes.map((_, index) => index)),
@@ -872,8 +892,61 @@ export function ManuscriptCoverFlowIsland({
 
   useLayoutEffect(() => {
     layoutMetricsRef.current = null;
+    const initialHashIndex = coverFlowIndexForHash(
+      window.location.hash,
+      volumes,
+    );
+    if (window.location.hash && initialHashIndex === null) {
+      pausedHashIndexRef.current = activeIndexRef.current;
+    } else if (initialHashIndex !== null) {
+      pendingHashIndexRef.current = initialHashIndex;
+      scrollToIndex(initialHashIndex);
+    }
     syncPositionToScroll();
-  }, [syncPositionToScroll]);
+  }, [scrollToIndex, syncPositionToScroll, volumes]);
+
+  useEffect(() => {
+    const pausedIndex = pausedHashIndexRef.current;
+    if (pausedIndex !== null) {
+      if (activeIndex === pausedIndex) return;
+      pausedHashIndexRef.current = null;
+    }
+
+    const pendingIndex = pendingHashIndexRef.current;
+    if (pendingIndex !== null) {
+      if (activeIndex !== pendingIndex) return;
+      pendingHashIndexRef.current = null;
+    }
+
+    const activeVolume = volumes[activeIndex];
+    if (!activeVolume) return;
+    const nextHash = coverFlowHashForVolume(activeVolume);
+    if (window.location.hash.toLowerCase() === nextHash) return;
+
+    window.history.replaceState(
+      window.history.state,
+      "",
+      `${window.location.pathname}${window.location.search}${nextHash}`,
+    );
+  }, [activeIndex, volumes]);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const nextIndex = coverFlowIndexForHash(window.location.hash, volumes);
+      if (nextIndex === null) {
+        pendingHashIndexRef.current = null;
+        pausedHashIndexRef.current = activeIndexRef.current;
+        return;
+      }
+
+      pausedHashIndexRef.current = null;
+      pendingHashIndexRef.current = nextIndex;
+      scrollToIndex(nextIndex);
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, [scrollToIndex, volumes]);
 
   useLayoutEffect(() => {
     const pending = Array.from(pendingPanelHeightAnimationsRef.current);
@@ -1169,6 +1242,7 @@ export function ManuscriptCoverFlowIsland({
                               <ManuscriptCardOutlineRowContent
                                 icon="double"
                                 label="Read Full Manuscript"
+                                showDuration
                                 meta={{
                                   status: volumeStatus,
                                   wordCount: volume.wordCount,

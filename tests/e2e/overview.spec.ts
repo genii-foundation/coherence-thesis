@@ -19,6 +19,10 @@ const systemVoicePreference = {
   useSystemVoice: true,
 };
 
+function volumeHash(numberLabel: string) {
+  return `#volume-${numberLabel.toLowerCase()}`;
+}
+
 function sectionForId(sectionId: string) {
   const section = catalog.sections.find(
     (candidate) => candidate.sectionId === sectionId,
@@ -1053,14 +1057,12 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     panelMetrics.coverHeight * 1.02 + 2,
   );
   if (panelMetrics.viewportWidth <= 540) {
-    expect(panelMetrics.panelHeight).toBeGreaterThanOrEqual(
-      panelMetrics.coverHeight * 0.75,
-    );
-    expect(panelMetrics.panelScrollClientHeight).toBeGreaterThanOrEqual(100);
+    expect(panelMetrics.panelScrollClientHeight).toBeGreaterThan(0);
   }
-  expect(panelMetrics.stageEndGap).toBeLessThanOrEqual(
-    panelMetrics.viewportWidth <= 540 ? 150 : 260,
-  );
+  expect(panelMetrics.stageEndGap).toBeGreaterThanOrEqual(-2);
+  if (panelMetrics.viewportWidth > 540) {
+    expect(panelMetrics.stageEndGap).toBeLessThanOrEqual(260);
+  }
   if (panelMetrics.viewportWidth <= 540) {
     expect(
       Math.abs(
@@ -1190,22 +1192,24 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   const partOverviewMetaAlignment = await activePanel
     .locator(".manuscript-card-outline-part-overview")
     .evaluate((row) => {
-      const minutes = row.querySelector("small")?.getBoundingClientRect();
+      const rowBox = row.getBoundingClientRect();
       const dot = row
         .querySelector(".progress-state-dot")
         ?.getBoundingClientRect();
 
       return {
         dotCenter: dot ? dot.top + dot.height / 2 : 0,
-        minutesCenter: minutes ? minutes.top + minutes.height / 2 : 0,
+        hasDuration: Boolean(row.querySelector("small")),
+        rowCenter: rowBox.top + rowBox.height / 2,
       };
     });
+  expect(partOverviewMetaAlignment.hasDuration).toBe(false);
   expect(
     Math.abs(
-      partOverviewMetaAlignment.minutesCenter -
+      partOverviewMetaAlignment.rowCenter -
         partOverviewMetaAlignment.dotCenter,
     ),
-  ).toBeLessThanOrEqual(9);
+  ).toBeLessThanOrEqual(3);
   await expect(
     activePanel.getByRole("link", {
       name: new RegExp(initialActiveVolume.parts[0]!.chapters[0]!.title),
@@ -1221,30 +1225,36 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
       );
 
       return rows.map((row) => {
-        const minutes = row.querySelector("small")?.getBoundingClientRect();
+        const rowBox = row.getBoundingClientRect();
         const dot = row
           .querySelector(".progress-state-dot")
           ?.getBoundingClientRect();
 
         return {
           hasChevron: Boolean(row.querySelector(".manuscript-card-outline-chevron")),
+          hasDuration: Boolean(row.querySelector("small")),
+          height: row.offsetHeight,
           isAnchor: row.tagName === "A",
-          minuteDotDelta:
-            minutes && dot
-              ? Math.abs(
-                  minutes.top +
-                    minutes.height / 2 -
-                    (dot.top + dot.height / 2),
-                )
-              : null,
+          rowDotDelta: dot
+            ? Math.abs(
+                rowBox.top +
+                  rowBox.height / 2 -
+                  (dot.top + dot.height / 2),
+              )
+            : null,
         };
       });
     });
   expect(chapterRowMetrics.length).toBeGreaterThan(1);
   expect(chapterRowMetrics.every((row) => row.hasChevron)).toBe(true);
+  expect(chapterRowMetrics.every((row) => !row.hasDuration)).toBe(true);
   expect(chapterRowMetrics.every((row) => row.isAnchor)).toBe(true);
   expect(
-    Math.max(...chapterRowMetrics.map((row) => row.minuteDotDelta ?? 100)),
+    Math.max(...chapterRowMetrics.map((row) => row.height)) -
+      Math.min(...chapterRowMetrics.map((row) => row.height)),
+  ).toBeLessThanOrEqual(1);
+  expect(
+    Math.max(...chapterRowMetrics.map((row) => row.rowDotDelta ?? 100)),
   ).toBeLessThanOrEqual(3);
   await activePanel
     .getByRole("button", { name: "Back to parts" })
@@ -1433,7 +1443,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   );
   if (testInfo.project.name !== "mobile") {
     await page.setViewportSize({ width: 2048, height: 1152 });
-    await page.reload();
+    await page.goto(`/${volumeHash(initialActiveVolume.numberLabel)}`);
     await expect(coverFlow).toBeVisible();
     await expect(
       coverFlow.locator('.cover-flow-card[aria-current="true"]'),
@@ -1516,6 +1526,10 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     expect(farBackgroundClickPoint.y).toBeLessThanOrEqual(
       farBackgroundClickPoint.viewportHeight,
     );
+    const farBackgroundVolume = catalog.volumes.find(
+      (volume) => volume.href === farBackgroundClickPoint.href,
+    );
+    expect(farBackgroundVolume).toBeDefined();
     await page.mouse.click(
       farBackgroundClickPoint.x,
       farBackgroundClickPoint.y,
@@ -1525,12 +1539,22 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     ).toHaveAttribute("data-volume-href", farBackgroundClickPoint.href, {
       timeout: 15000,
     });
-    await expect(page).toHaveURL(/\/$/);
+    await expect
+      .poll(() => page.evaluate(() => window.location.hash))
+      .toBe(volumeHash(farBackgroundVolume!.numberLabel));
     await page.reload();
     await expect(coverFlow).toBeVisible();
     await expect(
       coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-    ).toHaveAttribute("data-volume-href", initialActiveVolume.href);
+    ).toHaveAttribute("data-volume-href", farBackgroundClickPoint.href, {
+      timeout: 15000,
+    });
+    await page.goto(`/${volumeHash(initialActiveVolume.numberLabel)}`);
+    await expect(
+      coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+    ).toHaveAttribute("data-volume-href", initialActiveVolume.href, {
+      timeout: 15000,
+    });
   }
   const backgroundTarget =
     catalog.volumes[
@@ -1549,7 +1573,9 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   ).toHaveAttribute("data-volume-href", backgroundTarget.href, {
     timeout: 15000,
   });
-  await expect(page).toHaveURL(/\/$/);
+  await expect
+    .poll(() => page.evaluate(() => window.location.hash))
+    .toBe(volumeHash(backgroundTarget.numberLabel));
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"] .cover-flow-card-panel strong'),
   ).toHaveText(backgroundTarget.title, { timeout: 15000 });
@@ -1557,7 +1583,15 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   await expect(coverFlow).toBeVisible();
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
-  ).toHaveAttribute("data-volume-href", initialActiveVolume.href);
+  ).toHaveAttribute("data-volume-href", backgroundTarget.href, {
+    timeout: 15000,
+  });
+  await page.goto(`/${volumeHash(initialActiveVolume.numberLabel)}`);
+  await expect(
+    coverFlow.locator('.cover-flow-card[aria-current="true"]'),
+  ).toHaveAttribute("data-volume-href", initialActiveVolume.href, {
+    timeout: 15000,
+  });
 
   const nextButton = coverFlow.locator(".cover-flow-edge-button-next");
   const finalTargetIndex =

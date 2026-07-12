@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "b70eb9c49b91fa18a50070bc9cdfad183ed5ced6",
+  "headSha": "d132db338799cb4bf123b8ad2080a346738afd8d",
   "commits": [
+    {
+      "sha": "d132db338799cb4bf123b8ad2080a346738afd8d",
+      "committedAt": "2026-07-12T22:56:50.000Z",
+      "subject": "Fix carousel gesture travel and panel clipping (#123)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/d132db338799cb4bf123b8ad2080a346738afd8d",
+      "filesChanged": 5,
+      "additions": 675,
+      "deletions": 65,
+      "isLiterary": false
+    },
     {
       "sha": "b70eb9c49b91fa18a50070bc9cdfad183ed5ced6",
       "committedAt": "2026-07-12T18:33:17.000Z",

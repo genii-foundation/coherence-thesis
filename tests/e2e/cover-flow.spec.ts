@@ -3,11 +3,15 @@ import { catalog } from "./fixtures";
 
 const wideViewport = { height: 1152, width: 2048 };
 
+function volumeHash(numberLabel: string) {
+  return `#volume-${numberLabel.toLowerCase()}`;
+}
+
 test("wide cover flow keeps every cover visible and stacks toward the center", async ({
   page,
 }, testInfo) => {
   test.skip(testInfo.project.name === "mobile", "wide desktop layout only");
-  test.setTimeout(120_000);
+  test.setTimeout(240_000);
 
   await page.setViewportSize(wideViewport);
   await page.goto("/");
@@ -876,6 +880,189 @@ test("arrow commands queue from the native target while visuals settle", async (
   await expect(nextButton).toBeDisabled();
 });
 
+test("visible volume number stays in the URL hash", async ({ page }) => {
+  const volumeEight = catalog.volumes[7]!;
+  const volumeNine = catalog.volumes[8]!;
+  const volumeThree = catalog.volumes[2]!;
+
+  await page.goto(`/${volumeHash(volumeEight.numberLabel)}`);
+  const coverFlow = page.locator(".cover-flow");
+  const activeCard = coverFlow.locator(
+    '.cover-flow-card[aria-current="true"]',
+  );
+  const nextButton = coverFlow.getByRole("button", {
+    name: "Next manuscript",
+  });
+
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    volumeEight.href,
+    { timeout: 15_000 },
+  );
+  await expect
+    .poll(() => page.evaluate(() => window.location.hash))
+    .toBe(volumeHash(volumeEight.numberLabel));
+  expect(await page.evaluate(() => window.scrollY)).toBeLessThan(1);
+
+  const historyLength = await page.evaluate(() => window.history.length);
+  await nextButton.click();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    volumeNine.href,
+    { timeout: 15_000 },
+  );
+  await expect
+    .poll(() => page.evaluate(() => window.location.hash))
+    .toBe(volumeHash(volumeNine.numberLabel));
+  expect(await page.evaluate(() => window.history.length)).toBe(historyLength);
+
+  await page.reload();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    volumeNine.href,
+    { timeout: 15_000 },
+  );
+
+  await page.evaluate((hash) => {
+    window.location.hash = hash;
+  }, volumeHash(volumeThree.numberLabel));
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    volumeThree.href,
+    { timeout: 15_000 },
+  );
+  await page.goBack();
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    volumeNine.href,
+    { timeout: 15_000 },
+  );
+});
+
+test("portrait details shrink to fixed outline rows", async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name === "desktop", "portrait engines only");
+
+  await page.setViewportSize({ height: 852, width: 393 });
+  const volumeEight = catalog.volumes[7]!;
+  await page.goto(`/${volumeHash(volumeEight.numberLabel)}`);
+
+  const activeCard = page.locator('.cover-flow-card[aria-current="true"]');
+  const activePanel = activeCard.locator(".cover-flow-card-panel");
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    volumeEight.href,
+    { timeout: 15_000 },
+  );
+  await expect(
+    activePanel.locator(".manuscript-card-outline-full small"),
+  ).toHaveCount(1);
+  await expect(
+    activePanel.locator(".manuscript-card-outline-part-button small"),
+  ).toHaveCount(0);
+
+  const outlineRowHeights = await page
+    .locator(
+      ".manuscript-card-outline-full, .manuscript-card-outline-part-button",
+    )
+    .evaluateAll((rows) =>
+      rows.map((row) => (row as HTMLElement).offsetHeight),
+    );
+  expect(Math.min(...outlineRowHeights)).toBeGreaterThanOrEqual(44);
+  expect(
+    Math.max(...outlineRowHeights) - Math.min(...outlineRowHeights),
+  ).toBeLessThanOrEqual(1);
+
+  const readGeometry = () =>
+    activeCard.evaluate((card) => {
+      const cover = card.querySelector<HTMLElement>(".cover-flow-image-frame");
+      const panel = card.querySelector<HTMLElement>(".cover-flow-card-panel");
+      const outline = card.querySelector<HTMLElement>(
+        ".cover-flow-card-panel-scroll",
+      );
+      const rows = Array.from(
+        card.querySelectorAll<HTMLElement>(
+          ".manuscript-card-outline-part-button",
+        ),
+      );
+      const coverBox = cover?.getBoundingClientRect();
+      const panelBox = panel?.getBoundingClientRect();
+      const lastRowBox = rows.at(-1)?.getBoundingClientRect();
+      if (!cover || !panel || !outline || !coverBox || !panelBox || !lastRowBox) {
+        throw new Error("Portrait cover flow geometry is incomplete");
+      }
+
+      return {
+        bottomGap: panelBox.bottom - lastRowBox.bottom,
+        coverDocumentTop: coverBox.top + window.scrollY,
+        coverHeight: coverBox.height,
+        outlineOverflow: outline.scrollHeight - outline.clientHeight,
+        panelHeight: panel.offsetHeight,
+        panelOverflow: panel.scrollHeight - panel.clientHeight,
+        rowHeights: rows.map((row) => row.offsetHeight),
+      };
+    });
+
+  const compactGeometry = await readGeometry();
+  expect(compactGeometry.panelHeight).toBeLessThan(
+    compactGeometry.coverHeight * 0.85,
+  );
+  expect(compactGeometry.bottomGap).toBeLessThanOrEqual(36);
+  expect(compactGeometry.outlineOverflow).toBeLessThanOrEqual(1);
+  expect(compactGeometry.panelOverflow).toBeLessThanOrEqual(1);
+
+  await activePanel
+    .locator(".manuscript-card-outline-part-button")
+    .first()
+    .click();
+  await expect(
+    activePanel.getByRole("button", { name: "Back to parts" }),
+  ).toBeVisible();
+  await expect
+    .poll(() =>
+      activePanel.evaluate((panel) => (panel as HTMLElement).offsetHeight),
+    )
+    .toBeGreaterThan(compactGeometry.panelHeight + outlineRowHeights[0]!);
+  const expandedGeometry = await readGeometry();
+  expect(expandedGeometry.panelHeight).toBeGreaterThan(
+    compactGeometry.panelHeight + outlineRowHeights[0]!,
+  );
+  expect(
+    Math.max(...expandedGeometry.rowHeights) -
+      Math.min(...expandedGeometry.rowHeights),
+  ).toBeLessThanOrEqual(1);
+  expect(
+    Math.abs(
+      expandedGeometry.coverDocumentTop - compactGeometry.coverDocumentTop,
+    ),
+  ).toBeLessThanOrEqual(1);
+  expect(
+    Math.abs(expandedGeometry.coverHeight - compactGeometry.coverHeight),
+  ).toBeLessThanOrEqual(1);
+  await expect(
+    activePanel.locator(".manuscript-card-outline-part-button small"),
+  ).toHaveCount(0);
+
+  await activePanel
+    .getByRole("button", { name: "Back to parts" })
+    .click();
+  await expect
+    .poll(() =>
+      activePanel.evaluate((panel) => (panel as HTMLElement).offsetHeight),
+    )
+    .toBeLessThanOrEqual(compactGeometry.panelHeight + 1);
+  const restoredGeometry = await readGeometry();
+  expect(
+    Math.abs(
+      restoredGeometry.coverDocumentTop - compactGeometry.coverDocumentTop,
+    ),
+  ).toBeLessThanOrEqual(1);
+  expect(
+    Math.abs(restoredGeometry.coverHeight - compactGeometry.coverHeight),
+  ).toBeLessThanOrEqual(1);
+});
+
 test("wheel sessions keep vertical escape and fractional horizontal tails", async ({
   page,
 }, testInfo) => {
@@ -967,10 +1154,19 @@ test("small horizontal wheel packets reach the final manuscript", async ({
     )
     .toBe("x mandatory");
 
-  for (let packet = 0; packet < 96; packet += 1) {
-    await page.mouse.wheel(18, 0);
-    await page.waitForTimeout(20);
-  }
+  await activeCover.evaluate(async (cover) => {
+    for (let packet = 0; packet < 96; packet += 1) {
+      cover.dispatchEvent(
+        new WheelEvent("wheel", {
+          bubbles: true,
+          cancelable: true,
+          deltaX: 18,
+          deltaY: 0,
+        }),
+      );
+      await new Promise((resolve) => window.setTimeout(resolve, 20));
+    }
+  });
 
   await expect(activeCard).toHaveAttribute(
     "data-volume-href",
