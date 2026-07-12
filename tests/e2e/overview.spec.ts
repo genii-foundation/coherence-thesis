@@ -115,6 +115,13 @@ test("home page presents the overview and manuscript entry points", async ({
     "font-weight",
     "400",
   );
+  await page.evaluate(() => document.fonts.ready.then(() => undefined));
+  const heroStatsFonts = await heroStats.evaluate((stats) => ({
+    label: getComputedStyle(stats.querySelector("dt")!).fontFamily,
+    value: getComputedStyle(stats.querySelector("dd")!).fontFamily,
+  }));
+  expect(heroStatsFonts.label).toContain("Copperplate");
+  expect(heroStatsFonts.value).toContain("Bellefair");
   await expect(heroStats.locator("dt").first()).toHaveCSS(
     "text-transform",
     "uppercase",

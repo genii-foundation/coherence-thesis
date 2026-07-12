@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Bellefair } from "next/font/google";
 import { HeroActionsIsland } from "@/components/HeroActionsIsland";
 import { HeroStats } from "@/components/HeroStats";
 import { ManuscriptCoverFlowIsland } from "@/components/ManuscriptCoverFlowIsland";
@@ -8,6 +9,12 @@ import { catalog } from "@/lib/manuscript-data";
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
+
+const heroStatsFont = Bellefair({
+  display: "swap",
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const firstReadTarget = catalog.sections[0]!;
 const heroReadTargets = catalog.sections.map((section) => ({
@@ -49,7 +56,9 @@ export default function Home() {
               fallbackHref={firstReadTarget.href}
               sections={heroReadTargets}
             />
-            <HeroStats className="hero-stats hero-stats--copperplate" />
+            <HeroStats
+              className={`hero-stats hero-stats--homepage ${heroStatsFont.className}`}
+            />
           </div>
         </div>
         <div className="hero-art" aria-label="Coherence Thesis cover art">

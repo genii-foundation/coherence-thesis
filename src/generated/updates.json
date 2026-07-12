@@ -2,8 +2,19 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "259e684faceb9de23f921bb293d5c6f4d1c96714",
+  "headSha": "76a8b698b404545d81ac19bf5b2d199239f3be4a",
   "commits": [
+    {
+      "sha": "76a8b698b404545d81ac19bf5b2d199239f3be4a",
+      "committedAt": "2026-07-12T16:54:30.000Z",
+      "subject": "fix: align outline status and toolbar menus (#119)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/76a8b698b404545d81ac19bf5b2d199239f3be4a",
+      "filesChanged": 3,
+      "additions": 205,
+      "deletions": 21,
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-j0gr6pb0x-aubreyfs-projects.vercel.app"
+    },
     {
       "sha": "259e684faceb9de23f921bb293d5c6f4d1c96714",
       "committedAt": "2026-07-12T16:33:11.000Z",
