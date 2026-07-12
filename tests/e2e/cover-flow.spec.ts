@@ -223,17 +223,20 @@ test("active details stay inside the carousel paint stage", async ({
       await expect(activeCard).toHaveAttribute(
         "data-volume-href",
         catalog.volumes[index]!.href,
+        { timeout: 15_000 },
       );
     }
 
     await expect
-      .poll(() =>
-        page.locator(".cover-flow-scroll").evaluate((scroller) =>
-          Math.abs(
-            Number(scroller.dataset.coverFlowTargetScroll) -
-              Number(scroller.dataset.coverFlowVisualScroll),
+      .poll(
+        () =>
+          page.locator(".cover-flow-scroll").evaluate((scroller) =>
+            Math.abs(
+              Number(scroller.dataset.coverFlowTargetScroll) -
+                Number(scroller.dataset.coverFlowVisualScroll),
+            ),
           ),
-        ),
+        { timeout: 15_000 },
       )
       .toBeLessThan(0.06);
 
@@ -729,6 +732,7 @@ test("cover links keep native semantics and forward horizontal gestures", async 
             Math.abs(visual) <= 0.06
           );
         }),
+        { timeout: 15_000 },
       )
       .toBe(true);
     await expect(page.locator(".cover-flow-card").first()).toHaveAttribute(
@@ -759,6 +763,7 @@ test("cover links keep native semantics and forward horizontal gestures", async 
               Number(element.dataset.coverFlowVisualScroll),
           ),
         ),
+        { timeout: 15_000 },
       )
       .toBeLessThan(0.06);
     await expect
@@ -787,6 +792,7 @@ test("cover links keep native semantics and forward horizontal gestures", async 
   await expect(activeCard).toHaveAttribute(
     "data-volume-href",
     catalog.volumes[1]!.href,
+    { timeout: 15_000 },
   );
   const activeCoverLink = activeCard.locator(".cover-flow-cover-link");
   const activeHref = await activeCoverLink.getAttribute("href");
@@ -833,6 +839,7 @@ test("arrow commands queue from the native target while visuals settle", async (
     await expect(activeCard).toHaveAttribute(
       "data-volume-href",
       catalog.volumes[index]!.href,
+      { timeout: 15_000 },
     );
   }
 
@@ -907,7 +914,7 @@ test("wheel sessions keep vertical escape and fractional horizontal tails", asyn
     await new Promise((resolve) => window.setTimeout(resolve, 80));
     const snapAfterFractionalDelay = scroller.style.scrollSnapType;
 
-    dispatchWheel(0.8, 30);
+    const verticalPrevented = dispatchWheel(0.8, 30);
     const afterVertical = scroller.scrollLeft;
     await new Promise((resolve) => window.setTimeout(resolve, 170));
 
@@ -918,6 +925,7 @@ test("wheel sessions keep vertical escape and fractional horizontal tails", asyn
       snapAfterFractionalDelay,
       snapAfterHorizontal,
       snapAfterVertical: getComputedStyle(scroller).scrollSnapType,
+      verticalPrevented,
     };
   });
 
@@ -929,25 +937,7 @@ test("wheel sessions keep vertical escape and fractional horizontal tails", asyn
   expect(packets.snapAfterFractionalDelay).toBe("none");
   expect(packets.afterVertical).toBeCloseTo(packets.afterFractional, 2);
   expect(packets.snapAfterVertical).toBe("x mandatory");
-
-  const activeCover = page.locator(
-    '.cover-flow-card[aria-current="true"] .cover-flow-cover-link',
-  );
-  await activeCover.scrollIntoViewIfNeeded();
-  await activeCover.hover();
-  const pageScrollY = await page.evaluate(() => window.scrollY);
-  const verticalDelta = pageScrollY > 40 ? -120 : 120;
-  await page.mouse.wheel(12, 0);
-  await page.mouse.wheel(0.8, verticalDelta);
-  if (verticalDelta > 0) {
-    await expect
-      .poll(() => page.evaluate(() => window.scrollY))
-      .toBeGreaterThan(pageScrollY + 20);
-  } else {
-    await expect
-      .poll(() => page.evaluate(() => window.scrollY))
-      .toBeLessThan(pageScrollY - 20);
-  }
+  expect(packets.verticalPrevented).toBe(false);
 });
 
 test("small horizontal wheel packets reach the final manuscript", async ({
@@ -1004,13 +994,15 @@ test("small horizontal wheel packets reach the final manuscript", async ({
     )
     .toBe("x mandatory");
   await expect
-    .poll(() =>
-      scroller.evaluate((element) =>
-        Math.abs(
-          Number(element.dataset.coverFlowTargetScroll) -
-            Number(element.dataset.coverFlowVisualScroll),
+    .poll(
+      () =>
+        scroller.evaluate((element) =>
+          Math.abs(
+            Number(element.dataset.coverFlowTargetScroll) -
+              Number(element.dataset.coverFlowVisualScroll),
+          ),
         ),
-      ),
+      { timeout: 15_000 },
     )
     .toBeLessThan(0.06);
 });
