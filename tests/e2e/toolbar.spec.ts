@@ -1219,7 +1219,7 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
   );
 });
 
-test("toolbar positioning does not lag through scroll direction changes", async ({
+test("toolbar stays with the viewport in portrait and desktop layouts", async ({
   page,
 }, testInfo) => {
   await page.setViewportSize(
@@ -1247,6 +1247,7 @@ test("toolbar positioning does not lag through scroll direction changes", async 
     }
 
     return {
+      portrait: window.matchMedia("(orientation: portrait)").matches,
       position: window.getComputedStyle(element).position,
       scrollingElement: document.scrollingElement?.tagName ?? "",
       shellOverflowY: window.getComputedStyle(element.parentElement!).overflowY,
@@ -1257,9 +1258,10 @@ test("toolbar positioning does not lag through scroll direction changes", async 
   expect(contract.scrollingElement).toBe("HTML");
   expect(contract.shellOverflowY).toBe("visible");
   expect(contract.verticalScrollAncestors).toEqual([]);
-  expect(contract.position).toBe(
-    testInfo.project.name === "mobile" ? "static" : "sticky",
-  );
+  expect(contract.position).toBe("sticky");
+  if (testInfo.project.name === "mobile") {
+    expect(contract.portrait).toBe(true);
+  }
 
   const sampleHeader = () =>
     header.evaluate((element) => {
@@ -1267,7 +1269,6 @@ test("toolbar positioning does not lag through scroll direction changes", async 
       const style = window.getComputedStyle(element);
       return {
         boxShadow: style.boxShadow,
-        documentTop: bounds.top + window.scrollY,
         height: bounds.height,
         inlineShadowOpacity: element.style.getPropertyValue(
           "--toolbar-shadow-opacity",
@@ -1303,14 +1304,7 @@ test("toolbar positioning does not lag through scroll direction changes", async 
   expect(samples.every((sample) => sample.inlineShadowOpacity === "")).toBe(true);
   expect(samples.every((sample) => sample.transitionDuration === "0s")).toBe(true);
 
-  if (testInfo.project.name === "mobile") {
-    const documentTops = samples.map((sample) => sample.documentTop);
-    expect(Math.max(...documentTops) - Math.min(...documentTops)).toBeLessThanOrEqual(
-      1,
-    );
-  } else {
-    expect(samples.every((sample) => Math.abs(sample.top) <= 1)).toBe(true);
-  }
+  expect(samples.every((sample) => Math.abs(sample.top) <= 1)).toBe(true);
 });
 
 test("root canvas covers mobile Safari edges without a fixed paint layer", async ({

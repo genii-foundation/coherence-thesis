@@ -5943,7 +5943,6 @@ input {
   .site-header {
     --mobile-toolbar-height: calc(env(safe-area-inset-top) + 3.5625rem);
 
-    position: static;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
