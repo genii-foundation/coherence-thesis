@@ -12,7 +12,8 @@
       "filesChanged": 8,
       "additions": 413,
       "deletions": 122,
-      "isLiterary": false
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-mpc6yuvph-aubreyfs-projects.vercel.app"
     },
     {
       "sha": "402def88884eda4478d4a585ed6f2ab64d6c2b22",
