@@ -2190,20 +2190,34 @@ input {
 
 .cover-flow-scroll {
   position: relative;
+  z-index: 0;
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-y: auto;
   overscroll-behavior-x: contain;
-  perspective: clamp(62rem, 86vw, 84rem);
-  scroll-behavior: smooth;
   scroll-padding-inline: var(--cover-flow-side-gutter);
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
 }
 
 .cover-flow-scroll::-webkit-scrollbar {
   display: none;
+}
+
+.cover-flow-viewport {
+  position: relative;
+}
+
+.cover-flow-card-stage {
+  position: absolute;
+  z-index: 1;
+  top: var(--cover-flow-stage-padding-top);
+  left: 0;
+  width: 100vw;
+  height: var(--cover-flow-stage-min-height);
+  overflow: clip;
+  pointer-events: none;
+  transform-style: flat;
 }
 
 .cover-flow-track {
@@ -2218,6 +2232,15 @@ input {
   transform-style: flat;
 }
 
+.cover-flow-snap {
+  flex: 0 0 var(--cover-flow-scroll-step);
+  min-width: 0;
+  min-height: var(--cover-flow-stage-min-height);
+  pointer-events: none;
+  scroll-snap-align: center;
+  scroll-snap-stop: normal;
+}
+
 .cover-flow-scroll-spacer {
   flex: 0 0 var(--cover-flow-side-gutter);
   min-width: 0;
@@ -2225,26 +2248,45 @@ input {
 }
 
 .cover-flow-card-shell {
-  flex: 0 0 var(--cover-flow-scroll-step);
+  --cover-flow-shift: var(--cover-flow-initial-shift, 0px);
+  position: absolute;
+  top: 0;
+  z-index: var(
+    --cover-flow-layer,
+    var(--cover-flow-initial-layer, 1)
+  );
+  left: calc(50% - var(--cover-flow-scroll-step) / 2);
+  width: var(--cover-flow-scroll-step);
+  min-height: var(--cover-flow-stage-min-height);
   isolation: isolate;
   min-width: 0;
-  position: relative;
+  pointer-events: none;
   scroll-snap-align: center;
   scroll-snap-stop: normal;
+  transform: translateX(var(--cover-flow-shift));
   transform-style: flat;
+  will-change: transform;
 }
 
 .cover-flow-card {
   --card-accent: #77542a;
   --card-rgb: 119 84 42;
-  --cover-flow-cover-shadow-strength: 1;
-  --cover-flow-cover-wash-opacity: 0;
-  --cover-flow-panel-opacity: 1;
-  --cover-flow-panel-visibility: visible;
-  --cover-flow-rotate: 0deg;
-  --cover-flow-scale: 1;
-  --cover-flow-shift: 0px;
-  --cover-flow-z: 0px;
+  --cover-flow-cover-shadow-strength: var(
+    --cover-flow-initial-cover-shadow-strength,
+    1
+  );
+  --cover-flow-cover-wash-opacity: var(
+    --cover-flow-initial-cover-wash-opacity,
+    0
+  );
+  --cover-flow-panel-opacity: var(--cover-flow-initial-panel-opacity, 1);
+  --cover-flow-panel-visibility: var(
+    --cover-flow-initial-panel-visibility,
+    visible
+  );
+  --cover-flow-rotate: var(--cover-flow-initial-rotate, 0deg);
+  --cover-flow-scale: var(--cover-flow-initial-scale, 1);
+  --cover-flow-z: var(--cover-flow-initial-z, 0px);
   display: grid;
   gap: 0;
   position: relative;
@@ -2257,17 +2299,20 @@ input {
   text-decoration: none;
   opacity: 1;
   transform: perspective(var(--cover-flow-card-perspective))
-    translateX(var(--cover-flow-shift)) translateZ(var(--cover-flow-z))
-    rotateY(var(--cover-flow-rotate)) scale(var(--cover-flow-scale));
+    translateZ(var(--cover-flow-z)) rotateY(var(--cover-flow-rotate))
+    scale(var(--cover-flow-scale));
   transform-origin: center var(--cover-flow-cover-origin-y);
   transform-style: flat;
+  pointer-events: none;
   will-change: transform;
 }
 
 .cover-flow-cover-link {
   display: block;
   color: inherit;
+  pointer-events: auto;
   text-decoration: none;
+  touch-action: pan-y;
 }
 
 .cover-flow-cover-link:focus-visible {
@@ -2390,6 +2435,8 @@ input {
   padding: clamp(0.95rem, 1.8vw, 1.2rem);
   margin-top: var(--cover-flow-panel-gap);
   opacity: var(--cover-flow-panel-opacity);
+  pointer-events: auto;
+  touch-action: pan-y;
   transition:
     height 240ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 120ms linear,

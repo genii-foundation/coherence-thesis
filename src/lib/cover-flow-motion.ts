@@ -2,8 +2,13 @@ const clamp = (value: number, min: number, max: number) =>
   Math.max(min, Math.min(max, value));
 
 export const coverFlowTuning = {
+  motion: {
+    maxFrameDeltaMs: 48,
+    settleEpsilonPx: 0.05,
+    smoothingTimeConstantMs: 90,
+  },
   rotation: {
-    maxDegrees: 40,
+    maxDegrees: 27,
     degreesPerCardOffset: 42,
     maxMeasuredOffset: 2.6,
   },
@@ -16,7 +21,6 @@ export const coverFlowTuning = {
   spacing: {
     centerClearancePx: 420,
     centerClearanceCurve: 1.34,
-    nativeScrollStepPx: 224,
     peripheralStackPx: 390,
     peripheralStackCurve: 0.78,
   },
@@ -60,10 +64,7 @@ const visualDistanceForOffset = (distance: number) => {
   );
 };
 
-export function getCoverFlowTransform(
-  offset: number,
-  nativeScrollStepPx = coverFlowTuning.spacing.nativeScrollStepPx,
-) {
+export function getCoverFlowTransform(offset: number) {
   const distance = Math.abs(offset);
   const direction = Math.sign(offset);
   const clampedOffset = clamp(
@@ -72,11 +73,7 @@ export function getCoverFlowTransform(
     coverFlowTuning.rotation.maxMeasuredOffset,
   );
   const visualDistance = visualDistanceForOffset(distance);
-  const nativeDistance = distance * nativeScrollStepPx;
-  const shift =
-    distance < 0.001
-      ? 0
-      : direction * (visualDistance - nativeDistance);
+  const visualX = direction * visualDistance;
   const rotate = clamp(
     clampedOffset * -coverFlowTuning.rotation.degreesPerCardOffset,
     -coverFlowTuning.rotation.maxDegrees,
@@ -119,9 +116,41 @@ export function getCoverFlowTransform(
     panelVisibility,
     rotate,
     scale,
-    shift,
+    visualX,
     z,
   };
+}
+
+export function advanceCoverFlowScroll(
+  current: number,
+  target: number,
+  elapsedMs: number,
+  motionDisabled = false,
+) {
+  if (motionDisabled || !Number.isFinite(current) || !Number.isFinite(target)) {
+    return target;
+  }
+
+  const remaining = target - current;
+  if (Math.abs(remaining) <= coverFlowTuning.motion.settleEpsilonPx) {
+    return target;
+  }
+
+  const boundedElapsedMs = clamp(
+    elapsedMs,
+    0,
+    coverFlowTuning.motion.maxFrameDeltaMs,
+  );
+  const blend =
+    1 -
+    Math.exp(
+      -boundedElapsedMs / coverFlowTuning.motion.smoothingTimeConstantMs,
+    );
+  const next = current + remaining * blend;
+
+  return Math.abs(target - next) <= coverFlowTuning.motion.settleEpsilonPx
+    ? target
+    : next;
 }
 
 export function getCoverFlowLayers(offsets: readonly number[]) {
