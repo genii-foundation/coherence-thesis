@@ -2177,6 +2177,7 @@ input {
   --cover-flow-panel-gap: clamp(0.75rem, 2vw, 1.8rem);
   --cover-flow-panel-width-extra: clamp(7rem, 13vw, 12rem);
   --cover-flow-scroll-step: clamp(10.25rem, 16vw, 14rem);
+  --cover-flow-visual-spacing-scale: 1;
   --cover-flow-side-gutter: calc((100vw - var(--cover-flow-scroll-step)) / 2);
   --cover-flow-stage-min-height: clamp(52rem, 72vw, 68rem);
   --cover-flow-panel-layout-height: max(
@@ -2257,6 +2258,8 @@ input {
 
 .cover-flow-scroll-spacer {
   flex: 0 0 var(--cover-flow-side-gutter);
+  /* WebKit ignores a zero-height flex item when calculating scroll overflow. */
+  min-height: 1px;
   min-width: 0;
   pointer-events: none;
 }
@@ -6471,7 +6474,7 @@ input {
     --cover-flow-arrow-height: 3.2rem;
     --cover-flow-arrow-icon-size: 1.85rem;
     --cover-flow-arrow-width: 3.2rem;
-    --cover-flow-card-width: clamp(8rem, 24vw, 10rem);
+    --cover-flow-card-width: clamp(10rem, 28vw, 12rem);
     --cover-flow-card-perspective: 42rem;
     --cover-flow-panel-max-height: 6.5rem;
     --cover-flow-panel-gap: 0.75rem;
@@ -6479,6 +6482,7 @@ input {
     --cover-flow-stage-min-height: clamp(20rem, 58vw, 24rem);
     --cover-flow-stage-padding-bottom: 0.75rem;
     --cover-flow-stage-padding-top: 0.75rem;
+    --cover-flow-visual-spacing-scale: 0.62;
     margin-top: clamp(1rem, 4vw, 1.5rem);
   }
 
@@ -6496,10 +6500,6 @@ input {
 
   .manuscript-card-description {
     display: none;
-  }
-
-  .cover-flow-edge-button {
-    top: clamp(6.2rem, 18vw, 7.25rem);
   }
 }
 

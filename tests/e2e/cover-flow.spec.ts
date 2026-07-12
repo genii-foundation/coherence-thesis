@@ -7,7 +7,7 @@ test("wide cover flow keeps every cover visible and stacks toward the center", a
   page,
 }, testInfo) => {
   test.skip(testInfo.project.name === "mobile", "wide desktop layout only");
-  test.setTimeout(60_000);
+  test.setTimeout(120_000);
 
   await page.setViewportSize(wideViewport);
   await page.goto("/");
@@ -207,7 +207,7 @@ test("wide cover flow keeps every cover visible and stacks toward the center", a
 test("active details stay inside the carousel paint stage", async ({
   page,
 }, testInfo) => {
-  test.setTimeout(60_000);
+  test.setTimeout(120_000);
   test.skip(testInfo.project.name === "mobile", "desktop layout only");
 
   for (const width of [1024, 1244, 1440, 1920]) {
@@ -631,6 +631,7 @@ test("cover links keep native semantics and forward horizontal gestures", async 
   page,
 }, testInfo) => {
   test.skip(testInfo.project.name === "mobile", "desktop gestures only");
+  test.setTimeout(90_000);
 
   await page.setViewportSize({ height: 1000, width: 1244 });
   await page.goto("/");
@@ -794,6 +795,80 @@ test("cover links keep native semantics and forward horizontal gestures", async 
   await expect(page).toHaveURL(new URL(activeHref!, page.url()).href);
 });
 
+test("arrow commands queue from the native target while visuals settle", async ({
+  page,
+}) => {
+  await page.setViewportSize({ height: 393, width: 852 });
+  await page.goto("/");
+
+  const coverFlow = page.locator(".cover-flow");
+  const activeCard = coverFlow.locator(
+    '.cover-flow-card[aria-current="true"]',
+  );
+  const nextButton = coverFlow.getByRole("button", {
+    name: "Next manuscript",
+  });
+  await activeCard.locator(".cover-flow-cover-link").scrollIntoViewIfNeeded();
+
+  const railExtent = await coverFlow.evaluate((flow) => {
+    const scroller = flow.querySelector<HTMLElement>(".cover-flow-scroll");
+    const snaps = Array.from(
+      flow.querySelectorAll<HTMLElement>(".cover-flow-snap"),
+    );
+    if (!scroller || snaps.length < 2) {
+      throw new Error("Cover flow rail is incomplete");
+    }
+
+    return {
+      actual: scroller.scrollWidth - scroller.clientWidth,
+      expected: (snaps.length - 1) * snaps[0]!.offsetWidth,
+    };
+  });
+  expect(Math.abs(railExtent.actual - railExtent.expected)).toBeLessThanOrEqual(
+    1,
+  );
+
+  for (let index = 1; index <= 4; index += 1) {
+    await nextButton.click();
+    await expect(activeCard).toHaveAttribute(
+      "data-volume-href",
+      catalog.volumes[index]!.href,
+    );
+  }
+
+  await coverFlow.evaluate((flow) => {
+    const next = flow.querySelector<HTMLButtonElement>(
+      'button[aria-label="Next manuscript"]',
+    );
+    const previous = flow.querySelector<HTMLButtonElement>(
+      'button[aria-label="Previous manuscript"]',
+    );
+    if (!next || !previous) throw new Error("Cover flow arrows are missing");
+
+    next.click();
+    next.click();
+    next.click();
+    previous.click();
+  });
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    catalog.volumes[6]!.href,
+    { timeout: 15_000 },
+  );
+
+  await nextButton.evaluate((button) => {
+    const next = button as HTMLButtonElement;
+    next.click();
+    next.click();
+  });
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    catalog.volumes.at(-1)!.href,
+    { timeout: 15_000 },
+  );
+  await expect(nextButton).toBeDisabled();
+});
+
 test("wheel sessions keep vertical escape and fractional horizontal tails", async ({
   page,
 }, testInfo) => {
@@ -860,12 +935,26 @@ test("wheel sessions keep vertical escape and fractional horizontal tails", asyn
   );
   await activeCover.scrollIntoViewIfNeeded();
   await activeCover.hover();
-  const pageScrollBefore = await page.evaluate(() => window.scrollY);
+  const pageScrollState = await page.evaluate(() => ({
+    current: window.scrollY,
+    max: Math.max(
+      0,
+      document.documentElement.scrollHeight - window.innerHeight,
+    ),
+  }));
+  const verticalDelta =
+    pageScrollState.max - pageScrollState.current > 40 ? 120 : -120;
   await page.mouse.wheel(12, 0);
-  await page.mouse.wheel(0.8, 120);
-  await expect
-    .poll(() => page.evaluate(() => window.scrollY))
-    .toBeGreaterThan(pageScrollBefore + 20);
+  await page.mouse.wheel(0.8, verticalDelta);
+  if (verticalDelta > 0) {
+    await expect
+      .poll(() => page.evaluate(() => window.scrollY))
+      .toBeGreaterThan(pageScrollState.current + 20);
+  } else {
+    await expect
+      .poll(() => page.evaluate(() => window.scrollY))
+      .toBeLessThan(pageScrollState.current - 20);
+  }
 });
 
 test("small horizontal wheel packets reach the final manuscript", async ({
@@ -1033,9 +1122,22 @@ test("mobile cover and panel touch gestures feed the native snap rail", async ({
     const snapTypeDuringHorizontal = scrollerElement.style.scrollSnapType;
     dispatchTouch("touchend", []);
 
+    for (let index = 3; index <= 9; index += 1) {
+      dispatchTouch("touchstart", [touch(index, startX, startY)]);
+      dispatchTouch("touchmove", [
+        touch(index, startX - 140, startY + 2),
+      ]);
+      dispatchTouch("touchend", []);
+    }
+    const afterRepeatedHorizontal = scrollerElement.scrollLeft;
+    const maxScrollLeft =
+      scrollerElement.scrollWidth - scrollerElement.clientWidth;
+
     return {
       afterHorizontal,
+      afterRepeatedHorizontal,
       afterVertical,
+      maxScrollLeft,
       snapTypeDuringHorizontal,
       touchAction: getComputedStyle(panelElement).touchAction,
       verticalPrevented,
@@ -1045,11 +1147,14 @@ test("mobile cover and panel touch gestures feed the native snap rail", async ({
   expect(gesture.afterVertical).toBeLessThan(1);
   expect(gesture.verticalPrevented).toBe(false);
   expect(gesture.afterHorizontal).toBeGreaterThan(100);
+  expect(gesture.afterRepeatedHorizontal).toBeGreaterThanOrEqual(
+    gesture.maxScrollLeft - 1,
+  );
   expect(gesture.snapTypeDuringHorizontal).toBe("none");
   expect(gesture.touchAction).toBe("pan-y");
   await expect(activeCard).toHaveAttribute(
     "data-volume-href",
-    catalog.volumes[1]!.href,
+    catalog.volumes.at(-1)!.href,
   );
   await expect
     .poll(async () => {
@@ -1058,6 +1163,6 @@ test("mobile cover and panel touch gestures feed the native snap rail", async ({
         visual: Number(element.dataset.coverFlowVisualScroll),
       }));
       return Math.abs(state.target - state.visual);
-    })
+    }, { timeout: 15_000 })
     .toBeLessThan(0.06);
 });

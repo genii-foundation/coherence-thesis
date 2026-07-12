@@ -70,8 +70,8 @@ const COVER_FLOW_WHEEL_VERTICAL_ESCAPE_RATIO = 2;
 
 type CoverFlowLayoutMetrics = {
   firstCardCenter: number;
-  maxScrollLeft: number;
   scrollStepWidth: number;
+  visualSpacingScale: number;
   viewportWidth: number;
 };
 
@@ -97,6 +97,19 @@ function setStylePropertyIfChanged(
 ) {
   if (style.getPropertyValue(property) === value) return;
   style.setProperty(property, value);
+}
+
+function coverFlowIndexAtScrollLeft(
+  scrollLeft: number,
+  metrics: CoverFlowLayoutMetrics,
+  volumeCount: number,
+) {
+  const centeredIndex = Math.round(
+    (scrollLeft + metrics.viewportWidth / 2 - metrics.firstCardCenter) /
+      metrics.scrollStepWidth,
+  );
+
+  return Math.max(0, Math.min(volumeCount - 1, centeredIndex));
 }
 
 type ManuscriptCardOutlineRowMeta = {
@@ -315,10 +328,19 @@ export function ManuscriptCoverFlowIsland({
     const scrollStepWidth = firstSnap.offsetWidth;
     if (scrollStepWidth <= 0) return null;
 
+    const configuredVisualSpacingScale = Number.parseFloat(
+      window
+        .getComputedStyle(scroller)
+        .getPropertyValue("--cover-flow-visual-spacing-scale"),
+    );
     const metrics = {
       firstCardCenter: firstSnap.offsetLeft + scrollStepWidth / 2,
-      maxScrollLeft: Math.max(0, scroller.scrollWidth - scroller.clientWidth),
       scrollStepWidth,
+      visualSpacingScale:
+        Number.isFinite(configuredVisualSpacingScale) &&
+        configuredVisualSpacingScale > 0
+          ? configuredVisualSpacingScale
+          : 1,
       viewportWidth: scroller.clientWidth,
     };
     layoutMetricsRef.current = metrics;
@@ -369,7 +391,7 @@ export function ManuscriptCoverFlowIsland({
         setStylePropertyIfChanged(
           shell.style,
           "--cover-flow-shift",
-          `${transform.visualX.toFixed(3)}px`,
+          `${(transform.visualX * metrics.visualSpacingScale).toFixed(3)}px`,
         );
         if (card.style.getPropertyValue("--cover-flow-shift")) {
           card.style.removeProperty("--cover-flow-shift");
@@ -416,12 +438,6 @@ export function ManuscriptCoverFlowIsland({
         setStylePropertyIfChanged(shell.style, "--cover-flow-layer", layer);
       });
 
-      if (scrollLeft <= 2) {
-        closestIndex = 0;
-      } else if (metrics.maxScrollLeft - scrollLeft <= 2) {
-        closestIndex = Math.max(volumes.length - 1, 0);
-      }
-
       if (activeIndexRef.current !== closestIndex) {
         activeIndexRef.current = closestIndex;
         setActiveIndex(closestIndex);
@@ -430,7 +446,7 @@ export function ManuscriptCoverFlowIsland({
         targetScrollLeftRef.current.toFixed(3);
       scroller.dataset.coverFlowVisualScroll = scrollLeft.toFixed(3);
     },
-    [measureCoverFlowLayout, volumes.length],
+    [measureCoverFlowLayout],
   );
 
   const schedulePositionUpdate = useCallback(() => {
@@ -544,8 +560,13 @@ export function ManuscriptCoverFlowIsland({
       const targetScrollLeft =
         snap.offsetLeft + snap.offsetWidth / 2 - scroller.clientWidth / 2;
 
+      const boundedTargetScrollLeft = Math.max(
+        0,
+        Math.min(targetScrollLeft, maxScrollLeft),
+      );
+      targetScrollLeftRef.current = boundedTargetScrollLeft;
       scroller.scrollTo({
-        left: Math.max(0, Math.min(targetScrollLeft, maxScrollLeft)),
+        left: boundedTargetScrollLeft,
         behavior,
       });
     },
@@ -556,15 +577,27 @@ export function ManuscriptCoverFlowIsland({
     (scrollLeft: number) => {
       const metrics = layoutMetricsRef.current ?? measureCoverFlowLayout();
       if (!metrics) return;
-      const centeredIndex = Math.round(
-        (scrollLeft +
-          metrics.viewportWidth / 2 -
-          metrics.firstCardCenter) /
-          metrics.scrollStepWidth,
+      scrollToIndex(
+        coverFlowIndexAtScrollLeft(scrollLeft, metrics, volumes.length),
       );
-      scrollToIndex(centeredIndex);
     },
-    [measureCoverFlowLayout, scrollToIndex],
+    [measureCoverFlowLayout, scrollToIndex, volumes.length],
+  );
+
+  const stepCoverFlow = useCallback(
+    (direction: -1 | 1) => {
+      const scroller = scrollRef.current;
+      const metrics = layoutMetricsRef.current ?? measureCoverFlowLayout();
+      if (!scroller || !metrics) return;
+
+      const targetIndex = coverFlowIndexAtScrollLeft(
+        targetScrollLeftRef.current,
+        metrics,
+        volumes.length,
+      );
+      scrollToIndex(targetIndex + direction);
+    },
+    [measureCoverFlowLayout, scrollToIndex, volumes.length],
   );
 
   const coverIndexAtPoint = useCallback((clientX: number, clientY: number) => {
@@ -898,19 +931,19 @@ export function ManuscriptCoverFlowIsland({
       onKeyDown={(event) => {
         if (event.key === "ArrowLeft") {
           event.preventDefault();
-          scrollToIndex(activeIndex - 1);
+          stepCoverFlow(-1);
         }
 
         if (event.key === "ArrowRight") {
           event.preventDefault();
-          scrollToIndex(activeIndex + 1);
+          stepCoverFlow(1);
         }
       }}
     >
       <button
         type="button"
         className="cover-flow-edge-button cover-flow-edge-button-previous"
-        onClick={() => scrollToIndex(activeIndex - 1)}
+        onClick={() => stepCoverFlow(-1)}
         aria-label="Previous manuscript"
         disabled={activeIndex === 0}
       >
@@ -1204,7 +1237,7 @@ export function ManuscriptCoverFlowIsland({
       <button
         type="button"
         className="cover-flow-edge-button cover-flow-edge-button-next"
-        onClick={() => scrollToIndex(activeIndex + 1)}
+        onClick={() => stepCoverFlow(1)}
         aria-label="Next manuscript"
         disabled={activeIndex === volumes.length - 1}
       >
