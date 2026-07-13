@@ -709,7 +709,19 @@ test("reader words can start playback from a focused word", async ({ page }) => 
   const jumpLink = page.getByRole("link", { name: "Jump to playback location" });
   await expect(jumpLink).toHaveAttribute("href", new RegExp(`#${targetHash}$`));
   await expect(targetWord).toHaveClass(/is-audio-current/);
-  await expect(page.locator(".audio-current-speaker")).toBeVisible();
+  const currentSpeaker = page.locator(".audio-current-speaker");
+  await expect(currentSpeaker).toBeVisible();
+  await expect(currentSpeaker).toHaveCSS("position", "absolute");
+  await expect(currentSpeaker).not.toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+  await expect
+    .poll(() =>
+      currentSpeaker.evaluate(
+        (speaker, expectedWordId) =>
+          speaker.closest(".audio-word")?.id === expectedWordId,
+        targetHash,
+      ),
+    )
+    .toBe(true);
   const speakerAlignmentDelta = () =>
     page.evaluate((id) => {
       const word = document.getElementById(id);
@@ -722,7 +734,19 @@ test("reader words can start playback from a focused word", async ({ page }) => 
       return Math.abs(wordCenter - speakerCenter);
     }, targetHash);
   await expect.poll(speakerAlignmentDelta).toBeLessThan(4);
-  await page.evaluate(() => window.scrollBy(0, 24));
+  const immediateScrollDelta = await page.evaluate((id) => {
+    const word = document.getElementById(id);
+    const speaker = word?.querySelector(".audio-current-speaker");
+    if (!word || !speaker) return 999;
+    const wordTop = word.getBoundingClientRect().top;
+    const speakerTop = speaker.getBoundingClientRect().top;
+    window.scrollBy(0, 24);
+    return Math.abs(
+      (word.getBoundingClientRect().top - wordTop) -
+        (speaker.getBoundingClientRect().top - speakerTop),
+    );
+  }, targetHash);
+  expect(immediateScrollDelta).toBeLessThan(0.5);
   await expect.poll(speakerAlignmentDelta).toBeLessThan(4);
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
   await jumpLink.click();

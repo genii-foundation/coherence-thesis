@@ -50,21 +50,6 @@ function positionFor(rect: DOMRect): CSSProperties {
   };
 }
 
-function visibleRectForWordId(wordId: string): DOMRect | null {
-  const word = document.getElementById(wordId);
-  if (!word) return null;
-  const rect = word.getBoundingClientRect();
-  if (
-    rect.width <= 0 ||
-    rect.height <= 0 ||
-    rect.bottom < 0 ||
-    rect.top > window.innerHeight
-  ) {
-    return null;
-  }
-  return rect;
-}
-
 function queryWords(sectionId: string): HTMLElement[] {
   if (!("CSS" in window) || typeof CSS.escape !== "function") return [];
   return Array.from(
@@ -101,7 +86,8 @@ export function ReaderAudioWordInteractionIsland({
   const [hovered, setHovered] = useState<WordTarget | null>(null);
   const [focused, setFocused] = useState<WordTarget | null>(null);
   const [activeWordId, setActiveWordId] = useState<string | null>(null);
-  const [activeRect, setActiveRect] = useState<DOMRect | null>(null);
+  const [speakerPortalTarget, setSpeakerPortalTarget] =
+    useState<HTMLElement | null>(null);
 
   const tooltip = useMemo<TooltipState | null>(() => {
     const target = focused ?? hovered;
@@ -175,11 +161,6 @@ export function ReaderAudioWordInteractionIsland({
         .forEach((element) => element.classList.remove("is-audio-current"));
       word.classList.add("is-audio-current");
       setActiveWordId(word.dataset.audioWordId ?? null);
-      setActiveRect(
-        word.dataset.audioWordId
-          ? visibleRectForWordId(word.dataset.audioWordId)
-          : null,
-      );
     };
     window.addEventListener(progressEventName, onProgress);
     return () => {
@@ -189,20 +170,18 @@ export function ReaderAudioWordInteractionIsland({
 
   useEffect(() => {
     if (!activeWordId) return;
-    let frame = 0;
-    const updateActiveRect = () => {
-      window.cancelAnimationFrame(frame);
-      frame = window.requestAnimationFrame(() => {
-        setActiveRect(visibleRectForWordId(activeWordId));
-      });
-    };
-    updateActiveRect();
-    window.addEventListener("scroll", updateActiveRect, { passive: true });
-    window.addEventListener("resize", updateActiveRect);
+    const activeWord = document.getElementById(activeWordId);
+    if (!activeWord) return;
+    const portalTarget = document.createElement("span");
+    portalTarget.className = "audio-current-speaker-anchor";
+    portalTarget.setAttribute("aria-hidden", "true");
+    activeWord.append(portalTarget);
+    const frame = window.requestAnimationFrame(() => {
+      setSpeakerPortalTarget(portalTarget);
+    });
     return () => {
       window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", updateActiveRect);
-      window.removeEventListener("resize", updateActiveRect);
+      portalTarget.remove();
     };
   }, [activeWordId]);
 
@@ -214,36 +193,33 @@ export function ReaderAudioWordInteractionIsland({
     document.getElementById(focused.id)?.classList.add("is-audio-focused");
   }, [focused]);
 
-  const overlay = (
+  if (typeof document === "undefined") return null;
+
+  return (
     <>
-      {tooltip ? (
-        <button
-          type="button"
-          className={`audio-word-tooltip tooltip-surface${tooltip.focused ? " is-focused" : ""}`}
-          style={positionFor(tooltip.rect)}
-          onClick={() => startPlayback(tooltip)}
-        >
-          {tooltip.focused
-            ? "Click Again to start playback"
-            : "Click Here to Play"}
-        </button>
-      ) : null}
-      {activeRect && activeWordId ? (
-        <span
-          className="audio-current-speaker"
-          style={{
-            left: `${activeRect.left - 18}px`,
-            top: `${activeRect.top + activeRect.height / 2}px`,
-          }}
-          aria-hidden="true"
-        >
-          <Volume2 size={13} />
-        </span>
-      ) : null}
+      {tooltip
+        ? createPortal(
+            <button
+              type="button"
+              className={`audio-word-tooltip tooltip-surface${tooltip.focused ? " is-focused" : ""}`}
+              style={positionFor(tooltip.rect)}
+              onClick={() => startPlayback(tooltip)}
+            >
+              {tooltip.focused
+                ? "Click Again to start playback"
+                : "Click Here to Play"}
+            </button>,
+            document.body,
+          )
+        : null}
+      {speakerPortalTarget
+        ? createPortal(
+            <span className="audio-current-speaker" aria-hidden="true">
+              <Volume2 size={13} />
+            </span>,
+            speakerPortalTarget,
+          )
+        : null}
     </>
   );
-
-  return typeof document === "undefined"
-    ? null
-    : createPortal(overlay, document.body);
 }
