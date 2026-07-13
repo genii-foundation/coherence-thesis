@@ -367,7 +367,9 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     );
     const percent = document.querySelector(".progress-percent");
     const headerBrand = document.querySelector(".site-header > .brand-mark");
-    const headerBrandTitle = headerBrand?.querySelector(".brand-title");
+    const headerBrandTitle = headerBrand?.querySelector(
+      ".brand-title-mobile-home, .brand-title",
+    );
     const headerBrandLogoFull = headerBrand?.querySelector(
       ".brand-title-mobile-logo-full",
     );
@@ -1518,42 +1520,12 @@ test("toolbar brand owns the active manuscript identity", async ({
     );
     await expect(page.locator(".site-nav .mobile-home-link")).toHaveCount(0);
     await expect(brand).toHaveClass(/brand-mark-compact/);
-    await brand.locator(".brand-volume-link").focus();
-    const mobileBrandTooltip = page.locator(".clean-tooltip");
-    await expect(mobileBrandTooltip).toBeVisible();
-    await page.waitForFunction(() => {
-      const tooltip = document.querySelector(".clean-tooltip");
-      if (!tooltip) return false;
-      const arrow = tooltip.querySelector(".clean-tooltip-arrow");
-      const arrowBox = arrow?.getBoundingClientRect();
-      return Boolean(arrowBox && arrowBox.width > 0 && arrowBox.height > 0);
-    });
-    const mobileBrandTooltipAlignment = await page.evaluate(() => {
-      const brandBox = document
-        .querySelector(".site-header > .brand-mark")
-        ?.getBoundingClientRect();
-      const tooltip = document.querySelector(".clean-tooltip");
-      const arrowBox = tooltip
-        ?.querySelector(".clean-tooltip-arrow")
-        ?.getBoundingClientRect();
-
-      return {
-        brandCenter: brandBox ? brandBox.left + brandBox.width / 2 : 0,
-        brandWidth: brandBox?.width ?? 0,
-        tooltipArrowX: arrowBox ? arrowBox.left + arrowBox.width / 2 : 0,
-      };
-    });
-    expect(mobileBrandTooltipAlignment.brandWidth).toBeLessThan(56);
-    expect(
-      Math.abs(
-        mobileBrandTooltipAlignment.tooltipArrowX -
-          mobileBrandTooltipAlignment.brandCenter,
-      ),
-    ).toBeLessThanOrEqual(4);
-    await brand
-      .locator(".brand-volume-link")
-      .evaluate((element) => (element as HTMLElement).blur());
-    await expect(mobileBrandTooltip).toHaveCount(0);
+    await expect(brand.locator(".brand-home-link")).toBeVisible();
+    await expect(brand.locator(".brand-home-link")).toHaveAttribute(
+      "href",
+      "/",
+    );
+    await expect(brand.locator(".brand-volume-link")).toBeHidden();
 
     await page.setViewportSize({ width: 500, height: 760 });
     await expect(brand).toBeVisible();
@@ -1612,6 +1584,10 @@ test("toolbar brand owns the active manuscript identity", async ({
       narrowToolbarMetrics.viewportWidth - narrowToolbarMetrics.progressRight,
     ).toBeLessThanOrEqual(narrowToolbarMetrics.headerPaddingRight + 2);
     await expect(page.locator(".mobile-page-brand")).toBeHidden();
+    await brand.locator(".brand-home-link").click();
+    await expect
+      .poll(() => page.evaluate(() => window.location.pathname))
+      .toBe("/");
     return;
   }
 
