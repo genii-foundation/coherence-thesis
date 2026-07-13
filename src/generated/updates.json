@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "69e6466593adc6864db5f89af16c5b0864f0d824",
+  "headSha": "79c0dfa4314468e89c5f46ce669531ed7ef4a061",
   "commits": [
+    {
+      "sha": "79c0dfa4314468e89c5f46ce669531ed7ef4a061",
+      "committedAt": "2026-07-13T20:51:51.000Z",
+      "subject": "fix: enlarge home hero text (#129)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/79c0dfa4314468e89c5f46ce669531ed7ef4a061",
+      "filesChanged": 3,
+      "additions": 45,
+      "deletions": 6,
+      "isLiterary": false
+    },
     {
       "sha": "69e6466593adc6864db5f89af16c5b0864f0d824",
       "committedAt": "2026-07-13T20:27:03.000Z",
