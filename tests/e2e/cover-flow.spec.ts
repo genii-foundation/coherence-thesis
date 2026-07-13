@@ -208,6 +208,71 @@ test("wide cover flow keeps every cover visible and stacks toward the center", a
   });
 });
 
+test("center and background covers share the hover zoom cue", async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name === "mobile", "desktop hover only");
+
+  await page.setViewportSize(wideViewport);
+  await page.goto("/");
+
+  const coverFlow = page.locator(".cover-flow");
+  const cards = coverFlow.locator(".cover-flow-card");
+  const activeCard = coverFlow.locator(
+    '.cover-flow-card[aria-current="true"]',
+  );
+  const nextButton = coverFlow.getByRole("button", {
+    name: "Next manuscript",
+  });
+
+  for (const index of [1, 2, 3, 4]) {
+    await nextButton.click();
+    await expect(activeCard).toHaveAttribute(
+      "data-volume-href",
+      catalog.volumes[index]!.href,
+    );
+  }
+
+  const scroller = coverFlow.locator(".cover-flow-scroll");
+  await expect
+    .poll(() =>
+      scroller.evaluate((element) =>
+        Math.abs(
+          Number(element.dataset.coverFlowTargetScroll) -
+            Number(element.dataset.coverFlowVisualScroll),
+        ),
+      ),
+    )
+    .toBeLessThan(0.06);
+
+  const expectHoverZoom = async (cardIndex: number) => {
+    const card = cards.nth(cardIndex);
+    const cover = card.locator(".cover-flow-image-frame");
+    const box = await cover.boundingBox();
+    expect(box).not.toBeNull();
+    await page.mouse.move(
+      box!.x + box!.width / 2,
+      box!.y + box!.height / 2,
+    );
+
+    await expect(card).toHaveClass(/\bis-read-cue\b/);
+    await expect
+      .poll(() =>
+        cover.evaluate((element) => {
+          const matrix = new DOMMatrixReadOnly(
+            getComputedStyle(element).transform,
+          );
+          return Math.hypot(matrix.a, matrix.b);
+        }),
+      )
+      .toBeGreaterThan(1.02);
+  };
+
+  await expectHoverZoom(4);
+  await expectHoverZoom(3);
+  await expectHoverZoom(5);
+});
+
 test("active details stay inside the carousel paint stage", async ({
   page,
 }, testInfo) => {

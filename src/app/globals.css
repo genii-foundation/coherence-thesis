@@ -2392,7 +2392,7 @@ input {
     0 2px 0 rgba(255, 255, 255, 0.62) inset;
 }
 
-.cover-flow-card.is-active.is-read-cue .cover-flow-image-frame {
+.cover-flow-card.is-read-cue .cover-flow-image-frame {
   border-color: rgb(var(--card-rgb) / 0.72);
   box-shadow:
     0 46px 80px
