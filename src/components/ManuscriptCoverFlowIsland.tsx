@@ -113,6 +113,10 @@ function coverFlowIndexAtScrollLeft(
 }
 
 function coverFlowHashForVolume(volume: CoverFlowVolume) {
+  return `#volume-${volume.order}`;
+}
+
+function legacyCoverFlowHashForVolume(volume: CoverFlowVolume) {
   return `#volume-${volume.numberLabel.toLowerCase()}`;
 }
 
@@ -121,7 +125,9 @@ function coverFlowIndexForHash(hash: string, volumes: CoverFlowVolume[]) {
   if (normalizedHash === "#manuscripts") return 0;
 
   const index = volumes.findIndex(
-    (volume) => coverFlowHashForVolume(volume) === normalizedHash,
+    (volume) =>
+      coverFlowHashForVolume(volume) === normalizedHash ||
+      legacyCoverFlowHashForVolume(volume) === normalizedHash,
   );
   return index >= 0 ? index : null;
 }

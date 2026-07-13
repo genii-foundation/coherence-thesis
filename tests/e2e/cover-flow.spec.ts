@@ -3,8 +3,8 @@ import { catalog } from "./fixtures";
 
 const wideViewport = { height: 1152, width: 2048 };
 
-function volumeHash(numberLabel: string) {
-  return `#volume-${numberLabel.toLowerCase()}`;
+function volumeHash(order: number) {
+  return `#volume-${order}`;
 }
 
 test("wide cover flow keeps every cover visible and stacks toward the center", async ({
@@ -976,7 +976,7 @@ test("visible volume number stays in the URL hash", async ({ page }) => {
   const volumeNine = catalog.volumes[8]!;
   const volumeThree = catalog.volumes[2]!;
 
-  await page.goto(`/${volumeHash(volumeEight.numberLabel)}`);
+  await page.goto(`/${volumeHash(volumeEight.order)}`);
   const coverFlow = page.locator(".cover-flow");
   const activeCard = coverFlow.locator(
     '.cover-flow-card[aria-current="true"]',
@@ -992,7 +992,7 @@ test("visible volume number stays in the URL hash", async ({ page }) => {
   );
   await expect
     .poll(() => page.evaluate(() => window.location.hash))
-    .toBe(volumeHash(volumeEight.numberLabel));
+    .toBe(volumeHash(volumeEight.order));
   expect(await page.evaluate(() => window.scrollY)).toBeLessThan(1);
 
   const historyLength = await page.evaluate(() => window.history.length);
@@ -1004,7 +1004,7 @@ test("visible volume number stays in the URL hash", async ({ page }) => {
   );
   await expect
     .poll(() => page.evaluate(() => window.location.hash))
-    .toBe(volumeHash(volumeNine.numberLabel));
+    .toBe(volumeHash(volumeNine.order));
   expect(await page.evaluate(() => window.history.length)).toBe(historyLength);
 
   await page.reload();
@@ -1016,7 +1016,7 @@ test("visible volume number stays in the URL hash", async ({ page }) => {
 
   await page.evaluate((hash) => {
     window.location.hash = hash;
-  }, volumeHash(volumeThree.numberLabel));
+  }, volumeHash(volumeThree.order));
   await expect(activeCard).toHaveAttribute(
     "data-volume-href",
     volumeThree.href,
@@ -1030,6 +1030,19 @@ test("visible volume number stays in the URL hash", async ({ page }) => {
   );
 });
 
+test("legacy Roman numeral volume hashes remain valid", async ({ page }) => {
+  const volumeSeven = catalog.volumes[6]!;
+
+  await page.goto("/#volume-vii");
+
+  await expect(
+    page.locator('.cover-flow-card[aria-current="true"]'),
+  ).toHaveAttribute("data-volume-href", volumeSeven.href);
+  await expect
+    .poll(() => page.evaluate(() => window.location.hash))
+    .toBe(volumeHash(volumeSeven.order));
+});
+
 test("portrait details shrink to fixed outline rows", async ({
   page,
 }, testInfo) => {
@@ -1037,7 +1050,7 @@ test("portrait details shrink to fixed outline rows", async ({
 
   await page.setViewportSize({ height: 852, width: 393 });
   const volumeEight = catalog.volumes[7]!;
-  await page.goto(`/${volumeHash(volumeEight.numberLabel)}`);
+  await page.goto(`/${volumeHash(volumeEight.order)}`);
 
   const activeCard = page.locator('.cover-flow-card[aria-current="true"]');
   const activePanel = activeCard.locator(".cover-flow-card-panel");
@@ -1159,7 +1172,7 @@ test("mobile hierarchy swaps do not transfer synthetic hover styling", async ({
 }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile", "mobile touch only");
 
-  await page.goto(`/${volumeHash("III")}`);
+  await page.goto(`/${volumeHash(3)}`);
   const activeCard = page.locator('.cover-flow-card[aria-current="true"]');
   const panel = activeCard.locator(".cover-flow-card-panel");
   await expect(activeCard).toHaveAttribute(

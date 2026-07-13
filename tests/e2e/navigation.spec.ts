@@ -624,7 +624,7 @@ test("organizational manuscript pages expose page navigation", async ({
   page,
 }) => {
   await page.goto("/manuscripts/");
-  await expect(page).toHaveURL("/#volume-i");
+  await expect(page).toHaveURL("/#volume-1");
 
   await page.goto(volumeWithNeighbors.href);
   let footerNav = page.getByRole("navigation", { name: "Page navigation" });
