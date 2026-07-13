@@ -1,10 +1,28 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 import { catalog } from "./fixtures";
 
 const wideViewport = { height: 1152, width: 2048 };
 
 function volumeHash(order: number) {
   return `#${order}`;
+}
+
+async function openCoverFlow(page: Page, href = "/") {
+  await page.goto(href, { waitUntil: "domcontentloaded" });
+  const coverFlow = page.locator(".cover-flow");
+  await expect(coverFlow).toBeVisible();
+  await expect
+    .poll(
+      () =>
+        coverFlow.locator(".cover-flow-scroll").evaluate((scroller) => {
+          return (
+            scroller.dataset.coverFlowTargetScroll !== undefined &&
+            scroller.dataset.coverFlowVisualScroll !== undefined
+          );
+        }),
+      { timeout: 15_000 },
+    )
+    .toBe(true);
 }
 
 test("wide cover flow keeps every cover visible and stacks toward the center", async ({
@@ -14,7 +32,7 @@ test("wide cover flow keeps every cover visible and stacks toward the center", a
   test.setTimeout(240_000);
 
   await page.setViewportSize(wideViewport);
-  await page.goto("/");
+  await openCoverFlow(page);
 
   const coverFlow = page.locator(".cover-flow");
   const cards = coverFlow.locator(".cover-flow-card");
@@ -215,7 +233,7 @@ test("center and background covers share the hover zoom cue", async ({
   test.skip(testInfo.project.name === "mobile", "desktop hover only");
 
   await page.setViewportSize(wideViewport);
-  await page.goto("/");
+  await openCoverFlow(page);
 
   const coverFlow = page.locator(".cover-flow");
   const cards = coverFlow.locator(".cover-flow-card");
@@ -307,7 +325,7 @@ test("active details stay inside the carousel paint stage", async ({
 
   for (const width of [1024, 1244, 1440, 1920]) {
     await page.setViewportSize({ height: 1000, width });
-    await page.goto("/");
+    await openCoverFlow(page);
 
     const activeCard = page.locator('.cover-flow-card[aria-current="true"]');
     const nextButton = page.getByRole("button", {
@@ -377,7 +395,7 @@ test("cover flow scroll frames avoid transformed geometry reads", async ({
   test.skip(testInfo.project.name === "mobile", "desktop motion only");
 
   await page.setViewportSize(wideViewport);
-  await page.goto("/");
+  await openCoverFlow(page);
 
   const metrics = await page.locator(".cover-flow").evaluate(async (flow) => {
     const scroller = flow.querySelector<HTMLElement>(".cover-flow-scroll");
@@ -497,7 +515,7 @@ test("cover flow honors reduced motion without a trailing visual scroll", async 
 
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ height: 1000, width: 1244 });
-  await page.goto("/");
+  await openCoverFlow(page);
 
   const state = await page.locator(".cover-flow-scroll").evaluate(
     async (scroller) => {
@@ -539,7 +557,7 @@ test("cover flow smooths small reversals without moving or reordering early", as
   test.skip(testInfo.project.name === "mobile", "desktop motion only");
 
   await page.setViewportSize({ height: 1000, width: 1244 });
-  await page.goto("/");
+  await openCoverFlow(page);
 
   const result = await page.locator(".cover-flow").evaluate(async (flow) => {
     const scroller = flow.querySelector<HTMLElement>(".cover-flow-scroll");
@@ -732,7 +750,7 @@ test("cover links keep native semantics and forward horizontal gestures", async 
   test.setTimeout(90_000);
 
   await page.setViewportSize({ height: 1000, width: 1244 });
-  await page.goto("/");
+  await openCoverFlow(page);
 
   const scroller = page.locator(".cover-flow-scroll");
   const activeCard = page.locator('.cover-flow-card[aria-current="true"]');
@@ -900,7 +918,7 @@ test("arrow commands queue from the native target while visuals settle", async (
   page,
 }) => {
   await page.setViewportSize({ height: 393, width: 852 });
-  await page.goto("/");
+  await openCoverFlow(page);
 
   const coverFlow = page.locator(".cover-flow");
   const activeCard = coverFlow.locator(
@@ -976,7 +994,7 @@ test("visible volume number stays in the URL hash", async ({ page }) => {
   const volumeNine = catalog.volumes[8]!;
   const volumeThree = catalog.volumes[2]!;
 
-  await page.goto(`/${volumeHash(volumeEight.order)}`);
+  await openCoverFlow(page, `/${volumeHash(volumeEight.order)}`);
   const coverFlow = page.locator(".cover-flow");
   const activeCard = coverFlow.locator(
     '.cover-flow-card[aria-current="true"]',
@@ -1059,7 +1077,7 @@ test("portrait details shrink to fixed outline rows", async ({
 
   await page.setViewportSize({ height: 852, width: 393 });
   const volumeEight = catalog.volumes[7]!;
-  await page.goto(`/${volumeHash(volumeEight.order)}`);
+  await openCoverFlow(page, `/${volumeHash(volumeEight.order)}`);
 
   const activeCard = page.locator('.cover-flow-card[aria-current="true"]');
   const activePanel = activeCard.locator(".cover-flow-card-panel");
@@ -1181,7 +1199,7 @@ test("mobile hierarchy swaps do not transfer synthetic hover styling", async ({
 }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile", "mobile touch only");
 
-  await page.goto(`/${volumeHash(3)}`);
+  await openCoverFlow(page, `/${volumeHash(3)}`);
   const activeCard = page.locator('.cover-flow-card[aria-current="true"]');
   const panel = activeCard.locator(".cover-flow-card-panel");
   await expect(activeCard).toHaveAttribute(
@@ -1238,7 +1256,7 @@ test("wheel sessions keep vertical escape and fractional horizontal tails", asyn
   test.skip(testInfo.project.name === "mobile", "desktop gestures only");
 
   await page.setViewportSize({ height: 1000, width: 1244 });
-  await page.goto("/");
+  await openCoverFlow(page);
 
   const panel = page.locator(
     '.cover-flow-card[aria-current="true"] .cover-flow-card-panel',
@@ -1303,7 +1321,7 @@ test("small horizontal wheel packets reach the final manuscript", async ({
   test.setTimeout(60_000);
 
   await page.setViewportSize({ height: 1000, width: 1244 });
-  await page.goto("/");
+  await openCoverFlow(page);
 
   const coverFlow = page.locator(".cover-flow");
   const scroller = coverFlow.locator(".cover-flow-scroll");
@@ -1377,7 +1395,7 @@ test("mobile cover and panel touch gestures feed the native snap rail", async ({
 }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile", "mobile touch only");
 
-  await page.goto("/");
+  await openCoverFlow(page);
   const coverFlow = page.locator(".cover-flow");
   const scroller = coverFlow.locator(".cover-flow-scroll");
   const activeCard = coverFlow.locator(

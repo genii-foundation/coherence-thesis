@@ -131,8 +131,7 @@ npm run manuscripts:prepare -- --force
 npm run manuscripts:validate
 npm run readme:update
 npm run updates:generate
-npm run validate
-npm run test:e2e
+npm run validate:ui
 ```
 
 6. Inspect the ignored reader materialization and import report for collapse, fragmentation, reordering, or accidental renaming. Do not commit disposable generated fragments or browser payloads.

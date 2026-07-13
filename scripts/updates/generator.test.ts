@@ -90,7 +90,14 @@ function jsonResponse(
 }
 
 describe("updates snapshot generator", () => {
-  it("always refreshes links for production publications", () => {
+  it("refreshes links only when local work opts in or production publishes", () => {
+    expect(shouldRefreshUpdateDeployments({})).toBe(false);
+    expect(
+      shouldRefreshUpdateDeployments({
+        UPDATES_REFRESH_DEPLOYMENTS: "true",
+      }),
+    ).toBe(true);
+    expect(shouldRefreshUpdateDeployments({}, true)).toBe(true);
     expect(
       shouldRefreshUpdateDeployments({
         VERCEL_ENV: "production",
@@ -98,10 +105,13 @@ describe("updates snapshot generator", () => {
       }),
     ).toBe(true);
     expect(
-      shouldRefreshUpdateDeployments({
-        VERCEL_ENV: "preview",
-        UPDATES_REFRESH_DEPLOYMENTS: "true",
-      }),
+      shouldRefreshUpdateDeployments(
+        {
+          VERCEL_ENV: "preview",
+          UPDATES_REFRESH_DEPLOYMENTS: "true",
+        },
+        true,
+      ),
     ).toBe(false);
     expect(
       shouldRefreshUpdateDeployments({

@@ -9,7 +9,7 @@ export default defineConfig({
   },
   test: {
     environment: "node",
-    exclude: ["tests/e2e/**", "node_modules/**", "dist/**", ".next/**"],
+    include: ["{src,scripts}/**/*.{test,spec}.?(c|m)[jt]s?(x)"],
     coverage: {
       provider: "v8",
       reporter: ["text", "lcov"],

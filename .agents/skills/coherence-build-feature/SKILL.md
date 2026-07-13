@@ -45,15 +45,18 @@ Stay on `main` only when the user explicitly requests it. In that case, verify l
    - `npm run manuscripts:prepare -- --force` after manuscript or overview edits
    - `npm run manuscripts:validate` after manuscript or overview reference changes
    - `npm run test` after pure TypeScript or state helper changes
+   - `npm run test:app` for application-only unit coverage
+   - `npm run test:tooling` for manuscript, audio, or Updates tooling coverage
+   - `npm run test:changed` for tests related through Vitest's import graph during ordinary code iteration, but never as the final gate
    - `npm run test:e2e:fast:desktop` for narrow desktop UI checks while iterating
    - `npm run test:e2e:fast` after reader navigation, toolbar, progress, audio, or responsive UI changes while iterating
    - `npm run audio:publish-manifest -- --run-id <run-id> --version <version> --project-ref <supabase-project-ref>` without `--upload` after manuscript changes that may make hosted audiobook clips stale
-11. If multiple user revisions are queued, implement all clear queued tasks on the same focused branch before running the deepest validation pass. Use focused checks during the queue only when they answer a specific implementation question. Run `npm run validate` and `npm run test:e2e` once after the queue is empty unless the user explicitly narrows validation.
+11. If multiple user revisions are queued, implement all clear queued tasks on the same focused branch before running the deepest validation pass. Use focused checks during the queue only when they answer a specific implementation question. Run `npm run validate:ui` once after the queue is empty when any revision can affect browser behavior. Otherwise run `npm run validate`.
 12. Run `npm run readme:update` when stats, package metadata, recent commits, generated catalog state, or development status changed.
 13. Launch a local development preview from the feature worktree on a fresh random port after the feature is implemented. Do this even when another preview is already running. For visible UI work, do not open or update the pull request until the preview is running, unless the user explicitly says not to launch one.
-14. Run `npm run validate` before committing.
+14. Run `npm run validate:ui` before committing when the change can affect browser behavior. Otherwise run `npm run validate`.
 15. After refreshing `origin/main`, run `npm run updates:generate`. Treat `src/generated/updates.json` as the required Updates fallback cache, not disposable build churn. Commit it whenever it advances through the current main base.
-16. If the change affects browser behavior, run `npm run test:e2e` before committing unless the user explicitly narrows the validation target.
+16. Do not run standalone `npm run test:e2e` after `npm run validate:ui`. The combined gate already runs the complete browser matrix against its one production build. Keep standalone browser testing for isolated investigation when no validated build exists.
 17. Review the final diff before staging. Confirm the diff is focused, disposable manuscript outputs are not tracked, durable publishing changes are intentional, the Updates fallback is current, no debug logs or temporary files remain, and unrelated local changes are left alone.
 18. Stage the complete feature, commit with a Conventional Commit title, push the branch, and open or update a focused pull request. Use draft status only when the implementation is incomplete, required validation or preview evidence is missing, or a concrete blocker prevents useful review. Open a complete pull request in the ready state. Use `gh pr ready <number>` only when an existing draft becomes reviewable. If the user requested a direct main change, commit directly on `main` and do not open a pull request unless asked.
 19. As soon as the preview is ready, send the exact URL as a Markdown link in a user-visible update.

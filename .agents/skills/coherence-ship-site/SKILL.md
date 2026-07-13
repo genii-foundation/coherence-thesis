@@ -39,35 +39,29 @@ npm run updates:generate
 npm run updates:verify -- <target-main-sha>
 ```
 
-6. Run the full validation gate:
+6. Run the combined production and browser validation gate. It builds once and runs the complete Playwright matrix against that build:
 
 ```bash
-npm run validate
+npm run validate:ui
 ```
 
-7. Run desktop and mobile browser smoke tests:
-
-```bash
-npm run test:e2e
-```
-
-8. Start or refresh the production preview:
+7. Start or refresh the production preview:
 
 ```bash
 npm start
 ```
 
-9. Verify representative routes:
+8. Verify representative routes:
    - `/`
    - `/overview/`
    - `/updates/`
    - one deep manuscript section route
    - `/sitemap.xml`
    - `/robots.txt`
-10. If deployment has already been explicitly authorized and a target exists, use the project-approved deploy command for that target. Do not invent a raw deploy command. After a main deployment, verify that production `/updates/` contains the deployed commit SHA or merged pull request.
-11. Review the final diff before staging. Confirm disposable manuscript outputs are absent from Git, README state is intentional, preview or deploy evidence is recorded, the Updates fallback is current, and unrelated local changes are left alone. When verifying an already merged main revision, do not create a snapshot-only commit just to record that revision. The next normal pull request carries it forward through its base refresh.
-12. Commit any publish-prep changes with a Conventional Commit title, push the branch, and open or update a focused pull request. Use draft status only while publish preparation, required validation, the premerge deployment target, or preview evidence is incomplete. Open a complete publish pull request in the ready state. Use `gh pr ready <number>` only when an existing draft becomes reviewable. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
-13. When a pull request exists and merge or deployment is not already authorized, share the review evidence and ask for approval. Keep a complete pull request ready for review while waiting.
+9. If deployment has already been explicitly authorized and a target exists, use the project-approved deploy command for that target. Do not invent a raw deploy command. After a main deployment, verify that production `/updates/` contains the deployed commit SHA or merged pull request.
+10. Review the final diff before staging. Confirm disposable manuscript outputs are absent from Git, README state is intentional, preview or deploy evidence is recorded, the Updates fallback is current, and unrelated local changes are left alone. When verifying an already merged main revision, do not create a snapshot-only commit just to record that revision. The next normal pull request carries it forward through its base refresh.
+11. Commit any publish-prep changes with a Conventional Commit title, push the branch, and open or update a focused pull request. Use draft status only while publish preparation, required validation, the premerge deployment target, or preview evidence is incomplete. Open a complete publish pull request in the ready state. Use `gh pr ready <number>` only when an existing draft becomes reviewable. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
+12. When a pull request exists and merge or deployment is not already authorized, share the review evidence and ask for approval. Keep a complete pull request ready for review while waiting.
 
 ## Pull Request Status
 

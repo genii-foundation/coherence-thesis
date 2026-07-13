@@ -4,8 +4,8 @@
 
 - This repository is the canonical source of truth for The Coherence Thesis. Tracked source manuscripts are Markdown files in `sources/manuscripts/`. Reader sections and browser payloads are generated locally and are not committed.
 - Do not edit generated manuscript data by hand. Edit source Markdown, then run `npm run manuscripts:prepare`. Development, tests, and builds run the same preparation automatically.
-- After implementing any feature, run the narrowest useful checks during iteration, then run `npm run validate` before commit.
-- For UI changes, use `npm run test:e2e:fast:desktop` for narrow desktop checks and `npm run test:e2e:fast` for broader local checks during iteration. Run `npm run test:e2e` before commit unless the change cannot affect browser behavior.
+- After implementing any feature, run the narrowest useful checks during iteration. Before commit, run `npm run validate` when the change cannot affect browser behavior, or `npm run validate:ui` when it can.
+- For UI changes, use `npm run test:e2e:fast:desktop` for narrow desktop checks and `npm run test:e2e:fast` for broader local checks during iteration. The final `npm run validate:ui` gate builds once and runs the complete browser suite against that exact build.
 - After every completed feature, commit the complete change and open or update a focused PR without waiting to be asked again.
 - Update `README.md` with `npm run readme:update` when package metadata, manuscript stats, generated catalog state, or development status changes.
 - Before creating a new component, hook, script, or helper, search the repository for an existing primitive that does the same job. If two surfaces need the same UI or logic, extract a shared primitive and have both import it. Duplication is a bug unless there is a clear reason.
@@ -38,6 +38,7 @@ npm run manuscripts:validate
 - The public `/updates/` page is generated from every commit on `main`. Do not write manual changelog entries.
 - `src/generated/updates.json` is the checked fallback and immutable statistics cache. Never edit it by hand. In a pull request, do not discard it as incidental build churn when it advances through the current main base.
 - After refreshing `origin/main`, run `npm run updates:generate` before the final commit on every pull request. Commit the snapshot when it advances. Pull request CI rejects a fallback cache that is behind the current base.
+- Local Updates generation preserves checked deployment mappings by default. Use `npm run updates:generate -- --refresh-deployments` only when intentionally refreshing historical deployment links. Vercel production always refreshes them.
 - A post-merge build on `main` necessarily advances the generated snapshot through its own commit. Do not create a recursive snapshot-only commit for that output. The next normal pull request persists it as part of its base refresh.
 - Production builds must generate history through the exact deployed `main` SHA. They first expand a shallow checkout from the canonical public Git repository, then use the GitHub API as a fallback. If complete Git history and GitHub are both unavailable, production must fail without replacing the last good deployment. It must never publish a green but stale Updates page.
 - Preserve the page contract when changing this pipeline: every commit appears, pull requests are the primary card target when the squash subject identifies one, commit hashes remain available, and file and line statistics remain exact in the generated data.
@@ -77,7 +78,13 @@ npm run manuscripts:validate
 npm run validate
 ```
 
-- UI smoke gate:
+- Combined UI gate, including the full validation gate and browser suite with one production build:
+
+```bash
+npm run validate:ui
+```
+
+- Standalone browser gate, for browser-only verification when no validated build exists yet:
 
 ```bash
 npm run test:e2e
@@ -104,6 +111,7 @@ npm start
 ```
 
 - `npm run validate` already validates manuscript references and generated artifact freshness, type checks, lints, runs unit tests, and builds the production site (a Next.js server deployment with statically prerendered pages plus the auth and account route handlers, not a static export).
+- `npm run validate:ui` runs the same validation and then reuses its production build for the complete Playwright matrix.
 - Use focused tests during implementation when they answer a specific question. Do not spend full validation time after every tiny visual tweak when a batch is still open.
 
 ## Git Workflow
@@ -124,7 +132,7 @@ npm start
 - In every closeout, name the exact remaining gate for a draft or for a ready pull request that should not merge yet.
 - Do not merge changes to a shared UI component inside a PR whose stated purpose does not mention that surface. Move the UI change to a focused branch, or expand the PR scope and validation evidence before review.
 - Commit messages should follow "Conventional Commits" when possible. Use `edit:` for manuscript updates.
-- Run `npm run validate` before opening or updating a PR for merge.
+- Run `npm run validate` before opening or updating a non-browser PR for merge. Run `npm run validate:ui` when the change can affect browser behavior.
 - PR bodies must begin with `(AI Generated).`
 - Squash merge into `main`, then delete the branch and remove the worktree.
 

@@ -151,6 +151,14 @@ No manual changelog entry is needed. The production build runs this command befo
 
 Every pull request refreshes and verifies `src/generated/updates.json` through its current main base. Because main requires current checks before merge, the checked cache stays one successful merge behind at most. Production main builds require the generated history to match the exact deployed SHA. If neither complete Git history nor GitHub can provide that history, the new deployment fails and Vercel keeps the previous good deployment. Local and preview builds may still use the last valid snapshot when offline. The page groups commits by UTC date and shows five dates per numbered page.
 
+Local generation preserves checked historical deployment mappings without probing every stored URL. Refresh those optional links deliberately when needed:
+
+```bash
+npm run updates:generate -- --refresh-deployments
+```
+
+Vercel production publications always refresh and revalidate deployment links, even when local refresh is disabled.
+
 The default view shows all updates. The [Literary view](https://www.coherence-thesis.com/updates/literary/) filters before grouping and pagination to show commits that touched canonical manuscript sources or their historical generated sections. Mixed commits remain literary, while each card keeps the complete commit statistics.
 
 When an exact commit still has a successful public Vercel production deployment, its card can link to that rendered version. These links are keyed by the full commit SHA. Every production publication rechecks every stored historical URL and removes links that Vercel confirms are unavailable. Transient network failures, rate limits, and Vercel server errors preserve the last confirmed link instead of treating uncertainty as deletion. New link discovery remains time bounded. CI preserves the checked mappings because it validates but does not publish the site. This best effort enrichment never replaces or weakens complete history validation.
@@ -177,13 +185,19 @@ Publish audio under a new immutable version path. Never overwrite existing Supab
 
 ## Validation
 
-The full local gate validates manuscript references and generated artifacts, checks types and lint, runs unit tests, and builds the production application:
+The full local gate prepares manuscripts once, validates references and generated artifacts, checks types and lint, runs every unit test, and builds the production application:
 
 ```bash
 npm run validate
 ```
 
-Browser behavior has a separate production gate:
+For changes that can affect browser behavior, use the combined final gate. It reuses the production build from validation for the complete Playwright matrix:
+
+```bash
+npm run validate:ui
+```
+
+The standalone browser gate remains self contained when browser verification is needed without a preceding validation build:
 
 ```bash
 npm run test:e2e
@@ -196,13 +210,18 @@ npm run manuscripts:validate
 npm run typecheck
 npm run lint
 npm run test
+npm run test:app
+npm run test:tooling
+npm run test:changed
 npm run test:e2e:fast:desktop
 npm run test:e2e:fast
 ```
 
-`npm run test:e2e:fast` reuses or starts an isolated development server at `http://127.0.0.1:3200`. For repeated desktop loops, run `npm run dev:e2e` in one terminal and `npm run test:e2e:fast:desktop` in another.
+`test:app` runs application unit tests, `test:tooling` runs publishing and build tooling tests, and `test:changed` uses Vitest's import graph to select tests related to changes from `origin/main`. Files read dynamically from disk are not always visible to that graph, so changed tests are an iteration aid, never the final gate.
 
-GitHub Actions runs validation and the full Playwright suite for pull requests and pushes to `main`.
+`npm run test:e2e:fast` reuses or starts an isolated development server at `http://127.0.0.1:3200`. For repeated desktop loops, run `npm run dev:e2e` in one terminal and `npm run test:e2e:fast:desktop -- tests/e2e/<spec>.spec.ts` in another. Use Playwright's `--grep` or `--last-failed` options to narrow repeated checks further.
+
+GitHub Actions runs validation and the full Playwright suite for pull requests and pushes to `main`. Each job installs dependencies once, and the browser job owns the single production build used by CI.
 
 ## Architecture and Privacy
 
