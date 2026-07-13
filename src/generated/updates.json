@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "480f5dd7fa61c5e924be895ebe7fc87ef56edbf0",
+  "headSha": "34f78e8c8e62134062512331b703e48e667a4958",
   "commits": [
+    {
+      "sha": "34f78e8c8e62134062512331b703e48e667a4958",
+      "committedAt": "2026-07-13T21:54:42.000Z",
+      "subject": "fix: anchor playback speaker to active word (#130)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/34f78e8c8e62134062512331b703e48e667a4958",
+      "filesChanged": 4,
+      "additions": 92,
+      "deletions": 68,
+      "isLiterary": false
+    },
     {
       "sha": "480f5dd7fa61c5e924be895ebe7fc87ef56edbf0",
       "committedAt": "2026-07-13T21:37:48.000Z",
@@ -12,7 +22,8 @@
       "filesChanged": 4,
       "additions": 182,
       "deletions": 10,
-      "isLiterary": false
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-mqvi0amv2-aubreyfs-projects.vercel.app"
     },
     {
       "sha": "79c0dfa4314468e89c5f46ce669531ed7ef4a061",
@@ -22,7 +33,8 @@
       "filesChanged": 3,
       "additions": 45,
       "deletions": 6,
-      "isLiterary": false
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-ohqg3gv7b-aubreyfs-projects.vercel.app"
     },
     {
       "sha": "69e6466593adc6864db5f89af16c5b0864f0d824",
@@ -32,7 +44,8 @@
       "filesChanged": 4,
       "additions": 53,
       "deletions": 47,
-      "isLiterary": false
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-lbnbkaktb-aubreyfs-projects.vercel.app"
     },
     {
       "sha": "8d82ceeeb394ec32604be622dcf3052a52d2a4bc",
@@ -163,8 +176,7 @@
       "filesChanged": 12,
       "additions": 619,
       "deletions": 19,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-w0b9fyjud-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "7cb9619c3186246e5083388c15c4163c2c052a4e",
@@ -174,8 +186,7 @@
       "filesChanged": 3,
       "additions": 136,
       "deletions": 4,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-52k5mv5u1-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "328028c2ed8f854f333e0184ca6ac89ec3db5ea5",
@@ -185,8 +196,7 @@
       "filesChanged": 4,
       "additions": 124,
       "deletions": 3,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-lh3j4xpak-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "348605f93af38d61343e6d73eaef2b3f9c06a835",
@@ -196,8 +206,7 @@
       "filesChanged": 16,
       "additions": 4822,
       "deletions": 5,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-c1us1shp9-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "7eccc336bd4d897268adafcf732752278d70c884",
@@ -207,8 +216,7 @@
       "filesChanged": 116,
       "additions": 4626,
       "deletions": 3,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-ejsgmhmc5-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "0224ed2dc75367ce6b6bc55dfd4302f3adee7dc9",
@@ -218,8 +226,7 @@
       "filesChanged": 6,
       "additions": 86,
       "deletions": 11,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-oeq2flddv-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "998b3057555d2358368e967ab2221865e42f3f13",
@@ -229,8 +236,7 @@
       "filesChanged": 11,
       "additions": 1398,
       "deletions": 1,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-f2m9ua02y-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "9b39730a5fe7c73de6671c68add46a1fc493f027",
@@ -240,8 +246,7 @@
       "filesChanged": 21,
       "additions": 1461,
       "deletions": 203,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-84fs2fpit-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "b137a70fe689012321203f0d0fc3a4ae82a63696",
@@ -251,8 +256,7 @@
       "filesChanged": 597,
       "additions": 1257,
       "deletions": 147665,
-      "isLiterary": true,
-      "deploymentUrl": "https://coherence-thesis-873wzvspr-aubreyfs-projects.vercel.app"
+      "isLiterary": true
     },
     {
       "sha": "e36e5eec4ded30a110b450c6a9801ef9d63b81df",
@@ -272,8 +276,7 @@
       "filesChanged": 6,
       "additions": 85,
       "deletions": 6,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-b4fjfbplr-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "4eb49904ba6de3e18270df67a70ae684e6454d7b",
@@ -293,8 +296,7 @@
       "filesChanged": 4,
       "additions": 325,
       "deletions": 112,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-bhbkohg2g-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "7ad7d376f30530fa77d1b92e67add5d6450dfb13",
@@ -304,8 +306,7 @@
       "filesChanged": 10,
       "additions": 261,
       "deletions": 71,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-j70acawll-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "33fcb60097daf873a84f60fb72b1286b163f3611",
@@ -315,8 +316,7 @@
       "filesChanged": 5,
       "additions": 55,
       "deletions": 16,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-dqcz2ky7a-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "3cf941197343b31dcf9fe6b1611aae315d11225c",
@@ -326,8 +326,7 @@
       "filesChanged": 3,
       "additions": 178,
       "deletions": 17,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-qgr1ysfsg-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "8489f841be9294903a12bfd2c23aea9764e75884",
@@ -337,8 +336,7 @@
       "filesChanged": 2,
       "additions": 29,
       "deletions": 7,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-rkdcd4c5g-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "01497575e8576f3ba1d1dc71f4f7efca6c391716",
@@ -348,8 +346,7 @@
       "filesChanged": 6,
       "additions": 452,
       "deletions": 39,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-5ndngrayi-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "622c1fd25106d17f1bb9c6cb889f1ef9c859013a",
@@ -359,8 +356,7 @@
       "filesChanged": 3,
       "additions": 168,
       "deletions": 6,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-ocmacvlty-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "a7e379081691b9ab91f13d6ae334df19194178f3",
@@ -370,8 +366,7 @@
       "filesChanged": 4,
       "additions": 145,
       "deletions": 7,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-95ca43p30-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "5388e58c85940d264a557f184d5bfe1bae715fc0",
@@ -381,8 +376,7 @@
       "filesChanged": 1,
       "additions": 0,
       "deletions": 5,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-kxlwkln81-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "6f32c54a11e6b4fac71b0eb200d9b81f368ebfaf",
@@ -392,8 +386,7 @@
       "filesChanged": 3,
       "additions": 61,
       "deletions": 9,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-8i8q88nos-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "4920a20875c99e393ed6c4d6e12d5368b2f04bcd",
@@ -403,8 +396,7 @@
       "filesChanged": 1,
       "additions": 9,
       "deletions": 0,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-jsxilkeao-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "d68271bd02028ae71b06f8e29c0327c404e14c7c",
@@ -414,8 +406,7 @@
       "filesChanged": 5,
       "additions": 41,
       "deletions": 26,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-mhoofsdvf-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "c79e5b2680f834705108477b632ac779927692cb",
@@ -425,8 +416,7 @@
       "filesChanged": 42,
       "additions": 41733,
       "deletions": 26661,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-qxe84onvt-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "92b26c5c796a0f817ddfa58fb369e0bff7db4bef",
@@ -436,8 +426,7 @@
       "filesChanged": 3,
       "additions": 177,
       "deletions": 11,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-ofr2nfxz4-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "e237b6c4be5a8d0075675479bfa724c63a1a828d",
@@ -447,8 +436,7 @@
       "filesChanged": 5,
       "additions": 257,
       "deletions": 16,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-fcb03gs9l-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "3baec326c62065227f9e0dddc1564a8365aa7643",
@@ -458,8 +446,7 @@
       "filesChanged": 30,
       "additions": 3389,
       "deletions": 1837,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-dapk4zi3q-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "cfb7aa73f5d084b221073b626c5f61e8fdc6c0d6",
@@ -469,8 +456,7 @@
       "filesChanged": 2,
       "additions": 33,
       "deletions": 1,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-dklzf2llq-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "1103591af6676aca64a1ba08ab08b5a7ddea0a7f",
@@ -480,8 +466,7 @@
       "filesChanged": 3,
       "additions": 61,
       "deletions": 3,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-7skf1qmxb-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "656d5bc4272dfc47cc0b45cf4b09ccda7cbb0597",
@@ -491,8 +476,7 @@
       "filesChanged": 5,
       "additions": 128,
       "deletions": 506,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-8ff0x2isu-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "62114fd9601d6a84b1b3006bfe76c7036cd2fd1e",
@@ -502,8 +486,7 @@
       "filesChanged": 2,
       "additions": 151,
       "deletions": 43,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-12rxac8rw-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "0a150a30abd8719dc2e53a06cebcfdbdc9ecabb6",
@@ -513,8 +496,7 @@
       "filesChanged": 21,
       "additions": 5889,
       "deletions": 294,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-4hcse7ixp-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "daba5de9e4c7f1209ce8fb57f399a2e51f252e56",
@@ -524,8 +506,7 @@
       "filesChanged": 2,
       "additions": 113,
       "deletions": 8,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-8l3oyqhqj-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "1dd708a04a2f11180591ef3b8a0191f882355bc6",
@@ -535,8 +516,7 @@
       "filesChanged": 3,
       "additions": 126,
       "deletions": 22,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-eoun2rxtf-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "92a8340a81e971f87859ce07e3f909989dfd24e0",
@@ -546,8 +526,7 @@
       "filesChanged": 39,
       "additions": 7921,
       "deletions": 712,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-isrjxmk2u-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "17e120bbe19f1f7e8e5a01e145b0ea65cc952890",
@@ -557,8 +536,7 @@
       "filesChanged": 3,
       "additions": 100,
       "deletions": 3,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-69gy1x972-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "b272626e0d1139ef3b211e23e3316895e687ea9e",
@@ -568,8 +546,7 @@
       "filesChanged": 2,
       "additions": 51,
       "deletions": 6,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-28gr3q80i-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "d2b40a7759d7d61cfb78d8e99eed90ef8003e379",
@@ -579,8 +556,7 @@
       "filesChanged": 3,
       "additions": 114,
       "deletions": 23,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-ixdu4u8gr-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "abd42f113e62c1b51b55bd35b19a6e16d52ae9ef",
@@ -590,8 +566,7 @@
       "filesChanged": 3,
       "additions": 74,
       "deletions": 37,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-7ufty0fnt-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "69a84b2fbfd08e0995c490d35ff4e666eeca6bfc",
@@ -601,8 +576,7 @@
       "filesChanged": 6,
       "additions": 173,
       "deletions": 38,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-cj31u5ln7-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "778c1dd5188a8457c1714ee12eed3aa241c84903",
@@ -612,8 +586,7 @@
       "filesChanged": 9,
       "additions": 1445,
       "deletions": 168,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-96jiopxi0-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "cdb58c47670e4739f4858dc88496e054dafc8ac7",
@@ -623,8 +596,7 @@
       "filesChanged": 7,
       "additions": 599,
       "deletions": 157,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-4ajo2mmga-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "9bb7e56014fd8e7d7e087f3624794afbe38cd99a",
@@ -634,8 +606,7 @@
       "filesChanged": 27,
       "additions": 3524,
       "deletions": 306,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-jh5qq65l6-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "73a48360e6f93c6131a935a8e1f74a463ffc8e4c",
@@ -645,8 +616,7 @@
       "filesChanged": 2,
       "additions": 23,
       "deletions": 3,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-dpcb2529p-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "c616e393633a004b7de6bb8d03df68bfebf48443",
@@ -656,8 +626,7 @@
       "filesChanged": 17,
       "additions": 442,
       "deletions": 568,
-      "isLiterary": true,
-      "deploymentUrl": "https://coherence-thesis-5etwwywxd-aubreyfs-projects.vercel.app"
+      "isLiterary": true
     },
     {
       "sha": "64ef4a73428303994903dc721211b3763bac28f3",
@@ -667,8 +636,7 @@
       "filesChanged": 9,
       "additions": 338,
       "deletions": 96,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-pdx71ywnb-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "115c2a00aa56451af0c0aeca7621d29c6ca5f8ad",
@@ -678,8 +646,7 @@
       "filesChanged": 1,
       "additions": 31,
       "deletions": 39,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-4wtnovgbs-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "59824740a0d089638c019a012a807e6497b5b93d",
@@ -689,8 +656,7 @@
       "filesChanged": 20,
       "additions": 246,
       "deletions": 496,
-      "isLiterary": true,
-      "deploymentUrl": "https://coherence-thesis-jl9soldff-aubreyfs-projects.vercel.app"
+      "isLiterary": true
     },
     {
       "sha": "89c100bee293dbe873435c5bce09f60d5b073101",
@@ -700,8 +666,7 @@
       "filesChanged": 15,
       "additions": 566,
       "deletions": 36,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-9d3o4ddno-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "6061372cbf258fcf7364f66851fc8bc73ce9ea38",
@@ -711,8 +676,7 @@
       "filesChanged": 5,
       "additions": 292,
       "deletions": 53,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-m6o49jj6p-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "f7a050db932f1bd9d42db5f9f5894b21dd7e3689",
@@ -722,8 +686,7 @@
       "filesChanged": 3,
       "additions": 101,
       "deletions": 36,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-nit8nsly1-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "06c0b586c3e0245a07382157e23ab9960b36086b",
@@ -733,8 +696,7 @@
       "filesChanged": 12,
       "additions": 1396,
       "deletions": 426,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-7nkg5wpfh-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "1ad591cb65fb8389440e41d970ef7c36bd9dd5c9",
@@ -744,8 +706,7 @@
       "filesChanged": 3,
       "additions": 30,
       "deletions": 24,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-6to0gg983-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "bb9f16e4af692ddbbd85022aba7a558e8cda8c33",
@@ -765,8 +726,7 @@
       "filesChanged": 6,
       "additions": 198,
       "deletions": 130,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-qhnaoj4q8-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "f4fbde56ea091e41222e5545d0ec468a398ca75f",
@@ -776,8 +736,7 @@
       "filesChanged": 9,
       "additions": 161,
       "deletions": 78,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-9cf5fp9cu-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "bca60923cffed1063d71fd5870456301845e039d",
@@ -787,8 +746,7 @@
       "filesChanged": 6,
       "additions": 64,
       "deletions": 22,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-dxvmsgbox-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "e99019bc1f3093a1b164d6a2d6c432ff0ebf365e",
@@ -798,8 +756,7 @@
       "filesChanged": 11,
       "additions": 3115,
       "deletions": 3032,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-md961t83c-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "d8d3b745ca03b0f7842c535723f03c3e4dd19d07",
@@ -809,8 +766,7 @@
       "filesChanged": 6,
       "additions": 389,
       "deletions": 347,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-5900f4069-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "19900f0fbcbdaf805f36cd140dc16a71f7100183",
@@ -820,8 +776,7 @@
       "filesChanged": 4,
       "additions": 62,
       "deletions": 2,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-g2ls0su0o-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "b3a5d8da02637b398831fdf3f8e714d1c71e00f9",
@@ -831,8 +786,7 @@
       "filesChanged": 7,
       "additions": 36,
       "deletions": 51,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-75z2bviq1-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "ba7708c93b3e1aee34815c612d3cabadcbfab1ce",
@@ -842,8 +796,7 @@
       "filesChanged": 17,
       "additions": 13494,
       "deletions": 13421,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-hm30wroey-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "224057dc08b7ae35c58b196331eda83af6d4ac95",
@@ -853,8 +806,7 @@
       "filesChanged": 2,
       "additions": 109,
       "deletions": 2,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-4qh59atuu-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "4c63de5c1eeacd1c2771c49bf60b320900e7dfe2",
@@ -864,8 +816,7 @@
       "filesChanged": 10,
       "additions": 18112,
       "deletions": 50,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-n0k9eobeb-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "942656abc573cf7a12e444d6399c9165fcda4d85",
@@ -875,8 +826,7 @@
       "filesChanged": 4,
       "additions": 198,
       "deletions": 171,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-p2vnbmydd-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "50c1f271a361bfdae761277c585a2bb5928e610c",
@@ -886,8 +836,7 @@
       "filesChanged": 10,
       "additions": 77,
       "deletions": 163,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-hp29yqb8n-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "b95111e6d0af0ce03ef61c26006b2c40649f5f56",
@@ -897,8 +846,7 @@
       "filesChanged": 19,
       "additions": 108,
       "deletions": 95,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-9u6fytwje-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "fbd7e474f0e4b153f5b4e1274f51b78edece29a0",
@@ -908,8 +856,7 @@
       "filesChanged": 3,
       "additions": 245,
       "deletions": 3,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-lnxk8bz5m-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "b29e81b59d173ab8281030e381c0ec2ab43618de",
@@ -919,8 +866,7 @@
       "filesChanged": 7,
       "additions": 2550,
       "deletions": 23,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-nzxa4fh5b-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "3b5fa1bb541412f37a94eb849fe4db0f1d87cae7",
@@ -930,8 +876,7 @@
       "filesChanged": 5,
       "additions": 714,
       "deletions": 161,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-kkc09j0vx-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "ec8f2a78d516dd0dde19a72dfe1a6eaf7e896265",
@@ -941,8 +886,7 @@
       "filesChanged": 3,
       "additions": 131,
       "deletions": 4,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-oj4peq731-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "68afe2ffade17dc25f838028aafba2d80a675800",
@@ -952,8 +896,7 @@
       "filesChanged": 6,
       "additions": 146,
       "deletions": 9,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-k1vxl7xyh-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "0a8078baea263089e63292297bdf504f37b48ef1",
@@ -963,8 +906,7 @@
       "filesChanged": 4,
       "additions": 206,
       "deletions": 6,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-l4oaeq1q6-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "0ac08b190c50b2c489fa8ac7c630bb3dd3fce816",
@@ -974,8 +916,7 @@
       "filesChanged": 6,
       "additions": 76,
       "deletions": 65,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-mlrf8dkco-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "fcbe642503f30a801a2d65fee5052d108c60c7c7",
@@ -985,8 +926,7 @@
       "filesChanged": 9,
       "additions": 693,
       "deletions": 9,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-o368r47ca-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "5e06fe12c95e7d024eab3e93b4108c4784b62b95",
@@ -996,8 +936,7 @@
       "filesChanged": 6,
       "additions": 90,
       "deletions": 90,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-4pcygiytf-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "a273e704a401eb9943c01bf1e4ab9b6e116ebb5e",
@@ -1007,8 +946,7 @@
       "filesChanged": 1,
       "additions": 26,
       "deletions": 0,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-aev6yelwn-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "e3803eefab8ece1f77a5924bced94ba37c15343f",
@@ -1018,8 +956,7 @@
       "filesChanged": 5,
       "additions": 43,
       "deletions": 9,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-3vji9qxek-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "b13dd5855577e7b08302ba64f64ee2cb97f24c95",
@@ -1029,8 +966,7 @@
       "filesChanged": 4,
       "additions": 328,
       "deletions": 288,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-rf2ovxo54-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "5c0e00b8c1729578105e8b28f01dfd9c32ff079e",
@@ -1040,8 +976,7 @@
       "filesChanged": 7,
       "additions": 2437,
       "deletions": 5,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-a7e98b21r-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "4b47c2cc39d81ed7a53a6495b2e2318fb6115c6e",
@@ -1051,8 +986,7 @@
       "filesChanged": 6,
       "additions": 149,
       "deletions": 14,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-9bs02h0fw-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "74165ac3a27d36f64015aaf926f78580fca67154",
@@ -1062,8 +996,7 @@
       "filesChanged": 6,
       "additions": 768,
       "deletions": 54,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-9so2xfbfj-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "8ef4ec08bce8f270ee9e9f83177d826464445239",
@@ -1073,8 +1006,7 @@
       "filesChanged": 9,
       "additions": 247,
       "deletions": 143,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-pou4besxr-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "555ca744c0a6744509c54a8d5d7b225e1238a314",
@@ -1084,8 +1016,7 @@
       "filesChanged": 2,
       "additions": 1,
       "deletions": 48,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-43suljzg5-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "0a25833d2919bb5ea757fc24fe447f7798293ed3",
@@ -1105,8 +1036,7 @@
       "filesChanged": 9,
       "additions": 1388,
       "deletions": 437,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-n9shzmlwp-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "67d3debe27cd0f3471abfd5c0be734b468084870",
@@ -1116,8 +1046,7 @@
       "filesChanged": 14,
       "additions": 1271,
       "deletions": 164,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-p87qcs1uq-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "cb63d9181d8c362f8abc1f5d5b235c24dd1299b4",
@@ -1127,8 +1056,7 @@
       "filesChanged": 12,
       "additions": 1757,
       "deletions": 682,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-d9si088ff-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "c1e3280df5cb0bc8312967fc2cfd2d78081c2830",
@@ -1148,8 +1076,7 @@
       "filesChanged": 15,
       "additions": 2340,
       "deletions": 1583,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-ft6bip17i-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "fe6e647b263b5f5b1f54973bf5ed67f7216dfc6d",
@@ -1159,8 +1086,7 @@
       "filesChanged": 21,
       "additions": 497,
       "deletions": 244,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-prptxaki3-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "a43b6ddd5f0b5afba8c5525db04f9db5f6f119ea",
@@ -1170,8 +1096,7 @@
       "filesChanged": 14,
       "additions": 6210,
       "deletions": 10,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-3z7qrr53r-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "7449fc8c6e3b0186567e39aafb16527074785da0",
@@ -1181,8 +1106,7 @@
       "filesChanged": 5,
       "additions": 100,
       "deletions": 15,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-r874826dy-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "32f59feb7f34ad1e78fd5cc127e1daf893d410ea",
@@ -1192,8 +1116,7 @@
       "filesChanged": 7,
       "additions": 113,
       "deletions": 1436,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-itsopdr0e-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "5e332f403d406e141d3ae6a1e8a226c5a9185d0d",
@@ -1203,8 +1126,7 @@
       "filesChanged": 12,
       "additions": 617,
       "deletions": 60,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-p1ffjaoi3-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "23d2234b19c8612a75a14cf26d3b1bf2a2332a27",
@@ -1214,8 +1136,7 @@
       "filesChanged": 8,
       "additions": 1105,
       "deletions": 154,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-rdheviwa4-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "27b3b4e83c5e7959c33a1b29578e945596e49c02",
@@ -1245,8 +1166,7 @@
       "filesChanged": 7,
       "additions": 1132,
       "deletions": 48,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-6jd1yozxr-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "6625e9c41d6d3c12a6b94af056ae676296b31730",
@@ -1256,8 +1176,7 @@
       "filesChanged": 8,
       "additions": 344,
       "deletions": 9,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-2bv9wbiqm-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "4d4bc8def30cbe8efada66d871d71107d7e03b07",
@@ -1267,8 +1186,7 @@
       "filesChanged": 24,
       "additions": 9685,
       "deletions": 20,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-1aoghjn5n-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "7bb997667988098ba51161f633379026d8ae3fc6",
@@ -1278,8 +1196,7 @@
       "filesChanged": 6,
       "additions": 179,
       "deletions": 53,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-d53qzhbgi-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "ca0d1702c52e073fde39f5519433cbbf42d5ccbe",
@@ -1289,8 +1206,7 @@
       "filesChanged": 2,
       "additions": 14,
       "deletions": 0,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-loalrticc-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "fd20c9c5ba02249e952310a320298c2e5b5a2490",
@@ -1300,8 +1216,7 @@
       "filesChanged": 3,
       "additions": 142,
       "deletions": 0,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-f9jekup3m-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "d6dc2a1ddd444bdddccbc106a9e7141673d10b91",
@@ -1311,8 +1226,7 @@
       "filesChanged": 2,
       "additions": 8,
       "deletions": 8,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-3tsf04jw2-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "4eee72bc486b48746bd4a06fbc30255f8482c29b",
@@ -1322,8 +1236,7 @@
       "filesChanged": 3,
       "additions": 198,
       "deletions": 28,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-o4s4viljf-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "88e489dbb313df37770aa7325800a328c57c3cd6",
@@ -1333,8 +1246,7 @@
       "filesChanged": 26,
       "additions": 39,
       "deletions": 31,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-e0elv6p1p-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "cac180cc107df0228dcbd987b166400a7277ba1d",
@@ -1344,8 +1256,7 @@
       "filesChanged": 3,
       "additions": 116,
       "deletions": 7,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-lvpxmxxlq-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "726e21a59aa117a7624dd650d04b95f1516dfec0",
@@ -1355,8 +1266,7 @@
       "filesChanged": 7,
       "additions": 153,
       "deletions": 4167,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-bqkrof5rn-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "92bc9046bc03e79ee04f4dec2eaf173b8d90c75d",
@@ -1366,8 +1276,7 @@
       "filesChanged": 3,
       "additions": 111,
       "deletions": 3,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-q5cspkfhl-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "848a2e66d37c86eef37cacd8f018013dcd3627b5",
@@ -1377,8 +1286,7 @@
       "filesChanged": 3,
       "additions": 56,
       "deletions": 8,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-odcfk8ks5-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "8115f6801fef531e07a792af80a630e44a95f695",
@@ -1388,8 +1296,7 @@
       "filesChanged": 2,
       "additions": 23,
       "deletions": 11,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-e7v2wuna4-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "05475ff458fcc8c11c3b172c4279dd49c9b7ccec",
@@ -1399,8 +1306,7 @@
       "filesChanged": 4,
       "additions": 232,
       "deletions": 56,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-hjjvl4yb0-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "f1aa97a56b26820044fb131902b5420cbe6443c0",
@@ -1410,8 +1316,7 @@
       "filesChanged": 8,
       "additions": 371,
       "deletions": 4197,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-mjutqzxax-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "417157ea534dc2c4f987a53c5d613f991476ecb5",
@@ -1421,8 +1326,7 @@
       "filesChanged": 3,
       "additions": 40,
       "deletions": 1,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-p1tbae4ia-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "fc358633aeb3cdd312177a82541c796d18d53625",
@@ -1432,8 +1336,7 @@
       "filesChanged": 11,
       "additions": 6650,
       "deletions": 1,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-q5ho20gi8-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "b26b0f56795e0e2facb803ded1ff3a05a0309cdc",
@@ -1443,8 +1346,7 @@
       "filesChanged": 5,
       "additions": 462,
       "deletions": 9,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-iebn2h7pr-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "181d2e44e615995653f2582b148616a0e6ad6b9a",
@@ -1454,8 +1356,7 @@
       "filesChanged": 7,
       "additions": 38,
       "deletions": 4163,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-i1h527hby-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "4465251ec2d23e3ae03b21c5bf54f4640da5e945",
@@ -1465,8 +1366,7 @@
       "filesChanged": 633,
       "additions": 111493,
       "deletions": 5796,
-      "isLiterary": true,
-      "deploymentUrl": "https://coherence-thesis-6n29u6e6l-aubreyfs-projects.vercel.app"
+      "isLiterary": true
     },
     {
       "sha": "bec081a0199fbcc6470397b68d89c8b09ece6748",
@@ -1476,8 +1376,7 @@
       "filesChanged": 3,
       "additions": 35,
       "deletions": 1,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-hsg42fb1n-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "a42b3c43e30440afdb5e20548a4e9e65d3637ca4",
@@ -1487,8 +1386,7 @@
       "filesChanged": 6,
       "additions": 203,
       "deletions": 24,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-q766cnu5j-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "4c31138880b54c9d72ef403d573711a682b65a20",
@@ -1498,8 +1396,7 @@
       "filesChanged": 9,
       "additions": 254,
       "deletions": 50,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-3xvr7hdkg-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "2f101d608701fe320d19ab35e9bcc97126da77e9",
@@ -1509,8 +1406,7 @@
       "filesChanged": 3,
       "additions": 40,
       "deletions": 2,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-87o71v9vk-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "537cb22eebace63e1e677d790a9bd3cd6799e008",
@@ -1520,8 +1416,7 @@
       "filesChanged": 6,
       "additions": 148,
       "deletions": 76,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-1nqink1v4-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "292fb0d8f85c6c7ad5e074ddf386dc58327ba463",
@@ -1531,8 +1426,7 @@
       "filesChanged": 5,
       "additions": 41,
       "deletions": 4,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-a9peicauj-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "f6926b3d87957037bc6b3de6792fa4ec2ccf9c91",
@@ -1542,8 +1436,7 @@
       "filesChanged": 1,
       "additions": 13,
       "deletions": 7,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-q8a62ofb3-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "c4f262163597f710fbc0c3b9b847e6bf5ebf321a",
@@ -1553,8 +1446,7 @@
       "filesChanged": 2,
       "additions": 5,
       "deletions": 0,
-      "isLiterary": false,
-      "deploymentUrl": "https://coherence-thesis-74ploqnb1-aubreyfs-projects.vercel.app"
+      "isLiterary": false
     },
     {
       "sha": "6873ba1716433cb83eca4d484e3ac1e1d2f9eceb",

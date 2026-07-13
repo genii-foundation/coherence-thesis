@@ -19,8 +19,8 @@ const systemVoicePreference = {
   useSystemVoice: true,
 };
 
-function volumeHash(numberLabel: string) {
-  return `#volume-${numberLabel.toLowerCase()}`;
+function volumeHash(order: number) {
+  return `#${order}`;
 }
 
 function sectionForId(sectionId: string) {
@@ -1467,7 +1467,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   );
   if (testInfo.project.name !== "mobile") {
     await page.setViewportSize({ width: 2048, height: 1152 });
-    await page.goto(`/${volumeHash(initialActiveVolume.numberLabel)}`);
+    await page.goto(`/${volumeHash(initialActiveVolume.order)}`);
     await expect(coverFlow).toBeVisible();
     await expect(
       coverFlow.locator('.cover-flow-card[aria-current="true"]'),
@@ -1565,7 +1565,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     });
     await expect
       .poll(() => page.evaluate(() => window.location.hash))
-      .toBe(volumeHash(farBackgroundVolume!.numberLabel));
+      .toBe(volumeHash(farBackgroundVolume!.order));
     await page.reload();
     await expect(coverFlow).toBeVisible();
     await expect(
@@ -1573,7 +1573,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     ).toHaveAttribute("data-volume-href", farBackgroundClickPoint.href, {
       timeout: 15000,
     });
-    await page.goto(`/${volumeHash(initialActiveVolume.numberLabel)}`);
+    await page.goto(`/${volumeHash(initialActiveVolume.order)}`);
     await expect(
       coverFlow.locator('.cover-flow-card[aria-current="true"]'),
     ).toHaveAttribute("data-volume-href", initialActiveVolume.href, {
@@ -1599,7 +1599,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   });
   await expect
     .poll(() => page.evaluate(() => window.location.hash))
-    .toBe(volumeHash(backgroundTarget.numberLabel));
+    .toBe(volumeHash(backgroundTarget.order));
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"] .cover-flow-card-panel strong'),
   ).toHaveText(backgroundTarget.title, { timeout: 15000 });
@@ -1610,7 +1610,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   ).toHaveAttribute("data-volume-href", backgroundTarget.href, {
     timeout: 15000,
   });
-  await page.goto(`/${volumeHash(initialActiveVolume.numberLabel)}`);
+  await page.goto(`/${volumeHash(initialActiveVolume.order)}`);
   await expect(
     coverFlow.locator('.cover-flow-card[aria-current="true"]'),
   ).toHaveAttribute("data-volume-href", initialActiveVolume.href, {
