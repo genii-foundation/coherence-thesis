@@ -1311,7 +1311,7 @@ test("toolbar stays with the viewport in portrait and desktop layouts", async ({
   expect(samples.every((sample) => Math.abs(sample.top) <= 1)).toBe(true);
 });
 
-test("root canvas covers mobile Safari edges without a fixed paint layer", async ({
+test("mobile Safari edges use solid theme fallbacks without a fixed paint layer", async ({
   page,
 }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile", "mobile viewport contract");
@@ -1345,8 +1345,11 @@ test("root canvas covers mobile Safari edges without a fixed paint layer", async
         htmlBackgroundColor: htmlStyle.backgroundColor,
         htmlBackgroundImage: htmlStyle.backgroundImage,
         htmlOverscrollY: htmlStyle.overscrollBehaviorY,
+        pageEdgeBackground: htmlStyle.getPropertyValue("--page-edge-background").trim(),
         scrollingElement: document.scrollingElement?.tagName ?? "",
         shellMinHeight: Number.parseFloat(shellStyle?.minHeight ?? "0"),
+        shellBackgroundColor: shellStyle?.backgroundColor ?? "",
+        shellBackgroundImage: shellStyle?.backgroundImage ?? "",
         shellOverflowY: shellStyle?.overflowY ?? "",
         shellZIndex: shellStyle?.zIndex ?? "",
         themeColor:
@@ -1363,13 +1366,16 @@ test("root canvas covers mobile Safari edges without a fixed paint layer", async
     expect(metrics.viewport).toContain("viewport-fit=cover");
     expect(metrics.htmlBackgroundColor).toBe(hexToRgb(metrics.themeColor));
     expect(metrics.htmlBackgroundImage).toBe("none");
-    expect(metrics.bodyBackgroundColor).not.toBe("rgba(0, 0, 0, 0)");
+    expect(metrics.bodyBackgroundColor).toBe(hexToRgb(metrics.pageEdgeBackground));
+    expect(metrics.bodyBackgroundColor).not.toBe(metrics.htmlBackgroundColor);
     expect(metrics.bodyBackgroundImage).toContain("radial-gradient");
     expect(metrics.htmlOverscrollY).toBe("none");
     expect(metrics.bodyOverscrollY).toBe("none");
     expect(metrics.bodyTextureContent).toBe("none");
     expect(metrics.bodyPosition).toBe("static");
     expect(metrics.bodyIsolation).toBe("auto");
+    expect(metrics.shellBackgroundColor).toBe("rgba(0, 0, 0, 0)");
+    expect(metrics.shellBackgroundImage).toBe("none");
     expect(metrics.shellOverflowY).toBe("visible");
     expect(metrics.shellZIndex).toBe("auto");
     expect(metrics.shellMinHeight).toBeGreaterThanOrEqual(

@@ -57,6 +57,8 @@
     var(--page-texture-noise),
     linear-gradient(180deg, #efe0c5, var(--paper) 42%, #eadbbd);
   --page-background-size: auto, auto, auto, auto, auto, 320px 320px, auto;
+  /* Safari extends this solid color into its browser-owned bottom scroll pocket. */
+  --page-edge-background: #d9ccb3;
 }
 
 html[data-reader-theme="light"] {
@@ -100,6 +102,7 @@ html[data-reader-theme="light"] {
     var(--page-texture-noise),
     linear-gradient(180deg, #f4ead7, #f8f6f1 58%, #f0ebe2);
   --page-background-size: auto, auto, auto, auto, auto, 320px 320px, auto;
+  --page-edge-background: #f8f6f1;
 }
 
 html[data-reader-theme="dark"] {
@@ -133,6 +136,7 @@ html[data-reader-theme="dark"] {
     var(--page-texture-noise),
     linear-gradient(180deg, #11100e, #181715 52%, #0b0a09);
   --page-background-size: auto, auto, auto, 320px 320px, auto;
+  --page-edge-background: #11100e;
 }
 
 html[data-reader-theme="black"] {
@@ -161,6 +165,7 @@ html[data-reader-theme="black"] {
   --glass-background: rgba(0, 0, 0, 0.82);
   --page-background: #000000;
   --page-background-size: auto;
+  --page-edge-background: #000000;
 }
 
 * {
@@ -204,7 +209,7 @@ body {
   overscroll-behavior-y: none;
   margin: 0;
   background: var(--page-background);
-  background-color: var(--paper);
+  background-color: var(--page-edge-background);
   background-size: var(--page-background-size);
   color: var(--ink);
   font-family: var(--font-ui);
