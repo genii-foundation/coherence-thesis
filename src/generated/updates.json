@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "79c0dfa4314468e89c5f46ce669531ed7ef4a061",
+  "headSha": "480f5dd7fa61c5e924be895ebe7fc87ef56edbf0",
   "commits": [
+    {
+      "sha": "480f5dd7fa61c5e924be895ebe7fc87ef56edbf0",
+      "committedAt": "2026-07-13T21:37:48.000Z",
+      "subject": "Fix carousel cover hover behavior (#128)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/480f5dd7fa61c5e924be895ebe7fc87ef56edbf0",
+      "filesChanged": 4,
+      "additions": 182,
+      "deletions": 10,
+      "isLiterary": false
+    },
     {
       "sha": "79c0dfa4314468e89c5f46ce669531ed7ef4a061",
       "committedAt": "2026-07-13T20:51:51.000Z",
