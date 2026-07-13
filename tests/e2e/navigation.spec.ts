@@ -203,7 +203,7 @@ test("unpartitioned volume overviews list their sections directly", async ({
     );
     expect(sections.length).toBeGreaterThan(1);
 
-    await page.goto(volume.href);
+    await page.goto(volume.href, { waitUntil: "domcontentloaded" });
 
     await expect(
       page.getByRole("heading", { level: 2, name: "Sections" }),

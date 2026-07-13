@@ -1,6 +1,9 @@
 import { defineConfig, devices } from "@playwright/test";
+import { resolvePlaywrightServerMode } from "./scripts/playwright-server-mode";
 
-const fastE2e = process.env.PLAYWRIGHT_FAST === "1";
+const serverMode = resolvePlaywrightServerMode(process.env);
+const fastE2e = serverMode === "fast";
+const prebuiltE2e = serverMode === "prebuilt";
 const isCI = !!process.env.CI;
 const baseURL =
   process.env.PLAYWRIGHT_BASE_URL ??
@@ -20,11 +23,13 @@ export default defineConfig({
   webServer: {
     command: fastE2e
       ? "npm run dev:e2e"
-      : "npm run build && npm run preview:production",
+      : prebuiltE2e
+        ? "npm --ignore-scripts run preview:production"
+        : "npm run build && npm run preview:production",
     url: baseURL,
     reuseExistingServer: fastE2e,
-    // The full-mode server runs a production build (manuscript compile, PDF
-    // generation, next build) before serving, which exceeds two minutes on CI.
+    // Standalone full mode can build before serving. Prebuilt mode reuses the
+    // validated build, but keeps this ceiling for slower CI startup.
     timeout: 600000,
   },
   projects: [

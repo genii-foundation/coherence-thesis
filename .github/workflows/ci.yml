@@ -15,6 +15,8 @@ concurrency:
 
 jobs:
   validate:
+    # This display name is a protected status context. Keep it stable even
+    # though the browser job now owns the repository's single build.
     name: Validate (types, lint, unit, build, drift)
     runs-on: ubuntu-latest
     steps:
@@ -27,52 +29,34 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci
-        env:
-          COHERENCE_BOOTSTRAPPING: "1"
+      - name: Bootstrap dependencies
+        run: npm run bootstrap
 
       - name: Materialize manuscript outputs from source
         run: npm run manuscripts:prepare
 
+      - name: Validate editorial debt
+        run: npm --ignore-scripts run manuscripts:debt
+
       - name: Validate manuscript references and artifact freshness
-        run: npm run manuscripts:validate
+        run: npm --ignore-scripts run manuscripts:validate
 
       - name: Type check
-        run: npm run typecheck
+        run: npm --ignore-scripts run typecheck
 
       - name: Lint
-        run: npm run lint
+        run: npm --ignore-scripts run lint
 
       - name: Unit tests with coverage
-        run: npm run test:coverage
-
-      - name: Build
-        run: npm run build
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          UPDATES_REQUIRED_HEAD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.sha }}
-          UPDATES_REFRESH_DEPLOYMENTS: "false"
+        run: npm --ignore-scripts run test:coverage
 
       - name: Check source and durable publishing state remain clean
         run: |
-          npm run manuscripts:source-boundary
+          npm --ignore-scripts run manuscripts:source-boundary
           if ! git diff --exit-code -- content/series; then
             echo "::error::Automatic generation changed durable publishing state. Run the explicit manuscript publishing workflow and commit the reviewed result."
             exit 1
           fi
-
-      - name: Check Updates fallback cache is current
-        if: github.event_name == 'pull_request'
-        run: |
-          if ! git diff --exit-code -- src/generated/updates.json; then
-            echo "::error::src/generated/updates.json is behind main. Run 'npm run updates:generate' after refreshing origin/main and commit the result."
-            exit 1
-          fi
-
-      - name: Verify Updates includes the main push
-        if: github.event_name == 'push'
-        run: npm run updates:verify -- "$GITHUB_SHA"
 
       - name: Dependency audit (advisory)
         run: npm audit --omit=dev --audit-level=high
@@ -91,10 +75,30 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Bootstrap dependencies
+        run: npm run bootstrap
+
+      - name: Materialize manuscript outputs from source
+        run: npm run manuscripts:prepare
+
+      - name: Build production application
+        run: npm --ignore-scripts run build
         env:
-          COHERENCE_BOOTSTRAPPING: "1"
+          GITHUB_TOKEN: ${{ github.token }}
+          UPDATES_REQUIRED_HEAD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.sha }}
+          UPDATES_REFRESH_DEPLOYMENTS: "false"
+
+      - name: Check Updates fallback cache is current
+        if: github.event_name == 'pull_request'
+        run: |
+          if ! git diff --exit-code -- src/generated/updates.json; then
+            echo "::error::src/generated/updates.json is behind main. Run 'npm run updates:generate' after refreshing origin/main and commit the result."
+            exit 1
+          fi
+
+      - name: Verify Updates includes the main push
+        if: github.event_name == 'push'
+        run: npm --ignore-scripts run updates:verify -- "$GITHUB_SHA"
 
       - name: Install Playwright browsers
         # Most browser coverage runs in Chromium. The focused cover flow
@@ -102,12 +106,9 @@ jobs:
         run: npx playwright install --with-deps chromium webkit
 
       - name: Run end-to-end tests
-        run: npm run test:e2e
+        run: npm run test:e2e:built
         env:
           CI: "true"
-          GITHUB_TOKEN: ${{ github.token }}
-          UPDATES_REQUIRED_HEAD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.sha }}
-          UPDATES_REFRESH_DEPLOYMENTS: "false"
 
       - name: Upload Playwright report on failure
         if: failure()

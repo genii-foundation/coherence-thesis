@@ -33,10 +33,11 @@ const maxAnonymousDeploymentLookups = 8;
 
 export function shouldRefreshUpdateDeployments(
   environment: Readonly<Record<string, string | undefined>>,
+  requested = false,
 ): boolean {
   if (environment.VERCEL_ENV === "production") return true;
   if (environment.VERCEL_ENV === "preview") return false;
-  return environment.UPDATES_REFRESH_DEPLOYMENTS !== "false";
+  return requested || environment.UPDATES_REFRESH_DEPLOYMENTS === "true";
 }
 
 export function getRequiredUpdatesHeadSha(

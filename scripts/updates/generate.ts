@@ -31,6 +31,14 @@ function writeSnapshot(value: unknown): void {
 }
 
 async function main(): Promise<void> {
+  const args = process.argv.slice(2);
+  const unexpectedArgs = args.filter(
+    (arg) => arg !== "--refresh-deployments",
+  );
+  if (unexpectedArgs.length > 0) {
+    throw new Error(`Unknown updates option: ${unexpectedArgs.join(", ")}`);
+  }
+
   const authToken = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN;
   const existingSnapshot = readExistingSnapshot();
   const generated = await generateUpdatesSnapshot({
@@ -44,7 +52,10 @@ async function main(): Promise<void> {
       authToken,
       existingSnapshot,
       environment: process.env,
-      refreshDeployments: shouldRefreshUpdateDeployments(process.env),
+      refreshDeployments: shouldRefreshUpdateDeployments(
+        process.env,
+        args.includes("--refresh-deployments"),
+      ),
     }),
   };
 

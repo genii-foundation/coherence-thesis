@@ -98,6 +98,8 @@ After bringing a pull request up to date with `main`, refresh the checked fallba
 npm run updates:generate
 ```
 
+This local command preserves cached deployment links. Maintainers can explicitly revalidate historical deployment links with `npm run updates:generate -- --refresh-deployments`. Production publications always perform that revalidation.
+
 Do not edit `src/generated/updates.json` manually. It caches immutable file and line statistics by commit SHA so production only needs to fetch the newest merge. Pull request CI checks that this cache matches the current base. A shallow production checkout first expands `main` from the canonical public Git repository, then falls back to the GitHub API. The deployment fails instead of publishing stale history when neither source can generate through the deployed main SHA.
 
 The default Updates view includes every commit. The Literary view includes commits whose changed or renamed paths touch `sources/manuscripts/` or `content/manuscripts/`. This path rule preserves manuscript history across the source publishing transition and does not rely on commit message conventions.
@@ -106,17 +108,19 @@ Cards may include a best effort `View version` link to the successful public Ver
 
 ## Validation
 
-Run focused checks while developing, then run the full gate before requesting review:
+Run focused checks while developing. For changes that cannot affect browser behavior, run the full static gate before requesting review:
 
 ```bash
 npm run validate
 ```
 
-If the change can affect browser behavior, also run:
+If the change can affect browser behavior, use the combined final gate instead. It builds once and runs Playwright against that exact build:
 
 ```bash
-npm run test:e2e
+npm run validate:ui
 ```
+
+`npm run test:e2e` remains available as a self-contained browser gate when a validated production build does not already exist.
 
 Useful focused checks include:
 
@@ -125,6 +129,9 @@ npm run manuscripts:validate
 npm run typecheck
 npm run lint
 npm run test
+npm run test:app
+npm run test:tooling
+npm run test:changed
 npm run test:e2e:fast:desktop
 npm run test:e2e:fast
 ```

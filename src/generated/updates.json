@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "34f78e8c8e62134062512331b703e48e667a4958",
+  "headSha": "0b10ae63d845347868a21e9f469689c67a4cc3ee",
   "commits": [
+    {
+      "sha": "0b10ae63d845347868a21e9f469689c67a4cc3ee",
+      "committedAt": "2026-07-13T22:54:19.000Z",
+      "subject": "Use numeric homepage volume anchors (#131)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/0b10ae63d845347868a21e9f469689c67a4cc3ee",
+      "filesChanged": 5,
+      "additions": 196,
+      "deletions": 264,
+      "isLiterary": false
+    },
     {
       "sha": "34f78e8c8e62134062512331b703e48e667a4958",
       "committedAt": "2026-07-13T21:54:42.000Z",
