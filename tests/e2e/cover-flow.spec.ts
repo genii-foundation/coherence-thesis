@@ -1128,6 +1128,62 @@ test("portrait details shrink to fixed outline rows", async ({
   ).toBeLessThanOrEqual(1);
 });
 
+test("mobile hierarchy swaps do not transfer synthetic hover styling", async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== "mobile", "mobile touch only");
+
+  await page.goto(`/${volumeHash("III")}`);
+  const activeCard = page.locator('.cover-flow-card[aria-current="true"]');
+  const panel = activeCard.locator(".cover-flow-card-panel");
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    catalog.volumes[2]!.href,
+  );
+  await panel.scrollIntoViewIfNeeded();
+
+  await panel.getByRole("button", { name: "The Reckoning" }).tap();
+  const centralWound = panel.getByRole("link", {
+    name: "The Central Wound",
+  });
+  const untouchedSibling = panel.getByRole("link", {
+    name: "On the Meaning of Coordination Failure",
+  });
+  await expect(centralWound).toBeVisible();
+  await page.waitForTimeout(300);
+
+  const visualState = await centralWound.evaluate((row, sibling) => {
+    if (!(sibling instanceof HTMLElement)) {
+      throw new Error("Comparison outline row is missing");
+    }
+    const readStyles = (element: Element) => {
+      const rowStyle = getComputedStyle(element);
+      const title = element.querySelector(".manuscript-card-outline-title");
+      const label = title?.querySelector("span");
+      return {
+        backgroundColor: rowStyle.backgroundColor,
+        borderColor: rowStyle.borderColor,
+        color: rowStyle.color,
+        labelDecorationColor: label
+          ? getComputedStyle(label).textDecorationColor
+          : null,
+        titleTransform: title ? getComputedStyle(title).transform : null,
+      };
+    };
+
+    return {
+      focused: row.matches(":focus-visible"),
+      hovered: row.matches(":hover"),
+      row: readStyles(row),
+      sibling: readStyles(sibling),
+    };
+  }, await untouchedSibling.elementHandle());
+
+  expect(visualState.hovered).toBe(true);
+  expect(visualState.focused).toBe(false);
+  expect(visualState.row).toEqual(visualState.sibling);
+});
+
 test("wheel sessions keep vertical escape and fractional horizontal tails", async ({
   page,
 }, testInfo) => {

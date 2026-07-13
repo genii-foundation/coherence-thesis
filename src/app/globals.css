@@ -2584,7 +2584,6 @@ input {
   .manuscript-card-outline-title,
 .manuscript-card-outline-full:hover .manuscript-card-outline-title,
 .manuscript-card-outline-full:focus-visible .manuscript-card-outline-title,
-.manuscript-card-outline-part-button:hover .manuscript-card-outline-title,
 .manuscript-card-outline-part-button:focus-visible .manuscript-card-outline-title {
   transform: translateX(0.28rem);
 }
@@ -2602,7 +2601,6 @@ input {
 .manuscript-card-outline-full:focus-visible
   .manuscript-card-outline-title
   > span,
-.manuscript-card-outline-part-button:hover .manuscript-card-outline-title > span,
 .manuscript-card-outline-part-button:focus-visible
   .manuscript-card-outline-title
   > span {
@@ -2698,12 +2696,30 @@ input {
     text-decoration-color 140ms ease;
 }
 
-.manuscript-card-outline-part-button:hover,
 .manuscript-card-outline-part-button:focus-visible {
   border-color: rgba(119, 84, 42, 0.28);
   background: rgba(164, 123, 63, 0.1);
   color: var(--ink);
   outline: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .manuscript-card-outline-part-button:hover {
+    border-color: rgba(119, 84, 42, 0.28);
+    background: rgba(164, 123, 63, 0.1);
+    color: var(--ink);
+    outline: none;
+  }
+
+  .manuscript-card-outline-part-button:hover .manuscript-card-outline-title {
+    transform: translateX(0.28rem);
+  }
+
+  .manuscript-card-outline-part-button:hover
+    .manuscript-card-outline-title
+    > span {
+    text-decoration-color: currentColor;
+  }
 }
 
 .manuscript-card-outline-title {
