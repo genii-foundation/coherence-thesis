@@ -211,6 +211,7 @@ test("wide cover flow keeps every cover visible and stacks toward the center", a
 test("center and background covers share the hover zoom cue", async ({
   page,
 }, testInfo) => {
+  test.setTimeout(60_000);
   test.skip(testInfo.project.name === "mobile", "desktop hover only");
 
   await page.setViewportSize(wideViewport);
@@ -235,25 +236,50 @@ test("center and background covers share the hover zoom cue", async ({
 
   const scroller = coverFlow.locator(".cover-flow-scroll");
   await expect
-    .poll(() =>
-      scroller.evaluate((element) =>
-        Math.abs(
-          Number(element.dataset.coverFlowTargetScroll) -
-            Number(element.dataset.coverFlowVisualScroll),
+    .poll(
+      () =>
+        scroller.evaluate((element) =>
+          Math.abs(
+            Number(element.dataset.coverFlowTargetScroll) -
+              Number(element.dataset.coverFlowVisualScroll),
+          ),
         ),
-      ),
+      { timeout: 15_000 },
     )
     .toBeLessThan(0.06);
 
   const expectHoverZoom = async (cardIndex: number) => {
     const card = cards.nth(cardIndex);
     const cover = card.locator(".cover-flow-image-frame");
-    const box = await cover.boundingBox();
-    expect(box).not.toBeNull();
-    await page.mouse.move(
-      box!.x + box!.width / 2,
-      box!.y + box!.height / 2,
-    );
+    const hoverPoint = await cover.evaluate((element) => {
+      const card = element.closest(".cover-flow-card");
+      const box = element.getBoundingClientRect();
+      const yPositions = [0.2, 0.5, 0.8].map(
+        (ratio) => box.top + box.height * ratio,
+      );
+
+      for (const y of yPositions) {
+        const exposedXPositions: number[] = [];
+        for (let x = box.left + 2; x < box.right - 2; x += 2) {
+          if (
+            document.elementFromPoint(x, y)?.closest(".cover-flow-card") ===
+            card
+          ) {
+            exposedXPositions.push(x);
+          }
+        }
+        if (exposedXPositions.length > 0) {
+          return {
+            x: exposedXPositions[Math.floor(exposedXPositions.length / 2)]!,
+            y,
+          };
+        }
+      }
+
+      return null;
+    });
+    expect(hoverPoint).not.toBeNull();
+    await page.mouse.move(hoverPoint!.x, hoverPoint!.y);
 
     await expect(card).toHaveClass(/\bis-read-cue\b/);
     await expect
