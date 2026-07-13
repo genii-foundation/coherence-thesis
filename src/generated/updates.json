@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "8d82ceeeb394ec32604be622dcf3052a52d2a4bc",
+  "headSha": "69e6466593adc6864db5f89af16c5b0864f0d824",
   "commits": [
+    {
+      "sha": "69e6466593adc6864db5f89af16c5b0864f0d824",
+      "committedAt": "2026-07-13T20:27:03.000Z",
+      "subject": "fix: route mobile CT logo home (#127)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/69e6466593adc6864db5f89af16c5b0864f0d824",
+      "filesChanged": 4,
+      "additions": 53,
+      "deletions": 47,
+      "isLiterary": false
+    },
     {
       "sha": "8d82ceeeb394ec32604be622dcf3052a52d2a4bc",
       "committedAt": "2026-07-13T01:17:24.000Z",

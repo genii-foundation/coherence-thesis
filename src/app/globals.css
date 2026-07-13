@@ -1964,7 +1964,7 @@ input {
   max-width: 43rem;
   margin: var(--home-hero-copy-gap) 0 0;
   color: var(--ink-soft);
-  font-size: clamp(1.05rem, 1.2rem, 1.28rem);
+  font-size: 1.28rem;
   line-height: 1.58;
 }
 
@@ -1987,6 +1987,11 @@ input {
 .hero-cta-stack .hero-actions {
   width: 100%;
   margin-top: 0;
+}
+
+.hero-actions .primary-link,
+.hero-actions .secondary-link {
+  font-size: 1.18rem;
 }
 
 .primary-link,
@@ -2085,7 +2090,7 @@ input {
   margin-top: 0.06rem;
   color: var(--bronze-deep);
   font-family: "Copperplate", "Copperplate Gothic Light", var(--font-fraunces), serif;
-  font-size: 0.58rem;
+  font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -2094,7 +2099,7 @@ input {
 .hero-stats--homepage dd {
   color: var(--ink);
   font-family: inherit;
-  font-size: clamp(1.22rem, 2.8vw, 1.86rem);
+  font-size: clamp(1.48rem, 3.3vw, 2.2rem);
   font-weight: 400;
   letter-spacing: 0.025em;
   line-height: 0.98;
@@ -6385,7 +6390,7 @@ input {
   }
 
   .hero-deck {
-    font-size: 1.04rem;
+    font-size: 1.1rem;
   }
 
   .hero-actions {
@@ -6421,7 +6426,7 @@ input {
     padding: 0.7rem 0.4rem;
     width: 100%;
     justify-content: center;
-    font-size: clamp(0.76rem, 3.1vw, 0.92rem);
+    font-size: clamp(0.9rem, 3.6vw, 1.05rem);
   }
 
   .stats-band,

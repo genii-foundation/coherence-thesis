@@ -126,6 +126,30 @@ test("home page presents the overview and manuscript entry points", async ({
   }));
   expect(heroStatsFonts.label).toContain("Copperplate");
   expect(heroStatsFonts.value).toContain("Bellefair");
+  const heroTypography = await page.evaluate(() => ({
+    action: Number.parseFloat(
+      getComputedStyle(document.querySelector(".hero-actions a")!).fontSize,
+    ),
+    deck: Number.parseFloat(
+      getComputedStyle(document.querySelector(".hero-deck")!).fontSize,
+    ),
+    statLabel: Number.parseFloat(
+      getComputedStyle(document.querySelector(".hero-stats dt")!).fontSize,
+    ),
+    statValue: Number.parseFloat(
+      getComputedStyle(document.querySelector(".hero-stats dd")!).fontSize,
+    ),
+  }));
+  if (testInfo.project.name === "mobile") {
+    expect(heroTypography.action).toBeCloseTo(14.4, 1);
+    expect(heroTypography.deck).toBeCloseTo(17.6, 1);
+    expect(heroTypography.statValue).toBeCloseTo(23.68, 1);
+  } else {
+    expect(heroTypography.action).toBeCloseTo(18.88, 1);
+    expect(heroTypography.deck).toBeCloseTo(20.48, 1);
+    expect(heroTypography.statValue).toBeCloseTo(35.2, 1);
+  }
+  expect(heroTypography.statLabel).toBeCloseTo(11.52, 1);
   await expect(heroStats.locator("dt").first()).toHaveCSS(
     "text-transform",
     "uppercase",
