@@ -2,8 +2,19 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "96f7136261814834485f62902902bdd8bfa68000",
+  "headSha": "8d82ceeeb394ec32604be622dcf3052a52d2a4bc",
   "commits": [
+    {
+      "sha": "8d82ceeeb394ec32604be622dcf3052a52d2a4bc",
+      "committedAt": "2026-07-13T01:17:24.000Z",
+      "subject": "fix: keep portrait toolbar with viewport (#124)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/8d82ceeeb394ec32604be622dcf3052a52d2a4bc",
+      "filesChanged": 3,
+      "additions": 18,
+      "deletions": 15,
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-bo6jyjqs2-aubreyfs-projects.vercel.app"
+    },
     {
       "sha": "96f7136261814834485f62902902bdd8bfa68000",
       "committedAt": "2026-07-13T00:49:48.000Z",
@@ -12,7 +23,8 @@
       "filesChanged": 6,
       "additions": 360,
       "deletions": 37,
-      "isLiterary": false
+      "isLiterary": false,
+      "deploymentUrl": "https://coherence-thesis-e5fta4muf-aubreyfs-projects.vercel.app"
     },
     {
       "sha": "d132db338799cb4bf123b8ad2080a346738afd8d",

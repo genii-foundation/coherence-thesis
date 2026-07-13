@@ -491,6 +491,12 @@ input {
   display: none;
 }
 
+.brand-title-mobile-home {
+  display: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 160ms ease;
+}
+
 .brand-title-mobile-logo-initials {
   display: none;
   font-family: var(--font-display);
@@ -5967,7 +5973,12 @@ input {
     padding: 0.2rem 0 0.2rem 0.4rem;
   }
 
-  .site-header .brand-home-link {
+  .site-header .brand-mark-active .brand-home-link,
+  .site-header .brand-title-mobile-home {
+    display: block;
+  }
+
+  .site-header .brand-mark-active .brand-volume-link {
     display: none;
   }
 
@@ -5997,7 +6008,9 @@ input {
 
   .site-header .brand-mark:hover .brand-title,
   .site-header .brand-mark:focus .brand-title,
-  .site-header .brand-mark:focus-visible .brand-title {
+  .site-header .brand-mark:focus-visible .brand-title,
+  .site-header .brand-home-link:hover .brand-title-mobile-home,
+  .site-header .brand-home-link:focus-visible .brand-title-mobile-home {
     border-color: rgba(119, 84, 42, 0.62);
   }
 
