@@ -208,6 +208,97 @@ test("wide cover flow keeps every cover visible and stacks toward the center", a
   });
 });
 
+test("center and background covers share the hover zoom cue", async ({
+  page,
+}, testInfo) => {
+  test.setTimeout(60_000);
+  test.skip(testInfo.project.name === "mobile", "desktop hover only");
+
+  await page.setViewportSize(wideViewport);
+  await page.goto("/");
+
+  const coverFlow = page.locator(".cover-flow");
+  const cards = coverFlow.locator(".cover-flow-card");
+  const activeCard = coverFlow.locator(
+    '.cover-flow-card[aria-current="true"]',
+  );
+  const nextButton = coverFlow.getByRole("button", {
+    name: "Next manuscript",
+  });
+
+  for (const index of [1, 2, 3, 4]) {
+    await nextButton.click();
+    await expect(activeCard).toHaveAttribute(
+      "data-volume-href",
+      catalog.volumes[index]!.href,
+    );
+  }
+
+  const scroller = coverFlow.locator(".cover-flow-scroll");
+  await expect
+    .poll(
+      () =>
+        scroller.evaluate((element) =>
+          Math.abs(
+            Number(element.dataset.coverFlowTargetScroll) -
+              Number(element.dataset.coverFlowVisualScroll),
+          ),
+        ),
+      { timeout: 15_000 },
+    )
+    .toBeLessThan(0.06);
+
+  const expectHoverZoom = async (cardIndex: number) => {
+    const card = cards.nth(cardIndex);
+    const cover = card.locator(".cover-flow-image-frame");
+    const hoverPoint = await cover.evaluate((element) => {
+      const card = element.closest(".cover-flow-card");
+      const box = element.getBoundingClientRect();
+      const yPositions = [0.2, 0.5, 0.8].map(
+        (ratio) => box.top + box.height * ratio,
+      );
+
+      for (const y of yPositions) {
+        const exposedXPositions: number[] = [];
+        for (let x = box.left + 2; x < box.right - 2; x += 2) {
+          if (
+            document.elementFromPoint(x, y)?.closest(".cover-flow-card") ===
+            card
+          ) {
+            exposedXPositions.push(x);
+          }
+        }
+        if (exposedXPositions.length > 0) {
+          return {
+            x: exposedXPositions[Math.floor(exposedXPositions.length / 2)]!,
+            y,
+          };
+        }
+      }
+
+      return null;
+    });
+    expect(hoverPoint).not.toBeNull();
+    await page.mouse.move(hoverPoint!.x, hoverPoint!.y);
+
+    await expect(card).toHaveClass(/\bis-read-cue\b/);
+    await expect
+      .poll(() =>
+        cover.evaluate((element) => {
+          const matrix = new DOMMatrixReadOnly(
+            getComputedStyle(element).transform,
+          );
+          return Math.hypot(matrix.a, matrix.b);
+        }),
+      )
+      .toBeGreaterThan(1.02);
+  };
+
+  await expectHoverZoom(4);
+  await expectHoverZoom(3);
+  await expectHoverZoom(5);
+});
+
 test("active details stay inside the carousel paint stage", async ({
   page,
 }, testInfo) => {
@@ -1061,6 +1152,62 @@ test("portrait details shrink to fixed outline rows", async ({
   expect(
     Math.abs(restoredGeometry.coverHeight - compactGeometry.coverHeight),
   ).toBeLessThanOrEqual(1);
+});
+
+test("mobile hierarchy swaps do not transfer synthetic hover styling", async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== "mobile", "mobile touch only");
+
+  await page.goto(`/${volumeHash("III")}`);
+  const activeCard = page.locator('.cover-flow-card[aria-current="true"]');
+  const panel = activeCard.locator(".cover-flow-card-panel");
+  await expect(activeCard).toHaveAttribute(
+    "data-volume-href",
+    catalog.volumes[2]!.href,
+  );
+  await panel.scrollIntoViewIfNeeded();
+
+  await panel.getByRole("button", { name: "The Reckoning" }).tap();
+  const centralWound = panel.getByRole("link", {
+    name: "The Central Wound",
+  });
+  const untouchedSibling = panel.getByRole("link", {
+    name: "On the Meaning of Coordination Failure",
+  });
+  await expect(centralWound).toBeVisible();
+  await page.waitForTimeout(300);
+
+  const visualState = await centralWound.evaluate((row, sibling) => {
+    if (!(sibling instanceof HTMLElement)) {
+      throw new Error("Comparison outline row is missing");
+    }
+    const readStyles = (element: Element) => {
+      const rowStyle = getComputedStyle(element);
+      const title = element.querySelector(".manuscript-card-outline-title");
+      const label = title?.querySelector("span");
+      return {
+        backgroundColor: rowStyle.backgroundColor,
+        borderColor: rowStyle.borderColor,
+        color: rowStyle.color,
+        labelDecorationColor: label
+          ? getComputedStyle(label).textDecorationColor
+          : null,
+        titleTransform: title ? getComputedStyle(title).transform : null,
+      };
+    };
+
+    return {
+      focused: row.matches(":focus-visible"),
+      hovered: row.matches(":hover"),
+      row: readStyles(row),
+      sibling: readStyles(sibling),
+    };
+  }, await untouchedSibling.elementHandle());
+
+  expect(visualState.hovered).toBe(true);
+  expect(visualState.focused).toBe(false);
+  expect(visualState.row).toEqual(visualState.sibling);
 });
 
 test("wheel sessions keep vertical escape and fractional horizontal tails", async ({

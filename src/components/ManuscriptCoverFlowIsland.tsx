@@ -703,14 +703,14 @@ export function ManuscriptCoverFlowIsland({
 
       const targetIndex = coverIndexAtPoint(event.clientX, event.clientY);
       const nextVolumeId =
-        targetIndex === activeIndex
-          ? (volumes[targetIndex]?.volumeId ?? null)
-          : null;
+        targetIndex === null
+          ? null
+          : (volumes[targetIndex]?.volumeId ?? null);
       setReadCueVolumeId((current) =>
         current === nextVolumeId ? current : nextVolumeId,
       );
     },
-    [activeIndex, coverIndexAtPoint, volumes],
+    [coverIndexAtPoint, volumes],
   );
 
   const finishCoverFlowWheelGesture = useCallback(
@@ -1113,7 +1113,6 @@ export function ManuscriptCoverFlowIsland({
                   }}
                   onMouseLeave={() => setReadCueVolumeId(null)}
                   onMouseMove={(event) => {
-                    if (!active) return;
                     const target = event.target as HTMLElement | null;
                     const specificTarget = target?.closest(
                       "button, a:not(.cover-flow-cover-link):not(.manuscript-card-outline-full)",
