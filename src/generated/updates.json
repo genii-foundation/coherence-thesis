@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "d132db338799cb4bf123b8ad2080a346738afd8d",
+  "headSha": "96f7136261814834485f62902902bdd8bfa68000",
   "commits": [
+    {
+      "sha": "96f7136261814834485f62902902bdd8bfa68000",
+      "committedAt": "2026-07-13T00:49:48.000Z",
+      "subject": "Fix carousel URL anchors and details sizing (#125)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/96f7136261814834485f62902902bdd8bfa68000",
+      "filesChanged": 6,
+      "additions": 360,
+      "deletions": 37,
+      "isLiterary": false
+    },
     {
       "sha": "d132db338799cb4bf123b8ad2080a346738afd8d",
       "committedAt": "2026-07-12T22:56:50.000Z",
