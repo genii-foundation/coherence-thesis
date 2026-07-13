@@ -20,7 +20,7 @@ const systemVoicePreference = {
 };
 
 function volumeHash(order: number) {
-  return `#volume-${order}`;
+  return `#${order}`;
 }
 
 function sectionForId(sectionId: string) {

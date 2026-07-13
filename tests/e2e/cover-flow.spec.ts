@@ -4,7 +4,7 @@ import { catalog } from "./fixtures";
 const wideViewport = { height: 1152, width: 2048 };
 
 function volumeHash(order: number) {
-  return `#volume-${order}`;
+  return `#${order}`;
 }
 
 test("wide cover flow keeps every cover visible and stacks toward the center", async ({
@@ -1030,8 +1030,17 @@ test("visible volume number stays in the URL hash", async ({ page }) => {
   );
 });
 
-test("legacy Roman numeral volume hashes remain valid", async ({ page }) => {
+test("legacy prefixed volume hashes remain valid", async ({ page }) => {
   const volumeSeven = catalog.volumes[6]!;
+
+  await page.goto("/#volume-7");
+
+  await expect(
+    page.locator('.cover-flow-card[aria-current="true"]'),
+  ).toHaveAttribute("data-volume-href", volumeSeven.href);
+  await expect
+    .poll(() => page.evaluate(() => window.location.hash))
+    .toBe(volumeHash(volumeSeven.order));
 
   await page.goto("/#volume-vii");
 

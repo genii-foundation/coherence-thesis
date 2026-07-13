@@ -113,11 +113,14 @@ function coverFlowIndexAtScrollLeft(
 }
 
 function coverFlowHashForVolume(volume: CoverFlowVolume) {
-  return `#volume-${volume.order}`;
+  return `#${volume.order}`;
 }
 
-function legacyCoverFlowHashForVolume(volume: CoverFlowVolume) {
-  return `#volume-${volume.numberLabel.toLowerCase()}`;
+function legacyCoverFlowHashesForVolume(volume: CoverFlowVolume) {
+  return [
+    `#volume-${volume.order}`,
+    `#volume-${volume.numberLabel.toLowerCase()}`,
+  ];
 }
 
 function coverFlowIndexForHash(hash: string, volumes: CoverFlowVolume[]) {
@@ -127,7 +130,7 @@ function coverFlowIndexForHash(hash: string, volumes: CoverFlowVolume[]) {
   const index = volumes.findIndex(
     (volume) =>
       coverFlowHashForVolume(volume) === normalizedHash ||
-      legacyCoverFlowHashForVolume(volume) === normalizedHash,
+      legacyCoverFlowHashesForVolume(volume).includes(normalizedHash),
   );
   return index >= 0 ? index : null;
 }
@@ -943,6 +946,15 @@ export function ManuscriptCoverFlowIsland({
         pendingHashIndexRef.current = null;
         pausedHashIndexRef.current = activeIndexRef.current;
         return;
+      }
+
+      const canonicalHash = coverFlowHashForVolume(volumes[nextIndex]!);
+      if (window.location.hash.toLowerCase() !== canonicalHash) {
+        window.history.replaceState(
+          window.history.state,
+          "",
+          `${window.location.pathname}${window.location.search}${canonicalHash}`,
+        );
       }
 
       pausedHashIndexRef.current = null;
