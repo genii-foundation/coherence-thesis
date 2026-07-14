@@ -1,11 +1,13 @@
 ---
 name: coherence-editorial-debt
-description: Audit, add, update, reconcile, resolve, and reopen durable Coherence Thesis editorial debt records without losing history. Use for unresolved claims, citations, canon conflicts, literary weaknesses, continuity obligations, audio obligations, implementation promises, cross-volume audits, debt index maintenance, and proof of paydown under editorial/debt/ and editorial/audits/.
+description: Maintain the durable Coherence Thesis editorial debt register by auditing, adding, updating, reconciling, resolving, or reopening records without losing history. Use when the requested task is a register mutation, debt audit, index update, or proof of paydown under editorial/debt/ and editorial/audits/. For human ticket selection, triage, investigation, and guided resolution, use coherence-editorial-debt-guide first.
 ---
 
 # Editorial Debt
 
 Keep durable editorial obligations visible until evidence proves they are paid.
+
+Use `coherence-editorial-debt-guide` as the human front door. This skill owns durable register operations after the guide establishes scope, authority, and evidence.
 
 ## Load the contract
 

@@ -10,8 +10,13 @@ import {
 } from "../manuscripts/shared";
 import { editorialDebtRoot as canonicalEditorialDebtRoot } from "../repository/paths";
 
-const statuses = ["open", "query", "deferred", "resolved"] as const;
-const kinds = [
+export const editorialDebtStatuses = [
+  "open",
+  "query",
+  "deferred",
+  "resolved",
+] as const;
+export const editorialDebtKinds = [
   "audio",
   "canon",
   "citation",
@@ -24,18 +29,23 @@ const kinds = [
   "technical",
   "terminology",
 ] as const;
-const severities = ["critical", "high", "medium", "low"] as const;
+export const editorialDebtSeverities = [
+  "critical",
+  "high",
+  "medium",
+  "low",
+] as const;
 
-type DebtStatus = (typeof statuses)[number];
-type DebtKind = (typeof kinds)[number];
-type DebtSeverity = (typeof severities)[number];
+export type EditorialDebtStatus = (typeof editorialDebtStatuses)[number];
+export type EditorialDebtKind = (typeof editorialDebtKinds)[number];
+export type EditorialDebtSeverity = (typeof editorialDebtSeverities)[number];
 
 export type EditorialDebtItem = {
   id: string;
   title: string;
-  status: DebtStatus;
-  kind: DebtKind;
-  severity: DebtSeverity;
+  status: EditorialDebtStatus;
+  kind: EditorialDebtKind;
+  severity: EditorialDebtSeverity;
   scopes: string[];
   sources: string[];
   discovered: string;
@@ -43,6 +53,7 @@ export type EditorialDebtItem = {
   resolved: string;
   discoveredIn: string;
   body: string;
+  sections: ReadonlyMap<string, string>;
   file: string;
 };
 
@@ -98,18 +109,101 @@ function validDate(value: string): boolean {
   return !Number.isNaN(date.valueOf()) && date.toISOString().startsWith(value);
 }
 
-function sections(body: string): Map<string, string> {
-  const matches = [...body.matchAll(/^## (.+)$/gm)];
+function headingSections(
+  markdown: string,
+  level: 2 | 3,
+  file: string,
+): Map<string, string> {
+  const heading = "#".repeat(level);
+  const matches = [
+    ...markdown.matchAll(new RegExp(`^${heading} (.+)$`, "gm")),
+  ];
   const result = new Map<string, string>();
   for (let index = 0; index < matches.length; index += 1) {
     const current = matches[index]!;
     const next = matches[index + 1];
+    const name = current[1]!.trim();
+    if (result.has(name)) {
+      throw new Error(`${file}: duplicate '${heading} ${name}' section.`);
+    }
     result.set(
-      current[1]!.trim(),
-      body.slice((current.index ?? 0) + current[0].length, next?.index).trim(),
+      name,
+      markdown
+        .slice((current.index ?? 0) + current[0].length, next?.index)
+        .trim(),
     );
   }
   return result;
+}
+
+function resolvedPaydownCriteria(file: string, section: string): string[] {
+  const lines = section
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const criterionPattern = /^- C([1-9]\d*)\. (.+)$/;
+  const matches = lines.map((line) => line.match(criterionPattern));
+  if (matches.length === 0 || matches.some((match) => !match)) {
+    throw new Error(
+      `${file}: resolved debt paydown criteria must use one-line '- C1. ...' entries.`,
+    );
+  }
+  const ids = matches.map((match) => Number(match![1]!));
+  for (let index = 0; index < ids.length; index += 1) {
+    if (ids[index] !== index + 1) {
+      throw new Error(
+        `${file}: resolved debt paydown criteria must be contiguous from C1.`,
+      );
+    }
+  }
+  return ids.map((id) => `C${id}`);
+}
+
+function validateResolution(
+  file: string,
+  resolution: string,
+  criterionIds: string[],
+): void {
+  const resolutionSections = headingSections(resolution, 3, file);
+  const requiredSections = [
+    "Outcome",
+    "Criterion results",
+    "Evidence",
+    "Validation",
+    "Approval",
+    "Residual risk",
+    "Related debt",
+  ];
+  for (const heading of requiredSections) {
+    if (!resolutionSections.get(heading)) {
+      throw new Error(
+        `${file}: resolved debt needs a nonempty '### ${heading}' section under '## Resolution'.`,
+      );
+    }
+  }
+
+  const resultLines = resolutionSections
+    .get("Criterion results")!
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const resultPattern = /^- C([1-9]\d*): (met|not applicable)\. (.+)$/;
+  const resultMatches = resultLines.map((line) => line.match(resultPattern));
+  if (resultLines.length === 0 || resultMatches.some((match) => !match)) {
+    throw new Error(
+      `${file}: criterion results must use one-line '- C1: met. ...' or '- C1: not applicable. ...' entries.`,
+    );
+  }
+  const resultIds = resultMatches.map((match) => `C${Number(match![1]!)}`);
+  if (
+    resultIds.length !== new Set(resultIds).size ||
+    resultIds.length !== criterionIds.length ||
+    resultIds.some((id, index) => id !== criterionIds[index])
+  ) {
+    throw new Error(
+      `${file}: criterion results must cover ${criterionIds.join(", ")} exactly once and in order.`,
+    );
+  }
 }
 
 export function parseEditorialDebtItem(
@@ -128,19 +222,19 @@ export function parseEditorialDebtItem(
   const title = requiredString(parsed.frontmatter, "title", file);
   const status = enumValue(
     requiredString(parsed.frontmatter, "status", file),
-    statuses,
+    editorialDebtStatuses,
     "status",
     file,
   );
   const kind = enumValue(
     requiredString(parsed.frontmatter, "kind", file),
-    kinds,
+    editorialDebtKinds,
     "kind",
     file,
   );
   const severity = enumValue(
     requiredString(parsed.frontmatter, "severity", file),
-    severities,
+    editorialDebtSeverities,
     "severity",
     file,
   );
@@ -180,7 +274,7 @@ export function parseEditorialDebtItem(
     throw new Error(`${file}: unresolved debt must leave 'resolved' empty.`);
   }
 
-  const bodySections = sections(parsed.body);
+  const bodySections = headingSections(parsed.body, 2, file);
   for (const heading of ["Debt", "Evidence", "Paydown criteria", "History"]) {
     if (!bodySections.get(heading)) {
       throw new Error(`${file}: missing nonempty '## ${heading}' section.`);
@@ -196,8 +290,16 @@ export function parseEditorialDebtItem(
   if (historyDates.at(-1) !== updated) {
     throw new Error(`${file}: latest history date must equal 'updated'.`);
   }
-  if (status === "resolved" && !bodySections.get("Resolution")) {
-    throw new Error(`${file}: resolved debt needs a nonempty '## Resolution'.`);
+  if (status === "resolved") {
+    const resolution = bodySections.get("Resolution");
+    if (!resolution) {
+      throw new Error(`${file}: resolved debt needs a nonempty '## Resolution'.`);
+    }
+    const criterionIds = resolvedPaydownCriteria(
+      file,
+      bodySections.get("Paydown criteria")!,
+    );
+    validateResolution(file, resolution, criterionIds);
   }
   if (
     status !== "resolved" &&
@@ -223,6 +325,7 @@ export function parseEditorialDebtItem(
     resolved,
     discoveredIn,
     body: parsed.body,
+    sections: bodySections,
     file,
   };
 }
@@ -280,8 +383,8 @@ function table(items: EditorialDebtItem[]): string {
 }
 
 export function renderEditorialDebtIndex(items: EditorialDebtItem[]): string {
-  const severityOrder = new Map<DebtSeverity, number>(
-    severities.map((severity, index) => [severity, index]),
+  const severityOrder = new Map<EditorialDebtSeverity, number>(
+    editorialDebtSeverities.map((severity, index) => [severity, index]),
   );
   const active = items
     .filter((item) => item.status !== "resolved")
@@ -294,11 +397,11 @@ export function renderEditorialDebtIndex(items: EditorialDebtItem[]): string {
     .filter((item) => item.status === "resolved")
     .sort((left, right) => left.id.localeCompare(right.id));
   const counts = Object.fromEntries(
-    statuses.map((status) => [
+    editorialDebtStatuses.map((status) => [
       status,
       items.filter((item) => item.status === status).length,
     ]),
-  ) as Record<DebtStatus, number>;
+  ) as Record<EditorialDebtStatus, number>;
   return [
     "# Editorial Debt Index",
     "",

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Coherence Editorial Debt Guide"
+  short_description: "Guide editors through debt triage and resolution"
+  default_prompt: "Use $coherence-editorial-debt-guide to triage an active debt ticket or guide it through evidence-backed resolution."
+
+policy:
+  allow_implicit_invocation: true

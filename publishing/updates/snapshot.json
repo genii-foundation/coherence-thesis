@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "40a03306fd5f1e53a8792f1ecfb36c57e285e527",
+  "headSha": "d234a33d74c9244a56621c528a2852c5dafa762d",
   "commits": [
+    {
+      "sha": "d234a33d74c9244a56621c528a2852c5dafa762d",
+      "committedAt": "2026-07-14T14:36:31.000Z",
+      "subject": "Blend page texture into Safari underpage color (#126)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/d234a33d74c9244a56621c528a2852c5dafa762d",
+      "filesChanged": 3,
+      "additions": 313,
+      "deletions": 14,
+      "isLiterary": false
+    },
     {
       "sha": "40a03306fd5f1e53a8792f1ecfb36c57e285e527",
       "committedAt": "2026-07-14T12:46:27.000Z",
