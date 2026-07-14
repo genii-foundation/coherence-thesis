@@ -1,6 +1,6 @@
 ---
 name: coherence-manuscript-publish
-description: Publish Coherence Thesis manuscript and volume source changes through the source-first workflow, historical path resolution, route preservation, generated inspection, validation, audio impact review, and a focused pull request. Use for changes to manuscript.md, voice-card.md, volume.json, the corpus master ledger, overview source, section structure, public routes, and durable continuity records.
+description: Publish Coherence Thesis manuscript and volume source changes through the source-first workflow, historical path resolution, semantic cross-reference review, route preservation, generated inspection, validation, audio impact review, and a focused pull request. Use for changes to manuscript.md, voice-card.md, volume.json, corpus source, overview source, section structure, semantic links, public routes, and durable continuity records.
 ---
 
 # Manuscript Publish
@@ -48,9 +48,30 @@ Treat every removed or renamed heading, section, and route as a continuity event
 - Never rewrite historical review evidence to use the current path.
 - Commit only reviewed durable continuity state under publishing/continuity/.
 
+## Review semantic cross-references
+
+Treat internal references as editorial decisions, not search-and-replace targets.
+
+    npm run editorial:semantic-links:audit -- --volume <editorial-id>
+
+1. Review the ignored JSON and Markdown reports under generated/reports/semantic-links/.
+2. Record one decision and rationale for each approved link or durable exclusion.
+3. Validate the decision file in dry-run mode.
+4. Use `--write` only after reviewing every decision.
+
+    npm run editorial:semantic-links:review -- --report <report> --decisions <review-file>
+    npm run editorial:semantic-links:review -- --report <report> --decisions <review-file> --write
+
+- Store reviewed concepts and occurrences in editorial/sources/corpus/semantic-links.json.
+- Target continuity identities and a route level. Never store guessed or frozen destination URLs.
+- Preserve canonical prose. The compiler adds reviewed links only to generated reader bodies.
+- Leave ordinary language, metaphor, self-reference, code, headings, and existing links unlinked unless a human review says otherwise.
+- Re-run the audit after source or section identity changes. Compilation must fail when an approved source locator or target no longer resolves uniquely.
+
 ## Regenerate and validate
 
     npm run manuscripts:prepare -- --force
+    npm run editorial:semantic-links:validate
     npm run manuscripts:validate
     npm run readme:update
     npm run updates:generate

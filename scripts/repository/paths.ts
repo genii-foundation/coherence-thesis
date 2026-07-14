@@ -24,6 +24,10 @@ export const masterLedgerPath = path.join(
   editorialCorpusRoot,
   "master-ledger.md",
 );
+export const semanticLinksPath = path.join(
+  editorialCorpusRoot,
+  "semantic-links.json",
+);
 export const overviewPath = path.join(
   editorialOverviewRoot,
   "coherence-thesis.json",
@@ -90,6 +94,10 @@ export const generatedCatalogPath = path.join(
   "catalog.json",
 );
 export const generatedReportsRoot = path.join(generatedRoot, "reports");
+export const generatedSemanticLinksReportsRoot = path.join(
+  generatedReportsRoot,
+  "semantic-links",
+);
 export const generatedImportReportsRoot = path.join(
   generatedReportsRoot,
   "imports",
@@ -147,6 +155,7 @@ export const retiredCanonicalRootPaths = [
 
 export const requiredEditorialSourceFilePaths = [
   masterLedgerPath,
+  semanticLinksPath,
   overviewPath,
   ...editorialVolumeIds.flatMap((editorialId) =>
     volumePackageFileNames.map((fileName) =>

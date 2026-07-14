@@ -8,6 +8,7 @@ import {
 
 const editorialSourcePaths = [
   "editorial/sources/corpus/master-ledger.md",
+  "editorial/sources/corpus/semantic-links.json",
   "editorial/sources/overview/coherence-thesis.json",
   ...Array.from({ length: 9 }, (_, index) => {
     const editorialId = `volume-${String(index + 1).padStart(2, "0")}`;
@@ -130,7 +131,7 @@ describe("repository tracked source boundary audit", () => {
   it("requires every editorial package and durable publishing file", () => {
     const audit = auditTrackedPaths(["README.md"]);
 
-    expect(audit.missingRequirements).toHaveLength(38);
+    expect(audit.missingRequirements).toHaveLength(39);
     expect(audit.missingRequirements).toContainEqual(
       expect.objectContaining({
         id: "canonical-editorial-source",

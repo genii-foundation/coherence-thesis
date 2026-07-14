@@ -40,7 +40,7 @@ This block contains stable facts generated from the current package metadata and
 | Path | Purpose | Editing rule |
 | --- | --- | --- |
 | `editorial/sources/volumes/` | Canonical volume packages with manuscript, voice card, and manifest | Edit the complete editorial package here |
-| `editorial/sources/corpus/` | Corpus-wide source ledgers | Edit deliberately and preserve historical identity |
+| `editorial/sources/corpus/` | Corpus-wide source ledgers and reviewed semantic links | Edit deliberately and preserve historical identity |
 | `editorial/sources/overview/` | Curated overview nodes | Every reference must resolve to a real section |
 | `editorial/reviews/` | Durable review batches and reconciliation evidence | Keep baseline paths, hashes, manifests, and approval state intact |
 | `editorial/debt/` | Durable editorial obligations and paydown evidence | Update item files, then regenerate the index |
@@ -129,6 +129,19 @@ Do not accept an import that collapses, fragments, reorders, or incorrectly rena
 
 Published routes are durable. When a heading or structure change removes a historical route, run the preservation plan and review its proposed lineage and aliases. The route ledgers record every reviewed public path, and validation fails when one disappears without a replacement. Ordinary development, testing, building, and deployment cannot modify those ledgers. See [Manuscript Link Continuity](docs/manuscript-link-continuity.md) for the full workflow.
 
+### Semantic cross-references
+
+Internal references are proposed by a deterministic audit and recorded only after individual review:
+
+```bash
+npm run editorial:semantic-links:audit -- --volume volume-01
+npm run editorial:semantic-links:review -- --report <report> --decisions <review-file>
+npm run editorial:semantic-links:review -- --report <report> --decisions <review-file> --write
+npm run editorial:semantic-links:validate
+```
+
+Reviewed concepts target continuity identities rather than literal URLs. The compiler resolves each target to its current owner and route, then adds links to generated reader bodies without changing canonical prose, paragraph anchors, progress hashes, or audio identities. See [Semantic Cross-References](docs/semantic-cross-references.md) for the review and validation contract.
+
 ## Editorial Debt
 
 Durable inconsistencies, unfulfilled promises, unresolved claims, citation gaps, literary weaknesses, and publishing obligations live in `editorial/debt/`. Add or reopen an item instead of hiding unfinished work in a review summary. Keep resolved items as evidence of paydown.
@@ -202,6 +215,7 @@ npm run repository:validate-layout
 npm run repository:validate-agents
 npm run repository:source-boundary
 npm run editorial:validate
+npm run editorial:semantic-links:validate
 npm run manuscripts:validate
 npm run typecheck
 npm run lint

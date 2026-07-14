@@ -62,6 +62,7 @@ import {
   versionProvenancePath,
 } from "../repository/paths";
 import { validateRepositoryLayout } from "../repository/layout";
+import { enrichSemanticReferences } from "./semantic-references";
 
 // Re-export the split modules so existing `from "./shared"` imports keep working
 // (MAINT-05: shared.ts was one 770-line file; types live in ./types, filesystem
@@ -225,6 +226,13 @@ function parseMarkdownDocument(
       sourceParagraphEnd:
         typeof parsed.frontmatter.sourceParagraphEnd === "number"
           ? parsed.frontmatter.sourceParagraphEnd
+          : undefined,
+      sourceLineNumbers:
+        Array.isArray(parsed.frontmatter.sourceLineNumbers) &&
+        parsed.frontmatter.sourceLineNumbers.every(
+          (value) => typeof value === "number" && Number.isInteger(value),
+        )
+          ? (parsed.frontmatter.sourceLineNumbers as number[])
           : undefined,
     aliases: Array.isArray(parsed.frontmatter.aliases)
       ? (parsed.frontmatter.aliases as string[])
@@ -1132,11 +1140,13 @@ export function buildCatalog(
     routeAliasConfig = readRouteAliasConfig(),
     sectionLineage = readSectionLineage(),
     routeLedger = readRouteLedger(),
+    semanticReferences = "apply",
   }: {
     aliasConfig?: SectionAliasConfig;
     routeAliasConfig?: RouteAliasConfig;
     sectionLineage?: SectionLineageConfig;
     routeLedger?: RouteLedger;
+    semanticReferences?: "apply" | "omit";
   } = {},
 ): CompiledCatalog {
   const docs = sortDocuments(readMarkdownDocuments(root));
@@ -1650,6 +1660,11 @@ export function buildCatalog(
     routeAliasSources.add(alias.sourceHref);
   }
 
+  const outputSections =
+    semanticReferences === "apply"
+      ? enrichSemanticReferences(sections, volumes)
+      : sections;
+
   return {
     siteTitle: "The Coherence Thesis",
     generatedFrom: "canonical markdown",
@@ -1663,7 +1678,7 @@ export function buildCatalog(
       readingMinutes: readingMinutes(wordTotal),
     },
     volumes,
-    sections,
+    sections: outputSections,
     aliases,
     routeAliases,
     overview: readOverview(),

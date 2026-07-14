@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 import type { Chapter, Section } from "../../src/lib/manuscript-data";
 import { catalog } from "./fixtures";
 
@@ -80,6 +80,20 @@ async function copiedReaderHeadingLink(page: Page): Promise<string | undefined> 
   );
 }
 
+async function tabToLocator(
+  page: Page,
+  target: Locator,
+  maximumSteps = 20,
+): Promise<void> {
+  for (let step = 0; step < maximumSteps; step += 1) {
+    await page.keyboard.press("Tab");
+    if (await target.evaluate((element) => element === document.activeElement)) {
+      return;
+    }
+  }
+  throw new Error(`Target did not receive focus within ${maximumSteps} Tab presses.`);
+}
+
 test("reader headings reveal and copy full anchored links", async (
   { page },
   testInfo,
@@ -146,7 +160,7 @@ test("reader headings reveal and copy full anchored links", async (
     },
   );
   await chapterCopyButton.focus();
-  await page.keyboard.press("Tab");
+  await tabToLocator(page, copyButton);
   await expect(copyButton).toBeFocused();
   await expect
     .poll(() =>

@@ -14,6 +14,7 @@ import {
   overviewPath,
   retiredCanonicalRootPaths,
   repoRoot,
+  semanticLinksPath,
   type VolumePathManifest,
   volumePackageFileNames,
 } from "./paths";
@@ -28,6 +29,7 @@ export type RepositoryLayoutPaths = {
   editorialOverviewRoot: string;
   editorialVolumesRoot: string;
   masterLedgerPath: string;
+  semanticLinksPath: string;
   overviewPath: string;
   publishingFiles: readonly string[];
   retiredCanonicalRoots: readonly string[];
@@ -70,6 +72,7 @@ function canonicalLayoutPaths(): RepositoryLayoutPaths {
     editorialOverviewRoot,
     editorialVolumesRoot,
     masterLedgerPath,
+    semanticLinksPath,
     overviewPath,
     publishingFiles: durablePublishingFilePaths,
     retiredCanonicalRoots: retiredCanonicalRootPaths,
@@ -263,6 +266,7 @@ export function auditRepositoryLayout(
   const identities = new Map<string, string>();
   const expectedSourcePaths = new Set<string>([
     paths.masterLedgerPath,
+    paths.semanticLinksPath,
     paths.overviewPath,
   ]);
 
@@ -277,7 +281,11 @@ export function auditRepositoryLayout(
     );
   }
 
-  for (const sourcePath of [paths.masterLedgerPath, paths.overviewPath]) {
+  for (const sourcePath of [
+    paths.masterLedgerPath,
+    paths.semanticLinksPath,
+    paths.overviewPath,
+  ]) {
     const stats = inspectRequiredFile(
       issues,
       paths,

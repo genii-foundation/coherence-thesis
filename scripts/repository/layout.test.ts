@@ -25,6 +25,10 @@ function fixturePaths(root: string): RepositoryLayoutPaths {
       editorialSourcesRoot,
       "corpus/master-ledger.md",
     ),
+    semanticLinksPath: path.join(
+      editorialSourcesRoot,
+      "corpus/semantic-links.json",
+    ),
     overviewPath: path.join(
       editorialSourcesRoot,
       "overview/coherence-thesis.json",
@@ -56,6 +60,10 @@ function writeFile(filePath: string, contents: string): void {
 
 function createValidFixture(paths: RepositoryLayoutPaths): void {
   writeFile(paths.masterLedgerPath, "# Master ledger\n");
+  writeFile(
+    paths.semanticLinksPath,
+    '{"schemaVersion":1,"concepts":[],"occurrences":[]}\n',
+  );
   writeFile(paths.overviewPath, "{}\n");
 
   for (let order = 1; order <= 9; order += 1) {
@@ -112,7 +120,7 @@ describe("repository layout validation", () => {
         (_, index) => `volume-${String(index + 1).padStart(2, "0")}`,
       ),
     );
-    expect(audit.sourceFiles).toHaveLength(29);
+    expect(audit.sourceFiles).toHaveLength(30);
     expect(audit.publishingFiles).toHaveLength(9);
   });
 
