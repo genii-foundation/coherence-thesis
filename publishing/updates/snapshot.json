@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "e7fdf9abc23e8a6f021be24c1f69e65989750003",
+  "headSha": "f5bc0f48083942ccb605a9839d31e9b1cc204f08",
   "commits": [
+    {
+      "sha": "f5bc0f48083942ccb605a9839d31e9b1cc204f08",
+      "committedAt": "2026-07-14T21:32:44.000Z",
+      "subject": "edit: close CTD-0032 after merged verification (#140)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/f5bc0f48083942ccb605a9839d31e9b1cc204f08",
+      "filesChanged": 3,
+      "additions": 58,
+      "deletions": 8,
+      "isLiterary": false
+    },
     {
       "sha": "e7fdf9abc23e8a6f021be24c1f69e65989750003",
       "committedAt": "2026-07-14T14:55:49.000Z",

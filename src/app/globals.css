@@ -6607,7 +6607,11 @@ input {
     --cover-flow-arrow-width: 3.2rem;
     --cover-flow-card-width: clamp(10rem, 28vw, 12rem);
     --cover-flow-card-perspective: 42rem;
-    --cover-flow-panel-max-height: 6.5rem;
+    --cover-flow-panel-max-height: min(
+      22rem,
+      calc(var(--cover-flow-card-width) * 1.45),
+      calc(100svh - 8rem)
+    );
     --cover-flow-panel-gap: 0.75rem;
     --cover-flow-panel-width-extra: clamp(3.5rem, 16vw, 7rem);
     --cover-flow-stage-min-height: clamp(20rem, 58vw, 24rem);
@@ -6629,9 +6633,6 @@ input {
     font-size: clamp(1.15rem, 3.8vw, 1.45rem);
   }
 
-  .manuscript-card-description {
-    display: none;
-  }
 }
 
 @media (max-width: 360px) {
