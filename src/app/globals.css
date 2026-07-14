@@ -225,7 +225,7 @@ html {
   scroll-behavior: smooth;
 }
 
-html:has(.site-header) {
+html:has(.reader-layout) {
   scroll-padding-top: var(--reader-anchor-offset);
 }
 
