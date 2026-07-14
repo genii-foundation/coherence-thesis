@@ -1,7 +1,9 @@
 import { expect, test, type Page } from "@playwright/test";
 import sharp from "sharp";
+import { audioVoiceStorageKey } from "../../src/lib/audio-preferences";
 import {
   hexToRgb,
+  highQualityVoicePreferenceId,
   searchTargetSection,
   wieldingVolume,
   wieldingFrontMatter,
@@ -60,6 +62,13 @@ function samplePixelRegion(
     ),
   };
 }
+
+const systemVoicePreference = {
+  voiceURI: null,
+  rate: 1,
+  pitch: 1,
+  useSystemVoice: true,
+};
 
 function expectSettledTransform(transform: string): void {
   if (transform === "none") return;
@@ -333,7 +342,9 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
         ],
         pause: () => undefined,
         removeEventListener: () => undefined,
-        speak: () => undefined,
+        speak: (utterance: SpeechSynthesisUtterance) => {
+          utterance.onstart?.({} as SpeechSynthesisEvent);
+        },
       },
     });
   });
@@ -1020,7 +1031,9 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
         getVoices: () => [],
         pause: () => undefined,
         removeEventListener: () => undefined,
-        speak: () => undefined,
+        speak: (utterance: SpeechSynthesisUtterance) => {
+          utterance.onstart?.({} as SpeechSynthesisEvent);
+        },
       },
     });
   });
@@ -1161,7 +1174,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(speedSlider).toHaveValue("1.25");
   await expect(resetSpeed).toBeEnabled();
   await resetVoice.click();
-  await expect(voiceSelect).toHaveValue("clip:default");
+  await expect(voiceSelect).toHaveValue(highQualityVoicePreferenceId);
   await expect(speedSlider).toHaveValue("1.25");
   await expect(resetVoice).toBeDisabled();
   await expect(resetSpeed).toBeEnabled();
@@ -1169,7 +1182,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(speedSlider).toHaveValue("1");
   await expect(resetSpeed).toBeDisabled();
   if (await highQualityOption.isEnabled()) {
-    await expect(voiceSelect).toHaveValue("clip:default");
+    await expect(voiceSelect).toHaveValue(highQualityVoicePreferenceId);
     await expect(audioMenu.locator(".audio-offline-item").first()).toBeVisible();
     await expect(audioMenu.locator(".audio-offline-meter").first()).toHaveCount(1);
   } else {
@@ -1209,7 +1222,9 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
         getVoices: () => [],
         pause: () => undefined,
         removeEventListener: () => undefined,
-        speak: () => undefined,
+        speak: (utterance: SpeechSynthesisUtterance) => {
+          utterance.onstart?.({} as SpeechSynthesisEvent);
+        },
       },
     });
   });
@@ -1273,6 +1288,182 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
     ".progress-menu-button",
     ".progress-popover",
   );
+});
+
+test("audio playback shows an immediate loading state before media starts", async ({
+  page,
+}) => {
+  await page.addInitScript(
+    ({ preferenceId, storageKey }) => {
+      window.localStorage.setItem(
+        storageKey,
+        JSON.stringify({ voiceURI: preferenceId, rate: 1, pitch: 1 }),
+      );
+      let resolvePlay: (() => void) | undefined;
+      class DeferredAudio {
+        currentTime = 0;
+        duration = 60;
+        onended: (() => void) | null = null;
+        onerror: ((event: unknown) => void) | null = null;
+        onloadedmetadata: (() => void) | null = null;
+        ontimeupdate: (() => void) | null = null;
+        paused = true;
+        playbackRate = 1;
+        preload = "";
+        src = "";
+        load() {}
+        pause() {
+          this.paused = true;
+        }
+        play() {
+          return new Promise<void>((resolve) => {
+            resolvePlay = () => {
+              this.paused = false;
+              resolve();
+            };
+          });
+        }
+        removeAttribute(name: string) {
+          if (name === "src") this.src = "";
+        }
+      }
+      Object.defineProperty(window, "Audio", {
+        configurable: true,
+        value: DeferredAudio,
+      });
+      Object.defineProperty(window, "__resolveHostedAudio", {
+        configurable: true,
+        value: () => resolvePlay?.(),
+      });
+      Object.defineProperty(window, "__hostedAudioPlayPending", {
+        configurable: true,
+        get: () => Boolean(resolvePlay),
+      });
+    },
+    {
+      preferenceId: highQualityVoicePreferenceId,
+      storageKey: audioVoiceStorageKey,
+    },
+  );
+  const manifestLoaded = page.waitForResponse((response) =>
+    response.url().endsWith("/data/audio-manifest.json"),
+  );
+  await page.goto(wieldingSection.href);
+  await manifestLoaded;
+  await page.evaluate(() => new Promise(requestAnimationFrame));
+
+  await page.getByRole("button", { name: "Listen" }).click();
+  const playbackButton = page.getByRole("button", {
+    name: "Pause audiobook",
+  });
+  await expect(playbackButton).toHaveAttribute("aria-busy", "true");
+  await expect(playbackButton.locator(".audio-playback-spinner")).toBeVisible();
+  await expect(playbackButton.locator(".audio-waveform")).toHaveCSS(
+    "opacity",
+    "0",
+  );
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as Window & { __hostedAudioPlayPending?: boolean })
+            .__hostedAudioPlayPending ?? false,
+      ),
+    )
+    .toBe(true);
+
+  await page.evaluate(() => {
+    (
+      window as Window & { __resolveHostedAudio?: () => void }
+    ).__resolveHostedAudio?.();
+  });
+  await expect(playbackButton).toHaveAttribute("aria-busy", "false");
+  await expect(playbackButton.locator(".audio-playback-spinner")).toHaveCount(0);
+  await expect(playbackButton.locator(".audio-waveform")).toBeVisible();
+});
+
+test("offline manuscript downloads can run concurrently", async ({ page }) => {
+  await page.addInitScript(
+    ({ preference, storageKey }) => {
+      window.localStorage.setItem(storageKey, JSON.stringify(preference));
+      class TestSpeechSynthesisUtterance {
+        text: string;
+        rate = 1;
+        pitch = 1;
+        voice: SpeechSynthesisVoice | null = null;
+        onstart: (() => void) | null = null;
+        onend: (() => void) | null = null;
+        constructor(text: string) {
+          this.text = text;
+        }
+      }
+      Object.defineProperty(window, "SpeechSynthesisUtterance", {
+        configurable: true,
+        value: TestSpeechSynthesisUtterance,
+      });
+      Object.defineProperty(window, "speechSynthesis", {
+        configurable: true,
+        value: {
+          addEventListener: () => undefined,
+          cancel: () => undefined,
+          getVoices: () => [],
+          pause: () => undefined,
+          removeEventListener: () => undefined,
+          resume: () => undefined,
+          speak: (utterance: SpeechSynthesisUtterance) => {
+            utterance.onstart?.({} as SpeechSynthesisEvent);
+          },
+        },
+      });
+    },
+    { preference: systemVoicePreference, storageKey: audioVoiceStorageKey },
+  );
+  await page.goto(wieldingSection.href);
+  await page.getByRole("button", { name: "Listen" }).click();
+  const audioMenu = page.getByLabel("Audiobook controls");
+  await expect(audioMenu.locator(".audio-offline-item")).toHaveCount(9);
+  await page.evaluate(() => {
+    const requestedUrls: string[] = [];
+    const cache = {
+      match: async () => undefined,
+      put: async () => undefined,
+    };
+    Object.defineProperty(window, "caches", {
+      configurable: true,
+      value: { open: async () => cache },
+    });
+    Object.defineProperty(window, "__offlineRequestedUrls", {
+      configurable: true,
+      value: requestedUrls,
+    });
+    window.fetch = async (input: RequestInfo | URL) => {
+      requestedUrls.push(
+        typeof input === "string" ? input : input instanceof URL ? input.href : input.url,
+      );
+      return new Promise<Response>(() => undefined);
+    };
+  });
+
+  const downloadButtons = audioMenu.locator(".audio-offline-button");
+  const firstDownload = downloadButtons.nth(0);
+  const secondDownload = downloadButtons.nth(1);
+  await expect(firstDownload).toBeEnabled();
+  await expect(secondDownload).toBeEnabled();
+  await firstDownload.click();
+  await expect(firstDownload.locator(".audio-offline-spinner")).toBeVisible();
+  await expect(secondDownload).toBeEnabled();
+  await secondDownload.click();
+  await expect(secondDownload.locator(".audio-offline-spinner")).toBeVisible();
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (
+            window as Window & { __offlineRequestedUrls?: string[] }
+          ).__offlineRequestedUrls?.length ?? 0,
+      ),
+    )
+    .toBeGreaterThanOrEqual(2);
 });
 
 test("toolbar stays with the viewport in portrait and desktop layouts", async ({

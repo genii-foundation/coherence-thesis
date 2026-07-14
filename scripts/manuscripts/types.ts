@@ -48,6 +48,7 @@ export type CompiledSection = ManuscriptFrontmatter & {
   versionDate: string;
   versionUrl: string;
   audioVersionId: string;
+  audioDurationSeconds?: number;
   previousSectionId: string | null;
   nextSectionId: string | null;
 };
@@ -243,6 +244,8 @@ export type CompiledCatalog = {
     sectionCount: number;
     wordCount: number;
     readingMinutes: number;
+    audioDurationSeconds: number;
+    recordedAudioSectionCount: number;
   };
   volumes: CompiledVolume[];
   sections: CompiledSection[];

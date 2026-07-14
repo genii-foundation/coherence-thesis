@@ -121,6 +121,8 @@ function catalog(
       sectionCount: sections.length,
       wordCount: 10,
       readingMinutes: 1,
+      audioDurationSeconds: 0,
+      recordedAudioSectionCount: 0,
     },
     volumes: [volume],
     sections,

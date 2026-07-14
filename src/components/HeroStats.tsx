@@ -11,11 +11,20 @@ const heroStats = [
     value: catalog.stats.sectionCount.toLocaleString(),
   },
   {
-    label: "Hours of audio",
-    value: formatReadingDurationForWords(catalog.stats.wordCount).replace(
-      / hours$/,
-      "",
-    ),
+    label:
+      catalog.stats.recordedAudioSectionCount > 0
+        ? "Hours of audio"
+        : "Estimated hours",
+    value:
+      catalog.stats.recordedAudioSectionCount > 0
+        ? (catalog.stats.audioDurationSeconds / 3600).toLocaleString(undefined, {
+            maximumFractionDigits: 1,
+            minimumFractionDigits: 1,
+          })
+        : formatReadingDurationForWords(catalog.stats.wordCount).replace(
+            / hours$/,
+            "",
+          ),
   },
 ];
 

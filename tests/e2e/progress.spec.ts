@@ -14,6 +14,7 @@ import {
   readerEventsStorageKey,
   firstSection,
   firstSectionVersionDate,
+  highQualityVoicePreferenceId,
   wieldingSection,
   copyrightYearLabel,
   nextSection,
@@ -30,7 +31,6 @@ const systemVoicePreference = {
   pitch: 1,
   useSystemVoice: true,
 };
-
 test("progress menu shows a resettable email sent confirmation", async ({
   isMobile,
   page,
@@ -399,6 +399,7 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
       pitch = 1;
       voice: SpeechSynthesisVoice | null = null;
       onend: (() => void) | null = null;
+      onstart: (() => void) | null = null;
 
       constructor(text: string) {
         this.text = text;
@@ -417,7 +418,9 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
         getVoices: () => [],
         pause: () => undefined,
         removeEventListener: () => undefined,
-        speak: () => undefined,
+        speak: (utterance: SpeechSynthesisUtterance) => {
+          utterance.onstart?.({} as SpeechSynthesisEvent);
+        },
       },
     });
   });
@@ -661,6 +664,7 @@ test("audio voice selection exposes one built-in system option", async ({ page }
       pitch = 1;
       voice: SpeechSynthesisVoice | null = null;
       onend: (() => void) | null = null;
+      onstart: (() => void) | null = null;
 
       constructor(text: string) {
         this.text = text;
@@ -695,6 +699,7 @@ test("audio voice selection exposes one built-in system option", async ({ page }
         resume: () => undefined,
         speak: (utterance: SpeechSynthesisUtterance) => {
           spokenVoices.push(utterance.voice?.voiceURI ?? null);
+          utterance.onstart?.({} as SpeechSynthesisEvent);
         },
       },
     });
@@ -705,7 +710,7 @@ test("audio voice selection exposes one built-in system option", async ({ page }
   await expect(audioPanel).toBeVisible({ timeout: 15_000 });
 
   const voiceSelect = page.getByRole("combobox", { name: "Voice" });
-  await expect(voiceSelect).toHaveValue("clip:default");
+  await expect(voiceSelect).toHaveValue(highQualityVoicePreferenceId);
   await expect(voiceSelect.locator("option", { hasText: "High Quality 1" }))
     .toHaveCount(1);
   await expect(voiceSelect.locator("option", { hasText: "System voice" }))
@@ -717,7 +722,7 @@ test("audio voice selection exposes one built-in system option", async ({ page }
   await expect(voiceSelect).toHaveValue("");
 
   await page.getByRole("button", { name: "Reset voice" }).click();
-  await expect(voiceSelect).toHaveValue("clip:default");
+  await expect(voiceSelect).toHaveValue(highQualityVoicePreferenceId);
 });
 
 test("reader words can start playback from a focused word", async ({ page }) => {
@@ -730,6 +735,7 @@ test("reader words can start playback from a focused word", async ({ page }) => 
       voice: SpeechSynthesisVoice | null = null;
       onboundary: ((event: SpeechSynthesisEvent) => void) | null = null;
       onend: (() => void) | null = null;
+      onstart: (() => void) | null = null;
 
       constructor(text: string) {
         this.text = text;
@@ -757,6 +763,7 @@ test("reader words can start playback from a focused word", async ({ page }) => 
         resume: () => undefined,
         speak: (utterance: SpeechSynthesisUtterance) => {
           spokenTexts.push(utterance.text);
+          utterance.onstart?.({} as SpeechSynthesisEvent);
           utterance.onboundary?.({
             charIndex: 0,
             charLength: utterance.text.split(/\s+/)[0]?.length ?? 0,
@@ -899,6 +906,7 @@ test("reader navigation does not interrupt active playback", async ({ page }) =>
       pitch = 1;
       voice: SpeechSynthesisVoice | null = null;
       onend: (() => void) | null = null;
+      onstart: (() => void) | null = null;
 
       constructor(text: string) {
         this.text = text;
@@ -935,6 +943,7 @@ test("reader navigation does not interrupt active playback", async ({ page }) =>
         resume: () => undefined,
         speak: (utterance: SpeechSynthesisUtterance) => {
           spokenTexts.push(utterance.text);
+          utterance.onstart?.({} as SpeechSynthesisEvent);
         },
       },
     });

@@ -252,6 +252,26 @@ test("standalone and structural chapter headings resolve to real anchors", async
   ).toHaveCount(1);
 });
 
+test("reader anchors remain below the floating toolbar", async ({ page }) => {
+  await page.goto(`${chapterHref}#${subsectionId}`);
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+    await new Promise<void>((resolve) =>
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+    );
+  });
+
+  const geometry = await page.evaluate((targetId) => {
+    const toolbar = document.querySelector(".site-header")?.getBoundingClientRect();
+    const target = document.getElementById(targetId)?.getBoundingClientRect();
+    return {
+      targetTop: target?.top ?? -1,
+      toolbarBottom: toolbar?.bottom ?? 0,
+    };
+  }, subsectionId);
+  expect(geometry.targetTop).toBeGreaterThanOrEqual(geometry.toolbarBottom + 12);
+});
+
 test("reader headings remain readable without JavaScript", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();

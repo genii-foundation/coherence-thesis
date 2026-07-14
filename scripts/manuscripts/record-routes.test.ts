@@ -29,6 +29,8 @@ function catalogWithRoutes(
       sectionCount: sections.length,
       wordCount: 10,
       readingMinutes: 1,
+      audioDurationSeconds: 0,
+      recordedAudioSectionCount: 0,
     },
     volumes: [],
     sections: sections as unknown as CompiledSection[],

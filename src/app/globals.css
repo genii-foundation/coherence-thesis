@@ -979,6 +979,10 @@ input {
 
 .progress-cloud-text {
   fill: currentColor;
+  stroke: var(--header-background);
+  stroke-linejoin: round;
+  stroke-width: 3px;
+  paint-order: stroke fill;
   font-family: var(--font-ui);
   font-size: var(--progress-cloud-text-size);
   font-weight: 800;
@@ -1373,6 +1377,11 @@ input {
   opacity: 0.78;
   transform-box: fill-box;
   transform-origin: center;
+  transition: opacity 120ms ease;
+}
+
+.audio-playback-icon.is-loading .audio-waveform {
+  opacity: 0;
 }
 
 .audio-waveform-bar {
@@ -1380,6 +1389,23 @@ input {
   transform-box: fill-box;
   transform-origin: center;
   transform: scaleY(var(--audio-waveform-scale, 1));
+}
+
+.audio-playback-spinner {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  stroke-dasharray: 68 32;
+  transform-box: view-box;
+  transform-origin: center;
+  animation: audio-control-spin 720ms linear infinite;
+}
+
+@keyframes audio-control-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .progress-percent {
@@ -6026,6 +6052,17 @@ input {
 .audio-offline-button:disabled {
   cursor: default;
   opacity: 0.56;
+}
+
+.audio-offline-spinner {
+  animation: audio-control-spin 720ms linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-playback-spinner,
+  .audio-offline-spinner {
+    animation: none;
+  }
 }
 
 .audio-offline-meter {
