@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import sharp from "sharp";
 import {
   hexToRgb,
   searchTargetSection,
@@ -8,6 +9,57 @@ import {
   wieldingSection,
   expectMenuFitsViewport,
 } from "./fixtures";
+
+type PixelRegionSample = {
+  mean: [number, number, number];
+  meanLuminance: number;
+  luminanceDeviation: number;
+};
+
+function samplePixelRegion(
+  data: Uint8Array,
+  imageWidth: number,
+  channels: number,
+  rect: { x: number; y: number; width: number; height: number },
+): PixelRegionSample {
+  const xStart = Math.max(0, Math.floor(rect.x));
+  const xEnd = Math.min(imageWidth, Math.ceil(rect.x + rect.width));
+  const yStart = Math.max(0, Math.floor(rect.y));
+  const imageHeight = Math.floor(data.length / imageWidth / channels);
+  const yEnd = Math.min(imageHeight, Math.ceil(rect.y + rect.height));
+  const sums: [number, number, number] = [0, 0, 0];
+  let luminanceSum = 0;
+  let luminanceSquareSum = 0;
+  let count = 0;
+
+  for (let y = yStart; y < yEnd; y += 1) {
+    for (let x = xStart; x < xEnd; x += 1) {
+      const offset = (y * imageWidth + x) * channels;
+      const red = data[offset] ?? 0;
+      const green = data[offset + 1] ?? 0;
+      const blue = data[offset + 2] ?? 0;
+      const luminance = red * 0.2126 + green * 0.7152 + blue * 0.0722;
+
+      sums[0] += red;
+      sums[1] += green;
+      sums[2] += blue;
+      luminanceSum += luminance;
+      luminanceSquareSum += luminance * luminance;
+      count += 1;
+    }
+  }
+
+  if (count === 0) throw new Error("Pixel sample region is empty");
+
+  const meanLuminance = luminanceSum / count;
+  return {
+    mean: [sums[0] / count, sums[1] / count, sums[2] / count],
+    meanLuminance,
+    luminanceDeviation: Math.sqrt(
+      Math.max(0, luminanceSquareSum / count - meanLuminance * meanLuminance),
+    ),
+  };
+}
 
 function expectSettledTransform(transform: string): void {
   if (transform === "none") return;
@@ -1311,13 +1363,15 @@ test("toolbar stays with the viewport in portrait and desktop layouts", async ({
   expect(samples.every((sample) => Math.abs(sample.top) <= 1)).toBe(true);
 });
 
-test("root canvas covers mobile Safari edges without a fixed paint layer", async ({
+test("mobile paper texture fades into Safari theme fallbacks without a fixed paint layer", async ({
+  browserName,
   page,
 }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile", "mobile viewport contract");
+  expect(browserName).toBe("webkit");
 
   await page.setViewportSize({ width: 393, height: 852 });
-  await page.goto(wieldingSection.href, { waitUntil: "domcontentloaded" });
+  await page.goto(wieldingVolume.href, { waitUntil: "domcontentloaded" });
 
   for (const height of [852, 700, 852]) {
     await page.setViewportSize({ width: 393, height });
@@ -1335,8 +1389,12 @@ test("root canvas covers mobile Safari edges without a fixed paint layer", async
       );
 
       return {
+        bodyBackgroundBlendMode: bodyStyle.backgroundBlendMode,
         bodyBackgroundColor: bodyStyle.backgroundColor,
         bodyBackgroundImage: bodyStyle.backgroundImage,
+        bodyBackgroundPosition: bodyStyle.backgroundPosition,
+        bodyBackgroundRepeat: bodyStyle.backgroundRepeat,
+        bodyBackgroundSize: bodyStyle.backgroundSize,
         bodyIsolation: bodyStyle.isolation,
         bodyOverscrollY: bodyStyle.overscrollBehaviorY,
         bodyPosition: bodyStyle.position,
@@ -1345,8 +1403,17 @@ test("root canvas covers mobile Safari edges without a fixed paint layer", async
         htmlBackgroundColor: htmlStyle.backgroundColor,
         htmlBackgroundImage: htmlStyle.backgroundImage,
         htmlOverscrollY: htmlStyle.overscrollBehaviorY,
+        pageBackgroundFalloffHeight: htmlStyle
+          .getPropertyValue("--page-background-falloff-height")
+          .trim(),
+        pageEdgeBackground: htmlStyle.getPropertyValue("--page-edge-background").trim(),
+        renderedFalloffHeight: Number.parseFloat(
+          bodyStyle.backgroundSize.split(",")[0]?.trim().split(/\s+/)[1] ?? "0",
+        ),
         scrollingElement: document.scrollingElement?.tagName ?? "",
         shellMinHeight: Number.parseFloat(shellStyle?.minHeight ?? "0"),
+        shellBackgroundColor: shellStyle?.backgroundColor ?? "",
+        shellBackgroundImage: shellStyle?.backgroundImage ?? "",
         shellOverflowY: shellStyle?.overflowY ?? "",
         shellZIndex: shellStyle?.zIndex ?? "",
         themeColor:
@@ -1363,19 +1430,65 @@ test("root canvas covers mobile Safari edges without a fixed paint layer", async
     expect(metrics.viewport).toContain("viewport-fit=cover");
     expect(metrics.htmlBackgroundColor).toBe(hexToRgb(metrics.themeColor));
     expect(metrics.htmlBackgroundImage).toBe("none");
-    expect(metrics.bodyBackgroundColor).not.toBe("rgba(0, 0, 0, 0)");
+    expect(metrics.bodyBackgroundColor).toBe(hexToRgb(metrics.pageEdgeBackground));
+    expect(metrics.bodyBackgroundColor).not.toBe(metrics.htmlBackgroundColor);
+    expect(metrics.bodyBackgroundImage.startsWith("linear-gradient")).toBe(true);
     expect(metrics.bodyBackgroundImage).toContain("radial-gradient");
+    expect(metrics.bodyBackgroundBlendMode.split(",").map((value) => value.trim())).toContain(
+      "soft-light",
+    );
+    expect(metrics.bodyBackgroundPosition.split(",")[0]).toContain("100%");
+    expect(metrics.bodyBackgroundRepeat.split(",")[0]?.trim()).toBe("no-repeat");
+    expect(metrics.bodyBackgroundSize.split(",")[0]?.trim()).toContain("100%");
+    expect(metrics.pageBackgroundFalloffHeight).toContain("70svh");
+    expect(metrics.renderedFalloffHeight).toBeGreaterThanOrEqual(511);
     expect(metrics.htmlOverscrollY).toBe("none");
     expect(metrics.bodyOverscrollY).toBe("none");
     expect(metrics.bodyTextureContent).toBe("none");
     expect(metrics.bodyPosition).toBe("static");
     expect(metrics.bodyIsolation).toBe("auto");
+    expect(metrics.shellBackgroundColor).toBe("rgba(0, 0, 0, 0)");
+    expect(metrics.shellBackgroundImage).toBe("none");
     expect(metrics.shellOverflowY).toBe("visible");
     expect(metrics.shellZIndex).toBe("auto");
     expect(metrics.shellMinHeight).toBeGreaterThanOrEqual(
       metrics.viewportHeight - 1,
     );
     expect(metrics.bottomInsideShell).toBe(true);
+  }
+
+  const themeBackgrounds = await page.evaluate(() => {
+    const root = document.documentElement;
+    const originalTheme = root.getAttribute("data-reader-theme");
+    const results = ["light", "dark", "black"].map((theme) => {
+      root.dataset.readerTheme = theme;
+      const bodyStyle = getComputedStyle(document.body);
+      const rootStyle = getComputedStyle(root);
+      return {
+        backgroundBlendMode: bodyStyle.backgroundBlendMode,
+        backgroundColor: bodyStyle.backgroundColor,
+        backgroundImage: bodyStyle.backgroundImage,
+        edgeBackground: rootStyle.getPropertyValue("--page-edge-background").trim(),
+        theme,
+      };
+    });
+
+    if (originalTheme === null) root.removeAttribute("data-reader-theme");
+    else root.setAttribute("data-reader-theme", originalTheme);
+    return results;
+  });
+
+  for (const theme of themeBackgrounds) {
+    expect(theme.backgroundColor).toBe(hexToRgb(theme.edgeBackground));
+    if (theme.theme === "black") {
+      expect(theme.backgroundImage).toBe("none");
+      expect(theme.backgroundBlendMode).toBe("normal");
+    } else {
+      expect(theme.backgroundImage.startsWith("linear-gradient")).toBe(true);
+      expect(
+        theme.backgroundBlendMode.split(",").map((value) => value.trim()),
+      ).toContain("soft-light");
+    }
   }
 
   await page.evaluate(() => {
@@ -1404,6 +1517,122 @@ test("root canvas covers mobile Safari edges without a fixed paint layer", async
     1,
   );
   expect(bottomEdge.bottomInsideShell).toBe(true);
+
+  await page.addStyleTag({
+    content:
+      ".site-shell { visibility: hidden !important; } nextjs-portal { display: none !important; }",
+  });
+
+  for (const theme of ["default", "light", "dark"] as const) {
+    const themeMetrics = await page.evaluate((nextTheme) => {
+      const root = document.documentElement;
+      if (nextTheme === "default") root.removeAttribute("data-reader-theme");
+      else root.dataset.readerTheme = nextTheme;
+
+      const bodyStyle = getComputedStyle(document.body);
+      return {
+        bodyBackgroundColor: bodyStyle.backgroundColor,
+        falloffHeight: Number.parseFloat(
+          bodyStyle.backgroundSize.split(",")[0]?.trim().split(/\s+/)[1] ?? "0",
+        ),
+      };
+    }, theme);
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) => {
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+        }),
+    );
+
+    const screenshot = await page.screenshot({
+      animations: "disabled",
+      fullPage: true,
+    });
+    const rendered = await sharp(screenshot)
+      .removeAlpha()
+      .raw()
+      .toBuffer({ resolveWithObject: true });
+    const viewportWidth = page.viewportSize()?.width ?? 393;
+    const pixelScale = rendered.info.width / viewportWidth;
+    const renderedHeight = rendered.info.height / pixelScale;
+    const sampleCssRegion = (rect: {
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+    }) =>
+      samplePixelRegion(rendered.data, rendered.info.width, rendered.info.channels, {
+        x: rect.x * pixelScale,
+        y: rect.y * pixelScale,
+        width: rect.width * pixelScale,
+        height: rect.height * pixelScale,
+      });
+    const normalTexture = sampleCssRegion({
+      x: 12,
+      y: Math.max(70, renderedHeight - themeMetrics.falloffHeight - 48),
+      width: viewportWidth - 24,
+      height: 18,
+    });
+    const falloffRows = Array.from({ length: 51 }, (_, index) => {
+      const progress = index / 50;
+      return sampleCssRegion({
+        x: 12,
+        y: Math.min(
+          renderedHeight - 4,
+          renderedHeight - themeMetrics.falloffHeight * (1 - progress),
+        ),
+        width: viewportWidth - 24,
+        height: 4,
+      });
+    });
+    const terminalSolid = sampleCssRegion({
+      x: 12,
+      y: renderedHeight - 8,
+      width: viewportWidth - 24,
+      height: 6,
+    });
+    const expectedEdge = themeMetrics.bodyBackgroundColor
+      .match(/[\d.]+/g)
+      ?.slice(0, 3)
+      .map(Number);
+    const adjacentLuminanceDeltas = falloffRows.slice(1).map((sample, index) =>
+      Math.abs(sample.meanLuminance - falloffRows[index]!.meanLuminance),
+    );
+    const maxAdjacentLuminanceDelta = Math.max(...adjacentLuminanceDeltas);
+    const edgeDelta = Math.max(
+      ...normalTexture.mean.map((channel, index) =>
+        Math.abs(channel - terminalSolid.mean[index]!),
+      ),
+    );
+
+    expect(expectedEdge).toHaveLength(3);
+    expect(
+      Math.max(
+        ...terminalSolid.mean.map((channel, index) =>
+          Math.abs(channel - (expectedEdge?.[index] ?? channel)),
+        ),
+      ),
+    ).toBeLessThanOrEqual(2);
+    expect(terminalSolid.luminanceDeviation).toBeLessThan(1.1);
+    expect(normalTexture.luminanceDeviation).toBeGreaterThan(1.25);
+    expect(falloffRows[25]!.luminanceDeviation).toBeLessThan(
+      normalTexture.luminanceDeviation,
+    );
+    expect(falloffRows[42]!.luminanceDeviation).toBeLessThan(
+      falloffRows[25]!.luminanceDeviation,
+    );
+    expect(maxAdjacentLuminanceDelta).toBeLessThan(3);
+    if (theme === "default") expect(edgeDelta).toBeLessThan(6);
+  }
+
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  const threadMask = await page.locator(".common-thread-texture").evaluate((element) => {
+    const style = getComputedStyle(element) as CSSStyleDeclaration & {
+      webkitMaskImage?: string;
+    };
+    return style.maskImage || style.webkitMaskImage || "";
+  });
+  expect(threadMask).toContain("linear-gradient");
 });
 
 test("skip link remains clipped until it receives keyboard focus", async ({ page }) => {
