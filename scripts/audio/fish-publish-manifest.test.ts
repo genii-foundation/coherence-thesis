@@ -4,6 +4,7 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   createAudioClipManifest,
+  isTransientPublishTransportError,
   parseAudioPublishOptions,
   remoteObjectMatches,
   uploadObject,
@@ -36,6 +37,20 @@ const timingBytes = Buffer.from(JSON.stringify({
     match: "exact",
   }],
 }));
+
+describe("Supabase publishing transport", () => {
+  it("retries transport failures without hiding immutable conflicts", () => {
+    expect(isTransientPublishTransportError(
+      new Error("fetch failed ERR_HTTP2_STREAM_ERROR"),
+    )).toBe(true);
+    expect(isTransientPublishTransportError(
+      new Error("Unable to check object: 503 Service Unavailable"),
+    )).toBe(true);
+    expect(isTransientPublishTransportError(
+      new Error("Conditional upload found a different immutable object"),
+    )).toBe(false);
+  });
+});
 
 function audioFile(overrides: Partial<FishAudioFile> = {}): FishAudioFile {
   return {

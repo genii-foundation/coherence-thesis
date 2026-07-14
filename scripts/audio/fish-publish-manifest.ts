@@ -124,12 +124,19 @@ function describeFetchError(error: unknown): string {
   return error.message;
 }
 
+export function isTransientPublishTransportError(error: unknown): boolean {
+  if (!(error instanceof Error)) return false;
+  return /fetch failed|ERR_HTTP2|ECONN|ETIMEDOUT|EAI_AGAIN|\b(?:408|429|5\d\d)\b/i.test(
+    `${error.message} ${describeFetchError(error)}`,
+  );
+}
+
 async function fetchWithRetry(
   url: URL,
   init: RequestInit,
   label: string,
 ): Promise<Response> {
-  const attempts = 4;
+  const attempts = 8;
   let lastError: unknown;
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
@@ -137,7 +144,7 @@ async function fetchWithRetry(
     } catch (error) {
       lastError = error;
       if (attempt === attempts) break;
-      await sleep(750 * attempt);
+      await sleep(Math.min(750 * attempt, 5_000));
     }
   }
   throw new Error(`${label}: ${describeFetchError(lastError)}`);
@@ -912,14 +919,27 @@ async function main() {
       (object) => !handledObjectKeys.has(object.objectKey),
     );
     if (options.upload && pendingObjects.length > 0) {
-      const result = await uploadFiles({
-        files: pendingObjects,
-        endpoint: endpoint!,
-        bucket: options.bucket,
-        credentials: credentials!,
-        skipExisting: options.skipExisting,
-        concurrency: options.concurrency,
-      });
+      let result: UploadResult;
+      try {
+        result = await uploadFiles({
+          files: pendingObjects,
+          endpoint: endpoint!,
+          bucket: options.bucket,
+          credentials: credentials!,
+          skipExisting: options.skipExisting,
+          concurrency: options.concurrency,
+        });
+      } catch (error) {
+        if (!options.watch || !isTransientPublishTransportError(error)) throw error;
+        if (Date.now() - lastProgressAt > options.idleTimeoutMs) throw error;
+        console.warn(JSON.stringify({
+          watch: true,
+          retryingUpload: true,
+          error: describeFetchError(error),
+        }));
+        await sleep(options.pollMs);
+        continue;
+      }
       for (const object of pendingObjects) handledObjectKeys.add(object.objectKey);
       uploaded += result.uploaded;
       skipped += result.skipped;
