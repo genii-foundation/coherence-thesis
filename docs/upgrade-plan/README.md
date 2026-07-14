@@ -1,5 +1,7 @@
 # Coherence Thesis Modernization Plan
 
+> Historical record: this plan describes the repository reviewed in July 2026. Its paths, counts, and implementation status are preserved as evidence and are not the current repository map. See the root `README.md` and `docs/decisions/0001-editorial-source-layout.md` for the current structure.
+
 A comprehensive review of the application code, build pipeline, data layer, and
 release engineering, with a phased plan to modernize the codebase. This document
 is the entry point. The full evidence sits in the companion files:
