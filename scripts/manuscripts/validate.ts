@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import { pathToFileURL } from "node:url";
+import { applyRecordedAudioDurations } from "./audio-durations";
 import {
   audioInputHash,
   audioVersionId,
