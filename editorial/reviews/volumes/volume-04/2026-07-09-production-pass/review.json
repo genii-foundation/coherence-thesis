@@ -12,7 +12,8 @@
   "baseline": {
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
     "path": "sources/manuscripts/coherence-thesis-vol4-architecting-providence.md",
-    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74"
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "snapshotPath": "baseline.md"
   },
   "reviewed": {
     "commit": null,
@@ -21,6 +22,10 @@
   },
   "canonicalSourcePath": "editorial/sources/volumes/volume-04/manuscript.md",
   "evidence": [
+    {
+      "path": "baseline.md",
+      "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74"
+    },
     { "path": "literary-review.md", "sha256": "1e1c25f97c04e4ce3ff8f672e9096bc9260ae9a4b2c230580601ca640f1bf239" },
     { "path": "overcompression-audit.md", "sha256": "4d96bf8b432bda3e72a9ce53e985218418cd7b1d68761759d5a041433060280c" },
     { "path": "review.md", "sha256": "1b42903bd818f6a38c63b12bb426ffdb34c04242c99f5ef2f830118dfcf77585" },

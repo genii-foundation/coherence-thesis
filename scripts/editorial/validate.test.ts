@@ -340,6 +340,53 @@ describe("editorial repository validation", () => {
     );
   });
 
+  it("uses a declared baseline snapshot when an orphaned commit is unavailable", () => {
+    const fixture = buildFixture();
+    const batch = fixture.batchDirectory(1);
+    const manifestPath = path.join(batch, "review.json");
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8")) as ReviewManifest;
+    const source = fs.readFileSync(
+      path.join(fixture.packageDirectory(1), "manuscript.md"),
+    );
+    fs.writeFileSync(path.join(batch, "baseline.md"), source);
+    manifest.baseline.snapshotPath = "baseline.md";
+    manifest.evidence.push({ path: "baseline.md", sha256: sha256(source) });
+    writeJson(manifestPath, manifest);
+
+    const report = validateEditorialRepository({
+      ...fixture.options,
+      readRevisionFile: (commit, sourcePath, root) => {
+        if (sourcePath.endsWith("volume-01.md")) {
+          throw new Error("orphaned commit is unavailable");
+        }
+        return fixture.options.readRevisionFile!(commit, sourcePath, root);
+      },
+    });
+
+    expect(report.reviewBatchCount).toBe(9);
+  });
+
+  it("cross checks a baseline snapshot when its commit remains available", () => {
+    const fixture = buildFixture();
+    const batch = fixture.batchDirectory(1);
+    const manifestPath = path.join(batch, "review.json");
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8")) as ReviewManifest;
+    const source = fs.readFileSync(
+      path.join(fixture.packageDirectory(1), "manuscript.md"),
+    );
+    fs.writeFileSync(path.join(batch, "baseline.md"), source);
+    manifest.baseline.snapshotPath = "baseline.md";
+    manifest.evidence.push({ path: "baseline.md", sha256: sha256(source) });
+    writeJson(manifestPath, manifest);
+
+    expect(() =>
+      validateEditorialRepository({
+        ...fixture.options,
+        readRevisionFile: () => Buffer.from("different source"),
+      }),
+    ).toThrow("baseline snapshot differs");
+  });
+
   it("defers reviewed source availability and hashes until approval", () => {
     const fixture = buildFixture();
     const manifestPath = path.join(fixture.batchDirectory(1), "review.json");

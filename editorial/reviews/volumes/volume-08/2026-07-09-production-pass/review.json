@@ -12,7 +12,8 @@
   "baseline": {
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
     "path": "sources/manuscripts/coherence-thesis-vol8-a-misanthropic-artifice.md",
-    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d"
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "snapshotPath": "baseline.md"
   },
   "reviewed": {
     "commit": null,
@@ -21,6 +22,10 @@
   },
   "canonicalSourcePath": "editorial/sources/volumes/volume-08/manuscript.md",
   "evidence": [
+    {
+      "path": "baseline.md",
+      "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d"
+    },
     { "path": "compression.md", "sha256": "5dc6371a2538f581b8f3335273fd12e3506a14289896d9b91dd9c3b4ee98b5a5" },
     { "path": "literary-review.md", "sha256": "bf5568a0df35c9f7d99e2420592050444c15ff9a861b16d0ae73a1beafbe9f83" },
     { "path": "review.md", "sha256": "40458b841097811e1b0e4484d6b057708926a23789e985e29b42d249ac6a14de" },

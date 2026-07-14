@@ -12,7 +12,8 @@
   "baseline": {
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
     "path": "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md",
-    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d"
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "snapshotPath": "baseline.md"
   },
   "reviewed": {
     "commit": null,
@@ -21,6 +22,10 @@
   },
   "canonicalSourcePath": "editorial/sources/volumes/volume-02/manuscript.md",
   "evidence": [
+    {
+      "path": "baseline.md",
+      "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d"
+    },
     { "path": "literary-review.md", "sha256": "4f68c3609c8295377e69e93ca4919a97ee9b3e9e2339b57e8102b932fed4f955" },
     { "path": "review.md", "sha256": "3c789b8c334cf1523661d781ab64dd5898041123d8bad92b160d6be816f71041" },
     { "path": "semantic-review.md", "sha256": "4b8a3ab78dafa20d8fe379cdadc362fd9bcc8841501f583fec522c2623198ef6" },

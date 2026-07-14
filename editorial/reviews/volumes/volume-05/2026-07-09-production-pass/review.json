@@ -12,7 +12,8 @@
   "baseline": {
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
     "path": "sources/manuscripts/coherence-thesis-vol5-purposeful.md",
-    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f"
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "snapshotPath": "baseline.md"
   },
   "reviewed": {
     "commit": null,
@@ -21,6 +22,10 @@
   },
   "canonicalSourcePath": "editorial/sources/volumes/volume-05/manuscript.md",
   "evidence": [
+    {
+      "path": "baseline.md",
+      "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f"
+    },
     { "path": "compression.md", "sha256": "cd94434d19fedc1501620b429d5df0fcef263496f9f2a96ec9c066ebdb59e925" },
     { "path": "literary-review.md", "sha256": "7f138c1b0c7e22f8d4d86be08bcebc6b2ca4f1db19cea7da859876af1ef2db40" },
     { "path": "review.md", "sha256": "16e14669c3349c5537d7afef9edf471f97874f65df66164780aeeafbac552af0" },

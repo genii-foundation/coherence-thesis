@@ -12,7 +12,8 @@
   "baseline": {
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
     "path": "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md",
-    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "snapshotPath": "baseline.md"
   },
   "reviewed": {
     "commit": null,
@@ -21,6 +22,10 @@
   },
   "canonicalSourcePath": "editorial/sources/volumes/volume-06/manuscript.md",
   "evidence": [
+    {
+      "path": "baseline.md",
+      "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
+    },
     { "path": "compression.md", "sha256": "40656c7bbe4b9dd5fd96d1beb1cd1bd8064ede3ab1165d7e453e3ffa7e3b8ab6" },
     { "path": "literary-review.md", "sha256": "1ce1058e7813b513e5c1323152b7058fb9dbe9b80f4f173c76565116cf0d98ae" },
     { "path": "review.md", "sha256": "538d09ec504a0107bb3ec7d5ac36ba94970ea1d47d8c6b18e5df28762f8be634" },

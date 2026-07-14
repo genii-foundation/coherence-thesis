@@ -23,7 +23,8 @@ Every durable volume review batch contains `review.json`. The file is the comple
   "baseline": {
     "commit": "full-commit-hash",
     "path": "historical/source/path.md",
-    "sha256": "source-hash"
+    "sha256": "source-hash",
+    "snapshotPath": "baseline.md"
   },
   "reviewed": {
     "commit": null,
@@ -52,6 +53,8 @@ Every durable volume review batch contains `review.json`. The file is the comple
 - `residualRisk` is `low`, `medium`, `high`, or `unassessed`. The detailed risks remain in the evidence ledgers and review record.
 - `publicationState` is `unpublished` or `published`. Published evidence requires author approval.
 - `baseline.commit` is a full immutable commit hash. Its path and hash identify the source at that revision.
+- `baseline.snapshotPath` is optional for an orphaned baseline commit. It points to a byte exact source snapshot inside the batch and must also appear in `evidence`.
+- When Git history contains the baseline commit, validation cross checks the snapshot against that revision. When the commit is unreachable, the hashed snapshot keeps the review reproducible.
 - `reviewed.commit` is a full immutable commit hash when the reviewed source was committed. It may be `null` for recovered worktree evidence that remains pending.
 - Historical paths remain historical. Do not rewrite them to the current layout.
 - `canonicalSourcePath` matches the adjacent volume manifest.

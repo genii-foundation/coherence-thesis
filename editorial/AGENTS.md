@@ -31,6 +31,7 @@ Never edit a generated reader section, catalog, browser payload, PDF, or report 
 - review.json must enumerate durable evidence by path relative to its batch directory. Do not infer the record from whatever files happen to be present.
 - A review record, sentence ledger, structure ledger, semantic review, literary review, slop review, or compression record counts as durable evidence only when review.json lists it.
 - Preserve the original baseline source path and source hash in historical review evidence. Resolve current and historical locations through volume.json. Never rewrite a baseline path to make a validator pass.
+- When a baseline commit is unreachable from remote history, add a byte exact baseline snapshot to the batch, declare it in review.json, and keep the original commit, path, and hash unchanged.
 - Keep ledgers exhaustive and human comments selective. Mechanical records do not replace editorial judgment.
 - Preserve superseded and historical reviews with an explicit manifest status. Do not delete them to make the current review surface appear cleaner.
 

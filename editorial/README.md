@@ -55,7 +55,7 @@ A voice card guides judgment. It is not a bag of preferred synonyms. Update it w
 
 Store volume review evidence at `editorial/reviews/volumes/<editorial-id>/<batch-id>/`. Store corpus reconciliation at `editorial/reviews/corpus/<batch-id>/`.
 
-Every volume batch contains `review.json`. It names the immutable baseline, reviewed source identity, current canonical source path, exact ledger scope, validation state, open query count, residual risk, standing, publication state, every evidence file, and author approval state. Its hashes make orphan recovery and silent evidence drift visible.
+Every volume batch contains `review.json`. It names the immutable baseline, reviewed source identity, current canonical source path, exact ledger scope, validation state, open query count, residual risk, standing, publication state, every evidence file, and author approval state. Its hashes make orphan recovery and silent evidence drift visible. If no remote ref can reach the baseline commit, preserve a byte exact `baseline.md` snapshot in the batch and bind it with `baseline.snapshotPath`.
 
 Historical ledger paths identify the source at the baseline commit. Keep them intact. Validators resolve those paths through the adjacent `volume.json`.
 

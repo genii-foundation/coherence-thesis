@@ -12,7 +12,8 @@
   "baseline": {
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
     "path": "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md",
-    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762"
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "snapshotPath": "baseline.md"
   },
   "reviewed": {
     "commit": null,
@@ -21,6 +22,10 @@
   },
   "canonicalSourcePath": "editorial/sources/volumes/volume-09/manuscript.md",
   "evidence": [
+    {
+      "path": "baseline.md",
+      "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762"
+    },
     { "path": "compression.md", "sha256": "ccb4ef10bc9c2af7eb44b9c38bd1b7ad9cae64e604b880b71542c1f5aa8604cb" },
     { "path": "literary-review.md", "sha256": "3b0db897ec5cde00c565273e85986c915ba6ad0317830818d84069e3dd7679d2" },
     { "path": "review.md", "sha256": "ac28600fab9cb3b54284602a9105a3644f0d1a98a027a62eaca0904794d2d9ce" },

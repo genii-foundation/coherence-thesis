@@ -66,6 +66,7 @@ Store corpus reconciliation under editorial/reviews/corpus/.
 Every durable volume batch includes review.json. It lists the immutable baseline, reviewed source identity, current canonical source path, every evidence file, and approval state.
 
 - Keep baseline source paths and hashes unchanged.
+- If the baseline commit is orphaned, preserve a byte exact baseline snapshot inside the batch, declare it with baseline.snapshotPath, and list it as hashed evidence.
 - Resolve historical and current paths through volume.json and historicalSourcePaths.
 - Account for every baseline sentence in sentence-ledger.jsonl.
 - Account for every heading and display unit in structure-ledger.jsonl.

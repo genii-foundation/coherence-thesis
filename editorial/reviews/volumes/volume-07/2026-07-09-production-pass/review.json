@@ -12,7 +12,8 @@
   "baseline": {
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
     "path": "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md",
-    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876"
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "snapshotPath": "baseline.md"
   },
   "reviewed": {
     "commit": null,
@@ -21,6 +22,10 @@
   },
   "canonicalSourcePath": "editorial/sources/volumes/volume-07/manuscript.md",
   "evidence": [
+    {
+      "path": "baseline.md",
+      "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876"
+    },
     { "path": "compression.md", "sha256": "16421a2f9d1ba7eb255721fa31ddffd93cae14fe6ea50963c55335b614f94332" },
     { "path": "literary-review.md", "sha256": "560c0717ad04379de645ee553396399c463706457b41338c943996cc2be0efeb" },
     { "path": "review.md", "sha256": "3cc294a181bdacfabadf44ef64a794c83677aacf9cf11925b2c5019b5ff4c176" },

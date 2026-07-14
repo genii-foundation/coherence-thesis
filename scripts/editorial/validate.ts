@@ -61,9 +61,13 @@ export type ReviewSourceIdentity = {
   commit: string;
   path: string;
   sha256: string;
+  snapshotPath?: string;
 };
 
-export type ReviewedSourceIdentity = Omit<ReviewSourceIdentity, "commit"> & {
+export type ReviewedSourceIdentity = Omit<
+  ReviewSourceIdentity,
+  "commit" | "snapshotPath"
+> & {
   commit: string | null;
 };
 
@@ -457,16 +461,32 @@ function parseSourceIdentity(
   file: string,
 ): ReviewSourceIdentity | ReviewedSourceIdentity {
   const identity = requireObject(value, label, file);
-  requireExactFields(identity, ["commit", "path", "sha256"], label, file);
+  const hasSnapshot = label === "baseline" && identity.snapshotPath !== undefined;
+  requireExactFields(
+    identity,
+    hasSnapshot
+      ? ["commit", "path", "sha256", "snapshotPath"]
+      : ["commit", "path", "sha256"],
+    label,
+    file,
+  );
   const commit =
     label === "reviewed" && identity.commit === null
       ? null
       : requireCommit(identity.commit, `${label}.commit`, file);
-  return {
+  const parsed = {
     commit,
     path: requireRepoPath(identity.path, `${label}.path`, file),
     sha256: requireSha256(identity.sha256, `${label}.sha256`, file),
   } as ReviewSourceIdentity | ReviewedSourceIdentity;
+  if (hasSnapshot) {
+    (parsed as ReviewSourceIdentity).snapshotPath = requireRepoPath(
+      identity.snapshotPath,
+      "baseline.snapshotPath",
+      file,
+    );
+  }
+  return parsed;
 }
 
 function parseReviewManifest(filePath: string, root: string): ReviewManifest {
@@ -952,11 +972,46 @@ export function validateEditorialRepository(
         }
       }
 
-      const baselineBuffer = readRevisionFile(
-        manifest.baseline.commit,
-        manifest.baseline.path,
-        root,
-      );
+      const baselineSnapshotPath = manifest.baseline.snapshotPath;
+      if (
+        baselineSnapshotPath &&
+        !manifest.evidence.some((entry) => entry.path === baselineSnapshotPath)
+      ) {
+        throw new Error(
+          `${manifestDisplay}: baseline.snapshotPath must be declared as evidence.`,
+        );
+      }
+
+      let baselineBuffer: Buffer;
+      if (baselineSnapshotPath) {
+        const snapshotFile = path.resolve(batchDirectory, baselineSnapshotPath);
+        const relative = path.relative(batchDirectory, snapshotFile);
+        if (relative.startsWith("..") || path.isAbsolute(relative)) {
+          throw new Error(`${manifestDisplay}: baseline snapshot escapes its batch.`);
+        }
+        baselineBuffer = fs.readFileSync(snapshotFile);
+        let revisionBuffer: Buffer | null = null;
+        try {
+          revisionBuffer = readRevisionFile(
+            manifest.baseline.commit,
+            manifest.baseline.path,
+            root,
+          );
+        } catch {
+          revisionBuffer = null;
+        }
+        if (revisionBuffer && !revisionBuffer.equals(baselineBuffer)) {
+          throw new Error(
+            `${manifestDisplay}: baseline snapshot differs from ${manifest.baseline.path} at ${manifest.baseline.commit}.`,
+          );
+        }
+      } else {
+        baselineBuffer = readRevisionFile(
+          manifest.baseline.commit,
+          manifest.baseline.path,
+          root,
+        );
+      }
       validateFileHash(
         baselineBuffer,
         manifest.baseline.sha256,
