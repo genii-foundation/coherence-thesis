@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "646164db0ae65c915caf8c7d862122fdac5aa980",
+  "headSha": "9dc65f2845136c18ad665aeaec5259434f5e09ce",
   "commits": [
+    {
+      "sha": "9dc65f2845136c18ad665aeaec5259434f5e09ce",
+      "committedAt": "2026-07-14T06:34:53.000Z",
+      "subject": "fix: portal progress sync warning (#138)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/9dc65f2845136c18ad665aeaec5259434f5e09ce",
+      "filesChanged": 4,
+      "additions": 278,
+      "deletions": 52,
+      "isLiterary": false
+    },
     {
       "sha": "646164db0ae65c915caf8c7d862122fdac5aa980",
       "committedAt": "2026-07-14T05:24:06.000Z",
