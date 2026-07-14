@@ -486,6 +486,9 @@ describe("Fish Supabase audio manifest publishing", () => {
       remoteObjectMatches(local, matchingRemote),
     ).toBe(true);
     expect(
+      remoteObjectMatches(local, { ...matchingRemote, byteSize: null }),
+    ).toBe(true);
+    expect(
       remoteObjectMatches(
         local,
         { ...matchingRemote, sha256: null },

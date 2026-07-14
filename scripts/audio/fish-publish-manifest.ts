@@ -617,9 +617,14 @@ async function readRemoteObjectMetadata(input: {
   if (response.status === 404) return null;
   if (response.ok) {
     const contentLength = response.headers.get("content-length");
-    const parsedByteSize = contentLength === null ? null : Number(contentLength);
+    const recordedByteSize = response.headers.get("x-amz-meta-byte-size");
+    const parsedByteSize = Number(contentLength ?? recordedByteSize);
     return {
-      byteSize: Number.isFinite(parsedByteSize) ? parsedByteSize : null,
+      byteSize:
+        (contentLength !== null || recordedByteSize !== null) &&
+        Number.isFinite(parsedByteSize)
+          ? parsedByteSize
+          : null,
       sha256: response.headers.get("x-amz-meta-sha256"),
       contentType: response.headers.get("content-type"),
       cacheControl: response.headers.get("cache-control"),
@@ -635,11 +640,22 @@ export function remoteObjectMatches(
   remote: RemoteObjectMetadata,
 ): boolean {
   return (
-    remote.byteSize === local.byteSize &&
+    (remote.byteSize === null || remote.byteSize === local.byteSize) &&
     remote.sha256 === local.sha256 &&
     remote.contentType === local.contentType &&
     remote.cacheControl === defaultCacheControl
   );
+}
+
+function remoteObjectMismatchDetails(
+  local: Pick<PublishableObject, "byteSize" | "sha256" | "contentType">,
+  remote: RemoteObjectMetadata,
+): string {
+  return JSON.stringify({
+    local,
+    remote,
+    expectedCacheControl: defaultCacheControl,
+  });
 }
 
 export async function uploadObject(input: {
@@ -657,7 +673,7 @@ export async function uploadObject(input: {
   if (remote) {
     if (!remoteObjectMatches(input.file, remote)) {
       throw new Error(
-        `Existing object does not match the local digest: ${input.file.objectKey}`,
+        `Existing object does not match the local digest: ${input.file.objectKey} ${remoteObjectMismatchDetails(input.file, remote)}`,
       );
     }
     return "skipped";
@@ -675,6 +691,7 @@ export async function uploadObject(input: {
       "cache-control": defaultCacheControl,
       "content-type": input.file.contentType,
       "if-none-match": "*",
+      "x-amz-meta-byte-size": String(body.byteLength),
       "x-amz-meta-sha256": payloadHash,
     },
     payloadHash,
@@ -709,7 +726,12 @@ export async function uploadObject(input: {
     credentials: input.credentials,
   });
   if (!uploaded || !remoteObjectMatches(input.file, uploaded)) {
-    throw new Error(`Uploaded object failed digest verification: ${input.file.objectKey}`);
+    const details = uploaded
+      ? ` ${remoteObjectMismatchDetails(input.file, uploaded)}`
+      : " Remote object was not found after upload.";
+    throw new Error(
+      `Uploaded object failed digest verification: ${input.file.objectKey}${details}`,
+    );
   }
   return "uploaded";
 }
