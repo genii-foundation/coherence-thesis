@@ -69,6 +69,7 @@ describe("validation orchestration", () => {
       "test:e2e",
       {
         environment: {
+          COHERENCE_UPDATES_SOURCE: "generated",
           PLAYWRIGHT_BASE_URL: "http://127.0.0.1:43127",
           PLAYWRIGHT_PREBUILT: "1",
         },

@@ -107,6 +107,7 @@ export async function runBuiltE2E(
   console.log(`Running Playwright against the existing build at ${baseUrl}.`);
   runScript("test:e2e", {
     environment: {
+      COHERENCE_UPDATES_SOURCE: "generated",
       PLAYWRIGHT_BASE_URL: baseUrl,
       PLAYWRIGHT_PREBUILT: "1",
     },
