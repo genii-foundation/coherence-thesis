@@ -20,6 +20,10 @@ import {
   sectionWithNeighbors,
 } from "./fixtures";
 
+// These tests mock sync requests. Blocking the offline worker keeps WebKit
+// requests visible to Playwright routing.
+test.use({ serviceWorkers: "block" });
+
 const systemVoicePreference = {
   voiceURI: null,
   rate: 1,
@@ -28,6 +32,7 @@ const systemVoicePreference = {
 };
 
 test("progress menu shows a resettable email sent confirmation", async ({
+  isMobile,
   page,
 }) => {
   let signInEmailRequests = 0;
@@ -51,9 +56,14 @@ test("progress menu shows a resettable email sent confirmation", async ({
     test.skip(true, "Sync is not configured in this test environment.");
   }
 
+  await expect(
+    page.getByRole("button", { name: "Mark current section as read" }),
+  ).toBeVisible();
+
   const emailInput = page.getByLabel("Email");
   const signInButton = page.getByRole("button", { name: "Sign in to sync" });
   await emailInput.fill("reader@example.com");
+  await expect(emailInput).toHaveValue("reader@example.com");
   const initialBackground = await signInButton.evaluate(
     (element) => window.getComputedStyle(element).backgroundColor,
   );
@@ -68,10 +78,110 @@ test("progress menu shows a resettable email sent confirmation", async ({
       "If you continue, reading progress will be synchronized to your Cloud account so this site can remember where you left off and share progress between your devices.",
     ),
   ).toBeVisible();
+  const modalMetrics = await page.evaluate(() => {
+    const backdrop = document.querySelector(".reader-sync-modal-backdrop");
+    const popover = document.querySelector(".progress-popover");
+    const box = backdrop?.getBoundingClientRect();
+    const dialogBox = backdrop
+      ?.querySelector('[role="dialog"]')
+      ?.getBoundingClientRect();
+    const style = backdrop ? window.getComputedStyle(backdrop) : null;
+    const topLeftHit = document.elementFromPoint(8, 8);
+    const bottomRightHit = document.elementFromPoint(
+      window.innerWidth - 8,
+      window.innerHeight - 8,
+    );
+    return {
+      bottom: box?.bottom ?? -1,
+      bottomRightBlocked: Boolean(backdrop?.contains(bottomRightHit)),
+      dialogBox: dialogBox
+        ? {
+            bottom: dialogBox.bottom,
+            left: dialogBox.left,
+            right: dialogBox.right,
+            top: dialogBox.top,
+          }
+        : null,
+      left: box?.left ?? -1,
+      parentTag: backdrop?.parentElement?.tagName ?? "",
+      popoverContainsBackdrop: Boolean(backdrop && popover?.contains(backdrop)),
+      position: style?.position ?? "",
+      right: box?.right ?? -1,
+      top: box?.top ?? -1,
+      topLeftBlocked: Boolean(backdrop?.contains(topLeftHit)),
+      viewportHeight: window.innerHeight,
+      viewportWidth: window.innerWidth,
+    };
+  });
+  expect(modalMetrics.parentTag).toBe("BODY");
+  expect(modalMetrics.popoverContainsBackdrop).toBe(false);
+  expect(modalMetrics.position).toBe("fixed");
+  expect(Math.abs(modalMetrics.top)).toBeLessThanOrEqual(1);
+  expect(Math.abs(modalMetrics.left)).toBeLessThanOrEqual(1);
+  expect(
+    Math.abs(modalMetrics.right - modalMetrics.viewportWidth),
+  ).toBeLessThanOrEqual(1);
+  expect(
+    Math.abs(modalMetrics.bottom - modalMetrics.viewportHeight),
+  ).toBeLessThanOrEqual(1);
+  expect(modalMetrics.topLeftBlocked).toBe(true);
+  expect(modalMetrics.bottomRightBlocked).toBe(true);
+  expect(modalMetrics.dialogBox).not.toBeNull();
+  if (modalMetrics.dialogBox) {
+    expect(modalMetrics.dialogBox.top).toBeGreaterThanOrEqual(-1);
+    expect(modalMetrics.dialogBox.left).toBeGreaterThanOrEqual(-1);
+    expect(modalMetrics.dialogBox.right).toBeLessThanOrEqual(
+      modalMetrics.viewportWidth + 1,
+    );
+    expect(modalMetrics.dialogBox.bottom).toBeLessThanOrEqual(
+      modalMetrics.viewportHeight + 1,
+    );
+  }
+  const cancelButton = syncModal.getByRole("button", { name: "Cancel" });
+  const continueButton = syncModal.getByRole("button", { name: "Continue" });
+  await expect(continueButton).toBeFocused();
+  await expect(page.locator(".site-shell")).toHaveAttribute("inert", "");
+  await expect(page.locator("html")).toHaveCSS("overflow", "hidden");
+  await expect(page.locator("body")).toHaveCSS("overflow", "hidden");
+
+  await page.keyboard.press("Tab");
+  await expect(cancelButton).toBeFocused();
+  await page.keyboard.press("Shift+Tab");
+  await expect(continueButton).toBeFocused();
+
+  if (!isMobile) {
+    const initialScrollY = await page.evaluate(() => window.scrollY);
+    await page.mouse.move(8, 8);
+    await page.mouse.wheel(0, 600);
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) => {
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+        }),
+    );
+    expect(await page.evaluate(() => window.scrollY)).toBe(initialScrollY);
+  }
   expect(signInEmailRequests).toBe(0);
 
-  await syncModal.getByRole("button", { name: "Cancel" }).click();
+  await page.keyboard.press("Escape");
   await expect(syncModal).toHaveCount(0);
+  await expect(
+    page.getByRole("region", { name: "Reader progress" }),
+  ).toBeVisible();
+  await expect(page.locator(".site-shell")).not.toHaveAttribute("inert", "");
+  await expect(signInButton).toBeFocused();
+  expect(signInEmailRequests).toBe(0);
+
+  await signInButton.click();
+  await expect(syncModal).toBeVisible();
+  await page.mouse.click(8, 8);
+  await expect(syncModal).toBeVisible();
+  expect(signInEmailRequests).toBe(0);
+
+  await cancelButton.click();
+  await expect(syncModal).toHaveCount(0);
+  await expect(page.locator(".site-shell")).not.toHaveAttribute("inert", "");
+  await expect(signInButton).toBeFocused();
   expect(signInEmailRequests).toBe(0);
   await expect(emailInput).toHaveValue("reader@example.com");
 
@@ -86,7 +196,9 @@ test("progress menu shows a resettable email sent confirmation", async ({
   });
   await expect(sentButton).toBeVisible();
   expect(signInEmailRequests).toBe(1);
-  await expect(page.getByLabel("One-time code")).toBeVisible();
+  const otpInput = page.getByLabel("One-time code");
+  await expect(otpInput).toBeVisible();
+  await expect(otpInput).toBeFocused();
   await expect(page.getByText("Check your email to finish.")).toHaveCount(1);
   await expect(signInButton).toHaveCount(0);
 
@@ -191,8 +303,10 @@ test("progress button wraps percent in a cloud when signed in", async ({
   await page.goto(wieldingSection.href);
 
   const progressButton = page.locator(".progress-menu-button");
-  await expect(progressButton.locator(".progress-percent-cloud")).toHaveCount(
-    0,
+  const progressBadge = progressButton.locator(".progress-percent");
+  await expect(progressBadge).toHaveAttribute(
+    "data-connected",
+    "false",
   );
   await page.getByRole("button", { name: /Progress/ }).click();
 
@@ -204,7 +318,13 @@ test("progress button wraps percent in a cloud when signed in", async ({
     test.skip(true, "Sync is not configured in this test environment.");
   }
 
-  await page.getByLabel("Email").fill("reader@example.com");
+  await expect(
+    page.getByRole("button", { name: "Mark current section as read" }),
+  ).toBeVisible();
+
+  const emailInput = page.getByLabel("Email");
+  await emailInput.fill("reader@example.com");
+  await expect(emailInput).toHaveValue("reader@example.com");
   await page.getByRole("button", { name: "Sign in to sync" }).click();
   await page
     .getByRole("dialog", { name: "Sync reading progress?" })
@@ -216,7 +336,6 @@ test("progress button wraps percent in a cloud when signed in", async ({
   await expect(progressButton).toHaveClass(/is-signed-in/);
   const syncSection = page.locator(".reader-sync");
   await expect(page.getByText("Reading progress")).toBeVisible();
-  await expect(page.getByText("Synced across all your devices.")).toBeVisible();
   await expect(syncSection.getByText("Account:")).toBeVisible();
   await expect(syncSection.getByText("reader@example.com")).toBeVisible();
   await expect(syncSection.getByText("Last synced:")).toBeVisible();
@@ -232,16 +351,18 @@ test("progress button wraps percent in a cloud when signed in", async ({
   await expect(page.getByText("Resume sync")).toHaveCount(0);
   await expect(page.getByText("Delete synced data")).toHaveCount(0);
   await expect(page.getByText("Delete account")).toHaveCount(0);
-  await expect(progressButton.locator(".progress-percent-cloud")).toHaveCount(
-    1,
+  await expect(progressBadge).toHaveAttribute(
+    "data-connected",
+    "true",
   );
+  await expect(progressBadge.locator(".progress-cloud-mark")).toHaveCount(1);
   await expect(progressButton).toHaveAttribute(
     "aria-label",
     /Progress \d+%, signed in/,
   );
 
   const signedInProgressGeometry = await progressButton.evaluate((element) => {
-    const cloud = element.querySelector(".progress-percent-cloud");
+    const cloud = element.querySelector(".progress-cloud-mark");
     const percent = element.querySelector(".progress-percent");
     const buttonBox = element.getBoundingClientRect();
     const cloudBox = cloud?.getBoundingClientRect();

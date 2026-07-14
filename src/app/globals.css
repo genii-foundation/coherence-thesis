@@ -3977,17 +3977,23 @@ input {
 .reader-sync-modal-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 170;
   display: grid;
   place-items: center;
   padding: 1rem;
   background: rgba(19, 27, 34, 0.28);
+  overscroll-behavior: contain;
 }
 
 .reader-sync-modal {
+  --toolbar-control-size: 3rem;
+
   display: grid;
   gap: 0.9rem;
   width: min(28rem, 100%);
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   border: 1px solid rgba(119, 84, 42, 0.28);
   border-radius: var(--radius);
   background: var(--panel-background);
