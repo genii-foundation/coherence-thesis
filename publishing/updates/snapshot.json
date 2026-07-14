@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "d234a33d74c9244a56621c528a2852c5dafa762d",
+  "headSha": "e7fdf9abc23e8a6f021be24c1f69e65989750003",
   "commits": [
+    {
+      "sha": "e7fdf9abc23e8a6f021be24c1f69e65989750003",
+      "committedAt": "2026-07-14T14:55:49.000Z",
+      "subject": "feat: add guided editorial debt resolution (#137)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/e7fdf9abc23e8a6f021be24c1f69e65989750003",
+      "filesChanged": 18,
+      "additions": 1669,
+      "deletions": 48,
+      "isLiterary": false
+    },
     {
       "sha": "d234a33d74c9244a56621c528a2852c5dafa762d",
       "committedAt": "2026-07-14T14:36:31.000Z",

@@ -4,7 +4,7 @@
 
 This index records known literary, philosophical, factual, continuity, publication, and technical obligations across The Coherence Thesis. A resolved item remains in the library as evidence of paydown.
 
-Open: 62. Queries: 38. Deferred: 5. Resolved: 0.
+Open: 61. Queries: 38. Deferred: 5. Resolved: 1.
 
 ## Active debt
 
@@ -84,7 +84,6 @@ Open: 62. Queries: 38. Deferred: 5. Resolved: 0.
 | [CTD-0025](items/ctd-0025-ancestors-refrain-meaning.md) | Define what the ancestors are watching means | query | literary | medium | volume-3, corpus | 2026-07-09 |
 | [CTD-0026](items/ctd-0026-volume-one-subtitle-metadata.md) | Align the Volume I reader subtitle with the manuscript | open | terminology | medium | volume-1 | 2026-07-11 |
 | [CTD-0028](items/ctd-0028-coherence-thesis-network-access.md) | Fulfill or revise the Coherence Thesis Network access promise | deferred | promise | medium | volume-7, volume-9, master-ledger, site, corpus | 2026-07-09 |
-| [CTD-0032](items/ctd-0032-volume-one-ampersand-normalization.md) | Restore intentional and citation ampersands | open | literary | medium | volume-1, volume-3, corpus | 2026-07-13 |
 | [CTD-0035](items/ctd-0035-volume-title-matter-consistency.md) | Reconcile duplicate and inconsistent volume title matter | open | structural | medium | volume-2, volume-5, volume-6, volume-7, volume-8, volume-9, master-ledger, corpus | 2026-07-09 |
 | [CTD-0037](items/ctd-0037-interactive-thesis-promise.md) | Fulfill or revise the interactive thesis promise | open | promise | medium | volume-4, site, corpus | 2026-07-09 |
 | [CTD-0041](items/ctd-0041-volume-two-collaborator-access.md) | Give readers the participation route the corpus promises | open | promise | medium | volume-2, volume-4, volume-9, site, corpus | 2026-07-09 |
@@ -118,4 +117,6 @@ Open: 62. Queries: 38. Deferred: 5. Resolved: 0.
 
 ## Resolved debt
 
-None.
+| ID | Title | Status | Kind | Severity | Scope | Updated |
+| --- | --- | --- | --- | --- | --- | --- |
+| [CTD-0032](items/ctd-0032-volume-one-ampersand-normalization.md) | Restore intentional and citation ampersands | resolved | literary | medium | volume-1, volume-3, corpus | 2026-07-14 |
