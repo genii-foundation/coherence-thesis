@@ -162,6 +162,18 @@ describe("editorial debt", () => {
     expect(item.sections.get("Resolution")).toContain(
       "### Criterion results",
     );
+    expect(item.resolution).toEqual({
+      outcome: "The obligation is no longer active.",
+      criterionResults: [
+        "- C1: met. The promised artifact was published.",
+        "- C2: not applicable. Publication made removal unnecessary.",
+      ].join("\n"),
+      evidence: "The package records the published artifact.",
+      validation: "The focused register validation passed.",
+      approval: "The responsible editor confirmed the outcome.",
+      residualRisk: "No residual risk remains inside this obligation.",
+      relatedDebt: "None.",
+    });
   });
 
   it("requires resolved paydown criteria to start at C1 and stay contiguous", () => {

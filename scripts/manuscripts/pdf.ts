@@ -5,15 +5,17 @@ import sharp from "sharp";
 import {
   ensureDir,
   fileHash,
-  publicDataRoot,
-  repoRoot,
   sha256,
   type CompiledCatalog,
   type CompiledSection,
   type CompiledVolume,
 } from "./shared";
+import {
+  publicDataRoot,
+  publicDownloadsRoot,
+  repoRoot,
+} from "../repository/paths";
 
-const publicDownloadsRoot = path.join(repoRoot, "public/downloads");
 export const pdfManifestPath = path.join(publicDataRoot, "pdf-downloads.json");
 // Incremental build cache (PERF-07). Lives inside the gitignored downloads
 // directory: a fresh CI checkout starts empty and does a full build, while local

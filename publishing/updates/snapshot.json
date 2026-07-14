@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "f5bc0f48083942ccb605a9839d31e9b1cc204f08",
+  "headSha": "38a237fc126a0928518a83a23d52d6f35c7c4ad5",
   "commits": [
+    {
+      "sha": "38a237fc126a0928518a83a23d52d6f35c7c4ad5",
+      "committedAt": "2026-07-14T21:56:09.000Z",
+      "subject": "fix: make landscape manuscript details usable (#141)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/38a237fc126a0928518a83a23d52d6f35c7c4ad5",
+      "filesChanged": 3,
+      "additions": 51,
+      "deletions": 5,
+      "isLiterary": false
+    },
     {
       "sha": "f5bc0f48083942ccb605a9839d31e9b1cc204f08",
       "committedAt": "2026-07-14T21:32:44.000Z",

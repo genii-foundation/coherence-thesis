@@ -3,7 +3,6 @@ import { describe, expect, it, vi } from "vitest";
 import { resolvePlaywrightServerMode } from "../dev/playwright-server-mode";
 import {
   createNpmScriptRunner,
-  preparedValidationScripts,
   runBuiltE2E,
   runStaticValidation,
   runValidation,
@@ -48,7 +47,19 @@ describe("validation orchestration", () => {
 
     expect(calls).toEqual([
       ["manuscripts:prepare", false],
-      ...preparedValidationScripts.map((scriptName) => [scriptName, true]),
+      ["editorial:debt", true],
+      ["editorial:validate", true],
+      ["editorial:semantic-links:validate", true],
+      ["manuscripts:validate", true],
+      ["repository:validate-layout", true],
+      ["repository:validate-agents", true],
+      ["repository:validate-links", true],
+      ["repository:source-boundary", true],
+      ["readme:check", true],
+      ["typecheck", true],
+      ["lint", true],
+      ["test", true],
+      ["build", true],
     ]);
   });
 

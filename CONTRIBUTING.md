@@ -25,7 +25,7 @@ Manuscript work receives editorial review in addition to technical review. A tec
 
 ## Local Setup
 
-The recommended runtime is Node.js 22, recorded in `.nvmrc`. Node.js 20.9 or newer is supported by the package metadata.
+Node.js 22 or newer is required. The preferred local major is recorded in `.nvmrc`.
 
 ```bash
 git clone https://github.com/<your-account>/coherence-thesis.git
@@ -61,7 +61,7 @@ The source manuscript workflow is intentionally strict:
 - Keep its voice card and `volume.json` beside it.
 - Edit overview nodes in `editorial/sources/overview/`.
 - Edit durable route, identity, lineage, and alias state in `publishing/continuity/` only through the explicit publishing workflow.
-- Do not edit or commit `generated/` or generated `public/data/` payloads by hand.
+- Do not edit or commit `generated/`, `public/data/`, or `public/downloads/` outputs by hand.
 - Update `publishing/audio/manifest.json` only through the hosted audio publishing workflow.
 
 For manuscript or series changes, run:
@@ -76,7 +76,7 @@ npm run manuscripts:validate
 
 Review the ignored local materialization and import report. Do not accept an import that collapses, fragments, reorders, or incorrectly renames sections. Only source files and reviewed durable publishing state should appear in the Git diff.
 
-Public headings and section IDs may improve, but their continuity identities and published routes remain durable. Run the preservation plan for every structural edit, review its lineage and aliases, then record the route set explicitly. Validation rejects silent link loss. The full process is documented in [Manuscript Link Continuity](docs/manuscript-link-continuity.md).
+Public headings and section IDs may improve, but their continuity identities and published routes remain durable. Run the preservation plan for every structural edit, review its lineage and aliases, then record the route set explicitly. Validation rejects silent link loss. The full process is documented in [Manuscript Link Continuity](publishing/guides/manuscript-link-continuity.md).
 
 ## Application Changes
 
@@ -125,7 +125,9 @@ Useful focused checks include:
 npm run repository:doctor
 npm run repository:validate-layout
 npm run repository:validate-agents
+npm run repository:validate-links
 npm run repository:source-boundary
+npm run readme:check
 npm run editorial:validate
 npm run manuscripts:validate
 npm run typecheck

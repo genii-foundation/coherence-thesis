@@ -320,6 +320,84 @@ describe("editorial debt queue", () => {
       status: "resolved",
       resolved: "2026-07-09",
     });
+    expect(queue.items[0]?.boundednessCandidate).toEqual({
+      candidate: false,
+      basis: expect.stringContaining(
+        "Resolved tickets are closure records, not boundedness candidates.",
+      ),
+    });
+    expect(queue.items[0]?.boundednessCandidate.basis).not.toContain(
+      "open status",
+    );
+    expect(queue.items[0]?.resolution).toEqual({
+      outcome: "The obligation was paid down.",
+      criterionResults:
+        "- C1: met. The source was corrected and the result was proved.",
+      evidence: "The current source and pull request record the result.",
+      validation: "The focused validation passed.",
+      approval: "The responsible human approved the result.",
+      residualRisk: "None identified.",
+      relatedDebt: "No related active ticket remains.",
+    });
+
+    const markdown = runQueue(["--id", "CTD-0002"], [resolved]);
+    for (const heading of [
+      "Outcome",
+      "Criterion results",
+      "Evidence",
+      "Validation",
+      "Approval",
+      "Residual risk",
+      "Related debt",
+    ]) {
+      expect(markdown.output).toContain(`#### ${heading}`);
+    }
+    expect(markdown.output).toContain("### Resolution");
+    expect(markdown.output).toContain("The obligation was paid down.");
+    expect(markdown.output).not.toContain(
+      "one source, noncritical severity, open status",
+    );
+  });
+
+  it("shows the complete closure proof for the current CTD-0032 record", () => {
+    const items = loadEditorialDebtItems();
+    const queue = jsonOutput(
+      runQueue(["--id", "CTD-0032", "--format", "json"], items),
+    );
+    const item = queue.items[0]!;
+
+    expect(item.metadata).toMatchObject({
+      id: "CTD-0032",
+      status: "resolved",
+      scopes: ["volume-1", "volume-3", "corpus"],
+    });
+    expect(item.metadata.sources).toHaveLength(3);
+    expect(item.boundednessCandidate).toMatchObject({ candidate: false });
+    expect(item.boundednessCandidate.basis).toContain(
+      "Resolved tickets are closure records",
+    );
+    expect(item.boundednessCandidate.basis).not.toContain("open status");
+    expect(item.resolution).not.toBeNull();
+    expect(Object.values(item.resolution!)).toHaveLength(7);
+    expect(
+      Object.values(item.resolution!).every((value) => value.trim().length > 0),
+    ).toBe(true);
+
+    const markdown = runQueue(["--id", "CTD-0032"], items).output;
+    for (const heading of [
+      "Outcome",
+      "Criterion results",
+      "Evidence",
+      "Validation",
+      "Approval",
+      "Residual risk",
+      "Related debt",
+    ]) {
+      expect(markdown).toContain(`#### ${heading}`);
+    }
+    expect(markdown).not.toContain(
+      "one source, noncritical severity, open status",
+    );
   });
 
   it("routes every debt kind to its required authority and specialist", () => {
@@ -477,6 +555,24 @@ describe("editorial debt queue", () => {
       candidate: true,
       basis: expect.stringContaining("not an effort estimate or completion promise"),
     });
+
+    const assessments = buildEditorialDebtQueue(items, {
+      preset: "all-active",
+      limit: items.length,
+    }).items;
+    const byId = new Map(
+      assessments.map((item) => [item.metadata.id, item.boundednessCandidate]),
+    );
+    expect(byId.get("CTD-0002")?.basis).toContain("severity is critical");
+    expect(byId.get("CTD-0003")?.basis).toContain("only scope is the corpus");
+    expect(byId.get("CTD-0004")?.basis).toContain("status is query");
+    expect(byId.get("CTD-0004")?.basis).toContain(
+      "canon kind requires an author decision",
+    );
+    expect(byId.get("CTD-0005")?.basis).toContain(
+      "2 sources instead of one",
+    );
+    expect(byId.get("CTD-0006")?.basis).toContain("broad work marker");
   });
 
   it("orders matches by severity and then by ID", () => {

@@ -5,7 +5,7 @@ status: open
 kind: literary
 severity: high
 scopes: ["volume-4"]
-sources: ["editorial/sources/volumes/volume-04/manuscript.md", "docs/manuscript-editorial-plan.md", "editorial/audits/2026-07-09-initial-corpus.md"]
+sources: ["editorial/sources/volumes/volume-04/manuscript.md", "editorial/guides/manuscript-editorial-plan.md", "editorial/audits/2026-07-09-initial-corpus.md"]
 discovered: 2026-07-09
 updated: 2026-07-10
 resolved:

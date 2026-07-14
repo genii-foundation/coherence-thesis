@@ -22,12 +22,15 @@ editorial/
       structure-ledger.jsonl
   audits/
   debt/
+  guides/
   standards/
   schemas/
   templates/
 ```
 
 The pattern continues through `volume-09`. Each volume package is complete in one place. `manuscript.md` is canonical prose. `voice-card.md` records editorial authority. `volume.json` records stable identity, current paths, historical source paths, display metadata, and import configuration.
+
+Editorial program and semantic cross-reference guidance lives under `editorial/guides/`. Start with [Manuscript Editorial Plan](guides/manuscript-editorial-plan.md) for corpus-scale review and [Semantic Cross-References](guides/semantic-cross-references.md) for reviewed internal linking.
 
 Keep temporary detector output, scratch comparisons, generated reader fragments, and local reports under ignored workspace locations. They are not literary history.
 

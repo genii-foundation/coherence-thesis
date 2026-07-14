@@ -127,7 +127,7 @@ The scroll handler ([ToolbarProgressIsland.tsx:268](../../src/components/Toolbar
 
 ### PERF-4 (medium, small): Middleware runs Supabase session refresh on every request for a static site
 
-[middleware.ts](../../middleware.ts) matches every non asset route and awaits `supabase.auth.getUser()` per request. Every manuscript page is statically generated, sync is opt in, and no server component reads the session. Anonymous readers (the overwhelming majority) pay client construction and auth work per page view, and the middleware forces function invocations where pure CDN serving would do.
+[middleware.ts](https://github.com/providence-collective/coherence-thesis/blob/0a25833d2919bb5ea757fc24fe447f7798293ed3/middleware.ts) matches every non asset route and awaits `supabase.auth.getUser()` per request. Every manuscript page is statically generated, sync is opt in, and no server component reads the session. Anonymous readers (the overwhelming majority) pay client construction and auth work per page view, and the middleware forces function invocations where pure CDN serving would do.
 **Fix:** return early when no `sb-` auth cookie is present, or narrow the matcher to `/api` and `/auth` routes, or remove the middleware and rely on client side token refresh.
 
 ### PERF-5 (low, medium): A 72 KB outline is embedded in the HTML of every page

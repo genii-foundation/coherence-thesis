@@ -44,11 +44,14 @@ This block contains stable facts generated from the current package metadata and
 | `editorial/sources/overview/` | Curated overview nodes | Every reference must resolve to a real section |
 | `editorial/reviews/` | Durable review batches and reconciliation evidence | Keep baseline paths, hashes, manifests, and approval state intact |
 | `editorial/debt/` | Durable editorial obligations and paydown evidence | Update item files, then regenerate the index |
+| `editorial/guides/` | Corpus editing and semantic cross-reference workflows | Keep guidance aligned with editorial standards and skills |
 | `publishing/continuity/` | Section identity, lineage, routes, aliases, and provenance | Change only through an explicit reviewed publishing workflow |
 | `publishing/audio/manifest.json` | Externally published immutable audio | Update only through the audio publishing workflow |
 | `publishing/updates/snapshot.json` | Tracked Updates fallback and immutable statistics cache | Refresh through `npm run updates:generate`, never edit by hand |
+| `publishing/guides/` | Durable publication and link-continuity workflows | Keep guidance aligned with publishing state and commands |
 | `generated/` | Ignored reader materializations, catalogs, and reports | Recreate locally, never commit |
 | `public/data/` | Ignored browser payloads derived from source and publishing state | Recreate locally, never commit |
+| `public/downloads/` | Ignored PDFs derived from canonical editorial source | Recreate locally, never commit |
 | `src/app/` | Next.js pages and server route handlers | Reader and account application code |
 | `src/components/` | Shared interface components and client islands | Reuse existing primitives before adding new ones |
 | `supabase/migrations/` | Reader sync schema, policies, and API grants | Review authorization changes as security-sensitive |
@@ -59,7 +62,7 @@ Generated manuscript fragments, catalogs, reports, search data, breadcrumbs, and
 
 ## Quick Start
 
-The project uses Node.js 22 through `.nvmrc`. Package metadata supports Node.js 20.11 or newer. Node.js 22 is the recommended local version.
+The project requires Node.js 22 or newer. The preferred local major is recorded in `.nvmrc`.
 
 ```bash
 git clone https://github.com/providence-collective/coherence-thesis.git
@@ -127,7 +130,7 @@ npm run manuscripts:validate
 
 Do not accept an import that collapses, fragments, reorders, or incorrectly renames sections. Fix the source or importer first.
 
-Published routes are durable. When a heading or structure change removes a historical route, run the preservation plan and review its proposed lineage and aliases. The route ledgers record every reviewed public path, and validation fails when one disappears without a replacement. Ordinary development, testing, building, and deployment cannot modify those ledgers. See [Manuscript Link Continuity](docs/manuscript-link-continuity.md) for the full workflow.
+Published routes are durable. When a heading or structure change removes a historical route, run the preservation plan and review its proposed lineage and aliases. The route ledgers record every reviewed public path, and validation fails when one disappears without a replacement. Ordinary development, testing, building, and deployment cannot modify those ledgers. See [Manuscript Link Continuity](publishing/guides/manuscript-link-continuity.md) for the full workflow.
 
 ### Semantic cross-references
 
@@ -140,7 +143,7 @@ npm run editorial:semantic-links:review -- --report <report> --decisions <review
 npm run editorial:semantic-links:validate
 ```
 
-Reviewed concepts target continuity identities rather than literal URLs. The compiler resolves each target to its current owner and route, then adds links to generated reader bodies without changing canonical prose, paragraph anchors, progress hashes, or audio identities. See [Semantic Cross-References](docs/semantic-cross-references.md) for the review and validation contract.
+Reviewed concepts target continuity identities rather than literal URLs. The compiler resolves each target to its current owner and route, then adds links to generated reader bodies without changing canonical prose, paragraph anchors, progress hashes, or audio identities. See [Semantic Cross-References](editorial/guides/semantic-cross-references.md) for the review and validation contract.
 
 ## Editorial Debt
 
@@ -213,7 +216,9 @@ Useful focused commands during development:
 npm run repository:doctor
 npm run repository:validate-layout
 npm run repository:validate-agents
+npm run repository:validate-links
 npm run repository:source-boundary
+npm run readme:check
 npm run editorial:validate
 npm run editorial:semantic-links:validate
 npm run manuscripts:validate

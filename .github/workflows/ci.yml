@@ -21,11 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -36,17 +36,22 @@ jobs:
       - name: Materialize manuscript outputs from source
         run: npm run manuscripts:prepare
 
-      - name: Validate repository structure and agent assets
+      - name: Validate repository structure, links, and agent assets
         run: |
           npm --ignore-scripts run repository:validate-layout
           npm --ignore-scripts run repository:validate-agents
+          npm --ignore-scripts run repository:validate-links
           npm --ignore-scripts run repository:source-boundary
+          npm --ignore-scripts run readme:check
 
       - name: Validate editorial debt
         run: npm --ignore-scripts run editorial:debt
 
       - name: Validate editorial evidence
         run: npm --ignore-scripts run editorial:validate
+
+      - name: Validate reviewed semantic links
+        run: npm --ignore-scripts run editorial:semantic-links:validate
 
       - name: Validate manuscript references and artifact freshness
         run: npm --ignore-scripts run manuscripts:validate
@@ -77,11 +82,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -126,7 +131,7 @@ jobs:
 
       - name: Upload Playwright report on failure
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-report
           path: playwright-report/

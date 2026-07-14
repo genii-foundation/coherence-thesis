@@ -6,9 +6,9 @@ This repository is the canonical source for The Coherence Thesis. Read this file
 
 | Path | Authority | Local instructions |
 | --- | --- | --- |
-| `editorial/` | Manuscripts, voice cards, overview, reviews, debt, standards, schemas, and templates | `editorial/AGENTS.md` |
-| `publishing/` | Durable continuity, audio publication, and Updates state | `publishing/AGENTS.md` |
-| `generated/` and generated `public/data/` files | Disposable local output | Never commit |
+| `editorial/` | Manuscripts, voice cards, overview, reviews, debt, standards, schemas, templates, and editorial guides | `editorial/AGENTS.md` |
+| `publishing/` | Durable continuity, audio publication, Updates state, and publishing guides | `publishing/AGENTS.md` |
+| `generated/`, `public/data/`, and `public/downloads/` | Disposable local output | Never commit |
 | `scripts/` | Editorial, manuscript, audio, Updates, development, and repository tooling | `scripts/AGENTS.md` |
 | `src/` | Reader application and server routes | `src/AGENTS.md` |
 | `supabase/` | Database schema, policies, and migrations | `supabase/AGENTS.md` |
@@ -46,7 +46,9 @@ Useful focused commands include:
 ```bash
 npm run repository:validate-layout
 npm run repository:validate-agents
+npm run repository:validate-links
 npm run repository:source-boundary
+npm run readme:check
 npm run editorial:validate
 npm run manuscripts:validate
 npm run test:e2e:fast:desktop

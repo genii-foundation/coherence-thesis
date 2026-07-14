@@ -112,6 +112,7 @@ export const generatedUpdatesSnapshotPath = path.join(
 );
 
 export const publicDataRoot = path.join(repoRoot, "public/data");
+export const publicDownloadsRoot = path.join(repoRoot, "public/downloads");
 export const publicAudioManifestPath = path.join(
   publicDataRoot,
   "audio-manifest.json",

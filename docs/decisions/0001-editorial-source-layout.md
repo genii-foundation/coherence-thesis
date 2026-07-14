@@ -69,7 +69,7 @@ These files are tracked because source text alone cannot reconstruct reviewed ro
 
 ### Generated output
 
-Generated reader sections, catalogs, reports, browser payloads, search data, breadcrumbs, and PDFs are untracked. They are recreated under generated/ and public data locations.
+Generated reader sections, catalogs, reports, browser payloads, search data, breadcrumbs, and PDFs are untracked. They are recreated under `generated/`, `public/data/`, and `public/downloads/`.
 
 No generated artifact may become canonical by accident. Build, preview, test, import, compile, and preparation commands must not alter editorial/ or publishing/.
 

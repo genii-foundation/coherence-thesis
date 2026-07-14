@@ -46,6 +46,9 @@ describe("repository source boundary classification", () => {
     "public/data/progress-sections.json",
     "public/data/reader-sections.json",
     "public/data/search-index.json",
+    "public/data/arbitrary/nested-payload.json",
+    "public/downloads/manuscripts/volume-one.pdf",
+    "public/downloads/sections/chapter/section.pdf",
   ])("classifies %s as disposable generated output", (filePath) => {
     expect(classifyTrackedPath(filePath)).toBe("disposable-generated");
   });
@@ -75,9 +78,18 @@ describe("repository source boundary classification", () => {
 
   it("does not reject unrelated files with similar names", () => {
     expect(classifyTrackedPath("public/data/audio-manifest.json.backup")).toBe(
-      "other-tracked-file",
+      "disposable-generated",
     );
     expect(classifyTrackedPath("public/data/outlines.json")).toBe(
+      "disposable-generated",
+    );
+    expect(classifyTrackedPath("public/database/outline.json")).toBe(
+      "other-tracked-file",
+    );
+    expect(classifyTrackedPath("public/data-old/outline.json")).toBe(
+      "other-tracked-file",
+    );
+    expect(classifyTrackedPath("public/downloads-cache/volume.pdf")).toBe(
       "other-tracked-file",
     );
     expect(classifyTrackedPath("content/manuscript-notes/section.md")).toBe(
