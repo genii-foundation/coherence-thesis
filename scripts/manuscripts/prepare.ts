@@ -7,6 +7,7 @@ import { pathToFileURL } from "node:url";
 import { compileManuscripts } from "./compile";
 import { pdfManifestPath } from "./pdf";
 import {
+  artifactsRoot,
   breadcrumbsDir,
   catalogPath,
   manuscriptRoot,
@@ -16,6 +17,13 @@ import {
   repoRoot,
   searchIndexPath,
 } from "./shared";
+import {
+  audioManifestSourcePath,
+  continuityRoot,
+  editorialSourcesRoot,
+  legacyPaths,
+  publicAudioManifestPath,
+} from "../repository/paths";
 
 type PreparationState = {
   version: 1;
@@ -49,22 +57,21 @@ const preparationStatePath = path.join(
   repoRoot,
   "node_modules/.cache/coherence-thesis/manuscripts-prepare.json",
 );
+const markdownImportReportPath = path.join(
+  artifactsRoot,
+  "markdown-series-report.json",
+);
 
 function preparationInputPaths(root = repoRoot): string[] {
   return [
     path.join(root, "package.json"),
     path.join(root, "package-lock.json"),
-    path.join(root, "sources/manuscripts"),
-    path.join(root, "content/overview"),
-    path.join(root, "content/series/aliases.json"),
-    path.join(root, "content/series/historical-section-mappings.json"),
-    path.join(root, "content/series/route-aliases.json"),
-    path.join(root, "content/series/route-ledger.json"),
-    path.join(root, "content/series/section-ledger.json"),
-    path.join(root, "content/series/section-lineage.json"),
-    path.join(root, "content/series/version-provenance.json"),
-    path.join(root, "content/series/volumes.json"),
+    path.join(root, path.relative(repoRoot, editorialSourcesRoot)),
+    path.join(root, path.relative(repoRoot, continuityRoot)),
+    path.join(root, path.relative(repoRoot, audioManifestSourcePath)),
+    path.join(root, "scripts/editorial"),
     path.join(root, "scripts/manuscripts"),
+    path.join(root, "scripts/repository"),
     path.join(root, "src/lib/manuscript-data.ts"),
     path.join(root, "src/lib/manuscript-labels.ts"),
     path.join(root, "src/lib/markdown-blocks.ts"),
@@ -174,25 +181,26 @@ export function breadcrumbShardPath(
   return path.join(root, `${shardKey}.json`);
 }
 
-export function preparationOutputsReady(): boolean {
-  const importReportPath = path.join(
-    repoRoot,
-    "artifacts/imports/markdown-series-report.json",
-  );
-  const requiredFiles = [
+export function preparationRequiredOutputPaths(): string[] {
+  return [
     catalogPath,
     readerSectionsPath,
     progressSectionsPath,
     searchIndexPath,
     outlineDataPath,
+    publicAudioManifestPath,
     pdfManifestPath,
-    importReportPath,
+    markdownImportReportPath,
   ];
+}
+
+export function preparationOutputsReady(): boolean {
+  const requiredFiles = preparationRequiredOutputPaths();
   if (requiredFiles.some((filePath) => !fs.existsSync(filePath))) return false;
 
   try {
     const catalog = readJson<CatalogSummary>(catalogPath);
-    const importReport = readJson<ImportReport>(importReportPath);
+    const importReport = readJson<ImportReport>(markdownImportReportPath);
     const readerSections = readJson<unknown[]>(readerSectionsPath);
     const progressSections = readJson<unknown[]>(progressSectionsPath);
     const searchIndex = readJson<unknown[]>(searchIndexPath);
@@ -286,6 +294,13 @@ function importMarkdownSources(): void {
 }
 
 async function materializeManuscripts(): Promise<void> {
+  for (const legacyPath of [
+    legacyPaths.generatedSectionsRoot,
+    path.dirname(legacyPaths.generatedCatalogPath),
+    legacyPaths.importReportsRoot,
+  ]) {
+    fs.rmSync(legacyPath, { recursive: true, force: true });
+  }
   importMarkdownSources();
   await compileManuscripts();
 }

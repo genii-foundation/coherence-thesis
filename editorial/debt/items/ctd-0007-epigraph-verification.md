@@ -5,7 +5,7 @@ status: open
 kind: citation
 severity: high
 scopes: ["volume-2", "volume-3", "volume-4", "volume-7", "volume-9", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md", "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md", "sources/manuscripts/coherence-thesis-vol4-architecting-providence.md", "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md", "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md"]
+sources: ["editorial/sources/volumes/volume-02/manuscript.md", "editorial/sources/volumes/volume-03/manuscript.md", "editorial/sources/volumes/volume-04/manuscript.md", "editorial/sources/volumes/volume-07/manuscript.md", "editorial/sources/volumes/volume-09/manuscript.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

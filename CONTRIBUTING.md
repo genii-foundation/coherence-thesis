@@ -57,11 +57,12 @@ Do not push directly to `main`. All changes enter through pull requests, and onl
 
 The source manuscript workflow is intentionally strict:
 
-- Edit manuscript text in `sources/manuscripts/`.
-- Edit volume metadata and deliberate route aliases in `content/series/`.
-- Edit overview nodes in `content/overview/`.
-- Do not edit `content/manuscripts/`, `src/generated/manuscripts/`, or generated `public/data/` payloads by hand.
-- Do not commit disposable manuscript output. `public/data/audio-manifest.json` remains tracked because it records hosted immutable audio.
+- Edit each manuscript in `editorial/sources/volumes/<editorial-id>/manuscript.md`.
+- Keep its voice card and `volume.json` beside it.
+- Edit overview nodes in `editorial/sources/overview/`.
+- Edit durable route, identity, lineage, and alias state in `publishing/continuity/` only through the explicit publishing workflow.
+- Do not edit or commit `generated/` or generated `public/data/` payloads by hand.
+- Update `publishing/audio/manifest.json` only through the hosted audio publishing workflow.
 
 For manuscript or series changes, run:
 
@@ -98,40 +99,38 @@ After bringing a pull request up to date with `main`, refresh the checked fallba
 npm run updates:generate
 ```
 
-This local command preserves cached deployment links. Maintainers can explicitly revalidate historical deployment links with `npm run updates:generate -- --refresh-deployments`. Production publications always perform that revalidation.
+Do not edit `publishing/updates/snapshot.json` manually. It caches immutable file and line statistics by commit SHA so production only needs to fetch the newest merge. Pull request CI checks that this cache matches the current base. A shallow production checkout first expands `main` from the canonical public Git repository, then falls back to the GitHub API. The deployment fails instead of publishing stale history when neither source can generate through the deployed main SHA.
 
-Do not edit `src/generated/updates.json` manually. It caches immutable file and line statistics by commit SHA so production only needs to fetch the newest merge. Pull request CI checks that this cache matches the current base. A shallow production checkout first expands `main` from the canonical public Git repository, then falls back to the GitHub API. The deployment fails instead of publishing stale history when neither source can generate through the deployed main SHA.
-
-The default Updates view includes every commit. The Literary view includes commits whose changed or renamed paths touch `sources/manuscripts/` or `content/manuscripts/`. This path rule preserves manuscript history across the source publishing transition and does not rely on commit message conventions.
+The default Updates view includes every commit. The Literary view includes commits whose changed or renamed paths touch current editorial manuscripts or historical manuscript paths. This path rule preserves history across repository layouts and does not rely on commit message conventions.
 
 Cards may include a best effort `View version` link to the successful public Vercel production deployment for the exact full commit SHA. Every Vercel production publication rechecks every stored historical URL and removes links confirmed unavailable. Transient failures preserve the previous mapping because they do not prove that Vercel deleted the deployment. Historical checks use bounded concurrency and per-request timeouts. Discovery of previously unknown links stops starting new batches after a fixed window. CI remains cache only because it validates but does not publish the site. Version link lookup must not relax the requirement for complete, current commit history.
 
 ## Validation
 
-Run focused checks while developing. For changes that cannot affect browser behavior, run the full static gate before requesting review:
+Run focused checks while developing, then run the full gate before requesting review:
 
 ```bash
 npm run validate
 ```
 
-If the change can affect browser behavior, use the combined final gate instead. It builds once and runs Playwright against that exact build:
+If the change can affect browser behavior, run the combined static and browser gate:
 
 ```bash
 npm run validate:ui
 ```
 
-`npm run test:e2e` remains available as a self-contained browser gate when a validated production build does not already exist.
-
 Useful focused checks include:
 
 ```bash
+npm run repository:doctor
+npm run repository:validate-layout
+npm run repository:validate-agents
+npm run repository:source-boundary
+npm run editorial:validate
 npm run manuscripts:validate
 npm run typecheck
 npm run lint
 npm run test
-npm run test:app
-npm run test:tooling
-npm run test:changed
 npm run test:e2e:fast:desktop
 npm run test:e2e:fast
 ```
@@ -158,8 +157,8 @@ Resolve review conversations and keep the branch current with `main`. Maintainer
 
 This repository has two license domains:
 
-- Software, scripts, tests, configuration, and build tooling use the Apache License 2.0 in `LICENSE`.
-- Manuscripts, site copy, overview text, and owned artwork use CC BY-SA 4.0 in `LICENSE-content`.
+- Software, scripts, tests, configuration, agent instructions, Updates history, and build tooling use the Apache License 2.0 in `LICENSE`.
+- Manuscripts, voice cards, editorial evidence, publishing continuity, site copy, overview text, and owned artwork use CC BY-SA 4.0 in `LICENSE-content`.
 
 `NOTICE` contains the path-level mapping. Generated artifacts inherit the license of their source material.
 

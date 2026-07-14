@@ -8,6 +8,10 @@ import {
   type UpdatesSnapshot,
 } from "../../src/lib/updates";
 import { git } from "../manuscripts/shared";
+import {
+  isCanonicalManuscriptPath,
+  legacyManuscriptPrefixes,
+} from "../repository/paths";
 
 export type GitCommand = (args: string[]) => string;
 export type FetchCommand = typeof fetch;
@@ -145,8 +149,8 @@ export function parseLocalNumstat(
 
 function isLiteraryUpdatePath(value: string): boolean {
   return (
-    value.startsWith("sources/manuscripts/") ||
-    value.startsWith("content/manuscripts/")
+    isCanonicalManuscriptPath(value) ||
+    legacyManuscriptPrefixes.some((prefix) => value.startsWith(prefix))
   );
 }
 

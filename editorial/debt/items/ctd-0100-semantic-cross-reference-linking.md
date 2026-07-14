@@ -5,7 +5,7 @@ status: open
 kind: link
 severity: medium
 scopes: ["volume-1", "site", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md#four-movements", "editorial/debt/audits/2026-07-09-cross-reference-candidate-audit.md", "content/series/aliases.json"]
+sources: ["editorial/sources/volumes/volume-01/manuscript.md#four-movements", "editorial/audits/2026-07-09-cross-reference-candidates.md", "publishing/continuity/aliases.json"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

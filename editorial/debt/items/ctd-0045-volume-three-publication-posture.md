@@ -5,7 +5,7 @@ status: query
 kind: structural
 severity: high
 scopes: ["volume-3"]
-sources: ["sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md", "content/series/volumes.json"]
+sources: ["editorial/sources/volumes/volume-03/manuscript.md", "editorial/sources/volumes/volume-03/volume.json"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

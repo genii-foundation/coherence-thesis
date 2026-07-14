@@ -9,8 +9,10 @@ to which files.
 
 Works covered by this license:
 
-- The manuscript source text in sources/manuscripts/
-- The generated canonical manuscript sections in content/manuscripts/
+- Canonical manuscripts, voice cards, overview text, corpus records, review evidence, debt records, editorial standards, schemas, and templates in editorial/, except editorial/AGENTS.md
+- Reviewed continuity state in publishing/continuity/
+- Published audio state in publishing/audio/manifest.json
+- Generated manuscript sections, catalogs, browser payloads, reports, and PDFs derived from the creative work
 - Site copy and editorial text authored for this project
 - Owned cover artwork and hero imagery in public/art/ and public/share/
 

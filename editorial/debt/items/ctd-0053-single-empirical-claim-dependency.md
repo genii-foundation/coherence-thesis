@@ -5,7 +5,7 @@ status: query
 kind: logical
 severity: high
 scopes: ["volume-1", "volume-2", "volume-3", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md", "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md", "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"]
+sources: ["editorial/sources/volumes/volume-01/manuscript.md", "editorial/sources/volumes/volume-02/manuscript.md", "editorial/sources/volumes/volume-03/manuscript.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

@@ -5,7 +5,7 @@ status: open
 kind: citation
 severity: critical
 scopes: ["volume-8", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol8-a-misanthropic-artifice.md"]
+sources: ["editorial/sources/volumes/volume-08/manuscript.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

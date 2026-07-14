@@ -1,0 +1,7 @@
+interface:
+  display_name: "Coherence Build Feature"
+  short_description: "Build and preview a focused site change"
+  default_prompt: "Use $coherence-build-feature to build and preview a focused Coherence Thesis feature or fix."
+
+policy:
+  allow_implicit_invocation: false

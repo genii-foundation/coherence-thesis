@@ -5,7 +5,7 @@ status: open
 kind: logical
 severity: high
 scopes: ["volume-2"]
-sources: ["sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md"]
+sources: ["editorial/sources/volumes/volume-02/manuscript.md"]
 discovered: 2026-07-09
 updated: 2026-07-11
 resolved:

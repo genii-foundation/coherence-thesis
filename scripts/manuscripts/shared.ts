@@ -38,6 +38,30 @@ import {
   isSyntheticFrontMatterPart,
   type VolumeLabelSource,
 } from "../../src/lib/manuscript-labels";
+import {
+  aliasConfigPath,
+  breadcrumbsDir,
+  continuityRoot,
+  editorialOverviewRoot,
+  expectedVolumeManifestPaths,
+  generatedCatalogPath,
+  generatedImportReportsRoot,
+  generatedManuscriptsRoot,
+  generatedSectionsRoot,
+  outlineDataPath,
+  overviewPath,
+  progressSectionsPath,
+  publicDataRoot,
+  readerSectionsPath,
+  repoRoot,
+  routeAliasConfigPath,
+  routeLedgerPath,
+  searchIndexPath,
+  sectionLedgerPath,
+  sectionLineagePath,
+  versionProvenancePath,
+} from "../repository/paths";
+import { validateRepositoryLayout } from "../repository/layout";
 
 // Re-export the split modules so existing `from "./shared"` imports keep working
 // (MAINT-05: shared.ts was one 770-line file; types live in ./types, filesystem
@@ -45,27 +69,28 @@ import {
 export type * from "./types";
 export * from "./io";
 
-export const repoRoot = path.resolve(import.meta.dirname, "../..");
-export const contentRoot = path.join(repoRoot, "content");
-export const manuscriptRoot = path.join(contentRoot, "manuscripts");
-export const overviewRoot = path.join(contentRoot, "overview");
-export const seriesRoot = path.join(contentRoot, "series");
-export const volumeConfigPath = path.join(seriesRoot, "volumes.json");
-export const aliasConfigPath = path.join(seriesRoot, "aliases.json");
-export const routeAliasConfigPath = path.join(seriesRoot, "route-aliases.json");
-export const sectionLineagePath = path.join(seriesRoot, "section-lineage.json");
-export const versionProvenancePath = path.join(seriesRoot, "version-provenance.json");
-export const sectionLedgerPath = path.join(seriesRoot, "section-ledger.json");
-export const routeLedgerPath = path.join(seriesRoot, "route-ledger.json");
-export const generatedRoot = path.join(repoRoot, "src/generated/manuscripts");
-export const catalogPath = path.join(generatedRoot, "catalog.json");
-export const publicDataRoot = path.join(repoRoot, "public/data");
-export const readerSectionsPath = path.join(publicDataRoot, "reader-sections.json");
-export const progressSectionsPath = path.join(publicDataRoot, "progress-sections.json");
-export const breadcrumbsDir = path.join(publicDataRoot, "breadcrumbs");
-export const searchIndexPath = path.join(publicDataRoot, "search-index.json");
-export const outlineDataPath = path.join(publicDataRoot, "outline.json");
-export const artifactsRoot = path.join(repoRoot, "artifacts/imports");
+export const manuscriptRoot = generatedSectionsRoot;
+export const overviewRoot = editorialOverviewRoot;
+export const seriesRoot = continuityRoot;
+export const generatedRoot = generatedManuscriptsRoot;
+export const catalogPath = generatedCatalogPath;
+export const artifactsRoot = generatedImportReportsRoot;
+
+export {
+  aliasConfigPath,
+  breadcrumbsDir,
+  outlineDataPath,
+  progressSectionsPath,
+  publicDataRoot,
+  readerSectionsPath,
+  repoRoot,
+  routeAliasConfigPath,
+  routeLedgerPath,
+  searchIndexPath,
+  sectionLedgerPath,
+  sectionLineagePath,
+  versionProvenancePath,
+};
 
 export function markdownFiles(root = manuscriptRoot): string[] {
   if (!fs.existsSync(root)) return [];
@@ -402,7 +427,6 @@ export function sortDocuments(docs: MarkdownDocument[]): MarkdownDocument[] {
 }
 
 export function readOverview(): OverviewDocument {
-  const overviewPath = path.join(overviewRoot, "coherence-thesis.json");
   if (!fs.existsSync(overviewPath)) {
     return {
       title: "The Coherence Thesis",
@@ -415,10 +439,13 @@ export function readOverview(): OverviewDocument {
 }
 
 export function readVolumeConfigs(): VolumeConfig[] {
-  if (!fs.existsSync(volumeConfigPath)) return [];
-  return (JSON.parse(readUtf8(volumeConfigPath)) as VolumeConfig[]).sort(
-    (left, right) => left.order - right.order,
-  );
+  validateRepositoryLayout();
+  return expectedVolumeManifestPaths()
+    .map(
+      (manifestPath) =>
+        JSON.parse(readUtf8(manifestPath)) as VolumeConfig,
+    )
+    .sort((left, right) => left.order - right.order);
 }
 
 export function readAliasConfig(): SectionAliasConfig {
@@ -556,7 +583,7 @@ export function readSectionLedger(): SectionLedger {
 export function readRouteLedger(): RouteLedger {
   if (!fs.existsSync(routeLedgerPath)) {
     throw new Error(
-      "Route ledger is missing. Restore content/series/route-ledger.json before compiling.",
+      "Route ledger is missing. Restore publishing/continuity/route-ledger.json before compiling.",
     );
   }
   const parsed = JSON.parse(readUtf8(routeLedgerPath)) as RouteLedger;

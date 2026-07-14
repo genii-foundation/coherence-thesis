@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-05",
+  "volumeId": "purposeful",
+  "title": "Purposeful",
+  "subtitle": "How Humanity Discovers Its Builders",
+  "order": 5,
+  "numberLabel": "V",
+  "planet": "Mercury",
+  "coverImage": "/art/coherence-thesis-vol5-cover.png",
+  "coverAlt": "Cover artwork for Purposeful, Volume Five of The Coherence Thesis.",
+  "sourcePath": "editorial/sources/volumes/volume-05/manuscript.md",
+  "voiceCardPath": "editorial/sources/volumes/volume-05/voice-card.md",
+  "historicalSourcePaths": [
+    "sources/manuscripts/coherence-thesis-vol5-purposeful.md"
+  ],
+  "import": {
+    "startMarkers": ["On Returning to the Human"]
+  }
+}

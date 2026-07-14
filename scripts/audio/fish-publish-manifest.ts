@@ -10,7 +10,6 @@ import {
 import {
   ensureDir,
   progressSectionsPath,
-  repoRoot,
   writeJson,
 } from "../manuscripts/shared";
 import type {
@@ -19,6 +18,7 @@ import type {
   AudioClipVoice,
 } from "../../src/lib/audio-manifest";
 import type { ProgressSectionData } from "../../src/lib/reader-data";
+import { audioManifestSourcePath } from "../repository/paths";
 
 const defaultBucket = "audio-clips";
 const defaultCacheControl = "public, max-age=31536000, immutable";
@@ -32,6 +32,7 @@ type Options = {
   bucket: string;
   output: string;
   upload: boolean;
+  write: boolean;
   skipExisting: boolean;
   concurrency: number;
   projectRef?: string;
@@ -130,7 +131,7 @@ function parsePositiveInteger(value: string | undefined, fallback: number): numb
   return parsed;
 }
 
-function parseCli(args: string[]): Options {
+export function parseAudioPublishOptions(args: string[]): Options {
   const runId = optionValue(args, "--run-id");
   const runManifest = optionValue(args, "--run-manifest");
   if (!runId && !runManifest) {
@@ -143,6 +144,7 @@ function parseCli(args: string[]): Options {
   if (!version) {
     throw new Error("Set --version for immutable audio object paths.");
   }
+  const upload = hasFlag(args, "--upload");
   return {
     runId,
     runManifest,
@@ -150,8 +152,9 @@ function parseCli(args: string[]): Options {
     bucket: optionValue(args, "--bucket") ?? defaultBucket,
     output:
       optionValue(args, "--output") ??
-      path.join(repoRoot, "public/data/audio-manifest.json"),
-    upload: hasFlag(args, "--upload"),
+      audioManifestSourcePath,
+    upload,
+    write: upload || hasFlag(args, "--write"),
     skipExisting: hasFlag(args, "--skip-existing"),
     concurrency: parsePositiveInteger(optionValue(args, "--concurrency"), 3),
     projectRef:
@@ -555,7 +558,7 @@ async function uploadFiles(input: {
 }
 
 async function main() {
-  const options = parseCli(process.argv.slice(2));
+  const options = parseAudioPublishOptions(process.argv.slice(2));
   const endpoint = options.endpoint ?? (
     options.projectRef ? defaultS3Endpoint(options.projectRef) : undefined
   );
@@ -595,13 +598,16 @@ async function main() {
     });
   }
 
-  ensureDir(path.dirname(options.output));
-  writeJson(options.output, manifest);
+  if (options.write) {
+    ensureDir(path.dirname(options.output));
+    writeJson(options.output, manifest);
+  }
   console.log(
     JSON.stringify(
       {
         runManifest: relativeToRepo(manifestPath),
-        output: relativeToRepo(options.output),
+        mode: options.upload ? "upload" : options.write ? "write" : "validate",
+        output: options.write ? relativeToRepo(options.output) : null,
         version: options.version,
         bucket: options.bucket,
         voices: manifest.voices.length,

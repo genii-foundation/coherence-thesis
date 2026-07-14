@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-07-09-production-pass",
+  "editorialId": "volume-06",
+  "approvalState": "pending",
+  "standing": "current",
+  "scope": { "coverage": "complete-volume", "sentenceRecords": 445, "structureRecords": 146 },
+  "validationState": "validated",
+  "openQueryCount": 146,
+  "residualRisk": "high",
+  "publicationState": "unpublished",
+  "baseline": {
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "path": "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414"
+  },
+  "reviewed": {
+    "commit": null,
+    "path": "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md",
+    "sha256": "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+  },
+  "canonicalSourcePath": "editorial/sources/volumes/volume-06/manuscript.md",
+  "evidence": [
+    { "path": "compression.md", "sha256": "40656c7bbe4b9dd5fd96d1beb1cd1bd8064ede3ab1165d7e453e3ffa7e3b8ab6" },
+    { "path": "literary-review.md", "sha256": "1ce1058e7813b513e5c1323152b7058fb9dbe9b80f4f173c76565116cf0d98ae" },
+    { "path": "review.md", "sha256": "538d09ec504a0107bb3ec7d5ac36ba94970ea1d47d8c6b18e5df28762f8be634" },
+    { "path": "semantic-review.md", "sha256": "a49469da06622d38a0649a7e0c27330b4ea0bbc6dc88d58f34ec40b12cfffc05" },
+    { "path": "sentence-ledger.jsonl", "sha256": "49f630924178e0d0b6e8249df0d32b01529fcd099629f7f6ab3170f454c3ce2e" },
+    { "path": "slop-review.md", "sha256": "e1c3c1c6f201b48e86a05d4361eaa1bd797e28834c4a7f410c3d1bffca20afc7" },
+    { "path": "structure-ledger.jsonl", "sha256": "985de8780ad6068027bee5560f710d6135c21e8bdca97cb8306e6223d6d678aa" }
+  ]
+}

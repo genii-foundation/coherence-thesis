@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-04",
+  "volumeId": "architecting-providence",
+  "title": "Architecting Providence",
+  "subtitle": "Building Coherent Civilization",
+  "order": 4,
+  "numberLabel": "IV",
+  "planet": "Uranus",
+  "coverImage": "/art/coherence-thesis-vol4-cover.png",
+  "coverAlt": "Cover artwork for Architecting Providence, Volume Four of The Coherence Thesis.",
+  "sourcePath": "editorial/sources/volumes/volume-04/manuscript.md",
+  "voiceCardPath": "editorial/sources/volumes/volume-04/voice-card.md",
+  "historicalSourcePaths": [
+    "sources/manuscripts/coherence-thesis-vol4-architecting-providence.md"
+  ],
+  "import": {
+    "startMarkers": ["Power Without Coordination", "First, the Story"]
+  }
+}

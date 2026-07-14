@@ -5,7 +5,7 @@ status: open
 kind: structural
 severity: medium
 scopes: ["volume-6", "reader", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md#the-whole-in-the-fewest-words", "scripts/manuscripts/import-markdown.ts", "src/lib/manuscript-labels.ts", "src/app/manuscripts/[volumeId]/page.tsx"]
+sources: ["editorial/sources/volumes/volume-06/manuscript.md#the-whole-in-the-fewest-words", "scripts/manuscripts/import-markdown.ts", "src/lib/manuscript-labels.ts", "src/app/manuscripts/[volumeId]/page.tsx"]
 discovered: 2026-07-11
 updated: 2026-07-11
 resolved:

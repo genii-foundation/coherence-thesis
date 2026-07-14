@@ -19,6 +19,7 @@ jobs:
     # though the browser job now owns the repository's single build.
     name: Validate (types, lint, unit, build, drift)
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,8 +36,17 @@ jobs:
       - name: Materialize manuscript outputs from source
         run: npm run manuscripts:prepare
 
+      - name: Validate repository structure and agent assets
+        run: |
+          npm --ignore-scripts run repository:validate-layout
+          npm --ignore-scripts run repository:validate-agents
+          npm --ignore-scripts run repository:source-boundary
+
       - name: Validate editorial debt
-        run: npm --ignore-scripts run manuscripts:debt
+        run: npm --ignore-scripts run editorial:debt
+
+      - name: Validate editorial evidence
+        run: npm --ignore-scripts run editorial:validate
 
       - name: Validate manuscript references and artifact freshness
         run: npm --ignore-scripts run manuscripts:validate
@@ -52,9 +62,9 @@ jobs:
 
       - name: Check source and durable publishing state remain clean
         run: |
-          npm --ignore-scripts run manuscripts:source-boundary
-          if ! git diff --exit-code -- content/series; then
-            echo "::error::Automatic generation changed durable publishing state. Run the explicit manuscript publishing workflow and commit the reviewed result."
+          npm --ignore-scripts run repository:source-boundary
+          if ! git diff --exit-code -- editorial publishing; then
+            echo "::error::Automatic generation changed editorial or publishing state. Run an explicit reviewed write workflow and commit the intended result."
             exit 1
           fi
 
@@ -65,6 +75,7 @@ jobs:
   e2e:
     name: End-to-end (Playwright)
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
@@ -90,15 +101,18 @@ jobs:
 
       - name: Check Updates fallback cache is current
         if: github.event_name == 'pull_request'
-        run: |
-          if ! git diff --exit-code -- src/generated/updates.json; then
-            echo "::error::src/generated/updates.json is behind main. Run 'npm run updates:generate' after refreshing origin/main and commit the result."
-            exit 1
-          fi
+        run: npm --ignore-scripts run updates:verify -- "${{ github.event.pull_request.base.sha }}"
 
       - name: Verify Updates includes the main push
         if: github.event_name == 'push'
-        run: npm --ignore-scripts run updates:verify -- "$GITHUB_SHA"
+        run: npm --ignore-scripts run updates:verify:generated -- "$GITHUB_SHA"
+
+      - name: Check the build preserved editorial and publishing state
+        run: |
+          if ! git diff --exit-code -- editorial publishing; then
+            echo "::error::The production build modified editorial or publishing state. Build output must remain disposable."
+            exit 1
+          fi
 
       - name: Install Playwright browsers
         # Most browser coverage runs in Chromium. The focused cover flow

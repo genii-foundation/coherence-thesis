@@ -1,0 +1,7 @@
+interface:
+  display_name: "Coherence Ship Site"
+  short_description: "Publish and verify the production site"
+  default_prompt: "Use $coherence-ship-site to merge, publish, and verify an approved production revision."
+
+policy:
+  allow_implicit_invocation: false

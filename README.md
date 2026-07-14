@@ -39,20 +39,23 @@ This block contains stable facts generated from the current package metadata and
 
 | Path | Purpose | Editing rule |
 | --- | --- | --- |
-| `sources/manuscripts/` | Canonical source manuscripts | Edit these files for manuscript changes |
-| `content/series/` | Volume metadata, section ledger, and route aliases | Edit deliberately and preserve published links |
-| `content/overview/` | Curated overview nodes | Every reference must resolve to a real section |
-| `content/manuscripts/` | Ignored local reader materialization | Generated from canonical source, never edit by hand |
-| `src/generated/manuscripts/` | Ignored local application catalog | Generated from canonical source, never edit by hand |
-| `src/generated/updates.json` | Tracked Updates fallback and immutable statistics cache | Refresh through `npm run updates:generate`, never edit by hand |
-| `public/data/` | Ignored reader payloads plus the tracked hosted-audio manifest | Generate reader data locally; update audio only through its publishing workflow |
+| `editorial/sources/volumes/` | Canonical volume packages with manuscript, voice card, and manifest | Edit the complete editorial package here |
+| `editorial/sources/corpus/` | Corpus-wide source ledgers | Edit deliberately and preserve historical identity |
+| `editorial/sources/overview/` | Curated overview nodes | Every reference must resolve to a real section |
+| `editorial/reviews/` | Durable review batches and reconciliation evidence | Keep baseline paths, hashes, manifests, and approval state intact |
+| `editorial/debt/` | Durable editorial obligations and paydown evidence | Update item files, then regenerate the index |
+| `publishing/continuity/` | Section identity, lineage, routes, aliases, and provenance | Change only through an explicit reviewed publishing workflow |
+| `publishing/audio/manifest.json` | Externally published immutable audio | Update only through the audio publishing workflow |
+| `publishing/updates/snapshot.json` | Tracked Updates fallback and immutable statistics cache | Refresh through `npm run updates:generate`, never edit by hand |
+| `generated/` | Ignored reader materializations, catalogs, and reports | Recreate locally, never commit |
+| `public/data/` | Ignored browser payloads derived from source and publishing state | Recreate locally, never commit |
 | `src/app/` | Next.js pages and server route handlers | Reader and account application code |
 | `src/components/` | Shared interface components and client islands | Reuse existing primitives before adding new ones |
 | `supabase/migrations/` | Reader sync schema, policies, and API grants | Review authorization changes as security-sensitive |
 | `scripts/` | Import, compile, validation, preview, PDF, and audio tooling | Keep commands deterministic and reviewable |
 | `tests/` | Browser coverage | Add or update coverage for browser behavior changes |
 
-Generated manuscript fragments, catalogs, search data, breadcrumbs, and PDF indexes never belong in commits. Durable route history, aliases, version provenance, and the hosted-audio manifest remain tracked because current source files cannot reconstruct those reviewed or externally published facts.
+Generated manuscript fragments, catalogs, reports, search data, breadcrumbs, and PDF indexes never belong in commits. Durable editorial evidence, route history, aliases, version provenance, and hosted audio state remain tracked because current prose cannot reconstruct those reviewed or externally published facts.
 
 ## Quick Start
 
@@ -112,7 +115,7 @@ Validate section IDs, overview references, aliases, the section ledger, and gene
 npm run manuscripts:validate
 ```
 
-After changing a source manuscript or `content/series/volumes.json`, inspect the import, preserve any historical routes with aliases, and explicitly record the reviewed route set:
+After changing a manuscript or its adjacent `volume.json`, inspect the import, preserve any historical routes with aliases, and explicitly record the reviewed route set:
 
 ```bash
 npm run manuscripts:import
@@ -133,33 +136,25 @@ Durable inconsistencies, unfulfilled promises, unresolved claims, citation gaps,
 The index is generated from the item files:
 
 ```bash
-npm run manuscripts:debt:update
-npm run manuscripts:debt
+npm run editorial:debt:update
+npm run editorial:debt
 ```
 
 The first command rebuilds `editorial/debt/index.md`. The second validates item structure, append-only identifiers, evidence paths, lifecycle dates, and index freshness. The full `npm run validate` gate includes the debt check.
 
 ## Updates Publishing
 
-The public [Updates page](https://www.coherence-thesis.com/updates/) is compiled from every commit on the main branch. Refresh its checked in fallback with:
+The public [Updates page](https://www.coherence-thesis.com/updates/) is compiled from every commit on the main branch. Refresh its checked fallback with:
 
 ```bash
 npm run updates:generate
 ```
 
-No manual changelog entry is needed. The production build runs this command before Next renders the site. It reads complete local Git history when available, including changed file, addition, and deletion totals for every commit. Shallow deploys first expand `main` from the canonical public Git repository and read the exact deployed SHA locally. If that fetch fails, they fall back to the GitHub API. The API path reuses immutable diff totals from the checked snapshot, then requests commit details only for new SHAs.
+No manual changelog entry is needed. `updates:generate` is the explicit durable write for `publishing/updates/snapshot.json`. The production build uses `updates:prepare` to create an ignored snapshot under `generated/` before Next renders the site. It never modifies publishing state. Both commands read complete local Git history when available, including changed file, addition, and deletion totals for every commit. Shallow deploys first expand `main` from the canonical public Git repository and read the exact deployed SHA locally. If that fetch fails, they fall back to the GitHub API. The API path reuses immutable diff totals from the checked snapshot, then requests commit details only for new SHAs.
 
-Every pull request refreshes and verifies `src/generated/updates.json` through its current main base. Because main requires current checks before merge, the checked cache stays one successful merge behind at most. Production main builds require the generated history to match the exact deployed SHA. If neither complete Git history nor GitHub can provide that history, the new deployment fails and Vercel keeps the previous good deployment. Local and preview builds may still use the last valid snapshot when offline. The page groups commits by UTC date and shows five dates per numbered page.
+Every pull request refreshes and verifies `publishing/updates/snapshot.json` through its current main base. Because main requires current checks before merge, the checked cache stays one successful merge behind at most. Production main builds require the generated history to match the exact deployed SHA. If neither complete Git history nor GitHub can provide that history, the new deployment fails and Vercel keeps the previous good deployment. Local and preview builds may still use the last valid snapshot when offline. The page groups commits by UTC date and shows five dates per numbered page.
 
-Local generation preserves checked historical deployment mappings without probing every stored URL. Refresh those optional links deliberately when needed:
-
-```bash
-npm run updates:generate -- --refresh-deployments
-```
-
-Vercel production publications always refresh and revalidate deployment links, even when local refresh is disabled.
-
-The default view shows all updates. The [Literary view](https://www.coherence-thesis.com/updates/literary/) filters before grouping and pagination to show commits that touched canonical manuscript sources or their historical generated sections. Mixed commits remain literary, while each card keeps the complete commit statistics.
+The default view shows all updates. The [Literary view](https://www.coherence-thesis.com/updates/literary/) filters before grouping and pagination to show commits that touched current editorial manuscripts or historical manuscript paths. Mixed commits remain literary, while each card keeps the complete commit statistics.
 
 When an exact commit still has a successful public Vercel production deployment, its card can link to that rendered version. These links are keyed by the full commit SHA. Every production publication rechecks every stored historical URL and removes links that Vercel confirms are unavailable. Transient network failures, rate limits, and Vercel server errors preserve the last confirmed link instead of treating uncertainty as deletion. New link discovery remains time bounded. CI preserves the checked mappings because it validates but does not publish the site. This best effort enrichment never replaces or weakens complete history validation.
 
@@ -175,6 +170,8 @@ npm run audio:publish-manifest -- --run-id <run-id> --version <version> --projec
 
 Without `--upload`, this verifies that each generated MP3 maps to a current section and `audioVersionId`, exists locally, and covers the requested voices.
 
+After reviewing the validation result, add `--write` to update `publishing/audio/manifest.json`. Add `--upload` only with explicit publication authorization. Upload mode also writes the reviewed manifest.
+
 Generate missing clips with Fish Audio:
 
 ```bash
@@ -185,43 +182,37 @@ Publish audio under a new immutable version path. Never overwrite existing Supab
 
 ## Validation
 
-The full local gate prepares manuscripts once, validates references and generated artifacts, checks types and lint, runs every unit test, and builds the production application:
+The full local gate validates manuscript references and generated artifacts, checks types and lint, runs unit tests, and builds the production application:
 
 ```bash
 npm run validate
 ```
 
-For changes that can affect browser behavior, use the combined final gate. It reuses the production build from validation for the complete Playwright matrix:
+Changes that can affect browser behavior use the combined production gate. It builds once and runs Playwright against that exact build:
 
 ```bash
 npm run validate:ui
 ```
 
-The standalone browser gate remains self contained when browser verification is needed without a preceding validation build:
-
-```bash
-npm run test:e2e
-```
-
 Useful focused commands during development:
 
 ```bash
+npm run repository:doctor
+npm run repository:validate-layout
+npm run repository:validate-agents
+npm run repository:source-boundary
+npm run editorial:validate
 npm run manuscripts:validate
 npm run typecheck
 npm run lint
 npm run test
-npm run test:app
-npm run test:tooling
-npm run test:changed
 npm run test:e2e:fast:desktop
 npm run test:e2e:fast
 ```
 
-`test:app` runs application unit tests, `test:tooling` runs publishing and build tooling tests, and `test:changed` uses Vitest's import graph to select tests related to changes from `origin/main`. Files read dynamically from disk are not always visible to that graph, so changed tests are an iteration aid, never the final gate.
+`npm run test:e2e:fast` reuses or starts an isolated development server at `http://127.0.0.1:3200`. For repeated desktop loops, run `npm run dev:e2e` in one terminal and `npm run test:e2e:fast:desktop` in another.
 
-`npm run test:e2e:fast` reuses or starts an isolated development server at `http://127.0.0.1:3200`. For repeated desktop loops, run `npm run dev:e2e` in one terminal and `npm run test:e2e:fast:desktop -- tests/e2e/<spec>.spec.ts` in another. Use Playwright's `--grep` or `--last-failed` options to narrow repeated checks further.
-
-GitHub Actions runs validation and the full Playwright suite for pull requests and pushes to `main`. Each job installs dependencies once, and the browser job owns the single production build used by CI.
+GitHub Actions runs validation and the full Playwright suite for pull requests and pushes to `main`.
 
 ## Architecture and Privacy
 
@@ -241,9 +232,9 @@ Report vulnerabilities privately through the process in [SECURITY.md](SECURITY.m
 
 ## Licensing
 
-The site software, scripts, components, tests, and build tooling are licensed under the [Apache License 2.0](LICENSE).
+The site software, scripts, components, tests, agent instructions, and build tooling are licensed under the [Apache License 2.0](LICENSE).
 
-Original manuscripts, site copy, and owned artwork are licensed under [Creative Commons Attribution-ShareAlike 4.0 International](LICENSE-content).
+Original manuscripts, voice cards, editorial evidence, publishing continuity, site copy, and owned artwork are licensed under [Creative Commons Attribution-ShareAlike 4.0 International](LICENSE-content).
 
 [NOTICE](NOTICE) maps repository paths to the applicable license. Third party materials retain their own licenses.
 

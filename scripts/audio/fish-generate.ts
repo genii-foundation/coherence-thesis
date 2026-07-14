@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
-import catalogJson from "../../src/generated/manuscripts/catalog.json";
 import {
   artifactsAudioRoot,
   audioDurationSeconds,
@@ -24,6 +23,7 @@ import {
 } from "./fish-generator";
 import { ensureDir, writeJson } from "../manuscripts/shared";
 import type { CompiledCatalog } from "../manuscripts/types";
+import { generatedCatalogPath } from "../repository/paths";
 
 type CliOptions = {
   mode: FishRunMode;
@@ -214,7 +214,9 @@ async function generateOne(input: {
 
 async function main() {
   const options = parseCli(process.argv.slice(2));
-  const catalog = catalogJson as CompiledCatalog;
+  const catalog = JSON.parse(
+    fs.readFileSync(generatedCatalogPath, "utf8"),
+  ) as CompiledCatalog;
   const voices = parseVoices(options.voices);
   let sections = selectSections(catalog, options.mode, options.sectionIds);
   if (options.limit !== null) sections = sections.slice(0, options.limit);

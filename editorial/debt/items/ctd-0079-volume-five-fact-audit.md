@@ -5,7 +5,7 @@ status: open
 kind: citation
 severity: high
 scopes: ["volume-5", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol5-purposeful.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
+sources: ["editorial/sources/volumes/volume-05/manuscript.md", "editorial/audits/2026-07-09-initial-corpus.md"]
 discovered: 2026-07-09
 updated: 2026-07-10
 resolved:
@@ -31,4 +31,4 @@ Classify each material claim as evidence, inference, metaphor, fiction, memory, 
 
 ## Partial paydown
 
-The current Volume V distinguishes evidence, composite narrative, inference, metaphor, proposal, and open metaphysical proposition more consistently. The production and independent reviews at `editorial/reviews/volume-5/production-pass/review.md` and `editorial/reviews/volume-5/production-pass/semantic-review.md` record specific narrowing of initiation history, human-potential magnitude, Purposeful status, Cardinal Scale status, population, and the dragon image. External factual and citation review was explicitly outside scope, and no claim-level source apparatus was added. The item remains open.
+The current Volume V distinguishes evidence, composite narrative, inference, metaphor, proposal, and open metaphysical proposition more consistently. The production and independent reviews at `editorial/reviews/volumes/volume-05/2026-07-09-production-pass/review.md` and `editorial/reviews/volumes/volume-05/2026-07-09-production-pass/semantic-review.md` record specific narrowing of initiation history, human-potential magnitude, Purposeful status, Cardinal Scale status, population, and the dragon image. External factual and citation review was explicitly outside scope, and no claim-level source apparatus was added. The item remains open.

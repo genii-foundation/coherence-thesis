@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-07-09-production-pass",
+  "editorialId": "volume-05",
+  "approvalState": "pending",
+  "standing": "current",
+  "scope": { "coverage": "complete-volume", "sentenceRecords": 1407, "structureRecords": 100 },
+  "validationState": "validated",
+  "openQueryCount": 347,
+  "residualRisk": "high",
+  "publicationState": "unpublished",
+  "baseline": {
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "path": "sources/manuscripts/coherence-thesis-vol5-purposeful.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f"
+  },
+  "reviewed": {
+    "commit": null,
+    "path": "sources/manuscripts/coherence-thesis-vol5-purposeful.md",
+    "sha256": "b10eea00ac11dca166812e0a1fa1b60980818ca1c55e27f2c2c0bd4ac989f6b5"
+  },
+  "canonicalSourcePath": "editorial/sources/volumes/volume-05/manuscript.md",
+  "evidence": [
+    { "path": "compression.md", "sha256": "cd94434d19fedc1501620b429d5df0fcef263496f9f2a96ec9c066ebdb59e925" },
+    { "path": "literary-review.md", "sha256": "7f138c1b0c7e22f8d4d86be08bcebc6b2ca4f1db19cea7da859876af1ef2db40" },
+    { "path": "review.md", "sha256": "16e14669c3349c5537d7afef9edf471f97874f65df66164780aeeafbac552af0" },
+    { "path": "semantic-review.md", "sha256": "5140c735cc8ec1268f1215382c0eb96ec4e8073eeb0d6e1f447c12f728fe7fce" },
+    { "path": "sentence-ledger.jsonl", "sha256": "3eacbc38af14415dda671bf3bd7c07350c43bf4945ea89122f6083da1659db58" },
+    { "path": "slop-review.md", "sha256": "d17ef50526521183196a4bf971ae9eabab239aa7ae954e5520d8114df3b0e92e" },
+    { "path": "structure-ledger.jsonl", "sha256": "6043ccd46e76ed9611da1a2c54305d6fbd826ca536b029be792fe6c269b3d98c" }
+  ]
+}

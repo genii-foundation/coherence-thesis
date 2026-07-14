@@ -1,6 +1,7 @@
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
+  artifactsRoot,
   cleanDir,
   ensureDir,
   fileHash,
@@ -29,17 +30,12 @@ type Heading = {
   text: string;
 };
 
-export const startMarkers: Record<string, readonly string[]> = {
-  "humanitys-most-viable-future": ["ORIENTATION"],
-  "wielding-intelligence": ["Continuity"],
-  "providence-imperative": ["Continuity"],
-  "architecting-providence": ["Power Without Coordination", "First, the Story"],
-  purposeful: ["On Returning to the Human"],
-  "smallest-nest": ["The Whole, in the Fewest Words"],
-  "presencing-genius": ["Part I: The Argument, Arrived", "Part I"],
-  "misanthropic-artifice": ["Prologue · Two Scenes"],
-  "cardinal-scale": ["A Note on the Register", "A note on the register of this volume"],
-};
+export const startMarkers: Record<string, readonly string[]> = Object.fromEntries(
+  readVolumeConfigs().map((config) => [
+    config.volumeId,
+    config.import.startMarkers,
+  ]),
+);
 
 const numberWords: Record<string, number> = {
   one: 1,
@@ -442,7 +438,7 @@ export function buildSections(config: VolumeConfig): DraftSection[] {
 export function runImportMarkdown(): void {
   const configs = readVolumeConfigs();
   if (configs.length === 0) {
-    throw new Error("No volume configs found in content/series/volumes.json.");
+    throw new Error("No volume manifests found in editorial source packages.");
   }
   cleanDir(manuscriptRoot);
 
@@ -465,7 +461,7 @@ export function runImportMarkdown(): void {
     };
   });
 
-  const reportPath = path.join(repoRoot, "artifacts/imports/markdown-series-report.json");
+  const reportPath = path.join(artifactsRoot, "markdown-series-report.json");
   ensureDir(path.dirname(reportPath));
   writeJson(reportPath, {
     generatedAt: new Date().toISOString(),

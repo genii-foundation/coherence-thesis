@@ -1,147 +1,99 @@
 # Agent Instructions
 
-## Core Rules
+This repository is the canonical source for The Coherence Thesis. Read this file first, then read the nearest nested `AGENTS.md` for the files you touch.
 
-- This repository is the canonical source of truth for The Coherence Thesis. Tracked source manuscripts are Markdown files in `sources/manuscripts/`. Reader sections and browser payloads are generated locally and are not committed.
-- Do not edit generated manuscript data by hand. Edit source Markdown, then run `npm run manuscripts:prepare`. Development, tests, and builds run the same preparation automatically.
-- After implementing any feature, run the narrowest useful checks during iteration. Before commit, run `npm run validate` when the change cannot affect browser behavior, or `npm run validate:ui` when it can.
-- For UI changes, use `npm run test:e2e:fast:desktop` for narrow desktop checks and `npm run test:e2e:fast` for broader local checks during iteration. The final `npm run validate:ui` gate builds once and runs the complete browser suite against that exact build.
-- After every completed feature, commit the complete change and open or update a focused PR without waiting to be asked again.
-- Update `README.md` with `npm run readme:update` when package metadata, manuscript stats, generated catalog state, or development status changes.
-- Before creating a new component, hook, script, or helper, search the repository for an existing primitive that does the same job. If two surfaces need the same UI or logic, extract a shared primitive and have both import it. Duplication is a bug unless there is a clear reason.
-- Before shipping, verify every exported function, class, component, or script entry point you added is called from an appropriate consumer.
-- Preserve unrelated local changes. Never reset, checkout, or delete user work unless explicitly asked.
-- When estimating effort, describe machine time only, such as one conversation or about 10 minutes. Do not quote human hours or days.
+## Domain map
 
-## Manuscripts
+| Path | Authority | Local instructions |
+| --- | --- | --- |
+| `editorial/` | Manuscripts, voice cards, overview, reviews, debt, standards, schemas, and templates | `editorial/AGENTS.md` |
+| `publishing/` | Durable continuity, audio publication, and Updates state | `publishing/AGENTS.md` |
+| `generated/` and generated `public/data/` files | Disposable local output | Never commit |
+| `scripts/` | Editorial, manuscript, audio, Updates, development, and repository tooling | `scripts/AGENTS.md` |
+| `src/` | Reader application and server routes | `src/AGENTS.md` |
+| `supabase/` | Database schema, policies, and migrations | `supabase/AGENTS.md` |
+| `.agents/` | Repository skills and agent metadata | `.agents/AGENTS.md` |
 
-- Authors edit source Markdown in `sources/manuscripts/` or series metadata in `content/series/`.
-- Do not edit generated reader sections in `content/manuscripts/` by hand. They are ignored materializations created by `npm run manuscripts:prepare`.
-- Generated browser payloads live in `public/data/` and remain ignored. `public/data/audio-manifest.json` is the exception because it records externally published immutable audio.
-- Overview nodes live in `content/overview/` and must reference real section IDs.
-- Stable section IDs support deep links, read progress, update badges, recommendations, audio queues, and future spaced repetition. Preserve historical deep links from this publishing pipeline forward with `content/series/aliases.json`.
-- New Markdown source updates must go through the publishing workflow:
+## Core rules
 
-```bash
-npm run manuscripts:import
-npm run manuscripts:preserve-links -- --base HEAD
-npm run manuscripts:record-routes
-npm run manuscripts:prepare -- --force
-npm run manuscripts:validate
-```
-
-- Do not accept an import when the parser has collapsed, fragmented, reordered, or renamed sections incorrectly. Fix the source or importer first.
-- Treat removed or renamed sections as a link preservation event. Run `npm run manuscripts:preserve-links -- --base HEAD`, review every lineage and alias decision, then run `npm run manuscripts:record-routes`. Automatic preparation validates durable ledgers but never updates them.
-
-## Updates History
-
-- The public `/updates/` page is generated from every commit on `main`. Do not write manual changelog entries.
-- `src/generated/updates.json` is the checked fallback and immutable statistics cache. Never edit it by hand. In a pull request, do not discard it as incidental build churn when it advances through the current main base.
-- After refreshing `origin/main`, run `npm run updates:generate` before the final commit on every pull request. Commit the snapshot when it advances. Pull request CI rejects a fallback cache that is behind the current base.
-- Local Updates generation preserves checked deployment mappings by default. Use `npm run updates:generate -- --refresh-deployments` only when intentionally refreshing historical deployment links. Vercel production always refreshes them.
-- A post-merge build on `main` necessarily advances the generated snapshot through its own commit. Do not create a recursive snapshot-only commit for that output. The next normal pull request persists it as part of its base refresh.
-- Production builds must generate history through the exact deployed `main` SHA. They first expand a shallow checkout from the canonical public Git repository, then use the GitHub API as a fallback. If complete Git history and GitHub are both unavailable, production must fail without replacing the last good deployment. It must never publish a green but stale Updates page.
-- Preserve the page contract when changing this pipeline: every commit appears, pull requests are the primary card target when the squash subject identifies one, commit hashes remain available, and file and line statistics remain exact in the generated data.
-- The Literary Updates view is path derived. A commit is literary when its current or renamed paths touch `sources/manuscripts/` or `content/manuscripts/`. Do not infer literary changes from commit prefixes alone, and do not include overview, series metadata, tooling, or generated public data unless the product scope changes explicitly.
-- Historical version links are best effort. Associate a card with the successful public Vercel production deployment for that exact full commit SHA. Every Vercel production publication must revalidate every stored historical URL and remove links that are confirmed unavailable. Preserve a stored link when a timeout, rate limit, network failure, or Vercel server error makes its state uncertain. The current production build may trust its own exact deployment URL because it cannot be reached until that build finishes.
-- Deployment link discovery must never weaken complete history generation or its freshness checks. Historical revalidation uses bounded concurrency and a per-request timeout, while discovery of previously unknown links stops starting new batches after a fixed window. CI preserves the checked deployment mappings instead of refreshing optional links during required gates because CI validates but does not publish the site. A missing deployment is allowed. A missing commit is not.
-- After merging, verify that the production `/updates/` page contains the merged pull request or commit SHA before closing the task.
-
-## Interface Rules
-
-- Reader text must remain readable without JavaScript. Client islands may enhance progress, audio, menus, and preferences.
-- Local progress is private by default. Do not add login, server-side reading history, analytics, or remote sync without explicit product approval.
-- Toolbar controls must remain reachable at supported desktop and mobile widths. If controls collapse into a menu, make form controls fill the menu width.
-- Floating menus, dropdowns, command palettes, and overlays must stay inside the viewport and scroll internally when content grows.
-- Buttons and dialog controls should use the established button hierarchy, radius, typography, and focus states. Do not add hover lift, bounce, glossy buttons, or one-off gradient CTA treatments.
-- Radio controls should use the shared connected radio pattern with `settings-radio-section`, `settings-radio-group`, and `settings-radio-option` unless native circles are explicitly required.
-- User-facing numbers must use `Number.toLocaleString()` or `Intl.NumberFormat`.
-- Long manuscript titles in compact UI must truncate or wrap cleanly. Text must not overlap adjacent controls.
-
-## Writing Style
-
-- Do not use em dashes, en dashes, or double hyphen prose constructions.
-- Avoid AI filler phrases such as "delve into", "it's worth noting", "leverage" as a verb, "in today's world", "furthermore", "moreover", "additionally", "at the end of the day", "game-changer", and "seamlessly".
-- Cut throat-clearing. If a first sentence only announces the paragraph, delete it.
-- Prefer short concrete sentences. If a sentence needs heavy punctuation to stay standing, split it.
-- User-facing copy should sound like a person wrote it. Prefer concrete language over abstract phrasing.
-- Contractions are fine.
-- Use `.agents/skills/coherence-editorial-review/` for manuscript audits, developmental review, sentence-level editing, and final editorial verification.
-- Store durable pilot and production evidence under `editorial/reviews/<volume-id>/<batch-id>/`. Keep canonical prose in `sources/manuscripts/` and keep temporary editorial output outside the repository.
-- Keep review ledgers exhaustive and pull request comments selective. Comments must explain a real claim, image, cadence, structural choice, or author question in natural editorial language. Never turn reason codes or mechanical dispositions into a spray of formulaic inline notes.
+- Edit canonical prose only in `editorial/sources/volumes/<editorial-id>/manuscript.md`.
+- Keep each manuscript beside its `voice-card.md` and `volume.json`.
+- Import canonical paths from `scripts/repository/paths.ts` in repository tooling. Do not scatter path literals.
+- Do not edit generated reader sections, catalogs, reports, browser payloads, or PDFs by hand. Run `npm run manuscripts:prepare`.
+- Build, preview, test, import, compile, and preparation commands must not modify `editorial/` or `publishing/`.
+- Preserve historical source paths in each `volume.json`. Preserve old public links through the continuity workflow.
+- Preserve unrelated local changes. Never reset, replace, or delete user work without explicit authorization.
+- Search for an existing component, hook, script, parser, or helper before creating another one. Shared behavior belongs in a shared primitive.
+- Verify every exported entry point has a real consumer before shipping.
+- Use machine time for estimates. Do not quote human hours or days.
 
 ## Validation
 
-- Default full gate:
+Use focused checks while iterating. Before commit, run:
 
 ```bash
 npm run validate
 ```
 
-- Combined UI gate, including the full validation gate and browser suite with one production build:
+If the change can affect browser behavior, run the combined static and browser gate instead:
 
 ```bash
 npm run validate:ui
 ```
 
-- Standalone browser gate, for browser-only verification when no validated build exists yet:
+Useful focused commands include:
 
 ```bash
-npm run test:e2e
-```
-
-- Fast local UI gate, reuses or starts Next dev instead of rebuilding the production site:
-
-```bash
+npm run repository:validate-layout
+npm run repository:validate-agents
+npm run repository:source-boundary
+npm run editorial:validate
+npm run manuscripts:validate
+npm run test:e2e:fast:desktop
 npm run test:e2e:fast
 ```
 
-For repeated UI loops, keep the isolated e2e dev server running in a separate terminal:
+Run `npm run readme:update` when package metadata, manuscript statistics, catalog state, or development status changes.
 
-```bash
-npm run dev:e2e
-npm run test:e2e:fast:desktop
-```
+## Git and pull requests
 
-- Static preview:
+- Do not work directly in the primary `main` checkout. Use one focused branch and worktree per coherent change.
+- Use a short Conventional Commit branch prefix such as `feat/`, `fix/`, `edit/`, `docs/`, `chore/`, `refactor/`, or `perf/`.
+- Use `edit/` for manuscript, overview, reviewed continuity, and related editorial changes.
+- Refresh the pull request base before final validation. Run `npm run updates:generate` and commit `publishing/updates/snapshot.json` when it advances.
+- Open a completed pull request in ready state. Use draft state only for incomplete work or a concrete missing gate.
+- A stacked pull request may be ready for review, but it must be rebased onto current `main`, retargeted, refreshed, and revalidated before merge.
+- Squash each focused pull request into `main` separately. Delete its branch and remove its worktree after merge.
+- Pull request bodies and other external posts must begin with `(AI Generated).`
+- Never include agent product names or similar implementation giveaways in external titles, branch names, or post bodies.
+- State the exact remaining gate whenever a pull request should not merge yet.
 
-```bash
-npm run build
-npm start
-```
+## Updates history
 
-- `npm run validate` already validates manuscript references and generated artifact freshness, type checks, lints, runs unit tests, and builds the production site (a Next.js server deployment with statically prerendered pages plus the auth and account route handlers, not a static export).
-- `npm run validate:ui` runs the same validation and then reuses its production build for the complete Playwright matrix.
-- Use focused tests during implementation when they answer a specific question. Do not spend full validation time after every tiny visual tweak when a batch is still open.
+The public Updates page is generated from every commit on `main`. Do not write manual changelog entries or edit `publishing/updates/snapshot.json` by hand. The Literary view is path derived. It recognizes current editorial manuscript paths and historical manuscript paths. A missing optional deployment link is allowed. A missing commit is not.
 
-## Git Workflow
+After a merge, verify that production `/updates/` contains the merged pull request or commit before closing the work.
 
-- Do not work directly on `main` for feature, manuscript, or process changes unless the user explicitly asks for a direct commit.
-- Use a separate git worktree for each feature, manuscript edit, bug fix, or process change. Keep the primary checkout on `main` as the clean integration workspace.
-- Create a short branch with a Conventional Commit prefix, such as `feat/`, `fix/`, `edit/`, `docs/`, `chore/`, `refactor/`, or `perf/`, followed by a kebab-case description.
-- Use `edit/` for manuscript updates, including changes to source Markdown, `content/overview/`, and reviewed durable publishing metadata.
-- Keep each PR focused. One worktree should map to one coherent PR.
-- When a pull request is ready for user review, open it in GitHub's ready state. If an existing draft becomes reviewable, mark it ready for review. Never describe a pull request as ready while leaving it as a draft.
-- Use draft status only while work is incomplete, required validation or applicable review evidence is missing, or a concrete blocker prevents useful review. When preview, author, or publication approval applies, it gates merge or publication, not review status.
-- A stacked dependency or an open author decision may delay merge without requiring draft status when the pull request itself is complete enough to review.
-- Treat stacked pull request bases as temporary development scaffolding. A pull request may be ready for review while it targets a prerequisite branch.
-- While a pull request remains stacked, refresh `src/generated/updates.json` through its current pull request base SHA because CI validates against that base. After retargeting to `main`, refresh it through current `main`.
-- Before declaring a pull request ready to merge, merge its prerequisites, rebase its branch onto current `main`, retarget it to `main`, refresh validation, and confirm that its diff remains focused.
-- Squash each focused pull request into `main` separately so the Updates page creates one progress card for that pull request.
-- Use a recovery merge method outside the normal squash workflow only with explicit user approval and a written procedure. Validate the resulting `main` history, then restore repository merge settings immediately.
-- In every closeout, name the exact remaining gate for a draft or for a ready pull request that should not merge yet.
-- Do not merge changes to a shared UI component inside a PR whose stated purpose does not mention that surface. Move the UI change to a focused branch, or expand the PR scope and validation evidence before review.
-- Commit messages should follow "Conventional Commits" when possible. Use `edit:` for manuscript updates.
-- Run `npm run validate` before opening or updating a non-browser PR for merge. Run `npm run validate:ui` when the change can affect browser behavior.
-- PR bodies must begin with `(AI Generated).`
-- Squash merge into `main`, then delete the branch and remove the worktree.
+## Interface rules
 
-## Debugging Standard
+- Reader text must remain readable without JavaScript.
+- Local progress is private by default. Do not add analytics, mandatory login, server history, or remote sync without explicit product approval.
+- Keep controls and overlays reachable inside supported viewports. Menus must scroll internally when needed.
+- Reuse the established button, radio, typography, radius, and focus patterns.
+- Format user-facing numbers with `Number.toLocaleString()` or `Intl.NumberFormat`.
+- Make long manuscript titles wrap or truncate without covering adjacent controls.
 
-For rare, stateful, intermittent, or hard-to-reproduce failures, do not ship only a one-off patch. Preserve evidence, add targeted diagnostics when useful, and make the next occurrence easier to explain.
+## Writing style
 
-Good evidence can include route, visible UI state, local storage state, generated catalog hashes, import reports, build output, failed job output, package versions, and browser console errors.
+- Do not use em dashes, en dashes, or double hyphen prose constructions.
+- Avoid filler phrases such as "delve into", "it's worth noting", "leverage" as a verb, "in today's world", "furthermore", "moreover", "additionally", "at the end of the day", "game-changer", and "seamlessly".
+- Cut throat-clearing. Prefer short, concrete sentences.
+- User-facing copy should sound human. Contractions are fine.
 
-For transformed SVG, canvas, or other geometry-sensitive UI, test the rendered result after viewBox, element, CSS, and vector-effect transforms. Source attributes and normalized path arithmetic are not proof of visible geometry. Cover representative boundary and midpoint states on desktop and mobile.
+## Debugging standard
 
-Mitigation should be conservative and observable. It should recover without churn, log or expose the reason where appropriate, and include tests for the state machine or threshold that failed.
+For rare, stateful, or intermittent failures, preserve evidence and make the next occurrence easier to explain. Useful evidence includes routes, visible state, local storage, catalog hashes, import reports, package versions, job output, and browser errors.
+
+For SVG, canvas, or other geometry-sensitive work, verify rendered geometry after all transforms. Test representative boundaries and midpoints on desktop and mobile.
+
+Mitigation should be conservative and observable. It should recover without churn and include tests for the failed state or threshold.

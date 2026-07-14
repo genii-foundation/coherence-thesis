@@ -52,6 +52,8 @@ export type CompiledSection = ManuscriptFrontmatter & {
 };
 
 export type VolumeConfig = {
+  schemaVersion: 1;
+  editorialId: string;
   volumeId: string;
   title: string;
   subtitle: string;
@@ -61,6 +63,11 @@ export type VolumeConfig = {
   coverImage: string;
   coverAlt: string;
   sourcePath: string;
+  voiceCardPath: string;
+  historicalSourcePaths: string[];
+  import: {
+    startMarkers: string[];
+  };
 };
 
 export type CompiledParagraph = {

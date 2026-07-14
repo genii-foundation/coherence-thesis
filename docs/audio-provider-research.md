@@ -338,7 +338,7 @@ Recommended static paths:
 
 ```text
 public/audio/manuscripts/{provider}/{model}/{voiceId}/{sectionId}-{contentHash}.{ext}
-public/data/audio-manifest.json
+publishing/audio/manifest.json
 ```
 
 The manifest should include section ID, content hash, provider, model, voice ID, format, duration when available, byte size, and public URL. The reader should load the manifest, prefer matching static audio, and fall back to browser speech synthesis when no clip exists.
@@ -378,11 +378,11 @@ Evaluate:
 
 Add a generation script and provider adapter layer. The script should:
 
-- Read `src/generated/manuscripts/catalog.json`.
+- Read `generated/manuscripts/catalog.json`.
 - Segment by existing section boundaries.
 - Skip existing clips when `sectionId`, `contentHash`, voice, model, and settings match.
 - Write audio files to `public/audio/manuscripts`.
-- Write `public/data/audio-manifest.json`.
+- Write `publishing/audio/manifest.json` through an explicit publish action. Compilation derives the ignored browser copy at `public/data/audio-manifest.json`.
 - Support a dry run mode to estimate characters, bytes, sections, voices, and expected cost.
 - Support provider, model, voice, output format, and concurrency settings.
 - Retry transient failures with conservative backoff.

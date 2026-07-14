@@ -29,7 +29,7 @@ The program is complete when:
 
 ### Included
 
-- All source Markdown in `sources/manuscripts/`
+- All source Markdown in `editorial/sources/volumes/` and `editorial/sources/corpus/`
 - The master ledger where its prose functions as reader-facing editorial matter
 - Sentence, paragraph, section, and chapter-level edits
 - Philosophical clarity and argument visibility
@@ -52,7 +52,7 @@ The program is complete when:
 
 ## Editorial doctrine
 
-The complete standard lives in `.agents/skills/coherence-editorial-review/references/editorial-standards.md`. Five principles govern the whole program.
+The complete standard lives in `editorial/standards/editorial.md`. Five principles govern the whole program.
 
 ### Meaning before polish
 
@@ -96,20 +96,21 @@ Give another fresh reviewer the same passages. Ask it to identify flattened voic
 
 ### Independent slop reviewer
 
-Give a third fresh reviewer the complete AI slop catalog in `.agents/skills/coherence-editorial-review/references/editorial-standards.md`. Require a recorded result for every category from 4.1 through 4.24. Each result must identify a defect, an intentional exception, a query, or no finding. Automation may support reliable categories, but it cannot substitute for this complete judgment record.
+Give a third fresh reviewer the complete AI slop catalog in `editorial/standards/editorial.md`. Require a recorded result for every category from 4.1 through 4.24. Each result must identify a defect, an intentional exception, a query, or no finding. Automation may support reliable categories, but it cannot substitute for this complete judgment record.
 
 Reviewers advise. The lead editor reconciles findings against the source, the authorial profile, and author decisions. Majority vote is not an editorial philosophy.
 
 ## Repository standards and tooling boundary
 
-The repository skill lives at `.agents/skills/coherence-editorial-review/`. It contains:
+The repository skill lives at `.agents/skills/coherence-editorial-review/`. It routes agents to:
 
 - The complete sentence-level workflow in `SKILL.md`
-- The editorial standard and AI slop catalog in `references/editorial-standards.md`
-- A reusable review record in `references/review-record-template.md`
-- The sentence ledger contract in `references/sentence-ledger-schema.md`
-- The structure ledger contract in `references/structure-ledger-schema.md`
-- A reusable volume voice card in `references/voice-card-template.md`
+- The editorial standard and AI slop catalog in `editorial/standards/editorial.md`
+- A reusable review record in `editorial/templates/review-record.md`
+- The sentence ledger contract in `editorial/schemas/sentence-ledger.md`
+- The structure ledger contract in `editorial/schemas/structure-ledger.md`
+- The review manifest contract in `editorial/schemas/review-manifest.md`
+- A reusable volume voice card in `editorial/templates/voice-card.md`
 
 This standards change defines the contracts. A separate tooling change may implement detectors, ledger initialization, ledger validation, adjudication assistance, and other internal automation. The standards must remain usable before that tooling lands, and the tooling must not silently redefine the standards. Pull request commentary is deliberately excluded from mechanical generation. It remains selective correspondence written from close editorial judgment.
 
@@ -379,7 +380,7 @@ Default production work to Level 2. Escalate individual passages, not whole volu
 ### Publication gate
 
 - `npm run manuscripts:import`
-- Review and update `content/series/aliases.json` when routes change
+- Review and update `publishing/continuity/aliases.json` when routes change
 - `npm run manuscripts:record-routes`
 - `npm run manuscripts:prepare -- --force`
 - `npm run manuscripts:validate`

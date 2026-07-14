@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-07",
+  "volumeId": "presencing-genius",
+  "title": "Presencing Genius",
+  "subtitle": "The Praxis of Presencing Genius through a B.O.W.: The Tending of a Coherent Civilization",
+  "order": 7,
+  "numberLabel": "VII",
+  "planet": "Neptune",
+  "coverImage": "/art/coherence-thesis-vol7-cover.png",
+  "coverAlt": "Cover artwork for Presencing Genius, Volume Seven of The Coherence Thesis.",
+  "sourcePath": "editorial/sources/volumes/volume-07/manuscript.md",
+  "voiceCardPath": "editorial/sources/volumes/volume-07/voice-card.md",
+  "historicalSourcePaths": [
+    "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md"
+  ],
+  "import": {
+    "startMarkers": ["Part I: The Argument, Arrived", "Part I"]
+  }
+}

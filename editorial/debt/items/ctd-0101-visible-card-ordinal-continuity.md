@@ -5,7 +5,7 @@ status: open
 kind: technical
 severity: medium
 scopes: ["volume-3", "reader", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md#continuity", "src/app/manuscripts/[volumeId]/[...route]/page.tsx", "scripts/manuscripts/import-markdown.ts"]
+sources: ["editorial/sources/volumes/volume-03/manuscript.md#continuity", "src/app/manuscripts/[volumeId]/[...route]/page.tsx", "scripts/manuscripts/import-markdown.ts"]
 discovered: 2026-07-11
 updated: 2026-07-11
 resolved:

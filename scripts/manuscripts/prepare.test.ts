@@ -7,8 +7,10 @@ import {
   buildPreparationFingerprint,
   preparationCacheHit,
   preparationCountsMatch,
+  preparationRequiredOutputPaths,
   prepareManuscripts,
 } from "./prepare";
+import { publicAudioManifestPath } from "../repository/paths";
 
 const temporaryRoots: string[] = [];
 
@@ -87,6 +89,10 @@ describe("manuscript preparation cache", () => {
     expect(preparationCacheHit(statePath, "same", () => true)).toBe(true);
     expect(preparationCacheHit(statePath, "same", () => false)).toBe(false);
     expect(preparationCacheHit(statePath, "different", () => true)).toBe(false);
+  });
+
+  it("requires the generated browser audio manifest for a cache hit", () => {
+    expect(preparationRequiredOutputPaths()).toContain(publicAudioManifestPath);
   });
 
   it("materializes once and reuses a complete matching preparation", async () => {

@@ -1,25 +1,31 @@
 The Coherence Thesis
 Copyright (c) 2026 Providence Collective
 
-This repository contains two kinds of material under two different licenses.
+This repository contains software, creative work, generated derivatives, and third party material under different licenses.
 
-Software (Apache License 2.0 — see LICENSE)
-  Everything that is source code, scripts, configuration, or build tooling,
-  including but not limited to:
-    - src/
-    - scripts/
-    - tests/
-    - middleware.ts, next.config.ts, and other root config files
+Software under Apache License 2.0, see LICENSE:
 
-Creative work (CC BY-SA 4.0 — see LICENSE-content)
-  The manuscripts, site copy, and owned artwork, including:
-    - sources/manuscripts/
-    - content/manuscripts/, content/series/, content/overview/
-    - public/art/, public/share/
+  - .agents/
+  - .github/
+  - scripts/
+  - src/ application code
+  - supabase/
+  - tests/
+  - root configuration and development files
+  - AGENTS.md files and repository policy documents
+  - publishing/updates/snapshot.json
 
-Generated artifacts (for example src/generated/, public/data/, public/downloads/)
-derive from the creative work above and carry the license of their source
-material.
+Creative work under CC BY-SA 4.0, see LICENSE-content:
 
-Third-party materials retain their own licenses. In particular, the fonts in
-fonts/ (PT Serif and PT Mono) are distributed under the SIL Open Font License.
+  - editorial/, except editorial/AGENTS.md
+  - publishing/continuity/
+  - publishing/audio/manifest.json
+  - original user-facing site copy
+  - public/art/
+  - public/share/
+
+Generated manuscript sections, catalogs, browser payloads, reports, and PDFs derive from the creative work and carry the license of their source material. Generated files are normally untracked.
+
+Third party materials retain their own licenses. Fonts in fonts/, including PT Serif and PT Mono, are distributed under the SIL Open Font License.
+
+When a file combines software structure with original creative text, the software elements remain under Apache License 2.0 and the creative text remains under CC BY-SA 4.0. Preserve both notices when redistributing the combined work.

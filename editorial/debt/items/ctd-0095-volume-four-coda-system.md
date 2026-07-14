@@ -5,7 +5,7 @@ status: open
 kind: structural
 severity: high
 scopes: ["volume-4"]
-sources: ["sources/manuscripts/coherence-thesis-vol4-architecting-providence.md", "docs/manuscript-editorial-plan.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
+sources: ["editorial/sources/volumes/volume-04/manuscript.md", "docs/manuscript-editorial-plan.md", "editorial/audits/2026-07-09-initial-corpus.md"]
 discovered: 2026-07-09
 updated: 2026-07-11
 resolved:

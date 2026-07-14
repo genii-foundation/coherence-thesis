@@ -1,0 +1,7 @@
+interface:
+  display_name: "Coherence Editorial Debt"
+  short_description: "Track and validate durable editorial obligations"
+  default_prompt: "Use $coherence-editorial-debt to add, update, audit, or resolve an editorial debt record."
+
+policy:
+  allow_implicit_invocation: true

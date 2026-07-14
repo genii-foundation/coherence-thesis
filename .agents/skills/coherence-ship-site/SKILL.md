@@ -1,113 +1,67 @@
 ---
 name: coherence-ship-site
-description: Prepare and verify the Coherence Thesis Next.js site for publishing, then document publish decisions, validation evidence, deploy state, and any publish-prep changes in a high-context pull request or closeout. Use when asked to ship, publish, deploy, create a preview, verify production build output, or confirm that origin/main contains a validated publishable state.
-disable-model-invocation: true
+description: Merge, publish, and verify an explicitly approved Coherence Thesis production revision from current origin/main with complete history, current generated output, required validation, deployment evidence, and live Updates verification. Use only when the user asks to merge, ship, deploy, publish, or verify production. Do not use for ordinary feature previews.
 ---
 
 # Ship Site
 
-Prepare the manuscript site for publishing from the current `main` branch.
+Publish only an explicitly approved revision. Fail closed when the target, history, validation, or deployment state is uncertain.
 
-## Workflow
+## Establish the target
 
-1. Verify the branch and working tree. Preserve unrelated local changes:
+1. Read the root AGENTS.md and publishing/AGENTS.md.
+2. Confirm the exact pull request, branch, revision, and requested production action.
+3. Preserve unrelated local work.
+4. Fetch origin/main and verify the checkout against the fresh remote revision.
+5. If a pull request is not yet merged, confirm approval, required checks, review status, focused scope, and a current base before merging.
 
-```bash
-git branch --show-current
-git status --short
-```
+## Verify publication state
 
-2. For publish, deploy, preview, or verification against `main`, refresh the remote base before trusting the checkout:
+- Canonical editorial source lives under editorial/sources/.
+- Reviewed continuity, audio, and Updates state lives under publishing/.
+- Generated output is untracked and must be recreated from source.
+- Build, preview, and test commands must not modify editorial/ or publishing/.
 
-```bash
-git fetch origin main
-git rev-parse origin/main
-git rev-parse HEAD
-```
+Refresh the checked Updates snapshot through the target revision and verify its head:
 
-If the fetch fails, stop and report the failure. If the requested publish target is `origin/main`, verify the checkout is at the freshly fetched `origin/main` or can fast-forward cleanly before validating. Do not publish, deploy, or verify a stale local `main` as current.
-3. Pull or fetch any additional deployment refs only when needed for the requested publish action. Do not overwrite local changes.
-4. Capture publish context while working:
-   - What publish, preview, deploy, or verification request is being handled.
-   - Which revision, branch, and source-materialized catalog state are being verified.
-   - Whether any publish-prep change was needed and why.
-   - Which routes, browser behaviors, and deploy target evidence matter for this publish.
-5. Refresh the checked Updates fallback through the target main revision and verify its head:
+    npm run updates:generate
+    npm run updates:verify -- <target-revision>
 
-```bash
-npm run updates:generate
-npm run updates:verify -- <target-main-sha>
-```
+Run the complete gates on the final revision:
 
-6. Run the combined production and browser validation gate. It builds once and runs the complete Playwright matrix against that build:
+    npm run validate:ui
 
-```bash
-npm run validate:ui
-```
+The combined gate builds once and runs the browser suite against that exact production build.
 
-7. Start or refresh the production preview:
+## Merge and deploy
 
-```bash
-npm start
-```
+1. Merge only after the final base refresh and required validation succeed.
+2. Use the repository's normal focused squash workflow.
+3. Use only the project-approved deployment mechanism.
+4. Do not weaken history freshness, continuity validation, generated boundaries, or deployment link checks to obtain a green result.
+5. Never create a recursive snapshot-only commit after a main build advances generated history.
 
-8. Verify representative routes:
-   - `/`
-   - `/overview/`
-   - `/updates/`
-   - one deep manuscript section route
-   - `/sitemap.xml`
-   - `/robots.txt`
-9. If deployment has already been explicitly authorized and a target exists, use the project-approved deploy command for that target. Do not invent a raw deploy command. After a main deployment, verify that production `/updates/` contains the deployed commit SHA or merged pull request.
-10. Review the final diff before staging. Confirm disposable manuscript outputs are absent from Git, README state is intentional, preview or deploy evidence is recorded, the Updates fallback is current, and unrelated local changes are left alone. When verifying an already merged main revision, do not create a snapshot-only commit just to record that revision. The next normal pull request carries it forward through its base refresh.
-11. Commit any publish-prep changes with a Conventional Commit title, push the branch, and open or update a focused pull request. Use draft status only while publish preparation, required validation, the premerge deployment target, or preview evidence is incomplete. Open a complete publish pull request in the ready state. Use `gh pr ready <number>` only when an existing draft becomes reviewable. If the user explicitly requested direct main work, commit directly on `main` and do not open a pull request unless asked.
-12. When a pull request exists and merge or deployment is not already authorized, share the review evidence and ask for approval. Keep a complete pull request ready for review while waiting.
+## Verify production
 
-## Pull Request Status
+Check representative production routes:
 
-- Never call a publish pull request ready for review while GitHub still marks it as a draft.
-- Open a complete publish pull request in the ready state. Use `gh pr ready` only to transition an existing draft.
-- Mark a complete and validated publish pull request ready for review even when explicit approval still gates merge or deployment.
-- Treat stacked pull request bases as temporary development scaffolding. A publish pull request may be ready for review while it targets a prerequisite branch.
-- While a publish pull request remains stacked, refresh `src/generated/updates.json` through its current pull request base SHA because CI validates against that base. After retargeting to `main`, refresh it through current `main`.
-- Before declaring a publish pull request ready to merge, merge its prerequisites, rebase its branch onto current `main`, retarget it to `main`, refresh validation, and confirm that its diff remains focused.
-- Squash each focused publish pull request into `main` separately so the Updates page creates one progress card for that pull request.
-- Use a recovery merge method outside the normal squash workflow only with explicit user approval and a written procedure. Validate the resulting `main` history, then restore repository merge settings immediately.
-- Convert a ready pull request back to draft only when new feedback, failed validation, or a branch refresh makes it materially incomplete.
-- State the exact remaining gate whenever a pull request remains draft or is ready for review but should not merge or deploy yet.
+- The home page.
+- The overview.
+- The Updates page.
+- One deep manuscript route.
+- The sitemap.
+- The robots file.
 
-## Publishability Checks
+Confirm:
 
-- The production build must complete without route generation errors.
-- `npm run manuscripts:prepare` must produce a fresh local catalog from canonical source.
-- `src/generated/updates.json` must match the target main revision before publish, and the live Updates page must contain the deployed SHA after publish.
-- README status should reflect the current branch, revision, and manuscript stats.
-- The site must remain readable without JavaScript.
-- Toolbar progress, breadcrumbs, overview links, and audio controls should pass browser smoke tests.
+- The deployment corresponds to the merged revision.
+- The live Updates page contains the merged pull request or revision.
+- Manuscript text remains readable without JavaScript.
+- Required continuity and audio state are current.
+- No stale or partial deployment replaced the last good release.
 
-## Pull Request Quality
-
-Start from `.agents/templates/pull-request-description.md`. The body must begin with `(AI Generated).`
-
-Include publish-specific context whenever it applies:
-
-- The publish, deploy, preview, or verification request that prompted the work.
-- The source revision, branch, materialized catalog state, and README state being verified.
-- The reason for any publish-prep change, including durable metadata updates.
-- Representative routes checked and why they cover the publishing risk.
-- Production preview, browser smoke, deployment command, deployment URL, and deploy status evidence.
-- Any skipped, narrowed, retried, or failed validation with the exact reason.
-- Known publish risks, such as stale generated data, route generation sensitivity, deployment target uncertainty, or follow-up monitoring.
-
-## Commit Quality
-
-Make every commit reviewable on its own:
-
-- Keep publish-prep changes separate from unrelated feature or manuscript edits.
-- Never commit disposable manuscript output. Commit only reviewed durable publishing state.
-- Make sure validation, preview, and deploy evidence in the closeout and pull request matches the actual commands run.
-- If validation or deployment fails, either fix the cause or leave a precise blocker with the failing command and relevant output.
+If deployment or live verification fails, continue the authorized ship task with a focused fix. Do not declare success until production and Updates are current.
 
 ## Closeout
 
-Close out with the commit hash when a commit was made, pushed branch, pull request URL when one exists, current review status, validation commands, representative routes checked, preview URL, deployment URL, and deploy status. If no code changed, state the verified revision and evidence instead. Name the exact remaining gate whenever a pull request remains draft or is ready for review but should not merge or deploy yet.
+Report the merged revision, deployment URL, validation evidence, representative routes, live Updates evidence, and any remaining publication risk. Delete the merged branch and remove its worktree only after production verification succeeds.

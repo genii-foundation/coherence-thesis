@@ -5,7 +5,7 @@ status: open
 kind: citation
 severity: high
 scopes: ["volume-4", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol4-architecting-providence.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
+sources: ["editorial/sources/volumes/volume-04/manuscript.md", "editorial/audits/2026-07-09-initial-corpus.md"]
 discovered: 2026-07-09
 updated: 2026-07-10
 resolved:
@@ -31,4 +31,4 @@ Build a complete source register. Verify every quotation and attributed summary 
 
 ## Partial paydown
 
-The Volume IV production pass retained named research lineages while separating source, synthesis, analogy, proposal, and design fiction. It marked nine self-epigraphs as adaptations and removed research superlatives that made lineage function as proof. `editorial/reviews/volume-4/production-pass/semantic-review.md` records that no citation was invented and that citation, epigraph, historical, legal, scientific, and technical verification was not performed. No complete source register or primary-source quotation audit exists, so the item remains open.
+The Volume IV production pass retained named research lineages while separating source, synthesis, analogy, proposal, and design fiction. It marked nine self-epigraphs as adaptations and removed research superlatives that made lineage function as proof. `editorial/reviews/volumes/volume-04/2026-07-09-production-pass/semantic-review.md` records that no citation was invented and that citation, epigraph, historical, legal, scientific, and technical verification was not performed. No complete source register or primary-source quotation audit exists, so the item remains open.

@@ -5,7 +5,7 @@ status: query
 kind: structural
 severity: medium
 scopes: ["volume-1"]
-sources: ["sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md#four-movements"]
+sources: ["editorial/sources/volumes/volume-01/manuscript.md#four-movements"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

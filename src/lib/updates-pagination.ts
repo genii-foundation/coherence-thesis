@@ -1,5 +1,7 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
-import updatesSnapshotJson from "@/generated/updates.json";
+import checkedUpdatesSnapshotJson from "../../publishing/updates/snapshot.json";
 import {
   buildUpdateDays,
   parseUpdatesSnapshot,
@@ -9,6 +11,15 @@ import {
 export type UpdatesMode = "all" | "literary";
 
 export const updatesPageSize = 5;
+const updatesSnapshotJson =
+  process.env.COHERENCE_UPDATES_SOURCE === "generated"
+    ? (JSON.parse(
+        fs.readFileSync(
+          path.join(process.cwd(), "generated/updates/snapshot.json"),
+          "utf8",
+        ),
+      ) as unknown)
+    : checkedUpdatesSnapshotJson;
 export const updatesSnapshot = parseUpdatesSnapshot(updatesSnapshotJson);
 export const allUpdateDays = buildUpdateDays(updatesSnapshot);
 export const literaryUpdateDays = buildUpdateDays({

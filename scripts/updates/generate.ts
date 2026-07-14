@@ -1,6 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
-import { repoRoot } from "../manuscripts/shared";
+import {
+  generatedUpdatesSnapshotPath,
+  updatesSnapshotPath,
+} from "../repository/paths";
 import {
   enrichUpdatesSnapshotDeployments,
   generateUpdatesSnapshot,
@@ -8,18 +11,16 @@ import {
   shouldRefreshUpdateDeployments,
 } from "./generator";
 
-const outputPath = path.join(repoRoot, "src/generated/updates.json");
-
 function readExistingSnapshot(): unknown {
-  if (!fs.existsSync(outputPath)) return undefined;
+  if (!fs.existsSync(updatesSnapshotPath)) return undefined;
   try {
-    return JSON.parse(fs.readFileSync(outputPath, "utf8")) as unknown;
+    return JSON.parse(fs.readFileSync(updatesSnapshotPath, "utf8")) as unknown;
   } catch {
     return null;
   }
 }
 
-function writeSnapshot(value: unknown): void {
+function writeSnapshot(outputPath: string, value: unknown): void {
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   const temporaryPath = `${outputPath}.tmp-${process.pid}`;
   try {
@@ -33,11 +34,15 @@ function writeSnapshot(value: unknown): void {
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
   const unexpectedArgs = args.filter(
-    (arg) => arg !== "--refresh-deployments",
+    (arg) =>
+      arg !== "--refresh-deployments" && arg !== "--output=generated",
   );
   if (unexpectedArgs.length > 0) {
     throw new Error(`Unknown updates option: ${unexpectedArgs.join(", ")}`);
   }
+  const outputPath = args.includes("--output=generated")
+    ? generatedUpdatesSnapshotPath
+    : updatesSnapshotPath;
 
   const authToken = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN;
   const existingSnapshot = readExistingSnapshot();
@@ -59,8 +64,8 @@ async function main(): Promise<void> {
     }),
   };
 
-  if (result.source !== "snapshot") {
-    writeSnapshot(result.snapshot);
+  if (result.source !== "snapshot" || outputPath !== updatesSnapshotPath) {
+    writeSnapshot(outputPath, result.snapshot);
   } else {
     console.warn(
       `[updates:generate] Using the existing snapshot because Git and GitHub refreshes failed.`,

@@ -5,7 +5,7 @@ status: open
 kind: promise
 severity: high
 scopes: ["volume-2", "volume-3", "volume-4", "volume-5", "volume-7", "volume-9", "master-ledger", "site", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md", "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md", "sources/manuscripts/coherence-thesis-vol4-architecting-providence.md", "sources/manuscripts/coherence-thesis-vol5-purposeful.md", "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md", "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md", "sources/manuscripts/coherence-thesis-master-ledger.md", "src"]
+sources: ["editorial/sources/volumes/volume-02/manuscript.md", "editorial/sources/volumes/volume-03/manuscript.md", "editorial/sources/volumes/volume-04/manuscript.md", "editorial/sources/volumes/volume-05/manuscript.md", "editorial/sources/volumes/volume-07/manuscript.md", "editorial/sources/volumes/volume-09/manuscript.md", "editorial/sources/corpus/master-ledger.md", "src"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

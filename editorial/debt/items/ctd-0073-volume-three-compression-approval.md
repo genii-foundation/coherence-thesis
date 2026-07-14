@@ -5,7 +5,7 @@ status: query
 kind: literary
 severity: high
 scopes: ["volume-3"]
-sources: ["sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md", "editorial/debt/audits/2026-07-09-nine-volume-production-audit.md"]
+sources: ["editorial/sources/volumes/volume-03/manuscript.md", "editorial/audits/2026-07-09-nine-volume-production.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

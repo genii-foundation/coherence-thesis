@@ -5,7 +5,7 @@ status: deferred
 kind: promise
 severity: low
 scopes: ["volume-9", "master-ledger", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-master-ledger.md", "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md"]
+sources: ["editorial/sources/corpus/master-ledger.md", "editorial/sources/volumes/volume-09/manuscript.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

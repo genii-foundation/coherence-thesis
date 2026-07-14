@@ -4,6 +4,7 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { ensureDir, repoRoot, sha256, writeJson } from "../manuscripts/shared";
 import type { CompiledCatalog, CompiledSection } from "../manuscripts/types";
+import { generatedAudioReportsRoot } from "../repository/paths";
 
 export type FishVoice = {
   id: string;
@@ -364,7 +365,7 @@ export function writeRunManifest(runRoot: string, manifest: FishRunManifest): st
 }
 
 export function artifactsAudioRoot(): string {
-  return path.join(repoRoot, "artifacts/audio-runs");
+  return generatedAudioReportsRoot;
 }
 
 export function createSettings(input: {
