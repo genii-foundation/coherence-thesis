@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "ebf24a4a1bebddac7f8b0d4e61598da8b8b02608",
+  "headSha": "40a03306fd5f1e53a8792f1ecfb36c57e285e527",
   "commits": [
+    {
+      "sha": "40a03306fd5f1e53a8792f1ecfb36c57e285e527",
+      "committedAt": "2026-07-14T12:46:27.000Z",
+      "subject": "feat: add reviewed semantic cross references (#139)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/40a03306fd5f1e53a8792f1ecfb36c57e285e527",
+      "filesChanged": 36,
+      "additions": 5094,
+      "deletions": 43,
+      "isLiterary": false
+    },
     {
       "sha": "ebf24a4a1bebddac7f8b0d4e61598da8b8b02608",
       "committedAt": "2026-07-14T07:00:50.000Z",
