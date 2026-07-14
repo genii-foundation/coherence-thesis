@@ -192,21 +192,17 @@ test("home page presents the overview and manuscript entry points", async ({
       const copyBox = document
         .querySelector(".hero-copy")
         ?.getBoundingClientRect();
-      const textBoxes = Array.from(stats.querySelectorAll("dt, dd")).map(
-        (item) => item.getBoundingClientRect(),
-      );
-      const textLeft = Math.min(...textBoxes.map((box) => box.left));
-      const textRight = Math.max(...textBoxes.map((box) => box.right));
+      const statsBox = stats.getBoundingClientRect();
 
       return {
         copyCenter: copyBox ? copyBox.left + copyBox.width / 2 : 0,
         scrollWidth: document.documentElement.scrollWidth,
-        statsTextCenter: textLeft + (textRight - textLeft) / 2,
+        statsCenter: statsBox.left + statsBox.width / 2,
         viewportWidth: document.documentElement.clientWidth,
       };
     });
     expect(
-      Math.abs(heroStatsLayout.statsTextCenter - heroStatsLayout.copyCenter),
+      Math.abs(heroStatsLayout.statsCenter - heroStatsLayout.copyCenter),
     ).toBeLessThanOrEqual(1);
     expect(heroStatsLayout.scrollWidth).toBeLessThanOrEqual(
       heroStatsLayout.viewportWidth + 1,
@@ -282,6 +278,23 @@ test("home page presents the overview and manuscript entry points", async ({
     expect(brandKickerFit.clientWidth).toBeGreaterThanOrEqual(
       brandKickerFit.scrollWidth,
     );
+  }
+  const heroCtaColumnCenters = await page.evaluate(() => {
+    const center = (element: Element) => {
+      const box = element.getBoundingClientRect();
+      return box.left + box.width / 2;
+    };
+    const actions = Array.from(document.querySelectorAll(".hero-actions a"));
+    const stats = Array.from(document.querySelectorAll(".hero-stats > div"));
+
+    return actions.map((action, index) => ({
+      action: center(action),
+      stat: stats[index] ? center(stats[index]) : Number.POSITIVE_INFINITY,
+    }));
+  });
+  expect(heroCtaColumnCenters).toHaveLength(3);
+  for (const column of heroCtaColumnCenters) {
+    expect(Math.abs(column.action - column.stat)).toBeLessThanOrEqual(1);
   }
   const footer = page.getByRole("contentinfo", { name: "Site information" });
   await expect(footer).toBeVisible();
