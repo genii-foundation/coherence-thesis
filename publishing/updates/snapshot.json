@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "4b8033c5024a51fb8da8e983dd1edecadcc3677a",
+  "headSha": "1165332b82d979383b02d279323f22e9d60db2d8",
   "commits": [
+    {
+      "sha": "1165332b82d979383b02d279323f22e9d60db2d8",
+      "committedAt": "2026-07-14T04:16:43.000Z",
+      "subject": "refactor: organize editorial and publishing sources (#133)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/1165332b82d979383b02d279323f22e9d60db2d8",
+      "filesChanged": 320,
+      "additions": 31828,
+      "deletions": 1533,
+      "isLiterary": true
+    },
     {
       "sha": "4b8033c5024a51fb8da8e983dd1edecadcc3677a",
       "committedAt": "2026-07-13T23:18:40.000Z",
