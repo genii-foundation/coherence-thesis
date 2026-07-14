@@ -10,6 +10,7 @@ import {
   useState,
   type FormEvent,
 } from "react";
+import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import {
   Check,
@@ -78,6 +79,14 @@ import {
 // Debounce before a local change is pushed to the remote sync backend.
 const syncDebounceMs = 1_500;
 const lastSyncedStorageKey = "coherence-reader-last-synced-at-v1";
+const modalFocusableSelector = [
+  "a[href]",
+  "button:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  '[tabindex]:not([tabindex="-1"])',
+].join(",");
 
 type SyncStatus = "idle" | "syncing" | "synced" | "error";
 
@@ -120,6 +129,10 @@ export function ToolbarProgressIsland() {
   const pathname = usePathname();
   const syncingRef = useRef(false);
   const syncLoginContinueRef = useRef<HTMLButtonElement | null>(null);
+  const syncLoginModalRef = useRef<HTMLDivElement | null>(null);
+  const syncLoginTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const syncOtpRef = useRef<HTMLInputElement | null>(null);
+  const syncLoginModalWasOpenRef = useRef(false);
   // Set when the remote progress row was written by a newer schema than this
   // client understands. While true, the client neither merges the remote row
   // nor uploads over it, so an outdated device cannot clobber newer data.
@@ -156,8 +169,14 @@ export function ToolbarProgressIsland() {
     triggerProps,
     popoverProps,
   } = useToolbarMenu<HTMLDivElement>({
-      onDismiss: () => setSyncLoginModalEmail(""),
-    });
+    floatingRefs: [syncLoginModalRef],
+    onDismiss: () => setSyncLoginModalEmail(""),
+    onEscape: () => {
+      if (!syncLoginModalEmail) return;
+      setSyncLoginModalEmail("");
+      return false;
+    },
+  });
 
   const section = useMemo(() => {
     const currentPath = normalizePath(pathname);
@@ -284,11 +303,67 @@ export function ToolbarProgressIsland() {
 
   useEffect(() => {
     if (!syncLoginModalEmail) return;
+    syncLoginModalWasOpenRef.current = true;
+    const modalBackdrop = syncLoginModalRef.current;
+    const siteShell = document.querySelector<HTMLElement>(".site-shell");
+    const siteShellWasInert = siteShell?.inert ?? false;
+    const rootOverflow = document.documentElement.style.overflow;
+    const bodyOverflow = document.body.style.overflow;
+
+    if (siteShell) siteShell.inert = true;
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+
+    function trapModalFocus(event: KeyboardEvent) {
+      if (event.key !== "Tab" || !modalBackdrop) return;
+      const focusableElements = Array.from(
+        modalBackdrop.querySelectorAll<HTMLElement>(modalFocusableSelector),
+      ).filter((element) => element.getClientRects().length > 0);
+      const first = focusableElements[0];
+      const last = focusableElements.at(-1);
+      if (!first || !last) return;
+
+      const activeElement = document.activeElement;
+      if (
+        event.shiftKey &&
+        (activeElement === first || !modalBackdrop.contains(activeElement))
+      ) {
+        event.preventDefault();
+        last.focus();
+      } else if (
+        !event.shiftKey &&
+        (activeElement === last || !modalBackdrop.contains(activeElement))
+      ) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener("keydown", trapModalFocus);
     const focusTimer = window.setTimeout(() => {
       syncLoginContinueRef.current?.focus();
     }, 0);
-    return () => window.clearTimeout(focusTimer);
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.removeEventListener("keydown", trapModalFocus);
+      if (siteShell) siteShell.inert = siteShellWasInert;
+      document.documentElement.style.overflow = rootOverflow;
+      document.body.style.overflow = bodyOverflow;
+    };
   }, [syncLoginModalEmail]);
+
+  useEffect(() => {
+    if (syncLoginModalEmail || !syncLoginModalWasOpenRef.current) return;
+    syncLoginModalWasOpenRef.current = false;
+    const focusTimer = window.setTimeout(() => {
+      if (pendingOtpEmail) {
+        syncOtpRef.current?.focus();
+      } else {
+        syncLoginTriggerRef.current?.focus();
+      }
+    }, 0);
+    return () => window.clearTimeout(focusTimer);
+  }, [pendingOtpEmail, syncLoginModalEmail]);
 
   const syncNow = useCallback(
     async (
@@ -579,54 +654,68 @@ export function ToolbarProgressIsland() {
                       <span>Check your email to finish.</span>
                     </button>
                   ) : (
-                    <button type="submit" className="icon-button">
+                    <button
+                      ref={syncLoginTriggerRef}
+                      type="submit"
+                      className="icon-button"
+                    >
                       <UserRound aria-hidden="true" size={17} />
                       <span>Sign in to sync</span>
                     </button>
                   )}
                 </form>
-                {syncLoginModalEmail && (
-                  <div className="reader-sync-modal-backdrop">
-                    <div
-                      className="reader-sync-modal"
-                      role="dialog"
-                      aria-modal="true"
-                      aria-labelledby="reader-sync-modal-title"
-                    >
-                      <Cloud aria-hidden="true" size={20} />
-                      <div className="reader-sync-modal-copy">
-                        <h2 id="reader-sync-modal-title">Sync reading progress?</h2>
-                        <p>
-                          If you continue, reading progress will be synchronized to
-                          your Cloud account so this site can remember where you
-                          left off and share progress between your devices.
-                        </p>
-                      </div>
-                      <div className="reader-sync-modal-actions">
-                        <button
-                          type="button"
-                          className="secondary-link"
-                          onClick={cancelSyncLogin}
+                {syncLoginModalEmail && typeof document !== "undefined"
+                  ? createPortal(
+                      <div
+                        ref={syncLoginModalRef}
+                        className="reader-sync-modal-backdrop"
+                      >
+                        <div
+                          className="reader-sync-modal"
+                          role="dialog"
+                          aria-modal="true"
+                          aria-labelledby="reader-sync-modal-title"
+                          aria-describedby="reader-sync-modal-description"
                         >
-                          Cancel
-                        </button>
-                        <button
-                          type="button"
-                          className="icon-button"
-                          onClick={continueSyncLogin}
-                          ref={syncLoginContinueRef}
-                        >
-                          <Cloud aria-hidden="true" size={17} />
-                          <span>Continue</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                          <Cloud aria-hidden="true" size={20} />
+                          <div className="reader-sync-modal-copy">
+                            <h2 id="reader-sync-modal-title">
+                              Sync reading progress?
+                            </h2>
+                            <p id="reader-sync-modal-description">
+                              If you continue, reading progress will be synchronized
+                              to your Cloud account so this site can remember where
+                              you left off and share progress between your devices.
+                            </p>
+                          </div>
+                          <div className="reader-sync-modal-actions">
+                            <button
+                              type="button"
+                              className="secondary-link"
+                              onClick={cancelSyncLogin}
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              type="button"
+                              className="icon-button"
+                              onClick={continueSyncLogin}
+                              ref={syncLoginContinueRef}
+                            >
+                              <Cloud aria-hidden="true" size={17} />
+                              <span>Continue</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>,
+                      document.body,
+                    )
+                  : null}
                 {pendingOtpEmail && (
                   <form className="reader-sync-form" onSubmit={submitOtp}>
                     <label htmlFor="reader-sync-otp">One-time code</label>
                     <input
+                      ref={syncOtpRef}
                       id="reader-sync-otp"
                       type="text"
                       inputMode="numeric"
