@@ -106,7 +106,11 @@ export function ReaderAudioWordInteractionIsland({
   useEffect(() => {
     const onPointerMove = (event: PointerEvent) => {
       const word = closestAudioWord(event.target);
-      if (!word || word.dataset.audioSectionId !== sectionId) {
+      if (
+        !word ||
+        word.dataset.audioSectionId !== sectionId ||
+        word.closest("a[href]")
+      ) {
         setHovered(null);
         return;
       }
@@ -122,6 +126,11 @@ export function ReaderAudioWordInteractionIsland({
       }
       const word = closestAudioWord(event.target);
       if (!word || word.dataset.audioSectionId !== sectionId) {
+        setFocused(null);
+        setHovered(null);
+        return;
+      }
+      if (word.closest("a[href]")) {
         setFocused(null);
         setHovered(null);
         return;

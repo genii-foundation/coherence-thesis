@@ -104,6 +104,7 @@ describe("section-ID drift gate", () => {
     const canonicalSourceHref =
       "/manuscripts/humanitys-most-viable-future/retired-chapter/retired-seed/";
     const catalog = buildCatalog(undefined, {
+      semanticReferences: "omit",
       aliasConfig: { version: 1, aliases: [] },
       routeAliasConfig: { version: 1, aliases: [] },
       sectionLineage: {

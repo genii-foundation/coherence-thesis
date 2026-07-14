@@ -18,6 +18,7 @@ export type ManuscriptFrontmatter = {
   sourceHash?: string;
   sourceParagraphStart?: number;
   sourceParagraphEnd?: number;
+  sourceLineNumbers?: number[];
   aliases?: string[];
 };
 

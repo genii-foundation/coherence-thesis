@@ -23,6 +23,7 @@ import {
 type DraftSection = {
   frontmatter: ManuscriptFrontmatter;
   body: string[];
+  sourceLineNumbers: number[];
 };
 
 type Heading = {
@@ -357,6 +358,7 @@ export function buildSections(config: VolumeConfig): DraftSection[] {
         sectionOrder,
       },
       body: [],
+      sourceLineNumbers: [],
     };
     sections.push(section);
     current = section;
@@ -427,6 +429,7 @@ export function buildSections(config: VolumeConfig): DraftSection[] {
 
     const section = ensureSection(index + 1);
     section.body.push(line);
+    section.sourceLineNumbers.push(index + 1);
     section.frontmatter.sourceParagraphEnd = index + 1;
   }
 
@@ -445,7 +448,14 @@ export function runImportMarkdown(): void {
   const reports = configs.map((config) => {
     const sections = buildSections(config);
     for (const section of sections) {
-      const body = `${formatFrontmatter(section.frontmatter)}\n${normalizeNewlines(section.body.join("\n"))}\n`;
+      const firstBodyLine = section.body.findIndex((line) => line.trim());
+      const lastBodyLine = section.body.findLastIndex((line) => line.trim());
+      const bodyLines = section.body.slice(firstBodyLine, lastBodyLine + 1);
+      section.frontmatter.sourceLineNumbers = section.sourceLineNumbers.slice(
+        firstBodyLine,
+        lastBodyLine + 1,
+      );
+      const body = `${formatFrontmatter(section.frontmatter)}\n${normalizeNewlines(bodyLines.join("\n"))}\n`;
       writeUtf8(path.join(manuscriptRoot, sectionPath(section)), body);
     }
     return {

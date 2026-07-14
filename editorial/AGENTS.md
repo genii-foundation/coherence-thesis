@@ -10,6 +10,7 @@ This file governs editorial sources, standards, schemas, templates, audits, debt
 - voice-card.md is the editorial authority for the volume's register, cadence, protected language, motifs, risks, and author decisions.
 - volume.json is the machine-readable identity and path manifest. Keep editorialId stable and keep every prior manuscript path in historicalSourcePaths.
 - The corpus master ledger lives at editorial/sources/corpus/master-ledger.md.
+- Reviewed semantic cross-reference concepts and occurrences live at editorial/sources/corpus/semantic-links.json.
 - The curated overview lives at editorial/sources/overview/coherence-thesis.json.
 
 Never edit a generated reader section, catalog, browser payload, PDF, or report as a substitute for editing its source. Generated outputs are disposable and untracked.
@@ -40,6 +41,7 @@ Never edit a generated reader section, catalog, browser payload, PDF, or report 
 - Treat editorial sources, reviews, audits, debt, standards, schemas, and templates as durable tracked material.
 - No build, preview, test, import, or preparation command may rewrite durable editorial state automatically.
 - A tool may propose a change in an untracked report. Writing durable state requires an explicit command, human review of the diff, and an intentional commit.
+- Semantic link audits are advisory. Record links or exclusions only through the explicit review workflow, and target continuity identities instead of literal routes.
 - Resolve debt items with evidence. Do not delete published debt history.
 
 ## Validation routing

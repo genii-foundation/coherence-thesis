@@ -1,7 +1,12 @@
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import type { Section } from "@/lib/manuscript-data";
 import { audioWordId } from "@/lib/audio-word-anchors";
 import { splitMarkdownBlocks } from "@/lib/markdown-blocks";
+import {
+  parseInlineMarkdown,
+  safeMarkdownLinkHref,
+  type MarkdownInlineNode,
+} from "@/lib/markdown-inline";
 
 type AudioCursor = {
   sectionId: string;
@@ -48,35 +53,35 @@ function renderText(text: string, cursor?: AudioCursor): ReactNode[] {
   return nodes;
 }
 
+function renderInlineNodes(
+  inlineNodes: readonly MarkdownInlineNode[],
+  cursor?: AudioCursor,
+): ReactNode[] {
+  return inlineNodes.map((node) => {
+    const key = `${node.type}-${node.rawStart}-${node.rawEnd}`;
+    if (node.type === "text") {
+      return <Fragment key={key}>{renderText(node.value, cursor)}</Fragment>;
+    }
+    if (node.type === "code") {
+      return <code key={key}>{renderText(node.value, cursor)}</code>;
+    }
+    if (node.type === "image") return null;
+
+    const children = renderInlineNodes(node.children, cursor);
+    if (node.type === "strong") return <strong key={key}>{children}</strong>;
+    if (node.type === "emphasis") return <em key={key}>{children}</em>;
+
+    const href = safeMarkdownLinkHref(node.destination);
+    return href ? (
+      <a href={href} key={key}>{children}</a>
+    ) : (
+      <Fragment key={key}>{children}</Fragment>
+    );
+  });
+}
+
 function renderInline(text: string, cursor?: AudioCursor): ReactNode[] {
-  const nodes: ReactNode[] = [];
-  const regex = /(\*\*[^*]+\*\*|\*[^*]+\*)/g;
-  let textCursor = 0;
-  let match: RegExpExecArray | null;
-  while ((match = regex.exec(text)) !== null) {
-    if (match.index > textCursor) {
-      nodes.push(...renderText(text.slice(textCursor, match.index), cursor));
-    }
-    const token = match[0];
-    if (token.startsWith("**")) {
-      nodes.push(
-        <strong key={`${match.index}-strong`}>
-          {renderText(token.slice(2, -2), cursor)}
-        </strong>,
-      );
-    } else {
-      nodes.push(
-        <em key={`${match.index}-em`}>
-          {renderText(token.slice(1, -1), cursor)}
-        </em>,
-      );
-    }
-    textCursor = match.index + token.length;
-  }
-  if (textCursor < text.length) {
-    nodes.push(...renderText(text.slice(textCursor), cursor));
-  }
-  return nodes;
+  return renderInlineNodes(parseInlineMarkdown(text), cursor);
 }
 
 function isList(block: string): boolean {

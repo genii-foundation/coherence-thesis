@@ -75,6 +75,7 @@ function preparationInputPaths(root = repoRoot): string[] {
     path.join(root, "src/lib/manuscript-data.ts"),
     path.join(root, "src/lib/manuscript-labels.ts"),
     path.join(root, "src/lib/markdown-blocks.ts"),
+    path.join(root, "src/lib/markdown-inline.ts"),
     path.join(root, "src/lib/reading-time.ts"),
     path.join(root, "fonts"),
     path.join(root, "public/art"),

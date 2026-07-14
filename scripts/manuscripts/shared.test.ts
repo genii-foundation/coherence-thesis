@@ -277,6 +277,7 @@ describe("manuscript compiler helpers", () => {
       ],
     };
     const catalog = buildCatalog(undefined, {
+      semanticReferences: "omit",
       aliasConfig: { version: 1, aliases: [] },
       routeAliasConfig: { version: 1, aliases: [] },
       sectionLineage: {
@@ -314,6 +315,7 @@ describe("manuscript compiler helpers", () => {
       "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/";
     const sourceHref = `${baseHref}#retired-reductionism`;
     const catalog = buildCatalog(undefined, {
+      semanticReferences: "omit",
       aliasConfig: { version: 1, aliases: [] },
       routeAliasConfig: { version: 1, aliases: [] },
       sectionLineage: {
@@ -354,6 +356,7 @@ describe("manuscript compiler helpers", () => {
   it("keeps a configured alias authoritative over ledger derivation", () => {
     const sourceHref = "/manuscripts/1/reviewed-replacement/";
     const catalog = buildCatalog(undefined, {
+      semanticReferences: "omit",
       aliasConfig: {
         version: 1,
         aliases: [
@@ -402,6 +405,7 @@ describe("manuscript compiler helpers", () => {
     const equivalentSourceHref =
       "/manuscripts/humanitys-most-viable-future/split-predecessor/";
     const catalog = buildCatalog(undefined, {
+      semanticReferences: "omit",
       aliasConfig: { version: 1, aliases: [] },
       routeAliasConfig: { version: 1, aliases: [] },
       sectionLineage: {

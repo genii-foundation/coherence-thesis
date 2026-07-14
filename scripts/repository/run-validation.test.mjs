@@ -104,6 +104,7 @@ describe("validation orchestration", () => {
       "manuscripts:prepare",
       "editorial:debt",
       "editorial:validate",
+      "editorial:semantic-links:validate",
       "manuscripts:validate",
     ]);
   });
