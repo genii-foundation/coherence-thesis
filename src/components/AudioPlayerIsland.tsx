@@ -364,38 +364,38 @@ function PlaybackToolbarIcon({
       >
         <rect
           className="audio-waveform-bar audio-waveform-bar-1"
-          x="0"
+          x="0.375"
           y="4.1"
-          width="2"
+          width="1.25"
           height="7.8"
-          rx="1"
+          rx="0.625"
           style={{ "--audio-waveform-scale": waveformScales[0] ?? 1 } as CSSProperties}
         />
         <rect
           className="audio-waveform-bar audio-waveform-bar-2"
-          x="2.75"
+          x="3.125"
           y="0.85"
-          width="2"
+          width="1.25"
           height="13"
-          rx="1"
+          rx="0.625"
           style={{ "--audio-waveform-scale": waveformScales[1] ?? 1 } as CSSProperties}
         />
         <rect
           className="audio-waveform-bar audio-waveform-bar-3"
-          x="5.5"
+          x="5.875"
           y="4.8"
-          width="2"
+          width="1.25"
           height="6.8"
-          rx="1"
+          rx="0.625"
           style={{ "--audio-waveform-scale": waveformScales[2] ?? 1 } as CSSProperties}
         />
         <rect
           className="audio-waveform-bar audio-waveform-bar-4"
-          x="8.25"
+          x="8.625"
           y="3.55"
-          width="2"
+          width="1.25"
           height="8.9"
-          rx="1"
+          rx="0.625"
           style={{ "--audio-waveform-scale": waveformScales[3] ?? 1 } as CSSProperties}
         />
       </g>
