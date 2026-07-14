@@ -317,8 +317,10 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     expect(layout.headerHeight).toBeLessThanOrEqual(64);
   }
   if (layout.clientWidth > 860) {
-    expect(layout.headerPaddingLeft).toBeCloseTo(layout.headerPaddingTop, 1);
-    expect(layout.headerPaddingRight).toBeCloseTo(layout.headerPaddingTop, 1);
+    expect(layout.headerHeight).toBe(80);
+    expect(layout.headerPaddingTop).toBe(8);
+    expect(layout.headerPaddingLeft).toBeCloseTo(13.6, 1);
+    expect(layout.headerPaddingRight).toBeCloseTo(13.6, 1);
   }
 
   const searchButton = page.getByRole("button", { name: "Search manuscripts" });

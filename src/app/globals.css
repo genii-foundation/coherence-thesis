@@ -359,6 +359,13 @@ input {
   padding: 0.85rem;
 }
 
+@media (min-width: 861px) {
+  .site-header {
+    height: 5rem;
+    padding: 0.5rem 0.85rem;
+  }
+}
+
 .site-footer {
   display: flex;
   flex-wrap: wrap;
@@ -886,19 +893,15 @@ input {
   opacity: 0.2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 3.8;
+  stroke-width: 2.4;
 }
 
 .progress-cloud-progress {
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 3.8;
+  stroke-width: 2.4;
   transition: stroke-dashoffset 180ms ease;
-}
-
-.progress-cloud-mark:not(.progress-cloud-mark-offline) .progress-cloud-progress {
-  stroke-width: 3.4;
 }
 
 .progress-cloud-progress-blip {
@@ -907,11 +910,6 @@ input {
 
 .progress-cloud-mark-offline .progress-cloud-fill {
   opacity: 0.38;
-}
-
-.progress-cloud-mark-offline .progress-cloud-track,
-.progress-cloud-mark-offline .progress-cloud-progress {
-  stroke-width: 3.2;
 }
 
 .progress-cloud-mark-offline .progress-cloud-track {
@@ -1303,7 +1301,7 @@ input {
 .audio-playback-icon-shell {
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.45;
+  stroke-width: 1.2;
   stroke-linecap: round;
   stroke-linejoin: round;
   transform-box: fill-box;
