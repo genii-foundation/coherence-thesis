@@ -17,7 +17,7 @@ Read these files completely when they apply:
 - editorial/schemas/sentence-ledger.md before creating or changing a sentence ledger.
 - editorial/schemas/structure-ledger.md before reviewing headings or display matter.
 - editorial/schemas/review-manifest.md before creating or changing durable review evidence.
-- docs/manuscript-editorial-plan.md for corpus-scale work.
+- editorial/guides/manuscript-editorial-plan.md for corpus-scale work.
 
 Do not recreate these resources inside the skill.
 

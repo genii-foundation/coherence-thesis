@@ -49,7 +49,7 @@ export const REQUIRED_SKILL_RESOURCES: Readonly<
     "editorial/schemas/sentence-ledger.md",
     "editorial/schemas/structure-ledger.md",
     "editorial/schemas/review-manifest.md",
-    "docs/manuscript-editorial-plan.md",
+    "editorial/guides/manuscript-editorial-plan.md",
   ],
   "coherence-manuscript-publish": [
     "AGENTS.md",

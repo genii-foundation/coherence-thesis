@@ -37,7 +37,7 @@ Use this structure for each pilot or production batch. Commit it at `editorial/r
 
 ## Machine-readable sentence ledger
 
-Record one JSON object per source sentence. Use the source file hash, section ID, and sentence ordinal as the stable address. Follow [sentence-ledger-schema.md](sentence-ledger-schema.md), including its rules for splits, merges, moves, and removals.
+Record one JSON object per source sentence. Use the source file hash, section ID, and sentence ordinal as the stable address. Follow [sentence-ledger-schema.md](../schemas/sentence-ledger.md), including its rules for splits, merges, moves, and removals.
 
 Required fields:
 
@@ -65,7 +65,7 @@ Required fields:
 
 ## Machine-readable structure ledger
 
-Record one JSON object per baseline Markdown heading or standalone display unit. Follow [structure-ledger-schema.md](structure-ledger-schema.md). Account for unchanged headings as deliberately as changed ones.
+Record one JSON object per baseline Markdown heading or standalone display unit. Follow [structure-ledger-schema.md](../schemas/structure-ledger.md). Account for unchanged headings as deliberately as changed ones.
 
 Required fields:
 
@@ -169,7 +169,7 @@ Complete these fields only after the initialized ledgers and all three independe
 
 ### Slop review
 
-Give the reviewer the complete catalog in [editorial-standards.md](editorial-standards.md). Record a result for every category. Use `none found`, `corrected`, `intentional`, or `query` in the Result column. Cite locations or explain the judgment in Evidence and action.
+Give the reviewer the complete catalog in [editorial-standards.md](../standards/editorial.md). Record a result for every category. Use `none found`, `corrected`, `intentional`, or `query` in the Result column. Cite locations or explain the judgment in Evidence and action.
 
 | Catalog category | Result | Evidence and action |
 | --- | --- | --- |

@@ -40,6 +40,26 @@ export type EditorialDebtStatus = (typeof editorialDebtStatuses)[number];
 export type EditorialDebtKind = (typeof editorialDebtKinds)[number];
 export type EditorialDebtSeverity = (typeof editorialDebtSeverities)[number];
 
+export const editorialDebtResolutionSections = [
+  ["Outcome", "outcome"],
+  ["Criterion results", "criterionResults"],
+  ["Evidence", "evidence"],
+  ["Validation", "validation"],
+  ["Approval", "approval"],
+  ["Residual risk", "residualRisk"],
+  ["Related debt", "relatedDebt"],
+] as const;
+
+export type EditorialDebtResolution = {
+  outcome: string;
+  criterionResults: string;
+  evidence: string;
+  validation: string;
+  approval: string;
+  residualRisk: string;
+  relatedDebt: string;
+};
+
 export type EditorialDebtItem = {
   id: string;
   title: string;
@@ -54,6 +74,7 @@ export type EditorialDebtItem = {
   discoveredIn: string;
   body: string;
   sections: ReadonlyMap<string, string>;
+  resolution: EditorialDebtResolution | null;
   file: string;
 };
 
@@ -163,18 +184,9 @@ function validateResolution(
   file: string,
   resolution: string,
   criterionIds: string[],
-): void {
+): EditorialDebtResolution {
   const resolutionSections = headingSections(resolution, 3, file);
-  const requiredSections = [
-    "Outcome",
-    "Criterion results",
-    "Evidence",
-    "Validation",
-    "Approval",
-    "Residual risk",
-    "Related debt",
-  ];
-  for (const heading of requiredSections) {
+  for (const [heading] of editorialDebtResolutionSections) {
     if (!resolutionSections.get(heading)) {
       throw new Error(
         `${file}: resolved debt needs a nonempty '### ${heading}' section under '## Resolution'.`,
@@ -204,6 +216,13 @@ function validateResolution(
       `${file}: criterion results must cover ${criterionIds.join(", ")} exactly once and in order.`,
     );
   }
+
+  return Object.fromEntries(
+    editorialDebtResolutionSections.map(([heading, key]) => [
+      key,
+      resolutionSections.get(heading)!,
+    ]),
+  ) as EditorialDebtResolution;
 }
 
 export function parseEditorialDebtItem(
@@ -290,16 +309,17 @@ export function parseEditorialDebtItem(
   if (historyDates.at(-1) !== updated) {
     throw new Error(`${file}: latest history date must equal 'updated'.`);
   }
+  let resolution: EditorialDebtResolution | null = null;
   if (status === "resolved") {
-    const resolution = bodySections.get("Resolution");
-    if (!resolution) {
+    const resolutionSection = bodySections.get("Resolution");
+    if (!resolutionSection) {
       throw new Error(`${file}: resolved debt needs a nonempty '## Resolution'.`);
     }
     const criterionIds = resolvedPaydownCriteria(
       file,
       bodySections.get("Paydown criteria")!,
     );
-    validateResolution(file, resolution, criterionIds);
+    resolution = validateResolution(file, resolutionSection, criterionIds);
   }
   if (
     status !== "resolved" &&
@@ -326,6 +346,7 @@ export function parseEditorialDebtItem(
     discoveredIn,
     body: parsed.body,
     sections: bodySections,
+    resolution,
     file,
   };
 }

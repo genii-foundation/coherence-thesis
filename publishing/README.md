@@ -17,14 +17,18 @@ This directory contains reviewed, tracked facts required to publish The Coherenc
         manifest.json
       updates/
         snapshot.json
+      guides/
+        manuscript-link-continuity.md
 
 Continuity records preserve public access as headings and structure evolve. The audio manifest records immutable hosted publication state. The Updates snapshot is the checked fallback for public repository history.
+
+Publishing workflow guidance lives under `publishing/guides/`. See [Manuscript Link Continuity](guides/manuscript-link-continuity.md) before changing headings, section identity, or routes.
 
 ## Source and generated boundaries
 
 Canonical manuscripts, voice cards, volume metadata, overview material, and the corpus ledger live under editorial/sources/.
 
-Generated reader sections, application catalogs, reports, browser payloads, search data, breadcrumbs, and PDFs are untracked. They are recreated under generated/ and public data locations by repository commands. No generated file is an authority for editorial or publishing state.
+Generated reader sections, application catalogs, reports, browser payloads, search data, breadcrumbs, and PDFs are untracked. They are recreated under `generated/`, `public/data/`, and `public/downloads/` by repository commands. No generated file is an authority for editorial or publishing state.
 
 Build, preview, test, import, compile, and preparation commands must leave publishing/ unchanged. A durable update requires a clearly named record, publish, or generate command followed by review of the complete diff.
 

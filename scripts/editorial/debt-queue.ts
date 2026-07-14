@@ -2,11 +2,13 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
   editorialDebtKinds,
+  editorialDebtResolutionSections,
   editorialDebtSeverities,
   editorialDebtStatuses,
   loadEditorialDebtItems,
   validateEditorialDebtItems,
   type EditorialDebtItem,
+  type EditorialDebtResolution,
 } from "./debt";
 import { repoRoot } from "../repository/paths";
 
@@ -70,6 +72,7 @@ export type EditorialDebtBrief = {
   paydownCriteria: string;
   partialPaydown: string | null;
   priorPaydown: string | null;
+  resolution: EditorialDebtResolution | null;
 };
 
 export type EditorialDebtQueue = {
@@ -98,7 +101,7 @@ const severityOrder = new Map<DebtSeverity, number>(
   editorialDebtSeverities.map((severity, index) => [severity, index]),
 );
 
-const boundednessBasis =
+const boundednessCandidateBasis =
   "One narrow scope, one source, noncritical severity, open status, no author decision kind, and no broad work marker in the paydown criteria. This is a boundedness signal, not an effort estimate or completion promise.";
 const broadWorkPattern =
   /\b(all volumes|complete|corpus|cross volume|each|entire|every|site wide|sitewide)\b/i;
@@ -298,18 +301,61 @@ function routeForItem(item: EditorialDebtItem): EditorialDebtRoute {
   return route;
 }
 
+function boundednessForItem(item: EditorialDebtItem): {
+  candidate: boolean;
+  basis: string;
+} {
+  if (item.status === "resolved") {
+    return {
+      candidate: false,
+      basis:
+        "Resolved tickets are closure records, not boundedness candidates. Review the Resolution proof and reopen the ticket only if that paydown no longer holds.",
+    };
+  }
+
+  const reasons: string[] = [];
+  if (item.status !== "open") {
+    reasons.push(
+      `its status is ${item.status}, while this signal applies only to open tickets`,
+    );
+  }
+  if (item.severity === "critical") {
+    reasons.push("its severity is critical");
+  }
+  if (item.scopes.length !== 1) {
+    reasons.push(
+      `it spans ${item.scopes.length.toLocaleString()} scopes instead of one`,
+    );
+  } else if (item.scopes[0] === "corpus") {
+    reasons.push("its only scope is the corpus");
+  }
+  if (item.sources.length !== 1) {
+    reasons.push(
+      `it names ${item.sources.length.toLocaleString()} sources instead of one`,
+    );
+  }
+  if (
+    item.kind === "canon" ||
+    item.kind === "logical" ||
+    item.kind === "promise"
+  ) {
+    reasons.push(`its ${item.kind} kind requires an author decision`);
+  }
+  if (broadWorkPattern.test(section(item, "Paydown criteria"))) {
+    reasons.push("its paydown criteria contain a broad work marker");
+  }
+
+  if (reasons.length === 0) {
+    return { candidate: true, basis: boundednessCandidateBasis };
+  }
+  return {
+    candidate: false,
+    basis: `Not a boundedness candidate because ${reasons.join("; ")}. This classification is not an effort estimate or completion promise.`,
+  };
+}
+
 function isBoundednessCandidate(item: EditorialDebtItem): boolean {
-  return (
-    item.status === "open" &&
-    item.severity !== "critical" &&
-    item.scopes.length === 1 &&
-    item.scopes[0] !== "corpus" &&
-    item.sources.length === 1 &&
-    !broadWorkPattern.test(section(item, "Paydown criteria")) &&
-    item.kind !== "canon" &&
-    item.kind !== "logical" &&
-    item.kind !== "promise"
-  );
+  return boundednessForItem(item).candidate;
 }
 
 function matchesPreset(item: EditorialDebtItem, preset: QueuePreset): boolean {
@@ -351,6 +397,7 @@ function displayFile(file: string): string {
 
 function brief(item: EditorialDebtItem): EditorialDebtBrief {
   const route = routeForItem(item);
+  const boundednessCandidate = boundednessForItem(item);
   return {
     file: displayFile(item.file),
     metadata: {
@@ -368,15 +415,13 @@ function brief(item: EditorialDebtItem): EditorialDebtBrief {
     },
     authority: route.authority,
     specialistRoute: route.specialistRoute,
-    boundednessCandidate: {
-      candidate: isBoundednessCandidate(item),
-      basis: boundednessBasis,
-    },
+    boundednessCandidate,
     debt: section(item, "Debt"),
     evidence: section(item, "Evidence"),
     paydownCriteria: section(item, "Paydown criteria"),
     partialPaydown: section(item, "Partial paydown") || null,
     priorPaydown: section(item, "Prior paydown") || null,
+    resolution: item.resolution,
   };
 }
 
@@ -460,7 +505,7 @@ function renderMarkdown(queue: EditorialDebtQueue): string {
     selectionSummary(queue),
   ];
   if (queue.selection.preset === "quick-win") {
-    lines.push("", `Boundedness note: ${boundednessBasis}`);
+    lines.push("", `Boundedness note: ${boundednessCandidateBasis}`);
   }
   if (queue.items.length === 0) {
     lines.push("", "No editorial debt items matched.", "");
@@ -506,7 +551,18 @@ function renderMarkdown(queue: EditorialDebtQueue): string {
       "### Prior paydown",
       "",
       markdownValue(item.priorPaydown),
+      "",
+      "### Resolution",
+      "",
     );
+    if (!item.resolution) {
+      lines.push("None recorded.");
+    } else {
+      for (const [heading, key] of editorialDebtResolutionSections) {
+        lines.push(`#### ${heading}`, "", item.resolution[key], "");
+      }
+      lines.pop();
+    }
   }
   lines.push("");
   return lines.join("\n");

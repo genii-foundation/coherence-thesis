@@ -94,6 +94,8 @@
     "repository:validate-layout": "tsx scripts/repository/layout.ts",
     "prerepository:validate-agents": "node scripts/repository/ensure-node-modules.mjs",
     "repository:validate-agents": "tsx scripts/repository/agent-assets.ts",
+    "prerepository:validate-links": "node scripts/repository/ensure-node-modules.mjs",
+    "repository:validate-links": "tsx scripts/repository/validate-markdown-links.ts",
     "prerepository:doctor": "node scripts/repository/ensure-node-modules.mjs",
     "repository:doctor": "tsx scripts/repository/doctor.ts",
     "prerepository:branches": "node scripts/repository/ensure-node-modules.mjs",
@@ -109,11 +111,13 @@
     "audio:publish-manifest": "tsx scripts/audio/fish-publish-manifest.ts",
     "prereadme:update": "npm run manuscripts:prepare",
     "readme:update": "tsx scripts/repository/update-readme-status.ts",
+    "prereadme:check": "npm run manuscripts:prepare",
+    "readme:check": "tsx scripts/repository/update-readme-status.ts --check",
     "validate": "node scripts/repository/run-validation.mjs",
     "validate:ui": "node scripts/repository/run-validation.mjs --ui"
   },
   "engines": {
-    "node": ">=20.11"
+    "node": ">=22"
   },
   "dependencies": {
     "@radix-ui/react-popover": "^1.1.19",
@@ -127,7 +131,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1",
-    "@types/node": "^20",
+    "@types/node": "^22",
     "@types/pdfkit": "^0.17.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",

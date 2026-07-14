@@ -5,7 +5,7 @@ status: deferred
 kind: technical
 severity: high
 scopes: ["site", "corpus"]
-sources: ["package.json", "editorial/standards/editorial.md", "docs/manuscript-editorial-plan.md"]
+sources: ["package.json", "editorial/standards/editorial.md", "editorial/guides/manuscript-editorial-plan.md"]
 discovered: 2026-07-11
 updated: 2026-07-11
 resolved:

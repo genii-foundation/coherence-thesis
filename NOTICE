@@ -1,31 +1,48 @@
 The Coherence Thesis
 Copyright (c) 2026 Providence Collective
 
-This repository contains software, creative work, generated derivatives, and third party material under different licenses.
+This repository contains software, creative work, generated derivatives, license texts, and third party material under different terms.
 
-Software under Apache License 2.0, see LICENSE:
+Software and operational documentation under Apache License 2.0, see LICENSE:
 
   - .agents/
   - .github/
+  - docs/
+  - editorial/AGENTS.md
+  - editorial/README.md
+  - editorial/guides/
+  - publishing/AGENTS.md
+  - publishing/README.md
+  - publishing/guides/
+  - publishing/updates/snapshot.json
+  - public/offline-sw.js
   - scripts/
-  - src/ application code
+  - src/ application code and software structure
   - supabase/
   - tests/
-  - root configuration and development files
-  - AGENTS.md files and repository policy documents
-  - publishing/updates/snapshot.json
+  - AGENTS.md, CLAUDE.md, CONTRIBUTING.md, README.md, and SECURITY.md
+  - .env.example, .gitignore, .nvmrc, and root development configuration
+  - package.json and package-lock.json
 
 Creative work under CC BY-SA 4.0, see LICENSE-content:
 
-  - editorial/, except editorial/AGENTS.md
+  - editorial/audits/
+  - editorial/debt/
+  - editorial/reviews/
+  - editorial/schemas/
+  - editorial/sources/
+  - editorial/standards/
+  - editorial/templates/
   - publishing/continuity/
   - publishing/audio/manifest.json
-  - original user-facing site copy
+  - original user-facing site copy, including creative text embedded in src/
   - public/art/
   - public/share/
 
-Generated manuscript sections, catalogs, browser payloads, reports, and PDFs derive from the creative work and carry the license of their source material. Generated files are normally untracked.
+Generated output under generated/, public/data/, and public/downloads/ is normally untracked. Generated manuscript sections, catalogs, browser payloads, reports, audio artifacts, and PDFs inherit the applicable license or licenses of their source material.
 
-Third party materials retain their own licenses. Fonts in fonts/, including PT Serif and PT Mono, are distributed under the SIL Open Font License.
+LICENSE and LICENSE-content are license texts and retain their stated terms.
+
+Third party materials retain their own licenses. Fonts under fonts/, including PT Serif and PT Mono and their license texts, are distributed under the SIL Open Font License. Dependencies installed under node_modules/ retain the terms declared by their respective authors.
 
 When a file combines software structure with original creative text, the software elements remain under Apache License 2.0 and the creative text remains under CC BY-SA 4.0. Preserve both notices when redistributing the combined work.

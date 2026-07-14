@@ -6,7 +6,8 @@ import {
   generatedRoot,
   normalizeRepoPath,
   publishingRoot,
-  publicAudioManifestPath,
+  publicDataRoot,
+  publicDownloadsRoot,
   requiredEditorialSourceFilePaths,
   retiredCanonicalRootPaths,
   repoRelative,
@@ -14,20 +15,12 @@ import {
 
 const DISPOSABLE_PREFIXES = [
   `${repoRelative(generatedRoot)}/`,
-  "public/data/breadcrumbs/",
+  `${repoRelative(publicDataRoot)}/`,
+  `${repoRelative(publicDownloadsRoot)}/`,
   "content/manuscripts/",
   "src/generated/manuscripts/",
   "artifacts/",
 ] as const;
-
-const DISPOSABLE_FILES = new Set([
-  "public/data/outline.json",
-  "public/data/pdf-downloads.json",
-  "public/data/progress-sections.json",
-  "public/data/reader-sections.json",
-  "public/data/search-index.json",
-  repoRelative(publicAudioManifestPath),
-]);
 
 const REQUIRED_EDITORIAL_FILES = requiredEditorialSourceFilePaths.map(repoRelative);
 
@@ -66,7 +59,6 @@ export function classifyTrackedPath(filePath: string): SourceBoundaryClassificat
   const normalizedPath = normalizeTrackedPath(filePath);
 
   if (
-    DISPOSABLE_FILES.has(normalizedPath) ||
     DISPOSABLE_PREFIXES.some((prefix) => normalizedPath.startsWith(prefix))
   ) {
     return "disposable-generated";

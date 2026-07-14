@@ -1,12 +1,13 @@
 # Publishing Instructions
 
-This file governs tracked publication state under publishing/. Repository-wide policy remains in the root AGENTS.md.
+This file governs tracked publication state and publishing guides under publishing/. Repository-wide policy remains in the root AGENTS.md.
 
 ## Directory contract
 
 - publishing/continuity/ stores reviewed section identity, lineage, route, alias, and version provenance.
 - publishing/audio/manifest.json records externally published immutable audio.
 - publishing/updates/snapshot.json is the checked fallback for public repository history.
+- publishing/guides/ documents reviewed publication workflows.
 - Generated reader sections, catalogs, reports, browser payloads, and PDFs are untracked. Recreate them from editorial sources and tracked publishing state.
 
 ## Durable writes

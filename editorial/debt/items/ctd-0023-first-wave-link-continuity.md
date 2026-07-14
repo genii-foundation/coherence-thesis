@@ -5,7 +5,7 @@ status: open
 kind: link
 severity: critical
 scopes: ["volume-1", "volume-2", "volume-3", "corpus"]
-sources: ["publishing/continuity/aliases.json", "publishing/continuity/section-ledger.json", "docs/manuscript-editorial-plan.md"]
+sources: ["publishing/continuity/aliases.json", "publishing/continuity/section-ledger.json", "editorial/guides/manuscript-editorial-plan.md"]
 discovered: 2026-07-09
 updated: 2026-07-11
 resolved:

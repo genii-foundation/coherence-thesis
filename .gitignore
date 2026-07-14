@@ -30,14 +30,8 @@
 
 # generated manuscript materialization
 /generated/
-/public/data/audio-manifest.json
-/public/data/breadcrumbs/
-/public/data/outline.json
-/public/data/pdf-downloads.json
-/public/data/progress-sections.json
-/public/data/reader-sections.json
-/public/data/search-index.json
-/public/downloads
+/public/data/
+/public/downloads/
 
 # misc
 .DS_Store

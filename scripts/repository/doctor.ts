@@ -79,38 +79,83 @@ function majorVersion(value: string): number | undefined {
   return Number.isInteger(parsed) ? parsed : undefined;
 }
 
+function minimumEngineMajor(value: string | undefined): number | undefined {
+  const match = value?.match(/>=\s*(\d+)/);
+  if (!match) return undefined;
+  const parsed = Number(match[1] ?? "");
+  return Number.isInteger(parsed) ? parsed : undefined;
+}
+
+export function assessNodeVersion({
+  engineRequirement,
+  preferredVersion,
+  runtimeVersion,
+}: {
+  engineRequirement?: string;
+  preferredVersion?: string;
+  runtimeVersion: string;
+}): DoctorCheck {
+  const currentMajor = majorVersion(runtimeVersion);
+  const minimumMajor = minimumEngineMajor(engineRequirement);
+  const preferredMajor = preferredVersion
+    ? majorVersion(preferredVersion)
+    : undefined;
+  const details = [
+    `Runtime: ${runtimeVersion}`,
+    `Package requirement: ${engineRequirement ?? "not declared"}`,
+    `Preferred local version: ${preferredVersion ?? "not declared"}`,
+  ];
+
+  if (currentMajor === undefined || minimumMajor === undefined) {
+    return {
+      area: "Node",
+      details,
+      status: "fail",
+      summary: "Node support could not be verified from the runtime and package requirement.",
+    };
+  }
+  if (currentMajor < minimumMajor) {
+    return {
+      area: "Node",
+      details,
+      status: "fail",
+      summary: `Node ${currentMajor} is active, but the repository requires Node ${minimumMajor} or newer.`,
+    };
+  }
+  if (preferredMajor === undefined) {
+    return {
+      area: "Node",
+      details,
+      status: "warn",
+      summary: `Node ${currentMajor} satisfies the package requirement, but no preferred local version is declared.`,
+    };
+  }
+  if (currentMajor !== preferredMajor) {
+    return {
+      area: "Node",
+      details,
+      status: "warn",
+      summary: `Node ${currentMajor} is supported, while the repository prefers Node ${preferredMajor}.`,
+    };
+  }
+  return {
+    area: "Node",
+    details,
+    status: "ok",
+    summary: `Runtime ${runtimeVersion} satisfies the repository requirement and preference.`,
+  };
+}
+
 function nodeCheck(manifest: PackageManifest | undefined): DoctorCheck {
   const nvmPath = path.join(repoRoot, ".nvmrc");
   const nvmVersion = fs.existsSync(nvmPath)
     ? fs.readFileSync(nvmPath, "utf8").trim()
     : undefined;
-  const currentMajor = majorVersion(process.version);
-  const preferredMajor = nvmVersion ? majorVersion(nvmVersion) : undefined;
-  const details = [
-    `Runtime: ${process.version}`,
-    `Package requirement: ${manifest?.engines?.node ?? "not declared"}`,
-    `Preferred local version: ${nvmVersion ?? "not declared"}`,
-  ];
-
-  if (
-    currentMajor !== undefined &&
-    preferredMajor !== undefined &&
-    currentMajor !== preferredMajor
-  ) {
-    return {
-      area: "Node",
-      details,
-      status: "warn",
-      summary: `Node ${currentMajor} is active, while the repository prefers Node ${preferredMajor}.`,
-    };
-  }
-
-  return {
-    area: "Node",
-    details,
-    status: "ok",
-    summary: `Runtime ${process.version} matches the repository preference.`,
-  };
+  return assessNodeVersion({
+    engineRequirement: manifest?.engines?.node,
+    preferredVersion: nvmVersion,
+    runtimeVersion: process.version,
+  });
 }
 
 function gitCheck(): DoctorCheck {
@@ -318,7 +363,7 @@ export function formatRepositoryDoctorReport(
   const lines = [
     "Repository doctor",
     `Inspected: ${report.inspectedAt}`,
-    "Inspection only. No files, dependencies, or Git state were changed.",
+    "The doctor inspection is read only. Its npm prehook may repair local dependencies before this report starts.",
   ];
   for (const check of report.checks) {
     lines.push(

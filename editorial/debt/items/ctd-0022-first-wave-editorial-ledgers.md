@@ -5,7 +5,7 @@ status: open
 kind: technical
 severity: high
 scopes: ["volume-1", "volume-2", "volume-3"]
-sources: ["editorial/README.md", "docs/manuscript-editorial-plan.md"]
+sources: ["editorial/README.md", "editorial/guides/manuscript-editorial-plan.md"]
 discovered: 2026-07-09
 updated: 2026-07-11
 resolved:

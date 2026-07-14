@@ -1,6 +1,6 @@
 # Editorial Instructions
 
-This file governs editorial sources, standards, schemas, templates, audits, debt, and review evidence. Repository-wide Git, pull request, validation, and external posting policy remains in the root AGENTS.md.
+This file governs editorial sources, standards, schemas, templates, guides, audits, debt, and review evidence. Repository-wide Git, pull request, validation, and external posting policy remains in the root AGENTS.md.
 
 ## Source packages
 
