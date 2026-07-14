@@ -14,7 +14,6 @@ import {
   readerEventsStorageKey,
   firstSection,
   firstSectionVersionDate,
-  highQualityVoicePreferenceId,
   wieldingSection,
   copyrightYearLabel,
   nextSection,
@@ -31,6 +30,8 @@ const systemVoicePreference = {
   pitch: 1,
   useSystemVoice: true,
 };
+const highQualityVoicePreferenceId = "clip:high-quality-1";
+
 test("progress menu shows a resettable email sent confirmation", async ({
   isMobile,
   page,

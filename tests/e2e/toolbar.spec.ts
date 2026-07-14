@@ -3,7 +3,6 @@ import sharp from "sharp";
 import { audioVoiceStorageKey } from "../../src/lib/audio-preferences";
 import {
   hexToRgb,
-  highQualityVoicePreferenceId,
   searchTargetSection,
   wieldingVolume,
   wieldingFrontMatter,
@@ -11,6 +10,8 @@ import {
   wieldingSection,
   expectMenuFitsViewport,
 } from "./fixtures";
+
+const highQualityVoicePreferenceId = "clip:high-quality-1";
 
 type PixelRegionSample = {
   mean: [number, number, number];

@@ -100,7 +100,7 @@ test("manuscript volume heading does not overlap its stats line", async ({
 test("short and long openings keep their drop caps clear", async ({ page }) => {
   const shortOpening = await measureOpeningDropCap(
     page,
-    "/manuscripts/1/opening/on-form-timing-and-why-this-book-exists/",
+    "/manuscripts/1/opening/the-work-behind-the-book/",
   );
   const longOpening = await measureOpeningDropCap(
     page,
