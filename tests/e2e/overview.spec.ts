@@ -1798,6 +1798,15 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
     const activePanel = activeCard?.querySelector<HTMLElement>(
       ".cover-flow-card-panel",
     );
+    const activeDescription = activePanel?.querySelector<HTMLElement>(
+      ".manuscript-card-description",
+    );
+    const activeOutline = activePanel?.querySelector<HTMLElement>(
+      ".manuscript-card-outline",
+    );
+    const activePartRow = activePanel?.querySelector<HTMLElement>(
+      ".manuscript-card-outline-part-button",
+    );
     const cards = Array.from(
       flow.querySelectorAll<HTMLElement>(".cover-flow-card"),
     );
@@ -1811,6 +1820,7 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
     const next = flow.querySelector<HTMLElement>(".cover-flow-edge-button-next");
     const cover = activeCover?.getBoundingClientRect();
     const panel = activePanel?.getBoundingClientRect();
+    const description = activeDescription?.getBoundingClientRect();
     const previous = previousCover?.getBoundingClientRect();
     const following = nextCover?.getBoundingClientRect();
     const nextRect = next?.getBoundingClientRect();
@@ -1829,7 +1839,18 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
       nextBottom: nextRect?.bottom ?? 0,
       nextTop: nextRect?.top ?? 0,
       panelBottom: panel?.bottom ?? 0,
+      panelHeight: panel?.height ?? 0,
+      panelScrollOverflow: activePanel
+        ? activePanel.scrollHeight - activePanel.clientHeight
+        : Number.POSITIVE_INFINITY,
       panelTop: panel?.top ?? 0,
+      descriptionBottom: description?.bottom ?? 0,
+      descriptionDisplay: activeDescription
+        ? getComputedStyle(activeDescription).display
+        : "none",
+      descriptionTop: description?.top ?? 0,
+      outlineHeight: activeOutline?.clientHeight ?? 0,
+      partRowHeight: activePartRow?.offsetHeight ?? Number.POSITIVE_INFINITY,
       previousCenterDistance:
         cover && previous
           ? cover.left + cover.width / 2 -
@@ -1871,6 +1892,20 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
   expect(landscapeMetrics.panelTop).toBeLessThan(landscapeMetrics.viewportHeight);
   expect(landscapeMetrics.panelBottom).toBeGreaterThan(
     landscapeMetrics.panelTop,
+  );
+  expect(landscapeMetrics.panelHeight).toBeGreaterThanOrEqual(
+    landscapeMetrics.viewportHeight * 0.6,
+  );
+  expect(landscapeMetrics.panelScrollOverflow).toBeLessThanOrEqual(1);
+  expect(landscapeMetrics.descriptionDisplay).not.toBe("none");
+  expect(landscapeMetrics.descriptionTop).toBeGreaterThanOrEqual(
+    landscapeMetrics.panelTop,
+  );
+  expect(landscapeMetrics.descriptionBottom).toBeLessThanOrEqual(
+    landscapeMetrics.panelBottom,
+  );
+  expect(landscapeMetrics.outlineHeight).toBeGreaterThanOrEqual(
+    landscapeMetrics.partRowHeight * 2,
   );
   expect(landscapeMetrics.nextTop).toBeGreaterThanOrEqual(0);
   expect(landscapeMetrics.nextBottom).toBeLessThanOrEqual(
