@@ -5,7 +5,7 @@ status: query
 kind: structural
 severity: low
 scopes: ["volume-7", "volume-8", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol7-presencing-genius.md", "sources/manuscripts/coherence-thesis-vol8-a-misanthropic-artifice.md"]
+sources: ["editorial/sources/volumes/volume-07/manuscript.md", "editorial/sources/volumes/volume-08/manuscript.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

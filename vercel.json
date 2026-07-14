@@ -1,5 +1,5 @@
 {
   "framework": "nextjs",
   "buildCommand": "npm run build",
-  "installCommand": "node scripts/ensure-node-modules.mjs"
+  "installCommand": "node scripts/repository/ensure-node-modules.mjs"
 }

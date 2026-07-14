@@ -5,7 +5,7 @@ status: query
 kind: canon
 severity: high
 scopes: ["volume-3", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md#second-niche", "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md#why-it-remains-unbuilt", "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md#an-economic-hypothesis"]
+sources: ["editorial/sources/volumes/volume-03/manuscript.md#second-niche", "editorial/sources/volumes/volume-03/manuscript.md#why-it-remains-unbuilt", "editorial/sources/volumes/volume-03/manuscript.md#an-economic-hypothesis"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

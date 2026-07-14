@@ -5,7 +5,7 @@ status: open
 kind: structural
 severity: medium
 scopes: ["volume-6", "volume-7"]
-sources: ["sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md", "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
+sources: ["editorial/sources/volumes/volume-06/manuscript.md", "editorial/sources/volumes/volume-07/manuscript.md", "editorial/audits/2026-07-09-initial-corpus.md"]
 discovered: 2026-07-09
 updated: 2026-07-10
 resolved:
@@ -31,4 +31,4 @@ Repair every malformed emphasis unit. Add focused parser or rendered snapshot co
 
 ## Partial paydown
 
-The Volume VI production pass removed the malformed quotation emphasis from every deeper-reading entry. Volume VII now has a real fifty-heading Markdown hierarchy, and its focused editorial audit reports zero malformed-emphasis findings, down from twelve. These results are recorded in `editorial/reviews/volume-6/production-pass/review.md` and `editorial/reviews/volume-7/production-pass/review.md`. The item remains open because its paydown criteria also require focused parser or rendered snapshot coverage and visual inspection of the generated reader. Those proofs are not present in the production records.
+The Volume VI production pass removed the malformed quotation emphasis from every deeper-reading entry. Volume VII now has a real fifty-heading Markdown hierarchy, and its focused editorial audit reports zero malformed-emphasis findings, down from twelve. These results are recorded in `editorial/reviews/volumes/volume-06/2026-07-09-production-pass/review.md` and `editorial/reviews/volumes/volume-07/2026-07-09-production-pass/review.md`. The item remains open because its paydown criteria also require focused parser or rendered snapshot coverage and visual inspection of the generated reader. Those proofs are not present in the production records.

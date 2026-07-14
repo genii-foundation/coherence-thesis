@@ -38,12 +38,12 @@ Initialize both ledgers for each volume, account for every baseline sentence and
 The following six commands passed:
 
 ```bash
-npm run manuscripts:editorial-ledger -- --base 29c0ffdc7023e8cda6d7232d915b392b6c8eb163 --current WORKTREE --source sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md editorial/reviews/volume-1/wave-one/sentence-ledger.jsonl
-npm run manuscripts:structure-ledger -- --base 29c0ffdc7023e8cda6d7232d915b392b6c8eb163 --current WORKTREE --source sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md editorial/reviews/volume-1/wave-one/structure-ledger.jsonl
-npm run manuscripts:editorial-ledger -- --base 29c0ffdc7023e8cda6d7232d915b392b6c8eb163 --current WORKTREE --source sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md editorial/reviews/volume-2/wave-one/sentence-ledger.jsonl
-npm run manuscripts:structure-ledger -- --base 29c0ffdc7023e8cda6d7232d915b392b6c8eb163 --current WORKTREE --source sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md editorial/reviews/volume-2/wave-one/structure-ledger.jsonl
-npm run manuscripts:editorial-ledger -- --base 29c0ffdc7023e8cda6d7232d915b392b6c8eb163 --current WORKTREE --source sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md editorial/reviews/volume-3/wave-one/sentence-ledger.jsonl
-npm run manuscripts:structure-ledger -- --base 29c0ffdc7023e8cda6d7232d915b392b6c8eb163 --current WORKTREE --source sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md editorial/reviews/volume-3/wave-one/structure-ledger.jsonl
+npm run manuscripts:editorial-ledger -- --base 29c0ffdc7023e8cda6d7232d915b392b6c8eb163 --current WORKTREE --source editorial/sources/volumes/volume-01/manuscript.md editorial/reviews/volumes/volume-01/2026-07-09-wave-one/sentence-ledger.jsonl
+npm run manuscripts:structure-ledger -- --base 29c0ffdc7023e8cda6d7232d915b392b6c8eb163 --current WORKTREE --source editorial/sources/volumes/volume-01/manuscript.md editorial/reviews/volumes/volume-01/2026-07-09-wave-one/structure-ledger.jsonl
+npm run manuscripts:editorial-ledger -- --base 29c0ffdc7023e8cda6d7232d915b392b6c8eb163 --current WORKTREE --source editorial/sources/volumes/volume-02/manuscript.md editorial/reviews/volumes/volume-02/2026-07-09-wave-one/sentence-ledger.jsonl
+npm run manuscripts:structure-ledger -- --base 29c0ffdc7023e8cda6d7232d915b392b6c8eb163 --current WORKTREE --source editorial/sources/volumes/volume-02/manuscript.md editorial/reviews/volumes/volume-02/2026-07-09-wave-one/structure-ledger.jsonl
+npm run manuscripts:editorial-ledger -- --base 29c0ffdc7023e8cda6d7232d915b392b6c8eb163 --current WORKTREE --source editorial/sources/volumes/volume-03/manuscript.md editorial/reviews/volumes/volume-03/2026-07-09-wave-one/sentence-ledger.jsonl
+npm run manuscripts:structure-ledger -- --base 29c0ffdc7023e8cda6d7232d915b392b6c8eb163 --current WORKTREE --source editorial/sources/volumes/volume-03/manuscript.md editorial/reviews/volumes/volume-03/2026-07-09-wave-one/structure-ledger.jsonl
 ```
 
 The completion checks intentionally preserve `reviewed` and `query` records. They prove exhaustive coverage and exact reconstruction without pretending that unresolved editorial judgments have author approval.

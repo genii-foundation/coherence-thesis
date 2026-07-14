@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
@@ -21,6 +22,10 @@ import {
 import { buildPdfDownloads, pdfManifestPath } from "./pdf";
 import { validateRouteLedger, validateSectionLedger } from "./validate";
 import { displayPartTitle } from "../../src/lib/manuscript-labels";
+import {
+  audioManifestSourcePath,
+  publicAudioManifestPath,
+} from "../repository/paths";
 
 function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
   const routes = new Map<
@@ -145,6 +150,7 @@ export async function compileManuscripts(): Promise<void> {
   const searchIndex = buildSearchIndex(catalog);
   ensureDir(generatedRoot);
   ensureDir(publicDataRoot);
+  fs.copyFileSync(audioManifestSourcePath, publicAudioManifestPath);
   writeJson(catalogPath, catalog);
   writeJson(readerSectionsPath, readerSections);
   writeJson(progressSectionsPath, progressSections);

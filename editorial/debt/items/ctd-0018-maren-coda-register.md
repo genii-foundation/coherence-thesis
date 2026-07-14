@@ -5,7 +5,7 @@ status: query
 kind: literary
 severity: low
 scopes: ["volume-1"]
-sources: ["sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md#marens-room"]
+sources: ["editorial/sources/volumes/volume-01/manuscript.md#marens-room"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

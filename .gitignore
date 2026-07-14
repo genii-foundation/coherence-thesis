@@ -29,9 +29,8 @@
 /build
 
 # generated manuscript materialization
-/artifacts
-/content/manuscripts/
-/src/generated/manuscripts/
+/generated/
+/public/data/audio-manifest.json
 /public/data/breadcrumbs/
 /public/data/outline.json
 /public/data/pdf-downloads.json

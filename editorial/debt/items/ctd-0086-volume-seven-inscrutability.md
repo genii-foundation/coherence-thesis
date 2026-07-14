@@ -5,7 +5,7 @@ status: query
 kind: literary
 severity: high
 scopes: ["volume-7"]
-sources: ["sources/manuscripts/coherence-thesis-vol7-presencing-genius.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
+sources: ["editorial/sources/volumes/volume-07/manuscript.md", "editorial/audits/2026-07-09-initial-corpus.md"]
 discovered: 2026-07-09
 updated: 2026-07-10
 resolved:
@@ -31,4 +31,4 @@ Confirm the intended word and philosophical posture. Revise the invocation so do
 
 ## Partial paydown
 
-The current invocation at `sources/manuscripts/coherence-thesis-vol7-presencing-genius.md` line 19 now asks, `Where it is obscure, help us clarify it.` The production review records a complete read-aloud pass, and the independent literary review finds the invocation intact. The item remains a query because the paydown criteria require confirmation of the intended philosophical posture and recorded author approval. Neither has yet been supplied outside the editorial inference embodied in the revision.
+The current invocation at `editorial/sources/volumes/volume-07/manuscript.md` line 19 now asks, `Where it is obscure, help us clarify it.` The production review records a complete read-aloud pass, and the independent literary review finds the invocation intact. The item remains a query because the paydown criteria require confirmation of the intended philosophical posture and recorded author approval. Neither has yet been supplied outside the editorial inference embodied in the revision.

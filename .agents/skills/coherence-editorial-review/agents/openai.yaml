@@ -1,4 +1,7 @@
 interface:
   display_name: "Coherence Editorial Review"
   short_description: "Edit manuscripts without flattening their voice"
-  default_prompt: "Use $coherence-editorial-review to audit and revise a manuscript section sentence by sentence while preserving its claims and voice."
+  default_prompt: "Use $coherence-editorial-review to audit or revise a manuscript while preserving its claims, cadence, and voice."
+
+policy:
+  allow_implicit_invocation: true

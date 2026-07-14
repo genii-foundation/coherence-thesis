@@ -4,6 +4,7 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
   createAudioClipManifest,
+  parseAudioPublishOptions,
   validateAudioRunForPublish,
   type PublishCatalogSection,
 } from "./fish-publish-manifest";
@@ -69,6 +70,23 @@ describe("Fish Supabase audio manifest publishing", () => {
     runRoot = fs.mkdtempSync(path.join(os.tmpdir(), "fish-publish-"));
     fs.mkdirSync(path.join(runRoot, "voices/default"), { recursive: true });
     fs.writeFileSync(path.join(runRoot, "voices/default/file.mp3"), "audio");
+  });
+
+  it("keeps validation read only unless writing or uploading is explicit", () => {
+    const baseArgs = ["--run-id", "fish-run", "--version", "version-one"];
+
+    expect(parseAudioPublishOptions(baseArgs)).toMatchObject({
+      upload: false,
+      write: false,
+    });
+    expect(parseAudioPublishOptions([...baseArgs, "--write"])).toMatchObject({
+      upload: false,
+      write: true,
+    });
+    expect(parseAudioPublishOptions([...baseArgs, "--upload"])).toMatchObject({
+      upload: true,
+      write: true,
+    });
   });
 
   afterEach(() => {

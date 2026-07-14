@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-07-09-production-pass",
+  "editorialId": "volume-07",
+  "approvalState": "pending",
+  "standing": "current",
+  "scope": { "coverage": "complete-volume", "sentenceRecords": 526, "structureRecords": 239 },
+  "validationState": "validated",
+  "openQueryCount": 241,
+  "residualRisk": "high",
+  "publicationState": "unpublished",
+  "baseline": {
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "path": "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "snapshotPath": "baseline.md"
+  },
+  "reviewed": {
+    "commit": null,
+    "path": "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md",
+    "sha256": "c61640a9d5d3bb07082166fedd9ad808fa86b651534e64f8f4afac247da46f0f"
+  },
+  "canonicalSourcePath": "editorial/sources/volumes/volume-07/manuscript.md",
+  "evidence": [
+    {
+      "path": "baseline.md",
+      "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876"
+    },
+    { "path": "compression.md", "sha256": "16421a2f9d1ba7eb255721fa31ddffd93cae14fe6ea50963c55335b614f94332" },
+    { "path": "literary-review.md", "sha256": "560c0717ad04379de645ee553396399c463706457b41338c943996cc2be0efeb" },
+    { "path": "review.md", "sha256": "3cc294a181bdacfabadf44ef64a794c83677aacf9cf11925b2c5019b5ff4c176" },
+    { "path": "semantic-review.md", "sha256": "134b1b190cc3059f65aeb9fe0a693635a21f2f9da336501717b4f11d435e2ac6" },
+    { "path": "sentence-ledger.jsonl", "sha256": "c49358a6245db05a53e40983cd8e1ec75d811cec52d6ec44144f14e1a893d3a6" },
+    { "path": "slop-review.md", "sha256": "9a5c57616d18f70a726ad1a6dfa7e563b7a2cf18939e9550b771480f382f3736" },
+    { "path": "structure-ledger.jsonl", "sha256": "b5c3c2f6131f4aec6a1a1bcdc547436b09b2941bc51cb901b596394f2198fcc2" }
+  ]
+}

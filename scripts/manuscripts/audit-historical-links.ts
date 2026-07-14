@@ -1,7 +1,17 @@
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
-import path from "node:path";
 import { pathToFileURL } from "node:url";
+import {
+  aliasConfigPath as aliasPath,
+  generatedCatalogPath,
+  historicalSectionMappingsPath as historicalMappingPath,
+  legacyPaths,
+  repoRelative,
+  repoRoot,
+  routeAliasConfigPath as routeAliasPath,
+  routeLedgerPath,
+  sectionLineagePath as lineagePath,
+} from "../repository/paths";
 
 type HistoricalRouteKind =
   | "volume"
@@ -127,16 +137,10 @@ type HistoricalSectionMapping = {
   currentSectionId: string;
 };
 
-const repoRoot = path.resolve(import.meta.dirname, "../..");
-const catalogRelativePath = "src/generated/manuscripts/catalog.json";
-const lineagePath = path.join(repoRoot, "content/series/section-lineage.json");
-const historicalMappingPath = path.join(
-  repoRoot,
-  "content/series/historical-section-mappings.json",
-);
-const aliasPath = path.join(repoRoot, "content/series/aliases.json");
-const routeAliasPath = path.join(repoRoot, "content/series/route-aliases.json");
-const routeLedgerPath = path.join(repoRoot, "content/series/route-ledger.json");
+const catalogRelativePaths = [
+  repoRelative(generatedCatalogPath),
+  repoRelative(legacyPaths.generatedCatalogPath),
+];
 
 type ClassifiedHistoricalRoute = {
   href: string;
@@ -158,12 +162,19 @@ function git(args: string[]): string {
 function catalogAtRef(ref: string): CatalogSnapshot {
   if (ref === "WORKTREE") {
     return JSON.parse(
-      fs.readFileSync(path.join(repoRoot, catalogRelativePath), "utf8"),
+      fs.readFileSync(generatedCatalogPath, "utf8"),
     ) as CatalogSnapshot;
   }
-  return JSON.parse(
-    git(["show", `${ref}:${catalogRelativePath}`]),
-  ) as CatalogSnapshot;
+  for (const catalogRelativePath of catalogRelativePaths) {
+    try {
+      return JSON.parse(
+        git(["show", `${ref}:${catalogRelativePath}`]),
+      ) as CatalogSnapshot;
+    } catch {
+      continue;
+    }
+  }
+  throw new Error(`No manuscript catalog exists at ${ref}.`);
 }
 
 function normalizeHref(href: string): string {
@@ -521,7 +532,7 @@ function commitHistory(ref: string): CommitMetadata[] {
     "--first-parent",
     `--format=${format}`,
     "--",
-    catalogRelativePath,
+    ...catalogRelativePaths,
   ]);
   if (!output) return [];
   return output
@@ -537,7 +548,7 @@ function commitHistory(ref: string): CommitMetadata[] {
     })
     .filter((commit) => {
       try {
-        git(["cat-file", "-e", `${commit.commit}:${catalogRelativePath}`]);
+        catalogAtRef(commit.commit);
         return true;
       } catch {
         // Source first commits remove the checked catalog. The deletion commit

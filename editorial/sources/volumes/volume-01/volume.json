@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-01",
+  "volumeId": "humanitys-most-viable-future",
+  "title": "Humanity's Most Viable Future",
+  "subtitle": "The Obvious Substrate for the Existential Necessity of a Post-Extractive Civilization",
+  "order": 1,
+  "numberLabel": "I",
+  "planet": "Sun",
+  "coverImage": "/art/coherence-thesis-vol1-cover.png",
+  "coverAlt": "Cover artwork for Humanity's Most Viable Future, Volume One of The Coherence Thesis.",
+  "sourcePath": "editorial/sources/volumes/volume-01/manuscript.md",
+  "voiceCardPath": "editorial/sources/volumes/volume-01/voice-card.md",
+  "historicalSourcePaths": [
+    "sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md"
+  ],
+  "import": {
+    "startMarkers": ["ORIENTATION"]
+  }
+}

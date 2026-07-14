@@ -5,7 +5,7 @@ status: open
 kind: terminology
 severity: medium
 scopes: ["volume-1"]
-sources: ["sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md", "sources/manuscripts/coherence-thesis-master-ledger.md", "content/series/volumes.json"]
+sources: ["editorial/sources/volumes/volume-01/manuscript.md", "editorial/sources/volumes/volume-01/volume.json", "editorial/sources/corpus/master-ledger.md"]
 discovered: 2026-07-09
 updated: 2026-07-11
 resolved:
@@ -18,7 +18,7 @@ The revised Volume I source uses the subtitle "Coherence as the Ground of a Post
 
 ## Evidence
 
-The source title matter, `content/series/volumes.json`, and the master ledger disagreed, so readers would see different published identities depending on the surface.
+The source title matter, the former `content/series/volumes.json`, and the master ledger disagreed, so readers would see different published identities depending on the surface.
 
 ## Paydown criteria
 

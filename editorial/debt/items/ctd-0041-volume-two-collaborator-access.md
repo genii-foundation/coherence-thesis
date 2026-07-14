@@ -5,7 +5,7 @@ status: open
 kind: promise
 severity: medium
 scopes: ["volume-2", "volume-4", "volume-9", "site", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md", "sources/manuscripts/coherence-thesis-vol4-architecting-providence.md", "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md", "README.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
+sources: ["editorial/sources/volumes/volume-02/manuscript.md", "editorial/sources/volumes/volume-04/manuscript.md", "editorial/sources/volumes/volume-09/manuscript.md", "README.md", "editorial/audits/2026-07-09-initial-corpus.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

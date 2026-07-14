@@ -1,0 +1,7 @@
+interface:
+  display_name: "Coherence Repository Maintenance"
+  short_description: "Audit and maintain repository structure safely"
+  default_prompt: "Use $coherence-repository-maintenance to audit and maintain repository structure, branches, governance, or tooling safely."
+
+policy:
+  allow_implicit_invocation: true

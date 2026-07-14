@@ -1,4 +1,4 @@
-import catalogJson from "@/generated/manuscripts/catalog.json";
+import catalogJson from "../../generated/manuscripts/catalog.json";
 import {
   displayPartRouteSegment,
   displayPartTitle,

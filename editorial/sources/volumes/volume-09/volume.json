@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-09",
+  "volumeId": "cardinal-scale",
+  "title": "The Cardinal Scale",
+  "subtitle": "The First of Many ICONS",
+  "order": 9,
+  "numberLabel": "IX",
+  "planet": "Mars",
+  "coverImage": "/art/coherence-thesis-vol9-cover.png",
+  "coverAlt": "Cover artwork for The Cardinal Scale, Volume Nine of The Coherence Thesis.",
+  "sourcePath": "editorial/sources/volumes/volume-09/manuscript.md",
+  "voiceCardPath": "editorial/sources/volumes/volume-09/voice-card.md",
+  "historicalSourcePaths": [
+    "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md"
+  ],
+  "import": {
+    "startMarkers": ["A Note on the Register", "A note on the register of this volume"]
+  }
+}

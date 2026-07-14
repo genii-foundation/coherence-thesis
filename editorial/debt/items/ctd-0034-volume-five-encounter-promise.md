@@ -5,7 +5,7 @@ status: open
 kind: promise
 severity: high
 scopes: ["volume-4", "volume-5", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol4-architecting-providence.md", "sources/manuscripts/coherence-thesis-vol5-purposeful.md"]
+sources: ["editorial/sources/volumes/volume-04/manuscript.md", "editorial/sources/volumes/volume-05/manuscript.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

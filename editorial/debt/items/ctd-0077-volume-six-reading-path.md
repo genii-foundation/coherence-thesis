@@ -5,7 +5,7 @@ status: open
 kind: link
 severity: medium
 scopes: ["volume-6", "site", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md", "content/series/aliases.json", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md", "editorial/debt/audits/2026-07-09-nine-volume-production-audit.md"]
+sources: ["editorial/sources/volumes/volume-06/manuscript.md", "publishing/continuity/aliases.json", "editorial/audits/2026-07-09-initial-corpus.md", "editorial/audits/2026-07-09-nine-volume-production.md"]
 discovered: 2026-07-09
 updated: 2026-07-11
 resolved:

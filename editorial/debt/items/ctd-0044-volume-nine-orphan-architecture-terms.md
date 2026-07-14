@@ -5,7 +5,7 @@ status: query
 kind: terminology
 severity: medium
 scopes: ["volume-9", "master-ledger", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md", "sources/manuscripts/coherence-thesis-master-ledger.md"]
+sources: ["editorial/sources/volumes/volume-09/manuscript.md", "editorial/sources/corpus/master-ledger.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

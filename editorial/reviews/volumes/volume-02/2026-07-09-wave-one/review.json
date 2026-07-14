@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-07-09-wave-one",
+  "editorialId": "volume-02",
+  "approvalState": "pending",
+  "standing": "current",
+  "scope": { "coverage": "complete-volume", "sentenceRecords": 2062, "structureRecords": 191 },
+  "validationState": "validated",
+  "openQueryCount": 1093,
+  "residualRisk": "high",
+  "publicationState": "unpublished",
+  "baseline": {
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "path": "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "snapshotPath": "baseline.md"
+  },
+  "reviewed": {
+    "commit": null,
+    "path": "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md",
+    "sha256": "ec529fd16f1cc6050151bb9fb2709d40acdca9ecadcb4c3dd3098422aee0c785"
+  },
+  "canonicalSourcePath": "editorial/sources/volumes/volume-02/manuscript.md",
+  "evidence": [
+    {
+      "path": "baseline.md",
+      "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d"
+    },
+    { "path": "literary-review.md", "sha256": "4f68c3609c8295377e69e93ca4919a97ee9b3e9e2339b57e8102b932fed4f955" },
+    { "path": "review.md", "sha256": "3c789b8c334cf1523661d781ab64dd5898041123d8bad92b160d6be816f71041" },
+    { "path": "semantic-review.md", "sha256": "4b8a3ab78dafa20d8fe379cdadc362fd9bcc8841501f583fec522c2623198ef6" },
+    { "path": "sentence-ledger.jsonl", "sha256": "f9bd9de306c649ec5cf40c4907dbed555ba53d71a2bbd59f28feab1b84fb8852" },
+    { "path": "slop-review.md", "sha256": "7d2136b78cec2bf9a658e34c80ece3a0a90950780c1e676ea59cf02d38df5869" },
+    { "path": "structure-ledger.jsonl", "sha256": "a5456b53b9d62968b785941808362243685e3b507dc2cdb800eba2214be4ac81" }
+  ]
+}

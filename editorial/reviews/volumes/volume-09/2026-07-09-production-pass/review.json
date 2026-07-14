@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-07-09-production-pass",
+  "editorialId": "volume-09",
+  "approvalState": "pending",
+  "standing": "current",
+  "scope": { "coverage": "complete-volume", "sentenceRecords": 269, "structureRecords": 25 },
+  "validationState": "validated",
+  "openQueryCount": 138,
+  "residualRisk": "high",
+  "publicationState": "unpublished",
+  "baseline": {
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "path": "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "snapshotPath": "baseline.md"
+  },
+  "reviewed": {
+    "commit": null,
+    "path": "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md",
+    "sha256": "cc987e30c656a8a586f5c1d27308c302fd1de7fb77ed349be48c0d235ce56dc3"
+  },
+  "canonicalSourcePath": "editorial/sources/volumes/volume-09/manuscript.md",
+  "evidence": [
+    {
+      "path": "baseline.md",
+      "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762"
+    },
+    { "path": "compression.md", "sha256": "ccb4ef10bc9c2af7eb44b9c38bd1b7ad9cae64e604b880b71542c1f5aa8604cb" },
+    { "path": "literary-review.md", "sha256": "3b0db897ec5cde00c565273e85986c915ba6ad0317830818d84069e3dd7679d2" },
+    { "path": "review.md", "sha256": "ac28600fab9cb3b54284602a9105a3644f0d1a98a027a62eaca0904794d2d9ce" },
+    { "path": "semantic-review.md", "sha256": "a9e6fab5acdb4b0ffdf66296a21d785ae8600b01fb606d3046e59acb2c4bdc3d" },
+    { "path": "sentence-ledger.jsonl", "sha256": "d2ee184f9fb86ac5201fe6cb8a46365db233a8ada7125a82dd8078138cf04d2a" },
+    { "path": "slop-review.md", "sha256": "468887dfb6cabfa8668af908ef382c95350157ca475b0299d661ad261354fdfd" },
+    { "path": "structure-ledger.jsonl", "sha256": "85b635eb1d1ab437627e5762e607795d8fd1a90f85cfd4f4b698e78bac8422b3" }
+  ]
+}

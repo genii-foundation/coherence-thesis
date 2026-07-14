@@ -5,7 +5,7 @@ status: open
 kind: terminology
 severity: medium
 scopes: ["volume-4", "volume-6", "volume-8", "volume-9", "master-ledger", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol4-architecting-providence.md", "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md", "sources/manuscripts/coherence-thesis-vol8-a-misanthropic-artifice.md", "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md", "sources/manuscripts/coherence-thesis-master-ledger.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
+sources: ["editorial/sources/volumes/volume-04/manuscript.md", "editorial/sources/volumes/volume-06/manuscript.md", "editorial/sources/volumes/volume-08/manuscript.md", "editorial/sources/volumes/volume-09/manuscript.md", "editorial/sources/corpus/master-ledger.md", "editorial/audits/2026-07-09-initial-corpus.md"]
 discovered: 2026-07-09
 updated: 2026-07-10
 resolved:
@@ -32,6 +32,6 @@ Replace every singular ICON or ICONS with Scale unless an exact quotation requir
 
 ## Partial paydown
 
-The current production sources consistently use `Scale` for one community and `ICONS` for the plural network. The independent semantic records at `editorial/reviews/volume-4/production-pass/semantic-review.md`, `editorial/reviews/volume-5/production-pass/semantic-review.md`, and `editorial/reviews/volume-6/production-pass/semantic-review.md` explicitly confirm the repair, and Volumes VIII and IX state the distinction directly. The revised wording is covered by the final ledger set, which passes baseline coverage and exact current reconstruction with zero pending records, and by manuscript validation across 534 generated files and 36 overview references. The route planner also reports 551 predecessor matches with zero unresolved routes, and the historical audit reports 5,833 hrefs with zero broken links.
+The current production sources consistently use `Scale` for one community and `ICONS` for the plural network. The independent semantic records at `editorial/reviews/volumes/volume-04/2026-07-09-production-pass/semantic-review.md`, `editorial/reviews/volumes/volume-05/2026-07-09-production-pass/semantic-review.md`, and `editorial/reviews/volumes/volume-06/2026-07-09-production-pass/semantic-review.md` explicitly confirm the repair, and Volumes VIII and IX state the distinction directly. The revised wording is covered by the final ledger set, which passes baseline coverage and exact current reconstruction with zero pending records, and by manuscript validation across 534 generated files and 36 overview references. The route planner also reports 551 predecessor matches with zero unresolved routes, and the historical audit reports 5,833 hrefs with zero broken links.
 
-The item remains open because `sources/manuscripts/coherence-thesis-master-ledger.md` still contains `A single ICONS community` and `one ICONS community` language. A final corpus terminology search and the master-ledger correction are still required.
+The item remains open because `editorial/sources/corpus/master-ledger.md` still contains `A single ICONS community` and `one ICONS community` language. A final corpus terminology search and the master-ledger correction are still required.

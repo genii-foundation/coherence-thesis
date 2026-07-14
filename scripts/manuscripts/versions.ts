@@ -13,6 +13,7 @@ import {
   type VersionProvenanceEntry,
   type VersionProvenanceManifest,
 } from "./shared";
+import { generatedSectionPathCandidates } from "../repository/paths";
 
 export type GitCommand = (args: string[]) => string;
 export type PullRequestResolver = (commitSha: string) => PullRequestMatch | null;
@@ -48,20 +49,28 @@ function currentSectionHashAtCommit(
   commitSha: string,
   runGit: GitCommand,
 ): string | null {
-  try {
-    const source = runGit(["show", `${commitSha}:${section.path}`]);
-    const { body } = parseFrontmatter(source);
-    return sha256(normalizeNewlines(body)).slice(0, 16);
-  } catch {
-    return null;
+  for (const candidate of generatedSectionPathCandidates(section.path)) {
+    try {
+      const source = runGit(["show", `${commitSha}:${candidate}`]);
+      const { body } = parseFrontmatter(source);
+      return sha256(normalizeNewlines(body)).slice(0, 16);
+    } catch {
+      continue;
+    }
   }
+  return null;
 }
 
 export function firstCommitForCurrentHash(
   section: Pick<CompiledSection, "path" | "contentHash">,
   runGit: GitCommand = git,
 ): { commitSha: string; versionDate: string } {
-  const log = runGit(["log", "--format=%H%x09%cI", "--", section.path]);
+  const log = runGit([
+    "log",
+    "--format=%H%x09%cI",
+    "--",
+    ...generatedSectionPathCandidates(section.path),
+  ]);
   const commits = log
     .split("\n")
     .map((line) => line.trim())

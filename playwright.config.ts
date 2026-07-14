@@ -1,5 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
-import { resolvePlaywrightServerMode } from "./scripts/playwright-server-mode";
+import { resolvePlaywrightServerMode } from "./scripts/dev/playwright-server-mode";
 
 const serverMode = resolvePlaywrightServerMode(process.env);
 const fastE2e = serverMode === "fast";

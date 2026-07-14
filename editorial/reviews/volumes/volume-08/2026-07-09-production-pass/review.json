@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-07-09-production-pass",
+  "editorialId": "volume-08",
+  "approvalState": "pending",
+  "standing": "current",
+  "scope": { "coverage": "complete-volume", "sentenceRecords": 758, "structureRecords": 40 },
+  "validationState": "validated",
+  "openQueryCount": 360,
+  "residualRisk": "high",
+  "publicationState": "unpublished",
+  "baseline": {
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "path": "sources/manuscripts/coherence-thesis-vol8-a-misanthropic-artifice.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "snapshotPath": "baseline.md"
+  },
+  "reviewed": {
+    "commit": null,
+    "path": "sources/manuscripts/coherence-thesis-vol8-a-misanthropic-artifice.md",
+    "sha256": "43fd9d6647eaf788a07b96523e9f2cc7fc8d35009f8d0791b25d40eb2cba10d1"
+  },
+  "canonicalSourcePath": "editorial/sources/volumes/volume-08/manuscript.md",
+  "evidence": [
+    {
+      "path": "baseline.md",
+      "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d"
+    },
+    { "path": "compression.md", "sha256": "5dc6371a2538f581b8f3335273fd12e3506a14289896d9b91dd9c3b4ee98b5a5" },
+    { "path": "literary-review.md", "sha256": "bf5568a0df35c9f7d99e2420592050444c15ff9a861b16d0ae73a1beafbe9f83" },
+    { "path": "review.md", "sha256": "40458b841097811e1b0e4484d6b057708926a23789e985e29b42d249ac6a14de" },
+    { "path": "semantic-review.md", "sha256": "c88c85847cfd474be2a5da7f7a6b8779de8b09cd1bbd668c826d1157d9af2f11" },
+    { "path": "sentence-ledger.jsonl", "sha256": "a077215c4e09e2070ab085157d57137a6b09d152e1caec6a34f5bfe39ef2169c" },
+    { "path": "slop-review.md", "sha256": "b34facaf9563c898dccb3450fe87bb39d72837bf0706309d5b8fb848cd1d6bf7" },
+    { "path": "structure-ledger.jsonl", "sha256": "1ea8144faccb611117b5c97e6cac034ce2da85121cf91a62871b302ec2fcdfe5" }
+  ]
+}

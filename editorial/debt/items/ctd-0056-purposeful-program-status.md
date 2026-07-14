@@ -5,7 +5,7 @@ status: open
 kind: factual
 severity: high
 scopes: ["volume-1", "volume-3", "volume-5", "volume-7", "volume-9", "site", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md", "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md", "sources/manuscripts/coherence-thesis-vol5-purposeful.md", "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md", "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md", "src"]
+sources: ["editorial/sources/volumes/volume-01/manuscript.md", "editorial/sources/volumes/volume-03/manuscript.md", "editorial/sources/volumes/volume-05/manuscript.md", "editorial/sources/volumes/volume-07/manuscript.md", "editorial/sources/volumes/volume-09/manuscript.md", "src"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

@@ -5,7 +5,7 @@ status: query
 kind: logical
 severity: high
 scopes: ["volume-4", "volume-5", "volume-6", "volume-9", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol4-architecting-providence.md", "sources/manuscripts/coherence-thesis-vol5-purposeful.md", "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md", "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
+sources: ["editorial/sources/volumes/volume-04/manuscript.md", "editorial/sources/volumes/volume-05/manuscript.md", "editorial/sources/volumes/volume-06/manuscript.md", "editorial/sources/volumes/volume-09/manuscript.md", "editorial/audits/2026-07-09-initial-corpus.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

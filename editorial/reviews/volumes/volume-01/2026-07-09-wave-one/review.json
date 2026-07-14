@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-07-09-wave-one",
+  "editorialId": "volume-01",
+  "approvalState": "pending",
+  "standing": "current",
+  "scope": { "coverage": "complete-volume", "sentenceRecords": 784, "structureRecords": 81 },
+  "validationState": "validated",
+  "openQueryCount": 58,
+  "residualRisk": "high",
+  "publicationState": "unpublished",
+  "baseline": {
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "path": "sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "snapshotPath": "baseline.md"
+  },
+  "reviewed": {
+    "commit": null,
+    "path": "sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md",
+    "sha256": "6a576b8800f676b5159558794fbbbae406fd935c8d080feb9cd958d7bea44b8d"
+  },
+  "canonicalSourcePath": "editorial/sources/volumes/volume-01/manuscript.md",
+  "evidence": [
+    {
+      "path": "baseline.md",
+      "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a"
+    },
+    { "path": "literary-review.md", "sha256": "6bdce706d566398ebf9586c836c75a048a7bb4ae7012e4af8c91ad93b1ff9eab" },
+    { "path": "review.md", "sha256": "66a40481650a5ff24e1450370e3745543f71864717657254aaaf973b90131d14" },
+    { "path": "semantic-review.md", "sha256": "cd98a6a49226376ca6d5b91d423d0d645e4ebaed753f80ffea00518f1c21db9a" },
+    { "path": "sentence-ledger.jsonl", "sha256": "c375aa8b7818bded52bf37c98840225f4684abc0dc033c3a7b3b0ddcc0ef7f7c" },
+    { "path": "slop-review.md", "sha256": "62e82cf5069a4eaa8a55dd2fcb955be06a2db584eb2bcbf08c44cd7e9133bb81" },
+    { "path": "structure-ledger.jsonl", "sha256": "0e7f0d2d2444d871eb3e299a7c4d61f33afffc6b2c6d02c92c98950917a665cf" }
+  ]
+}

@@ -5,7 +5,7 @@ status: open
 kind: structural
 severity: medium
 scopes: ["volume-2", "volume-5", "volume-6", "volume-7", "volume-8", "volume-9", "master-ledger", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md", "sources/manuscripts/coherence-thesis-vol5-purposeful.md", "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md", "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md", "sources/manuscripts/coherence-thesis-vol8-a-misanthropic-artifice.md", "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md", "sources/manuscripts/coherence-thesis-master-ledger.md", "content/series/volumes.json"]
+sources: ["editorial/sources/volumes/volume-02/manuscript.md", "editorial/sources/volumes/volume-05/manuscript.md", "editorial/sources/volumes/volume-06/manuscript.md", "editorial/sources/volumes/volume-07/manuscript.md", "editorial/sources/volumes/volume-08/manuscript.md", "editorial/sources/volumes/volume-09/manuscript.md", "editorial/sources/corpus/master-ledger.md", "editorial/sources/volumes/volume-02/volume.json", "editorial/sources/volumes/volume-05/volume.json", "editorial/sources/volumes/volume-06/volume.json", "editorial/sources/volumes/volume-07/volume.json", "editorial/sources/volumes/volume-08/volume.json", "editorial/sources/volumes/volume-09/volume.json"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

@@ -5,7 +5,7 @@ status: open
 kind: factual
 severity: high
 scopes: ["volume-3", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
+sources: ["editorial/sources/volumes/volume-03/manuscript.md", "editorial/audits/2026-07-09-initial-corpus.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-08",
+  "volumeId": "misanthropic-artifice",
+  "title": "A Misanthropic Artifice",
+  "subtitle": "The Academic, Governed by Saturn",
+  "order": 8,
+  "numberLabel": "VIII",
+  "planet": "Saturn",
+  "coverImage": "/art/coherence-thesis-vol8-cover.png",
+  "coverAlt": "Cover artwork for A Misanthropic Artifice, Volume Eight of The Coherence Thesis.",
+  "sourcePath": "editorial/sources/volumes/volume-08/manuscript.md",
+  "voiceCardPath": "editorial/sources/volumes/volume-08/voice-card.md",
+  "historicalSourcePaths": [
+    "sources/manuscripts/coherence-thesis-vol8-a-misanthropic-artifice.md"
+  ],
+  "import": {
+    "startMarkers": ["Prologue · Two Scenes"]
+  }
+}

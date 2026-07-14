@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-02",
+  "volumeId": "wielding-intelligence",
+  "title": "Wielding Intelligence",
+  "subtitle": "To Center in Humane Technology",
+  "order": 2,
+  "numberLabel": "II",
+  "planet": "Moon",
+  "coverImage": "/art/coherence-thesis-vol2-cover.png",
+  "coverAlt": "Cover artwork for Wielding Intelligence, Volume Two of The Coherence Thesis.",
+  "sourcePath": "editorial/sources/volumes/volume-02/manuscript.md",
+  "voiceCardPath": "editorial/sources/volumes/volume-02/voice-card.md",
+  "historicalSourcePaths": [
+    "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md"
+  ],
+  "import": {
+    "startMarkers": ["Continuity"]
+  }
+}

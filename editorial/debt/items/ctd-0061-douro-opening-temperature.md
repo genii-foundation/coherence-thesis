@@ -5,7 +5,7 @@ status: query
 kind: literary
 severity: medium
 scopes: ["volume-3"]
-sources: ["sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"]
+sources: ["editorial/sources/volumes/volume-03/manuscript.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

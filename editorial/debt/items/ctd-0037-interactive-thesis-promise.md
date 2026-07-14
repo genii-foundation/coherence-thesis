@@ -5,7 +5,7 @@ status: open
 kind: promise
 severity: medium
 scopes: ["volume-4", "site", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol4-architecting-providence.md", "src", "README.md"]
+sources: ["editorial/sources/volumes/volume-04/manuscript.md", "src", "README.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

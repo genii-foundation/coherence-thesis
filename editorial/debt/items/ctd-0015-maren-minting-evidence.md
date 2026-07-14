@@ -5,7 +5,7 @@ status: query
 kind: canon
 severity: critical
 scopes: ["volume-1", "volume-3", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md", "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md", "sources/manuscripts/coherence-thesis-master-ledger.md"]
+sources: ["editorial/sources/volumes/volume-01/manuscript.md", "editorial/sources/volumes/volume-03/manuscript.md", "editorial/sources/corpus/master-ledger.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

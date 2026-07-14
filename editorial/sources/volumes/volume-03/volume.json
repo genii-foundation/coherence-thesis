@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "volumeId": "providence-imperative",
+  "title": "The Providence Imperative",
+  "subtitle": "How We Build the Coordination Infrastructure That Civilization Needs to Survive Itself",
+  "order": 3,
+  "numberLabel": "III",
+  "planet": "Jupiter",
+  "coverImage": "/art/coherence-thesis-vol3-cover.png",
+  "coverAlt": "Cover artwork for The Providence Imperative, Volume Three of The Coherence Thesis.",
+  "sourcePath": "editorial/sources/volumes/volume-03/manuscript.md",
+  "voiceCardPath": "editorial/sources/volumes/volume-03/voice-card.md",
+  "historicalSourcePaths": [
+    "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md"
+  ],
+  "import": {
+    "startMarkers": ["Continuity"]
+  }
+}

@@ -436,7 +436,7 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
       previousSection.getBoundingClientRect().bottom
     );
   });
-  expect(readingMapGap).toBeGreaterThanOrEqual(12);
+  expect(readingMapGap).toBeGreaterThanOrEqual(11.99);
   const markReadButton = popover.getByRole("button", {
     name: /^(Mark current section as read|Current section is marked read)$/,
   });

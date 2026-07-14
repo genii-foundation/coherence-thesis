@@ -195,13 +195,14 @@ describe("updates snapshot generator", () => {
   it("marks mixed and renamed manuscript changes as literary", () => {
     const numstat = [
       `7\t2\tsrc/reader.ts\0`,
+      `5\t0\teditorial/sources/volumes/volume-01/manuscript.md\0`,
       `4\t1\t\0sources/manuscripts/one.md\0archive/one.md\0`,
       `3\t2\tcontent/manuscripts/two.json\0`,
     ].join("");
 
     expect(parseLocalNumstat(numstat)).toEqual({
-      filesChanged: 3,
-      additions: 14,
+      filesChanged: 4,
+      additions: 19,
       deletions: 5,
       isLiterary: true,
     });

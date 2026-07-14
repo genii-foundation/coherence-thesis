@@ -5,7 +5,7 @@ status: open
 kind: citation
 severity: high
 scopes: ["volume-7", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-vol7-presencing-genius.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
+sources: ["editorial/sources/volumes/volume-07/manuscript.md", "editorial/audits/2026-07-09-initial-corpus.md"]
 discovered: 2026-07-09
 updated: 2026-07-10
 resolved:
@@ -31,4 +31,4 @@ Verify primary texts, translations, etymology, and tradition-specific interpreta
 
 ## Partial paydown
 
-The current Volume VII removes the unverified Taoist attribution for the Four Windows, presents the Seven Initiates and love pairings as a project synthesis, narrows the Roman genius account, and retires Gibran-adjacent closing language without adequate attribution. `editorial/reviews/volume-7/production-pass/semantic-review.md` and `editorial/reviews/volume-7/production-pass/literary-review.md` confirm that no lineage is being treated as proof. The full primary-text, translation, etymology, attribution, and living-tradition review required by this item has not occurred, so it remains open.
+The current Volume VII removes the unverified Taoist attribution for the Four Windows, presents the Seven Initiates and love pairings as a project synthesis, narrows the Roman genius account, and retires Gibran-adjacent closing language without adequate attribution. `editorial/reviews/volumes/volume-07/2026-07-09-production-pass/semantic-review.md` and `editorial/reviews/volumes/volume-07/2026-07-09-production-pass/literary-review.md` confirm that no lineage is being treated as proof. The full primary-text, translation, etymology, attribution, and living-tradition review required by this item has not occurred, so it remains open.

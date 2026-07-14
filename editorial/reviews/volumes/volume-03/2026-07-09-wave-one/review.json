@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-07-09-wave-one",
+  "editorialId": "volume-03",
+  "approvalState": "pending",
+  "standing": "current",
+  "scope": { "coverage": "complete-volume", "sentenceRecords": 2299, "structureRecords": 281 },
+  "validationState": "validated",
+  "openQueryCount": 959,
+  "residualRisk": "high",
+  "publicationState": "unpublished",
+  "baseline": {
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "path": "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md",
+    "sha256": "72eef2809146d6e4560feee82fc606dae083676730b0019eaaac76914052b104",
+    "snapshotPath": "baseline.md"
+  },
+  "reviewed": {
+    "commit": null,
+    "path": "sources/manuscripts/coherence-thesis-vol3-the-providence-imperative.md",
+    "sha256": "ae6adff173fc5363eca581cf47551b71c412e31437eb0a0ecd2a8d0dd528414c"
+  },
+  "canonicalSourcePath": "editorial/sources/volumes/volume-03/manuscript.md",
+  "evidence": [
+    {
+      "path": "baseline.md",
+      "sha256": "72eef2809146d6e4560feee82fc606dae083676730b0019eaaac76914052b104"
+    },
+    { "path": "literary-review.md", "sha256": "94742c0be9a85bfe34b4b623da2cdf5006fe9b6a3e77646b501ba25441b58e4e" },
+    { "path": "review.md", "sha256": "5d979444827d3e02c6a7deb0e6f41f73157ed9797373a263dd10deeb10610e92" },
+    { "path": "semantic-review.md", "sha256": "00b85e295e8f86890cd1cb35d9d162309e3e36a8ba85d128903b1fe9655fd15e" },
+    { "path": "sentence-ledger.jsonl", "sha256": "e93f7ecf89d5288cb618f6abc8cbe30b1ddb4963f66c8f190691e2e42f8c5865" },
+    { "path": "slop-review.md", "sha256": "3d85588aecd81ae81ecc5fcb3c0ef1fd73d4b7e82def70480adc0315ade9657b" },
+    { "path": "structure-ledger.jsonl", "sha256": "d29a2e454cb735996ddfe9d3f9d47df80656f5933cadfa416357725d0ac1ce77" }
+  ]
+}

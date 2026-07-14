@@ -5,7 +5,7 @@ status: open
 kind: technical
 severity: high
 scopes: ["master-ledger", "corpus"]
-sources: ["sources/manuscripts/coherence-thesis-master-ledger.md", "editorial/debt/index.md", "editorial/debt/audits/2026-07-09-initial-corpus-audit.md"]
+sources: ["editorial/sources/corpus/master-ledger.md", "editorial/debt/index.md", "editorial/audits/2026-07-09-initial-corpus.md"]
 discovered: 2026-07-09
 updated: 2026-07-09
 resolved:

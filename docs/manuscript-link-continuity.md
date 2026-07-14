@@ -4,12 +4,12 @@ Headings, section boundaries, and public names may improve. Published links and 
 
 The publishing system separates public identity from technical continuity:
 
-- `content/series/section-lineage.json` assigns each current section a stable continuity identity and records historical section IDs.
-- `content/series/aliases.json` maps retired section routes to a current section.
-- `content/series/route-aliases.json` maps retired part and chapter routes to a current route.
-- `content/series/section-ledger.json` retains the earlier section route contract.
-- `content/series/route-ledger.json` retains every reviewed volume, part, chapter, section, alias, and reader fragment route.
-- `content/series/historical-section-mappings.json` records mappings that required human judgment during the repository history audit.
+- `publishing/continuity/section-lineage.json` assigns each current section a stable continuity identity and records historical section IDs.
+- `publishing/continuity/aliases.json` maps retired section routes to a current section.
+- `publishing/continuity/route-aliases.json` maps retired part and chapter routes to a current route.
+- `publishing/continuity/section-ledger.json` retains the earlier section route contract.
+- `publishing/continuity/route-ledger.json` retains every reviewed volume, part, chapter, section, alias, and reader fragment route.
+- `publishing/continuity/historical-section-mappings.json` records mappings that required human judgment during the repository history audit.
 
 Paragraph anchors use a hash of paragraph content rather than paragraph position. Moving a paragraph no longer changes its anchor. Old ordinal anchors still resolve through the reader fallback.
 
@@ -36,8 +36,8 @@ use those files without first copying them over the canonical records:
 ```bash
 npm run manuscripts:preserve-links -- \
   --base HEAD \
-  --reviewed-lineage artifacts/reviewed-section-lineage.json \
-  --reviewed-route-aliases artifacts/reviewed-route-aliases.json \
+  --reviewed-lineage generated/reports/reviewed-section-lineage.json \
+  --reviewed-route-aliases generated/reports/reviewed-route-aliases.json \
   --map retired-section=renamed-successor \
   --route-map /retired-chapter/=/renamed-chapter/ \
   --write
