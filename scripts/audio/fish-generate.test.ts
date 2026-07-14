@@ -22,6 +22,31 @@ describe("Fish generation safeguards", () => {
     expect(() =>
       parseFishGenerateOptions(["--mode", "sample", "--max-chars", "20.5"]),
     ).toThrow("positive integer");
+    expect(() =>
+      parseFishGenerateOptions(["--alignment-concurrency", "1.5"]),
+    ).toThrow("positive integer");
+    expect(() =>
+      parseFishGenerateOptions(["--timing-source", "guess"]),
+    ).toThrow("--timing-source must be one of");
+  });
+
+  it("configures deterministic local alignment for a full run", () => {
+    const options = parseFishGenerateOptions([
+      "--mode",
+      "full",
+      "--timing-source",
+      "local",
+      "--alignment-concurrency",
+      "2",
+      "--mlx-model",
+      "mlx-community/test-model",
+    ]);
+
+    expect(options).toMatchObject({
+      timingSource: "local",
+      localAlignmentConcurrency: 2,
+      localAlignmentModel: "mlx-community/test-model",
+    });
   });
 
   it("reuses local output only when bytes and timing identity match", () => {

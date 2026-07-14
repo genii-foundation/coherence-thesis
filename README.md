@@ -164,6 +164,8 @@ Hosted audiobook clips are keyed by each section's `audioVersionId`. Manuscript 
 
 Store local generation and upload credentials in `.env.audio.local` at the primary repository checkout. Copy `.env.audio.example`, fill in the values, and set permissions to `600`. Audio commands load this ignored file from every worktree. Explicit process environment values take precedence.
 
+Install local Apple Silicon word alignment once with `pipx install mlx-whisper`. The production run uses `mlx-community/whisper-large-v3-turbo` to produce consistent word boundaries when the Fish Pro Free timestamp stream is incomplete.
+
 Validate a generated audio run against the current catalog before publishing:
 
 ```bash
@@ -185,11 +187,11 @@ npm run audio:fish -- --mode sample --sections <section-id-1,section-id-2> --voi
 After one narrator is approved, generate the corpus or regenerate known changed sections into the same compatible run:
 
 ```bash
-npm run audio:fish -- --mode full --voices <narrator-id>:<reference-id>:High\ Quality\ 1 --run-id <run-id>
-npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <narrator-id>:<reference-id>:High\ Quality\ 1 --run-id <run-id>
+npm run audio:fish -- --mode full --voices <narrator-id>:<reference-id>:High\ Quality\ 1 --run-id <run-id> --timing-source local --alignment-concurrency 2
+npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <narrator-id>:<reference-id>:High\ Quality\ 1 --run-id <run-id> --timing-source local --alignment-concurrency 2
 ```
 
-The defaults favor finished audiobook quality: `s2.1-pro-free`, `latency=normal`, `chunk_length=300`, `temperature=0.7`, `top_p=0.7`, text normalization, and prior Fish chunks conditioned for continuity. Use `--format wav` only for lossless auditions or masters. Do not use `--max-chars` for a full run.
+The defaults favor finished audiobook quality: `s2.1-pro-free`, `latency=normal`, `chunk_length=300`, `temperature=0.7`, `top_p=0.7`, text normalization, and prior Fish chunks conditioned for continuity. Local mode keeps persistent MLX workers alive and records whether each section used Fish or MLX timing. Use `--format wav` only for lossless auditions or masters. Do not use `--max-chars` for a full run.
 
 A full run always retains the complete corpus inventory. A targeted command updates only its selected work queue. Reusing a run ID fails when its narrator, model, format, generation settings, or manuscript catalog differs. Use a new run ID when any of those inputs change. `--dry-run` prints the proposed inventory and cost without writing files.
 

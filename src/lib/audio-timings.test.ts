@@ -73,6 +73,54 @@ describe("audio timing documents", () => {
     expect(timings.words[5]?.match).toBe("interpolated");
   });
 
+  it("does not jump past a pronunciation when recognized words repeat later", () => {
+    const text = "co-her-ence kōˈhirəns noun one two three four five six seven eight nine ten";
+    const spoken = [
+      "coherence",
+      "coherence",
+      "noun",
+      "one",
+      "two",
+      "three",
+      "four",
+      "five",
+      "six",
+      "seven",
+      "eight",
+      "nine",
+      "ten",
+    ];
+    const timings = createAudioTimingDocument({
+      sectionId: "section-a",
+      audioVersionId: "section-a-hash",
+      voiceId: "narrator",
+      text,
+      chunks: [
+        {
+          chunkSeq: 0,
+          content: text,
+          offsetSeconds: 0,
+          audioDurationSeconds: spoken.length,
+          segments: spoken.map((word, index) => ({
+            text: word,
+            start: index,
+            end: index + 0.8,
+          })),
+        },
+      ],
+    });
+
+    const nounIndex = timings.words.findIndex(
+      (word) => word.charStart === text.indexOf("noun"),
+    );
+    expect(timings.words[nounIndex]).toMatchObject({
+      startSeconds: 2,
+      match: "exact",
+    });
+    expect(timings.interpolatedWordCount).toBe(4);
+    expect(isAudioTimingDocument(timings)).toBe(true);
+  });
+
   it("rejects provider alignment with too few exact timestamp anchors", () => {
     const text = "One two three four five six seven eight nine ten eleven twelve";
     expect(() =>

@@ -19,6 +19,7 @@ export type FishVoice = {
 
 export type FishRunMode = "sample" | "full";
 export type FishAudioFormat = "opus" | "wav";
+export type AudioTimingSource = "fish" | "fallback" | "local";
 
 export type FishAudioFile = {
   sectionId: string;
@@ -46,6 +47,8 @@ export type FishAudioFile = {
   timingsSha256?: string;
   exactWordCount?: number;
   interpolatedWordCount?: number;
+  timingSource?: "fish" | "mlx-whisper";
+  providerTimingError?: string;
   skipped?: boolean;
   error?: string;
 };
@@ -543,6 +546,8 @@ export function createSettings(input: {
   opusBitrate: 24000 | 32000 | 48000 | 64000;
   temperature?: number;
   topP?: number;
+  timingSource: AudioTimingSource;
+  localAlignmentModel?: string;
 }) {
   return {
     provider: "fish-audio",
@@ -561,6 +566,9 @@ export function createSettings(input: {
     minChunkLength: 50,
     conditionOnPreviousChunks: true,
     earlyStopThreshold: 1,
+    timingSource: input.timingSource,
+    localAlignmentModel:
+      input.timingSource === "fish" ? null : input.localAlignmentModel ?? null,
   };
 }
 

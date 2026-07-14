@@ -61,6 +61,8 @@ describe("Fish audio run resume", () => {
         generatedAt: "2026-07-13T01:00:00.000Z",
         byteSize: 42,
         publicCacheKey: "fish/one/fingerprint",
+        timingSource: "mlx-whisper",
+        providerTimingError: "Fish alignment was incomplete.",
       }),
       file("two"),
     ]);
@@ -73,6 +75,8 @@ describe("Fish audio run resume", () => {
       generatedAt: "2026-07-13T01:00:00.000Z",
       byteSize: 42,
       publicCacheKey: "fish/one/fingerprint",
+      timingSource: "mlx-whisper",
+      providerTimingError: "Fish alignment was incomplete.",
     });
   });
 

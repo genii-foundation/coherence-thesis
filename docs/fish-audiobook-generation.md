@@ -44,6 +44,7 @@ The generator uses these defaults:
 - Text normalization enabled
 - One API stream per canonical reader section
 - One pinned narrator for full corpus mode
+- Local word alignment with `mlx-community/whisper-large-v3-turbo` for the production run
 
 One request per section lets Fish preserve context across its internal chunks. It also avoids the voice and prosody resets caused by the previous external 1,500 character request splitting.
 
@@ -54,11 +55,21 @@ Every generated section produces:
 <audioVersionId>-<settingsHash>.timings.json
 ```
 
-The timing sidecar maps Fish word alignment segments to character ranges in the exact canonical audio text. Fish alignment snapshots are cumulative within each provider chunk, so the generator preserves their progression and uses the latest nonnull snapshot for each chunk. The complete chunk text must map to at least 90 percent of canonical words. At least 60 percent of words must have exact provider anchors, and no interpolated gap may exceed 12 words. Isolated normalization differences are interpolated between trustworthy anchors.
+The timing sidecar maps word boundaries to character ranges in the exact canonical audio text. Fish alignment snapshots are cumulative within each provider chunk, so the generator preserves their progression and uses the latest nonnull snapshot for each chunk. The Pro Free endpoint can return incomplete snapshots. Production generation therefore runs local MLX Whisper alignment against the completed Fish audio. Provider and local alignment evidence remain in the ignored run directory for diagnosis and resume safety.
+
+The complete spoken text must map to at least 90 percent of canonical words. At least 60 percent of words must have exact anchors, and no interpolated gap may exceed 12 words. Sequence alignment contains pronunciation and normalization differences instead of allowing a repeated word to shift the rest of a section.
 
 ## Run Sequence
 
 Copy `.env.audio.example` to `.env.audio.local` in the primary repository checkout, fill in the Fish and Supabase credentials, and set permissions to `600`. The audio commands find this ignored file from any worktree. Explicit process environment values override local file values.
+
+Install the Apple Silicon word aligner once:
+
+```bash
+pipx install mlx-whisper
+```
+
+The first local alignment downloads `mlx-community/whisper-large-v3-turbo`. Later sections reuse the cached model. The generator keeps persistent worker processes alive so the model is not loaded again for every section.
 
 First generate auditions. Multiple pinned voices are allowed in sample mode:
 
@@ -76,7 +87,9 @@ After approval, generate one pinned narrator:
 npm run audio:fish -- \
   --mode full \
   --voices <narrator-id>:<reference-id>:High\ Quality\ 1 \
-  --run-id <full-run-id>
+  --run-id <full-run-id> \
+  --timing-source local \
+  --alignment-concurrency 2
 ```
 
 Targeted regeneration keeps the full inventory in the same compatible run and updates only the selected sections:
@@ -86,10 +99,12 @@ npm run audio:fish -- \
   --mode full \
   --sections <section-id-1,section-id-2> \
   --voices <narrator-id>:<reference-id>:High\ Quality\ 1 \
-  --run-id <full-run-id>
+  --run-id <full-run-id> \
+  --timing-source local \
+  --alignment-concurrency 2
 ```
 
-The command rejects reuse when the run has a different narrator, model, format, settings hash, or catalog hash. A dry run reports the proposed inventory without writing it.
+The command rejects reuse when the run has a different narrator, model, format, timing source, local alignment model, settings hash, or catalog hash. A dry run reports the proposed inventory without writing it. `--timing-source fallback` uses valid Fish boundaries first and invokes MLX only when Fish validation fails. `--timing-source fish` disables local alignment.
 
 Publish to a new immutable version path. The publisher uploads audio and timing sidecars together and refuses stale, duplicate, incomplete, malformed, or path escaping mappings. It compares the current title and exact audio input contract before publication. Uploaded objects include signed SHA256 metadata and byte size, so watch mode can resume only when an existing object is byte identical. It withholds the public application manifest until the complete corpus passes strict validation:
 

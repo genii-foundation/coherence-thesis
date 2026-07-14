@@ -48,6 +48,8 @@ function copyCompletedState(
     timingsSha256: existing.timingsSha256,
     exactWordCount: existing.exactWordCount,
     interpolatedWordCount: existing.interpolatedWordCount,
+    timingSource: existing.timingSource,
+    providerTimingError: existing.providerTimingError,
     skipped: existing.skipped,
     error: existing.error,
   };

@@ -16,9 +16,11 @@ import {
   trimTextForAudio,
   validateVoicesForRun,
   writeRunManifest,
+  type AudioTimingSource,
   type FishAudioFormat,
   type FishAudioFile,
   type FishRunMode,
+  type FishTimestampedAudio,
 } from "./fish-generator";
 import { ensureDir, sha256, writeJson } from "../manuscripts/shared";
 import type { CompiledCatalog } from "../manuscripts/types";
@@ -26,6 +28,7 @@ import {
   createAudioTimingDocument,
   isAudioTimingDocument,
   type AudioTimingDocument,
+  type FishTimestampChunk,
 } from "../../src/lib/audio-timings";
 import { textForAudio } from "../../src/lib/audio-text";
 import { loadAudioLocalEnv } from "./audio-local-env";
@@ -35,6 +38,11 @@ import {
   mergeCompatibleRunManifest,
   selectRunWorkFiles,
 } from "./fish-run-resume";
+import {
+  defaultMlxWhisperModel,
+  mlxAlignmentChunk,
+  MlxWhisperAligner,
+} from "./mlx-whisper-aligner";
 
 type CliOptions = {
   mode: FishRunMode;
@@ -55,6 +63,10 @@ type CliOptions = {
   topP: number;
   maxCharacters: number | null;
   timeoutMs: number;
+  timingSource: AudioTimingSource;
+  localAlignmentModel: string;
+  localAlignmentConcurrency: number;
+  localAlignmentPython: string | undefined;
 };
 
 function optionValue(args: string[], name: string): string | undefined {
@@ -152,6 +164,19 @@ export function parseFishGenerateOptions(args: string[]): CliOptions {
   if (topP < 0 || topP > 1) {
     throw new Error("--top-p must be between 0 and 1.");
   }
+  const timingSource = parseChoice(
+    optionValue(args, "--timing-source"),
+    "fallback",
+    ["fish", "fallback", "local"] as const,
+    "--timing-source",
+  );
+  const localAlignmentConcurrency = parseNumber(
+    optionValue(args, "--alignment-concurrency"),
+    1,
+  );
+  if (!Number.isInteger(localAlignmentConcurrency) || localAlignmentConcurrency < 1) {
+    throw new Error("--alignment-concurrency must be a positive integer.");
+  }
 
   return {
     mode,
@@ -172,6 +197,14 @@ export function parseFishGenerateOptions(args: string[]): CliOptions {
     timeoutMs: Math.max(1, Math.floor(parseNumber(optionValue(args, "--timeout-ms"), 600_000))),
     temperature,
     topP,
+    timingSource,
+    localAlignmentModel:
+      optionValue(args, "--mlx-model") ??
+      process.env.MLX_WHISPER_MODEL ??
+      defaultMlxWhisperModel,
+    localAlignmentConcurrency,
+    localAlignmentPython:
+      optionValue(args, "--mlx-python") ?? process.env.MLX_WHISPER_PYTHON,
   };
 }
 
@@ -199,6 +232,68 @@ function readTimingDocument(filePath: string): AudioTimingDocument | null {
   try {
     const parsed: unknown = JSON.parse(fs.readFileSync(filePath, "utf8"));
     return isAudioTimingDocument(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function isFishTimestampChunk(value: unknown): value is FishTimestampChunk {
+  if (!value || typeof value !== "object") return false;
+  const chunk = value as Partial<FishTimestampChunk>;
+  return (
+    typeof chunk.chunkSeq === "number" &&
+    Number.isInteger(chunk.chunkSeq) &&
+    chunk.chunkSeq >= 0 &&
+    typeof chunk.content === "string" &&
+    typeof chunk.offsetSeconds === "number" &&
+    Number.isFinite(chunk.offsetSeconds) &&
+    chunk.offsetSeconds >= 0 &&
+    typeof chunk.audioDurationSeconds === "number" &&
+    Number.isFinite(chunk.audioDurationSeconds) &&
+    chunk.audioDurationSeconds > 0 &&
+    Array.isArray(chunk.segments) &&
+    chunk.segments.every((segment) => (
+      segment &&
+      typeof segment.text === "string" &&
+      typeof segment.start === "number" &&
+      Number.isFinite(segment.start) &&
+      segment.start >= 0 &&
+      typeof segment.end === "number" &&
+      Number.isFinite(segment.end) &&
+      segment.end >= segment.start
+    ))
+  );
+}
+
+export function readPreservedFishGeneration(
+  audioPath: string,
+  fishTimingsPath: string,
+): FishTimestampedAudio | null {
+  if (!fs.existsSync(audioPath) || !fs.existsSync(fishTimingsPath)) return null;
+  try {
+    const audio = fs.readFileSync(audioPath);
+    if (audio.byteLength === 0 || !audioDurationSeconds(audioPath)) return null;
+    const parsed = JSON.parse(fs.readFileSync(fishTimingsPath, "utf8")) as {
+      version?: unknown;
+      chunks?: unknown;
+      snapshots?: unknown;
+    };
+    if (
+      parsed.version !== 1 ||
+      !Array.isArray(parsed.chunks) ||
+      !parsed.chunks.every(isFishTimestampChunk)
+    ) {
+      return null;
+    }
+    const snapshots = Array.isArray(parsed.snapshots) &&
+      parsed.snapshots.every(isFishTimestampChunk)
+      ? parsed.snapshots
+      : parsed.chunks;
+    return {
+      audio,
+      chunks: parsed.chunks,
+      snapshots,
+    };
   } catch {
     return null;
   }
@@ -269,6 +364,9 @@ async function generateOne(input: {
   topP: number;
   timeoutMs: number;
   text: string;
+  timingSource: AudioTimingSource;
+  localAlignmentModel: string;
+  localAligner?: MlxWhisperAligner;
 }): Promise<void> {
   input.file.outputPath = resolveAudioRunFile(
     input.runRoot,
@@ -288,39 +386,107 @@ async function generateOne(input: {
     throw new Error(`Missing timing output path for ${input.file.sectionId}.`);
   }
   if (reuseExistingGeneratedFile(input.file, input.text)) return;
-  if (!input.voiceReferenceId) {
-    throw new Error(`Missing pinned reference_id for ${input.file.voiceId}.`);
+  const fishTimingsPath = `${input.file.timingsOutputPath}.fish.json`;
+  let generated = readPreservedFishGeneration(input.file.outputPath, fishTimingsPath);
+  if (!generated) {
+    if (!input.voiceReferenceId) {
+      throw new Error(`Missing pinned reference_id for ${input.file.voiceId}.`);
+    }
+    generated = await fishTtsWithTimestamps({
+      apiKey: input.apiKey,
+      model: input.model,
+      text: input.text,
+      referenceId: input.voiceReferenceId,
+      format: input.format,
+      speed: input.speed,
+      normalize: input.normalize,
+      latency: input.latency,
+      chunkLength: input.chunkLength,
+      opusBitrate: input.opusBitrate,
+      temperature: input.temperature,
+      topP: input.topP,
+      timeoutMs: input.timeoutMs,
+    });
+    fs.writeFileSync(input.file.outputPath, generated.audio);
+    writeJson(fishTimingsPath, {
+      version: 1,
+      chunks: generated.chunks,
+      snapshots: generated.snapshots,
+    });
   }
-  const generated = await fishTtsWithTimestamps({
-    apiKey: input.apiKey,
-    model: input.model,
-    text: input.text,
-    referenceId: input.voiceReferenceId,
-    format: input.format,
-    speed: input.speed,
-    normalize: input.normalize,
-    latency: input.latency,
-    chunkLength: input.chunkLength,
-    opusBitrate: input.opusBitrate,
-    temperature: input.temperature,
-    topP: input.topP,
-    timeoutMs: input.timeoutMs,
-  });
-  fs.writeFileSync(input.file.outputPath, generated.audio);
-  writeJson(`${input.file.timingsOutputPath}.fish.json`, {
-    version: 1,
-    chunks: generated.chunks,
-    snapshots: generated.snapshots,
-  });
-  const timings = createAudioTimingDocument({
-    sectionId: input.file.sectionId,
-    audioVersionId: input.file.audioVersionId,
-    voiceId: input.file.voiceId,
-    text: input.text,
-    chunks: generated.chunks,
-  });
+
+  let fishTimings: AudioTimingDocument | null = null;
+  let providerTimingError: Error | null = null;
+  try {
+    fishTimings = createAudioTimingDocument({
+      sectionId: input.file.sectionId,
+      audioVersionId: input.file.audioVersionId,
+      voiceId: input.file.voiceId,
+      text: input.text,
+      chunks: generated.chunks,
+    });
+  } catch (error) {
+    providerTimingError = error instanceof Error ? error : new Error(String(error));
+  }
+
+  const alignLocally = async (): Promise<AudioTimingDocument> => {
+    if (!input.localAligner) {
+      throw new Error(
+        "Local MLX Whisper alignment is unavailable. Install it with `pipx install mlx-whisper`.",
+      );
+    }
+    const audioDuration = audioDurationSeconds(input.file.outputPath);
+    if (!audioDuration || audioDuration <= 0) {
+      throw new Error(`Generated audio has no positive duration for ${input.file.sectionId}.`);
+    }
+    const alignment = await input.localAligner.align(input.file.outputPath);
+    writeJson(`${input.file.timingsOutputPath}.mlx.json`, {
+      version: 1,
+      model: input.localAlignmentModel,
+      durationSeconds: alignment.durationSeconds,
+      words: alignment.words,
+    });
+    return createAudioTimingDocument({
+      sectionId: input.file.sectionId,
+      audioVersionId: input.file.audioVersionId,
+      voiceId: input.file.voiceId,
+      text: input.text,
+      chunks: [mlxAlignmentChunk(input.text, alignment, audioDuration)],
+    });
+  };
+
+  let timings: AudioTimingDocument;
+  if (input.timingSource === "fish") {
+    if (!fishTimings) throw providerTimingError;
+    timings = fishTimings;
+    input.file.timingSource = "fish";
+  } else if (input.timingSource === "fallback" && fishTimings) {
+    timings = fishTimings;
+    input.file.timingSource = "fish";
+  } else {
+    try {
+      timings = await alignLocally();
+      input.file.timingSource = "mlx-whisper";
+    } catch (localError) {
+      if (input.timingSource === "local" && fishTimings) {
+        timings = fishTimings;
+        input.file.timingSource = "fish";
+      } else {
+        const providerMessage = providerTimingError?.message ?? "unavailable";
+        const localMessage = localError instanceof Error ? localError.message : String(localError);
+        throw new Error(
+          `Provider timing failed (${providerMessage}); local timing failed (${localMessage}).`,
+        );
+      }
+    }
+  }
+  if (providerTimingError) {
+    input.file.providerTimingError = providerTimingError.message;
+  } else {
+    delete input.file.providerTimingError;
+  }
   if (timings.durationSeconds <= 0) {
-    throw new Error(`Fish Audio returned no positive duration for ${input.file.sectionId}.`);
+    throw new Error(`Audio timing returned no positive duration for ${input.file.sectionId}.`);
   }
   writeJson(input.file.timingsOutputPath, timings);
   const audioBytes = fs.readFileSync(input.file.outputPath);
@@ -362,6 +528,8 @@ async function main() {
     opusBitrate: options.opusBitrate,
     temperature: options.temperature,
     topP: options.topP,
+    timingSource: options.timingSource,
+    localAlignmentModel: options.localAlignmentModel,
   });
   const hash = settingsHash(settings);
   const runRoot = resolveAudioRunRoot(artifactsAudioRoot(), options.runId);
@@ -451,6 +619,11 @@ async function main() {
         chunkLength: options.chunkLength,
         opusBitrate: options.opusBitrate,
         timeoutMs: options.timeoutMs,
+        timingSource: options.timingSource,
+        localAlignmentModel:
+          options.timingSource === "fish" ? null : options.localAlignmentModel,
+        localAlignmentConcurrency:
+          options.timingSource === "fish" ? 0 : options.localAlignmentConcurrency,
       },
       null,
       2,
@@ -469,40 +642,58 @@ async function main() {
   const sectionText = trimmedTextBySection;
   const referenceIdByVoice = new Map(voices.map((voice) => [voice.id, voice.referenceId]));
   const errors: FishAudioFile[] = [];
-
-  await runWithConcurrency(workFiles, options.concurrency, async (file, index) => {
-    const text = sectionText.get(file.sectionId);
-    if (!text) throw new Error(`Missing text for ${file.sectionId}.`);
-    try {
-      await generateOne({
-        file,
-        runRoot,
-        apiKey,
-        voiceReferenceId: referenceIdByVoice.get(file.voiceId),
-        model: options.model,
-        format: options.format,
-        speed: options.speed,
-        normalize: options.normalize,
-        latency: options.latency,
-        chunkLength: options.chunkLength,
-        opusBitrate: options.opusBitrate,
-        temperature: options.temperature,
-        topP: options.topP,
-        timeoutMs: options.timeoutMs,
-        text,
-      });
-      console.log(
-        `${index + 1}/${workFiles.length} ${file.skipped ? "skipped" : "generated"} ${file.voiceId} ${file.sectionId}`,
+  const localAligners = options.timingSource === "fish"
+    ? []
+    : Array.from(
+        { length: Math.min(options.localAlignmentConcurrency, options.concurrency) },
+        () => new MlxWhisperAligner(
+          options.localAlignmentPython,
+          options.localAlignmentModel,
+        ),
       );
-    } catch (error) {
-      file.error = error instanceof Error ? error.message : String(error);
-      errors.push(file);
-      console.error(`${index + 1}/${workFiles.length} failed ${file.voiceId} ${file.sectionId}: ${file.error}`);
-    } finally {
-      resolveAudioRunFile(runRoot, "manifest.json", "Audio run manifest");
-      writeRunManifest(runRoot, manifest);
-    }
-  });
+
+  try {
+    await runWithConcurrency(workFiles, options.concurrency, async (file, index) => {
+      const text = sectionText.get(file.sectionId);
+      if (!text) throw new Error(`Missing text for ${file.sectionId}.`);
+      try {
+        await generateOne({
+          file,
+          runRoot,
+          apiKey,
+          voiceReferenceId: referenceIdByVoice.get(file.voiceId),
+          model: options.model,
+          format: options.format,
+          speed: options.speed,
+          normalize: options.normalize,
+          latency: options.latency,
+          chunkLength: options.chunkLength,
+          opusBitrate: options.opusBitrate,
+          temperature: options.temperature,
+          topP: options.topP,
+          timeoutMs: options.timeoutMs,
+          text,
+          timingSource: options.timingSource,
+          localAlignmentModel: options.localAlignmentModel,
+          localAligner: localAligners.length > 0
+            ? localAligners[index % localAligners.length]
+            : undefined,
+        });
+        console.log(
+          `${index + 1}/${workFiles.length} ${file.skipped ? "skipped" : "generated"} ${file.voiceId} ${file.sectionId}`,
+        );
+      } catch (error) {
+        file.error = error instanceof Error ? error.message : String(error);
+        errors.push(file);
+        console.error(`${index + 1}/${workFiles.length} failed ${file.voiceId} ${file.sectionId}: ${file.error}`);
+      } finally {
+        resolveAudioRunFile(runRoot, "manifest.json", "Audio run manifest");
+        writeRunManifest(runRoot, manifest);
+      }
+    });
+  } finally {
+    await Promise.all(localAligners.map((aligner) => aligner.close()));
+  }
 
   resolveAudioRunFile(runRoot, "manifest.json", "Audio run manifest");
   writeRunManifest(runRoot, manifest);

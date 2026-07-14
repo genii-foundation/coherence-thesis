@@ -86,15 +86,54 @@ type MappedContentWord = {
   sourceIndex: number;
 };
 
-function findNextMappedContentWord(
+type NormalizedTimestampSegment = {
+  normalized: string;
+  segment: FishTimestampSegment;
+};
+
+function alignTimestampSegments(
   words: MappedContentWord[],
-  normalized: string,
-  fromIndex: number,
-): number {
-  for (let index = fromIndex; index < words.length; index += 1) {
-    if (words[index]?.normalized === normalized) return index;
+  segments: FishTimestampSegment[],
+): Array<{ contentIndex: number; segment: FishTimestampSegment }> {
+  const normalizedSegments: NormalizedTimestampSegment[] = segments.flatMap((segment) => {
+    const normalized = normalizedWord(segment.text);
+    return normalized ? [{ normalized, segment }] : [];
+  });
+  const matches = Array.from(
+    { length: normalizedSegments.length + 1 },
+    () => new Uint16Array(words.length + 1),
+  );
+
+  for (let segmentIndex = normalizedSegments.length - 1; segmentIndex >= 0; segmentIndex -= 1) {
+    for (let contentIndex = words.length - 1; contentIndex >= 0; contentIndex -= 1) {
+      matches[segmentIndex]![contentIndex] =
+        normalizedSegments[segmentIndex]!.normalized === words[contentIndex]!.normalized
+          ? matches[segmentIndex + 1]![contentIndex + 1]! + 1
+          : Math.max(
+              matches[segmentIndex + 1]![contentIndex]!,
+              matches[segmentIndex]![contentIndex + 1]!,
+            );
+    }
   }
-  return -1;
+
+  const aligned: Array<{ contentIndex: number; segment: FishTimestampSegment }> = [];
+  let segmentIndex = 0;
+  let contentIndex = 0;
+  while (segmentIndex < normalizedSegments.length && contentIndex < words.length) {
+    const candidate = normalizedSegments[segmentIndex]!;
+    if (candidate.normalized === words[contentIndex]!.normalized) {
+      aligned.push({ contentIndex, segment: candidate.segment });
+      segmentIndex += 1;
+      contentIndex += 1;
+      continue;
+    }
+    if (matches[segmentIndex + 1]![contentIndex]! >= matches[segmentIndex]![contentIndex + 1]!) {
+      segmentIndex += 1;
+    } else {
+      contentIndex += 1;
+    }
+  }
+  return aligned;
 }
 
 function interpolateMissingTimings(
@@ -187,26 +226,16 @@ export function createAudioTimingDocument(input: {
       contentSourceIndex = mappedContentWords.at(-1)!.sourceIndex + 1;
     }
 
-    let mappedContentIndex = 0;
-    for (const segment of chunk.segments) {
-      const normalized = normalizedWord(segment.text);
-      if (!normalized) continue;
-      const matchedContentIndex = findNextMappedContentWord(
-        mappedContentWords,
-        normalized,
-        mappedContentIndex,
-      );
-      if (matchedContentIndex < 0) continue;
-      const sourceWordIndex = mappedContentWords[matchedContentIndex]!.sourceIndex;
+    for (const aligned of alignTimestampSegments(mappedContentWords, chunk.segments)) {
+      const sourceWordIndex = mappedContentWords[aligned.contentIndex]!.sourceIndex;
       const word = words[sourceWordIndex]!;
       timings[sourceWordIndex] = {
         charStart: word.charStart,
         charEnd: word.charEnd,
-        startSeconds: roundSeconds(chunk.offsetSeconds + segment.start),
-        endSeconds: roundSeconds(chunk.offsetSeconds + segment.end),
+        startSeconds: roundSeconds(chunk.offsetSeconds + aligned.segment.start),
+        endSeconds: roundSeconds(chunk.offsetSeconds + aligned.segment.end),
         match: "exact",
       };
-      mappedContentIndex = matchedContentIndex + 1;
     }
   }
 

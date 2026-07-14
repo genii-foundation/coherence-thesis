@@ -11,6 +11,8 @@ const allowedAudioEnvironmentVariables = [
   "SUPABASE_S3_REGION",
   "SUPABASE_STORAGE_S3_ENDPOINT",
   "SUPABASE_PROJECT_REF",
+  "MLX_WHISPER_PYTHON",
+  "MLX_WHISPER_MODEL",
 ] as const;
 
 export type AudioLocalEnvResult = {
