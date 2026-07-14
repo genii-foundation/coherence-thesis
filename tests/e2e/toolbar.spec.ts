@@ -9,6 +9,8 @@ import {
   expectMenuFitsViewport,
 } from "./fixtures";
 
+const highQualityVoicePreferenceId = "clip:high-quality-1";
+
 function expectSettledTransform(transform: string): void {
   if (transform === "none") return;
   const values = transform.match(/^matrix\(([^)]+)\)$/)?.[1]
@@ -1113,7 +1115,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(speedSlider).toHaveValue("1.25");
   await expect(resetSpeed).toBeEnabled();
   await resetVoice.click();
-  await expect(voiceSelect).toHaveValue("clip:default");
+  await expect(voiceSelect).toHaveValue(highQualityVoicePreferenceId);
   await expect(speedSlider).toHaveValue("1.25");
   await expect(resetVoice).toBeDisabled();
   await expect(resetSpeed).toBeEnabled();
@@ -1121,7 +1123,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(speedSlider).toHaveValue("1");
   await expect(resetSpeed).toBeDisabled();
   if (await highQualityOption.isEnabled()) {
-    await expect(voiceSelect).toHaveValue("clip:default");
+    await expect(voiceSelect).toHaveValue(highQualityVoicePreferenceId);
     await expect(audioMenu.locator(".audio-offline-item").first()).toBeVisible();
     await expect(audioMenu.locator(".audio-offline-meter").first()).toHaveCount(1);
   } else {

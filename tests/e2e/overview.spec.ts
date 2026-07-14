@@ -1721,6 +1721,7 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
 
   await page.setViewportSize({ width: 852, height: 393 });
   await page.goto("/");
+  await page.evaluate(() => document.fonts.ready.then(() => undefined));
 
   const topMetrics = await page.evaluate(() => {
     const header = document.querySelector<HTMLElement>(".site-header");
@@ -1738,6 +1739,7 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
   expect(topMetrics.heroArtDisplay).toBe("none");
 
   await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = "auto";
     window.scrollTo(0, 180);
   });
   await expect
@@ -1791,6 +1793,16 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
       { timeout: 15_000 },
     )
     .toBeLessThan(0.06);
+  await coverFlow.evaluate((flow) => {
+    flow.scrollIntoView({ block: "start", inline: "nearest" });
+  });
+  await expect
+    .poll(() =>
+      coverFlow.evaluate((flow) =>
+        Math.abs(flow.getBoundingClientRect().top),
+      ),
+    )
+    .toBeLessThanOrEqual(1);
 
   const landscapeMetrics = await coverFlow.evaluate((flow) => {
     const activeCard = flow.querySelector<HTMLElement>(

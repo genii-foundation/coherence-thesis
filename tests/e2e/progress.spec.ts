@@ -30,6 +30,7 @@ const systemVoicePreference = {
   pitch: 1,
   useSystemVoice: true,
 };
+const highQualityVoicePreferenceId = "clip:high-quality-1";
 
 test("progress menu shows a resettable email sent confirmation", async ({
   isMobile,
@@ -710,7 +711,7 @@ test("audio voice selection exposes one built-in system option", async ({ page }
   await expect(audioPanel).toBeVisible({ timeout: 15_000 });
 
   const voiceSelect = page.getByRole("combobox", { name: "Voice" });
-  await expect(voiceSelect).toHaveValue("clip:default");
+  await expect(voiceSelect).toHaveValue(highQualityVoicePreferenceId);
   await expect(voiceSelect.locator("option", { hasText: "High Quality 1" }))
     .toHaveCount(1);
   await expect(voiceSelect.locator("option", { hasText: "System voice" }))
@@ -722,7 +723,7 @@ test("audio voice selection exposes one built-in system option", async ({ page }
   await expect(voiceSelect).toHaveValue("");
 
   await page.getByRole("button", { name: "Reset voice" }).click();
-  await expect(voiceSelect).toHaveValue("clip:default");
+  await expect(voiceSelect).toHaveValue(highQualityVoicePreferenceId);
 });
 
 test("reader words can start playback from a focused word", async ({ page }) => {

@@ -431,6 +431,16 @@ export function AudioPlayerIsland({
     loadAudioClipManifest,
     emptyAudioClipManifest,
   );
+  const resolvedDefaultVoicePreference = useMemo<AudioVoicePreference>(
+    () => ({
+      ...defaultVoicePreference,
+      voiceURI: resolveHostedVoicePreference(
+        audioManifest,
+        defaultVoicePreference.voiceURI,
+      ),
+    }),
+    [audioManifest],
+  );
   const [hash, setHash] = useState("");
   useEffect(() => {
     const readHash = () => setHash(window.location.hash);
@@ -1066,8 +1076,8 @@ export function AudioPlayerIsland({
   function resetVoice(): void {
     const nextPreference = {
       ...preference,
-      voiceURI: defaultVoicePreference.voiceURI,
-      useSystemVoice: defaultVoicePreference.useSystemVoice,
+      voiceURI: resolvedDefaultVoicePreference.voiceURI,
+      useSystemVoice: resolvedDefaultVoicePreference.useSystemVoice,
     };
     setPreference(nextPreference);
     void restartActivePlayback(nextPreference);
@@ -1094,7 +1104,7 @@ export function AudioPlayerIsland({
       ? `${active.href}#${playbackLocation.wordId}`
       : active.href;
   const voiceIsDefault =
-    preference.voiceURI === defaultVoicePreference.voiceURI &&
+    preference.voiceURI === resolvedDefaultVoicePreference.voiceURI &&
     preference.useSystemVoice !== true;
   const speedIsDefault = preference.rate === defaultVoicePreference.rate;
 
