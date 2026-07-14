@@ -50,6 +50,8 @@
     "manuscripts:validate": "tsx scripts/manuscripts/validate.ts",
     "preeditorial:debt": "node scripts/repository/ensure-node-modules.mjs",
     "editorial:debt": "tsx scripts/editorial/debt.ts",
+    "preeditorial:debt:queue": "node scripts/repository/ensure-node-modules.mjs",
+    "editorial:debt:queue": "tsx scripts/editorial/debt-queue.ts",
     "preeditorial:debt:update": "node scripts/repository/ensure-node-modules.mjs",
     "editorial:debt:update": "tsx scripts/editorial/debt.ts --write",
     "preeditorial:lint": "node scripts/repository/ensure-node-modules.mjs",

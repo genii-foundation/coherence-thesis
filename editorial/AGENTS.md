@@ -19,6 +19,8 @@ Never edit a generated reader section, catalog, browser payload, PDF, or report 
 
 - Read the relevant manuscript, its voice card, neighboring sections, and the applicable master ledger material before changing prose.
 - Use the coherence-editorial-review skill for substantive prose review, developmental editing, production editing, or verification.
+- Use the coherence-editorial-debt-guide skill when a human editor wants to select, triage, investigate, or fully resolve one debt ticket.
+- Use the coherence-editorial-debt skill for durable debt audits and register mutations after scope, authority, and evidence are established.
 - Preserve claim scope, evidentiary status, citations, deliberate ambiguity, image, cadence, and volume-specific voice.
 - Update a voice card only when the source or an explicit author decision changes the volume's editorial authority. Do not alter it merely to justify an edit already made.
 - Treat automated findings as prompts for judgment. They do not approve an edit.

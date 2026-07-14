@@ -4,6 +4,7 @@ import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import {
   auditAgentAssets,
+  EXPECTED_SKILL_INVOCATION,
   parseAgentMetadata,
   parseSkillFile,
 } from "./agent-assets";
@@ -29,7 +30,14 @@ afterEach(() => {
 
 describe("repository agent assets", () => {
   it("accepts the complete repository skill inventory", () => {
-    expect(auditAgentAssets().issues).toEqual([]);
+    const audit = auditAgentAssets();
+    expect(audit.issues).toEqual([]);
+    expect(audit.skills).toHaveLength(7);
+    expect(audit.metadataFiles).toBe(7);
+    expect(EXPECTED_SKILL_INVOCATION).toMatchObject({
+      "coherence-editorial-debt": false,
+      "coherence-editorial-debt-guide": true,
+    });
   });
 
   it("allows only name and description in skill frontmatter", () => {
@@ -72,6 +80,59 @@ describe("repository agent assets", () => {
       expect.objectContaining({
         code: "missing-resource",
         path: ".agents/skills/demo-skill/SKILL.md",
+      }),
+    ]);
+  });
+
+  it("reports an invocation policy that differs from the inventory", () => {
+    const root = temporaryRoot();
+    writeFile(
+      path.join(root, ".agents/skills/demo-skill/SKILL.md"),
+      `---\nname: demo-skill\ndescription: Perform one clear repository task when the request matches.\n---\n\n# Demo\n`,
+    );
+    writeFile(
+      path.join(root, ".agents/skills/demo-skill/agents/openai.yaml"),
+      `interface:\n  display_name: "Demo Skill"\n  short_description: "Perform one focused repository task"\n  default_prompt: "Use $demo-skill to perform the task."\n\npolicy:\n  allow_implicit_invocation: true\n`,
+    );
+
+    const audit = auditAgentAssets(root, {
+      expectedInvocationPolicy: { "demo-skill": false },
+      expectedSkillNames: ["demo-skill"],
+      requiredResources: { "demo-skill": [] },
+    });
+
+    expect(audit.issues).toEqual([
+      expect.objectContaining({
+        code: "invalid-metadata",
+        message:
+          "allow_implicit_invocation must be false for demo-skill.",
+        path: ".agents/skills/demo-skill/agents/openai.yaml",
+      }),
+    ]);
+  });
+
+  it("requires the exact skill token in the default prompt", () => {
+    const root = temporaryRoot();
+    writeFile(
+      path.join(root, ".agents/skills/demo-skill/SKILL.md"),
+      `---\nname: demo-skill\ndescription: Perform one clear repository task when the request matches.\n---\n\n# Demo\n`,
+    );
+    writeFile(
+      path.join(root, ".agents/skills/demo-skill/agents/openai.yaml"),
+      `interface:\n  display_name: "Demo Skill"\n  short_description: "Perform one focused repository task"\n  default_prompt: "Use $demo-skill-guide to perform the task."\n\npolicy:\n  allow_implicit_invocation: false\n`,
+    );
+
+    const audit = auditAgentAssets(root, {
+      expectedInvocationPolicy: { "demo-skill": false },
+      expectedSkillNames: ["demo-skill"],
+      requiredResources: { "demo-skill": [] },
+    });
+
+    expect(audit.issues).toEqual([
+      expect.objectContaining({
+        code: "invalid-metadata",
+        message: "default_prompt must explicitly name $demo-skill.",
+        path: ".agents/skills/demo-skill/agents/openai.yaml",
       }),
     ]);
   });

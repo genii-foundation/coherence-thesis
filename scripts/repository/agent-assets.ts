@@ -6,11 +6,24 @@ import { normalizeRepoPath, repoRoot } from "./paths";
 export const EXPECTED_SKILL_NAMES = [
   "coherence-build-feature",
   "coherence-editorial-debt",
+  "coherence-editorial-debt-guide",
   "coherence-editorial-review",
   "coherence-manuscript-publish",
   "coherence-repository-maintenance",
   "coherence-ship-site",
 ] as const;
+
+export const EXPECTED_SKILL_INVOCATION: Readonly<
+  Record<(typeof EXPECTED_SKILL_NAMES)[number], boolean>
+> = {
+  "coherence-build-feature": false,
+  "coherence-editorial-debt": false,
+  "coherence-editorial-debt-guide": true,
+  "coherence-editorial-review": true,
+  "coherence-manuscript-publish": false,
+  "coherence-repository-maintenance": true,
+  "coherence-ship-site": false,
+};
 
 export const REQUIRED_SKILL_RESOURCES: Readonly<
   Record<(typeof EXPECTED_SKILL_NAMES)[number], readonly string[]>
@@ -20,6 +33,14 @@ export const REQUIRED_SKILL_RESOURCES: Readonly<
     "editorial/AGENTS.md",
     "editorial/debt/README.md",
     "editorial/templates/debt-item.md",
+  ],
+  "coherence-editorial-debt-guide": [
+    "editorial/AGENTS.md",
+    "editorial/debt/README.md",
+    "editorial/templates/debt-item.md",
+    "scripts/editorial/debt-queue.ts",
+    "publishing/AGENTS.md",
+    "publishing/README.md",
   ],
   "coherence-editorial-review": [
     "editorial/standards/editorial.md",
@@ -64,6 +85,7 @@ export type AgentAssetAudit = {
 };
 
 export type AgentAssetAuditOptions = {
+  expectedInvocationPolicy?: Readonly<Record<string, boolean>>;
   expectedSkillNames?: readonly string[];
   requiredResources?: Readonly<Record<string, readonly string[]>>;
 };
@@ -191,6 +213,8 @@ export function auditAgentAssets(
   ].sort();
   const requiredResources: Readonly<Record<string, readonly string[]>> =
     options.requiredResources ?? REQUIRED_SKILL_RESOURCES;
+  const expectedInvocationPolicy: Readonly<Record<string, boolean>> =
+    options.expectedInvocationPolicy ?? EXPECTED_SKILL_INVOCATION;
   const skillsRoot = path.join(root, ".agents/skills");
   const actualSkillNames = fs.existsSync(skillsRoot)
     ? fs
@@ -271,9 +295,20 @@ export function auditAgentAssets(
         const metadata = parseAgentMetadata(
           fs.readFileSync(metadataPath, "utf8"),
         );
-        if (!metadata.defaultPrompt.includes(`$${skillName}`)) {
+        const promptSkills: string[] =
+          metadata.defaultPrompt.match(/\$[a-z0-9-]+/g) ?? [];
+        if (!promptSkills.includes(`$${skillName}`)) {
           throw new Error(
             `default_prompt must explicitly name $${skillName}.`,
+          );
+        }
+        const expectedInvocation = expectedInvocationPolicy[skillName];
+        if (
+          typeof expectedInvocation === "boolean" &&
+          metadata.allowImplicitInvocation !== expectedInvocation
+        ) {
+          throw new Error(
+            `allow_implicit_invocation must be ${String(expectedInvocation)} for ${skillName}.`,
           );
         }
       } catch (error) {

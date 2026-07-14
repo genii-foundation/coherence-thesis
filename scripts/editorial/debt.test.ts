@@ -3,6 +3,9 @@ import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
+  editorialDebtKinds,
+  editorialDebtSeverities,
+  editorialDebtStatuses,
   loadEditorialDebtItems,
   parseEditorialDebtItem,
   renderEditorialDebtIndex,
@@ -48,8 +51,76 @@ Publish the artifact or remove the promise.
 `;
 }
 
+function resolvedDebtSource(overrides: Record<string, string> = {}): string {
+  return debtSource({
+    status: "resolved",
+    resolved: "2026-07-09",
+    ...overrides,
+  })
+    .replace(
+      "Publish the artifact or remove the promise.",
+      [
+        "- C1. Publish the promised artifact.",
+        "- C2. Remove the promise if publication no longer applies.",
+      ].join("\n"),
+    )
+    .replace(
+      "- 2026-07-09: Recorded.",
+      [
+        "- 2026-07-09: Recorded and resolved.",
+        "",
+        "## Resolution",
+        "",
+        "### Outcome",
+        "",
+        "The obligation is no longer active.",
+        "",
+        "### Criterion results",
+        "",
+        "- C1: met. The promised artifact was published.",
+        "- C2: not applicable. Publication made removal unnecessary.",
+        "",
+        "### Evidence",
+        "",
+        "The package records the published artifact.",
+        "",
+        "### Validation",
+        "",
+        "The focused register validation passed.",
+        "",
+        "### Approval",
+        "",
+        "The responsible editor confirmed the outcome.",
+        "",
+        "### Residual risk",
+        "",
+        "No residual risk remains inside this obligation.",
+        "",
+        "### Related debt",
+        "",
+        "None.",
+      ].join("\n"),
+    );
+}
+
 describe("editorial debt", () => {
-  it("parses a valid open item", () => {
+  it("exports the field contract values", () => {
+    expect(editorialDebtStatuses).toEqual([
+      "open",
+      "query",
+      "deferred",
+      "resolved",
+    ]);
+    expect(editorialDebtKinds).toContain("literary");
+    expect(editorialDebtSeverities).toEqual([
+      "critical",
+      "high",
+      "medium",
+      "low",
+    ]);
+  });
+
+  it("parses an active legacy item and exposes its level 2 sections", () => {
     const item = parseEditorialDebtItem(
       "ctd-0001-known-obligation.md",
       debtSource(),
@@ -59,6 +130,12 @@ describe("editorial debt", () => {
       status: "open",
       scopes: ["volume-1"],
     });
+    expect(item.sections.get("Debt")).toBe(
+      "The promise has not been fulfilled.",
+    );
+    expect(item.sections.get("Paydown criteria")).toBe(
+      "Publish the artifact or remove the promise.",
+    );
   });
 
   it("requires resolved items to carry resolution evidence", () => {
@@ -71,6 +148,73 @@ describe("editorial debt", () => {
         }),
       ),
     ).toThrow("## Resolution");
+  });
+
+  it("accepts a structured resolution with exact criterion results", () => {
+    const item = parseEditorialDebtItem(
+      "ctd-0001-known-obligation.md",
+      resolvedDebtSource(),
+    );
+    expect(item).toMatchObject({
+      status: "resolved",
+      resolved: "2026-07-09",
+    });
+    expect(item.sections.get("Resolution")).toContain(
+      "### Criterion results",
+    );
+  });
+
+  it("requires resolved paydown criteria to start at C1 and stay contiguous", () => {
+    const source = resolvedDebtSource().replace("- C2.", "- C3.");
+    expect(() =>
+      parseEditorialDebtItem("ctd-0001-known-obligation.md", source),
+    ).toThrow("contiguous from C1");
+  });
+
+  it("requires every structured resolution section", () => {
+    const source = resolvedDebtSource().replace(
+      "### Approval\n\nThe responsible editor confirmed the outcome.\n\n",
+      "",
+    );
+    expect(() =>
+      parseEditorialDebtItem("ctd-0001-known-obligation.md", source),
+    ).toThrow("### Approval");
+  });
+
+  it("rejects duplicate structured resolution headings", () => {
+    const source = resolvedDebtSource().replace(
+      "### Evidence",
+      [
+        "### Criterion results",
+        "",
+        "- C1: unmet. A duplicate section must not hide this result.",
+        "",
+        "### Evidence",
+      ].join("\n"),
+    );
+    expect(() =>
+      parseEditorialDebtItem("ctd-0001-known-obligation.md", source),
+    ).toThrow("duplicate '### Criterion results' section");
+  });
+
+  it("requires criterion results to cover the criteria exactly once and in order", () => {
+    const source = resolvedDebtSource().replace(
+      "- C2: not applicable.",
+      "- C3: not applicable.",
+    );
+    expect(() =>
+      parseEditorialDebtItem("ctd-0001-known-obligation.md", source),
+    ).toThrow("cover C1, C2 exactly once and in order");
+  });
+
+  it("rejects an unmet result in a resolved item", () => {
+    const source = resolvedDebtSource().replace(
+      "- C2: not applicable.",
+      "- C2: unmet.",
+    );
+    expect(() =>
+      parseEditorialDebtItem("ctd-0001-known-obligation.md", source),
+    ).toThrow("met. ...");
   });
 
   it("reopens an item without discarding its earlier paydown", () => {
@@ -124,12 +268,10 @@ describe("editorial debt", () => {
     );
     const resolved = parseEditorialDebtItem(
       "ctd-0002-resolved.md",
-      `${debtSource({
+      resolvedDebtSource({
         id: "CTD-0002",
         title: "Paid debt",
-        status: "resolved",
-        resolved: "2026-07-09",
-      })}\n## Resolution\n\nThe promise was fulfilled.\n`,
+      }),
     );
     const index = renderEditorialDebtIndex([open, resolved]);
     expect(index).toContain("Open: 1");

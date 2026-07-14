@@ -13,11 +13,30 @@ This folder is the durable obligation register for The Coherence Thesis. It keep
 
 ## Lifecycle
 
-Use the next contiguous `CTD-` identifier when the obligation is genuinely new. Begin with `status: open`, `query`, or `deferred`, and leave `resolved:` empty.
+Use the next contiguous `CTD-` identifier when the obligation is genuinely new. Every status has one meaning:
 
-To resolve an item, set `status: resolved`, add the resolution date, update the item date, append a matching history entry, and add a `## Resolution` section with observable evidence.
+- `open` means the obligation is understood and work can begin.
+- `query` means a named author, editor, researcher, or specialist decision is required before safe paydown.
+- `deferred` means a specific external condition blocks the work. State the condition and how an editor can tell when it has changed.
+- `resolved` means every paydown criterion has observable proof on current `main`, or has a documented `not applicable` result.
 
-To reopen an item, restore an active status, clear the resolution date, update the item date, and append a history entry that explains why the earlier paydown was incomplete. Preserve the old result under `## Prior paydown` so the register records both progress and recurrence.
+Begin an active item with `status: open`, `query`, or `deferred`, and leave `resolved:` empty. New paydown criteria use contiguous labels starting with `C1`, one criterion per line. Active legacy items may retain prose criteria until an editor services them.
+
+An implemented change on a branch or open pull request is a resolution candidate. Keep the ticket active and record the work under `## Partial paydown`. A candidate becomes confirmed closure only after the change is on current `main`, each criterion has been checked, required approval is recorded, and relevant validation passes.
+
+To confirm closure, set `status: resolved`, preserve the original resolution date when migrating an older closure, update the item date, append a matching history entry, and add a structured `## Resolution`. It must contain these level 3 sections:
+
+1. `Outcome`
+2. `Criterion results`
+3. `Evidence`
+4. `Validation`
+5. `Approval`
+6. `Residual risk`
+7. `Related debt`
+
+Criterion results must cover every criterion exactly once and in order. Use `- C1: met. Proof...` or `- C1: not applicable. Reason...`. A `not applicable` result needs evidence that the criterion no longer belongs to this obligation. A resolved item cannot contain an unmet result.
+
+To reopen an item, restore the appropriate active status, clear the resolution date, update the item date, and append a history entry that explains why the earlier paydown was incomplete. Preserve the old result under `## Prior paydown` so the register records both progress and recurrence.
 
 The field contract is enforced by `scripts/editorial/debt.ts`. Start from [the item template](../templates/debt-item.md).
 
