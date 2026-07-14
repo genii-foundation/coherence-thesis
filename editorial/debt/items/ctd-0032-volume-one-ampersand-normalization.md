@@ -1,14 +1,14 @@
 ---
 id: CTD-0032
 title: Restore intentional and citation ampersands
-status: open
+status: resolved
 kind: literary
 severity: medium
 scopes: ["volume-1", "volume-3", "corpus"]
 sources: ["editorial/sources/volumes/volume-01/manuscript.md", "editorial/sources/volumes/volume-03/manuscript.md", "editorial/standards/editorial.md"]
 discovered: 2026-07-09
-updated: 2026-07-13
-resolved:
+updated: 2026-07-14
+resolved: 2026-07-14
 discoveredIn: author-preview-review
 ---
 
@@ -33,10 +33,11 @@ The Volume I baseline used the ampersand in the compact heading. During preview 
 - 2026-07-09: Restored the heading and added the governing editorial rule and voice-card decision.
 - 2026-07-09: Restored twelve Volume III bibliographic ampersands and made citation style an explicit protected case.
 - 2026-07-13: Reverified the current source and durable review evidence at commit `1165332b82d979383b02d279323f22e9d60db2d8`. The contextual ampersand rule from commit `41337b21cbf43d3f070750a579ba17a148e9bff3` did not survive consolidation into the current canonical standard, so the ticket was reopened. This candidate restores the rule, but closure requires merged verification on current `main`.
+- 2026-07-14: Pull request 137 squash merged as `e7fdf9abc23e8a6f021be24c1f69e65989750003`. Reverified all four criteria on that exact `main` revision and confirmed closure.
 
 ## Partial paydown
 
-C1 through C3 remain proven on current `main`. This candidate restores the previously approved contextual ampersand rule in `editorial/standards/editorial.md`. C4 remains pending until that rule is merged and reverified on current `main`.
+C1 through C3 were already proven when pull request 137 was open. That candidate restored the previously approved contextual ampersand rule in `editorial/standards/editorial.md`, while C4 remained pending until merge. Pull request 137 has since merged, and the confirmed result is recorded below.
 
 ## Prior paydown
 
@@ -71,6 +72,44 @@ The Volume I voice card and review record date the author's heading approval to 
 ### Residual risk
 
 The manuscript punctuation restoration remains complete. The missing canonical corpus rule keeps this ticket open until the candidate is merged and reverified. Unverified factual and citation details in the same Volume III bibliography remain active under CTD-0009 and are tracked separately.
+
+### Related debt
+
+- CTD-0009 remains active for Volume III evidence and citation verification.
+
+## Resolution
+
+### Outcome
+
+Resolved on current `main` at `e7fdf9abc23e8a6f021be24c1f69e65989750003`. The intentional Volume I heading, twelve Volume III bibliography ampersands, durable evidence of the specific heading decision and punctuation convention, and canonical contextual rule are all present together.
+
+### Criterion results
+
+- C1: met. `editorial/sources/volumes/volume-01/manuscript.md` contains the exact heading `Seed, Sprout, Stem & Soil`.
+- C2: met. The reviewed Volume III bibliography passage contains all twelve final-author ampersands, and the sentence ledger records twelve matching convention-specific reason codes. Each record remains a query for separate factual and citation verification.
+- C3: met. The Volume I voice card, review record, and structure ledger preserve the author's heading decision. The Volume III sentence ledger preserves the bibliography convention for all twelve cases.
+- C4: met. `editorial/standards/editorial.md` now forbids reflexive ampersand expansion and protects proper names, quotations, citation style, headings, titles, labels, and intentional display matter.
+
+### Evidence
+
+- Pull request 137 merged as `e7fdf9abc23e8a6f021be24c1f69e65989750003` on 2026-07-14.
+- `editorial/sources/volumes/volume-01/manuscript.md` contains one exact matching heading.
+- `editorial/sources/volumes/volume-03/manuscript.md` contains twelve final-author ampersands in the reviewed bibliography passage.
+- `editorial/sources/volumes/volume-01/voice-card.md`, `editorial/reviews/volumes/volume-01/2026-07-09-wave-one/review.md`, and `editorial/reviews/volumes/volume-01/2026-07-09-wave-one/structure-ledger.jsonl` preserve the specific display decision while overall voice-card and review-batch approval remains pending.
+- `editorial/reviews/volumes/volume-03/2026-07-09-wave-one/sentence-ledger.jsonl` contains twelve `bibliographic-ampersand-convention-approved` reason codes inside records that remain queries for unrelated evidence work.
+- `editorial/standards/editorial.md` contains the contextual corpus rule beginning `Do not expand ampersands by reflex.`
+
+### Validation
+
+Exact-source checks on `e7fdf9abc23e8a6f021be24c1f69e65989750003` found one matching Volume I heading, twelve matching Volume III manuscript cases, twelve matching sentence-ledger reason codes, the specific decision evidence, and the canonical contextual rule. `npm run editorial:debt`, debt and debt queue tests, editorial validation, Updates generation, and full repository validation passed on the closure branch.
+
+### Approval
+
+The author approved the specific Volume I heading restoration on 2026-07-09. The voice card and review record preserve that narrow decision. The Volume III review evidence protects the bibliography ampersand convention while leaving unrelated factual verification visible. Overall voice-card and review-batch approval remains pending and continues to gate pull request 112.
+
+### Residual risk
+
+No unresolved ampersand-normalization obligation remains within this ticket. The Volume III bibliography still contains separate factual and citation questions. Those questions remain active under CTD-0009 and do not weaken the punctuation proof recorded here.
 
 ### Related debt
 
