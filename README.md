@@ -59,7 +59,7 @@ Generated manuscript fragments, catalogs, reports, search data, breadcrumbs, and
 
 ## Quick Start
 
-The project uses Node.js 22 through `.nvmrc`. Package metadata supports Node.js 20.9 or newer. Node.js 22 is the recommended local version.
+The project uses Node.js 22 through `.nvmrc`. Package metadata supports Node.js 20.11 or newer. Node.js 22 is the recommended local version.
 
 ```bash
 git clone https://github.com/providence-collective/coherence-thesis.git
