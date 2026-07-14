@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import {
   emptyAudioClipManifest,
+  resolveHostedVoicePreference,
 } from "@/lib/audio-manifest";
 import {
   buildOfflineAudioPacks,
@@ -43,6 +44,7 @@ import {
 } from "@/lib/audio-playback";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 import { audioWordIdForCharIndex } from "@/lib/audio-word-anchors";
+import { audioBodyStartCharacter, textForAudio } from "@/lib/audio-text";
 import {
   loadProgressSections,
   loadReaderSections,
@@ -537,8 +539,8 @@ export function AudioPlayerIsland({
   const [preferenceReady, setPreferenceReady] = useState(false);
   const [voicesReady, setVoicesReady] = useState(false);
   const voiceGroups = useMemo(
-    () => audioVoiceMenuGroups({ voices, manifest: audioManifest }),
-    [audioManifest, voices],
+    () => audioVoiceMenuGroups({ voices, manifest: audioManifest, sections }),
+    [audioManifest, sections, voices],
   );
   const voiceIds = useMemo(() => selectableVoiceIds(voiceGroups), [voiceGroups]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -716,8 +718,16 @@ export function AudioPlayerIsland({
       (voice) => voice.disabled && voice.id === preference.voiceURI,
     );
     if (pendingPreferredVoice) return;
-    setPreference((current) => ({ ...current, voiceURI: null }));
-  }, [preference.voiceURI, preferenceReady, voiceGroups, voiceIds, voicesReady]);
+    const resolvedVoiceURI = resolveHostedVoicePreference(
+      audioManifest,
+      preference.voiceURI,
+    );
+    if (resolvedVoiceURI === preference.voiceURI) return;
+    setPreference((current) => ({
+      ...current,
+      voiceURI: resolveHostedVoicePreference(audioManifest, current.voiceURI),
+    }));
+  }, [audioManifest, preference.voiceURI, preferenceReady, voiceGroups, voiceIds, voicesReady]);
 
   useEffect(() => {
     const onStartFromWord = (event: Event) => {
@@ -780,28 +790,19 @@ export function AudioPlayerIsland({
     if (!item || !supported) return;
     flushAudioSeconds();
     setPlaybackQueue(queueItems);
-    audioStartedAtRef.current = Date.now();
-    audioItemRef.current = item;
-    audioPreferenceRef.current = playbackPreference;
-    appendStoredEvent(
-      createEngagementEvent("audio_started", {
-        sectionId: item.sectionId,
-        contentHash: item.audioVersionId,
-        route: pathname,
-      }),
-    );
     const text = item.text || sectionTextRef.current?.get(item.sectionId) || "";
-    const prefix = `${item.title}. `;
+    const fullText = textForAudio({ title: item.title, text });
+    const bodyStartCharacter = audioBodyStartCharacter(item.title);
     const bodyStartCharIndex =
       typeof startBodyCharIndex === "number"
         ? Math.max(0, Math.min(text.length, startBodyCharIndex))
         : 0;
-    const fullStartCharIndex = prefix.length + bodyStartCharIndex;
+    const fullStartCharIndex = bodyStartCharacter + bodyStartCharIndex;
     const updatePlaybackProgress = (progress: AudioPlaybackProgress) => {
       if (token !== playbackTokenRef.current) return;
       const bodyCharIndex =
         typeof progress.charIndex === "number"
-          ? Math.max(0, progress.charIndex - prefix.length)
+          ? Math.max(0, progress.charIndex - bodyStartCharacter)
           : bodyStartCharIndex;
       const wordId = playbackWordId(item.sectionId, text, bodyCharIndex);
       const location = {
@@ -826,11 +827,25 @@ export function AudioPlayerIsland({
         startWordId ?? playbackWordId(item.sectionId, text, bodyStartCharIndex),
     });
     provider.speak({
-      text: `${prefix}${text}`,
+      text: fullText,
       voiceId: playbackPreference.voiceURI,
       rate: playbackPreference.rate,
       pitch: playbackPreference.pitch,
       startCharIndex: fullStartCharIndex,
+      onStart: () => {
+        if (token !== playbackTokenRef.current) return;
+        audioStartedAtRef.current = Date.now();
+        audioItemRef.current = item;
+        audioPreferenceRef.current = playbackPreference;
+        appendStoredEvent(
+          createEngagementEvent("audio_started", {
+            sectionId: item.sectionId,
+            contentHash: item.audioVersionId,
+            route: pathname,
+          }),
+        );
+        setPlaying(true);
+      },
       onProgress: updatePlaybackProgress,
       onEnd: () => {
         if (token !== playbackTokenRef.current) return;
@@ -862,7 +877,6 @@ export function AudioPlayerIsland({
         setPlaying(false);
       },
     });
-    setPlaying(true);
   }
 
   async function downloadOfflinePack(volumeId: string): Promise<void> {

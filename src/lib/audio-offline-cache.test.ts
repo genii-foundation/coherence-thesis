@@ -111,6 +111,7 @@ describe("offline audio packs", () => {
                 sectionId: "one-a",
                 audioVersionId: "one-a-a",
                 href: "/audio/fish-default/one-a.mp3",
+                timingsHref: "/audio/fish-default/one-a.timings.json",
               },
               {
                 sectionId: "one-b",
@@ -143,6 +144,7 @@ describe("offline audio packs", () => {
     expect(packs[0]!.urls).toEqual(
       expect.arrayContaining([
         "/audio/fish-default/one-a.mp3",
+        "/audio/fish-default/one-a.timings.json",
         "/audio/fish-default/one-b.mp3",
         "/audio/second/one-a.mp3",
       ]),
@@ -150,6 +152,46 @@ describe("offline audio packs", () => {
     expect(packs[1]!.audioClipCount).toBe(1);
     expect(packs[1]!.urls).toEqual(
       expect.arrayContaining(["/audio/fish-default/two-a.mp3"]),
+    );
+  });
+
+  it("excludes clips whose audio version no longer matches the section", () => {
+    const packs = buildOfflineAudioPacks({
+      volumes,
+      sections,
+      manifest: {
+        version: 1,
+        voices: [
+          {
+            id: "fish-default",
+            label: "Fish default",
+            sections: [
+              {
+                sectionId: "one-a",
+                audioVersionId: "one-a-stale",
+                href: "/audio/fish-default/one-a-stale.mp3",
+                timingsHref: "/audio/fish-default/one-a-stale.timings.json",
+              },
+              {
+                sectionId: "one-b",
+                audioVersionId: "one-b-b",
+                href: "/audio/fish-default/one-b-current.mp3",
+              },
+            ],
+          },
+        ],
+      },
+    });
+
+    expect(packs[0]!.audioClipCount).toBe(1);
+    expect(packs[0]!.urls).toContain(
+      "/audio/fish-default/one-b-current.mp3",
+    );
+    expect(packs[0]!.urls).not.toContain(
+      "/audio/fish-default/one-a-stale.mp3",
+    );
+    expect(packs[0]!.urls).not.toContain(
+      "/audio/fish-default/one-a-stale.timings.json",
     );
   });
 });

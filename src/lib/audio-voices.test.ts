@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { clipVoicePreferenceId } from "@/lib/audio-manifest";
+import {
+  clipVoicePreferenceId,
+  resolveHostedVoicePreference,
+} from "@/lib/audio-manifest";
 import {
   audioVoiceMenuGroups,
   selectableVoiceIds,
@@ -20,6 +23,7 @@ describe("audio voice menu", () => {
 
     const groups = audioVoiceMenuGroups({
       manifest: { version: 1, voices: [] },
+      sections: [],
       voices,
     });
 
@@ -34,10 +38,22 @@ describe("audio voice menu", () => {
           {
             id: "default",
             label: "High Quality 1",
-            sections: [],
+            sections: [
+              {
+                sectionId: "section-one",
+                audioVersionId: "section-one-current",
+                href: "/audio/section-one.mp3",
+              },
+            ],
           },
         ],
       },
+      sections: [
+        {
+          sectionId: "section-one",
+          audioVersionId: "section-one-current",
+        },
+      ],
       voices: [
         {
           id: clipVoicePreferenceId("default"),
@@ -60,6 +76,7 @@ describe("audio voice menu", () => {
   it("shows Fish as pending when hosted clips are not available yet", () => {
     const groups = audioVoiceMenuGroups({
       manifest: { version: 1, voices: [] },
+      sections: [],
       voices: [{ id: "samantha", label: "Samantha" }],
     });
 
@@ -73,5 +90,65 @@ describe("audio voice menu", () => {
     expect(groups.system).toEqual([{ id: "", label: "System voice" }]);
     expect(selectableVoiceIds(groups).has("clip:default")).toBe(false);
     expect(selectableVoiceIds(groups).has("")).toBe(true);
+  });
+
+  it("marks hosted voices pending when every published clip is stale", () => {
+    const groups = audioVoiceMenuGroups({
+      manifest: {
+        version: 1,
+        voices: [
+          {
+            id: "default",
+            label: "default",
+            sections: [
+              {
+                sectionId: "section-one",
+                audioVersionId: "section-one-old",
+                href: "/audio/section-one-old.mp3",
+              },
+            ],
+          },
+        ],
+      },
+      sections: [
+        {
+          sectionId: "section-one",
+          audioVersionId: "section-one-current",
+        },
+      ],
+      voices: [
+        {
+          id: clipVoicePreferenceId("default"),
+          label: "High Quality 1",
+        },
+      ],
+    });
+
+    expect(groups.highQuality).toEqual([
+      {
+        id: "clip:default",
+        label: "High Quality 1 (clips pending)",
+        disabled: true,
+      },
+    ]);
+    expect(selectableVoiceIds(groups).has("clip:default")).toBe(false);
+  });
+
+  it("preserves a pending hosted preference and adopts the first published narrator", () => {
+    expect(
+      resolveHostedVoicePreference(
+        { version: 1, voices: [] },
+        clipVoicePreferenceId("narrator-v1"),
+      ),
+    ).toBe("clip:narrator-v1");
+    expect(
+      resolveHostedVoicePreference(
+        {
+          version: 1,
+          voices: [{ id: "narrator-v2", label: "High Quality 1", sections: [] }],
+        },
+        clipVoicePreferenceId("default"),
+      ),
+    ).toBe("clip:narrator-v2");
   });
 });

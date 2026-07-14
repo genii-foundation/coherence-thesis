@@ -281,7 +281,9 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
         ],
         pause: () => undefined,
         removeEventListener: () => undefined,
-        speak: () => undefined,
+        speak: (utterance: SpeechSynthesisUtterance) => {
+          utterance.onstart?.({} as SpeechSynthesisEvent);
+        },
       },
     });
   });
@@ -968,7 +970,9 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
         getVoices: () => [],
         pause: () => undefined,
         removeEventListener: () => undefined,
-        speak: () => undefined,
+        speak: (utterance: SpeechSynthesisUtterance) => {
+          utterance.onstart?.({} as SpeechSynthesisEvent);
+        },
       },
     });
   });
@@ -1157,7 +1161,9 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
         getVoices: () => [],
         pause: () => undefined,
         removeEventListener: () => undefined,
-        speak: () => undefined,
+        speak: (utterance: SpeechSynthesisUtterance) => {
+          utterance.onstart?.({} as SpeechSynthesisEvent);
+        },
       },
     });
   });

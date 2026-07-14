@@ -64,9 +64,21 @@ Run the combined static and browser gate when routes or rendered manuscript beha
 
 - Treat changed section text or structure as a possible audio invalidation.
 - Compare current audioVersionId values with publishing/audio/manifest.json.
-- Run read-only audio manifest validation when a current generated run is available.
+- Run read-only audio manifest validation when a current generated run is available:
+
+    npm run audio:publish-manifest -- --run-id <run-id> --version <version> --project-ref <project-ref>
+
+- Regenerate known changed sections with one pinned narrator when approved:
+
+    npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <voice-id>:<reference-id>:<label> --run-id <run-id>
+
+- Require timestamped audio and timing sidecars to pass together.
+- Confirm a targeted retry preserves the complete full run inventory and uses the same narrator, model, format, settings hash, and catalog hash.
+- Treat relative paths inside the generated run as authoritative. Reject absolute legacy paths and any path that escapes the run.
+- Require matching remote SHA256 metadata and byte size before reusing an immutable uploaded object.
 - Record stale or missing coverage in the pull request.
 - Do not upload clips, overwrite objects, or change remote storage from this skill.
+- Read docs/fish-audiobook-generation.md before any authorized audio publication run.
 
 ## Prepare the pull request
 

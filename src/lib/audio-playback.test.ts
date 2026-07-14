@@ -9,6 +9,7 @@ type FakeUtterance = {
   rate: number;
   pitch: number;
   voice: unknown;
+  onstart: (() => void) | null;
   onend: (() => void) | null;
   onerror: ((event: unknown) => void) | null;
 };
@@ -41,6 +42,7 @@ function installSpeechStub(voices: Array<{ voiceURI: string; name: string }>) {
     rate = 1;
     pitch = 1;
     voice: unknown = null;
+    onstart: (() => void) | null = null;
     onend: (() => void) | null = null;
     onerror: ((event: unknown) => void) | null = null;
     constructor(text: string) {
@@ -89,6 +91,7 @@ describe("browser speech provider", () => {
 
     it("applies request settings, selects the voice, and wires callbacks", () => {
       const provider = createBrowserSpeechProvider();
+      const onStart = vi.fn();
       const onEnd = vi.fn();
       const onError = vi.fn();
       provider.speak({
@@ -98,6 +101,7 @@ describe("browser speech provider", () => {
         voiceId: "voice-b",
         rate: 1.2,
         pitch: 0.9,
+        onStart,
         onEnd,
         onError,
       });
@@ -110,6 +114,8 @@ describe("browser speech provider", () => {
       expect(utterance.pitch).toBe(0.9);
       expect(utterance.voice).toEqual({ voiceURI: "voice-b", name: "Voice B" });
 
+      utterance.onstart?.();
+      expect(onStart).toHaveBeenCalledOnce();
       utterance.onend?.();
       expect(onEnd).toHaveBeenCalledOnce();
       utterance.onerror?.("boom");
@@ -163,6 +169,7 @@ describe("hosted clip provider", () => {
   const originalRevokeObjectUrl = URL.revokeObjectURL;
 
   afterEach(() => {
+    vi.useRealTimers();
     if (originalAudio) {
       Object.defineProperty(globalThis, "Audio", {
         configurable: true,
@@ -188,6 +195,130 @@ describe("hosted clip provider", () => {
       value: originalRevokeObjectUrl,
     });
   });
+
+  function installHostedAudioStub(
+    playImplementation: () => Promise<void> = () => Promise.resolve(),
+  ) {
+    const instances: Array<{
+      src: string;
+      preload: string;
+      playbackRate: number;
+      currentTime: number;
+      duration: number;
+      paused: boolean;
+      play: ReturnType<typeof vi.fn>;
+      pause: ReturnType<typeof vi.fn>;
+      removeAttribute: ReturnType<typeof vi.fn>;
+      load: ReturnType<typeof vi.fn>;
+      ontimeupdate: (() => void) | null;
+      onloadedmetadata: (() => void) | null;
+      onended: (() => void) | null;
+      onerror: ((event: unknown) => void) | null;
+    }> = [];
+    class FakeAudio {
+      src = "";
+      preload = "";
+      playbackRate = 1;
+      currentTime = 0;
+      duration = 2;
+      paused = false;
+      play = vi.fn(() => {
+        this.paused = false;
+        return playImplementation();
+      });
+      pause = vi.fn(() => {
+        this.paused = true;
+      });
+      removeAttribute = vi.fn((name: string) => {
+        if (name === "src") this.src = "";
+      });
+      load = vi.fn();
+      ontimeupdate: (() => void) | null = null;
+      onloadedmetadata: (() => void) | null = null;
+      onended: (() => void) | null = null;
+      onerror: ((event: unknown) => void) | null = null;
+      constructor() {
+        instances.push(this);
+      }
+    }
+    Object.defineProperty(globalThis, "Audio", {
+      configurable: true,
+      value: FakeAudio,
+    });
+    return instances;
+  }
+
+  function fallbackStub() {
+    return {
+      id: "fallback",
+      isSupported: () => false,
+      getVoices: () => [],
+      subscribeVoices: () => () => {},
+      speak: vi.fn(),
+      pause: vi.fn(),
+      resume: vi.fn(),
+      cancel: vi.fn(),
+      isPaused: () => false,
+    };
+  }
+
+  function timestampedManifest() {
+    return {
+      version: 1 as const,
+      voices: [
+        {
+          id: "narrator",
+          label: "High Quality 1",
+          sections: [
+            {
+              sectionId: "section-a",
+              audioVersionId: "section-a-hash",
+              href: "/audio/section-a.opus",
+              timingsHref: "/audio/section-a.timings.json",
+            },
+          ],
+        },
+      ],
+    };
+  }
+
+  const timedText = "Title\n\nAlpha beta.";
+
+  function timingDocument() {
+    return {
+      version: 1,
+      sectionId: "section-a",
+      audioVersionId: "section-a-hash",
+      voiceId: "narrator",
+      textCharacters: timedText.length,
+      durationSeconds: 2,
+      exactWordCount: 3,
+      interpolatedWordCount: 0,
+      words: [
+        {
+          charStart: 0,
+          charEnd: 5,
+          startSeconds: 0,
+          endSeconds: 0.5,
+          match: "exact",
+        },
+        {
+          charStart: 7,
+          charEnd: 12,
+          startSeconds: 0.5,
+          endSeconds: 1.2,
+          match: "exact",
+        },
+        {
+          charStart: 13,
+          charEnd: 17,
+          startSeconds: 1.2,
+          endSeconds: 2,
+          match: "exact",
+        },
+      ],
+    };
+  }
 
   it("labels the default hosted voice for the voice menu", () => {
     const provider = createHostedClipProvider(
@@ -221,7 +352,7 @@ describe("hosted clip provider", () => {
     ]);
   });
 
-  it("starts hosted clips from their direct audio URL", () => {
+  it("reports a hosted start only after media playback begins", async () => {
     const audioInstances: Array<{
       src: string;
       preload: string;
@@ -285,6 +416,7 @@ describe("hosted clip provider", () => {
       },
       fallback,
     );
+    const onStart = vi.fn();
 
     provider.speak({
       sectionId: "section-a",
@@ -293,6 +425,7 @@ describe("hosted clip provider", () => {
       voiceId: clipVoicePreferenceId("default"),
       rate: 1.15,
       pitch: 1,
+      onStart,
       onEnd: vi.fn(),
       onError: vi.fn(),
     });
@@ -304,6 +437,294 @@ describe("hosted clip provider", () => {
     expect(audioInstances[0]!.preload).toBe("auto");
     expect(audioInstances[0]!.playbackRate).toBe(1.15);
     expect(audioInstances[0]!.play).toHaveBeenCalledOnce();
+    expect(onStart).not.toHaveBeenCalled();
+    await vi.waitFor(() => expect(onStart).toHaveBeenCalledOnce());
+  });
+
+  it("starts at zero while timing data continues loading", async () => {
+    const audioInstances = installHostedAudioStub();
+    let resolveTimingFetch: ((response: Response) => void) | undefined;
+    const timingFetch = new Promise<Response>((resolve) => {
+      resolveTimingFetch = resolve;
+    });
+    Object.defineProperty(globalThis, "fetch", {
+      configurable: true,
+      value: vi.fn(() => timingFetch),
+    });
+    const onProgress = vi.fn();
+    const onStart = vi.fn();
+    const provider = createHostedClipProvider(
+      timestampedManifest(),
+      fallbackStub(),
+    );
+
+    provider.speak({
+      sectionId: "section-a",
+      audioVersionId: "section-a-hash",
+      text: timedText,
+      voiceId: clipVoicePreferenceId("narrator"),
+      rate: 1,
+      pitch: 1,
+      startCharIndex: 0,
+      onStart,
+      onProgress,
+      onEnd: vi.fn(),
+      onError: vi.fn(),
+    });
+
+    expect(audioInstances).toHaveLength(1);
+    expect(audioInstances[0]!.play).toHaveBeenCalledOnce();
+    await vi.waitFor(() => expect(onStart).toHaveBeenCalledOnce());
+
+    const json = vi.fn(() => Promise.resolve(timingDocument()));
+    resolveTimingFetch?.({ ok: true, json } as unknown as Response);
+    await vi.waitFor(() => expect(json).toHaveBeenCalledOnce());
+    await Promise.resolve();
+
+    audioInstances[0]!.currentTime = 1.3;
+    audioInstances[0]!.ontimeupdate?.();
+    expect(onProgress).toHaveBeenLastCalledWith(
+      expect.objectContaining({ charIndex: 13, seconds: 1.3 }),
+    );
+  });
+
+  it("bounds timing waits before using proportional seeking", async () => {
+    vi.useFakeTimers();
+    const audioInstances = installHostedAudioStub();
+    Object.defineProperty(globalThis, "fetch", {
+      configurable: true,
+      value: vi.fn(() => new Promise<Response>(() => {})),
+    });
+    const provider = createHostedClipProvider(
+      timestampedManifest(),
+      fallbackStub(),
+    );
+
+    provider.speak({
+      sectionId: "section-a",
+      audioVersionId: "section-a-hash",
+      text: timedText,
+      voiceId: clipVoicePreferenceId("narrator"),
+      rate: 1,
+      pitch: 1,
+      startCharIndex: 13,
+      onEnd: vi.fn(),
+      onError: vi.fn(),
+    });
+
+    expect(audioInstances).toHaveLength(0);
+    await vi.advanceTimersByTimeAsync(1_500);
+    expect(audioInstances).toHaveLength(1);
+    audioInstances[0]!.onloadedmetadata?.();
+    expect(audioInstances[0]!.currentTime).toBeCloseTo(
+      2 * (13 / timedText.length),
+    );
+  });
+
+  it.each(["pause", "cancel"] as const)(
+    "%s aborts a pending timing seek without starting media later",
+    async (action) => {
+      const audioInstances = installHostedAudioStub();
+      let timingSignal: AbortSignal | undefined;
+      Object.defineProperty(globalThis, "fetch", {
+        configurable: true,
+        value: vi.fn((_url: string, init?: RequestInit) => {
+          timingSignal = init?.signal ?? undefined;
+          return new Promise<Response>((_resolve, reject) => {
+            timingSignal?.addEventListener(
+              "abort",
+              () => reject(new Error("aborted")),
+              { once: true },
+            );
+          });
+        }),
+      });
+      const fallback = fallbackStub();
+      const provider = createHostedClipProvider(
+        timestampedManifest(),
+        fallback,
+      );
+
+      provider.speak({
+        sectionId: "section-a",
+        audioVersionId: "section-a-hash",
+        text: timedText,
+        voiceId: clipVoicePreferenceId("narrator"),
+        rate: 1,
+        pitch: 1,
+        startCharIndex: 13,
+        onEnd: vi.fn(),
+        onError: vi.fn(),
+      });
+
+      expect(audioInstances).toHaveLength(0);
+      provider[action]();
+      expect(timingSignal?.aborted).toBe(true);
+      await Promise.resolve();
+      await Promise.resolve();
+      expect(audioInstances).toHaveLength(0);
+      expect(fallback.speak).not.toHaveBeenCalled();
+    },
+  );
+
+  it("does not report a start when pause wins the media play race", async () => {
+    let resolvePlay: (() => void) | undefined;
+    const playPending = new Promise<void>((resolve) => {
+      resolvePlay = resolve;
+    });
+    const audioInstances = installHostedAudioStub(() => playPending);
+    const onStart = vi.fn();
+    const provider = createHostedClipProvider(
+      {
+        version: 1,
+        voices: [
+          {
+            id: "narrator",
+            label: "High Quality 1",
+            sections: [
+              {
+                sectionId: "section-a",
+                audioVersionId: "section-a-hash",
+                href: "/audio/section-a.opus",
+              },
+            ],
+          },
+        ],
+      },
+      fallbackStub(),
+    );
+
+    provider.speak({
+      sectionId: "section-a",
+      audioVersionId: "section-a-hash",
+      text: timedText,
+      voiceId: clipVoicePreferenceId("narrator"),
+      rate: 1,
+      pitch: 1,
+      onStart,
+      onEnd: vi.fn(),
+      onError: vi.fn(),
+    });
+
+    expect(audioInstances).toHaveLength(1);
+    provider.pause();
+    resolvePlay?.();
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(onStart).not.toHaveBeenCalled();
+    expect(audioInstances[0]!.pause).toHaveBeenCalled();
+  });
+
+  it("uses hosted word timings for exact seeking and progress", async () => {
+    const audioInstances: Array<{
+      src: string;
+      currentTime: number;
+      duration: number;
+      ontimeupdate: (() => void) | null;
+      onloadedmetadata: (() => void) | null;
+      play: ReturnType<typeof vi.fn>;
+    }> = [];
+    class FakeAudio {
+      src = "";
+      preload = "";
+      playbackRate = 1;
+      currentTime = 0;
+      duration = 2;
+      paused = false;
+      play = vi.fn(() => Promise.resolve());
+      pause = vi.fn();
+      removeAttribute = vi.fn();
+      load = vi.fn();
+      ontimeupdate: (() => void) | null = null;
+      onloadedmetadata: (() => void) | null = null;
+      onended: (() => void) | null = null;
+      onerror: ((event: unknown) => void) | null = null;
+      constructor() {
+        audioInstances.push(this);
+      }
+    }
+    Object.defineProperty(globalThis, "Audio", {
+      configurable: true,
+      value: FakeAudio,
+    });
+    const text = "Title\n\nAlpha beta.";
+    Object.defineProperty(globalThis, "fetch", {
+      configurable: true,
+      value: vi.fn(() =>
+        Promise.resolve({
+          ok: true,
+          json: () =>
+            Promise.resolve({
+              version: 1,
+              sectionId: "section-a",
+              audioVersionId: "section-a-hash",
+              voiceId: "narrator",
+              textCharacters: text.length,
+              durationSeconds: 2,
+              exactWordCount: 3,
+              interpolatedWordCount: 0,
+              words: [
+                { charStart: 0, charEnd: 5, startSeconds: 0, endSeconds: 0.5, match: "exact" },
+                { charStart: 7, charEnd: 12, startSeconds: 0.5, endSeconds: 1.2, match: "exact" },
+                { charStart: 13, charEnd: 17, startSeconds: 1.2, endSeconds: 2, match: "exact" },
+              ],
+            }),
+        }),
+      ),
+    });
+    const onProgress = vi.fn();
+    const provider = createHostedClipProvider(
+      {
+        version: 1,
+        voices: [
+          {
+            id: "narrator",
+            label: "High Quality 1",
+            sections: [
+              {
+                sectionId: "section-a",
+                audioVersionId: "section-a-hash",
+                href: "/audio/section-a.opus",
+                timingsHref: "/audio/section-a.timings.json",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: "fallback",
+        isSupported: () => false,
+        getVoices: () => [],
+        subscribeVoices: () => () => {},
+        speak: vi.fn(),
+        pause: vi.fn(),
+        resume: vi.fn(),
+        cancel: vi.fn(),
+        isPaused: () => false,
+      },
+    );
+
+    provider.speak({
+      sectionId: "section-a",
+      audioVersionId: "section-a-hash",
+      text,
+      voiceId: clipVoicePreferenceId("narrator"),
+      rate: 1,
+      pitch: 1,
+      startCharIndex: 13,
+      onProgress,
+      onEnd: vi.fn(),
+      onError: vi.fn(),
+    });
+
+    await vi.waitFor(() => expect(audioInstances).toHaveLength(1));
+    audioInstances[0]!.onloadedmetadata?.();
+    expect(audioInstances[0]!.currentTime).toBe(1.2);
+    audioInstances[0]!.currentTime = 1.3;
+    audioInstances[0]!.ontimeupdate?.();
+    expect(onProgress).toHaveBeenLastCalledWith(
+      expect.objectContaining({ charIndex: 13, seconds: 1.3 }),
+    );
   });
 
   it("uses the fallback voice engine for automatic and named system voices", () => {
@@ -460,7 +881,10 @@ describe("hosted clip provider", () => {
 
     expect(globalThis.fetch).toHaveBeenCalledWith(
       "/audio/fish/section-a.mp3",
-      { credentials: "omit" },
+      expect.objectContaining({
+        credentials: "omit",
+        signal: expect.anything(),
+      }),
     );
     await vi.waitFor(() => expect(URL.createObjectURL).toHaveBeenCalledOnce());
     expect(audioInstances).toHaveLength(2);

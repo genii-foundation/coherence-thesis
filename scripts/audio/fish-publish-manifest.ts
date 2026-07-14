@@ -9,7 +9,6 @@ import {
 } from "./fish-generator";
 import {
   ensureDir,
-  progressSectionsPath,
   writeJson,
 } from "../manuscripts/shared";
 import type {
@@ -17,8 +16,20 @@ import type {
   AudioClipSection,
   AudioClipVoice,
 } from "../../src/lib/audio-manifest";
-import type { ProgressSectionData } from "../../src/lib/reader-data";
-import { audioManifestSourcePath } from "../repository/paths";
+import type { ReaderSectionData } from "../../src/lib/reader-data";
+import { isAudioTimingDocument } from "../../src/lib/audio-timings";
+import { textForAudio } from "../../src/lib/audio-text";
+import { loadAudioLocalEnv } from "./audio-local-env";
+import {
+  audioManifestSourcePath,
+  readerSectionsPath,
+} from "../repository/paths";
+import {
+  assertCanonicalRunManifestPath,
+  assertSafeAudioPathSegment,
+  resolveAudioRunFile,
+  resolveAudioRunRoot,
+} from "./audio-paths";
 
 const defaultBucket = "audio-clips";
 const defaultCacheControl = "public, max-age=31536000, immutable";
@@ -39,17 +50,20 @@ type Options = {
   endpoint?: string;
   region?: string;
   publicBase?: string;
+  watch: boolean;
+  pollMs: number;
+  idleTimeoutMs: number;
 };
 
-type PublishCredentials = {
+export type PublishCredentials = {
   accessKeyId: string;
   secretAccessKey: string;
   region: string;
 };
 
 export type PublishCatalogSection = Pick<
-  ProgressSectionData,
-  "sectionId" | "title" | "audioVersionId"
+  ReaderSectionData,
+  "sectionId" | "title" | "text" | "audioVersionId"
 >;
 
 export type PublishableAudioFile = {
@@ -57,6 +71,25 @@ export type PublishableAudioFile = {
   filePath: string;
   objectKey: string;
   href: string;
+  contentType: string;
+  timingsFilePath?: string;
+  timingsObjectKey?: string;
+  timingsHref?: string;
+};
+
+export type PublishableObject = {
+  filePath: string;
+  objectKey: string;
+  contentType: string;
+  byteSize: number;
+  sha256: string;
+};
+
+type RemoteObjectMetadata = {
+  byteSize: number | null;
+  sha256: string | null;
+  contentType: string | null;
+  cacheControl: string | null;
 };
 
 type UploadResult = {
@@ -144,12 +177,16 @@ export function parseAudioPublishOptions(args: string[]): Options {
   if (!version) {
     throw new Error("Set --version for immutable audio object paths.");
   }
+  assertSafeAudioPathSegment(version, "Audio version");
+  if (runId) assertSafeAudioPathSegment(runId, "Audio run id");
   const upload = hasFlag(args, "--upload");
+  const bucket = optionValue(args, "--bucket") ?? defaultBucket;
+  assertSafeAudioPathSegment(bucket, "Storage bucket");
   return {
     runId,
     runManifest,
     version,
-    bucket: optionValue(args, "--bucket") ?? defaultBucket,
+    bucket,
     output:
       optionValue(args, "--output") ??
       audioManifestSourcePath,
@@ -163,6 +200,12 @@ export function parseAudioPublishOptions(args: string[]): Options {
       optionValue(args, "--endpoint") ?? process.env.SUPABASE_STORAGE_S3_ENDPOINT,
     region: optionValue(args, "--region") ?? process.env.SUPABASE_S3_REGION,
     publicBase: optionValue(args, "--public-base"),
+    watch: hasFlag(args, "--watch"),
+    pollMs: parsePositiveInteger(optionValue(args, "--poll-ms"), 5_000),
+    idleTimeoutMs: parsePositiveInteger(
+      optionValue(args, "--idle-timeout-ms"),
+      1_800_000,
+    ),
   };
 }
 
@@ -186,16 +229,23 @@ function objectKeyFor(input: {
   version: string;
   voiceId: string;
   audioVersionId: string;
+  extension: string;
 }): string {
-  if (!/^[a-z0-9][a-z0-9._-]*$/i.test(input.voiceId)) {
-    throw new Error(`Voice id '${input.voiceId}' is not safe for object keys.`);
-  }
+  assertSafeAudioPathSegment(input.version, "Audio version");
+  assertSafeAudioPathSegment(input.voiceId, "Voice id");
+  assertSafeAudioPathSegment(input.audioVersionId, "Audio version id");
   return [
     "audiobook",
     input.version,
     input.voiceId,
-    `${input.audioVersionId}.mp3`,
+    `${input.audioVersionId}.${input.extension}`,
   ].join("/");
+}
+
+function audioContentType(format: FishAudioFile["format"]): string {
+  if (format === "opus") return "audio/ogg";
+  if (format === "wav") return "audio/wav";
+  return "audio/mpeg";
 }
 
 function readRunManifest(options: Options): {
@@ -203,22 +253,26 @@ function readRunManifest(options: Options): {
   manifestPath: string;
   runRoot: string;
 } {
-  const manifestPath = options.runManifest
-    ? path.resolve(options.runManifest)
-    : path.join(artifactsAudioRoot(), options.runId!, "manifest.json");
+  const canonical = options.runManifest
+    ? assertCanonicalRunManifestPath(artifactsAudioRoot(), options.runManifest)
+    : (() => {
+        const runRoot = resolveAudioRunRoot(artifactsAudioRoot(), options.runId!);
+        return { runRoot, manifestPath: path.join(runRoot, "manifest.json") };
+      })();
+  const { manifestPath, runRoot } = canonical;
   const run = JSON.parse(fs.readFileSync(manifestPath, "utf8")) as FishRunManifest;
-  return { run, manifestPath, runRoot: path.dirname(manifestPath) };
+  if (run.runId !== path.basename(runRoot)) {
+    throw new Error("Audio run manifest id does not match its directory name.");
+  }
+  return { run, manifestPath, runRoot };
 }
 
 function readCatalogSections(): PublishCatalogSection[] {
-  return JSON.parse(fs.readFileSync(progressSectionsPath, "utf8")) as ProgressSectionData[];
+  return JSON.parse(fs.readFileSync(readerSectionsPath, "utf8")) as ReaderSectionData[];
 }
 
 function resolveRunFilePath(file: FishAudioFile, runRoot: string): string {
-  if (path.isAbsolute(file.outputPath) && fs.existsSync(file.outputPath)) {
-    return file.outputPath;
-  }
-  return path.resolve(runRoot, file.relativeOutputPath);
+  return resolveAudioRunFile(runRoot, file.relativeOutputPath, "Audio file path");
 }
 
 function generatedFiles(run: FishRunManifest): FishAudioFile[] {
@@ -231,7 +285,32 @@ export function validateAudioRunForPublish(input: {
   catalogSections: PublishCatalogSection[];
   version: string;
   publicBase: string;
+  requireComplete?: boolean;
 }): PublishableAudioFile[] {
+  if (input.run.mode !== "full") {
+    throw new Error("Only a full corpus audio run can be published durably.");
+  }
+  if (
+    input.run.schemaVersion !== 2 ||
+    input.run.endpoint !== "stream-with-timestamp"
+  ) {
+    throw new Error("Durable publication requires a schema version 2 timestamped run.");
+  }
+  if (
+    input.run.voices.length !== 1 ||
+    !input.run.voices[0]?.referenceId?.trim()
+  ) {
+    throw new Error(
+      "Durable publication requires exactly one narrator with a pinned reference_id.",
+    );
+  }
+  const runVoiceById = new Map(input.run.voices.map((voice) => [voice.id, voice]));
+  if (runVoiceById.size !== input.run.voices.length) {
+    throw new Error("An audio run cannot declare duplicate narrator voice ids.");
+  }
+  if (input.run.corpus.voices !== input.run.voices.length) {
+    throw new Error("Audio run voice totals do not match its narrator inventory.");
+  }
   const catalogBySectionId = new Map(
     input.catalogSections.map((section) => [section.sectionId, section]),
   );
@@ -241,16 +320,39 @@ export function validateAudioRunForPublish(input: {
   const publishable: PublishableAudioFile[] = [];
 
   for (const file of files) {
+    const runVoice = runVoiceById.get(file.voiceId);
+    if (!runVoice) {
+      throw new Error(`Audio file uses an undeclared voice: ${file.voiceId}`);
+    }
+    if (
+      file.provider !== input.run.provider ||
+      file.model !== input.run.model ||
+      file.voiceLabel !== runVoice.label
+    ) {
+      throw new Error(
+        `Audio provenance does not match the run for ${file.voiceId}/${file.sectionId}.`,
+      );
+    }
     const catalogSection = catalogBySectionId.get(file.sectionId);
     if (!catalogSection) {
       throw new Error(`Unknown sectionId in audio run: ${file.sectionId}`);
+    }
+    const canonicalAudioText = textForAudio(catalogSection);
+    if (file.title !== catalogSection.title) {
+      throw new Error(`Stale title for ${file.sectionId}: ${file.title}`);
     }
     if (catalogSection.audioVersionId !== file.audioVersionId) {
       throw new Error(
         `Stale audioVersionId for ${file.sectionId}: ${file.audioVersionId}`,
       );
     }
-    if (file.format !== "mp3") {
+    if (
+      file.inputCharacters !== canonicalAudioText.length ||
+      file.inputBytes !== Buffer.byteLength(canonicalAudioText, "utf8")
+    ) {
+      throw new Error(`Audio input length does not match current prose for ${file.sectionId}.`);
+    }
+    if (file.format !== "opus" && file.format !== "wav") {
       throw new Error(`Unsupported audio format for ${file.sectionId}: ${file.format}`);
     }
     const key = `${file.voiceId}:${file.sectionId}:${file.audioVersionId}`;
@@ -262,27 +364,102 @@ export function validateAudioRunForPublish(input: {
     if (!fs.existsSync(filePath)) {
       throw new Error(`Missing audio file for ${file.sectionId}: ${filePath}`);
     }
+    const actualByteSize = fs.statSync(filePath).size;
+    if (actualByteSize <= 0 || file.byteSize !== actualByteSize) {
+      throw new Error(`Audio byte size does not match the run manifest for ${file.sectionId}.`);
+    }
+    if (!file.durationSeconds || file.durationSeconds <= 0) {
+      throw new Error(`Audio duration must be positive for ${file.sectionId}.`);
+    }
+    const actualAudioSha256 = sha256Hex(fs.readFileSync(filePath));
+    if (file.audioSha256 !== actualAudioSha256) {
+      throw new Error(`Audio digest does not match the generated run for ${file.sectionId}.`);
+    }
     const objectKey = objectKeyFor({
       version: input.version,
       voiceId: file.voiceId,
       audioVersionId: file.audioVersionId,
+      extension: file.format,
     });
+    let timingsFilePath: string | undefined;
+    let timingsObjectKey: string | undefined;
+    let timingsHref: string | undefined;
+    if (file.timingsRelativeOutputPath) {
+      timingsFilePath = resolveAudioRunFile(
+        input.runRoot,
+        file.timingsRelativeOutputPath,
+        "Audio timing path",
+      );
+      if (!fs.existsSync(timingsFilePath)) {
+        throw new Error(`Missing audio timings for ${file.sectionId}: ${timingsFilePath}`);
+      }
+      const timings: unknown = JSON.parse(fs.readFileSync(timingsFilePath, "utf8"));
+      if (
+        !isAudioTimingDocument(timings) ||
+        timings.sectionId !== file.sectionId ||
+        timings.audioVersionId !== file.audioVersionId ||
+        timings.voiceId !== file.voiceId ||
+        timings.textCharacters !== canonicalAudioText.length ||
+        timings.durationSeconds <= 0
+      ) {
+        throw new Error(`Invalid audio timings for ${file.voiceId}/${file.sectionId}`);
+      }
+      const allowedDurationDifference = Math.max(
+        1.5,
+        file.durationSeconds * 0.01,
+      );
+      if (
+        Math.abs(timings.durationSeconds - file.durationSeconds) >
+        allowedDurationDifference
+      ) {
+        throw new Error(
+          `Audio and timing durations differ for ${file.voiceId}/${file.sectionId}.`,
+        );
+      }
+      const actualTimingsByteSize = fs.statSync(timingsFilePath).size;
+      if (actualTimingsByteSize <= 0 || file.timingsByteSize !== actualTimingsByteSize) {
+        throw new Error(
+          `Timing byte size does not match the run manifest for ${file.sectionId}.`,
+        );
+      }
+      const actualTimingsSha256 = sha256Hex(fs.readFileSync(timingsFilePath));
+      if (file.timingsSha256 !== actualTimingsSha256) {
+        throw new Error(
+          `Timing digest does not match the generated run for ${file.sectionId}.`,
+        );
+      }
+      timingsObjectKey = objectKeyFor({
+        version: input.version,
+        voiceId: file.voiceId,
+        audioVersionId: file.audioVersionId,
+        extension: "timings.json",
+      });
+      timingsHref = publicHref(input.publicBase, timingsObjectKey);
+    } else {
+      throw new Error(`Missing timestamp sidecar mapping for ${file.sectionId}.`);
+    }
     const entry = {
       source: file,
       filePath,
       objectKey,
       href: publicHref(input.publicBase, objectKey),
+      contentType: audioContentType(file.format),
+      timingsFilePath,
+      timingsObjectKey,
+      timingsHref,
     };
     byVoiceSection.set(`${file.voiceId}:${file.sectionId}`, entry);
     publishable.push(entry);
   }
 
-  for (const voice of input.run.voices) {
-    for (const section of input.catalogSections) {
-      if (!byVoiceSection.has(`${voice.id}:${section.sectionId}`)) {
-        throw new Error(
-          `Missing generated audio for ${voice.id}/${section.sectionId}`,
-        );
+  if (input.requireComplete !== false) {
+    for (const voice of input.run.voices) {
+      for (const section of input.catalogSections) {
+        if (!byVoiceSection.has(`${voice.id}:${section.sectionId}`)) {
+          throw new Error(
+            `Missing generated audio for ${voice.id}/${section.sectionId}`,
+          );
+        }
       }
     }
   }
@@ -304,13 +481,19 @@ export function createAudioClipManifest(input: {
       if (!file) {
         throw new Error(`Missing validated audio for ${voice.id}/${section.sectionId}`);
       }
-      return {
+      const manifestSection: AudioClipSection = {
         sectionId: file.source.sectionId,
         audioVersionId: file.source.audioVersionId,
         href: file.href,
+        format: file.source.format,
         byteSize: file.source.byteSize,
         durationSeconds: file.source.durationSeconds,
       };
+      if (file.timingsHref) manifestSection.timingsHref = file.timingsHref;
+      if (file.source.timingsByteSize !== undefined) {
+        manifestSection.timingsByteSize = file.source.timingsByteSize;
+      }
+      return manifestSection;
     });
     return {
       id: voice.id,
@@ -412,12 +595,12 @@ function s3ObjectUrl(endpoint: string, bucket: string, objectKey: string): URL {
   return new URL(`${base}/${encodeURIComponent(bucket)}/${encodeObjectPath(objectKey)}`);
 }
 
-async function objectExists(input: {
+async function readRemoteObjectMetadata(input: {
   endpoint: string;
   bucket: string;
   objectKey: string;
   credentials: PublishCredentials;
-}): Promise<boolean> {
+}): Promise<RemoteObjectMetadata | null> {
   const url = s3ObjectUrl(input.endpoint, input.bucket, input.objectKey);
   const headers = signS3Request({
     method: "HEAD",
@@ -431,35 +614,68 @@ async function objectExists(input: {
     { method: "HEAD", headers },
     `Unable to check object ${input.objectKey}`,
   );
-  if (response.status === 404) return false;
-  if (response.ok) return true;
+  if (response.status === 404) return null;
+  if (response.ok) {
+    const contentLength = response.headers.get("content-length");
+    const parsedByteSize = contentLength === null ? null : Number(contentLength);
+    return {
+      byteSize: Number.isFinite(parsedByteSize) ? parsedByteSize : null,
+      sha256: response.headers.get("x-amz-meta-sha256"),
+      contentType: response.headers.get("content-type"),
+      cacheControl: response.headers.get("cache-control"),
+    };
+  }
   throw new Error(
     `Unable to check object ${input.objectKey}: ${response.status} ${response.statusText}`,
   );
 }
 
-async function uploadObject(input: {
+export function remoteObjectMatches(
+  local: Pick<PublishableObject, "byteSize" | "sha256" | "contentType">,
+  remote: RemoteObjectMetadata,
+): boolean {
+  return (
+    remote.byteSize === local.byteSize &&
+    remote.sha256 === local.sha256 &&
+    remote.contentType === local.contentType &&
+    remote.cacheControl === defaultCacheControl
+  );
+}
+
+export async function uploadObject(input: {
   endpoint: string;
   bucket: string;
-  file: PublishableAudioFile;
+  file: PublishableObject;
   credentials: PublishCredentials;
 }): Promise<"uploaded" | "skipped"> {
-  const exists = await objectExists({
+  const remote = await readRemoteObjectMetadata({
     endpoint: input.endpoint,
     bucket: input.bucket,
     objectKey: input.file.objectKey,
     credentials: input.credentials,
   });
-  if (exists) return "skipped";
+  if (remote) {
+    if (!remoteObjectMatches(input.file, remote)) {
+      throw new Error(
+        `Existing object does not match the local digest: ${input.file.objectKey}`,
+      );
+    }
+    return "skipped";
+  }
   const body = fs.readFileSync(input.file.filePath);
   const payloadHash = sha256Hex(body);
+  if (body.byteLength !== input.file.byteSize || payloadHash !== input.file.sha256) {
+    throw new Error(`Local audio object changed during publication: ${input.file.filePath}`);
+  }
   const url = s3ObjectUrl(input.endpoint, input.bucket, input.file.objectKey);
   const headers = signS3Request({
     method: "PUT",
     url,
     headers: {
       "cache-control": defaultCacheControl,
-      "content-type": "audio/mpeg",
+      "content-type": input.file.contentType,
+      "if-none-match": "*",
+      "x-amz-meta-sha256": payloadHash,
     },
     payloadHash,
     credentials: input.credentials,
@@ -469,10 +685,31 @@ async function uploadObject(input: {
     { method: "PUT", headers, body },
     `Unable to upload ${input.file.objectKey}`,
   );
+  if (response.status === 409 || response.status === 412) {
+    const raced = await readRemoteObjectMetadata({
+      endpoint: input.endpoint,
+      bucket: input.bucket,
+      objectKey: input.file.objectKey,
+      credentials: input.credentials,
+    });
+    if (raced && remoteObjectMatches(input.file, raced)) return "skipped";
+    throw new Error(
+      `Conditional upload found a different immutable object: ${input.file.objectKey}`,
+    );
+  }
   if (!response.ok) {
     throw new Error(
       `Unable to upload ${input.file.objectKey}: ${response.status} ${response.statusText}`,
     );
+  }
+  const uploaded = await readRemoteObjectMetadata({
+    endpoint: input.endpoint,
+    bucket: input.bucket,
+    objectKey: input.file.objectKey,
+    credentials: input.credentials,
+  });
+  if (!uploaded || !remoteObjectMatches(input.file, uploaded)) {
+    throw new Error(`Uploaded object failed digest verification: ${input.file.objectKey}`);
   }
   return "uploaded";
 }
@@ -517,7 +754,7 @@ async function runLimited<T>(
 }
 
 async function uploadFiles(input: {
-  files: PublishableAudioFile[];
+  files: PublishableObject[];
   endpoint: string;
   bucket: string;
   credentials: PublishCredentials;
@@ -557,8 +794,48 @@ async function uploadFiles(input: {
   return { uploaded, skipped };
 }
 
+function publishableObjects(files: PublishableAudioFile[]): PublishableObject[] {
+  const objectFor = (
+    filePath: string,
+    objectKey: string,
+    contentType: string,
+  ): PublishableObject => {
+    const body = fs.readFileSync(filePath);
+    return {
+      filePath,
+      objectKey,
+      contentType,
+      byteSize: body.byteLength,
+      sha256: sha256Hex(body),
+    };
+  };
+  return files.flatMap((file) => [
+    objectFor(file.filePath, file.objectKey, file.contentType),
+    ...(file.timingsFilePath && file.timingsObjectKey
+      ? [objectFor(
+          file.timingsFilePath,
+          file.timingsObjectKey,
+          "application/json",
+        )]
+      : []),
+  ]);
+}
+
+function isTransientManifestReadError(error: unknown): boolean {
+  return error instanceof SyntaxError || (
+    error instanceof Error && "code" in error && error.code === "ENOENT"
+  );
+}
+
 async function main() {
+  loadAudioLocalEnv();
   const options = parseAudioPublishOptions(process.argv.slice(2));
+  if (options.watch && !options.upload) {
+    throw new Error("--watch requires --upload.");
+  }
+  if (options.watch && !options.skipExisting) {
+    throw new Error("--watch requires --skip-existing for resumable immutable uploads.");
+  }
   const endpoint = options.endpoint ?? (
     options.projectRef ? defaultS3Endpoint(options.projectRef) : undefined
   );
@@ -571,54 +848,118 @@ async function main() {
   if (options.upload && !endpoint) {
     throw new Error("Set --project-ref or --endpoint for Supabase S3 uploads.");
   }
-  const { run, manifestPath, runRoot } = readRunManifest(options);
   const catalogSections = readCatalogSections();
-  const files = validateAudioRunForPublish({
-    run,
-    runRoot,
-    catalogSections,
-    version: options.version,
-    publicBase,
-  });
-  const manifest = createAudioClipManifest({
-    run,
-    catalogSections,
-    files,
-  });
+  const credentials = options.upload ? readCredentials(options) : undefined;
+  const handledObjectKeys = new Set<string>();
+  let uploaded = 0;
+  let skipped = 0;
+  let lastCompleted = -1;
+  let lastProgressAt = Date.now();
 
-  let uploadResult: UploadResult = { uploaded: 0, skipped: 0 };
-  if (options.upload) {
-    uploadResult = await uploadFiles({
-      files,
-      endpoint: endpoint!,
-      bucket: options.bucket,
-      credentials: readCredentials(options),
-      skipExisting: options.skipExisting,
-      concurrency: options.concurrency,
+  while (true) {
+    let snapshot: ReturnType<typeof readRunManifest>;
+    try {
+      snapshot = readRunManifest(options);
+    } catch (error) {
+      if (options.watch && isTransientManifestReadError(error)) {
+        if (Date.now() - lastProgressAt > options.idleTimeoutMs) {
+          throw new Error(
+            `Audio publishing could not read generation state for ${options.idleTimeoutMs}ms.`,
+          );
+        }
+        await sleep(options.pollMs);
+        continue;
+      }
+      throw error;
+    }
+    const { run, manifestPath, runRoot } = snapshot;
+    const available = generatedFiles(run).length;
+    const failed = run.files.filter((file) => Boolean(file.error)).length;
+    const completed = available + failed;
+    const isComplete = completed === run.files.length;
+    const files = validateAudioRunForPublish({
+      run,
+      runRoot,
+      catalogSections,
+      version: options.version,
+      publicBase,
+      requireComplete: !options.watch || (isComplete && failed === 0),
     });
-  }
-
-  if (options.write) {
-    ensureDir(path.dirname(options.output));
-    writeJson(options.output, manifest);
-  }
-  console.log(
-    JSON.stringify(
-      {
-        runManifest: relativeToRepo(manifestPath),
-        mode: options.upload ? "upload" : options.write ? "write" : "validate",
-        output: options.write ? relativeToRepo(options.output) : null,
-        version: options.version,
+    const objects = publishableObjects(files);
+    const pendingObjects = objects.filter(
+      (object) => !handledObjectKeys.has(object.objectKey),
+    );
+    if (options.upload && pendingObjects.length > 0) {
+      const result = await uploadFiles({
+        files: pendingObjects,
+        endpoint: endpoint!,
         bucket: options.bucket,
-        voices: manifest.voices.length,
-        clips: files.length,
-        uploaded: uploadResult.uploaded,
-        skipped: uploadResult.skipped,
-      },
-      null,
-      2,
-    ),
-  );
+        credentials: credentials!,
+        skipExisting: options.skipExisting,
+        concurrency: options.concurrency,
+      });
+      for (const object of pendingObjects) handledObjectKeys.add(object.objectKey);
+      uploaded += result.uploaded;
+      skipped += result.skipped;
+    }
+
+    if (completed !== lastCompleted) {
+      lastCompleted = completed;
+      lastProgressAt = Date.now();
+      console.log(JSON.stringify({
+        watch: options.watch,
+        completed,
+        available,
+        failed,
+        total: run.files.length,
+        uploadedObjects: uploaded,
+        skippedObjects: skipped,
+      }));
+    }
+
+    if (isComplete) {
+      if (failed > 0) {
+        throw new Error(
+          `Audio generation finished with ${failed} failed file${failed === 1 ? "" : "s"}. Rerun generation before publishing the manifest.`,
+        );
+      }
+      const manifest = createAudioClipManifest({ run, catalogSections, files });
+      if (options.write) {
+        ensureDir(path.dirname(options.output));
+        writeJson(options.output, manifest);
+      }
+      console.log(
+        JSON.stringify(
+          {
+            runManifest: relativeToRepo(manifestPath),
+            mode: options.upload ? "upload" : options.write ? "write" : "validate",
+            output: options.write ? relativeToRepo(options.output) : null,
+            version: options.version,
+            bucket: options.bucket,
+            voices: manifest.voices.length,
+            clips: files.length,
+            objects: objects.length,
+            uploaded,
+            skipped,
+          },
+          null,
+          2,
+        ),
+      );
+      return;
+    }
+    if (!options.watch) {
+      throw new Error(
+        `Missing generated audio. ${available.toLocaleString()} of ${run.files.length.toLocaleString()} clips are available.`,
+      );
+    }
+    if (Date.now() - lastProgressAt > options.idleTimeoutMs) {
+      throw new Error(
+        `Audio publishing saw no generation progress for ${options.idleTimeoutMs}ms.`,
+      );
+    }
+    await sleep(options.pollMs);
+  }
 }
 
 if (process.argv[1]?.endsWith("fish-publish-manifest.ts")) {

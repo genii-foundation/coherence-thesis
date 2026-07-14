@@ -38,17 +38,28 @@ function volumeIdFromHref(href: string): string {
   return href.split("/").filter(Boolean)[1] ?? href;
 }
 
+function clipVersionKey(sectionId: string, audioVersionId: string): string {
+  return `${sectionId}:${audioVersionId}`;
+}
+
 export function buildOfflineAudioPacks(input: {
   volumes: OutlineVolume[];
   sections: ProgressSectionData[];
   manifest: AudioClipManifest;
 }): OfflineAudioPack[] {
-  const clipsBySectionId = new Map<string, string[]>();
+  const clipsByVersion = new Map<string, string[]>();
+  const clipCountByVersion = new Map<string, number>();
   for (const voice of input.manifest.voices) {
     for (const clip of voice.sections) {
-      const current = clipsBySectionId.get(clip.sectionId) ?? [];
+      const key = clipVersionKey(clip.sectionId, clip.audioVersionId);
+      const current = clipsByVersion.get(key) ?? [];
       current.push(clip.href);
-      clipsBySectionId.set(clip.sectionId, current);
+      if (clip.timingsHref) current.push(clip.timingsHref);
+      clipsByVersion.set(key, current);
+      clipCountByVersion.set(
+        key,
+        (clipCountByVersion.get(key) ?? 0) + 1,
+      );
     }
   }
 
@@ -57,7 +68,10 @@ export function buildOfflineAudioPacks(input: {
       section.href.startsWith(volume.href),
     );
     const clipUrls = sections.flatMap(
-      (section) => clipsBySectionId.get(section.sectionId) ?? [],
+      (section) =>
+        clipsByVersion.get(
+          clipVersionKey(section.sectionId, section.audioVersionId),
+        ) ?? [],
     );
     return {
       volumeId: volumeIdFromHref(volume.href),
@@ -65,7 +79,14 @@ export function buildOfflineAudioPacks(input: {
       numberLabel: volume.numberLabel,
       href: volume.href,
       sectionCount: sections.length,
-      audioClipCount: clipUrls.length,
+      audioClipCount: sections.reduce(
+        (total, section) =>
+          total +
+          (clipCountByVersion.get(
+            clipVersionKey(section.sectionId, section.audioVersionId),
+          ) ?? 0),
+        0,
+      ),
       urls: uniqueUrls([
         ...sharedOfflineUrls,
         volume.href,

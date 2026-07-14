@@ -16,6 +16,12 @@ import {
   type AudioClipManifest,
 } from "@/lib/audio-manifest";
 import { offlineAudioCacheName } from "@/lib/audio-offline-cache";
+import {
+  isAudioTimingDocument,
+  timingForCharIndex,
+  timingForSeconds,
+  type AudioTimingDocument,
+} from "@/lib/audio-timings";
 
 export type AudioPlaybackVoice = {
   // Stable identifier used to match a saved preference. For the browser engine
@@ -42,6 +48,9 @@ export type AudioPlaybackRequest = {
   pitch: number;
   startCharIndex?: number;
   startSeconds?: number;
+  // Playback engagement begins only after the provider confirms that its
+  // speech or media engine has actually started.
+  onStart?: () => void;
   // The provider invokes exactly one of these per request: onEnd when playback
   // finishes cleanly, onError when the engine fails. The island guards both
   // with its playback token so a stale callback after a route change is
@@ -97,6 +106,7 @@ export function createBrowserSpeechProvider(): AudioPlaybackProvider {
       startCharIndex = 0,
       sectionId,
       audioVersionId,
+      onStart,
       onEnd,
       onError,
       onProgress,
@@ -121,6 +131,7 @@ export function createBrowserSpeechProvider(): AudioPlaybackProvider {
           charIndex: safeStartCharIndex + event.charIndex,
         });
       };
+      utterance.onstart = () => onStart?.();
       utterance.onend = () => onEnd();
       utterance.onerror = (event) => onError(event);
       engine.speak(utterance);
@@ -140,17 +151,31 @@ export function createBrowserSpeechProvider(): AudioPlaybackProvider {
   };
 }
 
-async function responseForAudioUrl(url: string): Promise<Response> {
+async function responseForAudioUrl(
+  url: string,
+  signal?: AbortSignal,
+): Promise<Response> {
+  const requestInit: RequestInit = signal
+    ? { credentials: "omit", signal }
+    : { credentials: "omit" };
+  if (signal?.aborted) throw new Error("Audio request was aborted.");
   if ("caches" in globalThis) {
     const cache = await caches.open(offlineAudioCacheName);
     const cached = await cache.match(url);
+    if (signal?.aborted) throw new Error("Audio request was aborted.");
     if (cached) return cached;
-    const response = await fetch(url, { credentials: "omit" });
-    if (response.ok) await cache.put(url, response.clone());
+    const response = await fetch(url, requestInit);
+    if (response.ok && !signal?.aborted) await cache.put(url, response.clone());
     return response;
   }
-  return fetch(url, { credentials: "omit" });
+  return fetch(url, requestInit);
 }
+
+const hostedTimingFetchTimeoutMs = 1_500;
+
+type HostedTimingState = {
+  document: AudioTimingDocument | null;
+};
 
 function hostedVoiceLabel(voice: AudioClipManifest["voices"][number]): string {
   if (voice.provider === "fish-audio" && voice.id === "default") {
@@ -166,6 +191,16 @@ export function createHostedClipProvider(
   let audio: HTMLAudioElement | null = null;
   let objectUrl: string | null = null;
   let playingClip = false;
+  let audioHasStarted = false;
+  let pendingHostedPlayback = false;
+  let requestSequence = 0;
+  const timingDocuments = new Map<string, AudioTimingDocument>();
+  const pendingNetworkControllers = new Set<AbortController>();
+
+  const abortPendingNetwork = () => {
+    for (const controller of pendingNetworkControllers) controller.abort();
+    pendingNetworkControllers.clear();
+  };
 
   const clearAudio = () => {
     if (audio) {
@@ -175,6 +210,8 @@ export function createHostedClipProvider(
     }
     audio = null;
     playingClip = false;
+    audioHasStarted = false;
+    pendingHostedPlayback = false;
     if (objectUrl) URL.revokeObjectURL(objectUrl);
     objectUrl = null;
   };
@@ -183,13 +220,17 @@ export function createHostedClipProvider(
     source: string,
     request: AudioPlaybackRequest,
     onFailure: (error?: unknown) => void,
+    timingState: HostedTimingState,
+    sequence: number,
     managedObjectUrl?: string,
   ) => {
+    if (sequence !== requestSequence) return;
     clearAudio();
     objectUrl = managedObjectUrl ?? null;
     const currentAudio = new Audio();
     audio = currentAudio;
     playingClip = true;
+    pendingHostedPlayback = true;
     currentAudio.src = source;
     currentAudio.preload = "auto";
     currentAudio.playbackRate = request.rate;
@@ -198,10 +239,15 @@ export function createHostedClipProvider(
         ? currentAudio.duration
         : undefined;
       const seconds = currentAudio.currentTime;
-      const charIndex =
+      if (audio !== currentAudio || sequence !== requestSequence) return;
+      const exactTiming = timingState.document
+        ? timingForSeconds(timingState.document, seconds)
+        : undefined;
+      const charIndex = exactTiming?.charStart ?? (
         durationSeconds && durationSeconds > 0
           ? Math.floor((seconds / durationSeconds) * request.text.length)
-          : undefined;
+          : undefined
+      );
       request.onProgress?.({
         sectionId: request.sectionId,
         audioVersionId: request.audioVersionId,
@@ -211,47 +257,142 @@ export function createHostedClipProvider(
       });
     };
     currentAudio.onloadedmetadata = () => {
+      if (audio !== currentAudio || sequence !== requestSequence) return;
       if (typeof request.startSeconds === "number") {
         currentAudio.currentTime = Math.max(
           0,
           Math.min(currentAudio.duration || request.startSeconds, request.startSeconds),
         );
       } else if (typeof request.startCharIndex === "number" && request.text.length > 0) {
-        const durationSeconds = Number.isFinite(currentAudio.duration)
-          ? currentAudio.duration
-          : 0;
-        currentAudio.currentTime =
-          durationSeconds * (request.startCharIndex / request.text.length);
+        const exactTiming = timingState.document
+          ? timingForCharIndex(timingState.document, request.startCharIndex)
+          : undefined;
+        if (exactTiming) {
+          currentAudio.currentTime = exactTiming.startSeconds;
+        } else {
+          const durationSeconds = Number.isFinite(currentAudio.duration)
+            ? currentAudio.duration
+            : 0;
+          currentAudio.currentTime =
+            durationSeconds * (request.startCharIndex / request.text.length);
+        }
       }
     };
     currentAudio.onended = () => {
-      if (audio !== currentAudio) return;
+      if (audio !== currentAudio || sequence !== requestSequence) return;
       clearAudio();
       request.onEnd();
     };
     const fail = (error?: unknown) => {
-      if (audio !== currentAudio) return;
+      if (audio !== currentAudio || sequence !== requestSequence) return;
       clearAudio();
       onFailure(error);
     };
     currentAudio.onerror = fail;
-    currentAudio.play().catch(fail);
+    void currentAudio
+      .play()
+      .then(() => {
+        if (audio !== currentAudio || sequence !== requestSequence) return;
+        audioHasStarted = true;
+        pendingHostedPlayback = false;
+        request.onStart?.();
+      })
+      .catch(fail);
   };
 
-  const playCachedBlob = (clip: AudioClipSection, request: AudioPlaybackRequest) => {
-    responseForAudioUrl(clip.href)
+  const timingMatchesRequest = (
+    value: AudioTimingDocument,
+    request: AudioPlaybackRequest,
+    voiceId: string,
+  ): boolean =>
+    value.sectionId === request.sectionId &&
+    value.audioVersionId === request.audioVersionId &&
+    value.voiceId === voiceId &&
+    value.textCharacters === request.text.length;
+
+  const loadTimings = (
+    clip: AudioClipSection,
+    request: AudioPlaybackRequest,
+    voiceId: string,
+  ): Promise<AudioTimingDocument | null> => {
+    if (!clip.timingsHref) return Promise.resolve(null);
+    const existing = timingDocuments.get(clip.timingsHref);
+    if (existing && timingMatchesRequest(existing, request, voiceId)) {
+      return Promise.resolve(existing);
+    }
+
+    const controller = new AbortController();
+    pendingNetworkControllers.add(controller);
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    const timeout = new Promise<null>((resolve) => {
+      timeoutId = setTimeout(() => {
+        controller.abort();
+        resolve(null);
+      }, hostedTimingFetchTimeoutMs);
+    });
+    const requestDocument = responseForAudioUrl(
+      clip.timingsHref,
+      controller.signal,
+    )
+      .then(async (response) => {
+        if (!response.ok) return null;
+        const value: unknown = await response.json();
+        if (!isAudioTimingDocument(value)) return null;
+        if (!timingMatchesRequest(value, request, voiceId)) return null;
+        return value;
+      })
+      .catch(() => null);
+
+    return Promise.race([requestDocument, timeout])
+      .then((value) => {
+        if (value) timingDocuments.set(clip.timingsHref!, value);
+        return value;
+      })
+      .finally(() => {
+        if (timeoutId !== undefined) clearTimeout(timeoutId);
+        pendingNetworkControllers.delete(controller);
+      });
+  };
+
+  const playCachedBlob = (
+    clip: AudioClipSection,
+    request: AudioPlaybackRequest,
+    timingState: HostedTimingState,
+    sequence: number,
+  ) => {
+    if (sequence !== requestSequence) return;
+    pendingHostedPlayback = true;
+    const controller = new AbortController();
+    pendingNetworkControllers.add(controller);
+    responseForAudioUrl(clip.href, controller.signal)
       .then(async (response) => {
         if (!response.ok) throw new Error(`Audio clip failed: ${response.status}`);
         const blob = await response.blob();
+        if (sequence !== requestSequence || controller.signal.aborted) return;
         const blobUrl = URL.createObjectURL(blob);
-        playAudio(blobUrl, request, () => {
-          clearAudio();
-          fallback.speak(request);
-        }, blobUrl);
+        if (sequence !== requestSequence || controller.signal.aborted) {
+          URL.revokeObjectURL(blobUrl);
+          return;
+        }
+        playAudio(
+          blobUrl,
+          request,
+          () => {
+            clearAudio();
+            fallback.speak(request);
+          },
+          timingState,
+          sequence,
+          blobUrl,
+        );
       })
       .catch(() => {
+        if (sequence !== requestSequence || controller.signal.aborted) return;
         clearAudio();
         fallback.speak(request);
+      })
+      .finally(() => {
+        pendingNetworkControllers.delete(controller);
       });
   };
 
@@ -276,6 +417,19 @@ export function createHostedClipProvider(
       return fallback.subscribeVoices(listener);
     },
     speak(request) {
+      const sequence = ++requestSequence;
+      abortPendingNetwork();
+      clearAudio();
+      fallback.cancel();
+      let startReported = false;
+      const guardedRequest: AudioPlaybackRequest = {
+        ...request,
+        onStart: () => {
+          if (startReported) return;
+          startReported = true;
+          request.onStart?.();
+        },
+      };
       const clipVoiceId = parseClipVoicePreferenceId(request.voiceId);
       const clip =
         clipVoiceId === null
@@ -286,29 +440,64 @@ export function createHostedClipProvider(
               request.sectionId,
               request.audioVersionId,
             );
-      if (!clip || typeof Audio === "undefined") {
-        fallback.speak(request);
+      if (!clipVoiceId || !clip || typeof Audio === "undefined") {
+        fallback.speak(guardedRequest);
         return;
       }
 
-      fallback.cancel();
-      playAudio(clip.href, request, () => playCachedBlob(clip, request));
+      const timingState: HostedTimingState = { document: null };
+      const playHostedClip = () => {
+        playAudio(
+          clip.href,
+          guardedRequest,
+          () => playCachedBlob(clip, guardedRequest, timingState, sequence),
+          timingState,
+          sequence,
+        );
+      };
+      if (!clip.timingsHref) {
+        playHostedClip();
+        return;
+      }
+
+      const startsAtBeginning =
+        (guardedRequest.startSeconds ?? 0) <= 0 &&
+        (guardedRequest.startCharIndex ?? 0) <= 0;
+      if (startsAtBeginning) playHostedClip();
+      else pendingHostedPlayback = true;
+
+      void loadTimings(clip, guardedRequest, clipVoiceId).then((timings) => {
+        if (sequence !== requestSequence) return;
+        timingState.document = timings;
+        if (!startsAtBeginning) playHostedClip();
+      });
     },
     pause() {
-      if (audio && playingClip) {
+      if (audio && playingClip && audioHasStarted) {
+        abortPendingNetwork();
         audio.pause();
         return;
       }
+      if (pendingHostedPlayback || (audio && playingClip)) {
+        requestSequence += 1;
+        abortPendingNetwork();
+        clearAudio();
+        fallback.cancel();
+        return;
+      }
+      abortPendingNetwork();
       fallback.pause();
     },
     resume() {
-      if (audio && playingClip) {
+      if (audio && playingClip && audioHasStarted) {
         void audio.play();
         return;
       }
       fallback.resume();
     },
     cancel() {
+      requestSequence += 1;
+      abortPendingNetwork();
       clearAudio();
       fallback.cancel();
     },
