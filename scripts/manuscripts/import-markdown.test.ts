@@ -31,7 +31,7 @@ describe("reader start boundaries", () => {
   it.each([
     {
       volumeId: "architecting-providence",
-      firstTitle: "First, the Story",
+      firstTitle: "Power Without Coordination",
       excludedIds: ["v04-architecting-providence", "v04-book-iv-architecting-providence"],
     },
     {
@@ -41,7 +41,7 @@ describe("reader start boundaries", () => {
     },
     {
       volumeId: "cardinal-scale",
-      firstTitle: "A note on the register of this volume",
+      firstTitle: "A Note on the Register",
       excludedIds: ["v09-opening"],
     },
   ])(

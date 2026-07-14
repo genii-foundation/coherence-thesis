@@ -137,7 +137,7 @@ describe("editorial structure ledger", () => {
     expect(displayLineCount).toBeGreaterThan(20);
   });
 
-  it("uses the publishing parser to recognize bold headings in headingless sources", () => {
+  it("uses the publishing parser to recognize current headings and display metadata", () => {
     const source = fs.readFileSync(
       path.join(
         repoRoot,
@@ -148,15 +148,23 @@ describe("editorial structure ledger", () => {
     const units = extractStructureUnits(source);
     const headings = units.filter((unit) => unit.unitType === "heading");
     const display = units.filter((unit) => unit.unitType === "display-metadata");
+    const sourceLines = source.split(/\r?\n/).map((line) => line.trim());
+    const currentHeading = sourceLines
+      .find((line) => /^#{1,6}\s+\S/.test(line))
+      ?.replace(/^#{1,6}\s+/, "")
+      .replace(/[*_`]/g, "");
+    const currentByline = sourceLines.find((line) => line.startsWith("Written by "));
+    const currentProse = sourceLines.find(
+      (line) => line.length > 80 && /^[A-Z]/.test(line),
+    );
 
     expect(headings.length).toBeGreaterThan(40);
-    expect(headings.map((unit) => unit.text)).toContain("Part I");
-    expect(display.map((unit) => unit.text)).toContain(
-      "Written by Tao Yu, in tutelage of Ousia Acharya",
-    );
-    expect(
-      display.some((unit) => unit.text.startsWith("There comes a point")),
-    ).toBe(false);
+    expect(currentHeading).toBeDefined();
+    expect(headings.map((unit) => unit.text)).toContain(currentHeading);
+    expect(currentByline).toBeDefined();
+    expect(display.map((unit) => unit.text)).toContain(currentByline);
+    expect(currentProse).toBeDefined();
+    expect(display.map((unit) => unit.text)).not.toContain(currentProse);
   });
 
   it("validates complete baseline and current reconstruction", () => {

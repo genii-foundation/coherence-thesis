@@ -1213,7 +1213,7 @@ test("mobile hierarchy swaps do not transfer synthetic hover styling", async ({
     name: "The Central Wound",
   });
   const untouchedSibling = panel.getByRole("link", {
-    name: "On the Meaning of Coordination Failure",
+    name: "Coordination Failure",
   });
   await expect(centralWound).toBeVisible();
   await page.waitForTimeout(300);

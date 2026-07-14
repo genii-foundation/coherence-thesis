@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Volume: VI, *The Smallest Nest*.
+- Volume: VI, *The Nest*.
 - Central thesis: the first five volumes can be nested into a small, complete account of coherence, purpose, Providence, Scale, and the dragon named Earth without presenting metaphor as proof.
 - Intended reader: a general reader who wants a concise entrance into the series and a navigable path into the deeper volumes.
 - Relationship to the reader: hospitable and non-coercive. The book may offer a ritual threshold, but the reader remains free to stop, continue, disagree, or feel nothing in particular.

@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import { pathToFileURL } from "node:url";
 import {
+  audioInputHash,
+  audioVersionId,
   buildCatalog,
   buildSearchIndex,
   buildSectionLedger,
@@ -302,8 +304,12 @@ export function validateManuscripts(): void {
       `Section '${section.sectionId}' versionUrl does not match provenance.`,
     );
     assert(
-      section.audioVersionId === `${section.sectionId}-${section.contentHash}`,
-      `Section '${section.sectionId}' audioVersionId must include sectionId and contentHash.`,
+      section.audioVersionId ===
+        audioVersionId(
+          section.sectionId,
+          audioInputHash(section.title, section.text),
+        ),
+      `Section '${section.sectionId}' audioVersionId must match its spoken title and body.`,
     );
   }
 

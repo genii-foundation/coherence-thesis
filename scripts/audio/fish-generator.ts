@@ -79,8 +79,8 @@ export const fishPaidUsdPerMillionBytes = 15;
 export const sampleSectionIds = [
   "v02-relational-coherence",
   "v05-purposeful",
-  "v09-closing",
-  "v08-prologue-two-scenes",
+  "v09-providence-the-device-that-coordinates-the-many",
+  "v08-the-present-tense-a-reckoning-of-the-year-2026",
 ];
 
 export function normalizeVoiceId(value: string): string {

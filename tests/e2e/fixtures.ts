@@ -92,11 +92,12 @@ export const nextChapter =
 export const wieldingSection = catalog.sections.find(
   (section) => section.volumeId === "wielding-intelligence",
 )!;
-export const singleSectionChapterTarget = catalog.sections.find(
-  (section) =>
-    section.sectionId ===
-    "v03-the-second-link-perception-makes-new-coordination-possible",
-)!;
+export const singleSectionChapterTarget = catalog.sections.find((section) => {
+  const chapter = partById(section.volumeId, section.partId)?.chapters.find(
+    (candidate) => candidate.chapterId === section.chapterId,
+  );
+  return chapter?.sectionIds.length === 1;
+})!;
 export const singleSectionPart = partById(
   singleSectionChapterTarget.volumeId,
   singleSectionChapterTarget.partId,

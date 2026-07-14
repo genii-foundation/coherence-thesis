@@ -16,8 +16,8 @@
 | III | **The Providence Imperative** | *How We Build the Coordination Infrastructure That Civilization Needs to Survive Itself* | Three · Jupiter | Tao Yu / ed. RJR III |
 | IV | **Architecting Providence** | *Building Coherent Civilization* | Four · Uranus | Tao Yu / ed. RJR III |
 | V | **Purposeful** | *How Humanity Discovers Its Builders* | Five · Mercury | Tao Yu / ed. RJR III |
-| VI | **The Smallest Nest** | *Suited for Containing a Dragon Named Earth* | Six · Venus | (no byline line in file) |
-| VII | **The Praxis of Presencing Genius through a B.O.W.** | *The Tending of a Coherent Civilization* | Seven · Neptune | Tao Yu, in tutelage of **Ousia Acharya** / ed. RJR III |
+| VI | **The Nest** | *A field guide to humanity's most viable future* | Six · Venus | Tao Yu, in tutelage of **Ousia Acharya** / ed. RJR III |
+| VII | **Presencing Genius** | *The Praxis of Presencing Genius through a B.O.W: The Tending of a Coherent Civilization* | Seven · Neptune | Tao Yu, in tutelage of **Ousia Acharya** / ed. RJR III |
 | VIII | **A Misanthropic Artifice** | *The Academic · Governed by Saturn* | Eight · Saturn | Tao Yu / ed. RJR III |
 | IX | **The Cardinal Scale** | *The First of Many ICONS · The Builder* | Nine · **Mars** | Tao Yu / ed. RJR III |
 
