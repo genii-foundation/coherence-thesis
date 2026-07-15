@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "c3062be61ba6ca82754583cbf5073e60647b5c9c",
+  "headSha": "36c7e67bc392af2a18a8d87076c030ee8d8b0bb7",
   "commits": [
+    {
+      "sha": "36c7e67bc392af2a18a8d87076c030ee8d8b0bb7",
+      "committedAt": "2026-07-15T07:06:34.000Z",
+      "subject": "fix: reconstruct immutable review sections (#145)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/36c7e67bc392af2a18a8d87076c030ee8d8b0bb7",
+      "filesChanged": 4,
+      "additions": 146,
+      "deletions": 41,
+      "isLiterary": false
+    },
     {
       "sha": "c3062be61ba6ca82754583cbf5073e60647b5c9c",
       "committedAt": "2026-07-15T00:30:27.000Z",
