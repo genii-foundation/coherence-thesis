@@ -20,7 +20,7 @@ import {
   type VolumeConfig,
 } from "./shared";
 
-type DraftSection = {
+export type DraftSection = {
   frontmatter: ManuscriptFrontmatter;
   body: string[];
   sourceLineNumbers: number[];
@@ -170,8 +170,11 @@ function nextHeading(lines: string[], startIndex: number): { heading: Heading; i
   return null;
 }
 
-export function findStart(lines: string[], volumeId: string): number {
-  const markers = startMarkers[volumeId];
+export function findStart(
+  lines: string[],
+  volumeId: string,
+  markers: readonly string[] | undefined = startMarkers[volumeId],
+): number {
   if (!markers) return 0;
   for (const marker of markers) {
     const headingIndex = lines.findIndex(
@@ -313,7 +316,17 @@ export function buildSections(config: VolumeConfig): DraftSection[] {
   const source = normalizeNewlines(readUtf8(sourcePath));
   const sourceHash = fileHash(sourcePath);
   const sourceDoc = path.relative(repoRoot, sourcePath).replace(/\\/g, "/");
-  const lines = source.split("\n");
+
+  return buildSectionsFromSource(config, source, sourceDoc, sourceHash);
+}
+
+export function buildSectionsFromSource(
+  config: VolumeConfig,
+  source: string,
+  sourceDoc: string,
+  sourceHash: string,
+): DraftSection[] {
+  const lines = normalizeNewlines(source).split("\n");
   const sections: DraftSection[] = [];
   const usedSectionIds = new Set<string>();
   const usedPartIds = new Set<string>();
@@ -388,7 +401,11 @@ export function buildSections(config: VolumeConfig): DraftSection[] {
     return createSection(partTitle === "Front Matter" ? chapterTitle : partTitle, lineNumber);
   }
 
-  for (let index = findStart(lines, config.volumeId); index < lines.length; index += 1) {
+  for (
+    let index = findStart(lines, config.volumeId, config.import.startMarkers);
+    index < lines.length;
+    index += 1
+  ) {
     const line = lines[index]!;
     if (ignoreLine(line)) continue;
 
