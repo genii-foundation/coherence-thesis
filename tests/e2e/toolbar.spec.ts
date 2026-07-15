@@ -3,7 +3,6 @@ import sharp from "sharp";
 import { audioVoiceStorageKey } from "../../src/lib/audio-preferences";
 import {
   hexToRgb,
-  highQualityVoicePreferenceId,
   searchTargetSection,
   wieldingVolume,
   wieldingFrontMatter,
@@ -11,6 +10,8 @@ import {
   wieldingSection,
   expectMenuFitsViewport,
 } from "./fixtures";
+
+const highQualityVoicePreferenceId = "clip:high-quality-1";
 
 type PixelRegionSample = {
   mean: [number, number, number];
@@ -1293,6 +1294,19 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
 test("audio playback shows an immediate loading state before media starts", async ({
   page,
 }) => {
+  let markProgressSectionsRequested: (() => void) | undefined;
+  let releaseProgressSections: (() => void) | undefined;
+  const progressSectionsRequested = new Promise<void>((resolve) => {
+    markProgressSectionsRequested = resolve;
+  });
+  const progressSectionsBlocked = new Promise<void>((resolve) => {
+    releaseProgressSections = resolve;
+  });
+  await page.route("**/data/progress-sections.json", async (route) => {
+    markProgressSectionsRequested?.();
+    await progressSectionsBlocked;
+    await route.continue();
+  });
   await page.addInitScript(
     ({ preferenceId, storageKey }) => {
       window.localStorage.setItem(
@@ -1349,7 +1363,7 @@ test("audio playback shows an immediate loading state before media starts", asyn
     response.url().endsWith("/data/audio-manifest.json"),
   );
   await page.goto(wieldingSection.href);
-  await manifestLoaded;
+  await Promise.all([manifestLoaded, progressSectionsRequested]);
   await page.evaluate(() => new Promise(requestAnimationFrame));
 
   await page.getByRole("button", { name: "Listen" }).click();
@@ -1362,6 +1376,7 @@ test("audio playback shows an immediate loading state before media starts", asyn
     "opacity",
     "0",
   );
+  releaseProgressSections?.();
   await expect
     .poll(() =>
       page.evaluate(
@@ -1371,6 +1386,9 @@ test("audio playback shows an immediate loading state before media starts", asyn
       ),
     )
     .toBe(true);
+  await expect
+    .poll(() => page.evaluate(() => window.location.pathname))
+    .toBe(wieldingSection.href);
 
   await page.evaluate(() => {
     (

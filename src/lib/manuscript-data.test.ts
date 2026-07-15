@@ -232,13 +232,13 @@ describe("manuscript data", () => {
     const opener =
       "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-sprout/v01-the-sprout/";
     const target =
-      "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/why-this-is-happening-and-why-it-changes-everything/";
+      "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/when-scale-outruns-regulation/";
     const keys = new Set(
       manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
     );
 
     expect(sectionByHrefOrAlias(opener)?.section.sectionId).toBe(
-      "v01-why-this-is-happening-and-why-it-changes-everything",
+      "v01-when-scale-outruns-regulation",
     );
     expect(sectionByHrefOrAlias(opener)?.alias?.targetHref).toBe(target);
     expect(
@@ -275,13 +275,13 @@ describe("manuscript data", () => {
 
     expect(sectionIds).toEqual([
       "v04-the-amendment-architecture",
-      "v04-the-deeper-inquiry-9",
-      "v04-what-remains-open-9",
+      "v04-research-lineages-9",
+      "v04-open-questions-9",
     ]);
     expect(sections.map((section) => section.readerHref)).toEqual([
       `${sections[0]!.chapterHref}#v04-the-amendment-architecture`,
-      `${sections[0]!.chapterHref}#v04-the-deeper-inquiry-9`,
-      `${sections[0]!.chapterHref}#v04-what-remains-open-9`,
+      `${sections[0]!.chapterHref}#v04-research-lineages-9`,
+      `${sections[0]!.chapterHref}#v04-open-questions-9`,
     ]);
 
     const oldChildRoute = breadcrumbRoutes().find(

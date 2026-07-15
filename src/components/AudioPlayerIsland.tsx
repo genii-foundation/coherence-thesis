@@ -10,6 +10,7 @@ import {
   useState,
   type CSSProperties,
 } from "react";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
   AlertTriangle,
@@ -648,16 +649,19 @@ export function AudioPlayerIsland({
     ) {
       return;
     }
-    const target = fallbackQueue[0];
+    const pendingQueue = visibleQueue.length > 0 ? visibleQueue : fallbackQueue;
+    const target = pendingQueue[0];
     if (!target) {
       setPendingFallbackPlayback(false);
       setPlaybackPending(false);
       return;
     }
     setPendingFallbackPlayback(false);
-    void speakRef.current(0, preference, fallbackQueue);
-    const targetHref = target.readerHref ?? target.href;
-    if (targetHref) router.push(targetHref);
+    void speakRef.current(0, preference, pendingQueue);
+    if (visibleQueue.length === 0) {
+      const targetHref = target.readerHref ?? target.href;
+      if (targetHref) router.push(targetHref);
+    }
   }, [
     fallbackQueue,
     pendingFallbackPlayback,
@@ -666,6 +670,7 @@ export function AudioPlayerIsland({
     router,
     sections.length,
     supported,
+    visibleQueue,
     voicesReady,
   ]);
 
@@ -1291,6 +1296,9 @@ export function AudioPlayerIsland({
     playbackLocation?.wordId && active.href
       ? `${active.href}#${playbackLocation.wordId}`
       : active.href;
+  const jumpStaysOnCurrentRoute = active.href
+    ? normalizePath(active.href) === normalizePath(pathname)
+    : false;
   const voiceIsDefault =
     preference.voiceURI === resolvedDefaultVoicePreference.voiceURI &&
     preference.useSystemVoice !== true;
@@ -1327,9 +1335,15 @@ export function AudioPlayerIsland({
             <div className="audio-player-title-row">
               <strong>{active.title}</strong>
               {jumpHref ? (
-                <a className="audio-location-link" href={jumpHref}>
-                  Jump to playback location
-                </a>
+                jumpStaysOnCurrentRoute ? (
+                  <a className="audio-location-link" href={jumpHref}>
+                    Jump to playback location
+                  </a>
+                ) : (
+                  <Link className="audio-location-link" href={jumpHref}>
+                    Jump to playback location
+                  </Link>
+                )
               ) : null}
             </div>
           </div>

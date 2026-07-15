@@ -787,7 +787,9 @@ test("overview links into canonical manuscript sections", async ({
     catalog.overview.nodes.length,
   );
   await expect(
-    page.getByText(catalog.overview.nodes.at(-1)!.summary),
+    page.getByText(
+      "The Cardinal Scale is presented as a place where the thesis might be tested. Land, Doors, Membrane, currency, governance, and community remain design commitments until the site, law, safeguards, and implementation are verified.",
+    ),
   ).toBeVisible();
   const firstVolumeFirstSection = sectionForId(catalog.volumes[0]!.sectionIds[0]!);
   await expect(page.locator(".overview-node-card-link").first()).toHaveAttribute(

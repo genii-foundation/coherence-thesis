@@ -86,6 +86,90 @@
       }
     },
     {
+      "conceptId": "section-title-v02-what-money-cannot-carry",
+      "routeLevel": "section",
+      "labels": [
+        {
+          "text": "What Money Cannot See",
+          "caseSensitive": false,
+          "wholeWord": true
+        }
+      ],
+      "sourceEditorialIds": [
+        "volume-01",
+        "volume-02",
+        "volume-03",
+        "volume-04",
+        "volume-05",
+        "volume-06",
+        "volume-07",
+        "volume-08",
+        "volume-09"
+      ],
+      "targetContinuityId": "v02-what-money-cannot-carry",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "This exact unique section title maps to its reviewed continuity identity for candidate evaluation."
+      }
+    },
+    {
+      "conceptId": "section-title-v04-the-first-scale",
+      "routeLevel": "section",
+      "labels": [
+        {
+          "text": "The First Scale",
+          "caseSensitive": false,
+          "wholeWord": true
+        }
+      ],
+      "sourceEditorialIds": [
+        "volume-01",
+        "volume-02",
+        "volume-03",
+        "volume-04",
+        "volume-05",
+        "volume-06",
+        "volume-07",
+        "volume-08",
+        "volume-09"
+      ],
+      "targetContinuityId": "v04-the-first-scale",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "This exact unique section title maps to its reviewed continuity identity for candidate evaluation."
+      }
+    },
+    {
+      "conceptId": "section-title-v05-the-cardinal-scale",
+      "routeLevel": "section",
+      "labels": [
+        {
+          "text": "Cardinal Scale",
+          "caseSensitive": false,
+          "wholeWord": true
+        }
+      ],
+      "sourceEditorialIds": [
+        "volume-01",
+        "volume-02",
+        "volume-03",
+        "volume-04",
+        "volume-05",
+        "volume-06",
+        "volume-07",
+        "volume-08",
+        "volume-09"
+      ],
+      "targetContinuityId": "v05-the-cardinal-scale",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "This exact unique section title maps to its reviewed continuity identity for candidate evaluation."
+      }
+    },
+    {
       "conceptId": "volume-01-flower",
       "routeLevel": "chapter",
       "labels": [
@@ -188,207 +272,139 @@
   ],
   "occurrences": [
     {
-      "occurrenceId": "semantic-link-0035c007a1dd53e4",
-      "conceptId": "volume-01-stem",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-the-currency-of-presence",
-        "paragraphAnchor": "p-he3a8201851021fdd",
-        "matchText": "Stem",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The sentence explicitly returns to two answers developed in the Stem."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-01899dfac6f79852",
-      "conceptId": "section-title-v01-what-providence-is",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-the-question-becomes-an-experiment",
-        "paragraphAnchor": "p-hb87407d928e2527b",
-        "matchText": "what Providence is",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The sentence points directly into the next section, What Providence Is."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-0c4f15dfb1919b9b",
-      "conceptId": "volume-01-stem",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-how-this-book-is-structured",
-        "paragraphAnchor": "p-h4b28398ac3de040b",
-        "matchText": "stem",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The structural overview names the Stem movement and its function."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-129c800bc76bd361",
-      "conceptId": "volume-01-flower",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-what-providence-is",
-        "paragraphAnchor": "p-h3e42076c93082fae",
-        "matchText": "Flower",
-        "matchOrdinal": 1
-      },
-      "decision": "exclude",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "This names the current larger movement as a whole rather than directing the reader to its opening."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-14b9a24cf35b636d",
-      "conceptId": "volume-01-stem",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
-        "paragraphAnchor": "p-hf184783362b6b990",
-        "matchText": "stem",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "This sentence points forward to the Stem movement that follows the pause."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-161b1b9734d0b858",
+      "occurrenceId": "semantic-link-001cc8be6c00658a",
       "conceptId": "volume-01-seed",
       "source": {
         "editorialId": "volume-01",
-        "sectionContinuityId": "v01-how-this-book-is-structured",
-        "paragraphAnchor": "p-h286bf5b4249f11e0",
-        "matchText": "seed",
+        "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
+        "paragraphAnchor": "p-h9db91b8932336ea2",
+        "matchText": "Seed",
         "matchOrdinal": 1
       },
       "decision": "exclude",
       "approval": {
         "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "This repeated seed is the grammatical subject of sprouting, and a second adjacent link would clutter the sentence."
+        "date": "2026-07-14",
+        "rationale": "The opening Seed reference already supplies navigation, so this later architectural restatement remains prose."
       }
     },
     {
-      "occurrenceId": "semantic-link-1cd4ef88b5f72848",
+      "occurrenceId": "semantic-link-0601c542b950ef6e",
       "conceptId": "volume-01-soil",
       "source": {
         "editorialId": "volume-01",
-        "sectionContinuityId": "v01-what-this-is-and-what-it-is-not",
-        "paragraphAnchor": "p-h4a0da0426922a777",
+        "sectionContinuityId": "v01-a-horizon-not-yet-a-blueprint",
+        "paragraphAnchor": "p-h942c03198b688d3b",
+        "matchText": "soil",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The closing wayfinding sentence still sends the reader into the Soil movement."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-153829ad295ff5c3",
+      "conceptId": "volume-01-soil",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-the-currency-of-presence",
+        "paragraphAnchor": "p-he54184e7cab146e9",
         "matchText": "Soil",
         "matchOrdinal": 1
       },
       "decision": "link",
       "approval": {
         "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The boundary statement explicitly cites the kind of reverence developed in the Soil."
+        "date": "2026-07-14",
+        "rationale": "The trust claim still explicitly cites what the Soil movement established."
       }
     },
     {
-      "occurrenceId": "semantic-link-21d5c4ae93164318",
-      "conceptId": "volume-01-sprout",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-a-note-on-compression",
-        "paragraphAnchor": "p-h7dde160712918089",
-        "matchText": "sprout",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "This sentence explicitly defines Sprout as the second structural movement."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-22dc314387386f1c",
-      "conceptId": "volume-01-sprout",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
-        "paragraphAnchor": "p-hdb10ed8d1762688a",
-        "matchText": "sprout",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The pause identifies the Sprout phase whose scope it is about to clarify."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-272806ce3b5a3a96",
-      "conceptId": "volume-01-seed",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-icons-and-the-first-scale",
-        "paragraphAnchor": "p-h907203b210f53364",
-        "matchText": "Seed",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "This sentence closes the long arc by returning to the Seed."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-2de63089be58a452",
+      "occurrenceId": "semantic-link-18aa74879f1ca00c",
       "conceptId": "volume-01-flower",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-icons-and-the-first-scale",
-        "paragraphAnchor": "p-h5d718b40069fc3e1",
+        "paragraphAnchor": "p-h03cd084cb69ce12f",
         "matchText": "Flower",
         "matchOrdinal": 1
       },
       "decision": "link",
       "approval": {
         "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The Scale description explicitly gathers what the Flower movement has described."
+        "date": "2026-07-14",
+        "rationale": "The Scale description still gathers what the Flower movement has described."
       }
     },
     {
-      "occurrenceId": "semantic-link-2f7e81bb17238c16",
-      "conceptId": "volume-01-sprout",
+      "occurrenceId": "semantic-link-1eb7564ac7bcb0b6",
+      "conceptId": "volume-01-soil",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-how-this-book-is-structured",
-        "paragraphAnchor": "p-h286bf5b4249f11e0",
-        "matchText": "sprout",
+        "paragraphAnchor": "p-h8d69c3aed1352148",
+        "matchText": "soil",
         "matchOrdinal": 1
       },
       "decision": "link",
       "approval": {
         "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The structural overview names the Sprout movement and its function."
+        "date": "2026-07-14",
+        "rationale": "The structural overview directs the reader to The Soil as a distinct part of the argument."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-20a60b53d4c0beab",
+      "conceptId": "volume-01-seed",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-how-this-book-is-structured",
+        "paragraphAnchor": "p-h13e5d1a21fec7e28",
+        "matchText": "seed",
+        "matchOrdinal": 2
+      },
+      "decision": "exclude",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The first seed in this sentence supplies the destination, so this adjacent repetition remains prose."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-277f3a22bedde9f6",
+      "conceptId": "volume-01-soil",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-taking-pause-in-the-soil",
+        "paragraphAnchor": "p-hbbc367e7c220401b",
+        "matchText": "Soil",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "This transition still names the Soil movement now beginning."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-2bf2e9f6a4682365",
+      "conceptId": "volume-01-flower",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-what-providence-is",
+        "paragraphAnchor": "p-hcf21f3bfdae5dea1",
+        "matchText": "flower",
+        "matchOrdinal": 1
+      },
+      "decision": "exclude",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "Flower remains part of the ground and flower image here, not a navigational reference."
       }
     },
     {
@@ -409,20 +425,54 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-358ea5799989d953",
+      "occurrenceId": "semantic-link-39f7a3ba7e81d7d2",
       "conceptId": "volume-01-seed",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
-        "paragraphAnchor": "p-h87b8cf53b7671436",
+        "paragraphAnchor": "p-h37540a0ae1e5de95",
         "matchText": "Seed",
         "matchOrdinal": 1
       },
       "decision": "exclude",
       "approval": {
         "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The Seed destination is already linked earlier in this section, so another link would add noise."
+        "date": "2026-07-14",
+        "rationale": "The Seed destination is already linked at the opening of this section, so this later qualification remains prose."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-3c215a9bd9e946a7",
+      "conceptId": "volume-01-seed",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-how-this-book-is-structured",
+        "paragraphAnchor": "p-h13e5d1a21fec7e28",
+        "matchText": "seed",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The structural overview still introduces Seed as the reader's first movement."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-3d826941a098159a",
+      "conceptId": "volume-01-stem",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-into-the-flower",
+        "paragraphAnchor": "p-hc15f660cc5e00f2c",
+        "matchText": "Stem",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The threshold still refers back to the horizon established at the close of the Stem."
       }
     },
     {
@@ -443,156 +493,326 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-5ad81499dd315e03",
+      "occurrenceId": "semantic-link-492336f89cd86c34",
+      "conceptId": "volume-01-sprout",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-a-note-on-compression",
+        "paragraphAnchor": "p-h3bc7e8317f7b2723",
+        "matchText": "sprout",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The compressed sentence still defines Sprout as the movement that shows why the premise matters."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-4cea9f415861ddb7",
+      "conceptId": "section-title-v01-intelligence-meaning-trust",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-why-this-is-necessity-not-preference",
+        "paragraphAnchor": "p-hcb6e96be426fe178",
+        "matchText": "intelligence, meaning, trust",
+        "matchOrdinal": 1
+      },
+      "decision": "exclude",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "This remains an ordinary list of relational capacities that happens to match a section title."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-53d163043feb6ee3",
+      "conceptId": "volume-01-flower",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-a-note-on-compression",
+        "paragraphAnchor": "p-h4b304cbe9ccee763",
+        "matchText": "flower",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The opening map names The Flower as a later movement of this volume."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-56f4900e5aa3f4b9",
+      "conceptId": "volume-01-seed",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-why-this-is-happening-and-why-it-changes-everything",
+        "paragraphAnchor": "p-h474fd7b4f6741c8c",
+        "matchText": "Seed",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The capitalized reference points back to the named Seed movement and its premise."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-6289219779b4ec94",
+      "conceptId": "volume-01-soil",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-what-this-is-and-what-it-is-not",
+        "paragraphAnchor": "p-h0ad2afa34184f6c3",
+        "matchText": "Soil",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The boundary statement still cites the kind of reverence developed in the Soil."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-704cde29fba82ac8",
+      "conceptId": "volume-01-stem",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-taking-pause-in-the-soil",
+        "paragraphAnchor": "p-hbbc367e7c220401b",
+        "matchText": "Stem",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The transition still contrasts the completed Stem movement with the Soil movement now beginning."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-73da9768d8ec03e8",
       "conceptId": "volume-01-seed",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-a-note-on-compression",
-        "paragraphAnchor": "p-h2b8621fa7a4e7046",
+        "paragraphAnchor": "p-h3bc7e8317f7b2723",
         "matchText": "seed",
         "matchOrdinal": 1
       },
       "decision": "link",
       "approval": {
         "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "This sentence explicitly defines Seed as the first structural movement."
+        "date": "2026-07-14",
+        "rationale": "The compressed sentence still defines Seed as the movement that states the premise."
       }
     },
     {
-      "occurrenceId": "semantic-link-61a0a97a77fa698c",
+      "occurrenceId": "semantic-link-771ae26747117514",
       "conceptId": "volume-01-soil",
       "source": {
         "editorialId": "volume-01",
-        "sectionContinuityId": "v01-the-currency-of-presence",
-        "paragraphAnchor": "p-h63d273172d9c5a3e",
-        "matchText": "Soil",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The claim explicitly cites what the Soil movement established."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-633323a5054d79a5",
-      "conceptId": "volume-01-stem",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-into-the-flower",
-        "paragraphAnchor": "p-h17c6249e9b5dff78",
-        "matchText": "Stem",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The threshold refers back to the horizon established at the close of the Stem."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-69175899e4fb10e3",
-      "conceptId": "volume-01-soil",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-a-horizon-not-yet-a-blueprint",
-        "paragraphAnchor": "p-h822de1ef31ee9a37",
+        "sectionContinuityId": "v01-a-note-on-compression",
+        "paragraphAnchor": "p-h4b304cbe9ccee763",
         "matchText": "soil",
         "matchOrdinal": 1
       },
       "decision": "link",
       "approval": {
         "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The closing wayfinding sentence sends the reader down into the Soil movement."
+        "date": "2026-07-14",
+        "rationale": "The opening map names The Soil as a later movement of this volume."
       }
     },
     {
-      "occurrenceId": "semantic-link-6ddf08f046b2abfb",
-      "conceptId": "volume-01-seed",
+      "occurrenceId": "semantic-link-8bb661836aaca490",
+      "conceptId": "section-title-v05-the-cardinal-scale",
       "source": {
         "editorialId": "volume-01",
-        "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
-        "paragraphAnchor": "p-h9b970beba8ebfcf5",
-        "matchText": "Seed",
-        "matchOrdinal": 1
-      },
-      "decision": "exclude",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "This is a third repeat within the same pause, whose first Seed reference already provides navigation."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-6e939ce8e65de1ac",
-      "conceptId": "volume-01-soil",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-taking-pause-in-the-soil",
-        "paragraphAnchor": "p-h2229776c6c9d991a",
-        "matchText": "Soil",
+        "sectionContinuityId": "v01-into-the-flower",
+        "paragraphAnchor": "p-hc15f660cc5e00f2c",
+        "matchText": "Cardinal Scale",
         "matchOrdinal": 1
       },
       "decision": "link",
       "approval": {
         "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "This transition names the Soil movement now beginning."
+        "date": "2026-07-14",
+        "rationale": "The text names The Cardinal Scale as a defined architecture developed in its own later section."
       }
     },
     {
-      "occurrenceId": "semantic-link-9cb4540ac87e8f46",
+      "occurrenceId": "semantic-link-85f63c9d46d08259",
+      "conceptId": "volume-01-stem",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-a-note-on-compression",
+        "paragraphAnchor": "p-h7080ad564d18636e",
+        "matchText": "stem",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The compressed sentence still defines Stem as the movement that gives the argument structure and direction."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-88dd61ab926c54b2",
+      "conceptId": "volume-01-flower",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-governance-as-regulation-not-control",
+        "paragraphAnchor": "p-h26f35fcd6f65db68",
+        "matchText": "Flower",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The sentence identifies The Flower as the place where the governance architecture begins."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-8d910753a7c6784f",
+      "conceptId": "volume-01-flower",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-a-horizon-not-yet-a-blueprint",
+        "paragraphAnchor": "p-h942c03198b688d3b",
+        "matchText": "flower",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The transition names The Flower as the argument's next destination."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-8dc9f9cb2b49ee64",
+      "conceptId": "section-title-v04-the-first-scale",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-the-invitation",
+        "paragraphAnchor": "p-hc55d4df5a30b355d",
+        "matchText": "the first Scale",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The invitation uses first Scale as a defined destination, not as an ordinary descriptive phrase."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-8f5b45aa63d5acd0",
+      "conceptId": "section-title-v02-what-money-cannot-carry",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-the-currency-of-presence",
+        "paragraphAnchor": "p-hffff411198248849",
+        "matchText": "what money cannot see",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The phrase is an exact conceptual reference to What Money Cannot See in Volume II."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-9d6bd1317c3be6d4",
+      "conceptId": "section-title-v04-the-first-scale",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-icons-and-the-first-scale",
+        "paragraphAnchor": "p-hdee6cbeed663671f",
+        "matchText": "The first Scale",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The sentence names the first Scale as a specific design developed in Volume IV."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-9d7a7d3aae65cc39",
+      "conceptId": "volume-01-flower",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-a-horizon-not-yet-a-blueprint",
+        "paragraphAnchor": "p-h831f2dc4ef675bb8",
+        "matchText": "Flower",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The transition contrasts The Stem with The Flower and sends the reader forward."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-a1e60fe608382487",
+      "conceptId": "volume-01-soil",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-the-invitation",
+        "paragraphAnchor": "p-hb18c4f4d8d32aed6",
+        "matchText": "soil",
+        "matchOrdinal": 1
+      },
+      "decision": "exclude",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "Soil remains part of the closing cultivation image here, not a section reference."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-a70d08c33435d8c4",
       "conceptId": "volume-01-sprout",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
-        "paragraphAnchor": "p-hf184783362b6b990",
-        "matchText": "sprout",
-        "matchOrdinal": 1
-      },
-      "decision": "exclude",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The Sprout destination is already linked near the start of this short pause."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-9dbd176f81a395f8",
-      "conceptId": "volume-01-flower",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-what-providence-is",
-        "paragraphAnchor": "p-hbe49aa83350eff81",
-        "matchText": "flower",
-        "matchOrdinal": 1
-      },
-      "decision": "exclude",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "Flower is part of the ground and flower image here, not a navigational reference."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-a35bdd9970d279e6",
-      "conceptId": "volume-01-stem",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-taking-pause-in-the-soil",
-        "paragraphAnchor": "p-h2229776c6c9d991a",
-        "matchText": "Stem",
+        "paragraphAnchor": "p-h0ed70ec2b83794ad",
+        "matchText": "Sprout",
         "matchOrdinal": 1
       },
       "decision": "link",
       "approval": {
         "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "This transition contrasts the completed Stem movement with the Soil movement now beginning."
+        "date": "2026-07-14",
+        "rationale": "The capitalized reference explicitly recalls the Sprout movement's argument."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-a73cfac3df12d2b8",
+      "conceptId": "volume-01-seed",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-how-this-book-is-structured",
+        "paragraphAnchor": "p-h6811ff22387186b8",
+        "matchText": "seed",
+        "matchOrdinal": 1
+      },
+      "decision": "exclude",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "Seed is the grammatical subject of sprouting here, and linking it would clutter the structural sentence."
       }
     },
     {
@@ -613,37 +833,20 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-bc2cd861fa72fedb",
-      "conceptId": "volume-01-soil",
+      "occurrenceId": "semantic-link-bba3b733b77cd03f",
+      "conceptId": "volume-01-stem",
       "source": {
         "editorialId": "volume-01",
-        "sectionContinuityId": "v01-the-invitation",
-        "paragraphAnchor": "p-h0439bd6b6e7beb12",
-        "matchText": "soil",
+        "sectionContinuityId": "v01-how-this-book-is-structured",
+        "paragraphAnchor": "p-hb6e14825d82cfe76",
+        "matchText": "stem",
         "matchOrdinal": 1
       },
-      "decision": "exclude",
+      "decision": "link",
       "approval": {
         "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "Soil belongs to the closing cultivation image here, not to section navigation."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-c7894b0abce104d3",
-      "conceptId": "section-title-v01-intelligence-meaning-trust",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-why-this-is-necessity-not-preference",
-        "paragraphAnchor": "p-h1e84869da203f7b3",
-        "matchText": "intelligence, meaning, trust",
-        "matchOrdinal": 1
-      },
-      "decision": "exclude",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "This phrase is an ordinary list of relational capacities that happens to match a section title elsewhere."
+        "date": "2026-07-14",
+        "rationale": "The condensed structural overview still names the Stem movement and its function."
       }
     },
     {
@@ -664,122 +867,88 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-ce95dce0bd7a0171",
-      "conceptId": "volume-01-seed",
+      "occurrenceId": "semantic-link-e06bcd1ea4f166c6",
+      "conceptId": "volume-01-flower",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-how-this-book-is-structured",
-        "paragraphAnchor": "p-h3ac625cc9d8f2946",
-        "matchText": "seed",
+        "paragraphAnchor": "p-h8d69c3aed1352148",
+        "matchText": "flower",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The structural overview directs the reader to The Flower as the book's second part."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-e3e9a97f91fd9e83",
+      "conceptId": "volume-01-flower",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-what-providence-is",
+        "paragraphAnchor": "p-h48cc375091ff0699",
+        "matchText": "Flower",
         "matchOrdinal": 1
       },
       "decision": "exclude",
       "approval": {
         "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The following emphasized sentence supplies the same destination more cleanly, so this adjacent mention should remain prose."
+        "date": "2026-07-14",
+        "rationale": "This names the current larger movement as a whole rather than directing the reader to its opening."
       }
     },
     {
-      "occurrenceId": "semantic-link-cf0989adc81f98ac",
-      "conceptId": "section-title-v01-into-the-flower",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-a-horizon-not-yet-a-blueprint",
-        "paragraphAnchor": "p-h822de1ef31ee9a37",
-        "matchText": "into the flower",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The exact phrase names the next section, Into the Flower, and functions as direct wayfinding."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-da809609bab32757",
-      "conceptId": "volume-01-sprout",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-how-coherence-becomes-structure",
-        "paragraphAnchor": "p-h901a40d7c4d79e50",
-        "matchText": "Sprout",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The sentence explicitly attributes an earlier conclusion to the Sprout movement."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-db9b51d97061b14c",
-      "conceptId": "volume-01-seed",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
-        "paragraphAnchor": "p-hf09eaea2f053ca75",
-        "matchText": "Seed",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The pause opens by referring back to the Seed movement the reader has just completed."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-de339b5e70fc23ca",
-      "conceptId": "volume-01-seed",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-how-this-book-is-structured",
-        "paragraphAnchor": "p-h396f3493b94042d9",
-        "matchText": "seed",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The structural overview introduces the Seed as the reader's first movement."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-e4a4a62d00ca6752",
+      "occurrenceId": "semantic-link-f27a1c83141697c1",
       "conceptId": "volume-01-flower",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-into-the-flower",
-        "paragraphAnchor": "p-h9dc63c4e0bd78087",
+        "paragraphAnchor": "p-h2bf4a5537b242f51",
         "matchText": "Flower",
         "matchOrdinal": 1
       },
       "decision": "link",
       "approval": {
         "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The threshold explicitly introduces the Flower movement and the question it answers."
+        "date": "2026-07-14",
+        "rationale": "The condensed threshold still introduces the Flower movement and the question it answers."
       }
     },
     {
-      "occurrenceId": "semantic-link-f56e579b0a675499",
-      "conceptId": "volume-01-stem",
+      "occurrenceId": "semantic-link-f5e109ab5d0b04e7",
+      "conceptId": "volume-01-seed",
       "source": {
         "editorialId": "volume-01",
-        "sectionContinuityId": "v01-a-note-on-compression",
-        "paragraphAnchor": "p-he674e3d3d811052f",
-        "matchText": "stem",
+        "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
+        "paragraphAnchor": "p-h476744c66f5db701",
+        "matchText": "Seed",
         "matchOrdinal": 1
       },
       "decision": "link",
       "approval": {
         "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "This sentence explicitly defines Stem as the third structural movement."
+        "date": "2026-07-14",
+        "rationale": "The condensed pause still opens by referring back to the Seed movement the reader has completed."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-2feb454b2da82db3",
+      "conceptId": "section-title-v05-the-cardinal-scale",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-icons-and-the-first-scale",
+        "paragraphAnchor": "p-hdee6cbeed663671f",
+        "matchText": "Cardinal Scale",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The sentence gives the Cardinal Scale its proper name and points to its later treatment."
       }
     }
   ]

@@ -2,684 +2,489 @@
   "version": 1,
   "aliases": [
     {
-      "sourceHref": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
-      "targetSectionId": "v01-the-seed",
-      "note": "Inherited from HEAD after an editorial route revision."
-    },
-    {
-      "sourceHref": "/manuscripts/wielding-intelligence/the-response/v02-the-response/",
-      "targetSectionId": "v02-coherence-as-infrastructure",
-      "note": "Inherited from HEAD after an editorial route revision."
-    },
-    {
-      "sourceHref": "/manuscripts/1/the-flower/start/",
-      "targetSectionId": "v01-the-flower",
+      "sourceHref": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/the-living-world-2/",
+      "targetSectionId": "v08-the-living-world",
       "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/2/the-diagnosis/start/",
-      "targetSectionId": "v02-the-crisis-beneath-the-crises",
-      "note": "Inherited from HEAD after an editorial route revision."
-    },
-    {
-      "sourceHref": "/manuscripts/3/the-earth-compact/start/",
-      "targetSectionId": "v03-a-system-that-heals-what-it-inhabits",
-      "note": "Inherited from HEAD after an editorial route revision."
-    },
-    {
-      "sourceHref": "/manuscripts/3/the-governance/start/",
-      "targetSectionId": "v03-the-constitutional-problem",
-      "note": "Inherited from HEAD after an editorial route revision."
-    },
-    {
-      "sourceHref": "/manuscripts/3/the-innovation/start/",
-      "targetSectionId": "v03-what-coordinates-wisdom",
-      "note": "Inherited from HEAD after an editorial route revision."
-    },
-    {
-      "sourceHref": "/manuscripts/3/the-invitation/start/",
-      "targetSectionId": "v03-how-we-begin",
-      "note": "Inherited from HEAD after an editorial route revision."
-    },
-    {
-      "sourceHref": "/manuscripts/3/the-living-reality/start/",
-      "targetSectionId": "v03-the-year-of-the-weaver",
-      "note": "Inherited from HEAD after an editorial route revision."
-    },
-    {
-      "sourceHref": "/manuscripts/3/the-mechanism/start/",
-      "targetSectionId": "v03-the-body-as-primary-text",
-      "note": "Inherited from HEAD after an editorial route revision."
-    },
-    {
-      "sourceHref": "/manuscripts/3/the-reckoning/start/",
-      "targetSectionId": "v03-the-central-wound",
-      "note": "Inherited from HEAD after an editorial route revision."
-    },
-    {
-      "sourceHref": "/manuscripts/3/the-sovereign-architecture/start/",
-      "targetSectionId": "v03-the-federated-imperative",
-      "note": "Inherited from HEAD after an editorial route revision."
-    },
-    {
-      "sourceHref": "/manuscripts/4/contact-with-the-world/start/",
-      "targetSectionId": "v04-contact-with-the-world",
+      "sourceHref": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/the-state-of-2026-3/",
+      "targetSectionId": "v08-the-state-of-2026",
       "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/4/the-civilization-made-visible/start/",
-      "targetSectionId": "v04-the-civilization-made-visible",
+      "sourceHref": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-living-world-2/",
+      "targetSectionId": "v08-the-living-world",
+      "note": "Inherited from HEAD after an editorial route revision."
+    },
+    {
+      "sourceHref": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-state-of-2026-3/",
+      "targetSectionId": "v08-the-state-of-2026",
+      "note": "Inherited from HEAD after an editorial route revision."
+    },
+    {
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/1-where-the-work-has-brought-us/",
+      "targetSectionId": "v08-where-the-work-has-brought-us",
       "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/4/the-economic-architecture/start/",
-      "targetSectionId": "v04-the-economic-architecture",
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/10-the-case-rests-and-why-we-wrote-one-more-book/",
+      "targetSectionId": "v08-why-write-one-more-book",
       "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/4/the-governance-architecture/start/",
-      "targetSectionId": "v04-the-governance-architecture",
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/11-the-inversion-the-same-tools-the-opposite-god/",
+      "targetSectionId": "v08-the-same-tools-a-different-purpose",
       "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/4/the-human-architecture-in-practice/start/",
-      "targetSectionId": "v04-the-human-architecture-in-practice",
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/12-how-providence-tends-the-three-primal-goods/",
+      "targetSectionId": "v08-how-providence-would-tend-three-primal-goods",
       "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/4/the-scales-of-the-dragon/start/",
-      "targetSectionId": "v04-the-scales-of-the-dragon",
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/13-purposeful-cultivating-the-human-the-artifice-degrades/",
+      "targetSectionId": "v08-purposeful-and-human-development",
       "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/4/the-sequence-problem/start/",
-      "targetSectionId": "v04-the-sequence-problem",
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/14-the-scales-of-the-dragon-earth-awakening/",
+      "targetSectionId": "v08-the-scales-of-the-dragon",
       "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/4/the-technological-architecture-in-detail/start/",
-      "targetSectionId": "v04-the-technological-architecture-in-detail",
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/15-two-addresses/",
+      "targetSectionId": "v08-two-addresses",
       "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/front-matter/preface/preface/",
-      "targetSectionId": "v03-the-next-nest",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/16-a-blessing-and-a-door/",
+      "targetSectionId": "v08-a-blessing-and-a-door",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-earth-compact/a-system-that-heals-what-it-inhabits/a-system-that-heals-what-it-inhabits-opening/",
-      "targetSectionId": "v03-a-system-that-heals-what-it-inhabits",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/2-the-accounting/",
+      "targetSectionId": "v08-the-accounting",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-earth-compact/a-system-that-heals-what-it-inhabits/a-system-that-heals-what-it-inhabits-the-architecture-of-a-federated-footprint/",
-      "targetSectionId": "v03-the-architecture-of-a-federated-footprint",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/3-the-present-tense-a-reckoning-of-the-year-2026/",
+      "targetSectionId": "v08-the-present-tense-a-reckoning-of-the-year-2026",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-earth-compact/a-system-that-heals-what-it-inhabits/a-system-that-heals-what-it-inhabits-the-network-as-ecological-force/",
-      "targetSectionId": "v03-the-network-as-ecological-force",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/4-the-birds-and-the-bees-the-second-meaning/",
+      "targetSectionId": "v08-the-birds-and-the-bees-the-second-meaning",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-earth-compact/a-system-that-heals-what-it-inhabits/a-system-that-heals-what-it-inhabits-the-regenerative-physical-infrastructure/",
-      "targetSectionId": "v03-the-regenerative-physical-infrastructure",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/5-the-shape-of-the-artifice-and-the-meaning-of-its-name/",
+      "targetSectionId": "v08-the-meaning-of-the-title",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-earth-compact/the-earth-compact-overview/the-earth-compact-overview/",
-      "targetSectionId": "v03-a-system-that-heals-what-it-inhabits",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/6-the-three-roads-otherwise/",
+      "targetSectionId": "v08-three-dangers",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/the-constitutional-problem/the-constitutional-problem-on-corruption-and-its-prevention-through-design/",
-      "targetSectionId": "v03-on-corruption-and-its-prevention-through-design",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/7-let-the-architects-speak/",
+      "targetSectionId": "v08-let-the-architects-speak",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/the-constitutional-problem/the-constitutional-problem-opening/",
-      "targetSectionId": "v03-the-constitutional-problem",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/8-the-selection-of-the-dark-triad/",
+      "targetSectionId": "v08-what-power-selects-for",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/the-constitutional-problem/the-constitutional-problem-the-three-chamber-governance-model/",
-      "targetSectionId": "v03-the-three-chamber-governance-model",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening/",
+      "targetSectionId": "v08-the-strain-on-liberal-democracy",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/the-constitutional-problem/the-constitutional-problem-two-entities-one-mission-one-productive-tension/",
-      "targetSectionId": "v03-two-entities-one-mission-one-productive-tension",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-1-where-the-work-has-brought-us/",
+      "targetSectionId": "v08-where-the-work-has-brought-us",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/the-governance-overview/the-governance-overview/",
-      "targetSectionId": "v03-the-constitutional-problem",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-10-the-case-rests-and-why-we-wrote-one-more-book/",
+      "targetSectionId": "v08-why-write-one-more-book",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-is-not-social-credit/why-providence-is-not-social-credit-opening/",
-      "targetSectionId": "v03-why-providence-is-not-social-credit",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-11-the-inversion-the-same-tools-the-opposite-god/",
+      "targetSectionId": "v08-the-same-tools-a-different-purpose",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-is-not-social-credit/why-providence-is-not-social-credit-the-deeper-difference-direction-of-intent/",
-      "targetSectionId": "v03-the-deeper-difference-direction-of-intent",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-12-how-providence-tends-the-three-primal-goods/",
+      "targetSectionId": "v08-how-providence-would-tend-three-primal-goods",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-is-not-social-credit/why-providence-is-not-social-credit-the-lines-that-cannot-be-crossed/",
-      "targetSectionId": "v03-the-lines-that-cannot-be-crossed",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-13-purposeful-cultivating-the-human-the-artifice-degrades/",
+      "targetSectionId": "v08-purposeful-and-human-development",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-is-not-social-credit/why-providence-is-not-social-credit-what-a-social-credit-system-is/",
-      "targetSectionId": "v03-what-a-social-credit-system-is",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-14-the-scales-of-the-dragon-earth-awakening/",
+      "targetSectionId": "v08-the-scales-of-the-dragon",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-is-not-social-credit/why-providence-is-not-social-credit-what-remains-permanently-sovereign/",
-      "targetSectionId": "v03-what-remains-permanently-sovereign",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-15-two-addresses/",
+      "targetSectionId": "v08-two-addresses",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-might-fail/why-providence-might-fail-many-ways-to-fail-and-many-ways-to-succeed/",
-      "targetSectionId": "v03-many-ways-to-fail-and-many-ways-to-succeed",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-16-a-blessing-and-a-door/",
+      "targetSectionId": "v08-a-blessing-and-a-door",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-might-fail/why-providence-might-fail-opening/",
-      "targetSectionId": "v03-why-providence-might-fail",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-2-the-accounting/",
+      "targetSectionId": "v08-the-accounting",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-might-fail/why-providence-might-fail-the-failure-of-authenticity-coherence-theater-and-the-performed-self/",
-      "targetSectionId": "v03-the-failure-of-authenticity-coherence-theater-and-the-performed-self",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-3-the-present-tense-a-reckoning-of-the-year-2026/",
+      "targetSectionId": "v08-the-present-tense-a-reckoning-of-the-year-2026",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-might-fail/why-providence-might-fail-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose/",
-      "targetSectionId": "v03-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-4-the-birds-and-the-bees-the-second-meaning/",
+      "targetSectionId": "v08-the-birds-and-the-bees-the-second-meaning",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-might-fail/why-providence-might-fail-the-failure-of-justice-what-if-providence-becomes-an-elite/",
-      "targetSectionId": "v03-the-failure-of-justice-what-if-providence-becomes-an-elite",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name/",
+      "targetSectionId": "v08-the-meaning-of-the-title",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-might-fail/why-providence-might-fail-the-failure-of-measurement-what-if-coherence-cannot-be-measured/",
-      "targetSectionId": "v03-the-failure-of-measurement-what-if-coherence-cannot-be-measured",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-6-the-three-roads-otherwise/",
+      "targetSectionId": "v08-three-dangers",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-might-fail/why-providence-might-fail-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward/",
-      "targetSectionId": "v03-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-7-let-the-architects-speak/",
+      "targetSectionId": "v08-let-the-architects-speak",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-might-fail/why-providence-might-fail-the-failure-of-spirit-cult-dynamics-and-ideological-capture/",
-      "targetSectionId": "v03-the-failure-of-spirit-cult-dynamics-and-ideological-capture",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-8-the-selection-of-the-dark-triad/",
+      "targetSectionId": "v08-what-power-selects-for",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-might-fail/why-providence-might-fail-the-failure-of-structure-what-if-coordination-naturally-centralizes/",
-      "targetSectionId": "v03-the-failure-of-structure-what-if-coordination-naturally-centralizes",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/8/contents/prologue-two-scenes/v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening/",
+      "targetSectionId": "v08-the-strain-on-liberal-democracy",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-might-fail/why-providence-might-fail-the-method-of-correction/",
-      "targetSectionId": "v03-the-method-of-correction",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/1-the-ninth-turn-where-the-eight-have-brought-us/",
+      "targetSectionId": "v09-the-ninth-turn-where-the-eight-have-brought-us",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-governance/why-providence-might-fail/why-providence-might-fail-what-this-chapter-is-for/",
-      "targetSectionId": "v03-what-this-chapter-is-for",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/1-the-ninth-turn-where-the-eight-have-brought-us/1-the-ninth-turn-where-the-eight-have-brought-us/",
+      "targetSectionId": "v09-the-ninth-turn-where-the-eight-have-brought-us",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-architecture-of-providence/the-architecture-of-providence-opening/",
-      "targetSectionId": "v03-the-architecture-of-providence",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/1-the-ninth-turn-where-the-eight-have-brought-us/v09-1-the-ninth-turn-where-the-eight-have-brought-us/",
+      "targetSectionId": "v09-the-ninth-turn-where-the-eight-have-brought-us",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-architecture-of-providence/the-architecture-of-providence-the-first-door-one-on-one-mentorship/",
-      "targetSectionId": "v03-the-first-door-one-on-one-mentorship",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/2-what-a-scale-is/",
+      "targetSectionId": "v09-what-a-scale-is",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-architecture-of-providence/the-architecture-of-providence-the-membrane-how-the-three-doors-become-one-network/",
-      "targetSectionId": "v03-the-membrane-how-the-three-doors-become-one-network",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/2-what-a-scale-is/2-what-a-scale-is/",
+      "targetSectionId": "v09-what-a-scale-is",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-architecture-of-providence/the-architecture-of-providence-the-second-door-the-retreats/",
-      "targetSectionId": "v03-the-second-door-the-retreats",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/2-what-a-scale-is/v09-2-what-a-scale-is/",
+      "targetSectionId": "v09-what-a-scale-is",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-architecture-of-providence/the-architecture-of-providence-the-third-door-the-year-long-curriculum/",
-      "targetSectionId": "v03-the-third-door-the-year-long-curriculum",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/3-providence-the-device-that-coordinates-the-many/",
+      "targetSectionId": "v09-providence-the-device-that-coordinates-the-many",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-currency-of-presence/the-currency-of-presence-how-the-currency-circulates/",
-      "targetSectionId": "v03-how-the-currency-circulates",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/3-providence-the-device-that-coordinates-the-many/3-providence-the-device-that-coordinates-the-many/",
+      "targetSectionId": "v09-providence-the-device-that-coordinates-the-many",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-currency-of-presence/the-currency-of-presence-opening/",
-      "targetSectionId": "v03-the-currency-of-presence",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/3-providence-the-device-that-coordinates-the-many/v09-3-providence-the-device-that-coordinates-the-many/",
+      "targetSectionId": "v09-providence-the-device-that-coordinates-the-many",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-currency-of-presence/the-currency-of-presence-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted/",
-      "targetSectionId": "v03-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/4-what-we-know-and-what-we-do-not/",
+      "targetSectionId": "v09-what-the-design-holds-and-what-remains-open",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-currency-of-presence/the-currency-of-presence-where-we-begin-and-where-we-are-heading/",
-      "targetSectionId": "v03-where-we-begin-and-where-we-are-heading",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/start/",
+      "targetSectionId": "v09-what-the-design-holds-and-what-remains-open",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-currency-of-presence/the-currency-of-presence-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church/",
-      "targetSectionId": "v03-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not/",
+      "targetSectionId": "v09-what-the-design-holds-and-what-remains-open",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-innovation-overview/the-innovation-overview/",
-      "targetSectionId": "v03-what-coordinates-wisdom",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/5-the-invitation-lay-one-stone/",
+      "targetSectionId": "v09-the-invitation-to-test-the-design",
+      "note": "Preserved from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-lineage/the-lineage-indigenous-governance-coordination-around-the-living-world/",
-      "targetSectionId": "v03-indigenous-governance-coordination-around-the-living-world",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/5-the-invitation-lay-one-stone/5-the-invitation-lay-one-stone/",
+      "targetSectionId": "v09-the-invitation-to-test-the-design",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-lineage/the-lineage-mutual-aid-and-cooperative-economics-provisioning-without-extraction/",
-      "targetSectionId": "v03-mutual-aid-and-cooperative-economics-provisioning-without-extraction",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/9/contents/5-the-invitation-lay-one-stone/v09-5-the-invitation-lay-one-stone/",
+      "targetSectionId": "v09-the-invitation-to-test-the-design",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-lineage/the-lineage-opening/",
-      "targetSectionId": "v03-the-lineage",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/cardinal-scale/contents/1-the-ninth-turn-where-the-eight-have-brought-us/v09-1-the-ninth-turn-where-the-eight-have-brought-us/",
+      "targetSectionId": "v09-the-ninth-turn-where-the-eight-have-brought-us",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-lineage/the-lineage-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold/",
-      "targetSectionId": "v03-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/cardinal-scale/contents/2-what-a-scale-is/v09-2-what-a-scale-is/",
+      "targetSectionId": "v09-what-a-scale-is",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-lineage/the-lineage-the-guilds-mentorship-and-the-transmission-of-mastery/",
-      "targetSectionId": "v03-the-guilds-mentorship-and-the-transmission-of-mastery",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/cardinal-scale/contents/3-providence-the-device-that-coordinates-the-many/v09-3-providence-the-device-that-coordinates-the-many/",
+      "targetSectionId": "v09-providence-the-device-that-coordinates-the-many",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-lineage/the-lineage-the-monasteries-institutions-that-hold-across-time/",
-      "targetSectionId": "v03-the-monasteries-institutions-that-hold-across-time",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/cardinal-scale/contents/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not/",
+      "targetSectionId": "v09-what-the-design-holds-and-what-remains-open",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-lineage/the-lineage-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter/",
-      "targetSectionId": "v03-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/cardinal-scale/contents/5-the-invitation-lay-one-stone/v09-5-the-invitation-lay-one-stone/",
+      "targetSectionId": "v09-the-invitation-to-test-the-design",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/the-lineage/the-lineage-the-synthesis-and-the-moment/",
-      "targetSectionId": "v03-the-synthesis-and-the-moment",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/cardinal-scale/front-matter/1-the-ninth-turn-where-the-eight-have-brought-us/v09-1-the-ninth-turn-where-the-eight-have-brought-us/",
+      "targetSectionId": "v09-the-ninth-turn-where-the-eight-have-brought-us",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/what-coordinates-wisdom/what-coordinates-wisdom-opening/",
-      "targetSectionId": "v03-what-coordinates-wisdom",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/cardinal-scale/front-matter/2-what-a-scale-is/v09-2-what-a-scale-is/",
+      "targetSectionId": "v09-what-a-scale-is",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-innovation/what-coordinates-wisdom/what-coordinates-wisdom-the-seven-initiates-a-topology-of-the-necessary-capacities/",
-      "targetSectionId": "v03-the-seven-initiates-a-topology-of-the-necessary-capacities",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/cardinal-scale/front-matter/3-providence-the-device-that-coordinates-the-many/v09-3-providence-the-device-that-coordinates-the-many/",
+      "targetSectionId": "v09-providence-the-device-that-coordinates-the-many",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-invitation/how-we-begin/how-we-begin-opening/",
-      "targetSectionId": "v03-how-we-begin",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not/",
+      "targetSectionId": "v09-what-the-design-holds-and-what-remains-open",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-invitation/how-we-begin/how-we-begin-the-financial-architecture-of-proof/",
-      "targetSectionId": "v03-the-financial-architecture-of-proof",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/cardinal-scale/front-matter/5-the-invitation-lay-one-stone/v09-5-the-invitation-lay-one-stone/",
+      "targetSectionId": "v09-the-invitation-to-test-the-design",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-invitation/how-we-begin/how-we-begin-the-first-gatherings/",
-      "targetSectionId": "v03-the-first-gatherings",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-living-world-2/",
+      "targetSectionId": "v08-the-living-world",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-invitation/how-we-begin/how-we-begin-the-sequence-how-providence-matures-version-by-version/",
-      "targetSectionId": "v03-the-sequence-how-providence-matures-version-by-version",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-state-of-2026-3/",
+      "targetSectionId": "v08-the-state-of-2026",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-invitation/the-flywheel/the-flywheel-how-the-wheel-begins-to-turn/",
-      "targetSectionId": "v03-how-the-wheel-begins-to-turn",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-1-where-the-work-has-brought-us/",
+      "targetSectionId": "v08-where-the-work-has-brought-us",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-invitation/the-flywheel/the-flywheel-opening/",
-      "targetSectionId": "v03-the-flywheel",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-10-the-case-rests-and-why-we-wrote-one-more-book/",
+      "targetSectionId": "v08-why-write-one-more-book",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-invitation/the-flywheel/the-flywheel-the-first-niche-coherence-in-gathering/",
-      "targetSectionId": "v03-the-first-niche-coherence-in-gathering",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-11-the-inversion-the-same-tools-the-opposite-god/",
+      "targetSectionId": "v08-the-same-tools-a-different-purpose",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-invitation/the-flywheel/the-flywheel-the-opening-and-what-it-is-worth/",
-      "targetSectionId": "v03-the-opening-and-what-it-is-worth",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-12-how-providence-tends-the-three-primal-goods/",
+      "targetSectionId": "v08-how-providence-would-tend-three-primal-goods",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-invitation/the-flywheel/the-flywheel-the-second-niche-the-companion-of-a-life/",
-      "targetSectionId": "v03-the-second-niche-the-companion-of-a-life",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-13-purposeful-cultivating-the-human-the-artifice-degrades/",
+      "targetSectionId": "v08-purposeful-and-human-development",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-invitation/the-flywheel/the-flywheel-where-we-honestly-begin/",
-      "targetSectionId": "v03-where-we-honestly-begin",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-14-the-scales-of-the-dragon-earth-awakening/",
+      "targetSectionId": "v08-the-scales-of-the-dragon",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-invitation/the-flywheel/the-flywheel-why-this-engine-is-both-possible-and-unbuilt/",
-      "targetSectionId": "v03-why-this-engine-is-both-possible-and-unbuilt",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-15-two-addresses/",
+      "targetSectionId": "v08-two-addresses",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-invitation/the-invitation-overview/the-invitation-overview/",
-      "targetSectionId": "v03-how-we-begin",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-16-a-blessing-and-a-door/",
+      "targetSectionId": "v08-a-blessing-and-a-door",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/how-presence-becomes-bread/how-presence-becomes-bread-marens-creek-and-the-harvest-that-came-from-it/",
-      "targetSectionId": "v03-marens-creek-and-the-harvest-that-came-from-it",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-2-the-accounting/",
+      "targetSectionId": "v08-the-accounting",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/how-presence-becomes-bread/how-presence-becomes-bread-opening/",
-      "targetSectionId": "v03-how-presence-becomes-bread",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-3-the-present-tense-a-reckoning-of-the-year-2026/",
+      "targetSectionId": "v08-the-present-tense-a-reckoning-of-the-year-2026",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/how-presence-becomes-bread/how-presence-becomes-bread-the-first-link-presence-widens-the-aperture-of-perception/",
-      "targetSectionId": "v03-the-first-link-presence-widens-the-aperture-of-perception",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-4-the-birds-and-the-bees-the-second-meaning/",
+      "targetSectionId": "v08-the-birds-and-the-bees-the-second-meaning",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/how-presence-becomes-bread/how-presence-becomes-bread-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship/",
-      "targetSectionId": "v03-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name/",
+      "targetSectionId": "v08-the-meaning-of-the-title",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/how-presence-becomes-bread/how-presence-becomes-bread-the-fourth-link-the-record-can-carry-material-weight/",
-      "targetSectionId": "v03-the-fourth-link-the-record-can-carry-material-weight",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-6-the-three-roads-otherwise/",
+      "targetSectionId": "v08-three-dangers",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/how-presence-becomes-bread/how-presence-becomes-bread-the-second-link-perception-makes-new-coordination-possible/",
-      "targetSectionId": "v03-the-second-link-perception-makes-new-coordination-possible",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-7-let-the-architects-speak/",
+      "targetSectionId": "v08-let-the-architects-speak",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/how-presence-becomes-bread/how-presence-becomes-bread-the-third-link-the-currency-makes-that-coordination-findable-and-trustable/",
-      "targetSectionId": "v03-the-third-link-the-currency-makes-that-coordination-findable-and-trustable",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-8-the-selection-of-the-dark-triad/",
+      "targetSectionId": "v08-what-power-selects-for",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/how-presence-becomes-bread/how-presence-becomes-bread-the-two-economies-and-what-each-is-for/",
-      "targetSectionId": "v03-the-two-economies-and-what-each-is-for",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening/",
+      "targetSectionId": "v08-the-strain-on-liberal-democracy",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/the-living-reality-overview/the-living-reality-overview/",
-      "targetSectionId": "v03-the-year-of-the-weaver",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-living-world-2/",
+      "targetSectionId": "v08-the-living-world",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/the-year-of-the-weaver/the-year-of-the-weaver-arrival/",
-      "targetSectionId": "v03-arrival",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-state-of-2026-3/",
+      "targetSectionId": "v08-the-state-of-2026",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/the-year-of-the-weaver/the-year-of-the-weaver-opening/",
-      "targetSectionId": "v03-the-year-of-the-weaver",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-1-where-the-work-has-brought-us/",
+      "targetSectionId": "v08-where-the-work-has-brought-us",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/the-year-of-the-weaver/the-year-of-the-weaver-the-first-matches/",
-      "targetSectionId": "v03-the-first-matches",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-10-the-case-rests-and-why-we-wrote-one-more-book/",
+      "targetSectionId": "v08-why-write-one-more-book",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/the-year-of-the-weaver/the-year-of-the-weaver-the-gathering/",
-      "targetSectionId": "v03-the-gathering",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-11-the-inversion-the-same-tools-the-opposite-god/",
+      "targetSectionId": "v08-the-same-tools-a-different-purpose",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/the-year-of-the-weaver/the-year-of-the-weaver-the-intake/",
-      "targetSectionId": "v03-the-intake",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-12-how-providence-tends-the-three-primal-goods/",
+      "targetSectionId": "v08-how-providence-would-tend-three-primal-goods",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-living-reality/the-year-of-the-weaver/the-year-of-the-weaver-the-record/",
-      "targetSectionId": "v03-the-record",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-13-purposeful-cultivating-the-human-the-artifice-degrades/",
+      "targetSectionId": "v08-purposeful-and-human-development",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-body-as-primary-text/the-body-as-primary-text-a-note-on-evidence-four-tiers-of-certainty/",
-      "targetSectionId": "v03-a-note-on-evidence-four-tiers-of-certainty",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-14-the-scales-of-the-dragon-earth-awakening/",
+      "targetSectionId": "v08-the-scales-of-the-dragon",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-body-as-primary-text/the-body-as-primary-text-opening/",
-      "targetSectionId": "v03-the-body-as-primary-text",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-15-two-addresses/",
+      "targetSectionId": "v08-two-addresses",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-body-as-primary-text/the-body-as-primary-text-what-the-body-reveals-that-the-will-cannot-conceal/",
-      "targetSectionId": "v03-what-the-body-reveals-that-the-will-cannot-conceal",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-16-a-blessing-and-a-door/",
+      "targetSectionId": "v08-a-blessing-and-a-door",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-coherence-engine-and-the-reflective-mirror/the-coherence-engine-and-the-reflective-mirror-opening/",
-      "targetSectionId": "v03-the-coherence-engine-and-the-reflective-mirror",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-2-the-accounting/",
+      "targetSectionId": "v08-the-accounting",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-coherence-engine-and-the-reflective-mirror/the-coherence-engine-and-the-reflective-mirror-the-reflective-mirror-how-the-engine-serves-the-people-it-measures/",
-      "targetSectionId": "v03-the-reflective-mirror-how-the-engine-serves-the-people-it-measures",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-3-the-present-tense-a-reckoning-of-the-year-2026/",
+      "targetSectionId": "v08-the-present-tense-a-reckoning-of-the-year-2026",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-coherence-engine-and-the-reflective-mirror/the-coherence-engine-and-the-reflective-mirror-the-shadows-we-name-before-they-name-themselves/",
-      "targetSectionId": "v03-the-shadows-we-name-before-they-name-themselves",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-4-the-birds-and-the-bees-the-second-meaning/",
+      "targetSectionId": "v08-the-birds-and-the-bees-the-second-meaning",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-four-streams/the-four-streams-opening/",
-      "targetSectionId": "v03-the-four-streams",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name/",
+      "targetSectionId": "v08-the-meaning-of-the-title",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-four-streams/the-four-streams-stream-four-the-pulse-as-endocrine-map/",
-      "targetSectionId": "v03-stream-four-the-pulse-as-endocrine-map",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-6-the-three-roads-otherwise/",
+      "targetSectionId": "v08-three-dangers",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-four-streams/the-four-streams-stream-one-the-language-of-genuine-encounter/",
-      "targetSectionId": "v03-stream-one-the-language-of-genuine-encounter",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-7-let-the-architects-speak/",
+      "targetSectionId": "v08-let-the-architects-speak",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-four-streams/the-four-streams-stream-three-the-heart-as-truth-teller/",
-      "targetSectionId": "v03-stream-three-the-heart-as-truth-teller",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-8-the-selection-of-the-dark-triad/",
+      "targetSectionId": "v08-what-power-selects-for",
+      "note": "Inherited from HEAD after an editorial route revision."
     },
     {
-      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-four-streams/the-four-streams-stream-two-the-voice-as-autonomic-readout/",
-      "targetSectionId": "v03-stream-two-the-voice-as-autonomic-readout",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-four-streams/the-four-streams-the-endocrine-frontier-reading-the-chemistry-of-connection/",
-      "targetSectionId": "v03-the-endocrine-frontier-reading-the-chemistry-of-connection",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-mechanism/the-mechanism-overview/the-mechanism-overview/",
-      "targetSectionId": "v03-the-body-as-primary-text",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/the-central-wound/the-central-wound-on-the-meaning-of-coordination-failure/",
-      "targetSectionId": "v03-on-the-meaning-of-coordination-failure",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/the-central-wound/the-central-wound-opening/",
-      "targetSectionId": "v03-the-central-wound",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/the-central-wound/the-central-wound-what-coherence-actually-means/",
-      "targetSectionId": "v03-what-coherence-actually-means",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/the-coordination-deadline/the-coordination-deadline-opening/",
-      "targetSectionId": "v03-the-coordination-deadline",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/the-coordination-deadline/the-coordination-deadline-the-convergence/",
-      "targetSectionId": "v03-the-convergence",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/the-coordination-deadline/the-coordination-deadline-the-first-force-intelligence-becomes-abundant/",
-      "targetSectionId": "v03-the-first-force-intelligence-becomes-abundant",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/the-coordination-deadline/the-coordination-deadline-the-multiplier-and-the-bottleneck/",
-      "targetSectionId": "v03-the-multiplier-and-the-bottleneck",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/the-coordination-deadline/the-coordination-deadline-the-second-force-trust-collapses-as-leverage-rises/",
-      "targetSectionId": "v03-the-second-force-trust-collapses-as-leverage-rises",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/the-coordination-deadline/the-coordination-deadline-the-third-force-the-slow-variables-come-due/",
-      "targetSectionId": "v03-the-third-force-the-slow-variables-come-due",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/the-coordination-deadline/the-coordination-deadline-why-now-and-why-not-later/",
-      "targetSectionId": "v03-why-now-and-why-not-later",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/the-reckoning-overview/the-reckoning-overview/",
-      "targetSectionId": "v03-the-central-wound",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/what-each-institution-solved-and-what-it-broke/what-each-institution-solved-and-what-it-broke-opening/",
-      "targetSectionId": "v03-what-each-institution-solved-and-what-it-broke",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/what-each-institution-solved-and-what-it-broke/what-each-institution-solved-and-what-it-broke-the-church-coordinating-meaning-across-time/",
-      "targetSectionId": "v03-the-church-coordinating-meaning-across-time",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/what-each-institution-solved-and-what-it-broke/what-each-institution-solved-and-what-it-broke-the-corporation-coordinating-exchange-at-velocity/",
-      "targetSectionId": "v03-the-corporation-coordinating-exchange-at-velocity",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/what-each-institution-solved-and-what-it-broke/what-each-institution-solved-and-what-it-broke-the-nation-state-coordinating-identity-across-space/",
-      "targetSectionId": "v03-the-nation-state-coordinating-identity-across-space",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/what-each-institution-solved-and-what-it-broke/what-each-institution-solved-and-what-it-broke-the-platform-coordinating-attention-toward-its-own-ends/",
-      "targetSectionId": "v03-the-platform-coordinating-attention-toward-its-own-ends",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-reckoning/what-each-institution-solved-and-what-it-broke/what-each-institution-solved-and-what-it-broke-the-university-coordinating-knowledge-across-generations/",
-      "targetSectionId": "v03-the-university-coordinating-knowledge-across-generations",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-sovereign-architecture/the-federated-imperative/the-federated-imperative-opening/",
-      "targetSectionId": "v03-the-federated-imperative",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-sovereign-architecture/the-federated-imperative/the-federated-imperative-providence-as-protocol-not-platform/",
-      "targetSectionId": "v03-providence-as-protocol-not-platform",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-sovereign-architecture/the-federated-imperative/the-federated-imperative-the-moral-obligation-not-to-centralize/",
-      "targetSectionId": "v03-the-moral-obligation-not-to-centralize",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-sovereign-architecture/the-sovereign-architecture-overview/the-sovereign-architecture-overview/",
-      "targetSectionId": "v03-the-federated-imperative",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-sovereign-architecture/why-it-must-be-open/why-it-must-be-open-an-honest-accounting-of-the-limits/",
-      "targetSectionId": "v03-an-honest-accounting-of-the-limits",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-sovereign-architecture/why-it-must-be-open/why-it-must-be-open-one-genius-at-a-time/",
-      "targetSectionId": "v03-one-genius-at-a-time",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-sovereign-architecture/why-it-must-be-open/why-it-must-be-open-opening/",
-      "targetSectionId": "v03-why-it-must-be-open",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-sovereign-architecture/why-it-must-be-open/why-it-must-be-open-sovereign-compute-the-machine-you-can-trust/",
-      "targetSectionId": "v03-sovereign-compute-the-machine-you-can-trust",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-sovereign-architecture/why-it-must-be-open/why-it-must-be-open-the-panopticon-pointed-at-the-self/",
-      "targetSectionId": "v03-the-panopticon-pointed-at-the-self",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-sovereign-architecture/why-it-must-be-open/why-it-must-be-open-the-pattern-we-refuse-to-repeat/",
-      "targetSectionId": "v03-the-pattern-we-refuse-to-repeat",
-      "note": "Reviewed successor from the complete catalog history."
-    },
-    {
-      "sourceHref": "/manuscripts/providence-imperative/the-sovereign-architecture/why-it-must-be-open/why-it-must-be-open-what-verifiability-actually-requires/",
-      "targetSectionId": "v03-what-verifiability-actually-requires",
-      "note": "Reviewed successor from the complete catalog history."
+      "sourceHref": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening/",
+      "targetSectionId": "v08-the-strain-on-liberal-democracy",
+      "note": "Inherited from HEAD after an editorial route revision."
     }
   ]
 }

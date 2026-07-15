@@ -315,7 +315,7 @@ test("reader settings update and persist local appearance preferences", async ({
     .getByRole("navigation", { name: "Page navigation" })
     .locator(".section-nav-link-next")
     .click();
-  await expect(page).toHaveURL(/on-form-timing-and-why-this-book-exists/);
+  await expect(page).toHaveURL(/the-work-behind-the-book/);
   await expect(page.locator("html")).toHaveAttribute(
     "data-reader-theme",
     "black",

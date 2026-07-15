@@ -1,20 +1,9 @@
 import { expect, type Page } from "@playwright/test";
-import audioManifestSource from "../../publishing/audio/manifest.json";
-import {
-  clipVoicePreferenceId,
-  type AudioClipManifest,
-} from "../../src/lib/audio-manifest";
 import { catalog, partById } from "../../src/lib/manuscript-data";
 import { readerEventsStorageKey } from "../../src/lib/reader-engagement";
 import { readerPreferencesStorageKey } from "../../src/lib/reader-preferences";
 import { readerProgressStorageKey } from "../../src/lib/reader-state";
 import { formatReadingDurationForWords } from "../../src/lib/reading-time";
-
-const audioManifest = audioManifestSource as AudioClipManifest;
-
-export const highQualityVoicePreferenceId = clipVoicePreferenceId(
-  audioManifest.voices[0]?.id ?? "default",
-);
 
 export const firstSection = catalog.sections[0]!;
 export const firstSectionVolume = catalog.volumes.find(
@@ -92,11 +81,12 @@ export const nextChapter =
 export const wieldingSection = catalog.sections.find(
   (section) => section.volumeId === "wielding-intelligence",
 )!;
-export const singleSectionChapterTarget = catalog.sections.find(
-  (section) =>
-    section.sectionId ===
-    "v03-the-second-link-perception-makes-new-coordination-possible",
-)!;
+export const singleSectionChapterTarget = catalog.sections.find((section) => {
+  const chapter = partById(section.volumeId, section.partId)?.chapters.find(
+    (candidate) => candidate.chapterId === section.chapterId,
+  );
+  return chapter?.sectionIds.length === 1;
+})!;
 export const singleSectionPart = partById(
   singleSectionChapterTarget.volumeId,
   singleSectionChapterTarget.partId,

@@ -26,6 +26,7 @@
   --font-body: var(--font-literata), Georgia, serif;
   --reader-font-scale: 1;
   --reader-font-scale-percent: 100%;
+  --reader-anchor-offset: 6rem;
   --header-background: #f4ead7;
   --nav-hover-background: rgba(164, 123, 63, 0.11);
   --panel-background: #fbf6eb;
@@ -222,6 +223,10 @@ html {
   color-scheme: light;
   font-size: var(--reader-font-scale-percent);
   scroll-behavior: smooth;
+}
+
+html:has(.reader-layout) {
+  scroll-padding-top: var(--reader-anchor-offset);
 }
 
 html[data-reader-animations="none"],
@@ -3694,7 +3699,7 @@ input {
 .reader-linkable-heading {
   position: relative;
   display: block;
-  scroll-margin-top: clamp(5rem, 12vh, 7.5rem);
+  scroll-margin-top: 0;
 }
 
 .reader-linkable-heading > h1,
@@ -5550,7 +5555,7 @@ input {
 
 .audio-word {
   position: relative;
-  scroll-margin-top: 6.75rem;
+  scroll-margin-top: 0;
   border-radius: 0.18em;
   cursor: pointer;
   transition:
@@ -5679,7 +5684,7 @@ input {
 
 .chapter-reader-section {
   max-width: 48rem;
-  scroll-margin-top: clamp(5rem, 12vh, 7.5rem);
+  scroll-margin-top: 0;
 }
 
 .legacy-section-anchor {
@@ -5687,7 +5692,7 @@ input {
   width: 0;
   height: 0;
   overflow: hidden;
-  scroll-margin-top: clamp(5rem, 12vh, 7.5rem);
+  scroll-margin-top: 0;
 }
 
 .chapter-reader-section + .chapter-reader-section {
@@ -6093,6 +6098,7 @@ input {
     --page-background-highlight-alpha: 0.15;
     --page-background-highlight-wash-alpha: 0.056;
     --page-background-highlight-spread: 24rem;
+    --reader-anchor-offset: calc(env(safe-area-inset-top) + 4.5625rem);
   }
 
   .site-header {
