@@ -95,6 +95,22 @@ describe("editorial sentence ledger", () => {
     ).toThrow(/not approved/);
   });
 
+  it("allows reviewed external authority in a finalized batch", () => {
+    expect(() =>
+      validateSentenceLedger([record({ reviewStatus: "reviewed" })], "ledger", {
+        requireFinalized: true,
+      }),
+    ).not.toThrow();
+  });
+
+  it("rejects unresolved sentences in a finalized batch", () => {
+    expect(() =>
+      validateSentenceLedger([record({ reviewStatus: "pending" })], "ledger", {
+        requireFinalized: true,
+      }),
+    ).toThrow(/not finalized/);
+  });
+
   it("requires approval evidence for each sentence", () => {
     expect(() =>
       validateSentenceLedger(

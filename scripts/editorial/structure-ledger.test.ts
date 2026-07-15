@@ -173,6 +173,34 @@ describe("editorial structure ledger", () => {
     ).not.toThrow();
   });
 
+  it("allows reviewed external authority in a finalized batch", () => {
+    const finalized = records();
+    finalized[0] = { ...finalized[0]!, reviewStatus: "reviewed" };
+    expect(() =>
+      validateStructureLedger(
+        finalized,
+        "sources/manuscripts/test.md",
+        baseline,
+        baseline,
+        { requireFinalized: true },
+      ),
+    ).not.toThrow();
+  });
+
+  it("rejects unresolved structure in a finalized batch", () => {
+    const pending = records();
+    pending[0] = { ...pending[0]!, reviewStatus: "pending" };
+    expect(() =>
+      validateStructureLedger(
+        pending,
+        "sources/manuscripts/test.md",
+        baseline,
+        baseline,
+        { requireFinalized: true },
+      ),
+    ).toThrow(/not finalized/);
+  });
+
   it("rejects a completely omitted heading", () => {
     expect(() =>
       validateStructureLedger(

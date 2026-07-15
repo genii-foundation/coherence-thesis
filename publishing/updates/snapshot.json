@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "e1741f2329b60e1f75d0a02dde6a15bab8917895",
+  "headSha": "0bb9947db8fb588db68a8f5abbc1402af83f89f4",
   "commits": [
+    {
+      "sha": "0bb9947db8fb588db68a8f5abbc1402af83f89f4",
+      "committedAt": "2026-07-15T00:02:46.000Z",
+      "subject": "Harden timestamped audiobook workflows (#143)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/0bb9947db8fb588db68a8f5abbc1402af83f89f4",
+      "filesChanged": 55,
+      "additions": 5523,
+      "deletions": 521,
+      "isLiterary": false
+    },
     {
       "sha": "e1741f2329b60e1f75d0a02dde6a15bab8917895",
       "committedAt": "2026-07-14T23:36:45.000Z",
