@@ -45,11 +45,11 @@ Every durable volume review batch contains `review.json`. The file is the comple
 
 - `batchId` matches the batch directory name.
 - `editorialId` matches the stable volume package directory.
-- `approvalState` records author approval. It is `pending` or `approved`.
+- `approvalState` records author approval of the reviewed manuscript. It is `pending` or `approved`. An approved batch may retain `reviewed` ledger records for wording whose external factual, medical, legal, historical, quotation, or implementation authority remains durable editorial debt. It must not relabel those unverified authorities as approved.
 - `standing` is `current`, `historical`, or `superseded`.
 - `scope.coverage` is `complete-volume`. Its sentence and structure counts must exactly match the two ledgers.
 - `validationState` is `pending` or `validated`. Approval requires validated evidence.
-- `openQueryCount` equals all ledger records whose review status is `query`. Approval requires zero open queries.
+- `openQueryCount` equals all ledger records whose review status is `query`. Approval requires zero open queries and no pending records. Every finalized record is either `reviewed` or `approved`.
 - `residualRisk` is `low`, `medium`, `high`, or `unassessed`. The detailed risks remain in the evidence ledgers and review record.
 - `publicationState` is `unpublished` or `published`. Published evidence requires author approval.
 - `baseline.commit` is a full immutable commit hash. Its path and hash identify the source at that revision.

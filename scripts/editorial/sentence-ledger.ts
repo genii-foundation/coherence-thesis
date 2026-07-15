@@ -62,6 +62,7 @@ export type BaselineSentenceSection = {
 
 type LedgerValidationOptions = {
   requireApproved?: boolean;
+  requireFinalized?: boolean;
 };
 
 type CoverageOptions = {
@@ -614,7 +615,10 @@ export function validateSentenceLedgerCurrent(
 export function validateSentenceLedger(
   records: SentenceLedgerRecord[],
   file = "sentence-ledger.jsonl",
-  { requireApproved = false }: LedgerValidationOptions = {},
+  {
+    requireApproved = false,
+    requireFinalized = false,
+  }: LedgerValidationOptions = {},
 ): void {
   if (records.length === 0) throw new Error(`${file}: ledger is empty.`);
   const addresses = new Set<string>();
@@ -644,20 +648,29 @@ export function validateSentenceLedger(
         `${file}:${index + 1}: sentence is not approved (${record.reviewStatus}).`,
       );
     }
-    if (requireApproved) {
+    if (
+      requireFinalized &&
+      record.reviewStatus !== "reviewed" &&
+      record.reviewStatus !== "approved"
+    ) {
+      throw new Error(
+        `${file}:${index + 1}: sentence is not finalized (${record.reviewStatus}).`,
+      );
+    }
+    if (requireApproved || requireFinalized) {
       if (record.reasonCodes.length === 0) {
         throw new Error(
-          `${file}:${index + 1}: an approved sentence needs at least one reason code.`,
+          `${file}:${index + 1}: a finalized sentence needs at least one reason code.`,
         );
       }
       if (record.claimTypes.length === 0) {
         throw new Error(
-          `${file}:${index + 1}: an approved sentence needs at least one explicit claim type.`,
+          `${file}:${index + 1}: a finalized sentence needs at least one explicit claim type.`,
         );
       }
       if (record.claimInvariants.length === 0) {
         throw new Error(
-          `${file}:${index + 1}: an approved sentence needs at least one claim invariant.`,
+          `${file}:${index + 1}: a finalized sentence needs at least one claim invariant.`,
         );
       }
     }

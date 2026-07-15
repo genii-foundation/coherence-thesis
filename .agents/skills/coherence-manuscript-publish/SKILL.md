@@ -99,7 +99,7 @@ Run the combined static and browser gate when routes or rendered manuscript beha
 - Require matching remote SHA256 metadata and byte size before reusing an immutable uploaded object.
 - Record stale or missing coverage in the pull request.
 - Do not upload clips, overwrite objects, or change remote storage from this skill.
-- Read docs/fish-audiobook-generation.md before any authorized audio publication run.
+- Read `publishing/guides/fish-audiobook-generation.md` before any authorized audio publication run.
 
 ## Prepare the pull request
 

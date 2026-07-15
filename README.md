@@ -211,7 +211,7 @@ The defaults favor finished audiobook quality: `s2.1-pro-free`, `latency=normal`
 
 A full run always retains the complete corpus inventory. A targeted command updates only its selected work queue. Reusing a run ID fails when its narrator, model, format, generation settings, or manuscript catalog differs. Use a new run ID when any of those inputs change. `--dry-run` prints the proposed inventory and cost without writing files.
 
-See [Fish audiobook generation](docs/fish-audiobook-generation.md) for the narrator audition protocol, candidate reference voices, quality settings, and timing sidecar contract.
+See [Fish audiobook generation](publishing/guides/fish-audiobook-generation.md) for the narrator audition protocol, candidate reference voices, quality settings, and timing sidecar contract.
 
 Publish with a new immutable version path. Audio and timing sidecars are uploaded together. Watch mode may upload completed immutable objects while generation continues, but it withholds `publishing/audio/manifest.json` until the complete corpus passes strict validation:
 

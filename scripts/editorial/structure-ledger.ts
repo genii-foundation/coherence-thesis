@@ -288,7 +288,10 @@ export function validateStructureLedger(
   sourceFile: string,
   baselineSource: string,
   currentSource: string,
-  { requireApproved = false }: { requireApproved?: boolean } = {},
+  {
+    requireApproved = false,
+    requireFinalized = false,
+  }: { requireApproved?: boolean; requireFinalized?: boolean } = {},
   file = "structure-ledger.jsonl",
 ): void {
   const baselineUnits = extractStructureUnits(baselineSource);
@@ -308,7 +311,16 @@ export function validateStructureLedger(
       throw new Error(`${file}:${index + 1}: structure unit is not approved.`);
     }
     if (
-      requireApproved &&
+      requireFinalized &&
+      record.reviewStatus !== "reviewed" &&
+      record.reviewStatus !== "approved"
+    ) {
+      throw new Error(
+        `${file}:${index + 1}: structure unit is not finalized (${record.reviewStatus}).`,
+      );
+    }
+    if (
+      (requireApproved || requireFinalized) &&
       record.routeImpact !== "unchanged" &&
       record.routeImpact !== "not-public" &&
       record.routeOutcome === pendingStructureRouteOutcome

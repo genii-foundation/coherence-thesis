@@ -782,7 +782,7 @@ function validateApprovedReconstruction(
   loadSections: SentenceSectionsLoader,
 ): void {
   validateSentenceLedger(context.sentenceRecords, context.sentenceFile, {
-    requireApproved: true,
+    requireFinalized: true,
   });
   const reviewedRef = context.manifest.reviewed.commit ?? "WORKTREE";
   const currentSections = relevantSections(
@@ -808,7 +808,7 @@ function validateApprovedReconstruction(
     [...sourceFiles][0]!,
     context.baselineSource,
     context.reviewedSource,
-    { requireApproved: true },
+    { requireFinalized: true },
     context.structureFile,
   );
 }

@@ -1,4 +1,4 @@
-# Fish Audiobook Generation
+# Fish Audiobook Generation and Publication
 
 ## Decision
 

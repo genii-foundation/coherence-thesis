@@ -6,10 +6,16 @@ import {
 import { audioManifestSourcePath } from "../repository/paths";
 import type { CompiledCatalog } from "./types";
 
-export function applyRecordedAudioDurations(catalog: CompiledCatalog): void {
-  const manifest = JSON.parse(
+function readAudioManifest(): AudioClipManifest {
+  return JSON.parse(
     fs.readFileSync(audioManifestSourcePath, "utf8"),
   ) as AudioClipManifest;
+}
+
+export function applyRecordedAudioDurations(
+  catalog: CompiledCatalog,
+  manifest: AudioClipManifest = readAudioManifest(),
+): void {
   const summary = recordedAudioDurationSummary(manifest, catalog.sections);
 
   for (const section of catalog.sections) {
@@ -18,6 +24,8 @@ export function applyRecordedAudioDurations(catalog: CompiledCatalog): void {
     );
     if (durationSeconds !== undefined) {
       section.audioDurationSeconds = durationSeconds;
+    } else {
+      delete section.audioDurationSeconds;
     }
   }
   catalog.stats.audioDurationSeconds = summary.durationSeconds;
