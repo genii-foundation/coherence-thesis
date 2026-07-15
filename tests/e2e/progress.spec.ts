@@ -979,6 +979,107 @@ test("reader navigation does not interrupt active playback", async ({ page }) =>
     .toBe(cancelCountAfterStart);
 });
 
+test("cross-section playback jumps keep the active audio queue", async ({
+  page,
+}) => {
+  await page.addInitScript(({ storageKey, preference }) => {
+    window.localStorage.setItem(storageKey, JSON.stringify(preference));
+    class TestSpeechSynthesisUtterance {
+      text: string;
+      rate = 1;
+      pitch = 1;
+      voice: SpeechSynthesisVoice | null = null;
+      onend: (() => void) | null = null;
+      onstart: (() => void) | null = null;
+
+      constructor(text: string) {
+        this.text = text;
+      }
+    }
+
+    const spokenTexts: string[] = [];
+    let currentUtterance: TestSpeechSynthesisUtterance | null = null;
+    Object.defineProperties(window, {
+      __spokenTexts: {
+        configurable: true,
+        value: spokenTexts,
+      },
+      __finishCurrentSpeech: {
+        configurable: true,
+        value: () => {
+          const utterance = currentUtterance;
+          currentUtterance = null;
+          utterance?.onend?.();
+        },
+      },
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      configurable: true,
+      value: TestSpeechSynthesisUtterance,
+    });
+    Object.defineProperty(window, "speechSynthesis", {
+      configurable: true,
+      value: {
+        addEventListener: () => undefined,
+        cancel: () => undefined,
+        getVoices: () => [{ name: "Samantha", voiceURI: "samantha" }],
+        pause: () => undefined,
+        removeEventListener: () => undefined,
+        resume: () => undefined,
+        speak: (utterance: TestSpeechSynthesisUtterance) => {
+          currentUtterance = utterance;
+          spokenTexts.push(utterance.text);
+          utterance.onstart?.();
+        },
+      },
+    });
+  }, { storageKey: audioVoiceStorageKey, preference: systemVoicePreference });
+
+  await page.goto(`${sectionWithNeighbors.href}?listen=1`);
+  await expect(page.getByRole("button", { name: "Pause audiobook" }))
+    .toBeVisible({ timeout: 15_000 });
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __spokenTexts: string[] }).__spokenTexts,
+      ),
+    )
+    .toHaveLength(1);
+
+  await page.evaluate(() =>
+    (
+      window as unknown as { __finishCurrentSpeech: () => void }
+    ).__finishCurrentSpeech(),
+  );
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __spokenTexts: string[] }).__spokenTexts,
+      ),
+    )
+    .toHaveLength(2);
+
+  const jumpLink = page.getByRole("link", { name: "Jump to playback location" });
+  await expect(jumpLink).toHaveAttribute(
+    "href",
+    new RegExp(`${nextSection.href}#audio-word-`),
+  );
+  await jumpLink.click();
+
+  await expect(page).toHaveURL(
+    new RegExp(`${nextSection.href}#audio-word-`),
+  );
+  await expect(page.getByRole("button", { name: "Pause audiobook" }))
+    .toBeVisible();
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => (window as unknown as { __spokenTexts: string[] }).__spokenTexts,
+      ),
+    )
+    .toHaveLength(2);
+});
+
 test("reading map renders the manuscript heatmap", async ({ page }) => {
   await page.goto("/progress/");
 
