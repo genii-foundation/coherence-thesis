@@ -15,11 +15,20 @@ import {
   AlertTriangle,
   CheckCircle2,
   Download,
+  LoaderCircle,
   RotateCcw,
 } from "lucide-react";
 import {
   emptyAudioClipManifest,
+  findAudioClip,
+  parseClipVoicePreferenceId,
+  resolveHostedVoicePreference,
+  type AudioClipManifest,
 } from "@/lib/audio-manifest";
+import {
+  audioNavigateAndPlayEventName,
+  type AudioNavigateAndPlayEventDetail,
+} from "@/lib/audio-events";
 import {
   buildOfflineAudioPacks,
   cacheOfflineAudioPack,
@@ -43,6 +52,7 @@ import {
 } from "@/lib/audio-playback";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 import { audioWordIdForCharIndex } from "@/lib/audio-word-anchors";
+import { audioBodyStartCharacter, textForAudio } from "@/lib/audio-text";
 import {
   loadProgressSections,
   loadReaderSections,
@@ -55,7 +65,6 @@ import { readerFragmentTarget } from "@/lib/reader-fragments";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import {
   appendStoredEvent,
-  readStoredProgress,
   useReaderProgress,
   updateStoredProgress,
 } from "@/lib/reader-progress-store";
@@ -125,6 +134,25 @@ function audioPreferencesEqual(
     left.voiceURI === right.voiceURI &&
     left.rate === right.rate &&
     left.pitch === right.pitch
+  );
+}
+
+function canStartHostedPlaybackImmediately(
+  manifest: AudioClipManifest,
+  preference: AudioVoicePreference,
+  item: AudioQueueItem,
+  startBodyCharIndex?: number,
+): boolean {
+  if ((startBodyCharIndex ?? 0) > 0) return false;
+  const voiceId = parseClipVoicePreferenceId(preference.voiceURI);
+  return Boolean(
+    voiceId &&
+      findAudioClip(
+        manifest,
+        voiceId,
+        item.sectionId,
+        item.audioVersionId,
+      ),
   );
 }
 
@@ -336,18 +364,22 @@ function usePlaybackShellProgress(playing: boolean): number {
 }
 
 function PlaybackToolbarIcon({
+  active,
+  loading,
   playing,
   waveformScales,
 }: {
+  active: boolean;
+  loading: boolean;
   playing: boolean;
   waveformScales: number[];
 }) {
-  const shellProgress = usePlaybackShellProgress(playing);
+  const shellProgress = usePlaybackShellProgress(active);
   const waveformX = 16 + 2.75 * shellProgress;
 
   return (
     <svg
-      className={`audio-playback-icon${playing ? " is-playing" : ""}`}
+      className={`audio-playback-icon${active ? " is-active" : ""}${playing ? " is-playing" : ""}${loading ? " is-loading" : ""}`}
       viewBox="0 0 48 48"
       width="48"
       height="48"
@@ -399,6 +431,15 @@ function PlaybackToolbarIcon({
           style={{ "--audio-waveform-scale": waveformScales[3] ?? 1 } as CSSProperties}
         />
       </g>
+      {loading ? (
+        <circle
+          className="audio-playback-spinner"
+          cx="24"
+          cy="24"
+          r="5.4"
+          pathLength="100"
+        />
+      ) : null}
     </svg>
   );
 }
@@ -428,6 +469,16 @@ export function AudioPlayerIsland({
   const audioManifest = useLoadedData(
     loadAudioClipManifest,
     emptyAudioClipManifest,
+  );
+  const resolvedDefaultVoicePreference = useMemo<AudioVoicePreference>(
+    () => ({
+      ...defaultVoicePreference,
+      voiceURI: resolveHostedVoicePreference(
+        audioManifest,
+        defaultVoicePreference.voiceURI,
+      ),
+    }),
+    [audioManifest],
   );
   const [hash, setHash] = useState("");
   useEffect(() => {
@@ -537,8 +588,8 @@ export function AudioPlayerIsland({
   const [preferenceReady, setPreferenceReady] = useState(false);
   const [voicesReady, setVoicesReady] = useState(false);
   const voiceGroups = useMemo(
-    () => audioVoiceMenuGroups({ voices, manifest: audioManifest }),
-    [audioManifest, voices],
+    () => audioVoiceMenuGroups({ voices, manifest: audioManifest, sections }),
+    [audioManifest, sections, voices],
   );
   const voiceIds = useMemo(() => selectableVoiceIds(voiceGroups), [voiceGroups]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -546,6 +597,7 @@ export function AudioPlayerIsland({
   const [playbackLocation, setPlaybackLocation] =
     useState<PlaybackLocation | null>(null);
   const [playing, setPlaying] = useState(false);
+  const [playbackPending, setPlaybackPending] = useState(false);
   const [pendingFallbackPlayback, setPendingFallbackPlayback] = useState(false);
   const waveformScales = usePlaybackWaveform(playing);
   const [supported, setSupported] = useState(true);
@@ -556,8 +608,8 @@ export function AudioPlayerIsland({
     Record<string, OfflineAudioDownloadProgress>
   >({});
   const [offlineError, setOfflineError] = useState<Record<string, string>>({});
-  const [downloadingVolumeId, setDownloadingVolumeId] = useState<string | null>(
-    null,
+  const [downloadingVolumeIds, setDownloadingVolumeIds] = useState<Set<string>>(
+    () => new Set(),
   );
   const playbackTokenRef = useRef(0);
   const audioStartedAtRef = useRef<number | null>(null);
@@ -568,8 +620,10 @@ export function AudioPlayerIsland({
   const visibleQueueRef = useRef<AudioQueueItem[]>([]);
   const activeIndexRef = useRef(0);
   const playingRef = useRef(false);
+  const playbackPendingRef = useRef(false);
   const playbackLocationRef = useRef<PlaybackLocation | null>(null);
   const speakRef = useRef<SpeakAudio | null>(null);
+  const downloadingVolumeIdsRef = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     playbackQueueRef.current = playbackQueue;
@@ -579,20 +633,41 @@ export function AudioPlayerIsland({
     visibleQueueRef.current = visibleQueue;
   }, [visibleQueue]);
 
-  const navigateToFallbackPlayback = useCallback(() => {
-    const latestProgress = readStoredProgress();
-    const target =
-      sectionQueue.find((section) => !isSectionRead(latestProgress, section)) ??
-      sectionQueue[0] ??
-      fallbackAudio;
-    if (target.href) router.push(`${target.href}?listen=1`);
-  }, [fallbackAudio, router, sectionQueue]);
-
   useEffect(() => {
-    if (!pendingFallbackPlayback || sections.length === 0) return;
+    if (!pendingFallbackPlayback) return;
+    if (!supported && preferenceReady) {
+      setPendingFallbackPlayback(false);
+      setPlaybackPending(false);
+      return;
+    }
+    if (
+      sections.length === 0 ||
+      !preferenceReady ||
+      !voicesReady ||
+      !speakRef.current
+    ) {
+      return;
+    }
+    const target = fallbackQueue[0];
+    if (!target) {
+      setPendingFallbackPlayback(false);
+      setPlaybackPending(false);
+      return;
+    }
     setPendingFallbackPlayback(false);
-    navigateToFallbackPlayback();
-  }, [navigateToFallbackPlayback, pendingFallbackPlayback, sections.length]);
+    void speakRef.current(0, preference, fallbackQueue);
+    const targetHref = target.readerHref ?? target.href;
+    if (targetHref) router.push(targetHref);
+  }, [
+    fallbackQueue,
+    pendingFallbackPlayback,
+    preference,
+    preferenceReady,
+    router,
+    sections.length,
+    supported,
+    voicesReady,
+  ]);
 
   useEffect(() => {
     activeIndexRef.current = activeIndex;
@@ -601,6 +676,10 @@ export function AudioPlayerIsland({
   useEffect(() => {
     playingRef.current = playing;
   }, [playing]);
+
+  useEffect(() => {
+    playbackPendingRef.current = playbackPending;
+  }, [playbackPending]);
 
   useEffect(() => {
     playbackLocationRef.current = playbackLocation;
@@ -695,7 +774,13 @@ export function AudioPlayerIsland({
   }, [offlinePacks]);
 
   useEffect(() => {
-    if (playingRef.current || provider.isPaused()) return;
+    if (
+      playingRef.current ||
+      playbackPendingRef.current ||
+      provider.isPaused()
+    ) {
+      return;
+    }
     const resetTimer = window.setTimeout(() => {
       setPlaybackQueue(visibleQueue);
       setActiveIndex(0);
@@ -716,8 +801,34 @@ export function AudioPlayerIsland({
       (voice) => voice.disabled && voice.id === preference.voiceURI,
     );
     if (pendingPreferredVoice) return;
-    setPreference((current) => ({ ...current, voiceURI: null }));
-  }, [preference.voiceURI, preferenceReady, voiceGroups, voiceIds, voicesReady]);
+    const resolvedVoiceURI = resolveHostedVoicePreference(
+      audioManifest,
+      preference.voiceURI,
+    );
+    if (resolvedVoiceURI === preference.voiceURI) return;
+    setPreference((current) => ({
+      ...current,
+      voiceURI: resolveHostedVoicePreference(audioManifest, current.voiceURI),
+    }));
+  }, [audioManifest, preference.voiceURI, preferenceReady, voiceGroups, voiceIds, voicesReady]);
+
+  const queueFromSectionIndex = useCallback(
+    (sectionIndex: number): AudioQueueItem[] =>
+      sections.slice(sectionIndex).map((section) => ({
+        sectionId: section.sectionId,
+        continuityId: section.continuityId,
+        legacyContinuityIds: section.legacyContinuityIds,
+        progressContinuityGroups: section.progressContinuityGroups,
+        contentHash: section.contentHash,
+        title: section.title,
+        text: "",
+        audioVersionId: section.audioVersionId,
+        href: section.href,
+        chapterHref: section.chapterHref,
+        readerHref: section.readerHref,
+      })),
+    [sections],
+  );
 
   useEffect(() => {
     const onStartFromWord = (event: Event) => {
@@ -727,19 +838,7 @@ export function AudioPlayerIsland({
         (section) => section.sectionId === detail.sectionId,
       );
       if (sectionIndex < 0) return;
-      const queueItems = sections.slice(sectionIndex).map((section) => ({
-        sectionId: section.sectionId,
-        continuityId: section.continuityId,
-        legacyContinuityIds: section.legacyContinuityIds,
-        progressContinuityGroups: section.progressContinuityGroups,
-        contentHash: section.contentHash,
-        title: section.title,
-      text: "",
-      audioVersionId: section.audioVersionId,
-      href: section.href,
-      chapterHref: section.chapterHref,
-      readerHref: section.readerHref,
-    }));
+      const queueItems = queueFromSectionIndex(sectionIndex);
       setOpen(true);
       setPlaybackLocation({
         sectionId: detail.sectionId,
@@ -758,7 +857,47 @@ export function AudioPlayerIsland({
     return () => {
       window.removeEventListener(audioStartFromWordEventName, onStartFromWord);
     };
-  }, [preference, sections, setOpen]);
+  }, [preference, queueFromSectionIndex, sections, setOpen]);
+
+  useEffect(() => {
+    const onNavigateAndPlay = (event: Event) => {
+      const audioEvent = event as CustomEvent<AudioNavigateAndPlayEventDetail>;
+      const detail = audioEvent.detail;
+      if (
+        !detail?.sectionId ||
+        !detail.href ||
+        !preferenceReady ||
+        !voicesReady ||
+        !supported ||
+        !speakRef.current
+      ) {
+        return;
+      }
+      const sectionIndex = sections.findIndex(
+        (section) => section.sectionId === detail.sectionId,
+      );
+      if (sectionIndex < 0) return;
+
+      const queueItems = queueFromSectionIndex(sectionIndex);
+      audioEvent.preventDefault();
+      setOpen(true);
+      void speakRef.current(0, preference, queueItems);
+      router.push(detail.href);
+    };
+    window.addEventListener(audioNavigateAndPlayEventName, onNavigateAndPlay);
+    return () => {
+      window.removeEventListener(audioNavigateAndPlayEventName, onNavigateAndPlay);
+    };
+  }, [
+    preference,
+    preferenceReady,
+    queueFromSectionIndex,
+    router,
+    sections,
+    setOpen,
+    supported,
+    voicesReady,
+  ]);
 
   async function ensurePlayableAudio(
     index: number,
@@ -779,29 +918,30 @@ export function AudioPlayerIsland({
     const item = queueItems[index];
     if (!item || !supported) return;
     flushAudioSeconds();
+    audioItemRef.current = null;
     setPlaybackQueue(queueItems);
-    audioStartedAtRef.current = Date.now();
-    audioItemRef.current = item;
-    audioPreferenceRef.current = playbackPreference;
-    appendStoredEvent(
-      createEngagementEvent("audio_started", {
-        sectionId: item.sectionId,
-        contentHash: item.audioVersionId,
-        route: pathname,
-      }),
-    );
-    const text = item.text || sectionTextRef.current?.get(item.sectionId) || "";
-    const prefix = `${item.title}. `;
+    const hasResolvedText =
+      Boolean(item.text) || Boolean(sectionTextRef.current?.has(item.sectionId));
+    let text = item.text || sectionTextRef.current?.get(item.sectionId) || "";
+    const fullText = textForAudio({ title: item.title, text });
+    const resolveText = hasResolvedText
+      ? undefined
+      : async () => {
+          const sectionText = await ensureSectionText();
+          text = sectionText.get(item.sectionId) ?? "";
+          return textForAudio({ title: item.title, text });
+        };
+    const bodyStartCharacter = audioBodyStartCharacter(item.title);
     const bodyStartCharIndex =
       typeof startBodyCharIndex === "number"
         ? Math.max(0, Math.min(text.length, startBodyCharIndex))
         : 0;
-    const fullStartCharIndex = prefix.length + bodyStartCharIndex;
+    const fullStartCharIndex = bodyStartCharacter + bodyStartCharIndex;
     const updatePlaybackProgress = (progress: AudioPlaybackProgress) => {
       if (token !== playbackTokenRef.current) return;
       const bodyCharIndex =
         typeof progress.charIndex === "number"
-          ? Math.max(0, progress.charIndex - prefix.length)
+          ? Math.max(0, progress.charIndex - bodyStartCharacter)
           : bodyStartCharIndex;
       const wordId = playbackWordId(item.sectionId, text, bodyCharIndex);
       const location = {
@@ -825,12 +965,30 @@ export function AudioPlayerIsland({
       wordId:
         startWordId ?? playbackWordId(item.sectionId, text, bodyStartCharIndex),
     });
+    setPlaybackPending(true);
+    setPlaying(false);
     provider.speak({
-      text: `${prefix}${text}`,
+      text: fullText,
+      resolveText,
       voiceId: playbackPreference.voiceURI,
       rate: playbackPreference.rate,
       pitch: playbackPreference.pitch,
       startCharIndex: fullStartCharIndex,
+      onStart: () => {
+        if (token !== playbackTokenRef.current) return;
+        audioStartedAtRef.current = Date.now();
+        audioItemRef.current = item;
+        audioPreferenceRef.current = playbackPreference;
+        setPlaybackPending(false);
+        appendStoredEvent(
+          createEngagementEvent("audio_started", {
+            sectionId: item.sectionId,
+            contentHash: item.audioVersionId,
+            route: pathname,
+          }),
+        );
+        setPlaying(true);
+      },
       onProgress: updatePlaybackProgress,
       onEnd: () => {
         if (token !== playbackTokenRef.current) return;
@@ -847,6 +1005,7 @@ export function AudioPlayerIsland({
           setActiveIndex(nextIndex);
           playIndex(nextIndex, token, playbackPreference, queueItems);
         } else {
+          setPlaybackPending(false);
           setPlaying(false);
         }
       },
@@ -859,17 +1018,27 @@ export function AudioPlayerIsland({
       onError: () => {
         if (token !== playbackTokenRef.current) return;
         flushAudioSeconds();
+        audioItemRef.current = null;
+        setPlaybackPending(false);
         setPlaying(false);
       },
     });
-    setPlaying(true);
   }
 
   async function downloadOfflinePack(volumeId: string): Promise<void> {
     const pack = offlinePacks.find((candidate) => candidate.volumeId === volumeId);
-    if (!pack || downloadingVolumeId) return;
+    if (!pack || downloadingVolumeIdsRef.current.has(volumeId)) return;
+    downloadingVolumeIdsRef.current.add(volumeId);
+    setDownloadingVolumeIds(new Set(downloadingVolumeIdsRef.current));
     setOfflineError((current) => ({ ...current, [volumeId]: "" }));
-    setDownloadingVolumeId(volumeId);
+    setOfflineProgress((current) => ({
+      ...current,
+      [volumeId]: {
+        cachedCount: current[volumeId]?.cachedCount ?? 0,
+        totalCount: pack.urls.length,
+        complete: false,
+      },
+    }));
     try {
       const status = await cacheOfflineAudioPack(pack, (progress) => {
         setOfflineProgress((current) => ({ ...current, [volumeId]: progress }));
@@ -884,7 +1053,8 @@ export function AudioPlayerIsland({
             : "Download failed. Please try again.",
       }));
     } finally {
-      setDownloadingVolumeId(null);
+      downloadingVolumeIdsRef.current.delete(volumeId);
+      setDownloadingVolumeIds(new Set(downloadingVolumeIdsRef.current));
     }
   }
 
@@ -909,6 +1079,7 @@ export function AudioPlayerIsland({
     ) {
       audioStartedAtRef.current = Date.now();
       provider.resume();
+      setPlaybackPending(false);
       setPlaying(true);
       appendStoredEvent(
         createEngagementEvent("audio_resumed", {
@@ -920,15 +1091,35 @@ export function AudioPlayerIsland({
       return;
     }
 
-    if (!item) return;
-    // Hosted clips still need full text loaded before playback so browser
-    // speech can recover with the complete section if network media fails.
-    await ensurePlayableAudio(index, queueItems);
+    if (!item || !supported) return;
     const token = playbackTokenRef.current + 1;
     playbackTokenRef.current = token;
     flushAudioSeconds();
+    audioItemRef.current = null;
     provider.cancel();
     setActiveIndex(index);
+    setPlaybackQueue(queueItems);
+    setPlaybackPending(true);
+    setPlaying(false);
+
+    const startHostedImmediately = canStartHostedPlaybackImmediately(
+      audioManifest,
+      playbackPreference,
+      item,
+      startBodyCharIndex,
+    );
+    if (!startHostedImmediately) {
+      try {
+        await ensurePlayableAudio(index, queueItems);
+      } catch {
+        if (token === playbackTokenRef.current) {
+          setPlaybackPending(false);
+          setPlaying(false);
+        }
+        return;
+      }
+      if (token !== playbackTokenRef.current) return;
+    }
     playIndex(
       index,
       token,
@@ -946,7 +1137,7 @@ export function AudioPlayerIsland({
   async function restartActivePlayback(
     playbackPreference: AudioVoicePreference,
   ): Promise<void> {
-    if (!playing) return;
+    if (!playing && !playbackPending) return;
     const index = activeIndexRef.current;
     const queueItems = playbackQueueRef.current;
     const item = queueItems[index];
@@ -955,11 +1146,20 @@ export function AudioPlayerIsland({
       playbackLocationRef.current?.sectionId === item.sectionId
         ? playbackLocationRef.current.bodyCharIndex
         : 0;
-    await ensurePlayableAudio(index, queueItems);
     const token = playbackTokenRef.current + 1;
     playbackTokenRef.current = token;
     flushAudioSeconds();
+    audioItemRef.current = null;
     provider.cancel();
+    setPlaybackPending(true);
+    setPlaying(false);
+    try {
+      await ensurePlayableAudio(index, queueItems);
+    } catch {
+      if (token === playbackTokenRef.current) setPlaybackPending(false);
+      return;
+    }
+    if (token !== playbackTokenRef.current) return;
     playIndex(index, token, playbackPreference, queueItems, bodyCharIndex);
   }
 
@@ -975,22 +1175,34 @@ export function AudioPlayerIsland({
         }),
       );
     }
+    if (playbackPendingRef.current) playbackTokenRef.current += 1;
+    setPendingFallbackPlayback(false);
     provider.pause();
+    setPlaybackPending(false);
     setPlaying(false);
   }
 
   function handleToolbarButtonClick(): void {
-    if (playing) {
+    if (playing || playbackPending) {
       setOpen(true);
       pause();
       return;
     }
     if (visibleQueueRef.current.length === 0) {
       if (sections.length === 0) {
+        setOpen(true);
         setPendingFallbackPlayback(true);
+        setPlaybackPending(true);
         return;
       }
-      navigateToFallbackPlayback();
+      if (fallbackQueue.length > 0) {
+        const target = fallbackQueue[0]!;
+        setOpen(true);
+        void speak(0, preference, fallbackQueue);
+        const targetHref = target.readerHref ?? target.href;
+        if (targetHref) router.push(targetHref);
+        return;
+      }
       return;
     }
     setOpen(true);
@@ -1052,8 +1264,8 @@ export function AudioPlayerIsland({
   function resetVoice(): void {
     const nextPreference = {
       ...preference,
-      voiceURI: defaultVoicePreference.voiceURI,
-      useSystemVoice: defaultVoicePreference.useSystemVoice,
+      voiceURI: resolvedDefaultVoicePreference.voiceURI,
+      useSystemVoice: resolvedDefaultVoicePreference.useSystemVoice,
     };
     setPreference(nextPreference);
     void restartActivePlayback(nextPreference);
@@ -1080,21 +1292,28 @@ export function AudioPlayerIsland({
       ? `${active.href}#${playbackLocation.wordId}`
       : active.href;
   const voiceIsDefault =
-    preference.voiceURI === defaultVoicePreference.voiceURI &&
+    preference.voiceURI === resolvedDefaultVoicePreference.voiceURI &&
     preference.useSystemVoice !== true;
   const speedIsDefault = preference.rate === defaultVoicePreference.rate;
+  const playbackActive = playing || playbackPending;
 
   return (
     <div className="audio-menu" ref={containerRef}>
       <button
         {...triggerProps}
         type="button"
-        className={`audio-menu-button${playing ? " is-playing" : ""}`}
+        className={`audio-menu-button${playbackActive ? " is-playing" : ""}`}
         aria-controls="audiobook-menu"
-        aria-label={playing ? "Pause audiobook" : "Listen"}
+        aria-label={playbackActive ? "Pause audiobook" : "Listen"}
+        aria-busy={playbackPending}
         onClick={handleToolbarButtonClick}
       >
-        <PlaybackToolbarIcon playing={playing} waveformScales={waveformScales} />
+        <PlaybackToolbarIcon
+          active={playbackActive}
+          loading={playbackPending}
+          playing={playing}
+          waveformScales={waveformScales}
+        />
       </button>
       {rendered && (
         <section
@@ -1193,7 +1412,7 @@ export function AudioPlayerIsland({
                 const cachedCount = progress?.cachedCount ?? 0;
                 const totalCount = progress?.totalCount ?? pack.urls.length;
                 const complete = Boolean(status?.complete);
-                const downloading = downloadingVolumeId === pack.volumeId;
+                const downloading = downloadingVolumeIds.has(pack.volumeId);
                 const clipsPending = pack.audioClipCount === 0;
                 const percent =
                   totalCount > 0
@@ -1219,14 +1438,23 @@ export function AudioPlayerIsland({
                       type="button"
                       className="audio-offline-button"
                       onClick={() => void downloadOfflinePack(pack.volumeId)}
-                      disabled={downloadingVolumeId !== null || clipsPending || complete}
+                      disabled={downloading || clipsPending || complete}
+                      aria-busy={downloading}
                       aria-label={
-                        complete
+                        downloading
+                          ? `Downloading ${pack.title}: ${percent.toLocaleString()}%`
+                          : complete
                           ? `${pack.title} is available offline`
                           : `Download ${pack.title} for offline playback`
                       }
                     >
-                      {complete ? (
+                      {downloading ? (
+                        <LoaderCircle
+                          className="audio-offline-spinner"
+                          aria-hidden="true"
+                          size={17}
+                        />
+                      ) : complete ? (
                         <CheckCircle2 aria-hidden="true" size={17} />
                       ) : clipsPending ? (
                         <AlertTriangle aria-hidden="true" size={17} />

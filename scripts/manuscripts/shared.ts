@@ -1676,6 +1676,8 @@ export function buildCatalog(
       sectionCount: sections.length,
       wordCount: wordTotal,
       readingMinutes: readingMinutes(wordTotal),
+      audioDurationSeconds: 0,
+      recordedAudioSectionCount: 0,
     },
     volumes,
     sections: outputSections,

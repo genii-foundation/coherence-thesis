@@ -43,10 +43,10 @@ const cloudViewBoxSize = 64;
 const cloudPathLength = 188.17681884765625;
 const cloudTopPoint = { x: 30.857, y: 11.248 };
 const cloudProgressBlipRadius = 1.9;
-const offlineCircleRadius = 25.2;
+const offlineCircleRadius = 19.5;
 const offlineCircleLength = 2 * Math.PI * offlineCircleRadius;
 const offlineProgressBlipRadius = 1.6;
-const offlineProgressStartY = 6.8;
+const offlineProgressStartY = cloudViewBoxSize / 2 - offlineCircleRadius;
 
 const syncOrbitVariant: ProgressCloudVariant = {
   id: "sync-orbit",

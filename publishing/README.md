@@ -52,7 +52,9 @@ Validate a generated audio run against the current catalog before uploading:
 
     npm run audio:publish-manifest -- --run-id <run-id> --version <version> --project-ref <project-ref>
 
-The default command validates without writing. Add `--write` only after reviewing the manifest diff. Add `--upload` only after explicit publication authorization. Upload mode also writes the reviewed manifest. Use a new immutable version path and environment-provided credentials. Never overwrite a published object in place.
+The default command validates without writing. Only a complete full corpus run can become durable publishing state. Timestamped runs require one current audio file and one valid timing sidecar for every section and voice. Source files must resolve from contained relative paths within the selected generated run. Add `--write` only after reviewing the manifest diff. Add `--upload` only after explicit publication authorization. Upload mode also writes the reviewed manifest. Use a new immutable version path and environment-provided credentials. Every remote object must match its signed SHA256 metadata and byte size before it can be reused. Never overwrite a published object in place.
+
+Fish full corpus runs require exactly one pinned narrator in the form `<voice-id>:<reference-id>:<label>`. Store credentials in the ignored `.env.audio.local` file at the primary checkout. See `docs/fish-audiobook-generation.md` for the audition, generation, timing, and watch mode workflow.
 
 ## Updates workflow
 

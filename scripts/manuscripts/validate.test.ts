@@ -20,6 +20,8 @@ function catalogWithRevision(gitRevision: string): CompiledCatalog {
       sectionCount: 1,
       wordCount: 10,
       readingMinutes: 1,
+      audioDurationSeconds: 0,
+      recordedAudioSectionCount: 0,
     },
     volumes: [],
     sections: [],

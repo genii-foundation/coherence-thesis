@@ -26,6 +26,7 @@ import {
   audioManifestSourcePath,
   publicAudioManifestPath,
 } from "../repository/paths";
+import { applyRecordedAudioDurations } from "./audio-durations";
 
 function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
   const routes = new Map<
@@ -82,6 +83,7 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
 
 export async function compileManuscripts(): Promise<void> {
   const catalog = buildCatalog();
+  applyRecordedAudioDurations(catalog);
   validateSectionLineageConfig(catalog);
   // Compilation is safe to run from every development and build lifecycle.
   // It must enforce the durable route contract, but it must never expand that

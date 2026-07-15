@@ -1,15 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
-import { execFileSync } from "node:child_process";
 import {
   artifactsAudioRoot,
   audioDurationSeconds,
   buildManifestFiles,
-  chunkTextForAudio,
   createRunManifest,
   createSettings,
-  existingFileMetadata,
-  fishTts,
+  fishTtsWithTimestamps,
   generatedFileFingerprint,
   parseVoices,
   relativeToRepo,
@@ -17,18 +14,41 @@ import {
   selectSections,
   settingsHash,
   trimTextForAudio,
+  validateVoicesForRun,
   writeRunManifest,
+  type AudioTimingSource,
+  type FishAudioFormat,
   type FishAudioFile,
   type FishRunMode,
+  type FishTimestampedAudio,
 } from "./fish-generator";
-import { ensureDir, writeJson } from "../manuscripts/shared";
+import { ensureDir, sha256, writeJson } from "../manuscripts/shared";
 import type { CompiledCatalog } from "../manuscripts/types";
+import {
+  createAudioTimingDocument,
+  isAudioTimingDocument,
+  type AudioTimingDocument,
+  type FishTimestampChunk,
+} from "../../src/lib/audio-timings";
+import { textForAudio } from "../../src/lib/audio-text";
+import { loadAudioLocalEnv } from "./audio-local-env";
 import { generatedCatalogPath } from "../repository/paths";
+import { resolveAudioRunFile, resolveAudioRunRoot } from "./audio-paths";
+import {
+  mergeCompatibleRunManifest,
+  selectRunWorkFiles,
+} from "./fish-run-resume";
+import {
+  defaultMlxWhisperModel,
+  mlxAlignmentChunk,
+  MlxWhisperAligner,
+} from "./mlx-whisper-aligner";
 
 type CliOptions = {
   mode: FishRunMode;
   dryRun: boolean;
   model: string;
+  format: FishAudioFormat;
   runId: string;
   voices: string | undefined;
   sectionIds: string[];
@@ -36,11 +56,17 @@ type CliOptions = {
   concurrency: number;
   speed: number;
   normalize: boolean;
-  temperature?: number;
-  topP?: number;
+  latency: "normal" | "balanced" | "low";
+  chunkLength: number;
+  opusBitrate: 24000 | 32000 | 48000 | 64000;
+  temperature: number;
+  topP: number;
   maxCharacters: number | null;
-  chunkCharacters: number;
   timeoutMs: number;
+  timingSource: AudioTimingSource;
+  localAlignmentModel: string;
+  localAlignmentConcurrency: number;
+  localAlignmentPython: string | undefined;
 };
 
 function optionValue(args: string[], name: string): string | undefined {
@@ -62,7 +88,20 @@ function parseNumber(value: string | undefined, fallback: number): number {
   return parsed;
 }
 
-function parseCli(args: string[]): CliOptions {
+function parseChoice<T extends string>(
+  value: string | undefined,
+  fallback: T,
+  choices: readonly T[],
+  name: string,
+): T {
+  const chosen = (value ?? fallback) as T;
+  if (!choices.includes(chosen)) {
+    throw new Error(`${name} must be one of: ${choices.join(", ")}.`);
+  }
+  return chosen;
+}
+
+export function parseFishGenerateOptions(args: string[]): CliOptions {
   const mode = (optionValue(args, "--mode") ?? "sample") as FishRunMode;
   if (mode !== "sample" && mode !== "full") {
     throw new Error("--mode must be 'sample' or 'full'.");
@@ -75,17 +114,75 @@ function parseCli(args: string[]): CliOptions {
 
   const limitValue = optionValue(args, "--limit");
   const limit = limitValue === undefined ? null : parseNumber(limitValue, 0);
-  if (limit !== null && limit < 1) throw new Error("--limit must be at least 1.");
+  if (limit !== null && (!Number.isInteger(limit) || limit < 1)) {
+    throw new Error("--limit must be a positive integer.");
+  }
 
   const concurrency = Math.max(1, Math.floor(parseNumber(optionValue(args, "--concurrency"), 1)));
   const speed = parseNumber(optionValue(args, "--speed"), 1);
+  if (speed < 0.5 || speed > 2) {
+    throw new Error("--speed must be between 0.5 and 2.");
+  }
   const maxCharactersValue = optionValue(args, "--max-chars");
-  const chunkCharacters = Math.floor(parseNumber(optionValue(args, "--chunk-chars"), 1_500));
+  if (mode === "full" && maxCharactersValue !== undefined) {
+    throw new Error("--max-chars is only allowed for sample auditions.");
+  }
+  const maxCharacters = maxCharactersValue === undefined
+    ? null
+    : parseNumber(maxCharactersValue, 0);
+  if (
+    maxCharacters !== null &&
+    (!Number.isInteger(maxCharacters) || maxCharacters < 1)
+  ) {
+    throw new Error("--max-chars must be a positive integer.");
+  }
+  const format = parseChoice(
+    optionValue(args, "--format"),
+    "opus",
+    ["opus", "wav"] as const,
+    "--format",
+  );
+  const latency = parseChoice(
+    optionValue(args, "--latency"),
+    "normal",
+    ["normal", "balanced", "low"] as const,
+    "--latency",
+  );
+  const chunkLength = Math.floor(parseNumber(optionValue(args, "--chunk-length"), 300));
+  if (chunkLength < 100 || chunkLength > 300) {
+    throw new Error("--chunk-length must be between 100 and 300.");
+  }
+  const opusBitrate = parseNumber(optionValue(args, "--opus-bitrate"), 64000);
+  if (![24000, 32000, 48000, 64000].includes(opusBitrate)) {
+    throw new Error("--opus-bitrate must be 24000, 32000, 48000, or 64000.");
+  }
+  const temperature = parseNumber(optionValue(args, "--temperature"), 0.7);
+  const topP = parseNumber(optionValue(args, "--top-p"), 0.7);
+  if (temperature < 0 || temperature > 1) {
+    throw new Error("--temperature must be between 0 and 1.");
+  }
+  if (topP < 0 || topP > 1) {
+    throw new Error("--top-p must be between 0 and 1.");
+  }
+  const timingSource = parseChoice(
+    optionValue(args, "--timing-source"),
+    "fallback",
+    ["fish", "fallback", "local"] as const,
+    "--timing-source",
+  );
+  const localAlignmentConcurrency = parseNumber(
+    optionValue(args, "--alignment-concurrency"),
+    1,
+  );
+  if (!Number.isInteger(localAlignmentConcurrency) || localAlignmentConcurrency < 1) {
+    throw new Error("--alignment-concurrency must be a positive integer.");
+  }
 
   return {
     mode,
     dryRun: hasFlag(args, "--dry-run"),
-    model: optionValue(args, "--model") ?? "s2.1-pro",
+    model: optionValue(args, "--model") ?? "s2.1-pro-free",
+    format,
     runId: optionValue(args, "--run-id") ?? runIdForNow(),
     voices: optionValue(args, "--voices") ?? process.env.FISH_AUDIO_VOICES,
     sectionIds,
@@ -93,18 +190,21 @@ function parseCli(args: string[]): CliOptions {
     concurrency,
     speed,
     normalize: !hasFlag(args, "--no-normalize"),
-    maxCharacters:
-      maxCharactersValue === undefined ? null : parseNumber(maxCharactersValue, 0),
-    chunkCharacters,
-    timeoutMs: Math.max(1, Math.floor(parseNumber(optionValue(args, "--timeout-ms"), 180_000))),
-    temperature:
-      optionValue(args, "--temperature") === undefined
-        ? undefined
-        : parseNumber(optionValue(args, "--temperature"), 0),
-    topP:
-      optionValue(args, "--top-p") === undefined
-        ? undefined
-        : parseNumber(optionValue(args, "--top-p"), 0),
+    latency,
+    chunkLength,
+    opusBitrate: opusBitrate as CliOptions["opusBitrate"],
+    maxCharacters,
+    timeoutMs: Math.max(1, Math.floor(parseNumber(optionValue(args, "--timeout-ms"), 600_000))),
+    temperature,
+    topP,
+    timingSource,
+    localAlignmentModel:
+      optionValue(args, "--mlx-model") ??
+      process.env.MLX_WHISPER_MODEL ??
+      defaultMlxWhisperModel,
+    localAlignmentConcurrency,
+    localAlignmentPython:
+      optionValue(args, "--mlx-python") ?? process.env.MLX_WHISPER_PYTHON,
   };
 }
 
@@ -124,131 +224,342 @@ async function runWithConcurrency<T>(
   await Promise.all(workers);
 }
 
+function cacheKeyWithoutFingerprint(value: string): string {
+  return value.replace(/\/[a-f0-9]{12}$/i, "");
+}
+
+function readTimingDocument(filePath: string): AudioTimingDocument | null {
+  try {
+    const parsed: unknown = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    return isAudioTimingDocument(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function isFishTimestampChunk(value: unknown): value is FishTimestampChunk {
+  if (!value || typeof value !== "object") return false;
+  const chunk = value as Partial<FishTimestampChunk>;
+  return (
+    typeof chunk.chunkSeq === "number" &&
+    Number.isInteger(chunk.chunkSeq) &&
+    chunk.chunkSeq >= 0 &&
+    typeof chunk.content === "string" &&
+    typeof chunk.offsetSeconds === "number" &&
+    Number.isFinite(chunk.offsetSeconds) &&
+    chunk.offsetSeconds >= 0 &&
+    typeof chunk.audioDurationSeconds === "number" &&
+    Number.isFinite(chunk.audioDurationSeconds) &&
+    chunk.audioDurationSeconds > 0 &&
+    Array.isArray(chunk.segments) &&
+    chunk.segments.every((segment) => (
+      segment &&
+      typeof segment.text === "string" &&
+      typeof segment.start === "number" &&
+      Number.isFinite(segment.start) &&
+      segment.start >= 0 &&
+      typeof segment.end === "number" &&
+      Number.isFinite(segment.end) &&
+      segment.end >= segment.start
+    ))
+  );
+}
+
+export function readPreservedFishGeneration(
+  audioPath: string,
+  fishTimingsPath: string,
+): FishTimestampedAudio | null {
+  if (!fs.existsSync(audioPath) || !fs.existsSync(fishTimingsPath)) return null;
+  try {
+    const audio = fs.readFileSync(audioPath);
+    if (audio.byteLength === 0 || !audioDurationSeconds(audioPath)) return null;
+    const parsed = JSON.parse(fs.readFileSync(fishTimingsPath, "utf8")) as {
+      version?: unknown;
+      chunks?: unknown;
+      snapshots?: unknown;
+    };
+    if (
+      parsed.version !== 1 ||
+      !Array.isArray(parsed.chunks) ||
+      !parsed.chunks.every(isFishTimestampChunk)
+    ) {
+      return null;
+    }
+    const snapshots = Array.isArray(parsed.snapshots) &&
+      parsed.snapshots.every(isFishTimestampChunk)
+      ? parsed.snapshots
+      : parsed.chunks;
+    return {
+      audio,
+      chunks: parsed.chunks,
+      snapshots,
+    };
+  } catch {
+    return null;
+  }
+}
+
+export function reuseExistingGeneratedFile(
+  file: FishAudioFile,
+  text: string,
+): boolean {
+  if (!file.timingsOutputPath || !file.audioSha256 || !file.timingsSha256) {
+    return false;
+  }
+  if (!fs.existsSync(file.outputPath) || !fs.existsSync(file.timingsOutputPath)) {
+    return false;
+  }
+  const audio = fs.readFileSync(file.outputPath);
+  const timingBytes = fs.readFileSync(file.timingsOutputPath);
+  if (audio.byteLength === 0 || timingBytes.byteLength === 0) return false;
+  const audioSha256 = generatedFileFingerprint(audio);
+  const timingsSha256 = generatedFileFingerprint(timingBytes);
+  if (
+    audioSha256 !== file.audioSha256 ||
+    timingsSha256 !== file.timingsSha256 ||
+    audio.byteLength !== file.byteSize ||
+    timingBytes.byteLength !== file.timingsByteSize
+  ) {
+    return false;
+  }
+  const timings = readTimingDocument(file.timingsOutputPath);
+  if (
+    !timings ||
+    timings.sectionId !== file.sectionId ||
+    timings.audioVersionId !== file.audioVersionId ||
+    timings.voiceId !== file.voiceId ||
+    timings.textCharacters !== text.length ||
+    timings.durationSeconds <= 0 ||
+    timings.exactWordCount !== file.exactWordCount ||
+    timings.interpolatedWordCount !== file.interpolatedWordCount ||
+    !file.durationSeconds ||
+    file.durationSeconds <= 0
+  ) {
+    return false;
+  }
+  const expectedFingerprint = audioSha256.slice(0, 12);
+  const recordedFingerprint = file.publicCacheKey.match(/\/([a-f0-9]{12})$/i)?.[1];
+  if (recordedFingerprint && recordedFingerprint !== expectedFingerprint) {
+    return false;
+  }
+  file.publicCacheKey = `${cacheKeyWithoutFingerprint(file.publicCacheKey)}/${expectedFingerprint}`;
+  file.skipped = true;
+  delete file.error;
+  return true;
+}
+
 async function generateOne(input: {
   file: FishAudioFile;
+  runRoot: string;
   apiKey: string;
   voiceReferenceId?: string;
   model: string;
+  format: FishAudioFormat;
   speed: number;
   normalize: boolean;
-  temperature?: number;
-  topP?: number;
+  latency: "normal" | "balanced" | "low";
+  chunkLength: number;
+  opusBitrate: 24000 | 32000 | 48000 | 64000;
+  temperature: number;
+  topP: number;
   timeoutMs: number;
   text: string;
-  chunkCharacters: number;
-  chunkRoot: string;
+  timingSource: AudioTimingSource;
+  localAlignmentModel: string;
+  localAligner?: MlxWhisperAligner;
 }): Promise<void> {
-  ensureDir(path.dirname(input.file.outputPath));
-  const existing = existingFileMetadata(input.file.outputPath);
-  if (existing?.byteSize && existing.byteSize > 0) {
-    input.file.skipped = true;
-    input.file.byteSize = existing.byteSize;
-    input.file.durationSeconds = existing.durationSeconds;
-    return;
-  }
-
-  const chunks = chunkTextForAudio(input.text, input.chunkCharacters);
-  const chunkSetId = generatedFileFingerprint(
-    Buffer.from(`${input.file.publicCacheKey}:${input.file.outputPath}`),
-  ).slice(0, 16);
-  const chunkDir = path.join(
-    input.chunkRoot,
-    input.file.voiceId,
-    chunkSetId,
+  input.file.outputPath = resolveAudioRunFile(
+    input.runRoot,
+    input.file.relativeOutputPath,
+    "Audio output path",
   );
-  ensureDir(chunkDir);
-  const chunkPaths: string[] = [];
-  for (const [chunkIndex, chunk] of chunks.entries()) {
-    const chunkPath = path.join(chunkDir, `${String(chunkIndex + 1).padStart(4, "0")}.mp3`);
-    chunkPaths.push(chunkPath);
-    if (fs.existsSync(chunkPath) && fs.statSync(chunkPath).size > 0) {
-      console.log(
-        `chunk ${chunkIndex + 1}/${chunks.length} skipped ${input.file.voiceId} ${input.file.sectionId}`,
-      );
-      continue;
+  if (!input.file.timingsRelativeOutputPath) {
+    throw new Error(`Missing timing output path for ${input.file.sectionId}.`);
+  }
+  input.file.timingsOutputPath = resolveAudioRunFile(
+    input.runRoot,
+    input.file.timingsRelativeOutputPath,
+    "Audio timing path",
+  );
+  ensureDir(path.dirname(input.file.outputPath));
+  if (!input.file.timingsOutputPath) {
+    throw new Error(`Missing timing output path for ${input.file.sectionId}.`);
+  }
+  if (reuseExistingGeneratedFile(input.file, input.text)) return;
+  const fishTimingsPath = `${input.file.timingsOutputPath}.fish.json`;
+  let generated = readPreservedFishGeneration(input.file.outputPath, fishTimingsPath);
+  if (!generated) {
+    if (!input.voiceReferenceId) {
+      throw new Error(`Missing pinned reference_id for ${input.file.voiceId}.`);
     }
-    const audio = await fishTts({
+    generated = await fishTtsWithTimestamps({
       apiKey: input.apiKey,
       model: input.model,
-      text: chunk,
+      text: input.text,
       referenceId: input.voiceReferenceId,
+      format: input.format,
       speed: input.speed,
       normalize: input.normalize,
+      latency: input.latency,
+      chunkLength: input.chunkLength,
+      opusBitrate: input.opusBitrate,
       temperature: input.temperature,
       topP: input.topP,
       timeoutMs: input.timeoutMs,
     });
-    fs.writeFileSync(chunkPath, audio);
-    console.log(
-      `chunk ${chunkIndex + 1}/${chunks.length} generated ${input.file.voiceId} ${input.file.sectionId}`,
-    );
+    fs.writeFileSync(input.file.outputPath, generated.audio);
+    writeJson(fishTimingsPath, {
+      version: 1,
+      chunks: generated.chunks,
+      snapshots: generated.snapshots,
+    });
   }
-  if (chunkPaths.length === 1) {
-    fs.copyFileSync(chunkPaths[0]!, input.file.outputPath);
+
+  let fishTimings: AudioTimingDocument | null = null;
+  let providerTimingError: Error | null = null;
+  try {
+    fishTimings = createAudioTimingDocument({
+      sectionId: input.file.sectionId,
+      audioVersionId: input.file.audioVersionId,
+      voiceId: input.file.voiceId,
+      text: input.text,
+      chunks: generated.chunks,
+    });
+  } catch (error) {
+    providerTimingError = error instanceof Error ? error : new Error(String(error));
+  }
+
+  const alignLocally = async (): Promise<AudioTimingDocument> => {
+    if (!input.localAligner) {
+      throw new Error(
+        "Local MLX Whisper alignment is unavailable. Install it with `pipx install mlx-whisper`.",
+      );
+    }
+    const audioDuration = audioDurationSeconds(input.file.outputPath);
+    if (!audioDuration || audioDuration <= 0) {
+      throw new Error(`Generated audio has no positive duration for ${input.file.sectionId}.`);
+    }
+    const alignment = await input.localAligner.align(input.file.outputPath);
+    writeJson(`${input.file.timingsOutputPath}.mlx.json`, {
+      version: 1,
+      model: input.localAlignmentModel,
+      durationSeconds: alignment.durationSeconds,
+      words: alignment.words,
+    });
+    return createAudioTimingDocument({
+      sectionId: input.file.sectionId,
+      audioVersionId: input.file.audioVersionId,
+      voiceId: input.file.voiceId,
+      text: input.text,
+      chunks: [mlxAlignmentChunk(input.text, alignment, audioDuration)],
+    });
+  };
+
+  let timings: AudioTimingDocument;
+  if (input.timingSource === "fish") {
+    if (!fishTimings) throw providerTimingError;
+    timings = fishTimings;
+    input.file.timingSource = "fish";
+  } else if (input.timingSource === "fallback" && fishTimings) {
+    timings = fishTimings;
+    input.file.timingSource = "fish";
   } else {
-    const concatList = path.join(chunkDir, "concat.txt");
-    fs.writeFileSync(
-      concatList,
-      chunkPaths.map((chunkPath) => `file '${chunkPath.replace(/'/g, "'\\''")}'`).join("\n"),
-    );
-    execFileSync("ffmpeg", [
-      "-hide_banner",
-      "-loglevel",
-      "error",
-      "-f",
-      "concat",
-      "-safe",
-      "0",
-      "-i",
-      concatList,
-      "-c",
-      "copy",
-      input.file.outputPath,
-    ]);
+    try {
+      timings = await alignLocally();
+      input.file.timingSource = "mlx-whisper";
+    } catch (localError) {
+      if (input.timingSource === "local" && fishTimings) {
+        timings = fishTimings;
+        input.file.timingSource = "fish";
+      } else {
+        const providerMessage = providerTimingError?.message ?? "unavailable";
+        const localMessage = localError instanceof Error ? localError.message : String(localError);
+        throw new Error(
+          `Provider timing failed (${providerMessage}); local timing failed (${localMessage}).`,
+        );
+      }
+    }
   }
-  input.file.byteSize = fs.statSync(input.file.outputPath).size;
-  input.file.durationSeconds = audioDurationSeconds(input.file.outputPath);
+  if (providerTimingError) {
+    input.file.providerTimingError = providerTimingError.message;
+  } else {
+    delete input.file.providerTimingError;
+  }
+  if (timings.durationSeconds <= 0) {
+    throw new Error(`Audio timing returned no positive duration for ${input.file.sectionId}.`);
+  }
+  writeJson(input.file.timingsOutputPath, timings);
+  const audioBytes = fs.readFileSync(input.file.outputPath);
+  const timingBytes = fs.readFileSync(input.file.timingsOutputPath);
+  input.file.byteSize = audioBytes.byteLength;
+  input.file.audioSha256 = generatedFileFingerprint(audioBytes);
+  input.file.timingsByteSize = timingBytes.byteLength;
+  input.file.timingsSha256 = generatedFileFingerprint(timingBytes);
+  input.file.durationSeconds = audioDurationSeconds(input.file.outputPath) ?? timings.durationSeconds;
+  if (input.file.durationSeconds <= 0) {
+    throw new Error(`Generated audio has no positive duration for ${input.file.sectionId}.`);
+  }
+  input.file.exactWordCount = timings.exactWordCount;
+  input.file.interpolatedWordCount = timings.interpolatedWordCount;
   input.file.generatedAt = new Date().toISOString();
-  input.file.publicCacheKey = `${input.file.publicCacheKey}/${generatedFileFingerprint(fs.readFileSync(input.file.outputPath)).slice(0, 12)}`;
+  input.file.publicCacheKey = `${cacheKeyWithoutFingerprint(input.file.publicCacheKey)}/${input.file.audioSha256.slice(0, 12)}`;
+  delete input.file.error;
+  delete input.file.skipped;
 }
 
 async function main() {
-  const options = parseCli(process.argv.slice(2));
+  loadAudioLocalEnv();
+  const options = parseFishGenerateOptions(process.argv.slice(2));
   const catalog = JSON.parse(
     fs.readFileSync(generatedCatalogPath, "utf8"),
   ) as CompiledCatalog;
   const voices = parseVoices(options.voices);
-  let sections = selectSections(catalog, options.mode, options.sectionIds);
-  if (options.limit !== null) sections = sections.slice(0, options.limit);
+  validateVoicesForRun(voices, options.mode);
+  const selectedSections = selectSections(catalog, options.mode, options.sectionIds);
+  const inventorySections = options.mode === "full" ? catalog.sections : selectedSections;
 
   const settings = createSettings({
     model: options.model,
+    format: options.format,
     speed: options.speed,
     normalize: options.normalize,
+    latency: options.latency,
+    chunkLength: options.chunkLength,
+    opusBitrate: options.opusBitrate,
     temperature: options.temperature,
     topP: options.topP,
+    timingSource: options.timingSource,
+    localAlignmentModel: options.localAlignmentModel,
   });
   const hash = settingsHash(settings);
-  const runRoot = path.join(artifactsAudioRoot(), options.runId);
-  const chunkRoot = path.join(runRoot, "chunks");
+  const runRoot = resolveAudioRunRoot(artifactsAudioRoot(), options.runId);
   const files = buildManifestFiles({
-    sections,
+    sections: inventorySections,
     voices,
     model: options.model,
     runRoot,
     settingsHash: hash,
+    format: options.format,
   });
-  const manifest = createRunManifest({
+  const catalogHash = sha256(JSON.stringify(
+    inventorySections.map((section) => ({
+      sectionId: section.sectionId,
+      audioVersionId: section.audioVersionId,
+    })),
+  )).slice(0, 16);
+  let manifest = createRunManifest({
     model: options.model,
     mode: options.mode,
     runId: options.runId,
     voices,
     files,
+    settingsHash: hash,
+    catalogHash,
   });
   const trimmedTextBySection = new Map(
-    sections.map((section) => [
+    inventorySections.map((section) => [
       section.sectionId,
-      trimTextForAudio(`${section.title}\n\n${section.text}`.trim(), options.maxCharacters),
+      trimTextForAudio(textForAudio(section), options.maxCharacters),
     ]),
   );
   for (const file of files) {
@@ -265,6 +576,27 @@ async function main() {
   manifest.corpus.estimatedPaidCostUsd = Number(
     ((manifest.corpus.inputBytes / 1_000_000) * 15).toFixed(2),
   );
+  const manifestPath = resolveAudioRunFile(runRoot, "manifest.json", "Audio run manifest");
+  if (fs.existsSync(manifestPath)) {
+    const existing = JSON.parse(
+      fs.readFileSync(manifestPath, "utf8"),
+    ) as typeof manifest;
+    manifest = mergeCompatibleRunManifest(existing, manifest);
+  }
+  const requestedSectionIds = options.sectionIds.length > 0
+    ? options.sectionIds
+    : options.mode === "sample"
+      ? selectedSections.map((section) => section.sectionId)
+      : [];
+  const workFiles = selectRunWorkFiles(
+    manifest,
+    requestedSectionIds,
+    options.limit,
+  );
+  for (const file of workFiles) {
+    delete file.error;
+    delete file.skipped;
+  }
 
   console.log(
     JSON.stringify(
@@ -272,16 +604,26 @@ async function main() {
         mode: options.mode,
         dryRun: options.dryRun,
         runRoot: relativeToRepo(runRoot),
-        sections: sections.length,
+        inventorySections: inventorySections.length,
+        workSections: new Set(workFiles.map((file) => file.sectionId)).size,
         voices: voices.length,
-        files: files.length,
+        files: manifest.files.length,
+        workFiles: workFiles.length,
         inputBytes: manifest.corpus.inputBytes,
         estimatedPaidCostUsd: manifest.corpus.estimatedPaidCostUsd,
         model: options.model,
         settingsHash: hash,
         maxCharacters: options.maxCharacters,
-        chunkCharacters: options.chunkCharacters,
+        format: options.format,
+        latency: options.latency,
+        chunkLength: options.chunkLength,
+        opusBitrate: options.opusBitrate,
         timeoutMs: options.timeoutMs,
+        timingSource: options.timingSource,
+        localAlignmentModel:
+          options.timingSource === "fish" ? null : options.localAlignmentModel,
+        localAlignmentConcurrency:
+          options.timingSource === "fish" ? 0 : options.localAlignmentConcurrency,
       },
       null,
       2,
@@ -289,55 +631,80 @@ async function main() {
   );
 
   if (options.dryRun) {
-    writeRunManifest(runRoot, manifest);
     return;
   }
 
-  const apiKey = process.env.FISH_API_KEY ?? process.env.FISH_AUDIO_API_KEY;
+  const apiKey = process.env.FISH_AUDIO_API_KEY ?? process.env.FISH_API_KEY;
   if (!apiKey) {
-    throw new Error("Set FISH_API_KEY before running without --dry-run.");
+    throw new Error("Set FISH_AUDIO_API_KEY before running without --dry-run.");
   }
 
   const sectionText = trimmedTextBySection;
   const referenceIdByVoice = new Map(voices.map((voice) => [voice.id, voice.referenceId]));
   const errors: FishAudioFile[] = [];
-
-  await runWithConcurrency(files, options.concurrency, async (file, index) => {
-    const text = sectionText.get(file.sectionId);
-    if (!text) throw new Error(`Missing text for ${file.sectionId}.`);
-    try {
-      await generateOne({
-        file,
-        apiKey,
-        voiceReferenceId: referenceIdByVoice.get(file.voiceId),
-        model: options.model,
-        speed: options.speed,
-        normalize: options.normalize,
-        temperature: options.temperature,
-        topP: options.topP,
-        timeoutMs: options.timeoutMs,
-        text,
-        chunkCharacters: options.chunkCharacters,
-        chunkRoot,
-      });
-      console.log(
-        `${index + 1}/${files.length} ${file.skipped ? "skipped" : "generated"} ${file.voiceId} ${file.sectionId}`,
+  const localAligners = options.timingSource === "fish"
+    ? []
+    : Array.from(
+        { length: Math.min(options.localAlignmentConcurrency, options.concurrency) },
+        () => new MlxWhisperAligner(
+          options.localAlignmentPython,
+          options.localAlignmentModel,
+        ),
       );
-    } catch (error) {
-      file.error = error instanceof Error ? error.message : String(error);
-      errors.push(file);
-      console.error(`${index + 1}/${files.length} failed ${file.voiceId} ${file.sectionId}: ${file.error}`);
-    } finally {
-      writeRunManifest(runRoot, manifest);
-    }
-  });
 
+  try {
+    await runWithConcurrency(workFiles, options.concurrency, async (file, index) => {
+      const text = sectionText.get(file.sectionId);
+      if (!text) throw new Error(`Missing text for ${file.sectionId}.`);
+      try {
+        await generateOne({
+          file,
+          runRoot,
+          apiKey,
+          voiceReferenceId: referenceIdByVoice.get(file.voiceId),
+          model: options.model,
+          format: options.format,
+          speed: options.speed,
+          normalize: options.normalize,
+          latency: options.latency,
+          chunkLength: options.chunkLength,
+          opusBitrate: options.opusBitrate,
+          temperature: options.temperature,
+          topP: options.topP,
+          timeoutMs: options.timeoutMs,
+          text,
+          timingSource: options.timingSource,
+          localAlignmentModel: options.localAlignmentModel,
+          localAligner: localAligners.length > 0
+            ? localAligners[index % localAligners.length]
+            : undefined,
+        });
+        console.log(
+          `${index + 1}/${workFiles.length} ${file.skipped ? "skipped" : "generated"} ${file.voiceId} ${file.sectionId}`,
+        );
+      } catch (error) {
+        file.error = error instanceof Error ? error.message : String(error);
+        errors.push(file);
+        console.error(`${index + 1}/${workFiles.length} failed ${file.voiceId} ${file.sectionId}: ${file.error}`);
+      } finally {
+        resolveAudioRunFile(runRoot, "manifest.json", "Audio run manifest");
+        writeRunManifest(runRoot, manifest);
+      }
+    });
+  } finally {
+    await Promise.all(localAligners.map((aligner) => aligner.close()));
+  }
+
+  resolveAudioRunFile(runRoot, "manifest.json", "Audio run manifest");
   writeRunManifest(runRoot, manifest);
-  writeJson(path.join(runRoot, "summary.json"), {
+  const summaryPath = resolveAudioRunFile(runRoot, "summary.json", "Audio run summary");
+  writeJson(summaryPath, {
     runId: options.runId,
-    generated: files.filter((file) => file.generatedAt && !file.error).length,
-    skipped: files.filter((file) => file.skipped).length,
-    available: files.filter((file) => (file.generatedAt || file.skipped) && !file.error).length,
+    inventory: manifest.files.length,
+    attempted: workFiles.length,
+    generated: manifest.files.filter((file) => file.generatedAt && !file.error).length,
+    skipped: manifest.files.filter((file) => file.skipped).length,
+    available: manifest.files.filter((file) => (file.generatedAt || file.skipped) && !file.error).length,
     failed: errors.length,
     manifest: relativeToRepo(path.join(runRoot, "manifest.json")),
   });
@@ -347,7 +714,9 @@ async function main() {
   }
 }
 
-main().catch((error: unknown) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exit(1);
-});
+if (process.argv[1]?.endsWith("fish-generate.ts")) {
+  main().catch((error: unknown) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exit(1);
+  });
+}

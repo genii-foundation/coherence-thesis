@@ -60,12 +60,12 @@ describe("ProgressCloudBadge", () => {
     );
 
     expect(empty).toContain('class="progress-cloud-progress-blip"');
-    expect(empty).toContain('cx="32" cy="6.8" r="1.6"');
-    expect(partial).toContain('d="M 32.000 6.800');
+    expect(empty).toContain('cx="32" cy="12.5" r="1.6"');
+    expect(partial).toContain('d="M 32.000 12.500');
     expect(partial).toContain('--progress-cloud-text-size:15px');
     expect(partial).toContain('stroke-linecap="round"');
     expect(complete).toContain('transform="rotate(-90 32 32)"');
-    expect(complete).toContain('stroke-dasharray="158.33626974092556 0"');
+    expect(complete).toContain('stroke-dasharray="122.52211349000193 0"');
     expect(complete).toContain('stroke-linecap="round"');
   });
 });

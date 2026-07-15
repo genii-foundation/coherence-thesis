@@ -51,6 +51,15 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(
     page.getByRole("navigation", { name: "Breadcrumb" }),
   ).toHaveCount(0);
+  const expectedAudioHours = (
+    catalog.stats.audioDurationSeconds / 3600
+  ).toLocaleString(undefined, {
+    maximumFractionDigits: 1,
+    minimumFractionDigits: 1,
+  });
+  await expect(page.locator(".hero-stats--homepage")).toContainText(
+    `Hours of audio${expectedAudioHours}`,
+  );
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     "content",
     "https://www.coherence-thesis.com/share/coherence-thesis-og.jpg",
@@ -113,7 +122,7 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(heroStats.locator("dd")).toHaveText([
     catalog.stats.volumeCount.toLocaleString(),
     catalog.stats.sectionCount.toLocaleString(),
-    formatReadingDurationForWords(catalog.stats.wordCount).replace(/ hours$/, ""),
+    expectedAudioHours,
   ]);
   await expect(heroStats.locator("dd").first()).toHaveCSS(
     "font-weight",
@@ -496,6 +505,7 @@ test("home page listen action starts audiobook playback", async ({ page }) => {
       pitch = 1;
       voice: SpeechSynthesisVoice | null = null;
       onend: (() => void) | null = null;
+      onstart: (() => void) | null = null;
 
       constructor(text: string) {
         this.text = text;
@@ -522,6 +532,7 @@ test("home page listen action starts audiobook playback", async ({ page }) => {
         resume: () => undefined,
         speak: (utterance: SpeechSynthesisUtterance) => {
           spokenAudio.push(utterance.text);
+          utterance.onstart?.({} as SpeechSynthesisEvent);
         },
       },
     });
@@ -577,6 +588,7 @@ test("home toolbar playback starts at the first unread section", async ({ page }
         pitch = 1;
         voice: SpeechSynthesisVoice | null = null;
         onend: (() => void) | null = null;
+        onstart: (() => void) | null = null;
 
         constructor(text: string) {
           this.text = text;
@@ -603,6 +615,7 @@ test("home toolbar playback starts at the first unread section", async ({ page }
           resume: () => undefined,
           speak: (utterance: SpeechSynthesisUtterance) => {
             spokenAudio.push(utterance.text);
+            utterance.onstart?.({} as SpeechSynthesisEvent);
           },
         },
       });
@@ -774,9 +787,7 @@ test("overview links into canonical manuscript sections", async ({
     catalog.overview.nodes.length,
   );
   await expect(
-    page.getByText(
-      "The Cardinal Scale is where the thesis stops describing civilization and starts building one.",
-    ),
+    page.getByText(catalog.overview.nodes.at(-1)!.summary),
   ).toBeVisible();
   const firstVolumeFirstSection = sectionForId(catalog.volumes[0]!.sectionIds[0]!);
   await expect(page.locator(".overview-node-card-link").first()).toHaveAttribute(
@@ -1717,6 +1728,7 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
 
   await page.setViewportSize({ width: 852, height: 393 });
   await page.goto("/");
+  await page.evaluate(() => document.fonts.ready.then(() => undefined));
 
   const topMetrics = await page.evaluate(() => {
     const header = document.querySelector<HTMLElement>(".site-header");
@@ -1734,6 +1746,7 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
   expect(topMetrics.heroArtDisplay).toBe("none");
 
   await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = "auto";
     window.scrollTo(0, 180);
   });
   await expect
@@ -1787,6 +1800,16 @@ test("mobile homepage keeps the cover flow usable in landscape", async ({
       { timeout: 15_000 },
     )
     .toBeLessThan(0.06);
+  await coverFlow.evaluate((flow) => {
+    flow.scrollIntoView({ block: "start", inline: "nearest" });
+  });
+  await expect
+    .poll(() =>
+      coverFlow.evaluate((flow) =>
+        Math.abs(flow.getBoundingClientRect().top),
+      ),
+    )
+    .toBeLessThanOrEqual(1);
 
   const landscapeMetrics = await coverFlow.evaluate((flow) => {
     const activeCard = flow.querySelector<HTMLElement>(

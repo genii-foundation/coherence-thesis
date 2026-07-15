@@ -22,6 +22,34 @@ import {
 } from "@/lib/reader-state";
 import { readerFragmentTarget } from "@/lib/reader-fragments";
 
+const readerAnchorGap = 16;
+
+function decodedHashTarget(hash: string): string {
+  try {
+    return decodeURIComponent(hash.replace(/^#/, ""));
+  } catch {
+    return hash.replace(/^#/, "");
+  }
+}
+
+function scrollBelowFloatingToolbar(target: HTMLElement): void {
+  const toolbar = document.querySelector<HTMLElement>(".site-header");
+  const toolbarStyle = toolbar ? window.getComputedStyle(toolbar) : null;
+  const toolbarFloats =
+    toolbarStyle?.position === "fixed" || toolbarStyle?.position === "sticky";
+  const toolbarBox = toolbar?.getBoundingClientRect();
+  const toolbarBottom =
+    toolbarFloats && toolbarBox && toolbarBox.bottom > 0
+      ? toolbarBox.bottom
+      : 0;
+  const targetTop = target.getBoundingClientRect().top;
+  const desiredTop = toolbarBottom + (toolbarBottom > 0 ? readerAnchorGap : 0);
+  const nextTop = Math.max(0, window.scrollY + targetTop - desiredTop);
+
+  if (Math.abs(window.scrollY - nextTop) <= 1) return;
+  window.scrollTo({ behavior: "auto", top: nextTop });
+}
+
 const idleThresholdMs = 45_000;
 const scrollMilestones = [25, 50, 75, 100];
 const readThresholdPercent = 100;
@@ -219,14 +247,21 @@ export function ReaderEngagementIsland({
       window.requestAnimationFrame(handleFrame);
     };
 
+    let hashFrame: number | null = null;
     const onHashChange = () => {
       const target = readerFragmentTarget(window.location.hash, sectionsRef.current);
       if (!target) return;
-      const hashTarget = window.location.hash.replace(/^#/, "");
-      if (!document.getElementById(hashTarget)) {
-        const anchor = document.getElementById(target.anchorId);
-        anchor?.scrollIntoView({ block: "start" });
-      }
+      const hashTarget = decodedHashTarget(window.location.hash);
+      const anchor =
+        document.getElementById(hashTarget) ??
+        document.getElementById(target.anchorId);
+      if (hashFrame !== null) window.cancelAnimationFrame(hashFrame);
+      hashFrame = window.requestAnimationFrame(() => {
+        hashFrame = window.requestAnimationFrame(() => {
+          hashFrame = null;
+          if (anchor) scrollBelowFloatingToolbar(anchor);
+        });
+      });
       dispatchActiveSection(target.sectionId);
     };
 
@@ -248,6 +283,7 @@ export function ReaderEngagementIsland({
       window.removeEventListener("keydown", markActivity);
       window.removeEventListener("focus", markActivity);
       window.removeEventListener("hashchange", onHashChange);
+      if (hashFrame !== null) window.cancelAnimationFrame(hashFrame);
       document.removeEventListener("visibilitychange", sampleTiming);
       const activeSeconds = Math.round(timing.activeMs / 1000);
       const idleSeconds = Math.round(timing.idleMs / 1000);

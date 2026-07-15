@@ -178,23 +178,48 @@ When an exact commit still has a successful public Vercel production deployment,
 
 Hosted audiobook clips are keyed by each section's `audioVersionId`. Manuscript content, boundaries, and volume metadata can change those IDs and make existing audio stale.
 
+Store local generation and upload credentials in `.env.audio.local` at the primary repository checkout. Copy `.env.audio.example`, fill in the values, and set permissions to `600`. Audio commands load this ignored file from every worktree. Explicit process environment values take precedence.
+
+Install local Apple Silicon word alignment once with `pipx install mlx-whisper`. The production run uses `mlx-community/whisper-large-v3-turbo` to produce consistent word boundaries when the Fish Pro Free timestamp stream is incomplete.
+
 Validate a generated audio run against the current catalog before publishing:
 
 ```bash
 npm run audio:publish-manifest -- --run-id <run-id> --version <version> --project-ref <supabase-project-ref>
 ```
 
-Without `--upload`, this verifies that each generated MP3 maps to a current section and `audioVersionId`, exists locally, and covers the requested voices.
+The default command is read only. It accepts only a complete full corpus run. It verifies the current title, exact spoken input length, `audioVersionId`, local byte size, contained run path, and complete section coverage for the pinned voice. Timestamped runs also require a current word timing sidecar for every audio file.
 
 After reviewing the validation result, add `--write` to update `publishing/audio/manifest.json`. Add `--upload` only with explicit publication authorization. Upload mode also writes the reviewed manifest.
 
-Generate missing clips with Fish Audio:
+Fish generation uses the streamed timestamp API. It writes 48 kHz Opus at 64 kbps plus a word timing JSON sidecar for each section. Every voice must include a Fish `reference_id`. Full corpus generation accepts exactly one pinned narrator, so a run cannot silently change voices between sections.
+
+Audition several pinned voices against the same representative sections:
 
 ```bash
-FISH_API_KEY=<from-secret-store> npm run audio:fish -- --mode full --sections <section-ids> --voices <voice-id:label> --run-id <run-id>
+npm run audio:fish -- --mode sample --sections <section-id-1,section-id-2> --voices <voice-a-id>:<reference-id>:<label>,<voice-b-id>:<reference-id>:<label> --run-id <audition-run-id>
 ```
 
-Publish audio under a new immutable version path. Never overwrite existing Supabase objects, commit credentials, or print credentials in logs.
+After one narrator is approved, generate the corpus or regenerate known changed sections into the same compatible run:
+
+```bash
+npm run audio:fish -- --mode full --voices <narrator-id>:<reference-id>:High\ Quality\ 1 --run-id <run-id> --timing-source local --alignment-concurrency 2
+npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <narrator-id>:<reference-id>:High\ Quality\ 1 --run-id <run-id> --timing-source local --alignment-concurrency 2
+```
+
+The defaults favor finished audiobook quality: `s2.1-pro-free`, `latency=normal`, `chunk_length=300`, `temperature=0.7`, `top_p=0.7`, text normalization, and prior Fish chunks conditioned for continuity. Local mode keeps persistent MLX workers alive and records whether each section used Fish or MLX timing. Use `--format wav` only for lossless auditions or masters. Do not use `--max-chars` for a full run.
+
+A full run always retains the complete corpus inventory. A targeted command updates only its selected work queue. Reusing a run ID fails when its narrator, model, format, generation settings, or manuscript catalog differs. Use a new run ID when any of those inputs change. `--dry-run` prints the proposed inventory and cost without writing files.
+
+See [Fish audiobook generation](docs/fish-audiobook-generation.md) for the narrator audition protocol, candidate reference voices, quality settings, and timing sidecar contract.
+
+Publish with a new immutable version path. Audio and timing sidecars are uploaded together. Watch mode may upload completed immutable objects while generation continues, but it withholds `publishing/audio/manifest.json` until the complete corpus passes strict validation:
+
+```bash
+npm run audio:publish-manifest -- --run-id <run-id> --version <new-version> --upload --skip-existing --watch
+```
+
+Every uploaded object carries a signed SHA256 digest and byte size. Resumable publication accepts an existing object only when both values match the local file. Never overwrite existing Supabase objects, commit credentials, or print credentials in logs.
 
 ## Validation
 
