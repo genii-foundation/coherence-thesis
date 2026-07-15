@@ -24,7 +24,6 @@ import {
   versionProvenancePath,
 } from "./shared";
 import type { CompiledCatalog, RouteLedger, SectionLedger } from "./shared";
-import { applyRecordedAudioDurations } from "./audio-durations";
 
 function collectOverviewRefs(
   nodes: Array<{ references?: Array<{ sectionId: string }>; children?: unknown[] }>,
