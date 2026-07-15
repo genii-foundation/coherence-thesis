@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "providence-collective/coherence-thesis",
   "branch": "main",
-  "headSha": "0bb9947db8fb588db68a8f5abbc1402af83f89f4",
+  "headSha": "c3062be61ba6ca82754583cbf5073e60647b5c9c",
   "commits": [
+    {
+      "sha": "c3062be61ba6ca82754583cbf5073e60647b5c9c",
+      "committedAt": "2026-07-15T00:30:27.000Z",
+      "subject": "chore: align audiobook publication evidence (#144)",
+      "commitUrl": "https://github.com/providence-collective/coherence-thesis/commit/c3062be61ba6ca82754583cbf5073e60647b5c9c",
+      "filesChanged": 13,
+      "additions": 153,
+      "deletions": 18,
+      "isLiterary": false
+    },
     {
       "sha": "0bb9947db8fb588db68a8f5abbc1402af83f89f4",
       "committedAt": "2026-07-15T00:02:46.000Z",

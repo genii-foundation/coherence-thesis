@@ -8,6 +8,8 @@ import {
   repoRoot,
   sha256,
 } from "../manuscripts/shared";
+import { buildSectionsFromSource } from "../manuscripts/import-markdown";
+import type { VolumeConfig } from "../manuscripts/types";
 import {
   generatedSectionsRoot,
   legacyPaths,
@@ -348,21 +350,22 @@ function textAt(ref: string, file: string): string {
     : gitText(ref, file);
 }
 
+function fileExistsAt(ref: string, file: string): boolean {
+  if (ref === "WORKTREE") return fs.existsSync(path.join(repoRoot, file));
+  try {
+    execFileSync("git", ["cat-file", "-e", `${ref}:${file}`], {
+      cwd: repoRoot,
+      stdio: "ignore",
+    });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export function sourcePathAtRef(ref: string, sourceFile: string): string {
   for (const candidate of sourcePathCandidates(sourceFile)) {
-    if (ref === "WORKTREE") {
-      if (fs.existsSync(path.join(repoRoot, candidate))) return candidate;
-      continue;
-    }
-    try {
-      execFileSync("git", ["cat-file", "-e", `${ref}:${candidate}`], {
-        cwd: repoRoot,
-        stdio: "ignore",
-      });
-      return candidate;
-    } catch {
-      continue;
-    }
+    if (fileExistsAt(ref, candidate)) return candidate;
   }
   throw new Error(`Source '${sourceFile}' does not exist at ${ref}.`);
 }
@@ -371,42 +374,99 @@ function syntheticSourceSectionId(sourceFile: string): string {
   return `source:${path.basename(sourceFile).replace(/\.md$/i, "")}`;
 }
 
-export function loadSentenceSections(
+function reconstructCanonicalSourceSections(
   ref: string,
-  extraSourceFiles: string[] = [],
-): BaselineSentenceSection[] {
-  const sections = generatedSectionFiles(ref).map((file) => {
-    const parsed = parseFrontmatter(textAt(ref, file));
-    const sourceFile = parsed.frontmatter.sourceDoc;
-    const sourceHash = parsed.frontmatter.sourceHash;
-    const sectionId = parsed.frontmatter.sectionId;
-    if (
-      typeof sourceFile !== "string" ||
-      typeof sourceHash !== "string" ||
-      typeof sectionId !== "string" ||
-      !sourceFile ||
-      !sourceHash ||
-      !sectionId
-    ) {
-      throw new Error(
-        `Generated section '${file}' is missing sourceDoc, sourceHash, or sectionId.`,
-      );
-    }
-    const sentenceRecords = extractEditorialSentenceRecords(parsed.body);
+  sourceFile: string,
+  source: string,
+): BaselineSentenceSection[] | null {
+  if (path.posix.basename(sourceFile) !== "manuscript.md") return null;
+
+  const volumeManifest = path.posix.join(
+    path.posix.dirname(sourceFile),
+    "volume.json",
+  );
+  if (!fileExistsAt(ref, volumeManifest)) return null;
+
+  const config = JSON.parse(textAt(ref, volumeManifest)) as VolumeConfig;
+  if (config.sourcePath !== sourceFile) {
+    throw new Error(
+      `Volume manifest '${volumeManifest}' points to '${config.sourcePath}', not '${sourceFile}'.`,
+    );
+  }
+
+  const sourceHash = sha256(source);
+  return buildSectionsFromSource(
+    config,
+    source,
+    sourceFile,
+    sourceHash,
+  ).map((section) => {
+    const sentenceRecords = extractEditorialSentenceRecords(
+      section.body.join("\n"),
+    );
     return {
       sourceFile,
       sourceHash,
-      sectionId,
+      sectionId: section.frontmatter.sectionId,
       sentences: sentenceRecords.map((record) => record.text),
       citationAttachments: sentenceRecords.map(
         (record) => record.citationAttachments,
       ),
     };
   });
+}
+
+export function loadSentenceSections(
+  ref: string,
+  extraSourceFiles: string[] = [],
+): BaselineSentenceSection[] {
+  const sections: BaselineSentenceSection[] = generatedSectionFiles(ref).map(
+    (file) => {
+      const parsed = parseFrontmatter(textAt(ref, file));
+      const sourceFile = parsed.frontmatter.sourceDoc;
+      const sourceHash = parsed.frontmatter.sourceHash;
+      const sectionId = parsed.frontmatter.sectionId;
+      if (
+        typeof sourceFile !== "string" ||
+        typeof sourceHash !== "string" ||
+        typeof sectionId !== "string" ||
+        !sourceFile ||
+        !sourceHash ||
+        !sectionId
+      ) {
+        throw new Error(
+          `Generated section '${file}' is missing sourceDoc, sourceHash, or sectionId.`,
+        );
+      }
+      const sentenceRecords = extractEditorialSentenceRecords(parsed.body);
+      return {
+        sourceFile,
+        sourceHash,
+        sectionId,
+        sentences: sentenceRecords.map((record) => record.text),
+        citationAttachments: sentenceRecords.map(
+          (record) => record.citationAttachments,
+        ),
+      };
+    },
+  );
 
   for (const sourceFile of extraSourceFiles) {
     const resolvedSourceFile = sourcePathAtRef(ref, sourceFile);
     const source = textAt(ref, resolvedSourceFile);
+    if (
+      !sections.some(
+        (candidate) => candidate.sourceFile === resolvedSourceFile,
+      )
+    ) {
+      sections.push(
+        ...(reconstructCanonicalSourceSections(
+          ref,
+          resolvedSourceFile,
+          source,
+        ) ?? []),
+      );
+    }
     const sourceRecords = extractEditorialSentenceRecords(source);
     const publishedCounts = new Map<string, number>();
     for (const section of sections.filter(

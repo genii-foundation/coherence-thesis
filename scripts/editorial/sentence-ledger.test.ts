@@ -347,6 +347,24 @@ describe("editorial sentence ledger", () => {
     expect(master[0]?.sentences.length).toBeGreaterThan(0);
   }, 20_000);
 
+  it("reconstructs canonical section boundaries from an immutable commit", () => {
+    const sourceFile =
+      "editorial/sources/volumes/volume-01/manuscript.md";
+    const sections = loadSentenceSections("HEAD", [sourceFile]).filter(
+      (section) => section.sourceFile === sourceFile,
+    );
+
+    expect(sections.length).toBeGreaterThan(1);
+    expect(sections.map((section) => section.sectionId)).toContain(
+      "v01-orientation",
+    );
+    expect(
+      sections.some((section) =>
+        section.sectionId.startsWith("source:manuscript:unpublished"),
+      ),
+    ).toBe(true);
+  });
+
   it("requires immutable and current scope before approval validation", () => {
     const error = vi.spyOn(console, "error").mockImplementation(() => undefined);
     try {
