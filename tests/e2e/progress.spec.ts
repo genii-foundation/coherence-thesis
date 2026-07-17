@@ -652,7 +652,7 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   const footer = page.getByRole("contentinfo", { name: "Site information" });
   await expect(footer).toBeVisible();
   await expect(
-    footer.getByText(`© ${copyrightYearLabel} by the Providence Collective.`),
+    footer.getByText(`© ${copyrightYearLabel} by GENII Foundation.`),
   ).toBeVisible();
 });
 
