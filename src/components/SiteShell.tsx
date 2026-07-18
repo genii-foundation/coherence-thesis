@@ -110,7 +110,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <p>
           ©{" "}
           <CopyrightYearIsland startYear={copyrightStartYear} fallback={yearLabel} />{" "}
-          by the Providence Collective.
+          by{" "}
+          <a href="https://genii.foundation" rel="author">
+            GENII Foundation
+          </a>
+          .
         </p>
         <p>
           Licensing:{" "}
@@ -149,7 +153,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <CleanTooltip label="Open to Source">
             <a
               className="site-footer-github-link"
-              href="https://github.com/providence-collective/coherence-thesis"
+              href="https://github.com/genii-foundation/coherence-thesis"
               rel="noopener noreferrer"
               target="_blank"
               aria-label="Open to Source"

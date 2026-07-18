@@ -1890,7 +1890,7 @@ test("toolbar brand owns the active manuscript identity", async ({
       brand.locator(".brand-title-mobile-logo-initials"),
     ).toBeVisible();
     await expect(page.locator(".mobile-page-brand-kicker")).toHaveText(
-      "Providence Collective",
+      "GENII Foundation",
     );
     await expect(page.locator(".mobile-page-brand-title")).toHaveText(
       "The Coherence Thesis",
@@ -2015,10 +2015,10 @@ test("toolbar brand owns the active manuscript identity", async ({
 
   await expect(brand).toHaveAttribute(
     "aria-label",
-    "Providence Collective The Coherence Thesis home",
+    "GENII Foundation The Coherence Thesis home",
   );
   await expect(brand.locator(".brand-kicker")).toHaveText(
-    "Providence Collective",
+    "GENII Foundation",
   );
   await expect(brand.locator(".brand-title-full")).toHaveText(
     "The Coherence Thesis",

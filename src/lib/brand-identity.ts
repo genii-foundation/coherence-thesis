@@ -28,7 +28,7 @@ export function brandIdentity(
   return {
     activeVolume,
     hasActiveVolume: Boolean(activeVolume),
-    kicker: activeVolume ? "The Coherence Thesis" : "Providence Collective",
+    kicker: activeVolume ? "The Coherence Thesis" : "GENII Foundation",
     title: activeVolume
       ? `Volume ${activeVolume.numberLabel} · ${activeVolume.title}`
       : "The Coherence Thesis",

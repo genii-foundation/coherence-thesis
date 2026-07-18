@@ -1,6 +1,6 @@
 # The Coherence Thesis
 
-[![CI](https://github.com/providence-collective/coherence-thesis/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/providence-collective/coherence-thesis/actions/workflows/ci.yml)
+[![CI](https://github.com/genii-foundation/coherence-thesis/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/genii-foundation/coherence-thesis/actions/workflows/ci.yml)
 
 The Coherence Thesis is a living manuscript project about interpersonal coherence, civilizational coordination, and future societies capable of becoming powerful without ceasing to become wise.
 
@@ -65,7 +65,7 @@ Generated manuscript fragments, catalogs, reports, search data, breadcrumbs, and
 The project requires Node.js 22 or newer. The preferred local major is recorded in `.nvmrc`.
 
 ```bash
-git clone https://github.com/providence-collective/coherence-thesis.git
+git clone https://github.com/genii-foundation/coherence-thesis.git
 cd coherence-thesis
 nvm use
 npm run bootstrap
