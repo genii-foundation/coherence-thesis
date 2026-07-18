@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "36c7e67bc392af2a18a8d87076c030ee8d8b0bb7",
+  "headSha": "04ff3e19348c15fc51d37759c53b2b029bab6073",
   "commits": [
+    {
+      "sha": "04ff3e19348c15fc51d37759c53b2b029bab6073",
+      "committedAt": "2026-07-18T05:42:02.000Z",
+      "subject": "fix: identify GENII Foundation as parent organization (#146)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/04ff3e19348c15fc51d37759c53b2b029bab6073",
+      "filesChanged": 16,
+      "additions": 344,
+      "deletions": 206,
+      "isLiterary": false
+    },
     {
       "sha": "36c7e67bc392af2a18a8d87076c030ee8d8b0bb7",
       "committedAt": "2026-07-15T07:06:34.000Z",
