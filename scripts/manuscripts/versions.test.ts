@@ -18,12 +18,12 @@ function bodyHash(source: string): string {
 
 describe("manuscript version provenance", () => {
   it("normalizes GitHub remote URLs", () => {
-    expect(originRepoUrl(() => "git@github.com:providence-collective/coherence-thesis.git")).toBe(
-      "https://github.com/providence-collective/coherence-thesis",
+    expect(originRepoUrl(() => "git@github.com:genii-foundation/coherence-thesis.git")).toBe(
+      "https://github.com/genii-foundation/coherence-thesis",
     );
     expect(
-      originRepoSlug(() => "git@github.com:providence-collective/coherence-thesis.git"),
-    ).toBe("providence-collective/coherence-thesis");
+      originRepoSlug(() => "git@github.com:genii-foundation/coherence-thesis.git"),
+    ).toBe("genii-foundation/coherence-thesis");
   });
 
   it("finds the first commit where the current section hash appeared", () => {
