@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "e4f02c45c324bc5f9f5920203268130f64f7a425",
+  "headSha": "ea9135084dfb1f2c168bf746087d2d1f10c67883",
   "commits": [
+    {
+      "sha": "ea9135084dfb1f2c168bf746087d2d1f10c67883",
+      "committedAt": "2026-07-25T19:09:29.000Z",
+      "subject": "fix: join mobile toolbar menus to the toolbar (#152)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/ea9135084dfb1f2c168bf746087d2d1f10c67883",
+      "filesChanged": 4,
+      "additions": 60,
+      "deletions": 39,
+      "isLiterary": false
+    },
     {
       "sha": "e4f02c45c324bc5f9f5920203268130f64f7a425",
       "committedAt": "2026-07-25T18:04:34.000Z",

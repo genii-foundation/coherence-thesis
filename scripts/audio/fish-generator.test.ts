@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   audioCacheKey,
   buildManifestFiles,
+  opusBitrateWithinTolerance,
   concatenateFishAudioChunks,
   createRunManifest,
   estimatePaidCostUsd,
@@ -225,5 +226,28 @@ describe("Fish audio generator", () => {
     expect(manifest.corpus.inputBytes).toBe(
       Buffer.byteLength(textForAudio(sections[0]!), "utf8"),
     );
+  });
+});
+
+describe("opus bitrate enforcement", () => {
+  // Fish returns roughly 272 kbps regardless of the opus_bitrate requested.
+  // Measured 2026-07-25 against the timestamped endpoint: 24000, 32000 and
+  // 64000 all produced 272,619 bps. These are the real observed numbers.
+  const providerBitrate = 272_619;
+  const normalizedBitrate = 76_636;
+
+  it("rejects the provider's passthrough rate", () => {
+    expect(opusBitrateWithinTolerance(providerBitrate, 64_000)).toBe(false);
+    expect(opusBitrateWithinTolerance(providerBitrate, 32_000)).toBe(false);
+    expect(opusBitrateWithinTolerance(providerBitrate, 24_000)).toBe(false);
+  });
+
+  it("accepts a locally normalized clip so resumed runs do not re-encode", () => {
+    expect(opusBitrateWithinTolerance(normalizedBitrate, 64_000)).toBe(true);
+  });
+
+  it("accepts a clip already at or under target", () => {
+    expect(opusBitrateWithinTolerance(64_000, 64_000)).toBe(true);
+    expect(opusBitrateWithinTolerance(48_000, 64_000)).toBe(true);
   });
 });

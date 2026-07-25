@@ -2,8 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import {
   artifactsAudioRoot,
+  assertPublishableOpusBitrate,
   audioDurationSeconds,
   buildManifestFiles,
+  normalizeOpusBitrate,
   createRunManifest,
   createSettings,
   fishTtsWithTimestamps,
@@ -408,10 +410,27 @@ async function generateOne(input: {
       timeoutMs: input.timeoutMs,
     });
     fs.writeFileSync(input.file.outputPath, generated.audio);
+    // Enforce the requested Opus rate locally, because the provider ignores
+    // it. This runs before alignment so word timings describe the exact bytes
+    // that get published.
+    if (input.format === "opus") {
+      normalizeOpusBitrate({
+        filePath: input.file.outputPath,
+        targetBitrate: input.opusBitrate,
+      });
+    }
     writeJson(fishTimingsPath, {
       version: 1,
       chunks: generated.chunks,
       snapshots: generated.snapshots,
+    });
+  }
+
+  if (input.format === "opus") {
+    assertPublishableOpusBitrate({
+      filePath: input.file.outputPath,
+      targetBitrate: input.opusBitrate,
+      sectionId: input.file.sectionId,
     });
   }
 
