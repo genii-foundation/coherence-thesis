@@ -1,6 +1,10 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import { emptyAudioClipManifest } from "@/lib/audio-manifest";
-import { buildOfflineAudioPacks } from "@/lib/audio-offline-cache";
+import {
+  buildOfflineAudioPacks,
+  cacheOfflineAudioPack,
+  inspectOfflineAudioPack,
+} from "@/lib/audio-offline-cache";
 import type { OutlineVolume, ProgressSectionData } from "@/lib/reader-data";
 
 const volumes: OutlineVolume[] = [
@@ -193,5 +197,122 @@ describe("offline audio packs", () => {
     expect(packs[0]!.urls).not.toContain(
       "/audio/fish-default/one-a-stale.timings.json",
     );
+  });
+});
+
+// A minimal CacheStorage stand-in. Keys are URL strings, values are bodies.
+function installCacheStub(seed: Record<string, string> = {}) {
+  const store = new Map<string, string>(Object.entries(seed));
+  const cache = {
+    match: (key: string) =>
+      Promise.resolve(
+        store.has(key)
+          ? ({ json: () => Promise.resolve(JSON.parse(store.get(key)!)) } as unknown as Response)
+          : undefined,
+      ),
+    put: (key: string, response: Response) =>
+      Promise.resolve(response.text?.() ?? Promise.resolve("{}")).then(
+        (body: unknown) => {
+          store.set(key, typeof body === "string" ? body : "{}");
+        },
+      ),
+    delete: (key: string) => Promise.resolve(store.delete(key)),
+  };
+  Object.defineProperty(globalThis, "caches", {
+    configurable: true,
+    value: { open: () => Promise.resolve(cache) },
+  });
+  return store;
+}
+
+describe("offline pack recording lifecycle", () => {
+  const pack = {
+    volumeId: "volume-one",
+    title: "Volume One",
+    numberLabel: "I",
+    href: "/manuscripts/volume-one/",
+    sectionCount: 1,
+    audioClipCount: 1,
+    urls: ["/new-clip.opus"],
+  };
+  const recordKey =
+    "https://coherence.invalid/__offline-pack__/volume-one";
+
+  afterEach(() => {
+    delete (globalThis as { caches?: unknown }).caches;
+    delete (globalThis as { fetch?: unknown }).fetch;
+  });
+
+  it("reports a superseded recording when the manifest moves on", async () => {
+    installCacheStub({
+      [recordKey]: JSON.stringify({
+        volumeId: "volume-one",
+        urls: ["/old-clip.mp3"],
+        savedAt: "2026-07-08T00:00:00.000Z",
+      }),
+      "/old-clip.mp3": "{}",
+    });
+
+    const status = await inspectOfflineAudioPack(pack);
+    expect(status.superseded).toBe(true);
+    expect(status.supersededCount).toBe(1);
+    expect(status.complete).toBe(false);
+  });
+
+  // The flight rule: a reader who downloaded a volume before travelling must
+  // never end up with the old recording deleted and the new one not fetched.
+  it("keeps the previous recording when the refresh download fails", async () => {
+    const store = installCacheStub({
+      [recordKey]: JSON.stringify({
+        volumeId: "volume-one",
+        urls: ["/old-clip.mp3"],
+        savedAt: "2026-07-08T00:00:00.000Z",
+      }),
+      "/old-clip.mp3": "{}",
+    });
+    Object.defineProperty(globalThis, "fetch", {
+      configurable: true,
+      value: () => Promise.resolve({ ok: false, status: 503 } as Response),
+    });
+
+    await expect(
+      cacheOfflineAudioPack(pack, () => undefined),
+    ).rejects.toThrow(/Unable to download/);
+
+    expect(store.has("/old-clip.mp3")).toBe(true);
+    expect(store.has(recordKey)).toBe(true);
+  });
+
+  it("releases the previous recording only after the new one is cached", async () => {
+    const store = installCacheStub({
+      [recordKey]: JSON.stringify({
+        volumeId: "volume-one",
+        urls: ["/old-clip.mp3"],
+        savedAt: "2026-07-08T00:00:00.000Z",
+      }),
+      "/old-clip.mp3": "{}",
+    });
+    const fetchOrder: string[] = [];
+    Object.defineProperty(globalThis, "fetch", {
+      configurable: true,
+      value: (url: string) => {
+        fetchOrder.push(url);
+        // The superseded clip must still be present at fetch time.
+        expect(store.has("/old-clip.mp3")).toBe(true);
+        return Promise.resolve({
+          ok: true,
+          status: 200,
+          clone: () => ({ text: () => Promise.resolve("{}") }),
+        } as unknown as Response);
+      },
+    });
+
+    const status = await cacheOfflineAudioPack(pack, () => undefined);
+
+    expect(fetchOrder).toEqual(["/new-clip.opus"]);
+    expect(store.has("/new-clip.opus")).toBe(true);
+    expect(store.has("/old-clip.mp3")).toBe(false);
+    expect(status.superseded).toBe(false);
+    expect(JSON.parse(store.get(recordKey)!).urls).toEqual(["/new-clip.opus"]);
   });
 });
