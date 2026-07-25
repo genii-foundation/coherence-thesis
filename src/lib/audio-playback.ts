@@ -223,6 +223,7 @@ export function createHostedClipProvider(
   let audioHasStarted = false;
   let pendingHostedPlayback = false;
   let requestSequence = 0;
+  let applyStartOffsetForCurrentClip: (() => void) | null = null;
   const timingDocuments = new Map<string, AudioTimingDocument>();
   const pendingNetworkControllers = new Set<AbortController>();
 
@@ -241,6 +242,7 @@ export function createHostedClipProvider(
     playingClip = false;
     audioHasStarted = false;
     pendingHostedPlayback = false;
+    applyStartOffsetForCurrentClip = null;
     if (objectUrl) URL.revokeObjectURL(objectUrl);
     objectUrl = null;
   };
@@ -285,28 +287,43 @@ export function createHostedClipProvider(
         durationSeconds,
       });
     };
-    currentAudio.onloadedmetadata = () => {
+    // Applied at loadedmetadata, and again if word timings land later. Media
+    // startup must never wait on the timing fetch: the element has to be played
+    // inside the original user gesture or iOS rejects it outright.
+    const applyStartOffset = () => {
       if (audio !== currentAudio || sequence !== requestSequence) return;
+      if (!Number.isFinite(currentAudio.duration)) return;
       if (typeof request.startSeconds === "number") {
         currentAudio.currentTime = Math.max(
           0,
           Math.min(currentAudio.duration || request.startSeconds, request.startSeconds),
         );
-      } else if (typeof request.startCharIndex === "number" && request.text.length > 0) {
-        const exactTiming = timingState.document
-          ? timingForCharIndex(timingState.document, request.startCharIndex)
-          : undefined;
-        if (exactTiming) {
-          currentAudio.currentTime = exactTiming.startSeconds;
-        } else {
-          const durationSeconds = Number.isFinite(currentAudio.duration)
-            ? currentAudio.duration
-            : 0;
-          currentAudio.currentTime =
-            durationSeconds * (request.startCharIndex / request.text.length);
-        }
+        return;
+      }
+      if (typeof request.startCharIndex !== "number" || request.text.length === 0) {
+        return;
+      }
+      const exactTiming = timingState.document
+        ? timingForCharIndex(timingState.document, request.startCharIndex)
+        : undefined;
+      if (exactTiming) {
+        currentAudio.currentTime = exactTiming.startSeconds;
+        return;
+      }
+      // The proportional estimate is only meaningful against the canonical
+      // text. On the hosted fast path `text` still holds the placeholder title
+      // while `resolveText` is pending, and startCharIndex is the body offset
+      // past the end of that placeholder: the ratio exceeds 1 and every clip
+      // seeks to its final frame, so `ended` fires at once and the queue runs
+      // away silently. Start at the beginning instead.
+      if (request.resolveText) return;
+      const ratio = request.startCharIndex / request.text.length;
+      if (ratio > 0 && ratio < 1) {
+        currentAudio.currentTime = currentAudio.duration * ratio;
       }
     };
+    applyStartOffsetForCurrentClip = applyStartOffset;
+    currentAudio.onloadedmetadata = applyStartOffset;
     currentAudio.onended = () => {
       if (audio !== currentAudio || sequence !== requestSequence) return;
       clearAudio();
@@ -518,11 +535,12 @@ export function createHostedClipProvider(
         return;
       }
 
-      const startsAtBeginning =
-        (guardedRequest.startSeconds ?? 0) <= 0 &&
-        (guardedRequest.startCharIndex ?? 0) <= 0;
-      if (startsAtBeginning) playHostedClip();
-      else pendingHostedPlayback = true;
+      // Start inside the caller's user gesture even when this clip carries word
+      // timings. Waiting for the timing fetch first cost the gesture, and iOS
+      // rejects a play() that no longer has one, dropping the whole audiobook
+      // to the system speech voice. The exact seek is applied as soon as the
+      // timings land, a moment after playback is already running.
+      playHostedClip();
 
       const timingRequest = guardedRequest.resolveText
         ? resolveGuardedRequest().then((resolvedRequest) =>
@@ -534,7 +552,7 @@ export function createHostedClipProvider(
         .then((timings) => {
           if (sequence !== requestSequence) return;
           timingState.document = timings;
-          if (!startsAtBeginning) playHostedClip();
+          applyStartOffsetForCurrentClip?.();
         });
     },
     pause() {

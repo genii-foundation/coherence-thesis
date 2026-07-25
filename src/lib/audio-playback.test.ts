@@ -556,7 +556,12 @@ describe("hosted clip provider", () => {
     );
   });
 
-  it("bounds timing waits before using proportional seeking", async () => {
+  // Media startup must stay inside the caller's user gesture even for a clip
+  // that carries word timings. Waiting on the timing fetch first spent the
+  // gesture, and iOS rejects a play() without one, so the whole audiobook fell
+  // through to the system speech voice. The timing fetch is still bounded; it
+  // just no longer gates playback.
+  it("starts a timestamped clip without waiting for its timings", async () => {
     vi.useFakeTimers();
     const audioInstances = installHostedAudioStub();
     Object.defineProperty(globalThis, "fetch", {
@@ -580,13 +585,148 @@ describe("hosted clip provider", () => {
       onError: vi.fn(),
     });
 
-    expect(audioInstances).toHaveLength(0);
-    await vi.advanceTimersByTimeAsync(1_500);
     expect(audioInstances).toHaveLength(1);
+    expect(audioInstances[0]!.play).toHaveBeenCalled();
     audioInstances[0]!.onloadedmetadata?.();
     expect(audioInstances[0]!.currentTime).toBeCloseTo(
       2 * (13 / timedText.length),
     );
+    await vi.advanceTimersByTimeAsync(1_500);
+    expect(audioInstances).toHaveLength(1);
+  });
+
+  it("applies the exact seek once word timings arrive after playback starts", async () => {
+    const audioInstances = installHostedAudioStub();
+    let resolveTimings: ((value: unknown) => void) | undefined;
+    Object.defineProperty(globalThis, "fetch", {
+      configurable: true,
+      value: vi.fn(
+        () =>
+          new Promise<Response>((resolve) => {
+            resolveTimings = (value) =>
+              resolve({
+                ok: true,
+                json: () => Promise.resolve(value),
+              } as Response);
+          }),
+      ),
+    });
+    const provider = createHostedClipProvider(
+      timestampedManifest(),
+      fallbackStub(),
+    );
+
+    provider.speak({
+      sectionId: "section-a",
+      audioVersionId: "section-a-hash",
+      text: timedText,
+      voiceId: clipVoicePreferenceId("narrator"),
+      rate: 1,
+      pitch: 1,
+      startCharIndex: 13,
+      onEnd: vi.fn(),
+      onError: vi.fn(),
+    });
+
+    expect(audioInstances).toHaveLength(1);
+    audioInstances[0]!.onloadedmetadata?.();
+    // Proportional estimate first, because no timings have landed yet.
+    expect(audioInstances[0]!.currentTime).toBeCloseTo(
+      2 * (13 / timedText.length),
+    );
+
+    resolveTimings?.(timingDocument());
+    await vi.waitFor(() => expect(audioInstances[0]!.currentTime).toBe(1.2));
+  });
+
+  // Regression: pressing play in the toolbar starts a hosted clip during the
+  // original user gesture, so the canonical body text is still resolving and
+  // `text` holds only the title. startCharIndex is the body offset, which is
+  // longer than that placeholder, so the proportional estimate seeked every
+  // clip to its final frame. `ended` fired immediately, the island advanced,
+  // and the queue tore through the book in silence.
+  it("does not seek a clip while the canonical text is still resolving", async () => {
+    const audioInstances = installHostedAudioStub();
+    const onEnd = vi.fn();
+    const provider = createHostedClipProvider(
+      {
+        version: 1 as const,
+        voices: [
+          {
+            id: "narrator",
+            label: "High Quality 1",
+            sections: [
+              {
+                sectionId: "section-a",
+                audioVersionId: "section-a-hash",
+                href: "/audio/section-a.mp3",
+              },
+            ],
+          },
+        ],
+      },
+      fallbackStub(),
+    );
+
+    const placeholderText = "Orientation";
+    provider.speak({
+      sectionId: "section-a",
+      audioVersionId: "section-a-hash",
+      text: placeholderText,
+      resolveText: () => Promise.resolve("Orientation\n\nAlpha beta gamma."),
+      voiceId: clipVoicePreferenceId("narrator"),
+      rate: 1,
+      pitch: 1,
+      // audioBodyStartCharacter("Orientation") — past the placeholder's end.
+      startCharIndex: 13,
+      onEnd,
+      onError: vi.fn(),
+    });
+
+    expect(audioInstances).toHaveLength(1);
+    audioInstances[0]!.onloadedmetadata?.();
+    expect(audioInstances[0]!.currentTime).toBe(0);
+    audioInstances[0]!.onended?.();
+    expect(onEnd).toHaveBeenCalledTimes(1);
+  });
+
+  it("never seeks past a clip when the start offset exceeds the text", async () => {
+    const audioInstances = installHostedAudioStub();
+    const provider = createHostedClipProvider(
+      {
+        version: 1 as const,
+        voices: [
+          {
+            id: "narrator",
+            label: "High Quality 1",
+            sections: [
+              {
+                sectionId: "section-a",
+                audioVersionId: "section-a-hash",
+                href: "/audio/section-a.mp3",
+              },
+            ],
+          },
+        ],
+      },
+      fallbackStub(),
+    );
+
+    provider.speak({
+      sectionId: "section-a",
+      audioVersionId: "section-a-hash",
+      text: "short",
+      voiceId: clipVoicePreferenceId("narrator"),
+      rate: 1,
+      pitch: 1,
+      startCharIndex: 400,
+      onEnd: vi.fn(),
+      onError: vi.fn(),
+    });
+
+    expect(audioInstances).toHaveLength(1);
+    audioInstances[0]!.onloadedmetadata?.();
+    expect(audioInstances[0]!.currentTime).toBe(0);
   });
 
   it.each(["pause", "cancel"] as const)(
@@ -625,12 +765,15 @@ describe("hosted clip provider", () => {
         onError: vi.fn(),
       });
 
-      expect(audioInstances).toHaveLength(0);
+      // Playback now starts inside the gesture, so the stop has to reach a
+      // live element and still leave nothing running behind it.
+      expect(audioInstances).toHaveLength(1);
       provider[action]();
       expect(timingSignal?.aborted).toBe(true);
+      expect(audioInstances[0]!.pause).toHaveBeenCalled();
       await Promise.resolve();
       await Promise.resolve();
-      expect(audioInstances).toHaveLength(0);
+      expect(audioInstances).toHaveLength(1);
       expect(fallback.speak).not.toHaveBeenCalled();
     },
   );
@@ -787,7 +930,8 @@ describe("hosted clip provider", () => {
 
     await vi.waitFor(() => expect(audioInstances).toHaveLength(1));
     audioInstances[0]!.onloadedmetadata?.();
-    expect(audioInstances[0]!.currentTime).toBe(1.2);
+    // Playback is already running; the exact seek lands with the timings.
+    await vi.waitFor(() => expect(audioInstances[0]!.currentTime).toBe(1.2));
     audioInstances[0]!.currentTime = 1.3;
     audioInstances[0]!.ontimeupdate?.();
     expect(onProgress).toHaveBeenLastCalledWith(
