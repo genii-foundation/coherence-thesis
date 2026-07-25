@@ -6342,8 +6342,23 @@ input {
     box-shadow:
       0 -1px 0 0 var(--header-background),
       0 10px 28px rgba(44, 31, 18, 0.1);
+    /* The menu sits above the toolbar in paint order, so its blurred shadow
+       used to spill roughly two dozen pixels upward and darken the bottom of
+       the toolbar into a false gradient. The toolbar then met a menu painted
+       in its own undarkened colour, and that step read as a seam. Clipping one
+       pixel above the top edge keeps the joining strip and every downward and
+       sideways pixel of the shadow, and drops only the upward spill. */
+    clip-path: inset(-1px -100vw -100vh -100vw);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  /* Both sticky search rows sit flush under the toolbar as the first thing
+     inside their menu, so they take the toolbar's colour too. Left on the
+     lighter panel colour they put a visibly paler block right at the join. */
+  .outline-search,
+  .search-field {
+    background: var(--header-background);
   }
 
   .progress-popover .progress-link-list a {
