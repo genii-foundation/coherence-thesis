@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "04ff3e19348c15fc51d37759c53b2b029bab6073",
+  "headSha": "9a5458793c7a2cafbb3b0490ca0184a5929efbfc",
   "commits": [
+    {
+      "sha": "9a5458793c7a2cafbb3b0490ca0184a5929efbfc",
+      "committedAt": "2026-07-18T21:39:33.000Z",
+      "subject": "fix: align normalized repository identity (#147)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/9a5458793c7a2cafbb3b0490ca0184a5929efbfc",
+      "filesChanged": 2,
+      "additions": 15,
+      "deletions": 5,
+      "isLiterary": false
+    },
     {
       "sha": "04ff3e19348c15fc51d37759c53b2b029bab6073",
       "committedAt": "2026-07-18T05:42:02.000Z",

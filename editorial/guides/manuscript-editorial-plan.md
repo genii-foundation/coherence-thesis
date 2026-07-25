@@ -14,7 +14,7 @@ The program is complete when:
 2. Every Markdown heading and standalone display unit has received a recorded disposition and an exact current result location.
 3. Every volume has an approved authorial profile that identifies its claims, register, cadence, images, protected terms, and protected passages.
 4. Every changed batch has passed semantic, literary, and AI slop review against its original text.
-5. Every slop review records a judgment for all 24 catalog categories.
+5. Every slop review records a judgment for every category in the catalog, and names the catalog range it covered so a later expansion leaves a visible gap rather than a silent one.
 6. No source manuscript uses an em dash, en dash, or two consecutive hyphens as prose punctuation.
 7. Canned transitions, false antitheses, generic uplift, abstract noun clusters, repetitive scaffolds, redundant conclusions, inflated claims, vague referents, and mechanical cadence have been removed where they are defects.
 8. Philosophical claims retain their scope, modality, logical relationships, and evidentiary status.
@@ -401,7 +401,7 @@ Track:
 - Sentence ledger completion and review status
 - Structure ledger completion and review status
 - Exact reconstruction of the declared current sentence and structure scope
-- Slop review completion across all 24 catalog categories
+- Slop review completion across every catalog category
 - Detector findings before and after, by rule
 - Prohibited punctuation before and after
 - Author queries opened and resolved
