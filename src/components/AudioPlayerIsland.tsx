@@ -1045,6 +1045,8 @@ export function AudioPlayerIsland({
         cachedCount: current[volumeId]?.cachedCount ?? 0,
         totalCount: pack.urls.length,
         complete: false,
+        superseded: offlineStatuses[volumeId]?.superseded ?? false,
+        supersededCount: offlineStatuses[volumeId]?.supersededCount ?? 0,
       },
     }));
     try {
@@ -1420,6 +1422,10 @@ export function AudioPlayerIsland({
                 const cachedCount = progress?.cachedCount ?? 0;
                 const totalCount = progress?.totalCount ?? pack.urls.length;
                 const complete = Boolean(status?.complete);
+                // A newer recording exists for a volume this reader already
+                // downloaded. The clips on the device still play, so this is
+                // an offer rather than an interruption.
+                const superseded = Boolean(status?.superseded);
                 const downloading = downloadingVolumeIds.has(pack.volumeId);
                 const clipsPending = pack.audioClipCount === 0;
                 const percent =
@@ -1428,11 +1434,13 @@ export function AudioPlayerIsland({
                     : 0;
                 const helper = clipsPending
                   ? "Audio clips pending"
-                  : complete
-                    ? "Available offline"
-                    : downloading
-                      ? `${percent.toLocaleString()}% downloaded`
-                      : `${formatter.format(pack.sectionCount)} sections, ${formatter.format(pack.audioClipCount)} clips`;
+                  : downloading
+                    ? `${percent.toLocaleString()}% downloaded`
+                    : superseded
+                      ? "New recording available"
+                      : complete
+                        ? "Available offline"
+                        : `${formatter.format(pack.sectionCount)} sections, ${formatter.format(pack.audioClipCount)} clips`;
                 return (
                   <div className="audio-offline-item" key={pack.volumeId}>
                     <span className="audio-offline-number" aria-hidden="true">
@@ -1446,11 +1454,15 @@ export function AudioPlayerIsland({
                       type="button"
                       className="audio-offline-button"
                       onClick={() => void downloadOfflinePack(pack.volumeId)}
-                      disabled={downloading || clipsPending || complete}
+                      disabled={
+                        downloading || clipsPending || (complete && !superseded)
+                      }
                       aria-busy={downloading}
                       aria-label={
                         downloading
                           ? `Downloading ${pack.title}: ${percent.toLocaleString()}%`
+                          : superseded
+                          ? `Update ${pack.title} to the new recording`
                           : complete
                           ? `${pack.title} is available offline`
                           : `Download ${pack.title} for offline playback`
@@ -1462,6 +1474,8 @@ export function AudioPlayerIsland({
                           aria-hidden="true"
                           size={17}
                         />
+                      ) : superseded ? (
+                        <RotateCcw aria-hidden="true" size={17} />
                       ) : complete ? (
                         <CheckCircle2 aria-hidden="true" size={17} />
                       ) : clipsPending ? (

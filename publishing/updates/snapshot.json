@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "ea9135084dfb1f2c168bf746087d2d1f10c67883",
+  "headSha": "9a93a057bb33935a5586f9fd1307891dcbcb30ac",
   "commits": [
+    {
+      "sha": "9a93a057bb33935a5586f9fd1307891dcbcb30ac",
+      "committedAt": "2026-07-25T19:51:49.000Z",
+      "subject": "fix: enforce the opus bitrate locally (#153)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/9a93a057bb33935a5586f9fd1307891dcbcb30ac",
+      "filesChanged": 5,
+      "additions": 191,
+      "deletions": 2,
+      "isLiterary": false
+    },
     {
       "sha": "ea9135084dfb1f2c168bf746087d2d1f10c67883",
       "committedAt": "2026-07-25T19:09:29.000Z",
