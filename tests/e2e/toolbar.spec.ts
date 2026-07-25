@@ -9,9 +9,8 @@ import {
   wieldingDiagnosis,
   wieldingSection,
   expectMenuFitsViewport,
+  highQualityVoicePreferenceId,
 } from "./fixtures";
-
-const highQualityVoicePreferenceId = "clip:high-quality-1";
 
 type PixelRegionSample = {
   mean: [number, number, number];

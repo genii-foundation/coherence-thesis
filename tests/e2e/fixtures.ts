@@ -1,9 +1,23 @@
 import { expect, type Page } from "@playwright/test";
+import audioManifestSource from "../../publishing/audio/manifest.json";
+import {
+  clipVoicePreferenceId,
+  type AudioClipManifest,
+} from "../../src/lib/audio-manifest";
 import { catalog, partById } from "../../src/lib/manuscript-data";
 import { readerEventsStorageKey } from "../../src/lib/reader-engagement";
 import { readerPreferencesStorageKey } from "../../src/lib/reader-preferences";
 import { readerProgressStorageKey } from "../../src/lib/reader-state";
 import { formatReadingDurationForWords } from "../../src/lib/reading-time";
+
+const audioManifest = audioManifestSource as AudioClipManifest;
+
+// Derived from the published manifest rather than written out, so renaming the
+// production voice slot cannot leave the suite asserting a voice that no longer
+// exists. Shared because the toolbar and audio specs both select this voice.
+export const highQualityVoicePreferenceId = clipVoicePreferenceId(
+  audioManifest.voices[0]?.id ?? "default",
+);
 
 export const firstSection = catalog.sections[0]!;
 export const firstSectionVolume = catalog.volumes.find(
