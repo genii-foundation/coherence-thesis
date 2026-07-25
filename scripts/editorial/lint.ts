@@ -55,6 +55,12 @@ type PatternRule = {
   severity: EditorialSeverity;
   pattern: RegExp;
   message: string;
+  /**
+   * Restrict the rule to Markdown headings. Continuity registers use status
+   * pictographs and similar notation inside table cells, where they carry
+   * meaning rather than decoration.
+   */
+  scope?: "heading";
 };
 
 const patternRules: PatternRule[] = [
@@ -122,8 +128,14 @@ const patternRules: PatternRule[] = [
     ruleId: "diction.inflated-significance",
     severity: "warning",
     pattern:
-      /\b(?:profound(?:ly)?|transformative|revolutionary|unprecedented|game[ -]changer|crucial|vital|remarkably|extraordinarily|incredibly|deeply)\b/gi,
+      /\b(?:profound(?:ly)?|transformative|revolutionary|unprecedented|game[ -]changer|crucial|vital)\b/gi,
     message: "Verify that the passage earns this claim of magnitude.",
+  },
+  {
+    ruleId: "diction.empty-intensifier",
+    severity: "warning",
+    pattern: /\b(?:very|truly|deeply|remarkably|extraordinarily|incredibly)\b/gi,
+    message: "Delete, specify, or earn this intensifier. Catalog 4.21.",
   },
   {
     ruleId: "diction.portentous-intensifier",
@@ -135,8 +147,39 @@ const patternRules: PatternRule[] = [
   {
     ruleId: "diction.ai-filler",
     severity: "warning",
-    pattern: /\b(?:delve(?:s|d)?|leverage(?:s|d|ing)?|seamlessly)\b/gi,
+    pattern:
+      /\b(?:delve(?:s|d)?|leverage(?:s|d|ing)?|seamlessly|foster(?:s|ed|ing)?|utilize(?:s|d)?|utilizing|empower(?:s|ed|ing)?|streamline(?:s|d)?|streamlining|robust|cutting[ -]edge|tapestry|beacon|multifaceted|meticulous(?:ly)?|ever[ -]evolving|supercharge(?:s|d)?|paradigm shift)\b/gi,
     message: "Replace generic AI-associated filler with concrete language.",
+  },
+  {
+    ruleId: "rhetoric.participial-commentary",
+    severity: "warning",
+    pattern:
+      /,\s+(?:highlighting|underscoring|showcasing|demonstrating|illustrating|reinforcing|cementing|solidifying|signal(?:l)?ing|exemplifying)\s+(?:the|a|an|its|his|her|their|our)\b/gi,
+    message:
+      "State the consequence instead of appending significance. Catalog 4.25.",
+  },
+  {
+    ruleId: "citation.weasel-attribution",
+    severity: "warning",
+    pattern:
+      /\b(?:experts?\s+(?:agree|say|believe|note)|stud(?:ies|y)\s+show(?:s)?|research\s+(?:shows|suggests|indicates)|scientists\s+(?:agree|have found)|many\s+(?:argue|believe|say)|some\s+(?:argue|say)|it is widely (?:believed|regarded|accepted)|widely regarded as|industry reports suggest)\b/gi,
+    message: "Name the source, bound the claim, or mark it for review. Catalog 4.27.",
+  },
+  {
+    ruleId: "syntax.inanimate-agency",
+    severity: "warning",
+    pattern:
+      /\b(?:the\s+)?(?:decision|process|system|architecture|framework|algorithm|technology|market|data|research|evidence|protocol|network)\s+(?:emerged|decided|chose|chooses|wants|believes|intends|demands|refuses|insists|invites)\b/gi,
+    message:
+      "Recover the actor, or confirm the voice card licenses this personification. Catalog 4.28.",
+  },
+  {
+    ruleId: "format.decorative-heading",
+    severity: "warning",
+    pattern: /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/gu,
+    message: "Remove decorative pictographs from headings. Catalog 4.29.",
+    scope: "heading",
   },
   {
     ruleId: "structure.meta-framing",
@@ -234,7 +277,9 @@ function findPatternMatches({
 }): EditorialFinding[] {
   const findings: EditorialFinding[] = [];
   const prose = proseForPatternScan(line);
+  const isHeading = /^\s{0,3}#{1,6}\s+/.test(line);
   for (const rule of patternRules) {
+    if (rule.scope === "heading" && !isHeading) continue;
     rule.pattern.lastIndex = 0;
     for (const match of prose.matchAll(rule.pattern)) {
       findings.push({

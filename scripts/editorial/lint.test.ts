@@ -91,6 +91,61 @@ describe("editorial prose audit", () => {
     expect(findings.every((finding) => finding.severity === "warning")).toBe(true);
   });
 
+  it("flags the catalog patterns added in 4.25 through 4.29", () => {
+    const source = [
+      "## A Heading ✅",
+      "",
+      "The protocol publishes its ledger, underscoring the project's commitment to openness.",
+      "",
+      "Studies show that experts agree on the outcome.",
+      "",
+      "The architecture refuses to record a name it cannot verify.",
+      "",
+      "The work was very robust and fostered a handoff.",
+    ].join("\n");
+    const findings = auditMarkdown(source, "test.md");
+    const ruleIds = findings.map((finding) => finding.ruleId);
+
+    expect(ruleIds).toEqual(
+      expect.arrayContaining([
+        "format.decorative-heading",
+        "rhetoric.participial-commentary",
+        "citation.weasel-attribution",
+        "syntax.inanimate-agency",
+        "diction.empty-intensifier",
+        "diction.ai-filler",
+      ]),
+    );
+    expect(findings.every((finding) => finding.severity === "warning")).toBe(true);
+  });
+
+  it("keeps status notation outside headings and degree adverbs out of the magnitude rule", () => {
+    const source = [
+      "| Item | State |",
+      "| --- | --- |",
+      "| Bridged | ✅ |",
+      "| Carried | ✓ |",
+      "",
+      "The claim is deeply held and remarkably durable.",
+    ].join("\n");
+    const ruleIds = auditMarkdown(source, "test.md").map((finding) => finding.ruleId);
+
+    expect(ruleIds).not.toContain("format.decorative-heading");
+    expect(ruleIds).not.toContain("diction.inflated-significance");
+    expect(ruleIds).toContain("diction.empty-intensifier");
+  });
+
+  it("leaves facilitation vocabulary alone", () => {
+    const source = [
+      "Facilitators cannot promise a state or arrange conditions on demand.",
+      "",
+      "The council reached its recommendation after facilitated deliberation.",
+    ].join("\n");
+    const ruleIds = auditMarkdown(source, "test.md").map((finding) => finding.ruleId);
+
+    expect(ruleIds).not.toContain("diction.ai-filler");
+  });
+
   it("flags copy defects, triads, repeated negation, and repeated section templates", () => {
     const source = [
       "## Refrain",

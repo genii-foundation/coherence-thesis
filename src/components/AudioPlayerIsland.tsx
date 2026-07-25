@@ -649,6 +649,10 @@ export function AudioPlayerIsland({
     ) {
       return;
     }
+    // The queue was empty when the button was pressed because the section
+    // manifest had not arrived yet. Once it lands, prefer what this page
+    // actually holds: pressing play on a content page must play that page and
+    // stay on it, not jump to the first unread section elsewhere in the book.
     const pendingQueue = visibleQueue.length > 0 ? visibleQueue : fallbackQueue;
     const target = pendingQueue[0];
     if (!target) {

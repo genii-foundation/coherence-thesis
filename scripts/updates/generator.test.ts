@@ -19,10 +19,10 @@ const mergeSha = "d".repeat(40);
 const sideSha = "c".repeat(40);
 const headDate = "2026-07-10T17:33:35.000Z";
 const olderDate = "2026-07-09T17:33:35.000Z";
-const pageOneUrl = `https://api.github.com/repos/providence-collective/coherence-thesis/commits?sha=${headSha}&per_page=100`;
+const pageOneUrl = `https://api.github.com/repos/genii-foundation/coherence-thesis/commits?sha=${headSha}&per_page=100`;
 const pageTwoUrl = `${pageOneUrl}&page=2`;
-const headDetailUrl = `https://api.github.com/repos/providence-collective/coherence-thesis/commits/${headSha}`;
-const olderDetailUrl = `https://api.github.com/repos/providence-collective/coherence-thesis/commits/${olderSha}`;
+const headDetailUrl = `https://api.github.com/repos/genii-foundation/coherence-thesis/commits/${headSha}`;
+const olderDetailUrl = `https://api.github.com/repos/genii-foundation/coherence-thesis/commits/${olderSha}`;
 
 function localGit(): GitCommand {
   return (args) => {
@@ -292,7 +292,7 @@ describe("updates snapshot generator", () => {
         "--unshallow",
         "--no-tags",
         "--no-recurse-submodules",
-        "https://github.com/providence-collective/coherence-thesis.git",
+        "https://github.com/genii-foundation/coherence-thesis.git",
         "+refs/heads/main:refs/remotes/origin/main",
       ],
     ]);
@@ -337,7 +337,7 @@ describe("updates snapshot generator", () => {
 
     expect(apiSnapshot).toEqual(readCompleteLocalSnapshot(localGit()));
     expect(requestedUrls).toEqual([
-      "https://api.github.com/repos/providence-collective/coherence-thesis/git/ref/heads/main",
+      "https://api.github.com/repos/genii-foundation/coherence-thesis/git/ref/heads/main",
       pageOneUrl,
       pageTwoUrl,
       headDetailUrl,
@@ -367,7 +367,7 @@ describe("updates snapshot generator", () => {
       fetchGitHubSnapshot(fetcher, "token", existingSnapshot),
     ).resolves.toEqual(existingSnapshot);
     expect(requestedUrls).toEqual([
-      "https://api.github.com/repos/providence-collective/coherence-thesis/git/ref/heads/main",
+      "https://api.github.com/repos/genii-foundation/coherence-thesis/git/ref/heads/main",
       pageOneUrl,
     ]);
   });
@@ -469,7 +469,7 @@ describe("updates snapshot generator", () => {
     expect(result.source).toBe("github");
     expect(result.snapshot.headSha).toBe(headSha);
     expect(requestedUrls).toEqual([
-      "https://api.github.com/repos/providence-collective/coherence-thesis/git/ref/heads/main",
+      "https://api.github.com/repos/genii-foundation/coherence-thesis/git/ref/heads/main",
       pageOneUrl,
       headDetailUrl,
     ]);
@@ -534,10 +534,10 @@ describe("updates snapshot generator", () => {
     const historicalUrl =
       "https://coherence-thesis-historical-aubreyfs-projects.vercel.app";
     const deploymentsUrl =
-      `https://api.github.com/repos/providence-collective/coherence-thesis/deployments` +
+      `https://api.github.com/repos/genii-foundation/coherence-thesis/deployments` +
       `?sha=${olderSha}&environment=Production&per_page=100`;
     const statusesUrl =
-      "https://api.github.com/repos/providence-collective/coherence-thesis/deployments/17/statuses?per_page=100";
+      "https://api.github.com/repos/genii-foundation/coherence-thesis/deployments/17/statuses?per_page=100";
     const requests: Array<{ url: string; method: string }> = [];
     const fetcher: FetchCommand = async (input, init) => {
       const url = String(input);
@@ -611,7 +611,7 @@ describe("updates snapshot generator", () => {
     const transientUrl =
       "https://coherence-thesis-transient-aubreyfs-projects.vercel.app";
     const deploymentsUrl =
-      `https://api.github.com/repos/providence-collective/coherence-thesis/deployments` +
+      `https://api.github.com/repos/genii-foundation/coherence-thesis/deployments` +
       `?sha=${headSha}&environment=Production&per_page=100`;
     const snapshot = createUpdatesSnapshot(headSha, [
       {
@@ -735,6 +735,74 @@ describe("updates snapshot generator", () => {
 
     expect(enriched.commits[0]?.deploymentUrl).toBe(deploymentUrl);
     expect(requested).toBe(false);
+  });
+
+  it("preserves cached links across the repository owner migration", async () => {
+    const deploymentUrl = "https://coherence-thesis-cached-aubreyfs-projects.vercel.app";
+    const snapshot = createUpdatesSnapshot(headSha, [
+      {
+        sha: headSha,
+        committedAt: headDate,
+        subject: "feat: current",
+        filesChanged: 1,
+        additions: 2,
+        deletions: 0,
+      },
+    ]);
+    const cached = createUpdatesSnapshot(headSha, [
+      {
+        ...snapshot.commits[0]!,
+        deploymentUrl,
+      },
+    ]);
+    const legacyCached = {
+      ...cached,
+      repository: "providence-collective/coherence-thesis",
+      commits: cached.commits.map((commit) => ({
+        ...commit,
+        commitUrl: commit.commitUrl.replace(
+          "genii-foundation",
+          "providence-collective",
+        ),
+      })),
+    };
+
+    const enriched = await enrichUpdatesSnapshotDeployments(snapshot, {
+      existingSnapshot: legacyCached,
+      refreshDeployments: false,
+    });
+
+    expect(enriched.commits[0]?.deploymentUrl).toBe(deploymentUrl);
+  });
+
+  it("does not reuse cached links from an unrelated repository", async () => {
+    const deploymentUrl = "https://coherence-thesis-cached-aubreyfs-projects.vercel.app";
+    const snapshot = createUpdatesSnapshot(headSha, [
+      {
+        sha: headSha,
+        committedAt: headDate,
+        subject: "feat: current",
+        filesChanged: 1,
+        additions: 2,
+        deletions: 0,
+      },
+    ]);
+    const unrelatedCache = {
+      ...snapshot,
+      repository: "example/unrelated",
+      commits: snapshot.commits.map((commit) => ({
+        ...commit,
+        commitUrl: `https://github.com/example/unrelated/commit/${commit.sha}`,
+        deploymentUrl,
+      })),
+    };
+
+    const enriched = await enrichUpdatesSnapshotDeployments(snapshot, {
+      existingSnapshot: unrelatedCache,
+      refreshDeployments: false,
+    });
+
+    expect(enriched.commits[0]?.deploymentUrl).toBeUndefined();
   });
 
   it("discards a partial GitHub refresh and keeps a valid snapshot", async () => {

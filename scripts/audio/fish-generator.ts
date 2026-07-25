@@ -525,6 +525,124 @@ export function audioDurationSeconds(filePath: string): number | undefined {
   }
 }
 
+export function audioBitrate(filePath: string): number | undefined {
+  try {
+    const output = execFileSync(
+      "ffprobe",
+      [
+        "-v",
+        "error",
+        "-show_entries",
+        "format=bit_rate",
+        "-of",
+        "default=noprint_wrappers=1:nokey=1",
+        filePath,
+      ],
+      { encoding: "utf8" },
+    ).trim();
+    const bitrate = Number(output);
+    return Number.isFinite(bitrate) && bitrate > 0 ? Math.round(bitrate) : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+// Fish returns roughly 272 kbps Opus no matter what opus_bitrate the request
+// asks for. Measured 2026-07-25: 24000, 32000 and 64000 all produced 272,619
+// bps. The 2026-07-25 corpus therefore shipped at four times its intended
+// rate, 2.40GB where 64 kbps would have been about 565MB, which readers pay
+// for twice over in offline downloads and streaming.
+//
+// The provider setting cannot be trusted, so the rate is enforced locally
+// before the audio is aligned or published. Alignment runs against the file
+// this leaves behind, so word timings always describe the published bytes.
+// Opus is variable rate, and container overhead puts a real 64 kbps encode at
+// roughly 77 kbps measured, about 1.2x target. The tolerance sits above that so
+// a normalized clip is stable and never re-encodes on a resumed run, and far
+// below the provider's 4.2x passthrough, which is what this needs to catch.
+export const opusBitrateTolerance = 1.35;
+export const maximumTranscodeDurationDriftSeconds = 0.25;
+
+export type OpusNormalizationResult = {
+  normalized: boolean;
+  bitrateBefore?: number;
+  bitrateAfter?: number;
+};
+
+export function opusBitrateWithinTolerance(
+  measuredBitrate: number,
+  targetBitrate: number,
+): boolean {
+  return measuredBitrate <= targetBitrate * opusBitrateTolerance;
+}
+
+export function normalizeOpusBitrate(input: {
+  filePath: string;
+  targetBitrate: number;
+}): OpusNormalizationResult {
+  const bitrateBefore = audioBitrate(input.filePath);
+  if (bitrateBefore === undefined) return { normalized: false };
+  if (opusBitrateWithinTolerance(bitrateBefore, input.targetBitrate)) {
+    return { normalized: false, bitrateBefore, bitrateAfter: bitrateBefore };
+  }
+
+  const durationBefore = audioDurationSeconds(input.filePath);
+  const temporaryPath = `${input.filePath}.normalizing`;
+  try {
+    execFileSync(
+      "ffmpeg",
+      [
+        "-v", "error",
+        "-y",
+        "-i", input.filePath,
+        "-c:a", "libopus",
+        "-b:a", String(input.targetBitrate),
+        "-ar", "48000",
+        "-ac", "1",
+        "-vn",
+        "-f", "opus",
+        temporaryPath,
+      ],
+      { encoding: "utf8" },
+    );
+
+    const durationAfter = audioDurationSeconds(temporaryPath);
+    if (
+      durationBefore !== undefined &&
+      durationAfter !== undefined &&
+      Math.abs(durationAfter - durationBefore) >
+        maximumTranscodeDurationDriftSeconds
+    ) {
+      throw new Error(
+        `Opus normalization moved the duration of ${path.basename(input.filePath)} from ${durationBefore}s to ${durationAfter}s. Word timings would drift, so the clip was left untouched.`,
+      );
+    }
+
+    fs.renameSync(temporaryPath, input.filePath);
+  } finally {
+    fs.rmSync(temporaryPath, { force: true });
+  }
+
+  return {
+    normalized: true,
+    bitrateBefore,
+    bitrateAfter: audioBitrate(input.filePath),
+  };
+}
+
+export function assertPublishableOpusBitrate(input: {
+  filePath: string;
+  targetBitrate: number;
+  sectionId: string;
+}): void {
+  const bitrate = audioBitrate(input.filePath);
+  if (bitrate === undefined) return;
+  if (opusBitrateWithinTolerance(bitrate, input.targetBitrate)) return;
+  throw new Error(
+    `Audio for ${input.sectionId} measured ${bitrate} bps against a ${input.targetBitrate} bps target. Local Opus normalization did not take effect, so the run would publish oversized clips.`,
+  );
+}
+
 export function writeRunManifest(runRoot: string, manifest: FishRunManifest): string {
   ensureDir(runRoot);
   const manifestPath = path.join(runRoot, "manifest.json");

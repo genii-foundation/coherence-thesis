@@ -361,7 +361,7 @@ async function writePdf(
       autoFirstPage: false,
       bufferPages: true,
       info: {
-        Author: "Providence Collective",
+        Author: "GENII Foundation",
         Subject: "The Coherence Thesis",
         Title: title,
       },

@@ -43,7 +43,7 @@ test("home page presents the overview and manuscript entry points", async ({
   ).toBeVisible();
   await expect(page.locator(".hero-copy h1")).toHaveCSS("font-weight", "300");
   await expect(page.locator(".brand-kicker")).toHaveText(
-    "Providence Collective",
+    "GENII Foundation",
   );
   await expect(page.locator(".brand-title-full")).toHaveText(
     "The Coherence Thesis",
@@ -309,8 +309,13 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(footer).toBeVisible();
   await expect(footer).toHaveCSS("border-top-width", "0px");
   await expect(
-    footer.getByText(`© ${copyrightYearLabel} by the Providence Collective.`),
+    footer.getByText(`© ${copyrightYearLabel} by GENII Foundation.`),
   ).toBeVisible();
+  const foundationLink = footer.getByRole("link", {
+    name: "GENII Foundation",
+  });
+  await expect(foundationLink).toHaveAttribute("href", "https://genii.foundation");
+  await expect(foundationLink).toHaveAttribute("rel", "author");
   await expect(footer.getByText("Licensing: CC BY-SA 4.0.")).toBeVisible();
   const licenseLink = footer.getByRole("link", { name: "CC BY-SA 4.0" });
   await expect(licenseLink).toHaveAttribute(
@@ -340,7 +345,7 @@ test("home page presents the overview and manuscript entry points", async ({
   });
   await expect(githubLink).toHaveAttribute(
     "href",
-    "https://github.com/providence-collective/coherence-thesis",
+    "https://github.com/genii-foundation/coherence-thesis",
   );
   await expect(githubLink).toHaveAttribute("target", "_blank");
   await expect(githubLink).toHaveAttribute("rel", "noopener noreferrer");

@@ -10,7 +10,7 @@ Security fixes target the current production site and the latest commit on `main
 
 Use GitHub's private vulnerability reporting form:
 
-[Report a vulnerability](https://github.com/providence-collective/coherence-thesis/security/advisories/new)
+[Report a vulnerability](https://github.com/genii-foundation/coherence-thesis/security/advisories/new)
 
 Do not open a public issue, discussion, or pull request containing exploit details. Do not include real credentials, session tokens, private reader data, or unnecessary personal information in a report.
 

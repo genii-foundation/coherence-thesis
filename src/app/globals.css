@@ -1343,18 +1343,18 @@ input {
   }
 }
 
+/* Every toolbar trigger carries the open state, so a reader can always see
+   which button produced the menu in front of them. */
 .site-nav > * > button[data-toolbar-menu-trigger][aria-expanded="true"]:not(
     .progress-menu-button
-  ):not(
-    .audio-menu-button
   ) {
   background: var(--nav-hover-background);
   color: var(--ink);
 }
 
 .site-nav > * > .audio-menu-button[data-toolbar-menu-trigger][aria-expanded="true"] {
-  background: transparent;
-  color: var(--ink-soft);
+  background: var(--nav-hover-background);
+  color: var(--ink);
 }
 
 .audio-playback-icon {
@@ -1686,9 +1686,14 @@ input {
     color 160ms ease;
 }
 
+/* Start links rest flat like the manuscript links below them. They earn the
+   border and background from hover, focus, or aria-current only, so a reader
+   cannot mistake them for the page they are already on. */
 .outline-top-links a {
   gap: 0.7rem;
   padding: 0.72rem;
+  border-color: transparent;
+  background: transparent;
 }
 
 .outline-volume-link {
@@ -6304,31 +6309,58 @@ input {
   .audio-popover,
   .settings-popover,
   .progress-popover {
+    /* Generous dead space around the menu so tapping beside it to dismiss is
+       an easy target rather than a precise one. */
+    --toolbar-mobile-popover-side-gap: 2.5rem;
+    --toolbar-mobile-popover-inline-start: max(
+      var(--toolbar-mobile-popover-side-gap),
+      env(safe-area-inset-left)
+    );
+    --toolbar-mobile-popover-inline-end: max(
+      var(--toolbar-mobile-popover-side-gap),
+      env(safe-area-inset-right)
+    );
     --toolbar-menu-max-height: calc(
       100dvh - var(--mobile-toolbar-height) -
-        max(0.75rem, env(safe-area-inset-bottom))
+        max(3.5rem, env(safe-area-inset-bottom))
     );
     --toolbar-mobile-popover-top: var(--mobile-toolbar-height);
-    --toolbar-mobile-popover-bottom-gap: max(0.75rem, env(safe-area-inset-bottom));
+    --toolbar-mobile-popover-bottom-gap: max(3.5rem, env(safe-area-inset-bottom));
 
     position: fixed;
     top: var(--toolbar-mobile-popover-top);
-    right: max(0.85rem, env(safe-area-inset-right));
-    left: max(0.85rem, env(safe-area-inset-left));
+    right: var(--toolbar-mobile-popover-inline-end);
+    left: var(--toolbar-mobile-popover-inline-start);
     width: auto;
     max-height: calc(
       100dvh - var(--toolbar-mobile-popover-top) -
         var(--toolbar-mobile-popover-bottom-gap)
     );
+    /* The menu reads as the toolbar itself extending downward. It takes the
+       toolbar's surface and shadow, carries no border of its own up top, and
+       paints a one pixel strip of toolbar colour over the header's bottom
+       border across its own width, so the two surfaces join seamlessly while
+       the border still runs to the screen edges either side. */
+    border-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    background: var(--header-background);
+    box-shadow:
+      0 -1px 0 0 var(--header-background),
+      0 10px 28px rgba(44, 31, 18, 0.1);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
   }
 
   .progress-popover .progress-link-list a {
-    width: calc(100vw - 4.1rem);
-    inline-size: calc(100vw - 4.1rem);
+    width: calc(
+      100vw - var(--toolbar-mobile-popover-inline-start) -
+        var(--toolbar-mobile-popover-inline-end) - 2.4rem
+    );
+    inline-size: calc(
+      100vw - var(--toolbar-mobile-popover-inline-start) -
+        var(--toolbar-mobile-popover-inline-end) - 2.4rem
+    );
     min-width: 0;
   }
 

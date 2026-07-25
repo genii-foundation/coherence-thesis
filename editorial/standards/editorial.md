@@ -65,11 +65,17 @@ Avoid punctuation theater. A colon should introduce something. A fragment should
 
 These are diagnostic patterns, not automatic deletion rules. A pattern becomes a defect when it is needless, repeated, vague, falsely emphatic, or interchangeable with prose from an unrelated subject.
 
+Report a finding by naming its category, quoting the line, and stating the repair in a few words. Do not score a passage, and do not assert that a machine wrote it. Authorship cannot be detected from surface features. A named pattern beside its quoted line is evidence an author can check and dispute.
+
+Categories 4.4, 4.9, and 4.19 describe one family seen from three angles: uniformity of shape, of opening, and of rhythm. Record a finding under the most specific category rather than all three.
+
 ### 4.1 Throat clearing
 
 Flag openings that announce importance instead of beginning the thought.
 
 Common forms include `It is important to remember`, `It is worth noting`, `To understand this`, `At its core`, `The key point is`, and `What we must recognize is`.
+
+Flag also the setup that casts the narrator as sole witness: `what most people miss`, `here is what nobody tells you`, `the part everyone skips`. The construction borrows authority from an invented majority who failed to notice.
 
 Repair by stating the point directly. Keep framing only when it changes how the reader should interpret what follows.
 
@@ -97,9 +103,11 @@ Flag sentences crowded with words ending in forms such as `tion`, `ment`, `ness`
 
 Repair by recovering actors, actions, objects, conditions, and consequences. Retain technical abstractions that name real distinctions.
 
+Prefer the verb hiding inside the noun. `made a decision` becomes `decided`. `has the ability to` becomes `can`. Prefer `is` and `has` to `serves as`, `functions as`, and `acts as` when the plain verb is clearer.
+
 ### 4.6 Inflated significance
 
-Flag unsupported uses of `profound`, `fundamental`, `transformative`, `revolutionary`, `unprecedented`, `crucial`, `vital`, `radical`, `deeply`, and universal language.
+Flag unsupported uses of `profound`, `fundamental`, `transformative`, `revolutionary`, `unprecedented`, `crucial`, `vital`, `radical`, and universal language. Degree adverbs belong to 4.21.
 
 Make the consequence visible instead of naming its magnitude. Preserve strong terms when the argument earns them.
 
@@ -157,6 +165,8 @@ Flag endings that rise automatically toward hope, invitation, collective destiny
 
 Let hope arrive through a concrete possibility, decision, image, or demonstrated opening.
 
+Delete an unearned closing flourish rather than rewriting it into a better image. Replacing one aphorism with a finer aphorism preserves the defect and hides it. End instead on the most concrete sentence the passage already contains. Section 6 governs the closings a volume has genuinely earned, and a liturgical or prophetic ending may end on its image by design.
+
 ### 4.16 Performed intimacy
 
 Flag `we all know`, `you may feel`, `let us imagine`, `consider for a moment`, and claims about the reader's inner state.
@@ -187,6 +197,8 @@ Flag nearby repetition of favored abstractions and prestige terms. In these manu
 
 Do not purge domain vocabulary. Ask whether each recurrence names the exact concept, conceals a more concrete statement, or merely echoes the project's lexicon.
 
+Do not repair recurrence by rotating near-synonyms. If the exact word is right, repeat it. Cycling a term through `system`, `architecture`, and `framework` to relieve repetition asks the reader to decide whether three names denote one thing, which costs more than the repetition it hides. Section 5 requires stable project terms. The repair for a tired abstraction is a concrete statement, not a fresh label.
+
 ### 4.21 Empty intensifiers
 
 Flag `very`, `deeply`, `truly`, `genuinely`, `remarkably`, `extraordinarily`, `incredibly`, and similar adverbs when they substitute for evidence or exact description.
@@ -210,6 +222,42 @@ Keep genuine wayfinding in a long philosophical work. Remove ceremonial announce
 Flag sentences that sound elegant but cannot be paraphrased into a clear proposition, image, question, or emotional movement.
 
 Ask what the sentence commits the work to. If the answer is nothing, remove it or discover the missing thought.
+
+### 4.25 Participial commentary
+
+Flag trailing clauses that append significance instead of stating a consequence. Common forms end in `highlighting`, `underscoring`, `showcasing`, `demonstrating`, `illustrating`, `reinforcing`, `cementing`, and `solidifying`.
+
+The construction asserts an inference the sentence never performed. `The protocol publishes its ledger, underscoring the project's commitment to transparency` names a virtue. `The protocol publishes its ledger, so an outside auditor can reconstruct any balance without asking permission` names a consequence.
+
+Repair by stating what follows from the fact, or cut the clause when the fact already carries it. Keep a participial clause that reports a simultaneous action rather than a verdict.
+
+### 4.26 Colon reveal
+
+Flag a noun phrase, a colon, and a short dramatic completion staged as disclosure. `The detail that makes it work: a second reader who never sees the first review.`
+
+Section 3 prohibits punctuation theater. This is its most frequent form. A colon should specify, enumerate, or quote. When it is performing surprise, recast the sentence so the syntax carries the thought.
+
+Keep the colon when the second clause genuinely specifies the first, and in labels, lists, epigraph attributions, and display matter.
+
+### 4.27 Weasel attribution
+
+Flag `experts agree`, `studies show`, `research suggests`, `scientists have found`, `many argue`, `it is widely accepted`, and `widely regarded as`. An unnamed consensus is not a citation, and it cannot be checked, dated, or disputed.
+
+Name the source, bound the claim to what a named source established, or remove it. When research falls outside the batch scope, mark the claim for author review under section 9 rather than inventing an attribution. This category covers appeals to authority. Unsourced numbers, spans, and taxonomies belong to 4.13.
+
+### 4.28 Inanimate agency
+
+Flag abstractions performing human acts: `the decision emerged`, `the architecture invites`, `the data believes`, `the system chooses`.
+
+Two distinct defects hide here. The construction can conceal who acted, which matters wherever responsibility, consent, or governance is at stake. It can also smuggle a causal claim that 4.12 would refuse if stated plainly, because a verb of intention implies an agent the evidence never established.
+
+Recover the actor and the action. Personification is native to this corpus and may be exact, alive, and deliberate. Preserve it when the voice card licenses it and the image is doing real work. Remove it when it is standing in for an actor the passage declined to name.
+
+### 4.29 Formatting decoration
+
+Flag bold used mid-sentence for emphasis the prose has not earned, emoji in headings, bullets that fragment an argument prose should carry, and headings over sections of two sentences.
+
+Format should follow structure. A list should hold items that are genuinely parallel and genuinely enumerable. Convert a decorative list back to prose when its items are a single argument cut into pieces, and let sentences carry the stress that typography was performing.
 
 ## 5. Philosophical prose standard
 
@@ -361,6 +409,9 @@ A reviewed batch is complete only when all answers are yes:
 - Does the revision retain the volume's characteristic voice?
 - Did independent review look for semantic drift and literary flattening?
 - Are canned transitions, false contrasts, generic uplift, and redundant conclusions removed where they were defects?
+- Are appeals to unnamed authority sourced, bounded, or marked for author review?
+- Do abstractions that act name an actor, or does the voice card license the personification?
+- Was the amount of change proportional to the defect, without compression that stripped character from sound prose?
 - Are abstractions grounded where the passage permits grounding?
 - Does sentence and paragraph rhythm vary with meaning?
 - Are em dashes, en dashes, and two-hyphen prose punctuation absent?

@@ -4,6 +4,7 @@ import {
   parseUpdatesSnapshot,
   updatesBranch,
   updatesRepository,
+  updatesSnapshotSchemaVersion,
   type UpdateCommitInput,
   type UpdatesSnapshot,
 } from "../../src/lib/updates";
@@ -34,6 +35,9 @@ const deploymentDiscoveryBudgetMs = 20_000;
 const deploymentRequestTimeoutMs = 5_000;
 const deploymentReachabilityTimeoutMs = 5_000;
 const maxAnonymousDeploymentLookups = 8;
+const legacyUpdatesRepositories = new Set([
+  "providence-collective/coherence-thesis",
+]);
 
 export function shouldRefreshUpdateDeployments(
   environment: Readonly<Record<string, string | undefined>>,
@@ -561,6 +565,57 @@ async function inDeploymentBatches<T>(
   }
 }
 
+function cachedDeploymentUrls(
+  value: unknown,
+  snapshotShas: ReadonlySet<string>,
+): Map<string, string> {
+  try {
+    const snapshot = parseUpdatesSnapshot(value);
+    return new Map(
+      snapshot.commits.flatMap((commit) =>
+        snapshotShas.has(commit.sha) && commit.deploymentUrl
+          ? [[commit.sha, commit.deploymentUrl] as const]
+          : [],
+      ),
+    );
+  } catch {
+    // A repository rename may leave one valid snapshot under the former owner.
+  }
+
+  if (typeof value !== "object" || value === null) return new Map();
+  const candidate = value as Record<string, unknown>;
+  if (
+    candidate.schemaVersion !== updatesSnapshotSchemaVersion ||
+    candidate.branch !== updatesBranch ||
+    typeof candidate.repository !== "string" ||
+    !legacyUpdatesRepositories.has(candidate.repository) ||
+    !Array.isArray(candidate.commits)
+  ) {
+    return new Map();
+  }
+
+  const urls = new Map<string, string>();
+  for (const commit of candidate.commits) {
+    if (typeof commit !== "object" || commit === null) continue;
+    const entry = commit as Record<string, unknown>;
+    if (
+      typeof entry.sha !== "string" ||
+      !snapshotShas.has(entry.sha) ||
+      typeof entry.deploymentUrl !== "string" ||
+      entry.commitUrl !==
+        `https://github.com/${candidate.repository}/commit/${entry.sha}`
+    ) {
+      continue;
+    }
+    try {
+      urls.set(entry.sha, normalizeUpdateDeploymentUrl(entry.deploymentUrl));
+    } catch {
+      // Invalid cached links are ignored and may be rediscovered from GitHub.
+    }
+  }
+  return urls;
+}
+
 export async function enrichUpdatesSnapshotDeployments(
   snapshot: UpdatesSnapshot,
   {
@@ -585,15 +640,11 @@ export async function enrichUpdatesSnapshotDeployments(
         cachedUrls.set(commit.sha, commit.deploymentUrl);
       }
     }
-    try {
-      const existing = parseUpdatesSnapshot(existingSnapshot);
-      for (const commit of existing.commits) {
-        if (snapshotShas.has(commit.sha) && commit.deploymentUrl) {
-          cachedUrls.set(commit.sha, commit.deploymentUrl);
-        }
-      }
-    } catch {
-      // An older or malformed cache cannot affect complete history generation.
+    for (const [sha, deploymentUrl] of cachedDeploymentUrls(
+      existingSnapshot,
+      snapshotShas,
+    )) {
+      cachedUrls.set(sha, deploymentUrl);
     }
 
     const resolvedUrls = new Map(cachedUrls);

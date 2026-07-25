@@ -34,7 +34,7 @@ The generator uses these defaults:
 
 - Endpoint: `POST /v1/tts/stream/with-timestamp`
 - Model: `s2.1-pro-free`
-- Format: 48 kHz Opus at 64 kbps
+- Format: 48 kHz mono Opus at 64 kbps, enforced locally after generation
 - Latency: `normal`
 - Fish chunk length: 300 characters
 - Temperature: 0.7
@@ -47,6 +47,24 @@ The generator uses these defaults:
 - Local word alignment with `mlx-community/whisper-large-v3-turbo` for the production run
 
 One request per section lets Fish preserve context across its internal chunks. It also avoids the voice and prosody resets caused by the previous external 1,500 character request splitting.
+
+## Fish ignores opus_bitrate
+
+The timestamped endpoint accepts `opus_bitrate` and disregards it. Measured on 2026-07-25 against `s2.1-pro-free` with one pinned narrator, requesting 24000, 32000 and 64000 each returned 272,619 bps:
+
+| requested | measured |
+| --- | --- |
+| 24 kbps | 272,619 bps |
+| 32 kbps | 272,624 bps |
+| 64 kbps | 272,619 bps |
+
+The 2026-07-25 corpus therefore published at roughly four times its intended rate: 2.40 GB where 64 kbps would have been about 565 MB. Readers pay that twice, in offline download size and in streaming.
+
+The generator now enforces the rate itself. After each section is written, and before any alignment runs, the clip is re-encoded to the configured bitrate when it measures more than 1.35 times target. Alignment therefore runs against the exact bytes that get published, so word timings always describe the published audio. Re-encoding is rejected if it moves the duration by more than 0.25 seconds, and a normalized clip stays inside tolerance so a resumed run does not encode it twice.
+
+A run fails rather than publishing oversized clips if normalization does not take effect. Local `ffmpeg` is required for Opus runs, alongside the `ffprobe` the generator already uses for duration.
+
+Do not raise the tolerance to make a run pass. A real 64 kbps Opus encode measures near 77 kbps once container overhead is counted, which is why the ceiling sits at 1.35 rather than at 1.
 
 Every generated section produces:
 

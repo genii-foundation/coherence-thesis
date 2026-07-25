@@ -111,7 +111,7 @@ describe("offline audio packs", () => {
                 sectionId: "one-a",
                 audioVersionId: "one-a-a",
                 href: "/audio/fish-default/one-a.mp3",
-                timingsHref: "/audio/fish-default/one-a.timings.json",
+                timingsByteSize: 128,
               },
               {
                 sectionId: "one-b",
@@ -170,7 +170,7 @@ describe("offline audio packs", () => {
                 sectionId: "one-a",
                 audioVersionId: "one-a-stale",
                 href: "/audio/fish-default/one-a-stale.mp3",
-                timingsHref: "/audio/fish-default/one-a-stale.timings.json",
+                timingsByteSize: 128,
               },
               {
                 sectionId: "one-b",

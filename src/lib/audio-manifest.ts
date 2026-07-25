@@ -3,8 +3,11 @@ export type AudioClipSection = {
   audioVersionId: string;
   href: string;
   format?: "mp3" | "opus" | "wav";
-  timingsHref?: string;
   byteSize?: number;
+  // A word timing sidecar is published beside its clip under the same
+  // immutable version path, so only its size is recorded. Carrying the full
+  // sidecar URL for every section added ~88KB to a manifest that every page
+  // fetches, whether or not the reader ever plays audio.
   timingsByteSize?: number;
   durationSeconds?: number;
 };
@@ -52,6 +55,15 @@ export function parseClipVoicePreferenceId(value: string | null): string | null 
 
 export function firstClipVoiceId(manifest: AudioClipManifest): string | null {
   return manifest.voices[0]?.id ?? null;
+}
+
+// Resolves the word timing sidecar that sits beside a clip. Returns null when
+// the clip has no published timings, which is how the pre-timestamped corpus
+// and any partially published run behave.
+export function audioTimingsHref(clip: AudioClipSection): string | null {
+  if (clip.timingsByteSize === undefined) return null;
+  const timingsHref = clip.href.replace(/\.[^./]+$/, ".timings.json");
+  return timingsHref === clip.href ? null : timingsHref;
 }
 
 export function resolveHostedVoicePreference(

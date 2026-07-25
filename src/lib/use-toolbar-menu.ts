@@ -107,8 +107,12 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     const headerBottom =
       document.querySelector(".site-header")?.getBoundingClientRect().bottom ??
       null;
+    // Floor rather than ceil, and no extra pixel. Rounding up and adding one
+    // left a hairline of page content between the toolbar and the menu on
+    // fractional device pixel ratios. Flooring can overlap the toolbar's
+    // bottom border by a subpixel, which is invisible, where a gap is not.
     setMobilePopoverTop(
-      headerBottom === null ? null : Math.max(0, Math.ceil(headerBottom) + 1),
+      headerBottom === null ? null : Math.max(0, Math.floor(headerBottom)),
     );
   }, []);
 

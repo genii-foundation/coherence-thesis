@@ -1,4 +1,4 @@
-export const updatesRepository = "providence-collective/coherence-thesis";
+export const updatesRepository = "genii-foundation/coherence-thesis";
 export const updatesRepositoryUrl = `https://github.com/${updatesRepository}`;
 export const updatesBranch = "main";
 export const updatesSnapshotSchemaVersion = 3;

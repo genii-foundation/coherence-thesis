@@ -69,7 +69,7 @@ describe("updates data", () => {
       title: "Add public updates",
       pullRequestNumber: 12,
       pullRequestUrl:
-        "https://github.com/providence-collective/coherence-thesis/pull/12",
+        "https://github.com/genii-foundation/coherence-thesis/pull/12",
       linesChanged: 100,
       changeLevel: 3,
     });

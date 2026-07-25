@@ -120,8 +120,8 @@ export const metadata: Metadata = {
   },
   description:
     "A living manuscript body on interpersonal coherence and thriving future societies.",
-  authors: [{ name: "Providence Collective" }],
-  creator: "Providence Collective",
+  authors: [{ name: "GENII Foundation", url: "https://genii.foundation" }],
+  creator: "GENII Foundation",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
