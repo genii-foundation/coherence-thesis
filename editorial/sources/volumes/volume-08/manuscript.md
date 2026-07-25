@@ -386,20 +386,16 @@ Lay one stone. That is the whole method, and it is enough to begin.
 - **Chemistry, plastics & EMF.** IARC (WHO) 2015 on glyphosate (Group 2A) vs. EFSA/EPA/ECHA/JMPR. Microplastics in every placenta and testicle tested (Campen / UNM, *Toxicological Sciences,* 2024) and accumulating in the brain — ~a spoon's worth, up ~50% in eight years (*Nature Medicine,* 2025). RF-EMF: IARC Group 2B ("possibly"); harm at ordinary exposures **not established** — a genuine but unsettled concern.
 
 **The state of 2026 (§3).**
-- **War.** CFR & ACLED *Conflict Watchlist 2026;* CFR Global Conflict Tracker; International Crisis Group. ~20 active conflicts; Sudan ~150,000 dead, ~12 million displaced.
-- **Economy.** BLS CPI (May 2026); CNN / Cleveland Fed (record-low sentiment, decade-wide wealth gap); Treasury/Census & Morgan Stanley on housing.
-- **AI & labor.** Challenger, Gray & Christmas; Stanford HAI; BCG; McKinsey. EU AI Act vs. the US federal preemption posture.
-- **Climate.** Copernicus / WMO / Berkeley Earth; World Weather Attribution (heat the deadliest extreme of 2025).
-- **Overdose & suicide.** CDC / NVSS provisional data (peak ~110,000 in 2022; >25% drop in 2024; falling through 2025 toward ~70,000). Suicide at record totals in recent years (CDC).
-- **DNA.** 23andMe Chapter 11 (March 2025); ~15 million genomes as a bankruptcy asset; the Regeneron bid and states' suits; sale to the TTAM nonprofit (July 2025); HIPAA's gap for direct-to-consumer genetic data.
-- **Social credit.** MERICS, Asia Society, Yale's Jeremy Daum on the *myth* of a unified citizen score; the real corporate-credit / blacklist apparatus and surrounding surveillance; the March 2025 State Council directive.
-- **Fertility & loneliness.** Global fertility ~2.2 (UN *World Population Prospects 2024;* Pew, 2025); below replacement in ~two-thirds of countries; Lancet/IHME projects 198 of 204 below replacement by 2100; declining sperm counts (Levine/Swan et al., *Human Reproduction Update,* 2022). U.S. Surgeon General's 2023 advisory on loneliness.
+- **War.** CFR and ACLED *Conflict Watchlist 2026;* CFR Global Conflict Tracker; International Crisis Group. About 20 active conflicts; Sudan about 150,000 dead, about 12 million displaced.
+- **Economy.** BLS CPI (May 2026); CNN and Cleveland Fed (record-low sentiment, decade-wide wealth gap); Treasury, Census, and Morgan Stanley on housing.
+- **AI and labor.** Challenger, Gray and Christmas; Stanford HAI; BCG; McKinsey. EU AI Act vs. the US federal preemption posture.
+- **Climate.** Copernicus, WMO, and Berkeley Earth; World Weather Attribution (heat the deadliest extreme of 2025).
+- **Overdose and suicide.** CDC and NVSS provisional data (peak about 110,000 in 2022; more than 25 percent drop in 2024; falling through 2025 toward about 70,000). Suicide at record totals in recent years (CDC).
+- **DNA.** 23andMe Chapter 11 (March 2025); about 15 million genomes as a bankruptcy asset; the Regeneron bid and states' suits; sale to the TTAM nonprofit (July 2025); HIPAA's gap for direct-to-consumer genetic data.
+- **Social credit.** MERICS, Asia Society, Yale's Jeremy Daum on the *myth* of a unified citizen score; the real corporate-credit and blacklist apparatus and surrounding surveillance; the March 2025 State Council directive.
+- **Fertility and loneliness.** Global fertility about 2.2 (UN *World Population Prospects 2024;* Pew, 2025); below replacement in about two-thirds of countries; Lancet and IHME project 198 of 204 below replacement by 2100; declining sperm counts (Levine and Swan et al., *Human Reproduction Update,* 2022). U.S. Surgeon General's 2023 advisory on loneliness.
 - **Trust.** Epstein Files Transparency Act (Nov 2025) and the DOJ's delayed, redacted, partial releases (CBS, CNN, PBS). Whistleblowers: Ellsberg (1971), Manning (2010), Snowden (2013), Assange (WikiLeaks).
 
-**Intimacy and the commodified body (§4).** The "sex recession": General Social Survey data analyzed by the Institute for Family Studies (2025) — weekly sexual activity among US adults 18–64 down from ~55% (1990) to ~37% (2024); year-long sexlessness among young adults roughly doubled to ~24% since 2010; in-person weekly social time among young adults more than halved since 2010. Read alongside the fertility and loneliness sources above.
+**Intimacy and the commodified body (§4).** The "sex recession": General Social Survey data analyzed by the Institute for Family Studies (2025). Weekly sexual activity among US adults 18 to 64 down from about 55 percent (1990) to about 37 percent (2024); year-long sexlessness among young adults roughly doubled to about 24 percent since 2010; in-person weekly social time among young adults more than halved since 2010. Read alongside the fertility and loneliness sources above.
 
 **The lineage (§10).** R. Buckminster Fuller, *Operating Manual for Spaceship Earth* (1969) and *Utopia or Oblivion* (1969). Fritjof Capra, *The Turning Point: Science, Society, and the Rising Culture* (1982).
-
----
-
-*[Figures in §3 are time-stamped to mid-2026 and should be refreshed before publication. The forward door remains set to Vol VII — the Seven Initiates of a BOW, where §4's "second meaning" and the work of intimacy open fully.]*
