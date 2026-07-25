@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "9a93a057bb33935a5586f9fd1307891dcbcb30ac",
+  "headSha": "c126678226e9ff367c173042959a63f8004a7ce7",
   "commits": [
+    {
+      "sha": "c126678226e9ff367c173042959a63f8004a7ce7",
+      "committedAt": "2026-07-25T20:03:54.000Z",
+      "subject": "feat: offer a refresh when a volume's recording is superseded (#154)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/c126678226e9ff367c173042959a63f8004a7ce7",
+      "filesChanged": 4,
+      "additions": 251,
+      "deletions": 9,
+      "isLiterary": false
+    },
     {
       "sha": "9a93a057bb33935a5586f9fd1307891dcbcb30ac",
       "committedAt": "2026-07-25T19:51:49.000Z",
