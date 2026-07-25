@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "c784377c003456674927e4ec2c14aa383423a2ea",
+  "headSha": "e4f02c45c324bc5f9f5920203268130f64f7a425",
   "commits": [
+    {
+      "sha": "e4f02c45c324bc5f9f5920203268130f64f7a425",
+      "committedAt": "2026-07-25T18:04:34.000Z",
+      "subject": "feat: publish the single narrator audiobook (#151)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/e4f02c45c324bc5f9f5920203268130f64f7a425",
+      "filesChanged": 16,
+      "additions": 2896,
+      "deletions": 1906,
+      "isLiterary": true
+    },
     {
       "sha": "c784377c003456674927e4ec2c14aa383423a2ea",
       "committedAt": "2026-07-25T17:08:21.000Z",

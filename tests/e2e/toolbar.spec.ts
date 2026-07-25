@@ -104,31 +104,6 @@ async function expectToolbarTriggerActive(
     .toBe(true);
 }
 
-async function expectToolbarTriggerOpenWithoutActiveWash(
-  page: Page,
-  selector: string,
-): Promise<void> {
-  const trigger = page.locator(selector);
-  await expect(trigger).toHaveAttribute("aria-expanded", "true");
-  await expect(trigger).toHaveAttribute("data-toolbar-menu-trigger", "true");
-  await expect(trigger).toHaveAttribute("data-menu-open", "true");
-
-  await expect
-    .poll(async () =>
-      trigger.evaluate((element) => {
-        const style = window.getComputedStyle(element);
-        const probe = document.createElement("div");
-        probe.style.background = "var(--nav-hover-background)";
-        document.body.append(probe);
-        const activeBackground = window.getComputedStyle(probe).backgroundColor;
-        probe.remove();
-
-        return style.backgroundColor !== activeBackground;
-      }),
-    )
-    .toBe(true);
-}
-
 async function expectRestingControlBorder(
   page: Page,
   selector: string,
@@ -1126,7 +1101,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await page.getByRole("button", { name: /Listen/ }).click();
   await page.mouse.move(12, 12);
   const audioMenu = page.getByLabel("Audiobook controls");
-  await expectToolbarTriggerOpenWithoutActiveWash(page, ".audio-menu-button");
+  await expectToolbarTriggerActive(page, ".audio-menu-button");
   await expect(audioMenu).toBeVisible();
   await expectDesktopPopoverStartsAtTriggerBottom(
     page,
@@ -1193,7 +1168,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectMenuFitsViewport(page, ".audio-popover");
   await page.getByRole("button", { name: "Pause audiobook" }).click();
   await expect(audioMenu).toBeVisible();
-  await expectToolbarTriggerOpenWithoutActiveWash(page, ".audio-menu-button");
+  await expectToolbarTriggerActive(page, ".audio-menu-button");
   await expect(page.getByRole("button", { name: /Listen/ })).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(audioMenu).toHaveCount(0);
