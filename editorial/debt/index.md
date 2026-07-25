@@ -4,7 +4,7 @@
 
 This index records known literary, philosophical, factual, continuity, publication, and technical obligations across The Coherence Thesis. A resolved item remains in the library as evidence of paydown.
 
-Open: 62. Queries: 38. Deferred: 5. Resolved: 1.
+Open: 61. Queries: 38. Deferred: 5. Resolved: 1.
 
 ## Active debt
 
@@ -107,7 +107,6 @@ Open: 62. Queries: 38. Deferred: 5. Resolved: 1.
 | [CTD-0101](items/ctd-0101-visible-card-ordinal-continuity.md) | Keep visible subsection ordinals contiguous after hidden openers | open | technical | medium | volume-3, reader, corpus | 2026-07-11 |
 | [CTD-0102](items/ctd-0102-volume-six-outline-hierarchy.md) | Restore Volume VI's first authored part in the reader outline | open | structural | medium | volume-6, reader, corpus | 2026-07-11 |
 | [CTD-0103](items/ctd-0103-opening-front-matter-label-consistency.md) | Unify Opening and Front Matter labels across reader navigation | open | terminology | medium | volume-3, reader, corpus | 2026-07-11 |
-| [CTD-0106](items/ctd-0106-expanded-slop-catalog-coverage.md) | Review the corpus against catalog categories 4.25 through 4.29 | open | literary | medium | volume-1, volume-2, volume-3, volume-4, volume-5, volume-6, volume-7, volume-8, volume-9, master-ledger, corpus | 2026-07-24 |
 | [CTD-0010](items/ctd-0010-volume-four-proof-of-council-foreshadow.md) | Add the promised Volume IV Proof of Council foreshadowing | deferred | canon | low | volume-4, corpus | 2026-07-09 |
 | [CTD-0018](items/ctd-0018-maren-coda-register.md) | Choose the final register of the Maren coda | query | literary | low | volume-1 | 2026-07-09 |
 | [CTD-0029](items/ctd-0029-cardinal-scale-forthcoming-book.md) | Track the promised original Cardinal Scale account | deferred | promise | low | volume-9, master-ledger, corpus | 2026-07-09 |
