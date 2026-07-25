@@ -30,7 +30,24 @@ test("toolbar play stays on the section it started", async ({ page }) => {
       );
 
       const requestedSources: string[] = [];
+      const playsWithUserActivation: boolean[] = [];
       const clipDuration = 60;
+
+      // iOS only permits a media element to start while a user gesture is
+      // active. Recording activation at play() time is the portable proxy for
+      // that rule: headless browsers do not enforce it, but a play() issued
+      // synchronously inside the click handler satisfies it everywhere.
+      let clickDispatchDepth = 0;
+      window.addEventListener(
+        "click",
+        () => {
+          clickDispatchDepth += 1;
+          window.setTimeout(() => {
+            clickDispatchDepth -= 1;
+          }, 0);
+        },
+        true,
+      );
 
       function FakeAudio(this: Record<string, unknown>) {
         this.preload = "";
@@ -80,6 +97,9 @@ test("toolbar play stays on the section it started", async ({ page }) => {
         this: Record<string, unknown>,
       ): Promise<void> {
         this.paused = false;
+        playsWithUserActivation.push(
+          navigator.userActivation?.isActive ?? clickDispatchDepth > 0,
+        );
         window.setTimeout(
           () => (this.onloadedmetadata as (() => void) | null)?.(),
           0,
@@ -106,6 +126,10 @@ test("toolbar play stays on the section it started", async ({ page }) => {
       Object.defineProperty(window, "__requestedAudioSources", {
         configurable: true,
         get: () => requestedSources,
+      });
+      Object.defineProperty(window, "__playsWithUserActivation", {
+        configurable: true,
+        get: () => playsWithUserActivation,
       });
     },
     {
@@ -153,5 +177,15 @@ test("toolbar play stays on the section it started", async ({ page }) => {
         .__requestedAudioSources,
   );
   expect(requestedSources).toHaveLength(1);
+
+  // The clip must be started by the gesture itself, not by a callback after an
+  // await. iOS rejects the latter and drops the audiobook to the system voice.
+  const playsWithUserActivation = await page.evaluate(
+    () =>
+      (window as unknown as { __playsWithUserActivation: boolean[] })
+        .__playsWithUserActivation,
+  );
+  expect(playsWithUserActivation).toEqual([true]);
+
   expect(pageErrors).toEqual([]);
 });
