@@ -648,16 +648,23 @@ export function AudioPlayerIsland({
     ) {
       return;
     }
-    const target = fallbackQueue[0];
+    // The queue was empty when the button was pressed because the section
+    // manifest had not arrived yet. Once it lands, prefer what this page
+    // actually holds: pressing play on a content page must play that page and
+    // stay on it, not jump to the first unread section elsewhere in the book.
+    const pendingQueue = visibleQueue.length > 0 ? visibleQueue : fallbackQueue;
+    const target = pendingQueue[0];
     if (!target) {
       setPendingFallbackPlayback(false);
       setPlaybackPending(false);
       return;
     }
     setPendingFallbackPlayback(false);
-    void speakRef.current(0, preference, fallbackQueue);
-    const targetHref = target.readerHref ?? target.href;
-    if (targetHref) router.push(targetHref);
+    void speakRef.current(0, preference, pendingQueue);
+    if (visibleQueue.length === 0) {
+      const targetHref = target.readerHref ?? target.href;
+      if (targetHref) router.push(targetHref);
+    }
   }, [
     fallbackQueue,
     pendingFallbackPlayback,
@@ -666,6 +673,7 @@ export function AudioPlayerIsland({
     router,
     sections.length,
     supported,
+    visibleQueue,
     voicesReady,
   ]);
 
