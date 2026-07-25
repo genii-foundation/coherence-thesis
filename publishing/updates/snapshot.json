@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "2f1f33ac5fd807b67b8510a2f3ba9ae5bb1b9383",
+  "headSha": "c784377c003456674927e4ec2c14aa383423a2ea",
   "commits": [
+    {
+      "sha": "c784377c003456674927e4ec2c14aa383423a2ea",
+      "committedAt": "2026-07-25T17:08:21.000Z",
+      "subject": "fix: keep toolbar playback on the section it started (#149)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/c784377c003456674927e4ec2c14aa383423a2ea",
+      "filesChanged": 5,
+      "additions": 401,
+      "deletions": 30,
+      "isLiterary": false
+    },
     {
       "sha": "2f1f33ac5fd807b67b8510a2f3ba9ae5bb1b9383",
       "committedAt": "2026-07-25T01:01:07.000Z",
