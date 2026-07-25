@@ -16,6 +16,7 @@ import {
   type FishAudioFile,
   type FishRunManifest,
 } from "./fish-generator";
+import { audioTimingsHref } from "../../src/lib/audio-manifest";
 
 const generatedAt = "2026-07-08T00:00:00.000Z";
 const canonicalAudioText = "Section A\n\nBody";
@@ -180,8 +181,6 @@ describe("Fish Supabase audio manifest publishing", () => {
               audioVersionId: "section-a-hash",
               href: "https://project.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-audiobook-v1/default/section-a-hash.opus",
               format: "opus",
-              timingsHref:
-                "https://project.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-audiobook-v1/default/section-a-hash.timings.json",
               byteSize: audioBytes.byteLength,
               timingsByteSize: timingBytes.byteLength,
               durationSeconds: 1,
@@ -208,12 +207,18 @@ describe("Fish Supabase audio manifest publishing", () => {
       timingsObjectKey:
         "audiobook/2026-07-audiobook-v2/default/section-a-hash.timings.json",
     });
-    expect(createAudioClipManifest({ run, catalogSections, files }).voices[0]!.sections[0])
-      .toMatchObject({
-        format: "opus",
-        timingsHref:
-          "https://project.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-audiobook-v2/default/section-a-hash.timings.json",
-      });
+    // The sidecar URL is deliberately absent from the published manifest. The
+    // reader derives it from href, so only its size is recorded.
+    const published = createAudioClipManifest({ run, catalogSections, files })
+      .voices[0]!.sections[0]!;
+    expect(published).toMatchObject({
+      format: "opus",
+      timingsByteSize: timingBytes.byteLength,
+    });
+    expect(published).not.toHaveProperty("timingsHref");
+    expect(audioTimingsHref(published)).toBe(
+      "https://project.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-audiobook-v2/default/section-a-hash.timings.json",
+    );
   });
 
   it("rejects a timestamped run without its timing sidecar", () => {

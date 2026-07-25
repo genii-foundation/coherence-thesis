@@ -4,7 +4,7 @@
 
 This index records known literary, philosophical, factual, continuity, publication, and technical obligations across The Coherence Thesis. A resolved item remains in the library as evidence of paydown.
 
-Open: 61. Queries: 38. Deferred: 5. Resolved: 1.
+Open: 62. Queries: 38. Deferred: 5. Resolved: 1.
 
 ## Active debt
 
@@ -77,7 +77,7 @@ Open: 61. Queries: 38. Deferred: 5. Resolved: 1.
 | [CTD-0094](items/ctd-0094-volume-nine-production-pass.md) | Complete Volume IX's editorial production pass | open | literary | high | volume-9 | 2026-07-10 |
 | [CTD-0095](items/ctd-0095-volume-four-coda-system.md) | Reconcile or retire Volume IV's repeated coda system | open | structural | high | volume-4 | 2026-07-11 |
 | [CTD-0104](items/ctd-0104-default-strict-editorial-gate.md) | Make strict editorial punctuation a default validation gate | deferred | technical | high | site, corpus | 2026-07-11 |
-| [CTD-0105](items/ctd-0105-volume-one-internal-production-note.md) | Remove the internal Volume I production note from published prose | open | literary | high | volume-1, site | 2026-07-13 |
+| [CTD-0105](items/ctd-0105-volume-one-internal-production-note.md) | Remove internal production notes from published prose | open | literary | high | volume-1, volume-8, site | 2026-07-25 |
 | [CTD-0014](items/ctd-0014-soil-metaphysical-modality.md) | Decide the modality of the Soil's living-development claim | query | canon | medium | volume-1, corpus | 2026-07-09 |
 | [CTD-0017](items/ctd-0017-four-movements-structural-scope.md) | Decide what the Four Movements heading promises | query | structural | medium | volume-1 | 2026-07-09 |
 | [CTD-0020](items/ctd-0020-volume-two-warning-invitation-balance.md) | Approve Volume II's balance of warning and invitation | query | literary | medium | volume-2 | 2026-07-09 |
@@ -107,6 +107,7 @@ Open: 61. Queries: 38. Deferred: 5. Resolved: 1.
 | [CTD-0101](items/ctd-0101-visible-card-ordinal-continuity.md) | Keep visible subsection ordinals contiguous after hidden openers | open | technical | medium | volume-3, reader, corpus | 2026-07-11 |
 | [CTD-0102](items/ctd-0102-volume-six-outline-hierarchy.md) | Restore Volume VI's first authored part in the reader outline | open | structural | medium | volume-6, reader, corpus | 2026-07-11 |
 | [CTD-0103](items/ctd-0103-opening-front-matter-label-consistency.md) | Unify Opening and Front Matter labels across reader navigation | open | terminology | medium | volume-3, reader, corpus | 2026-07-11 |
+| [CTD-0106](items/ctd-0106-volume-eight-appendix-b-carryover.md) | Refresh the Volume VIII Appendix B figures and settle the Vol VII forward door | open | literary | medium | volume-8 | 2026-07-25 |
 | [CTD-0010](items/ctd-0010-volume-four-proof-of-council-foreshadow.md) | Add the promised Volume IV Proof of Council foreshadowing | deferred | canon | low | volume-4, corpus | 2026-07-09 |
 | [CTD-0018](items/ctd-0018-maren-coda-register.md) | Choose the final register of the Maren coda | query | literary | low | volume-1 | 2026-07-09 |
 | [CTD-0029](items/ctd-0029-cardinal-scale-forthcoming-book.md) | Track the promised original Cardinal Scale account | deferred | promise | low | volume-9, master-ledger, corpus | 2026-07-09 |

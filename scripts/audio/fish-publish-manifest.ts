@@ -496,8 +496,11 @@ export function createAudioClipManifest(input: {
         byteSize: file.source.byteSize,
         durationSeconds: file.source.durationSeconds,
       };
-      if (file.timingsHref) manifestSection.timingsHref = file.timingsHref;
-      if (file.source.timingsByteSize !== undefined) {
+      // The sidecar URL is not published. It sits beside its clip under the
+      // same immutable version path, so the reader derives it from href and
+      // the manifest carries only the size. Repeating a full URL for every
+      // section added ~88KB to a payload fetched on every page.
+      if (file.timingsHref && file.source.timingsByteSize !== undefined) {
         manifestSection.timingsByteSize = file.source.timingsByteSize;
       }
       return manifestSection;

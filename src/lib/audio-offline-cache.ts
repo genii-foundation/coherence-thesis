@@ -1,4 +1,4 @@
-import type { AudioClipManifest } from "@/lib/audio-manifest";
+import { audioTimingsHref, type AudioClipManifest } from "@/lib/audio-manifest";
 import type { ProgressSectionData, OutlineVolume } from "@/lib/reader-data";
 
 export const offlineAudioCacheName = "coherence-offline-v1";
@@ -54,7 +54,8 @@ export function buildOfflineAudioPacks(input: {
       const key = clipVersionKey(clip.sectionId, clip.audioVersionId);
       const current = clipsByVersion.get(key) ?? [];
       current.push(clip.href);
-      if (clip.timingsHref) current.push(clip.timingsHref);
+      const timingsHref = audioTimingsHref(clip);
+      if (timingsHref) current.push(timingsHref);
       clipsByVersion.set(key, current);
       clipCountByVersion.set(
         key,
