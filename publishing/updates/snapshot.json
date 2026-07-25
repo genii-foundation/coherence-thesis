@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "9a5458793c7a2cafbb3b0490ca0184a5929efbfc",
+  "headSha": "2f1f33ac5fd807b67b8510a2f3ba9ae5bb1b9383",
   "commits": [
+    {
+      "sha": "2f1f33ac5fd807b67b8510a2f3ba9ae5bb1b9383",
+      "committedAt": "2026-07-25T01:01:07.000Z",
+      "subject": "feat: expand the AI slop catalog and detector (#148)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/2f1f33ac5fd807b67b8510a2f3ba9ae5bb1b9383",
+      "filesChanged": 5,
+      "additions": 167,
+      "deletions": 6,
+      "isLiterary": false
+    },
     {
       "sha": "9a5458793c7a2cafbb3b0490ca0184a5929efbfc",
       "committedAt": "2026-07-18T21:39:33.000Z",
