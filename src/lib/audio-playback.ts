@@ -9,6 +9,7 @@
 // second implementation of this same interface without touching the island.
 
 import {
+  audioTimingsHref,
   clipVoicePreferenceId,
   findAudioClip,
   parseClipVoicePreferenceId,
@@ -361,8 +362,9 @@ export function createHostedClipProvider(
     request: AudioPlaybackRequest,
     voiceId: string,
   ): Promise<AudioTimingDocument | null> => {
-    if (!clip.timingsHref) return Promise.resolve(null);
-    const existing = timingDocuments.get(clip.timingsHref);
+    const timingsHref = audioTimingsHref(clip);
+    if (!timingsHref) return Promise.resolve(null);
+    const existing = timingDocuments.get(timingsHref);
     if (existing && timingMatchesRequest(existing, request, voiceId)) {
       return Promise.resolve(existing);
     }
@@ -376,10 +378,7 @@ export function createHostedClipProvider(
         resolve(null);
       }, hostedTimingFetchTimeoutMs);
     });
-    const requestDocument = responseForAudioUrl(
-      clip.timingsHref,
-      controller.signal,
-    )
+    const requestDocument = responseForAudioUrl(timingsHref, controller.signal)
       .then(async (response) => {
         if (!response.ok) return null;
         const value: unknown = await response.json();
@@ -391,7 +390,7 @@ export function createHostedClipProvider(
 
     return Promise.race([requestDocument, timeout])
       .then((value) => {
-        if (value) timingDocuments.set(clip.timingsHref!, value);
+        if (value) timingDocuments.set(timingsHref, value);
         return value;
       })
       .finally(() => {
@@ -530,7 +529,7 @@ export function createHostedClipProvider(
           sequence,
         );
       };
-      if (!clip.timingsHref) {
+      if (!audioTimingsHref(clip)) {
         playHostedClip();
         return;
       }
