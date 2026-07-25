@@ -101,7 +101,7 @@ describe("editorial prose audit", () => {
       "",
       "The architecture refuses to record a name it cannot verify.",
       "",
-      "The work was very robust and facilitated a handoff.",
+      "The work was very robust and fostered a handoff.",
     ].join("\n");
     const findings = auditMarkdown(source, "test.md");
     const ruleIds = findings.map((finding) => finding.ruleId);
@@ -133,6 +133,17 @@ describe("editorial prose audit", () => {
     expect(ruleIds).not.toContain("format.decorative-heading");
     expect(ruleIds).not.toContain("diction.inflated-significance");
     expect(ruleIds).toContain("diction.empty-intensifier");
+  });
+
+  it("leaves facilitation vocabulary alone", () => {
+    const source = [
+      "Facilitators cannot promise a state or arrange conditions on demand.",
+      "",
+      "The council reached its recommendation after facilitated deliberation.",
+    ].join("\n");
+    const ruleIds = auditMarkdown(source, "test.md").map((finding) => finding.ruleId);
+
+    expect(ruleIds).not.toContain("diction.ai-filler");
   });
 
   it("flags copy defects, triads, repeated negation, and repeated section templates", () => {

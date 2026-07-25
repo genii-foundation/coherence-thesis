@@ -34,6 +34,22 @@ The ten heading findings sit in the same register that CTD-0033 tracks as stale.
 - C4. Resolve the master ledger heading findings, or fold them into CTD-0033 with an explicit note.
 - C5. Confirm that each affected review record states the catalog range it covered.
 
+## Partial paydown
+
+A detector sweep ran against both candidate sources on 2026-07-24. Current `main` still carries the pre-revision prose, with 2,893 em dash errors. PR 112 carries the revised nine volumes at `1e06c9d3db82a734c2afc2d42db27f56ddc6bf26`, which is the source the nine published slop reviews actually describe. Results against the revised source:
+
+- 4.25 participial commentary: zero findings.
+- 4.27 weasel attribution: zero findings.
+- 4.28 inanimate agency: three findings, at volume-01 lines 559 and 605 and volume-02 line 131. Each needs a voice card judgment rather than a repair, since personification may be deliberate.
+- 4.29 formatting decoration: ten findings, all in master ledger decision headings, none in volume prose.
+
+Category 4.26 has no detector. A structural extraction found 225 colon constructions in the revised volumes: 112 introduce enumerations and 16 introduce a question or clause, both of which the category explicitly preserves. The remaining 97 single completions need reading. A sample read found the large majority to be legitimate specifying colons, with a small number of noun phrase reveals that need an author judgment against the volume voice card.
+
+The sweep also corrected the detector. `facilitate` was removed from the filler rule after the revised corpus showed 24 occurrences of facilitation as a named governance and conflict practice. The standard requires that domain vocabulary survive.
+
+This work is a resolution candidate. It does not close the item. The reviewed source is not on `main`, and confirmed closure requires the merged text.
+
 ## History
 
 - 2026-07-24: Recorded when the catalog expanded from 24 to 29 categories.
+- 2026-07-24: Detector sweep completed against `main` and against PR 112. Recorded as a candidate pending that merge.

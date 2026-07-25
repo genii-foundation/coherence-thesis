@@ -148,7 +148,7 @@ const patternRules: PatternRule[] = [
     ruleId: "diction.ai-filler",
     severity: "warning",
     pattern:
-      /\b(?:delve(?:s|d)?|leverage(?:s|d|ing)?|seamlessly|foster(?:s|ed|ing)?|utilize(?:s|d)?|utilizing|facilitate(?:s|d)?|facilitating|empower(?:s|ed|ing)?|streamline(?:s|d)?|streamlining|robust|cutting[ -]edge|tapestry|beacon|multifaceted|meticulous(?:ly)?|ever[ -]evolving|supercharge(?:s|d)?|paradigm shift)\b/gi,
+      /\b(?:delve(?:s|d)?|leverage(?:s|d|ing)?|seamlessly|foster(?:s|ed|ing)?|utilize(?:s|d)?|utilizing|empower(?:s|ed|ing)?|streamline(?:s|d)?|streamlining|robust|cutting[ -]edge|tapestry|beacon|multifaceted|meticulous(?:ly)?|ever[ -]evolving|supercharge(?:s|d)?|paradigm shift)\b/gi,
     message: "Replace generic AI-associated filler with concrete language.",
   },
   {
