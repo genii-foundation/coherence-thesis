@@ -13,6 +13,11 @@ import { Search } from "lucide-react";
 import { loadSearchIndex, type SearchIndexEntry } from "@/lib/reader-data";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import { appendStoredEvent } from "@/lib/reader-progress-store";
+import {
+  firstTermIndex,
+  foldSearchText,
+  searchTerms,
+} from "@/lib/reader-text-search";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 
 type SearchResult = SearchIndexEntry & {
@@ -29,9 +34,7 @@ type NormalizedEntry = SearchIndexEntry & {
   bodyNorm: string;
 };
 
-function normalize(value: string): string {
-  return value.toLowerCase().replace(/[^a-z0-9'\s]+/g, " ").replace(/\s+/g, " ").trim();
-}
+const normalize = foldSearchText;
 
 function normalizeEntry(entry: SearchIndexEntry): NormalizedEntry {
   return {
@@ -44,16 +47,7 @@ function normalizeEntry(entry: SearchIndexEntry): NormalizedEntry {
   };
 }
 
-function queryTerms(query: string): string[] {
-  return normalize(query).split(" ").filter(Boolean);
-}
-
-function firstTermIndex(text: string, terms: string[]): number {
-  const indexes = terms
-    .map((term) => text.indexOf(term))
-    .filter((index) => index >= 0);
-  return indexes.length > 0 ? Math.min(...indexes) : -1;
-}
+const queryTerms = searchTerms;
 
 function resultSnippet(text: string, terms: string[]): string {
   const normalizedText = normalize(text);

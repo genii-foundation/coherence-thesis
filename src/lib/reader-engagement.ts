@@ -21,7 +21,9 @@ export type ReaderEngagementEventType =
   | "audio_paused"
   | "audio_resumed"
   | "audio_completed"
-  | "audio_seconds_listened";
+  | "audio_seconds_listened"
+  | "bookmark_added"
+  | "bookmark_removed";
 
 export type ReaderEngagementPayload = Record<
   string,

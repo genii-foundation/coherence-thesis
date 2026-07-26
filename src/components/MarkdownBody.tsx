@@ -137,28 +137,42 @@ export function MarkdownBody({
         const anchor = paragraphs[index]?.anchor
           ? `${anchorPrefix}${paragraphs[index]?.anchor}`
           : undefined;
+        // The bare anchor and its content hash, unprefixed. The `id` above
+        // carries anchorPrefix, which differs per route ("" on a canonical
+        // section route, "${sectionId}-" on a chapter route), so a client
+        // island cannot recover the durable identity from it without being told
+        // the prefix. These two attributes are what a text selection resolves
+        // against, and they exist on every route.
+        const blockIdentity = {
+          "data-paragraph-anchor": paragraphs[index]?.anchor,
+          "data-paragraph-content-hash": paragraphs[index]?.contentHash,
+        };
         const advanceBlockGap = () => {
           if (audioCursor) audioCursor.charIndex += 2;
         };
         if (block.startsWith("### ")) {
           const content = renderInline(block.slice(4), audioCursor);
           advanceBlockGap();
-          return <h3 id={anchor} key={index}>{content}</h3>;
+          return <h3 id={anchor} key={index} {...blockIdentity}>{content}</h3>;
         }
         if (block.startsWith("## ")) {
           const content = renderInline(block.slice(3), audioCursor);
           advanceBlockGap();
-          return <h2 id={anchor} key={index}>{content}</h2>;
+          return <h2 id={anchor} key={index} {...blockIdentity}>{content}</h2>;
         }
         if (block.startsWith("# ")) {
           const content = renderInline(block.slice(2), audioCursor);
           advanceBlockGap();
-          return <h2 id={anchor} key={index}>{content}</h2>;
+          return <h2 id={anchor} key={index} {...blockIdentity}>{content}</h2>;
         }
         if (block.startsWith("> ")) {
           const content = renderInline(block.replace(/^>\s?/gm, ""), audioCursor);
           advanceBlockGap();
-          return <blockquote id={anchor} key={index}>{content}</blockquote>;
+          return (
+            <blockquote id={anchor} key={index} {...blockIdentity}>
+              {content}
+            </blockquote>
+          );
         }
         if (isList(block)) {
           const items = listItems(block).map((item, itemIndex) => (
@@ -166,7 +180,7 @@ export function MarkdownBody({
           ));
           advanceBlockGap();
           return (
-            <ul id={anchor} key={index}>
+            <ul id={anchor} key={index} {...blockIdentity}>
               {items}
             </ul>
           );
@@ -185,7 +199,7 @@ export function MarkdownBody({
           ));
           advanceBlockGap();
           return (
-            <div id={anchor} className="table-scroll" key={index}>
+            <div id={anchor} className="table-scroll" key={index} {...blockIdentity}>
               <table>
                 <thead>
                   <tr>{headerCells}</tr>
@@ -197,7 +211,7 @@ export function MarkdownBody({
         }
         const content = renderInline(block, audioCursor);
         advanceBlockGap();
-        return <p id={anchor} key={index}>{content}</p>;
+        return <p id={anchor} key={index} {...blockIdentity}>{content}</p>;
       })}
     </div>
   );
