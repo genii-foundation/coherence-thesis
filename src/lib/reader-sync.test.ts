@@ -11,27 +11,41 @@ vi.mock("./supabase/browser", () => ({
 }));
 
 import { createEngagementEvent } from "./reader-engagement";
+import { readerBookmarksSchemaVersion } from "./reader-bookmarks";
 import {
   deleteReaderAccount,
+  deleteRemoteReaderData,
   isReaderSyncConfigured,
   loadRemoteReaderState,
   sendMagicLink,
   uploadRemoteEvents,
+  upsertRemoteBookmarks,
   verifyEmailOtp,
 } from "./reader-sync";
 
 function makeClient(options: {
   progressRow?: unknown;
+  bookmarksRow?: unknown;
   consentRow?: unknown;
   upsertError?: Error | null;
 }) {
-  const { progressRow = null, consentRow = null, upsertError = null } = options;
+  const {
+    progressRow = null,
+    bookmarksRow = null,
+    consentRow = null,
+    upsertError = null,
+  } = options;
   const upserts: Array<{ table: string; rows: unknown }> = [];
+  const rowFor = (table: string) => {
+    if (table === "reader_progress") return progressRow;
+    if (table === "reader_bookmarks") return bookmarksRow;
+    return consentRow;
+  };
   const builder = (table: string) => ({
     select: () => builder(table),
     eq: () => builder(table),
     maybeSingle: async () => ({
-      data: table === "reader_progress" ? progressRow : consentRow,
+      data: rowFor(table),
       error: null,
     }),
     upsert: async (rows: unknown) => {
@@ -111,6 +125,8 @@ describe("reader sync orchestration", () => {
     expect(await loadRemoteReaderState("u1")).toEqual({
       progress: null,
       progressSchemaVersion: null,
+      bookmarks: null,
+      bookmarksSchemaVersion: null,
       consent: null,
     });
   });
@@ -210,5 +226,100 @@ describe("deleteReaderAccount", () => {
     vi.mocked(globalThis.fetch).mockResolvedValue({ ok: false } as Response);
     const result = await deleteReaderAccount();
     expect(result.error).toBeInstanceOf(Error);
+  });
+});
+
+describe("remote bookmarks", () => {
+  beforeEach(() => {
+    mocks.createBrowserSupabaseClient.mockReset();
+  });
+
+  const bookmark = (overrides: Record<string, unknown> = {}) => ({
+    id: "b1",
+    progressKey: "cont-1",
+    sectionId: "s1",
+    paragraphAnchor: "p-h0123456789abcdef",
+    paragraphContentHash: "0123456789abcdef",
+    quote: "a saved passage",
+    quoteOrdinal: 0,
+    prefix: "",
+    suffix: "",
+    startOffset: 0,
+    endOffset: 15,
+    sectionContentHash: "hash",
+    createdAt: 1_000,
+    updatedAt: 1_000,
+    ...overrides,
+  });
+
+  it("sanitizes the remote bookmarks blob and maps its schema version", async () => {
+    const { client } = makeClient({
+      bookmarksRow: {
+        bookmarks: {
+          bookmarks: {
+            b1: bookmark(),
+            // Structurally invalid, and a key that disagrees with its id.
+            junk: { id: "other", quote: 5 },
+          },
+        },
+        schema_version: 1,
+      },
+    });
+    mocks.createBrowserSupabaseClient.mockReturnValue(client);
+
+    const remote = await loadRemoteReaderState("u1");
+
+    expect(Object.keys(remote.bookmarks?.bookmarks ?? {})).toEqual(["b1"]);
+    expect(remote.bookmarksSchemaVersion).toBe(1);
+  });
+
+  it("reports a null blob and version when the row is absent", async () => {
+    const { client } = makeClient({});
+    mocks.createBrowserSupabaseClient.mockReturnValue(client);
+
+    const remote = await loadRemoteReaderState("u1");
+
+    expect(remote.bookmarks).toBeNull();
+    expect(remote.bookmarksSchemaVersion).toBeNull();
+    // The progress path must be unaffected by a missing bookmarks row.
+    expect(remote.progress).toBeNull();
+  });
+
+  it("upserts the blob on the user id with the current schema version", async () => {
+    const { client, upserts } = makeClient({});
+    mocks.createBrowserSupabaseClient.mockReturnValue(client);
+
+    await upsertRemoteBookmarks("u1", {
+      bookmarks: { b1: bookmark() as never },
+    });
+
+    expect(upserts).toHaveLength(1);
+    expect(upserts[0]!.table).toBe("reader_bookmarks");
+    expect(upserts[0]!.rows).toMatchObject({
+      user_id: "u1",
+      schema_version: readerBookmarksSchemaVersion,
+    });
+  });
+
+  it("deletes the bookmarks row alongside the rest of the reader data", async () => {
+    const deletes: string[] = [];
+    mocks.createBrowserSupabaseClient.mockReturnValue({
+      from: (table: string) => ({
+        delete: () => ({
+          eq: async () => {
+            deletes.push(table);
+            return { error: null };
+          },
+        }),
+      }),
+    });
+
+    const result = await deleteRemoteReaderData("u1");
+
+    expect(result.error).toBeFalsy();
+    expect(deletes).toContain("reader_bookmarks");
+    expect(deletes).toContain("reader_progress");
+    expect(deletes).toContain("reader_sync_consent");
+    expect(deletes).toContain("reader_engagement_events");
   });
 });

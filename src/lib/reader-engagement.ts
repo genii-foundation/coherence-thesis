@@ -1,7 +1,11 @@
 export const readerEventsStorageKey = "coherence-reader-events-v1";
 export const readerSyncConsentStorageKey = "coherence-reader-sync-consent-v1";
 export const readerSyncConsentVersion = 1;
-export const readerSyncConsentCopyVersion = "reader-sync-consent-2026-06-30";
+// Bumped when the consent modal's wording changes, so a reader who agreed to
+// the earlier text is recorded against that text and not this one. This
+// revision added bookmarks, including quoted passages and notes, to what gets
+// uploaded, which is materially more than reading positions.
+export const readerSyncConsentCopyVersion = "reader-sync-consent-2026-07-26";
 
 export type ReaderEngagementEventType =
   | "section_opened"

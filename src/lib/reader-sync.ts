@@ -7,6 +7,11 @@ import {
   type ReaderSyncConsent,
 } from "./reader-engagement";
 import {
+  readerBookmarksSchemaVersion,
+  sanitizeBookmarks,
+  type ReaderBookmarksState,
+} from "./reader-bookmarks";
+import {
   readerProgressSchemaVersion,
   sanitizeProgress,
   type ReaderProgressState,
@@ -21,6 +26,11 @@ export type ReaderRemoteState = {
   // is no remote row. Callers use this to refuse merging rows newer than this
   // client understands.
   progressSchemaVersion: number | null;
+  bookmarks: ReaderBookmarksState | null;
+  // Tracked separately from the progress version on purpose. The two
+  // collections version on their own schedules, and a shared lockout would let
+  // a bookmarks bump freeze progress sync, or the reverse.
+  bookmarksSchemaVersion: number | null;
   consent: ReaderSyncConsent | null;
 };
 
@@ -91,12 +101,25 @@ export async function signOutReader() {
 
 export async function loadRemoteReaderState(userId: string): Promise<ReaderRemoteState> {
   const supabase = createBrowserSupabaseClient();
-  if (!supabase) return { progress: null, progressSchemaVersion: null, consent: null };
+  if (!supabase) {
+    return {
+      progress: null,
+      progressSchemaVersion: null,
+      bookmarks: null,
+      bookmarksSchemaVersion: null,
+      consent: null,
+    };
+  }
 
-  const [progressResponse, consentResponse] = await Promise.all([
+  const [progressResponse, bookmarksResponse, consentResponse] = await Promise.all([
     supabase
       .from("reader_progress")
       .select("progress, schema_version")
+      .eq("user_id", userId)
+      .maybeSingle(),
+    supabase
+      .from("reader_bookmarks")
+      .select("bookmarks, schema_version")
       .eq("user_id", userId)
       .maybeSingle(),
     supabase
@@ -113,6 +136,13 @@ export async function loadRemoteReaderState(userId: string): Promise<ReaderRemot
     progressSchemaVersion:
       typeof progressResponse.data?.schema_version === "number"
         ? progressResponse.data.schema_version
+        : null,
+    bookmarks: bookmarksResponse.data?.bookmarks
+      ? sanitizeBookmarks(bookmarksResponse.data.bookmarks)
+      : null,
+    bookmarksSchemaVersion:
+      typeof bookmarksResponse.data?.schema_version === "number"
+        ? bookmarksResponse.data.schema_version
         : null,
     consent: consentResponse.data
       ? {
@@ -142,6 +172,23 @@ export async function upsertRemoteProgress(
       user_id: userId,
       progress,
       schema_version: readerProgressSchemaVersion,
+    },
+    { onConflict: "user_id" },
+  );
+}
+
+export async function upsertRemoteBookmarks(
+  userId: string,
+  bookmarks: ReaderBookmarksState,
+) {
+  const supabase = createBrowserSupabaseClient();
+  if (!supabase) return { error: new Error("Sync is not configured.") };
+
+  return supabase.from("reader_bookmarks").upsert(
+    {
+      user_id: userId,
+      bookmarks,
+      schema_version: readerBookmarksSchemaVersion,
     },
     { onConflict: "user_id" },
   );
@@ -208,13 +255,16 @@ export async function deleteRemoteReaderData(userId: string) {
   const supabase = createBrowserSupabaseClient();
   if (!supabase) return { error: new Error("Sync is not configured.") };
 
-  const [events, progress, consent] = await Promise.all([
+  const [events, progress, bookmarks, consent] = await Promise.all([
     supabase.from("reader_engagement_events").delete().eq("user_id", userId),
     supabase.from("reader_progress").delete().eq("user_id", userId),
+    supabase.from("reader_bookmarks").delete().eq("user_id", userId),
     supabase.from("reader_sync_consent").delete().eq("user_id", userId),
   ]);
 
-  return { error: events.error ?? progress.error ?? consent.error };
+  return {
+    error: events.error ?? progress.error ?? bookmarks.error ?? consent.error,
+  };
 }
 
 export async function deleteReaderAccount() {
