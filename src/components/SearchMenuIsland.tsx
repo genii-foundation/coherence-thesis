@@ -12,7 +12,11 @@ import { usePathname } from "next/navigation";
 import { Search } from "lucide-react";
 import { loadSearchIndex, type SearchIndexEntry } from "@/lib/reader-data";
 import { createEngagementEvent } from "@/lib/reader-engagement";
-import { appendStoredEvent } from "@/lib/reader-progress-store";
+import { liveBookmarks } from "@/lib/reader-bookmarks";
+import {
+  appendStoredEvent,
+  useReaderBookmarks,
+} from "@/lib/reader-progress-store";
 import {
   firstTermIndex,
   foldSearchText,
@@ -60,7 +64,53 @@ function resultSnippet(text: string, terms: string[]): string {
   return `${prefix}${text.slice(start, end).trim()}${suffix}`;
 }
 
-function scoreEntry(entry: NormalizedEntry, terms: string[], phrase: string): SearchResult | null {
+// Bookmark proximity weights, calibrated against the scale below rather than
+// against its top. A body term is worth 4 and there is no term frequency, no
+// IDF, and no length normalization, so two sections that merely contain a term
+// score identically; a boost of even +5 would decide all body-only ranking.
+// Both weights sit under the 18 a hierarchy term earns, so a bookmark reorders
+// near-ties without burying a better title match.
+const nearBookmarkScore = 14;
+const bookmarkedSectionScore = 6;
+
+// How close a match has to be to a bookmarked passage to count as near it,
+// measured in normalized characters, which is roughly a long paragraph.
+const nearBookmarkDistance = 600;
+
+// Offsets of each bookmarked quote within the folded section body, keyed by
+// section. Computed once per bookmark change rather than per keystroke: the
+// scorer runs over all 551 entries on every character typed, and that path was
+// already a measured problem.
+type BookmarkOffsets = ReadonlyMap<string, number[]>;
+
+function bookmarkOffsetsFor(
+  bookmarks: ReturnType<typeof useReaderBookmarks>,
+  index: NormalizedEntry[],
+): BookmarkOffsets {
+  const offsets = new Map<string, number[]>();
+  if (index.length === 0) return offsets;
+  const bodyBySection = new Map(index.map((entry) => [entry.sectionId, entry.bodyNorm]));
+
+  for (const bookmark of liveBookmarks(bookmarks)) {
+    const body = bodyBySection.get(bookmark.sectionId);
+    if (body === undefined) continue;
+    const existing = offsets.get(bookmark.sectionId) ?? [];
+    // The quote and the body are folded the same way, so this offset is in the
+    // identical coordinate space the match offset below is measured in. That is
+    // what makes "near" exact rather than a guess, with no payload growth.
+    const at = body.indexOf(foldSearchText(bookmark.quote));
+    existing.push(at >= 0 ? at : -1);
+    offsets.set(bookmark.sectionId, existing);
+  }
+  return offsets;
+}
+
+function scoreEntry(
+  entry: NormalizedEntry,
+  terms: string[],
+  phrase: string,
+  bookmarkOffsets: BookmarkOffsets,
+): SearchResult | null {
   if (terms.length === 0) return null;
   const titleText = entry.titleNorm;
   const hierarchyText = entry.hierarchyNorm;
@@ -77,6 +127,17 @@ function scoreEntry(entry: NormalizedEntry, terms: string[], phrase: string): Se
     if (titleText.includes(term)) score += 35;
     if (hierarchyText.includes(term)) score += 18;
     if (bodyText.includes(term)) score += 4;
+  }
+
+  const offsets = bookmarkOffsets.get(entry.sectionId);
+  if (offsets) {
+    const matchAt = firstTermIndex(bodyText, terms);
+    const near =
+      matchAt >= 0 &&
+      offsets.some(
+        (at) => at >= 0 && Math.abs(at - matchAt) <= nearBookmarkDistance,
+      );
+    score += near ? nearBookmarkScore : bookmarkedSectionScore;
   }
 
   return {
@@ -103,6 +164,7 @@ export function SearchMenuIsland() {
   } = useToolbarMenu<HTMLDivElement>();
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState<NormalizedEntry[]>([]);
+  const bookmarks = useReaderBookmarks();
   const [loadError, setLoadError] = useState(false);
   const loadStartedRef = useRef(false);
 
@@ -151,15 +213,20 @@ export function SearchMenuIsland() {
     };
   }, [closeSearch, containerRef, open]);
 
+  const bookmarkOffsets = useMemo(
+    () => bookmarkOffsetsFor(bookmarks, index),
+    [bookmarks, index],
+  );
+
   const results = useMemo(() => {
     const terms = queryTerms(query);
     const phrase = normalize(query);
     return index
-      .map((entry) => scoreEntry(entry, terms, phrase))
+      .map((entry) => scoreEntry(entry, terms, phrase, bookmarkOffsets))
       .filter((entry): entry is SearchResult => Boolean(entry))
       .sort((left, right) => right.score - left.score || left.title.localeCompare(right.title))
       .slice(0, 12);
-  }, [index, query]);
+  }, [bookmarkOffsets, index, query]);
 
   const trimmedQuery = query.trim();
 

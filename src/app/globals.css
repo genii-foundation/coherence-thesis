@@ -3804,6 +3804,22 @@ a.bookmark-quote:focus-visible {
   color: var(--sage);
 }
 
+/* Same badge geometry as the read checkmark so a status row stays even, in the
+   neutral ink tone rather than sage or bronze, both of which already mean
+   something else here. */
+.bookmark-marker {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--subtle-control-background);
+  color: var(--ink-soft);
+}
+
 .progress-state-dot {
   --progress-dot-rgb: var(--card-rgb, 96 121 109);
   --progress-dot-degrees: 0deg;
@@ -5354,7 +5370,7 @@ a.bookmark-quote:focus-visible {
 
 .progress-heatmap-summary {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.75rem;
 }
 
@@ -5494,6 +5510,30 @@ a.bookmark-quote:focus-visible {
     0 0 0 2px var(--panel-background),
     0 0 0 4px rgba(96, 121, 109, 0.28);
   outline: none;
+}
+
+/* "This cell holds a bookmark", carried by silhouette rather than colour.
+   Sage already means read and bronze already means revised, and a fourth hue on
+   an 11.5px dot that has to survive four themes is a losing game, so a notch is
+   cut from the top right and the cell keeps whatever colour its state gave it.
+
+   clip-path rather than a ring or an extra background layer, deliberately:
+   - a persistent box-shadow ring is overwritten by the hover and focus rule
+     below, so the mark would vanish exactly when the reader reached for it
+   - the cell sets overflow: hidden, so an inner ring element is clipped away
+   - progress.spec.ts asserts the computed backgroundImage still contains
+     conic-gradient and contains no radial-gradient, so a background layer is
+     out and a radial dot is out by name
+   - clip-path changes no box metric, so the perfect-circle and
+     no-horizontal-scroll assertions on this grid keep holding
+
+   The gutter is only 4.16px on desktop and 2.88px under 640px, so nothing may
+   paint outside the cell box either. */
+.progress-heatmap-cell-bookmarked {
+  /* A 45 degree cut across the whole top-right quadrant. A shallower bite was
+     legible when magnified and invisible at the real 11.5px, which is the only
+     size that matters. */
+  clip-path: polygon(0 0, 46% 0, 100% 54%, 100% 100%, 0 100%);
 }
 
 .progress-heatmap-cell-unread {

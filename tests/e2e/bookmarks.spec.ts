@@ -248,3 +248,107 @@ test("a bookmark on a revised paragraph is reported as stale", async ({
 
   await expect(page.getByText("revised since you saved it")).toBeVisible();
 });
+
+test("the reading map marks and counts cells that hold a bookmark", async ({
+  page,
+  hasTouch,
+}) => {
+  await page.goto(firstSection.readerHref);
+  await selectWords(page, 5, hasTouch);
+  await page.getByRole("button", { name: "Click to bookmark" }).click();
+  await expect(page.getByText("Bookmark saved")).toBeVisible();
+
+  await page.goto("/progress/");
+
+  const marked = page.locator(".progress-heatmap-cell-bookmarked");
+  await expect(marked.first()).toBeVisible();
+  await expect(page.getByText("bookmarked section", { exact: false })).toBeVisible();
+
+  const geometry = await marked.first().evaluate((cell) => {
+    const style = window.getComputedStyle(cell);
+    const rect = cell.getBoundingClientRect();
+    return {
+      clipPath: style.clipPath,
+      width: rect.width,
+      height: rect.height,
+      radius: Number.parseFloat(style.borderTopLeftRadius),
+      label: cell.getAttribute("aria-label") ?? "",
+      scrollWidth: document.documentElement.scrollWidth,
+      clientWidth: document.documentElement.clientWidth,
+    };
+  });
+
+  // The mark is a silhouette, so it must not disturb a single box metric the
+  // grid's own assertions depend on.
+  expect(geometry.clipPath).toContain("polygon");
+  expect(Math.abs(geometry.width - geometry.height)).toBeLessThanOrEqual(1);
+  expect(geometry.radius).toBeGreaterThanOrEqual(geometry.width / 2 - 1);
+  expect(geometry.scrollWidth).toBeLessThanOrEqual(geometry.clientWidth + 1);
+  // One accessible name, not two labelled children.
+  expect(geometry.label).toContain("bookmarked");
+});
+
+test("search lifts a section that holds a bookmark", async ({ page }) => {
+  const query = "coherence";
+
+  const resultHrefs = async () => {
+    await page.getByRole("button", { name: "Search manuscripts" }).click();
+    const input = page.getByPlaceholder("Search all manuscripts");
+    await input.fill(query);
+    await expect(page.locator(".search-result").first()).toBeVisible();
+    return page
+      .locator(".search-result")
+      .evaluateAll((links) =>
+        links.map((link) => link.getAttribute("href") ?? ""),
+      );
+  };
+
+  await page.goto(firstSection.readerHref);
+  const before = await resultHrefs();
+  expect(before.length).toBeGreaterThan(2);
+
+  // Bookmark whatever currently ranks last, so the assertion is about the
+  // boost rather than about one hand-picked section.
+  const target = before[before.length - 1]!;
+  const seeded = await page.evaluate(
+    async ({ href, storageKey }) => {
+      const sections = await fetch("/data/progress-sections.json").then(
+        (response) => response.json(),
+      );
+      const section = sections.find(
+        (candidate: { readerHref: string }) => candidate.readerHref === href,
+      );
+      if (!section) return null;
+      const now = Date.now();
+      const bookmark = {
+        id: "search-boost-1",
+        progressKey: section.continuityId || section.sectionId,
+        sectionId: section.sectionId,
+        paragraphAnchor: section.paragraphs[0].anchor,
+        paragraphContentHash: section.paragraphs[0].contentHash,
+        quote: "coherence",
+        quoteOrdinal: 0,
+        prefix: "",
+        suffix: "",
+        startOffset: 0,
+        endOffset: 9,
+        sectionContentHash: section.contentHash,
+        createdAt: now,
+        updatedAt: now,
+      };
+      window.localStorage.setItem(
+        storageKey,
+        JSON.stringify({ bookmarks: { "search-boost-1": bookmark } }),
+      );
+      return section.sectionId;
+    },
+    { href: target, storageKey: readerBookmarksStorageKey },
+  );
+  expect(seeded).not.toBeNull();
+
+  await page.reload();
+  const after = await resultHrefs();
+
+  expect(after.indexOf(target)).toBeGreaterThanOrEqual(0);
+  expect(after.indexOf(target)).toBeLessThan(before.indexOf(target));
+});
