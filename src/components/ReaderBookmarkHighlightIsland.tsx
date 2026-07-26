@@ -35,6 +35,28 @@ function supportsHighlights(): boolean {
   );
 }
 
+// The one place in this codebase that styles from JavaScript, and it is not a
+// preference. The ::highlight() pseudo-element cannot go in globals.css:
+// lightningcss 1.32.0, which Next bundles, does not recognize it and emits
+// "Parsing CSS source code failed" on every build. It passes the rule through
+// intact, so the feature worked either way, but a permanent parse warning is
+// how real CSS errors get ignored later.
+//
+// A constructed stylesheet is safe to reach for here because every browser that
+// implements CSS.highlights also implements adoptedStyleSheets, and this runs
+// only after supportsHighlights(). The colour comes from a custom property in
+// globals.css so theming still lives with the rest of the theme.
+let highlightSheet: CSSStyleSheet | null = null;
+
+function ensureHighlightStyle(): void {
+  if (highlightSheet || !("adoptedStyleSheets" in document)) return;
+  highlightSheet = new CSSStyleSheet();
+  highlightSheet.replaceSync(
+    `::highlight(${highlightName}){background-color:var(--bookmark-highlight);color:var(--ink);}`,
+  );
+  document.adoptedStyleSheets = [...document.adoptedStyleSheets, highlightSheet];
+}
+
 // Walk the block's text nodes accumulating length until the stored character
 // offsets land, which is the same visible-text coordinate space the offsets
 // were captured in.
@@ -121,6 +143,8 @@ export function ReaderBookmarkHighlightIsland({
       CSS.highlights.delete(highlightName);
       return;
     }
+
+    ensureHighlightStyle();
 
     const ranges: Range[] = [];
     for (const section of sections) {

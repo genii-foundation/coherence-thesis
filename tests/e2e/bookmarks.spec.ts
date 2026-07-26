@@ -295,7 +295,12 @@ test("search lifts a section that holds a bookmark", async ({ page }) => {
     await page.getByRole("button", { name: "Search manuscripts" }).click();
     const input = page.getByPlaceholder("Search all manuscripts");
     await input.fill(query);
-    await expect(page.locator(".search-result").first()).toBeVisible();
+    // The index is about 1.5 MB and is fetched on first open, so the first
+    // result legitimately takes longer than the default expect budget on a
+    // loaded machine. This waits for the fetch, not for a race.
+    await expect(page.locator(".search-result").first()).toBeVisible({
+      timeout: 15_000,
+    });
     return page
       .locator(".search-result")
       .evaluateAll((links) =>

@@ -760,13 +760,15 @@ input {
    detaches the moment the page moves.
    The anchor is a zero-content span placed in DOCUMENT coordinates, so it
    travels with the prose rather than needing a scroll listener. */
-/* Saved passages painted back into the prose, opt in via the reader setting.
-   ::highlight paints beside the DOM rather than inside it, so this cannot
-   disturb the .audio-word spans that the audio island mutates imperatively.
-   Background only: ::highlight cannot change layout, which is the point. */
-::highlight(coherence-bookmark) {
-  background-color: rgb(var(--bookmark-highlight-rgb, 164 123 63) / 0.22);
-  color: var(--ink);
+/* Saved passages painted back into the prose are styled by
+   ReaderBookmarkHighlightIsland, not here. The ::highlight() pseudo-element
+   cannot live in this file: lightningcss 1.32.0, which Next bundles, does not
+   recognize it and warns "Parsing CSS source code failed" on every build. It
+   passes the rule through intact, so the feature worked, but a permanent CSS
+   parse warning trains people to ignore CSS parse warnings. The colour it uses
+   is declared below so it still themes from one place. */
+:root {
+  --bookmark-highlight: rgb(164 123 63 / 0.22);
 }
 
 .reader-selection-anchor {
