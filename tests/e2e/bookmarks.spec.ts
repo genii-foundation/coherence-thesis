@@ -352,3 +352,54 @@ test("search lifts a section that holds a bookmark", async ({ page }) => {
   expect(after.indexOf(target)).toBeGreaterThanOrEqual(0);
   expect(after.indexOf(target)).toBeLessThan(before.indexOf(target));
 });
+
+test("bookmark highlights are off until the reader turns them on", async ({
+  page,
+  hasTouch,
+}) => {
+  await page.goto(firstSection.readerHref);
+  await selectWords(page, 5, hasTouch);
+  await page.getByRole("button", { name: "Click to bookmark" }).click();
+  await expect(page.getByText("Bookmark saved")).toBeVisible();
+
+  const highlightState = () =>
+    page.evaluate(() => ({
+      supported:
+        typeof CSS !== "undefined" &&
+        "highlights" in CSS &&
+        typeof Highlight === "function",
+      preference: document.documentElement.dataset.readerHighlights,
+      painted:
+        typeof CSS !== "undefined" && "highlights" in CSS
+          ? (CSS.highlights.get("coherence-bookmark")?.size ?? 0)
+          : 0,
+    }));
+
+  const off = await highlightState();
+  test.skip(!off.supported, "CSS Custom Highlight API is unavailable");
+  // Painting reader marks over the manuscript is opt in, so a fresh reader with
+  // a saved bookmark still sees untouched prose.
+  expect(off.preference).toBe("off");
+  expect(off.painted).toBe(0);
+
+  await page.getByRole("button", { name: "Reader settings" }).click();
+  // The radio input is visually clipped, so the label is the real target, the
+  // same way settings.spec.ts drives the animations group.
+  await page
+    .locator(".settings-radio-section")
+    .filter({ hasText: "Bookmark highlights" })
+    .locator(".settings-radio-option")
+    .filter({ hasText: "Shown" })
+    .click();
+
+  await expect
+    .poll(async () => (await highlightState()).painted)
+    .toBeGreaterThan(0);
+  expect((await highlightState()).preference).toBe("on");
+
+  // And it survives a reload, through the pre-paint bootstrap.
+  await page.reload();
+  await expect
+    .poll(async () => (await highlightState()).painted)
+    .toBeGreaterThan(0);
+});
