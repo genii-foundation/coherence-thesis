@@ -4,6 +4,7 @@ import { LegacyFragmentRedirectIsland } from "@/components/LegacyFragmentRedirec
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReaderEngagementIsland } from "@/components/ReaderEngagementIsland";
 import { ReaderLinkableHeading } from "@/components/ReaderLinkableHeading";
+import { ReaderSelectionBookmarkIsland } from "@/components/ReaderSelectionBookmarkIsland";
 import { SectionRevisionNotice } from "@/components/SectionRevisionNotice";
 import {
   toProgressSection,
@@ -82,6 +83,7 @@ export function ChapterReader({
           />
         </section>
       ))}
+      <ReaderSelectionBookmarkIsland sections={progressSections} />
       <ReaderEngagementIsland sections={progressSections} />
       <ManuscriptNavigation
         previous={navigation.previous}

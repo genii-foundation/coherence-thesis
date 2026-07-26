@@ -753,6 +753,59 @@ input {
   color: var(--emphasis);
 }
 
+/* Selection bookmark bubble.
+   Visually a sibling of .audio-word-tooltip, mechanically not: this one is a
+   Radix Popover with a virtual anchor, so it repositions on scroll and resize
+   and gets collision padding. The word tooltip snapshots a DOMRect once and
+   detaches the moment the page moves.
+   The anchor is a zero-content span placed in DOCUMENT coordinates, so it
+   travels with the prose rather than needing a scroll listener. */
+.reader-selection-anchor {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.reader-selection-bubble {
+  /* Remap rather than inherit: .tooltip-surface hardcodes light parchment
+     values and has no override for the dark or black themes. */
+  --tooltip-background: var(--panel-background);
+  --tooltip-border-color: rgba(119, 84, 42, 0.48);
+
+  z-index: 90;
+  border-radius: 999px;
+  padding: 0;
+  outline: none;
+}
+
+.reader-selection-bubble-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 1.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--bronze-deep);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.05;
+  padding: 0.26rem 0.7rem;
+  white-space: nowrap;
+}
+
+.reader-selection-bubble-action:hover,
+.reader-selection-bubble-action:focus-visible {
+  background: var(--nav-hover-background);
+}
+
+.reader-selection-bubble-arrow {
+  margin-bottom: -1px;
+}
+
 .site-nav {
   --toolbar-control-size: 3rem;
   --toolbar-emphasis-control-size: 3.625rem;
@@ -767,6 +820,7 @@ input {
 .site-nav > a,
 .outline-menu-button,
 .search-menu-button,
+.bookmarks-menu-button,
 .share-menu-button,
 .audio-menu-button,
 .settings-menu-button,
@@ -809,6 +863,8 @@ input {
 .audio-menu-button:focus-visible,
 .settings-menu-button:hover,
 .settings-menu-button:focus-visible,
+.bookmarks-menu-button:hover,
+.bookmarks-menu-button:focus-visible,
 .progress-menu-button:hover,
 .progress-menu-button:focus-visible {
   background: var(--nav-hover-background);
@@ -831,6 +887,7 @@ input {
 
 .outline-menu,
 .search-menu,
+.bookmarks-menu,
 .share-menu,
 .audio-menu,
 .settings-menu,
@@ -867,6 +924,7 @@ input {
 
 .outline-menu-button,
 .search-menu-button,
+.bookmarks-menu-button,
 .share-menu-button,
 .audio-menu-button,
 .settings-menu-button,
@@ -882,6 +940,7 @@ input {
 
 .outline-menu-button,
 .search-menu-button,
+.bookmarks-menu-button,
 .audio-menu-button,
 .share-menu-button,
 .settings-menu-button {
@@ -1443,6 +1502,7 @@ input {
 
 .outline-popover,
 .search-popover,
+.bookmarks-popover,
 .share-popover,
 .audio-popover,
 .settings-popover,
@@ -1469,6 +1529,7 @@ input {
 
 .outline-popover[data-menu-state="open"],
 .search-popover[data-menu-state="open"],
+.bookmarks-popover[data-menu-state="open"],
 .share-popover[data-menu-state="open"],
 .audio-popover[data-menu-state="open"],
 .settings-popover[data-menu-state="open"],
@@ -1504,20 +1565,13 @@ input {
   color: var(--ink);
 }
 
-.outline-search {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  border-bottom: 1px solid var(--line);
-  background: var(--panel-background);
-  color: var(--ink-muted);
-  padding: 0.85rem;
-}
-
-.search-field {
+/* One sticky filter row, three menus. The outline and search copies of this
+   rule were byte identical; bookmarks joins them rather than adding a third.
+   Height matters: the inner scrollers below subtract 4.45rem for this row, so
+   changing its padding or the input's means changing those too. */
+.outline-search,
+.search-field,
+.bookmarks-search {
   position: sticky;
   top: 0;
   z-index: 1;
@@ -1531,6 +1585,7 @@ input {
 }
 
 .outline-search input,
+.bookmarks-search input,
 .search-field input {
   width: 100%;
   min-width: 0;
@@ -1547,6 +1602,8 @@ input {
 
 .outline-search input:hover,
 .outline-search input:focus-visible,
+.bookmarks-search input:hover,
+.bookmarks-search input:focus-visible,
 .search-field input:hover,
 .search-field input:focus-visible {
   border-color: rgba(119, 84, 42, 0.34);
@@ -1560,6 +1617,138 @@ input {
   overflow: auto;
   padding: 1.2rem;
   -webkit-overflow-scrolling: touch;
+}
+
+/* 4.45rem is the sticky filter row above. Keep in step with .bookmarks-search. */
+.bookmarks-scroll {
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+  max-height: calc(min(40rem, 100svh - 7rem) - 4.45rem);
+  overflow: auto;
+  padding: 1.2rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bookmarks-empty {
+  margin: 0;
+}
+
+.bookmarks-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-muted);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding-bottom: 0.75rem;
+}
+
+.bookmarks-export {
+  margin-left: auto;
+  font-size: 0.78rem;
+  gap: 0.35rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.bookmarks-stale-tag {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+}
+
+.bookmark-row {
+  display: grid;
+  gap: 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--item-background);
+  padding: 0.75rem;
+}
+
+/* Long manuscript quotes and titles wrap rather than ellipsize, matching the
+   Recently read rows the progress panel already ships. */
+.bookmark-quote {
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+  white-space: normal;
+}
+
+a.bookmark-quote:hover,
+a.bookmark-quote:focus-visible {
+  color: var(--bronze-deep);
+}
+
+.bookmark-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin: 0;
+  color: var(--ink-muted);
+  font-family: var(--font-ui);
+  font-size: 0.76rem;
+}
+
+.bookmark-section {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.bookmark-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bookmark-note-button {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  border-radius: calc(var(--radius) - 1px);
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+  padding: 0.3rem 0.4rem;
+  text-align: left;
+  white-space: normal;
+}
+
+.bookmark-note-button:hover,
+.bookmark-note-button:focus-visible {
+  background: var(--nav-hover-background);
+  color: var(--ink);
+}
+
+.bookmark-note-field {
+  width: 100%;
+  min-height: 3.5rem;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) - 1px);
+  background: var(--field-background);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 0.45rem 0.55rem;
+  resize: vertical;
+}
+
+.bookmark-remove {
+  flex: 0 0 auto;
+  padding: 0.3rem 0.45rem;
 }
 
 .search-results {
@@ -1895,6 +2084,12 @@ input {
 
 .progress-popover {
   width: min(22rem, calc(100vw - 2rem));
+}
+
+.bookmarks-popover {
+  --toolbar-menu-max-height: min(40rem, calc(100svh - 7rem));
+
+  width: min(24rem, calc(100vw - 2rem));
 }
 
 .share-popover {
@@ -6274,6 +6469,7 @@ input {
   .site-nav > a,
   .outline-menu,
   .search-menu,
+  .bookmarks-menu,
   .share-menu,
   .settings-menu {
     flex: 0 0 auto;
@@ -6283,6 +6479,7 @@ input {
   .site-nav > a,
   .outline-menu-button,
   .search-menu-button,
+  .bookmarks-menu-button,
   .share-menu-button,
   .settings-menu-button {
     min-width: 0;
@@ -6312,6 +6509,7 @@ input {
 
   .outline-popover,
   .search-popover,
+  .bookmarks-popover,
   .share-popover,
   .audio-popover,
   .settings-popover,
@@ -6566,6 +6764,7 @@ input {
   .site-nav > a,
   .outline-menu-button,
   .search-menu-button,
+  .bookmarks-menu-button,
   .share-menu-button,
   .settings-menu-button {
     justify-content: center;
@@ -6732,6 +6931,27 @@ input {
 
 }
 
+/* Toolbar control sizing for the narrowest phones, on its own breakpoint.
+   The five small controls were 2.25rem below 360px. Adding bookmarks made
+   seven controls, and 5 x 36px plus the two 44px emphasis controls comes to
+   268px, which overflows the nav box and slides the leftmost button under the
+   brand mark. At 2rem the row totals 248px and clears the brand at 320px.
+   The breakpoint is 380px rather than 360px because the failure is worst just
+   above the old one: at 365px every control is back to 44px, the row needs
+   308px, and the brand overlaps by about 5px. Still well clear of the 24px
+   minimum target size. */
+@media (max-width: 380px) {
+  .site-nav > a,
+  .outline-menu-button,
+  .search-menu-button,
+  .bookmarks-menu-button,
+  .share-menu-button,
+  .settings-menu-button {
+    min-height: 2rem;
+    width: 2rem;
+  }
+}
+
 @media (max-width: 360px) {
   .mobile-page-brand {
     display: none;
@@ -6750,15 +6970,6 @@ input {
     flex: 1 1 auto;
     justify-content: flex-end;
     gap: 0;
-  }
-
-  .site-nav > a,
-  .outline-menu-button,
-  .search-menu-button,
-  .share-menu-button,
-  .settings-menu-button {
-    min-height: 2.25rem;
-    width: 2.25rem;
   }
 
   .hero-actions {
