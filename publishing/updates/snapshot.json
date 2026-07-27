@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "e51e570f3d7d74d1164daf6ea2703e9bf6e79313",
+  "headSha": "8303fe0c1269d45224257bc4550c407b9a0cb23c",
   "commits": [
+    {
+      "sha": "8303fe0c1269d45224257bc4550c407b9a0cb23c",
+      "committedAt": "2026-07-27T21:55:46.000Z",
+      "subject": "Add passage bookmarks and production sync (#159)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/8303fe0c1269d45224257bc4550c407b9a0cb23c",
+      "filesChanged": 48,
+      "additions": 7210,
+      "deletions": 187,
+      "isLiterary": false
+    },
     {
       "sha": "e51e570f3d7d74d1164daf6ea2703e9bf6e79313",
       "committedAt": "2026-07-27T20:38:25.000Z",
