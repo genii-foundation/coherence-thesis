@@ -5585,14 +5585,16 @@ input {
 }
 
 .audio-word-tooltip {
-  position: fixed;
+  position: absolute;
+  top: -0.36rem;
+  left: 50%;
   /* Above the prose it points at, below the sticky header. A word can be part
      way under the toolbar while its bubble is still worth showing, and the
      bubble should slide under the toolbar rather than cover it. */
   z-index: 9;
   width: max-content;
   max-width: min(14rem, calc(100vw - 2rem));
-  transform: translate(-50%, calc(-100% - 0.36rem));
+  transform: translate(-50%, -100%);
   border-radius: 999px;
   padding: 0.18rem 0.46rem 0.2rem;
   color: var(--ink);

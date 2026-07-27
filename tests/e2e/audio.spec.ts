@@ -194,14 +194,10 @@ test("toolbar play stays on the section it started", async ({ page }) => {
   expect(pageErrors).toEqual([]);
 });
 
-// The word tooltip is portalled to the body and positioned by hand, so it used
-// to be placed from the word's rect at the moment it opened and then left
-// alone. Scrolling slid the text out from under it: the bubble sat frozen in
-// the viewport, pointing at whatever prose had scrolled into its place, and it
-// stayed there long after its own word was gone. It now measures its word every
-// frame the word moves, and drops out entirely once the word leaves the
-// viewport.
-test("the word playback tooltip tracks its word through a scroll", async ({
+// The tooltip lives inside its word so layout moves both in the same browser
+// pass. A body portal driven by scroll measurements always trails the prose by
+// at least one frame, even when it eventually reaches the right coordinates.
+test("the word playback tooltip moves with its word in the scroll frame", async ({
   page,
 }) => {
   await page.goto(firstSection.href);
@@ -234,36 +230,48 @@ test("the word playback tooltip tracks its word through a scroll", async ({
 
   const anchored = await offsetFromWord();
   expect(anchored).not.toBeNull();
+  await expect
+    .poll(() =>
+      tooltip.evaluate((bubble) =>
+        bubble.parentElement?.parentElement?.matches(
+          ".audio-word.is-audio-focused",
+        ),
+      ),
+    )
+    .toBe(true);
 
-  // The reader scrolls smoothly, which would leave an animation in flight while
-  // the next step reads positions back. Every scroll here lands outright.
-  const scrollBy = (distance: number) =>
-    page.evaluate(
-      (top) => window.scrollBy({ top, behavior: "instant" }),
-      distance,
-    );
-
-  // A short scroll keeps the word on screen, so the bubble must move with it and
-  // hold the same offset it started with.
+  // Read the geometry in the same task that scrolls. Scroll listeners, animation
+  // frames, and React commits cannot run between the scroll and this sample, so
+  // a manually positioned body portal fails here even if polling would let it
+  // catch up later.
   await page.mouse.move(0, 0);
-  const shortScroll = await page.evaluate(() => {
+  const afterScroll = await page.evaluate(() => {
     const word = document.querySelector(".audio-word.is-audio-focused");
+    const bubble = document.querySelector(".audio-word-tooltip");
     const header = document.querySelector(".site-header");
-    if (!word || !header) return null;
+    if (!word || !bubble || !header) return null;
     const clearance =
       word.getBoundingClientRect().top -
       header.getBoundingClientRect().bottom;
-    return clearance > 2 ? Math.floor(clearance / 2) : null;
+    if (clearance <= 2) return null;
+    window.scrollBy({ top: Math.floor(clearance / 2), behavior: "instant" });
+    const wordBox = word.getBoundingClientRect();
+    const bubbleBox = bubble.getBoundingClientRect();
+    return {
+      horizontal:
+        bubbleBox.left +
+        bubbleBox.width / 2 -
+        (wordBox.left + wordBox.width / 2),
+      vertical: wordBox.top - bubbleBox.bottom,
+    };
   });
-  expect(shortScroll).not.toBeNull();
-  await scrollBy(shortScroll!);
-  await expect.poll(async () => (await offsetFromWord())?.horizontal ?? null)
-    .toBeCloseTo(anchored!.horizontal, 0);
-  await expect.poll(async () => (await offsetFromWord())?.vertical ?? null)
-    .toBeCloseTo(anchored!.vertical, 0);
+  expect(afterScroll).not.toBeNull();
+  expect(afterScroll!.horizontal).toBeCloseTo(anchored!.horizontal, 0);
+  expect(afterScroll!.vertical).toBeCloseTo(anchored!.vertical, 0);
 
-  // Scrolling the word off the top takes the bubble with it. Scroll by the
-  // word's own position so the step cannot pass vacuously on a short section.
+  // Scrolling the word away carries the bubble out of the viewport in the same
+  // layout operation. It remains mounted inside the focused word so returning
+  // to it needs no geometry subscription or remount.
   const wordLeftViewport = await page.evaluate(() => {
     const word = document.querySelector(".audio-word.is-audio-focused");
     if (!word) return null;
@@ -274,36 +282,32 @@ test("the word playback tooltip tracks its word through a scroll", async ({
     return word.getBoundingClientRect().bottom <= 0;
   });
   expect(wordLeftViewport).toBe(true);
-  await expect(tooltip).toHaveCount(0);
+  await expect(tooltip).not.toBeInViewport();
 
-  // Scrolling back brings it home, still anchored, without another click.
+  // Scrolling back brings both home, still anchored, without another click.
   await page.evaluate(() =>
     window.scrollTo({ top: 0, behavior: "instant" }),
   );
   await expect(tooltip).toBeVisible();
-  await expect.poll(async () => (await offsetFromWord())?.horizontal ?? null)
-    .toBeCloseTo(anchored!.horizontal, 0);
+  const returned = await offsetFromWord();
+  expect(returned).not.toBeNull();
+  expect(returned!.horizontal).toBeCloseTo(anchored!.horizontal, 0);
+  expect(returned!.vertical).toBeCloseTo(anchored!.vertical, 0);
 
-  // The toolbar is sticky, so a word parked underneath it is out of view too,
-  // and the bubble has to leave with it rather than cover the breadcrumbs.
-  const wordUnderToolbar = await page.evaluate(() => {
+  // The sticky header has a higher stacking level, so the tooltip travels under
+  // it with the word instead of covering the navigation.
+  const stacking = await page.evaluate(() => {
     const word = document.querySelector(".audio-word.is-audio-focused");
+    const bubble = document.querySelector(".audio-word-tooltip");
     const header = document.querySelector(".site-header");
-    if (!word || !header) return null;
-    window.scrollBy({
-      top:
-        word.getBoundingClientRect().bottom -
-        header.getBoundingClientRect().bottom +
-        2,
-      behavior: "instant",
-    });
-    return (
-      word.getBoundingClientRect().bottom <=
-      header.getBoundingClientRect().bottom
-    );
+    if (!word || !bubble || !header) return null;
+    return {
+      bubble: Number.parseInt(getComputedStyle(bubble).zIndex, 10),
+      header: Number.parseInt(getComputedStyle(header).zIndex, 10),
+    };
   });
-  expect(wordUnderToolbar).toBe(true);
-  await expect(tooltip).toHaveCount(0);
+  expect(stacking).not.toBeNull();
+  expect(stacking!.header).toBeGreaterThan(stacking!.bubble);
 });
 
 // Bold is wider than regular, so marking the spoken word with weight reflowed

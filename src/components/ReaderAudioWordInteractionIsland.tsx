@@ -1,12 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { Volume2 } from "lucide-react";
-import {
-  useAnchoredOverlay,
-  type AnchoredOverlayBox,
-} from "@/lib/use-anchored-overlay";
 
 type WordTarget = {
   id: string;
@@ -47,13 +43,6 @@ function wordTargetFromElement(element: HTMLElement): WordTarget | null {
   return { id, sectionId, charIndex, element };
 }
 
-function positionFor(box: AnchoredOverlayBox): CSSProperties {
-  return {
-    left: `${box.left + box.width / 2}px`,
-    top: `${box.top - 4}px`,
-  };
-}
-
 function queryWords(sectionId: string): HTMLElement[] {
   if (!("CSS" in window) || typeof CSS.escape !== "function") return [];
   return Array.from(
@@ -90,6 +79,8 @@ export function ReaderAudioWordInteractionIsland({
   const [hovered, setHovered] = useState<WordTarget | null>(null);
   const [focused, setFocused] = useState<WordTarget | null>(null);
   const [activeWordId, setActiveWordId] = useState<string | null>(null);
+  const [tooltipPortalTarget, setTooltipPortalTarget] =
+    useState<HTMLElement | null>(null);
   const [speakerPortalTarget, setSpeakerPortalTarget] =
     useState<HTMLElement | null>(null);
 
@@ -98,11 +89,7 @@ export function ReaderAudioWordInteractionIsland({
     if (!target) return null;
     return { ...target, focused: Boolean(focused && focused.id === target.id) };
   }, [focused, hovered]);
-
-  // The tooltip is portalled to the body, so it has to be told where its word
-  // is on every frame the word moves. Tracking the word live also drops the
-  // tooltip once the word scrolls off and brings it back when the word returns.
-  const tooltipBox = useAnchoredOverlay(tooltip?.element ?? null);
+  const tooltipElement = tooltip?.element ?? null;
 
   const startPlayback = useCallback((target: WordTarget) => {
     dispatchAudioStartFromWord({
@@ -192,6 +179,20 @@ export function ReaderAudioWordInteractionIsland({
   }, [sectionId]);
 
   useEffect(() => {
+    if (!tooltipElement) return;
+    const portalTarget = document.createElement("span");
+    portalTarget.className = "audio-word-tooltip-anchor";
+    tooltipElement.append(portalTarget);
+    const frame = window.requestAnimationFrame(() => {
+      setTooltipPortalTarget(portalTarget);
+    });
+    return () => {
+      window.cancelAnimationFrame(frame);
+      portalTarget.remove();
+    };
+  }, [tooltipElement]);
+
+  useEffect(() => {
     if (!activeWordId) return;
     const activeWord = document.getElementById(activeWordId);
     if (!activeWord) return;
@@ -220,19 +221,18 @@ export function ReaderAudioWordInteractionIsland({
 
   return (
     <>
-      {tooltip && tooltipBox
+      {tooltip && tooltipPortalTarget?.parentElement === tooltip.element
         ? createPortal(
             <button
               type="button"
               className={`audio-word-tooltip tooltip-surface${tooltip.focused ? " is-focused" : ""}`}
-              style={positionFor(tooltipBox)}
               onClick={() => startPlayback(tooltip)}
             >
               {tooltip.focused
                 ? "Click Again to start playback"
                 : "Click Here to Play"}
             </button>,
-            document.body,
+            tooltipPortalTarget,
           )
         : null}
       {speakerPortalTarget
