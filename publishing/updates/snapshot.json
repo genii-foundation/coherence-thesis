@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "ee7bb3e5fd6474023225d7b05c6fa8a71c7a9024",
+  "headSha": "4d7cbd82d1b4daeb8ce46bb1150c2198c847bfc8",
   "commits": [
+    {
+      "sha": "4d7cbd82d1b4daeb8ce46bb1150c2198c847bfc8",
+      "committedAt": "2026-07-27T19:25:28.000Z",
+      "subject": "fix: anchor the word playback tooltip and underline the spoken word (#156)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/4d7cbd82d1b4daeb8ce46bb1150c2198c847bfc8",
+      "filesChanged": 7,
+      "additions": 362,
+      "deletions": 14,
+      "isLiterary": false
+    },
     {
       "sha": "ee7bb3e5fd6474023225d7b05c6fa8a71c7a9024",
       "committedAt": "2026-07-27T05:31:16.000Z",
