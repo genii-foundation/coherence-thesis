@@ -695,13 +695,11 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     toolbarMetrics.settingsLeft,
   );
   expect(toolbarMetrics.settingsLeft).toBeLessThan(toolbarMetrics.shareLeft);
-  expect(toolbarMetrics.shareLeft).toBeLessThan(toolbarMetrics.audioLeft);
-  expect(toolbarMetrics.audioLeft).toBeLessThan(toolbarMetrics.progressLeft);
+  expect(toolbarMetrics.shareLeft).toBeLessThan(toolbarMetrics.progressLeft);
+  expect(toolbarMetrics.progressLeft).toBeLessThan(toolbarMetrics.audioLeft);
   if (layout.clientWidth <= 860) {
     const toolbarRightGap =
-      layout.clientWidth -
-      toolbarMetrics.progressLeft -
-      toolbarMetrics.progressWidth;
+      layout.clientWidth - toolbarMetrics.audioLeft - toolbarMetrics.audioWidth;
     expect(toolbarRightGap).toBeLessThanOrEqual(layout.headerPaddingRight + 2);
   }
   if (layout.clientWidth <= 540) {
@@ -2073,8 +2071,8 @@ test("toolbar brand owns the active manuscript identity", async ({
       const brandBox = document
         .querySelector(".site-header > .brand-mark")
         ?.getBoundingClientRect();
-      const progressBox = document
-        .querySelector(".progress-menu-button")
+      const audioBox = document
+        .querySelector(".audio-menu-button")
         ?.getBoundingClientRect();
       const headerStyle = window.getComputedStyle(
         document.querySelector(".site-header")!,
@@ -2082,7 +2080,7 @@ test("toolbar brand owns the active manuscript identity", async ({
 
       return {
         brandWidth: brandBox?.width ?? 0,
-        progressRight: progressBox?.right ?? 0,
+        audioRight: audioBox?.right ?? 0,
         viewportWidth: document.documentElement.clientWidth,
         headerPaddingRight: Number.parseFloat(headerStyle.paddingRight),
         scrollWidth: document.documentElement.scrollWidth,
@@ -2094,7 +2092,7 @@ test("toolbar brand owns the active manuscript identity", async ({
       narrowToolbarMetrics.viewportWidth + 1,
     );
     expect(
-      narrowToolbarMetrics.viewportWidth - narrowToolbarMetrics.progressRight,
+      narrowToolbarMetrics.viewportWidth - narrowToolbarMetrics.audioRight,
     ).toBeLessThanOrEqual(narrowToolbarMetrics.headerPaddingRight + 2);
     await expect(page.locator(".mobile-page-brand")).toBeHidden();
     await brand.locator(".brand-home-link").click();

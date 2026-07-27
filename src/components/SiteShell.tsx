@@ -96,11 +96,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <ToolbarBookmarksIsland />
           <ToolbarSettingsIsland />
           <ToolbarShareIsland />
+          <ToolbarProgressIsland />
           <AudioPlayerIsland
             fallbackAudio={fallbackAudio}
             overviewAudio={overviewAudio}
           />
-          <ToolbarProgressIsland />
         </nav>
       </header>
       <main id="main-content">
