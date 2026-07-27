@@ -36,6 +36,9 @@ export function CleanTooltip({
             sideOffset={10}
             collisionPadding={10}
             arrowPadding={12}
+            // Follow the trigger while the page scrolls, and step aside once the
+            // trigger is scrolled out of view instead of hanging over the page.
+            hideWhenDetached
           >
             {label}
             <Tooltip.Arrow

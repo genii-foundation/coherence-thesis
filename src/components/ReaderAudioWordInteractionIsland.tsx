@@ -3,12 +3,16 @@
 import { useCallback, useEffect, useMemo, useState, type CSSProperties } from "react";
 import { createPortal } from "react-dom";
 import { Volume2 } from "lucide-react";
+import {
+  useAnchoredOverlay,
+  type AnchoredOverlayBox,
+} from "@/lib/use-anchored-overlay";
 
 type WordTarget = {
   id: string;
   sectionId: string;
   charIndex: number;
-  rect: DOMRect;
+  element: HTMLElement;
 };
 
 type TooltipState = WordTarget & {
@@ -40,13 +44,13 @@ function wordTargetFromElement(element: HTMLElement): WordTarget | null {
   const charIndex = Number.parseInt(element.dataset.audioCharStart ?? "", 10);
   const id = element.dataset.audioWordId;
   if (!sectionId || !id || !Number.isFinite(charIndex)) return null;
-  return { id, sectionId, charIndex, rect: element.getBoundingClientRect() };
+  return { id, sectionId, charIndex, element };
 }
 
-function positionFor(rect: DOMRect): CSSProperties {
+function positionFor(box: AnchoredOverlayBox): CSSProperties {
   return {
-    left: `${rect.left + rect.width / 2}px`,
-    top: `${Math.max(10, rect.top - 4)}px`,
+    left: `${box.left + box.width / 2}px`,
+    top: `${box.top - 4}px`,
   };
 }
 
@@ -95,6 +99,11 @@ export function ReaderAudioWordInteractionIsland({
     return { ...target, focused: Boolean(focused && focused.id === target.id) };
   }, [focused, hovered]);
 
+  // The tooltip is portalled to the body, so it has to be told where its word
+  // is on every frame the word moves. Tracking the word live also drops the
+  // tooltip once the word scrolls off and brings it back when the word returns.
+  const tooltipBox = useAnchoredOverlay(tooltip?.element ?? null);
+
   const startPlayback = useCallback((target: WordTarget) => {
     dispatchAudioStartFromWord({
       sectionId: target.sectionId,
@@ -115,7 +124,12 @@ export function ReaderAudioWordInteractionIsland({
         return;
       }
       const target = wordTargetFromElement(word);
-      if (target) setHovered(target);
+      // Pointer moves inside a word no longer carry new information now that
+      // the tooltip measures its own anchor, so hold the existing target and
+      // spare the island a render per mouse move.
+      if (target) {
+        setHovered((current) => (current?.id === target.id ? current : target));
+      }
     };
     const onClick = (event: MouseEvent) => {
       if (
@@ -199,19 +213,19 @@ export function ReaderAudioWordInteractionIsland({
       .querySelectorAll(".audio-word.is-audio-focused")
       .forEach((element) => element.classList.remove("is-audio-focused"));
     if (!focused) return;
-    document.getElementById(focused.id)?.classList.add("is-audio-focused");
+    focused.element.classList.add("is-audio-focused");
   }, [focused]);
 
   if (typeof document === "undefined") return null;
 
   return (
     <>
-      {tooltip
+      {tooltip && tooltipBox
         ? createPortal(
             <button
               type="button"
               className={`audio-word-tooltip tooltip-surface${tooltip.focused ? " is-focused" : ""}`}
-              style={positionFor(tooltip.rect)}
+              style={positionFor(tooltipBox)}
               onClick={() => startPlayback(tooltip)}
             >
               {tooltip.focused

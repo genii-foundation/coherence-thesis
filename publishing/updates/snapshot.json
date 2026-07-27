@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "c126678226e9ff367c173042959a63f8004a7ce7",
+  "headSha": "ee7bb3e5fd6474023225d7b05c6fa8a71c7a9024",
   "commits": [
+    {
+      "sha": "ee7bb3e5fd6474023225d7b05c6fa8a71c7a9024",
+      "committedAt": "2026-07-27T05:31:16.000Z",
+      "subject": "fix: seal the seam where mobile menus meet the toolbar (#155)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/ee7bb3e5fd6474023225d7b05c6fa8a71c7a9024",
+      "filesChanged": 3,
+      "additions": 127,
+      "deletions": 2,
+      "isLiterary": false
+    },
     {
       "sha": "c126678226e9ff367c173042959a63f8004a7ce7",
       "committedAt": "2026-07-25T20:03:54.000Z",
