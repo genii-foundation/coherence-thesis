@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BookmarkMarkerIsland } from "@/components/BookmarkMarkerIsland";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
 import { UpdatedMarkerIsland } from "@/components/UpdatedMarkerIsland";
 import {
@@ -22,6 +23,7 @@ export function SectionCardGrid({ sections }: { sections: Section[] }) {
             <span className="card-kicker">
               {String(index + 1).padStart(2, "0")}
               <span className="content-status-row">
+                <BookmarkMarkerIsland sections={[progressSection]} />
                 <UpdatedMarkerIsland sections={[progressSection]} />
                 <ReadCheckmarkIsland sections={[progressSection]} />
               </span>

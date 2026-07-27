@@ -16,11 +16,20 @@ import {
   Check,
   ChevronsRight,
   Cloud,
+  Download,
   KeyRound,
   LoaderCircle,
   RotateCcw,
   UserRound,
 } from "lucide-react";
+import {
+  buildReaderExport,
+  readerExportFileName,
+} from "@/lib/reader-export";
+import {
+  parseReaderPreferences,
+  readerPreferencesStorageKey,
+} from "@/lib/reader-preferences";
 import { ProgressCloudBadge } from "@/components/ProgressCloudBadge";
 import { ProgressReadAnimation } from "@/components/ProgressReadAnimation";
 import {
@@ -43,19 +52,29 @@ import {
 } from "@/lib/reader-engagement";
 import {
   appendStoredEvent,
+  readStoredBookmarks,
   readStoredConsent,
   readStoredEvents,
   readStoredProgress,
+  updateStoredBookmarks,
   updateStoredProgress,
+  useReaderBookmarks,
   useReaderProgress,
   writeStoredConsent,
   writeStoredEvents,
 } from "@/lib/reader-progress-store";
+import {
+  bookmarksFitRemoteBudget,
+  pruneBookmarks,
+  readerBookmarksSchemaVersion,
+  reconcileRemoteBookmarks,
+} from "@/lib/reader-bookmarks";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 import {
   getCurrentUser,
   isReaderSyncConfigured,
   loadRemoteReaderState,
+  mergeRemoteBookmarks,
   onAuthStateChange,
   sendMagicLink,
   signOutReader,
@@ -137,7 +156,16 @@ export function ToolbarProgressIsland() {
   // client understands. While true, the client neither merges the remote row
   // nor uploads over it, so an outdated device cannot clobber newer data.
   const remoteSchemaAheadRef = useRef(false);
+  // Bookmarks version independently of progress, so they get their own lockout.
+  // Sharing one ref would let a bookmarks schema bump freeze progress sync, and
+  // the reverse, for two collections that have nothing to do with each other.
+  const remoteBookmarksSchemaAheadRef = useRef(false);
+  // Set when a sync arrives while one is already in flight. The debounce timer
+  // has already been consumed by then, so without this the change waits for an
+  // unrelated mutation to re-arm it and can sit unsynced indefinitely.
+  const resyncPendingRef = useRef(false);
   const progress = useReaderProgress();
+  const bookmarks = useReaderBookmarks();
   const allSections = useLoadedData<ProgressSection[]>(
     loadProgressSections,
     emptyProgressSections,
@@ -288,6 +316,25 @@ export function ToolbarProgressIsland() {
             );
           }
         }
+        if (effectiveConsent?.granted && remote.bookmarks) {
+          const remoteBookmarks = remote.bookmarks;
+          const remoteBookmarksVersion =
+            remote.bookmarksSchemaVersion ?? readerBookmarksSchemaVersion;
+          if (remoteBookmarksVersion > readerBookmarksSchemaVersion) {
+            // Refuse both directions for bookmarks only. Progress keeps syncing.
+            remoteBookmarksSchemaAheadRef.current = true;
+          } else {
+            remoteBookmarksSchemaAheadRef.current = false;
+            updateStoredBookmarks(
+              (current) =>
+                reconcileRemoteBookmarks(
+                  current,
+                  remoteBookmarks,
+                  remoteBookmarksVersion,
+                ) ?? current,
+            );
+          }
+        }
       })
       .catch(() => {
         if (mounted) {
@@ -371,7 +418,12 @@ export function ToolbarProgressIsland() {
       overrideEvents?: ReaderEngagementEvent[],
       options: { grantConsent?: boolean } = {},
     ) => {
-      if (!user || syncingRef.current) return;
+      if (!user) return;
+      if (syncingRef.current) {
+        // Remember that something changed rather than dropping it silently.
+        resyncPendingRef.current = true;
+        return;
+      }
       if (remoteSchemaAheadRef.current) {
         setSyncStatus("error");
         setSyncMessage(
@@ -390,12 +442,48 @@ export function ToolbarProgressIsland() {
       const currentProgress = overrideProgress ?? readStoredProgress();
       const currentEvents = overrideEvents ?? readStoredEvents();
       const pendingEvents = unsyncedEvents(currentEvents);
+      // Read rather than take a fourth positional override. Bookmarks are
+      // always whatever the store currently holds; there is no caller that
+      // needs to push a different set.
+      const currentBookmarks = pruneBookmarks(readStoredBookmarks());
 
       try {
         const progressResult = await upsertRemoteProgress(user.id, currentProgress);
+        // The database rejects an oversized blob outright with no recovery
+        // path, so refuse locally and say why instead of failing the write.
+        if (!bookmarksFitRemoteBudget(currentBookmarks)) {
+          throw new Error(
+            "Your bookmarks are too large to sync. Remove a few and try again.",
+          );
+        }
+        const bookmarksResult = remoteBookmarksSchemaAheadRef.current
+          ? { data: null, error: null }
+          : await mergeRemoteBookmarks(currentBookmarks);
         const consentResult = await upsertRemoteConsent(user.id, activeConsent);
-        const primaryError = progressResult.error ?? consentResult.error ?? null;
+        const primaryError =
+          progressResult.error ??
+          bookmarksResult.error ??
+          consentResult.error ??
+          null;
         if (primaryError) throw primaryError;
+
+        if (bookmarksResult.data) {
+          const mergedRemote = bookmarksResult.data;
+          if (mergedRemote.schemaVersion > readerBookmarksSchemaVersion) {
+            remoteBookmarksSchemaAheadRef.current = true;
+            throw new Error(
+              "Your bookmarks were saved by a newer version of the reader.",
+            );
+          }
+          updateStoredBookmarks(
+            (current) =>
+              reconcileRemoteBookmarks(
+                current,
+                mergedRemote.bookmarks,
+                mergedRemote.schemaVersion,
+              ) ?? current,
+          );
+        }
 
         const eventResult = await uploadRemoteEvents(user.id, pendingEvents);
         if (eventResult.uploadedIds.length > 0) {
@@ -422,18 +510,55 @@ export function ToolbarProgressIsland() {
         );
       } finally {
         syncingRef.current = false;
+        if (resyncPendingRef.current) {
+          resyncPendingRef.current = false;
+          // Something changed while this run was in flight. Re-arm rather than
+          // waiting for an unrelated mutation to notice.
+          window.setTimeout(() => void syncNow(), 0);
+        }
       }
     },
     [consent, user],
   );
 
+  // bookmarks belongs in this dependency list as much as progress does. Without
+  // it a bookmark-only change never re-arms the timer and sits unsynced until
+  // some unrelated progress mutation happens to fire.
   useEffect(() => {
     if (!user || !consent.granted) return;
     const timer = window.setTimeout(() => {
       void syncNow(progress);
     }, syncDebounceMs);
     return () => window.clearTimeout(timer);
-  }, [consent.granted, progress, syncNow, user]);
+  }, [bookmarks, consent.granted, progress, syncNow, user]);
+
+  // Lives here rather than in the bookmarks panel: this is the reader's own
+  // record of everything the site holds about them, which belongs with the
+  // account controls and not with one of the collections it contains.
+  const exportReaderData = useCallback(() => {
+    const markdown = buildReaderExport({
+      progress: readStoredProgress(),
+      bookmarks: readStoredBookmarks(),
+      events: readStoredEvents(),
+      consent: readStoredConsent(),
+      preferences: parseReaderPreferences(
+        window.localStorage.getItem(readerPreferencesStorageKey),
+      ),
+      sections: allSections,
+      signedIn: Boolean(user),
+      lastSyncedAt: readLastSyncedAt(),
+      generatedAt: Date.now(),
+      origin: window.location.origin,
+    });
+    const url = URL.createObjectURL(
+      new Blob([markdown], { type: "text/markdown" }),
+    );
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = readerExportFileName;
+    link.click();
+    URL.revokeObjectURL(url);
+  }, [allSections, user]);
 
   const percent = useMemo(
     () => readPercent(progress, allSections),
@@ -680,12 +805,14 @@ export function ToolbarProgressIsland() {
                           <Cloud aria-hidden="true" size={20} />
                           <div className="reader-sync-modal-copy">
                             <h2 id="reader-sync-modal-title">
-                              Sync reading progress?
+                              Sync reading progress and bookmarks?
                             </h2>
                             <p id="reader-sync-modal-description">
-                              If you continue, reading progress will be synchronized
-                              to your Cloud account so this site can remember where
-                              you left off and share progress between your devices.
+                              If you continue, reading progress and your saved
+                              bookmarks, including the passages you quoted and any
+                              notes you wrote, will be synchronized to your Cloud
+                              account so this site can remember where you left off
+                              and share both between your devices.
                             </p>
                           </div>
                           <div className="reader-sync-modal-actions">
@@ -867,6 +994,23 @@ export function ToolbarProgressIsland() {
               </div>
             </div>
           )}
+          <div className="account-tools progress-section">
+            <p className="eyebrow">Account tools</p>
+            <div className="progress-link-list">
+              <button
+                type="button"
+                className="reader-menu-link"
+                onClick={exportReaderData}
+              >
+                <Download
+                  className="reader-menu-link-icon"
+                  aria-hidden="true"
+                  size={16}
+                />
+                <span>Export reading statistics and bookmarks</span>
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

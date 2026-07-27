@@ -48,6 +48,13 @@ test("progress menu shows a resettable email sent confirmation", async ({
   await page.goto(wieldingSection.href);
   await page.getByRole("button", { name: /Progress/ }).click();
 
+  // Wait for the panel to finish opening before probing it. isVisible does not
+  // wait, so on a taller panel the height transition could still be running and
+  // the skip probe would read false for a build that has no sync configured,
+  // sending the test into assertions it was never meant to reach.
+  await expect(page.locator(".progress-popover")).toBeVisible();
+  await expect(page.getByText("Reading progress")).toBeVisible();
+
   if (
     await page
       .getByText("Sync is not configured for this build.")
@@ -70,7 +77,7 @@ test("progress menu shows a resettable email sent confirmation", async ({
   await signInButton.click();
 
   const syncModal = page.getByRole("dialog", {
-    name: "Sync reading progress?",
+    name: "Sync reading progress and bookmarks?",
   });
   await expect(syncModal).toBeVisible();
   await expect(
@@ -187,7 +194,7 @@ test("progress menu shows a resettable email sent confirmation", async ({
 
   await signInButton.click();
   await page
-    .getByRole("dialog", { name: "Sync reading progress?" })
+    .getByRole("dialog", { name: "Sync reading progress and bookmarks?" })
     .getByRole("button", { name: "Continue" })
     .click();
 
@@ -327,7 +334,7 @@ test("progress button wraps percent in a cloud when signed in", async ({
   await expect(emailInput).toHaveValue("reader@example.com");
   await page.getByRole("button", { name: "Sign in to sync" }).click();
   await page
-    .getByRole("dialog", { name: "Sync reading progress?" })
+    .getByRole("dialog", { name: "Sync reading progress and bookmarks?" })
     .getByRole("button", { name: "Continue" })
     .click();
   await page.getByLabel("One-time code").fill("12345678");

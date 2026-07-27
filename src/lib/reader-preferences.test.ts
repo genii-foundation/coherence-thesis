@@ -31,6 +31,7 @@ describe("reader preferences", () => {
           fontFamily: "newsreader",
           theme: "black",
           animations: "none",
+          highlights: "on",
         }),
       ),
     ).toEqual({
@@ -38,7 +39,18 @@ describe("reader preferences", () => {
       fontFamily: "newsreader",
       theme: "black",
       animations: "none",
+      highlights: "on",
     });
+  });
+
+  test("defaults bookmark highlights off when the stored value is absent or invalid", () => {
+    // Painting reader marks over the manuscript changes how the text reads, so
+    // an unreadable preference must fall back to off rather than on.
+    for (const stored of [{}, { highlights: "yes" }, { highlights: 1 }]) {
+      expect(parseReaderPreferences(JSON.stringify(stored)).highlights).toBe(
+        "off",
+      );
+    }
   });
 
   test("maps legacy font preferences to variable font choices", () => {
@@ -87,9 +99,10 @@ describe("reader preferences", () => {
         fontFamily: "source-serif",
         theme: "light",
         animations: "balanced",
+        highlights: "on",
       }),
     ).toBe(
-      '{"fontSize":90,"fontFamily":"source-serif","theme":"light","animations":"balanced"}',
+      '{"fontSize":90,"fontFamily":"source-serif","theme":"light","animations":"balanced","highlights":"on"}',
     );
   });
 });

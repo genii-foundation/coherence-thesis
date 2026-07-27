@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { Volume2 } from "lucide-react";
+import { selectionIsActive } from "@/lib/reader-selection";
 
 type WordTarget = {
   id: string;
@@ -101,6 +102,14 @@ export function ReaderAudioWordInteractionIsland({
 
   useEffect(() => {
     const onPointerMove = (event: PointerEvent) => {
+      // While the reader has text selected, the selection bookmark bubble owns
+      // this space. Two bubbles at the same z-index over the same words is one
+      // too many, and dragging across a paragraph should not strobe the play
+      // tooltip word by word.
+      if (selectionIsActive()) {
+        setHovered(null);
+        return;
+      }
       const word = closestAudioWord(event.target);
       if (
         !word ||

@@ -302,6 +302,8 @@ async function expectToolbarTriggerRounded(
     .toBe(true);
 }
 
+// Desktop popovers hang from the button that opened them. This matters because
+// audio and progress deliberately use taller wrappers than the other controls.
 async function expectDesktopPopoverStartsAtTriggerBottom(
   page: Page,
   triggerSelector: string,
@@ -476,6 +478,9 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     const outline = document
       .querySelector(".outline-menu-button")
       ?.getBoundingClientRect();
+    const bookmarks = document
+      .querySelector(".bookmarks-menu-button")
+      ?.getBoundingClientRect();
     const progress = document
       .querySelector(".progress-menu-button")
       ?.getBoundingClientRect();
@@ -574,17 +579,20 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       searchLeft: search?.left ?? 0,
       settingsLeft: settings?.left ?? 0,
       outlineLeft: outline?.left ?? 0,
+      bookmarksLeft: bookmarks?.left ?? 0,
       shareLeft: share?.left ?? 0,
       audioLeft: audio?.left ?? 0,
       progressLeft: progress?.left ?? 0,
       searchWidth: search?.width ?? 0,
       outlineWidth: outline?.width ?? 0,
+      bookmarksWidth: bookmarks?.width ?? 0,
       settingsWidth: settings?.width ?? 0,
       shareWidth: share?.width ?? 0,
       audioWidth: audio?.width ?? 0,
       progressWidth: progress?.width ?? 0,
       searchHeight: search?.height ?? 0,
       outlineHeight: outline?.height ?? 0,
+      bookmarksHeight: bookmarks?.height ?? 0,
       settingsHeight: settings?.height ?? 0,
       shareHeight: share?.height ?? 0,
       audioHeight: audio?.height ?? 0,
@@ -682,7 +690,10 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     );
   }
   expect(toolbarMetrics.searchLeft).toBeLessThan(toolbarMetrics.outlineLeft);
-  expect(toolbarMetrics.outlineLeft).toBeLessThan(toolbarMetrics.settingsLeft);
+  expect(toolbarMetrics.outlineLeft).toBeLessThan(toolbarMetrics.bookmarksLeft);
+  expect(toolbarMetrics.bookmarksLeft).toBeLessThan(
+    toolbarMetrics.settingsLeft,
+  );
   expect(toolbarMetrics.settingsLeft).toBeLessThan(toolbarMetrics.shareLeft);
   expect(toolbarMetrics.shareLeft).toBeLessThan(toolbarMetrics.audioLeft);
   expect(toolbarMetrics.audioLeft).toBeLessThan(toolbarMetrics.progressLeft);
@@ -704,6 +715,9 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       Math.abs(toolbarMetrics.settingsWidth - toolbarMetrics.outlineWidth),
     ).toBeLessThanOrEqual(1);
     expect(
+      Math.abs(toolbarMetrics.bookmarksWidth - toolbarMetrics.outlineWidth),
+    ).toBeLessThanOrEqual(1);
+    expect(
       Math.abs(toolbarMetrics.audioWidth - toolbarMetrics.outlineWidth),
     ).toBeLessThanOrEqual(1);
     expect(
@@ -712,6 +726,7 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     [
       toolbarMetrics.searchHeight,
       toolbarMetrics.outlineHeight,
+      toolbarMetrics.bookmarksHeight,
       toolbarMetrics.settingsHeight,
       toolbarMetrics.shareHeight,
       toolbarMetrics.audioHeight,
@@ -723,6 +738,7 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     [
       toolbarMetrics.searchWidth,
       toolbarMetrics.outlineWidth,
+      toolbarMetrics.bookmarksWidth,
       toolbarMetrics.settingsWidth,
       toolbarMetrics.shareWidth,
       toolbarMetrics.audioWidth,

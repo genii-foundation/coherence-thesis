@@ -18,17 +18,12 @@ import {
   progressSectionsForPrefix,
   sectionGroupProgressStatus,
 } from "@/lib/section-progress";
+import { foldTitleText, matchesFoldedQuery } from "@/lib/reader-text-search";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 import { ProgressStateDot } from "@/components/ProgressStateDot";
 
-function searchable(value: string): string {
-  return value.trim().toLowerCase();
-}
-
-function matchesQuery(values: string[], query: string): boolean {
-  if (!query) return true;
-  return values.some((value) => searchable(value).includes(query));
-}
+const searchable = foldTitleText;
+const matchesQuery = matchesFoldedQuery;
 
 export function OutlineMenuIsland() {
   const pathname = usePathname();

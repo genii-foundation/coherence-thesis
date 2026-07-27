@@ -116,6 +116,9 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     );
   }, []);
 
+  // Desktop popovers hang from the button that opened them. Audio and progress
+  // deliberately use taller wrappers than the other controls, so their menus
+  // connect lower down. Mobile remains anchored to the toolbar's bottom edge.
   const measurePopoverTop = useCallback(() => {
     const container = containerRef.current;
     const trigger = triggerRef.current;

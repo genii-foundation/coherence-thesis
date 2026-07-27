@@ -1,4 +1,5 @@
 import { catalog, type Section, type Volume } from "./manuscript-data";
+import { sectionHasBookmarks } from "./reader-bookmarks";
 import {
   progressPercentForSection,
   type ReaderProgressState,
@@ -268,6 +269,28 @@ export function progressForHeatmapCell(
     percent: Math.round(percent),
     revised,
   };
+}
+
+// Kept beside progressForHeatmapCell rather than widened into it, so the
+// progress signature and its tests stay untouched. The caller builds the key
+// set once; this runs per cell across a thousand cells on every store
+// notification, so it must stay an O(1) probe per portion.
+export function cellHasBookmarks(
+  bookmarkedKeys: ReadonlySet<string>,
+  cell: ReaderHeatmapCell,
+): boolean {
+  if (bookmarkedKeys.size === 0) return false;
+  return cell.portions.some((portion) =>
+    sectionHasBookmarks(bookmarkedKeys, portion),
+  );
+}
+
+export function bookmarkedCellsCount(
+  bookmarkedKeys: ReadonlySet<string>,
+  cells: ReaderHeatmapCell[],
+): number {
+  if (bookmarkedKeys.size === 0) return 0;
+  return cells.filter((cell) => cellHasBookmarks(bookmarkedKeys, cell)).length;
 }
 
 export function readCellsPercent(
