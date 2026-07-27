@@ -145,6 +145,14 @@ test("saved bookmarks survive a reload and filter in the toolbar", async ({
     page.locator(".bookmarks-popover"),
   );
   await expect(panel.locator(".bookmark-row")).toHaveCount(1);
+  const quotePreview = await panel.locator(".bookmark-quote").evaluate((quote) => {
+    const style = window.getComputedStyle(quote);
+    return {
+      lineClamp: style.getPropertyValue("-webkit-line-clamp"),
+      whiteSpace: style.whiteSpace,
+    };
+  });
+  expect(quotePreview).toEqual({ lineClamp: "3", whiteSpace: "normal" });
 
   const filter = page.getByPlaceholder("Filter bookmarks");
   await filter.fill("zzzz-no-such-passage");
@@ -316,12 +324,13 @@ test("bookmark text and notes produce first-class search results", async ({
         sectionId: section.sectionId,
         paragraphAnchor,
         paragraphContentHash: paragraphHash,
-        quote: "decided by technology or ideology",
+        quote:
+          "The future of civilization will not be decided by technology or ideology, but by whether we learn to organize society around the biological conditions that make intelligence, trust, and coordination possible at planetary scale.",
         quoteOrdinal: 0,
         prefix: "",
         suffix: "",
         startOffset: 0,
-        endOffset: 33,
+        endOffset: 213,
         sectionContentHash: section.contentHash,
         note: "private retrieval phrase",
         createdAt: timestamp,
@@ -361,7 +370,20 @@ test("bookmark text and notes produce first-class search results", async ({
   ).toBeVisible();
   await expect(
     results.first().locator(".search-result-snippet"),
-  ).toContainText("Bookmarked passage: decided by technology or ideology");
+  ).toContainText(
+    "Bookmarked passage: The future of civilization will not be decided by technology or ideology",
+  );
+  const searchPreview = await results
+    .first()
+    .locator(".search-result-snippet")
+    .evaluate((snippet) => {
+      const style = window.getComputedStyle(snippet);
+      return {
+        lineClamp: style.getPropertyValue("-webkit-line-clamp"),
+        whiteSpace: style.whiteSpace,
+      };
+    });
+  expect(searchPreview).toEqual({ lineClamp: "3", whiteSpace: "normal" });
 
   await input.fill("private retrieval phrase");
   const noteResults = page.locator(".search-result");

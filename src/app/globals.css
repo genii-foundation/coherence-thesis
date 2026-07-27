@@ -1754,14 +1754,14 @@ input {
   padding-bottom: 0.9rem;
 }
 
-/* Quotes clamp to two lines in the jump menu. A saved passage can run to 400
-   characters, and a list of those is not scannable; two lines is enough to
+/* Quotes clamp to three lines in the jump menu. A saved passage can run to 400
+   characters, and a list of those is not scannable; three lines is enough to
    recognize a passage you chose, and the whole thing is still in the export.
    The ellipsis comes from the clamp, so it appears only when it is earned. */
 .bookmark-quote {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   color: var(--ink);
@@ -1887,6 +1887,14 @@ a.bookmark-quote:focus-visible {
   inset-block-start: 0.72rem;
   inset-inline-end: 0.72rem;
   position: absolute;
+}
+
+.search-result-bookmark .search-result-snippet {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  white-space: normal;
 }
 
 .site-nav a.search-result {
