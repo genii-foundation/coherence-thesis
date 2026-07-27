@@ -1220,12 +1220,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectRestingControlBorder(page, ".voice-field select");
   await expect(audioMenu.getByText("Voice", { exact: true })).toBeVisible();
   await expect(audioMenu.getByText("Speed", { exact: true })).toBeVisible();
-  await expect(
-    audioMenu.locator("optgroup[label='High quality voices']"),
-  ).toHaveCount(1);
-  await expect(
-    audioMenu.locator("optgroup[label='System voices']"),
-  ).toHaveCount(1);
+  await expect(audioMenu.locator("optgroup")).toHaveCount(0);
   const voiceSelect = audioMenu.getByRole("combobox", { name: "Voice" });
   const speedSlider = audioMenu.getByRole("slider", { name: "Speed" });
   const resetVoice = audioMenu.getByRole("button", { name: "Reset voice" });
@@ -1233,13 +1228,17 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(resetVoice).toBeDisabled();
   await expect(resetSpeed).toBeDisabled();
   const highQualityOption = audioMenu.locator("option", {
-    hasText: "High Quality 1",
+    hasText: "Calm Male Narrator",
   });
   await expect(highQualityOption).toHaveCount(1);
   await expect(
     audioMenu.locator("option", { hasText: "System voice" }),
   ).toHaveCount(1);
   await expect(audioMenu.locator("option", { hasText: "Albert" })).toHaveCount(0);
+  await expect(voiceSelect.locator("option")).toHaveText([
+    "Calm Male Narrator",
+    "System voice",
+  ]);
   await expect(audioMenu.getByText("Offline playback")).toBeVisible();
   await voiceSelect.selectOption("");
   await expect(resetVoice).toBeEnabled();
