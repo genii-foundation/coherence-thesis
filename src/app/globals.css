@@ -1868,6 +1868,7 @@ a.bookmark-quote:focus-visible {
   background: var(--item-background-strong);
   color: var(--ink);
   padding: 0.72rem;
+  position: relative;
   text-align: left;
   text-decoration: none;
   white-space: normal;
@@ -1875,6 +1876,17 @@ a.bookmark-quote:focus-visible {
     background 160ms ease,
     border-color 160ms ease,
     color 160ms ease;
+}
+
+.search-result-bookmark .search-result-title {
+  padding-inline-end: 1.8rem;
+}
+
+.search-result-bookmark-icon {
+  color: var(--bronze-deep);
+  inset-block-start: 0.72rem;
+  inset-inline-end: 0.72rem;
+  position: absolute;
 }
 
 .site-nav a.search-result {

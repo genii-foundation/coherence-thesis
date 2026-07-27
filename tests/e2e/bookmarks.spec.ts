@@ -301,83 +301,75 @@ test("the reading map marks and counts cells that hold a bookmark", async ({
   expect(geometry.label).toContain("bookmarked");
 });
 
-test("search prioritizes bookmarked passages and bookmark notes", async ({
+test("bookmark text and notes produce first-class search results", async ({
   page,
 }) => {
-  const query = "coherence";
-
-  const resultHrefs = async () => {
-    await page.getByRole("button", { name: "Search manuscripts" }).click();
-    const input = page.getByPlaceholder("Search all manuscripts");
-    await input.fill(query);
-    // The index is about 1.5 MB and is fetched on first open, so the first
-    // result legitimately takes longer than the default expect budget on a
-    // loaded machine. This waits for the fetch, not for a race.
-    await expect(page.locator(".search-result").first()).toBeVisible({
-      timeout: 15_000,
-    });
-    return page
-      .locator(".search-result")
-      .evaluateAll((links) =>
-        links.map((link) => link.getAttribute("href") ?? ""),
-      );
-  };
-
   await page.goto(firstSection.readerHref);
-  const before = await resultHrefs();
-  expect(before.length).toBeGreaterThan(2);
-
-  // Bookmark whatever currently ranks last, so the assertion is about the
-  // boost rather than about one hand-picked section.
-  const target = before[before.length - 1]!;
-  const seeded = await page.evaluate(
-    async ({ href, storageKey }) => {
-      const sections = await fetch("/data/progress-sections.json").then(
-        (response) => response.json(),
-      );
-      const section = sections.find(
-        (candidate: { readerHref: string }) => candidate.readerHref === href,
-      );
-      if (!section) return null;
-      const now = Date.now();
+  const anchor = firstSection.paragraphs[0]!.anchor;
+  const paragraphContentHash = firstSection.paragraphs[0]!.contentHash;
+  const now = Date.now();
+  await page.evaluate(
+    ({ section, paragraphAnchor, paragraphHash, storageKey, timestamp }) => {
       const bookmark = {
-        id: "search-boost-1",
+        id: "search-bookmark-1",
         progressKey: section.continuityId || section.sectionId,
         sectionId: section.sectionId,
-        paragraphAnchor: section.paragraphs[0].anchor,
-        paragraphContentHash: section.paragraphs[0].contentHash,
-        quote: "coherence",
+        paragraphAnchor,
+        paragraphContentHash: paragraphHash,
+        quote: "decided by technology or ideology",
         quoteOrdinal: 0,
         prefix: "",
         suffix: "",
         startOffset: 0,
-        endOffset: 9,
+        endOffset: 33,
         sectionContentHash: section.contentHash,
         note: "private retrieval phrase",
-        createdAt: now,
-        updatedAt: now,
+        createdAt: timestamp,
+        updatedAt: timestamp,
       };
       window.localStorage.setItem(
         storageKey,
-        JSON.stringify({ bookmarks: { "search-boost-1": bookmark } }),
+        JSON.stringify({ bookmarks: { "search-bookmark-1": bookmark } }),
       );
-      return section.sectionId;
     },
-    { href: target, storageKey: readerBookmarksStorageKey },
+    {
+      section: firstSection,
+      paragraphAnchor: anchor,
+      paragraphHash: paragraphContentHash,
+      storageKey: readerBookmarksStorageKey,
+      timestamp: now,
+    },
   );
-  expect(seeded).not.toBeNull();
 
   await page.reload();
-  const after = await resultHrefs();
-
-  expect(after.indexOf(target)).toBeGreaterThanOrEqual(0);
-  expect(after.indexOf(target)).toBeLessThan(before.indexOf(target));
-
+  await page.getByRole("button", { name: "Search manuscripts" }).click();
   const input = page.getByPlaceholder("Search all manuscripts");
+  await expect(page.locator(".search-result")).toHaveCount(0);
+  await input.fill("techno");
+  const results = page.locator(".search-result");
+  await expect(results.first()).toBeVisible({ timeout: 15_000 });
+  await expect(results.first()).toHaveAttribute(
+    "data-search-result-kind",
+    "bookmark",
+  );
+  await expect(results.first()).toHaveAttribute(
+    "href",
+    `${firstSection.readerHref}#${anchor}`,
+  );
+  await expect(
+    results.first().locator(".search-result-bookmark-icon"),
+  ).toBeVisible();
+  await expect(
+    results.first().locator(".search-result-snippet"),
+  ).toContainText("Bookmarked passage: decided by technology or ideology");
+
   await input.fill("private retrieval phrase");
   const noteResults = page.locator(".search-result");
   await expect(noteResults.first()).toBeVisible();
-  await expect(noteResults.first()).toHaveAttribute("href", target);
+  await expect(noteResults.first()).toHaveAttribute(
+    "data-search-result-kind",
+    "bookmark",
+  );
   await expect(
     noteResults.first().locator(".search-result-snippet"),
   ).toContainText("Bookmark note: private retrieval phrase");
