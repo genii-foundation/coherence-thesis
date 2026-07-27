@@ -10,6 +10,8 @@ import {
   wieldingVolume,
   copyrightYearLabel,
   hexToRgb,
+  expectCoverFlowSettled,
+  expectPanelHeightSettled,
 } from "./fixtures";
 
 const systemVoicePreference = {
@@ -982,6 +984,11 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   const initialActiveVolume = catalog.volumes[initialActiveIndex]!;
 
   await expect(coverFlow).toBeVisible();
+  // cover-flow.spec.ts waits for the island to publish its scroll offsets
+  // before touching anything. This test measures the same widget, so it needs
+  // the same signal rather than whatever frame the load event happened to land
+  // on.
+  await expectCoverFlowSettled(page);
   await expect(page.locator(".manuscript-showcase")).toHaveCount(0);
   await expect(coverFlow.locator(".cover-flow-card")).toHaveCount(
     catalog.volumes.length,
@@ -1147,6 +1154,9 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     catalog.volumes[2]!.href,
   );
 
+  // The panel height here follows the active cover, which is still easing into
+  // place after the two advances.
+  await expectCoverFlowSettled(page);
   const tallPanelMetrics = await activeCard.evaluate((card) => {
     const cover = card.querySelector(".cover-flow-image-frame");
     const panel = card.querySelector(".cover-flow-card-panel");
@@ -1242,6 +1252,9 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   await expect(
     activePanel.locator(".manuscript-card-outline-part-overview"),
   ).toContainText("Overview");
+  // Drilling into a part locks the panel height and animates it to the new
+  // content, so the row geometry below is only stable once that unlocks.
+  await expectPanelHeightSettled(activePanel);
   const partOverviewMetaAlignment = await activePanel
     .locator(".manuscript-card-outline-part-overview")
     .evaluate((row) => {
@@ -1504,6 +1517,11 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     await coverFlow
       .locator('.cover-flow-card[aria-current="true"] .cover-flow-image-frame')
       .scrollIntoViewIfNeeded();
+    // The resize, the hash navigation and the scroll all restart the transform
+    // animation. The click point below comes from a transformed bounding box, so
+    // computing it mid-ease aims at where a card used to be and the press lands
+    // on its neighbour.
+    await expectCoverFlowSettled(page);
     const farBackgroundClickPoint = await coverFlow.evaluate(
       (flow) => {
         const cards = Array.from(

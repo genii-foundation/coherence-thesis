@@ -18,12 +18,9 @@ import {
   wieldingSection,
   copyrightYearLabel,
   nextSection,
+  openToolbarMenu,
   sectionWithNeighbors,
 } from "./fixtures";
-
-// These tests mock sync requests. Blocking the offline worker keeps WebKit
-// requests visible to Playwright routing.
-test.use({ serviceWorkers: "block" });
 
 const systemVoicePreference = {
   voiceURI: null,
@@ -46,7 +43,7 @@ test("progress menu shows a resettable email sent confirmation", async ({
   });
 
   await page.goto(wieldingSection.href);
-  await page.getByRole("button", { name: /Progress/ }).click();
+  await openToolbarMenu(page, /Progress/);
 
   if (
     await page
@@ -308,7 +305,7 @@ test("progress button wraps percent in a cloud when signed in", async ({
     "data-connected",
     "false",
   );
-  await page.getByRole("button", { name: /Progress/ }).click();
+  await openToolbarMenu(page, /Progress/);
 
   if (
     await page

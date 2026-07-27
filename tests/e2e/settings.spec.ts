@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import {
+  expectToolbarTriggerReady,
   readerPreferencesStorageKey,
   firstSection,
 } from "./fixtures";
@@ -16,6 +17,7 @@ test("reader settings update and persist local appearance preferences", async ({
   const settingsButton = page.getByRole("button", { name: "Reader settings" });
   await expect(settingsButton).toBeVisible();
   await expect(settingsButton).toHaveText("");
+  await expectToolbarTriggerReady(settingsButton);
   await settingsButton.click();
 
   const settingsMenu = page.getByRole("region", { name: "Reader settings" });
