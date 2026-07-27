@@ -459,3 +459,64 @@ test("the bookmarks panel is an opaque surface that contains its content", async
     expect(surface.borderWidth).toBeGreaterThan(0);
   }
 });
+
+test("saving a bookmark pulses the toolbar control that holds it", async ({
+  page,
+  hasTouch,
+}) => {
+  await page.goto(firstSection.readerHref);
+  const trigger = page.locator(".bookmarks-menu-button");
+  await expect(trigger).not.toHaveClass(/is-bookmark-saved/);
+
+  await selectWords(page, 5, hasTouch);
+  await page.getByRole("button", { name: "Click to bookmark" }).click();
+
+  // The toast says it saved. This says where it went, which is the part a
+  // reader who has never opened that panel actually needs.
+  await expect(trigger).toHaveClass(/is-bookmark-saved/);
+  const animation = await trigger.evaluate(
+    (element) => window.getComputedStyle(element).animationName,
+  );
+  expect(animation).toBe("bookmark-saved-pulse");
+
+  // And it settles rather than becoming permanent chrome.
+  await expect(trigger).not.toHaveClass(/is-bookmark-saved/, { timeout: 5_000 });
+});
+
+test("account tools export everything the reader has accumulated", async ({
+  page,
+  hasTouch,
+}) => {
+  await page.goto(firstSection.readerHref);
+  await selectWords(page, 5, hasTouch);
+  await page.getByRole("button", { name: "Click to bookmark" }).click();
+  await expect(page.getByText("Bookmark saved")).toBeVisible();
+
+  // Export belongs with the account controls, not inside the bookmarks panel.
+  await page.getByRole("button", { name: /^Bookmarks, / }).click();
+  await expect(page.locator(".bookmarks-export")).toHaveCount(0);
+  await page.keyboard.press("Escape");
+
+  await page.getByRole("button", { name: /^Progress/ }).click();
+  const download = page.waitForEvent("download");
+  await page
+    .getByRole("button", { name: "Export reading statistics and bookmarks" })
+    .click();
+  const file = await download;
+
+  expect(file.suggestedFilename()).toBe("coherence-thesis-reader-data.md");
+  const stream = await file.createReadStream();
+  const chunks: Buffer[] = [];
+  for await (const chunk of stream) chunks.push(chunk as Buffer);
+  const markdown = Buffer.concat(chunks).toString("utf8");
+
+  expect(markdown).toContain("# Your Coherence Thesis reader data");
+  expect(markdown).toContain("## Summary");
+  expect(markdown).toContain("Bookmarks saved: 1");
+  expect(markdown).toContain("## Reading activity");
+  expect(markdown).toContain("## Activity records");
+  expect(markdown).toContain("## Your settings");
+  // The reader is owed a plain answer about where their data lives.
+  expect(markdown).toContain("## Where this is stored");
+  expect(markdown).toContain(firstSection.title);
+});

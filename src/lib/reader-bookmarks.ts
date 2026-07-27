@@ -511,49 +511,6 @@ export function bookmarkMatchesQuery(
   );
 }
 
-export type BookmarkSectionRef = {
-  title: string;
-  readerHref: string;
-};
-
-// Markdown export. Pure so it is unit testable and the island stays a shell.
-// The honest answer to "what happens to my notes if localStorage clears", and
-// the thing a reader who has annotated nine volumes will eventually want.
-export function exportBookmarksMarkdown(
-  bookmarks: readonly ReaderBookmark[],
-  sectionFor: (bookmark: ReaderBookmark) => BookmarkSectionRef | undefined,
-  origin = "",
-): string {
-  if (bookmarks.length === 0) {
-    return "# Bookmarks\n\nNo bookmarks saved.\n";
-  }
-
-  const lines: string[] = ["# Bookmarks", ""];
-  let lastTitle: string | null = null;
-
-  for (const bookmark of bookmarks) {
-    const section = sectionFor(bookmark);
-    const title = section?.title ?? bookmark.sectionId;
-    if (title !== lastTitle) {
-      lines.push(`## ${title}`, "");
-      lastTitle = title;
-    }
-    for (const line of bookmark.quote.split("\n")) {
-      lines.push(`> ${line}`);
-    }
-    lines.push("");
-    if (bookmark.note) {
-      lines.push(bookmark.note, "");
-    }
-    if (section) {
-      const href = bookmarkHref(bookmark, section);
-      lines.push(`[Open passage](${origin}${href})`, "");
-    }
-  }
-
-  return `${lines.join("\n").trimEnd()}\n`;
-}
-
 export function countWords(value: string): number {
   return value.trim().split(/\s+/).filter(Boolean).length;
 }

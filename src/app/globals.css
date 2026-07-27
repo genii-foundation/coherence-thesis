@@ -1658,11 +1658,26 @@ input {
   padding-bottom: 0.75rem;
 }
 
-.bookmarks-export {
-  margin-left: auto;
-  font-size: 0.78rem;
-  gap: 0.35rem;
-  padding: 0.3rem 0.6rem;
+/* Saving a bookmark shows a toast, which says it worked but not where it went.
+   The trigger pulses once so the reader can find the panel later. Inside a
+   no-preference query so it is opt-out by the platform setting, and the
+   reader's own animations setting neutralizes it further down. */
+@media (prefers-reduced-motion: no-preference) {
+  .bookmarks-menu-button.is-bookmark-saved {
+    animation: bookmark-saved-pulse 600ms ease-in-out 3;
+  }
+}
+
+@keyframes bookmark-saved-pulse {
+  0%,
+  100% {
+    background: transparent;
+    transform: scale(1);
+  }
+  50% {
+    background: var(--nav-hover-background);
+    transform: scale(1.18);
+  }
 }
 
 .bookmarks-stale-tag {

@@ -10,6 +10,7 @@ import {
   canAddBookmark,
   maxLiveBookmarks,
 } from "@/lib/reader-bookmarks";
+import { announceBookmarkSaved } from "@/lib/reader-bookmark-events";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import {
   appendStoredEvent,
@@ -111,6 +112,8 @@ export function ReaderSelectionBookmarkIsland({
     );
 
     showStatus("saved");
+    // Pulses the toolbar trigger. The toast says it saved; this says where.
+    announceBookmarkSaved();
     setAnchor(null);
     window.getSelection()?.removeAllRanges();
   }, [showStatus]);

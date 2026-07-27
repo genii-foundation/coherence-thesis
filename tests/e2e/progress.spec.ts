@@ -48,6 +48,13 @@ test("progress menu shows a resettable email sent confirmation", async ({
   await page.goto(wieldingSection.href);
   await page.getByRole("button", { name: /Progress/ }).click();
 
+  // Wait for the panel to finish opening before probing it. isVisible does not
+  // wait, so on a taller panel the height transition could still be running and
+  // the skip probe would read false for a build that has no sync configured,
+  // sending the test into assertions it was never meant to reach.
+  await expect(page.locator(".progress-popover")).toBeVisible();
+  await expect(page.getByText("Reading progress")).toBeVisible();
+
   if (
     await page
       .getByText("Sync is not configured for this build.")

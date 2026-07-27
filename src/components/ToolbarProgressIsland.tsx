@@ -16,11 +16,20 @@ import {
   Check,
   ChevronsRight,
   Cloud,
+  Download,
   KeyRound,
   LoaderCircle,
   RotateCcw,
   UserRound,
 } from "lucide-react";
+import {
+  buildReaderExport,
+  readerExportFileName,
+} from "@/lib/reader-export";
+import {
+  parseReaderPreferences,
+  readerPreferencesStorageKey,
+} from "@/lib/reader-preferences";
 import { ProgressCloudBadge } from "@/components/ProgressCloudBadge";
 import { ProgressReadAnimation } from "@/components/ProgressReadAnimation";
 import {
@@ -505,6 +514,34 @@ export function ToolbarProgressIsland() {
     return () => window.clearTimeout(timer);
   }, [bookmarks, consent.granted, progress, syncNow, user]);
 
+  // Lives here rather than in the bookmarks panel: this is the reader's own
+  // record of everything the site holds about them, which belongs with the
+  // account controls and not with one of the collections it contains.
+  const exportReaderData = useCallback(() => {
+    const markdown = buildReaderExport({
+      progress: readStoredProgress(),
+      bookmarks: readStoredBookmarks(),
+      events: readStoredEvents(),
+      consent: readStoredConsent(),
+      preferences: parseReaderPreferences(
+        window.localStorage.getItem(readerPreferencesStorageKey),
+      ),
+      sections: allSections,
+      signedIn: Boolean(user),
+      lastSyncedAt: readLastSyncedAt(),
+      generatedAt: Date.now(),
+      origin: window.location.origin,
+    });
+    const url = URL.createObjectURL(
+      new Blob([markdown], { type: "text/markdown" }),
+    );
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = readerExportFileName;
+    link.click();
+    URL.revokeObjectURL(url);
+  }, [allSections, user]);
+
   const percent = useMemo(
     () => readPercent(progress, allSections),
     [allSections, progress],
@@ -939,6 +976,23 @@ export function ToolbarProgressIsland() {
               </div>
             </div>
           )}
+          <div className="account-tools progress-section">
+            <p className="eyebrow">Account tools</p>
+            <div className="progress-link-list">
+              <button
+                type="button"
+                className="reader-menu-link"
+                onClick={exportReaderData}
+              >
+                <Download
+                  className="reader-menu-link-icon"
+                  aria-hidden="true"
+                  size={16}
+                />
+                <span>Export reading statistics and bookmarks</span>
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

@@ -2,12 +2,15 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Bookmark, Download, Search, Trash2 } from "lucide-react";
+import { Bookmark, Search, Trash2 } from "lucide-react";
 import { loadProgressSections, type ProgressSectionData } from "@/lib/reader-data";
+import {
+  bookmarkPulseMs,
+  readerBookmarkSavedEvent,
+} from "@/lib/reader-bookmark-events";
 import {
   bookmarkHref,
   bookmarkMatchesQuery,
-  exportBookmarksMarkdown,
   liveBookmarks,
   removeBookmark,
   resolveBookmarkAnchor,
@@ -48,6 +51,8 @@ export function ToolbarBookmarksIsland() {
   } = useToolbarMenu<HTMLDivElement>();
   const [query, setQuery] = useState("");
   const [editingNoteId, setEditingNoteId] = useState<string | null>(null);
+  const [justSaved, setJustSaved] = useState(false);
+  const pulseTimerRef = useRef<number | null>(null);
   const bookmarks = useReaderBookmarks();
   // Already fetched on every route by ToolbarProgressIsland, so this is a
   // memoized cache hit rather than a second download. It carries every
@@ -120,21 +125,29 @@ export function ToolbarBookmarksIsland() {
     );
   }, []);
 
-  const exportMarkdown = useCallback(() => {
-    const markdown = exportBookmarksMarkdown(
-      liveBookmarks(bookmarks),
-      (bookmark) => sectionsById.get(bookmark.sectionId),
-      window.location.origin,
-    );
-    const url = URL.createObjectURL(
-      new Blob([markdown], { type: "text/markdown" }),
-    );
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "coherence-thesis-bookmarks.md";
-    link.click();
-    URL.revokeObjectURL(url);
-  }, [bookmarks, sectionsById]);
+  // A toast tells the reader the bookmark saved. It does not tell them where
+  // the bookmark went, and the panel that holds it is an icon they have never
+  // opened. The trigger pulses once on save so the answer to "where did that
+  // go" is on screen at the moment they ask it.
+  useEffect(() => {
+    const onSaved = () => {
+      setJustSaved(true);
+      if (pulseTimerRef.current !== null) {
+        window.clearTimeout(pulseTimerRef.current);
+      }
+      pulseTimerRef.current = window.setTimeout(() => {
+        setJustSaved(false);
+        pulseTimerRef.current = null;
+      }, bookmarkPulseMs);
+    };
+    window.addEventListener(readerBookmarkSavedEvent, onSaved);
+    return () => {
+      window.removeEventListener(readerBookmarkSavedEvent, onSaved);
+      if (pulseTimerRef.current !== null) {
+        window.clearTimeout(pulseTimerRef.current);
+      }
+    };
+  }, []);
 
   const total = resolved.length;
 
@@ -143,7 +156,7 @@ export function ToolbarBookmarksIsland() {
       <button
         {...triggerProps}
         type="button"
-        className="bookmarks-menu-button"
+        className={`bookmarks-menu-button${justSaved ? " is-bookmark-saved" : ""}`}
         aria-label={
           total === 0
             ? "Bookmarks, none saved"
@@ -196,14 +209,6 @@ export function ToolbarBookmarksIsland() {
                     {staleCount.toLocaleString()} revised
                   </span>
                 )}
-                <button
-                  type="button"
-                  className="icon-button bookmarks-export"
-                  onClick={exportMarkdown}
-                >
-                  <Download aria-hidden="true" size={15} />
-                  <span>Export</span>
-                </button>
               </div>
             )}
             {visible.map((entry) => (
