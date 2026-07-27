@@ -2097,10 +2097,23 @@ a.bookmark-quote:focus-visible {
   width: min(22rem, calc(100vw - 2rem));
 }
 
+/* Carries its own surface, like .search-popover and .outline-popover above.
+   The popover base rule further up only supplies position, size, and the height
+   transition; the panels that hold a sticky filter row and their own scroller
+   fold the surface in here rather than borrowing a separate class. Without
+   overflow: hidden the content escapes the animated height, and without the
+   background the panel is simply transparent over the prose. */
 .bookmarks-popover {
   --toolbar-menu-max-height: min(40rem, calc(100svh - 7rem));
 
   width: min(24rem, calc(100vw - 2rem));
+  max-height: min(40rem, calc(100svh - 7rem));
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-background);
+  box-shadow: var(--shadow);
+  color: var(--ink);
 }
 
 .share-popover {

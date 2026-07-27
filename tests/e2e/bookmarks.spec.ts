@@ -408,3 +408,54 @@ test("bookmark highlights are off until the reader turns them on", async ({
     .poll(async () => (await highlightState()).painted)
     .toBeGreaterThan(0);
 });
+
+test("the bookmarks panel is an opaque surface that contains its content", async ({
+  page,
+  isMobile,
+}) => {
+  // This shipped broken once. The popover base rule supplies only position,
+  // size, and the height transition; the surface belongs to the panel's own
+  // class. Without it the panel was transparent and its content spilled over
+  // the prose, while every geometry assertion still passed.
+  await page.goto(firstSection.readerHref);
+  await page.getByRole("button", { name: /^Bookmarks, / }).click();
+
+  const panel = page.locator(".bookmarks-popover");
+  await expect(panel).toBeVisible();
+
+  const surface = await panel.evaluate((element) => {
+    const style = window.getComputedStyle(element);
+    const header = document.querySelector(".site-header");
+    return {
+      background: style.backgroundColor,
+      headerBackground: header
+        ? window.getComputedStyle(header).backgroundColor
+        : "",
+      overflowY: style.overflowY,
+      borderWidth: Number.parseFloat(style.borderTopWidth),
+      hasShadow: style.boxShadow !== "none",
+      height: element.getBoundingClientRect().height,
+    };
+  });
+
+  // Opaque means neither the keyword nor a zero-alpha colour. This is the part
+  // that was actually missing, and it holds at every width.
+  expect(surface.background).not.toBe("transparent");
+  expect(surface.background).not.toMatch(/rgba\(\s*0,\s*0,\s*0,\s*0\s*\)/);
+  // Either clips or scrolls, never lets content escape onto the prose.
+  // Deliberately not comparing the scroller's box to the panel's: the panel
+  // bounds by paint, and the inner scroller keeps its natural layout height,
+  // so a box comparison would fail on a correct panel.
+  expect(surface.overflowY).not.toBe("visible");
+  expect(surface.hasShadow).toBe(true);
+  expect(surface.height).toBeGreaterThan(0);
+
+  if (isMobile) {
+    // Below 860px the menu reads as the toolbar extending downward, so it takes
+    // the header's own colour and drops the border that would seam it.
+    expect(surface.background).toBe(surface.headerBackground);
+    expect(surface.borderWidth).toBe(0);
+  } else {
+    expect(surface.borderWidth).toBeGreaterThan(0);
+  }
+});
