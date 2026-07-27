@@ -174,12 +174,36 @@ test("removing a bookmark leaves a tombstone rather than deleting it", async ({
   hasTouch,
 }) => {
   await page.goto(firstSection.readerHref);
-  await selectWords(page, 5, hasTouch);
+  const selected = await selectWords(page, 5, hasTouch);
   await page.getByRole("button", { name: "Click to bookmark" }).click();
   await expect(page.getByText("Bookmark saved")).toBeVisible();
 
   await page.getByRole("button", { name: /^Bookmarks, / }).click();
-  await page.getByRole("button", { name: /^Remove bookmark:/ }).click();
+  const removeButton = page.getByRole("button", {
+    name: /^Remove bookmark:/,
+  });
+  await removeButton.click();
+
+  const confirmation = page.getByRole("dialog", {
+    name: "Delete this bookmark?",
+  });
+  await expect(confirmation).toBeVisible();
+  await expect(confirmation).toContainText(selected.trim());
+  await expect(
+    confirmation.getByRole("button", { name: "Cancel" }),
+  ).toBeFocused();
+  await expect(page.locator(".bookmark-row")).toHaveCount(1);
+
+  await confirmation.getByRole("button", { name: "Cancel" }).click();
+  await expect(confirmation).toHaveCount(0);
+  await expect(removeButton).toBeFocused();
+  await expect(page.locator(".bookmark-row")).toHaveCount(1);
+
+  await removeButton.click();
+  await page
+    .getByRole("dialog", { name: "Delete this bookmark?" })
+    .getByRole("button", { name: "Delete bookmark" })
+    .click();
 
   await expect(page.locator(".bookmark-row")).toHaveCount(0);
 
@@ -192,6 +216,122 @@ test("removing a bookmark leaves a tombstone rather than deleting it", async ({
   expect(entries).toHaveLength(1);
   expect(entries[0]!.removedAt).toEqual(expect.any(Number));
   expect(entries[0]!.quote).toBe("");
+});
+
+test("deleting all bookmarks requires typed confirmation", async ({ page }) => {
+  const section = {
+    sectionId: firstSection.sectionId,
+    contentHash: firstSection.contentHash,
+    continuityId: firstSection.continuityId,
+  };
+  const firstBookmark = addBookmark(
+    emptyBookmarks(),
+    {
+      section,
+      paragraphAnchor: firstSection.paragraphs[0]!.anchor,
+      quote: "the first passage saved for bulk deletion",
+      startOffset: 0,
+      endOffset: 41,
+    },
+    1_700_000_000_000,
+    "bulk-delete-1",
+  );
+  const seeded = addBookmark(
+    firstBookmark,
+    {
+      section,
+      paragraphAnchor: firstSection.paragraphs[1]!.anchor,
+      quote: "the second passage saved for bulk deletion",
+      startOffset: 0,
+      endOffset: 42,
+    },
+    1_700_000_000_001,
+    "bulk-delete-2",
+  );
+  await page.addInitScript(
+    ({ key, value }) => window.localStorage.setItem(key, value),
+    { key: readerBookmarksStorageKey, value: serializeBookmarks(seeded) },
+  );
+
+  await page.goto(firstSection.readerHref);
+  await page.getByRole("button", { name: /^Bookmarks, / }).click();
+  const deleteAll = page.getByRole("button", { name: "Delete all" });
+  await expect(deleteAll).toBeVisible();
+  await deleteAll.click();
+
+  const confirmation = page.getByRole("dialog", {
+    name: "Delete all bookmarks?",
+  });
+  const entry = confirmation.getByLabel("Type DELETE ALL to confirm");
+  const confirmButton = confirmation.getByRole("button", {
+    name: "Delete all bookmarks",
+  });
+  await expect(confirmation).toBeVisible();
+  await expect(confirmation).toContainText(
+    "This removes all 2 bookmarks and their notes.",
+  );
+  await expect(entry).toBeFocused();
+  await expect(confirmButton).toBeDisabled();
+
+  await entry.fill("DELETE");
+  await expect(confirmButton).toBeDisabled();
+  await entry.fill("DELETE ALL");
+  await expect(confirmButton).toBeEnabled();
+
+  const modalGeometry = await confirmation.evaluate((dialog) => {
+    const backdrop = dialog.parentElement;
+    const box = dialog.getBoundingClientRect();
+    return {
+      parentTag: backdrop?.parentElement?.tagName ?? "",
+      backdropPosition: backdrop
+        ? window.getComputedStyle(backdrop).position
+        : "",
+      top: box.top,
+      left: box.left,
+      right: box.right,
+      bottom: box.bottom,
+      viewportWidth: document.documentElement.clientWidth,
+      viewportHeight: document.documentElement.clientHeight,
+    };
+  });
+  expect(modalGeometry.parentTag).toBe("BODY");
+  expect(modalGeometry.backdropPosition).toBe("fixed");
+  expect(modalGeometry.top).toBeGreaterThanOrEqual(-1);
+  expect(modalGeometry.left).toBeGreaterThanOrEqual(-1);
+  expect(modalGeometry.right).toBeLessThanOrEqual(
+    modalGeometry.viewportWidth + 1,
+  );
+  expect(modalGeometry.bottom).toBeLessThanOrEqual(
+    modalGeometry.viewportHeight + 1,
+  );
+
+  await page.keyboard.press("Escape");
+  await expect(confirmation).toHaveCount(0);
+  await expect(deleteAll).toBeFocused();
+  await expect(page.locator(".bookmark-row")).toHaveCount(2);
+
+  await deleteAll.click();
+  const reopened = page.getByRole("dialog", {
+    name: "Delete all bookmarks?",
+  });
+  await reopened.getByLabel("Type DELETE ALL to confirm").fill("DELETE ALL");
+  await reopened.getByRole("button", { name: "Delete all bookmarks" }).click();
+
+  await expect(reopened).toHaveCount(0);
+  await expect(page.locator(".bookmark-row")).toHaveCount(0);
+  await expect(
+    page.getByText(/Select three or more words in the manuscript/),
+  ).toBeVisible();
+
+  const stored = await storedBookmarks(page);
+  const entries = Object.values(stored.bookmarks) as Array<
+    Record<string, unknown>
+  >;
+  expect(entries).toHaveLength(2);
+  for (const bookmark of entries) {
+    expect(bookmark.removedAt).toEqual(expect.any(Number));
+    expect(bookmark.quote).toBe("");
+  }
 });
 
 test("the empty panel explains how to make a bookmark", async ({ page }) => {
@@ -531,12 +671,17 @@ test("the bookmark count follows the bookmark list without a divider", async ({
 
   const layout = await scroll.evaluate((element) => {
     const summaryElement = element.querySelector(".bookmarks-summary");
+    const deleteAll = summaryElement?.querySelector(".bookmark-delete-all");
     const rows = [...element.querySelectorAll(".bookmark-row")];
     const summaryStyle = summaryElement
       ? window.getComputedStyle(summaryElement)
       : null;
+    const summaryBox = summaryElement?.getBoundingClientRect();
+    const deleteAllBox = deleteAll?.getBoundingClientRect();
     return {
       isLastElement: element.lastElementChild === summaryElement,
+      deleteAllIsLast: summaryElement?.lastElementChild === deleteAll,
+      deleteAllRightGap: (summaryBox?.right ?? 0) - (deleteAllBox?.right ?? 0),
       rowCount: rows.length,
       summaryTop: summaryElement?.getBoundingClientRect().top ?? 0,
       lastRowBottom: rows.at(-1)?.getBoundingClientRect().bottom ?? 0,
@@ -548,6 +693,8 @@ test("the bookmark count follows the bookmark list without a divider", async ({
 
   expect(layout.rowCount).toBeGreaterThan(0);
   expect(layout.isLastElement).toBe(true);
+  expect(layout.deleteAllIsLast).toBe(true);
+  expect(Math.abs(layout.deleteAllRightGap)).toBeLessThanOrEqual(1);
   expect(layout.summaryTop).toBeGreaterThanOrEqual(layout.lastRowBottom);
   expect(layout.borderBottomWidth).toBe(0);
 });
@@ -597,7 +744,7 @@ test("a full 1,000-bookmark collection remains a contained scroll surface", asyn
 
   const panel = page.locator(".bookmarks-popover");
   const scroll = panel.locator(".bookmarks-scroll");
-  await expect(scroll.locator(".bookmarks-summary")).toHaveText(
+  await expect(scroll.locator(".bookmarks-summary-count")).toHaveText(
     "1,000 bookmarks",
   );
   await expectMenuFitsViewport(page, ".bookmarks-popover", ".bookmarks-scroll");

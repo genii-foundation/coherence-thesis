@@ -1648,12 +1648,39 @@ input {
 .bookmarks-summary {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
   flex-wrap: wrap;
+  width: 100%;
   color: var(--ink-muted);
   font-family: var(--font-ui);
   font-size: 0.78rem;
   font-weight: 700;
+}
+
+.bookmarks-summary-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.bookmark-delete-all {
+  flex: 0 0 auto;
+  margin-inline-start: auto;
+  border: 0;
+  border-radius: calc(var(--radius) - 1px);
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.35rem 0.45rem;
+}
+
+.bookmark-delete-all:hover,
+.bookmark-delete-all:focus-visible {
+  background: var(--nav-hover-background);
+  color: var(--ink);
 }
 
 /* The bookmark control answers two questions with one gesture: a single turn
@@ -1845,6 +1872,114 @@ a.bookmark-quote:focus-visible {
 .bookmark-remove {
   flex: 0 0 auto;
   padding: 0.3rem 0.45rem;
+}
+
+.bookmark-delete-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 170;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(19, 27, 34, 0.28);
+  overscroll-behavior: contain;
+}
+
+.bookmark-delete-modal {
+  --toolbar-control-size: 3rem;
+
+  display: grid;
+  gap: 0.9rem;
+  width: min(30rem, 100%);
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid rgba(119, 84, 42, 0.28);
+  border-radius: var(--radius);
+  background: var(--panel-background);
+  box-shadow: 0 1.2rem 3rem rgba(19, 27, 34, 0.22);
+  color: var(--ink);
+  padding: 1.1rem;
+}
+
+.bookmark-delete-modal > svg {
+  color: var(--bronze-deep);
+}
+
+.bookmark-delete-modal-copy {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.bookmark-delete-modal-copy h2,
+.bookmark-delete-modal-copy p,
+.bookmark-delete-modal-copy blockquote {
+  margin: 0;
+}
+
+.bookmark-delete-modal-copy h2 {
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+
+.bookmark-delete-modal-copy p {
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.bookmark-delete-modal-copy blockquote {
+  display: -webkit-box;
+  overflow: hidden;
+  border-inline-start: 2px solid var(--line);
+  color: var(--ink);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  padding-inline-start: 0.75rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.bookmark-delete-modal-field {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+}
+
+.bookmark-delete-modal-field input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) - 1px);
+  background: var(--field-background);
+  color: var(--ink);
+  font: inherit;
+  padding: 0.55rem 0.65rem;
+}
+
+.bookmark-delete-modal-field input:hover,
+.bookmark-delete-modal-field input:focus-visible {
+  border-color: rgba(119, 84, 42, 0.34);
+  background: var(--field-background-hover);
+  box-shadow: inset 0 0 0 1px rgba(119, 84, 42, 0.1);
+}
+
+.bookmark-delete-modal-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.6rem;
+}
+
+.bookmark-delete-modal-actions .secondary-link,
+.bookmark-delete-modal-actions .icon-button {
+  width: 100%;
+}
+
+.bookmark-confirm-delete:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .search-results {
