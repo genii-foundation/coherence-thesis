@@ -695,13 +695,11 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
     toolbarMetrics.settingsLeft,
   );
   expect(toolbarMetrics.settingsLeft).toBeLessThan(toolbarMetrics.shareLeft);
-  expect(toolbarMetrics.shareLeft).toBeLessThan(toolbarMetrics.audioLeft);
-  expect(toolbarMetrics.audioLeft).toBeLessThan(toolbarMetrics.progressLeft);
+  expect(toolbarMetrics.shareLeft).toBeLessThan(toolbarMetrics.progressLeft);
+  expect(toolbarMetrics.progressLeft).toBeLessThan(toolbarMetrics.audioLeft);
   if (layout.clientWidth <= 860) {
     const toolbarRightGap =
-      layout.clientWidth -
-      toolbarMetrics.progressLeft -
-      toolbarMetrics.progressWidth;
+      layout.clientWidth - toolbarMetrics.audioLeft - toolbarMetrics.audioWidth;
     expect(toolbarRightGap).toBeLessThanOrEqual(layout.headerPaddingRight + 2);
   }
   if (layout.clientWidth <= 540) {
@@ -1222,12 +1220,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectRestingControlBorder(page, ".voice-field select");
   await expect(audioMenu.getByText("Voice", { exact: true })).toBeVisible();
   await expect(audioMenu.getByText("Speed", { exact: true })).toBeVisible();
-  await expect(
-    audioMenu.locator("optgroup[label='High quality voices']"),
-  ).toHaveCount(1);
-  await expect(
-    audioMenu.locator("optgroup[label='System voices']"),
-  ).toHaveCount(1);
+  await expect(audioMenu.locator("optgroup")).toHaveCount(0);
   const voiceSelect = audioMenu.getByRole("combobox", { name: "Voice" });
   const speedSlider = audioMenu.getByRole("slider", { name: "Speed" });
   const resetVoice = audioMenu.getByRole("button", { name: "Reset voice" });
@@ -1235,13 +1228,17 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(resetVoice).toBeDisabled();
   await expect(resetSpeed).toBeDisabled();
   const highQualityOption = audioMenu.locator("option", {
-    hasText: "High Quality 1",
+    hasText: "Calm Male Narrator",
   });
   await expect(highQualityOption).toHaveCount(1);
   await expect(
     audioMenu.locator("option", { hasText: "System voice" }),
   ).toHaveCount(1);
   await expect(audioMenu.locator("option", { hasText: "Albert" })).toHaveCount(0);
+  await expect(voiceSelect.locator("option")).toHaveText([
+    "Calm Male Narrator",
+    "System voice",
+  ]);
   await expect(audioMenu.getByText("Offline playback")).toBeVisible();
   await voiceSelect.selectOption("");
   await expect(resetVoice).toBeEnabled();
@@ -2073,8 +2070,8 @@ test("toolbar brand owns the active manuscript identity", async ({
       const brandBox = document
         .querySelector(".site-header > .brand-mark")
         ?.getBoundingClientRect();
-      const progressBox = document
-        .querySelector(".progress-menu-button")
+      const audioBox = document
+        .querySelector(".audio-menu-button")
         ?.getBoundingClientRect();
       const headerStyle = window.getComputedStyle(
         document.querySelector(".site-header")!,
@@ -2082,7 +2079,7 @@ test("toolbar brand owns the active manuscript identity", async ({
 
       return {
         brandWidth: brandBox?.width ?? 0,
-        progressRight: progressBox?.right ?? 0,
+        audioRight: audioBox?.right ?? 0,
         viewportWidth: document.documentElement.clientWidth,
         headerPaddingRight: Number.parseFloat(headerStyle.paddingRight),
         scrollWidth: document.documentElement.scrollWidth,
@@ -2094,7 +2091,7 @@ test("toolbar brand owns the active manuscript identity", async ({
       narrowToolbarMetrics.viewportWidth + 1,
     );
     expect(
-      narrowToolbarMetrics.viewportWidth - narrowToolbarMetrics.progressRight,
+      narrowToolbarMetrics.viewportWidth - narrowToolbarMetrics.audioRight,
     ).toBeLessThanOrEqual(narrowToolbarMetrics.headerPaddingRight + 2);
     await expect(page.locator(".mobile-page-brand")).toBeHidden();
     await brand.locator(".brand-home-link").click();

@@ -718,7 +718,7 @@ test("audio voice selection exposes one built-in system option", async ({ page }
 
   const voiceSelect = page.getByRole("combobox", { name: "Voice" });
   await expect(voiceSelect).toHaveValue(highQualityVoicePreferenceId);
-  await expect(voiceSelect.locator("option", { hasText: "High Quality 1" }))
+  await expect(voiceSelect.locator("option", { hasText: "Calm Male Narrator" }))
     .toHaveCount(1);
   await expect(voiceSelect.locator("option", { hasText: "System voice" }))
     .toHaveCount(1);

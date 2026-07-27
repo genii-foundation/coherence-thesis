@@ -30,7 +30,7 @@ describe("audio voice menu", () => {
     expect(groups.system).toEqual([{ id: "", label: "System voice" }]);
   });
 
-  it("places hosted clip voices above system voices", () => {
+  it("places the calm male narrator above the system voice", () => {
     const groups = audioVoiceMenuGroups({
       manifest: {
         version: 1,
@@ -67,7 +67,7 @@ describe("audio voice menu", () => {
     expect(groups.highQuality).toEqual([
       {
         id: "clip:default",
-        label: "High Quality 1",
+        label: "Calm Male Narrator",
       },
     ]);
     expect(groups.system).toEqual([{ id: "", label: "System voice" }]);
@@ -83,7 +83,7 @@ describe("audio voice menu", () => {
     expect(groups.highQuality).toEqual([
       {
         id: "clip:default",
-        label: "High Quality 1 (clips pending)",
+        label: "Calm Male Narrator (clips pending)",
         disabled: true,
       },
     ]);
@@ -127,11 +127,61 @@ describe("audio voice menu", () => {
     expect(groups.highQuality).toEqual([
       {
         id: "clip:default",
-        label: "High Quality 1 (clips pending)",
+        label: "Calm Male Narrator (clips pending)",
         disabled: true,
       },
     ]);
     expect(selectableVoiceIds(groups).has("clip:default")).toBe(false);
+  });
+
+  it("exposes only the first hosted narrator and the system voice", () => {
+    const sections = [
+      {
+        sectionId: "section-one",
+        audioVersionId: "section-one-current",
+      },
+    ];
+    const manifest = {
+      version: 1 as const,
+      voices: [
+        {
+          id: "default",
+          label: "First narrator",
+          sections: [
+            {
+              sectionId: "section-one",
+              audioVersionId: "section-one-current",
+              href: "/audio/section-one-default.mp3",
+            },
+          ],
+        },
+        {
+          id: "alternate",
+          label: "Second narrator",
+          sections: [
+            {
+              sectionId: "section-one",
+              audioVersionId: "section-one-current",
+              href: "/audio/section-one-alternate.mp3",
+            },
+          ],
+        },
+      ],
+    };
+
+    const groups = audioVoiceMenuGroups({
+      manifest,
+      sections,
+      voices: [
+        { id: clipVoicePreferenceId("default"), label: "First narrator" },
+        { id: clipVoicePreferenceId("alternate"), label: "Second narrator" },
+      ],
+    });
+
+    expect([...groups.highQuality, ...groups.system]).toEqual([
+      { id: "clip:default", label: "Calm Male Narrator" },
+      { id: "", label: "System voice" },
+    ]);
   });
 
   it("preserves a pending hosted preference and adopts the first published narrator", () => {

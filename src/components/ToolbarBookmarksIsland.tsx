@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { createPortal } from "react-dom";
 import { Bookmark, Search, Trash2 } from "lucide-react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import {
@@ -39,6 +40,15 @@ import { useLoadedData } from "@/lib/use-loaded-data";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 
 const emptySections: ProgressSectionData[] = [];
+const deleteAllConfirmationText = "DELETE ALL";
+const modalFocusableSelector = [
+  "a[href]",
+  "button:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  '[tabindex]:not([tabindex="-1"])',
+].join(",");
 
 type ResolvedBookmark = {
   bookmark: ReaderBookmark;
@@ -49,6 +59,9 @@ type ResolvedBookmark = {
   // enough to place a passage across nine volumes with repeating structure.
   trail: string[];
 };
+
+type PendingBookmarkDeletion =
+  { kind: "single"; bookmark: ReaderBookmark } | { kind: "all" };
 
 const emptyOutline: ToolbarOutlineData = {
   home: { title: "", href: "/" },
@@ -67,6 +80,11 @@ export function ToolbarBookmarksIsland() {
   const pathname = usePathname();
   const searchRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const deleteModalRef = useRef<HTMLDivElement>(null);
+  const deleteCancelRef = useRef<HTMLButtonElement>(null);
+  const deleteAllInputRef = useRef<HTMLInputElement>(null);
+  const deleteTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const deleteModalOpenRef = useRef(false);
   const {
     open,
     rendered,
@@ -75,9 +93,15 @@ export function ToolbarBookmarksIsland() {
     containerRef,
     triggerProps,
     popoverProps,
-  } = useToolbarMenu<HTMLDivElement>();
+  } = useToolbarMenu<HTMLDivElement>({
+    floatingRefs: [deleteModalRef],
+    onEscape: () => !deleteModalOpenRef.current,
+  });
   const [query, setQuery] = useState("");
   const [editingNoteId, setEditingNoteId] = useState<string | null>(null);
+  const [pendingDeletion, setPendingDeletion] =
+    useState<PendingBookmarkDeletion | null>(null);
+  const [deleteAllEntry, setDeleteAllEntry] = useState("");
   const [turn, setTurn] = useState<{
     state: "offered" | "saved";
     id: number;
@@ -212,7 +236,7 @@ export function ToolbarBookmarksIsland() {
     return () => window.clearTimeout(focusTimer);
   }, [open]);
 
-  const remove = useCallback((bookmark: ReaderBookmark) => {
+  const commitRemove = useCallback((bookmark: ReaderBookmark) => {
     updateStoredBookmarks((current) => removeBookmark(current, bookmark.id));
     appendStoredEvent(
       createEngagementEvent("bookmark_removed", {
@@ -222,6 +246,126 @@ export function ToolbarBookmarksIsland() {
       }),
     );
   }, []);
+
+  const closeDeleteModal = useCallback(
+    (focusTarget: "trigger" | "search" = "trigger") => {
+      deleteModalOpenRef.current = false;
+      setPendingDeletion(null);
+      setDeleteAllEntry("");
+      window.setTimeout(() => {
+        if (focusTarget === "search") searchRef.current?.focus();
+        else deleteTriggerRef.current?.focus();
+      }, 0);
+    },
+    [],
+  );
+
+  const requestSingleDelete = useCallback(
+    (bookmark: ReaderBookmark, trigger: HTMLButtonElement) => {
+      deleteTriggerRef.current = trigger;
+      deleteModalOpenRef.current = true;
+      setDeleteAllEntry("");
+      setPendingDeletion({ kind: "single", bookmark });
+    },
+    [],
+  );
+
+  const requestDeleteAll = useCallback((trigger: HTMLButtonElement) => {
+    deleteTriggerRef.current = trigger;
+    deleteModalOpenRef.current = true;
+    setDeleteAllEntry("");
+    setPendingDeletion({ kind: "all" });
+  }, []);
+
+  const confirmDeletion = useCallback(() => {
+    if (!pendingDeletion) return;
+    if (pendingDeletion.kind === "single") {
+      commitRemove(pendingDeletion.bookmark);
+      closeDeleteModal("search");
+      return;
+    }
+    if (deleteAllEntry !== deleteAllConfirmationText) return;
+
+    const targets = liveBookmarks(bookmarks);
+    const removedAt = Date.now();
+    updateStoredBookmarks((current) =>
+      targets.reduce(
+        (next, bookmark) => removeBookmark(next, bookmark.id, removedAt),
+        current,
+      ),
+    );
+    appendStoredEvent(
+      createEngagementEvent("bookmark_removed", {
+        route: window.location.pathname,
+        payload: { bulk: true, count: targets.length },
+      }),
+    );
+    setQuery("");
+    setEditingNoteId(null);
+    closeDeleteModal("search");
+  }, [
+    bookmarks,
+    closeDeleteModal,
+    commitRemove,
+    deleteAllEntry,
+    pendingDeletion,
+  ]);
+
+  useEffect(() => {
+    if (!pendingDeletion) return;
+    const modalBackdrop = deleteModalRef.current;
+    const siteShell = document.querySelector<HTMLElement>(".site-shell");
+    const siteShellWasInert = siteShell?.inert ?? false;
+    const rootOverflow = document.documentElement.style.overflow;
+    const bodyOverflow = document.body.style.overflow;
+
+    if (siteShell) siteShell.inert = true;
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+
+    function handleModalKeys(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeDeleteModal();
+        return;
+      }
+      if (event.key !== "Tab" || !modalBackdrop) return;
+      const focusableElements = Array.from(
+        modalBackdrop.querySelectorAll<HTMLElement>(modalFocusableSelector),
+      ).filter((element) => element.getClientRects().length > 0);
+      const first = focusableElements[0];
+      const last = focusableElements.at(-1);
+      if (!first || !last) return;
+
+      const activeElement = document.activeElement;
+      if (
+        event.shiftKey &&
+        (activeElement === first || !modalBackdrop.contains(activeElement))
+      ) {
+        event.preventDefault();
+        last.focus();
+      } else if (
+        !event.shiftKey &&
+        (activeElement === last || !modalBackdrop.contains(activeElement))
+      ) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleModalKeys);
+    const focusTimer = window.setTimeout(() => {
+      if (pendingDeletion.kind === "all") deleteAllInputRef.current?.focus();
+      else deleteCancelRef.current?.focus();
+    }, 0);
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.removeEventListener("keydown", handleModalKeys);
+      if (siteShell) siteShell.inert = siteShellWasInert;
+      document.documentElement.style.overflow = rootOverflow;
+      document.body.style.overflow = bodyOverflow;
+    };
+  }, [closeDeleteModal, pendingDeletion]);
 
   // The control answers two different questions with the same gesture.
   //
@@ -413,7 +557,12 @@ export function ToolbarBookmarksIsland() {
                               type="button"
                               className="icon-button bookmark-remove"
                               aria-label={`Remove bookmark: ${entry.bookmark.quote.slice(0, 60)}`}
-                              onClick={() => remove(entry.bookmark)}
+                              onClick={(event) =>
+                                requestSingleDelete(
+                                  entry.bookmark,
+                                  event.currentTarget,
+                                )
+                              }
                             >
                               <Trash2 aria-hidden="true" size={15} />
                             </button>
@@ -427,20 +576,110 @@ export function ToolbarBookmarksIsland() {
             )}
             {total > 0 && (
               <div className="bookmarks-summary">
-                <span>
-                  {total.toLocaleString()}{" "}
-                  {total === 1 ? "bookmark" : "bookmarks"}
-                </span>
-                {staleCount > 0 && (
-                  <span className="bookmarks-stale-tag">
-                    {staleCount.toLocaleString()} revised
+                <span className="bookmarks-summary-count">
+                  <span>
+                    {total.toLocaleString()}{" "}
+                    {total === 1 ? "bookmark" : "bookmarks"}
                   </span>
-                )}
+                  {staleCount > 0 && (
+                    <span className="bookmarks-stale-tag">
+                      {staleCount.toLocaleString()} revised
+                    </span>
+                  )}
+                </span>
+                <button
+                  type="button"
+                  className="bookmark-delete-all"
+                  onClick={(event) => requestDeleteAll(event.currentTarget)}
+                >
+                  Delete all
+                </button>
               </div>
             )}
           </div>
         </section>
       )}
+      {pendingDeletion && typeof document !== "undefined"
+        ? createPortal(
+            <div
+              ref={deleteModalRef}
+              className="bookmark-delete-modal-backdrop"
+              onPointerDown={(event) => {
+                if (event.target === event.currentTarget) closeDeleteModal();
+              }}
+            >
+              <div
+                className="bookmark-delete-modal"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="bookmark-delete-modal-title"
+                aria-describedby="bookmark-delete-modal-description"
+              >
+                <Trash2 aria-hidden="true" size={20} />
+                <div className="bookmark-delete-modal-copy">
+                  <h2 id="bookmark-delete-modal-title">
+                    {pendingDeletion.kind === "single"
+                      ? "Delete this bookmark?"
+                      : "Delete all bookmarks?"}
+                  </h2>
+                  <p id="bookmark-delete-modal-description">
+                    {pendingDeletion.kind === "single"
+                      ? "This removes the saved passage and its note. If cloud sync is connected, the deletion will also sync to your account and other devices."
+                      : `This removes all ${total.toLocaleString()} bookmarks and their notes. If cloud sync is connected, the deletions will also sync to your account and other devices.`}
+                  </p>
+                  {pendingDeletion.kind === "single" && (
+                    <blockquote>{pendingDeletion.bookmark.quote}</blockquote>
+                  )}
+                </div>
+                {pendingDeletion.kind === "all" && (
+                  <label className="bookmark-delete-modal-field">
+                    <span>
+                      Type <strong>{deleteAllConfirmationText}</strong> to
+                      confirm
+                    </span>
+                    <input
+                      ref={deleteAllInputRef}
+                      type="text"
+                      value={deleteAllEntry}
+                      onChange={(event) =>
+                        setDeleteAllEntry(event.target.value)
+                      }
+                      autoComplete="off"
+                      spellCheck={false}
+                    />
+                  </label>
+                )}
+                <div className="bookmark-delete-modal-actions">
+                  <button
+                    ref={deleteCancelRef}
+                    type="button"
+                    className="secondary-link"
+                    onClick={() => closeDeleteModal()}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    className="icon-button bookmark-confirm-delete"
+                    disabled={
+                      pendingDeletion.kind === "all" &&
+                      deleteAllEntry !== deleteAllConfirmationText
+                    }
+                    onClick={confirmDeletion}
+                  >
+                    <Trash2 aria-hidden="true" size={17} />
+                    <span>
+                      {pendingDeletion.kind === "single"
+                        ? "Delete bookmark"
+                        : "Delete all bookmarks"}
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
     </div>
   );
 }
