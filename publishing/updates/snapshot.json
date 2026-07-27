@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "4d7cbd82d1b4daeb8ce46bb1150c2198c847bfc8",
+  "headSha": "e51e570f3d7d74d1164daf6ea2703e9bf6e79313",
   "commits": [
+    {
+      "sha": "e51e570f3d7d74d1164daf6ea2703e9bf6e79313",
+      "committedAt": "2026-07-27T20:38:25.000Z",
+      "subject": "fix: keep word tooltip in scroll layout (#158)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/e51e570f3d7d74d1164daf6ea2703e9bf6e79313",
+      "filesChanged": 5,
+      "additions": 91,
+      "deletions": 203,
+      "isLiterary": false
+    },
     {
       "sha": "4d7cbd82d1b4daeb8ce46bb1150c2198c847bfc8",
       "committedAt": "2026-07-27T19:25:28.000Z",
