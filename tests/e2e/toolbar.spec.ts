@@ -129,6 +129,100 @@ async function expectRestingControlBorder(
   expect(border.color).not.toBe("transparent");
 }
 
+// The mobile menu is meant to read as the toolbar itself extending downward,
+// which only holds if the rendered pixels either side of the join are the same
+// colour. Computed styles cannot prove that: the seam this guards against came
+// from the menu's blurred shadow painting upward over the toolbar, which no
+// declaration on either surface reports.
+async function expectMenuJoinsToolbarWithoutSeam(
+  page: Page,
+  popoverSelector: string,
+): Promise<void> {
+  const geometry = await page.evaluate((selector) => {
+    const header = document.querySelector(".site-header");
+    const popover = document.querySelector(selector);
+    if (!header || !popover) return null;
+
+    const headerBox = header.getBoundingClientRect();
+    const popoverBox = popover.getBoundingClientRect();
+    return {
+      headerBottom: headerBox.bottom,
+      popoverTop: popoverBox.top,
+      popoverLeft: popoverBox.left,
+      popoverRight: popoverBox.right,
+      surface: window.getComputedStyle(header).backgroundColor,
+    };
+  }, popoverSelector);
+
+  expect(geometry).not.toBeNull();
+  if (!geometry) return;
+
+  const expectedSurface = geometry.surface
+    .match(/[\d.]+/g)
+    ?.slice(0, 3)
+    .map(Number) as [number, number, number] | undefined;
+  expect(expectedSurface).toHaveLength(3);
+  if (!expectedSurface) return;
+
+  const screenshot = await page.screenshot({ animations: "disabled" });
+  const rendered = await sharp(screenshot)
+    .removeAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+  const viewportWidth = page.viewportSize()?.width ?? 393;
+  const pixelScale = rendered.info.width / viewportWidth;
+  const sampleCssRegion = (rect: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  }) =>
+    samplePixelRegion(rendered.data, rendered.info.width, rendered.info.channels, {
+      x: rect.x * pixelScale,
+      y: rect.y * pixelScale,
+      width: rect.width * pixelScale,
+      height: rect.height * pixelScale,
+    });
+
+  // Toolbar controls stop well above the header's bottom padding, so these rows
+  // are bare toolbar. They run to the join, including the strip that covers the
+  // header's bottom border across the menu's width.
+  const sampleWidth = geometry.popoverRight - geometry.popoverLeft - 16;
+  const toolbarBand = sampleCssRegion({
+    x: geometry.popoverLeft + 8,
+    y: geometry.headerBottom - 5,
+    width: sampleWidth,
+    height: 5,
+  });
+  // The menu's own first rows, past the join and inside its padding.
+  const menuBand = sampleCssRegion({
+    x: geometry.popoverLeft + 8,
+    y: geometry.popoverTop + 1,
+    width: sampleWidth,
+    height: 4,
+  });
+
+  const distanceFromSurface = (sample: PixelRegionSample) =>
+    Math.max(
+      ...sample.mean.map((channel, index) =>
+        Math.abs(channel - expectedSurface[index]!),
+      ),
+    );
+
+  expect(distanceFromSurface(toolbarBand)).toBeLessThanOrEqual(1.5);
+  expect(distanceFromSurface(menuBand)).toBeLessThanOrEqual(1.5);
+  expect(
+    Math.max(
+      ...toolbarBand.mean.map((channel, index) =>
+        Math.abs(channel - menuBand.mean[index]!),
+      ),
+    ),
+  ).toBeLessThanOrEqual(1);
+  // A shadow washing over the toolbar shades it unevenly even when its mean
+  // still lands near the surface colour.
+  expect(toolbarBand.luminanceDeviation).toBeLessThanOrEqual(1.5);
+}
+
 async function expectMobilePopoverStartsBelowToolbar(
   page: Page,
   triggerSelector: string,
@@ -1186,7 +1280,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectMenuFitsViewport(page, ".progress-popover");
 });
 
-test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
+test("mobile toolbar popovers open flush below the toolbar", async ({ page }) => {
   await page.setViewportSize({ width: 810, height: 520 });
   await page.addInitScript(() => {
     Object.defineProperty(window, "speechSynthesis", {
@@ -1213,6 +1307,7 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
     ".search-menu-button",
     ".search-popover",
   );
+  await expectMenuJoinsToolbarWithoutSeam(page, ".search-popover");
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: /Outline/ }).click();
@@ -1222,6 +1317,7 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
     ".outline-menu-button",
     ".outline-popover",
   );
+  await expectMenuJoinsToolbarWithoutSeam(page, ".outline-popover");
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: "Reader settings" }).click();
@@ -1231,6 +1327,7 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
     ".settings-menu-button",
     ".settings-popover",
   );
+  await expectMenuJoinsToolbarWithoutSeam(page, ".settings-popover");
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: "Share and downloads" }).click();
@@ -1242,6 +1339,7 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
     ".share-menu-button",
     ".share-popover",
   );
+  await expectMenuJoinsToolbarWithoutSeam(page, ".share-popover");
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: /Listen/ }).click();
@@ -1251,6 +1349,7 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
     ".audio-menu-button",
     ".audio-popover",
   );
+  await expectMenuJoinsToolbarWithoutSeam(page, ".audio-popover");
   await page.getByRole("button", { name: "Pause audiobook" }).click();
   await expect(page.getByLabel("Audiobook controls")).toBeVisible();
   await expect(page.getByRole("button", { name: /Listen/ })).toBeVisible();
@@ -1263,6 +1362,7 @@ test("mobile toolbar popovers open below the toolbar", async ({ page }) => {
     ".progress-menu-button",
     ".progress-popover",
   );
+  await expectMenuJoinsToolbarWithoutSeam(page, ".progress-popover");
 });
 
 test("audio playback shows an immediate loading state before media starts", async ({
