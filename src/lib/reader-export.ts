@@ -40,6 +40,7 @@ export type ReaderExportInput = {
 };
 
 export const readerExportFileName = "coherence-thesis-reader-data.md";
+export const readerExportFormatVersion = 1;
 
 const numberFormat = new Intl.NumberFormat("en-US");
 
@@ -150,7 +151,14 @@ function bookmarkLines(input: ReaderExportInput): string[] {
     }
     for (const line of bookmark.quote.split("\n")) lines.push(`> ${line}`);
     lines.push("");
-    if (bookmark.note) lines.push(bookmark.note, "");
+    if (bookmark.note) {
+      lines.push("Note:", "");
+      // Notes are reader-controlled Markdown-shaped text. Keeping every line
+      // inside a block quote prevents a note such as "## Reading activity"
+      // from forging a structural heading in the exported report.
+      for (const line of bookmark.note.split("\n")) lines.push(`> ${line}`);
+      lines.push("");
+    }
     lines.push(`Saved ${formatDate(bookmark.createdAt)}.`);
     if (section) {
       lines.push(
@@ -215,17 +223,21 @@ function eventLines(events: readonly ReaderEngagementEvent[]): string[] {
 function syncLines(input: ReaderExportInput): string[] {
   if (!input.signedIn) {
     return [
-      "This reader is not signed in. Everything above is stored only in this browser and has never left this device.",
+      "This browser is not currently signed in. This report was generated from data stored locally in this browser.",
+      "The browser cannot determine whether a previous signed-in session synchronized any of this data.",
     ];
   }
   const granted = input.consent?.granted === true;
   return [
     granted
-      ? "Signed in, with syncing turned on. Reading progress and bookmarks are copied to your account so they follow you between devices."
-      : "Signed in, with syncing turned off. Everything above is stored only in this browser.",
+      ? "Signed in, with syncing turned on. Reading progress and bookmarks are eligible to be copied to your account."
+      : "Signed in, with syncing turned off. This report was generated from data stored locally in this browser.",
     input.lastSyncedAt
       ? `Last synced ${formatDate(input.lastSyncedAt)}.`
       : "Never synced.",
+    granted
+      ? "A successful sync time reports the last completed synchronization from this browser."
+      : "Data synchronized by an earlier session may remain in the account until the reader deletes it.",
   ];
 }
 
@@ -250,8 +262,9 @@ export function buildReaderExport(input: ReaderExportInput): string {
     "# Your Coherence Thesis reader data",
     "",
     `Exported ${formatDate(input.generatedAt)}.`,
+    `Export format version: ${readerExportFormatVersion}.`,
     "",
-    "This is everything the reader has recorded about you: what you have read, what you saved, and what this browser stored along the way.",
+    "This readable report summarizes the reader data currently stored by this browser: reading progress, saved passages and notes, activity counts, reader settings, and synchronization status.",
     "",
     "## Summary",
     "",
@@ -260,6 +273,7 @@ export function buildReaderExport(input: ReaderExportInput): string {
     "## Bookmarks",
     "",
     ...bookmarkLines(input),
+    "",
     "## Reading activity",
     "",
     ...activityLines(rows),

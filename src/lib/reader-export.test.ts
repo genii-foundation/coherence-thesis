@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import type { ProgressSection } from "./manuscript-data";
-import { buildReaderExport, formatDuration } from "./reader-export";
+import {
+  buildReaderExport,
+  formatDuration,
+  readerExportFormatVersion,
+} from "./reader-export";
 import type { ReaderBookmark, ReaderBookmarksState } from "./reader-bookmarks";
 import { defaultReaderPreferences } from "./reader-preferences";
 import { emptyProgress, type ReaderProgressState } from "./reader-state";
@@ -91,6 +95,9 @@ describe("reader data export", () => {
     });
 
     expect(markdown).toContain("# Your Coherence Thesis reader data");
+    expect(markdown).toContain(
+      `Export format version: ${readerExportFormatVersion}.`,
+    );
     expect(markdown).toContain("Sections opened: 1 of 1");
     expect(markdown).toContain("Sections finished: 1");
     expect(markdown).toContain("Bookmarks saved: 1");
@@ -106,16 +113,23 @@ describe("reader data export", () => {
     expect(markdown.endsWith("\n")).toBe(true);
   });
 
-  it("states plainly that nothing left the device when signed out", () => {
+  it("describes current local storage without inventing sync history", () => {
     const markdown = buildReaderExport({
       ...base,
       progress: emptyProgress(),
       bookmarks: stateWith([]),
     });
 
-    expect(markdown).toContain("has never left this device");
+    expect(markdown).toContain("not currently signed in");
+    expect(markdown).toContain(
+      "cannot determine whether a previous signed-in session synchronized",
+    );
+    expect(markdown).not.toContain("has never left this device");
     expect(markdown).toContain("No bookmarks saved.");
     expect(markdown).toContain("No reading activity recorded yet.");
+    expect(markdown).toContain(
+      "\nNo bookmarks saved.\n\n## Reading activity",
+    );
   });
 
   it("reports syncing when the reader is signed in and consented", () => {
@@ -134,7 +148,32 @@ describe("reader data export", () => {
     });
 
     expect(markdown).toContain("syncing turned on");
+    expect(markdown).toContain("eligible to be copied");
     expect(markdown).toContain("Last synced");
+    expect(markdown).toContain(
+      "last completed synchronization from this browser",
+    );
+  });
+
+  it("does not claim revoked data disappeared from the account", () => {
+    const markdown = buildReaderExport({
+      ...base,
+      progress: progressWith(),
+      bookmarks: stateWith([]),
+      signedIn: true,
+      consent: {
+        version: 1,
+        copyVersion: "cv",
+        granted: false,
+        grantedAt: generatedAt - 10_000,
+        revokedAt: generatedAt,
+      },
+      lastSyncedAt: generatedAt - 5_000,
+    });
+
+    expect(markdown).toContain("syncing turned off");
+    expect(markdown).toContain("Data synchronized by an earlier session");
+    expect(markdown).not.toContain("stored only in this browser");
   });
 
   it("omits tombstoned bookmarks", () => {
@@ -212,6 +251,68 @@ describe("reader data export", () => {
 
     expect(markdown).toContain("## Your settings");
     expect(markdown).toContain("- Theme: dark");
+  });
+
+  it("keeps the production report sections ordered and unambiguous", () => {
+    const markdown = buildReaderExport({
+      ...base,
+      progress: progressWith(),
+      bookmarks: stateWith([
+        bookmark({
+          note: [
+            "Return to this before the next chapter.",
+            "## Reading activity",
+          ].join("\n"),
+        }),
+      ]),
+      preferences: { ...defaultReaderPreferences, theme: "dark" },
+    });
+
+    expect(markdown.match(/^## .+$/gm)).toEqual([
+      "## Summary",
+      "## Bookmarks",
+      "## Reading activity",
+      "## Activity records",
+      "## Your settings",
+      "## Where this is stored",
+    ]);
+    expect(markdown).toContain(
+      [
+        "Note:",
+        "",
+        "> Return to this before the next chapter.",
+        "> ## Reading activity",
+      ].join("\n"),
+    );
+    expect(markdown.match(/^## Reading activity$/gm)).toHaveLength(1);
+  });
+
+  it("exports every live bookmark at the supported 1,000 item limit", () => {
+    const bookmarks = Array.from({ length: 1_000 }, (_, index) =>
+      bookmark({
+        id: `bookmark-${index + 1}`,
+        quote: `Saved passage ${index + 1}`,
+        note: `Reader note ${index + 1}`,
+        createdAt: generatedAt - index,
+        updatedAt: generatedAt - index,
+      }),
+    );
+    const markdown = buildReaderExport({
+      ...base,
+      progress: progressWith(),
+      bookmarks: stateWith(bookmarks),
+      origin: "https://coherence-thesis.com",
+    });
+
+    expect(markdown).toContain("Bookmarks saved: 1,000");
+    expect(markdown).toContain("> Saved passage 1");
+    expect(markdown).toContain("> Reader note 1");
+    expect(markdown).toContain("> Saved passage 1000");
+    expect(markdown).toContain("> Reader note 1000");
+    expect(markdown.match(/^Saved .+ UTC\.$/gm)).toHaveLength(1_000);
+    expect(markdown.match(/^\[Open passage\]\(.+\)$/gm)).toHaveLength(1_000);
+    expect(markdown).not.toContain("undefined");
+    expect(markdown).not.toContain("[object Object]");
   });
 });
 

@@ -727,18 +727,27 @@ test("extending a selection does not re-offer on every change", async ({
   expect(offers).toBeLessThanOrEqual(1);
 });
 
-test("account tools export everything the reader has accumulated", async ({
+test("account tools export the production reader report contract", async ({
   page,
   hasTouch,
 }) => {
   await page.goto(firstSection.readerHref);
-  await selectWords(page, 5, hasTouch);
+  const selectedQuote = await selectWords(page, 5, hasTouch);
   await page.getByRole("button", { name: "Click to bookmark" }).click();
   await expect(page.getByText("Bookmark saved")).toBeVisible();
 
   // Export belongs with the account controls, not inside the bookmarks panel.
   await page.getByRole("button", { name: /^Bookmarks, / }).click();
   await expect(page.locator(".bookmarks-export")).toHaveCount(0);
+  await page.getByRole("button", { name: "Add a note" }).click();
+  const note = [
+    "Review this before continuing.",
+    "## Reading activity",
+  ].join("\n");
+  const noteField = page.getByRole("textbox", { name: "Bookmark note" });
+  await noteField.fill(note);
+  await noteField.press("Tab");
+  await expect(noteField).toHaveCount(0);
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: /^Progress/ }).click();
@@ -755,12 +764,34 @@ test("account tools export everything the reader has accumulated", async ({
   const markdown = Buffer.concat(chunks).toString("utf8");
 
   expect(markdown).toContain("# Your Coherence Thesis reader data");
+  expect(markdown).toContain("Export format version: 1.");
   expect(markdown).toContain("## Summary");
   expect(markdown).toContain("Bookmarks saved: 1");
+  expect(markdown).toContain(selectedQuote.trim());
+  expect(markdown).toContain(
+    [
+      "Note:",
+      "",
+      "> Review this before continuing.",
+      "> ## Reading activity",
+    ].join("\n"),
+  );
   expect(markdown).toContain("## Reading activity");
   expect(markdown).toContain("## Activity records");
   expect(markdown).toContain("## Your settings");
   // The reader is owed a plain answer about where their data lives.
   expect(markdown).toContain("## Where this is stored");
+  expect(markdown).toContain("not currently signed in");
+  expect(markdown).toContain(
+    "cannot determine whether a previous signed-in session synchronized",
+  );
   expect(markdown).toContain(firstSection.title);
+  expect(markdown.match(/^## .+$/gm)).toEqual([
+    "## Summary",
+    "## Bookmarks",
+    "## Reading activity",
+    "## Activity records",
+    "## Your settings",
+    "## Where this is stored",
+  ]);
 });
