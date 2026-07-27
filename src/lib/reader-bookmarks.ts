@@ -19,19 +19,18 @@ export const readerBookmarksSchemaVersion = 1;
 //
 // Worst case per bookmark, serialized: 400 quote + 280 note + 80 context
 // + 36 uuid (twice, since the id is also the record key) + 16 section hash
-// + 22 anchor + the numeric fields and JSON key names, which comes to roughly
-// 1,220 bytes. 150 of those is about 183 KB, which fits the 512 KB constraint
-// with room for tombstones and for a merge that briefly holds both devices'
-// records. An earlier draft said 500 fits 256 KB; that was wrong by 2.3x.
+// + 22 anchor + the numeric fields and JSON key names. A measured set of 1,000
+// maximum-size records is about 1.1 MB. The 4 MB remote budget also contains a
+// temporary merge of two disjoint 1,000-record replicas plus tombstones.
 export const maxBookmarkQuoteLength = 400;
 export const maxBookmarkNoteLength = 280;
 export const maxBookmarkContextLength = 40;
-export const maxLiveBookmarks = 150;
+export const maxLiveBookmarks = 1_000;
 
 // Must stay at or below the reader_bookmarks_size CHECK constraint in the
 // migration. Checked before upload so an oversized blob surfaces as a message
 // rather than a rejected write with no recovery path.
-export const maxRemoteBookmarksBytes = 524288;
+export const maxRemoteBookmarksBytes = 4 * 1024 * 1024;
 
 // A removed bookmark is kept as a tombstone so other devices learn about the
 // deletion instead of resurrecting the record. After this window every device

@@ -30,15 +30,16 @@ create trigger reader_bookmarks_set_updated_at
 before update on public.reader_bookmarks
 for each row execute function public.set_updated_at();
 
--- 512 KB. The client caps 150 live bookmarks at a 400 character quote and a 280
--- character note, which is roughly 183 KB worst case; the headroom covers
--- tombstones and a merge that briefly holds both devices' records. Bound it in
--- the database too, because a self-registered account can reach this table with
--- the public anon key and the client cap is not a security boundary.
+-- 4 MB. The client caps 1,000 live bookmarks at a 400 character quote and a 280
+-- character note. A measured maximum-size set is about 1.1 MB; this bound also
+-- contains a temporary merge of two disjoint 1,000-record replicas plus
+-- tombstones. Keep a database bound because a self-registered account can reach
+-- this table with the public anon key and the client cap is not a security
+-- boundary.
 alter table public.reader_bookmarks
   drop constraint if exists reader_bookmarks_size,
   add constraint reader_bookmarks_size
-    check (pg_column_size(bookmarks) <= 524288);
+    check (pg_column_size(bookmarks) <= 4194304);
 
 -- RLS is not trusted alone: the Data API needs explicit privileges when
 -- automatic table exposure is disabled. Anonymous readers stay out entirely.

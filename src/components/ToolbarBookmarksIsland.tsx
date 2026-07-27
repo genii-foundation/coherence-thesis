@@ -308,19 +308,6 @@ export function ToolbarBookmarksIsland() {
                 No bookmarks match that filter.
               </p>
             )}
-            {total > 0 && (
-              <div className="bookmarks-summary">
-                <span>
-                  {total.toLocaleString()}{" "}
-                  {total === 1 ? "bookmark" : "bookmarks"}
-                </span>
-                {staleCount > 0 && (
-                  <span className="bookmarks-stale-tag">
-                    {staleCount.toLocaleString()} revised
-                  </span>
-                )}
-              </div>
-            )}
             {visible.map((entry) => (
               <article key={entry.bookmark.id} className="bookmark-row">
                 {entry.href ? (
@@ -388,6 +375,19 @@ export function ToolbarBookmarksIsland() {
                 )}
               </article>
             ))}
+            {total > 0 && (
+              <div className="bookmarks-summary">
+                <span>
+                  {total.toLocaleString()}{" "}
+                  {total === 1 ? "bookmark" : "bookmarks"}
+                </span>
+                {staleCount > 0 && (
+                  <span className="bookmarks-stale-tag">
+                    {staleCount.toLocaleString()} revised
+                  </span>
+                )}
+              </div>
+            )}
           </div>
         </section>
       )}

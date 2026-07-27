@@ -4,6 +4,8 @@ import {
   readerBookmarksStorageKey,
   serializeBookmarks,
   addBookmark,
+  maxLiveBookmarks,
+  type ReaderBookmarksState,
 } from "../../src/lib/reader-bookmarks";
 import { expectMenuFitsViewport, firstSection } from "./fixtures";
 
@@ -469,6 +471,124 @@ test("the bookmarks panel is an opaque surface that contains its content", async
   } else {
     expect(surface.borderWidth).toBeGreaterThan(0);
   }
+});
+
+test("the bookmark count follows the bookmark list without a divider", async ({
+  page,
+}) => {
+  const seeded = addBookmark(
+    emptyBookmarks(),
+    {
+      section: {
+        sectionId: firstSection.sectionId,
+        contentHash: firstSection.contentHash,
+        continuityId: firstSection.continuityId,
+      },
+      paragraphAnchor: firstSection.paragraphs[0]!.anchor,
+      quote: "a passage saved to verify the bookmark count",
+      startOffset: 0,
+      endOffset: 46,
+    },
+    1_700_000_000_000,
+    "count-placement-1",
+  );
+  await page.addInitScript(
+    ({ key, value }) => window.localStorage.setItem(key, value),
+    { key: readerBookmarksStorageKey, value: serializeBookmarks(seeded) },
+  );
+  await page.goto(firstSection.readerHref);
+  await page.getByRole("button", { name: /^Bookmarks, / }).click();
+
+  const scroll = page.locator(".bookmarks-scroll");
+  const summary = scroll.locator(".bookmarks-summary");
+  await expect(summary).toBeVisible();
+
+  const layout = await scroll.evaluate((element) => {
+    const summaryElement = element.querySelector(".bookmarks-summary");
+    const rows = [...element.querySelectorAll(".bookmark-row")];
+    const summaryStyle = summaryElement
+      ? window.getComputedStyle(summaryElement)
+      : null;
+    return {
+      isLastElement: element.lastElementChild === summaryElement,
+      rowCount: rows.length,
+      summaryTop: summaryElement?.getBoundingClientRect().top ?? 0,
+      lastRowBottom: rows.at(-1)?.getBoundingClientRect().bottom ?? 0,
+      borderBottomWidth: Number.parseFloat(
+        summaryStyle?.borderBottomWidth ?? "0",
+      ),
+    };
+  });
+
+  expect(layout.rowCount).toBeGreaterThan(0);
+  expect(layout.isLastElement).toBe(true);
+  expect(layout.summaryTop).toBeGreaterThanOrEqual(layout.lastRowBottom);
+  expect(layout.borderBottomWidth).toBe(0);
+});
+
+test("a full 1,000-bookmark collection remains a contained scroll surface", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(isMobile, "The desktop run protects the collection-size contract.");
+
+  const records: ReaderBookmarksState["bookmarks"] = Object.create(null);
+  const now = 1_700_000_000_000;
+  for (let index = 0; index < maxLiveBookmarks; index += 1) {
+    const id = `stress-${index}`;
+    const paragraph =
+      firstSection.paragraphs[index % firstSection.paragraphs.length]!;
+    const quote = `Sample passage ${index + 1} preserves enough manuscript context to make a full bookmark collection representative.`;
+    records[id] = {
+      id,
+      progressKey: firstSection.continuityId || firstSection.sectionId,
+      sectionId: firstSection.sectionId,
+      paragraphAnchor: paragraph.anchor,
+      paragraphContentHash: paragraph.contentHash,
+      quote,
+      quoteOrdinal: 0,
+      prefix: "",
+      suffix: "",
+      startOffset: 0,
+      endOffset: quote.length,
+      sectionContentHash: firstSection.contentHash,
+      createdAt: now - index,
+      updatedAt: now - index,
+    };
+  }
+
+  await page.addInitScript(
+    ({ key, value }) => window.localStorage.setItem(key, value),
+    {
+      key: readerBookmarksStorageKey,
+      value: serializeBookmarks({ bookmarks: records }),
+    },
+  );
+  await page.goto(firstSection.readerHref);
+  await page
+    .getByRole("button", { name: "Bookmarks, 1,000 saved" })
+    .click();
+
+  const panel = page.locator(".bookmarks-popover");
+  const scroll = panel.locator(".bookmarks-scroll");
+  await expect(panel.locator(".bookmark-row")).toHaveCount(maxLiveBookmarks);
+  await expect(scroll.locator(".bookmarks-summary")).toHaveText(
+    "1,000 bookmarks",
+  );
+  await expectMenuFitsViewport(page, ".bookmarks-popover", ".bookmarks-scroll");
+
+  const containment = await scroll.evaluate((element) => {
+    const row = element.querySelector(".bookmark-row");
+    const summary = element.querySelector(".bookmarks-summary");
+    return {
+      contentVisibility: row
+        ? window.getComputedStyle(row).contentVisibility
+        : "",
+      summaryIsLast: element.lastElementChild === summary,
+    };
+  });
+  expect(containment.contentVisibility).toBe("auto");
+  expect(containment.summaryIsLast).toBe(true);
 });
 
 test("the toolbar control turns for an offer and again for a save", async ({

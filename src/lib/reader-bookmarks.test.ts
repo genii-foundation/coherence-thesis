@@ -22,6 +22,7 @@ import {
   maxBookmarkNoteLength,
   maxBookmarkQuoteLength,
   maxLiveBookmarks,
+  maxRemoteBookmarksBytes,
   mergeBookmarkStates,
   minimumBookmarkWords,
   paragraphHashFromAnchor,
@@ -796,6 +797,10 @@ describe("bookmark search matching", () => {
 // Regression coverage for the eight defects an adversarial review found in the
 // first draft of this module. Each block names the failure it prevents.
 describe("hardening against untrusted timestamps and keys", () => {
+  it("allows 1,000 live bookmarks", () => {
+    expect(maxLiveBookmarks).toBe(1_000);
+  });
+
   it("clamps a future createdAt and updatedAt to now", () => {
     const year2100 = 4_102_444_800_000;
     const now = 1_770_000_000_000;
@@ -896,6 +901,26 @@ describe("hardening against untrusted timestamps and keys", () => {
     );
     expect(liveBookmarkCount(full)).toBe(maxLiveBookmarks);
     expect(bookmarksFitRemoteBudget(full)).toBe(true);
+  });
+
+  it("keeps a two-device maximum-size merge inside the remote budget", () => {
+    const replica = (prefix: string) =>
+      stateOf(
+        ...Array.from({ length: maxLiveBookmarks }, (_unused, index) =>
+          makeBookmark({
+            id: `${prefix}-${index}-${"x".repeat(20)}`,
+            quote: "q".repeat(maxBookmarkQuoteLength),
+            note: "n".repeat(maxBookmarkNoteLength),
+            prefix: "p".repeat(maxBookmarkContextLength),
+            suffix: "s".repeat(maxBookmarkContextLength),
+          }),
+        ),
+      );
+    const merged = mergeBookmarkStates(replica("local"), replica("remote"));
+
+    expect(maxRemoteBookmarksBytes).toBe(4 * 1024 * 1024);
+    expect(liveBookmarkCount(merged)).toBe(maxLiveBookmarks * 2);
+    expect(bookmarksFitRemoteBudget(merged)).toBe(true);
   });
 
   it("canAddBookmark reports the refusal that addBookmark expresses by identity", () => {

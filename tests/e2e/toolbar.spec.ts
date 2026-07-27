@@ -302,11 +302,8 @@ async function expectToolbarTriggerRounded(
     .toBe(true);
 }
 
-// Desktop popovers hang from the toolbar's bottom edge, not from the trigger's.
-// Anchoring per trigger looks identical until two controls differ in height,
-// and audio and progress sit in 4rem wrappers against 3rem for the rest, which
-// put their menus 5px below their neighbours' for the same gesture. Measuring
-// the header makes the alignment a property of the toolbar.
+// Desktop popovers hang from the button that opened them. This matters because
+// audio and progress deliberately use taller wrappers than the other controls.
 async function expectDesktopPopoverStartsAtTriggerBottom(
   page: Page,
   triggerSelector: string,
@@ -316,15 +313,15 @@ async function expectDesktopPopoverStartsAtTriggerBottom(
   await expect
     .poll(async () =>
       page.evaluate(
-        ({ popoverSelector }) => {
+        ({ popoverSelector, triggerSelector }) => {
           const popover = document
             .querySelector(popoverSelector)
             ?.getBoundingClientRect();
-          const header = document
-            .querySelector(".site-header")
+          const trigger = document
+            .querySelector(triggerSelector)
             ?.getBoundingClientRect();
-          if (!popover || !header) return Number.POSITIVE_INFINITY;
-          return Math.abs(popover.top - header.bottom);
+          if (!popover || !trigger) return Number.POSITIVE_INFINITY;
+          return Math.abs(popover.top - trigger.bottom);
         },
         { popoverSelector, triggerSelector },
       ),
