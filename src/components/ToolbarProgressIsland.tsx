@@ -74,11 +74,11 @@ import {
   getCurrentUser,
   isReaderSyncConfigured,
   loadRemoteReaderState,
+  mergeRemoteBookmarks,
   onAuthStateChange,
   sendMagicLink,
   signOutReader,
   uploadRemoteEvents,
-  upsertRemoteBookmarks,
   upsertRemoteConsent,
   upsertRemoteProgress,
   verifyEmailOtp,
@@ -457,8 +457,8 @@ export function ToolbarProgressIsland() {
           );
         }
         const bookmarksResult = remoteBookmarksSchemaAheadRef.current
-          ? { error: null }
-          : await upsertRemoteBookmarks(user.id, currentBookmarks);
+          ? { data: null, error: null }
+          : await mergeRemoteBookmarks(currentBookmarks);
         const consentResult = await upsertRemoteConsent(user.id, activeConsent);
         const primaryError =
           progressResult.error ??
@@ -466,6 +466,24 @@ export function ToolbarProgressIsland() {
           consentResult.error ??
           null;
         if (primaryError) throw primaryError;
+
+        if (bookmarksResult.data) {
+          const mergedRemote = bookmarksResult.data;
+          if (mergedRemote.schemaVersion > readerBookmarksSchemaVersion) {
+            remoteBookmarksSchemaAheadRef.current = true;
+            throw new Error(
+              "Your bookmarks were saved by a newer version of the reader.",
+            );
+          }
+          updateStoredBookmarks(
+            (current) =>
+              reconcileRemoteBookmarks(
+                current,
+                mergedRemote.bookmarks,
+                mergedRemote.schemaVersion,
+              ) ?? current,
+          );
+        }
 
         const eventResult = await uploadRemoteEvents(user.id, pendingEvents);
         if (eventResult.uploadedIds.length > 0) {

@@ -19,7 +19,7 @@ import {
   loadRemoteReaderState,
   sendMagicLink,
   uploadRemoteEvents,
-  upsertRemoteBookmarks,
+  mergeRemoteBookmarks,
   verifyEmailOtp,
 } from "./reader-sync";
 
@@ -27,15 +27,20 @@ function makeClient(options: {
   progressRow?: unknown;
   bookmarksRow?: unknown;
   consentRow?: unknown;
+  rpcRow?: unknown;
+  rpcError?: Error | null;
   upsertError?: Error | null;
 }) {
   const {
     progressRow = null,
     bookmarksRow = null,
     consentRow = null,
+    rpcRow = null,
+    rpcError = null,
     upsertError = null,
   } = options;
   const upserts: Array<{ table: string; rows: unknown }> = [];
+  const rpcCalls: Array<{ functionName: string; args: unknown }> = [];
   const rowFor = (table: string) => {
     if (table === "reader_progress") return progressRow;
     if (table === "reader_bookmarks") return bookmarksRow;
@@ -53,7 +58,16 @@ function makeClient(options: {
       return { error: upsertError };
     },
   });
-  return { client: { from: builder }, upserts };
+  const rpc = (functionName: string, args: unknown) => {
+    rpcCalls.push({ functionName, args });
+    return {
+      single: async () => ({
+        data: rpcRow,
+        error: rpcError,
+      }),
+    };
+  };
+  return { client: { from: builder, rpc }, rpcCalls, upserts };
 }
 
 describe("reader sync auth", () => {
@@ -285,20 +299,54 @@ describe("remote bookmarks", () => {
     expect(remote.progress).toBeNull();
   });
 
-  it("upserts the blob on the user id with the current schema version", async () => {
-    const { client, upserts } = makeClient({});
+  it("atomically merges through the authenticated RPC", async () => {
+    const merged = {
+      bookmarks: {
+        bookmarks: {
+          b1: bookmark(),
+          b2: bookmark({ id: "b2", quote: "from another device" }),
+        },
+      },
+      schema_version: readerBookmarksSchemaVersion,
+    };
+    const { client, rpcCalls } = makeClient({ rpcRow: merged });
     mocks.createBrowserSupabaseClient.mockReturnValue(client);
 
-    await upsertRemoteBookmarks("u1", {
+    const result = await mergeRemoteBookmarks({
       bookmarks: { b1: bookmark() as never },
     });
 
-    expect(upserts).toHaveLength(1);
-    expect(upserts[0]!.table).toBe("reader_bookmarks");
-    expect(upserts[0]!.rows).toMatchObject({
-      user_id: "u1",
-      schema_version: readerBookmarksSchemaVersion,
+    expect(rpcCalls).toEqual([
+      {
+        functionName: "merge_reader_bookmarks",
+        args: {
+          incoming_bookmarks: {
+            bookmarks: { b1: bookmark() },
+          },
+          incoming_schema_version: readerBookmarksSchemaVersion,
+        },
+      },
+    ]);
+    expect(result.error).toBeNull();
+    expect(Object.keys(result.data?.bookmarks.bookmarks ?? {})).toEqual([
+      "b1",
+      "b2",
+    ]);
+    expect(result.data?.schemaVersion).toBe(readerBookmarksSchemaVersion);
+  });
+
+  it("surfaces an atomic merge failure without returning stale data", async () => {
+    const { client } = makeClient({
+      rpcError: new Error("merge failed"),
     });
+    mocks.createBrowserSupabaseClient.mockReturnValue(client);
+
+    const result = await mergeRemoteBookmarks({
+      bookmarks: { b1: bookmark() as never },
+    });
+
+    expect(result.data).toBeNull();
+    expect(result.error).toBeInstanceOf(Error);
   });
 
   it("deletes the bookmarks row alongside the rest of the reader data", async () => {

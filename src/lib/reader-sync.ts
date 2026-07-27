@@ -20,6 +20,11 @@ import { createBrowserSupabaseClient } from "./supabase/browser";
 
 export type ReaderSyncClient = ReturnType<typeof createBrowserSupabaseClient>;
 
+type MergedBookmarksRow = {
+  bookmarks?: unknown;
+  schema_version?: unknown;
+};
+
 export type ReaderRemoteState = {
   progress: ReaderProgressState | null;
   // Schema version the remote progress row was written with, or null when there
@@ -177,21 +182,37 @@ export async function upsertRemoteProgress(
   );
 }
 
-export async function upsertRemoteBookmarks(
-  userId: string,
+export async function mergeRemoteBookmarks(
   bookmarks: ReaderBookmarksState,
 ) {
   const supabase = createBrowserSupabaseClient();
-  if (!supabase) return { error: new Error("Sync is not configured.") };
+  if (!supabase) {
+    return {
+      data: null,
+      error: new Error("Sync is not configured."),
+    };
+  }
 
-  return supabase.from("reader_bookmarks").upsert(
-    {
-      user_id: userId,
-      bookmarks,
-      schema_version: readerBookmarksSchemaVersion,
+  const { data, error } = await supabase
+    .rpc("merge_reader_bookmarks", {
+      incoming_bookmarks: bookmarks,
+      incoming_schema_version: readerBookmarksSchemaVersion,
+    })
+    .single();
+
+  if (error || !data) return { data: null, error };
+  const merged = data as MergedBookmarksRow;
+
+  return {
+    data: {
+      bookmarks: sanitizeBookmarks(merged.bookmarks),
+      schemaVersion:
+        typeof merged.schema_version === "number"
+          ? merged.schema_version
+          : readerBookmarksSchemaVersion,
     },
-    { onConflict: "user_id" },
-  );
+    error: null,
+  };
 }
 
 export async function upsertRemoteConsent(
