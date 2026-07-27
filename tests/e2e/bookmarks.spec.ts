@@ -301,7 +301,9 @@ test("the reading map marks and counts cells that hold a bookmark", async ({
   expect(geometry.label).toContain("bookmarked");
 });
 
-test("search lifts a section that holds a bookmark", async ({ page }) => {
+test("search prioritizes bookmarked passages and bookmark notes", async ({
+  page,
+}) => {
   const query = "coherence";
 
   const resultHrefs = async () => {
@@ -351,6 +353,7 @@ test("search lifts a section that holds a bookmark", async ({ page }) => {
         startOffset: 0,
         endOffset: 9,
         sectionContentHash: section.contentHash,
+        note: "private retrieval phrase",
         createdAt: now,
         updatedAt: now,
       };
@@ -369,6 +372,15 @@ test("search lifts a section that holds a bookmark", async ({ page }) => {
 
   expect(after.indexOf(target)).toBeGreaterThanOrEqual(0);
   expect(after.indexOf(target)).toBeLessThan(before.indexOf(target));
+
+  const input = page.getByPlaceholder("Search all manuscripts");
+  await input.fill("private retrieval phrase");
+  const noteResults = page.locator(".search-result");
+  await expect(noteResults.first()).toBeVisible();
+  await expect(noteResults.first()).toHaveAttribute("href", target);
+  await expect(
+    noteResults.first().locator(".search-result-snippet"),
+  ).toContainText("Bookmark note: private retrieval phrase");
 });
 
 test("bookmark highlights are off until the reader turns them on", async ({
@@ -571,24 +583,37 @@ test("a full 1,000-bookmark collection remains a contained scroll surface", asyn
 
   const panel = page.locator(".bookmarks-popover");
   const scroll = panel.locator(".bookmarks-scroll");
-  await expect(panel.locator(".bookmark-row")).toHaveCount(maxLiveBookmarks);
   await expect(scroll.locator(".bookmarks-summary")).toHaveText(
     "1,000 bookmarks",
   );
   await expectMenuFitsViewport(page, ".bookmarks-popover", ".bookmarks-scroll");
 
-  const containment = await scroll.evaluate((element) => {
-    const row = element.querySelector(".bookmark-row");
+  const virtualization = await scroll.evaluate((element) => {
+    const rows = element.querySelectorAll(".bookmark-row");
+    const virtualList = element.querySelector(".bookmarks-virtual-list");
+    const virtualRow = element.querySelector(".bookmark-virtual-row");
     const summary = element.querySelector(".bookmarks-summary");
     return {
-      contentVisibility: row
-        ? window.getComputedStyle(row).contentVisibility
+      renderedRowCount: rows.length,
+      totalHeight: virtualList?.getBoundingClientRect().height ?? 0,
+      virtualRowPosition: virtualRow
+        ? window.getComputedStyle(virtualRow).position
         : "",
       summaryIsLast: element.lastElementChild === summary,
     };
   });
-  expect(containment.contentVisibility).toBe("auto");
-  expect(containment.summaryIsLast).toBe(true);
+  expect(virtualization.renderedRowCount).toBeGreaterThan(0);
+  expect(virtualization.renderedRowCount).toBeLessThan(maxLiveBookmarks / 10);
+  expect(virtualization.totalHeight).toBeGreaterThan(100_000);
+  expect(virtualization.virtualRowPosition).toBe("absolute");
+  expect(virtualization.summaryIsLast).toBe(true);
+
+  await scroll.evaluate((element) => {
+    element.scrollTop = element.scrollHeight;
+  });
+  await expect(
+    panel.getByText("Sample passage 1000", { exact: false }),
+  ).toBeVisible();
 });
 
 test("the toolbar control turns for an offer and again for a save", async ({

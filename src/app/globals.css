@@ -1735,16 +1735,23 @@ input {
 .bookmark-row {
   display: grid;
   gap: 0.45rem;
-  /* A reader can keep 1,000 bookmarks. Preserve one continuous scroll surface
-     while letting the browser skip layout and paint for rows far outside the
-     menu viewport. The intrinsic block size keeps the scrollbar stable until
-     each row's real height is known. */
-  content-visibility: auto;
-  contain-intrinsic-block-size: auto 9.5rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--item-background);
   padding: 0.75rem;
+}
+
+.bookmarks-virtual-list {
+  position: relative;
+  width: 100%;
+}
+
+.bookmark-virtual-row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 0.9rem;
 }
 
 /* Quotes clamp to two lines in the jump menu. A saved passage can run to 400

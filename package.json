@@ -124,6 +124,7 @@
     "@radix-ui/react-tooltip": "^1.2.12",
     "@supabase/ssr": "^0.12.0",
     "@supabase/supabase-js": "^2.110.0",
+    "@tanstack/react-virtual": "3.14.8",
     "lucide-react": "^1.21.0",
     "next": "16.2.9",
     "react": "19.2.4",

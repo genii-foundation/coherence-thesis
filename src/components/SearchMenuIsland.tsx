@@ -77,46 +77,93 @@ const bookmarkedSectionScore = 6;
 // measured in normalized characters, which is roughly a long paragraph.
 const nearBookmarkDistance = 600;
 
-// Offsets of each bookmarked quote within the folded section body, keyed by
-// section. Computed once per bookmark change rather than per keystroke: the
-// scorer runs over all 551 entries on every character typed, and that path was
-// already a measured problem.
-type BookmarkOffsets = ReadonlyMap<string, number[]>;
+type BookmarkSearchHit = {
+  offset: number;
+  quote: string;
+  quoteNorm: string;
+  note?: string;
+  noteNorm: string;
+};
 
-function bookmarkOffsetsFor(
+// Searchable bookmark text and the quote's corpus offset, keyed by section.
+// Computed once per bookmark change rather than per keystroke: the scorer runs
+// over all 551 entries on every character typed, and that path was already a
+// measured problem.
+type BookmarkSearchData = ReadonlyMap<string, BookmarkSearchHit[]>;
+
+function bookmarkSearchDataFor(
   bookmarks: ReturnType<typeof useReaderBookmarks>,
   index: NormalizedEntry[],
-): BookmarkOffsets {
-  const offsets = new Map<string, number[]>();
-  if (index.length === 0) return offsets;
+): BookmarkSearchData {
+  const hits = new Map<string, BookmarkSearchHit[]>();
+  if (index.length === 0) return hits;
   const bodyBySection = new Map(index.map((entry) => [entry.sectionId, entry.bodyNorm]));
 
   for (const bookmark of liveBookmarks(bookmarks)) {
     const body = bodyBySection.get(bookmark.sectionId);
     if (body === undefined) continue;
-    const existing = offsets.get(bookmark.sectionId) ?? [];
+    const existing = hits.get(bookmark.sectionId) ?? [];
+    const quoteNorm = foldSearchText(bookmark.quote);
     // The quote and the body are folded the same way, so this offset is in the
     // identical coordinate space the match offset below is measured in. That is
     // what makes "near" exact rather than a guess, with no payload growth.
-    const at = body.indexOf(foldSearchText(bookmark.quote));
-    existing.push(at >= 0 ? at : -1);
-    offsets.set(bookmark.sectionId, existing);
+    const at = body.indexOf(quoteNorm);
+    existing.push({
+      offset: at >= 0 ? at : -1,
+      quote: bookmark.quote,
+      quoteNorm,
+      ...(bookmark.note ? { note: bookmark.note } : {}),
+      noteNorm: foldSearchText(bookmark.note ?? ""),
+    });
+    hits.set(bookmark.sectionId, existing);
   }
-  return offsets;
+  return hits;
+}
+
+function bestBookmarkMatch(
+  hits: BookmarkSearchHit[] | undefined,
+  terms: string[],
+  phrase: string,
+): { score: number; snippet: string } | null {
+  let best: { score: number; snippet: string } | null = null;
+
+  for (const hit of hits ?? []) {
+    const bookmarkText = `${hit.quoteNorm} ${hit.noteNorm}`;
+    if (!terms.every((term) => bookmarkText.includes(term))) continue;
+
+    let score = 0;
+    if (hit.quoteNorm.includes(phrase)) score += 90;
+    if (hit.noteNorm.includes(phrase)) score += 100;
+    for (const term of terms) {
+      if (hit.quoteNorm.includes(term)) score += 22;
+      if (hit.noteNorm.includes(term)) score += 24;
+    }
+
+    const noteMatches = terms.some((term) => hit.noteNorm.includes(term));
+    const snippet = noteMatches
+      ? `Bookmark note: ${resultSnippet(hit.note ?? "", terms)}`
+      : `Bookmarked passage: ${resultSnippet(hit.quote, terms)}`;
+    if (!best || score > best.score) best = { score, snippet };
+  }
+
+  return best;
 }
 
 function scoreEntry(
   entry: NormalizedEntry,
   terms: string[],
   phrase: string,
-  bookmarkOffsets: BookmarkOffsets,
+  bookmarkSearchData: BookmarkSearchData,
 ): SearchResult | null {
   if (terms.length === 0) return null;
   const titleText = entry.titleNorm;
   const hierarchyText = entry.hierarchyNorm;
   const bodyText = entry.bodyNorm;
   const haystack = `${titleText} ${hierarchyText} ${bodyText}`;
-  if (!terms.every((term) => haystack.includes(term))) return null;
+  const manuscriptMatches = terms.every((term) => haystack.includes(term));
+  const bookmarkHits = bookmarkSearchData.get(entry.sectionId);
+  const bookmarkMatch = bestBookmarkMatch(bookmarkHits, terms, phrase);
+  if (!manuscriptMatches && !bookmarkMatch) return null;
 
   let score = 0;
   if (titleText.includes(phrase)) score += 120;
@@ -129,21 +176,23 @@ function scoreEntry(
     if (bodyText.includes(term)) score += 4;
   }
 
-  const offsets = bookmarkOffsets.get(entry.sectionId);
-  if (offsets) {
+  if (bookmarkHits && manuscriptMatches) {
     const matchAt = firstTermIndex(bodyText, terms);
     const near =
       matchAt >= 0 &&
-      offsets.some(
-        (at) => at >= 0 && Math.abs(at - matchAt) <= nearBookmarkDistance,
+      bookmarkHits.some(
+        (hit) =>
+          hit.offset >= 0 &&
+          Math.abs(hit.offset - matchAt) <= nearBookmarkDistance,
       );
     score += near ? nearBookmarkScore : bookmarkedSectionScore;
   }
+  score += bookmarkMatch?.score ?? 0;
 
   return {
     ...entry,
     score,
-    snippet: resultSnippet(entry.text, terms),
+    snippet: bookmarkMatch?.snippet ?? resultSnippet(entry.text, terms),
   };
 }
 
@@ -213,8 +262,8 @@ export function SearchMenuIsland() {
     };
   }, [closeSearch, containerRef, open]);
 
-  const bookmarkOffsets = useMemo(
-    () => bookmarkOffsetsFor(bookmarks, index),
+  const bookmarkSearchData = useMemo(
+    () => bookmarkSearchDataFor(bookmarks, index),
     [bookmarks, index],
   );
 
@@ -222,11 +271,11 @@ export function SearchMenuIsland() {
     const terms = queryTerms(query);
     const phrase = normalize(query);
     return index
-      .map((entry) => scoreEntry(entry, terms, phrase, bookmarkOffsets))
+      .map((entry) => scoreEntry(entry, terms, phrase, bookmarkSearchData))
       .filter((entry): entry is SearchResult => Boolean(entry))
       .sort((left, right) => right.score - left.score || left.title.localeCompare(right.title))
       .slice(0, 12);
-  }, [bookmarkOffsets, index, query]);
+  }, [bookmarkSearchData, index, query]);
 
   const trimmedQuery = query.trim();
 

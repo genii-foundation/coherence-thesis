@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Bookmark, Search, Trash2 } from "lucide-react";
+import { useVirtualizer } from "@tanstack/react-virtual";
 import {
   loadBreadcrumbShard,
   loadProgressSections,
@@ -65,6 +66,7 @@ function volumeKeyFromHref(href: string): string | null {
 export function ToolbarBookmarksIsland() {
   const pathname = usePathname();
   const searchRef = useRef<HTMLInputElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const {
     open,
     rendered,
@@ -148,6 +150,20 @@ export function ToolbarBookmarksIsland() {
       ),
     [foldedQuery, resolved],
   );
+  // TanStack Virtual owns a mutable measurement cache. React Compiler cannot
+  // memoize that API safely, so this island deliberately stays uncompiled.
+  // eslint-disable-next-line react-hooks/incompatible-library
+  const rowVirtualizer = useVirtualizer({
+    count: visible.length,
+    getScrollElement: () => scrollRef.current,
+    estimateSize: () => 166,
+    getItemKey: (index) => visible[index]?.bookmark.id ?? index,
+    overscan: 6,
+  });
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0 });
+  }, [foldedQuery]);
 
   // Fetch only the shards the saved bookmarks actually span, and only once the
   // panel has been opened. A reader with bookmarks in two volumes should not
@@ -296,7 +312,7 @@ export function ToolbarBookmarksIsland() {
               autoComplete="off"
             />
           </label>
-          <div className="bookmarks-scroll">
+          <div className="bookmarks-scroll" ref={scrollRef}>
             {total === 0 && (
               <p className="quiet-copy bookmarks-empty">
                 Select three or more words in the manuscript, then choose
@@ -308,73 +324,107 @@ export function ToolbarBookmarksIsland() {
                 No bookmarks match that filter.
               </p>
             )}
-            {visible.map((entry) => (
-              <article key={entry.bookmark.id} className="bookmark-row">
-                {entry.href ? (
-                  <a className="bookmark-quote" href={entry.href}>
-                    {entry.bookmark.quote}
-                  </a>
-                ) : (
-                  <span className="bookmark-quote">{entry.bookmark.quote}</span>
-                )}
-                <p className="bookmark-meta">
-                  <span className="bookmark-trail">
-                    {entry.trail.map((crumb, crumbIndex) => (
-                      <span key={crumb}>
-                        {crumbIndex > 0 && (
-                          <span className="bookmark-trail-sep" aria-hidden="true">
-                            ›
+            {visible.length > 0 && (
+              <div
+                className="bookmarks-virtual-list"
+                role="list"
+                style={{ height: rowVirtualizer.getTotalSize() }}
+              >
+                {rowVirtualizer.getVirtualItems().map((virtualRow) => {
+                  const entry = visible[virtualRow.index];
+                  if (!entry) return null;
+                  return (
+                    <div
+                      key={virtualRow.key}
+                      ref={rowVirtualizer.measureElement}
+                      className="bookmark-virtual-row"
+                      data-index={virtualRow.index}
+                      style={{ transform: `translateY(${virtualRow.start}px)` }}
+                    >
+                      <article
+                        className="bookmark-row"
+                        role="listitem"
+                        aria-posinset={virtualRow.index + 1}
+                        aria-setsize={visible.length}
+                      >
+                        {entry.href ? (
+                          <a className="bookmark-quote" href={entry.href}>
+                            {entry.bookmark.quote}
+                          </a>
+                        ) : (
+                          <span className="bookmark-quote">
+                            {entry.bookmark.quote}
                           </span>
                         )}
-                        {crumb}
-                      </span>
-                    ))}
-                  </span>
-                  {entry.stale && (
-                    <span className="bookmarks-stale-tag">
-                      revised since you saved it
-                    </span>
-                  )}
-                </p>
-                {editingNoteId === entry.bookmark.id ? (
-                  <textarea
-                    className="bookmark-note-field"
-                    defaultValue={entry.bookmark.note ?? ""}
-                    maxLength={maxBookmarkNoteLength}
-                    aria-label="Bookmark note"
-                    autoFocus
-                    onBlur={(event) => {
-                      updateStoredBookmarks((current) =>
-                        setBookmarkNote(
-                          current,
-                          entry.bookmark.id,
-                          event.target.value,
-                        ),
-                      );
-                      setEditingNoteId(null);
-                    }}
-                  />
-                ) : (
-                  <div className="bookmark-actions">
-                    <button
-                      type="button"
-                      className="bookmark-note-button"
-                      onClick={() => setEditingNoteId(entry.bookmark.id)}
-                    >
-                      {entry.bookmark.note ? entry.bookmark.note : "Add a note"}
-                    </button>
-                    <button
-                      type="button"
-                      className="icon-button bookmark-remove"
-                      aria-label={`Remove bookmark: ${entry.bookmark.quote.slice(0, 60)}`}
-                      onClick={() => remove(entry.bookmark)}
-                    >
-                      <Trash2 aria-hidden="true" size={15} />
-                    </button>
-                  </div>
-                )}
-              </article>
-            ))}
+                        <p className="bookmark-meta">
+                          <span className="bookmark-trail">
+                            {entry.trail.map((crumb, crumbIndex) => (
+                              <span key={crumb}>
+                                {crumbIndex > 0 && (
+                                  <span
+                                    className="bookmark-trail-sep"
+                                    aria-hidden="true"
+                                  >
+                                    ›
+                                  </span>
+                                )}
+                                {crumb}
+                              </span>
+                            ))}
+                          </span>
+                          {entry.stale && (
+                            <span className="bookmarks-stale-tag">
+                              revised since you saved it
+                            </span>
+                          )}
+                        </p>
+                        {editingNoteId === entry.bookmark.id ? (
+                          <textarea
+                            className="bookmark-note-field"
+                            defaultValue={entry.bookmark.note ?? ""}
+                            maxLength={maxBookmarkNoteLength}
+                            aria-label="Bookmark note"
+                            autoFocus
+                            onBlur={(event) => {
+                              updateStoredBookmarks((current) =>
+                                setBookmarkNote(
+                                  current,
+                                  entry.bookmark.id,
+                                  event.target.value,
+                                ),
+                              );
+                              setEditingNoteId(null);
+                            }}
+                          />
+                        ) : (
+                          <div className="bookmark-actions">
+                            <button
+                              type="button"
+                              className="bookmark-note-button"
+                              onClick={() =>
+                                setEditingNoteId(entry.bookmark.id)
+                              }
+                            >
+                              {entry.bookmark.note
+                                ? entry.bookmark.note
+                                : "Add a note"}
+                            </button>
+                            <button
+                              type="button"
+                              className="icon-button bookmark-remove"
+                              aria-label={`Remove bookmark: ${entry.bookmark.quote.slice(0, 60)}`}
+                              onClick={() => remove(entry.bookmark)}
+                            >
+                              <Trash2 aria-hidden="true" size={15} />
+                            </button>
+                          </div>
+                        )}
+                      </article>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
             {total > 0 && (
               <div className="bookmarks-summary">
                 <span>
