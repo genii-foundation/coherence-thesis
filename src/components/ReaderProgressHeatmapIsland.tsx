@@ -201,6 +201,9 @@ function ReaderProgressHeatmapCell({
             sideOffset={12}
             collisionPadding={10}
             arrowPadding={12}
+            // Same rule as every other bubble of this style: track the cell it
+            // belongs to, and hide once that cell scrolls out of view.
+            hideWhenDetached
             onOpenAutoFocus={(event) => event.preventDefault()}
             onCloseAutoFocus={(event) => event.preventDefault()}
             onPointerDownOutside={(event) => {

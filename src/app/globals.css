@@ -5561,7 +5561,7 @@ input {
   transition:
     background 140ms ease,
     color 140ms ease,
-    font-weight 140ms ease;
+    text-decoration-color 140ms ease;
 }
 
 .audio-word:hover,
@@ -5570,15 +5570,26 @@ input {
   background: rgba(164, 123, 63, 0.14);
 }
 
+/* The spoken word is marked with an underline, not weight. A bold word is wider
+   than the same word unbolded, so every word boundary reflowed the line and
+   shoved the rest of the paragraph around while playback ran. An underline
+   takes no inline space, so the text holds still. */
 .audio-word.is-audio-current,
 .audio-word:target {
   color: var(--ink);
-  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--bronze);
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: 0.09em;
+  text-underline-offset: 0.16em;
 }
 
 .audio-word-tooltip {
   position: fixed;
-  z-index: 90;
+  /* Above the prose it points at, below the sticky header. A word can be part
+     way under the toolbar while its bubble is still worth showing, and the
+     bubble should slide under the toolbar rather than cover it. */
+  z-index: 9;
   width: max-content;
   max-width: min(14rem, calc(100vw - 2rem));
   transform: translate(-50%, calc(-100% - 0.36rem));
