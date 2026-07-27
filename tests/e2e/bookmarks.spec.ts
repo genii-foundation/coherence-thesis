@@ -55,12 +55,23 @@ async function selectWords(
       const spans = [
         ...document.querySelectorAll(".manuscript-prose p .audio-word"),
       ].slice(1, count + 1);
+      const selection = window.getSelection();
+      if (!selection) return;
+      const last = spans[spans.length - 1]!;
+
+      // Grow an existing selection with extend(), the way dragging a platform
+      // selection handle does. Tearing the range down and rebuilding it would
+      // collapse the selection first, which no real gesture does and which
+      // would make a growing selection look like a series of new ones.
+      if (!selection.isCollapsed && selection.rangeCount > 0) {
+        selection.extend(last, last.childNodes.length);
+        return;
+      }
       const range = document.createRange();
       range.setStartBefore(spans[0]!);
-      range.setEndAfter(spans[spans.length - 1]!);
-      const selection = window.getSelection();
-      selection?.removeAllRanges();
-      selection?.addRange(range);
+      range.setEndAfter(last);
+      selection.removeAllRanges();
+      selection.addRange(range);
     }, words);
   }
 
@@ -460,27 +471,115 @@ test("the bookmarks panel is an opaque surface that contains its content", async
   }
 });
 
-test("saving a bookmark pulses the toolbar control that holds it", async ({
+test("the toolbar control turns for an offer and again for a save", async ({
   page,
   hasTouch,
 }) => {
   await page.goto(firstSection.readerHref);
   const trigger = page.locator(".bookmarks-menu-button");
-  await expect(trigger).not.toHaveClass(/is-bookmark-saved/);
+  const card = trigger.locator(".bookmark-card");
+  const back = trigger.locator(".bookmark-face-back svg");
 
+  await expect(trigger).not.toHaveClass(/is-bookmark-/);
+
+  // Selecting a passage is an invitation. It turns, but the back stays an
+  // outline: nothing has been saved, so the glyph must not claim otherwise.
   await selectWords(page, 5, hasTouch);
-  await page.getByRole("button", { name: "Click to bookmark" }).click();
-
-  // The toast says it saved. This says where it went, which is the part a
-  // reader who has never opened that panel actually needs.
-  await expect(trigger).toHaveClass(/is-bookmark-saved/);
-  const animation = await trigger.evaluate(
-    (element) => window.getComputedStyle(element).animationName,
+  await expect(trigger).toHaveClass(/is-bookmark-offered/);
+  expect(
+    await card.evaluate((el) => window.getComputedStyle(el).animationName),
+  ).toBe("bookmark-turn");
+  expect(await back.evaluate((el) => window.getComputedStyle(el).fill)).toBe(
+    "none",
   );
-  expect(animation).toBe("bookmark-saved-pulse");
 
-  // And it settles rather than becoming permanent chrome.
-  await expect(trigger).not.toHaveClass(/is-bookmark-saved/, { timeout: 5_000 });
+  await expect(trigger).not.toHaveClass(/is-bookmark-offered/, {
+    timeout: 5_000,
+  });
+
+  // Saving turns it over the solid, so the fill is revealed by the motion.
+  await page.getByRole("button", { name: "Click to bookmark" }).click();
+  await expect(trigger).toHaveClass(/is-bookmark-saved/);
+  expect(
+    await card.evaluate((el) => window.getComputedStyle(el).animationName),
+  ).toBe("bookmark-turn");
+  expect(
+    await back.evaluate((el) => window.getComputedStyle(el).fill),
+  ).not.toBe("none");
+
+  // Both settle rather than becoming permanent chrome.
+  await expect(trigger).not.toHaveClass(/is-bookmark-/, { timeout: 5_000 });
+});
+
+test("extending a selection does not re-offer on every change", async ({
+  page,
+  hasTouch,
+}) => {
+  await page.goto(firstSection.readerHref);
+  const trigger = page.locator(".bookmarks-menu-button");
+
+  // Hydrate first, and prove the island is listening, so what follows measures
+  // the guard rather than a race.
+  await selectWords(page, 4, hasTouch);
+  await expect(trigger).toHaveClass(/is-bookmark-offered/);
+  await expect(trigger).not.toHaveClass(/is-bookmark-offered/, {
+    timeout: 5_000,
+  });
+
+  await page.evaluate(() => {
+    const store = { count: 0 };
+    (window as unknown as Record<string, unknown>).__offers = store;
+    window.addEventListener("coherence:reader-bookmark-offered", () => {
+      store.count += 1;
+    });
+  });
+
+  // One continuous gesture that keeps growing. Every intermediate move emits a
+  // selectionchange and re-reads the anchor, so this is where a naive
+  // implementation would turn the control over a dozen times.
+  const boxes = await page
+    .locator(".manuscript-prose p .audio-word")
+    .evaluateAll((els) =>
+      els.slice(1, 10).map((el) => {
+        const r = el.getBoundingClientRect();
+        return { x: r.x, y: r.y, width: r.width, height: r.height };
+      }),
+    );
+
+  if (!hasTouch) {
+    const first = boxes[0]!;
+    await page.mouse.move(first.x + 1, first.y + first.height / 2);
+    await page.mouse.down();
+    for (const box of boxes.slice(1)) {
+      await page.mouse.move(box.x + box.width - 1, box.y + box.height / 2);
+      await page.waitForTimeout(60);
+    }
+    await page.mouse.up();
+  } else {
+    // Touch has no drag that selects; the platform moves its own handles, and
+    // extend() is the primitive that models it.
+    for (const index of [4, 6, 8]) {
+      await page.evaluate((count) => {
+        const spans = [
+          ...document.querySelectorAll(".manuscript-prose p .audio-word"),
+        ].slice(1, count + 1);
+        const last = spans[spans.length - 1]!;
+        window.getSelection()?.extend(last, last.childNodes.length);
+      }, index);
+      await page.waitForTimeout(120);
+    }
+  }
+
+  await page.waitForTimeout(700);
+  const offers = await page.evaluate(
+    () =>
+      ((window as unknown as Record<string, { count: number }>).__offers ?? {
+        count: -1,
+      }).count,
+  );
+  // At most one for the whole gesture. Pressing again is a new gesture and is
+  // allowed to offer again; growing without releasing is not.
+  expect(offers).toBeLessThanOrEqual(1);
 });
 
 test("account tools export everything the reader has accumulated", async ({

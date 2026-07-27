@@ -116,6 +116,13 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     );
   }, []);
 
+  // Every desktop popover hangs from the toolbar's bottom edge, not from its own
+  // trigger's. Anchoring to the trigger looks identical until two controls are
+  // different heights, and audio and progress are: they sit in 4rem wrappers
+  // against 3rem for everything else, which put their menus 5px lower than
+  // their neighbours' for the same gesture. Measuring the header instead makes
+  // the alignment a property of the toolbar rather than of whichever control
+  // happened to be pressed, and matches what the mobile rule already does.
   const measurePopoverTop = useCallback(() => {
     const container = containerRef.current;
     const trigger = triggerRef.current;
@@ -125,8 +132,10 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     }
 
     const containerBox = container.getBoundingClientRect();
-    const triggerBox = trigger.getBoundingClientRect();
-    setPopoverTop(Math.max(0, triggerBox.bottom - containerBox.top));
+    const headerBottom =
+      document.querySelector(".site-header")?.getBoundingClientRect().bottom ??
+      trigger.getBoundingClientRect().bottom;
+    setPopoverTop(Math.max(0, headerBottom - containerBox.top));
   }, []);
 
   const measurePopover = useCallback(() => {

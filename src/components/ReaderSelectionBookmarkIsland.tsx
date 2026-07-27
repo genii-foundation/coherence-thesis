@@ -10,7 +10,10 @@ import {
   canAddBookmark,
   maxLiveBookmarks,
 } from "@/lib/reader-bookmarks";
-import { announceBookmarkSaved } from "@/lib/reader-bookmark-events";
+import {
+  announceBookmarkOffered,
+  announceBookmarkSaved,
+} from "@/lib/reader-bookmark-events";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import {
   appendStoredEvent,
@@ -137,7 +140,12 @@ export function ReaderSelectionBookmarkIsland({
         // Mid-drag the selection is still growing, and a bubble that chased the
         // cursor would sit under it. Wait for the release.
         if (pointerDown) return;
-        setAnchor(readSelectionAnchor(window.getSelection()));
+        const next = readSelectionAnchor(window.getSelection());
+        // Announce only on the transition into a bookmarkable selection.
+        // Extending a selection re-reads the anchor continuously, and a control
+        // that turned over on every one of those would be intolerable.
+        if (next && !anchorRef.current) announceBookmarkOffered();
+        setAnchor(next);
       }, delayMs);
     };
 

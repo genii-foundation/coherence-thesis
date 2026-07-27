@@ -3,9 +3,18 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Bookmark, Search, Trash2 } from "lucide-react";
-import { loadProgressSections, type ProgressSectionData } from "@/lib/reader-data";
 import {
-  bookmarkPulseMs,
+  loadBreadcrumbShard,
+  loadProgressSections,
+  loadToolbarOutline,
+  type BreadcrumbRoute,
+  type ProgressSectionData,
+  type ToolbarOutlineData,
+} from "@/lib/reader-data";
+import {
+  bookmarkOfferedTurnMs,
+  bookmarkSavedTurnMs,
+  readerBookmarkOfferedEvent,
   readerBookmarkSavedEvent,
 } from "@/lib/reader-bookmark-events";
 import {
@@ -35,7 +44,23 @@ type ResolvedBookmark = {
   section?: ProgressSectionData;
   href?: string;
   stale: boolean;
+  // Volume, then the path down to the section. A bare section title is not
+  // enough to place a passage across nine volumes with repeating structure.
+  trail: string[];
 };
+
+const emptyOutline: ToolbarOutlineData = {
+  home: { title: "", href: "/" },
+  overview: { title: "", href: "/overview/" },
+  volumes: [],
+};
+
+// Breadcrumbs are sharded by volume, and a section's reader route always starts
+// /manuscripts/<volumeId>/. Reading the shard key off the href avoids carrying a
+// volume id on every bookmark.
+function volumeKeyFromHref(href: string): string | null {
+  return /^\/manuscripts\/([^/]+)\//.exec(href)?.[1] ?? null;
+}
 
 export function ToolbarBookmarksIsland() {
   const pathname = usePathname();
@@ -51,14 +76,25 @@ export function ToolbarBookmarksIsland() {
   } = useToolbarMenu<HTMLDivElement>();
   const [query, setQuery] = useState("");
   const [editingNoteId, setEditingNoteId] = useState<string | null>(null);
-  const [justSaved, setJustSaved] = useState(false);
-  const pulseTimerRef = useRef<number | null>(null);
+  const [turn, setTurn] = useState<{
+    state: "offered" | "saved";
+    id: number;
+  } | null>(null);
+  const turnTimerRef = useRef<number | null>(null);
+  const turnIdRef = useRef(0);
   const bookmarks = useReaderBookmarks();
   // Already fetched on every route by ToolbarProgressIsland, so this is a
   // memoized cache hit rather than a second download. It carries every
   // paragraph anchor and content hash in the book, which is what makes
   // staleness resolvable for any bookmark from any page.
   const sections = useLoadedData(loadProgressSections, emptySections);
+  // Volume labels come from the outline, the path within a volume from that
+  // volume's breadcrumb shard. Both are memoized module loaders the outline and
+  // breadcrumb surfaces already pull, so this is usually a cache hit.
+  const outline = useLoadedData(loadToolbarOutline, emptyOutline);
+  const [breadcrumbs, setBreadcrumbs] = useState<
+    Record<string, BreadcrumbRoute[]>
+  >({});
 
   const sectionsById = useMemo(() => {
     const map = new Map<string, ProgressSectionData>();
@@ -69,8 +105,23 @@ export function ToolbarBookmarksIsland() {
   const resolved = useMemo<ResolvedBookmark[]>(() => {
     return liveBookmarks(bookmarks).map((bookmark) => {
       const section = sectionsById.get(bookmark.sectionId);
-      if (!section) return { bookmark, stale: false };
+      if (!section) {
+        return { bookmark, stale: false, trail: [bookmark.sectionId] };
+      }
       const resolution = resolveBookmarkAnchor(bookmark, section.paragraphs);
+
+      const volumeKey = volumeKeyFromHref(section.readerHref);
+      const volume = outline.volumes.find(
+        (candidate) => volumeKeyFromHref(candidate.href) === volumeKey,
+      );
+      const crumbs = (volumeKey ? (breadcrumbs[volumeKey] ?? []) : []).find(
+        (route) => route.href === section.readerHref,
+      )?.crumbs;
+      const trail = [
+        ...(volume ? [`Volume ${volume.numberLabel}`] : []),
+        ...(crumbs?.map((crumb) => crumb.label) ?? [section.title]),
+      ];
+
       return {
         bookmark,
         section,
@@ -80,9 +131,10 @@ export function ToolbarBookmarksIsland() {
           resolution.anchor ?? bookmark.paragraphAnchor,
         ),
         stale: resolution.status === "missing",
+        trail,
       };
     });
-  }, [bookmarks, sectionsById]);
+  }, [bookmarks, breadcrumbs, outline, sectionsById]);
 
   const foldedQuery = foldSearchText(query);
   const visible = useMemo(
@@ -96,6 +148,36 @@ export function ToolbarBookmarksIsland() {
       ),
     [foldedQuery, resolved],
   );
+
+  // Fetch only the shards the saved bookmarks actually span, and only once the
+  // panel has been opened. A reader with bookmarks in two volumes should not
+  // pull nine.
+  useEffect(() => {
+    if (!open) return;
+    const wanted = new Set<string>();
+    for (const bookmark of liveBookmarks(bookmarks)) {
+      const section = sectionsById.get(bookmark.sectionId);
+      const key = section ? volumeKeyFromHref(section.readerHref) : null;
+      if (key && !(key in breadcrumbs)) wanted.add(key);
+    }
+    if (wanted.size === 0) return;
+
+    let active = true;
+    for (const key of wanted) {
+      loadBreadcrumbShard(key)
+        .then((routes) => {
+          if (!active) return;
+          setBreadcrumbs((current) => ({ ...current, [key]: routes }));
+        })
+        .catch(() => {
+          // A missing shard costs the volume label and nothing else; the
+          // section title still renders.
+        });
+    }
+    return () => {
+      active = false;
+    };
+  }, [bookmarks, breadcrumbs, open, sectionsById]);
 
   const staleCount = resolved.filter((entry) => entry.stale).length;
 
@@ -125,26 +207,42 @@ export function ToolbarBookmarksIsland() {
     );
   }, []);
 
-  // A toast tells the reader the bookmark saved. It does not tell them where
-  // the bookmark went, and the panel that holds it is an icon they have never
-  // opened. The trigger pulses once on save so the answer to "where did that
-  // go" is on screen at the moment they ask it.
+  // The control answers two different questions with the same gesture.
+  //
+  // Selecting a passage turns it once over an outline back: an invitation,
+  // saying this can be bookmarked and here is where that happens. Saving turns
+  // it once over the solid back, so the fill is revealed by the motion rather
+  // than faded in over it. A toast already says a bookmark saved; this says
+  // where it went, which is what a reader who has never opened that panel
+  // actually needs.
   useEffect(() => {
-    const onSaved = () => {
-      setJustSaved(true);
-      if (pulseTimerRef.current !== null) {
-        window.clearTimeout(pulseTimerRef.current);
+    const flipTo = (next: "offered" | "saved", ms: number) => {
+      if (turnTimerRef.current !== null) {
+        window.clearTimeout(turnTimerRef.current);
       }
-      pulseTimerRef.current = window.setTimeout(() => {
-        setJustSaved(false);
-        pulseTimerRef.current = null;
-      }, bookmarkPulseMs);
+      // The id remounts the card, which restarts the CSS animation cleanly so a
+      // save arriving mid-offer replays rather than inheriting the tail of the
+      // previous turn. Deliberately not requestAnimationFrame: rAF does not
+      // fire at all while the document is hidden, which would leave the control
+      // silently dead on a backgrounded tab.
+      turnIdRef.current += 1;
+      setTurn({ state: next, id: turnIdRef.current });
+      turnTimerRef.current = window.setTimeout(() => {
+        setTurn(null);
+        turnTimerRef.current = null;
+      }, ms + 80);
     };
+
+    const onOffered = () => flipTo("offered", bookmarkOfferedTurnMs);
+    const onSaved = () => flipTo("saved", bookmarkSavedTurnMs);
+
+    window.addEventListener(readerBookmarkOfferedEvent, onOffered);
     window.addEventListener(readerBookmarkSavedEvent, onSaved);
     return () => {
+      window.removeEventListener(readerBookmarkOfferedEvent, onOffered);
       window.removeEventListener(readerBookmarkSavedEvent, onSaved);
-      if (pulseTimerRef.current !== null) {
-        window.clearTimeout(pulseTimerRef.current);
+      if (turnTimerRef.current !== null) {
+        window.clearTimeout(turnTimerRef.current);
       }
     };
   }, []);
@@ -156,7 +254,7 @@ export function ToolbarBookmarksIsland() {
       <button
         {...triggerProps}
         type="button"
-        className={`bookmarks-menu-button${justSaved ? " is-bookmark-saved" : ""}`}
+        className={`bookmarks-menu-button${turn ? ` is-bookmark-${turn.state}` : ""}`}
         aria-label={
           total === 0
             ? "Bookmarks, none saved"
@@ -165,7 +263,19 @@ export function ToolbarBookmarksIsland() {
         aria-controls="site-bookmarks-menu"
         onClick={toggle}
       >
-        <Bookmark aria-hidden="true" size={17} />
+        {/* Two real faces rather than a crossfade. The card carries the
+            rotation and each face hides its own back, so the solid glyph is
+            genuinely behind the outline and the turn is what reveals it. The
+            bookmark shape is left-right symmetric, so the mirrored back needs
+            no compensating flip. */}
+        <span key={turn?.id ?? 0} className="bookmark-card" aria-hidden="true">
+          <span className="bookmark-face">
+            <Bookmark size={17} />
+          </span>
+          <span className="bookmark-face bookmark-face-back">
+            <Bookmark size={17} />
+          </span>
+        </span>
       </button>
       {rendered && (
         <section
@@ -221,8 +331,17 @@ export function ToolbarBookmarksIsland() {
                   <span className="bookmark-quote">{entry.bookmark.quote}</span>
                 )}
                 <p className="bookmark-meta">
-                  <span className="bookmark-section">
-                    {entry.section?.title ?? entry.bookmark.sectionId}
+                  <span className="bookmark-trail">
+                    {entry.trail.map((crumb, crumbIndex) => (
+                      <span key={crumb}>
+                        {crumbIndex > 0 && (
+                          <span className="bookmark-trail-sep" aria-hidden="true">
+                            ›
+                          </span>
+                        )}
+                        {crumb}
+                      </span>
+                    ))}
                   </span>
                   {entry.stale && (
                     <span className="bookmarks-stale-tag">
