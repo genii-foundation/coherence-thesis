@@ -284,6 +284,7 @@ Original manuscripts, voice cards, editorial evidence, publishing continuity, si
 
 ## Roadmap
 
+- Add privacy-conscious production error monitoring with Sentry for browser and server failures, source maps, release tracking, and actionable alerts; keep session replay off and scrub manuscript text, reading history, account data, and request payloads
 - Complete final individual cover art for every manuscript
 - Add spaced repetition tools grounded in stable section IDs
 - Expand recommendation paths across the manuscript collection

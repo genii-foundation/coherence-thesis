@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "87ff7cf7e55c8059e3f85f73fa8d149cf91a2ce9",
+  "headSha": "654a2c36ba825ee191e67ded3b193ff4e0acde24",
   "commits": [
+    {
+      "sha": "654a2c36ba825ee191e67ded3b193ff4e0acde24",
+      "committedAt": "2026-07-28T05:29:25.000Z",
+      "subject": "perf(reader): reduce mobile data pressure (#162)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/654a2c36ba825ee191e67ded3b193ff4e0acde24",
+      "filesChanged": 17,
+      "additions": 230,
+      "deletions": 92,
+      "isLiterary": false
+    },
     {
       "sha": "87ff7cf7e55c8059e3f85f73fa8d149cf91a2ce9",
       "committedAt": "2026-07-27T23:47:46.000Z",
