@@ -19,6 +19,11 @@ import {
   serializeBookmarks,
   type ReaderBookmarksState,
 } from "./reader-bookmarks";
+import {
+  captureBookmarkOperationError,
+  recordBookmarkOperation,
+  type BookmarkOperation,
+} from "./bookmark-monitoring";
 import { createReaderStore } from "./reader-store";
 import {
   emptyProgress,
@@ -94,8 +99,23 @@ export function useReaderBookmarks(): ReaderBookmarksState {
 
 export function updateStoredBookmarks(
   updater: (current: ReaderBookmarksState) => ReaderBookmarksState,
+  operation: BookmarkOperation = "unspecified",
 ): ReaderBookmarksState {
-  return bookmarksStore.update(updater);
+  let currentAtFailure = emptyBookmarks();
+  try {
+    const next = bookmarksStore.update((current) => {
+      currentAtFailure = current;
+      recordBookmarkOperation(operation, "start", current);
+      const proposed = updater(current);
+      currentAtFailure = proposed;
+      return proposed;
+    });
+    recordBookmarkOperation(operation, "complete", next);
+    return next;
+  } catch (error) {
+    captureBookmarkOperationError(operation, error, currentAtFailure);
+    throw error;
+  }
 }
 
 export function readStoredEvents(): ReaderEngagementEvent[] {

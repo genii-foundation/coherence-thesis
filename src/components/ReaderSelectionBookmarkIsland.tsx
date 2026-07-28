@@ -98,7 +98,7 @@ export function ReaderSelectionBookmarkIsland({
         startOffset: target.startOffset,
         endOffset: target.endOffset,
       });
-    });
+    }, "add");
 
     if (refused) {
       showStatus("full");
