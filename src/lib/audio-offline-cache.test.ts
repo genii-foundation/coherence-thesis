@@ -39,7 +39,6 @@ const sections: ProgressSectionData[] = [
     chapterHref: "/manuscripts/volume-one/part/chapter/",
     readerHref: "/manuscripts/volume-one/part/chapter/#one-a",
     audioVersionId: "one-a-a",
-    paragraphs: [],
   },
   {
     sectionId: "one-b",
@@ -53,7 +52,6 @@ const sections: ProgressSectionData[] = [
     chapterHref: "/manuscripts/volume-one/part/chapter/",
     readerHref: "/manuscripts/volume-one/part/chapter/#one-b",
     audioVersionId: "one-b-b",
-    paragraphs: [],
   },
   {
     sectionId: "two-a",
@@ -67,7 +65,6 @@ const sections: ProgressSectionData[] = [
     chapterHref: "/manuscripts/volume-two/part/chapter/",
     readerHref: "/manuscripts/volume-two/part/chapter/#two-a",
     audioVersionId: "two-a-c",
-    paragraphs: [],
   },
 ];
 

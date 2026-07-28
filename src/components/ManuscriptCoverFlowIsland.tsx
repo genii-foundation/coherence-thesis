@@ -32,6 +32,11 @@ import { displayPartTitle } from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 import { useReaderProgress } from "@/lib/reader-progress-store";
 import {
+  loadProgressSections,
+  type ProgressSectionData,
+} from "@/lib/reader-data";
+import { useLoadedData } from "@/lib/use-loaded-data";
+import {
   sectionGroupProgressStatus,
   type SectionProgressInput,
 } from "@/lib/section-progress";
@@ -55,12 +60,11 @@ type CoverFlowVolume = Pick<
   firstSectionHref: string;
 };
 
-type CoverFlowProgressSection = SectionProgressInput & { href: string };
-
 type ManuscriptCoverFlowIslandProps = {
-  progressSections: CoverFlowProgressSection[];
   volumes: CoverFlowVolume[];
 };
+
+const emptyProgressSections: ProgressSectionData[] = [];
 
 const COVER_FLOW_BACKGROUND_HIT_MIN_WIDTH = 44;
 const COVER_FLOW_BACKGROUND_HIT_Y_SLOP = 10;
@@ -225,9 +229,12 @@ function ManuscriptCardOutlineRow({
 const initialIndex = 0;
 
 export function ManuscriptCoverFlowIsland({
-  progressSections,
   volumes,
 }: ManuscriptCoverFlowIslandProps) {
+  const progressSections = useLoadedData(
+    loadProgressSections,
+    emptyProgressSections,
+  );
   const [activeIndex, setActiveIndex] = useState(() =>
     Math.min(initialIndex, Math.max(volumes.length - 1, 0)),
   );
@@ -275,7 +282,12 @@ export function ManuscriptCoverFlowIsland({
       const resolved: SectionProgressInput[] = [];
       sectionIds.forEach((sectionId) => {
         const section = progressSectionById.get(sectionId);
-        if (section) resolved.push(section);
+        resolved.push(
+          section ?? {
+            sectionId,
+            contentHash: "",
+          },
+        );
       });
       return resolved;
     },

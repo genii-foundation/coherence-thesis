@@ -455,8 +455,8 @@ export function reconcileRemoteBookmarks(
 }
 
 // Resolution rungs 1 and 2 of the ladder. Both answer from paragraph metadata
-// alone, which ToolbarProgressIsland already holds for all 551 sections on
-// every route, so this is free everywhere and needs no fetch.
+// alone. The bookmarks menu loads that book-wide index on demand so ordinary
+// reading does not pay its network, parsing, or heap cost.
 export function resolveBookmarkAnchor(
   bookmark: Pick<ReaderBookmark, "paragraphAnchor" | "paragraphContentHash">,
   paragraphs: readonly ProgressParagraph[],

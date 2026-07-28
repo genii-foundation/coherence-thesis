@@ -7,10 +7,10 @@ import { Bookmark, Search, Trash2 } from "lucide-react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import {
   loadBreadcrumbShard,
-  loadProgressSections,
+  loadBookmarkSections,
   loadToolbarOutline,
+  type BookmarkSectionData,
   type BreadcrumbRoute,
-  type ProgressSectionData,
   type ToolbarOutlineData,
 } from "@/lib/reader-data";
 import {
@@ -36,10 +36,8 @@ import {
   useReaderBookmarks,
 } from "@/lib/reader-progress-store";
 import { foldSearchText } from "@/lib/reader-text-search";
-import { useLoadedData } from "@/lib/use-loaded-data";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 
-const emptySections: ProgressSectionData[] = [];
 const deleteAllConfirmationText = "DELETE ALL";
 const modalFocusableSelector = [
   "a[href]",
@@ -52,7 +50,7 @@ const modalFocusableSelector = [
 
 type ResolvedBookmark = {
   bookmark: ReaderBookmark;
-  section?: ProgressSectionData;
+  section?: BookmarkSectionData;
   href?: string;
   stale: boolean;
   // Volume, then the path down to the section. A bare section title is not
@@ -85,6 +83,7 @@ export function ToolbarBookmarksIsland() {
   const deleteAllInputRef = useRef<HTMLInputElement>(null);
   const deleteTriggerRef = useRef<HTMLButtonElement | null>(null);
   const deleteModalOpenRef = useRef(false);
+  const detailsLoadStartedRef = useRef(false);
   const {
     open,
     rendered,
@@ -109,27 +108,23 @@ export function ToolbarBookmarksIsland() {
   const turnTimerRef = useRef<number | null>(null);
   const turnIdRef = useRef(0);
   const bookmarks = useReaderBookmarks();
-  // Already fetched on every route by ToolbarProgressIsland, so this is a
-  // memoized cache hit rather than a second download. It carries every
-  // paragraph anchor and content hash in the book, which is what makes
-  // staleness resolvable for any bookmark from any page.
-  const sections = useLoadedData(loadProgressSections, emptySections);
-  // Volume labels come from the outline, the path within a volume from that
-  // volume's breadcrumb shard. Both are memoized module loaders the outline and
-  // breadcrumb surfaces already pull, so this is usually a cache hit.
-  const outline = useLoadedData(loadToolbarOutline, emptyOutline);
+  const live = useMemo(() => liveBookmarks(bookmarks), [bookmarks]);
+  const [sections, setSections] = useState<BookmarkSectionData[]>([]);
+  const [outline, setOutline] = useState<ToolbarOutlineData>(emptyOutline);
+  const [detailsLoading, setDetailsLoading] = useState(false);
   const [breadcrumbs, setBreadcrumbs] = useState<
     Record<string, BreadcrumbRoute[]>
   >({});
 
   const sectionsById = useMemo(() => {
-    const map = new Map<string, ProgressSectionData>();
+    const map = new Map<string, BookmarkSectionData>();
     for (const section of sections) map.set(section.sectionId, section);
     return map;
   }, [sections]);
 
   const resolved = useMemo<ResolvedBookmark[]>(() => {
-    return liveBookmarks(bookmarks).map((bookmark) => {
+    if (!open) return [];
+    return live.map((bookmark) => {
       const section = sectionsById.get(bookmark.sectionId);
       if (!section) {
         return { bookmark, stale: false, trail: [bookmark.sectionId] };
@@ -160,7 +155,7 @@ export function ToolbarBookmarksIsland() {
         trail,
       };
     });
-  }, [bookmarks, breadcrumbs, outline, sectionsById]);
+  }, [breadcrumbs, live, open, outline, sectionsById]);
 
   const foldedQuery = foldSearchText(query);
   const visible = useMemo(
@@ -189,13 +184,45 @@ export function ToolbarBookmarksIsland() {
     scrollRef.current?.scrollTo({ top: 0 });
   }, [foldedQuery]);
 
+  // Paragraph fingerprints are needed only for bookmark destination repair.
+  // Keep that book-wide data and the outline out of Safari's heap until the
+  // reader asks to see the menu.
+  useEffect(() => {
+    if (!open || detailsLoadStartedRef.current) return;
+    detailsLoadStartedRef.current = true;
+    setDetailsLoading(true);
+    let active = true;
+    let settled = false;
+
+    Promise.allSettled([loadBookmarkSections(), loadToolbarOutline()]).then(
+      ([sectionsResult, outlineResult]) => {
+        settled = true;
+        if (!active) return;
+        if (sectionsResult.status === "fulfilled") {
+          setSections(sectionsResult.value);
+        } else {
+          detailsLoadStartedRef.current = false;
+        }
+        if (outlineResult.status === "fulfilled") {
+          setOutline(outlineResult.value);
+        }
+        setDetailsLoading(false);
+      },
+    );
+
+    return () => {
+      active = false;
+      if (!settled) detailsLoadStartedRef.current = false;
+    };
+  }, [open]);
+
   // Fetch only the shards the saved bookmarks actually span, and only once the
   // panel has been opened. A reader with bookmarks in two volumes should not
   // pull nine.
   useEffect(() => {
     if (!open) return;
     const wanted = new Set<string>();
-    for (const bookmark of liveBookmarks(bookmarks)) {
+    for (const bookmark of live) {
       const section = sectionsById.get(bookmark.sectionId);
       const key = section ? volumeKeyFromHref(section.readerHref) : null;
       if (key && !(key in breadcrumbs)) wanted.add(key);
@@ -217,7 +244,7 @@ export function ToolbarBookmarksIsland() {
     return () => {
       active = false;
     };
-  }, [bookmarks, breadcrumbs, open, sectionsById]);
+  }, [breadcrumbs, live, open, sectionsById]);
 
   const staleCount = resolved.filter((entry) => entry.stale).length;
 
@@ -286,7 +313,7 @@ export function ToolbarBookmarksIsland() {
     }
     if (deleteAllEntry !== deleteAllConfirmationText) return;
 
-    const targets = liveBookmarks(bookmarks);
+    const targets = live;
     const removedAt = Date.now();
     updateStoredBookmarks((current) =>
       targets.reduce(
@@ -304,10 +331,10 @@ export function ToolbarBookmarksIsland() {
     setEditingNoteId(null);
     closeDeleteModal("search");
   }, [
-    bookmarks,
     closeDeleteModal,
     commitRemove,
     deleteAllEntry,
+    live,
     pendingDeletion,
   ]);
 
@@ -407,7 +434,7 @@ export function ToolbarBookmarksIsland() {
     };
   }, []);
 
-  const total = resolved.length;
+  const total = live.length;
 
   return (
     <div className="bookmarks-menu" ref={containerRef}>
@@ -456,7 +483,16 @@ export function ToolbarBookmarksIsland() {
               autoComplete="off"
             />
           </label>
-          <div className="bookmarks-scroll" ref={scrollRef}>
+          <div
+            className="bookmarks-scroll"
+            ref={scrollRef}
+            aria-busy={detailsLoading}
+          >
+            {detailsLoading && total > 0 && (
+              <p className="sr-only" role="status">
+                Loading bookmark destinations.
+              </p>
+            )}
             {total === 0 && (
               <p className="quiet-copy bookmarks-empty">
                 Select three or more words in the manuscript, then choose

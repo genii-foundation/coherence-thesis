@@ -6,15 +6,18 @@ import { BookOpen, Headphones, ListTree } from "lucide-react";
 import { requestAudioNavigation } from "@/lib/audio-events";
 import { useReaderProgress } from "@/lib/reader-progress-store";
 import { isSectionRead } from "@/lib/reader-state";
-import type { Section } from "@/lib/manuscript-data";
-
-type HeroReadTarget = Pick<Section, "sectionId" | "contentHash" | "href">;
+import {
+  loadProgressSections,
+  type ProgressSectionData,
+} from "@/lib/reader-data";
+import { useLoadedData } from "@/lib/use-loaded-data";
 
 type HeroActionsIslandProps = {
   className?: string;
   fallbackHref: string;
-  sections: HeroReadTarget[];
 };
+
+const emptySections: ProgressSectionData[] = [];
 
 function listenHref(href: string): string {
   const separator = href.includes("?") ? "&" : "?";
@@ -24,17 +27,17 @@ function listenHref(href: string): string {
 export function HeroActionsIsland({
   className = "hero-actions",
   fallbackHref,
-  sections,
 }: HeroActionsIslandProps) {
   const progress = useReaderProgress();
+  const sections = useLoadedData(loadProgressSections, emptySections);
   const target = useMemo(
     () =>
       sections.find((section) => !isSectionRead(progress, section)) ??
-      sections.find((section) => section.href === fallbackHref) ??
+      sections.find((section) => section.readerHref === fallbackHref) ??
       sections[0],
     [fallbackHref, progress, sections],
   );
-  const targetHref = target?.href ?? fallbackHref;
+  const targetHref = target?.readerHref ?? fallbackHref;
 
   return (
     <div className={className}>
@@ -55,7 +58,7 @@ export function HeroActionsIsland({
           if (
             requestAudioNavigation({
               sectionId: target.sectionId,
-              href: target.href,
+              href: target.readerHref,
             })
           ) {
             event.preventDefault();

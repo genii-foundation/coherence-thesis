@@ -87,6 +87,42 @@ async function storedBookmarks(page: Page) {
   }, readerBookmarksStorageKey);
 }
 
+test("bookmark paragraph data loads only when the menu opens", async ({
+  page,
+}) => {
+  await page.goto(firstSection.readerHref);
+  const loadedBeforeOpen = await page.evaluate(() =>
+    performance
+      .getEntriesByType("resource")
+      .some((entry) => entry.name.endsWith("/data/bookmark-sections.json")),
+  );
+  expect(loadedBeforeOpen).toBe(false);
+
+  const manifestResponse = page.waitForResponse((response) =>
+    response.url().endsWith("/data/bookmark-sections.json"),
+  );
+  await page.getByRole("button", { name: "Bookmarks, none saved" }).click();
+  expect((await manifestResponse).ok()).toBe(true);
+
+  const manifests = await page.evaluate(async () => {
+    const [progress, bookmarks] = await Promise.all([
+      fetch("/data/progress-sections.json").then((response) => response.json()),
+      fetch("/data/bookmark-sections.json").then((response) => response.json()),
+    ]);
+    return { progress, bookmarks };
+  });
+  expect(manifests.progress[0]).not.toHaveProperty("paragraphs");
+  expect(manifests.bookmarks[0]).toMatchObject({
+    sectionId: expect.any(String),
+    paragraphs: expect.arrayContaining([
+      expect.objectContaining({
+        anchor: expect.any(String),
+        contentHash: expect.any(String),
+      }),
+    ]),
+  });
+});
+
 test("selecting three or more words offers a bookmark, and saves it", async ({
   page,
   hasTouch,

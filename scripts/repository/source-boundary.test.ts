@@ -40,6 +40,7 @@ describe("repository source boundary classification", () => {
     "content/manuscripts/volume/section.md",
     "src/generated/manuscripts/catalog.json",
     "public/data/audio-manifest.json",
+    "public/data/bookmark-sections.json",
     "public/data/breadcrumbs/routes.json",
     "public/data/outline.json",
     "public/data/pdf-downloads.json",

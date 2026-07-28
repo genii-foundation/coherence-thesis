@@ -1,4 +1,4 @@
-import type { ProgressSection } from "./manuscript-data";
+import type { ProgressSectionSummary } from "./reader-state";
 import {
   bookmarkHref,
   liveBookmarks,
@@ -32,7 +32,7 @@ export type ReaderExportInput = {
   events: readonly ReaderEngagementEvent[];
   consent: ReaderSyncConsent | null;
   preferences: ReaderPreferences | null;
-  sections: readonly ProgressSection[];
+  sections: readonly ProgressSectionSummary[];
   signedIn: boolean;
   lastSyncedAt: number | null;
   generatedAt: number;
@@ -79,13 +79,13 @@ export function formatDuration(seconds: number): string {
 }
 
 type SectionActivity = {
-  section: ProgressSection;
+  section: ProgressSectionSummary;
   state: SectionReadState;
 };
 
 function sectionsWithActivity(
   progress: ReaderProgressState,
-  sections: readonly ProgressSection[],
+  sections: readonly ProgressSectionSummary[],
 ): SectionActivity[] {
   const seen = new Set<string>();
   const rows: SectionActivity[] = [];
