@@ -88,7 +88,15 @@ export type ProgressSectionData = {
   chapterHref: string;
   readerHref: string;
   audioVersionId: string;
-  paragraphs: ReaderParagraph[];
+};
+
+export type BookmarkSectionData = {
+  sectionId: string;
+  title: string;
+  readerHref: string;
+  paragraphs: Array<
+    Pick<ReaderParagraph, "paragraphId" | "anchor" | "contentHash">
+  >;
 };
 
 // The toolbar outline tree (~68KB) is fetched on demand when the outline menu
@@ -184,6 +192,11 @@ export const loadToolbarOutline = memoizedLoader<ToolbarOutlineData>(
 export const loadProgressSections = memoizedLoader<ProgressSectionData[]>(
   "/data/progress-sections.json",
   "progress section data",
+);
+
+export const loadBookmarkSections = memoizedLoader<BookmarkSectionData[]>(
+  "/data/bookmark-sections.json",
+  "bookmark section data",
 );
 
 export const loadAudioClipManifest = memoizedLoader<AudioClipManifest>(

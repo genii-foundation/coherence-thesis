@@ -1,5 +1,9 @@
 import type { ProgressSection } from "./manuscript-data";
 
+export type ProgressSectionSummary = Omit<ProgressSection, "paragraphs"> & {
+  paragraphs?: ProgressSection["paragraphs"];
+};
+
 export type SectionReadState = {
   sectionId: string;
   contentHash: string;
@@ -525,12 +529,14 @@ export function updatedSinceRead(
 
 function firstChangedParagraphAnchor(
   progress: ReaderProgressState,
-  section: ProgressSection,
+  section: ProgressSectionSummary,
 ): string | null {
+  const paragraphs = section.paragraphs;
+  if (!paragraphs?.length) return null;
   const state = progressStatesForSection(progress, section)
     .filter((candidate) => candidate.readAt > 0)
     .sort((left, right) => right.readAt - left.readAt)[0];
-  if (!state?.paragraphs?.length) return section.paragraphs[0]?.anchor ?? null;
+  if (!state?.paragraphs?.length) return paragraphs[0]?.anchor ?? null;
   const legacyOrdinalParagraphs = state.paragraphs.every((paragraph) =>
     /^p-\d+$/.test(paragraph.paragraphId),
   );
@@ -539,31 +545,31 @@ function firstChangedParagraphAnchor(
       (left, right) =>
         Number(left.paragraphId.slice(2)) - Number(right.paragraphId.slice(2)),
     );
-    const length = Math.max(previous.length, section.paragraphs.length);
+    const length = Math.max(previous.length, paragraphs.length);
     for (let index = 0; index < length; index += 1) {
-      if (previous[index]?.contentHash === section.paragraphs[index]?.contentHash) {
+      if (previous[index]?.contentHash === paragraphs[index]?.contentHash) {
         continue;
       }
       return (
-        section.paragraphs[Math.min(index, section.paragraphs.length - 1)]?.anchor ??
-        section.paragraphs[0]?.anchor ??
+        paragraphs[Math.min(index, paragraphs.length - 1)]?.anchor ??
+        paragraphs[0]?.anchor ??
         null
       );
     }
-    return section.paragraphs[0]?.anchor ?? null;
+    return paragraphs[0]?.anchor ?? null;
   }
   const readParagraphs = new Map(
     state.paragraphs.map((paragraph) => [paragraph.paragraphId, paragraph.contentHash]),
   );
-  const changed = section.paragraphs.find(
+  const changed = paragraphs.find(
     (paragraph) => readParagraphs.get(paragraph.paragraphId) !== paragraph.contentHash,
   );
-  return changed?.anchor ?? section.paragraphs[0]?.anchor ?? null;
+  return changed?.anchor ?? paragraphs[0]?.anchor ?? null;
 }
 
 export function revisedSectionHref(
   progress: ReaderProgressState,
-  section: ProgressSection,
+  section: ProgressSectionSummary,
 ): string {
   const anchor = firstChangedParagraphAnchor(progress, section);
   if (!anchor) return section.readerHref ?? section.href;
@@ -611,7 +617,7 @@ export function readPercent(
 
 export function recommendNextSections(
   progress: ReaderProgressState,
-  sections: ProgressSection[],
+  sections: ProgressSectionSummary[],
   limit = 4,
 ): ReaderRecommendation[] {
   const firstUnread = sections.filter((section) => !isSectionRead(progress, section));
@@ -644,7 +650,7 @@ export function recommendNextSections(
 
 export function recentlyReadSections(
   progress: ReaderProgressState,
-  sections: ProgressSection[],
+  sections: ProgressSectionSummary[],
   limit = 4,
 ): RecentlyReadSection[] {
   return sections

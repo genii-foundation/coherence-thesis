@@ -17,14 +17,6 @@ const heroStatsFont = Bellefair({
 });
 
 const firstReadTarget = catalog.sections[0]!;
-const heroReadTargets = catalog.sections.map((section) => ({
-  sectionId: section.sectionId,
-  continuityId: section.continuityId,
-  legacyContinuityIds: section.legacyContinuityIds,
-  progressContinuityGroups: section.progressContinuityGroups,
-  contentHash: section.contentHash,
-  href: section.readerHref,
-}));
 export default function Home() {
   const volumes = catalog.volumes.map((volume) => ({
     ...volume,
@@ -32,15 +24,6 @@ export default function Home() {
       catalog.sections.find((section) => section.volumeId === volume.volumeId)
         ?.href ?? volume.href,
   }));
-  const progressSections = catalog.sections.map((section) => ({
-    contentHash: section.contentHash,
-    continuityId: section.continuityId,
-    href: section.readerHref,
-    legacyContinuityIds: section.legacyContinuityIds,
-    progressContinuityGroups: section.progressContinuityGroups,
-    sectionId: section.sectionId,
-  }));
-
   return (
     <div className="home-page">
       <section className="hero-section">
@@ -52,10 +35,7 @@ export default function Home() {
             a future worth inheriting.
           </p>
           <div className="hero-cta-stack">
-            <HeroActionsIsland
-              fallbackHref={firstReadTarget.href}
-              sections={heroReadTargets}
-            />
+            <HeroActionsIsland fallbackHref={firstReadTarget.readerHref} />
             <HeroStats
               className={`hero-stats hero-stats--homepage ${heroStatsFont.className}`}
             />
@@ -72,10 +52,7 @@ export default function Home() {
         </div>
       </section>
 
-      <ManuscriptCoverFlowIsland
-        progressSections={progressSections}
-        volumes={volumes}
-      />
+      <ManuscriptCoverFlowIsland volumes={volumes} />
     </div>
   );
 }

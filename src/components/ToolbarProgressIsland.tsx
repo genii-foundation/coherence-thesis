@@ -36,11 +36,15 @@ import {
   readerActiveSectionEvent,
   type ReaderActiveSectionDetail,
 } from "@/lib/reader-active-section";
-import { loadProgressSections } from "@/lib/reader-data";
+import {
+  loadBookmarkSections,
+  loadProgressSections,
+  type BookmarkSectionData,
+  type ProgressSectionData,
+} from "@/lib/reader-data";
 import { useLoadedData } from "@/lib/use-loaded-data";
-import type { ProgressSection } from "@/lib/manuscript-data";
 
-const emptyProgressSections: ProgressSection[] = [];
+const emptyProgressSections: ProgressSectionData[] = [];
 import {
   createEngagementEvent,
   grantSyncConsent,
@@ -166,10 +170,13 @@ export function ToolbarProgressIsland() {
   const resyncPendingRef = useRef(false);
   const progress = useReaderProgress();
   const bookmarks = useReaderBookmarks();
-  const allSections = useLoadedData<ProgressSection[]>(
+  const progressSections = useLoadedData<ProgressSectionData[]>(
     loadProgressSections,
     emptyProgressSections,
   );
+  const [bookmarkSections, setBookmarkSections] = useState<
+    BookmarkSectionData[]
+  >([]);
   const [syncConfigured, setSyncConfigured] = useState(false);
   const [user, setUser] = useState<{ id: string; email?: string } | null>(null);
   const [consent, setConsent] = useState<ReaderSyncConsent>(() => parseSyncConsent(null));
@@ -205,6 +212,30 @@ export function ToolbarProgressIsland() {
       return false;
     },
   });
+
+  useEffect(() => {
+    if (!open || bookmarkSections.length > 0) return;
+    let active = true;
+    loadBookmarkSections()
+      .then((sections) => {
+        if (active) setBookmarkSections(sections);
+      })
+      .catch(() => undefined);
+    return () => {
+      active = false;
+    };
+  }, [bookmarkSections.length, open]);
+
+  const allSections = useMemo(() => {
+    if (bookmarkSections.length === 0) return progressSections;
+    const paragraphsBySectionId = new Map(
+      bookmarkSections.map((section) => [section.sectionId, section.paragraphs]),
+    );
+    return progressSections.map((section) => ({
+      ...section,
+      paragraphs: paragraphsBySectionId.get(section.sectionId),
+    }));
+  }, [bookmarkSections, progressSections]);
 
   const section = useMemo(() => {
     const currentPath = normalizePath(pathname);
