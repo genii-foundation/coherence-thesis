@@ -10,11 +10,11 @@ Written by **Tao Yu**, in tutelage of **Ousia Acharya** · Edited by **Robert Ja
 
 ## ORIENTATION
 
-The Coherence Thesis begins with a constraint: civilization cannot coordinate at planetary scale unless its people can sustain intelligence and trust under pressure. Technology and ideology matter, but neither can override the biological conditions that make coordination possible.
+The Coherence Thesis is an invitation to recognize that the future of civilization will not be decided by technology or ideology, but by whether we learn to organize society around the biological conditions that make intelligence, trust, and coordination possible at planetary scale.
 
-Our crises appear political, ideological, and technological. Beneath them lies a biological oversight. Global interdependence, speed, and systemic entanglement have exceeded the capacity of inherited forms of coordination. Any viable post-extractive future must therefore sustain collective intelligence through coherence.
+Civilization's current crises are not primarily political, ideological, or technological failures. They are biological oversights. Global interdependence, velocity, and total systemic entanglement exceed the capacity of traditional forms of coordination. Any viable post-extractive future must be built on coherence as the substrate that sustains collective intelligence at planetary scale.
 
-This book addresses the widening gap between our technological power and the coherence with which we wield it. Whether we recognize that gap may determine whether civilization adapts, hardens, or collapses.
+This book is written for the moment when the scale of our technological power has begun to exceed the coherence with which we wield it. Recognizing this mismatch may determine whether civilization adapts, hardens, or collapses.
 
 **co·her·ence** | kōˈhirəns |
 *noun*

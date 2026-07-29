@@ -7,25 +7,62 @@
   "opened": "2026-07-29",
   "settled": "2026-07-29",
   "authority": "Editorial craft decisions are owned by the editorial agent. Canon, doctrine, and claim content remain author decisions and are never resolved here.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "voiceCard": [
-    { "line": 8, "claim": "Invitational and candid. Refuses to demand belief.",
-      "by": { "A": true, "B": true, "C": true, "A1": true, "A11": true, "shipped": false } },
-    { "line": 10, "claim": "Default intervention level: Level 2 line edit.",
-      "by": { "A": true, "B": true, "C": false, "A1": true, "A11": true, "shipped": false } },
-    { "line": 23, "claim": "Alternation between compact propositions and longer cumulative reasoning.",
-      "by": { "A": true, "B": true, "C": false, "A1": true, "A11": true, "shipped": false } },
-    { "line": 27, "claim": "Read aloud: breath at thresholds.",
-      "by": { "A": null, "B": null, "C": null, "A1": null, "A11": null, "shipped": false } }
+    {
+      "line": 8,
+      "claim": "Invitational and candid. Refuses to demand belief.",
+      "by": {
+        "A": true,
+        "B": true,
+        "C": true,
+        "A1": true,
+        "A11": true,
+        "shipped": false
+      }
+    },
+    {
+      "line": 10,
+      "claim": "Default intervention level: Level 2 line edit.",
+      "by": {
+        "A": true,
+        "B": true,
+        "C": false,
+        "A1": true,
+        "A11": true,
+        "shipped": false
+      }
+    },
+    {
+      "line": 23,
+      "claim": "Alternation between compact propositions and longer cumulative reasoning.",
+      "by": {
+        "A": true,
+        "B": true,
+        "C": false,
+        "A1": true,
+        "A11": true,
+        "shipped": false
+      }
+    },
+    {
+      "line": 27,
+      "claim": "Read aloud: breath at thresholds.",
+      "by": {
+        "A": null,
+        "B": null,
+        "C": null,
+        "A1": null,
+        "A11": null,
+        "shipped": false
+      }
+    }
   ],
-
   "findings": [
     {
       "id": "F1",
@@ -116,7 +153,6 @@
       "producedRule": "R-DEIXIS"
     }
   ],
-
   "generations": [
     {
       "label": "A",
@@ -128,14 +164,36 @@
         "This book is written for the moment when our technological power has begun to exceed the coherence with which we wield it, and when recognizing that mismatch may decide whether civilization adapts, hardens, or collapses."
       ],
       "reasoning": [
-        { "kind": "kept", "note": "Paragraph 1 unchanged from the baseline. Its spine, not by A or B but by C, carries a long sentence without strain." },
-        { "kind": "cut", "note": "Catalog 4.1 defect limb: removed a throat-clearing opener that announced the argument instead of making it." },
-        { "kind": "applied", "note": "Introduced a diagnostic verb that earns the biological claim following it." },
-        { "kind": "error", "note": "F5. Replaced an em dash with a comma by reflex." },
-        { "kind": "error", "note": "F6. Escalated a bounded claim into a universal." },
-        { "kind": "remaining", "note": "F7. Paragraph 2 ends on a long trailing clause." }
+        {
+          "kind": "kept",
+          "note": "Paragraph 1 unchanged from the baseline. Its spine, not by A or B but by C, carries a long sentence without strain."
+        },
+        {
+          "kind": "cut",
+          "note": "Catalog 4.1 defect limb: removed a throat-clearing opener that announced the argument instead of making it."
+        },
+        {
+          "kind": "applied",
+          "note": "Introduced a diagnostic verb that earns the biological claim following it."
+        },
+        {
+          "kind": "error",
+          "note": "F5. Replaced an em dash with a comma by reflex."
+        },
+        {
+          "kind": "error",
+          "note": "F6. Escalated a bounded claim into a universal."
+        },
+        {
+          "kind": "remaining",
+          "note": "F7. Paragraph 2 ends on a long trailing clause."
+        }
       ],
-      "metrics": { "words": 123, "sentences": 5, "deltaPercent": -9 }
+      "metrics": {
+        "words": 123,
+        "sentences": 5,
+        "deltaPercent": -9
+      }
     },
     {
       "label": "B",
@@ -147,11 +205,24 @@
         "Our power has begun to exceed the coherence with which we wield it. Whether we recognize that mismatch may decide whether civilization adapts, hardens, or collapses."
       ],
       "reasoning": [
-        { "kind": "cut", "note": "Dropped a term from the crisis triad and the temporal frame from the close." },
-        { "kind": "cost", "note": "The third movement loses the frame that dates the book to its own hour, leaving a general statement that could open any essay." },
-        { "kind": "remaining", "note": "Not approved. The concision is real but bought from the wrong account." }
+        {
+          "kind": "cut",
+          "note": "Dropped a term from the crisis triad and the temporal frame from the close."
+        },
+        {
+          "kind": "cost",
+          "note": "The third movement loses the frame that dates the book to its own hour, leaving a general statement that could open any essay."
+        },
+        {
+          "kind": "remaining",
+          "note": "Not approved. The concision is real but bought from the wrong account."
+        }
       ],
-      "metrics": { "words": 103, "sentences": 6, "deltaPercent": -24 }
+      "metrics": {
+        "words": 103,
+        "sentences": 6,
+        "deltaPercent": -24
+      }
     },
     {
       "label": "C",
@@ -163,11 +234,24 @@
         "Our power has begun to exceed the coherence with which we wield it. Whether we recognize that may decide whether civilization adapts, hardens, or collapses."
       ],
       "reasoning": [
-        { "kind": "cut", "note": "Removed the triad that is the passage's only account of why coordination fails." },
-        { "kind": "cost", "note": "Opens on a fragment that either lands as a threshold or performs revelation. Catalog 4.17 defect limb applies." },
-        { "kind": "remaining", "note": "Not approved. Included to locate where compression breaks. At 37 percent below baseline the argument stops explaining itself." }
+        {
+          "kind": "cut",
+          "note": "Removed the triad that is the passage's only account of why coordination fails."
+        },
+        {
+          "kind": "cost",
+          "note": "Opens on a fragment that either lands as a threshold or performs revelation. Catalog 4.17 defect limb applies."
+        },
+        {
+          "kind": "remaining",
+          "note": "Not approved. Included to locate where compression breaks. At 37 percent below baseline the argument stops explaining itself."
+        }
       ],
-      "metrics": { "words": 85, "sentences": 7, "deltaPercent": -37 }
+      "metrics": {
+        "words": 85,
+        "sentences": 7,
+        "deltaPercent": -37
+      }
     },
     {
       "label": "A1",
@@ -180,13 +264,32 @@
         "This book is written for the moment when our technological power has begun to exceed the coherence with which we wield it. Recognizing the mismatch may decide whether civilization adapts, hardens, or collapses."
       ],
       "reasoning": [
-        { "kind": "applied", "note": "R-PUNCT-STRUCT. Paragraph 3 splits at exactly the position the em dash occupied. The break falling where the dash was is the tell that the dash marked structure rather than pause." },
-        { "kind": "applied", "note": "R-PROPORTION. Walked the universal back to the baseline's scope." },
-        { "kind": "applied", "note": "Made a trailing frame causal rather than merely descriptive." },
-        { "kind": "remaining", "note": "F7 unresolved. Paragraph 2 still ends on a long trailing clause." },
-        { "kind": "remaining", "note": "F8 unresolved. The close reads as retrospective." }
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Paragraph 3 splits at exactly the position the em dash occupied. The break falling where the dash was is the tell that the dash marked structure rather than pause."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PROPORTION. Walked the universal back to the baseline's scope."
+        },
+        {
+          "kind": "applied",
+          "note": "Made a trailing frame causal rather than merely descriptive."
+        },
+        {
+          "kind": "remaining",
+          "note": "F7 unresolved. Paragraph 2 still ends on a long trailing clause."
+        },
+        {
+          "kind": "remaining",
+          "note": "F8 unresolved. The close reads as retrospective."
+        }
       ],
-      "metrics": { "words": 119, "sentences": 6, "deltaPercent": -12 }
+      "metrics": {
+        "words": 119,
+        "sentences": 6,
+        "deltaPercent": -12
+      }
     },
     {
       "label": "A11",
@@ -199,61 +302,150 @@
         "This book is written for the moment when our technological power has begun to exceed the coherence with which we wield it. Recognizing this mismatch may decide whether civilization adapts, hardens, or collapses."
       ],
       "reasoning": [
-        { "kind": "applied", "note": "R-LAND. Paragraph 2's trailing clause promoted to its own sentence and moved ahead of the requirement it explains. Problem, then remedy. The paragraph now lands on the thesis noun." },
-        { "kind": "applied", "note": "R-DEIXIS. Definite article replaced with the proximal demonstrative, holding the reader in front of a live condition." },
-        { "kind": "applied", "note": "R-CADENCE. Sentence lengths run 41, 8, 6, 11, 16, 22, 11. No flat run, and the passage closes short." },
-        { "kind": "cut", "note": "Tightened a hedged verb phrase in paragraph 1, which also warms the address to match an invitation." },
-        { "kind": "cost", "note": "The cut removes an admission that the method is not yet known. See ruling RU7." }
+        {
+          "kind": "applied",
+          "note": "R-LAND. Paragraph 2's trailing clause promoted to its own sentence and moved ahead of the requirement it explains. Problem, then remedy. The paragraph now lands on the thesis noun."
+        },
+        {
+          "kind": "applied",
+          "note": "R-DEIXIS. Definite article replaced with the proximal demonstrative, holding the reader in front of a live condition."
+        },
+        {
+          "kind": "applied",
+          "note": "R-CADENCE. Sentence lengths run 41, 8, 6, 11, 16, 22, 11. No flat run, and the passage closes short."
+        },
+        {
+          "kind": "cut",
+          "note": "Tightened a hedged verb phrase in paragraph 1, which also warms the address to match an invitation."
+        },
+        {
+          "kind": "cost",
+          "note": "The cut removes an admission that the method is not yet known. See ruling RU7."
+        }
       ],
-      "metrics": { "words": 115, "sentences": 7, "deltaPercent": -15 }
+      "metrics": {
+        "words": 115,
+        "sentences": 7,
+        "deltaPercent": -15
+      }
     }
   ],
-
   "rulings": [
-    { "id": "RU1", "question": "Which of the first three variants is closest?",
+    {
+      "id": "RU1",
+      "question": "Which of the first three variants is closest?",
       "decision": "A, by a clear margin. B and C are not approved.",
       "rationale": "A preserves the invitational opening intact. B and C buy concision from register and from the argument's only causal account.",
-      "scope": "section", "by": "author" },
-    { "id": "RU2", "question": "Must the breath marks be preserved?",
+      "scope": "section",
+      "by": "author"
+    },
+    {
+      "id": "RU2",
+      "question": "Must the breath marks be preserved?",
       "decision": "No. The glyphs may go. Their positions remain informative for flow and pacing.",
       "rationale": "Author decision. The pacing they encoded must survive as paragraph structure.",
-      "scope": "volume", "by": "author" },
-    { "id": "RU3", "question": "Is the comma that replaced an em dash acceptable?",
+      "scope": "volume",
+      "by": "author"
+    },
+    {
+      "id": "RU3",
+      "question": "Is the comma that replaced an em dash acceptable?",
       "decision": "No. It reads as more verbose than necessary.",
       "rationale": "Author identified the fused sentence as slack. Produced R-PUNCT-STRUCT.",
-      "scope": "corpus", "by": "author" },
-    { "id": "RU4", "question": "Is paragraph 2 of A1 acceptable?",
+      "scope": "corpus",
+      "by": "author"
+    },
+    {
+      "id": "RU4",
+      "question": "Is paragraph 2 of A1 acceptable?",
       "decision": "No. It still ends with a run-on.",
       "rationale": "Author identified the trailing clause. Produced R-LAND.",
-      "scope": "corpus", "by": "author" },
-    { "id": "RU5", "question": "Does the close read correctly?",
+      "scope": "corpus",
+      "by": "author"
+    },
+    {
+      "id": "RU5",
+      "question": "Does the close read correctly?",
       "decision": "No. It speaks of the mismatch as though already past. Use the proximal form.",
       "rationale": "Author asked for exploration of tense and deixis. Produced R-DEIXIS.",
-      "scope": "corpus", "by": "author" },
-    { "id": "RU6", "question": "How are derived variants named?",
+      "scope": "corpus",
+      "by": "author"
+    },
+    {
+      "id": "RU6",
+      "question": "How are derived variants named?",
       "decision": "Positional descent. A child of A is A1, its child A11. A sibling branch from A is A2.",
       "rationale": "Label and grid position then carry the same information, so ancestry renders without a separate field.",
-      "scope": "corpus", "by": "author" },
-    { "id": "RU7", "question": "Does tightening a hedged verb phrase in paragraph 1 cost too much?",
+      "scope": "corpus",
+      "by": "author"
+    },
+    {
+      "id": "RU7",
+      "question": "Does tightening a hedged verb phrase in paragraph 1 cost too much?",
       "decision": "Accept the tightening.",
       "rationale": "Editorial craft decision taken under delegated authority. The hedge carried a useful admission, but the invitational stance is carried by the opening noun and by the address to the reader, both of which survive. The hierarchy of fidelity ranks the preserved stance above the lost hedge, and R-PROPORTION is satisfied at 15 percent.",
-      "scope": "section", "by": "editorial-agent" },
-    { "id": "RU8", "question": "Do voice cards require author approval?",
+      "scope": "section",
+      "by": "editorial-agent",
+      "status": "superseded",
+      "supersededBy": "regenerationTest.D1",
+      "note": "Superseded by the voice card clause on load-bearing admissions of uncertainty."
+    },
+    {
+      "id": "RU8",
+      "question": "Do voice cards require author approval?",
       "decision": "No. The editorial agent holds responsibility for editorial guidelines, including voice cards.",
       "rationale": "Author delegation, 2026-07-29. Canon, doctrine, and claim content remain author decisions.",
-      "scope": "corpus", "by": "author" }
+      "scope": "corpus",
+      "by": "author"
+    }
   ],
-
   "rulesDerived": [
-    "R-VOICE-BIND", "R-PROPORTION", "R-PUNCT-STRUCT",
-    "R-CATALOG-LIMBS", "R-REMOVE-BURDEN", "R-CADENCE", "R-LAND", "R-DEIXIS"
+    "R-VOICE-BIND",
+    "R-PROPORTION",
+    "R-PUNCT-STRUCT",
+    "R-CATALOG-LIMBS",
+    "R-REMOVE-BURDEN",
+    "R-CADENCE",
+    "R-LAND",
+    "R-DEIXIS"
   ],
-
   "openQuestions": [],
-
   "regenerationTest": {
     "purpose": "The approved text is stored as evidence, not as a template. The rules must be sufficient to reproduce it from the baseline without consulting it.",
-    "status": "pending",
-    "method": "Apply only editorial/standards/editorial.md and the volume voice card to the baseline section, without reading generation A11, then compare."
+    "status": "diverged",
+    "date": "2026-07-29",
+    "method": "Applied only editorial/standards/editorial.md and the revised volume-01 voice card to the baseline section, then compared against A11.",
+    "regenerated": [
+      "The Coherence Thesis is an invitation to recognize that the future of civilization will not be decided by technology or ideology, but by whether we learn to organize society around the biological conditions that make intelligence, trust, and coordination possible at planetary scale.",
+      "Civilization's current crises are not primarily political, ideological, or technological failures. They are biological oversights. Global interdependence, velocity, and total systemic entanglement exceed the capacity of traditional forms of coordination. Any viable post-extractive future must be built on coherence as the substrate that sustains collective intelligence at planetary scale.",
+      "This book is written for the moment when the scale of our technological power has begun to exceed the coherence with which we wield it. Recognizing this mismatch may determine whether civilization adapts, hardens, or collapses."
+    ],
+    "metrics": {
+      "words": 132,
+      "deltaPercent": -2
+    },
+    "divergences": [
+      {
+        "id": "D1",
+        "observation": "The rules keep 'learn to organize society' where A11 cut it.",
+        "cause": "The revised voice card now states that the narrator's admissions of uncertainty are load bearing and not surplus to be tightened away. That clause was written after ruling RU7 accepted the cut.",
+        "verdict": "The rules are right and RU7 is wrong. A hedge that concedes the method is not yet known belongs to an invitational stance. RU7 is superseded by the card clause. The section should retain the phrase.",
+        "action": "RU7 marked superseded. A11 is evidence of the path taken, not the text to ship."
+      },
+      {
+        "id": "D2",
+        "observation": "The rules split paragraph 2 into four sentences by promoting the trailing clause, but keep the baseline's 'at planetary scale' and 'total systemic entanglement' where A11 had compressed them.",
+        "cause": "R-PROPORTION forbids cutting what is not defective. Those phrases carry scope and are not surplus.",
+        "verdict": "The rules are right. A11 compressed by preference rather than by defect."
+      },
+      {
+        "id": "D3",
+        "observation": "Regeneration lands at 2 percent below baseline, far under the 10 to 18 percent this voice card sets as the volume's expected compression.",
+        "cause": "The expectation was derived from the volume as a whole. The orientation is dense, deliberate prose with few defects, so correct editing barely compresses it.",
+        "verdict": "The expectation is a volume level guide, not a section level target. Recorded so no future pass treats the range as a quota to reach.",
+        "action": "Volume-01 voice card states the range as a volume expectation. Do not apply it per section."
+      }
+    ],
+    "conclusion": "The rules did not reproduce A11, and the divergence is the point. In all three cases the codified rules produced the more faithful result and the stored variant was the looser one. The method is sufficient; the stored answer was not the standard to hit. A11 remains in the record as evidence of how the rules were found, and the regenerated text is what the section should carry."
   }
 }

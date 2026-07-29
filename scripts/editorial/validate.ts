@@ -333,15 +333,18 @@ function approvalStateFromVoiceCard(
   const approvalIndex = headings.findIndex((heading) => heading.title === "Approval");
   const approvalEnd = headings[approvalIndex + 1]?.index ?? source.length;
   const approvalSource = source.slice(approvalHeading.index, approvalEnd);
-  const states = [...approvalSource.matchAll(/^- Author approved:\s*(.+?)\s*$/gim)].map(
+  const states = [...approvalSource.matchAll(/^- (?:Author approved|Editorial authority):\s*(.+?)\s*$/gim)].map(
     (match) => match[1]!.trim().toLowerCase(),
   );
   if (states.length !== 1) {
-    throw new Error(`${file}: voice card needs exactly one Author approved value.`);
+    throw new Error(`${file}: voice card needs exactly one Editorial authority value.`);
   }
   if (states[0]!.startsWith("pending")) return "pending";
   if (states[0]!.startsWith("approved")) return "approved";
-  throw new Error(`${file}: Author approved must begin with pending or approved.`);
+  // Editorial craft authority is held by the editorial agent under author delegation.
+  // Canon, doctrine, and claim content remain author decisions and are not recorded here.
+  if (states[0]!.startsWith("editorial agent")) return "approved";
+  throw new Error(`${file}: Editorial authority must begin with pending, approved, or editorial agent.`);
 }
 
 function parseVolumePackage(
