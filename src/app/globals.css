@@ -4895,6 +4895,141 @@ a.bookmark-quote:focus-visible {
   outline-offset: 0.3rem;
 }
 
+.settings-focus-scale {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+
+.settings-focus-label {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  gap: 0.35rem;
+}
+
+.settings-help-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: help;
+  padding: 0;
+  transition:
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.settings-help-button:hover,
+.settings-help-button:focus-visible {
+  background: var(--nav-hover-background);
+  color: var(--ink);
+  outline: none;
+}
+
+.settings-research-popover {
+  --tooltip-background: var(--panel-background);
+  --tooltip-border-color: rgba(119, 84, 42, 0.48);
+
+  z-index: 100;
+  display: grid;
+  gap: 0.62rem;
+  width: min(22rem, calc(100vw - 1.5rem));
+  border-radius: 10px;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  padding: 1rem;
+}
+
+.settings-research-lede,
+.settings-research-summary {
+  margin: 0;
+}
+
+.settings-research-lede {
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.38;
+}
+
+.settings-research-summary {
+  color: var(--ink-soft);
+  font-size: 0.74rem;
+  line-height: 1.45;
+  opacity: 0.76;
+}
+
+.settings-research-links {
+  display: grid;
+  gap: 0.34rem;
+}
+
+.settings-research-links a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 2.65rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  padding: 0.46rem 0.58rem;
+  text-decoration: none;
+}
+
+.settings-research-links a > span {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.settings-research-links strong,
+.settings-research-links small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.settings-research-links strong {
+  font-size: 0.75rem;
+  line-height: 1.25;
+}
+
+.settings-research-links small {
+  color: var(--ink-soft);
+  font-size: 0.68rem;
+  line-height: 1.2;
+}
+
+.settings-research-links a:hover,
+.settings-research-links a:focus-visible {
+  border-color: rgba(119, 84, 42, 0.56);
+  background: var(--nav-hover-background);
+  color: var(--bronze-deep);
+  outline: none;
+}
+
+.settings-research-popover-arrow {
+  margin-top: -1px;
+}
+
+.settings-focus-example {
+  color: var(--ink);
+}
+
+.settings-focus-example strong {
+  font-weight: 650;
+}
+
 .font-select {
   position: relative;
 }
@@ -6013,7 +6148,7 @@ a.bookmark-quote:focus-visible {
   border-radius: var(--radius);
   box-shadow: 0 18px 42px rgb(19 32 42 / 0.2);
   outline: none;
-  padding: 0.72rem;
+  padding: 0.95rem;
 }
 
 .progress-heatmap-tooltip-arrow {
@@ -6218,6 +6353,27 @@ a.bookmark-quote:focus-visible {
 .manuscript-prose strong {
   color: var(--bronze-deep);
   font-weight: 700;
+}
+
+html[data-reader-focus="light"] {
+  --reader-focus-weight: 550;
+}
+
+html[data-reader-focus="normal"] {
+  --reader-focus-weight: 600;
+}
+
+html[data-reader-focus="strong"] {
+  --reader-focus-weight: 650;
+}
+
+html[data-reader-focus="light"] .focus-emphasis-light,
+html[data-reader-focus="normal"] .focus-emphasis-light,
+html[data-reader-focus="normal"] .focus-emphasis-normal,
+html[data-reader-focus="strong"] .focus-emphasis-light,
+html[data-reader-focus="strong"] .focus-emphasis-normal,
+html[data-reader-focus="strong"] .focus-emphasis-strong {
+  font-weight: var(--reader-focus-weight);
 }
 
 .audio-word {

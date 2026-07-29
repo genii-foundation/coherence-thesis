@@ -45,12 +45,49 @@ test("reader settings update and persist local appearance preferences", async ({
   const resetThemeButton = settingsMenu.getByRole("button", {
     name: "Reset theme",
   });
+  const resetFocusButton = settingsMenu.getByRole("button", {
+    name: "Reset focus mode",
+  });
   await expect(resetFontSizeButton).toBeVisible();
   await expect(resetFontSizeButton).toBeDisabled();
   await expect(resetFontButton).toBeVisible();
   await expect(resetFontButton).toBeDisabled();
   await expect(resetThemeButton).toBeVisible();
   await expect(resetThemeButton).toBeDisabled();
+  await expect(resetFocusButton).toBeVisible();
+  await expect(resetFocusButton).toBeDisabled();
+  const focusResearchButton = settingsMenu.getByRole("button", {
+    name: "Focus mode research",
+  });
+  await expect(focusResearchButton).toBeVisible();
+  await focusResearchButton.click();
+  const focusResearchPopover = page.getByRole("dialog", {
+    name: "Focus mode research",
+  });
+  await expect(focusResearchPopover).toBeVisible();
+  await expect(focusResearchPopover).toContainText(
+    "Focus mode may potentially assist with speed reading and comprehension.",
+  );
+  await expect(focusResearchPopover).toContainText(
+    "They do not establish that partial-word emphasis improves reading speed or comprehension.",
+  );
+  const researchLinks = focusResearchPopover.getByRole("link");
+  await expect(researchLinks).toHaveCount(3);
+  await expect(researchLinks.nth(0)).toHaveAttribute(
+    "href",
+    "https://doi.org/10.3389/fpsyg.2012.00085",
+  );
+  await expect(researchLinks.nth(1)).toHaveAttribute(
+    "href",
+    "https://doi.org/10.1016/j.visres.2013.03.005",
+  );
+  await expect(researchLinks.nth(2)).toHaveAttribute(
+    "href",
+    "https://doi.org/10.3758/BF03194790",
+  );
+  await focusResearchButton.click();
+  await expect(focusResearchPopover).toHaveCount(0);
+  await expect(settingsMenu).toBeVisible();
   const balancedAnimations = settingsMenu.getByRole("radio", {
     name: "Balanced",
   });
@@ -129,9 +166,64 @@ test("reader settings update and persist local appearance preferences", async ({
         : "",
       rootTheme: document.documentElement.dataset.readerTheme ?? "",
       rootAnimations: document.documentElement.dataset.readerAnimations ?? "",
+      rootFocus: document.documentElement.dataset.readerFocus ?? "",
     };
   });
   expect(initialAppearance.rootAnimations).toBe("balanced");
+  expect(initialAppearance.rootFocus).toBe("none");
+
+  const focusSlider = page.getByRole("slider", { name: "Focus mode" });
+  await expect(focusSlider).toHaveValue("0");
+  await expect(focusSlider).toHaveAttribute("aria-valuetext", "None");
+  await focusSlider.evaluate((element) => {
+    const input = element as HTMLInputElement;
+    const valueSetter = Object.getOwnPropertyDescriptor(
+      window.HTMLInputElement.prototype,
+      "value",
+    )?.set;
+    valueSetter?.call(input, "3");
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+  });
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-reader-focus",
+    "strong",
+  );
+  await expect(focusSlider).toHaveAttribute("aria-valuetext", "Strong");
+  await expect(resetFocusButton).toBeEnabled();
+  const activeFocusMetrics = await firstParagraph
+    .locator(".focus-word")
+    .first()
+    .evaluate((word) => {
+      const emphasized = word.querySelector<HTMLElement>(
+        ".focus-emphasis-light",
+      );
+      return {
+        focusFontWeight: emphasized
+          ? Number.parseInt(getComputedStyle(emphasized).fontWeight, 10)
+          : 0,
+        emphasizedText: emphasized?.textContent ?? "",
+        renderedWord: word.textContent,
+      };
+    });
+  expect(activeFocusMetrics.focusFontWeight).toBe(650);
+  expect(activeFocusMetrics.emphasizedText.length).toBeGreaterThan(0);
+  expect(activeFocusMetrics.renderedWord).toContain(
+    activeFocusMetrics.emphasizedText,
+  );
+  await resetFocusButton.click();
+  await expect(focusSlider).toHaveValue("0");
+  await expect(resetFocusButton).toBeDisabled();
+  await focusSlider.evaluate((element) => {
+    const input = element as HTMLInputElement;
+    const valueSetter = Object.getOwnPropertyDescriptor(
+      window.HTMLInputElement.prototype,
+      "value",
+    )?.set;
+    valueSetter?.call(input, "3");
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+  });
 
   const fontSizeSlider = page.getByRole("slider", { name: "Font size" });
   await fontSizeSlider.evaluate((element) => {
@@ -287,6 +379,7 @@ test("reader settings update and persist local appearance preferences", async ({
         : "",
       rootTheme: document.documentElement.dataset.readerTheme ?? "",
       rootAnimations: document.documentElement.dataset.readerAnimations ?? "",
+      rootFocus: document.documentElement.dataset.readerFocus ?? "",
       stored,
     };
   });
@@ -302,6 +395,7 @@ test("reader settings update and persist local appearance preferences", async ({
   expect(changedAppearance.toolbarFontFamily).toContain("Newsreader");
   expect(changedAppearance.rootTheme).toBe("black");
   expect(changedAppearance.rootAnimations).toBe("none");
+  expect(changedAppearance.rootFocus).toBe("strong");
   expect(changedAppearance.bodyBackground).toBe("rgb(0, 0, 0)");
   expect(changedAppearance.headerBackground).toBe("rgb(0, 0, 0)");
   expect(changedAppearance.bodyBackground).not.toBe(initialBodyBackground);
@@ -313,6 +407,7 @@ test("reader settings update and persist local appearance preferences", async ({
     animations: "none",
     highlights: "on",
     schemaVersion: 2,
+    focus: "strong",
   });
 
   await page.keyboard.press("Escape");
@@ -336,6 +431,9 @@ test("reader settings update and persist local appearance preferences", async ({
     page.getByRole("button", { name: "Reader font" }),
   ).toContainText("Newsreader");
   await expect(page.getByRole("radio", { name: "None" })).toBeChecked();
+  await expect(page.getByRole("slider", { name: "Focus mode" })).toHaveValue(
+    "3",
+  );
 
   const storedAfterReload = await page.evaluate((key) => {
     const paragraph = document.querySelector(".manuscript-prose p");
@@ -353,6 +451,7 @@ test("reader settings update and persist local appearance preferences", async ({
     animations: "none",
     highlights: "on",
     schemaVersion: 2,
+    focus: "strong",
   });
 
   await page.goto("/");
@@ -363,6 +462,10 @@ test("reader settings update and persist local appearance preferences", async ({
   await expect(page.locator("html")).toHaveAttribute(
     "data-reader-animations",
     "none",
+  );
+  await expect(page.locator("html")).toHaveAttribute(
+    "data-reader-focus",
+    "strong",
   );
   const homeAppearance = await page.evaluate(() => {
     const brandTitle = document.querySelector(".brand-title");
@@ -378,4 +481,24 @@ test("reader settings update and persist local appearance preferences", async ({
   });
   expect(homeAppearance.brandFontFamily).toContain("Newsreader");
   expect(homeAppearance.heroFontFamily).toContain("Newsreader");
+});
+
+test("focus mode research closes before its parent settings menu", async ({
+  page,
+}) => {
+  await page.goto(firstSection.href);
+  await page.getByRole("button", { name: "Reader settings" }).click();
+
+  const settingsMenu = page.getByRole("region", { name: "Reader settings" });
+  await settingsMenu
+    .getByRole("button", { name: "Focus mode research" })
+    .click();
+
+  const researchPopover = page.getByRole("dialog", {
+    name: "Focus mode research",
+  });
+  await expect(researchPopover).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(researchPopover).toHaveCount(0);
+  await expect(settingsMenu).toBeVisible();
 });

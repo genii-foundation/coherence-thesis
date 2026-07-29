@@ -251,6 +251,7 @@ describe("reader data export", () => {
 
     expect(markdown).toContain("## Your settings");
     expect(markdown).toContain("- Theme: dark");
+    expect(markdown).toContain("- Focus mode: none");
   });
 
   it("keeps the production report sections ordered and unambiguous", () => {
