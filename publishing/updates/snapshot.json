@@ -2,8 +2,68 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "ee7bb3e5fd6474023225d7b05c6fa8a71c7a9024",
+  "headSha": "d000fe50882c4664f96dccdea38b4b370dfb368d",
   "commits": [
+    {
+      "sha": "d000fe50882c4664f96dccdea38b4b370dfb368d",
+      "committedAt": "2026-07-28T17:46:28.000Z",
+      "subject": "docs: add production monitoring roadmap item (#163)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/d000fe50882c4664f96dccdea38b4b370dfb368d",
+      "filesChanged": 2,
+      "additions": 12,
+      "deletions": 1,
+      "isLiterary": false
+    },
+    {
+      "sha": "654a2c36ba825ee191e67ded3b193ff4e0acde24",
+      "committedAt": "2026-07-28T05:29:25.000Z",
+      "subject": "perf(reader): reduce mobile data pressure (#162)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/654a2c36ba825ee191e67ded3b193ff4e0acde24",
+      "filesChanged": 17,
+      "additions": 230,
+      "deletions": 92,
+      "isLiterary": false
+    },
+    {
+      "sha": "87ff7cf7e55c8059e3f85f73fa8d149cf91a2ce9",
+      "committedAt": "2026-07-27T23:47:46.000Z",
+      "subject": "Show bookmark matches first in search (#160)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/87ff7cf7e55c8059e3f85f73fa8d149cf91a2ce9",
+      "filesChanged": 11,
+      "additions": 827,
+      "deletions": 162,
+      "isLiterary": false
+    },
+    {
+      "sha": "8303fe0c1269d45224257bc4550c407b9a0cb23c",
+      "committedAt": "2026-07-27T21:55:46.000Z",
+      "subject": "Add passage bookmarks and production sync (#159)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/8303fe0c1269d45224257bc4550c407b9a0cb23c",
+      "filesChanged": 48,
+      "additions": 7210,
+      "deletions": 187,
+      "isLiterary": false
+    },
+    {
+      "sha": "e51e570f3d7d74d1164daf6ea2703e9bf6e79313",
+      "committedAt": "2026-07-27T20:38:25.000Z",
+      "subject": "fix: keep word tooltip in scroll layout (#158)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/e51e570f3d7d74d1164daf6ea2703e9bf6e79313",
+      "filesChanged": 5,
+      "additions": 91,
+      "deletions": 203,
+      "isLiterary": false
+    },
+    {
+      "sha": "4d7cbd82d1b4daeb8ce46bb1150c2198c847bfc8",
+      "committedAt": "2026-07-27T19:25:28.000Z",
+      "subject": "fix: anchor the word playback tooltip and underline the spoken word (#156)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/4d7cbd82d1b4daeb8ce46bb1150c2198c847bfc8",
+      "filesChanged": 7,
+      "additions": 362,
+      "deletions": 14,
+      "isLiterary": false
+    },
     {
       "sha": "ee7bb3e5fd6474023225d7b05c6fa8a71c7a9024",
       "committedAt": "2026-07-27T05:31:16.000Z",

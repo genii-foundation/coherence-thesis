@@ -12,8 +12,16 @@ import {
 } from "react";
 import * as Popover from "@radix-ui/react-popover";
 import { Check, RotateCcw } from "lucide-react";
-import { useReaderProgress } from "@/lib/reader-progress-store";
 import {
+  useReaderBookmarks,
+  useReaderProgress,
+} from "@/lib/reader-progress-store";
+import {
+  bookmarkedProgressKeys,
+  sectionHasBookmarks,
+} from "@/lib/reader-bookmarks";
+import {
+  cellHasBookmarks,
   progressForHeatmapCell,
   readCellsPercent,
   type ReaderHeatmapCell,
@@ -35,15 +43,21 @@ function cellLabel({
   cell,
   percent,
   revised,
+  bookmarked,
   volumeTitle,
 }: {
   cell: ReaderHeatmapCell;
   percent: number;
   revised: boolean;
+  bookmarked: boolean;
   volumeTitle: string;
 }): string {
   const revisedText = revised ? ", revised since read" : "";
-  return `${volumeTitle}, ${cell.primary.title}, ${percent}% read${revisedText}`;
+  // Folded into the one label rather than added as a second labelled node: the
+  // button already carries this string twice, as aria-label and as an sr-only
+  // span, and a third labelled child would give it two accessible names.
+  const bookmarkedText = bookmarked ? ", bookmarked" : "";
+  return `${volumeTitle}, ${cell.primary.title}, ${percent}% read${revisedText}${bookmarkedText}`;
 }
 
 function uniqueCellSections(cell: ReaderHeatmapCell): ReaderHeatmapSectionPortion[] {
@@ -75,25 +89,40 @@ function sectionCountLabel(count: number): string {
 function cellStatusClass({
   percent,
   revised,
+  bookmarked,
 }: {
   percent: number;
   revised: boolean;
+  bookmarked: boolean;
 }): string {
-  if (revised) return "progress-heatmap-cell progress-heatmap-cell-revised";
-  if (percent >= 100) return "progress-heatmap-cell progress-heatmap-cell-read";
-  if (percent > 0) return "progress-heatmap-cell progress-heatmap-cell-partial";
-  return "progress-heatmap-cell progress-heatmap-cell-unread";
+  // The bookmark modifier composes with all four states rather than replacing
+  // one, because it is a shape and not a colour. Sage already means read and
+  // bronze already means revised; a fourth hue on an 11.5px dot across four
+  // themes is a losing game, so the silhouette carries the signal.
+  const bookmark = bookmarked ? " progress-heatmap-cell-bookmarked" : "";
+  if (revised) {
+    return `progress-heatmap-cell progress-heatmap-cell-revised${bookmark}`;
+  }
+  if (percent >= 100) {
+    return `progress-heatmap-cell progress-heatmap-cell-read${bookmark}`;
+  }
+  if (percent > 0) {
+    return `progress-heatmap-cell progress-heatmap-cell-partial${bookmark}`;
+  }
+  return `progress-heatmap-cell progress-heatmap-cell-unread${bookmark}`;
 }
 
 function ReaderProgressHeatmapCell({
   cell,
   progress,
+  bookmarkedKeys,
   volumeTitle,
   activeCell,
   setActiveCell,
 }: {
   cell: ReaderHeatmapCell;
   progress: ReturnType<typeof useReaderProgress>;
+  bookmarkedKeys: ReadonlySet<string>;
   volumeTitle: string;
   activeCell: ActiveHeatmapCell;
   setActiveCell: Dispatch<SetStateAction<ActiveHeatmapCell>>;
@@ -101,6 +130,7 @@ function ReaderProgressHeatmapCell({
   const cellButtonRef = useRef<HTMLButtonElement | null>(null);
   const hoverCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const state = progressForHeatmapCell(progress, cell);
+  const bookmarked = cellHasBookmarks(bookmarkedKeys, cell);
   const tooltipId = `progress-heatmap-tooltip-${cell.id}`;
   const cellSections = uniqueCellSections(cell);
   const isOpen = activeCell?.id === cell.id;
@@ -108,6 +138,7 @@ function ReaderProgressHeatmapCell({
     cell,
     percent: state.percent,
     revised: state.revised,
+    bookmarked,
     volumeTitle,
   });
 
@@ -166,7 +197,8 @@ function ReaderProgressHeatmapCell({
           <button
             ref={cellButtonRef}
             type="button"
-            className={cellStatusClass(state)}
+            className={cellStatusClass({ ...state, bookmarked })}
+            data-bookmarked={bookmarked ? "true" : undefined}
             aria-label={label}
             aria-describedby={isOpen ? tooltipId : undefined}
             aria-expanded={isOpen}
@@ -201,6 +233,9 @@ function ReaderProgressHeatmapCell({
             sideOffset={12}
             collisionPadding={10}
             arrowPadding={12}
+            // Same rule as every other bubble of this style: track the cell it
+            // belongs to, and hide once that cell scrolls out of view.
+            hideWhenDetached
             onOpenAutoFocus={(event) => event.preventDefault()}
             onCloseAutoFocus={(event) => event.preventDefault()}
             onPointerDownOutside={(event) => {
@@ -229,6 +264,11 @@ function ReaderProgressHeatmapCell({
                 <span className="progress-heatmap-tooltip-read-tag">
                   {state.percent}% read
                 </span>
+                {bookmarked && (
+                  <span className="progress-heatmap-tooltip-read-tag">
+                    bookmarked
+                  </span>
+                )}
                 {state.revised && (
                   <span className="progress-heatmap-tooltip-status-tag">
                     revised
@@ -269,7 +309,15 @@ export function ReaderProgressHeatmapIsland({
   model: ReaderHeatmapModel;
 }) {
   const progress = useReaderProgress();
+  const bookmarks = useReaderBookmarks();
   const [activeCell, setActiveCell] = useState<ActiveHeatmapCell>(null);
+  // Built once per bookmark change, not per cell. progressForHeatmapCell
+  // already runs about three thousand times per render pass over this grid, so
+  // a per-cell scan of the bookmark list would be the third such traversal.
+  const bookmarkedKeys = useMemo(
+    () => bookmarkedProgressKeys(bookmarks),
+    [bookmarks],
+  );
   const cells = useMemo(
     () => model.volumes.flatMap((volume) => volume.cells),
     [model],
@@ -286,6 +334,12 @@ export function ReaderProgressHeatmapIsland({
   const revisedSectionCount = useMemo(
     () => sections.filter((section) => updatedSinceRead(progress, section)).length,
     [progress, sections],
+  );
+  const bookmarkedSectionCount = useMemo(
+    () =>
+      sections.filter((section) => sectionHasBookmarks(bookmarkedKeys, section))
+        .length,
+    [bookmarkedKeys, sections],
   );
 
   return (
@@ -304,6 +358,12 @@ export function ReaderProgressHeatmapIsland({
         <div>
           <strong>{revisedSectionCount.toLocaleString()}</strong>
           <span>revised sections</span>
+        </div>
+        <div>
+          <strong>{bookmarkedSectionCount.toLocaleString()}</strong>
+          <span>
+            bookmarked {bookmarkedSectionCount === 1 ? "section" : "sections"}
+          </span>
         </div>
       </div>
 
@@ -340,6 +400,7 @@ export function ReaderProgressHeatmapIsland({
                   <ReaderProgressHeatmapCell
                     key={cell.id}
                     activeCell={activeCell}
+                    bookmarkedKeys={bookmarkedKeys}
                     cell={cell}
                     progress={progress}
                     setActiveCell={setActiveCell}

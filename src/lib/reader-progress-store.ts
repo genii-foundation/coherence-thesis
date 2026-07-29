@@ -1,6 +1,5 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
 import {
   addEngagementEvent,
   parseEngagementEvents,
@@ -13,6 +12,15 @@ import {
   type ReaderSyncConsent,
 } from "./reader-engagement";
 import {
+  emptyBookmarks,
+  parseBookmarks,
+  readerBookmarksStorageKey,
+  readerBookmarksUpdatedEvent,
+  serializeBookmarks,
+  type ReaderBookmarksState,
+} from "./reader-bookmarks";
+import { createReaderStore } from "./reader-store";
+import {
   emptyProgress,
   parseProgress,
   readerProgressStorageKey,
@@ -22,81 +30,38 @@ import {
   type ReaderProgressState,
 } from "./reader-state";
 
-export function readStoredProgress(): ReaderProgressState {
-  if (typeof window === "undefined") return emptyProgress();
-  const v2 = window.localStorage.getItem(readerProgressV2StorageKey);
-  if (v2) return parseProgress(v2);
-  return parseProgress(window.localStorage.getItem(readerProgressStorageKey));
-}
-
-export function writeStoredProgress(progress: ReaderProgressState): void {
-  window.localStorage.setItem(readerProgressV2StorageKey, serializeProgress(progress));
-  window.dispatchEvent(new Event(readerProgressUpdatedEvent));
-}
-
 // Single source of truth for reader progress, shared by every island via
 // useReaderProgress(). Previously each island kept a private React copy and
 // wrote its own stale snapshot back, so concurrent writers (a scroll tick vs an
 // audio-seconds update) dropped each other's changes. All reads and writes now
 // flow through one in-memory snapshot that is kept in sync with localStorage
 // and with other tabs.
-let cachedProgress: ReaderProgressState | null = null;
-let writingInternally = false;
-const progressListeners = new Set<() => void>();
-const serverProgressSnapshot = emptyProgress();
+//
+// The subscription machinery that guarantees this lives in reader-store.ts, so
+// bookmarks below get the identical guarantees from the same code rather than a
+// second copy of it.
+const progressStore = createReaderStore<ReaderProgressState>({
+  storageKey: readerProgressV2StorageKey,
+  legacyStorageKey: readerProgressStorageKey,
+  updatedEvent: readerProgressUpdatedEvent,
+  parse: parseProgress,
+  serialize: serializeProgress,
+  empty: emptyProgress,
+});
 
-function progressSnapshot(): ReaderProgressState {
-  if (cachedProgress === null) cachedProgress = readStoredProgress();
-  return cachedProgress;
+export function readStoredProgress(): ReaderProgressState {
+  return progressStore.read();
 }
 
-function handleProgressStorageChange(event?: Event): void {
-  // A same-tab write already updated the cache and notified listeners; ignore
-  // the event it dispatched.
-  if (writingInternally) return;
-  if (
-    event instanceof StorageEvent &&
-    event.key &&
-    event.key !== readerProgressV2StorageKey &&
-    event.key !== readerProgressStorageKey
-  ) {
-    return;
-  }
-  cachedProgress = readStoredProgress();
-  progressListeners.forEach((listener) => listener());
-}
-
-function subscribeProgress(listener: () => void): () => void {
-  if (progressListeners.size === 0 && typeof window !== "undefined") {
-    window.addEventListener("storage", handleProgressStorageChange);
-    window.addEventListener(readerProgressUpdatedEvent, handleProgressStorageChange);
-  }
-  progressListeners.add(listener);
-  return () => {
-    progressListeners.delete(listener);
-    if (progressListeners.size === 0 && typeof window !== "undefined") {
-      window.removeEventListener("storage", handleProgressStorageChange);
-      window.removeEventListener(
-        readerProgressUpdatedEvent,
-        handleProgressStorageChange,
-      );
-    }
-  };
-}
-
-function getServerProgress(): ReaderProgressState {
-  return serverProgressSnapshot;
+export function writeStoredProgress(progress: ReaderProgressState): void {
+  progressStore.write(progress);
 }
 
 // Read the current progress reactively. Returns emptyProgress on the server and
 // during hydration, then the persisted value once mounted, with no flash and no
 // manual storage-event wiring in the component.
 export function useReaderProgress(): ReaderProgressState {
-  return useSyncExternalStore(
-    subscribeProgress,
-    progressSnapshot,
-    getServerProgress,
-  );
+  return progressStore.useValue();
 }
 
 // Atomic read-modify-write against the shared snapshot. The updater always sees
@@ -104,18 +69,33 @@ export function useReaderProgress(): ReaderProgressState {
 export function updateStoredProgress(
   updater: (current: ReaderProgressState) => ReaderProgressState,
 ): ReaderProgressState {
-  const current = progressSnapshot();
-  const next = updater(current);
-  if (next === current) return current;
-  cachedProgress = next;
-  writingInternally = true;
-  try {
-    writeStoredProgress(next);
-  } finally {
-    writingInternally = false;
-  }
-  progressListeners.forEach((listener) => listener());
-  return next;
+  return progressStore.update(updater);
+}
+
+const bookmarksStore = createReaderStore<ReaderBookmarksState>({
+  storageKey: readerBookmarksStorageKey,
+  updatedEvent: readerBookmarksUpdatedEvent,
+  parse: parseBookmarks,
+  serialize: serializeBookmarks,
+  empty: emptyBookmarks,
+});
+
+export function readStoredBookmarks(): ReaderBookmarksState {
+  return bookmarksStore.read();
+}
+
+export function writeStoredBookmarks(bookmarks: ReaderBookmarksState): void {
+  bookmarksStore.write(bookmarks);
+}
+
+export function useReaderBookmarks(): ReaderBookmarksState {
+  return bookmarksStore.useValue();
+}
+
+export function updateStoredBookmarks(
+  updater: (current: ReaderBookmarksState) => ReaderBookmarksState,
+): ReaderBookmarksState {
+  return bookmarksStore.update(updater);
 }
 
 export function readStoredEvents(): ReaderEngagementEvent[] {

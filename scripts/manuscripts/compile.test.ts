@@ -15,6 +15,7 @@ vi.mock("./shared", () => ({
     volumes: [],
   }),
   buildSearchIndex: () => [],
+  bookmarkSectionsPath: "/repo/public/data/bookmark-sections.json",
   breadcrumbsDir: "/repo/public/data/breadcrumbs",
   catalogPath: "/repo/src/generated/manuscripts/catalog.json",
   cleanDir: vi.fn(),

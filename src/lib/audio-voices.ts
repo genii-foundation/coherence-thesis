@@ -15,6 +15,8 @@ export type AudioVoiceMenuGroups = {
   system: AudioVoiceMenuOption[];
 };
 
+export const calmMaleNarratorLabel = "Calm Male Narrator";
+
 export const systemVoiceOption: AudioPlaybackVoice = {
   id: "",
   label: "System voice",
@@ -42,18 +44,17 @@ export function audioVoiceMenuGroups(input: {
       )
       .map((voice) => voice.id),
   );
-  const highQuality = declaredHighQuality.filter((voice) => {
-    const voiceId = parseClipVoicePreferenceId(voice.id);
-    return voiceId !== null && availableVoiceIds.has(voiceId);
-  });
+  const highQuality = declaredHighQuality
+    .filter((voice) => {
+      const voiceId = parseClipVoicePreferenceId(voice.id);
+      return voiceId !== null && availableVoiceIds.has(voiceId);
+    })
+    .slice(0, 1)
+    .map((voice) => ({ ...voice, label: calmMaleNarratorLabel }));
   const pendingVoiceId =
     declaredHighQuality[0]?.id ??
     clipVoicePreferenceId(input.manifest.voices[0]?.id ?? "default");
-  const pendingVoiceLabel = `${
-    declaredHighQuality[0]?.label ??
-    input.manifest.voices[0]?.label ??
-    "High Quality 1"
-  } (clips pending)`;
+  const pendingVoiceLabel = `${calmMaleNarratorLabel} (clips pending)`;
 
   return {
     highQuality:

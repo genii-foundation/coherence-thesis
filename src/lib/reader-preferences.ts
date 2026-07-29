@@ -10,6 +10,13 @@ export type ReaderTheme = (typeof readerThemeOptions)[number];
 export const readerAnimationOptions = ["balanced", "none"] as const;
 export type ReaderAnimations = (typeof readerAnimationOptions)[number];
 
+// Painting bookmarked passages back into the prose is off by default. It puts
+// reader-generated marks on top of the manuscript, which is a change to how the
+// text reads, so it is opt in rather than something the reader has to discover
+// and switch off.
+export const readerHighlightOptions = ["off", "on"] as const;
+export type ReaderHighlights = (typeof readerHighlightOptions)[number];
+
 export const readerThemeColorByTheme: Record<ReaderTheme, string> = {
   textured: "#f4ead7",
   light: "#fffefa",
@@ -60,6 +67,7 @@ export type ReaderPreferences = {
   fontFamily: ReaderFontId;
   theme: ReaderTheme;
   animations: ReaderAnimations;
+  highlights: ReaderHighlights;
 };
 
 export const defaultReaderPreferences: ReaderPreferences = {
@@ -67,6 +75,7 @@ export const defaultReaderPreferences: ReaderPreferences = {
   fontFamily: "literata",
   theme: "textured",
   animations: "balanced",
+  highlights: "off",
 };
 
 export const defaultReaderThemeColor =
@@ -153,6 +162,17 @@ function parseAnimations(value: unknown): ReaderAnimations {
   return defaultReaderPreferences.animations;
 }
 
+function parseHighlights(value: unknown): ReaderHighlights {
+  if (
+    typeof value === "string" &&
+    readerHighlightOptions.includes(value as ReaderHighlights)
+  ) {
+    return value as ReaderHighlights;
+  }
+
+  return defaultReaderPreferences.highlights;
+}
+
 export function parseReaderPreferences(raw: string | null): ReaderPreferences {
   if (!raw) return defaultReaderPreferences;
 
@@ -165,6 +185,7 @@ export function parseReaderPreferences(raw: string | null): ReaderPreferences {
       fontFamily: parseFontFamily(parsed.fontFamily),
       theme: parseTheme(parsed.theme),
       animations: parseAnimations(parsed.animations),
+      highlights: parseHighlights(parsed.highlights),
     };
   } catch {
     return defaultReaderPreferences;
@@ -185,6 +206,7 @@ export function applyReaderPreferences(
 
   root.dataset.readerTheme = preferences.theme;
   root.dataset.readerAnimations = preferences.animations;
+  root.dataset.readerHighlights = preferences.highlights;
   root.style.setProperty(
     "--reader-font-scale",
     (preferences.fontSize / 100).toString(),

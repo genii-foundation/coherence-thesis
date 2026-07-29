@@ -8,6 +8,8 @@ import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReaderAudioWordInteractionIsland } from "@/components/ReaderAudioWordInteractionIsland";
 import { ReaderEngagementIsland } from "@/components/ReaderEngagementIsland";
 import { ReaderLinkableHeading } from "@/components/ReaderLinkableHeading";
+import { ReaderBookmarkHighlightIsland } from "@/components/ReaderBookmarkHighlightIsland";
+import { ReaderSelectionBookmarkIsland } from "@/components/ReaderSelectionBookmarkIsland";
 import { SectionRevisionNotice } from "@/components/SectionRevisionNotice";
 import { SectionAliasRedirectIsland } from "@/components/SectionAliasRedirectIsland";
 import {
@@ -103,6 +105,8 @@ export function SectionReader({
         anchorPrefix={alias ? `${section.sectionId}-` : ""}
       />
       <ReaderAudioWordInteractionIsland sectionId={section.sectionId} />
+      <ReaderSelectionBookmarkIsland sections={[toProgressSection(section)]} />
+      <ReaderBookmarkHighlightIsland sections={[toProgressSection(section)]} />
       <ReaderEngagementIsland sections={[toProgressSection(section)]} />
       <ManuscriptNavigation
         previous={resolvedNavigation.previous}

@@ -18,6 +18,15 @@ This file governs database migrations, storage integration, policies, grants, an
 - Prefer additive, reversible changes. Explain any destructive or irreversible operation before execution.
 - Do not run production migrations, destructive queries, bucket deletion, or remote cleanup without explicit authorization.
 
+## CLI workflow
+
+- Use the exact project-local Supabase CLI version pinned in `devDependencies`.
+- Keep `supabase/.temp/` and native credentials untracked. A linked checkout may target production, but the link itself grants no authority to mutate it.
+- Use `npm run supabase:migrations:list` to compare local and remote history.
+- Use `npm run supabase:migrations:dry-run` before every remote push.
+- Start the isolated local PostgreSQL stack with `npm run supabase:db:start`, run database contracts with `npm run supabase:test:db`, and stop it with `npm run supabase:db:stop`.
+- Run the actual linked `supabase db push` only after explicit production-migration authorization and a successful dry run.
+
 ## Secrets and storage
 
 - Keep service-role keys, database credentials, S3 credentials, and signed values in the environment.

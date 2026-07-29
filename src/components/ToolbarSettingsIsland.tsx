@@ -16,6 +16,8 @@ import {
   fontOptionById,
   parseReaderPreferences,
   readerAnimationOptions,
+  readerHighlightOptions,
+  type ReaderHighlights,
   readerFontOptions,
   readerFontSizeMax,
   readerFontSizeMin,
@@ -64,6 +66,10 @@ const floatingMenuViewportPadding = 12;
 
 function clamp(value: number, minimum: number, maximum: number): number {
   return Math.min(Math.max(value, minimum), maximum);
+}
+
+function highlightLabel(highlights: ReaderHighlights): string {
+  return highlights === "on" ? "Shown" : "Hidden";
 }
 
 function animationLabel(animations: ReaderAnimations): string {
@@ -410,6 +416,23 @@ export function ToolbarSettingsIsland() {
                     onChange={() => updatePreferences({ animations })}
                   />
                   <span>{animationLabel(animations)}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+          <fieldset className="settings-control settings-radio-section">
+            <legend>Bookmark highlights</legend>
+            <div className="settings-radio-group">
+              {readerHighlightOptions.map((highlights) => (
+                <label key={highlights} className="settings-radio-option">
+                  <input
+                    type="radio"
+                    name="reader-highlights"
+                    value={highlights}
+                    checked={preferences.highlights === highlights}
+                    onChange={() => updatePreferences({ highlights })}
+                  />
+                  <span>{highlightLabel(highlights)}</span>
                 </label>
               ))}
             </div>

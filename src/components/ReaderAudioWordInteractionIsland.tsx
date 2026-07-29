@@ -1,14 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { Volume2 } from "lucide-react";
+import { selectionIsActive } from "@/lib/reader-selection";
 
 type WordTarget = {
   id: string;
   sectionId: string;
   charIndex: number;
-  rect: DOMRect;
+  element: HTMLElement;
 };
 
 type TooltipState = WordTarget & {
@@ -40,14 +41,7 @@ function wordTargetFromElement(element: HTMLElement): WordTarget | null {
   const charIndex = Number.parseInt(element.dataset.audioCharStart ?? "", 10);
   const id = element.dataset.audioWordId;
   if (!sectionId || !id || !Number.isFinite(charIndex)) return null;
-  return { id, sectionId, charIndex, rect: element.getBoundingClientRect() };
-}
-
-function positionFor(rect: DOMRect): CSSProperties {
-  return {
-    left: `${rect.left + rect.width / 2}px`,
-    top: `${Math.max(10, rect.top - 4)}px`,
-  };
+  return { id, sectionId, charIndex, element };
 }
 
 function queryWords(sectionId: string): HTMLElement[] {
@@ -86,6 +80,8 @@ export function ReaderAudioWordInteractionIsland({
   const [hovered, setHovered] = useState<WordTarget | null>(null);
   const [focused, setFocused] = useState<WordTarget | null>(null);
   const [activeWordId, setActiveWordId] = useState<string | null>(null);
+  const [tooltipPortalTarget, setTooltipPortalTarget] =
+    useState<HTMLElement | null>(null);
   const [speakerPortalTarget, setSpeakerPortalTarget] =
     useState<HTMLElement | null>(null);
 
@@ -94,6 +90,7 @@ export function ReaderAudioWordInteractionIsland({
     if (!target) return null;
     return { ...target, focused: Boolean(focused && focused.id === target.id) };
   }, [focused, hovered]);
+  const tooltipElement = tooltip?.element ?? null;
 
   const startPlayback = useCallback((target: WordTarget) => {
     dispatchAudioStartFromWord({
@@ -105,6 +102,14 @@ export function ReaderAudioWordInteractionIsland({
 
   useEffect(() => {
     const onPointerMove = (event: PointerEvent) => {
+      // While the reader has text selected, the selection bookmark bubble owns
+      // this space. Two bubbles at the same z-index over the same words is one
+      // too many, and dragging across a paragraph should not strobe the play
+      // tooltip word by word.
+      if (selectionIsActive()) {
+        setHovered(null);
+        return;
+      }
       const word = closestAudioWord(event.target);
       if (
         !word ||
@@ -115,7 +120,12 @@ export function ReaderAudioWordInteractionIsland({
         return;
       }
       const target = wordTargetFromElement(word);
-      if (target) setHovered(target);
+      // Pointer moves inside a word no longer carry new information now that
+      // the tooltip measures its own anchor, so hold the existing target and
+      // spare the island a render per mouse move.
+      if (target) {
+        setHovered((current) => (current?.id === target.id ? current : target));
+      }
     };
     const onClick = (event: MouseEvent) => {
       if (
@@ -178,6 +188,20 @@ export function ReaderAudioWordInteractionIsland({
   }, [sectionId]);
 
   useEffect(() => {
+    if (!tooltipElement) return;
+    const portalTarget = document.createElement("span");
+    portalTarget.className = "audio-word-tooltip-anchor";
+    tooltipElement.append(portalTarget);
+    const frame = window.requestAnimationFrame(() => {
+      setTooltipPortalTarget(portalTarget);
+    });
+    return () => {
+      window.cancelAnimationFrame(frame);
+      portalTarget.remove();
+    };
+  }, [tooltipElement]);
+
+  useEffect(() => {
     if (!activeWordId) return;
     const activeWord = document.getElementById(activeWordId);
     if (!activeWord) return;
@@ -199,26 +223,25 @@ export function ReaderAudioWordInteractionIsland({
       .querySelectorAll(".audio-word.is-audio-focused")
       .forEach((element) => element.classList.remove("is-audio-focused"));
     if (!focused) return;
-    document.getElementById(focused.id)?.classList.add("is-audio-focused");
+    focused.element.classList.add("is-audio-focused");
   }, [focused]);
 
   if (typeof document === "undefined") return null;
 
   return (
     <>
-      {tooltip
+      {tooltip && tooltipPortalTarget?.parentElement === tooltip.element
         ? createPortal(
             <button
               type="button"
               className={`audio-word-tooltip tooltip-surface${tooltip.focused ? " is-focused" : ""}`}
-              style={positionFor(tooltip.rect)}
               onClick={() => startPlayback(tooltip)}
             >
               {tooltip.focused
                 ? "Click Again to start playback"
                 : "Click Here to Play"}
             </button>,
-            document.body,
+            tooltipPortalTarget,
           )
         : null}
       {speakerPortalTarget

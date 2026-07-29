@@ -40,6 +40,7 @@ import {
 } from "../../src/lib/manuscript-labels";
 import {
   aliasConfigPath,
+  bookmarkSectionsPath,
   breadcrumbsDir,
   continuityRoot,
   editorialOverviewRoot,
@@ -80,6 +81,7 @@ export const artifactsRoot = generatedImportReportsRoot;
 
 export {
   aliasConfigPath,
+  bookmarkSectionsPath,
   breadcrumbsDir,
   outlineDataPath,
   progressSectionsPath,

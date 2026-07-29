@@ -125,6 +125,10 @@ export const progressSectionsPath = path.join(
   publicDataRoot,
   "progress-sections.json",
 );
+export const bookmarkSectionsPath = path.join(
+  publicDataRoot,
+  "bookmark-sections.json",
+);
 export const breadcrumbsDir = path.join(publicDataRoot, "breadcrumbs");
 export const searchIndexPath = path.join(publicDataRoot, "search-index.json");
 export const outlineDataPath = path.join(publicDataRoot, "outline.json");

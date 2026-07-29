@@ -60,7 +60,12 @@ test("reader settings update and persist local appearance preferences", async ({
     .filter({ hasText: "None" });
   await expect(balancedAnimations).toBeChecked();
   await expect(noAnimations).not.toBeChecked();
+  // Scoped to the animations fieldset: the settings panel now has a second
+  // radio group for bookmark highlights, so a bare .settings-radio-group is
+  // ambiguous.
   const animationControlMetrics = await settingsMenu
+    .locator(".settings-radio-section")
+    .filter({ hasText: "Animations" })
     .locator(".settings-radio-group")
     .evaluate((group) => {
       const options = Array.from(
@@ -306,6 +311,7 @@ test("reader settings update and persist local appearance preferences", async ({
     fontFamily: "newsreader",
     theme: "black",
     animations: "none",
+    highlights: "off",
   });
 
   await page.keyboard.press("Escape");
@@ -344,6 +350,7 @@ test("reader settings update and persist local appearance preferences", async ({
     fontFamily: "newsreader",
     theme: "black",
     animations: "none",
+    highlights: "off",
   });
 
   await page.goto("/");

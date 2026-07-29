@@ -758,6 +758,70 @@ input {
   color: var(--emphasis);
 }
 
+/* Selection bookmark bubble.
+   Visually a sibling of .audio-word-tooltip, mechanically not: this one is a
+   Radix Popover with a virtual anchor, so it repositions on scroll and resize
+   and gets collision padding. The word tooltip snapshots a DOMRect once and
+   detaches the moment the page moves.
+   The anchor is a zero-content span placed in DOCUMENT coordinates, so it
+   travels with the prose rather than needing a scroll listener. */
+/* Saved passages painted back into the prose are styled by
+   ReaderBookmarkHighlightIsland, not here. The ::highlight() pseudo-element
+   cannot live in this file: lightningcss 1.32.0, which Next bundles, does not
+   recognize it and warns "Parsing CSS source code failed" on every build. It
+   passes the rule through intact, so the feature worked, but a permanent CSS
+   parse warning trains people to ignore CSS parse warnings. The colour it uses
+   is declared below so it still themes from one place. */
+:root {
+  --bookmark-highlight: rgb(164 123 63 / 0.22);
+}
+
+.reader-selection-anchor {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.reader-selection-bubble {
+  /* Remap rather than inherit: .tooltip-surface hardcodes light parchment
+     values and has no override for the dark or black themes. */
+  --tooltip-background: var(--panel-background);
+  --tooltip-border-color: rgba(119, 84, 42, 0.48);
+
+  z-index: 90;
+  border-radius: 999px;
+  padding: 0;
+  outline: none;
+}
+
+.reader-selection-bubble-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 1.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--bronze-deep);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.05;
+  padding: 0.26rem 0.7rem;
+  white-space: nowrap;
+}
+
+.reader-selection-bubble-action:hover,
+.reader-selection-bubble-action:focus-visible {
+  background: var(--nav-hover-background);
+}
+
+.reader-selection-bubble-arrow {
+  margin-bottom: -1px;
+}
+
 .site-nav {
   --toolbar-control-size: 3rem;
   --toolbar-emphasis-control-size: 3.625rem;
@@ -772,6 +836,7 @@ input {
 .site-nav > a,
 .outline-menu-button,
 .search-menu-button,
+.bookmarks-menu-button,
 .share-menu-button,
 .audio-menu-button,
 .settings-menu-button,
@@ -814,6 +879,8 @@ input {
 .audio-menu-button:focus-visible,
 .settings-menu-button:hover,
 .settings-menu-button:focus-visible,
+.bookmarks-menu-button:hover,
+.bookmarks-menu-button:focus-visible,
 .progress-menu-button:hover,
 .progress-menu-button:focus-visible {
   background: var(--nav-hover-background);
@@ -836,6 +903,7 @@ input {
 
 .outline-menu,
 .search-menu,
+.bookmarks-menu,
 .share-menu,
 .audio-menu,
 .settings-menu,
@@ -872,6 +940,7 @@ input {
 
 .outline-menu-button,
 .search-menu-button,
+.bookmarks-menu-button,
 .share-menu-button,
 .audio-menu-button,
 .settings-menu-button,
@@ -887,6 +956,7 @@ input {
 
 .outline-menu-button,
 .search-menu-button,
+.bookmarks-menu-button,
 .audio-menu-button,
 .share-menu-button,
 .settings-menu-button {
@@ -1448,6 +1518,7 @@ input {
 
 .outline-popover,
 .search-popover,
+.bookmarks-popover,
 .share-popover,
 .audio-popover,
 .settings-popover,
@@ -1474,6 +1545,7 @@ input {
 
 .outline-popover[data-menu-state="open"],
 .search-popover[data-menu-state="open"],
+.bookmarks-popover[data-menu-state="open"],
 .share-popover[data-menu-state="open"],
 .audio-popover[data-menu-state="open"],
 .settings-popover[data-menu-state="open"],
@@ -1509,20 +1581,13 @@ input {
   color: var(--ink);
 }
 
-.outline-search {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  border-bottom: 1px solid var(--line);
-  background: var(--panel-background);
-  color: var(--ink-muted);
-  padding: 0.85rem;
-}
-
-.search-field {
+/* One sticky filter row, three menus. The outline and search copies of this
+   rule were byte identical; bookmarks joins them rather than adding a third.
+   Height matters: the inner scrollers below subtract 4.45rem for this row, so
+   changing its padding or the input's means changing those too. */
+.outline-search,
+.search-field,
+.bookmarks-search {
   position: sticky;
   top: 0;
   z-index: 1;
@@ -1536,6 +1601,7 @@ input {
 }
 
 .outline-search input,
+.bookmarks-search input,
 .search-field input {
   width: 100%;
   min-width: 0;
@@ -1552,6 +1618,8 @@ input {
 
 .outline-search input:hover,
 .outline-search input:focus-visible,
+.bookmarks-search input:hover,
+.bookmarks-search input:focus-visible,
 .search-field input:hover,
 .search-field input:focus-visible {
   border-color: rgba(119, 84, 42, 0.34);
@@ -1565,6 +1633,358 @@ input {
   overflow: auto;
   padding: 1.2rem;
   -webkit-overflow-scrolling: touch;
+}
+
+/* 4.45rem is the sticky filter row above. Keep in step with .bookmarks-search. */
+.bookmarks-scroll {
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+  max-height: calc(min(40rem, 100svh - 7rem) - 4.45rem);
+  overflow: auto;
+  padding: 1.2rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bookmarks-empty {
+  margin: 0;
+}
+
+.bookmarks-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  color: var(--ink-muted);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.bookmarks-summary-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.bookmark-delete-all {
+  flex: 0 0 auto;
+  margin-inline-start: auto;
+  border: 0;
+  border-radius: calc(var(--radius) - 1px);
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.35rem 0.45rem;
+}
+
+.bookmark-delete-all:hover,
+.bookmark-delete-all:focus-visible {
+  background: var(--nav-hover-background);
+  color: var(--ink);
+}
+
+/* The bookmark control answers two questions with one gesture: a single turn
+   when a selection becomes bookmarkable, and a single turn when one is saved.
+   They differ in what is behind the glyph, not in how many times it spins.
+
+   Two real faces rather than a crossfade. The card carries the rotation and
+   each face hides its own back, so the solid glyph sits genuinely behind the
+   outline and the turn is what reveals it. */
+.bookmarks-menu-button {
+  perspective: 340px;
+}
+
+.bookmark-card {
+  position: relative;
+  display: block;
+  width: 17px;
+  height: 17px;
+  transform-style: preserve-3d;
+}
+
+.bookmark-face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.bookmark-face svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+}
+
+.bookmark-face-back {
+  transform: rotateY(180deg);
+}
+
+/* The back is an outline by default. An invitation must not show the filled
+   glyph at any point in its turn, because nothing has been saved yet. It goes
+   solid only for the save turn. */
+.bookmarks-menu-button.is-bookmark-saved .bookmark-face-back svg {
+  fill: var(--bronze-deep);
+  stroke: none;
+}
+
+/* Inside a no-preference query so the platform setting opts out, and the
+   reader's own animations setting neutralizes it further down. */
+@media (prefers-reduced-motion: no-preference) {
+  .bookmarks-menu-button.is-bookmark-offered .bookmark-card {
+    animation: bookmark-turn 760ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .bookmarks-menu-button.is-bookmark-saved .bookmark-card {
+    animation: bookmark-turn 620ms cubic-bezier(0.35, 0, 0.15, 1);
+  }
+}
+
+@keyframes bookmark-turn {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.bookmarks-stale-tag {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+}
+
+.bookmark-row {
+  display: grid;
+  gap: 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--item-background);
+  padding: 0.75rem;
+}
+
+.bookmarks-virtual-list {
+  position: relative;
+  width: 100%;
+}
+
+.bookmark-virtual-row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 0.9rem;
+}
+
+/* Quotes clamp to three lines in the jump menu. A saved passage can run to 400
+   characters, and a list of those is not scannable; three lines is enough to
+   recognize a passage you chose, and the whole thing is still in the export.
+   The ellipsis comes from the clamp, so it appears only when it is earned. */
+.bookmark-quote {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+  white-space: normal;
+}
+
+/* The path to the passage, not just its section. Nine volumes repeat their
+   structure, so "Orientation" alone does not place anything. */
+.bookmark-trail {
+  display: inline;
+  overflow-wrap: anywhere;
+}
+
+.bookmark-trail-sep {
+  color: var(--ink-muted);
+  padding: 0 0.3rem;
+}
+
+a.bookmark-quote:hover,
+a.bookmark-quote:focus-visible {
+  color: var(--bronze-deep);
+}
+
+.bookmark-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin: 0;
+  color: var(--ink-muted);
+  font-family: var(--font-ui);
+  font-size: 0.76rem;
+}
+
+
+.bookmark-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bookmark-note-button {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  border-radius: calc(var(--radius) - 1px);
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+  padding: 0.3rem 0.4rem;
+  text-align: left;
+  white-space: normal;
+}
+
+.bookmark-note-button:hover,
+.bookmark-note-button:focus-visible {
+  background: var(--nav-hover-background);
+  color: var(--ink);
+}
+
+.bookmark-note-field {
+  width: 100%;
+  min-height: 3.5rem;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) - 1px);
+  background: var(--field-background);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 0.45rem 0.55rem;
+  resize: vertical;
+}
+
+.bookmark-remove {
+  flex: 0 0 auto;
+  padding: 0.3rem 0.45rem;
+}
+
+.bookmark-delete-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 170;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(19, 27, 34, 0.28);
+  overscroll-behavior: contain;
+}
+
+.bookmark-delete-modal {
+  --toolbar-control-size: 3rem;
+
+  display: grid;
+  gap: 0.9rem;
+  width: min(30rem, 100%);
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid rgba(119, 84, 42, 0.28);
+  border-radius: var(--radius);
+  background: var(--panel-background);
+  box-shadow: 0 1.2rem 3rem rgba(19, 27, 34, 0.22);
+  color: var(--ink);
+  padding: 1.1rem;
+}
+
+.bookmark-delete-modal > svg {
+  color: var(--bronze-deep);
+}
+
+.bookmark-delete-modal-copy {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.bookmark-delete-modal-copy h2,
+.bookmark-delete-modal-copy p,
+.bookmark-delete-modal-copy blockquote {
+  margin: 0;
+}
+
+.bookmark-delete-modal-copy h2 {
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+
+.bookmark-delete-modal-copy p {
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.bookmark-delete-modal-copy blockquote {
+  display: -webkit-box;
+  overflow: hidden;
+  border-inline-start: 2px solid var(--line);
+  color: var(--ink);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  padding-inline-start: 0.75rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.bookmark-delete-modal-field {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+}
+
+.bookmark-delete-modal-field input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) - 1px);
+  background: var(--field-background);
+  color: var(--ink);
+  font: inherit;
+  padding: 0.55rem 0.65rem;
+}
+
+.bookmark-delete-modal-field input:hover,
+.bookmark-delete-modal-field input:focus-visible {
+  border-color: rgba(119, 84, 42, 0.34);
+  background: var(--field-background-hover);
+  box-shadow: inset 0 0 0 1px rgba(119, 84, 42, 0.1);
+}
+
+.bookmark-delete-modal-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.6rem;
+}
+
+.bookmark-delete-modal-actions .secondary-link,
+.bookmark-delete-modal-actions .icon-button {
+  width: 100%;
+}
+
+.bookmark-confirm-delete:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .search-results {
@@ -1588,6 +2008,7 @@ input {
   background: var(--item-background-strong);
   color: var(--ink);
   padding: 0.72rem;
+  position: relative;
   text-align: left;
   text-decoration: none;
   white-space: normal;
@@ -1595,6 +2016,25 @@ input {
     background 160ms ease,
     border-color 160ms ease,
     color 160ms ease;
+}
+
+.search-result-bookmark .search-result-title {
+  padding-inline-end: 1.8rem;
+}
+
+.search-result-bookmark-icon {
+  color: var(--bronze-deep);
+  inset-block-start: 0.72rem;
+  inset-inline-end: 0.72rem;
+  position: absolute;
+}
+
+.search-result-bookmark .search-result-snippet {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  white-space: normal;
 }
 
 .site-nav a.search-result {
@@ -1900,6 +2340,29 @@ input {
 
 .progress-popover {
   width: min(22rem, calc(100vw - 2rem));
+}
+
+/* Carries its own surface, like .search-popover and .outline-popover above.
+   The popover base rule further up only supplies position, size, and the height
+   transition; the panels that hold a sticky filter row and their own scroller
+   fold the surface in here rather than borrowing a separate class. Without
+   overflow: hidden the content escapes the animated height, and without the
+   background the panel is simply transparent over the prose. */
+.bookmarks-popover {
+  --toolbar-menu-max-height: min(40rem, calc(100svh - 7rem));
+
+  /* Wider than its neighbours on purpose. Every other menu lists short labels;
+     this one lists quoted manuscript prose, and at 24rem a two line clamp threw
+     away most of the passage. Still the shared min() so it collapses to the
+     viewport on narrow screens. */
+  width: min(34rem, calc(100vw - 2rem));
+  max-height: min(40rem, calc(100svh - 7rem));
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-background);
+  box-shadow: var(--shadow);
+  color: var(--ink);
 }
 
 .share-popover {
@@ -3614,6 +4077,22 @@ input {
   color: var(--sage);
 }
 
+/* Same badge geometry as the read checkmark so a status row stays even, in the
+   neutral ink tone rather than sage or bronze, both of which already mean
+   something else here. */
+.bookmark-marker {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--subtle-control-background);
+  color: var(--ink-soft);
+}
+
 .progress-state-dot {
   --progress-dot-rgb: var(--card-rgb, 96 121 109);
   --progress-dot-degrees: 0deg;
@@ -5164,7 +5643,7 @@ input {
 
 .progress-heatmap-summary {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.75rem;
 }
 
@@ -5304,6 +5783,30 @@ input {
     0 0 0 2px var(--panel-background),
     0 0 0 4px rgba(96, 121, 109, 0.28);
   outline: none;
+}
+
+/* "This cell holds a bookmark", carried by silhouette rather than colour.
+   Sage already means read and bronze already means revised, and a fourth hue on
+   an 11.5px dot that has to survive four themes is a losing game, so a notch is
+   cut from the top right and the cell keeps whatever colour its state gave it.
+
+   clip-path rather than a ring or an extra background layer, deliberately:
+   - a persistent box-shadow ring is overwritten by the hover and focus rule
+     below, so the mark would vanish exactly when the reader reached for it
+   - the cell sets overflow: hidden, so an inner ring element is clipped away
+   - progress.spec.ts asserts the computed backgroundImage still contains
+     conic-gradient and contains no radial-gradient, so a background layer is
+     out and a radial dot is out by name
+   - clip-path changes no box metric, so the perfect-circle and
+     no-horizontal-scroll assertions on this grid keep holding
+
+   The gutter is only 4.16px on desktop and 2.88px under 640px, so nothing may
+   paint outside the cell box either. */
+.progress-heatmap-cell-bookmarked {
+  /* A 45 degree cut across the whole top-right quadrant. A shallower bite was
+     legible when magnified and invisible at the real 11.5px, which is the only
+     size that matters. */
+  clip-path: polygon(0 0, 46% 0, 100% 54%, 100% 100%, 0 100%);
 }
 
 .progress-heatmap-cell-unread {
@@ -5566,7 +6069,7 @@ input {
   transition:
     background 140ms ease,
     color 140ms ease,
-    font-weight 140ms ease;
+    text-decoration-color 140ms ease;
 }
 
 .audio-word:hover,
@@ -5575,18 +6078,31 @@ input {
   background: rgba(164, 123, 63, 0.14);
 }
 
+/* The spoken word is marked with an underline, not weight. A bold word is wider
+   than the same word unbolded, so every word boundary reflowed the line and
+   shoved the rest of the paragraph around while playback ran. An underline
+   takes no inline space, so the text holds still. */
 .audio-word.is-audio-current,
 .audio-word:target {
   color: var(--ink);
-  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--bronze);
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: 0.09em;
+  text-underline-offset: 0.16em;
 }
 
 .audio-word-tooltip {
-  position: fixed;
-  z-index: 90;
+  position: absolute;
+  top: -0.36rem;
+  left: 50%;
+  /* Above the prose it points at, below the sticky header. A word can be part
+     way under the toolbar while its bubble is still worth showing, and the
+     bubble should slide under the toolbar rather than cover it. */
+  z-index: 9;
   width: max-content;
   max-width: min(14rem, calc(100vw - 2rem));
-  transform: translate(-50%, calc(-100% - 0.36rem));
+  transform: translate(-50%, -100%);
   border-radius: 999px;
   padding: 0.18rem 0.46rem 0.2rem;
   color: var(--ink);
@@ -6267,6 +6783,7 @@ input {
   .site-nav > a,
   .outline-menu,
   .search-menu,
+  .bookmarks-menu,
   .share-menu,
   .settings-menu {
     flex: 0 0 auto;
@@ -6276,6 +6793,7 @@ input {
   .site-nav > a,
   .outline-menu-button,
   .search-menu-button,
+  .bookmarks-menu-button,
   .share-menu-button,
   .settings-menu-button {
     min-width: 0;
@@ -6305,6 +6823,7 @@ input {
 
   .outline-popover,
   .search-popover,
+  .bookmarks-popover,
   .share-popover,
   .audio-popover,
   .settings-popover,
@@ -6559,6 +7078,7 @@ input {
   .site-nav > a,
   .outline-menu-button,
   .search-menu-button,
+  .bookmarks-menu-button,
   .share-menu-button,
   .settings-menu-button {
     justify-content: center;
@@ -6725,6 +7245,27 @@ input {
 
 }
 
+/* Toolbar control sizing for the narrowest phones, on its own breakpoint.
+   The five small controls were 2.25rem below 360px. Adding bookmarks made
+   seven controls, and 5 x 36px plus the two 44px emphasis controls comes to
+   268px, which overflows the nav box and slides the leftmost button under the
+   brand mark. At 2rem the row totals 248px and clears the brand at 320px.
+   The breakpoint is 380px rather than 360px because the failure is worst just
+   above the old one: at 365px every control is back to 44px, the row needs
+   308px, and the brand overlaps by about 5px. Still well clear of the 24px
+   minimum target size. */
+@media (max-width: 380px) {
+  .site-nav > a,
+  .outline-menu-button,
+  .search-menu-button,
+  .bookmarks-menu-button,
+  .share-menu-button,
+  .settings-menu-button {
+    min-height: 2rem;
+    width: 2rem;
+  }
+}
+
 @media (max-width: 360px) {
   .mobile-page-brand {
     display: none;
@@ -6743,15 +7284,6 @@ input {
     flex: 1 1 auto;
     justify-content: flex-end;
     gap: 0;
-  }
-
-  .site-nav > a,
-  .outline-menu-button,
-  .search-menu-button,
-  .share-menu-button,
-  .settings-menu-button {
-    min-height: 2.25rem;
-    width: 2.25rem;
   }
 
   .hero-actions {

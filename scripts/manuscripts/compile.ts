@@ -4,6 +4,7 @@ import { pathToFileURL } from "node:url";
 import {
   buildCatalog,
   buildSearchIndex,
+  bookmarkSectionsPath,
   breadcrumbsDir,
   catalogPath,
   cleanDir,
@@ -115,10 +116,9 @@ export async function compileManuscripts(): Promise<void> {
       contentHash: paragraph.contentHash,
     })),
   }));
-  // Slim per-section manifest without the section body text (PERF-01). The
-  // toolbar progress island and the audio queue need only these fields on every
-  // page; the full ~1.7MB reader-sections payload is now fetched lazily (audio
-  // text on first play), not on every page load.
+  // Slim per-section manifest without body or paragraph data. Progress and
+  // audio use it on every page, while bookmarks fetch their paragraph metadata
+  // only when the menu opens.
   const progressSections = catalog.sections.map((section) => ({
     sectionId: section.sectionId,
     continuityId: section.continuityId,
@@ -131,6 +131,11 @@ export async function compileManuscripts(): Promise<void> {
     chapterHref: section.chapterHref,
     readerHref: section.readerHref,
     audioVersionId: section.audioVersionId,
+  }));
+  const bookmarkSections = catalog.sections.map((section) => ({
+    sectionId: section.sectionId,
+    title: section.title,
+    readerHref: section.readerHref,
     paragraphs: section.paragraphs.map((paragraph) => ({
       paragraphId: paragraph.paragraphId,
       anchor: paragraph.anchor,
@@ -156,6 +161,7 @@ export async function compileManuscripts(): Promise<void> {
   writeJson(catalogPath, catalog);
   writeJson(readerSectionsPath, readerSections);
   writeJson(progressSectionsPath, progressSections);
+  writeJson(bookmarkSectionsPath, bookmarkSections);
   cleanDir(breadcrumbsDir);
   for (const [key, shard] of breadcrumbShards) {
     writeJson(path.join(breadcrumbsDir, `${key}.json`), shard);
@@ -173,6 +179,9 @@ export async function compileManuscripts(): Promise<void> {
   );
   console.log(`Catalog: ${path.relative(repoRoot, catalogPath)}`);
   console.log(`Reader data: ${path.relative(repoRoot, readerSectionsPath)}`);
+  console.log(
+    `Bookmark data: ${path.relative(repoRoot, bookmarkSectionsPath)}`,
+  );
   console.log(
     `Breadcrumb shards: ${breadcrumbShards.size} in ${path.relative(repoRoot, breadcrumbsDir)}`,
   );

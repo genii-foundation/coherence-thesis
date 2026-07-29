@@ -1,6 +1,10 @@
 import { expect, test } from "@playwright/test";
 import { audioVoiceStorageKey } from "../../src/lib/audio-preferences";
-import { highQualityVoicePreferenceId, wieldingSection } from "./fixtures";
+import {
+  firstSection,
+  highQualityVoicePreferenceId,
+  wieldingSection,
+} from "./fixtures";
 
 // Pressing play in the toolbar used to tear through the whole book in silence.
 // The hosted provider seeks by character ratio when a clip carries no word
@@ -188,4 +192,183 @@ test("toolbar play stays on the section it started", async ({ page }) => {
   expect(playsWithUserActivation).toEqual([true]);
 
   expect(pageErrors).toEqual([]);
+});
+
+// The tooltip lives inside its word so layout moves both in the same browser
+// pass. A body portal driven by scroll measurements always trails the prose by
+// at least one frame, even when it eventually reaches the right coordinates.
+test("the word playback tooltip moves with its word in the scroll frame", async ({
+  page,
+}) => {
+  await page.goto(firstSection.href);
+
+  const targetWord = page.locator(".manuscript-prose p .audio-word").first();
+  await expect(targetWord).toBeVisible();
+  await targetWord.hover();
+  await targetWord.click();
+
+  const tooltip = page.getByRole("button", {
+    name: "Click Again to start playback",
+  });
+  await expect(tooltip).toBeVisible();
+
+  const offsetFromWord = () =>
+    page.evaluate(() => {
+      const word = document.querySelector(".audio-word.is-audio-focused");
+      const bubble = document.querySelector(".audio-word-tooltip");
+      if (!word || !bubble) return null;
+      const wordBox = word.getBoundingClientRect();
+      const bubbleBox = bubble.getBoundingClientRect();
+      return {
+        horizontal:
+          bubbleBox.left +
+          bubbleBox.width / 2 -
+          (wordBox.left + wordBox.width / 2),
+        vertical: wordBox.top - bubbleBox.bottom,
+      };
+    });
+
+  const anchored = await offsetFromWord();
+  expect(anchored).not.toBeNull();
+  await expect
+    .poll(() =>
+      tooltip.evaluate((bubble) =>
+        bubble.parentElement?.parentElement?.matches(
+          ".audio-word.is-audio-focused",
+        ),
+      ),
+    )
+    .toBe(true);
+
+  // Read the geometry in the same task that scrolls. Scroll listeners, animation
+  // frames, and React commits cannot run between the scroll and this sample, so
+  // a manually positioned body portal fails here even if polling would let it
+  // catch up later.
+  await page.mouse.move(0, 0);
+  const afterScroll = await page.evaluate(() => {
+    const word = document.querySelector(".audio-word.is-audio-focused");
+    const bubble = document.querySelector(".audio-word-tooltip");
+    const header = document.querySelector(".site-header");
+    if (!word || !bubble || !header) return null;
+    const clearance =
+      word.getBoundingClientRect().top -
+      header.getBoundingClientRect().bottom;
+    if (clearance <= 2) return null;
+    window.scrollBy({ top: Math.floor(clearance / 2), behavior: "instant" });
+    const wordBox = word.getBoundingClientRect();
+    const bubbleBox = bubble.getBoundingClientRect();
+    return {
+      horizontal:
+        bubbleBox.left +
+        bubbleBox.width / 2 -
+        (wordBox.left + wordBox.width / 2),
+      vertical: wordBox.top - bubbleBox.bottom,
+    };
+  });
+  expect(afterScroll).not.toBeNull();
+  expect(afterScroll!.horizontal).toBeCloseTo(anchored!.horizontal, 0);
+  expect(afterScroll!.vertical).toBeCloseTo(anchored!.vertical, 0);
+
+  // Scrolling the word away carries the bubble out of the viewport in the same
+  // layout operation. It remains mounted inside the focused word so returning
+  // to it needs no geometry subscription or remount.
+  const wordLeftViewport = await page.evaluate(() => {
+    const word = document.querySelector(".audio-word.is-audio-focused");
+    if (!word) return null;
+    window.scrollBy({
+      top: word.getBoundingClientRect().bottom + 40,
+      behavior: "instant",
+    });
+    return word.getBoundingClientRect().bottom <= 0;
+  });
+  expect(wordLeftViewport).toBe(true);
+  await expect(tooltip).not.toBeInViewport();
+
+  // Scrolling back brings both home, still anchored, without another click.
+  await page.evaluate(() =>
+    window.scrollTo({ top: 0, behavior: "instant" }),
+  );
+  await expect(tooltip).toBeVisible();
+  const returned = await offsetFromWord();
+  expect(returned).not.toBeNull();
+  expect(returned!.horizontal).toBeCloseTo(anchored!.horizontal, 0);
+  expect(returned!.vertical).toBeCloseTo(anchored!.vertical, 0);
+
+  // The sticky header has a higher stacking level, so the tooltip travels under
+  // it with the word instead of covering the navigation.
+  const stacking = await page.evaluate(() => {
+    const word = document.querySelector(".audio-word.is-audio-focused");
+    const bubble = document.querySelector(".audio-word-tooltip");
+    const header = document.querySelector(".site-header");
+    if (!word || !bubble || !header) return null;
+    return {
+      bubble: Number.parseInt(getComputedStyle(bubble).zIndex, 10),
+      header: Number.parseInt(getComputedStyle(header).zIndex, 10),
+    };
+  });
+  expect(stacking).not.toBeNull();
+  expect(stacking!.header).toBeGreaterThan(stacking!.bubble);
+});
+
+// Bold is wider than regular, so marking the spoken word with weight reflowed
+// the line on every word boundary and shoved the paragraph around underneath
+// the reader. The marker is an underline now, which costs no inline space.
+test("the spoken word marker does not move the text", async ({ page }) => {
+  await page.goto(firstSection.href);
+
+  const words = page.locator(".manuscript-prose p .audio-word");
+  // "Coherence" and "Thesis" stay beside each other at both supported
+  // viewports, so a width change in the first word has an observable neighbor.
+  const target = words.nth(1);
+  await expect(target).toBeVisible();
+  // Wait for the interaction island to hydrate before mutating a word class.
+  // Otherwise the test can race React's first client pass and manufacture a
+  // hydration warning that the product never emits.
+  await target.hover();
+  const tooltip = page.getByRole("button", { name: "Click Here to Play" });
+  await expect(tooltip).toBeVisible();
+  await page.mouse.move(0, 0);
+  await expect(tooltip).toHaveCount(0);
+
+  const nextWordLeft = () =>
+    page.evaluate(() => {
+      const words = document.querySelectorAll(
+        ".manuscript-prose p .audio-word",
+      );
+      const target = words[1];
+      const next = words[2];
+      if (!target || !next) return null;
+      const targetBox = target.getBoundingClientRect();
+      const nextBox = next.getBoundingClientRect();
+      return targetBox.top === nextBox.top ? nextBox.left : null;
+    });
+
+  const before = await nextWordLeft();
+  expect(before).not.toBeNull();
+
+  const marked = await page.evaluate(() => {
+    const word = document.querySelectorAll(".manuscript-prose p .audio-word")[1];
+    word?.classList.add("is-audio-current");
+    const style = window.getComputedStyle(word!);
+    return style.textDecorationLine;
+  });
+
+  expect(marked).toContain("underline");
+  // The old marker transitioned to font-weight: 800 over 140ms. Measuring only
+  // the first frame saw the unbolded starting value and let the broken rule
+  // pass, so inspect the settled state too.
+  await page.waitForTimeout(180);
+  // Whatever weight the surrounding prose uses, the marker must not add to it.
+  const settledWeights = await page.evaluate(() => {
+    const words = document.querySelectorAll(
+      ".manuscript-prose p .audio-word",
+    );
+    return {
+      marked: window.getComputedStyle(words[1]!).fontWeight,
+      unmarked: window.getComputedStyle(words[2]!).fontWeight,
+    };
+  });
+  expect(settledWeights.marked).toBe(settledWeights.unmarked);
+
+  expect(await nextWordLeft()).toBeCloseTo(before!, 1);
 });

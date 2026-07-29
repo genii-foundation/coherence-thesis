@@ -1376,20 +1376,17 @@ export function AudioPlayerIsland({
                     handleVoiceChange(event.target.value || null)
                   }
                 >
-                  <optgroup label="High quality voices">
-                    {voiceGroups.highQuality.map((voice) => (
-                      <option key={voice.id} value={voice.id} disabled={voice.disabled}>
+                  {[...voiceGroups.highQuality, ...voiceGroups.system].map(
+                    (voice) => (
+                      <option
+                        key={voice.id}
+                        value={voice.id}
+                        disabled={voice.disabled}
+                      >
                         {voice.label}
                       </option>
-                    ))}
-                  </optgroup>
-                  <optgroup label="System voices">
-                    {voiceGroups.system.map((voice) => (
-                      <option key={voice.id} value={voice.id}>
-                        {voice.label}
-                      </option>
-                    ))}
-                  </optgroup>
+                    ),
+                  )}
                 </select>
               </div>
               <div className="settings-control audio-setting-control range-field">

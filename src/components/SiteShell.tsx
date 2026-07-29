@@ -10,6 +10,7 @@ import { OfflineSupportIsland } from "@/components/OfflineSupportIsland";
 import { OutlineMenuIsland } from "@/components/OutlineMenuIsland";
 import { PageFadeIsland } from "@/components/PageFadeIsland";
 import { SearchMenuIsland } from "@/components/SearchMenuIsland";
+import { ToolbarBookmarksIsland } from "@/components/ToolbarBookmarksIsland";
 import { ToolbarBrandIsland } from "@/components/ToolbarBrandIsland";
 import { ToolbarBreadcrumbs } from "@/components/ToolbarBreadcrumbs";
 import { ToolbarProgressIsland } from "@/components/ToolbarProgressIsland";
@@ -92,13 +93,14 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <nav className="site-nav" aria-label="Primary">
           <SearchMenuIsland />
           <OutlineMenuIsland />
+          <ToolbarBookmarksIsland />
           <ToolbarSettingsIsland />
           <ToolbarShareIsland />
+          <ToolbarProgressIsland />
           <AudioPlayerIsland
             fallbackAudio={fallbackAudio}
             overviewAudio={overviewAudio}
           />
-          <ToolbarProgressIsland />
         </nav>
       </header>
       <main id="main-content">
