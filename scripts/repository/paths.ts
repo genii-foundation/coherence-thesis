@@ -94,6 +94,9 @@ export const generatedCatalogPath = path.join(
   "catalog.json",
 );
 export const generatedReportsRoot = path.join(generatedRoot, "reports");
+export const generatedCalibrationRoot = path.join(generatedRoot, "calibration");
+export const editorialCalibrationRoot = path.join(editorialRoot, "calibration");
+export const editorialSchemasRoot = path.join(editorialRoot, "schemas");
 export const generatedSemanticLinksReportsRoot = path.join(
   generatedReportsRoot,
   "semantic-links",
