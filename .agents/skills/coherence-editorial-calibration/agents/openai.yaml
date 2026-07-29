@@ -1,0 +1,7 @@
+interface:
+  display_name: "Coherence Editorial Calibration"
+  short_description: "Tune the editorial rules against a section"
+  default_prompt: "Use $coherence-editorial-calibration to compare a section against its baseline, agree on a revision, and record the rules that produced it."
+
+policy:
+  allow_implicit_invocation: true

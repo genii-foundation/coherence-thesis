@@ -5,6 +5,7 @@ import { normalizeRepoPath, repoRoot } from "./paths";
 
 export const EXPECTED_SKILL_NAMES = [
   "coherence-build-feature",
+  "coherence-editorial-calibration",
   "coherence-editorial-debt",
   "coherence-editorial-debt-guide",
   "coherence-editorial-review",
@@ -17,6 +18,7 @@ export const EXPECTED_SKILL_INVOCATION: Readonly<
   Record<(typeof EXPECTED_SKILL_NAMES)[number], boolean>
 > = {
   "coherence-build-feature": false,
+  "coherence-editorial-calibration": true,
   "coherence-editorial-debt": false,
   "coherence-editorial-debt-guide": true,
   "coherence-editorial-review": true,
@@ -29,6 +31,10 @@ export const REQUIRED_SKILL_RESOURCES: Readonly<
   Record<(typeof EXPECTED_SKILL_NAMES)[number], readonly string[]>
 > = {
   "coherence-build-feature": ["AGENTS.md"],
+  "coherence-editorial-calibration": [
+    "editorial/schemas/calibration-record.md",
+    "editorial/standards/editorial.md",
+  ],
   "coherence-editorial-debt": [
     "editorial/AGENTS.md",
     "editorial/debt/README.md",

@@ -75,6 +75,8 @@
     "editorial:validate": "tsx scripts/editorial/validate.ts",
     "preeditorial:compare": "node scripts/repository/ensure-node-modules.mjs",
     "editorial:compare": "tsx scripts/editorial/compare.ts",
+    "preeditorial:protected-lines": "node scripts/repository/ensure-node-modules.mjs",
+    "editorial:protected-lines": "tsx scripts/editorial/protected-lines.ts",
     "preeditorial:semantic-links:audit": "npm run manuscripts:import",
     "editorial:semantic-links:audit": "tsx scripts/editorial/audit-semantic-links.ts",
     "preeditorial:semantic-links:review": "node scripts/repository/ensure-node-modules.mjs",
