@@ -13,6 +13,7 @@
 9. Fact, quotation, and citation handling
 10. Review commentary
 11. Acceptance checklist
+12. Rule index
 
 ## 1. Editorial aim
 
@@ -36,6 +37,27 @@ When editorial goals conflict, use this order:
 
 Never purchase elegance with a changed claim. Never purchase brevity with a missing premise. Never purchase clarity by explaining away a living image.
 
+### Authority of the voice card `R-VOICE-BIND`
+
+The volume's voice card is binding, not advisory. Where a voice card states the narrator's relationship to the reader, the characteristic cadence, or a protected quality, an edit that contradicts it is a defect regardless of how much it improves the sentence in isolation.
+
+An invitation may not become an assertion. A narrator who refuses to demand belief may not begin to demand it. Read the card before the passage, and check the revision against the card before recording a disposition.
+
+When the source and the card genuinely disagree, raise a query. Do not resolve the disagreement silently in favor of the sentence in front of you.
+
+### Proportionality of intervention `R-PROPORTION`
+
+The amount of change must be proportional to the defect. A passage with one canned transition needs one repair, not a rebuilt paragraph.
+
+Compression is not evidence of editorial work. A reduced word count proves only that words were removed. Measure a batch by whether each remaining sentence is better, not by how much is gone.
+
+Two habits produce most unjustified loss:
+
+- Treating every flagged pattern as a defect. The catalog in section 4 is a queue for judgment. Most rules there carry an explicit exception, and the exception is as binding as the rule.
+- Rebuilding sound prose to demonstrate attention. Keeping a good sentence is an editorial decision. Record it as one.
+
+If a revision reduces a passage by more than a third, the batch must state what the surplus was and why its removal did not cost argument, evidence, image, or voice. A large reduction is permitted. An unexplained one is not.
+
 ## 3. Punctuation standard
 
 ### Prohibited
@@ -44,14 +66,22 @@ Never purchase elegance with a changed claim. Never purchase brevity with a miss
 - En dash, Unicode `U+2013`
 - Two consecutive hyphens used as punctuation
 
+### Prohibited marks are structural signals `R-PUNCT-STRUCT`
+
 Do not replace a prohibited mark with another mark by reflex. First identify the relationship between the clauses.
 
-- Use a period when the thoughts deserve separate emphasis.
-- Use a comma when the second phrase is grammatically dependent.
+An em dash in this corpus is rarely decorative. It usually marks a caesura the syntax depends on: a turn, a second movement, a clause that must land separately from the one before it. Substituting a comma preserves the grammar and destroys the structure, which is how a passage can lose its shape while every sentence remains true.
+
+Before removing a prohibited mark, state what it was doing. Then choose the repair that does that job:
+
+- Use a period when the thoughts deserve separate emphasis, and let the second stand alone.
+- Use a comma only when the second phrase is genuinely grammatically dependent.
 - Use a colon when the second clause specifies or reveals the first.
 - Use a semicolon when two independent clauses are tightly related and equal in weight.
-- Use parentheses only for genuinely incidental material.
-- Rewrite the syntax when punctuation is carrying a burden that belongs to structure.
+- Use parentheses only for genuinely incidental material, or cut the material.
+- Rewrite the syntax when the mark was carrying a burden that belongs to structure.
+
+A comma is the most common wrong answer. When a comma replaces an em dash and the sentence grows longer and slacker, the repair has failed. Prefer the period wherever the mark was separating two movements.
 
 Use ordinary hyphens in established compounds when grammar requires them. Write numeric and date ranges with `to`, such as `from 2018 to 2024`.
 
@@ -65,7 +95,15 @@ Avoid punctuation theater. A colon should introduce something. A fragment should
 
 These are diagnostic patterns, not automatic deletion rules. A pattern becomes a defect when it is needless, repeated, vague, falsely emphatic, or interchangeable with prose from an unrelated subject.
 
-Report a finding by naming its category, quoting the line, and stating the repair in a few words. Do not score a passage, and do not assert that a machine wrote it. Authorship cannot be detected from surface features. A named pattern beside its quoted line is evidence an author can check and dispute.
+### Every entry has two limbs `R-CATALOG-LIMBS`
+
+Each category below states a condition under which a construction is a defect and a condition under which it is correct and must be kept. Both limbs are binding. The retention limb is not a softening of the rule, it is half of the rule.
+
+Most entries express the retention limb in prose rather than as a separate heading, which makes it easy to read the opening imperative and stop. Do not stop. A finding is incomplete until it states which limb applies.
+
+Where a passage satisfies the retention limb, record it as an intentional exception and leave the construction alone. An exception recorded is evidence of judgment. An exception unrecorded is indistinguishable from an oversight, and the next pass will remove the construction.
+
+Report a finding by naming its category, quoting the line, stating which limb applies, and stating the repair in a few words. `4.3, defect, the weaker alternative is not plausible` is a finding. `4.3` is not. Do not score a passage, and do not assert that a machine wrote it. Authorship cannot be detected from surface features. A named pattern beside its quoted line is evidence an author can check and dispute.
 
 Categories 4.4, 4.9, and 4.19 describe one family seen from three angles: uniformity of shape, of opening, and of rhythm. Record a finding under the most specific category rather than all three.
 
@@ -307,6 +345,12 @@ Repetition may act as incantation, return, grief, insistence, or structural memo
 
 Read poems, invocations, blessings, and high-register prose aloud. Honor pauses created by lineation and syntax. Fix breathlessness that arises from accidental clause stacking.
 
+### Hold the reader in the present `R-DEIXIS`
+
+Where the text names a condition the reader is living inside, prefer the proximal demonstrative to the definite article. `This` places the reader in front of the thing. `The` reads as something already catalogued, and quietly converts a live pressure into a settled fact.
+
+The choice is small and the effect is not. Check it wherever a passage turns from describing a situation to asking the reader what to do about it. Where a condition is genuinely historical or already resolved, the definite article is correct and the proximal form would overclaim.
+
 ### Resist prestige diction
 
 Prefer the inevitable word to the impressive word. A rare word should be more exact, more musical, or more alive than its ordinary alternative.
@@ -330,6 +374,22 @@ Give every sentence one disposition:
 | Query | Intent, source, referent, or claim cannot be inferred safely |
 | Remove | The sentence is redundant, empty, misleading, or harmful to the passage |
 
+### The burden on removal `R-REMOVE-BURDEN`
+
+`Remove` is the only disposition that destroys evidence. It carries a burden the others do not.
+
+Before recording `remove`, name what the sentence was contributing: a premise, a piece of evidence, an image, a transition, a hinge between movements, a change in emotional temperature, or nothing. If the answer is nothing, remove it. If the answer is anything else, the material must survive somewhere, and the ledger must say where.
+
+A section whose every sentence carries `remove` is a developmental deletion, not a line edit. Section 3 of the editorial plan places that at intervention level 4, which requires explicit approval before implementation. Do not reach it by accumulating sentence-level decisions.
+
+### Preserve cadence alternation `R-CADENCE`
+
+A long cumulative sentence is a structure, not a symptom. Splitting one into three declaratives shortens nothing worth shortening and flattens the rhythm the voice card protects.
+
+Before splitting, ask whether the sentence is hard to follow or merely long. Length alone is not a defect. A sentence with a clear spine can carry considerable weight, and the corpus depends on that capacity where an argument accumulates.
+
+Read the revised passage as a sequence of sentence lengths. If a baseline of long, long, long has become short, short, short, short, short, the passage has been rebuilt rather than edited, and the loss will not appear in any word count.
+
 For every changed sentence, test:
 
 1. What proposition, image, question, or movement did the original contain?
@@ -346,6 +406,14 @@ For every changed sentence, test:
 ### Paragraph test
 
 Each paragraph should have a discernible center and movement. Identify what changes between its first and final sentence. If nothing changes, inspect for restatement. If several unrelated things change, split or reorder.
+
+### Landing test `R-LAND`
+
+A paragraph should end on its own strongest concrete beat, in its own sentence.
+
+Do not let a paragraph trail off into a subordinate clause that qualifies, situates, or lists. When the final sentence carries a long trailing modifier, promote it: make the modifier its own sentence and place it where its logic belongs, usually ahead of the claim it conditions. Problem, then remedy, reads better than remedy trailing its own conditions.
+
+The repair is often a reordering rather than a cut, and it usually shortens the paragraph as a side effect.
 
 ### Transition test
 
@@ -402,6 +470,12 @@ Before posting a comment, ask:
 A reviewed batch is complete only when all answers are yes:
 
 - Was every sentence given an editorial disposition?
+- Does every `remove` name what the sentence contributed, and where surviving material went?
+- Was every prohibited mark replaced by a repair that does the work the mark was doing?
+- Does the revision satisfy every assertion in the volume's voice card?
+- Does the sequence of sentence lengths still vary as the baseline's did?
+- Does every paragraph end on its own concrete beat rather than a trailing clause?
+- If the passage lost more than a third of its words, is the surplus named and its removal justified?
 - Are all changed claims semantically faithful or explicitly approved?
 - Are argument, evidence, inference, analogy, and aspiration distinguishable?
 - Are factual corrections sourced?
@@ -421,3 +495,22 @@ A reviewed batch is complete only when all answers are yes:
 - Are review comments selective, contextual, and written in a human editorial voice?
 - Do comments explain material judgments without reproducing ledger mechanics?
 - Does the pull request disclose unresolved questions and residual risks?
+
+## 12. Rule index
+
+Named rules carry stable identifiers so a ledger `reasonCodes` entry, a calibration record, or a review comment can cite the exact obligation rather than paraphrasing it. Cite the identifier, not the section number, because section numbers move and identifiers do not.
+
+| Identifier | Obligation | Section |
+| --- | --- | --- |
+| `R-VOICE-BIND` | The volume's voice card is binding. An edit that contradicts it is a defect. | 2 |
+| `R-PROPORTION` | Change must be proportional to the defect. A reduction beyond a third must be explained. | 2 |
+| `R-PUNCT-STRUCT` | A prohibited mark is a structural signal. Name its work, then rebuild the syntax to do it. | 3 |
+| `R-CATALOG-LIMBS` | Every catalog entry has a defect limb and a retention limb. Both bind. Record which applies. | 4 |
+| `R-REMOVE-BURDEN` | `remove` must name what the sentence contributed and where surviving material went. | 7 |
+| `R-CADENCE` | Preserve the alternation of sentence lengths. Length alone is not a defect. | 7 |
+| `R-LAND` | A paragraph ends on its own concrete beat, not a trailing subordinate clause. | 8 |
+| `R-DEIXIS` | Hold the reader in the present where the text names a live condition. | 6 |
+
+Rules enter this index only through a recorded calibration, so every obligation here can be traced to the passage that exposed the need for it. The schema for those records is `editorial/schemas/calibration-record.md`.
+
+This index is deliberately free of examples drawn from the manuscripts. A rule illustrated with corpus text teaches an editor to reproduce that text. The obligations must generalize to passages no one has looked at yet.
