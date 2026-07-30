@@ -21,6 +21,8 @@
     0 20px 52px rgba(44, 31, 18, 0.16), 0 8px 24px rgba(119, 84, 42, 0.18),
     0 2px 0 rgba(255, 255, 255, 0.62) inset;
   --radius: 8px;
+  --toolbar-popover-narrow-width: 22rem;
+  --toolbar-popover-wide-width: 34rem;
   --font-ui: var(--font-literata), Georgia, serif;
   --font-display: var(--font-literata), Georgia, serif;
   --font-body: var(--font-literata), Georgia, serif;
@@ -1690,6 +1692,7 @@ input {
   top: var(--toolbar-popover-top, 100%);
   right: 0;
   z-index: 20;
+  width: min(var(--toolbar-popover-width), calc(100vw - 2rem));
   height: min(var(--toolbar-menu-height), var(--toolbar-menu-max-height));
   max-height: var(--toolbar-menu-max-height);
   opacity: 0;
@@ -1701,6 +1704,19 @@ input {
     opacity 160ms ease,
     transform 180ms ease;
   will-change: height, opacity, transform;
+}
+
+.search-popover,
+.bookmarks-popover,
+.audio-popover {
+  --toolbar-popover-width: var(--toolbar-popover-wide-width);
+}
+
+.outline-popover,
+.settings-popover,
+.share-popover,
+.progress-popover {
+  --toolbar-popover-width: var(--toolbar-popover-narrow-width);
 }
 
 .outline-popover[data-menu-state="open"],
@@ -1718,7 +1734,6 @@ input {
 .search-popover {
   --toolbar-menu-max-height: min(38rem, calc(100svh - 7rem));
 
-  width: min(34rem, calc(100vw - 2rem));
   max-height: min(38rem, calc(100svh - 7rem));
   overflow: hidden;
   border: 1px solid var(--line);
@@ -1731,7 +1746,6 @@ input {
 .outline-popover {
   --toolbar-menu-max-height: min(42rem, calc(100svh - 7rem));
 
-  width: min(32rem, calc(100vw - 2rem));
   max-height: min(42rem, calc(100svh - 7rem));
   overflow: hidden;
   border: 1px solid var(--line);
@@ -2489,18 +2503,6 @@ a.bookmark-quote:focus-visible {
   padding: 0.25rem;
 }
 
-.audio-popover {
-  width: min(26rem, calc(100vw - 2rem));
-}
-
-.settings-popover {
-  width: min(28rem, calc(100vw - 2rem));
-}
-
-.progress-popover {
-  width: min(22rem, calc(100vw - 2rem));
-}
-
 /* Carries its own surface, like .search-popover and .outline-popover above.
    The popover base rule further up only supplies position, size, and the height
    transition; the panels that hold a sticky filter row and their own scroller
@@ -2510,11 +2512,6 @@ a.bookmark-quote:focus-visible {
 .bookmarks-popover {
   --toolbar-menu-max-height: min(40rem, calc(100svh - 7rem));
 
-  /* Wider than its neighbours on purpose. Every other menu lists short labels;
-     this one lists quoted manuscript prose, and at 24rem a two line clamp threw
-     away most of the passage. Still the shared min() so it collapses to the
-     viewport on narrow screens. */
-  width: min(34rem, calc(100vw - 2rem));
   max-height: min(40rem, calc(100svh - 7rem));
   overflow: hidden;
   border: 1px solid var(--line);
@@ -2522,10 +2519,6 @@ a.bookmark-quote:focus-visible {
   background: var(--panel-background);
   box-shadow: var(--shadow);
   color: var(--ink);
-}
-
-.share-popover {
-  width: min(22rem, calc(100vw - 2rem));
 }
 
 .share-popover,

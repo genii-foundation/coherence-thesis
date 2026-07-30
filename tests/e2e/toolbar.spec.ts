@@ -1103,6 +1103,85 @@ test("toolbar popovers slide, fade, and resize through content changes", async (
   await expect(searchPopover).toHaveCount(0);
 });
 
+test("desktop toolbar popovers use only narrow and wide widths", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(wieldingSection.href);
+
+  const menus = [
+    {
+      name: "search",
+      popover: ".search-popover",
+      trigger: ".search-menu-button",
+      width: "wide",
+    },
+    {
+      name: "outline",
+      popover: ".outline-popover",
+      trigger: ".outline-menu-button",
+      width: "narrow",
+    },
+    {
+      name: "bookmarks",
+      popover: ".bookmarks-popover",
+      trigger: ".bookmarks-menu-button",
+      width: "wide",
+    },
+    {
+      name: "settings",
+      popover: ".settings-popover",
+      trigger: ".settings-menu-button",
+      width: "narrow",
+    },
+    {
+      name: "share",
+      popover: ".share-popover",
+      trigger: ".share-menu-button",
+      width: "narrow",
+    },
+    {
+      name: "progress",
+      popover: ".progress-popover",
+      trigger: ".progress-menu-button",
+      width: "narrow",
+    },
+    {
+      name: "playback",
+      popover: ".audio-popover",
+      trigger: ".audio-menu-button",
+      width: "wide",
+    },
+  ] as const;
+  const renderedWidths: Record<(typeof menus)[number]["name"], number> =
+    Object.create(null);
+
+  for (const menu of menus) {
+    await page.locator(menu.trigger).click();
+    const popover = page.locator(menu.popover);
+    await expect(popover).toBeVisible();
+    renderedWidths[menu.name] = await popover.evaluate(
+      (element) => element.getBoundingClientRect().width,
+    );
+    await page.keyboard.press("Escape");
+    await expect(popover).toHaveCount(0);
+  }
+
+  const narrowWidth = renderedWidths.outline;
+  const wideWidth = renderedWidths.search;
+  expect(wideWidth).toBeGreaterThan(narrowWidth);
+  expect(
+    new Set(Object.values(renderedWidths).map((width) => Math.round(width))).size,
+  ).toBe(2);
+
+  for (const menu of menus) {
+    expect(renderedWidths[menu.name]).toBeCloseTo(
+      menu.width === "wide" ? wideWidth : narrowWidth,
+      1,
+    );
+  }
+});
+
 test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 360 });
   await page.addInitScript(() => {
