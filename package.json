@@ -105,6 +105,8 @@
     "updates:verify:generated": "tsx scripts/updates/verify.ts --generated",
     "prerepository:source-boundary": "node scripts/repository/ensure-node-modules.mjs",
     "repository:source-boundary": "tsx scripts/repository/source-boundary.ts",
+    "prerepository:validate-evidence-immutability": "node scripts/repository/ensure-node-modules.mjs",
+    "repository:validate-evidence-immutability": "tsx scripts/repository/evidence-immutability.ts",
     "prerepository:validate-layout": "node scripts/repository/ensure-node-modules.mjs",
     "repository:validate-layout": "tsx scripts/repository/layout.ts",
     "prerepository:validate-agents": "node scripts/repository/ensure-node-modules.mjs",
