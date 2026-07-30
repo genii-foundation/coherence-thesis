@@ -1,61 +1,42 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import * as Popover from "@radix-ui/react-popover";
+import { Bookmark, Trash2 } from "lucide-react";
 import type { ProgressSection } from "@/lib/manuscript-data";
 import {
   bookmarksForSection,
+  maxBookmarkNoteLength,
+  removeBookmark,
   resolveBookmarkAnchor,
+  setBookmarkNote,
   type ReaderBookmark,
 } from "@/lib/reader-bookmarks";
-import { useReaderBookmarks } from "@/lib/reader-progress-store";
+import { createEngagementEvent } from "@/lib/reader-engagement";
+import {
+  appendStoredEvent,
+  updateStoredBookmarks,
+  useReaderBookmarks,
+} from "@/lib/reader-progress-store";
 import { paragraphBlockSelector } from "@/lib/reader-selection";
 
-// Paints saved passages back into the prose, off by default behind the reader
-// preference.
-//
-// The CSS Custom Highlight API rather than wrapping text in elements. Wrapping
-// would mean mutating the same manuscript DOM that
-// ReaderAudioWordInteractionIsland already mutates imperatively, adding and
-// removing is-audio-current and is-audio-focused on .audio-word spans outside
-// React and appending its own portal target into a live word. Two uncoordinated
-// mutators over one subtree is how you get a highlight that eats a word span
-// mid-playback. Highlight ranges live beside the DOM instead of inside it, so
-// nothing here can disturb a single node.
-//
-// Where the API is missing the feature simply does not paint. A wrapped-span
-// fallback would reintroduce exactly the mutation this avoids, for a decorative
-// feature the reader opted into, which is a bad trade.
-const highlightName = "coherence-bookmark";
+type BookmarkHighlightMarker = {
+  bookmark: ReaderBookmark;
+  height: number;
+  left: number;
+  top: number;
+};
 
-function supportsHighlights(): boolean {
-  return (
-    typeof CSS !== "undefined" &&
-    "highlights" in CSS &&
-    typeof Highlight === "function"
-  );
-}
+type ActiveMarker = {
+  bookmarkId: string;
+  mode: "active" | "hover";
+} | null;
 
-// The one place in this codebase that styles from JavaScript, and it is not a
-// preference. The ::highlight() pseudo-element cannot go in globals.css:
-// lightningcss 1.32.0, which Next bundles, does not recognize it and emits
-// "Parsing CSS source code failed" on every build. It passes the rule through
-// intact, so the feature worked either way, but a permanent parse warning is
-// how real CSS errors get ignored later.
-//
-// A constructed stylesheet is safe to reach for here because every browser that
-// implements CSS.highlights also implements adoptedStyleSheets, and this runs
-// only after supportsHighlights(). The colour comes from a custom property in
-// globals.css so theming still lives with the rest of the theme.
-let highlightSheet: CSSStyleSheet | null = null;
-
-function ensureHighlightStyle(): void {
-  if (highlightSheet || !("adoptedStyleSheets" in document)) return;
-  highlightSheet = new CSSStyleSheet();
-  highlightSheet.replaceSync(
-    `::highlight(${highlightName}){background-color:var(--bookmark-highlight);color:var(--ink);}`,
-  );
-  document.adoptedStyleSheets = [...document.adoptedStyleSheets, highlightSheet];
-}
+// Saved passages are marked beside the prose rather than wrapped or painted
+// behind the words. The reader's audio island changes classes on word spans
+// imperatively, so this island must not mutate that same manuscript subtree.
+// Document-positioned portal markers preserve the text DOM and scroll with it.
 
 // Walk the block's text nodes accumulating length until the stored character
 // offsets land, which is the same visible-text coordinate space the offsets
@@ -88,7 +69,7 @@ function rangeForOffsets(
     node = walker.nextNode();
   }
 
-  return started ? null : null;
+  return null;
 }
 
 function blockFor(
@@ -135,41 +116,287 @@ export function ReaderBookmarkHighlightIsland({
 }) {
   const bookmarks = useReaderBookmarks();
   const enabled = useHighlightPreference();
+  const [markers, setMarkers] = useState<BookmarkHighlightMarker[]>([]);
+  const [activeMarker, setActiveMarker] = useState<ActiveMarker>(null);
+  const [editingNoteId, setEditingNoteId] = useState<string | null>(null);
+  const [pendingRemovalId, setPendingRemovalId] = useState<string | null>(null);
+  const hoverCloseTimer = useRef<number | null>(null);
+
+  const clearHoverCloseTimer = useCallback(() => {
+    if (hoverCloseTimer.current === null) return;
+    window.clearTimeout(hoverCloseTimer.current);
+    hoverCloseTimer.current = null;
+  }, []);
+
+  const openMarker = useCallback(
+    (bookmarkId: string, mode: "active" | "hover") => {
+      clearHoverCloseTimer();
+      setActiveMarker({ bookmarkId, mode });
+    },
+    [clearHoverCloseTimer],
+  );
+
+  const closeMarker = useCallback(
+    (bookmarkId: string) => {
+      clearHoverCloseTimer();
+      setActiveMarker((current) =>
+        current?.bookmarkId === bookmarkId ? null : current,
+      );
+      setEditingNoteId(null);
+      setPendingRemovalId(null);
+    },
+    [clearHoverCloseTimer],
+  );
+
+  const queueHoverClose = useCallback(
+    (bookmarkId: string) => {
+      clearHoverCloseTimer();
+      hoverCloseTimer.current = window.setTimeout(() => {
+        setActiveMarker((current) =>
+          current?.bookmarkId === bookmarkId && current.mode === "hover"
+            ? null
+            : current,
+        );
+        hoverCloseTimer.current = null;
+      }, 120);
+    },
+    [clearHoverCloseTimer],
+  );
+
+  const commitRemove = useCallback(
+    (bookmark: ReaderBookmark) => {
+      updateStoredBookmarks((current) => removeBookmark(current, bookmark.id));
+      appendStoredEvent(
+        createEngagementEvent("bookmark_removed", {
+          sectionId: bookmark.sectionId,
+          route: window.location.pathname,
+          payload: { paragraphAnchor: bookmark.paragraphAnchor },
+        }),
+      );
+      closeMarker(bookmark.id);
+    },
+    [closeMarker],
+  );
 
   useEffect(() => {
-    if (!supportsHighlights() || typeof CSS.escape !== "function") return;
+    if (!enabled || typeof CSS.escape !== "function") return;
 
-    if (!enabled) {
-      CSS.highlights.delete(highlightName);
-      return;
-    }
+    let frame = 0;
+    let disposed = false;
 
-    ensureHighlightStyle();
+    const measure = () => {
+      if (disposed) return;
 
-    const ranges: Range[] = [];
-    for (const section of sections) {
-      for (const bookmark of bookmarksForSection(bookmarks, section)) {
-        const block = blockFor(section, bookmark);
-        if (!block) continue;
-        const range = rangeForOffsets(
-          block,
-          bookmark.startOffset,
-          bookmark.endOffset,
-        );
-        if (range) ranges.push(range);
+      const nextMarkers: BookmarkHighlightMarker[] = [];
+      for (const section of sections) {
+        for (const bookmark of bookmarksForSection(bookmarks, section)) {
+          const block = blockFor(section, bookmark);
+          if (!block) continue;
+          const range = rangeForOffsets(
+            block,
+            bookmark.startOffset,
+            bookmark.endOffset,
+          );
+          if (!range) continue;
+
+          const boxes = Array.from(range.getClientRects()).filter(
+            (box) => box.width > 0 && box.height > 0,
+          );
+          if (boxes.length === 0) continue;
+
+          const prose = block.closest<HTMLElement>(".manuscript-prose");
+          const proseBox = (prose ?? block).getBoundingClientRect();
+          const top = Math.min(...boxes.map((box) => box.top));
+          const bottom = Math.max(...boxes.map((box) => box.bottom));
+          const isDesktop = window.matchMedia("(min-width: 641px)").matches;
+
+          nextMarkers.push({
+            bookmark,
+            height: Math.max(44, bottom - top + 4),
+            left:
+              Math.max(
+                isDesktop ? 4 : 0,
+                proseBox.left - (isDesktop ? 54 : 24),
+              ) + window.scrollX,
+            top: Math.max(0, top - 2) + window.scrollY,
+          });
+        }
       }
+
+      setMarkers(nextMarkers);
+    };
+
+    const requestMeasure = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(measure);
+    };
+
+    requestMeasure();
+    window.addEventListener("resize", requestMeasure);
+
+    const resizeObserver = new ResizeObserver(requestMeasure);
+    for (const section of sections) {
+      const sectionRoot = document.querySelector<HTMLElement>(
+        `[data-reader-section-id="${CSS.escape(section.sectionId)}"]`,
+      );
+      const prose =
+        sectionRoot?.querySelector<HTMLElement>(".manuscript-prose");
+      if (prose) resizeObserver.observe(prose);
     }
 
-    if (ranges.length === 0) {
-      CSS.highlights.delete(highlightName);
-      return;
-    }
+    const rootObserver = new MutationObserver(requestMeasure);
+    rootObserver.observe(document.documentElement, {
+      attributeFilter: ["style"],
+    });
 
-    CSS.highlights.set(highlightName, new Highlight(...ranges));
+    void document.fonts?.ready.then(requestMeasure);
+
     return () => {
-      CSS.highlights.delete(highlightName);
+      disposed = true;
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("resize", requestMeasure);
+      resizeObserver.disconnect();
+      rootObserver.disconnect();
     };
   }, [bookmarks, enabled, sections]);
 
-  return null;
+  useEffect(() => clearHoverCloseTimer, [clearHoverCloseTimer]);
+
+  if (!enabled || markers.length === 0 || typeof document === "undefined") {
+    return null;
+  }
+
+  return createPortal(
+    <>
+      {markers.map((marker) => (
+        <Popover.Root
+          key={marker.bookmark.id}
+          open={activeMarker?.bookmarkId === marker.bookmark.id}
+          onOpenChange={(open) => {
+            if (!open) closeMarker(marker.bookmark.id);
+          }}
+        >
+          <Popover.Anchor asChild>
+            <button
+              type="button"
+              className="reader-bookmark-highlight"
+              aria-label={`Bookmark: ${marker.bookmark.quote.slice(0, 80)}`}
+              aria-expanded={activeMarker?.bookmarkId === marker.bookmark.id}
+              aria-haspopup="dialog"
+              data-bookmark-highlight="true"
+              data-bookmark-id={marker.bookmark.id}
+              data-paragraph-anchor={marker.bookmark.paragraphAnchor}
+              onClick={() => openMarker(marker.bookmark.id, "active")}
+              onFocus={() => openMarker(marker.bookmark.id, "active")}
+              onMouseEnter={() => openMarker(marker.bookmark.id, "hover")}
+              onMouseLeave={() => queueHoverClose(marker.bookmark.id)}
+              style={{
+                height: `${marker.height}px`,
+                left: `${marker.left}px`,
+                top: `${marker.top}px`,
+              }}
+            >
+              <span
+                className="reader-bookmark-highlight-line"
+                aria-hidden="true"
+              />
+              <span
+                className="reader-bookmark-highlight-icon"
+                aria-hidden="true"
+              >
+                <Bookmark />
+              </span>
+            </button>
+          </Popover.Anchor>
+          <Popover.Portal>
+            <Popover.Content
+              className="reader-bookmark-highlight-panel tooltip-surface"
+              role="dialog"
+              aria-label="Bookmark details"
+              side="top"
+              align="start"
+              sideOffset={10}
+              collisionPadding={12}
+              arrowPadding={12}
+              hideWhenDetached
+              onOpenAutoFocus={(event) => event.preventDefault()}
+              onCloseAutoFocus={(event) => event.preventDefault()}
+              onMouseEnter={clearHoverCloseTimer}
+              onMouseLeave={() => queueHoverClose(marker.bookmark.id)}
+            >
+              <p className="reader-bookmark-highlight-quote">
+                {marker.bookmark.quote}
+              </p>
+              {editingNoteId === marker.bookmark.id ? (
+                <textarea
+                  className="reader-bookmark-highlight-note-field"
+                  defaultValue={marker.bookmark.note ?? ""}
+                  maxLength={maxBookmarkNoteLength}
+                  aria-label="Bookmark note"
+                  autoFocus
+                  onBlur={(event) => {
+                    updateStoredBookmarks((current) =>
+                      setBookmarkNote(
+                        current,
+                        marker.bookmark.id,
+                        event.target.value,
+                      ),
+                    );
+                    setEditingNoteId(null);
+                  }}
+                />
+              ) : (
+                <button
+                  type="button"
+                  className="reader-bookmark-highlight-note-button"
+                  onClick={() => {
+                    openMarker(marker.bookmark.id, "active");
+                    setEditingNoteId(marker.bookmark.id);
+                  }}
+                >
+                  {marker.bookmark.note ? marker.bookmark.note : "Add a note"}
+                </button>
+              )}
+              {pendingRemovalId === marker.bookmark.id ? (
+                <div className="reader-bookmark-highlight-confirm">
+                  <span>Remove this bookmark?</span>
+                  <button
+                    type="button"
+                    onClick={() => setPendingRemovalId(null)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    className="reader-bookmark-highlight-confirm-remove"
+                    onClick={() => commitRemove(marker.bookmark)}
+                  >
+                    Remove
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className="reader-bookmark-highlight-remove"
+                  onClick={() => {
+                    openMarker(marker.bookmark.id, "active");
+                    setPendingRemovalId(marker.bookmark.id);
+                  }}
+                >
+                  <Trash2 aria-hidden="true" size={15} />
+                  <span>Remove bookmark</span>
+                </button>
+              )}
+              <Popover.Arrow
+                className="reader-bookmark-highlight-arrow tooltip-arrow"
+                width={18}
+                height={9}
+              />
+            </Popover.Content>
+          </Popover.Portal>
+        </Popover.Root>
+      ))}
+    </>,
+    document.body,
+  );
 }

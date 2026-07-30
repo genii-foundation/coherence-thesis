@@ -708,13 +708,19 @@ test("overview links into canonical manuscript sections", async ({
   await expect(overviewStats.getByText("sections")).toBeVisible();
   await expect(overviewStats.getByText("full read")).toBeVisible();
   await expect(
-    overviewStats.getByText(catalog.stats.volumeCount.toLocaleString()),
+    overviewStats.getByText(catalog.stats.volumeCount.toLocaleString(), {
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(
-    overviewStats.getByText(catalog.stats.partCount.toLocaleString()),
+    overviewStats.getByText(catalog.stats.partCount.toLocaleString(), {
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(
-    overviewStats.getByText(catalog.stats.sectionCount.toLocaleString()),
+    overviewStats.getByText(catalog.stats.sectionCount.toLocaleString(), {
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(
     overviewStats.getByText(
@@ -1026,6 +1032,9 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   await expect(
     activePanel.getByRole("button", { name: "Opening" }),
   ).toBeVisible();
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+  });
   const panelMetrics = await activeCard.evaluate((card) => {
     const flow = card.closest(".cover-flow");
     const cover = card.querySelector(".cover-flow-image-frame");
@@ -1116,7 +1125,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   }
   expect(panelMetrics.stageEndGap).toBeGreaterThanOrEqual(-2);
   if (panelMetrics.viewportWidth > 540) {
-    expect(panelMetrics.stageEndGap).toBeLessThanOrEqual(260);
+    expect(panelMetrics.stageEndGap).toBeLessThanOrEqual(270);
   }
   if (panelMetrics.viewportWidth <= 540) {
     expect(

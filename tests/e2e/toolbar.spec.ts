@@ -1550,8 +1550,14 @@ test("offline manuscript downloads can run concurrently", async ({ page }) => {
   });
 
   const downloadButtons = audioMenu.locator(".audio-offline-button");
-  const firstDownload = downloadButtons.nth(0);
-  const secondDownload = downloadButtons.nth(1);
+  const enabledIndexes = await downloadButtons.evaluateAll((buttons) =>
+    buttons.flatMap((button, index) =>
+      button instanceof HTMLButtonElement && !button.disabled ? [index] : [],
+    ),
+  );
+  expect(enabledIndexes.length).toBeGreaterThanOrEqual(2);
+  const firstDownload = downloadButtons.nth(enabledIndexes[0]!);
+  const secondDownload = downloadButtons.nth(enabledIndexes[1]!);
   await expect(firstDownload).toBeEnabled();
   await expect(secondDownload).toBeEnabled();
   await firstDownload.click();
@@ -1753,21 +1759,23 @@ test("mobile paper texture fades into Safari theme fallbacks without a fixed pai
     expect(metrics.bottomInsideShell).toBe(true);
   }
 
-  const themeBackgrounds = await page.evaluate(() => {
+  const themeBackgrounds = await page.evaluate(async () => {
     const root = document.documentElement;
     const originalTheme = root.getAttribute("data-reader-theme");
-    const results = ["light", "dark", "black"].map((theme) => {
+    const results = [];
+    for (const theme of ["light", "dark", "black"]) {
       root.dataset.readerTheme = theme;
+      await new Promise(requestAnimationFrame);
       const bodyStyle = getComputedStyle(document.body);
       const rootStyle = getComputedStyle(root);
-      return {
+      results.push({
         backgroundBlendMode: bodyStyle.backgroundBlendMode,
         backgroundColor: bodyStyle.backgroundColor,
         backgroundImage: bodyStyle.backgroundImage,
         edgeBackground: rootStyle.getPropertyValue("--page-edge-background").trim(),
         theme,
-      };
-    });
+      });
+    }
 
     if (originalTheme === null) root.removeAttribute("data-reader-theme");
     else root.setAttribute("data-reader-theme", originalTheme);

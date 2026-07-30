@@ -1,4 +1,5 @@
 export const readerPreferencesStorageKey = "coherence-reader-preferences-v1";
+export const readerPreferencesSchemaVersion = 2;
 
 export const readerFontSizeMin = 85;
 export const readerFontSizeMax = 125;
@@ -10,10 +11,6 @@ export type ReaderTheme = (typeof readerThemeOptions)[number];
 export const readerAnimationOptions = ["balanced", "none"] as const;
 export type ReaderAnimations = (typeof readerAnimationOptions)[number];
 
-// Painting bookmarked passages back into the prose is off by default. It puts
-// reader-generated marks on top of the manuscript, which is a change to how the
-// text reads, so it is opt in rather than something the reader has to discover
-// and switch off.
 export const readerHighlightOptions = ["off", "on"] as const;
 export type ReaderHighlights = (typeof readerHighlightOptions)[number];
 
@@ -75,7 +72,7 @@ export const defaultReaderPreferences: ReaderPreferences = {
   fontFamily: "literata",
   theme: "textured",
   animations: "balanced",
-  highlights: "off",
+  highlights: "on",
 };
 
 export const defaultReaderThemeColor =
@@ -180,12 +177,20 @@ export function parseReaderPreferences(raw: string | null): ReaderPreferences {
     const parsed = JSON.parse(raw) as unknown;
     if (!isRecord(parsed)) return defaultReaderPreferences;
 
+    const storedSchemaIsCurrent =
+      parsed.schemaVersion === readerPreferencesSchemaVersion;
+
     return {
       fontSize: parseFontSize(parsed.fontSize),
       fontFamily: parseFontFamily(parsed.fontFamily),
       theme: parseTheme(parsed.theme),
       animations: parseAnimations(parsed.animations),
-      highlights: parseHighlights(parsed.highlights),
+      // Version 1 wrote "off" whether the reader chose it or not. Treat that
+      // legacy field as unset so the new visible default reaches existing
+      // browsers. Version 2 preserves an intentional Hidden choice.
+      highlights: storedSchemaIsCurrent
+        ? parseHighlights(parsed.highlights)
+        : defaultReaderPreferences.highlights,
     };
   } catch {
     return defaultReaderPreferences;
@@ -195,7 +200,10 @@ export function parseReaderPreferences(raw: string | null): ReaderPreferences {
 export function serializeReaderPreferences(
   preferences: ReaderPreferences,
 ): string {
-  return JSON.stringify(preferences);
+  return JSON.stringify({
+    ...preferences,
+    schemaVersion: readerPreferencesSchemaVersion,
+  });
 }
 
 export function applyReaderPreferences(

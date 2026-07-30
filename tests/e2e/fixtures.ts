@@ -142,7 +142,15 @@ export const copyrightYearLabel =
   currentYear > 2026 ? `2026 to ${currentYear}` : "2026";
 
 export function hexToRgb(hex: string): string {
-  const value = Number.parseInt(hex.slice(1), 16);
+  const digits = hex.slice(1);
+  const normalized =
+    digits.length === 3
+      ? digits
+          .split("")
+          .map((digit) => `${digit}${digit}`)
+          .join("")
+      : digits;
+  const value = Number.parseInt(normalized, 16);
   const red = (value >> 16) & 255;
   const green = (value >> 8) & 255;
   const blue = value & 255;

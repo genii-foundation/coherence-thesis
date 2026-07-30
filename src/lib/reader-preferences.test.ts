@@ -32,6 +32,7 @@ describe("reader preferences", () => {
           theme: "black",
           animations: "none",
           highlights: "on",
+          schemaVersion: 2,
         }),
       ),
     ).toEqual({
@@ -43,14 +44,27 @@ describe("reader preferences", () => {
     });
   });
 
-  test("defaults bookmark highlights off when the stored value is absent or invalid", () => {
-    // Painting reader marks over the manuscript changes how the text reads, so
-    // an unreadable preference must fall back to off rather than on.
-    for (const stored of [{}, { highlights: "yes" }, { highlights: 1 }]) {
+  test("defaults bookmark highlights on when the stored value is absent or invalid", () => {
+    for (const stored of [
+      {},
+      { highlights: "yes", schemaVersion: 2 },
+      { highlights: 1, schemaVersion: 2 },
+    ]) {
       expect(parseReaderPreferences(JSON.stringify(stored)).highlights).toBe(
-        "off",
+        "on",
       );
     }
+  });
+
+  test("migrates legacy bookmark highlights to the visible default", () => {
+    expect(
+      parseReaderPreferences(JSON.stringify({ highlights: "off" })).highlights,
+    ).toBe("on");
+    expect(
+      parseReaderPreferences(
+        JSON.stringify({ highlights: "off", schemaVersion: 2 }),
+      ).highlights,
+    ).toBe("off");
   });
 
   test("maps legacy font preferences to variable font choices", () => {
@@ -102,7 +116,7 @@ describe("reader preferences", () => {
         highlights: "on",
       }),
     ).toBe(
-      '{"fontSize":90,"fontFamily":"source-serif","theme":"light","animations":"balanced","highlights":"on"}',
+      '{"fontSize":90,"fontFamily":"source-serif","theme":"light","animations":"balanced","highlights":"on","schemaVersion":2}',
     );
   });
 });
