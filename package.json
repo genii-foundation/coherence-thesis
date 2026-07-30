@@ -75,6 +75,8 @@
     "editorial:validate": "tsx scripts/editorial/validate.ts",
     "preeditorial:compare": "node scripts/repository/ensure-node-modules.mjs",
     "editorial:compare": "tsx scripts/editorial/compare.ts",
+    "preeditorial:revision": "npm run manuscripts:prepare",
+    "editorial:revision": "tsx scripts/editorial/revision-session.ts",
     "preeditorial:protected-lines": "node scripts/repository/ensure-node-modules.mjs",
     "editorial:protected-lines": "tsx scripts/editorial/protected-lines.ts",
     "preeditorial:voice-exemplars": "node scripts/repository/ensure-node-modules.mjs",

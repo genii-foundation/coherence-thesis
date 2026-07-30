@@ -1,6 +1,6 @@
 # Calibration Record Schema
 
-A calibration record is the durable memory of one editorial conversation about one section. It exists so that a judgment reached once is never relitigated, and so that every rule in the standard can be traced to the passage that exposed the need for it.
+A calibration record is the durable memory of one approved editorial conversation about one section. It exists so that a judgment reached once is never relitigated, and so that every rule in the standard can be traced to the passage that exposed the need for it.
 
 Commit one record per calibrated section at:
 
@@ -10,18 +10,21 @@ editorial/evidence/calibration/<editorial-id>/<section-id>.json
 
 Records are durable tracked editorial state. No build, preview, test, import, or preparation command may write them. They change only through an explicit command and an intentional commit.
 
+Do not create a calibration record when a revision session begins. Intent gathering, variant generation, and iteration use the ignored working state defined in `working-revision-session.md`. The durable record begins only after the editor explicitly approves a finished variant.
+
 ## Why the record exists
 
 The first nine volume pass produced 12,179 ledger records and no memory. Its decisions live in reason codes that name operations rather than reasons, so a later pass cannot tell an intentional exception from an oversight and will remove the same construction again.
 
 A calibration record fixes that by storing three things a ledger cannot: what a specific loss cost, what the author ruled about it, and which general obligation the ruling produced.
 
-## Required fields
+## Record fields
 
 - `schemaVersion`: integer, currently `1`
 - `sectionId`: the canonical section identity, such as `v01-orientation`
 - `editorialId`: `volume-01` through `volume-09`, or `corpus`
 - `baseline`: `{ batchId, path, sha256 }` identifying the immutable source the variants were derived from
+- `directions`: `[{ text, createdAt }]` preserving the editor's instructions in the order received
 - `status`: `open`, `settled`, or `superseded`
 - `findings`: what the prior pass lost or damaged, one entry per defect
 - `generations`: the variants explored, in lineage order
@@ -30,6 +33,17 @@ A calibration record fixes that by storing three things a ledger cannot: what a 
 - `openQuestions`: judgments the author has not yet made
 - `debtImpact`: debt items the section touches, with effect and note; an empty array records that the section touches none
 - `debtAudit`: a dated audit identifier, durable record path, and result when a later ledger audit amends the record
+
+`directions` is required for records created through the intent-first workflow. Legacy records remain valid without it because those conversations did not preserve a structured intent history. Do not invent directions when maintaining a legacy record.
+
+## `directions`
+
+Each entry preserves one instruction from the editor before or during variant generation.
+
+- `text`: the editor's words without inferred editorial objectives
+- `createdAt`: the timestamp recorded in the working session
+
+Directions explain what the editor asked the session to accomplish. They do not become rulings merely because the approved prose satisfies them. General authority still requires an author ruling with deliberate scope.
 
 ## `findings`
 
@@ -79,14 +93,18 @@ So a ruling enters the standard as an obligation stated in general terms, verifi
 
 ## Lifecycle
 
-1. A section is opened for calibration. The record is created with `status: open` and its `baseline` fixed to an immutable source.
-2. Findings are recorded against the prior pass, each traced to the rule that authorized the loss.
-3. Generations are explored and recorded with their reasoning, including rejected ones. A rejected variant is evidence about where a boundary lies.
-4. The author rules. Rulings are recorded with scope.
-5. Corpus-scoped rulings are generalized into obligations and added to the standard's rule index. Their identifiers are recorded in `rulesDerived`.
-6. The record moves to `status: settled`. A settled record is never edited to match a later opinion. A changed judgment supersedes it, and the superseded record remains as history.
-7. A later ledger audit may append `debtImpact` or `debtAudit` evidence without rewriting the original findings, variants, rulings, or conclusion.
+1. The editor and agent iterate in ignored working state. No calibration record exists yet.
+2. The editor explicitly approves one finished variant.
+3. The record is created with its immutable baseline, the editor's directions, the explored variants, and the approved branch preserved accurately.
+4. Findings are recorded against the prior pass where the approved work exposed a defect, each traced to the rule that authorized the loss.
+5. Author rulings are recorded with deliberate scope. Approval of wording settles the passage but does not make every preference a volume or corpus rule.
+6. Corpus-scoped rulings are generalized into obligations and added to the standard's rule index. Their identifiers are recorded in `rulesDerived`.
+7. The manuscript is updated to the approved text and the record moves to `status: settled` once findings, questions, and applicable guidance are complete.
+8. A settled record is never edited to match a later opinion. A changed judgment supersedes it, and the superseded record remains as history.
+9. A later ledger audit may append `debtImpact` or `debtAudit` evidence without rewriting the original findings, variants, rulings, or conclusion.
 
 ## Rendering
 
 `npm run editorial:compare -- --section <section-id>` reads the record, resolves the baseline and current text, and writes a comparison view to `generated/calibration/`. The output is disposable and never committed.
+
+Before approval, use `/admin/revisions/<section-id>/`. The working page reads only ignored session state and must not imply that a candidate has entered the editorial record.

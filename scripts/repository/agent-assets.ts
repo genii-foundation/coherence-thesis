@@ -33,6 +33,7 @@ export const REQUIRED_SKILL_RESOURCES: Readonly<
   "coherence-build-feature": ["AGENTS.md"],
   "coherence-editorial-calibration": [
     "editorial/method/schemas/calibration-record.md",
+    "editorial/method/schemas/working-revision-session.md",
     "editorial/method/standard.md",
   ],
   "coherence-editorial-debt": [

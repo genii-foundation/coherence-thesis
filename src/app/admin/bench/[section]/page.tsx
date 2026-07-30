@@ -9,10 +9,9 @@ import { BenchSurface } from "./BenchSurface";
 export const dynamic = "force-dynamic";
 
 /**
- * The bench inside the admin shell. The renderer emits a complete document with its own
- * papyrus theme and its own scripts, so it is embedded in a frame rather than inlined:
- * inlining would put two stylesheets in one document and let each rewrite the other.
- * The frame's source is the sibling raw route, which gates itself independently.
+ * The durable comparison inside the admin shell. This route exists only after
+ * approval creates a calibration record. Active work belongs under
+ * /admin/revisions so candidates cannot masquerade as editorial evidence.
  */
 export default async function BenchPage({
   params,

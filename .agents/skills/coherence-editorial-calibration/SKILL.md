@@ -1,99 +1,119 @@
 ---
 name: coherence-editorial-calibration
-description: Calibrate the editorial standard against a specific Coherence Thesis section by generating variants, comparing them to the immutable baseline in a rendered bench, capturing the author's rulings, and promoting corpus-scoped rulings into named obligations. Use when a passage reads worse after an editorial pass, when prose feels truncated, flattened, or off in register, when deciding between competing revisions of a section, when recording what an editorial conversation concluded so a later pass inherits it, and when adding or revising rules in editorial/method/standard.md.
+description: Guide an intent-first revision of a specific Coherence Thesis section from the editor's request through a transient working page, generated variants, iterative comparison, explicit approval, manuscript implementation, durable calibration evidence, and any justified editorial guidance. Use when a passage should change, prose feels truncated, flattened, unclear, or off in register, the editor selects reader text and chooses Revise this section, competing revisions need comparison, or an approved section decision should teach later editorial passes.
 ---
 
 # Editorial Calibration
 
-Fix the rule, not just the sentence. A better paragraph helps one passage. A better obligation helps every passage no one has read yet.
+The editor defines the problem. The machine proposes language only after it understands what the editor wants changed.
 
 ## Load canonical guidance
 
-- `editorial/method/schemas/calibration-record.md` before creating or changing a record.
-- `editorial/method/standard.md` before proposing any variant, and again before promoting a ruling into a rule.
-- The volume's `voice-card.md` before reading the passage. It is binding under `R-VOICE-BIND`.
+- `editorial/method/schemas/working-revision-session.md` before creating or changing transient session state.
+- `editorial/method/schemas/calibration-record.md` before creating durable evidence after approval.
+- `editorial/method/standard.md` before proposing a variant and again before recording any general rule.
+- The volume's `voice-card.md`, neighboring sections, relevant master-ledger material, and relevant debt items before proposing prose.
 
-## Start or resume a session
+## Open the working page first
 
-Resolve the section identity first, then render the bench.
+Resolve the section and selected paragraph. Before diagnosis, drafting, or durable writes, run:
 
 ```bash
-npm run editorial:compare -- --section <section-id>
+npm run editorial:revision -- start --section <section-id> --anchor <paragraph-anchor>
 ```
 
-Output lands at `generated/calibration/<section-id>.html`, which is disposable and never committed. Open it in the browser pane. If a record does not exist yet, create one from the schema before rendering.
+The command creates ignored state under `generated/revision-sessions/` and prints `/admin/revisions/<section-id>/`. Share the full local preview link immediately.
 
-To view it over the dev server rather than the file system, copy it under `public/data/` and serve with `npm run preview:dev`. Both locations are ignored.
+Then ask one direct question: what do you want changed about this passage?
 
-## Diagnose before proposing
+Wait for the answer. Do not offer a rewrite, infer the editor's goal from the selection, or create a calibration record while waiting.
 
-Never open with a rewrite. Establish what the prior pass did and which rule permitted it.
+## Preserve the editor's direction
 
-1. Extract the baseline text from the batch's immutable `baseline.md` and the current text from `manuscript.md`. Never treat the current manuscript as the baseline.
-2. Compare sentence counts and the sequence of sentence lengths, not only word counts. Register damage hides inside an unchanged word count.
-3. Check every voice card assertion against the current text. Record which hold and which break.
-4. For each loss, find the rule, catalog category, or reason code that authorized it. Record it in `authorizedBy`. A finding without that field is a complaint.
-5. State in `diagnosis` why the rule fired when it should not have, or why the rule itself was wrong.
+Write the editor's answer to a temporary text file under `generated/`, then run:
 
-## Propose variants
+```bash
+npm run editorial:revision -- direction --section <section-id> --request-file <path>
+```
 
-Offer three at first, differing in how hard they compress, not in surface wording. The spread is the instrument: it locates the boundary the author cannot state in advance.
+Use the editor's words. Do not improve, broaden, or translate the request into a different editorial objective.
 
-Include at least one variant that is deliberately too aggressive. A rejected variant is evidence about where a limit lies, and it belongs in the record.
+If the request changes canon, doctrine, evidence, claim scope, or another fact the agent cannot authorize, name that consequence before drafting. The editor may authorize the change or narrow the request.
 
-Label by positional descent. Roots take letters. A child of `A` is `A1`, its child `A11`, a sibling branch `A2`. Label and grid position then carry the same information.
+## Diagnose only after intent exists
 
-For every variant record `reasoning` entries keyed `applied`, `kept`, `cut`, `error`, `cost`, or `remaining`. Record your own errors. A record that shows only successes flatters the method and teaches nothing.
+The current canonical passage is the text being revised. The immutable baseline is evidence and a guard against accidental loss. It is not the default replacement text.
 
-## Stop
+1. Read the selected passage in its full section and neighboring context.
+2. Read the immutable baseline, voice card, standard, relevant ledgers, and known debt.
+3. Identify the smallest set of changes that could satisfy the editor's request.
+4. Preserve claims, evidence, image, cadence, and continuity that the request does not authorize changing.
+5. State any conflict between the request and binding editorial authority instead of resolving it silently.
 
-Present the variants, say what each one changes and what it costs, and stop.
+## Publish real alternatives
 
-The session exists to collect a judgment that is not yours. Deriving options and then recording your own choice is a session held with yourself: it produces a record carrying a warrant nobody granted, and every later pass inherits it as though the author had ruled.
+Offer at least two distinct approaches. Variants must differ in editorial strategy, not in decorative synonym changes.
 
-Do not settle the record, do not promote a rule, and do not edit the manuscript before the author has chosen. Rendering the bench is the end of your turn.
+For each variant provide:
 
-## Capture rulings
+- a short title;
+- the full proposed passage;
+- specific reasoning about what it changes;
+- the cost or risk the editor should weigh;
+- a lineage parent when it refines an earlier branch.
 
-Write the author's decision in the author's terms, not as a paraphrase that smooths it.
+Write the complete variant array to a temporary JSON file under `generated/`, then run:
 
-Set `scope` deliberately, because it governs reuse:
+```bash
+npm run editorial:revision -- variants --section <section-id> --file <path>
+```
 
-- `section` settles this passage only.
-- `volume` constrains the volume and belongs in its voice card.
-- `corpus` constrains every future pass and must produce a named obligation.
+Share the working-page link again as soon as the variants appear. Present a concise comparison in chat, then ask what the editor wants to keep, reject, combine, or change.
 
-Mark `by` as `author` when the author chose, and `editorial-agent` when you did.
+Do not select a winner.
 
-`editorial-agent` is a working note, not a ruling. Use it only where the work could not continue without a decision, say plainly in the `occasion` that it was unattended, and never let one settle a record or produce a named obligation on its own. A rule the author never saw binds every future pass on your say-so.
+## Iterate in working state
 
-Canon, doctrine, and claim content are always author decisions, and are never resolved to make a sentence land.
+Each new editor response is another `direction` entry. Publish the next complete variant set after applying it.
 
-## Promote a ruling into a rule
+Keep rejected branches when they explain the boundary the editor discovered. Use positional lineage labels such as `A`, `B`, `A1`, and `A11`.
 
-A corpus-scoped ruling is not finished until it is stated as an obligation that generalizes.
+Continue until the editor explicitly says that one finished version is approved. Agreement with an approach, a favorite direction, or a request for one more tweak is not final approval.
 
-1. Write it without quoting the passage that produced it. If it cannot be stated that way, no rule has been found, only a preference about that passage.
-2. Give it a stable identifier and add it to the rule index in section 12 of the standard.
-3. Place the obligation in the section an editor would consult, not in an appendix.
-4. Record the identifier in the record's `rulesDerived`.
+## Mark approval before durable work
 
-Never illustrate a rule with corpus text. An editor who has read an approved passage reproduces its cadence and vocabulary in volumes that need neither.
+After explicit approval, run:
 
-## Prove the rule is sufficient
+```bash
+npm run editorial:revision -- approve --section <section-id> --variant <label>
+```
 
-Before settling a record, re-derive the approved variant from the baseline using only the standard and the voice card, without reading the stored text. Compare.
+The working page must show the approved checkmark before any manuscript or evidence write.
 
-If the rules do not reproduce it, they are incomplete and the gap is the next rule. Record the outcome in `regenerationTest`. This is the only check that distinguishes a codified method from a memorized answer.
+Approval authorizes implementation of that text. It does not automatically turn every preference expressed during the session into a volume or corpus rule.
 
-## Settle and commit
+## Implement and record
 
-Set `status` to `settled` once every finding has a rule and `openQuestions` is empty. A settled record is never edited to match a later opinion. A changed judgment supersedes it and the superseded record remains as history.
+Only now:
 
-Commit the record, the standard change, and any voice card change together, so the obligation and the evidence that produced it arrive in one revision.
+1. Apply the approved text to the canonical manuscript.
+2. Create or supersede the calibration record.
+3. Preserve the editor's directions, explored variants, rejected branches, approved branch, and stated reasoning accurately.
+4. Record author rulings with deliberate `section`, `volume`, or `corpus` scope.
+5. Update the volume voice card only when the approved decision establishes volume authority.
+6. Add a named obligation to the standard only when the author made a corpus-scoped ruling that generalizes beyond this passage.
+7. Update debt, continuity, review evidence, and audio impact where the approved change requires it.
 
-Run `npm run editorial:validate` before committing, and `npm run validate` before opening a pull request.
+Run the applicable editorial checks and the full repository gate. Then mark the working session recorded:
 
-## Carry work forward
+```bash
+npm run editorial:revision -- recorded --section <section-id> --record-path <path>
+```
 
-The next section inherits the rules, not the prose. Open its record, render its bench, and diagnose from its own baseline. Findings that recur across sections are the strongest candidates for promotion, because a rule that fires twice in unrelated passages is describing the method rather than the passage.
+Share the finished page and summarize the manuscript change, durable evidence, guidance changes, and validation result.
+
+## Authority boundary
+
+Generated working state is disposable and nonbinding. It may preserve editor instructions and candidate prose so the session can continue, but it may not be cited as a ruling.
+
+Never write an `editorial-agent` ruling to move this workflow past missing approval. The correct state is waiting.

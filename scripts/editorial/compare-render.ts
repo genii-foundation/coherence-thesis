@@ -21,6 +21,7 @@ export interface CalibrationRecord {
   sectionHeading: string;
   status: "open" | "settled" | "superseded";
   baseline: { batchId: string; path: string; sha256?: string };
+  directions?: { text: string; createdAt: string }[];
   effectiveVoiceCard?: { source: string; claim: string }[];
   voiceCard?: { line: number; claim: string; by: Record<string, boolean | null> }[];
   rulesInForce?: { id: string; obligation: string }[];

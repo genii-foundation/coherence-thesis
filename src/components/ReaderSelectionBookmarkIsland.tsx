@@ -19,47 +19,42 @@ import {
   appendStoredEvent,
   updateStoredBookmarks,
 } from "@/lib/reader-progress-store";
+import { revisionPrompt } from "@/lib/editorial-revision-session";
 import {
   readSelectionAnchor,
   type ReaderSelectionAnchor,
 } from "@/lib/reader-selection";
 
-type SaveStatus = "saved" | "full" | "failed" | "calibration" | null;
+type SaveStatus = "saved" | "full" | "failed" | "revision" | null;
 
 // Development only. Erased from the production bundle by the same build time
 // constant that removes the toolbar's admin link.
 const editorialToolsAvailable = process.env.NODE_ENV !== "production";
 
 /**
- * Builds the slash command that opens a calibration session for the selected
- * passage. The section is named by its continuity id, which is the key the
- * calibration records use, and the paragraph by its content addressed anchor,
- * which survives a re-render. Together they let an agent find the passage again
- * even after the prose around it has changed.
+ * Builds the slash command that opens a transient revision session for the
+ * selected passage. The continuity id and content addressed paragraph anchor
+ * let an agent find the passage after the prose around it changes.
  *
  * Copying a command rather than opening an application is deliberate. The reader
  * has no way to know which agent surface is running, and a command on the
  * clipboard works in all of them.
  *
- * The command stops short of a ruling on purpose. An agent that derives variants and
- * then records its own decision has held a session with itself, which is how six
- * records in this repository came to carry rulings nobody made.
+ * The command stops before diagnosis or drafting. The editor names the desired
+ * change before the machine proposes one, and no durable evidence exists until
+ * the editor approves a finished variant.
  */
-function calibrationCommand(anchor: ReaderSelectionAnchor, continuityId: string): string {
+function revisionCommand(
+  anchor: ReaderSelectionAnchor,
+  continuityId: string,
+): string {
   const editorialId = /^v(\d+)-/.exec(continuityId)?.[1];
-  return [
-    `/coherence-editorial-calibration Calibrate ${continuityId}`,
-    editorialId ? ` in volume-${editorialId}` : "",
-    `. Selected passage: "${anchor.quote}".`,
-    ` Paragraph anchor ${anchor.paragraphAnchor}.`,
-    ` Open the record at editorial/evidence/calibration/volume-${editorialId ?? "NN"}/${continuityId}.json,`,
-    ` derive variants from the immutable baseline under editorial/method/standard.md and the volume voice card,`,
-    ` and render the bench with npm run editorial:compare -- --section ${continuityId}.`,
-    ` Then present the variants with what each one changes and why, and stop.`,
-    ` Do not record a ruling: the ruling is mine to make.`,
-    ` Once I have chosen, record it with by set to author, and promote any corpus scoped`,
-    ` ruling into a named obligation in editorial/method/standard.md.`,
-  ].join("");
+  return revisionPrompt({
+    sectionId: continuityId,
+    editorialId: editorialId ? `volume-${editorialId}` : undefined,
+    paragraphAnchor: anchor.paragraphAnchor,
+    selectedPassage: anchor.quote,
+  });
 }
 
 const bubbleClassName = "reader-selection-bubble";
@@ -114,10 +109,10 @@ export function ReaderSelectionBookmarkIsland({
     );
     if (!section) return;
 
-    const command = calibrationCommand(target, section.continuityId);
+    const command = revisionCommand(target, section.continuityId);
     void navigator.clipboard
       .writeText(command)
-      .then(() => showStatus("calibration"))
+      .then(() => showStatus("revision"))
       .catch(() => showStatus("failed"));
     setAnchor(null);
   }, [showStatus]);
@@ -355,8 +350,8 @@ export function ReaderSelectionBookmarkIsland({
                 <TriangleAlert aria-hidden="true" size={17} strokeWidth={1.8} />
               )}
               <span>
-                {status === "calibration"
-                  ? "Calibration command copied. Paste it into any agent session."
+                {status === "revision"
+                  ? "Revision prompt copied. Paste it into a chat."
                   : status === "saved"
                   ? "Bookmark saved"
                   : status === "full"

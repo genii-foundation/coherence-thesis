@@ -3,14 +3,21 @@ import {
   ArrowRight,
   CircleAlert,
   GitBranch,
+  PenLine,
   Scale,
 } from "lucide-react";
 
 import { CopyPromptButton } from "../CopyPromptButton";
+import {
+  revisionPrompt,
+  workingRevisionHref,
+  type WorkingRevisionStatus,
+} from "@/lib/editorial-revision-session";
 import styles from "../admin.module.css";
 import {
   readCalibrationRows,
   readCalibrationSessions,
+  readWorkingRevisionSessions,
   type CalibrationSession,
 } from "../adminData";
 
@@ -24,17 +31,12 @@ function volumeLabel(editorialId: string): string {
   return `Volume ${VOLUME_NUMERALS[index] ?? numberFormat.format(index + 1)}`;
 }
 
-function revisionPrompt(sectionId: string): string {
-  return [
-    `/coherence-editorial-calibration Open a revision session for ${sectionId}.`,
-    " Read editorial/method/standard.md and the volume's voice card, then derive variants",
-    " from the immutable baseline rather than from the shipped text, and render the bench",
-    ` with npm run editorial:compare -- --section ${sectionId}.`,
-    " Then present the variants with what each one changes and why, and stop.",
-    " Do not record a ruling: the ruling is mine to make.",
-    " Once I have chosen, record it with by set to author, its scope, and the occasion,",
-    " and promote any corpus scoped ruling into a named obligation in the standard.",
-  ].join("");
+function workingStatusLabel(status: WorkingRevisionStatus): string {
+  if (status === "awaiting-intent") return "Waiting for direction";
+  if (status === "drafting") return "Preparing variants";
+  if (status === "review") return "Ready for review";
+  if (status === "approved") return "Approved";
+  return "Recorded";
 }
 
 function SessionCard({
@@ -106,6 +108,9 @@ function SessionCard({
 
 export default function EditorialRevisionsPage() {
   const sessions = readCalibrationSessions();
+  const workingSessions = readWorkingRevisionSessions().filter(
+    (session) => session.status !== "recorded",
+  );
   const rows = readCalibrationRows();
   const authored = sessions.filter((session) => session.authored);
   const agentOnly = sessions.filter((session) => !session.authored);
@@ -150,40 +155,92 @@ export default function EditorialRevisionsPage() {
         </div>
       </section>
 
+      {workingSessions.length ? (
+        <section
+          className={styles.workingRevisionSection}
+          aria-labelledby="working-revisions-title"
+        >
+          <div className={styles.sectionHeading}>
+            <div>
+              <span className={styles.eyebrow}>Work in progress</span>
+              <h2 id="working-revisions-title">Working revisions</h2>
+            </div>
+            <p>
+              Transient sessions stay here until the editor approves a finished
+              version.
+            </p>
+          </div>
+          <div className={styles.workingRevisionGrid}>
+            {workingSessions.map((session) => (
+              <article key={session.sectionId}>
+                <Link
+                  href={workingRevisionHref(session.sectionId)}
+                  aria-label={`Open working revision for ${session.currentHeading}`}
+                >
+                  <PenLine aria-hidden="true" size={18} />
+                  <div>
+                    <span>
+                      {volumeLabel(session.editorialId)} ·{" "}
+                      {workingStatusLabel(session.status)}
+                    </span>
+                    <h3>{session.currentHeading}</h3>
+                    <p>
+                      {session.variants.length
+                        ? `${numberFormat.format(session.variants.length)} variants`
+                        : session.directions.length
+                          ? "Direction received"
+                          : "Waiting for the editor"}
+                    </p>
+                  </div>
+                  <ArrowRight aria-hidden="true" size={17} />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       <section className={styles.startSessionPanel} aria-labelledby="start-session-title">
         <div className={styles.startSessionCopy}>
           <span className={styles.eyebrow}>Start a session</span>
-          <h2 id="start-session-title">Open a bounded revision session.</h2>
+          <h2 id="start-session-title">Start with the editor&apos;s intent.</h2>
           <p>
-            Copy the prompt, replace the section placeholder, and take it to your
-            agent conversation. The session must stop after presenting variants.
-            Only your answer becomes a ruling.
+            Copy the prompt, replace the section placeholder, and paste it into
+            a chat. The chat opens a working page, then asks what you want
+            changed before it writes a word.
           </p>
           <CopyPromptButton
             label="Copy blank session prompt"
-            prompt={revisionPrompt("<section-id>")}
+            prompt={revisionPrompt({ sectionId: "<section-id>" })}
           />
         </div>
         <ol className={styles.sessionFlow}>
           <li>
             <span>1</span>
             <div>
-              <strong>Choose the section</strong>
-              <p>Start from a canonical section ID, not loose prose.</p>
+              <strong>Open the working page</strong>
+              <p>The chat creates transient state and shares the link.</p>
             </div>
           </li>
           <li>
             <span>2</span>
             <div>
-              <strong>Compare variants</strong>
-              <p>Read each change against the immutable baseline.</p>
+              <strong>State what should change</strong>
+              <p>The editor defines the problem before drafting begins.</p>
             </div>
           </li>
           <li>
             <span>3</span>
             <div>
-              <strong>Make the ruling</strong>
-              <p>Record authority, scope, occasion, and derived obligations.</p>
+              <strong>Compare and refine</strong>
+              <p>Variants appear on the working page for another round.</p>
+            </div>
+          </li>
+          <li>
+            <span>4</span>
+            <div>
+              <strong>Approve, then record</strong>
+              <p>Durable evidence begins only after explicit approval.</p>
             </div>
           </li>
         </ol>
@@ -217,7 +274,10 @@ export default function EditorialRevisionsPage() {
               </div>
               <CopyPromptButton
                 label="Copy session prompt"
-                prompt={revisionPrompt(row.sectionId)}
+                prompt={revisionPrompt({
+                  sectionId: row.sectionId,
+                  editorialId: row.editorialId,
+                })}
                 secondary
               />
             </article>

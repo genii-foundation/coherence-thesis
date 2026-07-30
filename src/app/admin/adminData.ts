@@ -9,6 +9,10 @@ import {
   normalizeProtectedText,
   protectedLinesFrom,
 } from "@/lib/editorial-controls";
+import {
+  parseWorkingRevisionSession,
+  type WorkingRevisionSession,
+} from "@/lib/editorial-revision-session";
 import { slugify } from "@/lib/slugify";
 
 // The reader app resolves these from the working directory rather than importing
@@ -21,6 +25,11 @@ const editorialEvidenceRoot = path.join(editorialRoot, "evidence");
 const editorialReviewsRoot = path.join(editorialEvidenceRoot, "reviews");
 const editorialCalibrationRoot = path.join(editorialEvidenceRoot, "calibration");
 const editorialVolumesRoot = path.join(editorialRoot, "sources", "volumes");
+const generatedRevisionSessionsRoot = path.join(
+  repoRoot,
+  "generated",
+  "revision-sessions",
+);
 const editorialVolumeIds = Array.from({ length: 9 }, (_, i) => `volume-${String(i + 1).padStart(2, "0")}`);
 
 export type Tier = "green" | "amber" | "red";
@@ -215,6 +224,41 @@ export interface CalibrationFinding {
   id: string;
   summary: string;
   producedRule?: string;
+}
+
+export function readWorkingRevisionSessions(): WorkingRevisionSession[] {
+  if (!existsSync(generatedRevisionSessionsRoot)) return [];
+  const sessions: WorkingRevisionSession[] = [];
+  for (const file of readdirSync(generatedRevisionSessionsRoot)
+    .filter((name) => name.endsWith(".json"))
+    .sort()) {
+    const filePath = path.join(generatedRevisionSessionsRoot, file);
+    try {
+      sessions.push(
+        parseWorkingRevisionSession(
+          JSON.parse(readFileSync(filePath, "utf8")),
+          path.relative(repoRoot, filePath),
+        ),
+      );
+    } catch {
+      // Working state is disposable. A malformed file must not blank the admin
+      // surface, and the session command reports the exact defect when resumed.
+    }
+  }
+  return sessions.sort((left, right) =>
+    right.updatedAt.localeCompare(left.updatedAt),
+  );
+}
+
+export function readWorkingRevisionSession(
+  sectionId: string,
+): WorkingRevisionSession | null {
+  if (!/^[a-z0-9-]+$/.test(sectionId)) return null;
+  return (
+    readWorkingRevisionSessions().find(
+      (session) => session.sectionId === sectionId,
+    ) ?? null
+  );
 }
 
 export interface CalibrationSession extends CalibrationRow {

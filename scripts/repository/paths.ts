@@ -101,6 +101,10 @@ export const generatedCatalogPath = path.join(
 );
 export const generatedReportsRoot = path.join(generatedRoot, "reports");
 export const generatedCalibrationRoot = path.join(generatedRoot, "calibration");
+export const generatedRevisionSessionsRoot = path.join(
+  generatedRoot,
+  "revision-sessions",
+);
 export const editorialCalibrationRoot = path.join(editorialEvidenceRoot, "calibration");
 export const editorialSchemasRoot = path.join(editorialMethodRoot, "schemas");
 export const editorialStandardPath = path.join(editorialMethodRoot, "standard.md");

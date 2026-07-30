@@ -18,14 +18,17 @@ function adminBreadcrumbRoute(path: string): BreadcrumbRoute | null {
   const segments = path.split("/").filter(Boolean).slice(1);
   const crumbs = [{ label: "Admin", href: "/admin/" }];
 
-  if (segments[0] === "bench") {
+  if (segments[0] === "bench" || segments[0] === "revisions") {
     crumbs.push({
       label: "Editorial revisions",
       href: "/admin/calibration/",
     });
     if (segments[1]) {
       crumbs.push({
-        label: segments[1],
+        label:
+          segments[0] === "revisions"
+            ? `Working revision: ${segments[1]}`
+            : segments[1],
         href: path,
       });
     }

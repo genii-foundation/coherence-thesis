@@ -95,17 +95,19 @@ A scoped loop stops at its own stop condition and touches nothing else. That is 
 
 ## Responding to editorial feedback
 
-When the author comments on how the wording of a specific section could be better, offer the calibration bench before editing. The bench compares the section's immutable baseline against each variant and records the reasoning, so a ruling improves every later pass instead of one paragraph.
+When the author comments on how the wording of a specific section could be better, offer an intent-first revision session before editing. The session creates an ignored working page, asks what the author wants changed, and shows variants only after the author answers.
 
 Offer it on any section level wording note, not only contested ones. Name the section, then give a slash command the author can paste into any agent session:
 
 ```
-/coherence-editorial-calibration Open a revision session for <section-id> in <editorial-id>. The author's note: "<their words>". Selected passage: "<the text they marked>". Open the record at editorial/evidence/calibration/<editorial-id>/<section-id>.json, derive variants from the immutable baseline under editorial/method/standard.md and the volume voice card, and render the bench with npm run editorial:compare -- --section <section-id>. Then present the variants with what each one changes and why, and stop. Do not record a ruling: the ruling is the author's to make. Once they have chosen, record it with `by` set to `author`, its scope, and the occasion, and promote any corpus scoped ruling into a named obligation.
+/coherence-editorial-calibration Start an intent-first revision session for <section-id> in <editorial-id>. Selected passage: "<the text they marked>". Paragraph anchor <paragraph-anchor>. Before proposing or changing prose, run `npm run editorial:revision -- start --section <section-id> --anchor <paragraph-anchor>`, share the local `/admin/revisions/<section-id>/` link, and ask me what I want changed. Wait for my answer. After I answer, preserve my direction only in the generated working session, produce distinct variants from the current canonical passage under the editorial standard and voice card, publish them to the working page, and guide me through comparison and iteration. Do not create or change any durable editorial record, manuscript, ruling, standard, voice card, ledger, or evidence until I explicitly approve a final version. After approval, mark the working version approved, update the manuscript, record the approved session and any guidance the decision actually establishes, validate the result, and share the finished page.
 ```
 
-Make the offer in one line and continue with the edit rather than blocking on an answer. If the author takes the offer, the ruling supersedes the edit.
+Make the offer in one line. If the author starts the session, do not continue with the edit until they state what should change.
 
-A session ends at the presentation of variants. Deriving options and then recording your own decision is a session held with yourself, and it produces a record that claims a warrant it does not have. Record a ruling only after the author has chosen, and attribute it to them. Where you must decide something to keep moving, record it as a working note with `by` set to `editorial-agent`, and say plainly that it is unattended.
+A session proceeds one author decision at a time. Open the working page, ask for intent, publish variants, collect feedback, and iterate. Mark a variant approved only after the author explicitly approves the finished language.
+
+Durable editorial state begins after approval. Until then, write only under `generated/revision-sessions/`. Do not create a calibration record, edit the manuscript, promote a rule, or write an agent ruling to keep the session moving. After approval, preserve the explored branches and the author's decision accurately, apply the approved text, and record only the section, volume, or corpus guidance the decision actually establishes.
 
 ## Git and pull requests
 

@@ -1,4 +1,6 @@
 import { expect, test } from "@playwright/test";
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import path from "node:path";
 
 test.describe("local editorial admin", () => {
   test.skip(
@@ -173,6 +175,109 @@ test.describe("local editorial admin", () => {
     expect(pageBounds.scrollWidth).toBeLessThanOrEqual(
       pageBounds.clientWidth,
     );
+  });
+
+  test("keeps revision work transient until the editor approves it", async ({
+    page,
+  }) => {
+    const sessionsRoot = path.join(
+      process.cwd(),
+      "generated",
+      "revision-sessions",
+    );
+    const fixturePath = path.join(
+      sessionsRoot,
+      "v01-e2e-working-revision.json",
+    );
+    mkdirSync(sessionsRoot, { recursive: true });
+    writeFileSync(
+      fixturePath,
+      `${JSON.stringify(
+        {
+          schemaVersion: 1,
+          sectionId: "v01-e2e-working-revision",
+          editorialId: "volume-01",
+          currentHeading: "Working revision fixture",
+          sourceHref: "/manuscripts/1/opening/orientation/",
+          paragraphAnchor: "p-hf0505fc63ec527f1",
+          selectedPassage: "The selected passage remains unchanged.",
+          status: "review",
+          directions: [
+            {
+              text: "Make the sequence clearer without changing the claim.",
+              createdAt: "2026-07-30T12:01:00.000Z",
+            },
+          ],
+          variants: [
+            {
+              label: "A",
+              title: "Closer sequence",
+              text: ["The selected passage remains clear and unchanged."],
+              reasoning: ["Clarifies the sequence while preserving the claim."],
+              status: "candidate",
+            },
+            {
+              label: "B",
+              title: "Explicit transition",
+              text: ["The sequence is explicit, and the claim remains unchanged."],
+              reasoning: ["Adds a transition at the cost of more explanation."],
+              status: "candidate",
+            },
+          ],
+          approvedVariant: null,
+          durableRecordPath: null,
+          createdAt: "2026-07-30T12:00:00.000Z",
+          updatedAt: "2026-07-30T12:02:00.000Z",
+        },
+        null,
+        2,
+      )}\n`,
+    );
+
+    try {
+      await page.goto("/admin/calibration/");
+      await expect(
+        page.getByRole("link", {
+          name: "Open working revision for Working revision fixture",
+        }),
+      ).toBeVisible();
+
+      await page.goto("/admin/revisions/v01-e2e-working-revision/");
+      await expect(
+        page.getByRole("heading", {
+          level: 1,
+          name: "Working revision fixture",
+        }),
+      ).toBeVisible();
+      await expect(
+        page.getByRole("list", { name: "Revision progress" }),
+      ).toContainText("Direction");
+      await expect(page.getByText("Ready for review")).toBeVisible();
+      await expect(
+        page.getByText(
+          "Make the sequence clearer without changing the claim.",
+        ),
+      ).toBeVisible();
+      await expect(
+        page.getByRole("heading", { level: 3, name: "Closer sequence" }),
+      ).toBeVisible();
+      await expect(
+        page.getByText(
+          "This is transient working state. It cannot change the manuscript",
+          { exact: false },
+        ),
+      ).toBeVisible();
+      await expect(page.getByText("Durable record complete")).toHaveCount(0);
+
+      await page.setViewportSize({ width: 390, height: 844 });
+      const layout = await page.evaluate(() => ({
+        clientWidth: document.documentElement.clientWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+      }));
+      expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth);
+    } finally {
+      rmSync(fixturePath, { force: true });
+    }
   });
 
   test("keeps the toolbar icons visually consistent and the dashboard in bounds", async ({
