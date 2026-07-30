@@ -248,10 +248,14 @@ async function expectMobilePopoverStartsBelowToolbar(
     ({ selector, triggerSelector }) => {
       const popover = document.querySelector(selector);
       const trigger = document.querySelector(triggerSelector);
+      const popoverBox = popover?.getBoundingClientRect();
       const popoverStyle = popover ? window.getComputedStyle(popover) : null;
       const triggerStyle = trigger ? window.getComputedStyle(trigger) : null;
 
       return {
+        popoverLeft: popoverBox?.left ?? Number.POSITIVE_INFINITY,
+        popoverMaxHeight: Number.parseFloat(popoverStyle?.maxHeight ?? "0"),
+        popoverRight: popoverBox?.right ?? Number.NEGATIVE_INFINITY,
         popoverRadiusTopLeft: Number.parseFloat(
           popoverStyle?.borderTopLeftRadius ?? "0",
         ),
@@ -270,6 +274,8 @@ async function expectMobilePopoverStartsBelowToolbar(
         triggerRadiusTopRight: Number.parseFloat(
           triggerStyle?.borderTopRightRadius ?? "0",
         ),
+        viewportHeight: window.innerHeight,
+        viewportWidth: window.innerWidth,
       };
     },
     { selector, triggerSelector },
@@ -281,6 +287,11 @@ async function expectMobilePopoverStartsBelowToolbar(
   expect(metrics.triggerRadiusBottomRight).toBeGreaterThan(0);
   expect(metrics.triggerRadiusTopLeft).toBeGreaterThan(0);
   expect(metrics.triggerRadiusTopRight).toBeGreaterThan(0);
+  expect(metrics.popoverMaxHeight).toBeLessThanOrEqual(
+    metrics.viewportHeight * 0.75 + 1,
+  );
+  expect(metrics.popoverLeft).toBeCloseTo(16, 0);
+  expect(metrics.viewportWidth - metrics.popoverRight).toBeCloseTo(16, 0);
 }
 
 async function expectToolbarTriggerRounded(
@@ -302,13 +313,12 @@ async function expectToolbarTriggerRounded(
     .toBe(true);
 }
 
-// Desktop popovers hang from the button that opened them. This matters because
-// audio and progress deliberately use taller wrappers than the other controls.
-async function expectDesktopPopoverStartsAtTriggerBottom(
+// Every desktop popover hangs from the button that opened it and joins the
+// trigger with the same connected corners, regardless of control dimensions.
+async function expectDesktopPopoverConnectsToTrigger(
   page: Page,
   triggerSelector: string,
   popoverSelector: string,
-  connectsToTrigger = true,
 ): Promise<void> {
   await expect
     .poll(async () =>
@@ -367,17 +377,11 @@ async function expectDesktopPopoverStartsAtTriggerBottom(
 
   expect(metrics.rightEdgeDelta).toBeLessThanOrEqual(1);
   expect(metrics.popoverRadiusTopLeft).toBeGreaterThan(0);
+  expect(metrics.popoverRadiusTopRight).toBe(0);
+  expect(metrics.triggerRadiusBottomLeft).toBe(0);
+  expect(metrics.triggerRadiusBottomRight).toBe(0);
   expect(metrics.triggerRadiusTopLeft).toBeGreaterThan(0);
   expect(metrics.triggerRadiusTopRight).toBeGreaterThan(0);
-  if (connectsToTrigger) {
-    expect(metrics.popoverRadiusTopRight).toBe(0);
-    expect(metrics.triggerRadiusBottomLeft).toBe(0);
-    expect(metrics.triggerRadiusBottomRight).toBe(0);
-  } else {
-    expect(metrics.popoverRadiusTopRight).toBeGreaterThan(0);
-    expect(metrics.triggerRadiusBottomLeft).toBeGreaterThan(0);
-    expect(metrics.triggerRadiusBottomRight).toBeGreaterThan(0);
-  }
 }
 
 async function toolbarMenuHeightTarget(
@@ -1103,6 +1107,90 @@ test("toolbar popovers slide, fade, and resize through content changes", async (
   await expect(searchPopover).toHaveCount(0);
 });
 
+test("desktop toolbar popovers use only narrow and wide widths", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(wieldingSection.href);
+
+  const menus = [
+    {
+      name: "search",
+      popover: ".search-popover",
+      trigger: ".search-menu-button",
+      width: "wide",
+    },
+    {
+      name: "outline",
+      popover: ".outline-popover",
+      trigger: ".outline-menu-button",
+      width: "narrow",
+    },
+    {
+      name: "bookmarks",
+      popover: ".bookmarks-popover",
+      trigger: ".bookmarks-menu-button",
+      width: "wide",
+    },
+    {
+      name: "settings",
+      popover: ".settings-popover",
+      trigger: ".settings-menu-button",
+      width: "narrow",
+    },
+    {
+      name: "share",
+      popover: ".share-popover",
+      trigger: ".share-menu-button",
+      width: "narrow",
+    },
+    {
+      name: "progress",
+      popover: ".progress-popover",
+      trigger: ".progress-menu-button",
+      width: "narrow",
+    },
+    {
+      name: "playback",
+      popover: ".audio-popover",
+      trigger: ".audio-menu-button",
+      width: "wide",
+    },
+  ] as const;
+  const renderedWidths: Record<(typeof menus)[number]["name"], number> =
+    Object.create(null);
+
+  for (const menu of menus) {
+    await page.locator(menu.trigger).click();
+    const popover = page.locator(menu.popover);
+    await expect(popover).toBeVisible();
+    await expectDesktopPopoverConnectsToTrigger(
+      page,
+      menu.trigger,
+      menu.popover,
+    );
+    renderedWidths[menu.name] = await popover.evaluate(
+      (element) => element.getBoundingClientRect().width,
+    );
+    await page.keyboard.press("Escape");
+    await expect(popover).toHaveCount(0);
+  }
+
+  const narrowWidth = renderedWidths.outline;
+  const wideWidth = renderedWidths.search;
+  expect(wideWidth).toBeGreaterThan(narrowWidth);
+  expect(
+    new Set(Object.values(renderedWidths).map((width) => Math.round(width))).size,
+  ).toBe(2);
+
+  for (const menu of menus) {
+    expect(renderedWidths[menu.name]).toBeCloseTo(
+      menu.width === "wide" ? wideWidth : narrowWidth,
+      1,
+    );
+  }
+});
+
 test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 360 });
   await page.addInitScript(() => {
@@ -1129,7 +1217,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectRestingControlBorder(page, ".search-field input");
   await page.getByRole("searchbox", { name: "Search all manuscripts" }).fill("the");
   await expect(searchMenu.locator(".search-result").first()).toBeVisible();
-  await expectDesktopPopoverStartsAtTriggerBottom(
+  await expectDesktopPopoverConnectsToTrigger(
     page,
     ".search-menu-button",
     ".search-popover",
@@ -1143,7 +1231,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectToolbarTriggerActive(page, ".outline-menu-button");
   await expectRestingControlBorder(page, ".outline-search input");
   await expect(outlineMenu.locator(".outline-volume-link").first()).toBeVisible();
-  await expectDesktopPopoverStartsAtTriggerBottom(
+  await expectDesktopPopoverConnectsToTrigger(
     page,
     ".outline-menu-button",
     ".outline-popover",
@@ -1157,7 +1245,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectToolbarTriggerActive(page, ".settings-menu-button");
   await expect(settingsMenu.getByText("Reading settings")).toBeVisible();
   await expectRestingControlBorder(page, ".font-select-button");
-  await expectDesktopPopoverStartsAtTriggerBottom(
+  await expectDesktopPopoverConnectsToTrigger(
     page,
     ".settings-menu-button",
     ".settings-popover",
@@ -1197,7 +1285,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   });
   await expectToolbarTriggerActive(page, ".share-menu-button");
   await expect(shareMenu).toBeVisible();
-  await expectDesktopPopoverStartsAtTriggerBottom(
+  await expectDesktopPopoverConnectsToTrigger(
     page,
     ".share-menu-button",
     ".share-popover",
@@ -1211,11 +1299,10 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   const audioMenu = page.getByLabel("Audiobook controls");
   await expectToolbarTriggerActive(page, ".audio-menu-button");
   await expect(audioMenu).toBeVisible();
-  await expectDesktopPopoverStartsAtTriggerBottom(
+  await expectDesktopPopoverConnectsToTrigger(
     page,
     ".audio-menu-button",
     ".audio-popover",
-    false,
   );
   await expectRestingControlBorder(page, ".voice-field select");
   await expect(audioMenu.getByText("Voice", { exact: true })).toBeVisible();
@@ -1284,7 +1371,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   const progressMenu = page.getByRole("region", { name: "Reader progress" });
   await expectToolbarTriggerActive(page, ".progress-menu-button");
   await expect(progressMenu).toBeVisible();
-  await expectDesktopPopoverStartsAtTriggerBottom(
+  await expectDesktopPopoverConnectsToTrigger(
     page,
     ".progress-menu-button",
     ".progress-popover",
@@ -1331,6 +1418,16 @@ test("mobile toolbar popovers open flush below the toolbar", async ({ page }) =>
     ".outline-popover",
   );
   await expectMenuJoinsToolbarWithoutSeam(page, ".outline-popover");
+  await page.keyboard.press("Escape");
+
+  await page.getByRole("button", { name: /^Bookmarks, / }).click();
+  await expect(page.getByRole("region", { name: "Bookmarks" })).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(
+    page,
+    ".bookmarks-menu-button",
+    ".bookmarks-popover",
+  );
+  await expectMenuJoinsToolbarWithoutSeam(page, ".bookmarks-popover");
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: "Reader settings" }).click();

@@ -29,7 +29,13 @@ describe("ProgressCloudBadge", () => {
     expect(partial).toContain(
       'transform="translate(0 7.667) scale(0.7619048)"',
     );
-    expect(partial).toContain('--progress-cloud-text-size:15px');
+    expect(partial).toContain('--progress-cloud-height:48px');
+    expect(partial).toContain('--progress-cloud-width:48px');
+    expect(partial).toContain('--progress-cloud-stroke-width:1.4px');
+    expect(partial).toContain('--progress-cloud-text-size:12.5px');
+    expect(partial).toContain(
+      'transform="translate(0 2.6666666666666665)"',
+    );
     expect(partial).toContain('d="M40.5 4.7');
     expect(partial).not.toContain('stroke-dashoffset');
     for (const [markup, expectedPercent] of [
@@ -43,7 +49,7 @@ describe("ProgressCloudBadge", () => {
       const dashValues = dash.split(" ").map(Number);
       const progressLength = dashValues[0] ?? Number.NaN;
       const renderedPathLength = dashValues[1] ?? Number.NaN;
-      expect(renderedPathLength).toBeCloseTo(103.9453, 4);
+      expect(renderedPathLength).toBeCloseTo(107.5296, 4);
       expect((progressLength / renderedPathLength) * 100).toBeCloseTo(
         expectedPercent,
         6,
@@ -62,10 +68,40 @@ describe("ProgressCloudBadge", () => {
     expect(empty).toContain('class="progress-cloud-progress-blip"');
     expect(empty).toContain('cx="32" cy="12.5" r="1.6"');
     expect(partial).toContain('d="M 32.000 12.500');
-    expect(partial).toContain('--progress-cloud-text-size:15px');
+    expect(partial).toContain('--progress-cloud-text-size:12.5px');
     expect(partial).toContain('stroke-linecap="round"');
     expect(complete).toContain('transform="rotate(-90 32 32)"');
     expect(complete).toContain('stroke-dasharray="122.52211349000193 0"');
     expect(complete).toContain('stroke-linecap="round"');
+  });
+
+  it("applies icon lab geometry to the real toolbar badge", () => {
+    const preview = renderToStaticMarkup(
+      <ProgressCloudBadge
+        percent={0}
+        preview={{
+          kind: "cloud",
+          size: 38,
+          stroke: 1.75,
+          textSize: 12,
+          percent: 54,
+          cloudOffset: 2,
+        }}
+      />,
+    );
+
+    expect(preview).toContain('data-connected="true"');
+    expect(preview).toContain('data-preview="true"');
+    expect(preview).toContain('data-preview-cloud-offset="2"');
+    expect(preview).toContain('data-preview-size="38"');
+    expect(preview).toContain('data-preview-stroke="1.75"');
+    expect(preview).toContain('data-preview-text-size="12"');
+    expect(preview).toContain("--progress-cloud-height:38px");
+    expect(preview).toContain("--progress-cloud-width:38px");
+    expect(preview).toContain("--progress-cloud-stroke-width:1.75px");
+    expect(preview).toContain(
+      'transform="translate(0 3.3684210526315788)"',
+    );
+    expect(preview).toContain(">54%</text>");
   });
 });

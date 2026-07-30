@@ -21,6 +21,8 @@
     0 20px 52px rgba(44, 31, 18, 0.16), 0 8px 24px rgba(119, 84, 42, 0.18),
     0 2px 0 rgba(255, 255, 255, 0.62) inset;
   --radius: 8px;
+  --toolbar-popover-narrow-width: 22rem;
+  --toolbar-popover-wide-width: 34rem;
   --font-ui: var(--font-literata), Georgia, serif;
   --font-display: var(--font-literata), Georgia, serif;
   --font-body: var(--font-literata), Georgia, serif;
@@ -1231,14 +1233,14 @@ input {
   opacity: 0.2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 2.4;
+  stroke-width: var(--progress-cloud-stroke-width, 2.4px);
 }
 
 .progress-cloud-progress {
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 2.4;
+  stroke-width: var(--progress-cloud-stroke-width, 2.4px);
   transition: stroke-dashoffset 180ms ease;
 }
 
@@ -1618,14 +1620,7 @@ input {
 
 /* Every toolbar trigger carries the open state, so a reader can always see
    which button produced the menu in front of them. */
-.site-nav > * > button[data-toolbar-menu-trigger][aria-expanded="true"]:not(
-    .progress-menu-button
-  ) {
-  background: var(--nav-hover-background);
-  color: var(--ink);
-}
-
-.site-nav > * > .audio-menu-button[data-toolbar-menu-trigger][aria-expanded="true"] {
+.site-nav > * > button[data-toolbar-menu-trigger][aria-expanded="true"] {
   background: var(--nav-hover-background);
   color: var(--ink);
 }
@@ -1733,6 +1728,7 @@ input {
   top: var(--toolbar-popover-top, 100%);
   right: 0;
   z-index: 20;
+  width: min(var(--toolbar-popover-width), calc(100vw - 2rem));
   height: min(var(--toolbar-menu-height), var(--toolbar-menu-max-height));
   max-height: var(--toolbar-menu-max-height);
   opacity: 0;
@@ -1744,6 +1740,19 @@ input {
     opacity 160ms ease,
     transform 180ms ease;
   will-change: height, opacity, transform;
+}
+
+.search-popover,
+.bookmarks-popover,
+.audio-popover {
+  --toolbar-popover-width: var(--toolbar-popover-wide-width);
+}
+
+.outline-popover,
+.settings-popover,
+.share-popover,
+.progress-popover {
+  --toolbar-popover-width: var(--toolbar-popover-narrow-width);
 }
 
 .outline-popover[data-menu-state="open"],
@@ -1761,7 +1770,6 @@ input {
 .search-popover {
   --toolbar-menu-max-height: min(38rem, calc(100svh - 7rem));
 
-  width: min(34rem, calc(100vw - 2rem));
   max-height: min(38rem, calc(100svh - 7rem));
   overflow: hidden;
   border: 1px solid var(--line);
@@ -1774,7 +1782,6 @@ input {
 .outline-popover {
   --toolbar-menu-max-height: min(42rem, calc(100svh - 7rem));
 
-  width: min(32rem, calc(100vw - 2rem));
   max-height: min(42rem, calc(100svh - 7rem));
   overflow: hidden;
   border: 1px solid var(--line);
@@ -2532,18 +2539,6 @@ a.bookmark-quote:focus-visible {
   padding: 0.25rem;
 }
 
-.audio-popover {
-  width: min(26rem, calc(100vw - 2rem));
-}
-
-.settings-popover {
-  width: min(28rem, calc(100vw - 2rem));
-}
-
-.progress-popover {
-  width: min(22rem, calc(100vw - 2rem));
-}
-
 /* Carries its own surface, like .search-popover and .outline-popover above.
    The popover base rule further up only supplies position, size, and the height
    transition; the panels that hold a sticky filter row and their own scroller
@@ -2553,11 +2548,6 @@ a.bookmark-quote:focus-visible {
 .bookmarks-popover {
   --toolbar-menu-max-height: min(40rem, calc(100svh - 7rem));
 
-  /* Wider than its neighbours on purpose. Every other menu lists short labels;
-     this one lists quoted manuscript prose, and at 24rem a two line clamp threw
-     away most of the passage. Still the shared min() so it collapses to the
-     viewport on narrow screens. */
-  width: min(34rem, calc(100vw - 2rem));
   max-height: min(40rem, calc(100svh - 7rem));
   overflow: hidden;
   border: 1px solid var(--line);
@@ -2565,10 +2555,6 @@ a.bookmark-quote:focus-visible {
   background: var(--panel-background);
   box-shadow: var(--shadow);
   color: var(--ink);
-}
-
-.share-popover {
-  width: min(22rem, calc(100vw - 2rem));
 }
 
 .share-popover,
@@ -2582,20 +2568,14 @@ a.bookmark-quote:focus-visible {
 }
 
 @media (min-width: 861px) {
-  .site-nav
-    > *
-    > button[data-toolbar-menu-trigger][aria-expanded="true"]:not(
-      .audio-menu-button
-    ) {
+  .site-nav > * > button[data-toolbar-menu-trigger][aria-expanded="true"] {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
 
   .site-nav
     > *
-    > button[data-toolbar-menu-trigger][aria-expanded="true"]:not(
-      .audio-menu-button
-    )
+    > button[data-toolbar-menu-trigger][aria-expanded="true"]
     + [data-menu-state="open"] {
     border-top-right-radius: 0;
   }
@@ -7186,9 +7166,7 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   .audio-popover,
   .settings-popover,
   .progress-popover {
-    /* Generous dead space around the menu so tapping beside it to dismiss is
-       an easy target rather than a precise one. */
-    --toolbar-mobile-popover-side-gap: 2.5rem;
+    --toolbar-mobile-popover-side-gap: 1rem;
     --toolbar-mobile-popover-inline-start: max(
       var(--toolbar-mobile-popover-side-gap),
       env(safe-area-inset-left)
@@ -7197,22 +7175,23 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
       var(--toolbar-mobile-popover-side-gap),
       env(safe-area-inset-right)
     );
-    --toolbar-menu-max-height: calc(
-      100dvh - var(--mobile-toolbar-height) -
-        max(3.5rem, env(safe-area-inset-bottom))
-    );
     --toolbar-mobile-popover-top: var(--mobile-toolbar-height);
     --toolbar-mobile-popover-bottom-gap: max(3.5rem, env(safe-area-inset-bottom));
+    --toolbar-mobile-popover-max-height: min(
+      75dvh,
+      calc(
+        100dvh - var(--toolbar-mobile-popover-top) -
+          var(--toolbar-mobile-popover-bottom-gap)
+      )
+    );
+    --toolbar-menu-max-height: var(--toolbar-mobile-popover-max-height);
 
     position: fixed;
     top: var(--toolbar-mobile-popover-top);
     right: var(--toolbar-mobile-popover-inline-end);
     left: var(--toolbar-mobile-popover-inline-start);
     width: auto;
-    max-height: calc(
-      100dvh - var(--toolbar-mobile-popover-top) -
-        var(--toolbar-mobile-popover-bottom-gap)
-    );
+    max-height: var(--toolbar-mobile-popover-max-height);
     /* The menu reads as the toolbar itself extending downward. It takes the
        toolbar's surface and shadow, carries no border of its own up top, and
        paints a one pixel strip of toolbar colour over the header's bottom
@@ -7236,10 +7215,11 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Both sticky search rows sit flush under the toolbar as the first thing
-     inside their menu, so they take the toolbar's colour too. Left on the
+  /* The sticky search rows sit flush under the toolbar as the first thing
+     inside their menus, so they take the toolbar's colour too. Left on the
      lighter panel colour they put a visibly paler block right at the join. */
   .outline-search,
+  .bookmarks-search,
   .search-field {
     background: var(--header-background);
   }
@@ -7256,32 +7236,10 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
     min-width: 0;
   }
 
-  .outline-popover {
-    max-height: calc(
-      100dvh - var(--toolbar-mobile-popover-top) -
-        var(--toolbar-mobile-popover-bottom-gap)
-    );
-  }
-
-  .search-popover {
-    max-height: calc(
-      100dvh - var(--toolbar-mobile-popover-top) -
-        var(--toolbar-mobile-popover-bottom-gap)
-    );
-  }
-
-  .outline-scroll {
-    max-height: calc(
-      100dvh - var(--toolbar-mobile-popover-top) - 4.45rem -
-        var(--toolbar-mobile-popover-bottom-gap)
-    );
-  }
-
+  .outline-scroll,
+  .bookmarks-scroll,
   .search-results {
-    max-height: calc(
-      100dvh - var(--toolbar-mobile-popover-top) - 4.45rem -
-        var(--toolbar-mobile-popover-bottom-gap)
-    );
+    max-height: calc(var(--toolbar-mobile-popover-max-height) - 4.45rem);
   }
 
   .hero-section,

@@ -98,6 +98,10 @@ import {
   updatedSinceRead,
   type ReaderProgressState,
 } from "@/lib/reader-state";
+import {
+  progressIconPreviewEventName,
+  type ProgressIconPreview,
+} from "@/lib/progress-icon-preview";
 
 // Debounce before a local change is pushed to the remote sync backend.
 const syncDebounceMs = 1_500;
@@ -191,6 +195,9 @@ export function ToolbarProgressIsland() {
   const [relativeNow, setRelativeNow] = useState(() => Date.now());
   const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
   const [showReadAnimation, setShowReadAnimation] = useState(false);
+  const [iconPreview, setIconPreview] = useState<ProgressIconPreview | null>(
+    null,
+  );
   const previousReadStateRef = useRef<{ sectionId: string | null; isRead: boolean }>({
     sectionId: null,
     isRead: false,
@@ -212,6 +219,18 @@ export function ToolbarProgressIsland() {
       return false;
     },
   });
+
+  useEffect(() => {
+    function handlePreview(event: Event) {
+      const customEvent = event as CustomEvent<ProgressIconPreview | null>;
+      setIconPreview(customEvent.detail);
+    }
+
+    window.addEventListener(progressIconPreviewEventName, handlePreview);
+    return () => {
+      window.removeEventListener(progressIconPreviewEventName, handlePreview);
+    };
+  }, []);
 
   useEffect(() => {
     if (!open || bookmarkSections.length > 0) return;
@@ -731,23 +750,33 @@ export function ToolbarProgressIsland() {
     setSyncMessage("Signed out. Local progress is still saved.");
   }
 
+  const displayedPercent = iconPreview?.percent ?? percent;
+
   return (
     <div className="progress-menu" ref={containerRef}>
       <button
         {...triggerProps}
         type="button"
         className={`progress-menu-button${user ? " is-signed-in" : ""}`}
-        aria-label={`Progress ${percent}%${user ? ", signed in" : ""}`}
+        aria-label={
+          iconPreview
+            ? `Progress preview ${displayedPercent}%`
+            : `Progress ${displayedPercent}%${user ? ", signed in" : ""}`
+        }
         aria-controls="reader-progress-menu"
         onClick={() => {
           toggle();
           setSyncLoginModalEmail("");
         }}
       >
-        {showReadAnimation ? (
+        {showReadAnimation && !iconPreview ? (
           <ProgressReadAnimation />
         ) : (
-          <ProgressCloudBadge connected={Boolean(user)} percent={percent} />
+          <ProgressCloudBadge
+            connected={Boolean(user)}
+            percent={displayedPercent}
+            preview={iconPreview}
+          />
         )}
       </button>
       {rendered && (
