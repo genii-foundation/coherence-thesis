@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "e24451b9f48480e8c69a1334f44a2ee0b0064627",
+  "headSha": "0e730e803406dc9aca7dc507485099913354d92c",
   "commits": [
+    {
+      "sha": "0e730e803406dc9aca7dc507485099913354d92c",
+      "committedAt": "2026-07-30T20:11:08.000Z",
+      "subject": "Add adjustable reader focus mode (#167)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/0e730e803406dc9aca7dc507485099913354d92c",
+      "filesChanged": 12,
+      "additions": 605,
+      "deletions": 34,
+      "isLiterary": false
+    },
     {
       "sha": "e24451b9f48480e8c69a1334f44a2ee0b0064627",
       "committedAt": "2026-07-30T19:50:15.000Z",
