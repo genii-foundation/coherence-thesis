@@ -248,12 +248,15 @@
 /* The bench renders as a complete document with its own theme, so it is framed rather
    than inlined. Tall enough that the lineage tree is legible without a second scrollbar
    fighting the page's own. */
+/* The comparison is the page, not an object displayed on it, so the frame carries no
+   border and no radius. It opens directly under the trail and runs the full height it
+   is given. */
 .benchFrame {
+  display: block;
   width: 100%;
-  height: 82vh;
-  min-height: 560px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  height: 88vh;
+  min-height: 620px;
+  border: 0;
   background: var(--paper);
 }
 

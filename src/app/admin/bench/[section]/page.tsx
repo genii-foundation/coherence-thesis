@@ -23,30 +23,9 @@ export default async function BenchPage({
 
   return (
     <>
-      <h1 className={styles.h1}>{session?.currentHeading ?? section}</h1>
-      {session ? (
-        <p className={styles.sub}>
-          {session.settled || "open"} &middot;{" "}
-          {session.editorialId.replace("volume-", "volume ")} &middot; {session.generations}{" "}
-          generation{session.generations === 1 ? "" : "s"} &middot; {session.findings.length}{" "}
-          finding{session.findings.length === 1 ? "" : "s"}
-          {session.rulesDerived.length ? (
-            <>
-              {" "}
-              &middot; derived{" "}
-              {session.rulesDerived.map((rule) => (
-                <span className={styles.id} key={rule} style={{ marginRight: 4 }}>
-                  {rule}
-                </span>
-              ))}
-            </>
-          ) : null}
-        </p>
-      ) : null}
-
-      {/* The comparison comes first. Following a session tile means wanting to see the
-          variants, and the orientation session carries eight rulings, which is more than
-          a screen of reading between the click and the thing clicked for. */}
+      {/* The bench renders its own heading, so the page does not repeat it. Framed
+          without a border and opening directly under the trail, because the comparison
+          is the page rather than something displayed inside it. The rulings follow.  */}
       <iframe
         src={`/admin/bench/${section}/raw`}
         title={`Comparison bench for ${session?.currentHeading ?? section}`}
@@ -54,8 +33,11 @@ export default async function BenchPage({
       />
 
       {session?.rulings.length ? (
-        <p className={styles.micro} style={{ marginTop: 24 }}>
-          {session.rulings.length} ruling{session.rulings.length === 1 ? "" : "s"}
+        <p className={styles.micro} style={{ marginTop: 28 }}>
+          {session.rulings.length} ruling{session.rulings.length === 1 ? "" : "s"} &middot;{" "}
+          {session.generations} generation{session.generations === 1 ? "" : "s"} &middot;{" "}
+          {session.findings.length} finding{session.findings.length === 1 ? "" : "s"}
+          {session.rulesDerived.length ? ` · derived ${session.rulesDerived.join(", ")}` : ""}
         </p>
       ) : null}
 
