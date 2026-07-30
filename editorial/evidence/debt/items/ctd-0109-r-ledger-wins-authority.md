@@ -2,7 +2,7 @@
 id: CTD-0109
 title: Ratify or unwind R-LEDGER-WINS
 status: query
-kind: authorial
+kind: canon
 severity: high
 scopes: ["volume-1", "corpus"]
 sources: ["editorial/method/standard.md", "editorial/evidence/calibration/volume-01/v01-the-currency-of-presence.json", "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md"]

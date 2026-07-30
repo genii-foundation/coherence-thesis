@@ -4,7 +4,7 @@
 
 This index records known literary, philosophical, factual, continuity, publication, and technical obligations across The Coherence Thesis. A resolved item remains in the library as evidence of paydown.
 
-Open: 63. Queries: 39. Deferred: 5. Resolved: 1.
+Open: 63. Queries: 40. Deferred: 5. Resolved: 1.
 
 ## Active debt
 
@@ -79,6 +79,7 @@ Open: 63. Queries: 39. Deferred: 5. Resolved: 1.
 | [CTD-0104](items/ctd-0104-default-strict-editorial-gate.md) | Make strict editorial punctuation a default validation gate | deferred | technical | high | site, corpus | 2026-07-11 |
 | [CTD-0105](items/ctd-0105-volume-one-internal-production-note.md) | Remove internal production notes from published prose | open | literary | high | volume-1, volume-8, site | 2026-07-25 |
 | [CTD-0108](items/ctd-0108-re-render-ledger-audit.md) | Audit the completed Volume I re-render against the debt and master ledgers | open | technical | high | volume-1, corpus | 2026-07-30 |
+| [CTD-0109](items/ctd-0109-r-ledger-wins-authority.md) | Ratify or unwind R-LEDGER-WINS | query | canon | high | volume-1, corpus | 2026-07-30 |
 | [CTD-0014](items/ctd-0014-soil-metaphysical-modality.md) | Decide the modality of the Soil's living-development claim | query | canon | medium | volume-1, corpus | 2026-07-09 |
 | [CTD-0017](items/ctd-0017-four-movements-structural-scope.md) | Decide what the Four Movements heading promises | query | structural | medium | volume-1 | 2026-07-30 |
 | [CTD-0020](items/ctd-0020-volume-two-warning-invitation-balance.md) | Approve Volume II's balance of warning and invitation | query | literary | medium | volume-2 | 2026-07-09 |
