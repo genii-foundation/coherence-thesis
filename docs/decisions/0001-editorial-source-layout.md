@@ -35,10 +35,10 @@ Corpus-wide source lives at editorial/sources/corpus/. Curated overview source l
 
 Volume review evidence lives at:
 
-    editorial/reviews/volumes/volume-01/<batch-id>/
+    editorial/evidence/reviews/volumes/volume-01/<batch-id>/
       review.json
 
-Corpus-wide reconciliation lives at editorial/reviews/corpus/.
+Corpus-wide reconciliation lives at editorial/evidence/reviews/corpus/.
 
 Each durable batch has review.json. It records:
 

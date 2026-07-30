@@ -476,7 +476,7 @@ export function runEditorialLedgerInitCli(
       path.isAbsolute(outputRelative) ||
       !isEditorialReviewPath(outputRelative)
     ) {
-      throw new Error("--output must be a batch directory inside editorial/reviews/.");
+      throw new Error("--output must be a batch directory inside editorial/evidence/reviews/.");
     }
     const sentenceFile = path.join(output, "sentence-ledger.jsonl");
     const structureFile = path.join(output, "structure-ledger.jsonl");

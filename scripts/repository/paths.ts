@@ -17,9 +17,11 @@ export const volumePackageFileNames = [
   "voice-card.md",
   "volume.json",
 ] as const;
-export const editorialReviewsRoot = path.join(editorialRoot, "reviews");
-export const editorialAuditsRoot = path.join(editorialRoot, "audits");
-export const editorialDebtRoot = path.join(editorialRoot, "debt");
+export const editorialMethodRoot = path.join(editorialRoot, "method");
+export const editorialEvidenceRoot = path.join(editorialRoot, "evidence");
+export const editorialReviewsRoot = path.join(editorialEvidenceRoot, "reviews");
+export const editorialAuditsRoot = path.join(editorialEvidenceRoot, "audits");
+export const editorialDebtRoot = path.join(editorialEvidenceRoot, "debt");
 export const masterLedgerPath = path.join(
   editorialCorpusRoot,
   "master-ledger.md",
@@ -95,8 +97,9 @@ export const generatedCatalogPath = path.join(
 );
 export const generatedReportsRoot = path.join(generatedRoot, "reports");
 export const generatedCalibrationRoot = path.join(generatedRoot, "calibration");
-export const editorialCalibrationRoot = path.join(editorialRoot, "calibration");
-export const editorialSchemasRoot = path.join(editorialRoot, "schemas");
+export const editorialCalibrationRoot = path.join(editorialEvidenceRoot, "calibration");
+export const editorialSchemasRoot = path.join(editorialMethodRoot, "schemas");
+export const editorialStandardPath = path.join(editorialMethodRoot, "standard.md");
 export const generatedSemanticLinksReportsRoot = path.join(
   generatedReportsRoot,
   "semantic-links",
@@ -174,7 +177,7 @@ export const requiredEditorialSourceFilePaths = [
 
 export const canonicalManuscriptPrefix =
   "editorial/sources/volumes/" as const;
-export const editorialReviewPrefix = "editorial/reviews/" as const;
+export const editorialReviewPrefix = "editorial/evidence/reviews/" as const;
 export const legacyManuscriptPrefixes = [
   "sources/manuscripts/",
   "content/manuscripts/",

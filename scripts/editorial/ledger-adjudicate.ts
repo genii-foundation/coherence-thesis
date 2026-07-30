@@ -592,7 +592,7 @@ function help(): string {
     "Adjudicate freshly initialized editorial ledgers from completed independent review evidence.",
     "",
     "Usage:",
-    "  npm run editorial:ledgers:adjudicate -- --base <sha> --current WORKTREE --source <source.md> --review editorial/reviews/volumes/<volume>/<batch> [--write]",
+    "  npm run editorial:ledgers:adjudicate -- --base <sha> --current WORKTREE --source <source.md> --review editorial/evidence/reviews/volumes/<volume>/<batch> [--write]",
     "",
     "The default is a dry run. Use --write only after reviewing the status counts.",
     "The review record must bind the source, initialized ledgers, and independent review files by SHA-256 hash.",
@@ -609,7 +609,7 @@ function resolveReviewDirectory(value: string): string {
     path.isAbsolute(relative) ||
     !isEditorialReviewPath(relative)
   ) {
-    throw new Error("--review must name a batch inside editorial/reviews/.");
+    throw new Error("--review must name a batch inside editorial/evidence/reviews/.");
   }
   return reviewDirectory;
 }

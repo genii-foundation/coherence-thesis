@@ -378,7 +378,7 @@ del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-
     </div>` : ""}
     <div>
       ${record.rulesInForce?.length ? `<div class="micro">Rules in force</div>
-      <p class="explain">Named obligations from <code>editorial/standards/editorial.md</code>. Each was derived from a recorded calibration, so every rule here can be traced to the passage that exposed the need for it.</p>
+      <p class="explain">Named obligations from <code>editorial/method/standard.md</code>. Each was derived from a recorded calibration, so every rule here can be traced to the passage that exposed the need for it.</p>
       <ul class="rules">${record.rulesInForce.map((r) =>
       `<li><span class="rid">${esc(r.id)}</span><span>${esc(r.obligation)}</span></li>`).join("")}</ul>` : ""}
     </div>

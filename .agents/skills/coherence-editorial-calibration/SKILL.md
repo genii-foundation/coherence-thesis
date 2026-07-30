@@ -1,6 +1,6 @@
 ---
 name: coherence-editorial-calibration
-description: Calibrate the editorial standard against a specific Coherence Thesis section by generating variants, comparing them to the immutable baseline in a rendered bench, capturing the author's rulings, and promoting corpus-scoped rulings into named obligations. Use when a passage reads worse after an editorial pass, when prose feels truncated, flattened, or off in register, when deciding between competing revisions of a section, when recording what an editorial conversation concluded so a later pass inherits it, and when adding or revising rules in editorial/standards/editorial.md.
+description: Calibrate the editorial standard against a specific Coherence Thesis section by generating variants, comparing them to the immutable baseline in a rendered bench, capturing the author's rulings, and promoting corpus-scoped rulings into named obligations. Use when a passage reads worse after an editorial pass, when prose feels truncated, flattened, or off in register, when deciding between competing revisions of a section, when recording what an editorial conversation concluded so a later pass inherits it, and when adding or revising rules in editorial/method/standard.md.
 ---
 
 # Editorial Calibration
@@ -9,8 +9,8 @@ Fix the rule, not just the sentence. A better paragraph helps one passage. A bet
 
 ## Load canonical guidance
 
-- `editorial/schemas/calibration-record.md` before creating or changing a record.
-- `editorial/standards/editorial.md` before proposing any variant, and again before promoting a ruling into a rule.
+- `editorial/method/schemas/calibration-record.md` before creating or changing a record.
+- `editorial/method/standard.md` before proposing any variant, and again before promoting a ruling into a rule.
 - The volume's `voice-card.md` before reading the passage. It is binding under `R-VOICE-BIND`.
 
 ## Start or resume a session

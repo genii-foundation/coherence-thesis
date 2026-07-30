@@ -28,8 +28,8 @@ Never edit a generated reader section, catalog, browser payload, PDF, or report 
 
 ## Review evidence
 
-- Store volume review batches at editorial/reviews/volumes/volume-01/<batch-id>/.
-- Store corpus-wide summaries and reconciliation records at editorial/reviews/corpus/.
+- Store volume review batches at editorial/evidence/reviews/volumes/volume-01/<batch-id>/.
+- Store corpus-wide summaries and reconciliation records at editorial/evidence/reviews/corpus/.
 - Every durable batch must contain review.json. It lists the source baseline, reviewed source identity, canonical source path, evidence files, and approval state.
 - review.json must enumerate durable evidence by path relative to its batch directory. Do not infer the record from whatever files happen to be present.
 - A review record, sentence ledger, structure ledger, semantic review, literary review, slop review, or compression record counts as durable evidence only when review.json lists it.
