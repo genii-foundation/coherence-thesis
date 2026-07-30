@@ -45,6 +45,14 @@ Label by positional descent. Roots take letters. A child of `A` is `A1`, its chi
 
 For every variant record `reasoning` entries keyed `applied`, `kept`, `cut`, `error`, `cost`, or `remaining`. Record your own errors. A record that shows only successes flatters the method and teaches nothing.
 
+## Stop
+
+Present the variants, say what each one changes and what it costs, and stop.
+
+The session exists to collect a judgment that is not yours. Deriving options and then recording your own choice is a session held with yourself: it produces a record carrying a warrant nobody granted, and every later pass inherits it as though the author had ruled.
+
+Do not settle the record, do not promote a rule, and do not edit the manuscript before the author has chosen. Rendering the bench is the end of your turn.
+
 ## Capture rulings
 
 Write the author's decision in the author's terms, not as a paraphrase that smooths it.
@@ -55,7 +63,11 @@ Set `scope` deliberately, because it governs reuse:
 - `volume` constrains the volume and belongs in its voice card.
 - `corpus` constrains every future pass and must produce a named obligation.
 
-Mark `by` as `author` or `editorial-agent`. Craft decisions may be taken under delegated authority. Canon, doctrine, and claim content are always author decisions, and are never resolved to make a sentence land.
+Mark `by` as `author` when the author chose, and `editorial-agent` when you did.
+
+`editorial-agent` is a working note, not a ruling. Use it only where the work could not continue without a decision, say plainly in the `occasion` that it was unattended, and never let one settle a record or produce a named obligation on its own. A rule the author never saw binds every future pass on your say-so.
+
+Canon, doctrine, and claim content are always author decisions, and are never resolved to make a sentence land.
 
 ## Promote a ruling into a rule
 

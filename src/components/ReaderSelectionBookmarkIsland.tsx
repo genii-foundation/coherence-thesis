@@ -40,6 +40,10 @@ const editorialToolsAvailable = process.env.NODE_ENV !== "production";
  * Copying a command rather than opening an application is deliberate. The reader
  * has no way to know which agent surface is running, and a command on the
  * clipboard works in all of them.
+ *
+ * The command stops short of a ruling on purpose. An agent that derives variants and
+ * then records its own decision has held a session with itself, which is how six
+ * records in this repository came to carry rulings nobody made.
  */
 function calibrationCommand(anchor: ReaderSelectionAnchor, continuityId: string): string {
   const editorialId = /^v(\d+)-/.exec(continuityId)?.[1];
@@ -50,8 +54,11 @@ function calibrationCommand(anchor: ReaderSelectionAnchor, continuityId: string)
     ` Paragraph anchor ${anchor.paragraphAnchor}.`,
     ` Open the record at editorial/evidence/calibration/volume-${editorialId ?? "NN"}/${continuityId}.json,`,
     ` derive variants from the immutable baseline under editorial/method/standard.md and the volume voice card,`,
-    ` render the bench with npm run editorial:compare -- --section ${continuityId},`,
-    ` and record the ruling.`,
+    ` and render the bench with npm run editorial:compare -- --section ${continuityId}.`,
+    ` Then present the variants with what each one changes and why, and stop.`,
+    ` Do not record a ruling: the ruling is mine to make.`,
+    ` Once I have chosen, record it with by set to author, and promote any corpus scoped`,
+    ` ruling into a named obligation in editorial/method/standard.md.`,
   ].join("");
 }
 

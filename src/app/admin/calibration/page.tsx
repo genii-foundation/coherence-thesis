@@ -4,13 +4,18 @@ import { readCalibrationSessions } from "../adminData";
 
 export const dynamic = "force-dynamic";
 
+// The prompt stops at presenting the variants. An agent that derives options and then
+// records its own decision has held a session with itself, which is how six records in
+// this repository came to carry rulings nobody made.
 const NEW_SESSION_PROMPT = [
-  "/coherence-editorial-calibration Open a calibration session for <section-id>.",
+  "/coherence-editorial-calibration Open a revision session for <section-id>.",
   " Read editorial/method/standard.md and the volume's voice card, then derive variants",
-  " from the immutable baseline rather than from the shipped text.",
-  " Render the bench with npm run editorial:compare -- --section <section-id>,",
-  " record each ruling with its scope and who decided it, and promote any corpus scoped",
-  " ruling into a named obligation in the standard.",
+  " from the immutable baseline rather than from the shipped text, and render the bench",
+  " with npm run editorial:compare -- --section <section-id>.",
+  " Then present the variants with what each one changes and why, and stop.",
+  " Do not record a ruling: the ruling is mine to make.",
+  " Once I have chosen, record it with by set to author, its scope, and the occasion,",
+  " and promote any corpus scoped ruling into a named obligation in the standard.",
 ].join("");
 
 export default function EditorialRevisionsPage() {

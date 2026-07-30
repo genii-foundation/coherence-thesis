@@ -100,10 +100,12 @@ When the author comments on how the wording of a specific section could be bette
 Offer it on any section level wording note, not only contested ones. Name the section, then give a slash command the author can paste into any agent session:
 
 ```
-/coherence-editorial-calibration Calibrate <section-id> in <editorial-id>. The author's note: "<their words>". Selected passage: "<the text they marked>". Open the record at editorial/evidence/calibration/<editorial-id>/<section-id>.json, derive variants from the baseline under editorial/method/standard.md and the volume voice card, render the bench with npm run editorial:compare -- --section <section-id>, and record the ruling.
+/coherence-editorial-calibration Open a revision session for <section-id> in <editorial-id>. The author's note: "<their words>". Selected passage: "<the text they marked>". Open the record at editorial/evidence/calibration/<editorial-id>/<section-id>.json, derive variants from the immutable baseline under editorial/method/standard.md and the volume voice card, and render the bench with npm run editorial:compare -- --section <section-id>. Then present the variants with what each one changes and why, and stop. Do not record a ruling: the ruling is the author's to make. Once they have chosen, record it with `by` set to `author`, its scope, and the occasion, and promote any corpus scoped ruling into a named obligation.
 ```
 
 Make the offer in one line and continue with the edit rather than blocking on an answer. If the author takes the offer, the ruling supersedes the edit.
+
+A session ends at the presentation of variants. Deriving options and then recording your own decision is a session held with yourself, and it produces a record that claims a warrant it does not have. Record a ruling only after the author has chosen, and attribute it to them. Where you must decide something to keep moving, record it as a working note with `by` set to `editorial-agent`, and say plainly that it is unattended.
 
 ## Git and pull requests
 
