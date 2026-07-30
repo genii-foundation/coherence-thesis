@@ -219,65 +219,87 @@ export function render(record: CalibrationRecord, baseText: string[], currentTex
   const tick = (s: boolean | null | undefined): string =>
     s === true ? '<span class="ok">&#10003;</span>' : s === false ? '<span class="bad">&#10007;</span>' : '<span class="na">&middot;</span>';
 
-  return `<title>${esc(record.sectionHeading)} &mdash; calibration</title>
+  return `<title>${esc(record.sectionHeading)} | calibration</title>
 <style>
 :root{
 --paper:#f4ead7;--paper-soft:#fbf6eb;--ink:#13202a;--ink-soft:#4f4d49;--ink-muted:#5a666c;
 --bronze:#a47b3f;--bronze-deep:#77542a;--sage:#60796d;
 --line:rgba(119,84,42,.24);--line-soft:rgba(119,84,42,.13);--panel:#fbf6eb;
---cut:#8c4a33;--add:rgba(164,123,63,.20);--cut-bg:rgba(140,74,51,.13);--radius:8px;
+--cut:#8c4a33;--add:rgba(164,123,63,.20);--cut-bg:rgba(140,74,51,.13);--radius:12px;
 --serif:Literata,Georgia,"Iowan Old Style",serif;color-scheme:light;}
-/* Single theme by intent. Papyrus is the publication's identity. */
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+html,body{overflow:hidden}
+body{margin:0;background:transparent;color:var(--ink);font-family:var(--serif);
  -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
-.wrap{max-width:none;margin:0;padding:18px 26px 56px}
+.wrap{max-width:none;margin:0;padding:2px 0 12px}
 .micro{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-muted);opacity:.85}
-.top{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;padding-bottom:10px;border-bottom:1px solid var(--line)}
-.top h1{font-size:19px;font-weight:600;margin:0}
-.top .ident{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
-.top .right{margin-left:auto;display:flex;align-items:center;gap:14px}
-.toggle{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.08em;
- text-transform:uppercase;color:var(--ink-muted);cursor:pointer;user-select:none}
+.bench-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:36px;align-items:end;
+ padding:9px 2px 23px;border-bottom:1px solid var(--line)}
+.identity{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:9px;
+ font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-muted)}
+.status{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(96,121,109,.35);
+ border-radius:999px;padding:3px 8px;color:var(--sage);font-weight:700}
+.status::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;
+ box-shadow:0 0 0 3px rgba(96,121,109,.12)}
+.bench-hero h1{font-size:clamp(30px,4vw,48px);font-weight:500;letter-spacing:-.035em;
+ line-height:1;margin:0}
+.hero-note{max-width:68ch;margin:11px 0 0;color:var(--ink-muted);font-size:13.5px;line-height:1.55}
+.hero-stats{display:grid;grid-template-columns:repeat(3,auto);gap:24px;margin:0}
+.hero-stats div{display:grid;gap:1px}
+.hero-stats dt{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-muted)}
+.hero-stats dd{margin:0;color:var(--ink);font-size:20px;line-height:1.1}
+.hero-stats small{font-size:10px;color:var(--ink-muted)}
+.sheet{background:rgba(251,246,235,.84);border:1px solid var(--line);border-radius:var(--radius);
+ box-shadow:0 10px 30px rgba(59,42,24,.035)}
+.selector-shell{margin-top:16px;padding:16px}
+.selector-head{display:flex;align-items:flex-start;justify-content:space-between;gap:22px;
+ padding:0 1px 13px;border-bottom:1px solid var(--line-soft)}
+.selector-head h2{margin:3px 0 2px;font-size:17px;font-weight:600}
+.selector-help{max-width:70ch;margin:0;color:var(--ink-muted);font-size:12px;line-height:1.45}
+.toggle{display:inline-flex;align-items:center;gap:8px;flex:0 0 auto;border:1px solid var(--line);
+ border-radius:999px;padding:7px 10px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+ color:var(--ink-muted);cursor:pointer;user-select:none;background:var(--paper-soft)}
+.toggle:hover{color:var(--ink);border-color:var(--bronze)}
 .toggle input{accent-color:var(--bronze-deep);margin:0}
-.sheet{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)}
-.bench{display:grid;grid-template-columns:1fr 1fr;gap:13px;align-items:start;margin-top:13px}
-.head-left,.head-right{display:flex;align-items:flex-end;min-height:100%}
-.head-right>*{width:100%}
-.body-left,.body-right{min-width:0}
-@media (max-width:940px){.bench{grid-template-columns:1fr}.head-left{display:none}}
-.selector{padding:9px 11px}
-.tabgrid{display:grid;gap:6px}
+.tabgrid{display:grid;gap:7px;padding:14px 0 4px}
 .tab{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:var(--serif);
- font-size:13px;border:1px solid transparent;background:transparent;color:var(--ink-muted);
- cursor:pointer;padding:7px 10px;border-radius:6px;text-align:center;position:relative}
-.tab:hover{color:var(--ink);border-color:var(--line-soft)}
+ font-size:13px;border:1px solid var(--line-soft);background:rgba(244,234,215,.45);color:var(--ink-muted);
+ cursor:pointer;padding:8px 10px;border-radius:8px;text-align:center;position:relative;
+ transition:background .14s ease,border-color .14s ease,color .14s ease,transform .14s ease}
+.tab:hover{color:var(--ink);border-color:var(--bronze);transform:translateY(-1px)}
 .tab[aria-selected="true"]{background:var(--bronze-deep);border-color:var(--bronze-deep);color:var(--paper-soft)}
-.tab.is-basis{box-shadow:inset 0 -2px 0 var(--bronze);color:var(--ink)}
+.tab.is-basis{box-shadow:inset 0 -3px 0 var(--bronze);color:var(--ink);background:var(--paper-soft)}
 .tab.is-basis[aria-selected="true"]{box-shadow:none}
 .tab.is-rejected{text-decoration:line-through;text-decoration-thickness:1px;opacity:.5}
-.tab.derived::before{content:"";position:absolute;left:50%;top:-6px;width:1px;height:6px;background:var(--bronze)}
+.tab.derived::before{content:"";position:absolute;left:50%;top:-8px;width:1px;height:8px;background:var(--bronze)}
 .approval-mark{width:13px;height:13px;flex:0 0 auto;color:var(--sage);fill:none;
  stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .tab[aria-selected="true"] .approval-mark{color:var(--paper-soft)}
-.refrow{margin-top:8px;padding-top:8px;border-top:1px solid var(--line-soft)}
-.refrow .tab{width:100%;font-style:italic;opacity:.72}
-.pane-head{display:flex;align-items:baseline;gap:9px;padding:10px 16px;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
+.selector-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:10px;
+ padding-top:10px;border-top:1px solid var(--line-soft)}
+.selector-foot p{margin:0;color:var(--ink-muted);font-size:11px;line-height:1.4}
+.refrow{flex:0 0 min(220px,36%)}
+.refrow .tab{width:100%;font-style:italic}
+.bench{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;margin-top:16px}
+.body-left,.body-right{min-width:0}
+.pane{overflow:hidden}
+.pane.active{border-color:rgba(119,84,42,.42);box-shadow:0 12px 34px rgba(59,42,24,.055)}
+.pane-head{display:flex;align-items:baseline;gap:9px;padding:12px 16px;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
 .pane-label{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-muted)}
 .pane-title{font-size:14.5px;font-weight:600}
 .metrics{margin-left:auto;font-size:11.5px;color:var(--ink-muted);white-space:nowrap}
 .metrics b{color:var(--ink);font-weight:600}
 .delta.neg{color:var(--cut)}.delta.pos{color:var(--sage)}
-.prose{font-size:16.5px;line-height:1.66;padding:17px 20px 18px}
+.prose{font-size:16px;line-height:1.7;padding:20px 22px 21px}
 .prose p{margin:0 0 1em;max-width:74ch}
 .prose p:last-child{margin-bottom:0}
 ins{background:var(--add);text-decoration:none}
 del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-decoration-thickness:1px}
-.cadence{padding:0 20px 15px}
+.cadence{padding:0 22px 18px}
 .cadence .micro{margin-bottom:7px}
 .bars{display:flex;flex-direction:column;gap:3px}
 .bar-row{display:flex;align-items:center;gap:8px}
-.bar{height:6px;border-radius:3px;background:var(--bronze);opacity:.62;min-width:3px}
+.bar{height:5px;border-radius:3px;background:var(--bronze);opacity:.62;min-width:3px}
 .bar.para-end{background:var(--ink-muted);opacity:.42}
 .bar-n{font-size:10px;color:var(--ink-muted);min-width:17px}
 .chip{font-size:10px;padding:1px 7px;border-radius:999px;border:1px solid var(--line);color:var(--ink-muted);white-space:nowrap}
@@ -285,14 +307,30 @@ del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-
 .chip-candidate,.chip-approved{background:var(--bronze-deep);border-color:var(--bronze-deep);color:var(--paper-soft)}
 .chip-rejected{text-decoration:line-through;opacity:.7}
 .chip-warn{color:var(--cut);border-color:var(--cut)}
-.reasoning-block{margin-top:13px}
-.context{margin-top:13px}
-.context-grid{display:grid;grid-template-columns:1.6fr 1.1fr 1fr;gap:26px;align-items:start}
-@media (max-width:1100px){.context-grid{grid-template-columns:1fr}}
+.reasoning-block{margin-top:16px;padding:18px 20px}
+.reasoning-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+ margin-bottom:13px;padding-bottom:11px;border-bottom:1px solid var(--line-soft)}
+.reasoning-head h2{margin:2px 0 0;font-size:17px;font-weight:600}
+.reasoning-head span{color:var(--ink-muted);font-size:11px}
+.evidence{margin-top:28px}
+.evidence-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:11px}
+.evidence-head h2{margin:3px 0 0;font-size:18px;font-weight:600}
+.evidence-head p{max-width:62ch;margin:0;color:var(--ink-muted);font-size:12px;line-height:1.5;text-align:right}
+.evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.evidence-card{border:1px solid var(--line);border-radius:10px;background:rgba(251,246,235,.72);
+ overflow:hidden}
+.evidence-card summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;
+ padding:13px 15px;cursor:pointer;list-style:none}
+.evidence-card summary::-webkit-details-marker{display:none}
+.evidence-card summary::after{content:"+";display:grid;place-items:center;width:22px;height:22px;
+ border:1px solid var(--line);border-radius:50%;color:var(--bronze-deep);font-size:16px;line-height:1}
+.evidence-card[open] summary::after{content:"−"}
+.evidence-card[open] summary{border-bottom:1px solid var(--line-soft)}
+.evidence-card summary strong{display:block;font-size:13px;font-weight:600}
+.evidence-card summary small{display:block;margin-top:2px;color:var(--ink-muted);font-size:10.5px}
+.evidence-body{padding:15px 17px 17px}
 .explain{margin:0 0 11px;font-size:12.5px;line-height:1.55;color:var(--ink-muted);max-width:70ch}
 .explain code{font-size:11.5px;color:var(--bronze-deep)}
-.block{padding:15px 18px 17px}
-.block>.micro{margin-bottom:10px}
 .moves{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:13.5px;line-height:1.5}
 .moves dt{color:var(--bronze-deep);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding-top:3px;white-space:nowrap}
 .moves dd{margin:0;color:var(--ink-soft)}
@@ -313,6 +351,8 @@ del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-
 .key-rejected::after{content:"";position:absolute;left:3px;right:3px;top:50%;height:1px;background:var(--ink-muted)}
 .key-candidate{background:var(--bronze-deep);border-color:var(--bronze-deep)}
 .key-descent::after{content:"";position:absolute;left:50%;top:-5px;height:5px;width:1px;background:var(--bronze)}
+.open-questions{grid-column:1 / -1;border-color:rgba(140,74,51,.3)}
+.open-questions summary strong{color:var(--cut)}
 .diffed{display:none}
 .js .pane[data-version]:not([data-pinned]){display:none}
 .js .pane[data-version].active{display:block}
@@ -322,16 +362,46 @@ del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-
 .js.showdiff .diffed{display:block}
 .js .nojs{display:none}
 .nojs{font-size:11.5px;color:var(--ink-muted);margin:10px 0 0}
+@media (max-width:880px){
+ .bench-hero{grid-template-columns:1fr;gap:18px}.hero-stats{justify-content:start}
+ .selector-head,.selector-foot,.evidence-head{align-items:flex-start;flex-direction:column}
+ .selector-foot p,.evidence-head p{text-align:left}.refrow{width:100%;max-width:none}
+ .bench,.evidence-grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+ .bench-hero h1{font-size:32px}.hero-stats{width:100%;grid-template-columns:repeat(3,1fr);gap:10px}
+ .selector-shell{padding:12px}.tab{font-size:11px;padding:7px 4px}
+ .prose{font-size:15.5px;padding:17px}.cadence{padding:0 17px 16px}
+ .pane-head{align-items:flex-start}.metrics{width:100%;margin-left:0}
+}
 </style>
 <div class="wrap">
-<div class="top">
-  <span class="ident">${esc(record.editorialId)} &middot; ${esc(record.sectionId)} &middot; ${esc(record.status)}</span>
-  <h1>${esc(record.sectionHeading)}</h1>
-  <div class="right"><label class="toggle"><input type="checkbox" id="diffToggle"> Show diff</label></div>
-</div>
-<div class="bench">
-  <div class="head-left"><span class="micro">Baseline, pinned</span></div>
-  <div class="head-right"><div class="sheet selector">
+<header class="bench-hero">
+  <div>
+    <div class="identity">
+      <span class="status">${esc(record.status)}</span>
+      <span>${esc(record.editorialId)}</span>
+      <span>${esc(record.sectionId)}</span>
+    </div>
+    <h1>${esc(record.sectionHeading)}</h1>
+    <p class="hero-note">Trace the branch that won, compare it with the protected baseline, and inspect the reasoning behind each decision.</p>
+  </div>
+  <dl class="hero-stats">
+    <div><dt>Baseline</dt><dd>${baseWords}</dd><small>words</small></div>
+    <div><dt>Variants</dt><dd>${gens.length}</dd><small>rendered</small></div>
+    <div><dt>Findings</dt><dd>${record.findings?.length ?? 0}</dd><small>recorded</small></div>
+  </dl>
+</header>
+
+<section class="sheet selector-shell" aria-labelledby="lineage-heading">
+  <div class="selector-head">
+    <div>
+      <div class="micro">Revision lineage</div>
+      <h2 id="lineage-heading">Follow the decision tree</h2>
+      <p class="selector-help">Select any branch to compare it with the pinned baseline. The approved branch carries a checkmark. Vertical connectors show direct descent.</p>
+    </div>
+    <label class="toggle"><input type="checkbox" id="diffToggle"> Show word changes</label>
+  </div>
     <div class="tabgrid" role="tablist" style="grid-template-columns:repeat(${Math.max(nextCol, 1)},minmax(0,1fr))">
       ${gens.map((g) => {
         // The descent connector only reads correctly for a child sitting directly
@@ -345,54 +415,84 @@ del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-
         return `<button class="tab is-${g.status}${inline}" role="tab" aria-label="${esc(g.label)}${approved ? ", approved" : ""}" aria-selected="${g.key === candidate?.key}" data-target="${g.key}" style="grid-column:${g.col} / span ${g.span ?? 1};grid-row:${g.row}"><span>${esc(g.label)}</span>${approvalMark}</button>`;
       }).join("")}
     </div>
-    <div class="refrow"><button class="tab is-reference" role="tab" aria-selected="false" data-target="shipped">Shipped</button></div>
-  </div></div>
+    <div class="selector-foot">
+      <p>Basis branches carry a bronze underline. Rejected branches remain visible because discarded reasoning is still evidence.</p>
+      <div class="refrow"><button class="tab is-reference" role="tab" aria-selected="false" data-target="shipped">View shipped pass</button></div>
+    </div>
+</section>
+
+<div class="bench">
   <div class="body-left">${pane(baseRow, true, true)}</div>
   <div class="body-right">
     ${all.map((v) => pane(v, v.key === candidate?.key, false)).join("")}
-    <div class="sheet block reasoning-block">
-      <div class="micro">Why this variant reads as it does</div>
-      ${all.map(reason).join("")}
-      <p class="nojs">Scripting is unavailable, so every variant and its reasoning are shown and diffs are hidden.</p>
-    </div>
   </div>
 </div>
 
-<div class="sheet block context">
-  <div class="context-grid">
-    ${record.effectiveVoiceCard?.length ? `<div>
-      <div class="micro">Corpus rules in force</div>
+<section class="sheet reasoning-block" aria-labelledby="reasoning-heading">
+  <div class="reasoning-head">
+    <div>
+      <div class="micro">Editorial rationale</div>
+      <h2 id="reasoning-heading">Why this variant reads as it does</h2>
+    </div>
+    <span>Updates with the selected branch</span>
+  </div>
+  ${all.map(reason).join("")}
+  <p class="nojs">Scripting is unavailable, so every variant and its reasoning are shown and word changes are hidden.</p>
+</section>
+
+<section class="evidence" aria-labelledby="evidence-heading">
+  <header class="evidence-head">
+    <div>
+      <div class="micro">Decision evidence</div>
+      <h2 id="evidence-heading">Constraints behind the comparison</h2>
+    </div>
+    <p>Open the evidence you need. The comparison stays primary while every binding rule remains available for inspection.</p>
+  </header>
+  <div class="evidence-grid">
+    ${record.effectiveVoiceCard?.length ? `<details class="evidence-card">
+      <summary><span><strong>Corpus commitments</strong><small>${record.effectiveVoiceCard.length} shared rules in force</small></span></summary>
+      <div class="evidence-body">
       <p class="explain">The volume card is an overlay on the shared corpus voice card. These rules bind every volume unless an explicit recorded delta makes the local rule narrower or stronger.</p>
       <ul class="rules">${record.effectiveVoiceCard.map((rule) =>
       `<li><span class="rid">${esc(rule.source)}</span><span>${esc(rule.claim)}</span></li>`).join("")}</ul>
-    </div>` : ""}
-    ${record.voiceCard?.length ? `<div>
-      <div class="micro">What the voice card requires</div>
+      </div>
+    </details>` : ""}
+    ${record.voiceCard?.length ? `<details class="evidence-card">
+      <summary><span><strong>Volume voice requirements</strong><small>${record.voiceCard.length} claims checked across the lineage</small></span></summary>
+      <div class="evidence-body">
       <p class="explain">Every volume keeps its local overlay at <code>editorial/sources/volumes/${esc(record.editorialId)}/voice-card.md</code>. Under <code>R-VOICE-BIND</code>, the effective corpus plus volume card is binding rather than advisory. The claims below are quoted from the volume overlay, with the line each sits on. A cross means the variant contradicts a claim the card makes, which is a defect however well the sentence reads on its own.</p>
       <ul class="vc">${record.voiceCard.map((a) =>
       `<li><span class="lineno">L${a.line}</span><span><span class="claim">${esc(a.claim)}</span><span class="states">${gens.map((g) =>
         `<span>${tick(a.by[g.key] ?? a.by[g.label])} ${esc(g.label)}</span>`).join("")}</span></span></li>`).join("")}</ul>
       <p class="explain">A dot means the claim no longer applies to these variants, usually because an author ruling released it.</p>
-    </div>` : ""}
-    <div>
-      ${record.rulesInForce?.length ? `<div class="micro">Rules in force</div>
+      </div>
+    </details>` : ""}
+    ${record.rulesInForce?.length ? `<details class="evidence-card">
+      <summary><span><strong>Editorial rules in force</strong><small>${record.rulesInForce.length} named obligations</small></span></summary>
+      <div class="evidence-body">
       <p class="explain">Named obligations from <code>editorial/method/standard.md</code>. Each was derived from a recorded calibration, so every rule here can be traced to the passage that exposed the need for it.</p>
       <ul class="rules">${record.rulesInForce.map((r) =>
-      `<li><span class="rid">${esc(r.id)}</span><span>${esc(r.obligation)}</span></li>`).join("")}</ul>` : ""}
-    </div>
-    <div>
-      <div class="micro">Reading the selector</div>
+      `<li><span class="rid">${esc(r.id)}</span><span>${esc(r.obligation)}</span></li>`).join("")}</ul>
+      </div>
+    </details>` : ""}
+    <details class="evidence-card">
+      <summary><span><strong>Selector guide</strong><small>How to read lineage states</small></span></summary>
+      <div class="evidence-body">
       <ul class="legend">
         <li><span class="key key-basis"></span>a basis further variants derive from</li>
         <li><span class="key key-rejected"></span>considered and not approved</li>
         <li><span class="key key-candidate"></span>the current candidate</li>
         <li><span class="key key-descent"></span>stacked below its parent, one generation down</li>
       </ul>
-      ${record.openQuestions?.length ? `<div class="micro" style="margin:16px 0 9px">Open questions</div><ul class="rules">${record.openQuestions.map((q) =>
-      `<li><span class="rid">?</span><span>${esc(q)}</span></li>`).join("")}</ul>` : ""}
-    </div>
+      </div>
+    </details>
+    ${record.openQuestions?.length ? `<details class="evidence-card open-questions" open>
+      <summary><span><strong>Open questions</strong><small>${record.openQuestions.length} decisions still unresolved</small></span></summary>
+      <div class="evidence-body"><ul class="rules">${record.openQuestions.map((q) =>
+      `<li><span class="rid">?</span><span>${esc(q)}</span></li>`).join("")}</ul></div>
+    </details>` : ""}
   </div>
-</div>
+</section>
 </div>
 <script>
 (function(){

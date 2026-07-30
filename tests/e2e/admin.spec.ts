@@ -60,7 +60,7 @@ test.describe("local editorial admin", () => {
     ).toBeVisible();
     await expect(
       page.getByText(
-        "Three renamed subsections, two of which announce what the passage beneath them withholds.",
+        "Heading decision 1 of 5. Keep What the Argument Has Established",
         { exact: false },
       ),
     ).toBeVisible();
@@ -94,6 +94,9 @@ test.describe("local editorial admin", () => {
   }) => {
     await page.goto("/admin/bench/v01-orientation/");
 
+    const frame = page.locator(
+      'iframe[title="Comparison bench for ORIENTATION"]',
+    );
     const bench = page.frameLocator(
       'iframe[title="Comparison bench for ORIENTATION"]',
     );
@@ -108,6 +111,37 @@ test.describe("local editorial admin", () => {
         ".approval-mark",
       ),
     ).toHaveCount(0);
+
+    const scrollModel = await bench.locator(".wrap").evaluate((wrap) => ({
+      frameClientHeight: wrap.ownerDocument.documentElement.clientHeight,
+      frameScrollHeight: wrap.ownerDocument.documentElement.scrollHeight,
+      frameOverflow: getComputedStyle(
+        wrap.ownerDocument.documentElement,
+      ).overflowY,
+    }));
+    expect(scrollModel.frameOverflow).toBe("hidden");
+    expect(scrollModel.frameScrollHeight).toBeLessThanOrEqual(
+      scrollModel.frameClientHeight + 1,
+    );
+
+    const pageScroll = await page.evaluate(() => ({
+      clientHeight: document.documentElement.clientHeight,
+      scrollHeight: document.documentElement.scrollHeight,
+    }));
+    expect(pageScroll.scrollHeight).toBeGreaterThan(pageScroll.clientHeight);
+
+    const heightBeforeEvidence = await frame.evaluate(
+      (element) => element.getBoundingClientRect().height,
+    );
+    await bench.getByText("Corpus commitments", { exact: true }).click();
+    await expect(
+      bench.getByText("Relationship to the reader:", { exact: false }),
+    ).toBeVisible();
+    await expect
+      .poll(() =>
+        frame.evaluate((element) => element.getBoundingClientRect().height),
+      )
+      .toBeGreaterThan(heightBeforeEvidence);
   });
 
   test("keeps the toolbar icons visually consistent and the dashboard in bounds", async ({
