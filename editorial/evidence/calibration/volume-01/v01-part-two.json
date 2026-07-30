@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-part-two",
+  "editorialId": "volume-01",
+  "sectionHeading": "PART TWO",
+  "currentHeading": "PART TWO",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "display matter",
+      "title matter",
+      "part label",
+      "ampersand"
+    ],
+    "itemsRead": [
+      "CTD-0035",
+      "CTD-0032",
+      "CTD-0103"
+    ],
+    "outcome": "CTD-0035 tracks title matter consistency across the corpus and CTD-0103 tracks Opening and Front Matter labels in reader navigation. Neither turns on this label's wording, and neither is affected by verifying it unchanged. CTD-0032 is resolved and its ampersand restoration is intact."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Display matter verified character for character against the baseline. No difference found.",
+      "evidence": {
+        "baseline": "PART TWO",
+        "shipped": "Identical."
+      },
+      "authorizedBy": "Not applicable. No change was made and none was required.",
+      "diagnosis": "The part label. Survived the prior pass without alteration. Recorded so that the section's silence is evidence of a check rather than of an omission, which is the same standard R-CATALOG-LIMBS sets for an unrecorded exception.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Verified unchanged against baseline",
+      "reasoning": [
+        {
+          "kind": "verified",
+          "note": "Compared against the immutable baseline. Identical."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. No prohibited glyphs present in baseline or shipped."
+        },
+        {
+          "kind": "kept",
+          "note": "The label as it stands."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Direct comparison against the immutable baseline. Display matter of this length admits no derivation beyond verifying identity.",
+    "conclusion": "No new rule required. The prior pass left the volume's structural labels alone, which is the correct disposition and is worth recording: the damage this re-render has catalogued is entirely in continuous prose, never in the scaffolding around it."
+  }
+}

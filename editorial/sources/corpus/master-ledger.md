@@ -11,7 +11,7 @@
 
 | Vol | Title | Subtitle | Number / Planet | Byline |
 |----|-------|----------|-----------------|--------|
-| I | **Humanity's Most Viable Future** | *The Obvious Substrate for the Existential Necessity of a Post-Extractive Civilization* | One · Sun | Tao Yu / ed. Robert James Ryan III |
+| I | **Humanity's Most Viable Future** | *Coherence as the Ground of a Post-Extractive Civilization* | One · Sun | Tao Yu / ed. Robert James Ryan III |
 | II | **Wielding Intelligence** | *To Center in Humane Technology* | Two · Moon | Tao Yu / ed. RJR III |
 | III | **The Providence Imperative** | *How We Build the Coordination Infrastructure That Civilization Needs to Survive Itself* | Three · Jupiter | Tao Yu / ed. RJR III |
 | IV | **Architecting Providence** | *Building Coherent Civilization* | Four · Uranus | Tao Yu / ed. RJR III |

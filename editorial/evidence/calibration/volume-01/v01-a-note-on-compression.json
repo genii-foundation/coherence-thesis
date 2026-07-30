@@ -60,7 +60,7 @@
     {
       "id": "CTD-0017",
       "effect": "sharpened, not closed",
-      "note": "The prior pass expanded the body to five items under a heading naming four. The re-render restores the baseline three. The author now chooses between renaming the heading, which costs a reviewed route alias chain, and rewording the transition so the count agrees."
+      "note": "The item described a passage naming five movements under a heading naming four. That was the wave-one pass's expansion, not the baseline. The re-render restored the baseline three, so the live mismatch is three under four, and the item was updated on 2026-07-30 with the corrected facts and the two options costed."
     }
   ],
   "generations": [
@@ -129,7 +129,7 @@
   ],
   "rulesDerived": [],
   "openQuestions": [
-    "Heading. Four Movements contradicts a body that names three stages. Renaming requires a reviewed route mapping across four historical routes plus the section lineage head. Deferred to the author under CTD-0017."
+    "Heading. Four Movements names a subject the section does not have. The passage gives reading times for three stages and then defers the rest, which is what the baseline heading, A Note on Compression, describes. CTD-0017 now records both options with their continuity costs: restoring the baseline heading reverses the section lineage, and keeping the current heading requires adding the soil to a passage about reading time. The two give the heading different scopes, and the scope is the author's decision."
   ],
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
@@ -137,5 +137,21 @@
     "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
     "conclusion": "No new rule required. Second consecutive section to need none. The most instructive finding was F2, where a catalog category fired on a construction its own retention limb protects, which is exactly the failure R-CATALOG-LIMBS was written to prevent and the first time that rule has caught something after the fact."
   },
-  "currentHeading": "Four Movements"
+  "currentHeading": "Four Movements",
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Four Movements",
+      "compression",
+      "seed",
+      "sprout",
+      "stem",
+      "reading time"
+    ],
+    "itemsRead": [
+      "CTD-0017",
+      "CTD-0103"
+    ],
+    "outcome": "CTD-0017 is a live query on this exact heading and remains unresolved. CTD-0103 tracks Opening and Front Matter labels in reader navigation and is not affected by this section's heading. The re-render made no heading change and recorded the corrected facts against CTD-0017 instead."
+  }
 }
