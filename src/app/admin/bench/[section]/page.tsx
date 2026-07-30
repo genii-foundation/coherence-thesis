@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
 
+import { render } from "../../../../../scripts/editorial/compare-render";
 import styles from "../../admin.module.css";
 import { readCalibrationSessions } from "../../adminData";
-import { BenchFrame } from "./BenchFrame";
+import { readCalibrationBench } from "../benchData";
+import { BenchSurface } from "./BenchSurface";
 
 export const dynamic = "force-dynamic";
 
@@ -21,14 +23,15 @@ export default async function BenchPage({
   if (!/^[a-z0-9-]+$/.test(section)) notFound();
 
   const session = readCalibrationSessions().find((s) => s.sectionId === section);
+  const bench = readCalibrationBench(section);
+  if (!bench) notFound();
+  const html = render(bench.record, bench.baseText, bench.currentText, {
+    fragment: true,
+  });
 
   return (
-    <>
-      <BenchFrame
-        src={`/admin/bench/${section}/raw`}
-        title={`Comparison bench for ${session?.currentHeading ?? section}`}
-        className={styles.benchFrame}
-      />
+    <div className={styles.benchPage}>
+      <BenchSurface className={styles.benchSurface} html={html} />
 
       {session?.rulings.length ? (
         <section className={styles.benchRulings} aria-labelledby="bench-rulings-heading">
@@ -96,6 +99,6 @@ export default async function BenchPage({
           </ol>
         </section>
       ) : null}
-    </>
+    </div>
   );
 }

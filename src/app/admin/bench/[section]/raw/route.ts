@@ -1,17 +1,7 @@
-import { existsSync, readFileSync } from "node:fs";
-import path from "node:path";
-
 import { headers } from "next/headers";
 
-import {
-  extractSection,
-  render,
-  type CalibrationRecord,
-} from "../../../../../../scripts/editorial/compare-render";
-import {
-  effectiveVoiceRulesFrom,
-  resolveEffectiveVoiceCard,
-} from "../../../../../../scripts/editorial/voice-card";
+import { render } from "../../../../../../scripts/editorial/compare-render";
+import { readCalibrationBench } from "../../benchData";
 
 // Renders a bench on request from the durable record, rather than serving a file the
 // CLI wrote earlier. The renderer is shared with npm run editorial:compare, so there is
@@ -48,43 +38,14 @@ export async function GET(
   // Constrain it to the shape the records use rather than resolving whatever arrives.
   if (!/^[a-z0-9-]+$/.test(section)) return problem("That is not a section id.");
 
-  const volume = `volume-${/^v(\d{2})-/.exec(section)?.[1] ?? ""}`;
-  const root = process.cwd();
-  const recordPath = path.join(root, "editorial/evidence/calibration", volume, `${section}.json`);
-  if (!existsSync(recordPath)) return problem(`No calibration record for <code>${section}</code>.`);
-
-  const record = JSON.parse(readFileSync(recordPath, "utf8")) as CalibrationRecord;
-  const effective = resolveEffectiveVoiceCard(
-    path.join(root, "editorial/sources/volumes", volume, "voice-card.md"),
-  );
-  record.effectiveVoiceCard = effectiveVoiceRulesFrom(
-    readFileSync(effective.corpusPath, "utf8"),
-  );
-  if (!record.generations?.some((g) => Array.isArray(g.text))) {
+  const bench = readCalibrationBench(section);
+  if (!bench) {
     return problem(
-      `<code>${section}</code> recorded a decision without generating variants, so there is nothing to compare side by side. Its findings are the evidence.`,
+      `No complete comparison data is available for <code>${section}</code>.`,
     );
   }
 
-  const baselinePath = path.join(
-    root,
-    "editorial/evidence/reviews/volumes",
-    volume,
-    record.baseline.batchId,
-    record.baseline.path,
-  );
-  if (!existsSync(baselinePath)) return problem(`Baseline missing for <code>${section}</code>.`);
-
-  const baseText = extractSection(readFileSync(baselinePath, "utf8"), record.sectionHeading);
-  if (!baseText.length) {
-    return problem(`Heading “${record.sectionHeading}” is not in the baseline.`);
-  }
-  const currentText = extractSection(
-    readFileSync(path.join(root, "editorial/sources/volumes", volume, "manuscript.md"), "utf8"),
-    record.sectionHeading,
-  );
-
-  return new Response(render(record, baseText, currentText), {
+  return new Response(render(bench.record, bench.baseText, bench.currentText), {
     headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" },
   });
 }

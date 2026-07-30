@@ -304,16 +304,15 @@
   color: var(--ink);
 }
 
-/* The isolated bench document grows to its rendered content height. The surrounding
-   page owns vertical scrolling, so there is one spatial model and one scrollbar. */
-.benchFrame {
-  display: block;
+/* Comparison work needs reading width, not dashboard width. Break out of the admin
+   column and use the viewport while keeping the site gutters intact. */
+.benchPage {
+  width: calc(100vw - 2rem);
+  margin-left: calc(50% - 50vw + 1rem);
+}
+
+.benchSurface {
   width: 100%;
-  height: 1600px;
-  min-height: 760px;
-  border: 0;
-  background: var(--paper);
-  overflow-anchor: none;
 }
 
 .benchRulings {
@@ -1398,10 +1397,6 @@
     gap: 1.2rem;
   }
 
-  .benchFrame {
-    height: 2800px;
-  }
-
   .warn {
     grid-column: 1 / -1;
     border-top: 1px solid var(--line);
@@ -1470,11 +1465,6 @@
   .main {
     width: min(100% - 2rem, 1160px);
     padding-top: 2rem;
-  }
-
-  .benchFrame {
-    height: 3100px;
-    min-height: 900px;
   }
 
   .benchRulingStats {

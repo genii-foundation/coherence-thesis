@@ -127,7 +127,12 @@ const CHIP: Record<string, string> = {
   basis: "basis", rejected: "not approved", candidate: "candidate", approved: "approved", reference: "reference",
 };
 
-export function render(record: CalibrationRecord, baseText: string[], currentText: string[]): string {
+export function render(
+  record: CalibrationRecord,
+  baseText: string[],
+  currentText: string[],
+  options: { fragment?: boolean } = {},
+): string {
   const baseWords = baseText.flatMap(wordsOf).length;
 
   const baseRow = {
@@ -219,18 +224,16 @@ export function render(record: CalibrationRecord, baseText: string[], currentTex
   const tick = (s: boolean | null | undefined): string =>
     s === true ? '<span class="ok">&#10003;</span>' : s === false ? '<span class="bad">&#10007;</span>' : '<span class="na">&middot;</span>';
 
-  return `<title>${esc(record.sectionHeading)} | calibration</title>
-<style>
-:root{
+  const surface = `<style>
+.calibration-bench{
 --paper:#f4ead7;--paper-soft:#fbf6eb;--ink:#13202a;--ink-soft:#4f4d49;--ink-muted:#5a666c;
 --bronze:#a47b3f;--bronze-deep:#77542a;--sage:#60796d;
 --line:rgba(119,84,42,.24);--line-soft:rgba(119,84,42,.13);--panel:#fbf6eb;
 --cut:#8c4a33;--add:rgba(164,123,63,.20);--cut-bg:rgba(140,74,51,.13);--radius:12px;
---serif:Literata,Georgia,"Iowan Old Style",serif;color-scheme:light;}
+--serif:Literata,Georgia,"Iowan Old Style",serif;color-scheme:light;
+background:transparent;color:var(--ink);font-family:var(--serif);
+-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;
 *{box-sizing:border-box}
-html,body{overflow:hidden}
-body{margin:0;background:transparent;color:var(--ink);font-family:var(--serif);
- -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
 .wrap{max-width:none;margin:0;padding:2px 0 12px}
 .micro{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-muted);opacity:.85}
 .bench-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:36px;align-items:end;
@@ -374,8 +377,10 @@ del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-
  .prose{font-size:15.5px;padding:17px}.cadence{padding:0 17px 16px}
  .pane-head{align-items:flex-start}.metrics{width:100%;margin-left:0}
 }
+}
 </style>
-<div class="wrap">
+<div class="calibration-bench">
+<div class="wrap js">
 <header class="bench-hero">
   <div>
     <div class="identity">
@@ -494,25 +499,33 @@ del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-
   </div>
 </section>
 </div>
-<script>
+</div>`;
+
+  const interaction = `<script>
 (function(){
-  document.documentElement.classList.add("js");
+  var root = document.querySelector(".calibration-bench .wrap");
+  if (!root) return;
   document.addEventListener("click", function (e) {
     var tab = e.target.closest && e.target.closest(".tab");
-    if (!tab) return;
+    if (!tab || !root.contains(tab)) return;
     var key = tab.getAttribute("data-target"), i;
-    var tabs = document.querySelectorAll(".tab");
+    var tabs = root.querySelectorAll(".tab");
     for (i = 0; i < tabs.length; i++) tabs[i].setAttribute("aria-selected", "false");
     tab.setAttribute("aria-selected", "true");
-    var panes = document.querySelectorAll(".body-right .pane");
+    var panes = root.querySelectorAll(".body-right .pane");
     for (i = 0; i < panes.length; i++) panes[i].classList.toggle("active", panes[i].getAttribute("data-version") === key);
-    var rs = document.querySelectorAll(".reason[data-version]");
+    var rs = root.querySelectorAll(".reason[data-version]");
     for (i = 0; i < rs.length; i++) rs[i].classList.toggle("active", rs[i].getAttribute("data-version") === key);
   });
   document.addEventListener("change", function (e) {
-    if (e.target.id === "diffToggle") document.documentElement.classList.toggle("showdiff", e.target.checked);
+    if (e.target.id === "diffToggle") root.classList.toggle("showdiff", e.target.checked);
   });
 })();
-</script>
-`;
+</script>`;
+
+  if (options.fragment) return surface;
+  return `<title>${esc(record.sectionHeading)} | calibration</title>
+<style>html,body{margin:0;background:#f4ead7}</style>
+${surface}
+${interaction}`;
 }

@@ -94,16 +94,14 @@ test.describe("local editorial admin", () => {
   }) => {
     await page.goto("/admin/bench/v01-orientation/");
 
-    const frame = page.locator(
-      'iframe[title="Comparison bench for ORIENTATION"]',
-    );
-    const bench = page.frameLocator(
-      'iframe[title="Comparison bench for ORIENTATION"]',
-    );
+    const bench = page.getByRole("region", {
+      name: "Calibration comparison",
+    });
     const approvedVariant = bench.getByRole("tab", {
       name: "A1131, approved",
     });
 
+    await expect(page.locator("iframe")).toHaveCount(0);
     await expect(approvedVariant).toBeVisible();
     await expect(approvedVariant.locator(".approval-mark")).toBeVisible();
     await expect(
@@ -112,26 +110,20 @@ test.describe("local editorial admin", () => {
       ),
     ).toHaveCount(0);
 
-    const scrollModel = await bench.locator(".wrap").evaluate((wrap) => ({
-      frameClientHeight: wrap.ownerDocument.documentElement.clientHeight,
-      frameScrollHeight: wrap.ownerDocument.documentElement.scrollHeight,
-      frameOverflow: getComputedStyle(
-        wrap.ownerDocument.documentElement,
-      ).overflowY,
-    }));
-    expect(scrollModel.frameOverflow).toBe("hidden");
-    expect(scrollModel.frameScrollHeight).toBeLessThanOrEqual(
-      scrollModel.frameClientHeight + 1,
-    );
+    const layout = await page.evaluate(() => {
+      const split = document.querySelector(".calibration-bench .bench");
+      return {
+        splitWidth: split?.getBoundingClientRect().width ?? 0,
+        viewportWidth: document.documentElement.clientWidth,
+        clientHeight: document.documentElement.clientHeight,
+        scrollHeight: document.documentElement.scrollHeight,
+      };
+    });
+    expect(layout.splitWidth).toBeGreaterThan(layout.viewportWidth * 0.9);
+    expect(layout.scrollHeight).toBeGreaterThan(layout.clientHeight);
 
-    const pageScroll = await page.evaluate(() => ({
-      clientHeight: document.documentElement.clientHeight,
-      scrollHeight: document.documentElement.scrollHeight,
-    }));
-    expect(pageScroll.scrollHeight).toBeGreaterThan(pageScroll.clientHeight);
-
-    const heightBeforeEvidence = await frame.evaluate(
-      (element) => element.getBoundingClientRect().height,
+    const pageHeightBeforeEvidence = await page.evaluate(
+      () => document.documentElement.scrollHeight,
     );
     await bench.getByText("Corpus commitments", { exact: true }).click();
     await expect(
@@ -139,9 +131,19 @@ test.describe("local editorial admin", () => {
     ).toBeVisible();
     await expect
       .poll(() =>
-        frame.evaluate((element) => element.getBoundingClientRect().height),
+        page.evaluate(() => document.documentElement.scrollHeight),
       )
-      .toBeGreaterThan(heightBeforeEvidence);
+      .toBeGreaterThan(pageHeightBeforeEvidence);
+
+    const pageBounds = await page.evaluate(() => ({
+      clientHeight: document.documentElement.clientHeight,
+      clientWidth: document.documentElement.clientWidth,
+      scrollHeight: document.documentElement.scrollHeight,
+      scrollWidth: document.documentElement.scrollWidth,
+    }));
+    expect(pageBounds.scrollWidth).toBeLessThanOrEqual(
+      pageBounds.clientWidth,
+    );
   });
 
   test("keeps the toolbar icons visually consistent and the dashboard in bounds", async ({
