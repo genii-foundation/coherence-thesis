@@ -211,6 +211,54 @@ export interface CalibrationFinding {
   producedRule?: string;
 }
 
+export interface CalibrationSession extends CalibrationRow {
+  rulings: {
+    question?: string;
+    /** The founding session used decision + rationale; later records use ruling + occasion. */
+    decision?: string;
+    rationale?: string;
+    ruling?: string;
+    occasion?: string;
+    scope?: string;
+    by?: string;
+  }[];
+  rulesDerived: string[];
+  generations: number;
+  /** A bench can only be drawn where the generations carry their text. */
+  benchable: boolean;
+}
+
+/**
+ * A session is a record where something was decided: a ruling was made, or a rule was
+ * derived. Most records are not sessions. They are sections re-rendered under rules that
+ * already existed, and listing them beside the sessions buries the six occasions the
+ * standard actually changed among twenty-two that changed nothing.
+ */
+export function readCalibrationSessions(): CalibrationSession[] {
+  const sessions: CalibrationSession[] = [];
+  for (const row of readCalibrationRows()) {
+    const dir = path.join(editorialCalibrationRoot, row.editorialId, `${row.sectionId}.json`);
+    if (!existsSync(dir)) continue;
+    try {
+      const r = JSON.parse(readFileSync(dir, "utf8")) as Record<string, unknown>;
+      const rulings = (r.rulings as CalibrationSession["rulings"] | undefined) ?? [];
+      const rulesDerived = (r.rulesDerived as string[] | undefined) ?? [];
+      if (!rulings.length && !rulesDerived.length) continue;
+      const generations = (r.generations as { text?: unknown }[] | undefined) ?? [];
+      sessions.push({
+        ...row,
+        rulings,
+        rulesDerived,
+        generations: generations.length,
+        benchable: generations.length > 0 && generations.every((g) => Array.isArray(g.text)),
+      });
+    } catch {
+      // Reported by the gates page rather than silently swallowed there.
+    }
+  }
+  return sessions.sort((a, b) => b.rulesDerived.length - a.rulesDerived.length || b.rulings.length - a.rulings.length);
+}
+
 export interface CalibrationRow {
   sectionId: string;
   editorialId: string;

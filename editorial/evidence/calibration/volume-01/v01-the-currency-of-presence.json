@@ -174,8 +174,18 @@
       ]
     }
   ],
-  "rulings": [],
-  "rulesDerived": [],
+  "rulings": [
+    {
+      "question": "Does a baseline reading override a decision already recorded in the debt or master ledger?",
+      "ruling": "No. A baseline is the authority on prose, not on canon a recorded decision has settled. Where they conflict the decision wins, and restoring the baseline reopens the item.",
+      "scope": "corpus",
+      "occasion": "F1 of this section. The baseline equates Bio-Consensus with the Currency of Presence, which CTD-0012 records as a defect corrected in Volume I and checked against the master ledger. The re-render restored the conflation and would have silently reopened a high severity item.",
+      "date": "2026-07-30"
+    }
+  ],
+  "rulesDerived": [
+    "R-LEDGER-WINS"
+  ],
   "openQuestions": [
     "Canon. The master ledger's Decision A introduces the unit name COHERENCE at the currency's first full treatment in Volume III and keeps the Currency of Presence as Volume I's descriptor. Volume I nonetheless contains a subsection whose subject is the currency's name, and the baseline reveals it there in lowercase before using the capitalized token once. Whether Volume I may name the unit at all, and in which case, belongs with CTD-0003 and CTD-0012 rather than to an editorial pass.",
     "Heading. Three renamed subsections, two of which announce what the passage beneath them withholds. Its Name reveals the name in the heading; What It Looks Like From Inside names Maren before she is introduced. Renaming costs three reviewed route aliases. Batched with the earlier heading questions for the author."
