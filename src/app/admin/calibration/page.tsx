@@ -26,25 +26,17 @@ export default function EditorialRevisionsPage() {
   return (
     <>
       <h1 className={styles.h1}>Editorial revisions</h1>
-      <p className={styles.sub}>
-        A revision session compares a passage against its immutable baseline, records what
-        was decided, and promotes anything corpus wide into a named obligation. Sessions
-        the author ruled on are listed here. {agentOnly} further rulings were made by the
-        agent alone and stay in the records, because an unattended ruling is a working note.
-      </p>
 
-      <div className={styles.startBlock}>
-        <p>
-          <strong>Select any passage in the manuscripts</strong> to start a revision on it.
-          The selection bubble offers it beside Bookmark, and copies a prompt naming the
-          section, the passage, and its paragraph anchor, which survives a re-render.
-        </p>
-        <p className={styles.detail}>Or start one without a passage in mind:</p>
-        <CopyPromptButton label="Copy a new session prompt" prompt={NEW_SESSION_PROMPT} />
+      <div className={styles.startRow}>
+        <CopyPromptButton label="Start a revision" prompt={NEW_SESSION_PROMPT} />
+        <span className={styles.detail}>
+          Or select any passage while reading. Both copy a prompt for an agent session.
+        </span>
       </div>
 
       <p className={styles.micro}>
-        {sessions.length} session{sessions.length === 1 ? "" : "s"} the author ruled on
+        {sessions.length} ruled by the author &middot; {agentOnly} unattended, held in the
+        records
       </p>
       <div className={styles.tiles}>
         {sessions.map((session) => (

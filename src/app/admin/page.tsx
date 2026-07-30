@@ -5,7 +5,6 @@ import {
   readGlyphViolations,
   readProtectedLineViolations,
   readTasks,
-  type Task,
 } from "./adminData";
 
 export const dynamic = "force-dynamic";
@@ -18,18 +17,17 @@ function tierClass(tier: string): string {
   return styles.red ?? "";
 }
 
-interface Attention {
+interface Item {
   what: string;
-  detail: string;
+  where: string;
+  next: string;
+  href?: string;
 }
 
 /**
- * A status page answers three questions in order: is anything wrong, how far along is the
- * work, and what is in flight. Anything that answers none of those is not status.
- *
- * The previous version led with a passing check and then printed twenty-seven settled
- * sections, which is reassurance rather than information. What needs attention comes
- * first here and everything healthy collapses to one line.
+ * A dashboard is read in seconds, standing up. Numbers first, then the short list of
+ * things that are actually wrong, then the work in flight. No paragraph on this page
+ * explains the page: anything that needs a paragraph is not a dashboard row.
  */
 export default function StatusPage() {
   const register = readTasks();
@@ -38,127 +36,104 @@ export default function StatusPage() {
   const glyphs = readGlyphViolations();
   const records = readCalibrationRows();
 
-  // Only volumes the re-render has actually started. Volumes II to IX carry no
-  // calibration records at all, so counting their sections as unsettled reports 409
-  // problems where there is one, and buries it under four hundred headings.
   const started = progress.filter((v) => v.settled > 0);
   const openSections = started.flatMap((v) =>
     v.sections.filter((s) => !s.settled).map((s) => ({ volume: v.editorialId, heading: s.heading })),
   );
-  const notStarted = progress.filter((v) => v.settled === 0);
   const openQuestions = records.reduce((total, r) => total + r.openQuestions, 0);
   const blocked = register.tasks.filter((t) => t.status === "blocked");
   const inFlight = register.tasks.filter((t) => t.status === "in-progress");
   const pending = register.tasks.filter((t) => t.status === "pending");
-  const done = register.tasks.filter((t) => t.status === "done");
+  const openTasks = [...inFlight, ...blocked, ...pending];
+  const settled = started.reduce((t, v) => t + v.settled, 0);
+  const total = started.reduce((t, v) => t + v.total, 0);
 
-  const attention: Attention[] = [];
+  const items: Item[] = [];
   if (lines.violations.length) {
-    attention.push({
+    items.push({
       what: `${lines.violations.length} protected lines missing`,
-      detail: `Declared in ${[...new Set(lines.violations.map((v) => v.editorialId.replace("volume-", "volume ")))].join(", ")} and absent from those manuscripts. The gate is not wired into validate, because it would fail every run until they are restored.`,
+      where: [...new Set(lines.violations.map((v) => v.editorialId.replace("volume-", "vol ")))].join(", "),
+      next: "Restore, then wire the gate into validate",
     });
   }
   if (glyphs.violations.length) {
-    attention.push({
+    items.push({
       what: `${glyphs.violations.length} prohibited glyphs`,
-      detail: glyphs.violations
-        .slice(0, 5)
-        .map((v) => `${v.editorialId.replace("volume-", "")}:${v.line} ${v.glyph}`)
-        .join(", "),
+      where: [...new Set(glyphs.violations.map((v) => v.editorialId.replace("volume-", "vol ")))].join(", "),
+      next: "npm run editorial:lint",
     });
   }
-  if (openSections.length) {
-    attention.push({
-      what: `${openSections.length} section${openSections.length === 1 ? "" : "s"} unsettled`,
-      detail: `${openSections
-        .slice(0, 4)
-        .map((s) => s.heading)
-        .join(", ")}${openSections.length > 4 ? `, and ${openSections.length - 4} more` : ""}. In ${
-        [...new Set(openSections.map((s) => s.volume.replace("volume-", "volume ")))].join(", ")
-      }.`,
+  for (const section of openSections) {
+    items.push({
+      what: "Section unsettled",
+      where: section.heading,
+      next: "Decide the open question",
+      href: "/admin/calibration/",
     });
   }
   if (openQuestions) {
-    attention.push({
-      what: `${openQuestions} question${openQuestions === 1 ? "" : "s"} for the author`,
-      detail: "Recorded in calibration records. Each needs a decision before its section can settle.",
+    items.push({
+      what: `${openQuestions} questions for the author`,
+      where: "Calibration records",
+      next: "Rule, then the sections settle",
+      href: "/admin/calibration/",
     });
   }
-  if (blocked.length) {
-    attention.push({
-      what: `${blocked.length} task${blocked.length === 1 ? "" : "s"} blocked`,
-      detail: blocked.map((t) => `${t.id} ${t.title}`).join(" · "),
+  for (const task of blocked) {
+    items.push({
+      what: `${task.id} blocked`,
+      where: task.title,
+      next: task.blockedBy?.length ? `Waiting on ${task.blockedBy.join(", ")}` : "Unblock",
     });
   }
 
-  const passing = [
-    !lines.violations.length && `protected lines, ${lines.checked} present`,
-    !glyphs.violations.length && `prohibited glyphs, clean across ${glyphs.checked} manuscripts`,
-    !openSections.length && started.length && "every started section settled",
-  ].filter(Boolean) as string[];
-
-  const group = (label: string, list: Task[]) =>
-    list.length ? (
-      <div key={label} style={{ marginBottom: 18 }}>
-        <p className={styles.micro}>
-          {label} &middot; {list.length}
-        </p>
-        <div className={styles.rows}>
-          {[...list]
-            .sort((a, b) => (TIER_ORDER[a.tier] ?? 9) - (TIER_ORDER[b.tier] ?? 9) || a.id.localeCompare(b.id))
-            .map((task) => (
-              <div className={styles.row} key={task.id} style={{ gridTemplateColumns: "68px 62px 1fr" }}>
-                <span className={styles.id}>{task.id}</span>
-                <span className={`${styles.tier} ${tierClass(task.tier)}`}>{task.tier}</span>
-                <span>
-                  {task.title}
-                  {task.blockedBy?.length ? (
-                    <p className={styles.detail}>Blocked by {task.blockedBy.join(", ")}.</p>
-                  ) : null}
-                </span>
-              </div>
-            ))}
-        </div>
-      </div>
-    ) : null;
+  const metrics = [
+    { value: String(items.length), label: "need attention", bad: items.length > 0 },
+    { value: `${settled}/${total}`, label: "sections settled" },
+    { value: `${started.length}/${progress.length}`, label: "volumes started" },
+    { value: String(openTasks.length), label: "tasks open" },
+  ];
 
   return (
     <>
       <h1 className={styles.h1}>Status</h1>
-      <p className={styles.sub}>
-        {attention.length ? (
-          <>
-            <strong>{attention.length}</strong> thing{attention.length === 1 ? "" : "s"} need
-            attention.
-          </>
-        ) : (
-          <>Nothing needs attention.</>
-        )}{" "}
-        Derived from repository state on every request. Read only.
-      </p>
 
-      {attention.length ? (
-        <div className={styles.attention}>
-          {attention.map((item) => (
-            <div className={styles.attentionRow} key={item.what}>
-              <span className={styles.attentionWhat}>{item.what}</span>
-              <span className={styles.detail}>{item.detail}</span>
-            </div>
-          ))}
-        </div>
-      ) : null}
+      <div className={styles.metrics}>
+        {metrics.map((m) => (
+          <div className={styles.metric} key={m.label}>
+            <span className={`${styles.metricValue} ${m.bad ? styles.bad : ""}`}>{m.value}</span>
+            <span className={styles.metricLabel}>{m.label}</span>
+          </div>
+        ))}
+      </div>
 
-      {passing.length ? (
-        <p className={styles.detail} style={{ margin: "0 0 26px" }}>
-          <span className={styles.ok}>Passing</span> &middot; {passing.join(" &middot; ")}
+      {items.length ? (
+        <>
+          <p className={styles.micro}>Needs attention</p>
+          <div className={styles.rows} style={{ marginBottom: 26 }}>
+            {items.map((item, i) => (
+              <div
+                className={styles.row}
+                key={`${item.what}-${i}`}
+                style={{ gridTemplateColumns: "1fr 1fr 1fr" }}
+              >
+                <span>{item.what}</span>
+                <span className={styles.detail}>{item.where}</span>
+                <span className={styles.detail}>
+                  {item.href ? <a href={item.href}>{item.next}</a> : item.next}
+                </span>
+              </div>
+            ))}
+          </div>
+        </>
+      ) : (
+        <p className={styles.ok} style={{ marginBottom: 26 }}>
+          Nothing needs attention.
         </p>
-      ) : null}
+      )}
 
-      <p className={styles.micro}>
-        Re-render progress &middot; {started.length} of {progress.length} volumes started
-      </p>
-      <div className={styles.progressList}>
+      <p className={styles.micro}>Progress</p>
+      <div className={styles.progressList} style={{ marginBottom: 26 }}>
         {started.map((v) => (
           <div className={styles.progressRow} key={v.editorialId}>
             <span className={styles.id}>{v.editorialId.replace("volume-", "vol ")}</span>
@@ -171,20 +146,36 @@ export default function StatusPage() {
             <span className={styles.words}>{v.percent}%</span>
           </div>
         ))}
+        {progress
+          .filter((v) => v.settled === 0)
+          .map((v) => (
+            <div className={styles.progressRow} key={v.editorialId}>
+              <span className={styles.id}>{v.editorialId.replace("volume-", "vol ")}</span>
+              <div className={styles.bar2}>
+                <div className={styles.fill} style={{ width: "0%" }} />
+              </div>
+              <span className={styles.words}>0/{v.total}</span>
+              <span className={styles.words}>&mdash;</span>
+            </div>
+          ))}
       </div>
-      {notStarted.length ? (
-        <p className={styles.detail} style={{ marginTop: 8 }}>
-          Not started: {notStarted.map((v) => v.editorialId.replace("volume-", "")).join(", ")}.
-        </p>
-      ) : null}
 
-      <p className={styles.micro} style={{ marginTop: 26 }}>
-        Queue &middot; agent work, not the authorial obligations in the debt register
-      </p>
-      {group("In flight", inFlight)}
-      {group("Blocked", blocked)}
-      {group("Pending", pending)}
-      <p className={styles.detail}>{done.length} done.</p>
+      <p className={styles.micro}>Queue &middot; {openTasks.length} open</p>
+      <div className={styles.rows}>
+        {openTasks
+          .sort(
+            (a, b) =>
+              (TIER_ORDER[a.tier] ?? 9) - (TIER_ORDER[b.tier] ?? 9) || a.id.localeCompare(b.id),
+          )
+          .map((task) => (
+            <div className={styles.row} key={task.id} style={{ gridTemplateColumns: "62px 58px 1fr 78px" }}>
+              <span className={styles.id}>{task.id}</span>
+              <span className={`${styles.tier} ${tierClass(task.tier)}`}>{task.tier}</span>
+              <span>{task.title}</span>
+              <span className={styles.state}>{task.status}</span>
+            </div>
+          ))}
+      </div>
     </>
   );
 }
