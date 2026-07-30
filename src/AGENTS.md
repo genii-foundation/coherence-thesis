@@ -35,4 +35,4 @@ This file governs application code under src/. Repository-wide policy remains in
 - Run the broader fast browser suite for navigation, toolbar, progress, audio, or responsive behavior.
 - Run the full repository validation before commit.
 - Run the complete browser suite when the change can affect browser behavior.
-- For visible changes, provide a fresh preview from the feature worktree and verify the actual rendered surface.
+- For visible changes, launch a fresh preview from the feature worktree and give the user its working URL before running any test suite. Keep the preview running for review, then verify the actual rendered surface.

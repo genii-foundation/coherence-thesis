@@ -311,7 +311,8 @@ test("reader settings update and persist local appearance preferences", async ({
     fontFamily: "newsreader",
     theme: "black",
     animations: "none",
-    highlights: "off",
+    highlights: "on",
+    schemaVersion: 2,
   });
 
   await page.keyboard.press("Escape");
@@ -350,7 +351,8 @@ test("reader settings update and persist local appearance preferences", async ({
     fontFamily: "newsreader",
     theme: "black",
     animations: "none",
-    highlights: "off",
+    highlights: "on",
+    schemaVersion: 2,
   });
 
   await page.goto("/");
