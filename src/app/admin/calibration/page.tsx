@@ -14,9 +14,11 @@ export default function CalibrationPage() {
     <>
       <h1 className={styles.h1}>Calibration sessions</h1>
       <p className={styles.sub}>
-        The {sessions.length} occasions a ruling was made or a rule was derived. The other{" "}
-        {quiet} records are sections re-rendered under rules that already existed. They are
-        evidence, not sessions, and they live on <a href="/admin/progress/">Progress</a>.
+        The {sessions.length} occasions a ruling was made or a rule was derived, of which{" "}
+        {sessions.filter((s) => s.authored).length} had the author in the loop. The rest were
+        settled by the editorial agent alone, which is a weaker warrant and is marked as
+        such. The other {quiet} records are sections re-rendered under rules that already
+        existed, and they live on <a href="/admin/progress/">Progress</a>.
       </p>
 
       <div className={styles.tiles}>
@@ -27,6 +29,9 @@ export default function CalibrationPage() {
               {session.settled || "open"} &middot; {session.rulings.length} ruling
               {session.rulings.length === 1 ? "" : "s"}
               {session.generations > 1 ? ` · ${session.generations} variants` : ""}
+            </span>
+            <span className={session.authored ? styles.authored : styles.unattended}>
+              {session.authored ? "author ruled" : "agent alone"}
             </span>
             {session.rulesDerived.length ? (
               <span className={styles.tileRules}>

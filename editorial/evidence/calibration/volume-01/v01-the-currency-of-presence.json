@@ -180,7 +180,8 @@
       "ruling": "No. A baseline is the authority on prose, not on canon a recorded decision has settled. Where they conflict the decision wins, and restoring the baseline reopens the item.",
       "scope": "corpus",
       "occasion": "F1 of this section. The baseline equates Bio-Consensus with the Currency of Presence, which CTD-0012 records as a defect corrected in Volume I and checked against the master ledger. The re-render restored the conflation and would have silently reopened a high severity item.",
-      "date": "2026-07-30"
+      "date": "2026-07-30",
+      "by": "editorial-agent"
     }
   ],
   "rulesDerived": [

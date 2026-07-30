@@ -227,6 +227,12 @@ export interface CalibrationSession extends CalibrationRow {
   generations: number;
   /** A bench can only be drawn where the generations carry their text. */
   benchable: boolean;
+  /**
+   * Whether the author ruled here, or the editorial agent ruled alone. A rule derived
+   * unilaterally and a rule the author decided carry different authority, and a list
+   * that shows them identically hides the difference that matters most.
+   */
+  authored: boolean;
 }
 
 /**
@@ -252,6 +258,7 @@ export function readCalibrationSessions(): CalibrationSession[] {
         rulesDerived,
         generations: generations.length,
         benchable: generations.length > 0 && generations.every((g) => Array.isArray(g.text)),
+        authored: rulings.some((r) => r.by === "author"),
       });
     } catch {
       // Reported by the gates page rather than silently swallowed there.

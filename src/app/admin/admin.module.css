@@ -8,6 +8,8 @@
   color: var(--ink);
 }
 
+/* Chrome, so it takes the chrome token. --panel-background is the popover surface and
+   is near white by design, which read as a white strip between two cream ones. */
 .bar {
   display: flex;
   align-items: baseline;
@@ -15,7 +17,7 @@
   flex-wrap: wrap;
   padding: 12px 26px;
   border-bottom: 1px solid var(--line);
-  background: var(--panel-background);
+  background: var(--header-background);
 }
 
 .mark {
@@ -349,4 +351,28 @@
 
 .crumbs [aria-current="page"] {
   color: var(--ink);
+}
+
+/* Authority of a session. The author ruling and the agent ruling alone are different
+   warrants, and a list that renders them identically hides the distinction that decides
+   how much a derived rule can be trusted. */
+.authored,
+.unattended {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.authored {
+  color: var(--paper);
+  background: var(--bronze);
+}
+
+.unattended {
+  color: var(--ink-muted);
+  border: 1px solid var(--line);
 }
