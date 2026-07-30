@@ -151,6 +151,17 @@
       "authorizedBy": "Nothing. No rule addressed deixis.",
       "diagnosis": "Author reported the close felt as though it spoke of the mismatch in the past. The definite article reads as something already catalogued, converting a live pressure into a settled fact.",
       "producedRule": "R-DEIXIS"
+    },
+    {
+      "id": "F9",
+      "summary": "Regeneration reintroduced a mismatched comparison the approved lineage had repaired.",
+      "evidence": {
+        "baseline": "the moment when the scale of our technological power has begun to exceed the coherence with which we wield it",
+        "shipped": "Regenerated text restored the baseline phrase. Variant A had removed it and the author had approved that direction."
+      },
+      "authorizedBy": "R-PROPORTION, read as: restore baseline wording unless a named catalog category fires.",
+      "diagnosis": "A scale and a coherence are not commensurable. It is our power that exceeds our coherence, not the scale of it. No catalog category names a mismatched comparison, so the regeneration treated the phrase as sound. The absence of a category was mistaken for evidence of soundness, which turned a rule against over-cutting into a rule against editing.",
+      "producedRule": "R-PROPORTION-FLOOR"
     }
   ],
   "generations": [
@@ -418,7 +429,7 @@
     "regenerated": [
       "The Coherence Thesis is an invitation to recognize that the future of civilization will not be decided by technology or ideology, but by whether we learn to organize society around the biological conditions that make intelligence, trust, and coordination possible at planetary scale.",
       "Civilization's current crises are not primarily political, ideological, or technological failures. They are biological oversights. Global interdependence, velocity, and total systemic entanglement exceed the capacity of traditional forms of coordination. Any viable post-extractive future must be built on coherence as the substrate that sustains collective intelligence at planetary scale.",
-      "This book is written for the moment when the scale of our technological power has begun to exceed the coherence with which we wield it. Recognizing this mismatch may determine whether civilization adapts, hardens, or collapses."
+      "This book is written for the moment when our technological power has begun to exceed the coherence with which we wield it. Recognizing this mismatch may determine whether civilization adapts, hardens, or collapses."
     ],
     "metrics": {
       "words": 132,
@@ -444,8 +455,15 @@
         "cause": "The expectation was derived from the volume as a whole. The orientation is dense, deliberate prose with few defects, so correct editing barely compresses it.",
         "verdict": "The expectation is a volume level guide, not a section level target. Recorded so no future pass treats the range as a quota to reach.",
         "action": "Volume-01 voice card states the range as a volume expectation. Do not apply it per section."
+      },
+      {
+        "id": "D4",
+        "observation": "Regeneration restored the baseline phrase the scale of, which variant A had cut and the author had approved cutting.",
+        "cause": "R-PROPORTION was applied mechanically as a presumption in favour of baseline wording.",
+        "verdict": "The regeneration was wrong and the lineage was right. The phrase is a genuine fault, so its removal is a repair rather than a preference.",
+        "action": "R-PROPORTION-FLOOR added. Section text corrected in the manuscript."
       }
     ],
-    "conclusion": "The rules did not reproduce A11, and the divergence is the point. In all three cases the codified rules produced the more faithful result and the stored variant was the looser one. The method is sufficient; the stored answer was not the standard to hit. A11 remains in the record as evidence of how the rules were found, and the regenerated text is what the section should carry."
+    "conclusion": "The rules did not reproduce A11. Three divergences favoured the rules and one, D4, favoured the lineage. The failure in D4 was reading proportionality as a presumption for baseline wording, which R-PROPORTION-FLOOR now forbids. The test earns its place by catching a defect in the rules themselves rather than only in the prose."
   }
 }

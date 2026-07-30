@@ -58,6 +58,16 @@ Two habits produce most unjustified loss:
 
 If a revision reduces a passage by more than a third, the batch must state what the surplus was and why its removal did not cost argument, evidence, image, or voice. A large reduction is permitted. An unexplained one is not.
 
+### Proportionality cuts both ways `R-PROPORTION-FLOOR`
+
+This rule restrains unjustified change. It does not license timidity, and it must never be read as an instruction to restore baseline wording unless a named category fires.
+
+The catalog in section 4 is not a complete inventory of defects. It names recurring synthetic habits, and a passage can be faulty in ways no category describes: a comparison between things that are not commensurable, a modifier that attaches to the wrong noun, a verb whose subject cannot perform it, a sentence whose grammar is sound and whose logic is not.
+
+The absence of a matching category is not evidence that a construction is sound. It is only evidence that the catalog is silent. Judge the sentence, then decide.
+
+A repair that fixes a genuine fault is proportional at any size. What proportionality forbids is change that a defect did not require.
+
 ## 3. Punctuation standard
 
 ### Prohibited
@@ -504,6 +514,7 @@ Named rules carry stable identifiers so a ledger `reasonCodes` entry, a calibrat
 | --- | --- | --- |
 | `R-VOICE-BIND` | The volume's voice card is binding. An edit that contradicts it is a defect. | 2 |
 | `R-PROPORTION` | Change must be proportional to the defect. A reduction beyond a third must be explained. | 2 |
+| `R-PROPORTION-FLOOR` | The catalog is not a complete inventory of defects. Its silence is not proof a construction is sound. | 2 |
 | `R-PUNCT-STRUCT` | A prohibited mark is a structural signal. Name its work, then rebuild the syntax to do it. | 3 |
 | `R-CATALOG-LIMBS` | Every catalog entry has a defect limb and a retention limb. Both bind. Record which applies. | 4 |
 | `R-REMOVE-BURDEN` | `remove` must name what the sentence contributed and where surviving material went. | 7 |

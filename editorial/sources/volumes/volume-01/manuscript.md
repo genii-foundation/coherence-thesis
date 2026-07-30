@@ -14,7 +14,7 @@ The Coherence Thesis is an invitation to recognize that the future of civilizati
 
 Civilization's current crises are not primarily political, ideological, or technological failures. They are biological oversights. Global interdependence, velocity, and total systemic entanglement exceed the capacity of traditional forms of coordination. Any viable post-extractive future must be built on coherence as the substrate that sustains collective intelligence at planetary scale.
 
-This book is written for the moment when the scale of our technological power has begun to exceed the coherence with which we wield it. Recognizing this mismatch may determine whether civilization adapts, hardens, or collapses.
+This book is written for the moment when our technological power has begun to exceed the coherence with which we wield it. Recognizing this mismatch may determine whether civilization adapts, hardens, or collapses.
 
 **co·her·ence** | kōˈhirəns |
 *noun*
