@@ -459,12 +459,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-277f3a22bedde9f6",
+      "occurrenceId": "semantic-link-0190441f5eaa1fae",
       "conceptId": "volume-01-soil",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-taking-pause-in-the-soil",
-        "paragraphAnchor": "p-hbbc367e7c220401b",
+        "paragraphAnchor": "p-h437f3c0da2f842de",
         "matchText": "Soil",
         "matchOrdinal": 1
       },
@@ -578,12 +578,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-4cea9f415861ddb7",
+      "occurrenceId": "semantic-link-4f1f6a5619ffbb95",
       "conceptId": "section-title-v01-intelligence-meaning-trust",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-why-this-is-necessity-not-preference",
-        "paragraphAnchor": "p-hcb6e96be426fe178",
+        "paragraphAnchor": "p-hc96b3a53d71cb96c",
         "matchText": "intelligence, meaning, trust",
         "matchOrdinal": 1
       },
@@ -612,12 +612,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-704cde29fba82ac8",
+      "occurrenceId": "semantic-link-338214982d55da40",
       "conceptId": "volume-01-stem",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-taking-pause-in-the-soil",
-        "paragraphAnchor": "p-hbbc367e7c220401b",
+        "paragraphAnchor": "p-h437f3c0da2f842de",
         "matchText": "Stem",
         "matchOrdinal": 1
       },

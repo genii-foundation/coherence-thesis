@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-01",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "sectionId": "v01-taking-pause-in-the-soil",
+  "sectionHeading": "Taking Pause in the Soil",
+  "currentHeading": "The Ground Beneath the Argument",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "An ontological claim was reduced to a claim about influence.",
+      "evidence": {
+        "baseline": "that a human being is the kind of thing whose regulation, relationship, and coherence determine what a civilization can become",
+        "shipped": "human regulation, relationship, and coherence help determine what a civilization can become"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The kind of thing a human being is, is the Soil's entire subject, and the phrase naming it was removed. Determine also became help determine, which adds a hedge the baseline does not carry. The section that announces it will examine an assumption directly no longer states the assumption.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The reason for the section and its escalation were deleted.",
+      "evidence": {
+        "baseline": "That assumption deserves to be examined directly, because if it is wrong, the argument collapses, and if it is right, it changes more than the argument. It changes how we see ourselves.",
+        "shipped": "If that assumption is wrong, the argument collapses. If it is right, it changes how we see ourselves."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "It changes more than the argument. It changes how we see ourselves is a two beat escalation, and the pass kept only the second beat, which removes the escalation and leaves the larger claim unmade.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The section's governing image was replaced by a restatement of its own heading.",
+      "evidence": {
+        "baseline": "into the ground it has been standing on the whole time",
+        "shipped": "into the ground beneath the argument"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The whole time is the insight: the ground was always there and was never examined. The replacement repeats the heading, so the sentence carries no information the reader did not already have.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced a specification and became a colon, one fenced a manner phrase and became a comma."
+        },
+        {
+          "kind": "restored",
+          "note": "The ontological framing, the unhedged determine, the section's stated reason for existing, the two beat escalation, and the ground it has been standing on the whole time."
+        }
+      ]
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. At 113 words this is the shortest section examined, and it still carried three findings, which suggests the density of loss is roughly constant rather than concentrated in long passages."
+  }
+}
