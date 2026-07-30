@@ -697,12 +697,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-8dc9f9cb2b49ee64",
+      "occurrenceId": "semantic-link-53c627f0e9a6b8d0",
       "conceptId": "section-title-v04-the-first-scale",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-the-invitation",
-        "paragraphAnchor": "p-hc55d4df5a30b355d",
+        "paragraphAnchor": "p-h158fb23d1fcc697a",
         "matchText": "the first Scale",
         "matchOrdinal": 1
       },
@@ -731,12 +731,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-a1e60fe608382487",
+      "occurrenceId": "semantic-link-bc2cd861fa72fedb",
       "conceptId": "volume-01-soil",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-the-invitation",
-        "paragraphAnchor": "p-hb18c4f4d8d32aed6",
+        "paragraphAnchor": "p-h0439bd6b6e7beb12",
         "matchText": "soil",
         "matchOrdinal": 1
       },

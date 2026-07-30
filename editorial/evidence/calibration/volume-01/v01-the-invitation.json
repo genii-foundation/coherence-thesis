@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-the-invitation",
+  "editorialId": "volume-01",
+  "sectionHeading": "*The Invitation*",
+  "currentHeading": "*The Invitation*",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["for the first time in history", "the seed has been planted", "first scale", "production note", "final-pass draft"],
+    "itemsRead": ["CTD-0105", "CTD-0004", "CTD-0076", "CTD-0050"],
+    "outcome": "CTD-0105 forbids restoring the production note the baseline carries after the end of the book, and it is not restored. CTD-0004 governs the priority phrase, which the baseline uses twice here. CTD-0076 requires the uppercase singular Scale, so the pass's capitalization stands against the baseline's lowercase."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The close lost the sentence explaining why a book that has finished its argument continues, and the sentence that names what the argument was for.",
+      "evidence": {
+        "baseline": "What remains is not a conclusion. It is an opening. ... This book has made an argument, but the argument was never the point. The point is the recognition the argument exists to allow ... If that recognition has landed, then the rest is not belief. It is work.",
+        "shipped": "(opening pair absent) ... How much intelligence we build matters, but whether we become coherent enough to wield it may matter more. ... (belief and work pair absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.23 plausibly applied to This book has made an argument as a meta claim about the text.",
+      "diagnosis": "Three two-beat pairs, all deleted, and together they are the section's argument about itself: the book ends without concluding, the argument was scaffolding for a recognition, and the recognition asks for work rather than assent. The last restates the volume's governing refusal of belief at the moment a reader is most likely to supply it. Without them the Invitation is a list of tasks with no account of why it follows a finished book.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "A categorical claim about what will decide the future became a comparison between two things that might matter.",
+      "evidence": {
+        "baseline": "the future of civilization will not be decided by how much intelligence we build, but by whether we become coherent enough to wield it",
+        "shipped": "How much intelligence we build matters, but whether we become coherent enough to wield it may matter more."
+      },
+      "authorizedBy": "Catalog 4.3, applied to the not X but Y construction.",
+      "diagnosis": "The baseline asserts that one thing decides and the other does not. The revision concedes that both matter and ranks them with may. That is two modality changes in one sentence, and the rejected alternative is the one nearly every reader arrives holding, which is 4.3's retention limb. The claim is also the volume's thesis in a single line and appears in the same form in the Sprout, so weakening it here breaks a deliberate return.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "Five roles stated as a litany of infinitives were rewritten as five declaratives, and each lost part of its charge.",
+      "evidence": {
+        "baseline": "Scientists, to put the foundational claim under real and hostile scrutiny: to try to break it, honestly ... impossible to capture ... the wisdom that no network can generate and only people can transmit ... And those with resources, to fund not a product or a return, but the patient, falsifiable work",
+        "shipped": "Scientists can place the foundational claim under hostile scrutiny and try honestly to break it ... hard to capture ... the wisdom no network can generate ... People with resources can fund the patient, falsifiable work"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, and 4.17, dramatic fragments.",
+      "diagnosis": "The card permits fragments whose silence carries structural weight, and a closing call naming who is needed is the clearest case. Five uniform can sentences also read as permission where the infinitives read as a summons. Three separate claims were weakened inside the change: impossible to capture became hard to capture, the transmission half of the mentorship claim was dropped, and not a product or a return was removed, which is the denial that speaks to the one audience most likely to misread the ask.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "The book's refusal to promise was replaced with a general remark, and the promise it does make lost its subject.",
+      "evidence": {
+        "baseline": "This book promises none of it. / It promises only that the question is real, that the stakes are real, and that humanity may now ...",
+        "shipped": "No promise can change that. / What remains is the claim that the question and the stakes are real."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This book promises none of it and It promises only that are a matched pair, a refusal and then its single exception, and the revision breaks the pair by removing the subject from both. What remains is the claim is also weaker than a promise: the book undertaking something is the candour the card requires at the close, and a claim that remains is nobody's undertaking.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F5",
+      "summary": "The reader was removed from the sentence about who is writing the future.",
+      "evidence": {
+        "baseline": "The future is not yet written. / But we are, all of us, already writing it: in every system we build, every nervous system we steady or fray, every bit of trust we extend or betray. The only question is whether we do it knowingly.",
+        "shipped": "The future is already taking shape through every system we build, every nervous system we steady or fray, and every trust we extend or betray. The question is whether we shape it knowingly."
+      },
+      "authorizedBy": "Compression, and catalog 4.28 possibly read backwards onto we are writing it.",
+      "diagnosis": "The future taking shape is a process without an author. We are, all of us, already writing it is the sentence that hands the responsibility to the reader, which is what a section called the Invitation exists to do. The card sets first person plural for shared civilizational responsibility as the narrative stance. The future is not yet written also loses its standing as a line of its own, and the pair depends on the contradiction between the two sentences being felt across a paragraph break.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F6",
+      "summary": "The closing three-beat was merged into one sentence and its slowing was removed.",
+      "evidence": {
+        "baseline": "This is the invitation: to do it knowingly. To help cultivate the substrate. To tend the soil from which a more coherent civilization might, if we are wise and fortunate and willing, actually grow.",
+        "shipped": "The invitation is to act knowingly: to help cultivate the substrate and tend the soil from which a more coherent civilization might, if we are wise, fortunate, and willing, grow."
+      },
+      "authorizedBy": "Catalog 4.4 and compression.",
+      "diagnosis": "Three sentences of decreasing certainty and increasing length, ending on the one word the whole book has been walking toward. The polysyndeton in wise and fortunate and willing is the slowing before that word, and replacing it with a serial comma list speeds up the sentence at exactly the moment the volume wants breath. The card names the final return to tending the seed among the read-aloud qualities to preserve.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0105", "effect": "paydown preserved", "note": "The baseline carries an internal production note in a blockquote after the stated end of the book. CTD-0105 requires its removal from reader-facing prose and records that a production note also breaks audio word timing. The prior pass removed it and the re-render does not restore it. CTD-0050 continues to hold the obligations that note carried." },
+    { "id": "CTD-0004", "effect": "reduced from two occurrences to one, item unchanged", "note": "The baseline uses the priority phrase twice in this section. The unhedged instance, that coherence for the first time in history is something we can cultivate, is rendered as coherence is now something we can cultivate, which keeps the temporal claim and drops the assertion of historical priority. This is the disposition already recorded for the Sprout. The hedged instance, humanity may now, for the first time, possess enough understanding, is restored, because the card records the phrase's fate as an open author decision and deleting every occurrence would resolve it by erasure. Reduction of recurrence is editorial. Resolution is not." },
+    { "id": "CTD-0076", "effect": "paydown preserved", "note": "The pass's uppercase the first Scale is kept against the baseline's lowercase the first scale." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-LEDGER-WINS. Three items reached this section and each changed a disposition: one forbade a restoration outright, one required keeping the prior pass's capitalization, and one shaped how many times a phrase may appear without resolving whether it may appear at all." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Eight em dashes. Three introduced a specification or an enumeration and became colons. One separated the two halves of the display question and became a semicolon, since both halves are independent and equal in weight and a fourth comma would have lost the pair. One added a final condition to the funders sentence and became a period, continuing the paragraph's infinitive fragments. One separated a contrast and the syntax was rewritten under R-LAND. Two were decorative display marks in the end matter and the prior pass's removal of them stands." },
+        { "kind": "applied", "note": "R-LAND on the promise sentence. The baseline trails a long contrastive modifier past the paragraph's strongest beat. Promoted to its own sentence, which ends the paragraph on accident and to force rather than on a qualification." },
+        { "kind": "kept", "note": "The prior pass's removal of the production note, its uppercase Scale, and its undecorated end-of-volume line. All three are correct and two are required by the ledger." },
+        { "kind": "verified", "note": "The protected line The seed has been planted. What it becomes depends on who tends it survived the prior pass and survives this one. All five of the volume's protected lines are present." },
+        { "kind": "restored", "note": "Three two-beat pairs, the categorical claim about what decides the future, the five-role litany with its infinitives and its three weakened claims, the promise pair with its subject, the reader's agency in writing the future, the closing three-beat with its polysyndeton, and the display question's in fact and build the means of." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-01 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Seventeenth consecutive section to need none, and the last section of continuous prose in the volume. The pattern holds to the end and concentrates: this is the section where the volume asks the reader to do something, and the pass removed the reader from it. Every finding except F6 is a form of that. The most useful case for the method is CTD-0004, because it is the first where the ledger neither permitted nor forbade a restoration but bounded it. An open author decision can be protected from erasure while its recurrence is still reduced, and holding both required treating the count and the claim as separate questions."
+  }
+}
