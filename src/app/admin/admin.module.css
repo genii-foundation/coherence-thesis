@@ -2,9 +2,12 @@
    like part of the same work, with a denser scale because this is scanned and
    operated rather than read. */
 
+/* Transparent, not --paper. The body already paints --page-background over
+   --page-edge-background, and an opaque fill here covered that gradient for the width
+   of the admin content while the footer below kept showing it, which banded at the
+   seam. The shell contributes layout and ink, and lets the page show through. */
 .shell {
   min-height: 100vh;
-  background: var(--paper);
   color: var(--ink);
 }
 

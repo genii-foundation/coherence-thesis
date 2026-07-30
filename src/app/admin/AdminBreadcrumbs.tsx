@@ -5,10 +5,7 @@ import { usePathname } from "next/navigation";
 import styles from "./admin.module.css";
 
 const LABELS: Record<string, string> = {
-  queue: "Queue",
-  progress: "Progress",
   calibration: "Calibration",
-  gates: "Gates",
   bench: "Calibration",
 };
 
@@ -26,7 +23,7 @@ export function AdminBreadcrumbs() {
   const segments = pathname.split("/").filter(Boolean).slice(1);
 
   const crumbs: { label: string; href: string | null }[] = [
-    { label: "Admin", href: segments.length ? "/admin/" : null },
+    { label: "Workbench", href: segments.length ? "/admin/" : null },
   ];
 
   if (segments[0] === "bench") {
