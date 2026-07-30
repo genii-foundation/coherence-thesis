@@ -119,7 +119,7 @@ function main(): void {
   const groups = new Map<string, Occurrence[]>();
   for (const occurrence of registry.occurrences) {
     const { editorialId, sectionContinuityId, matchText } = occurrence.source;
-    const key = `${editorialId}::${sectionContinuityId}::${occurrence.conceptId}::${matchText.toLowerCase()}`;
+    const key = `${editorialId}::${sectionContinuityId}::${occurrence.conceptId}::${matchText}`;
     groups.set(key, [...(groups.get(key) ?? []), occurrence]);
   }
 
@@ -133,7 +133,10 @@ function main(): void {
       continue;
     }
     const escaped = (matchText ?? "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const pattern = new RegExp(`\\b${escaped}\\b`, "i");
+    // Case sensitive. The downstream validator requires the exact match text, so a
+    // case insensitive hit would anchor a link onto a paragraph the validator then
+    // rejects, which is worse than retiring it.
+    const pattern = new RegExp(`\\b${escaped}\\b`);
     const hits = paragraphFingerprints(body).filter((p) => pattern.test(p.text));
 
     if (hits.length === 0) {

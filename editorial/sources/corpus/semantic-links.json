@@ -476,12 +476,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-584e4644609c05ca",
+      "occurrenceId": "semantic-link-2bf2e9f6a4682365",
       "conceptId": "volume-01-flower",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-what-providence-is",
-        "paragraphAnchor": "p-h48cc375091ff0699",
+        "paragraphAnchor": "p-hcf21f3bfdae5dea1",
         "matchText": "flower",
         "matchOrdinal": 1
       },
@@ -493,12 +493,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-21c18a055b4e4602",
+      "occurrenceId": "semantic-link-e3e9a97f91fd9e83",
       "conceptId": "volume-01-flower",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-what-providence-is",
-        "paragraphAnchor": "p-hcf21f3bfdae5dea1",
+        "paragraphAnchor": "p-h48cc375091ff0699",
         "matchText": "Flower",
         "matchOrdinal": 1
       },
@@ -796,23 +796,6 @@
         "state": "approved",
         "date": "2026-07-14",
         "rationale": "Soil remains part of the closing cultivation image here, not a section reference."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-a70d08c33435d8c4",
-      "conceptId": "volume-01-sprout",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
-        "paragraphAnchor": "p-h0ed70ec2b83794ad",
-        "matchText": "Sprout",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "The capitalized reference explicitly recalls the Sprout movement's argument."
       }
     },
     {
