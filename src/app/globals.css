@@ -477,6 +477,14 @@ input {
   top: 0.15rem;
 }
 
+/* Development only footer link. Marks itself as such so a screenshot taken from
+   a local build is never mistaken for the published footer. */
+.site-footer-dev-note {
+  opacity: 0.65;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+}
+
 .brand-mark {
   flex: 0 1 auto;
   display: grid;
@@ -816,6 +824,13 @@ input {
 .reader-selection-bubble-action:hover,
 .reader-selection-bubble-action:focus-visible {
   background: var(--nav-hover-background);
+}
+
+/* The bubble is a single pill with no padding, so a second action would abut the
+   first with nothing between them. An inset rule reads as a divider without
+   adding width the way a border would. */
+.reader-selection-bubble-action + .reader-selection-bubble-action {
+  box-shadow: inset 1px 0 0 var(--tooltip-border-color);
 }
 
 .reader-selection-bubble-arrow {

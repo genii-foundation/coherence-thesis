@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import * as Popover from "@radix-ui/react-popover";
-import { Bookmark, Check, TriangleAlert } from "lucide-react";
+import { Bookmark, Check, Feather, TriangleAlert } from "lucide-react";
 import type { ProgressSection } from "@/lib/manuscript-data";
 import {
   addBookmark,
@@ -24,7 +24,36 @@ import {
   type ReaderSelectionAnchor,
 } from "@/lib/reader-selection";
 
-type SaveStatus = "saved" | "full" | "failed" | null;
+type SaveStatus = "saved" | "full" | "failed" | "calibration" | null;
+
+// Development only. Erased from the production bundle by the same build time
+// constant that removes the toolbar's admin link.
+const editorialToolsAvailable = process.env.NODE_ENV !== "production";
+
+/**
+ * Builds the slash command that opens a calibration session for the selected
+ * passage. The section is named by its continuity id, which is the key the
+ * calibration records use, and the paragraph by its content addressed anchor,
+ * which survives a re-render. Together they let an agent find the passage again
+ * even after the prose around it has changed.
+ *
+ * Copying a command rather than opening an application is deliberate. The reader
+ * has no way to know which agent surface is running, and a command on the
+ * clipboard works in all of them.
+ */
+function calibrationCommand(anchor: ReaderSelectionAnchor, continuityId: string): string {
+  const editorialId = /^v(\d+)-/.exec(continuityId)?.[1];
+  return [
+    `/coherence-editorial-calibration Calibrate ${continuityId}`,
+    editorialId ? ` in volume-${editorialId}` : "",
+    `. Selected passage: "${anchor.quote}".`,
+    ` Paragraph anchor ${anchor.paragraphAnchor}.`,
+    ` Open the record at editorial/evidence/calibration/volume-${editorialId ?? "NN"}/${continuityId}.json,`,
+    ` derive variants from the immutable baseline under editorial/method/standard.md and the volume voice card,`,
+    ` render the bench with npm run editorial:compare -- --section ${continuityId},`,
+    ` and record the ruling.`,
+  ].join("");
+}
 
 const bubbleClassName = "reader-selection-bubble";
 
@@ -69,6 +98,22 @@ export function ReaderSelectionBookmarkIsland({
     },
     [clearStatusTimer],
   );
+
+  const reviseSection = useCallback(() => {
+    const target = anchorRef.current;
+    if (!target) return;
+    const section = sectionsRef.current.find(
+      (candidate) => candidate.sectionId === target.sectionId,
+    );
+    if (!section) return;
+
+    const command = calibrationCommand(target, section.continuityId);
+    void navigator.clipboard
+      .writeText(command)
+      .then(() => showStatus("calibration"))
+      .catch(() => showStatus("failed"));
+    setAnchor(null);
+  }, [showStatus]);
 
   const save = useCallback(() => {
     const target = anchorRef.current;
@@ -265,8 +310,18 @@ export function ReaderSelectionBookmarkIsland({
                     onClick={save}
                   >
                     <Bookmark aria-hidden="true" size={13} strokeWidth={2.2} />
-                    <span>Click to bookmark</span>
+                    <span>{editorialToolsAvailable ? "Bookmark" : "Click to bookmark"}</span>
                   </button>
+                  {editorialToolsAvailable ? (
+                    <button
+                      type="button"
+                      className="reader-selection-bubble-action"
+                      onClick={reviseSection}
+                    >
+                      <Feather aria-hidden="true" size={13} strokeWidth={2.2} />
+                      <span>Revise this section</span>
+                    </button>
+                  ) : null}
                   <Popover.Arrow
                     className="reader-selection-bubble-arrow tooltip-arrow"
                     width={18}
@@ -293,7 +348,9 @@ export function ReaderSelectionBookmarkIsland({
                 <TriangleAlert aria-hidden="true" size={17} strokeWidth={1.8} />
               )}
               <span>
-                {status === "saved"
+                {status === "calibration"
+                  ? "Calibration command copied. Paste it into any agent session."
+                  : status === "saved"
                   ? "Bookmark saved"
                   : status === "full"
                     ? `You have reached ${maxLiveBookmarks.toLocaleString()} bookmarks. Remove one to save another.`
