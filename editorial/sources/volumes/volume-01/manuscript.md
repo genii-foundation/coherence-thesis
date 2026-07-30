@@ -336,51 +336,51 @@ It has not yet shown that coherence can be cultivated without coercion, recogniz
 
 ### How Coherence Becomes Structure
 
-With the constraints stated, the work turns from diagnosis to structure. It asks what kinds of systems are possible under these conditions.
+With the constraints now clearly stated, the work turns from diagnosis to structure, not to propose a finished system, but to ask what kinds of systems are even possible under the conditions described.
 
-A civilization is, at bottom, a *coordination* problem. Vast numbers of people and systems must act in concert amid complexity no one fully holds. Coordination is relational before it is anything else. It depends on trust, attention, and shared orientation, which is to say, on coherence. Coherence is not an ornament a design would be better for having. It is the *constraint the design must satisfy*, as a bridge must satisfy load because otherwise it falls.
+It helps to name what kind of problem civilization actually is. Beneath the familiar framings, political, economic, technological, a civilization is, at bottom, a *coordination* problem: the task of getting vast numbers of people and systems to act in concert under complexity that no one fully holds. And coordination, as the Sprout showed, is relational before it is anything else. It depends on trust, attention, and shared orientation, which is to say, on coherence. This reframes coherence one final degree. It is not a value the design would be nicer for having. It is the *constraint the design must satisfy*, the way a bridge must satisfy load, not because load is admirable but because the bridge falls otherwise.
 
 The question is therefore no longer whether coherence matters. It is whether coherence can be treated as a first-order design variable without becoming coercive, extractive, or brittle at scale.
 
-Seen through this lens, familiar systems look different. Economics becomes less about allocating scarce resources and more about generating and preserving collective capacity. Governance becomes less about enforcing compliance and more about maintaining regulation under stress. Technology becomes a force multiplier that can stabilize or destabilize the nervous systems that wield it.
+Seen through this lens, familiar systems look different. Economics becomes less about allocating scarce resources and more about generating and preserving collective capacity. Governance becomes less about enforcing compliance and more about maintaining regulation under stress. Technology ceases to be neutral and functions instead as a force multiplier, one that can stabilize or destabilize the nervous systems that wield it.
 
-The practical question is how a civilization would organize around coherence.
+Once coherence is named as the missing substrate, the question becomes practical: how would a civilization actually organize around it?
 
 ### From Extraction to Regeneration
 
-Extraction-based systems measure success by throughput, by how much value can be pulled from land, labor, attention, or time. At small scales this can appear effective. At planetary scale it becomes self-defeating.
+Extraction-based systems measure success by throughput: how much value can be pulled from land, labor, attention, or time. At small scales this can appear effective. At planetary scale it becomes self-defeating.
 
-A coherence-based civilization would reverse this logic. Success would be measured by regenerative capacity: how well a system restores the biological, relational, and ecological conditions that allow it to keep functioning. Value would rise with stability, trust, and adaptive intelligence rather than with depletion.
+A coherence-based civilization would reverse this logic. Success would be measured by regenerative capacity: how well a system restores the biological, relational, and ecological conditions that allow it to continue functioning. Value would increase not when resources are depleted, but when stability, trust, and adaptive intelligence increase.
 
-The argument treats this as a thermodynamic constraint rather than a moral preference. Any civilization that exhausts its nervous systems, ecosystems, and relational fabric faster than it can restore them will collapse, regardless of technological sophistication.
+This is not a moral preference. It is thermodynamic reality applied to social systems. Any civilization that exhausts its nervous systems, ecosystems, and relational fabric faster than it can restore them will collapse, regardless of technological sophistication.
 
 ### Intelligence as an Emergent Property
 
-Modern governance often treats intelligence as something that can be centralized, outsourced, or computed independently of the human condition.
+One of the most consequential errors of modern governance has been treating intelligence as something that can be centralized, outsourced, or computed independently of the human condition.
 
-In practice, intelligence is emergent. Across fields from organizational psychology to neuroscience, the pattern is consistent: groups with high coherence tend to outperform groups with greater individual intelligence but lower regulation. They adapt more effectively, integrate feedback more reliably, and make fewer catastrophic errors under pressure.
+In practice, intelligence is emergent. Across fields, from organizational psychology to neuroscience, the pattern is consistent: groups with high coherence tend to outperform groups with higher individual intelligence but lower regulation. They adapt more effectively, integrate feedback more reliably, and make fewer catastrophic errors under pressure.
 
-This suggests that intelligence cannot be engineered directly. It must be cultivated by maintaining the conditions from which it emerges. Governance can then protect the capacities that make meaningful outcomes possible instead of merely enforcing outcomes.
+This suggests intelligence cannot be engineered directly. It must be cultivated indirectly, by maintaining the conditions that allow it to emerge. It reframes governance not as the enforcement of outcomes, but as the protection of the capacities that make meaningful outcomes possible at all.
 
 ### Regulation as the Work of Governance
 
 Traditional governance assumes order must be imposed. Laws are enforced through threat; stability is maintained by increasing surveillance and coercive capacity.
 
-A coherence-based approach would make regulation its primary task. It would maintain the conditions in which individuals and groups can organize themselves intelligently. Enforcement would remain available as a last resort, not as the foundation of order.
+A coherence-based approach would operate differently. Its primary task would not be enforcement, but regulation, the maintenance of conditions in which individuals and groups can self-organize intelligently. Enforcement would still exist, but as a last resort rather than a foundation. Order would emerge not from fear, but from alignment.
 
-This raises the question the Stem leaves open: if coordination is not to be secured by force or surveillance, what could secure it instead? The Flower begins with the architecture implied by that question.
+This insight reshapes everything downstream, and it raises a question the Stem deliberately leaves open: if coordination is not to be secured by force or surveillance, what could secure it instead? That question, and the architecture it implies, is where the flowering of this book begins.
 
 ### The Intelligence We Are Building
 
-Artificial intelligence makes this argument impossible to defer.
+There is a final reason this argument, which would matter in any era, has become impossible to defer in ours.
 
 For most of history, the tools a civilization built were slow. They extended human reach, but they did not perceive, decide, or coordinate at scale on their own. That has changed. We are now building intelligence itself: systems that model, predict, persuade, and act faster than any deliberative human process can follow.
 
-Here the thesis applies to the technology itself. Technology amplifies the state it is given. Artificial intelligence does not resolve incoherence; it scales it. Inside dysregulated systems optimized for extraction and engagement, it brings faster persuasion, finer prediction, and more efficient capture of attention and behavior. Inside coherent systems, the same capabilities could extend understanding, reveal what fragments us, and coordinate care beyond the reach of unaided human attention.
+And here the thesis becomes its own proof. Technology amplifies the state it is given. Artificial intelligence does not resolve incoherence; it scales it. Placed inside dysregulated systems optimized for extraction and engagement, it multiplies exactly those dynamics: faster persuasion, finer prediction, more efficient capture of attention and behavior. Placed inside coherent systems, the same capabilities could extend understanding, surface what fragments us, and coordinate care at scales human attention alone could never reach.
 
 The technology does not choose. The conditions surrounding it choose.
 
-The coherence crisis and the technological crisis are therefore one crisis. Artificial intelligence does not arrive from outside civilization. It arrives as civilization, trained on our outputs, pathologies, wisdom, and fragmentation alike. The alignment problem may be larger than the alignment of machines. It may concern whether humanity can become coherent enough to wield the intelligence entering its hands.
+The coherence crisis and the technological crisis are therefore one crisis. Artificial intelligence does not arrive from outside civilization. It arrives as civilization, trained on our outputs, our pathologies, our wisdom, and our fragmentation alike. The real alignment problem may therefore be larger than aligning machines. It may be civilizational: whether humanity can become coherent enough to wield the intelligence now entering its hands.
 
 This argument mattered before artificial intelligence. After it, the argument becomes existential. The question is no longer only whether we can build intelligence. It is whether we can wield it.
 
@@ -388,15 +388,17 @@ This argument mattered before artificial intelligence. After it, the argument be
 
 ### The Horizon Before the Blueprint
 
-The Stem has established neither a finished civilization nor a solution. It has traced what follows from treating coherence as a design constraint.
+What the Stem has established is not a finished civilization, and not yet a solution. It is a constraint taken seriously, and the shape of what that constraint implies.
 
-If coherence is the substrate, and if it can now be cultivated and measured, then new architectures become possible. People might develop, trust, coordinate, and provision one another through systems that regenerate capacity rather than exhaust it. A coherence transition would outgrow extractive systems by proving more viable under stress, requiring less force to sustain and leaving more capacity in its wake.
+If coherence is the substrate, and if it can now be cultivated and even measured, then new architectures become possible: ways of organizing how people develop, trust, coordinate, and provision one another that regenerate capacity rather than exhaust it. This is not a revolutionary claim. Revolutions replace symbols while preserving the substrates beneath them. What a coherence transition proposes instead is to outgrow extractive systems by proving more viable under stress, requiring less force to sustain, and leaving more capacity in its wake.
 
-This work gives the possibility its forward-facing name, around which the later volumes are built: **Providence**. Providence is a trust network whose currency is presence, a means by which trust can travel among people and communities without surveillance or central authority. Providence cannot create what it carries. The quieter and older work of cultivating human coherence belongs to **PURPOSEFUL**, which develops purpose, mentorship, and the capacities a coherent life requires. PURPOSEFUL holds and grows; Providence carries and is seen. The living communities in which both take root are called **ICONS**.
+This work gives the possibility its forward-facing name, the one the later volumes are built around: **Providence**. Providence is the visible architecture: a trust network whose currency is presence, the means by which trust can travel between people and communities without surveillance and without a central authority. But it does not stand on its own, and it does not create what it carries. What holds Providence, and cultivates the human coherence it circulates, is the quieter, older work this book calls **PURPOSEFUL**: the development of purpose, mentorship, and the capacities a coherent life requires. One holds and grows; the other carries and is seen. The living communities in which all of it takes root are called **ICONS**.
 
-The Stem stops at the horizon. The Flower shows PURPOSEFUL and Providence whole: how a person enters, how trust can be recognized without becoming a weapon, how communities grow without a center, and what becomes possible if the architecture holds.
+But the Stem stops here, at the edge of the horizon. What PURPOSEFUL and Providence actually are belongs to the flowering: how a person enters, how trust can be recognized without becoming a weapon, how communities grow without a center, and what becomes possible if any of it holds. There it can be seen whole, rather than sketched in passing.
 
-*A future arrives by proving more viable under pressure, not by being declared. The argument now moves into the soil beneath it before it enters the flower.*
+*A future arrives by proving more viable under pressure, not by being declared. What remains is to move from why such a future is necessary toward what it could become: first down into the deepest soil of the question, and then into the flower.*
+
+*The intellectual foundations for this section are gathered in The Roots, at the end of this volume.*
 
 ---
 

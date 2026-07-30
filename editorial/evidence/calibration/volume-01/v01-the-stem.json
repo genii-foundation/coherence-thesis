@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-the-stem",
+  "editorialId": "volume-01",
+  "sectionHeading": "THE STEM",
+  "currentHeading": "THE STEM",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The pass damaged a passage the voice card names as an exemplar defining the volume's voice.",
+      "evidence": {
+        "baseline": "It is not a value the design would be nicer for having. It is the constraint the design must satisfy, the way a bridge must satisfy load, not because load is admirable but because the bridge falls otherwise.",
+        "shipped": "Coherence is not an ornament a design would be better for having. It is the constraint the design must satisfy, as a bridge must satisfy load because otherwise it falls."
+      },
+      "authorizedBy": "Compression, and catalog 4.3 applied to not because X but because Y.",
+      "diagnosis": "The Controls section of the voice card lists the bridge-load analogy in How Coherence Becomes Structure among the exemplar passages that define the voice, which makes it a control rather than ordinary prose. Two changes broke it. Value became ornament, which shifts the denial from preference to decoration and severs the analogy's logic, since the next clause is about load not being admirable. Then not because load is admirable was cut, which is the clause carrying the whole distinction between a value and a constraint. What remains states that bridges fall, which no reader disputed.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The volume's non-revolutionary stance was deleted where the Stem explains it.",
+      "evidence": {
+        "baseline": "This is not a revolutionary claim. Revolutions replace symbols while preserving the substrates beneath them. What a coherence transition proposes instead is to outgrow extractive systems by proving more viable under stress.",
+        "shipped": "A coherence transition would outgrow extractive systems by proving more viable under stress."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Two sentences removed, and they are the only place in the volume that says why the argument is not revolutionary rather than merely asserting that it is not. The orientation makes the same claim in four words, outgrowing rather than overthrowing, and this is where that claim is earned. Removing the explanation leaves the conclusion standing on nothing.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "A defense against reading the argument as topical was removed.",
+      "evidence": {
+        "baseline": "There is a final reason this argument, which would matter in any era, has become impossible to defer in ours.",
+        "shipped": "Artificial intelligence makes this argument impossible to defer."
+      },
+      "authorizedBy": "Catalog 4.1, throat clearing, plausibly applied to There is a final reason.",
+      "diagnosis": "Which would matter in any era is the sentence's defensive core: it forestalls the reading that the thesis is an artificial intelligence argument dressed up as a civilizational one. The revision makes exactly the claim the baseline was guarding against. The shorter sentence is better prose and worse argument.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "Three landings and a self-describing claim were absorbed, continuing the pattern.",
+      "evidence": {
+        "baseline": "This is not a moral preference. It is thermodynamic reality applied to social systems. ... Order would emerge not from fear, but from alignment. ... And here the thesis becomes its own proof.",
+        "shipped": "The argument treats this as a thermodynamic constraint rather than a moral preference. ... (alignment sentence absent) ... Here the thesis applies to the technology itself."
+      },
+      "authorizedBy": "Compression throughout.",
+      "diagnosis": "Order would emerge not from fear, but from alignment was deleted outright, and it echoes the Sprout's alignment would sustain cooperation where fear now maintains order. The thesis becomes its own proof is a stronger and more precise claim than applies to the technology itself: the section is arguing that artificial intelligence demonstrates the amplification thesis rather than merely being subject to it.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F5",
+      "summary": "Internal wayfinding was removed from a book that depends on it.",
+      "evidence": {
+        "baseline": "And coordination, as the Sprout showed, is relational before it is anything else.",
+        "shipped": "Coordination is relational before it is anything else."
+      },
+      "authorizedBy": "Catalog 4.23, meta claims about the text.",
+      "diagnosis": "4.23 keeps genuine wayfinding in a long philosophical work and removes ceremonial announcements of work the prose has not done. The Sprout did show this, three sections earlier, and the reference is how a reader knows the claim is already established rather than newly asserted. This is the retention limb, not the defect limb.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F6",
+      "summary": "The Roots reference was deleted for the third time.",
+      "evidence": { "baseline": "The intellectual foundations for this section are gathered in The Roots, at the end of this volume.", "shipped": "Absent." },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "Third section in which the same reference was removed. Restored. CTD-0001 remains open.",
+      "producedRule": "R-REMOVE-BURDEN"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0001", "effect": "reopened in a third section", "note": "The Roots reference is restored here as well." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Twenty-one em dashes, the most in any section so far. Twelve fenced parenthetical material and became commas. Four introduced a specification and became colons. Five carried a burden belonging to structure and the syntax was rewritten." },
+        { "kind": "kept", "note": "The pass's positive recast of the coherence and technological crisis sentence, and of the closing display line's first sentence. Both are sound R-NEGATION-STACK repairs judged on their merits." },
+        { "kind": "kept", "note": "The pass's removal of for the first time from the horizon paragraph, which the card names for reduction." },
+        { "kind": "kept", "note": "All four renamed subsection headings under the volume ruling on renames." },
+        { "kind": "restored", "note": "The bridge-load exemplar in full, the non-revolutionary explanation, the defense that the argument would matter in any era, the alignment landing, the thesis becomes its own proof, the Sprout wayfinding, the repeated our in the civilization list, and the Roots reference." },
+        { "kind": "verified", "note": "The protected line The technology does not choose. The conditions surrounding it choose survived the prior pass and survives this one. All five of the volume's protected lines are present." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Eighth consecutive section to need none. F1 is the first confirmed case of the pass damaging a passage the voice card explicitly designates as a control. The protected line gate caught nothing here because protected lines are quoted exactly and this exemplar is named by description, which is the weakness recorded when the card was rewritten: an exemplar anchored only by prose description cannot be checked by a machine."
+  }
+}

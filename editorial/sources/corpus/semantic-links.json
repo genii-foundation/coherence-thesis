@@ -340,12 +340,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-0601c542b950ef6e",
+      "occurrenceId": "semantic-link-18f26fbac4c12cf6",
       "conceptId": "volume-01-soil",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-a-horizon-not-yet-a-blueprint",
-        "paragraphAnchor": "p-h942c03198b688d3b",
+        "paragraphAnchor": "p-hb907c3dbc15ac70e",
         "matchText": "soil",
         "matchOrdinal": 1
       },
@@ -680,29 +680,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-88dd61ab926c54b2",
-      "conceptId": "volume-01-flower",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-governance-as-regulation-not-control",
-        "paragraphAnchor": "p-h26f35fcd6f65db68",
-        "matchText": "Flower",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "The sentence identifies The Flower as the place where the governance architecture begins."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-8d910753a7c6784f",
+      "occurrenceId": "semantic-link-019e1763599765f8",
       "conceptId": "volume-01-flower",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-a-horizon-not-yet-a-blueprint",
-        "paragraphAnchor": "p-h942c03198b688d3b",
+        "paragraphAnchor": "p-hb907c3dbc15ac70e",
         "matchText": "flower",
         "matchOrdinal": 1
       },
@@ -711,23 +694,6 @@
         "state": "approved",
         "date": "2026-07-14",
         "rationale": "The transition names The Flower as the argument's next destination."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-9d7a7d3aae65cc39",
-      "conceptId": "volume-01-flower",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-a-horizon-not-yet-a-blueprint",
-        "paragraphAnchor": "p-h831f2dc4ef675bb8",
-        "matchText": "Flower",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "The transition contrasts The Stem with The Flower and sends the reader forward."
       }
     },
     {
