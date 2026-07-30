@@ -93,9 +93,9 @@
       "id": "T-009",
       "title": "Push the branch and update the pull request",
       "tier": "red",
-      "status": "blocked",
+      "status": "done",
       "area": "release",
-      "detail": "The authenticated account has pull but not push on genii-foundation/coherence-thesis. Outward facing and requires author action to unblock.",
+      "detail": "Pushed 2026-07-30. 36 commits fast-forwarded onto edit/nine-volume-revisions (a9b3b04..a2ca50d). Write access confirmed: push true.",
       "blockedBy": []
     },
     {
