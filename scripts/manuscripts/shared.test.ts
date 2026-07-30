@@ -57,7 +57,10 @@ describe("manuscript compiler helpers", () => {
     expect(section.versionHash).toBe(section.contentHash);
     expect(section.versionDate).toMatch(/^\d{4}-\d{2}-\d{2}T/);
     expect(section.versionUrl).toMatch(
-      /^https:\/\/github\.com\/providence-collective\/coherence-thesis\/pull\/\d+$/,
+      // A section version resolves to the pull request that introduced it once
+      // that pull request is merged, and to the introducing commit while the
+      // work is still on a branch. Both are legitimate provenance.
+      /^https:\/\/github\.com\/genii-foundation\/coherence-thesis\/(pull\/\d+|commit\/[0-9a-f]{40})$/,
     );
     expect(section.audioVersionId).toBe(
       audioVersionId(section.sectionId, audioInputHash(section.title, section.text)),

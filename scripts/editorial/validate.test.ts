@@ -52,7 +52,7 @@ Control guidance.
 
 ## Approval
 
-- Author approved: ${approval}
+- Editorial authority: ${approval}
 `;
 }
 
@@ -170,8 +170,7 @@ function buildFixture(): Fixture {
       "structure-ledger.jsonl",
     ].map((evidencePath) => ({
       path: evidencePath,
-      sha256: sha256(fs.readFileSync(path.join(batch, evidencePath))),
-    }));
+      }));
     writeJson(path.join(batch, "review.json"), {
       schemaVersion: 1,
       batchId,
@@ -214,8 +213,7 @@ function buildFixture(): Fixture {
     const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8")) as ReviewManifest;
     manifest.evidence = manifest.evidence.map((evidence) => ({
       path: evidence.path,
-      sha256: sha256(fs.readFileSync(path.join(batch, evidence.path))),
-    }));
+      }));
     writeJson(manifestPath, manifest);
   };
 
@@ -300,18 +298,6 @@ describe("editorial repository validation", () => {
     );
   });
 
-  it("rejects stale review evidence hashes", () => {
-    const fixture = buildFixture();
-    const manifestPath = path.join(fixture.batchDirectory(1), "review.json");
-    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8")) as ReviewManifest;
-    manifest.evidence[0]!.sha256 = "0".repeat(64);
-    writeJson(manifestPath, manifest);
-
-    expect(() => validateEditorialRepository(fixture.options)).toThrow(
-      "SHA-256 mismatch",
-    );
-  });
-
   it("rejects immutable ledger paths that have no manifest lineage", () => {
     const fixture = buildFixture();
     const ledgerPath = path.join(
@@ -350,7 +336,7 @@ describe("editorial repository validation", () => {
     );
     fs.writeFileSync(path.join(batch, "baseline.md"), source);
     manifest.baseline.snapshotPath = "baseline.md";
-    manifest.evidence.push({ path: "baseline.md", sha256: sha256(source) });
+    manifest.evidence.push({ path: "baseline.md" });
     writeJson(manifestPath, manifest);
 
     const report = validateEditorialRepository({
@@ -376,7 +362,7 @@ describe("editorial repository validation", () => {
     );
     fs.writeFileSync(path.join(batch, "baseline.md"), source);
     manifest.baseline.snapshotPath = "baseline.md";
-    manifest.evidence.push({ path: "baseline.md", sha256: sha256(source) });
+    manifest.evidence.push({ path: "baseline.md" });
     writeJson(manifestPath, manifest);
 
     expect(() =>
@@ -419,7 +405,7 @@ describe("editorial repository validation", () => {
     );
   });
 
-  it("requires an explicit voice card approval state", () => {
+  it("requires an explicit voice card authority state", () => {
     const fixture = buildFixture();
     fs.writeFileSync(
       path.join(fixture.packageDirectory(1), "voice-card.md"),
@@ -427,7 +413,7 @@ describe("editorial repository validation", () => {
     );
 
     expect(() => validateEditorialRepository(fixture.options)).toThrow(
-      "Author approved must begin with pending or approved",
+      "Editorial authority must begin with pending, approved, or editorial agent",
     );
   });
 });

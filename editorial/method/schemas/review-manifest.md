@@ -64,3 +64,13 @@ Every durable volume review batch contains `review.json`. The file is the comple
 - An approved batch must resolve and reconstruct its reviewed source. A pending recovered batch may retain an unavailable worktree snapshot identity until reconciliation.
 
 Run `npm run editorial:validate` after changing a review manifest or its evidence.
+
+## Integrity
+
+Evidence entries carry a path and nothing else. The path is the load bearing claim: a file counts as durable evidence only when this manifest lists it, which is an assertion the repository cannot derive on its own.
+
+Content integrity is git's job. Every committed file is already content addressed by its blob hash and fixed in the commit graph, so a second hash recorded beside it duplicates that work and adds a field that can drift out of step with the bytes it describes.
+
+The baseline is the exception and keeps its e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855. A baseline names a path that no longer exists in the working tree, so the hash proves a snapshot matches the historical commit without needing to resolve where the file used to live.
+
+Protect evidence from modification with a path rule rather than a hash comparison. A rule that forbids changes under a committed batch directory catches edits, deletions, and undeclared additions alike, where a hash list catches only the first.
