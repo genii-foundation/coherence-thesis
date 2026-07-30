@@ -79,6 +79,8 @@
     "editorial:protected-lines": "tsx scripts/editorial/protected-lines.ts",
     "preeditorial:progress": "node scripts/repository/ensure-node-modules.mjs",
     "editorial:progress": "tsx scripts/editorial/progress.ts",
+    "preeditorial:reanchor": "node scripts/repository/ensure-node-modules.mjs",
+    "editorial:reanchor": "tsx scripts/editorial/reanchor-semantic-links.ts",
     "preeditorial:semantic-links:audit": "npm run manuscripts:import",
     "editorial:semantic-links:audit": "tsx scripts/editorial/audit-semantic-links.ts",
     "preeditorial:semantic-links:review": "node scripts/repository/ensure-node-modules.mjs",

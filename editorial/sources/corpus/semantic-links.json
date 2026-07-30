@@ -289,6 +289,57 @@
       }
     },
     {
+      "occurrenceId": "semantic-link-39f7a3ba7e81d7d2",
+      "conceptId": "volume-01-seed",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
+        "paragraphAnchor": "p-h37540a0ae1e5de95",
+        "matchText": "Seed",
+        "matchOrdinal": 1
+      },
+      "decision": "exclude",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The Seed destination is already linked at the opening of this section, so this later qualification remains prose."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-cc70962c746fbad9",
+      "conceptId": "volume-01-seed",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
+        "paragraphAnchor": "p-h8f131ce0fdef7670",
+        "matchText": "Seed",
+        "matchOrdinal": 1
+      },
+      "decision": "exclude",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-13",
+        "rationale": "The Seed destination is already linked at the opening of this section, so this repeat remains unlinked."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-f5e109ab5d0b04e7",
+      "conceptId": "volume-01-seed",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
+        "paragraphAnchor": "p-h476744c66f5db701",
+        "matchText": "Seed",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The condensed pause still opens by referring back to the Seed movement the reader has completed."
+      }
+    },
+    {
       "occurrenceId": "semantic-link-0601c542b950ef6e",
       "conceptId": "volume-01-soil",
       "source": {
@@ -340,23 +391,6 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-1eb7564ac7bcb0b6",
-      "conceptId": "volume-01-soil",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-how-this-book-is-structured",
-        "paragraphAnchor": "p-h8d69c3aed1352148",
-        "matchText": "soil",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "The structural overview directs the reader to The Soil as a distinct part of the argument."
-      }
-    },
-    {
       "occurrenceId": "semantic-link-20a60b53d4c0beab",
       "conceptId": "volume-01-seed",
       "source": {
@@ -371,6 +405,57 @@
         "state": "approved",
         "date": "2026-07-14",
         "rationale": "The first seed in this sentence supplies the destination, so this adjacent repetition remains prose."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-68d25ff7a9aab316",
+      "conceptId": "volume-01-seed",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-how-this-book-is-structured",
+        "paragraphAnchor": "p-hecf7caca8506bad5",
+        "matchText": "seed",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The structural overview still introduces Seed as the reader's first movement."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-5861a1d6f33387ad",
+      "conceptId": "volume-01-seed",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-how-this-book-is-structured",
+        "paragraphAnchor": "p-hb44deb7959986160",
+        "matchText": "seed",
+        "matchOrdinal": 1
+      },
+      "decision": "exclude",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "Seed is the grammatical subject of sprouting here, and linking it would clutter the structural sentence."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-b7a814f78ce12b9a",
+      "conceptId": "volume-01-seed",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-how-this-book-is-structured",
+        "paragraphAnchor": "p-h45bacefe504c2b11",
+        "matchText": "seed",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-13",
+        "rationale": "This emphasized invitation directly tells the reader where the book begins."
       }
     },
     {
@@ -391,12 +476,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-2bf2e9f6a4682365",
+      "occurrenceId": "semantic-link-584e4644609c05ca",
       "conceptId": "volume-01-flower",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-what-providence-is",
-        "paragraphAnchor": "p-hcf21f3bfdae5dea1",
+        "paragraphAnchor": "p-h48cc375091ff0699",
         "matchText": "flower",
         "matchOrdinal": 1
       },
@@ -405,6 +490,23 @@
         "state": "approved",
         "date": "2026-07-14",
         "rationale": "Flower remains part of the ground and flower image here, not a navigational reference."
+      }
+    },
+    {
+      "occurrenceId": "semantic-link-21c18a055b4e4602",
+      "conceptId": "volume-01-flower",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-what-providence-is",
+        "paragraphAnchor": "p-hcf21f3bfdae5dea1",
+        "matchText": "Flower",
+        "matchOrdinal": 1
+      },
+      "decision": "exclude",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "This names the current larger movement as a whole rather than directing the reader to its opening."
       }
     },
     {
@@ -422,40 +524,6 @@
         "state": "approved",
         "date": "2026-07-13",
         "rationale": "Seed belongs to the final planting image here, not to structural wayfinding."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-39f7a3ba7e81d7d2",
-      "conceptId": "volume-01-seed",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
-        "paragraphAnchor": "p-h37540a0ae1e5de95",
-        "matchText": "Seed",
-        "matchOrdinal": 1
-      },
-      "decision": "exclude",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "The Seed destination is already linked at the opening of this section, so this later qualification remains prose."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-3c215a9bd9e946a7",
-      "conceptId": "volume-01-seed",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-how-this-book-is-structured",
-        "paragraphAnchor": "p-h13e5d1a21fec7e28",
-        "matchText": "seed",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "The structural overview still introduces Seed as the reader's first movement."
       }
     },
     {
@@ -663,6 +731,23 @@
       }
     },
     {
+      "occurrenceId": "semantic-link-9d7a7d3aae65cc39",
+      "conceptId": "volume-01-flower",
+      "source": {
+        "editorialId": "volume-01",
+        "sectionContinuityId": "v01-a-horizon-not-yet-a-blueprint",
+        "paragraphAnchor": "p-h831f2dc4ef675bb8",
+        "matchText": "Flower",
+        "matchOrdinal": 1
+      },
+      "decision": "link",
+      "approval": {
+        "state": "approved",
+        "date": "2026-07-14",
+        "rationale": "The transition contrasts The Stem with The Flower and sends the reader forward."
+      }
+    },
+    {
       "occurrenceId": "semantic-link-8dc9f9cb2b49ee64",
       "conceptId": "section-title-v04-the-first-scale",
       "source": {
@@ -714,23 +799,6 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-9d7a7d3aae65cc39",
-      "conceptId": "volume-01-flower",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-a-horizon-not-yet-a-blueprint",
-        "paragraphAnchor": "p-h831f2dc4ef675bb8",
-        "matchText": "Flower",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "The transition contrasts The Stem with The Flower and sends the reader forward."
-      }
-    },
-    {
       "occurrenceId": "semantic-link-a1e60fe608382487",
       "conceptId": "volume-01-soil",
       "source": {
@@ -765,46 +833,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-a73cfac3df12d2b8",
-      "conceptId": "volume-01-seed",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-how-this-book-is-structured",
-        "paragraphAnchor": "p-h6811ff22387186b8",
-        "matchText": "seed",
-        "matchOrdinal": 1
-      },
-      "decision": "exclude",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "Seed is the grammatical subject of sprouting here, and linking it would clutter the structural sentence."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-b7a814f78ce12b9a",
-      "conceptId": "volume-01-seed",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-how-this-book-is-structured",
-        "paragraphAnchor": "p-h45bacefe504c2b11",
-        "matchText": "seed",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "This emphasized invitation directly tells the reader where the book begins."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-bba3b733b77cd03f",
+      "occurrenceId": "semantic-link-bef1f6f71f094168",
       "conceptId": "volume-01-stem",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-how-this-book-is-structured",
-        "paragraphAnchor": "p-hb6e14825d82cfe76",
+        "paragraphAnchor": "p-h845c9503918a7043",
         "matchText": "stem",
         "matchOrdinal": 1
       },
@@ -813,57 +847,6 @@
         "state": "approved",
         "date": "2026-07-14",
         "rationale": "The condensed structural overview still names the Stem movement and its function."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-cc70962c746fbad9",
-      "conceptId": "volume-01-seed",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
-        "paragraphAnchor": "p-h8f131ce0fdef7670",
-        "matchText": "Seed",
-        "matchOrdinal": 1
-      },
-      "decision": "exclude",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-13",
-        "rationale": "The Seed destination is already linked at the opening of this section, so this repeat remains unlinked."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-e06bcd1ea4f166c6",
-      "conceptId": "volume-01-flower",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-how-this-book-is-structured",
-        "paragraphAnchor": "p-h8d69c3aed1352148",
-        "matchText": "flower",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "The structural overview directs the reader to The Flower as the book's second part."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-e3e9a97f91fd9e83",
-      "conceptId": "volume-01-flower",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-what-providence-is",
-        "paragraphAnchor": "p-h48cc375091ff0699",
-        "matchText": "Flower",
-        "matchOrdinal": 1
-      },
-      "decision": "exclude",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "This names the current larger movement as a whole rather than directing the reader to its opening."
       }
     },
     {
@@ -881,23 +864,6 @@
         "state": "approved",
         "date": "2026-07-14",
         "rationale": "The condensed threshold still introduces the Flower movement and the question it answers."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-f5e109ab5d0b04e7",
-      "conceptId": "volume-01-seed",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
-        "paragraphAnchor": "p-h476744c66f5db701",
-        "matchText": "Seed",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "The condensed pause still opens by referring back to the Seed movement the reader has completed."
       }
     },
     {

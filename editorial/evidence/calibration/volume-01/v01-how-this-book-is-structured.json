@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-how-this-book-is-structured",
+  "editorialId": "volume-01",
+  "sectionHeading": "How This Book Is Structured",
+  "status": "settled",
+  "opened": "2026-07-29",
+  "settled": "2026-07-29",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The pass removed the distinction between an invited future and a promised one.",
+      "evidence": {
+        "baseline": "the book opens toward a flowering, not a promised future, but an invited one",
+        "shipped": "the book opens into a flower: an invitation to cultivate forms of civilization"
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis, applied to the not X but Y construction.",
+      "diagnosis": "4.3 removes the construction when the rejected alternative is not plausible. A promised future is exactly what a skeptical reader expects from a book proposing a civilizational architecture, so the alternative is plausible and the distinction is the volume's governing stance. The retention limb applied. Removing it leaves the word invitation carrying alone what the contrast had established.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "Two direct addresses to the reader were deleted, both of them the invitation the voice card protects.",
+      "evidence": {
+        "baseline": "and that you may recognize as something you could help cultivate. With that orientation in place, the book begins where it naturally must, with a seed small enough to hold.",
+        "shipped": "Both sentences absent."
+      },
+      "authorizedBy": "Nothing identifiable. Neither is a catalog pattern.",
+      "diagnosis": "The card sets the relationship to the reader as invitational and names it the volume's governing constraint. You may recognize as something you could help cultivate is the only place in the section where the reader is offered a role. Its removal is a breach of R-VOICE-BIND with no rule behind it.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The narrator's anticipation of a skeptical reader was cut.",
+      "evidence": {
+        "baseline": "This is not poetic framing for its own sake.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Catalog 4.3 or 4.23, read as a self reference to remove.",
+      "diagnosis": "The sentence answers an objection a reader is likely to be forming at exactly that point. R-NEGATION-STACK keeps the denial form where the error being corrected is itself the subject, which is this case. Cutting it removes the candour the card requires alongside the invitation.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F4",
+      "summary": "The pass added a movement the baseline does not contain.",
+      "evidence": {
+        "baseline": "Names seed, sprout, stem, and the flowering in Part Two.",
+        "shipped": "The soil considers what kind of beings we are."
+      },
+      "authorizedBy": "Nothing. This is inserted content rather than an edit.",
+      "diagnosis": "The same pass that renamed the neighbouring heading to Four Movements added soil here, which is where the count in that heading came from. Invented content is outside every intervention level, and it propagated a structural claim across two sections.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "Living systems do not learn all at once. They learn developmentally. This book is structured accordingly.",
+        "It begins with something simple enough to hold: a seed. The seed is neither a conclusion nor a solution. It is a way of seeing.",
+        "From there the seed sprouts. The shape of the argument becomes visible through alignment among biology, behavior, systems, and lived experience rather than through an accumulation of facts.",
+        "As the book progresses, the argument develops a stem: structure, strength, and direction. Mechanisms are named, tradeoffs confronted, and paths toward implementation made explicit. Nothing essential hides behind metaphor.",
+        "And finally, in Part Two, the book opens toward a flowering: a future that is invited rather than promised. A way of organizing civilization that does not require coercion, extraction, or the denial of human limits, and that you may recognize as something you could help cultivate.",
+        "This is not poetic framing for its own sake.",
+        "It acknowledges how understanding actually stabilizes in the nervous system: through gradual integration rather than force. The book is therefore paced to let understanding settle rather than to persuade or overwhelm.",
+        "If these ideas are viable, they should feel less like instruction than like recognition as they take hold.",
+        "With that orientation in place, the book begins where it naturally must: with a seed small enough to hold.",
+        "When you are ready, we begin with the seed."
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Four introduced a specification and became colons. The pair fencing as this work contends was genuinely incidental and the material was cut rather than parenthesized, since it is also a self reference under catalog 4.23."
+        },
+        {
+          "kind": "applied",
+          "note": "R-NEGATION-STACK on two fragments. Not a conclusion, not a solution, but a way of seeing becomes a full sentence pair. Not through accumulation of facts, but through alignment is inverted so the claim leads and the rejected alternative trails."
+        },
+        {
+          "kind": "applied",
+          "note": "Catalog 4.20. Nervous system appeared three times in two sentences and is reduced to one."
+        },
+        {
+          "kind": "restored",
+          "note": "A future that is invited rather than promised, the reader's role in cultivating it, the anticipation of a skeptical reader, and the transition into Part One. All four were cut by the pass and all four carry the invitational stance the card makes binding."
+        },
+        {
+          "kind": "kept",
+          "note": "Three repairs the prior pass made well: the seed sentence recast from a fragment stack, the three stem clauses merged, and nothing essential hides recast from the passive. Retained under the ruling that a sound repair is judged on its merits regardless of source."
+        },
+        {
+          "kind": "cut",
+          "note": "The soil considers what kind of beings we are, which the pass invented and which supplied the count in the neighbouring Four Movements heading."
+        },
+        {
+          "kind": "cut",
+          "note": "As this work contends, a self reference that interrupts its own sentence with two prohibited marks."
+        }
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "id": "RU1",
+      "question": "How should renamed headings be handled for the rest of this volume?",
+      "decision": "Keep the prior pass's heading. Re-render the prose only. Record any heading whose rename introduced a defect as an open question rather than reverting it.",
+      "rationale": "Reverting one heading cascaded through five continuity records and record-routes rejected the change after each repair, consuming a full iteration and producing no prose. Eight renames remain. The prose carries the editorial value and does not depend on the heading, and heading questions batch cleanly for the author with their route costs visible.",
+      "scope": "volume",
+      "by": "editorial-agent"
+    }
+  ],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Third consecutive section to need none. Two of the four findings, F1 and F3, are catalog categories firing on constructions their own retention limbs protect, which is now the dominant failure mode across every section examined and the strongest evidence that R-CATALOG-LIMBS was the right structural fix."
+  },
+  "currentHeading": "How Understanding Takes Root"
+}

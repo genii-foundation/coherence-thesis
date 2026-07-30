@@ -74,15 +74,19 @@ Living systems do not learn all at once. They learn developmentally. This book i
 
 It begins with something simple enough to hold: a seed. The seed is neither a conclusion nor a solution. It is a way of seeing.
 
-The seed then sprouts as the connections among biology, behavior, systems, and lived experience reveal the shape of the argument.
+From there the seed sprouts. The shape of the argument becomes visible through alignment among biology, behavior, systems, and lived experience rather than through an accumulation of facts.
 
-The argument next develops a stem. Mechanisms are named, tradeoffs confronted, and paths toward implementation made explicit. Nothing essential hides behind metaphor.
+As the book progresses, the argument develops a stem: structure, strength, and direction. Mechanisms are named, tradeoffs confronted, and paths toward implementation made explicit. Nothing essential hides behind metaphor.
 
-The soil considers what kind of beings we are. In Part Two, the book opens into a flower: an invitation to cultivate forms of civilization that do not depend on coercion, extraction, or the denial of human limits.
+And finally, in Part Two, the book opens toward a flowering: a future that is invited rather than promised. A way of organizing civilization that does not require coercion, extraction, or the denial of human limits, and that you may recognize as something you could help cultivate.
 
-The form acknowledges how understanding stabilizes in the nervous system, through gradual integration rather than force. It gives the argument room to settle without using pressure as persuasion.
+This is not poetic framing for its own sake.
 
-If these ideas are viable, they should feel less like instruction than recognition.
+It acknowledges how understanding actually stabilizes in the nervous system: through gradual integration rather than force. The book is therefore paced to let understanding settle rather than to persuade or overwhelm.
+
+If these ideas are viable, they should feel less like instruction than like recognition as they take hold.
+
+With that orientation in place, the book begins where it naturally must: with a seed small enough to hold.
 
 *When you are ready, we begin with the seed.*
 

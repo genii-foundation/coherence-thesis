@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "sectionId": "v01-four-movements",
+  "sectionId": "v01-a-note-on-compression",
   "editorialId": "volume-01",
-  "sectionHeading": "Four Movements",
+  "sectionHeading": "A Note on Compression",
   "status": "open",
   "opened": "2026-07-29",
   "settled": "2026-07-29",
@@ -137,5 +137,5 @@
     "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
     "conclusion": "No new rule required. Second consecutive section to need none. The most instructive finding was F2, where a catalog category fired on a construction its own retention limb protects, which is exactly the failure R-CATALOG-LIMBS was written to prevent and the first time that rule has caught something after the fact."
   },
-  "baselineHeading": "A Note on Compression"
+  "currentHeading": "Four Movements"
 }
