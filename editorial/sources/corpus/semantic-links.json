@@ -357,12 +357,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-153829ad295ff5c3",
+      "occurrenceId": "semantic-link-43785c725c40e8e2",
       "conceptId": "volume-01-soil",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-the-currency-of-presence",
-        "paragraphAnchor": "p-he54184e7cab146e9",
+        "paragraphAnchor": "p-h4c170a38c329ed07",
         "matchText": "Soil",
         "matchOrdinal": 1
       },
@@ -711,23 +711,6 @@
         "state": "approved",
         "date": "2026-07-14",
         "rationale": "The invitation uses first Scale as a defined destination, not as an ordinary descriptive phrase."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-8f5b45aa63d5acd0",
-      "conceptId": "section-title-v02-what-money-cannot-carry",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-the-currency-of-presence",
-        "paragraphAnchor": "p-hffff411198248849",
-        "matchText": "what money cannot see",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "The phrase is an exact conceptual reference to What Money Cannot See in Volume II."
       }
     },
     {

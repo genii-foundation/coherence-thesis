@@ -68,6 +68,16 @@ The absence of a matching category is not evidence that a construction is sound.
 
 A repair that fixes a genuine fault is proportional at any size. What proportionality forbids is change that a defect did not require.
 
+### A settled decision outranks the baseline `R-LEDGER-WINS`
+
+A baseline is the authority on prose. It is not the authority on canon, terminology, or fact where a recorded decision has already ruled.
+
+Where a baseline reading and a decision in the debt ledger or the master ledger conflict, the decision wins, and restoring the baseline reopens the item. This is not a judgment call. A shipped text that differs from its baseline because a named item required the change is paid-down debt, and reverting it is a regression an editorial pass has no standing to make.
+
+Before restoring baseline wording that touches a canonical term, a claim's scope, a proper name, a number, or a promise the corpus tracks, search the debt ledger for the term and read any item that names it. The cost of the search is small. The cost of skipping it is a high-severity item silently reopened, which no validation gate detects and no reader can see.
+
+Record the item by identifier in the record's debt impact, whether the decision was preserved or the restoration reopened it. An unrecorded interaction with the ledger is indistinguishable from never having looked.
+
 ## 3. Punctuation standard
 
 ### Prohibited
@@ -541,6 +551,7 @@ Named rules carry stable identifiers so a ledger `reasonCodes` entry, a calibrat
 | `R-VOICE-BIND` | The volume's voice card is binding. An edit that contradicts it is a defect. | 2 |
 | `R-PROPORTION` | Change must be proportional to the defect. A reduction beyond a third must be explained. | 2 |
 | `R-PROPORTION-FLOOR` | The catalog is not a complete inventory of defects. Its silence is not proof a construction is sound. | 2 |
+| `R-LEDGER-WINS` | A baseline is the authority on prose, not on canon a recorded decision has settled. Search the ledger before restoring. | 2 |
 | `R-PUNCT-STRUCT` | A prohibited mark is a structural signal. Name its work, then rebuild the syntax to do it. | 3 |
 | `R-CATALOG-LIMBS` | Every catalog entry has a defect limb and a retention limb. Both bind. Record which applies. | 4 |
 | `R-REMOVE-BURDEN` | `remove` must name what the sentence contributed and where surviving material went. | 7 |

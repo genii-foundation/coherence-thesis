@@ -592,53 +592,65 @@ This is why nothing here begins with technology. No infrastructure, however eleg
 
 ## The Currency of Presence
 
-Trust, as the Soil showed, is a state built slowly through reliable encounters. Shared history makes this possible within a village, but a civilization consists mostly of strangers. The person you most need to build with, learn from, or receive care from may have a history you cannot see. At scale, village trust runs out.
+Here is the problem any honest attempt at coordination must face.
 
-Civilization usually manufactures trust through expenditure or surveillance. Money, collateral, and costly signals favor those who already have resources. Watching and profiling people favors those who hold the data. Both methods can coordinate strangers. Both corrode the trust they seek to protect.
+Trust, as the Soil showed, is not a belief but a state. And it is built slowly, through reliable encounter over time. Between people who share a history, this works. But a civilization is mostly strangers. The person you would most benefit from building with, learning from, or being cared for by is almost always someone whose history you cannot see. At scale, the slow trust that holds a village together simply runs out.
 
-Providence proposes a third answer: the **Currency of Presence**. Its unit is **COHERENCE**. The biometric process later volumes call **Bio-Consensus** is the primary path by which it is minted.
+Civilization's usual answers to this are the two we met in the Stem. One manufactures trust through expenditure: money, collateral, the costly signal. The other manufactures it through surveillance: watch everyone, profile everyone, and let the system vouch for them. The first concentrates power in those who already have resources. The second concentrates it in those who hold the data. Both work, after a fashion. Both corrode the thing they are trying to protect.
 
-Everything turns on what the Currency of Presence measures. It does not measure your worth, beliefs, productivity, compliance, or character. It measures something narrower and stranger: **presence**, and more importantly, **presencing.**
+Providence proposes a third answer, and it is the part that has never existed before. We call it the **Currency of Presence**, and the biometric process later volumes call **Bio-Consensus** is the primary path by which it is minted.
 
-Presence names the state of a nervous system that is here, regulated, available, and attending, rather than performing the appearance of that state. Presencing is rarer and happens only *between* people. Two nervous systems begin to settle and synchronize, making possible something neither brought alone. Presence is what you bring. Presencing occurs when your presence meets another's and changes both of you.
+Begin with what it measures, because everything turns on this.
 
-This distinction is the system's deepest protection against what its critics rightly fear.
+It does not measure your worth. It does not measure your beliefs, your productivity, your compliance, or your character. It measures something narrower and stranger: **presence.** And, more importantly, **presencing.**
 
-You can fake the coherence you *claim* for yourself more easily than the coherence you *evoke* in another person. A currency rooted in presencing, in measurable shifts that others attest to, is harder to counterfeit than a currency based on self-report. You cannot perform your way into it alone. Only relationship can mint it.
+Presence is a state you can be in: whether your nervous system is genuinely here or merely performing the appearance of it. Genuinely here means regulated, available, attending. Presencing is the rarer thing, and it happens only *between* people: the moment two nervous systems begin to settle and synchronize, and something becomes possible between them that neither arrived with. Presence is what you bring. Presencing is what occurs when your presence meets another's and they are changed by it, and you by them.
 
-When we call presence a currency, we mean neither a score nor a metaphor.
+This distinction is not a flourish. It is the system's deepest protection. It is also the reason it cannot become what its critics will fear.
 
-We mean a *memory system.* Money lets a society remember contribution so that it can be honored later among strangers. The Currency of Presence remembers what money cannot see: the depth of someone's listening, the steadiness they brought to a hard room, the trust they earned in the lives they touched. Money does not make its holders better people. A currency earned through presence would reward its holders for becoming more present. The incentive and the good would point in the same direction.
+Because it is one thing to fake the coherence you *claim* for yourself. It is far harder to fake the coherence you genuinely *evoke* in another living person. A currency rooted in presencing, in the measurable shift you produce in others and that they attest to, resists counterfeiting in a way that any currency of self-report never could. You cannot perform your way into it alone. It is, by design, something only relationship can mint.
+
+So when we call presence a currency, we do not mean a score, and we do not mean a metaphor.
+
+We mean a *memory system.* Money, at its root, is memory: a way for a society to remember who contributed what, so that contribution can be honored later, among strangers, without anyone having to personally recall it. The Currency of Presence is memory of a different ledger: it remembers what money is structurally blind to. The depth of someone's listening. The steadiness they brought to a hard room. The trust they have actually earned in the lives they have touched. Money does not make its holders better people. A currency sought through presence would, quietly and structurally, make its holders more present. The incentive and the good would point, for once, in the same direction.
 
 ### Why the Currency Is Called COHERENCE
 
-One word has carried the book: *coherence*, the substrate and biological condition from which a viable civilization must be built. The same word names the moment that substrate becomes something a person can earn, hold, and pass to someone else.
+And so its name was never really in question.
 
-The currency is called **COHERENCE.**
+We have carried one word through this entire book. *Coherence*: the substrate, the biological condition, the thing a viable civilization must be built from. It would be strange to reach for another word now, at the moment that substrate finally becomes something a person can hold, and earn, and pass to someone else.
 
-Every other currency is a symbol. Money stands in for labor, value, or trust. The gap between the token and the thing allows money to be hoarded, gamed, and divorced from any good. **COHERENCE** is not a token *for* coherence. It is coherence made between people, rendered legible enough to remember and move. Its record points back to the relation that made it.
+So we do not reach for another word.
 
-Within this architecture, an old tension in economic life dissolves. A person can accumulate money while the good it signifies goes missing. A person earns COHERENCE only by becoming more present, regulated, trustworthy, and *here*, because those qualities mint each unit. The thing a person accumulates and the way that person becomes more whole are, for once, the same motion under the same name.
+The currency is called **coherence.**
 
-That is why the currency is called COHERENCE.
+This looks like wordplay. It is the opposite: it is the most exact thing the architecture can say about itself.
+
+Every other currency is a symbol. Money stands in for labor, for value, for trust; it points, always, at something elsewhere that it is not. And that gap, between the token and the thing, is the space in which money is hoarded, gamed, and divorced from any good. **COHERENCE** points nowhere else. It is not a token *for* coherence. It is coherence: the real thing, made between real people, rendered legible enough to remember and to move. The gap is closed. There is no elsewhere for it to drift to.
+
+Which means the oldest tension in any economy quietly dissolves. To chase money is to chase a sign of the good, and one can get rich while the good itself goes missing. But to earn coherence, there is only one way: to become more present, more regulated, more trustworthy, more *here*. Because that, and nothing else, is how a single unit of it is ever minted. The thing a person accumulates and the way a person becomes more whole are, for once, the same motion, under the same name.
+
+That is why it is called coherence.
+
+Because that is, exactly and without remainder, what it is.
 
 ### Boundaries Against Surveillance
 
-A system that measures the quality of human encounter and turns it into currency risks becoming total surveillance, a social credit score for the soul.
+It would be reasonable, reading this, to feel a chill. A system that measures the quality of human encounter and turns it into a kind of currency sounds, on its face, like the most total surveillance ever devised: a social credit score for the soul.
 
-The fear identifies a real danger. The architecture must answer it. A wall can make a prison or protect a home.
+This fear is correct about the danger and must be answered directly, not waved away. The answer is architectural, and it is the difference between a prison wall and the wall of a home.
 
-Four features illustrate the contrast between a social credit system and Providence.
+A social credit system has four features, and Providence inverts all four.
 
-It is **imposed**, assigned by an authority without consent. The coherence record exists only when you choose to enter, and it dissolves when you leave.
+It is **imposed**: assigned to you by an authority, without consent. The coherence record is the opposite: it does not exist unless you choose to enter, and it dissolves the moment you leave.
 
-It is **comprehensive**, scoring the whole of your life. The coherence record is bounded. It reflects only the encounters you choose to enter, and the rest of your life is none of its business.
+It is **comprehensive**: it scores the whole of your life. The coherence record is bounded: it reflects only the specific encounters you chose to step into, and nothing else of your life is its business.
 
-It is **held by the powerful**, stored in a central database the watched cannot see. The coherence record is *self-sovereign*. It lives on your device, under your keys. The raw signal of your encounters never leaves your hardware. When you choose to share, only a thin, encrypted attestation travels outward. It is enough to vouch for trust, but not enough to reconstruct the intimate encounter from which it came. The architecture refuses to build a central database that could be leaked, seized, sold, or repurposed.
+It is **held by the powerful**: stored in a central database the watched cannot see. The coherence record is *self-sovereign*: it lives on your own device, under your own keys. The raw signal of your encounters never leaves you. What travels outward, when you decide it should, is only a thin, encrypted attestation: enough to let trust be vouched for, never enough to reconstruct the intimate reality it came from. There is no central database to leak, seize, sell, or quietly repurpose, because the architecture refuses to build one.
 
-It is **exclusionary**, using a low score to restrict travel, housing, work, or food. Providence sets the opposite rule into its foundation: **the currency may open doors to greater trust, but it may never close the door to survival.** The floor of belonging, including food, shelter, care, dignity, and a place among others, is unconditional. No record may gate it. The currency can raise a ceiling. It can never lower a floor.
+And it is **exclusionary.** A low score locks you out of life: travel, housing, work, food. This is the line that must never be crossed, and so it is written into the foundation as law: **the currency may open doors to greater trust, but it may never close the door to survival.** The floor of belonging is unconditional: food, shelter, care, dignity, a place among others. It is never gated by any record. The currency can raise a ceiling. It can never lower a floor.
 
-Promises can be broken by whoever holds a system. These protections are therefore **invariants**, constraints written into the protocol. Violate them and the system is no longer Providence. Participation remains voluntary and revocable. Your record remains on your own device. No central authority or central store exists. You may leave at any time, carrying or destroying your record. The open protocol can be inspected, audited, or forked. No one owns it, so no one can quietly take it over.
+These are not promises. Promises can be broken by whoever holds the system. They are **invariants**: constraints written into the protocol itself, such that violating them means the thing being run is no longer Providence, and anyone may say so out loud. Participation is always voluntary and revocable. The record is always yours, on your own device. There is no central authority and no central store. Anyone may leave at any time, carrying or destroying their record. And the protocol is open, a standard anyone may inspect, audit, or fork. It is owned by no one, precisely so that no one can take it over.
 
 A system you can read, hold, leave, and fork is not a cage. It is a tool. The whole of the design exists to keep it one.
 
@@ -646,15 +658,15 @@ A system you can read, hold, leave, and fork is not a cage. It is a tool. The wh
 
 Strip away the architecture for a moment and see it as a life.
 
-Imagine someone who has spent years quietly good at something the world never had a slot for. Call her Maren. She can sit with a room of frightened, arguing people and bring it back to itself. In the old world, this shows up on no résumé. It earns her nothing, and slowly she comes to believe it is not real.
+Imagine someone who has spent years quietly good at something the world never quite had a slot for. Call her Maren. She is the person who can sit with a room full of frightened, arguing people and bring it back to itself. In the old world this shows up on no résumé. It earns her nothing, and slowly she comes to believe it is not real.
 
-Maren enters through one of PURPOSEFUL's Doors, not by making an account, but through mentorship and then a small gathering where, for once, what she does is *seen*. The people she steadies say so. The currency records their testimony about what changed in them, not her claim about herself. Over time, her record reflects something true: this person can be trusted with frightened rooms.
+She enters through one of PURPOSEFUL's Doors, not by making an account, but by being mentored, and then by sitting in a small gathering where, for once, what she does is *seen*. The people she steadies say so, and the saying is what the currency records: not her claim about herself, but the change she made in them. Over time, a record accrues that reflects something true: that this person can be trusted with frightened rooms.
 
-The network then does the one thing Maren could never do for herself. It lets her earned trust *travel.* A community three valleys over is coming apart over a hard decision. It needs neither money nor a consultant. It needs exactly what Maren can do. They find her through the trust she demonstrated and others attested to, not through a profile she wrote. She goes, receives provision for the work, and brings the room back to itself.
+And then the network does the one thing she could never do for herself. It lets that earned trust *travel.* A community three valleys over is coming apart over a hard decision, and it does not need money or a consultant. It needs exactly what Maren is. They find each other, not through a profile she wrote but through a trust she demonstrated and others attested, and she goes, and she is provisioned for the work, and the room comes back to itself.
 
-Maren can still fail, and she can still leave. No one is scored, ranked, or owned. A human capacity the extractive world renders invisible has become legible enough to find its way where it is needed.
+Nothing about this is utopian. She can still fail. She can still leave. No one is scored, ranked, or owned. But a kind of human value that the extractive world renders invisible has become legible enough to find its way to where it is needed.
 
-*The Currency of Presence gives unseen human capacities a way to become legible. It is the forward-facing heart of Providence.*
+*This is all the Currency of Presence is: a way for the realest things about us to stop being invisible. And it is the forward-facing heart of Providence: the architecture this whole book has been walking toward.*
 
 ---
 
