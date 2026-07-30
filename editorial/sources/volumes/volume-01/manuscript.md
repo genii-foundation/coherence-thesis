@@ -174,31 +174,37 @@ With that clarification in place, the book proceeds, not to persuade, but to exp
 
 ### When Scale Outruns Regulation
 
-If the Seed is correct, much of what we treat as political conflict, cultural decay, or institutional failure must also be read as symptoms of a deeper mismatch.
+If the claim you have just read is correct, then much of what we treat as political conflict, cultural decay, or institutional failure must be reinterpreted.
+
+Not as isolated crises.
+
+But as symptoms of a deeper mismatch.
 
 Human civilization has crossed a threshold where scale has outpaced regulation.
 
-For most of history, social systems operated within limits that human nervous systems could manage. Communities were small enough for direct reciprocity. Consequences were visible. Authority, though often unjust, remained legible. Complexity increased slowly, sometimes giving cultures centuries to adapt their norms, rituals, and forms of governance.
+For most of history, social systems operated within limits that human nervous systems could manage. Communities were small enough for direct reciprocity. Consequences were visible. Authority, though often unjust, remained legible. Complexity increased slowly, giving cultures time, sometimes centuries, to adapt their norms, rituals, and governance structures.
 
 That pacing is gone.
 
-During the past two centuries, and especially the past few decades, technological acceleration has compressed distance and time while shortening feedback loops. Decisions made in one room affect millions of lives elsewhere. Algorithms shape perception at planetary scale. Economic incentives propagate faster than reflection.
+In the last two hundred years, and especially in the last few decades, technological acceleration has collapsed distance, time, and feedback loops. Decisions made in one room affect millions of lives elsewhere. Algorithms shape perception at planetary scale. Economic incentives propagate faster than reflection.
 
 And through all of this, the human nervous system has not changed.
 
-Modern civilization has treated intelligence as abstract, detachable, and infinitely scalable while ignoring the biological conditions that make intelligence possible.
+This is the central blind spot of modern civilization: we have treated intelligence as abstract, detachable, and infinitely scalable, while ignoring the biological conditions that make intelligence possible in the first place.
 
-Under chronic stress from economic precarity, informational overload, or social fragmentation, the nervous system shifts toward survival. The physiology is measurable. Long-term reasoning, empathy, and nuance lose priority to speed, certainty, and threat detection.
+When stress becomes chronic, through economic precarity, informational overload, or social fragmentation, the nervous system shifts into survival mode. This is measurable physiology. In this state, the brain deprioritizes long-term reasoning, empathy, and nuance in favor of speed, certainty, and threat detection.
 
 At individual scale, this produces anxiety, burnout, impulsivity, and rigid thinking.
 
 At collective scale, it produces polarization, conspiracy thinking, erosion of trust, and the steady replacement of cooperation with enforcement.
 
-This helps explain why well-intentioned policies fail, why technically competent institutions lose legitimacy, and why facts stop binding communities.
+This is why well-intentioned policies fail. Why institutions lose legitimacy even when technically competent. Why facts stop binding communities.
 
-Ideology, bad actors, and moral decline may contribute to these outcomes. They do not account for widespread dysregulation under conditions of extreme complexity.
+These outcomes are often blamed on ideology, bad actors, or moral decline. But those explanations mistake surface turbulence for cause.
 
-Technological sophistication cannot compensate for a collapse in biological regulation. Technology amplifies the state it is given.
+The cause is widespread dysregulation under conditions of extreme complexity.
+
+No amount of technological sophistication can compensate for a collapse in biological regulation, because technology amplifies whatever state it is given.
 
 Artificial intelligence does not produce wisdom. It multiplies decision-making speed.
 
@@ -208,15 +214,19 @@ Data does not produce understanding. It multiplies signal without coherence.
 
 When coherence is low, these multipliers accelerate fragmentation. When coherence is high, they can extend intelligence and coordination far beyond what was previously possible.
 
-Technology alone will not decide the future. The deciding question is whether civilization can protect the conditions that keep human intelligence available under pressure.
+This is why the future will not be decided by technology alone.
 
-That condition is coherence: the alignment of physiological regulation, relational trust, and shared orientation.
+It will be decided by whether we learn to organize civilization around the conditions that keep human intelligence online under pressure.
+
+That condition is coherence.
+
+Coherence refers to the alignment of physiological regulation, relational trust, and shared orientation.
 
 When coherence is present, nervous systems remain flexible rather than rigid. Attention stabilizes. Emotions become informative rather than overwhelming. Individuals retain access to empathy and foresight even under stress.
 
-At group level, coherence allows collective intelligence to emerge.
+At group level, coherence allows something rare to emerge: collective intelligence.
 
-Research consistently shows that groups with moderate individual skill but high coherence outperform highly skilled groups operating under stress and competition. The difference is synchronization through turn-taking, emotional attunement, mutual regulation, and shared focus.
+Research consistently shows that groups with moderate individual skill but high coherence outperform groups of highly skilled individuals operating under stress and competition. The difference is not knowledge. It is synchronization: turn-taking, emotional attunement, mutual regulation, and shared focus.
 
 Intelligence does not simply add up. It emerges when conditions allow it.
 
@@ -226,23 +236,35 @@ Modernity abandoned them in favor of abstraction, speed, and control, as if inte
 
 That assumption is now failing.
 
-Coherence is no longer invisible. The physiological signatures of regulation and genuine encounter, including the state of a nervous system and the synchronization between people who are present with one another, can now be detected reliably and noninvasively. Coherence can be cultivated deliberately and may become infrastructure through which people recognize and trust one another.
+But something substantial has changed.
 
-Existing systems need not be replaced overnight. A different logic can emerge beside them and prove its viability under stress.
+Coherence is no longer invisible. The physiological signatures of genuine regulation and genuine encounter, the state of the nervous system and the synchronization between people who are truly present with one another, can now be detected reliably and noninvasively. Coherence can be cultivated deliberately. And it can become the basis on which people recognize and trust one another, not as ideology but as infrastructure.
+
+This does not mean replacing existing systems overnight. It means allowing a different logic to emerge alongside them, one that proves its viability under stress rather than demanding belief.
 
 A coherence-based civilization would organize around the regeneration of capacity instead of the extraction of value. Alignment would sustain cooperation where fear now maintains order. Governance would sense before it enforces. Economies would reward what stabilizes life instead of what exhausts it.
 
-The aim is viability, not perfection.
+This is not a vision of perfection.
 
-The question is whether civilization now requires coherence as a substrate for coordination.
+It is a vision of viability.
 
-The next movement asks how coherence could shape economic logic, governance, technology, and lived culture. In time, it asks how one instrument might let earned trust travel among people and communities without surveillance, command, or concentrated power.
+The question before us is not whether coherence is desirable.
 
-If civilization is a living system, then its survival depends on the biological conditions that allow intelligence, trust, and coordination to persist.
+It is whether we recognize it as the substrate reality now requires.
 
-If the argument is right, those conditions are not optional. A civilization can choose what to value. It cannot choose whether to be subject to the conditions that keep it coordinating, any more than a body can choose to be exempt from oxygen. That is the difference between a preference and a constraint. The rest of this book is built to earn that recognition.
+The pages that follow will move from this recognition into structure: how coherence becomes economic logic, governance practice, technological design, and lived culture. And, in time, how a single instrument might let earned trust travel between people and communities without surveillance, command, or the concentration of power.
+
+But first, it is enough to let this settle:
+
+If civilization is a living system, then its survival depends on the conditions that allow intelligence, trust, and coordination to persist.
+
+Those conditions are biological.
+
+And once seen clearly, they are no longer optional. A civilization can choose what to value. It cannot choose whether to be subject to the conditions that keep it coordinating at all, any more than a body can choose to be exempt from oxygen. That is the difference between a preference and a constraint, and it is the recognition the rest of this book is built to earn.
 
 *This is the sprouting of the Coherence Thesis.*
+
+*The intellectual foundations for this section are gathered in The Roots, at the end of this volume.*
 
 ---
 

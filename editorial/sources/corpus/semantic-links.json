@@ -595,23 +595,6 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-56f4900e5aa3f4b9",
-      "conceptId": "volume-01-seed",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-why-this-is-happening-and-why-it-changes-everything",
-        "paragraphAnchor": "p-h474fd7b4f6741c8c",
-        "matchText": "Seed",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "The capitalized reference points back to the named Seed movement and its premise."
-      }
-    },
-    {
       "occurrenceId": "semantic-link-6289219779b4ec94",
       "conceptId": "volume-01-soil",
       "source": {

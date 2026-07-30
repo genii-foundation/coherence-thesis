@@ -55,9 +55,11 @@ interface SectionBody {
   body: string;
 }
 
-/** Split a manuscript into its level one and two sections, keyed by continuity id. */
+/** Split a manuscript into its level one, two, and three sections, keyed by continuity
+ *  id. Section ids are minted for h3 headings too, so a tool that only saw h1 and h2
+ *  would silently fail to find every subsection. */
 export function sectionBodies(markdown: string, volumeNumber: string): SectionBody[] {
-  const heads = [...markdown.matchAll(/^#{1,2} (.*)$/gm)];
+  const heads = [...markdown.matchAll(/^#{1,3} (.*)$/gm)];
   return heads.map((h, i) => {
     const start = h.index ?? 0;
     const end = i + 1 < heads.length ? (heads[i + 1]!.index ?? markdown.length) : markdown.length;

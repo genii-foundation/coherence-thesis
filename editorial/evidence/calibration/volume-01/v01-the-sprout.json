@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-the-sprout",
+  "editorialId": "volume-01",
+  "sectionHeading": "THE SPROUT",
+  "currentHeading": "THE SPROUT",
+  "subsectionHeading": { "baseline": "Why This Is Happening, and Why It Changes Everything", "current": "When Scale Outruns Regulation" },
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Seven standalone landings were absorbed into the sentences around them, flattening the section's rhythm.",
+      "evidence": {
+        "baseline": "Not as isolated crises. / But as symptoms of a deeper mismatch. ... That condition is coherence. ... This is not a vision of perfection. / It is a vision of viability. ... Those conditions are biological.",
+        "shipped": "Each merged into an adjacent sentence or removed. The opening three beats became one sentence, and the perfection and viability pair became the aim is viability, not perfection."
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments, and general compression.",
+      "diagnosis": "4.17 flags isolated fragments that repeatedly simulate revelation. These do not simulate anything: each is the landing of an argument the preceding paragraph built, and the card licenses brief lines whose silence carries structural weight. The section is the volume's longest sustained argument, and these beats are where a reader is given room to absorb it. Removing them is the single largest change in the section and no rule required any of it.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "A causal claim was weakened into a concession.",
+      "evidence": {
+        "baseline": "These outcomes are often blamed on ideology, bad actors, or moral decline. But those explanations mistake surface turbulence for cause. The cause is widespread dysregulation under conditions of extreme complexity.",
+        "shipped": "Ideology, bad actors, and moral decline may contribute to these outcomes. They do not account for widespread dysregulation under conditions of extreme complexity."
+      },
+      "authorizedBy": "Catalog 4.3 or 4.12, applied to the blamed on X but those explanations construction.",
+      "diagnosis": "The baseline says the common explanations are wrong about causation and then names the cause. The revision concedes they may contribute, which is a different and weaker claim, and states the real cause only as something the others fail to account for. Mistake surface turbulence for cause is also the section's most concrete image and it is gone. Claim strength belongs to the author.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The section's central question was changed from what we perceive to what is objectively required.",
+      "evidence": {
+        "baseline": "The question before us is not whether coherence is desirable. It is whether we recognize it as the substrate reality now requires.",
+        "shipped": "The question is whether civilization now requires coherence as a substrate for coordination."
+      },
+      "authorizedBy": "Nothing identifiable.",
+      "diagnosis": "The baseline asks whether we recognize a requirement it treats as already real. The revision asks whether the requirement exists at all, which is the question the Seed already answered. Beyond the changed proposition, the reader disappears from a sentence addressed to them, continuing the pattern found in the previous section.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "A structural refrain that ties this section to the orientation was broken.",
+      "evidence": {
+        "baseline": "It will be decided by whether we learn to organize civilization around the conditions that keep human intelligence online under pressure.",
+        "shipped": "The deciding question is whether civilization can protect the conditions that keep human intelligence available under pressure."
+      },
+      "authorizedBy": "Nothing identifiable.",
+      "diagnosis": "Whether we learn to organize echoes the orientation's whether we learn to organize society around the biological conditions, deliberately. The card names ritual repetition as structural memory. Replacing it with whether civilization can protect breaks the echo, removes the first person plural the card sets as the narrative stance, and swaps a verb about learning for one about defending.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F5",
+      "summary": "Four contrasts were removed, three of which the retention limb protects.",
+      "evidence": {
+        "baseline": "The difference is not knowledge. It is synchronization. ... not as ideology, but as infrastructure ... one that proves its viability under stress rather than demanding belief ... This is the central blind spot of modern civilization.",
+        "shipped": "The difference is synchronization through turn-taking. ... may become infrastructure through which people recognize and trust one another. ... and prove its viability under stress. ... Modern civilization has treated intelligence as abstract."
+      },
+      "authorizedBy": "Catalog 4.3 across all four.",
+      "diagnosis": "The difference is not knowledge is the entire point of the research finding, since knowledge is exactly what a reader assumes distinguishes the groups. Not as ideology but as infrastructure is the claim that coherence is not a belief system. Rather than demanding belief is the promise that the argument will not ask for faith. Each rejected alternative is one a reader actually holds, so the retention limb applies to all three. The blind spot framing is a diagnosis rather than a contrast and its removal is a separate loss.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F6",
+      "summary": "The Roots reference was deleted again, in a second section.",
+      "evidence": { "baseline": "The intellectual foundations for this section are gathered in The Roots, at the end of this volume.", "shipped": "Absent." },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "The same deletion found in the previous section, so this was systematic rather than local. CTD-0001 records the Roots promise as an open obligation, and removing every reference to it across the volume would have closed the item by erasure. Restored.",
+      "producedRule": "R-REMOVE-BURDEN"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0001", "effect": "reopened in a second section", "note": "The Roots reference is restored here as well. The prior pass removed it from at least two sections, which together would have retired the promise without a decision." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Ten em dashes. Four fenced genuinely parenthetical material and became commas. Four introduced a specification and became colons. Two carried a burden belonging to structure and the syntax was rewritten." },
+        { "kind": "applied", "note": "R-VOICE-BIND. For the first time removed from the coherence-is-detectable paragraph, since the card names the phrase and CTD-0004 records the priority claim as unverified. The temporal claim survives as now." },
+        { "kind": "kept", "note": "The prior pass's repair of not organize around extraction but around regeneration into organize around regeneration instead of extraction. A sound R-NEGATION-STACK repair judged on its merits." },
+        { "kind": "kept", "note": "The pass's as if intelligence could be engineered independently of the body, which fixes a dangling participle in the baseline." },
+        { "kind": "kept", "note": "The renamed subsection heading, When Scale Outruns Regulation, under the volume ruling on renames. It is also the better heading: the baseline's Why This Is Happening, and Why It Changes Everything announces importance, which catalog 4.1 flags." },
+        { "kind": "restored", "note": "Seven standalone landings, four contrasts, the causal claim about surface turbulence, the refrain about learning to organize, the question about what we recognize, and the Roots reference." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Sixth consecutive section to need none. This is the longest section examined and the pattern is unchanged at scale: the pass removed structure that no rule condemned and left in place the one phrase two records flag. R-CADENCE did the most work here, where in shorter sections R-CATALOG-LIMBS has led."
+  }
+}
