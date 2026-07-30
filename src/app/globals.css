@@ -86,9 +86,15 @@
 }
 
 html[data-reader-theme="light"] {
-  --paper: #f8f6f1;
-  --paper-deep: #e6dfd4;
-  --paper-soft: #fffefa;
+  /* A white page, not an off white one. The chrome was already #fffefa while the page
+     gradient resolved to #f8f6f1, so the header sat a shade lighter than the surface
+     beneath it and read as a white bar laid on cream.
+     Surfaces are neutral here rather than warm: this theme's ink is a blue grey, and
+     the tan tones it inherited from the textured palette muddied against white. The
+     bronze and sage accents stay, because those are the brand and not the surface. */
+  --paper: #ffffff;
+  --paper-deep: #eef0f2;
+  --paper-soft: #ffffff;
   --ink: #111827;
   --ink-soft: #44423e;
   --ink-muted: #586573;
@@ -98,19 +104,22 @@ html[data-reader-theme="light"] {
   --emphasis: #594018;
   --line: rgba(17, 24, 39, 0.16);
   --shadow: 0 20px 80px rgba(17, 24, 39, 0.12);
-  --header-background: #fffefa;
+  --header-background: #ffffff;
   --nav-hover-background: rgba(89, 64, 24, 0.08);
-  --panel-background: #fffefa;
+  --panel-background: #ffffff;
   --field-background: #ffffff;
-  --field-background-hover: #f8fafc;
+  --field-background-hover: #f6f8fa;
   --subtle-control-background: rgba(255, 255, 255, 0.74);
-  --item-background: rgba(248, 246, 241, 0.9);
-  --item-background-strong: rgba(255, 254, 250, 0.94);
-  --card-background: rgba(255, 254, 250, 0.82);
-  --card-background-hover: rgba(255, 254, 250, 0.96);
-  --glass-background: rgba(255, 254, 250, 0.78);
-  --page-edge-background: #f8f6f1;
-  --page-edge-background-rgb: 248 246 241;
+  /* Raised surfaces are white on white, so they are defined by --line and --shadow.
+     Recessed ones take a neutral tint rather than a fill lighter than the page, which
+     is not available once the page is white. */
+  --item-background: rgba(17, 24, 39, 0.035);
+  --item-background-strong: rgba(17, 24, 39, 0.06);
+  --card-background: rgba(255, 255, 255, 0.9);
+  --card-background-hover: #ffffff;
+  --glass-background: rgba(255, 255, 255, 0.82);
+  --page-edge-background: #ffffff;
+  --page-edge-background-rgb: 255 255 255;
   --page-background:
     var(--page-background-falloff),
     radial-gradient(
@@ -123,15 +132,16 @@ html[data-reader-theme="light"] {
       rgba(255, 255, 255, var(--page-background-highlight-wash-alpha)),
       transparent 13rem
     ),
-    radial-gradient(ellipse at 20% 18%, rgba(63, 104, 88, 0.07), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgba(255, 254, 250, 0.12), transparent 26rem),
-    radial-gradient(ellipse at 50% 86%, rgba(89, 64, 24, 0.04), transparent 30rem),
+    radial-gradient(ellipse at 20% 18%, rgba(63, 104, 88, 0.05), transparent 28rem),
+    radial-gradient(ellipse at 70% 30%, rgba(17, 24, 39, 0.012), transparent 26rem),
+    radial-gradient(ellipse at 50% 86%, rgba(89, 64, 24, 0.028), transparent 30rem),
     var(--page-texture-noise),
-    linear-gradient(180deg, #f4ead7, #f8f6f1 58%, #f0ebe2);
+    linear-gradient(180deg, #ffffff, #ffffff 58%, #fbfbfc);
   --page-background-size:
     100% var(--page-background-falloff-height), auto, auto, auto, auto, auto,
     320px 320px, auto;
 }
+
 
 html[data-reader-theme="dark"] {
   --paper: #11100e;
