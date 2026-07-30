@@ -313,6 +313,16 @@ Format should follow structure. A list should hold items that are genuinely para
 
 Identify premises, inferences, definitions, examples, counterarguments, qualifications, and conclusions. A reader should not need to mistake confidence for logic.
 
+### Do not stack denials before the claim `R-NEGATION-STACK`
+
+A claim stated by denying alternatives before asserting the positive makes the reader hold the denials in suspense, and the longer the list of denials the further the claim recedes.
+
+Catalog 4.3 removes the construction when the rejected alternative is not plausible. This rule governs the other case, where both limbs carry weight and 4.3's retention limb requires the contrast to survive.
+
+Restate it as appearance and then reality rather than as denial and then correction. Name what the thing looks like, then name what it is. The contrast survives, the negations do not, and the positive claim arrives in a sentence of its own where the reader can weigh it.
+
+Keep the denial form when the error being corrected is itself the subject, or when a named opponent actually holds the rejected view. Refuting a real position is not the same as clearing rhetorical ground.
+
 ### Protect scope and modality
 
 Preserve distinctions among `is`, `often is`, `can be`, `may become`, `should be`, and `would be if`. These small words carry much of a philosophical argument's honesty.
@@ -354,6 +364,22 @@ Repetition may act as incantation, return, grief, insistence, or structural memo
 ### Read for breath
 
 Read poems, invocations, blessings, and high-register prose aloud. Honor pauses created by lineation and syntax. Fix breathlessness that arises from accidental clause stacking.
+
+### Prefer the simple present for a live condition `R-TENSE`
+
+A perfect or inceptive form places a condition at a distance and spends words to do it. `Has begun to`, `has started to`, and `is coming to` all describe a threshold being crossed rather than a state the reader is standing in.
+
+Reduce them to the simple present unless the timing they encode is load bearing. Keep the perfect where the argument turns on when something started, on the fact that it is recent, or on a sequence the reader must hold. Where the sentence would mean the same in simple present, use simple present.
+
+Check what the reduction costs before making it. Moving from `has begun to exceed` to `exceeds` converts a crossing that is underway into one that is complete, which is a change of claim and belongs to the author. A verb that carries motion in the simple present can preserve the sense of a process while dropping the auxiliary, and is usually the better repair.
+
+### Prefer the volume's own register `R-REGISTER-DICTION`
+
+Where a voice card names a signature register, prefer the word from that register over a generic near synonym of equal precision.
+
+The generic word is not wrong. It is from nowhere. The exact word from the volume's own vocabulary does the same semantic work and also tells the reader which book they are in, which is most of what makes a corpus feel written rather than assembled.
+
+Two limits. This is not licence to salt a passage with signature terms, which produces the lexical monoculture catalog 4.20 describes. And the test is equal precision: when the generic word is the more exact of the two, the generic word wins. Register never outranks accuracy.
 
 ### Hold the reader in the present `R-DEIXIS`
 
@@ -519,6 +545,9 @@ Named rules carry stable identifiers so a ledger `reasonCodes` entry, a calibrat
 | `R-CATALOG-LIMBS` | Every catalog entry has a defect limb and a retention limb. Both bind. Record which applies. | 4 |
 | `R-REMOVE-BURDEN` | `remove` must name what the sentence contributed and where surviving material went. | 7 |
 | `R-CADENCE` | Preserve the alternation of sentence lengths. Length alone is not a defect. | 7 |
+| `R-NEGATION-STACK` | Do not stack denials before the claim. Restate as appearance then reality. | 5 |
+| `R-TENSE` | Prefer the simple present for a live condition unless the timing is load bearing. | 6 |
+| `R-REGISTER-DICTION` | Prefer the volume's signature register over a generic near synonym of equal precision. | 6 |
 | `R-LAND` | A paragraph ends on its own concrete beat, not a trailing subordinate clause. | 8 |
 | `R-DEIXIS` | Hold the reader in the present where the text names a live condition. | 6 |
 

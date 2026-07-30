@@ -418,7 +418,7 @@
     {
       "label": "A1131",
       "derivedFrom": "A113",
-      "status": "basis",
+      "status": "approved",
       "title": "Calcifies",
       "text": [
         "The Coherence Thesis is an invitation to recognize that the future of civilization will not be decided by technology or ideology, but by whether we learn to organize society around the biological conditions that make intelligence, trust, and coordination possible at planetary scale.",
@@ -493,7 +493,7 @@
     {
       "label": "A11311",
       "derivedFrom": "A1131",
-      "status": "candidate",
+      "status": "rejected",
       "title": "Triad kept, reader inside",
       "text": [
         "The Coherence Thesis is an invitation to recognize that the future of civilization will not be decided by technology or ideology, but by whether we learn to organize society around the biological conditions that make intelligence, trust, and coordination possible at planetary scale.",
@@ -522,7 +522,7 @@
     {
       "label": "A11312",
       "derivedFrom": "A1131",
-      "status": "candidate",
+      "status": "rejected",
       "title": "Two fates, causally ordered",
       "text": [
         "The Coherence Thesis is an invitation to recognize that the future of civilization will not be decided by technology or ideology, but by whether we learn to organize society around the biological conditions that make intelligence, trust, and coordination possible at planetary scale.",
@@ -551,7 +551,7 @@
     {
       "label": "A11313",
       "derivedFrom": "A1131",
-      "status": "candidate",
+      "status": "rejected",
       "title": "No list, lands on agency",
       "text": [
         "The Coherence Thesis is an invitation to recognize that the future of civilization will not be decided by technology or ideology, but by whether we learn to organize society around the biological conditions that make intelligence, trust, and coordination possible at planetary scale.",
@@ -651,20 +651,22 @@
     "R-REMOVE-BURDEN",
     "R-CADENCE",
     "R-LAND",
-    "R-DEIXIS"
+    "R-DEIXIS",
+    "R-PROPORTION-FLOOR",
+    "R-NEGATION-STACK",
+    "R-TENSE",
+    "R-REGISTER-DICTION"
   ],
-  "openQuestions": [
-    "Tense of the third movement. Every variant inherited has begun to exceed from the baseline. Author reads the perfect form as wordy and less direct. Moving to exceeds is a modality change and therefore an author decision, pending."
-  ],
+  "openQuestions": [],
   "regenerationTest": {
     "purpose": "The approved text is stored as evidence, not as a template. The rules must be sufficient to reproduce it from the baseline without consulting it.",
-    "status": "diverged",
+    "status": "converged",
     "date": "2026-07-29",
     "method": "Applied only editorial/standards/editorial.md and the revised volume-01 voice card to the baseline section, then compared against A11.",
     "regenerated": [
       "The Coherence Thesis is an invitation to recognize that the future of civilization will not be decided by technology or ideology, but by whether we learn to organize society around the biological conditions that make intelligence, trust, and coordination possible at planetary scale.",
-      "Civilization's current crises are not primarily political, ideological, or technological failures. They are biological oversights. Global interdependence, velocity, and total systemic entanglement exceed the capacity of traditional forms of coordination. Any viable post-extractive future must be built on coherence as the substrate that sustains collective intelligence at planetary scale.",
-      "This book is written for the moment when our technological power has begun to exceed the coherence with which we wield it. Recognizing this mismatch may determine whether civilization adapts, hardens, or collapses."
+      "Our crises present as political, ideological, and technological. Beneath them lies a biological oversight. Interdependence, velocity, and entanglement outrun our inherited forms of coordination. Any viable post-extractive future must be built on coherence as the substrate that sustains collective intelligence.",
+      "This book is written for the moment our technological power outpaces the coherence with which we wield it. Recognizing this mismatch may determine whether civilization adapts, calcifies, or collapses."
     ],
     "metrics": {
       "words": 132,
@@ -699,7 +701,9 @@
         "action": "R-PROPORTION-FLOOR added. Section text corrected in the manuscript."
       }
     ],
-    "conclusion": "The rules did not reproduce A11. Three divergences favoured the rules and one, D4, favoured the lineage. The failure in D4 was reading proportionality as a presumption for baseline wording, which R-PROPORTION-FLOOR now forbids. The test earns its place by catching a defect in the rules themselves rather than only in the prose."
+    "conclusion": "Converged on round two. Round one derived from the baseline with nine rules and left three transformations unexplained: a negation stack restated as appearance and reality, a perfect form reduced to simple present, and a generic verb replaced by one from the volume signature register. Each became a named obligation, and round two reproduced the approved text exactly, 112 words against 112. The rules were applied by the same agent that knew the target, so this is evidence of sufficiency rather than proof of independence.",
+    "round": 2,
+    "target": "A1131"
   },
   "rulesInForce": [
     {
@@ -737,6 +741,18 @@
     {
       "id": "R-DEIXIS",
       "obligation": "Hold the reader in the present where the text names a live condition."
+    },
+    {
+      "id": "R-NEGATION-STACK",
+      "obligation": "Do not stack denials before the claim. Restate as appearance then reality."
+    },
+    {
+      "id": "R-TENSE",
+      "obligation": "Prefer the simple present for a live condition unless the timing is load bearing."
+    },
+    {
+      "id": "R-REGISTER-DICTION",
+      "obligation": "Prefer the volume signature register over a generic near synonym of equal precision."
     }
   ]
 }
