@@ -1,5 +1,10 @@
 # Volume III Voice Card
 
+## Corpus inheritance
+
+- Inherits: `../../corpus/voice-card.md`
+- Where this volume departs: It combines humane technical prose, constitutional language, close design fiction, and explicit threat modeling, with every speculative mechanism bounded by a visible limit.
+
 ## Identity
 
 - Volume: III, *The Providence Imperative: How We Build the Coordination Infrastructure That Civilization Needs to Survive Itself*.
@@ -13,14 +18,14 @@
 
 - Dominant register: humane technical prose with philosophical gravity.
 - Permitted register changes: analytical in the institutional and scientific chapters; intimate in Maren's year; constitutional in governance; soberly practical in financing; lyrical at the nest, river, and intergenerational thresholds.
-- Degree of direct address: light. Invite the reader to test a claim, never tell them what they feel or must believe.
+- Direct address override: Light. Invite the reader to test a claim.
 - Degree of abstraction: moderate to high. Every sustained abstraction should return to a body, relationship, rule, resource, place, or observable consequence.
-- Emotional temperature: urgent without panic, hopeful without automatic uplift, and warm without performed intimacy.
+- Emotional temperature override: Urgent without panic, hopeful without automatic uplift, and warm without performed intimacy.
 - Humor and irony: restrained. Dry clarity may puncture inflated claims, but the volume should not sneer at sincere ambition or doubt.
 
 ## Cadence
 
-- Characteristic sentence tempo: compact propositions followed by longer causal or qualifying movement. Long sentences carry argument only when their joints remain visible.
+- Cadence override: Compact propositions followed by longer causal or qualifying movement. Long sentences carry argument only when their joints remain visible.
 - Characteristic paragraph movement: claim, limit, mechanism, consequence. Narrative paragraphs move from concrete detail through perception into relationship.
 - Permitted fragments: title matter, part labels, the ritual divider, and a small number of earned narrative landings.
 - Permitted ritual repetition: the nest, the Douro, the people not yet born, presence and presencing, and the return from map to building.

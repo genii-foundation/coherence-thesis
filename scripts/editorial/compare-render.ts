@@ -21,6 +21,7 @@ export interface CalibrationRecord {
   sectionHeading: string;
   status: "open" | "settled" | "superseded";
   baseline: { batchId: string; path: string; sha256?: string };
+  effectiveVoiceCard?: { source: string; claim: string }[];
   voiceCard?: { line: number; claim: string; by: Record<string, boolean | null> }[];
   rulesInForce?: { id: string; obligation: string }[];
   findings?: { id: string; summary: string }[];
@@ -359,9 +360,15 @@ del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-
 
 <div class="sheet block context">
   <div class="context-grid">
+    ${record.effectiveVoiceCard?.length ? `<div>
+      <div class="micro">Corpus rules in force</div>
+      <p class="explain">The volume card is an overlay on the shared corpus voice card. These rules bind every volume unless an explicit recorded delta makes the local rule narrower or stronger.</p>
+      <ul class="rules">${record.effectiveVoiceCard.map((rule) =>
+      `<li><span class="rid">${esc(rule.source)}</span><span>${esc(rule.claim)}</span></li>`).join("")}</ul>
+    </div>` : ""}
     ${record.voiceCard?.length ? `<div>
       <div class="micro">What the voice card requires</div>
-      <p class="explain">Every volume keeps a voice card at <code>editorial/sources/volumes/${esc(record.editorialId)}/voice-card.md</code>. It is the editorial authority for that volume's register, cadence, protected language, and stance toward the reader, and under <code>R-VOICE-BIND</code> it is binding rather than advisory. The claims below are quoted from it, with the line each sits on. A cross means the variant contradicts a claim the card makes, which is a defect however well the sentence reads on its own.</p>
+      <p class="explain">Every volume keeps its local overlay at <code>editorial/sources/volumes/${esc(record.editorialId)}/voice-card.md</code>. Under <code>R-VOICE-BIND</code>, the effective corpus plus volume card is binding rather than advisory. The claims below are quoted from the volume overlay, with the line each sits on. A cross means the variant contradicts a claim the card makes, which is a defect however well the sentence reads on its own.</p>
       <ul class="vc">${record.voiceCard.map((a) =>
       `<li><span class="lineno">L${a.line}</span><span><span class="claim">${esc(a.claim)}</span><span class="states">${gens.map((g) =>
         `<span>${tick(a.by[g.key] ?? a.by[g.label])} ${esc(g.label)}</span>`).join("")}</span></span></li>`).join("")}</ul>

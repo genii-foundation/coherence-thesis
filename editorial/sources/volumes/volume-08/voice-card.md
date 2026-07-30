@@ -1,5 +1,10 @@
 # Volume VIII Voice Card
 
+## Corpus inheritance
+
+- Inherits: `../../corpus/voice-card.md`
+- Where this volume departs: It carries the corpus' hardest factual and moral accounting, with trauma-sensitive witness, documentary restraint, and polemic bounded by source posture and limitation.
+
 ## Identity
 
 - Volume: VIII, *A Misanthropic Artifice: The Academic, Governed by Saturn*.
@@ -13,14 +18,14 @@
 
 - Dominant register: an academic and moral accounting with a personal prologue.
 - Permitted register changes: intimate and restrained in the suicide scene; documentary in factual sections; polemical but evidence-bound in political analysis; lyrical at the Saturn frame and closing blessing.
-- Degree of direct address: limited. The two addresses may invite action but may not diagnose the reader, shame solitude, or divide humanity into awakened and collapsed camps.
+- Direct address override: Limited to the two addresses, which may invite action without shaming solitude or dividing readers into moral camps.
 - Degree of abstraction: moderate. Every systemic term should return to a fact, institution, incentive, person, or material consequence.
-- Emotional temperature: grave without apocalyptic inflation; compassionate without performed intimacy.
+- Emotional temperature override: Grave without apocalyptic inflation and compassionate without performed intimacy.
 - Humor and irony: dry and rare. Never direct wit at a vulnerable person.
 
 ## Cadence
 
-- Characteristic sentence tempo: clear factual sentences gathered into paragraphs that end with a bounded interpretation.
+- Cadence override: Clear factual sentences gathered into paragraphs that end with a bounded interpretation.
 - Characteristic paragraph movement: claim, source posture, limitation, consequence.
 - Permitted fragments: "Then I heard the crowd"; the pause in the sauna; table cells; small action prompts.
 - Permitted ritual repetition: the exact blue; principal called income; the crowd and the sauna; medicine, care, and food; lay one stone.

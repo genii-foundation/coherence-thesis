@@ -6,6 +6,10 @@ export const repoRoot = path.resolve(import.meta.dirname, "../..");
 export const editorialRoot = path.join(repoRoot, "editorial");
 export const editorialSourcesRoot = path.join(editorialRoot, "sources");
 export const editorialCorpusRoot = path.join(editorialSourcesRoot, "corpus");
+export const corpusVoiceCardPath = path.join(
+  editorialCorpusRoot,
+  "voice-card.md",
+);
 export const editorialOverviewRoot = path.join(editorialSourcesRoot, "overview");
 export const editorialVolumesRoot = path.join(editorialSourcesRoot, "volumes");
 export const editorialVolumeIds = Array.from(
@@ -165,6 +169,7 @@ export const retiredCanonicalRootPaths = [
 ] as const;
 
 export const requiredEditorialSourceFilePaths = [
+  corpusVoiceCardPath,
   masterLedgerPath,
   semanticLinksPath,
   overviewPath,

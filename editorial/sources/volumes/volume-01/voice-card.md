@@ -1,5 +1,10 @@
 # Volume I Voice Card
 
+## Corpus inheritance
+
+- Inherits: `../../corpus/voice-card.md`
+- Where this volume departs: It moves more slowly than the later volumes, makes admissions of uncertainty load bearing, and preserves threshold pacing even after releasing the original display glyph.
+
 ## Identity
 
 - Volume: I, *Humanity's Most Viable Future*
@@ -15,15 +20,15 @@
 
 - Dominant register: Philosophical argument in plain language, carried by an organic developmental metaphor.
 - Permitted register changes: Analytical in the Seed, Sprout, and Stem; reflective in the Soil; visionary but falsifiable in the Flower; intimate in Maren's vignette; invitational in the close.
-- Degree of direct address: Light. Use direct address to orient or invite, never to tell the reader what they feel.
+- Direct address override: Light. Use direct address to orient or invite.
 - Degree of abstraction: Moderate. Project terms may remain abstract when they name a real distinction, but nearby verbs and examples must show what they do.
-- Emotional temperature: Sober urgency that opens into earned hope. The hope is earned by the argument that precedes it, never by the closing sentence alone.
+- Emotional temperature override: Sober urgency that opens into earned hope through the preceding argument.
 - Humor and irony: Minimal. A restrained turn such as "The attempt is small, and knows it" may remain when it releases pressure without trivializing the claim.
 - Admissions of uncertainty: Load bearing. Where the narrator concedes that a method is not yet known or a claim is not yet proven, the concession is part of the invitation and is not surplus to be tightened away.
 
 ## Cadence
 
-- Characteristic sentence tempo: Alternation between compact propositions and longer cumulative reasoning. Short sentences may mark a true hinge, not simulate revelation.
+- Cadence override: Alternate compact propositions with longer cumulative reasoning. Short sentences may mark a true hinge, not simulate revelation.
 - Characteristic paragraph movement: Claim, mechanism, consequence. High-register passages often move from biological observation through an organic image into institutional implication.
 - Cumulative sentences are structural: A long sentence with a clear spine, particularly the `not by X, but by Y` construction, carries the volume's central turns. Splitting one into declaratives is a defect under `R-CADENCE` unless the sentence is genuinely hard to follow rather than merely long.
 - Permitted fragments: Title matter, definitions, deliberate section thresholds, and a few brief lines whose silence carries structural weight.

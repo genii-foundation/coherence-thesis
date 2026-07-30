@@ -1,5 +1,10 @@
 # Volume IV Voice Card
 
+## Corpus inheritance
+
+- Inherits: `../../corpus/voice-card.md`
+- Where this volume departs: It treats institutional design as a proposed architecture, permits mechanism-bearing lists, and keeps every hopeful claim answerable to law, evidence, ecology, and consent.
+
 ## Identity
 
 - Volume: IV, *Architecting Providence: Building Coherent Civilization*.
@@ -13,14 +18,14 @@
 
 - Dominant register: a constitutional field manual with philosophical depth and practical consequence.
 - Permitted register changes: research synthesis in the lineages; specification in the governance and technology chapters; lived design fiction in Part VII; ecological poetry in Part VIII; plain accounting in the close.
-- Degree of direct address: light. Invite scrutiny and choice. Do not tell readers that reading enrolls them, that they already agree, or that participation proves character.
+- Direct address override: Light. Invite scrutiny and choice without treating reading as enrollment or participation as proof of character.
 - Degree of abstraction: moderate. Every abstract term should return to an owner, process, threshold, right, duty, remedy, person, or place.
-- Emotional temperature: sober, exact, and quietly hopeful. The book may widen toward the dragon, but hope must remain answerable to law, evidence, ecology, and consent.
+- Emotional temperature override: Sober, exact, and quietly hopeful. The book may widen toward the dragon only while the image remains bounded.
 - Humor and irony: restrained. Plain correction may puncture institutional romance. The donor, critic, founder, and departing participant should never become caricatures.
 
 ## Cadence
 
-- Characteristic sentence tempo: concise claims followed by a longer sentence that names conditions or consequences. Lists are appropriate when they specify a real mechanism.
+- Cadence override: Concise claims followed by a longer sentence that names conditions or consequences. Lists are appropriate when they specify a real mechanism.
 - Characteristic paragraph movement: problem, institutional pressure, proposed safeguard, limit. Scenario paragraphs move from ordinary circumstance to a costly decision.
 - Permitted fragments: title matter, part and chapter displays, epigraphs, the Tuesday scenario labels, and a small number of earned final lines.
 - Permitted ritual repetition: the nest bearing weight, the long clock, ordinary weather, the watershed, the cost of refusal, ground, Scale, and dragon.

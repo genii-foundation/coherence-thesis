@@ -1,6 +1,11 @@
 # Volume Voice Card Template
 
-Create one approved card per volume before production editing. Ground every entry in source passages and author decisions. Do not infer a universal series voice from one successful volume.
+Create one approved overlay per volume before production editing. Ground every entry in source passages and author decisions. The shared floor lives in `editorial/sources/corpus/voice-card.md`; do not infer a universal series rule from one successful volume.
+
+## Corpus inheritance
+
+- Inherits: `../../corpus/voice-card.md`
+- Where this volume departs:
 
 ## Identity
 
@@ -15,14 +20,14 @@ Create one approved card per volume before production editing. Ground every entr
 
 - Dominant register:
 - Permitted register changes:
-- Degree of direct address:
+- Direct address override:
 - Degree of abstraction:
-- Emotional temperature:
+- Emotional temperature override:
 - Humor and irony:
 
 ## Cadence
 
-- Characteristic sentence tempo:
+- Cadence override:
 - Characteristic paragraph movement:
 - Permitted fragments:
 - Permitted ritual repetition:

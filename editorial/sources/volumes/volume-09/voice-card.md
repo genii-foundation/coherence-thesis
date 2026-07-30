@@ -1,5 +1,10 @@
 # Volume IX Voice Card
 
+## Corpus inheritance
+
+- Inherits: `../../corpus/voice-card.md`
+- Where this volume departs: It works as a compact builder's manual, permits moderate direct address in the invitation, and repeatedly qualifies technical detail so proposal never impersonates implementation.
+
 ## Identity
 
 - Volume: IX, *The Cardinal Scale: The First of Many ICONS*.
@@ -13,14 +18,14 @@
 
 - Dominant register: a builder's manual tempered by philosophical and ecological prose.
 - Permitted register changes: symbolic in the Mars opening; concise in the recap; technical in the architecture; constitutional at the social-credit boundary; lyrical around water, seed, and the smallest nest.
-- Degree of direct address: moderate in the invitation, always preserving refusal.
+- Direct address override: Moderate in the invitation, always preserving refusal.
 - Degree of abstraction: moderate to high. Every architecture term should return to a person, right, budget, remedy, resource, or place.
-- Emotional temperature: determined without certainty; hopeful without claiming implementation.
+- Emotional temperature override: Determined without certainty and hopeful without claiming implementation.
 - Humor and irony: minimal.
 
 ## Cadence
 
-- Characteristic sentence tempo: compact statements, followed by qualifying sentences that expose what remains open.
+- Cadence override: Compact statements followed by qualifying sentences that expose what remains open.
 - Characteristic paragraph movement: describe the intended function, name the risk, state the missing proof, and return to a bounded test.
 - Permitted fragments: title display, two opening epigraphs, the paired questions, the closing Purposeful and Providence lines.
 - Permitted ritual repetition: lay one stone; Scale by Scale; seed in drawer and ground; the smallest nest; people not yet born.

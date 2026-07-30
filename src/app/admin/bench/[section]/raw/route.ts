@@ -8,6 +8,10 @@ import {
   render,
   type CalibrationRecord,
 } from "../../../../../../scripts/editorial/compare-render";
+import {
+  effectiveVoiceRulesFrom,
+  resolveEffectiveVoiceCard,
+} from "../../../../../../scripts/editorial/voice-card";
 
 // Renders a bench on request from the durable record, rather than serving a file the
 // CLI wrote earlier. The renderer is shared with npm run editorial:compare, so there is
@@ -50,6 +54,12 @@ export async function GET(
   if (!existsSync(recordPath)) return problem(`No calibration record for <code>${section}</code>.`);
 
   const record = JSON.parse(readFileSync(recordPath, "utf8")) as CalibrationRecord;
+  const effective = resolveEffectiveVoiceCard(
+    path.join(root, "editorial/sources/volumes", volume, "voice-card.md"),
+  );
+  record.effectiveVoiceCard = effectiveVoiceRulesFrom(
+    readFileSync(effective.corpusPath, "utf8"),
+  );
   if (!record.generations?.some((g) => Array.isArray(g.text))) {
     return problem(
       `<code>${section}</code> recorded a decision without generating variants, so there is nothing to compare side by side. Its findings are the evidence.`,

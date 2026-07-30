@@ -1,5 +1,10 @@
 # Volume VI Voice Card
 
+## Corpus inheritance
+
+- Inherits: `../../corpus/voice-card.md`
+- Where this volume departs: It uses the series' most spacious compression, allows reverence as an offered register, and must resist turning brief declaratives into an assembly line of revelations.
+
 ## Identity
 
 - Volume: VI, *The Nest*.
@@ -13,14 +18,14 @@
 
 - Dominant register: compressed lyrical philosophy.
 - Permitted register changes: plain explanation in the short summaries; cautious technical language in the Currency; ecological poetry in the Dragon; reflective essay in Part Two; contemplative but autonomous invitation in the envoi.
-- Degree of direct address: light and optional. The narrator may ask what changes for a reader but may not prescribe memory, destiny, sensation, belonging, or spiritual response.
+- Direct address override: Light and optional. The narrator may ask what changes for a reader without prescribing memory, destiny, sensation, belonging, or spiritual response.
 - Degree of abstraction: moderate to high because the volume compresses a series. Each abstraction should remain tethered to one governing image or practical distinction.
-- Emotional temperature: spacious, tender, and lucid. Reverence is offered, not demanded.
+- Emotional temperature override: Spacious, tender, and lucid. Reverence is offered.
 - Humor and irony: nearly absent. A small touch of plain self-correction is welcome when the architecture becomes grander than its evidence.
 
 ## Cadence
 
-- Characteristic sentence tempo: brief declarative statements, then a single widening sentence. Compression should create clarity, not an assembly line of dramatic fragments.
+- Cadence override: Brief declarative statements, then a single widening sentence. Compression should create clarity.
 - Characteristic paragraph movement: name the element, state its relation to the whole, identify its limit, then offer the deeper reading path.
 - Permitted fragments: volume and part display, Roman numerals, the short "Coherence is the current" sequence, and occasional contemplative lines that earn isolation.
 - Permitted ritual repetition: the nest expanding by scale; current, pathway, loom, currency; the closing return to the dragon.

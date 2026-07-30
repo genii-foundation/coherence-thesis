@@ -1,5 +1,10 @@
 # Volume VII Voice Card
 
+## Corpus inheritance
+
+- Inherits: `../../corpus/voice-card.md`
+- Where this volume departs: It permits spiritual and liturgical language grounded in body and ordinary encounter, while explicit uncertainty and safeguarding constrain mentor, curriculum, and metaphysical claims.
+
 ## Identity
 
 - Volume: VII, *Presencing Genius: The Praxis of a Body of Worship*.
@@ -13,14 +18,14 @@
 
 - Dominant register: spiritual and philosophical prose grounded in the body and ordinary encounter.
 - Permitted register changes: analytical when defining terms; lyrical around genius, love, and worship; procedural around mentors, curriculum, retreats, and oversight.
-- Degree of direct address: light. The book may invite doubt and practice, but may not conscript belief or tell readers what they feel.
+- Direct address override: Light. The book may invite doubt and practice.
 - Degree of abstraction: high, with regular returns to voice, touch, a shared meal, a room, a watershed, a boundary, or a decision.
-- Emotional temperature: reverent and warm, tempered by explicit uncertainty.
+- Emotional temperature override: Reverent and warm, tempered by explicit uncertainty.
 - Humor and irony: sparse. Dry correction is permitted when spiritual confidence outruns institutional reality.
 
 ## Cadence
 
-- Characteristic sentence tempo: short definitions followed by longer clarifying movement and a concrete image.
+- Cadence override: Short definitions followed by longer clarifying movement and a concrete image.
 - Characteristic paragraph movement: name the practice, disclose its possibility, state its boundary, then return it to conduct.
 - Permitted fragments: title matter, brief epigraphs, the interpunct divider, and the final liturgical lines.
 - Permitted ritual repetition: the Seven Initiates, the Twelve Tenets, the movement from presence to presencing, and the closing relation between love and freedom.

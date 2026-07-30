@@ -25,6 +25,10 @@ import {
   wordsOf,
   type CalibrationRecord,
 } from "./compare-render";
+import {
+  effectiveVoiceRulesFrom,
+  resolveEffectiveVoiceCard,
+} from "./voice-card";
 
 function fail(message: string): never {
   process.stderr.write(`editorial:compare: ${message}\n`);
@@ -55,6 +59,11 @@ function main(): void {
   const baselinePath = path.join(editorialReviewsRoot, "volumes", volume, record.baseline.batchId, record.baseline.path);
   if (!existsSync(baselinePath)) fail(`baseline missing at ${path.relative(repoRoot, baselinePath)}`);
   const currentPath = path.join(editorialVolumesRoot, volume, "manuscript.md");
+  const volumeCardPath = path.join(editorialVolumesRoot, volume, "voice-card.md");
+  const effective = resolveEffectiveVoiceCard(volumeCardPath);
+  record.effectiveVoiceCard = effectiveVoiceRulesFrom(
+    readFileSync(effective.corpusPath, "utf8"),
+  );
 
   const baseText = extractSection(readFileSync(baselinePath, "utf8"), record.sectionHeading);
   const currentText = extractSection(readFileSync(currentPath, "utf8"), record.sectionHeading);

@@ -1,5 +1,10 @@
 # Volume V Voice Card
 
+## Corpus inheritance
+
+- Inherits: `../../corpus/voice-card.md`
+- Where this volume departs: It is the warmest and most intimate volume, but every invitation must preserve plurality, refuse predestination, and return a lyrical image to an exact claim.
+
 ## Identity
 
 - Volume: V, *Purposeful: How Humanity Discovers Its Builders*.
@@ -13,14 +18,14 @@
 
 - Dominant register: humane philosophical prose grounded in ordinary work, mentorship, and civic responsibility.
 - Permitted register changes: intimate and narrative around Donna; analytical in the coordination chapters; practical in Purposeful and Providence; ecological and poetic in the Dragon; epistolary in the final address to future readers.
-- Degree of direct address: light. Ask open questions or offer possibilities. Do not tell readers what they feel, what gift they possess, or which work they must undertake.
+- Direct address override: Light. Ask open questions or offer possibilities without assigning a gift or vocation to the reader.
 - Degree of abstraction: moderate. Purpose, contribution, trust, and stewardship should return often to a person, relationship, task, institution, or consequence.
-- Emotional temperature: warm, earnest, and sober. Hope must arrive through a concrete possibility rather than a compulsory crescendo.
+- Emotional temperature override: Warm, earnest, and sober. Hope must arrive through a concrete possibility.
 - Humor and irony: restrained. Plain correction may puncture inflated language, but the book should not mock vocation, longing, or sincere attempts to serve.
 
 ## Cadence
 
-- Characteristic sentence tempo: clear declarative sentences followed by a longer reflective movement. The prose may widen around an image, then return to an exact claim.
+- Cadence override: Clear declarative sentences followed by a longer reflective movement. The prose may widen around an image, then return to an exact claim.
 - Characteristic paragraph movement: human scene, perception, distinction, civic consequence. Analytical paragraphs move from claim through qualification to implication.
 - Permitted fragments: title matter, chapter display, Donna's central question, and a small number of earned landings.
 - Permitted ritual repetition: the stool, pins, seam, recognition, seed, forest, cathedral, gift, and future ancestor.

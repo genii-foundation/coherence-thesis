@@ -1,5 +1,10 @@
 # Volume II Voice Card
 
+## Corpus inheritance
+
+- Inherits: `../../corpus/voice-card.md`
+- Where this volume departs: It permits moderate direct address, sustained abstraction, and occasional prophetic compression while returning each movement to bodily, relational, institutional, or ecological consequence.
+
 ## Identity
 
 - Volume: II, *Wielding Intelligence: To Center in Humane Technology*.
@@ -13,14 +18,14 @@
 
 - Dominant register: lucid philosophical prose with technical precision and occasional prophetic compression.
 - Permitted register changes: analytic explanation, intimate editorial note, sober warning, candid project accounting, and restrained invitation.
-- Degree of direct address: moderate. Direct address should offer a question or invitation, never tell readers what they feel, know, or have become.
+- Direct address override: Moderate. Direct address should offer a question or invitation.
 - Degree of abstraction: high, but every sustained abstraction should return to a body, relationship, institution, ecological condition, design choice, or observable consequence.
-- Emotional temperature: grave, patient, and hopeful without automatic uplift.
+- Emotional temperature override: Grave, patient, and hopeful.
 - Humor and irony: rare. Dry understatement is preferable to wit that breaks the volume's contemplative pressure.
 
 ## Cadence
 
-- Characteristic sentence tempo: long argument-bearing sentences relieved by short declarative landings.
+- Cadence override: Long argument-bearing sentences relieved by short declarative landings.
 - Characteristic paragraph movement: claim, mechanism, consequence, then a question or reframe that advances the chapter.
 - Permitted fragments: title matter, ritual dividers, self-epigraphs, and rare deliberate landings. Fragments should not carry missing logic.
 - Permitted ritual repetition: `. : .`, chapter epigraphs, carefully varied Providence capability statements, and the closing invitations.

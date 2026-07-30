@@ -18,6 +18,7 @@ import {
   validateStructureLedger,
   type StructureLedgerRecord,
 } from "./structure-ledger";
+import { resolveEffectiveVoiceCard } from "./voice-card";
 import {
   editorialReviewsRoot,
   editorialVolumesRoot,
@@ -430,7 +431,7 @@ function parseVolumePackage(
   requireFile(manuscriptFile, root, "canonical manuscript");
   requireFile(voiceCardFile, root, "voice card");
   const voiceCardApprovalState = approvalStateFromVoiceCard(
-    fs.readFileSync(voiceCardFile, "utf8"),
+    resolveEffectiveVoiceCard(voiceCardFile).source,
     voiceCardPath,
   );
 
