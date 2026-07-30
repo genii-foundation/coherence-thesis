@@ -74,6 +74,35 @@ test.describe("local editorial admin", () => {
       page.getByRole("heading", { level: 2, name: "Agent-only records" }),
     ).toBeVisible();
 
+    const orientationCard = page.getByRole("link", {
+      name: "Open comparison bench for ORIENTATION",
+    });
+    await expect(orientationCard).toBeVisible();
+    await expect(orientationCard).toHaveAttribute(
+      "href",
+      "/admin/bench/v01-orientation/",
+    );
+    await expect(
+      orientationCard.getByText("8 rulings", { exact: true }),
+    ).toBeVisible();
+    await expect(
+      orientationCard.getByText("Which of the first three variants is closest?"),
+    ).toHaveCount(0);
+    const cardInset = await orientationCard.evaluate((link) => {
+      const card = link.closest("article");
+      if (!card) return null;
+      const linkBox = link.getBoundingClientRect();
+      const cardBox = card.getBoundingClientRect();
+      return {
+        top: linkBox.top - cardBox.top,
+        right: cardBox.right - linkBox.right,
+        bottom: cardBox.bottom - linkBox.bottom,
+        left: linkBox.left - cardBox.left,
+      };
+    });
+    expect(cardInset).not.toBeNull();
+    expect(Math.max(...Object.values(cardInset!))).toBeLessThanOrEqual(2);
+
     const promptButtons = page.getByRole("button", {
       name: "Copy session prompt",
     });

@@ -1,9 +1,7 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  CheckCircle2,
   CircleAlert,
-  FileClock,
   GitBranch,
   Scale,
 } from "lucide-react";
@@ -46,7 +44,42 @@ function SessionCard({
   session: CalibrationSession;
   authority: "author" | "agent";
 }) {
-  const firstQuestion = session.rulings.find((ruling) => ruling.question)?.question;
+  const content = (
+    <>
+      <div className={styles.revisionSessionHeader}>
+        <span className={styles.revisionSessionVolume}>
+          {volumeLabel(session.editorialId)}
+        </span>
+        <h3>{session.currentHeading}</h3>
+      </div>
+
+      <div className={styles.sessionSummary}>
+        <span>
+          {numberFormat.format(session.rulings.length)}{" "}
+          {session.rulings.length === 1 ? "ruling" : "rulings"}
+        </span>
+        <span>
+          {numberFormat.format(session.generations)}{" "}
+          {session.generations === 1 ? "variant" : "variants"}
+        </span>
+        {session.openQuestions ? (
+          <strong>
+            {numberFormat.format(session.openQuestions)} open
+          </strong>
+        ) : null}
+        <span className={styles.sessionAction}>
+          {session.benchable ? (
+            <>
+              Compare
+              <ArrowRight aria-hidden="true" size={15} />
+            </>
+          ) : (
+            "Record only"
+          )}
+        </span>
+      </div>
+    </>
+  );
 
   return (
     <article
@@ -56,65 +89,17 @@ function SessionCard({
           : styles.revisionSessionAgent
       }`}
     >
-      <div className={styles.revisionSessionHeader}>
-        <div>
-          <span className={styles.revisionSessionVolume}>
-            {volumeLabel(session.editorialId)}
-          </span>
-          <h3>{session.currentHeading}</h3>
-        </div>
-        <span className={styles.authorityBadge}>
-          {authority === "author" ? (
-            <CheckCircle2 aria-hidden="true" size={13} />
-          ) : (
-            <FileClock aria-hidden="true" size={13} />
-          )}
-          {authority === "author" ? "Author governed" : "Agent only"}
-        </span>
-      </div>
-
-      {firstQuestion ? (
-        <div className={styles.sessionDecision}>
-          <span>Decision recorded</span>
-          <p>{firstQuestion}</p>
-        </div>
-      ) : null}
-
-      <dl className={styles.sessionStats}>
-        <div>
-          <dt>Rulings</dt>
-          <dd>{numberFormat.format(session.rulings.length)}</dd>
-        </div>
-        <div>
-          <dt>Variants</dt>
-          <dd>{numberFormat.format(session.generations)}</dd>
-        </div>
-        <div>
-          <dt>Obligations</dt>
-          <dd>{numberFormat.format(session.rulesDerived.length)}</dd>
-        </div>
-        <div>
-          <dt>Settled</dt>
-          <dd>{session.settled || "Open"}</dd>
-        </div>
-      </dl>
-
-      <div className={styles.sessionFooter}>
-        {session.benchable ? (
-          <Link href={`/admin/bench/${session.sectionId}`}>
-            Open comparison bench
-            <ArrowRight aria-hidden="true" size={15} />
-          </Link>
-        ) : (
-          <span>No side-by-side variants recorded</span>
-        )}
-        {session.openQuestions ? (
-          <strong>
-            {numberFormat.format(session.openQuestions)} open question
-            {session.openQuestions === 1 ? "" : "s"}
-          </strong>
-        ) : null}
-      </div>
+      {session.benchable ? (
+        <Link
+          className={styles.revisionSessionLink}
+          href={`/admin/bench/${session.sectionId}`}
+          aria-label={`Open comparison bench for ${session.currentHeading}`}
+        >
+          {content}
+        </Link>
+      ) : (
+        <div className={styles.revisionSessionRecord}>{content}</div>
+      )}
     </article>
   );
 }
