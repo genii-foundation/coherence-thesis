@@ -1,4 +1,8 @@
 import type { CSSProperties } from "react";
+import {
+  progressIconGeometry,
+  type ProgressIconPreview,
+} from "@/lib/progress-icon-preview";
 
 type ProgressCloudVariant = {
   id: string;
@@ -18,6 +22,7 @@ type ProgressCloudVariant = {
 type ProgressCloudBadgeProps = {
   connected?: boolean;
   percent: number;
+  preview?: ProgressIconPreview | null;
   variantId?: string;
 };
 
@@ -30,6 +35,7 @@ type ProgressCloudStyle = CSSProperties & {
   "--progress-cloud-text-size": string;
   "--progress-cloud-track": string;
   "--progress-cloud-width": string;
+  "--progress-cloud-stroke-width": string;
 };
 
 const cloudPath =
@@ -52,15 +58,15 @@ const syncOrbitVariant: ProgressCloudVariant = {
   id: "sync-orbit",
   label: "Orbit",
   percent: 1,
-  width: 46.4,
-  height: 46.4,
+  width: progressIconGeometry.size,
+  height: progressIconGeometry.size,
   cloudFill: "rgba(255, 252, 244, 0.92)",
   cloudStroke: "rgba(119, 84, 42, 0.16)",
   track: "rgba(119, 84, 42, 0.06)",
   progress: "var(--bronze-deep)",
   textColor: "var(--bronze-deep)",
-  textSize: 15,
-  strokeWidth: 2.7,
+  textSize: progressIconGeometry.textSize,
+  strokeWidth: progressIconGeometry.stroke,
 };
 
 export const progressCloudVariants: ProgressCloudVariant[] = [
@@ -197,12 +203,11 @@ function clampPercent(percent: number) {
   return Math.max(0, Math.min(100, percent));
 }
 
-function cloudRenderedPathLength(variant: ProgressCloudVariant) {
+function cloudRenderedPathLength(width: number, height: number) {
   // A non-scaling stroke interprets dash lengths in rendered CSS pixels. Map
   // the source perimeter through the group and viewBox scales before applying
   // a percentage, or a nominal 50% dash covers about 90% of the visible cloud.
-  const viewBoxScale =
-    Math.min(variant.width, variant.height) / cloudViewBoxSize;
+  const viewBoxScale = Math.min(width, height) / cloudViewBoxSize;
   return cloudPathLength * cloudPathScale * viewBoxScale;
 }
 
@@ -239,26 +244,39 @@ function circleProgressArc(percent: number, offset: number) {
 export function ProgressCloudBadge({
   connected = false,
   percent,
+  preview,
   variantId = "sync-orbit",
 }: ProgressCloudBadgeProps) {
   const variant =
     progressCloudVariants.find((item) => item.id === variantId) ??
     syncOrbitVariant;
 
-  const progressPercent = clampPercent(percent);
-  const renderedCloudPathLength = cloudRenderedPathLength(variant);
+  const progressPercent = clampPercent(preview?.percent ?? percent);
+  const iconWidth = preview?.size ?? variant.width;
+  const iconHeight = preview?.size ?? variant.height;
+  const isConnected = preview ? preview.kind === "cloud" : connected;
+  const renderedCloudPathLength = cloudRenderedPathLength(
+    iconWidth,
+    iconHeight,
+  );
   const text = `${Math.round(progressPercent)}%`;
+  const baseTextSize = preview?.textSize ?? variant.textSize;
   const textSize =
-    text.length >= 4 ? Math.max(10.5, variant.textSize - 0.75) : variant.textSize;
+    text.length >= 4 ? Math.max(9, baseTextSize - 0.75) : baseTextSize;
+  const cloudOffsetViewBox =
+    ((preview?.cloudOffset ?? progressIconGeometry.cloudOffset) *
+      cloudViewBoxSize) /
+    iconHeight;
   const style: ProgressCloudStyle = {
     "--progress-cloud-fill": variant.cloudFill,
-    "--progress-cloud-height": `${variant.height}px`,
+    "--progress-cloud-height": `${iconHeight}px`,
     "--progress-cloud-progress": variant.progress,
     "--progress-cloud-stroke": variant.cloudStroke,
     "--progress-cloud-text-color": variant.textColor,
     "--progress-cloud-text-size": `${textSize}px`,
     "--progress-cloud-track": variant.track,
-    "--progress-cloud-width": `${variant.width}px`,
+    "--progress-cloud-width": `${iconWidth}px`,
+    "--progress-cloud-stroke-width": `${preview?.stroke ?? variant.strokeWidth}px`,
   };
 
   const offlineRotation = "rotate(-90 32 32)";
@@ -268,41 +286,48 @@ export function ProgressCloudBadge({
     <span
       className="progress-percent"
       data-cloud-variant={variant.id}
-      data-connected={connected ? "true" : "false"}
+      data-connected={isConnected ? "true" : "false"}
+      data-preview={preview ? "true" : undefined}
+      data-preview-cloud-offset={preview?.cloudOffset}
+      data-preview-size={preview?.size}
+      data-preview-stroke={preview?.stroke}
+      data-preview-text-size={preview?.textSize}
       style={style}
     >
-      {connected ? (
+      {isConnected ? (
         <svg
           aria-hidden="true"
           className="progress-cloud-mark"
           focusable="false"
           viewBox="0 0 64 64"
         >
-          <g transform={cloudPathTransform}>
-            <path className="progress-cloud-fill" d={cloudPath} />
-            <path
-              className="progress-cloud-track"
-              d={cloudPath}
-            />
-            {progressPercent <= 0 ? null : (
+          <g transform={`translate(0 ${cloudOffsetViewBox})`}>
+            <g transform={cloudPathTransform}>
+              <path className="progress-cloud-fill" d={cloudPath} />
               <path
-                className="progress-cloud-progress"
-                d={cloudProgressPath}
-                strokeDasharray={cloudProgressDash(
-                  progressPercent,
-                  renderedCloudPathLength,
-                )}
+                className="progress-cloud-track"
+                d={cloudPath}
               />
-            )}
+              {progressPercent <= 0 ? null : (
+                <path
+                  className="progress-cloud-progress"
+                  d={cloudProgressPath}
+                  strokeDasharray={cloudProgressDash(
+                    progressPercent,
+                    renderedCloudPathLength,
+                  )}
+                />
+              )}
+            </g>
+            {progressPercent <= 0 ? (
+              <circle
+                className="progress-cloud-progress-blip"
+                cx={cloudTopPoint.x}
+                cy={cloudTopPoint.y}
+                r={cloudProgressBlipRadius}
+              />
+            ) : null}
           </g>
-          {progressPercent <= 0 ? (
-            <circle
-              className="progress-cloud-progress-blip"
-              cx={cloudTopPoint.x}
-              cy={cloudTopPoint.y}
-              r={cloudProgressBlipRadius}
-            />
-          ) : null}
           <text className="progress-cloud-text" x="32" y="33" textAnchor="middle">
             {text}
           </text>

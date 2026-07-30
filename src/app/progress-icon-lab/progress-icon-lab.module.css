@@ -1,0 +1,531 @@
+.lab {
+  width: min(100% - 2rem, 76rem);
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 7rem) 0 5rem;
+  color: var(--ink);
+}
+
+.intro {
+  max-width: 47rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4.75rem);
+}
+
+.eyebrow {
+  margin: 0 0 0.7rem;
+  color: var(--bronze-deep);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.intro h1,
+.sectionHeading h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 520;
+  letter-spacing: -0.025em;
+}
+
+.intro h1 {
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 0.9;
+}
+
+.lede {
+  max-width: 42rem;
+  margin: 1.5rem 0 0;
+  color: var(--ink-soft);
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  line-height: 1.55;
+}
+
+.liveStage,
+.comparison,
+.states {
+  margin-top: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  border-radius: calc(var(--radius) * 1.55);
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, 0.52), rgba(255, 252, 244, 0.18)),
+    color-mix(in srgb, var(--paper) 84%, transparent);
+  box-shadow: 0 1.2rem 3.2rem rgba(54, 38, 19, 0.055);
+  overflow: hidden;
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(1.4rem, 3.5vw, 2rem);
+}
+
+.sectionHeading h2 {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1;
+}
+
+.sectionNote {
+  max-width: 26rem;
+  margin: 0;
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.kindSwitch {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+}
+
+.kindSwitch button {
+  min-width: 5rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 720;
+  padding: 0.55rem 0.85rem;
+}
+
+.kindSwitch button:hover {
+  color: var(--ink);
+}
+
+.kindSwitch .activeSwitch {
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 0 0.2rem 0.7rem rgba(19, 32, 42, 0.16);
+}
+
+.kindSwitch .activeSwitch:hover {
+  color: var(--paper);
+}
+
+.stageCanvas {
+  display: grid;
+  min-height: 13rem;
+  place-items: center;
+  border-block: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+  background:
+    radial-gradient(circle at center, rgba(164, 123, 63, 0.1), transparent 48%),
+    linear-gradient(rgba(19, 32, 42, 0.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(19, 32, 42, 0.024) 1px, transparent 1px);
+  background-size: auto, 16px 16px, 16px 16px;
+  padding: 2.5rem 1rem;
+}
+
+.toolbarContext {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+  border-radius: calc(var(--radius) * 1.1);
+  background: color-mix(in srgb, var(--header-background) 92%, transparent);
+  box-shadow:
+    0 0.7rem 2rem rgba(54, 38, 19, 0.09),
+    inset 0 1px rgba(255, 255, 255, 0.7);
+  color: var(--ink-soft);
+  padding: 0.3rem;
+}
+
+.toolbarTool {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius);
+}
+
+.toolbarTool small {
+  position: absolute;
+  top: calc(100% + 1rem);
+  left: 50%;
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.labelledToolbar .toolbarTool {
+  width: 4.6rem;
+}
+
+.labelledToolbar .progressTool,
+.labelledToolbar .audioTool {
+  width: 4.9rem;
+}
+
+.progressTool,
+.audioTool {
+  width: 3.625rem;
+  height: 3.625rem;
+}
+
+.audioTool {
+  color: var(--bronze-deep);
+}
+
+.progressIcon {
+  --lab-icon-size: 48px;
+  --lab-icon-stroke: 1.4;
+  --lab-icon-text: 12.5px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--lab-icon-size);
+  min-width: var(--lab-icon-size);
+  height: var(--lab-icon-size);
+  color: var(--ink-soft);
+}
+
+.progressIcon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.track,
+.progress {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: var(--lab-icon-stroke);
+  vector-effect: non-scaling-stroke;
+}
+
+.track {
+  opacity: 0.22;
+}
+
+.progress {
+  opacity: 1;
+}
+
+.blip {
+  fill: currentColor;
+}
+
+.iconText {
+  dominant-baseline: middle;
+  fill: currentColor;
+  font-family: var(--font-ui);
+  font-size: var(--lab-icon-text);
+  font-weight: 790;
+  letter-spacing: -0.01em;
+  paint-order: stroke fill;
+  stroke: var(--header-background);
+  stroke-linejoin: round;
+  stroke-width: 2.25px;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.4rem;
+  padding: clamp(1.4rem, 3.5vw, 2rem);
+}
+
+.control {
+  display: grid;
+  gap: 0.9rem;
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 680;
+}
+
+.control > span {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.control strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.control input {
+  width: 100%;
+  accent-color: var(--bronze-deep);
+}
+
+.comparison,
+.states {
+  margin-top: 1.75rem;
+}
+
+.presetGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+}
+
+.presetCard {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  border: 0;
+  border-right: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  padding: clamp(1.4rem, 3.5vw, 2rem);
+  text-align: left;
+}
+
+.presetCard:nth-child(2n) {
+  border-right: 0;
+}
+
+.presetCard:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.presetCard:hover {
+  background: color-mix(in srgb, var(--bronze) 5%, transparent);
+}
+
+.selectedPreset {
+  background:
+    linear-gradient(rgba(164, 123, 63, 0.07), rgba(164, 123, 63, 0.025)),
+    color-mix(in srgb, var(--paper) 65%, transparent);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--bronze-deep) 62%, transparent);
+}
+
+.presetTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-ui);
+}
+
+.presetTitle strong {
+  font-size: 0.95rem;
+}
+
+.presetTitle em {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bronze) 14%, transparent);
+  color: var(--bronze-deep);
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 780;
+  letter-spacing: 0.07em;
+  padding: 0.32rem 0.55rem;
+  text-transform: uppercase;
+}
+
+.presetToolbar {
+  display: block;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 0.2rem 0.1rem 0.75rem;
+}
+
+.presetToolbar .toolbarContext {
+  transform-origin: left center;
+}
+
+.measurements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  color: var(--bronze-deep);
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 720;
+  font-variant-numeric: tabular-nums;
+}
+
+.measurements i {
+  opacity: 0.45;
+}
+
+.presetNote {
+  max-width: 32rem;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.stateGrid {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+}
+
+.stateRow {
+  display: grid;
+  grid-template-columns: 6rem repeat(6, 1fr);
+  align-items: center;
+  gap: 1rem;
+  min-height: 8rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+  padding: 1rem clamp(1.4rem, 3.5vw, 2rem);
+}
+
+.stateRow:last-child {
+  border-bottom: 0;
+}
+
+.stateRow > strong {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.stateIcon {
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
+}
+
+.stateIcon > span {
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.reading {
+  display: grid;
+  grid-template-columns: auto minmax(0, 45rem);
+  justify-content: end;
+  gap: 1.2rem;
+  margin: 2rem 0 0 auto;
+  padding: 1rem 0;
+}
+
+.reading strong {
+  color: var(--bronze-deep);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reading p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .lab {
+    width: min(100% - 1rem, 76rem);
+    padding-top: 2.5rem;
+  }
+
+  .sectionHeading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .sectionNote {
+    text-align: left;
+  }
+
+  .kindSwitch {
+    align-self: stretch;
+  }
+
+  .kindSwitch button {
+    flex: 1;
+  }
+
+  .stageCanvas {
+    justify-content: start;
+    overflow-x: auto;
+  }
+
+  .controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .presetGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .presetCard,
+  .presetCard:nth-child(2n),
+  .presetCard:nth-last-child(-n + 2) {
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+  }
+
+  .presetCard:last-child {
+    border-bottom: 0;
+  }
+
+  .stateRow {
+    grid-template-columns: repeat(6, minmax(2.8rem, 1fr));
+    gap: 0.5rem;
+    overflow-x: auto;
+  }
+
+  .stateRow > strong {
+    grid-column: 1 / -1;
+  }
+
+  .reading {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding-inline: 0.5rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .stageCanvas .labelledToolbar {
+    transform: none;
+  }
+
+  .labelledToolbar .toolbarTool {
+    width: 2.45rem;
+  }
+
+  .labelledToolbar .progressTool,
+  .labelledToolbar .audioTool {
+    width: 2.8rem;
+  }
+
+  .labelledToolbar .toolbarTool small {
+    display: none;
+  }
+
+  .toolbarContext {
+    transform: scale(0.88);
+    transform-origin: left center;
+  }
+
+  .presetToolbar {
+    margin-right: -1rem;
+  }
+}
