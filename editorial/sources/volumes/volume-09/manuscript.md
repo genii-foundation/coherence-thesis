@@ -111,7 +111,7 @@ Volume II described intelligence as a pattern that connects. Providence extends 
 
 The boundary with social credit must be explicit. COHERENCE is intended to be self-owned, consent-bound, incomplete, and never a gate on survival or equal political voice. Yet the corpus still disagrees about whether material provision depends on self-regulation and whether relational records may affect stewardship authority. This volume cannot solve those contradictions by calling the floor unconditional and then saying people earn it. Before implementation, the project must define an unconditional material floor, equal standing, bounded stewardship roles, non-biometric routes, due process, and appeal. No claim about presencing being hard to counterfeit can substitute for adversarial testing.
 
-The floor is where the architecture reveals its moral center. A hungry person does not become less hungry because a wallet is elegant, and a dysregulated body does not forfeit its claim to food, shelter, care, dignity, or voice. Any additional stewardship role must sit above that floor and remain contestable. Otherwise the Currency of Presence becomes the eye it was built to refuse.
+The floor is where the architecture reveals its moral center. A hungry person does not become less hungry because a wallet is elegant. A dysregulated body does not forfeit its claim to food, shelter, care, dignity, or voice. Any additional stewardship role must sit above that floor and remain contestable. Otherwise the Currency of Presence becomes the eye it was built to refuse.
 
 ---
 

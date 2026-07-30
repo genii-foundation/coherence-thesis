@@ -25,7 +25,16 @@ export function protectedLinesFrom(voiceCard: string): string[] {
     .filter(Boolean);
 }
 
-const normalize = (s: string): string => s.replace(/\s+/g, " ").trim();
+/**
+ * Compare the words a reader sees rather than Markdown emphasis delimiters.
+ * Voice cards quote protected prose without source formatting, while a manuscript
+ * may set the same sentence in italics or split a protected passage across lines.
+ */
+export const normalizeProtectedText = (source: string): string =>
+  source
+    .replace(/(?<!\\)[*_]+/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
 
 export interface Violation {
   editorialId: string;
@@ -41,10 +50,14 @@ export function findViolations(
   for (const editorialId of volumeIds) {
     const dir = path.join(editorialVolumesRoot, editorialId);
     const lines = protectedLinesFrom(read(path.join(dir, "voice-card.md")));
-    const manuscript = normalize(read(path.join(dir, "manuscript.md")));
+    const manuscript = normalizeProtectedText(
+      read(path.join(dir, "manuscript.md")),
+    );
     for (const line of lines) {
       checked += 1;
-      if (!manuscript.includes(normalize(line))) violations.push({ editorialId, line });
+      if (!manuscript.includes(normalizeProtectedText(line))) {
+        violations.push({ editorialId, line });
+      }
     }
   }
   return { checked, violations };
