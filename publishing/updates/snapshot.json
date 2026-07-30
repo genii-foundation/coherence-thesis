@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "688ef31110d3dfa272a5a230b28cf1125196857d",
+  "headSha": "744e2b5444ec62b34298932bb29e1bb1e06d2955",
   "commits": [
+    {
+      "sha": "744e2b5444ec62b34298932bb29e1bb1e06d2955",
+      "committedAt": "2026-07-30T21:25:02.000Z",
+      "subject": "Refine reader progress icons (#169)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/744e2b5444ec62b34298932bb29e1bb1e06d2955",
+      "filesChanged": 12,
+      "additions": 1417,
+      "deletions": 45,
+      "isLiterary": false
+    },
     {
       "sha": "688ef31110d3dfa272a5a230b28cf1125196857d",
       "committedAt": "2026-07-30T20:52:40.000Z",
