@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-01",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "sectionId": "v01-the-flower",
+  "sectionHeading": "The Flower",
+  "currentHeading": "The Flower",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A three beat kept both denials and dropped the affirmation they build to.",
+      "evidence": {
+        "baseline": "then certain things become possible that were not possible before. Not guaranteed. Not easy. But possible.",
+        "shipped": "possibilities once closed may open. They are neither guaranteed nor easy."
+      },
+      "authorizedBy": "Catalog 4.17 for the fragments, and compression.",
+      "diagnosis": "Not guaranteed. Not easy. But possible. is a concessive triad whose whole direction is the third beat. Keeping the two denials and removing the affirmation inverts the movement: the baseline concedes twice in order to assert, and the revision concedes twice and stops. Become possible also became may open, adding a hedge to the sentence the concessions were earning.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The section's opening bridge from Part One was deleted entirely.",
+      "evidence": {
+        "baseline": "Everything before this point has answered a single question: why. Why coherence is the substrate. Why fragmentation cannot scale. Why a creature as relational as the human being cannot organize a civilization against its own biology indefinitely. The Flower turns to a different question: what then.",
+        "shipped": "Absent. The section now opens on the conditional."
+      },
+      "authorizedBy": "Possibly catalog 4.8, redundant restatement, since Into the Flower makes a similar move.",
+      "diagnosis": "The anaphoric triad is the only place Part One's argument is stated as three propositions in a row, and it is what lets a reader entering Part Two check whether they follow. Into the Flower is a threshold page; this is the section proper. Repetition across a threshold is structural memory rather than restatement, which the card licenses.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "A standalone instruction to the reader was removed, and the architect image lost its middle clause.",
+      "evidence": {
+        "baseline": "A word about how to read what follows. ... as a way of seeing what could stand, so that those who might build it can judge whether it would hold.",
+        "shipped": "Absent. ... so that potential builders can judge whether the structure might stand."
+      },
+      "authorizedBy": "Catalog 4.23 for the instruction, compression for the image.",
+      "diagnosis": "A word about how to read what follows is wayfinding, which 4.23 retains in a long philosophical work. In the image, a way of seeing what could stand is the drawing's purpose and its removal leaves the analogy without its point. Those who might build it also became potential builders, which is the same third person distancing found in earlier sections.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes, all fencing parenthetical material and all becoming commas."
+        },
+        {
+          "kind": "restored",
+          "note": "The why triad, the what then turn, the concessive three beat with its affirmation, the reading instruction, the middle of the architect image, only and honestly, and let the shape become visible."
+        }
+      ]
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Twelfth consecutive section to need none."
+  }
+}

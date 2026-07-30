@@ -272,12 +272,12 @@
   ],
   "occurrences": [
     {
-      "occurrenceId": "semantic-link-6b83b2e0b80e94ef",
+      "occurrenceId": "semantic-link-d898cf2adbb5ffa6",
       "conceptId": "volume-01-seed",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
-        "paragraphAnchor": "p-hb0d917acac17d563",
+        "paragraphAnchor": "p-h50a799991b3e8473",
         "matchText": "Seed",
         "matchOrdinal": 1
       },
@@ -527,12 +527,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-3d826941a098159a",
+      "occurrenceId": "semantic-link-78ab3d7dc4d1b021",
       "conceptId": "volume-01-stem",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-into-the-flower",
-        "paragraphAnchor": "p-hc15f660cc5e00f2c",
+        "paragraphAnchor": "p-h87cd15ca2201bf87",
         "matchText": "Stem",
         "matchOrdinal": 1
       },
@@ -646,12 +646,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-8bb661836aaca490",
+      "occurrenceId": "semantic-link-69879ea637dbe485",
       "conceptId": "section-title-v05-the-cardinal-scale",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-into-the-flower",
-        "paragraphAnchor": "p-hc15f660cc5e00f2c",
+        "paragraphAnchor": "p-h87cd15ca2201bf87",
         "matchText": "Cardinal Scale",
         "matchOrdinal": 1
       },
@@ -782,12 +782,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-f27a1c83141697c1",
+      "occurrenceId": "semantic-link-9f7f6cbdf78631e7",
       "conceptId": "volume-01-flower",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-into-the-flower",
-        "paragraphAnchor": "p-h2bf4a5537b242f51",
+        "paragraphAnchor": "p-hca6afbf7254242f2",
         "matchText": "Flower",
         "matchOrdinal": 1
       },

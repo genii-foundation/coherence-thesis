@@ -61,7 +61,9 @@ interface SectionBody {
 export function sectionBodies(markdown: string, volumeNumber: string): SectionBody[] {
   const heads = [...markdown.matchAll(/^#{1,3} (.*)$/gm)];
   return heads.map((h, i) => {
-    const start = h.index ?? 0;
+    // Start after the heading line. A heading is not a paragraph, and including it
+    // lets a link anchor onto a block the manuscript compiler never emits.
+    const start = (h.index ?? 0) + h[0].length;
     const end = i + 1 < heads.length ? (heads[i + 1]!.index ?? markdown.length) : markdown.length;
     return {
       continuityId: `v${volumeNumber}-${headingSlug(h[1] ?? "")}`,

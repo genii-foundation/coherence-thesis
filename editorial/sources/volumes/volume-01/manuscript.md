@@ -484,13 +484,17 @@ Not to argue that coherence would be nice. To show that, for the kind of beings 
 # *The Threshold*
 # Into the Flower
 
-The argument has descended through crisis, pattern, biology, and structure to the ground beneath them: a reconsideration of the human being, and of why coherence is necessary for a creature made through relationship.
+We have descended as far as the argument goes. Crisis, pattern, biology, structure, and now the ground beneath all of it: a reconsideration of what a human being is, and why coherence is necessary rather than optional for a creature so thoroughly made of relationship.
 
-Everything until now has answered *why*. The Flower asks *what then*. What becomes visible and possible if the thesis is true?
+What remains is different in kind.
 
-The horizon glimpsed at the close of the Stem now comes into view. **Providence** is the forward-facing architecture through which trust can travel without surveillance or rule. **PURPOSEFUL** is the developmental ground that cultivates what Providence carries. The **Currency of Presence** sits at Providence's heart. **ICONS** are the living communities in which the architecture takes root, and the **Cardinal Scale** is the first of them. Together they show what a civilization organized around coherence might look like and invite us to imagine, test, and build it.
+Everything until now has answered *why*. The Flower answers *what then*: what becomes visible, and possible, if the thesis is true.
 
-The book ends with an invitation rather than a manifesto, warning, or prescription.
+It is here that the horizon glimpsed at the close of the Stem comes fully into view. **Providence** is the forward-facing architecture through which trust can travel without surveillance or rule. **PURPOSEFUL** is the developmental ground that holds and cultivates it. The **Currency of Presence** sits at Providence's heart. **ICONS** are the living communities in which it all takes root, and the **Cardinal Scale** is the first of them. Not as systems to be sold, but as what a civilization organized around coherence might actually look like, and as an invitation to help imagine, test, and build it.
+
+The book does not end as a manifesto, a warning, or a prescription.
+
+It ends as an invitation.
 
 *When you are ready, the flowering begins.*
 
@@ -502,9 +506,15 @@ The book ends with an invitation rather than a manifesto, warning, or prescripti
 
 ---
 
-If coherence is the condition from which trust, intelligence, and continuity emerge, possibilities once closed may open. They are neither guaranteed nor easy. The Flower brings them into view.
+Everything before this point has answered a single question: *why.* Why coherence is the substrate. Why fragmentation cannot scale. Why a creature as relational as the human being cannot organize a civilization against its own biology indefinitely.
 
-Nothing here is a product to buy, a movement to join, or a system to believe in. It is offered as an architect offers a drawing before construction, so that potential builders can judge whether the structure might stand. The engineering, governance, and economics belong to later volumes. Here the work is to reveal the shape and ask whether it is worth building.
+The Flower turns to a different question: *what then.*
+
+If the thesis is true, if coherence really is the condition from which trust, intelligence, and continuity emerge, then certain things become possible that were not possible before. Not guaranteed. Not easy. But possible. The Flower is where those possibilities come into view.
+
+A word about how to read what follows.
+
+Nothing here is a product to be bought, a movement to be joined, or a system to be believed in. What follows is offered the way an architect offers a drawing before anything is built: as a way of seeing what could stand, so that those who might build it can judge whether it would hold. The full construction, the engineering, the governance, the economics, belongs to the volumes that follow this one. Here, the work is only to let the shape become visible, and to ask honestly whether it is worth building.
 
 *If you finish the Flower unconvinced, the book has still done its work. It will have shown clearly where the real disagreement lies.*
 
