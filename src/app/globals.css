@@ -1190,14 +1190,14 @@ input {
   opacity: 0.2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 2.4;
+  stroke-width: var(--progress-cloud-stroke-width, 2.4px);
 }
 
 .progress-cloud-progress {
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 2.4;
+  stroke-width: var(--progress-cloud-stroke-width, 2.4px);
   transition: stroke-dashoffset 180ms ease;
 }
 
