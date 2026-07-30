@@ -735,12 +735,7 @@ test("the bookmark count follows the bookmark list without a divider", async ({
   expect(layout.borderBottomWidth).toBe(0);
 });
 
-test("a full 1,000-bookmark collection remains a contained scroll surface", async ({
-  page,
-  isMobile,
-}) => {
-  test.skip(isMobile, "The desktop run protects the collection-size contract.");
-
+test("a full 1,000-bookmark collection remains usable", async ({ page }) => {
   const records: ReaderBookmarksState["bookmarks"] = Object.create(null);
   const now = 1_700_000_000_000;
   for (let index = 0; index < maxLiveBookmarks; index += 1) {
@@ -811,6 +806,38 @@ test("a full 1,000-bookmark collection remains a contained scroll surface", asyn
   await expect(
     panel.getByText("Sample passage 1000", { exact: false }),
   ).toBeVisible();
+
+  const lastRow = panel
+    .locator(".bookmark-row")
+    .filter({ hasText: "Sample passage 1000" });
+  await lastRow.getByRole("button", { name: "Add a note" }).click();
+  const note = lastRow.getByRole("textbox", { name: "Bookmark note" });
+  await note.fill("Mobile stress note");
+  await note.blur();
+  await expect(
+    lastRow.getByRole("button", { name: "Mobile stress note" }),
+  ).toBeVisible();
+
+  await lastRow
+    .getByRole("button", { name: /^Remove bookmark:/ })
+    .click();
+  await page
+    .getByRole("dialog", { name: "Delete this bookmark?" })
+    .getByRole("button", { name: "Delete bookmark" })
+    .click();
+
+  await expect(
+    panel.locator(".bookmarks-summary-count"),
+  ).toHaveText("999 bookmarks");
+  const stored = await storedBookmarks(page);
+  const removed = stored.bookmarks["stress-999"] as
+    | Record<string, unknown>
+    | undefined;
+  expect(removed).toMatchObject({
+    quote: "",
+    removedAt: expect.any(Number),
+  });
+  expect(removed).not.toHaveProperty("note");
 });
 
 test("the toolbar control turns for an offer and again for a save", async ({

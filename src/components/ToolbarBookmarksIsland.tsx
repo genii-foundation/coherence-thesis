@@ -35,6 +35,7 @@ import {
   updateStoredBookmarks,
   useReaderBookmarks,
 } from "@/lib/reader-progress-store";
+import { recordBookmarkOperation } from "@/lib/bookmark-monitoring";
 import { foldSearchText } from "@/lib/reader-text-search";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 
@@ -264,7 +265,10 @@ export function ToolbarBookmarksIsland() {
   }, [open]);
 
   const commitRemove = useCallback((bookmark: ReaderBookmark) => {
-    updateStoredBookmarks((current) => removeBookmark(current, bookmark.id));
+    updateStoredBookmarks(
+      (current) => removeBookmark(current, bookmark.id),
+      "remove",
+    );
     appendStoredEvent(
       createEngagementEvent("bookmark_removed", {
         sectionId: bookmark.sectionId,
@@ -292,17 +296,22 @@ export function ToolbarBookmarksIsland() {
       deleteTriggerRef.current = trigger;
       deleteModalOpenRef.current = true;
       setDeleteAllEntry("");
+      recordBookmarkOperation("remove", "start", bookmarks);
       setPendingDeletion({ kind: "single", bookmark });
     },
-    [],
+    [bookmarks],
   );
 
-  const requestDeleteAll = useCallback((trigger: HTMLButtonElement) => {
-    deleteTriggerRef.current = trigger;
-    deleteModalOpenRef.current = true;
-    setDeleteAllEntry("");
-    setPendingDeletion({ kind: "all" });
-  }, []);
+  const requestDeleteAll = useCallback(
+    (trigger: HTMLButtonElement) => {
+      deleteTriggerRef.current = trigger;
+      deleteModalOpenRef.current = true;
+      setDeleteAllEntry("");
+      recordBookmarkOperation("remove_all", "start", bookmarks);
+      setPendingDeletion({ kind: "all" });
+    },
+    [bookmarks],
+  );
 
   const confirmDeletion = useCallback(() => {
     if (!pendingDeletion) return;
@@ -315,11 +324,13 @@ export function ToolbarBookmarksIsland() {
 
     const targets = live;
     const removedAt = Date.now();
-    updateStoredBookmarks((current) =>
-      targets.reduce(
-        (next, bookmark) => removeBookmark(next, bookmark.id, removedAt),
-        current,
-      ),
+    updateStoredBookmarks(
+      (current) =>
+        targets.reduce(
+          (next, bookmark) => removeBookmark(next, bookmark.id, removedAt),
+          current,
+        ),
+      "remove_all",
     );
     appendStoredEvent(
       createEngagementEvent("bookmark_removed", {
@@ -448,7 +459,10 @@ export function ToolbarBookmarksIsland() {
             : `Bookmarks, ${total.toLocaleString()} saved`
         }
         aria-controls="site-bookmarks-menu"
-        onClick={toggle}
+        onClick={() => {
+          if (!open) recordBookmarkOperation("open_menu", "start", bookmarks);
+          toggle();
+        }}
       >
         {/* Two real faces rather than a crossfade. The card carries the
             rotation and each face hides its own back, so the solid glyph is
@@ -566,12 +580,14 @@ export function ToolbarBookmarksIsland() {
                             aria-label="Bookmark note"
                             autoFocus
                             onBlur={(event) => {
-                              updateStoredBookmarks((current) =>
-                                setBookmarkNote(
-                                  current,
-                                  entry.bookmark.id,
-                                  event.target.value,
-                                ),
+                              updateStoredBookmarks(
+                                (current) =>
+                                  setBookmarkNote(
+                                    current,
+                                    entry.bookmark.id,
+                                    event.target.value,
+                                  ),
+                                "update_note",
                               );
                               setEditingNoteId(null);
                             }}
@@ -581,9 +597,14 @@ export function ToolbarBookmarksIsland() {
                             <button
                               type="button"
                               className="bookmark-note-button"
-                              onClick={() =>
+                              onClick={() => {
+                                recordBookmarkOperation(
+                                  "edit_note",
+                                  "start",
+                                  bookmarks,
+                                );
                                 setEditingNoteId(entry.bookmark.id)
-                              }
+                              }}
                             >
                               {entry.bookmark.note
                                 ? entry.bookmark.note

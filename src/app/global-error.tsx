@@ -1,14 +1,22 @@
 "use client";
 
+import { useEffect } from "react";
+import * as Sentry from "@sentry/nextjs";
+
 // Renders only when the root layout itself throws, so it must supply its own
-// <html>/<body>. Kept dependency-free and inline-styled since the app chrome
-// and stylesheet may be unavailable at this point.
+// <html>/<body>. Kept inline-styled since the app chrome and stylesheet may be
+// unavailable at this point.
 export default function GlobalError({
+  error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  useEffect(() => {
+    Sentry.captureException(error);
+  }, [error]);
+
   return (
     <html lang="en">
       <body

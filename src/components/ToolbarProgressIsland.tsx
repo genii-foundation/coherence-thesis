@@ -363,6 +363,7 @@ export function ToolbarProgressIsland() {
                   remoteBookmarks,
                   remoteBookmarksVersion,
                 ) ?? current,
+              "sync_merge",
             );
           }
         }
@@ -513,6 +514,7 @@ export function ToolbarProgressIsland() {
                 mergedRemote.bookmarks,
                 mergedRemote.schemaVersion,
               ) ?? current,
+            "sync_merge",
           );
         }
 

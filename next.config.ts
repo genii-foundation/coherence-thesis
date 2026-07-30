@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
 
 // Applied to every response. frame-ancestors 'none' blocks the clickjacking
 // path to the one-click account-deletion control; the rest are standard
@@ -30,4 +31,19 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  routeManifestInjection: false,
+  silent: !process.env.SENTRY_AUTH_TOKEN,
+  sourcemaps: {
+    deleteSourcemapsAfterUpload: true,
+    disable: !process.env.SENTRY_AUTH_TOKEN,
+  },
+  suppressOnRouterTransitionStartWarning: true,
+  telemetry: false,
+  webpack: {
+    treeshake: {
+      removeDebugLogging: true,
+      removeTracing: true,
+    },
+  },
+});

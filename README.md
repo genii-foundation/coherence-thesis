@@ -266,6 +266,8 @@ Reading progress is private and local by default. The browser may store section 
 
 No account is required. A signed-in reader must explicitly allow remote sync before local reading data uploads. Supabase row level security isolates synchronized records. The account API supports authenticated account deletion and rejects cross-origin destructive requests.
 
+Production errors are reported to Sentry with source-mapped stack traces and release identity. The integration does not collect session data, replays, performance traces, logs, reader identities, manuscript routes or text, reading history, bookmark text or notes, request bodies, headers, cookies, query strings, or stack variables. Bookmark error reports include only the operation and aggregate counts or byte sizes.
+
 ## Deployment and Governance
 
 The production site is deployed by Vercel from `main`. The branch is protected, requires the validation and Playwright checks, rejects force pushes and deletion, and reserves merge authority for the repository maintainer.
@@ -284,7 +286,6 @@ Original manuscripts, voice cards, editorial evidence, publishing continuity, si
 
 ## Roadmap
 
-- Add privacy-conscious production error monitoring with Sentry for browser and server failures, source maps, release tracking, and actionable alerts; keep session replay off and scrub manuscript text, reading history, account data, and request payloads
 - Complete final individual cover art for every manuscript
 - Add spaced repetition tools grounded in stable section IDs
 - Expand recommendation paths across the manuscript collection
