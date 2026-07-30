@@ -355,9 +355,7 @@ test("deleting all bookmarks requires typed confirmation", async ({ page }) => {
 
   await expect(reopened).toHaveCount(0);
   await expect(page.locator(".bookmark-row")).toHaveCount(0);
-  await expect(
-    page.getByText(/Select three or more words in the manuscript/),
-  ).toBeVisible();
+  await expect(page.getByText(/Keep what finds you/)).toBeVisible();
 
   const stored = await storedBookmarks(page);
   const entries = Object.values(stored.bookmarks) as Array<
@@ -374,7 +372,9 @@ test("the empty panel explains how to make a bookmark", async ({ page }) => {
   await page.goto(firstSection.readerHref);
   await page.getByRole("button", { name: "Bookmarks, none saved" }).click();
   await expect(
-    page.getByText(/Select three or more words in the manuscript/),
+    page.getByText(
+      "Keep what finds you. Select three or more words, then choose Bookmark.",
+    ),
   ).toBeVisible();
 });
 

@@ -1641,8 +1641,12 @@ input {
   -webkit-overflow-scrolling: touch;
 }
 
-.bookmarks-empty {
+.bookmarks-empty,
+.search-empty {
   margin: 0;
+  padding: 1.15rem 0.75rem 1.45rem;
+  font-size: clamp(0.94rem, 1.4vw, 1.02rem);
+  line-height: 1.6;
 }
 
 .bookmarks-summary {
@@ -2081,11 +2085,6 @@ a.bookmark-quote:focus-visible {
   font-size: 0.96rem;
   line-height: 1.45;
   white-space: nowrap;
-}
-
-.search-empty {
-  margin: 0;
-  padding: 0.25rem;
 }
 
 .outline-section + .outline-section {
