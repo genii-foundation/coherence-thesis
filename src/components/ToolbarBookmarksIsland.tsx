@@ -495,8 +495,8 @@ export function ToolbarBookmarksIsland() {
             )}
             {total === 0 && (
               <p className="quiet-copy bookmarks-empty">
-                Select three or more words in the manuscript, then choose
-                Bookmark to save the passage here.
+                Keep what finds you. Select three or more words, then choose
+                Bookmark.
               </p>
             )}
             {total > 0 && visible.length === 0 && (

@@ -456,7 +456,7 @@ export function SearchMenuIsland() {
             )}
             {!loadError && trimmedQuery.length === 0 && (
               <p className="quiet-copy search-empty">
-                Search titles, chapters, and full manuscript text.
+                Find the thread. Search every title, chapter, and passage.
               </p>
             )}
             {!loadError && trimmedQuery.length > 0 && results.length === 0 && (
