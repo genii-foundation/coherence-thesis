@@ -27,8 +27,8 @@ export default async function AdminLayout({ children }: { children: ReactNode })
       <header className={styles.bar}>
         <span className={styles.mark}>Admin</span>
         <nav className={styles.nav}>
-          <a href="/admin/">Workbench</a>
-          <a href="/admin/calibration/">Calibration</a>
+          <a href="/admin/">Status</a>
+          <a href="/admin/calibration/">Editorial revisions</a>
         </nav>
         <span className={styles.warn}>local only, read only</span>
       </header>

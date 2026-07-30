@@ -1,15 +1,15 @@
 import styles from "./admin.module.css";
 import {
   readAllProgress,
+  readCalibrationRows,
   readGlyphViolations,
   readProtectedLineViolations,
   readTasks,
-  readVolumeProgress,
+  type Task,
 } from "./adminData";
 
 export const dynamic = "force-dynamic";
 
-const ORDER: Record<string, number> = { "in-progress": 0, pending: 1, blocked: 2, done: 3 };
 const TIER_ORDER: Record<string, number> = { red: 0, amber: 1, green: 2 };
 
 function tierClass(tier: string): string {
@@ -18,132 +18,173 @@ function tierClass(tier: string): string {
   return styles.red ?? "";
 }
 
+interface Attention {
+  what: string;
+  detail: string;
+}
+
 /**
- * One page. Overview, queue, and progress were three routes over the same three numbers:
- * the overview existed only to summarise the two pages behind it, which is a page whose
- * whole job is that the other pages are elsewhere.
+ * A status page answers three questions in order: is anything wrong, how far along is the
+ * work, and what is in flight. Anything that answers none of those is not status.
  *
- * Gates is folded in as two lines rather than a section. It was never more than two
- * mechanical checks, and a heading over two checks made it look like a subsystem.
+ * The previous version led with a passing check and then printed twenty-seven settled
+ * sections, which is reassurance rather than information. What needs attention comes
+ * first here and everything healthy collapses to one line.
  */
-export default function AdminWorkbench() {
+export default function StatusPage() {
   const register = readTasks();
   const progress = readAllProgress();
   const lines = readProtectedLineViolations();
   const glyphs = readGlyphViolations();
+  const records = readCalibrationRows();
 
-  const open = register.tasks.filter((t) => t.status !== "done");
-  const tasks = [...register.tasks].sort(
-    (a, b) =>
-      (ORDER[a.status] ?? 9) - (ORDER[b.status] ?? 9) ||
-      (TIER_ORDER[a.tier] ?? 9) - (TIER_ORDER[b.tier] ?? 9) ||
-      a.id.localeCompare(b.id),
+  // Only volumes the re-render has actually started. Volumes II to IX carry no
+  // calibration records at all, so counting their sections as unsettled reports 409
+  // problems where there is one, and buries it under four hundred headings.
+  const started = progress.filter((v) => v.settled > 0);
+  const openSections = started.flatMap((v) =>
+    v.sections.filter((s) => !s.settled).map((s) => ({ volume: v.editorialId, heading: s.heading })),
   );
+  const notStarted = progress.filter((v) => v.settled === 0);
+  const openQuestions = records.reduce((total, r) => total + r.openQuestions, 0);
+  const blocked = register.tasks.filter((t) => t.status === "blocked");
+  const inFlight = register.tasks.filter((t) => t.status === "in-progress");
+  const pending = register.tasks.filter((t) => t.status === "pending");
+  const done = register.tasks.filter((t) => t.status === "done");
+
+  const attention: Attention[] = [];
+  if (lines.violations.length) {
+    attention.push({
+      what: `${lines.violations.length} protected lines missing`,
+      detail: `Declared in ${[...new Set(lines.violations.map((v) => v.editorialId.replace("volume-", "volume ")))].join(", ")} and absent from those manuscripts. The gate is not wired into validate, because it would fail every run until they are restored.`,
+    });
+  }
+  if (glyphs.violations.length) {
+    attention.push({
+      what: `${glyphs.violations.length} prohibited glyphs`,
+      detail: glyphs.violations
+        .slice(0, 5)
+        .map((v) => `${v.editorialId.replace("volume-", "")}:${v.line} ${v.glyph}`)
+        .join(", "),
+    });
+  }
+  if (openSections.length) {
+    attention.push({
+      what: `${openSections.length} section${openSections.length === 1 ? "" : "s"} unsettled`,
+      detail: `${openSections
+        .slice(0, 4)
+        .map((s) => s.heading)
+        .join(", ")}${openSections.length > 4 ? `, and ${openSections.length - 4} more` : ""}. In ${
+        [...new Set(openSections.map((s) => s.volume.replace("volume-", "volume ")))].join(", ")
+      }.`,
+    });
+  }
+  if (openQuestions) {
+    attention.push({
+      what: `${openQuestions} question${openQuestions === 1 ? "" : "s"} for the author`,
+      detail: "Recorded in calibration records. Each needs a decision before its section can settle.",
+    });
+  }
+  if (blocked.length) {
+    attention.push({
+      what: `${blocked.length} task${blocked.length === 1 ? "" : "s"} blocked`,
+      detail: blocked.map((t) => `${t.id} ${t.title}`).join(" · "),
+    });
+  }
+
+  const passing = [
+    !lines.violations.length && `protected lines, ${lines.checked} present`,
+    !glyphs.violations.length && `prohibited glyphs, clean across ${glyphs.checked} manuscripts`,
+    !openSections.length && started.length && "every started section settled",
+  ].filter(Boolean) as string[];
+
+  const group = (label: string, list: Task[]) =>
+    list.length ? (
+      <div key={label} style={{ marginBottom: 18 }}>
+        <p className={styles.micro}>
+          {label} &middot; {list.length}
+        </p>
+        <div className={styles.rows}>
+          {[...list]
+            .sort((a, b) => (TIER_ORDER[a.tier] ?? 9) - (TIER_ORDER[b.tier] ?? 9) || a.id.localeCompare(b.id))
+            .map((task) => (
+              <div className={styles.row} key={task.id} style={{ gridTemplateColumns: "68px 62px 1fr" }}>
+                <span className={styles.id}>{task.id}</span>
+                <span className={`${styles.tier} ${tierClass(task.tier)}`}>{task.tier}</span>
+                <span>
+                  {task.title}
+                  {task.blockedBy?.length ? (
+                    <p className={styles.detail}>Blocked by {task.blockedBy.join(", ")}.</p>
+                  ) : null}
+                </span>
+              </div>
+            ))}
+        </div>
+      </div>
+    ) : null;
 
   return (
     <>
-      <h1 className={styles.h1}>Editorial workbench</h1>
+      <h1 className={styles.h1}>Status</h1>
       <p className={styles.sub}>
-        Derived from repository state on every request, so it cannot show progress the
-        repository does not have. Read only: durable editorial state changes through an
-        explicit command and a reviewed diff, never from here.
+        {attention.length ? (
+          <>
+            <strong>{attention.length}</strong> thing{attention.length === 1 ? "" : "s"} need
+            attention.
+          </>
+        ) : (
+          <>Nothing needs attention.</>
+        )}{" "}
+        Derived from repository state on every request. Read only.
       </p>
 
-      <p className={styles.micro}>Checks</p>
-      <div className={styles.card} style={{ marginBottom: 26 }}>
-        <p>
-          Protected lines{" "}
-          <span className={lines.violations.length ? styles.bad : styles.ok}>
-            {lines.checked - lines.violations.length} of {lines.checked} present
-          </span>
-          {lines.violations.length ? (
-            <span className={styles.detail}>
-              {" "}
-              missing from {[...new Set(lines.violations.map((v) => v.editorialId))].join(", ")}.
-              Not wired into <span className={styles.cmd}>npm run validate</span>, because it
-              would block every run until they are restored.
-            </span>
-          ) : null}
+      {attention.length ? (
+        <div className={styles.attention}>
+          {attention.map((item) => (
+            <div className={styles.attentionRow} key={item.what}>
+              <span className={styles.attentionWhat}>{item.what}</span>
+              <span className={styles.detail}>{item.detail}</span>
+            </div>
+          ))}
+        </div>
+      ) : null}
+
+      {passing.length ? (
+        <p className={styles.detail} style={{ margin: "0 0 26px" }}>
+          <span className={styles.ok}>Passing</span> &middot; {passing.join(" &middot; ")}
         </p>
-        <p>
-          Prohibited glyphs{" "}
-          <span className={glyphs.violations.length ? styles.bad : styles.ok}>
-            {glyphs.violations.length
-              ? `${glyphs.violations.length} in ${glyphs.checked} manuscripts`
-              : `clean across ${glyphs.checked} manuscripts`}
-          </span>
-          {glyphs.violations.length ? (
-            <span className={styles.detail}>
-              {" "}
-              {glyphs.violations
-                .slice(0, 4)
-                .map((v) => `${v.editorialId.replace("volume-", "")}:${v.line} ${v.glyph}`)
-                .join(", ")}
-            </span>
-          ) : null}
-        </p>
-      </div>
+      ) : null}
 
       <p className={styles.micro}>
-        Re-render progress &middot; a section is settled when its calibration record says so
+        Re-render progress &middot; {started.length} of {progress.length} volumes started
       </p>
-      <div style={{ marginBottom: 26 }}>
-        {progress.map((v) => (
-          <section key={v.editorialId} style={{ marginBottom: 18 }}>
-            <p className={styles.detail}>
-              {v.editorialId.replace("volume-", "volume ")} &middot; {v.settled} of {v.total}{" "}
-              settled &middot; {v.percent}% &middot; {v.settledWords.toLocaleString()} of{" "}
-              {v.totalWords.toLocaleString()} baseline words
-            </p>
+      <div className={styles.progressList}>
+        {started.map((v) => (
+          <div className={styles.progressRow} key={v.editorialId}>
+            <span className={styles.id}>{v.editorialId.replace("volume-", "vol ")}</span>
             <div className={styles.bar2}>
               <div className={styles.fill} style={{ width: `${v.percent}%` }} />
             </div>
-            {v.editorialId === "volume-01" ? (
-              <div className={styles.sections}>
-                {v.sections.map((s) => (
-                  <div className={styles.section} key={s.sectionId}>
-                    <span className={styles.id}>{s.index}</span>
-                    <span className={s.settled ? styles.done : styles.todo}>
-                      {s.settled ? "✓" : "·"}
-                    </span>
-                    <span className={s.settled ? undefined : styles.todo}>{s.heading}</span>
-                    <span className={styles.words}>{s.words ? `${s.words} w` : ""}</span>
-                  </div>
-                ))}
-              </div>
-            ) : null}
-          </section>
+            <span className={styles.words}>
+              {v.settled}/{v.total}
+            </span>
+            <span className={styles.words}>{v.percent}%</span>
+          </div>
         ))}
       </div>
+      {notStarted.length ? (
+        <p className={styles.detail} style={{ marginTop: 8 }}>
+          Not started: {notStarted.map((v) => v.editorialId.replace("volume-", "")).join(", ")}.
+        </p>
+      ) : null}
 
-      <p className={styles.micro}>
-        Queue &middot; {open.length} open &middot; agent work, not the authorial obligations in
-        the debt register &middot; tier governs what may run unattended
+      <p className={styles.micro} style={{ marginTop: 26 }}>
+        Queue &middot; agent work, not the authorial obligations in the debt register
       </p>
-      <div className={styles.rows}>
-        {tasks.map((task) => {
-          const p = task.progress ? readVolumeProgress(task.progress.editorialId) : null;
-          return (
-            <div className={styles.row} key={task.id}>
-              <span className={styles.id}>{task.id}</span>
-              <span className={`${styles.tier} ${tierClass(task.tier)}`}>{task.tier}</span>
-              <span>
-                {task.title}
-                {task.detail ? <p className={styles.detail}>{task.detail}</p> : null}
-                {task.blockedBy?.length ? (
-                  <p className={styles.detail}>Blocked by {task.blockedBy.join(", ")}.</p>
-                ) : null}
-                {p ? (
-                  <p className={styles.detail}>
-                    {p.settled} of {p.total} sections settled, {p.percent}%
-                  </p>
-                ) : null}
-              </span>
-              <span className={styles.state}>{task.status}</span>
-            </div>
-          );
-        })}
-      </div>
+      {group("In flight", inFlight)}
+      {group("Blocked", blocked)}
+      {group("Pending", pending)}
+      <p className={styles.detail}>{done.length} done.</p>
     </>
   );
 }

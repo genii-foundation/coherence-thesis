@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import styles from "./admin.module.css";
 
 const LABELS: Record<string, string> = {
-  calibration: "Calibration",
-  bench: "Calibration",
+  calibration: "Editorial revisions",
+  bench: "Editorial revisions",
 };
 
 /**
@@ -23,11 +23,11 @@ export function AdminBreadcrumbs() {
   const segments = pathname.split("/").filter(Boolean).slice(1);
 
   const crumbs: { label: string; href: string | null }[] = [
-    { label: "Workbench", href: segments.length ? "/admin/" : null },
+    { label: "Status", href: segments.length ? "/admin/" : null },
   ];
 
   if (segments[0] === "bench") {
-    crumbs.push({ label: "Calibration", href: "/admin/calibration/" });
+    crumbs.push({ label: "Editorial revisions", href: "/admin/calibration/" });
     if (segments[1]) crumbs.push({ label: segments[1], href: null });
   } else if (segments[0]) {
     crumbs.push({ label: LABELS[segments[0]] ?? segments[0], href: null });

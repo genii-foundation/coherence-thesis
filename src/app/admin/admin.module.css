@@ -7,6 +7,8 @@
    of the admin content while the footer below kept showing it, which banded at the
    seam. The shell contributes layout and ink, and lets the page show through. */
 .shell {
+  --bad-rule: #8c4a33;
+
   min-height: 100vh;
   color: var(--ink);
 }
@@ -381,4 +383,82 @@
 .unattended {
   color: var(--ink-muted);
   border: 1px solid var(--line);
+}
+
+/* Attention list. Not cards: a card per problem turns five problems into five objects to
+   scan, where a list reads as one thing with five entries. The rule on the left is the
+   only ornament, and it is there to be seen from the top of the page. */
+.attention {
+  border-left: 2px solid var(--bad-rule);
+  padding-left: 14px;
+  margin: 0 0 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.attentionRow {
+  display: grid;
+  gap: 2px;
+}
+
+.attentionWhat {
+  font-size: 14px;
+  color: var(--ink);
+}
+
+/* One line per volume. Nine volumes fit in the space the twenty-eight sections of a
+   single volume used to take, and the section list moved to Calibration where a section
+   is the subject rather than a progress unit. */
+.progressList {
+  display: grid;
+  gap: 7px;
+}
+
+.progressRow {
+  display: grid;
+  grid-template-columns: 58px 1fr 52px 44px;
+  align-items: center;
+  gap: 12px;
+}
+
+.progressRow .bar2 {
+  margin: 0;
+}
+
+/* Starting a session is the page's primary action, so it is a block rather than a link
+   buried in prose. */
+.startBlock {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin: 0 0 26px;
+  display: grid;
+  gap: 6px;
+  max-width: 680px;
+}
+
+.startBlock p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.copyButton {
+  justify-self: start;
+  margin-top: 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 13px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+
+.copyButton:hover,
+.copyButton:focus-visible {
+  border-color: var(--bronze);
+  background: var(--nav-hover-background);
 }

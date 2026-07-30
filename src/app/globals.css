@@ -838,8 +838,17 @@ input {
 
 /* The bubble is a single pill with no padding, so a second action would abut the
    first with nothing between them. An inset rule reads as a divider without
-   adding width the way a border would. */
+   adding width the way a border would.
+
+   Each action carries the pill radius so a lone action fills the bubble. With two,
+   only the outer edges stay round: otherwise both actions curve inward and the
+   divider sits in a lens of background between two facing arcs. */
+.reader-selection-bubble-action:has(+ .reader-selection-bubble-action) {
+  border-radius: 999px 0 0 999px;
+}
+
 .reader-selection-bubble-action + .reader-selection-bubble-action {
+  border-radius: 0 999px 999px 0;
   box-shadow: inset 1px 0 0 var(--tooltip-border-color);
 }
 
