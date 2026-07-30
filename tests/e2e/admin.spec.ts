@@ -59,6 +59,12 @@ test.describe("local editorial admin", () => {
       page.getByRole("heading", { level: 2, name: "Open questions" }),
     ).toBeVisible();
     await expect(
+      page.getByText(
+        "Three renamed subsections, two of which announce what the passage beneath them withholds.",
+        { exact: false },
+      ),
+    ).toBeVisible();
+    await expect(
       page.getByRole("heading", {
         level: 2,
         name: "Author-governed sessions",

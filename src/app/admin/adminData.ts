@@ -5,6 +5,10 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 
+import {
+  normalizeProtectedText,
+  protectedLinesFrom,
+} from "../../../scripts/editorial/protected-lines";
 import { slugify } from "../../../scripts/manuscripts/io";
 
 // The reader app resolves these from the working directory rather than importing
@@ -138,23 +142,24 @@ export interface ProtectedLineViolation {
   line: string;
 }
 
-/** Mirrors scripts/editorial/protected-lines.ts so the gate reads the same here. */
+/** Uses the same parser and normalization as the repository gate. */
 export function readProtectedLineViolations(): { checked: number; violations: ProtectedLineViolation[] } {
   const violations: ProtectedLineViolation[] = [];
   let checked = 0;
-  const normalize = (s: string): string => s.replace(/\s+/g, " ").trim();
   for (const editorialId of editorialVolumeIds) {
     const dir = path.join(editorialVolumesRoot, editorialId);
     const cardPath = path.join(dir, "voice-card.md");
     const manuscriptPath = path.join(dir, "manuscript.md");
     if (!existsSync(cardPath) || !existsSync(manuscriptPath)) continue;
-    const field = /^- Protected lines or passages:(.*)$/m.exec(readFileSync(cardPath, "utf8"));
-    if (!field) continue;
-    const manuscript = normalize(readFileSync(manuscriptPath, "utf8"));
-    for (const m of (field[1] ?? "").matchAll(/["“]([^"”]+)["”]/g)) {
+    const lines = protectedLinesFrom(readFileSync(cardPath, "utf8"));
+    const manuscript = normalizeProtectedText(
+      readFileSync(manuscriptPath, "utf8"),
+    );
+    for (const line of lines) {
       checked += 1;
-      const line = (m[1] ?? "").trim();
-      if (!manuscript.includes(normalize(line))) violations.push({ editorialId, line });
+      if (!manuscript.includes(normalizeProtectedText(line))) {
+        violations.push({ editorialId, line });
+      }
     }
   }
   return { checked, violations };
@@ -278,6 +283,7 @@ export interface CalibrationRow {
   rulesCited: string[];
   ledgerItems: string[];
   openQuestions: number;
+  openQuestionItems: string[];
   /** The disposable bench under generated/, if editorial:compare has been run for this section. */
   benchRendered: boolean;
 }
@@ -304,6 +310,12 @@ export function readCalibrationRows(): CalibrationRow[] {
           producedRule: f.producedRule,
         }));
         const sectionId = String(r.sectionId ?? file.replace(/\.json$/, ""));
+        const openQuestionItems = (
+          (r.openQuestions as unknown[] | undefined) ?? []
+        )
+          .filter((question): question is string => typeof question === "string")
+          .map((question) => question.trim())
+          .filter(Boolean);
         rows.push({
           sectionId,
           editorialId,
@@ -316,7 +328,8 @@ export function readCalibrationRows(): CalibrationRow[] {
           ledgerItems: ((r.debtImpact as { id?: string }[] | undefined) ?? [])
             .map((d) => d.id)
             .filter((x): x is string => Boolean(x)),
-          openQuestions: ((r.openQuestions as unknown[] | undefined) ?? []).length,
+          openQuestions: openQuestionItems.length,
+          openQuestionItems,
           benchRendered: existsSync(path.join(benchRoot, `${sectionId}.html`)),
         });
       } catch {

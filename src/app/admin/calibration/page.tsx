@@ -224,10 +224,11 @@ export default function EditorialRevisionsPage() {
                   {volumeLabel(row.editorialId)} · {row.sectionId}
                 </span>
                 <h3>{row.currentHeading}</h3>
-                <p>
-                  {numberFormat.format(row.openQuestions)} question
-                  {row.openQuestions === 1 ? "" : "s"} awaiting a ruling
-                </p>
+                <ol className={styles.questionTextList}>
+                  {row.openQuestionItems.map((question) => (
+                    <li key={question}>{question}</li>
+                  ))}
+                </ol>
               </div>
               <CopyPromptButton
                 label="Copy session prompt"
