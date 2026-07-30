@@ -183,17 +183,32 @@ test("reader headings reveal and copy full anchored links", async (
   ).href;
   await expect.poll(() => copiedReaderHeadingLink(page)).toBe(expectedHref);
 
+  // The toast clears itself 2400ms after the copy. Asserting its role, live
+  // region, text and geometry as four separate round-trips raced that timer
+  // whenever the suite was under load, so take one snapshot instead.
   const toast = page.locator(".reader-copy-toast");
-  await expect(toast).toHaveAttribute("role", "status");
-  await expect(toast).toHaveAttribute("aria-live", "polite");
-  await expect(toast).toHaveText("Link copied");
-  const toastBox = await toast.boundingBox();
-  const viewport = page.viewportSize();
-  expect(toastBox).not.toBeNull();
-  expect(viewport).not.toBeNull();
-  expect(toastBox!.x).toBeGreaterThanOrEqual(0);
-  expect(toastBox!.x + toastBox!.width).toBeLessThanOrEqual(viewport!.width);
-  expect(toastBox!.y + toastBox!.height).toBeLessThanOrEqual(viewport!.height);
+  await expect(toast).toBeVisible();
+  const toastSnapshot = await toast.evaluate((element) => {
+    const box = element.getBoundingClientRect();
+    return {
+      ariaLive: element.getAttribute("aria-live"),
+      bottom: box.bottom,
+      left: box.left,
+      right: box.right,
+      role: element.getAttribute("role"),
+      text: element.textContent?.trim() ?? "",
+      viewportHeight: window.innerHeight,
+      viewportWidth: window.innerWidth,
+    };
+  });
+  expect(toastSnapshot.role).toBe("status");
+  expect(toastSnapshot.ariaLive).toBe("polite");
+  expect(toastSnapshot.text).toBe("Link copied");
+  expect(toastSnapshot.left).toBeGreaterThanOrEqual(0);
+  expect(toastSnapshot.right).toBeLessThanOrEqual(toastSnapshot.viewportWidth);
+  expect(toastSnapshot.bottom).toBeLessThanOrEqual(
+    toastSnapshot.viewportHeight,
+  );
 
   await chapterCopyButton.press("Enter");
   await expect

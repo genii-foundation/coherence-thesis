@@ -11,7 +11,7 @@
     "preview:dev:status": "node scripts/dev/preview.mjs status",
     "preview:dev:stop": "node scripts/dev/preview.mjs stop",
     "predev:e2e": "npm run manuscripts:prepare",
-    "dev:e2e": "NEXT_E2E_FAST=1 next dev --hostname 127.0.0.1 --port 3200",
+    "dev:e2e": "tsx scripts/dev/e2e-dev-server.ts",
     "prebuild": "npm run manuscripts:prepare",
     "build": "npm run updates:prepare && COHERENCE_UPDATES_SOURCE=generated next build",
     "prestart": "npm run manuscripts:prepare",

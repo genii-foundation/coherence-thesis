@@ -254,7 +254,7 @@ npm run test:e2e:fast:desktop
 npm run test:e2e:fast
 ```
 
-`npm run test:e2e:fast` reuses or starts an isolated development server at `http://127.0.0.1:3200`. For repeated desktop loops, run `npm run dev:e2e` in one terminal and `npm run test:e2e:fast:desktop` in another.
+`npm run test:e2e:fast` reuses or starts an isolated development server on `127.0.0.1`, at a port derived from the checkout path in the range 3200 to 3299. Each worktree therefore gets its own server, and repeated runs in one worktree still reuse it. `npm run dev:e2e` prints the address it binds. Set `PLAYWRIGHT_BASE_URL` to pin a specific one. For repeated desktop loops, run `npm run dev:e2e` in one terminal and `npm run test:e2e:fast:desktop` in another.
 
 GitHub Actions runs validation and the full Playwright suite for pull requests and pushes to `main`.
 

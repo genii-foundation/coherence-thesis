@@ -1,4 +1,4 @@
-import { expect, type Page } from "@playwright/test";
+import { expect, type Locator, type Page } from "@playwright/test";
 import audioManifestSource from "../../publishing/audio/manifest.json";
 import {
   clipVoicePreferenceId,
@@ -136,6 +136,119 @@ export const parentSectionContainer = partById(
 export const currentYear = new Date().getFullYear();
 export const copyrightYearLabel =
   currentYear > 2026 ? `2026 to ${currentYear}` : "2026";
+
+// Hydration can trail the load event by a long way when the suite runs in
+// parallel, and a toolbar trigger is visible and hit testable the whole time.
+// Clicking inside that window drops the press silently, which then reads as
+// "the menu never opened" five seconds later. Wait for the island to report
+// itself interactive, then confirm the press actually landed.
+const hydrationTimeout = 15_000;
+
+export async function expectToolbarTriggerReady(
+  trigger: Locator,
+): Promise<void> {
+  await expect(trigger).toHaveAttribute("data-toolbar-menu-ready", "true", {
+    timeout: hydrationTimeout,
+  });
+}
+
+export async function openToolbarMenu(
+  page: Page,
+  name: string | RegExp,
+): Promise<Locator> {
+  const trigger = page.getByRole("button", { name });
+  await expectToolbarTriggerReady(trigger);
+  await trigger.click();
+  await expect(trigger).toHaveAttribute("aria-expanded", "true");
+
+  return trigger;
+}
+
+// For tests that read toolbar geometry or labels rather than opening a menu.
+// The percentage, breadcrumb and mobile context all fill in on hydration, so
+// measuring earlier measures the server rendered shell.
+export async function expectToolbarInteractive(page: Page): Promise<void> {
+  const triggers = page.locator("[data-toolbar-menu-trigger]");
+  await expect
+    .poll(
+      async () => {
+        const total = await triggers.count();
+        const ready = await page
+          .locator("[data-toolbar-menu-trigger][data-toolbar-menu-ready]")
+          .count();
+        return total > 0 && ready === total;
+      },
+      { timeout: hydrationTimeout },
+    )
+    .toBe(true);
+}
+
+// The cover flow drives its own transform animation and publishes the target
+// and visual scroll offsets while it runs. Reading geometry before those agree
+// samples a frame mid-ease.
+export async function expectCoverFlowSettled(page: Page): Promise<void> {
+  const scroller = page.locator(".cover-flow-scroll");
+  await expect
+    .poll(
+      () =>
+        scroller.evaluate(
+          (element) =>
+            element.dataset.coverFlowTargetScroll !== undefined &&
+            element.dataset.coverFlowVisualScroll !== undefined,
+        ),
+      { timeout: hydrationTimeout },
+    )
+    .toBe(true);
+  await expect
+    .poll(() =>
+      scroller.evaluate((element) =>
+        Math.abs(
+          Number(element.dataset.coverFlowTargetScroll) -
+            Number(element.dataset.coverFlowVisualScroll),
+        ),
+      ),
+    )
+    .toBeLessThan(0.06);
+}
+
+// The panel carries is-height-locked for exactly as long as its height
+// transition is running, and drops it on transitionend.
+export async function expectPanelHeightSettled(panel: Locator): Promise<void> {
+  await expect(panel).not.toHaveClass(/is-height-locked/);
+}
+
+// Wheel and scrollBy both hand off to an animated scroll, so "scrollY moved"
+// is not the same as "scrolling finished". Wait for two consecutive frames at
+// the same offset before sampling anything positioned against the viewport.
+export async function expectScrollSettled(page: Page): Promise<void> {
+  const settled = await page.evaluate(
+    () =>
+      new Promise<boolean>((resolve) => {
+        let previous = window.scrollY;
+        let stableFrames = 0;
+        let frames = 0;
+        const check = () => {
+          const current = window.scrollY;
+          stableFrames = current === previous ? stableFrames + 1 : 0;
+          previous = current;
+          if (stableFrames >= 2) {
+            resolve(true);
+            return;
+          }
+          frames += 1;
+          // Three seconds of frames. Bounded so a scroll that never settles
+          // reports itself rather than hanging until the test timeout.
+          if (frames >= 180) {
+            resolve(false);
+            return;
+          }
+          requestAnimationFrame(check);
+        };
+        requestAnimationFrame(check);
+      }),
+  );
+  expect(settled, "scroll offset did not settle").toBe(true);
+}
 
 export function hexToRgb(hex: string): string {
   const value = Number.parseInt(hex.slice(1), 16);

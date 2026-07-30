@@ -10,6 +10,10 @@ import {
   wieldingDiagnosis,
   wieldingSection,
   expectMenuFitsViewport,
+  expectScrollSettled,
+  expectToolbarInteractive,
+  expectToolbarTriggerReady,
+  openToolbarMenu,
 } from "./fixtures";
 
 type PixelRegionSample = {
@@ -425,6 +429,7 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   });
 
   await page.goto(wieldingSection.href);
+  await expectToolbarInteractive(page);
 
   const layout = await page.evaluate(() => {
     const header = document
@@ -997,6 +1002,7 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   await page.goto("/");
   const homeProgressButton = page.getByRole("button", { name: /Progress/ });
   await expect(homeProgressButton).toBeVisible();
+  await expectToolbarTriggerReady(homeProgressButton);
   await homeProgressButton.click();
   await expect(homeProgressButton).toHaveAttribute("aria-expanded", "true");
   const popover = page.getByRole("region", { name: "Reader progress" });
@@ -1065,7 +1071,7 @@ test("toolbar popovers slide, fade, and resize through content changes", async (
 }) => {
   await page.goto(wieldingSection.href);
 
-  await page.getByRole("button", { name: "Search manuscripts" }).click();
+  await openToolbarMenu(page, "Search manuscripts");
   const searchMenu = page.getByRole("region", { name: "Manuscript search" });
   const searchPopover = page.locator(".search-popover");
   await expect(searchMenu).toBeVisible();
@@ -1211,7 +1217,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
 
   await page.goto(wieldingSection.href);
 
-  await page.getByRole("button", { name: "Search manuscripts" }).click();
+  await openToolbarMenu(page, "Search manuscripts");
   const searchMenu = page.getByRole("region", { name: "Manuscript search" });
   await expectToolbarTriggerActive(page, ".search-menu-button");
   await expectRestingControlBorder(page, ".search-field input");
@@ -1400,7 +1406,7 @@ test("mobile toolbar popovers open flush below the toolbar", async ({ page }) =>
 
   await page.goto(wieldingSection.href);
 
-  await page.getByRole("button", { name: "Search manuscripts" }).click();
+  await openToolbarMenu(page, "Search manuscripts");
   await expect(page.getByRole("region", { name: "Manuscript search" })).toBeVisible();
   await expectMobilePopoverStartsBelowToolbar(
     page,
@@ -1660,6 +1666,7 @@ test("toolbar stays with the viewport in portrait and desktop layouts", async ({
       : { width: 1280, height: 720 },
   );
   await page.goto(wieldingSection.href, { waitUntil: "domcontentloaded" });
+  await expectToolbarInteractive(page);
   await page.evaluate(async () => {
     await document.fonts.ready;
     document.documentElement.style.scrollBehavior = "auto";
@@ -1727,6 +1734,10 @@ test("toolbar stays with the viewport in portrait and desktop layouts", async ({
         .poll(() => page.evaluate(() => window.scrollY))
         .toBeLessThan(previousScrollY);
     }
+    // scrollY passing the previous offset only means the scroll started. The
+    // sticky header is sampled against the viewport, so it has to be read once
+    // the offset stops moving, not one frame into an animated scroll.
+    await expectScrollSettled(page);
     samples.push(await sampleHeader());
   }
 

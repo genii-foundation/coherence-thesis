@@ -590,6 +590,19 @@ export function ManuscriptCoverFlowIsland({
       const scroller = scrollRef.current;
       if (!scroller) return;
 
+      // A deep linked hash holds the hash writer until the carousel reaches that
+      // volume, so an arriving reader keeps the link they followed. Sending the
+      // carousel somewhere else supersedes that link, and the hold has to lift
+      // here: the writer only releases it on arrival, so a reader who picks a
+      // different cover first would otherwise leave the hash frozen on the
+      // original volume for the rest of the page's life.
+      if (
+        pendingHashIndexRef.current !== null &&
+        pendingHashIndexRef.current !== nextIndex
+      ) {
+        pendingHashIndexRef.current = null;
+      }
+
       cancelCoverFlowWheelGesture();
       const snap = snapRefs.current[nextIndex];
       if (!snap) return;

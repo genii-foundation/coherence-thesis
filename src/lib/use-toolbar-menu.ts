@@ -80,6 +80,17 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     onEscapeRef.current = onEscape;
   });
 
+  // The trigger is server rendered, so it is on screen and hit testable before
+  // this island hydrates, and a press landing in that window is dropped with no
+  // trace. Marking the node once the effect runs gives that moment a name, so a
+  // browser test can wait for the button to actually respond instead of racing
+  // hydration and then reporting the menu as missing.
+  useEffect(() => {
+    const trigger = triggerRef.current;
+    if (!trigger) return;
+    trigger.dataset.toolbarMenuReady = "true";
+  }, []);
+
   const clearTransitionFrame = useCallback(() => {
     if (transitionFrameRef.current === null) return;
     window.cancelAnimationFrame(transitionFrameRef.current);

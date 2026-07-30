@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import {
+  expectToolbarTriggerReady,
   firstSection,
   firstSectionVolume,
   firstSectionPdfFileName,
@@ -37,6 +38,7 @@ test("reader share menu exposes page sharing and PDF downloads", async ({
   const shareButton = page.getByRole("button", { name: "Share and downloads" });
   await expect(shareButton).toBeVisible();
   await expect(shareButton).toHaveText("");
+  await expectToolbarTriggerReady(shareButton);
   await shareButton.click();
 
   const shareMenu = page.getByRole("region", { name: "Share and downloads" });
@@ -118,6 +120,7 @@ test("volume share menu only offers the full manuscript download", async ({
 
   const shareButton = page.getByRole("button", { name: "Share and downloads" });
   await expect(shareButton).toBeVisible();
+  await expectToolbarTriggerReady(shareButton);
   await shareButton.click();
 
   const shareMenu = page.getByRole("region", { name: "Share and downloads" });
@@ -172,6 +175,7 @@ test("singleton section share menu offers both PDF downloads", async ({
 
   const shareButton = page.getByRole("button", { name: "Share and downloads" });
   await expect(shareButton).toBeVisible();
+  await expectToolbarTriggerReady(shareButton);
   await shareButton.click();
 
   const shareMenu = page.getByRole("region", { name: "Share and downloads" });
@@ -211,6 +215,7 @@ test("homepage share menu only exposes page sharing", async ({ page }) => {
 
   const shareButton = page.getByRole("button", { name: "Share and downloads" });
   await expect(shareButton).toBeVisible();
+  await expectToolbarTriggerReady(shareButton);
   await shareButton.click();
 
   const shareMenu = page.getByRole("region", { name: "Share and downloads" });
