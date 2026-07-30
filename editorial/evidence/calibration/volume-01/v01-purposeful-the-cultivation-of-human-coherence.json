@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-purposeful-the-cultivation-of-human-coherence",
+  "editorialId": "volume-01",
+  "sectionHeading": "PURPOSEFUL: The Cultivation of Human Coherence",
+  "currentHeading": "PURPOSEFUL: The Cultivation of Human Coherence",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Four denials were removed, and each named the exact misreading the sentence after it was about to invite.",
+      "evidence": {
+        "baseline": "The name is not decoration. ... These are not virtues to be admired. ... PURPOSEFUL is delivered not as content but as relationship ... taught not by a single teacher but by many",
+        "shipped": "The name spells out ten capacities ... These are developmental capacities to grow rather than virtues merely to admire. ... PURPOSEFUL is therefore delivered through relationship. ... Many teachers carry it."
+      },
+      "authorizedBy": "Catalog 4.3 across all four.",
+      "diagnosis": "4.3's retention limb keeps a contrast when both sides are plausible. All four rejected readings are the reader's default. A ten-letter backronym reads as decoration until told otherwise. A list of capitalized nouns reads as virtues. A year-long curriculum reads as content delivered by a teacher, which is why the denial and the curriculum sit in adjacent paragraphs. The pass kept the virtues contrast in a subordinated form and deleted the other three outright.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The section's opening lost the sentence that answers the section before it.",
+      "evidence": {
+        "baseline": "We begin with the ground. The first movement is the cultivation itself: the slow, ancient, irreducibly human work",
+        "shipped": "We begin with the slow, ancient, irreducibly human work"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The preceding section closes on we take them in turn, the ground first. We begin with the ground is the answering beat, and the first movement is the cultivation itself tells the reader which of the two named movements they are now inside. The card names ritual repetition of the organic terms as structural memory, and this is the handoff between the ground and the flower on which Part Two is built.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The display line closing the section was rebuilt, losing the question it poses and the wayfinding that places it.",
+      "evidence": {
+        "baseline": "And how it travels, how the trust that genuine development generates can move between strangers, across distance, without surveillance and without a central authority, is the forward-facing architecture itself: Providence, and the currency at its heart. It is the second movement, and the one this book has been circling from the start.",
+        "shipped": "Providence is the forward-facing architecture through which cultivated trust can move among strangers and across distance without surveillance or central authority. At its heart is a currency."
+      },
+      "authorizedBy": "Compression, and catalog 4.23 plausibly applied to the second sentence as a meta claim about the book.",
+      "diagnosis": "The baseline poses the question the next section answers and then names its place in the volume's structure. The revision states an answer to a question it no longer asks. Without surveillance and without a central authority is two invariants with the preposition repeated, and the card lists the surveillance invariants among the protected structural devices. The closing sentence is wayfinding of the kind 4.23's retention limb keeps in a long philosophical work.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "A demonstration was converted into a test, and a plan into a possibility.",
+      "evidence": {
+        "baseline": "gatherings small enough that the coherence which can arise between two people is shown to be possible among many ... the Doors are woven into the application itself, so that what now depends on physical proximity can eventually reach anyone, anywhere, who is ready",
+        "shipped": "gatherings small enough to discover whether the coherence possible between two people can arise among many ... the Doors can be woven into the application so that work now dependent on physical proximity may reach anyone ready to enter"
+      },
+      "authorizedBy": "Nothing identifiable.",
+      "diagnosis": "Is shown to be possible claims the retreats demonstrate something; to discover whether makes them an open experiment. Are woven and can be woven differ the same way, and can reach became may reach. The frame over time, as Providence grows already marks the passage as a plan rather than a report, so the added modals hedge an already hedged claim. Modality belongs to the author. Anyone, anywhere is also a pair with a comma pause, not a single quantifier.",
+      "producedRule": "R-TENSE"
+    },
+    {
+      "id": "F5",
+      "summary": "Three claims about the Doors were removed while their descriptions were kept.",
+      "evidence": {
+        "baseline": "the oldest form of human development there is ... matched with care rather than left to chance ... the most accessible and the most scalable ... each offering one true piece of what they have learned to live",
+        "shipped": "where one person's accumulated wisdom meets another's readiness through a match made with care ... and most scalable ... each offering something they have learned to live"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Rather than left to chance is what distinguishes this matching from any social network's, which is the objection the paragraph exists to meet. The oldest form of human development there is the volume's argument for why mentorship comes first. Accessible and scalable are separate claims and the doubled superlative was reduced to one, the same change recorded two sections earlier. One true piece is an exact image and something is not.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F6",
+      "summary": "Two hinge sentences and a causal link were absorbed or deleted.",
+      "evidence": {
+        "baseline": "This is deliberate, and the order matters ... The transaction, in other words, is not primarily financial ... This is why nothing here begins with technology ... it is what holds the whole",
+        "shipped": "(deliberate sentence absent) ... The exchange is not primarily financial ... Nothing here begins with technology ... (holds the whole absent)"
+      },
+      "authorizedBy": "Catalog 4.9 plausibly applied to This is, and compression.",
+      "diagnosis": "4.9's retention limb keeps a scaffold that follows the movement of thought. This is why names a real causal relation: because the exchange is not financial, technology cannot come first. This is deliberate is the sentence establishing that the physical-first sequence is a design decision rather than a limitation, which is the paragraph's whole burden. Transaction is also the commercial word the sentence is denying, and the pass's exchange collides with its own rewrite three paragraphs above, turning a reframing into a repetition.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Eight em dashes. Four introduced a specification or an enumeration and became colons, including the three parallel Door definitions, where the first two were already colons in the baseline and the third was a dash. Two separated two movements and became periods. Two fenced the long appositive question in the closing display line and the syntax was rewritten." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT in the display line. The fenced material is the question the next section answers, and commas could not hold it: three commas already sit inside the fenced clause, so the subject and its verb no longer track on one reading. Recast as two questions followed by the answer, which is what the dashes were performing." },
+        { "kind": "kept", "note": "The pass's addition of Doors to holds these Doors in the most literal way. Catalog 4.10, a genuine vague reference, since these had drifted from its antecedent across an intervening paragraph." },
+        { "kind": "kept", "note": "The unchanged acronym display line and the protected line It is wisdom exchanged for future, both of which the pass left intact." },
+        { "kind": "restored", "note": "Four denials, the opening handoff from the ground, the claims about each Door, the deliberate order of embodied work, the four-beat list's binding and, the transaction framing, the causal this is why, and the closing display line in full." },
+        { "kind": "restored", "note": "The plainer forms the pass had formalized: the ground the coherence grows in rather than the ground in which coherence grows, and the app rather than the application, where the baseline's own register drop lands the two short sentences after it." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Thirteenth consecutive section to need none. F1 is the clearest demonstration in the volume of why 4.3 has two limbs. Every one of the four denials names a misreading the very next clause invites, and a pass reading only the defect limb removed all four, leaving the invitations standing with nothing to answer them."
+  }
+}
