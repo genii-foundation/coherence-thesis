@@ -219,6 +219,7 @@ export function useToolbarMenu<C extends HTMLElement = HTMLDivElement>(
     };
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
+      if (event.defaultPrevented) return;
       if (onEscapeRef.current?.() === false) return;
       beginClose();
       onDismissRef.current?.();

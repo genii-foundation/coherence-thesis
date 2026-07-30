@@ -20,7 +20,7 @@ describe("MarkdownBody inline links", () => {
       <MarkdownBody markdown="Read [this](javascript:alert(1)) safely." />,
     );
 
-    expect(markup).toContain("Read this safely.");
+    expect(markup.replace(/<[^>]+>/g, "")).toBe("Read this safely.");
     expect(markup).not.toContain("javascript:");
     expect(markup).not.toContain("<a");
   });
@@ -42,5 +42,17 @@ describe("MarkdownBody inline links", () => {
     expect(markup).toContain(
       '<a href="/manuscripts/1/the-seed/"><span id="audio-word-v01-example-1"',
     );
+  });
+
+  it("marks eligible words for focus mode without changing the text", () => {
+    const markup = renderToStaticMarkup(
+      <MarkdownBody markdown="Alpha, beta 123 and `code`." />,
+    );
+
+    expect(markup).toContain("focus-emphasis-light");
+    expect(markup).toContain("focus-emphasis-normal");
+    expect(markup).toContain("focus-emphasis-strong");
+    expect(markup).not.toMatch(/<code>.*focus-emphasis.*<\/code>/);
+    expect(markup.replace(/<[^>]+>/g, "")).toBe("Alpha, beta 123 and code.");
   });
 });

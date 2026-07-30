@@ -5,6 +5,14 @@ export const readerFontSizeMin = 85;
 export const readerFontSizeMax = 125;
 export const readerFontSizeStep = 5;
 
+export const readerFocusOptions = [
+  "none",
+  "light",
+  "normal",
+  "strong",
+] as const;
+export type ReaderFocus = (typeof readerFocusOptions)[number];
+
 export const readerThemeOptions = ["textured", "light", "dark", "black"] as const;
 export type ReaderTheme = (typeof readerThemeOptions)[number];
 
@@ -65,6 +73,7 @@ export type ReaderPreferences = {
   theme: ReaderTheme;
   animations: ReaderAnimations;
   highlights: ReaderHighlights;
+  focus: ReaderFocus;
 };
 
 export const defaultReaderPreferences: ReaderPreferences = {
@@ -73,6 +82,7 @@ export const defaultReaderPreferences: ReaderPreferences = {
   theme: "textured",
   animations: "balanced",
   highlights: "on",
+  focus: "none",
 };
 
 export const defaultReaderThemeColor =
@@ -170,6 +180,17 @@ function parseHighlights(value: unknown): ReaderHighlights {
   return defaultReaderPreferences.highlights;
 }
 
+function parseFocus(value: unknown): ReaderFocus {
+  if (
+    typeof value === "string" &&
+    readerFocusOptions.includes(value as ReaderFocus)
+  ) {
+    return value as ReaderFocus;
+  }
+
+  return defaultReaderPreferences.focus;
+}
+
 export function parseReaderPreferences(raw: string | null): ReaderPreferences {
   if (!raw) return defaultReaderPreferences;
 
@@ -191,6 +212,7 @@ export function parseReaderPreferences(raw: string | null): ReaderPreferences {
       highlights: storedSchemaIsCurrent
         ? parseHighlights(parsed.highlights)
         : defaultReaderPreferences.highlights,
+      focus: parseFocus(parsed.focus),
     };
   } catch {
     return defaultReaderPreferences;
@@ -215,6 +237,7 @@ export function applyReaderPreferences(
   root.dataset.readerTheme = preferences.theme;
   root.dataset.readerAnimations = preferences.animations;
   root.dataset.readerHighlights = preferences.highlights;
+  root.dataset.readerFocus = preferences.focus;
   root.style.setProperty(
     "--reader-font-scale",
     (preferences.fontSize / 100).toString(),

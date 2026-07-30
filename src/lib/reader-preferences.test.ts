@@ -33,6 +33,7 @@ describe("reader preferences", () => {
           animations: "none",
           highlights: "on",
           schemaVersion: 2,
+          focus: "strong",
         }),
       ),
     ).toEqual({
@@ -41,6 +42,7 @@ describe("reader preferences", () => {
       theme: "black",
       animations: "none",
       highlights: "on",
+      focus: "strong",
     });
   });
 
@@ -65,6 +67,12 @@ describe("reader preferences", () => {
         JSON.stringify({ highlights: "off", schemaVersion: 2 }),
       ).highlights,
     ).toBe("off");
+  });
+
+  test("defaults focus mode off when the stored value is absent or invalid", () => {
+    for (const stored of [{}, { focus: "heavy" }, { focus: 3 }]) {
+      expect(parseReaderPreferences(JSON.stringify(stored)).focus).toBe("none");
+    }
   });
 
   test("maps legacy font preferences to variable font choices", () => {
@@ -114,9 +122,10 @@ describe("reader preferences", () => {
         theme: "light",
         animations: "balanced",
         highlights: "on",
+        focus: "light",
       }),
     ).toBe(
-      '{"fontSize":90,"fontFamily":"source-serif","theme":"light","animations":"balanced","highlights":"on","schemaVersion":2}',
+      '{"fontSize":90,"fontFamily":"source-serif","theme":"light","animations":"balanced","highlights":"on","focus":"light","schemaVersion":2}',
     );
   });
 });

@@ -251,6 +251,7 @@ function preferenceLines(preferences: ReaderPreferences | null): string[] {
     `- Text size: ${formatNumber(preferences.fontSize)}%`,
     `- Animations: ${preferences.animations}`,
     `- Bookmark highlights: ${preferences.highlights}`,
+    `- Focus mode: ${preferences.focus}`,
     "",
   ];
 }
