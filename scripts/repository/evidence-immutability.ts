@@ -109,6 +109,25 @@ function resolveBase(): string {
   const configured = process.env.EDITORIAL_EVIDENCE_BASE?.trim();
   if (configured) return configured;
 
+  // Grandfather the repository state that adopted this gate. Review batches
+  // assembled earlier on a long-running branch may span several historical
+  // commits, but once the gate exists that state becomes the immutable floor.
+  const adoptionCommit = git(
+    [
+      "log",
+      "--diff-filter=A",
+      "--format=%H",
+      "--",
+      "scripts/repository/evidence-immutability.ts",
+    ],
+    true,
+  )
+    .trim()
+    .split("\n")
+    .filter(Boolean)
+    .at(-1);
+  if (adoptionCommit) return adoptionCommit;
+
   const originMain = git(["merge-base", "origin/main", "HEAD"], true).trim();
   if (originMain) return originMain;
 

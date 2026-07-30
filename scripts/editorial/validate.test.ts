@@ -26,6 +26,11 @@ function writeJson(filePath: string, value: unknown): void {
 function voiceCard(approval = "pending author review"): string {
   return `# Voice Card
 
+## Corpus inheritance
+
+- Inherits: \`../../corpus/voice-card.md\`
+- Where this volume departs: Fixture-specific voice.
+
 ## Identity
 
 Identity guidance.
@@ -88,6 +93,23 @@ function buildFixture(): Fixture {
       `volume-${String(index).padStart(2, "0")}`,
       batchId,
     );
+
+  const corpusVoiceCardPath = path.join(
+    root,
+    "editorial/sources/corpus/voice-card.md",
+  );
+  fs.mkdirSync(path.dirname(corpusVoiceCardPath), { recursive: true });
+  fs.writeFileSync(
+    corpusVoiceCardPath,
+    `# Corpus Voice Card
+
+## Corpus rules
+
+- Relationship to the reader: Invite scrutiny.
+- Cadence: Preserve meaningful variation.
+- Emotional temperature: Earn hope.
+`,
+  );
 
   for (let index = 1; index <= 9; index += 1) {
     const number = String(index).padStart(2, "0");

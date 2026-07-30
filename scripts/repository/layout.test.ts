@@ -21,6 +21,10 @@ function fixturePaths(root: string): RepositoryLayoutPaths {
     editorialCorpusRoot: path.join(editorialSourcesRoot, "corpus"),
     editorialOverviewRoot: path.join(editorialSourcesRoot, "overview"),
     editorialVolumesRoot: path.join(editorialSourcesRoot, "volumes"),
+    corpusVoiceCardPath: path.join(
+      editorialSourcesRoot,
+      "corpus/voice-card.md",
+    ),
     masterLedgerPath: path.join(
       editorialSourcesRoot,
       "corpus/master-ledger.md",
@@ -59,6 +63,7 @@ function writeFile(filePath: string, contents: string): void {
 }
 
 function createValidFixture(paths: RepositoryLayoutPaths): void {
+  writeFile(paths.corpusVoiceCardPath, "# Corpus voice card\n");
   writeFile(paths.masterLedgerPath, "# Master ledger\n");
   writeFile(
     paths.semanticLinksPath,
@@ -120,7 +125,7 @@ describe("repository layout validation", () => {
         (_, index) => `volume-${String(index + 1).padStart(2, "0")}`,
       ),
     );
-    expect(audit.sourceFiles).toHaveLength(30);
+    expect(audit.sourceFiles).toHaveLength(31);
     expect(audit.publishingFiles).toHaveLength(9);
   });
 

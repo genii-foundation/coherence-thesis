@@ -8,8 +8,8 @@ import path from "node:path";
 import {
   normalizeProtectedText,
   protectedLinesFrom,
-} from "../../../scripts/editorial/protected-lines";
-import { slugify } from "../../../scripts/manuscripts/io";
+} from "@/lib/editorial-controls";
+import { slugify } from "@/lib/slugify";
 
 // The reader app resolves these from the working directory rather than importing
 // scripts/repository/paths, which is Node script tooling and relies on
