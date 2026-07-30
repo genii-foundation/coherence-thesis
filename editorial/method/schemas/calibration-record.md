@@ -28,6 +28,8 @@ A calibration record fixes that by storing three things a ledger cannot: what a 
 - `rulings`: the author's decisions, each one binding on future passes
 - `rulesDerived`: identifiers this calibration contributed to the standard's rule index
 - `openQuestions`: judgments the author has not yet made
+- `debtImpact`: debt items the section touches, with effect and note; an empty array records that the section touches none
+- `debtAudit`: a dated audit identifier, durable record path, and result when a later ledger audit amends the record
 
 ## `findings`
 
@@ -56,15 +58,16 @@ Label descent is positional. A root takes a letter. Its child appends `1`, its g
 
 ## `rulings`
 
-An author decision. Binding.
+A recorded decision or working note. It is binding only when `by` is `author`.
 
 - `id`: stable within the record
 - `question`: what was decided
 - `decision`: the decision in the author's terms
 - `rationale`: why, when the author gave one
 - `scope`: `section`, `volume`, or `corpus`
+- `by`: `author` or `editorial-agent`
 
-`scope` governs reuse. A `section` ruling settles this passage. A `corpus` ruling constrains every future pass and should produce an entry in `rulesDerived`.
+`scope` governs reuse after authority is established. A section-scoped author ruling settles this passage. A corpus-scoped author ruling constrains every future pass and should produce an entry in `rulesDerived`. An editorial-agent entry records reasoning, not author authority, and may not promote itself into a binding corpus rule.
 
 ## The example problem
 
@@ -82,6 +85,7 @@ So a ruling enters the standard as an obligation stated in general terms, verifi
 4. The author rules. Rulings are recorded with scope.
 5. Corpus-scoped rulings are generalized into obligations and added to the standard's rule index. Their identifiers are recorded in `rulesDerived`.
 6. The record moves to `status: settled`. A settled record is never edited to match a later opinion. A changed judgment supersedes it, and the superseded record remains as history.
+7. A later ledger audit may append `debtImpact` or `debtAudit` evidence without rewriting the original findings, variants, rulings, or conclusion.
 
 ## Rendering
 
