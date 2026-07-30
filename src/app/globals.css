@@ -1577,14 +1577,7 @@ input {
 
 /* Every toolbar trigger carries the open state, so a reader can always see
    which button produced the menu in front of them. */
-.site-nav > * > button[data-toolbar-menu-trigger][aria-expanded="true"]:not(
-    .progress-menu-button
-  ) {
-  background: var(--nav-hover-background);
-  color: var(--ink);
-}
-
-.site-nav > * > .audio-menu-button[data-toolbar-menu-trigger][aria-expanded="true"] {
+.site-nav > * > button[data-toolbar-menu-trigger][aria-expanded="true"] {
   background: var(--nav-hover-background);
   color: var(--ink);
 }
@@ -2532,20 +2525,14 @@ a.bookmark-quote:focus-visible {
 }
 
 @media (min-width: 861px) {
-  .site-nav
-    > *
-    > button[data-toolbar-menu-trigger][aria-expanded="true"]:not(
-      .audio-menu-button
-    ) {
+  .site-nav > * > button[data-toolbar-menu-trigger][aria-expanded="true"] {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
 
   .site-nav
     > *
-    > button[data-toolbar-menu-trigger][aria-expanded="true"]:not(
-      .audio-menu-button
-    )
+    > button[data-toolbar-menu-trigger][aria-expanded="true"]
     + [data-menu-state="open"] {
     border-top-right-radius: 0;
   }
