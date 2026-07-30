@@ -127,6 +127,7 @@ interface Rendered extends Generation {
   cadence: { n: number; end: boolean }[];
   col?: number;
   row?: number;
+  span?: number;
   plain: string[];
   diff: string[];
 }
@@ -169,14 +170,38 @@ function render(record: CalibrationRecord, baseText: string[], currentText: stri
     ...measure(g.text, baseWords, baseText),
   })) as Rendered[];
 
-  // Lineage grid. A root takes a column; a child stacks directly beneath its parent.
+  // Lineage grid. Depth sets the row. Columns are allocated by walking the tree so
+  // that siblings sit side by side and never collide in one cell: a leaf takes the
+  // next free column, and a parent adopts its first child's column so descent reads
+  // as a straight vertical line.
   const byLabel = new Map(gens.map((g) => [g.label, g]));
-  let nextCol = 0;
+  const childrenOf = new Map<string, Rendered[]>();
+  const roots: Rendered[] = [];
   for (const g of gens) {
     const parent = g.derivedFrom ? byLabel.get(g.derivedFrom) : undefined;
-    if (parent) { g.col = parent.col; g.row = (parent.row ?? 1) + 1; }
-    else { nextCol += 1; g.col = nextCol; g.row = 1; }
+    if (!parent) { roots.push(g); continue; }
+    const siblings = childrenOf.get(parent.label) ?? [];
+    siblings.push(g);
+    childrenOf.set(parent.label, siblings);
   }
+  // A leaf occupies one column. A parent spans the full width of its children, so it
+  // sits visually above every one of them and siblings never appear orphaned under
+  // empty space. Depth sets the row, so the vertical axis stays strictly generational.
+  let nextCol = 0;
+  const place = (node: Rendered, depth: number): void => {
+    node.row = depth;
+    const kids = childrenOf.get(node.label) ?? [];
+    if (kids.length === 0) {
+      nextCol += 1;
+      node.col = nextCol;
+      node.span = 1;
+      return;
+    }
+    for (const kid of kids) place(kid, depth + 1);
+    node.col = kids[0].col;
+    node.span = kids.reduce((total, kid) => total + (kid.span ?? 1), 0);
+  };
+  for (const root of roots) place(root, 1);
   const all = [...gens, shipped];
   const candidate = gens.find((g) => g.status === "candidate" || g.status === "approved") ?? gens[gens.length - 1];
   const maxBar = Math.max(...[baseRow, ...all].flatMap((v) => v.cadence.map((c) => c.n)), 1);
@@ -222,7 +247,7 @@ function render(record: CalibrationRecord, baseText: string[], currentText: stri
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
  -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
-.wrap{max-width:1260px;margin:0 auto;padding:18px 22px 56px}
+.wrap{max-width:none;margin:0;padding:18px 26px 56px}
 .micro{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-muted);opacity:.85}
 .top{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;padding-bottom:10px;border-bottom:1px solid var(--line)}
 .top h1{font-size:19px;font-weight:600;margin:0}
@@ -256,7 +281,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
 .metrics b{color:var(--ink);font-weight:600}
 .delta.neg{color:var(--cut)}.delta.pos{color:var(--sage)}
 .prose{font-size:16.5px;line-height:1.66;padding:17px 20px 18px}
-.prose p{margin:0 0 1em;max-width:62ch}
+.prose p{margin:0 0 1em;max-width:74ch}
 .prose p:last-child{margin-bottom:0}
 ins{background:var(--add);text-decoration:none}
 del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-decoration-thickness:1px}
@@ -272,8 +297,12 @@ del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-
 .chip-candidate,.chip-approved{background:var(--bronze-deep);border-color:var(--bronze-deep);color:var(--paper-soft)}
 .chip-rejected{text-decoration:line-through;opacity:.7}
 .chip-warn{color:var(--cut);border-color:var(--cut)}
-.foot{display:grid;grid-template-columns:1.35fr 1fr;gap:13px;margin-top:13px;align-items:start}
-@media (max-width:940px){.foot{grid-template-columns:1fr}}
+.reasoning-block{margin-top:13px}
+.context{margin-top:13px}
+.context-grid{display:grid;grid-template-columns:1.6fr 1.1fr 1fr;gap:26px;align-items:start}
+@media (max-width:1100px){.context-grid{grid-template-columns:1fr}}
+.explain{margin:0 0 11px;font-size:12.5px;line-height:1.55;color:var(--ink-muted);max-width:70ch}
+.explain code{font-size:11.5px;color:var(--bronze-deep)}
 .block{padding:15px 18px 17px}
 .block>.micro{margin-bottom:10px}
 .moves{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:13.5px;line-height:1.5}
@@ -316,34 +345,54 @@ del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-
   <div class="head-left"><span class="micro">Baseline, pinned</span></div>
   <div class="head-right"><div class="sheet selector">
     <div class="tabgrid" role="tablist" style="grid-template-columns:repeat(${Math.max(nextCol, 1)},minmax(0,1fr))">
-      ${gens.map((g) => `<button class="tab is-${g.status}${g.derivedFrom ? " derived" : ""}" role="tab" aria-selected="${g.key === candidate?.key}" data-target="${g.key}" style="grid-column:${g.col};grid-row:${g.row}">${esc(g.label)}</button>`).join("")}
+      ${gens.map((g) => {
+        // The descent connector only reads correctly for a child sitting directly
+        // beneath its parent. Siblings placed in adjacent columns get none.
+        const p = g.derivedFrom ? byLabel.get(g.derivedFrom) : undefined;
+        const inline = p ? " derived" : "";
+        return `<button class="tab is-${g.status}${inline}" role="tab" aria-selected="${g.key === candidate?.key}" data-target="${g.key}" style="grid-column:${g.col} / span ${g.span ?? 1};grid-row:${g.row}">${esc(g.label)}</button>`;
+      }).join("")}
     </div>
     <div class="refrow"><button class="tab is-reference" role="tab" aria-selected="false" data-target="shipped">Shipped</button></div>
   </div></div>
   <div class="body-left">${pane(baseRow, true, true)}</div>
-  <div class="body-right">${all.map((v) => pane(v, v.key === candidate?.key, false)).join("")}</div>
-</div>
-<div class="foot">
-  <div class="sheet block">
-    <div class="micro">Editorial reasoning</div>
-    ${all.map(reason).join("")}
-    <p class="nojs">Scripting is unavailable, so every variant and its reasoning are shown and diffs are hidden.</p>
+  <div class="body-right">
+    ${all.map((v) => pane(v, v.key === candidate?.key, false)).join("")}
+    <div class="sheet block reasoning-block">
+      <div class="micro">Why this variant reads as it does</div>
+      ${all.map(reason).join("")}
+      <p class="nojs">Scripting is unavailable, so every variant and its reasoning are shown and diffs are hidden.</p>
+    </div>
   </div>
-  <div class="sheet block">
-    ${record.voiceCard?.length ? `<div class="micro">Voice card assertions</div><ul class="vc">${record.voiceCard.map((a) =>
+</div>
+
+<div class="sheet block context">
+  <div class="context-grid">
+    ${record.voiceCard?.length ? `<div>
+      <div class="micro">What the voice card requires</div>
+      <p class="explain">Every volume keeps a voice card at <code>editorial/sources/volumes/${esc(record.editorialId)}/voice-card.md</code>. It is the editorial authority for that volume's register, cadence, protected language, and stance toward the reader, and under <code>R-VOICE-BIND</code> it is binding rather than advisory. The claims below are quoted from it, with the line each sits on. A cross means the variant contradicts a claim the card makes, which is a defect however well the sentence reads on its own.</p>
+      <ul class="vc">${record.voiceCard.map((a) =>
       `<li><span class="lineno">L${a.line}</span><span><span class="claim">${esc(a.claim)}</span><span class="states">${gens.map((g) =>
-        `<span>${tick(a.by[g.key] ?? a.by[g.label])} ${esc(g.label)}</span>`).join("")}</span></span></li>`).join("")}</ul>` : ""}
-    ${record.rulesInForce?.length ? `<div class="micro" style="margin:16px 0 9px">Rules in force</div><ul class="rules">${record.rulesInForce.map((r) =>
+        `<span>${tick(a.by[g.key] ?? a.by[g.label])} ${esc(g.label)}</span>`).join("")}</span></span></li>`).join("")}</ul>
+      <p class="explain">A dot means the claim no longer applies to these variants, usually because an author ruling released it.</p>
+    </div>` : ""}
+    <div>
+      ${record.rulesInForce?.length ? `<div class="micro">Rules in force</div>
+      <p class="explain">Named obligations from <code>editorial/standards/editorial.md</code>. Each was derived from a recorded calibration, so every rule here can be traced to the passage that exposed the need for it.</p>
+      <ul class="rules">${record.rulesInForce.map((r) =>
       `<li><span class="rid">${esc(r.id)}</span><span>${esc(r.obligation)}</span></li>`).join("")}</ul>` : ""}
-    <div class="micro" style="margin:16px 0 9px">Reading the selector</div>
-    <ul class="legend">
-      <li><span class="key key-basis"></span>a basis further variants derive from</li>
-      <li><span class="key key-rejected"></span>considered and not approved</li>
-      <li><span class="key key-candidate"></span>the current candidate</li>
-      <li><span class="key key-descent"></span>stacked below its parent, one generation down</li>
-    </ul>
-    ${record.openQuestions?.length ? `<div class="micro" style="margin:16px 0 9px">Open questions</div><ul class="rules">${record.openQuestions.map((q) =>
+    </div>
+    <div>
+      <div class="micro">Reading the selector</div>
+      <ul class="legend">
+        <li><span class="key key-basis"></span>a basis further variants derive from</li>
+        <li><span class="key key-rejected"></span>considered and not approved</li>
+        <li><span class="key key-candidate"></span>the current candidate</li>
+        <li><span class="key key-descent"></span>stacked below its parent, one generation down</li>
+      </ul>
+      ${record.openQuestions?.length ? `<div class="micro" style="margin:16px 0 9px">Open questions</div><ul class="rules">${record.openQuestions.map((q) =>
       `<li><span class="rid">?</span><span>${esc(q)}</span></li>`).join("")}</ul>` : ""}
+    </div>
   </div>
 </div>
 </div>
