@@ -248,10 +248,14 @@ async function expectMobilePopoverStartsBelowToolbar(
     ({ selector, triggerSelector }) => {
       const popover = document.querySelector(selector);
       const trigger = document.querySelector(triggerSelector);
+      const popoverBox = popover?.getBoundingClientRect();
       const popoverStyle = popover ? window.getComputedStyle(popover) : null;
       const triggerStyle = trigger ? window.getComputedStyle(trigger) : null;
 
       return {
+        popoverLeft: popoverBox?.left ?? Number.POSITIVE_INFINITY,
+        popoverMaxHeight: Number.parseFloat(popoverStyle?.maxHeight ?? "0"),
+        popoverRight: popoverBox?.right ?? Number.NEGATIVE_INFINITY,
         popoverRadiusTopLeft: Number.parseFloat(
           popoverStyle?.borderTopLeftRadius ?? "0",
         ),
@@ -270,6 +274,8 @@ async function expectMobilePopoverStartsBelowToolbar(
         triggerRadiusTopRight: Number.parseFloat(
           triggerStyle?.borderTopRightRadius ?? "0",
         ),
+        viewportHeight: window.innerHeight,
+        viewportWidth: window.innerWidth,
       };
     },
     { selector, triggerSelector },
@@ -281,6 +287,11 @@ async function expectMobilePopoverStartsBelowToolbar(
   expect(metrics.triggerRadiusBottomRight).toBeGreaterThan(0);
   expect(metrics.triggerRadiusTopLeft).toBeGreaterThan(0);
   expect(metrics.triggerRadiusTopRight).toBeGreaterThan(0);
+  expect(metrics.popoverMaxHeight).toBeLessThanOrEqual(
+    metrics.viewportHeight * 0.75 + 1,
+  );
+  expect(metrics.popoverLeft).toBeCloseTo(16, 0);
+  expect(metrics.viewportWidth - metrics.popoverRight).toBeCloseTo(16, 0);
 }
 
 async function expectToolbarTriggerRounded(
@@ -1407,6 +1418,16 @@ test("mobile toolbar popovers open flush below the toolbar", async ({ page }) =>
     ".outline-popover",
   );
   await expectMenuJoinsToolbarWithoutSeam(page, ".outline-popover");
+  await page.keyboard.press("Escape");
+
+  await page.getByRole("button", { name: /^Bookmarks, / }).click();
+  await expect(page.getByRole("region", { name: "Bookmarks" })).toBeVisible();
+  await expectMobilePopoverStartsBelowToolbar(
+    page,
+    ".bookmarks-menu-button",
+    ".bookmarks-popover",
+  );
+  await expectMenuJoinsToolbarWithoutSeam(page, ".bookmarks-popover");
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: "Reader settings" }).click();

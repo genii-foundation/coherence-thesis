@@ -7122,9 +7122,7 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   .audio-popover,
   .settings-popover,
   .progress-popover {
-    /* Generous dead space around the menu so tapping beside it to dismiss is
-       an easy target rather than a precise one. */
-    --toolbar-mobile-popover-side-gap: 2.5rem;
+    --toolbar-mobile-popover-side-gap: 1rem;
     --toolbar-mobile-popover-inline-start: max(
       var(--toolbar-mobile-popover-side-gap),
       env(safe-area-inset-left)
@@ -7133,22 +7131,23 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
       var(--toolbar-mobile-popover-side-gap),
       env(safe-area-inset-right)
     );
-    --toolbar-menu-max-height: calc(
-      100dvh - var(--mobile-toolbar-height) -
-        max(3.5rem, env(safe-area-inset-bottom))
-    );
     --toolbar-mobile-popover-top: var(--mobile-toolbar-height);
     --toolbar-mobile-popover-bottom-gap: max(3.5rem, env(safe-area-inset-bottom));
+    --toolbar-mobile-popover-max-height: min(
+      75dvh,
+      calc(
+        100dvh - var(--toolbar-mobile-popover-top) -
+          var(--toolbar-mobile-popover-bottom-gap)
+      )
+    );
+    --toolbar-menu-max-height: var(--toolbar-mobile-popover-max-height);
 
     position: fixed;
     top: var(--toolbar-mobile-popover-top);
     right: var(--toolbar-mobile-popover-inline-end);
     left: var(--toolbar-mobile-popover-inline-start);
     width: auto;
-    max-height: calc(
-      100dvh - var(--toolbar-mobile-popover-top) -
-        var(--toolbar-mobile-popover-bottom-gap)
-    );
+    max-height: var(--toolbar-mobile-popover-max-height);
     /* The menu reads as the toolbar itself extending downward. It takes the
        toolbar's surface and shadow, carries no border of its own up top, and
        paints a one pixel strip of toolbar colour over the header's bottom
@@ -7172,10 +7171,11 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Both sticky search rows sit flush under the toolbar as the first thing
-     inside their menu, so they take the toolbar's colour too. Left on the
+  /* The sticky search rows sit flush under the toolbar as the first thing
+     inside their menus, so they take the toolbar's colour too. Left on the
      lighter panel colour they put a visibly paler block right at the join. */
   .outline-search,
+  .bookmarks-search,
   .search-field {
     background: var(--header-background);
   }
@@ -7192,32 +7192,10 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
     min-width: 0;
   }
 
-  .outline-popover {
-    max-height: calc(
-      100dvh - var(--toolbar-mobile-popover-top) -
-        var(--toolbar-mobile-popover-bottom-gap)
-    );
-  }
-
-  .search-popover {
-    max-height: calc(
-      100dvh - var(--toolbar-mobile-popover-top) -
-        var(--toolbar-mobile-popover-bottom-gap)
-    );
-  }
-
-  .outline-scroll {
-    max-height: calc(
-      100dvh - var(--toolbar-mobile-popover-top) - 4.45rem -
-        var(--toolbar-mobile-popover-bottom-gap)
-    );
-  }
-
+  .outline-scroll,
+  .bookmarks-scroll,
   .search-results {
-    max-height: calc(
-      100dvh - var(--toolbar-mobile-popover-top) - 4.45rem -
-        var(--toolbar-mobile-popover-bottom-gap)
-    );
+    max-height: calc(var(--toolbar-mobile-popover-max-height) - 4.45rem);
   }
 
   .hero-section,
