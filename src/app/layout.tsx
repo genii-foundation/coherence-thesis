@@ -10,6 +10,7 @@ import { SiteShell } from "@/components/SiteShell";
 import {
   defaultReaderThemeColor,
   readerAnimationOptions,
+  readerFocusOptions,
   readerHighlightOptions,
   readerFontOptions,
   readerFontSizeMax,
@@ -104,7 +105,7 @@ const preferencesBootstrap = `(function(){try{var K=${JSON.stringify(
   legacyFontAliases,
 )},AO=${JSON.stringify(readerAnimationOptions)},HO=${JSON.stringify(
   readerHighlightOptions,
-)},PV=${readerPreferencesSchemaVersion},MIN=${readerFontSizeMin},MAX=${readerFontSizeMax};var raw=localStorage.getItem(K);if(!raw)return;var p=JSON.parse(raw),r=document.documentElement;if(p&&TC[p.theme]){r.dataset.readerTheme=p.theme;var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',TC[p.theme]);}if(p&&typeof p.fontSize==='number'&&p.fontSize>=MIN&&p.fontSize<=MAX){r.style.setProperty('--reader-font-scale',(p.fontSize/100).toString());r.style.setProperty('--reader-font-scale-percent',p.fontSize+'%');}var fid=p&&typeof p.fontFamily==='string'?p.fontFamily:'';var stack=FS[fid]||FS[FA[fid]];if(stack){r.style.setProperty('--font-body',stack);r.style.setProperty('--font-display',stack);r.style.setProperty('--font-ui',stack);}if(p&&AO.indexOf(p.animations)!==-1){r.dataset.readerAnimations=p.animations;}if(p&&p.schemaVersion===PV&&HO.indexOf(p.highlights)!==-1){r.dataset.readerHighlights=p.highlights;}}catch(e){}})();`;
+)},FO=${JSON.stringify(readerFocusOptions)},PV=${readerPreferencesSchemaVersion},MIN=${readerFontSizeMin},MAX=${readerFontSizeMax};var raw=localStorage.getItem(K);if(!raw)return;var p=JSON.parse(raw),r=document.documentElement;if(p&&TC[p.theme]){r.dataset.readerTheme=p.theme;var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',TC[p.theme]);}if(p&&typeof p.fontSize==='number'&&p.fontSize>=MIN&&p.fontSize<=MAX){r.style.setProperty('--reader-font-scale',(p.fontSize/100).toString());r.style.setProperty('--reader-font-scale-percent',p.fontSize+'%');}var fid=p&&typeof p.fontFamily==='string'?p.fontFamily:'';var stack=FS[fid]||FS[FA[fid]];if(stack){r.style.setProperty('--font-body',stack);r.style.setProperty('--font-display',stack);r.style.setProperty('--font-ui',stack);}if(p&&AO.indexOf(p.animations)!==-1){r.dataset.readerAnimations=p.animations;}if(p&&p.schemaVersion===PV&&HO.indexOf(p.highlights)!==-1){r.dataset.readerHighlights=p.highlights;}if(p&&FO.indexOf(p.focus)!==-1){r.dataset.readerFocus=p.focus;}}catch(e){}})();`;
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -170,6 +171,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       data-reader-animations="balanced"
       data-reader-highlights="on"
+      data-reader-focus="none"
       suppressHydrationWarning
     >
       <head>

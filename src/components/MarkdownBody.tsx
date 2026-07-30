@@ -15,9 +15,42 @@ type AudioCursor = {
 };
 
 const wordPattern = /[\p{L}\p{N}][\p{L}\p{N}'’]*/gu;
+const focusWordPattern = /^\p{L}[\p{L}'’]*$/u;
+type FocusTier = "light" | "normal" | "strong";
 
-function renderText(text: string, cursor?: AudioCursor): ReactNode[] {
-  if (!cursor) return [text];
+// Each tier adds a progressively larger but restrained fixation point to the
+// same word. CSS changes only its weight, so text stays stable for audio and bookmarks.
+function focusWordSegments(
+  word: string,
+): Array<{ text: string; tier?: FocusTier }> {
+  const boundaries = [
+    { end: Math.ceil(word.length * 0.15), tier: "light" as const },
+    { end: Math.ceil(word.length * 0.25), tier: "normal" as const },
+    { end: Math.ceil(word.length * 0.35), tier: "strong" as const },
+  ];
+  const segments: Array<{ text: string; tier?: FocusTier }> = [];
+  let offset = 0;
+
+  for (const boundary of boundaries) {
+    if (boundary.end <= offset) continue;
+    segments.push({
+      text: word.slice(offset, boundary.end),
+      tier: boundary.tier,
+    });
+    offset = boundary.end;
+  }
+  if (offset < word.length) segments.push({ text: word.slice(offset) });
+
+  return segments;
+}
+
+function renderText(
+  text: string,
+  cursor?: AudioCursor,
+  focusEligible = true,
+): ReactNode[] {
+  if (!cursor && !focusEligible) return [text];
+
   const nodes: ReactNode[] = [];
   let offset = 0;
   let match: RegExpExecArray | null;
@@ -26,48 +59,84 @@ function renderText(text: string, cursor?: AudioCursor): ReactNode[] {
   while ((match = wordPattern.exec(text)) !== null) {
     if (match.index > offset) nodes.push(text.slice(offset, match.index));
     const word = match[0];
-    const start = cursor.charIndex + match.index;
+    const start = (cursor?.charIndex ?? 0) + match.index;
     const end = start + word.length;
-    const wordIndex = cursor.wordIndex;
-    const wordId = audioWordId(cursor.sectionId, wordIndex);
-    nodes.push(
-      <span
-        id={wordId}
-        key={`${start}-${wordIndex}`}
-        className="audio-word"
-        data-audio-word="true"
-        data-audio-word-id={wordId}
-        data-audio-section-id={cursor.sectionId}
-        data-audio-char-start={start}
-        data-audio-char-end={end}
-      >
-        {word}
-      </span>,
-    );
-    cursor.wordIndex += 1;
+    const wordIndex = cursor?.wordIndex;
+    const wordId =
+      cursor && wordIndex !== undefined
+        ? audioWordId(cursor.sectionId, wordIndex)
+        : undefined;
+    const focusWord =
+      focusEligible && focusWordPattern.test(word) ? word : undefined;
+    const content = focusWord
+      ? focusWordSegments(focusWord).map((segment, segmentIndex) =>
+          segment.tier ? (
+            <span
+              key={`${segment.tier}-${segmentIndex}`}
+              className={`focus-emphasis focus-emphasis-${segment.tier}`}
+            >
+              {segment.text}
+            </span>
+          ) : (
+            segment.text
+          ),
+        )
+      : word;
+    if (!cursor && !focusWord) {
+      nodes.push(word);
+    } else {
+      nodes.push(
+        <span
+          id={wordId}
+          key={`${start}-${wordIndex ?? match.index}`}
+          className={
+            cursor
+              ? `audio-word${focusWord ? " focus-word" : ""}`
+              : "focus-word"
+          }
+          data-audio-word={cursor ? "true" : undefined}
+          data-audio-word-id={wordId}
+          data-audio-section-id={cursor?.sectionId}
+          data-audio-char-start={cursor ? start : undefined}
+          data-audio-char-end={cursor ? end : undefined}
+        >
+          {content}
+        </span>,
+      );
+    }
+    if (cursor) cursor.wordIndex += 1;
     offset = match.index + word.length;
   }
 
   if (offset < text.length) nodes.push(text.slice(offset));
-  cursor.charIndex += text.length;
+  if (cursor) cursor.charIndex += text.length;
   return nodes;
 }
 
 function renderInlineNodes(
   inlineNodes: readonly MarkdownInlineNode[],
   cursor?: AudioCursor,
+  focusEligible = true,
 ): ReactNode[] {
   return inlineNodes.map((node) => {
     const key = `${node.type}-${node.rawStart}-${node.rawEnd}`;
     if (node.type === "text") {
-      return <Fragment key={key}>{renderText(node.value, cursor)}</Fragment>;
+      return (
+        <Fragment key={key}>
+          {renderText(node.value, cursor, focusEligible)}
+        </Fragment>
+      );
     }
     if (node.type === "code") {
-      return <code key={key}>{renderText(node.value, cursor)}</code>;
+      return <code key={key}>{renderText(node.value, cursor, false)}</code>;
     }
     if (node.type === "image") return null;
 
-    const children = renderInlineNodes(node.children, cursor);
+    const children = renderInlineNodes(
+      node.children,
+      cursor,
+      focusEligible && node.type !== "strong",
+    );
     if (node.type === "strong") return <strong key={key}>{children}</strong>;
     if (node.type === "emphasis") return <em key={key}>{children}</em>;
 

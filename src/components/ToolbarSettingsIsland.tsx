@@ -9,13 +9,22 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
-import { Check, ChevronDown, RotateCcw, Settings } from "lucide-react";
+import * as Popover from "@radix-ui/react-popover";
+import {
+  Check,
+  ChevronDown,
+  CircleHelp,
+  ExternalLink,
+  RotateCcw,
+  SlidersVertical,
+} from "lucide-react";
 import {
   applyReaderPreferences,
   defaultReaderPreferences,
   fontOptionById,
   parseReaderPreferences,
   readerAnimationOptions,
+  readerFocusOptions,
   readerHighlightOptions,
   type ReaderHighlights,
   readerFontOptions,
@@ -27,6 +36,7 @@ import {
   serializeReaderPreferences,
   type ReaderAnimations,
   type ReaderFontId,
+  type ReaderFocus,
   type ReaderPreferences,
   type ReaderTheme,
 } from "@/lib/reader-preferences";
@@ -77,11 +87,20 @@ function animationLabel(animations: ReaderAnimations): string {
   return "None";
 }
 
+function focusLabel(focus: ReaderFocus): string {
+  if (focus === "light") return "Light";
+  if (focus === "normal") return "Balanced";
+  if (focus === "strong") return "Strong";
+  return "None";
+}
+
 export function ToolbarSettingsIsland() {
   const pathname = usePathname();
   const fontButtonRef = useRef<HTMLButtonElement | null>(null);
   const fontOptionsRef = useRef<HTMLDivElement | null>(null);
+  const researchPopoverRef = useRef<HTMLDivElement | null>(null);
   const [fontMenuOpen, setFontMenuOpen] = useState(false);
+  const [researchOpen, setResearchOpen] = useState(false);
   const [fontMenuPosition, setFontMenuPosition] = useState<FontMenuPosition>({
     left: 0,
     maxHeight: 320,
@@ -98,9 +117,16 @@ export function ToolbarSettingsIsland() {
     triggerProps,
     popoverProps,
   } = useToolbarMenu<HTMLDivElement>({
-    floatingRefs: [fontOptionsRef],
-    onDismiss: () => setFontMenuOpen(false),
+    floatingRefs: [fontOptionsRef, researchPopoverRef],
+    onDismiss: () => {
+      setFontMenuOpen(false);
+      setResearchOpen(false);
+    },
     onEscape: () => {
+      if (researchOpen) {
+        setResearchOpen(false);
+        return false;
+      }
       if (!fontMenuOpen) return true;
       setFontMenuOpen(false);
       return false;
@@ -125,6 +151,7 @@ export function ToolbarSettingsIsland() {
     const closeTimer = window.setTimeout(() => {
       setOpen(false);
       setFontMenuOpen(false);
+      setResearchOpen(false);
     }, 0);
     return () => window.clearTimeout(closeTimer);
   }, [pathname, setOpen]);
@@ -144,6 +171,7 @@ export function ToolbarSettingsIsland() {
 
   function toggleFontMenu(): void {
     setFontMenuPosition((current) => ({ ...current, ready: false }));
+    setResearchOpen(false);
     setFontMenuOpen((current) => !current);
   }
 
@@ -235,6 +263,8 @@ export function ToolbarSettingsIsland() {
   const fontFamilyIsDefault =
     preferences.fontFamily === defaultReaderPreferences.fontFamily;
   const themeIsDefault = preferences.theme === defaultReaderPreferences.theme;
+  const focusIsDefault = preferences.focus === defaultReaderPreferences.focus;
+  const focusIndex = readerFocusOptions.indexOf(preferences.focus);
   const fontOptions =
     fontMenuOpen && typeof document !== "undefined"
       ? createPortal(
@@ -287,11 +317,14 @@ export function ToolbarSettingsIsland() {
         aria-label="Reader settings"
         aria-controls="reader-settings-menu"
         onClick={() => {
-          if (open) setFontMenuOpen(false);
+          if (open) {
+            setFontMenuOpen(false);
+            setResearchOpen(false);
+          }
           toggle();
         }}
       >
-        <Settings aria-hidden="true" size={17} />
+        <SlidersVertical aria-hidden="true" size={17} />
       </button>
       {rendered && (
         <section
@@ -365,6 +398,137 @@ export function ToolbarSettingsIsland() {
                 </span>
                 <ChevronDown aria-hidden="true" size={16} />
               </button>
+            </div>
+          </div>
+          <div className="settings-control settings-focus-control">
+            <div className="settings-control-row">
+              <div className="settings-focus-label">
+                <label htmlFor="reader-focus">Focus mode</label>
+                <Popover.Root
+                  open={researchOpen}
+                  onOpenChange={(nextOpen) => {
+                    setResearchOpen(nextOpen);
+                    if (nextOpen) setFontMenuOpen(false);
+                  }}
+                >
+                  <Popover.Trigger asChild>
+                    <button
+                      type="button"
+                      className="settings-help-button"
+                      aria-label="Focus mode research"
+                    >
+                      <CircleHelp aria-hidden="true" size={15} />
+                    </button>
+                  </Popover.Trigger>
+                  <Popover.Portal>
+                    <Popover.Content
+                      ref={researchPopoverRef}
+                      className="settings-research-popover tooltip-surface"
+                      role="dialog"
+                      aria-label="Focus mode research"
+                      side="bottom"
+                      align="start"
+                      sideOffset={10}
+                      collisionPadding={10}
+                      arrowPadding={12}
+                      hideWhenDetached
+                      onKeyDownCapture={(event) => {
+                        if (event.key !== "Escape") return;
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setResearchOpen(false);
+                      }}
+                    >
+                      <p className="settings-research-lede">
+                        Focus mode may potentially assist with speed reading
+                        and comprehension.
+                      </p>
+                      <p className="settings-research-summary">
+                        These studies examine word beginnings, stroke weight,
+                        and viewing position. They do not establish that
+                        partial-word emphasis improves reading speed or
+                        comprehension.
+                      </p>
+                      <div className="settings-research-links">
+                        <a
+                          href="https://doi.org/10.3389/fpsyg.2012.00085"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <span>
+                            <strong>Word beginnings and fixation</strong>
+                            <small>Hand et al., 2012</small>
+                          </span>
+                          <ExternalLink aria-hidden="true" size={14} />
+                        </a>
+                        <a
+                          href="https://doi.org/10.1016/j.visres.2013.03.005"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <span>
+                            <strong>Stroke boldness and reading speed</strong>
+                            <small>Bernard et al., 2013</small>
+                          </span>
+                          <ExternalLink aria-hidden="true" size={14} />
+                        </a>
+                        <a
+                          href="https://doi.org/10.3758/BF03194790"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <span>
+                            <strong>
+                              Letter visibility and viewing position
+                            </strong>
+                            <small>Stevens &amp; Grainger, 2003</small>
+                          </span>
+                          <ExternalLink aria-hidden="true" size={14} />
+                        </a>
+                      </div>
+                      <Popover.Arrow
+                        className="settings-research-popover-arrow tooltip-arrow"
+                        width={18}
+                        height={9}
+                      />
+                    </Popover.Content>
+                  </Popover.Portal>
+                </Popover.Root>
+              </div>
+              <button
+                type="button"
+                className="settings-reset-button"
+                aria-label="Reset focus mode"
+                disabled={focusIsDefault}
+                onClick={() =>
+                  updatePreferences({
+                    focus: defaultReaderPreferences.focus,
+                  })
+                }
+              >
+                <RotateCcw aria-hidden="true" size={14} />
+              </button>
+            </div>
+            <input
+              id="reader-focus"
+              type="range"
+              min={0}
+              max={readerFocusOptions.length - 1}
+              step={1}
+              value={focusIndex}
+              aria-label="Focus mode"
+              aria-valuetext={focusLabel(preferences.focus)}
+              onChange={(event) => {
+                const nextFocus =
+                  readerFocusOptions[Number(event.target.value)] ?? "none";
+                updatePreferences({ focus: nextFocus });
+              }}
+            />
+            <div className="settings-focus-scale" aria-hidden="true">
+              <span>None</span>
+              <span className="settings-focus-example">
+                <strong>Foc</strong>us
+              </span>
             </div>
           </div>
           <div className="settings-control">
