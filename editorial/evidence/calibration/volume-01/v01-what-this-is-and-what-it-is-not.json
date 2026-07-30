@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-what-this-is-and-what-it-is-not",
+  "editorialId": "volume-01",
+  "sectionHeading": "What This Is, and What It Is Not",
+  "currentHeading": "Boundaries and Burden of Proof",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["single empirical claim", "falsifiable", "adversarial", "detect", "government", "religion", "utopia"],
+    "itemsRead": ["CTD-0053", "CTD-0052", "CTD-0002", "CTD-0055"],
+    "outcome": "Both CTD-0053 and CTD-0052 name passages in this section, and both are unresolved. Neither the baseline nor the shipped text satisfies either item, and neither disposition of the re-render changes that. The wording is restored at full strength precisely so that the decisions remain visible and unmade."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's opening, which states the principle the whole section is built on, was deleted.",
+      "evidence": {
+        "baseline": "It would be easy, having come this far, to mistake what has been described for something it is not. So let the boundaries be drawn plainly, because a thing is known as much by what it refuses as by what it reaches for.",
+        "shipped": "Absent. The section opens directly on Providence is not a government."
+      },
+      "authorizedBy": "Catalog 4.1, throat clearing, plausibly applied to It would be easy.",
+      "diagnosis": "4.1's retention limb keeps framing that changes how the reader should interpret what follows, which this does twice over. Having come this far tells the reader the risk of misreading rises with the length of the argument, and a thing is known as much by what it refuses as by what it reaches for is the reason a section of five denials is a positive statement rather than a defensive one. Without it the list reads as a disclaimer.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The same anticipation of the reader's worry was deleted here that was already found deleted in the volume's other bounding section.",
+      "evidence": {
+        "baseline": "If that claim is false, Providence is not dangerous. It is simply hollow.",
+        "shipped": "If the claim is false, Providence is hollow."
+      },
+      "authorizedBy": "Compression, and catalog 4.3 applied to the not X, it is Y construction.",
+      "diagnosis": "Recorded as F4 of v01-between-sprout-and-stem, where the baseline reads if it is false, what follows does not become dangerous; it becomes hollow. Two sections, the same sentence, the same removal, so the change was systematic rather than local. The reader's actual worry about a false premise is harm, and the baseline replaces it with the truer and more generous claim of emptiness. Removing the first half removes the generosity. That claim to the claim is a separate loss under R-DEIXIS.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The anaphora that gives the section its shape was broken in four places, and the culminating denial was demoted to a clause.",
+      "evidence": {
+        "baseline": "It is not a religion ... It is not a company that owns you, and not a platform that harvests you ... It is not a utopia ... And it is not, finally, proven. This is the most important boundary of all, and the book will not pretend otherwise.",
+        "shipped": "Providence is not a religion ... It is not a company that owns you or a platform that harvests you ... It is not a utopia ... Most important, Providence is not proven."
+      },
+      "authorizedBy": "Catalog 4.9, repetitive scaffolds, and compression.",
+      "diagnosis": "4.9's retention limb keeps recurrence that is deliberate, and a section of boundaries stated as a litany is the clearest case of it. Restating the subject in the second item breaks the run. And it is not, finally, proven is the last and heaviest item in the litany, and finally marks it as the arrival. Compressing it to a lead-in clause removes both the position and the sentence in which the book undertakes not to pretend otherwise.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "Four commitments in the falsifiability paragraph were softened, three of them promises the debt ledger is tracking.",
+      "evidence": {
+        "baseline": "test the foundation first, in the open ... The first real work of this project is not deployment ... whether presence leaves a real signature at all, and publishes honestly what the instruments can and cannot see ... the most valuable thing the experiment can do is say so clearly",
+        "shipped": "test the foundation before the weight goes on it ... The first work is an adversarial, independent study ... whether presence leaves a detectable signature and publishes what the instruments can and cannot see ... the experiment must say so clearly"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "In the open and publishes honestly are the transparency terms of the commitment CTD-0052 tracks, and removing them narrows an unbacked promise by attrition rather than by decision. The item's remedy is to back the promise or recast it explicitly as a proposed research norm, not to let it erode. Not deployment is also the reader's assumption about what a project of this kind does first, and at all is the concession that the signature may not exist.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F5",
+      "summary": "Two antitheses were flattened into their positive halves.",
+      "evidence": {
+        "baseline": "the kind arrived at by observation, the noticing that life organizes through relationship, not the kind demanded by doctrine ... Its measure of success is not the absence of trouble but the presence of the capacity to recover from it",
+        "shipped": "The reverence described in the Soil comes from observing that life organizes through relationship, not from doctrine ... Success means the capacity to recover from trouble, not the absence of trouble"
+      },
+      "authorizedBy": "Catalog 4.3 and compression.",
+      "diagnosis": "Arrived at and demanded are the two verbs the distinction rests on: observation arrives at reverence, doctrine demands it, and reducing both to prepositional phrases loses the difference in what each does to a person. Absence and presence are a matched pair and the sentence turns on the substitution of one for the other. The revision keeps the terms and drops the symmetry that makes them an argument.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0053", "effect": "unchanged, still query", "note": "The phrase a single empirical claim appears in the baseline and survived the prior pass unaltered, so the re-render neither strengthens nor weakens it. The item asks whether the manuscript can defend the exact scope single names. That is a logical decision for the author and no editorial pass may make it by rewording." },
+    { "id": "CTD-0052", "effect": "unchanged, still open, promise restored to full strength", "note": "The prior pass had removed in the open and publishes honestly from the study commitment. Both are restored. The item's remedy is to publish a reviewable protocol or to recast the passage explicitly as a proposed research norm. Softening the promise without a decision would have retired it by erasure, which is the pattern already recorded against CTD-0001." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-LEDGER-WINS. The ledger was searched before restoring. Two items name passages here and both are unresolved, which changed no disposition but did change the reasoning: the restorations are recorded as holding open decisions rather than as preferences about wording." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Five em dashes. Two introduced a specification and became colons. One separated a landing from the triad before it and became a period, leaving Only a beautiful idea resting on nothing to stand alone. Two fenced material with internal commas and the syntax was rewritten." },
+        { "kind": "kept", "note": "The pass's attachment of the detection adverbs directly to the verb, reliably, non-invasively, and in a way that is hard to counterfeit. The em dash there was fencing an adverbial that reads cleanly attached, and a colon before adverbs would be punctuation theater." },
+        { "kind": "kept", "note": "The pass's split of the study sentence at the relative clause, which the colon repair required independently." },
+        { "kind": "kept", "note": "The renamed heading, Boundaries and Burden of Proof, under the volume ruling on renames. Recorded with the other heading questions: the baseline heading names the section's own structure, a list of what the work is not, and the replacement names its topic." },
+        { "kind": "restored", "note": "The opening and its governing aphorism, the it is not litany across four items with its culminating and finally, the not dangerous but hollow distinction, both antitheses, the transparency terms of the study commitment, the repeated no in the currency triad, and the hyphen in non-invasively." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading. What This Is, and What It Is Not names the section's structure, a litany of denials that the opening paragraph justifies as a way of knowing a thing. Boundaries and Burden of Proof names its topic and leaves the litany unexplained. Renaming costs a reviewed route alias. Fourth in the batched heading questions for the author."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-01 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Sixteenth consecutive section to need none. F2 is the volume's first confirmed repetition of an identical finding across two sections, which retroactively strengthens the earlier record: what looked like one editor's judgment about one sentence was a habit applied wherever the construction appeared. F4 is the more useful case for the method, because it shows R-LEDGER-WINS working in the direction opposite to its first use. There the ledger overruled a restoration; here it requires one, because an open promise weakened without a decision is a debt item closed by attrition."
+  }
+}

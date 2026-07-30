@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-icons-and-the-first-scale",
+  "editorialId": "volume-01",
+  "sectionHeading": "ICONS, and the First Scale",
+  "currentHeading": "ICONS and the Cardinal Scale",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "ICONS",
+      "Scale",
+      "Cardinal Scale",
+      "connective tissue",
+      "dragon"
+    ],
+    "itemsRead": [
+      "CTD-0076",
+      "CTD-0060",
+      "CTD-0030",
+      "CTD-0029"
+    ],
+    "outcome": "CTD-0076 binds this section and forbids restoring the baseline's singular ICONS. CTD-0060 is a live query on the anatomical image and instructs that the image be preserved, which the re-render does. CTD-0029 and CTD-0030 concern the Cardinal Scale's existence and a promised account in later volumes and do not reach this section's wording."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The pass corrected a terminology defect the debt ledger requires, and destroyed the wordplay the paragraph's central image depends on.",
+      "evidence": {
+        "baseline": "Each ICONS is a *scale*, complete in itself, rooted where it is",
+        "shipped": "Each Scale is rooted and whole."
+      },
+      "authorizedBy": "CTD-0076. Replace every singular ICON or ICONS with Scale unless an exact quotation requires otherwise.",
+      "diagnosis": "Each ICONS is is a singular use of the plural proper term, which CTD-0076 names as the defect and which the master ledger records as repaired in Volume I. Restoring the baseline would reopen it, so R-LEDGER-WINS forbids the restoration. But the correction removed the identity the paragraph turns on. A Scale is a *scale* in the sense of a fish's or a dragon's, which is the bridge from many whole cells to the surface, and from the surface to a body. The master ledger carries the same figure: ICONS and Scales are the scales of the dragon named Earth. Without it the surface and body sentences have nothing to stand on. Rendered as That is what a Scale is: a *scale*, complete in itself, rooted where it is, which keeps the singular proper term, states the identity once in a sentence whose subject is the word itself, and preserves the image.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "Six denials were removed, and every rejected alternative is one a reader arrives holding.",
+      "evidence": {
+        "baseline": "The unit of the whole architecture is not the individual and not the platform ... ICONS are not utopian communes, and not models of a finished future. They are the opposite ... not a movement, not a brand, not a theory, but a first real community",
+        "shipped": "The unit of the architecture is the community ... ICONS are neither utopian communes nor models of a finished future. They are places where ... The later volumes serve one concrete aim: a first real community"
+      },
+      "authorizedBy": "Catalog 4.3 throughout.",
+      "diagnosis": "The individual and the platform are the only two units a reader has for a digital architecture, and naming both is what makes the community a claim rather than an assumption. Movement, brand, and theory are the three readings a project of this shape actually attracts. They are the opposite is the inversion the paragraph exists to state, and its removal leaves the sentence describing what ICONS are without registering that they are the reverse of what was just denied.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The section's falsifiability commitment was cut to three of its four terms and lost the condition that makes it a commitment.",
+      "evidence": {
+        "baseline": "Where coherence has to survive real constraints, real conflict, real scarcity, and real disagreement, or admit that it cannot.",
+        "shipped": "They are places where conflict, scarcity, and disagreement put the thesis at risk."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, and 4.17, dramatic fragments.",
+      "diagnosis": "Or admit that it cannot is the falsifiability clause, and the card names the falsifiability section among the volume's protected structural devices. The fourfold real is not decoration: it distinguishes lived constraints from the modelled kind, which is the whole difference between a Scale and a thought experiment. The pass also dropped constraints, the first and broadest of the four.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "Two landings and the section's own threshold sentence were deleted.",
+      "evidence": {
+        "baseline": "And here the book can finally say the thing it has been holding since the Seed. ... It grows the other way. ... That is the extractive pattern, and it is exactly the pattern that fails.",
+        "shipped": "(threshold sentence absent) ... It grows as living things cover a surface ... (extractive pattern sentence absent)"
+      },
+      "authorizedBy": "Catalog 4.23 for the threshold sentence, compression for the rest.",
+      "diagnosis": "It grows the other way answers It does not scale by making one center larger, and without it the paragraph's turn has no hinge. The extractive pattern is the volume's own term for what the Stem diagnosed, and naming it here is what connects the growth argument to the diagnosis. The threshold sentence is wayfinding of the kind 4.23's retention limb keeps, and it marks the section's culminating movement.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F5",
+      "summary": "A cumulative definition was split into declaratives and lost the adjective that places it in this volume.",
+      "evidence": {
+        "baseline": "A Scale is a living embodiment of everything the Flower has described: a community rooted in a particular place and culture, cultivating its people through PURPOSEFUL, carrying trust through Providence, governing itself by coherence rather than coercion",
+        "shipped": "A Scale embodies what the Flower has described. Rooted in a particular place and culture, it cultivates people through PURPOSEFUL, carries trust through Providence, and governs by coherence rather than coercion."
+      },
+      "authorizedBy": "Compression, and catalog 4.5 plausibly applied to is a living embodiment of.",
+      "diagnosis": "The card names cumulative sentences as structural and living process among the signature metaphors. Living embodiment is not a nominalization to be unpacked; it is the volume's claim that a Scale is an organism rather than an arrangement. Everything is also scope: the Scale embodies the whole of the Flower, not a selection from it. Its people is possessive, and a community that cultivates its own people is a different claim from one that cultivates people.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F6",
+      "summary": "A demonstration was converted into a test, and the promise of what the later volumes are for was narrowed.",
+      "evidence": {
+        "baseline": "Everything in the volumes that follow is, in the end, in service of that one concrete thing ... that demonstrates the whole of this can be done",
+        "shipped": "The later volumes serve one concrete aim ... that demonstrates whether the architecture can be lived"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Demonstrates that it can be done and demonstrates whether it can be lived are different claims, the first an assertion of what the Cardinal Scale would prove and the second an open question. The same substitution appears in the retreats sentence two sections earlier, which makes it systematic rather than local. Everything in the volumes that follow is also a promise about the remaining eight volumes, and the later volumes serve is a description of them.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "The baseline's singular ICONS is not restored. The re-render keeps Scale as the singular proper term and ICONS as the plural, and preserves the *scale* wordplay in a construction that does not reintroduce the singular."
+    },
+    {
+      "id": "CTD-0060",
+      "effect": "unchanged, still query",
+      "note": "The anatomical image of cells, surface, body, connective tissue, and nervous system is restored in full, which is what the item's paydown criteria direct pending author approval of the poetic compression. The item's concern that later technical prose may read the anatomy literally is unaffected by this section's wording."
+    },
+    {
+      "id": "CTD-0107",
+      "effect": "no second instance",
+      "note": "An approved cross-reference to Volume IV was at risk of the same orphaning that opened CTD-0107 in the Currency section. Here the phrase survives and the link resolves, so no new item is required. The two cases differ: there the baseline restoration changed the words, here only their position and case."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS, first section rendered under it. The ledger was searched for ICONS, Scale, Cardinal Scale, connective tissue, and dragon before any restoration. CTD-0076 changed one disposition and CTD-0060 confirmed another."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes. Three introduced a specification or an appositive and became colons. One separated a causal second movement and became a period. Two fenced material that is grammatically dependent and carries no internal comma and became commas. Two carried a burden belonging to structure and the syntax was rewritten."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT, structural rewrites. The Cardinal Scale appositive carried an internal comma, so its two limbs were joined with and, which lets the fencing commas hold and preserves the baseline's withholding of the name until the colon. The *scale* appositive was recast as its own sentence, which R-LEDGER-WINS required independently."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's split of the Scale definition at the final participial clause. The em dash there was separating two movements and R-PUNCT-STRUCT prefers the period. The three preceding participials keep the cumulative shape."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's uppercase Scales for the plural of the proper term, against the baseline's lowercase scales. CTD-0076 records lowercasing the proper term as part of the defect family. The lowercase survives only inside the italicized wordplay, where the image rather than the term is meant."
+        },
+        {
+          "kind": "kept",
+          "note": "The renamed heading, ICONS and the Cardinal Scale, under the volume ruling on renames. It also names the proper term the master ledger uses where the baseline's the First Scale is a descriptor."
+        },
+        {
+          "kind": "verified",
+          "note": "The protected line Before a thousand, one survived the prior pass and survives this one."
+        },
+        {
+          "kind": "restored",
+          "note": "Six denials, the falsifiability clause with its fourfold real, the threshold sentence, both landings, the extractive pattern naming, the cumulative Scale definition, the anatomical image in full including the repeated scattered and the paused surface, slowly, becomes a body, and the promise about the volumes that follow."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS extends to reviewed links. The Cardinal Scale sentence was opened on The first Scale rather than the baseline's The first of these, because an approved cross-reference to Volume IV is anchored on that phrase and the reanchor tool matches case sensitively. The baseline's lowercase would have orphaned it. Naming the referent also subsumes what these was pointing at, so nothing is lost."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-01 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Fifteenth consecutive section to need none, and the first rendered under R-LEDGER-WINS, which earned its place immediately. F1 is the case the rule was written for and is more interesting than the Currency instance that produced it: there the ledger simply overruled the baseline, whereas here the ledger's correction was right and had also destroyed something. The disposition is neither restore nor keep but repair, and finding it took holding the terminology requirement and the image requirement at once."
+  }
+}

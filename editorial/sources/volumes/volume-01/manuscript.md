@@ -674,33 +674,39 @@ Nothing about this is utopian. She can still fail. She can still leave. No one i
 
 Providence does not live in the cloud. It lives in places.
 
-The unit of the architecture is the community. Together, the communities are **ICONS**, *Individual Communities Observing Natural Sovereignty*. A single community is a **Scale**. A Scale embodies what the Flower has described. Rooted in a particular place and culture, it cultivates people through PURPOSEFUL, carries trust through Providence, and governs by coherence rather than coercion. It observes both its own sovereignty and the sovereignty of the land that holds it.
+The unit of the whole architecture is not the individual and not the platform. It is the community. The communities, taken together, are the **ICONS**, *Individual Communities Observing Natural Sovereignty*, and a single one is called a **Scale.** A Scale is a living embodiment of everything the Flower has described: a community rooted in a particular place and culture, cultivating its people through PURPOSEFUL, carrying trust through Providence, governing itself by coherence rather than coercion. It observes its own sovereignty, and the sovereignty of the land that holds it.
 
-ICONS are neither utopian communes nor models of a finished future. They are places where conflict, scarcity, and disagreement put the thesis at risk. Each Scale is small enough to stay legible and large enough to be complex. Its failures are data, not scandals to hide. A Scale that fails honestly teaches more than one that pretends.
+ICONS are not utopian communes, and not models of a finished future. They are the opposite: the places where the thesis is put at risk. Where coherence has to survive real constraints, real conflict, real scarcity, and real disagreement, or admit that it cannot. They are small enough to stay legible and large enough to be genuinely complex. Failure inside them is not a scandal to be hidden; it is the data the whole experiment exists to gather. A Scale that fails honestly teaches more than one that pretends.
 
-A civilization organized around coherence does not grow as an empire grows. It does not enlarge one center until it covers the earth. Coherence cannot survive when stretched thin over a center that cannot feel its edges. A thousand communities that have lost their coherence are not Providence at scale. They are its defeat at scale.
+And here the book can finally say the thing it has been holding since the Seed.
 
-It grows as living things cover a surface, not by one cell swelling, but through many whole cells, each sovereign and complete in its place, learning to recognize one another. Each Scale is rooted and whole. As scattered Scales find and trust one another across distance, they become a surface, and the surface slowly becomes a body. Providence is not that body. It is the connective tissue among the Scales, the nervous system through which they sense and trust one another. Providence is never the thing in charge. No central thing is in charge. That is the point.
+A civilization organized around coherence does not grow the way an empire grows. It does not scale by making one center larger and larger until it covers the earth. That is the extractive pattern, and it is exactly the pattern that fails. Because coherence does not survive being stretched thin over a center that cannot feel its edges. A thousand communities that have lost their coherence are not Providence at scale. They are its defeat at scale.
 
-The first Scale to form fully has a name in the architecture: the **Cardinal Scale.** The later volumes serve one concrete aim: a first real community in a real place that demonstrates whether the architecture can be lived. Before there can be a body, there must be one Scale. Before a thousand, one. The work begins there, or it does not begin.
+It grows the other way. It grows the way living things cover a surface: not by one cell swelling, but by many whole cells, each sovereign and entire in its own place, coming to recognize one another. That is what a Scale is: a *scale*, complete in itself, rooted where it is. And as the scattered Scales begin to find and trust each other across distance, the scattered communities become a surface, and the surface, slowly, becomes a body. Providence is not that body. Providence is the connective tissue between the Scales: the nervous system through which they sense and trust one another. It is never the thing in charge. There is no thing in charge. That is the point.
+
+The first Scale to form fully, the one that proves a single Scale can actually be lived, has a name in the architecture: the **Cardinal Scale.** Everything in the volumes that follow is, in the end, in service of that one concrete thing: not a movement, not a brand, not a theory, but a first real community, in a real place, that demonstrates the whole of this can be done. Before there can be a body, there must be one Scale. Before a thousand, one. The work begins there, or it does not begin at all.
 
 ---
 
 ## Boundaries and Burden of Proof
 
+It would be easy, having come this far, to mistake what has been described for something it is not. So let the boundaries be drawn plainly, because a thing is known as much by what it refuses as by what it reaches for.
+
 Providence is not a government. It governs no one, holds no monopoly on force, and grants itself no authority a person cannot revoke by walking away.
 
-Providence is not a religion, though it touches reverence. It asks for no belief. The reverence described in the Soil comes from observing that life organizes through relationship, not from doctrine.
+It is not a religion, though it touches reverence. It asks for no belief. The reverence it points toward, as the Soil showed, is the kind arrived at by observation: the noticing that life organizes through relationship. It is not the kind demanded by doctrine.
 
-It is not a company that owns you or a platform that harvests you. The architecture refuses to build a central store of your life that could be sold.
+It is not a company that owns you, and not a platform that harvests you. There is no central store of your life to be sold, because the architecture refuses to build one.
 
-It is not a utopia. It assumes conflict, failure, self-interest, and harm, and it is designed for repair rather than perfection. Success means the capacity to recover from trouble, not the absence of trouble.
+It is not a utopia. It assumes conflict, failure, self-interest, and harm, and is designed for repair rather than perfection. Its measure of success is not the absence of trouble but the presence of the capacity to recover from it.
 
-Most important, Providence is not proven. The entire architecture rests on a single empirical claim: that the quality of genuine human presence can be detected reliably, noninvasively, and in a way that is hard to counterfeit. If the claim is false, Providence is hollow. There is no currency, membrane, or trust that travels, only a beautiful idea resting on nothing.
+And it is not, finally, proven. This is the most important boundary of all, and the book will not pretend otherwise.
 
-The honest order is not to build the cathedral and hope. It is to test the foundation before the weight goes on it. The first work is an adversarial, independent study willing to fail. It asks whether presence leaves a detectable signature and publishes what the instruments can and cannot see. If presence can be measured, the rest becomes worth building. If not, the experiment must say so clearly and save a generation of builders the trouble.
+The entire architecture rests on a single empirical claim: that the quality of genuine human presence can be detected reliably, non-invasively, and in a way that is hard to counterfeit. If that claim is false, Providence is not dangerous. It is simply hollow. There is no currency, no membrane, no trust that travels. Only a beautiful idea resting on nothing.
 
-This is what it means to call the thesis falsifiable rather than merely hopeful. It identifies the exact place where it could fail and commits the project to test there first.
+So the honest order of operations is not to build the cathedral and hope. It is to test the foundation first, in the open, before the weight goes on it. The first real work of this project is not deployment. It is a study: adversarial, independent, willing to fail. It asks whether presence leaves a real signature at all, and publishes honestly what the instruments can and cannot see. If it can be measured, the rest becomes worth building. If it cannot, the most valuable thing the experiment can do is say so clearly, and save a generation of builders the trouble.
+
+This is what it means to call the thesis falsifiable rather than merely hopeful. It names the exact place it could be wrong, and agrees to look there first.
 
 ---
 

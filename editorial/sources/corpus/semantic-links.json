@@ -374,12 +374,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-18aa74879f1ca00c",
+      "occurrenceId": "semantic-link-1a89228a862b8014",
       "conceptId": "volume-01-flower",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-icons-and-the-first-scale",
-        "paragraphAnchor": "p-h03cd084cb69ce12f",
+        "paragraphAnchor": "p-hcf3694b4a3374669",
         "matchText": "Flower",
         "matchOrdinal": 1
       },
@@ -595,12 +595,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-6289219779b4ec94",
+      "occurrenceId": "semantic-link-aba6d5851ecf38aa",
       "conceptId": "volume-01-soil",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-what-this-is-and-what-it-is-not",
-        "paragraphAnchor": "p-h0ad2afa34184f6c3",
+        "paragraphAnchor": "p-h683514505feebc01",
         "matchText": "Soil",
         "matchOrdinal": 1
       },
@@ -714,12 +714,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-9d6bd1317c3be6d4",
+      "occurrenceId": "semantic-link-461ff8131a0d2992",
       "conceptId": "section-title-v04-the-first-scale",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-icons-and-the-first-scale",
-        "paragraphAnchor": "p-hdee6cbeed663671f",
+        "paragraphAnchor": "p-h77221847efcaf87d",
         "matchText": "The first Scale",
         "matchOrdinal": 1
       },
@@ -782,12 +782,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-2feb454b2da82db3",
+      "occurrenceId": "semantic-link-8cf41dd83565a8b2",
       "conceptId": "section-title-v05-the-cardinal-scale",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-icons-and-the-first-scale",
-        "paragraphAnchor": "p-hdee6cbeed663671f",
+        "paragraphAnchor": "p-h77221847efcaf87d",
         "matchText": "Cardinal Scale",
         "matchOrdinal": 1
       },
