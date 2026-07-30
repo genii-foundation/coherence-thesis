@@ -32,17 +32,17 @@ This book is written for the moment when our technological power has begun to ex
 
 This book did not begin as a book.
 
-It began as an inquiry into an alternative economic logic, one that links land, people, and place to the health of human bodies and living ecosystems. It has since grown into a body of work shaped by academic scrutiny, technical feasibility, ethical safeguards, and a nonnegotiable demand: what we propose must be able to function in the real world.
+It began as an inquiry into an alternative economic logic, one that links land, people, and place to the health of human bodies and living ecosystems. From there it has grown into a body of work shaped by constraint: academic scrutiny, technical feasibility, ethical safeguards, and the nonnegotiable requirement that the original proposal could function in the real world.
 
-That work exists in many extensive papers, and it will continue to strengthen as teams gather around it. It details biological mechanisms, economic models, governance protocols, technological architectures, and implementation pathways with the rigor such claims demand.
+That work exists in extensive papers, and it will continue to strengthen as teams gather around it. It details biological mechanisms, economic models, governance protocols, technological architectures, and implementation pathways with the rigor such claims demand.
 
-This book makes that work legible and invites those capable of carrying it forward to help build what it outlines.
+This book makes that work legible, and invites those capable of carrying it forward into building what it outlines.
 
-This book does not replace that work. It performs a different task.
+It does not replace that work. It performs a different task.
 
-The academic documents ask whether coherence can function as a viable substrate for civilization. This book asks a more immediate question: can those living through the present crisis feel, recognize, and understand that constraint?
+Where the academic documents establish whether coherence can function as a viable substrate for civilization, this book asks a more immediate question: can it become felt, recognized, and understood by those living inside the moment that now requires it?
 
-Proof alone rarely changes a civilization. An idea must become legible enough to recognize and concrete enough to act upon. What follows seeks neither permission nor allegiance. It brings that constraint into focus at the pace required to understand it.
+Civilizations do not change when ideas are proven. They change when ideas become obvious ventures. These pages are an attempt to let something already structurally true come into focus, slowly enough to be understood, clearly enough to be recognized, and precisely enough to be acted upon.
 
 ## Four Movements
 
