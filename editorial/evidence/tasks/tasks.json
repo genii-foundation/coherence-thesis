@@ -24,18 +24,18 @@
       "id": "T-002",
       "title": "Extract the corpus voice card",
       "tier": "amber",
-      "status": "pending",
+      "status": "in-progress",
       "area": "voice",
-      "detail": "Lift shared voice rules into sources/corpus/voice-card.md. Measured evidence shows one cadence rule, one direct address rule, and one temperature rule written nine times. Amber because it changes binding authority for all nine volumes.",
+      "detail": "Implemented in sources/corpus/voice-card.md with shared reader relationship, cadence, and emotional temperature rules. Awaiting the consolidated validation gate.",
       "blockedBy": []
     },
     {
       "id": "T-003",
       "title": "Reduce the nine volume cards to deltas",
       "tier": "amber",
-      "status": "pending",
+      "status": "in-progress",
       "area": "voice",
-      "detail": "Each card keeps identity, overrides, volume specific lexicon and images, protected lines, failure modes, compression range. Where this volume departs may never be empty.",
+      "detail": "All nine cards now declare corpus inheritance and a nonempty volume departure. Repeated reader, cadence, and temperature rules were reduced to local overrides. Awaiting the consolidated validation gate.",
       "blockedBy": [
         "T-002"
       ]
@@ -44,9 +44,9 @@
       "id": "T-004",
       "title": "Resolve validate.ts to an effective voice card",
       "tier": "amber",
-      "status": "pending",
+      "status": "in-progress",
       "area": "tooling",
-      "detail": "Corpus card plus volume overlay, so every gate and the bench see what actually binds rather than what one file says.",
+      "detail": "The editorial validator now resolves the corpus card plus volume overlay, and both calibration bench routes display the corpus rules in force. Awaiting the consolidated validation gate.",
       "blockedBy": [
         "T-002"
       ]
@@ -55,18 +55,18 @@
       "id": "T-005",
       "title": "Restore three protected lines destroyed by the prior pass",
       "tier": "amber",
-      "status": "pending",
+      "status": "in-progress",
       "area": "manuscript",
-      "detail": "volume-05, volume-07, volume-09. Each was declared protected before the pass ran. Restoring is compliance with an existing declaration rather than an editorial judgment, but it edits three manuscripts outside the current calibration.",
+      "detail": "Restored the protected passage forms in volumes 5, 7, and 9 and normalized Markdown emphasis consistently. Awaiting the consolidated validation gate.",
       "blockedBy": []
     },
     {
       "id": "T-006",
       "title": "Wire the protected line gate into npm run validate",
       "tier": "green",
-      "status": "blocked",
+      "status": "in-progress",
       "area": "tooling",
-      "detail": "Cannot land while three declared lines are missing, since it would block every run.",
+      "detail": "The protected line gate is wired into the main validation sequence. Awaiting the consolidated validation gate.",
       "blockedBy": [
         "T-005"
       ]
@@ -75,9 +75,9 @@
       "id": "T-007",
       "title": "Add a path immutability rule for committed evidence batches",
       "tier": "green",
-      "status": "pending",
+      "status": "in-progress",
       "area": "tooling",
-      "detail": "Forbid modification under a committed batch directory. Catches edits, deletions, and undeclared additions alike, which the removed hash list did not.",
+      "detail": "Implemented a fail-closed Git history gate for edits, deletions, later additions, and multi-commit mutation under committed review batches. Awaiting the consolidated validation gate.",
       "blockedBy": []
     },
     {
@@ -120,18 +120,18 @@
       "id": "T-012",
       "title": "Anchor voice card exemplars by quoted opening words",
       "tier": "amber",
-      "status": "pending",
+      "status": "in-progress",
       "area": "editorial",
-      "detail": "Recorded as a weakness when the Volume I card was rewritten and confirmed by v01-the-stem F1, where the prior pass damaged a designated exemplar and no gate caught it. An exemplar named by prose description cannot be machine checked. Protected lines already work this way.",
+      "detail": "All nine cards now carry exact exemplar opening anchors, with a fail-closed corpus gate wired into validation. Awaiting the consolidated validation gate.",
       "blockedBy": []
     },
     {
       "id": "T-013",
       "title": "Produce the batched heading questions for the author",
       "tier": "red",
-      "status": "pending",
+      "status": "in-progress",
       "area": "editorial",
-      "detail": "Five recorded across the re-render and never assembled into one document: Between Sprout and Stem, the three Currency of Presence subsections, and What This Is and What It Is Not. Each costs a reviewed route alias to change, so they are cheaper to decide together than one at a time.",
+      "detail": "The five decisions are now individually numbered with both heading options, their editorial consequence, and their route cost. The editorial revisions page presents them together. Awaiting the consolidated browser gate.",
       "blockedBy": []
     },
     {

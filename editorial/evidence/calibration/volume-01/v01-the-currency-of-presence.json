@@ -189,7 +189,9 @@
   ],
   "openQuestions": [
     "Canon. The master ledger's Decision A introduces the unit name COHERENCE at the currency's first full treatment in Volume III and keeps the Currency of Presence as Volume I's descriptor. Volume I nonetheless contains a subsection whose subject is the currency's name, and the baseline reveals it there in lowercase before using the capitalized token once. Whether Volume I may name the unit at all, and in which case, belongs with CTD-0003 and CTD-0012 rather than to an editorial pass.",
-    "Heading. Three renamed subsections, two of which announce what the passage beneath them withholds. Its Name reveals the name in the heading; What It Looks Like From Inside names Maren before she is introduced. Renaming costs three reviewed route aliases. Batched with the earlier heading questions for the author."
+    "Heading decision 2 of 5. Keep Why the Currency Is Called COHERENCE, or restore Its Name? The current heading reveals the answer above a paragraph built to withhold it. Restoring the earlier heading costs a reviewed route alias.",
+    "Heading decision 3 of 5. Keep Boundaries Against Surveillance, or restore Why This Is Not What You Fear? The current heading names the topic. The earlier heading preserves direct address and the subsection's movement from a reader's likely fear into the safeguards. Restoring it costs a reviewed route alias.",
+    "Heading decision 4 of 5. Keep Maren: Trust That Can Travel, or restore What It Looks Like From Inside? The current heading names Maren before the sentence that introduces her. The earlier heading preserves the vignette's invitation into a life. Restoring it costs a reviewed route alias."
   ],
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
