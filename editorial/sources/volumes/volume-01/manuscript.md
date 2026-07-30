@@ -46,21 +46,27 @@ Civilizations do not change when ideas are proven. They change when ideas become
 
 ## Four Movements
 
-The central idea is simple, but its implications are extensive.
+The central idea is not complex. Its implications are.
 
-No specialized knowledge is required. The challenge lies in following a simple premise through its systemic consequences.
+This distinction matters.
 
-The **seed** states the premise in a few minutes. The **sprout** shows why it matters.
+No specialized knowledge is required, only a willingness to follow a simple premise to its logical conclusions. The premise is easy to understand. Accounting for its full systemic consequences is the work.
 
-The **stem** gives the argument structure, strength, and direction.
+In about one to three minutes, you can understand the full premise. We will call this the **seed**.
 
-The **soil** examines the relational nature of the human being. The **flower** asks what a civilization built from this premise could become.
+In about five to eight minutes more, you can sense why it matters. We will call this the **sprout**.
 
-We live amid cognitive overload, where complexity is often mistaken for intelligence and speed for progress. This book moves slowly enough for integration and plainly enough that jargon or performance cannot obscure what matters.
+And in around ten to fifteen minutes more, you can grasp the basic architecture of how it works. We will call this the **stem**.
+
+The remainder exists for those willing to follow the architecture into domains where failure carries consequence: biological, economic, technological, ecological, and political.
+
+This structure is intentional.
+
+We live in an era of cognitive overload, where complexity is often mistaken for intelligence and speed for progress. This book does the opposite: it moves slowly enough for integration, and clearly enough that jargon and performance obscure nothing essential.
 
 If coherence is what this work claims it to be, then the book itself must embody it.
 
-The writing follows the constraints the thesis describes: clarity over force, integration over excess, and regulation over persuasion.
+The writing follows the same constraints the thesis describes: clarity over force, integration over excess, and regulation over persuasion.
 
 ## How Understanding Takes Root
 

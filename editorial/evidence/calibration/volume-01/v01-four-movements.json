@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-four-movements",
+  "editorialId": "volume-01",
+  "sectionHeading": "Four Movements",
+  "status": "open",
+  "opened": "2026-07-29",
+  "settled": "2026-07-29",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The prior pass created the contradiction that open debt item CTD-0017 records against it.",
+      "evidence": {
+        "baseline": "Heading: A Note on Compression. Body names three stages, seed, sprout, and stem, then describes the remainder separately.",
+        "shipped": "Heading: Four Movements. Body names five, seed, sprout, stem, soil, and flower."
+      },
+      "authorizedBy": "Section 8, the heading and identity test, read as licensing a rename without checking the rename against the body beneath it.",
+      "diagnosis": "The baseline heading made no numerical promise. The rename introduced a count, the same pass expanded the list to five, and a heading that contradicts its own paragraph reached the reader. CTD-0017 then recorded the mismatch as an open author question. Restoring the baseline heading dissolves the question rather than answering it, because the construction that raised it is gone.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "Three reading-time estimates were deleted, removing the reader's only orientation to the book's pacing.",
+      "evidence": {
+        "baseline": "In about one to three minutes, you can understand the full premise. In about five to eight minutes more, you can sense why it matters. And in around ten to fifteen minutes more, you can grasp the basic architecture.",
+        "shipped": "The seed states the premise in a few minutes. The sprout shows why it matters. The stem gives the argument structure, strength, and direction."
+      },
+      "authorizedBy": "Catalog 4.13, faux precision, applied to the time spans.",
+      "diagnosis": "4.13 targets exact figures that lack a source or method and imply measurement where none occurred. A reading-time estimate is neither: it is a claim about the reader's own experience that the reader can check within minutes. The retention limb applies and was not recorded, so the estimates read as unsupported precision and were removed.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "A short structural sentence was absorbed into a longer one, flattening a deliberate two beat opening.",
+      "evidence": {
+        "baseline": "The central idea of this thesis is not complex. Its implications are. This distinction matters.",
+        "shipped": "The central idea is simple, but its implications are extensive."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Its implications are is a three word landing, and This distinction matters is a one line paragraph the voice card permits where silence carries structural weight. Merging both into a single compound removes two beats and the pause between them.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "headingDecision": {
+    "baseline": "A Note on Compression",
+    "attempted": "A Note on Compression",
+    "retained": "Four Movements",
+    "outcome": "deferred to the author",
+    "rationale": "The restored heading was the right editorial call and could not be landed. Reverting the rename cascaded through five continuity records: route aliases, the reviewed section mappings, the section lineage head, and both generated ledgers, and record-routes continued to reject the change after each repair. The prose restoration carries the editorial value and does not depend on the heading, so it ships and the heading question goes back to the author.",
+    "residual": "The heading names four movements and the restored body names three, seed, sprout, and stem, then describes the remainder separately. That contradiction is exactly what CTD-0017 already records, so the section is no worse than it was and the open question is now sharper: the baseline named three, not four or five."
+  },
+  "debtImpact": [
+    {
+      "id": "CTD-0017",
+      "effect": "sharpened, not closed",
+      "note": "The prior pass expanded the body to five items under a heading naming four. The re-render restores the baseline three. The author now chooses between renaming the heading, which costs a reviewed route alias chain, and rewording the transition so the count agrees."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "The central idea is not complex. Its implications are.",
+        "This distinction matters.",
+        "No specialized knowledge is required, only a willingness to follow a simple premise to its logical conclusions. The premise is easy to understand. Accounting for its full systemic consequences is the work.",
+        "In about one to three minutes, you can understand the full premise. We will call this the seed.",
+        "In about five to eight minutes more, you can sense why it matters. We will call this the sprout.",
+        "And in around ten to fifteen minutes more, you can grasp the basic architecture of how it works. We will call this the stem.",
+        "The remainder exists for those willing to follow the architecture into domains where failure carries consequence: biological, economic, technological, ecological, and political.",
+        "This structure is intentional.",
+        "We live in an era of cognitive overload, where complexity is often mistaken for intelligence and speed for progress. This book does the opposite: it moves slowly enough for integration, and clearly enough that jargon and performance obscure nothing essential.",
+        "If coherence is what this work claims it to be, then the book itself must embody it.",
+        "The writing follows the same constraints the thesis describes: clarity over force, integration over excess, and regulation over persuasion."
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes, both introducing a specifying list, so both became colons rather than commas."
+        },
+        {
+          "kind": "applied",
+          "note": "R-NEGATION-STACK twice in one paragraph. Does not require specialized knowledge so much as becomes No specialized knowledge is required, only. The challenge lies not in understanding but in accounting becomes The premise is easy to understand. Accounting for its consequences is the work."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND. What follows appeared twice and the card names it for reduction. Both removed."
+        },
+        {
+          "kind": "applied",
+          "note": "R-TENSE. We are living in an era becomes We live in an era."
+        },
+        {
+          "kind": "cut",
+          "note": "Is designed to do the opposite becomes does the opposite, and reflects a sustained effort to write under becomes follows. Both were hedged descriptions of intent where the plain verb states the fact."
+        },
+        {
+          "kind": "cut",
+          "note": "Of this thesis from the opening sentence, since the reader is holding the thesis."
+        },
+        {
+          "kind": "restored",
+          "note": "The three reading-time estimates, the two beat opening, and the three stage structure, all lost to the prior pass with no defect to justify it."
+        },
+        {
+          "kind": "kept",
+          "note": "The repeated We will call this the frame across three paragraphs. The card licenses seed, sprout, and stem as ritual repetition carrying structural memory, so catalog 4.4 retention applies."
+        }
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "id": "RU1",
+      "question": "Restore the baseline heading or keep the prior pass's rename?",
+      "decision": "Restore A Note on Compression.",
+      "rationale": "The rename introduced a count that contradicts its own paragraph and produced an open debt query. Restoring removes the defect rather than choosing between two wrong numbers.",
+      "scope": "section",
+      "by": "editorial-agent"
+    }
+  ],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading. Four Movements contradicts a body that names three stages. Renaming requires a reviewed route mapping across four historical routes plus the section lineage head. Deferred to the author under CTD-0017."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Second consecutive section to need none. The most instructive finding was F2, where a catalog category fired on a construction its own retention limb protects, which is exactly the failure R-CATALOG-LIMBS was written to prevent and the first time that rule has caught something after the fact."
+  },
+  "baselineHeading": "A Note on Compression"
+}

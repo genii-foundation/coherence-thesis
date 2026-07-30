@@ -493,12 +493,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-492336f89cd86c34",
+      "occurrenceId": "semantic-link-21d5c4ae93164318",
       "conceptId": "volume-01-sprout",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-a-note-on-compression",
-        "paragraphAnchor": "p-h3bc7e8317f7b2723",
+        "paragraphAnchor": "p-h7dde160712918089",
         "matchText": "sprout",
         "matchOrdinal": 1
       },
@@ -524,23 +524,6 @@
         "state": "approved",
         "date": "2026-07-14",
         "rationale": "This remains an ordinary list of relational capacities that happens to match a section title."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-53d163043feb6ee3",
-      "conceptId": "volume-01-flower",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-a-note-on-compression",
-        "paragraphAnchor": "p-h4b304cbe9ccee763",
-        "matchText": "flower",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "The opening map names The Flower as a later movement of this volume."
       }
     },
     {
@@ -595,12 +578,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-73da9768d8ec03e8",
+      "occurrenceId": "semantic-link-5ad81499dd315e03",
       "conceptId": "volume-01-seed",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-a-note-on-compression",
-        "paragraphAnchor": "p-h3bc7e8317f7b2723",
+        "paragraphAnchor": "p-h2b8621fa7a4e7046",
         "matchText": "seed",
         "matchOrdinal": 1
       },
@@ -609,23 +592,6 @@
         "state": "approved",
         "date": "2026-07-14",
         "rationale": "The compressed sentence still defines Seed as the movement that states the premise."
-      }
-    },
-    {
-      "occurrenceId": "semantic-link-771ae26747117514",
-      "conceptId": "volume-01-soil",
-      "source": {
-        "editorialId": "volume-01",
-        "sectionContinuityId": "v01-a-note-on-compression",
-        "paragraphAnchor": "p-h4b304cbe9ccee763",
-        "matchText": "soil",
-        "matchOrdinal": 1
-      },
-      "decision": "link",
-      "approval": {
-        "state": "approved",
-        "date": "2026-07-14",
-        "rationale": "The opening map names The Soil as a later movement of this volume."
       }
     },
     {
@@ -646,12 +612,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-85f63c9d46d08259",
+      "occurrenceId": "semantic-link-f56e579b0a675499",
       "conceptId": "volume-01-stem",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-a-note-on-compression",
-        "paragraphAnchor": "p-h7080ad564d18636e",
+        "paragraphAnchor": "p-he674e3d3d811052f",
         "matchText": "stem",
         "matchOrdinal": 1
       },
