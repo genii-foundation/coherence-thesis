@@ -63,6 +63,13 @@
       "producedRule": "R-CADENCE"
     }
   ],
+  "debtImpact": [],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No debt or canonical decision is touched by this transition."
+  },
+
   "generations": [
     {
       "label": "A",

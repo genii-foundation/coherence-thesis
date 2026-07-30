@@ -78,6 +78,11 @@
     { "id": "CTD-0001", "effect": "reopened", "note": "The Roots promise is restored to the manuscript, so the obligation to publish the bibliography or withdraw the promise deliberately is live again rather than resolved by deletion." },
     { "id": "CTD-0013", "effect": "restored to the author", "note": "The moral disclaimer about historical extraction is back in the baseline's terms. The pass had substituted a functional disclaimer, which answered an open author question by side effect." }
   ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "Both touched items were already reasoned about explicitly."
+  },
 
   "generations": [
     {

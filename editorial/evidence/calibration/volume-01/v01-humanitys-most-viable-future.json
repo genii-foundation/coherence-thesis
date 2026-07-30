@@ -82,6 +82,12 @@
   "rulesDerived": [],
   "openQuestions": [],
 
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "The existing debtImpact entries record every touched item."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

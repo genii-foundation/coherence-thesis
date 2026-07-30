@@ -52,6 +52,19 @@
       "producedRule": "R-CATALOG-LIMBS"
     }
   ],
+  "debtImpact": [
+    {
+      "id": "CTD-0057",
+      "effect": "unchanged, still open",
+      "note": "The later-volume handoff remains a tracked promise."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "Canonical uses of Providence, PURPOSEFUL, Currency of Presence, ICONS, and Cardinal Scale agree with the master ledger."
+  },
+
   "generations": [
     {
       "label": "A",

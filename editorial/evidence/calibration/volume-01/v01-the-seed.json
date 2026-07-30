@@ -74,6 +74,29 @@
     }
   ],
 
+  "debtImpact": [
+    {
+      "id": "CTD-0002",
+      "effect": "unchanged, still open",
+      "note": "The empirical claims remain unsourced and are not represented as verified."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "unchanged, still open",
+      "note": "The historical universal remains subject to documented historical review."
+    },
+    {
+      "id": "CTD-0016",
+      "effect": "unchanged, still query",
+      "note": "The technological-power thesis remains at baseline scope for the author to decide."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No later recorded canon decision narrowed these claims."
+  },
+
   "generations": [
     {
       "label": "A",

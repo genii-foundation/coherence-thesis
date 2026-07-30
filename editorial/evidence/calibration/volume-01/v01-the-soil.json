@@ -85,6 +85,24 @@
     }
   ],
 
+  "debtImpact": [
+    {
+      "id": "CTD-0002",
+      "effect": "unchanged, still open",
+      "note": "Biological assertions remain subject to the sourcing audit."
+    },
+    {
+      "id": "CTD-0014",
+      "effect": "restored to the author",
+      "note": "The stronger living-development modality is restored at baseline scope and remains an author query."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No recorded decision was reversed."
+  },
+
   "generations": [
     {
       "label": "A",

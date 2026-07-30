@@ -59,6 +59,19 @@
       "producedRule": "R-PROPORTION"
     }
   ],
+  "debtImpact": [
+    {
+      "id": "CTD-0057",
+      "effect": "unchanged, still open",
+      "note": "The structural handoff to later volumes remains a tracked forward promise. No destination or implementation status was invented."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No recorded decision was reversed."
+  },
+
   "generations": [
     {
       "label": "A",

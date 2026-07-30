@@ -96,6 +96,29 @@
     }
   ],
 
+  "debtImpact": [
+    {
+      "id": "CTD-0004",
+      "effect": "unchanged, still open",
+      "note": "Historical novelty claims remain subject to documented review."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "unchanged, still open",
+      "note": "Infrastructure properties remain proposed and unproven."
+    },
+    {
+      "id": "CTD-0057",
+      "effect": "unchanged, still open",
+      "note": "Later implementation remains a tracked forward promise."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "The passage distinguishes the scale of the need from Providence's current size."
+  },
+
   "generations": [
     {
       "label": "A",

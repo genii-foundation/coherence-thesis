@@ -59,6 +59,19 @@
     "note": "Reverting to the baseline heading would cost a second route alias for no editorial gain. Eight further headings were renamed by the prior pass and each is judged on its own section rather than reverted as a group."
   },
 
+  "debtImpact": [
+    {
+      "id": "CTD-0051",
+      "effect": "unchanged, still open",
+      "note": "The restoration keeps the unsupported claim that extensive papers exist. It does not represent the papers as accessible or the debt as paid."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No recorded decision was reversed."
+  },
+
   "generations": [
     {
       "label": "A",

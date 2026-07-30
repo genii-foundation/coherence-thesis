@@ -83,8 +83,15 @@
   ],
 
   "debtImpact": [
-    { "id": "CTD-0001", "effect": "reopened in a third section", "note": "The Roots reference is restored here as well." }
+    { "id": "CTD-0001", "effect": "reopened in a third section", "note": "The Roots reference is restored here as well." },
+    { "id": "CTD-0002", "effect": "unchanged, still open", "note": "Biological claims remain subject to the sourcing audit." },
+    { "id": "CTD-0057", "effect": "unchanged, still open", "note": "The handoff into the later architecture remains a tracked forward promise." }
   ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "Providence, PURPOSEFUL, and ICONS agree with the master ledger."
+  },
 
   "generations": [
     {

@@ -61,8 +61,18 @@
       "id": "CTD-0017",
       "effect": "sharpened, not closed",
       "note": "The item described a passage naming five movements under a heading naming four. That was the wave-one pass's expansion, not the baseline. The re-render restored the baseline three, so the live mismatch is three under four, and the item was updated on 2026-07-30 with the corrected facts and the two options costed."
+    },
+    {
+      "id": "CTD-0058",
+      "effect": "unchanged, still open",
+      "note": "The exact reading-time labels were restored without inventing a measurement method."
     }
   ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No recorded decision was reversed."
+  },
   "generations": [
     {
       "label": "A",

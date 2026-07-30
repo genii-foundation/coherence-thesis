@@ -193,6 +193,12 @@
     "Heading decision 3 of 5. Keep Boundaries Against Surveillance, or restore Why This Is Not What You Fear? The current heading names the topic. The earlier heading preserves direct address and the subsection's movement from a reader's likely fear into the safeguards. Restoring it costs a reviewed route alias.",
     "Heading decision 4 of 5. Keep Maren: Trust That Can Travel, or restore What It Looks Like From Inside? The current heading names Maren before the sentence that introduces her. The earlier heading preserves the vignette's invitation into a life. Restoring it costs a reviewed route alias."
   ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "The existing debtImpact entries record every touched item, including the corrected CTD-0012 regression."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

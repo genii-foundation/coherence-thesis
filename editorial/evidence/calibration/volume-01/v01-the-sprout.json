@@ -84,8 +84,16 @@
   ],
 
   "debtImpact": [
-    { "id": "CTD-0001", "effect": "reopened in a second section", "note": "The Roots reference is restored here as well. The prior pass removed it from at least two sections, which together would have retired the promise without a decision." }
+    { "id": "CTD-0001", "effect": "reopened in a second section", "note": "The Roots reference is restored here as well. The prior pass removed it from at least two sections, which together would have retired the promise without a decision." },
+    { "id": "CTD-0002", "effect": "unchanged, still open", "note": "Scientific and physiological claims remain subject to the sourcing audit." },
+    { "id": "CTD-0004", "effect": "unchanged, still open", "note": "Historical scope remains subject to documented review." },
+    { "id": "CTD-0016", "effect": "unchanged, still query", "note": "The technological-power thesis remains an author decision." }
   ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No recorded decision was reversed."
+  },
 
   "generations": [
     {

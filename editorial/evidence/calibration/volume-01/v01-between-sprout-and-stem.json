@@ -76,6 +76,29 @@
 
   "headingNote": "The prior pass converted four bold display labels into h3 headings and dropped the On prefix. Kept under the volume ruling on renames, since reverting would mint and retire four section routes. One is a real loss: What This Section Has and Has Not Established became What the Argument Has Established, and the section devotes a full paragraph to what has not been shown. Recorded as an open heading question rather than churned.",
 
+  "debtImpact": [
+    {
+      "id": "CTD-0002",
+      "effect": "unchanged, still open",
+      "note": "The detectability claim remains subject to sourcing and verification."
+    },
+    {
+      "id": "CTD-0052",
+      "effect": "promise restored to full strength",
+      "note": "The public adversarial-study commitment remains unfulfilled and visible rather than being softened by attrition."
+    },
+    {
+      "id": "CTD-0053",
+      "effect": "unchanged, still query",
+      "note": "The single-claim dependency shortcut remains open for a real dependency map."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No recorded decision was reversed."
+  },
+
   "generations": [
     {
       "label": "A",

@@ -1,14 +1,14 @@
 ---
 id: CTD-0108
 title: Audit the completed Volume I re-render against the debt and master ledgers
-status: open
+status: resolved
 kind: technical
 severity: high
 scopes: ["volume-1", "corpus"]
 sources: ["editorial/sources/volumes/volume-01/manuscript.md", "editorial/evidence/calibration/volume-01", "editorial/evidence/debt/index.md", "editorial/sources/corpus/master-ledger.md"]
 discovered: 2026-07-30
 updated: 2026-07-30
-resolved:
+resolved: 2026-07-30
 discoveredIn: volume-1/2026-07-30-baseline-re-render
 ---
 
@@ -40,3 +40,4 @@ No validation gate detects this class of regression. The manuscripts validate, t
 ## History
 
 - 2026-07-30: Recorded after the Currency of Presence re-render restored a baseline conflation that CTD-0012 had already corrected. The audit covers the sections re-rendered before `R-LEDGER-WINS` existed.
+- 2026-07-30: Resolved after reading every Volume I scoped debt item, checking every master-ledger term across the current manuscript, recording the sixteen early section impacts, and attaching a debt audit statement to all twenty-eight Volume I calibration records. No additional silent regression was found. The existing COHERENCE introduction conflict remains an explicit author question rather than an audit repair.

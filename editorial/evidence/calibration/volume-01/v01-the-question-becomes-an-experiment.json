@@ -74,6 +74,24 @@
     }
   ],
 
+  "debtImpact": [
+    {
+      "id": "CTD-0052",
+      "effect": "unchanged, still open",
+      "note": "Falsifiability remains a commitment rather than completed evidence."
+    },
+    {
+      "id": "CTD-0053",
+      "effect": "unchanged, still query",
+      "note": "The dependency shortcut remains open for a real map."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No recorded decision was reversed."
+  },
+
   "generations": [
     {
       "label": "A",

@@ -109,11 +109,11 @@
     },
     {
       "id": "T-011",
-      "title": "Audit the fourteen sections rendered before R-LEDGER-WINS",
+      "title": "Audit the sixteen sections rendered before R-LEDGER-WINS",
       "tier": "amber",
-      "status": "pending",
+      "status": "in-progress",
       "area": "editorial",
-      "detail": "CTD-0108. A restoration that reverted a recorded decision reads correctly and passes every gate, so only a ledger by ledger check finds it. Three items were reasoned about during the pass, CTD-0001, CTD-0004, CTD-0013. The rest were not searched.",
+      "detail": "CTD-0108 audit completed across the proven sixteen-section Git history, every Volume I scoped debt item, the master ledger, and all twenty-eight calibration records. No additional silent regression was found. Awaiting the consolidated validation gate.",
       "blockedBy": []
     },
     {

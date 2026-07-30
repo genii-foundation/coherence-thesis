@@ -85,6 +85,29 @@
     }
   ],
 
+  "debtImpact": [
+    {
+      "id": "CTD-0004",
+      "effect": "unchanged, still open",
+      "note": "Historical universals remain subject to documented review."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "unchanged, still open",
+      "note": "The three Doors remain unverified program-status claims."
+    },
+    {
+      "id": "CTD-0057",
+      "effect": "unchanged, still open",
+      "note": "Future application reach remains a tracked forward promise."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No operational evidence was invented and no recorded decision was reversed."
+  },
+
   "generations": [
     {
       "label": "A",
