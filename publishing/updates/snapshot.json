@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "0e730e803406dc9aca7dc507485099913354d92c",
+  "headSha": "688ef31110d3dfa272a5a230b28cf1125196857d",
   "commits": [
+    {
+      "sha": "688ef31110d3dfa272a5a230b28cf1125196857d",
+      "committedAt": "2026-07-30T20:52:40.000Z",
+      "subject": "Standardize toolbar menu geometry (#168)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/688ef31110d3dfa272a5a230b28cf1125196857d",
+      "filesChanged": 3,
+      "additions": 163,
+      "deletions": 98,
+      "isLiterary": false
+    },
     {
       "sha": "0e730e803406dc9aca7dc507485099913354d92c",
       "committedAt": "2026-07-30T20:11:08.000Z",
