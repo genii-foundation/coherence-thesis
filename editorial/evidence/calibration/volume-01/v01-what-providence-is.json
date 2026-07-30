@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-what-providence-is",
+  "editorialId": "volume-01",
+  "sectionHeading": "What Providence Is",
+  "currentHeading": "What Providence Is",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A paragraph lost the two sentences its own first word depended on, leaving a dangling contrast.",
+      "evidence": {
+        "baseline": "Institutions, technologies, and economies are how that cultivated potential is organized. But they are downstream. Upstream is always a human being who discovered what they were capable of",
+        "shipped": "Upstream is a human being who discovered what they could do"
+      },
+      "authorizedBy": "Compression, plausibly with catalog 4.8 read onto the restatement of the display line.",
+      "diagnosis": "Downstream and upstream are one figure. The pass deleted the first half and kept the second, so the shipped paragraph opens by locating something upstream of nothing the reader has been shown. This is not a weakened claim but a broken one, and no catalog category names it, which is what R-PROPORTION-FLOOR exists to cover. Also removed: always, the universal the display line above had just earned, and capable of, which is the paragraph's own vocabulary for potential.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F2",
+      "summary": "A four-fold descent through the layers of a civilization was collapsed into an elliptical list.",
+      "evidence": {
+        "baseline": "Beneath every economy lies a culture. Beneath every culture lies a set of relationships. Beneath every relationship lies a nervous system. And beneath every enduring civilization lies a capacity for coherence.",
+        "shipped": "Beneath an economy lies a culture; beneath a culture, relationships; beneath relationships, nervous systems. An enduring civilization depends on their capacity for coherence."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, and 4.9, repetitive scaffolds.",
+      "diagnosis": "4.4's retention limb keeps parallelism that produces force and memory, and the card names ritual repetition as structural memory. The anaphora is the argument: each clause descends one layer and the reader arrives at coherence having been walked down to it. The elliptical form also breaks the descent, because the fourth term stops being beneath the third and becomes a property of it, and every becomes an, which is a universal reduced to an instance.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The passage that disclaims the project's scale was rebuilt so that it disclaims a boast the reader can no longer see.",
+      "evidence": {
+        "baseline": "A word about the size of this, because stated plainly it can sound like audacity, and it is not. To speak of infrastructure for the largest network of purpose, mentorship, and contribution the world has known is not a claim about what Providence *is*. It is a description of the *need* ... The posture is not conquest, and not certainty. It is reverent humility",
+        "shipped": "The scale of the need should not be mistaken for a claim about the present size of Providence. No network yet coordinates purpose, mentorship, and contribution at the scale civilization requires."
+      },
+      "authorizedBy": "Compression, and catalog 4.6 or 4.7 plausibly applied to the largest network the world has known.",
+      "diagnosis": "The baseline states the ambitious phrase, then spends a paragraph explaining that it describes an absence rather than a plan. The pass removed the phrase and kept the disclaimer, which leaves the reader defended against nothing. Reverent humility is signature register and the posture triad is the card's stated emotional temperature. The narrator turning to address the reader about how the sentence will sound is the candour the card requires.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "Two hedged framings of a definition became flat assertions.",
+      "evidence": {
+        "baseline": "So Providence is best understood not as a government, a company, a social network, or a technology platform. Those are mechanisms it might use. It is closer to this: **the forward-facing architecture ...**",
+        "shipped": "Providence is not itself a government, company, social network, or technology platform, though it may use some of their mechanisms. It is **the forward-facing architecture ...**"
+      },
+      "authorizedBy": "Catalog 4.1 applied to is best understood and It is closer to this.",
+      "diagnosis": "4.1's retention limb keeps framing that changes how the reader should interpret what follows, which both of these do: they mark the definition as the best available account rather than a fact about a thing that exists. Those are mechanisms it might use is also a landing absorbed into a subordinate clause, the pattern R-CADENCE records across this volume.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F5",
+      "summary": "Three definite articles inside a bold display line became indefinite or disappeared.",
+      "evidence": {
+        "baseline": "**the forward-facing architecture of a larger effort, the application through which people find one another and the trust between them can actually move.**",
+        "shipped": "**the forward-facing architecture of a larger effort, an application through which people find one another and trust can move among them.**"
+      },
+      "authorizedBy": "Nothing identifiable.",
+      "diagnosis": "The application says Providence is the one; an application says it is one of several, which contradicts the sentence's own subject. The trust between them names a relation between two named people and trust names an abstraction, and the volume's premise is that trust is relational before it is anything else. Actually carries the claim that trust presently cannot move, which is the absence the whole section describes.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F6",
+      "summary": "The realization the Flower turns on was merged into its own introduction and rewritten.",
+      "evidence": {
+        "baseline": "This rests on a single, almost too-simple realization, and the whole of the Flower turns on it: / *Civilization is not, in the end, built through institutions, technologies, or economies. It is built through the successful cultivation and coordination of human potential.*",
+        "shipped": "The Flower turns on one realization: *institutions, technologies, and economies organize civilization. Human beings build it by cultivating and coordinating their potential.*"
+      },
+      "authorizedBy": "Compression, and catalog 4.3 applied to the not X, it is Y form.",
+      "diagnosis": "Display matter set on its own line was folded into the sentence introducing it, which removes the pause the layout was performing. Almost too-simple is the narrator conceding that the claim may look trivial, an admission the card calls load bearing. The recast also loses in the end and successful, and it inverts the emphasis: the baseline denies the common belief before asserting, and the belief being denied is one nearly every reader holds, so 4.3's retention limb applies.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F7",
+      "summary": "A conditional about how trust is grown became a temporal sequence, and the ground and flower figure was cut from the closing.",
+      "evidence": {
+        "baseline": "But infrastructure carries ... A network can move trust between people only if trust was grown in them first, and the growing is older ... So beneath the visible architecture of Providence sits the ground that holds it ... Providence carries it, the ground and the flower. We take them in turn, the ground first",
+        "shipped": "Infrastructure carries ... A network can move trust only after people have grown it. That work is older ... Beneath Providence lies the developmental ground ... Providence carries it. The ground comes before the flower"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Only if is a condition on possibility and only after is a claim about order, and the paragraph is arguing the first. Between people is the relational premise again. The visible architecture is what makes the ground beneath it a contrast rather than a location. We take them in turn is wayfinding in the first person plural the card sets as the narrative stance, and the ground and the flower names the volume's own metaphor for the two movements.",
+      "producedRule": "R-REGISTER-DICTION"
+    }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Ten em dashes. Five introduced a specification or an enumeration and became colons. Three fenced an appositive that renames the preceding noun phrase and became commas, including the one inside the bold display line, where a second colon would have collided with the colon introducing it. One separated two movements and became a period. One carried a burden belonging to structure and the syntax was rewritten: the appositive naming the two movements moved to the sentence that introduces them." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT again in the size paragraph. Reverent humility takes a comma rather than a colon because the same paragraph already specifies with a colon four sentences earlier, and section 3 forbids punctuation theater as firmly as it forbids the wrong mark." },
+        { "kind": "kept", "note": "The unchanged heading and the unchanged closing pair, The need is vast. The attempt is small, and knows it. The card names the second among the images that must not be explained away, and the pass left it intact." },
+        { "kind": "restored", "note": "The four-fold descent, the we have that sets up the infrastructure never deliberately built, the triad naming that layer, both hedged framings of the definition, the three definite articles in the display line, the whole size disclaimer, the display realization on its own line, the downstream half of the upstream figure, and the ground and the flower in the closing." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Twelfth consecutive section to need none. F1 is the first instance in the volume of a deletion that leaves a sentence referring to material no longer present, and it is worth carrying forward because it is the only finding so far that a reader could catch without the baseline. The rest follow the established pattern, with F3 the most instructive: the pass kept a disclaimer and removed the claim it disclaimed, which is what happens when a passage is compressed sentence by sentence without asking what each sentence was defending."
+  }
+}

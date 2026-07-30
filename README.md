@@ -27,8 +27,8 @@ The reader is a Next.js application with:
 
 - Next.js: 16.2.9
 - Manuscripts: 9 volumes, 47 parts, 361 chapters, 518 sections
-- Canonical words: 101,784
-- Estimated full read: 463 minutes
+- Canonical words: 103,354
+- Estimated full read: 470 minutes
 - Overview nodes: 9
 
 <!-- END:development-status -->

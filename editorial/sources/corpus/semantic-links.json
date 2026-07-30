@@ -476,12 +476,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-2bf2e9f6a4682365",
+      "occurrenceId": "semantic-link-791b842b9126563f",
       "conceptId": "volume-01-flower",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-what-providence-is",
-        "paragraphAnchor": "p-hcf21f3bfdae5dea1",
+        "paragraphAnchor": "p-h7f66b76f68f73113",
         "matchText": "flower",
         "matchOrdinal": 1
       },
@@ -493,12 +493,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-e3e9a97f91fd9e83",
+      "occurrenceId": "semantic-link-129c800bc76bd361",
       "conceptId": "volume-01-flower",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-what-providence-is",
-        "paragraphAnchor": "p-h48cc375091ff0699",
+        "paragraphAnchor": "p-h3e42076c93082fae",
         "matchText": "Flower",
         "matchOrdinal": 1
       },

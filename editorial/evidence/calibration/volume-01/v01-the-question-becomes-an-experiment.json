@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-the-question-becomes-an-experiment",
+  "editorialId": "volume-01",
+  "sectionHeading": "The Question Becomes an Experiment",
+  "currentHeading": "From Thesis to Experiment",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's closing statement of the volume's governing stance was deleted in full.",
+      "evidence": {
+        "baseline": "The invitation, then, is not belief. It is inquiry. Not ideology, but investigation. Not allegiance to a system, but participation in a civilizational question that belongs to everyone.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Catalog 4.3 across three beats, plausibly read as R-NEGATION-STACK.",
+      "diagnosis": "The card names the narrator's refusal to demand belief as the volume's governing constraint, and this is where that refusal is stated outright. R-NEGATION-STACK governs a claim that recedes behind accumulated denials. Nothing recedes here: each denial is answered in the same breath, belief by inquiry, ideology by investigation, allegiance by participation. The rule's own retention limb also applies, because the errors being corrected are the subject.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "An attempt at an answer became an answer, three times over.",
+      "evidence": {
+        "baseline": "That question deserves a serious attempt at an answer ... Providence is simply one serious attempt to begin building ... the attempt itself may still reveal",
+        "shipped": "That question deserves an answer ... Providence is one attempt to build ... the attempt may still reveal"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The section exists to say that the thesis poses a question it does not answer, and that Providence is an attempt rather than a resolution. Deserves an answer concedes the point the paragraph is making. To begin building is a claim about a thing that does not yet exist, and to build describes it as though it does, which section 5 forbids for a future institution. Simply and itself are the modesty markers that keep the passage from sounding like a promise.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "An action asked of the reader was reduced to a question the thesis poses.",
+      "evidence": {
+        "baseline": "It asks the world to investigate whether coherence is, in fact, the necessary substrate",
+        "shipped": "It asks whether coherence is the necessary substrate"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Asks the world to investigate names an act the reader is invited to perform. Asks whether makes the thesis merely curious. The closing paragraph the same pass deleted states the identical claim in four words, the invitation is inquiry, so both statements of the section's purpose were removed by the same batch.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "A denial the reader would otherwise supply was cut, and a doubled superlative was collapsed into one.",
+      "evidence": {
+        "baseline": "it will not merely validate an idea. It will suggest that human potential ... may be civilization's most valuable and most renewable resource",
+        "shipped": "it will suggest that human potential ... may be civilization's most valuable renewable resource"
+      },
+      "authorizedBy": "Catalog 4.3, applied to not merely X but Y.",
+      "diagnosis": "Validating the thesis is exactly how a reader will read Providence succeeding, and the preceding paragraph has just refused that reading. The rejected alternative is plausible and the distinction matters, so the retention limb applies. The superlative change is separate and is a change of claim: most valuable and most renewable asserts two superlatives, most valuable renewable resource asserts one and ranks within a category.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F5",
+      "summary": "A bounded prediction was widened while being shortened.",
+      "evidence": {
+        "baseline": "may still reveal something essential about what a future civilization actually requires in order to endure",
+        "shipped": "may still reveal what an enduring civilization requires"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Something essential about bounds the claim to a part. Removing it promises the whole. A future civilization and an enduring civilization are also different subjects, the first temporal and the second qualitative, and the sentence is about what would have to be true for a civilization to last.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Two em dashes. One introduced a specification of what a serious attempt would be and became a colon. One separated the question asked of the world from Providence's modest place in it and became a period, with the additive and retained at the head of the new sentence." },
+        { "kind": "kept", "note": "The pass's removal of It matters to be precise about what Providence is in relation to the thesis. Catalog 4.1, defect limb: the sentence announces that precision follows and the two-beat parallel after it reads identically without the announcement. The card lists claims that announce their own importance among the volume's known weak passages." },
+        { "kind": "kept", "note": "The pass's repair of the vague pronoun in If it succeeds to If Providence succeeds. Catalog 4.10, and a genuine ambiguity, since a civilization intervenes between the pronoun and its antecedent. R-PROPORTION-FLOOR forbids restoring baseline wording where the pass fixed a real fault." },
+        { "kind": "kept", "note": "The renamed heading, From Thesis to Experiment, under the volume ruling on renames." },
+        { "kind": "restored", "note": "The closing four-beat statement of the invitation, the serious attempt language in all three places, asks the world to investigate, the denial that success merely validates an idea, the doubled superlative, and the bounded prediction." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Eleventh consecutive section to need none. Four of the five findings are one failure repeated: every marker that holds Providence at the status of an attempt was removed, and each removal is individually defensible as tightening. The section is where the volume converts a thesis into a testable proposal, and the qualifiers are what make the proposal falsifiable rather than promised."
+  }
+}
