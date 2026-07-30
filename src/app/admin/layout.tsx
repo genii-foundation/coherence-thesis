@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
+import { AdminBreadcrumbs } from "./AdminBreadcrumbs";
 import styles from "./admin.module.css";
 
 // Admin tools read editorial and generated state off the filesystem, which does
@@ -34,7 +35,10 @@ export default async function AdminLayout({ children }: { children: ReactNode })
         </nav>
         <span className={styles.warn}>local only, read only</span>
       </header>
-      <main className={styles.main}>{children}</main>
+      <main className={styles.main}>
+        <AdminBreadcrumbs />
+        {children}
+      </main>
     </div>
   );
 }

@@ -54,7 +54,6 @@
 
 .main {
   padding: 22px 26px 60px;
-  max-width: 1400px;
 }
 
 .h1 {
@@ -249,8 +248,8 @@
    fighting the page's own. */
 .benchFrame {
   width: 100%;
-  height: 78vh;
-  min-height: 520px;
+  height: 82vh;
+  min-height: 560px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: var(--paper);
@@ -300,4 +299,54 @@
   flex-wrap: wrap;
   gap: 3px;
   margin-top: 8px;
+}
+
+/* Breadcrumb trail, matching the reader's pattern: the same bronze chevron and the same
+   ink, at the admin's denser scale. */
+.crumbs {
+  display: flex;
+  align-items: center;
+  margin: 0 0 14px;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.crumbs ol {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.crumbs li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.crumbs li + li::before {
+  content: "›";
+  color: var(--bronze-deep);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.crumbs a {
+  color: var(--ink-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.crumbs a:hover,
+.crumbs a:focus-visible {
+  color: var(--ink);
+  border-bottom-color: var(--bronze);
+}
+
+.crumbs [aria-current="page"] {
+  color: var(--ink);
 }

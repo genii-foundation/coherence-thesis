@@ -23,9 +23,6 @@ export default async function BenchPage({
 
   return (
     <>
-      <p className={styles.micro}>
-        <a href="/admin/calibration/">Calibration sessions</a>
-      </p>
       <h1 className={styles.h1}>{session?.currentHeading ?? section}</h1>
       {session ? (
         <p className={styles.sub}>
@@ -47,6 +44,21 @@ export default async function BenchPage({
         </p>
       ) : null}
 
+      {/* The comparison comes first. Following a session tile means wanting to see the
+          variants, and the orientation session carries eight rulings, which is more than
+          a screen of reading between the click and the thing clicked for. */}
+      <iframe
+        src={`/admin/bench/${section}/raw`}
+        title={`Comparison bench for ${session?.currentHeading ?? section}`}
+        className={styles.benchFrame}
+      />
+
+      {session?.rulings.length ? (
+        <p className={styles.micro} style={{ marginTop: 24 }}>
+          {session.rulings.length} ruling{session.rulings.length === 1 ? "" : "s"}
+        </p>
+      ) : null}
+
       {session?.rulings.map((ruling, index) => (
         <div className={styles.card} style={{ marginBottom: 12 }} key={ruling.question ?? index}>
           {ruling.question ? <h2>{ruling.question}</h2> : null}
@@ -63,12 +75,6 @@ export default async function BenchPage({
           ) : null}
         </div>
       ))}
-
-      <iframe
-        src={`/admin/bench/${section}/raw`}
-        title={`Comparison bench for ${session?.currentHeading ?? section}`}
-        className={styles.benchFrame}
-      />
     </>
   );
 }
