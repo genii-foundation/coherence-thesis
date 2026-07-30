@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-taking-pause-between-seed-and-sprout",
+  "editorialId": "volume-01",
+  "sectionHeading": "Taking Pause Between Seed and Sprout",
+  "currentHeading": "The Seed's Boundaries",
+  "status": "settled",
+  "opened": "2026-07-29",
+  "settled": "2026-07-29",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The pass moved the reader out of the sentence, converting second person address to third person description throughout.",
+      "evidence": {
+        "baseline": "This work does not ask you to suspend that skepticism. It depends on it. The remainder of the book does not ask you to accept this conclusion in advance. If you remain unconvinced after following that inquiry, the work has still served its purpose.",
+        "shipped": "This work depends on the reader's skepticism. An unconvinced reader may still leave with the disagreement clarified."
+      },
+      "authorizedBy": "Nothing identifiable. No catalog category prefers the third person.",
+      "diagnosis": "The card sets direct address as light and reserved for orienting or inviting, which is exactly how the baseline uses it. Every one of these sentences invites rather than tells the reader what they feel, so the card's limit was never approached. Replacing you with the reader turns an address into a description and removes the person being addressed. This is the most systematic breach found so far, running through the whole section rather than appearing once.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "A moral disclaimer was silently replaced with a functional one.",
+      "evidence": {
+        "baseline": "The Seed does not claim that extraction was wrong. It claims that it was conditionally effective.",
+        "shipped": "The Seed does not claim that extraction was always ineffective. It was conditionally effective."
+      },
+      "authorizedBy": "Nothing. This is a changed proposition rather than an edit.",
+      "diagnosis": "The baseline declines to make a moral judgment about historical extraction. The revision declines to make a functional one, which the following sentence then makes anyway. The two disclaimers are not interchangeable, and the moral one is load bearing: it is what lets the argument be biological rather than ideological, which the section says four paragraphs later. This also touches CTD-0013, which records Volume I's moral claim about historical extraction as an open author question, so the substitution quietly answered a question reserved for the author.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The section's opening move, which is also its title, was deleted.",
+      "evidence": {
+        "baseline": "Before moving on, it is worth pausing. If the Seed raised questions, resistance, or uncertainty, that response is neither unexpected nor unwelcome.",
+        "shipped": "The Seed makes a simple claim with implications for biology, economics, governance, and culture. Skepticism is warranted."
+      },
+      "authorizedBy": "Catalog 4.1, throat clearing, plausibly applied to Before moving on.",
+      "diagnosis": "4.1 flags openings that announce importance instead of beginning the thought. This opening does not announce importance, it performs the pause the section exists to create, and the baseline heading names that function. Welcoming the reader's resistance is also the candour the card requires. Skepticism is warranted states the same idea with the reader removed and the welcome withdrawn.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "An author promise was deleted rather than fulfilled, which would have closed an open debt item by erasure.",
+      "evidence": {
+        "baseline": "The intellectual foundations for this section are gathered in The Roots, at the end of this volume.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Nothing recorded. CTD-0001 registers that Volume I promises a Roots bibliography that does not exist.",
+      "diagnosis": "Deleting the promise makes the debt item appear satisfied while the underlying obligation, to publish the source material or to withdraw the promise deliberately, remains unaddressed. Whether the book promises a bibliography is a canon decision. The promise is restored and CTD-0001 stays open.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F5",
+      "summary": "A one line paragraph preempting an objection was removed, and a causal explanation was replaced with a vaguer one.",
+      "evidence": {
+        "baseline": "This is not controversial. ... coordination increasingly relies on force, enforcement, or automation, not because leaders are malicious, but because other options collapse.",
+        "shipped": "Absent. ... Force, enforcement, and automation fill the gap even when leaders are not malicious."
+      },
+      "authorizedBy": "Catalog 4.17 for the isolated line, and 4.3 for the not because X but because Y construction.",
+      "diagnosis": "This is not controversial answers the objection a reader forms on reading a physiological claim, and the card permits brief lines whose silence carries structural weight. Fill the gap says what happens; because other options collapse says why, which is the argument. Both retention limbs applied.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0001", "effect": "reopened", "note": "The Roots promise is restored to the manuscript, so the obligation to publish the bibliography or withdraw the promise deliberately is live again rather than resolved by deletion." },
+    { "id": "CTD-0013", "effect": "restored to the author", "note": "The moral disclaimer about historical extraction is back in the baseline's terms. The pass had substituted a functional disclaimer, which answered an open author question by side effect." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Eight em dashes. Two pairs fenced material that was not incidental and the syntax was rewritten instead. Three introduced a specification and became colons. One became a period where two thoughts deserved separate emphasis. One became a comma before a genuinely dependent phrase." },
+        { "kind": "kept", "note": "The three parallel denials bounding the claim, and the two You do not have to constructions. Both are denial forms whose retention limb applies: the error being corrected is what a reader would otherwise infer, and bounding the claim is the section's entire purpose." },
+        { "kind": "restored", "note": "Second person throughout. Four sentences that addressed the reader had been converted to descriptions of a reader." },
+        { "kind": "restored", "note": "The opening pause, the welcome to the reader's resistance, this is not controversial, the causal because other options collapse, the moral disclaimer about extraction, the book proceeds not to persuade, and the Roots reference." },
+        { "kind": "restored", "note": "The display claim as its own italic paragraph. The pass had inlined it into the sentence introducing it, which removes the pause before the sentence the section turns on." }
+      ]
+    }
+  ],
+
+  "rulings": [
+    {
+      "id": "RU1",
+      "question": "May an editorial pass delete a promise the author made, when the promise is recorded as open debt?",
+      "decision": "No. Restore the promise and leave the debt open.",
+      "rationale": "Deleting a promise makes a debt item appear satisfied while the obligation behind it is untouched. Whether the book promises something is canon. An editorial pass may not close an author question by erasing the sentence that raised it.",
+      "scope": "corpus",
+      "by": "editorial-agent"
+    }
+  ],
+
+  "rulesDerived": [],
+
+  "openQuestions": [],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Fifth consecutive section to need none. Two findings here, F2 and F4, are the first cases where the prior pass altered material that open debt items reserve for the author, which is a different and more serious class than the register damage found so far."
+  }
+}

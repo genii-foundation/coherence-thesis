@@ -20,7 +20,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
-import { paragraphFingerprints } from "../manuscripts/io";
+import { paragraphFingerprints, slugify } from "../manuscripts/io";
 import { semanticLinkOccurrenceId } from "./semantic-links";
 import {
   editorialVolumesRoot,
@@ -44,13 +44,10 @@ interface Occurrence {
   [key: string]: unknown;
 }
 
-/** Slug a heading the way section continuity ids are formed. */
+/** Slug a heading the way section continuity ids are formed. Delegates to the
+ *  canonical slugify so this cannot drift from how ids are actually minted. */
 export function headingSlug(heading: string): string {
-  return heading
-    .toLowerCase()
-    .replace(/\*/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+  return slugify(heading.replace(/\*/g, ""));
 }
 
 interface SectionBody {
@@ -141,25 +138,46 @@ function main(): void {
       retired.push(`${sectionContinuityId} / ${matchText} (${group.length})`);
       continue;
     }
-    if (hits.length !== group.length) {
-      // The section gained or lost paragraphs mentioning this term. Pairing them by
-      // order would guess which reviewed link belongs to which paragraph, so leave
-      // the whole group untouched and report it for review.
+    // Occurrences whose anchor still resolves are fixed points. They keep their
+    // paragraph and claim it. Only the broken ones need placing, and they are placed
+    // into the unclaimed paragraphs while preserving document order, which makes the
+    // assignment determinate whenever the fixed points bracket the gaps.
+    //
+    // A section that gains a paragraph mentioning the term, as a restoration does,
+    // therefore resolves cleanly: the new paragraph is simply left unlinked, since
+    // adding a link is a review decision rather than a repair.
+    const anchorToHit = new Map(hits.map((h) => [h.anchor, h]));
+    const claimed = new Set<string>();
+    const broken: number[] = [];
+    group.forEach((occurrence, index) => {
+      const current = anchorToHit.get(occurrence.source.paragraphAnchor);
+      if (current) claimed.add(current.anchor);
+      else broken.push(index);
+    });
+
+    const free = hits.filter((h) => !claimed.has(h.anchor));
+    if (broken.length > free.length) {
       ambiguous.push(
-        `${sectionContinuityId} / ${matchText}: ${group.length} reviewed link(s), ${hits.length} matching paragraph(s)`,
+        `${sectionContinuityId} / ${matchText}: ${broken.length} unresolved link(s), ${free.length} unclaimed paragraph(s)`,
       );
       kept.push(...group);
       continue;
     }
-    group.forEach((occurrence, index) => {
-      const target = hits[index]!;
-      if (target.anchor !== occurrence.source.paragraphAnchor) {
-        moved.push(`${sectionContinuityId} / ${matchText}: ${occurrence.source.paragraphAnchor} -> ${target.anchor}`);
-        occurrence.source.paragraphAnchor = target.anchor;
-      }
+
+    // Walk the broken occurrences in order, taking the earliest unclaimed paragraph
+    // that still leaves room for the ones after it.
+    let cursor = 0;
+    for (const index of broken) {
+      const occurrence = group[index]!;
+      const target = free[cursor]!;
+      cursor += 1;
+      moved.push(`${sectionContinuityId} / ${matchText}: ${occurrence.source.paragraphAnchor} -> ${target.anchor}`);
+      occurrence.source.paragraphAnchor = target.anchor;
+    }
+    for (const occurrence of group) {
       occurrence.occurrenceId = semanticLinkOccurrenceId(occurrence.conceptId, occurrence.source);
       kept.push(occurrence);
-    });
+    }
   }
 
   const out = process.stdout;

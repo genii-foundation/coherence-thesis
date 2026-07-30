@@ -12,6 +12,7 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
+import { slugify } from "../manuscripts/io";
 import {
   editorialCalibrationRoot,
   editorialReviewsRoot,
@@ -25,14 +26,10 @@ interface SectionStatus {
   words: number;
 }
 
-/** Slug a baseline heading into the section id convention, v01-some-heading. */
+/** Slug a baseline heading into the section id convention, v01-some-heading.
+ *  Delegates to the canonical slugify so this cannot drift. */
 export function sectionIdFor(volumeNumber: string, heading: string): string {
-  const slug = heading
-    .toLowerCase()
-    .replace(/\*/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-  return `v${volumeNumber}-${slug}`;
+  return `v${volumeNumber}-${slugify(heading.replace(/\*/g, ""))}`;
 }
 
 export function baselineSections(markdown: string, volumeNumber: string): SectionStatus[] {

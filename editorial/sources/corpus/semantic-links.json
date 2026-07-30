@@ -272,12 +272,12 @@
   ],
   "occurrences": [
     {
-      "occurrenceId": "semantic-link-001cc8be6c00658a",
+      "occurrenceId": "semantic-link-6b83b2e0b80e94ef",
       "conceptId": "volume-01-seed",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
-        "paragraphAnchor": "p-h9db91b8932336ea2",
+        "paragraphAnchor": "p-hb0d917acac17d563",
         "matchText": "Seed",
         "matchOrdinal": 1
       },
@@ -289,12 +289,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-39f7a3ba7e81d7d2",
+      "occurrenceId": "semantic-link-db26efe620f74c1d",
       "conceptId": "volume-01-seed",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
-        "paragraphAnchor": "p-h37540a0ae1e5de95",
+        "paragraphAnchor": "p-hc47e10bf8eea9adf",
         "matchText": "Seed",
         "matchOrdinal": 1
       },
@@ -323,12 +323,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-f5e109ab5d0b04e7",
+      "occurrenceId": "semantic-link-7ed78b66aaf53f1b",
       "conceptId": "volume-01-seed",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-taking-pause-between-seed-and-sprout",
-        "paragraphAnchor": "p-h476744c66f5db701",
+        "paragraphAnchor": "p-hfa9897443ab153a8",
         "matchText": "Seed",
         "matchOrdinal": 1
       },
