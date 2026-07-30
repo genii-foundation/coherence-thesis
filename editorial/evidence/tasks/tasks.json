@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-29",
+  "updated": "2026-07-30",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -12,10 +12,13 @@
       "id": "T-001",
       "title": "Re-render Volume I from baseline, section by section",
       "tier": "green",
-      "status": "in-progress",
+      "status": "done",
       "area": "manuscript",
-      "detail": "28 sections. A section is done when its calibration record exists with status settled. Live count from npm run editorial:progress -- --volume 01.",
-      "progress": { "kind": "calibration", "editorialId": "volume-01" }
+      "detail": "Complete. 27 of 28 sections settled, 1 open. v01-a-note-on-compression carries a heading scope question that is the author's to decide under CTD-0017. R-LEDGER-WINS was added mid pass, so the first fourteen sections were rendered without it.",
+      "progress": {
+        "kind": "calibration",
+        "editorialId": "volume-01"
+      }
     },
     {
       "id": "T-002",
@@ -33,7 +36,9 @@
       "status": "pending",
       "area": "voice",
       "detail": "Each card keeps identity, overrides, volume specific lexicon and images, protected lines, failure modes, compression range. Where this volume departs may never be empty.",
-      "blockedBy": ["T-002"]
+      "blockedBy": [
+        "T-002"
+      ]
     },
     {
       "id": "T-004",
@@ -42,7 +47,9 @@
       "status": "pending",
       "area": "tooling",
       "detail": "Corpus card plus volume overlay, so every gate and the bench see what actually binds rather than what one file says.",
-      "blockedBy": ["T-002"]
+      "blockedBy": [
+        "T-002"
+      ]
     },
     {
       "id": "T-005",
@@ -60,7 +67,9 @@
       "status": "blocked",
       "area": "tooling",
       "detail": "Cannot land while three declared lines are missing, since it would block every run.",
-      "blockedBy": ["T-005"]
+      "blockedBy": [
+        "T-005"
+      ]
     },
     {
       "id": "T-007",
@@ -75,9 +84,9 @@
       "id": "T-008",
       "title": "Move the calibration bench onto an admin route",
       "tier": "green",
-      "status": "pending",
+      "status": "done",
       "area": "tooling",
-      "detail": "Render from the record on request rather than generating a file and copying it into public/data.",
+      "detail": "Done as /admin/calibration, with /admin/bench/[section] serving the rendered view out of generated/. Both gate localhost only and fail closed. Verified: existing bench 200, missing bench returns the exact compare command, path traversal 404, non-local Host 404.",
       "blockedBy": []
     },
     {
@@ -96,6 +105,51 @@
       "status": "pending",
       "area": "canon",
       "detail": "CTD-0003, CTD-0005, CTD-0013, CTD-0016 and related. Doctrine rather than craft. Never resolved to make a sentence land.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-011",
+      "title": "Audit the fourteen sections rendered before R-LEDGER-WINS",
+      "tier": "amber",
+      "status": "pending",
+      "area": "editorial",
+      "detail": "CTD-0108. A restoration that reverted a recorded decision reads correctly and passes every gate, so only a ledger by ledger check finds it. Three items were reasoned about during the pass, CTD-0001, CTD-0004, CTD-0013. The rest were not searched.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-012",
+      "title": "Anchor voice card exemplars by quoted opening words",
+      "tier": "amber",
+      "status": "pending",
+      "area": "editorial",
+      "detail": "Recorded as a weakness when the Volume I card was rewritten and confirmed by v01-the-stem F1, where the prior pass damaged a designated exemplar and no gate caught it. An exemplar named by prose description cannot be machine checked. Protected lines already work this way.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-013",
+      "title": "Produce the batched heading questions for the author",
+      "tier": "red",
+      "status": "pending",
+      "area": "editorial",
+      "detail": "Five recorded across the re-render and never assembled into one document: Between Sprout and Stem, the three Currency of Presence subsections, and What This Is and What It Is Not. Each costs a reviewed route alias to change, so they are cheaper to decide together than one at a time.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-014",
+      "title": "Offer the calibration bench on section level wording feedback",
+      "tier": "green",
+      "status": "in-progress",
+      "area": "tooling",
+      "detail": "AGENTS.md now carries the offer and the populated slash command. The dev only selection tooltip option is not built yet.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-015",
+      "title": "Explore an Agent SDK route inside the admin panel",
+      "tier": "amber",
+      "status": "pending",
+      "area": "tooling",
+      "detail": "Variant four. A local /api/admin/revise that drafts variants without leaving the browser. Explore before building: it is a second editorial client and would have to re-implement the ledger reads this work depends on.",
       "blockedBy": []
     }
   ]

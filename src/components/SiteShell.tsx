@@ -4,6 +4,7 @@ import { copyrightYearLabel } from "@/lib/copyright";
 import { CopyrightYearIsland } from "@/components/CopyrightYearIsland";
 import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
 import { CleanTooltip } from "@/components/CleanTooltip";
+import { EditorialAdminMark } from "@/components/EditorialAdminMark";
 import { GitHubMark } from "@/components/GitHubMark";
 import { MobilePageContextIsland } from "@/components/MobilePageContextIsland";
 import { OfflineSupportIsland } from "@/components/OfflineSupportIsland";
@@ -91,6 +92,21 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <ToolbarBrandIsland volumes={brandVolumes} />
         <ToolbarBreadcrumbs />
         <nav className="site-nav" aria-label="Primary">
+          {/* Development only. The check is a build time constant, so the button
+              and its link are erased from the production bundle rather than
+              hidden by CSS. The /admin subtree gates itself independently and
+              fails closed, so a stale bundle cannot reach it either. */}
+          {process.env.NODE_ENV !== "production" && (
+            <CleanTooltip label="Editorial administration, dev only">
+              <a
+                className="editorial-admin-button"
+                href="/admin/"
+                aria-label="Editorial administration, dev only"
+              >
+                <EditorialAdminMark size={17} />
+              </a>
+            </CleanTooltip>
+          )}
           <SearchMenuIsland />
           <OutlineMenuIsland />
           <ToolbarBookmarksIsland />

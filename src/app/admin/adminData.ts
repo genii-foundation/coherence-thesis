@@ -159,9 +159,149 @@ export function readProtectedLineViolations(): { checked: number; violations: Pr
   return { checked, violations };
 }
 
+export interface GlyphViolation {
+  editorialId: string;
+  line: number;
+  glyph: string;
+  excerpt: string;
+}
+
+/**
+ * Mirrors the punctuation standard's prohibited marks. The repository claims its
+ * published prose contains no em dash, en dash, or double hyphen, and that claim can
+ * become false with a single paste. Cheap to check, and invisible until someone reads
+ * the rendered page.
+ */
+export function readGlyphViolations(): { checked: number; violations: GlyphViolation[] } {
+  const violations: GlyphViolation[] = [];
+  let checked = 0;
+  for (const editorialId of editorialVolumeIds) {
+    const file = path.join(editorialVolumesRoot, editorialId, "manuscript.md");
+    if (!existsSync(file)) continue;
+    checked += 1;
+    const lines = readFileSync(file, "utf8").split("\n");
+    lines.forEach((text, index) => {
+      // A markdown thematic break is three or more hyphens alone on a line, which is
+      // structure rather than punctuation. Everything else with a double hyphen is a
+      // prohibited construction.
+      const isThematicBreak = /^-{3,}\s*$/.test(text);
+      for (const [glyph, pattern] of [
+        ["em dash", /—/],
+        ["en dash", /–/],
+        ["double hyphen", /\w--\w|\s--\s/],
+      ] as const) {
+        if (isThematicBreak) continue;
+        const hit = pattern.exec(text);
+        if (!hit) continue;
+        violations.push({
+          editorialId,
+          line: index + 1,
+          glyph,
+          excerpt: text.slice(Math.max(0, hit.index - 30), hit.index + 40).trim(),
+        });
+      }
+    });
+  }
+  return { checked, violations };
+}
+
+export interface CalibrationFinding {
+  id: string;
+  summary: string;
+  producedRule?: string;
+}
+
+export interface CalibrationRow {
+  sectionId: string;
+  editorialId: string;
+  heading: string;
+  currentHeading: string;
+  status: string;
+  settled: string;
+  findings: CalibrationFinding[];
+  rulesCited: string[];
+  ledgerItems: string[];
+  openQuestions: number;
+  /** The disposable bench under generated/, if editorial:compare has been run for this section. */
+  benchRendered: boolean;
+}
+
+/**
+ * Reads every calibration record. The bench renderer in scripts/editorial/compare.ts
+ * cannot be imported here: it resolves paths through scripts/repository/paths, which
+ * relies on import.meta.dirname that the Next bundler does not provide. This reads the
+ * same durable records and links out to the rendered bench rather than duplicating the
+ * renderer, so there remains one implementation of the comparison view.
+ */
+export function readCalibrationRows(): CalibrationRow[] {
+  const rows: CalibrationRow[] = [];
+  const benchRoot = path.join(repoRoot, "generated", "calibration");
+  for (const editorialId of editorialVolumeIds) {
+    const dir = path.join(editorialCalibrationRoot, editorialId);
+    if (!existsSync(dir)) continue;
+    for (const file of readdirSync(dir).filter((f) => f.endsWith(".json")).sort()) {
+      try {
+        const r = JSON.parse(readFileSync(path.join(dir, file), "utf8")) as Record<string, unknown>;
+        const findings = ((r.findings as CalibrationFinding[] | undefined) ?? []).map((f) => ({
+          id: f.id,
+          summary: f.summary,
+          producedRule: f.producedRule,
+        }));
+        const sectionId = String(r.sectionId ?? file.replace(/\.json$/, ""));
+        rows.push({
+          sectionId,
+          editorialId,
+          heading: String(r.sectionHeading ?? sectionId),
+          currentHeading: String(r.currentHeading ?? r.sectionHeading ?? sectionId),
+          status: String(r.status ?? "unknown"),
+          settled: String(r.settled ?? ""),
+          findings,
+          rulesCited: [...new Set(findings.map((f) => f.producedRule).filter((x): x is string => Boolean(x)))],
+          ledgerItems: ((r.debtImpact as { id?: string }[] | undefined) ?? [])
+            .map((d) => d.id)
+            .filter((x): x is string => Boolean(x)),
+          openQuestions: ((r.openQuestions as unknown[] | undefined) ?? []).length,
+          benchRendered: existsSync(path.join(benchRoot, `${sectionId}.html`)),
+        });
+      } catch {
+        // A record that will not parse is a real defect, but the gates page is the
+        // place that reports it. Skipping here keeps one bad file from blanking the view.
+      }
+    }
+  }
+  return rows;
+}
+
 export interface RuleRow {
   id: string;
   obligation: string;
+}
+
+export interface RuleUsage extends RuleRow {
+  citations: number;
+  sections: string[];
+}
+
+/**
+ * Pairs each named rule with the calibration findings that cite it. A rule no record
+ * has ever invoked is either dead or unenforced, which is the only thing a list of
+ * rules can usefully tell you that reading the standard cannot.
+ */
+export function readRuleUsage(): RuleUsage[] {
+  const rows = readCalibrationRows();
+  return readRules().map((rule) => {
+    const sections = rows
+      .filter((row) => row.rulesCited.includes(rule.id))
+      .map((row) => row.sectionId);
+    return {
+      ...rule,
+      citations: rows.reduce(
+        (total, row) => total + row.findings.filter((f) => f.producedRule === rule.id).length,
+        0,
+      ),
+      sections,
+    };
+  });
 }
 
 export function readRules(): RuleRow[] {
