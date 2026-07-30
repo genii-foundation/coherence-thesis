@@ -32,16 +32,46 @@ function adminBreadcrumbRoute(path: string): BreadcrumbRoute | null {
         href: path,
       });
     }
-  } else if (segments[0] === "calibration") {
-    crumbs.push({
-      label: "Editorial revisions",
-      href: "/admin/calibration/",
-    });
-  } else {
-    crumbs.push({ label: "Status", href: "/admin/" });
   }
 
   return { href: path, crumbs };
+}
+
+function AdminHeaderContext({ path }: { path: string }) {
+  const revisionsCurrent =
+    path.startsWith("/admin/calibration") ||
+    path.startsWith("/admin/bench/") ||
+    path.startsWith("/admin/revisions/");
+
+  return (
+    <div className="admin-header-row">
+      <nav className="admin-header-views" aria-label="Admin views">
+        <Link
+          href="/admin/"
+          aria-current={revisionsCurrent ? undefined : "page"}
+        >
+          Status
+        </Link>
+        <Link
+          href="/admin/calibration/"
+          aria-current={revisionsCurrent ? "page" : undefined}
+        >
+          Editorial revisions
+        </Link>
+      </nav>
+      <div
+        className="admin-repository-state"
+        aria-label="Local repository, read only"
+      >
+        <span className="admin-repository-dot" aria-hidden="true" />
+        <span>Local</span>
+        <span className="admin-repository-separator" aria-hidden="true">
+          ·
+        </span>
+        <span>Read only</span>
+      </div>
+    </div>
+  );
 }
 
 function isTruncated(element: HTMLElement | null): boolean {
@@ -124,14 +154,16 @@ export function ToolbarBreadcrumbs({ className }: { className?: string } = {}) {
 
   if (!route || route.crumbs.length === 0) return null;
 
-  return (
+  const adminViewOwnsCurrentState = isAdminPath && route.crumbs.length === 1;
+  const breadcrumbs = (
     <nav
       className={["breadcrumb-trail", className].filter(Boolean).join(" ")}
       aria-label="Breadcrumb"
     >
       <ol>
         {route.crumbs.map((crumb, index) => {
-          const isCurrent = index === route.crumbs.length - 1;
+          const isCurrent =
+            !adminViewOwnsCurrentState && index === route.crumbs.length - 1;
           return (
             <li key={`${crumb.href}-${index}`}>
               <BreadcrumbTooltip
@@ -144,5 +176,14 @@ export function ToolbarBreadcrumbs({ className }: { className?: string } = {}) {
         })}
       </ol>
     </nav>
+  );
+
+  if (!isAdminPath) return breadcrumbs;
+
+  return (
+    <div className="admin-header-context">
+      {breadcrumbs}
+      <AdminHeaderContext path={currentPath} />
+    </div>
   );
 }

@@ -13,15 +13,20 @@ test.describe("local editorial admin", () => {
 
     const breadcrumb = page.getByRole("navigation", { name: "Breadcrumb" });
     await expect(breadcrumb.getByRole("link", { name: "Admin" })).toBeVisible();
-    await expect(breadcrumb.getByText("Status", { exact: true })).toBeVisible();
 
-    const adminNav = page.getByRole("navigation", { name: "Admin views" });
+    const siteHeader = page.getByRole("banner");
+    const adminNav = siteHeader.getByRole("navigation", {
+      name: "Admin views",
+    });
     await expect(adminNav.getByRole("link", { name: "Status" })).toHaveAttribute(
       "aria-current",
       "page",
     );
     await expect(
       adminNav.getByRole("link", { name: "Editorial revisions" }),
+    ).toBeVisible();
+    await expect(
+      siteHeader.getByLabel("Local repository, read only"),
     ).toBeVisible();
 
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
@@ -39,6 +44,22 @@ test.describe("local editorial admin", () => {
     await expect(
       page.getByRole("heading", { level: 2, name: "Work queue" }),
     ).toBeVisible();
+
+    await page.setViewportSize({ width: 558, height: 858 });
+    const mobileContext = page.getByRole("region", { name: "Page context" });
+    await expect(
+      mobileContext.getByRole("navigation", { name: "Admin views" }),
+    ).toBeVisible();
+    await expect(
+      mobileContext.getByLabel("Local repository, read only"),
+    ).toBeVisible();
+    const mobileLayout = await page.evaluate(() => ({
+      clientWidth: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+    }));
+    expect(mobileLayout.scrollWidth).toBeLessThanOrEqual(
+      mobileLayout.clientWidth,
+    );
   });
 
   test("turns the revision ledger into a bounded editorial workflow", async ({
@@ -302,10 +323,13 @@ test.describe("local editorial admin", () => {
     const layout = await page.evaluate(() => ({
       clientWidth: document.documentElement.clientWidth,
       scrollWidth: document.documentElement.scrollWidth,
-      navRight:
-        document
-          .querySelector('nav[aria-label="Admin views"]')
-          ?.getBoundingClientRect().right ?? 0,
+      navRight: Math.max(
+        0,
+        ...[...document.querySelectorAll('nav[aria-label="Admin views"]')]
+          .map((nav) => nav.getBoundingClientRect())
+          .filter((bounds) => bounds.width > 0)
+          .map((bounds) => bounds.right),
+      ),
     }));
 
     expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth);

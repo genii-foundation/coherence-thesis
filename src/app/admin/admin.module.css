@@ -13,104 +13,6 @@
   color: var(--ink);
 }
 
-.bar {
-  border-bottom: 1px solid var(--line);
-  background: rgb(244 234 215 / 0.72);
-  backdrop-filter: blur(18px);
-}
-
-.barInner {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  width: min(1160px, calc(100% - 2rem));
-  margin: 0 auto;
-  padding: 0.8rem 0;
-}
-
-.workspaceIdentity {
-  display: grid;
-  gap: 0.1rem;
-}
-
-.mark {
-  color: var(--bronze-deep);
-  font-size: 0.64rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  line-height: 1.15;
-  text-transform: uppercase;
-}
-
-.workspaceTitle {
-  color: var(--ink);
-  font-family: var(--font-display);
-  font-size: 1.08rem;
-  font-weight: 600;
-  line-height: 1.1;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.nav a {
-  border: 1px solid transparent;
-  border-radius: 999px;
-  color: var(--ink-soft);
-  font-size: 0.79rem;
-  font-weight: 600;
-  padding: 0.48rem 0.78rem;
-  text-decoration: none;
-  transition:
-    background 150ms ease,
-    border-color 150ms ease,
-    color 150ms ease;
-}
-
-.nav a:hover,
-.nav a:focus-visible {
-  border-color: var(--line);
-  background: var(--nav-hover-background);
-  color: var(--ink);
-}
-
-.nav a[aria-current="page"] {
-  border-color: rgba(119, 84, 42, 0.34);
-  background: var(--panel-background);
-  box-shadow: 0 4px 14px rgb(44 31 18 / 0.07);
-  color: var(--ink);
-}
-
-.warn {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  color: var(--ink-muted);
-  font-size: 0.68rem;
-  font-weight: 650;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.statusDot {
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 999px;
-  background: var(--sage);
-  box-shadow: 0 0 0 3px rgb(96 121 109 / 0.13);
-}
-
-.warnDivider {
-  width: 1px;
-  height: 0.8rem;
-  background: var(--line);
-}
-
 .main {
   width: min(1160px, calc(100% - 2rem));
   margin: 0 auto;
@@ -1386,21 +1288,10 @@
 }
 
 @media (max-width: 900px) {
-  .barInner {
-    grid-template-columns: auto 1fr;
-    gap: 0.6rem 1rem;
-  }
-
   .benchRulingsHeader {
     grid-template-columns: 1fr;
     align-items: start;
     gap: 1.2rem;
-  }
-
-  .warn {
-    grid-column: 1 / -1;
-    border-top: 1px solid var(--line);
-    padding-top: 0.55rem;
   }
 
   .metricGrid {
@@ -1437,34 +1328,9 @@
 }
 
 @media (max-width: 640px) {
-  .barInner {
-    grid-template-columns: 1fr;
-    align-items: start;
-    width: min(100% - 2rem, 1160px);
-    padding: 0.75rem 0;
-  }
-
-  .workspaceIdentity {
-    display: none;
-  }
-
-  .nav {
-    width: 100%;
-  }
-
-  .nav a {
-    flex: 1 1 auto;
-    text-align: center;
-  }
-
-  .warn {
-    grid-column: 1;
-    justify-content: center;
-  }
-
   .main {
     width: min(100% - 2rem, 1160px);
-    padding-top: 2rem;
+    padding-top: 1.35rem;
   }
 
   .benchRulingStats {

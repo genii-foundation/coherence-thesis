@@ -711,6 +711,90 @@ input {
   border-color: transparent;
 }
 
+.admin-header-context {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.7rem, 1.5vw, 1.1rem);
+  min-width: 0;
+}
+
+.admin-header-context > .breadcrumb-trail {
+  flex: 0 1 auto;
+}
+
+.admin-header-row {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(0.7rem, 1.5vw, 1.1rem);
+  min-width: 0;
+  border-left: 1px solid var(--line);
+  padding-left: clamp(0.7rem, 1.5vw, 1.1rem);
+}
+
+.admin-header-views {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.admin-header-views a {
+  border-bottom: 1px solid transparent;
+  color: var(--ink-muted);
+  font-size: 0.76rem;
+  font-weight: 650;
+  line-height: 1.2;
+  padding: 0.38rem 0 0.3rem;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.admin-header-views a:where(:visited) {
+  color: var(--ink-muted);
+}
+
+.admin-header-views a:hover,
+.admin-header-views a:focus-visible {
+  border-color: rgba(119, 84, 42, 0.58);
+  color: var(--ink);
+  outline: none;
+}
+
+.admin-header-views a[aria-current="page"] {
+  border-color: var(--bronze-deep);
+  color: var(--ink);
+}
+
+.admin-repository-state {
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  color: var(--ink-muted);
+  font-size: 0.61rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.admin-repository-dot {
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: var(--sage);
+  box-shadow: 0 0 0 2px rgb(96 121 109 / 0.12);
+}
+
+.admin-repository-separator {
+  color: var(--line-strong);
+}
+
 .tooltip-surface {
   --tooltip-background: rgba(251, 246, 235, 0.97);
   --tooltip-border-color: rgba(119, 84, 42, 0.42);
@@ -6977,6 +7061,10 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
     display: none;
   }
 
+  .site-header > .admin-header-context {
+    display: none;
+  }
+
   .site-header > .brand-mark {
     flex: 0 0 auto;
     display: inline-flex;
@@ -7100,6 +7188,26 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   .mobile-page-context .breadcrumb-trail .breadcrumb-label {
     max-width: min(48vw, 18rem);
     padding: 0.25rem 0;
+  }
+
+  .mobile-page-context .admin-header-context {
+    display: grid;
+    gap: 0.45rem;
+    width: 100%;
+  }
+
+  .mobile-page-context .admin-header-row {
+    width: 100%;
+    border-left: 0;
+    padding-left: 1.75rem;
+  }
+
+  .mobile-page-context .admin-header-views {
+    gap: 1rem;
+  }
+
+  .mobile-page-context .admin-header-views a {
+    font-size: 0.79rem;
   }
 
   .mobile-page-context + .page-fade .page-frame {
