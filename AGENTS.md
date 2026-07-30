@@ -83,13 +83,17 @@ The `coherence-reader-attach` configuration in `.claude/launch.json` connects to
 
 `/admin` is the author's view of work in flight. It is localhost only, it fails closed twice on the server, and it is read only with respect to `editorial/`. It shows the task queue, per volume progress, the calibration bench, and the mechanical gates.
 
-The workbench is only worth having if it is true. Two obligations follow.
+The workbench is only worth having if it is true. Every status must belong to one of these classes:
 
-**Refresh `editorial/evidence/tasks/tasks.json` in the same change that moves the work.** Add a task when you agree to do something that will not be finished in the current turn. Move it to `in-progress` when you start, and to `done` only once the thing exists and has been exercised. Never mark a task done in advance of the work; a queue that describes intentions is worse than no queue, because it is read as a record of fact. Set `updated` whenever the file changes.
+- **Derived editorial state.** Read counts, coverage, settlement, questions, debt, and mechanical gates from their canonical records at request time. Do not copy derived counts into task prose. Rendering, settlement, approval, publication, and deployment are different states. Label the exact state shown.
+- **Live repository state.** Show the current branch, commit, tracked or untracked worktree changes, remote divergence, and request time from Git. Never label a task date or cached build date as a repository snapshot.
+- **Agent work state.** Record multi-step work in `editorial/evidence/tasks/tasks.json`. Before the first substantive mutation, add the task or move the existing task to `in-progress`. Move it to `blocked` when progress stops on a real dependency. Move it to `done` only after the result exists and has been exercised. Set `updated` whenever the register changes.
 
-The queue holds agent executable work. `editorial/evidence/debt/` holds obligations that need the author's judgment. When a task turns out to require a decision rather than execution, move it across rather than leaving it pending forever.
+Quick work completed in one edit does not need a ceremonial task. Work with multiple implementation or validation phases does. The queue is a factual execution record, not a collection of intentions. `editorial/evidence/debt/` holds obligations that need the author's judgment. When a task turns out to require a decision rather than execution, move it across rather than leaving it pending forever.
 
-**Audit follow through when the author asks what is outstanding, and before declaring a body of work complete.** Compare three sources: the task queue, the debt ledger, and what was actually agreed in conversation. The third is the one that rots, because an agreement made in passing leaves no artifact unless someone writes it down. Anything found there that is still real becomes a task in the same turn it is found.
+The admin routes refresh from repository state while visible. Keep progress derivation shared between the admin reader, CLI report, and validation. Add every new status source to `npm run repository:validate-admin-status`, and add a browser test that proves the visible label matches the underlying state.
+
+Audit follow through when the author asks what is outstanding, before every progress claim, and before declaring a body of work complete. Compare the task queue, debt ledger, current Git state, canonical evidence, and what was agreed in conversation. An agreement made in passing has no durable status until it becomes a task or debt item. Record anything still real in the same turn it is found.
 
 A scoped loop stops at its own stop condition and touches nothing else. That is correct behavior and not evidence that the remaining queue is stale, but it does mean the queue must be reconciled by hand once the loop ends.
 

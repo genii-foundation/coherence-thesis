@@ -113,6 +113,8 @@
     "repository:validate-layout": "tsx scripts/repository/layout.ts",
     "prerepository:validate-agents": "node scripts/repository/ensure-node-modules.mjs",
     "repository:validate-agents": "tsx scripts/repository/agent-assets.ts",
+    "prerepository:validate-admin-status": "node scripts/repository/ensure-node-modules.mjs",
+    "repository:validate-admin-status": "tsx scripts/repository/admin-status.ts",
     "prerepository:validate-links": "node scripts/repository/ensure-node-modules.mjs",
     "repository:validate-links": "tsx scripts/repository/validate-markdown-links.ts",
     "prerepository:doctor": "node scripts/repository/ensure-node-modules.mjs",

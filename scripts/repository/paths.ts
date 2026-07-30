@@ -26,6 +26,11 @@ export const editorialEvidenceRoot = path.join(editorialRoot, "evidence");
 export const editorialReviewsRoot = path.join(editorialEvidenceRoot, "reviews");
 export const editorialAuditsRoot = path.join(editorialEvidenceRoot, "audits");
 export const editorialDebtRoot = path.join(editorialEvidenceRoot, "debt");
+export const editorialTasksRoot = path.join(editorialEvidenceRoot, "tasks");
+export const editorialTaskRegisterPath = path.join(
+  editorialTasksRoot,
+  "tasks.json",
+);
 export const masterLedgerPath = path.join(
   editorialCorpusRoot,
   "master-ledger.md",

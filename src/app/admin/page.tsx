@@ -15,6 +15,7 @@ import {
   readCalibrationRows,
   readGlyphViolations,
   readProtectedLineViolations,
+  readRepositoryState,
   readTasks,
   type Task,
 } from "./adminData";
@@ -41,14 +42,13 @@ function volumeLabel(editorialId: string): string {
   return `Volume ${VOLUME_NUMERALS[index] ?? numberFormat.format(index + 1)}`;
 }
 
-function formatSnapshot(value: string): string {
-  const date = new Date(`${value}T00:00:00Z`);
-  if (Number.isNaN(date.getTime())) return value;
+function formatCheckedAt(value: string): string {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "now";
   return new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
   }).format(date);
 }
 
@@ -96,11 +96,12 @@ export default function StatusPage() {
   const lines = readProtectedLineViolations();
   const glyphs = readGlyphViolations();
   const records = readCalibrationRows();
+  const repository = readRepositoryState();
 
-  const started = progress.filter((volume) => volume.settled > 0);
+  const started = progress.filter((volume) => volume.rendered > 0);
   const openSections = started.flatMap((volume) =>
     volume.sections
-      .filter((section) => !section.settled)
+      .filter((section) => section.status === "open")
       .map((section) => ({
         volume: volume.editorialId,
         heading: section.heading,
@@ -119,10 +120,8 @@ export default function StatusPage() {
       a.id.localeCompare(b.id),
   );
   const currentVolume =
-    started.find((volume) => volume.settled < volume.total) ?? started.at(-1);
-  const currentRemaining = currentVolume
-    ? currentVolume.total - currentVolume.settled
-    : 0;
+    started.find((volume) => volume.open > 0 || volume.notStarted > 0) ??
+    started.at(-1);
 
   const attention: AttentionItem[] = [];
   if (lines.violations.length) {
@@ -157,10 +156,10 @@ export default function StatusPage() {
   }
   for (const section of openSections) {
     attention.push({
-      label: "Author decision",
+      label: "Open record",
       title: section.heading,
-      context: `${volumeLabel(section.volume)} remains unsettled`,
-      next: "Review the variants and decide the open question.",
+      context: `${volumeLabel(section.volume)} has not closed its calibration record`,
+      next: "Review the record and resolve its remaining gate.",
       tone: "decision",
       href: "/admin/calibration/",
     });
@@ -196,10 +195,24 @@ export default function StatusPage() {
   const currentLabel = currentVolume
     ? volumeLabel(currentVolume.editorialId)
     : "No volume";
-  const heroTitle =
-    currentVolume && currentRemaining === 1
-      ? `${currentLabel} is one decision from closure.`
-      : `${currentLabel} is the active editorial workstream.`;
+  let heroTitle = `${currentLabel} is the active editorial workstream.`;
+  if (currentVolume && currentVolume.rendered === currentVolume.total) {
+    if (openQuestions === 1) {
+      heroTitle = `${currentLabel} is fully rendered. One author decision remains.`;
+    } else if (openQuestions > 1) {
+      heroTitle = `${currentLabel} is fully rendered. ${numberFormat.format(openQuestions)} author decisions remain.`;
+    } else if (currentVolume.open > 0) {
+      heroTitle = `${currentLabel} is fully rendered. ${numberFormat.format(currentVolume.open)} calibration ${currentVolume.open === 1 ? "record remains" : "records remain"} open.`;
+    } else {
+      heroTitle = `${currentLabel} is rendered and settled.`;
+    }
+  } else if (currentVolume) {
+    heroTitle = `${currentLabel} is ${numberFormat.format(currentVolume.rendered)} of ${numberFormat.format(currentVolume.total)} sections rendered.`;
+  }
+  const repositorySync =
+    repository.ahead || repository.behind
+      ? `${numberFormat.format(repository.ahead)} ahead, ${numberFormat.format(repository.behind)} behind`
+      : "Synced with origin";
 
   return (
     <div className={styles.dashboard}>
@@ -208,15 +221,24 @@ export default function StatusPage() {
           <span className={styles.eyebrow}>Editorial command center</span>
           <h1 id="status-title">{heroTitle}</h1>
           <p>
-            {numberFormat.format(openQuestions)} author rulings and{" "}
-            {numberFormat.format(lines.violations.length)} protected-line repairs
-            stand between the current branch and a trustworthy next gate.
+            The page reads canonical records and live gates. Integrity checks
+            report {numberFormat.format(lines.violations.length)} protected-line{" "}
+            {lines.violations.length === 1 ? "failure" : "failures"} and{" "}
+            {numberFormat.format(glyphs.violations.length)} prohibited{" "}
+            {glyphs.violations.length === 1 ? "glyph" : "glyphs"}.
           </p>
         </div>
         <div className={styles.snapshot}>
-          <span>Repository snapshot</span>
-          <strong>{formatSnapshot(register.updated)}</strong>
-          <small>Live from this worktree</small>
+          <span>Live repository</span>
+          <strong>
+            {repository.branch} · {repository.commit}
+          </strong>
+          <small>
+            {numberFormat.format(repository.changedFiles)} working{" "}
+            {repository.changedFiles === 1 ? "change" : "changes"} ·{" "}
+            {repositorySync}
+          </small>
+          <small>Checked {formatCheckedAt(repository.checkedAt)}</small>
         </div>
       </section>
 
@@ -232,12 +254,12 @@ export default function StatusPage() {
         <article className={styles.metricCard}>
           <BookOpenCheck aria-hidden="true" size={19} />
           <span className={styles.metricValue}>
-            {currentVolume ? `${currentVolume.percent}%` : "0%"}
+            {currentVolume ? `${currentVolume.renderedPercent}%` : "0%"}
           </span>
           <strong>{currentLabel}</strong>
           <small>
             {currentVolume
-              ? `${numberFormat.format(currentVolume.settled)} of ${numberFormat.format(currentVolume.total)} sections settled`
+              ? `${numberFormat.format(currentVolume.rendered)} of ${numberFormat.format(currentVolume.total)} rendered · ${numberFormat.format(currentVolume.settled)} records settled`
               : "No active calibration pass"}
           </small>
         </article>
@@ -318,25 +340,28 @@ export default function StatusPage() {
           {currentVolume ? (
             <>
               <div className={styles.currentProgress}>
-                <span>{currentVolume.percent}%</span>
+                <span>{currentVolume.renderedPercent}%</span>
                 <div>
                   <strong>
-                    {numberFormat.format(currentVolume.settled)} settled
+                    {numberFormat.format(currentVolume.rendered)} rendered
                   </strong>
                   <small>
-                    {numberFormat.format(currentRemaining)} remaining
+                    {numberFormat.format(currentVolume.settled)} records settled ·{" "}
+                    {numberFormat.format(currentVolume.open)} pass open
                   </small>
                 </div>
               </div>
               <div
                 className={styles.primaryProgress}
                 role="progressbar"
-                aria-label={`${currentLabel} sections settled`}
+                aria-label={`${currentLabel} sections rendered`}
                 aria-valuemin={0}
                 aria-valuemax={currentVolume.total}
-                aria-valuenow={currentVolume.settled}
+                aria-valuenow={currentVolume.rendered}
               >
-                <span style={{ width: `${currentVolume.percent}%` }} />
+                <span
+                  style={{ width: `${currentVolume.renderedPercent}%` }}
+                />
               </div>
               <div className={styles.currentFacts}>
                 <div>
@@ -371,22 +396,24 @@ export default function StatusPage() {
           {progress.map((volume) => (
             <article
               className={`${styles.volumeCard} ${
-                volume.settled > 0 ? styles.volumeActive : ""
+                volume.rendered > 0 ? styles.volumeActive : ""
               }`}
               key={volume.editorialId}
             >
               <div className={styles.volumeCardHeading}>
                 <span>{volumeLabel(volume.editorialId)}</span>
                 <strong>
-                  {volume.total ? `${volume.percent}%` : "Not scoped"}
+                  {volume.total
+                    ? `${volume.renderedPercent}%`
+                    : "Not scoped"}
                 </strong>
               </div>
               <div className={styles.volumeBar} aria-hidden="true">
-                <span style={{ width: `${volume.percent}%` }} />
+                <span style={{ width: `${volume.renderedPercent}%` }} />
               </div>
               <small>
                 {volume.total
-                  ? `${numberFormat.format(volume.settled)} of ${numberFormat.format(volume.total)} sections`
+                  ? `${numberFormat.format(volume.rendered)} rendered · ${numberFormat.format(volume.settled)} records settled`
                   : "No baseline sections"}
               </small>
             </article>

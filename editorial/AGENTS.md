@@ -41,6 +41,7 @@ Never edit a generated reader section, catalog, browser payload, PDF, or report 
 ## Durable editorial state
 
 - Treat editorial sources, reviews, audits, debt, standards, schemas, and templates as durable tracked material.
+- Treat `editorial/evidence/tasks/tasks.json` as the factual agent execution register. Update it intentionally under the root workbench contract, and keep derived progress counts out of task prose.
 - No build, preview, test, import, or preparation command may rewrite durable editorial state automatically.
 - A tool may propose a change in an untracked report. Writing durable state requires an explicit command, human review of the diff, and an intentional commit.
 - Semantic link audits are advisory. Record links or exclusions only through the explicit review workflow, and target continuity identities instead of literal routes.

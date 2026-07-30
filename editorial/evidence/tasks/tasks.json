@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-30",
+  "updated": "2026-07-30T23:31:50Z",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -14,7 +14,7 @@
       "tier": "green",
       "status": "done",
       "area": "manuscript",
-      "detail": "Complete. 27 of 28 sections settled, 1 open. v01-a-note-on-compression carries a heading scope question that is the author's to decide under CTD-0017. R-LEDGER-WINS was added mid pass, so the first sixteen sections were rendered without it.",
+      "detail": "Complete. Every baseline section has a calibration record. Editorial settlement is derived separately. v01-a-note-on-compression carries a heading scope question that is the author's to decide under CTD-0017. R-LEDGER-WINS was added mid pass, so the first sixteen sections were rendered without it.",
       "progress": {
         "kind": "calibration",
         "editorialId": "volume-01"
@@ -150,6 +150,15 @@
       "status": "pending",
       "area": "tooling",
       "detail": "Variant four. A local /api/admin/revise that drafts variants without leaving the browser. Explore before building: it is a second editorial client and would have to re-implement the ledger reads this work depends on.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-016",
+      "title": "Make the admin dashboard reflect live repository state",
+      "tier": "amber",
+      "status": "done",
+      "area": "tooling",
+      "detail": "Complete. Rendered coverage and editorial settlement now come from one shared progress model. The dashboard exposes live branch, commit, worktree changes, divergence, and check time, refreshes while visible, and is protected by repository validation and browser coverage.",
       "blockedBy": []
     }
   ]

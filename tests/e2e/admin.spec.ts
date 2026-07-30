@@ -35,6 +35,23 @@ test.describe("local editorial admin", () => {
     await expect(
       page.getByRole("region", { name: "Executive summary" }),
     ).toBeVisible();
+    const volumeMetric = page
+      .getByRole("region", { name: "Executive summary" })
+      .locator("article")
+      .filter({ hasText: "Volume I" });
+    await expect(volumeMetric.getByText("100%", { exact: true })).toBeVisible();
+    await expect(volumeMetric).toContainText(
+      "28 of 28 rendered · 27 records settled",
+    );
+    await expect(volumeMetric.getByText("96%", { exact: true })).toHaveCount(0);
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "Volume I is fully rendered. 8 author decisions remain.",
+      }),
+    ).toBeVisible();
+    await expect(page.getByText("Live repository", { exact: true })).toBeVisible();
+    await expect(page.getByText("Checked", { exact: false })).toBeVisible();
     await expect(
       page.getByRole("heading", { level: 2, name: "Decisions and blockers" }),
     ).toBeVisible();
@@ -211,49 +228,6 @@ test.describe("local editorial admin", () => {
       "v01-e2e-working-revision.json",
     );
     mkdirSync(sessionsRoot, { recursive: true });
-    writeFileSync(
-      fixturePath,
-      `${JSON.stringify(
-        {
-          schemaVersion: 1,
-          sectionId: "v01-e2e-working-revision",
-          editorialId: "volume-01",
-          currentHeading: "Working revision fixture",
-          sourceHref: "/manuscripts/1/opening/orientation/",
-          paragraphAnchor: "p-hf0505fc63ec527f1",
-          selectedPassage: "The selected passage remains unchanged.",
-          status: "review",
-          directions: [
-            {
-              text: "Make the sequence clearer without changing the claim.",
-              createdAt: "2026-07-30T12:01:00.000Z",
-            },
-          ],
-          variants: [
-            {
-              label: "A",
-              title: "Closer sequence",
-              text: ["The selected passage remains clear and unchanged."],
-              reasoning: ["Clarifies the sequence while preserving the claim."],
-              status: "candidate",
-            },
-            {
-              label: "B",
-              title: "Explicit transition",
-              text: ["The sequence is explicit, and the claim remains unchanged."],
-              reasoning: ["Adds a transition at the cost of more explanation."],
-              status: "candidate",
-            },
-          ],
-          approvedVariant: null,
-          durableRecordPath: null,
-          createdAt: "2026-07-30T12:00:00.000Z",
-          updatedAt: "2026-07-30T12:02:00.000Z",
-        },
-        null,
-        2,
-      )}\n`,
-    );
 
     try {
       await page.goto("/admin/calibration/");
@@ -261,7 +235,61 @@ test.describe("local editorial admin", () => {
         page.getByRole("link", {
           name: "Open working revision for Working revision fixture",
         }),
-      ).toBeVisible();
+      ).toHaveCount(0);
+      writeFileSync(
+        fixturePath,
+        `${JSON.stringify(
+          {
+            schemaVersion: 1,
+            sectionId: "v01-e2e-working-revision",
+            editorialId: "volume-01",
+            currentHeading: "Working revision fixture",
+            sourceHref: "/manuscripts/1/opening/orientation/",
+            paragraphAnchor: "p-hf0505fc63ec527f1",
+            selectedPassage: "The selected passage remains unchanged.",
+            status: "review",
+            directions: [
+              {
+                text: "Make the sequence clearer without changing the claim.",
+                createdAt: "2026-07-30T12:01:00.000Z",
+              },
+            ],
+            variants: [
+              {
+                label: "A",
+                title: "Closer sequence",
+                text: ["The selected passage remains clear and unchanged."],
+                reasoning: [
+                  "Clarifies the sequence while preserving the claim.",
+                ],
+                status: "candidate",
+              },
+              {
+                label: "B",
+                title: "Explicit transition",
+                text: [
+                  "The sequence is explicit, and the claim remains unchanged.",
+                ],
+                reasoning: [
+                  "Adds a transition at the cost of more explanation.",
+                ],
+                status: "candidate",
+              },
+            ],
+            approvedVariant: null,
+            durableRecordPath: null,
+            createdAt: "2026-07-30T12:00:00.000Z",
+            updatedAt: "2026-07-30T12:02:00.000Z",
+          },
+          null,
+          2,
+        )}\n`,
+      );
+      await expect(
+        page.getByRole("link", {
+          name: "Open working revision for Working revision fixture",
+        }),
+      ).toBeVisible({ timeout: 8_000 });
 
       await page.goto("/admin/revisions/v01-e2e-working-revision/");
       await expect(

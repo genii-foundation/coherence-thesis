@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
+import { AdminLiveRefresh } from "./AdminLiveRefresh";
 import styles from "./admin.module.css";
 
 // Admin tools read editorial and generated state off the filesystem, which does
@@ -23,6 +24,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
 
   return (
     <div className={styles.shell}>
+      <AdminLiveRefresh />
       <div className={styles.main}>{children}</div>
     </div>
   );

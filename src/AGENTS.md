@@ -21,6 +21,14 @@ This file governs application code under src/. Repository-wide policy remains in
 - Keep long titles from overlapping adjacent controls.
 - Verify rendered geometry for transformed SVG, canvas, and compositor-sensitive interfaces.
 
+## Local admin status
+
+- Keep admin routes dynamic and refresh them while visible so canonical file changes appear without a manual reload.
+- Derive editorial status through the same progress model used by repository tooling. Do not recreate section identity, coverage, or settlement arithmetic in application code.
+- Name the state a metric measures. A calibration record may make a section rendered while its open questions keep it unsettled.
+- Show live Git branch, commit, worktree changes, divergence, and check time as repository state. Do not substitute a task-register date.
+- Keep the admin surface read only. Refreshing state must never write editorial, publishing, generated, or Git data.
+
 ## Content and licensing
 
 - Keep substantial editorial prose in the editorial source tree, not embedded in application modules.

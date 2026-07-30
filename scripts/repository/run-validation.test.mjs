@@ -56,6 +56,7 @@ describe("validation orchestration", () => {
       ["repository:validate-evidence-immutability", true],
       ["repository:validate-layout", true],
       ["repository:validate-agents", true],
+      ["repository:validate-admin-status", true],
       ["repository:validate-links", true],
       ["repository:source-boundary", true],
       ["readme:check", true],

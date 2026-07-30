@@ -20,6 +20,7 @@ export const preparedValidationScripts = Object.freeze([
   "repository:validate-evidence-immutability",
   "repository:validate-layout",
   "repository:validate-agents",
+  "repository:validate-admin-status",
   "repository:validate-links",
   "repository:source-boundary",
   "readme:check",

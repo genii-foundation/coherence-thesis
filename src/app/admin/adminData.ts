@@ -2,6 +2,7 @@
 // repository state at request time, so a page cannot show progress the repo
 // does not actually have. Read only: nothing here writes to editorial/.
 
+import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 
@@ -13,7 +14,10 @@ import {
   parseWorkingRevisionSession,
   type WorkingRevisionSession,
 } from "@/lib/editorial-revision-session";
-import { slugify } from "@/lib/slugify";
+import {
+  type EditorialVolumeProgress,
+} from "@/lib/editorial-progress";
+import { readEditorialVolumeProgress } from "../../../scripts/editorial/progress-data";
 
 // The reader app resolves these from the working directory rather than importing
 // scripts/repository/paths, which is Node script tooling and relies on
@@ -58,92 +62,71 @@ export function readTasks(): TaskRegister {
   return JSON.parse(readFileSync(file, "utf8")) as TaskRegister;
 }
 
-export interface SectionRow {
-  index: number;
-  heading: string;
-  sectionId: string;
-  settled: boolean;
-  words: number;
-}
-
-export interface VolumeProgress {
-  editorialId: string;
-  sections: SectionRow[];
-  settled: number;
-  total: number;
-  settledWords: number;
-  totalWords: number;
-  percent: number;
-}
-
-// Canonical slugify, not a local copy. A second implementation drifted on exactly two
-// characters and reported two settled sections as outstanding: the apostrophe, which the
-// canonical form deletes and a naive one turns into a separator, and the ampersand, which
-// the canonical form spells out. Both appear in Volume I headings.
-function sectionIdFor(volumeNumber: string, heading: string): string {
-  return `v${volumeNumber}-${slugify(heading.replace(/\*/g, ""))}`;
-}
-
-function baselineFor(editorialId: string): string | null {
-  const base = path.join(editorialReviewsRoot, "volumes", editorialId);
-  if (!existsSync(base)) return null;
-  const batch = readdirSync(base)[0];
-  if (!batch) return null;
-  const file = path.join(base, batch, "baseline.md");
-  return existsSync(file) ? file : null;
-}
+export type VolumeProgress = EditorialVolumeProgress;
 
 export function readVolumeProgress(editorialId: string): VolumeProgress | null {
-  const baseline = baselineFor(editorialId);
-  if (!baseline) return null;
-  const number = editorialId.replace("volume-", "");
-  const lines = readFileSync(baseline, "utf8").split("\n");
-
-  const sections: SectionRow[] = [];
-  let current: { heading: string; body: string[] } | null = null;
-  const flush = (): void => {
-    if (!current) return;
-    const words = current.body.join(" ").match(/[A-Za-z0-9'’-]+/g)?.length ?? 0;
-    const sectionId = sectionIdFor(number, current.heading);
-    const record = path.join(editorialCalibrationRoot, editorialId, `${sectionId}.json`);
-    let settled = false;
-    if (existsSync(record)) {
-      try {
-        settled = (JSON.parse(readFileSync(record, "utf8")) as { status?: string }).status === "settled";
-      } catch {
-        settled = false;
-      }
-    }
-    sections.push({ index: sections.length + 1, heading: current.heading, sectionId, settled, words });
-  };
-  for (const line of lines) {
-    const m = /^(#{1,2})\s+(.*)$/.exec(line);
-    if (m) {
-      flush();
-      current = { heading: (m[2] ?? "").trim(), body: [] };
-      continue;
-    }
-    if (current) current.body.push(line);
-  }
-  flush();
-
-  const settled = sections.filter((s) => s.settled);
-  const totalWords = sections.reduce((t, s) => t + s.words, 0);
-  return {
-    editorialId,
-    sections,
-    settled: settled.length,
-    total: sections.length,
-    settledWords: settled.reduce((t, s) => t + s.words, 0),
-    totalWords,
-    percent: sections.length ? Math.round((settled.length / sections.length) * 100) : 0,
-  };
+  return readEditorialVolumeProgress(editorialId, {
+    reviewsRoot: editorialReviewsRoot,
+    calibrationRoot: editorialCalibrationRoot,
+  });
 }
 
 export function readAllProgress(): VolumeProgress[] {
   return editorialVolumeIds
     .map((id) => readVolumeProgress(id))
     .filter((v): v is VolumeProgress => v !== null);
+}
+
+export interface RepositoryState {
+  branch: string;
+  commit: string;
+  changedFiles: number;
+  ahead: number;
+  behind: number;
+  checkedAt: string;
+}
+
+export function readRepositoryState(): RepositoryState {
+  const fallback: RepositoryState = {
+    branch: "unknown",
+    commit: "unknown",
+    changedFiles: 0,
+    ahead: 0,
+    behind: 0,
+    checkedAt: new Date().toISOString(),
+  };
+  try {
+    const output = execFileSync(
+      "git",
+      ["status", "--porcelain=v2", "--branch"],
+      {
+        cwd: repoRoot,
+        encoding: "utf8",
+        timeout: 2_000,
+      },
+    );
+    const lines = output.trimEnd().split("\n");
+    const branch =
+      lines.find((line) => line.startsWith("# branch.head "))?.slice(14) ??
+      fallback.branch;
+    const commit =
+      lines.find((line) => line.startsWith("# branch.oid "))?.slice(13, 20) ??
+      fallback.commit;
+    const divergence = /^# branch\.ab \+(\d+) -(\d+)$/.exec(
+      lines.find((line) => line.startsWith("# branch.ab ")) ?? "",
+    );
+    return {
+      branch,
+      commit,
+      changedFiles: lines.filter((line) => line && !line.startsWith("#"))
+        .length,
+      ahead: Number.parseInt(divergence?.[1] ?? "0", 10),
+      behind: Number.parseInt(divergence?.[2] ?? "0", 10),
+      checkedAt: new Date().toISOString(),
+    };
+  } catch {
+    return fallback;
+  }
 }
 
 export interface ProtectedLineViolation {
