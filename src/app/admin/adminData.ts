@@ -5,6 +5,8 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 
+import { slugify } from "../../../scripts/manuscripts/io";
+
 // The reader app resolves these from the working directory rather than importing
 // scripts/repository/paths, which is Node script tooling and relies on
 // import.meta.dirname that the Next bundler does not provide. Admin runs only
@@ -61,13 +63,12 @@ export interface VolumeProgress {
   percent: number;
 }
 
+// Canonical slugify, not a local copy. A second implementation drifted on exactly two
+// characters and reported two settled sections as outstanding: the apostrophe, which the
+// canonical form deletes and a naive one turns into a separator, and the ampersand, which
+// the canonical form spells out. Both appear in Volume I headings.
 function sectionIdFor(volumeNumber: string, heading: string): string {
-  const slug = heading
-    .toLowerCase()
-    .replace(/\*/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-  return `v${volumeNumber}-${slug}`;
+  return `v${volumeNumber}-${slugify(heading.replace(/\*/g, ""))}`;
 }
 
 function baselineFor(editorialId: string): string | null {

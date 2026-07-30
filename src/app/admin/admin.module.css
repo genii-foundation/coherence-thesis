@@ -243,3 +243,61 @@
   padding: 2px 7px;
   color: var(--ink);
 }
+
+/* The bench renders as a complete document with its own theme, so it is framed rather
+   than inlined. Tall enough that the lineage tree is legible without a second scrollbar
+   fighting the page's own. */
+.benchFrame {
+  width: 100%;
+  height: 78vh;
+  min-height: 520px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+}
+
+/* Session tiles. Small enough to scan the whole history at once, which is the point:
+   these are the few occasions the standard changed, not a list of every section. */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.tile {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  text-decoration: none;
+  color: inherit;
+  background: var(--paper-soft);
+  transition: border-color 140ms ease, background 140ms ease;
+}
+
+.tile:hover,
+.tile:focus-visible {
+  border-color: var(--bronze);
+  background: var(--paper-deep);
+}
+
+.tileName {
+  display: block;
+  font-size: 13.5px;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.tileMeta {
+  display: block;
+  font-size: 11.5px;
+  color: var(--ink-muted);
+}
+
+.tileRules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 8px;
+}

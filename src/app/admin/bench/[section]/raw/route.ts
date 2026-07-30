@@ -7,7 +7,7 @@ import {
   extractSection,
   render,
   type CalibrationRecord,
-} from "../../../../../scripts/editorial/compare-render";
+} from "../../../../../../scripts/editorial/compare-render";
 
 // Renders a bench on request from the durable record, rather than serving a file the
 // CLI wrote earlier. The renderer is shared with npm run editorial:compare, so there is
@@ -26,7 +26,7 @@ function problem(message: string): Response {
     `<!doctype html><meta charset="utf-8"><title>Calibration bench</title>
      <style>body{background:#f4ead7;color:#13202a;font:16px/1.6 ui-serif,Georgia,serif;margin:0;padding:14vh 8vw}
      a{color:#a47b3f}code{font-family:ui-monospace,monospace;font-size:14px}</style>
-     <p>${message}</p><p><a href="/admin/calibration/">Back to calibration sessions</a></p>`,
+     <p>${message}</p><p>Close this frame and pick another session.</p>`,
     { status: 404, headers: { "content-type": "text/html; charset=utf-8" } },
   );
 }
