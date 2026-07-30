@@ -7,7 +7,11 @@ import {
   maxLiveBookmarks,
   type ReaderBookmarksState,
 } from "../../src/lib/reader-bookmarks";
-import { expectMenuFitsViewport, firstSection } from "./fixtures";
+import {
+  expectMenuFitsViewport,
+  firstSection,
+  readerPreferencesStorageKey,
+} from "./fixtures";
 
 // Select `words` words the way the device under test actually would.
 //
@@ -181,14 +185,9 @@ test("saved bookmarks survive a reload and filter in the toolbar", async ({
     page.locator(".bookmarks-popover"),
   );
   await expect(panel.locator(".bookmark-row")).toHaveCount(1);
-  const quotePreview = await panel.locator(".bookmark-quote").evaluate((quote) => {
-    const style = window.getComputedStyle(quote);
-    return {
-      lineClamp: style.getPropertyValue("-webkit-line-clamp"),
-      whiteSpace: style.whiteSpace,
-    };
-  });
-  expect(quotePreview).toEqual({ lineClamp: "3", whiteSpace: "normal" });
+  const quotePreview = panel.locator(".bookmark-quote");
+  await expect(quotePreview).toHaveCSS("-webkit-line-clamp", "3");
+  await expect(quotePreview).toHaveCSS("white-space", "normal");
 
   const filter = page.getByPlaceholder("Filter bookmarks");
   await filter.fill("zzzz-no-such-passage");
@@ -573,55 +572,114 @@ test("bookmark text and notes produce first-class search results", async ({
   ).toContainText("Bookmark note: private retrieval phrase");
 });
 
-test("bookmark highlights are off until the reader turns them on", async ({
+test("bookmark margin highlights are shown by default and can be hidden", async ({
   page,
   hasTouch,
 }) => {
   await page.goto(firstSection.readerHref);
-  await selectWords(page, 5, hasTouch);
+  await page.evaluate((key) => {
+    window.localStorage.removeItem(key);
+  }, readerPreferencesStorageKey);
+  await page.reload();
+  const selected = await selectWords(page, 5, hasTouch);
   await page.getByRole("button", { name: "Click to bookmark" }).click();
   await expect(page.getByText("Bookmark saved")).toBeVisible();
 
-  const highlightState = () =>
-    page.evaluate(() => ({
-      supported:
-        typeof CSS !== "undefined" &&
-        "highlights" in CSS &&
-        typeof Highlight === "function",
-      preference: document.documentElement.dataset.readerHighlights,
-      painted:
+  const marker = page.locator('[data-bookmark-highlight="true"]');
+  await expect(marker).toHaveCount(1);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.dataset.readerHighlights,
+    ),
+  ).toBe("on");
+
+  const markerGeometry = await marker.evaluate((element) => {
+    const markerBox = element.getBoundingClientRect();
+    const paragraphAnchor = (element as HTMLElement).dataset.paragraphAnchor;
+    const block = paragraphAnchor
+      ? document.querySelector(
+          `.manuscript-prose [data-paragraph-anchor="${CSS.escape(paragraphAnchor)}"]`,
+        )
+      : null;
+    const prose = block?.closest(".manuscript-prose");
+    const proseBox = prose?.getBoundingClientRect();
+    const icon = element.querySelector<HTMLElement>(
+      ".reader-bookmark-highlight-icon",
+    );
+    const line = element.querySelector<HTMLElement>(
+      ".reader-bookmark-highlight-line",
+    );
+    const iconBox = icon?.getBoundingClientRect();
+    const lineBox = line?.getBoundingClientRect();
+    const markerStyle = getComputedStyle(element);
+    const iconStyle = icon ? getComputedStyle(icon) : null;
+    const lineStyle = line ? getComputedStyle(line) : null;
+
+    return {
+      hasBookmarkIcon: Boolean(element.querySelector("svg")),
+      iconBackground: iconStyle?.backgroundColor ?? "",
+      iconToLineGap:
+        iconBox && lineBox ? Math.round(lineBox.top - iconBox.bottom) : -1,
+      lineColor: lineStyle?.backgroundColor ?? "",
+      lineWidth: Number.parseFloat(lineStyle?.width ?? "0"),
+      markerBackground: markerStyle.backgroundColor,
+      markerHeight: markerBox.height,
+      markerRight: markerBox.right,
+      proseLeft: proseBox?.left ?? 0,
+      textHighlightCount:
         typeof CSS !== "undefined" && "highlights" in CSS
           ? (CSS.highlights.get("coherence-bookmark")?.size ?? 0)
           : 0,
-    }));
+    };
+  });
 
-  const off = await highlightState();
-  test.skip(!off.supported, "CSS Custom Highlight API is unavailable");
-  // Painting reader marks over the manuscript is opt in, so a fresh reader with
-  // a saved bookmark still sees untouched prose.
-  expect(off.preference).toBe("off");
-  expect(off.painted).toBe(0);
+  expect(markerGeometry.hasBookmarkIcon).toBe(true);
+  expect(markerGeometry.iconBackground).toBe("rgba(0, 0, 0, 0)");
+  expect(markerGeometry.iconToLineGap).toBeGreaterThanOrEqual(1);
+  expect(markerGeometry.lineWidth).toBe(3);
+  expect(markerGeometry.lineColor).not.toBe("rgba(0, 0, 0, 0)");
+  expect(markerGeometry.markerBackground).toBe("rgba(0, 0, 0, 0)");
+  expect(markerGeometry.markerHeight).toBeGreaterThanOrEqual(44);
+  expect(markerGeometry.markerRight).toBeLessThanOrEqual(
+    markerGeometry.proseLeft,
+  );
+  expect(markerGeometry.textHighlightCount).toBe(0);
+
+  await marker.hover();
+  const details = page.getByRole("dialog", { name: "Bookmark details" });
+  await expect(details).toBeVisible();
+  await expect(
+    details.locator(".reader-bookmark-highlight-quote"),
+  ).toContainText(selected.trim());
+  await expect(details.getByRole("button", { name: "Add a note" })).toBeVisible();
+  await expect(
+    details.getByRole("button", { name: "Remove bookmark" }),
+  ).toBeVisible();
+  expect(
+    await details.evaluate((element) => element.getBoundingClientRect().width),
+  ).toBeGreaterThan(340);
+  await page.keyboard.press("Escape");
+  await expect(details).toBeHidden();
 
   await page.getByRole("button", { name: "Reader settings" }).click();
-  // The radio input is visually clipped, so the label is the real target, the
-  // same way settings.spec.ts drives the animations group.
   await page
     .locator(".settings-radio-section")
     .filter({ hasText: "Bookmark highlights" })
     .locator(".settings-radio-option")
-    .filter({ hasText: "Shown" })
+    .filter({ hasText: "Hidden" })
     .click();
 
-  await expect
-    .poll(async () => (await highlightState()).painted)
-    .toBeGreaterThan(0);
-  expect((await highlightState()).preference).toBe("on");
+  await expect(marker).toHaveCount(0);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.dataset.readerHighlights,
+    ),
+  ).toBe("off");
 
-  // And it survives a reload, through the pre-paint bootstrap.
+  // An intentional Hidden choice survives reload under the new preference
+  // schema, while legacy default-off values migrate to Shown.
   await page.reload();
-  await expect
-    .poll(async () => (await highlightState()).painted)
-    .toBeGreaterThan(0);
+  await expect(marker).toHaveCount(0);
 });
 
 test("the bookmarks panel is an opaque surface that contains its content", async ({

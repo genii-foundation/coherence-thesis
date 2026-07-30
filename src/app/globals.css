@@ -760,15 +760,180 @@ input {
    detaches the moment the page moves.
    The anchor is a zero-content span placed in DOCUMENT coordinates, so it
    travels with the prose rather than needing a scroll listener. */
-/* Saved passages painted back into the prose are styled by
-   ReaderBookmarkHighlightIsland, not here. The ::highlight() pseudo-element
-   cannot live in this file: lightningcss 1.32.0, which Next bundles, does not
-   recognize it and warns "Parsing CSS source code failed" on every build. It
-   passes the rule through intact, so the feature worked, but a permanent CSS
-   parse warning trains people to ignore CSS parse warnings. The colour it uses
-   is declared below so it still themes from one place. */
-:root {
-  --bookmark-highlight: rgb(164 123 63 / 0.22);
+.reader-bookmark-highlight {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 1.5rem;
+  min-height: 2.75rem;
+  border: 0;
+  background: transparent;
+  color: var(--bronze-deep);
+  cursor: pointer;
+  padding: 0;
+}
+
+.reader-bookmark-highlight-line {
+  position: absolute;
+  top: 1.75rem;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  border-radius: 999px;
+  background: currentColor;
+  transform: translateX(-50%);
+}
+
+.reader-bookmark-highlight-icon {
+  position: absolute;
+  z-index: 1;
+  top: 0.15rem;
+  left: 50%;
+  display: grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  place-items: center;
+  transform: translateX(-50%);
+  transition: color 140ms ease;
+}
+
+.reader-bookmark-highlight-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: var(--paper);
+  stroke-width: 2.6;
+}
+
+.reader-bookmark-highlight:hover .reader-bookmark-highlight-icon,
+.reader-bookmark-highlight:focus-visible .reader-bookmark-highlight-icon,
+.reader-bookmark-highlight[aria-expanded="true"]
+  .reader-bookmark-highlight-icon {
+  color: var(--bronze);
+}
+
+.reader-bookmark-highlight:focus-visible {
+  outline: none;
+}
+
+.reader-bookmark-highlight-panel {
+  --tooltip-background: var(--panel-background);
+  --tooltip-border-color: rgba(119, 84, 42, 0.48);
+
+  z-index: 100;
+  display: grid;
+  gap: 0.65rem;
+  width: min(24rem, calc(100vw - 1.5rem));
+  border-radius: var(--radius);
+  background: var(--panel-background);
+  box-shadow: 0 18px 42px rgb(19 32 42 / 0.2);
+  box-sizing: border-box;
+  padding: 0.8rem;
+}
+
+.reader-bookmark-highlight-quote {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.reader-bookmark-highlight-note-button,
+.reader-bookmark-highlight-remove,
+.reader-bookmark-highlight-confirm button {
+  border: 0;
+  border-radius: calc(var(--radius) - 1px);
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-family: var(--font-ui);
+}
+
+.reader-bookmark-highlight-note-button {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  padding: 0.4rem 0.45rem;
+  text-align: left;
+}
+
+.reader-bookmark-highlight-note-button:hover,
+.reader-bookmark-highlight-note-button:focus-visible,
+.reader-bookmark-highlight-remove:hover,
+.reader-bookmark-highlight-remove:focus-visible,
+.reader-bookmark-highlight-confirm button:hover,
+.reader-bookmark-highlight-confirm button:focus-visible {
+  background: var(--nav-hover-background);
+  color: var(--ink);
+}
+
+.reader-bookmark-highlight-note-field {
+  width: 100%;
+  min-height: 4rem;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) - 1px);
+  background: var(--field-background);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.84rem;
+  padding: 0.5rem 0.55rem;
+  resize: vertical;
+}
+
+.reader-bookmark-highlight-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 0.35rem;
+  padding: 0.4rem 0.45rem;
+}
+
+.reader-bookmark-highlight-confirm {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+
+.reader-bookmark-highlight-confirm button {
+  padding: 0.35rem 0.45rem;
+}
+
+.reader-bookmark-highlight-confirm
+  .reader-bookmark-highlight-confirm-remove {
+  color: var(--emphasis);
+  font-weight: 700;
+}
+
+.reader-bookmark-highlight-arrow {
+  fill: var(--panel-background);
+}
+
+@media (min-width: 641px) {
+  .reader-bookmark-highlight {
+    width: 2rem;
+  }
+
+  .reader-bookmark-highlight-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .reader-bookmark-highlight-icon svg {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .reader-bookmark-highlight-line {
+    top: 2.05rem;
+  }
 }
 
 .reader-selection-anchor {

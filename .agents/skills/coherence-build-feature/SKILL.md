@@ -1,67 +1,53 @@
 ---
 name: coherence-build-feature
-description: Build and revise Coherence Thesis reader features, fixes, tests, application tooling, and project documentation through a focused worktree, validation, a ready pull request, and a reviewable preview. Use for reader UI, navigation, progress, audio controls, overview presentation, generated catalog consumption, styling, accessibility, browser behavior, and application documentation. Stop before merge or production publication.
+description: Build and revise Coherence Thesis reader features, fixes, tests, application tooling, and project documentation through an attributable worktree, an early reviewable preview, proportionate validation, and a correctly staged pull request. Use for reader UI, navigation, progress, audio controls, overview presentation, generated catalog consumption, styling, accessibility, browser behavior, and application documentation. Stop before merge or production publication.
 ---
 
 # Build Feature
 
-Build one coherent reader or application change through a ready pull request and preview. Leave production merge and publication to coherence-ship-site.
+Build one attributable reader or application change from current `origin/main`. Keep the change connected to the user contract, runnable preview, exact source revision, validation evidence, and pull request.
 
-## Establish scope
+## Establish the contract
 
-1. Read the root AGENTS.md and the nearest nested AGENTS.md for every touched area.
-2. Confirm the requested behavior, affected surface, and acceptance criteria before editing.
-3. Inspect repository status and preserve unrelated work.
-4. Refresh origin/main and create an isolated worktree from that exact revision unless the user explicitly authorizes direct main work.
-5. Search for an existing component, hook, helper, script, fixture, or test pattern before adding one.
+1. Read the root instructions and the nearest nested instructions for every touched area.
+2. Confirm the requested outcome, affected route, supported viewport classes, and observable acceptance criteria.
+3. Record the authority granted for implementation, preview, pull request publication, merge, and production publication separately. One does not authorize another.
+4. Inspect repository status, refresh `origin/main`, record the base SHA, and create one focused worktree from that revision.
+5. Search for an existing component, hook, helper, script, fixture, issue, or test pattern before adding another.
+6. Route manuscript prose, volume metadata, publication continuity, and production release work to the repository skill that owns that state.
 
-## Respect repository boundaries
+Treat stale previews, mixed revisions, broken sources, and incomplete browser evidence as inconclusive. Do not convert missing evidence into a passing result.
 
-- Canonical manuscript packages live under editorial/sources/volumes/.
-- Tracked publication state lives under publishing/.
-- Generated reader sections, catalogs, reports, browser payloads, and PDFs are untracked.
-- Application work must not hand edit editorial source or publishing state.
-- If the requested change includes manuscript prose or volume metadata, use coherence-editorial-review and coherence-manuscript-publish for those parts.
-- If a build reveals required continuity, audio, or Updates state, report it. Do not manufacture a durable write from a build command.
+## Build the runnable slice
 
-## Implement
+1. Implement the smallest complete behavior that a reader can exercise.
+2. Follow the application contract in `src/AGENTS.md`, including server-readable prose, local-first privacy, viewport reachability, and established interface patterns.
+3. Verify every new or changed export has a real consumer.
+4. Add focused coverage for the changed behavior, but do not run a test suite before handing the preview to the user.
+5. As soon as the slice runs, start the lightest useful preview from the feature worktree on an unused port with `npm run preview:dev -- --port <port>`.
+6. Open the actual affected route, confirm the worktree, branch, and route are correct, then immediately give the user the working URL. If a preview cannot launch, report the concrete blocker instead of substituting a test suite.
+7. Preserve the preview until the user finishes reviewing it. Iterate with the cheapest proof that answers the current question.
 
-1. Capture the user problem, existing patterns reused, and material tradeoffs.
-2. Implement the smallest complete slice.
-3. Keep manuscript text readable without JavaScript.
-4. Keep local reading private by default.
-5. Keep controls and overlays reachable on supported desktop and mobile viewports.
-6. Match established typography, spacing, color, focus, and control patterns.
-7. Verify every exported entry point has a real consumer.
-8. Add focused unit or browser coverage for changed behavior.
+Compilation or preparation required to launch the preview is allowed. Before the URL is delivered, do not run Vitest collections, Playwright specs, `npm run validate`, `npm run validate:ui`, or another command whose purpose is testing the change.
 
-## Validate
+## Validate after preview handoff
 
-Use focused checks during iteration:
+1. After the working preview URL has been delivered, run the narrowest focused checks that cover the changed contract.
+2. Test failure and recovery behavior when the feature has meaningful failure semantics.
+3. Run `npm run validate` at the publish checkpoint.
+4. Run `npm run validate:ui` when browser behavior can change.
+5. Refresh the pull request base before final validation. If the candidate revision changes, record the new SHA and reconfirm that the preview serves that candidate.
+6. Record the candidate SHA, exact commands, results, skipped coverage, and any inconclusive evidence.
+7. Refresh the checked Updates snapshot through the repository command before the final commit when it advances.
 
-    npm run test
-    npm run test:e2e:fast:desktop
-    npm run test:e2e:fast
+## Publish and close out
 
-Run the full repository gate before commit:
+1. Review the complete diff. Confirm generated output remains untracked and durable editorial or publishing state changed only through its explicit workflow.
+2. Commit one coherent change with a focused Conventional Commit title.
+3. Push and open or update a pull request only when the user authorized that external action.
+4. Open a complete and validated pull request in ready state. Use draft state only for incomplete work or a concrete missing gate.
+5. Confirm the pull request targets `main`, required checks correspond to the exact head SHA, and its state matches the granted authority.
+6. Report the preview URL, candidate SHA, validation evidence, and exact remaining review, merge, or publication gate.
+7. Keep the preview running until review is complete. Stop only this worktree's preview when the pull request merges, the worktree is removed, or the task is archived.
 
-    npm run validate
-
-Run the combined static and browser gate when browser behavior can change. It builds once and reuses that production build:
-
-    npm run validate:ui
-
-Refresh the checked Updates snapshot through the current pull request base with the repository command before the final commit.
-
-## Preview and pull request
-
-1. Start a fresh local preview from the feature worktree on an unused port.
-2. Verify the visible result on the actual route and supported viewport classes.
-3. Review the complete diff. Confirm generated output remains untracked and durable publishing state changed only through an explicit reviewed workflow.
-4. Commit the complete change with a focused Conventional Commit title.
-5. Push the branch and open or update a focused pull request.
-6. Open a complete and validated pull request in the ready state. Use draft status only for incomplete work or a concrete blocker.
-7. Share the exact preview URL and name any remaining review or merge gate.
-8. Wait for explicit preview approval before any merge or production publication.
-
-Do not merge from this skill. After approval, use coherence-ship-site.
+Do not merge or publish production from this skill. After explicit preview approval and merge authority, use `coherence-ship-site`.
