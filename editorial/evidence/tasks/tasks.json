@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-07-29",
+  "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
+  "tiers": {
+    "green": "Mechanical and reversible. May run unattended.",
+    "amber": "May run, must be surfaced. Changes a rule, a voice card, a schema, or a gate.",
+    "red": "Never unattended. Canon, claim scope, outward facing, or publishing."
+  },
+  "tasks": [
+    {
+      "id": "T-001",
+      "title": "Re-render Volume I from baseline, section by section",
+      "tier": "green",
+      "status": "in-progress",
+      "area": "manuscript",
+      "detail": "28 sections. A section is done when its calibration record exists with status settled. Live count from npm run editorial:progress -- --volume 01.",
+      "progress": { "kind": "calibration", "editorialId": "volume-01" }
+    },
+    {
+      "id": "T-002",
+      "title": "Extract the corpus voice card",
+      "tier": "amber",
+      "status": "pending",
+      "area": "voice",
+      "detail": "Lift shared voice rules into sources/corpus/voice-card.md. Measured evidence shows one cadence rule, one direct address rule, and one temperature rule written nine times. Amber because it changes binding authority for all nine volumes.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-003",
+      "title": "Reduce the nine volume cards to deltas",
+      "tier": "amber",
+      "status": "pending",
+      "area": "voice",
+      "detail": "Each card keeps identity, overrides, volume specific lexicon and images, protected lines, failure modes, compression range. Where this volume departs may never be empty.",
+      "blockedBy": ["T-002"]
+    },
+    {
+      "id": "T-004",
+      "title": "Resolve validate.ts to an effective voice card",
+      "tier": "amber",
+      "status": "pending",
+      "area": "tooling",
+      "detail": "Corpus card plus volume overlay, so every gate and the bench see what actually binds rather than what one file says.",
+      "blockedBy": ["T-002"]
+    },
+    {
+      "id": "T-005",
+      "title": "Restore three protected lines destroyed by the prior pass",
+      "tier": "amber",
+      "status": "pending",
+      "area": "manuscript",
+      "detail": "volume-05, volume-07, volume-09. Each was declared protected before the pass ran. Restoring is compliance with an existing declaration rather than an editorial judgment, but it edits three manuscripts outside the current calibration.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-006",
+      "title": "Wire the protected line gate into npm run validate",
+      "tier": "green",
+      "status": "blocked",
+      "area": "tooling",
+      "detail": "Cannot land while three declared lines are missing, since it would block every run.",
+      "blockedBy": ["T-005"]
+    },
+    {
+      "id": "T-007",
+      "title": "Add a path immutability rule for committed evidence batches",
+      "tier": "green",
+      "status": "pending",
+      "area": "tooling",
+      "detail": "Forbid modification under a committed batch directory. Catches edits, deletions, and undeclared additions alike, which the removed hash list did not.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-008",
+      "title": "Move the calibration bench onto an admin route",
+      "tier": "green",
+      "status": "pending",
+      "area": "tooling",
+      "detail": "Render from the record on request rather than generating a file and copying it into public/data.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-009",
+      "title": "Push the branch and update the pull request",
+      "tier": "red",
+      "status": "blocked",
+      "area": "release",
+      "detail": "The authenticated account has pull but not push on genii-foundation/coherence-thesis. Outward facing and requires author action to unblock.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-010",
+      "title": "Resolve canon debt affecting Volume I prose",
+      "tier": "red",
+      "status": "pending",
+      "area": "canon",
+      "detail": "CTD-0003, CTD-0005, CTD-0013, CTD-0016 and related. Doctrine rather than craft. Never resolved to make a sentence land.",
+      "blockedBy": []
+    }
+  ]
+}

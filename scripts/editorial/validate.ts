@@ -73,7 +73,6 @@ export type ReviewedSourceIdentity = Omit<
 
 export type ReviewEvidence = {
   path: string;
-  sha256: string;
 };
 
 export type ReviewManifest = {

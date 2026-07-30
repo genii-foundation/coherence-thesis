@@ -20,8 +20,8 @@ const PROTECTED_FIELD = /^- Protected lines or passages:(.*)$/m;
 export function protectedLinesFrom(voiceCard: string): string[] {
   const field = PROTECTED_FIELD.exec(voiceCard);
   if (!field) return [];
-  return [...field[1].matchAll(/["“]([^"”]+)["”]/g)]
-    .map((m) => m[1].trim())
+  return [...(field[1] ?? "").matchAll(/["“]([^"”]+)["”]/g)]
+    .map((m) => (m[1] ?? "").trim())
     .filter(Boolean);
 }
 

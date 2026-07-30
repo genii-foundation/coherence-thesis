@@ -66,21 +66,22 @@ export function extractSection(markdown: string, heading: string): string[] {
   let start = -1;
   let level = 0;
   for (let i = 0; i < lines.length; i += 1) {
-    const m = /^(#{1,6})\s+(.*)$/.exec(lines[i]);
+    const m = /^(#{1,6})\s+(.*)$/.exec(lines[i] ?? "");
     if (!m) continue;
-    if (m[2].trim().toLowerCase() === target) {
+    if ((m[2] ?? "").trim().toLowerCase() === target) {
       start = i + 1;
-      level = m[1].length;
+      level = (m[1] ?? "").length;
       break;
     }
   }
   if (start < 0) return [];
   const body: string[] = [];
   for (let i = start; i < lines.length; i += 1) {
-    const m = /^(#{1,6})\s+/.exec(lines[i]);
-    if (m && m[1].length <= level) break;
-    if (/^---+$/.test(lines[i].trim())) break;
-    body.push(lines[i]);
+    const line = lines[i] ?? "";
+    const m = /^(#{1,6})\s+/.exec(line);
+    if (m && (m[1] ?? "").length <= level) break;
+    if (/^---+$/.test(line.trim())) break;
+    body.push(line);
   }
   // Paragraphs only. Display matter and breath marks are not prose under comparison.
   return body
@@ -102,19 +103,25 @@ export function diffWords(a: string, b: string): string {
   const n = A.length;
   const m = B.length;
   const dp = Array.from({ length: n + 1 }, () => new Int32Array(m + 1));
-  for (let i = n - 1; i >= 0; i -= 1)
-    for (let j = m - 1; j >= 0; j -= 1)
-      dp[i][j] = A[i] === B[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+  for (let i = n - 1; i >= 0; i -= 1) {
+    const row = dp[i]!;
+    const next = dp[i + 1]!;
+    for (let j = m - 1; j >= 0; j -= 1) {
+      row[j] = A[i] === B[j] ? next[j + 1]! + 1 : Math.max(next[j]!, row[j + 1]!);
+    }
+  }
   const out: string[] = [];
   let i = 0;
   let j = 0;
   while (i < n && j < m) {
-    if (A[i] === B[j]) { out.push(esc(A[i])); i += 1; j += 1; }
-    else if (dp[i + 1][j] >= dp[i][j + 1]) { if (A[i].trim()) out.push(`<del>${esc(A[i])}</del>`); i += 1; }
-    else { out.push(B[j].trim() ? `<ins>${esc(B[j])}</ins>` : B[j]); j += 1; }
+    const a = A[i] ?? "";
+    const b = B[j] ?? "";
+    if (a === b) { out.push(esc(a)); i += 1; j += 1; }
+    else if ((dp[i + 1]?.[j] ?? 0) >= (dp[i]?.[j + 1] ?? 0)) { if (a.trim()) out.push(`<del>${esc(a)}</del>`); i += 1; }
+    else { out.push(b.trim() ? `<ins>${esc(b)}</ins>` : b); j += 1; }
   }
-  while (i < n) { if (A[i].trim()) out.push(`<del>${esc(A[i])}</del>`); i += 1; }
-  while (j < m) { out.push(B[j].trim() ? `<ins>${esc(B[j])}</ins>` : B[j]); j += 1; }
+  while (i < n) { const a = A[i] ?? ""; if (a.trim()) out.push(`<del>${esc(a)}</del>`); i += 1; }
+  while (j < m) { const b = B[j] ?? ""; out.push(b.trim() ? `<ins>${esc(b)}</ins>` : b); j += 1; }
   return out.join("");
 }
 
@@ -198,7 +205,7 @@ function render(record: CalibrationRecord, baseText: string[], currentText: stri
       return;
     }
     for (const kid of kids) place(kid, depth + 1);
-    node.col = kids[0].col;
+    node.col = kids[0]?.col ?? 1;
     node.span = kids.reduce((total, kid) => total + (kid.span ?? 1), 0);
   };
   for (const root of roots) place(root, 1);
