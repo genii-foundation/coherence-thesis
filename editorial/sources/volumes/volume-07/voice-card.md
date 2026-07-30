@@ -46,6 +46,7 @@
 ## Controls
 
 - Exemplar passages that define the voice: "Presencing and the Space Between"; "Genius and the Genii"; "The Seven in Brief"; "Coherent Resonance"; "Three Movements of Training"; the touch exercise; "A Passage, Not a Program"; the Coda.
+- Exemplar opening anchors: "Presence is a condition; presencing is an act"; "The title reaches toward an older use of genius"; "Listening is the gateway"; "Coherent Resonance names a steadier relation"; "Training has three proposed movements"; "To see the mechanism plainly, take a single sense, touch"; "A retreat might begin with Listening"; "The volume began by asking how coherence might be practiced"
 - Protected lines or passages: "No mentor gives another person their genius or owns the authority to define it."; "A living body balances by moving."; "Consent is not a brake placed on vitality."; "Wakefulness is a birthright, not an achievement another person can grant."; "Love may direct the course. Freedom must walk beside it."
 - Known weak passages: the planetary symbolism, cultural and etymological lineage, named forms of love, attributed epigraphs, metaphysical claims in the final four Tenets, and any section that treats one curriculum sequence as universal.
 - Known factual or logical concerns: Roman genius; Taoist attribution; Greek love taxonomy; Rumi attribution; claims about physiological measurement; the source and sequence of the Seven Initiates; program and curriculum status.

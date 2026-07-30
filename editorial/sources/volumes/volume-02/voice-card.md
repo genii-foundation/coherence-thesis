@@ -46,6 +46,7 @@
 ## Controls
 
 - Exemplar passages that define the voice: “Continuity”; “The Nest This Book Occupies”; Chapter Two's account of co-regulation; “The Infrastructure Beneath Infrastructure”; “Providence and the Currency Question”; and “What Providence Actually Is Today.”
+- Exemplar opening anchors: "If you have come here from the first volume"; "This book is intentionally incomplete"; "We borrow steadiness from one another"; "The word infrastructure usually refers to physical systems"; "Given all of this, what Providence is and is not undertaking"; "The surest sign that the builders of a system"
 - Protected lines or passages: the title and subtitle; dedications; self-epigraph wording; the distinction between present Providence capability and future design intention; the refusal to equate physiological signal with moral worth; and the closing invitation to builders.
 - Known weak passages: empirical claims about physiology and social conditions need a separate evidence review; long domain lists can become catalogs; direct address near the close can presume intimacy; project urgency can outrun present capability unless each claim remains bounded.
 - Known factual or logical concerns: fact checking was excluded from the editorial pass. Claims involving dates, participation counts, institutional histories, physiology, AI capability, and named projects require a research review before publication.

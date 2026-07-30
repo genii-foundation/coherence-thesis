@@ -46,6 +46,7 @@
 ## Controls
 
 - Exemplar passages that define the voice: the revised Mars register; the water-centered Scale; the human-practice account of the Membrane; the social-credit boundary; the commitments and open problems; the invitation to test; the final seed passage.
+- Exemplar opening anchors: "Every volume has worn its own face"; "A spring gathers what fell elsewhere"; "The human practice comes first"; "The boundary with social credit must be explicit"; "Builders need a distinction among commitments, hypotheses, and facts"; "Volume VIII left three illustrative people inside a composite Scale"; "A seed in a drawer can remain perfect"
 - Protected lines or passages: "A detailed proposal is still a proposal until people can test it safely and in public."; "Providence can assist recognition. It cannot manufacture it."; "Provision must remain more than a beautiful verb."; "A hungry person does not become less hungry because a wallet is elegant."; "The proof is the shade, the fruit, the roots holding soil after rain."
 - Known weak passages: the number and planet scheme; network-state comparison; site and population status; implementation invitations; every technical term without an owner, mechanism, or public record.
 - Known factual or logical concerns: Cardinal Scale existence; California Hot Springs status; subsistence conditionality; biometric governance; COHERENCE ontology and lifecycle; Proof of Council; Entelechy; population thresholds; legal vessel; security; participation route; Fuller quotation.

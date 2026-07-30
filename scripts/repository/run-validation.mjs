@@ -14,6 +14,7 @@ export const preparedValidationScripts = Object.freeze([
   "editorial:debt",
   "editorial:validate",
   "editorial:protected-lines",
+  "editorial:voice-exemplars",
   "editorial:semantic-links:validate",
   "manuscripts:validate",
   "repository:validate-layout",

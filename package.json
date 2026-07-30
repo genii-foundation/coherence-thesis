@@ -77,6 +77,8 @@
     "editorial:compare": "tsx scripts/editorial/compare.ts",
     "preeditorial:protected-lines": "node scripts/repository/ensure-node-modules.mjs",
     "editorial:protected-lines": "tsx scripts/editorial/protected-lines.ts",
+    "preeditorial:voice-exemplars": "node scripts/repository/ensure-node-modules.mjs",
+    "editorial:voice-exemplars": "tsx scripts/editorial/voice-exemplars.ts",
     "preeditorial:progress": "node scripts/repository/ensure-node-modules.mjs",
     "editorial:progress": "tsx scripts/editorial/progress.ts",
     "preeditorial:reanchor": "node scripts/repository/ensure-node-modules.mjs",
