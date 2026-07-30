@@ -39,6 +39,50 @@ test.describe("local editorial admin", () => {
     ).toBeVisible();
   });
 
+  test("turns the revision ledger into a bounded editorial workflow", async ({
+    page,
+  }) => {
+    await page.goto("/admin/calibration/");
+
+    const adminNav = page.getByRole("navigation", { name: "Admin views" });
+    await expect(
+      adminNav.getByRole("link", { name: "Editorial revisions" }),
+    ).toHaveAttribute("aria-current", "page");
+
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Editorial revisions" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("region", { name: "Revision summary" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { level: 2, name: "Open questions" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", {
+        level: 2,
+        name: "Author-governed sessions",
+      }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { level: 2, name: "Agent-only records" }),
+    ).toBeVisible();
+
+    const promptButtons = page.getByRole("button", {
+      name: "Copy session prompt",
+    });
+    await expect(promptButtons).toHaveCount(4);
+    await promptButtons.nth(0).click();
+    await expect(page.getByRole("button", { name: "Copied" })).toBeVisible();
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    const layout = await page.evaluate(() => ({
+      clientWidth: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+    }));
+    expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth);
+  });
+
   test("keeps the toolbar icons visually consistent and the dashboard in bounds", async ({
     page,
   }) => {

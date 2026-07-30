@@ -1,5 +1,6 @@
 "use client";
 
+import { Check, Copy, TriangleAlert } from "lucide-react";
 import { useState } from "react";
 
 import styles from "./admin.module.css";
@@ -36,13 +37,32 @@ async function copy(text: string): Promise<boolean> {
   }
 }
 
-export function CopyPromptButton({ label, prompt }: { label: string; prompt: string }) {
+export function CopyPromptButton({
+  label,
+  prompt,
+  secondary = false,
+}: {
+  label: string;
+  prompt: string;
+  secondary?: boolean;
+}) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
+  const text =
+    state === "copied"
+      ? "Copied"
+      : state === "failed"
+        ? "Press to select, then copy"
+        : label;
 
   return (
     <button
       type="button"
-      className={[styles.copyButton, state === "copied" ? styles.copyOk : "", state === "failed" ? styles.copyBad : ""]
+      className={[
+        styles.copyButton,
+        secondary ? styles.copyButtonSecondary : "",
+        state === "copied" ? styles.copyOk : "",
+        state === "failed" ? styles.copyBad : "",
+      ]
         .filter(Boolean)
         .join(" ")}
       onClick={() => {
@@ -52,7 +72,14 @@ export function CopyPromptButton({ label, prompt }: { label: string; prompt: str
         });
       }}
     >
-      {state === "copied" ? "Copied" : state === "failed" ? "Press to select, then copy" : label}
+      {state === "copied" ? (
+        <Check aria-hidden="true" size={15} />
+      ) : state === "failed" ? (
+        <TriangleAlert aria-hidden="true" size={15} />
+      ) : (
+        <Copy aria-hidden="true" size={15} />
+      )}
+      <span>{text}</span>
     </button>
   );
 }

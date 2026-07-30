@@ -491,6 +491,11 @@
 }
 
 .copyButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: fit-content;
   border: 0;
   border-radius: var(--radius);
   background: var(--ink);
@@ -511,6 +516,21 @@
 
 .copyButton:active {
   transform: scale(0.985);
+}
+
+.copyButtonSecondary {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.72rem;
+  padding: 0.55rem 0.7rem;
+}
+
+.copyButtonSecondary:hover,
+.copyButtonSecondary:focus-visible {
+  border-color: var(--bronze);
+  background: var(--nav-hover-background);
+  color: var(--ink);
 }
 
 /* Separate classes rather than attribute selectors on the same class. An attribute
@@ -1338,5 +1358,567 @@
 
   .backlogLane {
     grid-column: 1;
+  }
+}
+
+/* Editorial revisions */
+
+.revisionsPage {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.revisionsHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.72fr);
+  align-items: end;
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-bottom: clamp(1.8rem, 4vw, 2.8rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.revisionsHero > div:first-child {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.revisionsHero h1 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+  font-weight: 440;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+
+.revisionsHero > div:first-child > p {
+  max-width: 64ch;
+  margin: 0.2rem 0 0;
+  color: var(--ink-soft);
+  font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+  line-height: 1.65;
+}
+
+.revisionMetrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 2px);
+  background: rgb(251 246 235 / 0.58);
+  box-shadow: 0 12px 36px rgb(44 31 18 / 0.06);
+}
+
+.revisionMetrics > div {
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.9rem 1rem;
+}
+
+.revisionMetrics > div:nth-child(even) {
+  border-left: 1px solid var(--line);
+}
+
+.revisionMetrics > div:nth-child(n + 3) {
+  border-top: 1px solid var(--line);
+}
+
+.revisionMetrics strong {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 560;
+  line-height: 1;
+}
+
+.revisionMetrics span {
+  color: var(--ink-muted);
+  font-size: 0.65rem;
+  font-weight: 680;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.startSessionPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.95fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  overflow: hidden;
+  border: 1px solid rgb(19 32 42 / 0.72);
+  border-radius: calc(var(--radius) + 5px);
+  background:
+    radial-gradient(circle at 90% 10%, rgb(164 123 63 / 0.22), transparent 34%),
+    var(--ink);
+  box-shadow: 0 22px 64px rgb(19 32 42 / 0.18);
+  color: var(--paper-soft);
+  padding: clamp(1.35rem, 3.5vw, 2.2rem);
+}
+
+.startSessionCopy {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 0.75rem;
+}
+
+.startSessionCopy .eyebrow {
+  color: #d6b37b;
+}
+
+.startSessionCopy h2 {
+  max-width: 18ch;
+  margin: 0;
+  color: var(--paper-soft);
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 3.2vw, 2.4rem);
+  font-weight: 540;
+  line-height: 1.08;
+}
+
+.startSessionCopy p {
+  max-width: 58ch;
+  margin: 0;
+  color: rgb(244 234 215 / 0.72);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.startSessionCopy .copyButton {
+  margin-top: 0.35rem;
+  background: var(--paper-soft);
+  color: var(--ink);
+}
+
+.startSessionCopy .copyButton:hover,
+.startSessionCopy .copyButton:focus-visible {
+  background: white;
+  color: var(--ink);
+}
+
+.startSessionCopy .copyOk,
+.startSessionCopy .copyOk:hover,
+.startSessionCopy .copyOk:focus-visible {
+  background: var(--sage);
+  color: white;
+}
+
+.startSessionCopy .copyBad,
+.startSessionCopy .copyBad:hover,
+.startSessionCopy .copyBad:focus-visible {
+  background: var(--bad-rule);
+  color: white;
+}
+
+.sessionFlow {
+  display: grid;
+  align-content: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sessionFlow li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8rem;
+  padding: 0.8rem 0;
+}
+
+.sessionFlow li + li {
+  border-top: 1px solid rgb(244 234 215 / 0.14);
+}
+
+.sessionFlow li > span {
+  display: inline-grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border: 1px solid rgb(214 179 123 / 0.5);
+  border-radius: 999px;
+  color: #d6b37b;
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+}
+
+.sessionFlow li > div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.sessionFlow strong {
+  color: var(--paper-soft);
+  font-size: 0.78rem;
+}
+
+.sessionFlow p {
+  margin: 0;
+  color: rgb(244 234 215 / 0.58);
+  font-size: 0.69rem;
+  line-height: 1.45;
+}
+
+.questionSection,
+.sessionSection {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.questionList {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.questionCard {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+  border: 1px solid rgb(140 74 51 / 0.2);
+  border-radius: var(--radius);
+  background: rgb(140 74 51 / 0.045);
+  padding: 0.85rem 0.95rem;
+}
+
+.questionCard > svg {
+  color: var(--bad-rule);
+}
+
+.questionCard > div {
+  display: grid;
+  gap: 0.14rem;
+  min-width: 0;
+}
+
+.questionCard > div > span {
+  overflow: hidden;
+  color: var(--ink-muted);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.6rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.questionCard h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.83rem;
+  font-weight: 680;
+  line-height: 1.35;
+}
+
+.questionCard p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.authorSessionGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.agentSessionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.revisionSessionCard {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 2px);
+  background: rgb(251 246 235 / 0.64);
+  box-shadow: 0 10px 30px rgb(44 31 18 / 0.05);
+  padding: 1rem;
+}
+
+.revisionSessionAuthor {
+  border-color: rgb(96 121 109 / 0.38);
+  background:
+    radial-gradient(circle at 95% 0%, rgb(96 121 109 / 0.1), transparent 35%),
+    rgb(251 246 235 / 0.78);
+}
+
+.revisionSessionAgent {
+  border-color: rgb(119 84 42 / 0.2);
+}
+
+.revisionSessionHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.revisionSessionHeader > div {
+  display: grid;
+  gap: 0.18rem;
+  min-width: 0;
+}
+
+.revisionSessionVolume {
+  color: var(--bronze-deep);
+  font-size: 0.61rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.revisionSessionHeader h3 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 570;
+  line-height: 1.2;
+}
+
+.authorityBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  flex: 0 0 auto;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--ink-muted);
+  font-size: 0.57rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  padding: 0.24rem 0.42rem;
+  text-transform: uppercase;
+}
+
+.revisionSessionAuthor .authorityBadge {
+  color: var(--sage);
+}
+
+.sessionDecision {
+  display: grid;
+  gap: 0.18rem;
+  min-height: 3.5rem;
+  border-left: 2px solid var(--line);
+  padding-left: 0.7rem;
+}
+
+.sessionDecision > span {
+  color: var(--ink-muted);
+  font-size: 0.58rem;
+  font-weight: 740;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sessionDecision p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.sessionStats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.sessionStats > div {
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.65rem 0.5rem;
+}
+
+.sessionStats > div + div {
+  border-left: 1px solid var(--line);
+}
+
+.sessionStats dt {
+  color: var(--ink-muted);
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sessionStats dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 680;
+}
+
+.agentSessionGrid .sessionStats {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.agentSessionGrid .sessionStats > div:nth-child(3) {
+  border-left: 0;
+}
+
+.agentSessionGrid .sessionStats > div:nth-child(n + 3) {
+  border-top: 1px solid var(--line);
+}
+
+.sessionFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.sessionFooter a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+  border-bottom: 1px solid rgb(119 84 42 / 0.3);
+  color: var(--ink);
+  font-size: 0.7rem;
+  font-weight: 680;
+  text-decoration: none;
+}
+
+.sessionFooter a:hover,
+.sessionFooter a:focus-visible {
+  border-bottom-color: var(--bronze-deep);
+}
+
+.sessionFooter > span {
+  color: var(--ink-muted);
+  font-size: 0.67rem;
+}
+
+.sessionFooter > strong {
+  color: var(--bad-rule);
+  font-size: 0.62rem;
+  font-weight: 720;
+}
+
+.agentSessionNotice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  border-left: 2px solid var(--bronze);
+  background: rgb(164 123 63 / 0.055);
+  color: var(--bronze-deep);
+  padding: 0.75rem 0.85rem;
+}
+
+.agentSessionNotice p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.74rem;
+  line-height: 1.5;
+}
+
+.revisionPrinciple {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: var(--bronze-deep);
+  padding: 1rem 0;
+}
+
+.revisionPrinciple p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .revisionsHero {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 1.4rem;
+  }
+
+  .revisionMetrics {
+    width: min(100%, 34rem);
+  }
+
+  .startSessionPanel {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .sessionFlow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .sessionFlow li {
+    grid-template-columns: 1fr;
+    align-content: start;
+    border-top: 1px solid rgb(244 234 215 / 0.14);
+  }
+
+  .sessionFlow li + li {
+    border-top: 1px solid rgb(244 234 215 / 0.14);
+  }
+}
+
+@media (max-width: 640px) {
+  .revisionMetrics {
+    width: 100%;
+  }
+
+  .startSessionPanel {
+    padding: 1.25rem;
+  }
+
+  .sessionFlow {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .sessionFlow li {
+    grid-template-columns: auto 1fr;
+  }
+
+  .questionCard {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .questionCard .copyButton {
+    grid-column: 2;
+  }
+
+  .agentSessionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .revisionSessionHeader,
+  .sessionFooter {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sessionStats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sessionStats > div:nth-child(3) {
+    border-left: 0;
+  }
+
+  .sessionStats > div:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
   }
 }
