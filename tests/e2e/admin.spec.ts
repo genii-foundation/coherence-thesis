@@ -83,6 +83,27 @@ test.describe("local editorial admin", () => {
     expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth);
   });
 
+  test("marks the approved calibration variant in the lineage tree", async ({
+    page,
+  }) => {
+    await page.goto("/admin/bench/v01-orientation/");
+
+    const bench = page.frameLocator(
+      'iframe[title="Comparison bench for ORIENTATION"]',
+    );
+    const approvedVariant = bench.getByRole("tab", {
+      name: "A1131, approved",
+    });
+
+    await expect(approvedVariant).toBeVisible();
+    await expect(approvedVariant.locator(".approval-mark")).toBeVisible();
+    await expect(
+      bench.getByRole("tab", { name: "A113", exact: true }).locator(
+        ".approval-mark",
+      ),
+    ).toHaveCount(0);
+  });
+
   test("keeps the toolbar icons visually consistent and the dashboard in bounds", async ({
     page,
   }) => {

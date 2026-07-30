@@ -247,14 +247,18 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
 @media (max-width:940px){.bench{grid-template-columns:1fr}.head-left{display:none}}
 .selector{padding:9px 11px}
 .tabgrid{display:grid;gap:6px}
-.tab{font-family:var(--serif);font-size:13px;border:1px solid transparent;background:transparent;
- color:var(--ink-muted);cursor:pointer;padding:7px 10px;border-radius:6px;text-align:center;position:relative}
+.tab{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:var(--serif);
+ font-size:13px;border:1px solid transparent;background:transparent;color:var(--ink-muted);
+ cursor:pointer;padding:7px 10px;border-radius:6px;text-align:center;position:relative}
 .tab:hover{color:var(--ink);border-color:var(--line-soft)}
 .tab[aria-selected="true"]{background:var(--bronze-deep);border-color:var(--bronze-deep);color:var(--paper-soft)}
 .tab.is-basis{box-shadow:inset 0 -2px 0 var(--bronze);color:var(--ink)}
 .tab.is-basis[aria-selected="true"]{box-shadow:none}
 .tab.is-rejected{text-decoration:line-through;text-decoration-thickness:1px;opacity:.5}
 .tab.derived::before{content:"";position:absolute;left:50%;top:-6px;width:1px;height:6px;background:var(--bronze)}
+.approval-mark{width:13px;height:13px;flex:0 0 auto;color:var(--sage);fill:none;
+ stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.tab[aria-selected="true"] .approval-mark{color:var(--paper-soft)}
 .refrow{margin-top:8px;padding-top:8px;border-top:1px solid var(--line-soft)}
 .refrow .tab{width:100%;font-style:italic;opacity:.72}
 .pane-head{display:flex;align-items:baseline;gap:9px;padding:10px 16px;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
@@ -333,7 +337,11 @@ del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-
         // beneath its parent. Siblings placed in adjacent columns get none.
         const p = g.derivedFrom ? byLabel.get(g.derivedFrom) : undefined;
         const inline = p ? " derived" : "";
-        return `<button class="tab is-${g.status}${inline}" role="tab" aria-selected="${g.key === candidate?.key}" data-target="${g.key}" style="grid-column:${g.col} / span ${g.span ?? 1};grid-row:${g.row}">${esc(g.label)}</button>`;
+        const approved = g.status === "approved";
+        const approvalMark = approved
+          ? '<svg class="approval-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8.4 3.1 3.1L13 4.8"></path></svg>'
+          : "";
+        return `<button class="tab is-${g.status}${inline}" role="tab" aria-label="${esc(g.label)}${approved ? ", approved" : ""}" aria-selected="${g.key === candidate?.key}" data-target="${g.key}" style="grid-column:${g.col} / span ${g.span ?? 1};grid-row:${g.row}"><span>${esc(g.label)}</span>${approvalMark}</button>`;
       }).join("")}
     </div>
     <div class="refrow"><button class="tab is-reference" role="tab" aria-selected="false" data-target="shipped">Shipped</button></div>
@@ -401,4 +409,3 @@ del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-
 </script>
 `;
 }
-
