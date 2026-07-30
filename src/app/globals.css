@@ -1066,6 +1066,10 @@ input {
   padding: 0.65rem 0.75rem;
 }
 
+.site-nav > .editorial-admin-button {
+  color: var(--ink-soft);
+}
+
 .site-nav > a:hover,
 .site-nav > a:focus-visible,
 .outline-menu-button:hover,

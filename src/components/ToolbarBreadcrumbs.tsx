@@ -12,6 +12,35 @@ function breadcrumbShardKey(path: string): string {
   return path.match(/^\/manuscripts\/([^/]+)\//)?.[1] ?? "index";
 }
 
+function adminBreadcrumbRoute(path: string): BreadcrumbRoute | null {
+  if (!path.startsWith("/admin")) return null;
+
+  const segments = path.split("/").filter(Boolean).slice(1);
+  const crumbs = [{ label: "Admin", href: "/admin/" }];
+
+  if (segments[0] === "bench") {
+    crumbs.push({
+      label: "Editorial revisions",
+      href: "/admin/calibration/",
+    });
+    if (segments[1]) {
+      crumbs.push({
+        label: segments[1],
+        href: path,
+      });
+    }
+  } else if (segments[0] === "calibration") {
+    crumbs.push({
+      label: "Editorial revisions",
+      href: "/admin/calibration/",
+    });
+  } else {
+    crumbs.push({ label: "Status", href: "/admin/" });
+  }
+
+  return { href: path, crumbs };
+}
+
 function isTruncated(element: HTMLElement | null): boolean {
   if (!element) return false;
   return element.scrollWidth > element.clientWidth + 1;
@@ -62,12 +91,15 @@ export function ToolbarBreadcrumbs({ className }: { className?: string } = {}) {
   const pathname = usePathname();
   const currentPath = normalizePath(pathname);
   const shardKey = breadcrumbShardKey(currentPath);
+  const isAdminPath = currentPath.startsWith("/admin");
   const [routes, setRoutes] = useState<BreadcrumbRoute[]>([]);
 
   // Load only the current volume's shard. It refetches only when the volume
   // changes; it is cached per key, so navigation within a volume never refetches
   // and the route lookup below just re-runs against the loaded shard.
   useEffect(() => {
+    if (isAdminPath) return;
+
     let active = true;
     loadBreadcrumbShard(shardKey)
       .then((loaded) => {
@@ -79,11 +111,13 @@ export function ToolbarBreadcrumbs({ className }: { className?: string } = {}) {
     return () => {
       active = false;
     };
-  }, [shardKey]);
+  }, [isAdminPath, shardKey]);
 
-  const route = routes.find(
-    (candidate) => normalizePath(candidate.href) === currentPath,
-  );
+  const route =
+    adminBreadcrumbRoute(currentPath) ??
+    routes.find(
+      (candidate) => normalizePath(candidate.href) === currentPath,
+    );
 
   if (!route || route.crumbs.length === 0) return null;
 

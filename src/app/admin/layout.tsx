@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { AdminBreadcrumbs } from "./AdminBreadcrumbs";
+import { AdminNavigation } from "./AdminNavigation";
 import styles from "./admin.module.css";
 
 // Admin tools read editorial and generated state off the filesystem, which does
@@ -25,17 +25,21 @@ export default async function AdminLayout({ children }: { children: ReactNode })
   return (
     <div className={styles.shell}>
       <header className={styles.bar}>
-        <span className={styles.mark}>Admin</span>
-        <nav className={styles.nav}>
-          <a href="/admin/">Status</a>
-          <a href="/admin/calibration/">Editorial revisions</a>
-        </nav>
-        <span className={styles.warn}>local only, read only</span>
+        <div className={styles.barInner}>
+          <div className={styles.workspaceIdentity}>
+            <span className={styles.mark}>Editorial workspace</span>
+            <span className={styles.workspaceTitle}>Admin</span>
+          </div>
+          <AdminNavigation />
+          <div className={styles.warn} aria-label="Local repository, read only">
+            <span className={styles.statusDot} aria-hidden="true" />
+            <span>Local repository</span>
+            <span className={styles.warnDivider} aria-hidden="true" />
+            <span>Read only</span>
+          </div>
+        </div>
       </header>
-      <main className={styles.main}>
-        <AdminBreadcrumbs />
-        {children}
-      </main>
+      <div className={styles.main}>{children}</div>
     </div>
   );
 }
