@@ -223,6 +223,15 @@
       "detail": "Found in Volume II and named by the agent re-rendering it. R-LEDGER-WINS covers the case where a recorded decision outranks the baseline. The inverse has no rule: no decision exists, and the prior pass made one silently by removing the evidence the open question rested on. CTD-0038 is the clearest instance, conceding in its own words that the change was substantive rather than copyediting, while the pass had already made it. Invisible to every gate, because the shipped prose is cleaner, the word count barely moves, and the result is internally coherent. This is a finding about the pass rather than a prose rule, so it belongs in the debt ledger and the ruling is the author's.",
       "tier": "red",
       "blockedBy": []
+    },
+    {
+      "id": "T-024",
+      "title": "Decide how version provenance should behave when no commit matches",
+      "tier": "red",
+      "status": "pending",
+      "area": "repository",
+      "blockedBy": [],
+      "detail": "CTD-0112. About ninety percent of version provenance entries name a commit that did not introduce the content, because firstCommitForCurrentHash silently returns HEAD when no commit blob matches. Regenerating on a quiet tree fixes the values. The mechanism needs an author decision, since failing instead of guessing would make manuscripts:validate refuse to pass over uncommitted manuscript work, which changes the publication lifecycle rather than the prose."
     }
   ]
 }
