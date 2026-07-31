@@ -592,7 +592,7 @@ test("cards without a pull request use the commit as their primary target", asyn
 
   const commitReference = entry.locator(".updates-primary-reference");
   await expect(commitReference).toContainText(noPullRequestEntry!.shortSha);
-  await cardLink.hover();
+  await cardLink.focus();
   await expect
     .poll(() =>
       commitReference.evaluate((reference) => {
