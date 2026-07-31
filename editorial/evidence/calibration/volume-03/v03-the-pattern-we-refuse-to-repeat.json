@@ -10,7 +10,37 @@
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
   "rulings": [],
-  "rulesDerived": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-CAUTIOUS-HALF",
+      "status": "candidate, not yet in the rule index",
+      "proposedBy": "editorial-agent",
+      "obligation": "Where a baseline passage has a two-part structure, check which half survived. A pass under compression pressure keeps the cautious half and cuts the committing one.",
+      "statement": "Across the 2026-07-30 Volume III re-render the wave-one pass showed one consistent behaviour, tested deliberately and confirmed in six sections. Where the baseline states a claim in two parts, one hedging and one committing, the shipped text retains the hedging half and removes the committing half. The committing half is usually the sentence that makes the passage falsifiable, so the loss is invisible to a word count, to a diff read for errors, and to any review that checks only whether the remaining sentences are true.",
+      "confirmations": [
+        "v03-the-body-as-primary-text. Kept: if no such correlates can be measured reliably, Providence remains a network of human facilitation. Cut: with it, Providence would be something that has never existed.",
+        "v03-a-note-on-evidence-four-tiers-of-certainty. Kept: these tiers determine what may be built. Cut: by labeling our claims honestly, we make the strong ones stronger. The same shape recurs inside the Established tier, which lost when we build on these, we build on solid ground and gained a disclaimer.",
+        "v03-what-the-body-reveals-that-the-will-cannot-conceal. Kept: they are not immune to training or strategy. Cut: there is no act of will that can reliably fabricate the difference in real time.",
+        "v03-the-pattern-we-refuse-to-repeat. Kept: open design gives a community the possibility of continuation. Cut: we will not build the second kind.",
+        "v03-one-genius-at-a-time. Kept: the construction remains work for many hands. Cut: one genius, one solved problem, one contributed line at a time.",
+        "v03-where-we-begin-and-where-we-are-heading, v03-why-now-and-why-not-later, v03-the-synthesis-and-the-moment, v03-what-each-institution-solved-and-what-it-broke. In each, a heading naming two things sits above a shipped section delivering one, and the delivered half is the cautious one."
+      ],
+      "structuralForm": {
+        "obligation": "Where a merge collapses two baseline headings into one current heading, the survivor is the more cautious of the two. The surviving heading names what the merged section no longer claims.",
+        "statement": "This is the same law operating on structure rather than on sentences, and it is the most useful form because it can be applied without reading any prose. Given a lineage record listing merges, compare each pair of baseline headings against the survivor. Where the survivor is the less committing name, the merged section has probably lost the committing material, and the pair should be read against the combined baseline word count rather than against either member.",
+        "pairs": [
+          "v03-what-this-chapter-is-for plus v03-many-ways-to-fail-and-many-ways-to-succeed became What Failure Requires of Us. Many Ways to Fail, and Many Ways to Succeed names a refusal to end on failure; What Failure Requires of Us names only the demand failure makes. 1,045 baseline words became 568, minus 46 percent.",
+          "v03-the-pattern-we-refuse-to-repeat plus v03-one-genius-at-a-time became A Commons That Can Continue. The Pattern We Refuse to Repeat names a commitment; A Commons That Can Continue names a possibility. 870 baseline words became 151, minus 83 percent, the worst damaged unit in Volume III."
+        ],
+        "applicability": "Corpus wide. The test needs only a lineage record and two heading names, so it can be run against a volume nobody has re-rendered, before any baseline comparison is attempted, to decide where to look first."
+      },
+      "cautions": [
+        "The law describes what the wave-one pass did. It is not a licence to restore a committing sentence that a recorded decision removed. Where a decision exists it still wins, and the two must be told apart before the law is applied.",
+        "A merged section can be flat or grown and still have lost its committing half, because merges change the denominator. Combined baseline word counts are the only safe comparison.",
+        "Measure the shipped text, not a text under concurrent edit. On 2026-07-30 the commons pair was twice measured mid-restoration and twice reported as undamaged when it was the worst unit in the volume."
+      ]
+    }
+  ],
   "sectionId": "v03-the-pattern-we-refuse-to-repeat",
   "sectionHeading": "The Pattern We Refuse to Repeat",
   "currentHeading": "A Commons That Can Continue (merged section, carries this baseline section and v03-one-genius-at-a-time)",
@@ -134,6 +164,6 @@
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
-    "conclusion": "No new rule required. The merge is what made this the worst-damaged pair in the volume and also what hid it: 870 baseline words became 185, and because the two baseline sections collapsed into one current heading, every automated comparison reported the loss against the wrong denominator. Merged sections need their combined figures checked by hand."
+    "conclusion": "No new rule required for the prose, and one candidate rule is proposed for the index. The merge is what made this the worst damaged pair in the volume and also what hid it: 870 baseline words became 151, and because two baseline sections collapsed into one current heading, every automated comparison reported the loss against the wrong denominator. The candidate rule R-CAUTIOUS-HALF is recorded in rulesDerived above, with its sentence level form, its structural form, both merge pairs cited, and the cautions that bound it. It is recorded here rather than added to editorial/method/standard.md because adding a rule to the index is outside this pass's file boundary and belongs to the author."
   }
 }

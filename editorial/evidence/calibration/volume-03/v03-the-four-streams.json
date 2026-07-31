@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-four-streams",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Four Streams",
+  "currentHeading": "The Four Streams",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The triangulation claim is an empirical assertion and belongs to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Four Streams",
+      "Bio-Consensus",
+      "biometric",
+      "triangulate",
+      "minting",
+      "surveilled"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0012",
+      "CTD-0027",
+      "CTD-0054",
+      "master-ledger sections 2 and 3, Decision B"
+    ],
+    "outcome": "CTD-0012 and master ledger Decision B both require Volume III to bridge the Four Streams to Bio-Consensus, and Decision B asks for one bridging clause so the vocabulary is unified without rewriting the volume. That clause is already in the baseline, in the baseline's own words: these four streams, read locally and never surveilled, are what the work also calls Bio-Consensus, the biometric reading of presence, the two terms naming the same thing. It was therefore restored rather than seeded, which is the outcome the ledger asks for and the stronger provenance. The shipped text carried its own shorter bridge; the baseline's is kept because it also states the locality and non-surveillance conditions that CTD-0054 depends on."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The triangulation argument, which is the reason there are four streams rather than one, was deleted.",
+      "evidence": {
+        "baseline": "Each stream captures a different dimension of the encounter. None is sufficient alone; each can be misread in isolation. Together, they triangulate something that no single stream could reliably identify: the presence of genuine presence, and the occurrence of genuine presencing.",
+        "shipped": "The Providence measurement architecture proposes four streams of data."
+      },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "The baseline states the design principle: no stream is sufficient, each is misreadable alone, and the four together identify what none can identify separately. That is the answer to the obvious objection that HRV or vocal analysis on its own proves nothing, and it is the justification for the whole architecture. The shipped opening states only that there are four streams. The chapter that follows describes each one without ever saying why there are four.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The cautious half law, seventh confirmation, and here the cut removed the section's only positive claim.",
+      "evidence": {
+        "baseline": "Together, they triangulate something that no single stream could reliably identify.",
+        "shipped": "Each stream can be distorted or misunderstood. Their combination may reduce some forms of error while creating new ones."
+      },
+      "authorizedBy": "Compression, and the wave-one scientific posture corrections.",
+      "diagnosis": "The shipped pair is the cautious half in isolation. It says the streams can be wrong and that combining them may help or may not. Both halves of the baseline structure are present in the baseline, the caution as none is sufficient alone and each can be misread in isolation, and the commitment as together they triangulate. The pass kept the caution, rewrote it at greater length, and deleted the commitment. Restored at full strength.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The epigraph's image was replaced by a statement of the task.",
+      "evidence": {
+        "baseline": "The truth of a meeting between two people is written in four hands at once: in their words, in their voices, in their hearts, and in the pulse at the wrist. We are learning, at last, to read all four.",
+        "shipped": "An encounter leaves traces in words, voice, cardiac rhythm, and pulse. The task is to learn what those traces can reveal, and what they cannot."
+      },
+      "authorizedBy": "CTD-0007, which licenses the adaptation label and not the wording.",
+      "diagnosis": "Four hands at once is the image that makes the four streams one act of reading rather than four measurements, and the pulse at the wrist is the volume's concrete anchor for the fourth stream. The shipped epigraph names the same four channels in clinical terms and adds a caution. The Adapted from label is kept; the wording is restored.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "Two prohibited marks.",
+      "evidence": {
+        "baseline": "what the work also calls Bio-Consensus, and We describe each in turn.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first introduced an appositive gloss on Bio-Consensus and became a comma, with the following semicolon retained so the two-terms clause stays separable. The second introduced a three-part specification of what each description will cover and became a colon."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0012",
+      "effect": "paid down from the baseline rather than seeded",
+      "note": "The Four Streams and Bio-Consensus are bridged in the baseline's own sentence, which states that the two terms name the same thing and are used interchangeably. Master ledger Decision B asked for exactly one such clause in Volume III. It did not need to be written; it needed to be restored."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration at full strength",
+      "note": "Together, they triangulate something that no single stream could reliably identify, and the claim that the four streams identify the presence of genuine presence and the occurrence of genuine presencing, both return as the baseline states them. Not softened. This is the architecture's central empirical claim and the four stream chapters that follow are its evidence."
+    },
+    {
+      "id": "CTD-0054",
+      "effect": "supported by restoration",
+      "note": "Read locally and never surveilled returns as a property of the streams themselves rather than as a separate caution, which is where the record lifecycle obligations attach."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The epigraph's four hands image, the integration claim, the insufficiency and misreading pair, the triangulation claim, the Bio-Consensus bridge in the baseline's wording including read locally and never surveilled, and the three-part preview of each stream description."
+        },
+        {
+          "kind": "kept",
+          "note": "Two sentences from the shipped text: that the name must not imply certainty because consensus among sensors is only agreement among instruments, and that raw data should remain on participant-controlled hardware under specific, revocable consent. The first guards a real equivocation in the term Bio-Consensus that the baseline does not address. The second is the consent condition CTD-0054 and the sovereignty chapter depend on."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped sentence that each stream can be distorted and that their combination may reduce some errors while creating new ones. It is the cautious half restated at length in place of the deleted commitment, and the baseline already carries the caution in none is sufficient alone."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across two marks, as recorded in F4."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-CAUTIOUS-HALF",
+      "status": "candidate, stated in full in v03-the-pattern-we-refuse-to-repeat.json",
+      "proposedBy": "editorial-agent",
+      "note": "Seventh confirmation. The baseline states insufficiency and triangulation as a pair; the shipped text kept insufficiency, expanded it, and deleted triangulation."
+    }
+  ],
+  "openQuestions": [
+    "Claim scope. The restored opening asserts that four streams together triangulate the presence of genuine presence and the occurrence of genuine presencing, which no single stream could reliably identify. Restored at full baseline strength under the standing instruction. CTD-0009 owns the verification and the four stream sections that follow are where it must be earned.",
+    "Bio-Consensus as a name. The kept caution notes that consensus among sensors is only agreement among instruments. That is a fair objection to the canonical term itself, which the master ledger fixes. If the term is to stay, the objection belongs in the record rather than in the prose; if the objection is right, the term is a canon question for the author."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The instructive result is that a ledger obligation was discharged by restoration rather than by writing. CTD-0012 and master ledger Decision B both asked for a bridging clause in Volume III, and the clause was in the baseline all along, deleted by the pass and then partially reconstructed by it in weaker terms. Before seeding canon to satisfy a ledger item, check whether the baseline already satisfies it."
+  }
+}

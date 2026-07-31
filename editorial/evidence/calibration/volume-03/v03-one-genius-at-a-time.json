@@ -10,7 +10,15 @@
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
   "rulings": [],
-  "rulesDerived": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-CAUTIOUS-HALF",
+      "status": "candidate, stated in full in v03-the-pattern-we-refuse-to-repeat.json",
+      "proposedBy": "editorial-agent",
+      "obligation": "Where a baseline passage has a two-part structure, check which half survived. Where a merge collapses two headings into one, the survivor is the more cautious of the two.",
+      "note": "This section is the clearest single confirmation: a section titled One Genius at a Time from which every occurrence of the phrase and the idea had been removed, leaving the construction remains work for many hands. Both merge pairs and the full statement are recorded in the paired record."
+    }
+  ],
   "sectionId": "v03-one-genius-at-a-time",
   "sectionHeading": "One Genius at a Time",
   "currentHeading": "A Commons That Can Continue (merged section, carries this baseline section and v03-the-pattern-we-refuse-to-repeat)",
