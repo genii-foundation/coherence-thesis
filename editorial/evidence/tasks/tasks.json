@@ -181,11 +181,11 @@
     },
     {
       "id": "T-019",
-      "title": "Re-render volumes I to IX from baseline, all volumes in parallel",
+      "title": "Re-render all nine volumes under the ratified twenty-rule standard",
       "tier": "amber",
       "status": "in-progress",
       "area": "editorial",
-      "detail": "Author moved this to full parallel on 2026-07-30. Six sessions run concurrently, one per volume with gaps: I (16 unrecorded sections, worst minus 67), II (46, Chapters Eight to Thirteen), III (58, worst minus 80), IV (27, the coda run at minus 63 to minus 70), VII (9 part sections at minus 66 to minus 79), VIII (2, plus the T-022 protected line audit). Volumes V, VI and IX have no unrecorded matched section of 100 baseline words or more and are not staffed. Each session is confined to its own manuscript and calibration directory, so they do not collide; the orchestrator owns git and commits each batch by explicit path. Volume VII was recorded complete under T-020 and reopened when the damage report was fixed to read four heading levels, which revealed nine part sections it had been hiding.",
+      "detail": "Author ratified the seven derived rules on 2026-07-30 and the index went from thirteen to twenty. The full corpus re-render now runs as one orchestrated pass: nine volume lanes in parallel, each a generation loop confined to its own manuscript and calibration directory, followed by adversarial per-volume verification against the phase zero structural census, a repair loop for blocking defects, and a corpus-wide paired-deletion sweep. All 533 sections are in scope, including the 323 whose records were written under the thirteen-rule standard. The orchestrator owns git, provenance, README and the validate gate; agents never run shared-state commands. Author-reserved questions stay restore-and-flag: the Stream Three incorruptible contradiction, the CTD-0015 minting question, CTD-0069 attribution, T-021 part introductions, T-022 protected lines.",
       "blockedBy": []
     },
     {
