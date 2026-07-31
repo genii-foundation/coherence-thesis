@@ -976,9 +976,19 @@ Every serious objection can contribute to better design, but not every objection
 
 ## **What Failure Requires of Us**
 
+So yes: there are many ways this could fail. We have just spent a chapter naming them as plainly as we know how, though perhaps not as unsparingly as our hardest critics will. We hold no illusion that this thesis will be easy to accept, and we would rather be corrected than flattered. That is much of why these volumes are published while the work is still being built rather than after it is finished: so that more readers can find the failures we have missed, press on the claims we have made too confidently, and bring sharper thinking to bear than any small group could alone. The naming of failure modes is not a performance of humility. It is a request.
+
 Many capable people have good reason to distrust a project that speaks in this register. The invitation is therefore not to suspend judgment or join a movement. It is to inspect the proposal, test the claims, identify who might be harmed, and improve or reject what cannot withstand scrutiny.
 
+But we will not end on the catalogue of failures, because to end there would concede the thing we refuse to concede: that the future belongs by default to the extractors and the surveillers and the unimaginative, that the only realism is dystopian, and that anyone who tries to build otherwise is naive. We reject that. For every way this could fail there are ways it could succeed, and the difference between them is not luck. It is whether enough capable and honest people decide the attempt is worth making.
+
+This is the thing the prophets of inevitable dystopia never account for: that the future is not something that happens to us, but something built by whoever shows up to build it. And so far the people willing to build the extractive, centralizing, soul-flattening version have shown up in greater numbers, with greater resources and greater nerve, than the people willing to build the alternative. That is not a law of nature. It is a vacancy. The dystopia is not winning because it is stronger. It is winning because too few of the people capable of building something better have believed it was worth their lives to try.
+
+Providence is our refusal of that vacancy. It is a wager that the genius required to build a civilization worth inhabiting is real, and is distributed across this species in abundance: in the restorers and the elders and the builders, the healers and the listeners and the makers, the technologists who want their work to mean something and the contemplatives who have long known what does. The wager is that such people can be called together and pointed at a hard problem.
+
 Providence succeeds only if the institution remains less important than the purpose it serves. The moment preserving Providence becomes more important than preserving participant sovereignty, material dignity, and honest inquiry, the experiment has failed even if the organization continues to grow.
+
+*There are many ways Providence could fail. There are also many ways it could succeed, and which future arrives depends not on fate but on who shows up. We refuse the counsel of inevitable dystopia, and we refuse to believe the genius required to build a civilization worth inhabiting does not exist, when we have seen it in so many. We have looked clearly at how we might fail, and we are choosing to build anyway.*
 
 # *Chapter Fifteen*
 

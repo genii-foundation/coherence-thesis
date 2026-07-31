@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-many-ways-to-fail-and-many-ways-to-succeed",
+  "editorialId": "volume-03",
+  "sectionHeading": "Many Ways to Fail, and Many Ways to Succeed",
+  "currentHeading": "What Failure Requires of Us",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim content, and the volume's warning to invitation balance remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Providence", "genius", "dystopia", "summons", "invitation", "pitch language"],
+    "itemsRead": ["CTD-0020", "CTD-0055", "CTD-0027", "CTD-0004"],
+    "outcome": "No item forbids the restoration. CTD-0020 is the governing precedent even though it is scoped to Volume II: it records that the warning to invitation ratio, and the degree of certainty and urgency a closing crescendo may carry, are author decisions. The Volume III voice card independently names pitch language as a Level 3 target. Together these bound the restoration: the argument returns, the recruitment does not, and the tonal question is recorded rather than answered."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's turn was deleted entire. What remained was new prose, not compressed baseline prose.",
+      "evidence": {
+        "baseline": "787 words across five paragraphs and a display close, moving from the catalogue of failures to the refusal of inevitable dystopia.",
+        "shipped": "87 words in two paragraphs, neither of which appears anywhere in the baseline."
+      },
+      "authorizedBy": "Nothing recorded. This is substitution, not compression.",
+      "diagnosis": "Both surviving paragraphs are new material. Checked against the baseline: the strings good reason to distrust and less important than the purpose appear zero times in it. So the section was not reduced by 89 percent, it was replaced, and the replacement happens to be sound prose about a different subject. The chapter is titled for failure and its final movement exists to refuse ending on failure. Removing that movement leaves a chapter that ends where it says it will not end.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The argument the section exists to make was removed with the register it was carried in.",
+      "evidence": {
+        "baseline": "That is not a law of nature. It is a vacancy. ... The dystopia is not winning because it is stronger. It is winning because too few of the people capable of building something better have believed it was worth their lives to try.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression, and the volume card's instruction to reduce pitch language.",
+      "diagnosis": "The vacancy claim is the chapter's only argument about why the extractive future is winning, and it is falsifiable in a way exhortation is not: it says the asymmetry is one of participation rather than of strength. That is a claim a reader can test and dispute. It was removed alongside the recruitment language that surrounds it, which is the failure mode the volume card's own Level 3 licence invites: pitch and argument sitting in one paragraph, and the cut taking both.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The display close was removed, and with it the section's statement of what it had been doing.",
+      "evidence": {
+        "baseline": "*There are many ways Providence could fail. There are also many ways it could succeed, and which future arrives depends not on fate but on who answers the call.*",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The volume card names the ritual divider and a small number of earned narrative landings among its permitted fragments, and the display close is how every chapter in this volume states its own result. Restored in a reduced register: the first two sentences and the refusal stand, the summons to genius wherever it lives and the closing call to bring one's whole self do not.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0020", "effect": "extended in scope by evidence, not resolved", "note": "The item is scoped to Volume II's warning to invitation balance. This section shows the same question live in Volume III, where a closing crescendo was resolved by deletion rather than by decision. The restoration deliberately stops short of the recruitment language so that the author's ruling still has something to rule on." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Ten em dashes in the baseline section. Six fenced parenthetical material and became commas or were absorbed. Three separated two movements and became periods, including build it and that, so far. One introduced a specification and became a colon." },
+        { "kind": "kept", "note": "Both paragraphs the pass wrote. Neither is baseline text, but both are sound and one carries a commitment the baseline never states: that the institution must stay less important than its purpose. Keeping new prose that improves the section is not the same as accepting the deletion it accompanied." },
+        { "kind": "kept", "note": "The renamed heading, under the volume ruling on renames. Recorded as an open question: the baseline names both halves of the movement and the current heading names only failure, which is the half the section exists to move past." },
+        { "kind": "restored", "note": "The refusal to end on the catalogue, the vacancy argument in full, the wager on distributed genius, and the display close." },
+        { "kind": "cut", "note": "The recruitment close. Come and build it with us, the prize is nothing less than, and the summons to that genius wherever it lives. The volume card names pitch language as a Level 3 target and CTD-0020 makes the degree an author decision. Restoring it would have answered a question that is not mine." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Tone. The baseline closes this chapter with an explicit recruitment call. The restoration returns the argument and stops short of the call, which leaves the chapter ending on a refusal rather than on an invitation. CTD-0020 records that this ratio is the author's decision in Volume II; the same decision is now live here.",
+    "Heading. Many Ways to Fail, and Many Ways to Succeed names both halves of the movement. What Failure Requires of Us names only the first. Renaming costs a reviewed route alias."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The finding worth carrying into the rest of Volume III is F1: the pass did not always compress, it sometimes substituted. A word count delta reads the same either way, so the damage map cannot distinguish them and every section in this volume needs its surviving prose checked against the baseline before it is treated as a reduction of it. F2 is the more useful case for the standard, because it shows a licensed cut and an unlicensed one sharing a paragraph, which is the shape most likely to recur wherever a volume card names a register for reduction."
+  }
+}
