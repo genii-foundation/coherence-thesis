@@ -12,6 +12,11 @@ const corpus = `# Corpus
 - Relationship to the reader: Invite scrutiny.
 - Cadence: Preserve meaningful variation.
 - Emotional temperature: Earn hope.
+
+## Approval
+
+- Editorial authority: Editorial agent, under author delegation.
+- Card status: Active
 `;
 
 const volume = `# Volume
@@ -24,6 +29,15 @@ const volume = `# Volume
 ## Identity
 
 - Volume: I
+- Relationship to the reader: More direct address in the invitation.
+
+## Register
+
+- Emotional temperature override: More warmth.
+
+## Cadence
+
+- Cadence override: Longer cumulative sentences.
 `;
 
 describe("effective voice cards", () => {
@@ -47,9 +61,35 @@ describe("effective voice cards", () => {
 
   it("extracts the shared rules for the calibration bench", () => {
     expect(effectiveVoiceRulesFrom(corpus)).toEqual([
-      { source: "Corpus", claim: "Relationship to the reader: Invite scrutiny." },
-      { source: "Corpus", claim: "Cadence: Preserve meaningful variation." },
-      { source: "Corpus", claim: "Emotional temperature: Earn hope." },
+      {
+        source: "Corpus",
+        mode: "floor",
+        claim: "Relationship to the reader: Invite scrutiny.",
+      },
+      {
+        source: "Corpus",
+        mode: "floor",
+        claim: "Cadence: Preserve meaningful variation.",
+      },
+      {
+        source: "Corpus",
+        mode: "floor",
+        claim: "Emotional temperature: Earn hope.",
+      },
     ]);
+  });
+
+  it("resolves each shared floor beside the volume override", () => {
+    const resolved = effectiveVoiceRulesFrom(
+      corpus,
+      volume,
+    );
+    expect(resolved).toHaveLength(6);
+    expect(resolved).toContainEqual({
+      source: "Volume",
+      mode: "override",
+      claim:
+        "Relationship to the reader override: More direct address in the invitation.",
+    });
   });
 });

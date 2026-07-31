@@ -197,6 +197,11 @@ Give the reviewer the complete catalog in [editorial-standards.md](../standard.m
 | 4.22 Exhaustive pairings | | |
 | 4.23 Meta claims about the text | | |
 | 4.24 Gloss without substance | | |
+| 4.25 Participial commentary | | |
+| 4.26 Colon reveal | | |
+| 4.27 Weasel attribution | | |
+| 4.28 Inanimate agency | | |
+| 4.29 Formatting decoration | | |
 
 - Corrections reconciled:
 - Intentional exceptions retained:

@@ -4,6 +4,7 @@ import {
   BookOpenCheck,
   CircleDot,
   Clock3,
+  GitBranch,
   ListChecks,
   ShieldCheck,
   TriangleAlert,
@@ -15,6 +16,7 @@ import {
   readCalibrationRows,
   readGlyphViolations,
   readProtectedLineViolations,
+  readRegenerationReadiness,
   readRepositoryState,
   readTasks,
   type Task,
@@ -97,6 +99,7 @@ export default function StatusPage() {
   const glyphs = readGlyphViolations();
   const records = readCalibrationRows();
   const repository = readRepositoryState();
+  const regeneration = readRegenerationReadiness();
 
   const started = progress.filter((volume) => volume.rendered > 0);
   const openSections = started.flatMap((volume) =>
@@ -172,6 +175,29 @@ export default function StatusPage() {
       next: "Batch the rulings so settled sections can close together.",
       tone: "decision",
       href: "/admin/calibration/",
+    });
+  }
+  const pendingVoiceCards =
+    regeneration.totalVoiceCards - regeneration.activeVoiceCards;
+  if (pendingVoiceCards > 0 || !regeneration.corpusVoiceCardActive) {
+    attention.push({
+      label: "Regeneration gate",
+      title: `${numberFormat.format(pendingVoiceCards)} volume voice cards need authority`,
+      context: regeneration.corpusVoiceCardActive
+        ? "The shared corpus floor is active"
+        : "The shared corpus floor is not active",
+      next: "Approve each effective card or delegate its bounded craft authority.",
+      tone: "decision",
+      href: "/admin/calibration/",
+    });
+  }
+  if (regeneration.openCorpusDecisions > 0) {
+    attention.push({
+      label: "Canon gate",
+      title: `${numberFormat.format(regeneration.openCorpusDecisions)} corpus decisions remain open`,
+      context: "The master ledger no longer claims final completion",
+      next: "Settle the named decisions before corpus-wide regeneration.",
+      tone: "decision",
     });
   }
   for (const task of blocked) {
@@ -280,6 +306,18 @@ export default function StatusPage() {
           <small>
             {numberFormat.format(inFlight.length)} active,{" "}
             {numberFormat.format(blocked.length)} blocked
+          </small>
+        </article>
+        <article className={styles.metricCard}>
+          <GitBranch aria-hidden="true" size={19} />
+          <span className={styles.metricValue}>
+            {numberFormat.format(regeneration.activeVoiceCards)}/
+            {numberFormat.format(regeneration.totalVoiceCards)}
+          </span>
+          <strong>Voice cards active</strong>
+          <small>
+            {numberFormat.format(regeneration.originalCheckpoints)} immutable
+            originals preserved
           </small>
         </article>
       </section>

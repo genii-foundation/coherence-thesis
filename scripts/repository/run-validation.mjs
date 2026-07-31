@@ -13,6 +13,7 @@ const buildIdPath = path.join(repoRoot, ".next", "BUILD_ID");
 export const preparedValidationScripts = Object.freeze([
   "editorial:debt",
   "editorial:validate",
+  "editorial:checkpoints",
   "editorial:protected-lines",
   "editorial:voice-exemplars",
   "editorial:semantic-links:validate",

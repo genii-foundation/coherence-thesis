@@ -68,6 +68,10 @@ export const versionProvenancePath = path.join(
   continuityRoot,
   "version-provenance.json",
 );
+export const manuscriptCheckpointsPath = path.join(
+  continuityRoot,
+  "manuscript-checkpoints.json",
+);
 export const audioManifestSourcePath = path.join(
   publishingRoot,
   "audio/manifest.json",
@@ -84,6 +88,7 @@ export const continuityFilePaths = [
   sectionLedgerPath,
   sectionLineagePath,
   versionProvenancePath,
+  manuscriptCheckpointsPath,
 ] as const;
 export const durablePublishingFilePaths = [
   ...continuityFilePaths,

@@ -30,6 +30,7 @@ export type WorkingRevisionSession = {
   sourceHref: string;
   paragraphAnchor: string | null;
   selectedPassage: string;
+  baseCheckpointId: string | null;
   status: WorkingRevisionStatus;
   directions: WorkingRevisionDirection[];
   variants: WorkingRevisionVariant[];
@@ -224,6 +225,14 @@ export function parseWorkingRevisionSession(
       "selectedPassage",
       source,
     ),
+    baseCheckpointId:
+      value.baseCheckpointId === undefined
+        ? null
+        : optionalString(
+            value.baseCheckpointId,
+            "baseCheckpointId",
+            source,
+          ),
     status: status as WorkingRevisionStatus,
     directions: value.directions.map((direction, index) =>
       parseDirection(direction, index, source),
@@ -249,6 +258,7 @@ export function createWorkingRevisionSession(
     | "sourceHref"
     | "paragraphAnchor"
     | "selectedPassage"
+    | "baseCheckpointId"
   >,
   now: string,
 ): WorkingRevisionSession {
@@ -376,27 +386,11 @@ export function revisionPrompt({
   paragraphAnchor,
   selectedPassage,
 }: RevisionPromptContext): string {
-  const startCommand = [
-    `npm run editorial:revision -- start --section ${sectionId}`,
-    paragraphAnchor ? ` --anchor ${paragraphAnchor}` : "",
-  ].join("");
   return [
-    `/coherence-editorial-calibration Start an intent-first revision session for ${sectionId}`,
+    `/coherence-editorial-calibration Revise ${sectionId}`,
     editorialId ? ` in ${editorialId}` : "",
-    selectedPassage
-      ? `. Selected passage: ${JSON.stringify(selectedPassage)}`
-      : "",
-    paragraphAnchor ? `. Paragraph anchor ${paragraphAnchor}` : "",
-    `. Before proposing or changing prose, run \`${startCommand}\`,`,
-    ` share the local ${workingRevisionHref(sectionId)} link,`,
-    ` and ask me what I want changed. Wait for my answer.`,
-    ` After I answer, preserve my direction only in the generated working session,`,
-    ` produce distinct variants from the current canonical passage under the editorial standard and voice card,`,
-    ` publish them to the working page, and guide me through comparison and iteration.`,
-    ` Do not create or change any durable editorial record, manuscript, ruling, standard, voice card, ledger, or evidence`,
-    ` until I explicitly approve a final version.`,
-    ` After approval, mark the working version approved, update the manuscript,`,
-    ` record the approved session and any guidance the decision actually establishes, validate the result,`,
-    ` and share the finished page.`,
+    paragraphAnchor ? ` at paragraph ${paragraphAnchor}` : "",
+    selectedPassage ? `. Selected text: ${JSON.stringify(selectedPassage)}` : "",
+    `.`,
   ].join("");
 }

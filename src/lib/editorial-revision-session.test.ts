@@ -21,6 +21,7 @@ function newSession() {
       sourceHref: "/manuscripts/1/opening/orientation/",
       paragraphAnchor: "p-hf0505fc63ec527f1",
       selectedPassage: "Civilization faces a coordination problem.",
+      baseCheckpointId: "volume-01/original",
     },
     startedAt,
   );
@@ -95,7 +96,7 @@ describe("working editorial revision sessions", () => {
     expect(recorded.status).toBe("recorded");
   });
 
-  it("builds a prompt that asks for intent before generating prose", () => {
+  it("builds a compact skill invocation without duplicating its workflow", () => {
     const prompt = revisionPrompt({
       sectionId: "v01-orientation",
       editorialId: "volume-01",
@@ -103,11 +104,10 @@ describe("working editorial revision sessions", () => {
       selectedPassage: "Civilization faces a coordination problem.",
     });
 
-    expect(prompt.indexOf("ask me what I want changed")).toBeLessThan(
-      prompt.indexOf("produce distinct variants"),
+    expect(prompt).toBe(
+      '/coherence-editorial-calibration Revise v01-orientation in volume-01 at paragraph p-hf0505fc63ec527f1. Selected text: "Civilization faces a coordination problem.".',
     );
-    expect(prompt).toContain("/admin/revisions/v01-orientation/");
-    expect(prompt).toContain("Do not create or change any durable editorial record");
-    expect(prompt).toContain("until I explicitly approve a final version");
+    expect(prompt).not.toContain("npm run");
+    expect(prompt).not.toContain("Do not create");
   });
 });

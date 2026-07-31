@@ -8,13 +8,16 @@ import {
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { MarkdownBody } from "@/components/MarkdownBody";
 import type {
   WorkingRevisionSession,
   WorkingRevisionStatus,
 } from "@/lib/editorial-revision-session";
+import type { ParagraphFingerprint } from "@/lib/manuscript-data";
 
 import styles from "../../admin.module.css";
 import { readWorkingRevisionSession } from "../../adminData";
+import { readRevisionOriginalContext } from "../revisionSourceData";
 import { RevisionSessionRefresh } from "./RevisionSessionRefresh";
 
 export const dynamic = "force-dynamic";
@@ -121,6 +124,21 @@ export default async function WorkingRevisionPage({
   const { section } = await params;
   const session = readWorkingRevisionSession(section);
   if (!session) notFound();
+  const original = readRevisionOriginalContext(
+    session.editorialId,
+    session.currentHeading,
+    session.selectedPassage,
+  );
+  const originalParagraphs: ParagraphFingerprint[] =
+    original?.blocks.map((block, index) => ({
+      paragraphId: `revision-original-${index + 1}`,
+      anchor: original.selectedBlockIndexes.includes(index)
+        ? `revision-selected-passage-${index + 1}`
+        : `revision-original-${index + 1}`,
+      order: index + 1,
+      contentHash: "",
+      text: block,
+    })) ?? [];
 
   const step = currentStep(session.status);
   const sourceHref = session.paragraphAnchor
@@ -152,7 +170,7 @@ export default async function WorkingRevisionPage({
             {statusLabel(session.status)}
           </span>
           <Link href={sourceHref}>
-            Open source passage
+            Open current manuscript
             <ExternalLink aria-hidden="true" size={14} />
           </Link>
         </div>
@@ -179,34 +197,68 @@ export default async function WorkingRevisionPage({
       </ol>
 
       <div className={styles.revisionContextGrid}>
-        <section aria-labelledby="revision-source-title">
-          <p className={styles.eyebrow}>Selected passage</p>
-          <h2 id="revision-source-title">Current language</h2>
-          <blockquote>{session.selectedPassage}</blockquote>
+        <section
+          aria-labelledby="revision-source-title"
+        >
+          <p className={styles.eyebrow}>Original manuscript</p>
+          <h2 id="revision-source-title">
+            {original?.heading ?? "Original passage unavailable"}
+          </h2>
+          {original ? (
+            <div className={styles.revisionOriginalProse}>
+              <p className={styles.revisionOriginalLegend}>
+                <span aria-hidden="true" />
+                {original.selectedBlockIndexes.length
+                  ? "The closest original passage is highlighted in context."
+                  : `Permanent checkpoint ${original.checkpointId}`}
+              </p>
+              <MarkdownBody
+                markdown={original.blocks.join("\n\n")}
+                paragraphs={originalParagraphs}
+              />
+            </div>
+          ) : (
+            <blockquote>{session.selectedPassage}</blockquote>
+          )}
         </section>
 
-        <section aria-labelledby="revision-direction-title">
+        <section aria-labelledby="revision-current-title">
+          <p className={styles.eyebrow}>Current edited manuscript</p>
+          <h2 id="revision-current-title">The passage you copied</h2>
+          <blockquote>{session.selectedPassage}</blockquote>
+          <Link className={styles.revisionSourceLink} href={sourceHref}>
+            Read it in the current manuscript
+            <ExternalLink aria-hidden="true" size={14} />
+          </Link>
+        </section>
+      </div>
+
+      <section
+        className={styles.revisionDirection}
+        aria-labelledby="revision-direction-title"
+      >
+        <div className={styles.revisionDirectionHeading}>
           <p className={styles.eyebrow}>Editor direction</p>
           <h2 id="revision-direction-title">
             {session.directions.length
               ? `${numberFormat.format(session.directions.length)} instruction${
                   session.directions.length === 1 ? "" : "s"
-                }`
+              }`
               : "Not supplied yet"}
           </h2>
-          {session.directions.length ? (
-            <ol>
-              {session.directions.map((direction) => (
-                <li key={`${direction.createdAt}-${direction.text}`}>
-                  {direction.text}
-                </li>
-              ))}
-            </ol>
-          ) : (
-            <p>The agent is waiting for you to define the problem.</p>
-          )}
-        </section>
-      </div>
+        </div>
+        {session.directions.length ? (
+          <ol>
+            {session.directions.map((direction) => (
+              <li key={`${direction.createdAt}-${direction.text}`}>
+                {direction.text}
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p>The agent is waiting for you to define the problem.</p>
+        )}
+      </section>
 
       <WaitingState session={session} />
 

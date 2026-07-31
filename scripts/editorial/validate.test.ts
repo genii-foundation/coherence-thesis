@@ -33,15 +33,15 @@ function voiceCard(approval = "pending author review"): string {
 
 ## Identity
 
-Identity guidance.
+- Relationship to the reader: Fixture-specific invitation.
 
 ## Register
 
-Register guidance.
+- Emotional temperature override: Fixture-specific restraint.
 
 ## Cadence
 
-Cadence guidance.
+- Cadence override: Fixture-specific variation.
 
 ## Language
 
@@ -108,6 +108,11 @@ function buildFixture(): Fixture {
 - Relationship to the reader: Invite scrutiny.
 - Cadence: Preserve meaningful variation.
 - Emotional temperature: Earn hope.
+
+## Approval
+
+- Editorial authority: Editorial agent, under author delegation.
+- Card status: Active
 `,
   );
 

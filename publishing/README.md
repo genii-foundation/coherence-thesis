@@ -12,6 +12,7 @@ This directory contains reviewed, tracked facts required to publish The Coherenc
         route-ledger.json
         section-ledger.json
         section-lineage.json
+        manuscript-checkpoints.json
         version-provenance.json
       audio/
         manifest.json
@@ -21,6 +22,14 @@ This directory contains reviewed, tracked facts required to publish The Coherenc
         manuscript-link-continuity.md
 
 Continuity records preserve public access as headings and structure evolve. The audio manifest records immutable hosted publication state. The Updates snapshot is the checked fallback for public repository history.
+
+`manuscript-checkpoints.json` preserves one immutable original manuscript per
+volume and the parentage of every later published revision. Each checkpoint
+points to a byte-exact checked snapshot, not only a mutable working path or a
+possibly rewritten Git reference. Validate the lineage with
+`npm run editorial:checkpoints`. Record a new published checkpoint only through
+the explicit workflow in
+`editorial/method/schemas/manuscript-checkpoints.md`.
 
 Publishing workflow guidance lives under `publishing/guides/`. See [Manuscript Link Continuity](guides/manuscript-link-continuity.md) before changing headings, section identity, or routes.
 

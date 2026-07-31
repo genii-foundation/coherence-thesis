@@ -73,6 +73,8 @@
     "editorial:structure-ledger": "tsx scripts/editorial/structure-ledger.ts",
     "preeditorial:validate": "node scripts/repository/ensure-node-modules.mjs",
     "editorial:validate": "tsx scripts/editorial/validate.ts",
+    "preeditorial:checkpoints": "node scripts/repository/ensure-node-modules.mjs",
+    "editorial:checkpoints": "tsx scripts/editorial/manuscript-checkpoints.ts",
     "preeditorial:compare": "node scripts/repository/ensure-node-modules.mjs",
     "editorial:compare": "tsx scripts/editorial/compare.ts",
     "preeditorial:revision": "npm run manuscripts:prepare",

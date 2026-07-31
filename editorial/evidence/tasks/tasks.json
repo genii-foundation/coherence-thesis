@@ -147,9 +147,9 @@
       "id": "T-015",
       "title": "Explore an Agent SDK route inside the admin panel",
       "tier": "amber",
-      "status": "pending",
+      "status": "done",
       "area": "tooling",
-      "detail": "Variant four. A local /api/admin/revise that drafts variants without leaving the browser. Explore before building: it is a second editorial client and would have to re-implement the ledger reads this work depends on.",
+      "detail": "Exploration complete. Do not build a local drafting API. It would create a second editorial client, duplicate checkpoint, voice-card, ledger, and authority resolution, and require model credentials inside the local reader. The intent-first chat skill remains the sole drafting client while the admin surface stays read only.",
       "blockedBy": []
     },
     {

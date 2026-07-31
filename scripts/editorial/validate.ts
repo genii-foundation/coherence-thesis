@@ -430,8 +430,10 @@ function parseVolumePackage(
   const voiceCardFile = path.join(root, voiceCardPath);
   requireFile(manuscriptFile, root, "canonical manuscript");
   requireFile(voiceCardFile, root, "voice card");
+  const volumeVoiceCardSource = fs.readFileSync(voiceCardFile, "utf8");
+  resolveEffectiveVoiceCard(voiceCardFile);
   const voiceCardApprovalState = approvalStateFromVoiceCard(
-    resolveEffectiveVoiceCard(voiceCardFile).source,
+    volumeVoiceCardSource,
     voiceCardPath,
   );
 

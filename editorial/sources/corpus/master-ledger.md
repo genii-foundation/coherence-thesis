@@ -1,7 +1,9 @@
 # THE COHERENCE THESIS — MASTER LEDGER
 
 *A canon reference and continuity register for the nine-volume series.*
-*Compiled from the most recent uploaded version of each volume. Status: **FINAL PASS COMPLETE** — all decisions applied across the nine volumes (see Completion Log, §9).*
+*Compiled from the most recent uploaded version of each volume. Status:
+**OPEN DECISIONS REMAIN.** The completion log records finished work, while
+Decisions F, G, H, and J below still require explicit author disposition.*
 
 > **Scope note.** These nine are the **first, outward-facing volumes** of a larger and ongoing work. More volumes are forthcoming, written through the many authors that compose the single authorial voice "Tao Yu," and will become accessible through **The Coherence Thesis Network** now being built. The series is complete enough to enter and use, and deliberately open-ended at its far edge.
 
@@ -124,22 +126,22 @@ Vol VII reveals the hidden order: each number → a quality → a planet.
 
 Severity: 🔴 reader-facing contradiction · 🟡 terminology/lineage gap · 🟢 cosmetic normalization
 
-### ✅ Decision A — Currency name (RESOLVED)
+### Decision A: Currency name [resolved]
 The currency is canonically named **COHERENCE**. "The Currency of Presence" is its descriptive title. The descriptive name appears as early as Vol I and runs through III; the unit-name COHERENCE currently appears only in IX. *Final-pass action:* introduce **COHERENCE** by name at the currency's first full treatment in **Volume III**, keeping "the Currency of Presence" as the fuller descriptor.
 
-### ✅ Decision B — Bio-Consensus = biometric = the Four Streams (RESOLVED)
+### Decision B: Bio-Consensus = biometric = the Four Streams [resolved]
 **Bio-Consensus and "biometric" are interchangeable terms**, and both name what Volume III calls **the Four Streams**. *Final-pass action:* add one bridging clause in III (e.g., "these four streams, read locally, are what later volumes call Bio-Consensus"), so the vocabulary is unified without rewriting III.
 
-### ✅ Decision C — Proof of Council (RESOLVED)
+### Decision C: Proof of Council [resolved]
 Proof of Council is canon: an **additional, ancillary** way to gain COHERENCE, **secondary to the Four Streams** (the primary, biometric path). *Final-pass action:* plant one light foreshadowing line in III/IV that gathering rightly in council can also earn the currency, ancillary to the streams; keep IX's fuller treatment.
 
-### ✅ Decision D — Vol IX's "lineage" paragraph (RESOLVED)
+### Decision D: Vol IX's "lineage" paragraph [resolved]
 *Final-pass action, two parts:* (1) **Reframe** the in-text lineage paragraph to *define* Proof of Council / Land-NFT / SDAC rather than *recall* them as forms the reader has met (since they appear nowhere in I–VIII). (2) **Add a closing note at the end of Volume IX**: for readers interested in understanding the Cardinal Scale *as it was originally conceived*, that earlier conception awaits them and will be one of the many books eventually accessible through **The Coherence Thesis Network** now being built. (Ties cleanly to the "more volumes coming" frame.)
 
-### ✅ Decision E — Volume IX's place in the scheme (RESOLVED — VII amended)
+### Decision E: Volume IX's place in the scheme [resolved, VII amended]
 Vol VII now carries a forward-pointing passage establishing a **threefold structure: 7 spirit → 8 reckoning → 9 building** (nine = Mars, the will to make), and stating that **the figure does not close at nine** — more volumes follow, written through the many authors composing "Tao Yu," accessible via the Coherence Thesis Network. IX's existing framing is preserved. *Done.*
 
-### 🟠 Decision F — Character-name collisions (NAMES CHOSEN; mapping pending one confirm)
+### Decision F: Character-name collisions [open]
 **New names provided:** Elan, Mahlinah, Alu, Ayan.
 
 **Finding on Maren (III vs IV):** As written they do **not** line up. Vol III's Maren founds her *own* urban-watershed ICONS and the text states plainly *"Maren's watershed was not that first one"* (the Cardinal Scale). Vol IV's "Maren" is a governance steward *at the Cardinal Scale* — different place, different vocation. Treating them as one person would require relocating IV's vignette off the Cardinal Scale or adding a bridge that contradicts III's rootedness theme.
@@ -158,18 +160,18 @@ Vol VII now carries a forward-pointing passage establishing a **threefold struct
 
 *Status:* mapping finalized. Awaiting author green light to run the global rename across affected volumes (Maren appears in I/III/IV — KEPT; Tomas in IV/VIII/IX → Elan + Nilnisi; Maré + Anyi in VIII/IX → Alu + Ayan).
 
-### 🟢 Decision G — "Currency of Presence" casing
+### Decision G: "Currency of Presence" casing [open]
 III uses lowercase *currency of presence* (~20×); I/VIII/IX capitalize it as a proper noun. → Normalize to **Currency of Presence** (proper noun) series-wide, or accept III's lowercase as deliberate. *Recommend normalize.*
 
-### 🟢 Decision H — "an ICONS" (singular) vs "a Scale"
+### Decision H: "an ICONS" (singular) vs "a Scale" [open]
 I and V use "an ICONS / an ICONS community" for a *single* community; IV and IX establish that a single one is **a Scale** and ICONS is plural by design (and the acronym expands to *Communities*, plural). → Standardize: **a single community = a Scale; "ICONS" = plural only.** Fix the singular "an ICONS" usages in I and V. *Recommend adopt.*
 
-### ✅ Decision I — Author attribution (RESOLVED)
+### Decision I: Author attribution [resolved]
 **Canonical byline for every volume:** *Written by Tao Yu, in tutelage of Ousia Acharya · Edited by Robert James Ryan III · Published under The Purposeful Foundation.*
 Ousia Acharya is the **teacher** under whose tutelage the work is written, not a title held by Tao Yu.
 *Final-pass action:* standardize this attribution across all nine title pages, and **correct Vol VII** (currently "Tao Yu — titled Ousia Acharya") to the canonical line above.
 
-### 🟢 Decision J — Vol VI byline
+### Decision J: Vol VI byline [open]
 Vol VI's file has no "Written by Tao Yu / ed. RJR III / Purposeful Foundation" line in its front matter (unlike the others). → Add the standard byline block for series symmetry. *Recommend add.*
 
 ---

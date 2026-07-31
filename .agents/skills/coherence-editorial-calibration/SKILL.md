@@ -7,9 +7,15 @@ description: Guide an intent-first revision of a specific Coherence Thesis secti
 
 The editor defines the problem. The machine proposes language only after it understands what the editor wants changed.
 
+The copied prompt is intentionally small. This skill owns the workflow. Do not
+require the editor to carry operational instructions, repository commands,
+authority boundaries, or evidence policy in the prompt.
+
 ## Load canonical guidance
 
 - `editorial/method/schemas/working-revision-session.md` before creating or changing transient session state.
+- `editorial/method/schemas/manuscript-checkpoints.md` before selecting or
+  changing the manuscript lineage for a session.
 - `editorial/method/schemas/calibration-record.md` before creating durable evidence after approval.
 - `editorial/method/standard.md` before proposing a variant and again before recording any general rule.
 - The volume's `voice-card.md`, neighboring sections, relevant master-ledger material, and relevant debt items before proposing prose.
@@ -42,7 +48,10 @@ If the request changes canon, doctrine, evidence, claim scope, or another fact t
 
 ## Diagnose only after intent exists
 
-The current canonical passage is the text being revised. The immutable baseline is evidence and a guard against accidental loss. It is not the default replacement text.
+The copied current canonical passage is the text being revised. Its recorded
+base checkpoint establishes lineage. The original checkpoint remains visible
+beside it as permanent evidence and a guard against accumulated loss. Neither
+checkpoint is the default replacement text.
 
 1. Read the selected passage in its full section and neighboring context.
 2. Read the immutable baseline, voice card, standard, relevant ledgers, and known debt.

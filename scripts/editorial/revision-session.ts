@@ -26,6 +26,7 @@ import {
   generatedRevisionSessionsRoot,
   repoRoot,
 } from "../repository/paths";
+import { latestCheckpointForVolume } from "./manuscript-checkpoints";
 
 type Command = "approve" | "direction" | "recorded" | "start" | "variants";
 
@@ -188,6 +189,9 @@ function start(args: Args): WorkingRevisionSession {
       sourceHref: section.readerHref,
       paragraphAnchor: args.anchor || null,
       selectedPassage: selectedPassage(section, args.anchor),
+      baseCheckpointId: latestCheckpointForVolume(
+        `volume-${volumeNumber}`,
+      ).checkpointId,
     },
     now,
   );

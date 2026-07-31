@@ -26,7 +26,6 @@ import {
   type CalibrationRecord,
 } from "./compare-render";
 import {
-  effectiveVoiceRulesFrom,
   resolveEffectiveVoiceCard,
 } from "./voice-card";
 
@@ -61,9 +60,7 @@ function main(): void {
   const currentPath = path.join(editorialVolumesRoot, volume, "manuscript.md");
   const volumeCardPath = path.join(editorialVolumesRoot, volume, "voice-card.md");
   const effective = resolveEffectiveVoiceCard(volumeCardPath);
-  record.effectiveVoiceCard = effectiveVoiceRulesFrom(
-    readFileSync(effective.corpusPath, "utf8"),
-  );
+  record.effectiveVoiceCard = effective.rules;
 
   const baseText = extractSection(readFileSync(baselinePath, "utf8"), record.sectionHeading);
   const currentText = extractSection(readFileSync(currentPath, "utf8"), record.sectionHeading);

@@ -61,6 +61,8 @@ Create one approved overlay per volume before production editing. Ground every e
 ## Approval
 
 - Prepared from source commit:
-- Author approved:
+- Editorial authority:
+- Card status:
+- Scope of that authority:
 - Approval date:
 - Revisions:

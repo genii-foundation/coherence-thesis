@@ -50,19 +50,39 @@ Do not accept an import that collapses, fragments, reorders, or wrongly renames 
 
 ## Voice cards
 
-Create and maintain one voice card beside each manuscript. Record the argument, register, cadence, protected language, images, risks, controls, and author decisions. Start from `editorial/method/method/templates/voice-card.md` and follow `editorial/method/standard.md`.
+Create and maintain one volume overlay beside each manuscript. The shared floor
+lives at `editorial/sources/corpus/voice-card.md`. Record the local argument,
+register, cadence, protected language, images, risks, controls, and authority.
+Start from `editorial/method/templates/voice-card.md` and follow
+`editorial/method/standard.md`.
 
 A voice card guides judgment. It is not a bag of preferred synonyms. Update it when the source or an explicit author decision changes the editorial authority. Do not rewrite it merely to excuse an edit already made.
 
+## Manuscript checkpoints
+
+Every volume has one permanent original manuscript checkpoint. Later published
+revisions form an append-only parent chain. Working revisions branch from a
+named checkpoint without altering it.
+
+The lineage lives in
+`publishing/continuity/manuscript-checkpoints.json`. Each entry points to a
+byte-exact checked snapshot. Follow
+`editorial/method/schemas/manuscript-checkpoints.md` and validate the lineage
+with:
+
+```bash
+npm run editorial:checkpoints
+```
+
 ## Review batches
 
-Store volume review evidence at `editorial/evidence/evidence/reviews/volumes/<editorial-id>/<batch-id>/`. Store corpus reconciliation at `editorial/evidence/evidence/reviews/corpus/<batch-id>/`.
+Store volume review evidence at `editorial/evidence/reviews/volumes/<editorial-id>/<batch-id>/`. Store corpus reconciliation at `editorial/evidence/reviews/corpus/<batch-id>/`.
 
 Every volume batch contains `review.json`. It names the immutable baseline, reviewed source identity, current canonical source path, exact ledger scope, validation state, open query count, residual risk, standing, publication state, every evidence file, and author approval state. Its hashes make orphan recovery and silent evidence drift visible. If no remote ref can reach the baseline commit, preserve a byte exact `baseline.md` snapshot in the batch and bind it with `baseline.snapshotPath`.
 
 Historical ledger paths identify the source at the baseline commit. Keep them intact. Validators resolve those paths through the adjacent `volume.json`.
 
-The sentence ledger accounts for every baseline sentence in scope. The structure ledger accounts for headings and standalone display units. `review.md` records material editorial choices, unresolved questions, route decisions, validation, and approval context. Follow the schemas under `editorial/method/method/schemas/`.
+The sentence ledger accounts for every baseline sentence in scope. The structure ledger accounts for headings and standalone display units. `review.md` records material editorial choices, unresolved questions, route decisions, validation, and approval context. Follow the schemas under `editorial/method/schemas/`.
 
 Validate the complete editorial repository with:
 
@@ -77,7 +97,7 @@ npm run editorial:ledgers:init -- \
   --base <base-sha> \
   --current WORKTREE \
   --source editorial/sources/volumes/<editorial-id>/manuscript.md \
-  --output editorial/evidence/evidence/reviews/volumes/<editorial-id>/<batch-id>
+  --output editorial/evidence/reviews/volumes/<editorial-id>/<batch-id>
 ```
 
 Validate approved ledgers with:
@@ -88,14 +108,14 @@ npm run editorial:ledgers:validate -- \
   --current WORKTREE \
   --source editorial/sources/volumes/<editorial-id>/manuscript.md \
   --require-approved \
-  editorial/evidence/evidence/reviews/volumes/<editorial-id>/<batch-id>/sentence-ledger.jsonl
+  editorial/evidence/reviews/volumes/<editorial-id>/<batch-id>/sentence-ledger.jsonl
 
 npm run editorial:structure-ledger -- \
   --base <base-sha> \
   --current WORKTREE \
   --source editorial/sources/volumes/<editorial-id>/manuscript.md \
   --require-approved \
-  editorial/evidence/evidence/reviews/volumes/<editorial-id>/<batch-id>/structure-ledger.jsonl
+  editorial/evidence/reviews/volumes/<editorial-id>/<batch-id>/structure-ledger.jsonl
 ```
 
 The initializer aligns text. It does not make editorial judgments. Review every inferred disposition, result location, claim, citation attachment, and route outcome before approval.

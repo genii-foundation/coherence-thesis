@@ -45,6 +45,7 @@ function fixturePaths(root: string): RepositoryLayoutPaths {
       path.join(continuityRoot, "section-ledger.json"),
       path.join(continuityRoot, "section-lineage.json"),
       path.join(continuityRoot, "version-provenance.json"),
+      path.join(continuityRoot, "manuscript-checkpoints.json"),
       path.join(publishingRoot, "audio/manifest.json"),
       path.join(publishingRoot, "updates/snapshot.json"),
     ],
@@ -126,7 +127,7 @@ describe("repository layout validation", () => {
       ),
     );
     expect(audit.sourceFiles).toHaveLength(31);
-    expect(audit.publishingFiles).toHaveLength(9);
+    expect(audit.publishingFiles).toHaveLength(10);
   });
 
   it("reports missing package and publishing files", () => {

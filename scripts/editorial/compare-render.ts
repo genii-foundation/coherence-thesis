@@ -22,7 +22,11 @@ export interface CalibrationRecord {
   status: "open" | "settled" | "superseded";
   baseline: { batchId: string; path: string; sha256?: string };
   directions?: { text: string; createdAt: string }[];
-  effectiveVoiceCard?: { source: string; claim: string }[];
+  effectiveVoiceCard?: {
+    source: string;
+    mode?: "floor" | "override";
+    claim: string;
+  }[];
   voiceCard?: { line: number; claim: string; by: Record<string, boolean | null> }[];
   rulesInForce?: { id: string; obligation: string }[];
   findings?: { id: string; summary: string }[];
@@ -456,7 +460,7 @@ del{background:var(--cut-bg);color:var(--cut);text-decoration:line-through;text-
   </header>
   <div class="evidence-grid">
     ${record.effectiveVoiceCard?.length ? `<details class="evidence-card">
-      <summary><span><strong>Corpus commitments</strong><small>${record.effectiveVoiceCard.length} shared rules in force</small></span></summary>
+      <summary><span><strong>Effective voice card</strong><small>${record.effectiveVoiceCard.length} corpus floors and volume overrides in force</small></span></summary>
       <div class="evidence-body">
       <p class="explain">The volume card is an overlay on the shared corpus voice card. These rules bind every volume unless an explicit recorded delta makes the local rule narrower or stronger.</p>
       <ul class="rules">${record.effectiveVoiceCard.map((rule) =>

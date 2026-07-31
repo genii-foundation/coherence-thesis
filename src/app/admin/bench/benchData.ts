@@ -6,7 +6,6 @@ import {
   type CalibrationRecord,
 } from "../../../../scripts/editorial/compare-render";
 import {
-  effectiveVoiceRulesFrom,
   resolveEffectiveVoiceCard,
 } from "../../../../scripts/editorial/voice-card";
 
@@ -41,9 +40,7 @@ export function readCalibrationBench(section: string): CalibrationBenchData | nu
   const effective = resolveEffectiveVoiceCard(
     path.join(root, "editorial/sources/volumes", volume, "voice-card.md"),
   );
-  record.effectiveVoiceCard = effectiveVoiceRulesFrom(
-    readFileSync(effective.corpusPath, "utf8"),
-  );
+  record.effectiveVoiceCard = effective.rules;
 
   const baselinePath = path.join(
     root,

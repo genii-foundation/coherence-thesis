@@ -724,7 +724,7 @@
 
 .metricGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
   gap: 0.8rem;
 }
 
@@ -2022,6 +2022,8 @@
 .revisionWorkspace {
   display: grid;
   gap: clamp(1.2rem, 3vw, 2rem);
+  width: calc(100vw - 2rem);
+  margin-left: calc(50% - 50vw + 1rem);
 }
 
 .revisionWorkspaceHero {
@@ -2184,6 +2186,7 @@
 .revisionContextGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   gap: 0.8rem;
 }
 
@@ -2216,6 +2219,57 @@
   padding-left: 0.85rem;
 }
 
+.revisionOriginalProse {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.revisionOriginalLegend {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.63rem;
+  line-height: 1.4;
+}
+
+.revisionOriginalLegend > span {
+  width: 0.8rem;
+  height: 0.8rem;
+  flex: 0 0 auto;
+  border-left: 2px solid var(--bronze);
+  background: rgb(164 123 63 / 0.1);
+}
+
+.revisionOriginalProse :global(.manuscript-prose) {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.revisionOriginalProse :global(.manuscript-prose > *) {
+  margin: 0;
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  line-height: 1.68;
+}
+
+.revisionOriginalProse :global(.manuscript-prose h3) {
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 620;
+}
+
+.revisionOriginalProse
+  :global([data-paragraph-anchor^="revision-selected-passage-"]) {
+  border-left: 2px solid var(--bronze);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: rgb(164 123 63 / 0.08);
+  padding: 0.7rem 0.75rem 0.75rem 0.85rem;
+}
+
 .revisionContextGrid ol {
   display: grid;
   gap: 0.55rem;
@@ -2230,6 +2284,63 @@
   margin: 0.9rem 0 0;
   color: var(--ink-muted);
   font-size: 0.75rem;
+}
+
+.revisionSourceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  border-bottom: 1px solid rgb(119 84 42 / 0.3);
+  color: var(--ink);
+  font-size: 0.7rem;
+  font-weight: 680;
+  text-decoration: none;
+}
+
+.revisionSourceLink:hover,
+.revisionSourceLink:focus-visible {
+  border-bottom-color: var(--bronze-deep);
+}
+
+.revisionDirection {
+  display: grid;
+  grid-template-columns: minmax(13rem, 0.32fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: start;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: clamp(1rem, 2.5vw, 1.4rem) 0;
+}
+
+.revisionDirectionHeading {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.revisionDirection h2 {
+  margin: 0.25rem 0 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.3vw, 1.55rem);
+  font-weight: 570;
+}
+
+.revisionDirection ol {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.revisionDirection > p:last-child {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
 }
 
 .revisionWaiting {
@@ -2424,7 +2535,6 @@
   }
 
   .revisionSteps,
-  .revisionContextGrid,
   .revisionVariantGrid {
     grid-template-columns: 1fr;
   }
@@ -2432,6 +2542,16 @@
   .revisionSteps li + li {
     border-top: 1px solid var(--line);
     border-left: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .revisionContextGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .revisionDirection {
+    grid-template-columns: 1fr;
   }
 }
 

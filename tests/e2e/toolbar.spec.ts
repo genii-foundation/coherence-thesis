@@ -1647,12 +1647,22 @@ test("offline manuscript downloads can run concurrently", async ({ page }) => {
   });
 
   const downloadButtons = audioMenu.locator(".audio-offline-button");
+  await expect
+    .poll(() =>
+      downloadButtons.evaluateAll(
+        (buttons) =>
+          buttons.filter(
+            (button) =>
+              button instanceof HTMLButtonElement && !button.disabled,
+          ).length,
+      ),
+    )
+    .toBeGreaterThanOrEqual(2);
   const enabledIndexes = await downloadButtons.evaluateAll((buttons) =>
     buttons.flatMap((button, index) =>
       button instanceof HTMLButtonElement && !button.disabled ? [index] : [],
     ),
   );
-  expect(enabledIndexes.length).toBeGreaterThanOrEqual(2);
   const firstDownload = downloadButtons.nth(enabledIndexes[0]!);
   const secondDownload = downloadButtons.nth(enabledIndexes[1]!);
   await expect(firstDownload).toBeEnabled();

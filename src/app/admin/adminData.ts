@@ -29,6 +29,24 @@ const editorialEvidenceRoot = path.join(editorialRoot, "evidence");
 const editorialReviewsRoot = path.join(editorialEvidenceRoot, "reviews");
 const editorialCalibrationRoot = path.join(editorialEvidenceRoot, "calibration");
 const editorialVolumesRoot = path.join(editorialRoot, "sources", "volumes");
+const corpusVoiceCardPath = path.join(
+  editorialRoot,
+  "sources",
+  "corpus",
+  "voice-card.md",
+);
+const corpusLedgerPath = path.join(
+  editorialRoot,
+  "sources",
+  "corpus",
+  "master-ledger.md",
+);
+const manuscriptCheckpointsPath = path.join(
+  repoRoot,
+  "publishing",
+  "continuity",
+  "manuscript-checkpoints.json",
+);
 const generatedRevisionSessionsRoot = path.join(
   repoRoot,
   "generated",
@@ -75,6 +93,70 @@ export function readAllProgress(): VolumeProgress[] {
   return editorialVolumeIds
     .map((id) => readVolumeProgress(id))
     .filter((v): v is VolumeProgress => v !== null);
+}
+
+export interface RegenerationReadiness {
+  activeVoiceCards: number;
+  totalVoiceCards: number;
+  originalCheckpoints: number;
+  corpusVoiceCardActive: boolean;
+  openCorpusDecisions: number;
+}
+
+export function readRegenerationReadiness(): RegenerationReadiness {
+  const activeVoiceCards = editorialVolumeIds.filter((editorialId) => {
+    const file = path.join(editorialVolumesRoot, editorialId, "voice-card.md");
+    if (!existsSync(file)) return false;
+    const approval = readFileSync(file, "utf8").match(
+      /^- (?:Author approved|Editorial authority):\s*(.+)$/im,
+    )?.[1];
+    if (!approval) return false;
+    const state = approval.trim().toLowerCase();
+    return state.startsWith("approved") || state.startsWith("editorial agent");
+  }).length;
+
+  let originalCheckpoints = 0;
+  if (existsSync(manuscriptCheckpointsPath)) {
+    try {
+      const manifest = JSON.parse(
+        readFileSync(manuscriptCheckpointsPath, "utf8"),
+      ) as {
+        volumes?: {
+          originalCheckpointId?: string;
+          checkpoints?: { checkpointId?: string; kind?: string }[];
+        }[];
+      };
+      originalCheckpoints = (manifest.volumes ?? []).filter((volume) =>
+        volume.checkpoints?.some(
+          (checkpoint) =>
+            checkpoint.kind === "original" &&
+            checkpoint.checkpointId === volume.originalCheckpointId,
+        ),
+      ).length;
+    } catch {
+      originalCheckpoints = 0;
+    }
+  }
+
+  const corpusVoiceCardActive =
+    existsSync(corpusVoiceCardPath) &&
+    /^- Card status:\s*Active\s*$/im.test(
+      readFileSync(corpusVoiceCardPath, "utf8"),
+    );
+  const ledger = existsSync(corpusLedgerPath)
+    ? readFileSync(corpusLedgerPath, "utf8")
+    : "";
+  const openCorpusDecisions = [
+    ...ledger.matchAll(/^### Decision [A-Z]:.*\[open\]\s*$/gm),
+  ].length;
+
+  return {
+    activeVoiceCards,
+    totalVoiceCards: editorialVolumeIds.length,
+    originalCheckpoints,
+    corpusVoiceCardActive,
+    openCorpusDecisions,
+  };
 }
 
 export interface RepositoryState {

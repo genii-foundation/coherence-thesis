@@ -247,6 +247,7 @@ test.describe("local editorial admin", () => {
             sourceHref: "/manuscripts/1/opening/orientation/",
             paragraphAnchor: "p-hf0505fc63ec527f1",
             selectedPassage: "The selected passage remains unchanged.",
+            baseCheckpointId: "volume-01/original",
             status: "review",
             directions: [
               {
@@ -303,6 +304,19 @@ test.describe("local editorial admin", () => {
       ).toContainText("Direction");
       await expect(page.getByText("Ready for review")).toBeVisible();
       await expect(
+        page.getByRole("heading", { level: 2, name: "Original manuscript" }),
+      ).toHaveCount(0);
+      await expect(page.getByText("Original manuscript")).toBeVisible();
+      await expect(
+        page.getByRole("heading", {
+          level: 2,
+          name: "The passage you copied",
+        }),
+      ).toBeVisible();
+      await expect(
+        page.getByText("The selected passage remains unchanged."),
+      ).toBeVisible();
+      await expect(
         page.getByText(
           "Make the sequence clearer without changing the claim.",
         ),
@@ -317,6 +331,26 @@ test.describe("local editorial admin", () => {
         ),
       ).toBeVisible();
       await expect(page.getByText("Durable record complete")).toHaveCount(0);
+
+      const revisionLayout = await page.evaluate(() => {
+        const original = document.querySelector(
+          '[aria-labelledby="revision-source-title"]',
+        );
+        const workspace = document.querySelector(
+          '[class*="revisionWorkspace"]',
+        );
+        return {
+          originalOverflowY: original
+            ? getComputedStyle(original).overflowY
+            : null,
+          workspaceWidth: workspace?.getBoundingClientRect().width ?? 0,
+          viewportWidth: document.documentElement.clientWidth,
+        };
+      });
+      expect(revisionLayout.originalOverflowY).not.toBe("auto");
+      expect(revisionLayout.workspaceWidth).toBeGreaterThan(
+        revisionLayout.viewportWidth * 0.9,
+      );
 
       await page.setViewportSize({ width: 390, height: 844 });
       const layout = await page.evaluate(() => ({

@@ -25,6 +25,8 @@ The working page may appear before the editor answers because it records no edit
 - `sourceHref`: the current reader route
 - `paragraphAnchor`: the selected paragraph anchor, or `null` for the whole section
 - `selectedPassage`: the current canonical passage being revised
+- `baseCheckpointId`: the immutable manuscript checkpoint from which this
+  editorial line descends
 - `status`: `awaiting-intent`, `drafting`, `review`, `approved`, or `recorded`
 - `directions`: the editor's instructions in the order received
 - `variants`: the current comparison set
@@ -49,7 +51,10 @@ Each variant contains:
 1. `start` creates the page with `status: awaiting-intent`. It does not create variants.
 2. The chat shares the page and asks the editor what should change.
 3. `direction` appends the editor's answer and moves the session to `drafting`.
-4. The agent reads the current passage, baseline, standard, voice card, neighboring prose, and relevant ledgers. It then publishes at least two distinct variants and moves the session to `review`.
+4. The agent reads the current passage, its base checkpoint, the permanent
+   original, standard, effective voice card, neighboring prose, and relevant
+   ledgers. It then publishes at least two distinct variants and moves the
+   session to `review`.
 5. The editor may request another round. Each new direction returns the session to `drafting`.
 6. Only the editor can choose a final variant. `approve` marks exactly one variant approved.
 7. After approval, the agent may update the manuscript and create durable editorial evidence. `recorded` links the working page to that evidence after it exists.

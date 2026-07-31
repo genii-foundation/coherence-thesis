@@ -96,7 +96,7 @@ Give another fresh reviewer the same passages. Ask it to identify flattened voic
 
 ### Independent slop reviewer
 
-Give a third fresh reviewer the complete AI slop catalog in `editorial/method/standard.md`. Require a recorded result for every category from 4.1 through 4.24. Each result must identify a defect, an intentional exception, a query, or no finding. Automation may support reliable categories, but it cannot substitute for this complete judgment record.
+Give a third fresh reviewer the complete AI slop catalog in `editorial/method/standard.md`. Require a recorded result for every category from 4.1 through 4.29. Each result must identify a defect, an intentional exception, a query, or no finding. Record the reviewed range so a later catalog expansion remains visible. Automation may support reliable categories, but it cannot substitute for this complete judgment record.
 
 Reviewers advise. The lead editor reconciles findings against the source, the authorial profile, and author decisions. Majority vote is not an editorial philosophy.
 
@@ -185,8 +185,14 @@ Run the structural diagnosis of Volumes III and IV first because they contain th
 4. Identify corpus-wide habits and volume-specific habits.
 5. Approve the editorial standard, intervention levels, and review record.
 6. Confirm whether factual and citation verification belongs in every batch or in a separate research pass.
-7. Confirm that version provenance records a commit containing each new body version. Repair false attribution before the first production edit.
-8. Confirm that an unchanged import leaves reviewed route metadata unchanged.
+7. Validate `publishing/continuity/manuscript-checkpoints.json`. Confirm that
+   every volume has one permanent original snapshot and that the intended
+   production base is an explicit checkpoint.
+8. Confirm that version provenance records a commit containing each new body
+   version. Repair false attribution before the first production edit.
+9. Freeze the corpus voice card, volume overlay, editorial standard, checkpoint,
+   and their hashes for the batch. Do not regenerate against moving authority.
+10. Confirm that an unchanged import leaves reviewed route metadata unchanged.
 
 Deliverables:
 
@@ -195,6 +201,8 @@ Deliverables:
 - Approved editorial standard
 - Approved pilot selections
 - Decision on fact-check scope
+- Validated original manuscript checkpoints and production base
+- Frozen effective voice-card and standard identities
 - Verified version-provenance workflow
 - Verified alias and route-recording workflow
 
@@ -270,7 +278,7 @@ For every batch:
 8. Create exhaustive pending sentence and structure records from the immutable baseline and current source. Use repository assistance when present, then review every inferred alignment.
 9. Review `sentence-ledger.jsonl` and assign every baseline sentence a final disposition, including source prose absent from the generated reader.
 10. Review `structure-ledger.jsonl` and assign every heading and standalone display unit a final disposition and route outcome.
-11. Run semantic, literary, and complete 24-category slop reviews with fresh context.
+11. Run semantic, literary, and complete 29-category slop reviews with fresh context.
 12. Reconcile every material finding in the source and ledgers.
 13. Audit the revision again and require zero prohibited punctuation in changed prose.
 14. Prove that the sentence ledger covers the declared baseline and reconstructs the declared current scope exactly once.
