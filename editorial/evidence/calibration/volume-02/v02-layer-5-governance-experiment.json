@@ -60,6 +60,20 @@
   "rulesDerived": [],
   "openQuestions": [],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record's quoted baseline evidence was swept into the [mark] placeholder convention without the prose being re-checked. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the entry against the immutable baseline: both baseline sentences are byte-identical, 50 words. Only the structural label changed form under the settled census. The contraction in acquisition isn't an available exit is baseline-native and stands.",
+      "R-PAIRED-DELETION, re-verified by count: founder-as-permanent-authority occurs four times in each text, and the acquisition refusal keeps both of its fuller ends, in The Surveillance Problem and Providence and Governance Experiment.",
+      "R-CANON-DELETION-RECORD and ledger: the CTD-0040 and CTD-0055 refusal commitments are restated uncut in the requirement form both items ask for. Exposure unmoved.",
+      "The seven later rules otherwise: no correction reaches the entry, no refrain, no credit instance, no deictic or tense choice at issue in a two-sentence reference entry. Nothing fires."
+    ],
+    "proseChanged": false,
+    "result": "The entry survives byte-identical and nothing fires. No prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

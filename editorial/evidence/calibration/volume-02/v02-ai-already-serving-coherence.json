@@ -88,6 +88,24 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record's quoted baseline evidence was swept into the [mark] placeholder convention without the prose being re-checked. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the section span against the immutable baseline: all 27 baseline sentences survive. Twenty-four are byte-identical; the baseline's four prohibited marks resolve at three sites, the F2 pair as the recorded rebuild, the headwinds mark as the F1 colon, and the same-pattern mark before intelligence being deployed as a colon that genuinely specifies. Restoration mode confirmed, the pairing test applies and passes, and the word count is 512 in both texts.",
+      "R-PAIRED-DELETION, re-verified by count rather than by memory of the sweep: McKinsey occurs twice in each text, the second end in Why This Book Has No Footnotes, and the Chapter Six back-reference resolves to Sensemaking at Scale and Intelligence in Service of Earth, both present in both texts.",
+      "R-CAUTIOUS-HALF: the committing half survives beside the hedge. None of this is sufficient is answered by But it is happening, and it is real, and it is the floor on which more ambitious work can build. Both halves intact.",
+      "R-REFRAIN-COST: the closing pair, The technology does not choose. The institutional context, ownership structure, and economic incentives surrounding the technology choose., is the fourth and final instance of the substrate refrain anchored in v02-what-the-first-volume-left-in-our-hands; cited, not re-counted. All four instances are present in the current manuscript.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section, and no contested claim was cut. The CTD-0019 empirical cluster, the 2024 McKinsey percentages and the named deployments, stands uncut and identical to the baseline, recorded in the debt impact.",
+      "R-SUBSTITUTION-CREDIT: F2 already carries the credit for the framing rebuild. The re-read confirms the rebuild does the interpolation's work better than a mechanical pair repair would, and finds no second credit instance.",
+      "R-DEIXIS and R-TENSE: This is the book's argument applied holds the reader at the live claim. Has emerged over the past several years and have remained operational carry load-bearing timing, recency and persistence, and keep the perfect.",
+      "Catalog re-read: What is important to notice is that opens paragraph three in the 4.1 form. Retention limb recorded as the intentional exception: after the detail-dense agricultural paragraph the frame marks the turn from case to pattern, which is the comparison the section exists to make, so the announcement does interpretive work at the hinge. Recorded so the next pass keeps it deliberately or the author removes it knowingly. No other category fires."
+    ],
+    "proseChanged": false,
+    "result": "The record's two findings hold under the twenty-rule standard. One 4.1 construction examined and kept under the retention limb, recorded here. No prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

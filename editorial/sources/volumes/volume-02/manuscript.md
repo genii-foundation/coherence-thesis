@@ -26,7 +26,7 @@ The Purposeful Foundation
 
 *For the work of the Center for Humane Technology, whose efforts helped illuminate the civilizational stakes of the technological threshold now before us, and whose willingness to ask deeper questions about intelligence, attention, power, and human flourishing helped make works like this increasingly necessary.*
 
-*For Cale, who first believed these ideas were worthy of being taken seriously and, in doing so, demanded more of me than inspiration alone. This work is, in part, my attempt to meet that request, written from the conviction that good ideas are not abandoned simply because they are difficult, costly, or slow to become visible. Some truths ask to be carried long before the world is ready to receive them.*
+*For Cale, who first believed these ideas were worthy of being taken seriously, and in doing so demanded more of me than inspiration alone. This work is, in part, my attempt to meet that request. A testament to the conviction that good ideas are not abandoned simply because they are difficult, costly, or slow to become visible. Some truths ask to be carried long before the world is ready to receive them.*
 
 *For Andrew, your generosity and support allowed me to recover during one of the most difficult periods of my life, long enough to place into literature what I could not yet fully build in the world itself. At a time marked by the loss of health, home, and income, your willingness to help carried something far greater than material support: it preserved my ability to remain in relationship with vision, meaning, and the possibility of continuing the work. In many ways, the space you gave me to write helped save my life.*
 

@@ -68,6 +68,22 @@
   "rulesDerived": [],
   "openQuestions": [],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record's quoted baseline evidence was swept into the [mark] placeholder convention without the prose being re-checked. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the divider span against the immutable baseline: all 20 baseline sentences survive, 19 byte-identical and one carrying the F1 colon before the seven-part roll call. Restoration mode confirmed.",
+      "R-PAIRED-DELETION, re-verified by count: helps coherence find coherence and isolated genius each occur twice in both texts, with their far ends in Chapter Five and the Nest chapter present in both.",
+      "4.17 and the fragment run: the five verbless recap sentences opening the divider enumerate Part II's chapters in order. They carry enumeration rather than missing logic, which is the voice card's test for permitted fragments, and the recap roll call is the established form of all four dividers. Retention limb recorded.",
+      "4.23: The chapters ahead describe is genuine wayfinding at a part boundary, the retention limb's own case. PART THREE and the epigraph are display matter.",
+      "R-CAUTIOUS-HALF: the committing sentences survive: But conditions do not build themselves, and where the book's argument either becomes actionable or remains philosophical.",
+      "R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS: no correction reaches the divider, nothing was cut, no credit instance, the isolated-genius epigraph is a counted return with both ends present rather than an uncounted refrain, and the deictic framing of Part III as ahead is correct to the reading moment."
+    ],
+    "proseChanged": false,
+    "result": "The record's finding holds under the twenty-rule standard. Nothing fires on the re-read. No prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

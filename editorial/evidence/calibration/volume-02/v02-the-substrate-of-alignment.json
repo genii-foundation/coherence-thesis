@@ -71,6 +71,22 @@
   "rulesDerived": [],
   "openQuestions": [],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record's quoted baseline evidence was swept into the [mark] placeholder convention without the prose being re-checked. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the section span against the immutable baseline: all 21 baseline sentences survive, 19 byte-identical and two carrying the F1 mark repairs, the comma before and from the many other attempts and the colon before the closing enumeration. Restoration mode confirmed; the word count is 382 in both texts.",
+      "R-PAIRED-DELETION, re-verified by count: counterforce occurs twice in each text, minted and taken up inside this section, and the Chapter Nine, interlude, and Chapter Two back-references resolve to sections present in both texts.",
+      "R-CAUTIOUS-HALF: the demanding half survives whole, including the most predictable failure mode of the present moment, beside the more hopeful half. The paired structure is the section's argument and is intact.",
+      "4.4 and 4.9: the four-beat Some will come from anaphora enacts the paragraph's claim that the counterforce has no single source. Deliberate recurrence, retention limb recorded.",
+      "R-DEIXIS and R-LAND: the italic closing triad holds the reader in the live condition, being built, or failing to be built, right now, and lands the chapter on its own beat.",
+      "R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST: no recorded correction reaches the section, the CTD-0016 thesis restatement stands uncut, no credit instance, and the closing-heading refrain family is recorded at its anchor rather than re-counted here."
+    ],
+    "proseChanged": false,
+    "result": "The record's finding holds under the twenty-rule standard. Nothing fires on the re-read. No prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

@@ -86,6 +86,21 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record's quoted baseline evidence was swept into the [mark] placeholder convention without the prose being re-checked. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the chapter head against the immutable baseline: all six baseline units survive, the three epigraph sentences, the attribution line, and the two-sentence framing paragraph, 90 words including the chapter labels. The only changes are the two recorded display repairs, the F1 colon and the F2 italic attribution.",
+      "R-PAIRED-DELETION, re-verified by direct read of the source line: the Volume I source sentence exists in the current Volume I manuscript, in its Providence passage, reading It is reverent humility, an effort to help a species move in a better direction. Both ends of the cross-volume reference are present.",
+      "R-CORRECTION-SCOPE: no correction was applied here and none is licensed. The one-mark divergence from the re-rendered Volume I source, colon against comma, is held open under CTD-0007 and flagged in Q1; this audit leaves it unresolved for the author, per the standing instruction.",
+      "R-REFRAIN-COST: the italic attribution treatment is the volume-wide epigraph refrain counted at its anchor in v02-the-crisis-beneath-the-crises; cited, not re-counted.",
+      "R-CANON-DELETION-RECORD, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-DEIXIS: nothing was cut, the framing paragraph keeps its committing thesis about owing honesty, no credit instance, and no deictic or tense choice is at issue in ninety words of display and framing matter. Nothing fires."
+    ],
+    "proseChanged": false,
+    "result": "The record's two findings hold under the twenty-rule standard. The CTD-0007 divergence stays flagged in Q1, not resolved. No prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

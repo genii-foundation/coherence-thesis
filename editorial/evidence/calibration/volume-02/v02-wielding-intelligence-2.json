@@ -57,6 +57,21 @@
   "rulesDerived": [],
   "openQuestions": [],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record was settled without the standard audit block. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the Epilogue opening against the immutable baseline: byte-identical, 458 words, 33 sentences, no prohibited glyph in either text.",
+      "R-PAIRED-DELETION, re-verified by count: The alignment problem is the integration problem occurs once in each text, closing the argument Chapter Ten opened, and the title phrase and subtitle recur at matching counts across the title page, the Part III divider, and this Epilogue.",
+      "Catalog re-read: It is not a utopia. It is not a destination. refuses readings the volume's readers actually bring, so 4.3's retention limb and R-NEGATION-STACK's real-opponent case apply, and the positive claim follows in its own sentence. The closing anadiplosis, alignment to integration to developmental, changes scale at each step; 4.8 and 4.19 retention limbs recorded.",
+      "R-CAUTIOUS-HALF: the demanding commitments survive: The achievement is fragile. It requires constant maintenance. It can be lost.",
+      "R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS: no correction reaches the Epilogue opening, nothing was cut, no credit instance, the title-phrase recurrence is counted here with both ends present, and the closing pages hold the reader in the present of the argument."
+    ],
+    "proseChanged": false,
+    "result": "The Epilogue opening survives byte-identical and nothing fires. No prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

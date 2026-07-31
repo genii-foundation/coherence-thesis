@@ -60,6 +60,20 @@
   "rulesDerived": [],
   "openQuestions": [],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record's quoted baseline evidence was swept into the [mark] placeholder convention without the prose being re-checked. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the entry against the immutable baseline: the single 43-word body sentence is byte-identical. Only the structural label changed form under the settled census, from the baseline's dashed bold line to the numbered h3. Nothing to repair.",
+      "R-PAIRED-DELETION recount: coordination substrate occurs four times in each text, not the three the sweep recorded. The parity the sweep rests on holds; the count is corrected here rather than silently.",
+      "R-LEDGER-WINS re-check: CTD-0021's five-layer count and CTD-0055's requirement framing under the chapter's design-intentions disclaimer are both satisfied. The body is unchanged, so no exposure moved.",
+      "The seven later rules: no correction reaches the entry, nothing was cut, no refrain runs through it, no credit instance, and a single enumerating sentence carries no deictic or tense choice to weigh. Nothing fires."
+    ],
+    "proseChanged": false,
+    "result": "The entry survives byte-identical and nothing fires. One sweep count corrected, four occurrences rather than three, with the parity claim unaffected. No prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

@@ -94,6 +94,23 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record's quoted baseline evidence was swept into the [mark] placeholder convention without the prose being re-checked. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the section span against the immutable baseline: all 15 baseline sentences survive, 14 byte-identical and one carrying the F1 comma-pair repair. Restoration mode confirmed; the word count is 321 in both texts.",
+      "R-REFRAIN-COST: this record anchors the disclosure refrain, and the re-read confirms the anchor's count: the discipline opening and its denial run appear five times across the named sections, all intact in the current manuscript.",
+      "R-PAIRED-DELETION, re-verified by count: research question rather than a product commitment occurs five times in the baseline and five in the current manuscript, and the Chapter Six twin passage is present in both texts.",
+      "R-CAUTIOUS-HALF: the case-against sentence, creates exactly the kind of architecture that careful readers should be skeptical of, regardless of intent, survives at full strength beside the case for. Both limbs intact.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches the section. The CTD-0027 open-development promise is restored uncut in both of its locations, and the deduplication question stays with the author in Q1.",
+      "Catalog re-read: the denial run, Providence is not an AI alignment project. It does not train models, is the refrain's protected form under the voice card's bounded statements of what Providence is and is not; 4.3 and R-NEGATION-STACK do not fire because the refused positions are ones readers actually infer, and the corrected position follows in the same paragraph. Vision and report stay separated: is being designed to keeps the requirement framing CTD-0055 asks for. No category fires.",
+      "R-SUBSTITUTION-CREDIT and R-LAND: no credit instance; the closing sentence, refusal of designs that begin reproducing the dynamics the project was built to refuse, ends the section on its own concrete beat."
+    ],
+    "proseChanged": false,
+    "result": "The record's finding and its refrain anchor hold under the twenty-rule standard. Nothing fires on the re-read. No prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

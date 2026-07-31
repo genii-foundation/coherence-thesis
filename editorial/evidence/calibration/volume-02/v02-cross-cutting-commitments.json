@@ -59,6 +59,20 @@
   "rulesDerived": [],
   "openQuestions": [],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record was settled without the standard audit block. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the entry against the immutable baseline: the single 28-word verbless line is byte-identical. Only the label gained the h3 form under the settled census. A verbless summary line is display matter the Reference block licenses; 4.17 does not fire.",
+      "R-PAIRED-DELETION, re-verified by count: globally legible occurs twice in each text, with its far end in The Surveillance Problem present in both.",
+      "Ledger: CTD-0055 owns every property the line names and its exposure is identical in both texts, under the chapter's standing design-intentions disclaimer.",
+      "The seven later rules: no correction reaches the entry, nothing was cut, no refrain, no credit instance, no deictic or tense choice at issue. Nothing fires."
+    ],
+    "proseChanged": false,
+    "result": "The entry survives byte-identical and nothing fires. No prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
