@@ -181,20 +181,20 @@
     },
     {
       "id": "T-019",
-      "title": "Re-render volumes II to IX from baseline, in volume order",
+      "title": "Re-render volumes I to IX from baseline, all volumes in parallel",
       "tier": "amber",
       "status": "in-progress",
       "area": "editorial",
-      "detail": "Author set the order on 2026-07-30: volume order from the beginning, not worst damage first, so tomorrow's editorial pass can move forward through the corpus without meeting an unrevised volume. Standing instruction for contested restorations: restore everything from baseline and flag afterwards. Volumes IV through IX are complete. Volume II and Volume III are in flight with agents resumed 2026-07-30.",
+      "detail": "Author moved this to full parallel on 2026-07-30. Six sessions run concurrently, one per volume with gaps: I (16 unrecorded sections, worst minus 67), II (46, Chapters Eight to Thirteen), III (58, worst minus 80), IV (27, the coda run at minus 63 to minus 70), VII (9 part sections at minus 66 to minus 79), VIII (2, plus the T-022 protected line audit). Volumes V, VI and IX have no unrecorded matched section of 100 baseline words or more and are not staffed. Each session is confined to its own manuscript and calibration directory, so they do not collide; the orchestrator owns git and commits each batch by explicit path. Volume VII was recorded complete under T-020 and reopened when the damage report was fixed to read four heading levels, which revealed nine part sections it had been hiding.",
       "blockedBy": []
     },
     {
       "id": "T-020",
       "title": "Decide how to re-render Volume VII",
       "tier": "red",
-      "status": "done",
+      "status": "blocked",
       "area": "editorial",
-      "detail": "Resolved. The baseline marks sections with bold display lines rather than headings, which the damage tool now reads. All 35 unmatched Volume VII sections were confirmed as renames or reformats with zero genuine structural losses, and all 63 sections have records.",
+      "detail": "Resolved. The baseline marks sections with bold display lines rather than headings, which the damage tool now reads. All 35 unmatched Volume VII sections were confirmed as renames or reformats with zero genuine structural losses, and all 63 sections have records. Reopened 2026-07-30: the volume was marked complete on a report that could not see its #### sections or its two line part labels. Nine sections at minus 66 to minus 79 percent were hidden by that defect and are now in flight.",
       "blockedBy": []
     },
     {
