@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-providence-as-protocol-not-platform",
+  "editorialId": "volume-03",
+  "sectionHeading": "Providence as Protocol, Not Platform",
+  "currentHeading": "Protocol Rather Than Platform",
+  "anchor": "v03-the-federated-imperative",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "309 baseline words to 171 shipped words, minus 45 percent, zero baseline sentences surviving. Substitution mode; the pairing test does not apply and was not run. Chapter count in the anchor."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["protocol", "HTTP", "ten to fifteen years", "zero-knowledge", "Scale", "Purposeful Foundation"],
+    "itemsRead": ["CTD-0009", "CTD-0055", "wave-one semantic-review line 1077 correction"],
+    "outcome": "The line 1077 correction governs the ten-to-fifteen-year horizon and is honored: the restored sentence carries resting on standards already in active development and it remains a scenario until its dependencies and milestones are specified. Everything else is baseline prose under the standing instruction."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The place-and-language argument was deleted; the shipped section kept the distinction's name and dropped its demonstration.",
+      "evidence": {
+        "baseline": "The distinction between a network and a protocol is the distinction between a place and a language. A place has an owner, a boundary, and rules its owner can change at will. A language belongs to no one; its grammar is public; anyone may speak it and build upon it. The web endures because HTTP belongs to no one.",
+        "shipped": "A platform is a place governed by an owner. A protocol is a public language that independent implementations can speak."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped two-sentence version is a competent abstract of the baseline's argument, which is exactly the problem: the HTTP demonstration is what makes the claim checkable against a system the reader already trusts. Restored in full with the node enumeration and the interoperability landing.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "Seeded exit-rights and stewardship drafting preserved.",
+      "evidence": {
+        "baseline": "No counterpart.",
+        "shipped": "Each node should retain local governance and the ability to leave without losing its community's history. ... The Purposeful Foundation may steward standards without owning every relationship conducted through them."
+      },
+      "authorizedBy": "Preservation under CTD-0055; cut from prose as new canon rather than repair.",
+      "diagnosis": "Node-level exit with history is a real federation right the baseline never grants, and the stewardship sentence bounds the Foundation's role more precisely than the baseline's no-single-entity clause. Preserved verbatim for the architecture work, alongside the shipped standards list that added selective disclosure, revocation, recovery, and cross-jurisdictional rights to the baseline's three."
+    },
+    {
+      "id": "F3",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "The protocol mark, the records fence, and the standards fence.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The protocol mark introduced the specification of what a protocol is and became a colon. The records fence held a three-item appositive and became paired commas with a serial and added for legibility (encrypted, self-owned, and cryptographically verifiable), the one word this restoration adds to the baseline. The standards fence held the zero-knowledge enumeration and became a parenthesis inside the corrected horizon sentence recorded in the anchor."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0055",
+      "effect": "recorded",
+      "note": "The protocol-not-platform promise is restored at full strength; F2's node-exit and stewardship drafting preserved for the item."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "Decentralized identifiers, verifiable credentials, and zero-knowledge proofs in active development is a verifiable claim and true as of the baseline's writing; queued with the item."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline with the horizon correction honored",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The long-horizon vision opening, the place-and-language argument with HTTP, the node enumeration, the record portability sentence, and the closing discipline sentence."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading Protocol Rather Than Platform under the structural hold, and the scenario recast on the ten-to-fifteen-year horizon per the recorded correction."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped abstract, with F2's drafting preserved."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks as recorded in F3."
+        }
+      ],
+      "metrics": {
+        "words": 318,
+        "baselineWords": 309,
+        "shippedWords": 171,
+        "deltaPercentAgainstBaseline": 3,
+        "shippedDeltaPercentAgainstBaseline": -45
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The shipped node list included Scale and Indigenous governance body where the baseline has a regenerative farming collective and an indigenous governance council. The baseline list is restored; the capitalization of indigenous in the baseline differs from the corpus convention elsewhere and from CTD-0069's usage, and is left as the baseline has it for the item to settle.",
+    "Heading pair recorded per the structural hold."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; anchor checks apply.",
+    "checks": [
+      "R-CORRECTION-SCOPE: the scenario recast measured to the horizon claim alone.",
+      "R-PAIRED-DELETION: trust earned in one community becomes legible pairs with the third-link doctrine in chapter twelve, restored there with its collision record; the reference direction is consistent.",
+      "Catalog 4.20 read against protocol, platform, network: the three terms are distinct and load-bearing here; no rotation applied."
+    ],
+    "proseChanged": true,
+    "result": "Restored with the correction honored and federation drafting preserved."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

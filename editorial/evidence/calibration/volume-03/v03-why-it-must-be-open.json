@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-why-it-must-be-open",
+  "editorialId": "volume-03",
+  "sectionHeading": "Why It Must Be Open",
+  "currentHeading": "Open by Design",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "anchorFor": [
+    "v03-the-panopticon-pointed-at-the-self",
+    "v03-what-verifiability-actually-requires",
+    "v03-sovereign-compute-the-machine-you-can-trust",
+    "v03-an-honest-accounting-of-the-limits"
+  ],
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "R-CAUTIOUS-HALF, substitution form, run first across the five sections this lane renders; the chapter's last two sections were rendered by the earlier session and counted in their own records",
+    "result": "Zero surviving baseline sentences in all five sections. 1,723 baseline words became 696.",
+    "perSection": [
+      "Why It Must Be Open: 264 baseline words into 180. Minus 32 percent. Zero surviving.",
+      "The Panopticon Pointed at the Self: 430 into 159. Minus 63 percent. Zero surviving.",
+      "What Verifiability Actually Requires: 354 into 148. Minus 58 percent. Zero surviving.",
+      "Sovereign Compute: The Machine You Can Trust: 421 into 106. Minus 75 percent. Zero surviving.",
+      "An Honest Accounting of the Limits: 254 into 103. Minus 59 percent. Zero surviving."
+    ],
+    "conclusion": "Fourth whole-chapter substitution confirmed. This chapter's shipped text is the volume's best bounding work, so three of its sentences are kept as credited findings in the child records and its verifiability chain is preserved here."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["open source", "verifiability", "sovereign compute", "panopticon", "surveillance", "nation-state", "security assurances", "companion"],
+    "itemsRead": ["CTD-0009", "CTD-0024", "CTD-0027", "CTD-0045", "CTD-0055", "wave-one semantic-review corrections"],
+    "itemsGoverning": "None in this section.",
+    "outcome": "No recorded correction reaches the five sections this lane renders. The companion demotion at review lines 1316 to 1344 is ratification-required, not settled, and it governs chapter twenty rather than this chapter's forward reference. The voice card lists security assurances among known concerns; the baseline's strong verifiability claims are restored under the standing instruction and bounded by credited keeps recorded in the child records."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The two-claim architecture of the chapter was deleted: federated says where computation happens, open says who can see how it works.",
+      "evidence": {
+        "baseline": "We have argued that the measurement of presence must be federated: that the sensitive signal of a human encounter must never leave the participant's own device. That is a claim about where computation happens. There is a second claim, inseparable from the first and equally fundamental, about who can see how the computation works.",
+        "shipped": "Keeping raw data local addresses where computation occurs. Openness addresses whether people can inspect what that computation does."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped opener keeps the distinction and drops the argument that makes openness a necessity rather than a preference: the enormous-intimacy escalation and the does-not-ask-to-be-trusted inversion. Restored in full.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The shipped verifiability chain, a seven-step numbered list, is preserved here in full for ratification.",
+      "evidence": {
+        "baseline": "No counterpart at this granularity.",
+        "shipped": "1. Public source code and model documentation. 2. Reproducible builds that allow independent parties to compare source with released software. 3. Signed artifacts and transparent update histories. 4. Independent security, privacy, accessibility, and discrimination audits. 5. Local logs that show what data was accessed and what left the device. 6. Governance that cannot replace the open implementation with a closed service without public review and participant approval. 7. A practical right to fork, substitute, or leave."
+      },
+      "authorizedBy": "Preservation under CTD-0055 and CTD-0027; cut from prose as new engineering canon in list form, which the baseline's prose argument does not carry.",
+      "diagnosis": "The chain is the most complete statement of trustworthy openness in the corpus and directly answers the baseline's own concession that open code alone does not prove the running binary matches. It belongs in the architecture volume or in this chapter by author adoption; preserved verbatim either way. The shipped sentence Open source makes scrutiny possible. It does not make scrutiny automatic is preserved with it."
+    },
+    {
+      "id": "F3",
+      "summary": "Two prohibited marks.",
+      "evidence": {
+        "baseline": "The federated mark and the open-source mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Both introduced specifications and became colons: the federated claim's content, and the open-source definition. The intimate-signal enumeration fence became a parenthesis."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0027",
+      "effect": "recorded",
+      "note": "The restored chapter commits to open source for the instrument; the item's decision process for machine inference and model authority still has no defined owner, and F2's chain is drafting for it."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "reopened by restoration",
+      "note": "Must be open returns as founding commitment rather than design guidance."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline; verifiability chain preserved",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The epigraph wording under the kept adaptation label, the two-claim architecture, the enormous-intimacy argument, and the verifiable-not-trusted inversion."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading Open by Design under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped abstract and the numbered chain, preserved in F2."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT as recorded in F3."
+        }
+      ],
+      "metrics": {
+        "words": 268,
+        "baselineWords": 264,
+        "shippedWords": 180,
+        "deltaPercentAgainstBaseline": 2,
+        "shippedDeltaPercentAgainstBaseline": -32
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading pair recorded: Why It Must Be Open argues, Open by Design labels. Structural hold.",
+    "The shipped chain's fate is one author decision: adopt into this chapter, defer to Volume IV, or leave as ledger drafting."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; this block carries the chapter-anchor checks for the five sections rendered in this lane.",
+    "checks": [
+      "R-PAIRED-DELETION sweep before restoration: open source, sovereign compute, and the companion thread pair forward into chapter twenty and backward into chapter sixteen, all present after this lane's restorations; the Pattern and One Genius sections restored by the earlier session carry the chapter's close and were not touched.",
+      "R-CORRECTION-SCOPE: no recorded correction reaches these five sections; the companion demotion was checked and found to govern chapter twenty only.",
+      "Catalog 4.29 read against the shipped numbered chain: in the shipped text the list carried the argument prose should carry, which is why it is preserved as drafting rather than restored as prose.",
+      "Glyph check across the restored chapter: zero prohibited marks; repairs recorded per section."
+    ],
+    "proseChanged": true,
+    "result": "Chapter head restored; chain preserved; children carry three credited keeps."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard with the substitution count run first.",
+    "conclusion": "Converged in one generation. The chapter's necessity argument is back beneath its conclusions."
+  }
+}

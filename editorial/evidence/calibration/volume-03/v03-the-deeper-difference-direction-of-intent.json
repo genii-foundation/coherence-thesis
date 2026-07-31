@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-deeper-difference-direction-of-intent",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Deeper Difference: Direction of Intent",
+  "currentHeading": "Intent Is Not the Difference",
+  "anchor": "v03-why-providence-is-not-social-credit",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. The doctrine collision recorded here is the author's to resolve.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "406 baseline words (including the untouched Part Six display block the section boundary absorbs) to 179 shipped words, zero baseline sentences surviving. Substitution mode; the pairing test does not apply and was not run. Restored prose measures 353 words against a prose-only baseline of about 351; the remaining delta is the blocked display block."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["direction of intent", "technology of control", "communion", "legible to power", "prison", "throne"],
+    "itemsRead": ["CTD-0045", "CTD-0016"],
+    "outcome": "No recorded decision governs this section. The doctrine collision below is between the baseline and the pass, not between the baseline and any ruling, so the baseline governs and the collision is quoted for the author."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Doctrine collision: the baseline holds that direction of intent is the deeper difference from which every structural line flows; the pass wrote the opposite doctrine under a heading that asserts it.",
+      "evidence": {
+        "baseline": "Behind every structural line lies a difference of fundamental purpose, and it is worth stating plainly, because it is the thing from which all the structural differences ultimately flow. A social credit system exists to make people legible to power so that power may control them. Providence exists to make people legible to themselves and to one another...",
+        "shipped": "A coercive system and a humane system can use similar language about safety, flourishing, and collective benefit. Purpose matters, but purpose cannot carry the distinction alone. The direction of power is the deeper test."
+      },
+      "authorizedBy": "The standing instruction: restore and flag, never resolve. Same treatment as the third-link doctrine collision in v03-the-third-link.",
+      "diagnosis": "This is the sharpest inversion in the volume after the third link. The baseline grounds the six structural lines in purpose: structure flows from intent. The pass argues intent cannot be trusted and only the direction of power distinguishes the systems, then renamed the heading to declare it. Both positions are internally coherent, they cannot both anchor the chapter, and the renamed heading now sits over restored prose that argues against it. The baseline prose is restored per the standing instruction; the heading stays per the structural hold; the full shipped counter-doctrine is preserved in this record; the author decides.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F2",
+      "summary": "The shipped operational test questions are preserved for adoption.",
+      "evidence": {
+        "baseline": "No counterpart at this granularity.",
+        "shipped": "Does measurement make the person more controllable by an institution, or does it give the person a tool they can inspect, refuse, and use on their own terms? Can the institution punish exit? Can it expand the record across domains? Can affected people govern the rules and obtain remedy?"
+      },
+      "authorizedBy": "Preservation; not kept, because the questions operationalize the counter-doctrine the author has not adopted.",
+      "diagnosis": "Whatever the author decides about F1, these four questions are a usable audit instrument, and they translate the chapter's lines into checks an outsider can run. Preserved verbatim."
+    },
+    {
+      "id": "F3",
+      "summary": "The prison-and-home walls argument was deleted with the binding close.",
+      "evidence": {
+        "baseline": "That the two share the bare fact of measurement no more makes them the same thing than the fact that both a prison and a home have walls makes them the same building. The walls of a prison face inward, to contain. The walls of a home face outward, to shelter. ... If we are ever found to have crossed these lines, let this chapter be the evidence against us.",
+        "shipped": "Absent, replaced by the direction-of-power test; the closing bind survived as These limits bind the project more honestly than promises of good character."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The walls image is the chapter's one extended metaphor and does the work of the surface-resemblance argument in a form a reader keeps. The evidence-against-us sentence is the chapter's contract and pairs with held against us forever in the sovereign section. Both restored.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "Two prohibited marks.",
+      "evidence": {
+        "baseline": "The structure-is-turned mark and the that-willingness fence.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The turned mark opened the resolving movement of the walls argument and became a period with And. The willingness fence held an appositive that itself carried a comma pair around in the open; paired commas would have nested three deep, so the fence became paired commas and the inner pair was released, to name the most damning comparison and to build in the open the architecture that refutes it, which reads on one breath."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0045",
+      "effect": "reopened by restoration",
+      "note": "The F1 collision is a posture decision in miniature: founding-text conviction against design-review skepticism. The item's ruling on the volume's category will likely settle F1 as a side effect, and this record cross-references it for that reason."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored the direction-of-intent doctrine under the heading that denies it, collision flagged",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The purpose-flows-to-structure opening, the control-and-communion contrast, the walls of prison and home, and the binding close through the willingness sentence."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading Intent Is Not the Difference under the structural hold, over prose that argues the reverse. This is the loudest heading-prose contradiction in the volume and is deliberately left visible rather than smoothed."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped counter-doctrine and its test questions, preserved verbatim in F1 and F2."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across two marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 353,
+        "baselineWords": 351,
+        "shippedWords": 179,
+        "deltaPercentAgainstBaseline": 1,
+        "shippedDeltaPercentAgainstBaseline": -56
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "F1, for the author, stated once and plainly: does the difference between Providence and social credit rest on direction of intent (baseline, restored) or on direction of power with intent explicitly disclaimed as the test (pass, preserved here)? The current heading asserts the second over prose arguing the first. One decision resolves prose, heading, and the F2 questions together. Not resolved here.",
+    "Part Six display block, blocked. Baseline subtitle: On Federated Intelligence and a System That Must Never Become What It Was Built to Replace. Current: Federated Intelligence for a System That Must Not Become What It Was Built to Replace. Baseline epigraph: The surest way to become the power you feared is to build the cure as a throne. What follows is the architecture of refusing the throne, of building so that no center can ever hold it all. Current: Do not build the cure as a throne. Distribute what no center should ever hold. Part display blocks are held untouched under the structural caution, per the Part Two and Part Three precedent, and the divergence is recorded here for the author."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; anchor checks apply.",
+    "checks": [
+      "R-PAIRED-DELETION: let this chapter be the evidence against us pairs with held against us forever and with the Six Bright Lines standard sentence; all three ends restored. Legible appears at both poles (to power, to themselves) inside the section; no external dependency.",
+      "R-CANON-DELETION-RECORD: the shipped counter-doctrine is a contested claim cut by this restoration, so it is quoted in full in F1 and F2 rather than removed silently, and the open question names the decision it awaits.",
+      "Catalog 4.3 false antithesis read against control-and-communion: retention limb holds, both sides are real systems and the distinction is the chapter's subject.",
+      "R-LAND: the section and the chapter land on the willingness sentence, restored as the final beat."
+    ],
+    "proseChanged": true,
+    "result": "Restored with the volume's second doctrine collision fully quoted and flagged; heading-prose contradiction left visible under the structural hold."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard with the anchor's substitution count first.",
+    "conclusion": "Converged in one generation. The chapter now ends where the author ended it, on binding rather than testing, and the rival ending is preserved beside it for the one decision that chooses between them."
+  }
+}

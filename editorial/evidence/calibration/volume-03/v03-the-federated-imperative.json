@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-federated-imperative",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Federated Imperative",
+  "currentHeading": "The Federated Imperative",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "anchorFor": [
+    "v03-providence-as-protocol-not-platform",
+    "v03-the-moral-obligation-not-to-centralize"
+  ],
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "R-CAUTIOUS-HALF, substitution form, run first across the whole chapter",
+    "result": "Zero surviving baseline sentences in all three sections of chapter sixteen. 1,111 baseline words became 525.",
+    "perSection": [
+      "The Federated Imperative: 582 baseline words into 207. Minus 64 percent. Zero surviving.",
+      "Providence as Protocol, Not Platform: 309 into 171. Minus 45 percent. Zero surviving.",
+      "The Moral Obligation Not to Centralize: 220 into 147. Minus 33 percent. Zero surviving."
+    ],
+    "conclusion": "Third whole-chapter substitution confirmed by the detector. Pairing test not applicable anywhere in the chapter."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["federated", "surveillance apparatus", "Coherence Engine", "attestation", "Apple", "data center", "streaming", "ten to fifteen years", "protocol", "sovereignty"],
+    "itemsRead": ["CTD-0009", "CTD-0016", "CTD-0027", "CTD-0045", "CTD-0055", "CTD-0056", "wave-one semantic-review high-confidence corrections"],
+    "itemsGoverning": "The semantic review's line 1077 correction: ten to fifteen years recast as a scenario. Honored at its named width in the protocol section.",
+    "outcome": "One recorded correction reaches this chapter and it is honored: the ten-to-fifteen-year protocol horizon carries the scenario recast. The energy-figures correction at review line 1187 names the chapter eighteen totals, not this chapter's streaming-video comparison, so under R-CORRECTION-SCOPE the comparison is restored as baseline prose and flagged to CTD-0009 rather than cut. The Apple 2024 methodology claim is restored at full strength and belongs to CTD-0009's verification backlog. No other item governs."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's argument was replaced by a summary of its conclusions: the surveillance-apparatus stakes, the knows-things-they-do-not-know-about-themselves escalation, the promise-versus-architecture distinction, and the attestation mechanism all went.",
+      "evidence": {
+        "baseline": "A system that knows the autonomic state, the cardiac coherence patterns, and the endocrine signatures of its participants during their most intimate encounters knows things about those people that they do not know about themselves. ... The protection cannot rest on promise alone. It must rest on architecture.",
+        "shipped": "Providence would handle unusually sensitive material: conversation, cardiac patterns, vocal features, pulse morphology, and participant reflections. A single database containing that material would be dangerous regardless of the organization's charter."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped chapter states the conclusions accurately and drops the reasoning that makes them binding: why governance cannot protect the data (capture, reinterpretation by a desperate successor), what actually travels on the network (the attestation, sufficient to circulate and insufficient to reconstruct), and why feasibility is current fact rather than hope. Restored in full, including the display line on seizure and subpoena.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "Seeded privacy-engineering drafting preserved for ratification.",
+      "evidence": {
+        "baseline": "No counterpart.",
+        "shipped": "Even that proof should disclose as little as possible, expire when appropriate, and remain unlinkable across contexts unless the participant deliberately joins them. ... Federation does not mean that nothing is ever shared. It means independent nodes can cooperate without surrendering every participant or every decision to one operator."
+      },
+      "authorizedBy": "Preservation under CTD-0055 and CTD-0027; cut from prose as new canon rather than repair.",
+      "diagnosis": "Minimal disclosure, expiry, and unlinkability are real protocol requirements the baseline never states, and the federation definition is the cleanest in the corpus. Preserved verbatim for the architecture work."
+    },
+    {
+      "id": "F3",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "The millions-of-people fence, the sensitive-data fence, the local-models fence, and the all-of-it mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The millions fence held a short purpose clause and became paired commas. The sensitive-data and local-models fences each held enumerations with internal commas and became parentheses. The all-of-it mark carried a summative apposition after a three-part list and became a comma, keeping the cumulative build to all of it happens where the data already is."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "The Apple 2024 on-device methodology claim, the fastest-growing-electricity-demand claim, and the streaming-video energy comparison are restored at full strength and unverified. All three belong to the item's verification backlog; the voice card lists data-center figures and unbounded energy comparisons among known concerns."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "recorded",
+      "note": "The chapter describes the federated architecture in the present tense of design intent rather than operation; no already-doing refrain appears here."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline with one recorded correction honored",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The contradiction-at-the-heart opening, the escalation paragraph, the architecture-over-promise argument, the attestation mechanism, the display line, the feasibility paragraph with the Apple claim, and the energy-contradiction paragraph ending on the single principle from which the others follow."
+        },
+        {
+          "kind": "kept",
+          "note": "The chapter heading, identical in both texts, and the CTD-0007 adaptation label over the restored epigraph wording."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped summary paragraphs, with the F2 drafting preserved."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks as recorded in F3."
+        }
+      ],
+      "metrics": {
+        "words": 588,
+        "baselineWords": 582,
+        "shippedWords": 207,
+        "deltaPercentAgainstBaseline": 1,
+        "shippedDeltaPercentAgainstBaseline": -64
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored paragraph says the energy and ecological commitments live in Part Six, but the Earth Compact is Part Seven in both texts. This reads as a baseline drafting slip from an earlier part numbering. Restored verbatim under fact preservation; the one-word correction is the author's to make, and it is flagged here rather than silently applied.",
+    "The epigraph pair is recorded: baseline wording restored under the kept adaptation label."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules.",
+    "checks": [
+      "R-PAIRED-DELETION: coherence attestation pairs with chapter ten's Coherence Engine sections and the four streams with chapter nine, all present; the Part Six pointer is flagged above as a possible mispointer rather than restored to a different target.",
+      "R-CORRECTION-SCOPE: the scenario recast was measured against the review's wording and applied to the ten-to-fifteen-year claim alone; the surrounding standards list is baseline prose.",
+      "R-CAUTIOUS-HALF: the committing halves (must rest on architecture, insufficient to reconstruct, single principle from which the others follow) were the deleted halves and are back.",
+      "Catalog 4.6 and 4.13 read against most powerful surveillance apparatus in human history and the feasibility claims: the superlative is the argument's subject and is kept; the unsourced quantitative texture is flagged to CTD-0009 rather than cut, per the standing instruction."
+    ],
+    "proseChanged": true,
+    "result": "Restored with one correction honored, one baseline slip flagged, and the chapter's reasoning back under its conclusions."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard with the substitution count run first and the semantic review's correction table consulted before restoration.",
+    "conclusion": "Converged in one generation. The chapter now argues its imperative instead of asserting it."
+  }
+}

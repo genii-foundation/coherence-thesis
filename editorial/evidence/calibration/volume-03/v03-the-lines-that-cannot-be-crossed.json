@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-lines-that-cannot-be-crossed",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Lines That Cannot Be Crossed",
+  "currentHeading": "Six Bright Lines",
+  "anchor": "v03-why-providence-is-not-social-credit",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "890 baseline words to 285 shipped words, minus 68 percent, zero baseline sentences surviving. Substitution mode; the pairing test does not apply and was not run. The shipped section replaced the baseline's six It cannot be paragraphs with six bold-labeled No X paragraphs, a different six covering overlapping ground."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS, with R-LEDGER-WINS-COROLLARY on the floor",
+    "terms": ["unconditional floor", "floor-and-height", "cryptographic keys", "federated", "open code", "governance standing", "purpose limitation", "COHERENCE"],
+    "itemsRead": ["CTD-0005", "CTD-0006", "CTD-0055", "CTD-0071"],
+    "outcome": "The semantic review's ratified floor doctrine is already the baseline's fifth line, so the restoration pays CTD-0005 down from the baseline. CTD-0006 is engaged by the sixth line's earned governance standing, an open query, restored and flagged. No recorded decision required any departure from the baseline."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The pass replaced the author's six lines with six of its own, and the two sets do not match: the baseline's unidirectional line vanished and a purpose-limitation line took its place.",
+      "evidence": {
+        "baseline": "It cannot be centralized... It cannot be comprehensive... It cannot be imposed... It cannot be opaque... It cannot be used for exclusion from the basics of life... It cannot be unidirectional. ... This inversion of ownership is the deepest structural difference of all, and everything else follows from it.",
+        "shipped": "No central dossier... No universal score... No compelled participation... No gate on basic life... No secret criteria... No authority beyond the chosen context. A record created for a consented gathering cannot become evidence for employment, insurance, policing, credit, or immigration."
+      },
+      "authorizedBy": "Compression and substitution.",
+      "diagnosis": "The six bright lines are a protected structural device under the volume card, and the substitution silently swapped one of the six. The baseline's sixth line, the inversion of ownership, is the line the next section calls the deepest structural difference of all; the shipped sixth, purpose limitation, is genuinely valuable drafting the baseline holds only implicitly in its comprehensive line. The baseline's six are restored; the purpose-limitation paragraph is preserved here in full for ratification as a possible seventh commitment: A record created for a consented gathering cannot become evidence for employment, insurance, policing, credit, or immigration. Purpose limitation must be legal, technical, and visible in the credential itself.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The shipped attack-survival bound is kept. This finding runs the other way.",
+      "evidence": {
+        "baseline": "This is not a policy that could be reversed by a future administrator. It is a property of where the data physically lives. There is no database to seize, because there is no database.",
+        "shipped": "None should be described as impossible to violate until the enforcement exists and has survived attack."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "The baseline's impossibility claims describe an architecture that does not yet exist, and its own closing display line concedes the enforcing design is not yet built. The shipped sentence supplies the missing standard: impossibility may be claimed only after enforcement exists and has survived attack. Kept verbatim as the final sentence of the principled-before-technical paragraph, where it bounds every impossibility claim above it. The resulting tension with there is no database to seize is deliberate and flagged in the anchor: both the author's confidence and the bound now stand on the page.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F3",
+      "summary": "Seeded enforcement and floor drafting preserved for the items that own them.",
+      "evidence": {
+        "baseline": "No counterpart.",
+        "shipped": "Refusing a sensor cannot cost someone ordinary belonging or the material floor. ... Participants need plain explanations, contest rights, human review, and remedies when the system is wrong. Open source supports inspection but does not prove that deployed software matches published code. Reproducible builds, signed releases, independent audits, and device attestation may be needed."
+      },
+      "authorizedBy": "Preservation under CTD-0005 and CTD-0071; cut from prose because each replaces baseline argument rather than repairing a fault in it.",
+      "diagnosis": "The sensor-refusal sentence states the floor doctrine in protocol-invariant form and belongs to CTD-0005's paydown work. The remedies and reproducible-builds drafting belongs to CTD-0071's enforcement design and to chapter seventeen, where the restored baseline carries the social-verifiability argument in the author's own words."
+    },
+    {
+      "id": "F4",
+      "summary": "Eight prohibited marks and one glyph normalization.",
+      "evidence": {
+        "baseline": "The bright-lines mark, the no-score mark, the necessities fence, the height fence, the deepest-enforcement fence, the wielded-upon mark, the design-commitments mark, and the curly apostrophe in participant's.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The bright-lines mark introduced the specification of the series and became a colon. The no-score mark separated denial from the corrective movement and became a period, the second sentence opening on It produces. The necessities fence and the height fence each held a short appositive and became paired commas. The deepest-enforcement fence held the long mechanisms appositive and became paired commas, its spine surviving one attentive reading. The wielded-upon mark attached the corrective not-an-instrument clause and became a comma. The design-commitments mark in the display line opened a second movement and became a period with And. The baseline's one curly apostrophe, participant's own device at baseline line 1051, was normalized to the manuscript's straight-apostrophe convention."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0005",
+      "effect": "paid down from the baseline",
+      "note": "The floor, the basics of life and belonging, is unconditional and is never gated behind any measure of coherence whatsoever: the ratified doctrine in the author's own words, restored. F3's sensor-refusal drafting preserved for the item's protocol form."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "reopened by restoration and flagged",
+      "note": "Holds governance standing earned through their own participation returns the earned-standing posture; the item's ruling will decide whether it stands."
+    },
+    {
+      "id": "CTD-0071",
+      "effect": "recorded",
+      "note": "F3's remedies and attestation drafting preserved for the item's enforcement design."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored the author's six lines with one credited keep",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The series introduction, all six It cannot be lines including the unidirectional line the substitution dropped, the principled-before-technical paragraph with its two concrete anchors, and the closing display line handing the enforcement to the volume that follows."
+        },
+        {
+          "kind": "kept",
+          "note": "The F2 attack-survival bound, verbatim, and the current heading Six Bright Lines under the structural hold, which the restored section still satisfies: six lines, brightly drawn."
+        },
+        {
+          "kind": "cut",
+          "note": "The six shipped No X paragraphs, with the purpose-limitation line preserved in F1 and the enforcement drafting preserved in F3."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across eight marks and one glyph normalization as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 909,
+        "baselineWords": 890,
+        "shippedWords": 285,
+        "deltaPercentAgainstBaseline": 2,
+        "shippedDeltaPercentAgainstBaseline": -68
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The purpose-limitation line in F1: adopt as a seventh bright line, fold into the comprehensive line, or leave to Volume IV's architecture? One author decision; the drafting is preserved verbatim.",
+    "R-REFRAIN-COST anchor: the It cannot be refrain runs six times in this section and is the chapter's protected spine. A ruling against any single line's claim strength changes one paragraph, not the refrain; a ruling against the refrain form itself would change six. Count and phrase recorded here once.",
+    "The impossibility tension recorded in the anchor: no database to seize beside the F2 bound. Not reconciled."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; anchor checks apply.",
+    "checks": [
+      "R-CAUTIOUS-HALF within the restored section: each line carries both a hedged mechanism and a committing claim, and both halves are present; the committing halves (never gated, exit is total, no database) are the ones the substitution had removed.",
+      "R-PAIRED-DELETION: floor-and-height verified both ends; the volume that follows forward reference is deliberate and external; presence and presencing pairs with chapter seven.",
+      "Catalog 4.9 and 4.4 read against the six-paragraph parallel structure: retention limb holds, the uniformity is the device.",
+      "R-LAND: every restored paragraph ends on its own concrete beat; the section lands on the forswears display line."
+    ],
+    "proseChanged": true,
+    "result": "The author's six lines restored, one credited bound added, purpose-limitation drafting preserved for ratification."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard with the anchor's substitution count first and the term sweep before restoration.",
+    "conclusion": "Converged in one generation. The deepest structural difference, the inversion of ownership, is back among the six, and the bound that keeps the six honest stands at their foot."
+  }
+}

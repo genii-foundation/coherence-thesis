@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-a-system-that-heals-what-it-inhabits",
+  "editorialId": "volume-03",
+  "sectionHeading": "A System That Heals What It Inhabits",
+  "currentHeading": "A System Accountable to Its Place",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "anchorFor": [
+    "v03-the-architecture-of-a-federated-footprint",
+    "v03-the-regenerative-physical-infrastructure",
+    "v03-the-network-as-ecological-force"
+  ],
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "R-CAUTIOUS-HALF, substitution form, run first across the chapter",
+    "result": "Zero surviving baseline sentences in all four sections of chapter eighteen. 1,109 baseline words became 568.",
+    "perSection": [
+      "A System That Heals What It Inhabits: 219 baseline words into 99. Minus 55 percent. Zero surviving.",
+      "The Architecture of a Federated Footprint: 285 into 189. Minus 34 percent. Zero surviving.",
+      "The Regenerative Physical Infrastructure: 263 into 109. Minus 59 percent. Zero surviving.",
+      "The Network as Ecological Force: 342 into 171. Minus 50 percent. Zero surviving."
+    ],
+    "conclusion": "Fifth whole-chapter substitution confirmed. Pairing test not applicable anywhere in the chapter."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Douro", "Kimmerer", "Living Building Challenge", "terawatt", "household", "regenerative", "net-positive", "watershed"],
+    "itemsRead": ["CTD-0008", "CTD-0009", "CTD-0007", "CTD-0056", "wave-one semantic-review line 1187 correction"],
+    "itemsGoverning": "The line 1187 correction: unsupported energy totals, household equivalents, growth rates, and percentage reductions removed. Honored at exactly its named width in the footprint child record.",
+    "outcome": "One recorded correction governs this chapter and it is honored: the footprint section is restored without the four hundred fifteen terawatt-hour total, the twelve percent growth rate, the household equivalents, and the ninety percent reduction. Everything else is baseline prose. The Kimmerer epigraph keeps its After adaptation label under CTD-0007 with the baseline wording restored beneath it. The Douro thread belongs to CTD-0008's verification scope and is restored as the volume's spine."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The Douro's return lost its argument: the river as coherence system, the same dissolution at every scale, and the Earth as first participant.",
+      "evidence": {
+        "baseline": "The Earth is not the backdrop to this work. It is the first participant in it. Without functioning atmospheric chemistry, without living soils and rivers and forests and the millions of species that constitute the biosphere's own coherence infrastructure, the question of human coordination becomes moot.",
+        "shipped": "Earth is not the backdrop to Providence. Atmospheric chemistry, living soil, water, forests, and other species are conditions of every human institution."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped section keeps the topic sentence in miniature and drops the first-participant inversion, the coherence-system reading of the river, and the design-question framing that gives the chapter its standard. Restored in full. The shipped closing sentence, Ecological responsibility therefore belongs in the architecture rather than in a charitable program added after growth, is preserved here as a strong one-sentence formulation the author may want somewhere in the chapter.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "One prohibited mark: the coherence-system mark became a colon introducing the specification of what the river was."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0008",
+      "effect": "reopened by restoration",
+      "note": "The Douro's millennial embeddedness claim returns at full strength; the item's scholarly audit owns it."
+    },
+    {
+      "id": "CTD-0007",
+      "effect": "preserved",
+      "note": "After Robin Wall Kimmerer label kept; epigraph wording restored, including the not-merely contrast whose retention limb holds because both readings of sustainability are real positions."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline",
+      "reasoning": [
+        { "kind": "restored", "note": "The Douro-as-coherence-system opening, the dissolution echo, the first-participant paragraph, and the design-question close." },
+        { "kind": "kept", "note": "The current heading A System Accountable to Its Place under the structural hold, and the epigraph adaptation label." },
+        { "kind": "cut", "note": "The shipped compression, with its architecture-not-charity sentence preserved in F1." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT on one mark as recorded in F2." }
+      ],
+      "metrics": {
+        "words": 222,
+        "baselineWords": 219,
+        "shippedWords": 99,
+        "deltaPercentAgainstBaseline": 1,
+        "shippedDeltaPercentAgainstBaseline": -55
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading pair recorded: Heals What It Inhabits promises regeneration, Accountable to Its Place promises accountability. The restored chapter argues the first and commits to the second. Structural hold.",
+    "Part Seven display block, blocked per the part-block precedent. Baseline subtitle: On Energy, Ecology, and the Obligation to Regenerate What We Use. Current: Energy, Ecology, and the Obligation to Repair What the Institution Uses. Baseline epigraph: No instrument that consumes the living world to coordinate its care has earned the name. What we draw from the earth to build this, we are bound to return, and then a little more. Current: An instrument that consumes the living world while claiming to coordinate its care has misunderstood its own purpose. Recorded here for the author; untouched."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; this block carries the chapter-anchor checks.",
+    "checks": [
+      "R-PAIRED-DELETION sweep before restoration: the Douro thread pairs with Continuity, chapter sixteen's river close, and the epilogue, all present or queued in this lane; the ritual repetition is protected under the volume card.",
+      "R-CORRECTION-SCOPE: the 1187 correction's width measured to the four quantitative claim types it names; the streaming-video comparison and the fastest-growing claim are outside it and restored with CTD-0009 exposure recorded.",
+      "Glyph check across the restored chapter: zero prohibited marks."
+    ],
+    "proseChanged": true,
+    "result": "Chapter head restored; correction honored downstream; part block blocked and recorded."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard with the substitution count run first and the correction table consulted before restoration.",
+    "conclusion": "Converged in one generation."
+  }
+}

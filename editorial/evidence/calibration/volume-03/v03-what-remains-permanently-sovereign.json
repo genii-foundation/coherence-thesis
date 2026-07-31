@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-what-remains-permanently-sovereign",
+  "editorialId": "volume-03",
+  "sectionHeading": "What Remains Permanently Sovereign",
+  "currentHeading": "The Person Remains Sovereign",
+  "anchor": "v03-why-providence-is-not-social-credit",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "421 baseline words to 141 shipped words, minus 67 percent, zero baseline sentences surviving. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["worth", "ranking", "permanent verdict", "a person is not their record", "infinite and equal", "opacity"],
+    "itemsRead": ["CTD-0006", "CTD-0045"],
+    "outcome": "No recorded decision governs this section. The infinite-and-equal worth clause is a founding-commitments claim restored as the baseline has it; no item names it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The warrant was deleted: the sentence that gives participant, critic, and heir standing to name a betrayal in the text's own words.",
+      "evidence": {
+        "baseline": "We have written them here, in the body of the text, precisely so that they function as a standard: if Providence ever begins to measure worth, to score belief, to rank persons against one another, to render permanent verdicts, or to reach into the whole of a life, then it has crossed the line into the very thing this chapter forswears, and everyone (participant, critic, and heir) holds the warrant, in these words, to name it as the betrayal it would be and to act accordingly.",
+        "shipped": "The refusal to measure these domains is not a feature waiting for a future product decision. It is part of the institution's right to exist."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped half keeps the right-to-exist claim and drops the warrant, which is the committing half: it names who may act and on what authority. The same cautious-half shape as everywhere else in the volume. Restored, with the everyone triple fenced in parentheses where the baseline used a dash pair around a comma-bearing list.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F2",
+      "summary": "The five refusals lost their reasons; the enumerated worth argument was reduced to a list of nouns.",
+      "evidence": {
+        "baseline": "Providence does not measure a person's worth. The coherence record reflects how someone has shown up in particular encounters; it makes no claim, and can make no claim, about the value of a human being, which is not a measurable quantity and is held, in the founding commitments of this project, to be infinite and equal in every person regardless of any record.",
+        "shipped": "Providence does not measure worth, conscience, belief, political conviction, or the whole of a life."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Each baseline refusal carries its warrant: worth is unmeasurable and held infinite and equal, conviction is sovereign, ranking is refused for trajectory-against-own-past, verdicts are refused because the record honors growth, and unentered domains stay unseen. The shipped list asserts the refusals without the commitments that make them checkable. Restored in full."
+    },
+    {
+      "id": "F3",
+      "summary": "The pass's opacity paragraph and inference bound are preserved for ratification.",
+      "evidence": {
+        "baseline": "No counterpart.",
+        "shipped": "It should not infer them indirectly from intimate signals. ... Sovereignty also includes the right to opacity. A person may choose not to explain a physiological change, disclose a feeling, or turn every encounter into data. Human dignity includes parts of the self that no system is entitled to make legible."
+      },
+      "authorizedBy": "Preservation; cut from prose as seeded canon rather than repair.",
+      "diagnosis": "The inference bound closes a real gap: the baseline forbids measuring belief but not inferring it, and modern models make the difference material. The right-to-opacity paragraph is the strongest pass-authored doctrine in the chapter and extends sovereignty beyond anything the baseline claims. Both are new canon, which drafting cannot seed without a decision; preserved verbatim for the author, flagged as worth adopting."
+    },
+    {
+      "id": "F4",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "The never-to-measure mark, the everyone fence, and the display-line fence.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The never-to-measure mark opened the second movement of the opening sentence and became a period with And. The everyone fence held a comma-bearing triple and became parentheses. The display-line fence held the enumeration of unmeasured things and became a colon, with the corrective movement (Not because it has not yet gotten to them, but because the refusal is the condition of its existence) standing as its own earned fragment, a display-matter landing the voice card permits."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0006",
+      "effect": "recorded",
+      "note": "The restored refusal to rank and to render verdicts is the register the item weighs governance standing against; no conflict, both restored."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline; protected-line divergence flagged",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The inviolable-principle opening, the five reasoned refusals, the warrant paragraph, and the closing display line."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading The Person Remains Sovereign under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped list-form refusals and the expansion-review procedure sentence (presumption against collection, independent review, participant approval), the latter preserved with F3's drafting for the same ratification decision."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 425,
+        "baselineWords": 421,
+        "shippedWords": 141,
+        "deltaPercentAgainstBaseline": 1,
+        "shippedDeltaPercentAgainstBaseline": -67
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The protected line. The volume card protects A person is not their record, which is the shipped wording and stood alone as this section's opening paragraph. The baseline's display line says A person is never their record. The card was prepared during the wave-one pass and quotes the pass's own variant, exactly as with the two stranded exemplar anchors. The baseline form is restored per the standing instruction, the card is untouched per T-022, and the one-word divergence is the author's to settle in the same card revision.",
+    "F3's opacity doctrine and inference bound await adoption. If adopted, the right-to-opacity paragraph belongs after the five refusals, where the shipped text placed it."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; anchor checks apply.",
+    "checks": [
+      "R-CAUTIOUS-HALF: found and repaired in F1, the warrant being the committing half.",
+      "R-CANON-DELETION-RECORD: nothing contested cut; the shipped opacity doctrine is preserved in F3 rather than silently dropped.",
+      "R-PAIRED-DELETION: held against us forever pairs with the closing section's let this chapter be the evidence against us, both restored; regardless of any record pairs with the floor line in Six Bright Lines.",
+      "Catalog 4.9 read against the five It does not measure openings: retention limb holds, the anaphora is the liturgy of refusal and each recurrence adds a distinct commitment."
+    ],
+    "proseChanged": true,
+    "result": "Restored with the warrant back; protected-line divergence and two adoption candidates flagged."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard with the anchor's substitution count first.",
+    "conclusion": "Converged in one generation. The section that tells the reader what may never be measured once again says why, and who may act if the refusal breaks."
+  }
+}

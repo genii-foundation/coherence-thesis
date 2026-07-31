@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-sovereign-compute-the-machine-you-can-trust",
+  "editorialId": "volume-03",
+  "sectionHeading": "Sovereign Compute: The Machine You Can Trust",
+  "currentHeading": "Sovereign Compute",
+  "anchor": "v03-why-it-must-be-open",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "421 baseline words to 106 shipped words, minus 75 percent, zero surviving, the deepest cut in this chapter. Substitution mode; pairing test not run. Chapter count in the anchor."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["sovereign compute", "consumer hardware", "diarization", "keys to your wealth", "cloud"],
+    "itemsRead": ["CTD-0009", "CTD-0027"],
+    "outcome": "No recorded decision governs this section. The hardware-capability claims are restored under the standing instruction with the credited benchmark bound standing after them."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The binding-has-broken argument was deleted: why sovereignty and depth of insight no longer trade off.",
+      "evidence": {
+        "baseline": "Until very recently, this was not possible for systems of real sophistication. ... depth of insight and loss of sovereignty came bound together: to have the powerful version, you had to surrender your data to the cloud. That binding has now broken.",
+        "shipped": "Consumer hardware can now run increasingly capable models locally."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped sentence is true and inert; the baseline's argument explains what changed and why it matters to the chapter's structure of trust. The two-things-to-verify paragraph and the wealth-and-life display line were deleted with it. All restored.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The benchmark bound is kept. This finding runs the other way.",
+      "evidence": {
+        "baseline": "The current generation of consumer hardware (the custom silicon in a single high-end personal computer) can run, locally and privately, models of remarkable capability...",
+        "shipped": "Whether a particular device can support the full proposed system depends on model size, energy, latency, cost, accessibility, and the required quality of analysis. This must be benchmarked rather than announced."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "The baseline announces capability sufficiency; the shipped bound names the variables and demands the benchmark. Benchmarked rather than announced is the sharpest four-word discipline in the shipped chapter and repairs a genuine overclaim rather than merely bounding a preference. Kept verbatim as its own paragraph after the significance paragraph, before the display line. The shipped tiered-architecture drafting (local preprocessing, on-device models, participant-approved trusted-node computation, collaborative learning where demonstrably safe) and the sovereign-does-not-mean-isolated definition are preserved here for CTD-0027.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F3",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "The hardware-execution mark, the consumer-hardware fence, the day-pattern mark, and the perfect-security fence.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The execution mark introduced the specification of the betrayal case and became a colon. The consumer-hardware fence held an appositive and became a parenthesis. The day-pattern mark carried summative apposition after the four-item signal list and became a comma, matching the chapter sixteen treatment of the same construction. The perfect-security fence held a concession with internal comma and became a parenthesis."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "The consumer-silicon capability claim and the two-things-to-verify trust argument are restored unverified; the credited bound names the missing benchmark."
+    },
+    {
+      "id": "CTD-0027",
+      "effect": "recorded",
+      "note": "F2's preserved tiered-architecture and sovereignty-definition drafting belong to the item's compute-governance design."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline with one credited keep",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The two-halves opening, the binding-has-broken history, the desk-machine paragraph, the significance paragraph with its two verifications, and the wealth-and-life display line."
+        },
+        {
+          "kind": "kept",
+          "note": "The F2 benchmark bound as its own paragraph, and the current shortened heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped tier and definition drafting, preserved in F2."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks as recorded in F3."
+        }
+      ],
+      "metrics": {
+        "words": 452,
+        "baselineWords": 421,
+        "shippedWords": 106,
+        "deltaPercentAgainstBaseline": 7,
+        "shippedDeltaPercentAgainstBaseline": -75
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The seven percent overrun is the credited bound beside the capability announcement it bounds; deliberate and flagged.",
+    "The wealth-and-life display line compares the machine to a cryptocurrency wallet by implication (the keys to your wealth); no ledger item names it, and it is restored as the baseline's image."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; anchor checks apply.",
+    "checks": [
+      "R-CAUTIOUS-HALF: committing halves (that binding has now broken, connected to no cloud at all) restored; the pass had kept only conditionals.",
+      "R-PAIRED-DELETION: diarization occurs here and in stream two's restored voice section, both present; sovereign threads consistently through the part.",
+      "R-TENSE checked on has now broken: the recency is load-bearing to the argument and the perfect is kept."
+    ],
+    "proseChanged": true,
+    "result": "Restored with the benchmark bound standing where the announcement was loudest."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

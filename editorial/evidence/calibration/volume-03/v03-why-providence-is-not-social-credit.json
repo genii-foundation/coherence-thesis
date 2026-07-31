@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-why-providence-is-not-social-credit",
+  "editorialId": "volume-03",
+  "sectionHeading": "Why Providence Is Not Social Credit",
+  "currentHeading": "The Bright Lines",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "anchorFor": [
+    "v03-what-a-social-credit-system-is",
+    "v03-the-lines-that-cannot-be-crossed",
+    "v03-what-remains-permanently-sovereign",
+    "v03-the-deeper-difference-direction-of-intent"
+  ],
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "R-CAUTIOUS-HALF, substitution form, run first across the whole chapter as standing procedure",
+    "method": "Count baseline sentences appearing verbatim in the shipped section before reading either text closely. Zero means substitution mode and the pairing test does not apply.",
+    "result": "Zero surviving baseline sentences in all five sections of chapter fifteen. 2,301 baseline words became 792. As in chapter fourteen, the substituted chapter preserves the baseline's subject, section order, and section count while replacing every sentence, and every mechanical gate passed it because nothing in it is false.",
+    "perSection": [
+      "Why Providence Is Not Social Credit: 375 baseline words into 91. Minus 76 percent. Zero surviving.",
+      "What a Social Credit System Is: 209 into 96. Minus 54 percent. Zero surviving.",
+      "The Lines That Cannot Be Crossed: 890 into 285. Minus 68 percent. Zero surviving.",
+      "What Remains Permanently Sovereign: 421 into 141. Minus 67 percent. Zero surviving.",
+      "The Deeper Difference: Direction of Intent: 406 into 179. Minus 56 percent. Zero surviving, and the substituted section argues the opposite doctrine, recorded in its child record."
+    ],
+    "conclusion": "Substitution mode chapter-wide; no pairing analysis was possible and none is reported. The shipped chapter is the strongest substituted writing in the volume, so its bounding sentences and seeded governance drafting are preserved in these records for ratification even where the baseline prose returns."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS, with R-LEDGER-WINS-COROLLARY checked for the floor and the bright lines",
+    "terms": [
+      "social credit",
+      "unconditional floor",
+      "floor-and-height",
+      "governance standing",
+      "bright lines",
+      "cryptographic keys",
+      "open code",
+      "ranking",
+      "biometric",
+      "sovereign"
+    ],
+    "itemsRead": [
+      "CTD-0005",
+      "CTD-0006",
+      "CTD-0007",
+      "CTD-0016",
+      "CTD-0045",
+      "CTD-0056",
+      "CTD-0071",
+      "wave-one semantic-review ratification list",
+      "wave-one review.md heading rename table"
+    ],
+    "itemsGoverning": "CTD-0007 on the epigraph label only.",
+    "outcome": "No recorded decision governs this chapter's prose. The semantic review's ratified unconditional-floor doctrine is the baseline's own commitment here: the exclusion line states the floor is unconditional and never gated behind any measure of coherence, so the restoration pays the item down from the baseline rather than seeding it (R-LEDGER-WINS-COROLLARY). CTD-0005 and CTD-0006 are open queries, not decisions, so the baseline governs and both items are engaged and recorded. The chapter's five heading renames are recorded in review.md and honored under the structural hold. CTD-0007's adaptation label on the chapter epigraph is a recorded correction, kept at its exact width while the epigraph wording is restored."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's stakes were deleted: why the social credit question is the most dangerous one the book must answer, and why the reader who asks it is being responsible rather than paranoid.",
+      "evidence": {
+        "baseline": "There is a question that a significant fraction of thoughtful readers will arrive at, sooner or later, and it is the most dangerous question this book must answer, because if we do not answer it ourselves, our critics will answer it for us, and their answer will be fatal.",
+        "shipped": "A reader may reasonably ask whether Providence is a biometric social credit system with gentler language."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped opener is clean and unafraid, but it deletes the argument for the chapter's existence: the critics-will-answer-first urgency, the concession that the resemblance is real enough that only a precise answer will do, and the promise of bright lines as design constraints rather than promises of good behavior. Those commitments are what the six lines are later held to. Restored in full.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The epigraph was rewritten under the adaptation label.",
+      "evidence": {
+        "baseline": "The same fire that warms a house can burn it down. The question is never only what a technology can do, but what it is structurally forbidden from doing.",
+        "shipped": "The same fire can warm a house or burn it. The design must specify what the instrument is forbidden to do."
+      },
+      "authorizedBy": "CTD-0007 licenses the Adapted from label, not the wording.",
+      "diagnosis": "Same shape as chapter fourteen's epigraph: the diagnostic half kept, the committing cadence flattened. Structurally forbidden is the chapter's thesis phrase and the shipped version drops it. Wording restored, label kept."
+    },
+    {
+      "id": "F3",
+      "summary": "The shipped opener is the volume voice card's own exemplar anchor, and restoring the baseline removes it from the manuscript.",
+      "evidence": {
+        "baseline": "There is a question that a significant fraction of thoughtful readers will arrive at, sooner or later...",
+        "shipped": "A reader may reasonably ask whether Providence is a biometric social credit system..."
+      },
+      "authorizedBy": "The standing instruction and the T-022 precedent: the card is untouched and the divergence is flagged.",
+      "diagnosis": "The card's exemplar opening anchors were drawn from the wave-one revised text, so restoring the author's baseline strands a second card anchor, exactly as the floor restoration stranded No one should have to demonstrate regulation, presence, or usefulness. The card cannot be updated by this lane (T-022); recorded here and raised in the handover so the card revision sweeps both anchors at once."
+    },
+    {
+      "id": "F4",
+      "summary": "Three prohibited marks in this section.",
+      "evidence": {
+        "baseline": "The variant mark after social credit system; the bright-lines mark; the design-constraints mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The variant mark attached the spiritualized-biometric-Western appositive inside a sentence already carrying its colon, so it became a comma. The bright-lines mark introduced the specification of what bright lines are and became the sentence's only colon. The design-constraints mark introduced the specification of what design constraints are and became a colon likewise."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0005",
+      "effect": "paid down from the baseline",
+      "note": "The restored exclusion line commits the floor as unconditional in the baseline's own words, the doctrine the semantic review adopted. No seeding was needed. The shipped drafting Refusing a sensor cannot cost someone ordinary belonging or the material floor is preserved in the Six Bright Lines child record for the item's protocol work."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "reopened by restoration and flagged",
+      "note": "The restored unidirectional line says the participant holds governance standing earned through their own participation, the earned-standing posture the item queries, consistent with the restored chapter thirteen governance text and equally awaiting the item's ruling."
+    },
+    {
+      "id": "CTD-0007",
+      "effect": "preserved",
+      "note": "Adaptation label kept on the chapter epigraph; wording restored beneath it."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "reopened by restoration",
+      "note": "The restored chapter speaks as a founding text binding its builders; the shipped chapter spoke as a design review naming conditions of legitimacy. Which posture publishes is the item's decision, and this chapter is now among its clearest exhibits."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the twenty rules, epigraph label kept",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The dangerous-question opening with its critics-will-answer-first urgency, the responsible-reader concession, the bright-lines promise, the design-constraints commitment, and the closing display line on distinctions that live only in intentions."
+        },
+        {
+          "kind": "kept",
+          "note": "The current chapter heading The Bright Lines under the structural hold, and the CTD-0007 adaptation label."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped opener and its enforceable-limits sentence, both quoted here: the opener in F3 because it is the card's anchor, and the limits sentence, The answer must consist of enforceable limits, technical boundaries, rights, and institutions capable of acting when those limits are crossed, preserved for CTD-0071's enforcement design."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 380,
+        "baselineWords": 375,
+        "shippedWords": 91,
+        "deltaPercentAgainstBaseline": 1,
+        "shippedDeltaPercentAgainstBaseline": -76
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The chapter heading. Why Providence Is Not Social Credit asserts the conclusion; The Bright Lines names the method. The restored chapter argues the first. Held under the structural hold, both forms recorded.",
+    "Impossibility language. The restored chapter says structurally forbidden, built to make impossible, and there is no database to seize, while the one credited keep in the Six Bright Lines child record says none of this should be called impossible to violate until the enforcement exists and has survived attack. Both stand unreconciled, deliberately, in the same pattern as the Stream Three incorruptible contradiction: the author's confidence and the pass's bound are both on the page for the author to reconcile.",
+    "The card anchor in F3, raised with the T-022 flag so one card revision can resolve both stranded anchors."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; this block records the chapter-anchor checks so the child records may cite them.",
+    "checks": [
+      "R-PAIRED-DELETION sweep before restoration: floor-and-height pairs with its antecedent at manuscript line 353 and its definition in chapter twelve's The Floor and the Height, both present; the drift we named in the previous chapter pairs with chapter fourteen's restored Drift section; presence and presencing pairs with chapter seven; the volume that follows this one is a forward reference to Volume IV, outside this manuscript by design. No unpaired reference.",
+      "R-REFRAIN-COST: the chapter's It cannot be refrain, six instances, is recorded once in the Six Bright Lines child record with its count.",
+      "R-CORRECTION-SCOPE: the only recorded correction reaching this chapter is the epigraph adaptation label, measured at one line.",
+      "R-CANON-DELETION-RECORD: nothing contested was cut; the shipped counter-doctrine cut from Intent Is Not the Difference is quoted in full in that child record with the collision flagged.",
+      "Glyph check across the restored chapter: zero em dashes, en dashes, double hyphens; one curly apostrophe in baseline line 1051 normalized to the manuscript's straight convention, recorded in the Six Bright Lines child record."
+    ],
+    "proseChanged": true,
+    "result": "Chapter restored to baseline with one credited keep and five preserved drafting passages across the child records."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, the master ledger, and the debt ledger, with the substitution count run first across the whole chapter.",
+    "conclusion": "Second whole-chapter substitution confirmed by the detector. The chapter that guards the project's most dangerous question was, in the shipped text, entirely the guard's own words; the author's argument for why the question must be answered in a founding text is back."
+  }
+}

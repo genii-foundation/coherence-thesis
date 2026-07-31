@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-regenerative-physical-infrastructure",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Regenerative Physical Infrastructure",
+  "currentHeading": "Regenerative Places",
+  "anchor": "v03-a-system-that-heals-what-it-inhabits",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "263 baseline words to 109 shipped words, minus 59 percent, zero surviving. Substitution mode; pairing test not run. Chapter count in the anchor."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Living Building Challenge", "net-positive", "degraded land", "site selection"],
+    "itemsRead": ["CTD-0009", "CTD-0056"],
+    "outcome": "No recorded decision governs this section. We adopt the discipline of the Living Building Challenge is a commitment claim under CTD-0056's operational-status question, restored and recorded."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The wounded-land argument and the single-act close were deleted; the commitment became a reference.",
+      "evidence": {
+        "baseline": "We will seek land that has been degraded (by industrial agriculture, by extraction, by abandonment) precisely because the opportunity for genuine regeneration is greatest where the baseline is lowest. ... It is a demonstration that human gathering and ecological healing are not competing claims upon our attention but, at their best, a single act.",
+        "shipped": "If Providence owns or holds land, the Living Building Challenge offers a demanding reference... Degraded land may offer an opportunity for repair, provided restoration is led by ecological knowledge, local relationship, and respect for existing communities rather than by the institution's desire for a beautiful story."
+      },
+      "authorizedBy": "Compression and substitution.",
+      "diagnosis": "The shipped section converts we adopt into offers a reference and we will seek into may offer, the cautious-half pattern applied to commitments. The baseline's site-selection principle, the same-act argument, and the land-heals display line are restored. The shipped bound on restoration-as-story (respect for existing communities rather than the institution's desire for a beautiful story) is preserved here at full finding weight: it names a real capture risk the baseline does not, and it belongs in the author's ratification queue with the shipped stage-dressing sentence.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F2",
+      "summary": "Two prohibited marks: the physical-places fence and the degraded-land fence, both enumerations with internal commas, both became parentheses."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0056",
+      "effect": "reopened by restoration",
+      "note": "We adopt the discipline of the Living Building Challenge and we will seek degraded land return as commitments of an institution whose land holdings do not yet exist; the item's operational-status audit owns the tense."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline",
+      "reasoning": [
+        { "kind": "restored", "note": "The different-challenge opening, the three net-positive commitments, the wounded-land principle, the single-act argument, and the display line." },
+        { "kind": "kept", "note": "The current heading Regenerative Places under the structural hold." },
+        { "kind": "cut", "note": "The shipped hedged version, with its beautiful-story bound and stage-dressing sentence preserved in F1." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across two marks as recorded in F2." }
+      ],
+      "metrics": {
+        "words": 266,
+        "baselineWords": 263,
+        "shippedWords": 109,
+        "deltaPercentAgainstBaseline": 1,
+        "shippedDeltaPercentAgainstBaseline": -59
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "F1's preserved community-respect bound is the strongest adoption candidate in this chapter: the baseline's degraded-land romance has no answer to the capture risk the shipped sentence names."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; anchor checks apply.",
+    "checks": [
+      "R-CAUTIOUS-HALF found in commitment grammar rather than claim content; recorded in F1.",
+      "R-PAIRED-DELETION: the Living Building Challenge occurs here only in both texts; net-positive is self-contained; nothing dangles.",
+      "Catalog 4.15 read against the display line: the land-heals chiasmus is an earned liturgical close under the volume card's lyrical-threshold license; retention limb holds."
+    ],
+    "proseChanged": true,
+    "result": "Restored; commitments are commitments again, and the capture risk the pass named is preserved for adoption."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}
