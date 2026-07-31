@@ -250,6 +250,15 @@
       "area": "editorial",
       "blockedBy": [],
       "detail": "The restored Coherence Theater section says \"the failure we have called the Heisenberg problem\". Heisenberg appears exactly once in the whole Volume III manuscript, at that back reference. Its first naming is in The Shadows, which has not been re-rendered yet. The reference is live and unresolved for a reader today. It must be fixed by restoring The Shadows, not by rewording the sentence, since rewording would be wrong again once The Shadows is restored."
+    },
+    {
+      "id": "T-027",
+      "title": "Build the admin debt cards page",
+      "tier": "amber",
+      "status": "pending",
+      "area": "reader",
+      "blockedBy": [],
+      "detail": "A visual surface for the 112 editorial debt items at /admin/debt, with a per item detail view, so the author and colleagues can triage and act on them through the interface rather than only through the CLI skill. Read only with respect to editorial/, following the CopyPromptButton precedent for action. Runs as an independent session on this worktree and branch, confined to src/, tests/ and scripts/repository/ so it does not collide with the volume-02 and volume-03 editorial sessions."
     }
   ]
 }
