@@ -77,6 +77,22 @@ const adminViews = [
   },
 ] as const;
 
+function AdminRepositoryState() {
+  return (
+    <div
+      className="admin-repository-state"
+      aria-label="Local repository, read only"
+    >
+      <span className="admin-repository-dot" aria-hidden="true" />
+      <span>Local</span>
+      <span className="admin-repository-separator" aria-hidden="true">
+        ·
+      </span>
+      <span>Read only</span>
+    </div>
+  );
+}
+
 export function AdminHeaderContext({
   path,
   placement = "page",
@@ -107,22 +123,7 @@ export function AdminHeaderContext({
   }, [path]);
 
   return (
-    <div
-      className={`admin-header-row admin-header-row-${placement}`}
-    >
-      {placement === "toolbar" ? (
-        <div
-          className="admin-repository-state"
-          aria-label="Local repository, read only"
-        >
-          <span className="admin-repository-dot" aria-hidden="true" />
-          <span>Local</span>
-          <span className="admin-repository-separator" aria-hidden="true">
-            ·
-          </span>
-          <span>Read only</span>
-        </div>
-      ) : null}
+    <div className={`admin-header-row admin-header-row-${placement}`}>
       <nav className="admin-header-views" aria-label="Admin views">
         <div className="admin-header-view-list">
           {adminViews.map((view) => {
@@ -140,19 +141,7 @@ export function AdminHeaderContext({
           })}
         </div>
       </nav>
-      {placement === "page" ? (
-        <div
-          className="admin-repository-state"
-          aria-label="Local repository, read only"
-        >
-          <span className="admin-repository-dot" aria-hidden="true" />
-          <span>Local</span>
-          <span className="admin-repository-separator" aria-hidden="true">
-            ·
-          </span>
-          <span>Read only</span>
-        </div>
-      ) : null}
+      {placement === "page" ? <AdminRepositoryState /> : null}
     </div>
   );
 }
@@ -237,9 +226,7 @@ export function ToolbarBreadcrumbs({
 
   const route =
     adminBreadcrumbRoute(currentPath) ??
-    routes.find(
-      (candidate) => normalizePath(candidate.href) === currentPath,
-    );
+    routes.find((candidate) => normalizePath(candidate.href) === currentPath);
 
   if (!route || route.crumbs.length === 0) return null;
 
@@ -268,7 +255,14 @@ export function ToolbarBreadcrumbs({
   );
 
   if (!isAdminPath) return breadcrumbs;
-  if (placement === "toolbar") return breadcrumbs;
+  if (placement === "toolbar") {
+    return (
+      <div className="admin-toolbar-context">
+        {breadcrumbs}
+        <AdminRepositoryState />
+      </div>
+    );
+  }
 
   return (
     <div className="admin-header-context">

@@ -444,6 +444,10 @@ input {
   padding: 0.85rem;
 }
 
+.site-header:has(.site-nav-admin) {
+  justify-content: flex-start;
+}
+
 @media (min-width: 861px) {
   .site-header {
     height: 5rem;
@@ -452,12 +456,8 @@ input {
 }
 
 @media (min-width: 861px) and (max-width: 1100px) {
-  .site-nav-admin .admin-repository-state {
-    display: none;
-  }
-
-  .site-nav-admin .admin-header-row-toolbar {
-    grid-template-columns: minmax(0, 1fr);
+  .site-nav-admin .admin-header-views a {
+    padding-inline: 0.35rem;
   }
 }
 
@@ -741,6 +741,31 @@ input {
   flex: 0 1 auto;
 }
 
+.admin-toolbar-context {
+  flex: 0 1 auto;
+  display: grid;
+  align-content: center;
+  gap: 0.08rem;
+  min-width: 0;
+  border-left: 1px solid var(--line);
+  padding-left: clamp(0.7rem, 1.5vw, 1.1rem);
+}
+
+.admin-toolbar-context > .breadcrumb-trail {
+  flex: none;
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.admin-toolbar-context > .breadcrumb-trail .breadcrumb-label {
+  padding-top: 0.18rem;
+  padding-bottom: 0.12rem;
+}
+
+.admin-toolbar-context > .admin-repository-state {
+  min-height: 0.8rem;
+}
+
 .admin-header-row {
   flex: 1 1 auto;
   display: grid;
@@ -753,8 +778,9 @@ input {
 }
 
 .admin-header-row-toolbar {
-  flex: 0 1 auto;
-  grid-template-columns: auto minmax(0, 1fr);
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end;
   width: 100%;
   border-left: 0;
   padding-left: 0;
@@ -831,7 +857,7 @@ input {
   color: var(--ink);
 }
 
-.site-nav-admin {
+.site-nav.site-nav-admin {
   flex: 1 1 auto;
   justify-content: flex-end;
   min-width: 0;
@@ -7175,6 +7201,10 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   }
 
   .site-header > .admin-header-context {
+    display: none;
+  }
+
+  .site-header > .admin-toolbar-context {
     display: none;
   }
 

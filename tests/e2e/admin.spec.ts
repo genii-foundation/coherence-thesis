@@ -88,6 +88,52 @@ test.describe("local editorial admin", () => {
     ).toBeVisible();
     await expect(siteHeader.getByRole("button")).toHaveCount(0);
 
+    const desktopAdminHeader = await page.evaluate(() => {
+      const header = document.querySelector<HTMLElement>(".site-header");
+      const brand = header?.querySelector<HTMLElement>(":scope > .brand-mark");
+      const context = header?.querySelector<HTMLElement>(
+        ":scope > .admin-toolbar-context",
+      );
+      const breadcrumb = context?.querySelector<HTMLElement>(
+        'nav[aria-label="Breadcrumb"]',
+      );
+      const repositoryState = context?.querySelector<HTMLElement>(
+        '[aria-label="Local repository, read only"]',
+      );
+      const adminViews = header?.querySelector<HTMLElement>(
+        'nav[aria-label="Admin views"]',
+      );
+      const headerBounds = header?.getBoundingClientRect();
+      const brandBounds = brand?.getBoundingClientRect();
+      const contextBounds = context?.getBoundingClientRect();
+      const breadcrumbBounds = breadcrumb?.getBoundingClientRect();
+      const repositoryBounds = repositoryState?.getBoundingClientRect();
+      const viewsBounds = adminViews?.getBoundingClientRect();
+
+      return {
+        breadcrumbAboveRepository:
+          Boolean(breadcrumbBounds && repositoryBounds) &&
+          breadcrumbBounds!.top < repositoryBounds!.top,
+        contextFollowsBrand:
+          Boolean(brandBounds && contextBounds) &&
+          contextBounds!.left >= brandBounds!.right,
+        contextStaysBesideBrand:
+          Boolean(brandBounds && contextBounds) &&
+          contextBounds!.left - brandBounds!.right <= 20,
+        contextLinesAlign:
+          Boolean(breadcrumbBounds && repositoryBounds) &&
+          Math.abs(breadcrumbBounds!.left - repositoryBounds!.left) <= 1,
+        viewsReachRightEdge:
+          Boolean(headerBounds && viewsBounds) &&
+          headerBounds!.right - viewsBounds!.right <= 15,
+      };
+    });
+    expect(desktopAdminHeader.breadcrumbAboveRepository).toBe(true);
+    expect(desktopAdminHeader.contextFollowsBrand).toBe(true);
+    expect(desktopAdminHeader.contextStaysBesideBrand).toBe(true);
+    expect(desktopAdminHeader.contextLinesAlign).toBe(true);
+    expect(desktopAdminHeader.viewsReachRightEdge).toBe(true);
+
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
       "Volume I",
     );
