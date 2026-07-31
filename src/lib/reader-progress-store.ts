@@ -14,6 +14,7 @@ import {
 import {
   emptyBookmarks,
   parseBookmarks,
+  readerBookmarksLegacyStorageKey,
   readerBookmarksStorageKey,
   readerBookmarksUpdatedEvent,
   serializeBookmarks,
@@ -74,6 +75,7 @@ export function updateStoredProgress(
 
 const bookmarksStore = createReaderStore<ReaderBookmarksState>({
   storageKey: readerBookmarksStorageKey,
+  legacyStorageKey: readerBookmarksLegacyStorageKey,
   updatedEvent: readerBookmarksUpdatedEvent,
   parse: parseBookmarks,
   serialize: serializeBookmarks,

@@ -1,9 +1,18 @@
 import type { ProgressParagraph, ProgressSection } from "./manuscript-data";
 import { canonicalReaderDestination } from "./reader-fragments";
+import {
+  createReaderPassageRange,
+  paragraphHashFromAnchor,
+  parseReaderPassageRange,
+  resolveReaderPassageRange,
+  type ReaderPassageRange,
+  type ReaderPassageRangeResolution,
+} from "./reader-passage-range";
 import { primaryProgressKey, progressKeys, type ProgressIdentity } from "./reader-state";
 import { foldSearchText } from "./reader-text-search";
 
-export const readerBookmarksStorageKey = "coherence-reader-bookmarks-v1";
+export const readerBookmarksStorageKey = "coherence-reader-bookmarks-v2";
+export const readerBookmarksLegacyStorageKey = "coherence-reader-bookmarks-v1";
 export const readerBookmarksUpdatedEvent = "coherence-reader-bookmarks-updated";
 
 // The schema version this client writes to and understands from the remote
@@ -11,18 +20,18 @@ export const readerBookmarksUpdatedEvent = "coherence-reader-bookmarks-updated";
 // readerProgressSchemaVersion: the two collections version on their own
 // schedules, and conflating them would let a bookmarks bump freeze progress
 // sync (and the reverse).
-export const readerBookmarksSchemaVersion = 1;
+export const readerBookmarksSchemaVersion = 2;
 
 // Caps. The remote blob is bounded by a database CHECK constraint that fails
 // the write outright rather than degrading, so the client bounds every field a
 // reader controls and keeps the product of those bounds inside the budget.
 //
-// Worst case per bookmark, serialized: 400 quote + 280 note + 80 context
+// Worst case per bookmark, serialized: 2,000 quote + 280 note + 80 context
 // + 36 uuid (twice, since the id is also the record key) + 16 section hash
-// + 22 anchor + the numeric fields and JSON key names. A measured set of 1,000
-// maximum-size records is about 1.1 MB. The 4 MB remote budget also contains a
-// temporary merge of two disjoint 1,000-record replicas plus tombstones.
-export const maxBookmarkQuoteLength = 400;
+// + two passage boundaries + the numeric fields and JSON key names. The remote
+// budget also contains a temporary merge of two disjoint 1,000-record replicas
+// plus tombstones.
+export const maxBookmarkQuoteLength = 2_000;
 export const maxBookmarkNoteLength = 280;
 export const maxBookmarkContextLength = 40;
 export const maxLiveBookmarks = 1_000;
@@ -30,7 +39,7 @@ export const maxLiveBookmarks = 1_000;
 // Must stay at or below the reader_bookmarks_size CHECK constraint in the
 // migration. Checked before upload so an oversized blob surfaces as a message
 // rather than a rejected write with no recovery path.
-export const maxRemoteBookmarksBytes = 4 * 1024 * 1024;
+export const maxRemoteBookmarksBytes = 8 * 1024 * 1024;
 
 // A removed bookmark is kept as a tombstone so other devices learn about the
 // deletion instead of resurrecting the record. After this window every device
@@ -46,18 +55,13 @@ export type ReaderBookmark = {
   // the continuity workflow guarantees will happen.
   progressKey: string;
   sectionId: string;
-  // Bare "p-h<16hex>[-N]", never carrying the route-dependent anchorPrefix.
-  paragraphAnchor: string;
-  // The 16 hex on its own. The anchor additionally carries an occurrence suffix
-  // for byte-identical blocks, and that suffix shifts when an identical block is
-  // inserted above. Storing the bare hash is what lets resolution recover.
-  paragraphContentHash: string;
+  // Contiguous start and end boundaries within this section. Version 1 records
+  // are migrated into a same-paragraph range during sanitization.
+  range: ReaderPassageRange;
   quote: string;
   quoteOrdinal: number;
   prefix: string;
   suffix: string;
-  startOffset: number;
-  endOffset: number;
   sectionContentHash: string;
   note?: string;
   createdAt: number;
@@ -69,10 +73,7 @@ export type ReaderBookmarksState = {
   bookmarks: Record<string, ReaderBookmark>;
 };
 
-export type BookmarkResolution =
-  | { status: "exact"; anchor: string }
-  | { status: "renamed"; anchor: string }
-  | { status: "missing"; anchor: null };
+export type BookmarkResolution = ReaderPassageRangeResolution;
 
 // Null-prototype throughout. Ids are UUIDs in practice, but storage is
 // hand-editable and remote rows are merged in, so an id of "toString" or
@@ -110,7 +111,16 @@ function isFiniteNumber(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value);
 }
 
-function isValidBookmark(value: unknown): value is ReaderBookmark {
+function isValidBookmark(
+  value: unknown,
+): value is Record<string, unknown> & {
+  id: string;
+  progressKey: string;
+  sectionId: string;
+  quote: string;
+  createdAt: number;
+  updatedAt: number;
+} {
   if (!value || typeof value !== "object" || Array.isArray(value)) return false;
   const bookmark = value as Record<string, unknown>;
   return (
@@ -118,7 +128,6 @@ function isValidBookmark(value: unknown): value is ReaderBookmark {
     bookmark.id.length > 0 &&
     typeof bookmark.progressKey === "string" &&
     typeof bookmark.sectionId === "string" &&
-    typeof bookmark.paragraphAnchor === "string" &&
     typeof bookmark.quote === "string" &&
     isFiniteNumber(bookmark.createdAt) &&
     isFiniteNumber(bookmark.updatedAt)
@@ -129,18 +138,28 @@ function isValidBookmark(value: unknown): value is ReaderBookmark {
 // and, once sync is on, remote rows are merged in, so nothing enters local
 // state without passing through here.
 function normalizeBookmark(
-  bookmark: ReaderBookmark,
+  bookmark: Record<string, unknown> & {
+    id: string;
+    progressKey: string;
+    sectionId: string;
+    quote: string;
+    createdAt: number;
+    updatedAt: number;
+  },
   now = Date.now(),
-): ReaderBookmark {
+): ReaderBookmark | null {
+  const range = parseReaderPassageRange(bookmark.range, {
+    paragraphAnchor: bookmark.paragraphAnchor,
+    paragraphContentHash: bookmark.paragraphContentHash,
+    startOffset: bookmark.startOffset,
+    endOffset: bookmark.endOffset,
+  });
+  if (!range) return null;
   const normalized: ReaderBookmark = {
     id: bookmark.id,
     progressKey: bookmark.progressKey,
     sectionId: bookmark.sectionId,
-    paragraphAnchor: bookmark.paragraphAnchor,
-    paragraphContentHash:
-      typeof bookmark.paragraphContentHash === "string"
-        ? bookmark.paragraphContentHash
-        : paragraphHashFromAnchor(bookmark.paragraphAnchor),
+    range,
     quote: clamp(bookmark.quote, maxBookmarkQuoteLength),
     quoteOrdinal: isFiniteNumber(bookmark.quoteOrdinal)
       ? Math.max(0, Math.trunc(bookmark.quoteOrdinal))
@@ -153,12 +172,6 @@ function normalizeBookmark(
       typeof bookmark.suffix === "string" ? bookmark.suffix : "",
       maxBookmarkContextLength,
     ),
-    startOffset: isFiniteNumber(bookmark.startOffset)
-      ? Math.max(0, Math.trunc(bookmark.startOffset))
-      : 0,
-    endOffset: isFiniteNumber(bookmark.endOffset)
-      ? Math.max(0, Math.trunc(bookmark.endOffset))
-      : 0,
     sectionContentHash:
       typeof bookmark.sectionContentHash === "string"
         ? bookmark.sectionContentHash
@@ -203,7 +216,8 @@ export function sanitizeBookmarks(
     // The record key is authoritative; an entry whose id disagrees with its key
     // would break every id-based merge and lookup below.
     if (entry.id !== key) continue;
-    bookmarks[key] = normalizeBookmark(entry, now);
+    const normalized = normalizeBookmark(entry, now);
+    if (normalized) bookmarks[key] = normalized;
   }
   return { bookmarks };
 }
@@ -221,12 +235,7 @@ export function serializeBookmarks(state: ReaderBookmarksState): string {
   return JSON.stringify(state);
 }
 
-// "p-h<16hex>[-N]" to the bare hash. Returns "" for the legacy "p-<n>" ordinal
-// form, which carries no content identity.
-export function paragraphHashFromAnchor(anchor: string): string {
-  const match = /^p-h([0-9a-f]{16})(?:-\d+)?$/.exec(anchor);
-  return match?.[1] ?? "";
-}
+export { paragraphHashFromAnchor };
 
 export function createBookmarkId(): string {
   if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
@@ -303,16 +312,73 @@ export function sectionHasBookmarks(
   );
 }
 
-export type NewBookmarkInput = {
+type NewBookmarkBaseInput = {
   section: ProgressIdentity & Pick<ProgressSection, "sectionId">;
-  paragraphAnchor: string;
   quote: string;
   quoteOrdinal?: number;
   prefix?: string;
   suffix?: string;
-  startOffset: number;
-  endOffset: number;
 };
+
+export type NewBookmarkInput =
+  | (NewBookmarkBaseInput & {
+      range: ReaderPassageRange;
+    })
+  | (NewBookmarkBaseInput & {
+      // Version 1 call shape retained for fixtures and callers migrating one
+      // step at a time. New reader interactions always provide range.
+      paragraphAnchor: string;
+      startOffset: number;
+      endOffset: number;
+    });
+
+function rangeForInput(input: NewBookmarkInput): ReaderPassageRange {
+  if ("range" in input) return input.range;
+  return createReaderPassageRange(
+    {
+      paragraphAnchor: input.paragraphAnchor,
+      offset: input.startOffset,
+    },
+    {
+      paragraphAnchor: input.paragraphAnchor,
+      offset: input.endOffset,
+    },
+  );
+}
+
+type StoredBookmarkInput = {
+  id: string;
+  progressKey: string;
+  sectionId: string;
+  range: ReaderPassageRange;
+  quote: string;
+  quoteOrdinal: number;
+  prefix: string;
+  suffix: string;
+  sectionContentHash: string;
+  createdAt: number;
+  updatedAt: number;
+};
+
+function bookmarkFromInput(
+  input: NewBookmarkInput,
+  now: number,
+  id: string,
+): StoredBookmarkInput {
+  return {
+    id,
+    progressKey: primaryProgressKey(input.section),
+    sectionId: input.section.sectionId,
+    range: rangeForInput(input),
+    quote: input.quote,
+    quoteOrdinal: input.quoteOrdinal ?? 0,
+    prefix: input.prefix ?? "",
+    suffix: input.suffix ?? "",
+    sectionContentHash: input.section.contentHash,
+    createdAt: now,
+    updatedAt: now,
+  };
+}
 
 // Returns the same state when the cap is reached, so the caller can tell the
 // reader rather than silently dropping the oldest record. Losing saved work to
@@ -326,22 +392,8 @@ export function addBookmark(
 ): ReaderBookmarksState {
   if (liveBookmarkCount(state) >= maxLiveBookmarks) return state;
 
-  const bookmark: ReaderBookmark = normalizeBookmark({
-    id,
-    progressKey: primaryProgressKey(input.section),
-    sectionId: input.section.sectionId,
-    paragraphAnchor: input.paragraphAnchor,
-    paragraphContentHash: paragraphHashFromAnchor(input.paragraphAnchor),
-    quote: input.quote,
-    quoteOrdinal: input.quoteOrdinal ?? 0,
-    prefix: input.prefix ?? "",
-    suffix: input.suffix ?? "",
-    startOffset: input.startOffset,
-    endOffset: input.endOffset,
-    sectionContentHash: input.section.contentHash,
-    createdAt: now,
-    updatedAt: now,
-  }, now);
+  const bookmark = normalizeBookmark(bookmarkFromInput(input, now, id), now);
+  if (!bookmark) return state;
 
   const bookmarks = cloneBookmarkMap(state.bookmarks);
   bookmarks[bookmark.id] = bookmark;
@@ -487,21 +539,10 @@ export function reconcileRemoteBookmarks(
 // alone. The bookmarks menu loads that book-wide index on demand so ordinary
 // reading does not pay its network, parsing, or heap cost.
 export function resolveBookmarkAnchor(
-  bookmark: Pick<ReaderBookmark, "paragraphAnchor" | "paragraphContentHash">,
+  bookmark: Pick<ReaderBookmark, "range">,
   paragraphs: readonly ProgressParagraph[],
 ): BookmarkResolution {
-  if (paragraphs.some((paragraph) => paragraph.anchor === bookmark.paragraphAnchor)) {
-    return { status: "exact", anchor: bookmark.paragraphAnchor };
-  }
-  if (bookmark.paragraphContentHash) {
-    const renamed = paragraphs.find(
-      (paragraph) => paragraph.contentHash === bookmark.paragraphContentHash,
-    );
-    // The paragraph text is unchanged; only its occurrence suffix moved, which
-    // happens when an identical block is inserted above it.
-    if (renamed) return { status: "renamed", anchor: renamed.anchor };
-  }
-  return { status: "missing", anchor: null };
+  return resolveReaderPassageRange(bookmark.range, paragraphs);
 }
 
 export function isBookmarkStale(
@@ -516,9 +557,9 @@ export function isBookmarkStale(
 // the section id on a chapter route, where readerHref already carries a
 // fragment.
 export function bookmarkHref(
-  bookmark: Pick<ReaderBookmark, "paragraphAnchor">,
+  bookmark: Pick<ReaderBookmark, "range">,
   section: Pick<ProgressSection, "readerHref">,
-  resolvedAnchor = bookmark.paragraphAnchor,
+  resolvedAnchor = bookmark.range.start.paragraphAnchor,
 ): string {
   return canonicalReaderDestination(section.readerHref, `#${resolvedAnchor}`);
 }

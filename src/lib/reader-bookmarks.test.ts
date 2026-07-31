@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { ProgressParagraph } from "./manuscript-data";
+import { createReaderPassageRange } from "./reader-passage-range";
 import {
   addBookmark,
   bookmarkedProgressKeys,
@@ -48,14 +49,14 @@ function makeBookmark(overrides: Partial<ReaderBookmark> = {}): ReaderBookmark {
     id: "b1",
     progressKey: "cont-1",
     sectionId: "section-one",
-    paragraphAnchor: `p-h${hashA}`,
-    paragraphContentHash: hashA,
+    range: createReaderPassageRange(
+      { paragraphAnchor: `p-h${hashA}`, offset: 4 },
+      { paragraphAnchor: `p-h${hashA}`, offset: 17 },
+    ),
     quote: "a quoted line",
     quoteOrdinal: 0,
     prefix: "before ",
     suffix: " after",
-    startOffset: 4,
-    endOffset: 17,
     sectionContentHash: "section-hash",
     createdAt: 1_000,
     updatedAt: 1_000,
@@ -159,7 +160,7 @@ describe("bookmark sanitization", () => {
     expect(bookmark.note).toHaveLength(maxBookmarkNoteLength);
     expect(bookmark.prefix).toHaveLength(maxBookmarkContextLength);
     expect(bookmark.suffix).toHaveLength(maxBookmarkContextLength);
-    expect(maxBookmarkQuoteLength).toBe(400);
+    expect(maxBookmarkQuoteLength).toBe(2_000);
     expect(maxBookmarkNoteLength).toBe(280);
     expect(maxBookmarkContextLength).toBe(40);
   });
@@ -181,12 +182,21 @@ describe("bookmark sanitization", () => {
 
     expect(sanitized.bookmarks.sparse).toMatchObject({
       // The bare hash is recovered from the anchor when it is absent.
-      paragraphContentHash: hashA,
+      range: {
+        start: {
+          paragraphAnchor: `p-h${hashA}-2`,
+          paragraphContentHash: hashA,
+          offset: 0,
+        },
+        end: {
+          paragraphAnchor: `p-h${hashA}-2`,
+          paragraphContentHash: hashA,
+          offset: 0,
+        },
+      },
       quoteOrdinal: 0,
       prefix: "",
       suffix: "",
-      startOffset: 0,
-      endOffset: 0,
       sectionContentHash: "",
     });
     expect(sanitized.bookmarks.sparse?.note).toBeUndefined();
@@ -228,7 +238,10 @@ describe("adding bookmarks", () => {
       id: "new-1",
       progressKey: "cont-1",
       sectionId: "section-one",
-      paragraphContentHash: hashA,
+      range: {
+        start: { paragraphContentHash: hashA },
+        end: { paragraphContentHash: hashA },
+      },
       sectionContentHash: "section-hash",
       createdAt: 2_000,
       updatedAt: 2_000,
@@ -289,7 +302,7 @@ describe("adding bookmarks", () => {
     expect(bookmark.prefix).toHaveLength(maxBookmarkContextLength);
     expect(bookmark.suffix).toHaveLength(maxBookmarkContextLength);
     expect(bookmark.quoteOrdinal).toBe(2);
-    expect(bookmark.startOffset).toBe(0);
+    expect(bookmark.range.start.offset).toBe(0);
   });
 
   it("mints unique ids", () => {
@@ -567,14 +580,23 @@ describe("resolving a bookmark anchor", () => {
     { paragraphId: "p-1", anchor: `p-h${hashB}`, contentHash: hashB },
     { paragraphId: "p-2", anchor: `p-h${hashA}-3`, contentHash: hashA },
   ];
+  const rangeAt = (paragraphAnchor: string, paragraphContentHash: string) =>
+    createReaderPassageRange(
+      { paragraphAnchor, paragraphContentHash, offset: 0 },
+      { paragraphAnchor, paragraphContentHash, offset: 5 },
+    );
 
   it("reports an exact match when the anchor is still present", () => {
     expect(
       resolveBookmarkAnchor(
-        { paragraphAnchor: `p-h${hashB}`, paragraphContentHash: hashB },
+        { range: rangeAt(`p-h${hashB}`, hashB) },
         paragraphs,
       ),
-    ).toEqual({ status: "exact", anchor: `p-h${hashB}` });
+    ).toEqual({
+      status: "exact",
+      startAnchor: `p-h${hashB}`,
+      endAnchor: `p-h${hashB}`,
+    });
   });
 
   it("recovers the new anchor when a duplicate block shifted the occurrence suffix", () => {
@@ -582,28 +604,42 @@ describe("resolving a bookmark anchor", () => {
     // was inserted above it.
     expect(
       resolveBookmarkAnchor(
-        { paragraphAnchor: `p-h${hashA}-2`, paragraphContentHash: hashA },
+        { range: rangeAt(`p-h${hashA}-2`, hashA) },
         paragraphs,
       ),
-    ).toEqual({ status: "renamed", anchor: `p-h${hashA}-3` });
+    ).toEqual({
+      status: "renamed",
+      startAnchor: `p-h${hashA}-3`,
+      endAnchor: `p-h${hashA}-3`,
+    });
   });
 
   it("reports missing when neither the anchor nor the hash survives", () => {
     expect(
       resolveBookmarkAnchor(
         {
-          paragraphAnchor: "p-h00000000000000ff",
-          paragraphContentHash: "00000000000000ff",
+          range: rangeAt(
+            "p-h00000000000000ff",
+            "00000000000000ff",
+          ),
         },
         paragraphs,
       ),
-    ).toEqual({ status: "missing", anchor: null });
+    ).toEqual({
+      status: "missing",
+      startAnchor: null,
+      endAnchor: null,
+    });
     expect(
       resolveBookmarkAnchor(
-        { paragraphAnchor: `p-h${hashA}`, paragraphContentHash: hashA },
+        { range: rangeAt(`p-h${hashA}`, hashA) },
         [],
       ),
-    ).toEqual({ status: "missing", anchor: null });
+    ).toEqual({
+      status: "missing",
+      startAnchor: null,
+      endAnchor: null,
+    });
   });
 
   it("does not let a legacy ordinal anchor match on an empty hash", () => {
@@ -616,27 +652,40 @@ describe("resolving a bookmark anchor", () => {
 
     expect(
       resolveBookmarkAnchor(
-        { paragraphAnchor: "p-9", paragraphContentHash: "" },
+        { range: rangeAt("p-9", "") },
         withEmptyHash,
       ),
-    ).toEqual({ status: "missing", anchor: null });
+    ).toEqual({
+      status: "missing",
+      startAnchor: null,
+      endAnchor: null,
+    });
     expect(
       resolveBookmarkAnchor(
-        { paragraphAnchor: "p-3", paragraphContentHash: "" },
+        { range: rangeAt("p-3", "") },
         withEmptyHash,
       ),
-    ).toEqual({ status: "exact", anchor: "p-3" });
+    ).toEqual({
+      status: "exact",
+      startAnchor: "p-3",
+      endAnchor: "p-3",
+    });
   });
 
   it("reports staleness only for an unresolvable bookmark", () => {
     expect(
-      isBookmarkStale(makeBookmark({ paragraphAnchor: `p-h${hashA}-2` }), paragraphs),
+      isBookmarkStale(
+        makeBookmark({ range: rangeAt(`p-h${hashA}-2`, hashA) }),
+        paragraphs,
+      ),
     ).toBe(false);
     expect(
       isBookmarkStale(
         makeBookmark({
-          paragraphAnchor: "p-h00000000000000ff",
-          paragraphContentHash: "00000000000000ff",
+          range: rangeAt(
+            "p-h00000000000000ff",
+            "00000000000000ff",
+          ),
         }),
         paragraphs,
       ),
@@ -806,17 +855,21 @@ describe("bookmark lookup by section lineage", () => {
 
 describe("bookmark links", () => {
   const anchor = `p-h${hashA}-2`;
+  const range = createReaderPassageRange(
+    { paragraphAnchor: anchor, offset: 0 },
+    { paragraphAnchor: anchor, offset: 5 },
+  );
 
   it("uses a bare paragraph fragment on a canonical section route", () => {
     expect(
-      bookmarkHref({ paragraphAnchor: anchor }, { readerHref: "/manuscripts/1/section-one/" }),
+      bookmarkHref({ range }, { readerHref: "/manuscripts/1/section-one/" }),
     ).toBe(`/manuscripts/1/section-one/#${anchor}`);
   });
 
   it("prefixes the section id on a chapter route", () => {
     expect(
       bookmarkHref(
-        { paragraphAnchor: anchor },
+        { range },
         { readerHref: "/manuscripts/1/chapter-one/#section-one" },
       ),
     ).toBe(`/manuscripts/1/chapter-one/#section-one-${anchor}`);
@@ -825,7 +878,7 @@ describe("bookmark links", () => {
   it("links to a resolved anchor when the stored one moved", () => {
     expect(
       bookmarkHref(
-        { paragraphAnchor: anchor },
+        { range },
         { readerHref: "/manuscripts/1/chapter-one/#section-one" },
         `p-h${hashA}-3`,
       ),
@@ -976,7 +1029,7 @@ describe("hardening against untrusted timestamps and keys", () => {
       );
     const merged = mergeBookmarkStates(replica("local"), replica("remote"));
 
-    expect(maxRemoteBookmarksBytes).toBe(4 * 1024 * 1024);
+    expect(maxRemoteBookmarksBytes).toBe(8 * 1024 * 1024);
     expect(liveBookmarkCount(merged)).toBe(maxLiveBookmarks * 2);
     expect(bookmarksFitRemoteBudget(merged)).toBe(true);
   });
