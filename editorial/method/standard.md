@@ -78,6 +78,70 @@ Before restoring baseline wording that touches a canonical term, a claim's scope
 
 Record the item by identifier in the record's debt impact, whether the decision was preserved or the restoration reopened it. An unrecorded interaction with the ledger is indistinguishable from never having looked.
 
+### The baseline may already pay the debt `R-LEDGER-WINS-COROLLARY`
+
+`R-LEDGER-WINS` governs the case where a recorded decision and the baseline conflict, and it makes the decision win. It is silent on the commoner case, where a ledger item asks for something the baseline already contains.
+
+Before seeding canon to satisfy a ledger item, search the immutable baseline for it. If the baseline contains the clause, restore it and record the item as paid down from the baseline. If it does not, drafting is legitimate, and the new clause is recorded as seeded with its agent provenance visible.
+
+Writing a clause produces an agent's provenance where an author's clause already existed, and it conceals that the pass which created the debt had itself deleted the payment. This does not weaken `R-LEDGER-WINS`. Where a decision and the baseline genuinely conflict, the decision still wins. This applies only where they agree and the baseline is the fuller statement.
+
+### A correction authorizes only what it names `R-CORRECTION-SCOPE`
+
+A recorded decision outranks the baseline. It does not outrank the baseline everywhere near itself.
+
+A correction that changes the modality of one claim licenses that change alone. It does not license rewriting the paragraph the claim sits in, replacing the surrounding argument, or extending the same softening to neighbouring claims the correction never named.
+
+Before applying a correction, quote it and mark exactly which words of the baseline it governs. Change those, and record the change. Treat everything outside that span as ordinary prose under the baseline's authority. If that material also seems to need changing, it is a new finding requiring its own justification, not an extension of the correction.
+
+A correction may need a sentence rebuilt around it in order to read. What it may not do is expand silently to cover material the recorded decision never considered.
+
+### Deleting a contested claim is a decision, and it is recorded `R-CANON-DELETION-RECORD`
+
+Where a section carries a claim named in an open canon query, a pass may cut it. Deletion is a legitimate editorial answer, and a claim that overreaches should go.
+
+What a pass may not do is cut it silently. Record the deletion against the item, quote what was removed, and either close the item or state that the corpus has retreated from the claim while the question stands.
+
+Three things go wrong when this is skipped, and none of them is a matter of taste. The ledger continues to say the question is open while the manuscript no longer contains the material it is about, and nothing detects the disagreement. No reader can tell whether the corpus never committed or committed and withdrew. And the eventual decision is made against a text the strongest instance was removed from, without anyone knowing the evidence was thinned.
+
+Deleting the claim is fine. Deciding from a thinned record without knowing it was thinned is not.
+
+### Check both ends of a cross reference `R-PAIRED-DELETION`
+
+A cross reference and its antecedent removed in the same pass produce no detectable error. The manuscript stays internally consistent, every gate passes, and there is no dangling reference to find.
+
+The consequence for a restoration pass is asymmetric. Restoring the referring end alone introduces a defect a reader meets directly, and that is the one kind of damage a restoration pass can create rather than repair.
+
+Before restoring a section, search the baseline for its distinctive named terms and check where else in the baseline they occur. Where a term spans sections, restore both or record the dependency as blocking. Reword nothing: a reference rewritten to avoid its antecedent becomes wrong again when the antecedent returns.
+
+### Check which half survived `R-CAUTIOUS-HALF`
+
+Where a baseline passage states a claim in two parts, one hedging and one committing, check which half survived.
+
+A pass under compression pressure keeps the hedging half and cuts the committing one. The committing half is usually the sentence that makes the passage falsifiable, so its loss is invisible to a word count, to a diff read for errors, and to any review that checks only whether the remaining sentences are true.
+
+The same shape appears in structure. Where a merge collapses two headings into one, the survivor tends to be the more cautious of the two, and the surviving heading names what the merged section no longer claims. That form needs only a lineage record and two heading names, so it can be run against a volume nobody has re-rendered.
+
+This describes a behaviour. It is not a licence to restore a committing sentence a recorded decision removed, and the two must be told apart before it is applied. A merged section can be flat or grown and still have lost its committing half, because a merge changes the denominator, so combined baseline word counts are the only safe comparison. Measure the shipped text, never a text under concurrent edit.
+
+### Record the finding that runs the other way `R-SUBSTITUTION-CREDIT`
+
+Where substituted prose is better than the baseline it replaced, record it as a finding with that direction, at the same length and in the same form as a finding of damage.
+
+A re-render accumulates findings against the prior pass, and that accumulation is evidence. It is therefore structurally likely to under record the cases where the prior pass was right, because those appear only as a quiet `kept` in a reasoning note that nobody counts. A record that only ever finds loss is not a record of judgment, and a reader cannot tell restraint from bias.
+
+When keeping a substituted sentence because it repairs a genuine fault rather than merely bounding a claim, give it a finding identifier, quote both sides, and record that the finding runs the other way.
+
+This does not soften a substitution finding. One good sentence in a section does not license the removal of fourteen.
+
+### Record a refrain once, with its count `R-REFRAIN-COST`
+
+Where a passage repeats one construction across parallel sections, record the repetition once with its count and name the single edit that would change every instance.
+
+A refrain carries its claim as many times as it recurs, so a ledger item engaged by a refrain is engaged once per instance. Recording it separately in each section makes one decision repeated many times look like many small findings. Recorded once, with the count and the exact phrase, it tells the author what a single ruling costs or buys. Child records cite the anchor rather than repeating the analysis.
+
+This is a recording rule, not a licence to alter a refrain. A refrain is often the strongest thing in a passage. Do not thin one because it recurs.
+
 ## 3. Punctuation standard
 
 ### Prohibited
@@ -560,6 +624,13 @@ Named rules carry stable identifiers so a ledger `reasonCodes` entry, a calibrat
 | `R-TENSE` | Prefer the simple present for a live condition unless the timing is load bearing. | 6 |
 | `R-REGISTER-DICTION` | Prefer the volume's signature register over a generic near synonym of equal precision. | 6 |
 | `R-LAND` | A paragraph ends on its own concrete beat, not a trailing subordinate clause. | 8 |
+| `R-LEDGER-WINS-COROLLARY` | Before seeding canon for a ledger item, check whether the baseline already pays it. | 2 |
+| `R-CORRECTION-SCOPE` | A correction authorizes the words it names and nothing adjacent. | 2 |
+| `R-CANON-DELETION-RECORD` | A pass may cut a contested claim, but records the deletion against the open item. | 2 |
+| `R-PAIRED-DELETION` | Check both ends of a cross reference before restoring either. Reword nothing. | 2 |
+| `R-CAUTIOUS-HALF` | Where a claim has a hedging and a committing half, check which one survived. | 2 |
+| `R-SUBSTITUTION-CREDIT` | Record improvements by the prior pass at the same weight as losses. | 2 |
+| `R-REFRAIN-COST` | Record a repeated construction once, with its count and the edit that settles it. | 2 |
 | `R-DEIXIS` | Hold the reader in the present where the text names a live condition. | 6 |
 
 Rules enter this index only through a recorded calibration, so every obligation here can be traced to the passage that exposed the need for it. The schema for those records is `editorial/method/schemas/calibration-record.md`.
