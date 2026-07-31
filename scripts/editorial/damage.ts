@@ -96,11 +96,24 @@ interface Section {
   blocks: string[];
 }
 
+/**
+ * Section boundaries. Most baselines mark them with markdown headings, but the
+ * production-pass batches mark them with bold display lines instead, which is a
+ * typesetting convention rather than an absence of structure. Reading only `#` reported
+ * Volume VII as unmeasurable when its sections map one to one onto the current
+ * manuscript's headings.
+ */
 function splitSections(markdown: string): Section[] {
+  const lines = markdown.split("\n");
+  const hasMarkdownHeadings = lines.some((l) => /^#{1,3}\s+\S/.test(l));
   const out: Section[] = [];
   let current: { heading: string; lines: string[] } | null = null;
-  for (const line of markdown.split("\n")) {
-    const m = /^(#{1,2})\s+(.*)$/.exec(line);
+  for (const line of lines) {
+    const m = hasMarkdownHeadings
+      ? /^(#{1,3})\s+(.*)$/.exec(line)
+      : /^\*\*(.+?)\*\*\s*$/.exec(`${line}`)
+        ? ["", "", line.replace(/^\*\*(.+?)\*\*\s*$/, "$1").replace(/\s*·\s*$/, "").trim()]
+        : null;
     if (m) {
       if (current) {
         const body = current.lines.join("\n");
