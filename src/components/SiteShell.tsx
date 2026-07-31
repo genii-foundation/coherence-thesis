@@ -3,6 +3,7 @@ import Link from "next/link";
 import { copyrightYearLabel } from "@/lib/copyright";
 import { CopyrightYearIsland } from "@/components/CopyrightYearIsland";
 import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
+import { AdminModeToolbarIsland } from "@/components/AdminModeToolbarIsland";
 import { CleanTooltip } from "@/components/CleanTooltip";
 import { Feather } from "lucide-react";
 import { GitHubMark } from "@/components/GitHubMark";
@@ -91,7 +92,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <header className="site-header">
         <ToolbarBrandIsland volumes={brandVolumes} />
         <ToolbarBreadcrumbs />
-        <nav className="site-nav" aria-label="Primary">
+        <AdminModeToolbarIsland>
           {/* Development only. The check is a build time constant, so the button
               and its link are erased from the production bundle rather than
               hidden by CSS. The /admin subtree gates itself independently and
@@ -117,7 +118,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             fallbackAudio={fallbackAudio}
             overviewAudio={overviewAudio}
           />
-        </nav>
+        </AdminModeToolbarIsland>
       </header>
       <main id="main-content">
         <MobilePageContextIsland volumes={brandVolumes} />

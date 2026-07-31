@@ -17,6 +17,7 @@ This file governs application code under src/. Repository-wide policy remains in
 - Keep toolbar controls reachable at supported desktop and mobile sizes.
 - Keep menus, dialogs, palettes, and overlays inside the viewport with internal scrolling when needed.
 - Match established typography, radius, button hierarchy, focus states, and manuscript colors.
+- Order binary and progressive controls from inactive to active, left to right. Put off, none, hidden, or disabled choices on the left and enabled or intensified choices on the right.
 - Use locale-aware number formatting for reader-facing counts.
 - Keep long titles from overlapping adjacent controls.
 - Verify rendered geometry for transformed SVG, canvas, and compositor-sensitive interfaces.

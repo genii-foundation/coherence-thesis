@@ -16,10 +16,19 @@ export function MobilePageContextIsland({
   const currentPath = normalizePath(pathname);
   if (currentPath === "/") return null;
 
+  const isAdminPath = currentPath.startsWith("/admin");
   const { kicker, title } = brandIdentity(volumes, currentPath);
 
   return (
-    <section className="mobile-page-context" aria-label="Page context">
+    <section
+      className={[
+        "mobile-page-context",
+        isAdminPath ? "mobile-page-context-admin" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      aria-label="Page context"
+    >
       <Link
         href="/"
         className="mobile-page-brand"
@@ -28,7 +37,10 @@ export function MobilePageContextIsland({
         <span className="mobile-page-brand-kicker">{kicker}</span>
         <span className="mobile-page-brand-title">{title}</span>
       </Link>
-      <ToolbarBreadcrumbs className="mobile-page-breadcrumbs" />
+      <ToolbarBreadcrumbs
+        className="mobile-page-breadcrumbs"
+        placement="page"
+      />
     </section>
   );
 }

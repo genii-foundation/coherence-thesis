@@ -259,6 +259,15 @@
       "area": "reader",
       "blockedBy": [],
       "detail": "A visual surface for the 112 editorial debt items at /admin/debt, with a per item detail view, so the author and colleagues can triage and act on them through the interface rather than only through the CLI skill. Read only with respect to editorial/, following the CopyPromptButton precedent for action. Runs as an independent session on this worktree and branch, confined to src/, tests/ and scripts/repository/ so it does not collide with the volume-02 and volume-03 editorial sessions."
+    },
+    {
+      "id": "T-028",
+      "title": "Expose the editorial standard and its history in the admin workbench",
+      "tier": "green",
+      "status": "done",
+      "area": "tooling",
+      "detail": "Complete. /admin/guidelines reads the canonical standard, its Git history, the corpus voice card, and all nine manuscript voice cards at request time. The current standard precedes its evolution, voice cards preserve corpus and volume authority, and the shared admin tab control remains usable on desktop and mobile. Type checking and all 18 focused desktop and mobile admin tests passed after integration. The full interface gate stops at the pre-existing missing version provenance for v01-when-scale-outruns-regulation, whose regeneration remains an explicit author decision under T-024.",
+      "blockedBy": []
     }
   ]
 }

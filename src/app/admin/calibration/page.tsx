@@ -1,11 +1,5 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  CircleAlert,
-  GitBranch,
-  PenLine,
-  Scale,
-} from "lucide-react";
+import { ArrowRight, CircleAlert, PenLine } from "lucide-react";
 
 import { CopyPromptButton } from "../CopyPromptButton";
 import {
@@ -23,7 +17,17 @@ import {
 
 export const dynamic = "force-dynamic";
 
-const VOLUME_NUMERALS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+const VOLUME_NUMERALS = [
+  "I",
+  "II",
+  "III",
+  "IV",
+  "V",
+  "VI",
+  "VII",
+  "VIII",
+  "IX",
+];
 const numberFormat = new Intl.NumberFormat("en-US");
 
 function volumeLabel(editorialId: string): string {
@@ -65,9 +69,7 @@ function SessionCard({
           {session.generations === 1 ? "variant" : "variants"}
         </span>
         {session.openQuestions ? (
-          <strong>
-            {numberFormat.format(session.openQuestions)} open
-          </strong>
+          <strong>{numberFormat.format(session.openQuestions)} open</strong>
         ) : null}
         <span className={styles.sessionAction}>
           {session.benchable ? (
@@ -122,14 +124,12 @@ export default function EditorialRevisionsPage() {
 
   return (
     <div className={styles.revisionsPage}>
-      <section className={styles.revisionsHero} aria-labelledby="revisions-title">
+      <section
+        className={styles.revisionsHero}
+        aria-labelledby="revisions-title"
+      >
         <div>
-          <span className={styles.eyebrow}>Editorial decision ledger</span>
-          <h1 id="revisions-title">Editorial revisions</h1>
-          <p>
-            Compare variants, preserve authority, and keep every agent-made
-            judgment visibly provisional until the author rules.
-          </p>
+          <h1 id="revisions-title">Editorial Revisions</h1>
         </div>
         <div
           className={styles.revisionMetrics}
@@ -162,13 +162,8 @@ export default function EditorialRevisionsPage() {
         >
           <div className={styles.sectionHeading}>
             <div>
-              <span className={styles.eyebrow}>Work in progress</span>
               <h2 id="working-revisions-title">Working revisions</h2>
             </div>
-            <p>
-              Transient sessions stay here until the editor approves a finished
-              version.
-            </p>
           </div>
           <div className={styles.workingRevisionGrid}>
             {workingSessions.map((session) => (
@@ -200,62 +195,27 @@ export default function EditorialRevisionsPage() {
         </section>
       ) : null}
 
-      <section className={styles.startSessionPanel} aria-labelledby="start-session-title">
+      <section
+        className={styles.startSessionPanel}
+        aria-labelledby="start-session-title"
+      >
         <div className={styles.startSessionCopy}>
-          <span className={styles.eyebrow}>Start a session</span>
-          <h2 id="start-session-title">Start with the editor&apos;s intent.</h2>
-          <p>
-            Copy the prompt, replace the section placeholder, and paste it into
-            a chat. The chat opens a working page, then asks what you want
-            changed before it writes a word.
-          </p>
+          <h2 id="start-session-title">Start a revision</h2>
           <CopyPromptButton
             label="Copy blank session prompt"
             prompt={revisionPrompt({ sectionId: "<section-id>" })}
           />
         </div>
-        <ol className={styles.sessionFlow}>
-          <li>
-            <span>1</span>
-            <div>
-              <strong>Open the working page</strong>
-              <p>The chat creates transient state and shares the link.</p>
-            </div>
-          </li>
-          <li>
-            <span>2</span>
-            <div>
-              <strong>State what should change</strong>
-              <p>The editor defines the problem before drafting begins.</p>
-            </div>
-          </li>
-          <li>
-            <span>3</span>
-            <div>
-              <strong>Compare and refine</strong>
-              <p>Variants appear on the working page for another round.</p>
-            </div>
-          </li>
-          <li>
-            <span>4</span>
-            <div>
-              <strong>Approve, then record</strong>
-              <p>Durable evidence begins only after explicit approval.</p>
-            </div>
-          </li>
-        </ol>
       </section>
 
-      <section className={styles.questionSection} aria-labelledby="questions-title">
+      <section
+        className={styles.questionSection}
+        aria-labelledby="questions-title"
+      >
         <div className={styles.sectionHeading}>
           <div>
-            <span className={styles.eyebrow}>Needs author judgment</span>
             <h2 id="questions-title">Open questions</h2>
           </div>
-          <p>
-            {numberFormat.format(openQuestionCount)} questions across{" "}
-            {numberFormat.format(questions.length)} sections.
-          </p>
         </div>
         <div className={styles.questionList}>
           {questions.map((row) => (
@@ -285,13 +245,14 @@ export default function EditorialRevisionsPage() {
         </div>
       </section>
 
-      <section className={styles.sessionSection} aria-labelledby="author-sessions-title">
+      <section
+        className={styles.sessionSection}
+        aria-labelledby="author-sessions-title"
+      >
         <div className={styles.sectionHeading}>
           <div>
-            <span className={styles.eyebrow}>Binding authority</span>
             <h2 id="author-sessions-title">Author-governed sessions</h2>
           </div>
-          <p>These sessions contain at least one ruling made by the author.</p>
         </div>
         <div className={styles.authorSessionGrid}>
           {authored.map((session) => (
@@ -304,24 +265,14 @@ export default function EditorialRevisionsPage() {
         </div>
       </section>
 
-      <section className={styles.sessionSection} aria-labelledby="agent-sessions-title">
+      <section
+        className={styles.sessionSection}
+        aria-labelledby="agent-sessions-title"
+      >
         <div className={styles.sectionHeading}>
           <div>
-            <span className={styles.eyebrow}>Review required</span>
             <h2 id="agent-sessions-title">Agent-only records</h2>
           </div>
-          <p>
-            Recorded reasoning is evidence, not author authority. Review before
-            treating any decision as binding.
-          </p>
-        </div>
-        <div className={styles.agentSessionNotice}>
-          <Scale aria-hidden="true" size={18} />
-          <p>
-            The repository currently holds {numberFormat.format(agentOnly.length)}{" "}
-            sessions with no author ruling. Their findings remain useful, but their
-            authority must stay explicit.
-          </p>
         </div>
         <div className={styles.agentSessionGrid}>
           {agentOnly.map((session) => (
@@ -332,14 +283,6 @@ export default function EditorialRevisionsPage() {
             />
           ))}
         </div>
-      </section>
-
-      <section className={styles.revisionPrinciple} aria-label="Revision principle">
-        <GitBranch aria-hidden="true" size={19} />
-        <p>
-          A comparison bench explains the alternatives. It does not grant itself
-          permission to choose among them.
-        </p>
       </section>
     </div>
   );

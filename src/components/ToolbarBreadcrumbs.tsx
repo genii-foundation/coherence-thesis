@@ -41,49 +41,118 @@ function adminBreadcrumbRoute(path: string): BreadcrumbRoute | null {
     }
   }
 
+  if (segments[0] === "guidelines") {
+    crumbs.push({
+      label: "Editorial Guidelines",
+      href: "/admin/guidelines/",
+    });
+  }
+
   return { href: path, crumbs };
 }
 
-function AdminHeaderContext({ path }: { path: string }) {
-  const revisionsCurrent =
-    path.startsWith("/admin/calibration") ||
-    path.startsWith("/admin/bench/") ||
-    path.startsWith("/admin/revisions/");
-  const debtCurrent = path.startsWith("/admin/debt");
+const adminViews = [
+  {
+    href: "/admin/",
+    label: "Publication Status",
+    current: (path: string) => path === "/admin/",
+  },
+  {
+    href: "/admin/calibration/",
+    label: "Editorial Revisions",
+    current: (path: string) =>
+      path.startsWith("/admin/calibration") ||
+      path.startsWith("/admin/bench/") ||
+      path.startsWith("/admin/revisions/"),
+  },
+  {
+    href: "/admin/guidelines/",
+    label: "Editorial Guidelines",
+    current: (path: string) => path.startsWith("/admin/guidelines"),
+  },
+  {
+    href: "/admin/debt/",
+    label: "Editorial Debt",
+    current: (path: string) => path.startsWith("/admin/debt"),
+  },
+] as const;
+
+export function AdminHeaderContext({
+  path,
+  placement = "page",
+}: {
+  path: string;
+  placement?: "page" | "toolbar";
+}) {
+  const currentTabRef = useRef<HTMLAnchorElement | null>(null);
+
+  useEffect(() => {
+    const currentTab = currentTabRef.current;
+    const tabViewport = currentTab?.closest(".admin-header-views");
+    if (!currentTab || !tabViewport) return;
+
+    const revealCurrentTab = () => {
+      if (tabViewport.scrollWidth <= tabViewport.clientWidth) return;
+      currentTab.scrollIntoView({
+        behavior: "auto",
+        block: "nearest",
+        inline: "nearest",
+      });
+    };
+    revealCurrentTab();
+
+    const observer = new ResizeObserver(revealCurrentTab);
+    observer.observe(tabViewport);
+    return () => observer.disconnect();
+  }, [path]);
 
   return (
-    <div className="admin-header-row">
+    <div
+      className={`admin-header-row admin-header-row-${placement}`}
+    >
+      {placement === "toolbar" ? (
+        <div
+          className="admin-repository-state"
+          aria-label="Local repository, read only"
+        >
+          <span className="admin-repository-dot" aria-hidden="true" />
+          <span>Local</span>
+          <span className="admin-repository-separator" aria-hidden="true">
+            ·
+          </span>
+          <span>Read only</span>
+        </div>
+      ) : null}
       <nav className="admin-header-views" aria-label="Admin views">
-        <Link
-          href="/admin/"
-          aria-current={revisionsCurrent || debtCurrent ? undefined : "page"}
-        >
-          Status
-        </Link>
-        <Link
-          href="/admin/calibration/"
-          aria-current={revisionsCurrent ? "page" : undefined}
-        >
-          Editorial revisions
-        </Link>
-        <Link
-          href="/admin/debt/"
-          aria-current={debtCurrent ? "page" : undefined}
-        >
-          Editorial debt
-        </Link>
+        <div className="admin-header-view-list">
+          {adminViews.map((view) => {
+            const current = view.current(path);
+            return (
+              <Link
+                href={view.href}
+                aria-current={current ? "page" : undefined}
+                key={view.href}
+                ref={current ? currentTabRef : undefined}
+              >
+                {view.label}
+              </Link>
+            );
+          })}
+        </div>
       </nav>
-      <div
-        className="admin-repository-state"
-        aria-label="Local repository, read only"
-      >
-        <span className="admin-repository-dot" aria-hidden="true" />
-        <span>Local</span>
-        <span className="admin-repository-separator" aria-hidden="true">
-          ·
-        </span>
-        <span>Read only</span>
-      </div>
+      {placement === "page" ? (
+        <div
+          className="admin-repository-state"
+          aria-label="Local repository, read only"
+        >
+          <span className="admin-repository-dot" aria-hidden="true" />
+          <span>Local</span>
+          <span className="admin-repository-separator" aria-hidden="true">
+            ·
+          </span>
+          <span>Read only</span>
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -134,7 +203,13 @@ function BreadcrumbTooltip({
   );
 }
 
-export function ToolbarBreadcrumbs({ className }: { className?: string } = {}) {
+export function ToolbarBreadcrumbs({
+  className,
+  placement = "toolbar",
+}: {
+  className?: string;
+  placement?: "toolbar" | "page";
+} = {}) {
   const pathname = usePathname();
   const currentPath = normalizePath(pathname);
   const shardKey = breadcrumbShardKey(currentPath);
@@ -193,6 +268,7 @@ export function ToolbarBreadcrumbs({ className }: { className?: string } = {}) {
   );
 
   if (!isAdminPath) return breadcrumbs;
+  if (placement === "toolbar") return breadcrumbs;
 
   return (
     <div className="admin-header-context">

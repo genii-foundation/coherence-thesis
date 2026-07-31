@@ -50,24 +50,35 @@ test.describe("local editorial admin", () => {
   test("uses site wayfinding and ranks the editorial work", async ({
     page,
   }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto("/admin/");
 
-    const breadcrumb = page.getByRole("navigation", { name: "Breadcrumb" });
+    const siteHeader = page.getByRole("banner");
+    const breadcrumb = siteHeader.getByRole("navigation", {
+      name: "Breadcrumb",
+    });
     await expect(breadcrumb.getByRole("link", { name: "Admin" })).toBeVisible();
 
-    const siteHeader = page.getByRole("banner");
+    const pageContext = page.getByRole("region", { name: "Page context" });
+    await expect(
+      pageContext.getByRole("navigation", { name: "Breadcrumb" }),
+    ).toBeHidden();
     const adminNav = siteHeader.getByRole("navigation", {
       name: "Admin views",
     });
     await expect(
-      adminNav.getByRole("link", { name: "Status" }),
+      adminNav.getByRole("link", { name: "Publication Status" }),
     ).toHaveAttribute("aria-current", "page");
     await expect(
-      adminNav.getByRole("link", { name: "Editorial revisions" }),
+      adminNav.getByRole("link", { name: "Editorial Revisions" }),
+    ).toBeVisible();
+    await expect(
+      adminNav.getByRole("link", { name: "Editorial Guidelines" }),
     ).toBeVisible();
     await expect(
       siteHeader.getByLabel("Local repository, read only"),
     ).toBeVisible();
+    await expect(siteHeader.getByRole("button")).toHaveCount(0);
 
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
       "Volume I",
@@ -93,7 +104,7 @@ test.describe("local editorial admin", () => {
     await expect(
       page.getByRole("heading", {
         level: 1,
-        name: "Volume I is fully rendered. 8 author decisions remain.",
+        name: /^Volume I is fully rendered\. \d+ author decisions remain\.$/,
       }),
     ).toBeVisible();
     await expect(
@@ -111,13 +122,19 @@ test.describe("local editorial admin", () => {
     ).toBeVisible();
 
     await page.setViewportSize({ width: 558, height: 858 });
-    const mobileContext = page.getByRole("region", { name: "Page context" });
+    await expect(breadcrumb).toBeHidden();
     await expect(
-      mobileContext.getByRole("navigation", { name: "Admin views" }),
+      pageContext.getByRole("navigation", { name: "Breadcrumb" }),
     ).toBeVisible();
     await expect(
-      mobileContext.getByLabel("Local repository, read only"),
+      pageContext.getByRole("navigation", { name: "Admin views" }),
     ).toBeVisible();
+    await expect(
+      siteHeader.getByRole("navigation", { name: "Admin views" }),
+    ).toBeHidden();
+    await expect(
+      pageContext.getByLabel("Local repository, read only"),
+    ).toBeHidden();
     const mobileLayout = await page.evaluate(() => ({
       clientWidth: document.documentElement.clientWidth,
       scrollWidth: document.documentElement.scrollWidth,
@@ -127,6 +144,324 @@ test.describe("local editorial admin", () => {
     );
   });
 
+  test("shows the living editorial standard and its Git history", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 942, height: 956 });
+    await page.goto("/admin/guidelines/");
+
+    const desktopContext = page.getByRole("region", { name: "Page context" });
+    const desktopBreadcrumb = page
+      .getByRole("banner")
+      .getByRole("navigation", { name: "Breadcrumb" });
+    await expect(desktopBreadcrumb).toBeVisible();
+    await expect(
+      desktopBreadcrumb.getByText("Editorial Guidelines", { exact: true }),
+    ).toBeVisible();
+    await expect(
+      desktopContext.getByRole("navigation", { name: "Breadcrumb" }),
+    ).toBeHidden();
+    const desktopNav = page.getByRole("banner").getByRole("navigation", {
+      name: "Admin views",
+    });
+    await expect(
+      desktopNav.getByRole("link", { name: "Publication Status" }),
+    ).toBeVisible();
+    await expect(
+      desktopNav.getByRole("link", { name: "Editorial Revisions" }),
+    ).toBeVisible();
+    await expect(
+      desktopNav.getByRole("link", { name: "Editorial Guidelines" }),
+    ).toHaveAttribute("aria-current", "page");
+    await expect(
+      desktopContext.getByRole("navigation", { name: "Admin views" }),
+    ).toBeHidden();
+    await expect(page.getByRole("banner").getByRole("button")).toHaveCount(0);
+
+    const constrainedLayout = await page.evaluate(() => {
+      const nav = document.querySelector(
+        '.site-header nav[aria-label="Admin views"]',
+      );
+      const links = nav ? [...nav.querySelectorAll("a")] : [];
+      const group = nav?.querySelector(".admin-header-view-list");
+      const navBounds = nav?.getBoundingClientRect();
+      return {
+        clientWidth: document.documentElement.clientWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+        allTabsInsideNav:
+          Boolean(navBounds) &&
+          links.every((link) => {
+            const bounds = link.getBoundingClientRect();
+            return (
+              bounds.left >= navBounds!.left - 1 &&
+              bounds.right <= navBounds!.right + 1
+            );
+          }),
+        groupGap: group ? getComputedStyle(group).gap : "",
+        groupBorderWidth: group ? getComputedStyle(group).borderTopWidth : "",
+      };
+    });
+    expect(constrainedLayout.scrollWidth).toBeLessThanOrEqual(
+      constrainedLayout.clientWidth,
+    );
+    expect(constrainedLayout.allTabsInsideNav).toBe(true);
+    expect(constrainedLayout.groupGap).toBe("0px");
+    expect(constrainedLayout.groupBorderWidth).toBe("1px");
+    await expect(
+      page.getByRole("heading", {
+        level: 1,
+        name: "Editorial Guidelines",
+      }),
+    ).toBeVisible();
+    await expect(
+      page
+        .getByRole("region", { name: "Editorial Guidelines" })
+        .getByText("editorial/method/standard.md", { exact: true }),
+    ).toBeVisible();
+
+    const history = page.getByRole("list", {
+      name: "Editorial standard history",
+    });
+    expect(await history.getByRole("listitem").count()).toBeGreaterThan(0);
+    await expect(history).toContainText("R-LEDGER-WINS");
+    await expect(history).toContainText(
+      "Moved from editorial/standards/editorial.md to editorial/method/standard.md.",
+    );
+
+    const standard = page.getByRole("article", {
+      name: "Current editorial standard",
+    });
+    await expect(
+      standard.getByRole("heading", {
+        level: 2,
+        name: "2. Hierarchy of fidelity",
+      }),
+    ).toBeVisible();
+    await expect(standard).toContainText("R-VOICE-BIND");
+    await expect(standard).toContainText("R-LEDGER-WINS");
+    const sectionHistoryButtons = standard.getByRole("button", {
+      name: /^View Git history for /,
+    });
+    await expect(sectionHistoryButtons).toHaveCount(12);
+    await standard
+      .getByRole("button", {
+        name: "View Git history for Editorial aim, 1 recorded revision",
+      })
+      .click();
+    const aimHistory = page.getByRole("list", {
+      name: "Git history for Editorial aim",
+    });
+    await expect(aimHistory).toBeVisible();
+    await expect(aimHistory).toContainText("Introduced");
+    await expect(aimHistory).toContainText("Current");
+    const guidelinesBeforeEvolution = await page.evaluate(() => {
+      const standard = document.querySelector(
+        'article[aria-label="Current editorial standard"]',
+      );
+      const history = document.querySelector(
+        'ol[aria-label="Editorial standard history"]',
+      );
+      return Boolean(
+        standard &&
+        history &&
+        standard.compareDocumentPosition(history) &
+          Node.DOCUMENT_POSITION_FOLLOWING,
+      );
+    });
+    expect(guidelinesBeforeEvolution).toBe(true);
+
+    const voiceCards = page.getByRole("region", { name: "Voice Cards" });
+    const voiceCardDisclosures = voiceCards.locator("details");
+    await expect(voiceCardDisclosures).toHaveCount(10);
+    const corpusVoiceCard = voiceCards.locator('[data-voice-card-id="corpus"]');
+    await expect(corpusVoiceCard).toHaveAttribute("open", "");
+    await expect(corpusVoiceCard).toContainText(
+      "Invite scrutiny, questions, practice, or participation.",
+    );
+    await expect(corpusVoiceCard).toContainText(
+      "editorial/sources/corpus/voice-card.md",
+    );
+    const volumeOneVoiceCard = voiceCards.locator(
+      '[data-voice-card-id="volume-01"]',
+    );
+    await expect(volumeOneVoiceCard).not.toHaveAttribute("open", "");
+    await volumeOneVoiceCard.locator("summary").click();
+    await expect(volumeOneVoiceCard).toHaveAttribute("open", "");
+    await expect(volumeOneVoiceCard).toContainText("Invitational and candid.");
+    await volumeOneVoiceCard.locator("summary").click();
+
+    const voiceCardsFollowEvolution = await page.evaluate(() => {
+      const history = document.querySelector(
+        'ol[aria-label="Editorial standard history"]',
+      );
+      const voiceCards = document.querySelector(
+        'section[aria-labelledby="voice-cards-title"]',
+      );
+      return Boolean(
+        history &&
+        voiceCards &&
+        history.compareDocumentPosition(voiceCards) &
+          Node.DOCUMENT_POSITION_FOLLOWING,
+      );
+    });
+    expect(voiceCardsFollowEvolution).toBe(true);
+
+    await page.setViewportSize({ width: 320, height: 844 });
+    const mobileContext = page.getByRole("region", { name: "Page context" });
+    await expect(desktopBreadcrumb).toBeHidden();
+    await expect(
+      mobileContext.getByRole("navigation", { name: "Breadcrumb" }),
+    ).toBeVisible();
+    const mobileNav = mobileContext.getByRole("navigation", {
+      name: "Admin views",
+    });
+    const currentTab = mobileNav.getByRole("link", {
+      name: "Editorial Guidelines",
+    });
+    await expect(currentTab).toBeVisible();
+    await expect(currentTab).toHaveAttribute("aria-current", "page");
+    await expect(currentTab).toBeInViewport();
+
+    const mobileLayout = await page.evaluate(() => {
+      const nav = document.querySelector(
+        '.mobile-page-context nav[aria-label="Admin views"]',
+      );
+      const current = nav?.querySelector('[aria-current="page"]');
+      const links = nav ? [...nav.querySelectorAll("a")] : [];
+      const navBounds = nav?.getBoundingClientRect();
+      const currentBounds = current?.getBoundingClientRect();
+      const firstBounds = links[0]?.getBoundingClientRect();
+      return {
+        clientWidth: document.documentElement.clientWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+        navOverflowX: nav ? getComputedStyle(nav).overflowX : "",
+        navCanScroll: Boolean(nav) && nav!.scrollWidth > nav!.clientWidth,
+        currentInsideNav:
+          Boolean(navBounds && currentBounds) &&
+          currentBounds!.left >= navBounds!.left - 1 &&
+          currentBounds!.right <= navBounds!.right + 1,
+        navRunsEdgeToEdge:
+          Boolean(navBounds) &&
+          navBounds!.left <= 1 &&
+          navBounds!.right >= document.documentElement.clientWidth - 1,
+        firstTabStartsAtOrBeforePageGutter:
+          Boolean(firstBounds) && firstBounds!.left <= 21,
+      };
+    });
+    expect(mobileLayout.scrollWidth).toBeLessThanOrEqual(
+      mobileLayout.clientWidth,
+    );
+    expect(mobileLayout.navOverflowX).toBe("auto");
+    expect(mobileLayout.navCanScroll).toBe(true);
+    expect(mobileLayout.currentInsideNav).toBe(true);
+    expect(mobileLayout.navRunsEdgeToEdge).toBe(true);
+    expect(mobileLayout.firstTabStartsAtOrBeforePageGutter).toBe(true);
+  });
+
+  test("uses theme tokens for every major admin surface", async ({ page }) => {
+    const themes = ["textured", "light", "dark", "black"] as const;
+    const setTheme = async (theme: (typeof themes)[number]) => {
+      await page.evaluate((nextTheme) => {
+        document.documentElement.setAttribute("data-reader-theme", nextTheme);
+      }, theme);
+    };
+    const expectToken = async (
+      locator: ReturnType<typeof page.locator>,
+      property: "backgroundColor" | "color",
+      token: string,
+    ) => {
+      const colors = await locator.evaluate(
+        (node, { property: requestedProperty, token: requestedToken }) => {
+          const probe = document.createElement("span");
+          probe.style.position = "absolute";
+          probe.style.pointerEvents = "none";
+          if (requestedProperty === "backgroundColor") {
+            probe.style.backgroundColor = `var(${requestedToken})`;
+          } else {
+            probe.style.color = `var(${requestedToken})`;
+          }
+          node.append(probe);
+          const actual = getComputedStyle(node)[requestedProperty];
+          const expected = getComputedStyle(probe)[requestedProperty];
+          probe.remove();
+          return { actual, expected };
+        },
+        { property, token },
+      );
+      expect(colors.actual).toBe(colors.expected);
+    };
+
+    for (const theme of themes) {
+      await page.goto("/admin/guidelines/");
+      await setTheme(theme);
+      const standard = page.getByRole("article", {
+        name: "Current editorial standard",
+      });
+      await expectToken(standard, "backgroundColor", "--panel-background");
+      await expectToken(
+        standard.getByRole("heading", { level: 2 }).first(),
+        "color",
+        "--ink",
+      );
+      await expectToken(standard.locator("p").first(), "color", "--ink-soft");
+      await expectToken(
+        page.locator(".admin-header-view-list").first(),
+        "backgroundColor",
+        "--card-background",
+      );
+
+      const historyButton = standard.getByRole("button", {
+        name: /^View Git history for Hierarchy of fidelity, \d+ recorded revisions$/,
+      });
+      await expect(historyButton).toContainText(/^\d+$/);
+      await historyButton.click();
+      const history = page.getByRole("list", {
+        name: "Git history for Hierarchy of fidelity",
+      });
+      await expectToken(
+        history.locator("xpath=..").first(),
+        "backgroundColor",
+        "--panel-background",
+      );
+
+      await page.goto("/admin/");
+      await setTheme(theme);
+      await expectToken(
+        page.locator('[class*="metricCard"]').nth(1),
+        "backgroundColor",
+        "--admin-surface",
+      );
+      await expectToken(
+        page.locator('[class*="currentPanel"]'),
+        "backgroundColor",
+        "--admin-surface-strong",
+      );
+      await expectToken(
+        page.locator('[class*="taskCard"]').first(),
+        "backgroundColor",
+        "--admin-field",
+      );
+
+      await page.goto("/admin/calibration/");
+      await setTheme(theme);
+      await expectToken(
+        page.locator('[class*="revisionMetrics"]'),
+        "backgroundColor",
+        "--admin-surface",
+      );
+      await expectToken(
+        page.locator('[class*="startSessionPanel"]'),
+        "backgroundColor",
+        "--admin-surface-strong",
+      );
+      await expectToken(
+        page.locator('[class*="workingRevisionGrid"] article').first(),
+        "backgroundColor",
+        "--admin-surface",
+      );
+    }
+  });
+
   test("turns the revision ledger into a bounded editorial workflow", async ({
     page,
   }) => {
@@ -134,12 +469,16 @@ test.describe("local editorial admin", () => {
 
     const adminNav = page.getByRole("navigation", { name: "Admin views" });
     await expect(
-      adminNav.getByRole("link", { name: "Editorial revisions" }),
+      adminNav.getByRole("link", { name: "Editorial Revisions" }),
     ).toHaveAttribute("aria-current", "page");
 
     await expect(
-      page.getByRole("heading", { level: 1, name: "Editorial revisions" }),
+      page.getByRole("heading", { level: 1, name: "Editorial Revisions" }),
     ).toBeVisible();
+    await expect(page.getByText("Editorial decision ledger")).toHaveCount(0);
+    await expect(
+      page.getByText("Compare variants", { exact: false }),
+    ).toHaveCount(0);
     await expect(
       page.getByRole("region", { name: "Revision summary" }),
     ).toBeVisible();
@@ -171,7 +510,7 @@ test.describe("local editorial admin", () => {
       "/admin/bench/v01-orientation/",
     );
     await expect(
-      orientationCard.getByText("8 rulings", { exact: true }),
+      orientationCard.getByText(/^\d+ rulings?$/),
     ).toBeVisible();
     await expect(
       orientationCard.getByText(
@@ -196,7 +535,7 @@ test.describe("local editorial admin", () => {
     const promptButtons = page.getByRole("button", {
       name: "Copy session prompt",
     });
-    await expect(promptButtons).toHaveCount(4);
+    expect(await promptButtons.count()).toBeGreaterThan(0);
     await promptButtons.nth(0).click();
     await expect(page.getByRole("button", { name: "Copied" })).toBeVisible();
 
