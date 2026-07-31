@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-practices-beyond-representation",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What Has Been Tried**",
+  "currentHeading": "**Practices Beyond Representation**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **Practices Beyond Representation**, the prior pass's rename of **What Has Been Tried**, the second section in the volume carrying that baseline heading.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "These traditions are working governance systems that addressed coordination problems",
+      "They do demonstrate that when ordinary citizens receive time",
+      "Neither answers civilizational governance at planetary scale"
+    ],
+    "result": "None appears in the baseline. The first deletes a refusal that preceded the claim. The second replaces an adversative and a colon with a concessive auxiliary. The third flattens a cleft and drops the plural referent."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Citizens' Assembly",
+      "Constitutional Convention",
+      "vTaiwan",
+      "Sunflower Movement",
+      "Haudenosaunee",
+      "Great Law of Peace",
+      "subsidiarity",
+      "sortition"
+    ],
+    "itemsRead": [
+      "CTD-0019",
+      "CTD-0004",
+      "CTD-0070",
+      "CTD-0013"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. Every date, count, and named institution is identical in baseline and shipped text: 2012, sixty-six, thirty-three, 2016, ninety-nine, 2014, 2019 and 2020, 150. CTD-0004 covers historical priority claims, and the Haudenosaunee paragraph makes none in either version; it says the Great Law of Peace is one of the most documented, though not the only example, which is a claim about documentation rather than about priority. CTD-0019 remains the open critical item covering the Irish, French, and Taiwanese accounts."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The refusal protecting the Indigenous governance paragraph was deleted.",
+      "evidence": {
+        "baseline": "These traditions are not romantic relics. They are working governance systems that solved coordination problems modern political theory still struggles with",
+        "shipped": "These traditions are working governance systems that addressed coordination problems modern political theory still struggles with"
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis.",
+      "diagnosis": "4.3's retention limb applies and the stakes here are higher than usual. Romantic relic is a live reading of Indigenous governance material and the paragraph exists partly to refuse it, which is why the paragraph ends by calling mainstream political science's neglect diagnostic. Without the refusal the paragraph asserts the traditions work and never names what it is arguing against. Solved is also stronger and more accurate than addressed: the paragraph's claim is that these systems answered a problem modern theory has not.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F2",
+      "summary": "An adversative and a colon staging the section's central finding became a concessive auxiliary.",
+      "evidence": {
+        "baseline": "have not yet demonstrated whether deliberative bodies can scale to ongoing governance rather than episodic intervention. But they demonstrate something important: when ordinary citizens are given time, expert testimony, facilitated deliberation, and the responsibility of producing serious recommendations, they consistently produce",
+        "shipped": "have not shown whether deliberative bodies can scale from episodic intervention to ongoing governance. They do demonstrate that when ordinary citizens receive time, expert testimony, facilitated deliberation, and responsibility for serious recommendations, they consistently produce"
+      },
+      "authorizedBy": "Compression, and catalog 4.6 read onto something important.",
+      "diagnosis": "The paragraph concedes three limits and then turns. But they demonstrate something important is the turn, and the colon holds the finding back for one beat so it lands as a finding. They do demonstrate that folds the turn into an auxiliary and the finding into a subordinate clause. Are given also matters: the citizens are given these conditions by someone, which is the whole design claim, and receive removes the giver. And not yet demonstrated concedes that the evidence may arrive; not shown concedes nothing about time.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F3",
+      "summary": "A cleft summarizing the two national experiments was flattened and the work is not half was deleted.",
+      "evidence": {
+        "baseline": "They are not the answer to civilizational governance at planetary scale. What they reveal is that the design space ... The work is not to invent a single new governance architecture that will replace existing institutions. The work is to develop coordination layers",
+        "shipped": "Neither answers civilizational governance at planetary scale. They reveal that the design space ... The work is to develop coordination layers"
+      },
+      "authorizedBy": "Compression, and catalog 4.9.",
+      "diagnosis": "Same shape as the economics chapter's parallel section, in the same position, with the same two deletions. What they reveal is bounds the claim to the evidence; the paired the work is not and the work is names the substitution the chapter is proposing. Deleting the first half leaves a single positive prescription and removes the alternative the chapter is declining, which is the one most readers would assume a book like this is proposing.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "Three qualifiers were removed from the empirical accounts, each narrowing what the evidence shows.",
+      "evidence": {
+        "baseline": "maps the actual structure of public opinion by identifying both common ground and genuine disagreement ... The results have been mixed; the French government adopted some recommendations and diluted others, which itself revealed something important ... deliberation itself, structured, sustained, embodied, and facilitated, is doing work that elections cannot",
+        "shipped": "maps public opinion by identifying common ground and genuine disagreement ... The results were mixed. The French government adopted some recommendations and diluted others, which revealed something ... structured, sustained, embodied, and facilitated deliberation does work elections cannot"
+      },
+      "authorizedBy": "Compression, and catalog 4.21 read onto actual and itself.",
+      "diagnosis": "The actual structure of public opinion is what distinguishes the tool from a poll: it maps structure, not distribution. Which itself revealed is the sentence's point, that the dilution was itself evidence about legitimacy, and which revealed loses the reflexive. And deliberation itself, with its four adjectives as an interruption, keeps deliberation as the subject and the adjectives as description; the pass's compound modifier makes structured-and-facilitated deliberation a subtype, which weakens the claim from deliberation does this work to a certain kind of deliberation does.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "Critical, open. Every date and count in the Irish, French, and Taiwanese accounts is identical in both versions. The restoration touches framing and qualifiers only."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "unchanged",
+      "note": "The Haudenosaunee reference makes a documentation claim, not a priority claim, in both versions. Restoring though not the only example keeps the bound explicit."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks. One pair enclosed the three-part account of how the Assembly reached its recommendation and was repaired with commas, since the enclosed material is a coordinate series attached to reached and cannot be misread as the sentence's subject. One preceded the Great Law of Peace as an absolute construction and became a comma, which is the standard punctuation for that construction."
+        },
+        {
+          "kind": "kept",
+          "note": "The model is partial. It works alongside conventional government rather than replacing it., byte-identical in the pass. Two sentences that concede the limit before the claim, and the pass left them alone."
+        },
+        {
+          "kind": "restored",
+          "note": "These traditions are not romantic relics, But they demonstrate something important with its colon, the what they reveal cleft, the work is not half, actual structure and both, which itself revealed, deliberation itself with its four adjectives as an interruption, an entirely citizen body, originally, and the four specific mechanisms as an asyndetic series."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is the one to carry. Catalog 4.3 asks whether the rejected alternative is plausible, and romantic relic is not merely plausible, it is the standard dismissal the paragraph was written to answer. Deleting it made the paragraph shorter and left it arguing against nothing. Where a refusal names a reading the passage's subject actually receives from readers, the retention limb is not a close call, and this is the third such deletion in Chapters Eight and Nine alone."
+  }
+}

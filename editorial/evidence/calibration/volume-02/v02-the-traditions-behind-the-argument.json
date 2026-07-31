@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-traditions-behind-the-argument",
+  "editorialId": "volume-02",
+  "sectionHeading": "**On the Conversation**",
+  "currentHeading": "**The Traditions Behind the Argument**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **The Traditions Behind the Argument**, the prior pass's rename of **On the Conversation**.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "The book does not engage any of these traditions at the depth it deserves",
+      "The book offers something different",
+      "Political scientists in this tradition have studied the Citizens’ Assembly material carefully"
+    ],
+    "result": "None appears in the baseline. The first changes which noun deserves the depth. The second flattens a cleft. The third inverts a passive into an active, promoting the scholars over the material."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "McLuhan",
+      "Mumford",
+      "Ellul",
+      "Illich",
+      "Berry",
+      "Hyde",
+      "Schmachtenberger",
+      "McGilchrist",
+      "Ostrom",
+      "Raworth",
+      "Habermas",
+      "Fishkin",
+      "Landemore",
+      "Alfred",
+      "Coulthard",
+      "Kimmerer",
+      "Porges",
+      "Levine",
+      "Haudenosaunee",
+      "substrate amplification"
+    ],
+    "itemsRead": [
+      "CTD-0019",
+      "CTD-0001",
+      "CTD-0004",
+      "CTD-0016"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. Every proper name, book title, and attributed position is identical in baseline and shipped text; nothing in this section's restoration touches a fact, a date, or an attribution. CTD-0016 tracks the technological power thesis, and the substrate-amplification thesis is stated here in the same words in both versions. CTD-0004 covers historical priority claims; the baseline's each contributed to the philosophical and historical understanding attributes a contribution rather than a priority in both versions."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's closing cleft was flattened, the seventh instance of the habit in this volume and the fourth whose subject is the book.",
+      "evidence": {
+        "baseline": "What this book offers is something different: an integration across traditions that none of them, individually, attempts, in service of a practical question about what to build.",
+        "shipped": "The book offers something different: an integration across traditions that none attempts individually, in service of a practical question about what to build."
+      },
+      "authorizedBy": "Compression, and catalog 4.9.",
+      "diagnosis": "The cleft is the section's landing and the answer to the confession one sentence earlier that none of these traditions is engaged at the depth it deserves. What this book offers is names the offer as a limited thing being placed beside a debt just admitted. The book offers something different is a claim to distinction. The pass also moved individually out of its comma interruption, where it was stressing that each tradition attempts the integration singly, and none of them became none, which loses the referent the sentence needs.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The admission of insufficient engagement was rewritten so the depth belongs to the book rather than to the traditions.",
+      "evidence": {
+        "baseline": "None of these traditions is engaged in this book at the depth they deserve. That is not a failure; it is a function of what this book is for.",
+        "shipped": "The book does not engage any of these traditions at the depth it deserves. That is not a failure; it follows from the book’s purpose."
+      },
+      "authorizedBy": "Compression, and catalog 4.5 read onto the passive.",
+      "diagnosis": "The baseline sentence has the traditions as its subject and they deserve as its final claim, so the depth is owed to Ostrom, Illich, Kimmerer, and the rest. The pass's version has the book as subject and the depth it deserves, which now reads as the depth the book merits, reversing who is owed what in the one sentence where the chapter acknowledges a debt. It is a function of what this book is for also states a purpose the book has; it follows from the book's purpose states an entailment, which is a weaker and more impersonal claim.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F3",
+      "summary": "A passive keeping the studied material in subject position was inverted into an active promoting the scholars.",
+      "evidence": {
+        "baseline": "The Citizens’ Assembly material has been studied carefully by political scientists working in this tradition; the vTaiwan experiments have been documented extensively.",
+        "shipped": "Political scientists in this tradition have studied the Citizens’ Assembly material carefully, and the vTaiwan experiments have been documented extensively."
+      },
+      "authorizedBy": "Catalog 4.5, abstract noun clusters, read as a preference for the active voice.",
+      "diagnosis": "The paragraph is a reading list, and its subjects are bodies of material a reader can go to. Both baseline clauses are passive for the same reason and the semicolon holds them parallel. Inverting only the first breaks the parallel and leaves a comma splice of unlike clauses. This is the third instance in the batch of an active-voice preference applied where the passive was choosing the subject deliberately.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F4",
+      "summary": "Six compound terms were hyphenated and two lists closed, converting field names into coinages.",
+      "evidence": {
+        "baseline": "the deliberative democracy literature ... Indigenous governance scholarship ... the somatic experiencing tradition of Peter Levine ... the heart rate variability research that has accumulated",
+        "shipped": "deliberative-democracy literature ... Indigenous-governance scholarship ... Peter Levine’s somatic-experiencing tradition ... heart-rate-variability research accumulated"
+      },
+      "authorizedBy": "House copy style.",
+      "diagnosis": "Deliberative democracy, Indigenous governance, somatic experiencing, and heart rate variability are the names these fields use for themselves. Hyphenating them makes each read as a compound the book assembled, which is the opposite of what a section acknowledging traditions should do. Somatic Experiencing is additionally a trademarked modality name, so the possessive Peter Levine's somatic-experiencing tradition attributes the tradition to the person more tightly than the baseline's the somatic experiencing tradition of Peter Levine. The research that has accumulated over the past several decades also states a process, where research accumulated states a completed fact.",
+      "producedRule": "R-REGISTER-DICTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "Critical, open. Every attributed position in this section is identical in both versions. The restoration touches articles, hyphens, voice, and one cleft, and no name, title, or claim."
+    },
+    {
+      "id": "CTD-0001",
+      "effect": "unchanged, evidence restored",
+      "note": "This section is the manuscript's substitute for a bibliography. Restoring will find it in any of these works and each of these bodies of work would reward sustained engagement returns the referrals in their baseline form, which is the material the roots bibliography would have to be reconciled against."
+    },
+    {
+      "id": "CTD-0016",
+      "effect": "unchanged",
+      "note": "The substrate-amplification thesis is stated identically in both versions. Restoring the conceptual backbone of the book, and it stands within a long tradition separates the thesis from its lineage where the pass had merged the two clauses."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three prohibited marks. One followed the five named technology critics and resumed with each contributed; repaired with a colon. One introduced the four deliberative democracy names at the end of its clause; repaired with a colon. One pair enclosed three AI alignment sources mid-sentence and was rebuilt as two sentences, The work cited is real and current, followed by the list, then But it represents a fraction, because no inline mark could carry a three-item list between a subject and its verb without ambiguity."
+        },
+        {
+          "kind": "kept",
+          "note": "The italicization of The Master and His Emissary and The Matter With Things, which the pass added. Italicizing a book title is a citation convention the baseline omitted, and section 9 of the standard requires citations to be preserved and improved rather than reverted for fidelity's sake."
+        },
+        {
+          "kind": "restored",
+          "note": "The closing cleft with none of them, individually, the traditions as subject in None of these traditions is engaged, the passive in the Citizens' Assembly clause, the unhyphenated field names, the specific design space the book gestures at, the heterodox tradition that has been articulating, the relationship between technology and place, their deployment, any of these works, a version of it, the wider body of work, and the substantial scholarship on contemplative neuroscience."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 is the finding worth carrying and it is a grammatical accident with an editorial cost. Rewriting a passive into an active moved the pronoun in they deserve from the traditions to the book, so a sentence conceding a debt to nineteen named scholars now reads as a claim about what the book merits. The pass could not have intended it. It follows mechanically from choosing a new subject, which is why an active-voice preference is dangerous in any sentence whose point is who is owed something."
+  }
+}

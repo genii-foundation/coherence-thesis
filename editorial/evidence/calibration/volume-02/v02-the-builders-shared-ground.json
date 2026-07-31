@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-builders-shared-ground",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What the Builders Have in Common**",
+  "currentHeading": "**The Builders' Shared Ground**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **The Builders' Shared Ground**, the prior pass's rename of **What the Builders Have in Common**.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "Builders in this field have generally learned to do more with less",
+      "cycles in which capital, ideology, or the gravitational pull of success captured",
+      "Builders most likely to succeed at coherent coordination infrastructure"
+    ],
+    "result": "None appears in the baseline. The first replaces four repeated of phrases with a verb series. The second inverts a passive that was doing deliberate work. The third drops the definite article and the relative clause that made the claim a claim about people rather than about a category."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "undercapitalization",
+      "AI capability capital",
+      "somatic practice",
+      "nervous systems",
+      "founder capture",
+      "cross-domain"
+    ],
+    "itemsRead": [
+      "CTD-0019",
+      "CTD-0067",
+      "CTD-0066"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. The capital comparison, that AI capability funding exceeds all coordination and contemplative and governance and regenerative-economics funding by orders of magnitude, is an unsourced quantitative claim in both versions and belongs to CTD-0019. The restoration of all of and combined makes the claim slightly broader in wording without changing its magnitude, and it is recorded so the item's verification covers the restored form."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Four repeated of phrases naming habits became a four-verb series naming behaviors.",
+      "evidence": {
+        "baseline": "have generally developed habits of doing more with less, of refusing scale that would compromise integrity, of holding long time horizons, of working in conditions where the work matters more than the visibility",
+        "shipped": "have generally learned to do more with less, refuse scale that would compromise integrity, hold long time horizons, and work where the work matters more than visibility"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, and 4.5.",
+      "diagnosis": "The repeated of makes four separate habits rather than one four-part disposition, which matters because the paragraph's claim is that undercapitalization produced them independently. Habits of is also not the same as learned to: a habit is something that formed, learning is something the builders did on purpose, and the paragraph attributes the formation to conditions. The final and again closes a set the sentence had left open. This is the eighth instance in Volume II.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "A deliberate passive naming what happens to organizations was inverted into an active naming what capital does.",
+      "evidence": {
+        "baseline": "Many have lived through cycles of mission-driven organizations being captured by capital, by ideology, or by the gravitational pull of their own success.",
+        "shipped": "Many have lived through cycles in which capital, ideology, or the gravitational pull of success captured mission-driven organizations."
+      },
+      "authorizedBy": "Catalog 4.28, inanimate agency, and 4.5.",
+      "diagnosis": "This is 4.28 applied against itself. The baseline's passive keeps the organizations in subject position because they are what the builders watched happen, and the three repeated bys separate three unlike forces. The active version makes capital and ideology and a gravitational pull the agents of a verb of intention, which is precisely the personification 4.28 exists to catch. The pass also dropped their own from their own success, which was the point: the third force is not external.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F3",
+      "summary": "Three claims about particular people were generalized into claims about categories.",
+      "evidence": {
+        "baseline": "The builders most likely to succeed at building coherent coordination infrastructure are the ones who have done enough of their own regulatory work ... The builders most worth working with are the ones who have already developed an immune response",
+        "shipped": "Builders most likely to succeed at coherent coordination infrastructure have done enough regulatory work of their own ... The builders most worth working with have developed an immune response"
+      },
+      "authorizedBy": "Compression, and catalog 4.9 read onto are the ones who.",
+      "diagnosis": "Are the ones who identifies a subset among builders who exist. Without it the sentence defines what a successful builder is, which is a definition rather than an observation, and the section opened by promising characteristics worth naming rather than criteria. Already before developed also carries the paragraph's timing: the immune response predates the work, which is why it is a selector.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "An em dash pair around four kinds of practice became a comma pair, producing the same garden path recorded elsewhere in this batch.",
+      "evidence": {
+        "baseline": "at least one form of personal practice—somatic, contemplative, therapeutic, or relational—that has changed their understanding",
+        "shipped": "at least one form of personal practice, somatic, contemplative, therapeutic, or relational, that has changed their understanding"
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by substituting commas.",
+      "diagnosis": "The comma pair reads as apposition to practice on second pass and as a series on first, and the relative clause that follows makes the ambiguity worse because that has changed can attach to relational. Repaired here with whether, which marks the four as alternatives and cannot be read as a series continuation. Catalog 4.22's retention limb applies: the bounds matter, because the paragraph's claim is that any one of the four is sufficient.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged, wording restored",
+      "note": "Critical, open. The capital comparison is unsourced in both versions. Restoring all of and combined returns the claim to its baseline breadth so the item's verification is against the text the author will publish."
+    },
+    {
+      "id": "CTD-0067",
+      "effect": "unchanged",
+      "note": "This section describes shared characteristics, not types. Restoring are the ones who at both occurrences narrows the claims from definitions to observations, which moves slightly toward the heuristic framing the item asks for."
+    },
+    {
+      "id": "CTD-0066",
+      "effect": "contested",
+      "note": "The restored four of phrases and four in phrases add parallel-sequence surface the item counts. Named rather than hidden."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks. One pair enclosed four kinds of personal practice and was rebuilt with whether, because a comma pair produced a garden path. One preceded the meeting of worlds gloss at the end of the section and became a colon, since the gloss specifies the integration work just named."
+        },
+        {
+          "kind": "kept",
+          "note": "This is a quiet selector, but it operates. and The most useful builders in this field are rarely pure specialists., both untouched by the pass. They are the section's two best sentences and neither needed anything."
+        },
+        {
+          "kind": "restored",
+          "note": "The four of phrases, the four in phrases, the passive about organizations being captured, their own before success, are the ones who at both occurrences, already, all of and combined in the capital comparison, itself before a kind of substrate, and the definite articles the pass removed from the surface differences and the people."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 is the second instance in this batch of catalog 4.28 being cited to remove an actor rather than recover one, after the same inversion in The Liminal Phase. Both times the pass matched a passive or an abstract subject on surface shape and rewrote toward an active sentence whose new subject was an abstraction performing a human act. Two instances in one volume is enough to say the category is being read as a preference for the active voice, which is not what it says."
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-providence-and-economic-experiment",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What Providence Is and Is Not Doing in This Dimension**",
+  "currentHeading": "**Providence and Economic Experiment**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This is the second of the five Providence disclosure sections, each renamed by the prior pass. Recorded as an open question, not changed, because all five labels are routes.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "The project is examining a research question, not making a product commitment: could its matching architecture",
+      "This is a modest and more defensible claim",
+      "Providence is not introducing a new currency in the conventional sense, proposing a coherence score, or claiming"
+    ],
+    "result": "None appears in the baseline. The first flattens the disclosure cleft and converts a statement into a question. The second is the exact duplicate CTD-0065 records the pass as having created. The third merges three separate disavowals into one series."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Providence",
+      "matching architecture",
+      "lunar cadence",
+      "physiological-wallet",
+      "relational coordination layer",
+      "coherence score",
+      "This is a modest and more defensible claim"
+    ],
+    "itemsRead": [
+      "CTD-0065",
+      "CTD-0064",
+      "CTD-0003",
+      "CTD-0012",
+      "CTD-0040"
+    ],
+    "outcome": "CTD-0065 is high severity and open, and it names this section by line. Its evidence records repeated Providence openings and specifically the repeated use of This is a modest and more defensible claim, along with exact duplicates the pass introduced at several line pairs. Restoring the baseline's This is a more modest claim than the chapter would otherwise be tempted to make, and it is more defensible removes one instance of that duplicate. This does not pay the item down, but it reduces the duplication the item was opened against, and it is recorded so the item's repetition map is built against the current text."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The disclosure cleft was flattened and the statement it carried became a question.",
+      "evidence": {
+        "baseline": "What the project is paying attention to, as a research question rather than a product commitment, is whether the matching architecture and trust layer being built might eventually support the kinds of coordination that allow value to circulate along non-extractive pathways.",
+        "shipped": "The project is examining a research question, not making a product commitment: could its matching architecture and trust layer eventually support coordination that lets value circulate along non-extractive pathways?"
+      },
+      "authorizedBy": "Compression, and catalog 4.9 read onto the cleft.",
+      "diagnosis": "This is the named habit at its second confirmed occurrence. What the project is paying attention to keeps the project out of the subject position and puts its attention there instead, which is the whole point of a disclosure section: attention is something a project can honestly claim, and examining is an activity. The conversion to a direct question compounds it, because a question invites the reader to answer, and a research question stated as a statement stays the project's own. Being built was also deleted, and it was the phrase marking the architecture as unfinished.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "Three separate disavowals were merged into one series, and the modesty claim was replaced with the duplicate the debt ledger records.",
+      "evidence": {
+        "baseline": "Providence is not introducing a new currency in the conventional sense. It is not proposing a coherence score. It is not claiming to have solved the problem of regenerative economics. ... This is a more modest claim than the chapter would otherwise be tempted to make, and it is more defensible.",
+        "shipped": "Providence is not introducing a new currency in the conventional sense, proposing a coherence score, or claiming to have solved regenerative economics. ... This is a modest and more defensible claim."
+      },
+      "authorizedBy": "Catalog 4.9 and 4.8.",
+      "diagnosis": "Three sentences each refusing one thing become one sentence refusing a list, which reads as a single denial of a single accusation. The second half is the more consequential change and it is recorded in the ledger: the pass's This is a modest and more defensible claim appears verbatim in three disclosure sections, which CTD-0065 cites as evidence that the volume feels templated. The baseline sentence is longer and unique to this section, and it says something the shorter version does not: that the chapter was tempted toward a larger claim and the writer declined it.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The section's closing cleft was flattened, the second in the same section.",
+      "evidence": {
+        "baseline": "What Providence might contribute is some of the relational infrastructure through which those experiments find one another faster than they otherwise would.",
+        "shipped": "Providence might contribute some of the relational infrastructure through which those experiments find one another sooner."
+      },
+      "authorizedBy": "Compression, and catalog 4.9.",
+      "diagnosis": "Same construction, same section, second instance, exactly as in the builder-field disclosure. The cleft makes the contribution the subject and the project its source; the flattened version makes the project the actor. Faster than they otherwise would also states a comparison against a counterfactual, which is a bounded claim; sooner is unbounded.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "Three participles describing an unbuilt architecture became infinitives of purpose, and a long-arc qualification lost its embedding.",
+      "evidence": {
+        "baseline": "The long-term developmental arc described in Chapter Five, in which a physiological-wallet layer might eventually support something currency-like in the older sense of what circulates, is part of what the project is being designed toward.",
+        "shipped": "The long-term developmental arc described in Chapter Five includes a physiological-wallet layer that might eventually support something currency-like in the older sense of what circulates."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline embeds the wallet inside a relative clause modifying an arc, so the sentence's assertion is about what the project is designed toward and the wallet is a description of the arc. The pass makes includes the main verb, so the sentence now asserts that the arc contains the wallet. Section 5 of the standard requires proposals and future institutions not to be described in a present tense that could be mistaken for a report, and includes is that tense.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0065",
+      "effect": "duplication reduced, item unchanged",
+      "note": "High severity, open. One instance of the exact duplicate This is a modest and more defensible claim, which the item cites by line as evidence of a templated disclosure architecture, is replaced by the baseline's longer and section-specific sentence. The item still stands: five disclosure sections still make the same disclaimer, and the developmental repetition map it asks for has not been built."
+    },
+    {
+      "id": "CTD-0064",
+      "effect": "unchanged, separation strengthened",
+      "note": "Restoring the relative-clause embedding around the physiological-wallet layer, and being built after the trust layer, keeps the future architecture in the future tense the item asks for."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "unchanged",
+      "note": "Something currency-like in the older sense of what circulates is identical in both versions. The item's ontological question is not engaged."
+    },
+    {
+      "id": "CTD-0040",
+      "effect": "unchanged",
+      "note": "The trust layer appears here as being built and as a precondition rather than an existing control."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark, preceding the participial gloss on what operating at the relational coordination layer means. Repaired with a comma, since the gloss is grammatically dependent and the enclosed material contains no internal series that a comma would confuse."
+        },
+        {
+          "kind": "kept",
+          "note": "Providence does not build those mechanisms., byte-identical in the pass. Four words, and the flattest disclosure in the section."
+        },
+        {
+          "kind": "restored",
+          "note": "Both clefts, the three separate disavowals, the baseline modesty sentence, the arc's relative-clause embedding, being built, communities of before aligned builders, then before the conditions exist, mutual credit unhyphenated, and those mechanisms in place of the pass's pronoun."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the five Providence disclosure sections recover their shared heading?",
+      "context": "Carried forward from the earlier Volume II records that raised the same question. All five labels are routes and none was changed.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and the disclosure habit is now confirmed in four of the five Providence sections. What is new here is the interaction with CTD-0065. The pass replaced a sentence unique to this section with a sentence it used in three sections, which means the same pass that a debt item faults for templating produced the template by compressing distinct sentences toward a common short form. Restoring the baseline reduces the duplication the item counts, which is an unusual case of a restoration paying down rather than reopening."
+  }
+}

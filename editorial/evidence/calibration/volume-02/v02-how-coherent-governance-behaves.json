@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-how-coherent-governance-behaves",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Coherence as a Property of Governance Systems**",
+  "currentHeading": "**How Coherent Governance Behaves**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **How Coherent Governance Behaves**, the prior pass's rename of **Coherence as a Property of Governance Systems**.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "Procedures matter, but they do not primarily produce legitimacy",
+      "This is coherence as infrastructure applied to governance, as Chapter Five described it",
+      "Restoring feedback may be the most important practical work"
+    ],
+    "result": "None appears in the baseline. The first inverts a concession so the concession leads. The second demotes a cross-reference to a trailing clause. The third deletes a concession about glamour that was doing tonal work."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "subsidiarity",
+      "living feedback",
+      "coherence as infrastructure",
+      "restorative justice",
+      "somatic facilitation",
+      "Catholic social teaching"
+    ],
+    "itemsRead": [
+      "CTD-0019",
+      "CTD-0065",
+      "CTD-0066",
+      "CTD-0004"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. Living feedback is listed in the volume card's signature diction, and this section is where the phrase does its work; it is present in both versions. CTD-0065 tracks the volume's recaps, and this section's cross-reference to Chapter Five is one of them; restoring what Chapter Five meant by coherence as infrastructure applied to the governance dimension returns the recap in the form that names the earlier chapter as the source of the concept rather than restating the concept."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A cleft and its two-part answer were inverted, so the concession about procedures now leads.",
+      "evidence": {
+        "baseline": "What these experiments share, despite their enormous differences in scale, technology, and cultural context, is a structural insight: legitimate governance is something that emerges from the quality of relationship ... It is not primarily produced by procedures, though procedures matter. It is produced by the design of the relational field",
+        "shipped": "Despite their differences in scale, technology, and cultural context, these experiments share a structural insight: legitimate governance emerges from the quality of relationship ... Procedures matter, but they do not primarily produce legitimacy. The design of the relational field within which power is exercised does."
+      },
+      "authorizedBy": "Compression, and catalog 4.9 read onto the cleft.",
+      "diagnosis": "Three changes compound. The cleft made the shared insight the subject, which is what the paragraph is about. Enormous was the word making the differences worth overcoming. And the it is not, it is pair kept the relational field in the same grammatical position across both sentences, so the substitution is visible; the pass's version leads with the concession, which gives procedures the sentence-initial position in a paragraph arguing they are not primary. Legitimate governance is something that emerges is also more careful than legitimate governance emerges, because it says legitimacy is the kind of thing that emerges rather than reporting that it does.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "A four-clause when series lost three of its whens, collapsing four conditions into one.",
+      "evidence": {
+        "baseline": "coherent when its decisions remain in living feedback with the realities those decisions affect, when disagreement can be metabolized rather than suppressed, when intelligence remains distributed across appropriate scales ... and when the conditions of legitimacy are actively cultivated",
+        "shipped": "coherent when its decisions remain in living feedback with the realities they affect, disagreement can be metabolized rather than suppressed, intelligence remains distributed across appropriate scales ... and the conditions of legitimacy are actively cultivated"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "The repeated when makes four independent conditions, each of which a governance system could fail alone. Dropped, the four become one compound condition governed by a single when, which reads as a definition with four parts. The distinction matters because the section then spends three paragraphs on three of the four as separate mechanisms. The realities those decisions affect was also pronominalized to they, and the sentence contains two plural candidates.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Concessions and qualifications were removed from all three mechanism paragraphs.",
+      "evidence": {
+        "baseline": "is not new: it appears in ... But it has been honored more in name than in practice by modern nation-states, which have tended to ... The work of restoring feedback is not glamorous, but it may be the most important practical work ... The physiological conditions described in Chapter Two are not separate from governance; they are foundational to it.",
+        "shipped": "is not new. It appears in ... Modern nation-states have honored it more in name than in practice, tending to ... Restoring feedback may be the most important practical work ... The physiological conditions described in Chapter Two are not separate from governance. They are foundational to it."
+      },
+      "authorizedBy": "Compression, and catalog 4.14 read onto not glamorous.",
+      "diagnosis": "Each removal costs the same thing: an acknowledgment that the reader might reasonably resist. Not glamorous concedes the obvious objection to institutional plumbing before making the largest claim in the paragraph, and the but is what earns the claim. The semicolon in are not separate from governance; they are foundational holds a refusal and its correction in one breath, which is the construction the section uses throughout. And But it has been honored more in name than in practice sets up a contrast with the sentence before; without the But the paragraph reads as two unconnected facts about subsidiarity.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "Traditions became practices, removing the lineages the paragraph was crediting.",
+      "evidence": {
+        "baseline": "This is why traditions of restorative justice, contemplative deliberation, council-based decision-making, and somatic facilitation have been quietly producing better governance outcomes for centuries",
+        "shipped": "This is why restorative justice, contemplative deliberation, council-based decision-making, and somatic facilitation have quietly produced better governance outcomes for centuries"
+      },
+      "authorizedBy": "Compression, and catalog 4.5.",
+      "diagnosis": "Traditions of is the word that makes the sentence about lineages rather than techniques, which matters in a paragraph whose complaint is that political science dismissed them as peripheral. A tradition is carried by people over centuries; a practice can be recovered by anyone. Have been quietly producing is also continuous and unfinished, where have quietly produced closes the record.",
+      "producedRule": "R-REGISTER-DICTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0065",
+      "effect": "unchanged",
+      "note": "The cross-reference to Chapter Five is restored as what Chapter Five meant by coherence as infrastructure applied to the governance dimension, which names the source rather than restating the concept. Relevant to the repetition map the item asks for."
+    },
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "No named source or figure appears in this section beyond Catholic social teaching and federalist political theory, identical in both versions."
+    },
+    {
+      "id": "CTD-0066",
+      "effect": "contested",
+      "note": "The restored four-clause when series adds parallel surface the item counts. Named rather than hidden."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three prohibited marks. One pair enclosed the three conditions of legitimacy mid-sentence; repaired by moving the enumeration behind a colon at the end of its clause, since a comma pair inside a four-part when series is unreadable. One preceded the evidence for subsidiarity's age and became a colon. One preceded the gloss on restoring feedback at the end of its sentence and became a colon."
+        },
+        {
+          "kind": "kept",
+          "note": "They are not peripheral. They are the layer beneath the procedures., which the pass kept. Two sentences answering the dismissal named one sentence earlier, and the strongest thing in the section."
+        },
+        {
+          "kind": "restored",
+          "note": "The what these experiments share cleft with enormous, the it is not, it is pair, the four whens, those decisions, But before it has been honored, is not glamorous with its but, the semicolon in not separate from governance, traditions of, have been quietly producing, genuinely require, and are capable of producing."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F3 is a pattern now visible across three chapters: the pass removed concessions at a much higher rate than claims. Not glamorous, not romantic relics, all the pressures any business faces, the honest answer is that. Each is the writer granting a point before making one, and each reads in isolation as material a compression pass can drop without losing information. The information it loses is that someone anticipated an objection, which is most of what separates an argument from an assertion."
+  }
+}

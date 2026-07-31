@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-coherence-as-circulation",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Coherence as Flow**",
+  "currentHeading": "**Coherence as Circulation**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **Coherence as Circulation**, the prior pass's rename of **Coherence as Flow**. The rename matters more than most in this batch because the section's own prose says this is what coherence as flow means, and that phrase is restored beneath a heading that now says circulation.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "Coherence is more accurately understood as a property of circulation",
+      "Structurally, this is what coherence as flow means",
+      "This changes the instruments needed"
+    ],
+    "result": "None appears in the baseline. The first replaces a framing claim with a claim about coherence itself. The second fronts an adverb the baseline placed last. The third deletes the causal frame that made the change a consequence."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "coherence-as-capital",
+      "coherence score",
+      "circulation",
+      "COHERENCE",
+      "does not accumulate",
+      "surveillance"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0012",
+      "CTD-0055",
+      "CTD-0039",
+      "CTD-0006"
+    ],
+    "outcome": "This section is central to CTD-0003, which records that Volume II calls COHERENCE a unit and record of demonstrated capacity and then says coherence is not a score, does not accumulate, and is better understood as circulation. That characterization is drawn from this section, and it is identical in baseline and shipped text: coherence does not accumulate well, it is not a score attached to an individual, it is a property of circulation. No decision has been recorded, so nothing here overrides the baseline. Restoring A more accurate framing is that coherence is a property of circulation is worth noting for the item, because the baseline makes this a claim about framings and the pass made it a claim about coherence, which is exactly the ontological distinction CTD-0003 is trying to settle."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A claim about framings became a claim about coherence itself, in the section the ledger relies on for the ontology.",
+      "evidence": {
+        "baseline": "An earlier framing in this book described coherence as something like capital. That framing has problems. ... A more accurate framing is that coherence is a property of circulation.",
+        "shipped": "Earlier in this book, coherence was described as something like capital. That framing has problems. ... Coherence is more accurately understood as a property of circulation."
+      },
+      "authorizedBy": "Compression, and catalog 4.5 read onto framing.",
+      "diagnosis": "The baseline paragraph is about two descriptions and which one is more accurate. It never asserts what coherence is. The pass's version asserts it, and does so in the volume's most cited passage on the question. CTD-0003 is open precisely because the corpus can be read as making two different ontological claims, so a sentence that moves from a more accurate framing is to coherence is more accurately understood as narrows the corpus's position without an author decision. The pass also lost the parallel between an earlier framing and a more accurate framing, which was the paragraph's structure.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "Repeated nouns were pronominalized in the regenerative circulation sentence, collapsing four distinct dependencies.",
+      "evidence": {
+        "baseline": "circulates value back into the soil that produces the food, the laborers who tend the soil, the communities whose health depends on the food, and the ecological systems whose regulation depends on the agriculture",
+        "shipped": "returns value to the soil that produces the food, the laborers who tend it, the communities whose health depends on it, and the ecological systems whose regulation depends on agriculture"
+      },
+      "authorizedBy": "Catalog 4.20, lexical monoculture, and 4.8.",
+      "diagnosis": "4.20's own instruction is that if the exact word is right, repeat it. The four clauses are a cycle, and the repeated nouns are what close it: soil produces food, laborers tend soil, communities depend on food, ecological systems regulate agriculture. Pronominalized, the second it reads as the soil and the third it reads as the food, which happens to be right, but the reader has to hold two antecedents through a four-clause sentence to see the loop. Circulates value back into is also the chapter's verb; returns value to is a transfer.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The repeated The question is was varied, and the paragraph's causal frame was deleted.",
+      "evidence": {
+        "baseline": "This matters because it changes what kinds of instruments are needed. The question is no longer “how do we measure individual coherence and reward it?” The question is “what coordination infrastructures support circulation patterns that regenerate the conditions communities depend on?”",
+        "shipped": "This changes the instruments needed. The question is no longer, “How do we measure individual coherence and reward it?” It is, “What coordination infrastructures support circulation patterns that regenerate the conditions communities depend on?”"
+      },
+      "authorizedBy": "Catalog 4.9, repetitive scaffolds, and the volume card's note that the question should be reduced.",
+      "diagnosis": "The volume card does list the question among recurrent phrases to reduce, which makes this the closest call in the batch. The retention limb still applies: the paragraph's subject is a substitution of one question for another, and stating both in the same frame is what makes the substitution visible. Replacing the second with It is puts the two questions in different grammatical positions and hides the swap. This matters because is also the two-beat construction recorded five times in this volume: the sentence naming why the next claim is being made was cut, and the claim survives.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0003",
+      "effect": "unchanged, ontological hedge restored",
+      "note": "High severity, status query, corpus scope. The item's characterization of Volume II is drawn from this section. Restoring A more accurate framing is that coherence is a property of circulation returns the claim to a statement about descriptions rather than about the thing described, which leaves the ontological question open for the author rather than answering it by editorial compression."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "unchanged",
+      "note": "The patterns are visible without requiring intimate surveillance of any individual participant is restored with requiring and individual. The item concerns biometric governance standing, and the restored form is the more explicit refusal of individual-level observation."
+    },
+    {
+      "id": "CTD-0039",
+      "effect": "unchanged",
+      "note": "The section's refusal of a coherence score is identical in both versions."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks. One preceded the three away from phrases describing extractive flow and became a colon. One preceded the four-item gloss on its currencies and became a colon. Both specify the noun immediately before them."
+        },
+        {
+          "kind": "kept",
+          "note": "The three the way clauses, the way trust does, the way relational depth does, the way attention does, which the pass kept intact. Further evidence that repeated function words survived when they sat in a trailing series and did not survive when they sat between a subject and its verb."
+        },
+        {
+          "kind": "restored",
+          "note": "An earlier framing and A more accurate framing as a pair, the semicolon joining does not accumulate well to it degrades when stockpiled, the four repeated nouns in the circulation cycle, is one in which, is entirely different and the patterns produce, structurally in final position, is observable, requiring and individual, This matters because, the repeated The question is, and much before more tractable."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to Coherence as Flow?",
+      "context": "The section's own sentence, restored here, reads this is what coherence as flow means structurally. Under the pass's heading the prose defines a term the heading does not use. The two words are close but not identical in this book: flow is the movement, circulation is the closed pattern the movement makes. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is the finding that matters beyond this section. A compression that removes framing is not neutral where an ontology is unsettled: dropping a more accurate framing is that in favor of coherence is more accurately understood as converts a hedge into a position, and the position lands in the passage a high-severity corpus item cites as evidence. The ledger search is what caught it. Without reading CTD-0003 first, the change reads as ordinary tightening."
+  }
+}

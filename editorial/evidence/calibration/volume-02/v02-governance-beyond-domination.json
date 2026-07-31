@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-governance-beyond-domination",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Governance Beyond Domination**",
+  "currentHeading": "**Governance Beyond Domination**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The chapter heading is unchanged from the baseline. The self-epigraph and its attribution are italic, not bold, and were left in the pass's punctuation for the reason recorded in F4.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "A coherent governance system does not require everyone’s agreement",
+      "Ecological and nervous systems function this way",
+      "This describes governance experiments already underway"
+    ],
+    "result": "None appears in the baseline. The first converts a two-part is-not-is definition into a requirement statement. The second merges two sentences that named two independent existence proofs. The third deletes the refusal that preceded the description."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "legitimacy",
+      "subsidiarity",
+      "authoritarian",
+      "coherence and control",
+      "relational field",
+      "Providence as connective tissue"
+    ],
+    "itemsRead": [
+      "CTD-0020",
+      "CTD-0019",
+      "CTD-0007",
+      "CTD-0066"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0007 covers epigraph verification and the volume card records as an open author decision whether the Volume I self-epigraphs are verbatim or adaptations; the epigraph opening this chapter contains a prohibited mark in the baseline and its attribution dash has no permitted equivalent, so both are left in the pass's treatment. CTD-0020 is status query and names Chapter Nine's account of authoritarian drift; the restoration returns the baseline's wording without strengthening the prediction."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A definition built as refusal then correction became a statement of requirements.",
+      "evidence": {
+        "baseline": "A coherent governance system is not one in which everyone agrees, nor one in which conflict disappears. It is one in which disagreement, distributed experimentation, and localized adaptation can occur without the relational field disintegrating.",
+        "shipped": "A coherent governance system does not require everyone’s agreement or the disappearance of conflict. It allows disagreement, distributed experimentation, and localized adaptation without disintegrating the relational field."
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis, and 4.5.",
+      "diagnosis": "4.3's retention limb applies: both rejected readings are what most readers mean by coherent, so the contrast is real and the distinction is the section's. The baseline refuses two definitions and supplies a third, all three in the same is-one-in-which frame, so the reader can see the substitution. The pass's version says what the system does not require, which is a claim about its preconditions rather than about what it is, and then says it allows the three things, which makes the system an agent permitting behavior rather than a condition in which behavior is possible.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F2",
+      "summary": "Two independent existence proofs were merged into one compound subject.",
+      "evidence": {
+        "baseline": "Ecological systems function this way. Nervous systems function this way.",
+        "shipped": "Ecological and nervous systems function this way."
+      },
+      "authorizedBy": "Catalog 4.8, redundant restatement.",
+      "diagnosis": "Two sentences, seven words, and the pass read the second as a restatement of the first. It is not. Each is a separate existence proof for the claim just made, drawn from a different domain the book has spent chapters on, and stating them separately is what makes them two pieces of evidence rather than one category. The merged version also implies a class, ecological and nervous systems, that the book does not posit.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Two refusals framing the chapter's evidence were deleted, and a causal join was cut.",
+      "evidence": {
+        "baseline": "This is not an abstract proposal. It is a description of governance experiments that are already underway ... These responses may temporarily stabilize institutions, but they rarely regenerate trust, because trust cannot be manufactured through force.",
+        "shipped": "This describes governance experiments already underway ... These responses may temporarily stabilize institutions, but they rarely regenerate trust. Trust cannot be manufactured through force."
+      },
+      "authorizedBy": "Compression, and catalog 4.3 read onto this is not an abstract proposal.",
+      "diagnosis": "This is not an abstract proposal answers the objection a reader has been forming for six paragraphs of philosophical argument, and it is the sentence that turns the chapter toward Ireland and Taiwan. Without it the transition is a summary. The second loss is the because, which is the third instance in this batch of a causal conjunction being cut and the two claims left adjacent. Trust cannot be manufactured through force is a general law when it stands alone and a reason when it follows because.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "The epigraph's em dash and its attribution dash were both replaced and neither can be restored.",
+      "evidence": {
+        "baseline": "the connective tissue between the scales — the nervous system through which they sense and trust one another ... — The Coherence Thesis, Vol. I",
+        "shipped": "the connective tissue between the scales, the nervous system through which they sense and trust one another ... *The Coherence Thesis, Vol. I*"
+      },
+      "authorizedBy": "R-PUNCT-STRUCT.",
+      "diagnosis": "The comma is an adequate repair for the first mark, since the enclosed phrase is a straightforward apposition with no internal series to confuse it. The attribution dash has no permitted equivalent and the pass italicized the line instead. Both are left standing, and the tension is the same as the one recorded on the Chapter Eleven opening: the standard forbids silently altering an exact quotation, and whether this self-epigraph is a quotation is an open author decision.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "unchanged, evidence added",
+      "note": "This is the second Volume II self-epigraph in the batch whose baseline punctuation cannot be restored under the punctuation standard. The pattern is now general enough to be worth an author ruling rather than a per-section note."
+    },
+    {
+      "id": "CTD-0020",
+      "effect": "unchanged",
+      "note": "Status query. The account of authoritarian drift is restored in baseline wording. But certainty purchased through domination eventually becomes brittle regains its adversative, which makes it a qualification of the preceding sentence rather than a separate warning."
+    },
+    {
+      "id": "CTD-0066",
+      "effect": "contested",
+      "note": "The restored two-sentence existence proof and the is-not-is definition add parallel surface the item counts. Named rather than hidden."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three prohibited marks. One preceded the not-a-failure-but-a-structural-condition correction at the end of its sentence and became a colon. Two are in the epigraph and its attribution and were left in the pass's treatment; see F4."
+        },
+        {
+          "kind": "kept",
+          "note": "The six-clause history of governance answers, from Empires answered it through hierarchy to Democracies through procedural participation, and the two italic warnings about control. All were left byte-identical by the pass, which is worth recording: five consecutive elliptical fragments survived untouched in the same section where two four-word sentences were merged."
+        },
+        {
+          "kind": "restored",
+          "note": "But before all governance systems, the is-not-is definition, the two existence proofs, this is not an abstract proposal, because before trust cannot be manufactured, the third asyndetic member complexity faster than the institutions, cease experiencing, begins deteriorating, the diagnosis in Chapter Three, disagreement itself, and the legitimacy of the system."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The kept material sharpens the picture of what the pass was actually doing. Six elliptical fragments in a row survived; two four-word sentences sharing a predicate did not. The trigger was not parallelism and not brevity. It was adjacent sentences that could be joined without changing the words, which is a merge opportunity rather than a defect, and the catalog category cited for it, 4.8 redundant restatement, requires the second sentence to add nothing. Here it added a second domain."
+  }
+}

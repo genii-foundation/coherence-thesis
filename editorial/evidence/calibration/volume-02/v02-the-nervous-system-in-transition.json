@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-nervous-system-in-transition",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What This Threshold Actually Feels Like**",
+  "currentHeading": "**The Nervous System in Transition**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **The Nervous System in Transition**, the prior pass's rename of **What This Threshold Actually Feels Like**. This section sits beneath a chapter heading and is not a part introduction.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "background dread, structural unease, a persistent sense",
+      "The institutions they were raised to trust, universities, governments",
+      "They must do all of this while being asked to demonstrate"
+    ],
+    "result": "None appears in the baseline. The first compresses three noun phrases that each had their own predicate. The second is the failed em dash repair described in F3. The third converts a report into an obligation."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "generational portraits",
+      "age cohorts",
+      "population-level claim",
+      "reader autonomy",
+      "accurate perception"
+    ],
+    "itemsRead": [
+      "CTD-0068",
+      "CTD-0038",
+      "CTD-0019",
+      "CTD-0020"
+    ],
+    "outcome": "CTD-0068 is status open, not resolved. It records that the four generational panels exceed the evidence shown and asks for grounding, stated limits, and author approval of the relationship between witness and factual claim. The prior pass did not pay that item down; it shortened the panels without grounding them, which reduced the word count and left the population-level claim intact. Restoring the baseline therefore does not reopen a settled decision, it restores the full text the item was written against. Recorded in debt impact, and the section's restoration is flagged for author attention because the item is high severity."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The whole section moved from progressive report to simple-present assertion, which changes who is speaking.",
+      "evidence": {
+        "baseline": "They are running the institutions whose foundations are crumbling. They are raising children into conditions they cannot promise. They are working inside organizations ... Many of them are carrying private grief ... Many of them are doing this without permission to name it.",
+        "shipped": "They run institutions whose foundations are crumbling. They raise children into conditions they cannot promise. They work inside organizations ... Many carry private grief ... Many do this without permission to name it."
+      },
+      "authorizedBy": "R-TENSE, prefer the simple present for a live condition.",
+      "diagnosis": "R-TENSE names the perfect and inceptive forms, not the progressive, and its own caution applies: check what the reduction costs. The progressive here reports people in the middle of an action the narrator is watching, which is the first person editorial witness stance the voice card names. The simple present states a general truth about a cohort, which is exactly the population-diagnostic register CTD-0068 objects to. The reduction did not soften the generational claim, it hardened it. This is counter-evidence against reading R-TENSE as a standing licence.",
+      "producedRule": "R-TENSE"
+    },
+    {
+      "id": "F2",
+      "summary": "Anaphoric chains were broken by pronominalizing or varying their second and third members.",
+      "evidence": {
+        "baseline": "Some carry guilt about what their generation did or failed to do. Some carry grief about what is being lost. Some carry a kind of stoic acceptance that comes from having lived through more than one era of disruption and survived.",
+        "shipped": "Some carry guilt for what their generation did or failed to do. Some grieve what is being lost. Some have a stoic acceptance born of surviving more than one era of disruption."
+      },
+      "authorizedBy": "Catalog 4.9, repetitive scaffolds.",
+      "diagnosis": "The retention limb applies. Some carry three times is a litany, and the verb carry is doing the work: guilt, grief, and acceptance are all loads, which is the paragraph's point about the oldest cohort. Rotating to grieve and have loses the load. The pass also deleted and survived, which is the only thing in the paragraph that is not a burden.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "An em dash pair enclosing a four-item list became a comma pair, producing a garden path.",
+      "evidence": {
+        "baseline": "The institutions they were raised to trust—universities, governments, professional fields, news organizations—have lost much of their legitimacy in the years they have been coming of age.",
+        "shipped": "The institutions they were raised to trust, universities, governments, professional fields, and news organizations, have lost much of their legitimacy as they came of age."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by substituting commas.",
+      "diagnosis": "A comma is the most common wrong answer, and this is why. With internal commas already in the list, the outer pair cannot be read as apposition on first pass, so trust reads as the first item of a series. The repair used here moves the enumeration behind a colon at the end of the sentence, which specifies without ambiguity and keeps the list asyndetic. The cost is that the sentence now lands on the four nouns rather than on coming of age; that is a real trade and it is named here rather than hidden.",
+      "producedRule": "R-PUNCT-STRUCT"
+    },
+    {
+      "id": "F4",
+      "summary": "A three-part predicate about background dread was compressed into three bare nouns.",
+      "evidence": {
+        "baseline": "there is something operating beneath the surface that produces a quality of background dread, a sense of structural unease, a persistent feeling that the ground is shifting in ways that no individual response can address",
+        "shipped": "something operates beneath the surface: background dread, structural unease, a persistent sense that the ground is shifting in ways no individual response can address"
+      },
+      "authorizedBy": "Catalog 4.5, abstract noun clusters, and 4.26.",
+      "diagnosis": "A quality of, a sense of, and a persistent feeling that are not padding. They are three different epistemic registers, and the paragraph closes on it is accurate perception, so how the thing is known is the paragraph's subject. Stripped to bare nouns, the three become symptoms in a list, and the colon stages them as a reveal, which is the construction 4.26 refuses.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0068",
+      "effect": "reopened at full extent",
+      "note": "High severity, status open. The four generational portraits are restored to their baseline length and detail, including the fifties-and-sixties panel on healthcare and eldercare and the twenties panel's closing demand for personal resilience. The prior pass had shortened them without grounding them. Nothing here grounds them either; that is the author's paydown, and the item now stands against the full text it was written against."
+    },
+    {
+      "id": "CTD-0038",
+      "effect": "reopened in scope",
+      "note": "This is not pathology. It is accurate perception is restored unchanged, since the pass kept it. The restoration of the four panels enlarges the surface on which the item's question about claiming access to the reader's inner state has to be answered."
+    },
+    {
+      "id": "CTD-0020",
+      "effect": "reopened in scope",
+      "note": "Chapter Twelve is named in the item. The restored panels raise the emotional pressure of the chapter's opening movement."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark pair, enclosing the four named institutions. Repaired by moving the enumeration to the end of its sentence behind a colon, because the mark was carrying an apposition that no inline mark could carry without ambiguity."
+        },
+        {
+          "kind": "kept",
+          "note": "The opening five short sentences and the closing two, both essentially untouched by the pass. These are not separate experiences. They are different positions within the same threshold. is the section's landing and needed nothing."
+        },
+        {
+          "kind": "restored",
+          "note": "The progressive aspect throughout, the Some carry litany with and survived, the three predicated noun phrases in the opening paragraph, in many cases at both occurrences, personally before resilient, the healthcare and eldercare sentence, and the longer-arc sentence about what the oldest working cohort can see."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Do the four generational portraits stay at baseline length?",
+      "context": "CTD-0068 is high severity and open. Restoring the baseline returns roughly 80 words of cohort-level psychological, economic, and ecological claim that the pass had removed without replacing. The editorial agent's position is that shortening an ungrounded claim does not ground it, so the pass's version carried the same defect at lower cost to the prose. If the author decides the portraits should be literary composites, the label belongs at the head of the sequence and this section is where it goes.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and one existing rule is qualified. R-TENSE cost more than it saved here. Reducing are running to run removed the auxiliary and also removed the witness, converting an observation of people mid-action into a general statement about an age band. The rule's own instruction to check what the reduction costs is the operative half, and this section is the clearest case in Volume II of that check being skipped."
+  }
+}

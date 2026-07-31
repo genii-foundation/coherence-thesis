@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-practices-for-the-passage",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What This Asks of the People Living Through It**",
+  "currentHeading": "**Practices for the Passage**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **Practices for the Passage**, the prior pass's rename of **What This Asks of the People Living Through It**.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "We can say what has helped human beings",
+      "The diagnostic chapters described how modern conditions",
+      "Refusing to feel them produces"
+    ],
+    "result": "None appears in the baseline. The first replaces a cleft with a first person plural the section otherwise never uses. The second renames a part label. The third converts a failure into a refusal, which assigns intent."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "somatic regulation",
+      "co-regulation",
+      "lunar cadence",
+      "matching architecture",
+      "the Diagnosis",
+      "grief",
+      "reader autonomy"
+    ],
+    "itemsRead": [
+      "CTD-0038",
+      "CTD-0019",
+      "CTD-0068",
+      "CTD-0064"
+    ],
+    "outcome": "No settled decision conflicts with the baseline. CTD-0038 is status query and names this direct-address sequence explicitly: the item observes that other passages assign grief and tell readers which work is theirs, and that the baseline was consistently more conscripting. Restoring the baseline here restores grief is the appropriate response, which is the item's own example. Nothing is resolved by this restoration; the surface the author has to rule on is restored to its original extent. The Diagnosis is a part label in this volume, so diagnosis chapters is a cross-reference to a structural line and the pass's diagnostic chapters broke it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The honest answer is that was deleted from the section's first sentence.",
+      "evidence": {
+        "baseline": "The honest answer is that no one fully knows what this threshold asks of the people living through it, because no civilization has crossed exactly this threshold before.",
+        "shipped": "No one fully knows what this threshold asks of the people living through it, because no civilization has crossed exactly this threshold before."
+      },
+      "authorizedBy": "Compression, and catalog 4.1 read onto the honest answer is.",
+      "diagnosis": "This is the same deletion recorded twice in Chapter Seven and once more in this chapter's closing section. The construction is the writer taking responsibility for an admission before making it. Without it the sentence is a fact about the state of knowledge, which anyone could report; with it, the sentence is a person declining to pretend. The section opens by conceding it cannot answer its own heading, and that concession is the reason the eight practices that follow are offered as what has helped rather than as instructions.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The second cleft in the same paragraph was replaced with a first person plural that appears nowhere else in the section.",
+      "evidence": {
+        "baseline": "What can be said is what has helped human beings through other liminal periods, and what specific present-tense conditions seem to require.",
+        "shipped": "We can say what has helped human beings through other liminal periods and what present conditions appear to require."
+      },
+      "authorizedBy": "Compression, and catalog 4.9.",
+      "diagnosis": "What can be said is deliberately agentless, which is what makes it a limit rather than an offer. We can say introduces a first person plural that conscripts the reader into the narrator's position, and the volume's card permits moderate direct address that offers a question or invitation, not a shared we. The pass also cut specific present-tense, which was distinguishing what this moment requires from what liminality requires in general, the exact distinction the sentence was drawing.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "Two fragments and a deliberate repetition in the body paragraph were merged away.",
+      "evidence": {
+        "baseline": "It helps to be in regular contact with the body. Not as wellness. As accurate perception of conditions. A nervous system that has not been allowed to register what is happening cannot respond to what is happening.",
+        "shipped": "It helps to be in regular contact with the body, not as wellness but as accurate perception of conditions. A nervous system not allowed to register what is happening cannot respond to it."
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments, and 4.3.",
+      "diagnosis": "Not as wellness earns its isolation. It is the sentence that keeps the whole practice list out of the self-care genre, and standing alone it reads as a correction the writer is making to an expectation the reader has already formed. Folded into a not X but Y clause it becomes a rhetorical balance. The second loss is worse: what is happening repeated is the point, because register and respond have to take the same object for the claim to hold. Pronominalized to it, the sentence is merely tidy.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "A structural cross-reference was renamed and a causal chain was converted into an act of will.",
+      "evidence": {
+        "baseline": "The diagnosis chapters described how modern conditions have degraded the relational fields ... These griefs are part of what the threshold actually is, and the failure to allow them to be felt produces, among other things, the cognitive dissociation that prevents accurate perception",
+        "shipped": "The diagnostic chapters described how modern conditions have degraded the relational fields ... These griefs are part of the threshold itself. Refusing to feel them produces, among other things, the cognitive dissociation that prevents accurate perception"
+      },
+      "authorizedBy": "Compression, and catalog 4.5 read onto failure to allow.",
+      "diagnosis": "The Diagnosis is a part label in this volume, one of the three kinds of line that generate a route. Diagnosis chapters points at it; diagnostic chapters describes a genre. The second half is a claim change. The failure to allow them to be felt names a condition people are in, often not of their making, which is the position the whole section takes toward the threshold. Refusing to feel them assigns a choice and therefore a fault, and the sentence then blames the reader for the dissociation it is describing.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0038",
+      "effect": "reopened at full extent",
+      "note": "High severity, status query. Grief is the appropriate response is restored from the pass's an appropriate response, and the definite article is the item's central example of the volume assigning the reader a feeling. No decision existed to preserve. The restoration returns the passage to the form the item was raised against so the author can rule on the actual text."
+    },
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "The empirical claims about somatic practice and co-regulation are restored in the baseline's own hedged form, not necessarily more comfortable, but they are more able. Neither version sources them."
+    },
+    {
+      "id": "CTD-0064",
+      "effect": "unchanged",
+      "note": "The reference to Providence's lunar matching cadence is restored as the chapters describing, which is a claim about the book rather than about live capability."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks. One followed a long subject and resumed it with these people; repaired with a colon, since the second clause specifies the subject just named. One introduced a trailing three-part qualification about personal cost; repaired with a period, because the mark was separating two movements and the triad earns its own landing under R-LAND."
+        },
+        {
+          "kind": "kept",
+          "note": "The eight It helps to openings, which the pass also kept. They are the section's structure and the reason it reads as offered rather than prescribed."
+        },
+        {
+          "kind": "restored",
+          "note": "The honest answer is that, the what can be said cleft with specific present-tense, Not as wellness as its own sentence, the repeated what is happening, diagnosis chapters, one believed in, the failure to allow them to be felt, the standalone practice list beginning Contemplative traditions, also before doing this work, find each other at both occurrences, and gets crossed."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading remain Practices for the Passage?",
+      "context": "The baseline heading asks what the threshold demands of people; the pass's heading names what the section supplies. The section's first sentence concedes that no one fully knows what the threshold asks, so the baseline heading and the baseline opening are a matched pair, question and refusal. The pass's heading answers a question the section declines to answer. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Two findings are worth carrying forward. F1 is the fourth deletion of the honest answer is family in Volume II, all four in sections whose subject is the limit of what the writer knows. F4 records a hazard the structural hold does not cover: renaming a part label inside prose does not mint or retire a route, so no validator catches it, and the cross-reference simply stops pointing at anything."
+  }
+}

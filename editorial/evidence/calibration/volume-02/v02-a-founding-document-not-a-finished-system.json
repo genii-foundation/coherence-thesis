@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-a-founding-document-not-a-finished-system",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What This Book Is**",
+  "currentHeading": "**A Founding Document, Not a Finished System**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **A Founding Document, Not a Finished System**, the prior pass's rename of **What This Book Is**. The FINAL NOTE display line and the closing blessing below this section are byte-identical to the baseline and were not touched.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "articulated clearly enough that builders can act on it",
+      "already underway across many traditions and communities that often do not recognize one another",
+      "in whatever form conditions permit"
+    ],
+    "result": "None appears in the baseline. The first substitutes clearly for cleanly, against the sibling section's argument about form. The second collapses a three-part apposition into one relative clause. The third drops the possessive that made the conditions belong to the person."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "founding document",
+      "coherence as a civilizational variable",
+      "invitation",
+      "the work belongs to whoever does it",
+      "reader autonomy"
+    ],
+    "itemsRead": [
+      "CTD-0038",
+      "CTD-0020",
+      "CTD-0064",
+      "CTD-0111"
+    ],
+    "outcome": "No settled decision conflicts with the baseline. This is the least damaged section in the batch at four percent and the pass altered no claim in it. CTD-0038 is status query and this section is the one closing passage that already grants full reader autonomy in both versions: the work belongs to whoever does it, in whatever form their conditions permit. Restoring their strengthens that grant rather than weakening it, which is worth recording because the same restoration pass reopened the item's other side in Chapter Twelve."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Cleanly became clearly, in the sentence the chapter's first section spent four paragraphs defending.",
+      "evidence": {
+        "baseline": "articulated cleanly enough that builders can act on it",
+        "shipped": "articulated clearly enough that builders can act on it"
+      },
+      "authorizedBy": "House copy style, and catalog 4.21 read onto cleanly.",
+      "diagnosis": "The pass made the same substitution in On the Form, where the baseline reads articulated cleanly enough that they can evaluate it. The two sentences are a matched pair across the chapter, and cleanly is the exact word in both because the chapter's argument about form is that the apparatus of scholarship clutters an argument a builder needs uncluttered. Clearly is about comprehensibility, which the book never doubted. R-REGISTER-DICTION's test is equal precision, and here the volume's own word is the more precise of the two.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F2",
+      "summary": "A three-part apposition describing the conversation was collapsed into a single relative clause.",
+      "evidence": {
+        "baseline": "an invitation into a larger conversation that is already underway, distributed across many traditions and communities, often without those traditions and communities recognizing each other",
+        "shipped": "an invitation into a larger conversation already underway across many traditions and communities that often do not recognize one another"
+      },
+      "authorizedBy": "Catalog 4.8, redundant restatement, read onto the repeated traditions and communities.",
+      "diagnosis": "Three separate facts arrive in three separate movements: the conversation is underway, it is distributed, and its participants do not recognize each other. Compressed into one clause they become one fact with two modifiers, and the repetition of those traditions and communities, which the pass read as redundancy, is what makes the third movement land on the same nouns the second introduced. That is Chapter Eleven's entire argument restated in the book's final structural sentence, and the recognition it names is between the traditions rather than a property of them.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Three possessives and one relative construction were removed from the closing paragraph.",
+      "evidence": {
+        "baseline": "The argument the book makes will be tested ... The intellectual lineages it stands within will continue ... in whatever form their conditions permit",
+        "shipped": "The argument will be tested ... The intellectual lineages in which it stands will continue ... in whatever form conditions permit"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Their conditions is the one that matters. The work belongs to whoever does it, in whatever form their conditions permit is the book's most complete grant of autonomy, and their is what makes the conditions the reader's own rather than the conditions the book has been describing. Without it the sentence permits whatever the general situation allows, which is a different and smaller freedom. The argument the book makes also distinguishes the argument from the book, which the section needs, since the next sentence says the lineages will continue regardless of what the project becomes.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0038",
+      "effect": "unchanged, autonomy strengthened",
+      "note": "High severity, status query. This section grants the reader full autonomy in both versions, and restoring their conditions makes the grant more explicit. Recorded because the same batch reopened the item's conscripting side in Chapter Twelve; the two closings still use incompatible theories of reader consent, which is exactly what the item says, and the restoration has made the incompatibility easier to see rather than harder."
+    },
+    {
+      "id": "CTD-0020",
+      "effect": "unchanged",
+      "note": "Status query. No urgency claim appears in this section in either version. It is the invitation half of the balance the item asks the author to set."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. No prohibited mark occurs in this section of the baseline. Nothing to repair."
+        },
+        {
+          "kind": "kept",
+          "note": "The work belongs to whoever does it and the closing blessing beneath it, both untouched by the pass. The blessing is protected structural matter under the voice card."
+        },
+        {
+          "kind": "restored",
+          "note": "Cleanly, the three-part apposition about the conversation, that is being built openly with its comma before by whoever, The argument the book makes, the lineages it stands within, and their conditions."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to What This Book Is?",
+      "context": "The baseline heading is a plain declaration and the section beneath it is three sentences answering it. The pass's heading answers the question itself and adds a contrast the section never draws, since the section does not mention a finished system. This is the fourth of the four renamed On the and What headings in Chapter Thirteen and belongs with the set question raised on the On the Form record. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. At four percent this was the least damaged section in the batch and it still lost the word its own chapter argued for. Cleanly appears twice in Chapter Thirteen, in the section defending the book's form and in the section defining what the book is, and the pass replaced it with clearly in both. Neither substitution is wrong in its sentence. Together they retire a term the chapter is about, which is the same volume-level effect recorded for each other in Chapter Eleven, produced the same way, by a copy-style preference applied consistently."
+  }
+}

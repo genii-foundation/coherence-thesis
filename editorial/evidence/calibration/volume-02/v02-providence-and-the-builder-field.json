@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-providence-and-the-builder-field",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What Providence Is and Is Not Doing in This Dimension**",
+  "currentHeading": "**Providence and the Builder Field**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This is the fifth of the five Providence disclosure sections, and the prior pass gave each a distinct heading, retiring the recurrence that told a reader what kind of section was arriving. Recorded as an open question, not changed, because all five labels are routes.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "At its early stage, Providence is being designed to operate at the layer",
+      "Providence is trying to contribute relational infrastructure through which",
+      "The book mentions them descriptively, not as affiliations"
+    ],
+    "result": "None appears in the baseline. The first and second both flatten a cleft. The third converts a statement about what the mention is into a statement about what the book does."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Providence",
+      "matching architecture",
+      "trust infrastructure",
+      "coordination substrate",
+      "the modest claim",
+      "builder collective",
+      "affiliation"
+    ],
+    "itemsRead": [
+      "CTD-0065",
+      "CTD-0064",
+      "CTD-0040",
+      "CTD-0019",
+      "CTD-0067"
+    ],
+    "outcome": "No settled decision conflicts with the baseline. CTD-0065 is high severity and open, and it names this section among the repeated Providence disclosure openings, including the repeated use of This is the modest claim. The pass consolidated nothing here; it renamed the heading and rewrote the prose, and This is the modest claim survives in both versions. CTD-0064 concerns Providence tense and current-library status, and the restored What Providence is being designed to do, at its current early stage is more explicitly future-facing than the pass's At its early stage, Providence is being designed to, so the restoration slightly strengthens the separation of vision from report that section 5 of the standard requires."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The disclosure cleft was flattened again, in the third of the volume's five disclosure sections to lose it.",
+      "evidence": {
+        "baseline": "What Providence is being designed to do, at its current early stage, is operate at the layer Chapter Five described",
+        "shipped": "At its early stage, Providence is being designed to operate at the layer Chapter Five described"
+      },
+      "authorizedBy": "Compression, and catalog 4.9 read onto the cleft.",
+      "diagnosis": "This is the named habit, now confirmed in three of the five disclosure sections. The cleft exists to keep Providence out of the subject position of a sentence about what Providence will do, because the section's entire discipline is that the project is not yet the thing being described. What Providence is being designed to do puts the design in the subject position and leaves the project as the object of a design process. Providence is being designed to operate puts the project first and reads as a status report. The pass also dropped current from at its current early stage, which was the word bounding the claim in time.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "A second cleft in the same section's closing sentence was flattened the same way.",
+      "evidence": {
+        "baseline": "What Providence is trying to contribute is the kind of relational infrastructure through which the field can begin to find itself.",
+        "shipped": "Providence is trying to contribute relational infrastructure through which the field can begin to find itself."
+      },
+      "authorizedBy": "Compression, and catalog 4.9.",
+      "diagnosis": "Two losses in one sentence. The cleft again removes the project from the subject position, and the kind of removes the hedge that distinguished a category of infrastructure from a specific deliverable. Contribute relational infrastructure names a thing Providence will produce; contribute the kind of relational infrastructure through which names a class of thing it is aiming at. In a disclosure section that has just said Providence is not the field, that distinction is the entire point.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "Three participles became three infinitives, converting a description of activity into a statement of intent.",
+      "evidence": {
+        "baseline": "helping aligned actors find one another in the matching architecture, supporting them in meeting one another in small groups, and developing over time the trust infrastructure and coordination substrate",
+        "shipped": "to help aligned actors find one another through the matching architecture, support small-group meetings, and develop over time the trust infrastructure and coordination substrate"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The participles describe what operating at that layer consists of. The infinitives describe what Providence is designed in order to do, which is a purpose claim rather than a description, and purpose claims about an unbuilt system are exactly what the disclosure sections exist to avoid. Supporting them in meeting one another in small groups also names the people twice; support small-group meetings names a feature.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "An eight-name list between subject and verb was punctuated as an apposition and the sentence's closing disclaimer was split off.",
+      "evidence": {
+        "baseline": "The projects named in this chapter—OpenCivics, ... the Indigenous-led conservation initiatives—are doing their own work on their own terms, and the book’s mention of them is description rather than affiliation.",
+        "shipped": "The projects named in this chapter, OpenCivics, ..., and the Indigenous-led conservation initiatives, do their own work on their own terms. The book mentions them descriptively, not as affiliations."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by substituting commas.",
+      "diagnosis": "Eight proper names inside a comma pair, between a subject and its verb, is unreadable on first pass. The repair used here moves the enumeration behind a colon at the end of its clause and lets the disclaimer stand as its own sentence, which is what the em dash structure was already doing rhythmically. The disclaimer's wording is restored: the book's mention of them is description rather than affiliation states what the mention is, where the book mentions them descriptively states what the book did, and the section is about the status of the mention, not the manner of it.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0065",
+      "effect": "unchanged",
+      "note": "High severity, open. This is the modest claim survives in both versions and is one of the repeated openings the item tracks. Nothing here consolidates or adds a recap. The restoration returns the disclosure to its baseline wording without changing how many times the volume makes it."
+    },
+    {
+      "id": "CTD-0064",
+      "effect": "unchanged, separation strengthened",
+      "note": "Restoring What Providence is being designed to do, at its current early stage returns both the design framing and the word current, which together bound the claim in time more explicitly than the pass's wording. No present-tense capability claim is added."
+    },
+    {
+      "id": "CTD-0040",
+      "effect": "unchanged",
+      "note": "Trust infrastructure appears here as something to be developed over time, not as an existing control. Identical in scope in both versions."
+    },
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "The eight named projects are identical in both versions. Only their punctuation and position in the sentence changed."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark pair, enclosing eight project names. Repaired by moving the enumeration behind a colon at the end of its clause and letting the description rather than affiliation disclaimer stand as its own sentence, since a comma pair around eight proper names cannot be parsed on first reading."
+        },
+        {
+          "kind": "kept",
+          "note": "This is the modest claim. Providence is not the field., untouched by the pass. It is the disclosure the whole section exists to deliver."
+        },
+        {
+          "kind": "restored",
+          "note": "Both clefts, current before early stage, the kind of before relational infrastructure, the three participles, is not claiming rather than does not claim, the people working in any of the worlds named above, an enormous amount of latent coordination capacity already exists in, simply, higher density, and the repeated the field in place of the pass's pronouns."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the five Providence disclosure sections recover their shared heading?",
+      "context": "The baseline gives five sections the same heading, What Providence Is and Is Not Doing in This Dimension, and the recurrence is what told a reader which kind of section had arrived. The pass gave each a distinct name, of which this is one. CTD-0065 asks for a developmental repetition map across the volume and this is the clearest case in it. Carried forward unchanged from the earlier Volume II records that raised the same question. Not changed here; all five labels are routes.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Three of the five Providence disclosure sections have now lost the same construction to the same pass, and this one lost it twice in eleven lines. The habit is specific and it is worth stating plainly for the two disclosure sections still to be checked: wherever the baseline writes What Providence is doing or being designed to do or trying to contribute, expect the pass to have made Providence the subject. Each flattening reads as plainer English and each one converts a bounded statement about a design into a report about a project."
+  }
+}

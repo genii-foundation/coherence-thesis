@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-what-alignment-research-can-do",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Current State of Alignment**",
+  "currentHeading": "**What Alignment Research Can Do**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **What Alignment Research Can Do**, the prior pass's rename of **The Current State of Alignment**.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "The field is working at the problem with increasing sophistication",
+      "From the perspective of this book’s argument, the approach attempts something",
+      "Particular humans in particular institutional contexts write the principles"
+    ],
+    "result": "None appears in the baseline. The first deletes the three-part verdict that preceded it. The second flattens a cleft. The third inverts a passive that kept the principles in subject position."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "RLHF",
+      "Constitutional AI",
+      "Anthropic",
+      "constitutional self-play",
+      "Murphy's Laws of AI Alignment",
+      "RLAIF",
+      "Direct Preference Optimization",
+      "two hundred principles",
+      "reward hacking"
+    ],
+    "itemsRead": [
+      "CTD-0019",
+      "CTD-0016",
+      "CTD-0009"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0019 is the open critical item covering these claims, and every named technique, institution, figure, and date is identical in baseline and shipped text: Anthropic, RLHF, RLAIF, Direct Preference Optimization, the 2026 version, over two hundred principles, up from fifty. The restoration touches framing and voice only, and adds no technical assertion."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A three-part verdict on the state of the field was deleted.",
+      "evidence": {
+        "baseline": "This is what the field actually looks like. Not solved. Not catastrophic. Working at the problem with increasing sophistication while acknowledging that the underlying question remains open.",
+        "shipped": "The field is working at the problem with increasing sophistication while acknowledging that the underlying question remains open."
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments.",
+      "diagnosis": "The retention limb applies and the stakes are the section's whole purpose. The chapter opened by saying popular discourse rarely captures the texture of this work, and these four sentences are the correction: here is what it looks like, and it is neither of the two things you have been told. Not solved and Not catastrophic each refuse one pole of the doom-and-utopia framing the next section names explicitly. Compressed into one sentence, the refusals vanish and only the middle position survives, asserted rather than arrived at.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "A cleft framing the book's own reading of Constitutional AI was flattened.",
+      "evidence": {
+        "baseline": "What is interesting about this approach, from the perspective of the argument this book has been making, is that it represents an attempt to do something the dominant accounting systems of civilization have failed to do.",
+        "shipped": "From the perspective of this book’s argument, the approach attempts something dominant accounting systems have failed to do."
+      },
+      "authorizedBy": "Compression, and catalog 4.9.",
+      "diagnosis": "The cleft marks the claim as an interpretation the book is offering about someone else's technical work, which matters because the work belongs to a named lab and the interpretation does not. Represents an attempt to do is also two hedges deep, the approach represents an attempt, where attempts something is a report about what the approach does. The paragraph then says it is, in a precise sense, an experiment, and the pass cut in a precise sense as well, which was the marker that the book knows it is reading a technical method through a philosophical lens.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "A passive keeping the principles in subject position was inverted, moving the emphasis to the people.",
+      "evidence": {
+        "baseline": "The principles are written by particular humans operating in particular institutional contexts; the constitution reflects their assumptions, blind spots, and cultural location.",
+        "shipped": "Particular humans in particular institutional contexts write the principles, and the constitution reflects their assumptions, blind spots, and cultural location."
+      },
+      "authorizedBy": "Catalog 4.5, read as a preference for the active voice.",
+      "diagnosis": "The fourth instance in this batch of a deliberate passive being inverted. The paragraph's subject is Constitutional AI's failure modes, so the principles are the topic and their authorship is the finding. Fronting the humans makes the sentence about who writes, which reads as an accusation rather than a structural observation, in a paragraph that is careful not to make one. The semicolon also held the two clauses as a single observation; and makes them two.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F4",
+      "summary": "Three hedges and a scope qualifier were removed from the critique paragraph.",
+      "evidence": {
+        "baseline": "“alignment” frequently means alignment with the values of well-resourced safety teams at well-resourced labs, which is not the same as alignment with humanity broadly considered, let alone with the conditions life requires ... they do not solve the underlying problem of whether sufficiently capable systems will remain aligned",
+        "shipped": "“alignment” often means alignment with the values of well-resourced safety teams at well-resourced labs. That is not alignment with humanity broadly considered, much less with the conditions life requires ... it does not solve whether sufficiently capable systems will remain aligned"
+      },
+      "authorizedBy": "Compression, and catalog 4.14 read onto which is not the same as.",
+      "diagnosis": "Which is not the same as says the two are distinct; that is not says the first is not the second, which is a stronger and more polemical claim about a named community's work. Let alone is a scalar concession, much less is nearly synonymous but the split into two sentences is what costs: the baseline holds the critique inside one sentence attributed to critics, and the pass's second sentence has no attribution and reads as the book's own verdict. And the underlying problem of names what the techniques fail to solve; solve whether names only the question.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "Critical, open. Every named technique, lab, and figure is identical in both versions. Restoring the attribution structure in the critique paragraph slightly narrows what the book asserts on its own authority, which marginally reduces what has to be verified."
+    },
+    {
+      "id": "CTD-0016",
+      "effect": "unchanged",
+      "note": "The section supports the technological power thesis without restating it. No claim changes."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four prohibited marks. Three pairs enclosed appositions of increasing length, what is now called alignment research, the reward hacking definition, and the one-word gloss a constitution, and were repaired with commas, since none contains an internal series a comma could be confused with. The fourth pair enclosed five named alignment techniques and was rebuilt with which is to say, because a bare comma pair there would have read as a series and including would have converted all current approaches into a subset."
+        },
+        {
+          "kind": "kept",
+          "note": "It is a remarkable technique. It is also limited., byte-identical in the pass. Two short sentences turning a paragraph, and the pass left them alone."
+        },
+        {
+          "kind": "restored",
+          "note": "The four-sentence verdict on the field, the what is interesting cleft with in a precise sense, the passive in the principles are written, the semicolon in that sentence, In this method, And the entire approach, its own outputs and its own responses at both occurrences, what's harmful, the recent generations of this approach, all current approaches, which is not the same as with let alone, the underlying problem of, and they do not solve."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to The Current State of Alignment?",
+      "context": "The baseline heading names a report; the pass's heading names a capability. The section spends most of its length on what the field cannot yet do, and its restored closing says explicitly that the underlying question remains open, so What Alignment Research Can Do promises the one thing the section declines to deliver. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is four words longer than the baseline, all from the which is to say repair, and the surplus is named. F1 is worth carrying because it is the largest single voice loss in Chapter Ten and it took exactly two words to cause: Not solved. Not catastrophic. Those four syllables are the section's answer to the discourse it opened by criticizing, and they are the kind of material a compression pass removes without hesitation, because the sentence that follows contains all the information."
+  }
+}

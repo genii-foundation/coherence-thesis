@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-why-this-book-has-no-footnotes",
+  "editorialId": "volume-02",
+  "sectionHeading": "**On the Form**",
+  "currentHeading": "**Why This Book Has No Footnotes**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **Why This Book Has No Footnotes**, the prior pass's rename of **On the Form**, which was the first of four parallel On the headings in this chapter that the pass replaced.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "from physiological regulation and relational coherence through extraction",
+      "The book is written for builders: software engineers, designers",
+      "The book names them so verification remains possible"
+    ],
+    "result": "None appears in the baseline. The first replaces a seven-link to chain with a from and through construction. The second absorbs a standalone fragment into a colon list. The third drops by name and compresses the purpose clause."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Sardex",
+      "Mondragón",
+      "Citizens' Assemblies",
+      "vTaiwan",
+      "Constitutional AI",
+      "McKinsey survey",
+      "NCEAS",
+      "COP16",
+      "footnotes",
+      "scholarly apparatus"
+    ],
+    "itemsRead": [
+      "CTD-0019",
+      "CTD-0001",
+      "CTD-0002"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0001 tracks a missing roots bibliography and CTD-0019 tracks Volume II empirical sourcing; this section is the volume's own defense of having no bibliography, and it is the passage those items are in tension with. The twelve named projects and the 2025 NCEAS date are identical in baseline and shipped text. Restoring the book names them by name so that the verification is possible restores the section's explicit substitute for a citation apparatus, which is the claim CTD-0001 will have to be assessed against."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A seven-link chain enacting a sustained line of thinking was replaced with a from and through construction.",
+      "evidence": {
+        "baseline": "hold a sustained line of thinking across thirteen chapters, moving from physiological regulation to relational coherence to the architecture of extraction to coordination infrastructure to economics to governance to AI to the human experience of civilizational transition",
+        "shipped": "hold a sustained line of thought across thirteen chapters, from physiological regulation and relational coherence through extraction, coordination infrastructure, economics, governance, AI, and the human experience of civilizational transition"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, and 4.22 read onto the repeated to.",
+      "diagnosis": "The sentence is about holding a line without being pulled out of it, and the repeated to is the line. Seven links, each handing to the next, is a reader doing exactly what the sentence asks. The pass's version groups the first two with and, subordinates the rest to through, and closes with a comma series, so the reader arrives at a list of topics instead of traversing a sequence. The architecture of extraction also became extraction, which is not the same object: the chapter is about an architecture, and the chain names chapters.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The fragment naming the book's readers was absorbed into a colon list.",
+      "evidence": {
+        "baseline": "The book is written for builders. Software engineers, designers, governance practitioners, contemplatives, ecologists, funders, organizers, and the wider community of people who can feel the necessity of the work the book describes.",
+        "shipped": "The book is written for builders: software engineers, designers, governance practitioners, contemplatives, ecologists, funders, organizers, and the wider community of people who can feel the necessity of the work it describes."
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments, and 4.26.",
+      "diagnosis": "The retention limb of 4.17 applies. The declaration and the roll call are two acts, and the fragment gives the roll call its own breath, which is how the sentence reads as an address to the people in it rather than as a definition of the word builders. The colon subordinates the list to the declaration and makes it a gloss. The pass also replaced the work the book describes with the work it describes, and it was already the fourth pronoun for the book in the same paragraph.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Three small qualifiers that made the form argument a choice rather than a property were removed.",
+      "evidence": {
+        "baseline": "This is a deliberate choice and it is worth explaining ... They need the argument articulated cleanly enough that they can evaluate it ... The book names them by name so that the verification is possible",
+        "shipped": "This is a deliberate choice worth explaining ... They need the argument articulated clearly enough to evaluate it ... The book names them so verification remains possible"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "And it is worth explaining is a second commitment following a first, which is why the next four paragraphs exist; a choice worth explaining is a property of the choice and promises nothing. Cleanly is not clearly: the section is about form, and a cleanly articulated argument is one whose shape is uncluttered, which is precisely the claim about footnotes. By name is the section's answer to the absence of citations, that the names themselves are the apparatus, and it is the phrase the whole paragraph builds to.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F4",
+      "summary": "An em dash pair defining a different purpose became a comma pair the sentence could not carry.",
+      "evidence": {
+        "baseline": "They serve a different purpose—the verification of sources for readers who want to evaluate the underlying scholarship—and they are essential in academic contexts.",
+        "shipped": "They serve a different purpose, verifying sources for readers who want to evaluate underlying scholarship, and are essential in academic contexts."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by substituting commas.",
+      "diagnosis": "With a comma pair, and are essential can attach to the enclosed material rather than to the main clause, and the pass compounded it by dropping the second they. The repair used here inserts which is, which marks the enclosed phrase as a definition and cannot be read as a continuation. The nominal the verification of sources is also restored over the participial verifying sources, because the sentence contrasts two purposes and a purpose is a noun.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "Critical, open. The twelve named projects, the McKinsey survey, the 2025 NCEAS assessment, and the COP16 programming are identical in both versions. Only the serial comma before COP16 and one article changed."
+    },
+    {
+      "id": "CTD-0001",
+      "effect": "unchanged, evidence restored",
+      "note": "The item tracks a missing roots bibliography. This section is the manuscript's stated reason for not having one, and restoring names them by name so that the verification is possible without the apparatus that would have interrupted the reading returns the argument in the form the author will have to weigh against the item."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks. One pair defined a different purpose and was rebuilt with which is. One introduced the twelve named projects at the end of its sentence and became a colon, which the pass had already chosen correctly."
+        },
+        {
+          "kind": "kept",
+          "note": "There are no footnotes. and The form serves the function. and They are not what this book is., all three untouched by the pass. Three short flat sentences carrying the section, and none needed anything."
+        },
+        {
+          "kind": "restored",
+          "note": "The seven-link to chain, the builders fragment, and it is worth explaining, cleanly, by name, the citations and the intellectual lineages the book stands within, the reader in place of readers at both occurrences, the apparatus of academic prose, the second they in they are essential, Each of these, the open series before COP16, and the purpose clause so that the verification is possible."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should this chapter's four On the headings be restored as a set?",
+      "context": "The baseline gives Chapter Thirteen four parallel headings, On the Form, On the Conversation, On the State of the Project, and On Releasing the Book Now, which read as the four movements of one accounting. The pass renamed all four to descriptive titles that no longer share a shape. This is a set decision rather than four separate ones, and it belongs with the two other recurring-heading families already raised in this volume. Not changed here; all four labels are routes.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section adds two words to the baseline count, both from the which is repair in the second paragraph. F1 is the finding to carry: the sentence that argues the book must be read in one continuous line was the sentence whose continuity the pass broke, and it broke it by applying a series-normalizing habit that has now appeared in nine sections of this volume. Where a construction repeats a function word seven times, the repetition is the argument often enough that it should be the first hypothesis rather than the last."
+  }
+}

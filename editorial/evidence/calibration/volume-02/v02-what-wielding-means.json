@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-what-wielding-means",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Last Reframe**",
+  "currentHeading": "**What Wielding Means**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **What Wielding Means**, the prior pass's rename of **The Last Reframe**. The italic bridge that closes the section is prose, not a structural line, and was restored in place.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "The present moment asks humanity not whether intelligence will be developed or deployed",
+      "It is neither the only attempt nor sufficient on its own",
+      "Wielding is a developmental capacity. It must be cultivated."
+    ],
+    "result": "None appears in the baseline. The first collapses a five-sentence call and response into one. The second drops a third negation, not the answer. The third breaks an anadiplosis chain by pronominalizing its second term."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "wielding",
+      "developmental capacity",
+      "substrate",
+      "release timing",
+      "warning and invitation"
+    ],
+    "itemsRead": [
+      "CTD-0020",
+      "CTD-0016",
+      "CTD-0038",
+      "CTD-0064"
+    ],
+    "outcome": "No settled decision conflicts with the baseline. CTD-0016 tracks the technological power thesis, and wielding as a developmental capacity is that thesis in its compact form; the baseline states it no more strongly than the shipped text. CTD-0020 is status query and names this closing crescendo. The restored triple negation, not the only attempt, not sufficient on its own, not the answer, moves the passage toward less certainty rather than more, which is worth noting against the assumption that every restoration in this chapter raises the pressure."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A five-sentence call and response about what the moment is not asking was collapsed into one sentence.",
+      "evidence": {
+        "baseline": "This is what the present moment is asking of humanity. Not whether intelligence will be developed. It is being developed. Not whether it will be deployed at planetary scale. It is being deployed. The question is whether the species can become, in the time available, capable of wielding what it has built without being broken by it.",
+        "shipped": "The present moment asks humanity not whether intelligence will be developed or deployed at planetary scale. It is being developed and deployed. The question is whether the species can become capable, in the time available, of wielding what it has built without being broken by it."
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis, and 4.17.",
+      "diagnosis": "4.3's retention limb applies: both sides are plausible and the distinction matters, because the two rejected questions are the two the public debate actually asks. The structure is a refusal repeated twice, each time immediately settled by a flat statement of fact, and the flatness is the argument. It is being developed. It is being deployed. Merged into one compound negative and one compound answer, the refusal happens once and the reader is told rather than shown that the question has moved.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "An anadiplosis chain of three sentences was broken by pronominalizing its middle term.",
+      "evidence": {
+        "baseline": "The wielding is a developmental capacity. The capacity has to be cultivated. The cultivation is the work the book has been describing.",
+        "shipped": "Wielding is a developmental capacity. It must be cultivated. Its cultivation is the work the book has described."
+      },
+      "authorizedBy": "Catalog 4.20, lexical monoculture, and 4.10.",
+      "diagnosis": "Each sentence begins with the noun the previous sentence ended on. Wielding to capacity to cultivation, three steps carrying the reader from the title word to the book's subject in twenty-two words. The chain is the reframe the section is named for. Pronominalizing capacity to it breaks the middle link and leaves two sentences about wielding and one about cultivation. 4.20's own instruction applies: if the exact word is right, repeat it.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "A triple negation lost its third member, which was the strongest disclaimer in the epilogue.",
+      "evidence": {
+        "baseline": "It is not the only attempt, not sufficient on its own, not the answer.",
+        "shipped": "It is neither the only attempt nor sufficient on its own."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, read onto a triad.",
+      "diagnosis": "R-REMOVE-BURDEN was not met. Not the answer is not a third instance of the same disclaimer, it is a different and larger one: the first two concede scope, the third concedes standing. Nothing else in the epilogue says the book is not the answer, so the material did not survive anywhere. The neither and nor construction also closes the set at two, which is the same completeness signal recorded five times elsewhere in this volume.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "Three repeated withs and an active and passive contrast were normalized.",
+      "evidence": {
+        "baseline": "with intention, with skill, with the responsibility that comes from knowing what the thing can do ... The word does not name a passive relationship. It names an active one, in which the person doing the wielding is changed by what they hold",
+        "shipped": "with intention, skill, and the responsibility that comes from knowing what it can do ... The word does not name a passive relationship. It names one in which the wielder is changed by what they hold"
+      },
+      "authorizedBy": "Catalog 4.4 and 4.5.",
+      "diagnosis": "The repeated with makes three separate conditions of holding rather than one list of attributes, which matters because the third is of a different order from the first two. Dropping active from names an active one also removes half of a stated contrast and leaves passive unanswered. And the person doing the wielding was chosen over the wielder for a reason the paragraph makes explicit two sentences later: the person is changed by what they hold, so the phrase has to keep the person in it.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0020",
+      "effect": "reopened in scope, pressure lowered",
+      "note": "Status query. The restoration returns the closing crescendo to baseline, and the net effect here runs toward less certainty, not more: not the answer is restored, and the compressed the book is being released now in its present form regains in the form it is in, with the limitations the next chapter will name directly. Counter-evidence to the assumption that restoring Chapter Twelve uniformly raises the volume's warning temperature."
+    },
+    {
+      "id": "CTD-0016",
+      "effect": "unchanged",
+      "note": "The wielding thesis is restored in the baseline's wording. The claim's scope is identical in both versions."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. No prohibited mark occurs in this section of the baseline. Nothing to repair."
+        },
+        {
+          "kind": "kept",
+          "note": "A sword is wielded. A tool is wielded. Power is wielded., which the pass left alone. It is the section's one place where three short sentences are doing exactly what three short sentences should."
+        },
+        {
+          "kind": "restored",
+          "note": "The five-sentence call and response, the anadiplosis chain, not the answer, the three repeated withs, active before one, the person doing the wielding, also in this is also why, in the form it is in, the run-on joining ready or not to the question that follows it, find each other, and the two-sentence italic bridge that closes the chapter."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading remain What Wielding Means?",
+      "context": "The baseline heading names the section's function, a last reframe before the accounting chapter; the pass's heading names its topic. The section's first line is one more thing about the title, before closing this chapter, which announces a reframe rather than a definition. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F3 is the finding worth carrying: the deletion of not the answer is the only place in Chapter Twelve where the pass removed a disclaimer rather than a commitment, and it happened because the disclaimer was the third member of a triad and triads attract catalog 4.4. A pattern rule fired on the shape of the sentence without asking what the third item said. That is the failure mode R-CATALOG-LIMBS exists to prevent, and it is the mirror image of R-CAUTIOUS-HALF rather than a counterexample to it: in both cases the surviving text is the one that commits the book to less."
+  }
+}
