@@ -126,6 +126,22 @@
       "status": "candidate, stated in full in v03-the-pattern-we-refuse-to-repeat.json",
       "proposedBy": "editorial-agent",
       "note": "Seventh confirmation. The baseline states insufficiency and triangulation as a pair; the shipped text kept insufficiency, expanded it, and deleted triangulation."
+    },
+    {
+      "candidateId": "R-LEDGER-WINS-COROLLARY",
+      "status": "candidate, not yet in the rule index",
+      "proposedBy": "editorial-agent",
+      "obligation": "Before seeding canon to satisfy a ledger item, check whether the baseline already satisfies it.",
+      "statement": "R-LEDGER-WINS governs the case where a recorded decision and an older baseline conflict, and it makes the decision win. It is silent on the commoner case where a ledger item asks for something the baseline already contains. In that case the obligation should be discharged by restoring the author's own words, not by writing new ones to satisfy the item. Writing produces a clause with an agent's provenance where an author's clause already existed, and it conceals that the pass which created the debt had itself deleted the payment.",
+      "evidence": "CTD-0012 requires the Currency of Presence, COHERENCE, and Bio-Consensus to be named as distinct concepts, and master ledger Decision B asks for one bridging clause in Volume III so the Four Streams and Bio-Consensus are unified without rewriting the volume. The clause was already in the baseline, in the author's words: these four streams, read locally and never surveilled, are what the work also calls Bio-Consensus, the biometric reading of presence, the two terms naming the same thing and used interchangeably. The wave-one pass deleted it, then reconstructed a shorter and weaker bridge of its own. Restoring the baseline sentence discharged the item with better provenance than writing one, and it simultaneously restored read locally and never surveilled, which CTD-0054 depends on and which the reconstructed bridge had dropped.",
+      "citedItems": [
+        "CTD-0012",
+        "CTD-0054"
+      ],
+      "procedure": "When a ledger item names a clause the manuscript is missing, search the immutable baseline for it before drafting. If the baseline contains it, restore it and record the item as paid down from the baseline. If the baseline does not, drafting is legitimate and the new clause should be recorded as seeded, with its agent provenance visible.",
+      "cautions": [
+        "This corollary does not weaken R-LEDGER-WINS. Where a recorded decision and the baseline genuinely conflict, the decision still wins. The corollary applies only where they agree and the baseline is the fuller statement."
+      ]
     }
   ],
   "openQuestions": [
