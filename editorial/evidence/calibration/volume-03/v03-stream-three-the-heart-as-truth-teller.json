@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-stream-three-the-heart-as-truth-teller",
+  "editorialId": "volume-03",
+  "sectionHeading": "Stream Three: The Heart as Truth-Teller",
+  "currentHeading": "Stream Three: Cardiac Rhythm in Context",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The HeartMath synchrony attribution, the claim that HRV is the gold standard for individual presence, and the display claim that cardiac synchrony is the purest unit the currency mints are canon and empirical assertions belonging to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "HRV",
+      "heart rate variability",
+      "McCraty",
+      "HeartMath",
+      "cardiac coherence synchrony",
+      "purest unit",
+      "mint",
+      "minting",
+      "COHERENCE",
+      "gold standard",
+      "incorruptible"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0006",
+      "CTD-0009",
+      "CTD-0012",
+      "CTD-0015",
+      "CTD-0054",
+      "master-ledger sections 2, 3 and 7, Decisions A, B and C"
+    ],
+    "outcome": "Checked before restoring the display line, as the brief required. Nothing in the ledger or the master ledger rules on which stream mints most purely. Decision B makes the Four Streams the primary minting path, Decision C makes Proof of Council ancillary, and Decision A names the unit COHERENCE; all three are consistent with the baseline line and none of them ranks the streams against each other. CTD-0015 and CTD-0003 are both open queries, not decisions, so R-LEDGER-WINS does not fire and the baseline governs. The display line is restored. Restoring it does not reopen either query, because both were raised against a manuscript that no longer carried the line; it supplies the query with the sentence that most sharply poses it, which is the more useful state for the author to decide from. Recorded against both, and against CTD-0006, which is where an incorruptible measure of presencing would do the most damage if it ever reached governance."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The strongest minting claim in the volume was deleted without a decision authorizing it.",
+      "evidence": {
+        "baseline": "When two people are truly present with each other, their hearts begin to beat in related rhythm. This is measurable. It is, quite literally, the sound of presencing. And it is the purest unit the currency mints.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Nothing recorded. The wave-one semantic review lists its high-confidence corrections by line and none falls here.",
+      "diagnosis": "This display line is where the volume states what a unit of the currency actually is, and it is the only sentence in the corpus that identifies a specific physiological event as the purest thing the currency mints. CTD-0015 exists because the corpus never says what mints a unit; CTD-0003 exists because the corpus cannot decide whether COHERENCE is a relation or its record. This one sentence answers the first and commits hard on the second, in the author's own words. Deleting it removed the corpus's clearest answer to two open canon queries and left the queries open, which is the worst available outcome: the ambiguity survives and the evidence for resolving it does not. Restored, and both queries are recorded against it.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The restored display line contradicts the chapter opening, and the contradiction is in the baseline.",
+      "evidence": {
+        "baseline": "None is sufficient alone; each can be misread in isolation. Together, they triangulate something that no single stream could reliably identify. And it is the purest unit the currency mints. Cardiac coherence synchrony is the most direct and incorruptible measure of presencing.",
+        "shipped": "Not applicable. The shipped text resolved the contradiction by deleting one side of it."
+      },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "The chapter opening says no stream is sufficient alone. This section says one stream yields the purest unit and an incorruptible measure of the relational event itself. Incorruptible is a sufficiency claim: a measure that cannot be corrupted needs no corroboration. Both sentences are the author's and both are restored, because the standing instruction is to restore and flag rather than to reconcile. The reconciliation is available and belongs to the author: purest could mean the least noisy contributor to a fused judgment rather than a stream that mints on its own. That is a one-clause decision and it is the kind of decision an editorial pass has no standing to take. Flagged as the batch's principal finding.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "The synchrony finding was converted from a documented phenomenon with a named source into unattributed studies with heterogeneous effects.",
+      "evidence": {
+        "baseline": "When two people enter a state of genuine mutual presence, their heart rhythms begin to synchronize, a phenomenon documented in the research of Rollin McCraty and the HeartMath Institute and termed cardiac coherence synchrony. This is not metaphor and not sentiment. It is a measurable physiological event. Two people in genuine presencing do not merely report feeling connected; their cardiovascular systems demonstrably couple.",
+        "shipped": "Studies have also observed physiological synchrony between people during shared activity, caregiving, performance, conversation, and stress. Effects are heterogeneous."
+      },
+      "authorizedBy": "Compression, and the volume card's listing of HeartMath and synchrony claims among known factual concerns.",
+      "diagnosis": "Studies have also observed is catalog 4.27, weasel attribution, in the middle of a passage repairing a claim for being underspecified. The baseline names McCraty, names the institute, and names the term, all of which are checkable and disputable, which is what an attribution is for. HeartMath is a contested source and that is a reason for the author to decide whether to keep it, not a reason to replace a nameable source with an unnameable consensus. Restored with the name intact. The heterogeneity observation is real and is kept as a bound.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "The cautious half law, seventh sentence-level confirmation, operating on the section's entire argumentative spine.",
+      "evidence": {
+        "baseline": "Polyvagal theory makes the link explicit and inescapable: one cannot be genuinely socially engaged while one's HRV is suppressed. The social engagement system and the cardiac vagal system are the same system.",
+        "shipped": "Higher values in some HRV measures can be associated with greater vagal influence and regulatory flexibility. The meaning depends on the metric, timescale, posture, breathing pattern, and individual baseline."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline's identity claim, that the social engagement system and the cardiac vagal system are one system, is what makes HRV a measure of availability for encounter rather than a measure of cardiovascular health. The shipped pair states the dependencies of the metric and never states what it measures. Every shipped sentence is true; together they say the reading is contingent and never say on what. Confirmation, and the seventh in the volume.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F5",
+      "summary": "Six prohibited marks.",
+      "evidence": {
+        "baseline": "heart rate variability fenced around HRV; parasympathetic dominance introducing the physiological state of safety; autonomic rigidity introducing the states of threat, withdrawal, and exhaustion; synchronize introducing the McCraty attribution; the sound of presencing before the purest unit clause; consumer cardiac sensors fenced around a two-item list carrying its own comma.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The acronym fence became or HRV. Three appositive glosses became commas, since each is genuinely dependent and none carries internal commas that a comma repair would collide with. The display line's mark was separating two movements, a definition and a verdict, and became a period with And beginning the verdict, so the landing still lands; a comma there would have made the volume's hardest claim into a trailing clause, which is the failure R-PUNCT-STRUCT names. The sensor fence dropped and joined its two items with and.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0015",
+      "effect": "reopened by restoration at full strength, and better posed",
+      "note": "The item asks what evidence mints COHERENCE. The restored display line answers: cardiac coherence synchrony is the purest unit the currency mints. That is the corpus's only direct answer and it was deleted by the pass that could not find one. The item is now decidable. It is not decided: the line does not say whether the synchrony event is the unit, evidence for the unit, or the occasion of minting, and it does not place the mechanism in a Providence version, which is the item's second requirement."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "reopened by restoration at full strength",
+      "note": "The purest unit the currency mints identifies a unit with a measured physiological event, which is the relation limb of the item's dichotomy stated as strongly as the corpus states it anywhere. Read beside the restored sound of presencing, the volume is committing to COHERENCE being the relation rather than its portable attestation. The author should decide whether that is intended before the line publishes, because Volumes IV and IX describe export, portability, and a wallet, which the record limb supports and this line does not."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "recorded",
+      "note": "Most direct and incorruptible measure of presencing is restored. An incorruptible measure is the sort of thing governance eventually reaches for. The item asks whether biometric-derived records may affect standing, and the strength of this claim is part of why the question is critical rather than theoretical."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration at full strength",
+      "note": "Rollin McCraty and the HeartMath Institute return by name, together with the single most validated physiological marker, the gold-standard measure, cardiac coherence synchrony as a term, and demonstrably couple. HeartMath is a contested source. The item owns the verification, and naming it is what makes the verification possible."
+    },
+    {
+      "id": "CTD-0054",
+      "effect": "supported by the kept material",
+      "note": "The accessible-alternatives requirement for people who cannot or do not wish to wear a device is kept from the shipped text. It bears on enrollment and on non-biometric routes, which the item and CTD-0006 both need."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, the master ledger, and the debt ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The most clinically validated and most revealing framing, the metronome image, the single most validated marker claim, both directional HRV readings with their glosses, the polyvagal identity claim, HRV as the most direct available measure of availability for encounter, the synchrony paragraph with McCraty and HeartMath named and cardiac coherence synchrony as the term, the single-time image, not metaphor and not sentiment, demonstrably couple, the whole display line including the purest unit clause, the gold-standard and incorruptible contribution line, and the consumer sensor integration."
+        },
+        {
+          "kind": "kept",
+          "note": "Three shipped sentences as a limits paragraph placed immediately after the display line: that low HRV does not prove threat or unavailability and high HRV does not prove trustworthiness, and that synchrony is heterogeneous across studies and may accompany connection in one setting and shared strain in another. They are bounds the baseline does not state and they earn the misread-in-isolation clause. Placed after the display line deliberately, so the reader meets the volume's hardest claim and its strongest objection on the same page instead of meeting only one."
+        },
+        {
+          "kind": "kept",
+          "note": "One further shipped sentence appended to the contribution paragraph: that research-grade validation, sensor comparison, artifact handling, and accessible alternatives for people who cannot or do not wish to wear a device are required before the stream becomes operational. It is the most concrete sentence the shipped section contained, it names an accessibility obligation nothing else in the unit names, and it is the only place the volume admits this stream is not yet operational."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped metric-dependency paragraph, the unattributed studies sentence, and the constructive claim is narrower paragraph. The last of these ends on The instruments do not tell us what the moment meant. The people do, which is a good pair and is the Coherence Engine chapter's argument, made there at length."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across six marks as recorded in F5."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, Stream Three: Cardiac Rhythm in Context, untouched under the structural hold."
+        }
+      ],
+      "metrics": {
+        "words": 489,
+        "baselineWords": 430,
+        "shippedWords": 213,
+        "deltaPercentAgainstBaseline": 14,
+        "shippedDeltaPercentAgainstBaseline": -50
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-CAUTIOUS-HALF",
+      "status": "candidate, stated in full in v03-the-pattern-we-refuse-to-repeat.json",
+      "proposedBy": "editorial-agent",
+      "note": "Seventh sentence-level confirmation. The heading pair confirms the structural form as well: The Heart as Truth-Teller asserts that the organ reports honestly; Cardiac Rhythm in Context asserts that the reading depends on circumstances. The survivor is the more cautious name and the merged prose lost exactly what the discarded name promised."
+    },
+    {
+      "candidateId": "R-CANON-BY-DELETION",
+      "status": "candidate, not yet in the rule index",
+      "proposedBy": "editorial-agent",
+      "obligation": "A pass may not settle an open canon query by deleting the sentence that poses it.",
+      "statement": "Where a debt item records an unresolved canon question, the passages that state the contested claim are the evidence the author needs in order to decide. Removing them does not resolve the item; it removes the material the resolution would be made from, while leaving the item open and the manuscript quieter. The result reads like progress and is the opposite: the query survives, its sharpest instance does not, and the next reader cannot tell that the corpus ever committed.",
+      "evidence": "CTD-0015 asks what evidence mints COHERENCE and CTD-0003 asks whether COHERENCE is a relation or its portable record. Both items were raised in the wave-one reviews. The same pass deleted the display line asserting that cardiac coherence synchrony is the purest unit the currency mints, which is the only sentence in the corpus that answers the first and the strongest sentence in the corpus bearing on the second. Neither item was closed. The manuscript simply stopped containing the claim, and the queries were left to be decided against a text from which the evidence had been removed.",
+      "citedItems": [
+        "CTD-0003",
+        "CTD-0015"
+      ],
+      "procedure": "When a section carries a claim named in an open canon query, restore it and record it against the item with the exact wording, so the author decides on the strongest form the corpus ever stated. Where a decision has already been recorded, R-LEDGER-WINS governs and the decision still wins. This rule applies only to items whose status is query or open.",
+      "cautions": [
+        "This does not license restoring a claim a recorded decision removed, and it does not license leaving a contradiction unmarked. Restore, then flag, and state the contradiction in the record where the author will read it."
+      ]
+    }
+  ],
+  "openQuestions": [
+    "The purest unit the currency mints, contradiction with the chapter opening. The Four Streams asserts that none of the four is sufficient alone. This section asserts that one of them yields the purest unit and an incorruptible measure of the relational event itself. Both are the author's sentences and both are now restored. The likely reconciliation is that purest names the least noisy contributor to a fused judgment rather than a stream that mints on its own, but that is a canon decision and it was not taken here. This is the batch's principal finding.",
+    "Incorruptible. The strongest anti-counterfeiting claim in the volume, and the only one asserting that a measure cannot be gamed at all. The baseline elsewhere makes the weaker and more defensible version, that no act of will can reliably fabricate the difference in real time. The author may want the two to agree.",
+    "HeartMath. Restored by name. The institute is a contested source and cardiac coherence synchrony is its term rather than a consensus term in physiology. CTD-0009 owns it. Naming it is what makes it checkable; the previous pass removed the name and kept a weaker version of the finding, which is unfalsifiable and unattributable at once.",
+    "Gold standard. HRV is the gold-standard measure of individual presence is restored. Gold standard is a strong claim about a literature that measures HRV for many purposes and does not, as far as this pass can establish, treat it as a standard for presence at all. CTD-0009."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "One candidate rule proposed, R-CANON-BY-DELETION, recorded above. This section is the case that exposed it. Two critical canon queries were raised against Volume III in the same review wave that deleted the volume's clearest answer to both, and no record connects the two events. Restoring the display line does not decide either query and is not meant to. It puts the decision back in front of the author with the evidence attached, which is the state a query is supposed to be in."
+  }
+}

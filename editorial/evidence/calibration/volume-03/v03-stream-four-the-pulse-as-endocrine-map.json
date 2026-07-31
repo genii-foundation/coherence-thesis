@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-stream-four-the-pulse-as-endocrine-map",
+  "editorialId": "volume-03",
+  "sectionHeading": "Stream Four: The Pulse as Endocrine Map",
+  "currentHeading": "Stream Four: Pulse Morphology",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The three thousand year lineage claim, the mapping of named pulse qualities onto modern physiological states, and the relationship to the tradition that produced them are canon and attribution decisions belonging to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "pulse",
+      "Traditional Chinese Medicine",
+      "Pericardium",
+      "Wiry",
+      "Slippery",
+      "Choppy",
+      "Flooding",
+      "Deep",
+      "three thousand year",
+      "pulse waveform morphology"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0009",
+      "CTD-0013",
+      "CTD-0045",
+      "CTD-0069"
+    ],
+    "outcome": "CTD-0069 is the governing item and it is a query, not a decision, so R-LEDGER-WINS does not fire and the baseline governs the prose. The item was raised against the Indigenous governance passage and its obligation is general: identify the people, texts, and traditions that actually informed the proposal, obtain appropriate review or consent, provide precise attribution and material reciprocity, and remove any synthesis the evidence cannot support. This section draws a diagnostic system, five named categories, and an organ-function ontology from a living Chinese medical tradition, names no practitioner, text, lineage, or school, and records no review, consent, or reciprocity. Restoring it enlarges the item's scope from one tradition to two. Restored under the standing instruction and flagged. CTD-0004 also applies to the three thousand year figure, which is a historical priority claim with no source. The wave-one semantic review's high-confidence corrections do not touch this section."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The substitution mode, total. No sentence of the baseline section survives, and the baseline contains no cautious half the pass could have selected.",
+      "evidence": {
+        "baseline": "392 words. The tradition described in operation, the five named pulse qualities with their physiological correspondences, the argument for why pulse quality adds what HRV cannot, and the turn from cardiovascular signal to endocrine signal.",
+        "shipped": "151 words. A description of what the tradition is, an instruction to the manuscript not to present it as mapped, a statement that sensors can capture features, a statement that their sufficiency is unproven, and a research protocol."
+      },
+      "authorizedBy": "Compression, and CTD-0009 read as licensing a hedge.",
+      "diagnosis": "This is the section that breaks the candidate rule as currently stated. R-CAUTIOUS-HALF predicts that where a baseline pairs a cautious statement with a committing one, the pass keeps the cautious half. Here there is no cautious half to keep. Every sentence of the baseline commits, and the shipped section is cautious throughout. The pass did not select, it substituted: it wrote a new cautious section and deleted the committing one entire. That matters because in selection mode the surviving sentence is still the author's, and a reader comparing shipped against baseline sees a subset. In substitution mode the surviving sentences are the agent's, they are all true, and nothing in a diff read for error will flag them. The rule's diagnostic value stands and its statement must widen. See rulesDerived.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The five named pulse qualities and their correspondences were reduced to a lowercase word list.",
+      "evidence": {
+        "baseline": "The Wiry pulse, taut as a plucked string, corresponds to constraint and held frustration: the physiology of a person who is, quite literally, holding something back, not yet available for open connection. The Slippery pulse, smooth and flowing like pearls across a plate, corresponds in part to the regulated state of the Pericardium. The Choppy pulse, rough and uneven, corresponds to depletion. The Flooding pulse corresponds to agitation and reactivity; the Deep, Hidden pulse to guardedness and withdrawal.",
+        "shipped": "Traditional Chinese Medicine describes pulse qualities through images such as wiry, slippery, choppy, flooding, deep, and hidden. Practitioners use those qualities within a larger diagnostic system."
+      },
+      "authorizedBy": "CTD-0009, and the semantic review's general posture on unvalidated physiological mapping.",
+      "diagnosis": "The baseline names each quality, gives its tactile image, and states what it corresponds to in a person's availability for encounter. Those correspondences are the stream. The shipped list keeps the names, drops every correspondence, decapitalizes the categories so they read as adjectives rather than diagnostic terms, and adds a sentence telling the manuscript what it must not do. The result reports that a tradition exists and never says what Providence proposes to read from it. It also weakens the attribution problem while keeping the appropriation: the tradition is still being drawn on, and now without the specificity that would let a practitioner from that tradition recognize or dispute the use.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "The argument for why a fourth stream is needed at all was deleted.",
+      "evidence": {
+        "baseline": "heart rate variability tells us whether the autonomic system is regulated, but it cannot tell us why it is dysregulated. Pulse quality provides a functional map: it distinguishes the constraint of held expression from the depletion of overgiving from the guardedness of withdrawal. These distinctions matter enormously for how Providence serves a person, because they point not merely to whether presence is available but to what is in the way of it, and therefore to what kind of support would actually help.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Without this paragraph Stream Four is an experimental duplicate of Stream Three and there is no reason for it. The paragraph states the difference precisely: HRV reports that regulation has failed, pulse quality proposes to report which failure it is, and the three failures named are different enough to call for different help. It is also the only place in the unit where the measurement is connected to what Providence would do for a person, which is the volume card's requirement that every sustained abstraction return to a body, relationship, or observable consequence.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "The hinge into the Endocrine Frontier was cut, leaving the following section without its premise.",
+      "evidence": {
+        "baseline": "And here the science opens onto something new: the pulse is not only a cardiovascular signal. It is an endocrine signal.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The Endocrine Frontier exists because of this claim. Removing it left the next section opening on hormones with no stated reason for a pulse chapter to be discussing them, which is visible at the section boundary the neighbor test asks about. Restored, with genuinely reduced to new under the volume card's list of phrases to reduce.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F5",
+      "summary": "Six prohibited marks.",
+      "evidence": {
+        "baseline": "assessing not merely rate but quality introducing a four-item specification; the Wiry, Slippery, and Choppy pulses each fenced around a tactile image, two of the three carrying internal commas; a functional map introducing an independent clause; Pulse waveform morphology fenced around the precise shape of each pressure wave.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first became a period and a defining sentence, Quality means the shape, tension, texture, and momentum of the pulse wave, because a colon there would have been the fourth in one paragraph and the baseline owns the other three. The three fences became commas; the Slippery gloss dropped its internal comma so the appositive reads as one phrase, smooth and flowing like pearls across a plate. The functional map mark became a colon, since the clause after it specifies the map. The morphology fence became commas."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0069",
+      "effect": "enlarged by restoration",
+      "note": "The item was recorded against the Indigenous governance passage and asks for named traditions, review or consent, precise attribution, and material reciprocity. Restoring this section extends the same obligation to a second tradition. Volume III now draws a diagnostic method, five named categories, a three thousand year lineage, and the Pericardium's organ-function ontology from Chinese medicine, names no practitioner, school, text, or lineage, and records no review or reciprocity. It also proposes to automate the tradition's judgment by having its practitioners label training data, which is a reciprocity question with a sharper edge than the governance passage carried. Restored and flagged, exactly as the governance section was."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "The three thousand year diagnostic tradition of pulse reading is a historical priority claim with no source attached. The item covers claims of this shape."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration at full strength",
+      "note": "Every correspondence between a named pulse quality and a physiological or psychological state returns as the baseline states them, together with modern instrumentation is rapidly rendering it quantitative and the claim that sensors can be analyzed for the very qualities the tradition named. None is verified. The item owns them and lists pulse morphology explicitly."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "recorded",
+      "note": "The restored section is the volume's most speculative mechanism and it is described in the same present tense as the validated ones. Whether the volume is a research agenda or a construction account determines whether that is acceptable."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, the master ledger, and the debt ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The stream's framing as the most unconventional and most demanding, the three thousand year lineage, the practitioner reading three positions and three depths, the definition of quality, the organ-system mapping, all five named pulse qualities with their images and correspondences including the Pericardium as heart protector, the argument that pulse quality reports why regulation failed where HRV reports only that it did, the link from that distinction to what kind of support would help, the turn from contemplative art to instrumentation, and the endocrine hinge."
+        },
+        {
+          "kind": "kept",
+          "note": "Two shipped elements merged into one sentence: that whether modern sensing can reliably support these particular distinctions remains unproven, and that the responsible path begins with collaboration among experienced practitioners, cardiovascular researchers, statisticians, clinicians, and participants from varied populations. The unproven clause is the visible limit the volume card requires of a speculative mechanism, and the collaboration clause names the practitioners as collaborators rather than as data sources, which is the only thing in either version of the section that moves toward what CTD-0069 asks for. Placed after the argument and before the instrumentation paragraph, so the claim is bounded where the reader will doubt it."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped sentence instructing the manuscript what it must not present, which is an editorial note printed in the reader's text, and the sentence stating that the mapping is a research question, which the kept unproven clause carries better. The human labels pair from the shipped text was moved rather than cut; it now sits in The Endocrine Frontier beside the labeling program it bounds."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across six marks as recorded in F5, and one R-VOICE-BIND reduction, genuinely new to new, under the volume card's list of phrases to reduce."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, Stream Four: Pulse Morphology, untouched under the structural hold. The baseline heading, The Pulse as Endocrine Map, states the claim that makes the next section follow from this one; the current heading names the measurement technique. The hinge sentence restored in F4 now carries that work in the prose."
+        }
+      ],
+      "metrics": {
+        "words": 413,
+        "baselineWords": 392,
+        "shippedWords": 151,
+        "deltaPercentAgainstBaseline": 5,
+        "shippedDeltaPercentAgainstBaseline": -61
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-CAUTIOUS-HALF",
+      "status": "candidate, stated in full in v03-the-pattern-we-refuse-to-repeat.json",
+      "proposedBy": "editorial-agent",
+      "obligation": "Widen the statement from selection to substitution. Where the baseline offers no cautious half, a pass under compression pressure writes one and deletes the committing text entire.",
+      "note": "This section is counter-evidence to the rule as stated and confirmation of the behaviour it describes. The rule says the shipped text retains the hedging half of a baseline pair. Stream Four's baseline has no hedging half: 392 words, every sentence committing. The shipped 151 words are cautious throughout and share no sentence with the baseline. Two modes, one behaviour.",
+      "statement": "The invariant is not that the cautious half survives. It is that the shipped text is cautious regardless of what the baseline offered. Where the baseline supplies a hedge, the pass keeps it and cuts its partner, which is selection mode. Where the baseline supplies none, the pass writes one and cuts everything, which is substitution mode. Substitution mode is the more dangerous of the two and the harder to detect, because in selection mode the surviving sentences are still the author's and a reader comparing texts sees a subset of a known original, while in substitution mode every surviving sentence is the agent's, every one is true, and no review that checks the remaining prose for error will find anything wrong with it. The only detector is the word count against the baseline denominator and the absence of shared sentences.",
+      "evidence": "Stream Four, 392 baseline words into 151, zero surviving baseline sentences. Stream One shows the same mode in partial form: its baseline also commits throughout and the shipped text supplied its own limit. Against these, Stream Two and Stream Three and The Endocrine Frontier are selection mode, and A Note Before We Go On is selection mode operating on an address.",
+      "citedItems": [],
+      "procedure": "When testing a section against this rule, first count surviving baseline sentences. If the count is zero the section is in substitution mode and the pairing test does not apply; compare word counts against the baseline and read the shipped text for what it is, which is a new section on the same subject. If the count is positive, run the pairing test as stated.",
+      "cautions": [
+        "Substitution mode is not evidence of bad faith and the substituted prose is often accurate. The defect is that it replaces the author's argument with an agent's summary of the field, which no error check will catch and which a word count alone understates, because the substituted text can be any length."
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Attribution, and the reason this section is flagged rather than held. The restored text takes a diagnostic method, five named categories, a lineage figure, and an organ-function ontology from a living Chinese medical tradition, and names no practitioner, school, or text. It then proposes to have that tradition's practitioners label training data so the judgment can be automated. CTD-0069 asks for exactly what is missing here, in the case of a different tradition. Restored under the standing instruction and recorded as enlarging the item. This is the second time in this volume that restoring baseline prose has enlarged an attribution debt, and the pattern is now established enough that the author should decide the general question rather than two particular ones.",
+    "The correspondences. Wiry to held frustration, Slippery to a regulated Pericardium, Choppy to depletion, Flooding to agitation, Deep and Hidden to guardedness. These are stated as facts about the body. They are claims internal to one diagnostic system and there is no established translation between that system's categories and the autonomic states the other three streams measure. The baseline asserts the translation; the shipped text denied it; neither cited anything. CTD-0009 owns it.",
+    "Three thousand years. Unsourced, and a claim about the antiquity of a specific practice rather than of a medical tradition in general. CTD-0004.",
+    "Sufficiency. This stream is the volume's most speculative and it is the one whose restoration most clearly earns the chapter opening's claim that each stream can be misread in isolation. It cannot currently be misread at all, because it cannot yet be read."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "The candidate rule was tested here against a section chosen because it looked likely to break it, and it broke in the productive direction. R-CAUTIOUS-HALF describes a real behaviour and states it too narrowly. Its selection form covers the cases where a baseline pair existed; its substitution form covers the cases where none did, and substitution is the mode in which the loss is invisible to every check except the word count. The widened statement is recorded above. Nothing else in this section required a new rule."
+  }
+}

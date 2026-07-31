@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-stream-one-the-language-of-genuine-encounter",
+  "editorialId": "volume-03",
+  "sectionHeading": "Stream One: The Language of Genuine Encounter",
+  "currentHeading": "Stream One: The Language of Encounter",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The strength of the Pennebaker and Pentland attributions, and the claim that generative conversation has a detectable structural signature, are empirical assertions belonging to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Pennebaker",
+      "Pentland",
+      "sociometric",
+      "conversational linguistics",
+      "consent",
+      "transcribed",
+      "presencing"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0045",
+      "CTD-0053",
+      "CTD-0054",
+      "CTD-0056",
+      "master-ledger sections 2 and 3, Decision B"
+    ],
+    "outcome": "No recorded decision governs the strength of the Pennebaker or Pentland attributions. CTD-0009 owns them as verification obligations and asks for verification, not softening; its paydown criteria require every source to be checked for title, authors, venue, date, methods, population, effect size, limitations, and replication, and require retained hypotheses to be labeled. Neither criterion authorizes converting an author's assertion into a hedge. The wave-one semantic review lists its high-confidence corrections by line and none of them falls in this section. Both names are therefore restored at full baseline strength and recorded against CTD-0009. The consent condition, full and granular participant consent, is baseline language and is the locality guarantee CTD-0054 depends on, so it is restored rather than replaced by the shipped granular consent."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Two named research programs were converted into unnamed possibilities, and a verification marker was written into the prose.",
+      "evidence": {
+        "baseline": "The research of James Pennebaker at the University of Texas established that the small, almost invisible words of a conversation, pronouns, articles, prepositions, carry remarkably reliable information about psychological state and the quality of connection between speakers. The sociometric work of Alex Pentland's group at MIT demonstrated that the patterns of conversational exchange, independent of content, predict the outcomes of collaboration.",
+        "shipped": "Research associated with James Pennebaker suggests that small function words can carry information about psychological and relational processes. Work associated with Alex Pentland examines patterns of interaction that correlate with group performance. These sources may offer useful features, but they do not establish a universal grammar of genuine encounter. The cited claims require verification against the primary literature."
+      },
+      "authorizedBy": "CTD-0009, read as licensing a hedge.",
+      "diagnosis": "Established became suggests, demonstrated became examines, and both scholars became people research is associated with. That is a weaker claim about the literature than the literature makes, and it is not what the item asks for. CTD-0009 asks for verification and for honest labeling of what is retained as hypothesis. It does not ask for the author's reading of Pennebaker and Pentland to be replaced by an agent's more cautious reading. The last shipped sentence is worse than a hedge: it prints the editorial backlog inside the reader's text, which is exactly the draft-history narration the same review removed from four other passages in this volume. Restored to the baseline's verbs and recorded against CTD-0009, where the obligation belongs.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The section's mechanism was deleted and replaced with a description of its inputs.",
+      "evidence": {
+        "baseline": "genuine thinking-together has a distinct linguistic signature. When two people are truly present to each other, their language shows it: in the building of one person's thought upon another's, in the moments of genuine disclosure, in the questions that open rather than close, in the appearance of vocabulary and ideas that are co-constructed rather than pre-formed.",
+        "shipped": "The first stream examines conversational structure. With granular consent, speech may be transcribed locally and analyzed for turn taking, questions, topic development, disclosure, repair after misunderstanding, and ideas built jointly rather than delivered in parallel."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline states a proposition that could be false: joint thinking has a signature, and here is what the signature looks like. The shipped version states a list of things a system might measure, which cannot be false and cannot be tested. It is a longer inventory of features and a shorter argument. The four contrasts also disappear, and each one is the load-bearing half of a distinction: built upon rather than delivered, opening rather than closing, co-constructed rather than pre-formed. Without them the stream has no criterion.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "The comparison that gives the stream its discriminating power was cut.",
+      "evidence": {
+        "baseline": "A conversation that is genuinely generative looks structurally different from parallel monologue, from social performance, from the careful management of impression.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Three named negative cases, each one a plausible thing that looks like connection and is not. This is the sentence that makes the stream a discriminator rather than a description, and it is the only place in the unit where the counterfeits are named. The volume's anti-counterfeiting argument depends on them being nameable.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "The cautious half law, in its substitution mode.",
+      "evidence": {
+        "baseline": "linguistic structure is the first evidence of presencing, the first detectable sign that something genuine is occurring between two people rather than alongside them.",
+        "shipped": "Language contributes evidence about the form of an encounter. It cannot establish the sincerity of the people inside it."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline has no cautious half here to keep. Every sentence in the baseline section commits. The pass did not select the hedging member of a pair, it wrote a hedge of its own and deleted the commitment, which is a second mode of the same behaviour and the mode a diff read for truth cannot catch, because the surviving sentence is true and is not the author's. The shipped limit is nevertheless a real bound the baseline lacks, so it was kept and moved ahead of the currency line, and the baseline claim was restored behind it. See the rulesDerived entry.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F5",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "transcribed and analyzed, not for keywords, not for sentiment, but for structure; their language shows it fenced against a four-part specification; the small, almost invisible words of a conversation fenced around a three-item list.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first separated the analysis from a three-part correction of what it is not, and became a period, so the correction lands on its own. A colon was rejected because the next sentence already opens with one. The second introduced a four-part specification and became a colon. The third fenced a gloss carrying its own internal commas; the sentence was rebuilt to name pronouns, articles, and prepositions first and carry the gloss as a plain appositive, which removes the fence without a comma pile.",
+      "producedRule": "R-PUNCT-STRUCT"
+    },
+    {
+      "id": "F6",
+      "summary": "One voice card reduction applied.",
+      "evidence": {
+        "baseline": "something genuine is occurring between two people rather than merely alongside them.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "R-VOICE-BIND. The volume card lists not merely among the recurrent phrases that should be reduced.",
+      "diagnosis": "The baseline uses the construction five times in this unit. Four of them carry a plausible weaker limb and were kept under the retention limb of catalog 4.3: rate against quality, whether against what is in the way, reporting against coupling, and shape against subject. This one does not: between and alongside already carry the whole contrast and merely adds nothing to it. Reduced by one word. The other four are untouched."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration at full strength",
+      "note": "Pennebaker established and Pentland demonstrated both return as the baseline states them, together with the claim that the small words carry remarkably reliable information and that exchange patterns predict collaboration outcomes. The item owns the verification. The prose no longer carries the backlog."
+    },
+    {
+      "id": "CTD-0054",
+      "effect": "supported by restoration",
+      "note": "Full and granular participant consent returns as the baseline's own condition on transcription, which is stronger than the shipped granular consent and is where the record lifecycle obligations attach."
+    },
+    {
+      "id": "CTD-0053",
+      "effect": "recorded",
+      "note": "The restored section makes linguistic structure the first evidence of presencing. The item's concern is that detectability is treated as one hinge; this section is one of the four things the hinge actually rests on, and it is now stated as a claim that can fail."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "recorded",
+      "note": "The restored prose describes Providence in the present tense, as the baseline does. Whether the volume reports or proposes is the item's open decision, and it is not settled by an editorial pass."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, the master ledger, and the debt ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The stream's name as conversational linguistics, the full and granular consent condition, the three-part correction of what the analysis is not, the architecture-of-the-conversation question, the linguistic signature claim with its four markers, the three named counterfeits, both research attributions at baseline strength, and the first evidence of presencing line."
+        },
+        {
+          "kind": "kept",
+          "note": "One sentence pair from the shipped text, reduced to Language contributes evidence and It cannot establish the sincerity of the people inside the encounter. It is a bound the baseline does not state, it earns the insufficiency clause the chapter opening asserts, and it echoes the volume card's protected line about the body contributing evidence. Placed before the currency line so the claim follows the limit."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped feature inventory, the four bounded questions, and the sentence printing the verification backlog into the reader's text."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks as recorded in F5, and one R-VOICE-BIND reduction as recorded in F6."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, Stream One: The Language of Encounter, untouched under the structural hold. The baseline heading carried Genuine."
+        }
+      ],
+      "metrics": {
+        "words": 261,
+        "baselineWords": 251,
+        "shippedWords": 147,
+        "deltaPercentAgainstBaseline": 4,
+        "shippedDeltaPercentAgainstBaseline": -41
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-CAUTIOUS-HALF",
+      "status": "candidate, stated in full in v03-the-pattern-we-refuse-to-repeat.json",
+      "proposedBy": "editorial-agent",
+      "note": "Refinement rather than confirmation. The rule as stated predicts that the shipped text keeps the hedging member of a baseline pair. This section has no hedging member: every baseline sentence commits. The pass wrote the hedge itself and deleted the commitment. The rule's diagnostic value is unchanged, but its statement should widen from selection to substitution, because in substitution mode the surviving cautious sentence is not the author's language at all and no comparison of surviving sentences against the baseline will show it as a loss. Recorded here and argued at length in v03-stream-four-the-pulse-as-endocrine-map.json, where the substitution mode is total."
+    }
+  ],
+  "openQuestions": [
+    "Attribution strength. Established and demonstrated are restored. Pennebaker's function-word findings and Pentland's sociometric work are real programs, but the baseline's remarkably reliable and predict the outcomes of collaboration state them more strongly than a careful reading of either literature supports without bounding population, effect size, and replication. CTD-0009 owns this. Restored, not narrowed, under the standing instruction.",
+    "Claim scope. Genuine thinking-together has a distinct linguistic signature is the section's whole proposition and it is unverified. The four markers name what the signature would consist of, which makes the claim testable, which is the reason to keep it in this form.",
+    "Consent and locality. The baseline transcribes the words of a session; the shipped text added locally to the transcription. Locality is asserted for the streams collectively in The Four Streams, read locally and never surveilled, so it is not lost, but whether transcription specifically happens on participant hardware is an architecture question CTD-0054 should settle."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "One refinement to a candidate rule, recorded above. The instructive result is that an open debt item was read as authorizing a prose change. CTD-0009 records a verification obligation; the pass discharged it by weakening the sentence and then printing the obligation into the manuscript. An unpaid item is a reason to check a claim and a reason to tell the author it is unchecked. It is not a licence to state a smaller claim on the author's behalf, and a verification marker in the reader's text is the backlog leaking through the page."
+  }
+}
