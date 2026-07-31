@@ -1,5 +1,11 @@
 import { expect, test } from "@playwright/test";
-import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import {
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import path from "node:path";
 
 import {
@@ -31,12 +37,14 @@ function debtRegisterFixture() {
   return {
     total: items.length,
     counts: countEditorialDebtByStatus(items),
-    decide: active.filter((item) => editorialDebtLane(item) === "decide").length,
+    decide: active.filter((item) => editorialDebtLane(item) === "decide")
+      .length,
     execute: active.filter((item) => editorialDebtLane(item) === "execute")
       .length,
     blocked: active.filter((item) => editorialDebtLane(item) === "blocked")
       .length,
-    activeCritical: active.filter((item) => item.severity === "critical").length,
+    activeCritical: active.filter((item) => item.severity === "critical")
+      .length,
     critical: items.filter((item) => item.severity === "critical").length,
   };
 }
@@ -271,8 +279,36 @@ test.describe("local editorial admin", () => {
     expect(guidelinesBeforeEvolution).toBe(true);
 
     const voiceCards = page.getByRole("region", { name: "Voice Cards" });
-    const voiceCardDisclosures = voiceCards.locator("details");
+    const voiceCardDisclosures = voiceCards.locator("[data-voice-card-id]");
     await expect(voiceCardDisclosures).toHaveCount(10);
+    const voiceCardJumpLinks = page.getByRole("list", {
+      name: "Voice card jump links",
+    });
+    await expect(voiceCardJumpLinks.getByRole("link")).toHaveCount(10);
+    await voiceCardJumpLinks
+      .getByRole("link", { name: "Volume I", exact: true })
+      .click();
+    await expect(page).toHaveURL(/#voice-card-volume-01$/);
+    await expect(
+      voiceCards.locator('[data-voice-card-id="volume-01"]'),
+    ).toHaveAttribute("open", "");
+    await voiceCards
+      .locator('[data-voice-card-id="volume-01"] > summary')
+      .click();
+    const voiceCardFilters = voiceCards.getByRole("group", {
+      name: "Voice card status",
+    });
+    await expect(
+      voiceCardFilters.getByRole("radio", { name: "All 10" }),
+    ).toBeChecked();
+    await voiceCardFilters.getByText("Pending", { exact: true }).click();
+    await expect(
+      voiceCardFilters.getByRole("radio", { name: "Pending 8" }),
+    ).toBeChecked();
+    await expect(
+      voiceCards.locator("[data-voice-card-id]:visible"),
+    ).toHaveCount(8);
+    await voiceCardFilters.getByText("All", { exact: true }).click();
     const corpusVoiceCard = voiceCards.locator('[data-voice-card-id="corpus"]');
     await expect(corpusVoiceCard).toHaveAttribute("open", "");
     await expect(corpusVoiceCard).toContainText(
@@ -285,10 +321,34 @@ test.describe("local editorial admin", () => {
       '[data-voice-card-id="volume-01"]',
     );
     await expect(volumeOneVoiceCard).not.toHaveAttribute("open", "");
-    await volumeOneVoiceCard.locator("summary").click();
+    await volumeOneVoiceCard.locator(":scope > summary").click();
     await expect(volumeOneVoiceCard).toHaveAttribute("open", "");
     await expect(volumeOneVoiceCard).toContainText("Invitational and candid.");
-    await volumeOneVoiceCard.locator("summary").click();
+    const effectiveVoice = volumeOneVoiceCard.getByRole("region", {
+      name: "Effective voice for Volume I",
+    });
+    await expect(effectiveVoice).toContainText(
+      "Corpus floor + Volume I overlay",
+    );
+    await expect(effectiveVoice).toContainText(
+      "It moves more slowly than the later volumes",
+    );
+    const voiceHistory = volumeOneVoiceCard.locator(
+      '[class*="voiceCardHistory"]',
+    );
+    await voiceHistory.locator(":scope > summary").click();
+    const voiceHistoryList = volumeOneVoiceCard.getByRole("list", {
+      name: "Git history for Volume I voice card",
+    });
+    await expect(voiceHistoryList).toBeVisible();
+    expect(
+      await voiceHistoryList.getByRole("listitem").count(),
+    ).toBeGreaterThan(0);
+    await volumeOneVoiceCard
+      .getByRole("link", { name: "Link to Volume I voice card" })
+      .click();
+    await expect(page).toHaveURL(/#voice-card-volume-01$/);
+    await volumeOneVoiceCard.locator(":scope > summary").click();
 
     const voiceCardsFollowEvolution = await page.evaluate(() => {
       const history = document.querySelector(
@@ -509,9 +569,7 @@ test.describe("local editorial admin", () => {
       "href",
       "/admin/bench/v01-orientation/",
     );
-    await expect(
-      orientationCard.getByText(/^\d+ rulings?$/),
-    ).toBeVisible();
+    await expect(orientationCard.getByText(/^\d+ rulings?$/)).toBeVisible();
     await expect(
       orientationCard.getByText(
         "Which of the first three variants is closest?",

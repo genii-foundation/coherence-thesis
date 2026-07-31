@@ -1,5 +1,3 @@
-import { ChevronDown } from "lucide-react";
-
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { GuidelineHistoryDisclosure } from "@/components/GuidelineHistoryDisclosure";
 
@@ -9,6 +7,7 @@ import {
   readEditorialGuidelines,
   readEditorialVoiceCards,
 } from "./guidelinesData";
+import { VoiceCardCollection } from "./VoiceCardCollection";
 
 export const dynamic = "force-dynamic";
 
@@ -63,6 +62,18 @@ export default function EditorialGuidelinesPage() {
                   </a>
                 ))}
               </div>
+            </div>
+            <div className={styles.voiceCardOutline}>
+              <span>Voice cards</span>
+              <ol aria-label="Voice card jump links">
+                {voiceCards.map((voiceCard) => (
+                  <li key={voiceCard.id}>
+                    <a href={`#voice-card-${voiceCard.id}`}>
+                      {voiceCard.label}
+                    </a>
+                  </li>
+                ))}
+              </ol>
             </div>
           </aside>
 
@@ -149,40 +160,7 @@ export default function EditorialGuidelinesPage() {
         aria-labelledby="voice-cards-title"
       >
         <h2 id="voice-cards-title">Voice Cards</h2>
-        <div className={styles.voiceCardCollection}>
-          {voiceCards.map((voiceCard, index) => (
-            <details
-              className={styles.voiceCard}
-              data-voice-card-id={voiceCard.id}
-              key={voiceCard.id}
-              open={index === 0}
-            >
-              <summary>
-                <span className={styles.voiceCardIdentity}>
-                  <span>{voiceCard.label}</span>
-                  <strong>{voiceCard.title}</strong>
-                </span>
-                <span className={styles.voiceCardSummaryMeta}>
-                  <span
-                    data-voice-card-status={voiceCard.status.toLowerCase()}
-                    title={voiceCard.statusDetail}
-                  >
-                    {voiceCard.status}
-                  </span>
-                  <ChevronDown aria-hidden="true" size={18} />
-                </span>
-              </summary>
-              <div className={styles.voiceCardBody}>
-                <code>{voiceCard.path}</code>
-                <MarkdownBody
-                  markdown={voiceCard.markdown}
-                  focusWords={false}
-                  orderedLists
-                />
-              </div>
-            </details>
-          ))}
-        </div>
+        <VoiceCardCollection voiceCards={voiceCards} />
       </section>
     </div>
   );

@@ -1981,12 +1981,101 @@
   letter-spacing: -0.025em;
 }
 
+.voiceCardFilters {
+  display: grid;
+  gap: 0.45rem;
+  width: fit-content;
+  min-width: min(100%, 26rem);
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.voiceCardFilters legend {
+  color: var(--ink-muted);
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.voiceCardFilters > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  background: var(--admin-surface);
+}
+
+.voiceCardFilters label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.38rem;
+  min-width: 0;
+  min-height: 2.45rem;
+  cursor: pointer;
+  color: var(--ink-muted);
+  padding: 0.48rem 0.7rem;
+  transition:
+    background 150ms ease,
+    box-shadow 150ms ease,
+    color 150ms ease;
+}
+
+.voiceCardFilters label + label {
+  border-left: 1px solid var(--line);
+}
+
+.voiceCardFilters label:hover,
+.voiceCardFilters label:focus-within,
+.voiceCardFilters label:has(input:checked) {
+  background: var(--admin-field-hover);
+  color: var(--ink);
+}
+
+.voiceCardFilters label:has(input:checked) {
+  box-shadow: inset 0 -2px 0 var(--bronze-deep);
+}
+
+.voiceCardFilters label:has(input:focus-visible) {
+  box-shadow: inset 0 0 0 2px var(--bronze-deep);
+}
+
+.voiceCardFilters input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  opacity: 0;
+}
+
+.voiceCardFilters span {
+  overflow: hidden;
+  font-size: 0.76rem;
+  font-weight: 680;
+  text-overflow: ellipsis;
+}
+
+.voiceCardFilters strong {
+  border-radius: 999px;
+  background: var(--admin-recessed);
+  color: var(--ink-soft);
+  font-size: 0.62rem;
+  font-weight: 750;
+  padding: 0.16rem 0.34rem;
+}
+
 .voiceCardCollection {
   display: grid;
   gap: 0.65rem;
 }
 
 .voiceCard {
+  scroll-margin-top: 6.5rem;
   min-width: 0;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -1996,6 +2085,17 @@
     background 160ms ease,
     border-color 160ms ease,
     box-shadow 160ms ease;
+}
+
+.voiceCard[hidden] {
+  display: none;
+}
+
+.voiceCard:target {
+  border-color: var(--bronze-deep);
+  box-shadow:
+    0 14px 40px var(--admin-shadow-soft),
+    0 0 0 2px color-mix(in srgb, var(--bronze-deep) 22%, transparent);
 }
 
 .voiceCard[open] {
@@ -2065,6 +2165,9 @@
 }
 
 .voiceCardSummaryMeta > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.24rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 0.58rem;
@@ -2072,6 +2175,11 @@
   letter-spacing: 0.05em;
   padding: 0.22rem 0.42rem;
   text-transform: uppercase;
+}
+
+.voiceCardSummaryMeta > span[data-voice-card-history-count] {
+  background: var(--admin-recessed);
+  color: var(--ink-soft);
 }
 
 .voiceCardSummaryMeta > span[data-voice-card-status="active"] {
@@ -2101,7 +2209,14 @@
   padding: clamp(1rem, 3vw, 1.6rem);
 }
 
-.voiceCardBody > code {
+.voiceCardSourceRow {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.voiceCardSourceRow > code {
   width: fit-content;
   max-width: 100%;
   overflow-wrap: anywhere;
@@ -2778,6 +2893,24 @@
 
   .voiceCardBody {
     padding: 0.9rem;
+  }
+
+  .voiceCardFilters {
+    width: 100%;
+  }
+
+  .voiceCardAuthority > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .voiceCardAuthority > div > * + * {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .voiceCardSourceRow > code {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .guidelineTimeline > li {
@@ -3602,6 +3735,220 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+.voiceCardSourceRow > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-muted);
+  text-decoration: none;
+}
+
+.voiceCardSourceRow > a:hover,
+.voiceCardSourceRow > a:focus-visible {
+  border-color: var(--bronze-deep);
+  background: var(--admin-field-hover);
+  color: var(--ink);
+  outline: none;
+}
+
+.voiceCardAuthority {
+  display: grid;
+  gap: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--admin-recessed);
+  padding: clamp(0.85rem, 2vw, 1.1rem);
+}
+
+.voiceCardAuthority > header {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--bronze-deep);
+}
+
+.voiceCardAuthority > header > div {
+  display: grid;
+  gap: 0.08rem;
+}
+
+.voiceCardAuthority > header span,
+.voiceCardAuthority > div span {
+  color: var(--ink-muted);
+  font-size: 0.58rem;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.voiceCardAuthority > header strong {
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 680;
+}
+
+.voiceCardAuthority > div {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--admin-surface);
+}
+
+.voiceCardAuthority > div > * {
+  display: grid;
+  align-content: start;
+  gap: 0.3rem;
+  min-width: 0;
+  color: inherit;
+  padding: 0.82rem;
+  text-decoration: none;
+}
+
+.voiceCardAuthority > div > * + * {
+  border-left: 1px solid var(--line);
+}
+
+.voiceCardAuthority a:hover,
+.voiceCardAuthority a:focus-visible {
+  background: var(--admin-field-hover);
+  outline: none;
+}
+
+.voiceCardAuthority > div strong {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.94rem;
+  font-weight: 590;
+}
+
+.voiceCardAuthority small,
+.voiceCardAuthority p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.voiceCardHistory {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--admin-surface);
+}
+
+.voiceCardHistory > summary {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.8rem;
+  cursor: pointer;
+  color: var(--ink-muted);
+  list-style: none;
+  padding: 0.62rem 0.75rem;
+}
+
+.voiceCardHistory > summary::-webkit-details-marker {
+  display: none;
+}
+
+.voiceCardHistory > summary:hover,
+.voiceCardHistory > summary:focus-visible {
+  background: var(--admin-field-hover);
+  color: var(--ink);
+  outline: none;
+}
+
+.voiceCardHistory > summary > span {
+  font-size: 0.72rem;
+  font-weight: 680;
+}
+
+.voiceCardHistory > summary > strong {
+  font-size: 0.68rem;
+  font-weight: 650;
+}
+
+.voiceCardHistory > summary > svg:last-child {
+  transition: transform 160ms ease;
+}
+
+.voiceCardHistory[open] > summary > svg:last-child {
+  transform: rotate(180deg);
+}
+
+.voiceCardHistory > ol {
+  display: grid;
+  margin: 0;
+  border-top: 1px solid var(--line);
+  padding: 0;
+  list-style: none;
+}
+
+.voiceCardHistory li {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.72rem 0.78rem;
+}
+
+.voiceCardHistory li + li {
+  border-top: 1px solid var(--line);
+}
+
+.voiceCardHistory li > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--ink-muted);
+  font-size: 0.62rem;
+}
+
+.voiceCardHistory li > div strong {
+  border-radius: 999px;
+  background: var(--admin-accent-soft);
+  color: var(--bronze-deep);
+  font-size: 0.54rem;
+  letter-spacing: 0.04em;
+  padding: 0.16rem 0.3rem;
+  text-transform: uppercase;
+}
+
+.voiceCardHistory li p,
+.voiceCardHistory li small {
+  margin: 0;
+}
+
+.voiceCardHistory li p {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 570;
+}
+
+.voiceCardHistory li small {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  color: var(--ink-muted);
+  font-size: 0.6rem;
+}
+
+.voiceCardHistory li small span:first-child {
+  color: var(--admin-addition);
+}
+
+.voiceCardHistory li small span:nth-child(2) {
+  color: var(--admin-deletion);
 }
 
 .debtSeverity[data-severity="critical"] {

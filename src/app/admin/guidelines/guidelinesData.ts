@@ -78,6 +78,18 @@ export interface EditorialVoiceCard {
   markdown: string;
   status: "Active" | "Pending";
   statusDetail: string;
+  departure?: string;
+  history: VoiceCardHistoryEntry[];
+}
+
+export interface VoiceCardHistoryEntry {
+  hash: string;
+  shortHash: string;
+  date: string;
+  subject: string;
+  additions: number;
+  deletions: number;
+  changedPath: string;
 }
 
 interface VolumeManifest {
@@ -220,6 +232,53 @@ function voiceCardStatus(markdown: string): {
   };
 }
 
+export function parseVoiceCardHistoryLog(log: string): VoiceCardHistoryEntry[] {
+  return log
+    .split(/^@@@/gm)
+    .slice(1)
+    .map((chunk) => {
+      const [header = "", ...bodyLines] = chunk.split("\n");
+      const [hash = "", date = "", subject = ""] = header.split("\x1f");
+      const numstat = bodyLines.join("\n").match(/^([\d-]+)\t([\d-]+)\t(.+)$/m);
+
+      return {
+        hash,
+        shortHash: hash.slice(0, 7),
+        date,
+        subject,
+        additions: countFromNumstat(numstat?.[1]),
+        deletions: countFromNumstat(numstat?.[2]),
+        changedPath: numstat?.[3] ?? "",
+      };
+    })
+    .filter((entry) => entry.hash && entry.date && entry.subject);
+}
+
+function readVoiceCardHistory(
+  repoRoot: string,
+  voiceCardPath: string,
+): VoiceCardHistoryEntry[] {
+  const log = execFileSync(
+    "git",
+    [
+      "log",
+      "--date=iso-strict",
+      "--format=@@@%H%x1f%aI%x1f%s",
+      "--numstat",
+      "--find-renames",
+      "--follow",
+      "--",
+      voiceCardPath,
+    ],
+    { cwd: repoRoot, encoding: "utf8", maxBuffer: 4 * 1024 * 1024 },
+  );
+  return parseVoiceCardHistoryLog(log);
+}
+
+function voiceCardDeparture(markdown: string): string | undefined {
+  return markdown.match(/^- Where this volume departs:\s*(.+)$/m)?.[1]?.trim();
+}
+
 export function readEditorialVoiceCards(): EditorialVoiceCard[] {
   const repoRoot = process.cwd();
   const corpusMarkdown = readFileSync(
@@ -233,6 +292,7 @@ export function readEditorialVoiceCards(): EditorialVoiceCard[] {
     title: "Coherence Thesis",
     path: corpusVoiceCardPath,
     markdown: voiceCardBody(corpusMarkdown),
+    history: readVoiceCardHistory(repoRoot, corpusVoiceCardPath),
     ...corpusStatus,
   };
 
@@ -258,6 +318,8 @@ export function readEditorialVoiceCards(): EditorialVoiceCard[] {
         title: manifest.title,
         path: manifest.voiceCardPath,
         markdown: voiceCardBody(markdown),
+        departure: voiceCardDeparture(markdown),
+        history: readVoiceCardHistory(repoRoot, manifest.voiceCardPath),
         order: manifest.order,
         ...voiceCardStatus(markdown),
       };
@@ -272,6 +334,8 @@ export function readEditorialVoiceCards(): EditorialVoiceCard[] {
         markdown,
         status,
         statusDetail,
+        departure,
+        history,
       }) => ({
         id,
         label,
@@ -280,6 +344,8 @@ export function readEditorialVoiceCards(): EditorialVoiceCard[] {
         markdown,
         status,
         statusDetail,
+        departure,
+        history,
       }),
     );
 

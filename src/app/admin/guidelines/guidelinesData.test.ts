@@ -8,6 +8,7 @@ import {
   type GuidelineHistoryEntry,
   parseEditorialStandard,
   parseGuidelineHistoryLog,
+  parseVoiceCardHistoryLog,
   readEditorialVoiceCards,
 } from "./guidelinesData";
 
@@ -34,10 +35,10 @@ describe("editorial guidelines data", () => {
       "Acceptance checklist",
       "Rule index",
     ]);
-    expect(standard.rules).toHaveLength(13);
+    expect(standard.rules).toHaveLength(20);
     expect(standard.rules.at(-1)).toMatchObject({ id: "R-DEIXIS" });
     expect(standard.catalogCategories).toBe(29);
-    expect(standard.lineCount).toBe(567);
+    expect(standard.lineCount).toBe(638);
   });
 
   it("pairs each Git revision with its line movement, rules, and rename", () => {
@@ -119,6 +120,31 @@ rename to editorial/method/standard.md
     ]);
   });
 
+  it("pairs each voice-card commit with its source movement", () => {
+    const history =
+      parseVoiceCardHistoryLog(`@@@cccccccccccccccccccccccccccccccccccccccc\u001f2026-07-31T12:00:00-07:00\u001frefine the voice card
+
+7\t2\teditorial/sources/volumes/volume-01/voice-card.md
+@@@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\u001f2026-07-30T12:00:00-07:00\u001fintroduce the voice card
+
+72\t0\teditorial/sources/volumes/volume-01/voice-card.md
+`);
+
+    expect(history).toMatchObject([
+      {
+        shortHash: "ccccccc",
+        additions: 7,
+        deletions: 2,
+        changedPath: "editorial/sources/volumes/volume-01/voice-card.md",
+      },
+      {
+        shortHash: "bbbbbbb",
+        additions: 72,
+        deletions: 0,
+      },
+    ]);
+  });
+
   it("reads the corpus and nine volume voice cards from canonical sources", () => {
     const voiceCards = readEditorialVoiceCards();
 
@@ -135,6 +161,8 @@ rename to editorial/method/standard.md
       label: "Volume I",
       title: "Humanity's Most Viable Future",
       status: "Active",
+      departure:
+        "It moves more slowly than the later volumes, makes admissions of uncertainty load bearing, and preserves threshold pacing even after releasing the original display glyph.",
     });
     expect(voiceCards.at(-1)).toMatchObject({
       id: "volume-09",
@@ -143,6 +171,9 @@ rename to editorial/method/standard.md
       status: "Pending",
     });
     expect(voiceCards.every((voiceCard) => voiceCard.markdown.length > 0)).toBe(
+      true,
+    );
+    expect(voiceCards.every((voiceCard) => voiceCard.history.length > 0)).toBe(
       true,
     );
   });
