@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-30",
+  "updated": "2026-07-31",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -176,7 +176,7 @@
       "tier": "amber",
       "status": "pending",
       "area": "editorial",
-      "detail": "117 baseline headings against 89 current. Twenty-eight sections were merged or dropped outright, which is a structural change rather than a line edit and needs adjudication before its sections can settle.",
+      "detail": "Volume IV is re-rendered at 89 of 89 sections that have a current counterpart. The 117-to-89 gap is exactly 28 Coda: In Plain Terms sections, indexed in one open record with baseline line, chapter, and opening clause. Referred to the author under CTD-0095. No locations were invented.",
       "blockedBy": []
     },
     {
@@ -185,16 +185,34 @@
       "tier": "amber",
       "status": "in-progress",
       "area": "editorial",
-      "detail": "408 sections. Volume I took a night for 28, so this is roughly 68 hours at that depth and cannot finish in one night. Running worst first so each night buys the most review value. Damage map: npm run editorial:damage.",
+      "detail": "Volumes IV through IX complete. Volume II at 32 of 85 and Volume III at 43 of 142, both still running. Corpus moved from 49 percent below baseline to roughly parity: IV +13, IX +15, VIII +4, V +2, VI -2, I -8, II -8, VII -12, III -39. 346 of 541 sections carry a calibration record.",
       "blockedBy": []
     },
     {
       "id": "T-020",
       "title": "Decide how to re-render Volume VII",
       "tier": "red",
+      "status": "done",
+      "area": "editorial",
+      "detail": "Resolved. The baseline marks sections with bold display lines rather than headings, which the damage tool now reads. All 35 unmatched Volume VII sections were confirmed as renames or reformats with zero genuine structural losses, and all 63 sections have records.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-021",
+      "title": "Adjudicate the blocked structural restorations",
+      "tier": "red",
       "status": "pending",
       "area": "editorial",
-      "detail": "Its baseline carries no markdown headings, only bold and italic display matter, so section matching does not apply and the damage map cannot measure it. Needs a re-cut baseline or a different comparison unit. Author decision.",
+      "detail": "Twenty-six chapter start regions across Volumes III, IV, VII and VIII hold baseline introductions that cannot be restored without reviving retired routes. Each is recorded with the full baseline text so one edit restores it once the routes are adjudicated. Ten in Volume IV, sixteen in VII and VIII.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-022",
+      "title": "Rule on the retained pass-authored protected lines",
+      "tier": "red",
+      "status": "pending",
+      "area": "editorial",
+      "detail": "Three lines declared protected by the Volume VIII and IX voice cards have no baseline ancestor. They are retained so the declared protection is not silently released, but they canonize prose the condensing pass wrote. CTD-0110 is where the cards get corrected.",
       "blockedBy": []
     }
   ]

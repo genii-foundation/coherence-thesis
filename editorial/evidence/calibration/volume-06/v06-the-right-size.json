@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-right-size",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Right Size",
+  "currentHeading": "The Right Size",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "roughly a hundred and fifty",
+      "natural size",
+      "ICONS",
+      "Scale",
+      "for the first time"
+    ],
+    "itemsRead": [
+      "CTD-0036",
+      "CTD-0076",
+      "CTD-0080"
+    ],
+    "outcome": "CTD-0036 is a high-severity query over the population threshold and the semantic review records that the pass converted roughly 150 from a natural relational limit into a provisional design scale requiring evidence and nesting. That binds. CTD-0076 requires Scale as the singular and ICONS only as the plural; the baseline uses the acronym for the communities themselves, which the item forbids, so the pass's correction is kept."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "386 words.",
+        "shipped": "385 words, of which 3 of 15 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 15 current sentences of six words or more, 3 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chamber's coda scaffold is not restored.",
+      "evidence": {
+        "baseline": "You want to matter, and you want to be known, and the world keeps making you choose between them.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "The voice card's known weak passages, and the semantic review's record of the coda removal.",
+      "diagnosis": "Coda scaffold not restored. The baseline closes this chamber with a divider, two italic address lines, the isolated line That is why, and a fourth italic line beginning That is why. The Volume VI voice card lists any return of the repeated divider plus That is why coda among its known weak passages, and the semantic review records the pass's removal of the scaffold as a structural repair. The address lines also tell the reader what they have felt, waited for, or were made to become, which is the defect CTD-0091 was opened for and which the corpus card forbids outright. The scaffold is therefore left removed. Where a coda carried content rather than performance, that content is restored into the chamber body. This coda's first line tells the reader what they want, which is the corpus card's flat prohibition.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The description of what the scale makes possible lost all three of its clauses.",
+      "evidence": {
+        "baseline": "where you can still be known by name, still be missed when you are gone, still be held to your word by people who will see you again tomorrow.",
+        "shipped": "small enough that people remain mutually legible."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, and the recorded correction to the population claim.",
+      "diagnosis": "The ledger correction concerns the number, not the description. Held to your word by people who will see you again tomorrow is the chamber's account of how accountability works at scale, and mutually legible is a term of art that names none of it.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The chamber's argument that the right size can still hold the wrong people was cut to a sentence about constraint.",
+      "evidence": {
+        "baseline": "But the right size can still hold the wrong people, and this is where every previous age fell short. There has never been a coordinating device able to compose these groups well, to gather, from across the whole of humanity, the particular cohort in which a given person would actually come alive, and to let people move between cohorts as they change and grow.",
+        "shipped": "Size alone cannot compose a healthy community. Historically, belonging has often been constrained by birth, necessity, exclusion, and geography."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The cohort in which a person would actually come alive is the chamber's reason for wanting a coordinating device at all, and the freedom to move between cohorts is the safeguard the baseline builds in. Both are the argument, not its ornament.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0036",
+      "effect": "paydown preserved",
+      "note": "Roughly a hundred and fifty is restored as prose and immediately bounded: a provisional design scale rather than a proven natural law, with nested groups and explicit means of keeping trust and accountability required at larger sizes. The closing sentence states that what the scale exactly is remains open to evidence and practice."
+    },
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "The baseline applies Individual Communities Observing Natural Sovereignty to the communities themselves. The corrected form is kept: each single community is a Scale, and the plural network is ICONS."
+    },
+    {
+      "id": "CTD-0080",
+      "effect": "paydown preserved",
+      "note": "The pass's protections for refusal, movement, difference, and the right not to be classified are kept."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. One became a colon before the population figure, one became a comma inside the appositive, and one was rebuilt so the sovereignty definition could follow the Scale in its own sentence."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS across two items, both bounded in place inside restored paragraphs."
+        },
+        {
+          "kind": "cut",
+          "note": "For the first time, which the card lists among phrases to reduce and which the sentence does not need."
+        },
+        {
+          "kind": "restored",
+          "note": "The two ways a weave fails, the three things possible at the scale, the right size holding the wrong people, the cohort where a person would come alive, movement between cohorts, belonging left to accident, and the smallest whole things from which a larger whole is made."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Where we are meant to is rendered as where we might best belong. The baseline's phrasing assigns a destined place, which the card forbids, and the correction slightly weakens the sentence's contrast with where we need to.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The chamber is the clearest case in the volume of a correction that governs a number and was applied to a paragraph. CTD-0036 concerns what a hundred and fifty means; it says nothing about being known by name or held to your word, and those went with it."
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-providence-application-first-version",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Providence Application, First Version**",
+  "sectionHeadingNote": "The baseline heading is quoted with its em dash replaced by a comma, because the punctuation standard admits no prohibited glyph in editorial evidence either. The baseline text itself is unaltered.",
+  "currentHeading": "**A Constitutional Specification for the First Application**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "self-sovereign identity",
+      "verifiable credential",
+      "zero-knowledge",
+      "physiological wallet",
+      "trust layer",
+      "attestation",
+      "Bio-Consensus",
+      "COHERENCE",
+      "sensor",
+      "biometric"
+    ],
+    "itemsRead": [
+      "CTD-0055",
+      "CTD-0006",
+      "CTD-0012",
+      "CTD-0027",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0007"
+    ],
+    "outcome": "CTD-0055 is decisive across Part IV: the corpus describes Providence as already self-sovereign, device-local, unowned, and capture-resistant, and the item requires every such property to be stated as a requirement rather than a current fact until the protocol, threat model, and controls are published. CTD-0006 requires that no physiological measure determine governance standing, which governs the trust layer and the AI prohibitions. CTD-0012 keeps Bio-Consensus, COHERENCE, and the Currency of Presence distinct. CTD-0027 records that the AI integration decision process is undefined. CTD-0072 requires that nothing sound operational. CTD-0007 governs the self-epigraphs."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's epigraph was substituted.",
+      "evidence": {
+        "baseline": "The will can compose itself. The body beneath it keeps telling the truth.",
+        "shipped": "The will can compose a story. The body still deserves attention."
+      },
+      "authorizedBy": "Not authorized by any recorded item.",
+      "diagnosis": "The baseline epigraph contains no prohibited mark, so no punctuation rule reached it. It makes a claim, that the body reports something the will cannot suppress, which is the premise of the physiological layer. The shipped replacement makes a recommendation about attention. CTD-0006 has a legitimate interest in the first claim, and the correct paydown under that item is a bound in the body, not a rewritten epigraph presented as the same one.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The reason the specification takes constitutional form was removed.",
+      "evidence": {
+        "baseline": "Volume III's entire analysis of how technology shapes consciousness, how the infrastructure people live inside determines what they come to find natural, desirable, and worth pursuing, establishes why this is unacceptable. The Providence application is not a neutral tool. It is an environment. Its character will shape the character of the communities that inhabit it.",
+        "shipped": "A product specification should describe limits as clearly as capabilities. Otherwise the priorities of a team, funder, or vendor become the application's unwritten constitution."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "It is an environment is the three word claim the chapter rests on, and the shipped replacement gives a governance reason where the baseline gives a formative one. Both are true and the restoration keeps both. Without the formative argument the chapter's title, a constitutional specification, is unexplained.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0055",
+      "effect": "paydown preserved",
+      "note": "The shipped statement that no control is established as implemented is kept at the head of the chapter."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "no change",
+      "note": "The restored epigraph makes a claim about the body reporting truthfully. It makes no claim about governance standing, which is what the item governs."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One in the heading was resolved by keeping the shipped heading, which holds the route. One was a parenthetical appositive and became a comma pair."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped heading A Constitutional Specification for the First Application, the shipped statement that the requirements describe a proposed first version and do not establish that the controls have been implemented, and the shipped clause naming team, funder, and vendor priorities."
+        },
+        {
+          "kind": "restored",
+          "note": "The baseline epigraph, the three denials of what the specification is not, and the environment argument with its formative reasoning."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored epigraph is the third substitution found in Part IV and the one most likely to be contested, because CTD-0006 has a real interest in what physiological signal is said to reveal. Restored under tonight's policy. If the author wants it bounded, the repair belongs in the body.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 208,
+    "shippedWords": 83,
+    "shippedDelta": -60
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Three epigraph substitutions in one part, all in display matter that carries no prohibited punctuation, is a finding about the pass rather than about any one chapter: display matter was rewritten where prose was compressed."
+  }
+}

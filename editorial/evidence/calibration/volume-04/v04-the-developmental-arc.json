@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-developmental-arc",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Developmental Arc**",
+  "currentHeading": "**The Developmental Arc**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "support layer",
+      "burnout",
+      "developmental arc",
+      "stewardship",
+      "culture",
+      "Purposeful",
+      "retreats",
+      "year-long",
+      "mentors"
+    ],
+    "itemsRead": [
+      "CTD-0056",
+      "CTD-0072",
+      "CTD-0069",
+      "CTD-0006",
+      "CTD-0088",
+      "CTD-0075",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0056 requires each Purposeful program's status and access path to be published rather than implied, and CTD-0072 requires the same for every named entity and credential. Neither is reopened, because the restored chapters describe what the work would require rather than what is running. CTD-0069 governs the corpus's use of Indigenous and contemplative lineage, which bears on the monastic and ritual passages. CTD-0088 concerns mentor safeguarding and was read before restoring the mentorship and supervision requirements. CTD-0006 requires that developmental stage never determine political standing."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's epigraph was substituted.",
+      "evidence": {
+        "baseline": "Money does not make its holders better. Presence, sought as currency, makes its holders more present.",
+        "shipped": "No currency makes its holders better. Presence cannot be minted into virtue."
+      },
+      "authorizedBy": "Not authorized by any recorded item.",
+      "diagnosis": "The baseline epigraph makes a positive claim about what seeking presence as currency does. The shipped one makes two denials and asserts nothing. Neither contains a prohibited mark, so no punctuation rule reached either. CTD-0012 and CTD-0046 have a real interest in what a currency is said to do, and the correct paydown under those items is a bound in the body, not a replacement epigraph presented as the same line.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The definition of the arc, and its three denials, were removed.",
+      "evidence": {
+        "baseline": "The developmental arc is not a career ladder. It is not a hierarchy of status or authority. It is a description of how human beings who are genuinely engaged with the architecture tend to develop over time ... The institution's responsibility to the arc is not to engineer development but to provide the conditions under which development becomes possible.",
+        "shipped": "(absent from the shipped chapter opening)"
+      },
+      "authorizedBy": "Catalog 4.3 and 4.9, and compression.",
+      "diagnosis": "Career ladder and status hierarchy are what a five stage progression looks like to any reader, which is 4.3's retention limb exactly. Not to engineer development but to provide the conditions is the institution's obligation, and it is the sentence that keeps the arc from being a programme people are put through.",
+      "producedRule": "R-NEGATION-STACK"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0012",
+      "effect": "no change",
+      "note": "The restored epigraph names presence as currency without naming Bio-Consensus or COHERENCE, so no conflation is introduced."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "paydown preserved",
+      "note": "The shipped statement that the arc is not a rank is kept."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. Both were parenthetical appositives and both became comma pairs."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped clause that the arc is not a rank, which is the ledger's concern stated inside the restored definition."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped epigraph attribution Adapted from The Coherence Thesis, Volume III, required by CTD-0007."
+        },
+        {
+          "kind": "restored",
+          "note": "The baseline epigraph, the definition of the arc with its three denials, and the institution's conditions obligation."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored epigraph says presence sought as currency makes its holders more present. That is a claim about what the proposed currency does to people, and CTD-0012 and CTD-0046 both bear on currency claims. Restored under tonight's policy and flagged.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 210,
+    "shippedWords": 82,
+    "shippedDelta": -61
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Fourth confirmed epigraph substitution in the volume. All four share a signature: the baseline epigraph makes a claim and the shipped one issues a caution, which is a defensible editorial instinct executed in the one place the standard says not to."
+  }
+}

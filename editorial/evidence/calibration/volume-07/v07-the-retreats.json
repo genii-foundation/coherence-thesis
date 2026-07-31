@@ -4,7 +4,7 @@
   "editorialId": "volume-07",
   "sectionHeading": "**The Retreats**",
   "currentHeading": "## Part IX: The Retreats",
-  "status": "settled",
+  "status": "open",
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
@@ -70,23 +70,37 @@
           "note": "R-PUNCT-STRUCT. Two em dashes. One separated a second movement and became a comma with and. One introduced a specification and became a comma."
         },
         {
-          "kind": "restored",
-          "note": "The mind and body argument, the setting down of the ordinary, the gathering of the cohort, and the read becomes felt close."
+          "kind": "blocked",
+          "note": "Not restored. The mind and body argument, the setting down of the ordinary, the gathering of the cohort, and the read becomes felt close. All of it remains in the baseline region reproduced in the open questions."
         },
         {
           "kind": "kept",
           "note": "The optional format clause."
+        },
+        {
+          "kind": "verified",
+          "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
         }
       ]
     }
   ],
   "rulings": [],
   "rulesDerived": [],
-  "openQuestions": [],
+  "openQuestions": [
+    {
+      "id": "QS",
+      "question": "Structural restoration blocked on route adjudication. This section is a chapter-start region: its prose sits between a part or container label and the first chapter heading beneath it, and text in that position compiles into a section with its own public route. Expanding it revives or reshapes a retired route, which is a continuity decision rather than an editorial one. The prose is therefore left exactly as it stood and the findings below describe what the prior pass removed rather than what this pass restored. The baseline text for this region is reproduced verbatim below so the author can restore it in one edit once the route decision is made. Punctuation repair under R-PUNCT-STRUCT is still required on it, and every ledger constraint named in this record still applies to it.\n\nBASELINE TEXT:\n\n*Where the Year Gathers into Days*\n\nA curriculum carried alone, in the margins of an ordinary life, will teach the mind but rarely reach the body. For the body to learn, the ordinary must occasionally be set down altogether — and this is what the retreats are for. Several times across the year, the cohort gathers, leaves behind the apparatus and the hurry of common life, and gives itself, for a span of days, wholly to the practice. The retreats are where the year’s slow study is concentrated into lived, embodied experience; where what has been read becomes, at last, felt."
+    }
+  ],
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required."
+  },
+  "structuralHold": {
+    "kind": "chapter-start region",
+    "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
+    "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
   }
 }

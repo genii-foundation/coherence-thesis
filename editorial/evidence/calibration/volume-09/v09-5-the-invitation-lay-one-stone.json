@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v09-5-the-invitation-lay-one-stone",
+  "editorialId": "volume-09",
+  "sectionHeading": "## §5 — The Invitation: Lay One Stone",
+  "currentHeading": "## The Invitation to Test the Design",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Alu",
+      "Nilnisi",
+      "Ayan",
+      "California Hot Springs",
+      "lay one stone",
+      "the Doors"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0088",
+      "CTD-0031",
+      "CTD-0005"
+    ],
+    "outcome": "CTD-0030 forbids inviting readers to join an unverified site, so the baseline’s direct invitation to California Hot Springs is not restored and the verification task takes its place at the head of the list. CTD-0088 requires that no invitation precede safeguarding review. The three portraits stay marked as illustrative."
+  },
+  "substitutionCheck": "Grepped. They are not evidence of an operating institution, A design that cannot survive refusal should not govern anyone, and the four possible-work bullets are absent from the baseline. All are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The three people lost the acts that made them arguments.",
+      "evidence": {
+        "baseline": "Alu the healer, whom Providence provisions with trust and time enough to learn that the diabetic grandfather’s true ailment is that he eats every meal alone, and then to do the thing no billing code had a column for, and get him to the table.",
+        "shipped": "Alu is a healer who needs time to notice that a patient’s isolation matters."
+      },
+      "authorizedBy": "CTD-0030, read as requiring the portraits be flattened, and compression.",
+      "diagnosis": "The item requires that they not be presented as evidence of an operating institution, which the shipped framing accomplishes on its own and which is kept. It does not require them to stop being specific. The thing no billing code had a column for is the section’s argument in one clause and it is the third appearance of that image across two volumes.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The two questions lost their framing and one of them lost its content.",
+      "evidence": {
+        "baseline": "Set aside, for one minute, whether you *can.* Read back through what a Scale is, what Providence does ... and feel whether this is your North. Not whether it is faultless. Whether it is *yours* ... You do not have to carry the whole. You carry your *vital piece.*",
+        "shipped": "Test the problem, the principles, the rights of participants, the claims of evidence, and the alternatives ... No one should carry the whole."
+      },
+      "authorizedBy": "The card, which places judgment before allegiance, applied more broadly than it needed to be.",
+      "diagnosis": "The card forbids casting a refusing reader as morally asleep. It does not forbid asking the reader what they want. Your vital piece is the volume’s answer to a reader daunted by the size of the thing, and the card lists more than one kind of builder among the section’s own claims. The shipped test-the-problem list is a genuine improvement and is kept alongside.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The three doors were replaced by four verification tasks.",
+      "evidence": {
+        "baseline": "Build the first Scales ... Build one of the many that follow ... Provision the network ... A civilization of this kind does not grow by a center swelling outward. It grows by scales coming into being in their own places and learning, slowly, to recognize one another.",
+        "shipped": "Verify the first site and founding claim ... Test one bounded practice ... Strengthen the safeguards ... Build the public record."
+      },
+      "authorizedBy": "CTD-0030 and CTD-0088.",
+      "diagnosis": "The verification task must come first and it does, and the direct invitation to stand with a founding core at California Hot Springs is not restored. But the growth claim, that a civilization of this kind grows by places coming into being rather than by a center swelling outward, is architecture rather than recruitment, and it is the sentence that explains why Scale by Scale is the method. It is folded into the bounded-practice item, where it belongs. Providence is provision returns with the provisioning door.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F4",
+      "summary": "The closing quotation no longer matched its source.",
+      "evidence": {
+        "baseline": "Lay one stone. That is the whole method, and it is enough to begin.",
+        "shipped": "Lay one stone. Then find the larger work it joins."
+      },
+      "authorizedBy": "The prior pass rewrote the Volume VIII line and updated both quotations of it in this volume.",
+      "diagnosis": "Section 9 requires citations to stay attached to their sources. Volume VIII now carries the baseline line again, with the larger-work caution kept in the frame of Appendix B, so both quotations in this volume return to the baseline wording. Do not be daunted by the size of the forest is also restored, since it is the sentence the quotation answers.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0030",
+      "effect": "paydown preserved and strengthened",
+      "note": "No reader is invited to join California Hot Springs. Verification of land, legal status, consent, participant count, operation, and public accountability is the first item on the list and is stated to precede everything else."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The safeguards item keeps legal, clinical, accessibility, security, governance, ecological, and trauma-informed review."
+    },
+    {
+      "id": "CTD-0005",
+      "effect": "no change",
+      "note": "No invitation conditions material support on participation."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes. Four set off appositives and became commas. Two introduced specifications and became colons. Two separated second movements and became periods."
+        },
+        {
+          "kind": "restored",
+          "note": "The three portraits with their acts, the only thing a structure can ever really do, the answer-in-order instruction, the North and the vital piece, the questions of value and intention and land and company, the growth-by-places claim, Providence is provision, and the size of the forest."
+        },
+        {
+          "kind": "kept",
+          "note": "The illustrative framing, the tests-the-design-must-meet framing, the judgment-before-allegiance ordering, the design that cannot survive refusal, the consent and risk questions, and all four verification tasks in their order."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §5, The Invitation: Lay One Stone. Current: The Invitation to Test the Design. The rename is required by CTD-0030, since an invitation to lay a stone at an unverified site is the invitation the item forbids. What it costs is lay one stone in a heading, which the card lists among the volume’s intentional recurrent phrases and which survives twice in the prose. The volume card lists five numbered sections among the protected structural devices and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

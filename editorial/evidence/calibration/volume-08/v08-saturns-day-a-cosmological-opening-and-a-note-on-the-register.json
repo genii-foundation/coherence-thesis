@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register",
+  "editorialId": "volume-08",
+  "sectionHeading": "### Saturn’s Day · A cosmological opening, and a note on the register",
+  "currentHeading": "### Saturn's Day: Cosmological Opening and Register",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Saturn",
+      "planets",
+      "weekday naming",
+      "Samhain",
+      "Imbolc",
+      "relativity",
+      "we may be wrong"
+    ],
+    "itemsRead": [
+      "CTD-0048",
+      "CTD-0081",
+      "CTD-0093",
+      "CTD-0105"
+    ],
+    "outcome": "CTD-0048 names the seven planetary lights, weekday naming, and the solstice to Christmas, Samhain to Halloween, and Imbolc to Groundhog Day genealogies as claims needing historical boundaries. Those boundaries are kept. CTD-0081 requires that symbolic architecture not be offered as evidence, and the register note stating that Saturn is a literary figure is kept and moved to the head of the section."
+  },
+  "substitutionCheck": "Grepped. The historical details vary by language and period and require a sourced account, the retirement of the relativity analogy, and the sentence on the claim-level fact audit are all absent from the baseline. The first two are kept as CTD-0048 paydown. The third is rewritten as prose rather than a process note.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section lost seventy-three percent of its words, including the reason the old sky is being reached for at all.",
+      "evidence": {
+        "baseline": "the single hardest thing to do inside the present is to *think in long time.* The whole architecture of the age, the feed, the alert, the metric, the quarter, is built to hold the mind inside the immediate, where nothing of consequence can be seen and where panic and distraction are the only weather.",
+        "shipped": "This book borrows the figure to resist a culture of feeds, alerts, metrics, and quarters."
+      },
+      "authorizedBy": "CTD-0048, read as requiring the cosmological material be cut, and compression.",
+      "diagnosis": "The item asks for historical boundaries on specific factual claims about weekday naming and festival descent. It says nothing about the argument those claims sit inside. Think in long time is the reason this volume has a planetary frame at all, and where nothing of consequence can be seen is the diagnosis of the feed that the whole of §3 then documents.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The personal reason for the Saturn frame was deleted.",
+      "evidence": {
+        "baseline": "this work was not born in ease. Its clarifying forces, limitation, loss, the discipline of a hard reckoning, are what brought it into being at all. It is, in that sense, Saturn’s child.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The card permits first person witness in this volume and names the Saturn frame among its read aloud qualities. This is the only place the frame is grounded in something other than symbolism, and it is the sentence that makes the choice of Saturn a disclosure rather than a decoration.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The eight-station wheel was cut to a rhetorical question.",
+      "evidence": {
+        "baseline": "Once there were eight stations around the year: the two solstices, the two equinoxes, and the four cross-quarter days between, the spokes of a wheel by which ordinary people knew exactly where they stood, how far the sun had traveled, when to plant, when to slaughter, when to rest, when the light would return.",
+        "shipped": "The narrower question survives: how much do we know about the seasons, soil, water, and flowering life where we live?"
+      },
+      "authorizedBy": "CTD-0048 on the festival genealogies.",
+      "diagnosis": "The eight-station wheel is the best attested part of the passage and it is the part that went, while the contested genealogies were kept in summary. The wheel is also what Appendix B later asks the reader to learn one station of, so removing it leaves a stone in Appendix B with nothing behind it.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F4",
+      "summary": "The discipline against exaggeration was reduced to a slogan without its reason.",
+      "evidence": {
+        "baseline": "we will not exaggerate, because the truth is sufficient and exaggeration is a gift to the deniers. Where the loudest number is unsound, we will say so, even when the unsound number would serve our argument. A case that needs inflation is a case that has already lost.",
+        "shipped": "Gravity does not excuse exaggeration."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the promise the whole of §2 and §3 is then measured against, and the volume keeps it twice by name, at the sixty harvests figure and at the China water grabbing figure. Without the promise stated in full, those two retractions read as hedging rather than as the discipline being enforced.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0048",
+      "effect": "paydown preserved",
+      "note": "The weekday and festival genealogies keep their historical boundaries. The relativity analogy stays retired. The claim-level audit is still named as outstanding, now in prose rather than as a process note."
+    },
+    {
+      "id": "CTD-0081",
+      "effect": "paydown preserved",
+      "note": "Saturn is declared a literary figure at the head of the section, and the planetary arc is marked as the author’s way of hearing the work rather than a doctrine."
+    },
+    {
+      "id": "CTD-0105",
+      "effect": "paydown extended",
+      "note": "Nor does the manuscript’s confidence substitute for a claim-level fact audit, which remains required before publication is a production note in reader prose. It is rewritten so the same fact reaches the reader as a statement about this book rather than an instruction to its editors."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Nineteen em dashes, the densest section in the volume. Nine set off appositives and became commas. Five introduced specifications and became colons. Three separated second movements and became periods. Two framed parentheticals and were rebuilt as separate clauses."
+        },
+        {
+          "kind": "applied",
+          "note": "You were already born into a mysticism reduced to an inherited cosmology, since mysticism overclaims what the festivals show."
+        },
+        {
+          "kind": "restored",
+          "note": "The scale-of-pattern opening, the wanderers and their paces, the planetary arc with all eight readings, the account of what Saturn meant, the long time argument, Saturn’s child, the eight-station wheel, and the discipline against exaggeration in full."
+        },
+        {
+          "kind": "kept",
+          "note": "The literary figure declaration, the historical boundaries on weekday and festival claims, the retirement of the relativity analogy, and the material causes correction."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. The baseline heading is \"Saturn’s Day, a cosmological opening and a note on the register\" and the current heading is \"Saturn’s Day: Cosmological Opening and Register\". The baseline title names the two things the section does, a cosmological opening and a register note, and the current one names them as topics. The volume card lists sections 1 through 16 as a protected structural device, and the numbering is absent from the current headings. Renaming a heading mints and retires a public route, so the difference is recorded here rather than acted on."
+    },
+    {
+      "id": "Q1",
+      "question": "CTD-0048 requires historical scholarship on weekday naming and the eight-station wheel. The restored text bounds the first and asserts the second. Neither is yet sourced."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This section shows the volume’s dominant failure mode most clearly: a citation item was answered by deleting the argument and keeping a summary of the contested claim."
+  }
+}

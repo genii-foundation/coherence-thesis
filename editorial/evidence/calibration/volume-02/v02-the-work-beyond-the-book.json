@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-work-beyond-the-book",
+  "editorialId": "volume-02",
+  "sectionHeading": "**A Last Word**",
+  "currentHeading": "**The Work Beyond the Book**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/ and returns a level-3 heading. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route, so restoring a fuller part introduction revives a retired section and breaks the build.",
+    "action": "No label altered. This section sits beneath a chapter heading and is not a part introduction, so rule (2) does not constrain it. Verified: the two part-label regions in this volume, PART ONE and PART TWO, are byte-identical to the baseline and were never edited.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "The book has tried to distinguish what is known",
+      "That distinction is necessary for the invitation",
+      "At the close, we can say with confidence"
+    ],
+    "result": "None appears in the baseline. The first two are a substitution: the baseline's three doubled is-and-is-not pairs were replaced with a single three-item list, and the sentence explaining why honesty matters was rewritten into a claim about distinction."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "not optional",
+      "waiting to find each other",
+      "within the time available",
+      "genuinely consequential"
+    ],
+    "itemsRead": [
+      "CTD-0020",
+      "CTD-0038",
+      "CTD-0041",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0020 governs this section directly. Its evidence names residual passages that declare a window is closing or that the work is not optional, and the restored sentence contains both. The item is a query, not a decision, so the baseline is restored in full and flagged. CTD-0055 is engaged by what is and is not being built, which is the volume's last status disclosure and is restored in its doubled form."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Three doubled is-and-is-not pairs were compressed into one three-item list, and the sentence explaining why honesty matters was replaced.",
+      "evidence": {
+        "baseline": "The book has tried to be honest about what is and is not known, what has and has not been solved, what is and is not being built. The honesty is part of what makes the book trustworthy, and the trustworthiness is part of what makes the invitation credible.",
+        "shipped": "The book has tried to distinguish what is known, what remains unsolved, and what is being built. That distinction is necessary for the invitation to be credible."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, and 4.8.",
+      "diagnosis": "Each pair names a thing and its negation, and the negation is the harder half: what is not known, what has not been solved, what is not being built. Compressed to what is known, what remains unsolved, and what is being built, two of the three negations vanish and the sentence claims the book catalogued its knowledge rather than its ignorance. The second sentence is a chain, honesty to trustworthiness to credibility, and each link is named so the reader can refuse any of them. That distinction is necessary asserts the conclusion without the chain.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The closing summation lost its frame, its four thats, and the first person plural was introduced.",
+      "evidence": {
+        "baseline": "What can be said with confidence, at the close, is that the present moment is genuinely consequential, that the work being asked of the people who can recognize it is real and is not optional, that the builders the book has been describing exist and are waiting to find each other, and that something like the coordination infrastructure the book has been arguing for has to be built within the time available",
+        "shipped": "At the close, we can say with confidence that the present moment is genuinely consequential, the work asked of people who recognize it is real and not optional, the builders the book has described exist and are waiting to find one another, and something like the coordination infrastructure the book argues for must be built within the time available"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "What can be said with confidence is impersonal and states a limit: this much and no more. We can say introduces a first person plural the volume has not used for itself and quietly enrols the reader in the claim, which the corpus card forbids. The four repeated thats also keep the four assertions separate, so a reader may accept the first and refuse the fourth; without them the four run together as one sentence. And the people who can recognize it is narrower than people who recognize it, since can names a capacity rather than an act.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The final sentence lost the auxiliary that makes the book's exhaustion the point.",
+      "evidence": {
+        "baseline": "The book has done what it can do. What comes next is what the readers do, alone and together.",
+        "shipped": "The book has done what it can. What comes next is what readers do, alone and together."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "What it can do repeats the verb so the sentence ends on an action rather than on a modal, and it sets up the next sentence's what the readers do, which repeats the same verb a third time. The three dos are the volume's last figure and the handover it performs. The readers with its article also names the actual people who have finished the book, where readers is a category.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0020",
+      "effect": "restoration increases exposure, item already open",
+      "note": "The work being asked of the people who can recognize it is real and is not optional is restored, with is not optional stated as its own predicate rather than folded into a compound. CTD-0020 names this exact claim in its evidence. Restored and flagged rather than softened."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "unchanged, disclosure restored in doubled form",
+      "note": "What is and is not being built is the volume's final status disclosure and is restored with its negation intact."
+    },
+    {
+      "id": "CTD-0041",
+      "effect": "unchanged",
+      "note": "The builders exist and are waiting to find each other is the volume's last assertion that the field is findable. No route is supplied in either text."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. No prohibited marks in this section."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. The baseline heading is A Last Word; the current heading is The Work Beyond the Book. Left exactly as it stands. The part-region rule was verified as not applicable: this section sits beneath a chapter heading and the closing display matter after it is unchanged."
+        },
+        {
+          "kind": "verified",
+          "note": "The end matter following this section, the ritual divider, the protected line The work belongs to whoever does it, the volume title block, and the attribution line, are all unchanged in both texts and untouched."
+        },
+        {
+          "kind": "restored",
+          "note": "The three doubled is-and-is-not pairs, the honesty-to-trustworthiness-to-credibility chain, the impersonal frame What can be said with confidence, the four thats, the people who can recognize it, and the three dos in the final two sentences."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the closing assert that the work is not optional?",
+      "context": "Restored from the baseline as its own predicate. CTD-0020 names it. It is the volume's last and strongest statement of obligation and it lands two sentences before the book ends, which is the position of maximum effect.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Should the heading return to A Last Word?",
+      "context": "The baseline heading is a valediction and matches the section's register, which is quiet and summary. The current heading, The Work Beyond the Book, restates the closing's content and points outward. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the volume's last section of prose and it concentrates the whole re-render's argument in one paragraph. The pass replaced three doubled negations with a plain list, and in doing so converted a book that had catalogued its own ignorance into one that had catalogued its knowledge. Nothing in the catalog authorizes that, the word count barely moved, and no gate could have caught it. It is the clearest single answer to why the baseline had to be consulted rather than the shipped text."
+  }
+}

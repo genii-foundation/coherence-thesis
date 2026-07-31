@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-when-the-money-arrives",
+  "editorialId": "volume-04",
+  "sectionHeading": "**When the Money Arrives**",
+  "currentHeading": "**When the Money Arrives**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Cardinal Scale",
+      "eighty-seven",
+      "design fiction",
+      "composite",
+      "donor",
+      "five million",
+      "Mahlinah",
+      "Elan",
+      "watershed",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0074",
+      "CTD-0095",
+      "CTD-0036",
+      "CTD-0072",
+      "CTD-0089",
+      "CTD-0078"
+    ],
+    "outcome": "CTD-0030 requires one accurate status for the Cardinal Scale with every existence-proof claim removed, and the shipped design fiction statements are therefore kept verbatim at the head of each scenario. CTD-0074 is decisive for the donor chapter: it records that the chapter's narrated outcome and its coda gave opposite results, and that the chosen outcome is that the community made a counterproposal, the donor declined it, and the Scale lost the gift. That outcome is preserved. CTD-0095 removed the coda that stated the opposite. CTD-0036 governs the eighty-seven and five hundred figures. CTD-0072 requires that nothing sound operational. CTD-0078 requires that the case study and conflict resolution lineages not function as proof."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The reason the money chapter exists was removed.",
+      "evidence": {
+        "baseline": "not because the offer of money is the most dramatic situation a community can face, but because it is the one in which the gap between the architecture's stated commitments and its actual behavior is most exposed. Money does not test what a community says it values. It tests what a community will give up to remain what it claims to be.",
+        "shipped": "(absent from the shipped chapter opening)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The two beat close is the chapter's thesis and the sharpest formulation in Part VII. What a community will give up to remain what it claims to be is also the standard the outcome section then applies, at cost. Without it the chapter is a case study with no stated criterion.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F2",
+      "summary": "The donor's characterization, which is what makes the test hard, was removed.",
+      "evidence": {
+        "baseline": "The conviction is real. The donor is not a villain. This is important, because the easy version of this scenario, the obviously corrupting offer from an obviously compromised source, is the version that tests nothing. The hard version is the one in which the money is offered in good faith ... and whose conditions are not malicious but are nonetheless incompatible with the constitutional architecture in ways that the donor does not fully see.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The card names the donor's good faith and incompatible terms among the read-aloud qualities to preserve, and warns that the donor must never become a caricature. This paragraph is the protection. It also states the method: an easy adversary tests nothing.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0074",
+      "effect": "paydown preserved",
+      "note": "The chapter narrates one outcome: the counterproposal is declined and the gift is lost. The contradicting coda was removed under CTD-0095 and is not restored."
+    },
+    {
+      "id": "CTD-0095",
+      "effect": "paydown preserved",
+      "note": "The donor coda that said the community accepted the gift gladly and entirely on its own terms is not restored."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. CTD-0074 fixes the outcome and the restoration preserves it. The offer, the counterproposal, the donor's refusal, and the lost gift are all restored in the form the item records."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Three were parenthetical appositives and became comma pairs. One introduced a specification of the visibility condition and became a comma."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped statement that the scene remains design fiction."
+        },
+        {
+          "kind": "restored",
+          "note": "The chapter's stated criterion, the donor's characterization and good faith, and all three conditions with their reasonableness."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 433,
+    "shippedWords": 150,
+    "shippedDelta": -65
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The chapter is where two ledger items interlock: CTD-0074 fixes the outcome and CTD-0095 removed the unit that contradicted it. Restoring the chapter while leaving the coda out is the only reading that satisfies both, and it is why the coda question must go to the author as one decision rather than twenty-eight."
+  }
+}

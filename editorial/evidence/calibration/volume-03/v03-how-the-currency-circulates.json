@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-how-the-currency-circulates",
+  "editorialId": "volume-03",
+  "sectionHeading": "How the Currency Circulates",
+  "currentHeading": "How It Circulates",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Whether the currency makes trust legible at introduction, and whether a currency shapes the character of those who seek it, are author claims held open in the ledger.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["COHERENCE", "coherence", "relational capital", "evolutionary currency", "coherence record", "liquidity"],
+    "itemsRead": ["CTD-0003", "CTD-0004", "CTD-0009", "CTD-0012", "CTD-0054", "master-ledger Decisions A and B, section 2, completion log"],
+    "outcome": "One recorded decision overrides the baseline outright. The baseline names the unit lowercase, as coherence. The master ledger's Decision A is resolved and states that the currency's unit is canonically COHERENCE, that the Currency of Presence is its descriptive title, and that the name is to be seeded in Volume III at the currency's first full treatment; the completion log records this as applied. Under R-LEDGER-WINS the ledger form wins, so the restored naming passage reads COHERENCE. The CTD-0012 sentence distinguishing the Currency of Presence from its unit is kept in this section, where the naming happens, rather than duplicated earlier. CTD-0003 remains open on what the unit is, and the restored passage states one of the two contested readings."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The naming of the unit lost the argument that gives the name its point.",
+      "evidence": {
+        "baseline": "Not a token standing in for coherence, the way money stands in for value and points always at something elsewhere, but coherence itself, made legible enough to be remembered and to travel between people. ... The incentive and the good, for once, are the same word.",
+        "shipped": "The unit the system would eventually remember is COHERENCE. The Currency of Presence is the name of the larger economic idea; COHERENCE is its proposed unit."
+      },
+      "authorizedBy": "The master ledger's naming decision, which governs the name and not the argument attached to it.",
+      "diagnosis": "The shipped text performs the ledger's naming correctly and drops everything the baseline says about why the name is the same word as the substrate. The token distinction is the volume's answer to the obvious objection that any such scheme is points with better branding, and the closing line, that the incentive and the good are the same word, is the chapter's result. Restored under the ledger's spelling.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The evolutionary currency argument, which is the section's largest claim, was reduced to a caution about incentives.",
+      "evidence": {
+        "baseline": "It is evolutionary in two senses. First, it would reward, and therefore select for, the qualities that a flourishing civilization requires ... Second, it is evolutionary because it is designed to develop the human beings who participate in it ... Money does not make its holders better. Presence, sought as currency, makes its holders more present.",
+        "shipped": "The currency is evolutionary only in a limited sense: incentives shape practice. ... Any measure can become a target, and any target can deform the behavior it was meant to honor."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped paragraph states Goodhart's law and stops. The baseline makes a two-part claim that the volume needs: that a currency selects for what it measures, and that this particular currency's pursuit is identical to the development of the person pursuing it. The second half is the reason the Seven Initiates chapter and the currency chapter are the same argument. Removing it leaves the Initiates as a curriculum with no economic connection.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "The circulation mechanism was replaced by an account of what a record can and cannot prove.",
+      "evidence": {
+        "baseline": "Not because they marketed themselves. Not because they accumulated followers. Because the network remembers what they have actually brought to their encounters: accurately, physiologically, incorruptibly.",
+        "shipped": "Such proof can help a new collaborator decide whether to begin with provisional trust. It cannot make trust immediate, and it cannot replace judgment. A record is evidence within a relationship, not a verdict outside one."
+      },
+      "authorizedBy": "The wave-one narrowing of the trust claim, recorded in the review's summary of modality rather than in its corrections table.",
+      "diagnosis": "The two versions disagree about what the currency does. The baseline says trust that would take years becomes legible at introduction. The shipped text says trust cannot be made immediate. That is a direct contradiction, and it is the sharpest one found in this volume so far. The review characterizes makes trust immediate as a baseline overclaim it corrected, but it is a summary characterization rather than an itemized decision, so under the correction and obligation boundary it does not override. Restored in the conditional mood section 5 requires, with the conflict recorded rather than settled here.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "Six prohibited marks.",
+      "evidence": {
+        "baseline": "The genius fenced around and the burden, relational capital, the oldest currency there is fenced around reputation and relationship, the network remembers fenced around three adverbs, the qualities that a flourishing civilization requires fenced around a three-item list, genuinely capable of presence, and the unit has a name.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Three fenced short phrases with no internal comma and became commas. Two introduced specifications and became colons, including the unit's naming. One fenced three adverbs between a verb and its object; the adverbs moved to the end after a colon, which lets incorruptibly land as the paragraph's last word, where the baseline's emphasis had it. One fenced a three-item list inside a subject and was rebuilt by splitting the sentence, so the money comparison stands on its own.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0003", "effect": "reopened by restoration", "note": "The restored passage says the unit is not a token standing in for coherence but coherence itself, made legible enough to travel between people. That is the strongest statement in the corpus of the relation-rather-than-record reading, and it sits in the same chapter as the portable verifiable record reading. The item's query now has both readings in one chapter, which is what it needs to be answerable." },
+    { "id": "CTD-0012", "effect": "preserved", "note": "The sentence distinguishing the Currency of Presence from COHERENCE is kept, placed at the naming rather than duplicated in the preceding section." },
+    { "id": "CTD-0009", "effect": "reopened by restoration", "note": "Accurately, physiologically, incorruptibly returns as a description of what the network remembers. Incorruptibly is a security claim with no threat model behind it at this point in the volume." },
+    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "No previous currency has had this property is a priority claim about the history of money." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
+      "reasoning": [
+        { "kind": "restored", "note": "The liquidity argument, relational capital with its full definition, the village comparison, the circulation-by-opportunity paragraph with its two refusals, the evolutionary currency argument in both senses, and the naming passage with the token distinction and the closing line." },
+        { "kind": "changed", "note": "The unit is called coherence became The unit is called COHERENCE. R-LEDGER-WINS, master ledger Decision A and the completion log. This is the passage the ledger names as the place the unit is seeded in Volume III." },
+        { "kind": "changed", "note": "circulates, travels, becomes legible, and will become more present moved to the conditional throughout, under section 5 of the standard. No proposition was narrowed by the change." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across seven marks, as recorded in F4." },
+        { "kind": "cut", "note": "The shipped rewrite." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Direct contradiction. The baseline says trust that would ordinarily take years becomes legible at the moment of introduction. The shipped text says a record cannot make trust immediate. Both cannot stand. The restoration returns the baseline claim in the conditional and records the conflict rather than choosing. This is the one place in Chapter Seven where the author must rule before the chapter is internally consistent with the failure chapter, which also treats gaming as unsolved.",
+    "Character formation. Presence, sought as currency, makes its holders more present is restored. It is the volume's boldest behavioural claim and it has no evidence anywhere in the book. It is also the claim that makes the currency worth building rather than merely measuring. Restored, flagged.",
+    "Heading. How the Currency Circulates names the subject. How It Circulates depends on the previous heading for its referent. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and the correction and obligation boundary did real work here in three different ways within one section. The master ledger's naming decision overrode the baseline outright. The review's itemized corrections governed modality only. And the review's summary characterization of an overclaim, being a characterization rather than an itemized decision, did not override at all, so the contradiction it papered over is now visible to the author instead of resolved without them."
+  }
+}

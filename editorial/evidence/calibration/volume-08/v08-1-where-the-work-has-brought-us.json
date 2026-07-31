@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-1-where-the-work-has-brought-us",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §1 — Where the work has brought us",
+  "currentHeading": "### Where the Work Has Brought Us",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "coordination problem",
+      "Providence",
+      "PURPOSEFUL",
+      "ICONS",
+      "Currency of Presence",
+      "principal called income"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0076",
+      "CTD-0093"
+    ],
+    "outcome": "CTD-0076 requires ICONS only as the plural, and the section uses it that way. CTD-0012 requires the Currency of Presence and COHERENCE and Bio-Consensus to stay distinct; this section names only the Currency of Presence in a list of architecture and introduces no conflation."
+  },
+  "substitutionCheck": "Grepped. The restored text traces to baseline wording throughout. The shipped version was a compression rather than a substitution.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The first volume’s argument was reduced to the word diagnosis.",
+      "evidence": {
+        "baseline": "a civilization is, before anything else, a *coordination problem,* that coordination depends on coherence, and that coherence is therefore not a virtue we may choose but a constraint the design must satisfy or perish under. It found that the most viable substrate for a post-extractive civilization was people all along.",
+        "shipped": "Seven volumes brought the work from diagnosis to a proposed architecture."
+      },
+      "authorizedBy": "Compression, and catalog 4.23 on recapitulation.",
+      "diagnosis": "Not a virtue we may choose but a constraint the design must satisfy is the thesis of the corpus in one clause, and §10 later depends on it when it argues that what the visionaries lacked was a coordination structure. Removing it here leaves §10’s argument without its premise.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The principal image lost its third and sharpest term.",
+      "evidence": {
+        "baseline": "A ledger balanced only by keeping its largest losses off the books, a loan drawn against principal we never earned, and now being called.",
+        "shipped": "balances the ledger by hiding the loss"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The card names principal called income and a ledger hiding its loss among the volume’s protected images. Now being called is the clause that makes the metaphor an accounting rather than a complaint, and it is the sentence §16 returns to at the close.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0076",
+      "effect": "no change",
+      "note": "ICONS appears only as the plural."
+    },
+    {
+      "id": "CTD-0012",
+      "effect": "no change",
+      "note": "No mechanism, process, or unit is collapsed into another."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Two set off appositive lists of the architecture and became commas. One introduced a specification and became a colon. One added the final clause of the ledger image and became a comma."
+        },
+        {
+          "kind": "restored",
+          "note": "The coordination problem argument, the substrate finding, the colder work this volume does, and the full ledger image with its called loan."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. The baseline heading is \"§1 — Where the work has brought us\" and the current heading is \"Where the Work Has Brought Us\". Only the section number differs. The volume card lists sections 1 through 16 as a protected structural device, and the numbering is absent from the current headings. Renaming a heading mints and retires a public route, so the difference is recorded here rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

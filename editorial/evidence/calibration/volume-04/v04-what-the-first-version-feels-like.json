@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-the-first-version-feels-like",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What the First Version Feels Like**",
+  "currentHeading": "**A Use Scenario**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Cardinal Scale",
+      "design fiction",
+      "user research",
+      "product evidence",
+      "attestation",
+      "apprentice"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0055",
+      "CTD-0072",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0030 requires that the Cardinal Scale never read as an existing community and CTD-0072 requires that nothing sound operational. The shipped statement that the scenes are not user research, product evidence, or reports from an operating Scale is kept verbatim at the head of the section, and every restored scene is moved into conditional grammar. CTD-0055 requires that the properties the scenes illustrate be readable as requirements, which the surrounding chapter now states explicitly."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's three scenes were reduced to summaries and lost their people.",
+      "evidence": {
+        "baseline": "Their sovereign identity is not a profile they curate; it is the quiet fact that what they have given the community, the hours of childcare, the repair of the irrigation line, the difficult mediation one of them sat through, is remembered accurately, by them and by the people it touched, and owned by no one. ... The match is unglamorous. It is also the kind of thing that, in the world they came from, simply did not happen.",
+        "shipped": "A household might use participant-controlled records to remember childcare, irrigation repair, or mediation without turning those contributions into public rank."
+      },
+      "authorizedBy": "CTD-0030, applied to design fiction framing.",
+      "diagnosis": "The item requires that the scenario not read as a report, and the shipped framing statement achieves that and is kept. It does not require the scene to be summarised. The three details, childcare, an irrigation line, a mediation someone sat through, are what make the abstraction legible, and the closing pair, unglamorous and did not happen, is the section's argument: the value is ordinary and the ordinary was unavailable.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The shop owner's testimony, which is the section's only honest note about the software, was removed.",
+      "evidence": {
+        "baseline": "The shop's owner will tell you, if you ask, that the software is still clumsy and the onboarding took a week it should not have. He will also tell you he is not leaving.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and CTD-0030 read across.",
+      "diagnosis": "This is the volume's only admission that the first version would be unpleasant to use, delivered by a character rather than as a caveat, and the two beat close does the work a caveat cannot. The card names ordinary weather and costly decisions among the qualities the design fiction must carry.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0030",
+      "effect": "paydown preserved and strengthened",
+      "note": "The scenes return in conditional grammar with the shipped design fiction statement kept."
+    },
+    {
+      "id": "CTD-0072",
+      "effect": "paydown preserved",
+      "note": "Nothing in the restored scenes is presented as having occurred."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. Every restored scene is set in explicitly imagined grammar and the shipped design fiction statement opens the section. The scenes return whole inside that frame."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes. Four were parenthetical appositives naming contributions or conditions and became comma pairs. One introduced a specification of what the commons function is and became a comma. One in the closing interlude was parenthetical and became a comma pair."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped heading A Use Scenario, the shipped statement of what the scenes are not, and the shipped clauses about public rank, chosen disclosure, and evaluating the issuer."
+        },
+        {
+          "kind": "restored",
+          "note": "All three scenes with their concrete detail, the shop owner's testimony, the institutional memory argument, and the closing interlude on the thin slice."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 563,
+    "shippedWords": 163,
+    "shippedDelta": -71
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's clearest case that a modality frame and a scene are independent: CTD-0030 governs the first and the pass paid it down by removing the second. Once the frame is stated once, the scene can be as concrete as it likes."
+  }
+}

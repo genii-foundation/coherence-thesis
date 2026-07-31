@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-the-first-version-refuses-to-do",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What the First Version Refuses to Do**",
+  "currentHeading": "**Nonnegotiable Requirements**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "self-sovereign identity",
+      "verifiable credential",
+      "zero-knowledge",
+      "physiological wallet",
+      "trust layer",
+      "attestation",
+      "Bio-Consensus",
+      "COHERENCE",
+      "sensor",
+      "biometric"
+    ],
+    "itemsRead": [
+      "CTD-0055",
+      "CTD-0006",
+      "CTD-0012",
+      "CTD-0027",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0007"
+    ],
+    "outcome": "CTD-0055 is decisive across Part IV: the corpus describes Providence as already self-sovereign, device-local, unowned, and capture-resistant, and the item requires every such property to be stated as a requirement rather than a current fact until the protocol, threat model, and controls are published. CTD-0006 requires that no physiological measure determine governance standing, which governs the trust layer and the AI prohibitions. CTD-0012 keeps Bio-Consensus, COHERENCE, and the Currency of Presence distinct. CTD-0027 records that the AI integration decision process is undefined. CTD-0072 requires that nothing sound operational. CTD-0007 governs the self-epigraphs."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The refusals lost their reasons, keeping only their requirements.",
+      "evidence": {
+        "baseline": "The economic model is explicitly incompatible with advertising: advertising requires behavioral data that the constitutional principle of data sovereignty prohibits collecting, and advertising optimizes for attention capture that the application design explicitly refuses.",
+        "shipped": "It must not sell advertising or disclose participant data to advertisers. The revenue model must remain viable without behavioral targeting."
+      },
+      "authorizedBy": "Compression, and CTD-0055 applied to property claims.",
+      "diagnosis": "The baseline derives each refusal from a constitutional principle. The shipped version states each as a requirement with a test attached. Both are needed: the derivation is why the refusal is nonnegotiable, and the test is how anyone would check. The restoration carries both for all five refusals.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The acquisition refusal was stated as a fact in the baseline and as a requirement in the shipped text, and the shipped version is correct.",
+      "evidence": {
+        "baseline": "This is not an operational commitment. It is a legal and structural fact: the legal architecture of the commons infrastructure ... make acquisition and repurposing technically and legally impossible.",
+        "shipped": "This is still a requirement, not a legal or technical fact. Ownership, licensing, protocol governance, operator succession, and remedies need public documentation before the claim can be tested."
+      },
+      "authorizedBy": "CTD-0055, which requires unimplemented properties to be stated as requirements.",
+      "diagnosis": "The item names exactly this claim: capture resistance and non-acquirability are testable system properties that prose cannot instantiate. The baseline asserts them as accomplished legal fact and the shipped text corrects it. R-LEDGER-WINS makes the correction binding, and restoring the baseline here would reopen a high severity item. The baseline's list of what the architecture is meant to achieve is restored around the shipped correction.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0055",
+      "effect": "paydown preserved",
+      "note": "The acquisition claim remains a requirement. The baseline's legal and structural fact formulation is not restored."
+    },
+    {
+      "id": "CTD-0072",
+      "effect": "paydown preserved",
+      "note": "No control is described as implemented."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The acquisition refusal keeps the shipped requirement grammar against the baseline's assertion of legal fact. This is the second place in the volume where the ledger wins outright rather than bounding."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced the specification of the legal architecture and became a colon before the shipped correction replaced the sentence. One was parenthetical and became a comma pair."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped heading Nonnegotiable Requirements with its opening anchor, and all five shipped tests: success measures, revenue viability, the data model's obligations, the appeal path, and the documentation the acquisition claim would need."
+        },
+        {
+          "kind": "restored",
+          "note": "The derivation of each refusal from its constitutional principle, and the purposeful rather than habitual use distinction."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "STRUCTURAL RESTORATION BLOCKED ON ROUTE ADJUDICATION, not an editorial judgment. The introduction to PART FIVE, the running prose between the part label The Human Architecture in Practice and the first chapter heading beneath it, compiles into a chapter-start section with its own public route. Restoring the baseline's fuller introduction revives a section whose route was retired, and attempting it broke the build for this part. The introduction has therefore been reverted to its pre-edit state byte for byte and no part introduction anywhere in this volume was touched. Reassigning a canonical route and a reviewed successor is an author-facing continuity decision and this pass has no standing to make it.\n\nWHAT STANDS NOW:\n\nInstitutions consume human capacity while claiming to develop it. Part V asks what the work would demand, which supports would prevent exploitation, how culture forms before software amplifies it, and how participation can deepen without becoming a rank.\n\nWHAT THE BASELINE HAS, punctuation already repaired so it can be pasted in one edit once the route decision is made:\n\nVolume III's account of the human architecture established the layered picture of human capacity that the Providence architecture requires: the individual nervous system, the relational layer, the group field, the stewardship layer, the support infrastructure. It established these not as optional enhancements to the technical and governance architecture but as foundational conditions. The architecture cannot function as designed if the human beings inhabiting it have not developed the capacities that the architecture requires from them.\n\nVolume IV's Part V asks what this means for the people actually building Providence in its earliest stage. They are not only participants in the architecture. They are the people who must hold the architecture together while it is being built, before the governance mechanisms are fully formed, before the constitutional culture has developed its own inertia, before the trust infrastructure is in place, before there are communities beyond the founding community to provide perspective and accountability. This is the most demanding developmental context the architecture will ever create, and the people who inhabit it must be supported, developed, and protected in ways that the subsequent chapters specify. Institutions consume human capacity while claiming to develop it. Part V asks what the work would demand, which supports would prevent exploitation, how culture forms before software amplifies it, and how participation can deepen without becoming a rank.\n\nWHAT THE CURRENT TEXT LOSES: the account of why the founding period is the most demanding developmental context the architecture will ever create, and the list of what the builders must hold together before the mechanisms, the culture, and the trust infrastructure exist.\n\nTO RESTORE: the prose change and the continuity change must land together. The section id minted by the restored introduction needs a canonical route and a reviewed successor recorded in publishing/continuity/section-lineage.json in the same edit.",
+    "The section's measured word count exceeds the baseline's because both the derivations and the tests are kept. That is the intended outcome and should not be read as inflation.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 784,
+    "shippedWords": 411,
+    "shippedDelta": -48
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section contains the volume's second outright ledger override, and it is the cleanest: a high severity item names the exact sentence, the shipped text is right, and restoring the baseline would reopen it. Where the item quotes the line, there is no judgment left to make."
+  },
+  "blockedRestorations": [
+    {
+      "region": "PART FIVE introduction",
+      "partLabel": "The Human Architecture in Practice",
+      "reason": "revives a retired chapter-start route",
+      "buildBroke": true,
+      "state": "reverted to pre-edit, byte identical",
+      "requires": "author continuity decision: canonical route and reviewed successor"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-8-the-selection-of-the-dark-triad",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §8 — The selection of the dark triad",
+  "currentHeading": "### What Power Selects For",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "dark triad",
+      "Providence",
+      "PURPOSEFUL",
+      "selection",
+      "presence"
+    ],
+    "itemsRead": [
+      "CTD-0093",
+      "CTD-0048",
+      "CTD-0006"
+    ],
+    "outcome": "CTD-0093 requires evidence, interpretation, warning, scenario, and address to be labeled distinctly. Diagnosing named public figures from a distance is not evidence, and the prior pass was right to refuse it. That refusal is kept. Nothing in the ledger governs the gradient argument."
+  },
+  "substitutionCheck": "Grepped. The structural question is not whether leaders can be diagnosed from a distance and the whole paragraph on equal standing, bounded roles, conflicts review, due process, appeal, rotation, and independent oversight are absent from the baseline. Both are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The gradient argument was cut along with the diagnostic framing it did not depend on.",
+      "evidence": {
+        "baseline": "the one unencumbered by remorse will outbid and outlast the one who pauses to ask whether a thing is *right.* In a contest scored only by victory, the one who will do *anything* holds a permanent edge over the one who will not. So the controls drift, generation upon generation, toward the conscienceless, not by conspiracy but by gradient, the way water finds the low place.",
+        "shipped": "A contest scored only by growth, victory, or control can advantage people willing to externalize costs that others will not."
+      },
+      "authorizedBy": "CTD-0093, read as requiring the whole dark triad passage be removed.",
+      "diagnosis": "The item asks that a distant clinical diagnosis not be presented as evidence. Not by conspiracy but by gradient is the opposite of a diagnosis: it is the claim that no one needs to be a villain for the outcome to occur, which is the section’s entire point and the reason it belongs in a book that refuses demonology. Water finds the low place is also the image, and the card lists gradient reasoning among the volume’s registers.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The link back to the prologue was deleted.",
+      "evidence": {
+        "baseline": "It is the same atrophy the sauna revealed, raised to the level of institutions: the people least able to feel the weight rising fastest to the place where the weight is decided.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is a moral parallel rather than a causal claim, which is exactly the distinction CTD-0083 asked the volume to hold. It is also the one sentence that earns the prologue’s place in an academic accounting.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "Providence’s answer lost its statement and kept only its correction.",
+      "evidence": {
+        "baseline": "Providence is, among other things, a re-cutting of that gradient ... PURPOSEFUL’s whole developmental labor is to make conscience an advantage rather than a handicap. This is not utopian softness. It is the hardest-headed engineering problem we face: to build selection mechanisms in which the loving are not perpetually outcompeted by the loveless.",
+        "shipped": "Providence proposes a different gradient, but it cannot declare that authority should flow to those who appear coherent or can steady a room."
+      },
+      "authorizedBy": "CTD-0093 and the correct concern that felt presence is vulnerable to charisma.",
+      "diagnosis": "The correction is right and is kept in full, including the list of controls any real selection mechanism needs. But the loving are not perpetually outcompeted by the loveless is the problem statement, and a section that states only what its proposal cannot claim has no proposal in it.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0093",
+      "effect": "paydown preserved",
+      "note": "The refusal to diagnose public figures at a distance is kept and stated explicitly where the dark triad is named. The controls paragraph is kept whole."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "no change",
+      "note": "No biometric or physiological signal is proposed as a basis for authority here."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Two introduced enumerations of the triad and became colons. One set off an appositive and became a comma. One introduced a specification and became a colon."
+        },
+        {
+          "kind": "applied",
+          "note": "The dark triad is named as a construct that is often misapplied rather than as a diagnosis, which is what CTD-0093 requires and what the baseline did not do."
+        },
+        {
+          "kind": "restored",
+          "note": "The why these hands question, the gradient argument with its water image, the sauna parallel, the re-cutting claim, PURPOSEFUL’s developmental labor, and the engineering problem stated as a problem."
+        },
+        {
+          "kind": "kept",
+          "note": "The refusal of distant diagnosis, the charisma and performance caution, and the full list of controls."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §8, The selection of the dark triad. Current: What Power Selects For. The current heading is the better one and the volume card names it an exemplar passage. The baseline heading asserted the diagnosis the section now refuses. The volume card lists sections 1 through 16 as a protected structural device and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the one section in the volume where the rename improved the heading, and the record says so."
+  }
+}

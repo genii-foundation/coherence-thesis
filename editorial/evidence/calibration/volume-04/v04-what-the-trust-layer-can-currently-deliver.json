@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-the-trust-layer-can-currently-deliver",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What the Trust Layer Can Currently Deliver**",
+  "currentHeading": "**What a Bounded First Layer Might Deliver**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "self-sovereign identity",
+      "verifiable credential",
+      "zero-knowledge",
+      "physiological wallet",
+      "trust layer",
+      "attestation",
+      "Bio-Consensus",
+      "COHERENCE",
+      "sensor",
+      "biometric"
+    ],
+    "itemsRead": [
+      "CTD-0055",
+      "CTD-0006",
+      "CTD-0012",
+      "CTD-0027",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0007"
+    ],
+    "outcome": "CTD-0055 is decisive across Part IV: the corpus describes Providence as already self-sovereign, device-local, unowned, and capture-resistant, and the item requires every such property to be stated as a requirement rather than a current fact until the protocol, threat model, and controls are published. CTD-0006 requires that no physiological measure determine governance standing, which governs the trust layer and the AI prohibitions. CTD-0012 keeps Bio-Consensus, COHERENCE, and the Currency of Presence distinct. CTD-0027 records that the AI integration decision process is undefined. CTD-0072 requires that nothing sound operational. CTD-0007 governs the self-epigraphs."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The attestation function lost its definition and its verifiability property.",
+      "evidence": {
+        "baseline": "the ability to record specific claims about a participant's characteristics or history, that they have completed a particular governance process, that they have been attested to by specific other participants, that they have maintained a particular commitment over a specified period, in a way that is verifiable by others without being falsifiable by the subject and without revealing information beyond what the specific attestation claims.",
+        "shipped": "An attestation records a bounded claim, such as completion of a process or a commitment witnessed by named people."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Verifiable by others without being falsifiable by the subject is the technical property that makes an attestation worth anything, and it is stated once. The three example claims are also the three the architecture actually needs. The shipped definition keeps two of the three examples and neither property.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The reason contextual reputation is harder was removed.",
+      "evidence": {
+        "baseline": "This function is harder because relational contribution is contextual in ways that attestation is not: what makes someone trustworthy in one relational context may not make them trustworthy in another, and a system that aggregates reputation across contexts risks obscuring the contextual nature of trust in ways that are both epistemically distorting and constitutionally problematic.",
+        "shipped": "That move is more dangerous. Trustworthiness in one role may not transfer to another, and aggregation can turn a relationship into a rank."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Epistemically distorting and constitutionally problematic names two distinct objections, one about truth and one about the constitution, and the chapter's decision to scope reputation out follows from having both. The shipped version keeps the transfer problem and the rank image, which is the constitutional objection only.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0055",
+      "effect": "paydown preserved",
+      "note": "The bounded first layer framing and the audit requirement are kept."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "paydown preserved",
+      "note": "The restored section adds no physiological criterion."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. Two were parenthetical appositives naming a function and became comma pairs. One introduced the minimum viable layer specification and became a comma."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped statement that verification does not prove the issuer was fair, the claim remains relevant, or the context transfers, and the shipped requirement that attestations expire. Both are CTD-0055 paydowns and neither is in the baseline."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped heading What a Bounded First Layer Might Deliver, which holds the route and states the modality the ledger requires."
+        },
+        {
+          "kind": "restored",
+          "note": "The attestation definition with its verifiability property, the three example claims, and the epistemic objection to aggregated reputation."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 667,
+    "shippedWords": 242,
+    "shippedDelta": -64
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section pairs a genuine ledger improvement, the expiry and issuer-fairness caveats, with the loss of the technical property those caveats qualify. Keeping both is the whole of the restoration."
+  }
+}

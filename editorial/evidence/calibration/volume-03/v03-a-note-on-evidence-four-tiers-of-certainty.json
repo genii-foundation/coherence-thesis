@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-a-note-on-evidence-four-tiers-of-certainty",
+  "editorialId": "volume-03",
+  "sectionHeading": "A Note on Evidence: Four Tiers of Certainty",
+  "currentHeading": "Four Tiers of Evidence",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Which findings belong in which tier is a scientific judgment that belongs to the author and to CTD-0009.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["four tiers", "established", "emerging", "experimental", "speculative", "heart rate variability", "vagal", "synchrony", "pulse-wave morphology", "endocrine"],
+    "itemsRead": ["CTD-0004", "CTD-0009", "CTD-0045", "CTD-0053", "CTD-0081"],
+    "outcome": "No recorded decision governs the tiers' content. The four-tier discipline is the baseline's own invention and the wave-one review adopted it rather than imposing it, which means the tier language in the shipped text is not a correction and does not override. CTD-0009 is the critical open obligation covering every claim assigned to a tier here, and its eighteen verification markers live in the appendix this section points toward. Under the instruction to restore at baseline strength and flag each marker, the tier assignments are restored exactly as the baseline makes them and nothing was moved to a lower tier to make it safer."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's argument for why the tiers exist was replaced by a shorter claim about what they constrain. The cautious half survived; the committing half did not.",
+      "evidence": {
+        "baseline": "This is not a hedge. It is the opposite of a hedge: it is the precondition for being taken seriously. By labeling our claims honestly, we make the strong ones stronger, because the reader can trust that when we assert something as established, we mean it.",
+        "shipped": "These tiers are not ritual modesty. They determine what may be built and what may be claimed. A system should advance only when evidence, ethical review, cultural validity, and participant experience justify the next layer."
+      },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "The cautious half law, third confirmation in Part Three. Both versions open by denying that the tiers are modesty. The baseline then makes the committing claim: honest labeling makes the strong claims stronger, because the reader can trust the word established. The shipped version instead makes the tiers a brake on development. The brake is a real and good idea and it is not what this section argues; it converts a rhetorical discipline addressed to the reader into an operational gate addressed to the builder, and the reader is left with no reason to believe the established tier.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "Every tier lost its named findings and gained a hedge. The pattern repeats inside each of the four labels.",
+      "evidence": {
+        "baseline": "Into this tier fall the core facts of heart rate variability as a marker of autonomic regulation; the autonomic nervous system's governance of states of threat and safety; the reality of physiological co-regulation between people in close contact; and the broad framework of how the vagal system links cardiac function to social engagement. When we build on these, we build on solid ground.",
+        "shipped": "Heart rate variability can be measured reliably and reflects aspects of autonomic modulation. Threat and safety affect attention, respiration, cardiac activity, voice, and social behavior. Physiological states can change during interaction. None of these facts identifies wisdom or proves that an encounter is genuine."
+      },
+      "authorizedBy": "Compression, and the wave-one scientific posture corrections.",
+      "diagnosis": "The established tier is where the volume stakes its credibility, and the baseline names four specific bodies of work and then commits: we build on solid ground. The shipped version restates three of them in weaker terms, drops the vagal framework entirely, and adds a disclaimer. The same shape recurs in the other three tiers: named work removed, commitment removed, caution added. Physiological states can change during interaction is also a much weaker claim than the reality of physiological co-regulation between people in close contact, and co-regulation is what the whole engine depends on.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The display line that names each tier's occupant by name was deleted.",
+      "evidence": {
+        "baseline": "*We will not let the well-established lend false authority to the speculative. The HRV is established; the vocal and synchrony work is emerging; the pulse-morphology and endocrine inference is experimental; the long-term currency is speculative. Naming which is which does not weaken the argument. It is the only thing that earns it the right to be believed.*",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the whole section in four clauses and the single most useful passage in Part Three for a sceptical reader, because it is a checkable index: a scientist can dispute any one of the four assignments directly. Removing it leaves the tiers as categories with no summary allocation, so a reader must reconstruct which claim sits where. CTD-0045 asks the author to choose the volume's publication posture, and this display line is the baseline answering that question at the level of individual findings.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "spans a wide range of certainty, findings with real and growing empirical support that are not yet settled, the inference of endocrine states fenced around its gloss, and we make the strong ones stronger fenced around a because clause.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Two introduced specifications and became colons. One fenced a gloss with no internal comma and became commas. One fenced a because clause carrying its own internal comma; the sentence was split at that point, so the reason lands as its own clause and the second consequence begins a new sentence.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0009", "effect": "reopened by restoration at full strength", "note": "All four tier assignments return as the baseline makes them. Established: HRV as a marker of autonomic regulation, autonomic governance of threat and safety, the reality of physiological co-regulation, and the vagal link between cardiac function and social engagement. Emerging: vocal biomarkers and interpersonal synchrony. Experimental: pulse-wave morphology read through contemplative categories, and endocrine inference from peripheral signals. Speculative: the accumulated currency and decentralized trust at scale. Nothing was demoted to a lower tier to make it safer. Each assignment is a claim the item's verification must confirm or move." },
+    { "id": "CTD-0053", "effect": "recorded", "note": "The established tier is the foundation the whole volume rests on. If any of its four assignments fails verification, the dependency the item names is exposed at that point." },
+    { "id": "CTD-0045", "effect": "supported by restoration", "note": "The restored display line assigns every major claim in Part Three to a tier by name. It is the clearest existing statement of the volume's evidentiary posture." },
+    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "Decades of rigorous research, and large bodies of rigorous, replicated research which a well-informed scientist would accept as sound, are claims about the state of a literature that the appendix does not yet substantiate." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
+      "reasoning": [
+        { "kind": "restored", "note": "The full framing paragraph including the gravest error we could make, all four tier definitions with their named findings, the commitment that we build on solid ground, the not-a-hedge argument with its reason, the instruction to read everything through the tiers, and the display line." },
+        { "kind": "kept", "note": "The four standalone bold labels, Established, Emerging, Experimental, and Speculative, exactly as shipped. These are structural labels that generate section ids, so the baseline's running-prose form of the tiers was restored underneath the existing labels rather than in place of them." },
+        { "kind": "kept", "note": "One clause adapted from the shipped established tier, that none of these facts on its own identifies wisdom or proves an encounter is genuine. It does not weaken any tier assignment and it guards the inference the volume card names among the volume's known weak passages." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across four marks, as recorded in F4." },
+        { "kind": "cut", "note": "The shipped tier contents and the shipped closing paragraph." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Tier assignments. Four claims are restored to the established tier at full baseline strength, including the reality of physiological co-regulation between people in close contact. The shipped text had weakened that to physiological states can change during interaction, which is a much smaller claim. Restored, not softened, and flagged: if co-regulation does not belong in the established tier, moving it is the author's decision and it should move explicitly rather than by rewording.",
+    "Literature claims. Decades of rigorous research and replicated research a well-informed scientist would accept as sound are restored. The appendix carries eighteen unresolved verification markers, so the volume currently asserts a state of the literature it has not documented. CTD-0009 owns this and it is the largest single flag in Part Three."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This section is where the cautious half law becomes hardest to see, because the section is itself about caution, so a pass that made it more cautious looks like it was working with the grain. It was not. The baseline's tiers exist to make the strong claims believable; the shipped tiers exist to restrain the builder. Both are defensible documents and only one of them is this chapter."
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v09-closing",
+  "editorialId": "volume-09",
+  "sectionHeading": "## Closing",
+  "currentHeading": "## Closing",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Buckminster Fuller",
+      "smallest nest",
+      "Coherence Thesis Network",
+      "seed",
+      "dragon named Earth"
+    ],
+    "itemsRead": [
+      "CTD-0007",
+      "CTD-0028",
+      "CTD-0029",
+      "CTD-0030",
+      "CTD-0031",
+      "CTD-0037"
+    ],
+    "outcome": "CTD-0007 requires the Fuller quotation to be verified, and the pending marker is kept. CTD-0028 and CTD-0029 govern the promised Coherence Thesis Network and the earlier Cardinal Scale account, and the prior pass replaced a promise of access with an accurate statement that no path yet exists. That correction is kept. CTD-0030 keeps the federation from being described as already opening its eyes."
+  },
+  "substitutionCheck": "Grepped. No stable Coherence Thesis Network access path yet exists, the three smallest-nest questions, and the seed in drawer and ground passage are all absent from the baseline. All are retained, and the last two are named in the volume card among the images that must not be explained away.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The smallest nest lost its definition.",
+      "evidence": {
+        "baseline": "The smallest nest is the smallest structure in which the largest becoming can start: a room, a few people, a responsibility no one will set down.",
+        "shipped": "It begins with a room, a few people, consent, and a responsibility no one quietly transfers to someone else."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The card names the smallest nest among the volume’s recurrent images and the corpus has used it since Volume VI. The definition is what makes the room and the few people mean anything, and it is the clause that connects this closing to the sixth volume. The pass’s addition of consent and its sharper phrasing of the responsibility are both improvements and are kept.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The dawn passage was deleted entire.",
+      "evidence": {
+        "baseline": "The current is still there beneath everything, waiting to be rejoined. The gift is still in you, waiting for its place. And the Dragon stirs as you do, for the awakening arrives the way dawn arrives, one quiet kindling after another, until the whole of it stands luminous.",
+        "shipped": "The current remains beneath the design, but no reader is obliged to call it by this name."
+      },
+      "authorizedBy": "Catalog 4.15, generic uplift, and CTD-0031 on unearned architecture claims.",
+      "diagnosis": "Section 4.15 exempts a liturgical or prophetic ending that ends on its image by design, and the card permits a lyrical closing grounded in water, seed, weather, and consequence. The gift is still in you is also the return of Volume VI’s inventory. The reader-is-not-obliged clause is a genuine improvement and is kept. Until the whole of it stands luminous is not restored, since it is the one clause that promises an outcome.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The handing forward lost its address to the reader.",
+      "evidence": {
+        "baseline": "So we hand it forward. If some part of you recognized this before you finished it, you already carry a piece of it. Come and set it down with ours.",
+        "shipped": "So we hand the proposal forward. Test it. Keep what survives."
+      },
+      "authorizedBy": "The card, which places judgment before allegiance.",
+      "diagnosis": "The card forbids telling a reader what they believe, and if some part of you recognized this is close to that line. Rendered conditionally it stays on the right side of it, and it is the only place the volume speaks to a reader who is already persuaded, which the card’s own account of the intended reader includes. The test-and-refuse instruction is kept immediately before it.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "The spiral close lost its statement of the nine turns.",
+      "evidence": {
+        "baseline": "that coherence is the current; that intelligence is the pattern that connects; that purpose is a pathway and not a verdict; that presence can be honored rather than harvested; and that a civilization can coordinate by recognition instead of by force or by the eye",
+        "shipped": "coherence is the current, intelligence also lives in relation, purpose is a pathway rather than a verdict, presence can be honored rather than harvested, and coordination need not depend only on force or surveillance"
+      },
+      "authorizedBy": "Compression and the Volume II correction.",
+      "diagnosis": "A small loss and mostly a good change. The Volume II correction is right and is kept. What went is by the eye, which is the phrase the whole social credit boundary was built on and the last appearance of the image the volume opened it with. It is restored.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "paydown preserved",
+      "note": "The Fuller quotation keeps its pending verification marker."
+    },
+    {
+      "id": "CTD-0028",
+      "effect": "paydown preserved",
+      "note": "The baseline promise that the earlier account will be made accessible through a network now being built is not restored. The statement that no stable access path yet exists is kept."
+    },
+    {
+      "id": "CTD-0029",
+      "effect": "paydown preserved",
+      "note": "The earlier Cardinal Scale account is described as something that may eventually be published, with a requirement that it state its status and appear through a durable public link."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "paydown preserved",
+      "note": "The federation remains a promise to be tested. The body opening its eyes is not restored as a description of anything that exists."
+    },
+    {
+      "id": "CTD-0037",
+      "effect": "no change",
+      "note": "No interactive or networked deliverable is promised."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes. Three set off appositives and became commas. Two introduced specifications and became colons. One separated a second movement and became a period."
+        },
+        {
+          "kind": "applied",
+          "note": "Until the whole of it stands luminous dropped under catalog 4.15, since it promises an outcome the volume has spent five sections declining to promise."
+        },
+        {
+          "kind": "restored",
+          "note": "By the eye, the smallest nest definition, the current and the gift, the dawn arriving one quiet kindling at a time, and the recognition close."
+        },
+        {
+          "kind": "kept",
+          "note": "The federation as a promise, the consent in the smallest nest, the Fuller verification marker, the three smallest-nest questions, the network access correction, the test and refuse instruction, and the seed and weather passage."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "The restored close speaks to a reader who already recognizes the work. The card places judgment before allegiance and the sentence is conditional, but the balance between invitation and recruitment at the last page is a tone decision that belongs to the author."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Seventh section of this volume and ninety-fourth of the three, and none has required a new obligation. The pattern that held across Volumes VII and VIII holds here: where a ledger item ruled, the prior pass was usually right; where no item ruled, the pass removed argument it had no warrant to remove."
+  }
+}

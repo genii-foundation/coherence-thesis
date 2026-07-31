@@ -4,7 +4,7 @@
   "editorialId": "volume-07",
   "sectionHeading": "**The Holding**",
   "currentHeading": "## Part X: The Holding",
-  "status": "settled",
+  "status": "open",
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
@@ -76,23 +76,37 @@
           "note": "R-PUNCT-STRUCT. One em dash introducing a specification became a comma with and."
         },
         {
-          "kind": "restored",
-          "note": "The awakening and company distinction, the garden and machine contrast, the four verbs of tending, the pace of living things, and the gardener’s patience."
+          "kind": "blocked",
+          "note": "Not restored. The awakening and company distinction, the garden and machine contrast, the four verbs of tending, the pace of living things, and the gardener’s patience. All of it remains in the baseline region reproduced in the open questions."
         },
         {
           "kind": "kept",
           "note": "The gardener and plant caution."
+        },
+        {
+          "kind": "verified",
+          "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
         }
       ]
     }
   ],
   "rulings": [],
   "rulesDerived": [],
-  "openQuestions": [],
+  "openQuestions": [
+    {
+      "id": "QS",
+      "question": "Structural restoration blocked on route adjudication. This section is a chapter-start region: its prose sits between a part or container label and the first chapter heading beneath it, and text in that position compiles into a section with its own public route. Expanding it revives or reshapes a retired route, which is a continuity decision rather than an editorial one. The prose is therefore left exactly as it stood and the findings below describe what the prior pass removed rather than what this pass restored. The baseline text for this region is reproduced verbatim below so the author can restore it in one edit once the route decision is made. Punctuation repair under R-PUNCT-STRUCT is still required on it, and every ledger constraint named in this record still applies to it.\n\nBASELINE TEXT:\n\n*How Purposeful Cares for the Development of Its Community*\n\nIt is one thing to awaken a person and another to keep them company through a life. The Purposeful Foundation does not understand its task as the delivery of a course that ends, but as the tending of a community that continues — and tending is the right word, for a community of this kind is far more like a garden than a machine. It is not assembled and switched on; it is planted, watered, weeded, and given time, and it matures at the pace of living things. The care Purposeful means to offer is the care a gardener gives: patient, attentive, and content to let growth take the time that growth takes."
+    }
+  ],
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required."
+  },
+  "structuralHold": {
+    "kind": "chapter-start region",
+    "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
+    "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
   }
 }

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v09-the-cardinal-scale",
+  "editorialId": "volume-09",
+  "sectionHeading": "# **THE CARDINAL SCALE**",
+  "currentHeading": "# **THE CARDINAL SCALE**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Cardinal Scale",
+      "ICONS",
+      "Mars",
+      "lay one stone",
+      "version marker"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0035",
+      "CTD-0103",
+      "CTD-0105",
+      "CTD-0007"
+    ],
+    "outcome": "CTD-0105 forbids production metadata in reader-facing prose, which is why the baseline version marker is not restored. CTD-0030 keeps the Cardinal Scale existence question open and the title matter asserts nothing about status. The two epigraphs quote Volume VIII and must therefore match what Volume VIII now says."
+  },
+  "substitutionCheck": "The title block traces to the baseline word for word apart from the dropped version marker and the epigraph attributions. Nothing was substituted.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The second epigraph quoted a sentence Volume VIII no longer contained.",
+      "evidence": {
+        "baseline": "Lay one stone. That is the whole method, and it is enough to begin.",
+        "shipped": "Lay one stone. Then find the larger work it joins."
+      },
+      "authorizedBy": "The prior pass rewrote the closing line of Volume VIII Appendix B and updated the quotation here to match.",
+      "diagnosis": "Section 9 requires quotations to be preserved exactly and citations to remain attached to their sources. The Volume VIII re-render restores that appendix close and keeps the pass’s larger work caution in the appendix frame, so the quotation returns to the baseline wording and now matches its source again. The card lists lay one stone among the volume’s intentional recurrent phrases and it survives in every form.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The version marker was dropped and is not restored.",
+      "evidence": {
+        "baseline": "*(v.2)*",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "CTD-0105 on production metadata in reader prose.",
+      "diagnosis": "A draft version number is production metadata by the definition CTD-0105 gives, and a reader has no use for it. This is a retention limb for the shipped text.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0105",
+      "effect": "paydown preserved",
+      "note": "The version marker is not restored. Volume IX carries no production note."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "no change",
+      "note": "The title matter makes no claim about the Cardinal Scale’s implementation status."
+    },
+    {
+      "id": "CTD-0007",
+      "effect": "no change",
+      "note": "Both epigraphs are attributed to Volume VIII of this work, which is a source the reader can check."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes opened the epigraph attributions. Both became plain attribution lines, matching the form used in Volume VIII."
+        },
+        {
+          "kind": "restored",
+          "note": "The second epigraph in the wording Volume VIII actually carries."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass attribution form and the removal of the version marker."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The useful case is a cross-volume one: an epigraph quoting a sibling volume is only correct while that volume says what the epigraph says, so re-rendering one volume can silently falsify another."
+  }
+}

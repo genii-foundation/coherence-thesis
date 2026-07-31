@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-7-let-the-architects-speak",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §7 — Let the architects speak",
+  "currentHeading": "### Let the Architects Speak",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Palantir",
+      "Cato Institute",
+      "transactional security elite",
+      "quotation verification"
+    ],
+    "itemsRead": [
+      "CTD-0048",
+      "CTD-0105",
+      "CTD-0093"
+    ],
+    "outcome": "CTD-0048 requires quotations verified against primary sources and subject review for legal claims. The verification condition is kept, stated once at the head of the section rather than repeated around each quotation."
+  },
+  "substitutionCheck": "Grepped. The quotations below require verification against their complete transcripts before publication and the two If the transcript confirms clauses are absent from the baseline. The condition is kept once; the repetition is not.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section lost its conclusion about what the two quotations together show.",
+      "evidence": {
+        "baseline": "When the architect who builds the watching tower is celebrated and the watchman who describes it is prosecuted, you have learned what the structure is for.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the sentence that joins §7 to the whistleblower passage in §3 and it is the section’s landing. It is also an inference from two facts the section has just established rather than an accusation about anyone’s motives, which is exactly the standard the pass was trying to enforce.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F2",
+      "summary": "The financier’s stated reasons were removed.",
+      "evidence": {
+        "baseline": "He was candid about why. He had wearied of the *demos,* and set his hope on an *escape* from politics into spaces where a few unaccountable builders might again be paramount; he named, among his disappointments, the widening of the vote.",
+        "shipped": "The essay’s argument, context, and comments on suffrage require direct review."
+      },
+      "authorizedBy": "CTD-0048.",
+      "diagnosis": "The item asks for verification of the quotation and its context. The pass responded by deleting the context and keeping the quotation, which is the worse half to keep: a single sentence without its argument is precisely what a verification item exists to prevent. The re-render restores the reasons and keeps the condition that the full essay be read.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "The verification condition was repeated around each claim rather than stated once.",
+      "evidence": {
+        "baseline": "(no counterpart)",
+        "shipped": "If the transcript confirms the wording and context, this was a public account of the product’s purpose, not a leak."
+      },
+      "authorizedBy": "CTD-0048.",
+      "diagnosis": "Stating the condition once at the head of the section and then writing the section is both more readable and no less honest. Repeating it converts the prose into a review document, which CTD-0105 names as the wrong register for reader-facing text.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0048",
+      "effect": "paydown preserved",
+      "note": "The transcript verification condition is stated once and governs the whole section. Both quotations remain marked as requiring primary sourcing."
+    },
+    {
+      "id": "CTD-0105",
+      "effect": "paydown extended",
+      "note": "The repeated if the transcript confirms construction is production register and is consolidated into one stated condition."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Three set off appositives and became commas. Two introduced specifications and became colons."
+        },
+        {
+          "kind": "applied",
+          "note": "They are, with great confidence and in plain sight, carving up your future among themselves dropped, since it is an accusation the section cannot source. The narrower claim the pass wrote, that some powerful actors treat democratic constraint as an obstacle and say so in public, is kept in its place."
+        },
+        {
+          "kind": "restored",
+          "note": "The shareholders applauding, the financier’s stated reasons, the transactional security elite as a name, the refusal of demonology, and the watching tower close."
+        },
+        {
+          "kind": "kept",
+          "note": "The verification condition and the correction that the actors need not form a single faction."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. The baseline heading is \"§7 — Let the architects speak\" and the current heading is \"Let the Architects Speak\". Only the section number differs. The volume card lists sections 1 through 16 as a protected structural device, and the numbering is absent from the current headings. Renaming a heading mints and retires a public route, so the difference is recorded here rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

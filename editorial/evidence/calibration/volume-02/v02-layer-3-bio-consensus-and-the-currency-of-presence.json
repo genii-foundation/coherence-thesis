@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-layer-3-bio-consensus-and-the-currency-of-presence",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Layer 3 [mark] Bio-Consensus: the Currency of Presence**",
+  "currentHeading": "### **Layer 3: Bio-Consensus & the Currency of Presence**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries under import-markdown.ts.",
+    "action": "No label altered. This label matters more than the others, because the baseline label itself carries the CTD-0012 conflation: Bio-Consensus: the Currency of Presence names the biometric path as the currency. The prior pass replaced the colon with an ampersand, which separates the two concepts and pays the item down in the label as well as the prose. That form is kept untouched. The ampersand is preserved rather than expanded, per section 3, which requires an ampersand to survive in headings and display matter where it carries pace or identity.",
+    "result": "Label unchanged. Route intact. Ledger correction preserved in the label."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["the biometric path that would inform this record", "That path is intended to mint", "Measurement is only what eventually lets"],
+    "result": "The first two are absent from the baseline and are the CTD-0012 correction, which is kept. The third is a compression of a baseline clause and is restored."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Bio-Consensus", "Currency of Presence", "COHERENCE", "unit is coherence itself", "tradeable token", "rooted in the present"],
+    "itemsRead": ["CTD-0012", "CTD-0003", "CTD-0054"],
+    "outcome": "CTD-0012 decides this section for the second time in the volume. The baseline reads what the later volumes name the Currency of Presence, whose unit is coherence itself, and puts Bio-Consensus and the Currency of Presence in apposition in the label. Both are the conflation the item corrects. Neither is restored. The pass's correction, in the label and in the prose, is kept in full, and only the baseline's punctuation and cadence are restored around it. CTD-0003 remains open on whether the unit is a relation or a portable record; the restored text says record of demonstrated coordination capacity, which is the baseline's own wording and settles nothing. CTD-0054 governs the record lifecycle on exit, which this card does not address in either text."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The ledger correction is kept; the baseline's punctuation and its two paired refusals are restored around it.",
+      "evidence": {
+        "baseline": "held by the participant and never by Providence [mark] never centrally aggregated, never imposed as an external score. It may open doors to greater trust; it may never close the door to survival. Participants choose if, when, and with whom to reveal any part of it.",
+        "shipped": "held by the participant and never by Providence. It is never centrally aggregated or imposed as an external score. It may open doors to greater trust, but it may never close the door to survival. Participants choose whether, when, and with whom to reveal any part of it."
+      },
+      "authorizedBy": "Compression, with the CTD-0012 rewrite as the authorized part.",
+      "diagnosis": "The two nevers are a pair of absolute refusals stated without a conjunction, which is how an invariant is written. Joined by or they become alternatives. The semicolon in may open doors; may never close the door holds a permission and a prohibition in one sentence so the asymmetry is visible, and but flattens it into an ordinary contrast. Choose if is also a real quantifier: whether presupposes that a choice will be made, if allows the answer to be never."
+    },
+    {
+      "id": "F2",
+      "summary": "The layer's subtitle changed what the layer is rooted in.",
+      "evidence": {
+        "baseline": "(unit: COHERENCE; rooted in the present, built carefully over time)",
+        "shipped": "Unit: COHERENCE. Rooted in presence and built carefully over time."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Rooted in the present is a temporal claim and it pairs with built carefully over time as a contrast: the human root exists now, the measurement does not. Rooted in presence makes it a claim about the layer's subject matter, which the chapter already states, and destroys the contrast the second half depends on. The subtitle is set in single asterisks, which the importer's heading regex does not match, so this is prose rather than a structural label."
+    }
+  ],
+  "debtImpact": [
+    { "id": "CTD-0012", "effect": "paydown preserved, in both label and prose", "note": "The baseline conflates Bio-Consensus with the Currency of Presence in the section label and again in its first sentence. Neither is restored. The label keeps the ampersand form that separates them, and the prose keeps the pass's naming of Bio-Consensus as the biometric path that would inform the record and COHERENCE as the unit the path mints." },
+    { "id": "CTD-0003", "effect": "unchanged", "note": "record of demonstrated coordination capacity is the baseline's wording and is restored. The relation-or-record question stays open." }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules, with the CTD-0012 correction preserved",
+      "reasoning": [
+        { "kind": "applied", "note": "R-LEDGER-WINS, twice: once in the structural label and once in the opening sentence. This is the only place in the volume where a recorded decision reaches a section boundary as well as its prose." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Two prohibited marks in the prose. One preceded the two nevers and became a colon, since the pair specifies what never by Providence means. One was in the label and is already resolved by the pass's ampersand. Section 3 requires the ampersand to be preserved rather than expanded in display matter." },
+        { "kind": "kept", "note": "The whole CTD-0012 correction in label and prose." },
+        { "kind": "restored", "note": "The colon before the two nevers, the paired refusals without a conjunction, the semicolon in the doors sentence, choose if, tradeable, the not-X-but-Y in the currency gloss, and the subtitle's rooted in the present." }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Is the ampersand label the intended canonical form?",
+      "context": "Baseline label: Layer 3, em dash, Bio-Consensus: the Currency of Presence. Current label: Layer 3: Bio-Consensus & the Currency of Presence. The current form is the better one on canon, because the baseline's colon asserts the identity CTD-0012 forbids. Left untouched. If the author wants and rather than the ampersand, that is a route change and belongs with the continuity records.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Should the subtitle read rooted in the present or rooted in presence?",
+      "context": "Restored to the baseline's rooted in the present, which contrasts with built carefully over time. The pass's reading is defensible as a description of the layer's subject, but it collapses the contrast.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, both voice cards, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and this section extends the CTD-0012 lesson in a way the chapter version did not. A recorded decision can be carried by a section label as well as by prose, and a label is a route. Restoring the baseline label here would have reopened a high-severity terminology item and broken a public link in the same edit."
+  }
+}

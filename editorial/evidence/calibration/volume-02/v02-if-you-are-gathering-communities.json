@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-if-you-are-gathering-communities",
+  "editorialId": "volume-02",
+  "sectionHeading": "**If You Are Gathering Communities**",
+  "currentHeading": "**If You Are Gathering Communities**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/ and returns a level-3 heading.",
+    "action": "No label altered. Left exactly as it stands.",
+    "result": "Label unchanged. Route intact."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "If you already convene communities of practice",
+      "The connective tissue has not been built",
+      "No one must wait for Providence to mature"
+    ],
+    "result": "None appears in the baseline. All are compressions. The third is the most damaging: three parallel for clauses naming three things nobody has to wait for were collapsed into one list governed by must."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "AI safety researchers",
+      "bioregional",
+      "lineages",
+      "connective tissue",
+      "convening"
+    ],
+    "itemsRead": [
+      "CTD-0041",
+      "CTD-0067",
+      "CTD-0019"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0067 concerns the builder taxonomy in Chapter Eleven and asks whether the three types are heuristic or empirical; this section refers back to that chapter's field description rather than to the taxonomy, so it is not directly engaged. CTD-0041 covers the absence of a participation route. The baseline's AI safety researchers is restored against the pass's AI-safety researchers, matching the corpus's usual unhyphenated form in prose."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Three things nobody has to wait for were collapsed into one list, and the permission the sentence grants was converted into an obligation nobody has.",
+      "evidence": {
+        "baseline": "This work does not require permission. It does not require anyone to wait for Providence to mature, for the field to recognize itself, or for institutional structures to authorize the convening.",
+        "shipped": "This work does not require permission. No one must wait for Providence to mature, the field to recognize itself, or institutions to authorize the convening."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "It does not require anyone to wait keeps the subject as the work, which is what the paragraph is about, and repeats the verb of the sentence before it so the two refusals rhyme. No one must wait changes the subject to the reader and states a rule about them. The three repeated for prepositions also make three separate permissions rather than one list, and the third, institutional structures rather than institutions, names the abstraction the book has been arguing about rather than the buildings.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The diagnosis of why the fields do not overlap lost the sentence that assigns no blame.",
+      "evidence": {
+        "baseline": "This is not because anyone is doing anything wrong. It is because the connective tissue has not been built.",
+        "shipped": "This is not because anyone is doing anything wrong. The connective tissue has not been built."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "It is because completes the correction the previous sentence opened. Without it the two sentences sit adjacent and the reader must supply the causal link, which is the construction catalog 4.10 exists to prevent rather than produce. The pair is also the section's whole diplomatic move, since it is addressed to people who convene communities and is explaining why their communities are isolated from one another.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The three isolated fields lost their definite articles and the request lost its framing.",
+      "evidence": {
+        "baseline": "the regenerative-coordination world and the inner-development world rarely overlap, the AI alignment community operates in relative isolation ... and the bioregional coordinators rarely have access to the coordination-infrastructure builders ... the request is to consider whether your community would benefit from being in contact with the others",
+        "shipped": "the regenerative-coordination and inner-development worlds rarely overlap; the AI-alignment community operates in relative isolation ... and bioregional coordinators rarely have access to coordination-infrastructure builders ... consider whether your community would benefit from contact with the others"
+      },
+      "authorizedBy": "Compression and catalog 4.4.",
+      "diagnosis": "The two worlds named separately are two things that fail to meet; the compound worlds is one plural. The definite articles throughout point at groups the book has spent a chapter describing. And the request is to consider names the speech act, which is what holds all six addresses together as one request made six ways; consider is an imperative to a reader the section has just described as already doing the work.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0041",
+      "effect": "unchanged",
+      "note": "The section asks convenors to put their communities in contact with others and supplies no way to identify or reach them."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks, both a pair enclosing the seven-lineage list inside the opening sentence. A comma pair alone would have left the list unbounded against the sentence's other commas, so the syntax was rebuilt with whether of, which bounds the enumeration and lets the enclosing commas read as apposition. The pass had deleted both marks without rebuilding, which left the reader briefly unable to tell where the list ended and the main clause resumed."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. Left exactly as it stands."
+        },
+        {
+          "kind": "restored",
+          "note": "The three for clauses and It does not require anyone to wait, the It is because completion, the definite articles on the three isolated fields, the request is to consider, and AI safety researchers unhyphenated."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "How should a convenor reach the other communities?",
+      "context": "The section's entire request is that separated fields come into contact. CTD-0041 records that the corpus provides no route. This is the address where the missing route is most concretely felt, because the action requested is specifically an introduction.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 shows a compression changing the grammatical subject of a permission, which is worth noting because it is the second time in the closing matter that a sentence about what the work does not require became a sentence about what the reader must not do. The addresses are written to remove obstacles, and both changes quietly reinstalled one."
+  }
+}

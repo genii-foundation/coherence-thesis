@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-the-institution-commits-in-return",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What the Institution Commits In Return**",
+  "currentHeading": "**What the Institution Commits In Return**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "co-optation",
+      "isomorphism",
+      "COINTELPRO",
+      "infiltration",
+      "failure",
+      "invitation",
+      "Volume V",
+      "dissent",
+      "immune system"
+    ],
+    "itemsRead": [
+      "CTD-0078",
+      "CTD-0034",
+      "CTD-0047",
+      "CTD-0072",
+      "CTD-0089",
+      "CTD-0075",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0078 requires that named scholarship not function as proof of feasibility, which governs the movement, institutional theory, and failure analysis lineages in this part. CTD-0034 tracks the Volume V encounter promise, which the invitation chapter makes and which the restoration keeps in conditional form. CTD-0047 records that Volume III's construction promise is only partly discharged in this volume, which the failure chapter's honesty serves rather than contradicts. CTD-0072 requires that nothing sound operational. The volume-04 voice card also names any account of dissent as infection among the known weak passages, which governs the immune system material in the adaptive power chapter."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The reciprocity of the invitation was removed.",
+      "evidence": {
+        "baseline": "The invitation is not unilateral. The institution that extends it commits to specific things in return, and those commitments are constitutional rather than aspirational.",
+        "shipped": "(absent from the shipped section opening)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The volume-04 voice card names the reciprocal invitation among the exemplar passages that define the voice. The reciprocity claim is the passage the card is pointing at, and constitutional rather than aspirational is what stops the four commitments from being sentiments.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "All four commitments lost their content and their limits.",
+      "evidence": {
+        "baseline": "It commits to care: to providing the specific support structures identified in Chapter Seventeen to the people doing the work. Not unlimited provision, but genuine attention to whether the people who have committed are being supported in ways that allow them to sustain the commitment. An institution that recruits commitment and fails to provide the support that commitment requires is not honoring the invitation it extended.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Each commitment names what it is, what it is not, and what failing it would mean. The care commitment's limit, not unlimited provision, is what makes it credible. The constitutional commitment's limit, not perfectly, is the volume's last refusal to overclaim before the design fiction begins. Four commitments, twelve clauses, all gone.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0034",
+      "effect": "paydown preserved",
+      "note": "The restored Volume V passage keeps the baseline's conditional, which will be written if it is written, so the encounter promise is not hardened into a commitment."
+    },
+    {
+      "id": "CTD-0047",
+      "effect": "no change",
+      "note": "The restored commitments concern the institution's conduct, not the discharge of Volume III's construction promise."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Three introduced specifications of a commitment and became colons. Two were parenthetical concessions and became comma pairs."
+        },
+        {
+          "kind": "restored",
+          "note": "The reciprocity claim, all four commitments with their limits, and the Volume V open question in conditional form."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "STRUCTURAL RESTORATION BLOCKED ON ROUTE ADJUDICATION, not an editorial judgment. The introduction to PART SEVEN, the running prose between the part label The Civilization Made Visible and the first chapter heading beneath it, compiles into a chapter-start section with its own public route. Restoring the baseline's fuller introduction revives a section whose route was retired, and attempting it broke the build for this part. The introduction has therefore been reverted to its pre-edit state byte for byte and no part introduction anywhere in this volume was touched. Reassigning a canonical route and a reviewed successor is an author-facing continuity decision and this pass has no standing to make it.\n\nWHAT STANDS NOW:\n\nPart VII gives the proposal ordinary weather. Its scenes concern succession, water, money, and adaptive power. They are thought experiments, not empirical case studies. Their purpose is to reveal missing decisions, not prove that the architecture works.\n\nWHAT THE BASELINE HAS, punctuation already repaired so it can be pasted in one edit once the route decision is made:\n\nThe preceding six parts described an architecture. This part describes a place.\n\nThe distinction matters more than any other in this volume. A reader can follow the architectural argument completely, can understand the sequencing logic, the economic structure, the governance mechanisms, the technological constraints, the human development required, and still be unable to answer a simple question: what would it actually be like to be inside Providence on an ordinary afternoon, when something difficult is happening and the architecture has to do its work in real time, with real people who are tired, uncertain, and not entirely in agreement with one another?\n\nThat question is not a softening of the intellectual project. It is its most demanding test. An abstraction that cannot be dramatized is usually an abstraction that has not been fully worked through. The governance principle that reads cleanly on the page may collapse the moment it meets a genuine disagreement between people who both have legitimate claims. The economic firewall that sounds robust in the constitutional language may turn out, in the moment a large donation actually arrives, to depend on judgments that the architecture never specified. The anti-capture mechanisms that look comprehensive in the inventory of Chapter Eleven may prove to model a static adversary when the actual adversary is intelligent, patient, and studying the architecture in order to evolve past it.\n\nThis part puts the architecture under that test. It does so in two movements. The first movement is narrative: a sequence of case studies, each one a difficult situation of exactly the kind that founding communities actually face, walked through in enough concrete detail that the reader can see how the architecture behaves when it is loaded. These are not illustrations chosen to flatter the design. Several of them are situations the design handles imperfectly, because a design that only succeeds in its own examples has not been tested at all. They are thought experiments, not empirical case studies, and their purpose is to reveal missing decisions rather than to prove that the architecture works.\n\nThe second movement turns to the critique that the architecture is most vulnerable to: that it understates power. The earlier parts of this volume modeled adversaries as static. They identified capture mechanisms and designed responses. But power is adaptive. Power studies the architecture that resists it and evolves past it. The final chapters of this part attempt to model the adaptive adversary directly, and to ask the question the architecture has so far avoided: how does Providence survive not its failure, but its success?\n\nWHAT THE CURRENT TEXT LOSES: the reason a dramatized scenario is a sharpening of rigor rather than a softening of it, the three specific ways an architecture can read cleanly and fail under load, and the announcement of the part's two movements including the turn to adaptive power.\n\nTO RESTORE: the prose change and the continuity change must land together. The section id minted by the restored introduction needs a canonical route and a reviewed successor recorded in publishing/continuity/section-lineage.json in the same edit.",
+    "The section's measured word count exceeds the baseline's because the Part VII opener is counted here with the coda heading gone. This is the same measurement artifact recorded in Parts I, III, and IV.",
+    "The four restored commitments are made on behalf of an institution whose operating status CTD-0072 records as undocumented. A commitment made by an entity whose existence is not established is a claim scope question for the author.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 661,
+    "shippedWords": 292,
+    "shippedDelta": -56
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The reciprocal invitation is a card-named exemplar passage and it was removed entirely, which is the fourth card-protected element in this volume found either deleted or standing without the passage that earns it. The card protects lines. It cannot protect arguments, and this volume lost arguments."
+  },
+  "blockedRestorations": [
+    {
+      "region": "PART SEVEN introduction",
+      "partLabel": "The Civilization Made Visible",
+      "reason": "revives a retired chapter-start route",
+      "buildBroke": true,
+      "state": "reverted to pre-edit, byte identical",
+      "requires": "author continuity decision: canonical route and reviewed successor"
+    }
+  ]
+}

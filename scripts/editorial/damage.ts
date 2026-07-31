@@ -148,19 +148,31 @@ function analyse(editorialId: string): SectionDamage[] {
 
   const number = editorialId.replace("volume-", "");
   const baseSections = splitSections(readFileSync(baselinePath, "utf8"));
-  const currentSections = new Map(
-    splitSections(readFileSync(currentPath, "utf8")).map((s) => [
-      `v${number}-${slugify(s.heading.replace(/\*/g, ""))}`,
-      s,
-    ]),
-  );
+
+  /**
+   * Keyed by id AND ordinal. Repeated headings are common here: five sections named
+   * "The Larger Argument", six named "What Providence Is and Is Not Doing in This
+   * Dimension". A plain Map collapses them, so every one of the five compared against
+   * whichever survived the overwrite and the report invented severity it could not
+   * substantiate. The nth baseline occurrence now matches the nth current occurrence.
+   */
+  const buckets = new Map<string, Section[]>();
+  for (const section of splitSections(readFileSync(currentPath, "utf8"))) {
+    const id = `v${number}-${slugify(section.heading.replace(/\*/g, ""))}`;
+    const list = buckets.get(id) ?? [];
+    list.push(section);
+    buckets.set(id, list);
+  }
+  const claimed = new Set<Section>();
+  const claim = (id: string | undefined): Section | undefined => {
+    if (!id) return undefined;
+    return (buckets.get(id) ?? []).find((s) => !claimed.has(s));
+  };
 
   return baseSections.map((section, index) => {
     const sectionId = `v${number}-${slugify(section.heading.replace(/\*/g, ""))}`;
-    const current =
-      currentSections.get(sectionId) ??
-      currentSections.get(ALIASES.get(sectionId) ?? "") ??
-      undefined;
+    const current = claim(sectionId) ?? claim(ALIASES.get(sectionId));
+    if (current) claimed.add(current);
     const baselineWords = words(section.body);
     const currentWords = current ? words(current.body) : 0;
     return {

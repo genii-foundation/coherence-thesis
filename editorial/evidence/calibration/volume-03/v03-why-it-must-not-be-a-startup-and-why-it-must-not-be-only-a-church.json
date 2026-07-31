@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church",
+  "editorialId": "volume-03",
+  "sectionHeading": "Why It Must Not Be a Startup, and Why It Must Not Be Only a Church",
+  "currentHeading": "The Container Must Fit the Currency",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The structural-law claim and the two-entity design are author decisions; the governance detail belongs to Part Four and to CTD-0071.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Purposeful Foundation", "public-benefit enterprise", "extraction", "startup", "church", "commons"],
+    "itemsRead": ["CTD-0004", "CTD-0008", "CTD-0055", "CTD-0056", "CTD-0071", "master-ledger section 1"],
+    "outcome": "No recorded decision touches this section. CTD-0055 covers Providence protocol ownership promises and CTD-0071 the constitutional review; both are open obligations and neither overrides the baseline. The master ledger names the Purposeful Foundation as publisher and steward, which the restored text matches. The two-entity structure is restored in the conditional under section 5, since neither entity operates as described."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's central claim, that this is a structural law rather than a preference, was deleted.",
+      "evidence": {
+        "baseline": "This is not a moral preference. It is a structural law, and it determines the entire institutional design that Part Four will describe. ... The reason is simple and absolute: the thing this currency measures is destroyed by extraction.",
+        "shipped": "An extractive institution cannot safely govern a currency of intimate encounter."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Cannot safely govern is a risk assessment. The baseline makes a structural claim: extraction destroys the substrate the currency measures, so an extractive container is self-annihilating rather than merely unwise. That distinction is the whole reason Part Four's unusual governance exists, and the baseline says so in the same breath. Restored.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The argument against the pure community was reduced to a list of failure modes, losing its historical claim and its requirement.",
+      "evidence": {
+        "baseline": "The history of intentional communities and spiritual networks is a history of beautiful containers that dissolved when the founder burned out, when the money ran out ... The right container must hold the depth of a sacred institution and the durability, the operational capacity, the economic realism of a well-built enterprise.",
+        "shipped": "Communities can dissolve through burnout, financial precarity, founder dependence, weak conflict processes, or the absence of operational discipline."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped sentence names five risks in the abstract. The baseline names a history and then states the requirement that follows from it, and the requirement is the section's product: depth plus durability, in one container. Beautiful containers that dissolved is also the phrase that keeps the passage from condescending to the traditions it is warning about.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The closing statement that the structure is not decoration was removed.",
+      "evidence": {
+        "baseline": "But the reader should understand, before we reach the governance, that the unusual structure is not institutional decoration. It is the only container in which a Currency of Presence could exist without destroying itself.",
+        "shipped": "This structure is a proposal, not a guarantee. Legal form cannot produce integrity."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped close is a disclaimer about legal form and it is true. It is also the opposite of the baseline's point. The baseline says the odd structure is load bearing and asks the reader to hold that thought through Part Four. The shipped version says the structure guarantees nothing, which invites the reader to discount it before Part Four argues for it.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "their depth is being monetized fenced around its restatement, a pure community or church either, and a deliberate fusion of both.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first fenced a restatement with no internal comma and became commas. The second preceded a not-but construction that is grammatically dependent and became a comma. The third introduced a two-part specification of the fusion and became a colon.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0055", "effect": "reopened by restoration", "note": "The Purposeful Foundation holding the commons and protecting the depth, and a public-benefit enterprise sustaining it economically, both return, in the conditional. The item's ownership promises attach to this description." },
+    { "id": "CTD-0071", "effect": "recorded", "note": "The restored claim that this is the only container in which the currency could exist is the strongest constitutional assertion in Part Two and the item's review should test it." },
+    { "id": "CTD-0008", "effect": "reopened by restoration", "note": "The history of intentional communities and spiritual networks is a history of beautiful containers that dissolved is an uncited historical generalization." },
+    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "Simple and absolute, structural law, and the only container are all unbounded." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
+      "reasoning": [
+        { "kind": "restored", "note": "The structural law claim, the reason extraction destroys the substrate, the startup logic stated in its own terms, the self-annihilating verdict, the argument against the pure community with its history and its requirement, the fusion described in full, and the closing pair on decoration and the only container." },
+        { "kind": "changed", "note": "Providence is therefore neither a company nor a church became would therefore be, and which holds the commons became would hold. Section 5 of the standard; neither entity operates." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks, as recorded in F4." },
+        { "kind": "cut", "note": "The shipped rewrite, including its closing disclaimer about legal form, which is sound and belongs in Part Four where the governance is argued." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim strength. It is the only container in which a Currency of Presence could exist without destroying itself is restored. No alternative container is examined anywhere in the volume, so the claim is asserted rather than argued. It is also the sentence that makes Part Four necessary rather than optional.",
+    "Heading. Why It Must Not Be a Startup, and Why It Must Not Be Only a Church names both refusals the section makes, and the second refusal is the one a reader is least expecting. The Container Must Fit the Currency names the conclusion and neither refusal. The heading diagnostic applies. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F3 records a variety of substitution not yet named in this volume: a closing sentence replaced by one that is true, adjacent, and argues the opposite way. The baseline asks the reader to take the structure seriously; the shipped text asks them to discount it. Neither reads as an error in isolation."
+  }
+}

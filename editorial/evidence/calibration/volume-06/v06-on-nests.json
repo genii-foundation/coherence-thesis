@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-on-nests",
+  "editorialId": "volume-06",
+  "sectionHeading": "On Nests",
+  "currentHeading": "On Nests",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "nest",
+      "transcendentally",
+      "Volume IV buildability",
+      "coordinating device"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0034",
+      "CTD-0047",
+      "CTD-0072",
+      "CTD-0091"
+    ],
+    "outcome": "The semantic review records that the baseline said each volume became more transcendent and that Volume IV showed buildability, and that the pass replaced both with the actual conceptual sequence and a design for testing. That decision binds. More nearly transcendentally is not restored. The baseline's own description of Volume IV, that it laid out the initial steps and cited builders and thinkers, makes no buildability claim and is restored unchanged."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "270 words.",
+        "shipped": "268 words, of which 0 of 10 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 10 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The account of what a nest is lost its definition and its progression.",
+      "evidence": {
+        "baseline": "of the way knowledge itself can be nested, held in a form neither too large to enter nor too small to matter ... Each was a nest of knowledge, not too much, not too little.",
+        "shipped": "Across these volumes, a nest has meant knowledge held at a scale a reader can enter."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Neither too large to enter nor too small to matter is the definition the whole volume is named for, and the card names the nest holding the whole in the least space among the images that must not be explained away. A scale a reader can enter keeps the first half of the definition and drops the half that makes it a constraint.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The five-volume recap was replaced by a table of contents.",
+      "evidence": {
+        "baseline": "The first offered the plainest understanding: the difference between a coherent substrate and an extractive one ... And the fifth came home to the human being, where everything the others described is finally won or lost.",
+        "shipped": "Volume I distinguished coherent systems from extractive ones. Volume II treated intelligence as relational."
+      },
+      "authorizedBy": "Compression, and catalog 4.23 plausibly applied to the meta description of the volumes.",
+      "diagnosis": "The card's characteristic paragraph movement is to name the element, state its relation to the whole, identify its limit, then offer the deeper reading path. The baseline recap performs that movement five times and ends on the sentence that explains why Volume V matters most. The shipped list performs none of it.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The volume's own statement of scale was replaced by a claim about a network.",
+      "evidence": {
+        "baseline": "An effort to build the largest coordinating device the world has known, a living network turned, at last, toward the health, the wholeness, the connection, and the genius of human beings.",
+        "shipped": "A proposal for a living network that helps people discover purpose, find one another, and contribute what they carry."
+      },
+      "authorizedBy": "Catalog 4.6, applied to largest the world has known, alongside CTD-0072's status requirement.",
+      "diagnosis": "The display line is the volume's single sentence of ambition and it sits alone between two dividers, which the card protects as display matter. The four nouns, health and wholeness and connection and genius, are the register the volume is written in. The status concern is met by naming it a proposal, which costs the line nothing.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0034",
+      "effect": "paydown preserved",
+      "note": "No claim that Volume IV showed the architecture can be built is restored."
+    },
+    {
+      "id": "CTD-0080",
+      "effect": "paydown preserved",
+      "note": "The transcendence claim about each successive volume is not restored."
+    },
+    {
+      "id": "CTD-0072",
+      "effect": "paydown preserved",
+      "note": "The display line is framed as a proposal rather than as an effort already underway."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes, five of them appositive and rendered as commas. One paired dash carried the transcendence claim the ledger removes, so the repair and the correction were the same edit."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's asterisk divider against the baseline's em dash divider, since the baseline glyph is a prohibited mark, and the current section labels and front matter, which are unchanged."
+        },
+        {
+          "kind": "restored",
+          "note": "The definition of a nest, the five-volume recap with its progression, the not too much and not too little pair, and the display line's four nouns."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section shows a ledger correction and a punctuation repair landing on the same clause, which is the cheapest case there is: removing the prohibited mark and removing the inflation were one operation, and the surrounding sentence restored intact."
+  }
+}

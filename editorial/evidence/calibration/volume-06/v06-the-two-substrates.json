@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-two-substrates",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Two Substrates",
+  "currentHeading": "The Two Substrates",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "substrate",
+      "extraction",
+      "law of lasting systems"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0013",
+      "CTD-0014"
+    ],
+    "outcome": "CTD-0013 governs the historical extraction moral claim and CTD-0014 the soil metaphysical modality; neither names a sentence here. CTD-0080's universal concern reaches something closer to a law of lasting systems, which is rendered as a constraint on what can last. The rest of the section restores unchanged."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "409 words.",
+        "shipped": "407 words, of which 2 of 11 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 11 current sentences of six words or more, 2 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The oldest and most seductive lie, the section's central figure, lost its three demonstrations.",
+      "evidence": {
+        "baseline": "Fell the orchard and enter the timber as profit. Drain the aquifer and call the harvest growth. Burn through soil and trust and attention, and write every loss in the ledger as a gain.",
+        "shipped": "An economy may fell an orchard and count the timber as income, drain an aquifer and count the harvest as growth, or consume soil, trust, and attention while keeping those losses outside its books."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "The retention limb applies. The three cases escalate from a visible thing to an invisible one, and folding them into a single sentence about what an economy may do removes the accumulation that makes the third case land. The lie is also named in the baseline and unnamed in the shipped text.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The extractive substrate's account of itself lost the loan and the note.",
+      "evidence": {
+        "baseline": "We have lived long enough upon the extractive substrate to mistake it for reality itself; but it was always a loan drawn against a principal we did not earn, and in our time the note is being called.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The note being called is the section's only statement about the present tense, and the principal we did not earn returns to the spending a principal it insists on calling income two sentences earlier. Removing it leaves the argument historical and takes the urgency out of it.",
+      "producedRule": "R-LAND",
+      "id": "F3"
+    },
+    {
+      "summary": "The case for coherence lost its refusal.",
+      "evidence": {
+        "baseline": "The case for coherence is not that it is nobler. It is that it is the only ground on which a civilization complex enough to endanger itself can continue to stand.",
+        "shipped": "The case for coherence is that a civilization capable of endangering itself needs arrangements that restore the conditions on which it depends."
+      },
+      "authorizedBy": "Catalog 4.3, applied to the not X but Y shape.",
+      "diagnosis": "The rejected reading, that coherence is the morally better option, is the one most readers arrive holding and the one the whole series works to displace, so 4.3's retention limb applies. The only ground on which a civilization can continue to stand is also the claim, and needs arrangements that restore conditions is a recommendation.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0080",
+      "effect": "restoration bounded",
+      "note": "Something closer to a law of lasting systems is rendered as something closer to a constraint on what can last, which keeps the strength of the claim and drops the assertion that a law has been established."
+    },
+    {
+      "id": "CTD-0013",
+      "effect": "not touched",
+      "note": "No moral claim about historical extraction beyond the baseline's own is restored."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. One was appositive and became a comma, one became a period before the constraint claim, and a paired set enclosing the off-book entries was rebuilt so the entries follow a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The two kinds and the ending distinction, the season and the age, the principal called income, the three demonstrations of the lie, the inheritance converted into receipts, the entries kept off the books, the loan and the note being called, and the refusal that coherence is merely nobler."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the longest in Part Two and its ledger interaction is four words. Everything else that changed was catalog 4.4 applied to a figure whose whole force is accumulation, which is the retention limb the standard added 4.4's second sentence for."
+  }
+}

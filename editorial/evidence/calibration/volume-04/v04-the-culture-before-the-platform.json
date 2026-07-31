@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-culture-before-the-platform",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Culture Before the Platform**",
+  "currentHeading": "**The Culture Before the Platform**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "support layer",
+      "burnout",
+      "developmental arc",
+      "stewardship",
+      "culture",
+      "Purposeful",
+      "retreats",
+      "year-long",
+      "mentors"
+    ],
+    "itemsRead": [
+      "CTD-0056",
+      "CTD-0072",
+      "CTD-0069",
+      "CTD-0006",
+      "CTD-0088",
+      "CTD-0075",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0056 requires each Purposeful program's status and access path to be published rather than implied, and CTD-0072 requires the same for every named entity and credential. Neither is reopened, because the restored chapters describe what the work would require rather than what is running. CTD-0069 governs the corpus's use of Indigenous and contemplative lineage, which bears on the monastic and ritual passages. CTD-0088 concerns mentor safeguarding and was read before restoring the mentorship and supervision requirements. CTD-0006 requires that developmental stage never determine political standing."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Culture's constitutional status, which is the chapter's premise, was removed.",
+      "evidence": {
+        "baseline": "Volume III established culture as civilization's emotional operating system: the lived experience of relationship, the rituals and practices through which shared meaning is produced and reproduced, the aesthetic sensibility that shapes what participants find beautiful and worth pursuing. It established that culture is not decorative but constitutional.",
+        "shipped": "(absent from the shipped chapter opening)"
+      },
+      "authorizedBy": "Compression, and catalog 4.3 read onto the not decorative but constitutional pair.",
+      "diagnosis": "Not decorative but constitutional is the claim the whole chapter rests on, and decorative is exactly what most institutions treat culture as, which is 4.3's retention limb. Emotional operating system is a corpus term and its definition appears once. The aesthetic clause is the only place the volume says taste is part of the architecture.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F2",
+      "summary": "The window argument, which is why the chapter exists at this point in the volume, was reduced.",
+      "evidence": {
+        "baseline": "This window is the only period in which the culture can be deliberately chosen rather than inherited from whatever happens to accumulate in the early interactions of the founding community.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The chapter's epigraph says this is the only moment it can be chosen rather than inherited, and the body sentence is what the epigraph is pointing at. Removing it leaves the epigraph asserting something the chapter never argues, which is the same defect recorded at the funding paradox.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved",
+      "note": "The reference is to Volume III's argument about culture, not to a named section."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced the definition of culture and became a colon. One was a parenthetical appositive and became a comma pair."
+        },
+        {
+          "kind": "restored",
+          "note": "The definition of culture as emotional operating system, the constitutional claim, the window argument, and the chapter's statement of what specifying a culture means."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 211,
+    "shippedWords": 57,
+    "shippedDelta": -73
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Second instance in the volume of an epigraph left pointing at an argument the body no longer makes. The check is cheap and should be standing: read each epigraph against the shipped body."
+  }
+}

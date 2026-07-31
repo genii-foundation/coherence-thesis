@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-relational-mind",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Relational Mind",
+  "currentHeading": "The Relational Mind",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "the between",
+      "relational intelligence",
+      "tools"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0019"
+    ],
+    "outcome": "CTD-0019 governs Volume II empirical sourcing and is scoped to that volume. No recorded decision names a claim in this summary. The relational intelligence claim is invariant 3 of the semantic review and is restored as the baseline states it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "242 words.",
+        "shipped": "242 words, of which 0 of 10 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 10 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The claim that rearranges everything lost its framing and its counterweight.",
+      "evidence": {
+        "baseline": "making a claim that quietly rearranges everything: that intelligence is not a possession but a relationship. ... But almost nothing of consequence has ever been thought, made, or healed by a mind alone.",
+        "shipped": "Volume II turned the question toward intelligence. ... Yet consequential thought, making, and healing usually depend on relations among minds as well as capacities within them."
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis, and 4.6 applied to rearranges everything.",
+      "diagnosis": "Not a possession but a relationship is the volume's thesis in six words and both limbs are plausible, which is 4.3's retention limb. Thought, made, or healed is also three verbs where the shipped version has three nouns, and the nouns cannot be done by anyone.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The three places intelligence lives were reduced to two, and the largest of them was cut.",
+      "evidence": {
+        "baseline": "in the trust that lets a group think a thought too large for any single member to hold.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 applied to the triad.",
+      "diagnosis": "A thought too large for any single member to hold is the summary's only concrete account of what a group can do that a person cannot, which is the claim the whole volume rests on.",
+      "producedRule": "R-PROPORTION",
+      "id": "F3"
+    },
+    {
+      "summary": "The diagnosis of modern tools lost its two mechanisms and the section lost its hinge.",
+      "evidence": {
+        "baseline": "monetizing attention by fragmenting it, simulating closeness while deepening the underlying loneliness. ... It is the hinge of the whole work, the turn from understanding the world to making within it, the place where the argument first reaches for its hands.",
+        "shipped": "Many digital products instead monetize fragmented attention and offer contact without dependable relation. ... It is where the series turns from describing the world toward making within it."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Simulating closeness while deepening the underlying loneliness names a mechanism; contact without dependable relation names a shortfall. Reaches for its hands is also the figure that makes the hinge physical, and it is the section's landing.",
+      "producedRule": "R-LAND",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0019",
+      "effect": "not in scope",
+      "note": "Volume II holds the empirical sourcing item. This summary restates the claim without adding evidence."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. One became a colon where the second clause enumerated, and two were appositive and became commas."
+        },
+        {
+          "kind": "restored",
+          "note": "The claim that rearranges everything, the quantity sealed inside a skull, the three places intelligence lives, the proportion claim, the tools that strengthen the between, the two mechanisms of modern invention, and the hinge reaching for its hands."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section restores to the baseline's exact word count, and every finding is a substitution of an abstraction for a mechanism. That is the shape of the whole Volume VI pass in miniature: the propositions survive and nothing in them can be pictured."
+  }
+}

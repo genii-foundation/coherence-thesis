@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-providence-proposed-functionality",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Providence: Proposed Functionality**",
+  "currentHeading": "**Providence: Proposed Functionality**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries under import-markdown.ts.",
+    "action": "No label altered. Left exactly as it stands.",
+    "result": "Label unchanged. Route intact."
+  },
+  "substitutionCheck": {
+    "method": "Byte comparison of the framing line in baseline.md and manuscript.md.",
+    "probes": [
+      "The chapter describes a coordination infrastructure designed in five layers."
+    ],
+    "result": "Identical. The prior pass did not change the framing line. The damage report's minus 95 percent for this block is a boundary artifact: the pass promoted the five layer labels to h3 headings, so the words moved into six sibling sections the report counts separately."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "five layers",
+      "MVP",
+      "design intentions"
+    ],
+    "itemsRead": [
+      "CTD-0021",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0021 requires one Reference Model layer count and records that the disclosure was corrected to five layers on 2026-07-09. The framing line says five layers and the block enumerates five. The correction is preserved. CTD-0055 requires design intentions to read as intentions, and the line's second clause, Only the first exists as an MVP; the rest are stated design intentions, is the block's disclosure and is unchanged."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "No damage. The framing line survived the prior pass unaltered.",
+      "evidence": {
+        "baseline": "The chapter describes a coordination infrastructure designed in five layers. Only the first exists as an MVP; the rest are stated design intentions.",
+        "shipped": "identical"
+      },
+      "authorizedBy": "Not applicable. Nothing was changed.",
+      "diagnosis": "The line carries the whole Reference block's honesty, and it does so with a semicolon holding the existing thing and the intended things in one sentence. It is also the sentence CTD-0021 and CTD-0055 both depend on. Recording that it survived is worth as much as recording a repair, because the next pass will otherwise have no evidence that anyone checked.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0021",
+      "effect": "paydown preserved",
+      "note": "The five-layer count stated on 2026-07-09 is intact in the framing line and in the enumeration beneath it."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "paydown-adjacent disclosure preserved",
+      "note": "Only the first exists as an MVP; the rest are stated design intentions is the block's status disclosure and is unchanged."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "verified",
+          "note": "Line-level comparison against the baseline returns identical. No restoration required."
+        },
+        {
+          "kind": "verified",
+          "note": "No prohibited marks in the framing line."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. The heading is a route and is left exactly as it stands."
+        },
+        {
+          "kind": "kept",
+          "note": "The semicolon holding the MVP and the design intentions in one sentence. Keeping it is an editorial decision and is recorded as one."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Do Layers 4 and 5 and the Cross-Cutting Commitments need review?",
+      "context": "Those three sections are byte-identical between baseline and shipped text and needed no restoration. They are recorded here rather than as three separate empty records. Layers 1, 2, and 3 did take damage and have their own records.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, both voice cards, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required and no change made. The block is a useful control on the damage report: it was flagged at minus 95 percent, the largest single figure in the volume, and the loss turned out to be entirely a change of section boundary. Three of its seven sections took no damage at all."
+  },
+  "note": "The Reference block's framing line. The five layer sections and the cross-cutting commitments are calibrated separately where they took damage; Layers 4 and 5 and the Cross-Cutting Commitments are byte-identical to the baseline and are recorded in this section's open questions rather than as separate records."
+}

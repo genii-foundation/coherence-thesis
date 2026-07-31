@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v09-3-providence-the-device-that-coordinates-the-many",
+  "editorialId": "volume-09",
+  "sectionHeading": "## §3 — Providence: The Device That Coordinates the Many",
+  "currentHeading": "## Providence: The Device That Coordinates the Many",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Providence",
+      "Coherent Resonance",
+      "Bio-Consensus",
+      "Proof of Council",
+      "network state",
+      "social credit",
+      "the floor"
+    ],
+    "itemsRead": [
+      "CTD-0043",
+      "CTD-0005",
+      "CTD-0006",
+      "CTD-0012",
+      "CTD-0030",
+      "CTD-0031",
+      "CTD-0107"
+    ],
+    "outcome": "CTD-0043 at high severity is the governing item: Volume IX reuses Coherent Resonance for a wallet while Volume VII uses it for an inner quality. The baseline wallet naming is not restored. CTD-0005 records the subsistence conditionality conflict, so the baseline’s earns the floor formulation is not restored either. CTD-0006 governs biometric standing and keeps the non-biometric route requirement."
+  },
+  "substitutionCheck": "Grepped. Providence can assist recognition. It cannot manufacture it, Provision must remain more than a beautiful verb, The floor is where the architecture reveals its moral center, and A hungry person does not become less hungry because a wallet is elegant are all absent from the baseline. All four are retained. The last two are volume card protected lines and the card records the fourth as missing from the manuscript, which the shipped text disproves.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The problem Providence answers was deleted.",
+      "evidence": {
+        "baseline": "It is the answer to the oldest problem of scale. Coordination at the size of a civilization has always seemed to demand either a boot or an eye, force or surveillance. Providence offers only a third thing: **recognition.**",
+        "shipped": "It is intended to support recognition rather than rule from a center."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "A boot or an eye is the section’s framing and the reason recognition is a proposal rather than a preference. It also sets up the social credit boundary later in the same section, where the eye returns as the thing being refused. The shipped sentence names the answer without the question.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "Presence and presencing lost the distinction between them.",
+      "evidence": {
+        "baseline": "it distinguishes *presence*, the regulated availability one person brings, from *presencing*, the co-regulation that arises *between* people and that neither brought alone. Presencing is the truer coin, because the coherence you genuinely evoke in another is far harder to counterfeit than the coherence you merely claim for yourself.",
+        "shipped": "Voice, heart-rate variability, breath, and pulse cannot distinguish truth, wisdom, or moral worth."
+      },
+      "authorizedBy": "CTD-0006, read as requiring the whole mechanism be replaced by its limits.",
+      "diagnosis": "The limits are correct and are kept, along with the pass’s sentence that no claim about counterfeiting can substitute for adversarial testing. But the presence and presencing distinction is the corpus’s definition of what the currency measures, it recurs in Volumes III, VII, and VIII, and without it the reader cannot evaluate the limits they have just been given. It is restored as a wager rather than a result.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "The wallet named Coherent Resonance is not restored.",
+      "evidence": {
+        "baseline": "we call it **Coherent Resonance**: the living record of how one has actually shown up over time",
+        "shipped": "Volume VII already uses **Coherent Resonance** for an inner quality, so this volume does not reuse the name for a wallet."
+      },
+      "authorizedBy": "CTD-0043, at high severity.",
+      "diagnosis": "A retention limb for the shipped text and a clear R-LEDGER-WINS case. The item records that readers cannot tell whether the wallet records the state, is the state, or borrowed its name. The card also states that Coherent Resonance remains an inner quality from Volume VII rather than a wallet. Restoring the baseline would reopen a high severity item that the pass paid down, and the record for Volume VII tenet six depends on the same decision.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F4",
+      "summary": "The account of how Scales connect lost the provisioning claim.",
+      "evidence": {
+        "baseline": "when one Scale falls out of coherence, the others do not punish it, they *provision* it, sending people and resources until it finds its feet again",
+        "shipped": "Scales might exchange COHERENCE and assist one another during difficulty."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Do not punish it, they provision it is the sentence that distinguishes this federation from every reputation network the book has criticized, and the shipped assist one another is compatible with both. The pass’s paragraph on budgets, authority, and a rule for saying no is the right qualification and is kept immediately after.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F5",
+      "summary": "The floor and the height lost the reasoning, and the baseline’s conditionality is not restored.",
+      "evidence": {
+        "baseline": "To come into coherence with *yourself* earns the floor, the basics of life, unconditional, open to everyone. To become the presence in whose company *others* come into coherence earns the height ... We feed all who can hold themselves.",
+        "shipped": "Before implementation, the project must define an unconditional material floor, equal standing, bounded stewardship roles, non-biometric routes, due process, and appeal."
+      },
+      "authorizedBy": "CTD-0005, which records the subsistence conditionality conflict across the corpus.",
+      "diagnosis": "The baseline formulation is self-contradicting in one sentence: it calls the floor unconditional and then conditions it on coming into coherence with yourself, and feed all who can hold themselves is the condition stated plainly. The item exists because of exactly this. The re-render keeps the shipped requirement, restores the height as a bounded and contestable stewardship role, and states the floor as belonging to everyone without condition and without measurement, which is the position the card and the item both point to.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0043",
+      "effect": "paydown preserved",
+      "note": "The wallet is a participant-held record. Coherent Resonance is not reused for it, and the section says why. This matches the disposition recorded for Volume VII tenet six in the same pass."
+    },
+    {
+      "id": "CTD-0005",
+      "effect": "paydown preserved and strengthened",
+      "note": "Earns the floor and feed all who can hold themselves are not restored. The floor is stated as unconditional and unmeasured, and any stewardship role above it is bounded, contestable, and answerable."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "paydown preserved",
+      "note": "The non-biometric route requirement, the limits of physiological signals, and the requirement for adversarial testing are all kept."
+    },
+    {
+      "id": "CTD-0012",
+      "effect": "no change",
+      "note": "COHERENCE is the unit and Bio-Consensus and Proof of Council are the two proposed minting paths. Neither is called the currency."
+    },
+    {
+      "id": "CTD-0031",
+      "effect": "no change",
+      "note": "The network state comparison keeps its critical treatment requirement and the statement that a first Scale would be a pilot rather than an existence proof."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Twenty-one em dashes, the densest section in this volume. Nine set off appositives and became commas. Seven introduced specifications and became colons. Five separated second movements and became periods."
+        },
+        {
+          "kind": "applied",
+          "note": "The card lists the only measure that matters and existence proof among phrases to reduce. Both are kept once, each in a sentence that refuses them."
+        },
+        {
+          "kind": "restored",
+          "note": "The boot and the eye, recognition as the third thing, the Membrane’s mechanism, the presence and presencing distinction as a wager, Proof of Council as the honoring of a gathering, the provisioning claim, the network state comparison with its sequence argument, the pattern that connects operating between Scales, and the height as a bounded role."
+        },
+        {
+          "kind": "kept",
+          "note": "The recognition limit, the human practice paragraph with the unused room and the elder who knows the water’s old course, the research agenda framing, the participant-held record and its undefined lifecycle, the beautiful verb paragraph, the critical treatment requirement on network states, the social credit boundary, and the moral floor with its protected line."
+        },
+        {
+          "kind": "verified",
+          "note": "The protected line A hungry person does not become less hungry because a wallet is elegant is present. It is not in the baseline. The voice card records it as missing from the manuscript, which the shipped text and this re-render both disprove."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §3, Providence: The Device That Coordinates the Many. Current: Providence: The Device That Coordinates the Many. Only the section number differs. The volume card lists five numbered sections among the protected structural devices and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    },
+    {
+      "id": "Q1",
+      "question": "CTD-0005 is a recorded conflict rather than a settled decision. This volume now states an unconditional and unmeasured floor. Volumes elsewhere in the corpus condition provision on self-regulation. The contradiction is named on the page but only the author can resolve it."
+    },
+    {
+      "id": "Q2",
+      "question": "The volume card lists A hungry person does not become less hungry because a wallet is elegant among the protected lines and separately reports it as missing from the manuscript. It is present, and it is not in the baseline, which means the card protects prose the prior pass wrote. The author should confirm or correct the card."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Three separate ledger items ruled against the baseline in this one section, which is the highest concentration in the three volumes, and each ruling changed a different kind of thing: a name, a claim about who gets fed, and a limit on what a signal can establish."
+  }
+}

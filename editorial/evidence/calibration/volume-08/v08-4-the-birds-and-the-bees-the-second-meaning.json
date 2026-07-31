@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-4-the-birds-and-the-bees-the-second-meaning",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §4 — The Birds and the Bees, the Second Meaning",
+  "currentHeading": "### The Birds and the Bees, the Second Meaning",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "sex recession",
+      "General Social Survey",
+      "Seven Initiates",
+      "intimacy",
+      "hermit economy"
+    ],
+    "itemsRead": [
+      "CTD-0106",
+      "CTD-0048",
+      "CTD-0093"
+    ],
+    "outcome": "CTD-0106 C2 requires the sex recession figures to be refreshed or marked as as-of figures. They are now attributed to the Institute for Family Studies analysis with their years in the prose. CTD-0048 covers the sexuality claims generally."
+  },
+  "substitutionCheck": "Grepped. These forms can involve agency, livelihood, pleasure, exploitation, compulsion, loneliness, or several at once and Solitude and childlessness are not civilizational failures are absent from the baseline. Both are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The three forms of commodified intimacy lost their descriptions.",
+      "evidence": {
+        "baseline": "industrialized into *content* ... gamified into the *swipe,* courtship reduced to a deck of faces ranked and discarded in seconds, optimized to keep you playing rather than to find you love, because a paired-off user is a lost customer ... *subscribed,* intimacy repackaged as a monthly feed, the body turned into a small business.",
+        "shipped": "Pornography, dating applications, and paid intimate media have changed how many people encounter sex and courtship."
+      },
+      "authorizedBy": "The correct objection that participants should not be conscripted into one diagnosis.",
+      "diagnosis": "The objection is right and is kept, but it applies to the people, not to the business model. A paired-off user is a lost customer is a claim about incentives that can be checked, and it is the sharpest thing in the section. The shipped sentence names three industries and says they changed something.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The section’s argument for why intimacy belongs in a book about ecology was cut.",
+      "evidence": {
+        "baseline": "A people learns reverence for life at the scale of one body meeting another with tenderness, and unlearns it the same way. The crowd that chanted *jump* and the room that returned to the football are the public face of a private atrophy.",
+        "shipped": "Reverence can be practiced in sexual and nonsexual bonds alike."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the only place the prologue and the audit are joined by an argument rather than an assertion, and it is a moral argument rather than a causal one, which is exactly what CTD-0083 asked for. The pass’s widening of reverence beyond sexual bonds is a good correction and is kept alongside it.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The grief wearing freedom’s mask formulation was deleted.",
+      "evidence": {
+        "baseline": "much of this is not freedom but *grief wearing freedom’s mask*",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.3, and the correct concern about shaming.",
+      "diagnosis": "Both limbs of 4.3 are plausible here, and the sentence is the section’s answer to the objection it has just conceded. Much of this is softened to some of what is happening, which keeps the distinction and drops the quantifier the evidence cannot support.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0106",
+      "effect": "paydown advanced",
+      "note": "C2 is materially advanced. The sex recession figures are attributed to the Institute for Family Studies analysis of General Social Survey data, with 1990, 2010, and 2024 stated in the prose."
+    },
+    {
+      "id": "CTD-0048",
+      "effect": "no change",
+      "note": "The sexuality and fertility figures remain in the critical fact audit."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Seven em dashes. Four introduced specifications and became colons or commas. Two separated second movements and became periods. One framed a parenthetical and was rebuilt."
+        },
+        {
+          "kind": "restored",
+          "note": "The three forms with their mechanisms, the converging data with its attribution, the reverence argument, the grief and freedom distinction in bounded form, and the reason intimacy sits near the center of the Seven Initiates."
+        },
+        {
+          "kind": "kept",
+          "note": "The refusal to conscript participants, the protection of freedom from the old coercions, the statement that solitude and childlessness are not failures, and the conditions-for-choice framing."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. The baseline heading is \"§4 — The Birds and the Bees, the Second Meaning\" and the current heading is \"The Birds and the Bees, the Second Meaning\". Only the section number differs. The volume card lists sections 1 through 16 as a protected structural device, and the numbering is absent from the current headings. Renaming a heading mints and retires a public route, so the difference is recorded here rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

@@ -3,7 +3,7 @@
   "sectionId": "v07-internal-technologies-first-and-the-instruments-that-honor-them",
   "editorialId": "volume-07",
   "sectionHeading": "***Internal Technologies First — and the Instruments That Honor Them***",
-  "currentHeading": "### Internal Technologies First, and the Instruments That Honor Them",
+  "currentHeading": "### Internal Practice and External Instruments",
   "status": "settled",
   "opened": "2026-07-30",
   "settled": "2026-07-30",
@@ -110,7 +110,12 @@
   ],
   "rulings": [],
   "rulesDerived": [],
-  "openQuestions": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Heading not changed. Baseline: Internal Technologies First, and the Instruments That Honor Them. Current: Internal Practice and External Instruments. The rename drops both the priority the section argues for and the word honor, which is the section’s whole standard for what an instrument is allowed to do. Restoring it would retire a public route, so the difference is recorded instead."
+    }
+  ],
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

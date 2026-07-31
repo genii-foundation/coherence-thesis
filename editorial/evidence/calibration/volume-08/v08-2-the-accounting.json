@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-2-the-accounting",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §2 — The Accounting",
+  "currentHeading": "### The Accounting",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "2.9 billion birds",
+      "62 percent colony loss",
+      "Krefeld",
+      "60 harvests",
+      "300,000 farmer suicides",
+      "glyphosate",
+      "microplastics"
+    ],
+    "itemsRead": [
+      "CTD-0048",
+      "CTD-0105",
+      "CTD-0093",
+      "CTD-0106"
+    ],
+    "outcome": "CTD-0048 at critical severity requires a claim-level source map, date stamps on volatile claims, and contested findings distinguished. It requires verification, not the conversion of reported facts into notes about verification. CTD-0105 forbids production notes in reader prose, which is what the prior pass produced here. CTD-0106 C1 requires as-of marking, which is applied."
+  },
+  "substitutionCheck": "Grepped. The limit of the audit, Every number in this chapter remains subject to a final primary-source audit, and The exact estimates and causal claims require primary-source review are all absent from the baseline. The bounding judgments they carry are kept. The production register they carry is not.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Reported facts were replaced with statements about the reporting.",
+      "evidence": {
+        "baseline": "What unsettled the ornithologists was not the loss of rare species, which they expected, but the erosion of the common ones: sparrows, warblers, blackbirds, the birds of the ordinary backyard. The lead author called it an indicator of a wider environmental collapse.",
+        "shipped": "Common birds such as sparrows, warblers, and blackbirds accounted for much of the decline."
+      },
+      "authorizedBy": "CTD-0048, read as requiring every claim be hedged in the prose.",
+      "diagnosis": "What the researchers found surprising is itself a finding, and it is the one that makes the number mean something: a decline concentrated in common species is a different fact from a decline concentrated in rare ones. The shipped sentence keeps the species list and drops the finding.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The Krefeld study lost the detail that gives it force.",
+      "evidence": {
+        "baseline": "The detail that should stop the reader is this: every trap was set inside a *protected area.* The collapse was measured in the very places set aside to prevent it.",
+        "shipped": "Every trap stood inside a protected area."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The bare fact is retained and the inference is deleted, which reverses the correct order: the inference here is short, sound, and exactly what a reader needs help drawing. The regional caveat the pass added is right and is kept alongside it.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The soil section lost the enforcement of the volume’s own promise.",
+      "evidence": {
+        "baseline": "Here we must discipline ourselves, because the famous number is the unsound one ... *We retire the headline.* ... The principal is being spent, just not on the tidy schedule the slogan promised.",
+        "shipped": "The slogan should be retired. The more defensible finding is that degradation is serious, uneven, and urgent in some places."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "We retire the headline is the volume doing in public what it promised in the register note, and the tidy schedule clause is what connects the retraction back to the principal image. Should be retired is a recommendation to someone else.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "The glyphosate section gained a correct methodological point and lost the consequence.",
+      "evidence": {
+        "baseline": "the public is left to litigate its own health in the dark, which is exactly what has happened, with Bayer, which absorbed Monsanto, paying out enormous settlements while denying that the product causes harm",
+        "shipped": "Litigation and settlements do not settle causation either. The public deserves a transparent account of why expert bodies differ."
+      },
+      "authorizedBy": "CTD-0048.",
+      "diagnosis": "The pass is right that hazard and risk are different questions and that the disagreement should not be reduced to who funds whom, and that correction is kept. But litigate its own health in the dark is the consequence, and it is the only sentence that says what the disagreement costs an ordinary person.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F5",
+      "summary": "The closing of the audit was replaced by a caution about aggregation.",
+      "evidence": {
+        "baseline": "the *direction* is not seriously in dispute by anyone who is actually looking: birds down, bees down, insects down, soils thinning, water tightening and titling, the people who farm dying at terrible rates, the body fed and now filled by a system tuned to something other than its flourishing. The principal is being spent. This part of the audit closes in the red.",
+        "shipped": "The argument does not need a claim that no informed person disputes the direction. It needs each claim to survive its own evidence."
+      },
+      "authorizedBy": "CTD-0048, and catalog 4.27 on anyone who is actually looking.",
+      "diagnosis": "Anyone who is actually looking is a defect and the card lists it among phrases to reduce, so the appeal is dropped. The roll call and the closing beat are not defects: the roll is the chapter’s index and closes in the red is the accounting metaphor landing. The re-render keeps the pass’s caution about not collapsing the records into one index, states the roll as separate findings rather than one direction, and keeps the close.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0048",
+      "effect": "paydown preserved and re-expressed",
+      "note": "Every contested finding stays marked as contested: the bee survey self-reporting, the neonicotinoid synergy, the Krefeld regional scope, the retired sixty harvests figure, the plural causation of the farmer suicides, the water projections and their assumptions, the China water grabbing overstatement, The China Study overgeneralization, the hazard and risk distinction, the microplastics methods, and the unsettled EMF grade. The item remains critical and open."
+    },
+    {
+      "id": "CTD-0105",
+      "effect": "paydown extended",
+      "note": "Sentences of the form the draft cites X, X requires review before publication, and the manuscript should not do Y are editorial process notes rather than manuscript prose. CTD-0105 defines exactly that category and requires its removal from reader-facing text as a corpus obligation. The re-render converts each into in-prose source posture, an as-of date, a named contested status, or a bounded claim, which keeps the caution and removes the production register."
+    },
+    {
+      "id": "CTD-0106",
+      "effect": "paydown advanced",
+      "note": "C1 requires dated statistics to be refreshed or explicitly marked as as-of figures in the prose. The Roots register now carries that marking for the whole of §3 and the section head states it."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Twenty-two em dashes. Nine set off appositives and became commas. Seven introduced specifications or enumerations and became colons. Four separated second movements and became periods. Two framed parentheticals and were rebuilt."
+        },
+        {
+          "kind": "applied",
+          "note": "Catalog 4.27 on anyone who is actually looking, dropped rather than repaired, following the card, which lists it among phrases to reduce."
+        },
+        {
+          "kind": "restored",
+          "note": "The ornithologists’ finding, the one in three bites figure, the braided causes, the Krefeld inference, the retirement of the sixty harvests headline, the scale of the dying, the water conflict basins, the food system’s optimization target, the chemical envelope, the no unmediated body claim, and the closing roll."
+        },
+        {
+          "kind": "kept",
+          "note": "The regional scope of Krefeld, the plural causation, the hazard and risk distinction, the microplastics methods caution, and the refusal to collapse the records into one index."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. The baseline heading is \"§2 — The Accounting\" and the current heading is \"The Accounting\". Only the section number differs. The volume card lists sections 1 through 16 as a protected structural device, and the numbering is absent from the current headings. Renaming a heading mints and retires a public route, so the difference is recorded here rather than acted on."
+    },
+    {
+      "id": "Q1",
+      "question": "CTD-0048 is critical and open. Restoring the reported facts increases what the audit must verify. The alternative, keeping the prose as notes about verification, hid the same obligation behind hedging. The author should confirm the trade."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The general lesson is that a fact audit item is discharged by verifying facts, not by narrating the audit inside the book."
+  }
+}

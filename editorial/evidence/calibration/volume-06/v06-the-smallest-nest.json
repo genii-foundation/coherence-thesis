@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-smallest-nest",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Smallest Nest",
+  "currentHeading": "The Smallest Nest",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "current",
+      "pathway",
+      "loom",
+      "currency",
+      "nest"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0091"
+    ],
+    "outcome": "The refrain current, pathway, loom, currency is named on the voice card as intentional recurrent phrasing and three of its lines are declared protected. The currency line is bounded to might become, matching the chamber VIII correction. The protected line about a human life holding more capacity than it finds occasion to spend is the pass's wording and is kept verbatim."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "260 words.",
+        "shipped": "228 words, of which 1 of 12 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 12 current sentences of six words or more, 1 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chamber's coda scaffold is not restored, and its first two lines were content.",
+      "evidence": {
+        "baseline": "This is the human condition: to hold more than one life can spend, and to ache for the place to spend it. This is the work: to build the nest where it can be spent together.",
+        "shipped": "A human life can hold more capacity than it finds occasion to spend. The work comes down to building places where people can become, together, what none could become alone."
+      },
+      "authorizedBy": "The voice card's known weak passages, and the semantic review's record of the coda removal.",
+      "diagnosis": "Coda scaffold not restored. The baseline closes this chamber with a divider, two italic address lines, the isolated line That is why, and a fourth italic line beginning That is why. The Volume VI voice card lists any return of the repeated divider plus That is why coda among its known weak passages, and the semantic review records the pass's removal of the scaffold as a structural repair. The address lines also tell the reader what they have felt, waited for, or were made to become, which is the defect CTD-0091 was opened for and which the corpus card forbids outright. The scaffold is therefore left removed. Where a coda carried content rather than performance, that content is restored into the chamber body. The first two coda lines here state the volume's thesis rather than perform intimacy, and the pass rewrote them into the chamber body, where the card now protects the result verbatim.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The three-act line lost its ordinals.",
+      "evidence": {
+        "baseline": "Recognition is the first act, belonging the second, stewardship the last.",
+        "shipped": "Recognition opens, belonging holds, and stewardship carries forward."
+      },
+      "authorizedBy": "Catalog 4.4, applied to the parallel.",
+      "diagnosis": "The ordinals are the sequence, which is the whole content of the line inside a refrain built of definitions. Opens, holds, carries forward substitutes three verbs for an order and loses the claim that stewardship comes last.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The nest's arrival lost its address and its history.",
+      "evidence": {
+        "baseline": "That is all the nest has ever been, the smallest structure in which the largest becoming can start. Everything in these six volumes was only trying to help you find it, and to say to you, before you began, why it was worth the building.",
+        "shipped": "The nest is the smallest structure in which a larger becoming can start. These six volumes offer reasons to find or build one."
+      },
+      "authorizedBy": "Catalog 4.16, performed intimacy, applied to the second person.",
+      "diagnosis": "The largest becoming is the volume's phrase and a larger becoming is a hedge on a superlative that the nest image earns. To say to you, before you began, why it was worth the building is the closing beat of Part One and the only place the volume states its own purpose to a reader.",
+      "producedRule": "R-LAND",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0080",
+      "effect": "paydown preserved",
+      "note": "And coherence, made visible, becomes the currency is rendered as might become the currency, matching the unsettled mechanism stated in chamber VIII. And a dragon named Earth is what they make becomes is the image of what they make."
+    },
+    {
+      "id": "CTD-0091",
+      "effect": "paydown preserved",
+      "note": "You are already standing in such a place, or one stone away from building it is rendered as Such a place may already be standing around you, or may be one stone away from being built. The baseline tells the reader where they are standing."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes, both appositive, rendered as commas."
+        },
+        {
+          "kind": "verified",
+          "note": "The three refrain lines Coherence is the current, Purpose is the pathway, and Providence is the loom are present verbatim and in order as display lines, and the protected line about a human life holding more capacity than it finds occasion to spend is present verbatim."
+        },
+        {
+          "kind": "restored",
+          "note": "The whole of it small enough to carry in one hand, the three-act line with its ordinals, the throne and empire refusal, the room and the few people and the responsibility no one will set down, and the closing address about why it was worth the building."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The protected line Coherence is the current. Purpose is the pathway. Providence is the loom. is declared as one quoted string. In both the baseline and the current source those are three separate display lines inside the Smallest Nest sequence, so the string as quoted has never appeared in the manuscript. All three sentences are present verbatim and in order. Running them together would destroy a protected display device, so the card's quotation is what needs correcting.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The chamber contains the volume's only case of a coda line that was thesis rather than performance, and the pass handled it correctly: it moved the content into the body before deleting the scaffold. The card then protected the rewritten sentence, which is why the re-render keeps the pass's wording here and the baseline's everywhere else in the chamber."
+  }
+}

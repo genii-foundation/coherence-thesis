@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-failure-looks-like-and-why-its-worth-risking",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What Failure Looks Like and Why It's Worth Risking**",
+  "currentHeading": "**Three Ways Providence Could Fail**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "co-optation",
+      "isomorphism",
+      "COINTELPRO",
+      "infiltration",
+      "failure",
+      "invitation",
+      "Volume V",
+      "dissent",
+      "immune system"
+    ],
+    "itemsRead": [
+      "CTD-0078",
+      "CTD-0034",
+      "CTD-0047",
+      "CTD-0072",
+      "CTD-0089",
+      "CTD-0075",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0078 requires that named scholarship not function as proof of feasibility, which governs the movement, institutional theory, and failure analysis lineages in this part. CTD-0034 tracks the Volume V encounter promise, which the invitation chapter makes and which the restoration keeps in conditional form. CTD-0047 records that Volume III's construction promise is only partly discharged in this volume, which the failure chapter's honesty serves rather than contradicts. CTD-0072 requires that nothing sound operational. The volume-04 voice card also names any account of dissent as infection among the known weak passages, which governs the immune system material in the adaptive power chapter."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's account of why its honesty is constitutive was removed.",
+      "evidence": {
+        "baseline": "This chapter is the most honest in the book. The honesty is not additional to the project of the book. It is constitutive of it. A book that describes the risks of the enterprise it is proposing without naming the risks of the enterprise itself would be a book operating in bad faith.",
+        "shipped": "(absent from the shipped chapter opening)"
+      },
+      "authorizedBy": "Compression, and catalog 4.23 read onto the self-description.",
+      "diagnosis": "The bad faith sentence is the chapter's licence: it explains why a book proposing an architecture must name its own failure modes, which is not obvious and which most such books do not do. 4.23's retention limb keeps a meta claim that changes how the reader should read what follows, and this one does exactly that.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The link back to Volumes III and IV's discipline was removed.",
+      "evidence": {
+        "baseline": "Volume III's intellectual discipline, carried through into Volume IV, requires naming what could go wrong with Providence as directly as it names what would have to go right.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the sentence that makes the failure chapter a requirement of the method rather than a gesture of humility. It also states the symmetry the chapter then keeps: three failure modes named as precisely as the architecture was.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0047",
+      "effect": "no change",
+      "note": "The chapter's honesty about what could go wrong does not bear on whether the construction promise is discharged."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash, parenthetical, which became a comma pair."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped label Three Ways Providence Could Fail, which holds the route. The label was not touched."
+        },
+        {
+          "kind": "restored",
+          "note": "The constitutive honesty argument, the bad faith sentence, and the discipline link."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The baseline label What Failure Looks Like and Why It's Worth Risking carries the chapter's two movements, and the current label Three Ways Providence Could Fail names only the first. The rename costs the reader the signal that the chapter turns, which is why the final section's label was also changed. The labels were not touched.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 132,
+    "shippedWords": 40,
+    "shippedDelta": -70
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Catalog 4.23 fired on a self-description that is genuinely load bearing, which by Part VI has happened often enough that the retention limb should be the default assumption in this volume whenever a meta claim states why a chapter exists."
+  }
+}

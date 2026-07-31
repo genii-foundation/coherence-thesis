@@ -3,7 +3,7 @@
   "sectionId": "v07-as-we-deepen-the-loves-beneath-the-path",
   "editorialId": "volume-07",
   "sectionHeading": "**As We Deepen — the Loves Beneath the Path**",
-  "currentHeading": "### As We Deepen: The Loves Beneath the Path",
+  "currentHeading": "### The Loves Beneath the Path",
   "status": "settled",
   "opened": "2026-07-30",
   "settled": "2026-07-30",
@@ -111,6 +111,10 @@
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
+    {
+      "id": "Q2",
+      "question": "Heading not changed. Baseline: As We Deepen, the Loves Beneath the Path. Current: The Loves Beneath the Path. As we deepen is the phrase that ties the section to the cumulative structure and to the table’s own column header, which still reads as we deepen. Restoring it would retire a public route."
+    },
     {
       "id": "Q1",
       "question": "CTD-0070 asks for the derivation of both the initiates and the loves. The restored table asserts a correspondence between seven Greek terms and seven thresholds. Nothing in the corpus shows where that correspondence came from."

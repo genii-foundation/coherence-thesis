@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §5 — The shape of the artifice, and the meaning of its name",
+  "currentHeading": "### The Meaning of the Title",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "misanthropic",
+      "artifice",
+      "etymology",
+      "built order"
+    ],
+    "itemsRead": [
+      "CTD-0048",
+      "CTD-0083",
+      "CTD-0093"
+    ],
+    "outcome": "CTD-0048 requires etymological claims to be verified, and the verification marker is kept. CTD-0083 requires the prologue and the ledger not to be fused into a causal proof, and the moral rather than causal link is kept."
+  },
+  "substitutionCheck": "Grepped. The etymologies require verification and The prologue and ledger should not be fused into one causal proof are absent from the baseline and are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The title’s meaning lost the shadow the whole book turns on.",
+      "evidence": {
+        "baseline": "The word keeps a useful shadow, too: an artifice is also a *trick,* a piece of cunning, something arranged to deceive. So a **misanthropic artifice** is a thing built, with enormous skill and often with real beauty, that operates against the people inside it, and whose deepest deception is to make itself look like nature.",
+        "shipped": "*Artifice* descends from Latin roots concerned with skill and making, and it can also suggest contrivance or deception."
+      },
+      "authorizedBy": "CTD-0048 on the etymology.",
+      "diagnosis": "The item asks for verification of the Greek and Latin roots. The definition the book builds from those roots is not an etymological claim and needed no hedging. Makes itself look like nature is the deception the title names and the sentence the volume’s hope depends on.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The hope inside the title was deleted.",
+      "evidence": {
+        "baseline": "That is the danger named in the title, and the hope hidden inside it: what was *built* can be *unbuilt.* The artifice is not the world. It only needs you to believe that it is.",
+        "shipped": "What was built can be changed."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "It only needs you to believe that it is names the mechanism of the resignation that the second address later asks the reader to refuse. Can be changed is true of anything.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F3",
+      "summary": "The catalog of what the artifice treats as raw material lost most of its terms.",
+      "evidence": {
+        "baseline": "a seam to be worked, a behavior to be predicted, a flow to be metered, a soil to be mined, a thirst to be sold back, a job to be absorbed, a genome to be auctioned, a desire to be served back as content",
+        "shipped": "behavior to predict, soil to mine, water to sell, labor to absorb, genomes to auction, and desire to meter"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 on the eight-term list.",
+      "diagnosis": "A small change with a real cost. Each baseline term is an index into a section of §2 or §3, seam to the genome, thirst to the water, and the list is the chapter map. Sold back and served back also carry the return the word extraction alone does not. The card lists seam among the volume’s signature diction.",
+      "producedRule": "R-REGISTER-DICTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0048",
+      "effect": "paydown preserved",
+      "note": "The etymological claim keeps its verification marker, now attached to the roots rather than to the argument they support."
+    },
+    {
+      "id": "CTD-0083",
+      "effect": "paydown preserved",
+      "note": "The prologue and the ledger are joined as a shared failure of regard at two scales, explicitly not as one causal chain."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes. Four set off appositive glosses on the Greek and Latin roots and became commas. Two introduced specifications and became colons."
+        },
+        {
+          "kind": "restored",
+          "note": "The full unfolding of both words, the trick shadow, the definition of a misanthropic artifice, the unbuilt hope, the eight-term catalog, and the machine does what it is built to do argument."
+        },
+        {
+          "kind": "kept",
+          "note": "The etymology marker, the structure rather than motive framing, and the refusal to fuse prologue and ledger."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. The baseline heading is \"§5 — The shape of the artifice, and the meaning of its name\" and the current heading is \"The Meaning of the Title\". The current heading names only the etymology, and the section is mostly about the shape of the built order rather than the words. The volume card lists sections 1 through 16 as a protected structural device, and the numbering is absent from the current headings. Renaming a heading mints and retires a public route, so the difference is recorded here rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

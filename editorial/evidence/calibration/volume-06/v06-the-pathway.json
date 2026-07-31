@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-pathway",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Pathway",
+  "currentHeading": "The Pathway",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Purposeful",
+      "pathway",
+      "verdict",
+      "three questions"
+    ],
+    "itemsRead": [
+      "CTD-0056",
+      "CTD-0072",
+      "CTD-0091"
+    ],
+    "outcome": "CTD-0056 and CTD-0072 require that Purposeful be described as proposed rather than operating. The baseline's present-tense it makes the answers visible is rendered as it would make. Invariant 5 of the semantic review, that purpose cannot be assigned but its conditions can be cultivated, is the baseline's own claim and is restored unchanged."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "182 words.",
+        "shipped": "143 words, of which 3 of 10 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 10 current sentences of six words or more, 3 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chamber's coda scaffold is not restored.",
+      "evidence": {
+        "baseline": "No one can hand you your purpose. ... That is why Purposeful is a pathway and never a verdict.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "The voice card's known weak passages, and the semantic review's record of the coda removal.",
+      "diagnosis": "Coda scaffold not restored. The baseline closes this chamber with a divider, two italic address lines, the isolated line That is why, and a fourth italic line beginning That is why. The Volume VI voice card lists any return of the repeated divider plus That is why coda among its known weak passages, and the semantic review records the pass's removal of the scaffold as a structural repair. The address lines also tell the reader what they have felt, waited for, or were made to become, which is the defect CTD-0091 was opened for and which the corpus card forbids outright. The scaffold is therefore left removed. Where a coda carried content rather than performance, that content is restored into the chamber body. The pathway and verdict distinction the fourth line states is already made in the chamber body, so nothing is lost by leaving the scaffold out.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The definition of purpose lost the world's quiet asking.",
+      "evidence": {
+        "baseline": "It is not a possession to be given but a relationship to be discovered, between who a person is becoming and what the world is quietly asking of them.",
+        "shipped": "Purpose is a relationship to be discovered between who a person is becoming and what a situation asks of them."
+      },
+      "authorizedBy": "Catalog 4.3, applied to the not X but Y shape, and 4.7 to the world quietly asking.",
+      "diagnosis": "Not a possession to be given is the refusal the chamber is built on and the retention limb of 4.3 applies, since a possession is what most accounts of purpose assume. Quietly asking is also the register the card protects, and a situation asks is the same relation with the world removed from it.",
+      "producedRule": "R-REGISTER-DICTION",
+      "id": "F3"
+    },
+    {
+      "summary": "The chamber's closing image, the ground discovered by walking, was flattened into a statement about action.",
+      "evidence": {
+        "baseline": "The path never tells you who you are. It is only the ground on which you discover it, walking.",
+        "shipped": "It would offer ground on which they could discover it through action."
+      },
+      "authorizedBy": "Catalog 4.16, applied to the second person.",
+      "diagnosis": "The card permits direct address as explicit invitation and this address assigns nothing; it tells the reader what the path will not do. Walking as a trailing participle is also the chamber's one piece of music, and through action is the abstraction that replaced it.",
+      "producedRule": "R-LAND",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0056",
+      "effect": "paydown preserved",
+      "note": "Purposeful is named as a proposed pathway and the three questions are described in the conditional."
+    },
+    {
+      "id": "CTD-0072",
+      "effect": "paydown preserved",
+      "note": "No program, platform, or delivery is reported."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. One appositive became a comma, and a paired set around the three questions was rebuilt so each question stands as its own sentence."
+        },
+        {
+          "kind": "restored",
+          "note": "The refusal of purpose as a possession, the world's quiet asking, the pathway and verdict distinction, people bending toward the same far thing, and the ground discovered by walking."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The chamber is the volume's cleanest example of R-REGISTER-DICTION: two generic near synonyms of equal precision, a situation and through action, in place of the world quietly asking and walking. Neither substitution is wrong and both are from nowhere."
+  }
+}

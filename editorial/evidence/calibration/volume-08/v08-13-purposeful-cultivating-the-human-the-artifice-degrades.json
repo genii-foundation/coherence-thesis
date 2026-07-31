@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-13-purposeful-cultivating-the-human-the-artifice-degrades",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §13 — PURPOSEFUL: cultivating the human the artifice degrades",
+  "currentHeading": "### PURPOSEFUL and Human Development",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "PURPOSEFUL",
+      "Seven Initiates",
+      "Master Human Arc",
+      "Doors",
+      "Art & Alchemy"
+    ],
+    "itemsRead": [
+      "CTD-0056",
+      "CTD-0085",
+      "CTD-0070",
+      "CTD-0083"
+    ],
+    "outcome": "CTD-0056 keeps the status of the Purposeful programme open, so the request for a dated inventory distinguishing active programmes from pilots is kept. CTD-0085 requires Art & Alchemy in the Seven Initiates list, and the display form is applied. CTD-0083 governs the return to the woman in the hot tub."
+  },
+  "substitutionCheck": "Grepped. The corpus still needs a dated inventory distinguishing active programs from pilots, designs, and aspirations and She should not be converted into a symbol of awakening are absent from the baseline. Both are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The account of how the artifice degrades people was cut to a statement about incentives.",
+      "evidence": {
+        "baseline": "It fragments attention, because fragmented attention is more predictable. It corrodes trust, because isolated people are easier to steer. It thins presence to a scroll, hollows intimacy into content, and trains the reflexes we met in the prologue.",
+        "shipped": "Systems that monetize prediction can profit from fragmented attention, isolation, and repeated engagement."
+      },
+      "authorizedBy": "Compression, and catalog 4.9 plausibly applied to the three parallel because clauses.",
+      "diagnosis": "Each because clause supplies the motive, which is the difference between a system that happens to fragment attention and one that benefits from doing so. That difference is the section’s whole claim. The pass’s qualification, that no single platform explains the condition, is a fair correction and is kept.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The contrast that names the two projects was deleted.",
+      "evidence": {
+        "baseline": "the artifice cultivates a person it can predict; PURPOSEFUL cultivates a person who can be present. One needs you smaller; the other needs you whole.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.3 and 4.4 on the mirrored pair.",
+      "diagnosis": "Both limbs of the contrast are plausible and the distinction is the section title. One needs you smaller is also the volume’s shortest statement of what extraction does to a person, and it is what makes PURPOSEFUL a response rather than an unrelated programme.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The return to the woman in the hot tub lost the point of the return.",
+      "evidence": {
+        "baseline": "She was a person carrying the whole audit alone, without the roots that let a human bear that weight without breaking, and without a room willing to bear any of it with her. PURPOSEFUL exists so that the ones who feel the weight are not left to carry it by themselves until they become the thing the sauna mocked.",
+        "shipped": "The woman in the hot tub needed a room able to listen without romanticizing her distress or treating it as proof of doctrine."
+      },
+      "authorizedBy": "CTD-0083, and the correct concern that she not be made a symbol.",
+      "diagnosis": "The correction is right and is kept. But until they become the thing the sauna mocked is the sentence that explains why the prologue is in an academic volume, and it is a claim about a social condition rather than about her interior life, which is precisely what the item asked for.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0056",
+      "effect": "paydown preserved",
+      "note": "The request for a dated inventory distinguishing active programmes from pilots, designs, and aspirations is kept."
+    },
+    {
+      "id": "CTD-0085",
+      "effect": "paydown preserved",
+      "note": "Art & Alchemy in the Seven Initiates list."
+    },
+    {
+      "id": "CTD-0083",
+      "effect": "paydown preserved",
+      "note": "The woman is not converted into a symbol of awakening, and the sentence saying so is kept alongside the restored account of what she lacked."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes. Three set off appositive glosses on the acronym and the arc and became commas. Two introduced specifications and became colons. One separated a second movement and became a period."
+        },
+        {
+          "kind": "applied",
+          "note": "The artifice needs a diminished human, and so it manufactures one softened to an order that profits from prediction has a standing interest in a diminished human, which keeps the claim and drops the intention it could not establish."
+        },
+        {
+          "kind": "restored",
+          "note": "The three degradations with their motives, the roots and flower figure, the Master Human Arc, the predict and present contrast, the single line relating the two halves, and the return to the woman."
+        },
+        {
+          "kind": "kept",
+          "note": "The single platform qualification, the dated inventory request, the deferral of the Seven Initiates and their safeguards to Volume VII, and the refusal to sort people into the awakened and the collapsed."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §13, PURPOSEFUL: cultivating the human the artifice degrades. Current: PURPOSEFUL and Human Development. The rename removes the relation between the two halves of the volume. Cultivating the human the artifice degrades states why this section follows the audit; the current heading states only its topic. The volume card lists sections 1 through 16 as a protected structural device and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

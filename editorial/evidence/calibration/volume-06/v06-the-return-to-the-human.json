@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-return-to-the-human",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Return to the Human",
+  "currentHeading": "The Return to the Human",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "most wasted resource",
+      "natural size",
+      "a hundred and fifty",
+      "ICONS",
+      "Scale",
+      "Providence"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0036",
+      "CTD-0076",
+      "CTD-0080",
+      "CTD-0072"
+    ],
+    "outcome": "Four recorded decisions reach this summary. The ranking and the plain accounting of unrealised potential are bounded; roughly a hundred and fifty becomes a provisional design scale rather than a natural size; the acronym is applied to the plural network with Scale as the singular; and Providence remains a proposal. All four are kept, and the summary's argument is restored around them."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "295 words.",
+        "shipped": "343 words, of which 0 of 11 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 11 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The four ascents and the thing the work had been circling were replaced by a list.",
+      "evidence": {
+        "baseline": "After four ascents, through substrate and intelligence and architecture and engineering, it returned to the single human life on which every abstraction is finally tested, and there it found the thing the whole work had been circling all along.",
+        "shipped": "After four ascents through substrate, intelligence, architecture, and engineering, it returned to the human life on which every abstraction is tested."
+      },
+      "authorizedBy": "Catalog 4.4 and 4.22, applied to the polysyndeton.",
+      "diagnosis": "The repeated and slows the sentence across the four volumes it is summarising, which is the descent the paragraph is describing. The single human life is also more exact than the human life, and the clause about what the work had been circling is the summary's reason for existing.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The account of the waste lost its three cases.",
+      "evidence": {
+        "baseline": "the inventors who never invented, the healers who never healed, the gifts that died unspent for want of anywhere to be given.",
+        "shipped": "inventions, care, teaching, and other gifts that never find conditions in which to emerge."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "The three cases name people; the four nouns name outputs. Died unspent for want of anywhere to be given is also the phrase that connects this summary to chamber III, and the card lists the unspent gift among the volume's signature images.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "Recognition lost the seamstress and the definition.",
+      "evidence": {
+        "baseline": "It recovered the lost art of recognition, the seamstress's gift, the bare ability to see what a person is for, and called it the gift our civilization squanders most completely of all.",
+        "shipped": "The seamstress at the volume's center embodies recognition, the ability to notice a capacity before it has become an achievement."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The bare ability to see what a person is for is the volume's own definition and squanders most completely of all is its claim about the cost. The shipped sentence imports Volume V's corrected definition, which is correct there and is not what this summary was saying.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0079",
+      "effect": "restoration bounded",
+      "note": "Human potential is the most wasted resource on Earth becomes may be, and in plain accounting becomes as a loss we have never learned to count, which keeps the claim and removes the assertion that the accounting exists."
+    },
+    {
+      "id": "CTD-0036",
+      "effect": "paydown preserved",
+      "note": "Such company has a natural size is rendered as has a size, which this series provisionally places near a hundred and fifty, followed by a statement that the figure is a design scale rather than a law and that the evidence and the nesting model remain open."
+    },
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "The baseline applies Individual Communities Observing Natural Sovereignty to the communities themselves. The corrected form is kept: each sovereign community is a Scale and the plural network is ICONS."
+    },
+    {
+      "id": "CTD-0072",
+      "effect": "paydown preserved",
+      "note": "Providence is named as the proposed coordinating system."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes, three of them paired around appositives. All were rebuilt with commas or sentence breaks, and the population appositive was split so the bound could follow the figure in its own sentence."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS across four items, each bounded inside a restored sentence."
+        },
+        {
+          "kind": "restored",
+          "note": "The four ascents, the single human life, the three cases of waste, the discovery rather than assignment of purpose, the seamstress's gift and its definition, the company that ripens us, the scale at which we are known and missed and held to our word, Providence and its inversion, and the person standing in a small room deciding whether to build."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The summary is 16 percent longer than the baseline, entirely because of the population bound and the Scale and ICONS correction. Part Two is meant to be the five volumes with a little more room to breathe, and the room is now partly occupied by canon maintenance.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section carries more ledger weight per word than anything else in Volume VI, and the useful observation is that all four items govern nouns and numbers. None of them touched the four ascents, the three cases of waste, or the seamstress, which are what the pass removed."
+  }
+}

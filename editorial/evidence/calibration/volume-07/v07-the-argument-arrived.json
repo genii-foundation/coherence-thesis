@@ -4,7 +4,7 @@
   "editorialId": "volume-07",
   "sectionHeading": "**The Argument, Arrived**",
   "currentHeading": "## Part I: The Argument, Arrived",
-  "status": "settled",
+  "status": "open",
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
@@ -109,8 +109,12 @@
           "note": "The prior pass sentence naming Volume IX, which the baseline defers to Part II. It costs one sentence and completes the forward look."
         },
         {
-          "kind": "restored",
-          "note": "The opening image, all six volume paragraphs, the Saturn account, the counterweight reasoning, and the hinge close."
+          "kind": "blocked",
+          "note": "Not restored. The opening image, all six volume paragraphs, the Saturn account, the counterweight reasoning, and the hinge close. All of it remains in the baseline region reproduced in the open questions."
+        },
+        {
+          "kind": "verified",
+          "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
         }
       ]
     }
@@ -118,6 +122,10 @@
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
+    {
+      "id": "QS",
+      "question": "Structural restoration blocked on route adjudication. This section is a chapter-start region: its prose sits between a part or container label and the first chapter heading beneath it, and text in that position compiles into a section with its own public route. Expanding it revives or reshapes a retired route, which is a continuity decision rather than an editorial one. The prose is therefore left exactly as it stood and the findings below describe what the prior pass removed rather than what this pass restored. The baseline text for this region is reproduced verbatim below so the author can restore it in one edit once the route decision is made. Punctuation repair under R-PUNCT-STRUCT is still required on it, and every ledger constraint named in this record still applies to it.\n\nBASELINE TEXT:\n\n*What the Volumes Have Done, and What the Eighth Will Do*\n\nThere comes a point in any patient work when the argument, having been carried forward piece by piece, turns and regards itself — and finds that it was never a sequence of claims but a single living thing, growing. We have arrived at that point. Before we set down the praxis that is this volume’s burden, let us name plainly what each volume has done, and what the one still to come will do; for the naming is itself the first act of the work that follows.\n\nIn the first volume we laid the ground. We argued that any civilization which means to outlast its own appetites must rest upon a coherent substrate rather than an extractive one — that coherence, and not consumption, is the only foundation which does not in the end devour itself.\n\nIn the second we turned to the space between things, and found there the thing itself: intelligence — not the property of any single mind, but the pattern that connects, the relatedness in which meaning is born.\n\nIn the third we let the idea expand, and did not hurry it — allowing coherence to range and to ramify, to find the full reach of its own implication without losing its center.\n\nIn the fourth we gave that expansion a structure to be built within, for growth without form dissipates, and the most generous idea still needs walls if anything is to be raised inside it.\n\nIn the fifth we returned the whole measure to the human — bringing the argument home to the one who must live it, not a principle in the abstract but a person in a body, on a morning, with a life to conduct.\n\nAnd in the sixth we did the quietest and hardest thing of all: we reduced it. We pressed everything we had built toward its simplest, most elegant form, paring until what remained was not only true but beautiful — for elegance is only truth with all waste removed, and the whole, so pared, could at last be held in a single hand.\n\nThe seventh volume — this one — is the praxis. Having argued for coherence, structured it, humanized it, and made it elegant, it asks the only question that finally matters: how is it lived, and how is it taught? Here the thesis stops describing coherence and undertakes to become it — in a body, by a person, among others. A coherent substrate becomes a coherent, sovereign being; and many sovereign beings, gathered, become the beginning of a coherent civilization.\n\nAnd the eighth, which is still to come, carries Saturn. Where the seventh is spirit and luminosity, the eighth is the turn to the hard facts — the descent into the darkness, and the long labor of accounting. Saturn is the lord of limits and of time, the keeper of boundaries and the weigher of what is owed; and the eighth volume will do the work he asks of any honest endeavor: to stop, to reckon, to take the measure of what has been built and of what it has cost, and to render the accounts that spirit alone is always tempted to skip. It is the sober counterweight to this volume’s ardor — for a civilization is made durable not by inspiration but by what it is willing to face in the dark, and by the discipline of building within real and unforgiving constraint. We name it now only to mark the shape of the whole, and to say plainly what this volume is: the hinge between the inward work of becoming and the outward work of building.\n\n***Within the Coherence Thesis.   ****the seventh volume is the turning point — the place where a long argument about what a civilization should be made of becomes a practice for how such a civilization is actually grown, one developed person and one coherent relationship at a time. Everything that follows serves that single end.*"
+    },
     {
       "id": "Q1",
       "question": "The restored text says the eighth volume will render accounts that spirit alone is always tempted to skip. That is a claim about the seventh volume as much as the eighth. Does the author want it in Volume VII’s own voice, or moved into Volume VIII?"
@@ -128,5 +136,10 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The case worth keeping is the Saturn finding: a ledger item that forbids a use of a figure was read by the prior pass as forbidding the figure, which cost the section its argument for why Volume VIII exists."
+  },
+  "structuralHold": {
+    "kind": "chapter-start region",
+    "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
+    "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
   }
 }

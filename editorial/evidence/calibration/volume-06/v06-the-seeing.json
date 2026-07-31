@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-seeing",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Seeing",
+  "currentHeading": "The Seeing",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "seamstress",
+      "recognition",
+      "thirty days",
+      "most people"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0091",
+      "CTD-0079"
+    ],
+    "outcome": "No recorded decision names a claim in this chamber. Most people are never seen that way at all is the kind of universal CTD-0080 asks to be revised where it cannot be earned, and is bounded to many. The seamstress scene is Volume V's Donna, treated here as the series' composite, and the chamber makes no claim about her as fact."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "302 words.",
+        "shipped": "244 words, of which 0 of 10 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 10 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chamber's coda scaffold is not restored.",
+      "evidence": {
+        "baseline": "You have waited, perhaps your whole life, to be seen for what you are.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "The voice card's known weak passages, and the semantic review's record of the coda removal.",
+      "diagnosis": "Coda scaffold not restored. The baseline closes this chamber with a divider, two italic address lines, the isolated line That is why, and a fourth italic line beginning That is why. The Volume VI voice card lists any return of the repeated divider plus That is why coda among its known weak passages, and the semantic review records the pass's removal of the scaffold as a structural repair. The address lines also tell the reader what they have felt, waited for, or were made to become, which is the defect CTD-0091 was opened for and which the corpus card forbids outright. The scaffold is therefore left removed. Where a coda carried content rather than performance, that content is restored into the chamber body. This coda's first line is the single clearest instance in the volume of telling a reader what they have felt and waited for, and it is quoted in CTD-0091's evidence.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The chamber's long central sentence, which is the volume's argument for why recognition needs infrastructure, was cut to a clause.",
+      "evidence": {
+        "baseline": "Had such recognition been a thing that happened often, woven into the ordinary running of a society, carried forward by continual coordination until a gift glimpsed in a child could be matched, again and again, to the mentors and companions and work that would ripen it, he might have understood it in thirty days.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.19, mechanical cadence, and compression.",
+      "diagnosis": "The card's cadence override is brief declaratives followed by a single widening sentence, and this is the widening sentence of the entire chamber. Thirty years against thirty days is the chamber's whole point, and the shipped version keeps the thirty years and never states the alternative.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The seed on stone was removed.",
+      "evidence": {
+        "baseline": "A gift named in a world with nowhere to take it is a seed dropped on stone; thirty years had to pass, and a whole life had to bend, before the saying could find its soil.",
+        "shipped": "The seed had been named, but it had not yet found soil."
+      },
+      "authorizedBy": "Catalog 4.18, overexplained metaphor.",
+      "diagnosis": "The card names seed and soil among the recurring motifs. Dropped on stone is where the image acquires its cost, and a whole life had to bend is the only place the chamber says what the waiting did to the person waiting.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0080",
+      "effect": "restoration bounded",
+      "note": "Most people are never seen that way at all is rendered as many people, since the chamber offers no basis for the universal."
+    },
+    {
+      "id": "CTD-0079",
+      "effect": "consistent with Volume V",
+      "note": "The seamstress is used as the series' composite figure. No claim is made here that she is a person reported as fact."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. One became a period so the absence of coordination could be stated as its own claim, a paired set around the long conditional became commas, and one became a period before the second reason."
+        },
+        {
+          "kind": "restored",
+          "note": "The reason the child could not understand, the absent fabric of coordination, the seed dropped on stone, the whole life that had to bend, the thirty days sentence, and the two reasons a gift stays invisible."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This chamber lost the highest proportion of its words of any in Part One, 59 percent, and the loss is one sentence. The volume's cadence override asks for a single widening sentence after the declaratives, and the pass removed the widening sentence from the chamber that most needed it."
+  }
+}

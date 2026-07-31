@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-dragon",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Dragon",
+  "currentHeading": "The Dragon",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "dragon",
+      "planetary awareness",
+      "East",
+      "B.O.W.",
+      "Seven Initiates",
+      "Art & Alchemy"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0082",
+      "CTD-0085",
+      "CTD-0070",
+      "CTD-0069"
+    ],
+    "outcome": "Three recorded decisions reach this chamber. The dragon becomes image, open metaphysical proposition, and social supposition rather than a claim of one planetary awareness; the cultural lineage is attributed to East Asian traditions with the borrowing named as symbolic and incomplete; and B.O.W. and Art & Alchemy follow the master ledger's current forms under CTD-0085. All three are kept. CTD-0070 tracks the Seven Initiates lineage and remains open."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "518 words.",
+        "shipped": "493 words, of which 1 of 21 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 21 current sentences of six words or more, 1 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chamber's coda scaffold is not restored, and its last two lines carried the Seven Initiates.",
+      "evidence": {
+        "baseline": "A pleasure composed of our listening, our intimacy, our balance, our art and alchemy, our embodiment, our worship, our providence: the Seven Initiates of a BOW, a Body of Worship, whom the volumes still to come will teach us to know more deeply.",
+        "shipped": "That responsibility may be practiced through listening, intimacy, balance, Art & Alchemy, embodiment, worship, and providence. These are the Seven Initiates of a B.O.W., a Body of Worship."
+      },
+      "authorizedBy": "The voice card's known weak passages, and the semantic review's record of the coda removal.",
+      "diagnosis": "Coda scaffold not restored. The baseline closes this chamber with a divider, two italic address lines, the isolated line That is why, and a fourth italic line beginning That is why. The Volume VI voice card lists any return of the repeated divider plus That is why coda among its known weak passages, and the semantic review records the pass's removal of the scaffold as a structural repair. The address lines also tell the reader what they have felt, waited for, or were made to become, which is the defect CTD-0091 was opened for and which the corpus card forbids outright. The scaffold is therefore left removed. Where a coda carried content rather than performance, that content is restored into the chamber body. The final two lines are content rather than performance, so the Seven Initiates are restored into the chamber body with the possessive our and the canonical B.O.W. and Art & Alchemy forms.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The dragon's plain naming, the passage the chamber is built to reach, was replaced with a description of what the image asks.",
+      "evidence": {
+        "baseline": "Name it plainly, then. The dragon is the whole living body of Earth grown aware of itself, the total life of the planet, its oceans and forests and creatures and minds, gathered into a single awareness; and we, for now, are the place where that awareness is beginning to wake.",
+        "shipped": "The dragon names the living body of Earth imagined as becoming more aware of itself. Oceans, forests, creatures, and minds do not literally merge into one demonstrated consciousness in this account."
+      },
+      "authorizedBy": "The recorded correction of the dragon's evidentiary status.",
+      "diagnosis": "The correction required the status to be explicit. It did not require the image to be stated in the negative. The card lists the dragon as many scales held in one living image among the images that must not be explained away, and a sentence about what does not literally merge is an explanation standing where the image was.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The ground changing underfoot was cut.",
+      "evidence": {
+        "baseline": "To sense even a thread of it is to feel the ground change underfoot, to walk not upon dead matter but upon a living, thriving being, one that can be felt, and aligned with, and in time perhaps even spoken with, as we grow quiet and sensitive enough to listen.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.7 applied to the sensing claim.",
+      "diagnosis": "This is the only sentence in the volume that describes what the dragon would feel like rather than what it would mean, and the card's read-aloud qualities name the final quiet naming of awareness. Perhaps was added to spoken with; nothing else needed changing.",
+      "producedRule": "R-CADENCE",
+      "id": "F4"
+    },
+    {
+      "summary": "The supposition lost the presencing that makes it testable.",
+      "evidence": {
+        "baseline": "Suppose that human beings came, in great numbers, into their purpose and into the capacity to call forth the best in one another, to presence, in each other, the depth that ordinarily goes a whole life unseen. Then the dragon would stir. The Earth would begin to think more clearly through us, because we would have become clearer instruments of it.",
+        "shipped": "If many people became better able to recognize and develop one another's capacities, collective decisions might become more responsive to the living systems they affect."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Then the dragon would stir is the sentence that joins the image to the social claim, which the semantic review itself identifies as the correct treatment. Clearer instruments of it is the chamber's answer to the objection that the dragon requires a separate mind, and the shipped version removes both while keeping the conditional.",
+      "producedRule": "R-PROPORTION",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0080",
+      "effect": "paydown preserved",
+      "note": "The image is restored at full strength and its status is stated once, in the paragraph that already anticipates the objection: whether it names a fact about the world or a way of standing in it is left open. The social supposition is restored as a supposition with a method, which is the baseline's own framing."
+    },
+    {
+      "id": "CTD-0082",
+      "effect": "paydown preserved",
+      "note": "In the East it was understood rightly becomes In East Asian traditions the dragon is a benevolent power, and the borrowing is named as symbolic rather than a complete account."
+    },
+    {
+      "id": "CTD-0085",
+      "effect": "paydown preserved",
+      "note": "B.O.W. and Art & Alchemy use the master ledger's current forms against the baseline's BOW and art and alchemy. The item records the display convention as an open author decision."
+    },
+    {
+      "id": "CTD-0070",
+      "effect": "not resolved",
+      "note": "The Seven Initiates are restored as a forward reference. Their lineage remains untracked."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes. Four became commas around appositive material, three were rebuilt where a paired set enclosed a definition, and one became a comma before the closing list."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS across three items. The dragon's status is carried by one sentence rather than by negating the image."
+        },
+        {
+          "kind": "restored",
+          "note": "The empire and hierarchy refusals, the planet beginning to think, the rain and river and spring, the plain naming of the dragon, the ground changing underfoot, the supposition with its presencing, the four refusals of mastery, and the Seven Initiates with their possessives."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The image now stands unhedged and its status is stated once, a paragraph later. That is the treatment the card requires and it means the sentence about the total life of the planet gathered into a single awareness is on the page without qualification attached to it. Whether a compressed volume can carry the status that far from the claim is the author's judgment.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The chamber repeats the finding from Volume V's Dragon Named Earth, and repetition across two volumes makes it a pattern rather than a local misjudgment: the prior pass met an evidentiary-status item by negating the image, which satisfied the item and destroyed the figure. Stating the status once, adjacent to the claim, satisfies the same item and leaves the image standing."
+  }
+}

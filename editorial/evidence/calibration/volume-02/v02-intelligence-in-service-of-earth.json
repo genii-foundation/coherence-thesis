@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-intelligence-in-service-of-earth",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Earth as Substrate**",
+  "currentHeading": "**Intelligence in Service of Earth**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries under import-markdown.ts.",
+    "action": "No label altered. Left exactly as it stands.",
+    "result": "Label unchanged. Route intact."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "A parallel pattern appears in AI-based biodiversity",
+      "For the book's argument, the central question",
+      "Here, intelligence serves stewardship"
+    ],
+    "result": "None appears in the baseline. The third is the clearest substitution: the baseline's The pattern is one of intelligence serving stewardship rather than extraction names a pattern the section has been building, and Here, intelligence serves stewardship reports a local fact."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "NCEAS",
+      "250 active digital systems",
+      "six percent",
+      "eighty percent",
+      "Indigenous",
+      "COP16",
+      "Goa",
+      "Indian Himalayas"
+    ],
+    "itemsRead": [
+      "CTD-0019",
+      "CTD-0069",
+      "CTD-0013"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0019 names ecological monitoring and Indigenous stewardship among the claims requiring primary sourcing and qualified cultural review, and the six percent and eighty percent figures are exactly the kind it flags. Both are identical in each text and are restored unchanged. CTD-0069 concerns Indigenous intellectual lineage across the corpus; this section credits Indigenous governance structures and knowledge in both texts, and the restoration returns the baseline's fuller phrasing, on terms set by Indigenous governance structures rather than by external developers, which names the alternative being refused. Nothing here resolves either item."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's governing observation was demoted from a pattern to a local instance.",
+      "evidence": {
+        "baseline": "The pattern is one of intelligence serving stewardship rather than extraction [mark] the same data infrastructure that extractive industries use to optimize resource removal being repurposed for the opposite work.",
+        "shipped": "Here, intelligence serves stewardship rather than extraction. Data infrastructure that extractive industries use to optimize resource removal is being repurposed for the opposite work."
+      },
+      "authorizedBy": "Compression and a punctuation repair made by splitting.",
+      "diagnosis": "The pattern is one of names a general shape the section has been assembling from three examples, which is what a section built on evidence is for. Here, intelligence serves confines the claim to the projects just named. The appositive is also the sentence's proof: the same data infrastructure, repurposed, is why the pattern counts as evidence for the substrate principle, and split off with a new subject it becomes an additional observation. The same in the same data infrastructure is what carries the identity.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The framing of the section's central question was rewritten and the narrator's stance removed.",
+      "evidence": {
+        "baseline": "What is most interesting about this field, from the perspective of the argument the book has been making, is the question of whose intelligence the systems serve.",
+        "shipped": "For the book's argument, the central question in this field is whose intelligence these systems serve."
+      },
+      "authorizedBy": "Catalog 4.23 read onto the argument the book has been making.",
+      "diagnosis": "What is most interesting is a judgment the narrator makes and owns, and the volume card sets the stance as first person editorial witness joined to philosophical diagnosis. The central question in this field asserts that the field itself has a central question, which is a claim about the field rather than about the book's interest in it. From the perspective of the argument the book has been making is also genuine wayfinding, which 4.23's retention limb preserves in a long philosophical work, because it tells the reader which of several possible interests is being applied.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "Six precisions removed, including two that bound empirical claims.",
+      "evidence": {
+        "baseline": "A parallel pattern is visible in the work being done with AI for biodiversity monitoring ... catalogued over 250 active digital systems ... The technical capability is moving faster than the institutional capacity ... noted that taxonomic gaps remain severe ... on terms set by Indigenous governance structures rather than by external developers ... This is fragile and uneven ... But the existence of genuinely people-centric deployments demonstrates",
+        "shipped": "A parallel pattern appears in AI-based biodiversity monitoring ... catalogued more than 250 active digital systems ... Technical capability is advancing faster than the institutional capacity ... noted severe taxonomic gaps ... rather than external developers ... This work is fragile and uneven ... Yet genuinely people-centered deployments demonstrate"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The work being done with AI for biodiversity monitoring names human labour; AI-based biodiversity monitoring names a technique. Noted that taxonomic gaps remain severe reports what a study said and keeps remain, which is the temporal claim; noted severe taxonomic gaps makes the gaps a finding the study observed once. Rather than by external developers preserves the agent in the rejected alternative, which is the sentence's political content. And the existence of genuinely people-centric deployments demonstrates is careful: it is the existence of the counterexample that does the demonstrating, not the deployments themselves.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "The NCEAS assessment, the count of over 250 systems, and the six percent and eighty percent figures are identical in both texts and remain unsourced. The re-render restores over against more than, which is the baseline's wording for the same quantity."
+    },
+    {
+      "id": "CTD-0069",
+      "effect": "unchanged, phrasing restored",
+      "note": "On terms set by Indigenous governance structures rather than by external developers is restored with its second by. The item asks for qualified cultural and Indigenous-governance review of the corpus's treatment of this material. Nothing here resolves it."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three prohibited marks. One introduced the enumeration of monitoring systems and became a colon; the pass had made that repair and it stands, with the baseline's asyndeton restored. One pair enclosed the taxonomic caveat inside a that-clause and became a comma pair, which keeps the sentence's two parallel that-clauses intact. One introduced the appositive proving the stewardship pattern and became a colon."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. Left exactly as it stands."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's colon in the monitoring enumeration, and the whole COP16 and Goa sentence, which it changed only in a hyphen."
+        },
+        {
+          "kind": "restored",
+          "note": "The pattern-naming sentence with its appositive and its same, the narrator's framing of the central question, the asyndeton in the monitoring list, and six precisions including over, remain, by external developers, and the existence of."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to Earth as Substrate?",
+      "context": "The baseline heading uses the volume's canonical term and states the section's claim, that Earth is the substrate intelligence is being applied to. The current heading, Intelligence in Service of Earth, mirrors the chapter heading and the neighbouring section, so three consecutive labels now open on the same phrase. Not changed here; the label is a route.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Do the Indigenous stewardship figures need sourcing and review before publication?",
+      "context": "Six percent of the global population and eighty percent of remaining terrestrial biodiversity are restored unchanged. CTD-0019 requires qualified cultural and Indigenous-governance review, and CTD-0069 tracks the corpus's treatment of Indigenous intellectual lineage more broadly.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, both voice cards, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 is the useful case. The pass removed a wayfinding clause under catalog 4.23, and 4.23's retention limb explicitly preserves genuine wayfinding in a long philosophical work. The clause was not announcing what the chapter would do; it was telling the reader which of several available interests the narrator was applying to a body of external evidence, which is exactly the distinction the category draws."
+  }
+}

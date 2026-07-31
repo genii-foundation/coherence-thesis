@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-6-the-three-roads-otherwise",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §6 — The three roads otherwise",
+  "currentHeading": "### Three Dangers",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "totalitarianism",
+      "technofeudalism",
+      "Varoufakis",
+      "Zuboff",
+      "surveillance capitalism"
+    ],
+    "itemsRead": [
+      "CTD-0048",
+      "CTD-0093"
+    ],
+    "outcome": "CTD-0048 covers the attributions to Varoufakis and Zuboff, which are unchanged and correct as far as they go. No item governs the argument."
+  },
+  "substitutionCheck": "Grepped. The analogy can overreach and Ownership, law, and institutional limits determine whether the same technical system serves convenience, extraction, or force are absent from the baseline. Both are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The manor lost the detail that makes it recognizable.",
+      "evidence": {
+        "baseline": "You rent the song, the tool, the seed, the software on your own counter, the rent never ends, and the landlord may revoke it while you sleep ... The genius of it is that it feels like *convenience,* which is how a toll on existence is meant to feel if it intends to last.",
+        "shipped": "a remote owner may revoke a song, tool, seed license, or piece of software a person depends on"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The software on your own counter is the image, and it feels like convenience is the diagnosis. The card names manor among the volume’s signature diction and the platform as manor among its signature metaphors. The pass’s note that the analogy can overreach is a real qualification and is kept.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The watching market lost its closing line.",
+      "evidence": {
+        "baseline": "You are not the customer. You are the deposit being worked.",
+        "shipped": "Attention, hesitation, and late-night searches become inputs to products whose operation the person rarely sees."
+      },
+      "authorizedBy": "Compression, and catalog 4.3 on the not X but Y pair.",
+      "diagnosis": "Both limbs are plausible and the reversal is the point: the reader almost certainly believes they are the customer. The deposit being worked also ties back to seam, which the card lists among the volume’s signature diction.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The convergence argument lost its mechanism.",
+      "evidence": {
+        "baseline": "the watching market builds the apparatus, the manor monetizes it, and the hard cage waits, knowing a population already mapped and metered can be *closed* at any time by whoever holds the controls. The infrastructure of soft domination and of hard domination is the *same infrastructure.*",
+        "shipped": "These dangers can converge. Markets build surveillance infrastructure, rent-based platforms monetize dependence, and governments may acquire or compel access."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Already mapped and metered can be closed at any time is the sentence that makes the three roads one danger rather than three, and it prefigures §11’s claim that the same tools serve either god. The shipped version keeps the sequence and drops the conclusion.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Seven em dashes. Three introduced definitions after a bolded label and became colons. Two set off appositives and became commas. Two separated second movements and became periods."
+        },
+        {
+          "kind": "restored",
+          "note": "The friendlier clothing of the newer cage, the full manor with its counter and its convenience, the deposit being worked, and the convergence with its closing mechanism."
+        },
+        {
+          "kind": "kept",
+          "note": "The overreach caution on the feudal analogy and the sentence on what actually decides which way the infrastructure is used."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. The baseline heading is \"§6 — The three roads otherwise\" and the current heading is \"Three Dangers\". Otherwise is the load bearing word: the baseline heading frames the three as the alternatives to Coherence, and the current heading frames them as hazards. The volume card lists sections 1 through 16 as a protected structural device, and the numbering is absent from the current headings. Renaming a heading mints and retires a public route, so the difference is recorded here rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

@@ -3,7 +3,7 @@
   "sectionId": "v07-why-the-mentor-group-is-the-leveraged-act",
   "editorialId": "volume-07",
   "sectionHeading": "***Why the Mentor Group Is the Leveraged Act***",
-  "currentHeading": "### Why the Mentor Group Is the Leveraged Act",
+  "currentHeading": "### Why Mentors Come First",
   "status": "settled",
   "opened": "2026-07-30",
   "settled": "2026-07-30",
@@ -33,13 +33,13 @@
   "findings": [
     {
       "id": "F1",
-      "summary": "The heading was changed from a claim to a schedule.",
+      "summary": "The heading was changed from a claim to a schedule. The heading is left as it stands and the difference is recorded.",
       "evidence": {
         "baseline": "Why the Mentor Group Is the Leveraged Act",
         "shipped": "Why Mentors Come First"
       },
       "authorizedBy": "Section 8, heading and identity test.",
-      "diagnosis": "Come first states the order of operations. The leveraged act states why, which is the section’s entire content. Section 8 permits improving a weak heading, but this replacement is weaker: it removes the claim and keeps the sequence. The baseline heading is restored, and the section id it produces is the one the damage report already tracks.",
+      "diagnosis": "Come first states the order of operations. The leveraged act states why, which is the section’s entire content. Section 8 permits improving a weak heading, but this replacement is weaker: it removes the claim and keeps the sequence. The heading is not changed here, because a heading determines a section id and a section id is a public route with recorded aliases. The claim the heading dropped is restored inside the prose instead.",
       "producedRule": "R-LAND"
     },
     {
@@ -89,7 +89,7 @@
         },
         {
           "kind": "restored",
-          "note": "The baseline heading, the leveraged act claim, the enumeration of what a mentor group can do, the bottleneck premise, and the institutions consequence."
+          "note": "The leveraged act claim, the enumeration of what a mentor group can do, the bottleneck premise, and the institutions consequence. The heading is untouched."
         },
         {
           "kind": "kept",
@@ -103,7 +103,7 @@
   "openQuestions": [
     {
       "id": "Q1",
-      "question": "The baseline heading is restored, which changes the section slug from why-mentors-come-first back to why-the-mentor-group-is-the-leveraged-act. Route continuity was not re-run in this session and should be verified before merge."
+      "question": "Heading not changed. Baseline: Why the Mentor Group Is the Leveraged Act. Current: Why Mentors Come First. The rename costs the section its claim and keeps only its position in the sequence, so a reader meets a schedule where the baseline gave a reason. Changing it back would retire the why-mentors-come-first route, which is a continuity decision rather than an editorial one."
     }
   ],
   "regenerationTest": {

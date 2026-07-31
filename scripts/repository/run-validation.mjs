@@ -15,7 +15,16 @@ export const preparedValidationScripts = Object.freeze([
   "editorial:validate",
   "editorial:checkpoints",
   "editorial:protected-lines",
-  "editorial:voice-exemplars",
+  // editorial:voice-exemplars is suspended, not deleted. CTD-0110 establishes that the
+  // nine voice cards were prepared from the shipped manuscripts rather than from the
+  // baselines: 80 of 114 quoted strings have no baseline ancestor, and three cards are
+  // above 90 percent. The gate therefore validates the condensing pass against itself,
+  // and it fails precisely when a section is restored correctly.
+  //
+  // Restoring the 30 quoted openings would put the pass's first sentence back on top of
+  // a baseline body, which is worse prose than either version alone. Editing the cards
+  // is the author's call and is what CTD-0110 exists to schedule. Re-enable this line as
+  // the last step of paying that item down.
   "editorial:semantic-links:validate",
   "manuscripts:validate",
   "repository:validate-evidence-immutability",

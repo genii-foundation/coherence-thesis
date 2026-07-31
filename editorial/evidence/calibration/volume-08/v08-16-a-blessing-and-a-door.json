@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-16-a-blessing-and-a-door",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §16 — A blessing, and a door",
+  "currentHeading": "### A Blessing and a Door",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Saturn’s gift",
+      "principal called income",
+      "Seven Initiates",
+      "Body of Worship",
+      "forward door"
+    ],
+    "itemsRead": [
+      "CTD-0049",
+      "CTD-0106",
+      "CTD-0085",
+      "CTD-0105"
+    ],
+    "outcome": "CTD-0049 and CTD-0106 C3 require the forward door to Volume VII to be restated as an acknowledged forward reference rather than a pending handoff, which the prior pass did in prose and which is kept. CTD-0085 requires Art & Alchemy in the list of Initiates. CTD-0105 forbids the bracketed production note the baseline ends the volume with."
+  },
+  "substitutionCheck": "Grepped. Volume IX asks what can be built from them and the sentence on one accountable practice after another are absent from the baseline. Both are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The refusal that opens the section lost the thing it refuses.",
+      "evidence": {
+        "baseline": "We did not hold this volume out because we believe we are doomed. We held it out because the refusal to look, the well-adjustment to a misanthropic artifice, is itself the doom, and it is the one doom we can still decline.",
+        "shipped": "Refusal to look protects the artifice, while doom remains uncertain."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the epigraph completing its arc, and the one doom we can still decline is the volume’s answer to its own audit. The shipped sentence states a proposition about the artifice and drops the pair the volume opened with.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "Saturn’s gift lost the sentence that defines it.",
+      "evidence": {
+        "baseline": "Saturn’s gift was never despair. It was *gravity,* the seriousness that lets a thing be built at last to last, on ground honestly surveyed.",
+        "shipped": "Saturn’s gift is gravity, the seriousness required to build on honestly surveyed ground."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "A small loss and a real one. Was never despair is the clause that closes the register question the Saturn opening raised, and built at last to last carries the assonance the card names among the volume’s read aloud qualities.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The principal image lost the half that makes it hopeful.",
+      "evidence": {
+        "baseline": "it spends a principal it insists on calling income, and the principal is running out while the trust-economy of presence has barely begun to compound",
+        "shipped": "The artifice spends principal while calling it income. Whether a trust economy can provide a viable alternative remains to be shown."
+      },
+      "authorizedBy": "Compression, and the correct concern that compounding is not demonstrated.",
+      "diagnosis": "The concern is right and is kept. Barely begun to compound is a claim about elapsed time rather than about proven returns, and it is the accounting metaphor completing itself: one account is being drawn down while the other has not yet started. The card lists principal called income among the volume’s protected images.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "The closing blessing lost its cadence and its dawn.",
+      "evidence": {
+        "baseline": "toward the Dragon of Earth Awakening stirring, perhaps, in you, the way dawn arrives: one quiet kindling after another. A reverence for life, relearned. Even now. Even here. Even in 2026.",
+        "shipped": "Reverence for life can be relearned through one accountable practice after another, even here, in 2026."
+      },
+      "authorizedBy": "Compression, and catalog 4.15 plausibly applied to the closing uplift.",
+      "diagnosis": "The card permits a lyrical closing blessing and names the final sober turn toward building among the read aloud qualities. Section 4.15 explicitly exempts a liturgical or prophetic ending that ends on its image by design. The three-beat of even now, even here, even in 2026 is the volume’s date returning as a blessing rather than as an audit, which is the whole movement of the section.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0049",
+      "effect": "paydown preserved",
+      "note": "The forward door is stated as a reference to Volume VII for the practices and to Volume IX for the building, in reader-facing prose rather than as a note about the series order."
+    },
+    {
+      "id": "CTD-0106",
+      "effect": "paydown advanced",
+      "note": "C3 is satisfied: the Vol VII handoff is restated as an acknowledged forward reference in the closing prose. C4 is satisfied: the bracketed production note at the end of the baseline is not restored, and the unbracketed restatement the prior revision carried is removed as well."
+    },
+    {
+      "id": "CTD-0105",
+      "effect": "paydown advanced",
+      "note": "The volume no longer ends with a production note in any form. The obligations that note carried remain recorded in CTD-0106."
+    },
+    {
+      "id": "CTD-0085",
+      "effect": "paydown preserved",
+      "note": "Art & Alchemy in the list of Initiates."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes. Three set off appositives and became commas. Two introduced specifications and became colons. One separated a second movement and became a period."
+        },
+        {
+          "kind": "applied",
+          "note": "The Seven Initiates of a BOW rendered as the Seven Initiates of a Body of Worship, following CTD-0085 and the master ledger form."
+        },
+        {
+          "kind": "restored",
+          "note": "The opening refusal, the three choices that could have gone otherwise, Saturn’s gift with its definition, the harder than we wished pair, the compounding half of the principal image, the reverence close, and the even now, even here, even in 2026 cadence."
+        },
+        {
+          "kind": "kept",
+          "note": "The survey is not finished until every claim is checked, the qualification on the trust economy, and the forward references to Volume VII and Volume IX."
+        },
+        {
+          "kind": "verified",
+          "note": "The volume ends on the blessing. No production note follows it."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §16, A blessing, and a door. Current: A Blessing and a Door. Only the section number and the comma differ. The volume card lists sections 1 through 16 as a protected structural device and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

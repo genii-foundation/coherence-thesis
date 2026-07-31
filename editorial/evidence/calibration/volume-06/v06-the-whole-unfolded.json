@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-whole-unfolded",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Whole, Unfolded",
+  "currentHeading": "The Whole, Unfolded",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "grain",
+      "currency",
+      "dragon of the East",
+      "coherence"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0036",
+      "CTD-0082",
+      "CTD-0091"
+    ],
+    "outcome": "Three recorded decisions reach this section. Coherence's metaphysical certainty is removed while the grain is retained as image; the currency remains a design and research question; and the undifferentiated Eastern dragon becomes East Asian traditions with the borrowing named as symbolic and incomplete. All three are kept, each in one added sentence rather than as hedges distributed through the prose."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "460 words.",
+        "shipped": "519 words, of which 3 of 26 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 26 current sentences of six words or more, 3 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The substrate paragraph lost the coin and the bill.",
+      "evidence": {
+        "baseline": "The first run with the grain of living things; the second run against it, and pay for the difference in a coin they pretend not to see. We have spent centuries cutting against the grain and calling it progress. Only now, with the costs grown too large to hide, can we read the true bill.",
+        "shipped": "This series calls the first coherent and the second extractive. Much modern prosperity has hidden its ecological and social costs by placing them outside the ledger."
+      },
+      "authorizedBy": "Compression, and catalog 4.18 applied to the coin and bill figure.",
+      "diagnosis": "The card sets the dominant register as compressed lyrical philosophy and asks each abstraction to stay tethered to one governing image. The coin they pretend not to see and the true bill are that tether. Placing costs outside the ledger is the same claim with the image removed, and it is prose that could appear in any policy paper.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The paragraph on the human center lost the completion and the circle.",
+      "evidence": {
+        "baseline": "Where a person's capacity meets a real need, something completes itself; yet almost nothing in our shared life is built to bring about that meeting. It starts with being seen, which is rarer than it ought to be, and it ripens among the few who draw a person upward, the right companions, in a circle small enough that no one is lost in it.",
+        "shipped": "Purpose often begins when capacity meets a real need. Recognition helps that meeting occur, and companionship gives it somewhere to grow."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Something completes itself is the volume's claim about what purpose feels like from inside, and the circle small enough that no one is lost in it is the first appearance of the scale argument that Chapter IX will make. Both are load-bearing and both are gone.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The currency proposal lost its refusal and its definition.",
+      "evidence": {
+        "baseline": "Not how much a person has gathered to themselves, but how coherent they have become, how present, how alive: coherence itself made into the quiet currency of a world that has finally stopped living by extraction.",
+        "shipped": "Its answer is coherence: the demonstrated quality of presence, relation, and contribution, rather than accumulation alone."
+      },
+      "authorizedBy": "Catalog 4.3, applied to the not X but Y shape.",
+      "diagnosis": "How coherent, how present, how alive is a three-beat that widens exactly as the card's cadence override describes, and quiet currency is the volume's own phrase. The retention limb of 4.3 applies because accumulation is the measure every reader arrives holding.",
+      "producedRule": "R-CADENCE",
+      "id": "F4"
+    },
+    {
+      "summary": "The dragon's first appearance lost the rain and the river.",
+      "evidence": {
+        "baseline": "the benevolent dragon of East Asian traditions, bringer of rain and river and spring, the generative vitality of the world moving, at last, consciously through the creatures who can feel it. ... To sense it even faintly is to feel that the ground beneath us is itself alive.",
+        "shipped": "The image draws on the benevolent dragon of East Asian traditions, associated with water, rain, and generative power."
+      },
+      "authorizedBy": "Catalog 4.7, vague grandeur, alongside the recorded cultural correction.",
+      "diagnosis": "The cultural correction required naming the traditions accurately and admitting the borrowing is partial. It did not require replacing rain and river and spring with water, rain, and generative power, which is the same content in the register of a reference entry. The ground beneath us is itself alive is the sentence the whole image exists to reach.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0080",
+      "effect": "paydown preserved",
+      "note": "The dragon paragraph carries the pass's statement that the image is an image and a proposition, not a proof, and the currency paragraph carries its statement that measurement, custody, and protection of the person measured remain open."
+    },
+    {
+      "id": "CTD-0082",
+      "effect": "paydown preserved",
+      "note": "The dragon is attributed to East Asian traditions rather than to an undifferentiated East, and the borrowing is named as symbolic and not a complete account."
+    },
+    {
+      "id": "CTD-0091",
+      "effect": "paydown preserved",
+      "note": "Most of them are never once called upon is rendered as many of them, since the baseline states a universal about every reader's capacities."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Four became commas around appositive material and one became a period so the true bill could land in its own sentence."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS across three items, each carried by one added sentence placed where the baseline itself makes the claim."
+        },
+        {
+          "kind": "restored",
+          "note": "The coin and the true bill, the luminous community, the completion where capacity meets need, the circle small enough that no one is lost, the currency's three-beat refusal, and the dragon with its rain and river and spring."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The section is now 13 percent longer than the baseline, which is unusual for a re-render. The added length is entirely the three ledger sentences: the currency's open questions, the borrowing's incompleteness, and the image-not-proof statement. Whether an unfolded account written to be read in a few minutes should carry that much qualification is the author's judgment.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's densest ledger interaction and the one that most tempted a distributed hedge. Placing each correction in a single sentence next to the claim it governs, rather than softening every verb around it, kept four images intact and cost fifty-nine words."
+  }
+}

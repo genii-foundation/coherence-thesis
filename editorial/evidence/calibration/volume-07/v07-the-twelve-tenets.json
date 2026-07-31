@@ -4,7 +4,7 @@
   "editorialId": "volume-07",
   "sectionHeading": "**The Twelve Tenets**",
   "currentHeading": "## Part VI: The Twelve Tenets",
-  "status": "settled",
+  "status": "open",
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
@@ -72,23 +72,37 @@
           "note": "R-PUNCT-STRUCT. One em dash introducing an appositive definition became a comma, since the phrase is genuinely dependent."
         },
         {
-          "kind": "restored",
-          "note": "The grammar definition, the three tier reasoning, the description of all three tiers including the magical realms warning, and the closing statement that these are the working instruments and reward depth."
+          "kind": "blocked",
+          "note": "Not restored. The grammar definition, the three tier reasoning, the description of all three tiers including the magical realms warning, and the closing statement that these are the working instruments and reward depth. All of it remains in the baseline region reproduced in the open questions."
         },
         {
           "kind": "kept",
           "note": "The universal law disclaimer."
+        },
+        {
+          "kind": "verified",
+          "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
         }
       ]
     }
   ],
   "rulings": [],
   "rulesDerived": [],
-  "openQuestions": [],
+  "openQuestions": [
+    {
+      "id": "QS",
+      "question": "Structural restoration blocked on route adjudication. This section is a chapter-start region: its prose sits between a part or container label and the first chapter heading beneath it, and text in that position compiles into a section with its own public route. Expanding it revives or reshapes a retired route, which is a continuity decision rather than an editorial one. The prose is therefore left exactly as it stood and the findings below describe what the prior pass removed rather than what this pass restored. The baseline text for this region is reproduced verbatim below so the author can restore it in one edit once the route decision is made. Punctuation repair under R-PUNCT-STRUCT is still required on it, and every ledger constraint named in this record still applies to it.\n\nBASELINE TEXT:\n\n*The Grammar that Disciplines the Path*\n\nIf the seven initiates are the path, the twelve tenets are the grammar that disciplines the walking of it — the precepts that turn raw perception into a way of being. They are set in three tiers, and the tiers are not arbitrary; each presupposes the one before. The first three teach how to perceive; the next five, how to relate and how to stand; the last four open outward into the work’s more seemingly magical realms. We give each its due in turn, for these are the working instruments of the praxis, and they reward depth."
+    }
+  ],
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required."
+  },
+  "structuralHold": {
+    "kind": "chapter-start region",
+    "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
+    "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
   }
 }

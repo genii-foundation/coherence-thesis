@@ -8,20 +8,29 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Part titles, publication posture, and the measurement promise remain author decisions.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["platform", "engagement", "measures presence", "currency", "The Innovation"],
-    "itemsRead": ["CTD-0004", "CTD-0009", "CTD-0045", "CTD-0073", "master-ledger Decision A"],
+    "terms": [
+      "platform",
+      "engagement",
+      "measures presence",
+      "currency",
+      "The Innovation"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0009",
+      "CTD-0045",
+      "CTD-0073",
+      "master-ledger Decision A"
+    ],
     "outcome": "No recorded decision touches the section body. The Part Two display matter is governed by CTD-0045, which asks the author to decide whether high-register part titles match the volume's posture; that item is a query and not a ruling, so it does not override the baseline, but it is the reason the shipped part title was kept and the subtitle restored in the conditional. The master ledger's Decision A does not fire because no unit is named here."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -68,35 +77,51 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0009", "effect": "reopened by restoration", "note": "The display line restores the claim that a device could measure presence and thereby produce a civilization optimized for genuine encounter. It is the volume's central promise and remains unverified." },
-    { "id": "CTD-0045", "effect": "evidenced", "note": "The baseline Part Two subtitle asserts that Providence constitutes a new currency for civilization. The shipped subtitle says only what its currency would remember. The subtitle was not changed, because part display matter is a continuity decision, but the gap between the two is the posture question the item names, visible at the exact boundary a reader crosses." }
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "The display line restores the claim that a device could measure presence and thereby produce a civilization optimized for genuine encounter. It is the volume's central promise and remains unverified."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "evidenced",
+      "note": "The baseline Part Two subtitle asserts that Providence constitutes a new currency for civilization. The shipped subtitle says only what its currency would remember. The subtitle was not changed, because part display matter is a continuity decision, but the gap between the two is the posture question the item names, visible at the exact boundary a reader crosses."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, and the volume card",
       "reasoning": [
-        { "kind": "restored", "note": "The discovery achievement, the business model chain from engagement to outrage, the philosophical failure, the measured and unmeasured lists, the display verdict, the What must be preserved close, and the handoff to the rest of the volume. In the Part Two display matter, the baseline epigraph about what a currency teaches its holders is restored." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT across five marks, as recorded in F4." },
-        { "kind": "kept", "note": "The shipped part title, The Design, and the shipped Part Two subtitle, What Its Currency Would Remember. Part titles and their display matter are continuity decisions rather than editorial ones, so neither was touched. Both are recorded as open questions." },
-        { "kind": "cut", "note": "The shipped rewrite, including its two closing synthesis paragraphs." }
+        {
+          "kind": "restored",
+          "note": "The discovery achievement, the business model chain from engagement to outrage, the philosophical failure, the measured and unmeasured lists, the display verdict, the What must be preserved close, and the handoff to the rest of the volume."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks, as recorded in F4."
+        },
+        {
+          "kind": "kept",
+          "note": "The entire Part Two display block, unchanged: the part label, the title The Design, the subtitle, the ritual divider, and the epigraph beneath it. An earlier draft returned the baseline subtitle and epigraph; both were reverted. Structural restoration blocked on route adjudication, not an editorial judgment. Prose between a part label and the first chapter heading beneath it compiles into a chapter-start section with its own public route, so restoring it revives a retired section and breaks the build. The whole region is therefore treated as untouchable, exactly like a heading. The baseline text is recorded in openQuestions in full."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite, including its two closing synthesis paragraphs."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
     "Part title. Baseline: The Innovation. Current: The Design. CTD-0045 asks the author to decide whether the volume's part titles carry the same posture as its prose. Not changed. Renaming a part changes its identity and its recorded route aliases.",
-    "Part Two subtitle. Baseline: What Providence Is, How It Works, and Why It Constitutes a New Currency for Civilization. Current: What Providence Is, How It Works, and What Its Currency Would Remember. The baseline asserts the currency; the current one describes a memory function. Not changed, for the same continuity reason.",
     "Heading. Baseline: The Platform: Coordinating Attention Toward Its Own Ends. Current: The Platform: Discovery and Capture. The baseline names the platform's orientation, which is the section's charge against it. Not changed. Renaming costs a section id and a recorded route alias.",
-    "The measurement promise. The restored display line says a device that measures presence would thereby produce a civilization optimized for genuine encounter. That is a causal claim about a device that does not exist. Restored, flagged under CTD-0009."
+    "The measurement promise. The restored display line says a device that measures presence would thereby produce a civilization optimized for genuine encounter. That is a causal claim about a device that does not exist. Restored, flagged under CTD-0009.",
+    "Part Two display block, blocked. Baseline title: The Innovation. Current title: The Design. Baseline subtitle: What Providence Is, How It Works, and Why It Constitutes a New Currency for Civilization. Current subtitle: What Providence Is, How It Works, and What Its Currency Would Remember. Baseline epigraph: Every currency teaches its holders what to become. What follows is the design of one that would teach us to be present. Current epigraph: Every currency teaches its holders what a society has chosen to value. The question is what ours should help us become. The baseline asserts the currency where the current describes a memory function, and the baseline epigraph commits to what the currency would teach. None was restored. Structural restoration blocked on route adjudication, not an editorial judgment. Prose between a part label and the first chapter heading beneath it compiles into a chapter-start section with its own public route, so restoring it revives a retired section and breaks the build. The whole region is therefore treated as untouchable, exactly like a heading. CTD-0045 owns the posture question underneath it."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

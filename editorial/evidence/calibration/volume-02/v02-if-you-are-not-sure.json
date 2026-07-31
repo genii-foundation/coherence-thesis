@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-if-you-are-not-sure",
+  "editorialId": "volume-02",
+  "sectionHeading": "**If You Are Not Sure**",
+  "currentHeading": "**If You Are Not Sure**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/ and returns a level-3 heading. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route, so restoring a fuller part introduction revives a retired section and breaks the build.",
+    "action": "No label altered. This section sits beneath a chapter heading and is not a part introduction, so rule (2) does not constrain it. Verified: the two part-label regions in this volume, PART ONE and PART TWO, are byte-identical to the baseline and were never edited.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "In such cases, begin doing what feels most accurate",
+      "It articulates conditions clearly enough",
+      "Your contribution need not look like anyone else’s"
+    ],
+    "result": "None appears in the baseline. All are compressions. The first converts an offer of help into an imperative, which is the section's one real change of stance."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "most readers",
+      "immediate clarity",
+      "location within them",
+      "your contribution"
+    ],
+    "itemsRead": [
+      "CTD-0038",
+      "CTD-0041"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0038 is engaged more gently here than in the neighbouring addresses: the section tells the reader that not knowing is appropriate, which is the most autonomy-respecting passage in the closing matter and the one the item's paydown would probably preserve unchanged. Restored to the baseline in full."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "An offer of what helps became an instruction to begin.",
+      "evidence": {
+        "baseline": "What helps, in such cases, is to begin doing whatever feels most accurate to do, at the scale your conditions allow, and to trust that the work will become clearer through being done.",
+        "shipped": "In such cases, begin doing what feels most accurate at the scale conditions allow, and trust that the work will become clearer through being done."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "What helps is is the section's governing construction and it appears in the neighbouring address too. It describes rather than commands, which is the only defensible stance toward a reader who has just been told that not knowing is appropriate. Two imperatives, begin and trust, address that same reader as though they had asked for instructions. Your conditions is also the second person the sentence needs, and whatever feels most accurate to do is broader than what feels most accurate, since it admits actions the reader has not thought of.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "Four definite articles marking the kinds of work as ones the book has already described were dropped.",
+      "evidence": {
+        "baseline": "The inner work the previous chapters described is available ... The relational work is available ... The institutional and economic work is available ... The technological work is available",
+        "shipped": "The inner work described in previous chapters is available ... Relational work is available ... Institutional and economic work is available ... Technological work is available"
+      },
+      "authorizedBy": "Catalog 4.9, repetitive scaffolds.",
+      "diagnosis": "The four articles make four specific bodies of work the book has spent chapters describing, and the anaphora is what lets a reader who is not sure locate themselves among them. Without the articles the last three become generic categories, and the paragraph turns from a map into a list. 4.9's retention limb covers deliberate recurrence, and four parallel sentences addressed to an uncertain reader are as deliberate as recurrence gets.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Five precisions removed across the section.",
+      "evidence": {
+        "baseline": "do not yet know what your relationship to the work is ... an immediate clear answer ... It has been written to articulate conditions clearly enough that readers can begin to recognize their own location within them ... does not require everyone to do the same kind of work ... enough people to do enough of the work, in their own forms, that the substrate ... actually gets built",
+        "shipped": "do not know your relationship to the work ... an immediate, clear answer ... It articulates conditions clearly enough that readers can begin to recognize their location within them ... does not require everyone to do the same work ... enough people to do enough work in their own forms for the substrate ... to be built"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Do not yet know is temporary and do not know is a state, which is the difference the whole section rests on. Their own location distinguishes the reader's position from the positions the book has mapped. The same kind of work is the claim, since the section is about variety of kind rather than quantity. And actually gets built is the sentence's last two words and carries its only concrete outcome; to be built is a passive infinitive with no agent and no moment.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0038",
+      "effect": "unchanged, autonomy-respecting passage restored",
+      "note": "This is the closing matter's most autonomy-respecting address and the restoration strengthens that: the baseline's What helps is offers rather than instructs, where the pass's imperatives command. Restoring the baseline here moves the volume toward the autonomous pole, which is the opposite direction from the Final Note. The author should read the two together."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. No prohibited marks in this section."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label, and the part-region rule verified as not applicable."
+        },
+        {
+          "kind": "restored",
+          "note": "The What helps is construction with its two infinitives, the four definite articles on the kinds of work, and five precisions including yet, their own, the same kind of, and actually gets built."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Does this address's stance survive the choice made about the Final Note?",
+      "context": "This section grants the reader full permission not to know, which is the position CTD-0038 calls autonomous. The Final Note tells the reader that part of them already recognizes the work. Both are now restored to their baseline forms and they pull in opposite directions, which is the incompatibility CTD-0038 recorded. Choosing one determines whether this section stays as it is.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is worth noting as the counterexample within the closing matter: here the baseline is the more permissive text and the pass made it more directive, which is the reverse of the pattern in the two addresses on either side. That is evidence the pass was compressing rather than pursuing a doctrine of reader consent, and it makes the Final Note's change harder to read as deliberate, which in turn makes restoring it the safer call."
+  }
+}

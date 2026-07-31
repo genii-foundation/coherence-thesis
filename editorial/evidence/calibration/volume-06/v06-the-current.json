@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-current",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Current",
+  "currentHeading": "The Current",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "coherence",
+      "grain of reality",
+      "extraction",
+      "you have felt it"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0003",
+      "CTD-0091"
+    ],
+    "outcome": "The semantic review records that coherence was presented as the grain of reality and the sole true current and that the pass replaced that with an operational definition, regulation and relation and responsiveness, while retaining the grain as image. That decision binds and both halves are kept: the operational definition is restored into the opening and the grain image is restored as image. CTD-0003 governs the coherence unit and is scoped to Volume I; the unit is not named here."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "350 words.",
+        "shipped": "313 words, of which 0 of 12 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 12 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chamber's coda scaffold is not restored, and one line of it was content rather than performance.",
+      "evidence": {
+        "baseline": "That is why these six volumes were written: to help our species find its way back to the natural current of life, while the choice to return is still ours to make.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "The voice card's known weak passages, and the semantic review's record of the coda removal.",
+      "diagnosis": "Coda scaffold not restored. The baseline closes this chamber with a divider, two italic address lines, the isolated line That is why, and a fourth italic line beginning That is why. The Volume VI voice card lists any return of the repeated divider plus That is why coda among its known weak passages, and the semantic review records the pass's removal of the scaffold as a structural repair. The address lines also tell the reader what they have felt, waited for, or were made to become, which is the defect CTD-0091 was opened for and which the corpus card forbids outright. The scaffold is therefore left removed. Where a coda carried content rather than performance, that content is restored into the chamber body.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The definition of the current lost its three clauses.",
+      "evidence": {
+        "baseline": "It is the quiet tendency of things that fit to hold, of things that align to endure, of truth to cost less than its absence.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "The three clauses are the definition, and the third one, that truth costs less than its absence, is the only place in the volume where coherence is given an economic argument. The operational definition the ledger requires does not replace them; it sits beside them.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The extraction paragraph lost the pretending and the debate about survival.",
+      "evidence": {
+        "baseline": "Extraction was only a current we could afford to pretend in, until the pretending grew too costly to sustain. ... the survival of our own species has quietly become a thing we debate, because our civilizations have grown too inept to meet the real current beneath them.",
+        "shipped": "It took faster than it returned and called the drawdown growth. The ecological and social consequences now make that account harder to defend."
+      },
+      "authorizedBy": "Catalog 4.6, applied to the survival claim.",
+      "diagnosis": "A current we could afford to pretend in is the chapter's sharpest formulation and the reason the argument is historical rather than moral. The survival sentence is the volume's one moment of alarm and the card permits it, since the emotional temperature is to arise from the argument and this one has been argued.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0080",
+      "effect": "paydown preserved",
+      "note": "The operational definition of coherence as regulated, relational, and responsive is kept and placed in the opening. It is a grain already running through the world is rendered as a way of describing fit, with the grain retained explicitly as an image. Civilizations built along the current last becomes may last."
+    },
+    {
+      "id": "CTD-0091",
+      "effect": "paydown preserved",
+      "note": "You have felt it is rendered as It can be felt. The card lists you have felt among phrases to reduce and the item was opened over exactly this construction."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "not touched",
+      "note": "The coherence unit is not named in this chamber."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes, including a paired set around the extraction gloss. Two became commas, two were rebuilt into sentence breaks, and one became a comma before a genuinely dependent clause."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The operational definition is added to the baseline's opening rather than substituted for it."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's linked TO GO DEEPER line, which CTD-0077 requires."
+        },
+        {
+          "kind": "restored",
+          "note": "The three clauses of the definition, the three places coherence can be felt, the wood grain, the current we could afford to pretend in, the explicit accounting, and the survival sentence."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The coda's fourth line carried a real claim, that the six volumes were written to help the species find its way back while the choice is still ours. It is not restored, because restoring it means restoring the scaffold the card forbids. If the author wants that sentence, it belongs in the chamber body rather than in a coda.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The chamber establishes the pattern for all eleven: the coda goes, the body comes back, and the ledger correction is added to the body rather than substituted for it. The distinction that matters is that the prior pass treated the ledger correction and the compression as one operation, so paying the debt cost the volume its definition."
+  }
+}

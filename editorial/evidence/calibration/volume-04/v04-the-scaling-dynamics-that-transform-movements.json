@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-scaling-dynamics-that-transform-movements",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Scaling Dynamics That Transform Movements**",
+  "currentHeading": "**The Scaling Dynamics That Transform Movements**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "co-optation",
+      "isomorphism",
+      "COINTELPRO",
+      "infiltration",
+      "failure",
+      "invitation",
+      "Volume V",
+      "dissent",
+      "immune system"
+    ],
+    "itemsRead": [
+      "CTD-0078",
+      "CTD-0034",
+      "CTD-0047",
+      "CTD-0072",
+      "CTD-0089",
+      "CTD-0075",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0078 requires that named scholarship not function as proof of feasibility, which governs the movement, institutional theory, and failure analysis lineages in this part. CTD-0034 tracks the Volume V encounter promise, which the invitation chapter makes and which the restoration keeps in conditional form. CTD-0047 records that Volume III's construction promise is only partly discharged in this volume, which the failure chapter's honesty serves rather than contradicts. CTD-0072 requires that nothing sound operational. The volume-04 voice card also names any account of dissent as infection among the known weak passages, which governs the immune system material in the adaptive power chapter."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The four named pressures lost their mechanisms.",
+      "evidence": {
+        "baseline": "the professionalization pressure, in which the growing institution requires people with professional skills that are available primarily from people whose professional formation occurred in institutions with different values; the growth pressure, in which the legitimate desire to serve more people creates momentum toward accepting compromises that would have been rejected at smaller scale; the complexity pressure ...; and the legitimacy pressure ...",
+        "shipped": "(absent from the shipped section)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Each pressure names who exerts it and why it is legitimate, which is what makes them hard to resist and what distinguishes them from adversaries. The professionalization mechanism in particular, that skilled people were formed in institutions with different values, is a claim the volume makes nowhere else and that a founding team would need to plan around.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The section's honest verdict on its own design was removed.",
+      "evidence": {
+        "baseline": "Providence's design against these pressures is contained in the constitutional architecture of the preceding chapters. The design is as good as the current state of understanding allows. Whether it is good enough will only be knowable in contact with the scaling process itself.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.15 read onto the closing cadence.",
+      "diagnosis": "4.15 removes endings that rise automatically toward hope. This one does the opposite: it declines to claim the design works. The retention limb applies because the ending is a concession rather than an uplift, and the corpus card requires that confidence never be inflated into certainty.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0078",
+      "effect": "no change",
+      "note": "The DiMaggio and Powell isomorphism reference is named without a verification date. The item stays open."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced the enumeration of scaling pressures and became a colon. One was parenthetical and became a comma pair."
+        },
+        {
+          "kind": "restored",
+          "note": "The four pressures with their mechanisms, the mirror-image framing against Volume III's institutional analysis, and the honest verdict."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 643,
+    "shippedWords": 167,
+    "shippedDelta": -74
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Catalog 4.15 fired on a closing that is a refusal rather than a rise, and the retention limb held. The test is the direction of the turn, not the fact that a paragraph ends on a general sentence."
+  }
+}

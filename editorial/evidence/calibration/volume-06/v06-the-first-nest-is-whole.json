@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-first-nest-is-whole",
+  "editorialId": "volume-06",
+  "sectionHeading": "The First Nest Is Whole",
+  "currentHeading": "The First Nest Is Whole",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "nest",
+      "the choice is yours",
+      "invitation"
+    ],
+    "itemsRead": [
+      "CTD-0077",
+      "CTD-0091"
+    ],
+    "outcome": "CTD-0077 governs the Volume VI reading path and is answered by the linked TO GO DEEPER lines in the chambers rather than here. The choice is yours is named on the voice card as intentional recurrent phrasing and is restored. No recorded decision names a claim in this section."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "262 words.",
+        "shipped": "262 words, of which 2 of 11 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 11 current sentences of six words or more, 2 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The close of Part One lost the inventory of what the reader now holds.",
+      "evidence": {
+        "baseline": "The current and the gift, the pathway and the seeing, your people and the loom, the currency and the right scale, the waking dragon and the nest itself: all of it is now in your hands, entire, in a shape small enough to carry.",
+        "shipped": "The current and the gift, the pathway and recognition, people and loom, currency and scale, dragon and nest now form one portable account."
+      },
+      "authorizedBy": "Catalog 4.4, applied to the five pairs.",
+      "diagnosis": "The pairs are the eleven chambers named back in order, which is the structural device the card protects, and the shipped version drops the possessive from your people and the participle from the waking dragon. One portable account is a description of the thing the sentence was performing.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The reassurance that a reader who stops has lost nothing was replaced with a claim about compression.",
+      "evidence": {
+        "baseline": "If you read no further, you have not been given a part. You have been given everything, and only its largeness has been spared you.",
+        "shipped": "A reader who stops here has received the complete argument in compression rather than merely a fragment."
+      },
+      "authorizedBy": "Catalog 4.16, performed intimacy, applied to the second person.",
+      "diagnosis": "The card sets the volume's relationship to the reader as hospitable and non-coercive and permits direct address as explicit invitation. This is the passage where that hospitality is enacted. Only its largeness has been spared you is also the volume's one joke, and the card permits a small touch of plain self-correction when the architecture becomes grander than its evidence.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The invitation lost its freedoms.",
+      "evidence": {
+        "baseline": "You are free to close the book here, complete. You are equally free to begin again, and go deeper. As it must be, the choice is yours.",
+        "shipped": "A reader may close the book here or begin again and go deeper. The choice remains theirs."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The two sentences beginning You are free are the reader autonomy the volume's own ledger item was opened to protect, stated in the second person the card licenses. As it must be is the phrase that makes the freedom a principle rather than a permission.",
+      "producedRule": "R-CADENCE",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0091",
+      "effect": "no reopening",
+      "note": "The section's direct address grants freedoms rather than assigning states, which is the distinction the item turns on."
+    },
+    {
+      "id": "CTD-0077",
+      "effect": "not touched here",
+      "note": "The reading path is carried by the chambers' linked references."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes, both appositive, rendered as commas."
+        },
+        {
+          "kind": "restored",
+          "note": "The finished nest and the finished book, the refusal of fragment and foretaste, the four-stage widening, the five pairs, the nest's purpose, the reassurance about largeness, and the three freedoms with the choice is yours."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's best evidence that catalog 4.16 was applied as a ban on the second person rather than as a rule about conscription. Every address here grants the reader something, and all of it was removed."
+  }
+}

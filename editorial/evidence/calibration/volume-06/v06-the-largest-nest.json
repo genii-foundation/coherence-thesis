@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-largest-nest",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Largest Nest",
+  "currentHeading": "The Largest Nest",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "nest",
+      "dawn",
+      "kindling",
+      "blueprint"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0091"
+    ],
+    "outcome": "No recorded decision names a claim in this close. The reader-autonomy concern reaches two sentences, The gift is still in you and You are one of those kindlings, both of which tell a reader what they are. Both are bounded. The dawn image and the whole closing movement are restored."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "401 words.",
+        "shipped": "404 words, of which 0 of 16 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 16 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The four nests were named and then unnamed.",
+      "evidence": {
+        "baseline": "You have now passed through four nests. A single line. A minute. The arc, felt once in its compression. And the same arc again, with a little room to breathe.",
+        "shipped": "The book has now passed through four nests: a single line, a minute, the arc in compression, and the same arc with more room."
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments.",
+      "diagnosis": "The card permits contemplative lines that earn isolation, and four one-clause sentences enumerating four nests is the volume's own structural device performed in miniature. Collapsing them into a colon list makes the sentence report the structure instead of enacting it, and the book has now passed through is also a subject that cannot pass through anything.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The errors as part of the gift, and the reader who can see where the blueprint falls short, were removed.",
+      "evidence": {
+        "baseline": "A blueprint is an invitation to be improved, and ours will be wrong in places, and its very errors are part of the gift; for the fastest way to call a better world into being is to draw one clearly enough that you, reading this, can see exactly where it falls short, and build past it.",
+        "shipped": "A blueprint earns its place by being clear enough that others can see where it fails and build past it."
+      },
+      "authorizedBy": "Catalog 4.16, performed intimacy, applied to you, reading this.",
+      "diagnosis": "The address assigns nothing and asks for criticism, which is the least coercive thing a book can do. This sentence also answers the dedication word for word, and the card protects the Part Two path and the envoi as structural devices that depend on those returns.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The dawn, the volume's closing image, lost its kindling.",
+      "evidence": {
+        "baseline": "This is how a world comes conscious, not in a single thunderclap, but the way dawn arrives, one quiet kindling after another, until the whole of it stands luminous. ... Consciousness is not draining out of the world; it is pouring into it, through every creature that consents to feel more than it did the day before.",
+        "shipped": "No single awakening completes the work. Awareness grows through many quiet acts of attention."
+      },
+      "authorizedBy": "Catalog 4.15, generic uplift, and 4.7.",
+      "diagnosis": "The card names dawn arriving through quiet kindling among the recurring images and the gradual widening among the read-aloud qualities to preserve. 4.15's defect limb covers endings that rise without earning the turn; this one has four hundred words and six volumes behind it. Consents to feel more than it did the day before is also the volume's definition of what waking means, and it is the sentence that makes the dragon a description rather than a hope.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0091",
+      "effect": "restoration bounded",
+      "note": "The gift is still in you becomes The gift may still be in you, and You are one of those kindlings becomes You may be one of those kindlings. The nest is small, and near, and already half-built around you becomes perhaps already half-built."
+    },
+    {
+      "id": "CTD-0080",
+      "effect": "no reopening",
+      "note": "The dragon is described here as our name for the gathering of many small acts, which is the status the item requires."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes. Four were appositive and became commas, one became a period so and it is rising still could land alone, and one became a comma before the dawn simile."
+        },
+        {
+          "kind": "restored",
+          "note": "The four nests named one at a time, the nest larger still, the simplest thing imaginable, the world you will help to build, the errors as part of the gift, the current waiting to be rejoined, the dragon widening by one, the dawn and its kindlings, the consciousness pouring in, and the handing forward."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "And now it is yours is restored. In context it hands forward a blueprint rather than assigning a vocation, which is why it survives where the Volume V epilogue's equivalent did not. The author may read it the other way.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is where catalog 4.15 was most clearly misapplied. Generic uplift is an ending that rises without earning the turn, and the test is whether the preceding material earned it. Six volumes of argument is the strongest possible answer to that test, and the pass removed the ending anyway."
+  }
+}

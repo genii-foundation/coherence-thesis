@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-current-state-of-the-technical-art",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Current State of the Technical Art**",
+  "currentHeading": "**Candidate Approaches and Limits**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "self-sovereign identity",
+      "verifiable credential",
+      "zero-knowledge",
+      "physiological wallet",
+      "trust layer",
+      "attestation",
+      "Bio-Consensus",
+      "COHERENCE",
+      "sensor",
+      "biometric"
+    ],
+    "itemsRead": [
+      "CTD-0055",
+      "CTD-0006",
+      "CTD-0012",
+      "CTD-0027",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0007"
+    ],
+    "outcome": "CTD-0055 is decisive across Part IV: the corpus describes Providence as already self-sovereign, device-local, unowned, and capture-resistant, and the item requires every such property to be stated as a requirement rather than a current fact until the protocol, threat model, and controls are published. CTD-0006 requires that no physiological measure determine governance standing, which governs the trust layer and the AI prohibitions. CTD-0012 keeps Bio-Consensus, COHERENCE, and the Currency of Presence distinct. CTD-0027 records that the AI integration decision process is undefined. CTD-0072 requires that nothing sound operational. CTD-0007 governs the self-epigraphs."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Each of the three approaches lost what it can deliver, keeping only what it cannot.",
+      "evidence": {
+        "baseline": "The federated approach preserves some sovereignty: participants control the node at which their identity is established, and the identity can persist across other services without being re-established at each. But the sovereignty is incomplete.",
+        "shipped": "Federated identity can let one service recognize identity established by another. It reduces repeated enrollment, but the originating operator may still suspend access or alter terms."
+      },
+      "authorizedBy": "CTD-0055, applied to sovereignty claims.",
+      "diagnosis": "The item requires unimplemented properties to be stated as requirements. It does not require the capabilities of existing standards to be understated. The baseline's structure, what the approach preserves and then where it fails, is what lets a builder choose among them. The shipped version gives each approach one sentence of capability and two of limitation, which reads as a survey of disappointments rather than as a design input. The restoration keeps every shipped limitation and returns the capabilities.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The zero-knowledge case lost its worked example.",
+      "evidence": {
+        "baseline": "A participant who can prove that they are a member of a particular community, or that they have completed a particular developmental stage, without revealing their full identity profile to every system that requests verification, has a significantly more protected relationship to the identity infrastructure than a participant whose identity is stored and transmitted in recoverable form.",
+        "shipped": "Zero-knowledge methods can prove some claims without disclosing all underlying data."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The example is the only place in the volume where selective disclosure is made concrete, and both instances it names, community membership and developmental stage, are things this architecture actually needs to prove. Without it the reader has a definition and no sense of what it buys.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0055",
+      "effect": "paydown preserved",
+      "note": "Every shipped statement about enforced versus vendor-dependent versus aspirational guarantees is kept."
+    },
+    {
+      "id": "CTD-0078",
+      "effect": "no change",
+      "note": "The W3C and Hyperledger references are named without dates of verification. The item stays open."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. CTD-0055 bounds the sovereignty language and does not require the capability statements to be dropped. Every shipped limitation is kept and the capabilities are restored beside them."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Four were parenthetical appositives naming an approach and became comma pairs. One introduced the minimum viable architecture specification and became a comma."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped requirement that a first design state which guarantees are enforced, which depend on operators or vendors, and which remain aspirations, and the shipped list of recovery, coercion, bystander privacy, accessibility, and nontechnical use as architecture rather than polish. Both are CTD-0055 paydowns and both are stronger than the baseline."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped heading Candidate Approaches and Limits, which holds the route."
+        },
+        {
+          "kind": "restored",
+          "note": "What each approach preserves, the zero-knowledge worked example, and the minimum viable architecture's honesty requirement."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 712,
+    "shippedWords": 285,
+    "shippedDelta": -60
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's model case for a paydown that overcorrected in a specific direction: a requirement to stop overclaiming was executed as a requirement to state only limitations. R-LEDGER-WINS decides which reading of a property governs. It does not license pessimism."
+  }
+}

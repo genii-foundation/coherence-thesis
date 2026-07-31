@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-the-work-requires",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What the Work Requires**",
+  "currentHeading": "**What the Work Requires**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "support layer",
+      "burnout",
+      "developmental arc",
+      "stewardship",
+      "culture",
+      "Purposeful",
+      "retreats",
+      "year-long",
+      "mentors"
+    ],
+    "itemsRead": [
+      "CTD-0056",
+      "CTD-0072",
+      "CTD-0069",
+      "CTD-0006",
+      "CTD-0088",
+      "CTD-0075",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0056 requires each Purposeful program's status and access path to be published rather than implied, and CTD-0072 requires the same for every named entity and credential. Neither is reopened, because the restored chapters describe what the work would require rather than what is running. CTD-0069 governs the corpus's use of Indigenous and contemplative lineage, which bears on the monastic and ritual passages. CTD-0088 concerns mentor safeguarding and was read before restoring the mentorship and supervision requirements. CTD-0006 requires that developmental stage never determine political standing."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "All four capacities lost the failure mode that shows why they must combine.",
+      "evidence": {
+        "baseline": "People who are technically skilled but philosophically thin will build technically competent systems that are constitutionally incoherent. People who are philosophically serious but technically shallow will produce architecturally correct specifications that no one can implement.",
+        "shipped": "(absent from the shipped section)"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 read onto the mirrored pair.",
+      "diagnosis": "Each capacity in the baseline is followed by what its absence produces, and the pairs are the argument that no single developmental path suffices. The economic realism pair is the sharpest: romanticising sacrifice destroys people, refusing any sacrifice makes the timeline impossible. Mirrored clauses are synthetic when they decorate. These carry two distinct failure modes each.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The account of why founding periods generate more conflict was removed.",
+      "evidence": {
+        "baseline": "The founding period of any institution generates more conflict per unit of time than any subsequent period, because the stakes are high, the norms are not yet established, and the people involved are discovering things about each other under pressure that they could not have known before the pressure.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the reason relational maturity is a requirement rather than a preference, and the final clause, discovering things about each other under pressure that they could not have known before, is the volume's most exact statement of why founding relationships are hard. It is also what the Tuesday afternoon chapter dramatizes.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0006",
+      "effect": "no change",
+      "note": "The capacities are described developmentally. None conditions political standing."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. Both were parenthetical appositives naming a capacity's content and both became comma pairs."
+        },
+        {
+          "kind": "restored",
+          "note": "All four capacities with their failure modes, the founding conflict argument, and the public visibility account."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored passage says people who romanticize economic sacrifice will eventually be destroyed by it. That is a strong claim about individuals stated without qualification. Restored under tonight's policy and flagged as a tone question.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 352,
+    "shippedWords": 134,
+    "shippedDelta": -62
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Catalog 4.4 fired on four mirrored pairs and the retention limb held four times, which is the same result as the stewardship contrasts. In this volume mirrored clauses almost always carry two distinct failure modes rather than one decorated claim."
+  }
+}

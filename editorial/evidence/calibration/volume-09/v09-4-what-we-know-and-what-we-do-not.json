@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v09-4-what-we-know-and-what-we-do-not",
+  "editorialId": "volume-09",
+  "sectionHeading": "## §4 — What We Know, and What We Do Not",
+  "currentHeading": "## What the Design Holds, and What Remains Open",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "the unit is sound",
+      "the first ground exists",
+      "the sequence is settled",
+      "open problems",
+      "mechanism designers"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0031",
+      "CTD-0044",
+      "CTD-0046",
+      "CTD-0006"
+    ],
+    "outcome": "CTD-0031 is the governing item: Volume IX claimed solved architecture in one list while its own open-problems list contradicted it. CTD-0030 forbids the first ground exists. The prior pass replaced what we know with what the design commits to, which is the correct repair and is kept. The what we do not know list lost its addressed calls for builders, and those are restored."
+  },
+  "substitutionCheck": "Grepped. Detail without status can impersonate certainty, Claims follow evidence, the care fund and water compact paragraph, and the implementation status entry are absent from the baseline. All are retained, and the first is a volume card recurrent phrase.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Three claims of settled knowledge were correctly replaced and are not restored.",
+      "evidence": {
+        "baseline": "The unit is sound ... The first ground exists. The Cardinal Scale is not a hypothesis. It is a hundred and eight to a hundred and fifty people in a real watershed ... The sequence is settled.",
+        "shipped": "What the design commits to ... Claims follow evidence. A composite is design fiction, a founding group is not a functioning Scale, and a pilot is not proof of federation."
+      },
+      "authorizedBy": "CTD-0030 at critical severity and CTD-0031 at high severity.",
+      "diagnosis": "A retention limb for the shipped text and the strongest ledger case in the volume. CTD-0030 names these exact sentences and records that the corpus gives the same Scale six incompatible statuses. Recasting knowledge as commitment also fixes the logical fault CTD-0031 names, since a commitment can coexist with an open problem and a fact cannot. The card lists all three baseline phrases among those to reduce.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The open problems lost the call to the people who could solve them.",
+      "evidence": {
+        "baseline": "*We need the mechanism designers* ... *We need the lawyers, the structurers, and the founders of a commons* ... *We need engineers who can hold a paradox without dropping either half* ... *We need the facilitators and culture-keepers who know the practice is the product.*",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 plausibly applied to the repeated closing formula.",
+      "diagnosis": "The card names the section as a bounded invitation and the volume is addressed to builders. Each call names a discipline, which turns a list of unsolved problems into a list of open roles, and that is the difference between a warning and a recruitment. The practice is the product is also the only place the volume states why scaling the Doors is hard rather than merely unsolved.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The currency problem lost its account of why it is hard and where to begin.",
+      "evidence": {
+        "baseline": "the *accumulation* of relational standing into a portable store of value robust enough to govern access to material life runs straight through one of the hardest unsolved problems in technology, decentralized trust, at scale, in a signal people are incentivized to game. We begin where the value is already real, presence in gathering, where nothing must be stored to be real, and walk toward the horizon one solved problem at a time.",
+        "shipped": "The ontology, minting, portability, transfer, revocation, deletion, and material role of COHERENCE remain unresolved."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped entry lists seven unresolved properties. The baseline says which one is hard, why it is hard, and what an honest first step looks like. A builder can act on the second and can only worry about the first. Where nothing must be stored to be real is also the sentence that connects the currency problem back to Proof of Council.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "The reason for publishing the list was deleted.",
+      "evidence": {
+        "baseline": "We could have hidden this list. We did not, because the people we are looking for are not reassured by certainty. They are summoned by an honest unsolved problem.",
+        "shipped": "Detail without status can impersonate certainty. This list is part of the design, not an appendix to it."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Both belong and both are kept. The shipped pair states the epistemic principle. The baseline pair states the recruitment logic, which is what a section addressed to builders is for, and it is the section’s landing.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0030",
+      "effect": "paydown preserved",
+      "note": "The first ground exists, the Cardinal Scale is not a hypothesis, and the population figure are all not restored. Claims follow evidence is kept in their place."
+    },
+    {
+      "id": "CTD-0031",
+      "effect": "paydown preserved",
+      "note": "The commitments and hypotheses framing is kept, which resolves the contradiction between a solved-architecture list and an open-problems list."
+    },
+    {
+      "id": "CTD-0046",
+      "effect": "no change",
+      "note": "Council validation remains in the open list."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "paydown preserved",
+      "note": "Measurement without surveillance keeps the dangerous database, discriminatory proxy, and false oracle risks."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eleven em dashes, most of them inside bullet entries. Six set off appositives and became commas. Three introduced specifications and became colons. Two separated second movements and became periods."
+        },
+        {
+          "kind": "applied",
+          "note": "The four we need calls rendered as this needs, which keeps the address to a discipline and drops the first person plural claim about who the project has already gathered."
+        },
+        {
+          "kind": "restored",
+          "note": "The honesty preamble, the reasoning inside each commitment, the hardness of the accumulation problem and the honest first step, the timescale of trust and soil, the dangerous moment being success, the paradox held without dropping either half, the practice as the product, and the summoned by an honest unsolved problem close."
+        },
+        {
+          "kind": "kept",
+          "note": "The commitments framing, the four claims-follow-evidence distinctions, the population and federation entry, the implementation status entry, the impersonation line, and the bounded promises paragraph."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §4, What We Know, and What We Do Not. Current: What the Design Holds, and What Remains Open. The rename is required by CTD-0030 and CTD-0031, because the baseline heading promised knowledge the corpus does not have. It is the better heading. What it costs is the symmetry of the pair, which the two bold labels beneath it still carry. The volume card lists five numbered sections among the protected structural devices and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This section is the one place in the three volumes where the prior pass’s largest structural change was mandated by two ledger items at once, and the record has to say so as plainly as it says the rest."
+  }
+}

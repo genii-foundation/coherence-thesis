@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-12-how-providence-tends-the-three-primal-goods",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §12 — How Providence tends the three primal goods",
+  "currentHeading": "### How Providence Would Tend Three Primal Goods",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Cardinal Scale",
+      "ICONS",
+      "Scale",
+      "Currency of Presence",
+      "medicine",
+      "care",
+      "food"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0076",
+      "CTD-0012",
+      "CTD-0005"
+    ],
+    "outcome": "CTD-0076 forbids ICONS as a singular. The baseline calls the Cardinal Scale the first ICONS at line 242, and that phrasing is not restored. CTD-0030 at critical severity keeps the existence status of the Cardinal Scale unresolved, so the three portraits stay marked as a composite sketch. CTD-0005 governs conditionality of subsistence and is not engaged here."
+  },
+  "substitutionCheck": "Grepped. The following people are illustrative figures inside a composite Scale and They are not evidence that the Cardinal Scale is already operating are absent from the baseline. Both are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Each of the three goods lost its account of what extraction does to it.",
+      "evidence": {
+        "baseline": "Under extraction, sickness is the most reliable market there is, because the customer cannot decline; the cure that ends the revenue is the cure that does not get built, and a molecule’s carcinogenicity can be argued in the fog for a decade while the product sells.",
+        "shipped": "Extractive incentives can reward volume, dependence, and billing over prevention or time with a patient."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The customer cannot decline is the mechanism, and the molecule argued in the fog for a decade is the section calling back to the glyphosate passage in §2, which is how the audit and the proposal are joined. The shipped sentence is a generic statement about incentives that could appear in any book about healthcare.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The three closing lines of each good were deleted.",
+      "evidence": {
+        "baseline": "A coherent order would no more sell scarcity in healing than a mother would ration breath ... A coherent order funds the tending, because it has understood the tending was the thing ... A people who can feed and water themselves, and who remember in their own currency who tends their ground, have taken back the most basic sovereignty there is.",
+        "shipped": "(absent for medicine and care; partially present for food)"
+      },
+      "authorizedBy": "Compression, and catalog 4.15 plausibly applied to the closing images.",
+      "diagnosis": "Each is the paragraph’s landing and each states the standard the good is to be judged by, which is what a section called the three primal goods is for. The tending was the thing is also the sentence the second address later depends on when it asks the reader to make care visible.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F3",
+      "summary": "The three portraits lost most of what happened in them.",
+      "evidence": {
+        "baseline": "She has *time.* She sits with the diabetic grandfather long enough to learn that his true ailment is that he eats every meal alone, and then does the one thing the billing code never had a column for. She gets him to the table ... He was not a drain on the productive. He was doing the most productive work there is, keeping a human being company at the edge of life.",
+        "shipped": "In the sketch, the community provisions her with time ... Keeping another person company at the edge of life counts whether or not a system records it."
+      },
+      "authorizedBy": "CTD-0030, read as requiring the portraits be flattened, and compression.",
+      "diagnosis": "The item requires that the Cardinal Scale not be presented as operating, which the sketch framing accomplishes on its own. It does not require the sketch to stop being concrete. The one thing the billing code never had a column for is the section’s argument in an image, and He was not a drain on the productive is the sentence that indicts the accounting the volume has been auditing.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F4",
+      "summary": "The baseline’s singular use of ICONS is not restored.",
+      "evidence": {
+        "baseline": "picture three people inside the Cardinal Scale, the first ICONS, a single cell",
+        "shipped": "picture three people inside a Scale, a single cell"
+      },
+      "authorizedBy": "CTD-0076, which reserves ICONS for the plural.",
+      "diagnosis": "A retention limb for the shipped text. The item names Volume VIII line 242 as an instance and requires Scale for a single community. The re-render keeps Scale and adds the plural network in §14 where it belongs.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "The first ICONS is not restored. One community is a Scale throughout."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "query preserved",
+      "note": "The three portraits stay marked as illustrative figures inside a composite, and the section says explicitly that they are not evidence of an operating Scale. Ayan’s hive survival keeps the pass’s caution that other causes were not ruled out."
+    },
+    {
+      "id": "CTD-0012",
+      "effect": "no change",
+      "note": "The Currency of Presence is named as the record of showing up, not as a mechanism or a unit."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Ten em dashes. Five introduced specifications and became colons. Three set off appositives and became commas. Two separated second movements and became periods."
+        },
+        {
+          "kind": "restored",
+          "note": "The three extraction accounts, the three coherent-order standards, the covenant and the substrate and the sacrament, and the three portraits with their concrete acts."
+        },
+        {
+          "kind": "kept",
+          "note": "The composite sketch framing, the clinical governance and access requirements, the caution that a record cannot certify competence, the refusal to make care a performance for a ledger, the trade and climate qualification on food, and the caution about Ayan’s hives."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §12, How Providence tends the three primal goods. Current: How Providence Would Tend Three Primal Goods. The conditional in the current heading is a defensible hedge and matches CTD-0030. What it costs is small: the section already states its own provisional status four times. The volume card lists sections 1 through 16 as a protected structural device and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

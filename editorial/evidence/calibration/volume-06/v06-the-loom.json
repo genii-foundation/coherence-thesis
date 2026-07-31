@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-loom",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Loom",
+  "currentHeading": "The Loom",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Providence",
+      "loom",
+      "inversion",
+      "greatest untapped resource"
+    ],
+    "itemsRead": [
+      "CTD-0072",
+      "CTD-0055",
+      "CTD-0056",
+      "CTD-0080"
+    ],
+    "outcome": "The semantic review records that the baseline described a loom being built and that the pass described a proposed loom judged by human outcomes. That decision binds: every operational verb in the third paragraph is rendered as conditional. CTD-0080's ranking concern reaches the greatest untapped resource we possess, which is bounded to the resource we most reliably overlook."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "306 words.",
+        "shipped": "262 words, of which 1 of 12 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 12 current sentences of six words or more, 1 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chamber's coda scaffold is not restored.",
+      "evidence": {
+        "baseline": "The right people are out there, and the meeting is left to luck. ... That is why Providence exists at all.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "The voice card's known weak passages, and the semantic review's record of the coda removal.",
+      "diagnosis": "Coda scaffold not restored. The baseline closes this chamber with a divider, two italic address lines, the isolated line That is why, and a fourth italic line beginning That is why. The Volume VI voice card lists any return of the repeated divider plus That is why coda among its known weak passages, and the semantic review records the pass's removal of the scaffold as a structural repair. The address lines also tell the reader what they have felt, waited for, or were made to become, which is the defect CTD-0091 was opened for and which the corpus card forbids outright. The scaffold is therefore left removed. Where a coda carried content rather than performance, that content is restored into the chamber body.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The refusal that defines the loom lost two of its three denials.",
+      "evidence": {
+        "baseline": "Not a ruler, not a marketplace, not a machine that moves people like material, but a coordinating device built on a single inversion.",
+        "shipped": "It is neither a ruler nor a marketplace nor a machine that moves people like material."
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis.",
+      "diagnosis": "All three rejected readings are ones a reader arrives holding when a coordination system is described, so 4.3's retention limb applies. The shipped sentence keeps the denials and severs them from the positive claim, so the inversion arrives in a separate sentence with nothing to answer.",
+      "producedRule": "R-NEGATION-STACK",
+      "id": "F3"
+    },
+    {
+      "summary": "The instruments paragraph lost the devotion and the depth within one another.",
+      "evidence": {
+        "baseline": "by devices and designs and forms of intelligence turned, almost as an act of devotion, to a single end ... and by something deeper than thriving: the slow deepening of us, drawn from the resource we most reliably overlook, which is the depth within one another.",
+        "shipped": "Technology matters here only insofar as it serves those questions."
+      },
+      "authorizedBy": "Catalog 4.7 and 4.24, applied to the closing clause as gloss without substance.",
+      "diagnosis": "The card records reverence as an offered register in this volume, and almost as an act of devotion is where the chamber offers it. The depth within one another is also the sentence that connects the loom back to the unspent gift three chambers earlier.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0072",
+      "effect": "paydown preserved",
+      "note": "Providence is named as a proposed loom, and would measure and would build replace the baseline's present tense throughout."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "paydown preserved",
+      "note": "No ownership or protocol promise is restored, and the evaluation questions remain questions."
+    },
+    {
+      "id": "CTD-0080",
+      "effect": "restoration bounded",
+      "note": "The greatest untapped resource we possess is rendered as the resource we most reliably overlook, matching the corresponding Volume V decision."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. One became a comma before the positive claim in the refusal, one became a comma opening the instruments list, and one became a comma joining the societies clause."
+        },
+        {
+          "kind": "applied",
+          "note": "R-NEGATION-STACK. The three denials are kept, since the retention limb of 4.3 holds, and the positive claim follows them in the same sentence so the reader is not left holding the denials across a break."
+        },
+        {
+          "kind": "restored",
+          "note": "The weaving that turns distributed potential into coordinated capability, the three denials with their inversion, the instruments turned as an act of devotion, the two evaluation questions, and the depth within one another."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The chamber is where R-NEGATION-STACK and catalog 4.3 had to be read together rather than in sequence. The denials survive because both limbs are plausible, and the rule about not stacking them is satisfied by keeping the positive claim in the same sentence rather than by removing the denials."
+  }
+}

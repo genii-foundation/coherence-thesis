@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-the-coherence-thesis",
+  "editorialId": "volume-08",
+  "sectionHeading": "# THE COHERENCE THESIS",
+  "currentHeading": "# THE COHERENCE THESIS",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "title matter",
+      "front matter labels"
+    ],
+    "itemsRead": [
+      "CTD-0035",
+      "CTD-0103"
+    ],
+    "outcome": "CTD-0035 and CTD-0103 govern title matter and front matter label consistency. The title line is unchanged from the baseline and no item bears on it."
+  },
+  "substitutionCheck": "Identical to the baseline. Nothing to check.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "No change. The corpus title line survived the prior pass intact.",
+      "evidence": {
+        "baseline": "# THE COHERENCE THESIS",
+        "shipped": "# THE COHERENCE THESIS"
+      },
+      "authorizedBy": "Not applicable.",
+      "diagnosis": "Recorded so the section has coverage rather than an absent record. The damage report shows zero words on both sides because the heading carries no body.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "The title line unchanged."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

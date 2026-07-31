@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week",
+  "editorialId": "volume-08",
+  "sectionHeading": "## Appendix B · The First Stone — What One Person Can Lay This Week",
+  "currentHeading": "## Appendix B: The First Stone One Person Can Lay This Week",
+  "status": "open",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "lay one stone",
+      "the old wheel",
+      "neonicotinoid",
+      "production note"
+    ],
+    "itemsRead": [
+      "CTD-0106",
+      "CTD-0105",
+      "CTD-0048"
+    ],
+    "outcome": "CTD-0106 is the governing item and it was opened on this appendix. C4 forbids reintroducing a bracketed production note, C5 requires one abbreviation style throughout, and CTD-0105 requires that no production note reach reader-facing prose in any form. The appendix carries no note and its structural labels are untouched."
+  },
+  "substitutionCheck": "Grepped. They are not substitutes for policy, organizing, research, or material support and Then find the larger work it joins are absent from the baseline. Both are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The appendix lost its two framing sentences and one stone.",
+      "evidence": {
+        "baseline": "The second address insisted that you are small but not nothing, and that no curve of death was ever bent by one pair of hands alone. Here, then, is not a program but a *stone:* concrete, modest, layable inside seven days.",
+        "shipped": "No curve of death bends through one pair of hands alone. The following actions are concrete and modest enough for seven days."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Not a program but a stone is the appendix telling the reader what kind of document it is, which matters in a book that has just spent sixteen sections describing programmes. The card names lay one stone among the volume’s intentional recurrent phrases and one stone joining a larger roof among its protected images.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The final instruction lost half of itself.",
+      "evidence": {
+        "baseline": "Lay one stone. That is the whole method, and it is enough to begin.",
+        "shipped": "Lay one stone. Then find the larger work it joins."
+      },
+      "authorizedBy": "Compression, and the correct concern that personal action not be presented as sufficient.",
+      "diagnosis": "The concern is right and the shipped sentence is kept in the opening frame, where it bounds the whole list. But that is the whole method, and it is enough to begin is the answer to the reader the appendix is written for, who is not asking whether one stone is sufficient but whether it is worth laying.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0106",
+      "effect": "paydown advanced on C4, C5 unchanged",
+      "note": "C4 is satisfied: no bracketed or unbracketed production note is present in or after the appendix. C5 is not addressed. The Roots register still mixes compact source-bullet abbreviations with the expanded forms used elsewhere, and repairing that would alter structural labels, which this pass does not do."
+    },
+    {
+      "id": "CTD-0105",
+      "effect": "paydown advanced",
+      "note": "The volume no longer ends with a restated production note. The obligations it carried are recorded in CTD-0106."
+    },
+    {
+      "id": "CTD-0048",
+      "effect": "no change",
+      "note": "The appendix makes no factual claims requiring sourcing."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Three set off appositive glosses inside bullets and became commas or periods. One introduced a specification and became a colon."
+        },
+        {
+          "kind": "blocked",
+          "note": "Not restored. The second address callback, the not a program but a stone frame, the whole roof pair, the undivided hour, the true thing about the soil, staying in the pause the sauna could not hold, the three people who would help you begin one, and the closing method. All of it remains in the baseline region reproduced in the open questions."
+        },
+        {
+          "kind": "kept",
+          "note": "The statement that the stones do not substitute for policy, organizing, research, or material support, and the instruction to find the larger work each stone joins."
+        },
+        {
+          "kind": "verified",
+          "note": "All six group labels are byte identical to the pre-edit text and are untouched. Every bullet from the baseline is present."
+        },
+        {
+          "kind": "verified",
+          "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QS",
+      "question": "Structural restoration blocked on route adjudication. This section is a chapter-start region: its prose sits between a part or container label and the first chapter heading beneath it, and text in that position compiles into a section with its own public route. Expanding it revives or reshapes a retired route, which is a continuity decision rather than an editorial one. The prose is therefore left exactly as it stood and the findings below describe what the prior pass removed rather than what this pass restored. The baseline text for this region is reproduced verbatim below so the author can restore it in one edit once the route decision is made. Punctuation repair under R-PUNCT-STRUCT is still required on it, and every ledger constraint named in this record still applies to it.\n\nBASELINE TEXT:\n\nThe second address insisted that you are small but not nothing, and that no curve of death was ever bent by one pair of hands alone. Here, then, is not a program but a *stone* — concrete, modest, layable inside seven days. None of it is the whole roof. All of it is the roof. Choose one. Then, next week, choose another.\n\n**For your attention — take it back.**\n- Reclaim one full hour from the watching market this week and give it, undivided, to a person who is actually in the room with you.\n- Move one daily reflex off the feed: read the thing, walk the block, *call* the person instead of scrolling past them.\n\n**For your body and your ground.**\n- Plant one thing that feeds a bee or a bird — even a window box of native flowers — and refuse the neonicotinoid.\n- Find out where your water actually comes from, and one true thing about the soil within a mile of your door.\n- Learn one station of the old wheel: when, where you live, the light begins its return.\n\n**For your bonds.**\n- Have one conversation you would normally avoid because it might be real.\n- Refuse, once, to change the subject when someone tells you the truth about the world — stay in the pause the sauna could not hold.\n- Tell one person you are glad they exist, and mean it.\n\n**For the tending.**\n- Make one act of care *visible* this week — name it, honor it, count it — in your own household, where the wider world keeps no column for it.\n- Check on the one person you know who is carrying more than a person can carry. Do not offer advice. Offer to carry a corner.\n\n**For coordination — the actual work.**\n- Find the thing near you that already governs some part of itself — a co-op, a land trust, a mutual-aid group, a congregation that still keeps a commons — and show up once. If none exists within reach, gather the three people who would help you begin one.\n- Make your conscience cost you something small and concrete this week, and notice that you can bear the cost.\n\n**For the long view.**\n- Spend ten honest minutes thinking past the next quarter — at the scale of the children not yet born, who will inherit whatever we point the machine toward — and decide one thing differently because of them.\n\nLay one stone. That is the whole method, and it is enough to begin.\n\n---"
+    },
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: Appendix B · The First Stone, What One Person Can Lay This Week. Current: Appendix B: The First Stone One Person Can Lay This Week. The rename drops What, which makes the current title read as a noun phrase where the baseline read as a question the appendix answers. The volume card lists sections 1 through 16 as a protected structural device and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    },
+    {
+      "id": "Q2",
+      "question": "CTD-0106 C5 requires one abbreviation style across the appendix and the Roots register. The source bullets still use the compact ampersand and slash forms while the surrounding prose uses expanded forms. Repairing this touches structural labels, so it is left for the continuity owner."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "structuralHold": {
+    "kind": "chapter-start region",
+    "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
+    "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
+  }
+}

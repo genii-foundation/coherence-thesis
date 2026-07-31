@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v09-1-the-ninth-turn-where-the-eight-have-brought-us",
+  "editorialId": "volume-09",
+  "sectionHeading": "## §1 — The Ninth Turn: Where the Eight Have Brought Us",
+  "currentHeading": "## The Ninth Turn: Where the Eight Have Brought Us",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Providence",
+      "COHERENCE",
+      "Bio-Consensus",
+      "Currency of Presence",
+      "ICONS",
+      "Scale",
+      "volume titles"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0076",
+      "CTD-0030",
+      "CTD-0026",
+      "CTD-0035"
+    ],
+    "outcome": "CTD-0012 requires the Currency of Presence, COHERENCE, and Bio-Consensus to remain distinct, and the recap states the unit and the minting path separately. CTD-0076 requires Scale for one community and ICONS for the plural, which the Volume IV entry states directly. CTD-0026 and CTD-0035 govern volume titles, and the prior pass corrected several of the baseline’s invented titles; those corrections are kept."
+  },
+  "substitutionCheck": "Grepped. Volume titles including Humanity’s Most Viable Future, Purposeful, The Nest, and Presencing Genius are absent from the baseline, which used different names for the same books. The corrected titles are retained. The claimed status of the first Cardinal Scale remains unresolved is also absent and is retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Each of the eight recaps lost the sentence that made it worth reading again.",
+      "evidence": {
+        "baseline": "purpose cannot be assigned, only discovered, through recognition, the seamstress who *sees* the child, through finding the people in whose company one becomes more than oneself, at the one scale, near a hundred and fifty, where no one disappears",
+        "shipped": "It proposed that purpose is discovered through recognition, practice, and the people with whom a capacity can become contribution."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The seamstress who sees the child is the corpus image for recognition and it appears nowhere else in this volume. Where no one disappears is the reason the population figure exists at all. The shipped sentence states the conclusion of Volume V in the vocabulary of a summary, which is what a recap is supposed to avoid.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The Volume VII entry lost the line the whole corpus turns on.",
+      "evidence": {
+        "baseline": "A civilization that cannot love at the scale of two will not coordinate at the scale of eight billion.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.6 plausibly applied to the scale claim.",
+      "diagnosis": "This sentence appears in Volume VIII §4 as well, and the repetition across volumes is the corpus’s structural memory. Will not is a universal and is reduced to will find it harder. Deleting the sentence removes the only place Volume IX says why the inner practices belong in a builder’s manual.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The two closing questions were replaced rather than reordered.",
+      "evidence": {
+        "baseline": "Do you want to build it? And can you?",
+        "shipped": "Should any part of this be built? Can it be tested without betraying its principles?"
+      },
+      "authorizedBy": "The card, which states that judgment comes before allegiance and that the reader may refuse the design without being cast as morally asleep.",
+      "diagnosis": "A retention limb for the shipped text. The card is binding and it names this reordering directly. The baseline pair asks for allegiance first and capacity second, which the card forbids. The re-render keeps the shipped questions and names the baseline pair in the sentence before, so the reader can see which question the volume decided to ask.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "The Volume I and Volume III entries lost their canonical formulations.",
+      "evidence": {
+        "baseline": "because it is always spending a principal it insists on calling income ... it remembers presence so that people can find, trust, and provision one another without coercion or surveillance",
+        "shipped": "continue spending living principal as though it were income ... a trust network intended to help people find, trust, and provision one another without coercion or surveillance"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Both are quotations of the corpus’s own canon, and the baseline sets them in italics as such. Insists on calling income is the accusation, and as though it were income is a description. The Providence canon line is repeated verbatim in §3 of this volume, so the two occurrences have to match.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0012",
+      "effect": "paydown preserved",
+      "note": "COHERENCE is named as the unit of the Currency of Presence and Bio-Consensus as the primary proposed biometric minting path. No two are collapsed."
+    },
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "ICONS is the plural network, a single community is a Scale, and the Volume IV entry says so in one sentence."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "query preserved",
+      "note": "The clause stating that the claimed status of the first Cardinal Scale remains unresolved is kept inside the Volume IV entry."
+    },
+    {
+      "id": "CTD-0026",
+      "effect": "paydown preserved",
+      "note": "The corrected volume titles are kept against the baseline, which used names the corpus does not carry."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Fourteen em dashes, one or two in each recap. Six set off appositives and became commas. Five introduced specifications and became colons. Three separated second movements and became periods."
+        },
+        {
+          "kind": "applied",
+          "note": "Intelligence is not a possession sealed in a single skull rendered as it is not only that, following the Volume II correction the prior pass made, which is more accurate and is kept."
+        },
+        {
+          "kind": "restored",
+          "note": "The spiral closing, the principal quotation, the between, the Providence canon line, the crisis-timing warning, the four cannots of Volume IV, the seamstress, the nest inventory, the love at the scale of two line, and the fork and first stone of Volume VIII."
+        },
+        {
+          "kind": "kept",
+          "note": "The corrected volume titles, the unresolved status of the first Cardinal Scale, the Volume II correction, and the reordered closing questions."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §1, The Ninth Turn: Where the Eight Have Brought Us. Current: The Ninth Turn: Where the Eight Have Brought Us. Only the section number differs. The volume card lists five numbered sections among the protected structural devices and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The instructive case is the closing pair, where the voice card overrides the baseline and the shipped text is correct. It is the clearest instance in these three volumes of R-VOICE-BIND running in the prior pass’s favour."
+  }
+}

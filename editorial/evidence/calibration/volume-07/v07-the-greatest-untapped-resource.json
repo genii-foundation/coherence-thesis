@@ -3,7 +3,7 @@
   "sectionId": "v07-the-greatest-untapped-resource",
   "editorialId": "volume-07",
   "sectionHeading": "***The Greatest Untapped Resource***",
-  "currentHeading": "### The Greatest Untapped Resource",
+  "currentHeading": "### Human Capacity Is Not a Resource Deposit",
   "status": "settled",
   "opened": "2026-07-30",
   "settled": "2026-07-30",
@@ -66,7 +66,7 @@
         },
         {
           "kind": "restored",
-          "note": "The baseline heading, the seabed and mineral seam refusal, human potential and its four capacities, the finite and generative contrast, and the closing definition of the praxis."
+          "note": "The seabed and mineral seam refusal, human potential and its four capacities, the finite and generative contrast, and the closing definition of the praxis."
         },
         {
           "kind": "kept",
@@ -80,6 +80,10 @@
   "openQuestions": [
     {
       "id": "Q1",
+      "question": "Heading not changed. Baseline: The Greatest Untapped Resource. Current: Human Capacity Is Not a Resource Deposit. The current heading states the rebuttal rather than the section, so a reader meets a correction before meeting the claim it corrects. The prose now carries both. Changing the heading back would retire a public route and is not an editorial decision."
+    },
+    {
+      "id": "Q2",
       "question": "The restored section calls human potential a resource and says it is inexhaustible. The prior pass judged that this repeats the extractive logic the volume opposes. The re-render restores the passage and states the risk. This is a tone and claim scope decision that belongs to the author."
     }
   ],

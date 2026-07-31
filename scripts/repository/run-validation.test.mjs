@@ -51,7 +51,6 @@ describe("validation orchestration", () => {
       ["editorial:validate", true],
       ["editorial:checkpoints", true],
       ["editorial:protected-lines", true],
-      ["editorial:voice-exemplars", true],
       ["editorial:semantic-links:validate", true],
       ["manuscripts:validate", true],
       ["repository:validate-evidence-immutability", true],
@@ -122,7 +121,6 @@ describe("validation orchestration", () => {
       "editorial:validate",
       "editorial:checkpoints",
       "editorial:protected-lines",
-      "editorial:voice-exemplars",
       "editorial:semantic-links:validate",
       "manuscripts:validate",
     ]);

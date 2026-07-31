@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-sensemaking-at-scale",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Sensemaking at Scale**",
+  "currentHeading": "**Sensemaking at Scale**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries under import-markdown.ts.",
+    "action": "No label altered. Left exactly as it stands.",
+    "result": "Label unchanged. Route intact."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "Collective deliberation platforms offer one of the clearest tests",
+      "Pol.is works against the logic of",
+      "Yet beneath the noise lies a real shift"
+    ],
+    "result": "None appears in the baseline. All three are recasts of surviving sentences. The section also lost a two-word closing landing entirely, which is a deletion rather than a substitution."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Pol.is",
+      "Sunflower Movement",
+      "All Our Ideas",
+      "habermas machines",
+      "Anthropic",
+      "DeepMind",
+      "two thousand workers",
+      "2024 Los Angeles wildfires"
+    ],
+    "itemsRead": [
+      "CTD-0019",
+      "CTD-0013"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0019 is the governing item and names Pol.is, assemblies, and deliberative outcomes among the claims requiring primary sourcing. Every named organization, deployment, and number in this section is identical in baseline and shipped text; the re-render restores over two thousand against the pass's more than two thousand, which is the baseline's wording and the same quantity. No claim was added, removed, or rescaled."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's closing landing was deleted.",
+      "evidence": {
+        "baseline": "This is what intelligence in service of coherence looks like in practice. Not aspirational. Operational.",
+        "shipped": "This is intelligence in service of coherence in practice."
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments.",
+      "diagnosis": "Two one-word sentences, and they are the section's verdict on the evidence it has just presented. The card permits rare deliberate landings and names the contrast between patient explanation and sudden clarity among the read-aloud qualities to preserve, which is precisely what a three-paragraph survey of deployments followed by two words does. The surviving sentence also loses looks like, which is the phrase that makes the paragraph a demonstration rather than a definition.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The account of how Pol.is differs from social media was rebuilt, and its structural claim became a claim about logic.",
+      "evidence": {
+        "baseline": "Pol.is operates on a principle inverse to most social media architectures: rather than amplifying the statements that generate the most engagement, it uses machine learning to map the actual structure of public opinion, identifying clusters of agreement that exist beneath surface disagreement and surfacing the statements that bridge those clusters.",
+        "shipped": "Pol.is works against the logic of most social media architectures. Rather than amplifying statements that generate the most engagement, it uses machine learning to map the structure of public opinion, identify clusters of agreement beneath surface disagreement, and surface statements that bridge those clusters."
+      },
+      "authorizedBy": "Compression and parallelism cleanup.",
+      "diagnosis": "A principle inverse to is a precise structural relation: the same mechanism run backwards. Works against the logic of is opposition, which is weaker and vaguer. The three participles identifying and surfacing are subordinate to map, so the sentence says the mapping is what does the identifying; converted to infinitives in series with map they become three coordinate functions. And the actual structure of public opinion contrasts with the apparent structure the engagement metric produces, which is the sentence's point.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "Six smaller precisions removed across the survey.",
+      "evidence": {
+        "baseline": "tools that allow facilitators to track patterns of convergence and divergence ... to engage over two thousand workers ... organizations like Anthropic and DeepMind ... rather than driving polarization ... closer to performance art than to genuine governance innovation ... But beneath the noise, a real shift is occurring: the recognition that machine intelligence applied to deliberation ... can produce sensemaking outcomes the dominant informational architectures actively prevent",
+        "shipped": "tools so facilitators can track convergence and divergence ... to engage more than two thousand workers ... organizations such as Anthropic and DeepMind ... rather than drive polarization ... closer to performance art than to governance innovation ... Yet beneath the noise lies a real shift: machine intelligence, applied to deliberation ... can produce sensemaking outcomes dominant informational architectures actively prevent"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Patterns of convergence is what the tools actually surface; convergence alone is the phenomenon. Genuine governance innovation is the standard the Danish collective fails to meet, and without genuine the sentence says the party is not governance innovation at all, which is a different and larger claim. The recognition that names what the shift consists of, which is the paragraph's actual finding, and a real shift is occurring is a process where lies a real shift is a state. The dominant informational architectures also refers to the systems Part I described; dominant informational architectures is a general category.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "Every named deployment, organization, and number is identical in both texts and remains unsourced. Pol.is, the Sunflower Movement, All Our Ideas, the New Jersey task force, the California wildfire platform, habermas machines, Anthropic, and DeepMind are all restored exactly as the baseline states them."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks. One introduced the gloss on bridging statements and became a colon; the pass had made that repair and it stands. One introduced the appositive defining habermas machines and became a comma; the pass had made that repair and it stands, the appositive being dependent and free of internal commas."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. Left exactly as it stands."
+        },
+        {
+          "kind": "kept",
+          "note": "Both of the pass's punctuation repairs, and the whole factual middle paragraph, which it changed only in three words."
+        },
+        {
+          "kind": "restored",
+          "note": "The closing landing Not aspirational. Operational., the inverse-principle construction with its two participles, and six precisions including patterns of, over, genuine, the recognition that, and the definite article on dominant informational architectures."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Do the named deployments need dating and sourcing before publication?",
+      "context": "CTD-0019 has recorded this since 2026-07-09. The section names eight specific organizations and deployments and gives no citation for any. The restoration does not change the exposure, but the section is the volume's densest concentration of checkable current-event claims and several are the kind that go stale within a year.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, both voice cards, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's first outright deletion of a protected device rather than a compression of one: Not aspirational. Operational. was removed and nothing took its place. It is worth recording that this happened in the one section of the chapter that presents external evidence, because a passage full of named organizations reads as reportage, and a two-word verdict at the end of reportage is the easiest thing in the world to mistake for a flourish."
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §9 — The impotence of liberal democracy *(this part is allowed to be frightening)*",
+  "currentHeading": "### The Strain on Liberal Democracy",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "liberal democracy",
+      "rule of law",
+      "free press",
+      "transparency",
+      "Providence"
+    ],
+    "itemsRead": [
+      "CTD-0093",
+      "CTD-0071"
+    ],
+    "outcome": "CTD-0093 requires warning and evidence to be distinguished. The prior pass corrected impotence to strain and added the statement that Providence must be measured against democratic rights rather than presented as their successor. Both corrections are kept."
+  },
+  "substitutionCheck": "Grepped. That strain is not proof that democratic institutions are impotent and Providence must be measured against democratic rights, not presented as their spiritually superior successor are absent from the baseline and are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The four questions that make the section an argument were deleted.",
+      "evidence": {
+        "baseline": "But what happens when the actors announce they regard the whole arrangement as an obstacle? When code and capital so far outrun legislation that the law is forever litigating the last decade while the next is already deployed? When the press meant to be the immune system is itself a holding of the manor? When a transparency law is passed and then met with redaction, delay, and the quiet surveillance of the very legislators who demanded the truth?",
+        "shipped": "Their checks strain when code and capital outrun legislation, media ownership concentrates, or officials resist lawful transparency."
+      },
+      "authorizedBy": "Compression, and catalog 4.9 plausibly applied to the four when clauses.",
+      "diagnosis": "Each question is an index into a section that supplied its evidence, the first to §7, the fourth to §3, so the anaphora is doing structural work rather than decorating. Litigating the last decade while the next is already deployed is also the only place the volume says why speed is the problem rather than capture.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The opening permission was cut.",
+      "evidence": {
+        "baseline": "Here we let ourselves be afraid, briefly and on purpose.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "CTD-0093, read as requiring the frightening framing be removed.",
+      "diagnosis": "The card sets the emotional temperature at grave without apocalyptic inflation, and briefly and on purpose is exactly that bound: it licenses the fear and limits it in one clause. It also prepares the second address, which is about what to do with fear. Removing it leaves the section’s tone unexplained.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The closing refusal to soften was deleted.",
+      "evidence": {
+        "baseline": "This is the frightening part, and we will not soften it, because softening it is the very fatuousness we warned against. To insist the institutions are fine is to be well-adjusted to a sickness.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The final sentence is the epigraph returning as an argument, which is the volume’s structural signature. The word impotence does overclaim, and it is not restored. The refusal to soften is not the same claim.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0093",
+      "effect": "paydown preserved",
+      "note": "Impotence is not restored. The strain framing, the statement that strain is not proof of impotence, and the requirement that Providence be measured against democratic rights are all kept."
+    },
+    {
+      "id": "CTD-0071",
+      "effect": "no change",
+      "note": "The constitutional review of Providence remains outstanding and the section now says so in the volume’s own voice."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. Two set off appositive lists of institutions and became commas. One framed the heading parenthetical, which is not restored."
+        },
+        {
+          "kind": "applied",
+          "note": "The leaders taken as a class carry less learning, less vocation, and less grace claim is dropped. It is an unevidenced judgment about named people and CTD-0093 forbids exactly that."
+        },
+        {
+          "kind": "restored",
+          "note": "The permission to be afraid, the assumptions the old checks rest on, the four questions, and the refusal to soften."
+        },
+        {
+          "kind": "kept",
+          "note": "Strain rather than impotence, and the subordination of Providence to democratic rights."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §9, The impotence of liberal democracy, this part is allowed to be frightening. Current: The Strain on Liberal Democracy. The current heading is more defensible and the correction it carries is right. What the rename costs is the parenthetical, which told the reader that the change of temperature was deliberate and bounded. The volume card lists sections 1 through 16 as a protected structural device and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

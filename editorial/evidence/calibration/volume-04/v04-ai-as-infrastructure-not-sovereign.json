@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-ai-as-infrastructure-not-sovereign",
+  "editorialId": "volume-04",
+  "sectionHeading": "**AI as Infrastructure, Not Sovereign**",
+  "currentHeading": "**AI as Infrastructure, Not Sovereign**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "self-sovereign identity",
+      "verifiable credential",
+      "zero-knowledge",
+      "physiological wallet",
+      "trust layer",
+      "attestation",
+      "Bio-Consensus",
+      "COHERENCE",
+      "sensor",
+      "biometric"
+    ],
+    "itemsRead": [
+      "CTD-0055",
+      "CTD-0006",
+      "CTD-0012",
+      "CTD-0027",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0007"
+    ],
+    "outcome": "CTD-0055 is decisive across Part IV: the corpus describes Providence as already self-sovereign, device-local, unowned, and capture-resistant, and the item requires every such property to be stated as a requirement rather than a current fact until the protocol, threat model, and controls are published. CTD-0006 requires that no physiological measure determine governance standing, which governs the trust layer and the AI prohibitions. CTD-0012 keeps Bio-Consensus, COHERENCE, and the Currency of Presence distinct. CTD-0027 records that the AI integration decision process is undefined. CTD-0072 requires that nothing sound operational. CTD-0007 governs the self-epigraphs."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's epigraph was substituted.",
+      "evidence": {
+        "baseline": "Artificial intelligence will be what the civilizational architecture governing it makes it. The architecture is the decisive variable, not the intelligence.",
+        "shipped": "AI takes the shape of the institutions that build and govern it. Those institutions remain responsible."
+      },
+      "authorizedBy": "Not authorized by any recorded item.",
+      "diagnosis": "The baseline epigraph makes a claim about what determines AI's character and names the decisive variable. The shipped one makes a claim about institutional responsibility. Both are defensible; they are not the same sentence, and the difference is the chapter's thesis. The baseline contains one em dash, so a punctuation repair was required and a rewrite was not. The added responsibility clause is good and is kept in the chapter body.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The constitutional argument for the orientation was removed.",
+      "evidence": {
+        "baseline": "Volume III made the case that this orientation is not merely a preference but a constitutional requirement, that artificial intelligence embedded in incoherent systems amplifies incoherence, while artificial intelligence embedded in coherent systems can support coherence at scales that human coordination alone cannot achieve.",
+        "shipped": "Volume II treated artificial intelligence as a possible support for coordination rather than an answer to the governance problem."
+      },
+      "authorizedBy": "Compression, and CTD-0027 read onto the AI integration claim.",
+      "diagnosis": "The amplification argument is why the orientation is constitutional rather than cautious, and it is the corpus's link between Volume II's analysis and this chapter's prohibitions. CTD-0027 records that the integration decision process is undefined; it does not dispute the amplification claim. The shipped sentence also reattributes the argument from Volume III to Volume II.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0027",
+      "effect": "no change",
+      "note": "The restored chapter states the prohibitions and does not claim that the integration decision process exists. The item stays open."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "paydown preserved",
+      "note": "Nothing is described as deployed."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One in the epigraph separated the claim from its correction and became a comma, since the corrected term is a short appositive. One was parenthetical and became a comma pair."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped clause that the institutions that build and govern such a system remain responsible for it, carried into the chapter body rather than the epigraph."
+        },
+        {
+          "kind": "restored",
+          "note": "The baseline epigraph, the four part orientation, the amplification argument, and the chapter's three stated tasks including the governance question of who decides where the prohibition line falls."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored attribution of the orientation to Volume III differs from the shipped attribution to Volume II. Which volume established it is a canon question. Restored to the baseline's attribution and flagged.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 205,
+    "shippedWords": 67,
+    "shippedDelta": -67
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Second confirmed epigraph substitution, and the same mechanical check found it. Two in one part is enough to treat epigraph comparison as a required step rather than a spot check."
+  }
+}

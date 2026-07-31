@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-layer-2-trust-architecture",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Layer 2 [mark] Trust Architecture**",
+  "currentHeading": "### **Layer 2: Trust Architecture**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries under import-markdown.ts.",
+    "action": "No label altered. The prior pass's h3 form is left exactly as it stands.",
+    "result": "Label unchanged. Route intact."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["this layer addresses whether", "It requires mechanisms for"],
+    "result": "Neither appears in the baseline. Both are recasts of one baseline sentence that the pass split in two."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["trust architecture", "reputational signal", "gaming", "digital caste"],
+    "itemsRead": ["CTD-0040", "CTD-0055"],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0040 records that the volume promises a detailed trust architecture and reputation-gaming defenses it never supplies; this reference card restates the promise in summary form, identically in both texts, and the re-render neither enlarges nor narrows it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "One sentence naming what the layer handles and what it requires was split into two, and the colon that made the list a specification was lost.",
+      "evidence": {
+        "baseline": "Once aligned people can find each other, this layer handles whether sustained cooperation can develop: mechanisms for demonstrating trustworthiness over time, repairing ruptures, and building reputational signal that reflects real relational integrity rather than performance, virality, or gaming.",
+        "shipped": "Once aligned people can find one another, this layer addresses whether sustained cooperation can develop. It requires mechanisms for demonstrating trustworthiness over time, repairing ruptures, and building reputational signal that reflects real relational integrity rather than performance, virality, or gaming."
+      },
+      "authorizedBy": "Compression, and catalog 4.26 read onto the colon.",
+      "diagnosis": "The colon specifies. It says the three mechanisms are what handling the question consists of, which is the retention limb 4.26 states explicitly. Split into two sentences with It requires, the mechanisms become prerequisites the layer needs rather than the substance of what it does, and a reference card that lists prerequisites is describing a dependency rather than a design. Handles is also the block's plainer register, matching the system's job in Layer 1."
+    }
+  ],
+  "debtImpact": [
+    { "id": "CTD-0040", "effect": "unchanged", "note": "The trust architecture summary is identical in both texts. The promise CTD-0040 tracks is made in the chapter, not here." }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. One prohibited mark, in the label, already resolved by the prior pass's colon. No mark in the prose." },
+        { "kind": "applied", "note": "R-VOICE-BIND on the structural label. Left exactly as it stands; the label is a route." },
+        { "kind": "kept", "note": "The closing sentence, This is the layer where the project will succeed or fail, which the pass left untouched." },
+        { "kind": "restored", "note": "find each other, handles, and the colon that makes the three mechanisms a specification rather than a requirement." }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the layer label keep the prior pass's form?",
+      "context": "Baseline: a standalone bold line reading Layer 2, em dash, Trust Architecture. Current: an h3 reading Layer 2: Trust Architecture. The colon does the mark's work and the promotion makes the layer addressable. Low cost, recorded because the label is a route.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, both voice cards, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. A one-finding section, and the finding is the volume's most common single move: a colon that specified became a full stop plus a verb of requirement."
+  }
+}

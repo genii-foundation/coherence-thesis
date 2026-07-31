@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-11-the-inversion-the-same-tools-the-opposite-god",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §11 — The inversion: the same tools, the opposite god",
+  "currentHeading": "### The Same Tools, a Different Purpose",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "COHERENCE",
+      "Currency of Presence",
+      "Bio-Consensus",
+      "Membrane",
+      "Coherence Engine",
+      "Scale",
+      "social credit"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0003",
+      "CTD-0043",
+      "CTD-0054",
+      "CTD-0107",
+      "CTD-0006"
+    ],
+    "outcome": "CTD-0012 at high severity is the governing item. It names Volume VIII specifically for calling Bio-Consensus the Currency of Presence, which the baseline does at line 222. The prior pass separated COHERENCE as the unit, the Currency of Presence as the descriptive name, and Bio-Consensus as the proposed biometric minting path. That separation is kept verbatim in substance and the baseline conflation is not restored. CTD-0054 governs the right to be forgotten and the exit lifecycle, which the restored refusals name."
+  },
+  "substitutionCheck": "Grepped. Consent alone does not make the systems opposites, A protocol can still produce landlords, and the threat model list are absent from the baseline. All are retained, and the second is a volume card protected line.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The inversion, which is the section’s title and the volume’s hinge, was reduced to a statement that consent is not enough.",
+      "evidence": {
+        "baseline": "The artifice harvests that presence in order to **predict and steer you,** and must do so *without your knowing,* because a person who saw the harvest clearly would refuse it ... One is surveillance. The other is memory offered freely. The technology is cousin to the technology. The god is the opposite god.",
+        "shipped": "The artifice captures those traces to predict and steer behavior. Providence proposes participant-controlled records that help people find and trust one another. Consent changes the moral relationship, but consent alone does not make the systems opposites."
+      },
+      "authorizedBy": "Compression, and the correct objection that consent is insufficient.",
+      "diagnosis": "The objection is right and is kept. But a person who saw the harvest clearly would refuse it is the argument for why the artifice must conceal itself, and memory offered freely is the phrase the whole proposal turns on. The card names the current and currency image among the volume’s read aloud qualities and this is its section.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The three refusals lost their reasons.",
+      "evidence": {
+        "baseline": "a protocol, not a platform, no manor and no lord, because any Scale may run it on its own ground; there is no landlord to revoke it while you sleep ... it does not rate your obedience to any sovereign; it remembers trust between equals, by consent, with the right to be forgotten built in. That is the difference between a nervous system and a leash.",
+        "shipped": "It aims to be a protocol rather than a platform, to keep raw signals local, and to reject social scoring."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Each refusal answers a specific harm the book has already documented, the manor in §6, the watching in §3, the score in §3, and the reasons are what make them refusals rather than slogans. A nervous system and a leash is the section’s landing. The pass’s point that an intention is not an implementation is right and is kept, attached to the restored refusals.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The current and currency image lost its statement of what the inversion would be.",
+      "evidence": {
+        "baseline": "The most radical act available to this generation may be precisely that inversion: to take the instruments built to mine presence and turn them, deliberately, toward *remembering* it instead.",
+        "shipped": "Providence would turn attention toward trust between people."
+      },
+      "authorizedBy": "Compression, and catalog 4.6 on most radical act.",
+      "diagnosis": "May is already the hedge and the claim is bounded to a generation. Turn them, deliberately, toward remembering it instead is the proposal in one clause. The pass’s closing point, that the artifice proves capture works and not that the same instruments can measure trust, is the best objection in the section and is kept.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "The baseline conflation of Bio-Consensus with the Currency of Presence is not restored.",
+      "evidence": {
+        "baseline": "In its depth it is a currency, *Bio-Consensus, the Currency of Presence,* minted not from extraction but from genuine encounter.",
+        "shipped": "Providence is a proposed trust network whose currency is COHERENCE. The Currency of Presence is the descriptive name for that currency. Bio-Consensus is distinct."
+      },
+      "authorizedBy": "CTD-0012, at high severity, which names this volume by name.",
+      "diagnosis": "A retention limb for the shipped text and the clearest case of R-LEDGER-WINS in the volume. The item records that Volumes I and II were corrected and that Volume VIII still carried the conflation. Restoring the baseline apposition would reopen a high severity item that the pass paid down.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0012",
+      "effect": "paydown preserved",
+      "note": "COHERENCE is the unit, the Currency of Presence is its descriptive name, and Bio-Consensus is the proposed biometric minting path. The baseline apposition is not restored. This is the correction the item asked Volume VIII for."
+    },
+    {
+      "id": "CTD-0043",
+      "effect": "query untouched",
+      "note": "Coherent Resonance is not named in this section, so the Volume VII and Volume IX collision is not touched."
+    },
+    {
+      "id": "CTD-0054",
+      "effect": "no change",
+      "note": "The right to be forgotten and the export and deletion rules are named as requirements."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "paydown preserved",
+      "note": "Non-biometric access is kept in the list of requirements, so no biometric path is presented as mandatory."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Nine em dashes. Four set off appositives naming the parts and became commas. Three introduced specifications and became colons. Two separated second movements and became periods."
+        },
+        {
+          "kind": "applied",
+          "note": "Must do so without your knowing softened to must largely do so, since the absolute is not established."
+        },
+        {
+          "kind": "restored",
+          "note": "The shared raw material, the concealment argument, memory offered freely, the single function that looks like two, the three named parts, the three refusals with their reasons, the nervous system and leash close, and the current and currency inversion."
+        },
+        {
+          "kind": "kept",
+          "note": "The separation of COHERENCE, the Currency of Presence, and Bio-Consensus; the insufficiency of consent; the threat model and audit requirements; the landlords line; and the closing objection about the harder tests."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §11, The inversion: the same tools, the opposite god. Current: The Same Tools, a Different Purpose. The rename removes the inversion, which is the concept the section exists to name, and softens the opposite god to a different purpose. The card lists the same tools among the volume’s intentional recurrent phrases and it survives in both. The volume card lists sections 1 through 16 as a protected structural device and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The useful case is that the same section contains the volume’s most necessary ledger correction and its largest unforced deletion, and the record has to keep them apart."
+  }
+}

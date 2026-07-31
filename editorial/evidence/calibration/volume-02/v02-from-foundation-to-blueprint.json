@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-from-foundation-to-blueprint",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What Comes Next in This Work**",
+  "currentHeading": "**From Foundation to Blueprint**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries under import-markdown.ts.",
+    "action": "No label altered. The prior pass renamed this section and the lineage records the id. Left exactly as it stands.",
+    "result": "Label unchanged. Route intact."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["A fourth, Architecting Providence, will follow", "It means creating spaces where"],
+    "result": "Neither appears in the baseline. The first is a substitution that reverses the sentence's shape; the second supplies a subject and verb to a baseline fragment."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["The Providence Imperative", "Architecting Providence", "next volume", "forthcoming"],
+    "itemsRead": ["CTD-0064", "CTD-0035", "CTD-0057"],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0064 is the item this section most engages: it asks the author to decide whether future tense about Volumes III and IV preserves a historical publication moment or describes the current library, and notes that both volumes now exist. Baseline and shipped text are both in future tense, and the re-render keeps that tense rather than resolving the query. CTD-0035 governs title-matter consistency; the volume titles are unchanged and the pass's italicization of them is a typographic improvement that is kept."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The sentence introducing the fourth volume was reversed and its appositive broken into two flat statements.",
+      "evidence": {
+        "baseline": "It will be followed by a fourth, Architecting Providence [mark] the place where the design becomes buildable architecture: where builders, technologists, philosophers, organizers, artists, scientists, and communities move from blueprint to the specific construction of coherent civilization.",
+        "shipped": "A fourth, Architecting Providence, will follow. There, the design becomes buildable architecture, and builders, technologists, philosophers, organizers, artists, scientists, and communities move from blueprint to the specific construction of coherent civilization."
+      },
+      "authorizedBy": "Compression and a punctuation repair made by splitting rather than rebuilding.",
+      "diagnosis": "The baseline sentence continues Even that volume is not a final answer, and It will be followed keeps the third volume as the subject so the succession is felt as a chain. A fourth will follow starts a new subject and the chain breaks. The place where is also an identification the appositive delivers, and the second where repeats it so the list of builders arrives inside the same definition; There, the design becomes turns the definition into a location report."
+    },
+    {
+      "id": "F2",
+      "summary": "The closing fragment naming the first practical task was given a subject and a verb.",
+      "evidence": {
+        "baseline": "Before infrastructure, governance, or planetary systems comes the simplest and most necessary task: bringing people together. Creating spaces where thoughtful human beings can encounter one another across disciplines, backgrounds, and worldviews [mark] to refine, challenge, test, and evolve these ideas in common.",
+        "shipped": "... bringing people together. It means creating spaces where thoughtful human beings can encounter one another across disciplines, backgrounds, and worldviews to refine, challenge, test, and evolve these ideas in common."
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments.",
+      "diagnosis": "Bringing people together and Creating spaces are a matched pair of gerunds, the second unfolding the first, and the fragment is what makes them a pair. It means creating breaks the parallel and inserts an explanation between the task and its content. The removed mark also mattered: without it, worldviews to refine reads for a beat as though the worldviews are doing the refining."
+    },
+    {
+      "id": "F3",
+      "summary": "Three qualifiers removed, each narrowing the scope of a claim about the volumes ahead.",
+      "evidence": {
+        "baseline": "the philosophical, biological, technological, and civilizational foundations of coherence itself ... the question now emerging beneath this work ... build coherence-based civilization [mark] economically, technologically, ecologically, culturally, psychologically, and spiritually",
+        "shipped": "the foundations of coherence ... the question emerging beneath this work ... build coherence-based civilization economically, technologically, ecologically, culturally, psychologically, and spiritually"
+      },
+      "authorizedBy": "Compression and catalog 4.21 applied to itself.",
+      "diagnosis": "Coherence itself distinguishes the substrate from the four adjectives just listed, which name the lenses rather than the thing. Now emerging dates the question to this moment, which is the paragraph's reason for existing. And the mark before the six adverbs held them apart from the verb they modify; deleted entirely, the sentence reads as though civilization is to be built economically in the sense of cheaply."
+    }
+  ],
+  "debtImpact": [
+    { "id": "CTD-0064", "effect": "unchanged, query still open", "note": "The section describes Volumes III and IV in future tense in both texts, and the re-render preserves that tense. CTD-0064 asks whether this preserves a historical publication moment or is simply stale. Nothing here decides it." }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Three prohibited marks. One introduced the appositive naming the fourth volume and became a colon, with the baseline's internal colon reduced to a comma so the sentence carries only one. One preceded the six adverbs and became a comma, the phrase being an adverbial apposition free of internal commas. One preceded the infinitive purpose clause in the closing fragment and became a colon, since a comma there would have made a fifth in the sentence." },
+        { "kind": "applied", "note": "R-VOICE-BIND on the structural label. Left exactly as it stands." },
+        { "kind": "kept", "note": "The pass's italicization of the volume titles, which is a typographic improvement consistent with the corpus." },
+        { "kind": "kept", "note": "The italic question and the closing couplet, both untouched by the pass." },
+        { "kind": "restored", "note": "The succession sentence with It will be followed and its double where, the Creating spaces fragment, and three qualifiers: coherence itself, now emerging, and the mark before the six adverbs." }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the section keep future tense about Volumes III and IV?",
+      "context": "Both now exist in the published library. CTD-0064 has asked this since 2026-07-09. The re-render preserves the baseline's future tense rather than resolving the query, per tonight's policy.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Should the heading return to What Comes Next in This Work?",
+      "context": "Baseline heading names the section's job in the reader's terms. The current heading, From Foundation to Blueprint, is a metaphor that presumes the reader already accepts the blueprint framing the next paragraph introduces. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, both voice cards, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 is the third instance in the volume of the same operation: a gerund fragment that unfolds the sentence before it is given a subject and a verb, and the pair it belonged to dissolves. The volume uses that construction deliberately at the close of sections, and a catalog reader will meet it once more in every remaining chapter."
+  }
+}
