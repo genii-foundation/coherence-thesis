@@ -178,6 +178,24 @@
       "area": "editorial",
       "detail": "117 baseline headings against 89 current. Twenty-eight sections were merged or dropped outright, which is a structural change rather than a line edit and needs adjudication before its sections can settle.",
       "blockedBy": []
+    },
+    {
+      "id": "T-019",
+      "title": "Re-render volumes II to IX from baseline, worst damage first",
+      "tier": "amber",
+      "status": "in-progress",
+      "area": "editorial",
+      "detail": "408 sections. Volume I took a night for 28, so this is roughly 68 hours at that depth and cannot finish in one night. Running worst first so each night buys the most review value. Damage map: npm run editorial:damage.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-020",
+      "title": "Decide how to re-render Volume VII",
+      "tier": "red",
+      "status": "pending",
+      "area": "editorial",
+      "detail": "Its baseline carries no markdown headings, only bold and italic display matter, so section matching does not apply and the damage map cannot measure it. Needs a re-cut baseline or a different comparison unit. Author decision.",
+      "blockedBy": []
     }
   ]
 }
