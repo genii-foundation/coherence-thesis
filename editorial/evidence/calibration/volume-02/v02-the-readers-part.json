@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-readers-part",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What This Asks of the Reader**",
+  "currentHeading": "**The Reader's Part**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This section sits beneath a chapter heading and is not a part introduction. The volume's part-label regions remain byte-identical to the baseline.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "may agree, resist, remain uncertain, or carry only parts",
+      "language they can use or reject",
+      "Readers must decide what, if anything, the account clarifies"
+    ],
+    "result": "None appears in the baseline. This is the largest substitution in Volume II. Two entire paragraphs were rewritten, not compressed: every sentence claiming the reader already perceives something was replaced with a sentence granting the reader the right to disagree. Four parallel sentences naming what the book has named for the reader were replaced by one sentence saying readers must decide what the account clarifies."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "reader autonomy",
+      "already perceived",
+      "the work they can already feel",
+      "conscription",
+      "interpretive autonomy"
+    ],
+    "itemsRead": [
+      "CTD-0038",
+      "CTD-0020"
+    ],
+    "outcome": "CTD-0038 names this section as the source of the problem it records, in its own words: the revised Reader's Part gives readers full interpretive autonomy, while the Final Note still asserts that some part of the reader already recognizes the work being asked of them. The item also states plainly that the baseline was consistently more conscripting, so the revised posture is a substantive philosophical change rather than neutral copyediting. That is the item conceding the pass made a philosophical change and asking the author to ratify or reject it. Its status is query. No decision exists, so nothing outranks the baseline, and under tonight's policy the baseline is restored in full and flagged. Restoring it also removes the internal contradiction CTD-0038 recorded, because the Final Note has been restored to its baseline form in the same pass; both closings are now conscripting, which is the baseline's consistent position."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The paragraph naming what the book has done for the reader was replaced with one granting the reader the right to reject it.",
+      "evidence": {
+        "baseline": "If the book has done its work, the reader now has language for things they already perceived. The destabilization that has been operating beneath the surface of their daily life has been named. The fragmentation they have been navigating ... has been described. The work they can already feel is being asked of them has been articulated. The threshold they have been crossing has been recognized.",
+        "shipped": "If the book has done its work, it has given readers language they can use or reject. It has named one account of the destabilization beneath daily life, traced fragmentation across institutional, ecological, relational, and informational dimensions, and proposed forms of work that such conditions may require. Readers must decide what, if anything, the account clarifies."
+      },
+      "authorizedBy": "Catalog 4.16, performed intimacy, and the reader-autonomy position CTD-0038 records as unratified.",
+      "diagnosis": "Four sentences in the passive voice, each naming something as already true of the reader and then reporting that the book has given it a name. The passive is doing the work: has been named puts the naming after the perceiving, so the book is credited with articulation rather than with instruction. Every one of the four makes a claim about the reader's inner life, which the corpus card forbids and which the shipped version removes completely. One account of the destabilization and Readers must decide are the opposite posture: the book offers a hypothesis, the reader adjudicates. Both are coherent positions. Only one is the author's, and no record says which.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The opening sentence's claim that the reader has already been changed was replaced with a menu of permitted responses.",
+      "evidence": {
+        "baseline": "A reader who has made it this far has been changed by the book, or has refused to be. Both are legitimate responses. The book has not been written to manipulate readers into agreement.",
+        "shipped": "Readers who have made it this far may agree, resist, remain uncertain, or carry only parts of the argument forward. The book does not ask for agreement as proof of attention."
+      },
+      "authorizedBy": "Catalog 4.16 and 4.22 read onto the binary.",
+      "diagnosis": "Has been changed, or has refused to be is a binary that leaves the reader no neutral position: either the book worked or the reader declined it. That is conscripting, and Both are legitimate responses is the baseline's own attempt to soften what it has just asserted. The four-option menu removes the pressure entirely and adds remain uncertain, which the baseline's binary explicitly excludes. Manipulate readers into agreement is also a stronger disclaimer than does not ask for agreement as proof of attention, because it names the thing being refused rather than the test being waived.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "Six qualifiers removed from the closing paragraph, each marking the book's own limits.",
+      "evidence": {
+        "baseline": "The Final Note that follows the next chapter makes the specific invitation as direct as the book is capable of making it. Before that invitation, though, there is one more thing the closing has to do ... Honesty about what the project is, what it is not, and what it has not yet figured out has been a discipline throughout ... It is the most direct accounting the book is capable of making about the choices the book itself has made.",
+        "shipped": "The Final Note after the next chapter makes a specific invitation as direct as the book can make it. First, the closing must do one more thing ... Throughout, it has maintained a discipline of honesty about ... It is the book's most direct accounting of its own choices."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "As direct as the book is capable of making it concedes a ceiling on the book's directness; as direct as the book can make it reads as a boast. The specific invitation refers forward to an invitation the reader will recognize; a specific invitation is indefinite. And the choices the book itself has made puts the emphasis on itself, which is the sentence's point: the accounting is reflexive, about the book's own conduct rather than about Providence's.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0038",
+      "effect": "restoration removes the internal contradiction the item records, item still a query",
+      "note": "CTD-0038's blocking finding was that this section and the Final Note use incompatible theories of consent. Both are now restored to their baseline forms, which are consistent with each other and consistently conscripting. The contradiction the item recorded is therefore gone, but the underlying question is not: the author must still choose whether the published volume claims access to the reader's perception. The re-render has made the choice cleaner by presenting one coherent option rather than two halves of two options."
+    },
+    {
+      "id": "CTD-0020",
+      "effect": "restoration increases exposure, item already open",
+      "note": "The work they can already feel is being asked of them is restored. CTD-0020 names passages that declare a reader's perception accurate among the tonal decisions the author must make."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND. The corpus card forbids claiming access to private experience and telling readers what they feel. The restored passage does this five times. It is restored anyway, because CTD-0038 records the reader relationship as an unresolved author decision and explicitly characterizes the pass's change as substantive philosophy rather than copyediting. An editorial pass may not settle that by rewriting, which is the same category as the Final Note finding."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. No prohibited marks in this section."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. The baseline heading, What This Asks of the Reader, states an imposition; the current heading, The Reader's Part, states a share. The heading change is itself part of the same philosophical move. Left exactly as it stands and recorded as an open question."
+        },
+        {
+          "kind": "restored",
+          "note": "The opening binary with Both are legitimate responses, the four passive sentences naming what the reader already perceived, and six qualifiers in the closing paragraph including is capable of, the specific invitation, and the book itself."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Does the published volume claim that the reader already perceives what it describes?",
+      "context": "This is CTD-0038's central question and this section is where it is decided. Both closings are now restored to the baseline's consistent conscripting position. Choosing the autonomous position means rewriting this section, the Final Note, and If You Are Already Doing the Work as one sequence; the pass's versions of all three exist in the wave-one shipped text and are available as a starting point.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Should the heading return to What This Asks of the Reader?",
+      "context": "The two headings encode the two positions. What This Asks of the Reader is an imposition; The Reader's Part is a share. Whichever way Q1 is decided, the heading should match it. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, but a category is missing from the standard and this is the second section to expose it. The prior pass took an open author question about reader consent and settled it by rewriting the evidence, in this section toward autonomy and in the Final Note toward autonomy as well. Neither change is a defect by any catalog entry, both improve the prose by ordinary measures, and together they resolved a query that CTD-0038 had explicitly reserved for the author. The standard names R-LEDGER-WINS for the case where a decision exists and the baseline contradicts it. It has no name for the inverse: where no decision exists and a pass makes one silently. On the counter-evidence question, honesty requires separating two axes. On claims about the reader's inner state the pass moved consistently toward autonomy, in this section, the Final Note, and If You Are Already Doing the Work. On directive mood it moved the other way in If You Are Not Sure, adding imperatives where the baseline offered. Those are different axes, so the counter-example neither confirms nor refutes the pattern; it shows the pass was not applying a single doctrine, which makes the inner-state changes look less like philosophy and more like a repeated local judgment. That is a weaker claim than doctrine and a better-supported one."
+  }
+}

@@ -69,6 +69,13 @@ interface SectionDamage {
   lostLandings: number;
   hasRecord: boolean;
   matched: boolean;
+  /**
+   * Set when the lineage sends this baseline section to a current section another
+   * baseline section already claimed. That is a recorded merge, not a deletion, and it
+   * is a third state: the prose belongs in the surviving section and no heading needs
+   * to be recreated to restore it.
+   */
+  mergedInto?: string;
 }
 
 const WORD = /[A-Za-z0-9'’-]+/g;
@@ -156,23 +163,52 @@ function analyse(editorialId: string): SectionDamage[] {
    * whichever survived the overwrite and the report invented severity it could not
    * substantiate. The nth baseline occurrence now matches the nth current occurrence.
    */
-  const buckets = new Map<string, Section[]>();
-  for (const section of splitSections(readFileSync(currentPath, "utf8"))) {
-    const id = `v${number}-${slugify(section.heading.replace(/\*/g, ""))}`;
-    const list = buckets.get(id) ?? [];
-    list.push(section);
-    buckets.set(id, list);
-  }
-  const claimed = new Set<Section>();
-  const claim = (id: string | undefined): Section | undefined => {
-    if (!id) return undefined;
-    return (buckets.get(id) ?? []).find((s) => !claimed.has(s));
-  };
+  /**
+   * Monotonic matching. Ids alone are ambiguous here: headings repeat across chapters,
+   * so a baseline section can match a current section belonging to a different chapter,
+   * and a deleted section can claim its neighbour through the lineage alias. Both were
+   * observed, the second reporting a section deleted outright as plus 120 percent.
+   *
+   * Documents do not reorder, so a match is only valid after the previous match. Walking
+   * both sides forward resolves duplicates by position and leaves a genuinely deleted
+   * section unmatched, which is the one thing the report must never get wrong.
+   */
+  const currentList = splitSections(readFileSync(currentPath, "utf8"));
+  const currentIds = currentList.map(
+    (section) => `v${number}-${slugify(section.heading.replace(/\*/g, ""))}`,
+  );
+  const ids = baseSections.map(
+    (section) => `v${number}-${slugify(section.heading.replace(/\*/g, ""))}`,
+  );
+  const matched = new Array<Section | undefined>(baseSections.length);
+  const mergedInto = new Array<string | undefined>(baseSections.length);
+  const takenBy = new Map<number, string>();
+  let cursor = 0;
+  ids.forEach((id, i) => {
+    const wanted = new Set([id, ALIASES.get(id)].filter(Boolean) as string[]);
+    // Look ahead a bounded distance so one deletion does not desynchronise the rest.
+    for (let j = cursor; j < currentList.length && j < cursor + 8; j += 1) {
+      if (wanted.has(currentIds[j] as string)) {
+        matched[i] = currentList[j];
+        takenBy.set(j, id);
+        cursor = j + 1;
+        return;
+      }
+    }
+    // Nothing ahead. If the alias points at a section already claimed, this is a merge.
+    const target = ALIASES.get(id);
+    if (!target) return;
+    for (const [j, owner] of takenBy) {
+      if (currentIds[j] === target && owner !== id) {
+        mergedInto[i] = `${target} (with ${owner})`;
+        return;
+      }
+    }
+  });
 
   return baseSections.map((section, index) => {
-    const sectionId = `v${number}-${slugify(section.heading.replace(/\*/g, ""))}`;
-    const current = claim(sectionId) ?? claim(ALIASES.get(sectionId));
-    if (current) claimed.add(current);
+    const sectionId = ids[index] as string;
+    const current = matched[index];
     const baselineWords = words(section.body);
     const currentWords = current ? words(current.body) : 0;
     return {
@@ -187,6 +223,7 @@ function analyse(editorialId: string): SectionDamage[] {
       lostLandings: Math.max(0, landings(section.blocks) - (current ? landings(current.blocks) : 0)),
       hasRecord: existsSync(path.join(editorialCalibrationRoot, editorialId, `${sectionId}.json`)),
       matched: Boolean(current),
+      mergedInto: mergedInto[index],
     };
   });
 }
@@ -220,7 +257,7 @@ function main(): void {
     for (const r of [...rows].sort((a, z) => a.delta - z.delta).slice(0, 12)) {
       process.stdout.write(
         `  ${String(r.delta).padStart(4)}%  ${String(r.baselineWords).padStart(5)}w  ` +
-          `${r.hasRecord ? "rec" : "   "} ${r.matched ? "   " : "GONE"}  ` +
+          `${r.hasRecord ? "rec" : "   "} ${r.matched ? "    " : r.mergedInto ? "MERG" : "GONE"}  ` +
           `${r.lostDenials ? `-${r.lostDenials}d` : "   "} ${r.lostLandings ? `-${r.lostLandings}l` : "   "}  ` +
           `${r.heading.slice(0, 52)}\n`,
       );

@@ -536,9 +536,9 @@ Every previous attempt to measure human trustworthiness or reputation has operat
 
 The body cannot strategize in the same way. This is the central physiological fact on which Providence rests. The autonomic nervous system governs heart rate, respiration, vocal tone, and the subtle musculature of social engagement, and it operates largely below the threshold of conscious control. The vagus nerve does not perform. The radial pulse does not know it is being observed. The heart rate variability signal during a moment of genuine connection is different from the signal during a performed connection, and there is no act of will that can reliably fabricate the difference in real time.
 
-What the body reveals is not a verdict on a person. Providence does not measure wisdom, virtue, goodness, or the depth of a soul. A regulated nervous system can belong to a manipulative person. A dysregulated nervous system can belong to someone acting with extraordinary courage and care.
-
 *It is now possible, for the first time in human history, to ground social trust in physiological reality, not to replace the felt sense of trust, but to give it a substrate of verification that makes it harder to counterfeit and easier to develop.*
+
+We are careful about what this does and does not claim. We do not measure wisdom. We do not measure virtue, or the depth of a soul, or the goodness of a person. These are not measurable by any instrument, and the claim to measure them would be both false and dangerous. What we measure is more modest and more precise: the conditions of autonomic regulation, of embodied presence, and of the neurochemical states associated with trust and genuine connection, which are necessary, though never sufficient, for the kind of encounter in which wisdom can be transmitted, received, and acted upon. We are not building an instrument that reads the soul. We are building an instrument that detects whether the conditions for soul-to-soul encounter are present. That is a smaller claim, a defensible claim, and, we believe, enough.
 
 That distinction is the line between a reflective instrument and a biometric caste system.
 
