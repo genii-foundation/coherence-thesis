@@ -8,11 +8,29 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "anchorFor": [
+    "v06-the-between",
+    "v06-the-unspent-gift",
+    "v06-the-pathway",
+    "v06-the-seeing",
+    "v06-your-people",
+    "v06-the-loom",
+    "v06-the-currency",
+    "v06-the-right-size",
+    "v06-the-dragon",
+    "v06-the-smallest-nest"
+  ],
   "baseline": {
     "batchId": "2026-07-09-production-pass",
     "path": "baseline.md",
     "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 9,
+    "testableBaselineSentences": 16,
+    "note": "Standing procedure, run before any pairing test: 9 of 16 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
   },
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
@@ -73,6 +91,39 @@
       "diagnosis": "A current we could afford to pretend in is the chapter's sharpest formulation and the reason the argument is historical rather than moral. The survival sentence is the volume's one moment of alarm and the card permits it, since the emotional temperature is to arise from the argument and this one has been argued.",
       "producedRule": "R-PROPORTION",
       "id": "F4"
+    },
+    {
+      "id": "F5",
+      "summary": "Anchor finding under R-REFRAIN-COST: the divider plus That is why coda recurs eleven times, once per chamber, and was removed by one decision.",
+      "evidence": {
+        "baseline": "Each chamber closes with the em dash divider, two italic address lines about what the reader has felt, waited for, or was made to become, the isolated line That is why., and a final italic line beginning That is why that states the chamber's reason.",
+        "shipped": "(removed volume-wide)"
+      },
+      "authorizedBy": "The Volume VI voice card's known weak passages, the semantic review's coda-removal record, and CTD-0091.",
+      "diagnosis": "Eleven instances, chambers I through XI. The address lines assign feelings and destiny to the reader, so CTD-0091 is engaged once per instance, eleven times, by one decision; recording it here once with its count keeps eleven records from restating one ruling. The single edit that settles every instance is the scaffold removal with content-bearing coda lines folded into chamber bodies. Fold audit across the eleven: content was folded in chambers II, the Bateson and Buhner attribution; X, the Seven Initiates; and XI, the human condition and the work. One content line in XI, And now it is yours, was missed by the fold and is restored by this audit in that chamber's record. The one remaining unrestored content line is this chamber's fourth coda line about why the six volumes were written, which stands as an open question below.",
+      "producedRule": "R-REFRAIN-COST"
+    },
+    {
+      "id": "F6",
+      "summary": "The re-render substituted notice for feel in the chamber's closing task, unauthorized by any recorded decision.",
+      "evidence": {
+        "baseline": "So the first task, before any other, is to feel where the current actually runs, and to stop building against it.",
+        "shipped": "So the first task, before any other, is to notice where the current actually runs, and to stop building against it."
+      },
+      "authorizedBy": "Nothing recorded. Generation A's reasoning does not mention the change.",
+      "diagnosis": "The reader-autonomy correction governs claims about what a reader has felt, and its recorded span in this chamber is You have felt it. The closing sentence is an invitation to a task, not a diagnosis of the reader, so the correction's width ends before it. Feel is also the chamber's own register: its argument is that the current can be felt, and the card protects that sensory line. Notice is from nowhere and no more precise. Restored by this audit.",
+      "producedRule": "R-CORRECTION-SCOPE"
+    },
+    {
+      "id": "F7",
+      "summary": "The re-render replaced the baseline's actor and object, our technology and the truth, with an agentless abstraction, and recorded the result as a restoration.",
+      "evidence": {
+        "baseline": "What is new in our moment is that our technology has made the truth explicit: we can now see, in plain numbers and gathering consequences, that the extractive current runs against the grain of life...",
+        "shipped": "What is new in our moment is that the accounting has become explicit. We can now see..."
+      },
+      "authorizedBy": "Generation A's reasoning claims the explicit accounting was restored; no recorded decision names the sentence.",
+      "diagnosis": "The ledger decision on this chamber removes metaphysical certainty from coherence's definition and does not reach this sentence. The baseline names who made what visible; the substitute has no actor and turns the claim into an event that happened on its own, the construction catalog 4.28 warns against. The baseline's colon also specifies what became explicit, which the sentence break dropped. CTD-0016 was read and is a query about coherence governing technological power in Volumes I and II; it does not touch a claim that technology made costs visible. Restored, with the colon, by this audit.",
+      "producedRule": "R-PROPORTION"
     }
   ],
   "debtImpact": [
@@ -115,6 +166,42 @@
           "note": "The three clauses of the definition, the three places coherence can be felt, the wood grain, the current we could afford to pretend in, the explicit accounting, and the survival sentence."
         }
       ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "This record is the anchor for the volume's coda refrain under R-REFRAIN-COST; the count and the fold audit are recorded as F5, and the ten other chambers cite it."
+        },
+        {
+          "kind": "applied",
+          "note": "R-CORRECTION-SCOPE and R-REGISTER-DICTION. Generation A's notice was returned to the baseline's feel in the closing task; CTD-0091's recorded span in this chamber is You have felt it, and the closing sentence invites a task rather than diagnosing the reader. Recorded as F6."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PROPORTION. Generation A's the accounting has become explicit was returned to the baseline's our technology has made the truth explicit, with the baseline's colon; no recorded decision names the sentence. Recorded as F7. Ledger swept for technology, truth explicit, and the sentence's terms: no item governs them."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The committing half of the durability pair, Those built against it spend themselves holding together what is always trying to come apart, survives verbatim; the hedge sits only on the positive claim, at the width CTD-0080's decision names."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        }
+      ],
+      "metrics": {
+        "words": 315,
+        "baselineWords": 350
+      }
     }
   ],
   "rulings": [],

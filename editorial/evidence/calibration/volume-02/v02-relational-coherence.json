@@ -136,6 +136,22 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: the chapter epigraph's attribution is one of the nine instances anchored in v02-the-crisis-beneath-the-crises; cited, not re-counted.",
+      "R-CAUTIOUS-HALF: the chapter's committing halves survive beside their hedges: The alignment crisis is not merely computational. It is relational., and not difference, but the capacity to remain in regulated relationship across difference. The protected italic landing, Coherence is therefore not the absence of stress. It is the capacity to remain intelligently related under stress., keeps both limbs in one movement.",
+      "R-PAIRED-DELETION: co-regulation is minted in Chapter Two and used here with both ends present; the question aligned with which humans, under what relational conditions is first asked here and returned to in What Alignment Research Can Do, where the return attributes it to Chapter Six rather than to this chapter. That imprecision is baseline-native on both ends and is flagged in the audit of the returning section, not repaired here.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0038's reader-autonomy question stands open behind Q1.",
+      "R-SUBSTITUTION-CREDIT: the kept colons and the two-sentence rebuild of the communication-architectures list are R-PUNCT-STRUCT compliance for prohibited marks; the rebuild, The communication architectures of the present are text-based, asynchronous, algorithmically mediated. They strip away most of the embodied signals, does the paired dashes' work with baseline vocabulary. No uncredited discretionary improvement.",
+      "R-DEIXIS: the opening address Most people know the difference is held by open question Q1 under catalog 4.16; the closing chapters keep the reader in the live condition with this layer and what modern civilization increasingly lacks. No new instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's six findings hold under the twenty-rule standard, including the R-NEGATION-STACK adjudications. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

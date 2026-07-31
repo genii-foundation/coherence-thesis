@@ -111,5 +111,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. The section id keeps its pre-rename identifier while the census heading reads Why Mentors Come First; id and heading both verified stable.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. May follow considerably faster for one can only presume how much faster is the recorded 4.13 repair of an unsupported presumption and stands.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The spread paragraph is pass-authored and gives the leverage claim its mechanism.",
+        "evidence": {
+          "baseline": "(absent; the baseline asserts leverage without showing propagation)",
+          "shipped": "A mentor helps one group slow an argument enough to hear its actual disagreement. Members of that group carry the practice into another room, then another."
+        },
+        "note": "The baseline argues the bottleneck is coordination quality and never shows how training one group reaches a second. The kept paragraph supplies the propagation step in a concrete room, and its testable-hypothesis close is the honest bound. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

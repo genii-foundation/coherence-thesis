@@ -116,5 +116,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The card names this section as an exemplar of the volume’s voice and cites its opening anchor, which is the shipped opening rather than the baseline’s. Recorded in open questions on the birthright record as a corpus level question about the card."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The narrowed Roman account, tutelary spirit for tutelary deity, was held to shape for shaped, and the dropped Every person had one, is the CTD-0082 recorded narrowing and stands under R-LEDGER-WINS; the etymology marker stays visibly unresolved. The protected line on mentors is present and pass-authored, noted under T-022.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The closing paragraph on the word's strangeness is pass-authored and does work the baseline leaves undone.",
+        "evidence": {
+          "baseline": "(absent)",
+          "shipped": "The strangeness of *genius* matters because it protects the person from being treated as a bundle of skills waiting for extraction."
+        },
+        "note": "The baseline recovers the etymology and never says why the recovery matters to this volume's argument. The pass-authored sentence ties the old word to the extraction thesis, which is the connection the whole chapter exists to make. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

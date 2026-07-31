@@ -4,7 +4,7 @@
   "editorialId": "volume-07",
   "sectionHeading": "**Part IX**",
   "currentHeading": "## Part IX: The Retreats",
-  "status": "settled",
+  "status": "superseded",
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
@@ -73,5 +73,7 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The record exists so that the rename is on the record rather than inferred, since the damage report cannot match a bodyless display line to a merged heading and reports it as a total loss."
-  }
+  },
+  "supersededBy": "v07-part-ix-the-retreats",
+  "supersededNote": "Superseded 2026-07-31. This record measured a fragment produced by a reporting tool that could not see the volume's two-line part labels: either the bodyless bold label or the heading-less prose beneath it. The corrected-boundary record named in supersededBy adopts every finding of this record that survives the boundary correction and executes the restoration its structural hold deferred. Preserved unedited as history per the record lifecycle."
 }

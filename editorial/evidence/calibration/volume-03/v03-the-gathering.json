@@ -1,0 +1,134 @@
+{
+  "sectionId": "v03-the-gathering",
+  "sectionHeading": "The Gathering",
+  "currentHeading": "The Gathering",
+  "anchor": "v03-the-year-of-the-weaver",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "358 baseline words to 169 shipped words, minus 53 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "cardiac coherence",
+      "synchrony",
+      "eleven nervous systems",
+      "furnace",
+      "minted"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0015"
+    ],
+    "outcome": "No recorded decision governs this section. The synchrony claim sits in CTD-0009's verification backlog and the minting-density claim engages CTD-0015; both are open, so the baseline governs and both are flagged."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The synchrony event was hedged from a felt certainty into an interesting result, and the coda was deleted.",
+      "evidence": {
+        "baseline": "She had felt it as a change in the air. The instruments had registered it as a measurable physiological event. Both descriptions were true.",
+        "shipped": "Later analysis suggests a period of increased physiological synchrony among several participants. The result is interesting, not conclusive. Shared stillness, shared task, respiration, posture, and social connection may all contribute."
+      },
+      "authorizedBy": "Compression and caution.",
+      "diagnosis": "Both descriptions were true is the section's thesis: the felt event and the measured event are one event. The shipped confound list is a fine methods note that belongs in the appendix's verification queue, not inside the one scene whose job is to let the reader feel the claim the appendix will then test. The chapter disclaimer already prevents the scene from being read as evidence.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F2",
+      "summary": "The protected image lost its coda framing.",
+      "evidence": {
+        "baseline": "She had not believed it, quite, until she felt eleven nervous systems settle into a single rhythm around one man's grief, and understood that what she was feeling was the thing the instruments were seeing.",
+        "shipped": "She later describes the moment as eleven nervous systems settling around one man's grief."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped text kept the protected image but demoted it from the narrator's coda to Maren's description, and cut the belief arc, had not believed it, quite, until. The arc is what makes the image land as conversion rather than metaphor. One instance of the italic-coda refrain, counted in the anchor record."
+    },
+    {
+      "id": "F3",
+      "summary": "The furnace sentence was deleted.",
+      "evidence": {
+        "baseline": "The gathering was, quite literally, a furnace in which the Currency of Presence was minted at a density that solitary life never permits.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the sentence that connects the gathering to the currency architecture, and its density claim is why the second door exists. Its loss orphans the economics of gatherings that chapter twenty's first niche later depends on. The minting claim is CTD-0015 material and is flagged there, not resolved."
+    },
+    {
+      "id": "F4",
+      "summary": "Seven prohibited marks.",
+      "evidence": {
+        "baseline": "The agenda mark, the exists mark, the not-alone mark, the grief fence, the synchronize mark, and the coda mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The agenda mark took a colon before its enumeration. The exists mark became a comma with because kept. The not-alone mark took a colon because the clause specifies what not alone means. The grief fence became commas. The synchronize appositive took a comma, and the coda's final mark became a comma joining the understanding to the feeling it completes."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The documented phenomenon of cardiac coherence among people in deep shared attention is restored without a named source. It is exactly the class of claim the item's backlog covers, and appendix section V holds its verification queue."
+    },
+    {
+      "id": "CTD-0015",
+      "effect": "recorded",
+      "note": "Minted at a density that solitary life never permits restores a minting-mechanics claim inside the vignette. Flagged to the item's version-placement question."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The eleven-three-farmhouse opening, the single question held with skill, the shared-condition discovery, the second-evening scene with consent named, the both-descriptions-true thesis, the furnace sentence, and the italic coda with its belief arc."
+        },
+        {
+          "kind": "kept",
+          "note": "The heading, unchanged in both texts."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped confound list and the conditions question, what conditions allowed them to stay without trying to fix or flee it. Both quoted; the confounds belong to appendix section V's verification queue and the conditions question is a good facilitation prompt the author may want elsewhere."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across seven marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 351,
+        "baselineWords": 358,
+        "shippedWords": 169,
+        "deltaPercentAgainstBaseline": -2,
+        "shippedDeltaPercentAgainstBaseline": -53
+      }
+    }
+  ],
+  "openQuestions": [
+    "The shipped confound list, shared stillness, shared task, respiration, posture, and social connection may all contribute, is scientifically the most careful sentence the volume ever wrote about synchrony. It was cut from the scene; the author may want it added to appendix section V, which is the verification queue for this exact claim."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The scene again performs conversion, felt then measured then believed, and its scientific caution is routed to the appendix queue where it can bind."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": []
+}

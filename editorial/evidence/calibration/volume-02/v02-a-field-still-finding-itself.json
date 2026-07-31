@@ -143,6 +143,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the committing triple keeps all three beats: The work exists. The people doing it exist. What does not yet exist is the coordination infrastructure that would let them find each other. The two-worlds diagnosis keeps its committing close, Both are working on what is recognizably the same civilizational problem from different sides.",
+      "R-PAIRED-DELETION: the organizations named here, OpenCivics, the Capital Institute, ReFi DAO, the Inner Development Goals, the Mind and Life Institute, are the antecedent ends of the disclaimer list in Providence and the Builder Field and of the no-footnotes verification list; all ends present in both texts. The restored attribution frames, what its participants describe variously as and what could be called, keep the terminology its users' rather than the book's.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. Every named organization, year, and count is identical to the baseline under CTD-0019, and CTD-0067's field-claim evidence is unchanged.",
+      "R-SUBSTITUTION-CREDIT: the kept closing paragraph was baseline kept by the pass; the applied colon is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; the two-worlds construction is section-local.",
+      "R-DEIXIS: what does not yet exist and at the density the present moment requires hold the reader inside the live gap. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and every named entity resolves at both of its downstream ends. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

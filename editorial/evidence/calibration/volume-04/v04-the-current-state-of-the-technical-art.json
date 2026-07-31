@@ -122,5 +122,29 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the volume's model case for a paydown that overcorrected in a specific direction: a requirement to stop overclaiming was executed as a requirement to state only limitations. R-LEDGER-WINS decides which reading of a property governs. It does not license pessimism."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 24,
+        "survivingVerbatim": 12,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: each of the three approaches keeps both halves, what it preserves and what it cannot guarantee, which is the exact two-sided shape the rule protects, and the minimum viable architecture keeps both its honesty requirement and its capability claim. R-PAIRED-DELETION: federated identity, self-sovereign identity, zero-knowledge, DID standards, and verifiable credentials were swept; the terms recur in the trust layer chapter and the first application's requirements, ends aligned. R-CORRECTION-SCOPE: no recorded correction reaches this body beyond CTD-0055, whose kept sentences were each re-verified as bounding rather than rewriting: every kept limitation sits beside a restored capability and none replaced one. R-LEDGER-WINS-COROLLARY re-run: the seven shipped limitation sentences kept under CTD-0055, the dated review sentence, the federation operator sentence pair, the self-sovereign complications list, the zero-knowledge limits list, the enforced versus vendor-dependent versus aspirational requirement, the not a complete identity system clause, and the tradeoffs and threat models sentence, were searched for in the immutable baseline and are not there; they are seeded canon with agent provenance visible in the original kept notes, the form the corollary requires. Bounding under a ledger item earns no credit, stated explicitly. R-SUBSTITUTION-CREDIT: nothing else kept, no credit owed. Citations re-verified intact: OpenID Connect, ActivityPub, W3C Decentralized Identifiers, Verifiable Credentials, Decentralized Identity Foundation, Hyperledger, danah boyd. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twelve of twenty-four baseline sentences survive verbatim; the remainder are the fourteen em dash glyphs repaired across seven sites, the seeded CTD-0055 boundings, the two colon-to-period separations, and the display labels, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried fourteen em dash glyphs across seven sites, not five. The three approach appositive pairs, the minimum viable architecture pair, the implementation literature pair, and the social science pair stand as comma pairs; the in some cases pair was dropped entirely, leaving participants lose devices, forget passwords, and in some cases face coercive actors, which reads without loss.",
+        "Two colons the record did not itemize became periods: the sovereignty is incomplete now ends and The node at which identity is established begins its own sentence, and the same separation at the social architecture sentence. Both give the second movement its own weight, consistent with section 3's preference for the period between two movements. Kept.",
+        "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
+      ]
+    }
+  ]
 }

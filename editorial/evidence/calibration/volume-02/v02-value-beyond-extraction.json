@@ -140,6 +140,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the closing keeps its hedged and committing halves in baseline order: The answer is not yet known concedes, and the restored What can be said with confidence is that the question itself can no longer be deferred commits. The restored not-peripheral denial keeps the objection the paragraph answers.",
+      "R-REFRAIN-COST: The work is underway in fragments is the fifth of the seven work-in-fragments recurrences anchored in v02-civilizational-alignment; cited, not re-counted. The technology does not create the problem. The technology accelerates a problem the accounting was already producing is a related form of the substrate refrain anchored in v02-what-the-first-volume-left-in-our-hands, engaging CTD-0016 without being one of the four counted instances.",
+      "R-PAIRED-DELETION: in places like Sardex and Mondragón has its minting ends in Working Alternatives; the deepest claim frame recurs across the chapter-closing sections as the volume's separate-evaluation formula, each end present. No one-ended restoration.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the kept The reason is structural rather than moral was baseline kept by the pass. No credit instance.",
+      "R-DEIXIS: one of the central design tasks of the present moment and the restored which means chain hold the reader inside the live asymmetry. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, both refrain families are cited to their anchors, and the closing keeps both halves. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

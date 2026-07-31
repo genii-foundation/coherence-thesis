@@ -128,6 +128,23 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CORRECTION-SCOPE: the epigraph's alignment to the re-rendered Volume I wording, applied by generation A under CTD-0107, authorizes only the quoted span. Verified against the word-level diff that the correction ends at the epigraph: the chapter's own prose beneath it is baseline wording with only mark repairs.",
+      "R-REFRAIN-COST: the epigraph's attribution is one of the nine instances anchored in v02-the-crisis-beneath-the-crises; cited, not re-counted.",
+      "R-CAUTIOUS-HALF: the committing halves survive: The question is not whether new coordination signals will emerge. They will., and the flat this is one of the central design challenges of the coming century, and it has not been solved. Anyone who claims otherwise is selling something. The question two-beat that follows, The question is which signals, designed by whom, accountable to what, is the volume diagnostic's construction intact under catalog 4.9's retention limb.",
+      "R-PAIRED-DELETION: the money-signal passage, It can perceive transactions, but not the conditions that make transactions meaningful, is deliberately reprised in What Money Cannot See at matching counts in both texts, a Chapter Seven to Chapter Eight bridge rather than a redundancy; CTD-0065's repetition map holds the family. Both ends present.",
+      "R-CANON-DELETION-RECORD: nothing was cut against an open canon query; CTD-0003 remains open with the section committing to neither side.",
+      "R-SUBSTITUTION-CREDIT: the kept comma pair and the untouched perception paragraph carry no credit; the epigraph alignment is ledger compliance.",
+      "R-DEIXIS: the coming century and the restored concessive close hold the reader at the live design problem. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, the CTD-0107 epigraph correction stays inside its span, and the cross-chapter reprise has both ends. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

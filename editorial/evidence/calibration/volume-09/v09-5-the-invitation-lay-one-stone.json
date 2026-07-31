@@ -77,6 +77,26 @@
       "authorizedBy": "The prior pass rewrote the Volume VIII line and updated both quotations of it in this volume.",
       "diagnosis": "Section 9 requires citations to stay attached to their sources. Volume VIII now carries the baseline line again, with the larger-work caution kept in the frame of Appendix B, so both quotations in this volume return to the baseline wording. Do not be daunted by the size of the forest is also restored, since it is the sentence the quotation answers.",
       "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F5",
+      "summary": "Audit finding: a structure meant so that is not an English construction. Repaired without returning to the report verb.",
+      "evidence": {
+        "baseline": "inside a structure built so that healing, tending, and feeding are rewarded rather than punished",
+        "shipped": "inside a structure meant so that healing, tending, and feeding are rewarded rather than punished"
+      },
+      "authorizedBy": "R-PROPORTION-FLOOR.",
+      "diagnosis": "The re-render moved off built, rightly, because the structure does not exist. But meant so that fails as grammar, and the catalog's silence about it is not proof of soundness. Designed so that keeps the proposal register and restores the syntax."
+    },
+    {
+      "id": "F6",
+      "summary": "Credit under R-SUBSTITUTION-CREDIT: the refusal sentence is the prior pass's repair of the baseline's allegiance-first ordering, kept as the paragraph's landing.",
+      "evidence": {
+        "baseline": "and feel whether this is your North. Not whether it is faultless. Whether it is yours.",
+        "shipped": "Then decide not whether it is faultless but whether any of it is worth carrying. A design that cannot survive refusal should not govern anyone."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "The baseline asks the reader to consult belonging before judgment, the ordering the card forbids. The pass's sentence gives the volume its sharpest single statement of the judgment-first principle, and the re-render kept it as the landing of the first question. Recorded at the same weight as a loss."
     }
   ],
   "debtImpact": [
@@ -130,5 +150,32 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required."
-  }
+  },
+  "audits": [
+    {
+      "id": "2026-07-31-twenty-rule-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Re-read of the settled section against the immutable baseline under the full twenty-rule index, with R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS applied to this section for the first time.",
+      "substitutionTest": {
+        "survivingBaselineSentences": 7,
+        "baselineSentences": 36,
+        "method": "Clauses of five or more words from the baseline section, split on sentence-final marks plus colon and semicolon, counted as surviving when their punctuation-stripped word sequence appears verbatim in the current section. A floor, not a fidelity measure: a restored sentence that differs by one hedge or repaired mark does not count.",
+        "note": "Nonzero, so the section is not in substitution mode and the pairing test applies and was run."
+      },
+      "checked": [
+        "R-LEDGER-WINS re-search on Alu, Nilnisi, Ayan, California Hot Springs, lay one stone, and the Doors: no item has changed since the record settled. CTD-0030 and CTD-0088 paydowns hold; verification still heads the list.",
+        "R-PAIRED-DELETION: the three portraits resolve against Volume VIII's composite; the closing quotation depends on Volume VIII Appendix B, which still ships the reworked line while its restoration is structurally held. The quotation keeps the baseline wording under the standing instruction, and the sentence before it, Volume VIII already gave the whole of the method, and it has not changed, sits inside the same flagged dependency. Nothing reworded; see the anchor record.",
+        "R-CAUTIOUS-HALF: both questions keep their committing content, the vital piece and the harder questions of consent, risk, and stopping evidence. No fire.",
+        "R-CORRECTION-SCOPE: the CTD-0030 correction governs the direct site invitation alone; the growth-by-places claim survives inside the bounded-practice item, which is where the record placed it. Confirmed clean.",
+        "One repetition checked and left: the safeguards item says Bring twice, once for review disciplines and once for craft, capital, and solutions. Two different offers, genuinely parallel; retention limb of catalog 4.9.",
+        "R-DEIXIS: this is already yours, proximal and correct. R-TENSE: no fires. R-LAND: the section lands on the quotation, as the record settled.",
+        "Prohibited glyphs: none. Structural lines match the census."
+      ],
+      "prose": "changed: one edit, recorded as F5",
+      "result": "One rule fired, R-PROPORTION-FLOOR on the grammar of meant so that, repaired as F5. One credit recorded as F6. The section otherwise holds under the twenty-rule standard, with the Volume VIII quotation dependency live and flagged at the anchor record.",
+      "citesRefrainAnchor": "v09-the-cardinal-scale, for Lay one stone. That is the whole method, and it is enough to begin., counted once there with both instances and the Volume VIII dependency."
+    }
+  ]
 }

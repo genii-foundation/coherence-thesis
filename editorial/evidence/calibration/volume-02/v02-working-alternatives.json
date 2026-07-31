@@ -136,6 +136,22 @@
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the decreasing-scale triad keeps all three grades, Most have failed. Some have produced lessons. A few have persisted long enough to reveal what is possible., and each case study keeps concession beside commitment: It is not utopian beside But its persistence demonstrates, and None of them are the answer beside What they demonstrate is that the design space is real. Both limbs everywhere.",
+      "R-PAIRED-DELETION: Sardex and Mondragón are minted here and have their answering ends in Value Beyond Extraction and the no-footnotes verification list; coherence-as-capital minted in the Sardex paragraph is the earlier framing Coherence as Circulation revisits. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. Every number, date, and named institution is identical to the baseline under CTD-0019.",
+      "R-SUBSTITUTION-CREDIT: the kept triad was byte-identical baseline; the kept colon is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section.",
+      "R-DEIXIS: This is useful information for any serious project holds the reader at the live lesson. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and both case studies keep their evidentiary bounds. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

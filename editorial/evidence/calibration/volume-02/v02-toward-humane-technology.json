@@ -101,6 +101,34 @@
 
   "openQuestions": [],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "refrainAnchor": {
+      "rule": "R-REFRAIN-COST",
+      "refrain": "Each of the four TOWARD HUMANE TECHNOLOGY interstitials closes on an italic instruction that tells the reader how to read what follows or what was just read.",
+      "count": 4,
+      "instances": [
+        "v02-toward-humane-technology",
+        "v02-toward-humane-technology-2",
+        "v02-toward-humane-technology-3",
+        "v02-toward-humane-technology-4"
+      ],
+      "note": "Anchored here at the first interstitial. Four instances in both texts, at manuscript lines 149, 343, 873, and 1023. The convention is the series' spine: each part transition re-aims the technology question before the register changes. The recurrence is deliberate and parallel by design, so catalog 4.9's retention limb applies to the set, and the single edit that would change every instance is the closing-instruction convention itself. Child audits cite this anchor rather than re-counting."
+    },
+    "checks": [
+      "R-DEIXIS: engaged by the original record as F3 and F4. Re-checked: the restored definite articles and the closing instruction, Hold the technology question in the back of your mind as you read, hold. No further instance.",
+      "R-CAUTIOUS-HALF: the committing beat They are. survives immediately after the concession that the chapters may not always appear to be about technology directly. The concession did not outlive its answer.",
+      "R-PAIRED-DELETION: the page's forward reference, the diagnostic chapters of Part I describe what that coherence currently lacks, has its paying end in Chapters One through Four, and the instruction to hold the technology question is redeemed by the later interstitials' returns. Both ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this page and nothing was cut against an open canon query. CTD-0066's cadence obligation remains open and unruled.",
+      "R-SUBSTITUTION-CREDIT: the single kept, the colon after operate by a different logic, is R-PUNCT-STRUCT compliance. No uncredited improvement.",
+      "R-REFRAIN-COST: the interstitial closing-instruction refrain is anchored above."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard. The audit adds the interstitial refrain anchor. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

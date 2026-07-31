@@ -8,14 +8,12 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "findings": [
     {
       "id": "F1",
@@ -73,9 +71,7 @@
       "producedRule": "R-CATALOG-LIMBS"
     }
   ],
-
   "headingNote": "The prior pass converted four bold display labels into h3 headings and dropped the On prefix. Kept under the volume ruling on renames, since reverting would mint and retire four section routes. One is a real loss: What This Section Has and Has Not Established became What the Argument Has Established, and the section devotes a full paragraph to what has not been shown. Recorded as an open heading question rather than churned.",
-
   "debtImpact": [
     {
       "id": "CTD-0002",
@@ -98,33 +94,120 @@
     "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
     "result": "No recorded decision was reversed."
   },
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "The sprout phase of this work was brief by design.",
+        "In those five to eight minutes, the aim was not to persuade, propose solutions, or outline a system, but to allow something recognizable to emerge: a pattern already felt, if not yet named. A sense that the crisis we face is not merely political, economic, or technological, but biological and relational, and that no amount of external reform can succeed without addressing that substrate.",
+        "Before moving from diagnosis into structure, it is worth pausing again, this time not for emotional integration but for intellectual clarity.",
+        "What follows is not a manifesto. It is not a policy platform, a spiritual doctrine, or a finished model of governance. It does not ask for belief, allegiance, or adoption. It does not claim to have solved civilization, nor does it attempt to predict the future in detail.",
+        "Its scope is narrower, and for that reason more demanding.",
+        "This argument concerns constraint. Specifically, it asks a single, consequential question:",
+        "*What must be true biologically, relationally, and systemically for any complex civilization to remain coherent as its power scales?*",
+        "Everything that follows is an exploration of that condition, and nothing more.",
+        "The sprout was meant to orient perception. The stem that follows will begin to test structure. But before structure can be responsibly examined, the boundaries of the claim must be clearly drawn, so that what is being said is not mistaken for what is not.",
+        "This pause is that clarification."
+      ],
+      "textNote": "The chapter's structural line carries no baseline prose of its own. This is the shipped chapter-start prose, which descends from the baseline's On Scope subsection introduction; the same text is recorded in v01-on-scope-constraint-and-what-this-argument-does-not-claim, the record for that baseline identity. The four converted subsections beneath it are part of this chapter's audit scope.",
       "reasoning": [
-        { "kind": "applied", "note": "R-PUNCT-STRUCT. Eleven em dashes. Six fenced parenthetical material and became commas. Two introduced a specification and became colons. Three carried a burden belonging to structure and the syntax was rewritten." },
-        { "kind": "kept", "note": "The pass's removal of the em dash fencing from the display question, which reads cleanly without it." },
-        { "kind": "kept", "note": "The pass's h3 headings, under the volume ruling on renames." },
-        { "kind": "restored", "note": "The opening three paragraphs, which the pass had compressed from roughly 130 words to 35, including a pattern already felt, if not yet named and the crisis we face." },
-        { "kind": "restored", "note": "Every bounding phrase: and nothing more, and for that reason more demanding, not deferred, does not become dangerous, and the four sentence scope disclaimer." },
-        { "kind": "restored", "note": "Three two beat landings and the closing display line, what follows is therefore not a vision, but a test." }
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eleven em dashes. Six fenced parenthetical material and became commas. Two introduced a specification and became colons. Three carried a burden belonging to structure and the syntax was rewritten."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's removal of the em dash fencing from the display question, which reads cleanly without it."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's h3 headings, under the volume ruling on renames."
+        },
+        {
+          "kind": "restored",
+          "note": "The opening three paragraphs, which the pass had compressed from roughly 130 words to 35, including a pattern already felt, if not yet named and the crisis we face."
+        },
+        {
+          "kind": "restored",
+          "note": "Every bounding phrase: and nothing more, and for that reason more demanding, not deferred, does not become dangerous, and the four sentence scope disclaimer."
+        },
+        {
+          "kind": "restored",
+          "note": "Three two beat landings and the closing display line, what follows is therefore not a vision, but a test."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
     "Heading decision 1 of 5. Keep What the Argument Has Established, or restore What This Section Has and Has Not Established? The current heading omits the has not half, which is a full paragraph of the section. Restoring the earlier heading costs a reviewed route alias."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
     "conclusion": "No new rule required. Seventh consecutive section to need none. The finding worth carrying forward is F1: the pass compressed a section whose subject is limitation, and the phrases it cut were the limits. Compression is not neutral with respect to content, and where a passage's subject is its own boundaries, tightening it removes the boundaries first."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "single empirical claim",
+      "detected",
+      "adversarial",
+      "biology",
+      "boundary condition"
+    ],
+    "itemsRead": [
+      "CTD-0002",
+      "CTD-0052",
+      "CTD-0053"
+    ],
+    "outcome": "All three items were read on 2026-07-30 and re-read for this audit. The detectability claim and the public adversarial-study promise are restored at full strength and remain open; the single-claim dependency shortcut remains a query for the author."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 10,
+      "baselineSentences": 15,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Counted over the chapter-start prose, which corresponds to the baseline's On Scope subsection introduction; the same text and count are recorded in v01-on-scope-constraint-and-what-this-argument-does-not-claim, which covers that baseline identity. The four bold-label subsections the prior pass converted to headings are audited here as part of the chapter. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep: the load-bearing detectability sentence here and the single empirical claim passage in Boundaries and Burden of Proof are the two ends of one cross-section pair, and both are present in the shipped manuscript (lines 320 and 705). The Roots does not occur in this chapter. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "Fires in structural form, already recorded: the heading What the Argument Has Established survived while the baseline's What This Section Has and Has Not Established named the has-not half, and the section devotes a full paragraph to what has not been shown. The headingNote and open question hold it for the author; nothing further available to a pass. In prose, F1's bounding language is restored with its committing halves present."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The section keeps no substituted prose beyond what the record already accounts for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "One repair. The load-bearing detectability sentence in Measurement and Falsifiability kept the prior pass's unhyphenated noninvasively while the volume's other instances carry the baseline's non-invasively; the baseline form is restored at manuscript line 320. The same repair in When Scale Outruns Regulation is recorded in that section's record. No rule authorized the dehyphenation, the baseline is the authority on prose, and the term now reads identically at both ends of the empirical-claim pair.",
+    "conclusion": "R-CAUTIOUS-HALF confirms the heading question already held open. One prose repair was made under R-PROPORTION, recorded in proseChanged. Nothing else fires."
   }
 }

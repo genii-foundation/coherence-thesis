@@ -47,6 +47,10 @@
       "label": "A",
       "status": "approved",
       "title": "Verified unchanged against baseline",
+      "text": [
+        "*The Living Architecture of an Argument*",
+        "---"
+      ],
       "reasoning": [
         {
           "kind": "verified",
@@ -72,11 +76,53 @@
     "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
     "result": "The ledger was consulted under R-LEDGER-WINS and this section touches no debt item."
   },
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Direct comparison against the immutable baseline. Display matter of this length admits no derivation beyond verifying identity.",
     "conclusion": "No new rule required. The prior pass left the volume's structural labels alone, which is the correct disposition and is worth recording: the damage this re-render has catalogued is entirely in continuous prose, never in the scaffolding around it."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 1,
+      "baselineSentences": 1,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Display matter. The section is its structural line and subtitle, verified character for character on 2026-07-30 and re-verified for this audit. There are no prose sentences, so the surviving-sentence count is trivially complete and the pairing test has no object. This is identity, not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "Display matter verified unchanged; nothing was drafted and nothing seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this label. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No canon query names this label and nothing was cut. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "The label occurs once as a structural line and no prose cross-reference points at it. No pair to sever. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The label has no hedging and committing halves and no merge touched it. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "No substituted prose exists in the section. Nothing to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "The threshold labels are a display refrain by design; they engage no ledger item and were not altered, so there is no cost to record. Does not fire."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules. The section is confirmed under the twenty-rule standard on 2026-07-31, which is a different fact from the 2026-07-30 verification under the earlier index and is recorded as such. No prose changed."
   }
 }

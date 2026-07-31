@@ -828,7 +828,7 @@ This is the book’s argument applied: intelligence is amplifying what lies bene
 
 Similar patterns exist across other domains. AI-driven climate modeling now operates at resolutions that allow regional governments to plan adaptation strategies that were impossible a decade ago. Disease surveillance systems built during the COVID pandemic have remained operational and are being adapted for early warning on antimicrobial resistance, vector-borne disease, and ecological tipping points. Scientific collaboration tools using language models are accelerating cross-disciplinary research at rates that would have been impossible under the older publication-based knowledge architecture. The biodiversity monitoring and collective deliberation work introduced in Chapter Six is part of this same pattern: intelligence being deployed in service of what extractive systems cannot perceive.
 
-None of this is sufficient. Almost all of it operates against headwinds, extractive incentive structures, capital concentration in the labs producing the most capable models, regulatory frameworks that have not caught up to the technology, and the deeper civilizational fragmentation Part I diagnosed. But it is happening, and it is real, and it is the floor on which more ambitious work can build.
+None of this is sufficient. Almost all of it operates against headwinds: extractive incentive structures, capital concentration in the labs producing the most capable models, regulatory frameworks that have not caught up to the technology, and the deeper civilizational fragmentation Part I diagnosed. But it is happening, and it is real, and it is the floor on which more ambitious work can build.
 
 ## **Capability Outruns Coherence**
 

@@ -1,0 +1,145 @@
+{
+  "sectionId": "v03-two-entities-one-mission-one-productive-tension",
+  "sectionHeading": "Two Entities, One Mission, One Productive Tension",
+  "currentHeading": "Two Entities in Productive Tension",
+  "anchor": "v03-the-constitutional-problem",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "395 baseline words to 175 shipped words, minus 56 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Purposeful Foundation",
+      "tithes",
+      "Seven Initiates",
+      "Providence Network",
+      "public-benefit",
+      "five percent",
+      "ten percent",
+      "structured giving",
+      "commons"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0055",
+      "CTD-0045",
+      "CTD-0056"
+    ],
+    "outcome": "No settled decision governs this section. CTD-0071 lists the five and ten percent transfers among the placeholders its legal review owns; the shipped placeholder disclaimer applied that direction in prose without the review, so the baseline figures are restored and the item keeps the question. The master ledger's Purposeful Foundation identity is consistent with the baseline text. The term sweep found tithes occurring exactly once in the volume, here, so no paired reference depends on it; the structured giving agreement recurs in the corruption section's sunset list, and both ends are restored in this batch."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The Foundation lost its named instruments: the tithes, the fiduciary clause, and the court-supervised dissolution protection.",
+      "evidence": {
+        "baseline": "It receives philanthropic funding, grants, and what we call tithes: contributions from participants who have received genuine value and choose to give back ... its legal structure makes it impossible for any future acquirer to monetize the commons it holds without the court-supervised dissolution of the nonprofit itself, a protection whose significance cannot be overstated, because it means the commons cannot be quietly sold.",
+        "shipped": "It could receive philanthropy, grants, and voluntary contributions to subsidize access."
+      },
+      "authorizedBy": "Compression and caution, in CTD-0055's direction without a recorded decision.",
+      "diagnosis": "Tithes is the section's one named institutional invention, the word that ties the funding model to the monastic lineage the closing paragraph claims. The court-supervised dissolution clause is the checkable legal fact behind the commons-cannot-be-quietly-sold promise, the same protection the restored Shadows section names, so its deletion here had left that section's reference thinner than its source. The conditional could receive is the modality shift flagged in the chapter opening's F3. All restored."
+    },
+    {
+      "id": "F2",
+      "summary": "The placeholder disclaimer replaced the arrangement's argument.",
+      "evidence": {
+        "baseline": "couples the growth of the business to the expansion of the commons, so that the enterprise cannot flourish without enlarging what it serves. This is not a novel arrangement. It is the form that the most durable institutions in history have taken: monastic orders that held a sacred mission while running farms and breweries and schools; universities that held knowledge as a public trust while sustaining themselves through tuition and endowment.",
+        "shipped": "Those figures are placeholders requiring financial and legal review. The governing principle matters more: growth of the enterprise should enlarge what is held in common rather than enclose it."
+      },
+      "authorizedBy": "CTD-0071's placeholder finding, applied in prose without the review it requires.",
+      "diagnosis": "The item already owns the figures; putting the disclaimer in the manuscript converts an open review obligation into standing editorial hedging, which R-CORRECTION-SCOPE forbids by analogy: the item names the figures, not the paragraph around them. The historical argument, monasteries and universities as the form of durable institutions, was cut with it, and that argument is the section's warrant for calling the tension a design rather than a compromise. The shipped enclosure image, enlarge what is held in common rather than enclose it, is a genuine compression of the commons claim and is quoted here for the author."
+    },
+    {
+      "id": "F3",
+      "summary": "Seeded governance drafting cut for ratification.",
+      "evidence": {
+        "baseline": "No counterpart.",
+        "shipped": "Neither legal form guarantees its assigned virtue. Each needs authority to challenge the other, and neither should control the participant data from which the network derives power."
+      },
+      "authorizedBy": "Rewrite; seeded canon answering CTD-0071's power-mapping question without a recorded decision.",
+      "diagnosis": "The mutual-challenge requirement and the data-custody separation are real governance drafting, matching the item's paydown criteria on power mapping and data governance, and neither appears in the baseline. Preserved here in full for adoption through the item's review; cut from prose because the section's argument is the baseline's, and a pass may propose canon in a record but not install it in the manuscript."
+    },
+    {
+      "id": "F4",
+      "summary": "Five prohibited marks, and two inline bold terms.",
+      "evidence": {
+        "baseline": "The tension fence, the tithes mark, the protection mark, the enterprise fence, and the giving fence.",
+        "shipped": "Bolded Purposeful Foundation and public-benefit enterprise as pseudo-headings."
+      },
+      "authorizedBy": "The punctuation standard, and catalog 4.29.",
+      "diagnosis": "The tension fence became paired commas holding the between-phrase. The tithes mark introduced a definition and became a colon. The protection mark appended a dependent appositive and became a comma. The enterprise fence, organized as a public-benefit corporation, became paired commas. The giving fence became paired commas around the five-to-ten-percent schedule. The shipped inline bold on the two entity names performed structure the prose already carries and does not return; the baseline's plain naming stands."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0071",
+      "effect": "reopened by restoration",
+      "note": "The five and ten percent transfers, the tithes, and the court-supervised dissolution mechanism return as stated institutional facts. The item's evidence that the source labels several figures provisional is stale for this section; the figures are again unlabeled, and the item alone owns their review. The F3 drafting, mutual challenge and data-custody separation, is preserved for the item's power-mapping work."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "recorded",
+      "note": "Present-tense entity description restored, including is held and operated. The item owns the requirements-versus-facts decision."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "recorded",
+      "note": "The prospectus register of the entity description belongs to the item's posture decision."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard and the standing instruction",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The two-entity frame with its sacred-durability tension held without resolution, the Foundation paragraph with tithes and the dissolution protection, the enterprise paragraph with its charter challengeability, and the structured giving arrangement with the monastic and university lineage."
+        },
+        {
+          "kind": "kept",
+          "note": "The current shortened heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped conditional summary and placeholder disclaimer, quoted in F1 and F2, the enclosure image preserved in F2 for the author, and the F3 drafting preserved for CTD-0071 ratification."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks and the 4.29 bold removal as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 395,
+        "baselineWords": 395,
+        "shippedWords": 175,
+        "deltaPercentAgainstBaseline": 0,
+        "shippedDeltaPercentAgainstBaseline": -56
+      }
+    }
+  ],
+  "openQuestions": [
+    "The five and ten percent figures and the tithes model are restored as stated facts and remain CTD-0071 placeholders awaiting legal and financial review. Restored and flagged, never resolved.",
+    "Baseline heading, Two Entities, One Mission, One Productive Tension; current heading, Two Entities in Productive Tension. The dropped middle term is the mission. Both forms recorded per the structural hold."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The entities have their instruments and their lineage again, the placeholder question sits where it belongs in the ledger, and the pass's two genuine contributions wait in the record for ratification."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": []
+}

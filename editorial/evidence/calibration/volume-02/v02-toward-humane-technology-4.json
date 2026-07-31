@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-toward-humane-technology-4",
+  "editorialId": "volume-02",
+  "sectionHeading": "**TOWARD HUMANE TECHNOLOGY** (fourth occurrence, The Final Integration)",
+  "currentHeading": "**TOWARD HUMANE TECHNOLOGY**",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "survivingBaselineSentences": 20,
+    "baselineSentences": 20,
+    "note": "The section body, from the divider through the EPILOGUE label, is byte-identical to the baseline: 202 words, 20 sentences, nothing substituted and nothing repaired because the baseline carried no prohibited mark here. The pairing test passes trivially."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["The Final Integration", "category of product", "downstream of conditions", "the wielding the title has been naming"],
+    "result": "Downstream of conditions the technology cannot generate recurs from the Epilogue and Chapter Ten, present in both texts at matching counts. The wielding the title has been naming points forward to the Epilogue that follows immediately, present in both texts. No unpaired reference."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["humane technology", "The Final Integration", "EPILOGUE", "substrate"],
+    "itemsRead": ["CTD-0035", "CTD-0103", "CTD-0016"],
+    "outcome": "No recorded decision governs this divider. CTD-0016 tracks the substrate-amplification thesis the second paragraph restates; the claim is identical in both texts."
+  },
+
+  "findings": [],
+
+  "debtImpact": [],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed against baseline under the twenty rules",
+      "reasoning": [
+        { "kind": "kept", "note": "The whole divider, byte-identical. The seven-clause recapitulation, Not as a specification. As a substrate, is the ritual counting-of-steps the fourth divider is for, and the two fragments are load-bearing hinges rather than dramatic simulation, catalog 4.17's retention limb." },
+        { "kind": "kept", "note": "The italic bridge into the Epilogue, ending on in service of the wielding the title has been naming from the start, which is genuine wayfinding at a genuine structural seam, catalog 4.23's retention limb." },
+        { "kind": "kept", "note": "The EPILOGUE display label, protected structure under the census hold." }
+      ],
+      "metrics": { "words": 202, "baselineWords": 202, "deltaPercentAgainstBaseline": 0 }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No rule fires. This is the only one of the four TOWARD HUMANE TECHNOLOGY dividers whose baseline carried no prohibited glyph, so the prior pass touched nothing and there was nothing to audit but the confirmation itself, which this record supplies."
+  }
+}

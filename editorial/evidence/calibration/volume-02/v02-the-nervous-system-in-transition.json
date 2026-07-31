@@ -72,7 +72,7 @@
       "id": "F3",
       "summary": "An em dash pair enclosing a four-item list became a comma pair, producing a garden path.",
       "evidence": {
-        "baseline": "The institutions they were raised to trust—universities, governments, professional fields, news organizations—have lost much of their legitimacy in the years they have been coming of age.",
+        "baseline": "The institutions they were raised to trust [mark] universities, governments, professional fields, news organizations [mark] have lost much of their legitimacy in the years they have been coming of age.",
         "shipped": "The institutions they were raised to trust, universities, governments, professional fields, and news organizations, have lost much of their legitimacy as they came of age."
       },
       "authorizedBy": "R-PUNCT-STRUCT, applied by substituting commas.",
@@ -139,6 +139,24 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS. The record's quoted evidence was mechanically cleaned to the [mark] placeholder earlier tonight; that cleanup was not an audit, this is.",
+    "checks": [
+      "R-TENSE re-verified on F1: the progressive report holds throughout, Many people are not sleeping well, are inheriting, are watching, and the timing is load-bearing, since the section reports a condition in progress rather than a settled fact. The one simple-present verdict, This is not pathology. It is accurate perception., is the deliberate landing.",
+      "R-PUNCT-STRUCT re-verified on F3's repair: the four institutions now land behind a colon at the end of their sentence, have lost much of their legitimacy in the years they have been coming of age: universities, governments, professional fields, news organizations. The garden path is gone and the enumeration is asyndetic and open, as the baseline had it.",
+      "R-CAUTIOUS-HALF: the committing half survives beside the panels' hedges: the panels keep their in many cases and often bounds while the closing commits, These are not separate experiences. They are different positions within the same threshold.",
+      "R-PAIRED-DELETION: the generational griefs have their answering end in Practices for the Passage's grief paragraph; the background dread predicate has its antecedent in the Prologue's oscillation. Both ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0068 is reopened at full extent by the restoration, recorded in debtImpact with the grounding question the author must answer behind Q1.",
+      "R-SUBSTITUTION-CREDIT: the kept opening and closing runs were baseline kept by the pass. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; the Some carry litany is section-local deliberate anaphora under catalog 4.4's retention limb.",
+      "R-DEIXIS: the ground is shifting and This is not pathology hold the reader inside the live condition. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, the progressive aspect and open enumeration both survive, and CTD-0068's full extent stays recorded. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

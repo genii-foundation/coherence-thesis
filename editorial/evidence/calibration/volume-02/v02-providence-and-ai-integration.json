@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-providence-and-ai-integration",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What Providence Is and Is Not Doing in This Dimension**",
+  "currentHeading": "## **Providence and AI Integration**",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The open-development promise and the integration posture are project claims belonging to the author under CTD-0027.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "survivingBaselineSentences": 15,
+    "baselineSentences": 15,
+    "note": "All 15 baseline sentences survive, 14 byte-identical and one carrying a dash-pair-to-comma-pair repair. Restoration mode; the pairing test applies and passes."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["research question rather than a product commitment", "map alignment between communities", "surface latent collaboration", "refusal of designs"],
+    "result": "The section shares its closing argument nearly verbatim with Providence and Artificial Intelligence in Chapter Six. Research question rather than a product commitment occurs five times across the two texts at matching counts, and both ends of the twin passage are present in both baseline and current manuscript. Nothing refers to an absent antecedent."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["AI integration", "developed openly", "values, intentions, and trust signals", "refusal of designs", "research question"],
+    "itemsRead": ["CTD-0027", "CTD-0055", "CTD-0040", "CTD-0019"],
+    "outcome": "CTD-0027 owns this section: it records that the corpus promises an open decision process for AI integration without defining the process, the authority, or the current outcome. The item is a query with no wording ruling, so the baseline stands and the promise is restored unchanged, in both its Chapter Six form and this one. The item's paydown criteria contemplate removing redundant promises; that is an author decision the item has not yet made, and this pass does not act on it. CTD-0055 covers the discipline framing, which states requirements rather than facts in both texts."
+  },
+
+  "refrainAnchor": {
+    "rule": "R-REFRAIN-COST",
+    "refrain": "The same discipline that has governed the previous chapters applies here, followed by a run of Providence is not / It is not denials and a bounded statement of the current early stage.",
+    "count": 5,
+    "instances": [
+      "v02-providence-and-artificial-intelligence",
+      "v02-providence-and-economic-experiment",
+      "v02-providence-and-governance-experiment",
+      "v02-providence-and-ai-integration",
+      "v02-providence-and-the-builder-field"
+    ],
+    "relatedForms": "At its current early stage occurs four times; the cleft What Providence is being designed to do, at its current early stage, is operate at the layer occurs twice, in Providence and the Currency Question and Providence and the Builder Field, and both instances survive intact in the current manuscript.",
+    "analysis": "The refrain is the volume's honesty mechanism: each constructive chapter ends by refusing the claim the chapter might have seemed to make. The recurrence is deliberate and protected by the voice card, which names bounded statements of what Providence is and is not as an intentional recurrent form, so catalog 4.9's retention limb applies to every instance and none should be thinned. The denial runs are real refusals of positions readers actually infer, so catalog 4.3 and R-NEGATION-STACK do not fire; the corrected position follows each run in the same paragraph. The ledger cost is engaged once per instance: each recurrence restates the CTD-0055 requirement posture, and the two cleft instances plus the two designed-toward passages carry the CTD-0027 open-development promise. A single ruling on the refrain's wording would move all five sections at once; no such ruling exists, and no edit is needed.",
+    "singleEditThatWouldSettleIt": "None required. If the author ever rules on CTD-0027's redundant-promise criterion, the edit would fall on the twin closing passages of this section and Providence and Artificial Intelligence, not on the refrain opening."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The dash pair enclosing the four integration purposes became a comma pair, and the repair holds by a narrower margin than its neighbors.",
+      "evidence": {
+        "baseline": "Whether AI systems should eventually be integrated into Providence’s own coordination infrastructure [mark] to help map alignment between communities, surface latent collaboration, model the regenerative impact of proposed work, or support deliberation across federated networks [mark] is a research question rather than a product commitment.",
+        "shipped": "Whether AI systems should eventually be integrated into Providence’s own coordination infrastructure, to help map alignment between communities, surface latent collaboration, model the regenerative impact of proposed work, or support deliberation across federated networks, is a research question rather than a product commitment."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT.",
+      "diagnosis": "Checked against the rebuild alternative. The interpolation is a purpose list whose items carry no internal commas, the to help opener and or support closer bracket it audibly, and the Whether subject holds the spine until is resumes it. The Chapter Six twin renders the same content as a participial list after a comma, so the comma treatment is also the consistent one. Kept, with the cost named: the resumption at is a research question asks slightly more of the reader than the dashes did."
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0027", "effect": "unchanged, promise restored in both locations", "note": "This design question has not been resolved, will be developed openly survives identically in both texts, here and in Chapter Six. The item's complaint is the absence of a public decision surface, not the wording; restoring the wording neither pays nor enlarges it. The near-verbatim duplication between the two sections is part of what the item's paydown criteria call redundant promises, and the decision to deduplicate belongs to the author." },
+    { "id": "CTD-0055", "effect": "unchanged", "note": "It does not train models, develop safety techniques states current fact about absence, which is the safe direction; the section makes no capability claim the item would need to bound." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed against baseline under the twenty rules",
+      "reasoning": [
+        { "kind": "kept", "note": "All 15 sentences. The case for and case against paragraph holds both limbs at full strength, which is the section's honesty and also its R-CAUTIOUS-HALF check: the committing sentence, creates exactly the kind of architecture that careful readers should be skeptical of, regardless of intent, survives beside the hedged one." },
+        { "kind": "kept", "note": "The refrain opening, under the anchor analysis in this record. The discipline sentence is the fourth of five instances and is not thinned." },
+        { "kind": "kept", "note": "The closing landing, refusal of designs that begin reproducing the dynamics the project was built to refuse, identical in both texts, ending the section on its own concrete beat (R-LAND)." }
+      ],
+      "metrics": { "words": 321, "baselineWords": 321, "deltaPercentAgainstBaseline": 0 }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the AI-integration promise remain stated twice, here and in Chapter Six?",
+      "context": "The two passages make the same commitment in nearly the same words. CTD-0027's paydown criteria include removing redundant promises once a real decision surface exists. Both instances are restored intact under tonight's policy; deduplication is a canon decision, not an editorial one.",
+      "for": "author"
+    }
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's clearest case of a refrain doing ledger work: the discipline opening is one editorial object appearing five times, and recording it here once with its count is what lets a future ruling price itself. The refrain analysis in this record is the anchor the other four records cite."
+  }
+}

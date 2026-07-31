@@ -141,6 +141,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the restored honest-answer opening keeps both halves: The honest answer is that no one fully knows what this threshold asks concedes, and What can be said is what has helped human beings through other liminal periods commits. The grief paragraph keeps its fourfold is real commitment.",
+      "R-PAIRED-DELETION, with a flag: the cross-reference at manuscript line 1001, The interstitial before Chapter Five named this as the underlying purpose of the book: not to instruct, but to help builders find each other, is identical in both texts, but the page it points at, the second TOWARD HUMANE TECHNOLOGY interstitial, does not state that purpose; the passage that does is the Interlude, which sits after Chapter Five and is called the interlude before Chapter Six and the interlude after Chapter Five by the volume's other references at lines 785 and 1151. The pointer is baseline-native and untouched by any pass, so nothing is repaired; the imprecision is flagged for the author rather than resolved.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0038 is reopened at full extent by the restored grief-assignment and is-theirs passages, recorded in debtImpact and standing for the author.",
+      "R-SUBSTITUTION-CREDIT: the kept eightfold It helps to structure was baseline kept by the pass; the applied colons are R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: the exodus and grief passages engage no anchored refrain; the It helps to anaphora is section-local structure under catalog 4.9's retention limb, eight instances, deliberately uniform because the section is a litany of offerings rather than an argument.",
+      "R-DEIXIS: what specific present-tense conditions seem to require and the moon hold the reader inside the live practices. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard. One baseline-native cross-reference imprecision, the interstitial-before-Chapter-Five pointer, is flagged for the author. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

@@ -66,6 +66,17 @@
       "producedRule": "R-PROPORTION"
     },
     {
+      "id": "F5",
+      "summary": "The shipped replacement for the proof-at-scale declaration is better than the baseline it replaced, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "I want to say it as plainly as it deserves to be said: **we have become sick beyond our own comprehension of ourselves. We have chosen spectacle over the reverence for life.** Hold that sentence. Everything that follows is its proof at scale.",
+        "shipped": "Some wanted spectacle. That failure of reverence is the door into this book. The scene does not prove a diagnosis of civilization, and the pages that follow cannot serve as its proof. It does reveal the moral question from which the inquiry begins: what happens when another life becomes content?"
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "CTD-0093 quotes the baseline sentence directly as the contradiction at the volume's heart: line 24 promised proof at scale while the register note promised no exaggeration and only sourced claims. The shipped passage resolves the contradiction in the only direction the volume's own promise permits, and what happens when another life becomes content is a real question where the baseline had a verdict. The prior record kept this material under CTD-0083 paydown notes but never credited it as an improvement, and a record that only finds loss cannot show restraint from bias. Note the asymmetry this credit does not soften: F1 through F3 still stand, because the witness detail was cut under an authority that never asked for it. When the route decision in QS is made and the baseline region returns, this substitution must survive the restoration: the witness comes back, the proof-at-scale verdict does not.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
       "id": "F4",
       "summary": "The causal claim was correctly removed and is not restored.",
       "evidence": {
@@ -118,6 +129,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The structural hold stands and no prose was touched; the blocked baseline region in QS remains the author's single-edit restoration path. New under this audit: F5, a substitution credit for the shipped replacement of the proof-at-scale declaration, which the record had kept without crediting. R-CAUTIOUS-HALF was checked on that same pair and the survival of the cautious half is ledger-governed rather than accidental, CTD-0093 naming the committing sentence directly, so R-LEDGER-WINS holds it out. R-CORRECTION-SCOPE was checked over CTD-0083's application and F1 through F3 already record where the pass exceeded the correction's named scope; the diagnosis stands under the ratified rule. R-PAIRED-DELETION: the exact blue, the pause, the sauna, and the World Cup all have their other ends alive in the accounting, the birds-and-bees second meaning, the purposeful section, and the blessing; restoring the QS region severs nothing and reconnects the second address's she still felt it to a fuller portrait. R-REFRAIN-COST: the blocked no-real-capacity anaphora is a two-beat refrain confined to this section; no anchor needed. Trauma-sensitive specialist review remains outstanding and this audit does not substitute for it."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

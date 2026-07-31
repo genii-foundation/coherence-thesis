@@ -73,5 +73,12 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The record exists so that the rename is on the record rather than inferred, since the damage report cannot match a bodyless display line to a merged heading and reports it as a total loss."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. The bodyless container beneath which v07-the-birthright carries the prose; the merged heading stands per CTD-0084.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Nothing to edit and no rule fires. The two-line display pair Coda over The Birthright remains merged into the census heading; the count of such merges is carried by the refrain anchor in v07-part-i-the-argument-arrived."
   }
 }

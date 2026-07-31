@@ -71,7 +71,6 @@
     "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
     "result": "No recorded decision was reversed."
   },
-
   "generations": [
     {
       "label": "A",
@@ -121,16 +120,7 @@
       ]
     }
   ],
-  "rulings": [
-    {
-      "id": "RU1",
-      "question": "How should renamed headings be handled for the rest of this volume?",
-      "decision": "Keep the prior pass's heading. Re-render the prose only. Record any heading whose rename introduced a defect as an open question rather than reverting it.",
-      "rationale": "Reverting one heading cascaded through five continuity records and record-routes rejected the change after each repair, consuming a full iteration and producing no prose. Eight renames remain. The prose carries the editorial value and does not depend on the heading, and heading questions batch cleanly for the author with their route costs visible.",
-      "scope": "volume",
-      "by": "editorial-agent"
-    }
-  ],
+  "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],
   "regenerationTest": {
@@ -139,5 +129,95 @@
     "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
     "conclusion": "No new rule required. Third consecutive section to need none. Two of the four findings, F1 and F3, are catalog categories firing on constructions their own retention limbs protect, which is now the dominant failure mode across every section examined and the strongest evidence that R-CATALOG-LIMBS was the right structural fix."
   },
-  "currentHeading": "How Understanding Takes Root"
+  "currentHeading": "How Understanding Takes Root",
+  "workingNotes": [
+    {
+      "id": "WN1",
+      "formerly": "rulings RU1, by editorial-agent, scope volume, recorded 2026-07-29",
+      "question": "How should renamed headings be handled for the rest of this volume?",
+      "note": "Keep the prior pass's heading. Re-render the prose only. Record any heading whose rename introduced a defect as an open question rather than reverting it. Reverting one heading cascaded through five continuity records and record-routes rejected the change after each repair, consuming a full iteration and producing no prose. Eight renames remain. The prose carries the editorial value and does not depend on the heading, and heading questions batch cleanly for the author with their route costs visible.",
+      "status": "active as working practice, not authority",
+      "demoted": "2026-07-31",
+      "demotionReason": "Which heading a section carries is an author decision, and a volume-wide policy on renamed headings decides a class of them. Demoted from rulings on 2026-07-31 because an editorial-agent entry records reasoning, not author authority. The dispositions taken under this practice stand as recorded facts in the volume's records, every affected heading is separately recorded as an open question with its route cost, and CTD-0017 plus the five heading decisions remain the author's to make. Records elsewhere in this volume that cite the volume ruling on renames cite this note."
+    }
+  ],
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "seed",
+      "sprout",
+      "stem",
+      "flowering",
+      "Part Two"
+    ],
+    "itemsRead": [
+      "CTD-0057"
+    ],
+    "outcome": "CTD-0057 keeps the structural handoff to later volumes a tracked forward promise; the restoration invented no destination or implementation status. No recorded decision conflicts with the baseline."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 6,
+      "baselineSentences": 18,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Twelve non-surviving sentences carry the recorded repairs and restorations, including the four R-VOICE-BIND restorations of the invitational stance. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over seed, sprout, stem, flowering, and the soil movement F4 removed. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "F1's committing half is present: a future that is invited rather than promised carries both halves of the contrast. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "Credited below: the generation note names three sound prior-pass repairs kept on their merits; the clearest two now carry finding weight."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "credits": [
+      {
+        "id": "SC1",
+        "summary": "The prior pass recast the seed definition from a fragment stack, and the repair is kept.",
+        "evidence": {
+          "baseline": "Not a conclusion, not a solution, but a way of seeing.",
+          "shipped": "The seed is neither a conclusion nor a solution. It is a way of seeing."
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "The baseline's fragment stacked two denials before the claim; the recast keeps the contrast and gives the positive claim its own sentence, which is the repair R-NEGATION-STACK prescribes. Originally a kept note; recorded at finding weight under R-SUBSTITUTION-CREDIT."
+      },
+      {
+        "id": "SC2",
+        "summary": "The prior pass recast the stem paragraph's passive close, and the repair is kept.",
+        "evidence": {
+          "baseline": "Mechanisms are named. Tradeoffs are confronted. Implementation pathways are made explicit. Nothing essential is hidden behind metaphor.",
+          "shipped": "Mechanisms are named, tradeoffs confronted, and paths toward implementation made explicit. Nothing essential hides behind metaphor."
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "Three identical passive beats became one sentence with the card's cadence, and hides is the active verb the passive was concealing. Originally a kept note; recorded at finding weight."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules beyond the credits recorded. No prose changed."
+  }
 }

@@ -95,6 +95,33 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "substitutionCredit": {
+      "id": "F4",
+      "rule": "R-SUBSTITUTION-CREDIT",
+      "summary": "The prior pass italicized the volume titles, a genuine typographic repair kept with credit rather than as a quiet kept.",
+      "evidence": {
+        "baseline": "It is titled The Providence Imperative. ... If The Providence Imperative is the blueprint, Architecting Providence is the workshop.",
+        "shipped": "It is titled *The Providence Imperative*. ... If *The Providence Imperative* is the blueprint, *Architecting Providence* is the workshop."
+      },
+      "note": "Generation A recorded this as a kept typographic improvement without crediting it. Under R-SUBSTITUTION-CREDIT it is a finding that runs the other way: the baseline sets two book titles in roman, the corpus sets titles in italics, and the pass's repair fixes a fault the baseline carried on its own terms across seven occurrences in the section. Recorded at the same weight as a finding of damage."
+    },
+    "checks": [
+      "R-SUBSTITUTION-CREDIT: one instance, recorded above as F4. The other kepts, the italic question and closing couplet, were untouched baseline and carry no credit.",
+      "R-CAUTIOUS-HALF: the hedging half, Even that volume is not a final answer, survives beside the committing half, That process does not begin someday in the distant future. Its first layer begins immediately. Both limbs intact.",
+      "R-PAIRED-DELETION: The Providence Imperative and Architecting Providence are named only in this section, self-contained by the term sweep; Creating spaces where thoughtful human beings can encounter one another has its answering end in If You Are Gathering Communities. All ends present in both texts.",
+      "R-CORRECTION-SCOPE: no recorded correction reaches this section. CTD-0064's future-tense query about Volumes III and IV is open, the restored text keeps the baseline's future tense, and Q1 holds the decision for the author.",
+      "R-CANON-DELETION-RECORD: nothing was cut against an open canon query.",
+      "R-REFRAIN-COST: The future of coherence cannot be authored alone. It must be coordinated into existence. is a section-local landing, not an anchored refrain; nothing to count.",
+      "R-DEIXIS: the question now emerging beneath this work and begins immediately hold the reader at the live threshold. No instance needing repair."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard and the audit converts the kept title italicization into the substitution credit F4. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

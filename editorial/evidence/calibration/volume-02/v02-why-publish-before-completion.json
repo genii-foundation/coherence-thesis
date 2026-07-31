@@ -84,7 +84,7 @@
       "id": "F4",
       "summary": "An em dash preceding a resumptive all of these became a serial and.",
       "evidence": {
-        "baseline": "the operational design of governance and trust architecture—all of these will benefit from collaborators who arrive at the work through having read what currently exists",
+        "baseline": "the operational design of governance and trust architecture [mark] all of these will benefit from collaborators who arrive at the work through having read what currently exists",
         "shipped": "and operational design of governance and trust architecture will all benefit from collaborators who arrive through reading what exists"
       },
       "authorizedBy": "R-PUNCT-STRUCT, applied by absorbing the mark into the list.",
@@ -135,6 +135,23 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS. The record's quoted evidence was mechanically cleaned to the [mark] placeholder earlier tonight; that cleanup was not an audit, this is.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the concessive pair keeps both halves: A more developed version released later would be a better book in some respects concedes, and the committing consequence, but it would also be a book released into a field that has continued to fragment for additional years, survives with its restored tense under F3.",
+      "R-TENSE re-verified on F3: the restored time claims carry load-bearing timing, a present that is moving faster and has continued to fragment, and stay in their baseline aspect.",
+      "R-PAIRED-DELETION: the field Chapter Eleven described has its end present; something like this book existing pairs with the Interlude's account of what the book is doing; the collaborators promise hands off to What Providence Actually Is Today's next-phase list. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0020's urgency claim is identical in both texts.",
+      "R-SUBSTITUTION-CREDIT: the kept sentences were baseline kept by the pass; the applied colon is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: the restored find each other is the volume's connective motif doing its work here, counted nowhere because it is not a fixed construction; no anchored refrain is engaged.",
+      "R-DEIXIS: The conditions the book describes are not waiting and Releasing the book now hold the reader inside the live release decision. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and the section's time claims keep their restored aspect. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

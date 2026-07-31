@@ -114,6 +114,22 @@
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the committing halves survive: the kept The work has begun. It is uneven, contested, and operating against significant headwinds., and the restored two argued claims with their therefore, which keep the civilizational-before-computational thesis a claim rather than a participial after-effect. Both limbs intact.",
+      "R-PAIRED-DELETION: civilizational before it is computational recurs within the chapter at both ends and has its relational antecedent in Chapter Three's The alignment crisis is not merely computational. It is relational.; the restored rather than philosophical names the turn the chapter's sections then perform. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0016's compact thesis statement stands at baseline strength.",
+      "R-SUBSTITUTION-CREDIT: the kept two-sentence terms-setting was baseline kept by the pass; the applied colon is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this chapter opener; the substrate-refrain anchor is engaged by later sections of the chapter, not here.",
+      "R-DEIXIS: Humanity is approaching a threshold and This chapter takes that argument into its most consequential domain hold the reader at the live crossing. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard and the chapter opener keeps its two argued claims distinct. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

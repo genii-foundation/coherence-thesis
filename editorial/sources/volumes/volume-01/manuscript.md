@@ -238,7 +238,7 @@ That assumption is now failing.
 
 But something substantial has changed.
 
-Coherence is no longer invisible. The physiological signatures of genuine regulation and genuine encounter, the state of the nervous system and the synchronization between people who are truly present with one another, can now be detected reliably and noninvasively. Coherence can be cultivated deliberately. And it can become the basis on which people recognize and trust one another, not as ideology but as infrastructure.
+Coherence is no longer invisible. The physiological signatures of genuine regulation and genuine encounter, the state of the nervous system and the synchronization between people who are truly present with one another, can now be detected, reliably and non-invasively. Coherence can be cultivated deliberately. And it can become the basis on which people recognize and trust one another, not as ideology but as infrastructure.
 
 This does not mean replacing existing systems overnight. It means allowing a different logic to emerge alongside them, one that proves its viability under stress rather than demanding belief.
 
@@ -317,7 +317,7 @@ A further concern arises around measurability: whether constructs such as cohere
 
 This concern is not a side issue. It is the hinge on which the entire thesis turns, and the work treats it as such.
 
-The claim that the physiological signatures of regulation and genuine encounter can be detected, reliably and noninvasively, is the load-bearing empirical claim of this entire body of work. If it is false, what follows does not become dangerous; it becomes hollow. And so this work does not assert that claim and move on. It commits to testing it first, in the open, under adversarial and independent scrutiny: publishing what the instruments can and cannot see, and building only on what survives that test.
+The claim that the physiological signatures of regulation and genuine encounter can be detected, reliably and non-invasively, is the load-bearing empirical claim of this entire body of work. If it is false, what follows does not become dangerous; it becomes hollow. And so this work does not assert that claim and move on. It commits to testing it first, in the open, under adversarial and independent scrutiny: publishing what the instruments can and cannot see, and building only on what survives that test.
 
 This is the sense in which the thesis is falsifiable. If genuine encounter leaves no detectable, hard-to-counterfeit signature, the architecture that follows cannot be built, and the work will say so plainly. The burden of proof is real, and it is accepted, not deferred.
 
@@ -457,7 +457,7 @@ Seen this way, many of our gravest problems look less like failures of intellige
 
 Something happens when these observations are held together long enough.
 
-A kind of reverence arrives: not demanded, not believed, but noticed. Life appears to organize itself through relationship. Intelligence appears to emerge through participation. Cooperation appears to be at least as fundamental as competition. Systems that increase coherence tend to become more alive: more adaptive, more creative, more capable of repair. Systems that erode it tend toward brittleness and collapse.
+A kind of reverence arrives: not demanded, not believed, but noticed. Life appears to organize itself through relationship. Intelligence appears to emerge through participation. Cooperation appears to be at least as fundamental as competition. Systems that increase coherence tend, observably, to become more alive: more adaptive, more creative, more capable of repair. Systems that erode it tend toward brittleness and collapse.
 
 This is reverence earned through observation rather than asserted through doctrine. It does not require a belief about why life is this way. It requires only the willingness to notice that it is, and to take the noticing seriously.
 

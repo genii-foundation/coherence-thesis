@@ -55,6 +55,16 @@
       "authorizedBy": "Compression.",
       "diagnosis": "Individually reasonable and cumulatively catastrophic is the mechanism, and it is the same structure the co-optation chapter uses twenty chapters later. The two beat close is a landing the paragraph earns. Temptation is also a weaker account than pressure, because a temptation implies a person who could resist and a pressure implies a structure that does not care.",
       "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept closing test is the best sentence in the section and it is the prior pass's.",
+      "evidence": {
+        "baseline": "(absent; the baseline argues that commitments must be constitutional rather than cultural and gives no operational test)",
+        "shipped": "A principle becomes constitutional only when a participant can identify a breach and seek a remedy without depending on the goodwill of the person in breach."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31. The original record called it the best sentence in the section while filing it as a kept.",
+      "diagnosis": "The sentence converts the chapter's whole distinction into a one-line test a participant can apply. Under the ratified rule the judgment the original record already made is recorded as a finding in the prior pass's favor."
     }
   ],
   "debtImpact": [
@@ -101,5 +111,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section illustrates R-REGISTER-DICTION at the level of a whole formulation rather than a word: honored in the telling, ignored in the operation is the volume's own phrase for this failure and the generic paraphrase is from nowhere."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 29,
+        "survivingVerbatim": 18,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the accommodation argument keeps both its hedge and its committing two beat close, and the rotation example keeps the indispensability clause that gives it teeth. R-PAIRED-DELETION: drift, accommodation, and the constitutional-remedy test were swept; the remedy test's vocabulary recurs in the governance chapters with this section as its clearest statement. R-REGISTER-DICTION: the original record's regeneration note already treats the restored formulation, honored in the telling, ignored in the operation, as the register case, and the audit confirms it stands. R-CORRECTION-SCOPE, R-LEDGER-WINS-COROLLARY, R-TENSE, R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Eighteen of twenty-nine baseline sentences survive verbatim; the remainder trace to two recorded punctuation repairs and the documented restorations. One substitution credit recorded as F3. No prose change required.",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

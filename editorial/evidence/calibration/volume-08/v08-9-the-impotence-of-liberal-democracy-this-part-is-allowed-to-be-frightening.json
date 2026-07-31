@@ -65,6 +65,19 @@
       "producedRule": "R-LAND"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F4",
+      "summary": "The strain specification and the democratic-rights guard repair the baseline's overclaim, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "The honest answer is that the old checks have grown **slow, captured, and increasingly hollow,** and we have not yet built the new ones. Our leaders, taken as a class, appear to carry less learning, less vocation, and less grace than the gravity of the hour demands.",
+        "shipped": "The honest answer is that the old checks are strained: slower than the actors they must check, more concentrated in ownership than they were, and in places openly resisted. That strain is not proof that democratic institutions are impotent, and it is not a licence to replace them with an untested trust network. It makes their renewal more urgent, not less. Providence must be measured against democratic rights and must not be presented as their spiritually superior successor."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "Captured and hollow were verdicts the section's evidence does not reach, and the leaders-as-a-class judgment was the unevidenced group diagnosis CTD-0093 forbids. The shipped specification converts each verdict into a checkable strain, slower, more concentrated, openly resisted, and then adds the guard the whole corpus needed: that Providence is answerable to democratic rights rather than their successor, which is the strongest self-limitation in the volume and appears nowhere in the baseline. The prior record kept both in notes; credited here.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0093",
@@ -102,6 +115,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the permission to be afraid briefly and on purpose, the assumptions, the four questions, and the closing refusal ending on the epigraph's return. No prose changed by this audit. One substitution credit added as auditFindings F4 for the strain specification and the democratic-rights guard. R-CAUTIOUS-HALF: the strain-is-not-proof hedge and the we-will-not-soften commitment both stand, which is the rare passage that keeps both halves at full strength. R-PAIRED-DELETION: each of the four questions keeps its evidentiary end, the announced obstacle at the architects, the transparency episode at the reckoning, the press as holding of the manor at the three roads; and the closing well-adjusted sentence keeps its ends at the epigraph and the blessing. R-CORRECTION-SCOPE: the impotence-to-strain correction governs the verdict sentence alone and has not spread; the four questions were re-read against it and stand outside its scope. R-DEIXIS, R-TENSE, R-REFRAIN-COST checked and silent."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

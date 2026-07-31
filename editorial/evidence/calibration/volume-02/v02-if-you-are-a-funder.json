@@ -131,6 +131,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: the capital-asymmetry sentence here is the second of the two instances anchored in v02-the-builders-shared-ground, restored at full scope with all of and combined; cited, not re-counted, with CTD-0019's sourcing price carried at the anchor and Q1 holding it for the author.",
+      "R-CAUTIOUS-HALF: the committing halves survive: This is not natural. It is a consequence of decisions about where capital has been directed., and It is changeable. beside the restored three It sometimes means costs that bound what changing it asks of a funder. Both limbs intact.",
+      "R-PAIRED-DELETION: find the builders the previous section named has its end in If You Are a Builder; the longer-time-horizon requirements pair with The Builders' Shared Ground's undercapitalization diagnosis. All ends present in both texts, and Q2's route question stands with CTD-0041.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the kept factual sentences were baseline kept by the pass. No credit instance.",
+      "R-DEIXIS: If you are in a position to direct capital and the request is straightforward hold the reader at the live request. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard and the capital-asymmetry reprise is cited to its anchor at full restored scope. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

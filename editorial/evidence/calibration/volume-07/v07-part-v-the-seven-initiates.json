@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-part-v-the-seven-initiates",
+  "editorialId": "volume-07",
+  "sectionHeading": "## Part V: The Seven Initiates",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions. The chapter-start prose was restored under the standing author instruction to restore from baseline and flag afterwards. That instruction authorizes the restoration and nothing more: T-021 reserves the route decision on part introductions to the author, the task register still lists it pending at tier red, and every rulings array in this volume is empty, so no authority exists in this record to resolve it. The observed facts, that this part heading already existed and that the region carried shipped prose before this pass, are recorded in openQuestions as evidence for the author's adjudication, not as its resolution. An earlier wording of this field claimed the restoration executed an orchestrator adjudication of the route question; an orchestrator is an agent, that claim exceeded agent authority, and it is withdrawn.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "boundary": {
+    "note": "This record is bounded by the corrected section map: the merged part heading plus every line of prose between it and the next structural line. The pre-existing records named in supersedes were written while the reporting tool could not see this volume's two-line part labels, so each measured a fragment: one the bodyless bold label, the other the prose with no heading. Both fragments are preserved unedited as history and neither corresponds to a section the corrected boundaries produce.",
+    "supersedes": [
+      "v07-part-v",
+      "v07-the-seven-initiates"
+    ]
+  },
+  "rulings": [],
+  "substitutionTest": {
+    "survivingBaselineSentences": 1,
+    "note": "225 baseline words against 108 shipped before this pass, minus 52 percent. One baseline sentence survived in the shipped text, the naming sentence with its list of seven, so the section was not in pure substitution mode; the pairing test applied to that sentence and it paired correctly with Part VI and the Seven in Brief."
+  },
+  "pairingSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": [
+      "Listening",
+      "Intimacy",
+      "Balance",
+      "Art & Alchemy",
+      "Embodiment",
+      "Worship",
+      "Providence",
+      "pillars",
+      "thresholds",
+      "Body of Worship"
+    ],
+    "outcome": "The seven names span Parts V, VI, VIII, IX, and X and every end is present. Pillars and thresholds recur nowhere else; Body of Worship's other ends are the subtitle, Part X, and the Coda liturgy, all present or restored. The dependency chain's other end, the tenet sequence in Part VI, is present. No blocking dependency."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Seven Initiates",
+      "none may be skipped",
+      "sequence",
+      "Art & Alchemy",
+      "working map",
+      "consent"
+    ],
+    "itemsRead": [
+      "CTD-0070",
+      "CTD-0085",
+      "CTD-0088",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0088 rules: claims of nonnegotiable sequence are removed until consent controls exist, so none may be skipped is not restorable. CTD-0070 rules: the sequence stays distinguished from a validated taxonomy, so the working map sentence is kept. CTD-0085 rules the display form Art & Alchemy, which the baseline's Art and Alchemy is normalized to. The baseline governs the rest."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The pillars figure and the whole cumulative paragraph return per the superseded record's findings, adopted rather than restated; see F2 of v07-part-i-the-argument-arrived for the mis-bounded record count.",
+      "evidence": {
+        "baseline": "They are pillars and thresholds at once. As pillars, they hold up a Body of Worship. ... Listening is opened first, and never closed",
+        "shipped": "They are both supports and thresholds within a Body of Worship. The path is not a ladder abandoned rung by rung."
+      },
+      "authorizedBy": "The standing author instruction to restore from baseline and flag afterwards. The restoration is contested under author-reserved T-021 and is flagged in this record's openQuestions, not adjudicated here.",
+      "diagnosis": "Supports is the generic word for the volume's own pillars, an R-REGISTER-DICTION case at equal precision. The cumulative paragraph is the section's only real content and its three-clause deepening sequence falls under 4.4's retention limb."
+    },
+    {
+      "id": "F2",
+      "summary": "None may be skipped stays deleted, and the deletion is recorded with its text.",
+      "evidence": {
+        "baseline": "each is the gateway to the next, and none may be skipped:",
+        "shipped": "each is the gateway to the next:"
+      },
+      "authorizedBy": "CTD-0088 under R-LEDGER-WINS, recorded per R-CANON-DELETION-RECORD.",
+      "diagnosis": "The critical safeguarding item names claims of nonnegotiable sequence as removable until consent controls exist. The dependency chain returns in permitted form, since no Intimacy without Listening states an ordering of capacities, not an authority over participants; the skipping prohibition was the authority claim, and it waits on the controls."
+    },
+    {
+      "id": "F3",
+      "summary": "R-CAUTIOUS-HALF checked: the committing half of the path claim survived the wave-one pass in hedged form and returns at strength.",
+      "evidence": {
+        "baseline": "so that by the time one stands at Providence, all seven are alive and growing together",
+        "shipped": "Each threshold is meant to deepen the capacities that came before it."
+      },
+      "authorizedBy": "R-CAUTIOUS-HALF.",
+      "diagnosis": "The shipped text kept the hedging is meant to and cut the committing image of all seven alive at Providence. The committing half is the falsifiable one, and it returns as prose while the kept working-map sentence carries the epistemic bound, which is the correct division of labor."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "None may be skipped stays out per F2; the participant's right to pause, return, or decline closes the section; no sequence outranks consent."
+    },
+    {
+      "id": "CTD-0070",
+      "effect": "no change",
+      "note": "The working map sentence is kept; the lineage of the seven remains unproved and the item remains open."
+    },
+    {
+      "id": "CTD-0085",
+      "effect": "paydown preserved",
+      "note": "Art & Alchemy in the ledger display form."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twenty rules, executing the restoration the superseded record held",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The pillars and thresholds pair, the dependency chain in permitted form, the full cumulative paragraph, and the closing statement that each addition strengthens all that came before."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT per the superseded map: the summary dash became a period and sequential-and-discarded was rebuilt as sequential and discarded."
+        },
+        {
+          "kind": "kept",
+          "note": "The working map sentence after the naming sentence, and the pause, return, or decline pair as the section's close."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped ladder compression, whose content the restored cumulative paragraph strictly contains."
+        }
+      ]
+    }
+  ],
+  "rulesDerived": [],
+  "openQuestions": [
+    "T-021, author-reserved, flagged and not resolved: this pass restored and lengthened this part introduction on 2026-07-31 while the task register still listed T-021 pending at tier red. Both forms, named per the structural rule: the pre-pass shipped introduction of 108 words, measured in the superseded records v07-part-v and v07-the-seven-initiates, and the restored baseline introduction of 225 baseline words now shipped. The route facts offered as evidence, not adjudicated: the part heading predates this pass and the region carried shipped prose before it, so the section's route already existed and no structural line changed. Whether that reasoning holds, and whether the restored form stands or the pre-pass form returns, is the author's decision under T-021. The same-pass volume-04 lane read the same reservation as a byte freeze and held its Part II introduction unchanged; the author's ruling should reconcile the two readings.",
+    "Carried under CTD-0070: whether the dependency chain itself, no Intimacy without Listening and its five successors, states inherited teaching or project synthesis remains for the lineage note the item requires."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at its ratified twenty-rule index, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F3 is the volume's first clean R-CAUTIOUS-HALF confirmation: the hedging half survived wave one and the committing half did not."
+  }
+}

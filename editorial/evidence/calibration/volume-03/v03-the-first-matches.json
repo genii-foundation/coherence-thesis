@@ -1,0 +1,128 @@
+{
+  "sectionId": "v03-the-first-matches",
+  "sectionHeading": "The First Matches",
+  "currentHeading": "The First Matches",
+  "anchor": "v03-the-year-of-the-weaver",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "388 baseline words to 205 shipped words, minus 47 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "hydrologist",
+      "mentor",
+      "mentorship door",
+      "third introduction",
+      "reflective prompt"
+    ],
+    "itemsRead": [
+      "CTD-0015",
+      "CTD-0056"
+    ],
+    "outcome": "No recorded decision governs this section. The paired-deletion sweep found the third introduction referenced from chapter twelve's Maren's Creek section; both ends are restored in this batch, so the hinge resolves."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The hinge sentence to the economic argument was cut down to a vague promise.",
+      "evidence": {
+        "baseline": "We will return to it in the next chapter, because it is the hinge on which the entire economic argument of this book turns.",
+        "shipped": "The importance of the connection will not become visible until later."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline names where the reader will return and why it matters, which is structural wayfinding the standard protects in a long work. The shipped version withholds both, and the cross-reference the sweep traced from chapter twelve lands on it."
+    },
+    {
+      "id": "F2",
+      "summary": "The reflective-prompt exchange and the water-sound answer were compressed out of the hydrologist scene.",
+      "evidence": {
+        "baseline": "Maren's says: the data suggests that both of you entered a state of high coherence about forty minutes in. What were you talking about? She thinks about it, and answers honestly: we were talking about the sound the water made when we finally got it to surface.",
+        "shipped": "Afterward, the system asks about a passage around forty minutes into the call, when both records changed. What were they discussing? Maren remembers the sound the water made when it first returned to the surface."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped version keeps the facts and loses the exchange: the prompt in the mirror's own voice, and Maren answering honestly, which is the first time the instrument and a participant complete the dialogue the engine chapter designed. The sound of water returning is a voice-card protected image at both ends."
+    },
+    {
+      "id": "F3",
+      "summary": "The affordability commitment on the mentorship door was deleted.",
+      "evidence": {
+        "baseline": "for the price the network sets, a price Maren can afford because the network's structure is designed so that she can",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This clause is the only place the chapter says access to mentorship is priced by design rather than by market, which the floor-and-height economics of chapter twelve depends on. Its loss makes the elder's mentorship read as luck."
+    },
+    {
+      "id": "F4",
+      "summary": "Seven prohibited marks.",
+      "evidence": {
+        "baseline": "The discernment mark, the intuition fence, the prompt mark, the elder mark, the price mark, and the region mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The discernment expansion took a colon. The intuition fence became commas around the daylighting appositive. The prompt's two beats split at a period. The elder appositive and the price appositive took commas. The region mark became a period with Different work, different world standing as an earned narrative fragment, one of the small number the voice card permits."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0056",
+      "effect": "recorded",
+      "note": "The mentorship door and its designed pricing are described as operating features inside the design fiction. The item's inventory should count this scene."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The deliberate-curated introductions paragraph, the hydrologist scene with the prompt exchange and the water-sound answer, the elder scene with the mentorship-door pricing, and the third-introduction paragraph with its named hinge."
+        },
+        {
+          "kind": "kept",
+          "note": "The heading, unchanged in both texts."
+        },
+        {
+          "kind": "cut",
+          "note": "The pass-authored design doctrine, none of the introductions is guaranteed by an algorithm, each is a human judgment supported by context, followed by the possibility of correction, a failed match should teach the network as much as a successful one. Quoted in full because the failed-match sentence is genuinely new design content the author may want; it is seeded canon, so the restoration does not keep it."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across seven marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 381,
+        "baselineWords": 388,
+        "shippedWords": 205,
+        "deltaPercentAgainstBaseline": -2,
+        "shippedDeltaPercentAgainstBaseline": -47
+      }
+    }
+  ],
+  "openQuestions": [
+    "The cut failed-match doctrine, quoted in the generation notes, is worth an author decision: it is the only statement anywhere that mismatches should train the network."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The three matches again carry their design weight, and the chapter-twelve hinge resolves at both ends."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": []
+}

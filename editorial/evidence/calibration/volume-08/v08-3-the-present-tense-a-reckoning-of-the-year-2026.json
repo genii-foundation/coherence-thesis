@@ -92,6 +92,19 @@
       "producedRule": "R-LAND"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F6",
+      "summary": "The two-states repair in the phenomenology is better than the baseline's sorting, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "For most people it is one of two states, and very nearly the whole future forks between them ... These two states are spreading through the human population simultaneously, and which one prevails is, very nearly, the entire question this work exists to address.",
+        "shipped": "These states are not two kinds of person. They overlap inside the same person, often in the same week, and no one should be sorted into the collapsed and the awakened. The practical question is what helps a nervous system stay responsive without being consumed by the record."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "The baseline sorts the human population into two spreading kinds and stakes the entire question on which kind prevails, a claim about every reader's interior that no evidence in the section reaches and that quietly flatters the reader who identifies as the waking kind. The repair keeps both states, returns them to the same person, and converts the prophecy into a practical question. It is also the anchor of a deliberately severed pair: the second address's baseline reference to the nervous system that is waking rather than going dark leaned on this sorting, was removed with it under CTD-0083, and both removals must stand or fall together, as the second address's record documents. The prior record called this the pass's correction and kept it without weight; it is credited here.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0106",
@@ -134,6 +147,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the dated figure blocks, the bent curve with its coal in winter, the capacity to administer trust, the four whistleblowers with what each disclosed, and not a wish, but a plan all stand. No prose changed by this audit. One substitution credit added as auditFindings F6, the two-states repair, which anchors the CTD-0083-severed pair the second address's record cites. R-REFRAIN-COST anchor: the as-of mid-2026 marking recurs four times, at the section head, in the wars block, in the money block, and in the Roots register's state-of-2026 preamble; each instance is CTD-0106 C1 paydown, the single edit that would change all four is letting the section-head declaration carry the section, and that edit is not taken because the per-block marks are what survive quotation out of context. Child records cite this anchor. R-CAUTIOUS-HALF: the daily-massacre and the bent-curve halves both stand, as do the projection hedge and the committing fertility figures. R-CORRECTION-SCOPE: the kept corrections, scenarios not measurements, arrangements not identical, cases not collapsed, were re-read and none has expanded beyond the words it names. The baseline's you-cannot-extract-the-humanity sentence remains replaced by the bounded market-damages-its-own-basis mechanism; checked and kept as bounding, not credited, and not restored, because the universal was unearned. R-DEIXIS and R-TENSE checked and silent."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

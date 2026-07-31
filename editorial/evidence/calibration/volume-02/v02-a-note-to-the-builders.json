@@ -165,6 +165,34 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "refrainAnchor": {
+      "rule": "R-REFRAIN-COST",
+      "refrain": "The work belongs to whoever does it, twice as an italic display line and twice folded into prose with in whatever form their conditions permit.",
+      "count": 4,
+      "instances": [
+        "v02-a-note-to-the-builders",
+        "v02-a-founding-document-not-a-finished-system",
+        "v02-if-you-are-a-builder",
+        "the volume's closing display line after the final divider"
+      ],
+      "note": "Anchored here at the refrain's minting, manuscript lines 521, 1133, 1151, and 1193 in both texts. It is the volume's ownership refusal and the Interlude's landing, and the closing display instance means the book ends on it. The recurrence is earned repetition under section 6, each return widening who the work belongs to, and CTD-0041's route question is engaged once per instance: whatever route the author gives a builder prices at four recurrences of the promise that no route is required. The related design-space refrain, radically underdeveloped relative to the urgency, runs three times, in The Narrowing Window, here, and in Builders of the Coherent Civilization, and is counted in this anchor rather than separately. Child audits cite this anchor."
+    },
+    "checks": [
+      "R-REFRAIN-COST: both volume refrains that pass through this Interlude are anchored above with counts; the disclosure-refrain anchor in v02-providence-and-ai-integration is not engaged here.",
+      "R-CAUTIOUS-HALF: the committing halves survive: This is not an argument for despair. It is an argument for urgency., the falsifiable Surveillance capital has roughly two decades of head start with its hedge roughly intact, and the imperative centre Build it. Build a version of it. Build something better than it.",
+      "R-PAIRED-DELETION: the design problems Chapter Seven examines are present at both ends; The work is yours to do whether you ever encounter the people building Providence or not has its answering end in the Final Note's builder section. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0041 and CTD-0020 exposures are restored and flagged as Q1 and Q2.",
+      "R-SUBSTITUTION-CREDIT: the kept imperative paragraph and italic displays were untouched baseline; the kept colon is R-PUNCT-STRUCT compliance. No uncredited discretionary improvement.",
+      "R-DEIXIS: consider this the invitation and at this threshold hold the reader inside the live address; the restored direct-address phrasings keep the work the reader's. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's five findings hold under the twenty-rule standard. The audit anchors the volume's ownership refrain with its count and confirms the Interlude's committing halves. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

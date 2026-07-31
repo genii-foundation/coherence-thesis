@@ -140,6 +140,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the committing triple keeps its shape byte-identical: The work is real. The builders are real. What is missing is the connective tissue. The question two-beat the volume diagnostic tracks is intact: The question is not whether the builders exist. The question is whether they will find each other before fragmentation becomes irreversible. Retention limb of catalog 4.9.",
+      "R-PAIRED-DELETION: before fragmentation becomes irreversible has its family ends in the Prologue's closing task and the Part Three epigraph counted at the isolated-genius anchor in v02-the-threshold; the three restored conditional failures name the groups minted earlier in the chapter, silos, worlds, and the alignment community, each with its antecedent present. All ends resolve in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0020's crescendo stands at baseline urgency without addition, and CTD-0066's contested claim is recorded in debtImpact.",
+      "R-SUBSTITUTION-CREDIT: the kept committing triple was baseline kept by the pass; the restored each other at four occurrences is fidelity to the volume's own usage under R-REGISTER-DICTION, not an improvement to credit. No instance.",
+      "R-REFRAIN-COST: the fragments family and isolated-genius refrain are cited to their anchors in v02-civilizational-alignment and v02-the-threshold; nothing counted here.",
+      "R-DEIXIS: This is the question on which the next phase depends holds the reader at the live dependency. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and the closing two-beat question survives with its committing half. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-part-ii-the-numbers-and-the-structure",
+  "editorialId": "volume-07",
+  "sectionHeading": "## Part II: The Numbers and the Structure",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions. The chapter-start prose was restored under the standing author instruction to restore from baseline and flag afterwards. That instruction authorizes the restoration and nothing more: T-021 reserves the route decision on part introductions to the author, the task register still lists it pending at tier red, and every rulings array in this volume is empty, so no authority exists in this record to resolve it. The observed facts, that this part heading already existed and that the region carried shipped prose before this pass, are recorded in openQuestions as evidence for the author's adjudication, not as its resolution. An earlier wording of this field claimed the restoration executed an orchestrator adjudication of the route question; an orchestrator is an agent, that claim exceeded agent authority, and it is withdrawn.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "boundary": {
+    "note": "This record is bounded by the corrected section map: the merged part heading plus every line of prose between it and the next structural line. The pre-existing records named in supersedes were written while the reporting tool could not see this volume's two-line part labels, so each measured a fragment: one the bodyless bold label, the other the prose with no heading. Both fragments are preserved unedited as history and neither corresponds to a section the corrected boundaries produce.",
+    "supersedes": [
+      "v07-part-ii",
+      "v07-the-numbers-and-the-structure"
+    ]
+  },
+  "rulings": [],
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "946 baseline words against 198 shipped before this pass, minus 79 percent, the deepest part-section loss in the volume. Substitution mode; the pairing test did not apply to the shipped text. Sweep run on the baseline before restoring."
+  },
+  "pairingSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": [
+      "Saturn",
+      "Mars",
+      "Tao Yu",
+      "Network",
+      "sevenfold path",
+      "seven initiates",
+      "Presencing Genius"
+    ],
+    "outcome": "Saturn's other ends are Part I and the Coda, both restored this generation. The sevenfold path's other end is Part V, restored. Tao Yu's other end is the byline, present. The Network's other end is the CTD-0028 promise, and the visibility clause is kept. Mars appears only here in this volume; its cross-volume end is Volume IX, out of scope and unharmed. No blocking dependency."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "numerology",
+      "planets",
+      "Saturn",
+      "Mars",
+      "Tao Yu",
+      "Network",
+      "complete unfolding",
+      "true order",
+      "evidence"
+    ],
+    "itemsRead": [
+      "CTD-0028",
+      "CTD-0037",
+      "CTD-0081",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0081 is the governing item and it rules: the scheme is reclassified as literary symbolism, and evidentiary language is not restorable while the query stands. The head disclaimer is the paydown and it stays at the head. CTD-0028 keeps a visibility clause on the Network promise. CTD-0037 keeps future volumes marked as intended. The rest of the baseline is governed by no recorded decision and returns."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The full planetary account, the threefold order, the Tao Yu paragraph, and the quiet teacher close are restored per the superseded record's findings F1 through F4, which are adopted rather than restated.",
+      "evidence": {
+        "baseline": "One is the Sun: the single light, the monad ... The number was a quiet teacher the whole time.",
+        "shipped": "One is the Sun, the single light and coherent ground. Two is the Moon, duality and reflection."
+      },
+      "authorizedBy": "The standing author instruction to restore from baseline and flag afterwards. The restoration is contested under author-reserved T-021 and is flagged in this record's openQuestions, not adjudicated here. See F2 of v07-part-i-the-argument-arrived for the mis-bounded record count.",
+      "diagnosis": "CTD-0081 was read by the wave-one pass as requiring removal rather than reframing. The item forbids the scheme as evidence; it does not forbid the scheme. With the disclaimer at the head, the reader meets the frame before the content."
+    },
+    {
+      "id": "F2",
+      "summary": "The trailer's evidentiary claim is declined under the standing reclassification, and the deletion is recorded with its text.",
+      "evidence": {
+        "baseline": "this hidden order is not ornament but evidence.",
+        "shipped": "(not restored; the trailer's remaining sentences return without it)"
+      },
+      "authorizedBy": "CTD-0081 under R-LEDGER-WINS, recorded per R-CANON-DELETION-RECORD.",
+      "diagnosis": "The open query asks whether the scheme is symbolism or evidence, and the recorded reclassification says symbolism until the author rules otherwise. The strongest instance of the evidence claim is exactly this sentence, so its absence must be on the record: the corpus has retreated from the claim while the question stands, and the author decides from an unthinned record."
+    },
+    {
+      "id": "F3",
+      "summary": "The prior pass tail disclaimer is removed as redundant restatement now that the close it replaced is back.",
+      "evidence": {
+        "baseline": "(no counterpart)",
+        "shipped": "The symbolism may deepen a reader's experience of the books. It does not prove their claims. The proof, where proof is possible, must come from practice, evidence, and what can survive honest challenge."
+      },
+      "authorizedBy": "Catalog 4.8 on redundant restatement; R-REMOVE-BURDEN.",
+      "diagnosis": "Both disclaimers said the same thing at the two ends of the section. The head instance is the paydown position the superseded record chose, and the tail instance had replaced the section's actual close. What the tail contributed, the evidentiary boundary, survives at the head; nothing else it carried is lost."
+    },
+    {
+      "id": "F4",
+      "summary": "Complete unfolding is kept once and bounded; true order is reduced to order, twice.",
+      "evidence": {
+        "baseline": "Seven is everywhere the measure of a complete unfolding ... set in their true order ... The true order is therefore not twofold but threefold",
+        "shipped": "In many traditions seven is the measure of a complete unfolding ... set in their order ... The order is therefore not twofold but threefold"
+      },
+      "authorizedBy": "The voice card's reduce list; the universals rule in section 5 on everywhere; CTD-0081's fact-checking clause.",
+      "diagnosis": "Everywhere is an unearned universal and the card lists both phrases for reduction. In many traditions bounds the claim to what is checkable, and the second occurrence of unfolding drops the modifier rather than the image."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0081",
+      "effect": "paydown preserved and strengthened",
+      "note": "The scheme returns in full as figure; the evidence claim stays retired per F2; the disclaimer meets the reader first."
+    },
+    {
+      "id": "CTD-0028",
+      "effect": "no change",
+      "note": "The Network sentence keeps the visibility clause: the future volumes and the Network remain promises whose delivery must be made visible."
+    },
+    {
+      "id": "CTD-0037",
+      "effect": "no change",
+      "note": "Future volumes remain on their way rather than delivered."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twenty rules, executing the restoration the superseded record held",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The baseline subtitle, the entering-the-mystical paragraph, the six planetary readings with their reasons, the Neptune and Saturn paragraph, the sevenfold ascent and its boundary, the threefold order with its premise, the Tao Yu account, the quiet teacher close, and the trailer's non-evidentiary sentences as the section's closing beat, label dropped per the refrain anchor in v07-part-i-the-argument-arrived."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT over fourteen baseline marks following the superseded record's map: planet glosses became colons or commas by whether they specify or extend, second movements became periods, parentheticals were rebuilt as separate clauses."
+        },
+        {
+          "kind": "applied",
+          "note": "F4's reductions, and the head placement of the kept disclaimer."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass head disclaimer verbatim, less the also that implied the symbolism was an aside: The volumes carry a deliberate planetary symbolism."
+        },
+        {
+          "kind": "cut",
+          "note": "The tail disclaimer per F3, and the shipped planet list, whose content the restored readings strictly contain."
+        }
+      ]
+    }
+  ],
+  "rulesDerived": [],
+  "openQuestions": [
+    "T-021, author-reserved, flagged and not resolved: this pass restored and lengthened this part introduction on 2026-07-31 while the task register still listed T-021 pending at tier red. Both forms, named per the structural rule: the pre-pass shipped introduction of 198 words, measured in the superseded records v07-part-ii and v07-the-numbers-and-the-structure, and the restored baseline introduction of 946 baseline words now shipped. The route facts offered as evidence, not adjudicated: the part heading predates this pass and the region carried shipped prose before it, so the section's route already existed and no structural line changed. Whether that reasoning holds, and whether the restored form stands or the pre-pass form returns, is the author's decision under T-021. The same-pass volume-04 lane read the same reservation as a byte freeze and held its Part II introduction unchanged; the author's ruling should reconcile the two readings.",
+    "Carried from the superseded record: the restored close says the reading uncovers an order that was always holding the volumes. CTD-0081 remains a query; is that a claim about the volumes or about the world?",
+    "Carried: seven tones to a scale, seven days to a week, seven movements to a full arc are bounded by in many traditions and remain unchecked facts under CTD-0081.",
+    "The restored trailer sentences say surface and depth say the same thing without calling that evidence. If the author rules the scheme evidentiary, F2's declined sentence is the one to restore."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at its ratified twenty-rule index, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 is the volume's cleanest R-CANON-DELETION-RECORD case: a deletion that is right under the standing reclassification and must still be visible to the ruling it awaits."
+  }
+}

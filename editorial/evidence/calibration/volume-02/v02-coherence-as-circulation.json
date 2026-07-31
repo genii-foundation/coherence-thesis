@@ -130,6 +130,23 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the framing pair keeps both halves in baseline order: An earlier framing in this book described coherence as something like capital. That framing has problems., then A more accurate framing is that coherence is a property of circulation. The committing close, The patterns are visible without requiring intimate surveillance of any individual participant, survives.",
+      "Volume diagnostic, the question two-beat: the restored repetition, The question is no longer how do we measure individual coherence and reward it? The question is what coordination infrastructures support circulation patterns, is the diagnostic's construction intact under catalog 4.9's retention limb. F3's repair holds.",
+      "R-PAIRED-DELETION: the earlier framing this section corrects has its end in Working Alternatives' Sardex is not coherence-as-capital; the way trust does triad is section-local and kept. Both ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section; the CTD-0003 ontological hedge is restored baseline wording, neither widened nor narrowed, and nothing was cut against the open query.",
+      "R-SUBSTITUTION-CREDIT: the kept the-way triad was baseline kept by the pass; the kept repairs are R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section.",
+      "R-DEIXIS: This is what coherence as flow means structurally and This matters because it changes what kinds of instruments are needed hold the reader at the live reframe. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, the two-beat question survives, and the ledger's ontological source text is intact. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

@@ -1,0 +1,130 @@
+{
+  "sectionId": "v03-the-second-link-perception-makes-new-coordination-possible",
+  "sectionHeading": "The Second Link: Perception Makes New Coordination Possible",
+  "currentHeading": "Second Link: Perception Supports Coordination",
+  "anchor": "v03-how-presence-becomes-bread",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "342 baseline words to 119 shipped words, minus 65 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "coordination failure",
+      "Douro",
+      "calories",
+      "hunger",
+      "ten thousand years"
+    ],
+    "itemsRead": [
+      "CTD-0008",
+      "CTD-0009",
+      "CTD-0004"
+    ],
+    "outcome": "No recorded decision governs this section. CTD-0008 holds the Douro history open and CTD-0004 covers historical universals; both are open items, so the baseline governs and both are flagged. The Douro sweep confirmed the opening-of-this-volume antecedent exists in the current manuscript."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The coordination-failure thesis was replaced by a many-causes list that dissolves it.",
+      "evidence": {
+        "baseline": "People do not, in the main, go hungry because there is not enough food. The world produces, today, more than enough calories to feed every human being. People go hungry because of coordination failure.",
+        "shipped": "Hunger has many causes: poverty, conflict, dispossession, policy, market power, infrastructure failure, climate disruption, discrimination, and the deliberate withholding of access. Global food production figures do not make those causes simple."
+      },
+      "authorizedBy": "Compression and caution.",
+      "diagnosis": "The shipped list is true and it deletes the argument: this volume's central term is coordination failure, and the baseline reads hunger through it, with in the main doing honest bounding work. Most of the shipped causes are themselves coordination failures under the volume's own definition, so the list refutes a claim the baseline never made. The calorie-sufficiency figure is a checkable empirical claim flagged to CTD-0009."
+    },
+    {
+      "id": "F2",
+      "summary": "The Douro paragraph lost its narrative and kept a moral.",
+      "evidence": {
+        "baseline": "When the community dissolved, the knowledge died, and the capacity to feed the place from itself died with it, even though the river still ran and the land still lay there, as capable of yielding as it had ever been.",
+        "shipped": "The Douro returns here as an image of social memory. Knowledge of water, soil, season, and place becomes useful through communities capable of carrying it into shared practice."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline's sentence is the volume's founding image doing its economic work: the river still running while the capacity to be fed from it dies. The shipped version names the image instead of showing it, which is the overexplained-metaphor failure run in reverse, a metaphor reduced to its caption."
+    },
+    {
+      "id": "F3",
+      "summary": "Five prohibited marks.",
+      "evidence": {
+        "baseline": "The coordination-failure mark, the particular-place mark, the died-with-it mark, and the feeds-people fence.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The coordination-failure mark took a colon before its because series. The particular-place mark took a colon before its enumeration. The died-with-it mark became a comma, the even-though clause dependent. The feeds-people fence became commas around the three-quality appositive."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0008",
+      "effect": "recorded",
+      "note": "Fed for ten thousand years along the Douro returns, plus the transmitted-knowledge account. The item's source audit covers exactly these claims."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The world produces more than enough calories to feed every human being is a checkable empirical claim restored without a source, added to the backlog's inventory."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "recorded",
+      "note": "In the main bounds the hunger claim; the ten-thousand-year continuity is the kind of historical universal the item audits."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The runs-against-common-understanding opening, the coordination-failure thesis with its because series, the full Douro paragraph, and the second-link closing with its two cannot sentences."
+        },
+        {
+          "kind": "kept",
+          "note": "The current hedged heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped many-causes list, quoted in F1 for the author; several of its named causes, dispossession, market power, deliberate withholding, would strengthen the baseline's because series if the author chose to fold them in, but that is drafting and belongs to the author."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks as recorded in F3."
+        }
+      ],
+      "metrics": {
+        "words": 337,
+        "baselineWords": 342,
+        "shippedWords": 119,
+        "deltaPercentAgainstBaseline": -1,
+        "shippedDeltaPercentAgainstBaseline": -65
+      }
+    }
+  ],
+  "openQuestions": [
+    "Whether the hunger-as-coordination-failure thesis should acknowledge deliberate withholding and dispossession as named causes, per the cut shipped list, is an author decision recorded here with both texts quoted.",
+    "Baseline heading commits, Perception Makes New Coordination Possible; current heading hedges, Perception Supports Coordination. Both forms recorded per the structural hold."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The link argues through the volume's own founding image again, and the empirical exposure is inventoried in the ledger."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": []
+}

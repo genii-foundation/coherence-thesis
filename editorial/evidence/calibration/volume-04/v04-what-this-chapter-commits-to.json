@@ -108,5 +108,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section carries the volume's largest single passage of restored commitment language and the clearest case where a restoration and a ledger paydown say different things in neighbouring sentences. Recording the tension rather than resolving it is what the policy required."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 49,
+        "survivingVerbatim": 36,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CORRECTION-SCOPE: the CTD-0072 bounding is two sentences appended to the commitment paragraph and names exactly the unresolved obligations the item tracks; it does not soften the restored three denials before it, which is the correction applied at width. The tension between the restored commitment and the bounding is already an open question tied to CTD-0047 and stands. R-CAUTIOUS-HALF: the commitment keeps its committing half in full, which matters because this is the section a compression pass would most naturally hedge; the three denials and the construction-plan standard both survive. R-PAIRED-DELETION: pattern language, iron law of megaprojects, stabilitas, and the translation problem were swept; each term is self-contained here and none dangles. Citations were re-verified intact through the punctuation repairs: Alexander 1979 and 1977 with both co-authors, Flyvbjerg, Eisenhardt, Katz and Gartner, Aldrich, and the quoted iron law kept in its original single quotes. R-SUBSTITUTION-CREDIT: the kept boundings bound under CTD-0072, no credit owed, stated explicitly. R-TENSE, R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST, R-LEDGER-WINS-COROLLARY: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Thirty-six of forty-nine baseline sentences survive verbatim, the highest absolute survival in Part I, and the remainder is fully attributed to punctuation repairs and the two documented CTD-0072 sentences. No prose change required.",
+      "corrections": [
+        "The original record's punctuation inventory of seven marks covers the chapter body; the research lineage and open questions passages carry a further seven of the same two forms, parenthetical pairs become comma pairs and one period at the operational-mistakes sentence, all verified against the diff. One further divergence attributed: the baseline's in its human architecture chapters stands as in its human architecture, dropping a structural attribution to Volume III consistent with CTD-0075's caution."
+      ]
+    }
+  ]
 }

@@ -101,5 +101,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. This section also carries the Part IX trailer as its closing paragraph.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The conformity-pressure paragraph is CTD-0088 paydown. The trailer reads a single body for the baseline's a single coherent body, the recorded 4.20 trim, and its display label is covered by the refrain anchor.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The compulsory-interpretation sentence is pass-authored and closes the loophole in the section's own method.",
+        "evidence": {
+          "baseline": "they are learned the way any technology is learned: by doing, in conditions arranged so that doing succeeds",
+          "shipped": "No facilitator can promise a state, and no facilitator should arrange conditions so that one interpretation of what happened becomes compulsory."
+        },
+        "note": "Conditions arranged so that doing succeeds is, read adversarially, a description of engineered peak experience plus a supplied meaning, which is the standard mechanics of high-control retreats. The kept sentence prohibits exactly that reading in the section that would otherwise license it. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

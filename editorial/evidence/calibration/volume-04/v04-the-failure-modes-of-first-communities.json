@@ -53,6 +53,16 @@
       "authorizedBy": "Compression.",
       "diagnosis": "The structures that hold the people doing the holding is the corpus's own phrase for the support layer and it appears once. The closing comparative, harder after than before, is the argument for the timing, and Care cannot wait for a later phase asserts the conclusion without it. Both survive in the restoration, the shipped provisions inside the restored argument.",
       "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The four kept remedies are the prior pass's, and the chapter is stronger with them than the baseline was without them.",
+      "evidence": {
+        "baseline": "(absent; the baseline gives each failure mode a causal account and no named safeguard)",
+        "shipped": "Independent review and a path to remove founders; adverse-result reporting with resident control of representation; bounded roles and succession; declared evidence thresholds for growth."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31. The original record kept all four with the note that all four are improvements, and its regeneration test states the principle: four remedies gained, four causal accounts lost, keep both.",
+      "diagnosis": "A chapter that exists to design against failure and names no safeguards is incomplete by its own standard. The prior pass supplied the safeguards; the compression it also performed took the causal accounts, which the restoration returned. The finding records the half of that exchange that ran in the prior pass's favor, at the same weight as the half that ran against it."
     }
   ],
   "debtImpact": [
@@ -104,5 +114,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. This is the volume's clearest case of a pass that added real value while removing more than it added: four remedies gained, four causal accounts lost. The restoration keeps both, which is the ordinary correct outcome and worth stating because it is easy to treat a re-render as a revert."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 39,
+        "survivingVerbatim": 26,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: each of the four failure modes keeps both its causal account, restored from the baseline, and its remedy, kept from the shipped pass; neither half displaced the other anywhere, which this audit verified mode by mode. R-PAIRED-DELETION: cultic consolidation, brand capture, exhaustion, and premature scaling were swept; the same failure vocabulary recurs in the scaling and contact chapters and every end stands. R-CORRECTION-SCOPE: no recorded correction reaches this section; the shipped remedies are additions, not corrections, and displaced nothing. R-TENSE: the chapter is prospective throughout, would and must forms, and no perfect wants reduction. R-DEIXIS: the failure modes are standing kinds, correctly on the definite article; no live-condition turn asks for the proximal form. R-NEGATION-STACK, R-REFRAIN-COST, R-LEDGER-WINS-COROLLARY: nothing fires. Longest section of Part I, re-read in full.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twenty-six of thirty-nine baseline sentences survive verbatim; the remainder trace to six recorded punctuation repairs and the four kept remedies, now credited as F3. No prose change required.",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

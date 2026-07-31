@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-part-viii-the-year-of-initiations",
+  "editorialId": "volume-07",
+  "sectionHeading": "## Part VIII: The Year of Initiations",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions. The chapter-start prose was restored under the standing author instruction to restore from baseline and flag afterwards. That instruction authorizes the restoration and nothing more: T-021 reserves the route decision on part introductions to the author, the task register still lists it pending at tier red, and every rulings array in this volume is empty, so no authority exists in this record to resolve it. The observed facts, that this part heading already existed and that the region carried shipped prose before this pass, are recorded in openQuestions as evidence for the author's adjudication, not as its resolution. An earlier wording of this field claimed the restoration executed an orchestrator adjudication of the route question; an orchestrator is an agent, that claim exceeded agent authority, and it is withdrawn.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "boundary": {
+    "note": "This record is bounded by the corrected section map: the merged part heading plus every line of prose between it and the next structural line. The pre-existing records named in supersedes were written while the reporting tool could not see this volume's two-line part labels, so each measured a fragment: one the bodyless bold label, the other the prose with no heading. Both fragments are preserved unedited as history and neither corresponds to a section the corrected boundaries produce.",
+    "supersedes": [
+      "v07-part-viii",
+      "v07-the-year-of-initiations"
+    ]
+  },
+  "rulings": [],
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "80 baseline words against 55 shipped before this pass, minus 31 percent, the shallowest part-section loss. Substitution mode; the pairing test did not apply to the shipped text."
+  },
+  "pairingSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": [
+      "pne(h)uma(n)",
+      "fifty-two",
+      "Listening to Providence",
+      "mentors gathered"
+    ],
+    "outcome": "Fifty-two pairs with the engine of the fifty-two in Linear and Spiral at Once, present. The Listening to Providence span pairs with Part V's chain, restored. Mentors gathered pairs with Part VII, restored. No blocking dependency."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "pne(h)uma(n) Curriculum",
+      "brought to maturity",
+      "fifty-two initiations",
+      "curriculum status"
+    ],
+    "itemsRead": [
+      "CTD-0056",
+      "CTD-0087",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0087 is the governing item: the curriculum must be completed or reframed as a sketch, and the missing apparatus named. The unpublished components sentence is kept, the sketch clause the superseded record planned is added, and brought to maturity is corrected to brought toward maturity per the item's rejection of the whole-person-in-a-year claim. CTD-0056 is honored by proposed. The baseline governs the rest."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The name's gloss and the year's shape return per the superseded record's findings, adopted rather than restated; see F2 of v07-part-i-the-argument-arrived for the mis-bounded record count.",
+      "evidence": {
+        "baseline": "the breath-and-spirit human, the pneuma within the human, brought to maturity through the seven initiates and the twelve tenets across fifty-two initiations",
+        "shipped": "It sketches fifty-two weekly initiations across the Seven Initiates and Twelve Tenets. The name joins breath, spirit, and the human."
+      },
+      "authorizedBy": "The standing author instruction to restore from baseline and flag afterwards. The restoration is contested under author-reserved T-021 and is flagged in this record's openQuestions, not adjudicated here.",
+      "diagnosis": "The shipped gloss names the etymology and drops the figure. One initiation for each week of the year; one year to walk the whole path is the sentence that makes the number fifty-two mean something."
+    },
+    {
+      "id": "F2",
+      "summary": "Brought to maturity is corrected to brought toward maturity, at correction width.",
+      "evidence": {
+        "baseline": "brought to maturity",
+        "shipped": "brought toward maturity"
+      },
+      "authorizedBy": "CTD-0087 under R-CORRECTION-SCOPE.",
+      "diagnosis": "The item rejects the claim that one year produces a whole person. The correction governs the preposition and nothing adjacent: the gloss, the count, and the figure all return at baseline strength."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0087",
+      "effect": "paydown preserved and extended",
+      "note": "The unpublished components are named and the added clause states that until they exist this is the sketch of an architecture rather than a course anyone can enrol in."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "no change",
+      "note": "Proposed year-long course; no enrolment or delivery claimed."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twenty rules, executing the restoration the superseded record held",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The sequencing sentence, the full gloss on the name with toward maturity per F2, and the one-week one-initiation figure."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT per the superseded map: the specification became a colon, the second movement a comma with and."
+        },
+        {
+          "kind": "kept",
+          "note": "Proposed before year-long course, the unpublished components sentence, and the sketch clause the superseded record's debt note planned, now actually present."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped three-sentence gloss, whose content the restored paragraph strictly contains."
+        }
+      ]
+    }
+  ],
+  "rulesDerived": [],
+  "openQuestions": [
+    "T-021, author-reserved, flagged and not resolved: this pass restored and lengthened this part introduction on 2026-07-31 while the task register still listed T-021 pending at tier red. Both forms, named per the structural rule: the pre-pass shipped introduction of 55 words, measured in the superseded records v07-part-viii and v07-the-year-of-initiations, and the restored baseline introduction of 80 baseline words now shipped. The route facts offered as evidence, not adjudicated: the part heading predates this pass and the region carried shipped prose before it, so the section's route already existed and no structural line changed. Whether that reasoning holds, and whether the restored form stands or the pre-pass form returns, is the author's decision under T-021. The same-pass volume-04 lane read the same reservation as a byte freeze and held its Part II introduction unchanged; the author's ruling should reconcile the two readings.",
+    "Carried under CTD-0087: whether the curriculum is active, piloting, or purely conceptual remains the author's decision; the section now reads as conceptual by default."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at its ratified twenty-rule index, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 is the cleanest R-CORRECTION-SCOPE case in the volume: a one-word correction that had been implemented as a three-sentence deletion."
+  }
+}

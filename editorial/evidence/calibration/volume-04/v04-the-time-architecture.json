@@ -100,5 +100,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Catalog 4.9 fired on genuine anaphora and the retention limb held. The section also shows the pass adding a real caution and paying for it with an unrelated sentence, which by Part I has become the volume's most frequent trade."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 18,
+        "survivingVerbatim": 14,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the calibration paragraph keeps both the committing examples and the restored design-not-negligence sentence that keeps them from being an accusation. R-CATALOG-LIMBS: 4.9's retention ruling on the There are anaphora was re-checked and stands; the recurrence is deliberate enumeration of obligations. R-LEDGER-WINS-COROLLARY: the kept evidence-strength sentence is seeded bounding under CTD-0078's subject matter, correctly attributed as agent provenance, and bounds rather than repairs, so no credit is owed. R-PAIRED-DELETION: the four timeframes are defined here and elaborated in the next section; both ends stand. R-TENSE, R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST, R-CORRECTION-SCOPE: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Fourteen of eighteen baseline sentences survive verbatim; the remainder are five recorded punctuation repairs and the one attributed bounding. No credit owed and none recorded. No prose change required."
+    }
+  ]
 }

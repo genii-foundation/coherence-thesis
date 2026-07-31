@@ -79,6 +79,56 @@
       "authorizedBy": "Compression.",
       "diagnosis": "Both are quotations of the corpus’s own canon, and the baseline sets them in italics as such. Insists on calling income is the accusation, and as though it were income is a description. The Providence canon line is repeated verbatim in §3 of this volume, so the two occurrences have to match.",
       "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F5",
+      "summary": "Audit finding: the committing half of the crisis-timing warning was missing from the shipped manuscript although the settled generation lists the warning as restored. Applied now.",
+      "evidence": {
+        "baseline": "we were honest that a coordination infrastructure cannot be built during the crisis that requires it, it must already exist when the crisis arrives",
+        "shipped": "It was honest that a coordination infrastructure cannot be built during the crisis that requires it, and it marked the research and governance work that remains unfinished."
+      },
+      "authorizedBy": "R-CAUTIOUS-HALF.",
+      "diagnosis": "The hedging half survived and the committing half did not, which is the survivorship R-CAUTIOUS-HALF describes: the clause that makes the timing claim falsifiable is the one that says the infrastructure must already exist when the crisis arrives. No ledger item removed it, and this record's own restored note names the crisis-timing warning. The clause returns inside the same sentence, the em dash's work carried by the paired verbs."
+    },
+    {
+      "id": "F6",
+      "summary": "Audit finding: the first of Volume IV's four cannots shipped softened to should not. Restored to cannot.",
+      "evidence": {
+        "baseline": "the sequence that cannot be skipped (proof-of-life before scale)",
+        "shipped": "the sequence that should not be skipped, proof of life before scale"
+      },
+      "authorizedBy": "Hierarchy of fidelity item two on modality, and this record's restored note naming the four cannots.",
+      "diagnosis": "Volume IV's four are cannot, cannot, cannot, and must. The shipped recap softened the first to should not, converting Volume IV's design constraint into advice while the other three kept their force. No recorded decision required the softening: CTD-0031 governs Volume IX's own solved-architecture claims, not the report of what Volume IV named. Restored."
+    },
+    {
+      "id": "F7",
+      "summary": "Audit finding: a sentence defending the recap titles to the editorial process rather than the reader. Removed.",
+      "evidence": {
+        "baseline": "(no baseline counterpart)",
+        "shipped": "The recap below uses each volume's own title rather than inventing new ones for the books behind it."
+      },
+      "authorizedBy": "Catalog 4.23, defect limb, with R-REMOVE-BURDEN discharged.",
+      "diagnosis": "The sentence defends an editorial decision, the corrected titles under CTD-0026, to a reader who was never exposed to the invented ones. That is apparatus speaking, not the volume. What it contributed was an assurance of title fidelity, and the italicized titles in the recap carry that assurance themselves. Nothing needed relocation, and the corrected titles stand untouched."
+    },
+    {
+      "id": "F8",
+      "summary": "Audit finding: the word baseline, an editorial term, stood in reader-facing prose. Repaired.",
+      "evidence": {
+        "baseline": "Do you want to build it? And can you?",
+        "shipped": "The baseline of this work put them as wanting and being able."
+      },
+      "authorizedBy": "R-PROPORTION-FLOOR, and the principle CTD-0105 records about production vocabulary in reader-facing prose.",
+      "diagnosis": "The re-render's F3 repair rightly kept the earlier pair visible beside the ratified questions, but named it with the word baseline, which is the editorial system's term and no reader's. The catalog is silent on this, and its silence is not proof of soundness. Now reads: This work once put them as wanting and being able. The repair's intent survives whole."
+    },
+    {
+      "id": "F9",
+      "summary": "Credit under R-SUBSTITUTION-CREDIT: the Volume II correction is the prior pass's repair of a genuine baseline overclaim, kept by the re-render.",
+      "evidence": {
+        "baseline": "It is not. It lives in the between, the pattern that connects",
+        "shipped": "It is not only that. It also lives in the between, the pattern that connects"
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "The baseline's flat denial overclaims: intelligence does live in single skulls, among other places, and the volume's argument needs only that it does not live there exclusively. Not only that is the more accurate claim. Recorded at the same weight as a loss."
     }
   ],
   "debtImpact": [
@@ -134,6 +184,10 @@
     {
       "id": "QH",
       "question": "Heading not changed. Baseline: §1, The Ninth Turn: Where the Eight Have Brought Us. Current: The Ninth Turn: Where the Eight Have Brought Us. Only the section number differs. The volume card lists five numbered sections among the protected structural devices and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    },
+    {
+      "id": "Q1",
+      "question": "This section, the Providence chapter, and the closing all attribute the pattern that connects to Volume II, and Volume II's shipped text no longer contains the phrase. All three quotations keep this volume's baseline wording under the standing instruction, and nothing is reworded. Whether Volume II restores the phrase or Volume IX's attributions change is a cross-volume author decision. The refrain count is anchored in this record's audit entry."
     }
   ],
   "regenerationTest": {
@@ -141,5 +195,39 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The instructive case is the closing pair, where the voice card overrides the baseline and the shipped text is correct. It is the clearest instance in these three volumes of R-VOICE-BIND running in the prior pass’s favour."
-  }
+  },
+  "audits": [
+    {
+      "id": "2026-07-31-twenty-rule-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Re-read of the settled section against the immutable baseline under the full twenty-rule index, with R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS applied to this section for the first time.",
+      "substitutionTest": {
+        "survivingBaselineSentences": 8,
+        "baselineSentences": 42,
+        "method": "Clauses of five or more words from the baseline section, split on sentence-final marks plus colon and semicolon, counted as surviving when their punctuation-stripped word sequence appears verbatim in the current section. A floor, not a fidelity measure: a restored sentence that differs by one hedge or repaired mark does not count.",
+        "note": "Nonzero, so the section is not in substitution mode and the pairing test applies and was run."
+      },
+      "checked": [
+        "R-LEDGER-WINS re-search on Providence, COHERENCE, Bio-Consensus, Currency of Presence, ICONS, Scale, and the volume titles: no item has changed since the record settled; every paydown noted in debtImpact holds.",
+        "R-PAIRED-DELETION term sweep across volumes: the seamstress resolves in Volume V; the love-at-the-scale-of-two sentence now matches Volume VIII word for word in its bounded form, will find it harder, so the cross-volume refrain agrees; the pattern that connects has no surviving end in Volume II, recorded as Q1 and the refrain anchor, nothing reworded.",
+        "Providence canon line: the recap paraphrase carries an intent hedge and its tail matches the Providence chapter verbatim from so that people can find onward. No fire; the full one-line canon lives in the Providence chapter where it is named as canon.",
+        "R-CAUTIOUS-HALF: one fire, recorded and repaired as F5. R-CORRECTION-SCOPE: the CTD-0026 title corrections govern the titles alone and had not spread; the defensive sentence beside them was the pass speaking, removed as F7.",
+        "R-CANON-DELETION-RECORD: the CTD-0030 status clause stands inside the Volume IV entry; nothing named in an open canon query was cut by this audit.",
+        "R-DEIXIS and R-TENSE: no fires. R-LAND: the section lands on the paired bold questions, unchanged under the structural hold.",
+        "Prohibited glyphs: none. Structural lines match the census."
+      ],
+      "prose": "changed: four edits, recorded as F5 through F8",
+      "result": "Four rules fired: R-CAUTIOUS-HALF on the crisis-timing warning, the modality floor on the first cannot, catalog 4.23 on the recap apparatus sentence, and R-PROPORTION-FLOOR on the word baseline in reader prose. Two of the four restore text the settled generation already claimed, so the shipped manuscript and the record now agree. One credit recorded as F9.",
+      "refrains": [
+        {
+          "phrase": "the pattern that connects",
+          "count": 3,
+          "instances": "the Volume II recap; the Providence chapter's return to Volume II; the closing's list of the nine turns",
+          "note": "One decision settles all three instances: the phrase's standing in Volume II, which currently does not carry it. Child records v09-3-providence-the-device-that-coordinates-the-many and v09-closing cite this anchor."
+        }
+      ]
+    }
+  ]
 }

@@ -121,6 +121,23 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Verification: the current section is byte-identical to the baseline. The restorations recorded in generation A are complete and nothing in the section departs from the immutable text.",
+      "R-CAUTIOUS-HALF: the substitution pair keeps both halves in baseline order: The response cannot be to reject money, then The response has to be to develop currencies that move alongside money. The concessive commit, But it is not entirely unexplored, survives as its own sentence.",
+      "R-PAIRED-DELETION: the fishery reprise, This is the fishery problem from Chapter Four, generalized, has its minting end in Chapter Four and its second reprise in The Limits of Legibility at matching counts in both texts; the money-signal passage reprises Chapter Seven's at matching counts. CTD-0065's repetition map holds both families; all ends present.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the kept three-fragment refusal, Not as replacement. As parallel infrastructure. As additional flows, was baseline kept by the pass; nothing substituted survives to credit.",
+      "R-REFRAIN-COST: the two reprises are adjudicated as paired cross-references above rather than counted as refrains; no anchored refrain is engaged.",
+      "R-DEIXIS: Civilization is currently in this position holds the reader inside the live blindness. No instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard and the section sits byte-identical to the baseline with both reprises two-ended. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

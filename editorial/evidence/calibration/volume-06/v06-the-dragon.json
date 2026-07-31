@@ -8,11 +8,18 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "anchor": "v06-the-current",
   "baseline": {
     "batchId": "2026-07-09-production-pass",
     "path": "baseline.md",
     "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 20,
+    "testableBaselineSentences": 27,
+    "note": "Standing procedure, run before any pairing test: 20 of 27 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
   },
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
@@ -88,6 +95,17 @@
       "diagnosis": "Then the dragon would stir is the sentence that joins the image to the social claim, which the semantic review itself identifies as the correct treatment. Clearer instruments of it is the chamber's answer to the objection that the dragon requires a separate mind, and the shipped version removes both while keeping the conditional.",
       "producedRule": "R-PROPORTION",
       "id": "F5"
+    },
+    {
+      "id": "F6",
+      "summary": "The pass's status sentence is better than the baseline's unmarked assertion, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "It is the life force of the world, running at last consciously through the beings who can feel it. To sense even a thread of it is to feel the ground change underfoot...",
+        "shipped": "That is the image at its full strength. Whether it names a fact about the world or a way of standing in it is a question this book leaves open."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "The pass did not hedge the naming; it added a status sentence after it. The image stands unhedged at full strength and its evidentiary status is stated once, in its own sentence, which is the treatment the card's known factual concerns required and the baseline lacked. The repair preserves the poetry and pays the debt in one move, so it is credited at the same weight as a loss.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
     }
   ],
   "debtImpact": [
@@ -131,6 +149,42 @@
           "note": "The empire and hierarchy refusals, the planet beginning to think, the rain and river and spring, the plain naming of the dragon, the ground changing underfoot, the supposition with its presencing, the four refusals of mastery, and the Seven Initiates with their possessives."
         }
       ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-SUBSTITUTION-CREDIT. One finding runs the other way and is recorded as F6: the pass's status sentence lets the image stand at full strength and is kept on merit."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. Name it plainly, then and the full naming survive committing; the status sentence follows rather than replaces them."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CORRECTION-SCOPE. The cultural correction governs the East and understood rightly and stops there; rain and river and spring are the baseline's. B.O.W. and Art & Alchemy follow the master ledger's current forms under CTD-0085, which remains an author query."
+        },
+        {
+          "kind": "applied",
+          "note": "R-REFRAIN-COST. The divider plus That is why coda is a volume-wide refrain, removed once by one decision. The anchor record v06-the-current carries the refrain finding with its count of eleven; this chamber cites the anchor rather than repeating the analysis. The Seven Initiates coda lines were content and are folded into the body. The reverence-and-mastery coda line was checked under R-REMOVE-BURDEN: its content is the body's own It is not ours to rule sentence, already present, so its loss with the scaffold costs no argument."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks. Seven Initiates and B.O.W. pair with the later volumes and both ends stand in their canonical display forms."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        }
+      ],
+      "metrics": {
+        "words": 497,
+        "baselineWords": 518
+      }
     }
   ],
   "rulings": [],

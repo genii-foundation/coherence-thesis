@@ -95,6 +95,37 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "refrainAnchor": {
+      "rule": "R-REFRAIN-COST",
+      "refrain": "The work-in-fragments motif: the voice card's protected phrase The work has begun in fragments. appears here exactly, and varied forms recur across the volume: in fragmented form, underway in fragments, mostly in fragments, being built right now, in fragments.",
+      "count": 7,
+      "instances": [
+        "v02-intelligence-in-service-of-coherence",
+        "v02-the-choice-of-orientation",
+        "v02-civilizational-alignment",
+        "v02-providence-and-the-currency-question",
+        "v02-value-beyond-extraction",
+        "v02-legitimacy-as-living-feedback",
+        "v02-if-you-are-already-doing-the-work"
+      ],
+      "note": "Anchored here because this block carries the exact protected wording. Seven varied instances in both texts, manuscript lines 533, 555, 577, 641, 723, 793, and 1173, plus the Fragments of the Next Civilization section built on the image. The variation is deliberate: each recurrence changes what is fragmentary, the work, the infrastructure, the coherence, the builders, so catalog 4.8's retention limb applies and the recurrence is structural memory, not restatement. The voice card names the phrase intentional, so thinning any instance is a voice-card matter. Child audits cite this anchor rather than re-counting."
+    },
+    "checks": [
+      "R-REFRAIN-COST: the fragments motif is anchored above; the epigraph-attribution anchor is not engaged, since this italic block carries no Vol. I attribution.",
+      "R-CAUTIOUS-HALF: the block keeps its hedged and committing halves in one movement: if it emerges at all beside the committing Not fused into homogeneity. Brought into right relationship. Both limbs intact, and F1's restored the question of keeps measurement a question rather than a capability.",
+      "R-PAIRED-DELETION: the closing handoff, beginning with the question of what civilizations can measure, has its paying end in Chapter Seven's opening sentence; the block answers the question The Choice of Orientation poses. Both ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this block and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the block is identical to the baseline apart from the one restored clause; no substituted prose survives to credit.",
+      "R-DEIXIS: the block holds the reader inside the live coalition-forming with is the question the next several chapters take up directly. No instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's single finding holds under the twenty-rule standard. The audit anchors the volume's work-in-fragments refrain with its count. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

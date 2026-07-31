@@ -147,6 +147,32 @@
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "substitutionCredit": {
+      "id": "F5",
+      "rule": "R-SUBSTITUTION-CREDIT",
+      "summary": "The prior pass italicized two book titles, a genuine citation repair kept with credit rather than as a quiet kept.",
+      "evidence": {
+        "baseline": "Iain McGilchrist's hemispheric argument in The Master and His Emissary and The Matter With Things",
+        "shipped": "Iain McGilchrist's hemispheric argument in *The Master and His Emissary* and *The Matter With Things*"
+      },
+      "note": "Generation A recorded this as a kept citation convention without crediting it. Under R-SUBSTITUTION-CREDIT it is a finding that runs the other way: the baseline sets two book titles in roman inside the volume's own citation chapter, the corpus sets titles in italics, and the repair fixes a fault the baseline carried on its own terms. Recorded at the same weight as a finding of damage."
+    },
+    "checks": [
+      "R-SUBSTITUTION-CREDIT: one instance, recorded above as F5. No other kept survives as an uncredited improvement.",
+      "R-CAUTIOUS-HALF: the admission keeps both halves in baseline order: None of these traditions is engaged in this book at the depth they deserve concedes, and That is not a failure; it is a function of what this book is for commits. The restored closing cleft keeps the book's offer, an integration across traditions that none of them, individually, attempts.",
+      "R-PAIRED-DELETION: every named tradition has its using chapter present at the other end, Porges and HRV in Chapter Two, Ostrom and Raworth in Chapter Eight, Habermas, Fishkin, and Landemore in Chapter Nine, the alignment literature in Chapter Ten, the Haudenosaunee scholarship crediting Chapter Nine's gesture. The section is the crediting end of the volume's net and every strand holds in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. Every proper name, title, and attributed position is identical to the baseline.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section.",
+      "R-DEIXIS: Readers who want the depth of any single tradition will find it elsewhere holds the reader at the live offer. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and the audit converts the kept title italicization into the substitution credit F5. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

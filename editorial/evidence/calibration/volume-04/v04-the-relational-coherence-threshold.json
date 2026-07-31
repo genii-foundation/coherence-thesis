@@ -55,6 +55,16 @@
       "authorizedBy": "Compression.",
       "diagnosis": "This is not a new insight is the sentence that keeps the passage from claiming originality, which is exactly the discipline CTD-0078 asks for elsewhere. Naming each precedent's home discipline is also what lets a reader check it. The shipped list of four bare nouns cannot be checked.",
       "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept closing specification list converts the section's demand for detail into nameable work.",
+      "evidence": {
+        "baseline": "Providence's specific application of this principle must be specified in enough detail to guide actual institutional design rather than remaining at the level of architectural philosophy.",
+        "shipped": "...rather than remaining at the level of architectural philosophy, which means specifying membership, representation, delegation, dispute resolution, and accountability across levels."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31.",
+      "diagnosis": "The baseline ends by demanding specificity it does not supply. The kept clause names the five things a nested design must actually specify, which is the difference between an exhortation and an assignment. Repair of the sentence's emptiness, not bounding of its claim."
     }
   ],
   "debtImpact": [
@@ -111,5 +121,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Same shape as the first community's size argument: the ledger disputes a number, the pass removed the number's mechanism, and the restoration separates them. Two sections in one part with the same failure is enough to treat it as the volume's characteristic form of overpaydown."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 8,
+        "survivingVerbatim": 3,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CORRECTION-SCOPE: the CTD-0036 boundings were verified at width, cannot sustain restored as appear unable to sustain, the biological-law refusal inserted beside the precision hedge, and the nesting caveat appended to the design solution; the mechanism prose around each is baseline. This section is inside CTD-0036's author-reserved question and the audit changes nothing in it. R-CAUTIOUS-HALF: the design solution keeps its committing half, build the architecture through nested communities, beside the kept hedge that the distinction has not been demonstrated. R-PAIRED-DELETION: the one hundred and fifty zone, direct trust, and nesting recur in What the First Community Requires and The First Scale, all three ends carrying the same provisional frame. R-TENSE, R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST, R-LEDGER-WINS-COROLLARY: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Three of eight baseline sentences survive verbatim, the low count fully explained by the CTD-0036 boundings threaded through nearly every sentence; each was verified in place against the item's scope. One substitution credit recorded as F3. No prose change required.",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

@@ -66,6 +66,30 @@
       "producedRule": "R-CATALOG-LIMBS"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F4",
+      "summary": "The participants sentence is better than the freedom concession it replaced, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "Each of these can be defended in the language of freedom, and some of it genuinely is freedom.",
+        "shipped": "Each of these forms can involve agency, livelihood, pleasure, exploitation, compulsion, loneliness, or several at once, and no participant should be conscripted into a single diagnosis."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "The baseline concedes an abstraction, freedom, and moves on; the shipped sentence names seven concrete things a person in these economies may actually be doing and refuses to diagnose any of them, which is the corpus card's no-conscription rule executed on the people most easily conscripted. It also earns the narrowed criticism that follows: the business model can be indicted precisely because the participants have not been. The prior record kept this in a note; it is credited here.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F5",
+      "summary": "The causal-fusion refusal is better than the baseline's same-disenchantment claim, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "The same disenchantment that lets us poison the literal pollinators has been quietly at work on human desire ... The birds and the bees are vanishing in both senses at once, and they are vanishing for the same reason.",
+        "shipped": "The ecological record and the intimate one are not a single causal story, and this section does not claim they are. They share a question: what is lost when a thing that lives only inside relationship is made into product?"
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "The baseline asserts one cause behind two vanishings, which is the same overreach CTD-0083 refuses at the prologue: a shared moral shape presented as a shared mechanism. The repair keeps the chapter's double meaning intact by converting the shared cause into a shared question, and the question ends on the baseline's own best clause, made into product. This is the section's version of the correction credited in the reckoning's F6 and the prologue's F5, and the three repairs stand or fall together.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0106",
@@ -99,6 +123,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the three forms with their mechanisms including a paired-off user is a lost customer, the converging data, the reverence argument joining the prologue to the audit, grief wearing freedom's mask in its bounded form, and intimacy near the center of the Seven Initiates. No prose changed by this audit. Two substitution credits added as auditFindings F4 and F5, the participants sentence and the causal-fusion refusal, both card or ledger obligations the prior pass executed and the record had kept without weight. R-CAUTIOUS-HALF: the bounded identity claims, affect one another deeply though neither reduces to the other and will find it harder to coordinate, keep both a hedge and a commitment; nothing lost a committing half. R-PAIRED-DELETION: the chapter's promised second meaning pays the accounting's pledge, the crowd and the sauna reach back to the prologue, and the Seven Initiates reach forward to the blessing; all ends present. R-DEIXIS, R-TENSE, R-REFRAIN-COST checked and silent."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

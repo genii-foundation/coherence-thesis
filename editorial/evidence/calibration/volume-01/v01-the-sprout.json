@@ -4,19 +4,20 @@
   "editorialId": "volume-01",
   "sectionHeading": "THE SPROUT",
   "currentHeading": "THE SPROUT",
-  "subsectionHeading": { "baseline": "Why This Is Happening, and Why It Changes Everything", "current": "When Scale Outruns Regulation" },
+  "subsectionHeading": {
+    "baseline": "Why This Is Happening, and Why It Changes Everything",
+    "current": "When Scale Outruns Regulation"
+  },
   "status": "settled",
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "findings": [
     {
       "id": "F1",
@@ -76,49 +77,146 @@
     {
       "id": "F6",
       "summary": "The Roots reference was deleted again, in a second section.",
-      "evidence": { "baseline": "The intellectual foundations for this section are gathered in The Roots, at the end of this volume.", "shipped": "Absent." },
+      "evidence": {
+        "baseline": "The intellectual foundations for this section are gathered in The Roots, at the end of this volume.",
+        "shipped": "Absent."
+      },
       "authorizedBy": "Nothing recorded.",
       "diagnosis": "The same deletion found in the previous section, so this was systematic rather than local. CTD-0001 records the Roots promise as an open obligation, and removing every reference to it across the volume would have closed the item by erasure. Restored.",
       "producedRule": "R-REMOVE-BURDEN"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0001", "effect": "reopened in a second section", "note": "The Roots reference is restored here as well. The prior pass removed it from at least two sections, which together would have retired the promise without a decision." },
-    { "id": "CTD-0002", "effect": "unchanged, still open", "note": "Scientific and physiological claims remain subject to the sourcing audit." },
-    { "id": "CTD-0004", "effect": "unchanged, still open", "note": "Historical scope remains subject to documented review." },
-    { "id": "CTD-0016", "effect": "unchanged, still query", "note": "The technological-power thesis remains an author decision." }
+    {
+      "id": "CTD-0001",
+      "effect": "reopened in a second section",
+      "note": "The Roots reference is restored here as well. The prior pass removed it from at least two sections, which together would have retired the promise without a decision. 2026-07-31 audit: instance counted at the refrain anchor in v01-taking-pause-between-seed-and-sprout; the reference remains one-ended and blocking on CTD-0001."
+    },
+    {
+      "id": "CTD-0002",
+      "effect": "unchanged, still open",
+      "note": "Scientific and physiological claims remain subject to the sourcing audit."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "unchanged, still open",
+      "note": "Historical scope remains subject to documented review."
+    },
+    {
+      "id": "CTD-0016",
+      "effect": "unchanged, still query",
+      "note": "The technological-power thesis remains an author decision."
+    }
   ],
   "debtAudit": {
     "id": "CTD-0108",
     "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
     "result": "No recorded decision was reversed."
   },
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "*A Five to Eight Minute Orientation*"
+      ],
+      "textNote": "The chapter's own prose is this subtitle line. The subsection's shipped text is recorded in v01-why-this-is-happening-and-why-it-changes-everything.",
       "reasoning": [
-        { "kind": "applied", "note": "R-PUNCT-STRUCT. Ten em dashes. Four fenced genuinely parenthetical material and became commas. Four introduced a specification and became colons. Two carried a burden belonging to structure and the syntax was rewritten." },
-        { "kind": "applied", "note": "R-VOICE-BIND. For the first time removed from the coherence-is-detectable paragraph, since the card names the phrase and CTD-0004 records the priority claim as unverified. The temporal claim survives as now." },
-        { "kind": "kept", "note": "The prior pass's repair of not organize around extraction but around regeneration into organize around regeneration instead of extraction. A sound R-NEGATION-STACK repair judged on its merits." },
-        { "kind": "kept", "note": "The pass's as if intelligence could be engineered independently of the body, which fixes a dangling participle in the baseline." },
-        { "kind": "kept", "note": "The renamed subsection heading, When Scale Outruns Regulation, under the volume ruling on renames. It is also the better heading: the baseline's Why This Is Happening, and Why It Changes Everything announces importance, which catalog 4.1 flags." },
-        { "kind": "restored", "note": "Seven standalone landings, four contrasts, the causal claim about surface turbulence, the refrain about learning to organize, the question about what we recognize, and the Roots reference." }
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Ten em dashes. Four fenced genuinely parenthetical material and became commas. Four introduced a specification and became colons. Two carried a burden belonging to structure and the syntax was rewritten."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND. For the first time removed from the coherence-is-detectable paragraph, since the card names the phrase and CTD-0004 records the priority claim as unverified. The temporal claim survives as now."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass's repair of not organize around extraction but around regeneration into organize around regeneration instead of extraction. A sound R-NEGATION-STACK repair judged on its merits."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's as if intelligence could be engineered independently of the body, which fixes a dangling participle in the baseline."
+        },
+        {
+          "kind": "kept",
+          "note": "The renamed subsection heading, When Scale Outruns Regulation, under the volume ruling on renames. It is also the better heading: the baseline's Why This Is Happening, and Why It Changes Everything announces importance, which catalog 4.1 flags."
+        },
+        {
+          "kind": "restored",
+          "note": "Seven standalone landings, four contrasts, the causal claim about surface turbulence, the refrain about learning to organize, the question about what we recognize, and the Roots reference."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
     "conclusion": "No new rule required. Sixth consecutive section to need none. This is the longest section examined and the pattern is unchanged at scale: the pass removed structure that no rule condemned and left in place the one phrase two records flag. R-CADENCE did the most work here, where in shorter sections R-CATALOG-LIMBS has led."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "The Roots",
+      "coherence",
+      "dysregulation",
+      "for the first time",
+      "detected"
+    ],
+    "itemsRead": [
+      "CTD-0001",
+      "CTD-0002",
+      "CTD-0004",
+      "CTD-0016"
+    ],
+    "outcome": "All four items were read on 2026-07-30 and re-read for this audit. The Roots promise, scientific claims, historical scope, and the technological-power thesis remain open obligations restored at baseline scope; none is represented as verified."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 0,
+      "baselineSentences": 1,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "The chapter's own prose is its subtitle line alone. The baseline subtitle carried an approximation sign and an en dash; the shipped form writes the range with to, as section 3 requires, so verbatim survival is zero while the semantic identity is complete. Not substitution mode: a display repair, not a substitution. The chapter's prose lives in When Scale Outruns Regulation, whose own record now holds its text, sentence count, and audit."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "The priority-phrase reduction in the subsection is recorded with both sides in the subsection record against CTD-0004. Nothing else touching an open canon query was cut."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "The chapter's Roots instance sits in the subsection and is covered by the refrain anchor in v01-taking-pause-between-seed-and-sprout: one-ended in baseline and shipped text alike, blocking on CTD-0001. Nothing else in the chapter pairs across sections. Recorded at the anchor."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The record's findings name each merged or compressed pair, and the shipped text carries the committing half wherever the baseline stated one. No unexamined merge remains. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The section keeps no substituted prose beyond what the record already accounts for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "The chapter's Roots instance is counted at the anchor in v01-taking-pause-between-seed-and-sprout; per the rule, the count lives there and this record cites it rather than repeating the analysis."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires in the chapter's own line. The subsection findings, credits, and the one prose repair are recorded in v01-why-this-is-happening-and-why-it-changes-everything. F6's Roots instance is now counted at the refrain anchor rather than re-analyzed here."
   }
 }

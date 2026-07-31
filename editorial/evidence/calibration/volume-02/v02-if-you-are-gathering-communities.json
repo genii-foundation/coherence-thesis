@@ -117,6 +117,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the no-blame pair keeps both halves: This is not because anyone is doing anything wrong. It is because the connective tissue has not been built. The restored permission triple, does not require permission, does not require anyone to wait, keeps the granting half beside the committing is doing work the book has been arguing is urgently necessary.",
+      "R-PAIRED-DELETION: the three isolation claims restate Chapter Eleven's diagnosis with their definite articles restored, and each has its minting end there, the two worlds, the alignment community, the bioregional coordinators; the permission triple answers The Narrowing Window's cannot wait for permission. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0041's convenor route stands behind Q1.",
+      "R-SUBSTITUTION-CREDIT: the whether rebuild of the seven-lineage list is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this address; the ownership and capital anchors are engaged by the neighbouring addresses, not here.",
+      "R-DEIXIS: the request is to consider and at whatever scale their conditions allow hold the reader at the live request. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard and the address keeps permission granted rather than obligation imposed. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

@@ -96,6 +96,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the fuller source detail, the source-families limit statement, the as-of preamble for the 2026 group, and no production note in any form after the register. The two structural bold labels, the living world and the state of 2026, match the census. No prose changed by this audit. The register's must-be-refreshed-before-publication sentence was re-read against CTD-0105 and stands: inside a source register whose stated purpose is verification status, the sentence is content rather than production register, which is the distinction F1 drew and the audit confirms. R-REFRAIN-COST: this record is a child of the reckoning's as-of refrain anchor; the fourth instance lives here and is counted there. R-CORRECTION-SCOPE: the hedging clauses the prior pass added to entries were re-read and each governs its own entry only. R-PAIRED-DELETION: every register entry keeps its consuming section in the current volume, and the section-number references the baseline register used were correctly retargeted to current heading names when the numbers left the headings. R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-DEIXIS, R-TENSE checked and silent; the kept hedging clauses are bounds, not credits."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

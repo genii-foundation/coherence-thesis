@@ -93,5 +93,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary; the heading's baseline slash reads and, per the recorded repair and the census.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. Near to one another for one and the same is the recorded section 5 scope protection and stands; relitigating it would edit a settled judgment.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The map of water paragraph is pass-authored and gives the tenet its image and its epistemic bound at once.",
+        "evidence": {
+          "baseline": "A doctrine merely received can be argued; a doctrine directly experienced can only be lived.",
+          "shipped": "A map of water is not the taste of water. The distinction matters, but firsthand experience is not pure access to reality either. It becomes knowledge through reflection, comparison, and the humility to revise its meaning. Calling an experience sacred does not place it beyond question."
+        },
+        "note": "The record kept this as substituted prose and called it good in a reasoning note. Under R-SUBSTITUTION-CREDIT that judgment must be a finding: the image is exact, and the closing sentence is the one line in the tenet that prevents direct experience from becoming unanswerable authority. Promoted accordingly."
+      }
+    ]
   }
 }

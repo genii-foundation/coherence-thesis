@@ -89,6 +89,19 @@
       "producedRule": "R-VOICE-BIND"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F6",
+      "summary": "The moral-seriousness sentence repairs the baseline's verdict on dissenting readers, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "do not be merely one more facile human being, comfortable and unmoved ... That is the one response the evidence does not permit.",
+        "shipped": "A reader may reject this model without forfeiting moral seriousness. If, having read all of this, you doubt it or contend it, then we ask one thing: *come up with something better.*"
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "The baseline's close names the doubter facile and declares dissent impermissible, which is the doubt-is-cowardice move the volume card forbids, and the phrase the card lists for reduction, the only response evidence permits, is its instrument. The pass-authored sentence gives the dissenting reader explicit standing before the demand, which makes come up with something better an invitation rather than a sentence passed. This is the third instance of one repair family across the volume, with the comfort-of-the-comfortable repair at Saturn's Day and the fear-not-proof repair in the second address; each is credited in its own record. F3's restoration of the third thing stands unweakened beside it: the spectator is still refused, the doubter is not.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0048",
@@ -136,6 +149,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the shelf, the despair concession, the subtraction from the experts' alarm, Fuller's instruction, Capra's diagnosis, both halves of the coordination thesis, the clarion, the third thing, and the case for the artifice rests. No prose changed by this audit. One substitution credit added as auditFindings F6 for the moral-seriousness sentence, completing the record of the doubt-is-cowardice repair family. R-CAUTIOUS-HALF: the not-a-demonstrated-answer hedge and the committing that-missing-structure identification both stand. R-PAIRED-DELETION: come up with something better keeps its warrant in Fuller's build-a-new-model instruction, restored two paragraphs above; the sermon and the exit tie to the fork; all ends present. R-CORRECTION-SCOPE: CTD-0072's implementation caution governs the proposal claims alone and has not softened the thesis statement around it. The protected-line retention in F5 was re-read against CTD-0110 and stands unchanged. R-DEIXIS, R-TENSE, R-REFRAIN-COST checked and silent."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

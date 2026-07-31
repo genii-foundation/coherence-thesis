@@ -108,5 +108,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the volume's single best demonstration that the architecture composes, and it was removed. A per-section compression pass cannot see that a section's value is in showing four other chapters working together."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 28,
+        "survivingVerbatim": 22,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: each condition's examination keeps both the donor's legitimacy and the committing incompatibility verdict, and the visibility condition keeps its honest admission that the principles inform but do not determine. R-PAIRED-DELETION: the constitutional process, the three conditions, and premature scaling were swept; the money and outcome sections and the scaling chapter carry the other ends and all stand. R-CORRECTION-SCOPE: the CTD-0074 process shape re-verified at width, the process leads to the counterproposal and nowhere else. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0072 re-verified, design fiction throughout. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twenty-two of twenty-eight baseline sentences survive verbatim; the remainder are the eight em dash glyphs repaired across seven sites, attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: eight em dash glyphs across seven sites, not three. The principles pair stands as a comma pair; the constitutional culture dash stands as a period, letting the maturity contrast begin its own sentence; the external force, tested, and capture dashes stand as commas; and the visibility pair stands as a comma pair."
+      ]
+    }
+  ]
 }

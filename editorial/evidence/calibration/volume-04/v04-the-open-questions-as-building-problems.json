@@ -56,6 +56,16 @@
       "authorizedBy": "Compression.",
       "diagnosis": "The baseline names the specific dependency, the trust layer's limits constraining the first community, which is the thread Chapter Fourteen picks up. It also commits the volume to naming its reasoning each time, which is the promise the Open Questions sections throughout the volume are keeping. The shipped version states the category and drops both the instance and the commitment.",
       "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept opening count is the prior pass's and it is more exact than the baseline's.",
+      "evidence": {
+        "baseline": "Several categories emerge from that inventory, and each has a different relationship to the building now required.",
+        "shipped": "The unresolved work falls into four categories, and each has a different relationship to the building now required."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31. Kept under R-VOICE-BIND, the volume card listing the shipped phrasing among its exemplar opening anchors.",
+      "diagnosis": "The section delivers exactly four categories and numbers them. Several announces vagueness the section does not have; four names the structure the reader is about to walk. The prior pass's sentence is the honest count and the card canonized it. Recorded as a finding in the prior pass's favor rather than a silent kept."
     }
   ],
   "debtImpact": [
@@ -111,5 +121,30 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The instructive detail is that the pass converted questions into assertions of unknowability, which reads as honest and is in fact a loss of assignment. A question names work. A statement that something cannot be known in advance does not."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 24,
+        "survivingVerbatim": 16,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CORRECTION-SCOPE: CTD-0075's rebuild is one clause of the opening sentence and nothing adjacent, verified against the diff. R-CAUTIOUS-HALF: each of the four categories keeps both its hedging and its committing half, most importantly the fourth, where the committing sentence, But you must decide how to sequence the build before you can begin building, survives beside the uncertainty it overrides. R-PAIRED-DELETION: trust layer, constitutional layer, and developmental arc forward references were swept; every one has a restored chapter later in the volume. R-LEDGER-WINS-COROLLARY: the seeded state-institutions sentence, That relationship needs legal, democratic, and practical analysis beyond this manuscript, is agent provenance under CTD-0071's subject matter and is now explicitly attributed. R-TENSE and R-DEIXIS: the categories describe standing kinds of question in the simple present already. R-NEGATION-STACK: the closing pair, They are provisional judgments, not discoveries, is a kept shipped line whose denial half is the subject itself, retention limb applies. R-REFRAIN-COST: the four parallel category paragraphs are deliberate enumeration, not a refrain defect; 4.4's retention limb applies and is recorded.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Sixteen of twenty-four baseline sentences survive verbatim; the remainder trace to five recorded punctuation repairs, the one-clause CTD-0075 rebuild, and the two kept shipped sharpenings the original record documents. One substitution credit recorded as F3. No prose change required.",
+      "corrections": [
+        "Two small divergences now attributed: cautious about this became cautious about it, and but will also acknowledge became and will also acknowledge, both knock-ons of the surrounding repairs, neither changing claim or scope."
+      ],
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

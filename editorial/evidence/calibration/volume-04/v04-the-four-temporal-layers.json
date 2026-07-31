@@ -54,6 +54,16 @@
       "authorizedBy": "Compression, and CTD-0078 applied to unsourced historical claims.",
       "diagnosis": "The shipped sentence lists mechanisms with no examples and no claim that any of them has worked, which is safer and much less useful. The three named traditions are the evidence that centuries-long orientation is possible at all, and the chapter's argument that Providence must design for the civilizational layer rests on their existence. The shipped fidelity caution is kept.",
       "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept founders clause keeps the generational layer's argument from proving entrenchment.",
+      "evidence": {
+        "baseline": "(absent; the baseline states the transmission requirement without the release condition)",
+        "shipped": "It must survive changes in leadership without requiring later participants to obey the founders forever."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31.",
+      "diagnosis": "The baseline's generational layer argues only for continuity, which taken alone argues for entrenchment, the exact failure the amendment chapter later refuses. The kept clause states the release condition in the same breath as the requirement. The credential caution and the fidelity sentence in the same section are boundings and are not credited."
     }
   ],
   "debtImpact": [
@@ -89,7 +99,8 @@
   "openQuestions": [
     "The restored claim that the great religious traditions, the scientific enterprise, and the constitutional democracies have maintained centuries-long commitments is an unsourced historical generalization of exactly the kind CTD-0078 exists to catch. Restored under tonight's policy and flagged for the source register.",
     "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
-    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone.",
+    "The restored word catastrophic is the strong form of an unsourced historical generalization CTD-0078 already flags in this section. If the author wants the softer costly, that is a one-word decision and this record names both forms."
   ],
   "measurements": {
     "baselineWords": 369,
@@ -101,5 +112,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section's four layers were reduced by the same operation four times, which makes it the cleanest available demonstration that the pass had a habit rather than a series of judgments: keep the claim, drop the consequence."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 17,
+        "survivingVerbatim": 12,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: each of the four layers keeps its restored consequence beside its kept caution, verified layer by layer. R-CORRECTION-SCOPE: the CTD-0078 bounding, None of those mechanisms guarantees fidelity, lands after the restored historical examples and does not thin them; verified at width. One unrecorded softening was found and reversed, detailed under prose. R-PAIRED-DELETION: the four layer names recur in Protecting Each Layer from the Others; all ends stand. R-TENSE: is measured in years, not months is a live design constraint correctly in the simple present. R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST, R-LEDGER-WINS-COROLLARY: nothing else fires.",
+      "prose": "One word restored. The baseline's why the neglect is so consistently catastrophic stood in the manuscript as consistently costly, a softening no record documents and no ledger item names. Catalog 4.6's retention limb protects a strong term the argument earns, and the paragraph earns it: the claim is about generational-layer failure, the volume's central warning. Restored to catastrophic under the standing restoration instruction and flagged for CTD-0078's source register alongside the historical examples it summarizes.",
+      "conclusion": "One unrecorded softening reversed and flagged; otherwise the restoration holds under the full twenty-rule index. Twelve of seventeen baseline sentences survive verbatim; the remainder trace to four recorded punctuation repairs and the three kept shipped cautions, one credited as F3. ",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

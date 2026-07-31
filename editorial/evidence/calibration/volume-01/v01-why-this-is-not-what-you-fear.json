@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-why-this-is-not-what-you-fear",
+  "editorialId": "volume-01",
+  "sectionHeading": "Why This Is Not What You Fear",
+  "currentHeading": "Boundaries Against Surveillance",
+  "anchor": "v01-the-currency-of-presence",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "recordNote": "Created 2026-07-31. The schema commits one record per calibrated section and this heading mints its own reader route, but this section's calibration lived folded inside the anchor record until the coverage audit. The prose was restored from the immutable baseline in the anchor's re-render of 2026-07-30; this record gives the section its own shipped text, sentence count, ledger search, debt impact, and twenty-rule audit, and revises prose only where a rule fired.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 17,
+    "baselineSentences": 27,
+    "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+    "note": "Ten non-surviving sentences carry the recorded repairs and restorations, including the rebuilt floor-of-belonging sentence and the restored second person. Not substitution mode."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "surveillance",
+      "invariants",
+      "floor of belonging",
+      "social credit",
+      "fork"
+    ],
+    "itemsRead": [
+      "CTD-0054"
+    ],
+    "outcome": "CTD-0054 holds the coherence-record exit lifecycle; the restored invariants state the baseline's claims about leaving and forking and decide nothing about the lifecycle question, which stays with the author."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The anchor's restorations that live here: the fear address, the four inverted features, and the second person.",
+      "evidence": {
+        "baseline": "It would be reasonable, reading this, to feel a chill. ... sounds, on its face, like the most total surveillance ever devised ... It does not measure your worth. ... a low score locks you out of life",
+        "shipped": "All restored, as anchor findings F4 and F7 record with quotes and diagnoses."
+      },
+      "authorizedBy": "v01-the-currency-of-presence findings F4 and F7.",
+      "diagnosis": "See the anchor. The card's protected surveillance invariants and the volume's promise to the reader both live in this subsection.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0054",
+      "effect": "unchanged, still query",
+      "note": "The exit lifecycle remains the author's; the restored invariants decide nothing about it."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Prose as restored by the anchor re-render of 2026-07-30, audited under the twenty-rule standard",
+      "text": [
+        "It would be reasonable, reading this, to feel a chill. A system that measures the quality of human encounter and turns it into a kind of currency sounds, on its face, like the most total surveillance ever devised: a social credit score for the soul.",
+        "This fear is correct about the danger and must be answered directly, not waved away. The answer is architectural, and it is the difference between a prison wall and the wall of a home.",
+        "A social credit system has four features, and Providence inverts all four.",
+        "It is **imposed**: assigned to you by an authority, without consent. The coherence record is the opposite: it does not exist unless you choose to enter, and it dissolves the moment you leave.",
+        "It is **comprehensive**: it scores the whole of your life. The coherence record is bounded: it reflects only the specific encounters you chose to step into, and nothing else of your life is its business.",
+        "It is **held by the powerful**: stored in a central database the watched cannot see. The coherence record is *self-sovereign*: it lives on your own device, under your own keys. The raw signal of your encounters never leaves you. What travels outward, when you decide it should, is only a thin, encrypted attestation: enough to let trust be vouched for, never enough to reconstruct the intimate reality it came from. There is no central database to leak, seize, sell, or quietly repurpose, because the architecture refuses to build one.",
+        "And it is **exclusionary.** A low score locks you out of life: travel, housing, work, food. This is the line that must never be crossed, and so it is written into the foundation as law: **the currency may open doors to greater trust, but it may never close the door to survival.** The floor of belonging is unconditional: food, shelter, care, dignity, a place among others. It is never gated by any record. The currency can raise a ceiling. It can never lower a floor.",
+        "These are not promises. Promises can be broken by whoever holds the system. They are **invariants**: constraints written into the protocol itself, such that violating them means the thing being run is no longer Providence, and anyone may say so out loud. Participation is always voluntary and revocable. The record is always yours, on your own device. There is no central authority and no central store. Anyone may leave at any time, carrying or destroying their record. And the protocol is open, a standard anyone may inspect, audit, or fork. It is owned by no one, precisely so that no one can take it over.",
+        "A system you can read, hold, leave, and fork is not a cage. It is a tool. The whole of the design exists to keep it one."
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT per the anchor's punctuation note: the four feature dashes became colons; the floor-of-belonging list moved behind its colon; the exclusionary feature took a period because its second clause needs the colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The chill address, sounds on its face, second person throughout, the four inverted features in full, and the invariants with their public enforcement, per anchor F4 and F7."
+        },
+        {
+          "kind": "verified",
+          "note": "The protected line stands at manuscript line 651: The currency can raise a ceiling. It can never lower a floor."
+        },
+        {
+          "kind": "kept",
+          "note": "The renamed heading under the volume working note on renames, held open as the anchor's heading decision 3 of 5."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading decision 3 of 5 is recorded in the anchor record v01-the-currency-of-presence: keep Boundaries Against Surveillance, or restore Why This Is Not What You Fear."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 17,
+      "baselineSentences": 27,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Ten non-surviving sentences carry the recorded repairs and restorations, including the rebuilt floor-of-belonging sentence and the restored second person. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "The invariants pair with the Boundaries and Burden of Proof litany and both ends are present. The Roots does not occur here. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "Anchor F4 is this subsection's cautious-half case and is repaired: sounds, on its face is the committing appearance-then-refutation form, restored against the concessive risks becoming. Does not fire further."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The section keeps no substituted prose beyond what the record already accounts for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires beyond what the anchor already records. No prose changed."
+  }
+}

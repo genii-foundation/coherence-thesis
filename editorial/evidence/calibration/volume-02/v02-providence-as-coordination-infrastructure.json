@@ -145,6 +145,33 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "substitutionCredit": {
+      "id": "F7",
+      "rule": "R-SUBSTITUTION-CREDIT",
+      "summary": "The prior pass replaced a numeric shorthand with the volume's register, and the repair is kept with credit rather than as a quiet kept.",
+      "evidence": {
+        "baseline": "Modernity's defaulting to financial-market time and 24/7 informational time is one of the specific architectures",
+        "shipped": "Modernity's defaulting to financial-market time and around-the-clock informational time is one of the specific architectures"
+      },
+      "note": "Generation A absorbed this into the single-word kepts without crediting it. Under R-SUBSTITUTION-CREDIT it is a finding that runs the other way: 24/7 is marketing shorthand inside the volume's most careful paragraph about time, around-the-clock is the register R-REGISTER-DICTION prefers at equal precision, and the repair fixes a genuine register fault the baseline carried. Recorded at the same weight as a finding of damage."
+    },
+    "checks": [
+      "R-CORRECTION-SCOPE: the CTD-0012 correction governs the Bio-Consensus naming and nothing else. Baseline: This is the layer the later volumes name **Bio-Consensus: the Currency of Presence**, and its unit is **coherence** [mark] the same word as the substrate. Current: The later volumes call the biometric path within this layer **Bio-Consensus**. That path is intended to mint the **Currency of Presence**, whose unit is **COHERENCE**, the same word as the substrate. Verified against the word-level diff that the correction's span ends at the unit naming: the appositive gloss, the sovereignty principle, the doors pair, and the oldest-sense close are baseline wording with only mark repairs.",
+      "R-CANON-DELETION-RECORD: the baseline's conflated naming sentence was withheld under a settled paydown, is quoted in the ledgerSearch outcome and debtImpact against CTD-0012, and CTD-0003's relation-or-record query is untouched by the correction. The rule's recording duty is satisfied.",
+      "R-PAIRED-DELETION: physiological-wallet spans eight sections in both texts with all ends present; where Providence will succeed or fail recurs in the Layer 2 reference card at matching counts; the lunar cadence has its paying ends in the Layer 1 card and the currency-question chapter. No one-ended restoration.",
+      "R-CAUTIOUS-HALF: the committing halves survive throughout: It may open doors to greater trust; it may never close the door to survival keeps both promises, and the disclosure It exists at present as a developing concept with a minimum viable prototype, not as a running system keeps the half a compression pass would have cut.",
+      "R-REFRAIN-COST: the denial run Providence is not a platform ... It is not a movement, religion, political party, or ideology is a related form of the disclosure refrain anchored in v02-providence-and-ai-integration, not one of its five instances; the refusals are of positions readers actually infer, so catalog 4.3's retention limb holds each. Cited, not re-counted.",
+      "R-SUBSTITUTION-CREDIT: one instance beyond the ledger-driven keeps, recorded above as F7. The kept CTD-0012 correction is ledger compliance, not discretionary improvement, and carries no credit.",
+      "R-DEIXIS: the design question's This is not a rhetorical question. It is a design specification. holds the reader in front of the live choice. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's six findings hold under the twenty-rule standard, the CTD-0012 correction stayed inside its span in the volume's most heavily corrected section, and the audit adds one substitution credit. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

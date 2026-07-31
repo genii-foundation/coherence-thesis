@@ -54,6 +54,16 @@
       "authorizedBy": "CTD-0036, applied to population thresholds.",
       "diagnosis": "CTD-0036 requires the direct-trust threshold and the full Scale population to be separate concepts with their evidence and uncertainty stated. The shipped text does that well and the restoration keeps it verbatim. What the paydown also removed was the reason the threshold exists, the shift from interpersonal to institutional trust, which is the mechanism the whole nesting proposal in Chapter Three depends on. Mechanism and number are separable, and only the number was in dispute.",
       "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept governance and economics sentences are the prior pass's, and they supply tests the baseline asserts without providing.",
+      "evidence": {
+        "baseline": "It means the economic architecture must be visible and real enough that its actual qualities can be assessed rather than assumed. (The paragraph ends there; no test of visibility is given, and the governance paragraph names no minimum content for the rules.)",
+        "shipped": "Those rules must include dissent, appeal, succession, amendment, and exit, and their legal and democratic adequacy still requires review. ... Subsidy should be visible rather than disguised as self-sufficiency. Participants need to know who provides capital, what influence follows it, which costs the community can meet, and which costs remain externalized."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31. The original record kept both with the note that they are more specific than the baseline and displace nothing.",
+      "diagnosis": "The baseline requires a genuine economic relationship and constitutional operation but names no check a founder could fail. The kept sentences convert both requirements into verifiable content: five named rule categories with review still owed, and a four-part disclosure test for subsidy. That is repair of the requirements' emptiness, not bounding of their scope, and under the ratified rule it is recorded as a finding in the prior pass's favor."
     }
   ],
   "debtImpact": [
@@ -110,5 +120,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the volume's best illustration that a ledger item can dispute a number while leaving the mechanism behind the number untouched, and that a pass which deletes both has paid down more than the item asked for."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 18,
+        "survivingVerbatim": 14,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CORRECTION-SCOPE: the CTD-0036 bounding lands exactly on the range claim it names, converting the baseline's convergence into a provisional working figure and adding the nesting requirement, with the restored trust mechanism before it untouched; verified at width. R-LEDGER-WINS-COROLLARY: the baseline was searched for the bounding language before accepting it as seeded; it contains none, so the seeded provenance recorded by the original pass is correct. R-CAUTIOUS-HALF: the size paragraph keeps both the committing threshold argument and the hedging provisional frame, which is the right order of survival, mechanism first, bound second. R-PAIRED-DELETION: thirty to one hundred and fifty, direct trust, and nested groups were swept forward; the same distinctions recur in The Relational Coherence Threshold and The First Scale, and all three ends now carry the same provisional framing, so no end dangles. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires. R-REFRAIN-COST: the four On headers are parallel enumeration under 4.4's retention limb, recorded.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Fourteen of eighteen baseline sentences survive verbatim; the remainder trace to four recorded punctuation repairs and the documented CTD-0036 bounding. One substitution credit recorded as F3. No prose change required.",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

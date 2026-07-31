@@ -90,5 +90,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The full baseline paragraph survives unnarrowed, which the CTD-0069 standing requires; the metaphysical-latitude paragraph does not narrow the claim, it names the range of readings without choosing. A river approached as a relation is card-protected and pass-authored, noted under T-022.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The conduct-first close is pass-authored and grounds the tenet where the baseline leaves it in assertion.",
+        "evidence": {
+          "baseline": "This is not a regression into superstition but an advance into relationship",
+          "shipped": "A feeling may be met rather than immediately suppressed. A river may be approached as a relation with history, limits, and claims upon those who use it. The practice begins in conduct before it reaches metaphysics."
+        },
+        "note": "The baseline defends animism with a contrast; the kept paragraph defends it with two practices a skeptic can perform, and the closing sentence gives the whole third tier its method: conduct before metaphysics. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

@@ -67,6 +67,16 @@
       "authorizedBy": "CTD-0006, applied to the proposal itself.",
       "diagnosis": "The shipped advisory framing is required and is kept. It is not the proposal. The baseline says what the measurement would be for: a group noticing that it cannot decide well and choosing to wait. The two denials, not data instead of politics and not a gate on who counts, are the volume's own guard against the reading CTD-0006 was raised against, and they were removed while the item they serve stayed open.",
       "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The cut intensifier asserted a magnitude the proposal is then required to earn.",
+      "evidence": {
+        "baseline": "It proposes something subtler and more profound:",
+        "shipped": "It proposes something subtler:"
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31.",
+      "diagnosis": "Catalog 4.6, defect limb. Profound names its own significance in the corpus's own voice at the exact moment the passage promises precision, and subtler is the claim the following sentences actually support. The prior pass's cut repairs a genuine fault and is kept at finding weight."
     }
   ],
   "debtImpact": [
@@ -129,5 +139,30 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the volume's most careful ledger interaction: a high severity item, a shipped formulation better than the baseline's, and a removed proposal that the item does not forbid. Keeping the formulation and restoring the proposal inside it is what R-LEDGER-WINS produces when the item bounds rather than prohibits."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 18,
+        "survivingVerbatim": 8,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the section keeps both the control history and the radical possibility, the bright lines and the proposal, the committing shift statement and its protective purpose; nothing one-sided survives. R-PAIRED-DELETION: the bright lines, the coherence score, the biometric gate, and the shift interlude were swept; the civic capacity chapter and the first scale chapter carry the other ends and all stand. R-CORRECTION-SCOPE: the recorded CTD-0006, CTD-0005, and advisory decisions re-verified at width: the bright lines stand in the shipped wording, the advisory paragraph follows the proposal, and the restored material sits inside them without rewriting. R-LEDGER-WINS-COROLLARY re-run: the kept bright lines, the advisory paragraph, and the prior-judgment requirements were searched for in the immutable baseline and are not there; seeded with provenance visible in the original notes, bounding, no credit. The recorded reduction of for ten thousand years to for a very long time re-verified as the standing open question records, CTD-0013 and CTD-0078 family, span unsourced. R-SUBSTITUTION-CREDIT: one kept-on-merits trim converted to a credit finding, F3. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing further fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Eight of eighteen baseline sentences survive verbatim; the remainder are the eight em dash glyphs, the recorded bright line and advisory boundings, the recorded span reduction, and the credited trim, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is refined: eight em dash glyphs. The apparatus dash stands as the colon that introduces what the apparatus would be; the opens dash stands as a comma; and the remaining pairs stand as comma pairs, with or added before to let a sensor to keep the two denials parallel."
+      ],
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

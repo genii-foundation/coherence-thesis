@@ -1,0 +1,109 @@
+{
+  "sectionId": "v03-arrival",
+  "sectionHeading": "Arrival",
+  "currentHeading": "Arrival",
+  "anchor": "v03-the-year-of-the-weaver",
+  "substitutionTest": {
+    "survivingBaselineSentences": 1,
+    "note": "246 baseline words to 183 shipped words, minus 26 percent. One baseline sentence survived verbatim, Maren is forty-three. With survivors above zero the pairing test applies: the surviving sentence's baseline neighbors were checked and restored around it, so no restored reference points at removed material."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "daylighting",
+      "culvert",
+      "advertising",
+      "invitation"
+    ],
+    "itemsRead": [
+      "CTD-0015",
+      "CTD-0056"
+    ],
+    "outcome": "No recorded decision governs this section. No canonical term is minted or redefined here; the section is narrative ground for the chapter's later claims."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The letter lost its voice and gained a different ask.",
+      "evidence": {
+        "baseline": "I have found something I think you should see, not because it will solve your problems but because I think you are one of the people it is for. Would you be willing to have a conversation about whether it is real?",
+        "shipped": "I have found something I think you should see. I do not know whether it will solve any of your problems. I think you may be one of the people it is for. Would you be willing to help me decide whether it is real?"
+      },
+      "authorizedBy": "Compression and caution.",
+      "diagnosis": "The shipped letter flattens the not-because-but construction into three declaratives and changes the ask from a conversation about whether it is real to help me decide, which is a different relationship between the writer and Maren. The baseline's single cumulative sentence is the discernment the section is about, rendered in syntax."
+    },
+    {
+      "id": "F2",
+      "summary": "The refusal of hope was softened.",
+      "evidence": {
+        "baseline": "She says yes, less out of hope, which she has little of, than out of respect for the person asking.",
+        "shipped": "Maren says yes less from hope, which is running thin, than from trust in the discernment of the person asking."
+      },
+      "authorizedBy": "Rewrite.",
+      "diagnosis": "Which she has little of is flatter and harder than running thin, and respect is the plainer word. The shipped version also names discernment explicitly where the baseline lets the previous paragraph carry it, explaining the image it had already drawn."
+    },
+    {
+      "id": "F3",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "The watershed appositive mark, the single-conversation expansion mark, and the says-yes mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The watershed appositive took a colon because the creek specifies the watershed. The single-conversation expansion became a period, the letter-writer's sentence standing alone. The says-yes mark became a comma, its clause genuinely dependent."
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The full arrival: the eleven years and the culvert, the four-beat failure sequence, the letter in its single-sentence form, the not-a-product paragraph, and the closing clause about respect."
+        },
+        {
+          "kind": "kept",
+          "note": "Maren is forty-three, the one surviving baseline sentence, and the heading, unchanged in both texts."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped display-quote letter format and its reworded ask, quoted in F1."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks as recorded in F3."
+        }
+      ],
+      "metrics": {
+        "words": 243,
+        "baselineWords": 246,
+        "shippedWords": 183,
+        "deltaPercentAgainstBaseline": -1,
+        "shippedDeltaPercentAgainstBaseline": -26
+      }
+    }
+  ],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The section's work is tonal, and the baseline's letter carries it."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": []
+}

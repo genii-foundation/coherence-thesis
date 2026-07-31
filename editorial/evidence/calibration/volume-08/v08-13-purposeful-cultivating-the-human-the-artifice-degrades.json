@@ -67,6 +67,19 @@
       "producedRule": "R-LEDGER-WINS"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F4",
+      "summary": "The standing-interest repair is better than the baseline's intention claim, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "The artifice *needs* a diminished human, and so it manufactures one — the crowd that chants *jump,* the room that returns to the football, the nervous system collapsed into the doom-scroll, the generation alone in a crowd of devices.",
+        "shipped": "No single platform explains the whole of the condition, and people are not only the products of their feeds. But an order that profits from prediction has a standing interest in a diminished human, and it manufactures one where it can."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "Needs and so manufactures asserts a unified intention no evidence in the volume establishes, and the baseline's list conscripts the prologue's people into products of that intention. A standing interest in a diminished human is the exact economic claim the section can defend, it manufactures one where it can keeps the accusation's force, and the two qualifications in front of it keep the readers themselves out of the machine's inventory. The prior record noted the softening in an applied note; it is credited here because it is a repair, the same 4.12 family as the read-the-sky correction at Saturn's Day.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0056",
@@ -109,6 +122,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the three degradations with their motives, the roots and flower, the predict and present contrast with one needs you smaller, the single relating line, and the return to the woman. No prose changed by this audit. One substitution credit added as auditFindings F4 for the standing-interest repair. R-CAUTIOUS-HALF: the qualifications and the accusation both stand in the opening paragraph, and the PURPOSEFUL claims keep both the programme description and the dated-inventory hedge. R-PAIRED-DELETION: the reflexes tie to the prologue, the roots and flower to the inversion and the blessing, the Seven Initiates to the second meaning and the blessing, the woman to the prologue and second address; all ends present. R-CORRECTION-SCOPE: CTD-0083's no-symbol correction governs her framing alone, and the restored account of what she lacked stands outside it as F3 argued. CTD-0085's Art & Alchemy display form is intact. R-DEIXIS, R-TENSE, R-REFRAIN-COST checked and silent."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

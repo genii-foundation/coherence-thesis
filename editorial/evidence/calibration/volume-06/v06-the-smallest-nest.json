@@ -8,11 +8,18 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "anchor": "v06-the-current",
   "baseline": {
     "batchId": "2026-07-09-production-pass",
     "path": "baseline.md",
     "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 11,
+    "testableBaselineSentences": 18,
+    "note": "Standing procedure, run before any pairing test: 11 of 18 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
   },
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
@@ -73,6 +80,17 @@
       "diagnosis": "The largest becoming is the volume's phrase and a larger becoming is a hedge on a superlative that the nest image earns. To say to you, before you began, why it was worth the building is the closing beat of Part One and the only place the volume states its own purpose to a reader.",
       "producedRule": "R-LAND",
       "id": "F4"
+    },
+    {
+      "id": "F5",
+      "summary": "The coda's closing hand-over, And now it is yours, was neither folded into the body nor recorded as removed.",
+      "evidence": {
+        "baseline": "And now it is yours.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "The coda scaffold removal, which covers the divider, the address lines, and the That is why pair, and which generation A extended to this line without recording it.",
+      "diagnosis": "The line is content, not scaffold: it assigns nothing to the reader and it is the same sentence that closes The Largest Nest, so the baseline hands the nest over twice, once at each part's close. The Largest Nest's record already ruled the sentence safe under the autonomy standard. Cutting the first instance silently halved an earned return. Restored as the body's closing line by this audit and flagged for the author, who may prefer the echo only at the volume's end.",
+      "producedRule": "R-REMOVE-BURDEN"
     }
   ],
   "debtImpact": [
@@ -106,13 +124,46 @@
           "note": "The whole of it small enough to carry in one hand, the three-act line with its ordinals, the throne and empire refusal, the room and the few people and the responsibility no one will set down, and the closing address about why it was worth the building."
         }
       ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-REMOVE-BURDEN. The coda's closing hand-over, And now it is yours, was content, not scaffold, and generation A neither folded nor recorded it. Restored as the body's closing line and recorded as F5. Ledger swept for the sentence: no item governs it, and this volume's record for The Largest Nest already adjudicated the same sentence as handing forward rather than assigning."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The refrain lines survive committing, with might become bounded at the width the chamber VIII decision names."
+        },
+        {
+          "kind": "applied",
+          "note": "R-REFRAIN-COST. The divider plus That is why coda is a volume-wide refrain, removed once by one decision. The anchor record v06-the-current carries the refrain finding with its count of eleven; this chamber cites the anchor rather than repeating the analysis. This chamber's first two coda lines were content and are folded into the body's closing pair, as the anchor's fold audit records."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks. The restored line's pair is The Largest Nest's close; both ends now stand, restoring the baseline's echo at the two part closes."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        }
+      ],
+      "metrics": {
+        "words": 241,
+        "baselineWords": 260
+      }
     }
   ],
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
     "The protected line Coherence is the current. Purpose is the pathway. Providence is the loom. is declared as one quoted string. In both the baseline and the current source those are three separate display lines inside the Smallest Nest sequence, so the string as quoted has never appeared in the manuscript. All three sentences are present verbatim and in order. Running them together would destroy a protected display device, so the card's quotation is what needs correcting.",
-    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise.",
+    "And now it is yours is restored at the close of Part One, rebuilding the baseline's echo with The Largest Nest. The scaffold decision never named the line, so the restoration follows the baseline's authority on prose, but the author may prefer the hand-over to sound only once, at the volume's end. One cut settles it if so."
   ],
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",

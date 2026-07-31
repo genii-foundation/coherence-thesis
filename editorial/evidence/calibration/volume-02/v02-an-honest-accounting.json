@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-an-honest-accounting",
+  "editorialId": "volume-02",
+  "sectionHeading": "**An Honest Accounting**",
+  "currentHeading": "**An Honest Accounting**",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The self-epigraph's wording is a quotation question under CTD-0007 and belongs to the author.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "survivingBaselineSentences": 6,
+    "baselineSentences": 6,
+    "note": "The chapter-head section holds the self-epigraph, its attribution, and one italic framing paragraph: 90 words, 6 sentences, all surviving. Two display repairs only. Restoration mode; the pairing test applies and passes."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["reverent humility", "power is outrunning its wisdom", "honesty about what has not been solved"],
+    "result": "The epigraph quotes a sentence whose source lives in Volume I's Providence chapter; the Volume I current manuscript carries the sentence, so both ends of the cross-volume reference exist. Within this volume, honesty about the choices it has made points forward to the five subsections that deliver it, all present. No unpaired reference."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["reverent humility", "epigraph", "The Coherence Thesis, Vol. I", "honest accounting"],
+    "itemsRead": ["CTD-0007", "CTD-0035", "CTD-0019"],
+    "outcome": "CTD-0007 governs epigraph verification and is the deciding context here. The epigraph's source sentence in Volume I's baseline carried an em dash; Volume I's re-rendered manuscript now reads It is reverent humility, an effort to help a species move in a better direction, with a comma. The Volume II pass resolved the same mark with a colon instead. Whether the self-epigraph must track the re-rendered source verbatim or may stand as an adaptation is exactly the open author decision the voice card records, so neither form is corrected to the other here; the divergence is recorded and flagged. No other item governs the section."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The epigraph's em dash was replaced with a colon, which diverges by one mark from the re-rendered Volume I source of the same sentence.",
+      "evidence": {
+        "baseline": "*It is reverent humility [mark] an effort to help a species move in a better direction at the moment its power is outrunning its wisdom. The need is vast. The attempt is small, and knows it.*",
+        "shipped": "*It is reverent humility: an effort to help a species move in a better direction at the moment its power is outrunning its wisdom. The need is vast. The attempt is small, and knows it.*"
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by the prior pass.",
+      "diagnosis": "As punctuation the colon is defensible: an effort to help specifies what reverent humility is here. But the sentence is presented as a quotation of Volume I, and Volume I's current canonical text renders the same span with a comma. The punctuation standard forbids silently altering an exact quotation to satisfy the glyph rule; the honest treatments are matching the source or obtaining approval for the adaptation. Because CTD-0007 leaves verbatim-versus-adaptation to the author, the colon is left standing rather than silently retuned a second time, and the one-mark divergence is put in front of the author in Q1."
+    },
+    {
+      "id": "F2",
+      "summary": "The em dash attribution line became an italic line, consistent with the volume-wide epigraph attribution treatment.",
+      "evidence": {
+        "baseline": "[mark] The Coherence Thesis, Vol. I",
+        "shipped": "*The Coherence Thesis, Vol. I*"
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, display matter.",
+      "diagnosis": "The leading em dash was a typographic attribution convention, not syntax. Italicizing the attribution removes the glyph without inventing punctuation, and the same treatment is applied to all nine epigraph attributions in the volume, so the form is consistent. Correct repair, recorded as examined; the volume-wide count belongs to the epigraph refrain noted in the chapter-one record's audit."
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0007", "effect": "exposure recorded, unresolved", "note": "The self-epigraph now differs from the re-rendered Volume I source by one mark, colon against comma. The item already asks the author whether these epigraphs are quotations or adaptations; this section is a live instance and is cited to the item rather than resolved." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed against baseline under the twenty rules",
+      "reasoning": [
+        { "kind": "kept", "note": "The epigraph text and the framing paragraph, byte-identical apart from the two display repairs. A book that argues for honesty about what has not been solved owes the same honesty about the choices it has made in its own construction is the chapter's thesis and lands the head section on its own beat." },
+        { "kind": "kept", "note": "The colon in the epigraph, pending the author's CTD-0007 decision, rather than a second silent retuning toward Volume I's comma." }
+      ],
+      "metrics": { "words": 90, "baselineWords": 90, "deltaPercentAgainstBaseline": 0 }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the reverent humility epigraph match the re-rendered Volume I sentence exactly?",
+      "context": "Volume I's current text reads It is reverent humility, an effort to help a species. This epigraph reads It is reverent humility: an effort to help a species. Both resolve the baseline's em dash legally; they resolve it differently. CTD-0007 owns the verbatim-versus-adaptation decision, and this is the volume's clearest case because the source moved after the epigraph was written.",
+      "for": "author"
+    }
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is small and its one real question is not editorial but canonical: whether a self-epigraph tracks its moving source. The record's job is to keep that question visible instead of letting two independently legal repairs drift the same sentence apart across volumes."
+  }
+}

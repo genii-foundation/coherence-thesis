@@ -99,5 +99,12 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. This is the largest single reduction in the volume outside the Coda, and it removed the argument for the safeguards that were added in the same pass."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. Demanding for uncompromising is the recorded CTD-0088 modality on mentor authority; the self-certification paragraph is the item's named paydown and stands under R-LEDGER-WINS. R-CAUTIOUS-HALF: the committing condition, that no one can summon a greater genius than they have met within their own depths, survives at strength."
   }
 }

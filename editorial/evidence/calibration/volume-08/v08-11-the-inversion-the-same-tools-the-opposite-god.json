@@ -82,11 +82,29 @@
       "producedRule": "R-LEDGER-WINS"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F5",
+      "summary": "The section's self-limitations repair the baseline's self-certification, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "The god is the opposite god. ... It is **a protocol, not a platform** — no manor and no lord ... That is the difference between a nervous system and a leash. ... The artifice already proves the tools work. We propose only to change the god they serve.",
+        "shipped": "The god is meant to be the opposite god. But consent alone does not make two systems opposites: power, error, coercion, access, revocation, security, and governance still decide what the technology becomes. ... **A protocol can still produce landlords.** ... That is the difference between a nervous system and a leash, if the difference can be built. ... But the artifice proves only that prediction and capture work. It does not prove that the same instruments can measure trust, serve consent, or resist capture. Those are the harder tests, and they are ours to pass."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "One repair family, credited once. The baseline certifies its own proposal: the god simply is opposite, the protocol simply has no lord, the tools are simply proven. Each shipped guard subjects the proposal to the same audit the volume runs on the artifice, and a protocol can still produce landlords is the volume indicting its own design in six words. That line is also a pass-authored card-protected line with no baseline ancestor, retained under the CTD-0110 constraint as elsewhere; the credit here records that it would earn its place on merit even without the protection. The restored refusals in F2 stand beside these guards rather than instead of them, which is the arrangement the section needed: the refusal stated with its reason, then the admission that a refusal is an intention until an implementation proves it.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0012",
       "effect": "paydown preserved",
       "note": "COHERENCE is the unit, the Currency of Presence is its descriptive name, and Bio-Consensus is the proposed biometric minting path. The baseline apposition is not restored. This is the correction the item asked Volume VIII for."
+    },
+    {
+      "id": "CTD-0110",
+      "effect": "constraint honored, item deferred",
+      "note": "A protocol can still produce landlords is a card-protected line with no baseline ancestor, retained in place. Re-preparing the card belongs to CTD-0110; the 2026-07-31 audit records in F5 that the line also earns its place on merit."
     },
     {
       "id": "CTD-0043",
@@ -129,6 +147,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the concealment argument, memory offered freely, the three named parts, the three refusals with their reasons, the leash close, and the current and currency inversion. No prose changed by this audit. One substitution credit added as auditFindings F5 for the self-limitation family, and a CTD-0110 entry added to debtImpact for the protected landlords line, which this record had noted only in its substitutionCheck. R-CAUTIOUS-HALF: this section is the volume's densest interleaving of hedge and commitment and both halves survive at every point checked; the meant-to-be hedges did not consume the refusals, and the refusals did not shed their guards. R-PAIRED-DELETION: the landlord ties to the manor, the watching eye to the reckoning, the score to scored trust, the leash to the second address's fear-as-landlord; all ends present. R-CORRECTION-SCOPE: CTD-0012's separation governs the currency naming sentences alone and has not rewritten the surrounding proposal. R-DEIXIS, R-TENSE, R-REFRAIN-COST checked and silent."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

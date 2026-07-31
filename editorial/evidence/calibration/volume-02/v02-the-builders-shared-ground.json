@@ -83,7 +83,7 @@
       "id": "F4",
       "summary": "An em dash pair around four kinds of practice became a comma pair, producing the same garden path recorded elsewhere in this batch.",
       "evidence": {
-        "baseline": "at least one form of personal practice—somatic, contemplative, therapeutic, or relational—that has changed their understanding",
+        "baseline": "at least one form of personal practice [mark] somatic, contemplative, therapeutic, or relational [mark] that has changed their understanding",
         "shipped": "at least one form of personal practice, somatic, contemplative, therapeutic, or relational, that has changed their understanding"
       },
       "authorizedBy": "R-PUNCT-STRUCT, applied by substituting commas.",
@@ -132,6 +132,32 @@
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS. The record's quoted evidence was mechanically cleaned to the [mark] placeholder earlier tonight; that cleanup was not an audit, this is.",
+    "refrainAnchor": {
+      "rule": "R-REFRAIN-COST",
+      "refrain": "The capital-asymmetry sentence: The capital flowing into AI capability development in any given year exceeds, by orders of magnitude, the total capital flowing into all of the coordination, contemplative, governance, and regenerative-economics work the book has been describing combined.",
+      "count": 2,
+      "instances": [
+        "v02-the-builders-shared-ground",
+        "v02-if-you-are-a-funder"
+      ],
+      "note": "Two near-verbatim instances in both texts, manuscript lines 911 and 1155, with a related form in Capability Outruns Coherence, Capital flowing into capability development vastly exceeds capital flowing into alignment research. The repetition is deliberate: the Final Note restates the chapter's evidence at the moment it asks a funder to act on it. The claim is unsourced and quantitative in every instance, so CTD-0019 is engaged once per instance and a sourcing ruling prices at both plus the related form. Child audits cite this anchor rather than re-counting."
+    },
+    "checks": [
+      "R-REFRAIN-COST: the capital-asymmetry reprise is anchored above with its count and its CTD-0019 price.",
+      "R-CAUTIOUS-HALF: the kept commitments survive: This is a quiet selector, but it operates., and The most useful builders in this field are rarely pure specialists. Each tendency paragraph keeps its bounding tend to.",
+      "R-PAIRED-DELETION: the meeting of worlds that the previous interstitial named has its minting end in the third TOWARD HUMANE TECHNOLOGY page; the founder-as-permanent-authority skepticism has its ends in Chapter Five's governance layer and Chapter Nine. All present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0066's contested claim is recorded in debtImpact.",
+      "R-SUBSTITUTION-CREDIT: the kept selector and specialist sentences were baseline kept by the pass; the whether rebuild of the practice list is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-DEIXIS: the builders most worth working with and this cross-domain experience is itself a kind of substrate hold the reader at the live description. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard. The audit anchors the capital-asymmetry reprise with its CTD-0019 price. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

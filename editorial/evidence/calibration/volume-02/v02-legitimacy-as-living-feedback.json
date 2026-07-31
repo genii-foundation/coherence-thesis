@@ -84,7 +84,7 @@
       "id": "F4",
       "summary": "An asyndetic list of three failed alternatives was closed with including and and.",
       "evidence": {
-        "baseline": "the alternatives that have been tried—revolutionary purges, technocratic capture, populist authoritarianism—have consistently produced worse outcomes",
+        "baseline": "the alternatives that have been tried [mark] revolutionary purges, technocratic capture, populist authoritarianism [mark] have consistently produced worse outcomes",
         "shipped": "the alternatives that have been tried, including revolutionary purges, technocratic capture, and populist authoritarianism, have consistently produced worse outcomes"
       },
       "authorizedBy": "R-PUNCT-STRUCT, applied by substituting commas and adding including.",
@@ -135,6 +135,23 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS. The record's quoted evidence was mechanically cleaned to the [mark] placeholder earlier tonight; that cleanup was not an audit, this is.",
+    "checks": [
+      "Catalog 4.22 on the volume diagnostic: F4's restoration is one of the volume's open-series repairs. The three failed alternatives, revolutionary purges, technocratic capture, populist authoritarianism, run asyndetic and open inside their comma pair in the current text, the pass's including and closing and both gone. Confirmed restored and clean.",
+      "R-CAUTIOUS-HALF: the substitution pair keeps both halves in baseline order, The response cannot be to abandon those institutions, then The response has to be to build coordination infrastructure that supplements them; and the closing keeps The answer is not yet known beside the restored What can be said with confidence. Both limbs throughout.",
+      "R-PAIRED-DELETION: the closing italic's intelligence, whether human, machine, ecological, or collective, to remain in right relationship hands off to Chapter Ten's title and opening at both ends; the supplements enumerated, Citizens' Assemblies, deliberation platforms, Indigenous governance practices, each have their minting ends earlier in the chapter. All present in both texts.",
+      "R-REFRAIN-COST: mostly in fragments is the sixth of the seven work-in-fragments recurrences anchored in v02-civilizational-alignment; cited, not re-counted.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0020's warning temperature stands for the author with the baseline's closing restored without addition.",
+      "R-SUBSTITUTION-CREDIT: the kept supplements enumeration was baseline kept by the pass; the applied repairs are R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-DEIXIS: the governance crisis of the present moment and the existing governance architectures are visibly failing hold the reader inside the live crisis. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, the open series stays open, and the handoff to Chapter Ten resolves at both ends. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

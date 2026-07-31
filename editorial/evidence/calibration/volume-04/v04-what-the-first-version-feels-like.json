@@ -109,5 +109,28 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the volume's clearest case that a modality frame and a scene are independent: CTD-0030 governs the first and the pass paid it down by removing the second. Once the frame is stated once, the scene can be as concrete as it likes."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 26,
+        "survivingVerbatim": 15,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: all three scenes keep their concrete detail and the shop owner's testimony keeps its committing honesty; the imagined grammar bounds the scenes without thinning them. R-PAIRED-DELETION: the Cardinal Scale, the household, the shop, and the institutional memory argument were swept; the Cardinal Scale pairs with the design fiction chapters and the Part VII scenes, ends aligned. R-CORRECTION-SCOPE: the CTD-0030 and CTD-0072 imagined-grammar conversions re-verified at width: Imagine a couple, they would amount, the architecture would eventually offer, the thin slice would already do, and it would let each convert mood or tense alone, with no adjacent rewriting. R-LEDGER-WINS-COROLLARY re-run: the kept design fiction statement and the kept clauses on public rank, chosen disclosure, and evaluating the issuer were searched for in the immutable baseline and are not there; seeded canon with provenance visible in the original kept notes, bounding, no credit. One further seeded sentence found unitemized and attributed below. R-SUBSTITUTION-CREDIT: nothing else kept, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires; the scenes' present tense sits inside the explicit design fiction frame, which is the load-bearing timing R-TENSE protects.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Fifteen of twenty-six baseline sentences survive verbatim; the remainder are the six em dash glyphs across five sites, the imagined-grammar conversions, and the seeded boundings, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is refined: six em dash glyphs, with the community contributions pair standing as a comma pair, three single dashes standing as commas, and the rooms dash standing as a colon that introduces what the memory consists of, a specification repair the record described as a comma.",
+        "One seeded sentence the original record did not itemize: The aim is institutional memory without automated authority, closing the community scene. Not in the baseline; CTD-0055 family bounding consistent with the recorded design fiction frame; provenance now visible. Kept as bounding, no credit."
+      ]
+    }
+  ]
 }

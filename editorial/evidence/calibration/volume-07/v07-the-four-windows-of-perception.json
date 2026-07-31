@@ -85,5 +85,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires against the restored baseline.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The prejudice paragraph is pass-authored and repairs a real fault in the baseline's optimism.",
+        "evidence": {
+          "baseline": "One who intends to find beauty will attend to beauty, imagine beauty, and so come to sense beauty everywhere.",
+          "shipped": "The same process that finds beauty can confirm a prejudice. A disciplined use of the windows therefore includes comparison with other witnesses and a willingness to discover that one's intention has bent the view."
+        },
+        "note": "The baseline demonstrates the windows only in their flattering direction. The kept paragraph runs the same mechanism the other way, which is the strongest objection the section could face, answered in its own terms. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-wielding-intelligence-2",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Wielding Intelligence** (Epilogue)",
+  "currentHeading": "**Wielding Intelligence**",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The title reading is protected language under the voice card.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "survivingBaselineSentences": 33,
+    "baselineSentences": 33,
+    "note": "The Epilogue opening, from the section heading and subtitle through the six paragraphs before The Reader's Part, is byte-identical to the baseline: 458 words, 33 sentences. Nothing was substituted or repaired; the baseline carried no prohibited mark here. The pairing test passes trivially."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["To Center in Humane Technology", "the wielding is", "alignment problem is the integration problem", "deformed by what it has built"],
+    "result": "The alignment problem is the integration problem chain closes the argument Chapter Ten opened, and both ends are present in both texts. The title phrase Wielding Intelligence and its subtitle recur across the title page, Part III divider, and this Epilogue at matching counts in both texts. No unpaired reference."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Wielding Intelligence", "To Center in Humane Technology", "doom framing", "developmental achievement", "coherent civilization"],
+    "itemsRead": ["CTD-0035", "CTD-0026", "CTD-0016", "CTD-0020"],
+    "outcome": "CTD-0035 tracks title-matter consistency; the Epilogue's title and subtitle match the volume's title page in both texts. CTD-0016 tracks the technological-power thesis, restated here as the technology amplifies what we are; identical in both texts. No recorded decision conflicts with the baseline."
+  },
+
+  "findings": [],
+
+  "debtImpact": [],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed against baseline under the twenty rules",
+      "reasoning": [
+        { "kind": "kept", "note": "All 33 sentences, byte-identical. The three-step ladder closing the section, the alignment problem is the integration problem, the integration problem is the developmental problem, the developmental problem is the work, is anadiplosis doing the Epilogue's synthesis; catalog 4.9 and 4.19 read it as deliberate under their retention limbs." },
+        { "kind": "kept", "note": "The wielding definitions paragraph, whose refusal of both doom and utopia framings is the volume's stated posture and protected by the voice card's title reading; the fragments The technology is not the protagonist. The wielding is are load-bearing landings." },
+        { "kind": "kept", "note": "It is what every previous civilization that ended, ended through losing, the section's hardest sentence, whose repeated ended is deliberate and whose comma is doing caesura work the syntax requires." }
+      ],
+      "metrics": { "words": 458, "baselineWords": 458, "deltaPercentAgainstBaseline": 0 }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No rule fires. The Epilogue opening is the volume's summit prose and it reached the current manuscript untouched. Confirming that under the full standard, rather than assuming it, is what this record is for."
+  }
+}

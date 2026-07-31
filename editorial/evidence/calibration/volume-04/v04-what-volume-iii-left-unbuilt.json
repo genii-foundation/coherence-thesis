@@ -115,5 +115,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Second consecutive section in which CTD-0075's correction took an adjacent passage with it. The pattern is now established well enough to state as a check: when a ledger item names a sentence, restore the paragraph and rebuild only the named sentence."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 22,
+        "survivingVerbatim": 14,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CORRECTION-SCOPE: the CTD-0075 correction was measured against the diff. It removed exactly the two attributions the item names, the Opening Orientation sentence and the What Remains Open naming, and rebuilt only those spans; the discipline triad around them is baseline. R-LEDGER-WINS-COROLLARY: the kept disclaimer sentence is seeded rather than baseline-paid, correctly, since the baseline's own sentence is the thing the item forbids. R-CAUTIOUS-HALF: the epigraph pair keeps both the map denial and the improvisation consequence; the deferral paragraph keeps both the appropriateness claim and the luxury-withdrawn turn. R-PAIRED-DELETION: the fragmented-goodness diagnosis this section leans on is quoted in the unrestored Part I introduction, which is held under the structural rule and recorded at v04-the-cardinal-scale-seen-from-here; the lean survives because this section names the deferral without citing that introduction. R-SUBSTITUTION-CREDIT: the kept disclaimer and the Adapted from label are ledger boundings under CTD-0075 and CTD-0007, no credit owed, stated explicitly. R-TENSE: had been built and remained design intention are load-bearing past reference to Volume III's finished text and stand. R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Fourteen of twenty-two baseline sentences survive verbatim; the remainder trace to the two-span CTD-0075 rebuild, four recorded punctuation repairs, and the two attributed retentions. No prose change required.",
+      "corrections": [
+        "One retention the original record did not itemize: the closing pair Those pressures are unavoidable. They should be visible. is the prior pass's, not the baseline's. It lands the deferral paragraph on the volume's visibility posture and no rule fires against it, so it stands, now attributed. The record's punctuation inventory also counts the epigraph repair the shipped pass made, which this audit confirms is the comma form the current text carries."
+      ]
+    }
+  ]
 }

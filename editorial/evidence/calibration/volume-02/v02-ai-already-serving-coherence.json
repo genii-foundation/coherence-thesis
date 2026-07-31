@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-ai-already-serving-coherence",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What AI Can Already Do for Coherence**",
+  "currentHeading": "## **AI Already Serving Coherence**",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The McKinsey figures, the named deployments, and the adequacy judgments are factual claims belonging to the author under CTD-0019.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "survivingBaselineSentences": 27,
+    "baselineSentences": 27,
+    "note": "All 27 baseline sentences survive. One was rebuilt to resolve a prohibited dash pair, the rest are byte-identical apart from two mark repairs. The section is in restoration mode, not substitution mode; the pairing test applies and passes."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["McKinsey", "regenerative agriculture", "biodiversity monitoring", "collective deliberation", "Chapter Six"],
+    "result": "McKinsey occurs twice in each text; the second end is the source list in Why This Book Has No Footnotes, present in both. The biodiversity monitoring and collective deliberation back-reference points to Chapter Six's Sensemaking at Scale and Intelligence in Service of Earth, both present in both texts. No unpaired reference."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["McKinsey", "68%", "digital twin", "surveillance capitalism", "predictive policing", "climate modeling", "disease surveillance"],
+    "itemsRead": ["CTD-0019", "CTD-0055", "CTD-0027"],
+    "outcome": "CTD-0019 owns every empirical claim here: the 2024 McKinsey Global Farmer Insights percentages, the digital-twin and drone deployments, the climate-modeling and disease-surveillance claims. The item requires verification and is open without a wording ruling; both texts carry the same claims, so restoration neither adds nor removes exposure. No recorded decision conflicts with the baseline."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The dash that introduced the specification of the headwinds was replaced by a comma, which made the list read as coordinate objects rather than as what the headwinds are.",
+      "evidence": {
+        "baseline": "Almost all of it operates against headwinds [mark] extractive incentive structures, capital concentration in the labs producing the most capable models, regulatory frameworks that have not caught up to the technology, and the deeper civilizational fragmentation Part I diagnosed.",
+        "shipped": "Almost all of it operates against headwinds, extractive incentive structures, capital concentration in the labs producing the most capable models, regulatory frameworks that have not caught up to the technology, and the deeper civilizational fragmentation Part I diagnosed."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied with the comma repair.",
+      "diagnosis": "The mark was specifying: the four items are the headwinds, not additional things the work operates against. With a comma, the sentence reads for a moment as a five-item list beginning with headwinds, and the reader must repair the grammar mid-sentence. The standard names the comma as the most common wrong answer, and this is the case it describes. Repaired to a colon, which does the specifying work the dash was doing.",
+      "repairApplied": "2026-07-31, comma after headwinds replaced with a colon in the current manuscript."
+    },
+    {
+      "id": "F2",
+      "summary": "The framing sentence's dash-enclosed interpolation was rebuilt as a fronted claim with a colon specification, and the rebuild is sound.",
+      "evidence": {
+        "baseline": "This is where the book’s framing [mark] that intelligence is substrate-sensitive, that the same technology can be aimed at extraction or regeneration depending on the conditions of its deployment [mark] becomes operationally testable.",
+        "shipped": "This is where the book’s framing becomes operationally testable: that intelligence is substrate-sensitive, that the same technology can be aimed at extraction or regeneration depending on the conditions of its deployment."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, the rebuild clause.",
+      "diagnosis": "Recorded per R-SUBSTITUTION-CREDIT as a finding that runs the other way. The interpolation carries two internal comma-separated clauses, so no comma pair could hold it, and parentheses would demote the framing to an aside when it is the sentence's content. Moving the specification after the verb lets the reader receive the claim, then its content, and the colon genuinely specifies. This is the rebuild the standard's last resort asks for, done well. Kept."
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0019", "effect": "unchanged", "note": "The 68, 56, and 40 percent figures, the named technologies, and the cross-domain deployment claims are identical in both texts and remain unverified. Verification is outside this pass's scope and the claims are marked by the item." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed against baseline under the twenty rules, one repair applied",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT at F1: the comma after headwinds became a colon. Three marks in the baseline; the other two, the framing interpolation and the pattern specification before intelligence being deployed, were already correctly resolved by the prior pass as a rebuild and a colon respectively, and both stand." },
+        { "kind": "kept", "note": "All 27 sentences otherwise. The technology does not choose. The institutional context, ownership structure, and economic incentives surrounding the technology choose is the section's landing and echoes the volume's opening; it survives in both texts and is the refrain form of the substrate thesis, deliberate under catalog 4.9's retention limb." },
+        { "kind": "kept", "note": "The percentages and named-project claims byte-identical, under CTD-0019 rather than under editorial authority." }
+      ],
+      "metrics": { "words": 512, "baselineWords": 512, "deltaPercentAgainstBaseline": 0 }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the McKinsey percentages carry an as-of qualifier?",
+      "context": "The survey is dated 2024 in the text, which bounds the claim, but adoption figures drift and the no-footnotes form gives the reader no path to the source beyond the survey's name. CTD-0019 already owns this corpus-wide; recorded here only because the section is the volume's densest cluster of unverified quantitative claims.",
+      "for": "author"
+    }
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section shows both halves of the punctuation standard in one place: the framing sentence is the rebuild done right, and the headwinds sentence is the comma reflex the standard warns against, in the same pass, three paragraphs apart. The difference is whether the editor asked what the mark was doing before replacing it."
+  }
+}

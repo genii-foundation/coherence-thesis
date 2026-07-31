@@ -108,6 +108,23 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the doubled promise restored by F1 is itself the rule's subject: a serious account of what would have to be true and a serious account of how it could fail are the hedging and committing halves of one posture, and both accounts survive in full. None of these conditions are guaranteed keeps its universal, and the failure list keeps actively harmful, the committing end of its scale.",
+      "R-PAIRED-DELETION: the physiological-wallet condition has its paying ends in Chapter Five's third layer and Chapter Seven's four problems, and the willingness to fail formulation is the antecedent the Surveillance Problem's closing cites. The named reviewer triad, contemplative traditions, trauma-informed practitioners, and surveillance-resistance researchers, recurs as the CTD-0039 requirement in both texts. All ends present.",
+      "R-CORRECTION-SCOPE: no recorded correction reaches this section; the CTD-0039 requirement is paid by baseline wording restored in full, including when the time comes to build it, and the restoration neither widened nor narrowed it.",
+      "R-CANON-DELETION-RECORD: nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the two kept repairs, the period after The architecture has to be built and the comma before not by software engineers alone, are R-PUNCT-STRUCT compliance. No uncredited discretionary improvement.",
+      "R-REFRAIN-COST: not a disclosure-refrain instance; the anchor in v02-providence-and-ai-integration is cited as not engaged. The three sufficientlys are section-local deliberate anaphora, adjudicated by F2 under catalog 4.9's retention limb.",
+      "R-DEIXIS: the closing italic, Naming these honestly is part of the founding architecture, holds the reader at the live commitment. No instance needing repair."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, and the section's two-account posture survives with both halves. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

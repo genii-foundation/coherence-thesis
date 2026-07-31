@@ -116,5 +116,12 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The general shape recurs across this volume: a citation item was paid by deleting the citable thing, which leaves an unverifiable generality in its place."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The Gaia verification marker stays visibly unresolved under section 9 and CTD-0082. The entelechy scoping sentence is the CTD-0042 paydown position and stands under R-LEDGER-WINS. The closing pair bounding what is claimed of the field is the recorded safeguard, not a cautious-half loss: the committing sentence, It is the genius of the between, survives at full strength ahead of it."
   }
 }

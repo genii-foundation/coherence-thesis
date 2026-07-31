@@ -134,6 +134,24 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Verification: the current section is byte-identical to the baseline, which carries no prohibited marks here.",
+      "R-CAUTIOUS-HALF: the restored call and response keeps every committing beat: Not whether intelligence will be developed. It is being developed. Not whether it will be deployed at planetary scale. It is being deployed. The restored triple negation keeps not the answer, the strongest disclaimer in the epilogue, beside the committing The wielding is happening, ready or not.",
+      "R-TENSE: the progressive pair It is being developed and It is being deployed carries load-bearing timing, a process underway rather than a settled state, and stays progressive as the baseline has it.",
+      "R-PAIRED-DELETION: the limitations the next chapter will name directly has its end in An Honest Accounting; might begin to find each other has its end in the Final Note; the anadiplosis chain, wielding, capacity, cultivation, hands off to the accounting chapter's sequencing discipline. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0020's pressure record stands in debtImpact.",
+      "R-SUBSTITUTION-CREDIT: nothing substituted survives in a byte-identical section. No instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; the wielded triad is section-local deliberate repetition, kept by the pass and confirmed under catalog 4.4's retention limb.",
+      "R-DEIXIS: This is what the present moment is asking of humanity holds the reader inside the live demand. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and the epilogue's call and response survives whole. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

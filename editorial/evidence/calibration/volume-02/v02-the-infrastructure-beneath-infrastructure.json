@@ -96,6 +96,23 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Catalog 4.22 on the volume diagnostic: the physical-systems list, roads, electrical grids, ports, telecommunications networks, water systems, and the invisible-infrastructure list both run asyndetic and open in both texts; neither was closed with and. Confirmed clean of the open-series damage found elsewhere.",
+      "R-CAUTIOUS-HALF: the committing half of the section's central claim, It is a measurable increase in the capacity of systems to remain intelligently integrated under stress, survives beside the hedging refusal not a moral preference or spiritual aspiration. The CTD-0039 measurability promise keeps its falsifiable form.",
+      "R-PAIRED-DELETION: the fivefold infrastructure figure minted here is redeemed by the volume's title matter and by Coherence as Infrastructure above it; A coherent civilization becomes more coherent through advanced technology recurs from the Prologue with both ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. The heading difference from the baseline is census-held continuity state and licenses nothing in the prose.",
+      "R-SUBSTITUTION-CREDIT: the two kept colons are R-PUNCT-STRUCT compliance. No uncredited discretionary improvement.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; the substrate-principle anchor in v02-what-the-first-volume-left-in-our-hands and the disclosure anchor in v02-providence-and-ai-integration are both cited as not engaged here.",
+      "R-DEIXIS: This is the central reorientation the book has been moving toward holds the reader inside the argument's live turn. No instance needing repair."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard and the section's series are clean of the volume's open-series damage. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

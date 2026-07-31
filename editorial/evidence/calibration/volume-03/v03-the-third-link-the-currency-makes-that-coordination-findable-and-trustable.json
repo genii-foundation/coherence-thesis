@@ -1,0 +1,130 @@
+{
+  "sectionId": "v03-the-third-link-the-currency-makes-that-coordination-findable-and-trustable",
+  "sectionHeading": "The Third Link: The Currency Makes That Coordination Findable and Trustable",
+  "currentHeading": "Third Link: The Network Makes Collaboration More Findable",
+  "anchor": "v03-how-presence-becomes-bread",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "379 baseline words to 104 shipped words, minus 73 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "coherence record",
+      "trust",
+      "moment of introduction",
+      "economic infrastructure",
+      "regional food network"
+    ],
+    "itemsRead": [
+      "CTD-0053",
+      "CTD-0055",
+      "CTD-0015"
+    ],
+    "outcome": "No recorded decision governs this section. The trust-compression claim is not settled by any ledger item; the shipped pass's contrary doctrine was its own drafting, not a recorded decision, so under R-LEDGER-WINS the baseline governs and the collision is put to the author."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The pass replaced the section's claim with its explicit denial, the sharpest doctrinal collision in the volume.",
+      "evidence": {
+        "baseline": "The trust that would ordinarily require years of proximity becomes legible immediately, because the record carries the evidence of trustworthiness that proximity would have slowly revealed.",
+        "shipped": "A coherence record should not make trust immediate. That would be both false and dangerous. It can offer bounded evidence that someone has sustained commitments, repaired ruptures, or contributed well in other settings. Trust still begins provisionally and grows through action."
+      },
+      "authorizedBy": "Rewrite, uncited by any recorded decision.",
+      "diagnosis": "This is not a hedge, it is a counter-doctrine: false and dangerous, said of the baseline's own thesis. The economic argument of the volume runs through trust compression; remove it and the third link carries nothing, which is why the shipped chapter's chain went slack. A pass has no standing to reverse doctrine without a recorded decision, so the baseline is restored and the collision is recorded here for the author, who owns the claim. The shipped compression-of-discovery framing, the network compresses discovery, not all judgment, is the most defensible middle position and is quoted for that decision."
+    },
+    {
+      "id": "F2",
+      "summary": "The regional food network argument, commitments the cash nexus cannot enforce, was deleted.",
+      "evidence": {
+        "baseline": "it operates on commitments that the cash nexus cannot enforce: the commitment to grow what the region needs rather than what the commodity market rewards, to distribute fairly in a hard year, to invest in soil whose returns will come only to one's successors",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "These three commitments are the concrete economics of the whole chapter, and the successor-soil clause is the volume's intergenerational thesis in one image. Their loss reduced the third link to an assertion about findability."
+    },
+    {
+      "id": "F3",
+      "summary": "Six prohibited marks.",
+      "evidence": {
+        "baseline": "The practitioners fence, the record fence, the food-network fence, and the provisioning mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The practitioners enumeration was rebuilt with a colon resuming into these people exist. The record appositive and the food-network appositive became comma fences. The final mark became a comma, by making presence findable and trust immediate landing as the section's last clause."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0053",
+      "effect": "recorded",
+      "note": "The third link is the trust dependency in the chain the item wants mapped; restored at full strength, it is now a mappable claim rather than a deleted one."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "recorded",
+      "note": "The coherence record as verifiable economic infrastructure is an implementation promise the item tracks."
+    },
+    {
+      "id": "CTD-0015",
+      "effect": "recorded",
+      "note": "The record that carries evidence of trustworthiness restates what the record contains; flagged to the item's inventory question."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The scattered-practitioners paragraph with these people exist, the economic-infrastructure turn, the trust-compression claim, and the regional food network argument with its three unenforceable commitments and the third-link summary."
+        },
+        {
+          "kind": "kept",
+          "note": "The current hedged heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped counter-doctrine, quoted in full in F1, and its compression-of-discovery framing, quoted there as the strongest middle position for the author's ruling."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across six marks as recorded in F3."
+        }
+      ],
+      "metrics": {
+        "words": 373,
+        "baselineWords": 379,
+        "shippedWords": 104,
+        "deltaPercentAgainstBaseline": -2,
+        "shippedDeltaPercentAgainstBaseline": -73
+      }
+    }
+  ],
+  "openQuestions": [
+    "The doctrine collision in F1 needs an author ruling: does the record make trust immediate, or does it compress discovery while trust grows through action? The volume's economics currently commits to the first; the pass argued the second is the only honest claim. Restored per the standing instruction; the ruling is the author's.",
+    "Baseline heading names the currency and trust; current heading names the network and findability. The rename is itself the cautious half of the collision in F1. Both forms recorded per the structural hold."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The third link bears weight again, and the one genuine doctrinal question it raises is now visible in the ledger instead of decided silently by a rewrite."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": []
+}

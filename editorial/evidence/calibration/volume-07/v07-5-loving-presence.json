@@ -104,5 +104,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The crossed pair is the volume’s clearest case of R-PROPORTION-FLOOR: no catalog category names it, and the compression produced a sentence that says the opposite of the baseline in both halves."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The epigraph keeps its visible attribution-pending marker per CTD-0007 and section 9. The cut of who are the author of all our experience is governed by the counterclaim the record kept, a correction applied at its width: the authorship claim alone changed and the surrounding stance survived.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The proportion paragraph is pass-authored and gives loving presence its failure modes.",
+        "evidence": {
+          "baseline": "Held together, presence and love become the single most reliable instrument we have for changing the quality of a moment.",
+          "shipped": "Sometimes the practice is active help. Sometimes it is the refusal to explain another person's pain before hearing it. Love becomes credible through proportion, neither abandonment nor rescue staged for the rescuer."
+        },
+        "note": "The baseline ends on the instrument's reliability; the kept paragraph names the two ways the instrument is misused. The refusal to explain pain before hearing it is the most practicable sentence in the tenet. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

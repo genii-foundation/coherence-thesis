@@ -112,6 +112,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The structural hold stands and no prose was touched; the blocked baseline region in QS remains the author's single-edit restoration path. One internal inconsistency found and recorded: F2's diagnosis says the re-render restores the diminished human and F3's says the pass's law-and-collective-action addition is kept, while the generation's blocked note and the manuscript agree that nothing in the region was restored; the blocked state is the true one, and the restores language in F2 is residue from a draft of this record, exactly the class of divergence found in the academic subtitle record. Under the newer rules: R-CAUTIOUS-HALF confirms the two lost denial pairs, not prophecy and not utopia, are the section's damage-report signal and remain in QS for the author; R-SUBSTITUTION-CREDIT was checked and the kept corrections here, already-begun removed, externalizing formulation, directions-not-civilizations, are ledger-required boundings rather than creditable repairs, except the power row's right-hand column, whose institutional-bounds list mirrors the controls credited in the dark-triad record's F4 and is covered by that credit rather than recounted. R-PAIRED-DELETION: every table row's terms keep their section referents in the current volume, so restoring the QS region severs nothing. All fourteen rows verified present in baseline order with both columns intact."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

@@ -142,6 +142,33 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "substitutionCredit": {
+      "id": "F7",
+      "rule": "R-SUBSTITUTION-CREDIT",
+      "summary": "The prior pass repaired a genuine relative-adverb slip, and the repair is kept with credit rather than as a quiet kept.",
+      "evidence": {
+        "baseline": "We are living in an era where attention itself has become contested terrain.",
+        "shipped": "We are living in an era when attention itself has become contested terrain."
+      },
+      "note": "Generation A recorded this as a kept with a one-line reason. Under R-SUBSTITUTION-CREDIT it is a finding that runs the other way: the baseline's where treats a period of time as a place, the pass's when is the grammatical form, and the repair fixes a fault the baseline carried on its own terms rather than merely satisfying a policy. Recorded at the same weight as a finding of damage."
+    },
+    "checks": [
+      "R-SUBSTITUTION-CREDIT: one instance, recorded above as F7. No other kept survives as an uncredited improvement; the pass's colon after nests and comma before the Nest One appositive are R-PUNCT-STRUCT compliance.",
+      "R-PAIRED-DELETION: the term sweep for Nest One, Nest Two, and Nest Three finds all three only in this section in both texts, so the naming is self-contained and no cross reference could have lost an end. The full self-naming of the volume's title here matches the title matter, and the editor claim pairs with the closing signature line Robert James Ryan III, both ends present.",
+      "R-CAUTIOUS-HALF: the opening's committing half, Not incomplete in its convictions, but in its density, survives beside the hedged frame, and the three That-fragments keep the committed thesis beside I believe. Both limbs intact throughout.",
+      "R-CORRECTION-SCOPE: no recorded correction reaches this body text. The heading difference from the baseline is census-held continuity state, not a correction, and licenses nothing in the prose. The open question Q3 about the baseline heading stands.",
+      "R-CANON-DELETION-RECORD: nothing was cut against an open canon query. CTD-0064's Nest Three question stands open with the baseline assertion restored and flagged as Q1.",
+      "R-REFRAIN-COST: the signature line is display matter, not one of the nine epigraph attributions anchored in v02-the-crisis-beneath-the-crises, and no volume refrain runs through this page. Cited for the distinction, nothing to count.",
+      "R-DEIXIS: the urgency of this moment and the unprecedented thresholds now before us hold the reader inside the live condition in the simple present. No instance needing repair."
+    ],
+    "proseChanged": false,
+    "result": "The record's six findings hold under the twenty-rule standard, and the audit converts one quiet kept into the substitution credit F7. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

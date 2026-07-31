@@ -121,5 +121,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Worth noting for the corpus: this is the section where a safeguarding paydown and the passage it was meant to bound were both present in the shipped text, and the pass kept the bound and deleted the claim."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. The section id keeps its pre-rename identifier while the census heading reads Internal Practice and External Instruments; id and heading both verified stable. This section also carries the interpunct passage and the Part IV trailer.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. Measurable became checkable and to measure coherence became to look for measurable correlates, both the recorded CTD-0006-adjacent narrowing of what physiology can establish; the hard-limits paragraph is CTD-0088 paydown. The card's reduce-list phrase only way reads as the one path, reconfirmed. The trailer's display label is covered by the refrain anchor in v07-part-i-the-argument-arrived.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The biometric-oracle close is pass-authored and states the actual defense the baseline's answer lacks.",
+        "evidence": {
+          "baseline": "we take them, rather, as the very reasons to make coherence measurable instead of merely asserted",
+          "shipped": "The strongest defense against charisma and group comfort is not a biometric oracle. It is evidence, plural interpretation, independent oversight, and the right to refuse."
+        },
+        "note": "The baseline answers the counterfeiting objection with measurement, which is itself charmable. The kept close names the institutional defenses that are not, and the right to refuse ties the section to the volume's consent floor. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-what-it-looks-like-from-inside",
+  "editorialId": "volume-01",
+  "sectionHeading": "What It Looks Like From Inside",
+  "currentHeading": "Maren: Trust That Can Travel",
+  "anchor": "v01-the-currency-of-presence",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "recordNote": "Created 2026-07-31. The schema commits one record per calibrated section and this heading mints its own reader route, but this section's calibration lived folded inside the anchor record until the coverage audit. The prose was restored from the immutable baseline in the anchor's re-render of 2026-07-30; this record gives the section its own shipped text, sentence count, ledger search, debt impact, and twenty-rule audit, and revises prose only where a rule fired.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 10,
+    "baselineSentences": 16,
+    "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+    "note": "Six non-surviving sentences carry the recorded repairs, the credited naming split, and the priority-phrase reduction. Not substitution mode."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Maren",
+      "provisioned",
+      "for the first time",
+      "vignette"
+    ],
+    "itemsRead": [
+      "CTD-0015",
+      "CTD-0018",
+      "CTD-0004"
+    ],
+    "outcome": "CTD-0015 holds what the vignette says the currency records; the restoration returns the baseline's scope and decides nothing. CTD-0018 holds the coda's register. The CTD-0004 disposition is quoted in debtImpact."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The anchor's restorations that live here: what Maren is, the reciprocal finding, and the room's return.",
+      "evidence": {
+        "baseline": "It needs exactly what Maren is. They find each other ... and she goes, and she is provisioned for the work, and the room comes back to itself.",
+        "shipped": "Restored, as anchor finding F5 records: the vignette again shows a currency of presence rather than a currency of labor."
+      },
+      "authorizedBy": "v01-the-currency-of-presence finding F5.",
+      "diagnosis": "See the anchor: what Maren is rather than what she can do is the distinction the section exists to show.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0015",
+      "effect": "unchanged, still query",
+      "note": "What the vignette says the currency records remains the author's; the baseline scope is restored and nothing is decided."
+    },
+    {
+      "id": "CTD-0018",
+      "effect": "unchanged, still query",
+      "note": "The coda's register remains the author's."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "unchanged, still open",
+      "note": "The baseline's has, for the first time, become legible is rendered as has become legible, the disposition recorded in the anchor's kept note and quoted here per R-CANON-DELETION-RECORD; the priority question stays with the author."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Prose as restored by the anchor re-render of 2026-07-30, audited under the twenty-rule standard",
+      "text": [
+        "Strip away the architecture for a moment and see it as a life.",
+        "Imagine someone who has spent years quietly good at something the world never quite had a slot for. Call her Maren. She is the person who can sit with a room full of frightened, arguing people and bring it back to itself. In the old world this shows up on no résumé. It earns her nothing, and slowly she comes to believe it is not real.",
+        "She enters through one of PURPOSEFUL's Doors, not by making an account, but by being mentored, and then by sitting in a small gathering where, for once, what she does is *seen*. The people she steadies say so, and the saying is what the currency records: not her claim about herself, but the change she made in them. Over time, a record accrues that reflects something true: that this person can be trusted with frightened rooms.",
+        "And then the network does the one thing she could never do for herself. It lets that earned trust *travel.* A community three valleys over is coming apart over a hard decision, and it does not need money or a consultant. It needs exactly what Maren is. They find each other, not through a profile she wrote but through a trust she demonstrated and others attested, and she goes, and she is provisioned for the work, and the room comes back to itself.",
+        "Nothing about this is utopian. She can still fail. She can still leave. No one is scored, ranked, or owned. But a kind of human value that the extractive world renders invisible has become legible enough to find its way to where it is needed.",
+        "*This is all the Currency of Presence is: a way for the realest things about us to stop being invisible. And it is the forward-facing heart of Providence: the architecture this whole book has been walking toward.*",
+        "---"
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT per the anchor's punctuation note: the Doors and record dashes became commas and colons by the work each was doing."
+        },
+        {
+          "kind": "restored",
+          "note": "What Maren is, they find each other, she is provisioned, the room comes back to itself, and the utopian denial, per anchor F3 and F5."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass's naming split, credited in the audit block, and the renamed heading under the volume working note, held open as the anchor's heading decision 4 of 5."
+        },
+        {
+          "kind": "kept",
+          "note": "The removal of for the first time from the close, per the anchor's kept note and CTD-0004."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading decision 4 of 5 is recorded in the anchor record v01-the-currency-of-presence: keep Maren: Trust That Can Travel, or restore What It Looks Like From Inside."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 10,
+      "baselineSentences": 16,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Six non-surviving sentences carry the recorded repairs, the credited naming split, and the priority-phrase reduction. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "Fires and is satisfied: the CTD-0004 reduction is quoted with both sides in debtImpact. CTD-0015's question is restored to the author untouched. Nothing else cut."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over Maren, the provisioning, and the room's return. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "Anchor F5's committing forms are restored: what Maren is, and the reciprocal find each other. Does not fire further."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "Credited below."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "credits": [
+      {
+        "id": "SC1",
+        "summary": "The prior pass gave the naming its own beat, and the repair is kept.",
+        "evidence": {
+          "baseline": "Imagine someone, call her Maren, who has spent years quietly good at something the world never quite had a slot for: she is the person who can sit with a room full of frightened, arguing people and bring it back to itself. Quoted with the baseline's fencing dashes rendered as commas because the record may not carry the glyphs.",
+          "shipped": "Imagine someone who has spent years quietly good at something the world never quite had a slot for. Call her Maren. She is the person who can sit with a room full of frightened, arguing people and bring it back to itself."
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "The dashes fenced the naming inside a long invitation sentence; giving it its own beat is a sound repair the anchor's kept note already judged, credited here at finding weight."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "The rules that fire are satisfied by this record's debtImpact quotes and credit. Nothing else fires. No prose changed."
+  }
+}

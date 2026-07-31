@@ -154,6 +154,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: the substrate refrain's third instance, The technology does not choose between these worlds. Human beings do., is anchored in v02-what-the-first-volume-left-in-our-hands; cited, not re-counted. The exists in fragmented form recurrence is counted at the anchor in v02-civilizational-alignment.",
+      "R-CAUTIOUS-HALF: the committing halves survive: They are not sufficient. They are proof of concept. keeps the falsifiable claim beside the restored not-merely-but bound on AI's necessity, and the mirror passage keeps both directions, the developmental promise and the bifurcation warning.",
+      "R-PAIRED-DELETION: the closing question, Can humanity organize intelligence in service to life quickly enough to matter?, has its answering end in the Civilizational Alignment block that follows; the silicon-and-carbon framing is section-local and its unnamed thinkers are held by Q3 under catalog 4.27, restore-and-flag. All ends present.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0016's fullest statement stands at baseline strength behind Q2.",
+      "R-SUBSTITUTION-CREDIT: the kept comma pair in the protected italic and the untouched mirror paragraph carry no credit; the kept repairs are R-PUNCT-STRUCT compliance.",
+      "R-DEIXIS: engaged by the original record as F4. Re-checked: the restored definite articles in the two-principles passage hold, and this century places the reader correctly. No further instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and the section's bounded claims keep their bounds. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

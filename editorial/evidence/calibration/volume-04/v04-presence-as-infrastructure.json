@@ -119,5 +119,28 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Sixth epigraph substitution, and the last one in the volume. All six replace a claim with a caution, which is a coherent editorial theory applied in the one place the standard forbids it."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 20,
+        "survivingVerbatim": 12,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the historical argument keeps all four eras and its committing generative claim, and the restored epigraph carries its committing half; the bounding conversions are the recorded caution class, not lost halves. R-PAIRED-DELETION: presence, the instrument claim, and what presence underwrites were swept; the civic capacity and measurement chapters carry the other ends and all stand. R-CORRECTION-SCOPE: the recorded CTD-0006 and CTD-0078 caution class re-verified at width and its constituent hedges itemized below so the width is visible. R-LEDGER-WINS-COROLLARY re-run: the kept does not guarantee wisdom sentence and the instrument caution were searched for in the immutable baseline and are not there; seeded with provenance visible, bounding, no credit. R-SUBSTITUTION-CREDIT: nothing kept on merits, no credit owed, stated explicitly. The standing open question on the historical universal remains with the author. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twelve of twenty baseline sentences survive verbatim; the remainder are the five em dash glyphs, the recorded caution class with its constituent hedges now itemized, and the hyphen normalization, all attributed. No prose change required.",
+      "corrections": [
+        "The recorded caution class is itemized so its width is visible: what it measures, it produces stands as tends to produce; A civilization becomes what it counts stands under the added instrument caution as tends to become what it counts; presence is the substrate of every form stands as presence supports every form; the single most important precondition, entirely to chance stands as one of the most important preconditions, almost entirely to chance; and no civilization has ever treated stands without ever. Each hedge belongs to the recorded CTD-0006 and CTD-0078 bounding and none reaches beyond the claim it bounds.",
+        "The itemization is completed: five em dash glyphs, the attention pair standing as a comma pair, the presence and coordination dashes standing as commas, and the epigraph attribution handled under its recorded form. The baseline's genuinely-encountering stands unhyphenated, a mechanical normalization."
+      ]
+    }
+  ]
 }

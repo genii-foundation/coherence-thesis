@@ -58,12 +58,17 @@
     "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
     "result": "No debt or canonical decision is touched by this section."
   },
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "The Stem reached upward, into structure, mechanism, and consequence. The Soil reaches the other way: down, beneath the argument, into the ground it has been standing on the whole time.",
+        "Everything said so far has rested on a quiet assumption: that a human being is the kind of thing whose regulation, relationship, and coherence determine what a civilization can become. That assumption deserves to be examined directly, because if it is wrong, the argument collapses, and if it is right, it changes more than the argument. It changes how we see ourselves.",
+        "This is the slowest part of the book. It asks nothing to be accepted. It only asks that we look.",
+        "---"
+      ],
       "reasoning": [
         {
           "kind": "applied",
@@ -81,5 +86,58 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
     "conclusion": "No new rule required. At 113 words this is the shortest section examined, and it still carried three findings, which suggests the density of loss is roughly constant rather than concentrated in long passages."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "ground",
+      "assumption",
+      "regulation, relationship, and coherence"
+    ],
+    "itemsRead": [],
+    "outcome": "The 2026-07-30 CTD-0108 audit found no Volume I item touched by this section, and this audit re-ran the sweep over the volume-1 scoped index with the same result."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 6,
+      "baselineSentences": 8,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Two non-surviving sentences carry the recorded restorations. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over the ground figure and the examined assumption. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The record's findings name each merged or compressed pair, and the shipped text carries the committing half wherever the baseline stated one. No unexamined merge remains. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The section keeps no substituted prose beyond what the record already accounts for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules. No prose changed."
   }
 }

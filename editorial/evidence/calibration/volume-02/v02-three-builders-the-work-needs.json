@@ -133,6 +133,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: engaged by the original record at F3 and re-confirmed here: the committing portrait sentences survive, They are rare and they are increasingly essential., and the closing keeps all three conditional failures with their definite subjects. The restored several keeps the taxonomy open, which is the hedging half CTD-0067 tracks.",
+      "Catalog 4.22 on the rebuilt lists: capacity in software engineering, machine learning, cryptographic design, or systems architecture and whether a watershed, a city, or a region close with or as bounded alternatives inside the whether and in rebuilds of prohibited mark pairs; examined and confirmed as the parseable closed form, not the diagnostic's false closure.",
+      "R-PAIRED-DELETION: the three types are the antecedents of the integration argument in the closing paragraph and of The Builders Are Already Here's conditional failures; Providence is one attempt to be this kind of project points forward to the builder-field disclosure. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0067's evidence is sharpened, not resolved, and the heading question is census-held behind Q1.",
+      "R-SUBSTITUTION-CREDIT: the kept closing conditionals were baseline kept by the pass; the rebuilds are R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-DEIXIS: the integration between them is itself part of what the present moment is asking for holds the reader at the live requirement. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, the taxonomy stays open at several, and both rebuilt series parse as bounded. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

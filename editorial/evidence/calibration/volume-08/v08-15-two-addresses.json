@@ -150,6 +150,17 @@
       ]
     }
   ],
+  "childRecords": [
+    "v08-the-first-address-to-those-who-would-own-the-world",
+    "v08-the-second-address-to-the-frightened"
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "scope": "Re-read of this record and the parent section's own prose, the italic frame, against the baseline under all twenty rules. The two child address sections now carry their own records, listed above; chapter-level findings F1 through F6 here remain the anchor analysis they cite.",
+    "checked": "R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS were applied for the first time; the original thirteen were re-verified.",
+    "result": "One record-text divergence found and repaired: this record's F3 names the completion sentence, you have not seen through the machine, you have completed it, as the argument, and the generation note claims the resignation mechanism restored, but the manuscript did not contain the sentence. The child record v08-the-second-address-to-the-frightened restored it on 2026-07-31 under R-CAUTIOUS-HALF; see its F1. On the frame itself nothing fires: the em dash was already resolved to a comma marking genuine dependency, the reduction of the architects, who have too much and the frightened, who believe they have nothing left to do to those with concentrated power and those who feel they have none is a card-consistent softening that keeps both addressee classes and lets readers self-select without being told their condition, and the frame ends on its own concrete beat. Three substitution credits and two further credits in the children were recorded where the anchor pass improved on the baseline, so the accumulation of findings against that pass now carries its counter-evidence at equal weight."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

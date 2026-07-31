@@ -110,5 +110,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the volume's clearest instance of an epigraph left defending an argument the body no longer contains, which is a check worth carrying forward: read each epigraph against the shipped body and ask whether the body still earns it."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 27,
+        "survivingVerbatim": 23,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the paradox keeps both the sympathetic clause and the committing structural claim, and the third constraint keeps both the denial that the timeline is negotiable and the consequence for institutions that ignore it. R-PAIRED-DELETION: funding paradox, patient capital, and the three constraints were swept; each recurs in the next three chapters and Capital Patient Enough, all ends restored. R-CORRECTION-SCOPE and R-LEDGER-WINS-COROLLARY: no recorded correction reaches the body; the kept design-criteria framing sits in the Part II introduction, which is held byte for byte under the structural rule. R-SUBSTITUTION-CREDIT: nothing kept in the body is the prior pass's beyond punctuation, so no credit is owed, stated explicitly. R-TENSE: has been navigated successfully carries load-bearing completion of the historical claim and stands. R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST: nothing fires. The original record's epigraph check, that the body must earn its epigraph again, was re-run and the restored body does.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twenty-three of twenty-seven baseline sentences survive verbatim; the remainder are the seven recorded punctuation repairs and the attributed spelling repair. No prose change required.",
+      "corrections": [
+        "One divergence now attributed: the baseline's structurally acquisable stands as structurally acquirable, a spelling normalization of a nonstandard form, claim unchanged."
+      ]
+    }
+  ]
 }

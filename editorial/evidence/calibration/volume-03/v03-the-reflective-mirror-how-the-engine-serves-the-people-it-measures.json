@@ -1,0 +1,150 @@
+{
+  "sectionId": "v03-the-reflective-mirror-how-the-engine-serves-the-people-it-measures",
+  "sectionHeading": "The Reflective Mirror: How the Engine Serves the People It Measures",
+  "currentHeading": "The Reflective Mirror",
+  "anchor": "v03-the-coherence-engine-and-the-reflective-mirror",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "317 baseline words to 186 shipped words, minus 41 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "reflective questions",
+      "score",
+      "ground truth",
+      "training",
+      "interpretive authority",
+      "surveillance"
+    ],
+    "itemsRead": [
+      "CTD-0055",
+      "CTD-0056",
+      "CTD-0015"
+    ],
+    "outcome": "No recorded decision governs this section. CTD-0055 covers implementation and safeguard claims and the restored training-loop description is such a claim; it is an open item, so the baseline governs and the interaction is recorded."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's central claim, that feedback and training are the same act, was deleted.",
+      "evidence": {
+        "baseline": "These questions do two things at once, and the elegance of the design is that the two are the same act.",
+        "shipped": "The participant can confirm, reject, revise, or decline the reflection. Their response asserts interpretive authority and may also supply a label for training."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The identity of the two acts is the design argument of the section: self-knowledge for the participant and ground truth for the instrument are produced by one gesture. The shipped text keeps both halves as separate mechanics and loses the claim that joins them, which is the difference between a feature list and a design."
+    },
+    {
+      "id": "F2",
+      "summary": "The rarity claim was deleted.",
+      "evidence": {
+        "baseline": "offering most people the rarest of experiences, which is accurate, non-judgmental feedback about the actual quality of their presence, the thing almost no one ever receives across an entire lifetime",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This clause is what the epigraph of the chapter promises and what the mirror exists to deliver. Without it the reflective questions read as product interaction rather than as the rarest experience a person can have, and the chapter's emotional argument loses its warrant."
+    },
+    {
+      "id": "F3",
+      "summary": "The shipped pass added the participant's right to decline, which the baseline dialogue lacks.",
+      "evidence": {
+        "baseline": "when the participant responds, 'yes, that is exactly what happened,' or 'no, you have misread it; I was moved, not withdrawn,' that response trains the next iteration of the engine",
+        "shipped": "The participant can confirm, reject, revise, or decline the reflection. Their response asserts interpretive authority and may also supply a label for training."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT as a finding that runs the other way.",
+      "diagnosis": "The baseline's dialogue offers agreement or correction, and both train the engine; it never grants the right to refuse the reflection altogether. Consent to decline is load bearing for the bright lines chapter, so the kept sentence pair repairs a real gap in the design rather than merely hedging it. Kept in full between the training paragraph and the coda.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F4",
+      "summary": "Five prohibited marks.",
+      "evidence": {
+        "baseline": "The questions-echo mark, the self-knowledge expansion mark, the fence pair around the quoted responses, and the coda's mark before the not-by clause.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The echo, reflective questions, questions derived from what the system actually observed, kept its repetition across a comma. The expansion and the quoted-response fence became commas. The coda's mark became a colon because the clause specifies how the engine gets wiser."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0055",
+      "effect": "recorded",
+      "note": "The training loop, that response trains the next iteration of the engine, is an implementation claim about an unbuilt system, restored at full strength."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "recorded",
+      "note": "Present-tense description of the mirror's operation restored. Undated operational voice, the item's subject."
+    },
+    {
+      "id": "CTD-0015",
+      "effect": "recorded",
+      "note": "The sample questions state what the streams observe during an encounter, part of the evidence inventory the item asks the author to place in a version."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline with one credited keep",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The surveillance divergence opening, the three sample questions verbatim including the pulse question, the same-act design claim, the rarity clause, the training dialogue, and the italic coda on the engine getting wiser the way a person does."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped decline-and-authority sentence pair, for the reason in F3. The current heading held under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped hedged rewrites of the three questions, the experimental-model caution around the pulse question, and the closing triad, no participant should be told that the model knows them better than they know themselves, sometimes it will notice a pattern they missed, sometimes they will understand the pattern better, sometimes neither has enough evidence. Quoted here; the author may want the closing triad back as doctrine, but it is pass-authored canon and the restoration does not seed it."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 335,
+        "baselineWords": 317,
+        "shippedWords": 186,
+        "deltaPercentAgainstBaseline": 6,
+        "shippedDeltaPercentAgainstBaseline": -41
+      }
+    }
+  ],
+  "rulesDerived": [
+    {
+      "candidateId": "R-SUBSTITUTION-CREDIT",
+      "status": "applied instance",
+      "proposedBy": "editorial-agent",
+      "rulings": [],
+      "note": "Second credited keep of this batch, F3: the right to decline a reflection."
+    }
+  ],
+  "openQuestions": [
+    "The sample questions assert cardiac coherence drops and a held-frustration pulse quality as observable. Both restate Stream Three and Stream Four claims that sit in CTD-0009's verification backlog, and the Stream Three incorruptible contradiction is the author's reserved question in that section's record.",
+    "The baseline subheading named the section's argument, How the Engine Serves the People It Measures; the current heading is the bare noun. Both forms recorded per the structural hold; changing one is a route decision."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The mirror again claims what it is for, and the pass's genuine addition, the right to decline, survives as its own credited paragraph."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": []
+}

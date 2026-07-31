@@ -8,14 +8,12 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "findings": [
     {
       "id": "F1",
@@ -73,7 +71,6 @@
       "producedRule": "R-PROPORTION"
     }
   ],
-
   "debtImpact": [
     {
       "id": "CTD-0052",
@@ -91,30 +88,121 @@
     "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
     "result": "No recorded decision was reversed."
   },
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "The Coherence Thesis asks a question. It does not, by itself, answer it.",
+        "The question is this: *if coherence is the substrate a viable civilization requires, what infrastructure would help human beings cultivate, coordinate, and compound it at scale?*",
+        "That question deserves a serious attempt at an answer: something concrete enough to test, to build, and, if necessary, to be proven wrong. This book gives that attempt a name: **Providence.**",
+        "The thesis provides the framework. Providence provides the experiment.",
+        "The thesis does not ask the world to believe in Providence. It asks the world to investigate whether coherence is, in fact, the necessary substrate for a post-extractive civilization. And Providence is simply one serious attempt to begin building the developmental, relational, and coordinating infrastructure such a civilization would require.",
+        "If Providence succeeds, it will not merely validate an idea. It will suggest that human potential, wisely cultivated and coherently coordinated, may be civilization's most valuable and most renewable resource. And if it fails, the attempt itself may still reveal something essential about what a future civilization actually requires in order to endure.",
+        "The invitation, then, is not belief. It is inquiry. Not ideology, but investigation. Not allegiance to a system, but participation in a civilizational question that belongs to everyone.",
+        "---"
+      ],
       "reasoning": [
-        { "kind": "applied", "note": "R-PUNCT-STRUCT. Two em dashes. One introduced a specification of what a serious attempt would be and became a colon. One separated the question asked of the world from Providence's modest place in it and became a period, with the additive and retained at the head of the new sentence." },
-        { "kind": "kept", "note": "The pass's removal of It matters to be precise about what Providence is in relation to the thesis. Catalog 4.1, defect limb: the sentence announces that precision follows and the two-beat parallel after it reads identically without the announcement. The card lists claims that announce their own importance among the volume's known weak passages." },
-        { "kind": "kept", "note": "The pass's repair of the vague pronoun in If it succeeds to If Providence succeeds. Catalog 4.10, and a genuine ambiguity, since a civilization intervenes between the pronoun and its antecedent. R-PROPORTION-FLOOR forbids restoring baseline wording where the pass fixed a real fault." },
-        { "kind": "kept", "note": "The renamed heading, From Thesis to Experiment, under the volume ruling on renames." },
-        { "kind": "restored", "note": "The closing four-beat statement of the invitation, the serious attempt language in all three places, asks the world to investigate, the denial that success merely validates an idea, the doubled superlative, and the bounded prediction." }
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced a specification of what a serious attempt would be and became a colon. One separated the question asked of the world from Providence's modest place in it and became a period, with the additive and retained at the head of the new sentence."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's removal of It matters to be precise about what Providence is in relation to the thesis. Catalog 4.1, defect limb: the sentence announces that precision follows and the two-beat parallel after it reads identically without the announcement. The card lists claims that announce their own importance among the volume's known weak passages."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's repair of the vague pronoun in If it succeeds to If Providence succeeds. Catalog 4.10, and a genuine ambiguity, since a civilization intervenes between the pronoun and its antecedent. R-PROPORTION-FLOOR forbids restoring baseline wording where the pass fixed a real fault."
+        },
+        {
+          "kind": "kept",
+          "note": "The renamed heading, From Thesis to Experiment, under the volume ruling on renames."
+        },
+        {
+          "kind": "restored",
+          "note": "The closing four-beat statement of the invitation, the serious attempt language in all three places, asks the world to investigate, the denial that success merely validates an idea, the doubled superlative, and the bounded prediction."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
     "conclusion": "No new rule required. Eleventh consecutive section to need none. Four of the five findings are one failure repeated: every marker that holds Providence at the status of an attempt was removed, and each removal is individually defensible as tightening. The section is where the volume converts a thesis into a testable proposal, and the qualifiers are what make the proposal falsifiable rather than promised."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "serious attempt",
+      "falsifiable",
+      "Providence",
+      "investigate"
+    ],
+    "itemsRead": [
+      "CTD-0052",
+      "CTD-0053"
+    ],
+    "outcome": "Both items were read on 2026-07-30 and re-read for this audit. Falsifiability remains a commitment rather than completed evidence, and the dependency shortcut remains a query for the author."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 10,
+      "baselineSentences": 14,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Four non-surviving sentences carry the recorded repairs and restorations. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over the attempt markers and the invitation four-beat. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "F4's committing half is restored: it will not merely validate an idea stands beside the larger claim. Does not fire further."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "Credited below."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "credits": [
+      {
+        "id": "SC1",
+        "summary": "The prior pass repaired a genuinely ambiguous pronoun, and the repair is kept.",
+        "evidence": {
+          "baseline": "If it succeeds, it will not merely validate an idea.",
+          "shipped": "If Providence succeeds, it will not merely validate an idea."
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "A civilization intervenes between the pronoun and its antecedent, so this is catalog 4.10's defect limb. Originally a kept note; recorded at finding weight under R-SUBSTITUTION-CREDIT."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules beyond the credit recorded. No prose changed."
   }
 }

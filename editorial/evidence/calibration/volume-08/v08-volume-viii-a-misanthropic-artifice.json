@@ -60,6 +60,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "Nothing fires. The section is the volume label, words identical to the baseline, separator resolved to the corpus label form under R-PUNCT-STRUCT and CTD-0103 as F1 records. Confirmed under the current standard."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],

@@ -109,6 +109,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: the chapter epigraph's attribution is one of the nine instances anchored in v02-the-crisis-beneath-the-crises; cited, not re-counted. The restored in fragmented form is the first of the seven work-in-fragments recurrences anchored in v02-civilizational-alignment.",
+      "R-CAUTIOUS-HALF: the committing half survives beside the hedge: Which direction prevails may become one of the defining questions of this century is hedged, and the restored And the question is not abstract. The work has already begun commits. Both limbs intact.",
+      "R-PAIRED-DELETION: the epigraph's alignment question, whether humanity can become coherent enough to wield the intelligence now entering its hands, has its answering ends in the volume's opening hinge and Chapter Ten; cuts both directions simultaneously is redeemed by the two domain sections that follow. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0016 is stated at baseline strength and decided by nothing here.",
+      "R-SUBSTITUTION-CREDIT: the kept opening paragraph was substantially untouched; no substituted prose survives as an uncredited improvement.",
+      "R-DEIXIS: this century and the restored not abstract turn hold the reader at the live threshold. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's two findings hold under the twenty-rule standard and the chapter opener's contrast keeps both directions. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

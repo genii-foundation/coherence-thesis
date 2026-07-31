@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-part-iv-the-primary-technology-of-coordination",
+  "editorialId": "volume-07",
+  "sectionHeading": "## Part IV: The Primary Technology of Coordination",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions. The chapter-start prose was restored under the standing author instruction to restore from baseline and flag afterwards. That instruction authorizes the restoration and nothing more: T-021 reserves the route decision on part introductions to the author, the task register still lists it pending at tier red, and every rulings array in this volume is empty, so no authority exists in this record to resolve it. The observed facts, that this part heading already existed and that the region carried shipped prose before this pass, are recorded in openQuestions as evidence for the author's adjudication, not as its resolution. An earlier wording of this field claimed the restoration executed an orchestrator adjudication of the route question; an orchestrator is an agent, that claim exceeded agent authority, and it is withdrawn.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "boundary": {
+    "note": "This record is bounded by the corrected section map: the merged part heading plus every line of prose between it and the next structural line. The pre-existing records named in supersedes were written while the reporting tool could not see this volume's two-line part labels, so each measured a fragment: one the bodyless bold label, the other the prose with no heading. Both fragments are preserved unedited as history and neither corresponds to a section the corrected boundaries produce.",
+    "supersedes": [
+      "v07-part-iv",
+      "v07-the-primary-technology-of-coordination"
+    ]
+  },
+  "rulings": [],
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "142 baseline words against 77 shipped before this pass, minus 46 percent. Substitution mode; the pairing test did not apply to the shipped text."
+  },
+  "pairingSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": [
+      "proxy",
+      "markets, bureaucracies",
+      "coordination",
+      "presence at scale"
+    ],
+    "outcome": "Proxy's other end is the Accountable section's gap argument, present. Coordination spans Parts I, IV, and the Coda, all restored. No blocking dependency."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "at scale",
+      "Scale",
+      "ICONS",
+      "massive",
+      "coordination technology"
+    ],
+    "itemsRead": [
+      "CTD-0036",
+      "CTD-0056",
+      "CTD-0076",
+      "CTD-0088",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0076 is untouched: scale appears only in its ordinary lowercase sense. CTD-0036's population threshold claim is not made here. CTD-0056 and CTD-0088 support the kept clause that the proposal is undemonstrated at civilizational scale. The baseline governs the rest."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The proxy diagnosis and the proposal's content return per the superseded record's findings, adopted rather than restated; see F2 of v07-part-i-the-argument-arrived for the mis-bounded record count.",
+      "evidence": {
+        "baseline": "each works by substituting a proxy for presence: a price, a rule, a metric ... because a proxy can be gamed in ways that a present human being cannot",
+        "shipped": "These proxies can coordinate action, but they can also be gamed or detached from the people they affect."
+      },
+      "authorizedBy": "The standing author instruction to restore from baseline and flag afterwards. The restoration is contested under author-reserved T-021 and is flagged in this record's openQuestions, not adjudicated here.",
+      "diagnosis": "The shipped sentence names the gaming and drops the mechanism, which is the substitution of proxy for presence. Without the mechanism the section's title claim, that presence is the primary technology of coordination, has no argument under it."
+    },
+    {
+      "id": "F2",
+      "summary": "Massive stays dropped from the restored proposal.",
+      "evidence": {
+        "baseline": "a massive, deliberate training in the art of presence",
+        "shipped": "a deliberate training in the art of presence"
+      },
+      "authorizedBy": "Catalog 4.6, applied by the superseded record and confirmed here.",
+      "diagnosis": "Deliberate carries the claim; massive asserts magnitude the volume cannot yet evidence, and distributed widely enough already states the scale condition precisely."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0056",
+      "effect": "no change",
+      "note": "No program is claimed to operate; the proposal language stands."
+    },
+    {
+      "id": "CTD-0076",
+      "effect": "no change",
+      "note": "Lowercase scale only, in its ordinary sense."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The undemonstrated-at-civilizational-scale clause is kept and closes the paragraph."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twenty rules, executing the restoration the superseded record held",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The baseline subtitle, the collective application claim, the coordination problem stated in full, the external technologies with their proxy mechanism, the drift-toward-extraction diagnosis with its gaming reason, and the proposal in full."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT per the superseded map: the enumeration became a colon, the second movement a period, the proposal a colon. Massive dropped per F2."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass closing clause on the undemonstrated proposal."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped compression, whose content the restored paragraph strictly contains, including its train-then-test sentence, whose testing claim survives in the kept closing clause and in the Internal Practice section's checkability argument."
+        }
+      ]
+    }
+  ],
+  "rulesDerived": [],
+  "openQuestions": [
+    "T-021, author-reserved, flagged and not resolved: this pass restored and lengthened this part introduction on 2026-07-31 while the task register still listed T-021 pending at tier red. Both forms, named per the structural rule: the pre-pass shipped introduction of 77 words, measured in the superseded records v07-part-iv and v07-the-primary-technology-of-coordination, and the restored baseline introduction of 142 baseline words now shipped. The route facts offered as evidence, not adjudicated: the part heading predates this pass and the region carried shipped prose before it, so the section's route already existed and no structural line changed. Whether that reasoning holds, and whether the restored form stands or the pre-pass form returns, is the author's decision under T-021. The same-pass volume-04 lane read the same reservation as a byte freeze and held its Part II introduction unchanged; the author's ruling should reconcile the two readings."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at its ratified twenty-rule index, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

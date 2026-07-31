@@ -60,6 +60,16 @@
       "authorizedBy": "Compression.",
       "diagnosis": "This is the volume's largest concession and the one that most distinguishes it from a manifesto. The corpus card forbids conscripting agreement, and a book that says its own proposal may be beaten by someone else's is the strongest available form of that refusal. It is also the passage that makes the invitation of the next chapter an offer rather than a recruitment.",
       "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept bounding keeps the committing contrast while dropping a certainty the argument does not establish.",
+      "evidence": {
+        "baseline": "and that failure mode is structurally guaranteed rather than merely possible",
+        "shipped": "and that failure mode is structural rather than merely possible"
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31.",
+      "diagnosis": "Structurally guaranteed asserts certain occurrence; structural locates the failure mode in the structure itself and keeps the committing contrast with merely possible. The passage's own grounding is a diagnosis of trajectory, not a proof of inevitability, so the shipped form matches the evidence as catalog 4.12 requires. Parallel to the credited structurally likely bounding in What Gets Measured, and credited for the same reason."
     }
   ],
   "debtImpact": [
@@ -112,5 +122,33 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section contains the volume's biggest concession and the pass removed it, which is the most consequential single loss recorded in Part VI: without it the invitation that follows reads as a recruitment rather than as an offer among alternatives."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 33,
+        "survivingVerbatim": 22,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the case keeps both the concession that Providence may not be the best response and the committing comparison of risked against structural failure; the bounded change inside that comparison is examined and credited below rather than treated as loss. R-PAIRED-DELETION: the coordination crisis, the Volumes I and II grounding, and the evaluation frame were swept; each pairs with the failure sections and the volume's opening commitments, ends aligned. R-CORRECTION-SCOPE: no recorded correction reaches this body; the self-reference rebuild is attributed below at its own width. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0034 and CTD-0047 re-verified, no promise and no completion claim. R-SUBSTITUTION-CREDIT: one kept-on-merits bounding converted to a credit finding, F3, parallel to the credited Goodhart bounding in What Gets Measured. R-CANON-DELETION-RECORD, R-REFRAIN-COST: the Volumes number agreement normalization recurs five times in this section and once in Complete Failure; recorded here once with its count as the anchor. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twenty-two of thirty-three baseline sentences survive verbatim; the remainder are the thirteen em dash glyphs repaired across eight sites, the credited bounding, the self-reference rebuild, the Volumes normalizations, and the display labels, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried thirteen em dash glyphs across eight sites, not four, standing as commas and comma pairs through the argument, the lineages, and the closing question, with one absorbed by the self-reference rebuild and one standing as a comma with and at are also real.",
+        "One internal self-reference rebuilt: the baseline's The deepest open question of Chapter Twenty-One, and of this volume stands as of this chapter, and of this volume. The referent is the section itself, so the rebuild removes a numbering dependency without touching the claim. Kept.",
+        "Number agreement normalized six times across this section and Complete Failure, recorded here once as the anchor per R-REFRAIN-COST: Volume I and II stands as Volumes I and II, and Volume III and IV as Volumes III and IV. Grammar alone; every claim unchanged.",
+        "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
+      ],
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

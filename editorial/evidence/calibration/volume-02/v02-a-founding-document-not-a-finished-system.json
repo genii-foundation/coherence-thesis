@@ -123,6 +123,23 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Verification: the current section is byte-identical to the baseline, which carries no prohibited marks here.",
+      "R-REFRAIN-COST: the work belongs to whoever does it, in whatever form their conditions permit is the second of the four ownership-refrain instances anchored in v02-a-note-to-the-builders; cited, not re-counted. The closing blessing beneath it is protected structural matter.",
+      "R-CAUTIOUS-HALF: the section's three is-statements keep their committing form, a structural argument articulated cleanly enough that builders can act on it, with the restored cleanly holding the line the no-footnotes section spent four paragraphs defending. The tested-by-what-gets-built claim is the falsifiable half and survives.",
+      "R-PAIRED-DELETION: cleanly points back to the form argument at the chapter's start; the founding-document claim has its ends in the Prologue and Chapter Five; the conversation apposition names the distributed traditions whose crediting end is The Traditions Behind the Argument. All present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0038's autonomy-granting instance is restored and recorded as such.",
+      "R-SUBSTITUTION-CREDIT: nothing substituted survives in a byte-identical section. No instance.",
+      "R-DEIXIS: is already underway holds the live conversation in the simple present. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, the section sits byte-identical to the baseline, and the ownership refrain is cited to its anchor. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

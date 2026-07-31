@@ -168,6 +168,23 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Catalog 4.22 on the volume diagnostic: F5's restorations reopened three falsely closed series, and all three stand open in the current text, including the uncontrollable-conditions enumeration now landing behind its colon, climate, technology, geopolitical pressure. Confirmed restored and clean.",
+      "R-CAUTIOUS-HALF: engaged by the original record at F1 and re-confirmed: the committing claim about the reader, The people who will build it are alive right now and are reading books like this one., survives beside the hedged The honest assessment is that the outcome is genuinely undetermined. Both limbs intact, and the controllability paragraph keeps its cannot-be-controlled half beside its can-be-controlled half.",
+      "R-REFRAIN-COST: this section is built on the work-in-fragments image anchored in v02-civilizational-alignment, and the voice card's exact protected phrase was restored here by the generation A pass under R-VOICE-BIND; cited to the anchor, not re-counted.",
+      "R-PAIRED-DELETION: What comes next is not yet visible because it is not yet built has its answering ends in the Prologue and the epilogue interstitial; the honest-assessment family keeps its members at baseline count across the chapter. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0038 and CTD-0020 are reopened at full extent, recorded in debtImpact, with the work is not optional standing behind Q1 for the author.",
+      "R-SUBSTITUTION-CREDIT: the kept display lines and controllability clefts were baseline kept by the pass. No credit instance.",
+      "R-DEIXIS: alive right now, The conditions are not waiting, and the threshold they are actually in hold the reader inside the live moment. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's five findings hold under the twenty-rule standard, all three reopened series stay open, and the protected recurrent phrase stands in place. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

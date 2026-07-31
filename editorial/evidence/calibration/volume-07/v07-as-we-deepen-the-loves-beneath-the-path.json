@@ -125,5 +125,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. The section id keeps its pre-rename identifier while the census heading reads The Loves Beneath the Path; id and heading both verified stable. This section also carries the Part V trailer.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. Named forms of love for ancient forms of love and the synthesis disclaimer are the CTD-0082 and CTD-0070 recorded narrowing and stand under R-LEDGER-WINS. The table's display form Art & Alchemy is the CTD-0085 paydown. The trailer reads proposal for proof, the recorded CTD-0070 modality, and its display label is covered by the refrain anchor in v07-part-i-the-argument-arrived.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The closing test of the pairing is pass-authored and disarms the symmetry's own persuasion.",
+        "evidence": {
+          "baseline": "To deepen an initiate is, in truth, to deepen a love ... the path can never be merely studied, only lived.",
+          "shipped": "Their value must be judged by what they help people perceive and do, not by the beauty of their symmetry."
+        },
+        "note": "A sevenfold table of loves beneath a sevenfold path persuades by shapeliness, which is catalog 4.4's exact hazard. The kept sentence states the correct test in one line and leaves the table its beauty. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

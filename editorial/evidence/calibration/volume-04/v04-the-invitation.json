@@ -107,5 +107,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Catalog 4.16 fired and the retention limb held on inspection: naming who an offer is for is not the same as telling a reader what they feel. The distinction is worth carrying, because 4.16 will fire on almost every sentence in a chapter called The Invitation."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 18,
+        "survivingVerbatim": 16,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the invitation keeps its three denials, its definition, and its committing addressee; the aspiration and reality pair survives whole. R-PAIRED-DELETION: the invitation and its addressee were swept; the asks and commitments chapters carry the other ends and all stand. R-CORRECTION-SCOPE: the CTD-0007 attribution re-verified at width, the attribution line alone. R-LEDGER-WINS-COROLLARY: nothing seeded. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass beyond the attribution form, ledger bounding, no credit owed, stated explicitly. The standing open question on reading as qualification remains with the author. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires; the three denials are the retained contrast form whose rejected alternatives are real, which is 4.3's retention limb.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Sixteen of eighteen baseline sentences survive verbatim; the remainder are the attribution form and the single comma repair, attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: two em dash glyphs, the epigraph attribution dash resolved by the CTD-0007 form and the single dash at read through to this chapter standing as a comma. No dash became a colon; the definition's colon is the baseline's own."
+      ]
+    }
+  ]
 }

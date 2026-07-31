@@ -69,6 +69,11 @@
       "id": "CTD-0006",
       "effect": "no change",
       "note": "Nothing in the restored chapter conditions stewardship authority on physiological evidence."
+    },
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved",
+      "note": "The restored reference names Volume III's argument rather than its Chapter Fifteen. The interaction was applied by the restoration but not itemized in this record; attributed in the twenty-rule audit of 2026-07-31."
     }
   ],
   "generations": [
@@ -104,5 +109,28 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Catalog 4.4 fired on three mirrored contrasts and the retention limb held because each contrast names a different axis. Uniform shape is not the test. Whether the parallel members are doing the same work is."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 12,
+        "survivingVerbatim": 10,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the chapter keeps the committing claim that no stewardship system in the historical record has fully solved the dynamics it names, beside the specification questions. R-PAIRED-DELETION: stewardship as practice, the role dynamics triad, and the five questions were swept; the dynamics recur in Protecting Stewards from the Stewardship Role and both ends stand. R-CORRECTION-SCOPE: one unitemized correction found and attributed below at CTD-0075 width. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0006 re-verified, no physiological criterion appears. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Ten of twelve baseline sentences survive verbatim; the remainder are the colon repair, the appositive comma pair with its serial and, and the CTD-0075 reference rebuild, all attributed. No prose change required.",
+      "corrections": [
+        "One divergence now attributed under CTD-0075: the baseline's Volume III's Chapter Fifteen established stewardship stands as Volume III established stewardship. The item forbids attributing a named recurring apparatus to Volume III by section number; the sibling records in this part apply the same correction and record it, this record did not. Width verified: the reference alone changed, the definition beside it is baseline text.",
+        "The itemization is confirmed at site level and completed at glyph level: three glyphs across two sites, one dash becoming the colon that introduces the definition at civilizational layer, and one appositive pair at the role dynamics standing as a comma pair with a serial and before burnout."
+      ]
+    }
+  ]
 }

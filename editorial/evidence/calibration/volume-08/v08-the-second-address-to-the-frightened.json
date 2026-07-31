@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-the-second-address-to-the-frightened",
+  "editorialId": "volume-08",
+  "sectionHeading": "#### The second address — to the frightened",
+  "currentHeading": "#### The second address: to the frightened",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "anchor": "v08-15-two-addresses",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 33,
+    "note": "Thirty-seven baseline sentences, 656 words, into 688 words after this pass's one restoration. Thirty-three survive, roughly twenty verbatim, including the whole hear-first litany, fear as messenger not landlord, the cathedral, the stones, and refuse to sign. Two were replaced under the volume card and the debt ledger, recorded in F2 and F4; one denial half was absorbed rather than restored, recorded in F6. Substitution mode is not in effect and the pairing test applies. Chapter-level analysis is in the anchor record v08-15-two-addresses; this record is the child's own account under the twenty-rule standard."
+  },
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": [
+      "resignation",
+      "messenger and landlord",
+      "the one curve that bent",
+      "cathedral, stone, roof",
+      "three in the morning",
+      "well adjusted to a sick culture",
+      "the old wheel",
+      "waking rather than going dark"
+    ],
+    "outcome": "Every live cross-reference has both ends present: the resigned appear at the fork, the landlord at the manor and the inversion, the bent curve in the reckoning and the blessing, the stones and roof in Appendix B, the three-in-the-morning searches at the watching market, the sick-culture phrasing in the epigraph and the blessing, the old wheel at Saturn's Day and Appendix B. One pair was severed deliberately at both ends and must stay severed together: the baseline's waking-rather-than-going-dark nervous system here referenced the baseline phenomenology's two-kinds-of-person sorting, and the prior pass removed the sorting at both sites under CTD-0083. Restoring either end alone would recreate the sorting on one end only, which is the exact defect R-PAIRED-DELETION exists to prevent. Recorded in F4; nothing reworded."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "resignation",
+      "fear as messenger",
+      "small is not the same as",
+      "waking rather than going dark",
+      "women rising into leadership",
+      "arriving as answers",
+      "ICONS",
+      "Scale",
+      "lay one stone"
+    ],
+    "itemsRead": [
+      "CTD-0083",
+      "CTD-0093",
+      "CTD-0110",
+      "CTD-0030",
+      "master ledger canonical terminology"
+    ],
+    "outcome": "CTD-0083 governs the woman in the hot tub and the removal of the waking-or-collapsing sorting; its paydown is preserved and it blocks restoring the last-healthy-nerve sentence, F4. CTD-0093 and the bounding recorded in the Scales of the Dragon section govern the countercurrent population; the women's-leadership and arriving-as-answers claims stay excluded here because the volume states in its own voice that they need definitions and evidence, F5. CTD-0110 governs the pass-authored protected line Small is not the same as powerless, retained per the anchor record's F6. CTD-0030 is respected: the ICONS logic is stated as design, not as report, and Scale is capitalized to the master ledger's canonical form."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The committing half of the resignation mechanism was still missing, and this pass restored it.",
+      "evidence": {
+        "baseline": "Fatalism is not the clear-eyed response to the situation; fatalism is the situation's most useful product. When you say *there is nothing I can do,* you have not seen through the machine — you have completed it.",
+        "shipped": "Resignation is the situation's most useful product."
+      },
+      "authorizedBy": "Compression. The anchor record's own F3 names the completion sentence as the argument and its generation notes claim the resignation mechanism restored, but the sentence was not in the manuscript.",
+      "diagnosis": "R-CAUTIOUS-HALF describes exactly this shape: the observational half survived, the committing half went, and the committing half is the falsifiable one, the claim that saying there is nothing I can do completes the machine rather than seeing through it. It is addressed to a belief, not a person, which is what keeps it from being a reproach, and the despair sentence that follows now bounds it explicitly. Restored as: When you say *there is nothing I can do,* you have not seen through the machine. You have completed it. The baseline em dash marked the caesura before the reversal; a period gives the reversal its own landing per R-PUNCT-STRUCT. This is the only prose change this pass made in the section.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F2",
+      "summary": "The fear-bounding substitution is better than the baseline sentence it replaced, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "The danger is real, and your fear is the correct first response to it.",
+        "shipped": "Nor is your fear proof that every interpretation in this book is correct. Fear carries information, and it can also overwhelm judgment."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT because the finding runs the other way.",
+      "diagnosis": "The volume card rules out telling the reader that fear proves the book correct, and the baseline sentence does nearly that: it certifies the reader's fear as the correct response to the record the book just presented, which quietly converts an emotion into a verdict on the argument. The substitution keeps fear's standing as information, refuses it as evidence, and names its failure mode. This is the card's obligation executed exactly, and it is credited at the same weight a loss would be.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The despair sentence has no baseline ancestor and repairs a real fault, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "Absent.",
+        "shipped": "But despair is not a moral failure, and no one who is exhausted should be told that their exhaustion is a betrayal."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT because the finding runs the other way.",
+      "diagnosis": "The baseline mechanism, now restored in F1, carries a reproach risk: a exhausted reader can hear you have completed it as an accusation. The baseline never addressed that reader. The pass-authored sentence does, and placing it immediately after the restored mechanism makes the pair honest in both directions: the belief is refuted, the person is not shamed. Mechanism, then mercy. Kept deliberately beside the restoration rather than instead of it."
+    },
+    {
+      "id": "F4",
+      "summary": "The last-healthy-nerve sentence stays replaced under a recorded decision, and the baseline is not restored.",
+      "evidence": {
+        "baseline": "That is not the sickness. That is the last healthy nerve — the nervous system that is waking rather than going dark.",
+        "shipped": "That is not the sickness. It is a nervous system still reporting."
+      },
+      "authorizedBy": "R-LEDGER-WINS. CTD-0083, and the phenomenology section's own sentence that no one should be sorted into the collapsed and the awakened.",
+      "diagnosis": "The baseline sentence makes the woman in the hot tub the waking kind of nervous system, which is the two-kinds-of-person sorting the volume removed at its source in the phenomenology of the reckoning, and it edges her back toward symbol, which CTD-0083's paydown forbids. A nervous system still reporting keeps the dignity of the observation without the taxonomy. The standing instruction to restore and flag yields here because a recorded decision governs: restoring would reopen a high-severity item at one end of a deliberately severed pair. Recorded as the contest the instruction requires, with both forms quoted, and not restored."
+    },
+    {
+      "id": "F5",
+      "summary": "The countercurrent population stays bounded, citing the anchor rather than repeating the analysis.",
+      "evidence": {
+        "baseline": "by the women rising into leadership, by the healers and tenders and growers arriving as answers, by the whistleblowers who paid for the truth, by the visionaries who saw the turning point coming, by the uncountable ordinary people who have quietly decided not to be well-adjusted to a sick culture",
+        "shipped": "by healers and carers and growers, by organizers and researchers and neighbors, by the whistleblowers who paid for the truth, by the visionaries who saw the turning point coming, by the uncountable ordinary people who have quietly decided not to be well adjusted to a sick culture"
+      },
+      "authorizedBy": "R-LEDGER-WINS via CTD-0093, and the volume's own bounding in the Scales of the Dragon section.",
+      "diagnosis": "The anchor record's F5 carries the full analysis and this record cites it per R-REFRAIN-COST's citation principle rather than restating it. The volume now says in its own voice that the claims about the rising leadership of women and about people arriving as answers need definitions and evidence before they can join the accounting; repeating either claim in the address would put the volume in disagreement with itself. The rest of the population was restored. Not to be well adjusted to a sick culture is the epigraph's last return and it stands."
+    },
+    {
+      "id": "F6",
+      "summary": "The fatalism denial half was absorbed, not lost, and the term was unified with the bolded resignation.",
+      "evidence": {
+        "baseline": "Fatalism is not the clear-eyed response to the situation; fatalism is the situation's most useful product.",
+        "shipped": "Resignation is the situation's most useful product. When you say *there is nothing I can do,* you have not seen through the machine. You have completed it."
+      },
+      "authorizedBy": "Catalog 4.3 with both limbs stated, catalog 4.20 on stable terms, R-NEGATION-STACK.",
+      "diagnosis": "The rejected alternative is plausible: many people do hold fatalism to be clear-eyed realism, so 4.3's retention limb requires the contrast to survive. It survives positively rather than as denial: you have not seen through the machine, you have completed it is the denial's entire content stated as appearance and then reality, which is R-NEGATION-STACK's preferred form. The baseline also ran two names, fatalism and resignation, for one thing across four sentences; the passage bolds resignation as its term, and 4.20 forbids rotating near-synonyms, so the unification is kept. With F1's restoration in place the denial half's work is fully covered and the fatalism sentence is not separately restored."
+    },
+    {
+      "id": "F7",
+      "summary": "The roof pair carries pass-authored qualifiers, kept at a named rhythm cost.",
+      "evidence": {
+        "baseline": "None of it is the whole roof. All of it is the roof.",
+        "shipped": "None of it is the whole roof, and none of it substitutes for policy, organizing, or material support. All of it is the roof, and each stone should be laid toward the larger work it joins."
+      },
+      "authorizedBy": "The anchor record's kept decision that personal action must not be presented as replacing structural change.",
+      "diagnosis": "The bare pair is a liturgical two-beat and the qualifiers slow it; that cost is real and is named here rather than smoothed over. The scope honesty is worth it in this volume, whose register note promises not to inflate, and the paragraph still ends on a concrete beat, the stone laid toward the larger work, satisfying R-LAND. If the author wants the bare pair back, the qualifiers need their own sentence before it; recorded as an open question, not acted on."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0083",
+      "effect": "paydown preserved",
+      "note": "The woman remains a person who still felt it, not a symbol of awakening, and the waking-or-collapsing sorting stays removed at both of its former sites. F4 records the blocked restoration."
+    },
+    {
+      "id": "CTD-0093",
+      "effect": "paydown preserved",
+      "note": "The address stays labeled as address, the countercurrent population stays within what the volume's evidence posture permits, and the restored mechanism is addressed to a belief rather than a person."
+    },
+    {
+      "id": "CTD-0110",
+      "effect": "constraint honored, item deferred",
+      "note": "Small is not the same as powerless has no baseline ancestor and stands under the volume card's protection beside the restored baseline formulation. Retention and its reasoning live in the anchor record's F6; re-preparing the card belongs to CTD-0110."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "no change",
+      "note": "The whole logic of the ICONS, a single cell and then another, remains a design principle, not a report of existing Scales."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Audit re-render under the twenty-rule standard; one sentence restored",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The completion mechanism: When you say there is nothing I can do, you have not seen through the machine. You have completed it. Placed after the product sentence and before the despair sentence, so the mechanism lands and the mercy immediately bounds it. F1."
+        },
+        {
+          "kind": "kept",
+          "note": "Everything else. The hear-first litany, fear as messenger not landlord, the toll sentence, the bolded consolation with the protected line beside it, the curve, the cathedral, the full list of stones, the qualified roof pair, the populated countercurrent, one of many, and refuse to sign."
+        },
+        {
+          "kind": "applied",
+          "note": "R-CAUTIOUS-HALF found F1. R-PAIRED-DELETION confirmed one deliberately severed pair that must stay severed, recorded in the sweep. R-SUBSTITUTION-CREDIT produced F2 and F3. R-DEIXIS was checked at the consolation and the address's this address is for you already holds the reader in the present. R-TENSE found no perfect forms hiding live conditions. R-REFRAIN-COST: the stone and roof refrains are anchored here and in Appendix B; the count is two sites each, the single edit that would change both is a decision about the qualifiers, F7, and Appendix B's record carries the other end."
+        },
+        {
+          "kind": "cost",
+          "note": "The restored mechanism lengthens the paragraph's hardest stretch by two short sentences. The alternative was leaving the anchor record's F3 diagnosis pointing at a sentence the manuscript did not contain, which is the kind of record-text divergence no gate detects."
+        }
+      ],
+      "metrics": {
+        "words": 688,
+        "baselineWords": 656,
+        "deltaPercentAgainstBaseline": 5
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "The roof pair. The qualifiers are honest and the two-beat is slower for them. If the author wants the bare liturgical pair, the scope sentence needs to stand separately before it. F7 quotes both forms. Author decision; not acted on."
+    },
+    {
+      "id": "Q2",
+      "question": "The countercurrent population. The women's-leadership and arriving-as-answers claims are excluded here under the volume's own bounding. If the author supplies the definitions and evidence the Scales of the Dragon section asks for, the baseline population can return in full. Author decision; not acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under editorial/method/standard.md at the twenty-rule index ratified 2026-07-30, the corpus voice card, the volume-08 voice card, and the debt ledger under R-LEDGER-WINS, with the substitution count taken before the pairing test and the paired-deletion sweep run before any restoration decision.",
+    "conclusion": "The derivation reproduces the shipped text plus one restoration the anchor record had already diagnosed but not applied. Two substitution credits recorded. One restoration blocked by a recorded decision and recorded as a contest rather than acted on. No new rule required."
+  }
+}

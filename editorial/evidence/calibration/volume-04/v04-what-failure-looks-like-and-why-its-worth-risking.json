@@ -107,5 +107,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Catalog 4.23 fired on a self-description that is genuinely load bearing, which by Part VI has happened often enough that the retention limb should be the default assumption in this volume whenever a meta claim states why a chapter exists."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 7,
+        "survivingVerbatim": 6,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the chapter keeps both the committing claim that its honesty is constitutive and the discipline link back to Volumes III and IV. R-PAIRED-DELETION: the three failure modes were swept; partial, complete, and catastrophic each pair with their own sections, all ends stand. R-CORRECTION-SCOPE: no recorded correction reaches this body. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0047 re-verified, no completion claim. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass beyond the route-holding label, whose relation to the baseline label is already recorded as an open question, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Six of seven baseline sentences survive verbatim; the one divergence is the period repair, attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is refined: the section's one em dash became a period, not a comma pair. The baseline's it is not additional to the project of the book, it is constitutive of it now lands as two sentences, giving the correction its own weight, which is the repair section 3 prefers between two movements."
+      ]
+    }
+  ]
 }

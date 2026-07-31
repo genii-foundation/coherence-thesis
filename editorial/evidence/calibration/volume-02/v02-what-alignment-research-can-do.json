@@ -137,6 +137,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the committing halves survive: the kept It is a remarkable technique. It is also limited., the flat This is not a solved problem., and the restored four-sentence verdict, Not solved. Not catastrophic. Working at the problem with increasing sophistication while acknowledging that the underlying question remains open. The critique paragraph keeps its restored hedges beside its commitments.",
+      "R-PAIRED-DELETION, with a flag: the restored question, aligned with which humans, under what conditions, according to whose values, is attributed here to Chapter Six, but its exact form is first asked in Chapter Three's Relational Coherence, and Chapter Six raises only the civilizational variant. Both ends of the reference exist and the imprecision is baseline-native on both sides, so nothing is repaired; the attribution question is flagged for the author rather than resolved, per the standing instruction.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. Every named technique, figure, and date is identical to the baseline under CTD-0019, including the 2026 constitution figures.",
+      "R-SUBSTITUTION-CREDIT: the kept turning pair was baseline kept by the pass; the applied appositive repairs are R-PUNCT-STRUCT compliance, including the which-is-to-say rebuild of the approaches list. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section.",
+      "R-DEIXIS: what is now called alignment research and the field actually looks like hold the reader at the live state of the work. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard. One baseline-native cross-reference imprecision, the Chapter Six attribution of the aligned-with-which-humans question, is flagged for the author. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

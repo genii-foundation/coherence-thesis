@@ -78,6 +78,26 @@
       "authorizedBy": "Compression and the Volume II correction.",
       "diagnosis": "A small loss and mostly a good change. The Volume II correction is right and is kept. What went is by the eye, which is the phrase the whole social credit boundary was built on and the last appearance of the image the volume opened it with. It is restored.",
       "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F5",
+      "summary": "Audit finding: the dawn passage the settled generation lists as restored was absent from the shipped manuscript. Applied now.",
+      "evidence": {
+        "baseline": "And the Dragon stirs as you do, for the awakening arrives the way dawn arrives, one quiet kindling after another, until the whole of it stands luminous.",
+        "shipped": "(absent before this audit; the paragraph ended at The gift is still in you, waiting for its place.)"
+      },
+      "authorizedBy": "The settled record's approved generation, F2's adjudication under R-CATALOG-LIMBS with catalog 4.15's retention limb, and the volume card's permitted lyrical closing.",
+      "diagnosis": "The record restored the dawn without its final clause, and the manuscript carried neither, so the approved text and the shipped text had diverged. The sentence returns as the record approved it: And the dragon stirs as you do, for the awakening arrives the way dawn arrives, one quiet kindling after another. Until the whole of it stands luminous stays out, since it promises the outcome the volume declines to promise. Dragon is set lower case to match the volume's the dragon named Earth, and the em dash's turn is carried by for."
+    },
+    {
+      "id": "F6",
+      "summary": "Credit under R-SUBSTITUTION-CREDIT: consent and the transfer clause in the smallest nest definition are the prior pass's repairs of genuine baseline omissions, kept by the re-render.",
+      "evidence": {
+        "baseline": "a room, a few people, a responsibility no one will set down",
+        "shipped": "a room, a few people, consent, and a responsibility no one quietly transfers to someone else"
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "Consent belongs in the definition: the corpus's own safeguarding requirements make an unconsented nest the failure mode Volume VII documents. And quietly transfers to someone else names the way responsibility actually dies, where will set down names only persistence. Both are the prior pass's work. Recorded at the same weight as a loss."
     }
   ],
   "debtImpact": [
@@ -145,5 +165,32 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Seventh section of this volume and ninety-fourth of the three, and none has required a new obligation. The pattern that held across Volumes VII and VIII holds here: where a ledger item ruled, the prior pass was usually right; where no item ruled, the pass removed argument it had no warrant to remove."
-  }
+  },
+  "audits": [
+    {
+      "id": "2026-07-31-twenty-rule-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Re-read of the settled section against the immutable baseline under the full twenty-rule index, with R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS applied to this section for the first time.",
+      "substitutionTest": {
+        "survivingBaselineSentences": 14,
+        "baselineSentences": 35,
+        "method": "Clauses of five or more words from the baseline section, split on sentence-final marks plus colon and semicolon, counted as surviving when their punctuation-stripped word sequence appears verbatim in the current section. A floor, not a fidelity measure: a restored sentence that differs by one hedge or repaired mark does not count.",
+        "note": "Nonzero, so the section is not in substitution mode and the pairing test applies and was run."
+      },
+      "checked": [
+        "R-LEDGER-WINS re-search on Buckminster Fuller, smallest nest, Coherence Thesis Network, seed, and the dragon: no item has changed since the record settled. CTD-0007, CTD-0028, CTD-0029, and CTD-0030 paydowns all hold, and the Fuller pending marker is intact.",
+        "Record and manuscript reconciled: the approved generation listed the dawn among its restorations and the manuscript lacked it. Recorded as F5 and applied. The restored sentence carries no status claim; the federation remains a promise to be tested in the same paragraph.",
+        "R-CAUTIOUS-HALF: the nine-turns list keeps its committing formulations, and the seed passage keeps both the drawer and the ground. No fire.",
+        "R-PAIRED-DELETION: by the eye returns here and closes the image the Providence chapter opened; the smallest nest resolves against Volume VI through the recap; the pattern that connects is counted at the anchor in the Ninth Turn record.",
+        "R-CANON-DELETION-RECORD: nothing named in an open canon query was cut by this audit.",
+        "R-DEIXIS: by this name, proximal and correct. R-TENSE: the perfects in the nine-turns sentence are load bearing. R-LAND: the paragraph now lands on one quiet kindling after another, and the section still ends on the seed and the roots holding soil after rain.",
+        "Prohibited glyphs: none. The Purposeful and Providence bold lines match the census."
+      ],
+      "prose": "changed: one edit, recorded as F5",
+      "result": "One reconciliation applied, recorded as F5: the manuscript now carries the dawn sentence the settled record approved, without the luminous clause. One credit recorded as F6. No other rule fires; the section is confirmed under the twenty-rule standard.",
+      "citesRefrainAnchor": "v09-1-the-ninth-turn-where-the-eight-have-brought-us, for the pattern that connects, counted once there with its three instances."
+    }
+  ]
 }

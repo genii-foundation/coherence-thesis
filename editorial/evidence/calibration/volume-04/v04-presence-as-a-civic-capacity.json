@@ -67,6 +67,16 @@
       "authorizedBy": "Compression, and catalog 4.3 read onto the paired denials.",
       "diagnosis": "The retention limb applies squarely: a moral program is exactly what a reader will take this for, and the denial is the chapter's defense against the charge. Though it may be is also the concession that keeps the denial honest. The shipped limits paragraph on attention, regulation, and trust is a real addition and is kept.",
       "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept tense repairs a sequence error in the baseline's parallel.",
+      "evidence": {
+        "baseline": "in exactly the way a civilization that rewards extraction became more extractive",
+        "shipped": "in the way a civilization that rewarded extraction became more extractive"
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31.",
+      "diagnosis": "The baseline pairs a present-tense rewards with a past-tense became inside one historical claim, so the parallel misfires. The shipped past tense restores the sequence; the accompanying loss of exactly belongs to the recorded bounding class. A genuine repair, recorded at finding weight rather than as a quiet kept."
     }
   ],
   "debtImpact": [
@@ -119,5 +129,31 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the second in the volume where the shipped text supplies a limit the baseline lacks and the restoration keeps both. Where a paydown adds a bound rather than replacing a claim, the two compose."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 14,
+        "survivingVerbatim": 9,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the section keeps both the not a moral program denial and the committing infrastructure claim; the hedge conversions are the recorded bounding class and the denial's counterpart survives. R-PAIRED-DELETION: civic capacity, the selection chain, and the rewarded capacities were swept; the infrastructure and measurement chapters carry the other ends and all stand. R-CORRECTION-SCOPE: the recorded CTD-0006 class re-verified at width and its constituent hedges itemized below. R-LEDGER-WINS-COROLLARY re-run: the kept limits paragraph and the accumulation warning were searched for in the immutable baseline and are not there; seeded with provenance visible in the original kept notes, bounding, no credit. R-SUBSTITUTION-CREDIT: one kept-on-merits grammar repair converted to a credit finding, F3. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing further fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Nine of fourteen baseline sentences survive verbatim; the remainder are the two comma-pair repairs, the recorded bounding class with its hedges itemized, the credited tense repair, and the kept limits paragraph, all attributed. No prose change required.",
+      "corrections": [
+        "The recorded bounding class is itemized so its width is visible: far more fundamental stands as close to fundamental; will become more present stands as may become more present; and the load-bearing substrate stands as a load-bearing substrate. Each hedge belongs to the recorded CTD-0006 bounding and none reaches beyond its claim.",
+        "The itemization is confirmed: four em dash glyphs as two parenthetical pairs, both standing as comma pairs."
+      ],
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

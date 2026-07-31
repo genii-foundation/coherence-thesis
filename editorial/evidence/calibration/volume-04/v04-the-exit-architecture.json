@@ -116,5 +116,28 @@
       "state": "reverted to pre-edit, byte identical",
       "requires": "author continuity decision: canonical route and reviewed successor"
     }
+  ],
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 25,
+        "survivingVerbatim": 17,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the generosity requirement keeps its committing consequence, exit that is not voluntary is simply costly, and the honesty requirement keeps both the named losses and the committing landing that the network must be worth remaining in. R-PAIRED-DELETION: exit, voice, and the Hirschman and Buchanan lineage were swept; Exit, Voice, and Loyalty and remedial secession occur once each in baseline and current, ends intact; coherence without conformity in the interlude pairs with Part VIII and both ends stand. R-CORRECTION-SCOPE: no recorded correction reaches this body. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0054 re-verified, the passage concerns community exit, not record lifecycle. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass beyond the display labels held under the structural rule, no credit owed, stated explicitly. Citations re-verified intact through the repairs: Hirschman, Exit, Voice, and Loyalty, 1970, and Buchanan, Justice, Legitimacy, and Self-Determination, 2004. T-021 re-verified: the PART FOUR display, subtitle, introduction paragraph, and chapter label at the section's tail are byte-frozen under the standing route adjudication question, and the measured word surplus is the recorded artifact of the absorbed opener. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Seventeen of twenty-five baseline sentences survive verbatim; the remainder are the eleven em dash glyphs repaired across seven sites, the display labels, and the frozen Part IV matter, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried eleven em dash glyphs across seven sites, not three. The voluntary denial became a period; the genuinely possible specification became a comma; the Hirschman appositive and insight pairs, the Buchanan secession pair, and the interlude's wholly themselves pair stand as comma pairs; and the relational familiarity dash stands as a colon introducing what familiarity consists of. Each repair does the work its dash was doing.",
+        "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
+      ]
+    }
   ]
 }

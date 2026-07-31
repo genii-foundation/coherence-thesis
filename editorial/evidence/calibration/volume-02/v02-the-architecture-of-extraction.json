@@ -121,6 +121,21 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Catalog 4.22 on the volume diagnostic: two of the baseline's open series run through this section. The unquantifiable-conditions list keeps the including embedding, explicitly non-exhaustive, confirmed. The institutions list, economic, political, technological, and informational, closes with and inside a comma-pair appositive; examined and confirmed as the parseable form, since the four adjectives are a bounded taxonomy of the institutions just named rather than an open sample.",
+      "R-PAIRED-DELETION: what does not register cannot be protected is minted in the fishery narrative and deliberately repeated in the diagnostic floor; both ends present in both texts at matching counts.",
+      "R-CAUTIOUS-HALF: the committing half, These institutions are not malfunctioning. They are doing exactly what their incentives instruct them to do, survives beside the hedged increasingly they resemble framing. Both limbs intact.",
+      "R-REFRAIN-COST: the epigraph attribution is one of the nine instances anchored in v02-the-crisis-beneath-the-crises; cited, not re-counted.",
+      "R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-DEIXIS, R-SUBSTITUTION-CREDIT: no instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's findings hold under the twenty-rule standard, including the adjudication of the volume's heaviest mark load. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

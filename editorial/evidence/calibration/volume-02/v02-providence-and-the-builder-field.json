@@ -86,7 +86,7 @@
       "id": "F4",
       "summary": "An eight-name list between subject and verb was punctuated as an apposition and the sentence's closing disclaimer was split off.",
       "evidence": {
-        "baseline": "The projects named in this chapter—OpenCivics, ... the Indigenous-led conservation initiatives—are doing their own work on their own terms, and the book’s mention of them is description rather than affiliation.",
+        "baseline": "The projects named in this chapter [mark] OpenCivics, ... the Indigenous-led conservation initiatives [mark] are doing their own work on their own terms, and the book’s mention of them is description rather than affiliation.",
         "shipped": "The projects named in this chapter, OpenCivics, ..., and the Indigenous-led conservation initiatives, do their own work on their own terms. The book mentions them descriptively, not as affiliations."
       },
       "authorizedBy": "R-PUNCT-STRUCT, applied by substituting commas.",
@@ -147,6 +147,21 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: fifth of the five disclosure-refrain instances, recorded once in the refrainAnchor of v02-providence-and-ai-integration. This record cites that anchor. The section also carries the second of the two What Providence is being designed to do clefts, restored and intact.",
+      "R-PAIRED-DELETION: the eight named projects each appear in this section and in the field sections of the same chapter; all ends present in both texts.",
+      "R-SUBSTITUTION-CREDIT: the fronted-list rebuild of the eight-name sentence, doing their own work on their own terms before the roll call, resolves an interpolation no comma pair could hold. The rebuild satisfies R-PUNCT-STRUCT's last resort and is confirmed as the right treatment, consistent with the framing-sentence rebuild in AI Already Serving Coherence.",
+      "R-CAUTIOUS-HALF: the modest claim, Providence is not the field, survives beside the contribution claim; both limbs intact.",
+      "R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-DEIXIS: no instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's findings hold under the twenty-rule standard, and the one rebuild in the section is confirmed as a correct repair rather than a loss. No prose change."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

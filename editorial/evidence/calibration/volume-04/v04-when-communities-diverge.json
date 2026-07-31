@@ -104,5 +104,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Coherence without conformity is a card-named recurrent phrase whose argument was removed while the phrase survived as a heading twenty chapters later. Same shape as the nest and the long clock: the phrase kept, the passage that earns it gone."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 14,
+        "survivingVerbatim": 13,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the chapter keeps both the committing claim that divergence will happen and the design commitment to protect the distinction between adaptation and violation. R-PAIRED-DELETION: the three categories of divergence and the coherence and uniformity distinction were swept; coherence without conformity recurs in the exit interlude and in Part VIII, all ends stand. R-CORRECTION-SCOPE: no recorded correction reaches this body. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0071 re-verified, proposal grammar throughout. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Thirteen of fourteen baseline sentences survive verbatim; the one divergence is the single comma repair, attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried one em dash glyph, the single dash before preventing the constitutional principles, standing as a comma. The record's count of three, with two comma pairs, does not correspond to the sites here; the CTD-0089 note of three marks repaired overstates by two."
+      ]
+    }
+  ]
 }

@@ -55,6 +55,16 @@
       "authorizedBy": "Catalog 4.23, meta claims about the text.",
       "diagnosis": "4.23's retention limb keeps genuine wayfinding in a long philosophical work. This sentence tells the reader that the chapter has three movements and what each will do, in a book whose chapters are otherwise structurally identical. Its removal leaves the three subsections arriving without announcement.",
       "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The two kept shipped additions make the scaling claim concrete and give the chapter its task sentence.",
+      "evidence": {
+        "baseline": "(absent; the baseline states the structural dynamic and the constitutional-discipline question without either concretion)",
+        "shipped": "Direct acquaintance gives way to procedure. Informal memory gives way to records. Roles that once rotated through friendship acquire institutional weight. ... Its task is not to prevent change but to distinguish adaptation from abandonment."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31. The original record kept both on the merits.",
+      "diagnosis": "The trio shows the reader what changes when scale changes, which the baseline asserts abstractly, and the adaptation-abandonment sentence gives the chapter a test its restored scope statement can be held to. Both are the prior pass's and both survive because they are better than silence, not because a ledger required them."
     }
   ],
   "debtImpact": [
@@ -101,5 +111,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. A short section whose loss was concentrated in two sentences, one carrying the premise and one carrying the wayfinding. Both were removable under a catalog reading and both fail the retention limbs."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 10,
+        "survivingVerbatim": 9,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the premise keeps both the denial of contingency and the committing structural claim. R-PAIRED-DELETION: the scaling vocabulary was swept; the extractive attractor, the threshold, and drift each have their own restored section immediately following. R-CORRECTION-SCOPE and R-LEDGER-WINS-COROLLARY: no recorded correction reaches the section. R-TENSE: will face is a genuine future and stands. R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Nine of ten baseline sentences survive verbatim; the remainder are the two recorded punctuation repairs. One substitution credit recorded as F3. No prose change required.",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

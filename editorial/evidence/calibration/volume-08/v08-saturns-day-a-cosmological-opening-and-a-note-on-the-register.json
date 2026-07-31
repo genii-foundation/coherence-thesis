@@ -80,6 +80,29 @@
       "producedRule": "R-PROPORTION"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F5",
+      "summary": "The cowardice sentence was repaired to the card's exact obligation, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "to call vigilance alarmism and clear sight catastrophizing — is not balance. It is fatuousness; the specific cowardice of the comfortable.",
+        "shipped": "to call vigilance alarmism and clear sight catastrophizing, is not balance. It is the specific comfort of the comfortable."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "The volume card requires the narrator to be candid and morally serious without telling the reader that doubt is cowardice, and the baseline sentence names the doubter a coward in so many words. The specific comfort of the comfortable keeps the indictment aimed at the comfort rather than the person, drops fatuousness, which was prestige diction doing insult's work, and preserves the sentence's shape. This is R-VOICE-BIND executed exactly, and the prior record absorbed it without credit.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F6",
+      "summary": "The read-the-sky causal claim was corrected to a claim about noticing, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "The decimation this book documents did not begin with the pesticide. It began when we forgot how to read the sky.",
+        "shipped": "The decimation this book documents has material causes, and cultural distance from place did not create them. It made them easier not to notice."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "The baseline sentence asserts that cultural forgetting caused the material decimation, the same causal inversion CTD-0083 refuses in the prologue: witness and meaning-loss cannot carry planetary causation. The shipped pair keeps the cultural loss doing real work, easier not to notice, while returning the causes to the material record the accounting then documents. The prior record listed this only as the material causes correction inside a kept note; it is the sharpest single repair in the section and is credited here at the weight a loss would carry."
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0048",
@@ -122,6 +145,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present in the manuscript: the long-time argument, Saturn's child, the eight-station wheel, and the full discipline against exaggeration all stand. No prose changed by this audit. Two substitution credits added as auditFindings F5 and F6, both cases where the prior pass repaired a genuine fault, the doubt-is-cowardice sentence and the read-the-sky causal inversion, and the record had absorbed them without weight. R-CAUTIOUS-HALF: the hedging we may be wrong and the committing we will not exaggerate both survive, each bolded, so neither half was lost. R-PAIRED-DELETION: the eight-station wheel and Appendix B's learn-one-station stone are both present, the pair F3 diagnosed now reconnected; the planetary arc's other end, the per-volume planet assignments, matches the master ledger's series table. R-CORRECTION-SCOPE: CTD-0048's boundaries were re-read against the restored text and govern only the weekday and festival genealogies, which keep their hedges; the wheel's own claim stands on its different and better attestation, as F3 argued, and Q1 keeps the sourcing obligation open. R-REFRAIN-COST: nothing recurring beyond intentional card-listed phrases."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

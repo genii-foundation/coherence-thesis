@@ -109,5 +109,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Catalog 4.9 fired on anaphora that was carrying the sequencing argument, which is the third time in this volume that a repeated opening turned out to be load bearing."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 6,
+        "survivingVerbatim": 4,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the chapter keeps its committing dependency claim, everything else rests on identity, beside the platform-controlled reputation contrast. R-PAIRED-DELETION: identity layer, trust infrastructure, and platform-controlled reputation were swept; the trust layer and the reputation contrast recur in the next chapter and all ends stand. R-CORRECTION-SCOPE: no recorded correction reaches this body. R-LEDGER-WINS-COROLLARY re-run as the standing procedure requires: the two shipped sentences kept under CTD-0055, the requirement list of portability, participant control, privacy, recovery, appeal, and a practical exit path, and the no-label caveat, were searched for in the immutable baseline and are not there, so they are seeded canon, recorded with agent provenance visible in the original kept note, which is the form the corollary requires. Seeding under a ledger item is bounding, not merit, so no credit attaches, stated explicitly. R-SUBSTITUTION-CREDIT: nothing else kept, no credit owed. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Four of six baseline sentences survive verbatim; the remainder are the two glyph repairs and the two seeded CTD-0055 sentences, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried two em dash glyphs. The epigraph's single dash before portable, sovereign stands as a comma, and the dash at not genuine trust infrastructure became a period separating the denial from its correction, It is platform-controlled reputation. No dash became a colon; the record's note that one introduced the chapter's scope as a colon does not correspond to a site here."
+      ]
+    }
+  ]
 }

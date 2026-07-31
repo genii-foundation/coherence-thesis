@@ -107,5 +107,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Fifth card-protected line in this volume found standing without its paragraph. The pattern is now the volume's headline finding and the reason a protected-lines check alone would have passed this manuscript."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 18,
+        "survivingVerbatim": 14,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the scene keeps both the extractive logic of competence and the committing constitutional claim that the architecture does not bend to individual excellence; the awkwardness trade keeps both its cost and its purchase. R-PAIRED-DELETION: Mahlinah, Elan, relational stewardship, and the mentorship function were swept; the Tuesday and water sections carry the other ends and all stand. R-CORRECTION-SCOPE: the card-protected line re-verified at width: The meeting is awkward because Elan is still learning and both of them know it replaces the baseline's slightly awkward and not yet good at the role as the paragraph's landing, exactly as the original kept note records, and nothing beyond the protected line moved. R-VOICE-BIND holds the protected form against the baseline. R-LEDGER-WINS-COROLLARY: nothing else seeded; CTD-0030 re-verified, the scene stays inside the design fiction frame. R-SUBSTITUTION-CREDIT: the protected line is card-held, not merit-kept, so no credit attaches, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Fourteen of eighteen baseline sentences survive verbatim; the remainder are the four glyph repairs and the card-protected landing, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: four em dash glyphs, the stewardship pair standing as a comma pair and the single dashes at individual excellence and the mentorship function standing as commas, with the comma before and the meeting becoming a period so the protected line lands as its own sentence."
+      ]
+    }
+  ]
 }

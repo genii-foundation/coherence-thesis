@@ -14,6 +14,12 @@
     "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 3,
+    "testableBaselineSentences": 5,
+    "note": "Standing procedure, run before any pairing test: 3 of 5 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
     "terms": [
@@ -59,6 +65,17 @@
       "diagnosis": "Even its errors are an offering is the sentence that makes the dedication generous rather than defensive, and it is answered word for word in The Largest Nest. Value depends on being clear enough states a condition where the baseline made a gift.",
       "producedRule": "R-CADENCE",
       "id": "F3"
+    },
+    {
+      "id": "F4",
+      "summary": "The re-render swapped precisely for exactly under a correction that never named it.",
+      "evidence": {
+        "baseline": "the surest way to call a better world into being is to set down a clear enough version of one that others can see precisely where it fails, and build past it.",
+        "shipped": "that others can see exactly where it fails, and build past it."
+      },
+      "authorizedBy": "Generation A's reasoning cites the voice card's reduce list for all three word changes it made here.",
+      "diagnosis": "The card's reduce list contains truly and deepest; it does not contain precisely. Two of the three cuts were authorized and the third rode along, which is the silent widening R-CORRECTION-SCOPE forbids. The swap also unified a pair the baseline varies on purpose: this dedication says see precisely where it fails and The Largest Nest says see exactly where it falls short, varying surest against fastest, set down against draw, and fails against falls short. Restored by this audit.",
+      "producedRule": "R-CORRECTION-SCOPE"
     }
   ],
   "debtImpact": [
@@ -91,6 +108,38 @@
           "note": "The governing question in full, the errors as an offering, and the address to the reader who may see more lucidly."
         }
       ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-CORRECTION-SCOPE. Generation A cut truly and deepest under the voice card's reduce list and let precisely ride along under the same citation. The card's list does not contain precisely. The swap also erased a deliberate variation against The Largest Nest's see exactly where it falls short. Restored to see precisely where it fails. Recorded as F4."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. A blueprint is not a prophecy and This one will be wrong in places both survive committing."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks. The blueprint refrain pairs with The Largest Nest's close; after the repair the pair varies every term again as the baseline designed."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        },
+        {
+          "kind": "kept",
+          "note": "Nothing further fires."
+        }
+      ],
+      "metrics": {
+        "words": 128,
+        "baselineWords": 132
+      }
     }
   ],
   "rulings": [],

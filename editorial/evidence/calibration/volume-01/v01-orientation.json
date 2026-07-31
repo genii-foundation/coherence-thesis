@@ -170,7 +170,6 @@
     "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
     "result": "No debt or canonical decision is touched by this section."
   },
-
   "generations": [
     {
       "label": "A",
@@ -631,17 +630,6 @@
       "by": "author"
     },
     {
-      "id": "RU7",
-      "question": "Does tightening a hedged verb phrase in paragraph 1 cost too much?",
-      "decision": "Accept the tightening.",
-      "rationale": "Editorial craft decision taken under delegated authority. The hedge carried a useful admission, but the invitational stance is carried by the opening noun and by the address to the reader, both of which survive. The hierarchy of fidelity ranks the preserved stance above the lost hedge, and R-PROPORTION is satisfied at 15 percent.",
-      "scope": "section",
-      "by": "editorial-agent",
-      "status": "superseded",
-      "supersededBy": "regenerationTest.D1",
-      "note": "Superseded by the voice card clause on load-bearing admissions of uncertainty."
-    },
-    {
       "id": "RU8",
       "question": "Do voice cards require author approval?",
       "decision": "No. The editorial agent holds responsibility for editorial guidelines, including voice cards.",
@@ -761,5 +749,71 @@
       "id": "R-REGISTER-DICTION",
       "obligation": "Prefer the volume signature register over a generic near synonym of equal precision."
     }
-  ]
+  ],
+  "workingNotes": [
+    {
+      "id": "WN1",
+      "formerly": "rulings RU7, by editorial-agent, scope section, recorded 2026-07-29",
+      "question": "Does tightening a hedged verb phrase in paragraph 1 cost too much?",
+      "note": "Accept the tightening. Editorial craft decision taken under delegated authority. The hedge carried a useful admission, but the invitational stance is carried by the opening noun and by the address to the reader, both of which survive. The hierarchy of fidelity ranks the preserved stance above the lost hedge, and R-PROPORTION is satisfied at 15 percent.",
+      "status": "superseded",
+      "supersededBy": "regenerationTest.D1",
+      "demoted": "2026-07-31",
+      "demotionReason": "Demoted from rulings because an editorial-agent entry is a working note, not author authority. Already superseded on its merits by regenerationTest divergence D1: the revised voice card makes admissions of uncertainty load bearing, so the tightening this entry accepted was wrong and the phrase is retained in the manuscript. The rulings array now carries author entries only; the gap at RU7 in the id sequence is this note."
+    }
+  ],
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "coherence",
+      "biological conditions",
+      "planetary scale",
+      "technological power"
+    ],
+    "itemsRead": [],
+    "outcome": "The 2026-07-30 CTD-0108 audit found no Volume I item touched by this section, and this audit re-ran the sweep over the volume-1 scoped index with the same result. No recorded decision conflicts with the shipped text."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 1,
+      "baselineSentences": 4,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Most baseline sentences carry authorized repairs recorded in the findings, rulings, and regeneration divergences, so verbatim survival is low while fidelity is documented clause by clause. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep: whether we learn to organize society is the antecedent of the Sprout's deliberate refrain, and both ends are present in the shipped manuscript (the orientation's opening sentence and the closing question of When Scale Outruns Regulation). The remaining distinctive terms occur only here. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "F6 and F9 already dissect this section's committing claims. The shipped text keeps the baseline's bounded forms, including exceed the capacity of traditional forms of coordination, and no universal survives that the baseline lacked. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "This record already runs in both directions: F5 through F8 are findings against the calibration's own variants, and divergences D1 and D4 record one case where regeneration beat the lineage and one where the lineage beat regeneration. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules. Two facts are recorded for the author's eye rather than repaired. First, the shipped close carries the baseline's adapts, hardens, or collapses with the perfect form has begun to exceed, while the approved variant line reached outpaces and calcifies; the divergence record already holds that the variants are evidence of the path rather than the text to ship, and any change here is a wording decision, not an audit repair. Second, the em dash inside F5's baseline quotation is quoted pre-standard source text the schema requires in evidence; it is not prose written by any pass, and altering a quotation to satisfy the punctuation standard is forbidden by section 3 of the standard."
+  }
 }

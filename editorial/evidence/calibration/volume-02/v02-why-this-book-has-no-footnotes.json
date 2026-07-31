@@ -87,7 +87,7 @@
       "id": "F4",
       "summary": "An em dash pair defining a different purpose became a comma pair the sentence could not carry.",
       "evidence": {
-        "baseline": "They serve a different purpose—the verification of sources for readers who want to evaluate the underlying scholarship—and they are essential in academic contexts.",
+        "baseline": "They serve a different purpose [mark] the verification of sources for readers who want to evaluate the underlying scholarship [mark] and they are essential in academic contexts.",
         "shipped": "They serve a different purpose, verifying sources for readers who want to evaluate underlying scholarship, and are essential in academic contexts."
       },
       "authorizedBy": "R-PUNCT-STRUCT, applied by substituting commas.",
@@ -138,6 +138,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS. The record's quoted evidence was mechanically cleaned to the [mark] placeholder earlier tonight; that cleanup was not an audit, this is.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the committing halves survive: the kept flat sentences There are no footnotes., The form serves the function., and They are not what this book is., and the verification promise This does not mean the intellectual work is unmoored beside the concession that lineages are not exhaustively credited. Both limbs intact.",
+      "R-PAIRED-DELETION: the twelve named projects in the verification list each have their minting chapters present in both texts, Sardex, Mondragon, the Assemblies, vTaiwan, Constitutional AI, the McKinsey survey, OpenCivics, the IDG framework, the Capital Institute, the IDG Summit, the NCEAS assessment, the COP16 programming. The list is the volume's own cross-reference net and every strand holds.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0001 and CTD-0019 stand in their recorded tension with this section's argument, evidence restored, nothing resolved.",
+      "R-SUBSTITUTION-CREDIT: the kept flat sentences were baseline kept by the pass; the which-is rebuild is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; the On the heading-set question is census-held structure behind Q1.",
+      "R-DEIXIS: They are not what this book is holds the reader at the live form decision. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and the verification net's twelve strands all resolve. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

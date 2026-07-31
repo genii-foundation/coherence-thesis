@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-substrate-of-alignment",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Larger Argument**",
+  "currentHeading": "## **The Substrate of Alignment**",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "survivingBaselineSentences": 21,
+    "baselineSentences": 21,
+    "note": "All 21 baseline sentences survive, 19 byte-identical and two carrying single mark repairs. Restoration mode; the pairing test applies and passes."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["counterforce", "Chapter Nine sketched", "the interlude before Chapter Six", "Chapter Two"],
+    "result": "Counterforce is minted in the third paragraph and taken up by the fourth in the same section; both ends are internal and intact. The three chapter back-references resolve to sections present in both texts. No unpaired reference."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["AI-doom literature", "alien intelligence", "coherence infrastructure", "counterforce", "capability development"],
+    "itemsRead": ["CTD-0019", "CTD-0027", "CTD-0016"],
+    "outcome": "No recorded decision governs this section's wording. CTD-0016 tracks the technological-power thesis the paragraph restates, the variable is not the technology, the variable is what lies beneath it, and is open without a ruling; both texts carry the same claim. CTD-0019 covers the funding-race claim, identical in both texts."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Two marks resolved: the additive dash before the second counterforce source became a comma, and the dash introducing the specification of the people doing this work became a colon. Both repairs are correct.",
+      "evidence": {
+        "baseline": "Some will come from coordination infrastructure of the kind Providence is attempting to build [mark] and from the many other attempts the interlude before Chapter Six called for. ... The next chapter turns to the people doing this work [mark] who they are, where they are, what they have learned, and how the present moment is forcing them into a coordination they have not previously had infrastructure for.",
+        "shipped": "Some will come from coordination infrastructure of the kind Providence is attempting to build, and from the many other attempts the interlude before Chapter Six called for. ... The next chapter turns to the people doing this work: who they are, where they are, what they have learned, and how the present moment is forcing them into a coordination they have not previously had infrastructure for."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by the prior pass.",
+      "diagnosis": "The first mark attached a coordinated prepositional phrase, genuinely dependent, so the comma is the fitting repair and the afterthought rhythm survives because and from restarts the phrase. The second mark introduced an enumeration that specifies the object, which is the colon's job exactly. Recorded so the next pass knows both were examined rather than passed over."
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0016", "effect": "unchanged", "note": "The substrate thesis is restated at full strength, the variable is not the technology, and the item that tracks the thesis corpus-wide remains open with identical exposure in both texts." },
+    { "id": "CTD-0019", "effect": "unchanged", "note": "It consistently loses funding races against capability development is the section's empirical claim and is identical in both texts, unsourced, marked by the item." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed against baseline under the twenty rules",
+      "reasoning": [
+        { "kind": "kept", "note": "All 21 sentences. The hopeful and demanding halves are a deliberate paired structure, more hopeful because, more demanding because, and both halves survive; R-CAUTIOUS-HALF is satisfied with the demanding half, the most predictable failure mode of the present moment, intact." },
+        { "kind": "kept", "note": "The italic closing triad, Because intelligence alone will not determine the future. The relational field within which intelligence develops will. And that field is being built, or failing to be built, right now, byte-identical. It is the chapter's landing and holds the reader in the present tense the argument requires (R-DEIXIS, R-LAND)." },
+        { "kind": "kept", "note": "The four anaphoric Some will come from sentences, deliberate recurrence under catalog 4.9's retention limb: the paragraph's claim is precisely that the counterforce has no single source." }
+      ],
+      "metrics": { "words": 382, "baselineWords": 382, "deltaPercentAgainstBaseline": 0 }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section survives whole, and the note worth carrying forward is structural: the baseline heading, The Larger Argument, is the fourth of five identical closing headings, and the current heading names what this instance actually argues. The rename is a settled structural decision under the census hold, and the closing-heading refrain is recorded once in the anchor for the disclosure refrain family rather than relitigated per section."
+  }
+}

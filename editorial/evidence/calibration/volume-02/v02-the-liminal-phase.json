@@ -133,6 +133,23 @@
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the committing halves survive: These are not signs of personal failure. They are accurate responses to the structural condition of living in between civilizational logics., and the ritual-versus-civilizational contrast keeps both limbs, structured passage against passage without structure. The kept five-sentence close of the first paragraph carries the committing half of the whole section.",
+      "Catalog 4.22: the foreclosure list, authoritarian certainty, ideological purity, technological salvation, withdrawal into private life, runs asyndetic and open behind its colon in both texts. Confirmed clean.",
+      "R-PAIRED-DELETION: the van Gennep and Turner attribution is section-local with both scholars named in both texts under CTD-0019; premature foreclosure and extended paralysis have their answering end in the practices section's responses; the closing list of the book's infrastructure, relational coordination layer, trust architecture, communities of practice, points back to chapters whose ends are all present.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0066's contested claim is recorded in debtImpact.",
+      "R-SUBSTITUTION-CREDIT: the kept closing run of the first paragraph was baseline kept by the pass; the applied colons are R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; the four-fold They feel is section-local deliberate anaphora restored by F2 under catalog 4.4's retention limb.",
+      "R-DEIXIS: This is the phase humanity appears to be in holds the reader inside the live passage, hedged by appears exactly as the baseline has it. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, the foreclosure list stays open, and the section's paired contrasts keep both limbs. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

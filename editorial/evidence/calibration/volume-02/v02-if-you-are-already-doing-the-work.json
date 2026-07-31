@@ -121,6 +121,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: The next civilization is being built right now, in fragments is the seventh of the work-in-fragments recurrences anchored in v02-civilizational-alignment; cited, not re-counted.",
+      "R-CAUTIOUS-HALF: the committing claim restored by F1, you are not as alone as the conditions make you feel, keeps the address's direct half beside the bounded when help is possible. Both limbs intact, with the CTD-0038 exposure recorded rather than resolved.",
+      "R-PAIRED-DELETION: not as alone as the conditions make you feel has its third-person end in Practices for the Passage, the people who are trying to live coherently through this threshold are not as alone as the conditions make them feel, both present in both texts; the recognition offer pairs with the book's stated purpose in the Interlude. All ends resolve.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0038 and CTD-0020 exposures are recorded in debtImpact with Q1 for the author.",
+      "R-SUBSTITUTION-CREDIT: the whether rebuild of the four-work appositive is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-DEIXIS: right now and the restored structural isolation claims hold the reader inside the live condition. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, the aloneness claim resolves at both of its ends, and the consent exposure stays open for the author. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

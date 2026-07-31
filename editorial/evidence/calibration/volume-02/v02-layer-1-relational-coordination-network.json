@@ -81,6 +81,21 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Catalog 4.22 on the volume diagnostic: the practitioner-types series keeps the including embedding, explicitly non-exhaustive, adjudicated in the original record and confirmed here.",
+      "R-PAIRED-DELETION: the lunar cadence and matching claims have their fuller statements in Providence as Coordination Infrastructure and the currency-question disclosure; all ends present in both texts.",
+      "R-CAUTIOUS-HALF: the committing operational detail, refreshed twice a month on the new and full moons, survives; it is the falsifiable half of the layer description and is intact in both texts.",
+      "R-CORRECTION-SCOPE: the five-layer numbering of the heading is consistent with CTD-0021's corrected count and the correction licenses nothing in the body.",
+      "R-CANON-DELETION-RECORD, R-DEIXIS, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST: no instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's findings hold under the twenty-rule standard and the entry needs no further change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

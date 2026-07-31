@@ -58,6 +58,16 @@
       "authorizedBy": "Compression.",
       "diagnosis": "This is the chapter's instruction, and it is the one a builder under funding pressure needs. It also sets up the donor scenario in Chapter Twenty-Four, which dramatizes exactly this refusal at a cost. Without it the donor chapter's outcome has no stated principle behind it.",
       "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The cut adverb asserted the success its own sentence already demonstrates.",
+      "evidence": {
+        "baseline": "credit unions have successfully maintained cooperative governance at significant scale",
+        "shipped": "credit unions have maintained cooperative governance at significant scale"
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31.",
+      "diagnosis": "Catalog 4.21, defect limb. Maintained at significant scale is the evidence; successfully adds assertion without content. The prior pass's cut repairs a genuine fault and is kept at finding weight rather than as a quiet kept."
     }
   ],
   "debtImpact": [
@@ -124,6 +134,34 @@
       "buildBroke": true,
       "state": "reverted to pre-edit, byte identical",
       "requires": "author continuity decision: canonical route and reviewed successor"
+    }
+  ],
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 45,
+        "survivingVerbatim": 33,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost. The count was re-run after the one-word restoration recorded in this audit."
+      },
+      "checked": "R-CAUTIOUS-HALF: each compatible capital form keeps both its committing claim and its stated risk, and the closing judgment keeps the viable if challenging pairing beside the bounded would have to be. R-PAIRED-DELETION: patient capital, endowment, cooperative ownership, and community bonds were swept; the triad recurs in What the Historical Record Shows and its two open questions, all ends aligned; Eric Ries and the Omidyar Network occur once each in baseline and current. R-CORRECTION-SCOPE: two recorded corrections re-verified at width. The Mazzucato correction governs the author's first name alone, Michael to Mariana, and the titles and years beside it are baseline text. The CTD-0072 bounding governs the single verb phrase, must be to would have to be, and nothing adjacent moved. R-LEDGER-WINS-COROLLARY: nothing seeded. R-SUBSTITUTION-CREDIT: one kept-on-merits repair converted to a credit finding, F3; the kept epigraph form and the kept heading Capital Without Command are ledger and route bounding and earn no credit, stated explicitly. R-CAUTIOUS-HALF also found one unrecorded softening running the other way, repaired in prose and recorded below. T-021 re-verified: the PART THREE display, subtitle, introduction paragraph, and chapter label at the section's tail are byte-frozen under the standing route adjudication question. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "One word restored. The baseline's investment strategy drift that has corrupted many university endowments stood as has carried, an unrecorded softening of the sentence's charge. No recorded decision governs the verb, the surrounding sentence already names the entanglement with extractive strategies, and carried converts an accusation into neutral motion. Corrupted is restored; the claim is the baseline's own.",
+      "conclusion": "The restoration holds under the full twenty-rule index after one word is restored. Thirty-two of forty-five baseline sentences survive verbatim; the remainder are the thirteen em dash glyphs repaired across seven sites, the two recorded corrections, the parenthesis conversion, the display labels, and the credited adverb cut, all attributed.",
+      "corrections": [
+        "The original itemization is corrected against the verified glyph accounting: the section carried thirteen em dash glyphs, six parenthetical appositive comma pairs now standing as comma pairs and the epigraph attribution dash resolved by the CTD-0007 Adapted from form. No em dash in this section became a colon or a period; the recorded colon and period repairs do not correspond to any site here.",
+        "One unrecorded softening repaired: baseline, the investment strategy drift that has corrupted many university endowments toward extractive financial instruments; shipped, has carried many university endowments. Corrupted restored under the hierarchy of fidelity, which forbids purchasing smoothness with a changed claim. Both sides quoted; no ledger item governs the verb.",
+        "One parenthetical aside, the Long-Term Stock Exchange founded by Eric Ries, stands as a comma clause. Parentheses are not prohibited; the conversion is consistent with the surrounding repairs and the name is intact. Kept.",
+        "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
+      ],
+      "findingsAdded": [
+        "F3"
+      ]
     }
   ]
 }

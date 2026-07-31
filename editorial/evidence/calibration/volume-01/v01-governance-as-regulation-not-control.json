@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-governance-as-regulation-not-control",
+  "editorialId": "volume-01",
+  "sectionHeading": "Governance as Regulation, Not Control",
+  "currentHeading": "Regulation as the Work of Governance",
+  "anchor": "v01-the-stem",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "recordNote": "Created 2026-07-31. The schema commits one record per calibrated section and this heading mints its own reader route, but this section's calibration lived folded inside the anchor record until the coverage audit. The prose was restored from the immutable baseline in the anchor's re-render of 2026-07-30; this record gives the section its own shipped text, sentence count, ledger search, debt impact, and twenty-rule audit, and revises prose only where a rule fired.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 6,
+    "baselineSentences": 8,
+    "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+    "note": "Two non-surviving sentences carry comma repairs. Not substitution mode."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "governance",
+      "regulation",
+      "downstream"
+    ],
+    "itemsRead": [],
+    "outcome": "No Volume I item names this subsection's content; the sweep found no recorded decision in conflict with the baseline."
+  },
+  "findings": [],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Prose as restored by the anchor re-render of 2026-07-30, audited under the twenty-rule standard",
+      "text": [
+        "Traditional governance assumes order must be imposed. Laws are enforced through threat; stability is maintained by increasing surveillance and coercive capacity.",
+        "A coherence-based approach would operate differently. Its primary task would not be enforcement, but regulation, the maintenance of conditions in which individuals and groups can self-organize intelligently. Enforcement would still exist, but as a last resort rather than a foundation. Order would emerge not from fear, but from alignment.",
+        "This insight reshapes everything downstream, and it raises a question the Stem deliberately leaves open: if coordination is not to be secured by force or surveillance, what could secure it instead? That question, and the architecture it implies, is where the flowering of this book begins."
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT: two fencing dashes became commas."
+        },
+        {
+          "kind": "kept",
+          "note": "The renamed heading under the volume working note on renames (v01-how-this-book-is-structured WN1); the baseline heading's contrast form remains restorable by author decision at the cost of a route alias."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 6,
+      "baselineSentences": 8,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Two non-surviving sentences carry comma repairs. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over regulation, control, and the downstream framing. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "Checked the rename: the baseline heading carries a denial half, Not Control, and the shipped heading does not. The body's own denial, regulation rather than control, is present in the prose, so the claim survives beneath the milder heading. Recorded here; the heading itself is the author's under the volume's open heading questions."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The section keeps no substituted prose beyond what the record already accounts for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "R-CAUTIOUS-HALF notes the heading lost its denial half while the prose keeps the claim; recorded for the author with the volume's other heading questions. Nothing else fires. No prose changed."
+  }
+}

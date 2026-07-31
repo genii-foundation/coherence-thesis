@@ -4,7 +4,7 @@
   "editorialId": "volume-07",
   "sectionHeading": "**The Twelve Tenets**",
   "currentHeading": "## Part VI: The Twelve Tenets",
-  "status": "open",
+  "status": "superseded",
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
@@ -104,5 +104,7 @@
     "kind": "chapter-start region",
     "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
     "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
-  }
+  },
+  "supersededBy": "v07-part-vi-the-twelve-tenets",
+  "supersededNote": "Superseded 2026-07-31. This record measured a fragment produced by a reporting tool that could not see the volume's two-line part labels: either the bodyless bold label or the heading-less prose beneath it. The corrected-boundary record named in supersededBy adopts every finding of this record that survives the boundary correction and executes the restoration its structural hold deferred. Preserved unedited as history per the record lifecycle."
 }

@@ -100,6 +100,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The structural hold stands and no prose was touched; the blocked baseline region in QS remains the author's single-edit restoration path, and the six group labels match the census exactly. Under the newer rules: R-REFRAIN-COST confirms the lay-one-stone refrain at two sites, the second address and this close, and the roof pair at two sites, the address where it stands qualified and this opening where its baseline form is blocked in QS; the address's record carries the qualifier decision and this record carries the blocked bare pair, so one author ruling on the qualifiers settles both. R-PAIRED-DELETION: every stone keeps its referent in the current volume, the undivided hour at the watching market, the old wheel at Saturn's Day, the pause at the prologue, the carried corner at the hot tub, the children not yet born at the first address; restoring the QS region severs nothing. R-CAUTIOUS-HALF: the not-substitutes bound and the concrete instructions both stand; the blocked closing, that is the whole method and it is enough to begin, remains the recorded loss in F2. R-SUBSTITUTION-CREDIT was checked and the kept not-substitutes frame is a bound rather than a repair; no credit minted. R-DEIXIS and R-TENSE checked and silent."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

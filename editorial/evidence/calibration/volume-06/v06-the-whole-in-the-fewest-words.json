@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-whole-in-the-fewest-words",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Whole, in the Fewest Words",
+  "currentHeading": "The Whole, in the Fewest Words",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 0,
+    "testableBaselineSentences": 0,
+    "note": "This section is the Part One opening: one divider line and the display label OPENING between the part heading and the first chapter. It contains no prose sentences in either the baseline or the current text, so the count is zero by absence rather than by substitution. Substitution mode does not describe it and the pairing test has nothing to pair. That is stated explicitly so a later pass does not mistake the zero for a replaced section."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "The Whole, in the Fewest Words",
+      "part introduction",
+      "divider"
+    ],
+    "itemsRead": [
+      "CTD-0102",
+      "T-021"
+    ],
+    "outcome": "T-021 reserves part-introduction restorations to the author because restoring prose between a part label and its first chapter heading revives a public route. The Volume VI baseline holds no prose in that span, only the divider and the OPENING label, so there is nothing to restore, no route is revived, and the author-reserved question is not engaged. CTD-0102 concerns the reader outline's handling of this first authored part and is a reader-application item untouched by prose."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The baseline's divider is built on the prohibited em dash and the production pass's asterisk divider is kept as the repair.",
+      "evidence": {
+        "baseline": "A divider line composed of an em dash, a middle dot, and an em dash.",
+        "shipped": "A divider line composed of three asterisk operators."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The baseline glyph is a prohibited mark used as display geometry rather than syntax. The asterisk divider does the same visual work with no prohibited glyph and is the volume-wide treatment already recorded in v06-on-nests. Kept.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0102",
+      "effect": "not touched",
+      "note": "The outline hierarchy question is about importer and reader labeling of this part, not about its source text, which is unchanged apart from the divider glyph."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "The section's entire content is the divider and the OPENING display label, both matching the baseline apart from the recorded glyph repair. The structural hold covers the part heading, which is untouched and matches the census."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-CORRECTION-SCOPE, R-DEIXIS, R-TENSE, and the catalog were checked. With no prose present, nothing can fire, and that is recorded as a checked fact rather than assumed."
+        }
+      ],
+      "metrics": {
+        "words": 1,
+        "baselineWords": 1
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the standard, the corpus card, the volume card, and the debt ledger; the punctuation standard forces the single divergence.",
+    "conclusion": "No new rule required. The section is display matter whose one decision, the divider glyph, is already governed by the punctuation standard and recorded volume-wide."
+  }
+}

@@ -89,5 +89,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The safety paragraph on purpose, alternative, and decline is CTD-0088 paydown and stands.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The return paragraph is pass-authored and completes the passage the section's title promises.",
+        "evidence": {
+          "baseline": "toward worship and the providence of returning home changed",
+          "shipped": "The rhythm should be spacious enough for the body to arrive. The ordinary world is not discarded. It is met at another pace, and then carried home."
+        },
+        "note": "The baseline's arc ends on returning home changed and never says what the retreat does to the ordinary world it interrupted. The kept paragraph answers in three sentences whose pacing enacts what they describe, and met at another pace, and then carried home is in the volume's own register. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

@@ -85,6 +85,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "Nothing fires. The restoration recorded in generation A is verified present: the constraint-not-virtue clause, the substrate finding, and the ledger image with its called loan all stand in the manuscript. R-PAIRED-DELETION confirms both ends of the principal-called-income line alive here, at the blessing, and in Appendix A's living-planet row. R-SUBSTITUTION-CREDIT found no pass-authored improvement in this section; the shipped version was a pure compression, as the substitutionCheck already records. R-CAUTIOUS-HALF, R-DEIXIS, and R-TENSE were checked and are silent. Confirmed under the current standard."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

@@ -1,0 +1,136 @@
+{
+  "sectionId": "v03-the-intake",
+  "sectionHeading": "The Intake",
+  "currentHeading": "The Intake",
+  "anchor": "v03-the-year-of-the-weaver",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "475 baseline words to 242 shipped words, minus 49 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "four streams",
+      "pulse morphology",
+      "sixty-third minute",
+      "consent",
+      "record"
+    ],
+    "itemsRead": [
+      "CTD-0015",
+      "CTD-0009",
+      "CTD-0056"
+    ],
+    "outcome": "No recorded decision governs this section. CTD-0015 names this scene directly: experimental pulse morphology and a nascent record appear ahead of the versioned roadmap. It is an open query, so the baseline governs, the commitment is restored, and the item is flagged, not resolved."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The committing account of what the streams recorded was hedged into tentativeness, and the coda was deleted.",
+      "evidence": {
+        "baseline": "But it is recording the thing that her grant reports never could: the precise moment, around the sixty-third minute, when her nervous system shifted out of the chronic low-grade threat state she has lived in for years and into something open, something present.",
+        "shipped": "The system marks a passage near the sixty-third minute as a possible change in autonomic state. The claim remains tentative. A facilitator later asks whether anything shifted for her there."
+      },
+      "authorizedBy": "Compression and caution.",
+      "diagnosis": "R-CAUTIOUS-HALF at design-fiction scale: the hedging half survived and the committing half died, taking with it the precise moment, the chronic threat state, and the pulse that arrived wiry and constrained. Inside a story explicitly marked as a design test, the commitment is the content; hedging an invented scene protects nothing and empties it. The kept chapter-opening disclaimer already does the epistemic work the shipped hedges attempted.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F2",
+      "summary": "The three not-questions lost their contrastive structure.",
+      "evidence": {
+        "baseline": "Not 'What are your outcomes?' but 'What did you love about the creek before you knew anything about restoration?'",
+        "shipped": "What did you love about the creek before you knew anything about restoration?"
+      },
+      "authorizedBy": "Formatting.",
+      "diagnosis": "The shipped version set the three questions as bare display lines, cutting the nonprofit questions they replace. The contrast is the point: the reader must hear the familiar interrogation to feel its absence. This is the retention limb of the false-antithesis category; both sides are real and the distinction is the scene."
+    },
+    {
+      "id": "F3",
+      "summary": "The intake coda was deleted.",
+      "evidence": {
+        "baseline": "The intake did not assess her. It met her. And in meeting her, it gathered the first entry in a record that would, over the year to come, become a portrait more truthful than any resume she had ever written.",
+        "shipped": "The instrument did not discover a secret truth. It helped the two of them return to a moment worth understanding."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Assess and met is the section's two-beat thesis, and the record's first entry is the seed of the chapter's final section. The shipped replacement is a good sentence about a different, smaller claim. One instance of the italic-coda refrain, counted in the anchor record of chapter twelve."
+    },
+    {
+      "id": "F4",
+      "summary": "Nine prohibited marks.",
+      "evidence": {
+        "baseline": "The forms-before fence, the facilitator mark, the attention-to-her fence, the in-the-moment mark, the wiry-constrained fence, and the she-heard mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The forms fence and the attention fence became comma chains that keep their interruptions inside the sentence, the repetition of to her carrying the second. The in-the-moment mark became a period. The wiry-constrained fence was rebuilt as in the old diagnostic language the physiology of held grief and suppressed expression, set off by commas, trading two fences for one readable appositive. The she-heard mark became a comma before a participial clause reporting a simultaneous act."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0015",
+      "effect": "reopened by restoration",
+      "note": "The intake again gathers the first entry in a record and reads pulse morphology in year one, ahead of the versioned roadmap that defers measurement to Providence 3.0. This is the item's named evidence, restored deliberately under the standing instruction. The item's evidence paragraph describing the revised hedged wording is now stale."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The old diagnostic language of held grief and suppressed expression restores a pulse-diagnosis claim in the verification backlog. Fiction frame noted; the claim still teaches the reader what pulse reading can do."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The braced-for interrogation, the three not-questions in prose with their contrasts, the crying paragraph with its unfamiliarity clause, the four streams at work with explicit consent, the sixty-third minute at full commitment, the wiry pulse, the italic coda, and the facilitator's closing question."
+        },
+        {
+          "kind": "kept",
+          "note": "The heading, unchanged in both texts."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped tentative-inference passage and the instrument-did-not-discover couplet, both quoted in F1 and F3. Their epistemic caution lives in the kept chapter-opening disclaimer and in the ledger flags, where it belongs."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across nine marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 466,
+        "baselineWords": 475,
+        "shippedWords": 242,
+        "deltaPercentAgainstBaseline": -2,
+        "shippedDeltaPercentAgainstBaseline": -49
+      }
+    }
+  ],
+  "openQuestions": [
+    "CTD-0015 is decidable against this scene and the Maren's Creek scene together: what evidence enters the record, what event mints a unit, and in which version the intake instruments exist. Restored and flagged, never resolved here.",
+    "The resume claim, a portrait more truthful than any resume she had ever written, is the kind of committing sentence the author should confirm survives posture review inside the design fiction."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The scene commits again, and its epistemic guard rails live in the chapter disclaimer and the ledger rather than inside the fiction."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": []
+}

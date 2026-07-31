@@ -131,6 +131,24 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Verification: the current section is byte-identical to the baseline, which carries no prohibited marks here. The volume's largest substitution remains fully reversed.",
+      "R-CAUTIOUS-HALF: the restored opening keeps both halves in one movement: A reader who has made it this far has been changed by the book, or has refused to be. Both are legitimate responses. The committing claim and the granted refusal travel together, which is what the pass's rewrite had severed.",
+      "R-VOICE-BIND tension re-verified: the restored passage tells the reader what they already perceived, which the corpus card forbids, and the restoration stands under the standing instruction to restore fully and flag. The contradiction CTD-0038 recorded between this section and the Final Note is removed by the restoration; the consent question itself remains a query for the author behind Q1. Nothing resolved here.",
+      "R-PAIRED-DELETION: The Final Note that follows the next chapter has its end in A Proposal for the Threshold Ahead; the next chapter takes that discipline to its conclusion has its end in An Honest Accounting; the named perceptions, destabilization, fragmentation, threshold, each have their minting chapters present. All ends resolve in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the pass's substituted paragraphs were reversed in full and nothing substituted survives; there is no kept to credit in either direction.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section.",
+      "R-DEIXIS: What comes next is not the book's to decide. It is the reader's. holds the reader at the live handover. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, the section sits byte-identical to the baseline, and the consent question stays open for the author. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

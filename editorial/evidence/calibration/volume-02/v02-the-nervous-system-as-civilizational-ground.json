@@ -143,6 +143,21 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Catalog 4.22 on the volume diagnostic: the baseline's dash-set open series of structural pathologies now closes with and inside a comma-pair appositive. Examined rather than assumed: inside a comma pair the final and is what signals the series' close to the reader, and the open form would need a fronted or colon list, a larger rebuild than the mark repair warranted. The soft-practices list uses the including embedding, which keeps the series explicitly non-exhaustive. Both treatments confirmed.",
+      "R-PAIRED-DELETION: the co-regulation term is minted here and consumed by Relational Coherence; heart rate variability is minted here and consumed by Physiology as Signal. All ends present in both texts.",
+      "R-CAUTIOUS-HALF: the committing half, This is not metaphor. It is mechanism, survives beside the hedged appears-to and increasingly framings. Both limbs intact.",
+      "R-REFRAIN-COST: the chapter epigraph's attribution is the second of nine instances anchored in v02-the-crisis-beneath-the-crises; cited, not re-counted.",
+      "R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-DEIXIS, R-SUBSTITUTION-CREDIT: no instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's findings hold under the twenty-rule standard, the paragraph order matches the baseline's argument, and no further prose change was needed. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

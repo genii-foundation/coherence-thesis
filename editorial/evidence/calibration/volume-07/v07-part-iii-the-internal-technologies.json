@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-part-iii-the-internal-technologies",
+  "editorialId": "volume-07",
+  "sectionHeading": "## Part III: The Internal Technologies",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions. The chapter-start prose was restored under the standing author instruction to restore from baseline and flag afterwards. That instruction authorizes the restoration and nothing more: T-021 reserves the route decision on part introductions to the author, the task register still lists it pending at tier red, and every rulings array in this volume is empty, so no authority exists in this record to resolve it. The observed facts, that this part heading already existed and that the region carried shipped prose before this pass, are recorded in openQuestions as evidence for the author's adjudication, not as its resolution. An earlier wording of this field claimed the restoration executed an orchestrator adjudication of the route question; an orchestrator is an agent, that claim exceeded agent authority, and it is withdrawn.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "boundary": {
+    "note": "This record is bounded by the corrected section map: the merged part heading plus every line of prose between it and the next structural line. The pre-existing records named in supersedes were written while the reporting tool could not see this volume's two-line part labels, so each measured a fragment: one the bodyless bold label, the other the prose with no heading. Both fragments are preserved unedited as history and neither corresponds to a section the corrected boundaries produce.",
+    "supersedes": [
+      "v07-part-iii",
+      "v07-the-internal-technologies"
+    ]
+  },
+  "rulings": [],
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "184 baseline words against 63 shipped before this pass, minus 66 percent. Substitution mode; the pairing test did not apply to the shipped text."
+  },
+  "pairingSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": [
+      "internal technology",
+      "know-how",
+      "attention and care",
+      "machines"
+    ],
+    "outcome": "Internal technology's other ends are Part IV, the Retreats, and the Coda, all present or restored this generation. No blocking dependency."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "internal technology",
+      "reliably produced",
+      "practice safety"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0088 requires conditions of safe practice wherever the volume states what practice produces; the prior pass clause is kept and closes the paragraph, the position the superseded record chose. Nothing in the ledger governs the definition of internal technology, so the baseline governs it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The recovery argument and its urgency return per the superseded record's findings, adopted rather than restated; see F2 of v07-part-i-the-argument-arrived for the mis-bounded record count.",
+      "evidence": {
+        "baseline": "But there is an older technology, and a more intimate one, which this work means to recover ... a great deal of what we now ask machines to do for us was once done, and can be done again, within.",
+        "shipped": "Technology usually names an apparatus built outside the body. This volume uses the word more broadly."
+      },
+      "authorizedBy": "The standing author instruction to restore from baseline and flag afterwards. The restoration is contested under author-reserved T-021 and is flagged in this record's openQuestions, not adjudicated here.",
+      "diagnosis": "The shipped definition kept the genus and dropped the argument: why recovery, why now, and what the recovered craft costs, which is nothing material. The material generosity clause is the volume's only stated reason an internal technology matters in this age."
+    },
+    {
+      "id": "F2",
+      "summary": "Reliably produced is kept for the generic definition and corrected to may be cultivated where it applies to a person.",
+      "evidence": {
+        "baseline": "a craft by which a state of being, a quality of perception, a manner of relation is reliably produced in oneself and drawn out in another",
+        "shipped": "a disciplined practice by which a capacity can be cultivated"
+      },
+      "authorizedBy": "Catalog 4.12 on causal overreach; the correction the superseded record already applied, at R-CORRECTION-SCOPE width.",
+      "diagnosis": "The definitional sentence about technology in general may promise reliable production; the sentence about states in persons may not, since no such reliability is evidenced. The correction governs only the personal clause; the generic clause returns at baseline strength."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The safe conditions clause closes the restored paragraph: time, guidance, care, and conditions in which practice is safe."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twenty rules, executing the restoration the superseded record held",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The full introduction: the constructed-outside image, the no-quarrel concession, the recovery argument with its because clause, the plain definition, the inward turn, the material generosity claim, and the attention and care close."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT per the superseded map: two specifications became colons, the reason dash was rebuilt with because."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass safety clause as the closing sentence, per the superseded record's deliberate choice; care recurs from the previous sentence and stays, since 4.20 prefers the exact word to a rotation."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped four-sentence definition, whose content the restored paragraph strictly contains."
+        }
+      ]
+    }
+  ],
+  "rulesDerived": [],
+  "openQuestions": [
+    "T-021, author-reserved, flagged and not resolved: this pass restored and lengthened this part introduction on 2026-07-31 while the task register still listed T-021 pending at tier red. Both forms, named per the structural rule: the pre-pass shipped introduction of 63 words, measured in the superseded records v07-part-iii and v07-the-internal-technologies, and the restored baseline introduction of 184 baseline words now shipped. The route facts offered as evidence, not adjudicated: the part heading predates this pass and the region carried shipped prose before it, so the section's route already existed and no structural line changed. Whether that reasoning holds, and whether the restored form stands or the pre-pass form returns, is the author's decision under T-021. The same-pass volume-04 lane read the same reservation as a byte freeze and held its Part II introduction unchanged; the author's ruling should reconcile the two readings."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at its ratified twenty-rule index, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

@@ -104,5 +104,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is a clean case of catalog retention limbs deciding the outcome: two categories fired, 4.3 and 4.17, and both retained on inspection because the refused alternatives are the ones a real funder proposes and the fragments are doing the narrowing."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 17,
+        "survivingVerbatim": 14,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "All twenty rules were swept and this is the cleanest section in Part I: the diff contains nothing but the three recorded punctuation repairs. R-CAUTIOUS-HALF: the demonstration and embodiment contrast keeps both halves of every pair, and the definition keeps its three denials with the committing Living with it landing. R-CATALOG-LIMBS: the original record's retention rulings on 4.3 and 4.17 were re-checked and stand; the refused alternatives are real proposals and the fragments carry the narrowing. R-PAIRED-DELETION: proof of life is defined here and used across the volume; the definition end is intact, so every later use has its antecedent. R-TENSE: the epigraph's must be real somewhere is modal, not perfect, and stands. R-SUBSTITUTION-CREDIT: the one kept shipped sentence, that a polished demonstration would not meet the requirement, is a restatement the original record documents; it bounds nothing and repairs nothing that was faulty, so no credit entry is owed and none is recorded. R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST, R-CORRECTION-SCOPE, R-LEDGER-WINS-COROLLARY: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "Nothing fires. Fourteen of seventeen baseline sentences survive verbatim and the other three differ only by the recorded punctuation repairs. The section is confirmed under the twenty-rule standard, which is a different fact from a section nobody re-read, and this entry records the re-read."
+    }
+  ]
 }

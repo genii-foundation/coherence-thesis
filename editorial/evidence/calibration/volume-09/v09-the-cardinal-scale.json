@@ -55,6 +55,16 @@
       "authorizedBy": "CTD-0105 on production metadata in reader prose.",
       "diagnosis": "A draft version number is production metadata by the definition CTD-0105 gives, and a reader has no use for it. This is a retention limb for the shipped text.",
       "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "Audit finding: both epigraphs quote sentences Volume VIII's shipped text does not currently contain.",
+      "evidence": {
+        "baseline": "The artifice already proves the tools work. We propose only to change the god they serve. ... Lay one stone. That is the whole method, and it is enough to begin.",
+        "shipped": "Volume VIII now carries: the artifice proves only that prediction and capture work. It does not prove that the same instruments can measure trust, serve consent, or resist capture. And its Appendix B closes: Lay one stone. Then find the larger work it joins."
+      },
+      "authorizedBy": "Section 9 on citations, R-PAIRED-DELETION on checking both ends before restoring either, and the standing author instruction to restore from baseline and flag afterwards.",
+      "diagnosis": "F1 recorded that the Volume VIII re-render restores the appendix close. At audit time it has not: the v08-appendix-b record holds that entire region under the structural route hold, so its baseline close is preserved inside that record rather than in the manuscript, and the first epigraph's source sentence was bounded by Volume VIII's own re-render into the prediction-and-capture form. Both epigraphs keep this volume's baseline wording under the standing instruction, and nothing is reworded, because a quotation rewritten to match a contested source becomes wrong again when the source is adjudicated. The dependency is live and author-facing."
     }
   ],
   "debtImpact": [
@@ -97,11 +107,54 @@
   ],
   "rulings": [],
   "rulesDerived": [],
-  "openQuestions": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Both epigraphs are attributed to Volume VIII and quote its baseline rather than its shipped text. The second waits on the author's route adjudication of Volume VIII Appendix B, whose restoration to the baseline close is structurally held in the open v08-appendix-b record. The first waits on a ruling about quoting the earlier form of a sentence Volume VIII has since bounded: keep it as is, mark it as adapted under CTD-0007, or match the corrected source. Restore and flag; do not reword."
+    }
+  ],
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The useful case is a cross-volume one: an epigraph quoting a sibling volume is only correct while that volume says what the epigraph says, so re-rendering one volume can silently falsify another."
-  }
+  },
+  "audits": [
+    {
+      "id": "2026-07-31-twenty-rule-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Re-read of the settled section against the immutable baseline under the full twenty-rule index, with R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS applied to this section for the first time.",
+      "substitutionTest": {
+        "survivingBaselineSentences": 3,
+        "baselineSentences": 5,
+        "method": "Clauses of five or more words from the baseline section, split on sentence-final marks plus colon and semicolon, counted as surviving when their punctuation-stripped word sequence appears verbatim in the current section. A floor, not a fidelity measure: a restored sentence that differs by one hedge or repaired mark does not count.",
+        "note": "Nonzero, so the section is not in substitution mode and the pairing test applies and was run."
+      },
+      "checked": [
+        "R-LEDGER-WINS re-search on Cardinal Scale, ICONS, Mars, lay one stone, and version marker: no item has changed since the record settled. CTD-0105 still keeps the version marker out; CTD-0030 still keeps the title matter silent on status.",
+        "R-PAIRED-DELETION: both epigraphs traced to their Volume VIII source. Both ends no longer match; recorded as F3 and Q1 rather than reworded.",
+        "R-CORRECTION-SCOPE: the CTD-0105 paydown governs only the version marker and touched nothing adjacent. Confirmed.",
+        "R-DEIXIS, R-TENSE, R-CADENCE, R-LAND: display matter, no prose to test.",
+        "Prohibited glyphs: none. Structural lines match the census."
+      ],
+      "prose": "unchanged",
+      "result": "The title block itself is confirmed under the twenty-rule standard; no rule fires against its text. The section's one defect is external: both epigraphs now quote a source state Volume VIII does not ship, recorded as F3 with the author-facing question Q1.",
+      "refrains": [
+        {
+          "phrase": "Lay one stone. That is the whole method, and it is enough to begin.",
+          "count": 2,
+          "instances": "the second epigraph; the close of The Invitation to Test the Design",
+          "note": "Both instances quote Volume VIII, so one author decision, the Appendix B route and wording adjudication, settles both instances and their source at once. Child record v09-5-the-invitation-lay-one-stone cites this anchor."
+        },
+        {
+          "phrase": "For the ones not yet born.",
+          "count": 2,
+          "instances": "the dedication; the final line of the volume",
+          "note": "Intentional ritual repetition under the volume card. No edit proposed and none needed."
+        }
+      ]
+    }
+  ]
 }

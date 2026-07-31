@@ -8,21 +8,29 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["for the first time in history", "the seed has been planted", "first scale", "production note", "final-pass draft"],
-    "itemsRead": ["CTD-0105", "CTD-0004", "CTD-0076", "CTD-0050"],
+    "terms": [
+      "for the first time in history",
+      "the seed has been planted",
+      "first scale",
+      "production note",
+      "final-pass draft"
+    ],
+    "itemsRead": [
+      "CTD-0105",
+      "CTD-0004",
+      "CTD-0076",
+      "CTD-0050"
+    ],
     "outcome": "CTD-0105 forbids restoring the production note the baseline carries after the end of the book, and it is not restored. CTD-0004 governs the priority phrase, which the baseline uses twice here. CTD-0076 requires the uppercase singular Scale, so the pass's capitalization stands against the baseline's lowercase."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -91,43 +99,126 @@
       "producedRule": "R-CADENCE"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0105", "effect": "paydown preserved", "note": "The baseline carries an internal production note in a blockquote after the stated end of the book. CTD-0105 requires its removal from reader-facing prose and records that a production note also breaks audio word timing. The prior pass removed it and the re-render does not restore it. CTD-0050 continues to hold the obligations that note carried." },
-    { "id": "CTD-0004", "effect": "reduced from two occurrences to one, item unchanged", "note": "The baseline uses the priority phrase twice in this section. The unhedged instance, that coherence for the first time in history is something we can cultivate, is rendered as coherence is now something we can cultivate, which keeps the temporal claim and drops the assertion of historical priority. This is the disposition already recorded for the Sprout. The hedged instance, humanity may now, for the first time, possess enough understanding, is restored, because the card records the phrase's fate as an open author decision and deleting every occurrence would resolve it by erasure. Reduction of recurrence is editorial. Resolution is not." },
-    { "id": "CTD-0076", "effect": "paydown preserved", "note": "The pass's uppercase the first Scale is kept against the baseline's lowercase the first scale." }
+    {
+      "id": "CTD-0105",
+      "effect": "paydown preserved",
+      "note": "The baseline carries an internal production note in a blockquote after the stated end of the book. CTD-0105 requires its removal from reader-facing prose and records that a production note also breaks audio word timing. The prior pass removed it and the re-render does not restore it. CTD-0050 continues to hold the obligations that note carried."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reduced from two occurrences to one, item unchanged",
+      "note": "The baseline uses the priority phrase twice in this section. The unhedged instance, that coherence for the first time in history is something we can cultivate, is rendered as coherence is now something we can cultivate, which keeps the temporal claim and drops the assertion of historical priority. This is the disposition already recorded for the Sprout. The hedged instance, humanity may now, for the first time, possess enough understanding, is restored, because the card records the phrase's fate as an open author decision and deleting every occurrence would resolve it by erasure. Reduction of recurrence is editorial. Resolution is not."
+    },
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "The pass's uppercase the first Scale is kept against the baseline's lowercase the first scale."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the thirteen rules",
+      "text": [
+        "We have come the whole way down and most of the way back up. From the crisis, to the pattern beneath it, to the biology beneath that; from why a relational creature cannot organize a civilization against its own nature, to what becomes possible if it organizes around that nature instead.",
+        "What remains is not a conclusion. It is an opening.",
+        "This book has made an argument, but the argument was never the point. The point is the recognition the argument exists to allow: that the future of civilization will not be decided by how much intelligence we build, but by whether we become coherent enough to wield it; and that coherence is now something we can cultivate, carry, and tend on purpose.",
+        "If that recognition has landed, then the rest is not belief. It is work.",
+        "The invitation, therefore, is not to agree. It is to investigate. Not to join a movement, but to test a question that belongs to everyone: *is coherence, in fact, the substrate a viable civilization requires; and if it is, what would it take to build the means of cultivating it?*",
+        "Different people will answer that invitation differently, and all of them are needed. Scientists, to put the foundational claim under real and hostile scrutiny: to try to break it, honestly. Builders and technologists, to make the infrastructure sovereign, open, and impossible to capture. Mentors and elders, to carry through PURPOSEFUL's Doors the wisdom that no network can generate and only people can transmit. Communities and the leaders who hold them, to risk becoming the first Scale. And those with resources, to fund not a product or a return, but the patient, falsifiable work of finding out whether any of this is true. And to do so on terms that protect the experiment from the very extraction it exists to outgrow.",
+        "None of this is guaranteed. The thesis may be wrong. The first community may not hold. The measurement may not survive contact with the skeptics it must invite. This book promises none of it.",
+        "It promises only that the question is real, that the stakes are real, and that humanity may now, for the first time, possess enough understanding to begin participating consciously in its own maturation. Until now we have left it to accident and to force.",
+        "The future is not yet written.",
+        "But we are, all of us, already writing it: in every system we build, every nervous system we steady or fray, every bit of trust we extend or betray. The only question is whether we do it knowingly.",
+        "This is the invitation: to do it knowingly. To help cultivate the substrate. To tend the soil from which a more coherent civilization might, if we are wise and fortunate and willing, actually grow.",
+        "*The seed has been planted. What it becomes depends on who tends it.*",
+        "*end of Volume One*"
+      ],
       "reasoning": [
-        { "kind": "applied", "note": "R-LEDGER-WINS. Three items reached this section and each changed a disposition: one forbade a restoration outright, one required keeping the prior pass's capitalization, and one shaped how many times a phrase may appear without resolving whether it may appear at all." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT. Eight em dashes. Three introduced a specification or an enumeration and became colons. One separated the two halves of the display question and became a semicolon, since both halves are independent and equal in weight and a fourth comma would have lost the pair. One added a final condition to the funders sentence and became a period, continuing the paragraph's infinitive fragments. One separated a contrast and the syntax was rewritten under R-LAND. Two were decorative display marks in the end matter and the prior pass's removal of them stands." },
-        { "kind": "applied", "note": "R-LAND on the promise sentence. The baseline trails a long contrastive modifier past the paragraph's strongest beat. Promoted to its own sentence, which ends the paragraph on accident and to force rather than on a qualification." },
-        { "kind": "kept", "note": "The prior pass's removal of the production note, its uppercase Scale, and its undecorated end-of-volume line. All three are correct and two are required by the ledger." },
-        { "kind": "verified", "note": "The protected line The seed has been planted. What it becomes depends on who tends it survived the prior pass and survives this one. All five of the volume's protected lines are present." },
-        { "kind": "restored", "note": "Three two-beat pairs, the categorical claim about what decides the future, the five-role litany with its infinitives and its three weakened claims, the promise pair with its subject, the reader's agency in writing the future, the closing three-beat with its polysyndeton, and the display question's in fact and build the means of." }
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. Three items reached this section and each changed a disposition: one forbade a restoration outright, one required keeping the prior pass's capitalization, and one shaped how many times a phrase may appear without resolving whether it may appear at all."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes. Three introduced a specification or an enumeration and became colons. One separated the two halves of the display question and became a semicolon, since both halves are independent and equal in weight and a fourth comma would have lost the pair. One added a final condition to the funders sentence and became a period, continuing the paragraph's infinitive fragments. One separated a contrast and the syntax was rewritten under R-LAND. Two were decorative display marks in the end matter and the prior pass's removal of them stands."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LAND on the promise sentence. The baseline trails a long contrastive modifier past the paragraph's strongest beat. Promoted to its own sentence, which ends the paragraph on accident and to force rather than on a qualification."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass's removal of the production note, its uppercase Scale, and its undecorated end-of-volume line. All three are correct and two are required by the ledger."
+        },
+        {
+          "kind": "verified",
+          "note": "The protected line The seed has been planted. What it becomes depends on who tends it survived the prior pass and survives this one. All five of the volume's protected lines are present."
+        },
+        {
+          "kind": "restored",
+          "note": "Three two-beat pairs, the categorical claim about what decides the future, the five-role litany with its infinitives and its three weakened claims, the promise pair with its subject, the reader's agency in writing the future, the closing three-beat with its polysyndeton, and the display question's in fact and build the means of."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],
-
   "debtAudit": {
     "id": "CTD-0108",
     "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
     "result": "The existing debtImpact entries record every touched item."
   },
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-01 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Seventeenth consecutive section to need none, and the last section of continuous prose in the volume. The pattern holds to the end and concentrates: this is the section where the volume asks the reader to do something, and the pass removed the reader from it. Every finding except F6 is a form of that. The most useful case for the method is CTD-0004, because it is the first where the ledger neither permitted nor forbade a restoration but bounded it. An open author decision can be protected from erasure while its recurrence is still reduced, and holding both required treating the count and the claim as separate questions."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 18,
+      "baselineSentences": 32,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Fourteen non-surviving sentences carry the recorded repairs and restorations across the volume's densest set of two-beat pairs. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "Fires twice and is satisfied. CTD-0105 governs the production note block after the end of the book: it is not restored and nothing adjacent was touched under that licence. CTD-0076 governs the singular Scale: the pass's uppercase is kept at exactly the term. Compliant."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "Fires and is satisfied: the unhedged priority phrase is reduced with both sides quoted in the CTD-0004 debtImpact entry, the hedged instance is restored so the item cannot be resolved by erasure, and the count and the claim are treated as separate questions. Nothing cut silently."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "The seed has been planted returns to the Seed's planting and both ends are present; the protected line stands at line 737. The Roots does not occur here. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "F2 is the section's cautious-half case and is repaired: the categorical will not be decided by form stands with its committing half. Does not fire further."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The section keeps no substituted prose beyond what the record already accounts for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "The two late rules that fire, R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD, are each satisfied by the record's own debtImpact entries. Nothing else fires. No prose changed."
   }
 }

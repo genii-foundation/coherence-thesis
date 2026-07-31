@@ -1,0 +1,138 @@
+{
+  "sectionId": "v03-on-corruption-and-its-prevention-through-design",
+  "sectionHeading": "On Corruption and Its Prevention Through Design",
+  "currentHeading": "Designing for Corruption",
+  "anchor": "v03-the-constitutional-problem",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "261 baseline words to 204 shipped words, minus 22 percent, no baseline sentence surviving verbatim. The mildest delta in the chapter still conceals a full substitution: the shipped text shares no sentence with the baseline. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "sunset",
+      "dissolution provisions",
+      "ethics board",
+      "audit",
+      "Stewardship Council",
+      "Participant Assembly",
+      "structured giving"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0055",
+      "CTD-0006"
+    ],
+    "outcome": "No recorded decision governs this section; CTD-0071 is open and owns the safeguard review. The paired-deletion sweep mattered here: the restored drift section in chapter fourteen cites the sunset provisions that force renegotiation on a fixed schedule and the dissolution triggers that activate without a vote, and the shipped version of this section had hedged both mechanisms away, leaving those chapter fourteen references without their institutional antecedents. Restoring this section closes both references. The designed-for-successors close restored here is likewise the antecedent of the drift section's designing the whole system as if our successors will not share our intentions."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The mechanisms paragraph became an eight-item numbered list of seeded governance requirements.",
+      "evidence": {
+        "baseline": "Major governance decisions are published, with their reasoning, in a form participants can actually read. An independent ethics board with genuine participant representation audits, each year, the coherence between the institution's stated mission and its actual conduct. Every major governance arrangement carries a sunset, subject to renegotiation every five years ... And the founding documents contain dissolution provisions: specific, pre-committed conditions under which the network must decentralize or dissolve rather than allow itself to be captured, conditions that trigger automatically, without requiring a vote by the very people a capture would have compromised.",
+        "shipped": "1. Publish major decisions and their reasons in language participants can understand. 2. Give an independent ethics body access, resources, and genuine authority rather than ceremonial status. 3. Separate the custody of data, operation of services, and governance of standards. 4. Require conflict disclosure and recusal across every chamber. 5. Use sunset clauses for arrangements that should be reconsidered, without placing basic rights on a timer. 6. Establish accessible complaint, appeal, repair, and whistleblower processes. 7. Define conditions under which a compromised function must decentralize, pause, or end. 8. Commission regular external audits of security, discrimination, governance, and mission alignment."
+      },
+      "authorizedBy": "Rewrite; catalog 4.29 in reverse, and seeded canon answering CTD-0071's paydown criteria without the review.",
+      "diagnosis": "Items three, four, six, and eight have no baseline counterpart and match the item's paydown criteria nearly clause for clause: data-custody separation, conflict and recusal rules, complaint and whistleblower processes, external audits. That is drafting for the item's resolution, preserved here in full for ratification. As prose, the list is an argument cut into enumerable pieces inside a volume whose card assigns constitutional language, not checklist form, to this chapter. The baseline's four mechanisms return with their institutional specifics: the annual ethics audit with participant representation, the five-year sunsets over named arrangements, and the automatic dissolution provisions."
+    },
+    {
+      "id": "F2",
+      "summary": "The sabotage guard is kept. This finding runs the other way.",
+      "evidence": {
+        "baseline": "conditions that trigger automatically, without requiring a vote by the very people a capture would have compromised.",
+        "shipped": "Automatic dissolution triggers sound decisive but can themselves be gamed or activated during a crisis. Their design requires legal expertise, due process, and protection against both capture and sabotage."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT as a finding that runs the other way.",
+      "diagnosis": "The baseline presents automaticity as pure protection: no compromised electorate can block the trigger. The kept pair names the attack surface the mechanism itself creates, a trigger that can be gamed or fired as sabotage during a crisis, which the baseline never considers. That is a genuine fault found and repaired, not a hedge, and it is the volume card's own demand that every speculative mechanism carry a visible limit. Kept in full as its own paragraph directly after the mechanisms paragraph, where it binds the claim it corrects. Sixth credited keep in the volume.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F3",
+      "summary": "The designed-for-successors close was replaced by a rival close, and its chapter fourteen echo lost its source.",
+      "evidence": {
+        "baseline": "We cannot promise the cost will always be prohibitive. We can promise that we have designed as if our successors will not share our intentions, which is the only honest way to design anything meant to outlast its founders.",
+        "shipped": "The honest standard is not that corruption becomes impossible. It is that power remains divided, decisions remain inspectable, harmed people can act, and the institution can be corrected or ended before its purpose becomes an alibi."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The successors principle is stated twice in the baseline volume, here as a promise and in the drift section as a design method, and the restored drift section still says designing the whole system as if our successors will not share our intentions. Cutting the source while the echo survived is the asymmetric half-deletion R-PAIRED-DELETION exists to catch; the sweep found it and this restoration closes it. The shipped close is well made, before its purpose becomes an alibi is the best phrase the pass wrote in this chapter, and it is preserved here for the author; but it replaces a promise with a standard, and the promise is the baseline's claim."
+    },
+    {
+      "id": "F4",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "The drift mark, the arrangement fence, and the successors mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The drift mark introduced the definition of structural drift and became a colon. The arrangement fence interrupted the subject with a three-item enumeration, so the syntax was rebuilt to land the enumeration after the claim on a colon: sunset first, then the named arrangements. The successors mark appended a dependent which-clause and became a comma."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0071",
+      "effect": "reopened by restoration",
+      "note": "The annual ethics audit, five-year sunsets, and automatic dissolution provisions return as stated mechanisms. The shipped eight-item requirements list and the alibi close are preserved in F1 and F3 for the item's review, where the four pass-drafted safeguards can be ratified into whatever constitution the review produces."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "recorded",
+      "note": "The safeguards are again described as existing design facts. The item owns the requirements-versus-facts decision."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline with one credited keep",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The structural-drift definition with its four verbs, the design-can-make-corruption-harder claim, the four mechanisms with their institutional specifics, and the honest close on successors."
+        },
+        {
+          "kind": "kept",
+          "note": "The sabotage guard, for the reason in F2, and the current heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The eight-item list and the alibi close, quoted in F1 and F3 for ratification. The shipped drift description, emergencies become habits, informal exceptions become precedent, is a compressed rival of the baseline's four verbs and is quoted here for the author."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 290,
+        "baselineWords": 261,
+        "shippedWords": 204,
+        "deltaPercentAgainstBaseline": 11,
+        "shippedDeltaPercentAgainstBaseline": -22
+      }
+    }
+  ],
+  "openQuestions": [
+    "The restored section runs eleven percent over baseline because the credited sabotage guard is kept beside the automatic-trigger promise it bounds. The two now state a productive contradiction, automaticity as protection and automaticity as attack surface, and CTD-0071's legal review is where it resolves.",
+    "Baseline heading, On Corruption and Its Prevention Through Design; current heading, Designing for Corruption. The current form is arguably the sharper of the two; per the structural hold the question is recorded, not acted on."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The mechanisms are institutions again rather than requirements, both ends of the successors and trigger references are back, and the one finding that runs the other way stands credited beside the claim it corrects."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": []
+}

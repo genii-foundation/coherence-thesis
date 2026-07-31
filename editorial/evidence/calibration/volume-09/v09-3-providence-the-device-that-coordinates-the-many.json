@@ -92,6 +92,36 @@
       "authorizedBy": "CTD-0005, which records the subsistence conditionality conflict across the corpus.",
       "diagnosis": "The baseline formulation is self-contradicting in one sentence: it calls the floor unconditional and then conditions it on coming into coherence with yourself, and feed all who can hold themselves is the condition stated plainly. The item exists because of exactly this. The re-render keeps the shipped requirement, restores the height as a bounded and contestable stewardship role, and states the floor as belonging to everyone without condition and without measurement, which is the position the card and the item both point to.",
       "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F6",
+      "summary": "Audit finding: the corpus, an editorial term, stood in reader-facing prose at the social-credit boundary. Repaired.",
+      "evidence": {
+        "baseline": "(no baseline counterpart; the contradiction sentence is the prior pass's)",
+        "shipped": "Yet the corpus still disagrees about whether material provision depends on self-regulation, and about whether relational records may affect stewardship authority."
+      },
+      "authorizedBy": "R-REGISTER-DICTION.",
+      "diagnosis": "The same repair as the composite paragraph in What a Scale Is. Now reads: Yet the work still disagrees with itself about whether material provision depends on self-regulation. The self-disagreement is the point CTD-0005 needs stated on the page, and it is now said in the volume's own diction."
+    },
+    {
+      "id": "F7",
+      "summary": "Audit finding: the floor paragraph closed on a verb that reports construction. Repaired to the proposal register.",
+      "evidence": {
+        "baseline": "(no baseline counterpart; the sentence is the re-render's close for the floor paragraph)",
+        "shipped": "Otherwise the Currency of Presence becomes the eye it was built to refuse."
+      },
+      "authorizedBy": "Section 5's separation of vision from report, and R-REGISTER-DICTION.",
+      "diagnosis": "Was built reports a construction that has not happened, in the paragraph that guards exactly that boundary. The invitation section already makes the parallel repair, a structure designed so that, and this volume's habitual form is meant to. Now reads: the eye it was meant to refuse."
+    },
+    {
+      "id": "F8",
+      "summary": "Credit under R-SUBSTITUTION-CREDIT: the prior pass's denial of incorruptibility repaired a genuine fault in the baseline and is kept.",
+      "evidence": {
+        "baseline": "Because the network remembers, incorruptibly and on each person's own terms, who has shown up with genuine presence, the trust that ordinarily takes years between strangers becomes legible at the moment of encounter.",
+        "shipped": "That is the whole of the claim, and it should not be inflated. No record is incorruptible, and no attestation can compress years of trust into a moment."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "Incorruptibly is an engineering promise no system has kept, and compressing years of trust into a moment is the exact inflation the volume elsewhere refuses. The pass's two denials repair a genuine fault, and the re-render kept them. Volume III's Stream Three carries the corpus's open incorruptible contradiction, which is the author's to resolve; this sentence takes the bounded side, and the audit records the dependency without resolving anything. Recorded at the same weight as a loss."
     }
   ],
   "debtImpact": [
@@ -119,6 +149,11 @@
       "id": "CTD-0031",
       "effect": "no change",
       "note": "The network state comparison keeps its critical treatment requirement and the statement that a first Scale would be a pilot rather than an existence proof."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "recorded",
+      "note": "What COHERENCE would gather into is a participant-held record takes the attestation limb of the item's dichotomy as stated intent, in the conditional, while the open list in the next section keeps the unit's ontology unresolved. The ontology decision remains the author's; nothing in this section or this audit resolves it."
     }
   ],
   "generations": [
@@ -171,5 +206,32 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Three separate ledger items ruled against the baseline in this one section, which is the highest concentration in the three volumes, and each ruling changed a different kind of thing: a name, a claim about who gets fed, and a limit on what a signal can establish."
-  }
+  },
+  "audits": [
+    {
+      "id": "2026-07-31-twenty-rule-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Re-read of the settled section against the immutable baseline under the full twenty-rule index, with R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS applied to this section for the first time.",
+      "substitutionTest": {
+        "survivingBaselineSentences": 14,
+        "baselineSentences": 82,
+        "method": "Clauses of five or more words from the baseline section, split on sentence-final marks plus colon and semicolon, counted as surviving when their punctuation-stripped word sequence appears verbatim in the current section. A floor, not a fidelity measure: a restored sentence that differs by one hedge or repaired mark does not count.",
+        "note": "Nonzero, so the section is not in substitution mode and the pairing test applies and was run."
+      },
+      "checked": [
+        "R-LEDGER-WINS re-search extended to CTD-0003, which names volume-9 and had not been read into this record: now recorded in debtImpact. CTD-0043, CTD-0005, CTD-0006, CTD-0012, and CTD-0031 unchanged; every paydown holds.",
+        "R-CAUTIOUS-HALF: the boot-or-eye framing keeps both the question and the answer; the presence and presencing distinction keeps both the wager and its limits; the floor paragraph keeps both the unconditional statement and the boundary requirement. No fire.",
+        "R-CORRECTION-SCOPE: the CTD-0043 paydown governs the wallet name alone; the participant-held record paragraph around it is baseline-derived prose, not correction spillover. The CTD-0005 paydown governs the earns-the-floor formulation alone; the height survives as a bounded stewardship role. Both confirmed clean.",
+        "Modal frame checked under section 5: So the Scales would connect frames the present-tense elaboration that follows, and the exchange paragraph closes on the open terms and the political-project bound. No fire.",
+        "R-PAIRED-DELETION: the eye introduced here returns at the boundary paragraph, the floor, and the closing; recognition, the Membrane, and both minting paths resolve inside the volume. The pattern that connects depends on Volume II and is counted at the anchor in the Ninth Turn record.",
+        "R-DEIXIS and R-TENSE: no fires. R-LAND: the section lands on the eye it was meant to refuse, its own strongest beat after F7.",
+        "Prohibited glyphs: none."
+      ],
+      "prose": "changed: two edits, recorded as F6 and F7",
+      "result": "Two rules fired, R-REGISTER-DICTION on the word corpus and the vision-report boundary on was built, both repaired. One credit recorded as F8, and CTD-0003 added to the ledger trail. The section otherwise holds under the twenty-rule standard, including every ledger paydown the settlement recorded.",
+      "citesRefrainAnchor": "v09-1-the-ninth-turn-where-the-eight-have-brought-us, for the pattern that connects, counted once there with its three instances."
+    }
+  ]
 }

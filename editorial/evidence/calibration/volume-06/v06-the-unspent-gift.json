@@ -8,11 +8,18 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "anchor": "v06-the-current",
   "baseline": {
     "batchId": "2026-07-09-production-pass",
     "path": "baseline.md",
     "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 4,
+    "testableBaselineSentences": 11,
+    "note": "Standing procedure, run before any pairing test: 4 of 11 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
   },
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
@@ -99,6 +106,42 @@
           "note": "The combination the world will never hold again, the reason it goes unspent, the machinery for counting extraction, and the reserve breathing and waiting to be asked."
         }
       ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The two committing rankings are hedged under CTD-0080's recorded bound, which wins; the committing image, the reserve breathing and quietly waiting to be asked, survives at full strength."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CORRECTION-SCOPE. The bounds sit at the two rankings and nowhere else; Much of it is never spent is the recorded rendering of Most and stays at one word's width."
+        },
+        {
+          "kind": "applied",
+          "note": "R-REFRAIN-COST. The divider plus That is why coda is a volume-wide refrain, removed once by one decision. The anchor record v06-the-current carries the refrain finding with its count of eleven; this chamber cites the anchor rather than repeating the analysis."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks. The reading-path label follows Volume V's live heading, The Human Capacity We Fail to See, and the open question about the baseline's old chapter name stands."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        },
+        {
+          "kind": "kept",
+          "note": "Nothing further fires. The prose stands as generation A left it."
+        }
+      ],
+      "metrics": {
+        "words": 148,
+        "baselineWords": 192
+      }
     }
   ],
   "rulings": [],

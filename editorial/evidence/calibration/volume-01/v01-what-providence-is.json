@@ -8,14 +8,12 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "findings": [
     {
       "id": "F1",
@@ -95,7 +93,6 @@
       "producedRule": "R-REGISTER-DICTION"
     }
   ],
-
   "debtImpact": [
     {
       "id": "CTD-0004",
@@ -118,29 +115,109 @@
     "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
     "result": "The passage distinguishes the scale of the need from Providence's current size."
   },
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "We have roads that move goods. Power grids that move energy. Communication networks that move information. Each became, in its time, invisible infrastructure: the kind a civilization stops noticing precisely because everything else comes to depend on it.",
+        "Providence proposes a kind of infrastructure we have never deliberately built, infrastructure for the things that actually hold a society together but have never had a network of their own: purpose, trust, mentorship, contribution, and collective intelligence.",
+        "Beneath every economy lies a culture. Beneath every culture lies a set of relationships. Beneath every relationship lies a nervous system. And beneath every enduring civilization lies a capacity for coherence. Providence is an attempt to build infrastructure at *that* layer: the deepest one, the one everything else rests on, the one no civilization has ever tended on purpose.",
+        "So Providence is best understood not as a government, a company, a social network, or a technology platform. Those are mechanisms it might use. It is closer to this: **the forward-facing architecture of a larger effort, the application through which people find one another and the trust between them can actually move.** In practice that means aligning people by what they most genuinely share: their values, their intentions, the impact they hope to have. It means letting them find each other on that basis, and letting their real interactions, over time, become a kind of currency between them. It is the part that faces the world, and the part this work is named for; nearly everything else in this book exists either to feed it or to follow from it.",
+        "A word about the size of this, because stated plainly it can sound like audacity. It is not. To speak of infrastructure for the largest network of purpose, mentorship, and contribution the world has known is not a claim about what Providence *is*. It is a description of the *need*: the size of the absence where such infrastructure ought to exist and does not. Naming that need is why these books are being written. Attempting, humbly and fallibly, to help build toward it is why the structure is being made. The posture is not conquest, and not certainty. It is reverent humility, an effort to help a species move in a better direction at the moment its power is outrunning its wisdom. The need is vast. The attempt is small, and knows it.",
+        "But infrastructure carries; it does not create. A network can move trust between people only if trust was grown in them first. And the growing is older, slower, and quieter than any network. So beneath the visible architecture of Providence sits the ground that holds it: the developmental work this book calls **PURPOSEFUL.**",
+        "This rests on a single, almost too-simple realization, and the whole of the Flower turns on it:",
+        "*Civilization is not, in the end, built through institutions, technologies, or economies. It is built through the successful cultivation and coordination of human potential.*",
+        "Institutions, technologies, and economies are how that cultivated potential is organized. But they are downstream. Upstream is always a human being who discovered what they were capable of, found others to build with, and contributed something that outlasted them. Civilizations flourish when they cultivate and coordinate human potential well, and decline when complexity outgrows their capacity for development, trust, and collaboration.",
+        "The work therefore has two movements, the ground and the flower. PURPOSEFUL cultivates human coherence; Providence carries it. We take them in turn, the ground first, because nothing travels that was never grown.",
+        "---"
+      ],
       "reasoning": [
-        { "kind": "applied", "note": "R-PUNCT-STRUCT. Ten em dashes. Five introduced a specification or an enumeration and became colons. Three fenced an appositive that renames the preceding noun phrase and became commas, including the one inside the bold display line, where a second colon would have collided with the colon introducing it. One separated two movements and became a period. One carried a burden belonging to structure and the syntax was rewritten: the appositive naming the two movements moved to the sentence that introduces them." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT again in the size paragraph. Reverent humility takes a comma rather than a colon because the same paragraph already specifies with a colon four sentences earlier, and section 3 forbids punctuation theater as firmly as it forbids the wrong mark." },
-        { "kind": "kept", "note": "The unchanged heading and the unchanged closing pair, The need is vast. The attempt is small, and knows it. The card names the second among the images that must not be explained away, and the pass left it intact." },
-        { "kind": "restored", "note": "The four-fold descent, the we have that sets up the infrastructure never deliberately built, the triad naming that layer, both hedged framings of the definition, the three definite articles in the display line, the whole size disclaimer, the display realization on its own line, the downstream half of the upstream figure, and the ground and the flower in the closing." }
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Ten em dashes. Five introduced a specification or an enumeration and became colons. Three fenced an appositive that renames the preceding noun phrase and became commas, including the one inside the bold display line, where a second colon would have collided with the colon introducing it. One separated two movements and became a period. One carried a burden belonging to structure and the syntax was rewritten: the appositive naming the two movements moved to the sentence that introduces them."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT again in the size paragraph. Reverent humility takes a comma rather than a colon because the same paragraph already specifies with a colon four sentences earlier, and section 3 forbids punctuation theater as firmly as it forbids the wrong mark."
+        },
+        {
+          "kind": "kept",
+          "note": "The unchanged heading and the unchanged closing pair, The need is vast. The attempt is small, and knows it. The card names the second among the images that must not be explained away, and the pass left it intact."
+        },
+        {
+          "kind": "restored",
+          "note": "The four-fold descent, the we have that sets up the infrastructure never deliberately built, the triad naming that layer, both hedged framings of the definition, the three definite articles in the display line, the whole size disclaimer, the display realization on its own line, the downstream half of the upstream figure, and the ground and the flower in the closing."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
     "conclusion": "No new rule required. Twelfth consecutive section to need none. F1 is the first instance in the volume of a deletion that leaves a sentence referring to material no longer present, and it is worth carrying forward because it is the only finding so far that a reader could catch without the baseline. The rest follow the established pattern, with F3 the most instructive: the pass kept a disclaimer and removed the claim it disclaimed, which is what happens when a passage is compressed sentence by sentence without asking what each sentence was defending."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Providence",
+      "forward-facing architecture",
+      "largest network",
+      "reverent humility"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0055",
+      "CTD-0057"
+    ],
+    "outcome": "All three items were read on 2026-07-30 and re-read for this audit. Historical novelty, infrastructure properties, and later implementation remain unresolved; the passage distinguishes the scale of the need from Providence's current size and represents nothing as verified."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 21,
+      "baselineSentences": 31,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Ten non-surviving sentences carry the recorded repairs and restorations. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "F1's upstream and downstream figure is the section's own paired case and both ends are restored. The ground and the flower handoff pairs with PURPOSEFUL's opening and both ends are present in the shipped manuscript. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "F3 is the section's cautious-half case and is repaired: the ambitious phrase stands and the disclaimer once again disclaims something visible. Does not fire further."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The section keeps no substituted prose beyond what the record already accounts for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules. No prose changed."
   }
 }

@@ -129,5 +129,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the clearest instance in the orientation of a ledger item with two permitted paydowns where the pass chose one and then exceeded it. The reconstruction discipline that worked was to read the item's paydown criteria as a bound on the restoration rather than as a licence for the deletion already made."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 20,
+        "survivingVerbatim": 12,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CORRECTION-SCOPE: the CTD-0037 rebuild was measured against the item's named span, the promise of a question-answerable work. The intention framing, the capability disclaimer, and the judgment test all sit inside that span. One baseline clause fell outside it and was cut anyway: so that whoever arrives next inherits not only the argument but the accumulated experience of the attempt. The clause states the intention's consequence, not a capability, so the correction did not reach it, and it was restored inside the intention frame on 2026-07-31. R-LEDGER-WINS-COROLLARY: the scrutiny sentence, Publishing also exposes the argument to scrutiny before any of it acquires institutional power, and the conditionality sentence, Every step remains conditional on evidence and consent, are both seeded rather than baseline-paid; the baseline contains neither, and their agent provenance should be visible, which this entry now makes explicit. R-CAUTIOUS-HALF: the three-line strategy keeps its committing gloss, and the first move pair keeps both the denial and the claim. R-PAIRED-DELETION: building intelligence, living record, and the currency horizon were swept; the currency horizon's antecedents in the economic chapters stand. R-SUBSTITUTION-CREDIT: the kept judgment test bounds under CTD-0037, no credit owed, recorded explicitly. R-TENSE, R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST: nothing fires.",
+      "prose": "One clause restored. The baseline's so that whoever arrives next inherits not only the argument but the accumulated experience of the attempt now closes the intention sentence, ahead of the capability disclaimer, which is untouched. The CTD-0037 paydown is unaffected: the sentence it modifies is already framed as intention, and the disclaimer that follows it still bounds the whole.",
+      "conclusion": "One R-CORRECTION-SCOPE repair applied and recorded; otherwise the restoration holds under the full twenty-rule index. Twelve of twenty baseline sentences survive verbatim, with the remainder tracing to six recorded punctuation repairs, the CTD-0037 rebuild, and the two seeded sentences now explicitly attributed.",
+      "corrections": [
+        "The original record's account of the CTD-0037 rebuild did not itemize the loss of the inheritance clause, which made the rebuild look coextensive with the item when it was one clause wider. The clause is back and the item's paydown is intact."
+      ]
+    }
+  ]
 }

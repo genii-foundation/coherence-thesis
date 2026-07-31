@@ -123,6 +123,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the concessive pair keeps both halves, The work is uneven. Some of these deployments are serious; others are theatrical., and the restored landing Not aspirational. Operational. is the committing close a compression pass had cut. Intact.",
+      "R-PAIRED-DELETION: Pol.is is minted here and returned to in Practices Beyond Representation, where vTaiwan's tool is introduced briefly in Chapter Six; both ends present in both texts. The named deployments, All Our Ideas, the habermas machines, the California wildfire platform, are section-local and self-contained by the term sweep.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0019's sourcing requirement stands open behind Q1 with every named claim identical to the baseline.",
+      "R-SUBSTITUTION-CREDIT: both kept punctuation repairs are R-PUNCT-STRUCT compliance, and the restoration of over two thousand against the pass's more than two thousand is fidelity, not improvement. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; nothing to count.",
+      "R-DEIXIS: This is what intelligence in service of coherence looks like in practice holds the reader at the live demonstration. No instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, including the restored two-word landing. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

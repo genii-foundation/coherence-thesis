@@ -100,5 +100,29 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Catalog 4.22 fired and the retention limb held, which by Part II has happened often enough to be worth naming as a pattern: this volume's lists are usually indexes into later chapters, and an index that gestures at completeness is not the same defect as a list that claims it."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 16,
+        "survivingVerbatim": 7,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the platform and protocol distinction keeps both mechanisms, and the protocol requirement keeps its committing form, must operate according to protocol logic, beside the acknowledged difficulty in the open question. R-PAIRED-DELETION: platform logic, protocol logic, and internal economy were swept; platform logic occurs three times in baseline and three times in the current text, all within this volume's economic chapters, ends aligned. R-CORRECTION-SCOPE: no recorded correction reaches this body. R-LEDGER-WINS-COROLLARY: nothing seeded. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass beyond the display labels, which are held under the structural rule, so no credit is owed, stated explicitly. Citations re-verified intact through the repairs: Benkler, the economic anthropology tradition, and Antony Page and Robert Katz on the benefit corporation framework. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Seven of sixteen baseline sentences survive verbatim; the remainder are the nine em dash glyphs repaired across six sites, the parenthetical citation conversion, and the renamed display labels, all attributed. No prose change required.",
+      "corrections": [
+        "The original record itemized three em dash repairs; the section carried nine glyphs across six sites. The remaining three are unitemized comma-pair appositive repairs in the Research Lineages and Open Questions material: the non-monetary motivations list, the exchange-of-value aside, and the external economic lives list, each consistent with R-PUNCT-STRUCT. A serial and before the intrinsic satisfaction of contribution completes the first list.",
+        "One parenthetical citation aside, purpose-driven enterprise law including Antony Page and Robert Katz's work, stands as a comma clause. Parentheses are not prohibited; the conversion is consistent with the surrounding appositive repairs and the citation names are intact. Kept.",
+        "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
+      ]
+    }
+  ]
 }

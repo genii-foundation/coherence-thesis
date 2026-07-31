@@ -66,6 +66,19 @@
       "producedRule": "R-LEDGER-WINS"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F4",
+      "summary": "The diagnosis refusal and the controls paragraph repair faults the baseline carried, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "Psychology offers an uncomfortable construct — the **dark triad** ... Such people are a minority in any population. ... In a trust network whose currency is presence, authority flows not to whoever will do anything to win it but toward those who can *presence depth and steady the nervous systems around them.*",
+        "shipped": "Personality assessment of public figures from a distance is not evidence, and this book does not offer any. ... That intent is not self-executing, and it carries an obvious failure mode: felt presence is vulnerable to charisma, to bias, and to performance ... equal standing, bounded roles, evidence tied to conduct rather than impression, conflicts review, due process, appeal, rotation, and independent oversight ... in which no group can convert its preferred signs of virtue into unchecked power."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "Two repairs of one family. The baseline offered the triad as an explanation of these hands, which is distant diagnosis presented as evidence, and it stated Providence's alternative gradient in the indicative, as a fact about where authority flows, which was the same self-certifying move the volume indicts in the systems it audits. The shipped text refuses the diagnosis explicitly and converts the alternative into an intent with a named failure mode and the controls any real mechanism needs, ending on the sentence that guards against Providence itself, no group converting its preferred signs of virtue into unchecked power. The prior record kept both in notes; they are credited here as the section's largest single improvement over its baseline.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0093",
@@ -103,6 +116,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: why these hands, the gradient with its water image, the sauna parallel, the re-cutting claim, and the engineering problem stated as a problem. No prose changed by this audit. One substitution credit added as auditFindings F4 covering the diagnosis refusal and the controls paragraph as one family. R-CORRECTION-SCOPE: CTD-0093's refusal of distant diagnosis was re-read against the restored gradient argument and does not reach it, exactly as F1 argued, since the gradient claims no one's pathology. R-CAUTIOUS-HALF: the intent-not-self-executing hedge and the committing engineering-problem statement both stand. R-PAIRED-DELETION: the sauna parallel's other end lives in the prologue, the gradient re-cut recurs at the Scales of the Dragon, and the conscienceless recur at the fork; all present. R-DEIXIS, R-TENSE, R-REFRAIN-COST checked and silent."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

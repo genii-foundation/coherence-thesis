@@ -86,5 +86,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. To listen for an answer in place of to be answered, and the dropped in fact, are the recorded 4.13 and section 5 judgments; R-CAUTIOUS-HALF is told apart from them exactly as the rule requires, since a recorded decision removed the committing form. Relationship rather than metaphor is the recorded R-NEGATION-STACK repair.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The never-silent paragraph is pass-authored and moves the burden of proof where it belongs.",
+        "evidence": {
+          "baseline": "a disciplined attentiveness to the many intelligences we share the world with, most of which our culture has trained us not to notice",
+          "shipped": "Other species have never been silent. Birds alarm, bees dance, roots exchange signals, and bodies orient toward threat and care. The difficulty is learning what can responsibly be inferred from forms of speech unlike our own."
+        },
+        "note": "The baseline asserts unnoticed intelligences; the kept paragraph cites four forms of animal signalling that are ordinary science, then locates the real problem in inference rather than in whether anyone is speaking. It makes the tenet's strangeness cheaper to accept without weakening it. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

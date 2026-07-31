@@ -69,7 +69,7 @@
       "id": "F3",
       "summary": "The self-epigraph's em dash and its attribution dash were both replaced, and neither can be restored under the punctuation standard.",
       "evidence": {
-        "baseline": "already writing it — in every system we build ... — The Coherence Thesis, Vol. I",
+        "baseline": "already writing it [mark] in every system we build ... [mark] The Coherence Thesis, Vol. I",
         "shipped": "already writing it: in every system we build ... *The Coherence Thesis, Vol. I*"
       },
       "authorizedBy": "R-PUNCT-STRUCT.",
@@ -120,6 +120,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS. The record's quoted evidence was mechanically cleaned to the [mark] placeholder earlier tonight; that cleanup was not an audit, this is.",
+    "checks": [
+      "R-REFRAIN-COST: the chapter epigraph's attribution is one of the nine instances anchored in v02-the-crisis-beneath-the-crises, and F3's finding that neither of its marks can be restored under the punctuation standard is the same CTD-0007 pricing that anchor carries. The restored radically underdeveloped relative to what the present moment requires is the third instance of the design-space refrain counted in v02-a-note-to-the-builders. Cited, not re-counted.",
+      "R-CAUTIOUS-HALF: the double truth keeps both halves byte-identical: There is more happening than is visible from any single vantage. There is also less than the urgency requires. Both are true at once, and the chapter has to hold both. The hedge and the commitment are the section's method, and both survive.",
+      "R-PAIRED-DELETION: the restored clause whose participants do not yet know they are a field is the echo end of the baseline section heading below it; the current heading, A Field Still Finding Itself, is census-held structure, so the echo is now imperfect at the structural end. Q1 already holds that for the author; nothing rewired, per the rule's prohibition on rewording a reference to avoid its antecedent.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the kept refusals and closing paragraph were baseline kept by the pass. No credit instance.",
+      "R-DEIXIS: This chapter turns to the people doing the work and As an honest report on the state of a field hold the reader at the live survey. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, both refrains are cited to their anchors, and the heading echo's imperfection stays flagged as Q1. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

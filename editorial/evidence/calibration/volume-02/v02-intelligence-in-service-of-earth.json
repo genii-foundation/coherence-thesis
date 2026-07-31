@@ -135,6 +135,23 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: the substrate refrain's second instance, the technology does not choose. The conditions surrounding the technology choose., is anchored in v02-what-the-first-volume-left-in-our-hands; cited, not re-counted.",
+      "CTD-0069, author-reserved: the Indigenous stewardship material, including the six percent and eighty percent figures and the pattern-naming sentence, is restored at full baseline strength and nowhere narrowed. The attribution question stays with the author behind Q2, per the standing instruction to restore fully and never narrow to avoid enlarging the item.",
+      "R-CAUTIOUS-HALF: the concessive pair keeps both halves: This is fragile and uneven concedes, and the restored pattern sentence, The pattern is one of intelligence serving stewardship rather than extraction, commits. The NCEAS caveats on taxonomic gaps survive beside the capability claims.",
+      "R-PAIRED-DELETION: the 2025 NCEAS assessment and the COP16 programming named here are the ends the no-footnotes chapter's verification list cites; both ends present in both texts. The substrate principle in action ties to the anchored refrain rather than dangling.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the kept colon is R-PUNCT-STRUCT compliance and the kept COP16 sentence was baseline. No credit instance.",
+      "R-DEIXIS: what is most interesting about this field holds the reader inside the live survey. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, the CTD-0069 material stands at full baseline strength, and both verification ends resolve. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

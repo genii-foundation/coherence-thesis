@@ -86,5 +86,12 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The useful case here is that a baseline can be wrong about display matter and right about prose, which is exactly the split R-LEDGER-WINS describes."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. This record measured the bold title label region, which the corrected boundaries also produce.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The pre-title italic line, The Coherence Thesis interpunct Volume VII, remains unrestored by explicit decision renewed here: it precedes the volume's first structural line, and prose in that position risks a preamble region no census line covers. Recorded against CTD-0035 rather than acted on. The collapsed title matter stands per CTD-0084; Q1 on the B.O.W display form remains the author's under CTD-0085."
   }
 }

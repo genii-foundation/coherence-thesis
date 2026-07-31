@@ -115,5 +115,28 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Catalog 4.4 fired on three identical semicolon pairs and the retention limb held because the repetition is the rule's form. Where a construction states a division of authority, its uniformity is the point."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 9,
+        "survivingVerbatim": 5,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: each permitted function keeps both its capability and its constraint, which is the section's own two-sided architecture, and the assistive definition keeps its committing test. R-PAIRED-DELETION: sensemaking, translation, matching, and governance support were swept; the four functions pair with the prohibitions chapter and the first application, ends aligned. R-CORRECTION-SCOPE: the kept constraints re-verified at width; each bounds its own function's paragraph and none rewrote restored text. R-LEDGER-WINS-COROLLARY re-run: the four kept constraint sentences were searched for in the immutable baseline and are not there; seeded canon with provenance visible in the original kept note. One further seeded clause found unitemized and attributed below. Bounding earns no credit, stated explicitly. R-SUBSTITUTION-CREDIT: nothing else kept, no credit owed. The original record's open question on deliberate accumulation stands and this audit confirms the pattern: every kept constraint sits beside a restored capability. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Five of nine baseline sentences survive verbatim; the remainder are the seven em dash glyphs repaired across four sites and the seeded constraint sentences, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried seven em dash glyphs across four sites, not two. The three appositive pairs at information sources, potential connections, and governance processes stand as comma pairs, and the single dash at the permitted functions are assistive became a period, giving the definition its own sentence.",
+        "One seeded clause the original record did not itemize: and the work must remain intelligible, voluntary, and reversible, appended to the assistive definition. Not in the baseline; CTD-0055 family bounding consistent with the four recorded constraint sentences; provenance now visible. Kept as bounding, no credit."
+      ]
+    }
+  ]
 }

@@ -109,5 +109,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The instructive case is a paragraph whose removal made a ledger item worse: CTD-0055 wants safeguards stated as requirements, and the baseline paragraph that did so for the whole chapter was cut. A paydown can be undone by compression elsewhere without anyone touching the item."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 14,
+        "survivingVerbatim": 12,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the chapter keeps both the six named capture risks and the standing statement that its safeguards are current judgments requiring refinement; commitment and concession both survive. R-PAIRED-DELETION: the six capture categories were swept; founder capture, financial capture, and technological capture each recur as the following sections and all ends stand. R-CORRECTION-SCOPE: the CTD-0007 epigraph decision re-verified at width, the attribution line alone. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0055 re-verified, the proposals stand as judgments requiring refinement. R-SUBSTITUTION-CREDIT: the kept heading Founders, Funders, and Technical Dependence is route bounding recorded in the original open question, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twelve of fourteen baseline sentences survive verbatim; the remainder are the capture-category comma pair with its serial and and the attribution form, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried three em dash glyphs, one appositive pair around the six capture categories standing as a comma pair with a serial and, and the epigraph attribution dash resolved by the CTD-0007 form. The epigraph text itself is byte identical to the baseline; no em dash in it became a period."
+      ]
+    }
+  ]
 }

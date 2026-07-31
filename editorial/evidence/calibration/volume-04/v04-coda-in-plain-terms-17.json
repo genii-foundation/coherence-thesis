@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-coda-in-plain-terms-17",
+  "editorialId": "volume-04",
+  "sectionHeading": "**Coda: In Plain Terms**",
+  "currentHeading": "(no current counterpart; the heading is absent from the manuscript)",
+  "status": "open",
+  "opened": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The disposition of the repeating coda device is a developmental decision reserved to the author and adjudicated once, at the anchor record.",
+  "anchor": {
+    "sectionId": "v04-coda-in-plain-terms",
+    "rule": "R-REFRAIN-COST",
+    "note": "The twenty-eight coda instances are one device, one promise, and one removal, so under R-REFRAIN-COST the run is recorded once, in the anchor record v04-coda-in-plain-terms, and this child record cites that analysis instead of repeating it. The anchor holds the run-level ledger search, the four findings, the instance index, the route status, and the referral of the device's disposition to the author under CTD-0095. This child exists so that every baseline section of the volume carries a calibration record under the twenty-rule standard, and it records only what is particular to this instance."
+  },
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "instance": {
+    "ordinal": "17 of 28",
+    "baselineHeadingLine": 1042,
+    "afterChapter": "Who Builds This and What It Costs Them",
+    "baselineWords": 151,
+    "baselineSentences": 9,
+    "opening": "Plainly: someone pays for this in years, money, and comfort, and pretending otherwise is a lie that burns people out. Bu ..."
+  },
+  "scopeUnderT018": "The heading has no counterpart in the current manuscript, and under the T-018 task boundary an absent heading is out of scope for restoration: the loss is recorded and nothing is restored. Recreating the section would mint a public route and require a continuity lineage change, which is an author-facing continuity decision, not an editorial one. The historical route already resolves through publishing/continuity/section-lineage.json, which folds this id into the section that follows it.",
+  "substitutionTest": {
+    "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+    "method": "Normalize both texts, split into sentences of three or more words, and count baseline sentences appearing verbatim in the current section.",
+    "result": "151 baseline words in 9 sentences against zero current words. The section is absent rather than substituted: there is no shipped text to pair against, so the pairing test does not apply and substitution mode does not describe the state. The zero is a structural loss, recorded once for the whole run in the anchor."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Coda: In Plain Terms",
+      "Cardinal Scale",
+      "Toward the coherent substrate",
+      "enterprise side",
+      "high-end experiences"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0056",
+      "CTD-0074",
+      "CTD-0095"
+    ],
+    "outcome": "The run-level search is recorded in the anchor and was re-run for this instance's distinctive terms. CTD-0095 governs the device and requires author adjudication of the four-way disposition. Nothing in the ledger licenses restoring this instance, and the items the anchor names point uniformly against wholesale restoration. The anchor's F4 names this instance's second unit as material found nowhere else in the volume: the account of Purposeful's enterprise side, the high-end experiences created for the mentors and frontline workers of this era so that the people carrying the pivot are sustained rather than spent. The claim also touches CTD-0056 and CTD-0072, which require Purposeful program status to be distinguished from roadmap."
+  },
+  "findings": [],
+  "findingsAtAnchor": "The run's findings are F1 through F4 in the anchor record. No finding is particular to this instance beyond the notes recorded here.",
+  "debtImpact": [
+    {
+      "id": "CTD-0095",
+      "effect": "paydown preserved, adjudication referred to the author at the anchor",
+      "note": "The device this section instantiated received a remove-and-integrate disposition on 2026-07-10 and the heading is absent from the current manuscript. This audit restores nothing and defers the four-way disposition of retain, integrate, rewrite, or remove to the author's adjudication of the item, recorded once at the anchor."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "no new exposure",
+      "note": "The enterprise-side program description is not restored, so no undated Purposeful program claim enters the manuscript from this instance."
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The disposition of this instance is subsumed in the anchor's referral of CTD-0095 to the author: retain, integrate, rewrite, or remove, decided per instance rather than wholesale. Until that ruling, the baseline text at the line recorded in instance.baselineHeadingLine remains the authoritative copy of what was removed."
+  ],
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First record for this instance. The damage report suffixes repeated headings, so the run's twenty-seven later instances reported as recordless while the anchor carried their analysis. This record closes that gap without moving the analysis.",
+      "checked": "T-018 scope, the substitution count, the run-level ledger search re-run for instance terms, R-REFRAIN-COST anchoring, and R-CANON-DELETION-RECORD, which the anchor satisfies for the run by quoting the removed claims against CTD-0095, CTD-0074, and CTD-0030. No prose was changed anywhere in the manuscript for this section.",
+      "conclusion": "Out of scope for restoration under T-018, recorded and left absent. Nothing fires against the current manuscript because the section has no current text."
+    }
+  ]
+}

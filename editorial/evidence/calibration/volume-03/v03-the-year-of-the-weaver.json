@@ -1,0 +1,148 @@
+{
+  "sectionId": "v03-the-year-of-the-weaver",
+  "sectionHeading": "The Year of the Weaver",
+  "currentHeading": "The Year of the Weaver",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "291 baseline words to 94 shipped words, minus 68 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Maren",
+      "composite",
+      "three doors",
+      "seven initiates",
+      "Currency of Presence",
+      "four streams"
+    ],
+    "itemsRead": [
+      "CTD-0015",
+      "CTD-0056",
+      "CTD-0073"
+    ],
+    "outcome": "No recorded decision governs this section. CTD-0015 is an open query about what the Maren vignettes record and mint; the baseline governs, the restoration proceeds, and the item is flagged in every section of this chapter that engages it. The paired-deletion sweep confirmed the third-introduction hinge and its chapter-twelve antecedent are both restored in this batch."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's thesis, that the volume's burden can only be felt and not merely argued, was deleted.",
+      "evidence": {
+        "baseline": "the whole burden of this volume rests on a claim that can only be felt and not merely argued: that a coordination device built on presence is not an abstraction but a lived reality",
+        "shipped": "Architecture can show how parts fit. It cannot show what belonging feels like or whether an institution remains humane when an ordinary day presses against it."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped couplet is a good paraphrase of the epigraph, but the deleted sentence is the chapter's claim about the whole volume, and it is what justifies telling the story in detail and without hurry. Without it the design fiction is illustration; with it the design fiction is the argument."
+    },
+    {
+      "id": "F2",
+      "summary": "The walk-through announcement and the architecture recapitulation were deleted.",
+      "evidence": {
+        "baseline": "It is time now to do something the architecture alone cannot do. It is time to walk through it.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The two-beat landing is the hinge from Part Three to Part Four, and the recapitulation names each piece the story will now embody, which is genuine wayfinding in a long work rather than ceremony."
+    },
+    {
+      "id": "F3",
+      "summary": "The shipped pass added the design-test disclaimer, and it repairs a genuine fault.",
+      "evidence": {
+        "baseline": "the particular woman is an invention, a vessel for showing what the abstractions of the previous chapters actually feel like from the inside",
+        "shipped": "Nothing in her story should be mistaken for evidence that the network or its measurement system already works. The story is a design test in narrative form."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT as a finding that runs the other way.",
+      "diagnosis": "The baseline marks Maren as invented but never guards the mechanism: a reader can accept that the woman is fictional while assuming the intake instruments exist and work. The standard's separation of vision from report requires exactly this guard, and CTD-0015 and CTD-0056 both turn on it. Kept in full at the end of the composite paragraph.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F4",
+      "summary": "Three prohibited marks, one in the attribution line and two in the body.",
+      "evidence": {
+        "baseline": "The fence opening the architecture enumeration, the composite expansion mark, and the epigraph attribution mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The architecture enumeration took a colon, which is its actual structure. The composite expansion took a colon for the same reason. The attribution mark became the Adapted from line, marking the adaptation honestly for CTD-0007."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0015",
+      "effect": "recorded",
+      "note": "The chapter this record anchors is the item's primary evidence site. Restored fully; every minting-adjacent commitment is flagged in the child records rather than resolved."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "supported by restoration",
+      "note": "The kept design-test disclaimer states that no program or instrument in the story is evidence of operation, which is the reader protection the item asks for."
+    },
+    {
+      "id": "CTD-0073",
+      "effect": "recorded",
+      "note": "Chapter Eleven's compression is reversed to baseline scale. The author's compression-approval question is decidable against restored text for this chapter."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline with one credited keep",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The blueprint epigraph in its baseline wording, the architecture recapitulation, the walk-through landing, the composite paragraph with the ordinary-in-exactly-the-way-the-network-intends sentence, and the detail-without-hurry paragraph carrying the felt-not-argued thesis."
+        },
+        {
+          "kind": "kept",
+          "note": "The design-test disclaimer, for the reason in F3, and the heading, unchanged in both texts."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped paraphrase couplet about architecture and belonging, quoted in F1; its content is contained in the restored epigraph and thesis."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks as recorded in F4. The chapter's italic codas belong to the refrain recorded once in v03-how-presence-becomes-bread under R-REFRAIN-COST."
+        }
+      ],
+      "metrics": {
+        "words": 317,
+        "baselineWords": 291,
+        "shippedWords": 94,
+        "deltaPercentAgainstBaseline": 9,
+        "shippedDeltaPercentAgainstBaseline": -68
+      }
+    }
+  ],
+  "rulesDerived": [
+    {
+      "candidateId": "R-SUBSTITUTION-CREDIT",
+      "status": "applied instance",
+      "proposedBy": "editorial-agent",
+      "rulings": [],
+      "note": "Third credited keep of this batch, F3: the design-test disclaimer."
+    }
+  ],
+  "openQuestions": [
+    "The epigraph is attributed to The Coherence Thesis, Volume II. Whether the sentence exists there in this form is CTD-0007's verification work; the Adapted from marking is kept until it is verified."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The chapter again claims that the story is the argument, and the pass's one genuine improvement, the design-test disclaimer, survives beside the author's invention sentence."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": []
+}

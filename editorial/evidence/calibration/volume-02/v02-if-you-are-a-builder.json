@@ -127,6 +127,22 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: the work belongs to whoever does it, in whatever form their conditions permit is the third of the four ownership-refrain instances anchored in v02-a-note-to-the-builders; cited, not re-counted.",
+      "R-CAUTIOUS-HALF: the committing halves survive: The architecture is not finished. The hard problems are not solved. beside the inventory of named work, and the kept If your judgment is that something different needs to be built, build it. The restored universal, no version of the next civilization in which a single coordination infrastructure produced by a single team becomes the answer, keeps its refusal whole.",
+      "R-PAIRED-DELETION: the five open problems each have their minting ends, the trust layer in Chapter Five, the physiological-wallet in Chapters Five and Seven, the surveillance-resistance commitments in The Surveillance Problem, the governance system in Chapters Five and Nine; The interlude after Chapter Five named this directly correctly locates the Interlude. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0041's promise, there are ways to find out more, is restored in the item's own wording and its route question stands behind Q1.",
+      "R-SUBSTITUTION-CREDIT: the kept second-paragraph opening was baseline kept by the pass; the applied colon is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-DEIXIS: work being done now or work that needs to begin holds the reader at the live invitation. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, the five-problem inventory resolves at every end, and the CTD-0041 route question stays open. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

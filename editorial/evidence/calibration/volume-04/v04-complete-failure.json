@@ -102,5 +102,28 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The removed paragraph derives an obligation from a named constitutional principle, which is the volume's characteristic move and the one a compression pass reads as expansion of a point already made."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 10,
+        "survivingVerbatim": 8,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the section keeps both the costs of failing and the committing argument that not trying guarantees a different failure; the two halves are the section's structure and both survive. R-PAIRED-DELETION: complete failure and the fragmentation diagnosis were swept; the diagnosis pairs with the Volumes I and II grounding in the closing chapter, ends aligned. R-CORRECTION-SCOPE: no recorded correction reaches this body. R-LEDGER-WINS-COROLLARY: nothing seeded. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Eight of ten baseline sentences survive verbatim; the remainder are the two comma repairs and the grammar normalization, attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: two em dash glyphs, both single dashes standing as commas, at is abandoned and a different kind of failure. The record's one parenthetical comma pair does not correspond to the sites here.",
+        "One divergence now attributed: the baseline's the fragmentation that Volume I and II diagnosed stands as Volumes I and II diagnosed, a number agreement normalization. The same repair recurs in the closing chapter and is recorded there with its count. Kept, claim unchanged."
+      ]
+    }
+  ]
 }

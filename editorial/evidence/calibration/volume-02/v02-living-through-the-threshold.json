@@ -139,6 +139,24 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Verification: the current section is byte-identical to the baseline, which carries no prohibited marks here. The restorations recorded in generation A are complete.",
+      "Catalog 4.22 on the volume diagnostic: F2's restoration reopened one of the volume's falsely closed series. The three fragments, The destabilization people are feeling. The grief that arrives ... The strange psychological texture ..., stand as separate sentences in the current text, the pass's colon list and closing and gone. Confirmed restored and clean.",
+      "R-CAUTIOUS-HALF: the committing halves survive: The argument is, by this point in the book, made., and the delayed turn It will not land because the human nervous system ... cannot integrate an argument while it is still processing the conditions the argument is responding to. Both limbs intact.",
+      "R-PAIRED-DELETION: the protected self-epigraph about the house and its blueprints is section-local display matter; the chapter's promise to acknowledge the experience honestly is paid by the four sections beneath it. All ends present.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0020 and CTD-0038 are reopened in scope by the restoration, recorded in debtImpact, and remain the author's.",
+      "R-SUBSTITUTION-CREDIT: nothing substituted survives in a byte-identical section. No instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this chapter opener.",
+      "R-DEIXIS: This is the chapter that has to do something different and at this particular threshold hold the reader inside the turn. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, the section sits byte-identical to the baseline, and the reopened series stays open. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

@@ -156,6 +156,34 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "refrainAnchor": {
+      "rule": "R-REFRAIN-COST",
+      "refrain": "The substrate principle stated as a two-beat refusal: The technology does not choose, followed by a sentence giving the choice to the conditions, the institutional context, or human beings.",
+      "count": 4,
+      "instances": [
+        "v02-what-the-first-volume-left-in-our-hands",
+        "v02-intelligence-in-service-of-earth",
+        "v02-the-choice-of-orientation",
+        "v02-ai-already-serving-coherence"
+      ],
+      "note": "Anchored here at the refrain's first instance, where the first volume's observation is quoted as inheritance. Four instances in both baseline and current manuscript, at manuscript lines 51, 551, 565, and 825, each varying the agent that does the choosing. The recurrence is deliberate structural memory under section 6, and CTD-0016's neutral-amplifier question is engaged once per instance, so any ruling on that item prices at four. The single edit that would change every instance is the refusal form itself. Child audits cite this anchor rather than re-counting."
+    },
+    "checks": [
+      "R-CORRECTION-SCOPE: the CTD-0012 correction governs exactly the unit naming. Baseline: whose unit is *coherence* itself [mark] the substrate made legible enough to travel between people. Current: whose unit is **COHERENCE**: the substrate made legible enough to travel between people. The correction's span is the unit name and nothing else; the appositive gloss, the four namings around it, and the None of it / All of it close are baseline wording. Verified against the word-level diff that nothing adjacent changed under the correction's license.",
+      "R-CANON-DELETION-RECORD: the one baseline clause deliberately not restored, whose unit is *coherence* itself, is quoted in debtImpact against CTD-0012 with the decision that withheld it, which satisfies the rule retroactively. CTD-0003's relation-or-record query stands open and the restored line commits to neither side. No other baseline claim was cut.",
+      "R-PAIRED-DELETION: the four horizon names minted here each have their fuller statement downstream, Providence in Chapter Five, the Currency of Presence and COHERENCE in the Layer 3 reference and Chapter Seven, PURPOSEFUL and ICONS as forward references the later volumes carry. The technology does not choose refrain has all four instances present in both texts; see the anchor above. No one-ended restoration.",
+      "R-CAUTIOUS-HALF: the hinge's committing half, We plainly can, survives between the refused question and the real one, and the paired None of it was offered as proven / All of it was offered as a question worth building toward keeps both limbs. Nothing hedged survived at the expense of a committing sentence.",
+      "R-SUBSTITUTION-CREDIT: re-examined both kept notes in generation A. The recast of how human and artificial intelligence might be held and the colon in We are building intelligence: are R-PUNCT-STRUCT compliance for prohibited marks, not discretionary improvements over sound baseline prose. No finding runs the other way.",
+      "R-DEIXIS: the restored the one era when holds the singular claim; That question is the whole of this volume and This one asks keep the reader in front of the live condition. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's seven findings hold under the twenty-rule standard. The audit adds the substrate-refrain anchor and confirms the CTD-0012 correction stayed inside its span. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

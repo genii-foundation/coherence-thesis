@@ -121,6 +121,16 @@
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the thirteen rules",
+      "text": [
+        "Providence does not live in the cloud. It lives in places.",
+        "The unit of the whole architecture is not the individual and not the platform. It is the community. The communities, taken together, are the **ICONS**, *Individual Communities Observing Natural Sovereignty*, and a single one is called a **Scale.** A Scale is a living embodiment of everything the Flower has described: a community rooted in a particular place and culture, cultivating its people through PURPOSEFUL, carrying trust through Providence, governing itself by coherence rather than coercion. It observes its own sovereignty, and the sovereignty of the land that holds it.",
+        "ICONS are not utopian communes, and not models of a finished future. They are the opposite: the places where the thesis is put at risk. Where coherence has to survive real constraints, real conflict, real scarcity, and real disagreement, or admit that it cannot. They are small enough to stay legible and large enough to be genuinely complex. Failure inside them is not a scandal to be hidden; it is the data the whole experiment exists to gather. A Scale that fails honestly teaches more than one that pretends.",
+        "And here the book can finally say the thing it has been holding since the Seed.",
+        "A civilization organized around coherence does not grow the way an empire grows. It does not scale by making one center larger and larger until it covers the earth. That is the extractive pattern, and it is exactly the pattern that fails. Because coherence does not survive being stretched thin over a center that cannot feel its edges. A thousand communities that have lost their coherence are not Providence at scale. They are its defeat at scale.",
+        "It grows the other way. It grows the way living things cover a surface: not by one cell swelling, but by many whole cells, each sovereign and entire in its own place, coming to recognize one another. That is what a Scale is: a *scale*, complete in itself, rooted where it is. And as the scattered Scales begin to find and trust each other across distance, the scattered communities become a surface, and the surface, slowly, becomes a body. Providence is not that body. Providence is the connective tissue between the Scales: the nervous system through which they sense and trust one another. It is never the thing in charge. There is no thing in charge. That is the point.",
+        "The first Scale to form fully, the one that proves a single Scale can actually be lived, has a name in the architecture: the **Cardinal Scale.** Everything in the volumes that follow is, in the end, in service of that one concrete thing: not a movement, not a brand, not a theory, but a first real community, in a real place, that demonstrates the whole of this can be done. Before there can be a body, there must be one Scale. Before a thousand, one. The work begins there, or it does not begin at all.",
+        "---"
+      ],
       "reasoning": [
         {
           "kind": "applied",
@@ -169,11 +179,53 @@
     "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
     "result": "The existing debtImpact entries record every touched item."
   },
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-01 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Fifteenth consecutive section to need none, and the first rendered under R-LEDGER-WINS, which earned its place immediately. F1 is the case the rule was written for and is more interesting than the Currency instance that produced it: there the ledger simply overruled the baseline, whereas here the ledger's correction was right and had also destroyed something. The disposition is neither restore nor keep but repair, and finding it took holding the terminology requirement and the image requirement at once."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 18,
+      "baselineSentences": 24,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Six non-surviving sentences carry the recorded repairs and restorations, including the ledger-required scale repair. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "Fires and is satisfied. CTD-0076's correction governs the singular uses of ICONS, quoted in F1, and was applied at that width: the singular proper term is Scale, the plural ICONS, the lowercase survives only inside the italicized wordplay where the image rather than the term is meant, and nothing adjacent changed under the correction's licence. Compliant."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "The approved Volume IV cross-reference anchored on The first Scale was checked and preserved, as the generation note records; the case-sensitive reanchor risk is documented. Before a thousand, one stands at line 687. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "F3's falsifiability clause, or admit that it cannot, is the section's committing half and is restored. Does not fire further."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "F1 already runs both ways: it credits the pass's terminology correction as ledger-required while faulting the image it destroyed, and records the repair that holds both. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "The one late rule that fires, R-CORRECTION-SCOPE, is satisfied by F1's own record. Nothing else fires. No prose changed."
   }
 }

@@ -85,6 +85,23 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CORRECTION-SCOPE: the CTD-0012 correction governs the naming in the label and the opening sentence and nothing else. Baseline: what the later volumes name the Currency of Presence, whose unit is *coherence* itself. Current: The later volumes call the biometric path that would inform this record **Bio-Consensus**. That path is intended to mint the **Currency of Presence**, whose unit is **COHERENCE**. Verified against the word-level diff that everything after the naming, the oldest-human-reality grounding, the sovereignty refusals, the doors pair, and the oldest-sense close, is baseline wording with only mark repairs. The subtitle line carries the baseline's parenthetical as body text, which is placement, not correction.",
+      "R-CANON-DELETION-RECORD: the withheld baseline conflation is quoted in the ledgerSearch outcome and recorded against CTD-0012 in debtImpact, in both label and prose. The rule's recording duty is satisfied; CTD-0003 stands open and uncommitted.",
+      "R-CAUTIOUS-HALF: the paired commitments keep both halves at both ends of the corpus pair: It may open doors to greater trust; it may never close the door to survival appears here and in Chapter Five's third layer at matching counts in both texts.",
+      "R-PAIRED-DELETION: the card summarizes Chapter Five's third layer and Chapter Seven's currency question, and every distinctive term, Bio-Consensus, Currency of Presence, COHERENCE, the never pair, has its fuller statement present. No one-ended restoration.",
+      "R-SUBSTITUTION-CREDIT: the kept correction is ledger compliance and carries no credit; no other substituted prose survives.",
+      "R-REFRAIN-COST: not a disclosure-refrain instance; the never centrally aggregated, never imposed as an external score pair recurs with Chapter Five as a two-ended commitment, adjudicated under R-PAIRED-DELETION above rather than counted as a refrain.",
+      "R-DEIXIS: the card's rooted in the present subtitle is the live-condition claim Q2 already holds for the author. No new instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's two findings hold under the twenty-rule standard, the volume's only boundary-crossing correction stays inside its span, and Q1 and Q2 remain the author's. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

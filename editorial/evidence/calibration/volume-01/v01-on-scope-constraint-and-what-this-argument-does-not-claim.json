@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
+  "editorialId": "volume-01",
+  "sectionHeading": "On Scope, Constraint, and What This Argument Does Not Claim",
+  "currentHeading": "The Limits of the Claim",
+  "anchor": "v01-between-sprout-and-stem",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "recordNote": "Created 2026-07-31. The schema commits one record per calibrated section and this heading mints its own reader route, but this section's calibration lived folded inside the anchor record until the coverage audit. The prose was restored from the immutable baseline in the anchor's re-render of 2026-07-30; this record gives the section its own shipped text, sentence count, ledger search, debt impact, and twenty-rule audit, and revises prose only where a rule fired.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 10,
+    "baselineSentences": 15,
+    "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+    "note": "Counted over the baseline subsection's introductory prose against the shipped chapter-start prose that descends from it. Five non-surviving sentences carry the anchor's recorded repairs and restorations, including the restored bounding language of F1 and the restored pause distinction of F3. Not substitution mode."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "scope",
+      "boundary condition",
+      "bounding",
+      "burden of proof"
+    ],
+    "itemsRead": [],
+    "outcome": "The anchor's 2026-07-30 search covered this prose. Its item interactions, CTD-0002, CTD-0052, and CTD-0053, attach to the chapter's converted subsections and are recorded in the anchor; the introductory prose this record covers names no ledger item of its own."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The structural fold: the prior pass removed this heading and moved its prose to the chapter start.",
+      "evidence": {
+        "baseline": "A level-three heading, On Scope, Constraint, and What This Argument Does Not Claim, beneath the bare chapter line Between Sprout and Stem.",
+        "shipped": "The chapter is headed The Limits of the Claim and carries this prose directly; no subsection heading intervenes before Reductionism."
+      },
+      "authorizedBy": "The prior pass's restructuring, kept under the volume working note on renames (v01-how-this-book-is-structured WN1).",
+      "diagnosis": "Reverting the fold would mint and retire routes, which is a continuity decision, not an editorial one. The census records the shipped structure and the manuscript matches it. The prose itself is restored to baseline; only the structural line above it changed. Recorded so the baseline identity has a home; the route relationship belongs to the continuity records.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Prose as restored by the anchor re-render of 2026-07-30, audited under the twenty-rule standard",
+      "text": [
+        "The sprout phase of this work was brief by design.",
+        "In those five to eight minutes, the aim was not to persuade, propose solutions, or outline a system, but to allow something recognizable to emerge: a pattern already felt, if not yet named. A sense that the crisis we face is not merely political, economic, or technological, but biological and relational, and that no amount of external reform can succeed without addressing that substrate.",
+        "Before moving from diagnosis into structure, it is worth pausing again, this time not for emotional integration but for intellectual clarity.",
+        "What follows is not a manifesto. It is not a policy platform, a spiritual doctrine, or a finished model of governance. It does not ask for belief, allegiance, or adoption. It does not claim to have solved civilization, nor does it attempt to predict the future in detail.",
+        "Its scope is narrower, and for that reason more demanding.",
+        "This argument concerns constraint. Specifically, it asks a single, consequential question:",
+        "*What must be true biologically, relationally, and systemically for any complex civilization to remain coherent as its power scales?*",
+        "Everything that follows is an exploration of that condition, and nothing more.",
+        "The sprout was meant to orient perception. The stem that follows will begin to test structure. But before structure can be responsibly examined, the boundaries of the claim must be clearly drawn, so that what is being said is not mistaken for what is not.",
+        "This pause is that clarification."
+      ],
+      "textNote": "This text also appears in the anchor record v01-between-sprout-and-stem, whose chapter identity now carries it. Both records point at one shipped passage; neither is a variant of the other.",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT per the anchor's punctuation note; the two standalone display dashes the baseline carried inside this prose are released with the threshold glyphs."
+        },
+        {
+          "kind": "restored",
+          "note": "The bounding language the anchor's F1 records: and nothing more, and for that reason more demanding, not deferred, and the scope disclaimer, all present in the shipped chapter start."
+        },
+        {
+          "kind": "kept",
+          "note": "The structural fold, per F1 above. The chapter's own record holds the audit of the four converted subsections."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 10,
+      "baselineSentences": 15,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Counted over the baseline subsection's introductory prose against the shipped chapter-start prose that descends from it. Five non-surviving sentences carry the anchor's recorded repairs and restorations, including the restored bounding language of F1 and the restored pause distinction of F3. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep: the bounding phrases occur only here; the burden-of-proof sentence pairs with Boundaries and Burden of Proof and both ends are present. The Roots does not occur here. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The chapter's structural cautious-half case, the has-not heading, is recorded and held open in the anchor. This prose carries its bounding halves restored. Does not fire further."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The section keeps no substituted prose beyond what the record already accounts for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires beyond the structural fact recorded as F1, which is a continuity question, not a prose defect. No prose changed."
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "sectionId": "v03-the-record",
+  "sectionHeading": "The Record",
+  "currentHeading": "The Record",
+  "anchor": "v03-the-year-of-the-weaver",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "454 baseline words to 240 shipped words, minus 47 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "coherence record",
+      "keys",
+      "consent",
+      "trustworthiness",
+      "creditworthiness",
+      "portrait"
+    ],
+    "itemsRead": [
+      "CTD-0054",
+      "CTD-0015",
+      "CTD-0003"
+    ],
+    "outcome": "No recorded decision governs this section. CTD-0054's lifecycle question is open; the baseline's strongest lifecycle facts, own keys, own devices, raw material never leaving her hardware, are restored and support the item's eventual answer without deciding exit. CTD-0015 and CTD-0003 are flagged where the record's contents and portability are asserted."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The trust-legibility commitment was deleted.",
+      "evidence": {
+        "baseline": "trustworthiness in the deep sense, the kind that ordinarily takes years of proximity to establish, now legible at the moment of introduction",
+        "shipped": "When she chooses, she may disclose a narrow proof, a reference, or part of the record to someone considering a collaboration. No proof removes the need for judgment."
+      },
+      "authorizedBy": "Compression and caution.",
+      "diagnosis": "Now legible at the moment of introduction is the economic claim of the whole volume in miniature, and chapter twelve's third link restates it at length. The shipped bounded-disclosure language is careful and true, but it answers a different question, what may be shown, instead of the baseline's what the record is worth. Both ends of this claim are restored in this batch, so the volume no longer asserts it in one chapter and refuses it in another."
+    },
+    {
+      "id": "F2",
+      "summary": "The year's closing movement and the chapter's forward question were deleted.",
+      "evidence": {
+        "baseline": "She has been woven into something. And the something has begun, in ways she is only beginning to perceive, to provide. That is the experience of a year inside Providence.",
+        "shipped": "Maren ends the year with a mentor, a collaborator, and a circle of people who understand the work. Her project is not magically rescued. She is no longer carrying it alone."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Woven and provide are the chapter's title and the network's name completing each other, the sentence the Year of the Weaver has been building toward. The shipped inventory is accurate and flat. The closing question, how does it feed people, was also cut, which orphans chapter twelve's opening; the sweep confirmed both ends restored."
+    },
+    {
+      "id": "F3",
+      "summary": "The shipped pass gave disagreement a home inside the record, which the baseline design lacks.",
+      "evidence": {
+        "baseline": "It is a longitudinal portrait, a quiet, accumulating account of how she has shown up across the year.",
+        "shipped": "It also contains disagreement. Some interpretations helped her. Some did not. The right to say \"the system misread me\" belongs inside the record rather than outside the institution's patience."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT as a finding that runs the other way.",
+      "diagnosis": "The baseline record holds only the system's affirmative portrait. The restored mirror lets a participant contest a reading, and this kept passage is where the contest survives: inside the record itself. It completes the design the engine chapter commits to and serves the corpus line that a person is not their record. Kept in full as its own paragraph after the ownership paragraph.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F4",
+      "summary": "Six prohibited marks.",
+      "evidence": {
+        "baseline": "The portrait mark, the raw-material fence, the attention mark, the coda-question fence, and the attribution of one mark to each of the closing movements.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The portrait appositive took a comma. The raw-material fence became commas with its internal comma turned to and, the recordings and the biometric streams. The attention mark became a comma before the becoming clause. The closing question's fence became a comma chain, any of this, the presence, the presencing, the coherence record, the regulated nervous system, reaching the ground in one breath as the baseline intended."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0054",
+      "effect": "supported by restoration",
+      "note": "Encrypted with her own keys, living on her own devices, raw material never leaving her hardware: the strongest lifecycle facts in the corpus are restored in one paragraph. The exit case the item asks about remains undefined here and everywhere."
+    },
+    {
+      "id": "CTD-0015",
+      "effect": "recorded",
+      "note": "The record's contents, consistency, generative quality, trajectory, are asserted again. The item's inventory question, what evidence enters the record, is decidable against this section plus the intake."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "recorded",
+      "note": "Prove things from it restores the portable-attestation reading of COHERENCE, one of the item's two ontologies. Flagged, not resolved."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline with one credited keep",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The not-a-score opening, the longitudinal portrait with its three named contents, the ownership paragraph at full strength, the proof-of-trustworthiness claim with its bank contrast, the woven-and-provide close, the year summary, and the hanging question that opens chapter twelve."
+        },
+        {
+          "kind": "kept",
+          "note": "The disagreement paragraph, for the reason in F3, and the heading, unchanged in both texts."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped bounded-disclosure sentences and the person-in-motion line, the record shows a person in motion, not an identity fixed by data. Quoted; the second is a good line whose thought the restored trajectory clause carries."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across six marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 478,
+        "baselineWords": 454,
+        "shippedWords": 240,
+        "deltaPercentAgainstBaseline": 5,
+        "shippedDeltaPercentAgainstBaseline": -47
+      }
+    }
+  ],
+  "rulesDerived": [
+    {
+      "candidateId": "R-SUBSTITUTION-CREDIT",
+      "status": "applied instance",
+      "proposedBy": "editorial-agent",
+      "rulings": [],
+      "note": "Fourth credited keep of this batch, F3: disagreement kept inside the record."
+    }
+  ],
+  "openQuestions": [
+    "The kept disagreement paragraph is pass-authored canon inside the record's definition. It completes a design gap, which is why it was kept, but the author should ratify that a coherence record officially contains contested readings.",
+    "Now legible at the moment of introduction is the claim the shipped pass called false and dangerous in chapter twelve. The collision is recorded in the third link's record; the author owns the doctrine."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The record is again worth something, the contest over what it may claim lives in the ledger, and disagreement now has a home inside it."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": []
+}

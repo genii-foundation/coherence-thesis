@@ -149,5 +149,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the volume's clearest case of substitution presented as compression, and it establishes the check that every later record in this volume repeats: grep a distinctive shipped phrase against the baseline before treating a delta as a cut. Here the check fails immediately. The restoration is a transcription of the baseline with nine punctuation repairs and three ledger bounded insertions, not a reconstruction."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 37,
+        "survivingVerbatim": 24,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-PAIRED-DELETION: the section's distinctive terms, the hinge, the ache, the arc, the two kinds of excitement, were swept against the rest of the baseline; the arc paragraph's forward references to gatherings, the year of shared development, and the earth sensing itself all have restored antecedents in Purposeful Before Providence, The Developmental Arc, and Part VIII. R-CAUTIOUS-HALF, sentence form: the wager keeps both halves, the denial that the ache is fixed and the committing consequence that what is designed can be redesigned; the caution paragraph keeps both the refusal to promise and the claim of a real chance. R-CORRECTION-SCOPE: the two ledger-bounded insertions stay at the width their items name, the proposed-architecture statement inside the caution paragraph under CTD-0030 and CTD-0072, and the aspiration framing on the mentor image under CTD-0055; neither rewrote adjacent baseline prose. R-LEDGER-WINS-COROLLARY: the status statement is genuinely seeded, since the baseline nowhere states operational status; its agent provenance is visible in the original record's kept note. R-CANON-DELETION-RECORD: nothing named in an open canon query was cut. R-SUBSTITUTION-CREDIT: no credit is owed; every kept shipped clause bounds a claim under a ledger item rather than repairing a fault in the baseline. R-REFRAIN-COST: no refrain originates here. R-DEIXIS: this era and this one thing are already proximal. R-NEGATION-STACK and the catalog were re-swept with nothing new firing.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twenty-four of thirty-seven baseline sentences survive verbatim and the remainder trace to the nine recorded punctuation repairs, the two ledger boundings, and the two divergences itemized above. Nothing fires that requires a prose change.",
+      "corrections": [
+        "Two divergences from the baseline that the original record did not itemize are attributed here. The baseline's That capacity has been wearing thin stands in the manuscript as That capacity is wearing thin: R-TENSE covers the reduction, the condition is live, the timing is not load bearing, and the progressive keeps the motion, so the wording stands. The baseline's an application that is less a marketplace stands as an application meant to be less a marketplace, which is CTD-0072 bounding at minimal width. Both are now recorded rather than silent."
+      ]
+    }
+  ]
 }

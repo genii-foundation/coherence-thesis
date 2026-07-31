@@ -1,0 +1,151 @@
+{
+  "sectionId": "v03-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship",
+  "sectionHeading": "The Floor and the Height: What Earns Bread, and What Earns Stewardship",
+  "currentHeading": "The Floor and the Height",
+  "anchor": "v03-how-presence-becomes-bread",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "568 baseline words to 153 shipped words, minus 73 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "floor",
+      "height",
+      "self-regulation",
+      "unconditional",
+      "earned",
+      "Bio-Consensus",
+      "counterfeit",
+      "stewardship"
+    ],
+    "itemsRead": [
+      "CTD-0005",
+      "CTD-0006",
+      "CTD-0055",
+      "CTD-0110"
+    ],
+    "outcome": "CTD-0005 names this section's doctrine and it is a query awaiting author ratification, not a settled decision, so under R-LEDGER-WINS the baseline governs and the earned-floor doctrine is restored. The shipped unconditional-floor doctrine is what the item's evidence paragraph cites as the revised state; that evidence is stale after restoration and the item's decision is untouched. The volume voice card lists the shipped doctrine's opening sentence as an exemplar anchor; CTD-0110 records that the cards were prepared from shipped text, and T-022 reserves protected-line questions to the author, so the anchor's absence from the manuscript is flagged, not repaired."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The floor doctrine was reversed from earned-by-self-coherence to unconditional, without a recorded ruling.",
+      "evidence": {
+        "baseline": "This is the deepest commitment of the model and we state it without qualification: in a civilization organized around a Currency of Presence, the capacity to come into coherence with oneself should be enough to ensure that a person eats. Self-regulation is the universal floor.",
+        "shipped": "No one should have to demonstrate regulation, presence, or usefulness in order to eat, receive shelter, keep dignity, or belong. The floor is not earned through Bio-Consensus. It belongs to the person. Any system that conditions survival on a biometric or behavioral record has become coercive, whatever language it uses."
+      },
+      "authorizedBy": "Rewrite, in the direction CTD-0005 asks the author to consider, but without the author's ratification the item says is required.",
+      "diagnosis": "This is the single largest doctrinal reversal in the volume and it is precisely the open question of CTD-0005: is subsistence unconditional, or tied to self-coherence? The baseline states sufficiency, coming into coherence is enough; the shipped text states unconditionality, nothing is required. These are different constitutions. The item's own history says the revised wording still awaits author ratification, so the pass wrote a constitution the author has not signed. Restored to baseline per the standing instruction, with the shipped doctrine quoted here in full so the ratification decision loses nothing.",
+      "producedRule": "R-CANON-DELETION-RECORD"
+    },
+    {
+      "id": "F2",
+      "summary": "The height's counterfeiting argument was deleted.",
+      "evidence": {
+        "baseline": "You cannot fake, at scale and over time, the regulation you produce in a room full of people. The thing that makes this principle just, that the highest standing is earned by lifting others, is the same thing that makes it secure.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The justice-is-security identity is the model's answer to gaming, and it is the argument chapter fourteen's signal-failure section leans on. The shipped section kept the height as responsibility language and lost the reason the height resists counterfeit."
+    },
+    {
+      "id": "F3",
+      "summary": "The coda, which Volume IX also carries, was deleted.",
+      "evidence": {
+        "baseline": "We take care of all who can hold themselves. We entrust the shaping of the world to those who can hold others.",
+        "shipped": "The height is therefore responsibility, not superior worth. Leadership remains conditional, reviewable, and distributed. The floor remains unconditional."
+      },
+      "authorizedBy": "Compression and doctrine change.",
+      "diagnosis": "CTD-0005 quotes Volume IX's we feed all who can hold themselves; this coda is Volume III's statement of the same creed, so deleting it here while Volume IX keeps it made the corpus disagree with itself. Restoring it returns the contradiction to one place, the open item, where it can be decided once. One instance of the italic-coda refrain counted in the anchor record."
+    },
+    {
+      "id": "F4",
+      "summary": "Eleven prohibited marks.",
+      "evidence": {
+        "baseline": "The floor fence, the oneself fence, the presence appositive mark, the survival fence, the coherence-evocation mark, the isolation mark, and the just fence.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The infinitive fences, to do the inner work, to cultivate, to participate, became comma chains whose spines hold. The isolation mark took a colon before its enumeration, the solitary mining, the borrowed devices, the faked signal. The evocation mark took a colon because the clause specifies the greater thing. The just fence became paired commas keeping the interruption audible."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0005",
+      "effect": "reopened by restoration",
+      "note": "The earned-floor doctrine returns to the manuscript, so the corpus again states both positions, Volume III and IX earned, the item's ratification pending. The shipped unconditional doctrine is preserved verbatim in F1. The item's evidence paragraph describing revised Volume III is stale and should be refreshed when the item is next touched. Decision untouched, author's alone."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "recorded",
+      "note": "The height, standing to lead and steward earned through evoked coherence, is the standing-consequences question the item holds. Restored and flagged."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "recorded",
+      "note": "Extraordinarily hard to counterfeit and the witnessed-physiology argument are safeguard claims the item tracks."
+    },
+    {
+      "id": "CTD-0110",
+      "effect": "recorded",
+      "note": "The voice card's exemplar anchor, no one should have to demonstrate regulation, presence, or usefulness, no longer appears in the manuscript after restoration. The card was prepared from shipped text; this is the item's known defect, flagged here for the card re-preparation."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard and the standing instruction",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The distinction that governs the model, the earned floor with its without-qualification commitment, the open-to-all path, the height with its far-harder standard, the counterfeiting argument, and the two-sentence creed coda."
+        },
+        {
+          "kind": "kept",
+          "note": "The current shortened heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped unconditional-floor doctrine and its coercion warning, quoted in full in F1; the physiology-cannot-gate sentence, even here, physiology cannot serve as a gate, quoted here; and the responsibility framing of the height, quoted in F3. All belong to CTD-0005's ratification decision, not to a restoration pass."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across eleven marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 557,
+        "baselineWords": 568,
+        "shippedWords": 153,
+        "deltaPercentAgainstBaseline": -2,
+        "shippedDeltaPercentAgainstBaseline": -73
+      }
+    }
+  ],
+  "openQuestions": [
+    "CTD-0005 is now cleanly decidable: the baseline's earned floor, restored here and echoed by Volume IX, against the pass's unconditional floor, preserved in F1 and echoed by Volume I's never-lower-the-floor rule. One ratification settles the corpus. Until it is made, this section carries the baseline doctrine and the ledger carries the conflict.",
+    "The voice card anchors and protects shipped floor language that the manuscript no longer contains. T-022 reserves this to the author; CTD-0110 is where the cards get corrected. Nothing in the card was edited by this pass.",
+    "Baseline heading names the stakes, What Earns Bread, and What Earns Stewardship; the current heading is the bare pair. Both forms recorded per the structural hold."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The section states the author's constitution again, the pass's rival constitution is preserved at full strength in the record, and the one decision that resolves them is named in the ledger."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": []
+}

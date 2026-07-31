@@ -67,6 +67,11 @@
       "id": "CTD-0006",
       "effect": "no change",
       "note": "The capacities are described developmentally. None conditions political standing."
+    },
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved",
+      "note": "The relational maturity reference names Volume III's account rather than a numbered chapter. Applied by the restoration, not itemized in this record; attributed in the twenty-rule audit of 2026-07-31."
     }
   ],
   "generations": [
@@ -103,5 +108,28 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Catalog 4.4 fired on four mirrored pairs and the retention limb held four times, which is the same result as the stewardship contrasts. In this volume mirrored clauses almost always carry two distinct failure modes rather than one decorated claim."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 13,
+        "survivingVerbatim": 11,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: each of the four capacities keeps its failure mode, which is the committing half, and the strong claim about romanticized sacrifice stands with its standing open question. R-PAIRED-DELETION: relational maturity, psychological resilience, and the founding conflict argument were swept; relational maturity pairs with the stewardship arc chapter, ends aligned. R-CORRECTION-SCOPE: one unitemized reference rebuild found and attributed below at CTD-0075 width. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0006 re-verified, no capacity conditions political standing. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Eleven of thirteen baseline sentences survive verbatim; the remainder are the three em dash glyphs across two sites and the CTD-0075 reference rebuild, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: three em dash glyphs, not two pairs. The resilience appositive pair stands as a comma pair, and the single dash in the relational maturity sentence was resolved inside the reference rebuild attributed below.",
+        "One divergence now attributed under CTD-0075: the baseline's the capacity described in Volume III's relational layer chapter stands as the capacity Volume III described in its account of the relational layer. The item forbids attributing a named recurring apparatus to Volume III by section; the rebuild names the argument instead. Width verified: the reference alone changed, the ability clause beside it is baseline text."
+      ]
+    }
+  ]
 }

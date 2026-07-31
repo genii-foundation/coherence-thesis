@@ -90,5 +90,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. This section is the reason every record in this volume carries a substitution check. A minus six percent delta looked like the least damaged section in Volume VII and was in fact a rewrite."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires against the restored baseline. Nothing became Little in the deliberate-perception sentence under the universals rule, reconfirmed. The bounding pair on what presence does not guarantee stays as the recorded safeguard.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The ordinary-scale paragraph is pass-authored and better than the baseline's absence.",
+        "evidence": {
+          "baseline": "(absent; the baseline defines presence and never shows it)",
+          "shipped": "A person stops preparing a reply long enough to hear the change in another's voice. A hand releases the object it had been gripping. A room notices that one member has gone quiet before the agenda moves on."
+        },
+        "note": "The voice card requires regular returns to voice, touch, and a room, and names the voice changing in a room and the hand releasing its grip among the volume's recurring images. The prior pass wrote the card's images into the one section that defines the faculty they exercise. Promoted from a quiet kept to a credited finding as R-SUBSTITUTION-CREDIT requires."
+      }
+    ]
   }
 }

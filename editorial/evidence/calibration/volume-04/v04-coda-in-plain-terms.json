@@ -302,5 +302,23 @@
     "status": "blocked",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "Deliberately not converged, and this is the only record in the volume that is not. The rules can determine that these twenty-eight sections must not be restored in their baseline form, because three ledger items say so and two of them quote the offending lines. The rules cannot determine whether the device should exist. That is a developmental question about a repeating structure across a whole volume, which section 3 of the editorial plan places at intervention level 4 and which requires explicit approval before implementation. An editorial pass that resolved it either way would be making an author's decision under an editor's warrant. The record's job here is to make the loss visible, bound what is already settled, and name precisely what is not."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Re-read of the run under the full twenty-rule index. The record predates the ratification and was written while R-REFRAIN-COST was a candidate; it now conforms to the ratified rule, one anchor with the count and the single edit that would settle the run.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "result": "5,806 baseline words across twenty-eight instances against zero current words. The run is absent rather than substituted: there is no shipped text to pair against, so neither the pairing test nor substitution mode applies. The zero is the structural loss this record already carries."
+      },
+      "checked": "R-REFRAIN-COST, satisfied by this anchor and now by twenty-seven child records citing it. R-CANON-DELETION-RECORD, satisfied for the run: F1 through F4 quote the removed claims against CTD-0095, CTD-0074, and CTD-0030, which is the deletion record the rule requires. R-PAIRED-DELETION, verified both ends: the baseline's promise of the device at its line 83 and the twenty-eight instances were removed together, and the current manuscript contains no reference to a coda, so the restoration pass did not revive the referring end without its antecedent. R-LEDGER-WINS re-confirmed against CTD-0095, CTD-0074, CTD-0030, and CTD-0076. No prose was changed.",
+      "corrections": [
+        "The scope field states that the damage report resolves every instance to one id and one record file. The current damage tool suffixes repeated headings instead, v04-coda-in-plain-terms-2 through -28, and reported twenty-seven instances as recordless. Child records with those ids were created on 2026-07-31, each citing this anchor per R-REFRAIN-COST. The analysis remains here and only here.",
+        "F4 lists the nation-state and network-state argument of instance twenty-five among material found nowhere else in the volume. That is imprecise by one degree: the substance, that existing states cannot pivot to a coherent substrate until smaller sovereign forms have demonstrably worked, is carried by the third paragraph of The First Scale in both the baseline and the current manuscript. What instance twenty-five alone adds is the link that surviving power's embrace is how those existence proofs get the chance to exist. F1 through F3 were re-verified and stand as written."
+      ],
+      "conclusion": "Nothing fires against the current manuscript, because the run has no current text. The record's referral of the device to the author under CTD-0095 stands, and the status remains open by design."
+    }
+  ]
 }

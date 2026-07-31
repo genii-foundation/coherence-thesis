@@ -78,6 +78,19 @@
       "producedRule": "R-CATALOG-LIMBS"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F5",
+      "summary": "The compounding question repairs the baseline's existence claim, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "it spends a principal it insists on calling income, and the principal is running out while the trust-economy of presence has barely begun to compound",
+        "shipped": "it spends a principal it insists on calling income. Whether a trust economy of presence can compound in its place is exactly what remains to be shown."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "Has barely begun to compound presumes the trust economy exists and is compounding, which is the existence claim CTD-0030 refuses everywhere else in the volume, smuggled into the blessing as an aside. The shipped question keeps the accounting image whole, one account drawn down, the other's viability the open question, and hands the volume its final honest note before the lyric close. The generation note recorded the compounding half as restored; the truth is subtler and better: the vocabulary returned inside a question the volume can actually stand behind, and this credit records that merged form as the prior pass's contribution completed by the restoration.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0049",
@@ -129,6 +142,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the opening refusal with the one doom we can still decline, the three choices that could have been otherwise, Saturn's gift with was never despair and built at last to last, the harder-than-we-wished pair, the reverence close, and the even now, even here, even in 2026 cadence, with the volume ending on the blessing and no production note after it. No prose changed by this audit. One substitution credit added as auditFindings F5 for the compounding question, which also reconciles the generation note's restored claim with the merged form the manuscript actually carries. R-CAUTIOUS-HALF: harder than we wished and not harder than we can bear both stand; the survey-not-finished hedge and the committing season-and-age claim both stand. R-PAIRED-DELETION: the epigraph's arc completes here and both earlier ends stand, the crowd's we love you reaches back to the prologue, the bent curve makes its fourth appearance, the Seven Initiates tie to the second meaning and Volume VII, the dragon to the Scales section; all present. R-CATALOG-LIMBS: the liturgical ending stands under 4.15's explicit exemption, as F4 ruled. R-DEIXIS: the one doom we can still decline holds the reader in the present exactly where the rule wants it. R-TENSE and R-REFRAIN-COST checked and silent."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

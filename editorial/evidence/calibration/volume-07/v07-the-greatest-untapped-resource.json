@@ -92,5 +92,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. This is the volume’s clearest substitution: a section replaced by its own rebuttal, with the heading rewritten to match."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. The section id keeps its pre-rename identifier while the census heading reads Human Capacity Is Not a Resource Deposit; id and heading both verified stable.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires against the restored baseline.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The against-its-own-grain paragraph is pass-authored and names the trap in the section's central figure.",
+        "evidence": {
+          "baseline": "The greatest untapped resource on this planet is not under any seabed or in any mineral seam. It is human potential",
+          "shipped": "We use the word resource here against its own grain, and the risk in it should be said plainly. A capacity described as a deposit invites the very logic this volume opposes. Nothing here licenses the mining of a person."
+        },
+        "note": "The baseline borrows extraction's own vocabulary to praise what it says must not be extracted and never notices the borrowing. The kept paragraph notices, in the volume's voice, and the current heading makes the same correction structurally. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

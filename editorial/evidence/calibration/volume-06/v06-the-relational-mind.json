@@ -14,6 +14,12 @@
     "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 10,
+    "testableBaselineSentences": 10,
+    "note": "Standing procedure, run before any pairing test: 10 of 10 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
     "terms": [
@@ -95,6 +101,22 @@
           "note": "The claim that rearranges everything, the quantity sealed inside a skull, the three places intelligence lives, the proportion claim, the tools that strengthen the between, the two mechanisms of modern invention, and the hinge reaching for its hands."
         }
       ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "All ten testable baseline sentences survive verbatim; the only divergences are the recorded em dash repairs. R-CAUTIOUS-HALF, R-CORRECTION-SCOPE, R-PAIRED-DELETION, R-DEIXIS, R-TENSE, and the catalog were checked against the baseline. Nothing fires anywhere in the section."
+        }
+      ],
+      "metrics": {
+        "words": 242,
+        "baselineWords": 242
+      }
     }
   ],
   "rulings": [],

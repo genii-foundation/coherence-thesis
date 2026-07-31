@@ -80,6 +80,19 @@
       "producedRule": "R-LEDGER-WINS"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F5",
+      "summary": "The three guards on the proposal repair the baseline's self-certification, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "The more she is genuinely trusted to heal, the more she is held ... His months at her bedside are remembered in the same currency as any other contribution ... it was not luck; it was the forage and the refusal of the neonicotinoid.",
+        "shipped": "Such a record can attest that she showed up. It cannot certify clinical competence, and it must not become a popularity contest. ... the tending counts, materially and socially, without requiring him to expose the intimate hours of it to any ledger ... the forage and the refusal of the neonicotinoid are the obvious candidates, and a careful community would want to know what else differed before crediting either. That is the point. ... she can afford to observe carefully rather than guess."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "One repair family, credited once. The baseline lets the sketch certify itself three times: the record certifies healing, the ledger absorbs the intimate hours, and the hives prove the method. Each guard refuses the certification while keeping the good: attestation without competence claims, counting without exposure, candidates without conviction. The Ayan repair is the finest of the three because it converts the caution into the argument, a community whose grower can afford to observe carefully rather than guess is the design's actual promise. The restored concrete acts in F3 stand beside these guards, which is the section's correct shape: the billing code's missing column and the grandfather at the table return, and the sketch still declines to certify itself.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0076",
@@ -118,6 +131,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the three extraction accounts with the molecule argued in the fog, the three coherent-order standards including the mother rationing breath and the tending was the thing, and the three portraits with their concrete acts. No prose changed by this audit. One substitution credit added as auditFindings F5 for the three guards on the proposal's self-certification. R-CAUTIOUS-HALF: every good keeps both its committing standard and its hedge, the covenant beside its governance requirements, the counting beside its supplement-not-replace bound, the sacrament beside the trade and seasons qualification. R-PAIRED-DELETION: the fog ties to the glyphosate passage, the titled water to the accounting, scare enemies to the architects, the tending to the second address and Appendix B; all ends present. R-CORRECTION-SCOPE: CTD-0030's composite framing governs the sketch's status claims alone and the concrete acts stand outside it, exactly as F3 argued; CTD-0076's plural rule governs the naming and nothing else. R-REFRAIN-COST: the under-extraction and under-Providence paired openings recur three times by design and are the section's structure, not a defect; recorded here once. R-DEIXIS and R-TENSE checked and silent, noting the heading's conditional and the sketch's woulds are CTD-0030 paydown, not tense defects."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

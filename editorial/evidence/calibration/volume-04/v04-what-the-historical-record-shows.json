@@ -105,5 +105,28 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. This is the first section in the volume whose body was removed outright rather than reduced, and the damage report's minus sixty-nine percent understates it because the research lineages and open questions that follow were counted inside the section. Word count is not a reliable detector of wholesale removal when display blocks survive."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 30,
+        "survivingVerbatim": 21,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: both convergent findings keep their committing form beside the restored consistency argument, and the second open question keeps the empirical hedge the baseline gave it. R-PAIRED-DELETION: patient endowment, cooperative ownership, and community bonds were swept; the same triad recurs in the two open questions and in Capital Patient Enough, all ends aligned. Citations re-verified intact through the punctuation repairs: Kelly 2001 and 2012, Mazzucato 2013 and 2021, Alperovitz 2005 and 2013, and the Institute for Local Self-Reliance. R-CORRECTION-SCOPE: one factual correction found and recorded below. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass beyond the display labels, no credit owed, stated explicitly. R-TENSE, R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST, R-LEDGER-WINS-COROLLARY: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twenty-one of thirty baseline sentences survive verbatim; the remainder are the four recorded punctuation repairs, the renamed display labels held under the structural rule, and the now-sourced name correction. No prose change required.",
+      "corrections": [
+        "A factual correction the restoration made silently is now recorded with its source, as section 9 of the standard requires. The baseline attributes The Entrepreneurial State (2013) and Mission Economy (2021) to Michael Mazzucato while continuing Her analysis, an internal inconsistency; the manuscript reads Mariana Mazzucato, which is correct. Source: both works are by Mariana Mazzucato, the economist at University College London; The Entrepreneurial State, Anthem Press, 2013, and Mission Economy, Allen Lane, 2021. The baseline's pronoun already agreed with the correction.",
+        "One small divergence attributed: in the funding paradox chapter stands as in the funding paradox, a 4.23 trim of a self-referential label, claim unchanged."
+      ]
+    }
+  ]
 }

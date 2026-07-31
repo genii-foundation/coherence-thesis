@@ -1,0 +1,174 @@
+{
+  "sectionId": "v03-the-coherence-engine-and-the-reflective-mirror",
+  "sectionHeading": "The Coherence Engine and the Reflective Mirror",
+  "currentHeading": "The Coherence Engine",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "341 baseline words to 215 shipped words, minus 35 percent, with no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "COHERENCE",
+      "Bio-Consensus",
+      "Proof of Council",
+      "Currency of Presence",
+      "minting",
+      "late integration",
+      "validated"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0012",
+      "CTD-0015",
+      "CTD-0046",
+      "CTD-0056",
+      "CTD-0073"
+    ],
+    "outcome": "The master ledger defines Bio-Consensus as the primary biometric minting path and COHERENCE as the currency unit, and the baseline paragraph states exactly that, so R-LEDGER-WINS requires no departure and the baseline also pays CTD-0012 for this section under the corollary. CTD-0046 records the shipped hedge, a proposed validation standard, as its current evidence state; restoring the baseline's validated council language reopens that partial paydown, recorded below. CTD-0003 and CTD-0015 are open queries, so the baseline governs and both are flagged rather than resolved."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The engine's first function, minting the currency, was inverted into its denial.",
+      "evidence": {
+        "baseline": "Its function is twofold: to fuse the four streams into a real-time portrait of the encounter, the minting of the currency, and to return to the participants something of extraordinary value, which is the second and equally important half of the engine's purpose.",
+        "shipped": "Its first task is not to mint a permanent currency. It is to produce a provisional, moment-by-moment account of an encounter that participants can inspect and correct."
+      },
+      "authorizedBy": "Compression and caution.",
+      "diagnosis": "The shipped sentence does not bound the baseline claim, it negates it. The chapter that defines the Coherence Engine is the chapter the currency architecture hangs from, and after the rewrite the engine's defining act is stated only as what it is not. This is the clearest R-CAUTIOUS-HALF case in the chapter: the returning-value half survived in hedged form while the minting half became a denial.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F2",
+      "summary": "The naming of COHERENCE and the two minting paths lost their commitments.",
+      "evidence": {
+        "baseline": "The body's honest signals are the first and chief way the currency is earned; the honoring of genuine council is the second. Both mint the one currency.",
+        "shipped": "Neither mechanism should be treated as empirically validated until its methods and consequences are tested."
+      },
+      "authorizedBy": "Compression, citing the validation posture CTD-0046 asks for.",
+      "diagnosis": "The shipped paragraph keeps every proper noun and deletes every assertion, which leaves the terms defined by caution rather than by function. The baseline's two-path structure, primary and ancillary, is itself the distinction CTD-0012 requires, and it reads as canon rather than as disclaimer. The validation concern is real and remains recorded in the ledger; it did not need to replace the definition it concerns."
+    },
+    {
+      "id": "F3",
+      "summary": "The shipped pass added the disagreement-hypotheses passage, and it repairs a genuine fault in the baseline.",
+      "evidence": {
+        "baseline": "Where they disagree, where the words say one thing and the heart says another, the disagreement is itself information, often the most revealing information of all.",
+        "shipped": "If words suggest ease while cardiac data suggest activation, the system does not announce that the body has exposed a lie. It asks whether the signals have been misread, whether the person was activated for another reason, or whether something important remained unspoken."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT as a finding that runs the other way.",
+      "diagnosis": "The baseline's framing, the heart saying another thing than the words, is the oracle reading that the corpus protected line refuses: the body contributes evidence, it does not deliver an oracle. The shipped passage names the three live hypotheses that make a disagreement informative without making the body a lie detector, and it is the concrete content of the baseline's abstract claim that disagreement is information. Kept in full as its own paragraph after the fusion paragraph.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F4",
+      "summary": "Eleven prohibited marks, three in the epigraph block and eight in the body.",
+      "evidence": {
+        "baseline": "Fence pairs around the minting appositive, around the stream enumeration, and around the words-versus-heart clause; single marks after the COHERENCE naming and before the Proof of Council naming; the epigraph's fenced appositive and its attribution mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The minting appositive and the naming marks became commas. The stream enumeration was rebuilt as its own sentence introduced by a colon, which is the enumerating structure the fence was imitating. The words-versus-heart fence became paired commas so the interruption still lands inside the sentence. The epigraph's fenced appositive became commas and the attribution mark was replaced by the Adapted from line, which also marks the adaptation honestly for CTD-0007."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0046",
+      "effect": "reopened by restoration",
+      "note": "The validated practice of gathering rightly in true council returns. The item's paydown criteria say the mechanism must not be called validated before passing a named test, and its evidence paragraph cites the shipped hedge as the current state, which is now stale. Restore-and-flag; the author decides the wording."
+    },
+    {
+      "id": "CTD-0012",
+      "effect": "supported by restoration",
+      "note": "The baseline names COHERENCE as the unit, Bio-Consensus as the primary source, and Proof of Council as ancillary, which is the master ledger's own distinction. The baseline pays this item for this section; nothing was seeded."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "recorded",
+      "note": "The unit in which presence and presencing are remembered is the record-of-relation reading, one of the two ontologies the item holds open. Restored without resolving."
+    },
+    {
+      "id": "CTD-0015",
+      "effect": "recorded",
+      "note": "This section is the antecedent for the minting mechanics the Maren chapters depend on. The term sweep confirmed both ends restored in this batch."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "recorded",
+      "note": "The system that integrates them is what we call the Providence Coherence Engine restores present-tense operational voice for an unbuilt system. Undated operational claim, the item's subject."
+    },
+    {
+      "id": "CTD-0073",
+      "effect": "recorded",
+      "note": "Chapter Ten's compression is reversed to baseline scale in this pass, minus the audited Shadows section. The item's question, author approval of the compression, is now decidable against restored text for this chapter."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard, with one credited keep",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The epigraph's full claim including the engine of development, the twofold function with minting first, the COHERENCE naming with the Currency of Presence apposition, the two minting paths with their commitments, late integration with the stream enumeration, the disagreement-as-information claim, and the full-arc mapping sentence."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped disagreement-hypotheses passage, in full, for the reason recorded in F3."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, The Coherence Engine, untouched under the structural hold, and the Adapted from attribution convention for the epigraph."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped denial of minting, the proposal hedges, and the closing humility couplet, the engine's output should preserve this humility, it maps observations and confidence, not essence. All quoted here so nothing is lost silently."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across eleven marks as recorded in F4. The italic coda device in this chapter is one of eight instances of the volume's italic-coda refrain, recorded once with its count in v03-how-presence-becomes-bread under R-REFRAIN-COST."
+        }
+      ],
+      "metrics": {
+        "words": 374,
+        "baselineWords": 341,
+        "shippedWords": 215,
+        "deltaPercentAgainstBaseline": 10,
+        "shippedDeltaPercentAgainstBaseline": -37
+      }
+    }
+  ],
+  "rulesDerived": [
+    {
+      "candidateId": "R-SUBSTITUTION-CREDIT",
+      "status": "applied instance",
+      "proposedBy": "editorial-agent",
+      "rulings": [],
+      "note": "First credited keep of this batch, F3. The prior pass supplied the concrete hypotheses the baseline's abstract claim needed and removed a lie-detector implication the corpus protected line already rejects."
+    }
+  ],
+  "openQuestions": [
+    "Validated council language versus CTD-0046. The baseline calls council practice validated; the ledger's paydown criteria forbid that word before a named test exists. Restored per the standing instruction; the author owns the wording.",
+    "Both mint the one currency is a canon commitment sitting inside open queries CTD-0003 and CTD-0015. Restored and flagged, not resolved.",
+    "The baseline chapter heading, The Coherence Engine and the Reflective Mirror, named both halves of the chapter; the current heading names one. A heading change is a route decision and was not made. Recorded as the two forms and their cost per the structural hold."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The section now defines the engine by what it does, keeps the pass's one genuine improvement, and carries its contested canon flagged in the ledger rather than silently hedged in the prose."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": []
+}

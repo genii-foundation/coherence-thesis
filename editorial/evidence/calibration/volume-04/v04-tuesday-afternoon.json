@@ -116,5 +116,28 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The chapter opens the volume's design fiction and the two removed passages are both about what the fiction is for. A scenario without a stated method reads as advertising, which is exactly the risk CTD-0030 was raised against."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 20,
+        "survivingVerbatim": 13,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the chapter keeps both the reason for choosing the ordinary and the falsifiability claim, and the composite keeps its honesty commitment. R-PAIRED-DELETION: the Cardinal Scale, Mahlinah, Elan, and the watershed were swept; the rotation and water sections carry the other ends and all stand; eighty-seven pairs with the water section's limits paragraph. R-CORRECTION-SCOPE: the CTD-0030 scenario grammar re-verified at width: In the scenario, an imagined watershed, treated as a real place, and the strengthened does not exist as reported fact each bound the frame without rewriting the scene inside it. R-LEDGER-WINS-COROLLARY re-run: the kept equal standing clause and the strengthened existence disclosure were searched for in the immutable baseline and are not there; seeded canon with provenance visible in the original kept notes, CTD-0006 and CTD-0030 bounding, no credit. R-VOICE-BIND: the opening stands in the card's exemplar form, Most institutional life is ordinary coordination, not crisis, where the baseline reached the same claim through a longer denial; attributed below. R-SUBSTITUTION-CREDIT: the card-held opening is recorded as an attributed kept rather than credited, since R-VOICE-BIND already binds it. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing further fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Thirteen of twenty baseline sentences survive verbatim; the remainder are the four glyph repairs, the scenario grammar, the seeded boundings, and the card-held opening, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: four em dash glyphs at four sites, all single dashes; three stand as commas and the uplands dash stands as a period, letting the geography claim begin its own sentence.",
+        "The opening now attributed: the baseline's Most of what happens inside any living institution is not a crisis stands as Most institutional life is ordinary coordination, not crisis, the voice card's exemplar opening anchor. The claim is unchanged and the positive term arrives first; R-VOICE-BIND holds the kept form."
+      ]
+    }
+  ]
 }

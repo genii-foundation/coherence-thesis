@@ -137,6 +137,27 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "epigraphAttributionRefrain": {
+      "rule": "R-REFRAIN-COST",
+      "refrain": "The italic attribution line, The Coherence Thesis, Vol. I, closing each self-epigraph. The baseline set every instance with a leading em dash; the pass italicized all of them instead.",
+      "count": 9,
+      "note": "Recorded once here, at the first chapter epigraph, as the anchor for the volume's epigraph-attribution treatment. The single edit that would change every instance is the attribution style itself, and any CTD-0007 ruling on verbatim-versus-adaptation prices at nine instances. Child records cite this anchor rather than re-counting."
+    },
+    "checks": [
+      "R-REFRAIN-COST: the attribution refrain is anchored here with its count; the disclosure refrain is anchored separately in v02-providence-and-ai-integration.",
+      "R-PAIRED-DELETION: the epigraph's source sentence exists in Volume I's current manuscript, so the cross-volume reference has both ends.",
+      "R-CAUTIOUS-HALF: the chapter's committing half, once a civilization's dominant coordination systems are organized around engagement extraction, incoherence becomes economically advantageous, survives beside the hedged concession that some reforms are necessary and many will buy time. Both limbs intact.",
+      "R-CORRECTION-SCOPE: the epigraph's alignment to the re-rendered Volume I wording authorizes only the quoted span, and the audit confirms nothing adjacent was changed under its license.",
+      "R-CANON-DELETION-RECORD, R-DEIXIS, R-SUBSTITUTION-CREDIT: no instance found beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's six findings hold under the twenty-rule standard. The audit adds the epigraph-attribution refrain anchor and confirms the section needs no further change."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

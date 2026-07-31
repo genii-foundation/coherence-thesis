@@ -88,5 +88,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary. This section also carries the Part VI trailer as its closing paragraph.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The trailer's judged-by close is the recorded criticism bound; its display label is covered by the refrain anchor in v07-part-i-the-argument-arrived.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The cathedral paragraph is pass-authored and supplies the image the card records as the volume's own.",
+        "evidence": {
+          "baseline": "a life lived as a gift to a future it will not see",
+          "shipped": "No one laying the foundation of a cathedral could see the finished roof. The image matters only if it includes those who quarry the stone, bear the cost, and inherit the building. Responsibility across time must remain responsibility for actual consequences."
+        },
+        "note": "The card lists a cathedral foundation among the volume's recurring motifs, yet the baseline tenet has no image at all. The kept paragraph gives the last tenet its picture and then audits the picture, naming the laborers romantic cathedral imagery forgets. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

@@ -139,5 +139,40 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. This section is the one place in the three volumes where the prior pass’s largest structural change was mandated by two ledger items at once, and the record has to say so as plainly as it says the rest."
-  }
+  },
+  "audits": [
+    {
+      "id": "2026-07-31-twenty-rule-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Re-read of the settled section against the immutable baseline under the full twenty-rule index, with R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS applied to this section for the first time.",
+      "substitutionTest": {
+        "survivingBaselineSentences": 3,
+        "baselineSentences": 42,
+        "method": "Clauses of five or more words from the baseline section, split on sentence-final marks plus colon and semicolon, counted as surviving when their punctuation-stripped word sequence appears verbatim in the current section. A floor, not a fidelity measure: a restored sentence that differs by one hedge or repaired mark does not count.",
+        "note": "Nonzero, so the section is not in substitution mode and the pairing test applies and was run."
+      },
+      "checked": [
+        "R-LEDGER-WINS re-search on the unit is sound, the first ground exists, the sequence is settled, open problems, and mechanism designers: no item has changed since the record settled. CTD-0030 and CTD-0031 paydowns hold in full.",
+        "R-CANON-DELETION-RECORD verified against F1: the three withdrawn knowledge claims are quoted in the record, CTD-0030 and CTD-0031 own them in debtImpact, and the page itself states the retreat, a composite is design fiction and nothing in this volume may be read as a report of an operating institution. The corpus has retreated from the claims while the questions stand, which is exactly the state the rule requires to be legible.",
+        "R-CAUTIOUS-HALF: the committing halves of the baseline list were withdrawn by recorded decisions, not by survivorship, and each commitment entry keeps a committing sentence of its own. No fire.",
+        "R-CORRECTION-SCOPE: the CTD-0030 and CTD-0031 corrections govern the knowledge claims and the heading, and the reasoning inside each entry is baseline-derived. Confirmed clean.",
+        "R-PAIRED-DELETION: mechanism designers, the legal vessel, capture, measurement, safeguarding, population, and implementation status all resolve inside the volume; where nothing must be stored to be real connects the currency entry back to Proof of Council, both ends present.",
+        "R-DEIXIS: This list is part of the design, proximal and correct. R-TENSE: no fires. R-LAND: the section lands on one bounded promise at a time.",
+        "One record correction: the settled generation note says four we-need calls; the baseline carries five, as does the shipped this-needs form. The refrain entry below carries the accurate count.",
+        "Prohibited glyphs: none. The two bold list labels match the census."
+      ],
+      "prose": "unchanged",
+      "result": "No rule fires against the current prose; the section is confirmed under the twenty-rule standard, which is a different fact from the thirteen-rule settlement it extends. The one inaccuracy found was in this record, not the manuscript: the call count was five, not four, now corrected here and carried by the refrain anchor.",
+      "refrains": [
+        {
+          "phrase": "This needs ...",
+          "count": 5,
+          "instances": "the five entries of the open list: mechanism designers; lawyers, structurers, and the founders of a commons; people who can hold vigilance and trust at once; engineers who can hold a paradox without dropping either half; facilitators and culture-keepers",
+          "note": "The baseline's form was We need the ..., also five times. One ruling decides the register of the whole list: the impersonal this needs specifies without claiming who we are, and the baseline's we need summons and recruits. Changing the ruling rewrites five sentence endings at once; that is its full cost and its full purchase. The refrain lives in this section alone, so there are no child records."
+        }
+      ]
+    }
+  ]
 }

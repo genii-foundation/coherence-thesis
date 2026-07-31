@@ -6,22 +6,31 @@
   "currentHeading": "What Failure Requires of Us",
   "status": "settled",
   "opened": "2026-07-30",
-  "settled": "2026-07-30",
+  "settled": "2026-07-31",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim content, and the volume's warning to invitation balance remain author decisions.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["Providence", "genius", "dystopia", "summons", "invitation", "pitch language"],
-    "itemsRead": ["CTD-0020", "CTD-0055", "CTD-0027", "CTD-0004"],
+    "terms": [
+      "Providence",
+      "genius",
+      "dystopia",
+      "summons",
+      "invitation",
+      "pitch language"
+    ],
+    "itemsRead": [
+      "CTD-0020",
+      "CTD-0055",
+      "CTD-0027",
+      "CTD-0004"
+    ],
     "outcome": "No item forbids the restoration. CTD-0020 is the governing precedent even though it is scoped to Volume II: it records that the warning to invitation ratio, and the degree of certainty and urgency a closing crescendo may carry, are author decisions. The Volume III voice card independently names pitch language as a Level 3 target. Together these bound the restoration: the argument returns, the recruitment does not, and the tonal question is recorded rather than answered."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -55,39 +64,123 @@
       "authorizedBy": "Compression.",
       "diagnosis": "The volume card names the ritual divider and a small number of earned narrative landings among its permitted fragments, and the display close is how every chapter in this volume states its own result. Restored in a reduced register: the first two sentences and the refusal stand, the summons to genius wherever it lives and the closing call to bring one's whole self do not.",
       "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "The institution-subordination paragraph is kept and now formally credited. This finding runs the other way.",
+      "evidence": {
+        "baseline": "No counterpart. The nearest baseline commitment is the structure-failure section's pledge to dissolve rather than become the concentration it opposes.",
+        "shipped": "Providence succeeds only if the institution remains less important than the purpose it serves. The moment preserving Providence becomes more important than preserving participant sovereignty, material dignity, and honest inquiry, the experiment has failed even if the organization continues to grow."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT as a finding that runs the other way.",
+      "diagnosis": "The prior generation kept this paragraph with a reasoning note but no finding, which R-SUBSTITUTION-CREDIT, derived after that record was written, now requires: a credited keep carries an identifier and both sides quoted, so a reader can count restraint as well as loss. The paragraph states a success criterion the baseline never states, that institutional survival is not the measure, and it generalizes the dissolution pledge from one failure mode to the whole experiment. Kept in place before the invitation close. Eighth credited keep in the volume.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F5",
+      "summary": "The inspect-not-join paragraph is kept and now formally credited. This finding runs the other way.",
+      "evidence": {
+        "baseline": "To the inspired, the rigorous, the hopeful-but-not-naive ... this is the call. ... Come and build it with us.",
+        "shipped": "Many capable people have good reason to distrust a project that speaks in this register. The invitation is therefore not to suspend judgment or join a movement. It is to inspect the proposal, test the claims, identify who might be harmed, and improve or reject what cannot withstand scrutiny."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT as a finding that runs the other way.",
+      "diagnosis": "The baseline's invitation offers one door, joining the build. The kept paragraph opens the second door the corpus card requires, engagement without conscription: the reader may inspect, test, and reject without ever joining, and distrust of the register is named as reasonable rather than diagnosed. That repairs a genuine gap in the baseline's close, not merely bounds it. Kept directly after the restored request paragraph, where it converts the request into terms a skeptic can accept. Ninth credited keep in the volume.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F6",
+      "summary": "The recruitment close and the full display close, withheld by the prior generation, are restored under the standing author instruction.",
+      "evidence": {
+        "baseline": "So this chapter, which began as an unflinching account of how we might fail, ends as what it always secretly was: an invitation. ... And the prize is nothing less than a civilization that increases its power without losing its wisdom, that coordinates its abundance without surrendering its soul. ... Come and build it with us. ... This is the summons to that genius, wherever it lives: we have looked clearly at how we might fail, and we are choosing to build anyway, because the human race succeeding is not a prophecy to wait for, but a thing to be made, together, by everyone willing to bring their whole self to the making.",
+        "shipped": "Absent at audit time. The prior generation's restoration ended the display close at we are choosing to build anyway and replaced who answers the call with who shows up."
+      },
+      "authorizedBy": "The prior cut was authorized by the volume card's pitch-language licence and CTD-0020's author-reservation, applied by analogy from Volume II. The restoration is authorized by the standing author instruction to restore everything from baseline and flag afterwards.",
+      "diagnosis": "CTD-0020 is a query scoped to Volume II recording that the warning-to-invitation ratio is the author's decision; it is not a settled decision that Volume III's recruitment register must go, so under R-LEDGER-WINS the baseline governs and under the standing instruction the contest is recorded rather than obeyed. The prior generation's restraint was reasoned and its reasoning stands in generation A; this audit restores the invitation paragraph, the full display close, and the baseline wording the partial restoration had lightly rewritten: more of you for more readers, sharper, more integrated, more aligned thinking for sharper thinking, the genuine-request sentence in full, the summons-unanswered sentence, the called-together close of the wager paragraph, and the demonstrate-that-the-human-race-can-still-choose-to-succeed sentence. Both states are preserved verbatim across this record, so the author's one tonal ruling can move the section either way without loss."
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0020", "effect": "extended in scope by evidence, not resolved", "note": "The item is scoped to Volume II's warning to invitation balance. This section shows the same question live in Volume III, where a closing crescendo was resolved by deletion rather than by decision. The restoration deliberately stops short of the recruitment language so that the author's ruling still has something to rule on." }
+    {
+      "id": "CTD-0020",
+      "effect": "extended in scope by evidence, not resolved",
+      "note": "The item is scoped to Volume II's warning-to-invitation balance. This section now carries the baseline's full recruitment close, restored under the standing instruction, with the prior generation's reduced close preserved in F6 and in generation A. The same question the item records for Volume II is live here in its sharpest form, and one author ruling on the register settles both states."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
-      "status": "approved",
+      "status": "basis",
       "title": "Derived from baseline under the standard, the corpus card, and the volume card",
       "reasoning": [
-        { "kind": "applied", "note": "R-PUNCT-STRUCT. Ten em dashes in the baseline section. Six fenced parenthetical material and became commas or were absorbed. Three separated two movements and became periods, including build it and that, so far. One introduced a specification and became a colon." },
-        { "kind": "kept", "note": "Both paragraphs the pass wrote. Neither is baseline text, but both are sound and one carries a commitment the baseline never states: that the institution must stay less important than its purpose. Keeping new prose that improves the section is not the same as accepting the deletion it accompanied." },
-        { "kind": "kept", "note": "The renamed heading, under the volume ruling on renames. Recorded as an open question: the baseline names both halves of the movement and the current heading names only failure, which is the half the section exists to move past." },
-        { "kind": "restored", "note": "The refusal to end on the catalogue, the vacancy argument in full, the wager on distributed genius, and the display close." },
-        { "kind": "cut", "note": "The recruitment close. Come and build it with us, the prize is nothing less than, and the summons to that genius wherever it lives. The volume card names pitch language as a Level 3 target and CTD-0020 makes the degree an author decision. Restoring it would have answered a question that is not mine." }
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Ten em dashes in the baseline section. Six fenced parenthetical material and became commas or were absorbed. Three separated two movements and became periods, including build it and that, so far. One introduced a specification and became a colon."
+        },
+        {
+          "kind": "kept",
+          "note": "Both paragraphs the pass wrote. Neither is baseline text, but both are sound and one carries a commitment the baseline never states: that the institution must stay less important than its purpose. Keeping new prose that improves the section is not the same as accepting the deletion it accompanied."
+        },
+        {
+          "kind": "kept",
+          "note": "The renamed heading, under the volume ruling on renames. Recorded as an open question: the baseline names both halves of the movement and the current heading names only failure, which is the half the section exists to move past."
+        },
+        {
+          "kind": "restored",
+          "note": "The refusal to end on the catalogue, the vacancy argument in full, the wager on distributed genius, and the display close."
+        },
+        {
+          "kind": "cut",
+          "note": "The recruitment close. Come and build it with us, the prize is nothing less than, and the summons to that genius wherever it lives. The volume card names pitch language as a Level 3 target and CTD-0020 makes the degree an author decision. Restoring it would have answered a question that is not mine."
+        }
       ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audit restoration to full baseline under the standing instruction",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The invitation close in full, quoted in F6, the complete display close with who answers the call, the genuine-request sentence, the summons-unanswered sentence, the full wager paragraph with the hardest and most worthy problem there is, and the choose-to-succeed sentence with the infrastructure of our thriving."
+        },
+        {
+          "kind": "kept",
+          "note": "Both credited pass paragraphs, now carried as findings F4 and F5, in their prior positions; the surviving merged heading under the structural hold; and every punctuation repair from generation A, with the invitation close's marks repaired the same way: the pull mark became a colon before this is the call, the succeed mark became a comma, and the display close's two marks became commas."
+        },
+        {
+          "kind": "cut",
+          "note": "Nothing from the baseline. The prior generation's light rewordings, more readers, sharper thinking, who shows up, a hard problem, are returned to baseline wording and recorded in F6."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across the restored close, and R-SUBSTITUTION-CREDIT twice, as recorded in F4 and F5. The display close is one instance of the italic display-line refrain anchored for chapters thirteen and fourteen in v03-the-three-chamber-governance-model F4."
+        }
+      ],
+      "metrics": {
+        "words": 877,
+        "baselineWords": 787,
+        "shippedWords": 568,
+        "deltaPercentAgainstBaseline": 11,
+        "shippedDeltaPercentAgainstBaseline": -28
+      }
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
-    "Tone. The baseline closes this chapter with an explicit recruitment call. The restoration returns the argument and stops short of the call, which leaves the chapter ending on a refusal rather than on an invitation. CTD-0020 records that this ratio is the author's decision in Volume II; the same decision is now live here.",
-    "Heading. Many Ways to Fail, and Many Ways to Succeed names both halves of the movement. What Failure Requires of Us names only the first. Renaming costs a reviewed route alias."
+    "Tone. The baseline's explicit recruitment call, Come and build it with us, and the full summons close are restored per the standing instruction. The prior generation's reduced close is preserved in F6 and generation A. CTD-0020 records that this ratio is the author's decision; the contest is recorded here and the ruling remains open.",
+    "Heading. Many Ways to Fail, and Many Ways to Succeed names both halves of the movement. What Failure Requires of Us names only the demand. Renaming costs a reviewed route alias; recorded, not acted on.",
+    "The merged section now carries this section's full prose and the restored What This Chapter Is For prose under one heading, at 1,135 words. Whether one route should carry both movements permanently is the same author heading decision, recorded in both records."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, and the debt ledger under R-LEDGER-WINS.",
-    "conclusion": "No new rule required. The finding worth carrying into the rest of Volume III is F1: the pass did not always compress, it sometimes substituted. A word count delta reads the same either way, so the damage map cannot distinguish them and every section in this volume needs its surviving prose checked against the baseline before it is treated as a reduction of it. F2 is the more useful case for the standard, because it shows a licensed cut and an unlicensed one sharing a paragraph, which is the shape most likely to recur wherever a volume card names a register for reduction."
+    "conclusion": "Audited 2026-07-31 under the full twenty-rule standard. The audit found the prior restoration sound in structure and short of the baseline in register: the withheld recruitment close is the one place a rule fired, R-LEDGER-WINS against a caution no settled decision required, and the standing instruction resolved it toward restoration with the contest recorded. The two pass-authored keeps are now credited findings under R-SUBSTITUTION-CREDIT, which did not exist when generation A was recorded."
+  },
+  "anchor": "v03-why-providence-might-fail",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "787 baseline words. At audit time the shipped merged section carried 568 words, the prior generation's partial restoration plus two pass-authored paragraphs, with no baseline sentence surviving verbatim from the original substitution. Substitution mode; the pairing test does not apply and was not run. Audited 2026-07-31 against the immutable baseline under the full twenty-rule standard."
   }
 }

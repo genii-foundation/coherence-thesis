@@ -65,6 +65,30 @@
       "producedRule": "R-LEDGER-WINS"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F4",
+      "summary": "The narrowed elite claim is better than the accusation it replaced, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "who are, with great confidence and in plain sight, carving up your future among themselves. They do not hate you. They have simply concluded that the demos is an obstacle, that the watching is a product, and that the lethality is a line of business — and they have the capital and the contracts to act on the conclusion.",
+        "shipped": "The claim is not that they form one hidden faction. It is narrower and better evidenced: some powerful actors treat democratic constraint as an obstacle and lethality as a line of business, and they say so in public."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "Carving up your future among themselves is an accusation about coordinated intent the section cannot source, and the section's own method, take people at their recorded word, is violated by it. The narrowed claim keeps everything the quotations establish, drops everything they do not, and states its own evidentiary warrant, they say so in public. This is the section enforcing its method on itself, and it was kept in an applied note without credit until now.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F5",
+      "summary": "One residual per-quotation conditional remained after the recorded consolidation, and the 2026-07-31 audit removed it.",
+      "evidence": {
+        "baseline": "This is not a leak. It is a sales pitch, delivered upward to shareholders, who applauded.",
+        "shipped": "If the transcript holds, this is not a leak. It is a sales pitch, delivered upward to shareholders, who applauded."
+      },
+      "authorizedBy": "This record's F3 and CTD-0105. The consolidation decision was recorded as applied but one instance survived in the manuscript.",
+      "diagnosis": "F3 rules that the verification condition is stated once at the head of the section and governs everything below, and the head sentence says exactly that: what follows is stated on that condition. The surviving if-the-transcript-holds clause re-hedged one quotation against the record's own decision, which left the record and the manuscript in silent disagreement. The clause is removed and the baseline sentence stands, still governed by the head condition. This is the same divergence class the second address's F1 repaired: a recorded disposition not fully applied.",
+      "producedRule": "R-CORRECTION-SCOPE"
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0048",
@@ -102,6 +126,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the applauding shareholders, the financier's stated reasons, the transactional security elite, the refusal of demonology, and the watching tower close. One prose change by this audit: the residual if-the-transcript-holds conditional removed per this record's own F3 consolidation decision, recorded as auditFindings F5. One substitution credit added as F4 for the narrowed elite claim. R-CAUTIOUS-HALF: the head condition is the hedge and the quotations are the commitment; both stand, and the consolidation keeps the hedge from multiplying into sterile hedging under 4.14. R-PAIRED-DELETION: the watching tower close references the whistleblower passage in the reckoning, present; scare enemies recurs at the three-primal-goods close, present; the demos recurs in the first address, present. R-DEIXIS, R-TENSE, R-REFRAIN-COST checked and silent. The baseline clause he welcomed the era's disruption and forecast that revolutions cost heads remains unrestored: the head-costs forecast is exactly the kind of quotation fragment the verification item exists to gate, it is not in the Roots register, and its absence was re-checked and stands under CTD-0048; recorded here so the cut is a decision rather than an accident."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

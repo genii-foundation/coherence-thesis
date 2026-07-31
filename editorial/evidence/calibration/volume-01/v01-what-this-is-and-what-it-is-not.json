@@ -8,21 +8,31 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["single empirical claim", "falsifiable", "adversarial", "detect", "government", "religion", "utopia"],
-    "itemsRead": ["CTD-0053", "CTD-0052", "CTD-0002", "CTD-0055"],
+    "terms": [
+      "single empirical claim",
+      "falsifiable",
+      "adversarial",
+      "detect",
+      "government",
+      "religion",
+      "utopia"
+    ],
+    "itemsRead": [
+      "CTD-0053",
+      "CTD-0052",
+      "CTD-0002",
+      "CTD-0055"
+    ],
     "outcome": "Both CTD-0053 and CTD-0052 name passages in this section, and both are unresolved. Neither the baseline nor the shipped text satisfies either item, and neither disposition of the re-render changes that. The wording is restored at full strength precisely so that the decisions remain visible and unmade."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -80,44 +90,132 @@
       "producedRule": "R-CATALOG-LIMBS"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0053", "effect": "unchanged, still query", "note": "The phrase a single empirical claim appears in the baseline and survived the prior pass unaltered, so the re-render neither strengthens nor weakens it. The item asks whether the manuscript can defend the exact scope single names. That is a logical decision for the author and no editorial pass may make it by rewording." },
-    { "id": "CTD-0052", "effect": "unchanged, still open, promise restored to full strength", "note": "The prior pass had removed in the open and publishes honestly from the study commitment. Both are restored. The item's remedy is to publish a reviewable protocol or to recast the passage explicitly as a proposed research norm. Softening the promise without a decision would have retired it by erasure, which is the pattern already recorded against CTD-0001." }
+    {
+      "id": "CTD-0053",
+      "effect": "unchanged, still query",
+      "note": "The phrase a single empirical claim appears in the baseline and survived the prior pass unaltered, so the re-render neither strengthens nor weakens it. The item asks whether the manuscript can defend the exact scope single names. That is a logical decision for the author and no editorial pass may make it by rewording."
+    },
+    {
+      "id": "CTD-0052",
+      "effect": "unchanged, still open, promise restored to full strength",
+      "note": "The prior pass had removed in the open and publishes honestly from the study commitment. Both are restored. The item's remedy is to publish a reviewable protocol or to recast the passage explicitly as a proposed research norm. Softening the promise without a decision would have retired it by erasure, which is the pattern already recorded against CTD-0001."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the thirteen rules",
+      "text": [
+        "It would be easy, having come this far, to mistake what has been described for something it is not. So let the boundaries be drawn plainly, because a thing is known as much by what it refuses as by what it reaches for.",
+        "Providence is not a government. It governs no one, holds no monopoly on force, and grants itself no authority a person cannot revoke by walking away.",
+        "It is not a religion, though it touches reverence. It asks for no belief. The reverence it points toward, as the Soil showed, is the kind arrived at by observation: the noticing that life organizes through relationship. It is not the kind demanded by doctrine.",
+        "It is not a company that owns you, and not a platform that harvests you. There is no central store of your life to be sold, because the architecture refuses to build one.",
+        "It is not a utopia. It assumes conflict, failure, self-interest, and harm, and is designed for repair rather than perfection. Its measure of success is not the absence of trouble but the presence of the capacity to recover from it.",
+        "And it is not, finally, proven. This is the most important boundary of all, and the book will not pretend otherwise.",
+        "The entire architecture rests on a single empirical claim: that the quality of genuine human presence can be detected reliably, non-invasively, and in a way that is hard to counterfeit. If that claim is false, Providence is not dangerous. It is simply hollow. There is no currency, no membrane, no trust that travels. Only a beautiful idea resting on nothing.",
+        "So the honest order of operations is not to build the cathedral and hope. It is to test the foundation first, in the open, before the weight goes on it. The first real work of this project is not deployment. It is a study: adversarial, independent, willing to fail. It asks whether presence leaves a real signature at all, and publishes honestly what the instruments can and cannot see. If it can be measured, the rest becomes worth building. If it cannot, the most valuable thing the experiment can do is say so clearly, and save a generation of builders the trouble.",
+        "This is what it means to call the thesis falsifiable rather than merely hopeful. It names the exact place it could be wrong, and agrees to look there first.",
+        "---"
+      ],
       "reasoning": [
-        { "kind": "applied", "note": "R-LEDGER-WINS. The ledger was searched before restoring. Two items name passages here and both are unresolved, which changed no disposition but did change the reasoning: the restorations are recorded as holding open decisions rather than as preferences about wording." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT. Five em dashes. Two introduced a specification and became colons. One separated a landing from the triad before it and became a period, leaving Only a beautiful idea resting on nothing to stand alone. Two fenced material with internal commas and the syntax was rewritten." },
-        { "kind": "kept", "note": "The pass's attachment of the detection adverbs directly to the verb, reliably, non-invasively, and in a way that is hard to counterfeit. The em dash there was fencing an adverbial that reads cleanly attached, and a colon before adverbs would be punctuation theater." },
-        { "kind": "kept", "note": "The pass's split of the study sentence at the relative clause, which the colon repair required independently." },
-        { "kind": "kept", "note": "The renamed heading, Boundaries and Burden of Proof, under the volume ruling on renames. Recorded with the other heading questions: the baseline heading names the section's own structure, a list of what the work is not, and the replacement names its topic." },
-        { "kind": "restored", "note": "The opening and its governing aphorism, the it is not litany across four items with its culminating and finally, the not dangerous but hollow distinction, both antitheses, the transparency terms of the study commitment, the repeated no in the currency triad, and the hyphen in non-invasively." }
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The ledger was searched before restoring. Two items name passages here and both are unresolved, which changed no disposition but did change the reasoning: the restorations are recorded as holding open decisions rather than as preferences about wording."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Two introduced a specification and became colons. One separated a landing from the triad before it and became a period, leaving Only a beautiful idea resting on nothing to stand alone. Two fenced material with internal commas and the syntax was rewritten."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's attachment of the detection adverbs directly to the verb, reliably, non-invasively, and in a way that is hard to counterfeit. The em dash there was fencing an adverbial that reads cleanly attached, and a colon before adverbs would be punctuation theater."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's split of the study sentence at the relative clause, which the colon repair required independently."
+        },
+        {
+          "kind": "kept",
+          "note": "The renamed heading, Boundaries and Burden of Proof, under the volume ruling on renames. Recorded with the other heading questions: the baseline heading names the section's own structure, a list of what the work is not, and the replacement names its topic."
+        },
+        {
+          "kind": "restored",
+          "note": "The opening and its governing aphorism, the it is not litany across four items with its culminating and finally, the not dangerous but hollow distinction, both antitheses, the transparency terms of the study commitment, the repeated no in the currency triad, and the hyphen in non-invasively."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
     "Heading decision 5 of 5. Keep Boundaries and Burden of Proof, or restore What This Is, and What It Is Not? The current heading names the topic. The earlier heading names the section's structure, a litany of denials that the opening paragraph justifies as a way of knowing a thing. Restoring it costs a reviewed route alias."
   ],
-
   "debtAudit": {
     "id": "CTD-0108",
     "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
     "result": "The existing debtImpact entries record every touched item."
   },
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-01 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Sixteenth consecutive section to need none. F2 is the volume's first confirmed repetition of an identical finding across two sections, which retroactively strengthens the earlier record: what looked like one editor's judgment about one sentence was a habit applied wherever the construction appeared. F4 is the more useful case for the method, because it shows R-LEDGER-WINS working in the direction opposite to its first use. There the ledger overruled a restoration; here it requires one, because an open promise weakened without a decision is a debt item closed by attrition."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 19,
+      "baselineSentences": 23,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Four non-surviving sentences carry the recorded repairs and restorations. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "The single empirical claim passage here and the load-bearing detectability sentence in Measurement and Falsifiability are the two ends of one cross-section pair, and both are present in the shipped manuscript (lines 705 and 320), now in identical terms after the non-invasively repair recorded in v01-between-sprout-and-stem. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "F4's transparency terms, in the open and publishes honestly, are the committing halves of the study promise and are restored; the litany's culminating and it is not, finally, proven stands. Does not fire further."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "Credited below."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "credits": [
+      {
+        "id": "SC1",
+        "summary": "The prior pass attached the detection adverbs directly to the verb, and the repair is kept.",
+        "evidence": {
+          "baseline": "The baseline fenced reliably, non-invasively, and in a way that is hard to counterfeit behind a dash. Quoted by description because the record may not carry the prohibited glyph.",
+          "shipped": "detected reliably, non-invasively, and in a way that is hard to counterfeit"
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "The adverbial reads cleanly attached and a colon before adverbs would be punctuation theater, as the generation note records. Recorded at finding weight under R-SUBSTITUTION-CREDIT."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules beyond the credit recorded. No prose changed."
   }
 }

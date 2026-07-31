@@ -75,6 +75,11 @@
       "id": "CTD-0055",
       "effect": "paydown preserved",
       "note": "Nothing is described as deployed."
+    },
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved",
+      "note": "The restored reference names Volume III's argument rather than its Chapter Nineteen. The interaction was applied by the restoration but not itemized in this record; attributed in the twenty-rule audit of 2026-07-31."
     }
   ],
   "generations": [
@@ -115,5 +120,28 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Second confirmed epigraph substitution, and the same mechanical check found it. Two in one part is enough to treat epigraph comparison as a required step rather than a spot check."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 8,
+        "survivingVerbatim": 5,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the restored epigraph keeps the committing claim that the architecture is the decisive variable, and the chapter keeps both its orientation and the governance question of who decides where the prohibition line falls. R-PAIRED-DELETION: infrastructure not sovereign, amplification, and the prohibition line were swept; the permitted and forbidden chapters carry the other ends and all stand. R-CORRECTION-SCOPE: one unitemized correction found and attributed below at CTD-0075 width. R-LEDGER-WINS-COROLLARY re-run: the kept responsibility clause was searched for in the immutable baseline and is not there; seeded canon with provenance visible in the original kept note, CTD-0027 and CTD-0055 family bounding, no credit. R-SUBSTITUTION-CREDIT: nothing else kept, no credit owed, stated explicitly. The standing canon question on whether Volume II or Volume III established the orientation remains with the author. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Five of eight baseline sentences survive verbatim; the remainder are the two comma repairs, the CTD-0075 reference rebuild, and the seeded responsibility clause, all attributed. No prose change required.",
+      "corrections": [
+        "One divergence now attributed under CTD-0075: the baseline's Volume III's Chapter Nineteen established stands as Volume III established. The item forbids attributing a named recurring apparatus to Volume III by section number; the sibling records in this part record the same correction, this record did not. Width verified: the reference alone changed.",
+        "The itemization is confirmed and completed: two em dash glyphs, the epigraph's single dash before not the intelligence and the single dash before that artificial intelligence embedded, both standing as commas."
+      ]
+    }
+  ]
 }

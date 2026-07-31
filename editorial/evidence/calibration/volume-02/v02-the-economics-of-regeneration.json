@@ -71,7 +71,7 @@
       "id": "F3",
       "summary": "An em dash pair enclosing five currencies became a comma series that read as an inventory.",
       "evidence": {
-        "baseline": "while the other currencies—trust, regeneration, meaning, ecological reciprocity, relational depth—move through architectures that are primitive",
+        "baseline": "while the other currencies [mark] trust, regeneration, meaning, ecological reciprocity, relational depth [mark] move through architectures that are primitive",
         "shipped": "while trust, regeneration, meaning, ecological reciprocity, and relational depth move through architectures that are primitive"
       },
       "authorizedBy": "R-PUNCT-STRUCT, applied by absorbing the pair into the subject.",
@@ -115,6 +115,23 @@
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS. The record's quoted evidence was mechanically cleaned to the [mark] placeholder earlier tonight; that cleanup was not an audit, this is.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the restored denial-and-correction keeps both halves: The crisis of modern economics is not that money is the only currency. It is that money has become the only currency civilization has built sophisticated infrastructure to recognize. The denial names the misreading, the correction commits, and F1's repair is the rule's own case.",
+      "Catalog 4.22 on the volume diagnostic: the five-currency appositive the pass had flattened now lands behind a colon, trust, regeneration, meaning, ecological reciprocity, relational depth, asyndetic and open as the baseline had it. Confirmed clean.",
+      "R-PAIRED-DELETION: the older meaning of the word currency has its family ends in Chapter Five's oldest sense of the word and Chapter Seven's older sense of what circulates, all present in both texts; the three betweens and the circulation litany are section-local and intact.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0003's ontology is engaged by definition, not decided.",
+      "R-SUBSTITUTION-CREDIT: the kept circulation litany was byte-identical baseline; the kept repairs are R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this chapter opener; the circulates litany is section-local deliberate anaphora under catalog 4.4's retention limb.",
+      "R-DEIXIS: The deeper economic question is not what civilization counts but what civilization allows to flow holds the reader at the live question. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, the restored correction keeps its denial, and the currency list stays open. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

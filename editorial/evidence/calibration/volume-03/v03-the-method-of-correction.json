@@ -1,0 +1,150 @@
+{
+  "sectionId": "v03-the-method-of-correction",
+  "sectionHeading": "The Method of Correction",
+  "currentHeading": "Correction as a Core Function",
+  "anchor": "v03-why-providence-might-fail",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "583 baseline words to 116 shipped words, minus 80 percent, the deepest cut in the volume, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "collective intelligence",
+      "biomarkers",
+      "presencing",
+      "commons",
+      "true north",
+      "score or rank or exclude"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0006",
+      "CTD-0055",
+      "CTD-0071",
+      "CTD-0052"
+    ],
+    "outcome": "No recorded decision governs this section. The biomarkers-of-thriving claim sits in CTD-0009's verification backlog and is restored and flagged there. The not-to-score-or-rank-or-exclude clause is the same commitment the bright-lines chapter enforces, checked at both ends: the chapter fifteen baseline still carries it, and its sections are queued for the next batch. Collective intelligence has its evidentiary end in appendix section V, present in the current manuscript."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "An eighty percent substitution replaced the section's four movements with administrative summary.",
+      "evidence": {
+        "baseline": "It is a living process. And living processes are defined not by their freedom from error but by their capacity to perceive error and correct it. ... This is not a possibility we tolerate. It is a certainty we depend upon. The criticisms we have not yet heard are not threats to the project; they are the project's means of becoming what it is meant to be.",
+        "shipped": "Providence should expect failure modes not named here. Real participants will discover where design cuts against purpose, where instruments misread, and where power hides."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The deepest cut in the volume landed on the section that answers the whole chapter: why a catalogue of failures is not a counsel of despair. The shipped version keeps the prediction of unforeseen failure and drops the inversion that gives it force, error as the thing the project depends upon, along with the open-correction commitment, the commons argument, and the true-north close. What remains reads as a risk register's preamble. The full arc is restored: living process, expected wrongness, the one commitment, and what the correction is for."
+    },
+    {
+      "id": "F2",
+      "summary": "The falsifiability limit is kept. This finding runs the other way.",
+      "evidence": {
+        "baseline": "Every genuine objection becomes a contribution. Every revealed flaw becomes the next thing repaired. The correction never ends, because the perceiving never ends, because the work is alive.",
+        "shipped": "Every serious objection can contribute to better design, but not every objection can be absorbed without changing the thesis. Some evidence may require abandonment of a mechanism or claim. A living process is not one that survives every criticism. It is one capable of giving up what reality has disproved."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT as a finding that runs the other way.",
+      "diagnosis": "The baseline's absorption doctrine has no stopping rule: every objection feeds the process and nothing can refute it, which quietly makes the living-process claim unfalsifiable, the exact posture the chapter's own measurement-failure section forswears. The kept paragraph supplies the stopping rule, abandonment of a mechanism or claim, in the section's own register, and its final sentence is the sharpest formulation of the volume's visible-limit discipline anywhere in the chapter. Kept in full as its own paragraph directly after the certainty-we-depend-upon paragraph, where it bounds the claim before the commitment builds on it. Seventh credited keep in the volume.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F3",
+      "summary": "Seeded channels drafting cut for ratification.",
+      "evidence": {
+        "baseline": "No counterpart.",
+        "shipped": "Correction requires more than openness to feedback. It requires channels through which criticism changes budgets, code, rules, leadership, and, when necessary, the decision to stop. People harmed by the system should not have to become unpaid researchers in order to be believed."
+      },
+      "authorizedBy": "Rewrite; seeded governance canon answering CTD-0071's complaint and appeal criteria without a recorded decision.",
+      "diagnosis": "The channels requirement and the unpaid-researchers sentence are real governance drafting, and the second is the strongest pass-authored line in the chapter. Both match CTD-0071's paydown criteria on complaint, appeal, and repair design. Preserved here in full for adoption through the item's review; cut from prose because they replace the baseline's argument rather than repair a fault in it."
+    },
+    {
+      "id": "F4",
+      "summary": "Five prohibited marks.",
+      "evidence": {
+        "baseline": "The living-process mark, the perceptions mark, the same-way mark, the many fence, and the meant-to-be mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The living-process mark carried a turn into definition and became a period, the second movement opening on And. The perceptions mark introduced the three-part enumeration of new perceptions and became a colon. The same-way mark joined the dependent by-bringing phrase and became a comma. The many fence held the five-part appositive of who the many are and became paired commas. The meant-to-be mark introduced the closing triplet, one perception, one correction, one act of collective intelligence, and became a colon."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The actual biomarkers of what allows a human being and a human community to become sustainable and thriving and fully alive is restored as the section's largest scientific exposure and belongs to the item's verification backlog."
+    },
+    {
+      "id": "CTD-0071",
+      "effect": "recorded",
+      "note": "The F3 channels drafting and unpaid-researchers principle are preserved for the item's complaint and appeal design."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "recorded",
+      "note": "Must be a commons and must be built in public is an architecture promise the item tracks, restored at strength."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "recorded",
+      "note": "Not to score or rank or exclude restores the anti-ranking commitment in the exact register the item weighs against governance standing."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline with one credited keep",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The living-process argument, the expected-wrongness paragraph with its certainty inversion, the one commitment with the commons-in-public reasoning and the enumerated many, and the true-north close with the score-rank-exclude refusal."
+        },
+        {
+          "kind": "kept",
+          "note": "The falsifiability paragraph, for the reason in F2, and the current renamed heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped administrative summary, quoted in F1, and the channels drafting, quoted in full in F3 for ratification."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 633,
+        "baselineWords": 583,
+        "shippedWords": 116,
+        "deltaPercentAgainstBaseline": 9,
+        "shippedDeltaPercentAgainstBaseline": -80
+      }
+    }
+  ],
+  "openQuestions": [
+    "The restored section runs nine percent over baseline because the credited falsifiability paragraph stands beside the correction-never-ends doctrine it bounds. The tension is deliberate and flagged: the author may reconcile the absorption creed with the abandonment rule or keep the productive contradiction.",
+    "The biomarkers-of-thriving claim is restored at full strength and unverified; CTD-0009's appendix queue owns it.",
+    "Baseline heading, The Method of Correction, names a practice; current heading, Correction as a Core Function, names a property. Both forms recorded per the structural hold."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The chapter's answer to its own catalogue argues again, the one genuine correction survives beside the creed it bounds, and the seeded governance drafting waits in the record for ratification."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": []
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-chapter-fourteen",
+  "editorialId": "volume-03",
+  "sectionHeading": "Chapter Fourteen",
+  "currentHeading": "Chapter Fourteen",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Structural lines are held; no structural change was considered or made.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "This section is a structural marker with no prose in the baseline and no prose in the current manuscript. Zero baseline sentences exist, so the section is nominally in substitution mode and the pairing test does not apply. There is nothing to pair and nothing was substituted."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [],
+    "itemsRead": [],
+    "outcome": "No canonical term occurs in this section because it contains no prose. The debt index was consulted for the volume as part of the batch; no item names this marker. The structural line itself is byte-identical between the baseline and the current manuscript, so no restoration and no ledger interaction arises."
+  },
+  "findings": [],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed identical to baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "The structural line # *Chapter Fourteen* is identical in the baseline and the current manuscript, carries no body prose in either, and generates its route unchanged. Confirmed under the full standard on 2026-07-31; nothing fires."
+        }
+      ],
+      "metrics": {
+        "words": 0,
+        "baselineWords": 0,
+        "shippedWords": 0,
+        "deltaPercentAgainstBaseline": 0,
+        "shippedDeltaPercentAgainstBaseline": 0
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Byte comparison of the structural line and the empty body between the immutable baseline and the current manuscript.",
+    "conclusion": "Nothing to render. The record exists so that a section nobody re-read cannot be mistaken for a section confirmed under the current standard."
+  }
+}

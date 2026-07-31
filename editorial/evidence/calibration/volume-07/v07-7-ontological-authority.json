@@ -92,5 +92,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. With some independence for independent is the recorded bound on state independence.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The equal-authority close is pass-authored and supplies the boundary the tenet's name demands.",
+        "evidence": {
+          "baseline": "only one who can stand in their own being can be entrusted with a larger order",
+          "shipped": "Its test is whether conviction remains open to evidence, consequence, and correction. It ends where another person's equal authority begins."
+        },
+        "note": "A tenet named authority, left unbounded, is the volume's single most exploitable sentence in a mentorship setting. The kept close states the card's equal-standing floor as the tenet's own limit. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

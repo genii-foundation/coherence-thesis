@@ -145,6 +145,34 @@
     }
   ],
 
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "refrainAnchor": {
+      "rule": "R-REFRAIN-COST",
+      "refrain": "The future will not be built by isolated genius, completed once as It will be built through coherent coordination and once as It will be built by builders who learn to find each other before fragmentation becomes irreversible.",
+      "count": 2,
+      "instances": [
+        "v02-the-threshold",
+        "the Part Three part-label epigraph under Wielding Intelligence"
+      ],
+      "note": "Two instances in both texts, manuscript lines 129 and 879. The return at the Part Three threshold is earned repetition under section 6: the second instance converts the Prologue's abstraction into the builders the part is about. The single edit that would change both is the isolated-genius refusal itself. The second instance lives in a part label's epigraph, which is structural matter, so any change there is a continuity decision besides an editorial one."
+    },
+    "checks": [
+      "R-CAUTIOUS-HALF: the Prologue's committing halves survive beside their hedges: It is not whether technological acceleration will continue; it will, and the closing The question is no longer whether humanity will change, but whether we can change coherently. Both two-beat question constructions the volume diagnostic tracks are intact here, each opening on The question is after a sentence naming a different question, and both are the retention limb of catalog 4.9.",
+      "R-PAIRED-DELETION: the term sweep finds provision glossed only here, self-contained; coherent civilization-building minted here recurs in Providence as Coordination Infrastructure with both ends present; and the measurability promise, will work to make measurable, has its paying end in Chapter Seven's design space. No one-ended restoration.",
+      "R-CORRECTION-SCOPE: no recorded correction reaches this section, and the CTD-0055 boundedness posture is carried by baseline wording, what already exists, what is being built, and what the founding architecture intends, which the restoration preserved without widening or narrowing.",
+      "R-CANON-DELETION-RECORD: nothing was cut against an open canon query. CTD-0004's species-first claim and CTD-0039's measurability promise are restored assertions flagged as Q2 and Q3, which is restore-and-flag, not deletion.",
+      "R-SUBSTITUTION-CREDIT: the four kept repairs in generation A, the semicolons in the infinite triad, the colon after recursively redesigning civilization itself, the colon after It is a map, and the provision gloss, are all R-PUNCT-STRUCT compliance for prohibited marks. No discretionary improvement went uncredited.",
+      "R-REFRAIN-COST: the isolated-genius refrain is anchored above; the epigraph-attribution refrain does not reach this section, which carries no Vol. I attribution.",
+      "R-DEIXIS: Many people can feel it now, this threshold, and the task now hold the reader inside the live condition; the definite articles in the historical survey are correctly distal. No instance beyond the original findings.",
+      "Damage-report note: this section reports unmatched in the corpus damage tool, a known lineage-id gap for an already restored section. Not chased, per the volume brief."
+    ],
+    "proseChanged": false,
+    "result": "The record's six findings hold under the twenty-rule standard. The audit adds the isolated-genius refrain anchor and confirms both surviving question two-beats. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

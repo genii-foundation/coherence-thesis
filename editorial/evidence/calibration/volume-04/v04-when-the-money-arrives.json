@@ -116,5 +116,28 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The chapter is where two ledger items interlock: CTD-0074 fixes the outcome and CTD-0095 removed the unit that contradicted it. Restoring the chapter while leaving the coda out is the only reading that satisfies both, and it is why the coda question must go to the author as one decision rather than twenty-eight."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 21,
+        "survivingVerbatim": 15,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the chapter keeps both the donor's good faith and the committing claim that the reasonable offer is the one that tests the architecture; the conditions keep their reasonableness beside their danger. R-PAIRED-DELETION: the offer, the three conditions, and the reasonable corruption argument were swept; the process and outcome sections carry the other ends and all stand; five million and eighty-seven pair across the scenario. R-CORRECTION-SCOPE: the CTD-0074 and CTD-0095 decisions re-verified at width: the outcome is fixed, the contradicting donor coda is not restored, and this audit confirms the codas remain recorded loss anchored at the coda record. R-LEDGER-WINS-COROLLARY re-run: the kept design fiction sentence was searched for in the immutable baseline and is not there; seeded CTD-0030 family bounding with provenance visible, no credit. R-VOICE-BIND and R-TENSE: the opening stands in the card's exemplar form, The message that arrives on Tuesday afternoon offers money, converting the baseline's past tense to the scenario present the card anchors; attributed below. R-SUBSTITUTION-CREDIT: the card-held opening is attributed rather than credited, since R-VOICE-BIND already binds it. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-DEIXIS, R-NEGATION-STACK: nothing further fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Fifteen of twenty-one baseline sentences survive verbatim; the remainder are the seven em dash glyphs across four sites, the card-held opening, and the seeded design fiction sentence, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: seven em dash glyphs across four sites, not four. The easy version pair and the visibility pair stand as comma pairs, and the single dashes at taken up, the growth condition, and reasonable corruption stand as commas.",
+        "The opening now attributed: the baseline's The message that arrived on Tuesday afternoon, the one that was an offer of money, stands in the card's exemplar present, The message that arrives offers money. R-VOICE-BIND holds the kept form and the scenario present is the card's own grammar for Part VII."
+      ]
+    }
+  ]
 }

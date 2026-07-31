@@ -107,5 +107,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The chapter opens Part VI and the two removed passages are both about calibrating the reader's expectation of what follows. A part that announces itself as the most honest in the book cannot afford to lose its concessions."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 7,
+        "survivingVerbatim": 6,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the chapter keeps both the permanent pressure premise and the imperviousness admission, the committing and conceding halves together. R-PAIRED-DELETION: contact problem and co-optation were swept; the co-optation chapter carries the other ends and all stand. R-CORRECTION-SCOPE: no recorded correction reaches this body. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0072 re-verified, prospective throughout. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass beyond the route-holding heading, whose merit relative to the baseline label is already recorded as an open question for the author, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Six of seven baseline sentences survive verbatim; the one divergence is the epigraph's comma repair, attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried one em dash glyph, the epigraph's dash before and whether the institution can tell the difference, standing as a comma. The record's second repair, a parenthetical appositive comma pair, does not correspond to a site here."
+      ]
+    }
+  ]
 }

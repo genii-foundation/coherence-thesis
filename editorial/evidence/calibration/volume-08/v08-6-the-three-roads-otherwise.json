@@ -65,6 +65,19 @@
       "producedRule": "R-PROPORTION"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F4",
+      "summary": "The feudal-obligations qualification is better than the unbounded analogy, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "The platform is the manor; the toll is on your very existence; and you are nearer to a serf with a login than a citizen with a deed.",
+        "shipped": "The analogy can overreach, and feudalism had obligations running in both directions that no platform accepts. What it exposes is real: the asymmetry of a remote owner who can withdraw the thing you depend on."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "This is not mere bounding: the sentence adds the historical content that makes the objection checkable, that feudal lords owed protection and the manor owed commons rights, obligations no platform's terms of service reciprocate. Naming what the analogy gets wrong is what licenses the volume to keep using it, and the manor image survives intact around the qualification. The prior record kept this in a note; it is credited here at the weight a loss would carry.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
   "debtImpact": [],
   "generations": [
     {
@@ -87,6 +100,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the friendlier clothing, the full manor with its counter and convenience, the deposit being worked, and the convergence with mapped-and-metered-can-be-closed. No prose changed by this audit. One substitution credit added as auditFindings F4 for the feudal-obligations qualification. The pass-authored closing extension, what decides is ownership, law, and enforceable limits, was checked under R-LAND and kept: it trades a fatalist landing for the sentence the fork later needs, and the it-does-not-care beat still lands in its own sentence before it. R-PAIRED-DELETION: the landlord who may revoke it while you sleep recurs at the inversion's protocol-not-platform refusal, the watching market's three-in-the-morning searches recur in the second address, and the deposit ties to the seam; all ends present. R-CAUTIOUS-HALF and R-DEIXIS checked and silent. The dropped old and new prefixes on the cage and manor labels are inline lead wording, not structure, and are recorded here as checked."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

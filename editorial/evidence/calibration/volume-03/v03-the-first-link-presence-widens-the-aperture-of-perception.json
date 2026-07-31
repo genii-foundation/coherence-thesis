@@ -1,0 +1,124 @@
+{
+  "sectionId": "v03-the-first-link-presence-widens-the-aperture-of-perception",
+  "sectionHeading": "The First Link: Presence Widens the Aperture of Perception",
+  "currentHeading": "First Link: Presence Can Widen Perception",
+  "anchor": "v03-how-presence-becomes-bread",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "327 baseline words to 134 shipped words, minus 59 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "narrowed aperture",
+      "sympathetic state",
+      "threat",
+      "extractive economy",
+      "parasympathetic"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0053"
+    ],
+    "outcome": "No recorded decision governs this section. The sympathetic-state physiology claims sit in CTD-0009's backlog; open, so the baseline governs and the claims are flagged to the appendix queue."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The physiological commitment was reduced to a possibility.",
+      "evidence": {
+        "baseline": "This is not metaphor; it is the documented neurophysiology of the sympathetic state. Under threat, attention collapses toward the immediate, the defensive, the short-term. The visual field literally narrows.",
+        "shipped": "Threat can narrow attention toward immediate danger. Poverty, precarity, violence, trauma, exhaustion, and chronic uncertainty can shorten the horizon within which choices remain possible."
+      },
+      "authorizedBy": "Compression and caution.",
+      "diagnosis": "The baseline claims documented physiology and stakes the link on it; the shipped version retreats to can twice in two sentences, which is the sterile-hedging shape the catalog names when the knowledge is not in fact uncertain at that grain. Whether the tunnel-vision literature supports literally narrows is CTD-0009's verification work, and the flag belongs there rather than diffused into hedges."
+    },
+    {
+      "id": "F2",
+      "summary": "The extractive-economy paragraph, the link's economic half, was replaced by its own rebuttal.",
+      "evidence": {
+        "baseline": "The farmer trapped in debt cannot afford to perceive the long-term health of his soil; he must extract this year's yield to survive this year, even though the extraction guarantees next year's failure.",
+        "shipped": "A farmer in debt may understand the future of the soil perfectly and still be forced by the terms of a loan to extract from it. Inner work cannot substitute for changing those terms."
+      },
+      "authorizedBy": "Rewrite.",
+      "diagnosis": "The shipped sentences are the strongest objection the first link faces: constraint can bind while perception is intact. But the pass installed the objection in place of the claim, so the shipped section argues against a link it no longer states. The baseline is restored; the objection is preserved here and put to the author, because a counterargument this good deserves to be answered in the text rather than to replace it."
+    },
+    {
+      "id": "F3",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "The chronic-threat fence and the presence-definition fence.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Both fences became comma chains whose spines hold, a nervous system in a state of chronic threat is a nervous system with a narrowed aperture, and presence does the opposite."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "Documented neurophysiology of the sympathetic state, the visual field literally narrows, and the parasympathetically available state are restored physiological claims in the verification backlog, mapped to appendix sections II and III."
+    },
+    {
+      "id": "CTD-0053",
+      "effect": "recorded",
+      "note": "The first link is one dependency in the chain the item wants mapped; the restored chapter states the chain explicitly, which the item's dependency map can now cite."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "Begin with the body, the narrowed-aperture physiology at full commitment, the extractive-economy paragraph with farmer and fisher, the not-a-moral-failing landing, and the widened-aperture link with its therefore chain."
+        },
+        {
+          "kind": "kept",
+          "note": "The current hedged heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped hedged rewrite and its loan-terms rebuttal, quoted in F1 and F2 so the author can readmit the rebuttal as a named objection if wanted."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks as recorded in F3."
+        }
+      ],
+      "metrics": {
+        "words": 323,
+        "baselineWords": 327,
+        "shippedWords": 134,
+        "deltaPercentAgainstBaseline": -1,
+        "shippedDeltaPercentAgainstBaseline": -59
+      }
+    }
+  ],
+  "openQuestions": [
+    "The cut rebuttal, a farmer may understand the soil perfectly and still be forced by loan terms to extract, is the strongest counter to the first link and currently lives only in this record. The author should decide whether the chapter answers it explicitly.",
+    "Baseline heading commits, Presence Widens the Aperture of Perception; current heading hedges, Presence Can Widen Perception. Both forms recorded per the structural hold; changing one is a route decision."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The link claims again what it needs to claim, and its best objection is preserved for the author instead of silently replacing the claim."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": []
+}

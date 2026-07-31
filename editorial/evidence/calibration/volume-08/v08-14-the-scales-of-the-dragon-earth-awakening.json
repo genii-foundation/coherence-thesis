@@ -68,6 +68,19 @@
       "producedRule": "R-LEDGER-WINS"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F4",
+      "summary": "The myth-not-report reframing repairs the baseline's truth claim, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "None of this is theory awaiting permission. ... The older volumes gave this its mythic name, and we keep it because it is true rather than ornamental.",
+        "shipped": "None of this is proven, and it begins small on purpose ... The older volumes gave this its mythic name, and we keep it as myth rather than as report. ... That is an image of planetary coordination. It is not a claim that the earth is literally becoming conscious through this project."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "The baseline makes two category errors in one section: not theory awaiting permission implies operation the corpus cannot show, which is CTD-0030's exact concern, and we keep it because it is true asserts the literal truth of a myth in a volume whose register note promises to mark interpretation as interpretation. The reframing keeps the dragon, the name, and the whole image while placing them in the register the volume can defend, and F1's restored three-stage accretion now lives inside that honest frame rather than instead of it. The prior record kept the disclaimers in notes; the reframing is credited here as a repair.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0076",
@@ -111,6 +124,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the cell and accretion framing, the S for sovereignty, the connective tissue distinction, the three-stage accretion image, and the countercurrent counted as honestly as the danger. No prose changed by this audit. One substitution credit added as auditFindings F4 for the myth-not-report reframing. This section is also the anchor for the countercurrent bounding the second address's record cites: the requirement that the women's-leadership and arriving-as-answers claims obtain definitions and evidence lives here, engages CTD-0093, and governs the address's population list; recorded once per R-REFRAIN-COST with two sites, this section and the second address. R-CAUTIOUS-HALF: the wager sentence keeps both halves, not lost and not yet won. R-PAIRED-DELETION: the bent curve's four appearances, reckoning, here, second address, blessing, are all present; the dragon ties to the blessing's closing image and the master ledger's Earth Awakening entry. R-CORRECTION-SCOPE: CTD-0030 governs status claims alone and the mythic image stands outside it. R-DEIXIS and R-TENSE checked and silent."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

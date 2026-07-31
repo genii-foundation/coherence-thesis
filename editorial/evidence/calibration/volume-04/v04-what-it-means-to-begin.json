@@ -115,5 +115,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the volume's first demonstration that a ledger paydown can overreach: CTD-0075 licensed one sentence and the pass removed the paragraph around it. R-LEDGER-WINS settles which reading of a disputed fact governs. It does not license the collateral. Distinguishing the two is what made this section reconstructible."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 29,
+        "survivingVerbatim": 24,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CORRECTION-SCOPE: verified against the diff that CTD-0075 changed exactly one sentence, The What Remains Open sections throughout Volume III named the questions became Volume III named questions, and nothing adjacent moved; this is the rule's model case and the original record's regeneration note already states the principle. R-PAIRED-DELETION: the map and terrain figure, the step, and the governing question were swept; the governing question's restatement recurs across the volume and both ends stand. R-CAUTIOUS-HALF: The failure is not inevitable keeps its committing half, It is structural, and what is structural can be designed against. R-SUBSTITUTION-CREDIT: the kept shipped disclaimer that this volume cites Volume III where it matters and does not invent sections or promises is bounding under CTD-0075, not a repair of a baseline fault, so no credit entry is owed; recorded explicitly so the absence reads as judgment rather than oversight. R-CANON-DELETION-RECORD: the unrestored Volume III apparatus attribution is recorded against CTD-0075 in the original findings, which satisfies the rule. R-TENSE: the perfects in The philosophical foundations have been laid and The design space has been traced carry load-bearing completion, Volume III's finished work, and stand. R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST, R-LEDGER-WINS-COROLLARY: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twenty-four of twenty-nine baseline sentences survive verbatim; the remainder are the recorded punctuation repairs and the single-sentence CTD-0075 correction, whose scope this audit verified against the diff. Nothing fires that requires a prose change."
+    }
+  ]
 }

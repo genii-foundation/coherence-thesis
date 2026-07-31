@@ -14,6 +14,12 @@
     "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 3,
+    "testableBaselineSentences": 8,
+    "note": "Standing procedure, run before any pairing test: 3 of 8 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
     "terms": [
@@ -61,6 +67,17 @@
       "diagnosis": "Truly known and what only they can are the two claims the minute exists to make, and both are the volume's own diction. The generalised alternatives are true of any account of community.",
       "producedRule": "R-REGISTER-DICTION",
       "id": "F3"
+    },
+    {
+      "id": "F4",
+      "summary": "The pass's reframing of the waking planet as the series' image is better than the baseline's unmarked claim, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "Enough such communities, sovereign and cooperating, begin to compose something far larger: a living planet waking to itself through us.",
+        "shipped": "Enough such communities, sovereign and cooperating, could begin to compose something far larger. The image this series gives that possibility is a living planet waking to itself through us."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "The volume's central thesis, by its own card, is to nest the whole account without presenting metaphor as proof. The baseline's colon presents the waking planet as the thing the communities compose. The pass's second sentence keeps the image at full strength while naming it as the series' image, which is the one repair the volume's thesis requires of its own one-minute account. Kept on merit, beyond what the CTD-0080 bound alone would ask.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
     }
   ],
   "debtImpact": [
@@ -94,6 +111,42 @@
           "note": "The four when clauses, the luck sentence, the human scale, and what only they can contribute."
         }
       ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-SUBSTITUTION-CREDIT. One finding runs the other way and is recorded as F4: the pass's reframing of the waking planet as the series' image is kept on merit."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The committing halves of the potential and Providence claims are hedged under CTD-0080's recorded bounds, which win over the baseline. The when clauses, the luck sentence, and the protected closing line survive committing."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CORRECTION-SCOPE. Each bound sits at the width its item names: may be on the resource ranking, would help and could begin on Providence's operations. Nothing adjacent was softened."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        },
+        {
+          "kind": "kept",
+          "note": "Nothing further fires. The prose stands as generation A left it."
+        }
+      ],
+      "metrics": {
+        "words": 158,
+        "baselineWords": 150
+      }
     }
   ],
   "rulings": [],

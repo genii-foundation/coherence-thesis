@@ -73,6 +73,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The structural hold stands and no prose was touched: this is a chapter-start region, its word count may not change without route adjudication, so the fuller Krishnamurti attribution stays in the record rather than the manuscript. One internal inconsistency found and recorded: this record's ledgerSearch outcome and substitutionCheck both say the baseline attribution form is restored, while the generation's blocked note, the structuralHold, and the manuscript agree it was not. The blocked state is the true one; the restored phrasing in those two fields is residue from a draft of this record and should be read against the structuralHold. Under the newer rules nothing further fires: R-CAUTIOUS-HALF was checked on the attribution pair, and the surviving short form is the less disclosing half, which F1 already records as the loss; R-PAIRED-DELETION finds the epigraph's other end, well adjusted, alive in the blessing section and the second address, both present. Restoration remains author-gated by the route decision in QS."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

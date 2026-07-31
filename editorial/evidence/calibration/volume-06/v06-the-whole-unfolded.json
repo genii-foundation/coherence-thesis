@@ -14,6 +14,12 @@
     "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 15,
+    "testableBaselineSentences": 21,
+    "note": "Standing procedure, run before any pairing test: 15 of 21 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
     "terms": [
@@ -123,6 +129,42 @@
           "note": "The coin and the true bill, the luminous community, the completion where capacity meets need, the circle small enough that no one is lost, the currency's three-beat refusal, and the dragon with its rain and river and spring."
         }
       ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The image and its bound are both present: the ground alive at full strength, then That is an image and a proposition, not a proof in its own sentence. The committing halves of the grain and meeting claims survive."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CORRECTION-SCOPE. The three ledger sentences each sit beside the exact claim they bound: the measurement question at the currency, the symbolic borrowing at the dragon, the image-and-proposition line at the living ground. None widened into neighbouring prose."
+        },
+        {
+          "kind": "kept",
+          "note": "The reader-feeling close was checked: so you can feel its heart is recast under the recorded reader-autonomy correction and the heart of Earth image survives intact after the colon."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        },
+        {
+          "kind": "kept",
+          "note": "Nothing further fires. The prose stands as generation A left it."
+        }
+      ],
+      "metrics": {
+        "words": 520,
+        "baselineWords": 461
+      }
     }
   ],
   "rulings": [],

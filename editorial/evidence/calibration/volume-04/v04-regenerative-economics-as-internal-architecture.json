@@ -105,5 +105,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The restored scope sentence exposes a gap the compression concealed: three of the five topics the chapter promises are not delivered in either version. That is a developmental question for the author, and it only becomes visible when the promise is restored."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 16,
+        "survivingVerbatim": 14,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the drift account keeps both halves, the definitional statement that every institution has an internal economy and the committing close, Over time, the internal economy wins. R-PAIRED-DELETION: internal economy and institutional drift were swept; both recur in What Gets Measured, How Value Circulates, and the deepest-open-question passage, all restored. The term's ninth baseline occurrence sits in the Part II introduction, which is byte-frozen under T-021, so that end is a recorded dependency rather than a restorable one. R-CORRECTION-SCOPE: the CTD-0007 epigraph decision governs only the attribution line, and the verified change stops exactly there: the baseline's dash attribution to Vol. III stands as the italic Adapted from The Coherence Thesis, Volume III, with the epigraph text itself untouched. R-LEDGER-WINS-COROLLARY: nothing was seeded; every restored clause is baseline text. R-SUBSTITUTION-CREDIT: the only shipped matter kept is the epigraph attribution form, which is ledger bounding under CTD-0007, so no credit is owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Fourteen of sixteen baseline sentences survive verbatim; the remainder are the two recorded comma-pair repairs, the CTD-0007 attribution form, and the one transition trim attributed below. No prose change required.",
+      "corrections": [
+        "One divergence now attributed: the baseline's In fact, the most consequential form of institutional drift stands without its In fact opener. Catalog 4.2, defect limb: the emphatic transition adds no relation the sentence does not already carry. Kept, claim unchanged, below finding weight."
+      ]
+    }
+  ]
 }

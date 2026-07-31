@@ -94,5 +94,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. Met for expressed in the desire clause is the recorded consent-safeguard modality. Consent is not a brake placed on vitality is card-protected and pass-authored, noted under T-022.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The consent close is pass-authored and converts the safeguard into the tenet's own argument.",
+        "evidence": {
+          "baseline": "a pure relationship with the animating forces of existence, in which desire may be expressed as it arises, without agenda and without grasping",
+          "shipped": "Its question is whether desire can remain warm and generative without turning another being into its instrument. It does not authorize uninvited expression. Consent is not a brake placed on vitality. It is part of the form through which vitality becomes trustworthy."
+        },
+        "note": "The baseline bounds desire only from the desirer's side, agenda and grasping, and says nothing about the other person. The kept paragraph supplies the missing party and recasts consent as constitutive rather than restrictive, which is stronger than a prohibition. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

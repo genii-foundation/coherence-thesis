@@ -133,6 +133,24 @@
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-PUNCT-STRUCT re-verified on the section's largest repair: the legitimacy conditions now land behind a colon, are actively cultivated rather than assumed: felt trust, demonstrated accountability, repaired rupture, doing the enclosing pair's work at the sentence's end. The when series keeps all four restored whens ahead of it. Reads as one movement.",
+      "R-CAUTIOUS-HALF: the committing halves survive: It is not primarily produced by procedures, though procedures matter keeps both, the kept They are not peripheral. They are the layer beneath the procedures answers the dismissal it names, and the restored is-not-glamorous concession bounds the feedback claim without weakening it.",
+      "R-PAIRED-DELETION: what Chapter Five meant by coherence as infrastructure and the physiological conditions described in Chapter Two both have their minting ends present; the restored traditions keeps the lineages the crediting sentence names, with their fuller credit in the Traditions chapter. All ends present in both texts.",
+      "Catalog 4.22: the subsidiarity provenance list, Catholic social teaching, federalist political theory, and most Indigenous governance traditions, closes with and as a bounded factual enumeration of where the principle appears; examined and confirmed as the parseable closed form, not the diagnostic's false closure.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0066's contested claim is recorded in debtImpact.",
+      "R-SUBSTITUTION-CREDIT: the kept answer pair was baseline kept by the pass; the applied repairs are R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; living feedback is signature diction doing its card-listed work here.",
+      "R-DEIXIS: the boundary between these scales is itself a design question holds the live negotiation in the simple present. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, the reordered legitimacy conditions land correctly, and the closed provenance list is confirmed parseable. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

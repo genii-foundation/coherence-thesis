@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-its-name",
+  "editorialId": "volume-01",
+  "sectionHeading": "Its Name",
+  "currentHeading": "Why the Currency Is Called COHERENCE",
+  "anchor": "v01-the-currency-of-presence",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "recordNote": "Created 2026-07-31. The schema commits one record per calibrated section and this heading mints its own reader route, but this section's calibration lived folded inside the anchor record until the coverage audit. The prose was restored from the immutable baseline in the anchor's re-render of 2026-07-30; this record gives the section its own shipped text, sentence count, ledger search, debt impact, and twenty-rule audit, and revises prose only where a rule fired.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 13,
+    "baselineSentences": 19,
+    "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+    "note": "Six non-surviving sentences carry the recorded repairs and the restored elsewhere paragraph. Not substitution mode."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "COHERENCE",
+      "coherence",
+      "elsewhere",
+      "token"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0012"
+    ],
+    "outcome": "CTD-0003 holds whether COHERENCE is the relation or its portable record; the restored paragraph keeps the baseline's claim and the question stays open. The CTD-0012 separation is preserved in the anchor's prose and nothing here re-conflates the terms."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The anchor's restorations that live here: the lowercase reveal and the elsewhere paragraph.",
+      "evidence": {
+        "baseline": "The name of the currency is *Coherence*: the word the book has used all along. ... **COHERENCE** points nowhere else. ... The gap is closed. There is no elsewhere for it to drift to.",
+        "shipped": "Restored, as anchor findings F3 and F6 record: the reveal arrives lowercase, the capital token follows, and the elsewhere term is introduced, turned, and closed."
+      },
+      "authorizedBy": "v01-the-currency-of-presence findings F3 and F6 and its restored notes.",
+      "diagnosis": "See the anchor. The subsection is built on withholding the name until this page, which is why the shipped heading, which reveals the answer above it, is heading decision 2 of 5 in the anchor's open questions.",
+      "producedRule": "R-REMOVE-BURDEN"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0003",
+      "effect": "unchanged, still query",
+      "note": "Whether COHERENCE is the relation or its portable record remains the author's; the restored paragraph asserts the baseline's identity claim and decides nothing."
+    },
+    {
+      "id": "CTD-0012",
+      "effect": "paydown preserved",
+      "note": "Nothing in this subsection re-equates Bio-Consensus with the currency; the separation lives in the anchor's prose."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Prose as restored by the anchor re-render of 2026-07-30, audited under the twenty-rule standard",
+      "text": [
+        "And so its name was never really in question.",
+        "We have carried one word through this entire book. *Coherence*: the substrate, the biological condition, the thing a viable civilization must be built from. It would be strange to reach for another word now, at the moment that substrate finally becomes something a person can hold, and earn, and pass to someone else.",
+        "So we do not reach for another word.",
+        "The currency is called **coherence.**",
+        "This looks like wordplay. It is the opposite: it is the most exact thing the architecture can say about itself.",
+        "Every other currency is a symbol. Money stands in for labor, for value, for trust; it points, always, at something elsewhere that it is not. And that gap, between the token and the thing, is the space in which money is hoarded, gamed, and divorced from any good. **COHERENCE** points nowhere else. It is not a token *for* coherence. It is coherence: the real thing, made between real people, rendered legible enough to remember and to move. The gap is closed. There is no elsewhere for it to drift to.",
+        "Which means the oldest tension in any economy quietly dissolves. To chase money is to chase a sign of the good, and one can get rich while the good itself goes missing. But to earn coherence, there is only one way: to become more present, more regulated, more trustworthy, more *here*. Because that, and nothing else, is how a single unit of it is ever minted. The thing a person accumulates and the way a person becomes more whole are, for once, the same motion, under the same name.",
+        "That is why it is called coherence.",
+        "Because that is, exactly and without remainder, what it is."
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT per the anchor's punctuation note: specification dashes became colons; two movement dashes became periods."
+        },
+        {
+          "kind": "restored",
+          "note": "The lowercase reveal, the wordplay denial, the elsewhere paragraph in full, per anchor F3 and F6."
+        },
+        {
+          "kind": "kept",
+          "note": "The renamed heading under the volume working note on renames, held open as the anchor's heading decision 2 of 5: it reveals above the paragraph built to withhold."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading decision 2 of 5 is recorded in the anchor record v01-the-currency-of-presence: keep Why the Currency Is Called COHERENCE, or restore Its Name."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 13,
+      "baselineSentences": 19,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Six non-surviving sentences carry the recorded repairs and the restored elsewhere paragraph. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "Nothing cut. The unit-naming conflict with master-ledger Decision A is held open in the anchor's Canon question; this subsection restores the baseline's reveal and decides nothing. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over COHERENCE, the elsewhere term, and the reveal. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The heading is the live cautious-half case in reverse: the shipped heading commits to the answer the baseline heading withheld. Held open as heading decision 2 of 5. In prose, the elsewhere paragraph carries its committing close. Does not fire further."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The section keeps no substituted prose beyond what the record already accounts for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires beyond what the anchor's open questions already hold. The unit-naming question and the heading question are the author's. No prose changed."
+  }
+}

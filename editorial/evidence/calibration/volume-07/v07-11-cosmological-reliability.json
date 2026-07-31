@@ -82,5 +82,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The spiritual-posture bound is the recorded safeguard against denial of catastrophe.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The wager close is pass-authored and restates reliability so it survives disaster.",
+        "evidence": {
+          "baseline": "the mature discovery that the whole is more coherent than our fragments led us to fear",
+          "shipped": "Reliability here does not promise that events will be kind. It names a wager that response still matters, and that responsibility is not absurd even when outcomes remain uncertain."
+        },
+        "note": "The baseline's discovery reading collapses the first time the cosmos is unkind. The kept close moves the claim from prediction to wager, which is the only form of the tenet a bereaved practitioner could keep, and it hands tenet twelve exactly the premise it needs. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

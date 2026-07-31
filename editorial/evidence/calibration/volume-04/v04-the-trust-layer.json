@@ -124,5 +124,28 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required, and the volume's first confirmed epigraph substitution recorded. The check that found it was mechanical: an epigraph containing no prohibited mark cannot have been changed by the punctuation gate, so any difference is a substantive edit."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 14,
+        "survivingVerbatim": 12,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the chapter keeps both the committing claim that trust is the hardest problem and the enumerated constitutional requirements; the restored epigraph carries the committing half the substitution had removed. R-PAIRED-DELETION: physiological wallet, attestation, and the four unsolved problems were swept; the wallet concept pairs with Volume II's introduction as restored, and attestation recurs in the next chapter, ends aligned. R-CORRECTION-SCOPE: the CTD-0006 and CTD-0055 boundings re-verified at width; each kept caution sits beside restored baseline text and none replaced any. R-LEDGER-WINS-COROLLARY re-run: the kept physiological caution and the kept four questions were searched for in the immutable baseline and are not there; both are seeded canon with provenance visible in the original kept notes. One further seeded clause found unitemized and attributed below. Bounding under a ledger item earns no credit, stated explicitly. R-SUBSTITUTION-CREDIT: nothing else kept, no credit owed. R-CANON-DELETION-RECORD: nothing cut; the standing epigraph question remains with the author. R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twelve of fourteen baseline sentences survive verbatim; the remainder are the one comma-pair repair and the seeded boundings, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried two em dash glyphs, one parenthetical appositive pair at relational contribution standing as a comma pair. The record's count of four, with a dash becoming a colon, does not correspond to the sites here.",
+        "One seeded clause the original record did not itemize: without treating opacity or dissent as evidence of bad character, appended to the restored gaming requirement. It is not in the baseline. It is consistent with the CTD-0006 family and with the voice card's standing concern that dissent must not be treated as infection; provenance is now visible. Kept as bounding, no credit."
+      ]
+    }
+  ]
 }

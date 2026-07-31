@@ -8,14 +8,12 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "findings": [
     {
       "id": "F1",
@@ -84,7 +82,6 @@
       "producedRule": "R-CATALOG-LIMBS"
     }
   ],
-
   "debtImpact": [
     {
       "id": "CTD-0004",
@@ -107,31 +104,131 @@
     "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
     "result": "No operational evidence was invented and no recorded decision was reversed."
   },
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "We begin with the ground. The first movement is the cultivation itself: the slow, ancient, irreducibly human work of a person becoming more of who they are. This is the work that holds everything else, and it has a name: **PURPOSEFUL.**",
+        "The name is not decoration. It spells out the capacities a coherent life actually develops. These are the ten conditions under which intelligence becomes more trustworthy, collaboration more effective, and a life more able to contribute across time:",
+        "> **P**resence · **U**nderstanding · **R**eciprocity · **P**urpose · **O**rganization · **S**tewardship · **E**mergence · **F**lourishing · **U**nity · **L**egacy",
+        "These are not virtues to be admired. They are developmental capacities to be grown. And they grow the way living capacities have always grown: in relationship, in sequence, through practice, and through transmission from those who hold them to those who are ready to receive them.",
+        "Which is why PURPOSEFUL is delivered not as content but as relationship, through three ways of entering: what the work calls the Doors.",
+        "The first is **mentorship**: the oldest form of human development there is, one person's accumulated wisdom meeting another's readiness, matched with care rather than left to chance. The second is **retreats**: gatherings small enough that the coherence which can arise between two people is shown to be possible among many. The third, the most accessible and the most scalable, is a **year-long curriculum**: a guided passage through the capacities a coherent life requires, taught not by a single teacher but by many, each offering one true piece of what they have learned to live.",
+        "In the beginning, PURPOSEFUL holds these Doors in the most literal way: people in actual rooms; mentors matched by hand; a curriculum carried by human beings. This is deliberate, and the order matters. The embodied, in-person work comes first, because coherence is learned in bodies before it can be carried by any network. Over time, as Providence grows, the Doors are woven into the application itself, so that what now depends on physical proximity can eventually reach anyone, anywhere, who is ready. The app inherits this work. It does not invent it.",
+        "What moves through all three Doors is the same thing, and it is the oldest exchange in human history. Mentors offer experience, pattern, and accumulated wisdom. Those who come to build receive guidance, belonging, and the acceleration that only a real relationship provides. Communities gain trust, resilience, and collective intelligence. And the generations not yet here inherit stronger foundations than the ones that produced them.",
+        "The transaction, in other words, is not primarily financial.",
+        "It is wisdom exchanged for future.",
+        "This is why nothing here begins with technology. No infrastructure, however elegant, can carry coherence that was never cultivated. PURPOSEFUL is the ground the coherence grows in; it is what holds the whole. Everything that faces outward exists to let what it grows travel.",
+        "*And how does it travel? How can the trust that genuine development generates move between strangers, across distance, without surveillance and without a central authority? That is the forward-facing architecture itself: Providence, and the currency at its heart. It is the second movement, and the one this book has been circling from the start.*",
+        "---"
+      ],
       "reasoning": [
-        { "kind": "applied", "note": "R-PUNCT-STRUCT. Eight em dashes. Four introduced a specification or an enumeration and became colons, including the three parallel Door definitions, where the first two were already colons in the baseline and the third was a dash. Two separated two movements and became periods. Two fenced the long appositive question in the closing display line and the syntax was rewritten." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT in the display line. The fenced material is the question the next section answers, and commas could not hold it: three commas already sit inside the fenced clause, so the subject and its verb no longer track on one reading. Recast as two questions followed by the answer, which is what the dashes were performing." },
-        { "kind": "kept", "note": "The pass's addition of Doors to holds these Doors in the most literal way. Catalog 4.10, a genuine vague reference, since these had drifted from its antecedent across an intervening paragraph." },
-        { "kind": "kept", "note": "The unchanged acronym display line and the protected line It is wisdom exchanged for future, both of which the pass left intact." },
-        { "kind": "restored", "note": "Four denials, the opening handoff from the ground, the claims about each Door, the deliberate order of embodied work, the four-beat list's binding and, the transaction framing, the causal this is why, and the closing display line in full." },
-        { "kind": "restored", "note": "The plainer forms the pass had formalized: the ground the coherence grows in rather than the ground in which coherence grows, and the app rather than the application, where the baseline's own register drop lands the two short sentences after it." }
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes. Four introduced a specification or an enumeration and became colons, including the three parallel Door definitions, where the first two were already colons in the baseline and the third was a dash. Two separated two movements and became periods. Two fenced the long appositive question in the closing display line and the syntax was rewritten."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT in the display line. The fenced material is the question the next section answers, and commas could not hold it: three commas already sit inside the fenced clause, so the subject and its verb no longer track on one reading. Recast as two questions followed by the answer, which is what the dashes were performing."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's addition of Doors to holds these Doors in the most literal way. Catalog 4.10, a genuine vague reference, since these had drifted from its antecedent across an intervening paragraph."
+        },
+        {
+          "kind": "kept",
+          "note": "The unchanged acronym display line and the protected line It is wisdom exchanged for future, both of which the pass left intact."
+        },
+        {
+          "kind": "restored",
+          "note": "Four denials, the opening handoff from the ground, the claims about each Door, the deliberate order of embodied work, the four-beat list's binding and, the transaction framing, the causal this is why, and the closing display line in full."
+        },
+        {
+          "kind": "restored",
+          "note": "The plainer forms the pass had formalized: the ground the coherence grows in rather than the ground in which coherence grows, and the app rather than the application, where the baseline's own register drop lands the two short sentences after it."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
     "conclusion": "No new rule required. Thirteenth consecutive section to need none. F1 is the clearest demonstration in the volume of why 4.3 has two limbs. Every one of the four denials names a misreading the very next clause invites, and a pass reading only the defect limb removed all four, leaving the invitations standing with nothing to answer them."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "PURPOSEFUL",
+      "the Doors",
+      "wisdom exchanged for future",
+      "mentorship"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0056",
+      "CTD-0057"
+    ],
+    "outcome": "All three items were read on 2026-07-30 and re-read for this audit. Historical universals and the three Doors remain unverified program-status and forward-route obligations; no operational evidence was invented."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 17,
+      "baselineSentences": 25,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Eight non-surviving sentences carry the recorded repairs and restorations. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "We begin with the ground answers the preceding section's we take them in turn, the ground first, and both ends are present in the shipped manuscript. The protected line It is wisdom exchanged for future stands at line 585. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The record's findings name each merged or compressed pair, and the shipped text carries the committing half wherever the baseline stated one. No unexamined merge remains. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "Credited below."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "credits": [
+      {
+        "id": "SC1",
+        "summary": "The prior pass repaired a drifted demonstrative, and the repair is kept.",
+        "evidence": {
+          "baseline": "In the beginning, PURPOSEFUL holds these in the most literal way",
+          "shipped": "In the beginning, PURPOSEFUL holds these Doors in the most literal way"
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "These had drifted from its antecedent across an intervening paragraph, which is catalog 4.10's defect limb. Originally a kept note; recorded at finding weight under R-SUBSTITUTION-CREDIT."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules beyond the credit recorded. No prose changed."
   }
 }

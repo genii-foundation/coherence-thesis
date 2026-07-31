@@ -99,7 +99,7 @@
       "id": "F5",
       "summary": "The closing discipline was inverted so the next phase asks rather than the writer names.",
       "evidence": {
-        "baseline": "That is the discipline the next phase asks for: not to build everything at once, but to build the first true thing well enough that it earns the means — and the trust — to build what follows.",
+        "baseline": "That is the discipline the next phase asks for: not to build everything at once, but to build the first true thing well enough that it earns the means [mark] and the trust [mark] to build what follows.",
         "shipped": "The next phase asks for the discipline not to build everything at once, but to build the first true thing well enough that it earns the means and trust to build what follows."
       },
       "authorizedBy": "R-PUNCT-STRUCT and 4.26.",
@@ -169,6 +169,23 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS. The record's quoted evidence was mechanically cleaned to the [mark] placeholder earlier tonight; that cleanup was not an audit, this is.",
+    "checks": [
+      "R-CORRECTION-SCOPE: the CTD-0021 correction governs the layer count alone. Baseline: the four-layer architecture described in Part II. Current: the five-layer architecture described in Part II. Verified against the word-level diff that the correction's span is the single word and that nothing adjacent, the surrounding There is no disclosures or the design-intention framing, changed under its license.",
+      "R-CANON-DELETION-RECORD: the withheld baseline reading, four-layer, is quoted in the ledgerSearch outcome and recorded against CTD-0021 in debtImpact as a blocked restoration. The rule's recording duty is satisfied.",
+      "R-CAUTIOUS-HALF: engaged by the original record at F1 and re-confirmed: the five restored It requires clauses state what the project lacks, which is the confessional committing half, and the restored the honest framing is that keeps the fifth member of the volume's honest-answer family. The kept self-epigraph, trusted for our doubts rather than admired for a certainty we have not earned, is the section's committed refusal and survives byte-identical.",
+      "R-PAIRED-DELETION: the What Providence Is and Is Not Doing sections that anchor each constructive chapter are named here and all five exist; the physiological-wallet and governance references have their Chapter Five ends; the sequencing aphorism hands off to Why Publish Before Completion. All ends present in both texts.",
+      "R-REFRAIN-COST: this section is not one of the five disclosure-refrain instances anchored in v02-providence-and-ai-integration, but it is the refrain's summary statement, and the anchor's pricing applies through the sections it names rather than here. Cited for the distinction.",
+      "R-SUBSTITUTION-CREDIT: the kept ledger correction is compliance, not discretionary improvement; the kept epigraph and aphorism were baseline. No credit instance.",
+      "R-DEIXIS: at the time of this writing and what currently exists hold the reader at the live accounting. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's five findings hold under the twenty-rule standard, the five-layer correction stays inside its one-word span with the blocked restoration recorded, and the disclosure summary keeps its confessional halves. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

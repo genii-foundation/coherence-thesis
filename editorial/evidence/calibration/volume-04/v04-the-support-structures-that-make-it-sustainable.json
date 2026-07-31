@@ -72,6 +72,11 @@
       "id": "CTD-0056",
       "effect": "no change",
       "note": "No support structure is claimed to exist."
+    },
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved",
+      "note": "The supervision reference no longer attributes the apparatus to Volume III by named chapter. Applied by the restoration, not itemized in this record; attributed with a referent-ambiguity flag in the twenty-rule audit of 2026-07-31."
     }
   ],
   "generations": [
@@ -111,5 +116,29 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The chapter's argument is that an institution which asks for commitment owes support, and the pass removed the sentence stating the debt while keeping the request. That asymmetry is the reason the restoration matters here more than the word count suggests."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 25,
+        "survivingVerbatim": 17,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the economic support requirement keeps both its standard and its accusation, the sentence about demanding sacrifice while calling it opportunity, and both timing conditions survive with their committing before clauses. R-PAIRED-DELETION: economic, developmental, and relational support were swept; the triad pairs with Who Builds This and the developmental arc chapter, ends aligned; Hochschild occurs only here. R-CORRECTION-SCOPE: one unitemized reference change found and attributed below at CTD-0075 width. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0088 and CTD-0056 re-verified, obligations stated, nothing claimed to exist, the safeguarding item not reached. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass beyond the display labels held under the structural rule, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Seventeen of twenty-five baseline sentences survive verbatim; the remainder are the eleven em dash glyphs across six sites, the reference change, and the display labels, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried eleven em dash glyphs across six sites, not four, and none became a colon. The obligations pair, the support forms with their serial and, the field pair, the Hochschild pair, and the closing question's pair all stand as comma repairs, with the single dash before not aspirational ones standing as a comma.",
+        "One reference change now attributed under CTD-0075: the baseline's supervision that Volume III's stewardship chapter identified stands as supervision that the stewardship chapter identified. The volume attribution was dropped rather than rebuilt, so the referent now reads most naturally as this volume's own stewardship chapter. The claim survives either way; the sibling records rebuild such references as Volume III's argument, and this one is flagged in case the author wants the same form here.",
+        "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
+      ]
+    }
+  ]
 }

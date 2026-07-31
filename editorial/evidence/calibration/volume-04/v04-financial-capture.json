@@ -104,5 +104,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is short and its loss is total, and it is the one that later chapters cite most often by name. A cross-reference check against the shipped text would have caught it: Chapter Twenty-Four points at a firewall Chapter Eleven no longer described."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 5,
+        "survivingVerbatim": 4,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the mechanism keeps its committing internalization account beside the acknowledged dependence on funders. R-PAIRED-DELETION: financial capture and diversification were swept; diversification recurs in the anti-capture open question and both ends stand. R-CORRECTION-SCOPE: no recorded correction reaches this body. R-LEDGER-WINS-COROLLARY: nothing seeded. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Four of five baseline sentences survive verbatim; the one divergence is the dropped run-in colon, attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the baseline section contains no prohibited mark. The record's one em dash becoming a colon, and the CTD-0089 note of one prohibited mark repaired, do not correspond to any site here. The section's only divergence from baseline is the colon after the design responses include, the baseline's own punctuation, dropped so the enumeration runs in; kept under section 3."
+      ]
+    }
+  ]
 }

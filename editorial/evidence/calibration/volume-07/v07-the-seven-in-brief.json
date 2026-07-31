@@ -121,5 +121,34 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. This is the section that shows why a word count delta is not a damage measure. It gained fifty eight percent and lost every definition it had."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires against the restored baseline seven. The interleaved counterpoint paragraphs double the section and are the recorded safeguard architecture; two are promoted to credited findings below. A living body balances by moving is card-protected and pass-authored, noted under T-022.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The Providence counterpoint returns the path to a weekday, which the baseline never does.",
+        "evidence": {
+          "baseline": "Providence is the seventh, which is secretly the prior six made actual",
+          "shipped": "The seventh threshold therefore returns the path to Tuesday morning. Does the listening alter the meeting? Does intimacy change how conflict is held? Does reverence affect the budget, the water, or the person who has been forgotten?"
+        },
+        "note": "The baseline's account of Providence stays inside the path's own vocabulary. The kept paragraph is where the section becomes answerable to consequence, and the budget, the water, and the forgotten person are the most concrete nouns in the chapter. Promoted from a quiet kept to a credited finding."
+      },
+      {
+        "id": "A2",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The intimacy counterpoint corrects the confession-as-depth failure the baseline leaves open.",
+        "evidence": {
+          "baseline": "it is through intimacy that we come to see everything arising as an opportunity for our choosing",
+          "shipped": "A boundary spoken and received can be more intimate than a confession extracted in the name of depth. The practice is measured partly by how safely another person's no can remain in the room."
+        },
+        "note": "The baseline defines intimacy without protecting it from its counterfeit. The kept pair names the counterfeit and gives the practice a test, the safety of a no, that anticipates the volume's consent floor. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

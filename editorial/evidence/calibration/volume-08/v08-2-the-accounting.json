@@ -91,6 +91,19 @@
       "producedRule": "R-CATALOG-LIMBS"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F6",
+      "summary": "The hazard-and-risk repair of the glyphosate clash is better than the baseline framing, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "the disagreement turning partly on whether one trusts independently reviewed studies or industry-submitted ones",
+        "shipped": "The clash is the lesson, and it should not be flattened into a story about one side trusting independent research and the other trusting industry. The bodies were answering different questions, hazard against risk, with different inclusion rules for the underlying studies. ... Settlements do not settle causation."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "The baseline explains the expert disagreement with the very story the shipped text refuses, one side honest and one side bought, which is a causal overreach about the regulators themselves. Hazard against risk with different inclusion rules is the accurate mechanism, checkable against the bodies' own charters, and Settlements do not settle causation closes a door the baseline left open. F4 restored the consequence sentence this correction had displaced; this credit records that the correction itself was the prior pass's genuine contribution, not a bound on the baseline claim but a repair of it.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0048",
@@ -133,6 +146,12 @@
       ]
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the ornithologists' finding, the Krefeld inference, we retire the headline, litigate its own health in the dark, and closes in the red all stand. No prose changed by this audit. One substitution credit added as auditFindings F6 for the hazard-and-risk repair, which the record had kept without weight. R-CAUTIOUS-HALF: the cause-debated and scale-not-debated halves both survive, each with its bold intact. R-CORRECTION-SCOPE: CTD-0048's requirements were re-read against each contested figure and the boundings stay within what the item names; the microplastics vivid comparisons stay out as unverified faux precision under 4.13, which is bounding rather than credit and is recorded here as checked. R-PAIRED-DELETION: the birds-and-bees naming pledges its second meaning and the second-meaning chapter stands; the principal image's other ends stand at section one, the blessing, and Appendix A. R-REFRAIN-COST: the bold topic leads are inline paragraph leads, not standalone lines, and recur by design; no anchor needed. R-DEIXIS and R-TENSE checked and silent."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

@@ -68,6 +68,23 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the card's committing half, This is the layer where the project will succeed or fail, survives untouched. It is the falsifiable end of the card and the half a compression pass would have cut.",
+      "R-PAIRED-DELETION: succeed or fail occurs twice in both texts, here and in Chapter Five's second-layer paragraph, a deliberate echo between the prose and its reference card; the three mechanisms restored behind the colon each have their fuller statement in Chapter Five. Both ends present at matching counts.",
+      "R-CORRECTION-SCOPE: no recorded correction reaches this card. CTD-0040's unpaid promise of a detailed trust architecture is restated identically in both texts and the re-render neither enlarges nor narrows it.",
+      "R-CANON-DELETION-RECORD: nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the kept closing sentence was untouched by the pass; no substituted prose survives to credit in either direction.",
+      "R-REFRAIN-COST: not a disclosure-refrain instance; nothing to count.",
+      "R-DEIXIS: the card reports the layer in the simple present as design description. No instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's single finding holds under the twenty-rule standard and the card's committing close is intact. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

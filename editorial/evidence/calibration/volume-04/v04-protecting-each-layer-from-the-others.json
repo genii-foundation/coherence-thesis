@@ -54,6 +54,16 @@
       "authorizedBy": "Compression.",
       "diagnosis": "The shipped three sentence version is close and is kept. The baseline states the requirement as one mechanism working two ways rather than as two separate needs, which matters because the chapter's Open Questions return to it as a single unresolved tension rather than as two solved problems. Both formulations are in the restoration.",
       "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The two kept safeguard cautions are the prior pass's and they answer the entrenchment risk the chapter itself names.",
+      "evidence": {
+        "baseline": "(absent; the baseline argues for protecting slow layers from fast ones and does not state the reverse risk in mechanism form)",
+        "shipped": "Inherited rules can preserve mistakes. ... Each safeguard must have a release valve."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31. The original record kept both with the note that both are additions the baseline lacks.",
+      "diagnosis": "The restored bidirectional requirement says protection must run both ways; the kept pair supplies the mechanism half of that claim. Without a release valve the chapter's safeguards would be the entrenchment its own second finding warns against."
     }
   ],
   "debtImpact": [
@@ -115,6 +125,28 @@
       "buildBroke": false,
       "state": "reverted to pre-edit, byte identical",
       "requires": "author continuity decision: canonical route and reviewed successor"
+    }
+  ],
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 32,
+        "survivingVerbatim": 21,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the chapter keeps both the entrenchment argument and the restored bidirectional requirement, and the kept release-valve pair completes the same balance from the other side. R-PAIRED-DELETION: the long clock interlude was verified at both ends: the italic paragraph is restored in full ahead of the Part II label, the protected line opens it, and the economic vocabulary it promises, provisioning without extraction, is the subject of the four chapters that follow. R-CANON-DELETION-RECORD and the structural hold: the Part II introduction remains the shipped three-paragraph form, byte identical, with the baseline's fuller introduction quoted in the original record's open question; re-verified this audit, since restoring it revives a retired route, which is the author-reserved T-021 question. R-CORRECTION-SCOPE, R-LEDGER-WINS-COROLLARY, R-TENSE, R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index, and the Part I close is verified: interlude restored, part introduction held byte for byte under the structural rule. Twenty-one of thirty-two baseline sentences survive verbatim; the remainder trace to five recorded punctuation repairs and the documented restorations and retentions. One substitution credit recorded as F3. No prose change required.",
+      "findingsAdded": [
+        "F3"
+      ]
     }
   ]
 }

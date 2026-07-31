@@ -8,11 +8,18 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "anchor": "v06-the-current",
   "baseline": {
     "batchId": "2026-07-09-production-pass",
     "path": "baseline.md",
     "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 16,
+    "testableBaselineSentences": 27,
+    "note": "Standing procedure, run before any pairing test: 16 of 27 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
   },
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
@@ -88,6 +95,17 @@
       "diagnosis": "A civilization becomes whatever it agrees to reward is the chamber's premise and it recurs in the coda the pass removed, so the claim now appears nowhere. With all its hollowing is the volume's judgment stated in three words.",
       "producedRule": "R-CADENCE",
       "id": "F5"
+    },
+    {
+      "id": "F6",
+      "summary": "The pass's voluntarily offered repairs a genuine fault in the baseline's closing turn, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "that coherence, sensed and honored, could become the very currency on which a living civilization runs.",
+        "shipped": "that coherence, voluntarily offered and socially honored, could become the very currency on which a living civilization runs."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "Sensed implies a measurement taken from a person, and the chamber's own guardrail paragraph has just required consent, an unpenalized right to refuse, and no automatic standing. The baseline's closing quietly contradicted the guardrails the chamber states; voluntarily offered makes the turn consistent with them. This is a repair of an internal contradiction, not merely a bounded claim, so it is credited at the same weight as a loss.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
     }
   ],
   "debtImpact": [
@@ -131,6 +149,42 @@
           "note": "The thread and the direction, what money learned to measure, the hollowing, attunement rather than riches, the delicate turn with the seam worked until it is spent, the inversion between a civilization that consumes its people and one that helps them come alive, the four things a presencing person does, and the closing turn to the next volume."
         }
       ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-SUBSTITUTION-CREDIT. One finding runs the other way and is recorded as F6: voluntarily offered repairs a genuine fault in the baseline's closing turn and is kept on merit."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The committing hinge, That single inversion is the whole difference, survives verbatim; the bounds follow it in their own sentences rather than replacing it."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CORRECTION-SCOPE. The safeguard sentences sit inside the paragraphs whose claims they bound: the hypothesis language at the body-signal claim, the consent list at the reading of bodies, the accountability condition at the hierarchy claim, the unsettled mechanism at the close. None replaced the claim it bounds."
+        },
+        {
+          "kind": "applied",
+          "note": "R-REFRAIN-COST. The divider plus That is why coda is a volume-wide refrain, removed once by one decision. The anchor record v06-the-current carries the refrain finding with its count of eleven; this chamber cites the anchor rather than repeating the analysis."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks. Presence and the next volume's teaching pair with Volume VII's live root and hold."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        }
+      ],
+      "metrics": {
+        "words": 632,
+        "baselineWords": 587
+      }
     }
   ],
   "rulings": [],

@@ -120,6 +120,24 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Verification: the current section is byte-identical to the baseline, which carries no prohibited marks here. The volume's most consequential restoration remains fully in place.",
+      "R-VOICE-BIND tension re-verified: the restored recognition passage tells the reader that some part of them recognizes the work being asked of them, which the corpus card forbids, and it stands under the standing instruction to restore fully and flag. CTD-0038 records the exposure, Q1 holds the consent question for the author, and nothing is resolved here.",
+      "R-CAUTIOUS-HALF: the committing halves survive: You have already done something rare., Most readers do not finish books like this., and the restored something the book is willing to take seriously. The concession-free directness is the baseline's chosen posture and it is intact.",
+      "R-PAIRED-DELETION: This note is the specific request. is paid by the five addresses that follow; the integration list names the domains whose chapters all precede it. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the pass's substituted concession was reversed in full and nothing substituted survives; no credit in either direction.",
+      "R-REFRAIN-COST: no anchored refrain runs through this framing page; the addresses beneath it carry the anchored instances.",
+      "R-DEIXIS: engaged by the original record at F2. Re-checked: the restored framing sentences keep their definiteness, If you have read this far and This note is the specific request. No further instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's two findings hold under the twenty-rule standard, the section sits byte-identical to the baseline, and the consent exposure stays recorded and open for the author. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",

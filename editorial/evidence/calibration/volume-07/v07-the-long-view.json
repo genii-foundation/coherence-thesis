@@ -115,5 +115,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. This section also carries the Part X trailer as its closing paragraph.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. Would be built for is built is the recorded status modality. The trailer's display label is covered by the refrain anchor.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The revision clause is pass-authored and states the succession principle the baseline's endurance vision lacks.",
+        "evidence": {
+          "baseline": "A community tended this way is built to outlast the people who begin it",
+          "shipped": "Endurance has to be earned through transparent institutions, distributed authority, and the ability of later participants to revise what the founders began."
+        },
+        "note": "The baseline wants endurance and never says who may change the design once the founders are gone, which is the exact failure mode Volume III's drift chapter names. The kept clause imports that successors principle into this volume's most institutional section. Promoted from a quiet kept to a credited finding."
+      }
+    ]
   }
 }

@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-part-i-the-argument-arrived",
+  "editorialId": "volume-07",
+  "sectionHeading": "## Part I: The Argument, Arrived",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions. The chapter-start prose was restored under the standing author instruction to restore from baseline and flag afterwards. That instruction authorizes the restoration and nothing more: T-021 reserves the route decision on part introductions to the author, the task register still lists it pending at tier red, and every rulings array in this volume is empty, so no authority exists in this record to resolve it. The observed facts, that this part heading already existed and that the region carried shipped prose before this pass, are recorded in openQuestions as evidence for the author's adjudication, not as its resolution. An earlier wording of this field claimed the restoration executed an orchestrator adjudication of the route question; an orchestrator is an agent, that claim exceeded agent authority, and it is withdrawn.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "boundary": {
+    "note": "This record is bounded by the corrected section map: the merged part heading plus every line of prose between it and the next structural line. The pre-existing records named in supersedes were written while the reporting tool could not see this volume's two-line part labels, so each measured a fragment: one the bodyless bold label, the other the prose with no heading. Both fragments are preserved unedited as history and neither corresponds to a section the corrected boundaries produce.",
+    "supersedes": [
+      "v07-part-i",
+      "v07-the-argument-arrived"
+    ]
+  },
+  "rulings": [],
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "657 baseline words against 149 shipped before this pass, minus 77 percent. No baseline sentence survived in the shipped part introduction, so the section was in substitution mode and the pairing test did not apply to the shipped text. The R-PAIRED-DELETION sweep below was run on the baseline before restoring."
+  },
+  "pairingSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": [
+      "Saturn",
+      "hinge",
+      "sovereign being",
+      "coherent substrate",
+      "the praxis"
+    ],
+    "outcome": "Saturn spans Part I, Part II, and the Coda; all three ends are restored in this generation, so no reference dangles. The hinge figure recurs in the Part III trailer, which the prior pass already restored as plain prose under The Windows Taken Up Together. Coherent, sovereign being recurs in Part II and both ends are restored. No blocking dependency."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Providence",
+      "Saturn",
+      "the eighth volume",
+      "Volume IX",
+      "coherent substrate",
+      "volume summaries"
+    ],
+    "itemsRead": [
+      "CTD-0049",
+      "CTD-0081",
+      "CTD-0084",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0049 is satisfied by naming the eighth volume as still to come. CTD-0081 governs the planetary scheme only where it is offered as evidence; Saturn here is a figure doing argumentative work, and the evidentiary disclaimer lives at the head of Part II. CTD-0084's heading-merge paydown is preserved: the census heading stands and no bold display label was reintroduced. Nothing in the ledger governs the six volume summaries, so the baseline is the authority on them."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The full restoration blocked by the superseded record's structural hold is executed: the opening self-regard image, all six volume paragraphs, the seventh-volume hinge, and the Saturn account return.",
+      "evidence": {
+        "baseline": "There comes a point in any patient work when the argument, having been carried forward piece by piece, turns and regards itself ... the hinge between the inward work of becoming and the outward work of building.",
+        "shipped": "The first six volumes moved from substrate to relation, architecture, human purpose, and the smallest form that could hold the whole."
+      },
+      "authorizedBy": "The standing author instruction to restore from baseline and flag afterwards. The restoration is contested under author-reserved T-021 and is flagged in this record's openQuestions, not adjudicated here. Findings F1 through F4 of v07-the-argument-arrived diagnose the losses in detail and are adopted rather than restated.",
+      "diagnosis": "The superseded record's diagnosis stands: the section is called The Argument, Arrived, and the baseline opening is the arrival. The anaphoric volume summaries fall under catalog 4.4's retention limb, protected ritual repetition under the voice card."
+    },
+    {
+      "id": "F2",
+      "summary": "Twenty pre-existing calibration records in this volume measured mis-bounded sections.",
+      "evidence": {
+        "baseline": "Ten bodyless part-label records, v07-part-i through v07-part-x, and ten heading-less prose records such as v07-the-argument-arrived.",
+        "shipped": "The corrected boundary map produces ten part sections, each the merged heading plus its introduction, with no record until this generation."
+      },
+      "authorizedBy": "The reporting-tool defect the orchestrator names: it could not see the two-line part labels or the level-four tenet headings when the 43 records were written.",
+      "diagnosis": "Each pair is internally accurate about its fragment and wrong about the section. They are superseded, not deleted, and every finding they carry that survives the boundary correction is adopted by reference in the ten corrected-boundary records. This count is recorded once here; the other nine part records cite it."
+    },
+    {
+      "id": "F3",
+      "summary": "The prior pass sentence naming Volume IX is kept, a finding that runs the other way.",
+      "evidence": {
+        "baseline": "(absent; the baseline defers the ninth volume to Part II)",
+        "shipped": "Volume IX will return to the ground and ask what can be built."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "The eighth-volume paragraph opens a forward look the baseline leaves half finished until Part II. One sentence completes it at the cost of nothing, and the following We name them now honestly covers both. Kept, placed before the hinge close so the paragraph still lands on building."
+    }
+  ],
+  "refrainAnchor": {
+    "rule": "R-REFRAIN-COST",
+    "refrains": [
+      {
+        "phrase": "Within the Coherence Thesis.",
+        "count": 10,
+        "note": "Every part of the baseline closes with a bold-italic display trailer opening with this label. The label is malformed emphasis under CTD-0084 and heads the voice card's reduce list; the prior pass dropped the label and kept or compressed the trailer prose. This generation restores each trailer's prose as an ordinary closing paragraph of the last section of its part and drops the label everywhere. The single edit that would change every instance is reinstating the label as display matter, which is the author's to order under CTD-0084. Child records cite this anchor rather than repeating the analysis."
+      },
+      {
+        "phrase": "two-line bold part labels, Part N over title",
+        "count": 11,
+        "note": "Ten parts and the Coda carried the display pair. All eleven were merged into census headings by the prior pass as CTD-0084 paydown, recorded in the superseded label records. Preserved unchanged under the structural hold."
+      }
+    ]
+  },
+  "debtImpact": [
+    {
+      "id": "CTD-0049",
+      "effect": "no change",
+      "note": "Volume VIII remains named as still to come."
+    },
+    {
+      "id": "CTD-0081",
+      "effect": "paydown preserved",
+      "note": "Saturn returns as a figure; the evidentiary framing stays retired and the Part II head disclaimer governs the scheme."
+    },
+    {
+      "id": "CTD-0084",
+      "effect": "paydown preserved",
+      "note": "No bold display label reintroduced; the merged heading stands byte identical to the census."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twenty rules, executing the restoration the superseded record held",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The subtitle, the opening self-regard image, the six volume paragraphs with their reasons, the seventh-volume hinge paragraph, the Saturn account with the counterweight reasoning, the hinge close, and the trailer prose as an ordinary closing paragraph with its display label dropped per the refrain anchor."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT over the region's em dashes following the superseded record's map: specifications became colons, second movements became periods, the appositive around this one became commas. R-LAND on the eighth-volume paragraph: the trailing for clause about durability was promoted to its own sentence."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass Volume IX sentence, credited in F3. We name it now became We name them now because the referent grew; the change is the repair 4.10 requires, not an extension of the credit."
+        },
+        {
+          "kind": "cut",
+          "note": "The rest of the shipped substitution: the three-paragraph summary. Its content is a strict subset of the restored text; nothing it alone carried is lost. R-REMOVE-BURDEN satisfied: it contributed navigation, which the restored paragraphs carry in full."
+        }
+      ]
+    }
+  ],
+  "rulesDerived": [],
+  "openQuestions": [
+    "T-021, author-reserved, flagged and not resolved: this pass restored and lengthened this part introduction on 2026-07-31 while the task register still listed T-021 pending at tier red. Both forms, named per the structural rule: the pre-pass shipped introduction of 149 words, measured in the superseded records v07-part-i and v07-the-argument-arrived, and the restored baseline introduction of 657 baseline words now shipped. The route facts offered as evidence, not adjudicated: the part heading predates this pass and the region carried shipped prose before it, so the section's route already existed and no structural line changed. Whether that reasoning holds, and whether the restored form stands or the pre-pass form returns, is the author's decision under T-021. The same-pass volume-04 lane read the same reservation as a byte freeze and held its Part II introduction unchanged; the author's ruling should reconcile the two readings.",
+    "Carried from the superseded record: the restored text says the eighth volume will render accounts that spirit alone is always tempted to skip. Does the author want that claim in Volume VII's own voice, or moved into Volume VIII?"
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at its ratified twenty-rule index, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The instructive case is F2: a reporting tool that cannot see a structural form produces records that are locally accurate and globally wrong, and the correction is a boundary map, not better prose."
+  }
+}

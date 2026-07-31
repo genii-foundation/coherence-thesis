@@ -140,6 +140,23 @@
       "for": "author"
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the section is built on hedged-and-committing pairs and every pair keeps both halves: This is not because physiology cannot be trained or influenced. It can.; The asymmetry is real but partial; and the closing bound, not a window into inner truth but a slightly less corruptible measurement than most alternatives. The empathy-research hedge restored by F4 is the committing claim's honest limit.",
+      "R-PAIRED-DELETION: the four markers, heart rate variability, autonomic flexibility, breath rhythm, have their fuller statements in Chapter Two, and the four-hands image is section-local display matter the voice card protects; the metric-drift argument's answering end is Four Unsolved Problems. All ends present in both texts.",
+      "R-CORRECTION-SCOPE: no recorded correction reaches this section. The CTD-0039 review requirement is carried by the baseline's own hedges, restored in full, and neither widened nor narrowed.",
+      "R-CANON-DELETION-RECORD: nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the kept performed-without paragraph and the four-hands image were untouched baseline; the kept repairs are R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; the performance anaphora, Engagement can be performed without interest, is section-local deliberate parallelism under catalog 4.4's retention limb.",
+      "R-DEIXIS: We are learning, at last, to read all four holds the reader inside the live capability in the simple present. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and every hedged pair in the section keeps both halves. No further prose change. Confirmed."
+  },
+
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
