@@ -183,9 +183,9 @@
       "id": "T-019",
       "title": "Linear twenty-rule pass, Volume I through Volume IX",
       "tier": "amber",
-      "status": "in-progress",
+      "status": "blocked",
       "area": "editorial",
-      "detail": "Linear pass, one volume at a time, each closed by adversarial verification. I: complete, verified, four minor flags. II: complete, verified 2026-07-31; eleven owed audits closed, the pre-import title matter got its missing record and the protected For Cale dedication was restored to baseline form with the condensing pass variant quoted for a T-022-family decision; 35,147 words against a 35,149 baseline. III: in progress, 107 of 142 records at open; finishing the remaining sections, auditing records without a standardAudit block, then verifying. IV: records complete, verification pending. V: untouched, 24 of 31, full lane owed. VI, VIII, IX: records complete, verification pending. VII: 73 records with pre-rename extras, verification and boundary recheck pending. Lesson now standing for every lane: diff the pre-import block first, since coverage keyed to reader sections misses everything above the import start marker, and a missing standardAudit block, not the [mark] placeholder, is the reliable marker of an owed audit.",
+      "detail": "Paused by the author on 2026-07-31 at Volume III, 124 of 142 records, resumes at chapter seventeen. Blocking dependency: CTD-0110. R-VOICE-BIND makes the voice cards binding authority over every edit, and the cards were prepared from the shipped text of the very pass this re-render repairs: 80 of 114 quoted strings have no baseline ancestor, 29 of 43 protected lines are pass-authored, and only one of nine cards is approved. The cards are being re-prepared from the immutable baselines and settled calibration evidence, then go to the author for approval, then the editorial:voice-exemplars gate is re-enabled, then this pass resumes. I and II remain verified under the old cards and get a voice-card delta recheck once the new cards are in effect.",
       "blockedBy": []
     },
     {
