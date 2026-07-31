@@ -25,7 +25,17 @@ import {
 export const dynamic = "force-dynamic";
 
 const TIER_ORDER: Record<string, number> = { red: 0, amber: 1, green: 2 };
-const VOLUME_NUMERALS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+const VOLUME_NUMERALS = [
+  "I",
+  "II",
+  "III",
+  "IV",
+  "V",
+  "VI",
+  "VII",
+  "VIII",
+  "IX",
+];
 const numberFormat = new Intl.NumberFormat("en-US");
 
 type AttentionTone = "critical" | "decision" | "blocked";
@@ -66,9 +76,17 @@ function tierMeaning(tier: string): string {
   return "Author decision";
 }
 
-function TaskCard({ task, compact = false }: { task: Task; compact?: boolean }) {
+function TaskCard({
+  task,
+  compact = false,
+}: {
+  task: Task;
+  compact?: boolean;
+}) {
   return (
-    <article className={`${styles.taskCard} ${compact ? styles.taskCardCompact : ""}`}>
+    <article
+      className={`${styles.taskCard} ${compact ? styles.taskCardCompact : ""}`}
+    >
       <div className={styles.taskMeta}>
         <span className={styles.taskId}>{task.id}</span>
         <span className={`${styles.tier} ${tierClass(task.tier)}`}>
@@ -115,7 +133,9 @@ export default function StatusPage() {
     0,
   );
   const blocked = register.tasks.filter((task) => task.status === "blocked");
-  const inFlight = register.tasks.filter((task) => task.status === "in-progress");
+  const inFlight = register.tasks.filter(
+    (task) => task.status === "in-progress",
+  );
   const pending = register.tasks.filter((task) => task.status === "pending");
   const openTasks = [...inFlight, ...blocked, ...pending].sort(
     (a, b) =>
@@ -197,6 +217,16 @@ export default function StatusPage() {
       title: `${numberFormat.format(regeneration.openCorpusDecisions)} corpus decisions remain open`,
       context: "The master ledger no longer claims final completion",
       next: "Settle the named decisions before corpus-wide regeneration.",
+      tone: "decision",
+    });
+  }
+  if (regeneration.approvedCandidates > 0) {
+    attention.push({
+      label: "Publication gate",
+      title: `${numberFormat.format(regeneration.approvedCandidates)} approved ${regeneration.approvedCandidates === 1 ? "candidate awaits" : "candidates await"} publication`,
+      context:
+        "Approved manuscript bytes are preserved outside the published chain",
+      next: "Publish and verify the exact candidate before promoting its checkpoint.",
       tone: "decision",
     });
   }
@@ -316,8 +346,10 @@ export default function StatusPage() {
           </span>
           <strong>Voice cards active</strong>
           <small>
-            {numberFormat.format(regeneration.originalCheckpoints)} immutable
-            originals preserved
+            {numberFormat.format(regeneration.originalCheckpoints)} originals ·{" "}
+            {numberFormat.format(regeneration.publishedRevisions)} published
+            revisions · {numberFormat.format(regeneration.approvedCandidates)}{" "}
+            awaiting publication
           </small>
         </article>
       </section>
@@ -384,8 +416,8 @@ export default function StatusPage() {
                     {numberFormat.format(currentVolume.rendered)} rendered
                   </strong>
                   <small>
-                    {numberFormat.format(currentVolume.settled)} records settled ·{" "}
-                    {numberFormat.format(currentVolume.open)} pass open
+                    {numberFormat.format(currentVolume.settled)} records settled
+                    · {numberFormat.format(currentVolume.open)} pass open
                   </small>
                 </div>
               </div>
@@ -397,9 +429,7 @@ export default function StatusPage() {
                 aria-valuemax={currentVolume.total}
                 aria-valuenow={currentVolume.rendered}
               >
-                <span
-                  style={{ width: `${currentVolume.renderedPercent}%` }}
-                />
+                <span style={{ width: `${currentVolume.renderedPercent}%` }} />
               </div>
               <div className={styles.currentFacts}>
                 <div>
@@ -422,7 +452,10 @@ export default function StatusPage() {
         </aside>
       </div>
 
-      <section className={styles.portfolioSection} aria-labelledby="portfolio-title">
+      <section
+        className={styles.portfolioSection}
+        aria-labelledby="portfolio-title"
+      >
         <div className={styles.sectionHeading}>
           <div>
             <span className={styles.eyebrow}>Nine-volume program</span>
@@ -441,9 +474,7 @@ export default function StatusPage() {
               <div className={styles.volumeCardHeading}>
                 <span>{volumeLabel(volume.editorialId)}</span>
                 <strong>
-                  {volume.total
-                    ? `${volume.renderedPercent}%`
-                    : "Not scoped"}
+                  {volume.total ? `${volume.renderedPercent}%` : "Not scoped"}
                 </strong>
               </div>
               <div className={styles.volumeBar} aria-hidden="true">

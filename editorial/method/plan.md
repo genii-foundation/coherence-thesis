@@ -161,17 +161,17 @@ The punctuation counts were objective for that commit. The warning counts were a
 
 ### Initial volume risk map
 
-| Volume | Priority | Primary editorial risk |
-| --- | --- | --- |
-| IV | Critical | Structural duplication, bureaucratic abstraction, long catalogs, repeated recaps of Volume III |
-| III | Critical | Largest punctuation burden, long sentences, scientific certainty, superlative escalation |
-| VII | High | Mystical abstraction, recurring formulaic summaries, malformed emphasis, liturgical flattening risk |
-| V | High | Rhetorical question chains, false contrasts, repeated purpose aphorisms, copy defects |
-| VIII | High | Polemical inflation, volatile factual claims, mixed academic and apocalyptic registers |
-| VI | High and genre-sensitive | Lyrical compression, ornamental repetition, highest punctuation density |
-| IX | High and brief | Compressed recap, cross-volume duplication, numerological register |
-| II | Medium to high | Definitional scaffolds, short declarative chains, recurring disclaimers |
-| I | Medium to high | Qualification before argument, throat clearing, heavy punctuation cadence |
+| Volume | Priority                 | Primary editorial risk                                                                              |
+| ------ | ------------------------ | --------------------------------------------------------------------------------------------------- |
+| IV     | Critical                 | Structural duplication, bureaucratic abstraction, long catalogs, repeated recaps of Volume III      |
+| III    | Critical                 | Largest punctuation burden, long sentences, scientific certainty, superlative escalation            |
+| VII    | High                     | Mystical abstraction, recurring formulaic summaries, malformed emphasis, liturgical flattening risk |
+| V      | High                     | Rhetorical question chains, false contrasts, repeated purpose aphorisms, copy defects               |
+| VIII   | High                     | Polemical inflation, volatile factual claims, mixed academic and apocalyptic registers              |
+| VI     | High and genre-sensitive | Lyrical compression, ornamental repetition, highest punctuation density                             |
+| IX     | High and brief           | Compressed recap, cross-volume duplication, numerological register                                  |
+| II     | Medium to high           | Definitional scaffolds, short declarative chains, recurring disclaimers                             |
+| I      | Medium to high           | Qualification before argument, throat clearing, heavy punctuation cadence                           |
 
 Run the structural diagnosis of Volumes III and IV first because they contain the largest absolute burden and many patterns repeated later. Use Volume VII early to prove that the method can improve clarity without bleaching spiritual language. Preserve production dependencies by integrating approved edits in canonical volume order and rerunning cross-volume review after every wave.
 
@@ -185,13 +185,16 @@ Run the structural diagnosis of Volumes III and IV first because they contain th
 4. Identify corpus-wide habits and volume-specific habits.
 5. Approve the editorial standard, intervention levels, and review record.
 6. Confirm whether factual and citation verification belongs in every batch or in a separate research pass.
-7. Validate `publishing/continuity/manuscript-checkpoints.json`. Confirm that
-   every volume has one permanent original snapshot and that the intended
-   production base is an explicit checkpoint.
+7. Validate `publishing/continuity/manuscript-checkpoints.json`. Treat the
+   canonical manuscripts at the confirmed adoption commit as the permanent
+   repository originals. Confirm that each original has a byte exact snapshot
+   and that the intended production base is an explicit published checkpoint.
 8. Confirm that version provenance records a commit containing each new body
    version. Repair false attribution before the first production edit.
-9. Freeze the corpus voice card, volume overlay, editorial standard, checkpoint,
-   and their hashes for the batch. Do not regenerate against moving authority.
+9. Freeze the corpus voice card, volume overlay, editorial standard,
+   publication base checkpoint, and their hashes for the batch. Do not
+   regenerate against moving authority or an approved but unpublished
+   candidate.
 10. Confirm that an unchanged import leaves reviewed route metadata unchanged.
 
 Deliverables:
@@ -321,16 +324,16 @@ Treat conceptual changes discovered here as author decisions, not routine copy e
 
 ## Per-batch sentence workflow
 
-| Pass | Question | Required result |
-| --- | --- | --- |
-| Meaning | What exactly does the sentence claim or enact? | Proposition, image, or movement is identified |
-| Logic | How does it relate to nearby sentences? | Premise, inference, contrast, example, or consequence is visible |
-| Clarity | Can an attentive reader parse it once? | Actor, action, referent, and scope are legible |
-| Compression | What can leave without loss? | Redundancy and ceremony are removed |
-| Cadence | Does its breath fit its thought? | Length, syntax, and emphasis serve meaning |
-| Voice | Could this sentence belong only here? | Distinctive diction and register remain |
-| Slop | Does it use a synthetic habit? | Canned patterns are removed or intentionally retained |
-| Fidelity | What changed besides wording? | Any semantic change is reverted or approved |
+| Pass        | Question                                       | Required result                                                  |
+| ----------- | ---------------------------------------------- | ---------------------------------------------------------------- |
+| Meaning     | What exactly does the sentence claim or enact? | Proposition, image, or movement is identified                    |
+| Logic       | How does it relate to nearby sentences?        | Premise, inference, contrast, example, or consequence is visible |
+| Clarity     | Can an attentive reader parse it once?         | Actor, action, referent, and scope are legible                   |
+| Compression | What can leave without loss?                   | Redundancy and ceremony are removed                              |
+| Cadence     | Does its breath fit its thought?               | Length, syntax, and emphasis serve meaning                       |
+| Voice       | Could this sentence belong only here?          | Distinctive diction and register remain                          |
+| Slop        | Does it use a synthetic habit?                 | Canned patterns are removed or intentionally retained            |
+| Fidelity    | What changed besides wording?                  | Any semantic change is reverted or approved                      |
 
 ## Intervention levels
 
@@ -426,23 +429,23 @@ Do not optimize for the greatest number of changed sentences, the lowest possibl
 
 ## Risks and controls
 
-| Risk | Control |
-| --- | --- |
-| Semantic drift hidden by fluent prose | Original-to-revision comparison plus independent semantic review |
-| Voice flattened across volumes | Volume profiles, control passages, literary review, author approval |
-| Poetry clarified into lifelessness | Protected images, read-aloud proof, explicit ambiguity queries |
-| Detector used as a mechanical editor | Findings remain nonbinding except prohibited punctuation |
-| Domain terms purged as repetition | Contextual review and protected terminology register |
-| Strong claims weakened into mush | Preserve exact modality and distinguish uncertainty from evasion |
-| Weak claims polished instead of repaired | Logic pass and author query before recasting |
-| Structure or links broken | Source-only edits, import inspection, reviewed aliases, explicit route recording, manuscript validation |
-| Old identities constrain better headings or sections | Let identities evolve and preserve access through route history |
-| A similarity match maps an old section to the wrong successor | Treat similarity as a suggestion and require explicit review |
-| Chapter or part links disappear while section links survive | Review every affected historical route before recording the new set |
-| Audio silently becomes stale | Track `audioVersionId` changes and republish immutable versions |
-| Review fatigue lowers standards | Small batches, fresh reviewers, one coherent pull request at a time |
-| Review comments become mechanical noise | Keep ledgers exhaustive, comments selective, and group related editorial judgments |
-| Version history points at the wrong text | Verify provenance behavior before production and stop on false commit attribution |
+| Risk                                                          | Control                                                                                                 |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| Semantic drift hidden by fluent prose                         | Original-to-revision comparison plus independent semantic review                                        |
+| Voice flattened across volumes                                | Volume profiles, control passages, literary review, author approval                                     |
+| Poetry clarified into lifelessness                            | Protected images, read-aloud proof, explicit ambiguity queries                                          |
+| Detector used as a mechanical editor                          | Findings remain nonbinding except prohibited punctuation                                                |
+| Domain terms purged as repetition                             | Contextual review and protected terminology register                                                    |
+| Strong claims weakened into mush                              | Preserve exact modality and distinguish uncertainty from evasion                                        |
+| Weak claims polished instead of repaired                      | Logic pass and author query before recasting                                                            |
+| Structure or links broken                                     | Source-only edits, import inspection, reviewed aliases, explicit route recording, manuscript validation |
+| Old identities constrain better headings or sections          | Let identities evolve and preserve access through route history                                         |
+| A similarity match maps an old section to the wrong successor | Treat similarity as a suggestion and require explicit review                                            |
+| Chapter or part links disappear while section links survive   | Review every affected historical route before recording the new set                                     |
+| Audio silently becomes stale                                  | Track `audioVersionId` changes and republish immutable versions                                         |
+| Review fatigue lowers standards                               | Small batches, fresh reviewers, one coherent pull request at a time                                     |
+| Review comments become mechanical noise                       | Keep ledgers exhaustive, comments selective, and group related editorial judgments                      |
+| Version history points at the wrong text                      | Verify provenance behavior before production and stop on false commit attribution                       |
 
 ## Execution sequencing
 

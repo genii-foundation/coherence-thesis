@@ -14,9 +14,7 @@ import {
   parseWorkingRevisionSession,
   type WorkingRevisionSession,
 } from "@/lib/editorial-revision-session";
-import {
-  type EditorialVolumeProgress,
-} from "@/lib/editorial-progress";
+import { type EditorialVolumeProgress } from "@/lib/editorial-progress";
 import { readEditorialVolumeProgress } from "../../../scripts/editorial/progress-data";
 
 // The reader app resolves these from the working directory rather than importing
@@ -27,7 +25,10 @@ const repoRoot = process.cwd();
 const editorialRoot = path.join(repoRoot, "editorial");
 const editorialEvidenceRoot = path.join(editorialRoot, "evidence");
 const editorialReviewsRoot = path.join(editorialEvidenceRoot, "reviews");
-const editorialCalibrationRoot = path.join(editorialEvidenceRoot, "calibration");
+const editorialCalibrationRoot = path.join(
+  editorialEvidenceRoot,
+  "calibration",
+);
 const editorialVolumesRoot = path.join(editorialRoot, "sources", "volumes");
 const corpusVoiceCardPath = path.join(
   editorialRoot,
@@ -52,7 +53,10 @@ const generatedRevisionSessionsRoot = path.join(
   "generated",
   "revision-sessions",
 );
-const editorialVolumeIds = Array.from({ length: 9 }, (_, i) => `volume-${String(i + 1).padStart(2, "0")}`);
+const editorialVolumeIds = Array.from(
+  { length: 9 },
+  (_, i) => `volume-${String(i + 1).padStart(2, "0")}`,
+);
 
 export type Tier = "green" | "amber" | "red";
 export type TaskState = "pending" | "in-progress" | "blocked" | "done";
@@ -76,7 +80,8 @@ export interface TaskRegister {
 
 export function readTasks(): TaskRegister {
   const file = path.join(editorialEvidenceRoot, "tasks", "tasks.json");
-  if (!existsSync(file)) return { updated: "never", tiers: {} as Record<Tier, string>, tasks: [] };
+  if (!existsSync(file))
+    return { updated: "never", tiers: {} as Record<Tier, string>, tasks: [] };
   return JSON.parse(readFileSync(file, "utf8")) as TaskRegister;
 }
 
@@ -99,6 +104,8 @@ export interface RegenerationReadiness {
   activeVoiceCards: number;
   totalVoiceCards: number;
   originalCheckpoints: number;
+  approvedCandidates: number;
+  publishedRevisions: number;
   corpusVoiceCardActive: boolean;
   openCorpusDecisions: number;
 }
@@ -116,6 +123,8 @@ export function readRegenerationReadiness(): RegenerationReadiness {
   }).length;
 
   let originalCheckpoints = 0;
+  let approvedCandidates = 0;
+  let publishedRevisions = 0;
   if (existsSync(manuscriptCheckpointsPath)) {
     try {
       const manifest = JSON.parse(
@@ -123,6 +132,7 @@ export function readRegenerationReadiness(): RegenerationReadiness {
       ) as {
         volumes?: {
           originalCheckpointId?: string;
+          approvedCandidate?: unknown;
           checkpoints?: { checkpointId?: string; kind?: string }[];
         }[];
       };
@@ -133,8 +143,21 @@ export function readRegenerationReadiness(): RegenerationReadiness {
             checkpoint.checkpointId === volume.originalCheckpointId,
         ),
       ).length;
+      approvedCandidates = (manifest.volumes ?? []).filter(
+        (volume) => volume.approvedCandidate,
+      ).length;
+      publishedRevisions = (manifest.volumes ?? []).reduce(
+        (total, volume) =>
+          total +
+          (volume.checkpoints ?? []).filter(
+            (checkpoint) => checkpoint.kind === "published",
+          ).length,
+        0,
+      );
     } catch {
       originalCheckpoints = 0;
+      approvedCandidates = 0;
+      publishedRevisions = 0;
     }
   }
 
@@ -154,6 +177,8 @@ export function readRegenerationReadiness(): RegenerationReadiness {
     activeVoiceCards,
     totalVoiceCards: editorialVolumeIds.length,
     originalCheckpoints,
+    approvedCandidates,
+    publishedRevisions,
     corpusVoiceCardActive,
     openCorpusDecisions,
   };
@@ -217,7 +242,10 @@ export interface ProtectedLineViolation {
 }
 
 /** Uses the same parser and normalization as the repository gate. */
-export function readProtectedLineViolations(): { checked: number; violations: ProtectedLineViolation[] } {
+export function readProtectedLineViolations(): {
+  checked: number;
+  violations: ProtectedLineViolation[];
+} {
   const violations: ProtectedLineViolation[] = [];
   let checked = 0;
   for (const editorialId of editorialVolumeIds) {
@@ -252,7 +280,10 @@ export interface GlyphViolation {
  * become false with a single paste. Cheap to check, and invisible until someone reads
  * the rendered page.
  */
-export function readGlyphViolations(): { checked: number; violations: GlyphViolation[] } {
+export function readGlyphViolations(): {
+  checked: number;
+  violations: GlyphViolation[];
+} {
   const violations: GlyphViolation[] = [];
   let checked = 0;
   for (const editorialId of editorialVolumeIds) {
@@ -277,7 +308,9 @@ export function readGlyphViolations(): { checked: number; violations: GlyphViola
           editorialId,
           line: index + 1,
           glyph,
-          excerpt: text.slice(Math.max(0, hit.index - 30), hit.index + 40).trim(),
+          excerpt: text
+            .slice(Math.max(0, hit.index - 30), hit.index + 40)
+            .trim(),
         });
       }
     });
@@ -358,27 +391,42 @@ export interface CalibrationSession extends CalibrationRow {
 export function readCalibrationSessions(): CalibrationSession[] {
   const sessions: CalibrationSession[] = [];
   for (const row of readCalibrationRows()) {
-    const dir = path.join(editorialCalibrationRoot, row.editorialId, `${row.sectionId}.json`);
+    const dir = path.join(
+      editorialCalibrationRoot,
+      row.editorialId,
+      `${row.sectionId}.json`,
+    );
     if (!existsSync(dir)) continue;
     try {
-      const r = JSON.parse(readFileSync(dir, "utf8")) as Record<string, unknown>;
-      const rulings = (r.rulings as CalibrationSession["rulings"] | undefined) ?? [];
+      const r = JSON.parse(readFileSync(dir, "utf8")) as Record<
+        string,
+        unknown
+      >;
+      const rulings =
+        (r.rulings as CalibrationSession["rulings"] | undefined) ?? [];
       const rulesDerived = (r.rulesDerived as string[] | undefined) ?? [];
       if (!rulings.length && !rulesDerived.length) continue;
-      const generations = (r.generations as { text?: unknown }[] | undefined) ?? [];
+      const generations =
+        (r.generations as { text?: unknown }[] | undefined) ?? [];
       sessions.push({
         ...row,
         rulings,
         rulesDerived,
         generations: generations.length,
-        benchable: generations.length > 0 && generations.every((g) => Array.isArray(g.text)),
+        benchable:
+          generations.length > 0 &&
+          generations.every((g) => Array.isArray(g.text)),
         authored: rulings.some((r) => r.by === "author"),
       });
     } catch {
       // Reported by the gates page rather than silently swallowed there.
     }
   }
-  return sessions.sort((a, b) => b.rulesDerived.length - a.rulesDerived.length || b.rulings.length - a.rulings.length);
+  return sessions.sort(
+    (a, b) =>
+      b.rulesDerived.length - a.rulesDerived.length ||
+      b.rulings.length - a.rulings.length,
+  );
 }
 
 export interface CalibrationRow {
@@ -410,10 +458,16 @@ export function readCalibrationRows(): CalibrationRow[] {
   for (const editorialId of editorialVolumeIds) {
     const dir = path.join(editorialCalibrationRoot, editorialId);
     if (!existsSync(dir)) continue;
-    for (const file of readdirSync(dir).filter((f) => f.endsWith(".json")).sort()) {
+    for (const file of readdirSync(dir)
+      .filter((f) => f.endsWith(".json"))
+      .sort()) {
       try {
-        const r = JSON.parse(readFileSync(path.join(dir, file), "utf8")) as Record<string, unknown>;
-        const findings = ((r.findings as CalibrationFinding[] | undefined) ?? []).map((f) => ({
+        const r = JSON.parse(
+          readFileSync(path.join(dir, file), "utf8"),
+        ) as Record<string, unknown>;
+        const findings = (
+          (r.findings as CalibrationFinding[] | undefined) ?? []
+        ).map((f) => ({
           id: f.id,
           summary: f.summary,
           producedRule: f.producedRule,
@@ -422,18 +476,28 @@ export function readCalibrationRows(): CalibrationRow[] {
         const openQuestionItems = (
           (r.openQuestions as unknown[] | undefined) ?? []
         )
-          .filter((question): question is string => typeof question === "string")
+          .filter(
+            (question): question is string => typeof question === "string",
+          )
           .map((question) => question.trim())
           .filter(Boolean);
         rows.push({
           sectionId,
           editorialId,
           heading: String(r.sectionHeading ?? sectionId),
-          currentHeading: String(r.currentHeading ?? r.sectionHeading ?? sectionId),
+          currentHeading: String(
+            r.currentHeading ?? r.sectionHeading ?? sectionId,
+          ),
           status: String(r.status ?? "unknown"),
           settled: String(r.settled ?? ""),
           findings,
-          rulesCited: [...new Set(findings.map((f) => f.producedRule).filter((x): x is string => Boolean(x)))],
+          rulesCited: [
+            ...new Set(
+              findings
+                .map((f) => f.producedRule)
+                .filter((x): x is string => Boolean(x)),
+            ),
+          ],
           ledgerItems: ((r.debtImpact as { id?: string }[] | undefined) ?? [])
             .map((d) => d.id)
             .filter((x): x is string => Boolean(x)),
@@ -474,7 +538,8 @@ export function readRuleUsage(): RuleUsage[] {
     return {
       ...rule,
       citations: rows.reduce(
-        (total, row) => total + row.findings.filter((f) => f.producedRule === rule.id).length,
+        (total, row) =>
+          total + row.findings.filter((f) => f.producedRule === rule.id).length,
         0,
       ),
       sections,
@@ -486,7 +551,9 @@ export function readRules(): RuleRow[] {
   const standard = path.join(editorialRoot, "method", "standard.md");
   if (!existsSync(standard)) return [];
   const rows: RuleRow[] = [];
-  for (const m of readFileSync(standard, "utf8").matchAll(/^\|\s*`(R-[A-Z-]+)`\s*\|\s*([^|]+?)\s*\|/gm)) {
+  for (const m of readFileSync(standard, "utf8").matchAll(
+    /^\|\s*`(R-[A-Z-]+)`\s*\|\s*([^|]+?)\s*\|/gm,
+  )) {
     rows.push({ id: m[1] ?? "", obligation: m[2] ?? "" });
   }
   return rows;

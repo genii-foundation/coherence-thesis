@@ -60,9 +60,14 @@ A voice card guides judgment. It is not a bag of preferred synonyms. Update it w
 
 ## Manuscript checkpoints
 
-Every volume has one permanent original manuscript checkpoint. Later published
-revisions form an append-only parent chain. Working revisions branch from a
-named checkpoint without altering it.
+Every volume has one permanent repository original. The current canonical
+manuscripts at the adoption commit are those originals. No earlier repository
+text outranks them.
+
+Later published revisions form an append-only parent chain. An author-approved
+candidate is preserved separately until production contains the exact approved
+bytes. Working revisions branch from a named original or published checkpoint
+without altering it.
 
 The lineage lives in
 `publishing/continuity/manuscript-checkpoints.json`. Each entry points to a
@@ -73,6 +78,10 @@ with:
 ```bash
 npm run editorial:checkpoints
 ```
+
+The complete approval and publication sequence is defined in
+`editorial/method/schemas/manuscript-checkpoints.md`. Publication approval
+records follow `editorial/method/schemas/publication-approval.md`.
 
 ## Review batches
 

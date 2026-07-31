@@ -22,6 +22,9 @@ This repository is the canonical source for The Coherence Thesis. Read this file
 - Do not edit generated reader sections, catalogs, reports, browser payloads, or PDFs by hand. Run `npm run manuscripts:prepare`.
 - Build, preview, test, import, compile, and preparation commands must not modify `editorial/` or `publishing/`.
 - Preserve historical source paths in each `volume.json`. Preserve old public links through the continuity workflow.
+- Treat the canonical manuscripts at the confirmed adoption commit as the
+  repository originals. Keep approved candidates outside the published
+  checkpoint chain until production contains the exact approved bytes.
 - Preserve unrelated local changes. Never reset, replace, or delete user work without explicit authorization.
 - Search for an existing component, hook, script, parser, or helper before creating another one. Shared behavior belongs in a shared primitive.
 - Verify every exported entry point has a real consumer before shipping.

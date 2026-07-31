@@ -25,6 +25,9 @@ Never edit a generated reader section, catalog, browser payload, PDF, or report 
 - Update a voice card only when the source or an explicit author decision changes the volume's editorial authority. Do not alter it merely to justify an edit already made.
 - Treat automated findings as prompts for judgment. They do not approve an edit.
 - Require explicit author approval before merging substantive manuscript revisions.
+- Keep wording approval separate from publication approval. Do not stage a
+  manuscript candidate for publication until the author approves the exact
+  committed source for release.
 
 ## Review evidence
 

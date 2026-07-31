@@ -8,7 +8,9 @@ test.describe("local editorial admin", () => {
     "Admin tools exist only in the local development server.",
   );
 
-  test("uses site wayfinding and ranks the editorial work", async ({ page }) => {
+  test("uses site wayfinding and ranks the editorial work", async ({
+    page,
+  }) => {
     await page.goto("/admin/");
 
     const breadcrumb = page.getByRole("navigation", { name: "Breadcrumb" });
@@ -18,10 +20,9 @@ test.describe("local editorial admin", () => {
     const adminNav = siteHeader.getByRole("navigation", {
       name: "Admin views",
     });
-    await expect(adminNav.getByRole("link", { name: "Status" })).toHaveAttribute(
-      "aria-current",
-      "page",
-    );
+    await expect(
+      adminNav.getByRole("link", { name: "Status" }),
+    ).toHaveAttribute("aria-current", "page");
     await expect(
       adminNav.getByRole("link", { name: "Editorial revisions" }),
     ).toBeVisible();
@@ -45,12 +46,20 @@ test.describe("local editorial admin", () => {
     );
     await expect(volumeMetric.getByText("96%", { exact: true })).toHaveCount(0);
     await expect(
+      page.getByText(
+        "9 originals · 0 published revisions · 0 awaiting publication",
+        { exact: true },
+      ),
+    ).toBeVisible();
+    await expect(
       page.getByRole("heading", {
         level: 1,
         name: "Volume I is fully rendered. 8 author decisions remain.",
       }),
     ).toBeVisible();
-    await expect(page.getByText("Live repository", { exact: true })).toBeVisible();
+    await expect(
+      page.getByText("Live repository", { exact: true }),
+    ).toBeVisible();
     await expect(page.getByText("Checked", { exact: false })).toBeVisible();
     await expect(
       page.getByRole("heading", { level: 2, name: "Decisions and blockers" }),
@@ -126,7 +135,9 @@ test.describe("local editorial admin", () => {
       orientationCard.getByText("8 rulings", { exact: true }),
     ).toBeVisible();
     await expect(
-      orientationCard.getByText("Which of the first three variants is closest?"),
+      orientationCard.getByText(
+        "Which of the first three variants is closest?",
+      ),
     ).toHaveCount(0);
     const cardInset = await orientationCard.evaluate((link) => {
       const card = link.closest("article");
@@ -174,9 +185,9 @@ test.describe("local editorial admin", () => {
     await expect(approvedVariant).toBeVisible();
     await expect(approvedVariant.locator(".approval-mark")).toBeVisible();
     await expect(
-      bench.getByRole("tab", { name: "A113", exact: true }).locator(
-        ".approval-mark",
-      ),
+      bench
+        .getByRole("tab", { name: "A113", exact: true })
+        .locator(".approval-mark"),
     ).toHaveCount(0);
 
     const layout = await page.evaluate(() => {
@@ -194,14 +205,12 @@ test.describe("local editorial admin", () => {
     const pageHeightBeforeEvidence = await page.evaluate(
       () => document.documentElement.scrollHeight,
     );
-    await bench.getByText("Corpus commitments", { exact: true }).click();
+    await bench.getByText("Effective voice card", { exact: true }).click();
     await expect(
       bench.getByText("Relationship to the reader:", { exact: false }),
     ).toBeVisible();
     await expect
-      .poll(() =>
-        page.evaluate(() => document.documentElement.scrollHeight),
-      )
+      .poll(() => page.evaluate(() => document.documentElement.scrollHeight))
       .toBeGreaterThan(pageHeightBeforeEvidence);
 
     const pageBounds = await page.evaluate(() => ({
@@ -210,9 +219,7 @@ test.describe("local editorial admin", () => {
       scrollHeight: document.documentElement.scrollHeight,
       scrollWidth: document.documentElement.scrollWidth,
     }));
-    expect(pageBounds.scrollWidth).toBeLessThanOrEqual(
-      pageBounds.clientWidth,
-    );
+    expect(pageBounds.scrollWidth).toBeLessThanOrEqual(pageBounds.clientWidth);
   });
 
   test("keeps revision work transient until the editor approves it", async ({
@@ -314,12 +321,12 @@ test.describe("local editorial admin", () => {
         }),
       ).toBeVisible();
       await expect(
-        page.getByText("The selected passage remains unchanged."),
+        page
+          .getByRole("region", { name: "The passage you copied" })
+          .getByText("The selected passage remains unchanged."),
       ).toBeVisible();
       await expect(
-        page.getByText(
-          "Make the sequence clearer without changing the claim.",
-        ),
+        page.getByText("Make the sequence clearer without changing the claim."),
       ).toBeVisible();
       await expect(
         page.getByRole("heading", { level: 3, name: "Closer sequence" }),
@@ -370,9 +377,7 @@ test.describe("local editorial admin", () => {
     await page.goto("/admin/");
 
     const toolbarColors = await page.evaluate(() => {
-      const adminIcon = document.querySelector(
-        '.editorial-admin-button svg',
-      );
+      const adminIcon = document.querySelector(".editorial-admin-button svg");
       const searchIcon = document.querySelector(".search-menu-button svg");
       return {
         admin: adminIcon ? getComputedStyle(adminIcon).stroke : "",

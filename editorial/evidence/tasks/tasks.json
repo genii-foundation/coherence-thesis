@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-30T23:31:50Z",
+  "updated": "2026-07-31T00:31:10Z",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -159,6 +159,15 @@
       "status": "done",
       "area": "tooling",
       "detail": "Complete. Rendered coverage and editorial settlement now come from one shared progress model. The dashboard exposes live branch, commit, worktree changes, divergence, and check time, refreshes while visible, and is protected by repository validation and browser coverage.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-017",
+      "title": "Adopt repository originals and enforce the publication lifecycle",
+      "tier": "amber",
+      "status": "done",
+      "area": "publishing",
+      "detail": "Complete. The canonical manuscripts at b4ed150 are the nine permanent repository originals. Author-approved candidates remain outside the published chain until the exact bytes are verified in production. The checkpoint commands validate, stage, and promote each state explicitly.",
       "blockedBy": []
     }
   ]

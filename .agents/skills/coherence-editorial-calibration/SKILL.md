@@ -121,6 +121,11 @@ npm run editorial:revision -- recorded --section <section-id> --record-path <pat
 
 Share the finished page and summarize the manuscript change, durable evidence, guidance changes, and validation result.
 
+The approved manuscript remains an unpublished candidate until the author
+separately authorizes publication. Follow the approved publication lifecycle in
+`editorial/method/schemas/manuscript-checkpoints.md`. Do not move a working or
+merely wording-approved revision into the published checkpoint chain.
+
 ## Authority boundary
 
 Generated working state is disposable and nonbinding. It may preserve editor instructions and candidate prose so the session can continue, but it may not be cited as a ruling.
