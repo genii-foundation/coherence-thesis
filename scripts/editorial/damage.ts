@@ -23,6 +23,7 @@ import {
   repoRoot,
 } from "../repository/paths";
 import { slugify } from "../manuscripts/io";
+import { uniqueId } from "../manuscripts/import-markdown";
 
 /**
  * Renamed headings are the norm in this corpus, not the exception, so slug equality
@@ -174,43 +175,87 @@ function analyse(editorialId: string): SectionDamage[] {
    * section unmatched, which is the one thing the report must never get wrong.
    */
   const currentList = splitSections(readFileSync(currentPath, "utf8"));
-  const currentIds = currentList.map(
-    (section) => `v${number}-${slugify(section.heading.replace(/\*/g, ""))}`,
-  );
-  const ids = baseSections.map(
-    (section) => `v${number}-${slugify(section.heading.replace(/\*/g, ""))}`,
-  );
+
+  /**
+   * Ids must carry the same occurrence suffix the importer assigns, because that is what
+   * the continuity records store. Without it every "What Providence Is and Is Not Doing
+   * in This Dimension" collapses to one id: the first occurrence consumes the only alias
+   * and the other four report as deleted, when in fact each has its own renamed current
+   * section. Five sections at roughly -13% were reading as five total losses.
+   */
+  const identify = (sections: Section[]): string[] => {
+    const used = new Set<string>();
+    return sections.map((section) =>
+      uniqueId(`v${number}-${slugify(section.heading.replace(/\*/g, ""))}`, used),
+    );
+  };
+  const currentIds = identify(currentList);
+  const ids = identify(baseSections);
+  /**
+   * Resolution by lineage target rather than by walking both documents in step.
+   *
+   * The walker this replaces was greedy: a baseline section whose alias pointed several
+   * places ahead would claim the survivor and step over the current section a later
+   * baseline section matched exactly. Volume III's failure chapter is the case that
+   * exposed it. Three baseline sections close it, the current has two, and the merge
+   * pairs the first with the third across the second, so the section in the middle
+   * desynchronised and reported as deleted when it had simply been renamed.
+   *
+   * Now that ids carry the importer's occurrence suffix they are unique, which makes
+   * position unnecessary. The lineage already states where every section went, so the
+   * honest operation is to read it: group the baseline sections by the current section
+   * they point at. One claimant is a rename, several are a merge, none is a deletion.
+   * That resolves non-adjacent merges and reorderings, neither of which a walker can.
+   */
+  const currentIndex = new Map(currentIds.map((id, j) => [id, j]));
+  const claimants = new Map<number, number[]>();
+  const targetOf = new Array<number | undefined>(baseSections.length);
+  ids.forEach((id, i) => {
+    // An exact id wins over the alias: a section that kept its heading did not move.
+    const target = currentIndex.has(id) ? id : ALIASES.get(id);
+    const j = target === undefined ? undefined : currentIndex.get(target);
+    if (j === undefined) return;
+    targetOf[i] = j;
+    claimants.set(j, [...(claimants.get(j) ?? []), i]);
+  });
+
   const matched = new Array<Section | undefined>(baseSections.length);
   const mergedInto = new Array<string | undefined>(baseSections.length);
-  const takenBy = new Map<number, string>();
-  let cursor = 0;
-  ids.forEach((id, i) => {
-    const wanted = new Set([id, ALIASES.get(id)].filter(Boolean) as string[]);
-    // Look ahead a bounded distance so one deletion does not desynchronise the rest.
-    for (let j = cursor; j < currentList.length && j < cursor + 8; j += 1) {
-      if (wanted.has(currentIds[j] as string)) {
-        matched[i] = currentList[j];
-        takenBy.set(j, id);
-        cursor = j + 1;
-        return;
-      }
-    }
-    // Nothing ahead. If the alias points at a section already claimed, this is a merge.
-    const target = ALIASES.get(id);
-    if (!target) return;
-    for (const [j, owner] of takenBy) {
-      if (currentIds[j] === target && owner !== id) {
-        mergedInto[i] = `${target} (with ${owner})`;
-        return;
-      }
-    }
+  targetOf.forEach((j, i) => {
+    if (j === undefined) return;
+    const group = claimants.get(j) ?? [];
+    matched[i] = currentList[j];
+    if (group.length < 2) return;
+    mergedInto[i] = `${currentIds[j]} (with ${group
+      .filter((other) => other !== i)
+      .map((other) => ids[other])
+      .join(", ")})`;
   });
+
+  /**
+   * Both members of a merge carry the group's delta, and the surviving section's words
+   * are credited once. Crediting them to the first member alone made one member read as
+   * growth and the other as total loss, which is how a merged-away section came to be
+   * reported as plus 120 percent.
+   */
+  const mergeMembers = new Map<number, number[]>();
+  for (const group of claimants.values()) {
+    if (group.length < 2) continue;
+    for (const i of group) mergeMembers.set(i, group);
+  }
 
   return baseSections.map((section, index) => {
     const sectionId = ids[index] as string;
     const current = matched[index];
     const baselineWords = words(section.body);
-    const currentWords = current ? words(current.body) : 0;
+    const members = mergeMembers.get(index);
+    // Credit the surviving section's words to the first member only.
+    const currentWords =
+      members && members[0] !== index ? 0 : current ? words(current.body) : 0;
+    const groupBaseline = members
+      ? members.reduce((total, i) => total + words(baseSections[i]?.body ?? ""), 0)
+      : baselineWords;
+    const groupCurrent = members ? words(matched[members[0] as number]?.body ?? "") : currentWords;
     return {
       editorialId,
       index: index + 1,
@@ -218,7 +263,9 @@ function analyse(editorialId: string): SectionDamage[] {
       sectionId,
       baselineWords,
       currentWords,
-      delta: baselineWords ? Math.round(((currentWords - baselineWords) / baselineWords) * 100) : 0,
+      delta: groupBaseline
+        ? Math.round(((groupCurrent - groupBaseline) / groupBaseline) * 100)
+        : 0,
       lostDenials: Math.max(0, denials(section.body) - (current ? denials(current.body) : 0)),
       lostLandings: Math.max(0, landings(section.blocks) - (current ? landings(current.blocks) : 0)),
       hasRecord: existsSync(path.join(editorialCalibrationRoot, editorialId, `${sectionId}.json`)),

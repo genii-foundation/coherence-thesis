@@ -1,5 +1,5 @@
 ---
-id: CTD-0110
+id: CTD-0111
 title: Rule on the open author questions the wave-one pass resolved by deleting their evidence
 status: query
 kind: canon

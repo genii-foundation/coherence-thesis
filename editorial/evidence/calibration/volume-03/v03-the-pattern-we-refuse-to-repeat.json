@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "sectionId": "v03-the-pattern-we-refuse-to-repeat",
+  "sectionHeading": "The Pattern We Refuse to Repeat",
+  "currentHeading": "A Commons That Can Continue (merged section, carries this baseline section and v03-one-genius-at-a-time)",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The acquisition account is an unverified factual claim about identifiable people and belongs to the author.",
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "open source",
+      "acquisition",
+      "closed instrument",
+      "commons",
+      "Purposeful Foundation"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0008",
+      "CTD-0009",
+      "CTD-0055",
+      "CTD-0071"
+    ],
+    "outcome": "No recorded decision governs this section. The merge of two baseline sections into one current section is recorded in the section lineage, not in the debt ledger, and it does not license the loss of their content. Both baseline sections are restored in full inside the surviving heading, which is left untouched under the structural hold."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The cautionary history that the section exists to tell was deleted entire.",
+      "evidence": {
+        "baseline": "425 words. The acquisition story in full, the pattern it exemplifies, the argument that an open tool cannot be killed this way, and a display verdict.",
+        "shipped": "Closed tools can disappear when a company is acquired, changes strategy, or ends a product."
+      },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "The baseline opens with a specific story: a small team built a tool that listened to a person's life and reflected it back, it was closed source, a large company bought the team and ended the tool, and the founder fell silent. The shipped version states the abstract risk in one clause. The story is the reason the chapter exists, and the volume says so outright, that it taught us more than any argument. A named risk is not a substitute for the case that produced the commitment.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The cautious half law, confirmed again, and here it removes the commitment the chapter is built on.",
+      "evidence": {
+        "baseline": "We have watched the second kind die, or worse, be absorbed. We will not build the second kind.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Fifth confirmation. The shipped section keeps the cautious observation that open design gives a community the possibility of continuation, and cuts every sentence in which the authors commit to anything. We will not build the second kind is the chapter's promise, and it is the committing half of a two-part structure whose cautious half survived intact.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The display verdict was removed.",
+      "evidence": {
+        "baseline": "*A closed instrument of intimacy is a betrayal waiting for a buyer. We are building the kind that cannot be bought out from under the people who need it, because what is given to the commons cannot be repossessed.*",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "A closed instrument of intimacy is a betrayal waiting for a buyer is the sharpest line in Part Six and the one that states the whole chapter in nine words. The commons cannot be repossessed is also the sentence the Purposeful Foundation's legal structure exists to make true.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "a genuinely beautiful tool, the most intimate signal of a human life fenced around its appositive, and cannot be bought out from under the people who need it.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "One introduced an appositive defining the tool and became a colon. One fenced an appositive carrying its own internal commas; the fencing became commas and the internal comma pair around rightly was dropped so the repair reads. One preceded a because clause and became a comma.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration at full strength",
+      "note": "The acquisition account returns in full: a specific tool, a specific outcome, a founder who fell silent. It is anonymized but identifiable, and it is offered as evidence. Unverified."
+    },
+    {
+      "id": "CTD-0008",
+      "effect": "reopened by restoration",
+      "note": "It is the ordinary fate of trustworthy tools built on closed foundations is a historical generalization with one example behind it."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "supported by restoration",
+      "note": "The restored argument is the reason the Foundation must hold the protocol in a form that cannot be repossessed. The item's ownership promises rest on it."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The full acquisition history, the pattern paragraph, the open-tool argument, the intimate-signal condition, We will not build the second kind, and the display verdict."
+        },
+        {
+          "kind": "kept",
+          "note": "One sentence from the shipped text, that continuation becomes real only if documentation, governance, trademarks, infrastructure, and contributor knowledge are also held in transferable form. It is concrete, it is not in the baseline, and it names the operational conditions the baseline argument assumes."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks, as recorded in F4."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, A Commons That Can Continue, untouched. It is a structural label and it now carries two baseline sections."
+        },
+        {
+          "kind": "cut",
+          "note": "The rest of the shipped rewrite."
+        }
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Merge. This baseline section and v03-one-genius-at-a-time were consolidated into one current section, A Commons That Can Continue. Both are now restored inside that single heading, in baseline order, which makes the section long. Whether the two should be split back into two headings is a continuity decision and was not taken here.",
+    "Identifiability. The restored acquisition account describes a real product, a real acquisition, and a founder who stopped speaking publicly. It names no one, and it is specific enough that readers will identify the company and probably the person. That is a legal and ethical decision, not an editorial one. Restored as written and flagged.",
+    "Claim scope. It is the ordinary fate of trustworthy tools built on closed foundations is restored, supported by one case."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The merge is what made this the worst-damaged pair in the volume and also what hid it: 870 baseline words became 185, and because the two baseline sections collapsed into one current heading, every automated comparison reported the loss against the wrong denominator. Merged sections need their combined figures checked by hand."
+  }
+}
