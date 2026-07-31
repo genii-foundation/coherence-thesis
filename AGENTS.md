@@ -100,6 +100,20 @@ Audit follow through when the author asks what is outstanding, before every prog
 
 A scoped loop stops at its own stop condition and touches nothing else. That is correct behavior and not evidence that the remaining queue is stale, but it does mean the queue must be reconciled by hand once the loop ends.
 
+## What counts as structure
+
+Three kinds of line generate a public route. Changing any of them is a continuity decision, not an editorial one, and it must go through the continuity workflow rather than through a manuscript edit.
+
+- Any `#` through `####` heading.
+- Any standalone bold line. The importer at `scripts/manuscripts/import-markdown.ts` matches `/^\*{2,3}\s*(.+?)\s*\*{2,3}$/` and returns it as a level three heading, so `**Label.**` on its own line is a section. A single asterisk italic line is not.
+- Any prose between a part label and the first chapter heading beneath it. That text compiles into a chapter start section with its own route, so restoring a fuller part introduction revives a retired section.
+
+An editorial pass may restore prose beneath a chapter heading freely. It may not rename, add, remove, split, merge, or relocate a structural line, and it may not lengthen a part introduction, because each of those mints or retires a URL.
+
+Where a baseline structural line is better than the current one, record it as an open question naming both forms and the cost of the change. Do not act on it.
+
+This was learned the hard way. Restoring baseline headings in one volume orphaned a route alias; changing `**The living world.**` to `**The living world (§2).**` changed a section id; and restoring six part introductions in another volume revived six retired routes and required author facing route adjudication to resolve. All three read as ordinary prose restoration.
+
 ## Responding to editorial feedback
 
 When the author comments on how the wording of a specific section could be better, offer an intent-first revision session before editing. The session creates an ignored working page, asks what the author wants changed, and shows variants only after the author answers.
