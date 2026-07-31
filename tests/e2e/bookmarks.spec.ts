@@ -10,6 +10,7 @@ import {
 import sectionLineage from "../../publishing/continuity/section-lineage.json";
 import {
   catalog,
+  chapterWithNeighbors,
   expectMenuFitsViewport,
   firstSection,
   readerPreferencesStorageKey,
@@ -86,6 +87,31 @@ async function selectWords(
   return page.evaluate(() => window.getSelection()?.toString() ?? "");
 }
 
+async function selectAcrossParagraphs(
+  page: Page,
+  paragraphCount: number,
+): Promise<string> {
+  return page.evaluate((count) => {
+    const paragraphs = [
+      ...document.querySelectorAll<HTMLElement>(
+        ".manuscript-prose p[data-paragraph-anchor]",
+      ),
+    ].slice(0, count);
+    const firstWord = paragraphs[0]?.querySelector(".audio-word");
+    const lastWords = paragraphs.at(-1)?.querySelectorAll(".audio-word");
+    const lastWord = lastWords?.[Math.min(4, lastWords.length - 1)];
+    if (!firstWord || !lastWord) return "";
+
+    const range = document.createRange();
+    range.setStartBefore(firstWord);
+    range.setEndAfter(lastWord);
+    const selection = window.getSelection();
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+    return selection?.toString() ?? "";
+  }, paragraphCount);
+}
+
 async function storedBookmarks(page: Page) {
   return page.evaluate((key) => {
     const raw = window.localStorage.getItem(key);
@@ -149,10 +175,14 @@ test("selecting three or more words offers a bookmark, and saves it", async ({
     Record<string, unknown>
   >;
   expect(saved).toHaveLength(1);
-  // The durable half of the anchor: a content-addressed paragraph id, its bare
-  // hash, and offsets into that block's visible text.
-  expect(saved[0]!.paragraphAnchor).toMatch(/^p-h[0-9a-f]{16}(-\d+)?$/);
-  expect(saved[0]!.paragraphContentHash).toMatch(/^[0-9a-f]{16}$/);
+  // A single-paragraph selection is represented by equal durable endpoints.
+  const range = saved[0]!.range as {
+    start: Record<string, unknown>;
+    end: Record<string, unknown>;
+  };
+  expect(range.start.paragraphAnchor).toMatch(/^p-h[0-9a-f]{16}(-\d+)?$/);
+  expect(range.start.paragraphContentHash).toMatch(/^[0-9a-f]{16}$/);
+  expect(range.end.paragraphAnchor).toBe(range.start.paragraphAnchor);
   expect(saved[0]!.sectionId).toBe(firstSection.sectionId);
   expect(saved[0]!.quote).toBe(selected.trim());
   expect(saved[0]!.progressKey).toBe(
@@ -166,6 +196,84 @@ test("a selection under three words offers nothing", async ({
 }) => {
   await page.goto(firstSection.readerHref);
   await selectWords(page, 2, hasTouch);
+  await expect(
+    page.getByRole("button", { name: "Click to bookmark" }),
+  ).toBeHidden();
+});
+
+test("one bookmark spans, restores, and identifies a multi-paragraph passage", async ({
+  page,
+}) => {
+  await page.goto(firstSection.readerHref);
+
+  await selectAcrossParagraphs(page, 3);
+  const bubble = page.getByRole("button", { name: "Click to bookmark" });
+  await expect(bubble).toBeVisible();
+  await bubble.click();
+  await expect(page.getByText("Bookmark saved")).toBeVisible();
+
+  const stored = await storedBookmarks(page);
+  const saved = Object.values(stored.bookmarks)[0] as {
+    quote: string;
+    range: {
+      start: { paragraphAnchor: string };
+      end: { paragraphAnchor: string };
+    };
+  };
+  expect(saved.range.start.paragraphAnchor).not.toBe(
+    saved.range.end.paragraphAnchor,
+  );
+  expect(saved.quote.split("\n\n")).toHaveLength(3);
+
+  await page.getByRole("button", { name: /^Bookmarks, / }).click();
+  await expect(page.getByText("3 paragraphs", { exact: true })).toBeVisible();
+  await page.keyboard.press("Escape");
+
+  const marker = page.locator('[data-bookmark-highlight="true"]');
+  await expect(marker).toHaveAttribute(
+    "data-paragraph-anchor",
+    saved.range.start.paragraphAnchor,
+  );
+  await expect(marker).toHaveAttribute(
+    "data-end-paragraph-anchor",
+    saved.range.end.paragraphAnchor,
+  );
+  const heightBeforeReload = await marker.evaluate(
+    (element) => element.getBoundingClientRect().height,
+  );
+  expect(heightBeforeReload).toBeGreaterThan(100);
+
+  await page.reload();
+  await expect(page.locator('[data-bookmark-highlight="true"]')).toBeVisible();
+});
+
+test("a selection crossing reader sections is not bookmarkable", async ({
+  page,
+}) => {
+  await page.goto(chapterWithNeighbors.href);
+  const selectedAcrossSections = await page.evaluate(() => {
+    const sections = [
+      ...document.querySelectorAll<HTMLElement>(
+        ".chapter-reader-section[data-reader-section-id]",
+      ),
+    ];
+    const first = sections[0]?.querySelector<HTMLElement>(
+      ".manuscript-prose p[data-paragraph-anchor]",
+    );
+    const second = sections[1]?.querySelector<HTMLElement>(
+      ".manuscript-prose p[data-paragraph-anchor]",
+    );
+    if (!first || !second) return false;
+    const range = document.createRange();
+    range.setStart(first, 0);
+    range.setEnd(second, second.childNodes.length);
+    const selection = window.getSelection();
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+    return true;
+  });
+  expect(selectedAcrossSections).toBe(true);
+
   await expect(
     page.getByRole("button", { name: "Click to bookmark" }),
   ).toBeHidden();
@@ -189,7 +297,7 @@ test("saved bookmarks survive a reload and filter in the toolbar", async ({
   await expect(panel.locator(".bookmark-row")).toHaveCount(1);
   const quotePreview = panel.locator(".bookmark-quote");
   await expect(quotePreview).toHaveCSS("-webkit-line-clamp", "3");
-  await expect(quotePreview).toHaveCSS("white-space", "normal");
+  await expect(quotePreview).toHaveCSS("white-space", "pre-line");
 
   const filter = page.getByPlaceholder("Filter bookmarks");
   await filter.fill("zzzz-no-such-passage");
@@ -907,14 +1015,22 @@ test("a full 1,000-bookmark collection remains a contained scroll surface", asyn
       id,
       progressKey: firstSection.continuityId || firstSection.sectionId,
       sectionId: firstSection.sectionId,
-      paragraphAnchor: paragraph.anchor,
-      paragraphContentHash: paragraph.contentHash,
+      range: {
+        start: {
+          paragraphAnchor: paragraph.anchor,
+          paragraphContentHash: paragraph.contentHash,
+          offset: 0,
+        },
+        end: {
+          paragraphAnchor: paragraph.anchor,
+          paragraphContentHash: paragraph.contentHash,
+          offset: quote.length,
+        },
+      },
       quote,
       quoteOrdinal: 0,
       prefix: "",
       suffix: "",
-      startOffset: 0,
-      endOffset: quote.length,
       sectionContentHash: firstSection.contentHash,
       createdAt: now - index,
       updatedAt: now - index,
@@ -1116,7 +1232,7 @@ test("account tools export the production reader report contract", async ({
   const markdown = Buffer.concat(chunks).toString("utf8");
 
   expect(markdown).toContain("# Your Coherence Thesis reader data");
-  expect(markdown).toContain("Export format version: 1.");
+  expect(markdown).toContain("Export format version: 2.");
   expect(markdown).toContain("## Summary");
   expect(markdown).toContain("Bookmarks saved: 1");
   expect(markdown).toContain(selectedQuote.trim());

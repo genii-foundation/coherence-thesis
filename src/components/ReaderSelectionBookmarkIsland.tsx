@@ -137,13 +137,11 @@ export function ReaderSelectionBookmarkIsland({
       }
       return addBookmark(current, {
         section,
-        paragraphAnchor: target.paragraphAnchor,
+        range: target.range,
         quote: target.quote,
         quoteOrdinal: target.quoteOrdinal,
         prefix: target.prefix,
         suffix: target.suffix,
-        startOffset: target.startOffset,
-        endOffset: target.endOffset,
       });
     });
 
@@ -157,7 +155,12 @@ export function ReaderSelectionBookmarkIsland({
         sectionId: section.sectionId,
         contentHash: section.contentHash,
         route: window.location.pathname,
-        payload: { paragraphAnchor: target.paragraphAnchor },
+        payload: {
+          startParagraphAnchor: target.range.start.paragraphAnchor,
+          startOffset: target.range.start.offset,
+          endParagraphAnchor: target.range.end.paragraphAnchor,
+          endOffset: target.range.end.offset,
+        },
       }),
     );
 

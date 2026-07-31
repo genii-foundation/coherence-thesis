@@ -13,6 +13,7 @@ import {
   setBookmarkNote,
   type ReaderBookmark,
 } from "@/lib/reader-bookmarks";
+import { passageRangeParagraphCount } from "@/lib/reader-passage-range";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import {
   appendStoredEvent,
@@ -25,6 +26,7 @@ type BookmarkHighlightMarker = {
   bookmark: ReaderBookmark;
   height: number;
   left: number;
+  paragraphCount: number;
   top: number;
 };
 
@@ -41,29 +43,21 @@ type ActiveMarker = {
 // Walk the block's text nodes accumulating length until the stored character
 // offsets land, which is the same visible-text coordinate space the offsets
 // were captured in.
-function rangeForOffsets(
+function textPointForOffset(
   block: HTMLElement,
-  startOffset: number,
-  endOffset: number,
-): Range | null {
+  offset: number,
+): { node: Node; offset: number } | null {
   const walker = block.ownerDocument.createTreeWalker(
     block,
     NodeFilter.SHOW_TEXT,
   );
-  const range = block.ownerDocument.createRange();
   let consumed = 0;
-  let started = false;
   let node = walker.nextNode();
 
   while (node) {
     const length = node.textContent?.length ?? 0;
-    if (!started && consumed + length >= startOffset) {
-      range.setStart(node, Math.max(0, startOffset - consumed));
-      started = true;
-    }
-    if (started && consumed + length >= endOffset) {
-      range.setEnd(node, Math.max(0, endOffset - consumed));
-      return range;
+    if (consumed + length >= offset) {
+      return { node, offset: Math.max(0, offset - consumed) };
     }
     consumed += length;
     node = walker.nextNode();
@@ -74,17 +68,38 @@ function rangeForOffsets(
 
 function blockFor(
   section: ProgressSection,
-  bookmark: ReaderBookmark,
+  paragraphAnchor: string,
 ): HTMLElement | null {
-  const resolution = resolveBookmarkAnchor(bookmark, section.paragraphs);
-  if (!resolution.anchor) return null;
   const sectionRoot = document.querySelector<HTMLElement>(
     `[data-reader-section-id="${CSS.escape(section.sectionId)}"]`,
   );
   if (!sectionRoot) return null;
   return sectionRoot.querySelector<HTMLElement>(
-    `${paragraphBlockSelector}[data-paragraph-anchor="${CSS.escape(resolution.anchor)}"]`,
+    `${paragraphBlockSelector}[data-paragraph-anchor="${CSS.escape(paragraphAnchor)}"]`,
   );
+}
+
+function rangeForBookmark(
+  section: ProgressSection,
+  bookmark: ReaderBookmark,
+): Range | null {
+  const resolution = resolveBookmarkAnchor(bookmark, section.paragraphs);
+  if (resolution.status === "missing") return null;
+  const startBlock = blockFor(section, resolution.startAnchor);
+  const endBlock = blockFor(section, resolution.endAnchor);
+  if (!startBlock || !endBlock) return null;
+  const start = textPointForOffset(startBlock, bookmark.range.start.offset);
+  const end = textPointForOffset(endBlock, bookmark.range.end.offset);
+  if (!start || !end) return null;
+
+  try {
+    const range = startBlock.ownerDocument.createRange();
+    range.setStart(start.node, start.offset);
+    range.setEnd(end.node, end.offset);
+    return range.collapsed ? null : range;
+  } catch {
+    return null;
+  }
 }
 
 // The preference lives as a data attribute on the root, set by
@@ -170,7 +185,12 @@ export function ReaderBookmarkHighlightIsland({
         createEngagementEvent("bookmark_removed", {
           sectionId: bookmark.sectionId,
           route: window.location.pathname,
-          payload: { paragraphAnchor: bookmark.paragraphAnchor },
+          payload: {
+            startParagraphAnchor: bookmark.range.start.paragraphAnchor,
+            startOffset: bookmark.range.start.offset,
+            endParagraphAnchor: bookmark.range.end.paragraphAnchor,
+            endOffset: bookmark.range.end.offset,
+          },
         }),
       );
       closeMarker(bookmark.id);
@@ -190,13 +210,7 @@ export function ReaderBookmarkHighlightIsland({
       const nextMarkers: BookmarkHighlightMarker[] = [];
       for (const section of sections) {
         for (const bookmark of bookmarksForSection(bookmarks, section)) {
-          const block = blockFor(section, bookmark);
-          if (!block) continue;
-          const range = rangeForOffsets(
-            block,
-            bookmark.startOffset,
-            bookmark.endOffset,
-          );
+          const range = rangeForBookmark(section, bookmark);
           if (!range) continue;
 
           const boxes = Array.from(range.getClientRects()).filter(
@@ -204,8 +218,14 @@ export function ReaderBookmarkHighlightIsland({
           );
           if (boxes.length === 0) continue;
 
-          const prose = block.closest<HTMLElement>(".manuscript-prose");
-          const proseBox = (prose ?? block).getBoundingClientRect();
+          const sectionRoot = document.querySelector<HTMLElement>(
+            `[data-reader-section-id="${CSS.escape(section.sectionId)}"]`,
+          );
+          const prose = sectionRoot?.querySelector<HTMLElement>(
+            ".manuscript-prose",
+          );
+          if (!prose) continue;
+          const proseBox = prose.getBoundingClientRect();
           const top = Math.min(...boxes.map((box) => box.top));
           const bottom = Math.max(...boxes.map((box) => box.bottom));
           const isDesktop = window.matchMedia("(min-width: 641px)").matches;
@@ -218,6 +238,9 @@ export function ReaderBookmarkHighlightIsland({
                 isDesktop ? 4 : 0,
                 proseBox.left - (isDesktop ? 54 : 24),
               ) + window.scrollX,
+            paragraphCount:
+              passageRangeParagraphCount(bookmark.range, section.paragraphs) ??
+              1,
             top: Math.max(0, top - 2) + window.scrollY,
           });
         }
@@ -285,7 +308,12 @@ export function ReaderBookmarkHighlightIsland({
               aria-haspopup="dialog"
               data-bookmark-highlight="true"
               data-bookmark-id={marker.bookmark.id}
-              data-paragraph-anchor={marker.bookmark.paragraphAnchor}
+              data-paragraph-anchor={
+                marker.bookmark.range.start.paragraphAnchor
+              }
+              data-end-paragraph-anchor={
+                marker.bookmark.range.end.paragraphAnchor
+              }
               onClick={() => openMarker(marker.bookmark.id, "active")}
               onFocus={() => openMarker(marker.bookmark.id, "active")}
               onMouseEnter={() => openMarker(marker.bookmark.id, "hover")}
@@ -327,6 +355,11 @@ export function ReaderBookmarkHighlightIsland({
               <p className="reader-bookmark-highlight-quote">
                 {marker.bookmark.quote}
               </p>
+              {marker.paragraphCount > 1 ? (
+                <p className="reader-bookmark-highlight-range">
+                  {marker.paragraphCount.toLocaleString()} paragraphs
+                </p>
+              ) : null}
               {editingNoteId === marker.bookmark.id ? (
                 <textarea
                   className="reader-bookmark-highlight-note-field"

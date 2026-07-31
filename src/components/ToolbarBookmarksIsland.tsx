@@ -35,6 +35,7 @@ import {
   updateStoredBookmarks,
   useReaderBookmarks,
 } from "@/lib/reader-progress-store";
+import { passageRangeParagraphCount } from "@/lib/reader-passage-range";
 import { foldSearchText } from "@/lib/reader-text-search";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 
@@ -52,6 +53,7 @@ type ResolvedBookmark = {
   bookmark: ReaderBookmark;
   section?: BookmarkSectionData;
   href?: string;
+  paragraphCount: number | null;
   stale: boolean;
   // Volume, then the path down to the section. A bare section title is not
   // enough to place a passage across nine volumes with repeating structure.
@@ -138,7 +140,12 @@ export function ToolbarBookmarksIsland() {
       if (!section) {
         // No section answers to this id under any lineage. That is the most
         // broken a bookmark can be, so it must read as stale, not healthy.
-        return { bookmark, stale: true, trail: [bookmark.sectionId] };
+        return {
+          bookmark,
+          paragraphCount: null,
+          stale: true,
+          trail: [bookmark.sectionId],
+        };
       }
       const resolution = resolveBookmarkAnchor(bookmark, section.paragraphs);
 
@@ -160,7 +167,11 @@ export function ToolbarBookmarksIsland() {
         href: bookmarkHref(
           bookmark,
           section,
-          resolution.anchor ?? bookmark.paragraphAnchor,
+          resolution.startAnchor ?? bookmark.range.start.paragraphAnchor,
+        ),
+        paragraphCount: passageRangeParagraphCount(
+          bookmark.range,
+          section.paragraphs,
         ),
         stale: resolution.status === "missing",
         trail,
@@ -280,7 +291,12 @@ export function ToolbarBookmarksIsland() {
       createEngagementEvent("bookmark_removed", {
         sectionId: bookmark.sectionId,
         route: window.location.pathname,
-        payload: { paragraphAnchor: bookmark.paragraphAnchor },
+        payload: {
+          startParagraphAnchor: bookmark.range.start.paragraphAnchor,
+          startOffset: bookmark.range.start.offset,
+          endParagraphAnchor: bookmark.range.end.paragraphAnchor,
+          endOffset: bookmark.range.end.offset,
+        },
       }),
     );
   }, []);
@@ -566,6 +582,11 @@ export function ToolbarBookmarksIsland() {
                           {entry.stale && (
                             <span className="bookmarks-stale-tag">
                               revised since you saved it
+                            </span>
+                          )}
+                          {(entry.paragraphCount ?? 0) > 1 && (
+                            <span className="bookmarks-range-tag">
+                              {entry.paragraphCount!.toLocaleString()} paragraphs
                             </span>
                           )}
                         </p>
