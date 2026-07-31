@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-31T00:31:10Z",
+  "updated": "2026-07-30",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -168,6 +168,15 @@
       "status": "done",
       "area": "publishing",
       "detail": "Complete. The canonical manuscripts at b4ed150 are the nine permanent repository originals. Author-approved candidates remain outside the published chain until the exact bytes are verified in production. The checkpoint commands validate, stage, and promote each state explicitly.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-018",
+      "title": "Reconcile the Volume IV structural change",
+      "tier": "amber",
+      "status": "pending",
+      "area": "editorial",
+      "detail": "117 baseline headings against 89 current. Twenty-eight sections were merged or dropped outright, which is a structural change rather than a line edit and needs adjudication before its sections can settle.",
       "blockedBy": []
     }
   ]
