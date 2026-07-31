@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-convergence",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Convergence",
+  "currentHeading": "The Convergence",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The strength of the imperative claim is an author decision.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Providence", "imperative", "master problem", "experiment not an answer"],
+    "itemsRead": ["CTD-0004", "CTD-0045", "CTD-0055", "CTD-0073", "master-ledger section 2"],
+    "outcome": "No recorded decision touches this section, and the baseline already carries the posture CTD-0045 asks for: Providence is named an experiment and not an answer, and the imperative is separated from the proposal. The master ledger's definition of Providence as connective tissue rather than an authority is consistent with the restored text."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's summation of the three forces was replaced by three one-line restatements.",
+      "evidence": {
+        "baseline": "Each force, alone, would be serious. Together, they describe a civilization whose power is rising, whose capacity to coordinate that power is falling, and whose margin for getting the coordination right is shrinking.",
+        "shipped": "The three pressures reinforce one another. Technological capability raises the consequences of every choice. Eroding trust makes common choices harder. Ecological degradation narrows the time available for slow repair."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped version lists the forces again. The baseline shows what their conjunction produces, in one cumulative sentence with three parallel relative clauses that arrive at shrinking. That sentence is the chapter's result and the reason the chapter is called The Convergence. R-CADENCE covers the mechanics: a long cumulative sentence became four short declaratives, and the argument's accumulation went with it.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The separation of the imperative from the proposal was kept in substance and lost in force.",
+      "evidence": {
+        "baseline": "It is not that Providence, specifically, must be built. We are not so arrogant as to claim that any single proposal is civilization's necessary salvation ... Coordination is becoming the master problem, the one whose solution conditions the solubility of all the others.",
+        "shipped": "Providence is not made necessary by this convergence. Some adequate coordination infrastructure is. That distinction protects the argument from confusing one proposal with destiny."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped version makes the distinction and then explains why the distinction is useful, which is the manuscript narrating its own editorial care. The baseline makes the distinction and then states the consequence: coordination is the master problem. One ends on the argument, the other on a note about the argument. Category 4.23 covers the difference.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The display verdict was cut and its content demoted into prose.",
+      "evidence": {
+        "baseline": "*Without a coordination layer adequate to the acceleration, every institution becomes less reliable, every powerful technology less steerable, every slow crisis less addressable, and every act of goodwill less able to find the others it needs. Coordination is not one problem among many. It is the problem that determines whether the others can be solved at all.*",
+        "shipped": "Coordination is not the only problem civilization faces. It is a condition that affects whether many other problems can be addressed."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped sentence inverts the claim. The baseline says coordination is not one problem among many; the shipped text says it is not the only problem. The first asserts a difference in kind, the second concedes a difference in number. This is the chapter's verdict and the volume's title claim, and the two versions do not say the same thing. Restored in display form.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "Capability fenced around including intelligence itself, must be built before the arrogance clause, and every other effort fenced around a three-item list.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first fenced a short dependent phrase with no internal comma and became commas. The second joined a claim to an independent justification and became a period. The third fenced a list inside a subject, and the list was merged into the subject so that the three items carry the verb directly.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0045", "effect": "supported by restoration", "note": "The restored section states plainly that Providence is an experiment and not an answer, and that the imperative survives any particular proposal. This is the posture the item asks the author to choose, stated in the baseline's own words." },
+    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "The master problem, the one whose solution conditions the solubility of all the others, is a universal about problems rather than about history, but it is unbounded." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The summation of the three forces, the cumulative sentence that names what their conjunction produces, the separation of the imperative from the proposal, the master problem claim, and the display verdict." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks, as recorded in F4." },
+        { "kind": "cut", "note": "The shipped rewrite, including its sentence about what the distinction protects the argument from, which describes the editing rather than the subject." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim strength. The restored verdict says coordination is the problem that determines whether the others can be solved at all. That is the volume's largest structural claim and the one the title rests on. The shipped text had reduced it to a condition affecting many problems. Restored, flagged."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F3 is the sharpest case in the chapter of a claim inverted while being shortened. Not one problem among many and not the only problem differ by one preposition and by the entire thesis. A reviewer reading only the shipped text would find nothing wrong."
+  }
+}

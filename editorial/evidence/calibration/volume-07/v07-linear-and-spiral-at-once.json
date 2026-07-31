@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-linear-and-spiral-at-once",
+  "editorialId": "volume-07",
+  "sectionHeading": "***Linear and Spiral at Once***",
+  "currentHeading": "### Linear and Spiral at Once",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Deliberate Perception",
+      "touch",
+      "the senses",
+      "Art & Alchemy"
+    ],
+    "itemsRead": [
+      "CTD-0087",
+      "CTD-0085",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0085 fixes Art & Alchemy in the table, which the baseline printed as Art / Alchemy. CTD-0087 requires the design hypothesis framing and it is kept. The touch table is a card protected exemplar and survives intact."
+  },
+  "substitutionCheck": "Grepped. It is a design hypothesis, not evidence that one year produces a whole person and The same exercise could be adapted for sight, sound, scent, taste, and interior experience are absent from the baseline. The first is retained; the second is replaced by the baseline sentence it displaced, with its qualification kept.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The doubleness the section is named for lost its explanation.",
+      "evidence": {
+        "baseline": "Walked once, the seven initiates are a life-path ... But the seven are not only a path walked once; they are also a lens that returns.",
+        "shipped": "The curriculum is both linear and recursive. It moves from Listening toward Providence while returning to earlier capacities."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "A lens that returns is the figure and it is what makes the spiral half legible. Recursive names the property and shows nothing. Until a whole person stands at Providence who did not stand there a year before is also the only sentence in Part VIII that says what the year is for, and CTD-0087 required it be bounded, not deleted.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The engine of the fifty-two lost its mechanism.",
+      "evidence": {
+        "baseline": "each faculty of sense is carried through all seven initiates in succession, listened to, intimated with, balanced, made art of, embodied, worshipped, and at last set in providence, so that a single sense becomes a complete passage through the whole architecture",
+        "shipped": "a sense may be considered through all seven Initiates"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 applied to the seven verbs.",
+      "diagnosis": "The seven verbs are the demonstration. They show that each initiate is an operation that can be performed on anything, which is the claim the touch table then illustrates. Considered through is the same sentence with the operation removed, and it makes the table that follows look like an example of nothing.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The account of what a year of this produces was replaced by a note about scope.",
+      "evidence": {
+        "baseline": "By the year’s end the practitioner has not learned a set of facts about perception; they have re-perceived their entire instrument, sense by sense, through the whole grammar of the work.",
+        "shipped": "The example illustrates a method. It does not yet specify the remaining weeks or establish the outcomes of completing them."
+      },
+      "authorizedBy": "CTD-0087.",
+      "diagnosis": "Re-perceived their entire instrument is the aim, and an aim can be stated in the conditional without being deleted. The re-render puts it in the conditional and keeps the scope note after it, so the reader learns both what is intended and what is unproved.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0087",
+      "effect": "paydown preserved",
+      "note": "The design hypothesis clause and the scope note are both kept. The year’s aim is stated in the conditional rather than as a result."
+    },
+    {
+      "id": "CTD-0085",
+      "effect": "paydown preserved",
+      "note": "The table row reads Art & Alchemy, not the baseline’s Art / Alchemy."
+    },
+    {
+      "id": "CTD-0084",
+      "effect": "paydown preserved",
+      "note": "The em dash in the Balance row of the table stays repaired."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes outside the table. One introduced the touch example and became a comma pair. Two separated second movements and became periods. The table’s one em dash was already repaired by the prior pass."
+        },
+        {
+          "kind": "restored",
+          "note": "The life-path account, the lens that returns, the seven verbs, the engine of the fifty-two, the roll of the senses, and the re-perceived instrument close in conditional form."
+        },
+        {
+          "kind": "kept",
+          "note": "The whole touch table, the design hypothesis clause, and the scope note."
+        },
+        {
+          "kind": "verified",
+          "note": "All seven table rows are present, in order, with their baseline questions unchanged."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

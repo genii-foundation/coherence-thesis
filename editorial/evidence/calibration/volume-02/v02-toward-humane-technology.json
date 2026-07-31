@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-toward-humane-technology",
+  "editorialId": "volume-02",
+  "sectionHeading": "**TOWARD HUMANE TECHNOLOGY**",
+  "currentHeading": "**TOWARD HUMANE TECHNOLOGY**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "note": "The first of four interstitial orientation pages under the same display heading. The section lineage numbers them v02-toward-humane-technology through v02-toward-humane-technology-4. This record covers the first, subtitled An Orientation. The damage report counts its words inside the Editor's Note block because the Prologue and these pages are set as display matter rather than markdown headings.",
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["The book makes a sustained argument", "It can make that argument only by", "describe the conditions currently missing for coherence"],
+    "result": "None appears in the baseline. The third is a substitution that changes the claim: the baseline says the chapters describe what coherence currently lacks, the shipped text says they describe the conditions currently missing for coherence. The first two are a split of one baseline sentence rather than new argument."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["humane technology", "Center for Humane Technology", "substrate", "several centuries"],
+    "itemsRead": ["CTD-0004", "CTD-0066"],
+    "outcome": "No recorded decision touches this page. CTD-0004 tracks centuries-of-extraction claims, and several centuries optimizing technology for extraction survives in both texts unchanged, so nothing is reopened. CTD-0066 asks for relief of residual synthetic cadence across the volume and lists this neighbourhood among the abstract passages; it is an open obligation with no ruling, so it does not override the baseline."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The page's opening cumulative sentence was broken into three declaratives, and the concession it carried was lost.",
+      "evidence": {
+        "baseline": "The chapters that follow examine many things [mark] physiology, relationship, extraction, infrastructure, economics, governance, intelligence [mark] and they may not always appear to be about technology directly. They are.",
+        "shipped": "The chapters that follow examine physiology, relationship, extraction, infrastructure, economics, governance, and intelligence. They may not always appear to be about technology directly. They are."
+      },
+      "authorizedBy": "Compression, and catalog 4.10 applied to many things as vague reference.",
+      "diagnosis": "Many things is not vague. It sets up the concession, because the point of the sentence is that a reader looking at that list will not see a book about technology. Deleting it leaves the list doing the work of an inventory instead. The two-beat They may not always appear ... They are also depends on being the second half of one sentence and then a rebuttal; as three separate sentences the rebuttal answers a question nobody was shown asking.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The sentence explaining the book's method was split, and the method turned into a capability claim.",
+      "evidence": {
+        "baseline": "The book is making a sustained argument about what humane technology would have to become, and the argument can only be made by descending first into the conditions beneath technology and then climbing back up to ask what kind of technology those conditions can support.",
+        "shipped": "The book makes a sustained argument about what humane technology would have to become. It can make that argument only by first descending into the conditions beneath technology, then climbing back up to ask what kind of technology those conditions can support."
+      },
+      "authorizedBy": "Catalog 4.19, mechanical cadence, and R-TENSE read onto is making.",
+      "diagnosis": "The argument can only be made is a claim about the argument. It can make that argument only by is a claim about what the book is able to do, and it puts the book rather than the argument in the subject position at exactly the point where the page is explaining why the shape of the book is not arbitrary. R-CADENCE also applies directly: the baseline paragraph runs long, short, long, and the split makes it long, short, medium, medium, which is the flattening the rule was written to catch. R-TENSE does not authorize the change, because is making marks a process the reader is inside rather than a completed act.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The closing instruction to the reader was rewritten and its object changed.",
+      "evidence": {
+        "baseline": "The diagnostic chapters of Part I describe what that coherence currently lacks. Hold the technology question in the back of your mind as you read. The argument the chapters make ... is, finally, an argument about what kind of technology can be built ...",
+        "shipped": "The diagnostic chapters of Part I describe the conditions currently missing for coherence. Hold the technology question in mind as you read. The argument these chapters make ... is, finally, about what kind of technology can be built ..."
+      },
+      "authorizedBy": "Compression, and catalog 4.10 applied to that coherence.",
+      "diagnosis": "What that coherence currently lacks points back to the coherence the previous paragraph named, which is the referent 4.10 asks for. The conditions currently missing for coherence points at nothing and adds two abstractions. In the back of your mind is an instruction a reader can follow; in mind is not, because holding a question in mind while reading is just reading. And an argument about is the page's own vocabulary, since the sentence is drawing an equivalence between two arguments; dropping the noun leaves a copula joining an argument to a topic.",
+      "producedRule": "R-DEIXIS"
+    },
+    {
+      "id": "F4",
+      "summary": "Two definite articles were dropped where the argument depends on their pointing.",
+      "evidence": {
+        "baseline": "better intentions applied to the current architectures ... Which means the work of building humane technology is also, and primarily, the work of building the coherence on which it would depend.",
+        "shipped": "better intentions applied to current architectures ... This means the work of building humane technology is also, and primarily, the work of building the coherence on which it would depend."
+      },
+      "authorizedBy": "Compression, and catalog 4.10 applied to Which.",
+      "diagnosis": "The current architectures are the specific ones Part I has just spent four chapters describing. Current architectures is a category. And Which means attaches an inference to the sentence that licenses it, which is what a connective fragment is for; This means detaches it and asks the reader to find the antecedent, which is the defect 4.10 describes rather than a repair of it. The same substitution was made in the Editor's Note, so it is a habit rather than a local judgment.",
+      "producedRule": "R-DEIXIS"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0066", "effect": "unchanged", "note": "The item asks for relief of synthetic cadence across the volume and lists this page among the abstract passages. The re-render restores two long cumulative sentences the pass had broken up, which increases the page's abstraction slightly while restoring its rhythm. Nothing here pays the item down." },
+    { "id": "CTD-0004", "effect": "unchanged", "note": "Several centuries optimizing technology for extraction survives in both texts and is not touched." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Three prohibited marks. One pair enclosed the seven-item list inside the opening sentence; a comma pair would have been unreadable against the list's own commas, so the syntax was rebuilt as a colon introducing the enumeration and a period before the concession, which now opens with And. One introduced the specification of what a different logic means and became a colon; the pass had already made that repair and it stands." },
+        { "kind": "kept", "note": "The pass's colon after operate by a different logic. It is the repair R-PUNCT-STRUCT prescribes for a mark introducing a specification." },
+        { "kind": "restored", "note": "Many things and the concession it sets up, the single cumulative sentence about the book's method, the two definite articles, the Which means fragment, and the closing instruction in its baseline wording including in the back of your mind and an argument about." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is a short orientation page and the losses are small, but they repeat the pattern the Prologue established. Twice the pass replaced a demonstrative or a definite article that pointed at material three paragraphs back with a generic form that points at nothing, and both times it did so under catalog 4.10, whose actual instruction is to name the referent. R-DEIXIS already covers the case and no extension is needed."
+  }
+}

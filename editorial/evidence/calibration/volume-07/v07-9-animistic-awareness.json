@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-9-animistic-awareness",
+  "editorialId": "volume-07",
+  "sectionHeading": "**9 · Animistic Awareness**",
+  "currentHeading": "#### 9 · Animistic Awareness",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Animistic Awareness",
+      "superstition",
+      "warehouse",
+      "metaphysics"
+    ],
+    "itemsRead": [
+      "CTD-0069",
+      "CTD-0082",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0069 covers indigenous intellectual lineage. The restored text claims no tradition as a source and keeps the shipped sentence noting that some traditions read the claim literally and others do not, which is the item’s direction."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The defence against the obvious objection was deleted.",
+      "evidence": {
+        "baseline": "This is not a regression into superstition but an advance into relationship, the recovery of a sensitivity the extractive mind had to numb in order to treat the living world as a warehouse.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.3 on not X but Y.",
+      "diagnosis": "Superstition is the objection every reader arrives holding at exactly this point in the volume, so both limbs of 4.3 are plausible and the retention limb applies. The warehouse clause is also the sentence that ties the tenet back to Part III’s extraction argument and explains why the numbing happened.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The threshold image was cut.",
+      "evidence": {
+        "baseline": "It is the threshold at which the world ceases to be inert and becomes, everywhere, alive and addressable: at which a feeling is no longer only a state to be managed but a presence to be met, and a place is no longer only a location but a someone.",
+        "shipped": "(absent; the shipped section states the invitation and then the metaphysical caveat)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "A place is no longer only a location but a someone is the volume’s best sentence in the outward tier, and threshold is the card’s named signature word. Addressable is also the term tenet ten depends on.",
+      "producedRule": "R-REGISTER-DICTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0069",
+      "effect": "no change",
+      "note": "No living tradition is named as the source of the claim."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced a specification and became a colon. One introduced a contrast and became a comma with but."
+        },
+        {
+          "kind": "restored",
+          "note": "The opening of the outward tier, the full definition, the threshold image with the feeling and the place, and the superstition and warehouse defence."
+        },
+        {
+          "kind": "kept",
+          "note": "The sentence on literal and ethical readings, the river paragraph, and the statement that the practice begins in conduct before metaphysics."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  }
+}

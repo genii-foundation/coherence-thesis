@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-it-means-to-begin",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What It Means to Begin**",
+  "currentHeading": "**From Invitation to Construction**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Volume III",
+      "What Remains Open",
+      "The Deeper Inquiry",
+      "Opening Orientation",
+      "cumulative architecture"
+    ],
+    "itemsRead": [
+      "CTD-0075",
+      "CTD-0047",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0075 is decisive here. Volume IV attributes to Volume III a recurring apparatus and an opening disclaimer that the current Volume III does not contain, and the item names this section's baseline among the offending lines. The baseline phrase The What Remains Open sections throughout Volume III is therefore not restored; the sentence is rebuilt to say what Volume III named without claiming a section that does not exist. CTD-0047 records that Volume III's construction promise is only partly met here, which the restored text does not contradict."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's central move, that the distance between a map and a commitment is one of the largest distances in human experience, was reduced to a denial that argument crosses it.",
+      "evidence": {
+        "baseline": "That is not as simple as it sounds. The distance between understanding a map and committing to terrain is one of the largest distances in human experience. ... They may also find themselves exactly where most serious thinkers find themselves at this juncture: persuaded by the argument, uncertain about the step. / This volume is for the step.",
+        "shipped": "The distance from a map to a commitment is not crossed by argument alone."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This volume is for the step is a three word landing that the whole paragraph builds toward, and it is the sentence that tells the reader what the book is. The shipped version removes both the reader it is addressed to, the person persuaded and hesitating, and the landing. What is left is a general remark about argument. The card names the movement from map to construction among the read-aloud qualities to preserve.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F2",
+      "summary": "The volume's governing question kept its wording and lost the paragraph that says why it reframes everything.",
+      "evidence": {
+        "baseline": "This question reframes everything that follows. It is the question that the history of transformational infrastructure has consistently failed to ask early enough. Movements that began as responses to extraction have become extractive. ... The failure is not inevitable. It is structural, and what is structural can be designed against.",
+        "shipped": "Movements against extraction can become extractive. Communities organized against capture can concentrate power. Decentralized systems can quietly acquire a center. Good intent does not prevent these outcomes. Structure can make them easier or harder."
+      },
+      "authorizedBy": "Catalog 4.4 applied to the three mirrored clauses, and compression.",
+      "diagnosis": "The three clauses are the paragraph's evidence, and the shipped version keeps them while removing what they are evidence for: that the question has historically been asked too late, and that the failure is structural rather than inevitable. Structure can make them easier or harder is weaker than what is structural can be designed against, because the first describes a tendency and the second states the premise on which the volume's entire method rests.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "A protected line of the corpus was deleted and replaced with a statement about citation practice.",
+      "evidence": {
+        "baseline": "A civilization is not what it imagines. It is what it constructs. This series constructs an argument. Volume IV is the part of that argument where construction is no longer metaphorical.",
+        "shipped": "Readers can enter here without Volume III, but this volume assumes its core distinctions. It will cite them when they matter and will not invent sections or promises that the current Volume III does not contain."
+      },
+      "authorizedBy": "CTD-0075, which required the removal of false attributions to Volume III.",
+      "diagnosis": "The ledger required removing a false structural claim about Volume III. It did not require removing the four sentence close, which makes no claim about Volume III's apparatus at all. The paydown consumed an adjacent passage it did not need to touch. Both survive in the restoration: the close returns, and the ledger's correction is carried in the same paragraph.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved and narrowed",
+      "note": "The false attribution of a named recurring apparatus to Volume III is not restored. The shipped disclaimer is kept. The four sentence close that the paydown also removed is restored, because it makes no claim about Volume III's structure and the item does not reach it."
+    },
+    {
+      "id": "CTD-0047",
+      "effect": "no change",
+      "note": "The section states that Volume IV takes up what Volume III deferred. It does not claim the deferral is fully discharged, so the promise item is neither advanced nor reopened."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. CTD-0075 changed one sentence and only one. The baseline's reference to named Volume III sections is replaced by a reference to the questions Volume III left open, and the shipped disclaimer that this volume will not invent sections or promises is kept in the closing paragraph."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes. Four were parenthetical appositives with no internal comma and became comma pairs. One introduced an enumeration of what the architecture of the building consists of and became a colon. One separated a denial from its correction at the failure is not inevitable and became a period, since the correction is the paragraph's hinge and deserves its own sentence."
+        },
+        {
+          "kind": "restored",
+          "note": "The map and terrain paragraph with its named reader, the three word landing This volume is for the step, the reframing paragraph, and the civilization is what it constructs close."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored sentence that the reader who arrives without Volume III will sense what they are missing comes close to telling a reader what they will feel, which the corpus card forbids. It is restored under tonight's policy. If the author wants it bounded, the repair is to name what is missing rather than what the reader senses.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 468,
+    "shippedWords": 145,
+    "shippedDelta": -69
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's first demonstration that a ledger paydown can overreach: CTD-0075 licensed one sentence and the pass removed the paragraph around it. R-LEDGER-WINS settles which reading of a disputed fact governs. It does not license the collateral. Distinguishing the two is what made this section reconstructible."
+  }
+}

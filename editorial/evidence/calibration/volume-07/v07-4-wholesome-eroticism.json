@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-4-wholesome-eroticism",
+  "editorialId": "volume-07",
+  "sectionHeading": "**4 · Wholesome Eroticism**",
+  "currentHeading": "#### 4 · Wholesome Eroticism",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Wholesome Eroticism",
+      "life-force",
+      "consent",
+      "desire"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0088 is directly engaged. The tenet describes desire in a programme with mentors and retreats, so the consent boundary is required and the protected line carrying it is kept."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The turn from perceiving to relating was deleted, and with it the tenet’s place in the structure.",
+      "evidence": {
+        "baseline": "With the fourth tenet the work turns from perceiving to relating ... It is the hinge on which the first three tenets open into all that follows, for one who is not in some measure turned on by life will not have the charge to relate to it generously.",
+        "shipped": "Wholesome Eroticism names a felt enthusiasm for being alive."
+      },
+      "authorizedBy": "Compression, and catalog 4.23 applied to the turn announcement.",
+      "diagnosis": "Part VI promised three tiers where each presupposes the one before. This is the only tenet that shows the joint, and the hinge sentence is the argument for why vitality precedes relation. Without both, the tier structure is announced in the introduction and never demonstrated.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The account of what the tenet is not lost its positive half.",
+      "evidence": {
+        "baseline": "It is not sexuality but the channeling of life-force: a pure relationship with the animating forces of existence, in which desire may be expressed as it arises, without agenda and without grasping.",
+        "shipped": "It is broader than sexuality and does not authorize uninvited expression of desire."
+      },
+      "authorizedBy": "CTD-0088, and catalog 4.3 on not X but Y.",
+      "diagnosis": "The safeguarding correction is right and is kept. But expressed as it arises did need the correction, and the re-render renders it met as it arises, which keeps the practice and removes the licence. Deleting the whole clause also removed without agenda and without grasping, which is the discipline the tenet actually asks for.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved and extended",
+      "note": "Expressed as it arises is rendered met as it arises. The protected line that consent is not a brake placed on vitality is kept, as is the statement that the tenet does not authorize uninvited expression."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced a specification and became a comma. One introduced a definition and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The turn announcement, the full definition with its derivation from the first three tenets, the channeling account, and the hinge close."
+        },
+        {
+          "kind": "kept",
+          "note": "The uninvited expression boundary and the protected consent line."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Consent is not a brake placed on vitality is a volume card protected line and is not in the baseline. Confirmed as adopted?"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-why-purposeful-exists-and-how-providence-begins",
+  "editorialId": "volume-04",
+  "sectionHeading": "**Why Purposeful Exists, and How Providence Begins**",
+  "currentHeading": "**Purposeful Before Providence**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Purposeful",
+      "biological mentor",
+      "retreats",
+      "year-long",
+      "ICONS",
+      "Scale",
+      "network",
+      "intending"
+    ],
+    "itemsRead": [
+      "CTD-0056",
+      "CTD-0072",
+      "CTD-0055",
+      "CTD-0076",
+      "CTD-0028",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0056 requires each Purposeful program's operational status and access path to be distinguished from roadmap, and CTD-0072 requires a dated inventory before detailed design language may sound operational. Both are honoured by carrying the shipped status qualifier into the restored paragraphs rather than by deleting the paragraphs. CTD-0055 requires the biological mentor claim to be stated as an aspiration. CTD-0076 requires Scale as the singular and ICONS only as the plural, which changed the restored sentence about how communities are built. CTD-0028 concerns network access claims and was read; it governs the Thesis network surface rather than this passage."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The reason Purposeful exists was replaced by a list of what it holds.",
+      "evidence": {
+        "baseline": "Before the architecture, the reason for the architect. The Purposeful Foundation exists for one purpose above all: to present the Coherence Thesis and then to prove it, to demonstrate, in the open and at real stakes, that what this work claims is possible actually is. Argument can persuade; only proof can move resources.",
+        "shipped": "Within the proposed architecture, Purposeful holds the human development work: mentorship, retreats, gatherings, and a year-long curriculum."
+      },
+      "authorizedBy": "CTD-0056 and CTD-0072, applied to present-tense program description.",
+      "diagnosis": "The ledger required the program status to be distinguished from the roadmap. It did not require deleting the sentence that says why the foundation exists, which makes no status claim at all. Argument can persuade; only proof can move resources is the premise the entire proof-of-life requirement of Chapter Two rests on, and it is stated here and nowhere else. The restoration keeps the reason and carries the status qualifier in the same paragraph.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The path from awakening to community was reduced to a sequence and lost the mechanism.",
+      "evidence": {
+        "baseline": "From that awakening, a path opens. The person who has felt the difference is drawn toward more of it ... And from communities of such people, formed not by recruitment but by enthusiasm, the ICONS are built ... The app awakens. The programs deepen. The communities embody.",
+        "shipped": "The intended path moves from encounter to practice, then from practice to community. ... The sequence matters because a platform cannot manufacture the culture required to govern it."
+      },
+      "authorizedBy": "Catalog 4.4 applied to the three beat close, and compression.",
+      "diagnosis": "Formed not by recruitment but by enthusiasm is the volume's only statement of how communities are supposed to come into being, and it is the distinction that separates this proposal from every growth strategy the anti-capture chapters warn against. The three beat close is not decorative symmetry; each beat names a different institution doing a different thing, and the volume's structure follows it.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The intending paragraph was deleted, and with it the volume's account of what the network already is.",
+      "evidence": {
+        "baseline": "the network does not wait for the communities to be finished before it begins to exist. It is already forming in the intending, in every person who reads, who comes to a gathering, who begins to coordinate with others around a shared purpose. ... The network is the accumulating weight of all that intending.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and plausibly CTD-0072 read onto a claim about what presently exists.",
+      "diagnosis": "This is a claim about the present state of the network and the ledger has a legitimate interest in it. But the claim is about intention rather than about implementation, and CTD-0072 governs entities, programs, and protocols, not the sentence that says a shared purpose held by many people is itself the beginning of coordination. Restored whole, with the concern recorded rather than adjudicated.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0056",
+      "effect": "paydown preserved and narrowed",
+      "note": "The restored account of retreats and year-long programs is framed conditionally and carries an explicit statement that which programs presently operate is a question of published status this volume does not settle."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "paydown preserved",
+      "note": "The biological mentor image is restored with the shipped qualifier that it is an aspiration for the experience and not a verified product claim."
+    },
+    {
+      "id": "CTD-0072",
+      "effect": "paydown preserved",
+      "note": "No entity, program, or protocol is stated as operational. The restored prose uses would and is proposed as throughout."
+    },
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved and extended",
+      "note": "The baseline sentence the ICONS are built is restored with the added clause each one a Scale, so the plural proper term keeps its plural sense and the singular is named."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. Three items reached this section and none of them forbade a restoration. Each bounded one. The programs are restored in conditional form, the biological mentor image is restored with its aspiration qualifier, and the ICONS sentence is restored with the singular corrected to Scale."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes. Four introduced specifications and became colons. Two were parenthetical appositives and became comma pairs. One separated the two halves of the Providence sentence and became a period, since the second half is the correction the sentence exists to make. One before the biological mentor phrase became a comma, the phrase being grammatically dependent."
+        },
+        {
+          "kind": "applied",
+          "note": "R-REGISTER-DICTION. The restored soil and grows pair is kept against the generic alternative, since the card lists ground among the signature diction and the volume returns to soil in Part VIII."
+        },
+        {
+          "kind": "restored",
+          "note": "The reason for the architect, the proof sentence, the path from awakening through gatherings to communities, the recruitment denial, the three beat close, and the intending paragraph."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored claim that the network is already forming in the intending is a present-tense claim about the project's state. It is restored under tonight's policy. CTD-0072 does not obviously reach it, but the author may judge that a dated status inventory should cover it.",
+    "Purposeful is described as reaching out to organizations that might fund the work and to mentors who might help grow the network. That is recruitment language of the kind the volume card's Direct address override bounds. Restored and flagged.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 501,
+    "shippedWords": 142,
+    "shippedDelta": -72
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The most instructive case in the section is the reason for the architect sentence, which the pass removed as collateral to a status paydown that did not reach it. Three ledger items bear on this section and all three bound rather than forbid, which is the ordinary case: the ledger usually constrains how a thing may be said rather than whether it may be said."
+  }
+}

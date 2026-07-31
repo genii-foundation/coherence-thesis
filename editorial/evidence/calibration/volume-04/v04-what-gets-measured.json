@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-gets-measured",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What Gets Measured**",
+  "currentHeading": "**What Gets Measured**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "patient capital",
+      "endowment",
+      "cooperative",
+      "commons",
+      "Currency of Presence",
+      "COHERENCE",
+      "Bio-Consensus",
+      "venture capital"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0012 requires the Currency of Presence, COHERENCE, and Bio-Consensus to be named as distinct concepts, and CTD-0046 forbids calling Proof of Council validated. Neither term appears in Part II, so neither item is touched. CTD-0072 requires that no funding structure or entity be presented as operational, which the restored conditional framing observes. CTD-0078 requires that named scholarship not function as proof of feasibility, which governs every research lineage in this part. CTD-0055 requires unimplemented properties to be stated as requirements."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The four measures lost their definitions.",
+      "evidence": {
+        "baseline": "relational health indicators (the quality and depth of the relationships within and between communities, measured through participant experience rather than through behavioral proxies); developmental progress indicators ...; ecological health indicators ...; and constitutional fidelity indicators (the degree to which the governance mechanisms are functioning as designed, measured through governance process audits rather than through outcome metrics that can be gamed)",
+        "shipped": "(the four names survive, the parenthetical definitions do not)"
+      },
+      "authorizedBy": "Compression, and catalog 4.29 read onto the parenthetical apparatus.",
+      "diagnosis": "Each parenthesis says what the indicator measures and by what method, and in two cases names the method it must not use. Those exclusions are the anti-Goodhart design the paragraph before it argues for, so removing them leaves the chapter arguing for gaming resistance and then listing four gameable names.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The argument that human judgment is a feature was cut to an assertion.",
+      "evidence": {
+        "baseline": "This is a feature rather than a defect. The measurement of what Providence actually values requires the kind of engaged human attention that automated systems cannot provide, and the practice of that engaged attention is itself a development of the capacities Providence is trying to cultivate.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The closing move, that the act of measuring develops the thing being measured, is the only thing that distinguishes this measurement proposal from every other dashboard. It also anticipates Chapter Twenty-Six's argument that presence is infrastructure, which is the volume's closing turn.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0089",
+      "effect": "advanced, item unchanged",
+      "note": "Two prohibited marks repaired."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "no change",
+      "note": "The restored indicators are relational, developmental, ecological, and constitutional. None is physiological, so the biometric governance standing question is not touched here."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One was a parenthetical appositive and became a comma pair. One introduced the Goodhart qualification and became a comma pair with the enclosed clause rebuilt so the sentence does not stack three commas."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped statement that institutional drift toward what is measured is structurally likely rather than guaranteed, which earns the universal the baseline overclaims."
+        },
+        {
+          "kind": "restored",
+          "note": "The four indicator definitions with their method exclusions, and the human judgment argument with its developmental close."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 333,
+    "shippedWords": 256,
+    "shippedDelta": -23
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section shows catalog 4.29 misapplied: the parentheses were not decoration, they carried the method and the exclusions. Formatting is decorative only when removing it costs nothing."
+  }
+}

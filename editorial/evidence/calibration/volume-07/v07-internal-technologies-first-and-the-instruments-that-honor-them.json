@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-internal-technologies-first-and-the-instruments-that-honor-them",
+  "editorialId": "volume-07",
+  "sectionHeading": "***Internal Technologies First — and the Instruments That Honor Them***",
+  "currentHeading": "### Internal Technologies First, and the Instruments That Honor Them",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "central nervous system",
+      "measure coherence",
+      "biometric",
+      "physiological measurement"
+    ],
+    "itemsRead": [
+      "CTD-0006",
+      "CTD-0088",
+      "CTD-0053",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0006 governs biometric governance standing and is the reason the claim to measure coherence is rendered as looking for measurable correlates. CTD-0088 requires voluntary, participant controlled, reviewed research and the right to refuse. Both constraints are carried inside the restored passage rather than replacing it."
+  },
+  "substitutionCheck": "Grepped. Those signals cannot establish wisdom, honesty, moral worth, or readiness to lead and The strongest defense against charisma and group comfort is not a biometric oracle are absent from the baseline. Both are retained as CTD-0006 and CTD-0088 paydown.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section lost the misreading it exists to prevent.",
+      "evidence": {
+        "baseline": "A word, here, against a misreading this volume could invite. In insisting that the decisive technologies are internal, that presence and the drawing out of genius require no apparatus and deplete no world, we do not mean that we stand against the external ones, or that the work is a retreat from instruments into mere interiority. The emphasis is strategic.",
+        "shipped": "Internal practice does not require hostility to external tools."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The emphasis is strategic is the section’s thesis and it is the only place the volume says why it privileges the internal. Without the paragraph, the reader is told there is no hostility and never told what the position actually is: build the internal capacities so as to depend less on the devices built to perceive and relate on our behalf.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The answer to the strongest objection was deleted, and the objection with it.",
+      "evidence": {
+        "baseline": "Presence can be performed; coherence can be counterfeited by charm; a circle of high trust can curdle, at scale, into an in-group that mistakes its own comfort for truth. We do not wave these away ... A practice that cannot, in principle, be tested is a faith; we are trying to build something nearer to a craft.",
+        "shipped": "The strongest defense against charisma and group comfort is not a biometric oracle. It is a combination of evidence, plural interpretation, independent oversight, and the right to refuse."
+      },
+      "authorizedBy": "Compression, and CTD-0006 read as forbidding the measurement programme.",
+      "diagnosis": "The baseline states the objection in the volume’s own voice, which is section 5’s requirement to present the strongest plausible objection, and answers it with a distinction between a faith and a craft that the whole volume rests on. The shipped sentence answers an objection the reader has not been told. Curdle, at scale, into an in-group is also the volume’s sharpest self criticism and the one a sceptical reader most needs to see the author has already made.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The undivided closing statement of what the work is for lost its middle.",
+      "evidence": {
+        "baseline": "to clear a way forward that does not require us to keep extracting from a world which has begun, audibly, to ask us to stop",
+        "shipped": "without consuming people or treating the living world as an unlimited reserve"
+      },
+      "authorizedBy": "Compression, and catalog 4.28 plausibly applied to a world that asks.",
+      "diagnosis": "The card licenses personification and names it native to this corpus. Audibly is the word that turns the figure into a claim about evidence rather than atmosphere: the asking is being heard, which is what the eighth volume will count. The replacement is accurate and inert.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0006",
+      "effect": "paydown preserved",
+      "note": "We intend not only to measure coherence is rendered as to look for measurable correlates of coherence. The limits paragraph naming what physiological measures cannot establish is kept and placed before the hope rather than after it."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "Voluntary, participant controlled, culturally and clinically reviewed, and open to failure are all kept, as is the right to refuse."
+    },
+    {
+      "id": "CTD-0053",
+      "effect": "no change",
+      "note": "No single empirical claim is made load bearing here."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes. Three introduced specifications and became colons. Three separated second movements and became periods. Two framed parentheticals and were rebuilt as separate sentences."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LAND on the instruments paragraph. The limits of the signals were promoted out of a trailing position and placed ahead of the claim they condition, which is the order the rule prefers."
+        },
+        {
+          "kind": "restored",
+          "note": "The misreading paragraph, the strategic emphasis, the empirical turn, the three part objection, the faith and craft distinction, and the world that has begun audibly to ask us to stop."
+        },
+        {
+          "kind": "kept",
+          "note": "The signals limits paragraph, the research conditions, and the biometric oracle sentence, which is substituted prose and the best single line the pass produced in this volume."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Worth noting for the corpus: this is the section where a safeguarding paydown and the passage it was meant to bound were both present in the shipped text, and the pass kept the bound and deleted the claim."
+  }
+}

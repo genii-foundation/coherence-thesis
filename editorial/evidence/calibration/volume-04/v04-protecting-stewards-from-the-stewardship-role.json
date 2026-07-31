@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-protecting-stewards-from-the-stewardship-role",
+  "editorialId": "volume-04",
+  "sectionHeading": "**Protecting Stewards from the Stewardship Role**",
+  "currentHeading": "**Protecting Stewards from the Stewardship Role**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Living Constitution",
+      "Human Dignity",
+      "Participatory Legitimacy",
+      "Sovereignty",
+      "Consent",
+      "Transparency",
+      "Anti-Capture",
+      "Exit",
+      "Repair",
+      "stewardship",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0075",
+      "CTD-0006",
+      "CTD-0055",
+      "CTD-0072",
+      "CTD-0007",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0071 records that Providence's constitutional design has not had legal review, which is why the restored governance chapters are kept in proposal grammar throughout. CTD-0075 forbids attributing a named recurring apparatus to Volume III, which changed the chapter references in this part from named sections to named arguments. CTD-0006 requires that no physiological evidence determine governance standing, which bears on the stewardship chapters. CTD-0055 requires unimplemented safeguards to read as requirements. CTD-0007 governs the self-epigraphs, which keep the Adapted from attribution."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The failure mode the section is named for was deleted.",
+      "evidence": {
+        "baseline": "the people doing the stewardship become so absorbed in the role that they lose the development that the role depends on. They become functional rather than alive. They hold the system together in ways that extract from themselves what they are committed to cultivating in others.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Functional rather than alive is the section's central image and the sentence that follows is the mechanism: the steward extracts from themselves the thing they are cultivating in others, which makes the failure a form of the extraction the whole volume opposes. The card names a steward leaving office while remaining in relation among the protected images, and this is the harm that image is answering.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F2",
+      "summary": "All four required elements lost their reasons.",
+      "evidence": {
+        "baseline": "rotation requirements that ensure no stewardship role is held by a single person or small group indefinitely, protecting both the institution from the brittleness that comes with stewardship monoculture and the stewards from the stagnation that comes with indefinite role occupation; supervision structures in which stewards are themselves stewarded ...",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Rotation protecting the steward as well as the institution is the argument the Tuesday afternoon chapter dramatizes, and stewards themselves stewarded is the recursion that distinguishes this from an HR policy. The economic support element also carries the only statement in Part III that stewardship must not require choosing between the institution and one's external economic life.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0089",
+      "effect": "advanced, item unchanged",
+      "note": "Four prohibited marks repaired."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Three were parenthetical appositives and became comma pairs. One introduced the enumeration of required elements and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The absorption failure mode with its extraction mechanism, and all four required elements with their reasons."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 580,
+    "shippedWords": 179,
+    "shippedDelta": -69
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section carries the chapter's only account of harm to a person rather than to an institution, and it was removed entirely. Where a volume's argument turns on protecting people, the passages describing the harm are the ones a compression pass finds most expendable and a reader finds least."
+  }
+}

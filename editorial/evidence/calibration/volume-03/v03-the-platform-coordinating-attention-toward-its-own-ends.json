@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-platform-coordinating-attention-toward-its-own-ends",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Platform: Coordinating Attention Toward Its Own Ends",
+  "currentHeading": "The Platform: Discovery and Capture",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Part titles, publication posture, and the measurement promise remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["platform", "engagement", "measures presence", "currency", "The Innovation"],
+    "itemsRead": ["CTD-0004", "CTD-0009", "CTD-0045", "CTD-0073", "master-ledger Decision A"],
+    "outcome": "No recorded decision touches the section body. The Part Two display matter is governed by CTD-0045, which asks the author to decide whether high-register part titles match the volume's posture; that item is a query and not a ruling, so it does not override the baseline, but it is the reason the shipped part title was kept and the subtitle restored in the conditional. The master ledger's Decision A does not fire because no unit is named here."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's display verdict, which states the volume's own question, was deleted.",
+      "evidence": {
+        "baseline": "*The platform measured attention and got a civilization optimized for distraction. The deepest question this volume asks is whether we can build a coordination device that measures presence, and thereby produces a civilization optimized for genuine encounter.*",
+        "shipped": "A platform that measures attention will shape attention around its measures. Providence asks whether discovery can instead be organized around presence and demonstrated trust."
+      },
+      "authorizedBy": "Compression, and the wave-one narrowing of the measurement promise.",
+      "diagnosis": "The baseline states the volume's question in one line and states it as a question about what a measurement produces. The shipped version states a general principle about measurement and then a milder question about organizing discovery. The difference is that the baseline commits: it says a device that measures presence would produce a civilization optimized for genuine encounter, which is the claim Part Three and Part Four exist to test. Restored in display form.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The chapter's landing sentence was replaced by two paragraphs of synthesis.",
+      "evidence": {
+        "baseline": "The question is whether that function can be built around a different understanding of what human beings are and what they are for. It is to that question that the rest of this volume is devoted.",
+        "shipped": "The inheritance is therefore mixed. ... None of those pairings is guaranteed by good intentions. Each must appear in the design."
+      },
+      "authorizedBy": "Compression, and the removal of the six What must be preserved closes, which left the chapter without a resolution.",
+      "diagnosis": "The shipped synthesis is doing work the chapter had already done six times and that the rewrite had removed. Having deleted each section's third column, the pass had to reconstruct the whole column in two closing paragraphs. Restoring the columns makes the synthesis unnecessary, and the baseline's one-sentence handoff to the rest of the volume is the stronger close.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The philosophical failure was softened from a claim about what platforms understood people to be into a claim about what they could see.",
+      "evidence": {
+        "baseline": "The platform's deepest failure is philosophical. It understood human beings as attention-generating nodes in an advertising network.",
+        "shipped": "Depth of thought, quality of relationship, and the development of judgment remained harder to see."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Harder to see is a limitation. Understood human beings as attention-generating nodes is an indictment, and it is the one the chapter needs, because the successor institution is being asked to hold a different understanding of what human beings are. The baseline's therefore, by its logic, do not exist is the hinge, and it does not work without the sentence that names the logic.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "Five prohibited marks.",
+      "evidence": {
+        "baseline": "the problem of discovery, The platform business model fenced around its gloss, what it measured, The things that actually matter fenced around a three-item list, a coordination device that measures presence, and the insight that discovery fenced around its gloss.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Two introduced specifications and became colons. Two fenced glosses with no internal commas and became commas; in the second the gloss's own internal commas were removed so the comma repair reads. One fenced a three-item list inside a subject and the list was merged into the subject. One separated a device from what it would produce, where the second clause shares the subject and carries no internal comma, and became a comma.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0009", "effect": "reopened by restoration", "note": "The display line restores the claim that a device could measure presence and thereby produce a civilization optimized for genuine encounter. It is the volume's central promise and remains unverified." },
+    { "id": "CTD-0045", "effect": "evidenced", "note": "The baseline Part Two subtitle asserts that Providence constitutes a new currency for civilization. The shipped subtitle says only what its currency would remember. The subtitle was not changed, because part display matter is a continuity decision, but the gap between the two is the posture question the item names, visible at the exact boundary a reader crosses." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The discovery achievement, the business model chain from engagement to outrage, the philosophical failure, the measured and unmeasured lists, the display verdict, the What must be preserved close, and the handoff to the rest of the volume. In the Part Two display matter, the baseline epigraph about what a currency teaches its holders is restored." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across five marks, as recorded in F4." },
+        { "kind": "kept", "note": "The shipped part title, The Design, and the shipped Part Two subtitle, What Its Currency Would Remember. Part titles and their display matter are continuity decisions rather than editorial ones, so neither was touched. Both are recorded as open questions." },
+        { "kind": "cut", "note": "The shipped rewrite, including its two closing synthesis paragraphs." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Part title. Baseline: The Innovation. Current: The Design. CTD-0045 asks the author to decide whether the volume's part titles carry the same posture as its prose. Not changed. Renaming a part changes its identity and its recorded route aliases.",
+    "Part Two subtitle. Baseline: What Providence Is, How It Works, and Why It Constitutes a New Currency for Civilization. Current: What Providence Is, How It Works, and What Its Currency Would Remember. The baseline asserts the currency; the current one describes a memory function. Not changed, for the same continuity reason.",
+    "Heading. Baseline: The Platform: Coordinating Attention Toward Its Own Ends. Current: The Platform: Discovery and Capture. The baseline names the platform's orientation, which is the section's charge against it. Not changed. Renaming costs a section id and a recorded route alias.",
+    "The measurement promise. The restored display line says a device that measures presence would thereby produce a civilization optimized for genuine encounter. That is a causal claim about a device that does not exist. Restored, flagged under CTD-0009."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 records a diagnostic worth reusing across the volume: where the shipped text carries a summary paragraph that the baseline does not, it is usually repairing a structure the same pass had removed. A synthesis that has no counterpart in the baseline is evidence of a deletion upstream, not of an addition here."
+  }
+}

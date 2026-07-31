@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-internal-technologies",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Internal Technologies**",
+  "currentHeading": "## Part III: The Internal Technologies",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "internal technology",
+      "technology",
+      "attention and care"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0088 requires that conditions of safe practice be stated wherever the volume describes what practice produces. Nothing in the ledger governs the definition of internal technology, so the baseline governs it."
+  },
+  "substitutionCheck": "Grepped. though it still requires time, guidance, care, and conditions in which practice is safe is absent from the baseline. It is retained as CTD-0088 paydown language.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The definition lost the reason internal technology is being recovered and the claim that gives the recovery its urgency.",
+      "evidence": {
+        "baseline": "a great deal of what we now ask machines to do for us was once done, and can be done again, within ... Its singular virtue, in an age straining the limits of the world’s material generosity, is that it requires no material at all. Its only raw resources are attention and care, of which there is no shortage but the one we impose upon ourselves.",
+        "shipped": "It requires no manufactured device, though it still requires time, guidance, care, and conditions in which practice is safe."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Three separate claims went: that machines took over work the body used to do, that a material free technology is the relevant kind in a constrained world, and that the shortage of attention is self imposed. The third is the volume’s premise about why any of this is available to an ordinary reader. What survives states the same fact about devices while dropping every reason it matters.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The claim that a capacity is reliably produced was softened to can be cultivated.",
+      "evidence": {
+        "baseline": "a disciplined know-how by which a capacity is reliably produced",
+        "shipped": "a disciplined practice by which a capacity can be cultivated"
+      },
+      "authorizedBy": "Catalog 4.12, causal overreach.",
+      "diagnosis": "4.12 fires correctly on reliably produced. A know-how is defined by its reliability, but the volume has not shown reliability here, and the same word applied to a state of being would license exactly the program claims CTD-0088 bounds. The compromise in the re-render keeps reliably in the definition of technology and drops it from what the technology does to a person, which is where the evidence is missing.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The safe conditions clause is kept and now closes the paragraph."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. Two introduced a specification and became colons. One introduced a reason clause and was rebuilt with because."
+        },
+        {
+          "kind": "restored",
+          "note": "The machines clause, the material generosity claim, and the attention and care close."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass safe conditions clause, and its correction of reliably produced where it applies to a person."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Worth noting that 4.12 fired correctly here, which is rare in this volume, and that the correct repair was narrower than the deletion the pass made."
+  }
+}

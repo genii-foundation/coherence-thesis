@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-long-view",
+  "editorialId": "volume-07",
+  "sectionHeading": "***The Long View***",
+  "currentHeading": "### The Long View",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Four Chapters",
+      "Twelve-Year Trajectory",
+      "biosphere",
+      "Body of Worship"
+    ],
+    "itemsRead": [
+      "CTD-0087",
+      "CTD-0044",
+      "CTD-0088"
+    ],
+    "outcome": "CTD-0087 requires that the Four Chapters and the Twelve-Year Trajectory be defined or retired, and CTD-0044 tracks orphan architecture terms. The shipped note that neither supplies milestones or governance is kept, and the baseline content of both figures is restored so a future definition has something to start from."
+  },
+  "substitutionCheck": "Grepped. They do not yet supply milestones, governance, or evidence that the arc can be delivered and the sentence on later participants revising what founders began are absent from the baseline and are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Both named figures lost their content.",
+      "evidence": {
+        "baseline": "The Four Chapters describe the broad movements of the arc, from the awakening of the individual, through the gathering of coherent community, toward the restoration of culture and at last of the biosphere itself. The Twelve-Year Trajectory sets that arc in time: a generational horizon for the maturation of a Body of Worship from a single practitioner into a network of councils.",
+        "shipped": "The Four Chapters and Twelve-Year Trajectory name an intended arc from personal practice toward community and ecological repair."
+      },
+      "authorizedBy": "CTD-0087 and CTD-0044.",
+      "diagnosis": "The four movements are the four chapters, and merging them into one clause means the name Four Chapters no longer refers to anything countable. The twelve year figure likewise loses what it measures, which is the maturation of a Body of Worship from one practitioner to a network. CTD-0044 asks whether these are orphan terms. After the pass they are orphan terms.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The distinction between naming a horizon and scheduling it was deleted.",
+      "evidence": {
+        "baseline": "To name these is not to schedule them. It is to declare that the work intends endurance, and that the care it offers is not the enthusiasm of a season but the patience of a generation.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.3.",
+      "diagnosis": "This is the volume disclaiming its own timeline, which is exactly what CTD-0087 wants and it is stated better here than in the note that replaced it. The enthusiasm of a season against the patience of a generation is also a real contrast, not an invented one.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The section’s landing was cut.",
+      "evidence": {
+        "baseline": "A community tended this way is built to outlast the people who begin it, which is, in the end, the only kind of community worth building.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.15, generic uplift, and the only kind under section 5.",
+      "diagnosis": "Built to outlast the people who begin it is earned by the whole of Part X and is the practical test the section proposes. The only kind is a universal and is reduced. The turn is earned, which is 4.15’s retention limb.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0087",
+      "effect": "paydown preserved, evidence improved",
+      "note": "Both figures regain their content while the note that neither supplies milestones, governance, or evidence is kept."
+    },
+    {
+      "id": "CTD-0044",
+      "effect": "no change",
+      "note": "The two terms are no longer orphaned in this volume. Whether they appear elsewhere in the corpus was not checked in this session."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The requirement that later participants be able to revise what founders began is kept."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced an enumeration and became a comma. One introduced a specification and became a colon."
+        },
+        {
+          "kind": "applied",
+          "note": "Is built to outlast rendered as would be built to outlast, and the only kind kept but placed after the conditional so it reads as a judgment rather than a law."
+        },
+        {
+          "kind": "restored",
+          "note": "The four movements of the arc, the twelve year figure with what it measures, the naming and scheduling distinction, the season and generation contrast, and the outlast close."
+        },
+        {
+          "kind": "kept",
+          "note": "The missing milestones note and the revisability requirement."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

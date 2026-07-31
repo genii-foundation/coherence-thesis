@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-to-meet-each-at-their-depth",
+  "editorialId": "volume-07",
+  "sectionHeading": "***To Meet Each at Their Depth***",
+  "currentHeading": "### To Meet Each at Their Depth",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "refuge",
+      "sanctuary",
+      "metering of depth",
+      "shelter"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0005"
+    ],
+    "outcome": "CTD-0005 records a conflict about subsistence conditionality across the corpus, and CTD-0088 requires that shelter never depend on participation. The shipped sentence forbidding conditional shelter is kept, which is the strongest form of the CTD-0005 position available in this volume."
+  },
+  "substitutionCheck": "Grepped. Material shelter must never depend on spiritual participation, mentor approval, or progress through the curriculum is absent from the baseline and is retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The three stages of the offering were cut.",
+      "evidence": {
+        "baseline": "refuge first, for those who arrive in need of it; then practice; then, in time, the invitation to extend to others the sanctuary they were given",
+        "shipped": "offered refuge or practice without diagnosis, and free to refuse either"
+      },
+      "authorizedBy": "Compression, and CTD-0088 on diagnosis.",
+      "diagnosis": "The three stages are the principle. The invitation to extend to others the sanctuary they were given is how a community reproduces rather than merely serves, and it is the only place the volume describes a person moving from receiving to giving. The no diagnosis correction is right and is kept.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The image of the community arranged so that both can stand in one room was deleted.",
+      "evidence": {
+        "baseline": "The community is arranged so that a newcomer in need of shelter and a practitioner ready to teach can stand in the same room, each receiving what is theirs to receive.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the section’s only concrete picture and its landing. It is also the answer to the obvious objection that pacing depth means sorting people into tiers.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The unconditional shelter sentence and the no diagnosis requirement are both kept."
+    },
+    {
+      "id": "CTD-0005",
+      "effect": "no change",
+      "note": "This volume states the unconditional position. The corpus conflict recorded in the item is not resolved here."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash introducing an enumeration became a colon."
+        },
+        {
+          "kind": "applied",
+          "note": "The metering of depth rendered as the pacing of depth, following the card’s instruction to reduce metered depth."
+        },
+        {
+          "kind": "restored",
+          "note": "The three stages, the no one hurried and no one held back pair, and the same room image."
+        },
+        {
+          "kind": "kept",
+          "note": "The no diagnosis clause and the unconditional shelter sentence."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

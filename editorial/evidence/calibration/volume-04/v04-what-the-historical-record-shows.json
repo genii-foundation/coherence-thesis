@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-the-historical-record-shows",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What the Historical Record Shows**",
+  "currentHeading": "**What the Historical Record Shows**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "patient capital",
+      "endowment",
+      "cooperative",
+      "commons",
+      "Currency of Presence",
+      "COHERENCE",
+      "Bio-Consensus",
+      "venture capital"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0012 requires the Currency of Presence, COHERENCE, and Bio-Consensus to be named as distinct concepts, and CTD-0046 forbids calling Proof of Council validated. Neither term appears in Part II, so neither item is touched. CTD-0072 requires that no funding structure or entity be presented as operational, which the restored conditional framing observes. CTD-0078 requires that named scholarship not function as proof of feasibility, which governs every research lineage in this part. CTD-0055 requires unimplemented properties to be stated as requirements."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was deleted rather than compressed. None of its findings survive in the shipped text.",
+      "evidence": {
+        "baseline": "Durable transformation has consistently been capitalized either through patient endowment ... or through economic structures in which the institution generates revenue from activities compatible with its constitutional principles. The university endowment model ... represents the most successful long-duration example of the patient endowment approach.",
+        "shipped": "(no counterpart in the shipped chapter body)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped chapter runs from the funding paradox straight to the research lineages. The two convergent findings, that durable transformation has been capitalized through patient endowment or mission-compatible revenue, and that conventional investment capital has consistently either compromised the commitments or failed to reach scale, are the empirical basis for Chapter Eight's entire list of compatible capital forms. Chapter Eight in the shipped text therefore asserts its conclusions with the evidence section removed.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The passage addressed to founders in the technology environment was removed.",
+      "evidence": {
+        "baseline": "This finding is uncomfortable for founders in the contemporary technology environment, where venture capital is the most available and culturally legible form of early-stage institutional funding. The discomfort is appropriate. ... venture capital is optimized for platform logic, and attempting to build protocol infrastructure on venture capital generates the predictable pressure toward platform conversion.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the volume's only direct address to the reader most likely to be building something: a founder who has already raised or intends to. The discomfort is appropriate is a two word refusal to soften, and the platform and protocol link is the thread back to Volume III that makes the finding constitutional rather than merely prudential.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0078",
+      "effect": "no change",
+      "note": "The restored findings name models rather than citing studies. Sourcing remains open."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Three were parenthetical appositives defining a capital model and became comma pairs. One introduced a specification and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The whole section: both convergent findings, the university endowment and cooperative ownership examples, the consistency argument, and the address to founders in the technology environment."
+        },
+        {
+          "kind": "verified",
+          "note": "The section's headings and position are unchanged. Only the body was absent."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored claim that institutions attempting to fund transformational work through conventional investment capital have with remarkable consistency either compromised or failed is a strong empirical generalization with no source. It is the section's central finding. CTD-0078 reaches it directly.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 727,
+    "shippedWords": 223,
+    "shippedDelta": -69
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the first section in the volume whose body was removed outright rather than reduced, and the damage report's minus sixty-nine percent understates it because the research lineages and open questions that follow were counted inside the section. Word count is not a reliable detector of wholesale removal when display blocks survive."
+  }
+}

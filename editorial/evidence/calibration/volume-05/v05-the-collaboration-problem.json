@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-the-collaboration-problem",
+  "editorialId": "volume-05",
+  "sectionHeading": "The Collaboration Problem",
+  "currentHeading": "The Collaboration Problem",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "fragments of a solution",
+      "defining challenge of the century",
+      "coordination"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0004"
+    ],
+    "outcome": "The semantic review records that a baseline claim that solution fragments already exist for nearly every large problem was corrected to distinguish missing pieces from pieces that fail to meet. That decision binds and is kept: the fragments claim is rendered as many of the fragments, and the puzzle paragraph now concedes that a piece is sometimes genuinely missing before asserting that far more often the pieces exist and never meet. CTD-0004's defining-century class is hedged in the baseline with may and is restored unchanged."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "1065 words.",
+        "shipped": "462 words, of which 0 of 35 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 35 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chapter's diagnosis lost its two-sentence verdict.",
+      "evidence": {
+        "baseline": "The bottleneck is not intelligence. It is coordination.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.3 and 4.17.",
+      "diagnosis": "Both catalog entries have retention limbs and both apply. The rejected alternative, that the problem is a shortage of clever people, is the reading the chapter exists to displace, and the two short sentences are the hinge the card licenses.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The connection and coordination distinction lost four of its five clauses and its consequence.",
+      "evidence": {
+        "baseline": "Connection merely brings people into contact. Coordination gets them moving in the same direction. Connection is communication; coordination is alignment. Connection creates the possibility of capability; coordination is what turns the possibility into the thing itself. ... Aware of everything, able to affect almost nothing.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "The card names the distinction between connection and coordination among the exemplar passages that define the voice. The parallel is the definition, and the closing fragment is the reader's experience of the difference, which is the only concrete beat in the paragraph.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The unmourned collaboration, the chapter's sharpest observation, was cut.",
+      "evidence": {
+        "baseline": "The components of something remarkable sit in separate lives, and the remarkable thing simply never happens, and no one ever knows what was missed, because you cannot mourn a collaboration that never occurred.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the sentence that connects the chapter to the volume's opening claim that the cost is composed of things that never happened. Its cumulative shape is the cadence the card protects, and the final clause is the reason the loss stays invisible.",
+      "producedRule": "R-CADENCE",
+      "id": "F4"
+    },
+    {
+      "summary": "The pattern beneath history's achievements lost its sequence and its close reading.",
+      "evidence": {
+        "baseline": "A group formed. Trust grew between them. A vision became genuinely shared rather than merely announced. Capabilities combined ... The achievement looks, from a distance, like genius. Up close it looks like coordination, like the unlikely good fortune of the right people having found each other before the moment passed.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.19 applied to the short declaratives.",
+      "diagnosis": "The four short sentences are the mechanism and the two-sentence turn is the argument. Distance and close up is also the figure the chapter uses to make coordination visible where a reader sees only talent.",
+      "producedRule": "R-PROPORTION",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0079",
+      "effect": "paydown preserved",
+      "note": "The false completeness in the fragments claim stays corrected. Many of the fragments already exist, and the puzzle paragraph names a genuinely missing piece as a real case before ranking it as the rarer one."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "no reopening",
+      "note": "The defining challenge of the century is restored with the baseline's own may."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes. Two became colons where the second clause enumerated, three became commas around appositive material, two became periods so that a verdict or a fragment could land, and one paired dash was rebuilt so the coordination claim could stand in its own sentence."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS on the fragments claim, which is bounded rather than restored flat."
+        },
+        {
+          "kind": "cut",
+          "note": "Precisely twice, and the second instance in the closing sentence, both on the voice card's reduce list."
+        },
+        {
+          "kind": "restored",
+          "note": "The awkward property of a distributed resource, the bottleneck verdict, the material constraints paragraph, the puzzle and its pieces, the four paradoxes, the connection and coordination distinction, the unmourned collaboration, the pattern beneath the famous names, the ingredients and the dish, and the closing question about cultivating a meeting."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The ledger case is the cleanest of the volume: a recorded correction that changes two words of a hundred-word paragraph and leaves the rest restorable. Bounding many of the fragments and conceding a genuinely missing piece cost the passage nothing and kept a high-severity item closed."
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-mutual-aid-and-cooperative-economics-provisioning-without-extraction",
+  "editorialId": "volume-03",
+  "sectionHeading": "Mutual Aid and Cooperative Economics: Provisioning Without Extraction",
+  "currentHeading": "Mutual Aid and Cooperative Economics: Provision Without Capture",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The floor-and-height principle and whether relational standing may carry material weight are author decisions held open in the ledger.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["mutual aid", "cooperative", "credit union", "community land trust", "floor-and-height", "relational standing", "material weight"],
+    "itemsRead": ["CTD-0005", "CTD-0006", "CTD-0008", "CTD-0073"],
+    "outcome": "CTD-0005 and CTD-0006 both reach this section and neither is settled. The wave-one review made the material floor unconditional and left bounded stewardship able to consider participant-controlled evidence. The baseline sentence restored here concerns the height rather than the floor: it says relational standing can carry material weight, which is compatible with the recorded resolution and does not reopen it. Recorded against both items so the boundary stays visible."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's evidential claim was replaced by a list of failure modes.",
+      "evidence": {
+        "baseline": "all demonstrate that the parallel economy Providence describes is not a fantasy but a recurring and proven form.",
+        "shipped": "They also reveal recurring dangers: inadequate capital, invisible labor, burnout, weak conflict processes, and the conversion of informal hierarchy into unaccountable power."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline does both: it names the achievement as evidence against the charge of fantasy, then names three ways such efforts fail. The shipped version keeps only the failures, which inverts the paragraph's purpose. This is the chapter's economic conscience section, and its job is to establish that provisioning outside pure market exchange has a track record.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The named forms were reduced to a list of nouns.",
+      "evidence": {
+        "baseline": "The friendly societies and mutual aid networks that sustained working people before and alongside the welfare state, the agricultural and worker cooperatives that have endured for generations, and the credit unions and community land trusts that hold resources for collective benefit.",
+        "shipped": "Mutual aid societies, cooperatives, credit unions, community land trusts, and governed commons."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Each baseline item carries a relative clause that says what the form did and for how long. Those clauses are the evidence; the nouns alone are a category list. Before and alongside the welfare state in particular is doing historical work, because it forestalls the assumption that mutual aid is what people did before the state took over.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "Two prohibited marks.",
+      "evidence": {
+        "baseline": "community land trusts that hold resources for collective benefit before its verb, and the claim that relational standing can carry material weight.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first stood between a three-part subject and its verb and was removed outright, with a conjunction added before the third item so the subject reads as one list. The second introduced a specification and became a colon.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0005", "effect": "recorded, not reopened", "note": "The restored sentence concerns the height, not the floor. Nothing here makes survival conditional on standing, and the unconditional floor recorded in the wave-one review is untouched." },
+    { "id": "CTD-0006", "effect": "recorded, not reopened", "note": "Relational standing can carry material weight is the ancestor claim for bounded stewardship. It says nothing about governance standing or political voice." },
+    { "id": "CTD-0008", "effect": "reopened by restoration", "note": "The claims about friendly societies, cooperatives enduring for generations, and the causes of cooperative failure return unverified." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The economic conscience framing, the three named families of institution with their clauses, the not-a-fantasy claim, the floor-and-height ancestry, and the three causes of failure." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across two marks, as recorded in F3." },
+        { "kind": "cut", "note": "The shipped rewrite." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim scope. A recurring and proven form is an evidential claim about several centuries of cooperative history offered in one sentence. Restored, flagged under CTD-0008.",
+    "Heading. Provisioning Without Extraction names the thing the section says cooperatives achieved. Provision Without Capture names a different risk. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 records the chapter's most consequential inversion: a section written to answer the charge that a parallel economy is fantasy was rewritten into a section about how such economies fail."
+  }
+}

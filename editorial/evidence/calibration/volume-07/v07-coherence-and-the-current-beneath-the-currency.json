@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-coherence-and-the-current-beneath-the-currency",
+  "editorialId": "volume-07",
+  "sectionHeading": "**Coherence, and the Current Beneath the Currency**",
+  "currentHeading": "### Coherence and the Current Beneath the Currency",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Currency of Presence",
+      "COHERENCE",
+      "Bio-Consensus",
+      "current beneath the currency",
+      "Coherent Resonance"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0043",
+      "CTD-0107",
+      "CTD-0003"
+    ],
+    "outcome": "CTD-0012 requires the Currency of Presence, COHERENCE, and Bio-Consensus to remain distinct concepts in every volume. This section names none of the three, so no conflation is introduced. CTD-0043 keeps the two meanings of Coherent Resonance open, and CTD-0107 records the retirement of a semantic link on the Currency of Presence. The re-render keeps the lived relation and the technical record explicitly separate."
+  },
+  "substitutionCheck": "Grepped. the lived relation and its technical record are not the same thing and Whether that current can be measured, recorded, or circulated without distortion remains an open design question are both absent from the baseline. Both are retained as ledger safe framing.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section lost its argument for why presencing produces coherence.",
+      "evidence": {
+        "baseline": "Every act of presencing draws two beings into accord and brings a third thing into being that neither held alone; and accord, multiplied across a community, is precisely what coherence is.",
+        "shipped": "Presencing is one proposed way coherence may grow between people."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the only place in the volume that defines coherence in terms of the praxis rather than the other way round. Accord multiplied across a community is the definition. Without it the volume asserts a connection between presencing and coherence for ten parts and never states it.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The current beneath the currency lost its content.",
+      "evidence": {
+        "baseline": "coherence is better understood as the current beneath any currency: the live charge of trust and attunement that lends every exchange its real value, and without which money is only paper and agreements only ink",
+        "shipped": "Here *current* names the trust and attunement that make exchange meaningful."
+      },
+      "authorizedBy": "Compression, and catalog 4.18 plausibly applied to the paper and ink gloss.",
+      "diagnosis": "The card names the current beneath the currency as an intentional recurrent phrase and as an image that must not be explained away. Money is only paper and agreements only ink is not an explanation of the image, it is the image’s second half, and it is what makes the metaphor an argument rather than a label.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The section’s conclusion about coordinating power was cut.",
+      "evidence": {
+        "baseline": "a people who can generate it at will hold, in their hands, the most fundamental coordinating power there is",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.6, inflated significance, applied to most fundamental.",
+      "diagnosis": "4.6 fires correctly on the superlative. The repair is to bound it, not to drop the claim, because the claim is the bridge into Part IV, which is entirely about coordination. Rendered as a coordinating power more fundamental than any instrument they might build to count it, which keeps the argument and drops the absolute.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0012",
+      "effect": "no change",
+      "note": "Neither Bio-Consensus nor COHERENCE nor the Currency of Presence is named in this section, and no mechanism is collapsed into a unit."
+    },
+    {
+      "id": "CTD-0043",
+      "effect": "query untouched",
+      "note": "The lived relation and the technical record are held apart in the restored text, which is the distinction the item turns on."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. Two introduced specifications and became colons. One set off a final clause and became a comma inside a rebuilt sentence."
+        },
+        {
+          "kind": "applied",
+          "note": "Precisely what coherence is reduced to close to what we have meant by coherence, under section 5 on protecting scope, since the volume defines coherence more broadly elsewhere."
+        },
+        {
+          "kind": "restored",
+          "note": "The accord argument, the full currency image with its paper and ink half, and the coordinating power close."
+        },
+        {
+          "kind": "kept",
+          "note": "The record and measurement qualification the prior pass added."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

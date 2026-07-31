@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-sequence-and-metered-depth",
+  "editorialId": "volume-07",
+  "sectionHeading": "***Sequence, and Metered Depth***",
+  "currentHeading": "### Sequence and Paced Depth",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "sequence",
+      "metered depth",
+      "readiness",
+      "not negotiable",
+      "mystification"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0087"
+    ],
+    "outcome": "CTD-0088 requires removal of nonnegotiable sequence claims until consent controls exist, so the order is not negotiable is not restored. The shipped heading uses paced rather than metered, which also answers the volume card’s instruction to reduce metered depth. Both are kept."
+  },
+  "substitutionCheck": "Grepped. Neither permits a mentor to overrule consent, the adaptation list, and Withholding knowledge must never become a tool of mystification or control are absent from the baseline and are all retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Both principles lost their reasoning and became a list of constraints on the mentor.",
+      "evidence": {
+        "baseline": "each capacity rests on the ones before it, and to reach for the horizon before the ground is laid is to grasp at what cannot be held. One does not attempt animistic awareness before one has learned to perceive deliberately.",
+        "shipped": "Two principles guide the sketch: sequence and paced depth. Neither permits a mentor to overrule consent."
+      },
+      "authorizedBy": "CTD-0088, read as requiring the sequence argument be removed with the sequence claim.",
+      "diagnosis": "The item names one sentence, the order is not negotiable. It does not name the reason for the order. Grasp at what cannot be held is the image and the animistic awareness example is the only concrete illustration in the section. Without them the curriculum has an order and no account of why, which makes the order look arbitrary and therefore more authoritarian rather than less.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The teaching too early claim was deleted along with the claim it balances.",
+      "evidence": {
+        "baseline": "A teaching offered too early is not a kindness but a harm; a teaching withheld until its hour becomes a revelation.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "CTD-0088, and catalog 4.3 on not X but Y.",
+      "diagnosis": "The first half is a safeguarding argument in the volume’s own voice and it is the reason pacing exists. The second half is the one the item should worry about, because a teaching withheld until its hour is precisely the mystification the item forbids. The re-render keeps the first half verbatim and renders the second as a teaching that arrives at its hour can be a revelation, which removes the withholder.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "The statement of what this volume is, and is not, was cut.",
+      "evidence": {
+        "baseline": "This volume is the curriculum’s threshold and its map. It names the architecture and sets it in view; it does not, and is not meant to, replace the walking. The walking is done in the year, week by week, initiation by initiation, in the company of a mentor and a cohort.",
+        "shipped": "This volume is a threshold and map, not the curriculum itself."
+      },
+      "authorizedBy": "Compression, and catalog 4.23.",
+      "diagnosis": "Does not, and is not meant to, replace the walking is the disclaimer CTD-0087 wants, stated in the volume’s own register. The walking is also the section’s handover into Part IX, and without it the retreats arrive unannounced.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The order is not negotiable is not restored. The order is stated as a considered proposal that must stay open to adaptation. The withheld until its hour formulation is rewritten so no one holds the door."
+    },
+    {
+      "id": "CTD-0087",
+      "effect": "paydown preserved",
+      "note": "The pilot and independent evaluation requirement is kept."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. Both separated second movements and became periods."
+        },
+        {
+          "kind": "applied",
+          "note": "The volume card lists metered depth among phrases to reduce. The shipped paced depth is kept in the heading and the prose."
+        },
+        {
+          "kind": "restored",
+          "note": "The sequence reasoning, the horizon and ground image, the animistic awareness example, the teaching too early claim, the mentor’s art, and the threshold and map paragraph with its handover to the retreats."
+        },
+        {
+          "kind": "kept",
+          "note": "The consent limit, the adaptation list, the professional standards clause, the mystification prohibition, and the piloting requirement."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The pattern is now established across CTD-0088: the item names a claim, and the pass removed the argument the claim sat inside, which leaves controls a reader cannot evaluate."
+  }
+}

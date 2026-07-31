@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-6-coherent-resonance",
+  "editorialId": "volume-07",
+  "sectionHeading": "**6 · Coherent Resonance**",
+  "currentHeading": "#### 6 · Coherent Resonance",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Coherent Resonance",
+      "wallet",
+      "irradiated state",
+      "contagious"
+    ],
+    "itemsRead": [
+      "CTD-0043",
+      "CTD-0107",
+      "CTD-0012",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0043 is the governing item. It keeps open the collision between Volume VII’s Coherent Resonance as a quality of being and Volume IX’s wallet of the same name. The shipped sentence marking this volume’s meaning is kept verbatim in substance. CTD-0012 is not engaged, since no currency mechanism is named here."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The mechanism by which inner and outer come into accord was cut.",
+      "evidence": {
+        "baseline": "When we change something within, we observe a change without; repeat this often enough, and the inner and outer come into accord.",
+        "shipped": "Inner practice can influence an encounter, but no person controls the room."
+      },
+      "authorizedBy": "Compression, and catalog 4.12 applied to come into accord.",
+      "diagnosis": "Repeat this often enough is the practice. The tenet is about a trained state, and the training is the only thing the shipped version omits. The correction about controlling the room is right and is kept, after the mechanism rather than in place of it.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The steady note and the contagion, which the card names as the section’s exemplar image, were deleted.",
+      "evidence": {
+        "baseline": "It is how we maintain our most irradiated state, the steady note we sound that others, without quite knowing why, begin to tune toward. Coherence, practiced, becomes contagious: a coherent person changes a room simply by entering it.",
+        "shipped": "The image is musical. A steady note can invite response without requiring every instrument to match it."
+      },
+      "authorizedBy": "Compression, and catalog 4.12 on contagious.",
+      "diagnosis": "The card lists the musical account of resonance among the read aloud qualities to preserve and names Coherent Resonance an exemplar passage. The shipped image is a correction of the baseline image, and it is a good one, but it arrives with nothing to correct. Both are kept: the baseline claim, then the qualification that resonance is relation among differences.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0043",
+      "effect": "query preserved",
+      "note": "The sentence stating that in this volume the term names an inner quality and not a wallet or technical record is kept. The collision with Volume IX remains open."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced a specification and became a comma. One introduced the contagion example and became a colon."
+        },
+        {
+          "kind": "applied",
+          "note": "Able to hold the inner state regardless of circumstance reduced to more able, under section 5."
+        },
+        {
+          "kind": "restored",
+          "note": "The definition through purpose and providence, the change within and without mechanism, the irradiated state, the steady note, and the contagion close."
+        },
+        {
+          "kind": "kept",
+          "note": "The wallet disclaimer, the room control caution, and the resonance among differences image."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  }
+}

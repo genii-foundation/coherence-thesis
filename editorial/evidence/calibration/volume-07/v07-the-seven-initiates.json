@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-seven-initiates",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Seven Initiates**",
+  "currentHeading": "## Part V: The Seven Initiates",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Seven Initiates",
+      "Art & Alchemy",
+      "Body of Worship",
+      "none may be skipped",
+      "cumulative"
+    ],
+    "itemsRead": [
+      "CTD-0070",
+      "CTD-0085",
+      "CTD-0088",
+      "CTD-0087"
+    ],
+    "outcome": "CTD-0088 requires removing claims of nonnegotiable sequence until consent controls exist, so none may be skipped is not restored. CTD-0070 requires the sequence to be distinguished from a validated taxonomy, so the working map framing is kept. CTD-0085 requires Art & Alchemy as the display form and it is used."
+  },
+  "substitutionCheck": "Grepped. The sequence is the project’s working map, not a validated account of universal human development and A participant may pause, return, or decline are absent from the baseline. Both are retained as CTD-0070 and CTD-0088 paydown.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The cumulative account of the path, which is the section’s only real content, was cut from a paragraph to three sentences.",
+      "evidence": {
+        "baseline": "Listening is opened first, and never closed; when Intimacy is taken up, Listening goes on deepening beneath it; when Balance is reached, both Listening and Intimacy continue to mature, now informed by the new ground. Each initiate, once entered, remains in development for the whole of the path, so that by the time one stands at Providence, all seven are alive and growing together.",
+        "shipped": "Listening remains active as Intimacy begins. Both continue through Balance, and so on."
+      },
+      "authorizedBy": "Compression, and catalog 4.4 plausibly applied to the parallel clauses.",
+      "diagnosis": "And so on is doing the work of the passage. The three clause build is how the reader learns that the path accumulates rather than advances, which is the difference between this map and every ladder it resembles. All seven are alive and growing together is the image, and by the time one stands at Providence is the only place the reader is shown the far end.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The pillars and thresholds figure lost its explanation.",
+      "evidence": {
+        "baseline": "They are pillars and thresholds at once. As pillars, they hold up a Body of Worship. As thresholds, each is the gateway to the next.",
+        "shipped": "They are both supports and thresholds within a Body of Worship."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Two functions, each with its own sentence, is how the reader gets that a single set of names is doing two structural jobs. Supports also loses the architectural image the card protects, and pillars holding up a Body of Worship is the only place the volume builds its central term out of anything.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The nonnegotiable sequence claim was correctly removed and not restored.",
+      "evidence": {
+        "baseline": "none may be skipped: there is no Intimacy without Listening, no Balance without Intimacy, no Art without Balance",
+        "shipped": "The sequence is the project’s working map, not a validated account of universal human development."
+      },
+      "authorizedBy": "CTD-0088, which requires removing claims of nonnegotiable sequence until consent controls exist.",
+      "diagnosis": "This is a retention limb for the shipped text rather than the baseline. The dependency structure is restored in the form rests on rather than none may be skipped, so the reader still learns what the map claims and no longer reads a prohibition. Recorded so the difference is deliberate rather than accidental.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "None may be skipped is not restored. The order is stated as a proposal and explicitly does not outrank consent, need, or refusal."
+    },
+    {
+      "id": "CTD-0070",
+      "effect": "no change",
+      "note": "The working map framing is kept. The lineage of the seven remains unproved and the item remains open."
+    },
+    {
+      "id": "CTD-0085",
+      "effect": "paydown preserved",
+      "note": "Art & Alchemy is used, matching the master ledger form."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash separating a summary clause became a period, and the hyphenated compound sequential-and-discarded was rebuilt as sequential and discarded."
+        },
+        {
+          "kind": "restored",
+          "note": "The pillars and thresholds pair, the dependency structure in permitted form, the whole cumulative paragraph, and the closing statement that each addition strengthens all that came before."
+        },
+        {
+          "kind": "kept",
+          "note": "The working map framing and the participant’s right to pause, return, or decline."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

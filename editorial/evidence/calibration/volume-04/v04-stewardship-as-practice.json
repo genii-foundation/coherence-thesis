@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-stewardship-as-practice",
+  "editorialId": "volume-04",
+  "sectionHeading": "**Stewardship as Practice**",
+  "currentHeading": "**Stewardship as Practice**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Living Constitution",
+      "Human Dignity",
+      "Participatory Legitimacy",
+      "Sovereignty",
+      "Consent",
+      "Transparency",
+      "Anti-Capture",
+      "Exit",
+      "Repair",
+      "stewardship",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0075",
+      "CTD-0006",
+      "CTD-0055",
+      "CTD-0072",
+      "CTD-0007",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0071 records that Providence's constitutional design has not had legal review, which is why the restored governance chapters are kept in proposal grammar throughout. CTD-0075 forbids attributing a named recurring apparatus to Volume III, which changed the chapter references in this part from named sections to named arguments. CTD-0006 requires that no physiological evidence determine governance standing, which bears on the stewardship chapters. CTD-0055 requires unimplemented safeguards to read as requirements. CTD-0007 governs the self-epigraphs, which keep the Adapted from attribution."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The definition of stewardship as an orientation was removed.",
+      "evidence": {
+        "baseline": "Volume III established stewardship as a civilizational layer: the orientation toward care rather than management, service rather than control, long-horizon responsibility rather than short-horizon optimization.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 read onto the three mirrored contrasts.",
+      "diagnosis": "Stewardship is a canonical term with a volume-specific meaning on the voice card, and this is its definition. The three contrasts are not synthetic symmetry; each names a different axis, purpose, relation, and time horizon, and the chapter's three stage arc maps onto them.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The five questions the chapter answers were removed, including the protection question.",
+      "evidence": {
+        "baseline": "How do people become stewards? What does the developmental arc of stewardship look like? How are stewardship roles structured to be genuinely compatible with the human lives of the people in them? ... And how does the institution protect the people doing the stewardship from the dynamics, accumulation of informal authority, isolation from feedback, and burnout, that consistently afflict stewardship roles?",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.23 and 4.9.",
+      "diagnosis": "The five questions are the chapter's contents and the third and fifth are the ones that distinguish this treatment from a leadership chapter: compatibility with human lives, and protection of the steward from the role. The card names a steward leaving office while remaining in relation among the recurring images, and this is where the concern is introduced.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0006",
+      "effect": "no change",
+      "note": "Nothing in the restored chapter conditions stewardship authority on physiological evidence."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced the definition and became a colon. One was a parenthetical appositive listing role dynamics and became a comma pair."
+        },
+        {
+          "kind": "restored",
+          "note": "The stewardship definition with its three contrasts, the account of what Volume III did not specify, and the five questions."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 229,
+    "shippedWords": 63,
+    "shippedDelta": -72
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Catalog 4.4 fired on three mirrored contrasts and the retention limb held because each contrast names a different axis. Uniform shape is not the test. Whether the parallel members are doing the same work is."
+  }
+}

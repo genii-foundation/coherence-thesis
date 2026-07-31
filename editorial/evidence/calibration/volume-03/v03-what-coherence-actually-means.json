@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-what-coherence-actually-means",
+  "editorialId": "volume-03",
+  "sectionHeading": "What Coherence Actually Means",
+  "currentHeading": "Coherence Under Pressure",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The measurability claim, its scope, and its modality are author decisions and remain open in the ledger.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["coherence", "measured", "measurable", "capacity", "currency", "civilizational scale"],
+    "itemsRead": ["CTD-0003", "CTD-0006", "CTD-0009", "CTD-0036", "CTD-0073", "master-ledger section 2, Decisions A and B"],
+    "outcome": "No recorded decision forbids the restoration, and one recorded correction shapes it. The wave-one semantic review records that the revision rejects HRV as a moral score and refuses to translate physiological signal into human worth, and the volume card lists any inference from physiological synchrony to moral truth among the volume's known weak passages. That boundary is kept as one restored-adjacent sentence. The measurability claim itself is the subject of CTD-0009, which is an open obligation and not a decision, so it does not override the baseline. The master ledger's definition of coherence is consistent with the baseline's, and the master ledger's Decision A does not fire here because the section names no unit."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The volume's load-bearing claim was demoted from an announcement to a qualification, and the announcement was deleted.",
+      "evidence": {
+        "baseline": "And crucially, this is the claim on which everything in this volume rests, it can be measured. Not perfectly. But with sufficient precision to be useful, to be cultivated, and, as we will demonstrate, to be made the basis of an entirely new kind of currency.",
+        "shipped": "The argument rests on a narrower, testable proposition: some conditions associated with regulation, attention, and encounter leave physiological and relational traces that may be measured usefully."
+      },
+      "authorizedBy": "CTD-0009 and the wave-one scientific posture corrections, neither of which records a decision on this sentence.",
+      "diagnosis": "The two versions make different claims. The baseline says coherence can be measured well enough to found a currency, and says so as the thing the book stands or falls on. The shipped version says some correlates of some conditions may be measurable. The second is more defensible and it is not the same proposition, so the volume no longer states what it is claiming. Restored, because the scope of a book's central claim belongs to its author, and recorded against CTD-0009 rather than adjudicated here.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The four-scale demonstration of coherence was replaced by three hedged examples.",
+      "evidence": {
+        "baseline": "A coherent person can be challenged without losing themselves. A coherent community can disagree without fragmenting. A coherent institution can encounter corruption without collapsing into it. A coherent civilization can face crisis without abandoning the values that make it worth preserving.",
+        "shipped": "In a person, that may mean receiving a challenge without losing all orientation. In a community, it may mean sustaining conflict without turning every difference into rupture."
+      },
+      "authorizedBy": "Compression, and 4.4 on synthetic symmetry.",
+      "diagnosis": "4.4's retention limb keeps parallelism that produces force and memory. This parallelism also does structural work the standard requires elsewhere: section 5 asks a philosophical passage to name the level whenever a sentence changes it, and these four sentences are how the volume establishes that one word applies at four levels. Reducing four to two, and converting can into may mean, drops two levels and hedges the other two. Restored.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The closing display line was converted into ordinary prose and made to name Providence.",
+      "evidence": {
+        "baseline": "*We do not know whether a coherence infrastructure can be built at civilizational scale. We know that the attempt is necessary, that the design principles are available, and that the cost of not attempting it is the continuation of what is already happening.*",
+        "shipped": "We do not know whether an infrastructure built around coherence can operate at civilizational scale. We do know that rising power without comparable growth in coordination creates danger. Providence is one attempt to address that gap, not the only possible answer and not an answer already proven."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Two losses. The display italics are how this volume marks a chapter's own verdict, and the section is the first chapter's close. And the shipped version introduces Providence eight chapters before the architecture chapter, converting a statement about the problem into a statement about the proposal. The baseline line is about what we do and do not know. Restored in display form.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "A coherent system contains disagreement, the capacity of a system fenced around a four-item scale list, and And crucially fenced around the claim announcement.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first separated a claim from the insistence that follows it and became a period, which lets It must, to remain adaptive stand alone as the baseline's emphasis intended. The second fenced the four scales inside a subject and was rebuilt by promoting them into their own sentence. The third fenced the announcement that this is the volume's central claim, which is not incidental material and cannot take parentheses; it was promoted to its own sentence directly after the claim it announces.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0009", "effect": "reopened by restoration", "note": "The unhedged it can be measured returns, together with the promise that the volume will demonstrate a currency founded on it. This is the single sentence the item's scientific backlog exists to support or refute. It is now stated at full strength again, which makes the obligation visible rather than absorbed." },
+    { "id": "CTD-0006", "effect": "preserved", "note": "One sentence of the shipped text is kept: measuring coherence is not measuring wisdom, virtue, or human worth. The volume card names inference from physiology to moral truth as a known weak passage, and this boundary is what keeps the restored measurement claim from reading as a claim about persons." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The four-part opening refusal, the definition with its four scales, the four demonstrations, the state and capacity distinction, the measurement claim with its announcement, and the display close." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks, as recorded in F4." },
+        { "kind": "kept", "note": "One sentence adapted from the shipped text, placing the boundary between measuring coherence and measuring worth. The volume card protects that distinction and the wave-one review records the correction that established it." },
+        { "kind": "cut", "note": "The rest of the shipped rewrite, including the narrower testable proposition that replaced the volume's central claim." },
+        { "kind": "kept", "note": "The shipped heading, Coherence Under Pressure, unchanged, because a heading is a section id and a recorded route. Recorded as an open question, because the baseline heading names the section's job and the shipped heading names only the second of its three moves." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The central claim. The restored section says flatly that coherence can be measured, and promises to demonstrate a currency built on that. The shipped text had replaced this with a narrower proposition about physiological traces. The narrower version is what the volume's own evidence chapters can currently support. Restoring the stronger claim is a decision about what the book is asserting, and it is the author's. CTD-0009 holds the verification that would settle it.",
+    "Voice card divergence. The volume card lists Coherence does not mean agreement, harmony, or uniformity among its exemplar opening anchors. That sentence is from the shipped text, not the baseline. The restoration returns the baseline's four-sentence version, which says the same thing at greater length. If the card's anchor list is meant to be binding, the card was built from the compressed source and needs rebuilding from the restored one.",
+    "Heading. What Coherence Actually Means announces a definition and matches the section's first move. Coherence Under Pressure names its second. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, but this section exposes a hazard for the rest of the volume and for the corpus cards generally. The volume-03 voice card's exemplar passages and opening anchors were drawn from the compressed source, not from the baseline. A card built from a text is not an independent check on that text. Every restoration in this volume that disagrees with an exemplar in the card should be read as evidence about the card rather than as a defect in the restoration, and the card should be rebuilt once the re-render is complete."
+  }
+}

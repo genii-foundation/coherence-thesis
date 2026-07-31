@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-relational-coherence",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Relational Coherence**",
+  "currentHeading": "**Relational Coherence**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["In some conversations, something settles", "This chapter asks what modern civilization has done", "In its place comes continuous low-grade threat detection", "The preceding chapter’s discussion of physiology"],
+    "result": "None appears in the baseline. The opening paragraph is the clearest substitution in the section: the baseline's two-part construction, There are conversations in which ... And there are conversations in which the opposite occurs, was replaced with In some conversations ... In others, and the three where clauses that follow were rewritten as separate sentences. The passage is one the voice card names as an exemplar of the volume's account of co-regulation, so the substitution reached protected material."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["co-regulation", "alignment", "aligned with which humans", "loneliness", "relational field", "repair capacity", "population threshold"],
+    "itemsRead": ["CTD-0019", "CTD-0036", "CTD-0038", "CTD-0016", "CTD-0007"],
+    "outcome": "No recorded decision conflicts with the baseline here. CTD-0019 covers the chapter's empirical claims about loneliness, social trust, co-regulation, and epistemic tribes; they are identical in both texts. CTD-0036 concerns the population threshold at which relational coherence can hold and is scoped to Volumes IV, V, VI, and IX; this chapter names no number, so it is not engaged. CTD-0038 asks the author to choose Volume II's relationship to reader autonomy, and its evidence names passages that predict feelings or declare perceptions accurate. This chapter's restored opening, Most people know the difference, even if they have never had words for it, is a claim about what readers know, and it survives in both texts unchanged. It is flagged rather than adjudicated. CTD-0016 is engaged by What lies beneath the technology matters more than the technology itself, which survives in both texts. The epigraph is a Volume I quotation and already matches Volume I's current wording exactly, with no prohibited mark."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's opening account of two kinds of conversation was rebuilt, losing its parallel frame and its three-clause accumulation.",
+      "evidence": {
+        "baseline": "There are conversations in which something settles: shoulders drop ... And there are conversations in which the opposite occurs, where the body tightens before the mind can name why, where what gets spoken is a managed performance of what could have been spoken, where both people leave subtly more depleted than when they arrived.",
+        "shipped": "In some conversations, something settles: shoulders drop ... In others, the body tightens before the mind can name why. What gets spoken is a managed performance of what could have been spoken, and both people leave subtly more depleted than when they arrived."
+      },
+      "authorizedBy": "Catalog 4.9, repetitive scaffolds, applied to There are, and 4.4 applied to the three where clauses.",
+      "diagnosis": "This paragraph is a protected passage: the voice card names Chapter Two's account of co-regulation among the exemplars that define the volume, and the opening of Chapter Three is where that account becomes experience the reader can check. There are conversations in which is an existence claim, which is what the paragraph needs, because the argument is that both kinds are real and common. In some conversations is a frequency claim about a category. The three where clauses accumulate inside one sentence so the depletion arrives as the third instalment of a single descent, and breaking them into two sentences turns a descent into a list. The parallel between the two openings is also the paragraph's whole shape and it does not survive In others.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "Five sentences that named the chapter's own reasoning were converted into flat assertions.",
+      "evidence": {
+        "baseline": "This is the layer of human experience that the previous chapter’s physiology was building toward ... This is why trust is not, fundamentally, a belief ... It is also why rupture between people is so much more costly ... What modern civilization has done to this layer of human functioning is the central question of this chapter ... This is what modern civilization increasingly lacks: not difference, but the capacity ...",
+        "shipped": "The preceding chapter’s discussion of physiology built toward this layer of human experience ... Trust is not, fundamentally, a belief ... This is also why rupture between people costs so much more ... This chapter asks what modern civilization has done to this layer of human functioning ... What modern civilization increasingly lacks is not difference, but the capacity ..."
+      },
+      "authorizedBy": "Catalog 4.9 applied to the repeated This is, and 4.23 applied to the central question of this chapter.",
+      "diagnosis": "This is why and This is what are inference markers. They tell the reader that what follows is a consequence of what came before, which is how a chapter builds rather than accumulates. Removing them leaves five assertions that are individually true and jointly unconnected. The chapter's question sentence is the clearest loss: What modern civilization has done ... is the central question of this chapter puts the question in the subject position where the reader meets it first, and This chapter asks puts the chapter there instead, which is the meta claim 4.23 exists to prevent. The retention limb of 4.9 applies throughout, because the recurrence is the argument's connective tissue and not a template.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Three not-X-but-Y constructions were reversed or dissolved, and each reversal put the wrong term first.",
+      "evidence": {
+        "baseline": "people increasingly encounter one another not as living nervous systems but as compressed symbolic representations ... Coherence is not consensus enforced through politeness, nor the elimination of conflict ... What replaces it is the physiology of continuous low-grade threat detection",
+        "shipped": "people increasingly encounter one another as compressed symbolic representations ... rather than as living nervous systems ... Coherence is neither consensus enforced through politeness nor the elimination of conflict ... In its place comes continuous low-grade threat detection"
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis, and R-NEGATION-STACK.",
+      "diagnosis": "R-NEGATION-STACK governs the case where both limbs carry weight, and it prescribes appearance then reality, not reversal. The baseline names the living nervous system first because that is what the person actually is, and the symbolic representation second because that is the distortion. Reversed, the sentence leads with the distortion and appends the truth as a contrast, which is the opposite of what the chapter argues. Neither X nor Y also flattens the baseline's not X, nor Y, where the comma lets the second denial land as an afterthought the writer decided to add. And What replaces it names an agent of substitution, where In its place comes describes an arrival with no cause.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F4",
+      "summary": "The chapter's closing statement of its own thesis lost its frame, its key qualifier, and the repeated preposition that carried the scaling claim.",
+      "evidence": {
+        "baseline": "What this chapter argues, then, is that the relational layer of human life is not private emotional experience ... The conditions under which two nervous systems can regulate one another are the same conditions, scaled, under which families function, organizations coordinate, communities cohere, democracies deliberate, and civilizations survive their own complexity.",
+        "shipped": "The relational layer of human life is not merely private emotional experience ... The conditions that allow two nervous systems to regulate one another are the same conditions that, at scale, allow families to function, organizations to coordinate, communities to cohere, democracies to deliberate, and civilizations to survive their own complexity."
+      },
+      "authorizedBy": "Catalog 4.23 and compression.",
+      "diagnosis": "Merely is a substantive change: the baseline denies that the relational layer is private emotional experience, the shipped text concedes that it is private emotional experience and adds that it is more. Under which repeated twice makes the two halves of the sentence grammatically identical, which is the sentence's claim; that allow ... to function converts five civilizational activities into things the conditions permit, adding a permitting agent the baseline did not have. Scaled set between commas is also the hinge word, isolated so the reader cannot miss that one claim is being made twice at two sizes.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F5",
+      "summary": "Three infinitive litanies and two participial pairs were converted into finite verbs, and the repair sequence lost its shape.",
+      "evidence": {
+        "baseline": "the capacity to return to a conversation after it has gone wrong, to acknowledge harm without being destroyed by the acknowledgment, to allow a relationship to deepen ... allowing complexity to become metabolizable rather than overwhelming, and expanding the range of difference ... It functions to signal identity, maintain group belonging, discharge emotional activation, or compete for attention",
+        "shipped": "the capacity to return to a conversation after it has gone wrong, acknowledge harm without being destroyed by the acknowledgment, and allow a relationship to deepen ... allows complexity to become metabolizable rather than overwhelming, and expands the range of difference ... Instead, it signals identity, maintains group belonging, discharges emotional activation, or competes for attention"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, and compression.",
+      "diagnosis": "Repeating to before each of three capacities makes them three separate capacities rather than one compound skill, which matters because the paragraph is arguing that repair is difficult in three distinct ways. The participles allowing and expanding subordinate two effects to the one main claim about adaptive capacity; the finite allows and expands promote them to equal status and lose the causal nesting. It functions to also keeps the paragraph's governing verb, functions, in view across three sentences, and the shipped Instead, it signals breaks that thread at the exact point where the argument turns.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F6",
+      "summary": "Eight qualifiers were removed or exchanged, each narrowing or widening a claim.",
+      "evidence": {
+        "baseline": "but it is rarely sustained alone ... even subtle threat, even imagined threat ... the surface content of any specific disagreement ... the slow pace at which genuine attunement happens ... very little mutual understanding accumulates ... essential to intelligence itself ... coherence is weakening across many societies ... the more attractive certainty becomes",
+        "shipped": "but rarely sustained alone ... even subtle or imagined threat ... the surface content of a specific disagreement ... the slow pace required for genuine attunement ... little mutual understanding accumulates ... essential to intelligence ... coherence weakens across many societies ... the more appealing certainty becomes"
+      },
+      "authorizedBy": "Compression, catalog 4.21 applied to very and itself, and 4.22 applied to the doubled even.",
+      "diagnosis": "The doubled even is not an exhaustive pairing. It is an escalation, and its point is that the second case, imagined threat, is the surprising one. Any specific disagreement is a universal quantifier the sentence needs, because the claim is about every rupture rather than a particular one. The pace at which attunement happens describes something that occurs at its own speed; the pace required for attunement describes a requirement, which imports a designer. And attractive is physiological where appealing is aesthetic, in a paragraph whose whole argument is that the pull toward certainty is a nervous-system event.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0038", "effect": "unchanged", "note": "The chapter opens on Most people know the difference, even if they have never had words for it, which is a claim about the reader's inner state of the kind CTD-0038 asks the author to rule on. It survives unchanged in both texts and is restored with its surrounding paragraph. The re-render does not widen or narrow it." },
+    { "id": "CTD-0019", "effect": "unchanged", "note": "Loneliness rates, social trust decline, epistemic tribes, and the co-regulation mechanism are asserted identically in both texts and remain unsourced." },
+    { "id": "CTD-0016", "effect": "unchanged", "note": "What lies beneath the technology matters more than the technology itself appears here for the second time in the volume and survives in both texts. CTD-0016 questions whether this is the corpus position." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Six prohibited marks. Two introduced enumerations and became colons; the pass had made both repairs and they stand, with the baseline's asyndeton restored in the signaling list. One introduced the specification of what changes between two conversations and became a colon. One introduced the gloss on a successful repair and became a colon. One introduced the specification of what modern civilization lacks and became a colon. One followed certainty becomes and carried a dependent concessive clause with no internal comma, so it became a comma. One pair enclosed the doubled emphatic even subtle threat, even imagined threat; the interruption carries its own comma as part of the parallel, so a comma pair is the only repair that keeps the doubling, and it is used. One pair enclosed the three-adjective description of communication architectures; the pass's split into two sentences is kept, with And and the asyndeton restored, because no single mark can enclose a three-item list inside a subject without producing five commas." },
+        { "kind": "kept", "note": "The pass's two colons in the opening and signaling paragraphs, and its two-sentence handling of the communication-architectures list." },
+        { "kind": "kept", "note": "The paragraph on fragmentation and authoritarianism as reciprocal poles, which the pass changed only in two words and which needed nothing else." },
+        { "kind": "restored", "note": "The opening's parallel frame and its three where clauses, five inference markers including This is why and This is what, three not-X-but-Y constructions in baseline order, the closing thesis with its frame and its doubled under which, three infinitive litanies and two participial pairs, and eight qualifiers including any, itself, very, and the doubled even." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the chapter open by telling the reader what they already know?",
+      "context": "Most people know the difference, even if they have never had words for it is restored with the paragraph. CTD-0038 asks the author to choose between an autonomous and a conscripting reader relationship, and this sentence sits on that line: it claims access to what readers have experienced in order to make the physiology credible. Restored under tonight's policy rather than adjudicated.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Should What this chapter argues, then stand here as well as in Chapter Two?",
+      "context": "The volume card names generic announcements about what a chapter will do among the phrases to reduce. Both occurrences are restored. If only one survives, this is the stronger of the two, because the sentence it introduces makes a claim the chapter has earned rather than a framing promise.",
+      "for": "author"
+    }
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and R-NEGATION-STACK earned its first use in this volume. Three times the pass reversed a not-X-but-Y rather than removing it, which looks like a compliant repair and is not one: the rule asks for appearance then reality, and reversal produces reality then appearance, which puts the distortion in the emphatic first position. The chapter is also the volume's first protected passage to be substituted rather than compressed, and the substitution was invisible to word count, since the opening paragraph lost eleven words while losing its entire structure."
+  }
+}

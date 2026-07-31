@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Scientific Community and Quaker Process: Truth Through Disciplined Encounter",
+  "currentHeading": "Scientific Inquiry and Quaker Process: Disciplined Encounter",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Historical claim scope remains an author decision.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Quaker", "discernment", "peer scrutiny", "collective presence", "Proof of Council"],
+    "itemsRead": ["CTD-0004", "CTD-0008", "CTD-0046", "CTD-0073", "master-ledger Decision C"],
+    "outcome": "No recorded decision touches this section. The master ledger's Decision C makes Proof of Council an ancillary minting path and asks for a light foreshadowing line in Volume III; the restored passage on Quaker discernment is that foreshadow's ancestor, but it does not name Proof of Council and none was added, since adding canon is not restoration. CTD-0046 covers what validated means for Proof of Council and is unaffected here."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's statement of what Providence inherits from each cousin was replaced by a one-line summary.",
+      "evidence": {
+        "baseline": "These are the ancestors of Providence's governance and of its very method: the commitment to truth through honest, adversarial scrutiny that animates the chapter on how Providence might fail; the treatment of collective presence as the ground of genuine coordination; the conviction that the best decisions emerge from disciplined encounter among people genuinely present to one another.",
+        "shipped": "Providence inherits the demand for correction from the first and the practice of patient discernment from the second."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline names three inheritances and attaches the first to a specific later chapter, which is how the reader learns that the failure chapter is a method rather than a gesture of humility. The shipped version names two inheritances in the abstract and drops the cross-reference. This is the same connective loss recorded in v03-the-third-force and v03-the-university.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The Quaker practice was described without the feature that makes it relevant.",
+      "evidence": {
+        "baseline": "a disciplined form of collective attention that waits for clarity to emerge rather than imposing it, and that treats the quality of presence in the room as essential to the quality of what is decided.",
+        "shipped": "Quaker process attends to the quality of collective listening before treating a decision as settled."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Treats the quality of presence in the room as essential to the quality of what is decided is the sentence that makes this tradition the ancestor of the whole Currency of Presence. It asserts that presence has decision-quality consequences, which is the volume's thesis in one clause, arrived at through a tradition rather than through an instrument. Restored.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "two unlikely cousins fenced around the two named traditions, the willingness to be corrected by evidence, and Providence's governance and of its very method.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first fenced a two-item apposition with no internal comma and became commas. The second appended a characterization of the scientific community as a commons; it is a separate claim and became a period. The third introduced a three-part specification and became a colon, replacing the dash while the internal semicolons stay, which is what keeps the three items separable.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0008", "effect": "reopened by restoration", "note": "The characterization of Quaker decision-making as developed over centuries, and of the scientific community as a knowledge commons sustained across generations, both return unverified." },
+    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "At its best qualifies the scientific claim, which is the bounded form. The Quaker claim is unqualified." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The two unlikely cousins framing, the account of the scientific community as a knowledge commons, the full description of Quaker discernment including the presence clause, the three named inheritances with the cross-reference to the failure chapter, and the sobering lesson about capture." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks, as recorded in F3." },
+        { "kind": "cut", "note": "The shipped rewrite, including its symmetry that spiritual communities can mistake social harmony for truth, which is a fair observation with no counterpart in the baseline and no ledger warrant." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Foreshadow. The master ledger's Decision C asks Volume III to plant one light line indicating that gathering rightly in council can also earn the currency, ancillary to the Four Streams. The restored Quaker passage is the natural host for it and does not contain it. Adding it would be seeding canon rather than restoring, so it was left for the author.",
+    "Heading. Truth Through Disciplined Encounter names what the two traditions have in common and what Providence takes. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 is worth carrying because the deleted clause is not an image or a flourish: it is the volume's central proposition stated by a tradition rather than by an instrument, which is the strongest form the volume has of it."
+  }
+}

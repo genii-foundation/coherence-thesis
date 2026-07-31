@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-architecture-of-extraction",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Architecture of Extraction**",
+  "currentHeading": "**The Architecture of Extraction**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["This pattern is repeated, with local variations", "The incentives could not see the regenerative capacity", "Modern civilization operates economic, political", "This is the situation humanity now faces"],
+    "result": "None appears in the baseline. Three change a claim. What the incentives could not see was is a cleft that makes the invisibility the subject of the sentence; The incentives could not see makes it a failure of the incentives, which reads as blame where the paragraph has just spent five sentences establishing that no one is to blame. Modern civilization operates institutions loses were designed, which is the passage's whole point about inheritance. And finds itself in is a predicament where faces is a confrontation."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["fishery", "extraction", "nervous-system regulation", "regenerative", "frozen philosophies", "capitalism", "centuries of extraction"],
+    "itemsRead": ["CTD-0004", "CTD-0013", "CTD-0019", "CTD-0065", "CTD-0066"],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0013 concerns a historical extraction moral claim and is scoped elsewhere in the corpus; this chapter's claim that extraction predates capitalism survives in both texts unchanged. CTD-0004 tracks every-civilization universals, and the chapter opens on Every civilization produces institutions that mirror the assumptions beneath its worldview, which survives in both texts. CTD-0019 covers the fishery case, which is presented as a composite rather than a sourced case study in both texts. CTD-0065 records that the volume re-explains the fishery later and asks for a repetition map; this record restores the first and fullest telling, which is the one CTD-0065's paydown criteria would keep. CTD-0066 asks for relief of synthetic cadence and is an open obligation with no ruling. The canonical form nervous-system regulation is restored from the baseline, matching the volume card's canonical terms list."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The fishery narrative was rewritten sentence by sentence, and its pacing, its asyndeton, and its verbs of ordinary observation were replaced throughout.",
+      "evidence": {
+        "baseline": "Engines get larger, nets get longer, sonar makes the fish visible in ways they were not before ... Boats are bigger, houses are better, children leave for universities ... Not catastrophically at first, just enough that boats have to go farther, fish longer, deploy more equipment for the same yield.",
+        "shipped": "Engines grow larger, nets grow longer, and sonar makes fish visible in ways they were not before ... Boats are bigger, houses are better, and children leave for universities ... Not catastrophically at first, but enough that boats must go farther, fish longer, and deploy more equipment for the same yield."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, and ordinary copyediting of asyndeton.",
+      "diagnosis": "This is the volume's only extended narrative and it works by accumulation: unpunctuated clause after unpunctuated clause, each a small increment, so the collapse arrives without any sentence announcing it. Every closing and the pass inserted turns an open series into a completed one, and the paragraph now reports four finished stages instead of one continuous slide. Get larger is what a fisherman would say; grow larger is what a report would say. Just enough is concessive and but enough is adversative, and the difference is whether the thinning is being minimized by the people living through it, which is the sentence's point. Have to and must are not equivalent either: have to is external compulsion, must can be read as obligation.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The chapter's refrain lost its connective at both occurrences, and the cleft that carried the second one was dissolved.",
+      "evidence": {
+        "baseline": "It existed, but it did not register. And what does not register cannot be protected ... What they cannot do, under their current architectures, is perceive the conditions they are consuming. They cannot account for what does not register. And what does not register cannot be protected.",
+        "shipped": "It existed, but it did not register. What does not register cannot be protected ... Under their current architectures, they cannot perceive the conditions they are consuming. They cannot account for what does not register. What does not register cannot be protected."
+      },
+      "authorizedBy": "Catalog 4.2 applied to And, and 4.8 read onto the repeated refrain.",
+      "diagnosis": "The sentence appears twice by design, once at the end of the fishery and once at the end of Part I, and the volume card names carefully varied repetition among the protected devices. And is what marks it as a conclusion drawn rather than a maxim asserted, and without it the line reads as an aphorism, which is the register the chapter has been avoiding. The cleft is a separate loss: What they cannot do, under their current architectures, is perceive puts the incapacity in the subject position and delays the verb until the reader has accepted the frame, which is how the sentence earns the refrain that follows two sentences later.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Six sentence-initial connectives were removed, three of them from the chapter's hinge sentences.",
+      "evidence": {
+        "baseline": "But institutions are not neutral ... And most modern institutions were built ... And weakened feedback makes incoherence harder to perceive ... But many of the conditions required for coherent civilization ... Markets alone cannot solve this, because markets optimize ...",
+        "shipped": "Institutions are not neutral ... Most modern institutions were built ... Weakened feedback makes incoherence harder to perceive ... Yet many conditions required for coherent civilization ... Markets alone cannot solve this because they optimize ..."
+      },
+      "authorizedBy": "Catalog 4.2, generic transitions.",
+      "diagnosis": "But institutions are not neutral answers the previous paragraph's claim that institutions look inevitable, and the whole force of the paragraph is that it is a rebuttal. Without But it is an assertion arriving from nowhere. Markets optimize repeated after Markets alone cannot solve this is deliberate: naming the subject twice is what makes the second clause a reason rather than a restatement, and they optimize invites the reader to check which antecedent is meant. And the comma before because is doing real work, since without it the sentence can be read as denying that markets solve this for that reason.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "Two enumerations lost their repeated preposition and their definite articles.",
+      "evidence": {
+        "baseline": "extraction: from ecosystems, from labor, from attention, from time, from community, from future generations, and increasingly from cognition itself ... They are these systems: the financial flows, the engagement architectures, the political incentive cycles, the institutional logics that have spent generations optimizing ...",
+        "shipped": "extraction: from ecosystems, labor, attention, time, community, future generations, and increasingly cognition itself ... They are the financial flows, engagement architectures, political incentive cycles, and institutional logics that have spent generations optimizing ..."
+      },
+      "authorizedBy": "Catalog 4.4 and compression.",
+      "diagnosis": "Repeating from makes seven separate extractions rather than one extraction from seven places, and the seventh, cognition itself, is meant to land as a distinct kind. Repeating the makes each system in the second list a specific thing the book has already described rather than a category, and These systems is the phrase that connects the paragraph back to Part I. Dropping it leaves the sentence saying that the amplified systems are financial flows in general.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F5",
+      "summary": "Four small precision losses in the closing movement.",
+      "evidence": {
+        "baseline": "emerged naturally rather than being designed ... nervous-system regulation ... a living ecosystem regulating climate, biodiversity, water cycles, and atmospheric stability ... without first staying long enough on the floor to recognize what the floor actually is",
+        "shipped": "emerged naturally instead of being designed ... nervous system regulation ... a living ecosystem that regulates climate ... without staying long enough on the floor to recognize what it is"
+      },
+      "authorizedBy": "Compression and ordinary copyediting.",
+      "diagnosis": "Rather than being designed contrasts two accounts of the same institutions; instead of being designed reads as substitution. Nervous-system regulation is the canonical hyphenated form on the volume card's terms list. The participle regulating describes what the forest is doing continuously, where that regulates makes it a function the forest performs. And what the floor actually is repeats the chapter's own noun at its last appearance, which is the sentence's closing gesture: the floor named one more time so the reader stands on it before Part II lifts off.",
+      "producedRule": "R-REGISTER-DICTION"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0065", "effect": "no change to the item, first telling restored in full", "note": "CTD-0065 records that the fishery is re-explained later in the volume and asks for a developmental repetition map. This record restores the first and fullest telling, which is the occurrence the item's paydown criteria would preserve. The later recaps are calibrated in their own sections." },
+    { "id": "CTD-0019", "effect": "unchanged", "note": "The fishery is a composite case in both texts, and the baseline labels it as such: a case repeated, with local variations, across most of the world's ocean systems. That labelling is restored, which is the strongest form of the disclosure available in the section." },
+    { "id": "CTD-0004", "effect": "unchanged", "note": "Every civilization produces institutions that mirror the assumptions beneath its worldview survives in both texts. Extraction predates capitalism likewise." },
+    { "id": "CTD-0012", "effect": "not engaged", "note": "The chapter names no currency term." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Eleven prohibited marks, the most in any section so far. Five introduced an enumeration or an appositive specification and became colons: the mechanistic gloss, the seven extractions, the fishery's ecological constraints, the composite-case label, and these systems. One introduced the two-limbed reason why regeneration reads as irrational and became a colon, because a comma there would compete with the comma inside the not-because pair. One followed the incentives' blindness and carried a dependent causal clause with no internal comma, so it became a comma. One followed the financial structure and separated two movements; the pass's period is kept, because a third colon in that paragraph would have been punctuation theater. One pair enclosed often a generation, sometimes two and became a comma pair, since the interruption's internal comma is part of the parallel. One pair enclosed the seven unquantifiable conditions; the pass's including embedding is kept, because a comma pair around a seven-item list is unreadable. One pair enclosed four adjectives inside a noun phrase and became a comma pair with a closing and, which is the only repair that keeps were designed in the sentence." },
+        { "kind": "kept", "note": "The pass's colon after mechanistically, its colon after the ecology itself, its period after requires it, and its including embedding for the unquantifiable conditions. Four correct or unavoidable repairs." },
+        { "kind": "kept", "note": "Eight paragraphs the pass left untouched, including the whole of the decoupling and proximate-feedback sequence. They needed nothing and keeping them is recorded as a decision." },
+        { "kind": "restored", "note": "The fishery narrative's pacing, asyndeton, and plain verbs, both occurrences of the refrain with their And, the cleft in What they cannot do, six sentence-initial connectives, the repeated from and the repeated the in two enumerations, the canonical hyphen in nervous-system regulation, and the closing repetition of the floor." },
+        { "kind": "verified", "note": "The interstitial page that follows this chapter, Toward Humane Technology: From Diagnosis to Design, is byte-identical between baseline and shipped text. The pass did not touch it. It is recorded separately." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Is the fishery a composite or a specific case?",
+      "context": "The restored text labels it a case repeated, with local variations, across most of the world's ocean systems, which is honest about its composite status but still asserts a pattern across most ocean systems. CTD-0019 requires the claim to be sourced or bounded. The restoration does not change the exposure but does make the narrative longer and more vivid, which raises the cost of getting it wrong.",
+      "for": "author"
+    }
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This chapter is the volume's densest concentration of prohibited marks and the first where punctuation repair, rather than restoration, was the harder half of the work. Two of the eleven marks had no clean answer, and in both cases the pass's imperfect repair was kept rather than replaced with a worse one, which is what R-PROPORTION requires. The finding worth carrying forward is F1: the fishery lost twenty-six words and nearly all of its narrative texture, and the mechanism was almost entirely the insertion of a closing and into open series. A word count cannot see that, and a slop catalog reading for synthetic symmetry will recommend it every time."
+  }
+}

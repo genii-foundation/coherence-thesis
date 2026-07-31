@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-must-be-common-and-why",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What Must Be Common and Why**",
+  "currentHeading": "**What Must Be Common and Why**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "patient capital",
+      "endowment",
+      "cooperative",
+      "commons",
+      "Currency of Presence",
+      "COHERENCE",
+      "Bio-Consensus",
+      "venture capital"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0012 requires the Currency of Presence, COHERENCE, and Bio-Consensus to be named as distinct concepts, and CTD-0046 forbids calling Proof of Council validated. Neither term appears in Part II, so neither item is touched. CTD-0072 requires that no funding structure or entity be presented as operational, which the restored conditional framing observes. CTD-0078 requires that named scholarship not function as proof of feasibility, which governs every research lineage in this part. CTD-0055 requires unimplemented properties to be stated as requirements."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Each of the four commons lost the reason it must be common.",
+      "evidence": {
+        "baseline": "If they are, the owner of the identity infrastructure has governance power over the entire network that is incompatible with the distributed sovereignty that the constitutional principles require. ... The entire value of trust infrastructure depends on its independence from any actor with a stake in the outcomes it records.",
+        "shipped": "(the four commons are not enumerated with their reasons in the shipped chapter)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The section is a four part argument in which each part has the same shape: name the layer, state what ownership would produce, name the constitutional principle it would violate. Removing the second and third moves leaves a list of things that should be shared. The collective intelligence case also carries the only incentive argument in the chapter, that contributors subsidizing a private appropriator will stop contributing.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The ecological commons case, which is the subtlest of the four, was removed entirely.",
+      "evidence": {
+        "baseline": "The ecological stewardship relationships that communities develop with the bioregions they inhabit cannot be owned in the conventional sense, because ecological systems are not ownable in the ways that conventional property law assumes. But they can be governed as commons.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the only place in Part II where the ecological commitment becomes an economic structure rather than a value, and it is the bridge to Part VIII's argument about land. It also makes a legal claim, that property law's assumptions do not fit ecological systems, that the volume relies on later without restating.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0063",
+      "effect": "no change",
+      "note": "The Earth Compact scope item was read. The restored ecological commons passage speaks of governance arrangements rather than of a compact, so the item is not touched."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Three were parenthetical appositives naming a commons and became comma pairs. One introduced a parenthetical incentive argument and became a because clause."
+        },
+        {
+          "kind": "restored",
+          "note": "All four commons with their reasons, the incentive argument in the collective intelligence case, and the ecological commons case in full."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored ecological passage makes a claim about what conventional property law assumes. CTD-0078 requires legal claims to be checkable. Restored and flagged for the specialist review the item names.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 670,
+    "shippedWords": 300,
+    "shippedDelta": -55
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. A four part argument reduced to a four part list is the same operation recorded at the four temporal layers, and by the end of Part II it is the volume's dominant loss: the structure survives and the reasoning inside it does not."
+  }
+}

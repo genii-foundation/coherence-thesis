@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-5-loving-presence",
+  "editorialId": "volume-07",
+  "sectionHeading": "**5 · Loving Presence**",
+  "currentHeading": "#### 5 · Loving Presence",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Loving Presence",
+      "Rumi",
+      "author of all our experience"
+    ],
+    "itemsRead": [
+      "CTD-0007",
+      "CTD-0082",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0007 requires epigraph verification and CTD-0082 covers the same ground for this volume. The Rumi attribution carries a pending verification marker in the shipped text, and that marker is kept."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The tenet lost its derivation from the tenet before it.",
+      "evidence": {
+        "baseline": "Once an erotic, turned-on relationship with life is established, Loving Presence is simply that turned-on awareness made constant.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the second of the two joints in the relating tier, and it is the sentence that makes Loving Presence a development of Wholesome Eroticism rather than a separate virtue. Simply that made constant is also the whole definition: nothing new is added, only duration.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The two failure modes the tenet guards against were cut.",
+      "evidence": {
+        "baseline": "It is the warmth that keeps presence from going cold and clinical, and the steadiness that keeps love from going sentimental.",
+        "shipped": "It asks for warmth without sentimentality and steadiness without clinical distance."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline crosses the terms: warmth guards presence, steadiness guards love. The shipped version pairs warmth with sentimentality and steadiness with clinical distance, which reverses both assignments and turns a chiasmus into a contradiction. This is a semantic error introduced by compression, not a loss of ornament.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F3",
+      "summary": "A claim about authorship of experience was removed rather than bounded.",
+      "evidence": {
+        "baseline": "most of all the one with ourselves, who are the author of all our experience",
+        "shipped": "A person is not the sole author of everything they experience"
+      },
+      "authorizedBy": "Section 5, earn universals, and CTD-0088.",
+      "diagnosis": "The universal is unearned and the correction is right. But the correction was applied by deleting the subject, so the shipped tenet no longer says that the most important relation is the one with oneself, which is the tenet’s first claim. The re-render restores the subject and drops the universal.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "paydown preserved",
+      "note": "The Rumi attribution keeps the pending verification marker the prior pass added."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced an enumeration of what may arrive and became a comma pair. One introduced the attribution and is handled by the marker."
+        },
+        {
+          "kind": "applied",
+          "note": "Who are the author of all our experience dropped under section 5. Most of all the one with ourselves restored."
+        },
+        {
+          "kind": "restored",
+          "note": "The derivation from tenet four, the meeting of whatever arrives, the crossed guard against cold and sentimental, and the most reliable instrument close."
+        },
+        {
+          "kind": "kept",
+          "note": "The proportion paragraph about help and rescue, which is substituted prose and one of the best things in the shipped text."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The crossed pair is the volume’s clearest case of R-PROPORTION-FLOOR: no catalog category names it, and the compression produced a sentence that says the opposite of the baseline in both halves."
+  }
+}

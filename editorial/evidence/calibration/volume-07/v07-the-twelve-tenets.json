@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-twelve-tenets",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Twelve Tenets**",
+  "currentHeading": "## Part VI: The Twelve Tenets",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Twelve Tenets",
+      "three tiers",
+      "grammar",
+      "magical"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0087",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0088 requires that developmental claims not be stated as law, which is why the shipped sentence marking the sequence as this project’s rather than universal is kept. Nothing in the ledger governs the tier structure."
+  },
+  "substitutionCheck": "Grepped. The sequence belongs to this project and should not be mistaken for a universal developmental law is absent from the baseline and is retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The tier structure lost its reason and the tenets lost their function.",
+      "evidence": {
+        "baseline": "the twelve tenets are the grammar that disciplines the walking of it, the precepts that turn raw perception into a way of being. They are set in three tiers, and the tiers are not arbitrary, since each presupposes the one before.",
+        "shipped": "the Twelve Tenets offer a grammar for practicing it. The first three concern perception."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The precepts that turn raw perception into a way of being is the definition. Each presupposes the one before is the structural claim that makes the three tiers more than a filing scheme. Both went, and the section became a table of contents for Part VI.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The characterisation of the last four tenets was neutralised.",
+      "evidence": {
+        "baseline": "the last four open outward into the work’s more seemingly magical realms",
+        "shipped": "The last four move into animistic and cosmological interpretations."
+      },
+      "authorizedBy": "Catalog 4.6 or 4.7, plausibly applied to magical.",
+      "diagnosis": "Seemingly is the hedge the baseline already supplies, and the phrase warns the reader that the register is about to change, which is a service. Animistic and cosmological interpretations names the content and drops the warning, so a reader arrives at tenet nine unprepared.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The sequence is marked as this project’s and not as a developmental law."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash introducing an appositive definition became a comma, since the phrase is genuinely dependent."
+        },
+        {
+          "kind": "restored",
+          "note": "The grammar definition, the three tier reasoning, the description of all three tiers including the magical realms warning, and the closing statement that these are the working instruments and reward depth."
+        },
+        {
+          "kind": "kept",
+          "note": "The universal law disclaimer."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

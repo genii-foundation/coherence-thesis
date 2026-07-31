@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-amendment-architecture",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Amendment Architecture**",
+  "currentHeading": "**The Amendment Architecture**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Living Constitution",
+      "Human Dignity",
+      "Participatory Legitimacy",
+      "Sovereignty",
+      "Consent",
+      "Transparency",
+      "Anti-Capture",
+      "Exit",
+      "Repair",
+      "stewardship",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0075",
+      "CTD-0006",
+      "CTD-0055",
+      "CTD-0072",
+      "CTD-0007",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0071 records that Providence's constitutional design has not had legal review, which is why the restored governance chapters are kept in proposal grammar throughout. CTD-0075 forbids attributing a named recurring apparatus to Volume III, which changed the chapter references in this part from named sections to named arguments. CTD-0006 requires that no physiological evidence determine governance standing, which bears on the stewardship chapters. CTD-0055 requires unimplemented safeguards to read as requirements. CTD-0007 governs the self-epigraphs, which keep the Adapted from attribution."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The two-sided argument about amendment difficulty was reduced to one side.",
+      "evidence": {
+        "baseline": "An amendment process that is too easy, that allows the principles to be changed whenever a majority of current participants prefers a different formulation, does not protect the long-horizon commitments from short-horizon pressures. An amendment process that is too difficult ... does not allow the constitution to evolve in contact with what building actually produces.",
+        "shipped": "(the shipped chapter states the tension without either limb)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The chapter's design, a two tier amendment architecture, follows from having both failure modes on the table. With only the tension named, the tier distinction reads as a preference rather than as a response.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The three specific amendment requirements were removed.",
+      "evidence": {
+        "baseline": "extended deliberation periods that prevent amendment in response to immediate pressures; participation thresholds that ensure amendments have genuine broad support rather than support from a mobilized minority; and constitutional review mechanisms that evaluate proposed amendments against the foundational commitments.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "These three are the chapter's only concrete mechanisms, and the extended deliberation requirement is the one the donor scenario in Chapter Twenty-Four relies on by name. A governance chapter that specifies no procedure has not made the principles operational, which is what Part III exists to do.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0071",
+      "effect": "no change",
+      "note": "Restored in proposal grammar. The item's requirement for constitutional review is unaffected."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Two were parenthetical qualifications and became comma pairs. One introduced the enumeration of requirements and became a colon. One was a parenthetical appositive naming the core commitments and became a comma pair."
+        },
+        {
+          "kind": "restored",
+          "note": "Both amendment failure modes, the core and mechanism distinction with its reasoning, and the three specific requirements."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 518,
+    "shippedWords": 233,
+    "shippedDelta": -55
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section pairs with the interpretive architecture as the two places in Part III where the whole mechanism was removed and only the problem statement kept. A part whose stated purpose is to make principles operational cannot survive that trade."
+  }
+}

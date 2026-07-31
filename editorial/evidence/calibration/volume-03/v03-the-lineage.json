@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-lineage",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Lineage",
+  "currentHeading": "Inheritance",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Claim scope on the proven status of the lineage remains an author decision.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["lineage", "synthesis", "discontinuity", "proven to work"],
+    "itemsRead": ["CTD-0004", "CTD-0007", "CTD-0008", "CTD-0069", "CTD-0073"],
+    "outcome": "One recorded decision binds and is preserved: the self-epigraph keeps its Adapted from label with the baseline wording restored. CTD-0008's institutional audit covers every claim in the chapter that follows and remains owed. No decision forbids restoring the chapter's opening argument."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's reason for existing was deleted, leaving only its conclusion.",
+      "evidence": {
+        "baseline": "we must show that Providence did not emerge from nowhere. It is tempting, when proposing something new, to present it as a clean break ... This temptation is not only dishonest; it is dangerous, because an institution that imagines itself to be without ancestors is an institution that has cut itself off from the accumulated wisdom that might keep it from repeating ancient mistakes.",
+        "shipped": "Providence is a synthesis, not a clean break. ... Naming the lineage matters for more than gratitude."
+      },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "The baseline says why the lineage chapter exists: an institution without ancestors cannot learn from their failures, so claiming novelty is a safety problem rather than a manners problem. The shipped opening asserts that the lineage matters for more than gratitude without saying what the more is. The argument, and the word dangerous, are what make the chapter load bearing instead of decorative.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The three stated reasons and the display verdict were both removed.",
+      "evidence": {
+        "baseline": "for three reasons: because it is true; because it grounds the proposal in evidence rather than aspiration; and because the traditions we draw from carry hard-won lessons ... *To show its ancestors is not to diminish it. It is to ground it in everything that has already been proven to work.*",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The second reason is the one the whole chapter turns on: the lineage is evidence, not homage. Without it a reader is entitled to treat the chapter as a courtesy to predecessors. The display line states the same point in the volume's own display register and answers the objection that citing ancestors is self-deprecating.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "to present it as a clean break, sustained fenced around sometimes for centuries, and To show its ancestors is not to diminish it.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Two fenced short phrases with no internal comma and became commas. The third separated a denial from the positive claim that replaces it, which are two movements, and became a period.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0007", "effect": "preserved", "note": "The self-epigraph keeps its Adapted from label with the baseline wording restored. The voice card names Nothing that matters is invented from nothing as an exemplar opening anchor, and the restored line is the fuller form of it." },
+    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "Nearly every element of what we propose has been discovered before, and everything that has already been proven to work, are unbounded claims about the historical record." },
+    { "id": "CTD-0008", "effect": "reopened by restoration", "note": "The chapter's claim that the lineage grounds the proposal in evidence is restored. The evidence is the seven sections that follow, all of which the item's audit covers." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The epigraph's full wording, the argument about institutions without ancestors, the discontinuity and synthesis pair, the three stated reasons, and the display verdict." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks, as recorded in F3." },
+        { "kind": "cut", "note": "The shipped rewrite." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim scope. The restored chapter says its predecessors' principles have been tested and proven to work, and that the lineage is evidence rather than aspiration. That is a strong evidential claim about seven traditions summarised in a paragraph each. Restored, flagged under CTD-0008.",
+    "Heading. The Lineage is the noun the chapter's argument uses throughout. Inheritance names the same thing from the receiving end. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 repeats the pattern first recorded in v03-the-coordination-deadline: the pass kept the position and cut the argument for holding it. Across eleven sections now, the single most common loss in this volume is a because clause."
+  }
+}

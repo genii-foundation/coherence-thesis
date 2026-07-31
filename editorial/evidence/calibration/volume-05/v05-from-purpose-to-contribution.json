@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-from-purpose-to-contribution",
+  "editorialId": "volume-05",
+  "sectionHeading": "From Purpose to Contribution",
+  "currentHeading": "From Purpose to Contribution",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "contribution",
+      "fulfillment",
+      "coral reef",
+      "success"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0090"
+    ],
+    "outcome": "The semantic review records that a baseline claim about contribution and fulfilment reliably meeting was corrected to they can meet but are not guaranteed to coincide. The baseline sentence reads tend to arrive together, which is already a tendency claim rather than a guarantee, so restoring it does not reopen the item."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "982 words.",
+        "shipped": "407 words, of which 3 of 35 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 35 current sentences of six words or more, 3 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The historical measure of purpose lost its three denials and its three trades.",
+      "evidence": {
+        "baseline": "Not by what you intended but by what you gave; not by what you imagined but by what you built; not by what you felt called to but by what you actually did when the day demanded it. A farmer's purpose was visible in the field, a healer's in the healed, a builder's in the thing that stood afterward and bore weight.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis, and 4.4.",
+      "diagnosis": "Each denial names a real and common substitute for contribution, so both limbs are plausible and 4.3's retention limb holds. The three trades then ground the claim in work, which is the register the card sets for the volume, humane philosophical prose grounded in ordinary work.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The success and purpose contrast, four sentences long in the baseline, was cut entirely.",
+      "evidence": {
+        "baseline": "Success asks how far I can go. Purpose asks what I can give. Success asks what I can gain. Purpose asks what I am helping to become possible.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "This is the passage the chapter title describes and the one a reader remembers. Its symmetry is doing the work the chapter needs, which is 4.4's retention limb, and the sentence that follows depends on it having been said.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The paragraph on why contribution feels meaningful lost its evolutionary account and its diagnosis.",
+      "evidence": {
+        "baseline": "To contribute was to matter; to matter was to belong. Those equations are very old and still wired into us, which is why a life of consumption without contribution, however comfortable, so reliably curdles into a low and puzzling dissatisfaction.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.12 plausibly applied to still wired into us.",
+      "diagnosis": "The equations are the premise for everything the chapter claims about fulfilment, and the closing clause is the observation a reader can test against their own week. Curdles is the volume's diction rather than a decoration.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    },
+    {
+      "summary": "The coral reef closed the chapter's argument about accumulated contribution and was removed.",
+      "evidence": {
+        "baseline": "A civilization outlives every single builder, and is composed entirely of their accumulated contributions, the way a coral reef is composed of the labor of creatures long dead.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.18 plausibly applied to the trailing simile.",
+      "diagnosis": "The reef is the one image in the chapter and it lands the four-part list that precedes it. 4.18's defect limb covers metaphors followed by sentences that translate them; nothing follows this one.",
+      "producedRule": "R-LAND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0079",
+      "effect": "no reopening",
+      "note": "Contribution and fulfilment are restored as tending to arrive together, which is the baseline's own modality and satisfies the recorded correction."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes. Three became colons where the second clause enumerated, four became commas around genuinely appositive material, and one paired dash was rebuilt into a sentence break so that belonging earned through participation could stand alone."
+        },
+        {
+          "kind": "cut",
+          "note": "Precisely in the closing sentence, which the voice card lists among phrases to reduce and which the paragraph does not need."
+        },
+        {
+          "kind": "restored",
+          "note": "The wide and difficult country, the three denials and three trades, the self-image and action distinction, the mutual dependence account, the success and purpose contrast, the musician and the mentor, the widening circle, the coral reef, and the closing question about collaboration."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The ledger case here is a near miss worth recording: the semantic review describes a baseline claim more strongly than the baseline states it, and reading the item without reading the source would have produced a hedge on a sentence that was already hedged."
+  }
+}

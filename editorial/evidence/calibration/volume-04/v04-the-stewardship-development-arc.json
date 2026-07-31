@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-stewardship-development-arc",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Stewardship Development Arc**",
+  "currentHeading": "**The Stewardship Development Arc**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Living Constitution",
+      "Human Dignity",
+      "Participatory Legitimacy",
+      "Sovereignty",
+      "Consent",
+      "Transparency",
+      "Anti-Capture",
+      "Exit",
+      "Repair",
+      "stewardship",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0075",
+      "CTD-0006",
+      "CTD-0055",
+      "CTD-0072",
+      "CTD-0007",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0071 records that Providence's constitutional design has not had legal review, which is why the restored governance chapters are kept in proposal grammar throughout. CTD-0075 forbids attributing a named recurring apparatus to Volume III, which changed the chapter references in this part from named sections to named arguments. CTD-0006 requires that no physiological evidence determine governance standing, which bears on the stewardship chapters. CTD-0055 requires unimplemented safeguards to read as requirements. CTD-0007 governs the self-epigraphs, which keep the Adapted from attribution."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The opening claim, that stewardship is a development rather than a credential, lost its reasoning.",
+      "evidence": {
+        "baseline": "Stewardship is not a credential. It is a development. The capacity for genuine stewardship, for holding the integrity of a living system through changing conditions, over extended time, under pressures that consistently favor simpler and more expedient choices, is not something people arrive at through training alone. It develops through practice, through responsibility, through the experience of being held accountable ... and through the specific forms of support that allow that experience to be metabolized rather than merely survived.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.3 read onto the credential denial.",
+      "diagnosis": "Metabolized rather than merely survived is the distinction the whole support architecture of Chapter Seventeen exists to serve, and it appears once. The credential denial is not a straw alternative: credentialing is what every institution actually does, which is 4.3's retention limb.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F2",
+      "summary": "All three stages lost the capacities they develop.",
+      "evidence": {
+        "baseline": "This stage develops the foundational capacities, attentiveness to the living system's actual state rather than its ideal state, willingness to address difficulty before it becomes crisis, and the ability to distinguish stewardship authority from ownership, through practice with real but bounded stakes.",
+        "shipped": "(the three stage names survive without their capacities)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Each stage in the baseline names what it develops and why that capacity cannot be developed elsewhere. Attentiveness to the actual rather than the ideal state, and the distinction between stewardship authority and ownership, are the two ideas the anti-capture chapters depend on. Without them the arc is a career ladder, which is precisely what the chapter says it is not.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0006",
+      "effect": "no change",
+      "note": "The arc is described in terms of practice, responsibility, and accountability. No physiological criterion appears."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Four were parenthetical appositives listing capacities and became comma pairs. One introduced a specification of the third stage and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The credential denial with its reasoning, the metabolized rather than survived distinction, and all three stages with their developed capacities."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored third stage says constitutional stewardship requires wisdom, authority from service, and institutional memory. These are character claims about who may hold constitutional responsibility, and the card warns against any claim that physiology or development reveals virtue. The passage makes no physiological claim, but it does make a developmental one. Restored and flagged.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 359,
+    "shippedWords": 102,
+    "shippedDelta": -72
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the third in Part III where stage or category names survived and their content did not, which is now the settled diagnosis for this volume rather than a per-section finding."
+  }
+}

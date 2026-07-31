@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-why-now-and-why-not-later",
+  "editorialId": "volume-03",
+  "sectionHeading": "Why Now, and Why Not Later",
+  "currentHeading": "Why Begin Now",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The chapter's degree of urgency and its address to the reader remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["deadline", "margin", "fear", "dysregulation", "aperture", "load-bearing work of this generation"],
+    "itemsRead": ["CTD-0004", "CTD-0020", "CTD-0045", "CTD-0073"],
+    "outcome": "No recorded decision touches this section. CTD-0020 is again the nearest precedent: the balance between warning and invitation, and the degree of urgency a closing passage may carry, are recorded there as author decisions. That is why the restored call to this generation is flagged rather than trimmed. The reference to fear as dysregulation and a narrowing of the aperture is the volume's own vocabulary and is consistent with the master ledger's definition of coherence."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The heaviest loss in the chapter. Seventy-five percent of the section was removed and the argument that justifies the whole volume's timing went with it.",
+      "evidence": {
+        "baseline": "527 words. Five paragraphs and a display close.",
+        "shipped": "132 words. Checked against the baseline: deployed overnight like emergency funds and rewards blunt solutions appear zero times in it."
+      },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "The section answers the one question a reader can fairly press on a book about a deadline: why now rather than later. The baseline answers it with a structural argument that has four steps, each of which the shipped version reduces to a clause or drops. The result is a paragraph that asserts urgency without the reasoning that earns it, which is the failure mode the chapter opened by disowning.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The section's load-bearing sentence pair was deleted.",
+      "evidence": {
+        "baseline": "A coordination infrastructure adequate to a crisis cannot be built during the crisis. It must already exist when the crisis arrives, or it will not be there to help.",
+        "shipped": "Absent from the body. A version of it survives only in the shipped text's general statement that preparation needs time to mature."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the argument. Everything else in the section supports it, and the display close restates it. Removing it and keeping a paraphrase of its consequence leaves the reader with the conclusion and no premise. Restored, together with the display close that carries it a second time at higher register, which is the earned repetition the poetic standard protects.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "The passage on fear was reduced to two sentences and lost its reason and its promise.",
+      "evidence": {
+        "baseline": "We do not write this to frighten. Fear is itself a form of dysregulation, a narrowing of the aperture, and a civilization governed by fear coordinates worse, not better. This volume will return to that.",
+        "shipped": "Fear does not improve coordination. It narrows attention and rewards blunt solutions."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline states its intention to the reader, gives the physiological reason in the volume's own vocabulary, and promises to return to it, which the physiology chapters do. The shipped version keeps the observation and drops the intention, the vocabulary, and the promise. The narrowing of the aperture is one of the volume's protected images and it is introduced here.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "The call to this generation, and the naming of what follows in the volume, were removed entire.",
+      "evidence": {
+        "baseline": "the load-bearing work of this generation, to be begun now, in the margin we still have, by people willing to do the slow and unglamorous labor of growing what cannot be built quickly. That is the imperative.",
+        "shipped": "The architecture, currency, governance, and safeguards that follow are offered as one open experiment in that slower preparation."
+      },
+      "authorizedBy": "Compression, and the volume card's instruction to reduce pitch language at Level 3.",
+      "diagnosis": "This is the same shape recorded as F2 in v03-many-ways-to-fail: argument and recruitment share a sentence, and the cut takes both. Here the argument half is the claim that the work belongs to the living rather than to a later generation, which is the section's conclusion, and the recruitment half is the appeal to people willing to do unglamorous labor. Restored whole, because the appeal is bounded, names a cost rather than a reward, and the volume card's Level 3 licence targets pitch, not the assignment of responsibility.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F5",
+      "summary": "Five prohibited marks.",
+      "evidence": {
+        "baseline": "Coordination infrastructure of the kind this volume describes fenced around a four-item list, not the moment of greatest crisis fenced around by then it is too late, coordinates worse, not better, Everything that follows in this volume fenced around a five-item list, and the work must begin now.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Two fenced lists inside subjects were rebuilt: the first by promoting the list into its own sentence ahead of the claim it conditions, which is the reordering R-LAND recommends, and the second by merging the list into the subject. One fenced an explanatory aside and became a subordinate clause with because, since the aside states a reason. One appended a promise to return and became a period. The last introduced a not-but contrast and became a colon.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0020", "effect": "extended by evidence", "note": "The restored close asks the reader's generation to take on load-bearing work now, in the margin that remains. The item records that this balance is an author decision in Volume II. It is live here at the end of Part One." },
+    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "The window is now, and now is the last of the margin, are unbounded claims about timing that no evidence in the volume establishes." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The two framing questions, the nature-of-the-thing argument, the vaccine and bailout contrast, the four things that must mature, the cannot-be-built-during-the-crisis pair, the account of why the present moment is decisive, the window argument, the passage on fear, the call to this generation, and the display close." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across five marks, as recorded in F5." },
+        { "kind": "cut", "note": "The shipped rewrite." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Urgency and address. The restored section ends Part One by telling the reader that this is the load-bearing work of their generation and that the margin is nearly gone. That is the volume at its highest warning temperature. Restored at the baseline level under the instruction to restore and flag. CTD-0020 records the balance as the author's decision, and the decision is now due here as well as in Volume II.",
+    "Timing claims. Now is the last of the margin is asserted without support. It is also the sentence the chapter title depends on. Restored, flagged under CTD-0004.",
+    "Heading. Why Now, and Why Not Later names both halves of the question the section answers. Why Begin Now names one. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the second section in the volume, after v03-many-ways-to-fail, where a licensed reduction of pitch language took an argument with it. The pattern is now established well enough to state as guidance for the remaining sections: where a volume card licenses reduction of a register, the cut must be made at the clause and not the paragraph, because in this manuscript the argument and the appeal are usually in the same sentence."
+  }
+}

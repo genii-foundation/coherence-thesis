@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-providence-reconsidered",
+  "editorialId": "volume-05",
+  "sectionHeading": "Providence Reconsidered",
+  "currentHeading": "Providence Reconsidered",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Providence",
+      "Currency of Presence",
+      "substrate",
+      "flourishing"
+    ],
+    "itemsRead": [
+      "CTD-0072",
+      "CTD-0055",
+      "CTD-0056",
+      "CTD-0107",
+      "CTD-0079"
+    ],
+    "outcome": "CTD-0055 governs Providence ownership and protocol promises and CTD-0072 requires a dated inventory before any named entity is described as operating. CTD-0107 retires the Currency of Presence semantic link, and the semantic review records that the currency remains a proposal with unresolved measurement and governance. All of those bind. The currency sentence is restored with its unresolved status stated in the same paragraph, and every operational verb is rendered as proposal."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "1615 words.",
+        "shipped": "579 words, of which 1 of 46 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 46 current sentences of six words or more, 1 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The six-movement pathway, the chapter's joinery, lost the sentence that makes it one motion.",
+      "evidence": {
+        "baseline": "These are not six parts bolted together. They are one motion, seen at six moments: a human being becoming someone who can be counted on for the thing that only they can do.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.8 applied to the closing restatement.",
+      "diagnosis": "4.8's defect limb covers a claim, its paraphrase, and its restatement. This is not a restatement, it is the inference the six italicised movements exist to support, and it is the only place the chapter says what the pathway produces.",
+      "producedRule": "R-PROPORTION",
+      "id": "F2"
+    },
+    {
+      "summary": "The substrate paragraph, which the previous four volumes were built to reach, lost its argument and kept only its topic.",
+      "evidence": {
+        "baseline": "It is the plain description of a substrate forming, one person at a time, beneath a world that has run for centuries on extraction because it had nothing else solid to stand on. This is the something else. It was always going to have to be made of people. Nothing else was ever strong enough to carry a future.",
+        "shipped": "Potential becoming purpose, contribution, and stewardship is a developmental proposal, not a guaranteed sequence."
+      },
+      "authorizedBy": "Catalog 4.6 and 4.15, applied to the closing three sentences as inflated significance and generic uplift.",
+      "diagnosis": "The card names the movement from potential through contribution to stewardship among the protected structural devices, and this paragraph is where the volume claims it as the corpus's answer. The three short sentences descend rather than rise, which is 4.15's retention limb, and Nothing else was ever strong enough is a claim the whole series has been arguing for.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The three misreadings that give the chapter its title were reduced to two sentences of concession.",
+      "evidence": {
+        "baseline": "They assume it is a system of governance ... Others are equally certain that Providence is fundamentally about technology ... Still others conclude that Providence is essentially an economic proposal ... All of it is real. None of it is the point.",
+        "shipped": "Providence includes technology and an economic proposal because coordination at scale requires infrastructure and exchange. Neither is sufficient to define it."
+      },
+      "authorizedBy": "Catalog 4.4, applied to the three parallel misreadings.",
+      "diagnosis": "The chapter is called Reconsidered because it exists to correct three specific readings, and each correction concedes something real before refusing it. All of it is real. None of it is the point is the paragraph's landing and the chapter's method in eight words.",
+      "producedRule": "R-CADENCE",
+      "id": "F4"
+    },
+    {
+      "summary": "The order in which living things grow, the chapter's argument against building systems first, was flattened into a balance.",
+      "evidence": {
+        "baseline": "Because civilizations do not, in truth, emerge from systems. They emerge from relationships, and the systems come afterward. ... We build the system first and hope the culture will follow: erect the structure and hope trust appears, design the incentives and hope stewardship somehow develops.",
+        "shipped": "Civilizations emerge through relationships and systems together. ... Building structure without culture is fragile. Relying on culture without accountable structure is fragile too."
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis.",
+      "diagnosis": "4.3's retention limb applies: the rejected alternative is the standard modern practice and the chapter names it in the next sentence. The shipped balance is defensible as a proposition and it dissolves the claim the chapter was making about order.",
+      "producedRule": "R-PROPORTION",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0072",
+      "effect": "paydown preserved",
+      "note": "Providence is what Purposeful would build and send out. No delivery, adoption, or outcome is reported."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "paydown preserved",
+      "note": "No ownership, protocol, or governance promise is restored as a commitment. The evaluation questions are restored as questions and are followed by a statement that a proposal of this size owes evidence to anyone it asks to participate."
+    },
+    {
+      "id": "CTD-0107",
+      "effect": "paydown preserved",
+      "note": "The Currency of Presence is named in prose without a semantic link, and the paragraph states that measurement, governance, and the position of a person who declines to be measured are unsettled."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "paydown preserved",
+      "note": "The Purposeful and Providence distinction is restored with the foundation described as proposed rather than operating."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Nineteen em dashes, including two spaced marks in the two-names paragraph. Five became colons, eight became commas around appositive material, three became periods where a second movement deserved its own beat, and three paired dashes were rebuilt, including the spine of this entire work, which was inverted so the list follows the claim."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS across four items, with the currency's unresolved status stated in the paragraph that names it."
+        },
+        {
+          "kind": "restored",
+          "note": "The name that arrives naming nothing new, the three misreadings and their refusal, the roots and the flower, the inversion from serving systems to serving life, the developmental architecture, the six-movement pathway with its single motion, the substrate paragraph, the order in which living things grow, the trellis and the vine, the evaluation questions, and the closing turn to the builders."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The substrate paragraph now stands at full strength and it is the volume's largest claim: that the coherent substrate the corpus has argued for since Volume I is people. It is restored as conviction. CTD-0079 asks for material claims to be classified, and this one is neither evidence nor inference but the thesis of the series.",
+    "Civilizations do not, in truth, emerge from systems is restored against the pass's balanced version. No recorded decision names this sentence, so tonight's policy restores it, but the balanced reading the pass supplied is a defensible position and the author may prefer it.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Four items reach this chapter and none of them touched an image. The pattern across Purposeful and Providence Reconsidered is now clear: the ledger governs what the volume claims to have built, and the prior pass treated it as licence to rewrite what the volume argues. Separating the two recovered roughly a thousand words of argument without reopening a single item."
+  }
+}

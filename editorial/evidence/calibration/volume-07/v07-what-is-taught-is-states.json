@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-what-is-taught-is-states",
+  "editorialId": "volume-07",
+  "sectionHeading": "***What Is Taught Is States***",
+  "currentHeading": "### What Is Taught Is States",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "states",
+      "Wholesome Eroticism",
+      "Loving Presence",
+      "Coherent Resonance",
+      "cohort"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0043"
+    ],
+    "outcome": "CTD-0088 requires that no facilitator promise a state or make an interpretation compulsory. The shipped clause is kept and folded into the restored paragraph. CTD-0043 is not engaged, since Coherent Resonance is used here in its Volume VII sense."
+  },
+  "substitutionCheck": "Grepped. Facilitators cannot promise a state and The design must protect difference, privacy, and the freedom to leave are absent from the baseline and are both retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The claim the section is named for lost its explanation.",
+      "evidence": {
+        "baseline": "A retreat exists to let practitioners experience directly, not be told about but actually inhabit, the turned-on relationship with life the work calls Wholesome Eroticism, the constancy of Loving Presence, the steadiness of Coherent Resonance held in a room full of others doing the same. These are the internal technologies, and they are learned the way any technology is learned: by doing, in conditions arranged so that doing succeeds.",
+        "shipped": "Retreats would emphasize practice over information. They may let participants encounter Wholesome Eroticism, Loving Presence, or Coherent Resonance in community."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Learned the way any technology is learned, by doing, in conditions arranged so that doing succeeds is the section’s argument and the definition of what a retreat is for. Held in a room full of others doing the same is the condition. The shipped version names the three tenets and drops the account of why a room matters.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The paragraph on the cohort becoming a body was deleted.",
+      "evidence": {
+        "baseline": "And retreats do something the solitary year cannot: they make the cohort into a body. Those who began as fellow students return as something nearer to kin, having witnessed and been witnessed, having presenced genius in one another across days of shared practice. The bonds formed there are the raw material of community.",
+        "shipped": "Retreats may deepen bonds within a cohort."
+      },
+      "authorizedBy": "Compression, and the risk of pressure to conform, which the shipped text then states.",
+      "diagnosis": "Sixty nine percent of the section went and this paragraph is most of it. Raw material of community is the hinge into Part X, which is entirely about holding a community. Having witnessed and been witnessed is also the only place the volume shows the reciprocity it has been describing since Part III. The conformity risk is real and is kept, after the paragraph rather than in place of it.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The workshop image and its minimal equipment claim were cut.",
+      "evidence": {
+        "baseline": "The retreat is the workshop of the internal, and community and a few days apart are the only equipment it requires.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the payoff of the internal technology argument from Part III: the whole apparatus is other people and some time. Removing it leaves Part IX with no connection to the volume’s central economic claim.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The no promised state and no compulsory interpretation clause is kept, as is the conformity and privacy caution."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. One framed a parenthetical and became commas. One introduced a specification and became a colon. One introduced an enumeration and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The states claim, the three tenets as inhabited rather than described, the learned by doing account, the workshop and equipment close, and the whole cohort into a body paragraph."
+        },
+        {
+          "kind": "kept",
+          "note": "The facilitator limits and the conformity caution."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

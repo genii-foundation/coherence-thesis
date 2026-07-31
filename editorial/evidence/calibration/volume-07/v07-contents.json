@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-contents",
+  "editorialId": "volume-07",
+  "sectionHeading": "**Contents**",
+  "currentHeading": "**Contents**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "part titles",
+      "Mentors of Presence",
+      "display matter"
+    ],
+    "itemsRead": [
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0084 names the contents list at baseline lines 43 to 63 as malformed display matter with awkward bold boundaries. The bullet list the pass produced is the paydown, and it is kept."
+  },
+  "substitutionCheck": "Every part title in the current list appears in the baseline contents. No substitution.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The contents moved from broken bold display lines to a Markdown list, and the em dash in the Part VII title became a colon.",
+      "evidence": {
+        "baseline": "**Part VII  ·  **The Gathering — Mentors of Presence",
+        "shipped": "- Part VII: The Gathering: Mentors of Presence"
+      },
+      "authorizedBy": "CTD-0084 on malformed emphasis, and section 3 on the em dash.",
+      "diagnosis": "Two colons in one entry is not elegant, but the alternative repairs are worse. A comma would make Mentors of Presence read as a second item in the list rather than a gloss on The Gathering, and dropping the gloss would lose the only place the contents name what Part VII is about.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0084",
+      "effect": "paydown preserved",
+      "note": "The malformed bold boundaries in the baseline contents are not restored."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "The prior pass list form and all eleven entries."
+        },
+        {
+          "kind": "verified",
+          "note": "The list matches the parts as they appear in the body, in order, with the Coda last."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

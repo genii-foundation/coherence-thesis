@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-the-dragon-named-earth",
+  "editorialId": "volume-05",
+  "sectionHeading": "The Dragon Named Earth",
+  "currentHeading": "The Dragon Named Earth",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "dragon named Earth",
+      "planetary consciousness",
+      "ICONS",
+      "Scale"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0081",
+      "CTD-0076"
+    ],
+    "outcome": "The semantic review records that the baseline treated planetary consciousness as real and not merely poetic and that the pass classified the dragon as image, open metaphysical proposition, and ethical frame. That decision binds. The baseline's sentence is restored at full strength and the status is stated once, in the paragraph where the baseline itself raises the objection. CTD-0081 governs numerology as evidence and reaches nothing here. CTD-0076 is satisfied: ICONS is used only as the plural."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "745 words.",
+        "shipped": "343 words, of which 0 of 26 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 26 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The separation mistake lost the claim that makes it a mistake.",
+      "evidence": {
+        "baseline": "The assumption is so deep we rarely notice we hold it, and it has shaped much of modern history. It may also be the single most consequential mistake we have ever made.",
+        "shipped": "Other traditions do not. The separation has nevertheless shaped institutions with grave consequences."
+      },
+      "authorizedBy": "Catalog 4.6, inflated significance, applied to single most consequential.",
+      "diagnosis": "The claim is hedged with may and it is the chapter's reason for existing at the end of a book about human potential. Balancing it with a note that other traditions disagree is accurate and it removes the chapter's argument.",
+      "producedRule": "R-PROPORTION",
+      "id": "F2"
+    },
+    {
+      "summary": "The planet reflecting through us lost the five verbs that specify what reflection means.",
+      "evidence": {
+        "baseline": "but as one of the ways the planet has begun to reflect: to remember, to imagine, to foresee, to choose, to deliberately shape what comes next.",
+        "shipped": "We remember, imagine, foresee, and deliberately alter what comes next."
+      },
+      "authorizedBy": "Catalog 4.4, applied to the five infinitives.",
+      "diagnosis": "The infinitives are the definition, and to choose is the one the shipped list drops, which is also the one the chapter's ethics depend on. The card permits the ecological and poetic register in the Dragon.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The dragon itself lost the two refusals that give the image its politics, and the waking.",
+      "evidence": {
+        "baseline": "Not an empire, which subordinates its parts to a center. Not a hierarchy, which ranks them. Something more like a single living organism composed of ICONS ... A dragon named Earth: vast, alive, scaled, and only now, through us, beginning to wake.",
+        "shipped": "The plural ICONS network would coordinate without subordinating every part to a center. The dragon named Earth is the poetic name for that possible whole."
+      },
+      "authorizedBy": "Catalog 4.3 and 4.7, applied to the refusals and to the closing image as vague grandeur.",
+      "diagnosis": "Empire and hierarchy are the two readings a network of sovereign communities actually invites, so 4.3's retention limb applies. Scaled is the pun the whole chapter is built on and beginning to wake is the image's only motion. The poetic name for that possible whole explains the metaphor and deletes it, which is 4.18's defect performed on the correction.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F4"
+    },
+    {
+      "summary": "The four governing questions lost two of their members and their escalation.",
+      "evidence": {
+        "baseline": "How do we participate well? How do we help life flourish, including the life that is not us? How do we become the kind of reflective intelligence a living planet would be fortunate to have grown, rather than the kind that consumes its own substrate and calls it progress? How do we become good ancestors to everything that comes after, human and otherwise?",
+        "shipped": "How do we participate well? How do we help human and other life flourish? How might reflective intelligence protect rather than consume its substrate?"
+      },
+      "authorizedBy": "Compression, and catalog 4.9 applied to the anaphoric How do we.",
+      "diagnosis": "Calls it progress is the chapter's one piece of edge and the fourth question is where the Dragon hands the volume to the Future Ancestor. The recurrence is the structure, which is 4.9's retention limb.",
+      "producedRule": "R-CADENCE",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0079",
+      "effect": "paydown preserved, restoration flagged",
+      "note": "The dragon's evidentiary status is stated: whether the waking dragon is metaphysics or metaphor is left open, and the ethical argument is said not to rest on the answer. The baseline's sentence that through us the Earth has begun to become conscious of itself is restored at full strength rather than hedged into a proposition, because hedging it inside the image is what removed the image last time."
+    },
+    {
+      "id": "CTD-0081",
+      "effect": "not touched",
+      "note": "No numerological claim appears in this section."
+    },
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "ICONS names the plural network only."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes. Two became commas around appositive material, one became a colon where the second clause enumerated the verbs of reflection, one paired dash around the sovereign communities was rebuilt with commas, and two became commas where the second phrase was genuinely dependent."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The dragon's status is carried by one added sentence in the paragraph that already raises the objection, rather than by hedging the image."
+        },
+        {
+          "kind": "restored",
+          "note": "The older and stranger way of understanding civilization, the separation mistake, the planet growing aware of itself, the five verbs of reflection, the Earth becoming conscious through us, the Scale as an organ of perception, the two refusals, the dragon with its scales and its waking, the four governing questions, and the closing question about what we owe."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The metaphysical claim now stands restored with its status stated once rather than qualified in place. That is the treatment the image needs and it means the sentence Through us, in some real and not merely poetic sense, the Earth has begun to become conscious of itself is on the page unhedged. CTD-0079 classifies it as an open metaphysical proposition. Whether a reader will hear the classification a paragraph later is the author's judgment.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section shows the difference between qualifying a claim and qualifying an image. The prior pass met CTD-0079 by hedging every clause of the dragon, which satisfied the item and destroyed the figure. Stating the status once, in the paragraph that already anticipates the objection, satisfies the same item and leaves the image standing."
+  }
+}

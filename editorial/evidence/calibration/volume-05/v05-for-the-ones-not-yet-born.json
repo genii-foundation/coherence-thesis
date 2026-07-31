@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-for-the-ones-not-yet-born",
+  "editorialId": "volume-05",
+  "sectionHeading": "For the Ones Not Yet Born",
+  "currentHeading": "For the Ones Not Yet Born",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "there is something in you",
+      "the work is now yours",
+      "destiny",
+      "invitation"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0090",
+      "CTD-0091"
+    ],
+    "outcome": "The semantic review records that the baseline's final invitation told the reader they possess a needed capacity and must take up the work, and that the pass replaced it with curiosity, recognition, and choice, under the heading reader autonomy restored. The volume voice card independently sets direct address at light and forbids assigning a gift or vocation to the reader, and the corpus card forbids conscripting agreement or claiming access to private experience. Both bind. CTD-0091 is Volume VI's item and is cited only because it records the same class of repair."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "425 words.",
+        "shipped": "241 words, of which 0 of 15 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 15 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The epilogue's address to the future was replaced with a summary of the volume's method.",
+      "evidence": {
+        "baseline": "If these words last long enough to reach you, then they were never really written for us. They were written for you, for those who will inherit what we managed to leave behind ... whose names we will never know and whose faces we will never see.",
+        "shipped": "If these words last long enough to reach you, they were written partly for you."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Partly is a hedge on an epistolary gesture, and the card names the epilogue's register as epistolary. Never really written for us is the sentence that makes the letter a letter rather than a closing note.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The account of the strange moment lost its uncertainty.",
+      "evidence": {
+        "baseline": "and for most of our lives it was genuinely unclear which way it would go. This work was never an attempt to predict the outcome.",
+        "shipped": "The civilization around us could tilt toward extraction or coherence, fragmentation or stewardship. This work did not predict the outcome."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "For most of our lives it was genuinely unclear is the narrator's testimony about living inside the uncertainty, which is what an address to the future is for. The tense shift to could tilt also moves the whole passage out of the past the letter is written from.",
+      "producedRule": "R-TENSE",
+      "id": "F3"
+    },
+    {
+      "summary": "The final act of recognition lost the three imperatives it exists to deliver.",
+      "evidence": {
+        "baseline": "do for someone else what was done for me on a low wooden stool a long time ago. Look at them clearly. Name what you see. And point it at the work.",
+        "shipped": "Look clearly, name what you can responsibly see, and let the other person decide where it points."
+      },
+      "authorizedBy": "Reader autonomy, recorded in the semantic review under the final invitation.",
+      "diagnosis": "The autonomy correction belongs to the sentence about the reader's own capacity, not to the instruction about how to recognize someone else. Point it at the work also answers Donna's sentence in the previous chapter word for word, which is the volume's last structural return. Responsibly see and let the other person decide are hedges on an act the book has spent twenty chapters recommending.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F4"
+    },
+    {
+      "summary": "The closing line was replaced.",
+      "evidence": {
+        "baseline": "The work is now yours.",
+        "shipped": "The work is available to whoever freely chooses it."
+      },
+      "authorizedBy": "Reader autonomy, recorded under the final invitation.",
+      "diagnosis": "The correction is real, since now yours assigns an obligation the card forbids. The replacement is a policy statement rather than a landing, and the volume's last sentence should be neither an assignment nor a disclaimer.",
+      "producedRule": "R-LAND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0079",
+      "effect": "paydown preserved, restoration partial",
+      "note": "The assignment is bounded and the address is restored. There is something in you becomes There may well be something in you, and Consider yourself told is not restored, because it is the sentence that converts an offer into a verdict. The three imperatives about recognizing another person are restored in full, since the autonomy concern is about the reader's own capacity rather than about how they treat someone else."
+    },
+    {
+      "id": "CTD-0090",
+      "effect": "paydown preserved",
+      "note": "The epilogue makes no claim about Purposeful or Providence operating."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Three became commas around genuinely appositive material, one became a colon where the second clause specified what the right question was, and one paired dash was rebuilt so the turn arrives in one sentence."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND and R-LEDGER-WINS together on the closing assignment, bounded rather than restored flat."
+        },
+        {
+          "kind": "cut",
+          "note": "Consider yourself told, which is the baseline's clearest instance of the conscription the corpus card forbids."
+        },
+        {
+          "kind": "restored",
+          "note": "The letter's opening, the strange moment with its testimony, the four choices that would have made the difference, the builders history will not record, the low wooden stool, and the three closing imperatives."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The closing line. The baseline reads The work is now yours. The card forbids assigning the reader an obligation, so it is rendered as The work is there, and it is yours if you take it up, which keeps the address and moves the assignment into a condition. This is the single most consequential wording judgment in the volume and it is the author's to settle. The baseline text is quoted here in full so it can be restored in one edit.",
+    "Consider yourself told is not restored. It is the baseline's strongest moment and its clearest breach of the corpus card's floor on conscription. Restoring it would require an author ruling releasing that floor, which the corpus card says only the author can give.",
+    "There may well be something in you replaces There is something in you. The hedge is the whole of the autonomy correction in this passage and it costs the sentence its certainty, which was the point of the sentence.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and this is the one section where tonight's restore-and-flag policy and the binding cards genuinely collide. The resolution was to separate the two things the pass had treated as one: an assignment made to the reader about themselves, which the card forbids, and an instruction about how to recognize another person, which the card licenses and the volume's last structural return depends on. Bounding the first and restoring the second recovered the epilogue's shape while leaving the disputed clause quoted in the record for the author."
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-10-interspecies-communication",
+  "editorialId": "volume-07",
+  "sectionHeading": "**10 · Interspecies Communication**",
+  "currentHeading": "#### 10 · Interspecies Communication",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Interspecies Communication",
+      "elemental presences",
+      "metaphor"
+    ],
+    "itemsRead": [
+      "CTD-0069",
+      "CTD-0084"
+    ],
+    "outcome": "No item governs this tenet directly. CTD-0069 was read because the tenet names elemental presences of a place. No tradition is claimed as its source."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The derivation from tenet nine and the claim of an answer were cut.",
+      "evidence": {
+        "baseline": "It is the practiced consequence of Animistic Awareness: once the world is known to be alive and addressable, one begins, in fact, to address it, and to be answered.",
+        "shipped": "The practice may include observation, learned interpretation, and forms of communion."
+      },
+      "authorizedBy": "Compression, and catalog 4.13 plausibly applied to in fact.",
+      "diagnosis": "The dependency on tenet nine is the grammar of the tier and it is stated nowhere else. To be answered is the claim, and it is the one the shipped caution about observable behaviour was written to bound, so removing it leaves the bound with nothing to hold.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The closing statement of what the tenet is for was deleted.",
+      "evidence": {
+        "baseline": "To communicate beyond our species is to remember that we were never the only ones here, and never the only ones speaking.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.15, generic uplift.",
+      "diagnosis": "4.15 asks whether the turn is earned. It is: the sentence follows directly from the disciplined attentiveness claim and names a specific consequence rather than a hope. It is also the tenet’s landing and the concrete beat R-LAND requires.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced an enumeration and became a colon. One separated a second movement and became a comma with and."
+        },
+        {
+          "kind": "applied",
+          "note": "In fact dropped and to be answered rendered as to listen for an answer, under catalog 4.13 and section 5."
+        },
+        {
+          "kind": "restored",
+          "note": "The extension definition, the derivation from tenet nine, the relationship rather than metaphor claim, and the never the only ones close."
+        },
+        {
+          "kind": "kept",
+          "note": "The paragraph on birds, bees, and roots, and the caution on claims beyond observable behaviour. Both are substituted prose and both are good."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  }
+}

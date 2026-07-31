@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-windows-taken-up-together",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Windows, Taken Up Together**",
+  "currentHeading": "### The Windows Taken Up Together",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Taoist philosophy",
+      "shared world",
+      "coordination",
+      "fragmentation"
+    ],
+    "itemsRead": [
+      "CTD-0082",
+      "CTD-0069",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0082 names the attribution of the Four Windows to Taoist philosophy as unverified and records its removal as a partial paydown. CTD-0069 covers indigenous and living tradition lineage more broadly. The attribution is not restored, and the marker naming it as unverified is kept."
+  },
+  "substitutionCheck": "Grepped. The manuscript’s earlier attribution of this four-part model to Taoist philosophy remains unverified is absent from the baseline. It is the pass’s own paydown marker and is kept.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The collective turn, which is the point of the section, was reduced to a sentence about comparing perceptions.",
+      "evidence": {
+        "baseline": "if we begin to take responsibility for the four windows collectively, intending, attending, imagining, and sensing in concert rather than at cross-purposes, we begin to construct a shared world rather than a million private ones, and to discover, in that shared making, how human beings might interact with far greater coherence, far greater coordination, and far greater capacity than our present fragmentation allows",
+        "shipped": "When people compare perception rather than assume a single private view is complete, they may build a more trustworthy shared account."
+      },
+      "authorizedBy": "Compression, and catalog 4.4 applied to the triad of far greater.",
+      "diagnosis": "A million private ones and our present fragmentation are the two concrete terms in the section and both went. The triad is repetitive and the repair is to drop the repeated far greater, not the three nouns, since coherence, coordination, and capacity are three different claims. What survives describes an epistemic practice. The baseline describes building a world together, which is the sentence Part IV then acts on.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The section’s closing statement of what the volume is for was cut.",
+      "evidence": {
+        "baseline": "The work of this volume is, in the end, the work of learning to build the world together, on purpose.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.23, meta claims about the text.",
+      "diagnosis": "This is the volume’s thesis in one line, placed at the end of Part III where the internal technologies have just been defined and before Part IV applies them at scale. Removing it leaves the transition to coordination unmotivated.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0082",
+      "effect": "paydown preserved",
+      "note": "According to Taoist philosophy is not restored. The unverified attribution marker is kept and moved to the end of the section so the argument lands before the caveat."
+    },
+    {
+      "id": "CTD-0069",
+      "effect": "no change",
+      "note": "No living tradition is claimed as the source of the four window model in the restored text."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced an enumeration and became a comma inside a rebuilt clause. One separated a second movement and became a period."
+        },
+        {
+          "kind": "applied",
+          "note": "The triad reduced from far greater coherence, far greater coordination, and far greater capacity to greater coherence, greater coordination, and greater capacity, under catalog 4.4 and 4.21."
+        },
+        {
+          "kind": "restored",
+          "note": "The construction claim, the unconscious default, the collective turn, a million private ones, present fragmentation, and the closing statement of the volume’s work."
+        },
+        {
+          "kind": "kept",
+          "note": "The Taoist attribution marker, relocated to the end. The prior pass line that a coherent civilization cannot be installed as software, which is substituted prose that carries the Part III summary well."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

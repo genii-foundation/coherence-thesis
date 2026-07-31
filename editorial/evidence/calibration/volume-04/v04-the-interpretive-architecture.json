@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-interpretive-architecture",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Interpretive Architecture**",
+  "currentHeading": "**The Interpretive Architecture**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Living Constitution",
+      "Human Dignity",
+      "Participatory Legitimacy",
+      "Sovereignty",
+      "Consent",
+      "Transparency",
+      "Anti-Capture",
+      "Exit",
+      "Repair",
+      "stewardship",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0075",
+      "CTD-0006",
+      "CTD-0055",
+      "CTD-0072",
+      "CTD-0007",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0071 records that Providence's constitutional design has not had legal review, which is why the restored governance chapters are kept in proposal grammar throughout. CTD-0075 forbids attributing a named recurring apparatus to Volume III, which changed the chapter references in this part from named sections to named arguments. CTD-0006 requires that no physiological evidence determine governance standing, which bears on the stewardship chapters. CTD-0055 requires unimplemented safeguards to read as requirements. CTD-0007 governs the self-epigraphs, which keep the Adapted from attribution."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The two failure modes lost their names and their definitions.",
+      "evidence": {
+        "baseline": "The first is interpretive oligarchy: the concentration of interpretive authority in a small body, a court, a council, a founder, whose judgments are not meaningfully accountable to the participants whose lives they affect. The second is interpretive anarchism: the absence of any authoritative interpretive mechanism.",
+        "shipped": "(absent from the shipped chapter)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Oligarchy and anarchism are the two poles the design response is calibrated between, and the four design properties that follow are unreadable without them. Naming a court, a council, and a founder as the same structural risk is also the passage that connects this chapter to the founder capture chapter.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The four properties of the interpretive architecture were removed, including the self-limiting requirement.",
+      "evidence": {
+        "baseline": "distributed across multiple bodies with overlapping but distinct jurisdictions; procedurally transparent, with documented reasoning ...; accountable through specific mechanisms for challenging interpretive decisions ...; and self-limiting, in that the interpretive bodies are themselves subject to the constitutional principles and cannot use their interpretive authority to exempt themselves from those principles.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The fourth property is the one that answers who watches the watchers, and it is the only mechanism in the volume that constrains a constitutional body from exempting itself. The volume's too big to discipline open question at the end of the chapter presupposes it.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0071",
+      "effect": "no change",
+      "note": "Restored in proposal grammar."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. Two were parenthetical appositives naming bodies and became comma pairs. One introduced the enumeration of design properties and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The interpretation problem, both failure modes with their definitions, the four design properties, and the common meta-architecture requirement."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 260,
+    "shippedWords": 124,
+    "shippedDelta": -52
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. A named pair of opposed failure modes with a calibrated response between them is a structure the volume uses repeatedly, and it is the structure most vulnerable to compression, because the response reads as complete on its own while being uninterpretable without the poles."
+  }
+}

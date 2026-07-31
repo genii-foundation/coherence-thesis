@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-12-immortal-responsibility",
+  "editorialId": "volume-07",
+  "sectionHeading": "**12 · Immortal Responsibility**",
+  "currentHeading": "#### 12 · Immortal Responsibility",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Immortal Responsibility",
+      "inheritors and ancestors",
+      "personal paradise"
+    ],
+    "itemsRead": [
+      "CTD-0007",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0007 governs the epigraph, which is a vow rather than an attributed quotation and needs no source. No item governs the tenet."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The reason this tenet comes last was deleted.",
+      "evidence": {
+        "baseline": "It is the last tenet because it requires all the others: only one who perceives deliberately, stands in their own being, and finds the cosmos reliable can take up, without despair, a responsibility that reaches past their own death.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 applied to the triad.",
+      "diagnosis": "Without despair is the phrase that makes the tenet possible rather than crushing, and the triad names three earlier tenets by their content, which is the only place the twelve are shown to depend on one another as a whole. This is the closing argument of Part VI and it was cut entirely.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The widest horizon close was replaced by a caution about consequences.",
+      "evidence": {
+        "baseline": "Here the praxis arrives at its widest horizon, a life lived as a gift to a future it will not see.",
+        "shipped": "Responsibility across time must remain responsibility for actual consequences."
+      },
+      "authorizedBy": "Compression, and catalog 4.15 applied to the horizon.",
+      "diagnosis": "A life lived as a gift to a future it will not see is earned by the twelve tenets that precede it, which is 4.15’s retention limb. The caution is good and is kept, immediately after the cathedral image where it corrects a real risk in that image rather than replacing the tenet’s landing.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "no change",
+      "note": "The vow is presented as the work’s own, not as a quotation from a source."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. Two set off an appositive and became commas. One introduced the closing specification and became a comma."
+        },
+        {
+          "kind": "restored",
+          "note": "The extension definition, the inheritors and ancestors pair, the requires all the others argument, and the widest horizon close."
+        },
+        {
+          "kind": "kept",
+          "note": "The cathedral paragraph and the actual consequences caution, both substituted prose."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  }
+}

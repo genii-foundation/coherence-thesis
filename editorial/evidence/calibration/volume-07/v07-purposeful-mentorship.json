@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-purposeful-mentorship",
+  "editorialId": "volume-07",
+  "sectionHeading": "***Purposeful Mentorship***",
+  "currentHeading": "### Purposeful Mentorship",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Purposeful Mentorship",
+      "Purposeful Foundation",
+      "lineage",
+      "directory"
+    ],
+    "itemsRead": [
+      "CTD-0056",
+      "CTD-0069",
+      "CTD-0082",
+      "CTD-0087"
+    ],
+    "outcome": "CTD-0069 requires that other traditions not be absorbed under a new vocabulary, and the shipped sentence requiring any synthesis to name its sources is kept. CTD-0056 keeps the Purposeful programme status open, so the restored text describes what the architecture is built to do rather than what it does."
+  },
+  "substitutionCheck": "Grepped. They are not asked to surrender their traditions to this architecture and Any synthesis must name its sources, limits, and differences are absent from the baseline and are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The premise of the gathering was cut to a description of who is invited.",
+      "evidence": {
+        "baseline": "Its premise is generous and unembarrassed: that the work of evolving human potential is already underway, in many hands, all over the world, that there are already teachers who know how to bring others into presence, who know how to draw genius across the threshold, who have spent their lives in some corner of this very labor without ever calling it by these names. They are not asked to begin from nothing.",
+        "shipped": "Purposeful Mentorship is the proposed gathering of practitioners whose work already develops attention, relationship, or embodied awareness."
+      },
+      "authorizedBy": "Compression, and catalog 4.4 applied to the three who clauses.",
+      "diagnosis": "Without ever calling it by these names is the sentence that makes the gathering an act of recognition rather than recruitment, and it is the courteous half of a proposal that could otherwise read as annexation. They are not asked to begin from nothing is the promise. Both went.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The architecture as directory, which is the section’s practical claim, was weakened to a possibility.",
+      "evidence": {
+        "baseline": "The map that organizes the praxis is also the directory by which seekers and mentors find one another.",
+        "shipped": "The map could help participants find teachers while preserving the origin and integrity of each practice."
+      },
+      "authorizedBy": "CTD-0087, read as requiring the claim to be hedged.",
+      "diagnosis": "The item bounds what the curriculum promises to deliver. It does not require every structural description to become conditional. The map either is the directory or it is not, and that is a design fact rather than an outcome claim. The hedge is moved to where it belongs, which is the origin and integrity clause, and that clause is kept.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "The three examples of where a teacher belongs were cut.",
+      "evidence": {
+        "baseline": "the breath teacher within Embodiment, the deep listening practitioner within Listening, the keeper of council within Providence",
+        "shipped": "A practitioner might locate breath work within Embodiment, deep listening within Listening, or council practice within Providence."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "A small change with a real cost: the baseline names people and the revision names subjects. The section is about gathering teachers, and the difference between a breath teacher and breath work is the difference between a person with a lineage and a topic in a syllabus.",
+      "producedRule": "R-REGISTER-DICTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0069",
+      "effect": "paydown preserved",
+      "note": "The requirement that a synthesis name its sources, limits, and differences rather than absorb them is kept and attached to the invitation it qualifies."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "no change",
+      "note": "The gathering is described as intended. No mentor roster or operating programme is claimed."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. Two introduced enumerations of the three named teachers and became commas. One introduced a specification and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The premise with its three who clauses, the not from nothing promise, the container argument, the three named teachers, and the map as directory."
+        },
+        {
+          "kind": "kept",
+          "note": "The lineage protection sentence and the origin and integrity clause."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

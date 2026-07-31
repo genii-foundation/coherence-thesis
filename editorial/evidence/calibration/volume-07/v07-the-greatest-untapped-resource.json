@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-greatest-untapped-resource",
+  "editorialId": "volume-07",
+  "sectionHeading": "***The Greatest Untapped Resource***",
+  "currentHeading": "### The Greatest Untapped Resource",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "human potential",
+      "resource",
+      "extraction",
+      "inexhaustible"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0092"
+    ],
+    "outcome": "Searched editorial/evidence/debt/items/ and editorial/sources/corpus/master-ledger.md for every canonical term, proper name, number, and tracked promise in this section. No recorded decision governs the wording restored here, so the baseline is the authority on the prose."
+  },
+  "substitutionCheck": "Grepped. Human capacity is not a mineral reserve and The resource metaphor risks repeating the extractive logic the volume opposes are absent from the baseline. The critique is substituted prose. It is retained in adapted form because it is a fair objection to the restored passage.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The heading and the section were rewritten to refuse the metaphor the section is built on.",
+      "evidence": {
+        "baseline": "The Greatest Untapped Resource ... The greatest untapped resource on this planet is not under any seabed or in any mineral seam. It is human potential.",
+        "shipped": "Human Capacity Is Not a Resource Deposit ... Human capacity is not a mineral reserve."
+      },
+      "authorizedBy": "Not authorized by any catalog category or ledger item. This is a substitution that reverses the section.",
+      "diagnosis": "The baseline uses the extractive vocabulary deliberately and turns it: every other resource is finite and depleting, this one is generative and inexhaustible. That turn is the argument, and it is a good one. The pass read the metaphor as a defect, deleted the turn, and left a rebuttal of a passage that no longer exists. Seventy percent of the words went with it.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F2",
+      "summary": "The contrast between depleting and generative resources was cut.",
+      "evidence": {
+        "baseline": "Every other resource we have learned to extract is finite and depleting; this one is generative and, so far as we can tell, inexhaustible, and almost wholly unworked.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "So far as we can tell is the volume hedging its own strongest claim, which is exactly the honesty the corpus card asks for, and almost wholly unworked is the sentence that makes the section urgent rather than merely appreciative.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced an appositive enumeration and became a comma. One added a final clause and became a comma within a rebuilt sentence."
+        },
+        {
+          "kind": "restored",
+          "note": "The baseline heading, the seabed and mineral seam refusal, human potential and its four capacities, the finite and generative contrast, and the closing definition of the praxis."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass objection to the metaphor, rewritten as the volume acknowledging the risk in its own word rather than as a correction of a passage that is no longer there."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "The restored section calls human potential a resource and says it is inexhaustible. The prior pass judged that this repeats the extractive logic the volume opposes. The re-render restores the passage and states the risk. This is a tone and claim scope decision that belongs to the author."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the volume’s clearest substitution: a section replaced by its own rebuttal, with the heading rewritten to match."
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-birthright",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Birthright**",
+  "currentHeading": "## Coda: The Birthright",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "birthright",
+      "Body of Worship",
+      "seven generations",
+      "Love directs the course",
+      "Gibran",
+      "experts"
+    ],
+    "itemsRead": [
+      "CTD-0082",
+      "CTD-0007",
+      "CTD-0088",
+      "CTD-0002",
+      "CTD-0048",
+      "CTD-0105"
+    ],
+    "outcome": "CTD-0082 records that the Gibran adjacent closing lines were retired for want of adequate attribution, and they are not restored. CTD-0007 governs epigraph verification generally. CTD-0088 requires that leaving be possible without loss of dignity or shelter, and that sentence is kept. CTD-0105 was read because the baseline ends in display matter; no production note is present in this volume."
+  },
+  "substitutionCheck": "Grepped. Wakefulness is a birthright, not an achievement another person can grant, It is never ours to possess, only ours to practice, Love may direct the course, and Freedom must walk beside it are all absent from the baseline. Every one of them is substituted prose from the prior pass, and the volume card now lists two of them among the volume’s protected lines and one among its intentional recurrent phrases.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The statement of what the whole work was for was cut to a summary of the volume.",
+      "evidence": {
+        "baseline": "They were for this: that without any apparatus, any device, any extraction from the world, an ordinary person might develop the internal technologies, presence, presencing, the patient drawing out of the genius each of us was born beside, by which a fracturing species reconstitutes a whole one. Everything required, we already carry.",
+        "shipped": "Its answer is provisional: cultivate attention, deepen relation, protect the sovereignty of every participant, and build institutions that remain open to correction."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Everything required, we already carry is the birthright, and the section is called The Birthright. A fracturing species reconstitutes a whole one is the scale of the claim. The shipped answer is a list of four good practices and is true of many books.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The account of why the infrastructure is worth building was deleted.",
+      "evidence": {
+        "baseline": "It is to forge, out of coherence, something a civilization could be built upon: a new currency, and beneath it a truer current, a coordinating device for human beings that runs not on coercion or extraction but on trust, attunement, and presence held in common.",
+        "shipped": "This work will ask for people, money, time, and trust. Those demands make consent and accountability more important, not less."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The card names the current beneath the currency an intentional recurrent phrase and an image that must not be explained away. This is its return in the Coda, and the return is the structure. The consent sentence is right and is kept, after the answer rather than instead of it.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The paragraph naming the situation the volume is answering was cut to one sentence.",
+      "evidence": {
+        "baseline": "We return to it because there is something we have not yet stated in full ... the depth of the situation our species is likely now in ... what we are doing here is not a fashionable comfort for the comfortable. It is an earnest attempt to put human potential to its proper use, to open a different path, one on which human beings are still here, and still able to live well, seven generations from now.",
+        "shipped": "The situation outside these pages remains severe enough to tempt both panic and grandiosity."
+      },
+      "authorizedBy": "Compression, and catalog 4.6 on the depth of the situation.",
+      "diagnosis": "Not a fashionable comfort for the comfortable is the volume answering the charge most likely to be laid against it, and seven generations from now is the only place the Coda states a horizon. Likely now in is already the volume hedging, so the modality was never the problem.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "The standing paragraph and the philosopher paragraph, together a third of the Coda, were deleted entire.",
+      "evidence": {
+        "baseline": "It is very easy, from inside an intact and comfortable life, to look around and conclude that all is well; it is just as easy, from inside hardship, to lose heart ... Without the older labor of the philosopher, the patient naming of things as they are ... we are left with minds inundated by more information than any age has ever had to hold, and starved of the wisdom that would order it.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.27 plausibly applied to what the careful among the experts are saying.",
+      "diagnosis": "Two independent movements went. The first is the volume’s account of why readers disagree about the stakes, which is the most generous thing in the book toward a sceptical reader. The second is the only defence the corpus offers of philosophy itself, and it is the answer to why nine volumes of argument precede a practice. 4.27 fires correctly on the unnamed experts, and the repair is to bound that clause, which the re-render does.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F5",
+      "summary": "The Coda liturgy lost most of its lines and gained four that are not in the baseline.",
+      "evidence": {
+        "baseline": "It was never ours to take, only ours to give … of the gift of being alive in a way no one else ever has been ... Love directs the course, and it will take you away from the life that you live ... of the gift of the gift of the gift.",
+        "shipped": "Wakefulness is a birthright, not an achievement another person can grant. / It is never ours to command, only ours to serve. / It is never ours to possess, only ours to practice. / Love may direct the course. / Freedom must walk beside it."
+      },
+      "authorizedBy": "CTD-0082 on the Gibran adjacent lines, and compression for the rest.",
+      "diagnosis": "CTD-0082 authorizes retiring three lines, the ones adapted from Kahlil Gibran. It does not authorize retiring the rest. Of the gift of the gift of the gift is the incantation the card names among the read aloud qualities, and the question will you be awake enough to follow is the only direct address in the liturgy. Both are restored. The four substituted lines are kept because the card protects two of them by name and lists a third among the volume’s intentional recurrent phrases.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0082",
+      "effect": "paydown preserved",
+      "note": "Love gives not but itself, and takes but not of itself, and Love possesses not, nor would it be possessed are not restored. They closely echo Kahlil Gibran and the baseline carries no attribution. The item requires attribution or removal, and inventing a citation is forbidden by section 9."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The sentence requiring that a person be able to question the map, decline the path, and leave without losing dignity, shelter, or belonging is kept."
+    },
+    {
+      "id": "CTD-0002",
+      "effect": "no change",
+      "note": "The clause about what careful counters are saying is bounded to those who study these matters and marked as deserving to be read and checked. No study is cited, and none was in the baseline."
+    },
+    {
+      "id": "CTD-0105",
+      "effect": "verified clean",
+      "note": "Volume VII carries no internal production note after the end of the book. The pattern the item describes is absent here."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Nine em dashes. Four introduced specifications and became colons or commas. Three separated second movements and became periods. Two were display marks in the liturgy and became line breaks, which is what they were doing."
+        },
+        {
+          "kind": "applied",
+          "note": "Catalog 4.27 on the unnamed experts. Bounded rather than deleted, since the claim is the volume’s and the correction is to say who is meant and what their counts are worth."
+        },
+        {
+          "kind": "restored",
+          "note": "The birthright statement, everything required we already carry, the currency and current return, the why paragraph with seven generations, the standing paragraph, the philosopher paragraph, the not belief but practice close, and the liturgy less its three unattributed lines."
+        },
+        {
+          "kind": "kept",
+          "note": "The consent and accountability sentence, the Saturn handover, the leave without losing dignity requirement, and all four substituted liturgical lines under R-VOICE-BIND."
+        },
+        {
+          "kind": "verified",
+          "note": "The protected line Love may direct the course. Freedom must walk beside it. is present, as it was in the shipped text. It is not in the baseline. The voice card records it as missing from the manuscript, which the shipped text disproves."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "The three Gibran adjacent lines are not restored. Does the author want them back with an attribution to Kahlil Gibran, The Prophet, once the wording is checked against the primary source, or are they retired?"
+    },
+    {
+      "id": "Q2",
+      "question": "Four lines of the closing liturgy, including two the voice card protects, are the prior pass’s invention rather than the author’s baseline. The card, prepared after the pass, treats them as canon. The author should confirm or correct the card."
+    },
+    {
+      "id": "Q3",
+      "question": "The restored Coda says the depth of the situation our species is likely now in and defers the accounting to Volume VIII. This is a claim scope and urgency decision that belongs to the author."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The Coda concentrates every pattern in the volume: a citation item paid by deleting more than it named, two whole movements removed as compression, an unnamed authority correctly flagged and then over corrected by deletion, and a liturgy in which the substituted lines were canonized by a voice card written after the substitution."
+  }
+}

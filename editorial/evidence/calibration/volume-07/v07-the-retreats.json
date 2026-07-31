@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-retreats",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Retreats**",
+  "currentHeading": "## Part IX: The Retreats",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "retreat",
+      "cohort",
+      "embodied experience"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0087"
+    ],
+    "outcome": "CTD-0088 requires that no format be presented as required for belonging. The shipped clause saying retreats are one possible format and not a requirement for legitimacy is kept."
+  },
+  "substitutionCheck": "Grepped. They are one possible format, not a requirement for legitimacy or belonging is absent from the baseline and is retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The reason retreats exist was replaced by a statement that they are proposed.",
+      "evidence": {
+        "baseline": "A curriculum carried alone, in the margins of an ordinary life, will teach the mind but rarely reach the body. For the body to learn, the ordinary must occasionally be set down altogether.",
+        "shipped": "A curriculum practiced only in private may remain conceptual."
+      },
+      "authorizedBy": "Compression, and catalog 4.3.",
+      "diagnosis": "Teach the mind but rarely reach the body is the argument, and both limbs are plausible, which is 4.3’s retention limb. In the margins of an ordinary life is the concrete detail that makes the problem recognizable. May remain conceptual is a worry rather than a reason.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The close, which names what the retreats do to what has been read, was deleted.",
+      "evidence": {
+        "baseline": "The retreats are where the year’s slow study is concentrated into lived, embodied experience, where what has been read becomes, at last, felt.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "What has been read becomes felt is the section’s landing and the sentence the whole of Part IX elaborates. The card lists the slow meal at retreat among the read aloud qualities, and this is the sentence that sets the register for it.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "Retreats remain optional and are not a condition of belonging."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One separated a second movement and became a comma with and. One introduced a specification and became a comma."
+        },
+        {
+          "kind": "restored",
+          "note": "The mind and body argument, the setting down of the ordinary, the gathering of the cohort, and the read becomes felt close."
+        },
+        {
+          "kind": "kept",
+          "note": "The optional format clause."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

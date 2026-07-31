@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-seven-initiates-a-topology-of-the-necessary-capacities",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Seven Initiates: A Topology of the Necessary Capacities",
+  "currentHeading": "The Seven Initiates",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon on the Initiates belongs to Volume VII and the master ledger, and is preserved here rather than restored.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Seven Initiates", "thresholds", "sequential", "Art & Alchemy", "Simone Weil", "hierarchy of human worth"],
+    "itemsRead": ["CTD-0004", "CTD-0006", "CTD-0007", "CTD-0009", "CTD-0069", "CTD-0070", "CTD-0085", "master-ledger section 4"],
+    "outcome": "This is the first section in the volume where a recorded decision overrides the baseline, and it does. The wave-one semantic review corrected the Initiates to cumulative thresholds entered in order, citing Volume VII lines 197 to 199, and the master ledger's section 4 states the same: cumulative, sequential thresholds, none skipped, none closed once opened. The baseline says They are not sequential. Under R-LEDGER-WINS the decision wins and the baseline sentence was not restored. The master ledger's canonical form Art & Alchemy is also preserved against the baseline's Art / Alchemy, and section 3 of the standard supports keeping the ampersand in display matter. CTD-0070 covers the Initiates' lineage and remains owed."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The definition of an Initiate as a threshold, and the topology claim in the heading, were both removed.",
+      "evidence": {
+        "baseline": "We call them Initiates not in the sense of ranks within a hierarchy, but in the older sense of the word: thresholds. A threshold is a place of transformation, a location where one kind of being ends and another begins.",
+        "shipped": "The Seven Initiates are cumulative thresholds of practice rather than ranks of status."
+      },
+      "authorizedBy": "Compression, and the recorded canon correction, which concerns sequence and not the definition.",
+      "diagnosis": "The correction the review recorded was about order, and the pass also removed the etymology, the definition of a threshold, the interpenetration claim, and the topology framing that gives the section its baseline heading. None of those conflicts with Volume VII. Restored, with the sequence claim rewritten to match canon.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "Each of the seven glosses was rewritten, and five of the seven lost their defining clause.",
+      "evidence": {
+        "baseline": "Balance is not equilibrium. It is the dynamic capacity to maintain orientation under pressure, to neither rigidify nor dissolve when the situation demands flexibility. ... Providence is both the culminating initiate and the name of the network itself.",
+        "shipped": "It is not stillness. It is the ability to remain oriented while pressure changes. ... The same word names the institution because the institution is designed to make that form of provision more reliable."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The seventh gloss carries the most: it explains why the network and the capacity share a name, and it names the condition under which an individual capacity becomes a property of the whole. That is the claim the entire Currency of Presence rests on, and the shipped version reduces it to a statement about reliable provision. The other glosses lose their negative half, which in every case is what fixes the term. Embodiment is not merely physical health does work that inhabiting the body closely enough to notice its state does not.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The claim about what late modernity suppresses was replaced with a milder claim about neglect.",
+      "evidence": {
+        "baseline": "They are also, not coincidentally, the capacities most systematically suppressed by the institutions of late modernity. The economy rewards extraction over listening. ... Providence exists to reverse this suppression.",
+        "shipped": "Modern institutions often neglect these capacities because they are slow, relational, and difficult to price."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Neglect is an oversight and suppression is an effect of structure. The baseline's three examples name the mechanism in each case, which is what makes the claim arguable rather than merely disapproving. And Providence exists to reverse this suppression is the section's statement of purpose, without which the seven capacities are a list rather than a programme.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "Twelve prohibited marks across the section, most of them introducing glosses on the seven names.",
+      "evidence": {
+        "baseline": "A threshold is a place of transformation, They interpenetrate, the genuine act of receiving, all genuine encounter is built, The capacity for genuine closeness, hold opposites without premature resolution, The capacity to transform, to be fully present in the body, cognitive and relational intelligence, genuine devotion, The capacity to give and to receive, a property of the whole, a distillation fenced around its qualifiers, and operating at a fraction of their relational capacity.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Eight introduced a specification of the capacity just named and became colons, which keeps the seven glosses parallel with one another. Two fenced qualifiers with no internal comma and became commas. One joined two clauses inside the Embodiment gloss where the second carries its own comma, and became a period. One separated the interpenetration claim from its explanation and became a colon.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0070", "effect": "reopened by restoration", "note": "These seven are a distillation of what the world's wisdom traditions, across cultures and across millennia, have identified is restored. The item's obligation to trace the Initiates' lineage accountably is owed on that sentence." },
+    { "id": "CTD-0006", "effect": "preserved", "note": "One clause is kept from the shipped text, stating that a developmental map is not a ranking and may not become a hierarchy of human worth. The item is critical and the baseline offers no equivalent guard." },
+    { "id": "CTD-0009", "effect": "reduced by restoration", "note": "The baseline's Listening gloss asserts that listening at depth is physiologically distinct from hearing and produces measurable autonomic change in both parties. Restored with the modality moved to may be, and the sentence about measurable change in both parties left to Part Three, where the evidence tiers govern it." },
+    { "id": "CTD-0007", "effect": "reopened by restoration", "note": "The Weil attribution in the Worship gloss returns. It names a position rather than quoting one, but it is an unchecked attribution to a named author." },
+    { "id": "CTD-0085", "effect": "preserved", "note": "Art & Alchemy keeps the master ledger's ampersand form against the baseline's slash." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
+      "reasoning": [
+        { "kind": "restored", "note": "The etymology and the definition of a threshold, the interpenetration claim, the topology framing, all seven glosses in their baseline form, the distillation paragraph, and the suppression paragraph with its three mechanisms and its statement of purpose." },
+        { "kind": "changed", "note": "They are not sequential. They are not independent became They are cumulative. They are entered in order, and none is closed once it has opened. This is R-LEDGER-WINS. Volume VII and the master ledger both make the Initiates cumulative and ordered, the wave-one review recorded the correction, and restoring the baseline would reopen it." },
+        { "kind": "kept", "note": "Art & Alchemy, the master ledger's canonical form, against the baseline's Art / Alchemy." },
+        { "kind": "kept", "note": "The shipped clause forbidding the map to become a hierarchy of human worth, for CTD-0006." },
+        { "kind": "changed", "note": "The Listening gloss's physiological claim moved from is physiologically distinct to may be physiologically distinct, and its sentence asserting measurable autonomic change in both speaker and listener was not restored here. Part Three states the same claim inside the evidence tiers that qualify it, and CTD-0009 governs both." },
+        { "kind": "changed", "note": "The baseline's bold name followed by a stray asterisk and an italic run was replaced with the shipped text's clean bold name and roman gloss. The baseline markup does not render as intended and 4.29 governs formatting that does not follow structure." },
+        { "kind": "cut", "note": "The shipped glosses." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The loves. The master ledger pairs each Initiate with a Greek love, from Philautia to Pragma. Neither the baseline nor the shipped text carries them in Volume III. Not added here, since adding canon is not restoration, but the author may want the pairing seeded where the Initiates are first introduced.",
+    "Suppression. The restored close says these capacities are the ones late modernity most systematically suppresses, and that Providence exists to reverse that. It is the volume's strongest claim about the present order. Restored, flagged.",
+    "Heading. A Topology of the Necessary Capacities is the phrase the section's opening paragraph explains and earns. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and R-LEDGER-WINS fired correctly for the first time in this volume. The instructive part is how narrow the override is. The recorded decision covers one proposition, sequence, and the pass had used it as cover for rewriting a whole section. Where a correction is recorded, restore everything the correction does not touch, and record which single sentence the ledger actually governs."
+  }
+}

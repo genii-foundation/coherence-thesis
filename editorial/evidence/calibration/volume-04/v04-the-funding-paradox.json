@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-funding-paradox",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Funding Paradox**",
+  "currentHeading": "**The Funding Paradox**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "patient capital",
+      "endowment",
+      "cooperative",
+      "commons",
+      "Currency of Presence",
+      "COHERENCE",
+      "Bio-Consensus",
+      "venture capital"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0012 requires the Currency of Presence, COHERENCE, and Bio-Consensus to be named as distinct concepts, and CTD-0046 forbids calling Proof of Council validated. Neither term appears in Part II, so neither item is touched. CTD-0072 requires that no funding structure or entity be presented as operational, which the restored conditional framing observes. CTD-0078 requires that named scholarship not function as proof of feasibility, which governs every research lineage in this part. CTD-0055 requires unimplemented properties to be stated as requirements."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The paradox lost its structural argument and became an assertion about ownership.",
+      "evidence": {
+        "baseline": "The institutions that have accumulated the most capital have done so within and through extractive coordination architectures. The capital they have accumulated is a consequence of those architectures functioning as designed. An institution that succeeds in its mission ... will, over time, diminish their competitive advantage. The people who control the most capital therefore have, structurally, reasons to be ambivalent about Providence's success even when they are individually sympathetic to its stated goals.",
+        "shipped": "Economic design cannot be postponed until after capital arrives. Funding terms, ownership, revenue, and measurement all shape what an institution can become."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The four sentence chain is the argument the chapter is named for, and each link is required: capital came from extraction, extraction working as designed produced it, an alternative diminishes it, therefore ambivalence is structural rather than personal. The final clause, even when they are individually sympathetic, is what keeps the chapter from reading as a conspiracy theory, and the epigraph explicitly says this is not a conspiracy. Removing the argument leaves the epigraph defending a claim the text no longer makes.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "All three structural constraints lost their evidence.",
+      "evidence": {
+        "baseline": "The open-source software movement has produced the clearest recent documentation of this dynamic: projects built on open-source foundations have been routinely acquired by commercial entities whose subsequent management has been incompatible with the founding community's values.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and CTD-0078 read onto an unsourced pattern claim.",
+      "diagnosis": "The three constraints, legal structure, revenue design, and capital timeline, are each stated in the shipped Part II opener as a topic. In the baseline each carries a worked instance: acquisition of open-source projects, the three named dependency types, and the arithmetic of a five-to-ten-year return horizon against a decade-scale build. A constraint without an instance is a heading. CTD-0078 would require the instances to be sourced, not removed.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0078",
+      "effect": "no change",
+      "note": "The restored instances name movements and models rather than citing sources. The sourcing obligation is unchanged and the item stays open."
+    },
+    {
+      "id": "CTD-0072",
+      "effect": "paydown preserved",
+      "note": "No funding structure is described as in place."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Seven em dashes. Four were parenthetical appositives naming a capital form and became comma pairs. Two introduced specifications and became colons. One separated a denial from its correction at not a counsel of despair and became a period."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped Part II framing that the part offers design criteria rather than proof that adequate compatible capital exists."
+        },
+        {
+          "kind": "restored",
+          "note": "The four sentence structural argument with its individually sympathetic clause, the three constraints with their instances, and the historical record section's convergence findings."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored claim that people who control the most capital have structural reasons to be ambivalent about Providence's success is a claim about a class of people's interests. It is the chapter's premise and it is restored under tonight's policy. Whether the corpus wants it stated this directly is a pitch decision.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 494,
+    "shippedWords": 175,
+    "shippedDelta": -65
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's clearest instance of an epigraph left defending an argument the body no longer contains, which is a check worth carrying forward: read each epigraph against the shipped body and ask whether the body still earns it."
+  }
+}

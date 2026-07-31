@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-open-questions-as-building-problems",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Open Questions as Building Problems**",
+  "currentHeading": "**Four Kinds of Building Question**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Volume III",
+      "sequence",
+      "first community",
+      "Scale",
+      "ICONS",
+      "proof of life",
+      "one hundred and fifty"
+    ],
+    "itemsRead": [
+      "CTD-0075",
+      "CTD-0036",
+      "CTD-0076",
+      "CTD-0089",
+      "CTD-0047"
+    ],
+    "outcome": "CTD-0075 forbids attributing to Volume III a named recurring apparatus or opening disclaimer it does not contain, which touches every Part I section that cites the predecessor. CTD-0036 requires the direct-trust threshold, the governance unit, and the full Scale population to be kept as separate concepts with their evidence and uncertainty stated. CTD-0076 fixes Scale as the singular. CTD-0047 records that Volume III's construction promise is only partly discharged here. CTD-0089 is the parent production item."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Each of the four categories lost its examples, which are the only thing that makes the categories usable.",
+      "evidence": {
+        "baseline": "What kind of conflict repair process actually works within Providence's governance culture? What does the developmental arc of participation look like in practice, at what pace do people move through it, and what support structures are actually needed at each transition? How does the constitutional layer respond when it is tested by a genuine disagreement that the constitutional text does not unambiguously resolve?",
+        "shipped": "No analysis can establish which conflict process will work in a particular community, how quickly participants will develop, or how a constitution will respond to a dispute its authors did not anticipate."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline asks three questions the first community will actually face and the shipped text asserts that three things cannot be established. The difference is what a builder can do with the passage. Questions are assignments. Assertions of unknowability are not. The chapter's own claim is that it converts deferrals into building problems, and a building problem stated as a negative is not one.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The fourth category lost the sentence that explains why it is the most structurally important.",
+      "evidence": {
+        "baseline": "You cannot know in advance exactly how the trust layer's technical limitations will constrain the first community's capabilities. But you must decide how to sequence the build before you can begin building. Volume IV makes those decisions, names the reasoning behind them, and holds them with appropriate humility.",
+        "shipped": "The last category contains decisions that cannot wait for complete knowledge. Builders must choose an initial sequence before they know how every technical or social limit will behave."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline names the specific dependency, the trust layer's limits constraining the first community, which is the thread Chapter Fourteen picks up. It also commits the volume to naming its reasoning each time, which is the promise the Open Questions sections throughout the volume are keeping. The shipped version states the category and drops both the instance and the commitment.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved",
+      "note": "The apparatus reference is not restored."
+    },
+    {
+      "id": "CTD-0047",
+      "effect": "no change",
+      "note": "The section names what remains unresolved rather than claiming the construction promise is met."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The baseline opening, Volume III's What Remains Open sections, taken together, is rewritten as The questions Volume III left open under CTD-0075. Nothing else in the section touches the ledger."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Three introduced specifications of a category and became colons. One was parenthetical and became a comma pair. One before the closing qualification became a period."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped sentences about Providence's relationship to states needing legal, democratic, and practical analysis beyond this manuscript, and about provisional judgments not being discoveries. Both sharpen the baseline's third and fourth categories."
+        },
+        {
+          "kind": "restored",
+          "note": "The three first-community questions, the workability close of the first category, the state institutions caution in the baseline's fuller form, and the trust layer instance in the fourth."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 544,
+    "shippedWords": 179,
+    "shippedDelta": -67
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The instructive detail is that the pass converted questions into assertions of unknowability, which reads as honest and is in fact a loss of assignment. A question names work. A statement that something cannot be known in advance does not."
+  }
+}

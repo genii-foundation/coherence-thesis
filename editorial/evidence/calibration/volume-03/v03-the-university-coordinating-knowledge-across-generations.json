@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-university-coordinating-knowledge-across-generations",
+  "editorialId": "volume-03",
+  "sectionHeading": "The University: Coordinating Knowledge Across Generations",
+  "currentHeading": "The University: Knowledge Across Generations",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The Dante claim and the priority claim about peer review remain author decisions pending verification.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["university", "Dante", "peer review", "commons to a commodity", "Indigenous knowledge"],
+    "itemsRead": ["CTD-0004", "CTD-0008", "CTD-0069", "CTD-0073"],
+    "outcome": "No recorded decision touches this section. The Dante sentence is restored and recorded against CTD-0008, which owns the institutional lineage audit, because Dante's relation to any university is exactly the kind of compressed historical claim the item names. Indigenous knowledge is restored to the climate list, capitalized, and noted against CTD-0069."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's statement of why the university matters most to this volume was deleted.",
+      "evidence": {
+        "baseline": "The university is the institution most directly ancestral to what Providence is attempting, and its failures are therefore the most instructive.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The sentence establishes the section's standing in the chapter: this is the institution Providence most resembles, so this is the section whose warnings bind hardest. Without it the university is one of six examples rather than the closest relative, and the later chapters that borrow apprenticeship and peer challenge lose their stated ancestor.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The fragmentation argument lost its example and its concrete demonstration.",
+      "evidence": {
+        "baseline": "Dante could hold theology, philosophy, astronomy, politics, and poetry in a single coherent vision. ... No university department studies it. Several dozen departments study fragments of it.",
+        "shipped": "Specialization also fragments understanding. Problems such as climate change cross atmospheric physics, ecology, economics, engineering, law, history, ethics, and local knowledge, while institutions often divide authority along departmental lines."
+      },
+      "authorizedBy": "Compression, and the wave-one caution about unverified historical claims.",
+      "diagnosis": "The shipped version states the problem. The baseline shows it twice: once with a person who held seven fields at once, and once with a two-sentence demonstration that no department studies climate change and several dozen study fragments of it. That pair is the argument. Restored with the Dante clause promoted to its own sentence, which is also the punctuation repair.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "Two prohibited marks.",
+      "evidence": {
+        "baseline": "The university that produced Dante fenced around a relative clause with internal commas, and capture by market logic.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first fenced a five-item relative clause between a subject and its verb; the clause was promoted to a preceding sentence so Dante's range lands before the claim it supports, which is the reordering R-LAND recommends. The second introduced a specification and became a colon.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0008", "effect": "reopened by restoration", "note": "The university that produced Dante returns. Dante's formation was not straightforwardly a university education, and the sentence needs the item's audit before publication." },
+    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "A system for the accumulation of reliable knowledge that has no historical precedent is a priority claim." },
+    { "id": "CTD-0069", "effect": "touched", "note": "Indigenous knowledge is restored to the list of what climate change requires integrating, capitalized. The item's accountable-lineage obligations are unaffected." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The ancestry claim, the apprenticeship and peer review claim, the Dante example, the climate demonstration, the market capture failure, and the What must be preserved close." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across two marks, as recorded in F3." },
+        { "kind": "changed", "note": "indigenous became Indigenous. Orthography, not claim." },
+        { "kind": "cut", "note": "The shipped rewrite." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The Dante claim. Restored as written. It is vivid and it is the section's least defensible historical sentence. CTD-0008 owns the verification; if it fails, the argument survives with a different example.",
+    "Heading. Coordinating Knowledge Across Generations keeps the section parallel with the other five. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 records the loss most likely to repeat in the remaining chapters: a single sentence that establishes why a section belongs where it is. These sentences look like connective tissue and read as removable, and each removal leaves a later chapter standing on a claim the volume no longer makes."
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-numbers-and-the-structure",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Numbers and the Structure**",
+  "currentHeading": "## Part II: The Numbers and the Structure",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "numerology",
+      "planets",
+      "Tao Yu",
+      "the Network",
+      "complete unfolding",
+      "true order"
+    ],
+    "itemsRead": [
+      "CTD-0081",
+      "CTD-0028",
+      "CTD-0037",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0081 is the governing item. It requires the number and planet scheme to be marked as symbolism rather than evidence, and it names baseline lines 97 to 111 specifically. The disclaimer the prior pass added is kept and moved to the head of the section. CTD-0028 and CTD-0037 track promises about the network and future volumes, so the network sentence keeps a visibility clause."
+  },
+  "substitutionCheck": "Grepped. This is literary architecture, not evidence for the thesis and Any future volumes and the network intended to hold them remain promises are both absent from the baseline. They are the pass’s own paydown language and they are retained on that basis.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A 946 word account of why the volumes carry these numbers was reduced to a list of planet names.",
+      "evidence": {
+        "baseline": "One is the Sun: the single light, the monad, the one coherent ground we revere, and from which all perception first runs. So the first volume. Two is the Moon: duality and reflection, the naming of the whole in its light and its shadow.",
+        "shipped": "One is the Sun, the single light and coherent ground. Two is the Moon, duality and reflection."
+      },
+      "authorizedBy": "CTD-0081, read as requiring removal rather than reframing.",
+      "diagnosis": "The item asks that evidentiary language be removed and that symbolic interpretation be marked as interpretation. It does not ask that the interpretation be deleted. What survives is a glossary with no reading in it, which is the worst of both outcomes: the scheme is still asserted and the reason it was chosen is gone, so a reader cannot evaluate the symbolism the disclaimer just told them to evaluate.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The threefold structure of spirit, reckoning, and building lost its argument.",
+      "evidence": {
+        "baseline": "And yet the reckoning is not the last word, for an accounting that only closes the books has still built nothing ... the will to make, the hand that, having looked steadily into the dark of the eighth, turns nonetheless to build.",
+        "shipped": "Nine is Mars, force turned from conquest toward making. In this symbolic sequence, spirit meets its reckoning and returns to the ground to build."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "An accounting that only closes the books has still built nothing is the premise. Without it, the move from eight to nine is asserted rather than reasoned, and the hand that turns nonetheless to build is the image the whole ninth volume rests on.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The Tao Yu paragraph lost the account of who the name belongs to.",
+      "evidence": {
+        "baseline": "*Tao Yu* is a name worn by many: the myriad authors, those who have written and those not yet arrived, whose knowing this one voice gathers and carries forward.",
+        "shipped": "written through the many voices gathered under the name *Tao Yu*"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Those not yet arrived is the part that matters and the part that went. A name held open for authors who have not yet written is a different claim from a pen name for a group, and it is the claim that makes sense of a work that says it is open at its far end.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "The section’s closing reason for reading the volumes this way was replaced by a second disclaimer.",
+      "evidence": {
+        "baseline": "To read the volumes this way is not to decorate them but to uncover the order that was holding them the whole time. The number was a quiet teacher.",
+        "shipped": "The symbolism may deepen a reader’s experience of the books. It does not prove their claims."
+      },
+      "authorizedBy": "CTD-0081.",
+      "diagnosis": "Both belong. The disclaimer is required and now opens the section. The baseline close is what the section was for, and a part that ends on its own disclaimer has no landing. Both are present in the re-render, at opposite ends, which is where each does its work.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0081",
+      "effect": "paydown preserved and strengthened",
+      "note": "The claim that the hidden order is evidence because surface and depth agree is not restored. The disclaimer now appears before the scheme rather than after it, so a reader meets the frame before the content."
+    },
+    {
+      "id": "CTD-0028",
+      "effect": "no change",
+      "note": "The network sentence keeps a clause requiring that the promise be made visible."
+    },
+    {
+      "id": "CTD-0037",
+      "effect": "no change",
+      "note": "Future volumes remain marked as intended rather than in progress."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Fourteen em dashes. Eight introduced an appositive gloss on a planet and became colons or commas depending on whether the gloss specified or merely extended. Four separated a second movement and became periods. Two framed a parenthetical and were rebuilt as separate clauses."
+        },
+        {
+          "kind": "applied",
+          "note": "The card lists complete unfolding and true order among phrases to reduce. Complete unfolding is kept once and bounded with in many traditions, which also answers CTD-0081’s fact checking clause. True order is reduced to order."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass disclaimer, moved to the head of the section, and the promise visibility clause on the network sentence."
+        },
+        {
+          "kind": "restored",
+          "note": "The planetary readings with their reasons, the sevenfold ascent and its boundary, the threefold order with its premise, the Tao Yu account, and the quiet teacher close."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "The restored close says the reading uncovers an order that was holding the volumes rather than one the writing composed. CTD-0081 remains a query. Does the author intend that as a claim about the volumes or about the world?"
+    },
+    {
+      "id": "Q2",
+      "question": "Seven tones to a scale, seven days to a week, and seven movements to a full arc are now bounded by in many traditions. CTD-0081 requires each to be fact checked. That has not been done."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the clearest case in the volume of a high severity item being paid down by deletion when it asked for reframing, and of a disclaimer left in the landing position where it destroys the paragraph it was appended to."
+  }
+}

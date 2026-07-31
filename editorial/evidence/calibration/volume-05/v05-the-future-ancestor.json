@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-the-future-ancestor",
+  "editorialId": "volume-05",
+  "sectionHeading": "The Future Ancestor",
+  "currentHeading": "The Future Ancestor",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "future ancestor",
+      "shade of trees",
+      "generations"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0004"
+    ],
+    "outcome": "No recorded decision names a claim in this section. CTD-0004's historical universal class reaches Nearly everything humanity has done that we are still grateful for, which the baseline hedges with nearly, and CTD-0079 would classify the passage as conviction rather than evidence. Neither is reopened by the restoration."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "581 words.",
+        "shipped": "224 words, of which 0 of 14 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 14 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The whole section was replaced. Nothing of the baseline survives verbatim, and the chapter's four historical demonstrations went with it.",
+      "evidence": {
+        "baseline": "Forests were planted by people who knew they would never sit in the shade. Libraries and universities were built by founders who would not see them mature. Knowledge was preserved through dark centuries by people copying texts they could not be certain anyone would ever read again.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 applied to the four parallel cases.",
+      "diagnosis": "The card names the future ancestor passages and the shade of trees planted by strangers among the images to preserve, and the four cases are where the chapter earns the phrase. The copying of texts is the one that costs something, since it names an act done without any expectation of a reader.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The closing turn, and we are those strangers, was cut.",
+      "evidence": {
+        "baseline": "In every case the future ancestor was present, acting on behalf of strangers not yet born, and we are those strangers, living inside the shade of trees we did not plant.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The sentence turns the chapter from an argument about the past into an obligation in the present, which is its whole function. Without it the chapter recommends long horizons and never says the reader is standing in one.",
+      "producedRule": "R-LAND",
+      "id": "F3"
+    },
+    {
+      "summary": "The failure analysis lost its list and its diagnosis.",
+      "evidence": {
+        "baseline": "Short-term extraction, short-term profit, short-term politics, short-term thinking of every kind. Each is, at bottom, a failure to picture the people who will live with the results.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.9, repetitive scaffolds, and 4.20, lexical monoculture.",
+      "diagnosis": "The recurrence is the argument, that four different failures are one failure, and 4.9's second limb forbids varying it away. The diagnosis that follows is the chapter's only causal claim.",
+      "producedRule": "R-CADENCE",
+      "id": "F4"
+    },
+    {
+      "summary": "The chapter's closing question, which the epilogue answers, was removed.",
+      "evidence": {
+        "baseline": "When the generations to come look back on us, on this particular moment, with its enormous power and its uncertain wisdom, what will they find that we left them? The answer is not yet written.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.15 applied to the ending as generic uplift.",
+      "diagnosis": "4.15's defect limb covers endings that rise automatically toward hope. This one ends on a question and then on a condition, whether enough of us are willing to gather, which is the opposite of automatic uplift.",
+      "producedRule": "R-LAND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0004",
+      "effect": "no reopening",
+      "note": "The historical claim is hedged in the baseline with nearly everything and is restored unchanged."
+    },
+    {
+      "id": "CTD-0079",
+      "effect": "restoration flagged",
+      "note": "The four historical demonstrations are restored without citation, as the baseline states them."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Three became commas around genuinely appositive material, one became a period so the four short-term failures could land as a list before the diagnosis, and one paired dash was rebuilt so the closing question could run in one breath."
+        },
+        {
+          "kind": "restored",
+          "note": "The basic condition of being human in time, the definition of the future ancestor with the unborn who have no vote, the widened circle, the four demonstrations, and we are those strangers, the four short-term failures, the representation of future generations, and the closing question."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The chapter is 581 baseline words and lost 61 percent of them with zero verbatim survival, which makes it one of the two most completely rewritten sections in the volume. Nothing in it touches the ledger, so the loss was purely literary and the restoration reopens nothing.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the cleanest control in the volume: no debt item reaches it, so every difference between baseline and shipped text is attributable to the pass's judgment alone. Sixty-one percent of the words and all four of the chapter's demonstrations went, and the propositions that remain are all true. That is what compression without a ledger conflict looks like when it goes wrong."
+  }
+}

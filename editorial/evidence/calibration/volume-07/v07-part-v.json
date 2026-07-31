@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-part-v",
+  "editorialId": "volume-07",
+  "sectionHeading": "**Part V**",
+  "currentHeading": "## Part V: The Seven Initiates",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "heading hierarchy",
+      "display matter",
+      "malformed emphasis"
+    ],
+    "itemsRead": [
+      "CTD-0084",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0084 records the repair of malformed display emphasis and the restoration of a real Markdown heading hierarchy in Volume VII as a partial paydown. The baseline carried this part marker as a bold display line with no body. Restoring that form would reopen the item, so the merged Markdown heading stands against the baseline."
+  },
+  "substitutionCheck": "The baseline section is a display line with no body. Nothing could be substituted.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A bold display line carrying a part number was folded into the Markdown heading of the part it announced.",
+      "evidence": {
+        "baseline": "**Part V**",
+        "shipped": "## Part V: The Seven Initiates"
+      },
+      "authorizedBy": "CTD-0084, which required a real heading hierarchy, and catalog 4.29 on formatting decoration.",
+      "diagnosis": "The baseline separates the part number from the part title across two bold lines, which is display typography rather than structure. The prior pass merged them into one heading. That is a rename rather than a loss: the number and the title both survive, in one element instead of two, and the merged form is the one the ledger paid for.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0084",
+      "effect": "paydown preserved",
+      "note": "The merged Markdown heading is kept against the baseline display pair. Restoring the bold lines would reintroduce the malformed emphasis pattern the item names."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "The prior pass structure. This is one of eleven part markers handled the same way."
+        },
+        {
+          "kind": "verified",
+          "note": "The part number and title both survive in the current heading. Nothing was dropped."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The record exists so that the rename is on the record rather than inferred, since the damage report cannot match a bodyless display line to a merged heading and reports it as a total loss."
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-seven-in-brief",
+  "editorialId": "volume-07",
+  "sectionHeading": "***The Seven, in Brief***",
+  "currentHeading": "### The Seven in Brief",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Listening",
+      "Intimacy",
+      "Balance",
+      "Art & Alchemy",
+      "Embodiment",
+      "Worship",
+      "Providence",
+      "healing"
+    ],
+    "itemsRead": [
+      "CTD-0070",
+      "CTD-0085",
+      "CTD-0088",
+      "CTD-0082"
+    ],
+    "outcome": "CTD-0085 fixes Art & Alchemy as the display form. CTD-0088 is the reason Worship carries an explicit statement that it is not medical treatment, since the baseline calls it a form of healing. CTD-0070 keeps the lineage of the seven open and the working map framing sits in the section above."
+  },
+  "substitutionCheck": "Grepped. Every second paragraph in the shipped section is absent from the baseline: the bird no one noticed, the boundary spoken and received, a living body balances by moving, the meal and song and room, the body as the place where consent becomes specific, worship in a watershed, and the return to Tuesday morning. This is the only section in the volume that gained words, and it gained them by substitution.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "All seven definitions lost their reasons and kept only their subjects.",
+      "evidence": {
+        "baseline": "Balance rests upon Intimacy. It is not merely the key to a good life but the foundation of life itself, the ground on which the doors of perception, and so Art, may at last be approached with the keys already in hand.",
+        "shipped": "Balance rests upon Intimacy. It is the capacity to remain responsive among competing needs, limits, and desires."
+      },
+      "authorizedBy": "Compression, and catalog 4.3 on not merely X but Y.",
+      "diagnosis": "The doors of perception with the keys already in hand is how the reader learns why Balance precedes Art, which is the only thing the sequence claim rests on. The shipped definition is a good definition of balance and says nothing about the path. Six of the seven lost the same thing: the clause linking each initiate to the one after it.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "Providence lost the sentence that makes it the seventh rather than a seventh.",
+      "evidence": {
+        "baseline": "Providence is the seventh, which is secretly the prior six made actual: the path put into practice, a clearer sense of the world and of our place in it, carried at last into dependable action.",
+        "shipped": "Providence is the prior six carried into dependable action."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Secretly is the word. It marks Providence as a revelation rather than an addition, and it is echoed exactly in the loves table, where the seventh love is likewise not an eighth thing added. Removing it in one place and leaving it in the other breaks a deliberate return.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Seven paragraphs of new prose were written and attached to the seven definitions.",
+      "evidence": {
+        "baseline": "(no counterpart in the baseline)",
+        "shipped": "A living body balances by moving. ... Consent is not a brake placed on vitality. ... the bird no one noticed until it stopped."
+      },
+      "authorizedBy": "Not authorized by any catalog category. This is substitution.",
+      "diagnosis": "The material is good, it is concrete, and the volume card, written after the pass, now protects one of its lines and lists several of its images among the volume’s motifs. R-VOICE-BIND therefore requires keeping it. It is recorded here because a card that protects prose the author did not write is a fact the author should know.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0085",
+      "effect": "paydown preserved",
+      "note": "Art & Alchemy throughout."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "Worship is restored as a form of healing, with the shipped statement that it is not medical treatment kept in the same sentence."
+    },
+    {
+      "id": "CTD-0070",
+      "effect": "no change",
+      "note": "No lineage claim is added or removed."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes, one per initiate except Listening. Four introduced specifications and became colons. Two set off appositives and became commas."
+        },
+        {
+          "kind": "restored",
+          "note": "All seven baseline definitions with their linking clauses, including the gateway, the devolution of values, the doors of perception, the conscious creator, the one constancy of the universe, the source of its own aliveness, and the secret seventh."
+        },
+        {
+          "kind": "kept",
+          "note": "All seven substituted paragraphs, under R-VOICE-BIND, and the medical treatment boundary on Worship."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "The volume card protects A living body balances by moving and Consent is not a brake placed on vitality. Neither is in the baseline. Does the author adopt them, or should the card be corrected?"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the section that shows why a word count delta is not a damage measure. It gained fifty eight percent and lost every definition it had."
+  }
+}

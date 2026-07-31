@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-this-is-not-a-return",
+  "editorialId": "volume-05",
+  "sectionHeading": "This Is Not a Return",
+  "currentHeading": "This Is Not a Return",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "for the first time",
+      "golden age",
+      "coming-of-age",
+      "at the scale of the whole species"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0079"
+    ],
+    "outcome": "CTD-0004 is corpus scoped and requires a defensible historical review or a bounded replacement for first-in-history claims. The baseline's For the first time, a civilization could build is such a claim, and the voice card independently lists for the first time among phrases to reduce. The claim is rendered as A civilization could now build, which keeps the novelty the passage needs, since the preceding clause already says the possibility is new."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "254 words.",
+        "shipped": "114 words, of which 0 of 7 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 7 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The interlude lost its refusal, which is the reason it exists.",
+      "evidence": {
+        "baseline": "It would be easy to misread everything said so far as a lament for something lost, as if the cure were to go backward, to rebuild the village, to return to a smaller and slower world where a seamstress knew everyone who stood on her stool. It is not.",
+        "shipped": "This argument is not a proposal to rebuild an imagined village."
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis, applied to the misread and the correction.",
+      "diagnosis": "4.3's retention limb applies twice over. The rejected reading is not invented, it is the reading a chapter about lost initiation invites, and the passage exists only to refuse it. The village is also Donna's village, and the callback to the stool is the reason the refusal lands rather than lectures.",
+      "producedRule": "R-PROPORTION",
+      "id": "F2"
+    },
+    {
+      "summary": "The proposal lost its scale and its name.",
+      "evidence": {
+        "baseline": "Not by accident, not once in a lifetime if they happen to be fortunate, but reliably, and at the scale of the whole species. ... Not a way back, but a coming-of-age: the long-delayed adulting of our species, if you prefer the blunter word.",
+        "shipped": "Whether this can happen reliably at large scale remains to be tested. ... The proposal is a way forward rather than back."
+      },
+      "authorizedBy": "Compression, and catalog 4.6 applied to the scale of the whole species.",
+      "diagnosis": "The coming-of-age is the interlude's whole claim and the blunter word is the volume's humour, which the card describes as restrained plain correction puncturing inflated language. The shipped version deletes both and replaces them with a testability caveat that belongs in the ledger rather than in a three-paragraph interlude.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0004",
+      "effect": "reduced, item unchanged",
+      "note": "The unhedged priority claim For the first time is rendered as now. The temporal claim survives, the assertion of historical priority does not, and the item stays open."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. One became a comma before a genuinely appositive gloss, one became a period so the three-part denial could land as its own beat, and one became a colon where the second clause named what the chance is."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS and the voice card's reduce list, both on for the first time."
+        },
+        {
+          "kind": "restored",
+          "note": "The misreading and its refusal, the seamstress's stool, the acknowledgement that the old world wasted as much genius as ours, the ancient crisis and the new possibility, the scale of the whole species, the coming-of-age, and the finding of our purpose and of one another."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Scale of the whole species is restored. It is aspiration rather than report and the paragraph reads as such, but it is the volume's largest unqualified reach and CTD-0079 asks for material claims to be classified.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The instructive case is that a debt item and the voice card converged on the same three words from opposite directions, one as an unverified historical claim and one as a tired phrase, and the same repair satisfied both."
+  }
+}

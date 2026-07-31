@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-technological-capture",
+  "editorialId": "volume-04",
+  "sectionHeading": "**Technological Capture**",
+  "currentHeading": "**Technological Capture**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Living Constitution",
+      "Human Dignity",
+      "Participatory Legitimacy",
+      "Sovereignty",
+      "Consent",
+      "Transparency",
+      "Anti-Capture",
+      "Exit",
+      "Repair",
+      "stewardship",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0075",
+      "CTD-0006",
+      "CTD-0055",
+      "CTD-0072",
+      "CTD-0007",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0071 records that Providence's constitutional design has not had legal review, which is why the restored governance chapters are kept in proposal grammar throughout. CTD-0075 forbids attributing a named recurring apparatus to Volume III, which changed the chapter references in this part from named sections to named arguments. CTD-0006 requires that no physiological evidence determine governance standing, which bears on the stewardship chapters. CTD-0055 requires unimplemented safeguards to read as requirements. CTD-0007 governs the self-epigraphs, which keep the Adapted from attribution."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The definition and its Volume III grounding were removed.",
+      "evidence": {
+        "baseline": "It operates through the dependence of institutional functioning on technological infrastructure that is governed according to principles other than the institution's own constitutional principles. As Volume III's analysis of the platform-versus-protocol distinction established, institutions whose core functions depend on platforms controlled by others are institutionally captured by those platforms' governance decisions.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and CTD-0075 read across from the apparatus correction.",
+      "diagnosis": "The platform and protocol distinction is a canonical Volume III argument, not a claimed Volume III section, so CTD-0075 does not reach it. This is the sentence that makes technological dependence a governance question rather than a procurement one, which is the claim Part IV builds on for four chapters.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The external platform policy requirement was removed.",
+      "evidence": {
+        "baseline": "It also requires explicit policies about the use of external platforms for functions that are not core, with explicit evaluation of whether any particular external dependency creates governance vulnerabilities that are inconsistent with the constitutional principles.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The core and non-core distinction is what makes the requirement implementable. Without it the section demands that everything run on owned infrastructure, which is not what the architecture proposes and not what any community could do.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved",
+      "note": "The reference is to Volume III's argument, not to a named section."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "no change",
+      "note": "The restored requirement is stated as what the architecture requires."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One was a parenthetical appositive listing common infrastructure and became a comma pair. One introduced a specification and became a comma."
+        },
+        {
+          "kind": "restored",
+          "note": "The definition, the Volume III platform and protocol grounding, the commons infrastructure requirement, and the external platform policy with its core and non-core distinction."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 436,
+    "shippedWords": 179,
+    "shippedDelta": -59
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section shows where CTD-0075's boundary actually falls: the item disputes claimed sections, not claimed arguments, and the distinction is what let the platform and protocol grounding return."
+  }
+}

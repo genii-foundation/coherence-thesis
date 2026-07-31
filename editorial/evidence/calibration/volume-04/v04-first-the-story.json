@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-first-the-story",
+  "editorialId": "volume-04",
+  "sectionHeading": "**First, the Story**",
+  "currentHeading": "**Power Without Coordination**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Purposeful",
+      "biological mentor",
+      "retreats",
+      "year-long",
+      "Cardinal Scale",
+      "eighty-seven",
+      "ask questions of",
+      "interactive",
+      "proposed architecture"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0037",
+      "CTD-0055",
+      "CTD-0056",
+      "CTD-0072",
+      "CTD-0076",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0030 forbids any formulation that presents the Cardinal Scale as an existing community. CTD-0056 and CTD-0072 require present operation to be distinguished from roadmap for every Purposeful program. CTD-0055 requires unimplemented system properties to be stated as requirements. CTD-0037 governs the promise that the volumes become a work the reader can ask questions of. CTD-0076 fixes Scale as the singular and ICONS as the plural. CTD-0089 is the parent production item and records that the author has not approved the compression, the heading evolution, or the coda retirement."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced rather than compressed. Almost none of the shipped prose appears in the baseline.",
+      "evidence": {
+        "baseline": "Before the architecture, a story. ... We live at a strange hinge in the human story. Never has our species been more capable: we can read the genome, model the climate, put something like intelligence into our machines, send a thought across the planet in the time it takes to think it.",
+        "shipped": "Humanity can read the genome, model the climate, build machines that imitate intelligence, and send a thought around the planet in an instant. Yet our capacity to coordinate has not kept pace with our power."
+      },
+      "authorizedBy": "Compression, nominally. In fact a rewrite.",
+      "diagnosis": "A grep of the shipped opening against the baseline returns the four verbs and nothing else. The baseline's opening is a told story with a stated reason for being told first, addressed to a reader who is about to enter a dense book. The shipped opening is a precis of the volume's contents. A word count delta cannot distinguish the two, which is why the pass reads as a 64 percent reduction when it is closer to a substitution. The restoration takes the baseline whole.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The arc paragraph, which is the only place the volume states what the whole architecture is for, was deleted.",
+      "evidence": {
+        "baseline": "We watch how it begins ... with an application that is less a marketplace than a kind of mentor ... From that small awakening the path runs outward: to gatherings, to a year of shared development, to the first communities that choose to actually live this way. ... until the earth has slowly grown something it has never had: the capacity to sense itself, and to care for itself, the way a living body does. For the same presence that lets two people meet does not stop at the human.",
+        "shipped": "The work begins with sequence. Culture must precede platform. ... At the far edge lies a vision of sovereign communities that can recognize and assist one another without surrendering their particularity."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Part VIII is the payoff of this paragraph. Without it, Earth Awakening to Itself arrives as an unheralded turn into ecological register, and the widening of presence past the human, which the volume argues for at length twenty-seven chapters later, has no antecedent. The shipped replacement keeps the words sovereign and particularity and drops the image, the sequence, and the claim. This is the paragraph the voice card protects under the heading of the dragon as a bounded image, and the card cannot protect what is not there.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The wager lost its second movement and its verb.",
+      "evidence": {
+        "baseline": "that it is not a fixed condition of human life but a design failure ... and what is designed can be redesigned",
+        "shipped": "This book treats that gap as a design problem."
+      },
+      "authorizedBy": "Catalog 4.3 applied to the not X but Y construction, plus compression.",
+      "diagnosis": "The baseline names a condition, denies that it is fixed, and then turns on the consequence that redesign is available. The consequence is the sentence the wager exists to reach. Treating something as a design problem is a posture. Saying that what is designed can be redesigned is a claim, and it is the claim the remaining eight parts of the book depend on. 4.3's retention limb applies: the rejected alternative, that the coordination failure is simply how people are, is the one most readers arrive holding.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F4",
+      "summary": "The book's refusal to promise, and the distinction it draws between two kinds of excitement, were removed.",
+      "evidence": {
+        "baseline": "This is not a promise. It is an attempt, and a humble one. ... Whatever excitement this book earns is not the excitement of a guarantee. It is the older, steadier excitement of a real chance.",
+        "shipped": "The relevant question is whether the attempt is serious enough to learn from reality without pretending to have mastered it."
+      },
+      "authorizedBy": "Compression, and catalog 4.15 plausibly read onto the closing cadence.",
+      "diagnosis": "The corpus card forbids manufacturing uplift and forbids inflating uncertainty into certainty. The baseline does the opposite of both: it refuses the promise in a four word sentence and then names precisely what kind of excitement is left. That is the emotional temperature the volume card calls sober, exact, and quietly hopeful, established on the first page. The shipped sentence asks a question about the attempt's seriousness, which is an assessment of the book rather than an offer to the reader.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0030",
+      "effect": "paydown preserved",
+      "note": "The Cardinal Scale is not named in this section and no existence claim is introduced. The proposed-architecture statement is retained."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "paydown preserved",
+      "note": "The restored biological mentor image keeps the shipped aspiration qualifier, so no system property is asserted as a present fact."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "paydown preserved",
+      "note": "The restored account of Purposeful's programs is not present in this section, so nothing here reopens the program status question."
+    },
+    {
+      "id": "CTD-0089",
+      "effect": "advanced, item unchanged",
+      "note": "The section's prohibited punctuation count falls from nine to zero and the restoration is recorded. The item remains open on author approval of compression and headings."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Nine em dashes. Two introduced a specification and became colons, at the ache of this era and at what the details will read like. Three separated two movements and became periods, at the design failure, at the load bearing one, and at the builder's manual. One pair was a parenthetical appositive defining the alternative and became a comma pair, since the enclosed phrase carries no internal comma. One inside the italic display question became a comma, the interjection being grammatically dependent. One before the application clause became a colon, the clause specifying how it begins."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped status statement that this is a proposed architecture and not a report about an institution already in operation. It is required by CTD-0030 and CTD-0072 and it does the work the baseline left to the surrounding humility. It is placed inside the baseline's caution paragraph rather than at the head of the section, where it displaced the story."
+        },
+        {
+          "kind": "bounded",
+          "note": "The restored phrase biological mentor is carried with the shipped qualifier that it is an aspiration for the experience and not a verified product claim, under CTD-0055 and CTD-0056. The image survives. The status claim does not."
+        },
+        {
+          "kind": "restored",
+          "note": "The whole told story: the reason for telling it first, the hinge, the ache, the wager and its consequence, the arc from application through gatherings to the earth sensing itself, the widening of presence past the human, the refusal to promise, and the two kinds of excitement."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored story addresses the reader directly and tells them they deserve to know why the density is worth it. The volume card sets Direct address override: Light. This is at the upper bound of light. Restored under tonight's policy and flagged rather than trimmed.",
+    "The baseline heading, First, the Story, names the section's actual work and the shipped heading, Power Without Coordination, names a topic the restored section only opens with. Changing it back needs a lineage entry this pass cannot write.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 820,
+    "shippedWords": 293,
+    "shippedDelta": -64
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's clearest case of substitution presented as compression, and it establishes the check that every later record in this volume repeats: grep a distinctive shipped phrase against the baseline before treating a delta as a cut. Here the check fails immediately. The restoration is a transcription of the baseline with nine punctuation repairs and three ledger bounded insertions, not a reconstruction."
+  }
+}

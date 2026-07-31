@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-as-we-deepen-the-loves-beneath-the-path",
+  "editorialId": "volume-07",
+  "sectionHeading": "**As We Deepen — the Loves Beneath the Path**",
+  "currentHeading": "### As We Deepen: The Loves Beneath the Path",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Philautia",
+      "Philia",
+      "Storge",
+      "Ludus",
+      "Eros",
+      "Agape",
+      "Pragma",
+      "seven loves"
+    ],
+    "itemsRead": [
+      "CTD-0070",
+      "CTD-0082",
+      "CTD-0085",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0070 requires that any claim of relationship between the initiates and the forms of love be verified and that a working map be distinguished from a validated taxonomy. CTD-0082 covers the Greek terms as a cultural citation. The lineage marker the prior pass added is kept and made more specific. CTD-0084 names the malformed emphasis in the Art & Alchemy table row, which is not restored."
+  },
+  "substitutionCheck": "Grepped. This is a contemporary synthesis whose linguistic and intellectual lineage still requires documentation is absent from the baseline and is retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The revealing, which is how the volume says it teaches, was deleted.",
+      "evidence": {
+        "baseline": "And now, having walked the seven once as a plain path, we may reveal what runs beneath them, for this revealing is itself how the work proceeds: first the structure, and then, as we deepen, the secret within it.",
+        "shipped": "The project pairs each Initiate with a named form of love."
+      },
+      "authorizedBy": "Compression, and catalog 4.23.",
+      "diagnosis": "First the structure, and then, as we deepen, the secret within it is a statement of pedagogical method, and it is the method the whole curriculum in Part VIII implements. It also answers, in advance, a reader who wonders why the loves were withheld for a page.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The seven love glosses lost their content.",
+      "evidence": {
+        "baseline": "Storge, the steady, maintaining love that knows forgiveness ... Agape, selfless love, the love of love, nearest the unconditional",
+        "shipped": "Storge, steady and maintaining love ... Agape, self-giving love"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "That knows forgiveness is the whole reason Storge sits under Balance, and nearest the unconditional is the hedge that keeps Agape from being claimed outright. Seven glosses lost seven distinctions, and the table became a list of translations.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The cumulative account of the loves was cut and replaced with a judgment about symmetry.",
+      "evidence": {
+        "baseline": "Philautia does not end when Philia begins; each love, once awakened, goes on maturing beneath all that follow, so that Pragma, when it is reached, carries the whole sevenfold love within it. To deepen an initiate is, in truth, to deepen a love, which is why the path can never be merely studied, only lived.",
+        "shipped": "Earlier forms remain available as later forms enter practice. Their value must be judged by what they help people perceive and do, not by the beauty of their symmetry."
+      },
+      "authorizedBy": "Compression, and catalog 4.4 applied to the symmetry of the scheme.",
+      "diagnosis": "Pragma carries the whole sevenfold love within it is the payoff of the section and of the cumulative structure introduced two sections earlier. Can never be merely studied, only lived is the sentence that turns a table into a practice. The shipped judgment about symmetry is worth keeping and is kept, appended rather than substituted.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0070",
+      "effect": "no change, marker sharpened",
+      "note": "The synthesis marker is kept and now names the Greek terms and their historical usage as the specific undocumented element, which is closer to the item’s paydown criteria than the general statement it replaces."
+    },
+    {
+      "id": "CTD-0084",
+      "effect": "paydown preserved",
+      "note": "The baseline table row with broken emphasis around the ampersand is not restored."
+    },
+    {
+      "id": "CTD-0085",
+      "effect": "paydown preserved",
+      "note": "Art & Alchemy in the table."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes, seven of them inside table cells introducing each gloss. All became commas, because a table cell gloss is genuinely appositive and a colon inside a cell reads as a label."
+        },
+        {
+          "kind": "restored",
+          "note": "The revealing, the seven loves as depths rather than pairings, all seven full glosses, the cumulative account, and the studied and lived close."
+        },
+        {
+          "kind": "kept",
+          "note": "The synthesis and lineage marker, and the symmetry judgment."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "CTD-0070 asks for the derivation of both the initiates and the loves. The restored table asserts a correspondence between seven Greek terms and seven thresholds. Nothing in the corpus shows where that correspondence came from."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

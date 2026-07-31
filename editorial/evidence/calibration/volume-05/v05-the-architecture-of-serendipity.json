@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-the-architecture-of-serendipity",
+  "editorialId": "volume-05",
+  "sectionHeading": "The Architecture of Serendipity",
+  "currentHeading": "The Architecture of Serendipity",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Renaissance",
+      "serendipity",
+      "networks",
+      "alignment"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0082"
+    ],
+    "outcome": "CTD-0079 asks for material claims to be classified and sourced. The Renaissance and the innovation-cluster claims in this section are historical interpretation offered without citation in both the baseline and the shipped text, so no recorded decision distinguishes them and none is reopened. CTD-0082 is scoped to Volume VII and does not reach here."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "915 words.",
+        "shipped": "401 words, of which 0 of 32 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 32 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chapter's opening lost the three-word answer it is built to deliver.",
+      "evidence": {
+        "baseline": "All of them matter. But underneath them sits something almost embarrassingly simple. Who we happen to meet.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments.",
+      "diagnosis": "The fragment is the chapter's thesis and the card permits a small number of earned landings. Removing it leaves a chapter about encounters that never says encounters.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The seed and stone comparison lost the reasoning it exists to carry.",
+      "evidence": {
+        "baseline": "Both involve the same seed and the same possibility. Only one regularly produces growth, because growth is not only a property of the seed; it is a property of the relationship between the seed and its ground.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.18, overexplained metaphor.",
+      "diagnosis": "4.18's defect limb covers explanation that adds nothing to the argument. Here the explanation is the argument, since the chapter's claim is precisely that environment is not incidental to potential. The card lists the seed and its ground among the signature metaphors.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The vocabulary of luck, which the chapter attacks, was removed along with the attack.",
+      "evidence": {
+        "baseline": "We call them luck, chance, fortune, coincidence, serendipity. The very vocabulary insists that nothing can be done about them, that they lie forever beyond design.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.4, applied to the five-item list.",
+      "diagnosis": "The list is not padding, it is the evidence for the claim that follows, which is that our words for the phenomenon presuppose its randomness. Without the list the claim about vocabulary has no vocabulary.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    },
+    {
+      "summary": "The closing three-part refusal, which names what the chapter is not asking for, was cut.",
+      "evidence": {
+        "baseline": "Not more genius, but better-connected genius. Not more ideas, but ideas that reach their builders. Not more purpose, but purpose that finds purpose.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.3 and 4.4.",
+      "diagnosis": "Purpose that finds purpose is on the card's list of intentional recurrent phrases, and the triad's third member is where the chapter joins the volume. All three contrasts have plausible rejected limbs, which is 4.3's retention limb.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0079",
+      "effect": "restoration flagged",
+      "note": "The Renaissance-as-network claim and the innovation-cluster claim are restored as the baseline states them. Neither is sourced, and CTD-0079's paydown criteria would classify both as interpretation rather than evidence."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Ten em dashes. Two became colons where the second clause enumerated, three became commas around appositive material, three became periods where a second movement deserved its own beat, one split a compound question into two questions, and one resumptive dash after a long fronted list was rebuilt into a single sentence."
+        },
+        {
+          "kind": "restored",
+          "note": "The three-word answer, the hinge introduction, the meetings behind the monuments, the vocabulary of luck, the seed and the stone with its reasoning, the guilds and salons, the Renaissance network, the attention and alignment contrast, the sooner sequence, and the closing three-part refusal."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Historical claims. The Renaissance was not simply a coincidence of brilliant individuals and Innovation clusters in particular places at particular times not because talent is born there are both restored unsourced. They are load-bearing for the chapter's argument that encounter can be cultivated, and CTD-0079's audit has not reached them.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's densest concentration of prohibited marks, ten in nine hundred words, and every one of them was doing structural work. Naming the work before choosing the repair produced three periods where a reflex comma would have flattened a turn."
+  }
+}

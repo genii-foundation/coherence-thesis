@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-four-temporal-layers",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Four Temporal Layers**",
+  "currentHeading": "**The Four Temporal Layers**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "time architecture",
+      "generational",
+      "entrenchment",
+      "seventh generation",
+      "Haudenosaunee",
+      "Indigenous"
+    ],
+    "itemsRead": [
+      "CTD-0069",
+      "CTD-0078",
+      "CTD-0007",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0069 concerns the corpus's use of Indigenous intellectual lineage and was read before restoring the Haudenosaunee passage. The shipped requirement that the tradition not be borrowed as a slogan and that any use carry accurate history, attribution, and attention to the communities it comes from is kept in full. CTD-0078 requires that research lineage not function as proof, which bears on the Welsh and Dasgupta citations. CTD-0007 governs epigraph attribution."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Each layer lost the consequence that makes it a design constraint rather than a description.",
+      "evidence": {
+        "baseline": "Institutions that are insufficiently responsive at the operational layer lose participants, because participation in a system that cannot serve operational needs is costly enough to drive people toward systems that can.",
+        "shipped": "If it becomes unresponsive, participation grows costly."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline names the outcome, losing participants, and the mechanism, that people leave for systems that work. The shipped clause names a cost and stops. The same reduction happens at each of the four layers: the developmental layer loses the claim that an institution staffing stewardship with undeveloped people cannot do what it committed to, the generational layer loses why the neglect is consistent, and the civilizational layer loses the list of institutions that have managed centuries and how.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The civilizational layer lost its historical examples and its mechanisms.",
+      "evidence": {
+        "baseline": "The institutions that have managed this, the great religious traditions, the scientific enterprise, the constitutional democracies, have done so through specific mechanisms: written constitutional texts, transmission traditions, cultural forms that carry meaning across generations even as specific institutional forms evolve.",
+        "shipped": "Written principles, public records, teaching practices, and durable institutions can carry a purpose forward, but none guarantees fidelity."
+      },
+      "authorizedBy": "Compression, and CTD-0078 applied to unsourced historical claims.",
+      "diagnosis": "The shipped sentence lists mechanisms with no examples and no claim that any of them has worked, which is safer and much less useful. The three named traditions are the evidence that centuries-long orientation is possible at all, and the chapter's argument that Providence must design for the civilizational layer rests on their existence. The shipped fidelity caution is kept.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0078",
+      "effect": "paydown preserved",
+      "note": "The shipped fidelity caution bounds the restored historical examples, which are named rather than cited. Sourcing remains open under the item."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Three were parenthetical appositives and became comma pairs. One introduced the list of mechanisms and became a colon."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped caution that no curriculum or credential proves developmental maturity, the shipped clause that the generational layer must not require later participants to obey the founders forever, and the shipped statement that none of the transmission mechanisms guarantees fidelity."
+        },
+        {
+          "kind": "restored",
+          "note": "The operational layer's participant loss mechanism, the developmental layer's staffing consequence, the generational layer's account of why the neglect recurs, and the civilizational layer's three named traditions."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored claim that the great religious traditions, the scientific enterprise, and the constitutional democracies have maintained centuries-long commitments is an unsourced historical generalization of exactly the kind CTD-0078 exists to catch. Restored under tonight's policy and flagged for the source register.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 369,
+    "shippedWords": 119,
+    "shippedDelta": -68
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section's four layers were reduced by the same operation four times, which makes it the cleanest available demonstration that the pass had a habit rather than a series of judgments: keep the claim, drop the consequence."
+  }
+}

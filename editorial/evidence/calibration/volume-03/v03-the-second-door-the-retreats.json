@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-second-door-the-retreats",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Second Door: The Retreats",
+  "currentHeading": "The Second Door: Gatherings and Retreats",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Claims about what group process makes available remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["retreat", "presencing", "synchrony", "contemplative traditions"],
+    "itemsRead": ["CTD-0009", "CTD-0073", "master-ledger section 2 on the three Doors"],
+    "outcome": "No recorded decision touches this section. The wave-one scientific posture correction refuses to translate physiological synchrony automatically into presencing; the restored text makes a claim about multi-person presencing becoming visible rather than about synchrony proving it, so the correction is not engaged. CTD-0009 covers the synchrony evidence and remains owed in Part Three."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's definition by negation was removed and its network function replaced by a research note.",
+      "evidence": {
+        "baseline": "They are not conferences, not workshops, not therapeutic intensives, but something closer to what the best contemplative traditions have always known ... where the coherence that can emerge between two people is shown to be capable of emerging among many.",
+        "shipped": "The aim is neither networking nor managed revelation. ... It is also where the network can study, with explicit consent, whether physiological synchrony contributes useful information about collective encounter."
+      },
+      "authorizedBy": "Compression, and the wave-one scientific posture corrections.",
+      "diagnosis": "Two different things happened. The three-part negation, which places the retreats against the reader's most likely assumptions, became a two-part one that names different assumptions. And the closing sentence changed subject entirely: the baseline says the retreat is where the network can see whether presencing scales past two people, and the shipped version says it is where synchrony can be studied. The first is an architectural claim about why the second door exists. The second is a research protocol.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The geometry argument, which is the only thing distinguishing the second door from the first, was compressed to one line.",
+      "evidence": {
+        "baseline": "Rather than the solitary intensity of one-on-one mentorship, the retreat offers a different geometry of encounter. ... The retreat serves people who are not yet ready to invest in one-on-one mentorship, or who know they need resonance with others before they can know what individual guidance they require.",
+        "shipped": "Gatherings and retreats offer a different geometry. ... This door serves people who need peers before they need an individual mentor."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline gives two reasons someone comes through this door rather than the first, and the second reason is the interesting one: some people cannot know what individual guidance they need until they have been in resonance with others. The shipped version keeps the first reason. It also drops the honest commercial reason, that this door serves those not yet ready to invest in the premium tier.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "One prohibited mark, fencing a three-part negation before a colon.",
+      "evidence": {
+        "baseline": "organized around shared values and desired impact.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The mark stood between the definition and a not-but construction that itself ended in a colon. The sentence was split so the definition lands, and the negation becomes its own sentence with the colon intact.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0009", "effect": "recorded", "note": "The restored text claims that multi-person presencing becomes visible at retreats. That visibility is a claim about observation and belongs with the item's evidence backlog, though it is weaker than the synchrony claim the shipped text had substituted." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The opening statement of who the retreats serve, the three-part negation, the contemplative traditions claim, the geometry paragraph, both reasons someone chooses this door, and the network-terms close about coherence emerging among many." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT on one mark." },
+        { "kind": "cut", "note": "The shipped rewrite, including the consent and synchrony research note. Part Three states the same research posture where the evidence tiers govern it." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim scope. What the best contemplative traditions have always known is an appeal to unnamed traditional authority in the shape category 4.27 describes. It is restored because the claim it supports is modest and the traditions are identifiable, but it is uncited.",
+    "Heading. The Retreats is the baseline name and the one the rest of the volume uses. Gatherings and Retreats is broader and matches the first niche described in the financing chapter. Kept."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 records a substitution rather than a compression, of the kind first found in v03-many-ways-to-fail: the closing sentence of the shipped section is about a different subject than the closing sentence of the baseline, and both are plausible, so nothing in a diff or a word count would flag it."
+  }
+}

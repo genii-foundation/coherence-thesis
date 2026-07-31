@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-coherence-versus-extraction",
+  "editorialId": "volume-07",
+  "sectionHeading": "**Coherence Versus Extraction**",
+  "currentHeading": "### Coherence Versus Extraction",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "extraction",
+      "coherence",
+      "the wager",
+      "genius"
+    ],
+    "itemsRead": [
+      "CTD-0092"
+    ],
+    "outcome": "Searched editorial/evidence/debt/items/ and editorial/sources/corpus/master-ledger.md for every canonical term, proper name, number, and tracked promise in this section. No recorded decision governs the wording restored here, so the baseline is the authority on the prose."
+  },
+  "substitutionCheck": "Grepped. This is a wager about relation, not proof that every attentive encounter will be generative is absent from the baseline. The qualification is retained because it is true and the section needs it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The definition of extraction lost its logic and coherence lost its answering logic.",
+      "evidence": {
+        "baseline": "its logic is subtraction, every gain registered, somewhere, as a loss ... its logic is generation, a gain that leaves no corresponding loss",
+        "shipped": "Extraction isolates a living thing from its relations and treats it as a resource. Coherence begins with relation."
+      },
+      "authorizedBy": "Compression, and catalog 4.4 plausibly applied to the mirrored pair.",
+      "diagnosis": "The mirrored pair is the section’s whole content: two logics, one that nets to zero and one that does not. 4.4’s retention limb covers parallelism that produces force, and a parallel that carries an actual contrast in accounting is the paradigm case. Without it, coherence begins with relation is an assertion with nothing behind it.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The paragraph applying extraction to people was cut to a subordinate clause.",
+      "evidence": {
+        "baseline": "For extraction is not only a way of treating forests and seams of ore; it is a way of treating people, and most of us have been schooled in it without ever being told. We extract attention; we extract labor; we extract agreement.",
+        "shipped": "The same habit can enter human encounters when we take attention, labor, or agreement without meeting the person who gives it."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Most of us have been schooled in it without ever being told is the sentence that makes the reader a participant rather than an observer, and the volume is a praxis, so that move is the point. The three short parallel clauses also do rhythmic work the single list does not.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The section’s conclusion, that a coherent encounter refuses extraction at the most intimate scale, was replaced by a definition.",
+      "evidence": {
+        "baseline": "To presence the genius in another is to refuse, in the most intimate setting there is, the logic of extraction, and to prove, encounter by encounter, that the coherent way is not only the kinder but the more generative.",
+        "shipped": "In this volume, *genius* names what can arise between people when neither is being used by the other."
+      },
+      "authorizedBy": "Compression and catalog 4.3 on not only X but Y.",
+      "diagnosis": "4.3 requires both sides to be plausible, and here they are: kinder and more generative are different claims, and the second is the contested one. The correct repair is to soften prove to test, since the volume offers no proof. Deleting the sentence removes the section’s conclusion instead.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two semicolon chains kept as semicolons, which is where the mark belongs. No prohibited marks in the baseline text of this section."
+        },
+        {
+          "kind": "applied",
+          "note": "Prove changed to test in the closing sentence, which is the change 4.3 and section 5 actually required."
+        },
+        {
+          "kind": "restored",
+          "note": "Both logics, the schooling sentence, the three extraction clauses, the poorer and richer pair, and the closing refusal."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass wager qualification, moved to the end where it bounds the claim it follows."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

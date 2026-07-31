@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-surveillance-problem",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Surveillance Problem**",
+  "currentHeading": "**The Surveillance Problem**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["which would handle the most intimate data in the project", "It is a central design constraint that shapes", "requires a shared view of patterns", "These would allow patterns to be visible"],
+    "result": "None appears in the baseline. All four are compressions. The one that changes a claim is which would handle the most intimate data in the project, which states a fact about the layer; the baseline says where the data being handled is the most intimate the project will ever touch, which is a comparative across the project's whole future."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["physiological-wallet", "sovereign identity", "portable reputation", "opt-in", "refuse advertising", "refuse acquisition", "social credit", "cryptographic and federated"],
+    "itemsRead": ["CTD-0055", "CTD-0040", "CTD-0006", "CTD-0003", "CTD-0072"],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0055 is the governing item: it requires every safeguard claim to be stated as a requirement rather than a current fact until a control matrix exists. The baseline is careful about this and the pass did not weaken it; both texts say intends for, being designed to use, and These are design intentions for the project being built, not features the current MVP has implemented. That sentence is restored verbatim. CTD-0040 tracks the promise of a later chapter on failure modes and refusal conditions, which the section makes in both texts and which the volume does not deliver; the restoration re-states the promise in the baseline's wording without enlarging it. CTD-0006 concerns whether biometric-derived records may affect governance standing and is scoped to Volumes III, IV, and IX; this section makes no standing claim. CTD-0003 is engaged by physiological-wallet layer, which is unchanged in both texts."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The sentence that makes surveillance a central design constraint was split, and its emphasis dropped twice.",
+      "evidence": {
+        "baseline": "This is not a peripheral concern for Providence; it is one of its central design constraints, and it shapes the architecture from the beginning [mark] because the whole difference between infrastructure for coherence and infrastructure for control lies in what the design makes impossible, not in what it promises.",
+        "shipped": "This is not peripheral to Providence. It is a central design constraint that shapes the architecture from the beginning, because the difference between infrastructure for coherence and infrastructure for control lies in what the design makes impossible, not in what it promises."
+      },
+      "authorizedBy": "Compression, and R-PUNCT-STRUCT applied by splitting rather than rebuilding.",
+      "diagnosis": "The semicolon holds a refusal and its correction inside one sentence so the reader cannot take the refusal alone, and one of its central design constraints is plural where a central design constraint is singular and indefinite, which quietly demotes it from a set the project is organized around to one item among many. The whole difference is also the sentence's strongest word and the claim it licenses: not that coherence and control differ, but that the entire distinction rests on impossibility rather than promise. Removing whole leaves a weaker claim in a sentence built to carry the stronger one.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The architectural intentions paragraph was broken into shorter units and lost the clauses that name who acts.",
+      "evidence": {
+        "baseline": "with participants controlling their own credentials, data, and relational history, and able to withdraw them ... Where coordination requires shared observation of patterns, such as recognizing whether a community is building trust over time ... the architecture is being designed to use cryptographic and federated approaches that allow patterns to be visible without making individual data globally legible. These are design intentions for the project being built ... The technical work of realizing them remains substantially ahead, and is part of what this book is inviting builders into.",
+        "shipped": "with participants controlling and able to withdraw their own credentials, data, and relational history ... Where coordination requires a shared view of patterns, such as whether a community is building trust over time ... the architecture is being designed to use cryptographic and federated approaches. These would allow patterns to be visible without making individual data globally legible. They are design intentions for the project ... The technical work to realize them remains substantially ahead and is part of what this book invites builders into."
+      },
+      "authorizedBy": "Compression and catalog 4.19, mechanical cadence.",
+      "diagnosis": "And able to withdraw them is a separate right stated separately, and the baseline's order is deliberate: control first, then exit. Folded into controlling and able to withdraw their own credentials, the exit right becomes a property of the control right. Shared observation of patterns and recognizing whether name acts of observation that something or someone performs, which is the paragraph's subject; a shared view of patterns and whether name a state of affairs and drop the observer. Splitting the cryptographic sentence also detaches the safeguard from the requirement it answers, so the reader is told what the approaches would do before being told why they are needed. The project being built is likewise the phrase that keeps the tense honest.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "Four refusal commitments lost the constructions that made them refusals.",
+      "evidence": {
+        "baseline": "It is intended to refuse acquisition, and to be structured legally so that acquisition is not available as an exit ... the project cannot succeed by becoming the kind of entity that captures the data, behavior, or attention of its participants and sells access to that capture to anyone, ever ... would reproduce the dynamics the book’s diagnostic chapters described",
+        "shipped": "It is intended to refuse acquisition and to be structured legally so that acquisition is not an available exit ... the project cannot succeed by becoming an entity that captures participants’ data, behavior, or attention and sells access to that capture to anyone, ever ... would reproduce the dynamics described in the book’s diagnostic chapters"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The comma before and to be structured legally separates two distinct commitments, an intention and a legal structure, and without it they read as one compound intention, which is the weaker of the two readings in a passage whose subject is the difference between intending and being unable. The kind of entity names a category the project refuses to join; an entity names an instance. And the dynamics the book's diagnostic chapters described puts the chapters in the subject position as the thing that did the describing, which is the volume's way of pointing back at its own evidence.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "The section's opening warning lost the comparative that gives the physiological layer its standing as the sharpest case.",
+      "evidence": {
+        "baseline": "This concern is sharpest at the physiological-wallet layer described above, where the data being handled is the most intimate the project will ever touch.",
+        "shipped": "The concern is sharpest at the physiological-wallet layer described above, which would handle the most intimate data in the project."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The most intimate the project will ever touch is a commitment about the project's whole future: no layer built later will handle anything more intimate than this. The most intimate data in the project is a statement about the current design and says nothing about what comes next. In a section whose subject is what the architecture must be structurally forbidden from doing, that is a material difference. This concern also points back at the paragraph above it, where The concern generalizes.",
+      "producedRule": "R-DEIXIS"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0055", "effect": "unchanged, disclosure restored verbatim", "note": "These are design intentions for the project being built, not features the current MVP has implemented is restored in the baseline's wording. It is the sentence that keeps the whole paragraph inside CTD-0055's requirement, and the restoration slightly strengthens it by returning being built." },
+    { "id": "CTD-0040", "effect": "unchanged", "note": "A later chapter examines failure modes in detail, including the specific situations under which Providence would be willing to fail rather than become what it was built to prevent survives identically in both texts. This is one of the two promises CTD-0040 records as undelivered." },
+    { "id": "CTD-0003", "effect": "unchanged", "note": "physiological-wallet layer is used identically in both texts. The wallet-metaphor question stays open." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Three prohibited marks. One introduced the appositive gloss on digital authoritarianism and became a comma, since the phrase is dependent and free of internal commas; the pass had made that repair and it stands. One preceded the because clause carrying the whole difference and became a comma, the clause being dependent and carrying only one internal comma. One pair enclosed the such-as illustration in the intentions paragraph and became a comma pair, since no other mark keeps the illustration inside the sentence it qualifies." },
+        { "kind": "kept", "note": "The pass's comma after digital authoritarianism, and the three italic display passages, which the pass left untouched and which carry the section's core commitment." },
+        { "kind": "kept", "note": "Compliance and coherence look similar from the outside and behave entirely differently under stress, a one-sentence paragraph the pass did not touch and which needed nothing." },
+        { "kind": "restored", "note": "The semicolon and plural in the central-design-constraint sentence with whole, the withdrawal right as a separate clause, shared observation of patterns with its observer, the project being built, the comma separating the two acquisition commitments, the kind of entity, and the comparative the most intimate the project will ever touch." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the restored comparative about the physiological layer stand?",
+      "context": "The most intimate the project will ever touch is a forward commitment about every layer Providence might later build. It is restored from the baseline. CTD-0055 requires safeguards to be backed by controls, and this is a promise about future scope rather than a present property, which may be harder to keep than it looks.",
+      "for": "author"
+    }
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's most ledger-exposed passage and the pass handled its disclosures carefully, which is worth recording: nothing here converted an intention into a fact. What it did instead was shorten the constructions that make a refusal feel like a refusal, and F3 shows the cost. An entity for the kind of entity, and one comma removed between two commitments, are the sort of change no gate detects and no reader can name, and they are also the difference between a project that refuses a category and one that declines an instance."
+  }
+}

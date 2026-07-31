@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-2-witnessing-consciousness",
+  "editorialId": "volume-07",
+  "sectionHeading": "**2 · Witnessing Consciousness**",
+  "currentHeading": "#### 2 · Witnessing Consciousness",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Witnessing Consciousness",
+      "sovereign being",
+      "As you are, so the world is"
+    ],
+    "itemsRead": [
+      "CTD-0007",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0007 governs epigraph verification. The epigraph here is unattributed in the baseline and remains unattributed, which is the honest state. No item governs the tenet text."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The reason witnessing matters between people was deleted.",
+      "evidence": {
+        "baseline": "By remembering that we are each, always, witnessing one another, we can cut through the habiliments of the personality and meet at the level of the sovereign being beneath it.",
+        "shipped": "Witnessing Consciousness recognizes that every perception includes a perceiver."
+      },
+      "authorizedBy": "Compression, and catalog 4.5 plausibly applied to habiliments.",
+      "diagnosis": "Habiliments is a rare word and section 6 asks whether a rare word is more exact than its alternative. It is: it names personality as clothing, which is precisely the claim. Sovereign being is also the volume’s term for the person beneath the role, and it recurs in the Coda. The shipped sentence states an epistemic fact and drops the encounter entirely.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The claim that attention participates in what appears was reduced to a claim about visibility.",
+      "evidence": {
+        "baseline": "to change the witness is to change the witnessed: a different quality of attention does not merely see a different world, it helps call a different world into being",
+        "shipped": "A different quality of attention may change what becomes visible and how a person responds. It does not change every external fact."
+      },
+      "authorizedBy": "Catalog 4.12, causal overreach.",
+      "diagnosis": "Helps call into being is already hedged and the baseline does not claim the world is manufactured by looking. The correct repair is the shipped disclaimer, which is kept. Deleting the claim as well leaves a tenet that says perception is perspectival, which no one needs a tenet for.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "no change",
+      "note": "The epigraph remains unattributed, as in the baseline."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced an enumeration and became a comma. One introduced a specification and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The habiliments sentence, the sovereign being, the judgment and beholding contrast, and the change the witness clause."
+        },
+        {
+          "kind": "kept",
+          "note": "The disclaimer that it does not change every external fact, and the sentence holding the witness accountable for their frames and power, which is substituted prose and a real safeguard."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-the-first-community-requires",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What the First Community Requires**",
+  "currentHeading": "**What the First Community Requires**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "thirty to one hundred and fifty",
+      "relational coherence",
+      "direct trust",
+      "nested",
+      "Scale",
+      "anti-capture"
+    ],
+    "itemsRead": [
+      "CTD-0036",
+      "CTD-0076",
+      "CTD-0030",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0036 is decisive. The corpus alternates among thirty to one hundred and fifty, approximately one hundred and fifty, approximately five hundred, and nested subgroups, and the item requires the direct-trust threshold, the governance unit, and the full Scale population to be defined separately with the evidence and uncertainty behind each range. The shipped provisional framing is kept verbatim and the baseline's converges on a range is bounded by it. CTD-0076 requires the singular Scale, which is used in the restored nesting sentence."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The constitutional standing of the first community was replaced by a list of what it needs.",
+      "evidence": {
+        "baseline": "The first community is not a startup and it is not a movement. It is a founding community in the constitutional sense, the community whose experience of living inside the architecture will shape the architecture for everyone who comes after. This gives the first community a responsibility that subsequent communities will not have.",
+        "shipped": "The first community would shape the architecture for those that follow. It therefore needs an explicit learning mandate, informed consent to the experimental character of the work, and a way to publish failures without turning residents into exhibits."
+      },
+      "authorizedBy": "Compression, and catalog 4.3 applied to the opening denial.",
+      "diagnosis": "Not a startup and not a movement are the two things every reader will assume it is, so the retention limb applies. The clause that subsequent communities will be able to relax because the first community did the work is the gift the chapter is describing, and it is the reason the demand on the first community is fair. The shipped requirements are good and are kept; they answer a different question, which is what the community is owed rather than what it is.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F2",
+      "summary": "The size argument lost its reasoning and kept only its number.",
+      "evidence": {
+        "baseline": "the first community must be large enough to test the relational architecture genuinely, and small enough that everyone in it can know everyone else. Volume III's analysis of group fields ... establishes that there is a scale threshold above which direct interpersonal trust gives way to institutional trust.",
+        "shipped": "the first cohort must be large enough to expose the relational design and small enough for direct acquaintance to remain plausible. This manuscript uses thirty to one hundred and fifty people as a provisional range for a direct-trust group."
+      },
+      "authorizedBy": "CTD-0036, applied to population thresholds.",
+      "diagnosis": "CTD-0036 requires the direct-trust threshold and the full Scale population to be separate concepts with their evidence and uncertainty stated. The shipped text does that well and the restoration keeps it verbatim. What the paydown also removed was the reason the threshold exists, the shift from interpersonal to institutional trust, which is the mechanism the whole nesting proposal in Chapter Three depends on. Mechanism and number are separable, and only the number was in dispute.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0036",
+      "effect": "paydown preserved",
+      "note": "The provisional range framing, the refusal to establish a universal human threshold, and the nested-group requirement for a larger Scale are all kept against the baseline's convergence language."
+    },
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "Scale is used as the singular in the restored nesting sentence."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. CTD-0036 governs the number and the shipped provisional language survives against the baseline's convergence claim. The mechanism behind the number is restored, because the item disputes the figure and not the reason for it."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Three were parenthetical appositives and became comma pairs. One introduced a specification at the founding period and became a colon."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped economics paragraph on visible subsidy and the shipped governance requirements of dissent, appeal, succession, amendment, and exit. Both are more specific than the baseline and neither displaces it."
+        },
+        {
+          "kind": "restored",
+          "note": "The constitutional standing of the first community, the relational trust mechanism behind the size threshold, the anti-capture requirement and its reason, and the local adaptation paragraph."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored sentence that the founding period is the period of maximum founder influence and minimum distributed participation is a general empirical claim without a source. CTD-0078 governs sourcing for this volume. Restored and flagged.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 507,
+    "shippedWords": 214,
+    "shippedDelta": -58
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's best illustration that a ledger item can dispute a number while leaving the mechanism behind the number untouched, and that a pass which deletes both has paid down more than the item asked for."
+  }
+}

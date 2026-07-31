@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-the-stewardship-transition",
+  "editorialId": "volume-05",
+  "sectionHeading": "The Stewardship Transition",
+  "currentHeading": "The Stewardship Transition",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "stewardship",
+      "every meaningful life",
+      "mature-life sequence",
+      "threshold"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0090"
+    ],
+    "outcome": "The semantic review records that the baseline presented a universal mature-life sequence and that the pass replaced it with an available threshold reached differently or not at all, under the heading reader autonomy restored. That decision binds. Every meaningful life eventually arrives at this threshold is rendered as Many lives arrive at this threshold, though not all do, and not on any schedule, and the opening moment is rendered as one that can arrive. Everything else in the chapter is restored."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "1066 words.",
+        "shipped": "443 words, of which 4 of 31 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 31 current sentences of six words or more, 4 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The three questions that carry a person across the threshold were removed.",
+      "evidence": {
+        "baseline": "What are you willing to care for beyond yourself? What will you protect? What will you tend so patiently that you may never see the result? These questions are not rhetorical flourishes. They are the questions that reorganize an identity.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.16, performed intimacy, applied to the direct address.",
+      "diagnosis": "The card sets direct address at light and permits open questions offered without assigning a vocation. These are open questions and they assign nothing, so the retention limb applies. They are also the chapter's mechanism, since its claim is that few people are ever asked them.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The four stewards and the constant principle were cut.",
+      "evidence": {
+        "baseline": "The land steward is defined by the health of the ecosystem, the teacher by the knowledge carried forward, the parent by the possibility protected, the elder by the continuity held intact through a hard season. The forms differ endlessly; the principle is constant.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "The four cases are what keep stewardship from being an abstraction, which the card explicitly requires of this volume: purpose, contribution, trust, and stewardship should return often to a person, relationship, task, institution, or consequence.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The ambition and stewardship contrast lost both of its pairs.",
+      "evidence": {
+        "baseline": "Ambition asks how far I can go. Stewardship asks how well I can care for what has been entrusted to me. Ambition tends to center the self; stewardship places the self in relationship with a future it serves.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.3 and 4.4.",
+      "diagnosis": "Both retention limbs apply: ambition is a plausible and widely held alternative, and the parallel is the definition rather than an ornament. The pair also answers the Success asks pair from Chapter Six, which is a deliberate return.",
+      "producedRule": "R-CADENCE",
+      "id": "F4"
+    },
+    {
+      "summary": "The steward who plants trees they will never sit under lost the sentence that generalizes it.",
+      "evidence": {
+        "baseline": "The steward plants trees whose shade they will never sit in, restores soil they will never farm, teaches lessons whose fruit will appear, if it appears, decades after they are gone. The steward thinks past the horizon of personal benefit.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.7 plausibly applied to the tree image as vague grandeur.",
+      "diagnosis": "The image is one of the card's recurring motifs and the conditional if it appears is the chapter refusing to promise the steward a reward. Removing it removes the chapter's honesty about what stewardship costs.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0079",
+      "effect": "paydown preserved",
+      "note": "The universal life-stage claim stays corrected. The opening moment can arrive rather than does, and the closing threshold is reached by many lives, not all, and on no schedule. The civic horizon and the whole developmental argument are restored around that bound."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eleven em dashes. Three became commas around appositive material, three became periods where a second question or a claim deserved its own beat, two became colons where the second clause enumerated, and three paired dashes were rebuilt, including the closing remaining question, which became two questions the chapter can hand forward."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS on the mature-life sequence, bounded in two places rather than restored flat."
+        },
+        {
+          "kind": "restored",
+          "note": "The quiet shift of gravity, the preparation and destination distinction, the older sequence of warrior and apprentice and elder, the three threshold questions, the four stewards, the ambition contrast, the short-clock incentives, the steward's trees, the libraries and constitutions, the widened circle of integrity, and the crossing that turns the book toward construction."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Stewardship is love expressed as responsibility survives the restoration. It is the volume's most direct assertion of a value and it is stated without qualification. The card permits the register; CTD-0079 would want it classified as author conviction.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The ledger case is instructive because reader autonomy and the volume's civic argument pointed opposite ways, and the correction turned out to need two words in two sentences. Bounding the universal did not require softening a single claim about what stewardship is."
+  }
+}

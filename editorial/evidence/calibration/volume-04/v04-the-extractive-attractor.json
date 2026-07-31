@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-extractive-attractor",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Extractive Attractor**",
+  "currentHeading": "**The Extractive Attractor**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "scaling",
+      "one hundred and fifty",
+      "nested",
+      "Scale",
+      "ICONS",
+      "subsidiarity",
+      "extractive attractor"
+    ],
+    "itemsRead": [
+      "CTD-0036",
+      "CTD-0076",
+      "CTD-0089",
+      "CTD-0075"
+    ],
+    "outcome": "CTD-0036 requires the direct-trust threshold and the bioregional Scale population to remain separate concepts with stated evidence and uncertainty, and the volume-04 voice card lists any population threshold presented as biological law among the known weak passages. Both bear directly on the relational coherence threshold section. CTD-0076 fixes Scale as the singular and ICONS as the plural. CTD-0075 forbids naming a Volume III apparatus, which changed one clause in the scaling chapter's opening."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The list of systems that pull an institution toward extractive normalization lost its explanation.",
+      "evidence": {
+        "baseline": "The legal structures, the accounting systems, the employment practices, the strategic planning frameworks are all optimized for extractive institutions, because extractive institutions are the norm and all of these systems evolved to serve them.",
+        "shipped": "Capital providers, accounting systems, employment practices, and planning tools all carry assumptions about success."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped sentence says the systems carry assumptions. The baseline says why: they evolved to serve extractive institutions because those are the norm. That is the causal claim the chapter's title depends on, since an attractor without a cause is a metaphor. The shipped clause about becoming legible to the surrounding systems is a real addition and is kept inside the restored sentence.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The constitutional response lost its enumerated mechanism and its limit.",
+      "evidence": {
+        "baseline": "A constitutional commitment, embedded in the legal structure, the governance mechanisms, the economic architecture, the data practices, is more resistant, though not immune.",
+        "shipped": "Legal form, ownership, governance, funding, and data practice must reinforce the commitment. Constitutional protection can increase resistance, though it cannot make capture impossible."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This one is close, and the shipped version is arguably the better sentence: it adds ownership and states the limit more plainly. Recorded as an intentional retention of the shipped wording inside the restored paragraph rather than as damage. The restoration keeps both the baseline's cultural and constitutional contrast and the shipped enumeration.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0089",
+      "effect": "advanced, item unchanged",
+      "note": "Three prohibited marks repaired."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. Two were parenthetical enumerations and became comma pairs. One introduced a specification of the metrics markets reward and became a comma pair, the enclosed list already carrying commas being read as an appositive series."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped enumeration of legal form, ownership, governance, funding, and data practice, and the shipped statement of the limit. Both are better than the baseline's equivalents."
+        },
+        {
+          "kind": "restored",
+          "note": "The causal account of why the surrounding systems pull toward extraction, and the cultural versus constitutional contrast."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 264,
+    "shippedWords": 97,
+    "shippedDelta": -63
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the first in the volume where a shipped sentence is better than its baseline counterpart and is kept on the merits. Recording a retention as a decision is what stops the next pass from reverting it, and the standard requires the record to say so."
+  }
+}

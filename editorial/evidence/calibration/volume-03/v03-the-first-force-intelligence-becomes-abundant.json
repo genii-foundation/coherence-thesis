@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-first-force-intelligence-becomes-abundant",
+  "editorialId": "volume-03",
+  "sectionHeading": "The First Force: Intelligence Becomes Abundant",
+  "currentHeading": "Intelligence Becomes Abundant",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Claim scope on artificial intelligence remains an author decision.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["artificial intelligence", "misaligned", "leverage", "unprecedented"],
+    "itemsRead": ["CTD-0004", "CTD-0016", "CTD-0027", "CTD-0073"],
+    "outcome": "No recorded decision touches this section. CTD-0027 governs Providence's own machine inference and product posture, not the volume's diagnosis of the AI landscape, so it does not fire. CTD-0016 is an open obligation on the technological power thesis and does not override the baseline. Unprecedented good and unprecedented harm are restored and recorded against CTD-0004."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's argument was replaced by a summary of it, and its two strongest sentences were lost.",
+      "evidence": {
+        "baseline": "Leverage is indifferent to the coherence of the hand that wields it. ... A civilization that cannot coordinate is a civilization that cannot steer its most powerful technology.",
+        "shipped": "Capability magnifies purpose without judging it. ... Technical power arriving faster than those capacities should be a cause for work, not theatrical panic."
+      },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "Both shipped sentences are new prose and neither appears in the baseline. The first is a competent paraphrase of the leverage line without its image. The second is a change of subject: the baseline ends the section on the gap between arrival speed and steering capacity, which is the deadline argument, and the shipped version ends on advice about how to feel about it. The volume card asks for urgency without panic, which the baseline meets by naming a structural fact rather than by telling the reader that panic would be theatrical.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The section's disclaimer about trajectory was cut down to a clause, and its reason was removed.",
+      "evidence": {
+        "baseline": "We will not speculate here about its ultimate trajectory, because honest people disagree about it and certainty would be a form of the false urgency we are trying to avoid.",
+        "shipped": "Its ultimate trajectory remains disputed, and the argument does not require certainty about it."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline gives a reason the reader can hold the author to: certainty here would be the very false urgency the chapter has just disowned. That is the volume being consistent with itself one page later. The shipped version states the same restraint without the reason, which makes it a preference rather than a commitment.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "what individuals and small groups can do fenced around four infinitives, a coordination problem before it is a technical one, and the long-horizon coordination that the situation demands.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The fenced infinitives became a colon list at the end of the clause. The second mark introduced an aside about the first chapter and became a period, since the aside is a navigational statement that can stand alone. The third was an appositive naming the capacities just listed; a comma would have been the fourth in the sentence, so it became a period and the appositive became its own short sentence.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "Unprecedented good and unprecedented harm return, as does compress into years what previous technological transformations took generations to accomplish." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The reasoned disclaimer about trajectory, the amplification argument in full, the symmetry between unprecedented good and unprecedented harm, the leverage line, the settled-in-laboratories argument, and the closing pair about steering." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks, as recorded in F3." },
+        { "kind": "cut", "note": "The shipped rewrite, including theatrical panic, which tells the reader what reaction to avoid." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading. The baseline numbers this the first of three forces and the following two sections do the same. The shipped headings drop the numbering while the restored prose in The Convergence still says take the three forces together. The chapter is legible either way. Restoring the numbering costs three reviewed route aliases, so it was not done here and is left as the author's call."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 records a variant worth naming: a section can end on a new sentence that is calmer than the baseline's and thereby change what the section concluded. Tone at a section's close is not separable from its result."
+  }
+}

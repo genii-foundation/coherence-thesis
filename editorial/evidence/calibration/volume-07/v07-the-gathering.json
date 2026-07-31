@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-gathering",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Gathering**",
+  "currentHeading": "## Part VII: The Gathering",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "mentors of presence",
+      "transmission",
+      "curriculum"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0056"
+    ],
+    "outcome": "CTD-0088 requires that the centrality of mentorship be stated together with its limits. The shipped sentence naming the quality and limits of mentorship as central is kept. CTD-0056 keeps programme status open and nothing here asserts an operating programme."
+  },
+  "substitutionCheck": "Grepped. This makes the quality and limits of mentorship central to the proposal is absent from the baseline and is retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The claim that presence is transmitted rather than published was cut to a clause.",
+      "evidence": {
+        "baseline": "the faculties at the heart of this work are transmitted, when they are transmitted at all, from one living person to another. Presence is caught more than it is taught; presencing is learned in the company of someone already able to do it.",
+        "shipped": "but relational practices are learned with other people"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 applied to the caught and taught pair.",
+      "diagnosis": "When they are transmitted at all is the hedge and it is the honest part. Caught more than it is taught is the volume’s formulation and the rhyme is doing the memory work a maxim does. Learned with other people is true of chess.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The reason Part VII precedes Part VIII was deleted.",
+      "evidence": {
+        "baseline": "the first practical labor of the seventh volume is not the writing of a curriculum but the gathering of those who can carry it: the mentors of presence",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.3 and 4.23.",
+      "diagnosis": "Both limbs of 4.3 are plausible: writing a curriculum first is the obvious alternative and the volume is rejecting it. The sentence is also the structural argument for why the gathering comes before the year, which the next two parts assume without ever stating.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The sentence making the limits of mentorship central is kept as the paragraph’s close."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One framed a parenthetical aside about this book and became commas. One introduced the naming of the mentors and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The transmission claim with its hedge, the caught and taught pair, and the first practical labor sentence."
+        },
+        {
+          "kind": "kept",
+          "note": "The quality and limits sentence."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-genius-the-genii",
+  "editorialId": "volume-07",
+  "sectionHeading": "**Genius — the Genii**",
+  "currentHeading": "### Genius and the Genii",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "genius",
+      "genii",
+      "genius loci",
+      "Roman religion",
+      "tutelary"
+    ],
+    "itemsRead": [
+      "CTD-0082",
+      "CTD-0088",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0082 names the Latin account of genius among the claims needing primary source verification and records the narrowing of that account as a partial paydown. The verification marker is kept. CTD-0088 requires that mentor authority be bounded, and the protected line doing that is kept."
+  },
+  "substitutionCheck": "Grepped. No mentor gives another person their genius or owns the authority to define it and The exact etymology and cultural lineage require verification before publication are both absent from the baseline. The first is a volume card protected line and the second is CTD-0082 paydown language. Both are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The Roman account lost the guardian spirit, the accompaniment through life, and the fact that every person had one.",
+      "evidence": {
+        "baseline": "It meant a tutelary deity, a guardian spirit allotted to each person at the very moment of birth, who accompanied them through the whole of life and shaped their character and their fortune. Every person had one.",
+        "shipped": "In Roman religion, a genius could name a tutelary spirit associated with a person or place."
+      },
+      "authorizedBy": "CTD-0082, read as requiring the account be narrowed to near nothing.",
+      "diagnosis": "Every person had one is the load bearing fact. The volume’s entire claim is that genius is universal rather than exceptional, and the Roman universality is the evidence for the reading. Narrowing the account to could name a tutelary spirit removes the evidence and leaves the claim. The verification marker does the item’s work at a fraction of the cost.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The etymology lost its point.",
+      "evidence": {
+        "baseline": "The word descends from the same root that gives us genesis and generate and genus: to be born, to beget, to bring forth.",
+        "shipped": "The word also belongs to a family concerned with birth and generation."
+      },
+      "authorizedBy": "CTD-0082.",
+      "diagnosis": "To bring forth is the phrase the next paragraph turns on, and the bringing-forth spirit depends on it. Belongs to a family concerned with birth and generation cannot support the sentence that follows it, so the following sentence went too.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The definition of what presencing genius means was replaced by a definition of what genius names.",
+      "evidence": {
+        "baseline": "to call that natal, tutelary intelligence across the threshold into the present: to help a person come into relation with the bringing-forth spirit that has been theirs since birth, and to do for another what a good genius does, which is to instruct them, gently, in how to proceed. We do not give anyone their genius. We presence it. It was always already there.",
+        "shipped": "It names the generative capacity a person already carries and the relational conditions that may help it appear."
+      },
+      "authorizedBy": "Compression, and CTD-0088 possibly read onto instruct them, gently.",
+      "diagnosis": "We do not give anyone their genius. We presence it. It was always already there is the volume’s title sentence, and it is also the safeguarding claim CTD-0088 wants: the mentor is not the source. Deleting it and adding a separate protected line about mentors says the same thing twice as badly, once in the register of the volume and once in the register of a policy document. Both are kept, because the card protects the second.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0082",
+      "effect": "partial paydown narrowed, marker preserved",
+      "note": "The fuller Roman and etymological account returns with an explicit verification marker naming the etymology, the practice, and the lineage as unverified. The item remains open and its evidence line still applies."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The protected line bounding mentor authority is kept, alongside the baseline sentence that makes the same claim in the volume’s own voice."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Three introduced a specification and became colons. Two set off an appositive and became commas, which is correct here because the appositives are genuinely dependent."
+        },
+        {
+          "kind": "applied",
+          "note": "Shaped their character and their fortune moved to was held to shape, which marks the Roman belief as a belief without deleting it. This is the repair CTD-0082 asks for."
+        },
+        {
+          "kind": "restored",
+          "note": "The guardian spirit, the universality, the genius loci, the full etymology, the bringing-forth spirit, and the three sentence close."
+        },
+        {
+          "kind": "kept",
+          "note": "The protected mentor line, the verification marker, and the prior pass paragraph on the strangeness of the word, which is substituted prose but carries the anti extraction reading the section needs."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "CTD-0082 still requires primary text verification for the Roman account. The restored text carries a marker rather than a source. This is the largest unverified cultural claim in the volume."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The card names this section as an exemplar of the volume’s voice and cites its opening anchor, which is the shipped opening rather than the baseline’s. Recorded in open questions on the birthright record as a corpus level question about the card."
+  }
+}

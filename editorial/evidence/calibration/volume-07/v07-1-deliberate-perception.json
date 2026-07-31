@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-1-deliberate-perception",
+  "editorialId": "volume-07",
+  "sectionHeading": "**1 · Deliberate Perception**",
+  "currentHeading": "#### 1 · Deliberate Perception",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Deliberate Perception",
+      "Four Windows",
+      "curriculum"
+    ],
+    "itemsRead": [
+      "CTD-0087",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0087 keeps the curriculum an unpublished sketch, which is why the restored text says across the curriculum rather than in week one. Nothing in the ledger governs the definition."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The reason this tenet comes first was deleted.",
+      "evidence": {
+        "baseline": "It is the first discipline because every other capacity rests on the quality of what we take in; a coarse perception cannot ground a subtle life.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "A coarse perception cannot ground a subtle life is the argument for the whole tier structure Part VI just announced. Without it the ordering of the twelve is asserted twice and never justified once.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The practice lost its end state.",
+      "evidence": {
+        "baseline": "until perceiving deliberately is no longer an effort but simply a way of being awake",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.3 on not X but Y.",
+      "diagnosis": "Both limbs are plausible: effort and habit are genuinely different states, and the claim that the discipline dissolves into a way of being is what distinguishes a praxis from an exercise. The clause is also the tenet’s landing.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0087",
+      "effect": "no change",
+      "note": "The curriculum reference stays generic. No week or sequence is promised."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced a specification and became a comma inside a rebuilt sentence. One introduced a discovery clause and became a comma with and."
+        },
+        {
+          "kind": "restored",
+          "note": "The attuning definition, the change consciousness makes to a sense, the unsuspected fineness of grain, the first discipline argument, and the way of being awake close."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass sentence about a more available sensorium rather than permanent intensity, which is substituted prose and a useful bound."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-organs-that-serve-the-living-whole",
+  "editorialId": "volume-07",
+  "sectionHeading": "***Organs That Serve the Living Whole***",
+  "currentHeading": "### Organs That Serve the Living Whole",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "B.O.W. Councils",
+      "Academy of Muses",
+      "Systems Perspective",
+      "Circle of Restoration",
+      "BOW"
+    ],
+    "itemsRead": [
+      "CTD-0085",
+      "CTD-0087",
+      "CTD-0088",
+      "CTD-0071"
+    ],
+    "outcome": "CTD-0085 requires B.O.W. Councils rather than the baseline’s BOW Councils, and the shipped form is kept. CTD-0087 requires that these bodies be marked as lacking operational definitions, and that marking is kept. CTD-0088 requires consent and due process in any restorative process, and that requirement is kept."
+  },
+  "substitutionCheck": "Grepped. Restorative processes in particular need consent, trained facilitation, due process, survivor-centered options and Community language must never conceal harm are absent from the baseline and are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Three named bodies lost their definitions entirely.",
+      "evidence": {
+        "baseline": "The Academy of Muses gathers those who have attained some mastery of their own states, so that they may become sources of inspiration, muses, for one another and for the world ... Exposure to Systems Perspective is the deliberate cultivation of the capacity to see in wholes rather than fragments ... the Circle of Restoration is the community’s instinct for repair, a justice modeled less on the courtroom than on the rebalancing of the living world.",
+        "shipped": "The Academy of Muses, Systems Perspective practice, and Circle of Restoration are names for possible creative, systems, and restorative functions. They are not yet operational definitions."
+      },
+      "authorizedBy": "CTD-0087, which requires that every named body be defined or retired.",
+      "diagnosis": "The item offers two remedies, definition or retirement, and the pass took a third: keep the names and delete the descriptions. That is the worst available outcome, because the reader now meets three proper nouns with no content and a note saying they have no content. The baseline descriptions are not operational definitions and never claimed to be, but they say what each body is for, and they are the material any future definition would be built from.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The councils lost the argument for why they are stepping stones.",
+      "evidence": {
+        "baseline": "They are stepping stones, not endpoints, for if we would evolve a culture, we must first evolve the individuals who compose it, and the council is where evolved individuals pool what they have become.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and CTD-0071 on constitutional review.",
+      "diagnosis": "Stepping stones, not endpoints is a limit on the councils’ authority stated by the volume itself, which is on the same side as CTD-0088. Deleting it and adding a separate governance note replaces the volume’s own restraint with an external one.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The closing enumeration of what the organs tend was cut.",
+      "evidence": {
+        "baseline": "Each is a way the community cares for some dimension of its own becoming: its wisdom, its inspiration, its sight, and its repair.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.4 applied to the four term list.",
+      "diagnosis": "The four terms map one to one onto the four bodies just described, so the list is an index rather than a flourish. It is also the section’s landing.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0087",
+      "effect": "paydown preserved, evidence improved",
+      "note": "The three bodies regain the baseline descriptions of what they are for, and the note that none has an operational definition is kept. The item stays open and the material a definition would start from is back on the page."
+    },
+    {
+      "id": "CTD-0085",
+      "effect": "paydown preserved",
+      "note": "B.O.W. Councils, not the baseline’s BOW Councils."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The restorative process requirements and the prohibition on community language concealing harm are both kept."
+    },
+    {
+      "id": "CTD-0071",
+      "effect": "no change",
+      "note": "The governance design questions remain unresolved and are named on the page."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Two introduced specifications and became colons. Two set off appositives and became commas. One introduced a final enumeration and became a colon."
+        },
+        {
+          "kind": "applied",
+          "note": "Gathers, is, and is rendered as would gather and would be, marking the bodies as proposed rather than operating, which CTD-0087 requires."
+        },
+        {
+          "kind": "restored",
+          "note": "The organs framing, the councils and their several providences, the stepping stones limit, all three body descriptions, and the wisdom, inspiration, sight, and repair close."
+        },
+        {
+          "kind": "kept",
+          "note": "The unreviewable authority caution, the governance design list, and the restorative process requirements."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This section is the clearest instance in the volume of a promise item being answered by deleting the promise’s content while keeping its name."
+  }
+}

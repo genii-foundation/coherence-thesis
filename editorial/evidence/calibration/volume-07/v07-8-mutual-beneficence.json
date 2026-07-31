@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-8-mutual-beneficence",
+  "editorialId": "volume-07",
+  "sectionHeading": "**8 · Mutual Beneficence**",
+  "currentHeading": "#### 8 · Mutual Beneficence",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Mutual Beneficence",
+      "evolution by proxy",
+      "inherent value"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0084"
+    ],
+    "outcome": "No ledger item governs this tenet. The shipped tradeoff correction is kept because it is a fair objection to the baseline claim."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The premise of the tenet was deleted.",
+      "evidence": {
+        "baseline": "It presupposes inherent value in every being and every encounter, and attends, always, to drawing that value further into the light.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Inherent value in every being is the moral premise of the whole relating tier, and it is stated nowhere else in the volume. Drawing that value further into the light is also the only description of what the practice does, as distinct from what it hopes for.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The contrast with the extractive world was cut.",
+      "evidence": {
+        "baseline": "Where so much fulfillment in the extractive world is bought at another’s expense, here the fulfillment of self and other become a single motion.",
+        "shipped": "Self and collective benefit will not always align."
+      },
+      "authorizedBy": "Compression, and the shipped correction about tradeoffs.",
+      "diagnosis": "The correction is right and is kept. But the clause it replaced is the tenet’s connection to Part III, where extraction and coherence were defined, and a single motion is the image. What survives states a limitation on a claim the section no longer makes.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The field claim was removed rather than bounded.",
+      "evidence": {
+        "baseline": "a field is thereby created in which evolution happens by proxy of all who practice it",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.11, conceptual laundering, and 4.12.",
+      "diagnosis": "Evolution by proxy is a coined label treated as a mechanism, and 4.11 fires on its defect limb. The correct repair is to drop the coinage and keep the claim, which the baseline itself states plainly in the same sentence: each person’s flourishing quietly raising the floor for everyone they meet. That clause is restored and the coinage is not.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash introducing a final clause became a comma with and."
+        },
+        {
+          "kind": "applied",
+          "note": "The work proposes inserted before the field claim, so the proposition is marked as a proposal rather than a report. Evolution by proxy dropped under catalog 4.11."
+        },
+        {
+          "kind": "restored",
+          "note": "The inherent value premise, the extractive contrast, the single motion image, and the raising the floor clause."
+        },
+        {
+          "kind": "kept",
+          "note": "The tradeoff correction and the sentence about hidden costs outside the frame."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  }
+}

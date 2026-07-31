@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-what-each-institution-solved-and-what-it-broke",
+  "editorialId": "volume-03",
+  "sectionHeading": "What Each Institution Solved, and What It Broke",
+  "currentHeading": "What Institutions Held, and What They Cost",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Historical claim scope and the epigraph's status remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Paul Ricoeur", "institution", "nostalgia", "successor institution"],
+    "itemsRead": ["CTD-0004", "CTD-0007", "CTD-0008", "CTD-0069", "CTD-0073"],
+    "outcome": "One recorded decision binds and is preserved: the Ricoeur epigraph keeps its Adapted from label because external epigraphs are unverified under CTD-0007, and section 3 of the standard forbids presenting altered or unchecked wording as exact. One sentence of the shipped text is kept for CTD-0069 and CTD-0008: the acknowledgment that the survey is selective, largely Western, and incomplete. That acknowledgment is the only thing in the chapter that bounds the compressed institutional claims those items were opened about."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's method statement was replaced by a statement of its limits.",
+      "evidence": {
+        "baseline": "We approach this history with neither nostalgia nor contempt. Every institution examined here solved something real. Every institution broke something real. And what each preserved, even imperfectly, is something any successor institution must find a way to honor.",
+        "shipped": "Its purpose is not to judge whole traditions by a paragraph. It is to ask what each form learned to hold, what its structure tended to exclude, and what a successor should remember."
+      },
+      "authorizedBy": "Nothing recorded, except the caveat about selectivity, which is a genuine improvement.",
+      "diagnosis": "The baseline states the chapter's rule in three balanced sentences and then adds the obligation that follows from it: what an institution preserved must be honored by whatever replaces it. That obligation is the reason each section ends with What must be preserved, a structure the shipped chapter also removed. The shipped opening describes the chapter's scope instead, which is useful and is not the same as stating its method.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The epigraph's central image was replaced.",
+      "evidence": {
+        "baseline": "An institution is the visible sign of an invisible substance: the container for something that cannot be contained.",
+        "shipped": "An institution gives visible form to something a community cannot preserve by intention alone."
+      },
+      "authorizedBy": "CTD-0007's requirement that unverified attributions be marked, which the label satisfies without requiring the wording to change.",
+      "diagnosis": "Marking an attribution as an adaptation permits the words to stand. Rewriting the words as well removes the paradox the epigraph exists for, that a container holds what cannot be contained, and leaves a plain statement about form. Restored under its Adapted from label.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "Two prohibited marks, both introducing specifications.",
+      "evidence": {
+        "baseline": "the visible sign of an invisible substance, and what the great institutions of history actually accomplished.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Both became colons. The first introduces the appositive that defines the sign. The second introduces a not-but contrast that specifies in what sense accomplishment is meant.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0007", "effect": "preserved", "note": "The Ricoeur epigraph keeps its Adapted from label with the baseline wording restored." },
+    { "id": "CTD-0069", "effect": "partially served", "note": "One sentence of the shipped text is kept, acknowledging that the survey is selective and largely Western. The item's consent and accountable-lineage obligations for the Indigenous governance section are not met by it." },
+    { "id": "CTD-0008", "effect": "reopened by restoration", "note": "The chapter's compressed institutional history returns in full across the six sections that follow. The item's audit is owed on all of it." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The epigraph's wording, the method statement, the three balanced sentences, and the obligation to honor what each institution preserved." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across two marks, as recorded in F3." },
+        { "kind": "kept", "note": "One sentence from the shipped text, recording that the survey is selective, largely Western, and necessarily incomplete. It bounds claims that CTD-0008 and CTD-0069 are open about, and the baseline offers no equivalent." },
+        { "kind": "kept", "note": "The shipped heading, unchanged, because a heading is a section id and a recorded route. Recorded as an open question because solved and broke are the terms the six sections are built on." },
+        { "kind": "cut", "note": "The rest of the shipped opening." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading. What Each Institution Solved, and What It Broke names the two-part structure every section below follows. What Institutions Held, and What They Cost renames both halves. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity.",
+    "The epigraph. Restored wording under an Adapted from label. If the line is a real Ricoeur quotation it should be verified and the label removed; if it is the author's, the label is permanent. CTD-0007 owns the answer."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 records a boundary that will recur across this volume's twenty-one attributed openings: marking an attribution as an adaptation licenses the label, not a rewrite of the line. Where the pass did both, the label should stay and the wording should come back."
+  }
+}

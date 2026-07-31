@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-corporation-coordinating-exchange-at-velocity",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Corporation: Coordinating Exchange at Velocity",
+  "currentHeading": "The Corporation: Action at Speed",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Historical claim scope remains an author decision.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["corporation", "externalize", "eight billion", "colonized the imagination"],
+    "itemsRead": ["CTD-0004", "CTD-0008", "CTD-0013", "CTD-0073"],
+    "outcome": "No recorded decision touches this section. CTD-0013 concerns the corpus claim about historical extraction as a moral claim and is an open obligation rather than a ruling; the restored logic of externalized cost is consistent with it and is recorded there. The world population figure of eight billion is restored as written and is current within rounding."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's sharpest argument was deleted.",
+      "evidence": {
+        "baseline": "The deeper problem is that the corporation has colonized not just the economy but the imagination. We now reflexively reach for corporate structures when we want to build anything at scale, even when what we are trying to build is precisely the thing that corporate logic destroys.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the only paragraph in the chapter that turns the survey on the reader and on the project. It explains why a book proposing a new institution must argue against a default rather than merely against a competitor, and it is the premise of the later chapter on why Providence must not be a startup. Removing it leaves that later chapter without its ground.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The concrete achievements and the concrete unpriceable things were both generalized.",
+      "evidence": {
+        "baseline": "It built the railroads, electrified the cities, produced the vaccines, and created the supply chains that feed and clothe the world's eight billion people. ... a functioning atmosphere, a living river, a community's coherence, a future generation's inheritance.",
+        "shipped": "It has built infrastructure, produced medicines, organized supply chains ... A living river, a community's trust, and a stable atmosphere resist pricing."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Railroads became infrastructure, vaccines became medicines, and eight billion people disappeared. The volume card asks that every sustained abstraction return to a body, relationship, rule, resource, place, or observable consequence. These four verbs are that return, and they are also what makes the paragraph a genuine credit rather than a concession. The unpriceable list lost a future generation's inheritance, which is the one item that connects this section to the volume's dedication.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "Two prohibited marks.",
+      "evidence": {
+        "baseline": "The corporation's fundamental logic fenced around a three-verb definition, and but the imagination.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first fenced a three-part definition inside a subject that then took a colon of its own; the sentence was split so the definition stands alone and the incapacity claim follows with its colon intact. The second introduced a consequence and became a period, so the reflex it describes lands as its own sentence.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "Perhaps the most efficient coordination mechanism ever created returns. The hedge perhaps is in the baseline and is preserved." },
+    { "id": "CTD-0013", "effect": "touched", "note": "The restored externalization argument states the moral claim about cost-shifting in structural rather than accusatory terms, which is the direction the item asks for." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The efficiency claim with its hedge, the four concrete achievements, the planetary systems sentence, the three-part logic, the four unpriceable things, the colonized imagination paragraph, and the What must be preserved close." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across two marks, as recorded in F3." },
+        { "kind": "cut", "note": "The shipped rewrite, including its closing prescription that Providence must refuse the assumption that growth is evidence of success, which belongs to the governance chapters and is stated there." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading. Coordinating Exchange at Velocity keeps the section parallel with the other five and names the function. Action at Speed names a quality. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 records the generalization habit at its clearest: four verbs with objects became four verbs with categories, and the paragraph lost both its evidence and its willingness to credit the institution it is about to criticize."
+  }
+}

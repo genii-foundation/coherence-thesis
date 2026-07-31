@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-exit-architecture",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Exit Architecture**",
+  "currentHeading": "**The Exit Architecture**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Living Constitution",
+      "Human Dignity",
+      "Participatory Legitimacy",
+      "Sovereignty",
+      "Consent",
+      "Transparency",
+      "Anti-Capture",
+      "Exit",
+      "Repair",
+      "stewardship",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0075",
+      "CTD-0006",
+      "CTD-0055",
+      "CTD-0072",
+      "CTD-0007",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0071 records that Providence's constitutional design has not had legal review, which is why the restored governance chapters are kept in proposal grammar throughout. CTD-0075 forbids attributing a named recurring apparatus to Volume III, which changed the chapter references in this part from named sections to named arguments. CTD-0006 requires that no physiological evidence determine governance standing, which bears on the stewardship chapters. CTD-0055 requires unimplemented safeguards to read as requirements. CTD-0007 governs the self-epigraphs, which keep the Adapted from attribution."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The generosity requirement and its consequence were removed.",
+      "evidence": {
+        "baseline": "If leaving requires forfeiting contributions to the commons, abandoning relationships that depend on continued participation in the network, or losing access to infrastructure that has become integral to a community's functioning, then exit is not voluntary. It is simply costly enough that it rarely happens. A network whose participants cannot realistically exit does not have voluntary participants. It has captured ones.",
+        "shipped": "(absent from the shipped section)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "It has captured ones is the section's landing and the sentence that makes exit a constitutional test rather than a courtesy. The three named costs are also what a community would actually have to solve, and they are the checklist the section exists to provide.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F2",
+      "summary": "The honesty requirement about what exit costs was removed.",
+      "evidence": {
+        "baseline": "The exit architecture must also be honest about what is lost in exit. Communities that leave the network lose access to the trust infrastructure, the coordination protocols, the collective intelligence, and the mutual support that membership in the network provides. These losses are real and should be named explicitly rather than minimized. The goal is not to make exit easy but to make it genuinely possible.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the balancing half. Without it the section argues only that exit must be cheap, which no network can honestly promise. Not easy but genuinely possible is the exact standard, and the card's insistence that hopeful claims remain answerable to cost is what it serves.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0054",
+      "effect": "no change",
+      "note": "The coherence record exit lifecycle item was read. The restored passage concerns community exit from the network rather than the lifecycle of an individual record, so the item is not touched."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes across the section and the Part III closing interlude. One separated a denial from its correction and became a period. One was parenthetical and became a comma pair. One in the interlude introduced the specification of the narrow path and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The generosity requirement with its three costs and its landing, the honesty requirement with its four losses, and the Part III closing interlude on coherence without conformity."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The section's measured word count now exceeds the baseline's. This is the same measurement artifact recorded in Part I: with the coda heading gone, the section absorbs the Part IV opener that the baseline assigned to the coda.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 625,
+    "shippedWords": 321,
+    "shippedDelta": -49
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the last in Part III and the restored interlude that closes it, coherence without conformity, is the passage Chapter Twenty-Eight's final section is named after. Restoring Part III's close was what made the volume's ending legible again."
+  }
+}

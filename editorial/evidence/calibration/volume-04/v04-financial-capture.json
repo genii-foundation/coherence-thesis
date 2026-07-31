@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-financial-capture",
+  "editorialId": "volume-04",
+  "sectionHeading": "**Financial Capture**",
+  "currentHeading": "**Financial Capture**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Living Constitution",
+      "Human Dignity",
+      "Participatory Legitimacy",
+      "Sovereignty",
+      "Consent",
+      "Transparency",
+      "Anti-Capture",
+      "Exit",
+      "Repair",
+      "stewardship",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0075",
+      "CTD-0006",
+      "CTD-0055",
+      "CTD-0072",
+      "CTD-0007",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0071 records that Providence's constitutional design has not had legal review, which is why the restored governance chapters are kept in proposal grammar throughout. CTD-0075 forbids attributing a named recurring apparatus to Volume III, which changed the chapter references in this part from named sections to named arguments. CTD-0006 requires that no physiological evidence determine governance standing, which bears on the stewardship chapters. CTD-0055 requires unimplemented safeguards to read as requirements. CTD-0007 governs the self-epigraphs, which keep the Adapted from attribution."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The mechanism, which is the section's whole point, was removed.",
+      "evidence": {
+        "baseline": "It need not involve any explicit transaction or quid pro quo. It operates through the internalization, often below the level of conscious awareness, of what will and will not generate continued financial support. Institutions that depend on funders with specific interests will, over time, come to understand their mission in terms that are compatible with those interests, without any single decision having compromised the institutional mission.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Without any single decision having compromised the mission is the sentence that makes financial capture undetectable by audit of individual decisions, and it is the reason the remedies are structural rather than procedural. It is also the mechanism the donor scenario dramatizes and the Lessig lineage supports.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The four design responses lost their specificity.",
+      "evidence": {
+        "baseline": "diversification of funding sources, so that no single funder or category of funders provides more than a specified percentage of the institution's operating budget; explicit governance firewalls between funders and programmatic decisions; legal structures that limit funders' ability to condition their contributions; and regular constitutional audits that evaluate whether programmatic decisions have drifted.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "A specified percentage of the operating budget is the only quantified safeguard in Part III. Constitutional audits appear here for the first time and are referred to as an established mechanism in five later chapters. The Chapter Twenty-Four donor process refers to the funding firewall of Chapter Eleven by name, which the shipped text does not contain.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0089",
+      "effect": "advanced, item unchanged",
+      "note": "One prohibited mark repaired."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash, introducing the enumeration of design responses, which became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The mechanism with its internalization account, and the four design responses including the diversification threshold and the constitutional audit."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 164,
+    "shippedWords": 63,
+    "shippedDelta": -62
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is short and its loss is total, and it is the one that later chapters cite most often by name. A cross-reference check against the shipped text would have caught it: Chapter Twenty-Four points at a firewall Chapter Eleven no longer described."
+  }
+}

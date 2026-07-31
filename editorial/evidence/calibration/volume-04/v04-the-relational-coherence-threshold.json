@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-relational-coherence-threshold",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Relational Coherence Threshold**",
+  "currentHeading": "**The Relational Coherence Threshold**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "scaling",
+      "one hundred and fifty",
+      "nested",
+      "Scale",
+      "ICONS",
+      "subsidiarity",
+      "extractive attractor"
+    ],
+    "itemsRead": [
+      "CTD-0036",
+      "CTD-0076",
+      "CTD-0089",
+      "CTD-0075"
+    ],
+    "outcome": "CTD-0036 requires the direct-trust threshold and the bioregional Scale population to remain separate concepts with stated evidence and uncertainty, and the volume-04 voice card lists any population threshold presented as biological law among the known weak passages. Both bear directly on the relational coherence threshold section. CTD-0076 fixes Scale as the singular and ICONS as the plural. CTD-0075 forbids naming a Volume III apparatus, which changed one clause in the scaling chapter's opening."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The threshold claim was correctly bounded by the ledger and the mechanism behind it was removed with it.",
+      "evidence": {
+        "baseline": "below a certain threshold, coordination can rely on direct interpersonal trust and embodied relational knowledge, while above that threshold, it requires institutional mechanisms that inevitably introduce their own distortions",
+        "shipped": "Direct trust can carry more of the work in a small cohort. Larger populations depend increasingly on roles, records, and formal process."
+      },
+      "authorizedBy": "CTD-0036, and the volume card's known weak passage on population thresholds presented as biological law.",
+      "diagnosis": "The bounding is correct and is kept: the shipped provisional and not a biological law framing survives against the baseline's cannot sustain. What the paydown also removed is that the institutional mechanisms introduce their own distortions, which is the cost the whole nesting design exists to minimise. A threshold without a stated cost reads as an administrative fact rather than as a design problem.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The precedent list lost the statement of what it is a list of.",
+      "evidence": {
+        "baseline": "This is not a new insight. The federal principle in political architecture, polycentric governance in commons management, subsidiarity in Catholic social teaching, the cellular structure of many durable movement organizations all represent versions of the same design response to the relational coherence threshold.",
+        "shipped": "Federalism, polycentric governance, subsidiarity, and cellular movement structures offer precedents for nested coordination."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is not a new insight is the sentence that keeps the passage from claiming originality, which is exactly the discipline CTD-0078 asks for elsewhere. Naming each precedent's home discipline is also what lets a reader check it. The shipped list of four bare nouns cannot be checked.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0036",
+      "effect": "paydown preserved",
+      "note": "The threshold is restored in hedged form with the provisional framing and the explicit refusal of a biological law both kept."
+    },
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "The restored bioregional sentence uses Scale as the singular."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. CTD-0036 and the voice card together require the threshold to stay provisional. The baseline's communities significantly above one hundred and fifty people cannot sustain is restored as appear unable to sustain, with the shipped statement that it is not a biological law kept in the same paragraph."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Three were parenthetical and became comma pairs. One introduced the zone the research converges on and became a colon."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped statement that whether the nesting distinction holds in practice has not been demonstrated, and the shipped list of what must still be specified across levels."
+        },
+        {
+          "kind": "restored",
+          "note": "The distortion cost of institutional mechanisms, the planetary scale statement of the design problem, and the precedent list with its disciplines named."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored sentence still says the research converges on a zone without naming the research. CTD-0078 requires the source register this volume does not have. Restored and flagged rather than sourced, since sourcing is outside an editorial pass.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 239,
+    "shippedWords": 115,
+    "shippedDelta": -52
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Same shape as the first community's size argument: the ledger disputes a number, the pass removed the number's mechanism, and the restoration separates them. Two sections in one part with the same failure is enough to treat it as the volume's characteristic form of overpaydown."
+  }
+}

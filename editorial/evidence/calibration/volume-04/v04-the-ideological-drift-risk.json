@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-ideological-drift-risk",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Ideological Drift Risk**",
+  "currentHeading": "**The Ideological Drift Risk**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "scaling",
+      "one hundred and fifty",
+      "nested",
+      "Scale",
+      "ICONS",
+      "subsidiarity",
+      "extractive attractor"
+    ],
+    "itemsRead": [
+      "CTD-0036",
+      "CTD-0076",
+      "CTD-0089",
+      "CTD-0075"
+    ],
+    "outcome": "CTD-0036 requires the direct-trust threshold and the bioregional Scale population to remain separate concepts with stated evidence and uncertainty, and the volume-04 voice card lists any population threshold presented as biological law among the known weak passages. Both bear directly on the relational coherence threshold section. CTD-0076 fixes Scale as the singular and ICONS as the plural. CTD-0075 forbids naming a Volume III apparatus, which changed one clause in the scaling chapter's opening."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The definition of drift lost its formulation.",
+      "evidence": {
+        "baseline": "This is ideological drift: the process by which a founding commitment becomes a founding myth, honored in the telling, ignored in the operation.",
+        "shipped": "Ideological drift begins when a commitment becomes a slogan. Participants repeat the language while daily practice rewards something else."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Honored in the telling, ignored in the operation is the phrase the volume returns to whenever it names this failure, and it is the kind of exact formulation the card protects under earned repetition. The shipped definition is accurate and generic. Founding commitment to founding myth is also a sharper movement than commitment to slogan, because a myth is honoured and a slogan is merely repeated.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The accommodation argument, which is the chapter's most useful sentence, was deleted.",
+      "evidence": {
+        "baseline": "As the institution grows, there will be participants for whom this work is more than they signed up for, and there will be organizational pressures to accommodate them by softening the requirements. The accommodation is individually reasonable. Cumulatively, it is catastrophic.",
+        "shipped": "Growth increases the temptation to soften demanding principles for convenience or broader appeal."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Individually reasonable and cumulatively catastrophic is the mechanism, and it is the same structure the co-optation chapter uses twenty chapters later. The two beat close is a landing the paragraph earns. Temptation is also a weaker account than pressure, because a temptation implies a person who could resist and a pressure implies a structure that does not care.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0089",
+      "effect": "advanced, item unchanged",
+      "note": "Two prohibited marks repaired."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced the definition of drift and became a colon. One was parenthetical and became a comma pair."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped consent sentence, that refusal must remain possible without retaliation, and the shipped closing test that a principle becomes constitutional only when a participant can identify a breach and seek a remedy without depending on the goodwill of the person in breach. The second is the best sentence in the section and is not in the baseline."
+        },
+        {
+          "kind": "restored",
+          "note": "The drift definition with its formulation, the demandingness paragraph, the accommodation argument and its two beat close, and the rotation example with its indispensability clause."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 707,
+    "shippedWords": 245,
+    "shippedDelta": -65
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section illustrates R-REGISTER-DICTION at the level of a whole formulation rather than a word: honored in the telling, ignored in the operation is the volume's own phrase for this failure and the generic paraphrase is from nowhere."
+  }
+}

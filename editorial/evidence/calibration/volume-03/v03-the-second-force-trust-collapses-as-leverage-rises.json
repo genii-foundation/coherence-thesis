@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-second-force-trust-collapses-as-leverage-rises",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Second Force: Trust Collapses as Leverage Rises",
+  "currentHeading": "Trust Weakens as Capability Grows",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The empirical claim about declining institutional trust remains an author decision pending sourcing.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["institutional trust", "measurably", "war of all against all", "leverage"],
+    "itemsRead": ["CTD-0004", "CTD-0009", "CTD-0073"],
+    "outcome": "No recorded decision touches this section. The word measurably attached to an unsourced claim about declining trust is restored and recorded against CTD-0009, which owns the volume's quantitative backlog. Nothing in the ledger settles whether the decline claim may be asserted."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The empirical claim was removed and replaced with an account of what trust is.",
+      "evidence": {
+        "baseline": "Confidence in government, in the press, in science, in corporations, in the professions, in one another, has declined across much of the world over the period in which technological leverage has most rapidly risen.",
+        "shipped": "Large systems depend on forms of trust that rarely feel intimate. People must be able to rely on procedures, commitments, professional standards, evidence, and strangers whose work they cannot personally inspect."
+      },
+      "authorizedBy": "Compression, and the wave-one posture of not asserting unsourced empirical claims.",
+      "diagnosis": "The section is titled for a collapse and the shipped version never claims one occurred. What replaced the claim is a definition of institutional trust, which the reader did not need and which the baseline assumed. The claim is the section's reason for existing, and it is falsifiable, which is why it is worth stating even unsourced. Restored, and the sourcing obligation recorded rather than solved by deletion.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The conjunction that makes the two forces one danger was cut.",
+      "evidence": {
+        "baseline": "We are increasing the capability of every actor while decreasing the trust that would allow that capability to be coordinated. This is, in the most precise sense, a recipe for fragmentation under acceleration: more power, distributed among parties less and less able to act together.",
+        "shipped": "Greater capability among actors who trust one another less can accelerate fragmentation."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline states the conjunction as something we are doing, in the present, with a named result. The shipped version states it as something that can happen. That is a change of modality, which section 2 of the standard ranks above compression in the hierarchy of fidelity, and the display line that follows depends on the stronger form.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The display verdict was removed and replaced with advice about earning trust.",
+      "evidence": {
+        "baseline": "*To raise the leverage of every actor while lowering the trust between them is to hand more powerful instruments to a civilization progressively less able to coordinate their use. ... Only the restoration of coordination capacity does.*",
+        "shipped": "Trust cannot be restored by demanding belief. It must be earned through transparent methods, credible limits, shared governance, and repeated evidence that commitments survive pressure."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped paragraph is sound and belongs later in the volume, where the design is described. Here it answers a question the chapter has not yet asked. The display line the volume actually needs at this point is the one that names the dynamic and says that more capability cannot resolve it, because that is the sentence the architecture chapters are answering.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "Two prohibited marks, both introducing specifications.",
+      "evidence": {
+        "baseline": "even abundant capability fragments, and a recipe for fragmentation under acceleration.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Both became colons. The first introduces three participial clauses that specify what fragmentation looks like. The second introduces a gloss that specifies the phrase before it. Neither was separating movements, so neither took a period.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0009", "effect": "reopened by restoration", "note": "Eroding, measurably and across nearly every category of institution returns without a source. The word measurably makes it a claim about evidence, which raises the sourcing obligation rather than merely restating it." },
+    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "Across nearly every category of institution and across much of the world are bounded more carefully than most universals in this volume, but they remain unverified." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The claim of measurable decline, the list of institutions, the conjunction of the two trends, the account of what trust does, the high and low trust contrast, the fragmentation gloss, and the display verdict." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across two marks, as recorded in F4." },
+        { "kind": "cut", "note": "The shipped rewrite, including the paragraph on how trust is earned, which duplicates material the governance and safeguards chapters carry properly." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Sourcing. The restored section asserts a measurable, near-universal decline in institutional confidence over the same period that technological leverage rose. This is the volume's most checkable empirical claim outside the science chapters and it carries no citation. Restored under the instruction to restore and flag; CTD-0009 owns the fix.",
+    "Heading. Trust Collapses as Leverage Rises names the conjunction, which is the section's whole point. Trust Weakens as Capability Grows names two independent trends. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is worth carrying: deleting an unsourced claim and replacing it with a definition looks like caution and functions as a change of subject. The honest treatments of an unsourced claim are to state it and mark it, to bound it, or to remove it and say the section can no longer make its argument. Replacing it with adjacent true material is none of the three."
+  }
+}

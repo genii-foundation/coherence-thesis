@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-the-greatest-untapped-resource-on-earth",
+  "editorialId": "volume-05",
+  "sectionHeading": "The Greatest Untapped Resource on Earth",
+  "currentHeading": "The Human Capacity We Fail to See",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "greatest untapped resource",
+      "genius",
+      "eight billion",
+      "unrealized potential"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0090",
+      "CTD-0004"
+    ],
+    "outcome": "CTD-0079 records that the pass removed unsupported ranking and faux accounting from the human potential claim. The baseline states nearly all of its magnitude language interrogatively or with may, so the ranking the item names lives in the chapter heading rather than the prose. The heading is not restored; the current heading and its section lineage stand. CTD-0004 is corpus scoped and reaches no sentence here."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "1089 words.",
+        "shipped": "541 words, of which 0 of 40 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 40 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "Not one sentence of the baseline survives. The chapter's argument was re-argued in a flatter register.",
+      "evidence": {
+        "baseline": "There is an assumption buried so deep in modern life that we rarely notice we are making it. ... And beneath all of that worry sits a possibility we almost never examine, because examining it would rearrange everything.",
+        "shipped": "Modern institutions treat many hard problems as problems of resources. They count energy, food, water, capital, technology, computing power, productivity, and growth."
+      },
+      "authorizedBy": "Compression, and catalog 4.9 plausibly applied to the recurring There is opening.",
+      "diagnosis": "4.9 flags a scaffold when it makes paragraphs sound generated from a template. Here the opening is doing the chapter's first work, which is to name an assumption the reader is inside. Replacing it with an inventory of what institutions count states the topic and abandons the move.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The three portraits of ordinary genius were replaced by three clauses.",
+      "evidence": {
+        "baseline": "The particular way one person reads a room. The way another sees structure where everyone else sees noise. The way a third can sit with a frightened stranger and make them feel, for the first time in months, that they are not alone. These are not small things. They are simply uncounted.",
+        "shipped": "One person reads a room. Another sees structure in apparent noise. Another can sit with a frightened stranger and ease their isolation."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, and 4.17, dramatic fragments.",
+      "diagnosis": "Both catalog entries have retention limbs and both apply. The triad is not marching in uniform, it lengthens across its three members and lands on a detail that costs something, for the first time in months. Ease their isolation is the abstraction that 4.18 exists to prevent replacing an image with.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The continent analogy, the chapter's one extended figure, lost its consequence.",
+      "evidence": {
+        "baseline": "Imagine that humanity discovered an unknown continent, vast and untouched and rich beyond measure. We know exactly what would follow. Governments would convene, universities would study it, capital would pour in, infrastructure would rise within a decade.",
+        "shipped": "An unknown material reserve would draw governments, universities, and capital."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The figure works by making the reader watch a familiar machinery start up, then noticing that the machinery never starts for people. Collapsed to a single clause, the analogy states its conclusion and forfeits the demonstration.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    },
+    {
+      "summary": "The chapter's closing turn to the substrate lost Donna.",
+      "evidence": {
+        "baseline": "The substrate the first volume described turns out, on closer inspection, to be made of human beings, of Donna, and of everyone like her.",
+        "shipped": "The substrate is made, in part, of lives like Donna's."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "In part is a hedge the argument does not need and the volume's thesis does not permit. The baseline's claim is that the substrate is people, which is the sentence Providence Reconsidered later calls the thing the four volumes were building toward.",
+      "producedRule": "R-PROPORTION",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0079",
+      "effect": "paydown preserved in the heading, restored in the prose",
+      "note": "The renamed heading, The Human Capacity We Fail to See, carries the ranking correction and is kept, so the section lineage and its aliases are undisturbed. The baseline prose itself asks its magnitude questions interrogatively or hedges them with may, so restoring it does not reassert the ranking the item names."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "not touched",
+      "note": "No historical priority claim appears in this section."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Seven em dashes. Three became colons where the second clause enumerated, one split a hedged question into a question and its answer, one became a comma inside an appositive, one resolved a fronted list with a colon, and one became a period so infrastructure could be restated rather than trailed."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, and with it the recorded correction of the ranking claim."
+        },
+        {
+          "kind": "restored",
+          "note": "The buried assumption, the three portraits, the inventors and healers question, the accidents that stand in for infrastructure, the failure-of-design paragraph, the continent, the infrastructure claim for purpose, and the substrate made of Donna."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The heading now disagrees with the section it names. The baseline heading asserts a ranking the prose only asks about; the current heading asserts a failure the prose diagnoses. Both are defensible and the section lineage argues for keeping the current one. Whether the volume wants the chapter to open on a ranking or on a failure is the author's call.",
+    "The waste is real, and it is enormous, and it is nearly invisible survives the restoration, two sentences after the passage concedes that no number exists. The concession is the baseline's own and it makes the magnitude claim a conviction rather than a measurement, which is the honest reading, but it is still a magnitude claim CTD-0079 would want classified.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the first section in the volume with zero verbatim survival, and it shows why a word count cannot detect the difference. Every proposition in the shipped text is defensible; almost none of the prose is the book's. The useful ledger case is that a recorded correction can live in a heading rather than a sentence, which meant keeping the rename and restoring the prose underneath it."
+  }
+}

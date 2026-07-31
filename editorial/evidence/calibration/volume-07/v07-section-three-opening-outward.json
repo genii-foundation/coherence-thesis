@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-section-three-opening-outward",
+  "editorialId": "volume-07",
+  "sectionHeading": "**Section Three — Opening Outward**",
+  "currentHeading": "### Section Three: Opening Outward",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "tier headings",
+      "display matter",
+      "heading hierarchy"
+    ],
+    "itemsRead": [
+      "CTD-0084",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0084 records the restoration of a real Markdown heading hierarchy in Volume VII. The baseline carries this tier divider as a bold display line with an em dash and no body. The Markdown heading with a colon is the paydown form and it stands."
+  },
+  "substitutionCheck": "The baseline section is a divider with no body. Nothing could be substituted.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A bold display divider became a Markdown heading and its em dash became a colon.",
+      "evidence": {
+        "baseline": "**Section Three — Opening Outward**",
+        "shipped": "### Section Three: Opening Outward"
+      },
+      "authorizedBy": "CTD-0084 and section 3 on the em dash.",
+      "diagnosis": "The divider names a tier of tenets and carries no prose. A colon is correct because the second half specifies the first: the tier is named, then what it teaches. The damage report shows this section as a total loss on the baseline side and a large gain on the current side, because the tool folds the four level headings beneath it into its word count. Tenets nine through twelve sit beneath it.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0084",
+      "effect": "paydown preserved",
+      "note": "The bold display divider is not restored."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "The prior pass heading level and colon form."
+        },
+        {
+          "kind": "verified",
+          "note": "Every tenet that belongs to this tier is present beneath it, in baseline order."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

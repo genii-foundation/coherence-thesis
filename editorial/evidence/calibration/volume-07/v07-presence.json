@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-presence",
+  "editorialId": "volume-07",
+  "sectionHeading": "**Presence**",
+  "currentHeading": "### Presence",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "presence",
+      "trainable faculty",
+      "attention"
+    ],
+    "itemsRead": [
+      "CTD-0092"
+    ],
+    "outcome": "Searched editorial/evidence/debt/items/ and editorial/sources/corpus/master-ledger.md for every canonical term, proper name, number, and tracked promise in this section. No recorded decision governs the wording restored here, so the baseline is the authority on the prose."
+  },
+  "substitutionCheck": "Grepped. The entire second paragraph, Its scale is ordinary through a small return from assumption to contact, is absent from the baseline. It is substituted prose, not compression, and the word count delta of six percent concealed that completely.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The baseline’s account of why presence is the opposite of extraction was cut, and a new paragraph of concrete examples was written in its place.",
+      "evidence": {
+        "baseline": "And presence is the precise opposite of extraction at the level of attention: to be present is to give attention rather than to take it, and giving attention is the one gift that enriches the giver in the giving.",
+        "shipped": "Its scale is ordinary. A person stops preparing a reply long enough to hear the change in another’s voice. A hand releases the object it had been gripping."
+      },
+      "authorizedBy": "Not authorized by any catalog category. This is a substitution.",
+      "diagnosis": "The lost sentence is the hinge between this section and the one before it: it is what makes presence an answer to extraction rather than a separate topic. The substituted paragraph is good and the volume card now lists two of its images among the volume’s recurring motifs, which is how a substitution becomes canon. Both are kept in the re-render, because R-VOICE-BIND binds the card and R-REMOVE-BURDEN requires the hinge to survive somewhere.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "A universal negative became a bare negative.",
+      "evidence": {
+        "baseline": "Nothing can be perceived deliberately, related to lovingly, or created consciously by an attention that is elsewhere.",
+        "shipped": "(absent; replaced by Presence does not guarantee love, truth, or good judgment.)"
+      },
+      "authorizedBy": "Section 5, earn universals.",
+      "diagnosis": "Nothing overclaims and section 5 is right to inspect it. The repair is little rather than nothing, which keeps the triad and the claim. The pass instead deleted the sentence and added a disclaimer, so the section now says what presence fails to do and no longer says what it is for.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "Nothing reduced to little under section 5, earn universals."
+        },
+        {
+          "kind": "restored",
+          "note": "The give rather than take account of attention and the gift that enriches the giver."
+        },
+        {
+          "kind": "kept",
+          "note": "The substituted ordinary scale paragraph, under R-VOICE-BIND, because the volume card records two of its images as recurring motifs of the volume."
+        },
+        {
+          "kind": "verified",
+          "note": "The section is one of several where a small word count delta hid a rewrite. Recorded so the pattern is visible from the ledger."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "The ordinary scale paragraph is not the author’s baseline prose. The volume card, written after the pass, now protects two of its images. Does the author adopt it, or should the card be corrected to the baseline?"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This section is the reason every record in this volume carries a substitution check. A minus six percent delta looked like the least damaged section in Volume VII and was in fact a rewrite."
+  }
+}

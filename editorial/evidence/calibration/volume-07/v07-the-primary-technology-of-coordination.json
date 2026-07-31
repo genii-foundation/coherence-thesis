@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-primary-technology-of-coordination",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Primary Technology of Coordination**",
+  "currentHeading": "## Part IV: The Primary Technology of Coordination",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "coordination",
+      "markets",
+      "proxy",
+      "scale",
+      "Scale",
+      "ICONS"
+    ],
+    "itemsRead": [
+      "CTD-0076",
+      "CTD-0088",
+      "CTD-0036"
+    ],
+    "outcome": "CTD-0076 requires Scale as the singular proper term and ICONS only as the plural. This section uses scale in its ordinary sense, at scale and civilizational scale, and no proper term is involved, so lowercase is correct and the item is not touched. CTD-0036 tracks the population threshold claim, which this section does not make."
+  },
+  "substitutionCheck": "Grepped. The proposal has not yet been demonstrated at civilizational scale is absent from the baseline and is retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The diagnosis of why proxies drift toward extraction was cut.",
+      "evidence": {
+        "baseline": "each works by substituting a proxy for presence: a price, a rule, a metric. Each is powerful; and each, left to itself, drifts toward extraction, because a proxy can be gamed in ways that a present human being cannot.",
+        "shipped": "Markets, bureaucracies, and networks answer with prices, rules, and metrics. These proxies can coordinate action, but they can also be gamed or detached from the people they affect."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Substituting a proxy for presence is the sentence that makes this section part of this book rather than a general observation about institutions. Gamed in ways that a present human being cannot is the mechanism, and the shipped can also be gamed drops the comparison that makes the argument.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The proposal lost its content.",
+      "evidence": {
+        "baseline": "the missing coordination technology is an internal one: a massive, deliberate training in the art of presence, distributed widely enough that presence itself becomes a medium in which large numbers of people coordinate",
+        "shipped": "This volume proposes that people train how they attend and relate, then test whether groups make better decisions as a result."
+      },
+      "authorizedBy": "Compression, and catalog 4.6 plausibly applied to massive.",
+      "diagnosis": "Presence itself becomes a medium in which large numbers of people coordinate is the proposal. The shipped sentence proposes training and testing, which is a research design rather than a claim. Massive is the one word 4.6 correctly flags and it is dropped in the re-render.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0076",
+      "effect": "no change",
+      "note": "Scale appears only in its ordinary sense here. No singular ICON or ICONS use is introduced."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The clause stating that the proposal has not been demonstrated at civilizational scale is kept and closes the paragraph."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. One introduced an enumeration and became a colon. One separated a second movement and became a period. One introduced the proposal and became a colon."
+        },
+        {
+          "kind": "applied",
+          "note": "Massive dropped under catalog 4.6. Deliberate carries the claim."
+        },
+        {
+          "kind": "restored",
+          "note": "The coordination problem stated as a question, the proxy diagnosis, the gaming mechanism, and the proposal in full."
+        },
+        {
+          "kind": "kept",
+          "note": "The undemonstrated at scale clause."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

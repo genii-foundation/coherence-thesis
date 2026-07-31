@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-capital-patient-enough",
+  "editorialId": "volume-04",
+  "sectionHeading": "**Capital Patient Enough**",
+  "currentHeading": "**Capital Without Command**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "patient capital",
+      "endowment",
+      "cooperative",
+      "commons",
+      "Currency of Presence",
+      "COHERENCE",
+      "Bio-Consensus",
+      "venture capital"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0012 requires the Currency of Presence, COHERENCE, and Bio-Consensus to be named as distinct concepts, and CTD-0046 forbids calling Proof of Council validated. Neither term appears in Part II, so neither item is touched. CTD-0072 requires that no funding structure or entity be presented as operational, which the restored conditional framing observes. CTD-0078 requires that named scholarship not function as proof of feasibility, which governs every research lineage in this part. CTD-0055 requires unimplemented properties to be stated as requirements."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's whole account of compatible capital was removed, including all three forms and their evidence.",
+      "evidence": {
+        "baseline": "Patient philanthropic endowment ... Cooperative ownership structures ... The Mondragon cooperative corporation, the Raiffeisen credit union network, the John Lewis Partnership, and several hundred years of cooperative enterprise history demonstrate that cooperative ownership can sustain economically viable institutions at significant scale over long timeframes.",
+        "shipped": "(no counterpart in the shipped chapter body)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The chapter is named for patient capital and the shipped version contains no account of what patient capital is, which forms qualify, or what evidence supports them. The four shared features of compatible capital, the endowment design question, the cooperative design question, and the third category of community bonds and long-horizon institutional investment are all absent. Whatever the reduction was doing, it was not compressing this chapter.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The refusal that governs the chapter was removed.",
+      "evidence": {
+        "baseline": "The appropriate response to this reality is not to compromise the constitutional requirements in order to access incompatible capital. It is to develop a specific, patient, honest strategy for accessing compatible capital even when that access is more difficult.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the chapter's instruction, and it is the one a builder under funding pressure needs. It also sets up the donor scenario in Chapter Twenty-Four, which dramatizes exactly this refusal at a cost. Without it the donor chapter's outcome has no stated principle behind it.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0078",
+      "effect": "advanced, item unchanged",
+      "note": "One misattributed author name corrected against the published record. The remaining citations are named without sources and the item stays open."
+    },
+    {
+      "id": "CTD-0072",
+      "effect": "paydown preserved",
+      "note": "The restored funding architecture is described as viable if challenging for the institution Providence would have to be, not as an arrangement in place."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes across the chapter and its closing interlude. Five were parenthetical appositives defining a capital form and became comma pairs. Two introduced specifications and became colons. One in the interlude separated two movements and became a period."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped epigraph attribution Adapted from The Coherence Thesis, Volume III, and the shipped heading Capital Without Command, which holds the route."
+        },
+        {
+          "kind": "corrected",
+          "note": "The baseline attributes The Entrepreneurial State and Mission Economy to Michael Mazzucato. The author is Mariana Mazzucato. Corrected in the restoration under section 9 of the standard, which requires names to be verified."
+        },
+        {
+          "kind": "restored",
+          "note": "The four features of compatible capital, all three compatible forms with their examples and design questions, the refusal, and the Part II closing interlude on why patience about scale is not timidity."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored text says the combination of permanent endowment, cooperative ownership revenue, and long-horizon institutional investment represents a viable funding architecture. That is a feasibility claim the volume does not evidence. CTD-0078 and CTD-0072 both bear on it.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "The heading is the shipped one, not the baseline's. Baseline headings were not restored because `publishing/continuity/section-lineage.json` already records the rename and resolves the historical route, and this pass has no standing to add lineage entries. Where the baseline heading names the section better, that is recorded in the finding and left for the author."
+  ],
+  "measurements": {
+    "baselineWords": 1047,
+    "shippedWords": 421,
+    "shippedDelta": -60
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and one factual correction made. The chapter is the largest single body of removed material in Part II and the only place in the volume so far where the restoration also fixed an error in the baseline. A re-render is not a revert: where the baseline is wrong on a checkable fact, section 9 of the standard governs and the baseline loses."
+  }
+}

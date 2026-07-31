@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-year-of-initiations",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Year of Initiations**",
+  "currentHeading": "## Part VIII: The Year of Initiations",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "pne(h)uma(n) Curriculum",
+      "fifty-two initiations",
+      "pneuma"
+    ],
+    "itemsRead": [
+      "CTD-0087",
+      "CTD-0088",
+      "CTD-0056"
+    ],
+    "outcome": "CTD-0087 is the governing item. It requires that the curriculum be completed or reframed as a sketch, and that the missing learning design, facilitation, assessment, and safety apparatus be named. The shipped paragraph doing that is kept and extended."
+  },
+  "substitutionCheck": "Grepped. The full curriculum, learning objectives, facilitation standards, assessment, contraindications, and safety apparatus have not yet been published is absent from the baseline and is retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The name lost its meaning and the year lost its shape.",
+      "evidence": {
+        "baseline": "the breath-and-spirit human, the pneuma within the human, brought to maturity through the seven initiates and the twelve tenets across fifty-two initiations. One initiation for each week of the year; one year to walk, for the first time, the whole path from Listening to Providence.",
+        "shipped": "It sketches fifty-two weekly initiations across the Seven Initiates and Twelve Tenets. The name joins breath, spirit, and the human."
+      },
+      "authorizedBy": "Compression, and CTD-0087.",
+      "diagnosis": "The pneuma within the human is the gloss that makes the coined name readable, and joins breath, spirit, and the human is a list of ingredients rather than a meaning. For the first time is also the phrase that marks the year as a first passage rather than the whole path, which is the modesty CTD-0087 wants and the pass removed while adding a separate disclaimer.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "Brought to maturity was removed rather than bounded.",
+      "evidence": {
+        "baseline": "brought to maturity through the seven initiates and the twelve tenets",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "CTD-0087, which rejects the claim that one year produces a whole person.",
+      "diagnosis": "The correction is right. The re-render renders it brought toward maturity, which keeps the aim and drops the completion claim, and the disclaimer paragraph carries the rest.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0087",
+      "effect": "paydown preserved and extended",
+      "note": "The unpublished components are named, and a clause is added stating that until they exist this is a sketch of an architecture rather than a course anyone can enrol in."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "no change",
+      "note": "No enrolment or delivery is claimed."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced a specification and became a colon. One separated a second movement and became a comma with and."
+        },
+        {
+          "kind": "applied",
+          "note": "To maturity rendered as toward maturity under CTD-0087."
+        },
+        {
+          "kind": "restored",
+          "note": "The full gloss on the name, the fifty-two, the one week one initiation figure, and the first passage framing."
+        },
+        {
+          "kind": "kept",
+          "note": "The unpublished components paragraph."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

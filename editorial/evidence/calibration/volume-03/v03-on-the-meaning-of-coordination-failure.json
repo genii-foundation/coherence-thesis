@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-on-the-meaning-of-coordination-failure",
+  "editorialId": "volume-03",
+  "sectionHeading": "On the Meaning of Coordination Failure",
+  "currentHeading": "Coordination Failure",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Claim scope on the climate and AI examples remains an author decision.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["coordination failure", "prisoner's dilemma", "fifty years", "misaligned artificial intelligence", "coherence"],
+    "itemsRead": ["CTD-0004", "CTD-0009", "CTD-0016", "CTD-0027", "CTD-0073", "master-ledger section 2"],
+    "outcome": "No recorded decision touches this section. CTD-0027 governs Providence's own AI posture and product claims, not the diagnostic use of the AI development landscape as an example, so it does not fire. CTD-0009's quantitative backlog covers the volume's own figures rather than the fifty-year span of climate science, but the span is restored unverified and is recorded against it. The master ledger's definition of coherence as the capacity to stay regulated, relational, and reality-responsive as complexity scales is consistent with the restored closing line."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was rewritten, and the rewrite converted a definition into a survey of considerations.",
+      "evidence": {
+        "baseline": "300 words. Four paragraphs, each ending on a named result.",
+        "shipped": "203 words. Checked against the baseline: The failure examined here reaches further and makes capable coordination more necessary appear zero times in it."
+      },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "The baseline defines coordination failure by contrast with the prisoner's dilemma, then proves the definition twice, then generalizes. The shipped version replaces both proofs with lists of considerations: interests conflict, costs fall on different generations, participants disagree about risks, timelines, methods, authority. Those are true and they are not the argument. The argument is that the missing thing is infrastructure, which the baseline states four times in four different registers and the shipped version states once.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The refrain that carries the chapter was deleted.",
+      "evidence": {
+        "baseline": "The problem is not the knowledge. The problem is the infrastructure for acting on it together. ... The problem is not lack of concern. The problem is the absence of coordination infrastructure adequate to the situation. ... What is missing is the institutional substrate ... What is missing is coherence.",
+        "shipped": "Absent. Each paragraph ends on a different general observation."
+      },
+      "authorizedBy": "Compression, and 4.9 on repetitive scaffolds.",
+      "diagnosis": "The retention limb of 4.9 keeps recurrence that is deliberate, and the poetic standard protects repetition that acts as insistence or structural memory. Here the recurrence does both and also performs the argument's shape: each example ends by naming the same absence, so the reader arrives at What is missing is coherence having already met the sentence three times in weaker forms. That is the definition of earned repetition. Restored.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Three prohibited marks, all fencing lists inside a subject.",
+      "evidence": {
+        "baseline": "the shared frameworks, the very conditions for meaningful cooperation, and the competitive dynamics among leading developers.",
+        "shipped": "Not applicable. The rewrite removed the sentences that carried the marks."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "None of the three was separating movements, so none became a period. The first list was moved into attributive position, which is the shortest repair and loses nothing. The second was promoted to a colon list at the end of its sentence, which also improved the landing. The third was rebuilt as a compound subject, so the three named dynamics now carry the verb directly instead of standing between the subject and its verb.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0009", "effect": "reopened by restoration", "note": "For fifty years is restored as the span over which climate science has produced its picture. The figure is plausible and unsourced." },
+    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "Everywhere the pattern repeats is restored. It is a universal about domains rather than about history, but it is the same family of claim." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The definition by contrast with the prisoner's dilemma, both worked examples in full, the four-part refrain, and the closing What is missing is coherence." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks, as recorded in F3." },
+        { "kind": "cut", "note": "Every sentence of the shipped rewrite." },
+        { "kind": "kept", "note": "The shipped heading, Coordination Failure, unchanged, because a heading is a section id and a recorded route. On the Meaning of Coordination Failure signals that the section is a definition, which is what it is. Recorded as an open question." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim about private belief. The restored AI paragraph says the behavior is one that nearly everyone involved privately acknowledges is suboptimal. That is an unsourced claim about what named people privately think, and category 4.27 covers exactly this shape. It is also the sentence that makes the example a coordination failure rather than a disagreement. Restored as written.",
+    "Heading. On the Meaning of Coordination Failure announces a definition. Coordination Failure names a topic. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 is the useful case: a four-part refrain was removed under a catalog entry whose retention limb clearly covered it, and the removal is invisible in the diff because each paragraph still ends in a sentence. Repetition losses do not show up as missing content. They show up as a section that no longer arrives anywhere."
+  }
+}

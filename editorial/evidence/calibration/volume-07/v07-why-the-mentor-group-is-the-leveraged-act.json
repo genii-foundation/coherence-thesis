@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-why-the-mentor-group-is-the-leveraged-act",
+  "editorialId": "volume-07",
+  "sectionHeading": "***Why the Mentor Group Is the Leveraged Act***",
+  "currentHeading": "### Why the Mentor Group Is the Leveraged Act",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "mentor group",
+      "infrastructure",
+      "coordination",
+      "institutions"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0056",
+      "CTD-0087"
+    ],
+    "outcome": "CTD-0088 bounds mentor authority over people. It does not bear on the strategic claim about why a mentor group is built first. CTD-0056 keeps the status of the Purposeful program open, which is why the restored text says may follow rather than will follow."
+  },
+  "substitutionCheck": "Grepped. The whole second paragraph, from The practice spreads through repetition through what the program means to test, is absent from the baseline. It is substituted prose and it is retained because it makes the diffusion claim concrete.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The heading was changed from a claim to a schedule.",
+      "evidence": {
+        "baseline": "Why the Mentor Group Is the Leveraged Act",
+        "shipped": "Why Mentors Come First"
+      },
+      "authorizedBy": "Section 8, heading and identity test.",
+      "diagnosis": "Come first states the order of operations. The leveraged act states why, which is the section’s entire content. Section 8 permits improving a weak heading, but this replacement is weaker: it removes the claim and keeps the sequence. The baseline heading is restored, and the section id it produces is the one the damage report already tracks.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F2",
+      "summary": "The bottleneck argument was deleted.",
+      "evidence": {
+        "baseline": "For the bottleneck in building anything good together has rarely been the materials or the ideas; it has been the quality of the coordination among the people building it.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the premise. Without it, the claim that improving coordination improves the institutions is unsupported, and the section reduces to an assertion that skilled practitioners help. The sentence is also the hinge from Part IV’s coordination problem into the mentor programme in Part VII.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "A hedge was converted into a different hedge that says less.",
+      "evidence": {
+        "baseline": "then one can only presume how much faster the right infrastructure will follow",
+        "shipped": "Whether that improvement produces better institutions is a testable hypothesis, not a presumed result."
+      },
+      "authorizedBy": "Catalog 4.14, sterile hedging, and CTD-0087.",
+      "diagnosis": "One can only presume is an odd construction and the correction is fair, but the correction was applied by deleting the claim rather than by bounding it. The re-render states the claim with may and keeps the shipped sentence about testability in the following paragraph, so the reader gets both the proposition and its status.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0056",
+      "effect": "no change",
+      "note": "The programme is described as something that may follow and that is to be tested, not as something operating."
+    },
+    {
+      "id": "CTD-0087",
+      "effect": "no change",
+      "note": "The testable hypothesis framing is retained."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. Both introduced enumerations of what the mentors do and became commas inside rebuilt clauses, since each list is genuinely dependent on its verb."
+        },
+        {
+          "kind": "restored",
+          "note": "The baseline heading, the leveraged act claim, the enumeration of what a mentor group can do, the bottleneck premise, and the institutions consequence."
+        },
+        {
+          "kind": "kept",
+          "note": "The substituted diffusion paragraph and the testable hypothesis framing."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "The baseline heading is restored, which changes the section slug from why-mentors-come-first back to why-the-mentor-group-is-the-leveraged-act. Route continuity was not re-run in this session and should be verified before merge."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

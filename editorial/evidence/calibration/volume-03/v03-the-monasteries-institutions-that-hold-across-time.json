@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-monasteries-institutions-that-hold-across-time",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Monasteries: Institutions That Hold Across Time",
+  "currentHeading": "Monasteries: Practice Across Time",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Historical claim scope remains an author decision.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["monastic", "Benedictine", "Buddhist", "rule of life", "scriptoria"],
+    "itemsRead": ["CTD-0004", "CTD-0008", "CTD-0073"],
+    "outcome": "No recorded decision touches this section. The naming of the Benedictine and Buddhist traditions is restored and recorded against CTD-0008, whose audit covers the monastic claims."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The named traditions and the concrete economies were both generalized away, and the section lost fifty-nine percent of its words.",
+      "evidence": {
+        "baseline": "The monastic traditions, Benedictine and Buddhist among many others ... ran genuine economies of farms, breweries, scriptoria, and schools without allowing the economy to consume the mission.",
+        "shipped": "Monastic traditions show that an institution can preserve a way of life ... Many sustained farms, schools, hospitals, libraries, and hospitality."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Two losses. The Benedictine and Buddhist naming is what keeps the section from claiming a single monastic tradition, which is the same fault the pass elsewhere corrected in the Indigenous governance section. And without allowing the economy to consume the mission is the whole point of the example, since it is precisely the discipline the Purposeful Foundation is later designed to reproduce. The shipped list of activities has no such clause and therefore makes no argument.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The three things Providence takes from the monasteries were reduced to two abstractions.",
+      "evidence": {
+        "baseline": "an institution that fuses the sacred and the practical without collapsing one into the other, that treats the cultivation of inner capacity as serious infrastructural work, and that is built to outlast its founders by encoding its way of being in structure rather than in personality.",
+        "shipped": "Providence inherits the commitment to practice and the ambition to outlast its founders."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "In structure rather than in personality is the design commitment, and it is the sentence the governance chapters later cash out. The ambition to outlast its founders does not say how. Restored.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "Three prohibited marks, two of them fencing lists.",
+      "evidence": {
+        "baseline": "From the monastic traditions fenced around the named traditions, ran genuine economies fenced around a four-item list, and their doctrinal uniformity.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first fenced list has no internal comma between its two named traditions once rewritten as Benedictine and Buddhist among many others, so it became commas. The second was absorbed into the sentence with a preposition, since the four items are the economies rather than a gloss on them. The third appended a long appositive carrying its own internal commas and became a period.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0008", "effect": "reopened by restoration", "note": "The monasteries preserved knowledge through collapse, and the claim about a rule of life encoding a daily structure of presence, both return unverified." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        { "kind": "restored", "note": "The named traditions, the structural insight about holding a way of being across centuries, the four economies with the clause that makes them an argument, the rule of life, the three things Providence takes, and the two things it leaves behind with the cross-reference to Chapter Three." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks, as recorded in F3." },
+        { "kind": "cut", "note": "The shipped rewrite." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading. Institutions That Hold Across Time names the inheritance. Practice Across Time names the mechanism. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 shows the generalization habit producing a fault the pass elsewhere was careful to avoid: dropping the names of two specific traditions leaves a claim about monasticism in general, which is less accurate than the baseline, not more."
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-third-door-the-year-long-curriculum",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Third Door: The Year-Long Curriculum",
+  "currentHeading": "The Third Door: The Year-Long Curriculum",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon on the Initiates belongs to Volume VII and the master ledger and is preserved here.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["curriculum", "Seven Initiates", "domains", "thresholds", "cold-start"],
+    "itemsRead": ["CTD-0073", "CTD-0087", "master-ledger sections 2 and 4"],
+    "outcome": "One recorded decision binds and overrides the baseline. The wave-one semantic review corrected the Initiates at this exact location, citing Volume VII: they are cumulative thresholds entered in order, not independent domains. The baseline calls them seven domains of development. Under R-LEDGER-WINS the correction wins, and the restored text says thresholds in their cumulative order. Everything else in the section is restored. CTD-0087 covers curriculum completeness and remains owed."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The constellation argument survived; the reason the constellation matters did not.",
+      "evidence": {
+        "baseline": "The result is that the curriculum offers what no single tradition or teacher could: a passage through all seven thresholds, taught by people who have spent their lives in genuine practice within each one.",
+        "shipped": "Participants encounter several lineages and methods while moving through the cumulative sequence, then follow the relationships that prove most useful."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "What no single tradition or teacher could is the claim. It says the curriculum's plural authorship is not a convenience but the only way to teach seven thresholds at genuine depth, which is also the reason the curriculum is not the doctrine of one teacher. Encounter several lineages and methods reports the same fact without the claim.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The cold-start argument lost its mechanism.",
+      "evidence": {
+        "baseline": "The content draws the learners; the learners justify the mentors' contribution; the mentors' contribution enriches the content. Each reinforces the others. And every learner who passes through the curriculum is, by the end, a known participant in the network.",
+        "shipped": "Mentors gain reach and potential referrals. Participants receive broad development at a lower cost than intensive mentorship. Their experience gives the network more context for later introductions."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline states the loop as a loop, in three clauses that close, and then names the outcome that matters: the curriculum is how strangers become known participants, which is what makes the Membrane possible at scale. The shipped version lists three benefits without the circle, so the section no longer shows how the network bootstraps.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "Two prohibited marks.",
+      "evidence": {
+        "baseline": "the most accessible and the most scalable door, and one genuine piece of their practice fenced around a four-item list.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first introduced an appositive defining the door and became a colon. The second fenced a four-item list between a noun and its modifier; the list was promoted to its own sentence so the tie to a threshold stays adjacent to the practice it modifies.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0087", "effect": "reopened by restoration", "note": "The restored claim that the curriculum offers what no single tradition or teacher could raises the completeness question the item was opened about." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
+      "reasoning": [
+        { "kind": "restored", "note": "The accessibility and scale claim, the door-of-first-entry claim, the constellation paragraph with its no-single-teacher argument, what the learner receives, and the full cold-start loop with its known-participant close." },
+        { "kind": "changed", "note": "all seven domains of development became all seven thresholds in their cumulative order. This is R-LEDGER-WINS. The wave-one review corrected this exact sentence against Volume VII, and restoring domains would reopen it." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across two marks, as recorded in F3." },
+        { "kind": "cut", "note": "The shipped rewrite, including its warning against becoming a content funnel, which is a good sentence with no baseline counterpart and no ledger warrant." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Consent. The shipped text tied the network's use of curriculum experience to consent and data limits described elsewhere. The baseline says only that every learner becomes a known participant. The restoration returns the baseline claim without the consent clause, because the sovereignty chapter states the limits properly and repeating them at every mention makes the manuscript argue with itself. If the author wants the clause here, it is a one-sentence addition."
+  ],
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the second location where the recorded Initiates correction fires, and again it governs one phrase. Recording which phrase, rather than treating the correction as licence over the section, is what keeps a settled decision from expanding into an unreviewed rewrite."
+  }
+}

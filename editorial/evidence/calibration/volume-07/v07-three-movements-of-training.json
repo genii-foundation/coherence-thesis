@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-three-movements-of-training",
+  "editorialId": "volume-07",
+  "sectionHeading": "***Three Movements of Training***",
+  "currentHeading": "### Three Movements of Training",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "location",
+      "calibration",
+      "communion",
+      "readiness",
+      "metered depth"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0087"
+    ],
+    "outcome": "CTD-0088 requires that readiness not be a mentor’s private verdict and that no isolated teacher hold sole authority. The shipped corrections are kept, and the baseline’s withhold what a student is not yet ready to meet is not restored in that form."
+  },
+  "substitutionCheck": "Grepped. The whole safeguards paragraph, from That structure is incomplete without safeguards through before any active program is offered, is absent from the baseline and is retained as CTD-0088 paydown.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The three movements lost their names and their content.",
+      "evidence": {
+        "baseline": "The first is location ... The second is calibration ... And the third is communion: mentors are brought into relationship with one another, into a network and in time a council, so that they teach not as isolated authorities but as a coherent body, each presencing the genius of the others.",
+        "shipped": "First, a mentor locates their practice ... Second, they learn how to pace material ... Third, mentors practice with peers so that no isolated teacher becomes the sole authority."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Location, calibration, and communion are the names, and the card lists this section among the exemplars. Each presencing the genius of the others is also the only place the volume applies its own praxis to the people who teach it, which is the section’s point.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The closing claim about what a trained mentor becomes was deleted.",
+      "evidence": {
+        "baseline": "A mentor trained this way does not merely possess a method. They have become a node of the living matrix through which the work is transmitted.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.7, vague grandeur, applied to living matrix.",
+      "diagnosis": "4.7 fires on language that could adorn any subject. Living matrix is specific here: Part VII has just argued that the work is transmitted person to person, so the matrix is the mentor network and the metaphor is load bearing. It is the section’s landing.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The mentor’s power over what a student may learn was correctly bounded and not restored.",
+      "evidence": {
+        "baseline": "how to recognize readiness in a student and to withhold what a student is not yet ready to meet",
+        "shipped": "treating readiness as a conversation, not a private verdict"
+      },
+      "authorizedBy": "CTD-0088, which requires informed consent and forbids mystification.",
+      "diagnosis": "A retention limb for the shipped text. The re-render states the calibration content the baseline had, what rests on what and why depth is paced, and renders the readiness clause as reading readiness with a student rather than over them. The baseline formulation gives one person the authority to withhold, which is the exact power the item names.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The safeguards paragraph is kept whole. The baseline withholding clause is not restored. Readiness is a conversation."
+    },
+    {
+      "id": "CTD-0087",
+      "effect": "no change",
+      "note": "The three movements remain proposed rather than operating."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One separated a second movement and became a comma with and. One introduced a specification and became a comma."
+        },
+        {
+          "kind": "restored",
+          "note": "The three named movements with their full content, the shared language requirement, the network and council, and the living matrix close."
+        },
+        {
+          "kind": "kept",
+          "note": "The lineage clause on location, the readiness correction on calibration, and the whole safeguards paragraph."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

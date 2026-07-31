@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-presencing-genius",
+  "editorialId": "volume-07",
+  "sectionHeading": "**Presencing Genius**",
+  "currentHeading": "# **Presencing Genius**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "inscrutable",
+      "doubt this",
+      "goodness of us",
+      "universe coming to know itself"
+    ],
+    "itemsRead": [
+      "CTD-0086",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0086 records that the baseline invocation asks the reader to make the work harder to understand, calls that a probable reversal of the intended word, and records the correction to a clarity reading as a partial paydown. The reversal is not restored. The rest of the invocation, which the pass also replaced, is."
+  },
+  "substitutionCheck": "Grepped. Where it is wrong, bring what you know and It belongs to the goodness we can make together are both absent from the baseline. The invocation was rewritten, not compressed.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The dedication lost the sentence naming what the work is and whose it is, and gained a flatter substitute.",
+      "evidence": {
+        "baseline": "This work is for the goodness you are, and belongs to the goodness of us: the universe coming to know itself while evolving its awareness of itself.",
+        "shipped": "This work belongs to no single voice. It belongs to the goodness we can make together."
+      },
+      "authorizedBy": "Compression, and catalog 4.7 plausibly applied to the universe coming to know itself.",
+      "diagnosis": "The baseline lines make a metaphysical claim the volume then spends ten parts earning. The replacement makes a claim about authorship, which is true and much smaller, and it arrives before the reader has any reason to care who wrote the book. The volume card licenses spiritual language at this register, so 4.7 fires on its retention limb here rather than its defect limb.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The charge to the reader was narrowed from bringing what they know to clarifying what is obscure.",
+      "evidence": {
+        "baseline": "Doubt this, so that you might bring us the greatest value of the gift of your knowing.",
+        "shipped": "Doubt this work. Where it is obscure, help us clarify it. Where it is wrong, bring what you know."
+      },
+      "authorizedBy": "CTD-0086, which required repair of the inscrutability reversal.",
+      "diagnosis": "The item required one repair and the pass made three. Doubt this, so that you might bring us the greatest value of the gift of your knowing is not the sentence the item named, and its removal is unauthorized. It is restored, and the clarity reading the item did require is folded into the line that carried the reversal.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0086",
+      "effect": "paydown preserved",
+      "note": "The line asking the reader to make the work inscrutable is not restored. The clarity reading stands in its place, now inside the baseline cadence rather than replacing it."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash in the invocation marked the reason clause. Rebuilt as a for clause, which is the relation the mark was carrying."
+        },
+        {
+          "kind": "restored",
+          "note": "The knowing line, the goodness pair, and the universe coming to know itself close, all in the baseline line arrangement."
+        },
+        {
+          "kind": "kept",
+          "note": "The clarity reading required by CTD-0086."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "CTD-0086 still asks the author to confirm the intended philosophical posture. The restored invocation now asks for doubt and for clarification in the same breath. Is that the posture, or did the baseline mean inscrutability literally?"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The instructive part is that a ledger item authorizes exactly the change it names. CTD-0086 named one line, and the pass rewrote five."
+  }
+}

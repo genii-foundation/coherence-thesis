@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-presencing-and-the-space-between",
+  "editorialId": "volume-07",
+  "sectionHeading": "**Presencing, and the Space Between**",
+  "currentHeading": "### Presencing and the Space Between",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "entelechy",
+      "Gaia",
+      "the between",
+      "presencing",
+      "Membrane"
+    ],
+    "itemsRead": [
+      "CTD-0042",
+      "CTD-0082",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0042 keeps the relationship between Entelechy and the Membrane an open query, and the volume card records that entelechy here is philosophical rather than a settled technical layer name. CTD-0082 names the Gaia association at baseline lines 133 to 135 as an unverified cultural claim. Both constraints are carried in the restored text rather than paid by deletion."
+  },
+  "substitutionCheck": "Grepped. The phrase is a philosophical image. It does not establish a separate being or consciousness is absent from the baseline. It is retained in adapted form because CTD-0082 needs the distinction on the page.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The definition of presencing lost the mechanism and the term the volume uses for it.",
+      "evidence": {
+        "baseline": "To presence something is to draw it actively across the threshold from potential into actuality: a relativity of entelechy, a relation that brings into being what would not otherwise have been there.",
+        "shipped": "To presence something is to help a possibility become actual through relation."
+      },
+      "authorizedBy": "Compression, and CTD-0042 possibly read as forbidding the word entelechy.",
+      "diagnosis": "CTD-0042 asks what entelechy’s relation to the Membrane is. It does not remove the word from the volume that uses it philosophically, and the card explicitly preserves that use. Threshold is also the card’s named signature image, and it is the word the section is built on. Help a possibility become actual is the same claim with the vocabulary of the volume removed.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The Gaia paragraph was deleted entire.",
+      "evidence": {
+        "baseline": "Older minds had names for the intelligence that inhabits the between. One of them was Gaia: the sense that the connective tissue of the world is itself alive, that the relations among things are not mere gaps but constitute a being of their own.",
+        "shipped": "Many traditions have described relation as more than empty space."
+      },
+      "authorizedBy": "CTD-0082, which names the Gaia association as unverified.",
+      "diagnosis": "The item asks for verification and clear attribution, not deletion. Many traditions have described is worse by the item’s own standard, because it is catalog 4.27 weasel attribution: an unnamed consensus that cannot be checked. Naming Gaia and marking the lineage as unverified is both more honest and closer to what the item asked for.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "The reason the second volume matters here was cut.",
+      "evidence": {
+        "baseline": "This is the deepest reason the second volume dwelt so long on the space between things, for that space is not empty.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.23, meta claims about the text.",
+      "diagnosis": "This is a cross reference that carries an argument: the earlier volume’s long treatment of the between is the premise this section stands on. 4.23 keeps genuine wayfinding, and a nine volume work that never says why an earlier volume did what it did is harder to read, not cleaner.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0042",
+      "effect": "query untouched",
+      "note": "Entelechy is restored with an explicit note that it is philosophical here and names no technical layer. That is the card’s recorded position and it does not resolve the query."
+    },
+    {
+      "id": "CTD-0082",
+      "effect": "reopened in form, strengthened in substance",
+      "note": "The Gaia sentence returns, which the prior pass had removed. It returns with a verification marker naming exactly what is unproved, which is the item’s stated paydown direction. Recorded here so the reopening is not silent."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Two introduced a specification and became colons. One separated a second movement and became a period. One set off an appositive naming Gaia and became a colon, since the clause specifies the name."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS in the direction the item asked for rather than the direction the pass took it. Recorded in debt impact."
+        },
+        {
+          "kind": "restored",
+          "note": "The threshold definition, the relativity of entelechy, the second volume cross reference, the third thing and living interval, the Gaia paragraph, and the genius of the between."
+        },
+        {
+          "kind": "kept",
+          "note": "The claim that no separate being or consciousness is being established, rewritten so it reads as the volume’s own restraint rather than as a footnote against its own image."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Restoring Gaia reopens the form of CTD-0082 even though it improves the item’s substance. The author should confirm that a named and marked lineage is preferred to an unnamed and unmarked one."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The general shape recurs across this volume: a citation item was paid by deleting the citable thing, which leaves an unverifiable generality in its place."
+  }
+}
