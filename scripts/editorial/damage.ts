@@ -98,7 +98,7 @@ function landings(blocks: string[]): number {
   }).length;
 }
 
-interface Section {
+export interface Section {
   heading: string;
   body: string;
   blocks: string[];
@@ -111,14 +111,20 @@ interface Section {
  * Volume VII as unmeasurable when its sections map one to one onto the current
  * manuscript's headings.
  */
-function splitSections(markdown: string): Section[] {
+export function splitSections(markdown: string): Section[] {
   const lines = markdown.split("\n");
-  const hasMarkdownHeadings = lines.some((l) => /^#{1,3}\s+\S/.test(l));
+  // Four hashes, not three. AGENTS.md names # through #### as the levels that
+  // generate a public route, and Volume VII sets its twelve tenets at ####. Reading
+  // only three levels made those sections invisible: their words were absorbed into
+  // the preceding ### section, which then reported growth, while the sections
+  // themselves reported as deleted. One bug produced both halves of a 4,215 word
+  // discrepancy that happened to net out near the true total.
+  const hasMarkdownHeadings = lines.some((l) => /^#{1,4}\s+\S/.test(l));
   const out: Section[] = [];
   let current: { heading: string; lines: string[] } | null = null;
   for (const line of lines) {
     const m = hasMarkdownHeadings
-      ? /^(#{1,3})\s+(.*)$/.exec(line)
+      ? /^(#{1,4})\s+(.*)$/.exec(line)
       : /^\*\*(.+?)\*\*\s*$/.exec(`${line}`)
         ? ["", "", line.replace(/^\*\*(.+?)\*\*\s*$/, "$1").replace(/\s*·\s*$/, "").trim()]
         : null;
@@ -136,7 +142,28 @@ function splitSections(markdown: string): Section[] {
     const body = current.lines.join("\n");
     out.push({ heading: current.heading, body, blocks: body.split(/\n{2,}/).map((b) => b.trim()) });
   }
-  return out;
+
+  /**
+   * A part label and its title are one heading, even when the baseline sets them as two
+   * display lines. Volume VII writes "**Part I**" and "**The Argument, Arrived**" on
+   * separate lines where the current manuscript writes "## Part I: The Argument,
+   * Arrived". Read literally that is an empty section followed by an orphan, and it
+   * reported ten parts as deleted along with the prose beneath them.
+   */
+  return out.flatMap((section, index) => {
+    const label = /^Part\s+[IVXLC]+$/i.exec(section.heading.trim());
+    const next = out[index + 1];
+    if (label && next && words(section.body) === 0) return [];
+    const previous = out[index - 1];
+    if (
+      previous &&
+      /^Part\s+[IVXLC]+$/i.test(previous.heading.trim()) &&
+      words(previous.body) === 0
+    ) {
+      return [{ ...section, heading: `${previous.heading.trim()}: ${section.heading}` }];
+    }
+    return [section];
+  });
 }
 
 function baselineFor(editorialId: string): string | null {
