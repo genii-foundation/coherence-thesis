@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Failure of Signal: What If Presence Is Not the Right Thing to Reward?",
+  "currentHeading": "The Wrong Signal",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "anchor": "v03-why-providence-might-fail",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Whether presence is the master capacity is the volume's central wager and belongs to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "429 baseline words, 14 sentences, into 112 words and 7 sentences. Minus 74 percent. The pairing test was not run. Chapter-wide analysis is in the anchor record."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "master capacity",
+      "unconditional floor",
+      "the height",
+      "evokes in others",
+      "neurodivergence",
+      "human worth"
+    ],
+    "itemsRead": [
+      "CTD-0005",
+      "CTD-0006",
+      "CTD-0009",
+      "CTD-0045",
+      "CTD-0056",
+      "wave-one semantic-review.md ratification item 1, the unconditional material floor"
+    ],
+    "outcome": "No recorded decision governs this section, and one ratified change agrees with it. The semantic review's first ratification item makes the material floor unconditional, and this baseline section already commits to exactly that: we are designing the floor to be unconditional, so that no one is ever denied the basics of life for being difficult. The doctrine the review adopted was in the baseline here. CTD-0005 records a conflict between Volume III's unconditional floor and Volume IX's conditional one, and restoring this sentence strengthens Volume III's side of it. The shipped text's neurodivergence was not imported: the volume card lists neurodivergence claims among the known factual concerns, the baseline makes the same point with named figures rather than a clinical category, and importing an unsourced category into a restoration is not restoration."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The objection the section exists to answer was reduced to a list of undervalued traits, losing the argument that gives it force.",
+      "evidence": {
+        "baseline": "The history of human achievement is full of people who were not, by any measure, models of regulated presence: the tormented artist, the obsessive scientist, the prophet whose very inability to be at ease with the world was the source of their vision. A coordination currency built on presence might quietly exile precisely these people, building a civilization that is calmer, more harmonious, and less capable of the disruptive genius that calm and harmony do not produce.",
+        "shipped": "A culture that rewards visible regulation could undervalue anger, dissent, intensity, solitude, neurodivergence, and the difficult person whose contribution arrives without soothing anyone."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline argues that the dysregulation was the source of the vision, not an unfortunate accompaniment to it, and that a calmer civilization would be less capable for exactly that reason. That is a claim about causation and it is the strongest form of the objection. The shipped sentence lists qualities that might be undervalued, which is the same objection with the causal claim removed, and it substitutes a clinical category for three figures the reader can picture.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The design answer, which is the volume's most important structural commitment about what the currency measures, was deleted.",
+      "evidence": {
+        "baseline": "We are building the currency from the start around the coherence a person evokes in others, not merely the regulation they carry in themselves, precisely so that the difficult, the abrasive, the dysregulated genius who transforms the people around them registers in the system even when their own physiology never settles.",
+        "shipped": "Measuring what a person helps evoke in others may broaden the frame, but it does not settle the question."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline states a design decision with a reason and a named beneficiary. The shipped sentence reports that such a design might help and immediately withdraws. It also loses the operative distinction, evoked in others against carried in oneself, which is the difference between the Currency of Presence and a fitness score and is stated here more plainly than anywhere else in the volume. Restored. The shipped withdrawal is kept in its sharpest form, charismatic manipulation can also alter a room, which is a real objection to the design and not merely a hedge against it.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The admission that the volume's central premise may be wrong, and the commitment to build for that possibility, were deleted.",
+      "evidence": {
+        "baseline": "We may be wrong that presence is the quality most worth shaping toward. So we are building the capacity to discover that, and to correct it, directly into the thing, because a system that rewards a single human quality must be able to perceive what it is suppressing, and we intend ours to perceive exactly that.",
+        "shipped": "Presence should remain one valued condition among several unless evidence and public deliberation justify more."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "We may be wrong that presence is the quality most worth shaping toward is the largest concession in Volume III, offered about the volume's own thesis, and it is followed by a commitment rather than a retreat. A system that rewards a single human quality must be able to perceive what it is suppressing is a design principle stated once in the corpus. The shipped replacement makes presence provisional without ever admitting the wager, which is a smaller claim and a lesser honesty.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "Five prohibited marks.",
+      "evidence": {
+        "baseline": "Suppose the measurement works before an appositive gloss; a virtue for the virtue before an appositive with internal commas; models of regulated presence before a three-item list; regulation they carry in themselves before a purpose clause; the question we cannot yet answer fenced around a two-part alternative.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first and third became colons, each introducing a specification. The second became a period and the following clause was recast from that presence is not to presence may not be, which preserves the modality of it is possible that while letting the claim stand in its own sentence; the paragraph already carried a colon and a question and could not take a third mark. The fourth was a purpose clause and became a comma. The fifth was a fenced alternative carrying an internal comma; the fence dropped and the internal comma went with it, leaving whether presence is truly the master capacity or one virtue among several a thriving civilization needs."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0005",
+      "effect": "supported by restoration",
+      "note": "We are designing the floor to be unconditional, so that no one is ever denied the basics of life for being difficult, returns in the baseline's own words. The item records a conflict between Volume III's unconditional floor and Volume IX's conditional one. This is Volume III stating the unconditional version, with a reason attached, in a chapter about what happens when the reason is forgotten."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "supported by the kept material",
+      "note": "Providence must preserve paths to contribution that do not pass through biometric approval is kept from the shipped text. The item asks which decisions may consider biometric-derived evidence and what non-biometric routes must exist. This is a non-biometric route stated as a requirement in the prose."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "reopened by restoration",
+      "note": "We are building the currency, we are designing the floor and the height, and we are actively studying the question. Three undated operational claims. See the anchor record's refrain finding."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The history of human achievement is full of people who were not models of regulated presence is a historical generalization with three archetypes rather than three cases behind it."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the debt ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The suppose-the-measurement-works opening, the deeper question, the volume's own answer and the mistaken-a-virtue-for-the-virtue concession, the over-selection claim, consider the possibility seriously, the dysregulated genius, the three archetypes, the quiet exile and the less capable civilization, the coherence a person evokes in others, the unconditional floor and the height, the study of the master-capacity question, we may be wrong, and the closing principle about perceiving what is suppressed."
+        },
+        {
+          "kind": "kept",
+          "note": "Three shipped elements. Charismatic manipulation can also alter a room, placed directly after the evokes-in-others commitment as its objection, because it is the strongest thing the shipped section says and it attacks the exact design decision the baseline makes. And two closing requirements as a short paragraph: that Providence must preserve paths to contribution that do not pass through biometric approval, and that presence must never become a synonym for human worth. Both are bounds the baseline does not state and both bear on open canon items."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped trait list including neurodivergence, for the reason recorded in the ledger search, and the rest of the shipped rewrite."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks as recorded in F4."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, The Wrong Signal, untouched under the structural hold."
+        }
+      ],
+      "metrics": {
+        "words": 466,
+        "baselineWords": 429,
+        "shippedWords": 112,
+        "deltaPercentAgainstBaseline": 9,
+        "shippedDeltaPercentAgainstBaseline": -74
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Neurodivergence. The shipped section named it among the qualities a presence-rewarding culture would undervalue; the baseline does not, and it was not imported. The volume card lists neurodivergence claims among the known factual concerns and the objection is real. Whether the volume should name it here, with support, is an author decision, and the restored archetypes leave room for it.",
+    "The wager. We may be wrong that presence is the quality most worth shaping toward is restored. It is the volume's largest concession about its own thesis and it should not be lost again.",
+    "The height. Rewarding what a person draws out of others rather than the smoothness of their own affect is a minting criterion, and it sits beside Stream Three's claim that cardiac synchrony is the purest unit the currency mints. Whether the currency measures the individual's physiology, the relational event, or what a person evokes in others is CTD-0003 and CTD-0015, and this section is a third answer to it."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the standard, the cards, and the ledger, with the substitution test run first.",
+    "conclusion": "No new rule required. The instructive detail is that one ratified corpus doctrine, the unconditional material floor, was already stated in this baseline section with a reason attached, and the pass that adopted the doctrine elsewhere deleted the sentence that held it here. That is the R-LEDGER-WINS corollary from v03-the-four-streams appearing a second time: before treating a decision as new canon, check whether the baseline already carried it."
+  }
+}

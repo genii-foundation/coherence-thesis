@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-failure-of-structure-what-if-coordination-naturally-centralizes",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Failure of Structure: What If Coordination Naturally Centralizes?",
+  "currentHeading": "Centralization",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "anchor": "v03-why-providence-might-fail",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The commitment to dissolve rather than centralize is a constitutional commitment and belongs to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "410 baseline words, 13 sentences, into 112 words and 8 sentences. Minus 73 percent. The pairing test was not run. Chapter-wide analysis is in the anchor record."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "dissolution",
+      "dissolve",
+      "federation",
+      "sovereign compute",
+      "open protocol",
+      "capture",
+      "concentration"
+    ],
+    "itemsRead": [
+      "CTD-0016",
+      "CTD-0045",
+      "CTD-0055",
+      "CTD-0056",
+      "CTD-0071",
+      "CTD-0072"
+    ],
+    "outcome": "No recorded decision governs this section. CTD-0071 covers constitutional review of Providence's governance provisions and CTD-0055 covers the Foundation's ownership promises; the dissolution commitment restored here is a governance provision stated in narrative rather than constitutional register, and both items attach to it. The wave-one slop review asks for legal and democratic review of the constitutional sketch at baseline lines 856 to 905, which is a different chapter; this section's dissolution commitment was not in that scope and has never been reviewed."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The hypothesis that centralization is a law rather than a failure of will was deleted, leaving an observation about hubs.",
+      "evidence": {
+        "baseline": "The pattern recurs so reliably that one must take seriously the hypothesis that it is not a failure of will but a law of systems: that networks tend toward hubs, that hubs tend toward dominance, and that the decentralized ideal is a phase that consolidation always eventually ends. If this is true, then Providence's federated architecture is not a permanent protection but a delay. The question is not whether it centralizes but when, and into whose hands.",
+        "shipped": "Networks tend to produce hubs. Hubs accumulate convenience, data, capital, and authority."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline states the hard version of the objection: not that centralization is a risk to be managed but that it may be a law, in which case every defense the section then lists is a delay and not a protection. The question is not whether it centralizes but when, and into whose hands is the section's sharpest sentence and its most uncomfortable. The shipped pair states that networks produce hubs, which nobody disputes and which requires no answer.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The commitment to dissolve rather than become the concentration was deleted, and it is the volume's hardest promise.",
+      "evidence": {
+        "baseline": "We have also bound ourselves to the hardest commitment of all: that if we lose this fight, if the pull toward a center proves stronger than the architecture meant to resist it, the honest course is to dissolve rather than to become the concentration we set out to prevent. A coordination system that has centralized into the hands of a few has not partially succeeded; it has become the problem. We would rather end the experiment than let it become the thing it was built to replace.",
+        "shipped": "treat the emergence of unavoidable central control as a reason to redesign, federate, or close the affected function."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped clause offers three options and puts closure last and smallest, as closing a function rather than ending the project. The baseline binds the whole enterprise: if the architecture loses, the honest course is to dissolve. Has not partially succeeded, it has become the problem is the reasoning behind that, and it is the sentence that makes the promise more than a gesture. Restored. The shipped section's own best sentence, that dissolution is a serious last resort and not a dramatic sentence, is kept immediately after it, which is where it does the most work.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The named historical cases were flattened into a generic reference.",
+      "evidence": {
+        "baseline": "The early internet was radically decentralized and has consolidated into a handful of platforms. Cryptocurrency promised decentralization and produced exchanges and mining pools of staggering concentration.",
+        "shipped": "The early internet and many decentralized finance systems show how quickly an open field can consolidate around a small number of intermediaries."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Two cases with their specific outcomes became one sentence naming one case and a category. Exchanges and mining pools are the concrete forms the consolidation took and they are what makes the analogy to Providence's own infrastructure legible. Restored.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "resist centralization before a three-part means specification; a delay before a second movement; the people who study decentralized systems fenced around a three-item list with internal commas; it has become the problem before a second movement.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first became a comma, because the three through phrases are genuinely dependent adverbials and the sentence already carries a colon later. The second and fourth were separating movements and became periods, which is what gives The question is not whether it centralizes but when, and into whose hands and We would rather end the experiment than let it become the thing it was built to replace their own sentences to land in. The third was a fenced list carrying internal commas; the sentence was rebuilt so the cryptographers, the protocol designers, and the governance theorists become the direct object and the category phrase is dropped, since the three items name it exactly."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0071",
+      "effect": "reopened by restoration",
+      "note": "The dissolution commitment returns as a binding promise: if the pull toward a center proves stronger than the architecture, the honest course is to dissolve. That is a constitutional provision stated in narrative register and it has not been through the legal and democratic review the item requires. The kept shipped sentences name exactly what the review must settle: who can trigger dissolution, who is protected during it, and what happens to services and records afterward."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "supported by restoration",
+      "note": "The open protocol that no one owns and the data that never leaves the participant's own device return as the architecture the ownership promises rest on."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "reopened by restoration",
+      "note": "We are building the most aggressive anti-centralization architecture we know how to build, and building it first, plus governance provisions that trigger decentralization automatically. Undated operational claims. See the anchor record's refrain finding."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "The internet consolidation and cryptocurrency concentration claims return as unsourced historical generalizations offered as evidence for a law of systems."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the debt ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The three means of resisting centralization, the hard possibility stated as efficiency winning over time, the two historical cases with their outcomes, the law-of-systems hypothesis with its three clauses, the delay-not-protection verdict, the when-and-into-whose-hands question, the aggressive architecture with its three components, consolidation treated as an emergency, the recruitment of cryptographers and protocol designers and governance theorists, the dissolution commitment, and the closing refusal."
+        },
+        {
+          "kind": "kept",
+          "note": "Three shipped elements. Publishing concentration metrics and limiting dependence on any single operator, folded into the emergency sentence as what treating consolidation as an emergency actually means. And the dissolution pair, that dissolution is a serious last resort and not a dramatic sentence and that the institution must define who can trigger it, who is protected during it, and what happens to services and records afterward, kept as its own paragraph after the commitment. The wave-one literary review names that first sentence among the best earned verdicts in the shipped volume, and it is a genuine bound on a promise the baseline makes without operational content."
+        },
+        {
+          "kind": "cut",
+          "note": "The rest of the shipped rewrite, including the three-option response that put closure last."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks as recorded in F4."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, Centralization, untouched under the structural hold. The baseline heading asks whether coordination naturally centralizes, which is the section's actual question; the current heading names the topic."
+        }
+      ],
+      "metrics": {
+        "words": 447,
+        "baselineWords": 410,
+        "shippedWords": 112,
+        "deltaPercentAgainstBaseline": 9,
+        "shippedDeltaPercentAgainstBaseline": -73
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Dissolution. Restored as a binding promise about the whole enterprise rather than a function. It is the volume's hardest commitment and it has no procedure behind it. The kept shipped pair now names the three things a procedure would have to settle, which turns the promise into something CTD-0071's review can act on.",
+    "Governance provisions that trigger decentralization automatically the moment capture is detected. Restored. Automatic triggers require a definition of capture and a detector for it, neither of which the volume supplies. CTD-0071.",
+    "The law-of-systems hypothesis. Restored at full strength, including the claim that the decentralized ideal is a phase that consolidation always eventually ends. That is a strong historical universal supported by two cases. CTD-0009."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the standard, the cards, and the ledger, with the substitution test run first.",
+    "conclusion": "No new rule required. This section is the best case in the chapter for keeping substituted prose. The baseline makes the promise and the shipped text asks the question the promise cannot answer, and neither is complete alone. Substitution mode does not mean the substituted sentences are worthless; it means they are not the author's, and the disposition for a good one is to keep it beside the restored commitment rather than in place of it."
+  }
+}

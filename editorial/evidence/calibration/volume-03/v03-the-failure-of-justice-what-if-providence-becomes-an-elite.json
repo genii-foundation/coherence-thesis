@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-failure-of-justice-what-if-providence-becomes-an-elite",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Failure of Justice: What If Providence Becomes an Elite?",
+  "currentHeading": "Elite Capture",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "anchor": "v03-why-providence-might-fail",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Trajectory over state as a minting criterion, and the unconditional floor, are canon decisions belonging to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "451 baseline words, 14 sentences, into 114 words and 7 sentences. Minus 75 percent. The pairing test was not run. Chapter-wide analysis is in the anchor record. This is the longest baseline section in the chapter and the one whose restoration grew most, because it is the section where the shipped text made the strongest independent contribution."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "trajectory over state",
+      "unconditional floor",
+      "Foundation",
+      "elite",
+      "social credit",
+      "coherence record",
+      "design authority"
+    ],
+    "itemsRead": [
+      "CTD-0005",
+      "CTD-0006",
+      "CTD-0013",
+      "CTD-0045",
+      "CTD-0054",
+      "CTD-0055",
+      "CTD-0056",
+      "wave-one semantic-review.md ratification item 1"
+    ],
+    "outcome": "No recorded decision governs this section, and as in the Failure of Signal, one ratified doctrine was already here: we are making the floor unconditional. CTD-0005 records the conflict between Volume III's unconditional floor and Volume IX's conditional one, and this is a second Volume III statement of the unconditional version. Trajectory over state is a minting criterion and touches CTD-0003 and CTD-0006, both open queries, so R-LEDGER-WINS does not fire and the baseline governs."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The mechanism of elite capture was deleted, and it is the only place the volume explains why its own instrument would reproduce privilege.",
+      "evidence": {
+        "baseline": "The people most able to demonstrate presence are, disproportionately, the people who have already been safe enough, long enough, to develop it. Trauma, poverty, and precarity dysregulate the nervous system; the very conditions that Providence exists to help heal are the conditions that would, at the entry point, register as low coherence.",
+        "shipped": "Providence could become a high-trust club for people already safe, wealthy, educated, and socially fluent enough to perform its preferred forms of presence."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped sentence says the club would form. The baseline says why it would form and the reason is physiological rather than social: hardship dysregulates, and dysregulation is what the instrument reads as low coherence, so the people the network exists to serve are the people it would filter out at the door. That is the strongest self-criticism in Volume III and it indicts the measurement architecture directly. It also names the exact reason the trajectory criterion exists, three sentences later.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The trajectory criterion was reduced from a design commitment to an observation about fairness.",
+      "evidence": {
+        "baseline": "We are building the coherence record from the start to reward trajectory over state, so that the person who began dysregulated by hardship and developed toward presence carries a more meaningful record than the person who began regulated and never had to grow.",
+        "shipped": "Trajectory may be fairer than comparison with a population norm, yet it still requires a model of desirable change."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Trajectory over state is the design answer to the mechanism in F1 and it is a minting criterion: it says what the record measures. The shipped sentence evaluates the idea without adopting it. Both are kept, joined, because the shipped objection is exact and unanswered: a trajectory criterion needs a model of desirable change, and the volume does not have one. Restored as a commitment with its own objection attached.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The section's admission and its standard of judgment were deleted.",
+      "evidence": {
+        "baseline": "We state plainly that these measures may not be enough; the graveyard of movements that began egalitarian and ended exclusive is vast. That is why we are treating the inclusion of those who start furthest from coherence not as charity at the margins but as the central test of whether the whole project deserves to exist.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The central test of whether the whole project deserves to exist is the standard the volume offers for its own legitimacy, stated once, here. The graveyard sentence is the admission that the design may fail anyway, which is what makes the standard a test rather than a boast. Both restored.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "The shipped text made one contribution the baseline needed and did not have, and it corrects the baseline's own posture.",
+      "evidence": {
+        "baseline": "the place where those whom every other system dysregulated and discarded are met, and helped, and drawn into their own genius.",
+        "shipped": "People most affected by poverty, trauma, disability, and exclusion must hold design authority rather than appear only as recipients of benevolence."
+      },
+      "authorizedBy": "Not a defect. Recorded as a finding because it runs the other way.",
+      "diagnosis": "The baseline's closing image casts the excluded as people who are met, helped, and drawn in. The grammar is entirely passive on their side and active on the builders'. The shipped sentence names exactly that, and it is the sharpest thing anywhere in the wave-one chapter. It is kept and placed before the baseline's close, so the promise of welcome arrives after the requirement of authority rather than instead of it. This is the clearest case in two batches of the wave-one pass improving on the baseline, and it should be recorded as such rather than absorbed silently.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F5",
+      "summary": "Four prohibited marks, and one voice card reduction.",
+      "evidence": {
+        "baseline": "Providence could become an elite before a long appositive with internal commas; those arriving from hardship before a participial consequence; trauma, poverty, and precarity before a participial specification; it will have failed before a second movement. Plus That is precisely why.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard, and R-VOICE-BIND for the reduction.",
+      "diagnosis": "The first became a colon, specifying what the elite would look like. The second became a period and the participle was promoted to a finite verb, It would reproduce, so the reproduction of privilege lands in its own sentence. The third became a comma, the participles being genuinely dependent. The fourth became a period, so If Providence becomes a club for the already-coherent, it will have failed stands alone before the answer. The volume card lists precisely among the phrases to reduce; That is precisely why became That is why, losing nothing. Two other uses of precisely in the chapter carry emphasis that the sentence needs and were kept."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0005",
+      "effect": "supported by restoration",
+      "note": "We are making the floor unconditional returns, in a second Volume III passage. The item's conflict with Volume IX is now supported on the Volume III side by two independent statements in the author's own words rather than by a doctrine the review adopted."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "reopened by restoration",
+      "note": "Reward trajectory over state, so that one person carries a more meaningful record than another, is a ranking of records by developmental history. The item asks whether records derived partly from physiological signals may affect standing. A more meaningful record is a comparative claim and the item needs to know what it can be used for."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "recorded",
+      "note": "The coherence record here measures trajectory, a history. Stream Three's display line makes the unit a relational event. Elsewhere the record is an attestation. Three ontologies, three sections."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "reopened by restoration",
+      "note": "Building the nonprofit Foundation specifically to carry access to those who could never afford the enterprise's offerings returns as a statement of the Foundation's purpose and of the enterprise-Foundation relationship."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "reopened by restoration",
+      "note": "We are building the coherence record, making the floor unconditional, building the Foundation, actively designing the entry point, and publishing disparity data. Five undated operational claims, the densest in the chapter. See the anchor record's refrain finding."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the debt ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The most likely failure framing and the reason it would feel like success, the elite described in full, the gravitational mechanism, the dysregulation of trauma and poverty and precarity, the entry-point contradiction, the reproduction of privilege in the language of coherence, the advantaged recognizing one another and calling it merit, trajectory over state with its reason, the unconditional floor, the Foundation, the entry point designed for those who arrive from hardship, the graveyard admission, the central test of whether the project deserves to exist, and the closing image."
+        },
+        {
+          "kind": "kept",
+          "note": "Four shipped elements, more than any other section in the chapter. That trajectory still requires a model of desirable change, joined to the trajectory commitment as its objection. That subsidized access does not solve this by itself, joined to the Foundation commitment. That the network should publish who enters, who leaves, who receives resources, who holds authority, and where disparities persist, which replaces the baseline's watching continuously and publicly with something checkable. And that people most affected by poverty, trauma, disability, and exclusion must hold design authority rather than appear only as recipients of benevolence, placed before the baseline's close for the reason recorded in F4."
+        },
+        {
+          "kind": "cut",
+          "note": "The rest of the shipped rewrite."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks and one R-VOICE-BIND reduction, as recorded in F5."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, Elite Capture, untouched under the structural hold."
+        },
+        {
+          "kind": "cost",
+          "note": "This is the most heavily interleaved restoration in two batches: four shipped sentences folded into a restored baseline paragraph rather than appended as a limits block. The paragraph is consequently long and each commitment carries its own objection inside it. The alternative was a separate objections paragraph, which would have let a reader take the commitments unqualified and meet the doubts afterward, and this section is the one where that arrangement would be least honest."
+        }
+      ],
+      "metrics": {
+        "words": 504,
+        "baselineWords": 451,
+        "shippedWords": 114,
+        "deltaPercentAgainstBaseline": 12,
+        "shippedDeltaPercentAgainstBaseline": -75
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-SUBSTITUTION-CREDIT",
+      "status": "candidate, not yet in the rule index",
+      "proposedBy": "editorial-agent",
+      "obligation": "Where substituted prose is better than the baseline it replaced, record it as a finding with that direction, not as kept material in a reasoning note.",
+      "statement": "A re-render pass accumulates findings against the prior pass, and the accumulation is evidence. That makes it structurally likely to under-record the cases where the prior pass was right, because those cases appear only as a quiet kept in a generation note where no one counts them. A record that only ever finds loss is not a record of judgment, and the author cannot tell restraint from bias. Where the substituted sentence corrects something the baseline actually got wrong, the finding should say so in the same form and at the same length as a finding of damage.",
+      "evidence": "The wave-one sentence that people most affected by poverty, trauma, disability, and exclusion must hold design authority rather than appear only as recipients of benevolence is a direct and correct criticism of the baseline's own closing image, which casts those people as met, helped, and drawn in. Across the stream unit and this chapter, seventeen shipped sentences were kept, and until this record every one of them was noted only inside a generation entry.",
+      "citedItems": [],
+      "procedure": "When keeping a substituted sentence because it repairs a genuine fault in the baseline rather than merely bounding a claim, give it a finding id, quote both sides, and set authorizedBy to record that the finding runs the other way.",
+      "cautions": [
+        "This does not soften the substitution finding. The wave-one chapter is still 763 words in place of 3,259 with no shared sentence. One good sentence in a section does not license the removal of fourteen."
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Trajectory over state. Restored as a minting criterion, with the shipped objection attached. A record that rewards trajectory needs a model of desirable change, and a model of desirable change is a normative claim about how a person should develop. That is a larger commitment than the sentence looks, and it is unmade elsewhere in the corpus.",
+    "A more meaningful record. The comparative is restored. Whether a more meaningful record confers anything is CTD-0006, and this sentence is why the item is critical rather than theoretical.",
+    "Design authority. The kept requirement that the most affected hold design authority is now in the manuscript. It is a governance commitment that appears nowhere in the governance chapter, and CTD-0071's review should either adopt it or notice that the failure chapter promises something the constitution does not.",
+    "The closing image. Those whom every other system dysregulated and discarded are met, and helped, and drawn into their own genius is restored, and it is the passive construction the kept sentence criticizes. Both are now present and the tension is deliberate. If the author wants one voice, the close is the sentence to look at."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the standard, the cards, and the ledger, with the substitution test run first.",
+    "conclusion": "One candidate rule proposed, R-SUBSTITUTION-CREDIT, recorded above. This section produced it because it is the first place where the substituted text was not merely a bound on the baseline but a correction of it. A re-render pass has a structural bias toward finding loss, and the correction for that bias is not restraint in restoring; it is recording the other direction with the same weight when it occurs."
+  }
+}

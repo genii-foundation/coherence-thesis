@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-why-providence-might-fail",
+  "editorialId": "volume-03",
+  "sectionHeading": "Why Providence Might Fail",
+  "currentHeading": "How Providence Could Fail",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Every claim that construction is already underway is a factual claim about the project's operational state and belongs to the author.",
+  "anchorFor": [
+    "v03-the-failure-of-measurement-what-if-coherence-cannot-be-measured",
+    "v03-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward",
+    "v03-the-failure-of-structure-what-if-coordination-naturally-centralizes",
+    "v03-the-failure-of-justice-what-if-providence-becomes-an-elite",
+    "v03-the-failure-of-authenticity-coherence-theater-and-the-performed-self",
+    "v03-the-failure-of-spirit-cult-dynamics-and-ideological-capture",
+    "v03-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose"
+  ],
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "R-CAUTIOUS-HALF, substitution form, applied as standing procedure on coordinator instruction of 2026-07-30",
+    "method": "Normalize both texts, split into sentences, and count baseline sentences appearing verbatim in the shipped section. Where the count is zero the section is in substitution mode and the pairing test does not apply.",
+    "result": "Zero surviving baseline sentences in all eight sections of chapter fourteen. 3,259 baseline words became 763. Every sentence a reader of the shipped chapter would have read was written by the wave-one pass.",
+    "perSection": [
+      "Why Providence Might Fail: 292 baseline words, 12 sentences, into 47 words and 5 sentences. Minus 84 percent. Zero surviving.",
+      "The Failure of Measurement: 415 into 81. Minus 80 percent. Zero surviving.",
+      "The Failure of Signal: 429 into 112. Minus 74 percent. Zero surviving.",
+      "The Failure of Structure: 410 into 112. Minus 73 percent. Zero surviving.",
+      "The Failure of Justice: 451 into 114. Minus 75 percent. Zero surviving.",
+      "The Failure of Authenticity: 424 into 93. Minus 78 percent. Zero surviving.",
+      "The Failure of Spirit: 415 into 100. Minus 76 percent. Zero surviving.",
+      "The Failure of Drift: 423 into 104. Minus 75 percent. Zero surviving."
+    ],
+    "conclusion": "This is the first chapter tested with the detector and it is uniform. The pairing test was not run on any of the eight sections, which is the correct disposition and is recorded here rather than in each child record. The chapter is not a compressed version of the author's chapter. It is a different chapter on the same subject, and every gate the repository has passed it, because nothing in it is false."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "dissolution",
+      "unconditional floor",
+      "trajectory over state",
+      "sovereign compute",
+      "sunset provisions",
+      "coherence record",
+      "social credit",
+      "cult",
+      "surveillance",
+      "already doing",
+      "we are building"
+    ],
+    "itemsRead": [
+      "CTD-0005",
+      "CTD-0006",
+      "CTD-0009",
+      "CTD-0013",
+      "CTD-0016",
+      "CTD-0045",
+      "CTD-0053",
+      "CTD-0054",
+      "CTD-0055",
+      "CTD-0056",
+      "CTD-0071",
+      "CTD-0072",
+      "CTD-0073",
+      "wave-one semantic-review.md, high-confidence corrections and the ratification list",
+      "wave-one review.md, heading rename table lines 162 to 168"
+    ],
+    "itemsGoverning": "None.",
+    "outcome": "No recorded decision governs any prose in chapter fourteen. The semantic review lists its high-confidence corrections by line and none falls in this chapter. Its four ratification-required changes concern the unconditional floor at baseline lines 777 to 783, equal political voice at 880 to 884, stewardship evidence, and the personal companion, all outside this chapter. Two of those ratified changes are consistent with the baseline here rather than in conflict with it: this chapter's Failure of Signal and Failure of Justice both commit to an unconditional floor in the baseline's own words, which is the doctrine the review adopted. The seven heading renames are recorded in review.md as renames and are honored under the structural hold. R-LEDGER-WINS therefore does not fire anywhere in this batch, and the baseline governs the prose throughout. The heaviest debt exposure is CTD-0056 and CTD-0045, engaged seven times by the restored refrain that the work is already underway, and recorded in every child record."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's stated method was deleted: what it will attack, why, and the promise to distinguish the dangers it can design against from the ones it cannot.",
+      "evidence": {
+        "baseline": "This chapter is written in a different spirit from those around it: not to inspire, but to interrogate; not to defend Providence, but to attack it with the seriousness of its most capable critics, and to do so before they can. Some of these dangers we believe we can design against, and we will say how. Others we do not yet know how to fully prevent, and we will say that too. The reader deserves to know which is which.",
+        "shipped": "Providence could fail by never becoming useful. It could also succeed operationally and become harmful. The second possibility deserves the harder scrutiny."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline promises a taxonomy the chapter then delivers: for each failure, a defense named or an admission that none exists. That promise is what makes the chapter an argument rather than a list of worries, and it is the contract the reader holds the chapter to. The shipped opening announces that harm deserves scrutiny and promises nothing, which is why the shipped failure sections could each end in a design requirement without anyone noticing that the commitments had gone.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The moral and the strategic reasons for self-attack were deleted, and they are the chapter's only argument for its own existence.",
+      "evidence": {
+        "baseline": "Moral, because a proposal of this ambition, touching the most intimate human signal and aspiring to reshape how a civilization coordinates, has no right to ask for trust unless it has first demonstrated that it understands its own capacity for harm. Strategic, because the systems that endure are the ones that anticipate their failure modes and design against them, and the systems that collapse are the ones whose builders mistook their good intentions for a guarantee of good outcomes.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Has no right to ask for trust unless it has first demonstrated that it understands its own capacity for harm is the standard the whole volume asks to be judged by, and the second clause names the exact failure mode of well-intentioned builders, which is the subject of seven of the eight sections that follow. Both are stated once, here.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "The display line stating what the chapter asks of the reader was deleted.",
+      "evidence": {
+        "baseline": "A system powerful enough to coordinate a civilization is powerful enough to harm one. We do not ask the reader to believe that Providence cannot fail. We ask only that they judge whether we have understood, honestly, the ways it might.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the chapter's thesis and its only statement of the burden it accepts. It also states the volume's standard of proof for its own honesty: not that the design is safe, but that the danger is understood. Without it the chapter catalogues risks and never says what the catalogue is for, which is the gap the baseline's later section What This Chapter Is For was written to close and which the merge has since obscured.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "The epigraph was replaced.",
+      "evidence": {
+        "baseline": "The surest sign that the builders of a system do not understand it is their confidence that it cannot go wrong. We would rather be trusted for our doubts than admired for a certainty we have not earned.",
+        "shipped": "Builders who cannot describe how their system might harm people do not yet understand what they are building."
+      },
+      "authorizedBy": "CTD-0007, which licenses the adaptation label and not the wording.",
+      "diagnosis": "The baseline's second sentence is the one that commits: the builders would rather be trusted for their doubts than admired for an unearned certainty. The shipped epigraph keeps the diagnostic half and drops the preference, which is the same shape the chapter's seven sections show. The Adapted from label is a recorded correction and is kept; the wording is restored.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F5",
+      "summary": "Two prohibited marks.",
+      "evidence": {
+        "baseline": "a different spirit from those around it before a two-part specification containing a semicolon; the ways that Providence might fail before a corrective specification.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Both marks introduced a specification of the phrase before them and both became colons. The first governs a construction that carries its own semicolon, which a comma could not have survived; the colon holds it. The second introduces the not-trivial-but-deep distinction and is the only colon in its sentence."
+    },
+    {
+      "id": "F6",
+      "summary": "One voice card reduction applied.",
+      "evidence": {
+        "baseline": "We now turn the full force of our scrutiny against our own proposal.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "R-VOICE-BIND. The volume card lists we now turn among the recurrent phrases that should be reduced.",
+      "diagnosis": "Reduced to We turn. The sentence loses nothing and the card names the exact phrase."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0056",
+      "effect": "reopened by restoration at full strength, seven times over",
+      "note": "So here is what we are already doing about it opens the third paragraph of all seven failure sections, and each is followed by present-progressive claims that specific architecture is being built now. This is the largest single concentration of undated operational claims in Volume III. The item asks the corpus to state which programs and features exist and to distinguish present operation from roadmap. Restored as the baseline has it, under the standing instruction, and recorded here once for the whole chapter as well as in each child record. If the author decides these are roadmap rather than report, this refrain is the single edit that changes the chapter's posture, and it is one phrase repeated seven times."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "reopened by restoration",
+      "note": "Same refrain, read against publication posture. A chapter whose defenses are already under construction reads as a prospectus; the same chapter with the defenses stated as design reads as a research agenda. The item's decision determines which chapter this is."
+    },
+    {
+      "id": "CTD-0073",
+      "effect": "directly engaged",
+      "note": "The item withholds publication approval pending an author read-aloud of the compression. Chapter fourteen is the largest contiguous substitution in the volume: 3,259 baseline words replaced by 763 words sharing no sentence with them. It was not on the item's list of named control passages because no reviewer had compared it against the baseline at sentence level."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The chapter contains no citation. Its historical claims about internet and cryptocurrency consolidation are restored in the Failure of Structure record."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, the master ledger, and the debt ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The baseline epigraph, the turn of scrutiny against the proposal, the different spirit with its interrogate and attack pair, the moral and strategic reasons, the not-trivial-but-deep distinction, the promise to say which dangers can be designed against and which cannot, the reader deserves to know which is which, and the display line."
+        },
+        {
+          "kind": "kept",
+          "note": "One shipped clause, recast as Each failure below names a condition that should constrain design, research, governance, and the decision to continue. The decision to continue is the strongest thing in the shipped opening and the baseline does not say it. It also states the chapter's practical consequence, which the baseline leaves to be inferred."
+        },
+        {
+          "kind": "kept",
+          "note": "The adaptation label on the epigraph, which is a recorded correction, and the current chapter heading How Providence Could Fail, untouched under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped opening trio and the sentence that the failure modes below are not a performance of humility, which is the baseline's own line from a later section in the same chapter and reads as a preview of it here."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across two marks as recorded in F5, and one R-VOICE-BIND reduction as recorded in F6."
+        }
+      ],
+      "metrics": {
+        "words": 306,
+        "baselineWords": 292,
+        "shippedWords": 47,
+        "deltaPercentAgainstBaseline": 5,
+        "shippedDeltaPercentAgainstBaseline": -84
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-CAUTIOUS-HALF",
+      "status": "candidate, stated in full in v03-the-pattern-we-refuse-to-repeat.json, substitution form added in v03-stream-four-the-pulse-as-endocrine-map.json",
+      "proposedBy": "editorial-agent",
+      "obligation": "Count surviving baseline sentences before running the pairing test. Zero means substitution mode and the pairing test does not apply.",
+      "note": "First application of the detector as standing procedure, and the first whole chapter it has been run against. The result is uniform across eight sections and 3,259 baseline words. The detector's value is now demonstrated rather than argued: it took one pass over the chapter to establish that no pairing analysis was possible, where a section-by-section reading would have produced seven plausible and wrong confirmations of the selection form.",
+      "statement": "Substitution mode has a signature beyond the zero count, visible here for the first time at chapter scale. The substituted chapter is internally consistent, factually careful, and structurally parallel to the original. It preserves the section order, the section count, and the subject of each section, and replaces the content of every one. That is why it survived review: a reviewer checking whether the chapter covers the right failures, in the right order, without error, finds nothing wrong. The only detectors are the sentence count and the baseline word denominator.",
+      "evidence": "Chapter fourteen. Eight sections, eight subjects preserved, eight orders preserved, zero sentences preserved, minus 77 percent by word.",
+      "citedItems": [],
+      "procedure": "Run the count first for every section of a chapter before reading any of them. Record the zero explicitly in the record. Where the count is zero, do not report a cautious-half confirmation, because there was no pair to choose from and reporting one misattributes an agent's sentence to the author.",
+      "cautions": [
+        "A zero count does not mean the substituted prose is wrong or worthless. Seventeen sentences from this chapter's shipped text were kept in the restoration because they bound a commitment the baseline made and did not bound. Substitution mode describes where the prose came from, not whether it is good."
+      ]
+    },
+    {
+      "candidateId": "R-REFRAIN-COST",
+      "status": "candidate, not yet in the rule index",
+      "proposedBy": "editorial-agent",
+      "obligation": "Where a restored passage repeats one construction across parallel sections, record the repetition once with its count, and name the single edit that would change all instances.",
+      "statement": "A refrain carries a claim as many times as it recurs, and a debt item engaged by a refrain is engaged once per instance. Recording it separately in each section record makes the exposure look like seven small findings when it is one decision repeated seven times. Recording it once, with the count and with the exact phrase, tells the author what a single ruling would cost or buy.",
+      "evidence": "So here is what we are already doing about it opens the third paragraph of all seven failure sections. It is the chapter's strongest rhetorical device, restored intact, and it is also seven undated claims that construction has begun. CTD-0056 and CTD-0045 both attach to it. One author decision about that phrase settles the posture of the entire chapter.",
+      "citedItems": [
+        "CTD-0045",
+        "CTD-0056"
+      ],
+      "procedure": "Count the instances, quote the phrase once, name the items it engages, and state in the anchor record what changes if the author rules against it. Child records cite the anchor rather than repeating the analysis.",
+      "cautions": [
+        "This is a recording rule, not a licence to alter a refrain. The volume card lists permitted ritual repetition, and a refrain is often the strongest thing in a passage. Do not thin one because it recurs."
+      ]
+    }
+  ],
+  "openQuestions": [
+    "The refrain. So here is what we are already doing about it, seven times, in the present progressive. It is the chapter's finest rhetorical structure and its largest factual exposure. If the project is not already building these defenses, the chapter is the volume's most quotable overclaim; if it is, the chapter is its best evidence. This is one author decision, not seven.",
+    "Route continuity for seven renames. The wave-one review records the seven Failure of headings as renamed, but publishing/continuity/section-lineage.json carries no formerSectionIds for any of the seven current sections, nor for the chapter heading. Every other rename in this volume that this pass has touched does carry them. This may be correct if the baseline headings were never published, and it may be an omission. It is outside this pass's file boundary and is raised for the orchestrator rather than acted on.",
+    "The Heisenberg back-reference. The restored Failure of Authenticity says this is the failure we have called the Heisenberg problem. The first naming is at baseline line 647, in The Shadows, which has not been re-rendered, and the word Heisenberg appears nowhere else in the current manuscript. The back-reference is therefore live and unresolved until The Shadows is restored. Recorded in that section's record and in the handover as a hard dependency.",
+    "Chapter title. Why Providence Might Fail states a possibility the builders accept. How Providence Could Fail states a mechanism to be analyzed. The restored chapter is the first thing. Not changed."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS, with the substitution test run first across the whole chapter.",
+    "conclusion": "Two candidate rules proposed, recorded above. The chapter is the strongest available demonstration of why the substitution distinction matters. Nothing in the shipped chapter is false, nothing is missing from its list of failures, the sections appear in the baseline's order under renamed headings, and not one sentence of it is the author's. A review that asks whether a chapter is accurate and complete cannot see that, and none of the repository's gates asks anything else."
+  }
+}
