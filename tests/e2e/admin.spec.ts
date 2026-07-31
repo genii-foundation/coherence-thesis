@@ -1,6 +1,45 @@
 import { expect, test } from "@playwright/test";
-import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
+
+import {
+  countEditorialDebtByStatus,
+  editorialDebtLane,
+  parseEditorialDebtItem,
+} from "../../src/lib/editorial-debt";
+
+// The debt page derives every count from the item files at request time. This
+// reads the same files through the same parser, so an assertion below fails the
+// moment a visible label stops matching the register behind it.
+function debtRegisterFixture() {
+  const itemsRoot = path.join(
+    process.cwd(),
+    "editorial",
+    "evidence",
+    "debt",
+    "items",
+  );
+  const items = readdirSync(itemsRoot)
+    .filter((name) => name.endsWith(".md"))
+    .map((name) =>
+      parseEditorialDebtItem(
+        path.join(itemsRoot, name),
+        readFileSync(path.join(itemsRoot, name), "utf8"),
+      ),
+    );
+  const active = items.filter((item) => item.status !== "resolved");
+  return {
+    total: items.length,
+    counts: countEditorialDebtByStatus(items),
+    decide: active.filter((item) => editorialDebtLane(item) === "decide").length,
+    execute: active.filter((item) => editorialDebtLane(item) === "execute")
+      .length,
+    blocked: active.filter((item) => editorialDebtLane(item) === "blocked")
+      .length,
+    activeCritical: active.filter((item) => item.severity === "critical").length,
+    critical: items.filter((item) => item.severity === "critical").length,
+  };
+}
 
 test.describe("local editorial admin", () => {
   test.skip(
@@ -368,6 +407,141 @@ test.describe("local editorial admin", () => {
     } finally {
       rmSync(fixturePath, { force: true });
     }
+  });
+
+  test("states debt counts the register actually derives, and filters to them", async ({
+    page,
+  }) => {
+    const register = debtRegisterFixture();
+    await page.goto("/admin/debt/");
+
+    // The nav sits in the banner on desktop and in the mobile page context
+    // island at narrow widths, so match whichever one is actually showing.
+    const adminNav = page.locator('nav[aria-label="Admin views"]:visible');
+    await expect(
+      adminNav.getByRole("link", { name: "Editorial debt" }),
+    ).toHaveAttribute("aria-current", "page");
+    await expect(
+      page
+        .getByRole("navigation", { name: "Breadcrumb" })
+        .getByText("Editorial debt", { exact: true }),
+    ).toHaveAttribute("aria-current", "page");
+
+    const summary = page.getByRole("region", { name: "Register summary" });
+    const metricValue = (label: string, value: number) =>
+      summary
+        .locator("article")
+        .filter({ hasText: label })
+        .getByText(String(value), { exact: true });
+    await expect(
+      metricValue("Critical and active", register.activeCritical),
+    ).toBeVisible();
+    await expect(metricValue("Need a decision", register.decide)).toBeVisible();
+    await expect(metricValue("Ready to work", register.execute)).toBeVisible();
+    await expect(metricValue("Blocked", register.blocked)).toBeVisible();
+
+    await expect(page.getByRole("heading", { level: 1 })).toContainText(
+      `${register.decide} of ${register.counts.open + register.counts.query + register.counts.deferred} open obligations`,
+    );
+
+    // The health card compares the derived counts with the generated index. The
+    // repository gate keeps them equal, so the page must say so.
+    await expect(
+      page.getByText("index.md matches the item files"),
+    ).toBeVisible();
+    await expect(
+      page.getByText(
+        `Derived: ${register.counts.open} open, ${register.counts.query} queries, ${register.counts.deferred} deferred, ${register.counts.resolved} resolved.`,
+        { exact: false },
+      ),
+    ).toBeVisible();
+
+    const rows = page.locator("[data-debt-row]");
+    const visibleRows = page.locator("[data-debt-row]:visible");
+    await expect(rows).toHaveCount(register.total);
+    await expect(
+      page.getByText(`${register.total} shown`, { exact: false }),
+    ).toBeVisible();
+
+    await page
+      .getByRole("group", { name: "Severity" })
+      .getByText("critical", { exact: true })
+      .click();
+    await expect(
+      page.getByText(`${register.critical} of ${register.total} shown`),
+    ).toBeVisible();
+    await expect(visibleRows).toHaveCount(register.critical);
+
+    await page.getByRole("button", { name: "Clear filters" }).click();
+    await expect(visibleRows).toHaveCount(register.total);
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    const layout = await page.evaluate(() => ({
+      clientWidth: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+    }));
+    expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth);
+  });
+
+  test("renders a debt ticket with its evidence and its routing intact", async ({
+    page,
+  }) => {
+    await page.goto("/admin/debt/ctd-0112/");
+
+    await expect(page.getByRole("heading", { level: 1 })).toContainText(
+      "Version provenance records commits that did not introduce the content",
+    );
+    const breadcrumb = page.getByRole("navigation", { name: "Breadcrumb" });
+    await expect(
+      breadcrumb.getByRole("link", { name: "Editorial debt" }),
+    ).toHaveAttribute("href", "/admin/debt/");
+    await expect(
+      breadcrumb.getByText("CTD-0112", { exact: true }),
+    ).toBeVisible();
+
+    // Routing is derived, not stored. A technical ticket routes to the
+    // application maintainer, and the boundedness signal must explain itself.
+    await expect(page.getByText("Application maintainer")).toBeVisible();
+    await expect(page.getByText("$coherence-build-feature")).toBeVisible();
+    await expect(
+      page.getByText("Not a boundedness candidate", { exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.getByText("its only scope is the corpus", { exact: false }),
+    ).toBeVisible();
+
+    // Sections beyond the four the contract requires must survive.
+    await expect(
+      page.getByRole("heading", { level: 2, name: "Mechanism" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { level: 2, name: "Paydown criteria" }),
+    ).toBeVisible();
+
+    // Several tickets carry tables and fenced code as their evidence.
+    const table = page.locator("table").first();
+    await expect(table).toBeVisible();
+    await expect(table.getByRole("cell", { name: "324" })).toBeVisible();
+    await expect(page.locator("pre code").first()).toContainText("commitSha");
+
+    await expect(
+      page.getByRole("link", {
+        name: "publishing/continuity/version-provenance.json",
+      }),
+    ).toHaveAttribute(
+      "href",
+      "/admin/debt/source/?path=publishing%2Fcontinuity%2Fversion-provenance.json",
+    );
+
+    await page.getByRole("button", { name: "Quick triage" }).click();
+    await expect(page.getByRole("button", { name: "Copied" })).toBeVisible();
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    const layout = await page.evaluate(() => ({
+      clientWidth: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+    }));
+    expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth);
   });
 
   test("keeps the toolbar icons visually consistent and the dashboard in bounds", async ({

@@ -34,6 +34,13 @@ function adminBreadcrumbRoute(path: string): BreadcrumbRoute | null {
     }
   }
 
+  if (segments[0] === "debt") {
+    crumbs.push({ label: "Editorial debt", href: "/admin/debt/" });
+    if (segments[1]) {
+      crumbs.push({ label: segments[1].toUpperCase(), href: path });
+    }
+  }
+
   return { href: path, crumbs };
 }
 
@@ -42,13 +49,14 @@ function AdminHeaderContext({ path }: { path: string }) {
     path.startsWith("/admin/calibration") ||
     path.startsWith("/admin/bench/") ||
     path.startsWith("/admin/revisions/");
+  const debtCurrent = path.startsWith("/admin/debt");
 
   return (
     <div className="admin-header-row">
       <nav className="admin-header-views" aria-label="Admin views">
         <Link
           href="/admin/"
-          aria-current={revisionsCurrent ? undefined : "page"}
+          aria-current={revisionsCurrent || debtCurrent ? undefined : "page"}
         >
           Status
         </Link>
@@ -57,6 +65,12 @@ function AdminHeaderContext({ path }: { path: string }) {
           aria-current={revisionsCurrent ? "page" : undefined}
         >
           Editorial revisions
+        </Link>
+        <Link
+          href="/admin/debt/"
+          aria-current={debtCurrent ? "page" : undefined}
+        >
+          Editorial debt
         </Link>
       </nav>
       <div

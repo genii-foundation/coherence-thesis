@@ -1,6 +1,18 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
+import {
+  checkEditorialDebtIdentifiers,
+  countEditorialDebtByStatus,
+  editorialDebtLane,
+  editorialDebtRoute,
+  type EditorialDebtItem,
+} from "../../src/lib/editorial-debt";
+import {
+  editorialDebtIndexPath,
+  editorialDebtItemsRoot,
+  loadEditorialDebtItems,
+} from "../editorial/debt";
 import { readEditorialVolumeProgress } from "../editorial/progress-data";
 import {
   editorialCalibrationRoot,
@@ -138,13 +150,74 @@ export function validateAdminStatus(
   return { tasks: tasks.length, progressTasks };
 }
 
+const indexStatusLine =
+  /^Open: (\d+)\. Queries: (\d+)\. Deferred: (\d+)\. Resolved: (\d+)\.$/m;
+
+/**
+ * The second admin status source: the editorial debt register behind /admin/debt.
+ *
+ * That page states counts, a lane, and a routing authority for every ticket. All
+ * three are derived at request time from src/lib/editorial-debt, so this check
+ * runs the same derivations over the same files and refuses anything the page
+ * would have to render as an unlabelled blank, plus the one claim the page makes
+ * about a second record: that index.md still agrees with the item files.
+ */
+export function validateAdminDebtStatus(
+  items: EditorialDebtItem[],
+  indexSource: string | null,
+): { items: number; decisionBound: number } {
+  checkEditorialDebtIdentifiers(items);
+
+  let decisionBound = 0;
+  for (const item of items) {
+    const lane = editorialDebtLane(item);
+    if (lane === "decide") decisionBound += 1;
+    const route = editorialDebtRoute(item);
+    if (!route.authority.trim() || !route.specialistRoute.trim()) {
+      fail(`${item.id} derives an empty routing label for lane ${lane}.`);
+    }
+    if (!item.title.trim()) fail(`${item.id} has no title to display.`);
+  }
+
+  const counts = countEditorialDebtByStatus(items);
+  if (indexSource !== null) {
+    const claimed = indexStatusLine.exec(indexSource);
+    if (!claimed) {
+      fail(
+        "editorial/evidence/debt/index.md has no readable status line, so the admin page cannot check it for staleness.",
+      );
+    }
+    const [open, query, deferred, resolved] = [1, 2, 3, 4].map((group) =>
+      Number(claimed[group]),
+    );
+    if (
+      open !== counts.open ||
+      query !== counts.query ||
+      deferred !== counts.deferred ||
+      resolved !== counts.resolved
+    ) {
+      fail(
+        `the debt index claims ${open} open, ${query} queries, ${deferred} deferred, and ${resolved} resolved, but the item files derive ${counts.open}, ${counts.query}, ${counts.deferred}, and ${counts.resolved}. Run npm run editorial:debt:update.`,
+      );
+    }
+  }
+
+  return { items: items.length, decisionBound };
+}
+
 export function main(): void {
   const register = JSON.parse(
     readFileSync(editorialTaskRegisterPath, "utf8"),
   ) as unknown;
   const report = validateAdminStatus(register);
+  const debt = validateAdminDebtStatus(
+    existsSync(editorialDebtItemsRoot) ? loadEditorialDebtItems() : [],
+    existsSync(editorialDebtIndexPath)
+      ? readFileSync(editorialDebtIndexPath, "utf8")
+      : null,
+  );
   process.stdout.write(
-    `Admin status is valid. ${report.tasks.toLocaleString()} tasks and ${report.progressTasks.toLocaleString()} derived progress task(s) checked.\n`,
+    `Admin status is valid. ${report.tasks.toLocaleString()} tasks and ${report.progressTasks.toLocaleString()} derived progress task(s) checked. ${debt.items.toLocaleString()} debt item(s) checked, ${debt.decisionBound.toLocaleString()} decision bound.\n`,
   );
 }
 
