@@ -4,7 +4,7 @@
 
 This index records known literary, philosophical, factual, continuity, publication, and technical obligations across The Coherence Thesis. A resolved item remains in the library as evidence of paydown.
 
-Open: 64. Queries: 41. Deferred: 5. Resolved: 1.
+Open: 65. Queries: 41. Deferred: 5. Resolved: 1.
 
 ## Active debt
 
@@ -82,6 +82,7 @@ Open: 64. Queries: 41. Deferred: 5. Resolved: 1.
 | [CTD-0109](items/ctd-0109-r-ledger-wins-authority.md) | Ratify or unwind R-LEDGER-WINS | query | canon | high | volume-1, corpus | 2026-07-30 |
 | [CTD-0110](items/ctd-0110-voice-cards-prepared-from-shipped-text.md) | Re-prepare the nine voice cards from their baselines | open | technical | high | volume-1, volume-2, volume-3, volume-4, volume-5, volume-6, volume-7, volume-8, volume-9, corpus | 2026-07-30 |
 | [CTD-0111](items/ctd-0111-pass-resolved-open-author-questions.md) | Rule on the open author questions the wave-one pass resolved by deleting their evidence | query | canon | high | volume-2, corpus | 2026-07-30 |
+| [CTD-0112](items/ctd-0112-version-provenance-fabricated-by-head-fallback.md) | Version provenance records commits that did not introduce the content | open | technical | high | corpus | 2026-07-30 |
 | [CTD-0014](items/ctd-0014-soil-metaphysical-modality.md) | Decide the modality of the Soil's living-development claim | query | canon | medium | volume-1, corpus | 2026-07-09 |
 | [CTD-0017](items/ctd-0017-four-movements-structural-scope.md) | Decide what the Four Movements heading promises | query | structural | medium | volume-1 | 2026-07-30 |
 | [CTD-0020](items/ctd-0020-volume-two-warning-invitation-balance.md) | Approve Volume II's balance of warning and invitation | query | literary | medium | volume-2 | 2026-07-09 |

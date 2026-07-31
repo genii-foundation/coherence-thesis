@@ -51,7 +51,50 @@ That is the sharpest form of the problem. In a shared tree the fallback does not
 
 The correct running order is also worth recording, since it was got wrong tonight: provenance derives from committed content, so it is commit, then `manuscripts:versions`, then `manuscripts:validate`. Running versions before committing is a no operation that reports success.
 
-## Paydown
+## Evidence
+
+Counted across all 517 entries in `publishing/continuity/version-provenance.json` on 2026-07-30.
+
+| commit | entries | what that commit actually changed |
+| --- | --- | --- |
+| `c4723b7a2` | 324 | `AGENTS.md`, fourteen added lines. No manuscript, no generated section. |
+| `1523af320` | 137 | Not a valid object. `git cat-file -t` returns `fatal: Not a valid object name`. |
+| `03f763dd1` | 28 | A Volume I re-render. Plausible, and the shape a correct entry has. |
+| `4465251ec` | 8 | The original manuscript publication. Plausible. |
+| `78a8ca6bf` | 5 | A Volume II re-render. Plausible. |
+| `4d134acb2` | 5 | A reporting script and four calibration records. No prose. |
+
+The two largest groups, 461 entries between them, are impossible or unresolvable. The plausible groups are small and each corresponds to a commit that really did introduce manuscript prose, which is what a correct entry looks like.
+
+The fallback in `scripts/manuscripts/versions.ts`:
+
+```ts
+const match = commits.find(
+  (commit) =>
+    currentSectionHashAtCommit(section, commit.commitSha, runGit) ===
+    section.contentHash,
+);
+
+if (!match) {
+  const [commitSha = "", versionDate = ""] = runGit([
+    "show", "-s", "--format=%H%x09%cI", "HEAD",
+  ]).split("\t");
+  return { commitSha, versionDate };
+}
+```
+
+Observed directly during a shared-worktree run. An agent editing Volume II ran `manuscripts:versions` while an agent editing Volume III had uncommitted work in the same tree, and the resulting diff stamped Volume III's content hash with the Volume II agent's commit sha:
+
+```
++ "contentHash": "649b225c2d0c67b2"   <- v03-the-four-streams, uncommitted
++ "commitSha":   "ab05c15..."         <- the volume-02 agent's commit
+```
+
+The agent reverted it rather than let `npm run manuscripts:validate` turn green on the strength of it.
+
+The same run also demonstrated the ordering error. `manuscripts:versions` executed against uncommitted edits reported `Wrote 517 section versions` and changed nothing relevant, then `manuscripts:validate` failed on a missing entry. Provenance derives from committed content, so the order is commit, then versions, then validate.
+
+## Paydown criteria
 
 The values are derived and a regeneration on a quiet tree, after all editorial work is committed, produces correct entries for everything reachable in history. That is cheap and should happen regardless.
 
@@ -66,3 +109,8 @@ C1. Does a version provenance entry mean the commit that introduced the content,
 C2. Should `npm run manuscripts:validate` pass while manuscript content is uncommitted?
 
 C3. What check would have caught a fabricated entry, given that a fabricated entry is well formed and names a real commit?
+
+## History
+
+- 2026-07-30: Found while committing an editorial batch. An agent re-rendering Volume II ran `manuscripts:versions` in a worktree shared with an agent re-rendering Volume III, saw its own commit sha attached to the other agent's uncommitted content hash, reverted the change, and reported it rather than allowing the gate to pass. The same agent reverted a `README.md` regenerated in the same conditions, whose manuscript statistics would have baked in another agent's in flight state.
+- 2026-07-30: Counting the whole record turned a shared worktree hazard into a corpus wide finding. The contamination was the visible case; the 324 entries naming a documentation commit and the 137 naming an absent object predate tonight and were never caused by concurrency.
