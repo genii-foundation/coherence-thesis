@@ -232,6 +232,24 @@
       "area": "repository",
       "blockedBy": [],
       "detail": "CTD-0112. About ninety percent of version provenance entries name a commit that did not introduce the content, because firstCommitForCurrentHash silently returns HEAD when no commit blob matches. Regenerating on a quiet tree fixes the values. The mechanism needs an author decision, since failing instead of guessing would make manuscripts:validate refuse to pass over uncommitted manuscript work, which changes the publication lifecycle rather than the prose."
+    },
+    {
+      "id": "T-025",
+      "title": "Record the seven failure section renames in section lineage",
+      "tier": "red",
+      "status": "pending",
+      "area": "publishing",
+      "blockedBy": [],
+      "detail": "Volume III chapter fourteen renamed seven sections and its chapter heading. review.md records all seven as renames. section-lineage.json carries no entry for any of them, unlike every other rename this pass touched. The Failure of Measurement is now Measurement Without Meaning, The Failure of Signal is The Wrong Signal, The Failure of Structure is Centralization, The Failure of Justice is Elite Capture, The Failure of Authenticity is Coherence Theater, The Failure of Spirit is Cult Dynamics, and The Failure of Drift is Drift Toward Surveillance and Rank. Two consequences: the damage report cannot resolve them and reads them as deleted, and the old routes have no recorded successor. Verified against the lineage file on 2026-07-30."
+    },
+    {
+      "id": "T-026",
+      "title": "Restore The Shadows to resolve the live Heisenberg back reference",
+      "tier": "red",
+      "status": "pending",
+      "area": "editorial",
+      "blockedBy": [],
+      "detail": "The restored Coherence Theater section says \"the failure we have called the Heisenberg problem\". Heisenberg appears exactly once in the whole Volume III manuscript, at that back reference. Its first naming is in The Shadows, which has not been re-rendered yet. The reference is live and unresolved for a reader today. It must be fixed by restoring The Shadows, not by rewording the sentence, since rewording would be wrong again once The Shadows is restored."
     }
   ]
 }
