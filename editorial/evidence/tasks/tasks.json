@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-31",
+  "updated": "2026-07-30",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -181,11 +181,11 @@
     },
     {
       "id": "T-019",
-      "title": "Re-render volumes II to IX from baseline, worst damage first",
+      "title": "Re-render volumes II to IX from baseline, in volume order",
       "tier": "amber",
       "status": "in-progress",
       "area": "editorial",
-      "detail": "Volumes IV through IX complete. Volume II at 32 of 85 and Volume III at 43 of 142, both still running. Corpus moved from 49 percent below baseline to roughly parity: IV +13, IX +15, VIII +4, V +2, VI -2, I -8, II -8, VII -12, III -39. 346 of 541 sections carry a calibration record.",
+      "detail": "Author set the order on 2026-07-30: volume order from the beginning, not worst damage first, so tomorrow's editorial pass can move forward through the corpus without meeting an unrevised volume. Standing instruction for contested restorations: restore everything from baseline and flag afterwards. Volumes IV through IX are complete. Volume II and Volume III are in flight with agents resumed 2026-07-30.",
       "blockedBy": []
     },
     {
@@ -203,7 +203,7 @@
       "tier": "red",
       "status": "pending",
       "area": "editorial",
-      "detail": "Twenty-six chapter start regions across Volumes III, IV, VII and VIII hold baseline introductions that cannot be restored without reviving retired routes. Each is recorded with the full baseline text so one edit restores it once the routes are adjudicated. Ten in Volume IV, sixteen in VII and VIII.",
+      "detail": "Narrowed on 2026-07-30. Four of the Volume III entries were never blocked: Chapter Seventeen consolidated four baseline sections into two, which the lineage records as merges. Restoring that prose needs no new heading. What remains genuinely blocked is the part introductions across III, IV, VII and VIII, where restoring prose would create a public route.",
       "blockedBy": []
     },
     {
@@ -213,6 +213,15 @@
       "status": "pending",
       "area": "editorial",
       "detail": "Three lines declared protected by the Volume VIII and IX voice cards have no baseline ancestor. They are retained so the declared protection is not silently released, but they canonize prose the condensing pass wrote. CTD-0110 is where the cards get corrected.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-023",
+      "title": "Rule on passes that resolved an open question by deleting its evidence",
+      "status": "pending",
+      "area": "editorial",
+      "detail": "Found in Volume II and named by the agent re-rendering it. R-LEDGER-WINS covers the case where a recorded decision outranks the baseline. The inverse has no rule: no decision exists, and the prior pass made one silently by removing the evidence the open question rested on. CTD-0038 is the clearest instance, conceding in its own words that the change was substantive rather than copyediting, while the pass had already made it. Invisible to every gate, because the shipped prose is cleaner, the word count barely moves, and the result is internally coherent. This is a finding about the pass rather than a prose rule, so it belongs in the debt ledger and the ruling is the author's.",
+      "tier": "red",
       "blockedBy": []
     }
   ]
