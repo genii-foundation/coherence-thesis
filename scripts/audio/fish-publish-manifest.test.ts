@@ -175,6 +175,7 @@ describe("Fish Supabase audio manifest publishing", () => {
           label: "Default",
           provider: "fish-audio",
           model: "s2.1-pro-free",
+          renderedWordCount: 1,
           sections: [
             {
               sectionId: "section-a",
@@ -238,6 +239,19 @@ describe("Fish Supabase audio manifest publishing", () => {
         publicBase: "https://project.supabase.co/storage/v1/object/public/audio-clips",
       }),
     ).toThrow("Missing timestamp sidecar mapping");
+  });
+
+  it("rejects rendered word counts that disagree with the timing sidecar", () => {
+    expect(() =>
+      validateAudioRunForPublish({
+        run: runWith([audioFile({ exactWordCount: 2 })]),
+        runRoot,
+        catalogSections,
+        version: "2026-07-audiobook-v2",
+        publicBase:
+          "https://project.supabase.co/storage/v1/object/public/audio-clips",
+      }),
+    ).toThrow("Invalid audio timings");
   });
 
   it("rejects legacy and MP3 runs as new durable publications", () => {

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  estimatedAudioDurationForWords,
   recordedAudioDurationSummary,
   type AudioClipManifest,
 } from "./audio-manifest";
@@ -10,6 +11,7 @@ const manifest: AudioClipManifest = {
     {
       id: "narrator",
       label: "Narrator",
+      renderedWordCount: 30,
       sections: [
         {
           sectionId: "one",
@@ -56,5 +58,10 @@ describe("recorded audio duration", () => {
         "missing",
       ),
     ).toMatchObject({ durationSeconds: 0, sectionCount: 0 });
+  });
+
+  it("projects a later corpus from the full rendered narrator pace", () => {
+    expect(estimatedAudioDurationForWords(manifest, 60)).toBe(300.5);
+    expect(estimatedAudioDurationForWords(manifest, 60, "missing")).toBeNull();
   });
 });

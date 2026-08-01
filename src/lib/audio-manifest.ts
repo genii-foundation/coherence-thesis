@@ -17,6 +17,10 @@ export type AudioClipVoice = {
   label: string;
   provider?: string;
   model?: string;
+  // Total words spoken across this immutable render. This lets later
+  // manuscript revisions project a full runtime from the narrator's measured
+  // pace without regenerating audio.
+  renderedWordCount?: number;
   sections: AudioClipSection[];
 };
 
@@ -114,6 +118,39 @@ export function recordedAudioDurationSummary(
     sectionCount: durationSecondsBySection.size,
     durationSecondsBySection,
   };
+}
+
+export function estimatedAudioDurationForWords(
+  manifest: AudioClipManifest,
+  wordCount: number,
+  voiceId = firstClipVoiceId(manifest),
+): number | null {
+  const voice = voiceId
+    ? manifest.voices.find((candidate) => candidate.id === voiceId)
+    : undefined;
+  if (
+    !voice ||
+    typeof voice.renderedWordCount !== "number" ||
+    !Number.isFinite(voice.renderedWordCount) ||
+    voice.renderedWordCount <= 0 ||
+    !Number.isFinite(wordCount) ||
+    wordCount <= 0
+  ) {
+    return null;
+  }
+
+  const renderedDurationSeconds = voice.sections.reduce(
+    (total, section) =>
+      typeof section.durationSeconds === "number" &&
+      Number.isFinite(section.durationSeconds) &&
+      section.durationSeconds > 0
+        ? total + section.durationSeconds
+        : total,
+    0,
+  );
+  if (renderedDurationSeconds <= 0) return null;
+
+  return (wordCount / voice.renderedWordCount) * renderedDurationSeconds;
 }
 
 export function findAudioClip(

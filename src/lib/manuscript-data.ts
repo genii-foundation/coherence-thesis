@@ -120,6 +120,7 @@ export type Catalog = {
     wordCount: number;
     readingMinutes: number;
     audioDurationSeconds: number;
+    estimatedAudioDurationSeconds: number;
     recordedAudioSectionCount: number;
   };
   volumes: Volume[];
