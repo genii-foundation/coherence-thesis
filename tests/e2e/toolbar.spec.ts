@@ -9,6 +9,7 @@ import {
   wieldingFrontMatter,
   wieldingDiagnosis,
   wieldingSection,
+  hostedAudioSection,
   expectMenuFitsViewport,
   highQualityVoicePreferenceId,
 } from "./fixtures";
@@ -1592,7 +1593,7 @@ test("audio playback shows an immediate loading state before media starts", asyn
   const manifestLoaded = page.waitForResponse((response) =>
     response.url().endsWith("/data/audio-manifest.json"),
   );
-  await page.goto(wieldingSection.href);
+  await page.goto(hostedAudioSection.readerHref);
   await Promise.all([manifestLoaded, progressSectionsRequested]);
   await page.evaluate(() => new Promise(requestAnimationFrame));
 
@@ -1618,7 +1619,9 @@ test("audio playback shows an immediate loading state before media starts", asyn
     .toBe(true);
   await expect
     .poll(() => page.evaluate(() => window.location.pathname))
-    .toBe(wieldingSection.href);
+    .toBe(
+      new URL(hostedAudioSection.readerHref, "http://127.0.0.1").pathname,
+    );
 
   await page.evaluate(() => {
     (

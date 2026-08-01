@@ -18,6 +18,16 @@ const audioManifest = audioManifestSource as AudioClipManifest;
 export const highQualityVoicePreferenceId = clipVoicePreferenceId(
   audioManifest.voices[0]?.id ?? "default",
 );
+const hostedAudioVersions = new Map(
+  (audioManifest.voices[0]?.sections ?? []).map((section) => [
+    section.sectionId,
+    section.audioVersionId,
+  ]),
+);
+export const hostedAudioSection = catalog.sections.find(
+  (section) =>
+    hostedAudioVersions.get(section.sectionId) === section.audioVersionId,
+)!;
 
 export const firstSection = catalog.sections[0]!;
 export const firstSectionVolume = catalog.volumes.find(
