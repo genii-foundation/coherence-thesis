@@ -77,11 +77,6 @@
       "note": "Preserved chapter route from HEAD."
     },
     {
-      "sourceHref": "/manuscripts/4/contact-with-the-world/chapter-start/",
-      "targetHref": "/manuscripts/4/contact-with-the-world/when-the-architecture-meets-existing-power/",
-      "note": "Preserved chapter route from HEAD."
-    },
-    {
       "sourceHref": "/manuscripts/4/contact-with-the-world/why-its-worth-risking/",
       "targetHref": "/manuscripts/4/contact-with-the-world/the-case-for-a-bounded-experiment/",
       "note": "Preserved chapter route from HEAD."
@@ -122,11 +117,6 @@
       "note": "Generated alias for a former front matter chapter route."
     },
     {
-      "sourceHref": "/manuscripts/4/the-civilization-made-visible/chapter-start/",
-      "targetHref": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/",
-      "note": "Preserved chapter route from HEAD."
-    },
-    {
       "sourceHref": "/manuscripts/4/the-civilization-made-visible/how-providence-survives-success/",
       "targetHref": "/manuscripts/4/the-civilization-made-visible/how-providence-might-survive-success/",
       "note": "Preserved chapter route from HEAD."
@@ -142,33 +132,13 @@
       "note": "Preserved chapter route from HEAD."
     },
     {
-      "sourceHref": "/manuscripts/4/the-governance-architecture/chapter-start/",
-      "targetHref": "/manuscripts/4/the-governance-architecture/interpreting-and-amending-the-constitution/",
-      "note": "Preserved chapter route from HEAD."
-    },
-    {
-      "sourceHref": "/manuscripts/4/the-human-architecture-in-practice/chapter-start/",
-      "targetHref": "/manuscripts/4/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/",
-      "note": "Preserved chapter route from HEAD."
-    },
-    {
       "sourceHref": "/manuscripts/4/the-scales-of-the-dragon/an-honest-accounting/",
       "targetHref": "/manuscripts/4/the-scales-of-the-dragon/what-remains-unbuilt/",
       "note": "Preserved chapter route from HEAD."
     },
     {
-      "sourceHref": "/manuscripts/4/the-scales-of-the-dragon/chapter-start/",
-      "targetHref": "/manuscripts/4/the-scales-of-the-dragon/presence-as-infrastructure/",
-      "note": "Preserved chapter route from HEAD."
-    },
-    {
       "sourceHref": "/manuscripts/4/the-sequence-problem/what-this-chapter-commits-to/",
       "targetHref": "/manuscripts/4/the-sequence-problem/what-this-volume-can-offer/",
-      "note": "Preserved chapter route from HEAD."
-    },
-    {
-      "sourceHref": "/manuscripts/4/the-technological-architecture-in-detail/chapter-start/",
-      "targetHref": "/manuscripts/4/the-technological-architecture-in-detail/the-identity-layer/",
       "note": "Preserved chapter route from HEAD."
     },
     {

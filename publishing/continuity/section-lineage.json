@@ -3700,19 +3700,14 @@
     {
       "currentSectionId": "v04-from-design-to-construction",
       "continuityIds": [
-        "v04-what-volume-iii-left-unbuilt",
-        "v04-coda-in-plain-terms"
+        "v04-what-volume-iii-left-unbuilt"
       ],
       "historicalSectionIds": [
-        "v04-what-volume-iii-left-unbuilt",
-        "v04-coda-in-plain-terms"
+        "v04-what-volume-iii-left-unbuilt"
       ],
       "progressContinuityGroups": [
         [
           "v04-what-volume-iii-left-unbuilt"
-        ],
-        [
-          "v04-coda-in-plain-terms"
         ]
       ]
     },
@@ -4244,19 +4239,14 @@
     {
       "currentSectionId": "v04-interpreting-and-amending-the-constitution",
       "continuityIds": [
-        "v04-the-governance-architecture",
         "v04-the-constitutional-layer-in-practice",
         "v04-coda-in-plain-terms-9"
       ],
       "historicalSectionIds": [
-        "v04-the-governance-architecture",
         "v04-the-constitutional-layer-in-practice",
         "v04-coda-in-plain-terms-9"
       ],
       "progressContinuityGroups": [
-        [
-          "v04-the-governance-architecture"
-        ],
         [
           "v04-the-constitutional-layer-in-practice"
         ],
@@ -4532,19 +4522,14 @@
       "currentSectionId": "v04-the-identity-layer",
       "continuityIds": [
         "v04-the-identity-layer",
-        "v04-the-technological-architecture-in-detail",
         "v04-coda-in-plain-terms-13"
       ],
       "historicalSectionIds": [
-        "v04-the-technological-architecture-in-detail",
         "v04-coda-in-plain-terms-13"
       ],
       "progressContinuityGroups": [
         [
           "v04-the-identity-layer"
-        ],
-        [
-          "v04-the-technological-architecture-in-detail"
         ],
         [
           "v04-coda-in-plain-terms-13"
@@ -4816,19 +4801,14 @@
       "currentSectionId": "v04-who-builds-this-and-what-it-costs-them",
       "continuityIds": [
         "v04-who-builds-this-and-what-it-costs-them",
-        "v04-the-human-architecture-in-practice",
         "v04-coda-in-plain-terms-17"
       ],
       "historicalSectionIds": [
-        "v04-the-human-architecture-in-practice",
         "v04-coda-in-plain-terms-17"
       ],
       "progressContinuityGroups": [
         [
           "v04-who-builds-this-and-what-it-costs-them"
-        ],
-        [
-          "v04-the-human-architecture-in-practice"
         ],
         [
           "v04-coda-in-plain-terms-17"
@@ -5006,19 +4986,14 @@
     {
       "currentSectionId": "v04-when-the-architecture-meets-existing-power",
       "continuityIds": [
-        "v04-contact-with-the-world",
         "v04-the-contact-problem",
         "v04-coda-in-plain-terms-20"
       ],
       "historicalSectionIds": [
-        "v04-contact-with-the-world",
         "v04-the-contact-problem",
         "v04-coda-in-plain-terms-20"
       ],
       "progressContinuityGroups": [
-        [
-          "v04-contact-with-the-world"
-        ],
         [
           "v04-the-contact-problem"
         ],
@@ -5250,19 +5225,14 @@
       "currentSectionId": "v04-tuesday-afternoon",
       "continuityIds": [
         "v04-tuesday-afternoon",
-        "v04-the-civilization-made-visible",
         "v04-coda-in-plain-terms-23"
       ],
       "historicalSectionIds": [
-        "v04-the-civilization-made-visible",
         "v04-coda-in-plain-terms-23"
       ],
       "progressContinuityGroups": [
         [
           "v04-tuesday-afternoon"
-        ],
-        [
-          "v04-the-civilization-made-visible"
         ],
         [
           "v04-coda-in-plain-terms-23"
@@ -5505,19 +5475,14 @@
       "currentSectionId": "v04-presence-as-infrastructure",
       "continuityIds": [
         "v04-presence-as-infrastructure",
-        "v04-the-scales-of-the-dragon",
         "v04-coda-in-plain-terms-26"
       ],
       "historicalSectionIds": [
-        "v04-the-scales-of-the-dragon",
         "v04-coda-in-plain-terms-26"
       ],
       "progressContinuityGroups": [
         [
           "v04-presence-as-infrastructure"
-        ],
-        [
-          "v04-the-scales-of-the-dragon"
         ],
         [
           "v04-coda-in-plain-terms-26"
@@ -7353,6 +7318,90 @@
       "progressContinuityGroups": [
         [
           "v09-providence"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-coda-in-plain-terms",
+      "continuityIds": [
+        "v04-coda-in-plain-terms"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-coda-in-plain-terms"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-contact-with-the-world",
+      "continuityIds": [
+        "v04-contact-with-the-world"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-contact-with-the-world"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-civilization-made-visible",
+      "continuityIds": [
+        "v04-the-civilization-made-visible"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-civilization-made-visible"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-governance-architecture",
+      "continuityIds": [
+        "v04-the-governance-architecture"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-governance-architecture"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-human-architecture-in-practice",
+      "continuityIds": [
+        "v04-the-human-architecture-in-practice"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-human-architecture-in-practice"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-scales-of-the-dragon",
+      "continuityIds": [
+        "v04-the-scales-of-the-dragon"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-scales-of-the-dragon"
+        ]
+      ]
+    },
+    {
+      "currentSectionId": "v04-the-technological-architecture-in-detail",
+      "continuityIds": [
+        "v04-the-technological-architecture-in-detail"
+      ],
+      "historicalSectionIds": [],
+      "progressContinuityGroups": [
+        [
+          "v04-the-technological-architecture-in-detail"
         ]
       ]
     }

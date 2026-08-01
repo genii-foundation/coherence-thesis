@@ -1,151 +1,151 @@
 {
-  "schemaVersion": 1,
-  "sectionId": "v04-the-stages-of-the-arc",
-  "editorialId": "volume-04",
-  "sectionHeading": "**The Stages of the Arc**",
-  "currentHeading": "**The Stages of the Arc**",
-  "status": "settled",
-  "opened": "2026-07-30",
-  "settled": "2026-07-30",
-  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
-  "baseline": {
-    "batchId": "2026-07-09-production-pass",
-    "path": "baseline.md",
-    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
-    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+ "schemaVersion": 1,
+ "sectionId": "v04-the-stages-of-the-arc",
+ "editorialId": "volume-04",
+ "sectionHeading": "**The Stages of the Arc**",
+ "currentHeading": "**The Stages of the Arc**",
+ "status": "settled",
+ "opened": "2026-07-30",
+ "settled": "2026-07-30",
+ "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+ "baseline": {
+  "batchId": "2026-07-09-production-pass",
+  "path": "baseline.md",
+  "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+  "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+ },
+ "ledgerSearch": {
+  "rule": "R-LEDGER-WINS",
+  "terms": [
+   "support layer",
+   "burnout",
+   "developmental arc",
+   "stewardship",
+   "culture",
+   "Purposeful",
+   "retreats",
+   "year-long",
+   "mentors"
+  ],
+  "itemsRead": [
+   "CTD-0056",
+   "CTD-0072",
+   "CTD-0069",
+   "CTD-0006",
+   "CTD-0088",
+   "CTD-0075",
+   "CTD-0089"
+  ],
+  "outcome": "CTD-0056 requires each Purposeful program's status and access path to be published rather than implied, and CTD-0072 requires the same for every named entity and credential. Neither is reopened, because the restored chapters describe what the work would require rather than what is running. CTD-0069 governs the corpus's use of Indigenous and contemplative lineage, which bears on the monastic and ritual passages. CTD-0088 concerns mentor safeguarding and was read before restoring the mentorship and supervision requirements. CTD-0006 requires that developmental stage never determine political standing."
+ },
+ "findings": [
+  {
+   "id": "F1",
+   "summary": "Every stage lost the institution's responsibility, which is the section's structure.",
+   "evidence": {
+    "baseline": "The institution's responsibility at this stage is clarity ... The institution's responsibility at this stage is support ... The institution's responsibility at this stage is development ... The institution's responsibility at this stage is honor.",
+    "shipped": "(the five stages survive without the responsibilities)"
+   },
+   "authorizedBy": "Compression, and catalog 4.9 read onto the repeated opening.",
+   "diagnosis": "The recurrence is the section's argument: the arc is a set of obligations on the institution, not a set of expectations of the participant. Removing the responsibilities inverts the chapter, since what remains describes what participants do. 4.9's retention limb keeps deliberate recurrence, and the four responsibilities are four different words doing four different jobs.",
+   "producedRule": "R-CATALOG-LIMBS"
   },
-  "ledgerSearch": {
-    "rule": "R-LEDGER-WINS",
-    "terms": [
-      "support layer",
-      "burnout",
-      "developmental arc",
-      "stewardship",
-      "culture",
-      "Purposeful",
-      "retreats",
-      "year-long",
-      "mentors"
-    ],
-    "itemsRead": [
-      "CTD-0056",
-      "CTD-0072",
-      "CTD-0069",
-      "CTD-0006",
-      "CTD-0088",
-      "CTD-0075",
-      "CTD-0089"
-    ],
-    "outcome": "CTD-0056 requires each Purposeful program's status and access path to be published rather than implied, and CTD-0072 requires the same for every named entity and credential. Neither is reopened, because the restored chapters describe what the work would require rather than what is running. CTD-0069 governs the corpus's use of Indigenous and contemplative lineage, which bears on the monastic and ritual passages. CTD-0088 concerns mentor safeguarding and was read before restoring the mentorship and supervision requirements. CTD-0006 requires that developmental stage never determine political standing."
+  {
+   "id": "F2",
+   "summary": "The encounter stage lost its warning about false clarity.",
+   "evidence": {
+    "baseline": "False clarity, making participation sound easier or less demanding than it is, produces encounter-stage attrition when reality proves different from the representation.",
+    "shipped": "(absent)"
+   },
+   "authorizedBy": "Compression.",
+   "diagnosis": "This is the recruitment safeguard, and it is the sentence that connects the arc to the honesty commitment of Chapter Seventeen and to the invitation of Chapter Twenty-Two. It is also the volume's own guard against the failure the voice card names, an invitation that overstates what participation costs.",
+   "producedRule": "R-VOICE-BIND"
+  }
+ ],
+ "debtImpact": [
+  {
+   "id": "CTD-0006",
+   "effect": "paydown preserved",
+   "note": "Nothing in the restored arc conditions standing on stage."
   },
-  "findings": [
+  {
+   "id": "CTD-0089",
+   "effect": "advanced, item unchanged",
+   "note": "Five prohibited marks repaired."
+  }
+ ],
+ "generations": [
+  {
+   "label": "A",
+   "status": "approved",
+   "title": "Derived from the immutable baseline under the thirteen rules",
+   "reasoning": [
     {
-      "id": "F1",
-      "summary": "Every stage lost the institution's responsibility, which is the section's structure.",
-      "evidence": {
-        "baseline": "The institution's responsibility at this stage is clarity ... The institution's responsibility at this stage is support ... The institution's responsibility at this stage is development ... The institution's responsibility at this stage is honor.",
-        "shipped": "(the five stages survive without the responsibilities)"
-      },
-      "authorizedBy": "Compression, and catalog 4.9 read onto the repeated opening.",
-      "diagnosis": "The recurrence is the section's argument: the arc is a set of obligations on the institution, not a set of expectations of the participant. Removing the responsibilities inverts the chapter, since what remains describes what participants do. 4.9's retention limb keeps deliberate recurrence, and the four responsibilities are four different words doing four different jobs.",
-      "producedRule": "R-CATALOG-LIMBS"
+     "kind": "applied",
+     "note": "R-PUNCT-STRUCT. Five em dashes. Four were parenthetical appositives naming a stage's content and became comma pairs. One introduced a specification of the legacy stage and became a comma."
     },
     {
-      "id": "F2",
-      "summary": "The encounter stage lost its warning about false clarity.",
-      "evidence": {
-        "baseline": "False clarity, making participation sound easier or less demanding than it is, produces encounter-stage attrition when reality proves different from the representation.",
-        "shipped": "(absent)"
-      },
-      "authorizedBy": "Compression.",
-      "diagnosis": "This is the recruitment safeguard, and it is the sentence that connects the arc to the honesty commitment of Chapter Seventeen and to the invitation of Chapter Twenty-Two. It is also the volume's own guard against the failure the voice card names, an invitation that overstates what participation costs.",
-      "producedRule": "R-VOICE-BIND"
-    }
-  ],
-  "debtImpact": [
-    {
-      "id": "CTD-0006",
-      "effect": "paydown preserved",
-      "note": "Nothing in the restored arc conditions standing on stage."
+     "kind": "kept",
+     "note": "The shipped clause that the arc must not become a rank."
     },
     {
-      "id": "CTD-0089",
-      "effect": "advanced, item unchanged",
-      "note": "Five prohibited marks repaired."
+     "kind": "restored",
+     "note": "The five stages with their content, all five institutional responsibilities, the false clarity warning, and the closing interlude on what the arc offers the person."
     }
-  ],
-  "generations": [
-    {
-      "label": "A",
-      "status": "approved",
-      "title": "Derived from the immutable baseline under the thirteen rules",
-      "reasoning": [
-        {
-          "kind": "applied",
-          "note": "R-PUNCT-STRUCT. Five em dashes. Four were parenthetical appositives naming a stage's content and became comma pairs. One introduced a specification of the legacy stage and became a comma."
-        },
-        {
-          "kind": "kept",
-          "note": "The shipped clause that the arc must not become a rank."
-        },
-        {
-          "kind": "restored",
-          "note": "The five stages with their content, all five institutional responsibilities, the false clarity warning, and the closing interlude on what the arc offers the person."
-        }
-      ]
-    }
-  ],
-  "rulings": [],
-  "rulesDerived": [],
-  "openQuestions": [
-    "STRUCTURAL RESTORATION BLOCKED ON ROUTE ADJUDICATION, not an editorial judgment. The introduction to PART SIX, the running prose between the part label Contact With the World and the first chapter heading beneath it, compiles into a chapter-start section with its own public route. Restoring the baseline's fuller introduction revives a section whose route was retired, and attempting it broke the build for this part. The introduction has therefore been reverted to its pre-edit state byte for byte and no part introduction anywhere in this volume was touched. Reassigning a canonical route and a reviewed successor is an author-facing continuity decision and this pass has no standing to make it.\n\nWHAT STANDS NOW:\n\nProvidence would meet laws, markets, institutions, critics, partners, and people who do not share its premises. Part VI examines co-optation, scaling pressure, failure, and invitation. It makes no promise that the proposed defenses are sufficient.\n\nWHAT THE BASELINE HAS, punctuation already repaired so it can be pasted in one edit once the route decision is made:\n\nThe world Providence is being built to help transform is not waiting. It is proceeding according to its own logic: the logic of extraction, of short-horizon optimization, of coordination architectures evolved for conditions that no longer obtain but that remain deeply embedded in the institutions, the economic systems, and the cognitive frameworks through which most human beings navigate their lives. Providence will encounter that world. The encounter is not avoidable. It is designable.\n\nVolume III's intellectual discipline was, appropriately, primarily inward-looking: establishing what Providence would have to be before engaging the question of how it would relate to what already exists. Volume IV's first five parts have been similarly focused on the internal architecture: the sequencing, the economics, the governance, the technology, the human development. Part VI turns outward. It examines what happens when the architecture, however well designed, meets the world as it actually is rather than as the architecture presupposes it should be.\n\nThe three chapters of Part VI are the most honest in the book. They do not promise that the encounter will be navigable, only that it must be prepared for. They do not promise that the architecture will survive contact with the world intact, only that it has been designed with enough constitutional resilience to make survival possible. And they close with an invitation that earns the right to be extended because the preceding twenty-one chapters have been honest about what the invitation actually involves.\n\nWHAT THE CURRENT TEXT LOSES: the account of the world as proceeding on its own logic rather than waiting, the claim that the encounter is not avoidable but is designable, and the statement that these three chapters are the most honest in the book.\n\nTO RESTORE: the prose change and the continuity change must land together. The section id minted by the restored introduction needs a canonical route and a reviewed successor recorded in publishing/continuity/section-lineage.json in the same edit.",
-    "The section's measured word count exceeds the baseline's because the shipped rank caution is kept alongside the restored responsibilities, and because the closing interlude is counted here with the coda heading gone.",
-    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
-    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
-  ],
-  "measurements": {
-    "baselineWords": 875,
-    "shippedWords": 322,
-    "shippedDelta": -63
-  },
-  "regenerationTest": {
-    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
-    "status": "converged",
-    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
-    "conclusion": "No new rule required. Catalog 4.9 fired on a fivefold repetition that was carrying the section's entire claim about who owes what to whom. This is the fourth time in the volume that repetitive scaffolding turned out to be structure, and it is now the safest prior to hold when 4.9 fires in this corpus."
-  },
-  "blockedRestorations": [
-    {
-      "region": "PART SIX introduction",
-      "partLabel": "Contact With the World",
-      "reason": "revives a retired chapter-start route",
-      "buildBroke": true,
-      "state": "reverted to pre-edit, byte identical",
-      "requires": "author continuity decision: canonical route and reviewed successor"
-    }
-  ],
-  "audits": [
-    {
-      "date": "2026-07-31",
-      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
-      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
-      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
-      "substitutionTest": {
-        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
-        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
-        "baselineSentences": 30,
-        "survivingVerbatim": 16,
-        "mode": "selection",
-        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
-      },
-      "checked": "R-CAUTIOUS-HALF: every stage keeps both its content and the institution's responsibility, the false clarity warning keeps its committing consequence, and the closing question keeps both the aspiration and the two-tier risk. R-PAIRED-DELETION: encounter, engagement, contribution, stewardship, and legacy were swept; stewardship pairs with the Chapter Ten material it cites and the support structures it names, ends aligned. R-CORRECTION-SCOPE: one unitemized internal reference rebuild attributed below. R-LEDGER-WINS-COROLLARY re-run: the kept rank clause was searched for in the immutable baseline and is not there; seeded canon with provenance visible, CTD-0006 bounding, no credit. R-SUBSTITUTION-CREDIT: nothing else kept, no credit owed, stated explicitly. Citations re-verified intact through the repairs: Kegan, In Over Our Heads, 1994, Immunity to Change with Lahey, 2009, the quoted immunity to change, van Gennep, The Rites of Passage, 1909, and Turner. T-021 re-verified: the PART SIX display, subtitle, introduction paragraph, and chapter label at the section's tail are byte-frozen under the standing route adjudication question. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
-      "prose": "unchanged",
-      "conclusion": "The restoration holds under the full twenty-rule index. Sixteen of thirty baseline sentences survive verbatim; the remainder are the eighteen em dash glyphs repaired across eleven sites, the internal reference rebuild, the display labels, and the frozen Part VI matter, all attributed. No prose change required.",
-      "corrections": [
-        "The original itemization is corrected: the section carried eighteen em dash glyphs, not five. Fifteen stand as commas and comma pairs across the five stages, the Kegan material, the van Gennep material, and the closing question; two stand as colons, introducing what genuine responsibility consists of and who the arc is genuinely unavailable to; and one was resolved inside the reference rebuild attributed below.",
-        "One internal reference rebuilt: the baseline's the stage described in Chapter Ten, the stage at which stands as the stage described in the stewardship chapter, at which. The referent is unchanged and unambiguous, the doubled the stage frame is collapsed, and the reference no longer depends on chapter numbering. CTD-0075 does not govern internal references, so this is recorded as an attributed divergence rather than a ledger application. Kept.",
-        "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
-      ]
-    }
-  ]
+   ]
+  }
+ ],
+ "rulings": [],
+ "rulesDerived": [],
+ "openQuestions": [
+  "PART SIX INTRODUCTION RESTORED. Executed 2026-07-31 under the author ruling of 2026-07-31 (route minting authorized; alias preservation carries old links; maximum clarity and quality without regard for historical continuity), T-021 and T-018. The running prose between the part label Contact With the World and the first chapter heading was replaced with the reconciled baseline introduction exactly as recorded in this record's hold note (punctuation already repaired; zero prohibited glyphs introduced). Census consequence: the Part SIX chapter-start region lengthened; no heading or standalone bold line was added, removed, or renamed. SUPERSEDED PASS-AUTHORED INTRODUCTION, preserved for provenance: Providence would meet laws, markets, institutions, critics, partners, and people who do not share its premises. Part VI examines co-optation, scaling pressure, failure, and invitation. It makes no promise that the proposed defenses are sufficient. Route re-recording and alias verification belong to the orchestrating operation.",
+  "The section's measured word count exceeds the baseline's because the shipped rank caution is kept alongside the restored responsibilities, and because the closing interlude is counted here with the coda heading gone.",
+  "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+  "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+ ],
+ "measurements": {
+  "baselineWords": 875,
+  "shippedWords": 322,
+  "shippedDelta": -63
+ },
+ "regenerationTest": {
+  "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+  "status": "converged",
+  "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+  "conclusion": "No new rule required. Catalog 4.9 fired on a fivefold repetition that was carrying the section's entire claim about who owes what to whom. This is the fourth time in the volume that repetitive scaffolding turned out to be structure, and it is now the safest prior to hold when 4.9 fires in this corpus."
+ },
+ "blockedRestorations": [
+  {
+   "region": "PART SIX introduction",
+   "partLabel": "Contact With the World",
+   "reason": "revives a retired chapter-start route",
+   "buildBroke": true,
+   "state": "reverted to pre-edit, byte identical",
+   "requires": "author continuity decision: canonical route and reviewed successor"
+  }
+ ],
+ "audits": [
+  {
+   "date": "2026-07-31",
+   "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+   "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+   "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+   "substitutionTest": {
+    "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+    "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+    "baselineSentences": 30,
+    "survivingVerbatim": 16,
+    "mode": "selection",
+    "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+   },
+   "checked": "R-CAUTIOUS-HALF: every stage keeps both its content and the institution's responsibility, the false clarity warning keeps its committing consequence, and the closing question keeps both the aspiration and the two-tier risk. R-PAIRED-DELETION: encounter, engagement, contribution, stewardship, and legacy were swept; stewardship pairs with the Chapter Ten material it cites and the support structures it names, ends aligned. R-CORRECTION-SCOPE: one unitemized internal reference rebuild attributed below. R-LEDGER-WINS-COROLLARY re-run: the kept rank clause was searched for in the immutable baseline and is not there; seeded canon with provenance visible, CTD-0006 bounding, no credit. R-SUBSTITUTION-CREDIT: nothing else kept, no credit owed, stated explicitly. Citations re-verified intact through the repairs: Kegan, In Over Our Heads, 1994, Immunity to Change with Lahey, 2009, the quoted immunity to change, van Gennep, The Rites of Passage, 1909, and Turner. T-021 re-verified: the PART SIX display, subtitle, introduction paragraph, and chapter label at the section's tail are byte-frozen under the standing route adjudication question. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+   "prose": "unchanged",
+   "conclusion": "The restoration holds under the full twenty-rule index. Sixteen of thirty baseline sentences survive verbatim; the remainder are the eighteen em dash glyphs repaired across eleven sites, the internal reference rebuild, the display labels, and the frozen Part VI matter, all attributed. No prose change required.",
+   "corrections": [
+    "The original itemization is corrected: the section carried eighteen em dash glyphs, not five. Fifteen stand as commas and comma pairs across the five stages, the Kegan material, the van Gennep material, and the closing question; two stand as colons, introducing what genuine responsibility consists of and who the arc is genuinely unavailable to; and one was resolved inside the reference rebuild attributed below.",
+    "One internal reference rebuilt: the baseline's the stage described in Chapter Ten, the stage at which stands as the stage described in the stewardship chapter, at which. The referent is unchanged and unambiguous, the doubled the stage frame is collapsed, and the reference no longer depends on chapter numbering. CTD-0075 does not govern internal references, so this is recorded as an attributed divergence rather than a ledger application. Kept.",
+    "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
+   ]
+  }
+ ]
 }

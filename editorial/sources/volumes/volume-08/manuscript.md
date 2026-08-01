@@ -13,23 +13,23 @@
 
 *This prologue describes a suicide without graphic detail.*
 
-I can still remember the exact blue. I had spent the late afternoon in a gallery off Market Street, looking at a painting whose color followed me into the street and changed how the light read. I was riding home through San Francisco, still carrying it. In the fifteen years since, I have not gone to galleries as I once did. This may be part of why.
+I can still remember the exact blue. I had spent the late afternoon in a gallery off Market Street, and there had been a painting with a blue in it I couldn't stop looking at: the kind of color that follows you out into the street and changes how the light reads. I was riding home from work through San Francisco, still carrying it. (I have noticed that in the fifteen years since that day I do not go to galleries the way I used to. I have wondered why. I think this is part of the why.)
 
 Then I heard the crowd.
 
-It was not the sound of a quarrel. It was the noise a few hundred people make when something is happening, and my first thought was delight: a band in the square, perhaps, or some other extravaganza. I slowed and looked up as though toward good news. There was the blue again, this time on the shorts of a man standing four stories above the street. For one suspended second my mind could only match the color to the painting I had left.
+It was a particular caliber of noise, not the sound of a quarrel, but the sound a few hundred people make when something is *happening,* and I confess my first thought was delight: some extravaganza, a band in the square, U2 playing a surprise set off the back of a truck. I slowed and looked up the way you look up at good news. And there was the blue again. It was on his shorts. A man was standing on a ledge, four stories up, in blue shorts, and for one suspended second the only thing my mind could do with the information was match the color to the painting I had just left.
 
-I remember thinking, *He will go back inside,* and turning away rather than watch another man's worst moment. I did not get far. The crowd inhaled as one body. I will not describe the sound that followed. I went home in shock and understood it only the next day.
+I remember thinking, very clearly, *don't be an idiot; he'll go back inside,* and I turned to ride off so as not to be a gawker at another man's worst moment. I did not get far. What stopped me was the sound the crowd made, the single involuntary gasp of hundreds of people inhaling at once, a sound a body makes before the mind has agreed to it, and then the other sound, the one I will not describe, except to say that I felt his soul travel home with me and stay the night. I was in shock for a day without quite knowing it.
 
-The next morning, people at a nearby café table were discussing the suicide. Hearing them finished assembling the memory. I remembered what part of the crowd had been chanting toward the man on the ledge: *Jump. Jump. Jump.*
+The next morning I was in a café and people at the next table were talking about the suicide, and only then, hearing them, did the memory finish assembling itself, and I remembered what the crowd had been chanting up at the man on the ledge. It was not *we love you.* It was not *don't, there is so much to live for.* What that crowd of the young and the varied and the ordinary had been shouting, in rhythm, with something like festivity, was: *jump. Jump. Jump.*
 
 Some wanted spectacle. That failure of reverence is the door into this book. The scene does not prove a diagnosis of civilization, and the pages that follow cannot serve as its proof. It does reveal the moral question from which the inquiry begins: what happens when another life becomes content?
 
 ---
 
-Years later, at a country club, I sat in a hot tub with chlorine sharp in my nose. A woman was speaking urgently about birds, soil, farmer suicides, and ecosystems damaged for profit. The room regarded her as having an episode. She seemed overwhelmed and was not listening to anyone else. She was carrying more than one person could carry, and the strain made others step back.
+Now move forward to an evening years later, at a country club I had been invited to, and to a hot tub: the chlorine sharp in the nose, stinging faintly at the eyes, the particular chemical perfume by which we have learned to call a thing *clean.* A woman there was having what the room clearly regarded as an *episode.* She was talking about the state of the world: about how the birds may not be here for our great-grandchildren, about soil she believed to be past the point of return, about the suicides among farmers, about whole ecosystems coming apart for the profit of very few. Her nervous system was plainly overwhelmed; she was not easy to listen to; and (this is true and I will not flatter her either) she was not, in that moment, listening to anyone else. She was a person carrying more than a person can carry, her whole being unmet, and it showed in all the ways that make other people step back.
 
-Later, in the locker room and sauna, I heard men dismiss her. *She's always doing this. Every time.* I asked what it might be like to care about the world's harms and find no one willing to help carry that care.
+A little later, in the locker room and the sauna, I heard how the room metabolized her. *She's always doing this.* *Every time.* Said with the small cruelty that passes for wit among comfortable men. And I asked, into the chlorine and the steam, something close to this: *What do you think it is to care so deeply for the wounds of the world, and to be met by no love, neither your own nor anyone's in the room, with which to carry that caring all the way into its cure?*
 
 There was a pause in the sauna. A real one. For a moment something almost moved.
 
@@ -321,11 +321,11 @@ Onward, then, and with sobriety, toward coherence, and toward the dragon of Eart
 
 ## Appendix A: The Fork, Two Roads Side by Side
 
-The fork named at the close of "The Present Tense" is easier to inspect as a map. The left column extends the artifice's trajectory. The right describes the intended direction of Providence. Neither is prophecy. The Cardinal Scale remains a proposal, not an operating community reported by this corpus.
+The fork named at the close of "The Present Tense" is easier to feel as a map than as an argument. Below, the same domains the book has counted, set in their two possible futures. The left column is not prophecy; it is the artifice's own trajectory, continued without a turn. The right is not utopia; it is Coherence, buildable and partial. The Cardinal Scale remains a proposal, not an operating community reported by this corpus.
 
 | The matter | The road of the artifice *(if we do not turn)* | The road of Providence *(if we do)* |
 |---|---|---|
-| **Medicine** | Sickness as the reliable market; the cure that ends revenue goes unbuilt | Healing as covenant; care funded for competence, access, prevention, and time with a patient |
+| **Medicine** | Sickness as the reliable market; the cure that ends revenue goes unbuilt | Healing as covenant; the most-trusted healer the most-provisioned |
 | **Care** | Tending unpaid, invisible, dumped on the exhausted | Care counted as the substrate of the economy; showing-up made legible |
 | **Food** | The field a factory; seed patented; abundance engineered into scarcity | Feeding a sacrament; soil as kin; seed saved; the table as belonging |
 | **Water** | Titled, financialized, moved from commons into portfolio | Held as commons; the community feeds and waters itself |
@@ -333,28 +333,28 @@ The fork named at the close of "The Present Tense" is easier to inspect as a map
 | **Attention** | Mined and sold forward as contracts on your behavior | Returned to presence; no watching eye at the center |
 | **Work & the machine** | The tools take the work; the time and the gains accrue upward | The same tools return the time; the gains circulate through trust |
 | **Trust & governance** | Scored from above, by ministry or market; obedience rated | Remembered between equals, by consent, with the right to be forgotten |
-| **Power** | Rewards actors willing to externalize costs | Is bounded by equal standing, evidence, rotation, appeal, and independent review |
+| **Power** | Rewards actors willing to externalize costs | Flows to those who can steady the nervous systems around them |
 | **Intimacy** | Eros industrialized, gamified, subscribed; the lonely sold to themselves | Intimacy restored as relationship, one of the Seven Initiates |
 | **The living planet** | Principal spent and called income; the overshoot merely "managed" | The machine aimed at healing, tending, feeding; the curve leaned upon |
-| **The human being** | A person reduced to a prediction, spectacle over reverence | A person not reduced to a prediction; spectacle gives way to reverence |
-| **The unit of order** | The platform-manor, with a lord who can revoke access | Scales, sovereign communities connected by a protocol no single actor controls |
+| **The human being** | A diminished human it can predict, spectacle over reverence | A whole human who can be present, reverence relearned |
+| **The unit of order** | The platform-manor, with a lord who can revoke you in your sleep | Scales, sovereign communities connected by a protocol no single actor controls |
 | **The whole** | A misanthropic artifice mistaken for nature | The dragon named Earth, a mythic image of communities coordinating across place |
 
-Each column describes a direction rather than a complete civilization. Choices about money, attention, trust, law, and collective action can move institutions toward either one. Appendix B begins at the scale of one person without pretending personal action can replace structural change.
+Read the table down either column and you are reading a civilization. The point of the book is that we are, right now, choosing between them, not once, in some distant referendum, but daily, in ten thousand small allocations of money, attention, and trust, and in the larger work of law and collective action. Appendix B is where that choosing begins for one person, without pretending personal action can replace structural change.
 
 ---
 
 ## Appendix B: The First Stone One Person Can Lay This Week
 
-The second address insisted that you are small but not nothing, and that no curve of death was ever bent by one pair of hands alone. The following actions are concrete and modest enough for seven days. They are not substitutes for policy, organizing, research, or material support. Choose one, then decide what larger work it joins.
+The second address insisted that you are small but not nothing, and that no curve of death was ever bent by one pair of hands alone. Here, then, is not a program but a *stone*: concrete, modest, layable inside seven days. None of it is the whole roof. All of it is the roof. They are not substitutes for policy, organizing, research, or material support. Choose one. Then, next week, choose another. Then find the larger work it joins.
 
 **For your attention: take it back.**
-- Reclaim one hour from the watching market this week and give it, undivided, to a person in the room with you.
+- Reclaim one full hour from the watching market this week and give it, undivided, to a person who is actually in the room with you.
 - Move one daily reflex off the feed: read the thing, walk the block, *call* the person instead of scrolling past them.
 
 **For your body and your ground.**
-- Plant one thing that feeds a bee or bird. Even a window box of native flowers can help. Avoid neonicotinoids.
-- Find out where your water comes from, and learn one fact about the soil within a mile of your door.
+- Plant one thing that feeds a bee or a bird, even a window box of native flowers, and refuse the neonicotinoid.
+- Find out where your water actually comes from, and one true thing about the soil within a mile of your door.
 - Learn one station of the old wheel: when, where you live, the light begins its return.
 
 **For your bonds.**
@@ -363,17 +363,17 @@ The second address insisted that you are small but not nothing, and that no curv
 - Tell one person you are glad they exist, and mean it.
 
 **For the tending.**
-- Make one act of care visible this week. Name it, honor it, and count it in your household, where the wider world keeps no column for it.
+- Make one act of care *visible* this week (name it, honor it, count it) in your own household, where the wider world keeps no column for it.
 - Check on the one person you know who is carrying more than a person can carry. Do not offer advice. Offer to carry a corner.
 
 **For coordination: the actual work.**
-- Find a nearby group that governs some part of itself, such as a co-op, land trust, mutual-aid group, or congregation that keeps a commons. Show up once. If none exists within reach, gather the people who would help begin one.
+- Find the thing near you that already governs some part of itself (a co-op, a land trust, a mutual-aid group, a congregation that still keeps a commons) and show up once. If none exists within reach, gather the three people who would help you begin one.
 - Make your conscience cost you something small and concrete this week, and notice that you can bear the cost.
 
 **For the long view.**
-- Spend ten honest minutes thinking past the next quarter. Consider the children not yet born, who will inherit whatever we point the machine toward, and decide one thing differently because of them.
+- Spend ten honest minutes thinking past the next quarter, at the scale of the children not yet born, who will inherit whatever we point the machine toward, and decide one thing differently because of them.
 
-Lay one stone. Then find the larger work it joins.
+Lay one stone. That is the whole method, and it is enough to begin.
 
 ---
 

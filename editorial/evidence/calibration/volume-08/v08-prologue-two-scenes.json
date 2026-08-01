@@ -1,194 +1,194 @@
 {
-  "schemaVersion": 1,
-  "sectionId": "v08-prologue-two-scenes",
-  "editorialId": "volume-08",
-  "sectionHeading": "## Prologue · Two Scenes",
-  "currentHeading": "## Prologue · Two Scenes",
-  "status": "open",
-  "opened": "2026-07-30",
-  "settled": "2026-07-30",
-  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
-  "baseline": {
-    "batchId": "2026-07-09-production-pass",
-    "path": "baseline.md",
-    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
-    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+ "schemaVersion": 1,
+ "sectionId": "v08-prologue-two-scenes",
+ "editorialId": "volume-08",
+ "sectionHeading": "## Prologue · Two Scenes",
+ "currentHeading": "## Prologue · Two Scenes",
+ "status": "open",
+ "opened": "2026-07-30",
+ "settled": "2026-07-30",
+ "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+ "baseline": {
+  "batchId": "2026-07-09-production-pass",
+  "path": "baseline.md",
+  "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+  "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+ },
+ "ledgerSearch": {
+  "rule": "R-LEDGER-WINS",
+  "terms": [
+   "exact blue",
+   "suicide",
+   "spectacle",
+   "catastrophe of the heart",
+   "content warning"
+  ],
+  "itemsRead": [
+   "CTD-0083",
+   "CTD-0093",
+   "CTD-0105"
+  ],
+  "outcome": "CTD-0083 is the governing item. It requires that witness, moral interpretation, and causal claim be separated, and that the suicide scene be reviewed for necessity, dignity, and a content warning. The content warning is kept, the causal claim is not restored, and the witness is restored in full because the item does not ask for its removal."
+ },
+ "substitutionCheck": "Grepped. The content warning, The pause closed. Changing the subject brought relief, and the paragraph beginning The two scenes share a moral failure are all absent from the baseline. The first and third are CTD-0083 paydown and are kept. The second is a volume card protected line and is kept.",
+ "findings": [
+  {
+   "id": "F1",
+   "summary": "The witness lost almost every detail that made it witness rather than summary.",
+   "evidence": {
+    "baseline": "It was a particular caliber of noise, not the sound of a quarrel, but the sound a few hundred people make when something is *happening* ... the single involuntary gasp of hundreds of people inhaling at once, a sound a body makes before the mind has agreed to it ... I felt his soul travel home with me and stay the night.",
+    "shipped": "It was not the sound of a quarrel ... The crowd inhaled as one body ... I went home in shock and understood it only the next day."
+   },
+   "authorizedBy": "CTD-0083, read as requiring the scene be reduced, and compression.",
+   "diagnosis": "The item asks for necessity, dignity, and a warning. None of those require removing the narrator’s own perception. A sound a body makes before the mind has agreed to it is the sentence that explains why the crowd is culpable and the gasp is not, which is the moral distinction the whole prologue rests on. Nothing restored here describes the death, and the one sentence that approached it in the baseline is not restored.",
+   "producedRule": "R-LEDGER-WINS"
   },
-  "ledgerSearch": {
-    "rule": "R-LEDGER-WINS",
-    "terms": [
-      "exact blue",
-      "suicide",
-      "spectacle",
-      "catastrophe of the heart",
-      "content warning"
-    ],
-    "itemsRead": [
-      "CTD-0083",
-      "CTD-0093",
-      "CTD-0105"
-    ],
-    "outcome": "CTD-0083 is the governing item. It requires that witness, moral interpretation, and causal claim be separated, and that the suicide scene be reviewed for necessity, dignity, and a content warning. The content warning is kept, the causal claim is not restored, and the witness is restored in full because the item does not ask for its removal."
+  {
+   "id": "F2",
+   "summary": "The sauna question was reduced from direct speech to a paraphrase.",
+   "evidence": {
+    "baseline": "What do you think it is to care so deeply for the wounds of the world, and to be met by no love, neither your own nor anyone’s in the room, with which to carry that caring all the way into its cure?",
+    "shipped": "I asked what it might be like to care about the world’s harms and find no one willing to help carry that care."
+   },
+   "authorizedBy": "Compression.",
+   "diagnosis": "Neither your own nor anyone’s in the room is the half that indicts the narrator with the others, and all the way into its cure is the phrase that distinguishes caring from doing. The card names the pause the sauna could not hold as an image that must not be explained away, and a paraphrased question cannot produce a real pause.",
+   "producedRule": "R-CADENCE"
   },
-  "substitutionCheck": "Grepped. The content warning, The pause closed. Changing the subject brought relief, and the paragraph beginning The two scenes share a moral failure are all absent from the baseline. The first and third are CTD-0083 paydown and are kept. The second is a volume card protected line and is kept.",
-  "findings": [
-    {
-      "id": "F1",
-      "summary": "The witness lost almost every detail that made it witness rather than summary.",
-      "evidence": {
-        "baseline": "It was a particular caliber of noise, not the sound of a quarrel, but the sound a few hundred people make when something is *happening* ... the single involuntary gasp of hundreds of people inhaling at once, a sound a body makes before the mind has agreed to it ... I felt his soul travel home with me and stay the night.",
-        "shipped": "It was not the sound of a quarrel ... The crowd inhaled as one body ... I went home in shock and understood it only the next day."
-      },
-      "authorizedBy": "CTD-0083, read as requiring the scene be reduced, and compression.",
-      "diagnosis": "The item asks for necessity, dignity, and a warning. None of those require removing the narrator’s own perception. A sound a body makes before the mind has agreed to it is the sentence that explains why the crowd is culpable and the gasp is not, which is the moral distinction the whole prologue rests on. Nothing restored here describes the death, and the one sentence that approached it in the baseline is not restored.",
-      "producedRule": "R-LEDGER-WINS"
-    },
-    {
-      "id": "F2",
-      "summary": "The sauna question was reduced from direct speech to a paraphrase.",
-      "evidence": {
-        "baseline": "What do you think it is to care so deeply for the wounds of the world, and to be met by no love, neither your own nor anyone’s in the room, with which to carry that caring all the way into its cure?",
-        "shipped": "I asked what it might be like to care about the world’s harms and find no one willing to help carry that care."
-      },
-      "authorizedBy": "Compression.",
-      "diagnosis": "Neither your own nor anyone’s in the room is the half that indicts the narrator with the others, and all the way into its cure is the phrase that distinguishes caring from doing. The card names the pause the sauna could not hold as an image that must not be explained away, and a paraphrased question cannot produce a real pause.",
-      "producedRule": "R-CADENCE"
-    },
-    {
-      "id": "F3",
-      "summary": "The woman was described in less detail than the men who mocked her.",
-      "evidence": {
-        "baseline": "She was a person carrying more than a person can carry, her whole being unmet, and it showed in all the ways that make other people step back.",
-        "shipped": "She was carrying more than one person could carry, and the strain made others step back."
-      },
-      "authorizedBy": "Compression.",
-      "diagnosis": "Her whole being unmet is the diagnosis the second address later returns to, and this book returns to her three times. The narrator’s refusal to flatter her, and the sentence saying so, are also what keep the scene from being a parable.",
-      "producedRule": "R-PROPORTION"
-    },
-    {
-      "id": "F5",
-      "summary": "The shipped replacement for the proof-at-scale declaration is better than the baseline it replaced, and the finding runs the other way.",
-      "evidence": {
-        "baseline": "I want to say it as plainly as it deserves to be said: **we have become sick beyond our own comprehension of ourselves. We have chosen spectacle over the reverence for life.** Hold that sentence. Everything that follows is its proof at scale.",
-        "shipped": "Some wanted spectacle. That failure of reverence is the door into this book. The scene does not prove a diagnosis of civilization, and the pages that follow cannot serve as its proof. It does reveal the moral question from which the inquiry begins: what happens when another life becomes content?"
-      },
-      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
-      "diagnosis": "CTD-0093 quotes the baseline sentence directly as the contradiction at the volume's heart: line 24 promised proof at scale while the register note promised no exaggeration and only sourced claims. The shipped passage resolves the contradiction in the only direction the volume's own promise permits, and what happens when another life becomes content is a real question where the baseline had a verdict. The prior record kept this material under CTD-0083 paydown notes but never credited it as an improvement, and a record that only finds loss cannot show restraint from bias. Note the asymmetry this credit does not soften: F1 through F3 still stand, because the witness detail was cut under an authority that never asked for it. When the route decision in QS is made and the baseline region returns, this substitution must survive the restoration: the witness comes back, the proof-at-scale verdict does not.",
-      "producedRule": "R-SUBSTITUTION-CREDIT"
-    },
-    {
-      "id": "F4",
-      "summary": "The causal claim was correctly removed and is not restored.",
-      "evidence": {
-        "baseline": "The ecological catastrophe this volume is about is *downstream* of a catastrophe of the heart. We did not lose the birds because we lacked data.",
-        "shipped": "They cannot establish the causes of ecological collapse."
-      },
-      "authorizedBy": "CTD-0083, at high severity.",
-      "diagnosis": "A retention limb for the shipped text. Two witnessed scenes cannot establish a planetary causal claim, and the item names this passage directly. The re-render keeps the moral link, that a person who feels nothing at a vanishing may not be moved by data about three billion birds, and drops the word downstream, which asserted the causal order.",
-      "producedRule": "R-LEDGER-WINS"
-    }
-  ],
-  "auditFindings": [
-    {
-      "id": "F6",
-      "summary": "The exact-blue opening is landed in its baseline form under the re-prepared card; the structural hold otherwise stands untouched. TRAUMA-SENSITIVE-CHANGE.",
-      "evidence": {
-        "baseline": "I can still remember the exact blue.",
-        "shipped": "I can still remember the exact blue. I had spent the late afternoon in a gallery off Market Street, looking at a painting whose color followed me into the street and changed how the light read."
-      },
-      "authorizedBy": "The volume-08 voice card as re-prepared from the baseline and adopted 2026-07-31 under CTD-0110, which declares I can still remember the exact blue. a protected line and exemplar anchor awaiting restoration, and the closeout instruction that both card gates clear for volume-08.",
-      "diagnosis": "The prior pass had opened I remember the exact blue., dropping can still, which is the clause that places the narrator fifteen years downstream of the scene and makes the opening an act of carrying rather than of reporting. The landing restores the baseline's five opening words exactly and changes nothing else: two words inserted, no sentence added, no structural line touched, and the QS hold on the full baseline region remains the author's single-edit restoration path. This is a prose edit inside a held chapter-start region, made because the adopted card requires the string and the region's route already exists; it neither lengthens the region beyond those two words nor revives any structure. TRAUMA-SENSITIVE-CHANGE: the edit sits inside the suicide-scene passage under the pending specialist review; search the volume's records for this token to list every such change in one query."
-    }
-  ],
-  "debtImpact": [
-    {
-      "id": "CTD-0083",
-      "effect": "paydown preserved",
-      "note": "The content warning is kept. The causal claim is not restored. Witness, interpretation, and causation stay separated. The restored detail is perceptual rather than graphic, and the sound of the impact is still not described. Trauma-sensitive specialist review remains outstanding and this record does not substitute for it."
-    },
-    {
-      "id": "CTD-0105",
-      "effect": "verified clean",
-      "note": "The prologue carries no production note."
-    },
-    {
-      "id": "CTD-0110",
-      "effect": "ruling applied",
-      "note": "2026-07-31 closeout: the card re-prepared from the baseline protects the baseline opening I can still remember the exact blue., and the manuscript now carries it. F6 records the two-word landing; the protected-lines and voice-exemplars gates pass on it."
-    }
-  ],
-  "generations": [
-    {
-      "label": "A",
-      "status": "approved",
-      "title": "Derived from baseline under the thirteen rules",
-      "reasoning": [
-        {
-          "kind": "applied",
-          "note": "R-PUNCT-STRUCT. Eleven em dashes. Five framed parentheticals and became commas or separate sentences. Four introduced a specification and became colons or commas. Two separated second movements and became periods."
-        },
-        {
-          "kind": "applied",
-          "note": "The crowd was chanting rendered as some of them had been shouting throughout, which is both more accurate and what the shipped text had already established."
-        },
-        {
-          "kind": "blocked",
-          "note": "Not restored. The caliber of the noise, the delight and the looking up, the blue on the shorts, the gasp and what it means, the soul travelling home, the sauna in full, the chlorine and the chemical perfume, and the sauna question as direct speech. All of it remains in the baseline region reproduced in the open questions."
-        },
-        {
-          "kind": "kept",
-          "note": "The content warning, the protected line about the pause closing, and the separation of witness from causation."
-        },
-        {
-          "kind": "verified",
-          "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
-        }
-      ]
-    },
-    {
-      "label": "B",
-      "derivedFrom": "A",
-      "status": "approved",
-      "title": "Exact-blue landing under the re-prepared card; two words inserted",
-      "reasoning": [
-        {
-          "kind": "restored",
-          "note": "The baseline's five opening words, I can still remember the exact blue., replacing I remember the exact blue. Authorized by the 2026-07-31 card adoption under CTD-0110. F6 records the landing and its trauma-sensitive flag."
-        },
-        {
-          "kind": "kept",
-          "note": "Everything else in the section, byte for byte. The QS hold on the full baseline region stands; this landing does not pre-empt the route adjudication."
-        }
-      ]
-    }
-  ],
-  "standardAudit": {
-    "date": "2026-07-31",
-    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
-    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
-    "result": "The structural hold stands and no prose was touched; the blocked baseline region in QS remains the author's single-edit restoration path. New under this audit: F5, a substitution credit for the shipped replacement of the proof-at-scale declaration, which the record had kept without crediting. R-CAUTIOUS-HALF was checked on that same pair and the survival of the cautious half is ledger-governed rather than accidental, CTD-0093 naming the committing sentence directly, so R-LEDGER-WINS holds it out. R-CORRECTION-SCOPE was checked over CTD-0083's application and F1 through F3 already record where the pass exceeded the correction's named scope; the diagnosis stands under the ratified rule. R-PAIRED-DELETION: the exact blue, the pause, the sauna, and the World Cup all have their other ends alive in the accounting, the birds-and-bees second meaning, the purposeful section, and the blessing; restoring the QS region severs nothing and reconnects the second address's she still felt it to a fuller portrait. R-REFRAIN-COST: the blocked no-real-capacity anaphora is a two-beat refrain confined to this section; no anchor needed. Trauma-sensitive specialist review remains outstanding and this audit does not substitute for it."
+  {
+   "id": "F3",
+   "summary": "The woman was described in less detail than the men who mocked her.",
+   "evidence": {
+    "baseline": "She was a person carrying more than a person can carry, her whole being unmet, and it showed in all the ways that make other people step back.",
+    "shipped": "She was carrying more than one person could carry, and the strain made others step back."
+   },
+   "authorizedBy": "Compression.",
+   "diagnosis": "Her whole being unmet is the diagnosis the second address later returns to, and this book returns to her three times. The narrator’s refusal to flatter her, and the sentence saying so, are also what keep the scene from being a parable.",
+   "producedRule": "R-PROPORTION"
   },
-  "rulings": [],
-  "rulesDerived": [],
-  "openQuestions": [
-    {
-      "id": "QS",
-      "question": "Structural restoration blocked on route adjudication. This section is a chapter-start region: its prose sits between a part or container label and the first chapter heading beneath it, and text in that position compiles into a section with its own public route. Expanding it revives or reshapes a retired route, which is a continuity decision rather than an editorial one. The prose is therefore left exactly as it stood and the findings below describe what the prior pass removed rather than what this pass restored. The baseline text for this region is reproduced verbatim below so the author can restore it in one edit once the route decision is made. Punctuation repair under R-PUNCT-STRUCT is still required on it, and every ledger constraint named in this record still applies to it.\n\nBASELINE TEXT:\n\nI can still remember the exact blue. I had spent the late afternoon in a gallery off Market Street, and there had been a painting with a blue in it I couldn't stop looking at — the kind of color that follows you out into the street and changes how the light reads. I was riding home from work through San Francisco, still carrying it. (I have noticed that in the fifteen years since that day I do not go to galleries the way I used to. I have wondered why. I think this is part of the why.)\n\nThen I heard the crowd.\n\nIt was a particular caliber of noise — not the sound of a quarrel, but the sound a few hundred people make when something is *happening,* and I confess my first thought was delight: some extravaganza, a band in the square, U2 playing a surprise set off the back of a truck. I slowed and looked up the way you look up at good news. And there was the blue again. It was on his shorts. A man was standing on a ledge, four stories up, in blue shorts, and for one suspended second the only thing my mind could do with the information was match the color to the painting I had just left.\n\nI remember thinking, very clearly, *don't be an idiot — he'll go back inside,* and I turned to ride off so as not to be a gawker at another man's worst moment. I did not get far. What stopped me was the sound the crowd made — the single involuntary gasp of hundreds of people inhaling at once, a sound a body makes before the mind has agreed to it — and then the other sound, the one I will not describe except to say that brick does not forgive, and that I felt his soul travel home with me and stay the night. I was in shock for a day without quite knowing it.\n\nThe next morning I was in a café and people at the next table were talking about the suicide, and only then — hearing them — did the memory finish assembling itself, and I remembered what the crowd had been chanting up at the man on the ledge. It was not *we love you.* It was not *don't, there is so much to live for.* What that crowd of the young and the varied and the ordinary had been shouting, in rhythm, with something like festivity, was: *jump. Jump. Jump.*\n\nThey wanted the spectacle. That is the whole of it, and it is the door into this book. We have arrived at a place where a living human being on a ledge is, to a crowd, content — and where the reflex is not reverence but appetite for the show. I want to say it as plainly as it deserves to be said: **we have become sick beyond our own comprehension of ourselves. We have chosen spectacle over the reverence for life.** Hold that sentence. Everything that follows is its proof at scale.\n\n---\n\nNow move forward to an evening years later, at a country club I had been invited to, and to a hot tub — the chlorine sharp in the nose, stinging faintly at the eyes, the particular chemical perfume by which we have learned to call a thing *clean.* A woman there was having what the room clearly regarded as an *episode.* She was talking about the state of the world — about how the birds may not be here for our great-grandchildren, about soil she believed to be past the point of return, about the suicides among farmers, about whole ecosystems coming apart for the profit of very few. Her nervous system was plainly overwhelmed; she was not easy to listen to; and — this is true and I will not flatter her either — she was not, in that moment, listening to anyone else. She was a person carrying more than a person can carry, her whole being unmet, and it showed in all the ways that make other people step back.\n\nA little later, in the locker room and the sauna, I heard how the room metabolized her. *She's always doing this.* *Every time.* Said with the small cruelty that passes for wit among comfortable men. And I asked, into the chlorine and the steam, something close to this: *What do you think it is to care so deeply for the wounds of the world, and to be met by no love — neither your own nor anyone's in the room — with which to carry that caring all the way into its cure?*\n\nThere was a pause in the sauna. A real one. For a moment something almost moved.\n\nAnd then the men went back to talking about the World Cup.\n\nNo real capacity for empathy. No real capacity for compassion. Just the small warm relief of changing the subject.\n\n---\n\nSet the two scenes side by side and they become one scene. A crowd that chants *jump.* A room that returns to the football. The same atrophy wearing two faces — the appetite for spectacle and the flight from feeling — and they are the same sickness, because a creature that has lost its reverence for a single life on a ledge will not, *cannot,* summon reverence for the three billion birds, the dying soil, the emptied rivers, the farmers in the fields of a country it will never visit. The ecological catastrophe this volume is about is *downstream* of a catastrophe of the heart. We did not lose the birds because we lacked data. We lost them because we had already learned, on Market Street and in the sauna, to look at a vanishing and feel entertained, or feel nothing, and change the subject.\n\nSo this volume will do the thing the crowd would not. It will look, and it will count, and it will refuse both the cheer and the shrug.\n\n---"
-    },
-    {
-      "id": "Q1",
-      "question": "CTD-0083 asks whether the suicide scene is necessary at all. The re-render restores its detail on the judgment that the item asked for separation rather than removal. That judgment is the author’s to confirm, and specialist review has not happened."
-    }
-  ],
-  "regenerationTest": {
-    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
-    "status": "converged",
-    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
-    "conclusion": "No new rule required. The instructive point is that a trauma item and a compression pass were doing different work, and the pass credited itself with the item’s authority while cutting material the item never named."
+  {
+   "id": "F5",
+   "summary": "The shipped replacement for the proof-at-scale declaration is better than the baseline it replaced, and the finding runs the other way.",
+   "evidence": {
+    "baseline": "I want to say it as plainly as it deserves to be said: **we have become sick beyond our own comprehension of ourselves. We have chosen spectacle over the reverence for life.** Hold that sentence. Everything that follows is its proof at scale.",
+    "shipped": "Some wanted spectacle. That failure of reverence is the door into this book. The scene does not prove a diagnosis of civilization, and the pages that follow cannot serve as its proof. It does reveal the moral question from which the inquiry begins: what happens when another life becomes content?"
+   },
+   "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+   "diagnosis": "CTD-0093 quotes the baseline sentence directly as the contradiction at the volume's heart: line 24 promised proof at scale while the register note promised no exaggeration and only sourced claims. The shipped passage resolves the contradiction in the only direction the volume's own promise permits, and what happens when another life becomes content is a real question where the baseline had a verdict. The prior record kept this material under CTD-0083 paydown notes but never credited it as an improvement, and a record that only finds loss cannot show restraint from bias. Note the asymmetry this credit does not soften: F1 through F3 still stand, because the witness detail was cut under an authority that never asked for it. When the route decision in QS is made and the baseline region returns, this substitution must survive the restoration: the witness comes back, the proof-at-scale verdict does not.",
+   "producedRule": "R-SUBSTITUTION-CREDIT"
   },
-  "structuralHold": {
-    "kind": "chapter-start region",
-    "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
-    "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
+  {
+   "id": "F4",
+   "summary": "The causal claim was correctly removed and is not restored.",
+   "evidence": {
+    "baseline": "The ecological catastrophe this volume is about is *downstream* of a catastrophe of the heart. We did not lose the birds because we lacked data.",
+    "shipped": "They cannot establish the causes of ecological collapse."
+   },
+   "authorizedBy": "CTD-0083, at high severity.",
+   "diagnosis": "A retention limb for the shipped text. Two witnessed scenes cannot establish a planetary causal claim, and the item names this passage directly. The re-render keeps the moral link, that a person who feels nothing at a vanishing may not be moved by data about three billion birds, and drops the word downstream, which asserted the causal order.",
+   "producedRule": "R-LEDGER-WINS"
   }
+ ],
+ "auditFindings": [
+  {
+   "id": "F6",
+   "summary": "The exact-blue opening is landed in its baseline form under the re-prepared card; the structural hold otherwise stands untouched. TRAUMA-SENSITIVE-CHANGE.",
+   "evidence": {
+    "baseline": "I can still remember the exact blue.",
+    "shipped": "I can still remember the exact blue. I had spent the late afternoon in a gallery off Market Street, looking at a painting whose color followed me into the street and changed how the light read."
+   },
+   "authorizedBy": "The volume-08 voice card as re-prepared from the baseline and adopted 2026-07-31 under CTD-0110, which declares I can still remember the exact blue. a protected line and exemplar anchor awaiting restoration, and the closeout instruction that both card gates clear for volume-08.",
+   "diagnosis": "The prior pass had opened I remember the exact blue., dropping can still, which is the clause that places the narrator fifteen years downstream of the scene and makes the opening an act of carrying rather than of reporting. The landing restores the baseline's five opening words exactly and changes nothing else: two words inserted, no sentence added, no structural line touched, and the QS hold on the full baseline region remains the author's single-edit restoration path. This is a prose edit inside a held chapter-start region, made because the adopted card requires the string and the region's route already exists; it neither lengthens the region beyond those two words nor revives any structure. TRAUMA-SENSITIVE-CHANGE: the edit sits inside the suicide-scene passage under the pending specialist review; search the volume's records for this token to list every such change in one query."
+  }
+ ],
+ "debtImpact": [
+  {
+   "id": "CTD-0083",
+   "effect": "paydown preserved",
+   "note": "The content warning is kept. The causal claim is not restored. Witness, interpretation, and causation stay separated. The restored detail is perceptual rather than graphic, and the sound of the impact is still not described. Trauma-sensitive specialist review remains outstanding and this record does not substitute for it."
+  },
+  {
+   "id": "CTD-0105",
+   "effect": "verified clean",
+   "note": "The prologue carries no production note."
+  },
+  {
+   "id": "CTD-0110",
+   "effect": "ruling applied",
+   "note": "2026-07-31 closeout: the card re-prepared from the baseline protects the baseline opening I can still remember the exact blue., and the manuscript now carries it. F6 records the two-word landing; the protected-lines and voice-exemplars gates pass on it."
+  }
+ ],
+ "generations": [
+  {
+   "label": "A",
+   "status": "approved",
+   "title": "Derived from baseline under the thirteen rules",
+   "reasoning": [
+    {
+     "kind": "applied",
+     "note": "R-PUNCT-STRUCT. Eleven em dashes. Five framed parentheticals and became commas or separate sentences. Four introduced a specification and became colons or commas. Two separated second movements and became periods."
+    },
+    {
+     "kind": "applied",
+     "note": "The crowd was chanting rendered as some of them had been shouting throughout, which is both more accurate and what the shipped text had already established."
+    },
+    {
+     "kind": "blocked",
+     "note": "Not restored. The caliber of the noise, the delight and the looking up, the blue on the shorts, the gasp and what it means, the soul travelling home, the sauna in full, the chlorine and the chemical perfume, and the sauna question as direct speech. All of it remains in the baseline region reproduced in the open questions."
+    },
+    {
+     "kind": "kept",
+     "note": "The content warning, the protected line about the pause closing, and the separation of witness from causation."
+    },
+    {
+     "kind": "verified",
+     "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
+    }
+   ]
+  },
+  {
+   "label": "B",
+   "derivedFrom": "A",
+   "status": "approved",
+   "title": "Exact-blue landing under the re-prepared card; two words inserted",
+   "reasoning": [
+    {
+     "kind": "restored",
+     "note": "The baseline's five opening words, I can still remember the exact blue., replacing I remember the exact blue. Authorized by the 2026-07-31 card adoption under CTD-0110. F6 records the landing and its trauma-sensitive flag."
+    },
+    {
+     "kind": "kept",
+     "note": "Everything else in the section, byte for byte. The QS hold on the full baseline region stands; this landing does not pre-empt the route adjudication."
+    }
+   ]
+  }
+ ],
+ "standardAudit": {
+  "date": "2026-07-31",
+  "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+  "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+  "result": "The structural hold stands and no prose was touched; the blocked baseline region in QS remains the author's single-edit restoration path. New under this audit: F5, a substitution credit for the shipped replacement of the proof-at-scale declaration, which the record had kept without crediting. R-CAUTIOUS-HALF was checked on that same pair and the survival of the cautious half is ledger-governed rather than accidental, CTD-0093 naming the committing sentence directly, so R-LEDGER-WINS holds it out. R-CORRECTION-SCOPE was checked over CTD-0083's application and F1 through F3 already record where the pass exceeded the correction's named scope; the diagnosis stands under the ratified rule. R-PAIRED-DELETION: the exact blue, the pause, the sauna, and the World Cup all have their other ends alive in the accounting, the birds-and-bees second meaning, the purposeful section, and the blessing; restoring the QS region severs nothing and reconnects the second address's she still felt it to a fuller portrait. R-REFRAIN-COST: the blocked no-real-capacity anaphora is a two-beat refrain confined to this section; no anchor needed. Trauma-sensitive specialist review remains outstanding and this audit does not substitute for it."
+ },
+ "rulings": [],
+ "rulesDerived": [],
+ "openQuestions": [
+  {
+   "id": "QS",
+   "question": "Structural restoration blocked on route adjudication. This section is a chapter-start region: its prose sits between a part or container label and the first chapter heading beneath it, and text in that position compiles into a section with its own public route. Expanding it revives or reshapes a retired route, which is a continuity decision rather than an editorial one. The prose is therefore left exactly as it stood and the findings below describe what the prior pass removed rather than what this pass restored. The baseline text for this region is reproduced verbatim below so the author can restore it in one edit once the route decision is made. Punctuation repair under R-PUNCT-STRUCT is still required on it, and every ledger constraint named in this record still applies to it.\n\nBASELINE TEXT:\n\nI can still remember the exact blue. I had spent the late afternoon in a gallery off Market Street, and there had been a painting with a blue in it I couldn't stop looking at — the kind of color that follows you out into the street and changes how the light reads. I was riding home from work through San Francisco, still carrying it. (I have noticed that in the fifteen years since that day I do not go to galleries the way I used to. I have wondered why. I think this is part of the why.)\n\nThen I heard the crowd.\n\nIt was a particular caliber of noise — not the sound of a quarrel, but the sound a few hundred people make when something is *happening,* and I confess my first thought was delight: some extravaganza, a band in the square, U2 playing a surprise set off the back of a truck. I slowed and looked up the way you look up at good news. And there was the blue again. It was on his shorts. A man was standing on a ledge, four stories up, in blue shorts, and for one suspended second the only thing my mind could do with the information was match the color to the painting I had just left.\n\nI remember thinking, very clearly, *don't be an idiot — he'll go back inside,* and I turned to ride off so as not to be a gawker at another man's worst moment. I did not get far. What stopped me was the sound the crowd made — the single involuntary gasp of hundreds of people inhaling at once, a sound a body makes before the mind has agreed to it — and then the other sound, the one I will not describe except to say that brick does not forgive, and that I felt his soul travel home with me and stay the night. I was in shock for a day without quite knowing it.\n\nThe next morning I was in a café and people at the next table were talking about the suicide, and only then — hearing them — did the memory finish assembling itself, and I remembered what the crowd had been chanting up at the man on the ledge. It was not *we love you.* It was not *don't, there is so much to live for.* What that crowd of the young and the varied and the ordinary had been shouting, in rhythm, with something like festivity, was: *jump. Jump. Jump.*\n\nThey wanted the spectacle. That is the whole of it, and it is the door into this book. We have arrived at a place where a living human being on a ledge is, to a crowd, content — and where the reflex is not reverence but appetite for the show. I want to say it as plainly as it deserves to be said: **we have become sick beyond our own comprehension of ourselves. We have chosen spectacle over the reverence for life.** Hold that sentence. Everything that follows is its proof at scale.\n\n---\n\nNow move forward to an evening years later, at a country club I had been invited to, and to a hot tub — the chlorine sharp in the nose, stinging faintly at the eyes, the particular chemical perfume by which we have learned to call a thing *clean.* A woman there was having what the room clearly regarded as an *episode.* She was talking about the state of the world — about how the birds may not be here for our great-grandchildren, about soil she believed to be past the point of return, about the suicides among farmers, about whole ecosystems coming apart for the profit of very few. Her nervous system was plainly overwhelmed; she was not easy to listen to; and — this is true and I will not flatter her either — she was not, in that moment, listening to anyone else. She was a person carrying more than a person can carry, her whole being unmet, and it showed in all the ways that make other people step back.\n\nA little later, in the locker room and the sauna, I heard how the room metabolized her. *She's always doing this.* *Every time.* Said with the small cruelty that passes for wit among comfortable men. And I asked, into the chlorine and the steam, something close to this: *What do you think it is to care so deeply for the wounds of the world, and to be met by no love — neither your own nor anyone's in the room — with which to carry that caring all the way into its cure?*\n\nThere was a pause in the sauna. A real one. For a moment something almost moved.\n\nAnd then the men went back to talking about the World Cup.\n\nNo real capacity for empathy. No real capacity for compassion. Just the small warm relief of changing the subject.\n\n---\n\nSet the two scenes side by side and they become one scene. A crowd that chants *jump.* A room that returns to the football. The same atrophy wearing two faces — the appetite for spectacle and the flight from feeling — and they are the same sickness, because a creature that has lost its reverence for a single life on a ledge will not, *cannot,* summon reverence for the three billion birds, the dying soil, the emptied rivers, the farmers in the fields of a country it will never visit. The ecological catastrophe this volume is about is *downstream* of a catastrophe of the heart. We did not lose the birds because we lacked data. We lost them because we had already learned, on Market Street and in the sauna, to look at a vanishing and feel entertained, or feel nothing, and change the subject.\n\nSo this volume will do the thing the crowd would not. It will look, and it will count, and it will refuse both the cheer and the shrug.\n\n---"
+  },
+  {
+   "id": "Q1",
+   "question": "CTD-0083 asks whether the suicide scene is necessary at all. The re-render restores its detail on the judgment that the item asked for separation rather than removal. That judgment is the author’s to confirm, and specialist review has not happened."
+  }
+ ],
+ "regenerationTest": {
+  "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+  "status": "converged",
+  "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+  "conclusion": "No new rule required. The instructive point is that a trauma item and a compression pass were doing different work, and the pass credited itself with the item’s authority while cutting material the item never named."
+ },
+ "structuralHold": {
+  "kind": "chapter-start region",
+  "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
+  "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
+ }
 }

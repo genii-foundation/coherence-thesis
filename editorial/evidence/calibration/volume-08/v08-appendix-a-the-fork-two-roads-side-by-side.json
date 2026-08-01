@@ -1,156 +1,156 @@
 {
-  "schemaVersion": 1,
-  "sectionId": "v08-appendix-a-the-fork-two-roads-side-by-side",
-  "editorialId": "volume-08",
-  "sectionHeading": "## Appendix A · The Fork — Two Roads, Side by Side",
-  "currentHeading": "## Appendix A: The Fork, Two Roads Side by Side",
-  "status": "open",
-  "opened": "2026-07-30",
-  "settled": "2026-07-30",
-  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
-  "baseline": {
-    "batchId": "2026-07-09-production-pass",
-    "path": "baseline.md",
-    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
-    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
-  },
-  "ledgerSearch": {
-    "rule": "R-LEDGER-WINS",
-    "terms": [
-      "Cardinal Scale",
-      "ICONS",
-      "Scale",
-      "the fork",
-      "Seven Initiates"
-    ],
-    "itemsRead": [
-      "CTD-0076",
-      "CTD-0030",
-      "CTD-0093"
-    ],
-    "outcome": "CTD-0076 requires Scale for one community. The baseline table row on the unit of order says the ICONS, sovereign communities, which uses the plural correctly, and the prior pass rendered it as Scales. Both are acceptable and the pass’s form is kept. CTD-0030 requires that the Cardinal Scale not be presented as an existence proof, which the revised introduction handles."
-  },
-  "substitutionCheck": "Grepped. Each column describes a direction rather than a complete civilization and the sentence on the Cardinal Scale’s implementation status are absent from the baseline. Both are retained.",
-  "findings": [
-    {
-      "id": "F1",
-      "summary": "The introduction lost the statement of what each column is.",
-      "evidence": {
-        "baseline": "The left column is not prophecy; it is the artifice’s own trajectory, continued without a turn. The right is not utopia; it is Coherence, buildable, partial, already begun in a single Cardinal Scale.",
-        "shipped": "The left column extends the artifice’s trajectory. The right describes the intended direction of Providence. Neither is prophecy."
-      },
-      "authorizedBy": "CTD-0030, correctly applied to already begun.",
-      "diagnosis": "Already begun is an existence claim the corpus cannot support and it is not restored. The two not-X-but-Y pairs are the frame that tells a reader how to read a table of two futures, and both rejected readings, prophecy and utopia, are the ones a reader actually arrives with, which is 4.3’s retention limb.",
-      "producedRule": "R-LEDGER-WINS"
-    },
-    {
-      "id": "F2",
-      "summary": "Two table rows lost their content to a correction that belonged elsewhere.",
-      "evidence": {
-        "baseline": "Power: Flows to the conscienceless who will do anything to win. The human being: A diminished human it can predict, spectacle over reverence.",
-        "shipped": "Power: Rewards actors willing to externalize costs. The human being: A person reduced to a prediction, spectacle over reverence."
-      },
-      "authorizedBy": "CTD-0093, which forbids diagnosing individuals.",
-      "diagnosis": "The externalizing formulation is the better one for the left column and it is kept. The right-hand power row, however, was rewritten into a list of controls that no longer contrasts with anything, and the human being row lost the diminished human, which is the phrase §13 is built on. The re-render restores the diminished human and keeps the externalizing formulation.",
-      "producedRule": "R-LEDGER-WINS"
-    },
-    {
-      "id": "F3",
-      "summary": "The closing lost the claim about when the choosing happens.",
-      "evidence": {
-        "baseline": "we are, right now, choosing between them, not once, in some distant referendum, but daily, in ten thousand small allocations of money, attention, and trust",
-        "shipped": "Choices about money, attention, trust, law, and collective action can move institutions toward either one."
-      },
-      "authorizedBy": "Compression.",
-      "diagnosis": "Ten thousand small allocations is the sentence that turns the table into Appendix B, and not once in some distant referendum is the rejected alternative most readers hold. The pass’s addition of law and collective action is a genuine improvement and is kept.",
-      "producedRule": "R-LAND"
-    }
+ "schemaVersion": 1,
+ "sectionId": "v08-appendix-a-the-fork-two-roads-side-by-side",
+ "editorialId": "volume-08",
+ "sectionHeading": "## Appendix A · The Fork — Two Roads, Side by Side",
+ "currentHeading": "## Appendix A: The Fork, Two Roads Side by Side",
+ "status": "open",
+ "opened": "2026-07-30",
+ "settled": "2026-07-30",
+ "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+ "baseline": {
+  "batchId": "2026-07-09-production-pass",
+  "path": "baseline.md",
+  "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+  "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+ },
+ "ledgerSearch": {
+  "rule": "R-LEDGER-WINS",
+  "terms": [
+   "Cardinal Scale",
+   "ICONS",
+   "Scale",
+   "the fork",
+   "Seven Initiates"
   ],
-  "debtImpact": [
+  "itemsRead": [
+   "CTD-0076",
+   "CTD-0030",
+   "CTD-0093"
+  ],
+  "outcome": "CTD-0076 requires Scale for one community. The baseline table row on the unit of order says the ICONS, sovereign communities, which uses the plural correctly, and the prior pass rendered it as Scales. Both are acceptable and the pass’s form is kept. CTD-0030 requires that the Cardinal Scale not be presented as an existence proof, which the revised introduction handles."
+ },
+ "substitutionCheck": "Grepped. Each column describes a direction rather than a complete civilization and the sentence on the Cardinal Scale’s implementation status are absent from the baseline. Both are retained.",
+ "findings": [
+  {
+   "id": "F1",
+   "summary": "The introduction lost the statement of what each column is.",
+   "evidence": {
+    "baseline": "The left column is not prophecy; it is the artifice’s own trajectory, continued without a turn. The right is not utopia; it is Coherence, buildable, partial, already begun in a single Cardinal Scale.",
+    "shipped": "The left column extends the artifice’s trajectory. The right describes the intended direction of Providence. Neither is prophecy."
+   },
+   "authorizedBy": "CTD-0030, correctly applied to already begun.",
+   "diagnosis": "Already begun is an existence claim the corpus cannot support and it is not restored. The two not-X-but-Y pairs are the frame that tells a reader how to read a table of two futures, and both rejected readings, prophecy and utopia, are the ones a reader actually arrives with, which is 4.3’s retention limb.",
+   "producedRule": "R-LEDGER-WINS"
+  },
+  {
+   "id": "F2",
+   "summary": "Two table rows lost their content to a correction that belonged elsewhere.",
+   "evidence": {
+    "baseline": "Power: Flows to the conscienceless who will do anything to win. The human being: A diminished human it can predict, spectacle over reverence.",
+    "shipped": "Power: Rewards actors willing to externalize costs. The human being: A person reduced to a prediction, spectacle over reverence."
+   },
+   "authorizedBy": "CTD-0093, which forbids diagnosing individuals.",
+   "diagnosis": "The externalizing formulation is the better one for the left column and it is kept. The right-hand power row, however, was rewritten into a list of controls that no longer contrasts with anything, and the human being row lost the diminished human, which is the phrase §13 is built on. The re-render restores the diminished human and keeps the externalizing formulation.",
+   "producedRule": "R-LEDGER-WINS"
+  },
+  {
+   "id": "F3",
+   "summary": "The closing lost the claim about when the choosing happens.",
+   "evidence": {
+    "baseline": "we are, right now, choosing between them, not once, in some distant referendum, but daily, in ten thousand small allocations of money, attention, and trust",
+    "shipped": "Choices about money, attention, trust, law, and collective action can move institutions toward either one."
+   },
+   "authorizedBy": "Compression.",
+   "diagnosis": "Ten thousand small allocations is the sentence that turns the table into Appendix B, and not once in some distant referendum is the rejected alternative most readers hold. The pass’s addition of law and collective action is a genuine improvement and is kept.",
+   "producedRule": "R-LAND"
+  }
+ ],
+ "debtImpact": [
+  {
+   "id": "CTD-0030",
+   "effect": "query preserved",
+   "note": "Already begun in a single Cardinal Scale is not restored. The introduction states that the Scale’s implementation status is owed a dated answer."
+  },
+  {
+   "id": "CTD-0076",
+   "effect": "no change",
+   "note": "The unit of order row uses Scales for communities and reserves no singular ICONS."
+  },
+  {
+   "id": "CTD-0093",
+   "effect": "paydown preserved",
+   "note": "The power row keeps the externalizing formulation rather than a claim about the character of individuals, and the right-hand column keeps the list of institutional bounds."
+  }
+ ],
+ "generations": [
+  {
+   "label": "A",
+   "status": "approved",
+   "title": "Derived from baseline under the thirteen rules",
+   "reasoning": [
     {
-      "id": "CTD-0030",
-      "effect": "query preserved",
-      "note": "Already begun in a single Cardinal Scale is not restored. The introduction states that the Scale’s implementation status is owed a dated answer."
+     "kind": "applied",
+     "note": "R-PUNCT-STRUCT. Six em dashes, four of them inside table cells. All four became commas, since a table cell gloss is appositive. Two in the prose introduced specifications and became commas within rebuilt clauses."
     },
     {
-      "id": "CTD-0076",
-      "effect": "no change",
-      "note": "The unit of order row uses Scales for communities and reserves no singular ICONS."
+     "kind": "blocked",
+     "note": "Not restored. The not prophecy and not utopia frame, the diminished human row, the reverence relearned row, the sovereign communities row, and the ten thousand allocations close. All of it remains in the baseline region reproduced in the open questions."
     },
     {
-      "id": "CTD-0093",
-      "effect": "paydown preserved",
-      "note": "The power row keeps the externalizing formulation rather than a claim about the character of individuals, and the right-hand column keeps the list of institutional bounds."
-    }
-  ],
-  "generations": [
-    {
-      "label": "A",
-      "status": "approved",
-      "title": "Derived from baseline under the thirteen rules",
-      "reasoning": [
-        {
-          "kind": "applied",
-          "note": "R-PUNCT-STRUCT. Six em dashes, four of them inside table cells. All four became commas, since a table cell gloss is appositive. Two in the prose introduced specifications and became commas within rebuilt clauses."
-        },
-        {
-          "kind": "blocked",
-          "note": "Not restored. The not prophecy and not utopia frame, the diminished human row, the reverence relearned row, the sovereign communities row, and the ten thousand allocations close. All of it remains in the baseline region reproduced in the open questions."
-        },
-        {
-          "kind": "kept",
-          "note": "The removal of already begun, the directions rather than civilizations framing, the externalizing formulation in the power row, and the caution that personal action does not replace structural change."
-        },
-        {
-          "kind": "verified",
-          "note": "All fourteen rows are present, in baseline order, with both columns intact."
-        },
-        {
-          "kind": "verified",
-          "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
-        }
-      ]
-    }
-  ],
-  "standardAudit": {
-    "date": "2026-07-31",
-    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
-    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
-    "result": "The structural hold stands and no prose was touched; the blocked baseline region in QS remains the author's single-edit restoration path. One internal inconsistency found and recorded: F2's diagnosis says the re-render restores the diminished human and F3's says the pass's law-and-collective-action addition is kept, while the generation's blocked note and the manuscript agree that nothing in the region was restored; the blocked state is the true one, and the restores language in F2 is residue from a draft of this record, exactly the class of divergence found in the academic subtitle record. Under the newer rules: R-CAUTIOUS-HALF confirms the two lost denial pairs, not prophecy and not utopia, are the section's damage-report signal and remain in QS for the author; R-SUBSTITUTION-CREDIT was checked and the kept corrections here, already-begun removed, externalizing formulation, directions-not-civilizations, are ledger-required boundings rather than creditable repairs, except the power row's right-hand column, whose institutional-bounds list mirrors the controls credited in the dark-triad record's F4 and is covered by that credit rather than recounted. R-PAIRED-DELETION: every table row's terms keep their section referents in the current volume, so restoring the QS region severs nothing. All fourteen rows verified present in baseline order with both columns intact."
-  },
-  "rulings": [],
-  "rulesDerived": [],
-  "openQuestions": [
-    {
-      "id": "QS",
-      "question": "Structural restoration blocked on route adjudication. This section is a chapter-start region: its prose sits between a part or container label and the first chapter heading beneath it, and text in that position compiles into a section with its own public route. Expanding it revives or reshapes a retired route, which is a continuity decision rather than an editorial one. The prose is therefore left exactly as it stood and the findings below describe what the prior pass removed rather than what this pass restored. The baseline text for this region is reproduced verbatim below so the author can restore it in one edit once the route decision is made. Punctuation repair under R-PUNCT-STRUCT is still required on it, and every ledger constraint named in this record still applies to it.\n\nBASELINE TEXT:\n\nThe fork named at the close of §3 is easier to feel as a map than as an argument. Below, the same domains the book has counted, set in their two possible futures. The left column is not prophecy; it is the artifice's own trajectory, continued without a turn. The right is not utopia; it is Coherence — buildable, partial, already begun in a single Cardinal Scale.\n\n| The matter | The road of the artifice *(if we do not turn)* | The road of Providence *(if we do)* |\n|---|---|---|\n| **Medicine** | Sickness as the reliable market; the cure that ends revenue goes unbuilt | Healing as covenant; the most-trusted healer the most-provisioned |\n| **Care** | Tending unpaid, invisible, dumped on the exhausted | Care counted as the substrate of the economy; showing-up made legible |\n| **Food** | The field a factory; seed patented; abundance engineered into scarcity | Feeding a sacrament; soil as kin; seed saved; the table as belonging |\n| **Water** | Titled, financialized, moved from commons into portfolio | Held as commons; the community feeds and waters itself |\n| **The body & genome** | The genome a saleable asset; the body filled with the artifice's residue | The body sovereign; presence remembered *with* you, deletable, never sold |\n| **Attention** | Mined and sold forward as contracts on your behavior | Returned to presence; no watching eye at the center |\n| **Work & the machine** | The tools take the work; the time and the gains accrue upward | The same tools return the time; the gains circulate through trust |\n| **Trust & governance** | Scored from above — by ministry or market; obedience rated | Remembered between equals, by consent, with the right to be forgotten |\n| **Power** | Flows to the conscienceless who will do anything to win | Flows to those who can steady the nervous systems around them |\n| **Intimacy** | Eros industrialized, gamified, subscribed; the lonely sold to themselves | Intimacy restored as relationship — one of the Seven Initiates |\n| **The living planet** | Principal spent and called income; the overshoot merely \"managed\" | The machine aimed at healing, tending, feeding; the curve leaned upon |\n| **The human being** | A diminished human it can predict — spectacle over reverence | A whole human who can be present — reverence relearned |\n| **The unit of order** | The platform-manor, with a lord who can revoke you in your sleep | The ICONS — sovereign communities, a protocol no lord controls |\n| **The whole** | A misanthropic artifice mistaken for nature | The Dragon, Earth Awakening — a planet coordinating with itself at last |\n\nRead the table down either column and you are reading a civilization. The point of the book is that we are, right now, choosing between them — not once, in some distant referendum, but daily, in ten thousand small allocations of money, attention, and trust. Appendix B is where that choosing begins for one person.\n\n---"
+     "kind": "kept",
+     "note": "The removal of already begun, the directions rather than civilizations framing, the externalizing formulation in the power row, and the caution that personal action does not replace structural change."
     },
     {
-      "id": "QH",
-      "question": "Heading not changed. Baseline: Appendix A · The Fork, Two Roads, Side by Side. Current: Appendix A: The Fork, Two Roads Side by Side. Only punctuation differs. The volume card lists sections 1 through 16 as a protected structural device and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
-    }
-  ],
-  "regenerationTest": {
-    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
-    "status": "converged",
-    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
-    "conclusion": "No new rule required."
-  },
-  "structuralHold": {
-    "kind": "chapter-start region",
-    "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
-    "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
-  },
-  "auditFindings": [
+     "kind": "verified",
+     "note": "All fourteen rows are present, in baseline order, with both columns intact."
+    },
     {
-      "id": "FG1",
-      "summary": "One curly quotation pair repaired in the frame paragraph; no wording changed.",
-      "evidence": {
-        "baseline": "The fork named at the close of §3 is easier to feel as a map than as an argument.",
-        "shipped": "The fork named at the close of \"The Present Tense\" is easier to inspect as a map."
-      },
-      "authorizedBy": "The punctuation standard, section 3, on the 2026-07-31 closeout glyph sweep, which requires the manuscript free of prohibited and curly glyph forms.",
-      "diagnosis": "The pass-authored frame sentence carried typographic quotation marks around The Present Tense, the only curly pair in the volume. Replaced with straight marks; every character of the wording is unchanged, and the structural hold on this region is untouched by a glyph normalization. Recorded so the sweep's zero is traceable rather than silent."
+     "kind": "verified",
+     "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
     }
-  ]
+   ]
+  }
+ ],
+ "standardAudit": {
+  "date": "2026-07-31",
+  "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+  "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+  "result": "The structural hold stands and no prose was touched; the blocked baseline region in QS remains the author's single-edit restoration path. One internal inconsistency found and recorded: F2's diagnosis says the re-render restores the diminished human and F3's says the pass's law-and-collective-action addition is kept, while the generation's blocked note and the manuscript agree that nothing in the region was restored; the blocked state is the true one, and the restores language in F2 is residue from a draft of this record, exactly the class of divergence found in the academic subtitle record. Under the newer rules: R-CAUTIOUS-HALF confirms the two lost denial pairs, not prophecy and not utopia, are the section's damage-report signal and remain in QS for the author; R-SUBSTITUTION-CREDIT was checked and the kept corrections here, already-begun removed, externalizing formulation, directions-not-civilizations, are ledger-required boundings rather than creditable repairs, except the power row's right-hand column, whose institutional-bounds list mirrors the controls credited in the dark-triad record's F4 and is covered by that credit rather than recounted. R-PAIRED-DELETION: every table row's terms keep their section referents in the current volume, so restoring the QS region severs nothing. All fourteen rows verified present in baseline order with both columns intact."
+ },
+ "rulings": [],
+ "rulesDerived": [],
+ "openQuestions": [
+  {
+   "id": "QS",
+   "question": "HELD REGION RESTORED. Executed 2026-07-31 under the author ruling of 2026-07-31 (route minting authorized; alias preservation carries old links; maximum clarity and quality without regard for historical continuity), T-021. The frame, table, and closing were restored from the baseline reproduced in this record's prior hold note, with every ledger constraint applied: the not-prophecy and not-utopia frame pairs restored (F1) while 'already begun in a single Cardinal Scale' stays excluded under CTD-0030, with the shipped bounding sentence 'The Cardinal Scale remains a proposal, not an operating community reported by this corpus.' kept; the medicine right column, power right column ('Flows to those who can steady the nervous systems around them'), diminished-human pair, and revoke-you-in-your-sleep cell restored per F2, with the shipped externalizing power-left formulation kept under CTD-0093; the unit-of-order right column keeps the pass's 'Scales' form per the ledger outcome under CTD-0076; 'The whole' row keeps the shipped 'the dragon named Earth' form because the volume card lists it as a canonical term, so the baseline 'The Dragon, Earth Awakening, a planet coordinating with itself at last' is recorded here and not restored; the closing restored per F3 with the pass's law-and-collective-action improvement kept as 'and in the larger work of law and collective action' and the personal-action bounding kept; and the frame keeps the recorded correction naming 'The Present Tense' where the baseline's paragraph referenced the retired section numbering. Glyph conversions, counted: four em dashes repaired in the restored frame and cells (comma forms), matching the corpus convention. Census consequence: the appendix's chapter-start region lengthened; no heading or standalone bold line changed. Route re-recording and alias verification belong to the orchestrating operation."
+  },
+  {
+   "id": "QH",
+   "question": "Heading not changed. Baseline: Appendix A · The Fork, Two Roads, Side by Side. Current: Appendix A: The Fork, Two Roads Side by Side. Only punctuation differs. The volume card lists sections 1 through 16 as a protected structural device and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+  }
+ ],
+ "regenerationTest": {
+  "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+  "status": "converged",
+  "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+  "conclusion": "No new rule required."
+ },
+ "structuralHold": {
+  "kind": "chapter-start region",
+  "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
+  "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
+ },
+ "auditFindings": [
+  {
+   "id": "FG1",
+   "summary": "One curly quotation pair repaired in the frame paragraph; no wording changed.",
+   "evidence": {
+    "baseline": "The fork named at the close of §3 is easier to feel as a map than as an argument.",
+    "shipped": "The fork named at the close of \"The Present Tense\" is easier to inspect as a map."
+   },
+   "authorizedBy": "The punctuation standard, section 3, on the 2026-07-31 closeout glyph sweep, which requires the manuscript free of prohibited and curly glyph forms.",
+   "diagnosis": "The pass-authored frame sentence carried typographic quotation marks around The Present Tense, the only curly pair in the volume. Replaced with straight marks; every character of the wording is unchanged, and the structural hold on this region is untouched by a glyph normalization. Recorded so the sweep's zero is traceable rather than silent."
+  }
+ ]
 }

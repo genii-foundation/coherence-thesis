@@ -1292,11 +1292,11 @@ PART EIGHT
 
 **The Invitation**
 
-*Testing Whether a New Institution Should Exist*
+*Not to Join Something, But to Help Prove Whether It Is Possible*
 
 .  :  .
 
-*Belief is not the price of entry. The work begins with inquiry, evidence, and the freedom to change the design.*
+*We are not asking you to believe. We are asking you to help find out. The nest was left unfinished on purpose; what remains is the part that was always meant for other hands.*
 
 # *Chapter Nineteen*
 
