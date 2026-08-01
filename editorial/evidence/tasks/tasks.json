@@ -183,9 +183,9 @@
       "id": "T-019",
       "title": "Linear twenty-rule pass, Volume I through Volume IX",
       "tier": "amber",
-      "status": "blocked",
+      "status": "in-progress",
       "area": "editorial",
-      "detail": "Paused awaiting six author rulings on the voice cards, which are prepared and verified. Eleven proposal files sit under generated/voice-card-proposals/ with an approval sheet: every quoted string mechanically verified against its named baseline and the current manuscript, 78 quotations corrected across the nine cards, zero prohibited glyphs. The rulings that finalization needs: the three T-022 retained lines, the Volume VIII powerless-versus-nothing protected line, the Volume VII five pass-written safeguard sentences, the Volume IX Cardinal Scale posture, the Volume V Donna disclosure wording, and the CTD-0005 floor doctrine question spanning I, III and IX. On approval: adopt cards into editorial/sources, re-enable editorial:voice-exemplars in the validate gate, delta-recheck Volumes I and II, then resume Volume III at chapter seventeen, 124 of 142 records. Author instruction of 2026-07-31: stop and wait on human-input items rather than doing work that may need rerunning.",
+      "detail": "Resumed 2026-07-31 after the ruling session. Cards adopted for corpus plus eight volumes, approved for editorial-pass use with the D1 to D6 rulings applied; volume-07 held pending the D3 clarification. D6 ruled: the floor contradiction is called out as urgent under CTD-0005 and deliberately not encoded in any card. Volumes I and II stand verified; their cards changed only in provenance annotations with zero quotation substitutions, so their verifications hold without a delta recheck. Volume III lane resumes at chapter seventeen, 124 of 142 records, then IV verify, V full, VI verify, VII verify plus boundary recheck once D3 lands, VIII verify, IX verify. Origin is pulled between volumes to absorb the continuing upstream card calibration.",
       "blockedBy": []
     },
     {
@@ -210,9 +210,9 @@
       "id": "T-022",
       "title": "Rule on the retained pass-authored protected lines",
       "tier": "red",
-      "status": "pending",
+      "status": "done",
       "area": "editorial",
-      "detail": "Three lines declared protected by the Volume VIII and IX voice cards have no baseline ancestor. They are retained so the declared protection is not silently released, but they canonize prose the condensing pass wrote. CTD-0110 is where the cards get corrected.",
+      "detail": "Ruled by the author 2026-07-31. D1: replace with baseline forms. The restraint line had no baseline counterpart and its protection is released; the landlord line is replaced by the baseline refusal sentence, protected in its baseline form; the Volume IX register line is released in favor of the baseline supposition sentence. D2: \"Small is not the same as powerless.\" is canon by author ruling; the baseline form stands unprotected and the adjacent duplication is the Volume VIII lane's to reconcile. All recorded on the adopted cards with the rulings quoted.",
       "blockedBy": []
     },
     {

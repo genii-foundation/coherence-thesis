@@ -15,16 +15,16 @@ export const preparedValidationScripts = Object.freeze([
   "editorial:validate",
   "editorial:checkpoints",
   "editorial:protected-lines",
-  // editorial:voice-exemplars is suspended, not deleted. CTD-0110 establishes that the
-  // nine voice cards were prepared from the shipped manuscripts rather than from the
-  // baselines: 80 of 114 quoted strings have no baseline ancestor, and three cards are
-  // above 90 percent. The gate therefore validates the condensing pass against itself,
-  // and it fails precisely when a section is restored correctly.
-  //
-  // Restoring the 30 quoted openings would put the pass's first sentence back on top of
-  // a baseline body, which is worse prose than either version alone. Editing the cards
-  // is the author's call and is what CTD-0110 exists to schedule. Re-enable this line as
-  // the last step of paying that item down.
+  // editorial:voice-exemplars is suspended, not deleted, and the reason has changed.
+  // The original suspension was CTD-0110: the cards were prepared from shipped text and
+  // the gate validated the condensing pass against itself. That is resolved. On
+  // 2026-07-31 the cards were re-prepared from the immutable baselines and adopted with
+  // the author's D1 to D6 rulings applied, so the cards now lead the manuscripts:
+  // eighteen anchors are baseline sentences the current manuscripts do not yet contain,
+  // because their sections have not been restored. The linear pass restores them volume
+  // by volume, and volume-07's card additionally awaits the D3 ruling. Re-enable this
+  // line when npm run editorial:voice-exemplars reports zero violations, which is the
+  // definition of the pass having caught up with its own cards.
   "editorial:semantic-links:validate",
   "manuscripts:validate",
   "repository:validate-evidence-immutability",

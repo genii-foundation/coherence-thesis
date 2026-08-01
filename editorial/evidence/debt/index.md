@@ -10,7 +10,7 @@ Open: 64. Queries: 40. Deferred: 5. Resolved: 3.
 
 | ID | Title | Status | Kind | Severity | Scope | Updated |
 | --- | --- | --- | --- | --- | --- | --- |
-| [CTD-0005](items/ctd-0005-subsistence-conditionality-conflict.md) | Resolve whether subsistence is unconditional or tied to self-regulation | query | logical | critical | volume-1, volume-3, volume-9, corpus | 2026-07-09 |
+| [CTD-0005](items/ctd-0005-subsistence-conditionality-conflict.md) | Resolve whether subsistence is unconditional or tied to self-regulation | query | logical | critical | volume-1, volume-3, volume-9, corpus | 2026-07-31 |
 | [CTD-0006](items/ctd-0006-biometric-governance-standing.md) | Define whether biometric-derived records may affect governance standing | query | canon | critical | volume-3, volume-4, volume-9, corpus | 2026-07-09 |
 | [CTD-0009](items/ctd-0009-volume-three-verification-backlog.md) | Close the scientific and quantitative verification backlog | open | citation | critical | volume-3, volume-9, corpus | 2026-07-09 |
 | [CTD-0015](items/ctd-0015-maren-minting-evidence.md) | Define what the Maren vignette says the currency records | query | canon | critical | volume-1, volume-3, corpus | 2026-07-09 |
