@@ -3,7 +3,6 @@ import {
   buildReaderHeatmapModel,
   progressForHeatmapCell,
   readerHeatmapCellCount,
-  readCellsPercent,
   revisedCellsCount,
 } from "./reader-heatmap";
 import { emptyProgress, markRead, recordScrollProgress } from "./reader-state";
@@ -69,13 +68,11 @@ describe("reader heatmap", () => {
     });
   });
 
-  it("summarizes completed and revised cell counts", () => {
+  it("summarizes revised cell counts", () => {
     const model = buildReaderHeatmapModel();
     const cells = model.volumes[0]!.cells.slice(0, 2);
     const progress = markRead(emptyProgress(), cells[0]!.primary, 100, 1_700);
 
-    expect(readCellsPercent(progress, cells)).toBeGreaterThan(0);
-    expect(readCellsPercent(progress, cells)).toBeLessThan(100);
     expect(revisedCellsCount(progress, cells)).toBe(0);
   });
 });

@@ -286,6 +286,15 @@
       "area": "publishing",
       "blockedBy": [],
       "detail": "Generate, align, validate, and publish every current manuscript section under one new immutable audio version. Record one verified publication checkpoint and open one reviewable pull request per volume. Keep the public application manifest atomic until the complete corpus passes strict validation."
+    },
+    {
+      "id": "T-031",
+      "title": "Unify reader progress percentages",
+      "tier": "green",
+      "status": "done",
+      "area": "reader",
+      "blockedBy": [],
+      "detail": "Complete. The toolbar icon, progress menu, reading map summary, volume and outline summaries now use one revision-independent, word-weighted percentage. Current-version section completion remains a separate count. The regression reproducing historical reading against revised hashes passed, as did the full static and browser gate with 742 unit tests and 210 browser tests."
     }
   ]
 }

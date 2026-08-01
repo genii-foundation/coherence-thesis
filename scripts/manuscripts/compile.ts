@@ -130,6 +130,7 @@ export async function compileManuscripts(): Promise<void> {
     href: section.href,
     chapterHref: section.chapterHref,
     readerHref: section.readerHref,
+    wordCount: section.wordCount,
     audioVersionId: section.audioVersionId,
   }));
   const bookmarkSections = catalog.sections.map((section) => ({

@@ -23,12 +23,15 @@ import {
 import {
   cellHasBookmarks,
   progressForHeatmapCell,
-  readCellsPercent,
   type ReaderHeatmapCell,
   type ReaderHeatmapModel,
   type ReaderHeatmapSectionPortion,
 } from "@/lib/reader-heatmap";
-import { isSectionRead, updatedSinceRead } from "@/lib/reader-state";
+import {
+  isSectionRead,
+  readingProgressPercent,
+  updatedSinceRead,
+} from "@/lib/reader-state";
 
 type CellStyle = CSSProperties & {
   "--cell-progress": number;
@@ -68,15 +71,13 @@ function uniqueCellSections(cell: ReaderHeatmapCell): ReaderHeatmapSectionPortio
   return [...sections.values()];
 }
 
-function uniqueModelSections(
-  model: ReaderHeatmapModel,
+function uniqueSections(
+  cells: ReaderHeatmapCell[],
 ): ReaderHeatmapSectionPortion[] {
   const sections = new Map<string, ReaderHeatmapSectionPortion>();
-  for (const volume of model.volumes) {
-    for (const cell of volume.cells) {
-      for (const portion of cell.portions) {
-        if (!sections.has(portion.sectionId)) sections.set(portion.sectionId, portion);
-      }
+  for (const cell of cells) {
+    for (const portion of cell.portions) {
+      if (!sections.has(portion.sectionId)) sections.set(portion.sectionId, portion);
     }
   }
   return [...sections.values()];
@@ -322,10 +323,20 @@ export function ReaderProgressHeatmapIsland({
     () => model.volumes.flatMap((volume) => volume.cells),
     [model],
   );
-  const sections = useMemo(() => uniqueModelSections(model), [model]);
+  const sections = useMemo(() => uniqueSections(cells), [cells]);
+  const sectionsByVolumeId = useMemo(
+    () =>
+      new Map(
+        model.volumes.map((volume) => [
+          volume.volumeId,
+          uniqueSections(volume.cells),
+        ]),
+      ),
+    [model],
+  );
   const totalPercent = useMemo(
-    () => readCellsPercent(progress, cells),
-    [cells, progress],
+    () => readingProgressPercent(progress, sections),
+    [progress, sections],
   );
   const sectionsReadCount = useMemo(
     () => sections.filter((section) => isSectionRead(progress, section)).length,
@@ -368,7 +379,10 @@ export function ReaderProgressHeatmapIsland({
       </div>
 
       {model.volumes.map((volume) => {
-        const volumePercent = readCellsPercent(progress, volume.cells);
+        const volumePercent = readingProgressPercent(
+          progress,
+          sectionsByVolumeId.get(volume.volumeId) ?? [],
+        );
 
         return (
           <section

@@ -293,18 +293,6 @@ export function bookmarkedCellsCount(
   return cells.filter((cell) => cellHasBookmarks(bookmarkedKeys, cell)).length;
 }
 
-export function readCellsPercent(
-  progress: ReaderProgressState,
-  cells: ReaderHeatmapCell[],
-): number {
-  if (cells.length === 0) return 0;
-  const total = cells.reduce(
-    (sum, cell) => sum + progressForHeatmapCell(progress, cell).percent,
-    0,
-  );
-  return Math.round(total / cells.length);
-}
-
 export function revisedCellsCount(
   progress: ReaderProgressState,
   cells: ReaderHeatmapCell[],

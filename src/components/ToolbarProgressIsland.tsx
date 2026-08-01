@@ -91,7 +91,7 @@ import {
   isSectionRead,
   markRead,
   readerProgressSchemaVersion,
-  readPercent,
+  readingProgressPercent,
   reconcileRemoteProgress,
   recentlyReadSections,
   recommendNextSections,
@@ -611,7 +611,7 @@ export function ToolbarProgressIsland() {
   }, [allSections, user]);
 
   const percent = useMemo(
-    () => readPercent(progress, allSections),
+    () => readingProgressPercent(progress, allSections),
     [allSections, progress],
   );
   const recommendations = useMemo(

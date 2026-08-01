@@ -596,23 +596,32 @@ export function isSectionRead(
   );
 }
 
-export function readPercent(
+export function readingProgressPercent(
   progress: ReaderProgressState,
-  sections: ProgressIdentity[],
+  sections: Array<ProgressIdentity & { wordCount: number }>,
 ): number {
+  // Reading history survives editorial revisions. A changed content hash makes
+  // a completed section "updated" for current-version counts, but it must not
+  // erase the share of the corpus the reader has already covered.
   if (sections.length === 0) return 0;
-  const read = sections.reduce((total, section) => {
-    const percent = progressStatesForSection(progress, section).reduce(
-      (largest, state) =>
-        state.contentHash === section.contentHash &&
-        stateCoversCurrentLineage(state, section)
-          ? Math.max(largest, state.percent ?? 0)
-          : largest,
-      0,
-    );
-    return total + Math.min(100, Math.max(0, percent));
-  }, 0);
-  return Math.round(read / sections.length);
+  const totals = sections.reduce(
+    (current, section) => {
+      const wordCount = Number.isFinite(section.wordCount)
+        ? Math.max(0, section.wordCount)
+        : 0;
+      const percent = Math.min(
+        100,
+        Math.max(0, progressPercentForSection(progress, section)),
+      );
+      return {
+        readWords: current.readWords + wordCount * (percent / 100),
+        totalWords: current.totalWords + wordCount,
+      };
+    },
+    { readWords: 0, totalWords: 0 },
+  );
+  if (totals.totalWords === 0) return 0;
+  return Math.round((totals.readWords / totals.totalWords) * 100);
 }
 
 export function recommendNextSections(

@@ -40,6 +40,7 @@ const sections: ProgressSectionData[] = [
     href: "/manuscripts/volume-one/part/chapter/one-a/",
     chapterHref: "/manuscripts/volume-one/part/chapter/",
     readerHref: "/manuscripts/volume-one/part/chapter/#one-a",
+    wordCount: 40,
     audioVersionId: "one-a-a",
   },
   {
@@ -53,6 +54,7 @@ const sections: ProgressSectionData[] = [
     href: "/manuscripts/volume-one/part/chapter/one-b/",
     chapterHref: "/manuscripts/volume-one/part/chapter/",
     readerHref: "/manuscripts/volume-one/part/chapter/#one-b",
+    wordCount: 60,
     audioVersionId: "one-b-b",
   },
   {
@@ -66,6 +68,7 @@ const sections: ProgressSectionData[] = [
     href: "/manuscripts/volume-two/part/chapter/two-a/",
     chapterHref: "/manuscripts/volume-two/part/chapter/",
     readerHref: "/manuscripts/volume-two/part/chapter/#two-a",
+    wordCount: 100,
     audioVersionId: "two-a-c",
   },
 ];
