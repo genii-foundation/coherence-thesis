@@ -24,9 +24,9 @@ Treat stale previews, mixed revisions, broken sources, and incomplete browser ev
 2. Follow the application contract in `src/AGENTS.md`, including server-readable prose, local-first privacy, viewport reachability, and established interface patterns.
 3. Verify every new or changed export has a real consumer.
 4. Add focused coverage for the changed behavior, but do not run a test suite before handing the preview to the user.
-5. As soon as the slice runs, start the lightest useful preview from the feature worktree on an unused port with `npm run preview:dev -- --port <port>`.
-6. Open the actual affected route, confirm the worktree, branch, and route are correct, then immediately give the user the working URL. If a preview cannot launch, report the concrete blocker instead of substituting a test suite.
-7. Preserve the preview until the user finishes reviewing it. Iterate with the cheapest proof that answers the current question.
+5. As soon as the slice runs, follow the root local preview review gate on an unused port with `npm run preview:dev -- --port <port>`.
+6. Verify the preview status, open the affected route, and immediately give the user the working URL. If a preview cannot launch, report the concrete blocker instead of substituting a test suite.
+7. Preserve the preview until the user finishes reviewing it. Apply feedback locally and show each revised candidate before pushing it.
 
 Compilation or preparation required to launch the preview is allowed. Before the URL is delivered, do not run Vitest collections, Playwright specs, `npm run validate`, `npm run validate:ui`, or another command whose purpose is testing the change.
 
@@ -43,8 +43,8 @@ Compilation or preparation required to launch the preview is allowed. Before the
 ## Publish and close out
 
 1. Review the complete diff. Confirm generated output remains untracked and durable editorial or publishing state changed only through its explicit workflow.
-2. Commit one coherent change with a focused Conventional Commit title.
-3. Push and open or update a pull request only when the user authorized that external action.
+2. Commit one coherent change with a focused Conventional Commit title. Reconfirm that the preview serves this exact commit and give the user the direct URL.
+3. Push and open or update a pull request only after the user approves that exact local preview or explicitly waives the root preview gate, and only when the user authorized the external action.
 4. Open a complete and validated pull request in ready state. Use draft state only for incomplete work or a concrete missing gate.
 5. Confirm the pull request targets `main`, required checks correspond to the exact head SHA, and its state matches the granted authority.
 6. Report the preview URL, candidate SHA, validation evidence, and exact remaining review, merge, or publication gate.

@@ -60,17 +60,26 @@ npm run test:e2e:fast
 
 Run `npm run readme:update` when package metadata, manuscript statistics, catalog state, or development status changes.
 
-## Local preview
+## Local preview review gate
 
-The agent-managed preview server does not survive a turn. It runs as a child of the desktop application, and the harness reaps it when the turn ends, so a server confirmed healthy at the end of one reply is gone at the start of the next. Nothing crashes and nothing is logged. Do not diagnose this as a fault in the application, and do not tell the author the preview is running because it was running earlier.
+A local preview is a required review artifact, not a courtesy link. Previewable changes include manuscript prose, overview copy, reader UI, navigation, styling, generated catalog consumption, and the localhost admin surface.
 
-Whenever a turn changes something the author would want to look at, verify the preview before the turn ends and start it if it is down:
+For every previewable change:
+
+1. Build the smallest runnable slice in its exact worktree.
+2. Before running a broad test suite, start the lightest useful preview on an unused port with `npm run preview:dev -- --port <port>`.
+3. Run `npm run preview:dev:status -- --port <port>`. Confirm the reported worktree, branch, Git SHA, and candidate digest belong to the change under review. Open the affected route and verify the requested behavior yourself.
+4. Immediately give the author the direct local URL and wait for review. Do not substitute a Vercel preview, screenshot, test result, or description.
+5. Apply requested corrections locally and show the revised preview before pushing another candidate. Keep the preview alive until the author finishes reviewing it.
+6. After validation and the final candidate commit, restart or reconfirm the preview against that exact commit and show it again. Do not push the previewable candidate or open or update its pull request until the author explicitly approves the local preview or explicitly waives this gate.
+
+Do not open a pull request in the same turn as the first preview handoff unless the author has already reviewed that exact candidate. If the candidate changes after approval, the approval is stale and the gate repeats. A hosted preview never replaces this gate.
+
+The agent-managed preview server may not survive a turn. Verify it again before claiming it is available. If a managed preview cannot remain available, report the concrete blocker and give the author the durable command:
 
 ```bash
-curl -s -o /dev/null -w "%{http_code}\n" --max-time 20 http://127.0.0.1:55082/
+npm run preview:dev -- --port <port>
 ```
-
-Anything other than `200` means start it with `preview_start` on the `coherence-reader` configuration, then give the author a direct link to the page the change affects rather than the site root. Previewable changes include manuscript prose, overview copy, reader UI, navigation, styling, generated catalog consumption, and the localhost admin surface.
 
 Budget for the restart. `predev` runs `npm run manuscripts:prepare` first, so a cold start rebuilds 534 sections, the search index, and the PDF manifest before the server answers.
 
@@ -80,7 +89,7 @@ A durable server is the author's to run, because a process started from their ow
 npm run dev -- --hostname 127.0.0.1 --port 55082
 ```
 
-The `coherence-reader-attach` configuration in `.claude/launch.json` connects to that server instead of spawning another. Prefer it whenever port 55082 is already answering.
+An existing server is reusable only after its preview status proves that it serves the exact worktree and candidate under review. A `200` response by itself proves only that something is listening.
 
 ## The admin workbench
 
@@ -149,6 +158,7 @@ Durable editorial state begins after approval. Until then, write only under `gen
 - Use `edit/` for manuscript, overview, reviewed continuity, and related editorial changes.
 - Refresh the pull request base before final validation. Run `npm run updates:generate` and commit `publishing/updates/snapshot.json` when it advances.
 - Open a completed pull request in ready state. Use draft state only for incomplete work or a concrete missing gate.
+- For previewable work, satisfy the local preview review gate before pushing the candidate or opening or updating its pull request.
 - A stacked pull request may be ready for review, but it must be rebased onto current `main`, retargeted, refreshed, and revalidated before merge.
 - Squash each focused pull request into `main` separately. Delete its branch and remove its worktree after merge.
 - Pull request bodies and other external posts must begin with `(AI Generated).`
