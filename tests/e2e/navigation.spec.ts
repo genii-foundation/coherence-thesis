@@ -541,6 +541,37 @@ test("Volume VI navigation follows its two authored parts", async ({ page }) => 
   ).toBeVisible();
 });
 
+test("Volume VIII preserves its prologue and principal chapter hierarchy", async ({
+  page,
+}) => {
+  const volume = catalog.volumes.find((candidate) => candidate.order === 8)!;
+  const chapters = volume.parts.flatMap((part) => part.chapters);
+  const prologue = chapters.find(
+    (chapter) => chapter.chapterId === "prologue-two-scenes",
+  )!;
+  const accounting = chapters.find(
+    (chapter) => chapter.chapterId === "the-accounting",
+  )!;
+
+  expect(chapters).toHaveLength(21);
+  expect(prologue.sectionIds).toEqual(["v08-prologue-two-scenes"]);
+  expect(prologue.wordCount).toBeLessThan(1_000);
+
+  await page.goto(prologue.href);
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Prologue · Two Scenes" }),
+  ).toBeVisible();
+  await expect(page.getByText(/hour read\./)).toHaveCount(0);
+
+  await page.goto(
+    "/manuscripts/8/contents/prologue-two-scenes/#v08-the-accounting",
+  );
+  await expect(page).toHaveURL(accounting.href);
+  await expect(
+    page.getByRole("heading", { level: 1, name: "The Accounting" }),
+  ).toBeVisible();
+});
+
 test("singleton chapter section navigation points up to the part", async ({
   page,
 }) => {

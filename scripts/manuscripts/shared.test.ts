@@ -127,11 +127,9 @@ describe("manuscript compiler helpers", () => {
     );
     expect(opening?.readerHref).toBe(opening?.href);
     expect(contents?.href).toBe(
-      "/manuscripts/8/contents/prologue-two-scenes/start/",
+      "/manuscripts/8/contents/prologue-two-scenes/",
     );
-    expect(contents?.readerHref).toBe(
-      "/manuscripts/8/contents/prologue-two-scenes/#v08-prologue-two-scenes",
-    );
+    expect(contents?.readerHref).toBe(contents?.href);
     expect(openingPart?.href).toBe("/manuscripts/1/opening/");
     expect(contentsPart?.href).toBe("/manuscripts/8/contents/");
   });
@@ -364,6 +362,18 @@ describe("manuscript compiler helpers", () => {
         "retired-seed",
       ]),
       targetHref: baseHref,
+    });
+  });
+
+  it("resolves a reader fragment after its section moves to another chapter", () => {
+    const catalog = buildCatalog();
+    const sourceHref =
+      "/manuscripts/8/contents/prologue-two-scenes/#v08-the-accounting";
+
+    expect(resolvePublishedRoute(catalog, sourceHref)).toMatchObject({
+      kind: "reader",
+      targetContinuityIds: expect.arrayContaining(["v08-2-the-accounting"]),
+      targetHref: "/manuscripts/8/contents/the-accounting/",
     });
   });
 

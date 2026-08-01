@@ -37689,6 +37689,27 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/a-blessing-and-a-door/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-16-a-blessing-and-a-door"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/a-blessing-and-a-door/a-blessing-and-a-door/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-16-a-blessing-and-a-door"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/a-blessing-and-a-door/v08-a-blessing-and-a-door/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-16-a-blessing-and-a-door"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/appendix-a-the-fork-two-roads-side-by-side/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -37721,6 +37742,19 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v08-appendix-a-the-fork-two-roads-side-by-side"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/",
+      "kind": "chapter",
+      "targetContinuityIds": [
+        "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week",
+        "v08-for-coordination-the-actual-work",
+        "v08-for-the-long-view",
+        "v08-for-the-tending",
+        "v08-for-your-attention-take-it-back",
+        "v08-for-your-body-and-your-ground",
+        "v08-for-your-bonds"
       ]
     },
     {
@@ -37873,6 +37907,13 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/the-living-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-living-world-2"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/the-roots-of-this-volume/",
       "kind": "section",
       "targetContinuityIds": [
@@ -37880,8 +37921,22 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/the-roots-of-this-volume/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-roots-of-this-volume"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/the-state-of-2026/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/the-state-of-2026/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-the-state-of-2026-3"
       ]
@@ -37970,6 +38025,19 @@
         "v08-the-living-world-2",
         "v08-the-roots-of-this-volume",
         "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week",
+        "v08-for-coordination-the-actual-work",
+        "v08-for-the-long-view",
+        "v08-for-the-tending",
+        "v08-for-your-attention-take-it-back",
+        "v08-for-your-body-and-your-ground",
+        "v08-for-your-bonds"
       ]
     },
     {
@@ -38276,6 +38344,48 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/how-providence-would-tend-three-primal-goods/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/how-providence-would-tend-three-primal-goods/how-providence-would-tend-three-primal-goods/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/how-providence-would-tend-three-primal-goods/v08-how-providence-would-tend-three-primal-goods/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/let-the-architects-speak/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-7-let-the-architects-speak"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/let-the-architects-speak/let-the-architects-speak/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-7-let-the-architects-speak"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/let-the-architects-speak/v08-let-the-architects-speak/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-7-let-the-architects-speak"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/prologue-two-scenes/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -38299,6 +38409,13 @@
         "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register",
         "v08-the-first-address-to-those-who-would-own-the-world",
         "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-prologue-two-scenes"
       ]
     },
     {
@@ -38792,6 +38909,13 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/a-blessing-and-a-door/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-16-a-blessing-and-a-door"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/prologue-two-scenes/how-providence-would-tend-three-primal-goods/",
       "kind": "section",
       "targetContinuityIds": [
@@ -38799,8 +38923,22 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/how-providence-would-tend-three-primal-goods/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/prologue-two-scenes/let-the-architects-speak/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-7-let-the-architects-speak"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/let-the-architects-speak/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-7-let-the-architects-speak"
       ]
@@ -38815,6 +38953,13 @@
     {
       "href": "/manuscripts/8/contents/prologue-two-scenes/purposeful-and-human-development/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/purposeful-and-human-development/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
       ]
@@ -38841,8 +38986,22 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/saturns-day-cosmological-opening-and-register/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/prologue-two-scenes/start/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-prologue-two-scenes"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/start/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-prologue-two-scenes"
       ]
@@ -38855,8 +39014,22 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/the-accounting/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-2-the-accounting"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/prologue-two-scenes/the-birds-and-the-bees-the-second-meaning/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-4-the-birds-and-the-bees-the-second-meaning"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/the-birds-and-the-bees-the-second-meaning/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-4-the-birds-and-the-bees-the-second-meaning"
       ]
@@ -38869,8 +39042,22 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/the-first-address-to-those-who-would-own-the-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-first-address-to-those-who-would-own-the-world"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/prologue-two-scenes/the-meaning-of-the-title/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/the-meaning-of-the-title/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
       ]
@@ -38883,8 +39070,22 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/the-present-tense-a-reckoning-of-the-year-2026/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/prologue-two-scenes/the-same-tools-a-different-purpose/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/the-same-tools-a-different-purpose/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-11-the-inversion-the-same-tools-the-opposite-god"
       ]
@@ -38897,8 +39098,22 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/prologue-two-scenes/the-second-address-to-the-frightened/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/the-second-address-to-the-frightened/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-the-second-address-to-the-frightened"
       ]
@@ -38911,6 +39126,13 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/the-strain-on-liberal-democracy/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/prologue-two-scenes/three-dangers/",
       "kind": "section",
       "targetContinuityIds": [
@@ -38918,8 +39140,22 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/three-dangers/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-6-the-three-roads-otherwise"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/prologue-two-scenes/two-addresses/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-15-two-addresses"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/two-addresses/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-15-two-addresses"
       ]
@@ -39191,6 +39427,13 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/what-power-selects-for/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/prologue-two-scenes/where-the-work-has-brought-us/",
       "kind": "section",
       "targetContinuityIds": [
@@ -39198,8 +39441,453 @@
       ]
     },
     {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/where-the-work-has-brought-us/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-1-where-the-work-has-brought-us"
+      ]
+    },
+    {
       "href": "/manuscripts/8/contents/prologue-two-scenes/why-write-one-more-book/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/prologue-two-scenes/why-write-one-more-book/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/purposeful-and-human-development/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/purposeful-and-human-development/purposeful-and-human-development/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/purposeful-and-human-development/v08-purposeful-and-human-development/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/saturns-day-cosmological-opening-and-register/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/saturns-day-cosmological-opening-and-register/saturns-day-cosmological-opening-and-register/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/saturns-day-cosmological-opening-and-register/v08-saturns-day-cosmological-opening-and-register/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-accounting/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-2-the-accounting"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-accounting/the-accounting/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-2-the-accounting"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-accounting/v08-the-accounting/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-2-the-accounting"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-birds-and-the-bees-the-second-meaning/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-4-the-birds-and-the-bees-the-second-meaning"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-birds-and-the-bees-the-second-meaning/the-birds-and-the-bees-the-second-meaning/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-4-the-birds-and-the-bees-the-second-meaning"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-birds-and-the-bees-the-second-meaning/v08-the-birds-and-the-bees-the-second-meaning/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-4-the-birds-and-the-bees-the-second-meaning"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-meaning-of-the-title/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-meaning-of-the-title/the-meaning-of-the-title/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-meaning-of-the-title/v08-the-meaning-of-the-title/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-present-tense-a-reckoning-of-the-year-2026/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-present-tense-a-reckoning-of-the-year-2026/the-present-tense-a-reckoning-of-the-year-2026/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-present-tense-a-reckoning-of-the-year-2026/v08-the-present-tense-a-reckoning-of-the-year-2026/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-roots-of-this-volume/",
+      "kind": "chapter",
+      "targetContinuityIds": [
+        "v08-the-living-world-2",
+        "v08-the-roots-of-this-volume",
+        "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-roots-of-this-volume/#v08-the-living-world",
+      "kind": "reader",
+      "targetContinuityIds": [
+        "v08-the-living-world-2"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-roots-of-this-volume/#v08-the-roots-of-this-volume",
+      "kind": "reader",
+      "targetContinuityIds": [
+        "v08-the-roots-of-this-volume"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-roots-of-this-volume/#v08-the-state-of-2026",
+      "kind": "reader",
+      "targetContinuityIds": [
+        "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-roots-of-this-volume/start/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-roots-of-this-volume"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-roots-of-this-volume/the-living-world/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-living-world-2"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-roots-of-this-volume/the-roots-of-this-volume/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-roots-of-this-volume"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-roots-of-this-volume/the-state-of-2026/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-roots-of-this-volume/v08-the-living-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-living-world-2"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-roots-of-this-volume/v08-the-roots-of-this-volume/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-roots-of-this-volume"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-roots-of-this-volume/v08-the-state-of-2026/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-same-tools-a-different-purpose/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-same-tools-a-different-purpose/the-same-tools-a-different-purpose/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-same-tools-a-different-purpose/v08-the-same-tools-a-different-purpose/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-scales-of-the-dragon/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-scales-of-the-dragon/the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-scales-of-the-dragon/v08-the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-strain-on-liberal-democracy/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-strain-on-liberal-democracy/the-strain-on-liberal-democracy/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/the-strain-on-liberal-democracy/v08-the-strain-on-liberal-democracy/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/three-dangers/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-6-the-three-roads-otherwise"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/three-dangers/three-dangers/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-6-the-three-roads-otherwise"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/three-dangers/v08-three-dangers/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-6-the-three-roads-otherwise"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/two-addresses/",
+      "kind": "chapter",
+      "targetContinuityIds": [
+        "v08-15-two-addresses",
+        "v08-the-first-address-to-those-who-would-own-the-world",
+        "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/two-addresses/#v08-the-first-address-to-those-who-would-own-the-world",
+      "kind": "reader",
+      "targetContinuityIds": [
+        "v08-the-first-address-to-those-who-would-own-the-world"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/two-addresses/#v08-the-second-address-to-the-frightened",
+      "kind": "reader",
+      "targetContinuityIds": [
+        "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/two-addresses/#v08-two-addresses",
+      "kind": "reader",
+      "targetContinuityIds": [
+        "v08-15-two-addresses"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/two-addresses/start/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-15-two-addresses"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/two-addresses/the-first-address-to-those-who-would-own-the-world/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-first-address-to-those-who-would-own-the-world"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/two-addresses/the-second-address-to-the-frightened/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/two-addresses/two-addresses/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-15-two-addresses"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/two-addresses/v08-the-first-address-to-those-who-would-own-the-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-first-address-to-those-who-would-own-the-world"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/two-addresses/v08-the-second-address-to-the-frightened/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/two-addresses/v08-two-addresses/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-15-two-addresses"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/what-power-selects-for/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/what-power-selects-for/v08-what-power-selects-for/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/what-power-selects-for/what-power-selects-for/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/where-the-work-has-brought-us/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-1-where-the-work-has-brought-us"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/where-the-work-has-brought-us/v08-where-the-work-has-brought-us/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-1-where-the-work-has-brought-us"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/where-the-work-has-brought-us/where-the-work-has-brought-us/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-1-where-the-work-has-brought-us"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/why-write-one-more-book/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/why-write-one-more-book/v08-why-write-one-more-book/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/contents/why-write-one-more-book/why-write-one-more-book/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
       ]
@@ -39242,6 +39930,20 @@
       ]
     },
     {
+      "href": "/manuscripts/8/front-matter/a-blessing-and-a-door/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-16-a-blessing-and-a-door"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/a-blessing-and-a-door/v08-a-blessing-and-a-door/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-16-a-blessing-and-a-door"
+      ]
+    },
+    {
       "href": "/manuscripts/8/front-matter/appendix-a-the-fork-two-roads-side-by-side/",
       "kind": "route-alias",
       "targetContinuityIds": [
@@ -39253,6 +39955,19 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v08-appendix-a-the-fork-two-roads-side-by-side"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/appendix-b-the-first-stone-one-person-can-lay-this-week/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week",
+        "v08-for-coordination-the-actual-work",
+        "v08-for-the-long-view",
+        "v08-for-the-tending",
+        "v08-for-your-attention-take-it-back",
+        "v08-for-your-body-and-your-ground",
+        "v08-for-your-bonds"
       ]
     },
     {
@@ -39351,6 +40066,19 @@
         "v08-for-the-tending",
         "v08-for-your-attention-take-it-back",
         "v08-for-your-body-and-your-ground",
+        "v08-for-your-bonds"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week",
+        "v08-for-coordination-the-actual-work",
+        "v08-for-the-long-view",
+        "v08-for-the-tending",
+        "v08-for-your-attention-take-it-back",
+        "v08-for-your-body-and-your-ground",
         "v08-for-your-bonds",
         "v08-the-living-world-2",
         "v08-the-roots-of-this-volume",
@@ -39428,6 +40156,34 @@
       ]
     },
     {
+      "href": "/manuscripts/8/front-matter/how-providence-would-tend-three-primal-goods/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/how-providence-would-tend-three-primal-goods/v08-how-providence-would-tend-three-primal-goods/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/let-the-architects-speak/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-7-let-the-architects-speak"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/let-the-architects-speak/v08-let-the-architects-speak/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-7-let-the-architects-speak"
+      ]
+    },
+    {
       "href": "/manuscripts/8/front-matter/prologue-two-scenes/",
       "kind": "route-alias",
       "targetContinuityIds": [
@@ -39451,6 +40207,13 @@
         "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register",
         "v08-the-first-address-to-those-who-would-own-the-world",
         "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/prologue-two-scenes/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-prologue-two-scenes"
       ]
     },
     {
@@ -39707,6 +40470,248 @@
     },
     {
       "href": "/manuscripts/8/front-matter/prologue-two-scenes/v08-why-write-one-more-book/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/purposeful-and-human-development/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/purposeful-and-human-development/v08-purposeful-and-human-development/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/saturns-day-cosmological-opening-and-register/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/saturns-day-cosmological-opening-and-register/v08-saturns-day-cosmological-opening-and-register/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-accounting/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-2-the-accounting"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-accounting/v08-the-accounting/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-2-the-accounting"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-birds-and-the-bees-the-second-meaning/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-4-the-birds-and-the-bees-the-second-meaning"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-birds-and-the-bees-the-second-meaning/v08-the-birds-and-the-bees-the-second-meaning/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-4-the-birds-and-the-bees-the-second-meaning"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-meaning-of-the-title/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-meaning-of-the-title/v08-the-meaning-of-the-title/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-present-tense-a-reckoning-of-the-year-2026/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-present-tense-a-reckoning-of-the-year-2026/v08-the-present-tense-a-reckoning-of-the-year-2026/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-roots-of-this-volume/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-the-living-world-2",
+        "v08-the-roots-of-this-volume",
+        "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-roots-of-this-volume/v08-the-living-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-living-world-2"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-roots-of-this-volume/v08-the-roots-of-this-volume/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-roots-of-this-volume"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-roots-of-this-volume/v08-the-state-of-2026/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-same-tools-a-different-purpose/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-same-tools-a-different-purpose/v08-the-same-tools-a-different-purpose/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-scales-of-the-dragon/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-scales-of-the-dragon/v08-the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-strain-on-liberal-democracy/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/the-strain-on-liberal-democracy/v08-the-strain-on-liberal-democracy/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/three-dangers/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-6-the-three-roads-otherwise"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/three-dangers/v08-three-dangers/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-6-the-three-roads-otherwise"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/two-addresses/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-15-two-addresses",
+        "v08-the-first-address-to-those-who-would-own-the-world",
+        "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/two-addresses/v08-the-first-address-to-those-who-would-own-the-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-first-address-to-those-who-would-own-the-world"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/two-addresses/v08-the-second-address-to-the-frightened/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/two-addresses/v08-two-addresses/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-15-two-addresses"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/what-power-selects-for/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/what-power-selects-for/v08-what-power-selects-for/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/where-the-work-has-brought-us/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-1-where-the-work-has-brought-us"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/where-the-work-has-brought-us/v08-where-the-work-has-brought-us/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-1-where-the-work-has-brought-us"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/why-write-one-more-book/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ]
+    },
+    {
+      "href": "/manuscripts/8/front-matter/why-write-one-more-book/v08-why-write-one-more-book/",
       "kind": "section-alias",
       "targetContinuityIds": [
         "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
@@ -55548,6 +56553,27 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/a-blessing-and-a-door/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-16-a-blessing-and-a-door"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/a-blessing-and-a-door/a-blessing-and-a-door/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-16-a-blessing-and-a-door"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/a-blessing-and-a-door/v08-a-blessing-and-a-door/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-16-a-blessing-and-a-door"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/appendix-a-the-fork-two-roads-side-by-side/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -55587,6 +56613,19 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v08-appendix-a-the-fork-two-roads-side-by-side"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/",
+      "kind": "chapter",
+      "targetContinuityIds": [
+        "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week",
+        "v08-for-coordination-the-actual-work",
+        "v08-for-the-long-view",
+        "v08-for-the-tending",
+        "v08-for-your-attention-take-it-back",
+        "v08-for-your-body-and-your-ground",
+        "v08-for-your-bonds"
       ]
     },
     {
@@ -55669,6 +56708,13 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/the-living-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-living-world-2"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/the-roots-of-this-volume/",
       "kind": "section",
       "targetContinuityIds": [
@@ -55676,8 +56722,22 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/the-roots-of-this-volume/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-roots-of-this-volume"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/the-state-of-2026/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/the-state-of-2026/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-the-state-of-2026-3"
       ]
@@ -55766,6 +56826,19 @@
         "v08-the-living-world-2",
         "v08-the-roots-of-this-volume",
         "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week",
+        "v08-for-coordination-the-actual-work",
+        "v08-for-the-long-view",
+        "v08-for-the-tending",
+        "v08-for-your-attention-take-it-back",
+        "v08-for-your-body-and-your-ground",
+        "v08-for-your-bonds"
       ]
     },
     {
@@ -56142,6 +57215,48 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/how-providence-would-tend-three-primal-goods/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/how-providence-would-tend-three-primal-goods/how-providence-would-tend-three-primal-goods/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/how-providence-would-tend-three-primal-goods/v08-how-providence-would-tend-three-primal-goods/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/let-the-architects-speak/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-7-let-the-architects-speak"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/let-the-architects-speak/let-the-architects-speak/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-7-let-the-architects-speak"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/let-the-architects-speak/v08-let-the-architects-speak/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-7-let-the-architects-speak"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -56165,6 +57280,13 @@
         "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register",
         "v08-the-first-address-to-those-who-would-own-the-world",
         "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-prologue-two-scenes"
       ]
     },
     {
@@ -56539,6 +57661,13 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/a-blessing-and-a-door/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-16-a-blessing-and-a-door"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/how-providence-would-tend-three-primal-goods/",
       "kind": "section",
       "targetContinuityIds": [
@@ -56546,8 +57675,22 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/how-providence-would-tend-three-primal-goods/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/let-the-architects-speak/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-7-let-the-architects-speak"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/let-the-architects-speak/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-7-let-the-architects-speak"
       ]
@@ -56562,6 +57705,13 @@
     {
       "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/purposeful-and-human-development/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/purposeful-and-human-development/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
       ]
@@ -56588,8 +57738,22 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/saturns-day-cosmological-opening-and-register/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/start/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-prologue-two-scenes"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/start/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-prologue-two-scenes"
       ]
@@ -56602,8 +57766,22 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/the-accounting/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-2-the-accounting"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/the-birds-and-the-bees-the-second-meaning/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-4-the-birds-and-the-bees-the-second-meaning"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/the-birds-and-the-bees-the-second-meaning/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-4-the-birds-and-the-bees-the-second-meaning"
       ]
@@ -56616,8 +57794,22 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/the-first-address-to-those-who-would-own-the-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-first-address-to-those-who-would-own-the-world"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/the-meaning-of-the-title/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/the-meaning-of-the-title/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
       ]
@@ -56630,8 +57822,22 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/the-present-tense-a-reckoning-of-the-year-2026/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/the-same-tools-a-different-purpose/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/the-same-tools-a-different-purpose/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-11-the-inversion-the-same-tools-the-opposite-god"
       ]
@@ -56644,8 +57850,22 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/the-second-address-to-the-frightened/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/the-second-address-to-the-frightened/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-the-second-address-to-the-frightened"
       ]
@@ -56658,6 +57878,13 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/the-strain-on-liberal-democracy/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/three-dangers/",
       "kind": "section",
       "targetContinuityIds": [
@@ -56665,8 +57892,22 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/three-dangers/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-6-the-three-roads-otherwise"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/two-addresses/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-15-two-addresses"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/two-addresses/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-15-two-addresses"
       ]
@@ -57078,6 +58319,13 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/what-power-selects-for/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/where-the-work-has-brought-us/",
       "kind": "section",
       "targetContinuityIds": [
@@ -57085,8 +58333,411 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/where-the-work-has-brought-us/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-1-where-the-work-has-brought-us"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/why-write-one-more-book/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/why-write-one-more-book/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/purposeful-and-human-development/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/purposeful-and-human-development/purposeful-and-human-development/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/purposeful-and-human-development/v08-purposeful-and-human-development/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/saturns-day-cosmological-opening-and-register/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/saturns-day-cosmological-opening-and-register/saturns-day-cosmological-opening-and-register/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/saturns-day-cosmological-opening-and-register/v08-saturns-day-cosmological-opening-and-register/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-accounting/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-2-the-accounting"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-accounting/the-accounting/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-2-the-accounting"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-accounting/v08-the-accounting/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-2-the-accounting"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-birds-and-the-bees-the-second-meaning/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-4-the-birds-and-the-bees-the-second-meaning"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-birds-and-the-bees-the-second-meaning/the-birds-and-the-bees-the-second-meaning/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-4-the-birds-and-the-bees-the-second-meaning"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-birds-and-the-bees-the-second-meaning/v08-the-birds-and-the-bees-the-second-meaning/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-4-the-birds-and-the-bees-the-second-meaning"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-meaning-of-the-title/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-meaning-of-the-title/the-meaning-of-the-title/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-meaning-of-the-title/v08-the-meaning-of-the-title/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-present-tense-a-reckoning-of-the-year-2026/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-present-tense-a-reckoning-of-the-year-2026/the-present-tense-a-reckoning-of-the-year-2026/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-present-tense-a-reckoning-of-the-year-2026/v08-the-present-tense-a-reckoning-of-the-year-2026/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-roots-of-this-volume/",
+      "kind": "chapter",
+      "targetContinuityIds": [
+        "v08-the-living-world-2",
+        "v08-the-roots-of-this-volume",
+        "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-roots-of-this-volume/start/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-roots-of-this-volume"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-roots-of-this-volume/the-living-world/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-living-world-2"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-roots-of-this-volume/the-roots-of-this-volume/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-roots-of-this-volume"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-roots-of-this-volume/the-state-of-2026/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-roots-of-this-volume/v08-the-living-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-living-world-2"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-roots-of-this-volume/v08-the-roots-of-this-volume/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-roots-of-this-volume"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-roots-of-this-volume/v08-the-state-of-2026/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-same-tools-a-different-purpose/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-same-tools-a-different-purpose/the-same-tools-a-different-purpose/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-same-tools-a-different-purpose/v08-the-same-tools-a-different-purpose/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-scales-of-the-dragon/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-scales-of-the-dragon/the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-scales-of-the-dragon/v08-the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-strain-on-liberal-democracy/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-strain-on-liberal-democracy/the-strain-on-liberal-democracy/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/the-strain-on-liberal-democracy/v08-the-strain-on-liberal-democracy/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/three-dangers/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-6-the-three-roads-otherwise"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/three-dangers/three-dangers/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-6-the-three-roads-otherwise"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/three-dangers/v08-three-dangers/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-6-the-three-roads-otherwise"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/two-addresses/",
+      "kind": "chapter",
+      "targetContinuityIds": [
+        "v08-15-two-addresses",
+        "v08-the-first-address-to-those-who-would-own-the-world",
+        "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/two-addresses/start/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-15-two-addresses"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/two-addresses/the-first-address-to-those-who-would-own-the-world/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-first-address-to-those-who-would-own-the-world"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/two-addresses/the-second-address-to-the-frightened/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/two-addresses/two-addresses/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-15-two-addresses"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/two-addresses/v08-the-first-address-to-those-who-would-own-the-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-first-address-to-those-who-would-own-the-world"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/two-addresses/v08-the-second-address-to-the-frightened/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/two-addresses/v08-two-addresses/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-15-two-addresses"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/what-power-selects-for/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/what-power-selects-for/v08-what-power-selects-for/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/what-power-selects-for/what-power-selects-for/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/where-the-work-has-brought-us/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-1-where-the-work-has-brought-us"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/where-the-work-has-brought-us/v08-where-the-work-has-brought-us/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-1-where-the-work-has-brought-us"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/where-the-work-has-brought-us/where-the-work-has-brought-us/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-1-where-the-work-has-brought-us"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/why-write-one-more-book/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/why-write-one-more-book/v08-why-write-one-more-book/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/contents/why-write-one-more-book/why-write-one-more-book/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
       ]
@@ -57166,6 +58817,20 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/a-blessing-and-a-door/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-16-a-blessing-and-a-door"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/a-blessing-and-a-door/v08-a-blessing-and-a-door/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-16-a-blessing-and-a-door"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/front-matter/appendix-a-the-fork-two-roads-side-by-side/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -57198,6 +58863,19 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v08-appendix-a-the-fork-two-roads-side-by-side"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/appendix-b-the-first-stone-one-person-can-lay-this-week/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week",
+        "v08-for-coordination-the-actual-work",
+        "v08-for-the-long-view",
+        "v08-for-the-tending",
+        "v08-for-your-attention-take-it-back",
+        "v08-for-your-body-and-your-ground",
+        "v08-for-your-bonds"
       ]
     },
     {
@@ -57300,6 +58978,19 @@
         "v08-the-living-world-2",
         "v08-the-roots-of-this-volume",
         "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week",
+        "v08-for-coordination-the-actual-work",
+        "v08-for-the-long-view",
+        "v08-for-the-tending",
+        "v08-for-your-attention-take-it-back",
+        "v08-for-your-body-and-your-ground",
+        "v08-for-your-bonds"
       ]
     },
     {
@@ -57529,6 +59220,34 @@
       ]
     },
     {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/how-providence-would-tend-three-primal-goods/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/how-providence-would-tend-three-primal-goods/v08-how-providence-would-tend-three-primal-goods/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-12-how-providence-tends-the-three-primal-goods"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/let-the-architects-speak/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-7-let-the-architects-speak"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/let-the-architects-speak/v08-let-the-architects-speak/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-7-let-the-architects-speak"
+      ]
+    },
+    {
       "href": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -57578,6 +59297,13 @@
         "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register",
         "v08-the-first-address-to-those-who-would-own-the-world",
         "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-prologue-two-scenes"
       ]
     },
     {
@@ -58114,6 +59840,248 @@
     },
     {
       "href": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-why-write-one-more-book/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/purposeful-and-human-development/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/purposeful-and-human-development/v08-purposeful-and-human-development/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/saturns-day-cosmological-opening-and-register/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/saturns-day-cosmological-opening-and-register/v08-saturns-day-cosmological-opening-and-register/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-accounting/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-2-the-accounting"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-accounting/v08-the-accounting/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-2-the-accounting"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-birds-and-the-bees-the-second-meaning/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-4-the-birds-and-the-bees-the-second-meaning"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-birds-and-the-bees-the-second-meaning/v08-the-birds-and-the-bees-the-second-meaning/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-4-the-birds-and-the-bees-the-second-meaning"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-meaning-of-the-title/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-meaning-of-the-title/v08-the-meaning-of-the-title/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-present-tense-a-reckoning-of-the-year-2026/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-present-tense-a-reckoning-of-the-year-2026/v08-the-present-tense-a-reckoning-of-the-year-2026/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-roots-of-this-volume/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-the-living-world-2",
+        "v08-the-roots-of-this-volume",
+        "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-roots-of-this-volume/v08-the-living-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-living-world-2"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-roots-of-this-volume/v08-the-roots-of-this-volume/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-roots-of-this-volume"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-roots-of-this-volume/v08-the-state-of-2026/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-state-of-2026-3"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-same-tools-a-different-purpose/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-same-tools-a-different-purpose/v08-the-same-tools-a-different-purpose/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-11-the-inversion-the-same-tools-the-opposite-god"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-scales-of-the-dragon/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-scales-of-the-dragon/v08-the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-14-the-scales-of-the-dragon-earth-awakening"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-strain-on-liberal-democracy/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/the-strain-on-liberal-democracy/v08-the-strain-on-liberal-democracy/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/three-dangers/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-6-the-three-roads-otherwise"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/three-dangers/v08-three-dangers/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-6-the-three-roads-otherwise"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/two-addresses/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-15-two-addresses",
+        "v08-the-first-address-to-those-who-would-own-the-world",
+        "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/two-addresses/v08-the-first-address-to-those-who-would-own-the-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-first-address-to-those-who-would-own-the-world"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/two-addresses/v08-the-second-address-to-the-frightened/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-the-second-address-to-the-frightened"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/two-addresses/v08-two-addresses/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-15-two-addresses"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/what-power-selects-for/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/what-power-selects-for/v08-what-power-selects-for/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-8-the-selection-of-the-dark-triad"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/where-the-work-has-brought-us/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-1-where-the-work-has-brought-us"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/where-the-work-has-brought-us/v08-where-the-work-has-brought-us/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v08-1-where-the-work-has-brought-us"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/why-write-one-more-book/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+      ]
+    },
+    {
+      "href": "/manuscripts/misanthropic-artifice/front-matter/why-write-one-more-book/v08-why-write-one-more-book/",
       "kind": "section-alias",
       "targetContinuityIds": [
         "v08-10-the-case-rests-and-why-we-wrote-one-more-book"

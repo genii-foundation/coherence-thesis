@@ -339,7 +339,7 @@
       "status": "done",
       "area": "reader",
       "blockedBy": [],
-      "detail": "Complete. Audited all nine generated hierarchies, removed synthetic Front Matter and Opening groupings from public navigation, restored Volume VI's authored Part One, aligned Up links, breadcrumbs, search, volume pages, and cover flow with authored structure, and preserved the retired Volume VI routes. The full static, build, audio, desktop, mobile, and WebKit gate passed with 744 unit tests and 210 browser tests."
+      "detail": "Complete. Reader navigation now uses authored hierarchy labels, Volume VI exposes its two authored parts, and Volume VIII exposes 21 authored chapters. Its Prologue remains one 829-word, four-minute chapter; the seventeen principal chapters, Two Addresses, two appendices, and Roots are distinct structures. All 4,387 historical links resolve, audio checkpoints validate, and the full gate passed with 746 unit tests and 214 browser tests."
     }
   ]
 }

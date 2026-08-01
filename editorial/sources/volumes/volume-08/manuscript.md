@@ -45,7 +45,7 @@ This volume will look, count, and distinguish evidence from interpretation.
 
 ---
 
-### Saturn's Day: Cosmological Opening and Register
+## Saturn's Day: Cosmological Opening and Register
 
 Having moved through the seven volumes that come before this one, we can say something now that would have sounded grandiose at the start and is, by this point, merely structural: this work has been operating the whole time at a larger scale than policy or technology, at the scale of pattern, of myth, of the long arrangement of things. We do not mean this in any fanatical sense. We mean it plainly. To understand how this world was *constructed,* one has to be willing to look at the patterns by which human beings have organized their sense of where they are, and to notice how thoroughly those patterns have thinned inside the span of a few generations. Saturn is used here as a literary figure for limit, time, and accounting. The symbolism organizes the book. It is not evidence for its claims.
 
@@ -63,7 +63,7 @@ And so to the register, and the one promise that governs everything below. We sa
 
 ---
 
-### Where the Work Has Brought Us
+## Where the Work Has Brought Us
 
 Seven volumes brought us here, and each of them climbed. The first laid the diagnosis and the seed: that a civilization is, before anything else, a *coordination problem,* that coordination depends on coherence, and that coherence is therefore not a virtue we may choose but a constraint the design must satisfy or perish under. It found that the most viable substrate for a post-extractive civilization was people all along. The volumes that followed built the architecture of an answer, Providence, PURPOSEFUL, the ICONS, the Currency of Presence, and then descended, in the fifth and sixth, back into the human heart and the smallest nest, where the whole thing either lives or is merely clever.
 
@@ -71,7 +71,7 @@ This volume does the colder, necessary thing the others were too kind to dwell o
 
 ---
 
-### The Accounting
+## The Accounting
 
 The discipline here is to count without flinching and without inflating. Only what can be sourced, and the contested numbers flagged as contested. The picture that survives that discipline is grave enough. The Roots section at the end of this volume names the source families; it is not yet a sentence-level apparatus, and the claim-level audit remains outstanding.
 
@@ -101,7 +101,7 @@ But glyphosate is only the molecule we happened to name. The deeper matter is th
 
 ---
 
-### The Present Tense: A Reckoning of the Year 2026
+## The Present Tense: A Reckoning of the Year 2026
 
 A reckoning without a date is a sermon, and we promised an audit. It is the summer of 2026, and every figure in this section is an as-of figure carrying that date. They are volatile, they will move, and they remain provisional until the claim-level source audit is complete. Here is the world as it stood, sourced, unembellished, and grave enough without a single adjective added for effect.
 
@@ -133,7 +133,7 @@ We should at least name those who tried to show us the machine from the inside, 
 
 ---
 
-### The Birds and the Bees, the Second Meaning
+## The Birds and the Bees, the Second Meaning
 
 We named the second chapter the birds and the bees and promised to return to the phrase's older life, the gentle way an earlier world taught its children how life is made and love is carried into the next generation. Here we keep the promise, because the commodification we have traced through soil and water and attention and the genome reaches its strangest and most intimate frontier in the marketplace of eros itself. The ecological record and the intimate one are not a single causal story, and this section does not claim they are. They share a question: what is lost when a thing that lives only inside relationship is made into product?
 
@@ -147,7 +147,7 @@ This is why, of the Seven Initiates that PURPOSEFUL teaches, intimacy sits near 
 
 ---
 
-### The Meaning of the Title
+## The Meaning of the Title
 
 The title of this book is precise, and worth unfolding before we go further. *Misanthropic* comes from the Greek, *misos,* hatred, and *anthropos,* the human being: literally, the hatred of humankind. We do not claim its makers hate anyone. We claim something colder, that the system they have built *behaves* as though it does, working steadily against the human whatever the intentions behind it. And *artifice* comes from the Latin *ars* and *facere,* skill, and to make: a thing made by craft, an artful construction, a contrivance. The word keeps a useful shadow too. An artifice is also a *trick,* a piece of cunning, something arranged to deceive. So a **misanthropic artifice** is a thing built, with enormous skill and often with real beauty, that operates against the people inside it, and whose deepest deception is to make itself look like nature, like reality, like simply the way things are. The etymologies require verification. The argument they carry does not depend on them: what was *built* can be *unbuilt.* The artifice is not the world. It only needs you to believe that it is.
 
@@ -157,7 +157,7 @@ We dwell on it because it is the precise inverse of what these volumes have prop
 
 ---
 
-### Three Dangers
+## Three Dangers
 
 If not Coherence, then what? Three roads are braided now so tightly they are hard to tell apart. They are not the only alternatives, and they overlap, but each names something real.
 
@@ -171,7 +171,7 @@ The three are not rivals so much as one convergent tendency: the watching market
 
 ---
 
-### Let the Architects Speak
+## Let the Architects Speak
 
 We need not impute hidden motives; we can read the record, and the method here is to take people at their word, especially when the word is recorded. The quotations below require verification against complete transcripts before publication, and what follows is stated on that condition.
 
@@ -183,7 +183,7 @@ Put the two together and a figure comes into focus that the age has not had a na
 
 ---
 
-### What Power Selects For
+## What Power Selects For
 
 Now the structural question, colder than any quotation: why these hands?
 
@@ -193,7 +193,7 @@ Here the earlier volumes proposed an answer, and it needs stating carefully. **P
 
 ---
 
-### The Strain on Liberal Democracy
+## The Strain on Liberal Democracy
 
 Here we let ourselves be afraid, briefly and on purpose.
 
@@ -203,7 +203,7 @@ The honest answer is that the old checks are strained: slower than the actors th
 
 ---
 
-### Why Write One More Book
+## Why Write One More Book
 
 We could stop here, and many do. There are hundreds upon hundreds of books, careful, sourced, often brilliant, written about each single thread we have touched: a whole shelf on the bees, another on the soil, another on surveillance capital, another on the water, the diet, the genome, the despair. Most of them are read by the few who already agree, and implemented by almost no one. We have no wish to be one more entry on that shelf, admired, shelved, and disregarded while the curve keeps climbing. So let us say plainly what such a book must say if it is to be honest: volumes could be written about each of these subjects and volumes already have been, and we have only gestured at what others have documented in full. This volume is a compressed account, and its contribution has to be coordination rather than the pretense that a summary replaces those literatures. And one could, from all of it, descend into a despair that feels almost earned, because this does look, to a great many serious and studied people, like a confluence of pressures without a close precedent.
 
@@ -217,7 +217,7 @@ So we will end the case the way the hour demands. A reader may reject this model
 
 ---
 
-### The Same Tools, a Different Purpose
+## The Same Tools, a Different Purpose
 
 Here is the hinge of the whole volume, and the plainest case for Providence we have made.
 
@@ -233,7 +233,7 @@ There is a small, exact poetry the earlier volumes found: the extractive machine
 
 ---
 
-### How Providence Would Tend Three Primal Goods
+## How Providence Would Tend Three Primal Goods
 
 Doctrine is tested at the body, and the accounting was an audit of exactly three things: what we do with **medicine, care, and food.** Watch what a system does with healing, tending, and feeding, and you know what it serves.
 
@@ -257,7 +257,7 @@ None of the three is a hero or a saint. They are ordinary people inside a struct
 
 ---
 
-### PURPOSEFUL and Human Development
+## PURPOSEFUL and Human Development
 
 There is a root beneath the flower. The artifice does not only extract from people; it degrades them, and largely by design. It fragments attention, because fragmented attention is more predictable. It corrodes trust, because isolated people are easier to steer. It thins presence to a scroll and hollows intimacy into content, and it trains the reflexes we met in the prologue: the appetite for spectacle, the flight from feeling. No single platform explains the whole of the condition, and people are not only the products of their feeds. But an order that profits from prediction has a standing interest in a diminished human, and it manufactures one where it can.
 
@@ -267,7 +267,7 @@ The contrast makes the aim plain: the artifice cultivates a person it can predic
 
 ---
 
-### The Scales of the Dragon
+## The Scales of the Dragon
 
 None of this is proven, and it begins small on purpose, because the need is vast and the attempt is small and knows it. The first sovereign community, the **Cardinal Scale,** is not the goal, and this corpus does not claim that one presently exists. It is meant to be a single cell. The goal is the slow accretion of many: **ICONS,** always plural, the *S* for sovereignty, a hoped-for network of self-governing communities, each particular, none identical, each catching the light a little differently. One community is a Scale. The network is ICONS.
 
@@ -277,13 +277,13 @@ This is the countercurrent we must count as honestly as we count the danger, and
 
 ---
 
-### Two Addresses
+## Two Addresses
 
 *Now the author sets down the cold instruments. A thesis that only indicts has failed at the harder task, which is to call everyone home, and home lies in two directions for two kinds of people. First to those with concentrated power. Then to those who feel they have none.*
 
 ---
 
-#### The first address: to those who would own the world
+### The first address: to those who would own the world
 
 To you who are assembling the manor, and we mean this without contempt, let us ask something plainly, founder to founder.
 
@@ -293,7 +293,7 @@ So we say this as an alignment of both sides rather than the defeat of one. We d
 
 ---
 
-#### The second address: to the frightened
+### The second address: to the frightened
 
 And to you, the far greater number, who read the accounting and the reckoning with a tightening in the chest, who do not own the platforms or the seed, who feel the manor closing around your one short life and have begun, quietly, to give up: this address is for you, and it is the more important of the two.
 
@@ -307,7 +307,7 @@ And you are not, despite how the machine makes you feel it, *alone.* The archite
 
 ---
 
-### A Blessing and a Door
+## A Blessing and a Door
 
 We did not hold this volume out because we believe we are doomed. We held it out because the refusal to look, the well-adjustment to a misanthropic artifice, is itself a doom, and it is the one we can still decline. The crowd on Market Street could have said *we love you.* The sauna could have held the pause one moment longer. The overdose curve could have kept climbing, and it did not. None of these is a law of nature. All of them are choices, and choices can be unmade.
 
@@ -377,7 +377,7 @@ Lay one stone. That is the whole method, and it is enough to begin.
 
 ---
 
-### The Roots of This Volume
+## The Roots of This Volume
 
 *Sources for the figures in "The Accounting," "The Present Tense," and "The Birds and the Bees, the Second Meaning," and the thinkers named throughout, so the reader may verify rather than trust. This register names source families. It is not yet a claim-level apparatus, and the claim-level audit remains outstanding.*
 

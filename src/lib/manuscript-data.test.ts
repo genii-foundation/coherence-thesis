@@ -321,6 +321,34 @@ describe("manuscript data", () => {
     );
   });
 
+  it("publishes Volume VIII as twenty-one authored chapters", () => {
+    const volume = catalog.volumes.find((candidate) => candidate.order === 8)!;
+    const chapters = volume.parts.flatMap((part) => part.chapters);
+    const prologue = chapters.find(
+      (chapter) => chapter.chapterId === "prologue-two-scenes",
+    )!;
+    const addresses = chapters.find(
+      (chapter) => chapter.chapterId === "two-addresses",
+    )!;
+    const roots = chapters.find(
+      (chapter) => chapter.chapterId === "the-roots-of-this-volume",
+    )!;
+
+    expect(chapters).toHaveLength(21);
+    expect(prologue.sectionIds).toEqual(["v08-prologue-two-scenes"]);
+    expect(prologue.wordCount).toBeLessThan(1_000);
+    expect(addresses.sectionIds).toEqual([
+      "v08-two-addresses",
+      "v08-the-first-address-to-those-who-would-own-the-world",
+      "v08-the-second-address-to-the-frightened",
+    ]);
+    expect(roots.sectionIds).toEqual([
+      "v08-the-roots-of-this-volume",
+      "v08-the-living-world",
+      "v08-the-state-of-2026",
+    ]);
+  });
+
   it("keeps legacy front matter routes available as aliases", () => {
     const legacyOpeningPart = partByHref(
       "/manuscripts/humanitys-most-viable-future/front-matter/",
@@ -346,10 +374,10 @@ describe("manuscript data", () => {
       "/manuscripts/8/contents/prologue-two-scenes/",
     );
     expect(legacySection?.section.href).toBe(
-      "/manuscripts/8/contents/prologue-two-scenes/start/",
+      "/manuscripts/8/contents/prologue-two-scenes/",
     );
     expect(legacySection?.alias?.targetHref).toBe(
-      "/manuscripts/8/contents/prologue-two-scenes/start/",
+      "/manuscripts/8/contents/prologue-two-scenes/",
     );
     expect(keys.has("humanitys-most-viable-future/front-matter")).toBe(true);
     expect(
