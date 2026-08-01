@@ -28,6 +28,29 @@ describe("reader start boundaries", () => {
     }
   });
 
+  it("preserves both authored parts in Volume VI", () => {
+    const config = readVolumeConfigs().find(
+      (candidate) => candidate.editorialId === "volume-06",
+    );
+    expect(config).toBeDefined();
+
+    const sections = buildSections(config!);
+    const parts = new Map(
+      sections.map((section) => [
+        section.frontmatter.partId,
+        {
+          order: section.frontmatter.partOrder,
+          title: section.frontmatter.partTitle,
+        },
+      ]),
+    );
+
+    expect([...parts.values()]).toEqual([
+      { order: 1, title: "The Whole, in the Fewest Words" },
+      { order: 2, title: "Beginning Again" },
+    ]);
+  });
+
   it.each([
     {
       volumeId: "architecting-providence",

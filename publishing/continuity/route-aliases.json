@@ -157,6 +157,96 @@
       "note": "Preserved chapter route from HEAD."
     },
     {
+      "sourceHref": "/manuscripts/6/front-matter/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/",
+      "note": "Generated alias for a former front matter part route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/on-nests/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/on-nests/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/the-between/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-between/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/the-currency/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-currency/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/the-current/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-current/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/the-dragon/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-dragon/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/the-first-nest-is-whole/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-first-nest-is-whole/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/the-loom/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-loom/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/the-pathway/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-pathway/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/the-right-size/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-right-size/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/the-seeing/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-seeing/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/the-smallest-nest/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-smallest-nest/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/the-unspent-gift/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-unspent-gift/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/the-whole-briefly/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-briefly/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/the-whole-unfolded/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-unfolded/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/what-this-is-for/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/what-this-is-for/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/front-matter/your-people/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/your-people/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/6/opening/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/",
+      "note": "Preserved part route from HEAD."
+    },
+    {
       "sourceHref": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/",
       "targetHref": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/",
       "note": "Preserved chapter route from HEAD."
@@ -340,6 +430,91 @@
       "sourceHref": "/manuscripts/providence-imperative/the-sovereign-architecture/the-sovereign-architecture-overview/",
       "targetHref": "/manuscripts/3/the-sovereign-architecture/the-federated-imperative/",
       "note": "Reviewed successor from the complete catalog history."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/",
+      "note": "Generated alias for a former front matter part route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/on-nests/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/on-nests/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/the-between/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-between/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/the-currency/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-currency/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/the-current/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-current/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/the-dragon/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-dragon/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/the-first-nest-is-whole/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-first-nest-is-whole/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/the-loom/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-loom/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/the-pathway/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-pathway/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/the-right-size/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-right-size/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/the-seeing/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-seeing/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/the-smallest-nest/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-smallest-nest/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/the-unspent-gift/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-unspent-gift/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/the-whole-briefly/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-briefly/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/the-whole-unfolded/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-unfolded/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/what-this-is-for/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/what-this-is-for/",
+      "note": "Generated alias for a former front matter chapter route."
+    },
+    {
+      "sourceHref": "/manuscripts/smallest-nest/front-matter/your-people/",
+      "targetHref": "/manuscripts/6/the-whole-in-the-fewest-words/your-people/",
+      "note": "Generated alias for a former front matter chapter route."
     },
     {
       "sourceHref": "/manuscripts/wielding-intelligence/a-last-word/",
