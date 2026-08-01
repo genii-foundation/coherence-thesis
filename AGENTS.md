@@ -100,6 +100,18 @@ Audit follow through when the author asks what is outstanding, before every prog
 
 A scoped loop stops at its own stop condition and touches nothing else. That is correct behavior and not evidence that the remaining queue is stale, but it does mean the queue must be reconciled by hand once the loop ends.
 
+## Editorial pass preconditions
+
+An editorial pass binds itself to authorities, and a pass launched under a stale authority does damage at scale with perfect confidence. Before launching any editorial render or audit pass, over one section or nine volumes, verify every authority it will bind to:
+
+- The voice cards are approved and in effect, prepared from the immutable baselines rather than from shipped text. One pending card blocks the volumes it governs.
+- The rule index in `editorial/method/standard.md` is ratified. A candidate rule recorded in a calibration record is a diagnostic, not authority.
+- No validation gate covering the pass is suspended. A suspended gate marks an unresolved authority question, and the pass inherits it.
+- Continuity records validate, so structural verification has a true census to check against.
+- The pass brief names the authorities it binds to, so the record shows what the work believed at the time.
+
+If any of these fails, the pass does not start. Surface the failure to the author and fix the authority first. This was learned by binding a nine volume re-render to voice cards that had been transcribed from the very pass whose damage it was repairing.
+
 ## What counts as structure
 
 Three kinds of line generate a public route. Changing any of them is a continuity decision, not an editorial one, and it must go through the continuity workflow rather than through a manuscript edit.

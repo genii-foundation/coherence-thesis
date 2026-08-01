@@ -7,6 +7,54 @@
       "targetContinuityIds": [
         "v01-a-horizon-not-yet-a-blueprint",
         "v01-a-note-on-compression",
+        "v01-between-sprout-and-stem",
+        "v01-civilization-as-a-living-process",
+        "v01-consciousness-and-participation",
+        "v01-from-extraction-to-regeneration",
+        "v01-governance-as-regulation-not-control",
+        "v01-how-coherence-becomes-structure",
+        "v01-how-this-book-is-structured",
+        "v01-icons-and-the-first-scale",
+        "v01-intelligence-as-an-emergent-property",
+        "v01-intelligence-meaning-trust",
+        "v01-intelligence-we-now-build",
+        "v01-into-the-flower",
+        "v01-its-name",
+        "v01-on-form-timing-and-why-this-book-exists",
+        "v01-on-historical-and-structural-causality",
+        "v01-on-measurement-and-falsifiability",
+        "v01-on-reductionism",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
+        "v01-orientation",
+        "v01-purposeful-the-cultivation-of-human-coherence",
+        "v01-reverence-arrived-at-honestly",
+        "v01-seed-sprout-stem-and-soil",
+        "v01-taking-pause-between-seed-and-sprout",
+        "v01-taking-pause-in-the-soil",
+        "v01-the-currency-of-presence",
+        "v01-the-flower",
+        "v01-the-human-being-reconsidered",
+        "v01-the-invitation",
+        "v01-the-question-becomes-an-experiment",
+        "v01-the-seed",
+        "v01-the-soil",
+        "v01-the-sprout",
+        "v01-the-stem",
+        "v01-what-it-looks-like-from-inside",
+        "v01-what-providence-is",
+        "v01-what-this-is-and-what-it-is-not",
+        "v01-what-this-section-has-and-has-not-established",
+        "v01-why-this-is-happening-and-why-it-changes-everything",
+        "v01-why-this-is-necessity-not-preference",
+        "v01-why-this-is-not-what-you-fear"
+      ]
+    },
+    {
+      "href": "/manuscripts/1/",
+      "kind": "volume",
+      "targetContinuityIds": [
+        "v01-a-horizon-not-yet-a-blueprint",
+        "v01-a-note-on-compression",
         "v01-civilization-as-a-living-process",
         "v01-consciousness-and-participation",
         "v01-from-extraction-to-regeneration",
@@ -445,6 +493,39 @@
       "kind": "part",
       "targetContinuityIds": [
         "v01-a-horizon-not-yet-a-blueprint",
+        "v01-between-sprout-and-stem",
+        "v01-civilization-as-a-living-process",
+        "v01-consciousness-and-participation",
+        "v01-from-extraction-to-regeneration",
+        "v01-governance-as-regulation-not-control",
+        "v01-how-coherence-becomes-structure",
+        "v01-intelligence-as-an-emergent-property",
+        "v01-intelligence-meaning-trust",
+        "v01-intelligence-we-now-build",
+        "v01-into-the-flower",
+        "v01-on-historical-and-structural-causality",
+        "v01-on-measurement-and-falsifiability",
+        "v01-on-reductionism",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
+        "v01-reverence-arrived-at-honestly",
+        "v01-seed-sprout-stem-and-soil",
+        "v01-taking-pause-between-seed-and-sprout",
+        "v01-taking-pause-in-the-soil",
+        "v01-the-human-being-reconsidered",
+        "v01-the-seed",
+        "v01-the-soil",
+        "v01-the-sprout",
+        "v01-the-stem",
+        "v01-what-this-section-has-and-has-not-established",
+        "v01-why-this-is-happening-and-why-it-changes-everything",
+        "v01-why-this-is-necessity-not-preference"
+      ]
+    },
+    {
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/",
+      "kind": "part",
+      "targetContinuityIds": [
+        "v01-a-horizon-not-yet-a-blueprint",
         "v01-civilization-as-a-living-process",
         "v01-consciousness-and-participation",
         "v01-from-extraction-to-regeneration",
@@ -504,6 +585,18 @@
       "href": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/",
       "kind": "chapter",
       "targetContinuityIds": [
+        "v01-on-historical-and-structural-causality",
+        "v01-on-measurement-and-falsifiability",
+        "v01-on-reductionism",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
+        "v01-what-this-section-has-and-has-not-established"
+      ]
+    },
+    {
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
         "v01-on-historical-and-structural-causality",
         "v01-on-measurement-and-falsifiability",
         "v01-on-reductionism",
@@ -610,6 +703,14 @@
       "href": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/on-scope-constraint-and-what-this-argument-does-not-claim/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
+      ]
+    },
+    {
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/on-scope-constraint-and-what-this-argument-does-not-claim/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
         "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
       ]
     },
@@ -632,6 +733,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v01-on-reductionism"
+      ]
+    },
+    {
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/v01-on-scope-constraint-and-what-this-argument-does-not-claim/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
       ]
     },
     {
@@ -830,6 +939,18 @@
       "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/",
       "kind": "chapter",
       "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
+        "v01-on-historical-and-structural-causality",
+        "v01-on-measurement-and-falsifiability",
+        "v01-on-reductionism",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
+        "v01-what-this-section-has-and-has-not-established"
+      ]
+    },
+    {
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/",
+      "kind": "chapter",
+      "targetContinuityIds": [
         "v01-on-historical-and-structural-causality",
         "v01-on-measurement-and-falsifiability",
         "v01-on-reductionism",
@@ -856,6 +977,14 @@
       "kind": "reader",
       "targetContinuityIds": [
         "v01-on-reductionism"
+      ]
+    },
+    {
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/#v01-the-limits-of-the-claim",
+      "kind": "reader",
+      "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
       ]
     },
     {
@@ -897,6 +1026,22 @@
       "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/start/",
       "kind": "section",
       "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
+      ]
+    },
+    {
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/start/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
+      ]
+    },
+    {
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/the-limits-of-the-claim/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
         "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
       ]
     },
@@ -926,6 +1071,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v01-on-reductionism"
+      ]
+    },
+    {
+      "href": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/v01-the-limits-of-the-claim/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
       ]
     },
     {
@@ -53031,6 +53184,54 @@
       "targetContinuityIds": [
         "v01-a-horizon-not-yet-a-blueprint",
         "v01-a-note-on-compression",
+        "v01-between-sprout-and-stem",
+        "v01-civilization-as-a-living-process",
+        "v01-consciousness-and-participation",
+        "v01-from-extraction-to-regeneration",
+        "v01-governance-as-regulation-not-control",
+        "v01-how-coherence-becomes-structure",
+        "v01-how-this-book-is-structured",
+        "v01-icons-and-the-first-scale",
+        "v01-intelligence-as-an-emergent-property",
+        "v01-intelligence-meaning-trust",
+        "v01-intelligence-we-now-build",
+        "v01-into-the-flower",
+        "v01-its-name",
+        "v01-on-form-timing-and-why-this-book-exists",
+        "v01-on-historical-and-structural-causality",
+        "v01-on-measurement-and-falsifiability",
+        "v01-on-reductionism",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
+        "v01-orientation",
+        "v01-purposeful-the-cultivation-of-human-coherence",
+        "v01-reverence-arrived-at-honestly",
+        "v01-seed-sprout-stem-and-soil",
+        "v01-taking-pause-between-seed-and-sprout",
+        "v01-taking-pause-in-the-soil",
+        "v01-the-currency-of-presence",
+        "v01-the-flower",
+        "v01-the-human-being-reconsidered",
+        "v01-the-invitation",
+        "v01-the-question-becomes-an-experiment",
+        "v01-the-seed",
+        "v01-the-soil",
+        "v01-the-sprout",
+        "v01-the-stem",
+        "v01-what-it-looks-like-from-inside",
+        "v01-what-providence-is",
+        "v01-what-this-is-and-what-it-is-not",
+        "v01-what-this-section-has-and-has-not-established",
+        "v01-why-this-is-happening-and-why-it-changes-everything",
+        "v01-why-this-is-necessity-not-preference",
+        "v01-why-this-is-not-what-you-fear"
+      ]
+    },
+    {
+      "href": "/manuscripts/humanitys-most-viable-future/",
+      "kind": "volume",
+      "targetContinuityIds": [
+        "v01-a-horizon-not-yet-a-blueprint",
+        "v01-a-note-on-compression",
         "v01-civilization-as-a-living-process",
         "v01-consciousness-and-participation",
         "v01-from-extraction-to-regeneration",
@@ -53635,6 +53836,39 @@
       "kind": "part",
       "targetContinuityIds": [
         "v01-a-horizon-not-yet-a-blueprint",
+        "v01-between-sprout-and-stem",
+        "v01-civilization-as-a-living-process",
+        "v01-consciousness-and-participation",
+        "v01-from-extraction-to-regeneration",
+        "v01-governance-as-regulation-not-control",
+        "v01-how-coherence-becomes-structure",
+        "v01-intelligence-as-an-emergent-property",
+        "v01-intelligence-meaning-trust",
+        "v01-intelligence-we-now-build",
+        "v01-into-the-flower",
+        "v01-on-historical-and-structural-causality",
+        "v01-on-measurement-and-falsifiability",
+        "v01-on-reductionism",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
+        "v01-reverence-arrived-at-honestly",
+        "v01-seed-sprout-stem-and-soil",
+        "v01-taking-pause-between-seed-and-sprout",
+        "v01-taking-pause-in-the-soil",
+        "v01-the-human-being-reconsidered",
+        "v01-the-seed",
+        "v01-the-soil",
+        "v01-the-sprout",
+        "v01-the-stem",
+        "v01-what-this-section-has-and-has-not-established",
+        "v01-why-this-is-happening-and-why-it-changes-everything",
+        "v01-why-this-is-necessity-not-preference"
+      ]
+    },
+    {
+      "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/",
+      "kind": "part",
+      "targetContinuityIds": [
+        "v01-a-horizon-not-yet-a-blueprint",
         "v01-civilization-as-a-living-process",
         "v01-consciousness-and-participation",
         "v01-from-extraction-to-regeneration",
@@ -53723,6 +53957,18 @@
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/between-sprout-and-stem/",
       "kind": "chapter",
       "targetContinuityIds": [
+        "v01-on-historical-and-structural-causality",
+        "v01-on-measurement-and-falsifiability",
+        "v01-on-reductionism",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
+        "v01-what-this-section-has-and-has-not-established"
+      ]
+    },
+    {
+      "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/between-sprout-and-stem/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
         "v01-on-historical-and-structural-causality",
         "v01-on-measurement-and-falsifiability",
         "v01-on-reductionism",
@@ -53829,6 +54075,14 @@
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/between-sprout-and-stem/on-scope-constraint-and-what-this-argument-does-not-claim/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
+      ]
+    },
+    {
+      "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/between-sprout-and-stem/on-scope-constraint-and-what-this-argument-does-not-claim/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
         "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
       ]
     },
@@ -53878,6 +54132,14 @@
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/between-sprout-and-stem/v01-on-scope-constraint-and-what-this-argument-does-not-claim/",
       "kind": "section",
       "targetContinuityIds": [
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
+      ]
+    },
+    {
+      "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/between-sprout-and-stem/v01-on-scope-constraint-and-what-this-argument-does-not-claim/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
         "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
       ]
     },
@@ -54133,6 +54395,18 @@
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-limits-of-the-claim/",
       "kind": "chapter",
       "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
+        "v01-on-historical-and-structural-causality",
+        "v01-on-measurement-and-falsifiability",
+        "v01-on-reductionism",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
+        "v01-what-this-section-has-and-has-not-established"
+      ]
+    },
+    {
+      "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-limits-of-the-claim/",
+      "kind": "chapter",
+      "targetContinuityIds": [
         "v01-on-historical-and-structural-causality",
         "v01-on-measurement-and-falsifiability",
         "v01-on-reductionism",
@@ -54165,6 +54439,22 @@
       "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-limits-of-the-claim/start/",
       "kind": "section",
       "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
+      ]
+    },
+    {
+      "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-limits-of-the-claim/start/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
+      ]
+    },
+    {
+      "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-limits-of-the-claim/the-limits-of-the-claim/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
         "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
       ]
     },
@@ -54194,6 +54484,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v01-on-reductionism"
+      ]
+    },
+    {
+      "href": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/the-limits-of-the-claim/v01-the-limits-of-the-claim/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v01-between-sprout-and-stem",
+        "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
       ]
     },
     {

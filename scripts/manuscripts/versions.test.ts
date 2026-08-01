@@ -76,50 +76,25 @@ describe("manuscript version provenance", () => {
     });
   });
 
-  it("uses the HEAD commit when generated-file history does not contain the current hash", () => {
+  it("refuses to invent provenance when no commit contains the current hash", () => {
     const section = {
       path: "content/manuscripts/example.md",
       contentHash: bodyHash(markdown("New untracked body.")),
     };
     const runGit: GitCommand = (args) => {
       if (args[0] === "log") return "";
-      if (args.join(" ") === "show -s --format=%H%x09%cI HEAD") {
-        return "cccccccccccccccccccccccccccccccccccccccc\t2026-03-01T12:34:56Z";
-      }
       throw new Error(`Unexpected git command: ${args.join(" ")}`);
     };
 
-    expect(firstCommitForCurrentHash(section, runGit)).toEqual({
-      commitSha: "cccccccccccccccccccccccccccccccccccccccc",
-      versionDate: "2026-03-01T12:34:56Z",
-    });
+    // The old behaviour returned HEAD here, which fabricated a well formed entry
+    // naming a commit that does not contain the content. Ninety percent of the
+    // provenance record was written that way before anyone noticed. (CTD-0112)
+    expect(() => firstCommitForCurrentHash(section, runGit)).toThrow(
+      /No commit contains the current content of 'content\/manuscripts\/example\.md'/,
+    );
   });
 
-  it("keeps the fallback date stable when the wall clock changes", () => {
-    const section = {
-      path: "content/manuscripts/example.md",
-      contentHash: bodyHash(markdown("New untracked body.")),
-    };
-    const runGit: GitCommand = (args) => {
-      if (args[0] === "log") return "";
-      if (args.join(" ") === "show -s --format=%H%x09%cI HEAD") {
-        return "cccccccccccccccccccccccccccccccccccccccc\t2026-03-01T12:34:56Z";
-      }
-      throw new Error(`Unexpected git command: ${args.join(" ")}`);
-    };
-
-    vi.useFakeTimers();
-    try {
-      vi.setSystemTime(new Date("2027-01-01T00:00:00Z"));
-      const first = firstCommitForCurrentHash(section, runGit);
-      vi.setSystemTime(new Date("2028-01-01T00:00:00Z"));
-      expect(firstCommitForCurrentHash(section, runGit)).toEqual(first);
-    } finally {
-      vi.useRealTimers();
-    }
-  });
-
-  it("preserves existing entries and pull request attribution for current hashes", () => {
+  it("re-derives every entry and reuses only the pull request when the commit matches", () => {
     const existingEntry = {
       contentHash: "1234567890abcdef",
       versionDate: "2026-01-15T00:00:00Z",
@@ -130,6 +105,10 @@ describe("manuscript version provenance", () => {
         "https://github.com/providence-collective/coherence-thesis/pull/42",
       pullRequestNumber: 42,
     };
+    // Existing entries used to be trusted whole by hash, which meant a wrong entry,
+    // once written, survived every regeneration. Commits now come from the canonical
+    // index every run; the existing entry contributes only its pull request link, and
+    // only when the re-derived commit matches the one it recorded. (CTD-0112)
     const manifest = buildVersionProvenanceManifest({
       now: "2026-03-02T00:00:00Z",
       sections: [
@@ -143,6 +122,15 @@ describe("manuscript version provenance", () => {
         generatedAt: "2026-01-15T00:00:00Z",
         entries: [existingEntry],
       },
+      canonicalIndex: new Map([
+        [
+          existingEntry.contentHash,
+          {
+            commitSha: existingEntry.commitSha,
+            versionDate: existingEntry.versionDate,
+          },
+        ],
+      ]),
       runGit: (args) => {
         if (args.join(" ") === "remote get-url origin") {
           return "git@github.com:providence-collective/coherence-thesis.git";
@@ -150,7 +138,7 @@ describe("manuscript version provenance", () => {
         throw new Error(`Unexpected git command: ${args.join(" ")}`);
       },
       resolvePullRequest: () => {
-        throw new Error("Existing provenance must not be resolved again.");
+        throw new Error("A matching commit must reuse the stored pull request.");
       },
     });
 

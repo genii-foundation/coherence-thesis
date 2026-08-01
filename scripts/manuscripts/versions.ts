@@ -14,6 +14,8 @@ import {
   type VersionProvenanceManifest,
 } from "./shared";
 import { generatedSectionPathCandidates } from "../repository/paths";
+import { buildSectionsFromSource } from "./import-markdown";
+import { readVolumeConfigs } from "./shared";
 
 export type GitCommand = (args: string[]) => string;
 export type PullRequestResolver = (commitSha: string) => PullRequestMatch | null;
@@ -88,16 +90,16 @@ export function firstCommitForCurrentHash(
   );
 
   if (!match) {
-    const [commitSha = "", versionDate = ""] = runGit([
-      "show",
-      "-s",
-      "--format=%H%x09%cI",
-      "HEAD",
-    ]).split("\t");
-    return {
-      commitSha,
-      versionDate,
-    };
+    // Failing here is the point. The old behaviour returned HEAD, which wrote a well
+    // formed entry naming a commit that does not contain the content. Ninety percent of
+    // the record was fabricated that way before anyone noticed, because a false entry is
+    // indistinguishable from a true one and the validate gate only checks that a row
+    // exists. Uncommitted content has no provenance yet; say so and stop. (CTD-0112)
+    throw new Error(
+      `No commit contains the current content of '${section.path}' ` +
+        `(hash ${section.contentHash}). Commit the manuscript work first: provenance ` +
+        `derives from committed content, in the order commit, then versions, then validate.`,
+    );
   }
 
   return match;
@@ -141,10 +143,72 @@ export function resolvePullRequestForCommit(
   }
 }
 
+/**
+ * True provenance comes from the canonical manuscripts, not from generated files.
+ *
+ * Generated sections stopped being committed, so for any section whose prose changed
+ * after that point no commit contains its generated body, and the old walker's HEAD
+ * fallback fabricated an answer. Ninety percent of the record was wrong that way.
+ * The canonical volume manuscripts ARE committed on every edit, and the importer's
+ * section split is deterministic, so replaying it at each historical commit yields the
+ * exact body hash each section had there. The oldest commit producing a section's
+ * current hash is, by construction, the commit that introduced the content.
+ */
+export function buildCanonicalFirstCommitIndex({
+  runGit = git,
+  configs = readVolumeConfigs(),
+}: {
+  runGit?: GitCommand;
+  configs?: ReturnType<typeof readVolumeConfigs>;
+} = {}): Map<string, { commitSha: string; versionDate: string }> {
+  const index = new Map<string, { commitSha: string; versionDate: string }>();
+  for (const config of configs) {
+    const candidates = [config.sourcePath, ...(config.historicalSourcePaths ?? [])];
+    let log = "";
+    try {
+      log = runGit(["log", "--reverse", "--format=%H%x09%cI", "--", ...candidates]);
+    } catch {
+      continue;
+    }
+    for (const line of log.split("\n")) {
+      const [commitSha = "", versionDate = ""] = line.trim().split("\t");
+      if (!commitSha) continue;
+      let source: string | null = null;
+      for (const candidate of candidates) {
+        try {
+          source = runGit(["show", `${commitSha}:${candidate}`]);
+          break;
+        } catch {
+          continue;
+        }
+      }
+      if (source === null) continue;
+      let sections;
+      try {
+        sections = buildSectionsFromSource(config, source, config.sourcePath, commitSha);
+      } catch {
+        // A historical revision that no longer parses cannot claim any hash.
+        continue;
+      }
+      for (const section of sections) {
+        const first = section.body.findIndex((bodyLine) => bodyLine.trim());
+        const last = section.body.findLastIndex((bodyLine) => bodyLine.trim());
+        const hash = sha256(
+          normalizeNewlines(section.body.slice(first, last + 1).join("\n")),
+        ).slice(0, 16);
+        // --reverse walks oldest first, so the first claim is the introducing commit.
+        if (!index.has(hash)) index.set(hash, { commitSha, versionDate });
+      }
+    }
+  }
+  return index;
+}
+
 export function buildVersionProvenanceManifest({
   now = new Date().toISOString(),
   sections = buildCatalog().sections,
   existing = readVersionProvenance(),
+  canonicalIndex = null as Map<string, { commitSha: string; versionDate: string }> | null,
   runGit = git,
   resolvePullRequest = (commitSha: string) =>
     resolvePullRequestForCommit(commitSha, runGit),
@@ -152,6 +216,7 @@ export function buildVersionProvenanceManifest({
   now?: string;
   sections?: Array<Pick<CompiledSection, "path" | "contentHash">>;
   existing?: VersionProvenanceManifest;
+  canonicalIndex?: Map<string, { commitSha: string; versionDate: string }> | null;
   runGit?: GitCommand;
   resolvePullRequest?: PullRequestResolver;
 } = {}): VersionProvenanceManifest {
@@ -164,12 +229,26 @@ export function buildVersionProvenanceManifest({
 
   for (const section of sections) {
     if (entriesByHash.has(section.contentHash)) continue;
+    // Existing entries are no longer trusted for their commit. Reusing them by hash is
+    // what preserved four hundred and sixty one fabricated rows across every
+    // regeneration: a wrong entry, once written, could never be corrected by rerunning
+    // the tool. Entries are re-derived every time; existing data is reused below only
+    // to avoid refetching a pull request for a commit we resolve to again.
+    const firstCommit =
+      canonicalIndex?.get(section.contentHash) ??
+      firstCommitForCurrentHash(section, runGit);
     const existingEntry = existingEntriesByHash.get(section.contentHash);
-    if (existingEntry) {
-      entriesByHash.set(section.contentHash, existingEntry);
-      continue;
+    if (
+      existingEntry &&
+      existingEntry.commitSha === firstCommit.commitSha &&
+      existingEntry.pullRequestUrl &&
+      !pullRequestsByCommit.has(firstCommit.commitSha)
+    ) {
+      pullRequestsByCommit.set(firstCommit.commitSha, {
+        url: existingEntry.pullRequestUrl,
+        number: existingEntry.pullRequestNumber as number,
+      });
     }
-    const firstCommit = firstCommitForCurrentHash(section, runGit);
     if (!pullRequestsByCommit.has(firstCommit.commitSha)) {
       pullRequestsByCommit.set(
         firstCommit.commitSha,
@@ -201,7 +280,9 @@ export function buildVersionProvenanceManifest({
 }
 
 export function refreshVersionProvenance(): void {
-  const manifest = buildVersionProvenanceManifest();
+  const manifest = buildVersionProvenanceManifest({
+    canonicalIndex: buildCanonicalFirstCommitIndex(),
+  });
   const existing = readVersionProvenance();
   if (JSON.stringify(existing.entries) === JSON.stringify(manifest.entries)) {
     manifest.generatedAt = existing.generatedAt;

@@ -1,14 +1,14 @@
 ---
 id: CTD-0112
 title: Version provenance records commits that did not introduce the content
-status: open
+status: resolved
 kind: technical
 severity: high
 scopes: ["corpus"]
 sources: ["scripts/manuscripts/versions.ts", "publishing/continuity/version-provenance.json", "scripts/manuscripts/validate.ts"]
 discovered: 2026-07-30
-updated: 2026-07-30
-resolved:
+updated: 2026-07-31
+resolved: 2026-07-31
 discoveredIn: corpus/2026-07-30-baseline-re-render
 ---
 
@@ -96,21 +96,50 @@ The same run also demonstrated the ordering error. `manuscripts:versions` execut
 
 ## Paydown criteria
 
-The values are derived and a regeneration on a quiet tree, after all editorial work is committed, produces correct entries for everything reachable in history. That is cheap and should happen regardless.
-
-The mechanism needs an author decision, because the options trade differently and the choice affects the publication lifecycle rather than the prose.
-
-- **Fail instead of guessing.** When no commit matches, stop and name the section. Correct, and it makes `manuscripts:validate` refuse to pass over uncommitted manuscript work, which is a real behavioural change to the gate.
-- **Record the uncertainty.** Write the entry with an explicit pending marker instead of a sha, and let the gate decide what to do with it. Keeps the gate's current shape while making the record honest about what it does not know.
-- **Verify recorded shas resolve.** Independent of the above, and it catches the 137 entries that a history rewrite orphaned.
-
-C1. Does a version provenance entry mean the commit that introduced the content, or the commit at which the content was last observed? The record's name asserts the first and its behaviour implements the second.
-
-C2. Should `npm run manuscripts:validate` pass while manuscript content is uncommitted?
-
-C3. What check would have caught a fabricated entry, given that a fabricated entry is well formed and names a real commit?
+- C1. Decide whether a provenance entry means the commit that introduced the content or the commit at which it was last observed.
+- C2. Decide whether manuscripts:validate may pass while manuscript content is uncommitted.
+- C3. Define the check that catches a fabricated entry that is well formed and names a real commit.
+- C4. Regenerate the record so every entry names a real, resolvable, content-bearing commit.
 
 ## History
 
 - 2026-07-30: Found while committing an editorial batch. An agent re-rendering Volume II ran `manuscripts:versions` in a worktree shared with an agent re-rendering Volume III, saw its own commit sha attached to the other agent's uncommitted content hash, reverted the change, and reported it rather than allowing the gate to pass. The same agent reverted a `README.md` regenerated in the same conditions, whose manuscript statistics would have baked in another agent's in flight state.
 - 2026-07-30: Counting the whole record turned a shared worktree hazard into a corpus wide finding. The contamination was the visible case; the 324 entries naming a documentation commit and the 137 naming an absent object predate tonight and were never caused by concurrency.
+- 2026-07-31: Resolved. The author approved the fail-instead-of-guessing hardening and it exposed the deeper defect within a minute of landing: the walker searched the history of generated files that stopped being committed, so every section edited since then had no findable commit, and the HEAD fallback had been papering over exactly that. Provenance now derives from the canonical volume manuscripts, which are committed on every edit. The importer's section split is replayed at each historical commit of each volume source, hashes are compared, and the oldest commit producing a section's current hash is the introducing commit by construction, verified at exact parity across all 534 generated sections. The regeneration reuse of existing entries by hash, which had preserved the 461 fabricated rows across every rerun, is removed; entries are re-derived on every run and existing data is reused only to avoid refetching a pull request link. The record now holds 517 entries across 28 commits, every sha resolvable, every major commit a manuscript-touching edit. C1 is answered as the commit that introduced the content, derived from canonical sources. C2 is answered by construction: uncommitted content has no matching commit anywhere, so the generator refuses with an error naming the section and the required order, commit then versions then validate. C3 is answered by the audit in Evidence, which is cheap to rerun: per-commit entry counts, sha resolvability, and whether each claimed commit touches manuscript sources.
+- 2026-07-30: Found while committing an editorial batch. An agent re-rendering Volume II ran `manuscripts:versions` in a worktree shared with an agent re-rendering Volume III, saw its own commit sha attached to the other agent's uncommitted content hash, reverted the change, and reported it rather than allowing the gate to pass. The same agent reverted a `README.md` regenerated in the same conditions, whose manuscript statistics would have baked in another agent's in flight state.
+- 2026-07-30: Counting the whole record turned a shared worktree hazard into a corpus wide finding. The contamination was the visible case; the 324 entries naming a documentation commit and the 137 naming an absent object predate tonight and were never caused by concurrency.
+- 2026-07-31: Resolved. The author approved the fail-instead-of-guessing hardening and it exposed the deeper defect within a minute of landing: the walker searched the history of generated files that stopped being committed, so every section edited since then had no findable commit, and the HEAD fallback had been papering over exactly that. Provenance now derives from the canonical volume manuscripts, which are committed on every edit. The importer's section split is replayed at each historical commit of each volume source, hashes are compared, and the oldest commit producing a section's current hash is the introducing commit by construction, verified at exact parity across all 534 generated sections. The regeneration reuse of existing entries by hash, which had preserved the 461 fabricated rows across every rerun, is removed; entries are re-derived on every run and existing data is reused only to avoid refetching a pull request link. The record now holds 517 entries across 28 commits, every sha resolvable, every major commit a manuscript-touching edit. C1 is answered as the commit that introduced the content, derived from canonical sources. C2 is answered by construction: uncommitted content has no matching commit anywhere, so the generator refuses with an error naming the section and the required order, commit then versions then validate. C3 is answered by the audit in Evidence, which is cheap to rerun: per-commit entry counts, sha resolvability, and whether each claimed commit touches manuscript sources.
+
+## Resolution
+
+### Outcome
+
+Provenance now derives from the canonical volume manuscripts instead of the uncommitted generated files. The importer's deterministic section split is replayed at every historical commit of each volume source, and the oldest commit producing a section's current body hash is recorded as the introducing commit, which is what the record's name always claimed it held. The HEAD fallback is replaced by a refusal that names the section and the required order, commit then versions then validate. The regeneration-time reuse of existing entries by hash is removed, since it preserved the fabricated rows across every rerun.
+
+### Criterion results
+
+- C1: met. The entry means the introducing commit, derived from canonical sources by `buildCanonicalFirstCommitIndex` in `scripts/manuscripts/versions.ts`.
+- C2: met. Uncommitted content has no matching commit anywhere, so the generator throws naming the section, and the gate cannot pass over it.
+- C3: met. The audit in Evidence is the check: per-commit entry counts, sha resolvability, and whether each claimed commit touches manuscript sources.
+- C4: met. The regenerated record holds 517 entries across 28 commits, zero unresolvable shas, and every major commit is a manuscript-touching edit.
+
+### Evidence
+
+The canonical index was verified against all 534 generated section files at exact hash parity before adoption. The regenerated record's largest groups are 839d275a1 with 307 entries, the overnight corpus re-render; 56c25ef4b with 54, securing the interrupted parallel run; and 4465251ec with 19, the original manuscript publication. Each really introduced manuscript prose.
+
+### Validation
+
+`npx vitest run scripts/manuscripts/versions.test.ts` passes, covering the refusal path and the rule that a matching commit reuses its stored pull request while commits are always re-derived. `npm run manuscripts:versions` regenerates cleanly on the committed tree, and `npm run manuscripts:validate` passes against the regenerated record.
+
+### Approval
+
+Approved by the author on 2026-07-31, in conversation: "Regarding points four and five, yes. Implement the hardening you recommend." Point five was this item's mechanism. The canonical-source derivation is what that decision required once the fail-fast exposed that generated-file history could not answer for restored sections.
+
+### Residual risk
+
+The sweep replays the current importer against historical revisions. If the section-splitting rules change, historical bodies could split differently and an introducing commit could shift. The risk is bounded: hashes either match or they do not, so drift produces a refusal rather than a fabrication, which is the failure direction this resolution chose on purpose. A future history rewrite likewise surfaces as refusals at the next regeneration rather than as silently orphaned shas.
+
+### Related debt
+
+- CTD-0110 remains open on the voice cards and is unaffected.
+- T-024 in the task queue is closed by this resolution.
