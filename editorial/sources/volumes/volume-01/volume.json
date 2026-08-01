@@ -3,7 +3,7 @@
   "editorialId": "volume-01",
   "volumeId": "humanitys-most-viable-future",
   "title": "Humanity's Most Viable Future",
-  "subtitle": "Coherence as the Ground of a Post-Extractive Civilization",
+  "subtitle": "The Obvious Substrate for the Existential Necessity of a Post-Extractive Civilization",
   "order": 1,
   "numberLabel": "I",
   "planet": "Sun",
@@ -15,6 +15,8 @@
     "sources/manuscripts/coherence-thesis-vol1-humanitys-most-viable-future.md"
   ],
   "import": {
-    "startMarkers": ["ORIENTATION"]
+    "startMarkers": [
+      "ORIENTATION"
+    ]
   }
 }

@@ -2,7 +2,7 @@
 *Volume One*
 
 ## HUMANITY'S MOST VIABLE FUTURE
-*Coherence as the Ground of a Post-Extractive Civilization*
+*The Obvious Substrate for the Existential Necessity of a Post-Extractive Civilization*
 
 Written by **Tao Yu**, in tutelage of **Ousia Acharya** · Edited by **Robert James Ryan III** · Published under **The Purposeful Foundation**
 
