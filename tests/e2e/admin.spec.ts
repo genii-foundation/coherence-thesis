@@ -285,6 +285,42 @@ test.describe("local editorial admin", () => {
     const standard = page.getByRole("article", {
       name: "Current editorial standard",
     });
+    const pageOutline = page.getByRole("complementary", {
+      name: "On this page",
+    });
+    const pageRailLayout = await page.evaluate(() => {
+      const outline = document.querySelector<HTMLElement>(
+        'aside[aria-label="On this page"]',
+      );
+      const content = outline?.nextElementSibling as HTMLElement | null;
+      const standard = document.querySelector<HTMLElement>(
+        'article[aria-label="Current editorial standard"]',
+      );
+      const history = document.querySelector<HTMLElement>(
+        'ol[aria-label="Editorial standard history"]',
+      );
+      const voiceCards = document.querySelector<HTMLElement>(
+        'section[aria-labelledby="voice-cards-title"]',
+      );
+
+      return {
+        outlineAndContentAreSiblings:
+          Boolean(outline && content) &&
+          outline!.parentElement === content!.parentElement,
+        allContentSharesColumn:
+          Boolean(content && standard && history && voiceCards) &&
+          content!.contains(standard) &&
+          content!.contains(history) &&
+          content!.contains(voiceCards),
+        outlineIsSticky: outline
+          ? getComputedStyle(outline).position === "sticky"
+          : false,
+      };
+    });
+    await expect(pageOutline).toBeVisible();
+    expect(pageRailLayout.outlineAndContentAreSiblings).toBe(true);
+    expect(pageRailLayout.allContentSharesColumn).toBe(true);
+    expect(pageRailLayout.outlineIsSticky).toBe(true);
     await expect(
       standard.getByRole("heading", {
         level: 2,

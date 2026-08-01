@@ -1921,7 +1921,15 @@
 
 .guidelinesPage {
   display: grid;
+  grid-template-columns: minmax(12rem, 0.28fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(1.25rem, 3.5vw, 3rem);
+}
+
+.guidelineContent {
+  display: grid;
   gap: clamp(2.8rem, 6vw, 5rem);
+  min-width: 0;
 }
 
 .guidelinesTitle {
@@ -2440,13 +2448,6 @@
   color: var(--bad-rule);
 }
 
-.guidelineReadingLayout {
-  display: grid;
-  grid-template-columns: minmax(12rem, 0.28fr) minmax(0, 1fr);
-  align-items: start;
-  gap: clamp(1.25rem, 3.5vw, 3rem);
-}
-
 .guidelineOutline {
   position: sticky;
   top: 5.75rem;
@@ -2830,8 +2831,9 @@
 }
 
 @media (max-width: 900px) {
-  .guidelineReadingLayout {
+  .guidelinesPage {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
 
   .guidelineOutline {
