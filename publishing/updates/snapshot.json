@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "aa88d75d76f6776e6e73dbe9a5a600f34edd343b",
+  "headSha": "f7d9320c75143bcd212d421beafb01558a5e562e",
   "commits": [
+    {
+      "sha": "f7d9320c75143bcd212d421beafb01558a5e562e",
+      "committedAt": "2026-08-01T21:40:29.000Z",
+      "subject": "Support durable bookmarks across passage revisions (#170)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/f7d9320c75143bcd212d421beafb01558a5e562e",
+      "filesChanged": 21,
+      "additions": 2078,
+      "deletions": 229,
+      "isLiterary": false
+    },
     {
       "sha": "aa88d75d76f6776e6e73dbe9a5a600f34edd343b",
       "committedAt": "2026-08-01T20:49:40.000Z",
