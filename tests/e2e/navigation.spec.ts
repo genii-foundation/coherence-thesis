@@ -160,6 +160,53 @@ test("later chapter sections do not reserve drop cap space", async ({
   expect(layout.minHeight).toBe("0px");
 });
 
+test("manuscript lists keep the reader typography and paragraph rhythm", async ({
+  page,
+}) => {
+  await page.goto(
+    "/manuscripts/9/contents/the-ninth-turn-where-the-eight-have-brought-us/",
+  );
+
+  const prose = page.locator(".manuscript-prose");
+  const recapLists = prose.locator("ul");
+  const recap = recapLists.first();
+  await expect(recapLists).toHaveCount(8);
+  await expect(recap.locator("li")).toHaveCount(1);
+
+  const typography = await recap.evaluate((list) => {
+    const openingParagraph = list.parentElement?.querySelector("p");
+    const firstItem = list.querySelector("li");
+    const secondList = list.nextElementSibling;
+    if (
+      !(openingParagraph instanceof HTMLParagraphElement) ||
+      !(firstItem instanceof HTMLLIElement) ||
+      !(secondList instanceof HTMLUListElement)
+    ) {
+      return null;
+    }
+
+    const openingStyle = getComputedStyle(openingParagraph);
+    const listStyle = getComputedStyle(list);
+    const firstBox = list.getBoundingClientRect();
+    const secondBox = secondList.getBoundingClientRect();
+    return {
+      fontSize: Number.parseFloat(listStyle.fontSize),
+      openingFontSize: Number.parseFloat(openingStyle.fontSize),
+      itemGap: secondBox.top - firstBox.bottom,
+      lineHeight: Number.parseFloat(listStyle.lineHeight),
+      listStyleType: listStyle.listStyleType,
+      paddingInlineStart: Number.parseFloat(listStyle.paddingInlineStart),
+    };
+  });
+
+  expect(typography).not.toBeNull();
+  expect(typography!.fontSize).toBeCloseTo(typography!.openingFontSize, 1);
+  expect(typography!.lineHeight).toBeGreaterThan(typography!.fontSize * 1.7);
+  expect(typography!.itemGap).toBeGreaterThanOrEqual(20);
+  expect(typography!.listStyleType).toBe("disc");
+  expect(typography!.paddingInlineStart).toBeGreaterThanOrEqual(22);
+});
+
 test("manuscript volume heading uses the colored astrology icon", async ({
   page,
 }) => {

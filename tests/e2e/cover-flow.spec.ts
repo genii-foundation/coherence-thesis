@@ -226,7 +226,7 @@ test("wide cover flow keeps every cover visible and stacks toward the center", a
   });
 });
 
-test("center and background covers share the hover zoom cue", async ({
+test("only direct cover hover zooms media without clipping its top edge", async ({
   page,
 }, testInfo) => {
   test.setTimeout(60_000);
@@ -267,6 +267,8 @@ test("center and background covers share the hover zoom cue", async ({
   const expectHoverZoom = async (cardIndex: number) => {
     const card = cards.nth(cardIndex);
     const cover = card.locator(".cover-flow-image-frame");
+    const restingBox = await cover.boundingBox();
+    expect(restingBox).not.toBeNull();
     const hoverPoint = await cover.evaluate((element) => {
       const card = element.closest(".cover-flow-card");
       const box = element.getBoundingClientRect();
@@ -308,11 +310,35 @@ test("center and background covers share the hover zoom cue", async ({
         }),
       )
       .toBeGreaterThan(1.02);
+
+    const zoomedBox = await cover.boundingBox();
+    const stageBox = await coverFlow
+      .locator(".cover-flow-card-stage")
+      .boundingBox();
+    expect(zoomedBox).not.toBeNull();
+    expect(stageBox).not.toBeNull();
+    expect(zoomedBox!.y).toBeGreaterThanOrEqual(restingBox!.y - 1);
+    expect(zoomedBox!.y - stageBox!.y).toBeGreaterThanOrEqual(40);
   };
 
   await expectHoverZoom(4);
   await expectHoverZoom(3);
   await expectHoverZoom(5);
+
+  const centerCard = cards.nth(4);
+  const centerCover = centerCard.locator(".cover-flow-image-frame");
+  await centerCard.locator(".manuscript-card-outline-full").hover();
+  await expect(centerCard).not.toHaveClass(/\bis-read-cue\b/);
+  await expect
+    .poll(() =>
+      centerCover.evaluate((element) => {
+        const matrix = new DOMMatrixReadOnly(
+          getComputedStyle(element).transform,
+        );
+        return Math.hypot(matrix.a, matrix.b);
+      }),
+    )
+    .toBeLessThan(1.005);
 });
 
 test("active details stay inside the carousel paint stage", async ({

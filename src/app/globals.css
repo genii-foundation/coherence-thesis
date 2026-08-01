@@ -3247,6 +3247,7 @@ a.bookmark-quote:focus-visible {
   );
   --cover-flow-stage-padding-bottom: clamp(4rem, 5vw, 5rem);
   --cover-flow-stage-padding-top: clamp(5.75rem, 9vw, 8.25rem);
+  --cover-flow-stage-shadow-overflow: clamp(2.5rem, 4vw, 3.5rem);
   position: relative;
   left: 50%;
   width: 100vw;
@@ -3277,11 +3278,15 @@ a.bookmark-quote:focus-visible {
 .cover-flow-card-stage {
   position: absolute;
   z-index: 1;
-  top: var(--cover-flow-stage-padding-top);
+  top: calc(
+    var(--cover-flow-stage-padding-top) -
+      var(--cover-flow-stage-shadow-overflow)
+  );
   left: 0;
   width: 100vw;
   height: calc(
-    var(--cover-flow-layout-height) + var(--cover-flow-stage-padding-bottom)
+    var(--cover-flow-layout-height) + var(--cover-flow-stage-padding-bottom) +
+      var(--cover-flow-stage-shadow-overflow)
   );
   overflow: clip;
   pointer-events: none;
@@ -3320,7 +3325,7 @@ a.bookmark-quote:focus-visible {
 .cover-flow-card-shell {
   --cover-flow-shift: var(--cover-flow-initial-shift, 0px);
   position: absolute;
-  top: 0;
+  top: var(--cover-flow-stage-shadow-overflow);
   z-index: var(--cover-flow-layer, var(--cover-flow-initial-layer, 1));
   left: calc(50% - var(--cover-flow-scroll-step) / 2);
   width: var(--cover-flow-scroll-step);
@@ -3415,28 +3420,23 @@ a.bookmark-quote:focus-visible {
     box-shadow 220ms ease,
     transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
   transform: translateZ(0) scale(1);
-  transform-origin: center center;
+  transform-origin: center top;
   will-change: transform;
 }
 
-.cover-flow-card:hover .cover-flow-image-frame,
-.cover-flow-cover-link:focus-visible .cover-flow-image-frame {
-  border-color: rgb(var(--card-rgb) / 0.68);
-  box-shadow:
-    0 20px 52px
-      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.16)),
-    0 8px 24px
-      rgba(119, 84, 42, calc(var(--cover-flow-cover-shadow-strength) * 0.18)),
-    0 2px 0 rgba(255, 255, 255, 0.62) inset;
-}
-
-.cover-flow-card.is-read-cue .cover-flow-image-frame {
+.cover-flow-cover-link:hover .cover-flow-image-frame {
   border-color: rgb(var(--card-rgb) / 0.72);
   box-shadow:
+    0 0 36px
+      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.16)),
     0 46px 80px
       rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.25)),
     0 14px 30px
       rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.18));
+}
+
+.cover-flow-cover-link:hover .cover-flow-image-frame,
+.cover-flow-cover-link:focus-visible .cover-flow-image-frame {
   transform: translateZ(1.25rem) scale(1.024);
 }
 
@@ -6636,6 +6636,31 @@ a.bookmark-quote:focus-visible {
   color: var(--ink);
   font-size: clamp(1.12rem, 2.2vw, 1.28rem);
   line-height: 1.78;
+}
+
+.manuscript-prose ul,
+.manuscript-prose ol {
+  margin: 0 0 1.35rem;
+  color: var(--ink);
+  font-size: clamp(1.12rem, 2.2vw, 1.28rem);
+  line-height: 1.78;
+  padding-inline-start: clamp(1.4rem, 3vw, 2rem);
+}
+
+.manuscript-prose ul {
+  list-style: disc;
+}
+
+.manuscript-prose ol {
+  list-style: decimal;
+}
+
+.manuscript-prose li + li {
+  margin-top: 1.35rem;
+}
+
+.manuscript-prose li::marker {
+  color: var(--bronze-deep);
 }
 
 .manuscript-prose > p:first-of-type {

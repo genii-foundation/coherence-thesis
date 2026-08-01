@@ -1143,12 +1143,11 @@ export function ManuscriptCoverFlowIsland({
                   onMouseLeave={() => setReadCueVolumeId(null)}
                   onMouseMove={(event) => {
                     const target = event.target as HTMLElement | null;
-                    const specificTarget = target?.closest(
-                      "button, a:not(.cover-flow-cover-link):not(.manuscript-card-outline-full)",
-                    );
-                    const nextVolumeId = specificTarget
-                      ? null
-                      : volume.volumeId;
+                    const nextVolumeId = target?.closest(
+                      ".cover-flow-cover-link",
+                    )
+                      ? volume.volumeId
+                      : null;
                     setReadCueVolumeId((current) =>
                       current === nextVolumeId ? current : nextVolumeId,
                     );
