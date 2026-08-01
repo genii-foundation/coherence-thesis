@@ -60,10 +60,11 @@ The corpus no longer claims that a functioning Cardinal Scale presently exists. 
 - `editorial/sources/volumes/volume-08/manuscript.md` states that the corpus does not claim that a Cardinal Scale presently exists.
 - `editorial/sources/volumes/volume-09/manuscript.md` removes the physical-location association, states that no operating community is reported, and requires verification and steward support for any future site or project claim.
 - The corresponding volume voice cards record the authority decision and bind future editorial work to it.
+- Source and closure commit: `8b70007f160bcd2ffb13be40598c6bb8c39b496e`. Version-provenance commit: `c90c06190cf8919baa59ac64f854307acb652da7`.
 
 ### Validation
 
-Focused canonical-source searches found no remaining physical-location association or unsupported present-tense existence claim. The durable debt index and full editorial validation results are recorded with the change set containing this resolution.
+Focused canonical-source searches found no remaining physical-location association or unsupported present-tense existence claim. `npm run editorial:debt`, `npm run editorial:validate`, `npm run editorial:semantic-links:validate`, `npm run manuscripts:validate`, `npm run repository:validate-links`, and `npm run repository:source-boundary` pass. `npm run editorial:lint:strict` reports zero errors across the five revised manuscripts. Manuscript preparation imports 534 files into 518 reader sections without structural loss. The full `npm run validate:ui` gate reaches and passes debt, editorial, and checkpoint validation, then stops on the pre-existing Volume III protected-line mismatch for "A person is not their record."
 
 ### Approval
 
@@ -71,7 +72,7 @@ The named project authority approved the removal of the physical-location associ
 
 ### Residual risk
 
-This resolution intentionally closes in the same change set as its source repair rather than after a separate merge. Until that change set reaches `main`, current `main` retains the superseded claims. Any future association with a physical site or living project requires new primary evidence, qualified review, affirmative steward support, and publication approval. Population ranges and nesting remain unresolved under CTD-0036.
+This resolution intentionally closes in the same change set as its source repair rather than after a separate merge. Until that change set reaches `main`, current `main` retains the superseded claims. The text changes invalidate thirteen currently published audio section versions across Volumes I, III, IV, VIII, and IX; the audio manifest has not been changed because regeneration and publication require separate approval. Any future association with a physical site or living project requires new primary evidence, qualified review, affirmative steward support, and publication approval. Population ranges and nesting remain unresolved under CTD-0036.
 
 ### Related debt
 
